@@ -5,7 +5,7 @@ const path = require('path');
 
 const barrelMap = {
   [path.resolve(path.join(__dirname, 'helpers'))]: '@plone/volto/helpers',
-  [path.resolve(path.join(__dirname, 'components'))]: '@plone/volto/components',
+  // [path.resolve(path.join(__dirname, 'components'))]: '@plone/volto/components',
   [path.resolve(path.join(__dirname, 'actions'))]: '@plone/volto/actions',
 };
 

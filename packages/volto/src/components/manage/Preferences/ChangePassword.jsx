@@ -6,14 +6,14 @@ import { Container } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
 import { useClient } from '@plone/volto/hooks';
 import { Form } from '@plone/volto/components/manage/Form';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
-import { updatePassword } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { updatePassword } from '@plone/volto/actions/users/users';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({

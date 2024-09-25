@@ -6,8 +6,13 @@ import { Dropdown, Icon } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
-import { cut, copy, copyContent, moveContent } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
+import {
+  cut,
+  copy,
+  copyContent,
+  moveContent,
+} from '@plone/volto/actions/clipboard/clipboard';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { ContentsRenameModal } from '@plone/volto/components/manage/Contents';
 

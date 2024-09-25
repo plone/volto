@@ -5,11 +5,14 @@ import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 import { Button, Checkbox } from 'semantic-ui-react';
-import { messages, isManager, canAssignGroup } from '@plone/volto/helpers';
-import { listGroups, getUser } from '@plone/volto/actions';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import { isManager, canAssignGroup } from '@plone/volto/helpers/User/User';
+import { listGroups } from '@plone/volto/actions/groups/groups';
+import { getUser } from '@plone/volto/actions/users/users';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
-import { updateGroup, listUsers } from '@plone/volto/actions';
+import { updateGroup } from '@plone/volto/actions/groups/groups';
+import { listUsers } from '@plone/volto/actions/users/users';
 
 import down_key from '@plone/volto/icons/down-key.svg';
 

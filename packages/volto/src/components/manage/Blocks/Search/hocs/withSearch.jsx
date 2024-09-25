@@ -5,7 +5,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import config from '@plone/volto/registry';
-import { usePrevious } from '@plone/volto/helpers';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
 import { isEqual } from 'lodash-es';
 
 function getDisplayName(WrappedComponent) {

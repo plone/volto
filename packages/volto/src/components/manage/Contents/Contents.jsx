@@ -34,23 +34,26 @@ import {
 } from 'lodash-es';
 import move from 'lodash-move';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { asyncConnect } from '@plone/volto/helpers';
-import { flattenToAppURL } from '@plone/volto/helpers';
-
+import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { searchContent } from '@plone/volto/actions/search/search';
 import {
-  searchContent,
   cut,
   copy,
   copyContent,
-  deleteContent,
-  listActions,
   moveContent,
+} from '@plone/volto/actions/clipboard/clipboard';
+
+import {
+  deleteContent,
   orderContent,
   sortContent,
   updateColumnsContent,
   linkIntegrityCheck,
   getContent,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/content/content';
+
+import { listActions } from '@plone/volto/actions/actions/actions';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import Pagination from '@plone/volto/components/theme/Pagination/Pagination';
 import Popup from '@plone/volto/components/theme/Popup/Popup';
@@ -67,7 +70,8 @@ import ContentsWorkflowModal from '@plone/volto/components/manage/Contents/Conte
 import ContentsTagsModal from '@plone/volto/components/manage/Contents/ContentsTagsModal';
 import ContentsPropertiesModal from '@plone/volto/components/manage/Contents/ContentsPropertiesModal';
 
-import { Helmet, getBaseUrl } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import config from '@plone/volto/registry';
 

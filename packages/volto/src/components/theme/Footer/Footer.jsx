@@ -9,7 +9,7 @@ import { map } from 'lodash-es';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { useSelector, shallowEqual } from 'react-redux';
 import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
-import { flattenToAppURL, addAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, addAppURL } from '@plone/volto/helpers/Url/Url';
 
 const messages = defineMessages({
   copyright: {

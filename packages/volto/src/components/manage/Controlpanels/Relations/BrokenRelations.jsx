@@ -3,8 +3,8 @@ import { uniqBy } from 'lodash-es';
 import { FormattedMessage } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { Divider, Segment, Table } from 'semantic-ui-react';
-import { queryRelations } from '@plone/volto/actions';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { queryRelations } from '@plone/volto/actions/relations/relations';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
 
 const BrokenRelations = () => {

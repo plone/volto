@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { filter, isEqual, map } from 'lodash-es';
@@ -15,13 +15,15 @@ import { createPortal } from 'react-dom';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 
-import { getDiff, getSchema, getHistory } from '@plone/volto/actions';
+import { getDiff } from '@plone/volto/actions/diff/diff';
+import { getSchema } from '@plone/volto/actions/schema/schema';
+import { getHistory } from '@plone/volto/actions/history/history';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import {
-  getBaseUrl,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
 import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';

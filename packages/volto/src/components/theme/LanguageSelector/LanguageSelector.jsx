@@ -11,12 +11,10 @@ import { useSelector } from 'react-redux';
 import cx from 'classnames';
 import { find, map } from 'lodash-es';
 
-import {
-  Helmet,
-  langmap,
-  flattenToAppURL,
-  toReactIntlLang,
-} from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
+import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { toReactIntlLang } from '@plone/volto/helpers/Utils/Utils';
 
 import config from '@plone/volto/registry';
 

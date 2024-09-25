@@ -14,7 +14,7 @@ import { createBrowserHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
 import { useSelector } from 'react-redux';
 
-import { Api } from '@plone/volto/helpers';
+import { Api } from '@plone/volto/helpers/Api/Api';
 import configureStore from '@plone/volto/store';
 import { DefaultView } from '@plone/volto/components/';
 import { serializeNodes } from '@plone/volto-slate/editor/render';

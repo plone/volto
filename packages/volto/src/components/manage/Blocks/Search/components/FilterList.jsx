@@ -4,7 +4,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import { isEmpty } from 'lodash-es';
 
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { resolveExtension } from '@plone/volto/helpers';
+import { resolveExtension } from '@plone/volto/helpers/Extensions';
 import config from '@plone/volto/registry';
 
 import downSVG from '@plone/volto/icons/down-key.svg';

@@ -1,7 +1,7 @@
 import React from 'react';
 import doesNodeContainClick from '@plone/volto/helpers/Utils/doesNodeContainClick';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
-import { blockHasValue } from '@plone/volto/helpers';
+import { blockHasValue } from '@plone/volto/helpers/Blocks/Blocks';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
 import config from '@plone/volto/registry';

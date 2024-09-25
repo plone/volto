@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { getParentUrl } from '@plone/volto/helpers';
+import { getParentUrl } from '@plone/volto/helpers/Url/Url';
 import { createPortal } from 'react-dom';
 import { last } from 'lodash-es';
 import { Confirm, Container, Table, Button, Header } from 'semantic-ui-react';
@@ -23,8 +23,8 @@ import {
   getControlpanel,
   postControlpanel,
   deleteControlpanel,
-} from '@plone/volto/actions';
-import { getId } from '@plone/volto/helpers';
+} from '@plone/volto/actions/controlpanels/controlpanels';
+import { getId } from '@plone/volto/helpers/Url/Url';
 
 import addSVG from '@plone/volto/icons/add-document.svg';
 import backSVG from '@plone/volto/icons/back.svg';

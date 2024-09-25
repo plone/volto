@@ -13,7 +13,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import config from '@plone/volto/registry';
-import { getQuerystring } from '@plone/volto/actions';
+import { getQuerystring } from '@plone/volto/actions/querystring/querystring';
 
 const messages = defineMessages({
   reservedId: {

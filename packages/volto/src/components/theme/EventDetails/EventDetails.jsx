@@ -6,7 +6,7 @@ import {
   Recurrence,
 } from '@plone/volto/components/theme/View/EventDatesInfo';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { expandToBackendURL } from '@plone/volto/helpers';
+import { expandToBackendURL } from '@plone/volto/helpers/Url/Url';
 
 import calendarSVG from '@plone/volto/icons/calendar.svg';
 

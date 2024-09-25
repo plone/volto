@@ -1,10 +1,5 @@
-/**
- * Content type schema.
- * @module components/manage/Controlpanels/ContentTypeSchema
- */
-
-import { getSchema, putSchema } from '@plone/volto/actions';
-import { getParentUrl } from '@plone/volto/helpers';
+import { getSchema, putSchema } from '@plone/volto/actions/schema/schema';
+import { getParentUrl } from '@plone/volto/helpers/Url/Url';
 import { nth } from 'lodash-es';
 import Error from '@plone/volto/components/theme/Error/Error';
 import Icon from '@plone/volto/components/theme/Icon/Icon';

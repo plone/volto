@@ -13,10 +13,10 @@ import {
   flattenToAppURL,
   getBaseUrl,
   isInternalURL,
-  validateFileUploadSize,
-  usePrevious,
-} from '@plone/volto/helpers';
-import { createContent } from '@plone/volto/actions';
+} from '@plone/volto/helpers/Url/Url';
+import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
+import { createContent } from '@plone/volto/actions/content/content';
 import { readAsDataURL } from 'promise-file-reader';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import Icon from '@plone/volto/components/theme/Icon/Icon';

@@ -2,7 +2,7 @@ import React from 'react';
 import TeaserBody from './Body';
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import TeaserData from './Data';
-import { withBlockExtensions } from '@plone/volto/helpers';
+import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
 
 const TeaserEdit = (props) => {
   const { data, onChangeBlock, block, selected } = props;

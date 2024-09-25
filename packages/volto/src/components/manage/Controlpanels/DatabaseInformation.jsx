@@ -5,8 +5,8 @@ import { createPortal } from 'react-dom';
 import { Container, Divider, Message, Segment, Table } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
-import { getDatabaseInformation } from '@plone/volto/actions';
-import { Helmet } from '@plone/volto/helpers';
+import { getDatabaseInformation } from '@plone/volto/actions/controlpanels/controlpanels';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
 import { useClient } from '@plone/volto/hooks';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';

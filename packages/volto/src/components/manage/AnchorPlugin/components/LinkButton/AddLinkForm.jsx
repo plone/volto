@@ -14,7 +14,7 @@ import {
   isInternalURL,
   flattenToAppURL,
   URLUtils,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Url/Url';
 
 import doesNodeContainClick from '@plone/volto/helpers/Utils/doesNodeContainClick';
 import { Input, Form, Button } from 'semantic-ui-react';

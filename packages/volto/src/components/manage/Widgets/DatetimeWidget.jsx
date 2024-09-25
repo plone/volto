@@ -5,7 +5,7 @@ import { lazy } from 'react';
 import cx from 'classnames';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import { parseDateTime, toBackendLang } from '@plone/volto/helpers';
+import { parseDateTime, toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import leftKey from '@plone/volto/icons/left-key.svg';

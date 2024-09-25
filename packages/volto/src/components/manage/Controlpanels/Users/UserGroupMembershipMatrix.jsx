@@ -5,8 +5,8 @@ import { Checkbox, Form, Input } from 'semantic-ui-react';
 
 import { isEqual, debounce } from 'lodash-es';
 
-import { messages } from '@plone/volto/helpers';
-import { listGroups } from '@plone/volto/actions'; // getRegistry
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import { listGroups } from '@plone/volto/actions/groups/groups';
 import UserGroupMembershipListing from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipListing';
 
 const UserGroupMembershipMatrix = ({ many_users, many_groups }) => {

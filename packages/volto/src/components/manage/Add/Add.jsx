@@ -5,11 +5,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  BodyClass,
-  Helmet,
-  extractInvariantErrors,
-} from '@plone/volto/helpers';
+import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
+import { extractInvariantErrors } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { keys, isEmpty } from 'lodash-es';
@@ -20,33 +18,32 @@ import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { toast } from 'react-toastify';
 
-import {
-  createContent,
-  getSchema,
-  changeLanguage,
-  setFormData,
-} from '@plone/volto/actions';
+import { createContent } from '@plone/volto/actions/content/content';
+import { getSchema } from '@plone/volto/actions/schema/schema';
+import { changeLanguage } from '@plone/volto/actions/language/language';
+import { setFormData } from '@plone/volto/actions/form/form';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import TranslationObject from '@plone/volto/components/manage/Multilingual/TranslationObject';
 import { Form } from '@plone/volto/components/manage/Form';
+import { getBaseUrl, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import {
-  getBaseUrl,
   hasBlocksData,
-  flattenToAppURL,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-  getLanguageIndependentFields,
-  langmap,
-  toGettextLang,
+} from '@plone/volto/helpers/Blocks/Blocks';
+import { getLanguageIndependentFields } from '@plone/volto/helpers/Content/Content';
+import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
+import { toGettextLang } from '@plone/volto/helpers/Utils/Utils';
+import {
   getSimpleDefaultBlocks,
   getDefaultBlocks,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/defaultBlocks';
 
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
-import { tryParseJSON } from '@plone/volto/helpers';
+import { tryParseJSON } from '@plone/volto/helpers/FormValidation/FormValidation';
 
 import config from '@plone/volto/registry';
 

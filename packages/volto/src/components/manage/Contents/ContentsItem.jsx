@@ -13,7 +13,7 @@ import Circle from '@plone/volto/components/manage/Contents/circle';
 import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Popup from '@plone/volto/components/theme/Popup/Popup';
-import { getContentIcon } from '@plone/volto/helpers';
+import { getContentIcon } from '@plone/volto/helpers/Content/Content';
 import moreSVG from '@plone/volto/icons/more.svg';
 import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
 import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';

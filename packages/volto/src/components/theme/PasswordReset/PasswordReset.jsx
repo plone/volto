@@ -8,12 +8,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
 import { Container } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { Form } from '@plone/volto/components/manage/Form';
-import { setInitialPassword } from '@plone/volto/actions';
+import { setInitialPassword } from '@plone/volto/actions/users/users';
 import config from '@plone/volto/registry';
 
 const messages = defineMessages({

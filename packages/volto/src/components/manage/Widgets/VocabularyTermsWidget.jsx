@@ -94,7 +94,7 @@ import DragDropList from '@plone/volto/components/manage/DragDropList/DragDropLi
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
-import { langmap } from '@plone/volto/helpers';
+import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
 
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import addSVG from '@plone/volto/icons/add.svg';

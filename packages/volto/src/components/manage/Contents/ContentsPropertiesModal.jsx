@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { isEmpty, map } from 'lodash-es';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { usePrevious } from '@plone/volto/helpers';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
 import { cloneDeepSchema } from '@plone/volto/helpers/Utils/Utils';
-import { updateContent } from '@plone/volto/actions';
+import { updateContent } from '@plone/volto/actions/content/content';
 import { ModalForm } from '@plone/volto/components/manage/Form';
 import config from '@plone/volto/registry';
 

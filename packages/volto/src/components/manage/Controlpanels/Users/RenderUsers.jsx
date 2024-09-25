@@ -11,11 +11,12 @@ import editSVG from '@plone/volto/icons/editing.svg';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { ModalForm } from '@plone/volto/components/manage/Form';
-import { updateUser } from '@plone/volto/actions';
+import { updateUser } from '@plone/volto/actions/users/users';
 import ploneSVG from '@plone/volto/icons/plone.svg';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { messages, canAssignRole } from '@plone/volto/helpers';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import { canAssignRole } from '@plone/volto/helpers/User/User';
 import { toast } from 'react-toastify';
 
 /**

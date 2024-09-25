@@ -16,11 +16,14 @@ import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { Form } from '@plone/volto/components/manage/Form';
 import backSVG from '@plone/volto/icons/back.svg';
 import { map } from 'lodash-es';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
 import nextIcon from '@plone/volto/icons/right-key.svg';
 import prevIcon from '@plone/volto/icons/left-key.svg';
 import undoSVG from '@plone/volto/icons/undo.svg';
-import { getTransactions, revertTransactions } from '@plone/volto/actions';
+import {
+  getTransactions,
+  revertTransactions,
+} from '@plone/volto/actions/transactions/transactions';
 import { toast } from 'react-toastify';
 
 const messages = defineMessages({

@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
 import { isEqual } from 'lodash-es';
-import { withBlockExtensions } from '@plone/volto/helpers';
+import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
 
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import ListingBody from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
 import ListingData from './ListingData';
 
-import { getBaseUrl } from '@plone/volto/helpers';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 
 const messages = defineMessages({
   results: {

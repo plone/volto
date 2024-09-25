@@ -4,10 +4,11 @@ import { defineMessages, useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { Helmet, usePrevious } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { Form } from '@plone/volto/components/manage/Form';
-import { createUser } from '@plone/volto/actions';
+import { createUser } from '@plone/volto/actions/users/users';
 
 const messages = defineMessages({
   title: {

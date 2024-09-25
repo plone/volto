@@ -13,7 +13,7 @@ import {
 } from '@plone/volto/helpers/Utils/Utils';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Field } from '@plone/volto/components/manage/Form';
-import { applySchemaDefaults } from '@plone/volto/helpers';
+import { applySchemaDefaults } from '@plone/volto/helpers/Blocks/Blocks';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';

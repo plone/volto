@@ -9,7 +9,7 @@ import {
   CheckboxWidget,
   TextWidget,
 } from '@plone/volto/components/manage/Widgets';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 
 import imageSVG from '@plone/volto/icons/image.svg';

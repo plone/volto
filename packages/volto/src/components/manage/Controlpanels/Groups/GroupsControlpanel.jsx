@@ -1,17 +1,13 @@
-/**
- * Users controlpanel container.
- * @module components/manage/Controlpanels/UsersControlpanel
- */
 import {
   createGroup,
   deleteGroup,
   listGroups,
-  getControlpanel,
-  listRoles,
   updateGroup,
-  authenticatedRole,
-  getUser,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/groups/groups';
+import { getControlpanel } from '@plone/volto/actions/controlpanels/controlpanels';
+import { listRoles } from '@plone/volto/actions/roles/roles';
+import { authenticatedRole } from '@plone/volto/actions/authRole/authRole';
+import { getUser } from '@plone/volto/actions/users/users';
 import jwtDecode from 'jwt-decode';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
@@ -21,12 +17,9 @@ import Error from '@plone/volto/components/theme/Error/Error';
 import RenderGroups from '@plone/volto/components/manage/Controlpanels/Groups/RenderGroups';
 import { ModalForm } from '@plone/volto/components/manage/Form';
 import { Link } from 'react-router-dom';
-import {
-  Helmet,
-  messages,
-  isManager,
-  canAssignRole,
-} from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import { isManager, canAssignRole } from '@plone/volto/helpers/User/User';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
 import saveSVG from '@plone/volto/icons/save.svg';

@@ -16,8 +16,9 @@ import {
   applyWorkingCopy,
   createWorkingCopy,
   removeWorkingCopy,
-} from '@plone/volto/actions';
-import { flattenToAppURL, getBaseUrl, usePrevious } from '@plone/volto/helpers';
+} from '@plone/volto/actions/workingcopy/workingcopy';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
 import config from '@plone/volto/registry';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import userSVG from '@plone/volto/icons/user.svg';

@@ -12,15 +12,16 @@ import {
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
 
-import { Helmet, usePrevious } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
 import config from '@plone/volto/registry';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import {
   login,
   logout,
   resetLoginRequest,
-  purgeMessages,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/userSession/userSession';
+import { purgeMessages } from '@plone/volto/actions/messages/messages';
 import { toast } from 'react-toastify';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import aheadSVG from '@plone/volto/icons/ahead.svg';

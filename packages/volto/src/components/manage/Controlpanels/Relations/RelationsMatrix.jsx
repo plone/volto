@@ -15,14 +15,14 @@ import {
   Tab,
 } from 'semantic-ui-react';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-import { messages } from '@plone/volto/helpers';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import {
   getRelationStats,
   queryRelations,
-  rebuildRelations,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/relations/relations';
+import { rebuildRelations } from '@plone/volto/actions/relations/rebuild';
 import RelationsListing from '@plone/volto/components/manage/Controlpanels/Relations/RelationsListing';
 import BrokenRelations from '@plone/volto/components/manage/Controlpanels/Relations/BrokenRelations';
 import helpSVG from '@plone/volto/icons/help.svg';

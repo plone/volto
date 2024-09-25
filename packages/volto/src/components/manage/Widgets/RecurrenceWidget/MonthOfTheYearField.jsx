@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { map } from 'lodash-es';
 import { Form } from 'semantic-ui-react';
 import SelectInput from './SelectInput';
-import { toBackendLang } from '@plone/volto/helpers';
+import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { useSelector } from 'react-redux';
 

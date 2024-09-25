@@ -3,7 +3,7 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { omit } from 'lodash-es';
 
-import { loadLazyLibrary } from '@plone/volto/actions';
+import { loadLazyLibrary } from '@plone/volto/actions/lazyLibraries/lazyLibraries';
 import config from '@plone/volto/registry';
 
 const validateLibs = (maybeLibs) => {

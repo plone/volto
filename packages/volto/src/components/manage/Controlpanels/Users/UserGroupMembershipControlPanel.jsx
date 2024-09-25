@@ -10,16 +10,17 @@ import { Link, useLocation } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { Segment } from 'semantic-ui-react';
-import { Helmet, messages } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import {
   getControlpanel,
   getSystemInformation,
-  listActions,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/controlpanels/controlpanels';
+import { listActions } from '@plone/volto/actions/actions/actions';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
-import { getParentUrl } from '@plone/volto/helpers';
+import { getParentUrl } from '@plone/volto/helpers/Url/Url';
 import UserGroupMembershipMatrix from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipMatrix';
 import backSVG from '@plone/volto/icons/back.svg';
 import settingsSVG from '@plone/volto/icons/settings.svg';

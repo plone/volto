@@ -9,18 +9,18 @@ import { defineMessages, useIntl } from 'react-intl';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import {
-  flattenToAppURL,
   getWorkflowOptions,
   getCurrentStateMapping,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Workflows/Workflows';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
+import { getContent } from '@plone/volto/actions/content/content';
 import {
-  getContent,
   getWorkflow,
   transitionWorkflow,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/workflow/workflow';
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';

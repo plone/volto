@@ -13,9 +13,12 @@ import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Vocabularies/Vocabularies';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
+import {
+  getVocabulary,
+  getVocabularyTokenTitle,
+} from '@plone/volto/actions/vocabularies/vocabularies';
 import { normalizeValue } from '@plone/volto/components/manage/Widgets/SelectUtils';
 
 import {

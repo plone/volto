@@ -4,21 +4,23 @@
  */
 import React, { useEffect, useState } from 'react';
 import { find } from 'lodash-es';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
 import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { Container, Segment, Table } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContent, queryRelations, listActions } from '@plone/volto/actions';
-import { asyncConnect } from '@plone/volto/helpers';
+import { getContent } from '@plone/volto/actions/content/content';
+import { queryRelations } from '@plone/volto/actions/relations/relations';
+import { listActions } from '@plone/volto/actions/actions/actions';
+import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
 
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 
-import { getBaseUrl } from '@plone/volto/helpers';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import backSVG from '@plone/volto/icons/back.svg';
 import settingsSVG from '@plone/volto/icons/settings.svg';
 

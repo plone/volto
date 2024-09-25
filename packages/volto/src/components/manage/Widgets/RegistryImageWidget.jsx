@@ -13,7 +13,8 @@ import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import { lazy } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
-import { toPublicURL, validateFileUploadSize } from '@plone/volto/helpers';
+import { toPublicURL } from '@plone/volto/helpers/Url/Url';
+import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 
 const imageMimetypes = [
   'image/png',

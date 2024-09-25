@@ -5,10 +5,11 @@ import { useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
-import { messages } from '@plone/volto/helpers';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { Form } from '@plone/volto/components/manage/Form';
-import { getUser, updateUser, getUserSchema } from '@plone/volto/actions';
+import { getUser, updateUser } from '@plone/volto/actions/users/users';
+import { getUserSchema } from '@plone/volto/actions/userschema/userschema';
 
 const PersonalInformation = (props) => {
   const intl = useIntl();

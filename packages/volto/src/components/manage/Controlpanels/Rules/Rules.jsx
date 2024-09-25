@@ -8,7 +8,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { getBaseUrl, getParentUrl, Helmet } from '@plone/volto/helpers';
+import { getBaseUrl, getParentUrl } from '@plone/volto/helpers/Url/Url';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
 import { createPortal } from 'react-dom';
 import {
   Button,
@@ -30,7 +31,7 @@ import {
   deleteControlPanelRule,
   getContentRulesEvents,
   editRule,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/rules/rules';
 
 import backSVG from '@plone/volto/icons/back.svg';
 

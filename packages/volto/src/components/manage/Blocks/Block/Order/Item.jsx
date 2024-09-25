@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { includes } from 'lodash-es';
 import cx from 'classnames';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { setUIState } from '@plone/volto/actions';
+import { setUIState } from '@plone/volto/actions/form/form';
 import config from '@plone/volto/registry';
 
 import deleteSVG from '@plone/volto/icons/delete.svg';

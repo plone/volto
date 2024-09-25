@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import config from '@plone/volto/registry';
-import { langmap, useDetectClickOutside } from '@plone/volto/helpers';
+import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
+import { useDetectClickOutside } from '@plone/volto/helpers/Utils/useDetectClickOutside';
 
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Button } from 'semantic-ui-react';

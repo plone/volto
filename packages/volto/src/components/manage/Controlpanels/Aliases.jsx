@@ -1,13 +1,14 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
+import { getBaseUrl, getParentUrl } from '@plone/volto/helpers/Url/Url';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
 import {
-  getBaseUrl,
-  getParentUrl,
-  Helmet,
-  usePrevious,
-} from '@plone/volto/helpers';
-import { removeAliases, addAliases, getAliases } from '@plone/volto/actions';
+  removeAliases,
+  addAliases,
+  getAliases,
+} from '@plone/volto/actions/aliases/aliases';
 import { createPortal } from 'react-dom';
 import {
   Container,

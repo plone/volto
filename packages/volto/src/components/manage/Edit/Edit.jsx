@@ -5,10 +5,12 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet, extractInvariantErrors } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
+import { extractInvariantErrors } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { asyncConnect, hasApiExpander } from '@plone/volto/helpers';
+import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
+import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Grid, Menu } from 'semantic-ui-react';
 import { createPortal } from 'react-dom';
@@ -30,17 +32,14 @@ import {
   getContent,
   lockContent,
   unlockContent,
-  getSchema,
-  listActions,
-  setFormData,
-} from '@plone/volto/actions';
-import {
-  flattenToAppURL,
-  getBaseUrl,
-  hasBlocksData,
-} from '@plone/volto/helpers';
+} from '@plone/volto/actions/content/content';
+import { getSchema } from '@plone/volto/actions/schema/schema';
+import { listActions } from '@plone/volto/actions/actions/actions';
+import { setFormData } from '@plone/volto/actions/form/form';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { hasBlocksData } from '@plone/volto/helpers/Blocks/Blocks';
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
-import { tryParseJSON } from '@plone/volto/helpers';
+import { tryParseJSON } from '@plone/volto/helpers/FormValidation/FormValidation';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

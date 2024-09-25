@@ -9,8 +9,8 @@ import { withCookies } from 'react-cookie';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { Form } from '@plone/volto/components/manage/Form';
 import languages from '@plone/volto/constants/Languages.cjs';
-import { changeLanguage } from '@plone/volto/actions';
-import { toGettextLang } from '@plone/volto/helpers';
+import { changeLanguage } from '@plone/volto/actions/language/language';
+import { toGettextLang } from '@plone/volto/helpers/Utils/Utils';
 import config from '@plone/volto/registry';
 
 const messages = defineMessages({

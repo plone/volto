@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { Button, Form, Grid, Input, Label } from 'semantic-ui-react';
 import { filter, remove, toPairs, groupBy, isEmpty, map } from 'lodash-es';
 import { defineMessages, injectIntl } from 'react-intl';
-import { getQuerystring } from '@plone/volto/actions';
+import { getQuerystring } from '@plone/volto/actions/querystring/querystring';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import cx from 'classnames';

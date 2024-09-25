@@ -17,7 +17,7 @@ import {
   Loader,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { FormValidation } from '@plone/volto/helpers';
+import { FormValidation } from '@plone/volto/helpers/FormValidation/FormValidation';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Field } from '@plone/volto/components/manage/Form';
 import aheadSVG from '@plone/volto/icons/ahead.svg';

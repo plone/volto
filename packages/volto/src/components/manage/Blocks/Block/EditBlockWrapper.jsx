@@ -6,7 +6,7 @@ import {
   blockHasValue,
   buildStyleClassNamesFromData,
   buildStyleObjectFromData,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';

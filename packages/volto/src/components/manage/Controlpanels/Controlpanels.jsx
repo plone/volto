@@ -1,9 +1,4 @@
-/**
- * Controlpanels component.
- * @module components/manage/Controlpanels/Controlpanels
- */
-
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
 import { concat, filter, last, map, sortBy, uniqBy } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';

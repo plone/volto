@@ -13,7 +13,7 @@ import {
   isInternalURL,
   flattenToAppURL,
   URLUtils,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Url/Url';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';

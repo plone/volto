@@ -22,8 +22,8 @@ import {
   listAddons,
   uninstallAddon,
   upgradeAddon,
-} from '@plone/volto/actions';
-import { Helmet } from '@plone/volto/helpers';
+} from '@plone/volto/actions/addons/addons';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import Toast from '@plone/volto/components/manage/Toast/Toast';

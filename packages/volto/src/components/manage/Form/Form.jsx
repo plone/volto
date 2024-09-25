@@ -3,14 +3,14 @@ import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { Field, BlocksForm } from '@plone/volto/components/manage/Form';
 import BlocksToolbar from '@plone/volto/components/manage/Form/BlocksToolbar';
 import UndoToolbar from '@plone/volto/components/manage/Form/UndoToolbar';
+import { difference } from '@plone/volto/helpers/Utils/Utils';
+import { FormValidation } from '@plone/volto/helpers/FormValidation/FormValidation';
 import {
-  difference,
-  FormValidation,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
-  messages,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
@@ -48,9 +48,8 @@ import {
   setMetadataFieldsets,
   resetMetadataFocus,
   setSidebarTab,
-  setFormData,
-  setUIState,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/sidebar/sidebar';
+import { setFormData, setUIState } from '@plone/volto/actions/form/form';
 import { compose } from 'redux';
 import config from '@plone/volto/registry';
 import SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRenderer';

@@ -10,11 +10,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { Divider, Message, Segment } from 'semantic-ui-react';
-import { Helmet, messages } from '@plone/volto/helpers';
-import { listActions } from '@plone/volto/actions';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import { listActions } from '@plone/volto/actions/actions/actions';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
-import { getParentUrl } from '@plone/volto/helpers';
+import { getParentUrl } from '@plone/volto/helpers/Url/Url';
 import RelationsMatrix from '@plone/volto/components/manage/Controlpanels/Relations/RelationsMatrix';
 import backSVG from '@plone/volto/icons/back.svg';
 

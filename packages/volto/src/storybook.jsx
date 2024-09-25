@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
-import { useUndoManager } from '@plone/volto/helpers';
+import { useUndoManager } from '@plone/volto/helpers/UndoManager/useUndoManager';
 import configureStore from 'redux-mock-store';
 import configureRealStore from '@plone/volto/store';
 
