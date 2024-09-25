@@ -260,6 +260,47 @@ exports[`DiffField renders a richtext field 1`] = `
 </div>
 `;
 
+exports[`DiffField renders a textarea field 1`] = `
+<div>
+  <div
+    class="ui grid"
+    data-testid="DiffField"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="twelve wide column"
+      >
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
+    >
+      <div
+        class="top aligned sixteen wide column"
+      >
+        <span>
+          My 
+          <span
+            class="deletion"
+          >
+            old
+          </span>
+          <span
+            class="addition"
+          >
+            new
+          </span>
+           string
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DiffField renders an array field 1`] = `
 <div>
   <div
