@@ -1,30 +1,7 @@
-/**
- * Routes.
- * @module routes
- */
+import { lazy } from 'react';
 import debug from 'debug';
 import { compact } from 'lodash-es';
-import Add from '@plone/volto/components/manage/Add/Add';
-import Aliases from '@plone/volto/components/manage/Aliases/Aliases';
-import ChangePassword from '@plone/volto/components/manage/Preferences/ChangePassword';
-import ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
-import CreateTranslation from '@plone/volto/components/manage/Multilingual/CreateTranslation';
-import Delete from '@plone/volto/components/manage/Delete/Delete';
-import Diff from '@plone/volto/components/manage/Diff/Diff';
-import Edit from '@plone/volto/components/manage/Edit/Edit';
-import History from '@plone/volto/components/manage/History/History';
-import LinksToItem from '@plone/volto/components/manage/LinksToItem/LinksToItem';
-import Login from '@plone/volto/components/theme/Login/Login';
-import Logout from '@plone/volto/components/theme/Logout/Logout';
-import ManageTranslations from '@plone/volto/components/manage/Multilingual/ManageTranslations';
-import NotFound from '@plone/volto/components/theme/NotFound/NotFound';
-import PasswordReset from '@plone/volto/components/theme/PasswordReset/PasswordReset';
-import Register from '@plone/volto/components/theme/Register/Register';
-import RequestPasswordReset from '@plone/volto/components/theme/PasswordReset/RequestPasswordReset';
-import Search from '@plone/volto/components/theme/Search/Search';
-import Sharing from '@plone/volto/components/manage/Sharing/Sharing';
-import Sitemap from '@plone/volto/components/theme/Sitemap/Sitemap';
-import PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
+
 import { Contents } from '@plone/volto/components/manage/Contents';
 import { Rules } from '@plone/volto/components/manage/Rules';
 import {
@@ -56,6 +33,65 @@ import App from '@plone/volto/components/theme/App/App';
 import View from '@plone/volto/components/theme/View/View';
 
 import config from '@plone/volto/registry';
+
+const Add = lazy(() => import('@plone/volto/components/manage/Add/Add'));
+const Aliases = lazy(
+  () => import('@plone/volto/components/manage/Aliases/Aliases'),
+);
+const ChangePassword = lazy(
+  () => import('@plone/volto/components/manage/Preferences/ChangePassword'),
+);
+const ContactForm = lazy(
+  () => import('@plone/volto/components/theme/ContactForm/ContactForm'),
+);
+const CreateTranslation = lazy(
+  () => import('@plone/volto/components/manage/Multilingual/CreateTranslation'),
+);
+const Delete = lazy(
+  () => import('@plone/volto/components/manage/Delete/Delete'),
+);
+const Diff = lazy(() => import('@plone/volto/components/manage/Diff/Diff'));
+const Edit = lazy(() => import('@plone/volto/components/manage/Edit/Edit'));
+const History = lazy(
+  () => import('@plone/volto/components/manage/History/History'),
+);
+const LinksToItem = lazy(
+  () => import('@plone/volto/components/manage/LinksToItem/LinksToItem'),
+);
+const Login = lazy(() => import('@plone/volto/components/theme/Login/Login'));
+const Logout = lazy(
+  () => import('@plone/volto/components/theme/Logout/Logout'),
+);
+const ManageTranslations = lazy(
+  () =>
+    import('@plone/volto/components/manage/Multilingual/ManageTranslations'),
+);
+const NotFound = lazy(
+  () => import('@plone/volto/components/theme/NotFound/NotFound'),
+);
+const PasswordReset = lazy(
+  () => import('@plone/volto/components/theme/PasswordReset/PasswordReset'),
+);
+const Register = lazy(
+  () => import('@plone/volto/components/theme/Register/Register'),
+);
+const RequestPasswordReset = lazy(
+  () =>
+    import('@plone/volto/components/theme/PasswordReset/RequestPasswordReset'),
+);
+const Search = lazy(
+  () => import('@plone/volto/components/theme/Search/Search'),
+);
+const Sharing = lazy(
+  () => import('@plone/volto/components/manage/Sharing/Sharing'),
+);
+const Sitemap = lazy(
+  () => import('@plone/volto/components/theme/Sitemap/Sitemap'),
+);
+const PersonalInformation = lazy(
+  () =>
+    import('@plone/volto/components/manage/Preferences/PersonalInformation'),
+);
 
 /**
  * Default routes array.
