@@ -13,6 +13,38 @@ describe('Accessibility Tests', () => {
     cy.checkA11y();
   });
 
+  it('Image block has not a11y violations', () => {
+    cy.autologin();
+    cy.visit('/');
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-page',
+      contentTitle: 'My Page',
+    });
+    cy.visit('/my-page');
+
+    cy.wait(500);
+
+    cy.navigate('/my-page/edit');
+    cy.get('.block .slate-editor [contenteditable=true]').click();
+    cy.get('.button .block-add-button').click({ force: true });
+    cy.get('.blocks-chooser .mostUsed')
+      .findByText('Image')
+      .click({ force: true });
+    cy.get('.block-editor-image [tabindex="0"]').last().focus();
+    cy.findByLabelText('Enter a URL to an image').click();
+    cy.get('.ui.input.editor-link.input-anchorlink-theme input').type(
+      `https://github.com/plone/volto/raw/main/logos/volto-colorful.png{enter}`,
+    );
+    cy.wait(1000);
+    cy.get('#toolbar-save').click();
+    cy.get('img').should('exist');
+    cy.get('img').should('have.attr', 'src');
+    cy.wait(1000);
+    cy.injectAxe();
+    cy.checkA11y();
+  });
+
   // TODO: Adapt this to volto-slate table
   // it('Table has no a11y violations', () => {
   //   cy.createContent({
