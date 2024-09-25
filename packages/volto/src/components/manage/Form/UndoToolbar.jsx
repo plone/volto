@@ -1,7 +1,7 @@
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Plug } from '@plone/volto/components/manage/Pluggable';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Button } from 'semantic-ui-react';
 import { useUndoManager } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';

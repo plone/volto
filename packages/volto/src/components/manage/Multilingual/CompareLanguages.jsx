@@ -3,7 +3,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 import { langmap, useDetectClickOutside } from '@plone/volto/helpers';
 
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Button } from 'semantic-ui-react';
 import translateSVG from '@plone/volto/icons/translate.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

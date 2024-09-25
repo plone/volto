@@ -16,7 +16,8 @@ import {
 } from 'semantic-ui-react';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { messages } from '@plone/volto/helpers';
-import { Icon, Toast } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import {
   getRelationStats,
   queryRelations,

@@ -90,7 +90,8 @@ import { v4 as uuid } from 'uuid';
 
 import { Button } from 'semantic-ui-react';
 
-import { DragDropList, Icon } from '@plone/volto/components';
+import DragDropList from '@plone/volto/components/manage/DragDropList/DragDropList';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
 import { langmap } from '@plone/volto/helpers';

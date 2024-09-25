@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
-import { ConditionalLink, UniversalLink } from '@plone/volto/components';
+import ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 
 const LinkMore = ({ data, isEditMode }) => {
   let href = data.linkHref?.[0]?.['@id'] || '';

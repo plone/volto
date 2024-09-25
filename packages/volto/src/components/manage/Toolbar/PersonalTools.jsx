@@ -6,7 +6,7 @@ import jwtDecode from 'jwt-decode';
 import cx from 'classnames';
 import { FormattedMessage, useIntl, defineMessages } from 'react-intl';
 
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { getUser } from '@plone/volto/actions';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 import {

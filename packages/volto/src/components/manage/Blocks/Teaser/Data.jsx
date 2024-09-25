@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import { defineMessages, useIntl } from 'react-intl';
 import { Button } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
-import { Icon, Toast } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import {
   flattenToAppURL,

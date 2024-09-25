@@ -4,7 +4,9 @@ import { Helmet } from '@plone/volto/helpers';
 import { flattenToAppURL, getBaseUrl, langmap } from '@plone/volto/helpers';
 import { reduce } from 'lodash-es';
 import { Link, useLocation } from 'react-router-dom';
-import { Icon, Toast, Toolbar } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import config from '@plone/volto/registry';
 
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';

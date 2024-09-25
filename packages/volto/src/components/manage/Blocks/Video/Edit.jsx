@@ -4,7 +4,9 @@ import { defineMessages, useIntl } from 'react-intl';
 import { Button, Input, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 
-import { Icon, SidebarPortal, VideoSidebar } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+import VideoSidebar from '@plone/volto/components/manage/Blocks/Video/VideoSidebar';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import videoBlockSVG from '@plone/volto/components/manage/Blocks/Video/block-video.svg';

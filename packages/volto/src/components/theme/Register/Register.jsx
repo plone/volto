@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { Helmet, usePrevious } from '@plone/volto/helpers';
-import { Toast } from '@plone/volto/components';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { Form } from '@plone/volto/components/manage/Form';
 import { createUser } from '@plone/volto/actions';
 

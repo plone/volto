@@ -13,13 +13,11 @@ import {
   getUser,
 } from '@plone/volto/actions';
 import jwtDecode from 'jwt-decode';
-import {
-  Icon,
-  Toast,
-  Toolbar,
-  Pagination,
-  Error,
-} from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Pagination from '@plone/volto/components/theme/Pagination/Pagination';
+import Error from '@plone/volto/components/theme/Error/Error';
 import RenderGroups from '@plone/volto/components/manage/Controlpanels/Groups/RenderGroups';
 import { ModalForm } from '@plone/volto/components/manage/Form';
 import { Link } from 'react-router-dom';

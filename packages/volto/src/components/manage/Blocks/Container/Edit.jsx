@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
 import { pickBy } from 'lodash-es';
-import { SidebarPortal } from '@plone/volto/components';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import { BlocksForm } from '@plone/volto/components/manage/Form';
 import PropTypes from 'prop-types';
 import ContainerData from './Data';

@@ -1,9 +1,5 @@
-/**
- * Form component.
- * @module components/manage/Form/Form
- */
-
-import { Icon, Toast } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { Field, BlocksForm } from '@plone/volto/components/manage/Form';
 import BlocksToolbar from '@plone/volto/components/manage/Form/BlocksToolbar';
 import UndoToolbar from '@plone/volto/components/manage/Form/UndoToolbar';
@@ -725,7 +721,6 @@ class Form extends Component {
             content={this.props.content}
             navRoot={navRoot}
           />
-
           <Container>
             <>
               <BlocksToolbar

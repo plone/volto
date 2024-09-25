@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, Ref } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
-import { BlockChooser, Icon } from '@plone/volto/components';
+import BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { useDetectClickOutside } from '@plone/volto/helpers';
 import addSVG from '@plone/volto/icons/add.svg';
 import { usePopper } from 'react-popper';

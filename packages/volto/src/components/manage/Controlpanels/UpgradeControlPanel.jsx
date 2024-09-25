@@ -25,7 +25,9 @@ import {
   runUpgrade,
 } from '@plone/volto/actions';
 import { Helmet } from '@plone/volto/helpers';
-import { Icon, Toast, Toolbar } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import { VersionOverview } from '@plone/volto/components/manage/Controlpanels';
 import backSVG from '@plone/volto/icons/back.svg';
 import { toast } from 'react-toastify';

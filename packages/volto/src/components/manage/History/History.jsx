@@ -12,7 +12,7 @@ import { compose } from 'redux';
 import {
   Container as SemanticContainer,
   Dropdown,
-  Icon,
+  Icon as SemanticIcon,
   Segment,
   Table,
 } from 'semantic-ui-react';
@@ -21,14 +21,16 @@ import { createPortal } from 'react-dom';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { asyncConnect } from '@plone/volto/helpers';
 
+import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 import {
-  FormattedDate,
-  Icon as IconNext,
-  Toolbar,
-  Forbidden,
-  Unauthorized,
-} from '@plone/volto/components';
-import { getHistory, revertHistory, listActions } from '@plone/volto/actions';
+  getHistory,
+  revertHistory,
+} from '@plone/volto/actions/history/history';
+import { listActions } from '@plone/volto/actions/actions/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
@@ -270,7 +272,7 @@ class History extends Component {
                                 entry.version
                               }`}
                             >
-                              <Icon name="copy" />{' '}
+                              <SemanticIcon name="copy" />{' '}
                               <FormattedMessage
                                 id="View changes"
                                 defaultMessage="View changes"
@@ -284,7 +286,7 @@ class History extends Component {
                                 entry.version
                               }`}
                             >
-                              <Icon name="eye" />{' '}
+                              <SemanticIcon name="eye" />{' '}
                               <FormattedMessage
                                 id="View this revision"
                                 defaultMessage="View this revision"
@@ -298,7 +300,7 @@ class History extends Component {
                                 value={entry.version}
                                 onClick={this.onRevert}
                               >
-                                <Icon name="undo" />{' '}
+                                <SemanticIcon name="undo" />{' '}
                                 <FormattedMessage
                                   id="Revert to this revision"
                                   defaultMessage="Revert to this revision"
@@ -324,7 +326,7 @@ class History extends Component {
                   to={`${getBaseUrl(this.props.pathname)}`}
                   className="item"
                 >
-                  <IconNext
+                  <Icon
                     name={backSVG}
                     className="contents circled"
                     size="30px"

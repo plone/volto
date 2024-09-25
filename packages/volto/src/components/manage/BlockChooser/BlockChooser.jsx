@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { filter, map, groupBy, isEmpty } from 'lodash-es';
 import { Accordion, Button } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import AnimateHeight from 'react-animate-height';
 import config from '@plone/volto/registry';
 import upSVG from '@plone/volto/icons/up-key.svg';

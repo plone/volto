@@ -9,7 +9,7 @@ import { map } from 'lodash-es';
 import { List } from 'semantic-ui-react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import Slugger from 'github-slugger';
-import { UniversalLink } from '@plone/volto/components';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import { normalizeString } from '@plone/volto/helpers';
 
 const RenderListItems = ({ items, data }) => {

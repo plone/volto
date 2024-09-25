@@ -11,7 +11,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { lazy } from 'react';
 import { isEqual } from 'lodash-es';
 
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

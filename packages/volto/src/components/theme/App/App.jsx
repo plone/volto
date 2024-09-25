@@ -23,15 +23,13 @@ import { injectIntl } from 'react-intl';
 
 import Error from '@plone/volto/error';
 
-import {
-  Breadcrumbs,
-  Footer,
-  Header,
-  Icon,
-  OutdatedBrowser,
-  AppExtras,
-  SkipLinks,
-} from '@plone/volto/components';
+import Breadcrumbs from '@plone/volto/components/theme/Breadcrumbs/Breadcrumbs';
+import Footer from '@plone/volto/components/theme/Footer/Footer';
+import Header from '@plone/volto/components/theme/Header/Header';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import OutdatedBrowser from '@plone/volto/components/theme/OutdatedBrowser/OutdatedBrowser';
+import AppExtras from '@plone/volto/components/theme/AppExtras/AppExtras';
+import SkipLinks from '@plone/volto/components/theme/SkipLinks/SkipLinks';
 import {
   BodyClass,
   getBaseUrl,

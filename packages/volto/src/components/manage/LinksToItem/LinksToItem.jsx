@@ -13,12 +13,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getContent, queryRelations, listActions } from '@plone/volto/actions';
 import { asyncConnect } from '@plone/volto/helpers';
 
-import {
-  Icon as IconNext,
-  Toolbar,
-  UniversalLink,
-  Unauthorized,
-} from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 
 import { getBaseUrl } from '@plone/volto/helpers';
 import backSVG from '@plone/volto/icons/back.svg';
@@ -191,7 +189,7 @@ const LinksToItem = (props) => {
             inner={
               <>
                 <Link to={itempath} className="item">
-                  <IconNext
+                  <Icon
                     name={backSVG}
                     className="contents circled"
                     size="30px"
@@ -202,7 +200,7 @@ const LinksToItem = (props) => {
                 <>
                   {ploneSetupAction ? (
                     <Link to="/controlpanel/relations" className="relations">
-                      <IconNext
+                      <Icon
                         name={settingsSVG}
                         className="circled"
                         aria-label={intl.formatMessage(

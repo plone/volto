@@ -22,12 +22,10 @@ import {
   getBlocksLayoutFieldname,
   hasBlocksData,
 } from '@plone/volto/helpers';
-import {
-  FormattedDate,
-  Icon,
-  Toolbar,
-  Unauthorized,
-} from '@plone/volto/components';
+import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 import DiffField from '@plone/volto/components/manage/Diff/DiffField';
 
 import backSVG from '@plone/volto/icons/back.svg';

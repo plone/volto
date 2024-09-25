@@ -14,7 +14,7 @@ import qs from 'query-string';
 
 import { Helmet, usePrevious } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import {
   login,
   logout,
@@ -22,7 +22,7 @@ import {
   purgeMessages,
 } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 

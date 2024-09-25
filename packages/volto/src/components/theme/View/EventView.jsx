@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { hasBlocksData, flattenHTMLToAppURL } from '@plone/volto/helpers';
 import { Grid } from 'semantic-ui-react';
 import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
-import { EventDetails } from '@plone/volto/components';
+import EventDetails from '@plone/volto/components/theme/EventDetails/EventDetails';
 import { Container as SemanticContainer } from 'semantic-ui-react';
 import config from '@plone/volto/registry';
 

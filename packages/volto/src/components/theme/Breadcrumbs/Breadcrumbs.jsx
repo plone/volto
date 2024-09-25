@@ -7,7 +7,7 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 
 import { getBreadcrumbs } from '@plone/volto/actions';
 import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import homeSVG from '@plone/volto/icons/home.svg';
 
 const messages = defineMessages({

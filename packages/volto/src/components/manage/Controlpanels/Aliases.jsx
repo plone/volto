@@ -25,13 +25,14 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
-import { Icon, Toolbar } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import { useClient } from '@plone/volto/hooks';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import { map } from 'lodash-es';
 import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 
 const messages = defineMessages({
   back: {

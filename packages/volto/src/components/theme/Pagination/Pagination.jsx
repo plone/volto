@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import PropTypes from 'prop-types';
 import { map } from 'lodash-es';
 import { FormattedMessage, injectIntl } from 'react-intl';

@@ -26,13 +26,11 @@ import {
   changeLanguage,
   setFormData,
 } from '@plone/volto/actions';
-import {
-  Icon,
-  Toolbar,
-  Sidebar,
-  Toast,
-  TranslationObject,
-} from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import TranslationObject from '@plone/volto/components/manage/Multilingual/TranslationObject';
 import { Form } from '@plone/volto/components/manage/Form';
 import {
   getBaseUrl,

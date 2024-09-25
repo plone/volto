@@ -12,11 +12,9 @@ import { createPortal } from 'react-dom';
 import { injectIntl } from 'react-intl';
 import qs from 'query-string';
 
-import {
-  ContentMetadataTags,
-  Comments,
-  Toolbar,
-} from '@plone/volto/components';
+import ContentMetadataTags from '@plone/volto/components/theme/ContentMetadataTags/ContentMetadataTags';
+import Comments from '@plone/volto/components/theme/Comments/Comments';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import { listActions, getContent } from '@plone/volto/actions';
 import {
   BodyClass,

@@ -21,7 +21,7 @@ import {
   Header,
 } from 'semantic-ui-react';
 
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
 import SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
 import { toBackendLang } from '@plone/volto/helpers';

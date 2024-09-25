@@ -16,7 +16,9 @@ import {
   getSystemInformation,
   listActions,
 } from '@plone/volto/actions';
-import { Icon, Toolbar, Unauthorized } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 import { getParentUrl } from '@plone/volto/helpers';
 import UserGroupMembershipMatrix from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipMatrix';
 import backSVG from '@plone/volto/icons/back.svg';

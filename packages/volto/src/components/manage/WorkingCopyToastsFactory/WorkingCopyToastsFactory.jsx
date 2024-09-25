@@ -4,9 +4,9 @@ import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
-import { Toast } from '@plone/volto/components';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { FormattedDate } from '@plone/volto/components';
+import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
 import config from '@plone/volto/registry';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 

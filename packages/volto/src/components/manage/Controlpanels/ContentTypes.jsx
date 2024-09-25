@@ -14,7 +14,10 @@ import { last } from 'lodash-es';
 import { Confirm, Container, Table, Button, Header } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { Error, Icon, Toolbar, Toast } from '@plone/volto/components';
+import Error from '@plone/volto/components/theme/Error/Error';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import ContentTypesActions from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
 import {
   getControlpanel,

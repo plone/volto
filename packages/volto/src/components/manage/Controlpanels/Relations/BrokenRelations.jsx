@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Divider, Segment, Table } from 'semantic-ui-react';
 import { queryRelations } from '@plone/volto/actions';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { ConditionalLink } from '@plone/volto/components';
+import ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
 
 const BrokenRelations = () => {
   const dispatch = useDispatch();

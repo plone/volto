@@ -8,7 +8,7 @@ import { Container, List, Segment } from 'semantic-ui-react';
 import { map } from 'lodash-es';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { useSelector, shallowEqual } from 'react-redux';
-import { UniversalLink } from '@plone/volto/components';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import { flattenToAppURL, addAppURL } from '@plone/volto/helpers';
 
 const messages = defineMessages({

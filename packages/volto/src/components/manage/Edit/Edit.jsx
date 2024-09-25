@@ -16,16 +16,14 @@ import qs from 'query-string';
 import { find } from 'lodash-es';
 import { toast } from 'react-toastify';
 
-import {
-  Forbidden,
-  Icon,
-  Sidebar,
-  Toast,
-  Toolbar,
-  Unauthorized,
-  CompareLanguages,
-  TranslationObject,
-} from '@plone/volto/components';
+import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
+import CompareLanguages from '@plone/volto/components/manage/Multilingual/CompareLanguages';
+import TranslationObject from '@plone/volto/components/manage/Multilingual/TranslationObject';
 import { Form } from '@plone/volto/components/manage/Form';
 import {
   updateContent,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { lazy } from 'react';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import { Button } from 'semantic-ui-react';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 

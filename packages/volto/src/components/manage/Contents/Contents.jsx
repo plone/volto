@@ -52,14 +52,12 @@ import {
   getContent,
 } from '@plone/volto/actions';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
-import {
-  Pagination,
-  Popup,
-  Toolbar,
-  Toast,
-  Icon,
-  Unauthorized,
-} from '@plone/volto/components';
+import Pagination from '@plone/volto/components/theme/Pagination/Pagination';
+import Popup from '@plone/volto/components/theme/Popup/Popup';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 import ContentsBreadcrumbs from '@plone/volto/components/manage/Contents/ContentsBreadcrumbs';
 import ContentsIndexHeader from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
 import ContentsItem from '@plone/volto/components/manage/Contents/ContentsItem';

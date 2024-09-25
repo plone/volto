@@ -7,7 +7,7 @@ import { withCookies } from 'react-cookie';
 import { defineMessages, useIntl } from 'react-intl';
 import cx from 'classnames';
 import { BodyClass, getCookieOptions } from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import forbiddenSVG from '@plone/volto/icons/forbidden.svg';
 import { setSidebarTab } from '@plone/volto/actions';
 import expandSVG from '@plone/volto/icons/left-key.svg';

@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { compose } from 'redux';
 import { withCookies } from 'react-cookie';
 
-import { Toast } from '@plone/volto/components';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { Form } from '@plone/volto/components/manage/Form';
 import languages from '@plone/volto/constants/Languages.cjs';
 import { changeLanguage } from '@plone/volto/actions';

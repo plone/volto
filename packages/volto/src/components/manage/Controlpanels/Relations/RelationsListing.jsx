@@ -6,7 +6,8 @@ import { toast } from 'react-toastify';
 import { uniqBy } from 'lodash-es';
 import { Checkbox, Message } from 'semantic-ui-react';
 import { messages } from '@plone/volto/helpers';
-import { Toast, UniversalLink } from '@plone/volto/components';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import {
   createRelations,
   deleteRelations,

@@ -19,7 +19,9 @@ import {
   Segment,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { Icon, Toolbar, UniversalLink } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import {
   getControlPanelRule,
   removeCondition,
@@ -34,7 +36,7 @@ import {
   moveRuleAction,
 } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import upSVG from '@plone/volto/icons/up.svg';

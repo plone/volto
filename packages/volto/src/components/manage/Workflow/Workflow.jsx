@@ -6,7 +6,8 @@ import { uniqBy } from 'lodash-es';
 import { toast } from 'react-toastify';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { Icon, Toast } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets';
 import {
   flattenToAppURL,

@@ -8,7 +8,8 @@ import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { getDatabaseInformation } from '@plone/volto/actions';
 import { Helmet } from '@plone/volto/helpers';
 import { useClient } from '@plone/volto/hooks';
-import { Icon, Toolbar } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({

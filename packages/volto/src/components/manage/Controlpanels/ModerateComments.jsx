@@ -14,7 +14,9 @@ import { Container, Button, Table } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { deleteComment, searchContent } from '@plone/volto/actions';
-import { FormattedRelativeDate, Icon, Toolbar } from '@plone/volto/components';
+import FormattedRelativeDate from '@plone/volto/components/theme/FormattedDate/FormattedRelativeDate';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import { CommentEditModal } from '@plone/volto/components/theme/Comments';
 
 import backSVG from '@plone/volto/icons/back.svg';

@@ -8,7 +8,7 @@ import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
 import { cut, copy, copyContent, moveContent } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
-import { Toast } from '@plone/volto/components';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { ContentsRenameModal } from '@plone/volto/components/manage/Contents';
 
 const messages = defineMessages({

@@ -1,4 +1,4 @@
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Button } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import NewBlockAddButton from './NewBlockAddButton';

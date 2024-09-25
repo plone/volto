@@ -8,7 +8,10 @@ import { toast } from 'react-toastify';
 
 import { Helmet } from '@plone/volto/helpers';
 import { useClient } from '@plone/volto/hooks';
-import { Form, Icon, Toast, Toolbar } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import { updatePassword } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 import backSVG from '@plone/volto/icons/back.svg';

@@ -2,7 +2,7 @@ import React from 'react';
 import { getBaseUrl, applyBlockDefaults } from '@plone/volto/helpers';
 import { defineMessages, useIntl } from 'react-intl';
 import { map } from 'lodash-es';
-import { MaybeWrap } from '@plone/volto/components';
+import MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
@@ -10,7 +10,7 @@ import {
 } from '@plone/volto/helpers';
 import StyleWrapper from '@plone/volto/components/manage/Blocks/Block/StyleWrapper';
 import config from '@plone/volto/registry';
-import { ViewDefaultBlock } from '@plone/volto/components';
+import ViewDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultView';
 import RenderEmptyBlock from './RenderEmptyBlock';
 
 const messages = defineMessages({

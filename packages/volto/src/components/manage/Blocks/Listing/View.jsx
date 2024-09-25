@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { withBlockExtensions } from '@plone/volto/helpers';
 
-import { ListingBlockBody as ListingBody } from '@plone/volto/components';
+import ListingBody from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
 
 const View = (props) => {
   const { data, path, pathname, className, style } = props;

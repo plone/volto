@@ -28,7 +28,7 @@ import {
   setExpandedToolbar,
   unlockContent,
 } from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import {
   BodyClass,
   getBaseUrl,

@@ -7,7 +7,8 @@ import { toast } from 'react-toastify';
 import { Button, Checkbox } from 'semantic-ui-react';
 import { messages, isManager, canAssignGroup } from '@plone/volto/helpers';
 import { listGroups, getUser } from '@plone/volto/actions';
-import { Icon, Toast } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { updateGroup, listUsers } from '@plone/volto/actions';
 
 import down_key from '@plone/volto/icons/down-key.svg';

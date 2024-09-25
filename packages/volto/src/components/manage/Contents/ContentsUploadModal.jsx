@@ -18,7 +18,7 @@ import { concat, filter, map } from 'lodash-es';
 import filesize from 'filesize';
 import { readAsDataURL } from 'promise-file-reader';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
-import { FormattedRelativeDate } from '@plone/volto/components';
+import FormattedRelativeDate from '@plone/volto/components/theme/FormattedDate/FormattedRelativeDate';
 import { createContent } from '@plone/volto/actions';
 import { validateFileUploadSize, usePrevious } from '@plone/volto/helpers';
 
