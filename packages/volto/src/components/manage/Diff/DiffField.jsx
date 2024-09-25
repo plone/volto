@@ -15,7 +15,6 @@ import { useSelector } from 'react-redux';
 import config from '@plone/volto/registry';
 import { Api } from '@plone/volto/helpers';
 import configureStore from '@plone/volto/store';
-import { DefaultView } from '@plone/volto/components/';
 import { RenderBlocks } from '@plone/volto/components';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -117,8 +116,8 @@ const formatDiffPart = (part, value, side) => {
     } else if (part.added) return '';
     return value;
   } else {
-    if (side === 'unified' && part.removed) return value;
-    else if (side === 'unified' && part.added) return '';
+    if (side === 'unified' && part.added) return value;
+    else if (side === 'unified' && part.removed) return '';
     if (part.removed && side === 'left') {
       return value;
     } else if (part.removed) return '';
