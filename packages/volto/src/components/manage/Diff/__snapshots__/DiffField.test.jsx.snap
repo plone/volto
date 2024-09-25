@@ -150,32 +150,28 @@ exports[`DiffField renders a diff field in split mode 1`] = `
       <div
         class="top aligned six wide column"
       >
-        <div>
-          <span>
-            My 
-            <span
-              class="deletion"
-            >
-              old
-            </span>
-             string
+        <span>
+          My 
+          <span
+            class="deletion"
+          >
+            old
           </span>
-        </div>
+           string
+        </span>
       </div>
       <div
         class="top aligned six wide column"
       >
-        <div>
-          <span>
-            My 
-            <span
-              class="addition"
-            >
-              new
-            </span>
-             string
+        <span>
+          My 
+          <span
+            class="addition"
+          >
+            new
           </span>
-        </div>
+           string
+        </span>
       </div>
     </div>
   </div>
