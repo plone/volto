@@ -19,14 +19,6 @@ import { RenderBlocks } from '@plone/volto/components';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
-/**
- * Helper function to handle repetitive value checks and formatting.
- */
-
-/**
- * Improved formatDiffPart function that handles HTML tags correctly.
- */
-
 const isHtmlTag = (str) => {
   // Match complete HTML tags, including:
   // 1. Opening tags like <div>, <img src="example" />, <svg>...</svg>
@@ -36,6 +28,7 @@ const isHtmlTag = (str) => {
     str,
   );
 };
+
 const splitWords = (str) => {
   if (typeof str !== 'string') return str;
   if (!str) return [];
@@ -90,6 +83,18 @@ const splitWords = (str) => {
         currentWord = '';
       }
       result.push(' ');
+    } else if (
+      char === ',' &&
+      i < str.length - 1 &&
+      str[i + 1] !== ' ' &&
+      !insideTag &&
+      !insideSpecialTag
+    ) {
+      if (currentWord) {
+        result.push(currentWord + char);
+        currentWord = '';
+      }
+      result.push(' ');
     }
     // Accumulate characters outside of tags
     else {
@@ -107,6 +112,7 @@ const splitWords = (str) => {
 
   return result;
 };
+
 const formatDiffPart = (part, value, side) => {
   if (!isHtmlTag(value)) {
     if (part.removed && (side === 'left' || side === 'unified')) {
@@ -153,7 +159,10 @@ const DiffField = ({
     timeStyle: 'short',
   };
   const diffWords = (oneStr, twoStr) => {
-    return diffLib.diffArrays(splitWords(oneStr), splitWords(twoStr));
+    return diffLib.diffArrays(
+      splitWords(String(oneStr)),
+      splitWords(String(twoStr)),
+    );
   };
 
   let parts, oneArray, twoArray;
@@ -217,8 +226,9 @@ const DiffField = ({
         break;
       }
       case 'textarea':
+
       default:
-        const Widget = config.widgets.views.widget[schema.widget];
+        const Widget = config.widgets?.views?.widget?.[schema.widget];
 
         if (Widget) {
           const api = new Api();
@@ -263,38 +273,34 @@ const DiffField = ({
       {view === 'split' && (
         <Grid.Row>
           <Grid.Column width={6} verticalAlign="top">
-            <div>
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: join(
-                    map(parts, (part) => {
-                      let combined = (part.value || []).reduce((acc, value) => {
-                        return acc + formatDiffPart(part, value, 'left');
-                      }, '');
-                      return combined;
-                    }),
-                    '',
-                  ),
-                }}
-              />
-            </div>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: join(
+                  map(parts, (part) => {
+                    let combined = (part.value || []).reduce((acc, value) => {
+                      return acc + formatDiffPart(part, value, 'left');
+                    }, '');
+                    return combined;
+                  }),
+                  '',
+                ),
+              }}
+            />
           </Grid.Column>
           <Grid.Column width={6} verticalAlign="top">
-            <div>
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: join(
-                    map(parts, (part) => {
-                      let combined = (part.value || []).reduce((acc, value) => {
-                        return acc + formatDiffPart(part, value, 'right');
-                      }, '');
-                      return combined;
-                    }),
-                    '',
-                  ),
-                }}
-              />
-            </div>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: join(
+                  map(parts, (part) => {
+                    let combined = (part.value || []).reduce((acc, value) => {
+                      return acc + formatDiffPart(part, value, 'right');
+                    }, '');
+                    return combined;
+                  }),
+                  '',
+                ),
+              }}
+            />
           </Grid.Column>
         </Grid.Row>
       )}
