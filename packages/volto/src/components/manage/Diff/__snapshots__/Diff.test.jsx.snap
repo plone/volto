@@ -231,36 +231,46 @@ exports[`Diff renders a diff component 1`] = `
         <div
           class="top aligned six wide column"
         >
-          <span>
-            My 
-            <span
-              class="deletion"
-            >
-              old 
+          <div
+            style="max-width: 600px;"
+          >
+            <span>
+              My 
+              <span
+                class="deletion"
+              >
+                old
+              </span>
+               
+              <span
+                class="deletion"
+              >
+                title
+              </span>
             </span>
-            <span
-              class="deletion"
-            >
-              title
-            </span>
-          </span>
+          </div>
         </div>
         <div
           class="top aligned six wide column"
         >
-          <span>
-            My 
-            <span
-              class="addition"
-            >
-              new 
+          <div
+            style="max-width: 600px;"
+          >
+            <span>
+              My 
+              <span
+                class="addition"
+              >
+                new
+              </span>
+               
+              <span
+                class="addition"
+              >
+                title,
+              </span>
             </span>
-            <span
-              class="addition"
-            >
-              title,
-            </span>
-          </span>
+          </div>
         </div>
       </div>
     </div>
