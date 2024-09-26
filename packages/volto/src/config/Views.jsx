@@ -9,7 +9,15 @@ import NewsItemView from '@plone/volto/components/theme/View/NewsItemView';
 import SummaryView from '@plone/volto/components/theme/View/SummaryView';
 import TabularView from '@plone/volto/components/theme/View/TabularView';
 import LinkView from '@plone/volto/components/theme/View/LinkView';
-import { Unauthorized, Forbidden, NotFound } from '@plone/volto/components';
+const NotFound = loadable(
+  () => import('@plone/volto/components/theme/NotFound/NotFound'),
+);
+const Forbidden = loadable(
+  () => import('@plone/volto/components/theme/Forbidden/Forbidden'),
+);
+const Unauthorized = loadable(
+  () => import('@plone/volto/components/theme/Unauthorized/Unauthorized'),
+);
 const ConnectionRefused = loadable(
   () =>
     import('@plone/volto/components/theme/ConnectionRefused/ConnectionRefused'),
