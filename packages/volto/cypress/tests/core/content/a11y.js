@@ -15,8 +15,6 @@ describe('Accessibility Tests Content Types', () => {
     cy.wait(1000);
     cy.get('.ics-download').contains('Download Event').focus();
     cy.checkA11y();
-
-
   });
 
   it('File has no a11y violations', () => {
@@ -36,8 +34,6 @@ describe('Accessibility Tests Content Types', () => {
     cy.wait(1000);
     cy.contains('file.pdf').focus();
     cy.checkA11y();
-
-    
   });
 
   it('Image has no a11y violations', () => {
@@ -61,7 +57,6 @@ describe('Accessibility Tests Content Types', () => {
     cy.wait(1000);
     cy.get('#view img').should('have.attr', 'alt', 'Test Image Content Type');
     cy.checkA11y();
-
   });
 
   it('Link has no a11y violations', () => {
@@ -79,7 +74,6 @@ describe('Accessibility Tests Content Types', () => {
       .should('have.attr', 'href', 'https://google.com')
       .focus();
     cy.checkA11y();
-
   });
 
   it('News Item has no a11y violations', () => {
