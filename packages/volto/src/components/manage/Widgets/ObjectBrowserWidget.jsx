@@ -7,6 +7,7 @@ import { searchContent } from '@plone/volto/actions/search/search';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import {
   flattenToAppURL,
   isInternalURL,
@@ -21,7 +22,17 @@ import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Button, Image, Label, Popup } from 'semantic-ui-react';
+import { Button, Grid, Image, Input, Label, Popup } from 'semantic-ui-react';
+
+import {
+  ClearIndicator,
+  DropdownIndicator,
+  MenuList,
+  MultiValueContainer,
+  Option,
+  customSelectStyles,
+  selectTheme,
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import blankSVG from '@plone/volto/icons/blank.svg';
@@ -44,10 +55,110 @@ const messages = defineMessages({
     defaultMessage: 'Delete',
   },
   openObjectBrowser: {
-    id: 'Open object browser',
-    defaultMessage: 'Open object browser',
+    id: 'Object browser',
+    defaultMessage: 'Object browser',
   },
 });
+
+function SingleInput({ id, value, onChange, readOnly }) {
+  return (
+    <Input
+      id={`field-${id}`}
+      name={id}
+      value={value || ''}
+      // disabled={isDisabled}
+      // icon={icon || null}
+      // placeholder={placeholder}
+      onChange={({ target }) =>
+        onChange(id, target.value === '' ? undefined : target.value)
+      }
+      readOnly={readOnly}
+      // ref={ref}
+      // onBlur={({ target }) =>
+      //   onBlur(id, target.value === '' ? undefined : target.value)
+      // }
+      // onClick={() => onClick()}
+      // minLength={minLength || null}
+      // maxLength={maxLength || null}
+    />
+  );
+}
+
+function MultipleNoTextBody({ id, value, onChange, readOnly, reactSelect }) {
+  const Select = reactSelect.default;
+
+  const options = [
+    { value: 'Op1', label: 'OP 1' },
+    { value: 'Op2', label: 'OP 2' },
+    { value: 'Op3', label: 'OP 3' },
+  ];
+
+  function normalizeValue() {
+    return value.map((v) => {
+      return {
+        // label: find(choices, (c) => c.value === v)?.label || v,
+        label: options.find((c) => c.value === v)?.label || v,
+        value: v,
+      };
+    });
+  }
+
+  console.log('VALUE', value);
+
+  return (
+    <Select
+      id={`field-${id}`}
+      name={id}
+      menuShouldScrollIntoView={false}
+      // isDisabled={disabled}
+      isSearchable={true}
+      className="react-select-container"
+      classNamePrefix="react-select"
+      isMulti
+      options={options}
+      styles={customSelectStyles}
+      theme={selectTheme}
+      components={{
+        // ...(options?.length > 25 && {
+        // MenuList,
+        // }),
+        MultiValueContainer,
+        // DropdownIndicator,
+        ClearIndicator,
+        Option: Option,
+      }}
+      value={normalizeValue(value)}
+      onChange={(selectedOption) => {
+        // TODO: On change from existing input
+        return onChange(
+          id,
+          selectedOption.map((el) => el.value),
+        );
+      }}
+      readOnly
+      // value={['Op1']}
+      // placeholder={
+      //   this.props.placeholder ?? this.props.intl.formatMessage(messages.select)
+      // }
+      // onChange={(selectedOption) => {
+      //   if (isMulti) {
+
+      //   return onChange(
+      //     id,
+      //     selectedOption && selectedOption.value !== 'no-value'
+      //       ? selectedOption.value
+      //       : undefined,
+      //   );
+      // }}
+      // isClearable
+    />
+  );
+}
+const MultipleNoText = injectLazyLibs('reactSelect')(MultipleNoTextBody);
+
+function MultipleWithText() {
+  return <p>Multiple with text</p>;
+}
 
 /**
  * ObjectBrowserWidget component class.
@@ -322,8 +433,17 @@ export class ObjectBrowserWidgetComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, description, fieldSet, value, mode, onChange, isDisabled } =
-      this.props;
+    const {
+      id,
+      description,
+      fieldSet,
+      value,
+      mode,
+      allowExternals,
+      onChange,
+      isDisabled,
+      isObjectBrowserOpen,
+    } = this.props;
 
     let items = compact(!isArray(value) && value ? [value] : value || []);
 
@@ -337,85 +457,49 @@ export class ObjectBrowserWidgetComponent extends Component {
             onChange(id, this.props.return === 'single' ? null : []);
           };
 
+    const isMultiple = mode === 'multiple' || this.props.multiple;
+
+    let WidgetBody;
+    if (isMultiple) {
+      if (allowExternals) {
+        WidgetBody = MultipleWithText;
+      } else {
+        WidgetBody = MultipleNoText;
+      }
+    } else {
+      WidgetBody = SingleInput;
+    }
+
     return (
       <FormFieldWrapper
         {...this.props}
         className={description ? 'help text' : 'text'}
       >
-        <div
-          className="objectbrowser-field"
-          aria-labelledby={`fieldset-${
-            fieldSet || 'default'
-          }-field-label-${id}`}
-        >
-          <div
-            className="selected-values"
-            onClick={this.handleSelectedItemsRefClick}
-            onKeyDown={this.handleSelectedItemsRefClick}
-            role="searchbox"
-            tabIndex={0}
-            ref={this.selectedItemsRef}
-          >
-            {items.map((item) => this.renderLabel(item))}
-
-            {items.length === 0 && this.props.mode === 'multiple' && (
-              <div className="placeholder" ref={this.placeholderRef}>
-                {this.props.placeholder ??
-                  this.props.intl.formatMessage(messages.placeholder)}
-              </div>
-            )}
-            {this.props.allowExternals &&
-              items.length === 0 &&
-              this.props.mode !== 'multiple' && (
-                <input
-                  onKeyDown={this.onKeyDownManualLink}
-                  onChange={this.onManualLinkInput}
-                  value={this.state.manualLinkInput}
-                  placeholder={
-                    this.props.placeholder ??
-                    this.props.intl.formatMessage(messages.placeholder)
-                  }
-                />
-              )}
-          </div>
-          {this.state.manualLinkInput && isEmpty(items) && (
-            <Button.Group>
-              <Button
-                basic
-                className="cancel"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  this.setState({ manualLinkInput: '' });
-                }}
-              >
-                <Icon name={clearSVG} size="18px" color="#e40166" />
-              </Button>
-              <Button
-                basic
-                primary
-                disabled={!this.state.validURL}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  this.onSubmitManualLink();
-                }}
-              >
-                <Icon name={aheadSVG} size="18px" />
-              </Button>
-            </Button.Group>
-          )}
-          {!this.state.manualLinkInput && (
+        <Grid.Row stretched>
+          <Grid.Column width="4">
+            <WidgetBody
+              id={id}
+              onChange={onChange}
+              value={items}
+              readOnly={!isMultiple && !allowExternals}
+            />
+          </Grid.Column>
+          <Grid.Column width="4">
             <Button
               aria-label={this.props.intl.formatMessage(
                 messages.openObjectBrowser,
               )}
+              aria-expanded={isObjectBrowserOpen}
+              aria-describedby={`field-${id}`}
+              aria-controls={`field-${id}`}
               onClick={iconAction}
               className="action"
               disabled={isDisabled}
             >
               <Icon name={icon} size="18px" />
             </Button>
-          )}
-        </div>
+          </Grid.Column>
+        </Grid.Row>
       </FormFieldWrapper>
     );
   }
@@ -435,3 +519,80 @@ export default compose(
   withRouter,
   connect(null, { searchContent }),
 )(ObjectBrowserWidgetComponent);
+
+// function OldBody() {
+//   <div
+//   className="objectbrowser-field"
+//   aria-labelledby={`fieldset-${
+//     fieldSet || 'default'
+//   }-field-label-${id}`}
+// >
+//   <div
+//     className="selected-values"
+//     onClick={this.handleSelectedItemsRefClick}
+//     onKeyDown={this.handleSelectedItemsRefClick}
+//     role="searchbox"
+//     tabIndex={0}
+//     ref={this.selectedItemsRef}
+//   >
+//     {items.map((item) => this.renderLabel(item))}
+
+//     {items.length === 0 && this.props.mode === 'multiple' && (
+//       <div className="placeholder" ref={this.placeholderRef}>
+//         {this.props.placeholder ??
+//           this.props.intl.formatMessage(messages.placeholder)}
+//       </div>
+//     )}
+//     {this.props.allowExternals &&
+//       items.length === 0 &&
+//       this.props.mode !== 'multiple' && (
+//         <input
+//           onKeyDown={this.onKeyDownManualLink}
+//           onChange={this.onManualLinkInput}
+//           value={this.state.manualLinkInput}
+//           placeholder={
+//             this.props.placeholder ??
+//             this.props.intl.formatMessage(messages.placeholder)
+//           }
+//         />
+//       )}
+//   </div>
+//   {this.state.manualLinkInput && isEmpty(items) && (
+//     <Button.Group>
+//       <Button
+//         basic
+//         className="cancel"
+//         onClick={(e) => {
+//           e.stopPropagation();
+//           this.setState({ manualLinkInput: '' });
+//         }}
+//       >
+//         <Icon name={clearSVG} size="18px" color="#e40166" />
+//       </Button>
+//       <Button
+//         basic
+//         primary
+//         disabled={!this.state.validURL}
+//         onClick={(e) => {
+//           e.stopPropagation();
+//           this.onSubmitManualLink();
+//         }}
+//       >
+//         <Icon name={aheadSVG} size="18px" />
+//       </Button>
+//     </Button.Group>
+//   )}
+//   {!this.state.manualLinkInput && (
+//     <Button
+//       aria-label={this.props.intl.formatMessage(
+//         messages.openObjectBrowser,
+//       )}
+//       onClick={iconAction}
+//       className="action"
+//       disabled={isDisabled}
+//     >
+//       <Icon name={icon} size="18px" />
+//     </Button>
+//   )}
+// </div>
+// }
