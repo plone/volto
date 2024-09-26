@@ -80,7 +80,7 @@ export const RenderUsers = loadable(
 export const UserGroupMembershipControlPanel = loadable(
   () =>
     import(
-      '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipControlPanel'
+      '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembership/UserGroupMembershipControlPanel'
     ),
 );
 

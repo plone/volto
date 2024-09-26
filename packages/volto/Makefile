@@ -79,7 +79,7 @@ cypress-install: ## Install Cypress for acceptance tests
 	(cd ../../ && pnpm build:components)
 
 .PHONY: build-deps
-build-deps: ../registry/dist ## Build dependencies
+build-deps: ../registry/dist ../components/dist ## Build dependencies
 
 .PHONY: i18n
 i18n: ## Extract and compile translations
