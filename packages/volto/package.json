@@ -35,7 +35,7 @@
   "main": "src/index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "analyze": "BUNDLE_ANALYZE=true razzle build",
+    "analyze": "BUNDLE_ANALYZE=true razzle build --noninteractive",
     "start": "make build-deps && razzle start",
     "start:coresandbox": "make build-deps && ADDONS=coresandbox razzle start",
     "build": "make build-deps && razzle build --noninteractive",
