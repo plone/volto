@@ -3,12 +3,10 @@
  * @module components/manage/Widgets/ObjectBrowserWidget
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import { compact, includes, isArray, isEmpty, remove } from 'lodash';
-import { connect } from 'react-redux';
-import { Image, Label, Popup, Button } from 'semantic-ui-react';
+import { searchContent } from '@plone/volto/actions/search/search';
+import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import {
   flattenToAppURL,
   isInternalURL,
@@ -16,18 +14,20 @@ import {
   normalizeUrl,
   removeProtocol,
 } from '@plone/volto/helpers/Url/Url';
-import { searchContent } from '@plone/volto/actions/search/search';
-import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-import { defineMessages, injectIntl } from 'react-intl';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import config from '@plone/volto/registry';
+import { compact, includes, isArray, isEmpty, remove } from 'lodash';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { Button, Image, Label, Popup } from 'semantic-ui-react';
 
-import navTreeSVG from '@plone/volto/icons/nav.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
-import homeSVG from '@plone/volto/icons/home.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import blankSVG from '@plone/volto/icons/blank.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
+import homeSVG from '@plone/volto/icons/home.svg';
+import navTreeSVG from '@plone/volto/icons/nav.svg';
 import { withRouter } from 'react-router';
 
 const messages = defineMessages({
