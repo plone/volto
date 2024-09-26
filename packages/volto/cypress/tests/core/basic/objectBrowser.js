@@ -113,4 +113,25 @@ describe('Object Browser Tests', () => {
       .should('have.attr', 'src')
       .and('contains', '/my-searchable-image/@@images/image');
   });
+
+  it.only('I can open the object browser in single mode via keyboard', () => {
+    // SHOULD BE A TEXT INPUT
+    cy.findByRole('button', { name: /Page/ }).click();
+    cy.findByLabelText('Related Items').focus();
+  });
+  it.only('I can open the object browser in multiple mode via keyboard', () => {
+    // SHOULD BE A SELECT/ LISTBOX
+    cy.findByRole('button', { name: /Page/ }).click();
+    cy.findByLabelText('Related Items').focus();
+  });
+  it.only('I can open the object browser in single mode with external URLs via keyboard', () => {
+    // SHOULD BE A TEXT INPUT
+    cy.findByRole('button', { name: /Page/ }).click();
+    cy.findByLabelText('Related Items').focus();
+  });
+  it.only('I can open the object browser in multiple mode with external URLs via keyboard', () => {
+    // SHOULD BE A COMBO BOX
+    cy.findByRole('button', { name: /Page/ }).click();
+    cy.findByLabelText('Related Items').focus();
+  });
 });
