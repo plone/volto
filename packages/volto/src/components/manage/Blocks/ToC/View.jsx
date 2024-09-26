@@ -4,10 +4,10 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
 import { messages } from '@plone/volto/components/manage/Blocks/ToC/Schema';
-import { injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 import { withBlockExtensions } from '@plone/volto/helpers';
 
@@ -171,7 +171,7 @@ const View = (props) => {
       aria-label={title && !data.hide_title ? title : ''}
       className={cx('table-of-contents', variation?.id)}
     >
-      {props.mode === 'edit' && !data.title && !tocEntries.length && (
+      {props.mode === 'edit' && !title && !tocEntries.length && (
         <Message>{props.intl.formatMessage(messages.toc)}</Message>
       )}
 
