@@ -1,6 +1,6 @@
 import { defineMessages } from 'react-intl';
 
-export const messages = defineMessages({
+const messages = defineMessages({
   toc: {
     id: 'toc',
     defaultMessage: 'Table of Contents',
