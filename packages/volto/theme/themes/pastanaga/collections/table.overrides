@@ -6,7 +6,7 @@
 }
 
 /* Headers */
-.ui.table th {
+.ui.table thead th {
   padding: @headerVerticalPadding @headerHorizontalPadding;
   border-left: @headerDivider;
   background: @headerBackground;
