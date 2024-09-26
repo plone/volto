@@ -1,5 +1,5 @@
-import { defineMessages } from 'react-intl';
 import { addStyling } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
+import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
   Target: {
@@ -53,7 +53,10 @@ export const TeaserSchema = ({ data, intl }) => {
         id: 'default',
         title: 'Default',
         fields: [
-          'href',
+          'ob1',
+          'ob2',
+          'ob3',
+          'ob4',
           'overwrite',
           ...(data?.overwrite
             ? ['title', 'head_title', 'description', 'preview_image']
@@ -63,19 +66,28 @@ export const TeaserSchema = ({ data, intl }) => {
     ],
 
     properties: {
-      href: {
-        title: intl.formatMessage(messages.Target),
+      ob1: {
+        title: 'Single no text',
         widget: 'object_browser',
         mode: 'link',
-        selectedItemAttrs: [
-          'Title',
-          'head_title',
-          'Description',
-          'hasPreviewImage',
-          'image_field',
-          'image_scales',
-          '@type',
-        ],
+      },
+      ob2: {
+        title: 'Single with text',
+        widget: 'object_browser',
+        mode: 'link',
+        allowExternals: true,
+      },
+      ob3: {
+        title: 'Multiple no text',
+        widget: 'object_browser',
+        mode: 'link',
+        multiple: true,
+      },
+      ob4: {
+        title: 'Multiple with text',
+        widget: 'object_browser',
+        mode: 'link',
+        multiple: true,
         allowExternals: true,
       },
       overwrite: {
