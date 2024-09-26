@@ -19,7 +19,7 @@ describe('Document locking', () => {
     cy.removeUser('editor2', 'password');
   });
 
-  it.only('As editor, a page is locked for other users when I edit that page', function () {
+  it('As editor, a page is locked for other users when I edit that page', function () {
     // As an editor I can add a document
     cy.intercept('/**/@logout').as('logout');
     cy.intercept('GET', '/**/Document').as('schema');
