@@ -34,7 +34,6 @@ describe('Accessibility Tests Content Types', () => {
     });
 
     cy.get('#toolbar-save').focus().click();
-    cy.waitForResourceToLoad('file.pdf');
 
     cy.wait(2000);
     cy.injectAxe();
