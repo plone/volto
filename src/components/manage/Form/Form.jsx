@@ -695,6 +695,7 @@ class Form extends Component {
             properties={formData}
             navRoot={navRoot}
             type={type}
+            errors={this.state.errors}
             pathname={this.props.pathname}
             selectedBlock={this.state.selected}
             multiSelected={this.state.multiSelected}
