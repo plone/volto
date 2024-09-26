@@ -1868,7 +1868,7 @@ msgstr "Sorgente non valida per il teaser"
 #. Default: "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 #: helpers/MessageLabels/MessageLabels
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
-msgstr "Non è consentito selezionare contemporaneamente la definizione della password e la richiesta dell'invio del messaggio di reimpostazione della password tramite e-mail. È necessario selezionarne una."
+msgstr "Non è consentito selezionare contemporaneamente la definizione della password e la richiesta dell'invio del messaggio di reimpostazione della password tramite e-mail. È necessario selezionare una di esse."
 
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
@@ -3370,7 +3370,7 @@ msgstr "Piccolo"
 #. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
 #: components/manage/Contents/Contents
 msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-msgstr "Alcuni elementi sono anche una cartella. Eliminandoli eliminerai {containedItemsToDelete} {variation} contenuti nelle cartelle."
+msgstr "Alcuni elementi sono anche una cartella. Eliminandoli eliminerai {containedItemsToDelete} {variation} dentro le cartelle."
 
 #. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
 #: components/manage/Contents/Contents
