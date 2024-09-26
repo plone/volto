@@ -34,8 +34,8 @@ describe('Add Content Tests', () => {
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
     cy.get('#toolbar-save').click();
 
-    cy.findByRole('alert')
-      .get('.toast-inner-content')
+    cy.get('.Toastify')
+      .findByRole('alert')
       .contains('Required input is missing');
     cy.get('.sidebar-container .tabs-wrapper .active.item').contains('Page');
   });
