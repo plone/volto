@@ -13,9 +13,10 @@ describe('Accessibility Tests Content Types', () => {
     cy.get('#toolbar-save').click();
 
     cy.wait(1000);
+    cy.get('.ics-download').contains('Download Event').focus();
     cy.checkA11y();
 
-    cy.get('.ics-download').contains('Download Event').focus();
+
   });
 
   it('File has no a11y violations', () => {
@@ -32,10 +33,11 @@ describe('Accessibility Tests Content Types', () => {
 
     cy.get('#toolbar-save').focus().click();
 
-    cy.wait(2000);
+    cy.wait(1000);
+    cy.contains('file.pdf').focus();
     cy.checkA11y();
 
-    cy.contains('file.pdf').focus();
+    
   });
 
   it('Image has no a11y violations', () => {
@@ -57,9 +59,9 @@ describe('Accessibility Tests Content Types', () => {
     cy.get('#toolbar-save').click();
 
     cy.wait(1000);
+    cy.get('#view img').should('have.attr', 'alt', 'Test Image Content Type');
     cy.checkA11y();
 
-    cy.get('#view img').should('have.attr', 'alt', 'Test Image Content Type');
   });
 
   it('Link has no a11y violations', () => {
@@ -73,11 +75,11 @@ describe('Accessibility Tests Content Types', () => {
     cy.get('#toolbar-save').click();
 
     cy.wait(1000);
-    cy.checkA11y();
-
     cy.get('a.external')
       .should('have.attr', 'href', 'https://google.com')
       .focus();
+    cy.checkA11y();
+
   });
 
   it('News Item has no a11y violations', () => {
@@ -88,7 +90,7 @@ describe('Accessibility Tests Content Types', () => {
     cy.get('#field-subjects').type('test');
     cy.get('#toolbar-save').click();
 
-    cy.wait(2000);
+    cy.wait(1000);
     cy.checkA11y();
   });
 
