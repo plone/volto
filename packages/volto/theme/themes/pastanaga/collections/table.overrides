@@ -37,5 +37,5 @@
 
 /* inline link color*/
 .ui.table.inverted a {
-  color: @lightBlue;
+  color: @lightPrimaryColor;
 }
