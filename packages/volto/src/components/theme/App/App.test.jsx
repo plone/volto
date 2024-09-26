@@ -16,9 +16,7 @@ beforeAll(() => {
 
 const mockStore = configureStore();
 
-jest.mock('../../manage/Toolbar/Toolbar', () =>
-  jest.fn(() => <div id="toolbar" />),
-);
+jest.mock('@plone/volto/components/manage/Toolbar');
 jest.mock('../Header/Header', () => jest.fn(() => <div id="toolbar" />));
 jest.mock('../Breadcrumbs/Breadcrumbs', () =>
   jest.fn(() => <div id="breadcrumbs" />),

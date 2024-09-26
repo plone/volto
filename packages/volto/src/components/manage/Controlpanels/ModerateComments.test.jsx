@@ -8,7 +8,8 @@ import ModerateComments from './ModerateComments';
 const mockStore = configureStore();
 
 jest.mock('@plone/volto/components/theme/Comments');
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('@plone/volto/components/manage/Sidebar');
+jest.mock('@plone/volto/components/manage/Toolbar');
 
 describe('ModerateComments', () => {
   it('renders a moderate comments component', () => {

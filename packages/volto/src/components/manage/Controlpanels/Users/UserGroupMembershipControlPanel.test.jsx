@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
 import UserGroupMembershipControlPanel from './UserGroupMembershipControlPanel';
 
 const mockStore = configureStore();
-jest.mock('../../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('@plone/volto/components/manage/Toolbar');
 
 describe('UserGroupMembershipControlPanel', () => {
   it('renders a user group membership control component', () => {

@@ -9,7 +9,7 @@ import Controlpanels from './Controlpanels';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('@plone/volto/components/manage/Toolbar');
 
 jest.mock('@plone/volto/components/manage/Controlpanels', () => ({
   VersionOverview: jest.fn(() => <div className="VersionOverview" />),

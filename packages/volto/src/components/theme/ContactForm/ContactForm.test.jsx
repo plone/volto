@@ -5,10 +5,7 @@ import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 import ContactForm from './ContactForm';
 
-jest.mock('../../manage/Toolbar/Toolbar', () =>
-  jest.fn(() => <div id="Portal" />),
-);
-
+jest.mock('@plone/volto/components/manage/Toolbar');
 jest.mock('@plone/volto/components/manage/Form');
 
 const mockStore = configureStore();

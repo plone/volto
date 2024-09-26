@@ -6,6 +6,18 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 const mockStore = configureStore([thunk]);
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+// jest.mock('./DatetimeWidget', () =>
+//   jest.fn(() => (
+//     <span className="metadata datetime widget">
+//       Tuesday, August 4, 2020 9:00 AM
+//     </span>
+//   )),
+// );
 
 const store = mockStore({
   intl: {

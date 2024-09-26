@@ -8,7 +8,7 @@ import Delete from './Delete';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('@plone/volto/components/manage/Toolbar');
 
 describe('Delete', () => {
   it('renders an empty delete component', () => {

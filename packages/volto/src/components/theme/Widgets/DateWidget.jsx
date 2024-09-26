@@ -4,14 +4,15 @@ import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { useSelector } from 'react-redux';
 import { toBackendLang } from '@plone/volto/helpers';
 
-const DateWidget = ({ value, children, className, format = 'll' }) => {
+const DateWidget = ({ value, children, className, format = 'll', moment }) => {
   const lang = useSelector((state) => state.intl.locale);
-  moment.locale(toBackendLang(lang));
+  const _moment = moment.default;
+  _moment.locale(toBackendLang(lang));
   return value ? (
     <span className={cx(className, 'date', 'widget')}>
       {children
-        ? children(moment(value).format(format))
-        : moment(value).format(format)}
+        ? children(_moment(value).format(format))
+        : _moment(value).format(format)}
     </span>
   ) : (
     ''

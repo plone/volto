@@ -9,7 +9,8 @@ import ContentType from './ContentType';
 const mockStore = configureStore();
 
 jest.mock('@plone/volto/components/manage/Form');
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('@plone/volto/components/manage/Sidebar');
+jest.mock('@plone/volto/components/manage/Toolbar');
 
 describe('ContentType', () => {
   it('renders dexterity content-type component', () => {

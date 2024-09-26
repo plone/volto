@@ -10,7 +10,7 @@ import { __test__ as LinksToItem } from './LinksToItem';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('@plone/volto/components/manage/Toolbar');
 
 jest.mock('../Toolbar/More', () => jest.fn(() => <div className="More" />));
 

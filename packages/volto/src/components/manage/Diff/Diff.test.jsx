@@ -8,7 +8,7 @@ import Diff from './Diff';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('@plone/volto/components/manage/Toolbar');
 
 jest.mock('@plone/volto/helpers/Loadable/Loadable');
 beforeAll(

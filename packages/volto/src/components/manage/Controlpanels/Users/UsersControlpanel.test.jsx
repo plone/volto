@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken';
 import UsersControlpanel from './UsersControlpanel';
 
 const mockStore = configureStore();
-jest.mock('../../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('@plone/volto/components/manage/Toolbar');
 
 describe('UsersControlpanel', () => {
   it('renders a user control component', () => {

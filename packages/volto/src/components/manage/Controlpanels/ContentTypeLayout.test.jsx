@@ -8,7 +8,7 @@ import ContentTypeLayout from './ContentTypeLayout';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('@plone/volto/components/manage/Toolbar');
 
 jest.mock('../Form/Form', () => jest.fn(() => <div id="form" />));
 

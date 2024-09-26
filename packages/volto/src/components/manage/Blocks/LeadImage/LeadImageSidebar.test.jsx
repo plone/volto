@@ -6,6 +6,7 @@ import { Provider } from 'react-intl-redux';
 import LeadImageSidebar from './LeadImageSidebar';
 
 jest.mock('@plone/volto/components/manage/Widgets');
+jest.mock('@plone/volto/components/manage/Sidebar');
 
 const mockStore = configureStore();
 
