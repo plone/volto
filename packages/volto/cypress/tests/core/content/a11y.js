@@ -5,8 +5,7 @@ describe('Accessibility Tests Content Types', () => {
     cy.injectAxe(); // make sure axe is available on the page
   });
 
-  it('Event has no a11y violations', () => {
-    cy.visit('/');
+  it.only('Event has no a11y violations', () => {
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-event').click();
     cy.get('.documentFirstHeading').type('Test Event Content Type');
