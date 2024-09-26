@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageWidget from '.';
+import ImageWidget from './ImageWidget';
 import WidgetStory from '../story';
 
 export const Default = WidgetStory.bind({

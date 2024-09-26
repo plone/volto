@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
-import moment from 'moment';
 import { useSelector } from 'react-redux';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { toBackendLang } from '@plone/volto/helpers';
 
 const DatetimeWidget = ({ value, children, className, format = 'lll' }) => {
@@ -18,4 +18,4 @@ const DatetimeWidget = ({ value, children, className, format = 'lll' }) => {
   );
 };
 
-export default DatetimeWidget;
+export default injectLazyLibs(['moment'])(DatetimeWidget);

@@ -31,10 +31,15 @@ export { default as PreviewImage } from '@plone/volto/components/theme/PreviewIm
 
 export { default as Error } from '@plone/volto/components/theme/Error/Error';
 export { default as ErrorBoundary } from '@plone/volto/components/theme/Error/ErrorBoundary';
-export { NotFound } from '@plone/volto/components/theme/NotFound';
-export { Forbidden } from '@plone/volto/components/theme/Forbidden';
-export { Unauthorized } from '@plone/volto/components/theme/Unauthorized';
-
+export const NotFound = loadable(
+  () => import('@plone/volto/components/theme/NotFound/NotFound'),
+);
+export const Forbidden = loadable(
+  () => import('@plone/volto/components/theme/Forbidden/Forbidden'),
+);
+export const Unauthorized = loadable(
+  () => import('@plone/volto/components/theme/Unauthorized/Unauthorized'),
+);
 export { default as Avatar } from '@plone/volto/components/theme/Avatar/Avatar';
 export { default as Icon } from '@plone/volto/components/theme/Icon/Icon';
 export { default as Image } from '@plone/volto/components/theme/Image/Image';
@@ -43,17 +48,31 @@ export { default as UniversalLink } from '@plone/volto/components/manage/Univers
 export { default as LinkMore } from '@plone/volto/components/manage/LinkMore/LinkMore';
 
 // Lazy load them, since we want them and its deps to be in its own chunk
-export { ContactForm } from '@plone/volto/components/theme/ContactForm';
-export { Login } from '@plone/volto/components/theme/Login';
+export const ContactForm = loadable(
+  () => import('@plone/volto/components/theme/ContactForm/ContactForm'),
+);
+export const Login = loadable(
+  () => import('@plone/volto/components/theme/Login/Login'),
+);
 export { default as Logout } from '@plone/volto/components/theme/Logout/Logout';
-export { Sitemap } from '@plone/volto/components/theme/Sitemap';
-export { Search } from '@plone/volto/components/theme/Search';
+export const Sitemap = loadable(
+  () => import('@plone/volto/components/theme/Sitemap/Sitemap'),
+);
+export const Search = loadable(
+  () => import('@plone/volto/components/theme/Search/Search'),
+);
+
 export { default as Comments } from '@plone/volto/components/theme/Comments/Comments';
-export { Register } from '@plone/volto/components/theme/Register';
-export {
-  PasswordReset,
-  RequestPasswordReset,
-} from '@plone/volto/components/theme/PasswordReset';
+export const Register = loadable(
+  () => import('@plone/volto/components/theme/Register/Register'),
+);
+export const PasswordReset = loadable(
+  () => import('@plone/volto/components/theme/PasswordReset/PasswordReset'),
+);
+export const RequestPasswordReset = loadable(
+  () =>
+    import('@plone/volto/components/theme/PasswordReset/RequestPasswordReset'),
+);
 export {
   ChangePassword,
   PersonalPreferences,
@@ -244,7 +263,7 @@ export {
   SelectMetadataWidget,
   SelectAutoComplete,
   ColorPickerWidget,
-  DatetimeWidget,
+  // DatetimeWidget,
   RecurrenceWidget,
   FormFieldWrapper,
 } from '@plone/volto/components/manage/Widgets';

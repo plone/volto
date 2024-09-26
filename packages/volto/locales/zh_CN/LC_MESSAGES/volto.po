@@ -499,7 +499,7 @@ msgid "Browse"
 msgstr "浏览"
 
 #. Default: "Browse the site, drop an image, or use a URL"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "Browse the site, drop an image, or type a URL"
 msgstr "浏览网站，放入一张图片，或者输入一个URL"
 
@@ -4062,7 +4062,7 @@ msgid "Upload files"
 msgstr "上传文件"
 
 #. Default: "Uploading image"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "Uploading image"
 msgstr "上传图像中"
 
@@ -4623,7 +4623,7 @@ msgid "leadimage"
 msgstr ""
 
 #. Default: "Enter a URL to an image"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "linkAnImage"
 msgstr ""
 
@@ -4722,7 +4722,7 @@ msgid "pending"
 msgstr "待审核"
 
 #. Default: "Pick an existing image"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "pickAnImage"
 msgstr ""
 
@@ -4998,7 +4998,7 @@ msgid "upgradeVersions"
 msgstr ""
 
 #. Default: "Upload an image from your computer"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "uploadAnImage"
 msgstr ""
 
