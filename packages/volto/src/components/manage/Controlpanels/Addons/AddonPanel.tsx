@@ -1,0 +1,139 @@
+import React, { AriaAttributes } from 'react';
+import {
+  AvailableAddonProps,
+  AvailableItem,
+  InstalledAddonProps,
+  InstalledItem,
+  UpgradableItem,
+  type UpgradableAddonProps,
+} from './AddonItem';
+import { GetAddonResponse } from './types';
+import { IntlShape, useIntl } from 'react-intl';
+import { GridList } from 'react-aria-components';
+
+interface BasePanelProps extends AriaAttributes {
+  addons: GetAddonResponse[];
+  containerId: string;
+  containerClassname?: string;
+}
+
+interface AvailablePanelProps
+  extends BasePanelProps,
+    Omit<AvailableAddonProps, 'addon'> {
+  type: 'available';
+}
+interface InstalledPanelProps
+  extends BasePanelProps,
+    Omit<InstalledAddonProps, 'addon'> {
+  type: 'installed';
+}
+interface UpgradablePanelProps
+  extends BasePanelProps,
+    Omit<UpgradableAddonProps, 'addon'> {
+  type: 'upgradable';
+}
+
+type PanelProps =
+  | AvailablePanelProps
+  | InstalledPanelProps
+  | UpgradablePanelProps;
+
+const UpgradesPanel: React.FC<UpgradablePanelProps & { intl: IntlShape }> = (
+  props,
+) => {
+  const { addons, type, containerId, containerClassname, intl, ...rest } =
+    props;
+  return (
+    <div
+      key={containerId}
+      id={containerId}
+      aria-label={rest['aria-label']}
+      className={`addons-section ${containerClassname ?? ''}`}
+    >
+      <div className="addons-section-header">
+        <h3 id={type}>
+          {intl.formatMessage({ id: 'Updates available' })}:{' '}
+          <span>{addons.length}</span>
+        </h3>
+      </div>
+      <div>
+        <GridList aria-labelledby={type}>
+          {addons.map((ua: GetAddonResponse) => (
+            <UpgradableItem {...rest} addon={ua} />
+          ))}
+        </GridList>
+      </div>
+    </div>
+  );
+};
+const AvailablePanel: React.FC<AvailablePanelProps & { intl: IntlShape }> = (
+  props,
+) => {
+  const { addons, type, containerId, containerClassname, intl, ...rest } =
+    props;
+  return (
+    <div
+      key={containerId}
+      id={containerId}
+      aria-label={rest['aria-label']}
+      className={`addons-section ${containerClassname ?? ''}`}
+    >
+      <div className="addons-section-header">
+        <h3 id={type}>
+          {intl.formatMessage({ id: 'Available' })}:{' '}
+          <span>{addons.length}</span>
+        </h3>
+      </div>
+      <div>
+        <GridList aria-labelledby={type}>
+          {addons.map((ua: GetAddonResponse) => (
+            <AvailableItem {...rest} addon={ua} />
+          ))}
+        </GridList>
+      </div>
+    </div>
+  );
+};
+const InstalledPanel: React.FC<InstalledPanelProps & { intl: IntlShape }> = (
+  props,
+) => {
+  const { addons, type, containerId, containerClassname, intl, ...rest } =
+    props;
+  return (
+    <div
+      key={containerId}
+      id={containerId}
+      aria-label={rest['aria-label']}
+      className={`addons-section ${containerClassname ?? ''}`}
+    >
+      <div className="addons-section-header">
+        <h3 id={type}>
+          {intl.formatMessage({ id: 'Installed' })}:{' '}
+          <span>{addons.length}</span>
+        </h3>
+      </div>
+      <div>
+        <GridList aria-labelledby={type}>
+          {addons.map((ua: GetAddonResponse) => (
+            <InstalledItem {...rest} addon={ua} />
+          ))}
+        </GridList>
+      </div>
+    </div>
+  );
+};
+
+const AddonPanel: React.FC<PanelProps> = (props) => {
+  const intl = useIntl();
+  if (props.type === 'upgradable') {
+    return <UpgradesPanel {...props} intl={intl} />;
+  } else if (props.type === 'available') {
+    return <AvailablePanel {...props} intl={intl} />;
+  } else if (props.type === 'installed') {
+    return <InstalledPanel {...props} intl={intl} />;
+  }
+  return null;
+};
+
+export { AddonPanel };
+export type { AvailablePanelProps, InstalledPanelProps, UpgradablePanelProps };

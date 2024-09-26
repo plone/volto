@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import AddonsControlpanel from './AddonsControlpanel';
+import AddonsControlpanel from './AddonsControlpanel_old';
 
 const mockStore = configureStore();
 

@@ -126,7 +126,7 @@ const messages = defineMessages({
   },
 });
 
-const AddonsControlpanel = (props) => {
+const AddonsControlpanelOld = (props) => {
   const { title } = props;
   const intl = useIntl();
   const dispatch = useDispatch();
@@ -470,4 +470,4 @@ const AddonsControlpanel = (props) => {
   );
 };
 
-export default AddonsControlpanel;
+export default AddonsControlpanelOld;

@@ -1,0 +1,382 @@
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { Link, RouteComponentProps } from 'react-router-dom';
+import { createPortal } from 'react-dom';
+import { useClient } from '@plone/volto/hooks';
+import { Dimmer, Loader } from 'semantic-ui-react';
+import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
+import {
+  installAddon,
+  listAddons,
+  uninstallAddon,
+  upgradeAddon,
+} from '@plone/volto/actions';
+import { Helmet } from '@plone/volto/helpers';
+import { Icon, Toolbar, Toast } from '@plone/volto/components';
+import backSVG from '@plone/volto/icons/back.svg';
+import { toast } from 'react-toastify';
+import type { GetAddonResponse } from './types.d.ts';
+import { AnyAction } from 'redux';
+import type { PressEvent } from 'react-aria-components';
+import { AddonPanel } from './AddonPanel';
+
+import './index.css';
+
+const messages = defineMessages({
+  activateAndDeactivate: {
+    id: 'Activate and deactivate',
+    defaultMessage: 'Activate and deactivate add-ons in the lists below.',
+  },
+  addAddons: {
+    id: 'Add Addons',
+    defaultMessage:
+      'To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see',
+  },
+  addonsSettings: {
+    id: 'Add-ons Settings',
+    defaultMessage: 'Add-ons Settings',
+  },
+  available: {
+    id: 'Available',
+    defaultMessage: 'Available',
+  },
+  availableVersion: {
+    id: 'Latest version',
+    defaultMessage: 'Latest version',
+  },
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
+  },
+  installed: {
+    id: 'Installed',
+    defaultMessage: 'Installed',
+  },
+  installedVersion: {
+    id: 'Installed version',
+    defaultMessage: 'Installed version',
+  },
+  noUninstallProfile: {
+    id: 'No uninstall profile',
+    defaultMessage: 'This addon does not provide an uninstall profile.',
+  },
+  update: {
+    id: 'Update',
+    defaultMessage: 'Update',
+  },
+  updatesAvailable: {
+    id: 'Updates available',
+    defaultMessage: 'Updates available',
+  },
+  updateInstalledAddons: {
+    id: 'Update installed addons:',
+    defaultMessage: 'Update installed addons:',
+  },
+  uninstall: {
+    id: 'Uninstall',
+    defaultMessage: 'Uninstall',
+  },
+  addOns: {
+    id: 'Add-ons',
+    defaultMessage: 'Add-ons',
+  },
+  installingAnAddon: {
+    id: 'Installing a third party add-on',
+    defaultMessage: 'Installing a third party add-on',
+  },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
+  error: {
+    id: 'Error',
+    defaultMessage: 'Error',
+  },
+  addonUpgraded: {
+    id: 'Addon upgraded succesfuly',
+    defaultMessage: 'Addon upgraded succesfuly',
+  },
+  addonNotUpgraded: {
+    id: 'Addon could not be upgraded',
+    defaultMessage: 'Addon could not be upgraded',
+  },
+  addonInstalled: {
+    id: 'Addon installed succesfuly',
+    defaultMessage: 'Addon installed succesfuly',
+  },
+  addonNotInstalled: {
+    id: 'Addon could not be installed',
+    defaultMessage: 'Addon could not be installed',
+  },
+  addonUninstalled: {
+    id: 'Addon uninstalled succesfuly',
+    defaultMessage: 'Addon uninstalled succesfuly',
+  },
+  addonNotUninstalled: {
+    id: 'Addon could not be uninstalled',
+    defaultMessage: 'Addon could not be uninstalled',
+  },
+  addonUpgradableInfo: {
+    id: 'This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}',
+    defaultMessage:
+      'This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}',
+  },
+});
+
+interface Props extends RouteComponentProps {
+  title: string;
+}
+
+const AddonsControlpanel = (props: Props) => {
+  const { title } = props;
+  console.log(props);
+  const intl = useIntl();
+  const dispatch = useDispatch();
+  const pathname = props.location.pathname;
+  const [activeIndex, setactiveIndex] = useState(-1);
+  const isClient = useClient();
+  const installedAddons = useSelector<Record<string, any>>(
+    (state) => (state.addons.installedAddons ?? []) as GetAddonResponse[],
+    shallowEqual,
+  );
+  const availableAddons = useSelector<Record<string, any>>(
+    (state) => state.addons.availableAddons ?? ([] as GetAddonResponse[]),
+    shallowEqual,
+  );
+  const upgradableAddons = useSelector<Record<string, any>>(
+    (state) => (state.addons.upgradableAddons ?? []) as GetAddonResponse[],
+    shallowEqual,
+  );
+  const testUpgradableAddons: GetAddonResponse[] = useMemo(() => {
+    return [
+      ...(upgradableAddons as GetAddonResponse[]),
+      ...(availableAddons as GetAddonResponse[]).filter(
+        (aa) => aa.upgrade_info.available,
+      ),
+      ...(installedAddons as GetAddonResponse[]).filter(
+        (aa) => aa.upgrade_info.available,
+      ),
+      {
+        '@id': 'https://v3.io-comune.redturtle.it/api/@addons/redturtle.volto',
+        description: 'Installs the redturtle.volto add-on.',
+        id: 'redturtle.volto',
+        install_profile_id: 'redturtle.volto:default',
+        is_installed: true,
+        profile_type: 'default',
+        title: 'RedTurtle: Volto',
+        uninstall_profile_id: 'redturtle.volto:uninstall',
+        upgrade_info: {
+          available: true,
+          hasProfile: true,
+          installedVersion: '4306',
+          newVersion: '4307',
+          required: true,
+        },
+        version: '5.5.2',
+      },
+      {
+        '@id': 'https://v3.io-comune.redturtle.it/api/@addons/redturtle.volto2',
+        description: 'Installs the redturtle.volto2 add-on.',
+        id: 'redturtle.volto2',
+        install_profile_id: 'redturtle.volto:default',
+        is_installed: true,
+        profile_type: 'default',
+        title: 'RedTurtle: Volto',
+        uninstall_profile_id: 'redturtle.volto:uninstall',
+        upgrade_info: {
+          available: true,
+          hasProfile: true,
+          installedVersion: '4306',
+          newVersion: '4307',
+          required: true,
+        },
+        version: '5.5.2',
+      },
+    ].filter(Boolean);
+  }, [upgradableAddons, availableAddons, installedAddons]);
+  const loadingAddons = useSelector<Record<string, any>>(
+    (state) => state.addons.loading,
+  );
+  console.log('upgradable', upgradableAddons);
+  console.log('available', availableAddons);
+  console.log('installed', installedAddons);
+
+  useEffect(() => {
+    dispatch(listAddons() as AnyAction);
+  }, [dispatch]);
+
+  const onInstall = useCallback(
+    (event: PressEvent) => {
+      const value = event.target.id;
+
+      dispatch(installAddon(value) as AnyAction)
+        .then(() => {
+          toast.success(
+            <Toast
+              success
+              title={intl.formatMessage(messages.success)}
+              content={intl.formatMessage(messages.addonInstalled, {
+                title: title,
+              })}
+            />,
+          );
+        })
+        .catch(() => {
+          toast.error(
+            <Toast
+              error
+              title={intl.formatMessage(messages.error)}
+              content={intl.formatMessage(messages.addonNotInstalled)}
+            />,
+          );
+        })
+        .finally(() => dispatch(listAddons() as AnyAction));
+    },
+    [dispatch, title, intl],
+  );
+
+  const onUninstall = useCallback(
+    (event: PressEvent) => {
+      const value = event.target.id;
+      dispatch(uninstallAddon(value) as AnyAction)
+        .then(() => {
+          toast.success(
+            <Toast
+              success
+              title={intl.formatMessage(messages.success)}
+              content={intl.formatMessage(messages.addonUninstalled)}
+            />,
+          );
+        })
+        .catch(() => {
+          toast.error(
+            <Toast
+              error
+              title={intl.formatMessage(messages.error)}
+              content={intl.formatMessage(messages.addonNotUninstalled, {
+                title: title,
+              })}
+            />,
+          );
+        })
+        .finally(() => dispatch(listAddons() as AnyAction));
+    },
+    [dispatch, intl, title],
+  );
+
+  const onUpgrade = useCallback(
+    (event: PressEvent) => {
+      const value = event.target.id;
+      dispatch(upgradeAddon(value) as AnyAction)
+        .then(() => {
+          toast.success(
+            <Toast
+              success
+              title={intl.formatMessage(messages.success)}
+              content={intl.formatMessage(messages.addonUpgraded)}
+            />,
+          );
+        })
+        .catch(() => {
+          toast.error(
+            <Toast
+              error
+              title={intl.formatMessage(messages.error)}
+              content={intl.formatMessage(messages.addonNotUpgraded)}
+            />,
+          );
+        })
+        .finally(() => dispatch(listAddons() as AnyAction));
+    },
+    [dispatch, intl],
+  );
+
+  return (
+    <div id="page-addons" className="ui container controlpanel-addons">
+      <Helmet title={intl.formatMessage(messages.addOns)} />
+      <div className="main-section">
+        <div className="primary">
+          <FormattedMessage
+            id="Add-ons Settings"
+            defaultMessage="Add-ons Settings"
+          />
+        </div>
+
+        {loadingAddons ? (
+          <Dimmer active>
+            <Loader />
+          </Dimmer>
+        ) : (
+          <>
+            <div>
+              <h2>
+                <FormattedMessage
+                  id="Activate and deactivate"
+                  defaultMessage="Activate and deactivate add-ons in the lists below."
+                />
+              </h2>
+              <FormattedMessage
+                id="Add Addons"
+                defaultMessage="To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
+              />
+              &nbsp;
+              <a
+                href="https://6.docs.plone.org/install/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {intl.formatMessage(messages.installingAnAddon)}
+              </a>
+              .
+            </div>
+            <AddonPanel
+              type="upgradable"
+              containerId="header-upgradable"
+              addons={testUpgradableAddons}
+              onUpgrade={onUpgrade}
+              aria-label="Upgradable addons"
+            />
+            <AddonPanel
+              type="available"
+              containerId="header-available"
+              addons={availableAddons as GetAddonResponse[]}
+              onInstall={onInstall}
+              aria-label="Available addons"
+            />
+            <AddonPanel
+              type="installed"
+              containerId="header-installed"
+              addons={installedAddons as GetAddonResponse[]}
+              onUninstall={onUninstall}
+              aria-label="Installed addons"
+            />
+          </>
+        )}
+      </div>
+
+      {isClient &&
+        createPortal(
+          <Toolbar
+            pathname={pathname}
+            hideDefaultViewButtons
+            inner={
+              <>
+                <Link to="/controlpanel" className="item">
+                  <Icon
+                    name={backSVG}
+                    aria-label={intl.formatMessage(messages.back)}
+                    className="contents circled"
+                    size="30px"
+                    title={intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              </>
+            }
+          />,
+          document.getElementById('toolbar'),
+        )}
+    </div>
+  );
+};
+
+export default AddonsControlpanel;
