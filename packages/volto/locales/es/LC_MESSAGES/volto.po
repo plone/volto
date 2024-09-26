@@ -3561,7 +3561,7 @@ msgstr "Tabla"
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
-msgstr ""
+msgstr "Tabla de contenidos"
 
 #. Default: "Tabular view"
 #: config/Views
