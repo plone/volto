@@ -5,7 +5,7 @@ describe('Accessibility Tests Content Types', () => {
     cy.injectAxe(); // make sure axe is available on the page
   });
 
-  it.only('Event has no a11y violations', () => {
+  it('Event has no a11y violations', () => {
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-event').click();
     cy.get('.documentFirstHeading').type('Test Event Content Type');
@@ -13,14 +13,12 @@ describe('Accessibility Tests Content Types', () => {
     cy.get('#toolbar-save').click();
 
     cy.wait(1000);
-    cy.injectAxe();
     cy.checkA11y();
 
     cy.get('.ics-download').contains('Download Event').focus();
   });
 
   it('File has no a11y violations', () => {
-    cy.visit('/');
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-file').click();
     cy.get('#field-title').type('Test File Content Type');
@@ -35,14 +33,12 @@ describe('Accessibility Tests Content Types', () => {
     cy.get('#toolbar-save').focus().click();
 
     cy.wait(2000);
-    cy.injectAxe();
     cy.checkA11y();
 
     cy.contains('file.pdf').focus();
   });
 
   it('Image has no a11y violations', () => {
-    cy.visit('/');
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-image').click();
     cy.get('#field-title').type('Test Image Content Type');
@@ -61,14 +57,12 @@ describe('Accessibility Tests Content Types', () => {
     cy.get('#toolbar-save').click();
 
     cy.wait(1000);
-    cy.injectAxe();
     cy.checkA11y();
 
     cy.get('#view img').should('have.attr', 'alt', 'Test Image Content Type');
   });
 
   it('Link has no a11y violations', () => {
-    cy.visit('/');
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-link').click();
     cy.get('#field-title').type('Test Link Content Type');
@@ -79,7 +73,6 @@ describe('Accessibility Tests Content Types', () => {
     cy.get('#toolbar-save').click();
 
     cy.wait(1000);
-    cy.injectAxe();
     cy.checkA11y();
 
     cy.get('a.external')
@@ -88,7 +81,6 @@ describe('Accessibility Tests Content Types', () => {
   });
 
   it('News Item has no a11y violations', () => {
-    cy.visit('/');
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-news-item').click();
     cy.get('.documentFirstHeading').type('Test News Content Type');
@@ -97,19 +89,16 @@ describe('Accessibility Tests Content Types', () => {
     cy.get('#toolbar-save').click();
 
     cy.wait(2000);
-    cy.injectAxe();
     cy.checkA11y();
   });
 
   it('Page has no a11y violations', () => {
-    cy.visit('/');
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
     cy.get('.documentFirstHeading').type('My Page');
     cy.get('#toolbar-save').click();
 
     cy.wait(1000);
-    cy.injectAxe();
     cy.checkA11y();
   });
 });
