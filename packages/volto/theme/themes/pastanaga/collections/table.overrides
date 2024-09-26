@@ -34,3 +34,8 @@
 .ui.table tr:first-child > th:only-child {
   border-radius: @borderRadius @borderRadius 0em 0em;
 }
+
+/* inline link color*/
+.ui.table.inverted a {
+  color: @lightBlue;
+}
