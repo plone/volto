@@ -6,6 +6,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
+import { messages } from '@plone/volto/components/manage/Blocks/ToC/Schema';
+import { injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 import { withBlockExtensions } from '@plone/volto/helpers';
 
@@ -84,6 +86,7 @@ export const getBlocksTocEntries = (properties, tocData) => {
  */
 const View = (props) => {
   const { data } = props;
+
   const title = data.title ? data.title : '';
   const { variation } = props;
   const metadata = props.metadata || props.properties;
@@ -165,11 +168,11 @@ const View = (props) => {
   const Renderer = variation?.view;
   return (
     <nav
-      aria-label={`${title}`}
+      aria-label={title && !data.hide_title ? title : ''}
       className={cx('table-of-contents', variation?.id)}
     >
       {props.mode === 'edit' && !data.title && !tocEntries.length && (
-        <Message>Table of content</Message>
+        <Message>{props.intl.formatMessage(messages.toc)}</Message>
       )}
 
       {Renderer ? (
@@ -190,4 +193,4 @@ View.propTypes = {
   properties: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default withBlockExtensions(View);
+export default injectIntl(withBlockExtensions(View));

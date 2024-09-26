@@ -6,7 +6,6 @@
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import { List } from 'semantic-ui-react';
-import { FormattedMessage } from 'react-intl';
 import Slugger from 'github-slugger';
 import { UniversalLink } from '@plone/volto/components';
 import { normalizeString } from '@plone/volto/helpers';
@@ -44,18 +43,7 @@ const RenderListItems = ({ items, data }) => {
 const View = ({ data, tocEntries }) => {
   return (
     <>
-      {!data.hide_title ? (
-        <h2>
-          {data.title || (
-            <FormattedMessage
-              id="Table of Contents"
-              defaultMessage="Table of Contents"
-            />
-          )}
-        </h2>
-      ) : (
-        ''
-      )}
+      {data.title && !data.hide_title ? <h2>{data.title}</h2> : ''}
       <List
         ordered={data.ordered}
         bulleted={!data.ordered}
