@@ -64,5 +64,6 @@ describe('App', () => {
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
+    component.unmount();
   });
 });
