@@ -45,7 +45,7 @@ export const EventView: import("@loadable/component").LoadableComponent<any>;
 export { default as ListingView } from "@plone/volto/components/theme/View/ListingView";
 export { default as SummaryView } from "@plone/volto/components/theme/View/SummaryView";
 export { default as TabularView } from "@plone/volto/components/theme/View/TabularView";
-export { default as AlbumView } from "@plone/volto/components/theme/View/AlbumView";
+export const AlbumView: import("@loadable/component").LoadableClassComponent<any>;
 export { default as Actions } from "@plone/volto/components/manage/Actions/Actions";
 export { Add } from "@plone/volto/components/manage/Add";
 export { default as Circle } from "@plone/volto/components/manage/Contents/circle";

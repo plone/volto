@@ -96,8 +96,9 @@ export const EventView = loadable(
 export { default as ListingView } from '@plone/volto/components/theme/View/ListingView';
 export { default as SummaryView } from '@plone/volto/components/theme/View/SummaryView';
 export { default as TabularView } from '@plone/volto/components/theme/View/TabularView';
-export { default as AlbumView } from '@plone/volto/components/theme/View/AlbumView';
-
+export const AlbumView = loadable(
+  () => import('@plone/volto/components/theme/View/AlbumView'),
+);
 export { default as Actions } from '@plone/volto/components/manage/Actions/Actions';
 export { Add } from '@plone/volto/components/manage/Add';
 export {
