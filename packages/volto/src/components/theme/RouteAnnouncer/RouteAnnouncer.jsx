@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-// TODO:
-//    Don't announce on first page load (normal browser behaviour)
 function RouteAnnouncer() {
   const [pageTitle, setPageTitle] = useState('Route content change');
 
