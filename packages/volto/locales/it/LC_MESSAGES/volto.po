@@ -2490,7 +2490,7 @@ msgstr "Ok"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
-msgstr "Sono consentiti solo caratteri a 7 bit. Non può contenere lettere maiuscole, caratteri speciali: <, >, &, #, /, ?, o altri che sono illegali negli URL. Non può iniziare con: _, aq_, @@, ++. Non può terminare con __. Non può essere: request,contributors, ., .., \"\". Non può contenere andate a capo.""
+msgstr "Sono consentiti solo caratteri a 7 bit. Non può contenere lettere maiuscole, caratteri speciali: <, >, &, #, /, ?, o altri che sono illegali negli URL. Non può iniziare con: _, aq_, @@, ++. Non può terminare con __. Non può essere: request,contributors, ., .., “”. Non può contenere andate a capo."
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
