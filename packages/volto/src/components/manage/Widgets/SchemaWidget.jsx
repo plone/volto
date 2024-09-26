@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import concat from 'lodash/concat';
 import findIndex from 'lodash/findIndex';
 import isString from 'lodash/isString';
+import keys from 'lodash/keys';
 import map from 'lodash/map';
 import omit from 'lodash/omit';
 import slice from 'lodash/slice';
@@ -17,6 +18,7 @@ import without from 'lodash/without';
 import move from 'lodash-move';
 import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
+import config from '@plone/volto/registry';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { slugify } from '@plone/volto/helpers/Utils/Utils';
 
@@ -146,6 +148,334 @@ const makeFieldsetList = (listOfFieldsets, intl) => {
   return result;
 };
 
+// Register field factory properties utilities
+
+config.registerUtility({
+  name: 'Rich Text',
+  type: 'fieldFactoryProperties',
+  method: (intl) => ({
+    maxLength: {
+      type: 'integer',
+      title: intl.formatMessage(messages.maxLength),
+    },
+    default: {
+      title: intl.formatMessage(messages.defaultValue),
+      widget: 'richtext',
+      type: 'string',
+    },
+  }),
+});
+
+map(
+  ['URL', 'Password', 'label_password_field', 'Email', 'label_email'],
+  (factory) => {
+    config.registerUtility({
+      name: factory,
+      type: 'fieldFactoryProperties',
+      method: (intl) => ({
+        minLength: {
+          type: 'integer',
+          title: intl.formatMessage(messages.minLength),
+        },
+        maxLength: {
+          type: 'integer',
+          title: intl.formatMessage(messages.maxLength),
+        },
+        default: {
+          type: 'string',
+          title: intl.formatMessage(messages.defaultValue),
+        },
+      }),
+    });
+  },
+);
+
+map(['Integer', 'label_integer_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryProperties',
+    method: (intl) => ({
+      minimum: {
+        type: 'integer',
+        title: intl.formatMessage(messages.minimum),
+      },
+      maximum: {
+        type: 'integer',
+        title: intl.formatMessage(messages.maximum),
+      },
+      default: {
+        type: 'integer',
+        title: intl.formatMessage(messages.default),
+      },
+    }),
+  });
+});
+
+map(
+  [
+    'Floating-point number',
+    'label_float_field',
+    'Date/Time',
+    'label_datetime_field',
+    'Date',
+    'label_date_field',
+    'File',
+    'File Upload',
+    'Image',
+    'Yes/No',
+    'label_boolean_field',
+    'JSONField',
+    'Relation Choice',
+    'Relation List',
+  ],
+  (factory) => {
+    config.registerUtility({
+      name: factory,
+      type: 'fieldFactoryProperties',
+      method: (intl) => ({}),
+    });
+  },
+);
+
+map(
+  [
+    'Multiple Choice',
+    'label_multi_choice_field',
+    'Choice',
+    'label_choice_field',
+  ],
+  (factory) => {
+    config.registerUtility({
+      name: factory,
+      type: 'fieldFactoryProperties',
+      method: (intl) => ({
+        values: {
+          type: 'string',
+          title: intl.formatMessage(messages.choices),
+          widget: 'textarea',
+        },
+      }),
+    });
+  },
+);
+
+config.registerUtility({
+  name: 'static_text',
+  type: 'fieldFactoryProperties',
+  method: (intl) => ({
+    default: {
+      title: intl.formatMessage(messages.defaultValue),
+      widget: 'richtext',
+      type: 'string',
+    },
+  }),
+});
+
+config.registerUtility({
+  name: 'static_text',
+  type: 'fieldFactoryProperties',
+  method: (intl) => ({
+    default: {
+      type: 'string',
+      title: intl.formatMessage(messages.defaultValue),
+    },
+  }),
+});
+
+// Register field factory initial data utilities
+
+map(['Date/Time', 'label_datetime_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: () => ({
+      type: 'string',
+      widget: 'datetime',
+      factory,
+    }),
+  });
+});
+
+map(['Date', 'label_date_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: () => ({
+      type: 'string',
+      widget: 'date',
+      factory,
+    }),
+  });
+});
+
+map(['Email', 'label_email'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: () => ({
+      type: 'string',
+      widget: 'email',
+      factory,
+    }),
+  });
+});
+
+map(['File', 'File Upload'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: () => ({
+      type: 'object',
+      factory,
+    }),
+  });
+});
+
+map(['Floating-point number', 'label_float_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: () => ({
+      type: 'number',
+      factory,
+    }),
+  });
+});
+
+map(['Interger', 'label_integer_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: () => ({
+      type: 'integer',
+      factory,
+    }),
+  });
+});
+
+config.registerUtility({
+  name: 'Image',
+  type: 'fieldFactoryInitialData',
+  method: () => ({
+    type: 'object',
+    factory: 'Image',
+  }),
+});
+
+config.registerUtility({
+  name: 'JSONField',
+  type: 'fieldFactoryInitialData',
+  method: () => ({
+    type: 'dict',
+    widget: 'json',
+    factory: 'JSONField',
+  }),
+});
+
+map(['Multiple Choice', 'label_multi_choice_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: () => ({
+      type: 'array',
+      factory,
+    }),
+  });
+});
+
+config.registerUtility({
+  name: 'Relation List',
+  type: 'fieldFactoryInitialData',
+  method: () => ({
+    type: 'array',
+    factory: 'Relation List',
+  }),
+});
+
+map(['Choice', 'label_choice_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: () => ({
+      type: 'string',
+      choices: [],
+      factory,
+    }),
+  });
+});
+
+config.registerUtility({
+  name: 'Relation Choice',
+  type: 'fieldFactoryInitialData',
+  method: () => ({
+    type: 'string',
+    factory: 'Relation Choice',
+  }),
+});
+
+map(['Password', 'label_password_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: () => ({
+      type: 'string',
+      widget: 'password',
+      factory,
+    }),
+  });
+});
+
+config.registerUtility({
+  name: 'Rich Text',
+  type: 'fieldFactoryInitialData',
+  method: () => ({
+    type: 'string',
+    widget: 'richtext',
+    factory: 'Rich Text',
+  }),
+});
+
+config.registerUtility({
+  name: 'URL',
+  type: 'fieldFactoryInitialData',
+  method: () => ({
+    type: 'string',
+    widget: 'url',
+    factory: 'URL',
+  }),
+});
+
+map(['Yes/No', 'label_boolean_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: () => ({
+      type: 'boolean',
+      factory,
+    }),
+  });
+});
+
+config.registerUtility({
+  name: 'static_text',
+  type: 'fieldFactoryInitialData',
+  method: () => ({
+    type: 'object',
+    widget: 'static_text',
+    factory: 'static_text',
+  }),
+});
+
+config.registerUtility({
+  name: 'hidden',
+  type: 'fieldFactoryInitialData',
+  method: () => ({
+    type: 'string',
+    widget: 'hidden',
+    factory: 'hidden',
+  }),
+});
+
 /**
  * schemaField used for modal form, when editing a field
  * - based on the factory a set of fields is presented
@@ -155,186 +485,65 @@ const makeFieldsetList = (listOfFieldsets, intl) => {
  * @param {*} fieldsets
  * @return {Object} - schema
  */
-const schemaField = (factory, intl, fieldsets) => ({
-  fieldsets: [
-    {
-      id: 'default',
-      title: 'default',
-      fields: [
-        ...['title', 'description', 'parentFieldSet'],
-        ...((factory) => {
-          switch (factory) {
-            case 'Rich Text':
-              return ['maxLength', 'default'];
-            case 'URL':
-            case 'Password':
-            case 'label_password_field':
-            case 'Email':
-            case 'label_email':
-              return ['minLength', 'maxLength', 'default'];
-            case 'Integer':
-            case 'label_integer_field':
-              return ['minimum', 'maximum', 'default'];
-            case 'Floating-point number':
-            case 'label_float_field':
-            case 'Date/Time':
-            case 'label_datetime_field':
-            case 'Date':
-            case 'label_date_field':
-            case 'File':
-            case 'File Upload':
-            case 'Image':
-            case 'Yes/No':
-            case 'label_boolean_field':
-            case 'JSONField':
-            case 'Relation Choice':
-            case 'Relation List':
-              return [];
-            case 'Multiple Choice':
-            case 'label_multi_choice_field':
-            case 'Choice':
-            case 'label_choice_field':
-              return ['values'];
-            case 'static_text':
-            case 'hidden':
-              return ['default'];
-            default:
-              return ['minLength', 'maxLength', 'default'];
-          }
-        })(factory),
-        ...['required'],
-      ],
+const schemaField = (factory, intl, fieldsets) => {
+  const utility = config.getUtility({
+    name: factory,
+    type: 'fieldFactoryProperties',
+  });
+
+  const properties = utility.method
+    ? utility.method(intl)
+    : {
+        minLength: {
+          type: 'integer',
+          title: intl.formatMessage(messages.minLength),
+        },
+        maxLength: {
+          type: 'integer',
+          title: intl.formatMessage(messages.maxLength),
+        },
+        default: {
+          type: 'string',
+          title: intl.formatMessage(messages.defaultValue),
+        },
+      };
+
+  return {
+    fieldsets: [
+      {
+        id: 'default',
+        title: 'default',
+        fields: [
+          ...['title', 'description', 'parentFieldSet'],
+          ...keys(properties),
+          ...['required'],
+        ],
+      },
+    ],
+    properties: {
+      title: {
+        type: 'string',
+        title: intl.formatMessage(messages.title),
+      },
+      description: {
+        type: 'string',
+        widget: 'textarea',
+        title: intl.formatMessage(messages.description),
+      },
+      parentFieldSet: {
+        type: 'string',
+        title: intl.formatMessage(messages.parentFieldSet),
+        choices: makeFieldsetList(fieldsets),
+      },
+      required: {
+        type: 'boolean',
+        title: intl.formatMessage(messages.required),
+      },
+      ...properties,
     },
-  ],
-  properties: {
-    title: {
-      type: 'string',
-      title: intl.formatMessage(messages.title),
-    },
-    description: {
-      type: 'string',
-      widget: 'textarea',
-      title: intl.formatMessage(messages.description),
-    },
-    parentFieldSet: {
-      type: 'string',
-      title: intl.formatMessage(messages.parentFieldSet),
-      choices: makeFieldsetList(fieldsets),
-    },
-    required: {
-      type: 'boolean',
-      title: intl.formatMessage(messages.required),
-    },
-    ...((factory) => {
-      switch (factory) {
-        case 'Rich Text':
-          return {
-            maxLength: {
-              type: 'integer',
-              title: intl.formatMessage(messages.maxLength),
-            },
-            default: {
-              title: intl.formatMessage(messages.defaultValue),
-              widget: 'richtext',
-              type: 'string',
-            },
-          };
-        case 'URL':
-        case 'Password':
-        case 'label_password_field':
-        case 'Email':
-        case 'label_email':
-          return {
-            minLength: {
-              type: 'integer',
-              title: intl.formatMessage(messages.minLength),
-            },
-            maxLength: {
-              type: 'integer',
-              title: intl.formatMessage(messages.maxLength),
-            },
-            default: {
-              type: 'string',
-              title: intl.formatMessage(messages.defaultValue),
-            },
-          };
-        case 'Integer':
-        case 'label_integer_field':
-          return {
-            minimum: {
-              type: 'integer',
-              title: intl.formatMessage(messages.minimum),
-            },
-            maximum: {
-              type: 'integer',
-              title: intl.formatMessage(messages.maximum),
-            },
-            default: {
-              type: 'integer',
-              title: intl.formatMessage(messages.default),
-            },
-          };
-        case 'Floating-point number':
-        case 'label_float_field':
-        case 'Date/Time':
-        case 'label_datetime_field':
-        case 'Date':
-        case 'label_date_field':
-        case 'File':
-        case 'File Upload':
-        case 'Image':
-        case 'Yes/No':
-        case 'label_boolean_field':
-        case 'JSONField':
-        case 'Relation Choice':
-        case 'Relation List':
-          return {};
-        case 'Multiple Choice':
-        case 'label_multi_choice_field':
-        case 'Choice':
-        case 'label_choice_field':
-          return {
-            values: {
-              type: 'string',
-              title: intl.formatMessage(messages.choices),
-              widget: 'textarea',
-            },
-          };
-        case 'static_text':
-          return {
-            default: {
-              title: intl.formatMessage(messages.defaultValue),
-              widget: 'richtext',
-              type: 'string',
-            },
-          };
-        case 'hidden':
-          return {
-            default: {
-              type: 'string',
-              title: intl.formatMessage(messages.defaultValue),
-            },
-          };
-        default:
-          return {
-            minLength: {
-              type: 'integer',
-              title: intl.formatMessage(messages.minLength),
-            },
-            maxLength: {
-              type: 'integer',
-              title: intl.formatMessage(messages.maxLength),
-            },
-            default: {
-              type: 'string',
-              title: intl.formatMessage(messages.defaultValue),
-            },
-          };
-      }
-    })(factory),
-  },
-  required: ['type', 'title'],
-});
+    required: ['type', 'title'],
+  };
+};
 
 /**
  * schema for adding a new field
@@ -550,6 +759,18 @@ class SchemaWidget extends Component {
         ]
       : [...currentFieldsetFields, fieldId];
 
+    const utility = config.getUtility({
+      name: values.factory,
+      type: 'fieldFactoryInitialData',
+    });
+
+    const initialData = utility.method
+      ? utility.method()
+      : {
+          type: 'string',
+          factory: values.factory,
+        };
+
     this.onChange({
       ...this.props.value,
       fieldsets: [
@@ -566,125 +787,7 @@ class SchemaWidget extends Component {
           title: values.title,
           description: values.description,
           id: fieldId,
-          ...((factory) => {
-            switch (factory) {
-              case 'Date/Time':
-              case 'label_datetime_field':
-                return {
-                  type: 'string',
-                  widget: 'datetime',
-                  factory,
-                };
-              case 'Date':
-              case 'label_date_field':
-                return {
-                  type: 'string',
-                  widget: 'date',
-                  factory,
-                };
-              case 'Email':
-              case 'label_email':
-                return {
-                  type: 'string',
-                  widget: 'email',
-                  factory,
-                };
-              case 'File':
-              case 'File Upload':
-                return {
-                  type: 'object',
-                  factory,
-                };
-              case 'Floating-point number':
-              case 'label_float_field':
-                return {
-                  type: 'number',
-                  factory,
-                };
-              case 'Integer':
-              case 'label_integer_field':
-                return {
-                  type: 'integer',
-                  factory,
-                };
-              case 'Image':
-                return {
-                  type: 'object',
-                  factory,
-                };
-              case 'JSONField':
-                return {
-                  type: 'dict',
-                  widget: 'json',
-                  factory,
-                };
-              case 'Multiple Choice':
-              case 'label_multi_choice_field':
-                return {
-                  type: 'array',
-                  factory,
-                };
-              case 'Relation List':
-                return {
-                  type: 'array',
-                  factory,
-                };
-              case 'Choice':
-              case 'label_choice_field':
-                return {
-                  type: 'string',
-                  choices: [],
-                  factory,
-                };
-              case 'Relation Choice':
-                return {
-                  type: 'string',
-                  factory,
-                };
-              case 'Password':
-              case 'label_password_field':
-                return {
-                  type: 'string',
-                  widget: 'password',
-                  factory,
-                };
-              case 'Rich Text':
-                return {
-                  type: 'string',
-                  widget: 'richtext',
-                  factory,
-                };
-              case 'URL':
-                return {
-                  type: 'string',
-                  widget: 'url',
-                  factory,
-                };
-              case 'Yes/No':
-              case 'label_boolean_field':
-                return {
-                  type: 'boolean',
-                  factory,
-                };
-              case 'static_text':
-                return {
-                  type: 'object',
-                  widget: 'static_text',
-                  factory,
-                };
-              case 'hidden':
-                return {
-                  type: 'string',
-                  widget: 'hidden',
-                  factory,
-                };
-              default:
-                return {
-                  type: 'string',
-                  factory,
-                };
-            }
-          })(values.factory),
+          ...initialData,
         },
       },
       required: values.required

@@ -7,7 +7,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { filter, map } from 'lodash';
+import filter from 'lodash/filter';
+import map from 'lodash/map';
 import { defineMessages, injectIntl } from 'react-intl';
 import {
   getVocabFromHint,
