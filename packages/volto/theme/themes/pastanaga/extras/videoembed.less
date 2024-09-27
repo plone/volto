@@ -1,0 +1,21 @@
+@videoIconSize: 100px;
+
+.video-embed {
+  position: relative;
+
+  img {
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  button.video-play-button {
+    position: absolute;
+    top: calc(50% - @videoIconSize / 2);
+    left: calc(50% - @videoIconSize / 2);
+    width: @videoIconSize;
+    height: @videoIconSize;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+}
