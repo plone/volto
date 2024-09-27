@@ -2063,6 +2063,11 @@ msgstr "Listagem"
 msgid "Load more"
 msgstr "Carregar mais"
 
+#. Default: "Load video player"
+#: components/manage/Blocks/Video/Body
+msgid "Load video player"
+msgstr ""
+
 #. Default: "Loading."
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
@@ -2610,11 +2615,6 @@ msgstr "Ferramentas pessoais"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Pessoas responsáveis pela criação do conteúdo deste item. Por favor, insira uma lista de nomes de usuário, um por linha. O autor principal deve vir primeiro."
-
-#. Default: "Play Video"
-#: components/manage/Blocks/Video/Body
-msgid "Play Video"
-msgstr ""
 
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody

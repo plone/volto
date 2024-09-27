@@ -2064,6 +2064,11 @@ msgstr "Zerrenda bista"
 msgid "Load more"
 msgstr "Kargatu gehiago"
 
+#. Default: "Load video player"
+#: components/manage/Blocks/Video/Body
+msgid "Load video player"
+msgstr ""
+
 #. Default: "Loading."
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
@@ -2611,11 +2616,6 @@ msgstr "Tresna pertsonalak"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Elementu honen edukia sortzearen arduradunak. Idatzi erabiltzaile-izen bat lerro bakoitzean. Egile nagusia lehenengoa izan beharko litzateke."
-
-#. Default: "Play Video"
-#: components/manage/Blocks/Video/Body
-msgid "Play Video"
-msgstr ""
 
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody

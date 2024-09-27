@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
-import { Embed, Message } from 'semantic-ui-react';
+import { Embed, Message, Button, Icon } from 'semantic-ui-react';
 import cx from 'classnames';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 
@@ -70,8 +70,8 @@ const Body = ({ data, isEditMode }) => {
 
   const messages = defineMessages({
     arialabel: {
-      id: 'Play Video',
-      defaultMessage: 'Play Video',
+      id: 'Load video player',
+      defaultMessage: 'Load video player',
     },
   });
 
@@ -94,6 +94,7 @@ const Body = ({ data, isEditMode }) => {
     onKeyPress: onKeyDown,
     ref: ref,
     'aria-label': intl.formatMessage(messages.arialabel),
+    role: 'button',
   };
 
   return (
