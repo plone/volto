@@ -1,3 +1,18 @@
+describe('Accessibility Test for contact form', () => {
+  beforeEach(() => {
+    cy.visit('/');
+    cy.injectAxe(); // make sure axe is available on the page
+  });
+  it('Test contact form with cypress-axe', () => {
+    cy.navigate('/contact-form');
+    cy.get('#field-name').click().type('input');
+    cy.get('#field-from').click().type('something@domain.com');
+    cy.get('#field-subject').click().type('input');
+    cy.get('#field-message').click().type('input');
+    cy.checkA11y(); // fail for a11y violations
+  });
+});
+
 describe('Accessibility Tests', () => {
   beforeEach(() => {
     cy.autologin();
@@ -6,15 +21,6 @@ describe('Accessibility Tests', () => {
   });
 
   it('Test front page with cypress-axe', () => {
-    cy.checkA11y(); // fail for a11y violations
-  });
-
-  it('Test contact form with cypress-axe', () => {
-    cy.navigate('/contact-form');
-    cy.get('#field-name').click().type('input');
-    cy.get('#field-from').click().type('something@domain.com');
-    cy.get('#field-subject').click().type('input');
-    cy.get('#field-message').click().type('input');
     cy.checkA11y(); // fail for a11y violations
   });
 
