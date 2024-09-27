@@ -39,6 +39,7 @@ exports[`renders an align widget component basic 1`] = `
                 class="ui basic icon button"
               >
                 <svg
+                  aria-label="Text Left"
                   class="icon"
                   style="height: 24px; width: auto; fill: currentColor;"
                   viewBox=""
@@ -59,6 +60,7 @@ exports[`renders an align widget component basic 1`] = `
                 class="ui basic icon button"
               >
                 <svg
+                  aria-label="Text Right"
                   class="icon"
                   style="height: 24px; width: auto; fill: currentColor;"
                   viewBox=""
@@ -79,6 +81,7 @@ exports[`renders an align widget component basic 1`] = `
                 class="ui basic icon button"
               >
                 <svg
+                  aria-label="Text Centered"
                   class="icon"
                   style="height: 24px; width: auto; fill: currentColor;"
                   viewBox=""
@@ -99,6 +102,7 @@ exports[`renders an align widget component basic 1`] = `
                 class="ui basic icon button"
               >
                 <svg
+                  aria-label="Text Justified"
                   class="icon"
                   style="height: 24px; width: auto; fill: currentColor;"
                   viewBox=""
@@ -158,6 +162,7 @@ exports[`renders an align widget component extended with actions and actionsInfo
                 class="ui basic icon button"
               >
                 <svg
+                  aria-label="Additional action title"
                   class="icon"
                   style="height: 24px; width: auto; fill: currentColor;"
                   viewBox=""

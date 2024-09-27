@@ -104,6 +104,7 @@ exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component 1`]
           role="option"
         >
           <svg
+            aria-label=""
             className="icon"
             dangerouslySetInnerHTML={
               Object {

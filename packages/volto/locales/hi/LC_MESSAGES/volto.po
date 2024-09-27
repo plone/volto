@@ -497,10 +497,10 @@ msgstr "ब्राउज़ करें"
 msgid "Browse the site, drop an image, or type a URL"
 msgstr "साइट ब्राउज़ करें, एक छवि छोड़ें, या एक URL टाइप करें"
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable inheritance, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
-msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "डिफ़ॉल्ट रूप से, इस आइटम के कंटेनर से अनुमतियाँ विरासत में होती हैं। यदि आप इसे अक्षम करते हैं, तो केवल स्पष्ट रूप से परिभागित अनुमतियाँ मान्य होंगी। अवलोकन में, प्रतीक {inherited} एक विरासत मान को दर्शाता है। उसी तरह, प्रतीक {global} एक वैश्विक भूमिका को दर्शाता है, जो साइट प्रशासक द्वारा प्रबंधित की जाती है।"
+msgid "By default, permissions from the container of this item are inherited. If you disable inheritance, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+msgstr ""
 
 #. Default: "Cache Name"
 #: components/manage/Controlpanels/DatabaseInformation

@@ -208,10 +208,11 @@ exports[`renders a recurrence widget component with aligned columns 1`] = `
             type="button"
           >
             <svg
+              aria-label="Edit recurrence"
               className="icon"
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "<title>Edit recurrence</title>undefined",
+                  "__html": "<title >Edit recurrence</title>undefined",
                 }
               }
               onClick={null}
@@ -233,10 +234,11 @@ exports[`renders a recurrence widget component with aligned columns 1`] = `
             type="button"
           >
             <svg
+              aria-label="Remove"
               className="icon"
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "<title>Remove</title>undefined",
+                  "__html": "<title >Remove</title>undefined",
                 }
               }
               onClick={null}

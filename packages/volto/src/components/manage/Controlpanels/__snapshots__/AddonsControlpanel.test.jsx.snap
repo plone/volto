@@ -69,6 +69,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
             >
               Something Else
               <svg
+                aria-label=""
                 class="icon accordionToggle Something Else"
                 style="height: 23px; width: auto; fill: currentColor;"
                 viewBox=""
@@ -138,6 +139,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
                 Update
               </div>
               <svg
+                aria-label=""
                 class="icon accordionToggle Whatever"
                 style="height: 24px; width: auto; fill: #878f93;"
                 viewBox=""

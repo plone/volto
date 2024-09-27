@@ -13,6 +13,7 @@ exports[`RelationsWidget renders a full vocabulary array view widget component 1
       title=""
     >
       <svg
+        aria-label=""
         className="icon icon-margin"
         dangerouslySetInnerHTML={
           Object {
@@ -42,6 +43,7 @@ exports[`RelationsWidget renders a full vocabulary array view widget component 1
       title=""
     >
       <svg
+        aria-label=""
         className="icon icon-margin"
         dangerouslySetInnerHTML={
           Object {
@@ -78,10 +80,11 @@ exports[`RelationsWidget renders a full vocabulary relations view widget compone
       title="A Foo"
     >
       <svg
+        aria-label="Foo"
         className="icon icon-margin"
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<title>Foo</title>undefined",
+            "__html": "<title >Foo</title>undefined",
           }
         }
         onClick={null}
@@ -109,10 +112,11 @@ exports[`RelationsWidget renders a full vocabulary relations view widget compone
       title="A Bar"
     >
       <svg
+        aria-label="Bar"
         className="icon icon-margin"
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<title>Bar</title>undefined",
+            "__html": "<title >Bar</title>undefined",
           }
         }
         onClick={null}
@@ -147,6 +151,7 @@ exports[`RelationsWidget renders a simple relations view widget component 1`] = 
       title=""
     >
       <svg
+        aria-label=""
         className="icon icon-margin"
         dangerouslySetInnerHTML={
           Object {
@@ -176,6 +181,7 @@ exports[`RelationsWidget renders a simple relations view widget component 1`] = 
       title=""
     >
       <svg
+        aria-label=""
         className="icon icon-margin"
         dangerouslySetInnerHTML={
           Object {
@@ -212,6 +218,7 @@ exports[`RelationsWidget renders a vocabulary relations view widget component 1`
       title=""
     >
       <svg
+        aria-label=""
         className="icon icon-margin"
         dangerouslySetInnerHTML={
           Object {
@@ -241,6 +248,7 @@ exports[`RelationsWidget renders a vocabulary relations view widget component 1`
       title=""
     >
       <svg
+        aria-label=""
         className="icon icon-margin"
         dangerouslySetInnerHTML={
           Object {

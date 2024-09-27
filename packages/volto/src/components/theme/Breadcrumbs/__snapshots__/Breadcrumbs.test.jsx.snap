@@ -19,6 +19,7 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
         title="Home"
       >
         <svg
+          aria-label=""
           className="icon"
           dangerouslySetInnerHTML={
             Object {

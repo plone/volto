@@ -150,6 +150,7 @@ exports[`Login renders a login component 1`] = `
             type="submit"
           >
             <svg
+              aria-label=""
               className="icon circled"
               dangerouslySetInnerHTML={
                 Object {
@@ -178,6 +179,7 @@ exports[`Login renders a login component 1`] = `
             title="Cancel"
           >
             <svg
+              aria-label=""
               className="icon circled"
               dangerouslySetInnerHTML={
                 Object {

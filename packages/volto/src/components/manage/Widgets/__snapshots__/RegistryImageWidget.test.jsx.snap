@@ -60,6 +60,7 @@ exports[`RegistryImageWidget renders a file widget component with value 1`] = `
               class="ui basic icon button delete-button"
             >
               <svg
+                aria-label=""
                 class="icon"
                 style="height: 20px; width: auto; fill: currentColor;"
                 viewBox=""

@@ -20,7 +20,38 @@ exports[`Sharing renders a sharing component 1`] = `
       <div
         class="ui secondary segment"
       >
-        You can control who can view and edit your item using the list below.
+        <p>
+          You can control who can view and edit your item using the list below.
+        </p>
+        <p>
+          By default, permissions from the container of this item are inherited. If you disable inheritance, only the explicitly defined sharing permissions will be valid. In the overview, the symbol 
+          <svg
+            aria-label="Inherited value"
+            class="icon"
+            style="height: 20px; width: auto; fill: green;"
+            viewBox=""
+            xmlns=""
+          >
+            <title>
+              Inherited value
+            </title>
+            undefined
+          </svg>
+           indicates an inherited value. Similarly, the symbol 
+          <svg
+            aria-label="Global role"
+            class="icon"
+            style="height: 20px; width: auto; fill: #007EB1;"
+            viewBox=""
+            xmlns=""
+          >
+            <title>
+              Global role
+            </title>
+            undefined
+          </svg>
+           indicates a global role, which is managed by the site administrator.
+        </p>
       </div>
       <div
         class="ui segment"
@@ -127,21 +158,6 @@ exports[`Sharing renders a sharing component 1`] = `
               </label>
             </div>
           </div>
-          <p
-            class="help"
-          >
-            By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol 
-            <i
-              aria-hidden="true"
-              class="green check circle outline icon"
-            />
-             indicates an inherited value. Similarly, the symbol 
-            <i
-              aria-hidden="true"
-              class="blue check circle outline icon"
-            />
-             indicates a global role, which is managed by the site administrator.
-          </p>
         </div>
         <div
           class="ui clearing attached segment actions"
@@ -153,6 +169,7 @@ exports[`Sharing renders a sharing component 1`] = `
             type="submit"
           >
             <svg
+              aria-label=""
               class="icon circled"
               style="height: 30px; width: auto; fill: currentColor;"
               viewBox=""
@@ -165,6 +182,7 @@ exports[`Sharing renders a sharing component 1`] = `
             title="Cancel"
           >
             <svg
+              aria-label=""
               class="icon circled"
               style="height: 30px; width: auto; fill: currentColor;"
               viewBox=""

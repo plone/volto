@@ -12,6 +12,7 @@ exports[`FilterList renders filters listing component for search block 1`] = `
       className="filter-list-title"
     >
       <svg
+        aria-label=""
         className="icon"
         dangerouslySetInnerHTML={
           Object {

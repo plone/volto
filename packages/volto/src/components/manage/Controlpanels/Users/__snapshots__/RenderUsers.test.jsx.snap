@@ -109,6 +109,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
           role="option"
         >
           <svg
+            aria-label=""
             className="icon"
             dangerouslySetInnerHTML={
               Object {
@@ -243,6 +244,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component with op
           role="option"
         >
           <svg
+            aria-label=""
             className="icon"
             dangerouslySetInnerHTML={
               Object {

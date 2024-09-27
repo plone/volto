@@ -501,10 +501,10 @@ msgstr "Bladeren"
 msgid "Browse the site, drop an image, or type a URL"
 msgstr ""
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable inheritance, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
-msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "Standaard worden de rechten overgenomen van de bovenliggende map.  Als u dit uitgeschakeld, worden alleen de expliciet toegekende rechten gebruikt. In het overzicht geeft het symbool ${image_confirm_icon} een overgenomen waarde aan. Vergelijkbaar geeft het icoon ${image_link_icon} een globale rol aan, die wordt beheerd door de websitebeheerder."
+msgid "By default, permissions from the container of this item are inherited. If you disable inheritance, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+msgstr ""
 
 #. Default: "Cache Name"
 #: components/manage/Controlpanels/DatabaseInformation

@@ -3,6 +3,7 @@
 exports[`renders a Toast info component 1`] = `
 Array [
   <svg
+    aria-label=""
     className="icon"
     dangerouslySetInnerHTML={
       Object {

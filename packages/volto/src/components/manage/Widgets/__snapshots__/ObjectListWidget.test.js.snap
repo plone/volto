@@ -61,6 +61,7 @@ exports[`renders an object list widget component 1`] = `
                 class="ui compact icon button"
               >
                 <svg
+                  aria-label=""
                   class="icon"
                   style="height: 18px; width: auto; fill: currentColor;"
                   viewBox=""
@@ -114,6 +115,7 @@ exports[`renders an object list widget component 1`] = `
               tabindex="0"
             >
               <svg
+                aria-label=""
                 class="icon"
                 style="height: 18px; width: auto; fill: currentColor;"
                 viewBox=""
@@ -132,6 +134,7 @@ exports[`renders an object list widget component 1`] = `
                 aria-label="Remove item #1"
               >
                 <svg
+                  aria-label=""
                   class="icon"
                   style="height: 20px; width: auto; fill: #e40166;"
                   viewBox=""
@@ -139,6 +142,7 @@ exports[`renders an object list widget component 1`] = `
                 />
               </button>
               <svg
+                aria-label=""
                 class="icon"
                 style="height: 20px; width: auto; fill: currentColor;"
                 viewBox=""
@@ -209,6 +213,7 @@ exports[`renders an object list widget component 1`] = `
               tabindex="0"
             >
               <svg
+                aria-label=""
                 class="icon"
                 style="height: 18px; width: auto; fill: currentColor;"
                 viewBox=""
@@ -227,6 +232,7 @@ exports[`renders an object list widget component 1`] = `
                 aria-label="Remove item #2"
               >
                 <svg
+                  aria-label=""
                   class="icon"
                   style="height: 20px; width: auto; fill: #e40166;"
                   viewBox=""
@@ -234,6 +240,7 @@ exports[`renders an object list widget component 1`] = `
                 />
               </button>
               <svg
+                aria-label=""
                 class="icon"
                 style="height: 20px; width: auto; fill: currentColor;"
                 viewBox=""

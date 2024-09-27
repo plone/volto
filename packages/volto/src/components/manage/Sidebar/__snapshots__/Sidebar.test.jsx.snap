@@ -17,6 +17,7 @@ Array [
       onClick={[Function]}
     >
       <svg
+        aria-label=""
         className="icon full-size-icon"
         dangerouslySetInnerHTML={
           Object {
@@ -69,6 +70,7 @@ Array [
         id="sidebar-properties"
       >
         <svg
+          aria-label=""
           className="icon tab-forbidden"
           dangerouslySetInnerHTML={
             Object {
@@ -92,6 +94,7 @@ Array [
         id="sidebar-order"
       >
         <svg
+          aria-label=""
           className="icon tab-forbidden"
           dangerouslySetInnerHTML={
             Object {

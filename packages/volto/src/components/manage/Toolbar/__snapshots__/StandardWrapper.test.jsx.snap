@@ -16,6 +16,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       onClick={[Function]}
     >
       <svg
+        aria-label=""
         className="icon"
         dangerouslySetInnerHTML={
           Object {

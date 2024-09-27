@@ -21,6 +21,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
       >
         Note that roles set here apply directly to a user. The symbol
         <svg
+          aria-label="plone-svg"
           class="icon"
           style="height: 20px; width: auto; fill: #007EB1;"
           viewBox=""

@@ -73,6 +73,7 @@ exports[`ManageTranslations renders a ManageTranslations component 1`] = `
                   role="button"
                 >
                   <svg
+                    aria-label=""
                     class="icon"
                     style="height: 24px; width: auto; fill: currentColor;"
                     viewBox=""
@@ -88,6 +89,7 @@ exports[`ManageTranslations renders a ManageTranslations component 1`] = `
                   class="ui basic icon button"
                 >
                   <svg
+                    aria-label=""
                     class="icon"
                     style="height: 24px; width: auto; fill: currentColor;"
                     viewBox=""
@@ -124,6 +126,7 @@ exports[`ManageTranslations renders a ManageTranslations component 1`] = `
                   role="button"
                 >
                   <svg
+                    aria-label=""
                     class="icon"
                     style="height: 24px; width: auto; fill: currentColor;"
                     viewBox=""
@@ -139,6 +142,7 @@ exports[`ManageTranslations renders a ManageTranslations component 1`] = `
                   class="ui basic icon button"
                 >
                   <svg
+                    aria-label=""
                     class="icon"
                     style="height: 24px; width: auto; fill: currentColor;"
                     viewBox=""

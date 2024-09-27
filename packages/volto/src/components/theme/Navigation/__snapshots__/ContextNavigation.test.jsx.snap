@@ -45,6 +45,7 @@ exports[`ContextNavigation renders a navigation component with an active item 1`
               class="content active-indicator"
             >
               <svg
+                aria-label=""
                 class="icon"
                 style="height: 30px; width: auto; fill: currentColor;"
                 viewBox=""
@@ -137,6 +138,7 @@ exports[`ContextNavigation renders a navigation component with an active item wh
               class="content active-indicator"
             >
               <svg
+                aria-label=""
                 class="icon"
                 style="height: 30px; width: auto; fill: currentColor;"
                 viewBox=""

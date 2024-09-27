@@ -497,10 +497,10 @@ msgstr "Sfoglia"
 msgid "Browse the site, drop an image, or type a URL"
 msgstr "Sfoglia i contenuti, rilascia un'immagine o digita un URL"
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable inheritance, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
-msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "Di norma, i permessi di questo elemento vengono ereditati dal contenitore. Se disabiliti questa opzione, verranno considerati solo i permessi di condivisione definiti esplicitamente. Nel sommario, il simbolo {inherited} indica una impostazione ereditata. Analogamente, il simbolo {global} indica un ruolo globale, che è gestito dall'amministratore del sito"
+msgid "By default, permissions from the container of this item are inherited. If you disable inheritance, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+msgstr "Di norma, i permessi di questo elemento vengono ereditati dal contenitore. Se disabiliti questa opzione, verranno considerati solo i permessi di condivisione definiti esplicitamente. Nel sommario, il simbolo {inherited} indica una impostazione ereditata. Analogamente, il simbolo {global} indica un ruolo globale, che è gestito dall'amministratore del sito."
 
 #. Default: "Cache Name"
 #: components/manage/Controlpanels/DatabaseInformation

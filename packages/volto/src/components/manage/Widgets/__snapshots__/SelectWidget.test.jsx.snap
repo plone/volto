@@ -92,6 +92,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   class="react-select__indicator react-select__clear-indicator css-1v154vq-ClearIndicator"
                 >
                   <svg
+                    aria-label=""
                     class="icon"
                     style="height: 18px; width: auto; fill: #e40166;"
                     viewBox=""
@@ -106,6 +107,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   class="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
                 >
                   <svg
+                    aria-label=""
                     class="icon"
                     style="height: 24px; width: auto; fill: #007bc1;"
                     viewBox=""
@@ -129,6 +131,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
                     0
                   </div>
                   <svg
+                    aria-label=""
                     class="icon"
                     style="height: 20px; width: auto; fill: #007bc1;"
                     viewBox=""
@@ -144,6 +147,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
                     One
                   </div>
                   <svg
+                    aria-label=""
                     class="icon"
                     style="height: 20px; width: auto; fill: #007bc1;"
                     viewBox=""
@@ -251,6 +255,7 @@ exports[`renders a select widget component 1`] = `
                   class="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
                 >
                   <svg
+                    aria-label=""
                     class="icon"
                     style="height: 24px; width: auto; fill: #007bc1;"
                     viewBox=""

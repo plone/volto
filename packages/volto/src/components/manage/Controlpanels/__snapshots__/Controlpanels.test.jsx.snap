@@ -40,6 +40,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -63,6 +64,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -86,6 +88,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -109,6 +112,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -132,6 +136,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -155,6 +160,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -195,6 +201,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -218,6 +225,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -241,6 +249,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -264,6 +273,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -304,6 +314,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -344,6 +355,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -367,6 +379,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -390,6 +403,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -471,6 +485,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -511,6 +526,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -551,6 +567,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -574,6 +591,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -597,6 +615,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -620,6 +639,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -660,6 +680,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -683,6 +704,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -706,6 +728,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -746,6 +769,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -769,6 +793,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
@@ -792,6 +817,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                     class="ui icon center aligned header"
                   >
                     <svg
+                      aria-label=""
                       class="icon"
                       style="height: 48px; width: auto; fill: currentColor;"
                       viewBox=""
