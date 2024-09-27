@@ -59,7 +59,7 @@ const messages = defineMessages({
   },
 });
 
-function SingleInput({ id, value, onChange, readOnly }) {
+function SingleInput({ id, value, onChange, placeholder, readOnly }) {
   return (
     <Input
       id={`field-${id}`}
@@ -67,11 +67,12 @@ function SingleInput({ id, value, onChange, readOnly }) {
       value={value || ''}
       // disabled={isDisabled}
       // icon={icon || null}
-      // placeholder={placeholder}
+      placeholder={placeholder}
       onChange={({ target }) =>
         onChange(id, target.value === '' ? undefined : target.value)
       }
       readOnly={readOnly}
+
       // ref={ref}
       // onBlur={({ target }) =>
       //   onBlur(id, target.value === '' ? undefined : target.value)
@@ -83,7 +84,14 @@ function SingleInput({ id, value, onChange, readOnly }) {
   );
 }
 
-function MultipleNoTextBody({ id, value, onChange, readOnly, reactSelect }) {
+function MultipleNoTextBody({
+  id,
+  value,
+  onChange,
+  readOnly,
+  placeholder,
+  reactSelect,
+}) {
   const Select = reactSelect.default;
 
   const options = [
@@ -123,7 +131,7 @@ function MultipleNoTextBody({ id, value, onChange, readOnly, reactSelect }) {
         // }),
         MultiValueContainer,
         DropdownIndicator: () => null,
-        ClearIndicator,
+        ClearIndicator: () => null,
         Option: Option,
       }}
       value={normalizeValue(value)}
@@ -136,6 +144,7 @@ function MultipleNoTextBody({ id, value, onChange, readOnly, reactSelect }) {
       }}
       readOnly
       // value={['Op1']}
+      placeholder={placeholder}
       // placeholder={
       //   this.props.placeholder ?? this.props.intl.formatMessage(messages.select)
       // }
@@ -396,11 +405,11 @@ export class ObjectBrowserWidgetComponent extends Component {
       onChange,
       isDisabled,
       isObjectBrowserOpen,
+      placeholder,
     } = this.props;
 
     let items = compact(!Array.isArray(value) && value ? [value] : value || []);
 
-    let icon = navTreeSVG;
     let iconAction =
       mode === 'multiple' || items.length === 0
         ? this.showObjectBrowser
@@ -422,10 +431,15 @@ export class ObjectBrowserWidgetComponent extends Component {
       WidgetBody = SingleInput;
     }
 
-    const descriptionText = description ? 'help text' : 'text';
+    const fieldPlaceholder =
+      this.props.placeholder ??
+      this.props.intl.formatMessage(messages.placeholder);
 
     return (
-      <FormFieldWrapper {...this.props} className={` ${descriptionText}`}>
+      <FormFieldWrapper
+        {...this.props}
+        className={description ? 'help text' : 'text'}
+      >
         <div className="objectbrowser-field">
           {/* TODO: Is there a prop to get this "full width, no margin" styling? */}
           <Grid style={{ margin: '0', width: '100%' }} stretched>
@@ -436,22 +450,34 @@ export class ObjectBrowserWidgetComponent extends Component {
                   onChange={onChange}
                   value={items}
                   readOnly={!isMultiple && !allowExternals}
+                  placeholder={fieldPlaceholder}
                 />
               </Grid.Column>
               <Grid.Column width="4">
-                <Button
-                  aria-label={this.props.intl.formatMessage(
-                    messages.openObjectBrowser,
-                  )}
-                  aria-expanded={isObjectBrowserOpen}
-                  aria-describedby={`field-${id}`}
-                  aria-controls={`field-${id}`}
-                  onClick={iconAction}
-                  className="action"
-                  disabled={isDisabled}
-                >
-                  <Icon name={icon} size="18px" />
-                </Button>
+                <Button.Group>
+                  <Button
+                    aria-label="Clear entry"
+                    onClick={iconAction}
+                    className="action"
+                    disabled={isDisabled}
+                  >
+                    <Icon name={clearSVG} size="24px" />
+                  </Button>
+                  <Button
+                    aria-label={this.props.intl.formatMessage(
+                      messages.openObjectBrowser,
+                    )}
+                    aria-expanded={isObjectBrowserOpen}
+                    aria-describedby={`field-${id}`}
+                    aria-controls={`field-${id}`}
+                    onClick={iconAction}
+                    className="action"
+                    disabled={isDisabled}
+                  >
+                    {/* TODO: display: block for the SVG */}
+                    <Icon name={navTreeSVG} size="24px" />
+                  </Button>
+                </Button.Group>
               </Grid.Column>
             </Grid.Row>
           </Grid>
