@@ -13,6 +13,10 @@ import {
 const Header = ({ pathname }) => {
   const token = useSelector((state) => state.userSession.token, shallowEqual);
 
+  if (pathname.endsWith('/uploads')) {
+    return null;
+  }
+
   return (
     <Segment basic className="header-wrapper" role="banner">
       <Container>

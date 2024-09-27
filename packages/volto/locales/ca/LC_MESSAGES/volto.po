@@ -392,6 +392,11 @@ msgstr ""
 msgid "Apply working copy"
 msgstr "Aplicar la còpia de treball"
 
+#. Default: "Are you sure you want to abort the remaining file uploads?"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Are you sure you want to abort the remaining file uploads?"
+msgstr ""
+
 #. Default: "Are you sure you want to delete this field?"
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -431,6 +436,7 @@ msgstr ""
 #. Default: "Back"
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsUploadPage
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
@@ -494,6 +500,7 @@ msgstr ""
 
 #. Default: "Browse"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/ContentsUploadPage
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Navegui"
@@ -526,6 +533,7 @@ msgstr "No es pot editar el disseny per al tipus de contingut <strong>{type}</st
 #. Default: "Cancel"
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/ContentsUploadPage
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -540,6 +548,11 @@ msgstr "No es pot editar el disseny per al tipus de contingut <strong>{type}</st
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
 msgstr "Cancel·lar"
+
+#. Default: "Cancel uploads"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Cancel uploads"
+msgstr ""
 
 #. Default: "Cell"
 #: config/Blocks
@@ -695,6 +708,11 @@ msgstr "Comentaris"
 #: components/manage/Diff/Diff
 msgid "Compare"
 msgstr "Compara"
+
+#. Default: "Complete"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Complete"
+msgstr ""
 
 #. Default: "Condition changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -963,6 +981,7 @@ msgstr "Per defecte"
 #. Default: "Delete"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
+#: components/manage/Contents/ContentsUploadPage
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/Groups/RenderGroups
 #: components/manage/Controlpanels/ModerateComments
@@ -1129,6 +1148,11 @@ msgstr "Document"
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
+msgstr ""
+
+#. Default: "Drag and Drop or"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Drag and Drop or"
 msgstr ""
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -1883,8 +1907,8 @@ msgstr "Mida del lot d'articles"
 
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
-msgid "Item successfully moved."
-msgstr "L'element s'ha mogut correctament."
+msgid "Item succesfully moved."
+msgstr ""
 
 #. Default: "Item(s) copied."
 #: components/manage/Contents/Contents
@@ -1957,6 +1981,11 @@ msgstr "Data de l'últim comentari"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Última modificació"
+
+#. Default: "Last modified:"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Last modified:"
+msgstr ""
 
 #. Default: "Latest available configuration"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -2355,6 +2384,11 @@ msgstr ""
 #. Default: "There is no connection to the server, due to a timeout o no network connection."
 #: components/theme/RequestTimeout/RequestTimeout
 msgid "No connection to the server"
+msgstr ""
+
+#. Default: "No files uploaded yet!"
+#: components/manage/Contents/ContentsUploadPage
+msgid "No files uploaded yet!"
 msgstr ""
 
 #. Default: "No image selected"
@@ -3453,6 +3487,11 @@ msgstr "Dividir"
 msgid "Start Date"
 msgstr "Data d'inici"
 
+#. Default: "Start Upload"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Start Upload"
+msgstr ""
+
 #. Default: "Start of the recurrence"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Start of the recurrence"
@@ -3732,6 +3771,11 @@ msgstr ""
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
 msgstr "Hi ha un problema de configuració al backend"
+
+#. Default: "There was an error"
+#: components/manage/Contents/ContentsUploadPage
+msgid "There was an error"
+msgstr ""
 
 #. Default: "There was an error with the upgrade."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -4061,10 +4105,25 @@ msgstr "Pengeu una imatge principal al camp de contingut 'Imatge principal'."
 msgid "Upload files"
 msgstr "Carregueu fitxers"
 
+#. Default: "Upload more files"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Upload more files"
+msgstr ""
+
+#. Default: "Uploaded"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Uploaded"
+msgstr ""
+
 #. Default: "Uploading image"
 #: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
 msgstr "S'està carregant la imatge"
+
+#. Default: "Uploading to {uploadFolder}"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Uploading to {uploadFolder}"
+msgstr ""
 
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule

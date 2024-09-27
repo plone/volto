@@ -391,6 +391,11 @@ msgstr ""
 msgid "Apply working copy"
 msgstr ""
 
+#. Default: "Are you sure you want to abort the remaining file uploads?"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Are you sure you want to abort the remaining file uploads?"
+msgstr ""
+
 #. Default: "Are you sure you want to delete this field?"
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -430,6 +435,7 @@ msgstr ""
 #. Default: "Back"
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsUploadPage
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
@@ -493,6 +499,7 @@ msgstr ""
 
 #. Default: "Browse"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/ContentsUploadPage
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "参照"
@@ -525,6 +532,7 @@ msgstr "ふるまいの<strong>ブロックが有効</strong>で、かつ<strong
 #. Default: "Cancel"
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/ContentsUploadPage
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -539,6 +547,11 @@ msgstr "ふるまいの<strong>ブロックが有効</strong>で、かつ<strong
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
 msgstr "キャンセル"
+
+#. Default: "Cancel uploads"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Cancel uploads"
+msgstr ""
 
 #. Default: "Cell"
 #: config/Blocks
@@ -694,6 +707,11 @@ msgstr ""
 #: components/manage/Diff/Diff
 msgid "Compare"
 msgstr "比較"
+
+#. Default: "Complete"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Complete"
+msgstr ""
 
 #. Default: "Condition changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -962,6 +980,7 @@ msgstr ""
 #. Default: "Delete"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
+#: components/manage/Contents/ContentsUploadPage
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/Groups/RenderGroups
 #: components/manage/Controlpanels/ModerateComments
@@ -1128,6 +1147,11 @@ msgstr ""
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
+msgstr ""
+
+#. Default: "Drag and Drop or"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Drag and Drop or"
 msgstr ""
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -1882,8 +1906,8 @@ msgstr "1ページ表示件数"
 
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
-msgid "Item successfully moved."
-msgstr "アイテムは正常に移動されました。"
+msgid "Item succesfully moved."
+msgstr ""
 
 #. Default: "Item(s) copied."
 #: components/manage/Contents/Contents
@@ -1956,6 +1980,11 @@ msgstr "最終コメント日付"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "最終変更"
+
+#. Default: "Last modified:"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Last modified:"
+msgstr ""
 
 #. Default: "Latest available configuration"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -2354,6 +2383,11 @@ msgstr ""
 #. Default: "There is no connection to the server, due to a timeout o no network connection."
 #: components/theme/RequestTimeout/RequestTimeout
 msgid "No connection to the server"
+msgstr ""
+
+#. Default: "No files uploaded yet!"
+#: components/manage/Contents/ContentsUploadPage
+msgid "No files uploaded yet!"
 msgstr ""
 
 #. Default: "No image selected"
@@ -3452,6 +3486,11 @@ msgstr "分割"
 msgid "Start Date"
 msgstr "開始日付"
 
+#. Default: "Start Upload"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Start Upload"
+msgstr ""
+
 #. Default: "Start of the recurrence"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Start of the recurrence"
@@ -3731,6 +3770,11 @@ msgstr ""
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
 msgstr "バックエンドサーバの設定に問題があります。"
+
+#. Default: "There was an error"
+#: components/manage/Contents/ContentsUploadPage
+msgid "There was an error"
+msgstr ""
 
 #. Default: "There was an error with the upgrade."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -4060,9 +4104,24 @@ msgstr "リード画像をコンテンツのフィールドにアップロード
 msgid "Upload files"
 msgstr "アップロードファイル"
 
+#. Default: "Upload more files"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Upload more files"
+msgstr ""
+
+#. Default: "Uploaded"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Uploaded"
+msgstr ""
+
 #. Default: "Uploading image"
 #: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
+msgstr ""
+
+#. Default: "Uploading to {uploadFolder}"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Uploading to {uploadFolder}"
 msgstr ""
 
 #. Default: "Use the form below to define the new content rule"

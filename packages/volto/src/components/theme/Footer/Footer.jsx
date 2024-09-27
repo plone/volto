@@ -10,6 +10,7 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { useSelector, shallowEqual } from 'react-redux';
 import { UniversalLink } from '@plone/volto/components';
 import { flattenToAppURL, addAppURL } from '@plone/volto/helpers';
+import { useLocation } from 'react-router-dom';
 
 const messages = defineMessages({
   copyright: {
@@ -31,6 +32,11 @@ const Footer = ({ intl }) => {
     }),
     shallowEqual,
   );
+  const location = useLocation();
+
+  if (location.pathname.endsWith('/uploads')) {
+    return null;
+  }
 
   return (
     <Segment

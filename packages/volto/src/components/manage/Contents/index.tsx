@@ -62,3 +62,10 @@ export const ContentsTagsModal = loadable(
       /* webpackChunkName: "Contents" */ '@plone/volto/components/manage/Contents/ContentsTagsModal'
     ),
 );
+
+export const ContentsUploadPage = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Contents" */ '@plone/volto/components/manage/Contents/ContentsUploadPage'
+    ),
+);

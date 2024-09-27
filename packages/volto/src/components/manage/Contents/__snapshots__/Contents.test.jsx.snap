@@ -29,9 +29,6 @@ exports[`Contents renders a folder contents view component 1`] = `
         <article
           id="content"
         >
-          <div
-            class="UploadModal"
-          />
           <section
             id="content-core"
           >
@@ -44,17 +41,21 @@ exports[`Contents renders a folder contents view component 1`] = `
                 <div
                   class="menu top-menu-menu"
                 >
-                  <button
-                    aria-label="Upload"
-                    class="ui button icon item upload"
+                  <a
+                    href="/blog"
                   >
-                    <svg
-                      class="icon upload"
-                      style="height: 24px; width: auto; fill: #007eb1;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                  </button>
+                    <button
+                      aria-label="Upload"
+                      class="ui button icon item upload"
+                    >
+                      <svg
+                        class="icon upload"
+                        style="height: 24px; width: auto; fill: #007eb1;"
+                        viewBox=""
+                        xmlns=""
+                      />
+                    </button>
+                  </a>
                 </div>
                 <div
                   class="menu top-menu-menu"
