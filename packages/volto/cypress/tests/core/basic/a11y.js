@@ -1,5 +1,6 @@
 describe('Accessibility Tests', () => {
   beforeEach(() => {
+    cy.autologin();
     cy.visit('/');
     cy.injectAxe(); // make sure axe is available on the page
   });
@@ -18,7 +19,6 @@ describe('Accessibility Tests', () => {
   });
 
   it('Test image block with cypress-axe', () => {
-    cy.autologin();
     cy.createContent({
       contentType: 'Document',
       contentId: 'a11y-image-block',
@@ -48,7 +48,6 @@ describe('Accessibility Tests', () => {
   });
 
   it('Test table block with cypress-axe', () => {
-    cy.autologin();
     cy.createContent({
       contentType: 'Document',
       contentId: 'a11y-table-block',
@@ -78,7 +77,6 @@ describe('Accessibility Tests', () => {
   });
 
   it('Test maps block with cypress-axe', () => {
-    cy.autologin();
     cy.createContent({
       contentType: 'Document',
       contentId: 'a11y-maps-block',
@@ -103,7 +101,6 @@ describe('Accessibility Tests', () => {
   });
 
   it('Test text block with cypress-axe', () => {
-    cy.autologin();
     cy.createContent({
       contentType: 'Document',
       contentId: 'a11y-text-block',
@@ -123,7 +120,6 @@ describe('Accessibility Tests', () => {
   });
 
   it('Test teaser block with cypress-axe', () => {
-    cy.autologin();
     cy.createContent({
       contentType: 'Document',
       contentId: 'a11y-teaser-block',
@@ -154,6 +150,41 @@ describe('Accessibility Tests', () => {
     cy.wait(1000);
     cy.injectAxe();
     cy.checkA11y(); // fail for a11y violations
+  });
+
+  it('Test Anchors and TOC block with cypress-axe', () => {
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'a11y-anchors-block',
+      contentTitle: 'a11y anchors block',
+    });
+    cy.visit('/a11y-anchors-block/edit');
+
+    // Add TOC block
+    cy.get('.ui.basic.icon.button.block-add-button').first().click();
+    cy.get(".blocks-chooser .ui.form .field.searchbox input[type='text']").type(
+      'table of contents',
+    );
+    cy.get('.button.toc').click();
+
+    // Add headings
+    cy.get('.ui.basic.icon.button.block-add-button').first().click();
+    cy.get(".blocks-chooser .ui.form .field.searchbox input[type='text']").type(
+      'text',
+    );
+    cy.get('.button.slate').click();
+    cy.get('.ui.drag.block.inner.slate').eq(0).click().type('Title 1').click();
+    cy.contains('Title 1').setSelection('Title 1');
+    cy.get('.slate-inline-toolbar .button-wrapper a[title="Title"]').click({
+      force: true,
+    });
+
+    cy.get('#toolbar-save').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/a11y-anchors-block');
+
+    cy.wait(1000);
+    cy.injectAxe();
+    cy.checkA11y();
   });
 
   // TODO: Update video block
