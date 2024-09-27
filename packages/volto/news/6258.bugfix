@@ -1,1 +1,0 @@
-Fix `TypeError: values[0] is undefined` in Contents properties modal. @davisagli

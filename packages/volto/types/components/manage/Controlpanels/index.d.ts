@@ -9,11 +9,11 @@ export declare const UsersControlpanel: import("@loadable/component").LoadableCl
 export declare const RenderUsers: import("@loadable/component").LoadableClassComponent<any>;
 export declare const UserGroupMembershipControlPanel: import("@loadable/component").LoadableComponent<unknown>;
 export declare const GroupsControlpanel: import("@loadable/component").LoadableClassComponent<any>;
-export declare const RenderGroups: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
+export declare const RenderGroups: import("@loadable/component").LoadableComponent<any>;
 export declare const RelationsControlpanel: import("@loadable/component").LoadableComponent<unknown>;
-export declare const AliasesControlpanel: import("@loadable/component").LoadableClassComponent<any>;
+export declare const AliasesControlpanel: import("@loadable/component").LoadableComponent<any>;
 export declare const UndoControlpanel: import("@loadable/component").LoadableClassComponent<any>;
-export declare const AddonsControlpanel: import("@loadable/component").LoadableClassComponent<any>;
+export declare const AddonsControlpanel: import("@loadable/component").LoadableComponent<any>;
 export declare const ContentType: import("@loadable/component").LoadableClassComponent<any>;
 export declare const ContentTypeLayout: import("@loadable/component").LoadableClassComponent<any>;
 export declare const ContentTypeSchema: import("@loadable/component").LoadableClassComponent<any>;
@@ -29,4 +29,4 @@ export declare const VersionOverview: import("@loadable/component").LoadableComp
 }>;
 export declare const UpgradeControlPanel: import("@loadable/component").LoadableClassComponent<any>;
 export declare const ModerateComments: import("@loadable/component").LoadableClassComponent<any>;
-export declare const DatabaseInformation: import("@loadable/component").LoadableClassComponent<any>;
+export declare const DatabaseInformation: import("@loadable/component").LoadableComponent<unknown>;
