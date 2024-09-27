@@ -1868,7 +1868,7 @@ msgstr "Sorgente non valida per il teaser"
 #. Default: "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 #: helpers/MessageLabels/MessageLabels
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
-msgstr "Non è consentito selezionare contemporaneamente la definizione della password e la richiesta dell'invio del messaggio di reimpostazione della password tramite e-mail. È necessario selezionare una di esse."
+msgstr "Non è consentito effettuare contemporaneamente l'inserimento della password e la richiesta dell'invio del messaggio di reimpostazione della password tramite e-mail. È necessario selezionare una di esse."
 
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
