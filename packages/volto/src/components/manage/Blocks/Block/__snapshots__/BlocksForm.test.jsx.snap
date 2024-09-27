@@ -33,6 +33,7 @@ exports[`Allow override of blocksConfig 1`] = `
               tabindex="0"
             >
               <svg
+                aria-label=""
                 class="icon"
                 style="height: 18px; width: auto; fill: currentColor;"
                 viewBox=""
@@ -59,6 +60,7 @@ exports[`Allow override of blocksConfig 1`] = `
                 class="ui basic icon button delete-button"
               >
                 <svg
+                  aria-label=""
                   class="icon"
                   style="height: 18px; width: auto; fill: currentColor;"
                   viewBox=""
@@ -87,6 +89,7 @@ exports[`Allow override of blocksConfig 1`] = `
               tabindex="0"
             >
               <svg
+                aria-label=""
                 class="icon"
                 style="height: 18px; width: auto; fill: currentColor;"
                 viewBox=""
@@ -156,6 +159,7 @@ exports[`Allow override of blocksConfig 1`] = `
             tabindex="0"
           >
             <svg
+              aria-label=""
               class="icon"
               style="height: 16px; width: auto; fill: currentColor;"
               viewBox=""
@@ -172,6 +176,7 @@ exports[`Allow override of blocksConfig 1`] = `
             tabindex="0"
           >
             <svg
+              aria-label=""
               class="icon"
               style="width: auto; fill: currentColor;"
               viewBox=""
@@ -218,6 +223,7 @@ exports[`Allow override of blocksConfig 1`] = `
             tabindex="0"
           >
             <svg
+              aria-label=""
               class="icon"
               style="height: 16px; width: auto; fill: currentColor;"
               viewBox=""
@@ -234,6 +240,7 @@ exports[`Allow override of blocksConfig 1`] = `
             tabindex="0"
           >
             <svg
+              aria-label=""
               class="icon"
               style="width: auto; fill: currentColor;"
               viewBox=""

@@ -21,6 +21,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
       >
         Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol
         <svg
+          aria-label="plone-svg"
           class="icon"
           style="height: 20px; width: auto; fill: #007EB1;"
           viewBox=""

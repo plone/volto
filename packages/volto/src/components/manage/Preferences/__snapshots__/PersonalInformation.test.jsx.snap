@@ -29,6 +29,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
             type="submit"
           >
             <svg
+              aria-label=""
               className="icon circled"
               dangerouslySetInnerHTML={
                 Object {
@@ -54,6 +55,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
             title="Cancel"
           >
             <svg
+              aria-label=""
               className="icon circled"
               dangerouslySetInnerHTML={
                 Object {
@@ -108,6 +110,7 @@ exports[`PersonalInformation renders a personal information component embedded i
             type="submit"
           >
             <svg
+              aria-label=""
               className="icon circled"
               dangerouslySetInnerHTML={
                 Object {
@@ -133,6 +136,7 @@ exports[`PersonalInformation renders a personal information component embedded i
             title="Cancel"
           >
             <svg
+              aria-label=""
               className="icon circled"
               dangerouslySetInnerHTML={
                 Object {

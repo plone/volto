@@ -2,10 +2,11 @@
 
 exports[`Renders icon 1`] = `
 <svg
+  aria-label="My Icon"
   className="icon my-icon"
   dangerouslySetInnerHTML={
     Object {
-      "__html": "<title>My Icon</title>Accessibility",
+      "__html": "<title >My Icon</title>Accessibility",
     }
   }
   onClick={null}

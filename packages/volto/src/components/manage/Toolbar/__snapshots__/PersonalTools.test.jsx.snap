@@ -17,10 +17,11 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       onClick={[Function]}
     >
       <svg
+        aria-label="Back"
         className="icon"
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<title>Back</title>undefined",
+            "__html": "<title >Back</title>undefined",
           }
         }
         onClick={null}
@@ -47,10 +48,11 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       onClick={[Function]}
     >
       <svg
+        aria-label="Logout"
         className="icon logout"
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<title>Logout</title>undefined",
+            "__html": "<title >Logout</title>undefined",
           }
         }
         onClick={null}
@@ -70,6 +72,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
     className="avatar default"
   >
     <svg
+      aria-label=""
       className="icon"
       dangerouslySetInnerHTML={
         Object {
@@ -100,6 +103,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
         >
           Profile
           <svg
+            aria-label=""
             className="icon"
             dangerouslySetInnerHTML={
               Object {
@@ -126,6 +130,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
         >
           Preferences
           <svg
+            aria-label=""
             className="icon"
             dangerouslySetInnerHTML={
               Object {
@@ -152,6 +157,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
         >
           Site Setup
           <svg
+            aria-label=""
             className="icon"
             dangerouslySetInnerHTML={
               Object {
@@ -193,10 +199,11 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       onClick={[Function]}
     >
       <svg
+        aria-label="Back"
         className="icon"
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<title>Back</title>undefined",
+            "__html": "<title >Back</title>undefined",
           }
         }
         onClick={null}
@@ -223,10 +230,11 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       onClick={[Function]}
     >
       <svg
+        aria-label="Logout"
         className="icon logout"
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<title>Logout</title>undefined",
+            "__html": "<title >Logout</title>undefined",
           }
         }
         onClick={null}
@@ -246,6 +254,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
     className="avatar default"
   >
     <svg
+      aria-label=""
       className="icon"
       dangerouslySetInnerHTML={
         Object {
@@ -276,6 +285,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
         >
           Profile
           <svg
+            aria-label=""
             className="icon"
             dangerouslySetInnerHTML={
               Object {
@@ -302,6 +312,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
         >
           Preferences
           <svg
+            aria-label=""
             className="icon"
             dangerouslySetInnerHTML={
               Object {
@@ -328,6 +339,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
         >
           Site Setup
           <svg
+            aria-label=""
             className="icon"
             dangerouslySetInnerHTML={
               Object {
@@ -369,10 +381,11 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       onClick={[Function]}
     >
       <svg
+        aria-label="Back"
         className="icon"
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<title>Back</title>undefined",
+            "__html": "<title >Back</title>undefined",
           }
         }
         onClick={null}
@@ -399,10 +412,11 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       onClick={[Function]}
     >
       <svg
+        aria-label="Logout"
         className="icon logout"
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<title>Logout</title>undefined",
+            "__html": "<title >Logout</title>undefined",
           }
         }
         onClick={null}
@@ -438,6 +452,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
         >
           Profile
           <svg
+            aria-label=""
             className="icon"
             dangerouslySetInnerHTML={
               Object {
@@ -464,6 +479,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
         >
           Preferences
           <svg
+            aria-label=""
             className="icon"
             dangerouslySetInnerHTML={
               Object {
@@ -490,6 +506,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
         >
           Site Setup
           <svg
+            aria-label=""
             className="icon"
             dangerouslySetInnerHTML={
               Object {

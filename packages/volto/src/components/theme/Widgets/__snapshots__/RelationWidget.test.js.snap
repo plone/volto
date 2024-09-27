@@ -9,6 +9,7 @@ exports[`RelationWidget renders a full relation view widget component 1`] = `
   title=""
 >
   <svg
+    aria-label=""
     className="icon icon-margin"
     dangerouslySetInnerHTML={
       Object {
@@ -39,10 +40,11 @@ exports[`RelationWidget renders a full relation view widget component with child
   title="Bar Foo"
 >
   <svg
+    aria-label="Document"
     className="icon icon-margin"
     dangerouslySetInnerHTML={
       Object {
-        "__html": "<title>Document</title>undefined",
+        "__html": "<title >Document</title>undefined",
       }
     }
     onClick={null}
@@ -71,6 +73,7 @@ exports[`RelationWidget renders a relation view widget component 1`] = `
   title=""
 >
   <svg
+    aria-label=""
     className="icon icon-margin"
     dangerouslySetInnerHTML={
       Object {

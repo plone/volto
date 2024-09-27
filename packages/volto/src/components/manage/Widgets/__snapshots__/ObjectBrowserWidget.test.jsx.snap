@@ -48,6 +48,7 @@ exports[`renders a objectBrowser widget component 1`] = `
               class="ui button action"
             >
               <svg
+                aria-label=""
                 class="icon"
                 style="height: 18px; width: auto; fill: currentColor;"
                 viewBox=""

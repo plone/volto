@@ -49,6 +49,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                     class="ui button icon item upload"
                   >
                     <svg
+                      aria-label=""
                       class="icon upload"
                       style="height: 24px; width: auto; fill: #007eb1;"
                       viewBox=""
@@ -64,6 +65,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                     class="ui button disabled icon item"
                   >
                     <svg
+                      aria-label=""
                       class="icon rename"
                       style="height: 24px; width: auto; fill: grey;"
                       viewBox=""
@@ -75,6 +77,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                     class="ui button disabled icon item"
                   >
                     <svg
+                      aria-label=""
                       class="icon semaphore"
                       style="height: 24px; width: auto; fill: grey;"
                       viewBox=""
@@ -86,6 +89,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                     class="ui button disabled icon item"
                   >
                     <svg
+                      aria-label=""
                       class="icon tag"
                       style="height: 24px; width: auto; fill: grey;"
                       viewBox=""
@@ -97,6 +101,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                     class="ui button disabled icon item"
                   >
                     <svg
+                      aria-label=""
                       class="icon properties"
                       style="height: 24px; width: auto; fill: grey;"
                       viewBox=""
@@ -112,6 +117,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                     class="ui button disabled icon item"
                   >
                     <svg
+                      aria-label=""
                       class="icon cut"
                       style="height: 24px; width: auto; fill: grey;"
                       viewBox=""
@@ -123,6 +129,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                     class="ui button disabled icon item"
                   >
                     <svg
+                      aria-label=""
                       class="icon copy"
                       style="height: 24px; width: auto; fill: grey;"
                       viewBox=""
@@ -134,6 +141,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                     class="ui button icon item"
                   >
                     <svg
+                      aria-label=""
                       class="icon paste"
                       style="height: 24px; width: auto; fill: grey;"
                       viewBox=""
@@ -145,6 +153,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                     class="ui button disabled icon item"
                   >
                     <svg
+                      aria-label=""
                       class="icon delete"
                       style="height: 24px; width: auto; fill: grey;"
                       viewBox=""
@@ -168,6 +177,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                       />
                     </div>
                     <svg
+                      aria-label=""
                       class="icon zoom"
                       style="height: 30px; width: auto; fill: #007eb1; flex-shrink: 0;"
                       viewBox=""
@@ -210,6 +220,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                   tabindex="0"
                 >
                   <svg
+                    aria-label=""
                     class="icon"
                     style="height: 24px; width: auto; fill: #826a6a;"
                     viewBox=""
@@ -231,6 +242,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Review state"
                           style="height: 24px; width: auto; fill: #007eb1;"
                           viewBox=""
@@ -246,6 +258,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Last modified"
                           style="height: 24px; width: auto; fill: #007eb1;"
                           viewBox=""
@@ -261,6 +274,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Publication date"
                           style="height: 24px; width: auto; fill: #007eb1;"
                           viewBox=""
@@ -276,6 +290,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon ID"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -291,6 +306,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Expiration date"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -306,6 +322,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Created on"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -321,6 +338,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Tags"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -336,6 +354,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Type"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -351,6 +370,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Folder"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -366,6 +386,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Excluded from navigation"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -381,6 +402,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Object Size"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -396,6 +418,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Last comment date"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -411,6 +434,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Total comments"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -426,6 +450,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon End Date"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -441,6 +466,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Description"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -456,6 +482,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Creator"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -471,6 +498,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Location"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -486,6 +514,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon UID"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -501,6 +530,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Start Date"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -516,6 +546,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon Type"
                           style="height: 24px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -546,6 +577,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         class=""
                       >
                         <svg
+                          aria-label=""
                           class="icon dropdown-popup-trigger configuration-svg"
                           style="height: 24px; width: auto; fill: #826a6a;"
                           viewBox=""
@@ -556,6 +588,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         class=""
                       >
                         <svg
+                          aria-label=""
                           class="icon dropdown-popup-trigger"
                           style="height: 24px; width: auto; fill: #826a6a;"
                           viewBox=""

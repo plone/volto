@@ -17,6 +17,7 @@ exports[`Renders a button 1`] = `
     title="Add block"
   >
     <svg
+      aria-label=""
       class="icon block-add-button"
       style="height: 19px; width: auto; fill: currentColor;"
       viewBox=""

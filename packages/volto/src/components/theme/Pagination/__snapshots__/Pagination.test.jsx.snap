@@ -13,6 +13,7 @@ exports[`Pagination renders no pagination when only 1 page 1`] = `
       value={0}
     >
       <svg
+        aria-label=""
         className="icon"
         dangerouslySetInnerHTML={
           Object {
@@ -55,6 +56,7 @@ exports[`Pagination renders page size options when specified 1`] = `
       value={0}
     >
       <svg
+        aria-label=""
         className="icon"
         dangerouslySetInnerHTML={
           Object {
@@ -129,6 +131,7 @@ exports[`Pagination renders pagination when multiple pages are specified 1`] = `
       value={5}
     >
       <svg
+        aria-label=""
         className="icon"
         dangerouslySetInnerHTML={
           Object {
@@ -214,6 +217,7 @@ exports[`Pagination renders pagination when multiple pages are specified 1`] = `
       value={7}
     >
       <svg
+        aria-label=""
         className="icon"
         dangerouslySetInnerHTML={
           Object {
