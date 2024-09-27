@@ -1,5 +1,6 @@
 import React from 'react';
 import { TooltipTrigger, type Selection } from 'react-aria-components';
+import { useLocalStorage } from 'usehooks-ts';
 import {
   BinIcon,
   Button,
@@ -21,9 +22,9 @@ type Props = {
   workflow: () => Promise<void>;
   tags: () => Promise<void>;
   properties: () => Promise<void>;
-  cut: (value?: string) => Promise<void>;
-  copy: (value?: string) => Promise<void>;
-  paste: () => Promise<void>;
+  cut: () => void;
+  copy: () => void;
+  paste: () => void;
   deleteItem: (value?: string) => Promise<void>;
   canPaste: boolean;
   selected: Selection;
@@ -113,7 +114,7 @@ export function ContentsActions({
       <TooltipTrigger>
         <Button
           className="react-aria-Button contents-action-trigger cut"
-          onPress={() => cut()}
+          onPress={cut}
           aria-label={intl.formatMessage({ id: 'Cut' })}
           isDisabled={selected !== 'all' && selected.size === 0}
         >
@@ -126,7 +127,7 @@ export function ContentsActions({
       <TooltipTrigger>
         <Button
           className="react-aria-Button contents-action-trigger copy"
-          onPress={() => copy()}
+          onPress={copy}
           aria-label={intl.formatMessage({ id: 'Copy' })}
           isDisabled={selected !== 'all' && selected.size === 0}
         >

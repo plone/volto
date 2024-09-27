@@ -17,11 +17,11 @@ import { useContentsContext } from '../providers/contents';
 interface Props extends Omit<PopoverProps, 'children'> {
   editLink: string;
   viewLink: string;
-  onMoveToTop: () => Promise<void>;
-  onMoveToBottom: () => Promise<void>;
-  onCut: () => Promise<void>;
-  onCopy: () => Promise<void>;
-  onDelete: () => Promise<void>;
+  onMoveToTop: () => void;
+  onMoveToBottom: () => void;
+  onCut: () => void;
+  onCopy: () => void;
+  onDelete: () => void;
 }
 
 export function ItemActionsPopover({

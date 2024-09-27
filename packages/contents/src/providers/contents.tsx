@@ -23,7 +23,10 @@ const ContentsContext = createContext<ContentsContext>({
   // getBaseUrl: (url) => url,
   getContentIcon: () => undefined,
   intl: { locale: 'en-US', formatMessage: () => '' },
-  toast: { error: () => '' },
+  toast: {
+    error: () => '',
+    success: () => '',
+  },
 });
 
 type ContentsProviderProps = PropsWithChildren<ContentsContext>;

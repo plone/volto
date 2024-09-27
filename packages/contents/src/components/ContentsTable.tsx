@@ -11,7 +11,7 @@ import {
   Heading,
 } from 'react-aria-components';
 import { useMediaQuery } from 'usehooks-ts';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import {
   // AddIcon,
   Breadcrumbs,
@@ -35,17 +35,21 @@ import { TableIndexesPopover } from './TableIndexesPopover';
 import { RearrangePopover } from './RearrangePopover';
 import { ContentsActions } from './ContentsActions';
 // import { AddContentPopover } from './AddContentPopover';
+import { useCopyOrCut } from '../helpers/useCopyOrCut';
+import { usePaste } from '../helpers/usePaste';
 import { useContentsContext } from '../providers/contents';
+import {
+  useBreadcrumbsQuery,
+  useContentQuery,
+  useSearchQuery,
+} from './queries';
 
 interface ContentsTableProps {
   pathname: string;
   // objectActions: ActionsResponse['object'];
   title: string;
-  // loading: boolean;
-  canPaste: boolean;
   textFilter: string;
   onChangeTextFilter: (value: string) => void;
-  // items: Brain[];
   selected: Selection;
   setSelected: (value: Selection) => void;
   indexes: {
@@ -67,13 +71,7 @@ interface ContentsTableProps {
   workflow: () => Promise<void>;
   tags: () => Promise<void>;
   properties: () => Promise<void>;
-  cut: (value?: string) => Promise<void>;
-  copy: (value?: string) => Promise<void>;
-  paste: () => Promise<void>;
   deleteItem: (value?: string) => Promise<void>;
-  orderItem: (id: string, delta: number) => Promise<void>;
-  moveToTop: (index: number) => Promise<void>;
-  moveToBottom: (index: number) => Promise<void>;
   // addableTypes: ComponentProps<typeof AddContentPopover>['addableTypes'];
 }
 
@@ -86,10 +84,8 @@ interface ContentsTableProps {
 export function ContentsTable({
   pathname,
   // objectActions,
-  canPaste,
   textFilter,
   onChangeTextFilter,
-  // items,
   selected,
   setSelected,
   indexes: baseIndexes,
@@ -100,49 +96,39 @@ export function ContentsTable({
   workflow,
   tags,
   properties,
-  cut,
-  copy,
-  paste,
   deleteItem,
-  orderItem,
-  moveToTop,
-  moveToBottom, // addableTypes,
+  // addableTypes,
 }: ContentsTableProps) {
   const { intl, toast, flattenToAppURL } = useContentsContext();
-  const { getContentQuery, getSearchQuery, getBreadcrumbsQuery } =
-    usePloneClient();
   const isMobileScreenSize = useMediaQuery('(max-width: 992px)');
+  const { updateContentMutation } = usePloneClient();
+  const [copyOrCut, setCopyOrCut] = useCopyOrCut();
+  const { paste, isPending: pasteIsPending } = usePaste(pathname);
 
-  const { data: contentData, isLoading: contentIsLoading } = useQuery(
-    getContentQuery({
-      path: pathname,
-    }),
+  const { data: contentData, isLoading: contentIsLoading } =
+    useContentQuery(pathname);
+
+  const { data: bcData, isLoading: bcIsLoading } =
+    useBreadcrumbsQuery(pathname);
+
+  const {
+    data: searchData,
+    isLoading: searchIsLoading,
+    refetch: searchRefetch,
+  } = useSearchQuery(pathname, textFilter);
+
+  const { mutate: orderItem, isPending: orderIsPending } = useMutation(
+    updateContentMutation(),
   );
 
-  const { data: bcData, isLoading: bcIsLoading } = useQuery(
-    getBreadcrumbsQuery({
-      path: pathname,
-    }),
-  );
+  const isLoading =
+    contentIsLoading ||
+    searchIsLoading ||
+    bcIsLoading ||
+    orderIsPending ||
+    pasteIsPending;
 
-  const { data: searchData, isLoading: searchIsLoading } = useQuery(
-    getSearchQuery({
-      query: {
-        path: {
-          query: pathname,
-          depth: 1,
-        },
-        sort_on: 'getObjPositionInParent',
-        sort_order: 'ascending',
-        metadata_fields: '_all',
-        show_inactive: true,
-        b_size: 100000000,
-        ...(textFilter && { SearchableText: `${textFilter}*` }),
-      },
-    }),
-  );
-
-  const isLoading = contentIsLoading || searchIsLoading || bcIsLoading;
+  const canPaste = copyOrCut.data.length > 0;
 
   const { title = '' } = contentData ?? {};
   const { items = [] } = searchData ?? {};
@@ -208,7 +194,11 @@ export function ContentsTable({
         <TooltipTrigger>
           <Button
             className="react-aria-Button contents-action-trigger paste"
-            onPress={paste}
+            onPress={() =>
+              paste({
+                onSuccess: searchRefetch,
+              })
+            }
             aria-label={intl.formatMessage({ id: 'Paste' })}
             isDisabled={!canPaste}
           >
@@ -231,10 +221,64 @@ export function ContentsTable({
             item={item}
             column={column.id}
             indexes={indexes}
-            onMoveToBottom={() => moveToBottom(itemIndex)}
-            onMoveToTop={() => moveToTop(itemIndex)}
-            onCut={() => cut(item['@id'])}
-            onCopy={() => copy(item['@id'])}
+            onMoveToBottom={() =>
+              orderItem(
+                {
+                  path: pathname,
+                  data: { ordering: { obj_id: item.id, delta: 'bottom' } },
+                },
+                {
+                  onSuccess: () => {
+                    searchRefetch();
+                  },
+                },
+              )
+            }
+            onMoveToTop={() =>
+              orderItem(
+                {
+                  path: pathname,
+                  data: { ordering: { obj_id: item.id, delta: 'top' } },
+                },
+                {
+                  onSuccess: () => {
+                    searchRefetch();
+                  },
+                },
+              )
+            }
+            onCut={() => {
+              setCopyOrCut({
+                op: 'cut',
+                data: [item['@id']],
+              });
+              setSelected(new Set());
+              toast.success(
+                <Toast
+                  success
+                  title={intl.formatMessage({ id: 'Success' })}
+                  content={intl.formatMessage({
+                    id: 'Item(s) cut.',
+                  })}
+                />,
+              );
+            }}
+            onCopy={() => {
+              setCopyOrCut({
+                op: 'copy',
+                data: [item['@id']],
+              });
+              setSelected(new Set());
+              toast.success(
+                <Toast
+                  success
+                  title={intl.formatMessage({ id: 'Success' })}
+                  content={intl.formatMessage({
+                    id: 'Item(s) copied.',
+                  })}
+                />,
+              );
+            }}
             onDelete={() => deleteItem(item['@id'])}
           />
         ),
@@ -283,25 +327,20 @@ export function ContentsTable({
       if (delta < 0 && e.target.dropPosition === 'after') delta += 1;
 
       if (delta !== 0) {
-        orderItem(item.id, delta);
+        orderItem(
+          {
+            path: pathname,
+            data: { ordering: { obj_id: item.id, delta } },
+          },
+          {
+            onSuccess: () => {
+              searchRefetch();
+            },
+          },
+        );
       }
     },
   });
-
-  if (isLoading)
-    return (
-      <Modal isOpen={true}>
-        <Dialog>
-          <Heading slot="title">
-            {intl.formatMessage({ id: 'loading' })}
-          </Heading>
-          <ProgressBar
-            aria-label={intl.formatMessage({ id: 'loading' })}
-            isIndeterminate
-          />
-        </Dialog>
-      </Modal>
-    );
 
   return (
     <Container
@@ -312,6 +351,19 @@ export function ContentsTable({
       layout={false}
       narrow={false}
     >
+      {isLoading && (
+        <Modal isOpen={true}>
+          <Dialog>
+            <Heading slot="title">
+              {intl.formatMessage({ id: 'loading' })}
+            </Heading>
+            <ProgressBar
+              aria-label={intl.formatMessage({ id: 'loading' })}
+              isIndeterminate
+            />
+          </Dialog>
+        </Modal>
+      )}
       <article id="content">
         <section className="topbar">
           <div className="title-block">
@@ -329,9 +381,49 @@ export function ContentsTable({
               workflow={workflow}
               tags={tags}
               properties={properties}
-              cut={cut}
-              copy={copy}
-              paste={paste}
+              cut={() => {
+                setCopyOrCut({
+                  op: 'cut',
+                  data:
+                    selected === 'all'
+                      ? items.map((item) => item['@id'])
+                      : [...selected].map((key) => key.toString()),
+                });
+                setSelected(new Set());
+                toast.success(
+                  <Toast
+                    success
+                    title={intl.formatMessage({ id: 'Success' })}
+                    content={intl.formatMessage({
+                      id: 'Item(s) cut.',
+                    })}
+                  />,
+                );
+              }}
+              copy={() => {
+                setCopyOrCut({
+                  op: 'copy',
+                  data:
+                    selected === 'all'
+                      ? items.map((item) => item['@id'])
+                      : [...selected].map((key) => key.toString()),
+                });
+                setSelected(new Set());
+                toast.success(
+                  <Toast
+                    success
+                    title={intl.formatMessage({ id: 'Success' })}
+                    content={intl.formatMessage({
+                      id: 'Item(s) copied.',
+                    })}
+                  />,
+                );
+              }}
+              paste={() =>
+                paste({
+                  onSuccess: searchRefetch,
+                })
+              }
               deleteItem={deleteItem}
               canPaste={canPaste}
               selected={selected}

@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 export type Toast = {
   error: (content: ReactNode | null) => string | number;
+  success: (content: ReactNode | null) => string | number;
 };
 
 export type IntlShape = {

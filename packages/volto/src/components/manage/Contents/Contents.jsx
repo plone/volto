@@ -30,13 +30,8 @@ import {
 
 import {
   searchContent,
-  cut,
-  copy,
-  copyContent,
   deleteContent,
   listActions,
-  moveContent,
-  orderContent,
   sortContent,
   updateColumnsContent,
   linkIntegrityCheck,
@@ -253,7 +248,7 @@ const queryClient = new QueryClient({
     queries: {
       // With SSR, we usually want to set some default staleTime
       // above 0 to avoid refetching immediately on the client
-      staleTime: 60 * 1000,
+      staleTime: 5 * 1000,
     },
   },
 });
@@ -276,12 +271,7 @@ class Contents extends Component {
     action: PropTypes.string,
     source: PropTypes.arrayOf(PropTypes.string),
     searchContent: PropTypes.func.isRequired,
-    cut: PropTypes.func.isRequired,
-    copy: PropTypes.func.isRequired,
-    copyContent: PropTypes.func.isRequired,
     deleteContent: PropTypes.func.isRequired,
-    moveContent: PropTypes.func.isRequired,
-    orderContent: PropTypes.func.isRequired,
     sortContent: PropTypes.func.isRequired,
     updateColumnsContent: PropTypes.func.isRequired,
     linkIntegrityCheck: PropTypes.func.isRequired,
@@ -363,21 +353,15 @@ class Contents extends Component {
     this.onChangePage = this.onChangePage.bind(this);
     this.onChangePageSize = this.onChangePageSize.bind(this);
     this.onOrderIndex = this.onOrderIndex.bind(this);
-    this.onOrderItem = this.onOrderItem.bind(this);
     this.onSortItems = this.onSortItems.bind(this);
-    this.onMoveToTop = this.onMoveToTop.bind(this);
     this.onChangeSelected = this.onChangeSelected.bind(this);
-    this.onMoveToBottom = this.onMoveToBottom.bind(this);
-    this.cut = this.cut.bind(this);
-    this.copy = this.copy.bind(this);
     this.delete = this.delete.bind(this);
     this.upload = this.upload.bind(this);
     this.rename = this.rename.bind(this);
     this.tags = this.tags.bind(this);
     this.properties = this.properties.bind(this);
     this.workflow = this.workflow.bind(this);
-    this.paste = this.paste.bind(this);
-    this.fetchContents = this.fetchContents.bind(this);
+    // this.fetchContents = this.fetchContents.bind(this);
     this.orderTimeout = null;
     this.deleteItemsToShowThreshold = 10;
 
@@ -524,19 +508,6 @@ class Contents extends Component {
           error
           title={this.props.intl.formatMessage(messages.error)}
           content={msgBody}
-        />,
-      );
-    }
-
-    if (
-      this.props.clipboardRequest.loading &&
-      nextProps.clipboardRequest.loaded
-    ) {
-      this.props.toastify.toast.success(
-        <Toast
-          success
-          title={this.props.intl.formatMessage(messages.success)}
-          content={this.props.intl.formatMessage(messages.messagePasted)}
         />,
       );
     }
@@ -708,32 +679,6 @@ class Contents extends Component {
   }
 
   /**
-   * On order item
-   * @method onOrderItem
-   * @param {string} id Item id
-   * @param {number} itemIndex Item index
-   * @param {number} delta Delta
-   * @returns {undefined}
-   */
-  onOrderItem(id, itemIndex, delta, backend) {
-    if (backend) {
-      this.props
-        .orderContent(
-          getBaseUrl(this.props.pathname),
-          id.replace(/^.*\//, ''),
-          delta,
-        )
-        .then(() => {
-          // this.fetchContents();
-        });
-    } else {
-      this.setState({
-        items: move(this.state.items, itemIndex, itemIndex + delta),
-      });
-    }
-  }
-
-  /**
    * On sort items
    * @method onSortItems
    * @param {object} event Event object
@@ -753,55 +698,9 @@ class Contents extends Component {
     );
   }
 
-  /**
-   * On move to top
-   * @method onMoveToTop
-   * @param {object} event Event object
-   * @param {string} value Item index
-   * @returns {undefined}
-   */
-  onMoveToTop(event, { value }) {
-    const id = this.state.items[value]['@id'];
-    this.props
-      .orderContent(
-        getBaseUrl(this.props.pathname),
-        id.replace(/^.*\//, ''),
-        'top',
-      )
-      .then(() => {
-        this.setState(
-          {
-            currentPage: 0,
-          },
-          // () => this.fetchContents(),
-        );
-      });
-  }
-
-  /**
-   * On move to bottom
-   * @method onMoveToBottom
-   * @param {object} event Event object
-   * @param {string} value Item index
-   * @returns {undefined}
-   */
-  onMoveToBottom(event, { value }) {
-    const id = this.state.items[value]['@id'];
-    this.props
-      .orderContent(
-        getBaseUrl(this.props.pathname),
-        id.replace(/^.*\//, ''),
-        'bottom',
-      )
-      .then(() => {
-        this.setState(
-          {
-            currentPage: 0,
-          },
-          // () => this.fetchContents(),
-        );
-      });
-  }
+  resetPagination = () => {
+    this.setState({ currentPage: 0 });
+  };
 
   /**
    * On delete ok
@@ -970,69 +869,31 @@ class Contents extends Component {
    * @param {string} pathname Pathname to fetch contents.
    * @returns {undefined}
    */
-  fetchContents(pathname) {
-    if (this.state.pageSize === this.props.intl.formatMessage(messages.all)) {
-      //'All'
-      this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
-        'path.depth': 1,
-        sort_on: this.state.sort_on,
-        sort_order: this.state.sort_order,
-        metadata_fields: '_all',
-        b_size: 100000000,
-        show_inactive: true,
-        ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
-      });
-    } else {
-      this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
-        'path.depth': 1,
-        sort_on: this.state.sort_on,
-        sort_order: this.state.sort_order,
-        metadata_fields: '_all',
-        ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
-        b_size: this.state.pageSize,
-        b_start: this.state.currentPage * this.state.pageSize,
-        show_inactive: true,
-      });
-    }
-  }
-
-  /**
-   * Cut handler
-   * @method cut
-   * @param {Object} event Event object.
-   * @param {string} value Value of the event.
-   * @returns {undefined}
-   */
-  cut(event, { value }) {
-    this.props.cut(value ? [value] : this.state.selected);
-    this.onSelectNone();
-    this.props.toastify.toast.success(
-      <Toast
-        success
-        title={this.props.intl.formatMessage(messages.success)}
-        content={this.props.intl.formatMessage(messages.messageCut)}
-      />,
-    );
-  }
-
-  /**
-   * Copy handler
-   * @method copy
-   * @param {Object} event Event object.
-   * @param {string} value Value of the event.
-   * @returns {undefined}
-   */
-  copy(event, { value }) {
-    this.props.copy(value ? [value] : this.state.selected);
-    this.onSelectNone();
-    this.props.toastify.toast.success(
-      <Toast
-        success
-        title={this.props.intl.formatMessage(messages.success)}
-        content={this.props.intl.formatMessage(messages.messageCopied)}
-      />,
-    );
-  }
+  // fetchContents(pathname) {
+  //   if (this.state.pageSize === this.props.intl.formatMessage(messages.all)) {
+  //     //'All'
+  //     this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
+  //       'path.depth': 1,
+  //       sort_on: this.state.sort_on,
+  //       sort_order: this.state.sort_order,
+  //       metadata_fields: '_all',
+  //       b_size: 100000000,
+  //       show_inactive: true,
+  //       ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
+  //     });
+  //   } else {
+  //     this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
+  //       'path.depth': 1,
+  //       sort_on: this.state.sort_on,
+  //       sort_order: this.state.sort_order,
+  //       metadata_fields: '_all',
+  //       ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
+  //       b_size: this.state.pageSize,
+  //       b_start: this.state.currentPage * this.state.pageSize,
+  //       show_inactive: true,
+  //     });
+  //   }
+  // }
 
   /**
    * Delete handler
@@ -1104,26 +965,6 @@ class Contents extends Component {
   }
 
   /**
-   * Paste handler
-   * @method paste
-   * @returns {undefined}
-   */
-  paste() {
-    if (this.props.action === 'copy') {
-      this.props.copyContent(
-        this.props.source,
-        getBaseUrl(this.props.pathname),
-      );
-    }
-    if (this.props.action === 'cut') {
-      this.props.moveContent(
-        this.props.source,
-        getBaseUrl(this.props.pathname),
-      );
-    }
-  }
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -1165,7 +1006,6 @@ class Contents extends Component {
                       pathname={path}
                       objectActions={this.props.objectActions}
                       loading={loading}
-                      canPaste={!!this.props.action}
                       textFilter={this.state.filter}
                       onChangeTextFilter={(value) => {
                         this.onChangeFilter(undefined, { value });
@@ -1190,30 +1030,8 @@ class Contents extends Component {
                       workflow={this.workflow}
                       tags={this.tags}
                       properties={this.properties}
-                      cut={(id) =>
-                        Promise.resolve(this.cut(undefined, { value: id }))
-                      }
-                      copy={(id) =>
-                        Promise.resolve(this.copy(undefined, { value: id }))
-                      }
-                      paste={this.paste}
                       deleteItem={(id) =>
                         Promise.resolve(this.delete(undefined, { value: id }))
-                      }
-                      orderItem={(id, delta) =>
-                        Promise.resolve(
-                          this.onOrderItem(id, undefined, delta, true),
-                        )
-                      }
-                      moveToTop={(index) =>
-                        Promise.resolve(
-                          this.onMoveToTop(undefined, { value: index }),
-                        )
-                      }
-                      moveToBottom={(index) =>
-                        Promise.resolve(
-                          this.onMoveToBottom(undefined, { value: index }),
-                        )
                       }
                       // addableTypes={this.props.addableTypes}
                     />
@@ -1615,13 +1433,8 @@ export const __test__ = compose(
     },
     {
       searchContent,
-      cut,
-      copy,
-      copyContent,
       deleteContent,
       listActions,
-      moveContent,
-      orderContent,
       sortContent,
       updateColumnsContent,
       linkIntegrityCheck,
@@ -1661,13 +1474,8 @@ export default compose(
     },
     {
       searchContent,
-      cut,
-      copy,
-      copyContent,
       deleteContent,
       listActions,
-      moveContent,
-      orderContent,
       sortContent,
       updateColumnsContent,
       linkIntegrityCheck,
