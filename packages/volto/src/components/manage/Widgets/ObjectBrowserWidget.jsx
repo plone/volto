@@ -16,7 +16,7 @@ import {
   removeProtocol,
 } from '@plone/volto/helpers/Url/Url';
 import config from '@plone/volto/registry';
-import { compact, includes, isArray, isEmpty, remove } from 'lodash';
+import { compact, remove } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -26,7 +26,6 @@ import { Button, Grid, Image, Input, Label, Popup } from 'semantic-ui-react';
 
 import {
   ClearIndicator,
-  DropdownIndicator,
   MenuList,
   MultiValueContainer,
   Option,
@@ -123,7 +122,7 @@ function MultipleNoTextBody({ id, value, onChange, readOnly, reactSelect }) {
         // MenuList,
         // }),
         MultiValueContainer,
-        // DropdownIndicator,
+        DropdownIndicator: () => null,
         ClearIndicator,
         Option: Option,
       }}
@@ -215,52 +214,6 @@ export class ObjectBrowserWidgetComponent extends Component {
     super(props);
     this.selectedItemsRef = React.createRef();
     this.placeholderRef = React.createRef();
-  }
-  renderLabel(item) {
-    const href = item['@id'];
-    return (
-      <Popup
-        key={flattenToAppURL(href)}
-        content={
-          <div style={{ display: 'flex' }}>
-            {isInternalURL(href) ? (
-              <Icon name={homeSVG} size="18px" />
-            ) : (
-              <Icon name={blankSVG} size="18px" />
-            )}
-            &nbsp;
-            {flattenToAppURL(href)}
-          </div>
-        }
-        trigger={
-          <Label>
-            <div className="item-title">
-              {includes(config.settings.imageObjects, item['@type']) ? (
-                <Image
-                  size="small"
-                  src={`${item['@id']}/@@images/image/thumb`}
-                />
-              ) : (
-                item.title
-              )}
-            </div>
-            <div>
-              {this.props.mode === 'multiple' && (
-                <Icon
-                  name={clearSVG}
-                  size="12px"
-                  className="right"
-                  onClick={(event) => {
-                    event.preventDefault();
-                    this.removeItem(item);
-                  }}
-                />
-              )}
-            </div>
-          </Label>
-        }
-      />
-    );
   }
 
   removeItem = (item) => {
@@ -445,10 +398,9 @@ export class ObjectBrowserWidgetComponent extends Component {
       isObjectBrowserOpen,
     } = this.props;
 
-    let items = compact(!isArray(value) && value ? [value] : value || []);
+    let items = compact(!Array.isArray(value) && value ? [value] : value || []);
 
-    let icon =
-      mode === 'multiple' || items.length === 0 ? navTreeSVG : clearSVG;
+    let icon = navTreeSVG;
     let iconAction =
       mode === 'multiple' || items.length === 0
         ? this.showObjectBrowser
@@ -470,36 +422,40 @@ export class ObjectBrowserWidgetComponent extends Component {
       WidgetBody = SingleInput;
     }
 
+    const descriptionText = description ? 'help text' : 'text';
+
     return (
-      <FormFieldWrapper
-        {...this.props}
-        className={description ? 'help text' : 'text'}
-      >
-        <Grid.Row stretched>
-          <Grid.Column width="4">
-            <WidgetBody
-              id={id}
-              onChange={onChange}
-              value={items}
-              readOnly={!isMultiple && !allowExternals}
-            />
-          </Grid.Column>
-          <Grid.Column width="4">
-            <Button
-              aria-label={this.props.intl.formatMessage(
-                messages.openObjectBrowser,
-              )}
-              aria-expanded={isObjectBrowserOpen}
-              aria-describedby={`field-${id}`}
-              aria-controls={`field-${id}`}
-              onClick={iconAction}
-              className="action"
-              disabled={isDisabled}
-            >
-              <Icon name={icon} size="18px" />
-            </Button>
-          </Grid.Column>
-        </Grid.Row>
+      <FormFieldWrapper {...this.props} className={` ${descriptionText}`}>
+        <div className="objectbrowser-field">
+          {/* TODO: Is there a prop to get this "full width, no margin" styling? */}
+          <Grid style={{ margin: '0', width: '100%' }} stretched>
+            <Grid.Row>
+              <Grid.Column width="8">
+                <WidgetBody
+                  id={id}
+                  onChange={onChange}
+                  value={items}
+                  readOnly={!isMultiple && !allowExternals}
+                />
+              </Grid.Column>
+              <Grid.Column width="4">
+                <Button
+                  aria-label={this.props.intl.formatMessage(
+                    messages.openObjectBrowser,
+                  )}
+                  aria-expanded={isObjectBrowserOpen}
+                  aria-describedby={`field-${id}`}
+                  aria-controls={`field-${id}`}
+                  onClick={iconAction}
+                  className="action"
+                  disabled={isDisabled}
+                >
+                  <Icon name={icon} size="18px" />
+                </Button>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </div>
       </FormFieldWrapper>
     );
   }
