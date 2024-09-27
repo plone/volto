@@ -109,7 +109,7 @@ const Body = ({ data, isEditMode }) => {
           ) : (
             <>
               {data.url.match('vimeo') ? (
-                <Embed id={videoID} source="vimeo" {...embedSettings} />
+                <VideoEmbed id={videoID} source="vimeo" {...embedSettings} />
               ) : (
                 <>
                   {data.url.match('.mp4') ? (
