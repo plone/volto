@@ -3,11 +3,11 @@ import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import AddonsControlpanel from './AddonsControlpanel_old';
+import AddonsControlpanel from './AddonsControlpanel';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('../../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
 
 describe('AddonsControlpanel', () => {
   it('renders an addon control component', () => {

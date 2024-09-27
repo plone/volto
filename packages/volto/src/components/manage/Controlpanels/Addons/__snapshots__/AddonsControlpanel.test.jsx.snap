@@ -1,0 +1,282 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddonsControlpanel renders an addon control component 1`] = `
+<div>
+  <div
+    class="ui container controlpanel-addons"
+    id="page-addons"
+  >
+    <div
+      class="main-section"
+    >
+      <div
+        class="primary"
+      >
+        Add-ons Settings
+      </div>
+      <div>
+        <h2>
+          Activate and deactivate add-ons in the lists below.
+        </h2>
+        To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
+         
+        <a
+          href="https://6.docs.plone.org/install/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Installing a third party add-on
+        </a>
+        .
+      </div>
+      <div
+        aria-label="Upgradable addons"
+        class="addons-section "
+        id="header-upgradable"
+      >
+        <div
+          class="addons-section-header"
+        >
+          <h3
+            id="upgradable"
+          >
+            Updates available
+            :
+             
+            <span>
+              1
+            </span>
+          </h3>
+        </div>
+        <div>
+          <span
+            data-focus-scope-start="true"
+            hidden=""
+          />
+          <div
+            aria-labelledby="upgradable"
+            class="react-aria-GridList"
+            data-rac=""
+            id="react-aria-:r0:"
+            role="grid"
+            tabindex="0"
+          >
+            <div
+              class="addon-item"
+              data-key="react-aria-1"
+              data-rac=""
+              id="react-aria-:r0:-react-aria-1"
+              role="row"
+              tabindex="-1"
+            >
+              <div
+                aria-colindex="1"
+                role="gridcell"
+                style="display: contents;"
+              >
+                <div
+                  class="addon-item-header"
+                >
+                  <h4>
+                    Whatever - 1.0.0
+                  </h4>
+                  <div>
+                    <button
+                      aria-label="Update Whatever upgradeVersions"
+                      class="btn-primary"
+                      data-rac=""
+                      id="upgradable-plone.app.whatever"
+                      type="button"
+                    >
+                      Update Whatever
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="addonUpgradableInfo"
+                  id="addon-desc-plone.app.whatever"
+                >
+                  <p>
+                    Does stuff and junk…
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span
+            data-focus-scope-end="true"
+            hidden=""
+          />
+        </div>
+      </div>
+      <div
+        aria-label="Available addons"
+        class="addons-section "
+        id="header-available"
+      >
+        <div
+          class="addons-section-header"
+        >
+          <h3
+            id="available"
+          >
+            Available
+            :
+             
+            <span>
+              1
+            </span>
+          </h3>
+        </div>
+        <div>
+          <span
+            data-focus-scope-start="true"
+            hidden=""
+          />
+          <div
+            aria-labelledby="available"
+            class="react-aria-GridList"
+            data-rac=""
+            id="react-aria-:r1:"
+            role="grid"
+            tabindex="0"
+          >
+            <div
+              class="addon-item"
+              data-key="react-aria-1"
+              data-rac=""
+              id="react-aria-:r1:-react-aria-1"
+              role="row"
+              tabindex="-1"
+            >
+              <div
+                aria-colindex="1"
+                role="gridcell"
+                style="display: contents;"
+              >
+                <div
+                  class="addon-item-header"
+                >
+                  <h4>
+                    Something Else - 1.0.0
+                  </h4>
+                  <div>
+                    <button
+                      aria-label="Install Something Else"
+                      class="btn-primary"
+                      data-rac=""
+                      id="plone.app.somethingelse"
+                      type="button"
+                    >
+                      Install
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="addonInfo"
+                  id="addon-desc-plone.app.somethingelse"
+                >
+                  <p>
+                    Does other things…
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span
+            data-focus-scope-end="true"
+            hidden=""
+          />
+        </div>
+      </div>
+      <div
+        aria-label="Installed addons"
+        class="addons-section "
+        id="header-installed"
+      >
+        <div
+          class="addons-section-header"
+        >
+          <h3
+            id="installed"
+          >
+            Installed
+            :
+             
+            <span>
+              1
+            </span>
+          </h3>
+        </div>
+        <div>
+          <span
+            data-focus-scope-start="true"
+            hidden=""
+          />
+          <div
+            aria-labelledby="installed"
+            class="react-aria-GridList"
+            data-rac=""
+            id="react-aria-:r2:"
+            role="grid"
+            tabindex="0"
+          >
+            <div
+              class="addon-item"
+              data-key="react-aria-1"
+              data-rac=""
+              id="react-aria-:r2:-react-aria-1"
+              role="row"
+              tabindex="-1"
+            >
+              <div
+                aria-colindex="1"
+                role="gridcell"
+                style="display: contents;"
+              >
+                <div
+                  class="addon-item-header"
+                >
+                  <h4>
+                    Whatever - 1.0.0
+                  </h4>
+                  <div>
+                    <button
+                      aria-label="Uninstall Whatever"
+                      class="btn-danger"
+                      data-rac=""
+                      id="installed-plone.app.whatever"
+                      type="button"
+                    >
+                      Uninstall
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="addonInfo"
+                  id="addon-desc-plone.app.whatever"
+                >
+                  <p>
+                    Does stuff and junk…
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span
+            data-focus-scope-end="true"
+            hidden=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;

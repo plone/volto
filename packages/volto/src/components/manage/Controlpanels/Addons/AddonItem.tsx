@@ -1,50 +1,13 @@
 import React from 'react';
-import type { GetAddonResponse } from './types.d.ts';
-import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
+import type { GetAddonResponse } from '@plone/types';
+import { defineMessages, useIntl } from 'react-intl';
 import {
   PressEvent,
   Button as RACButton,
   GridListItem,
 } from 'react-aria-components';
-import {
-  AvailablePanelProps,
-  InstalledPanelProps,
-  UpgradablePanelProps,
-} from './AddonPanel.js';
 
 const messages = defineMessages({
-  available: {
-    id: 'Available',
-    defaultMessage: 'Available',
-  },
-  availableVersion: {
-    id: 'Latest version',
-    defaultMessage: 'Latest version',
-  },
-  back: {
-    id: 'Back',
-    defaultMessage: 'Back',
-  },
-  installed: {
-    id: 'Installed',
-    defaultMessage: 'Installed',
-  },
-  installedVersion: {
-    id: 'Installed version',
-    defaultMessage: 'Installed version',
-  },
-  noUninstallProfile: {
-    id: 'No uninstall profile',
-    defaultMessage: 'This addon does not provide an uninstall profile.',
-  },
-  update: {
-    id: 'Update',
-    defaultMessage: 'Update',
-  },
-  uninstall: {
-    id: 'Uninstall',
-    defaultMessage: 'Uninstall',
-  },
   addonUpgradableInfo: {
     id: 'This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}',
     defaultMessage:
@@ -66,11 +29,6 @@ interface InstalledAddonProps extends BaseAddonProps {
   onUninstall: (event: PressEvent) => void;
 }
 
-type AddonItemProps =
-  | UpgradableAddonProps
-  | AvailableAddonProps
-  | InstalledAddonProps;
-
 const UpgradableItem: React.FC<UpgradableAddonProps> = ({
   addon,
   onUpgrade,
@@ -83,14 +41,14 @@ const UpgradableItem: React.FC<UpgradableAddonProps> = ({
       aria-describedby={`addon-desc-${addon.id}`}
     >
       <div className="addon-item-header">
-        <h4>{addon.title}</h4>
+        <h4>{addon.title + ` - ${addon.version}`}</h4>
         {addon.upgrade_info.available ? (
           <div>
             <RACButton
-              id={addon.id}
+              id={'upgradable-' + addon.id}
               onPress={onUpgrade}
               aria-label={
-                intl.formatMessage(messages.update) +
+                intl.formatMessage({ id: 'Update' }) +
                 ' ' +
                 addon.title +
                 ' ' +
@@ -128,7 +86,7 @@ const AvailableItem: React.FC<AvailableAddonProps> = ({ addon, onInstall }) => {
       aria-describedby={`addon-desc-${addon.id}`}
     >
       <div className="addon-item-header">
-        <h4>{addon.title}</h4>
+        <h4>{addon.title + ` - ${addon.version}`}</h4>
         <div>
           <RACButton
             id={addon.id}
@@ -138,7 +96,7 @@ const AvailableItem: React.FC<AvailableAddonProps> = ({ addon, onInstall }) => {
             }
             className={'btn-primary'}
           >
-            {intl.formatMessage({ id: 'Install' }) + ' ' + addon.title}
+            {intl.formatMessage({ id: 'Install' })}
           </RACButton>
         </div>
       </div>
@@ -160,17 +118,17 @@ const InstalledItem: React.FC<InstalledAddonProps> = ({
       aria-describedby={`addon-desc-${addon.id}`}
     >
       <div className="addon-item-header">
-        <h4>{addon.title}</h4>
+        <h4>{addon.title + ` - ${addon.version}`}</h4>
         <div>
           <RACButton
-            id={addon.id}
+            id={'installed-' + addon.id}
             onPress={onUninstall}
             aria-label={
               intl.formatMessage({ id: 'Uninstall' }) + ' ' + addon.title
             }
             className={'btn-danger'}
           >
-            {intl.formatMessage({ id: 'Uninstall' }) + ' ' + addon.title}
+            {intl.formatMessage({ id: 'Uninstall' })}
           </RACButton>
         </div>
       </div>

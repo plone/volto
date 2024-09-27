@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { createPortal } from 'react-dom';
@@ -15,7 +15,7 @@ import { Helmet } from '@plone/volto/helpers';
 import { Icon, Toolbar, Toast } from '@plone/volto/components';
 import backSVG from '@plone/volto/icons/back.svg';
 import { toast } from 'react-toastify';
-import type { GetAddonResponse } from './types.d.ts';
+import type { GetAddonResponse } from '@plone/types';
 import { AnyAction } from 'redux';
 import type { PressEvent } from 'react-aria-components';
 import { AddonPanel } from './AddonPanel';
@@ -68,6 +68,19 @@ const messages = defineMessages({
     id: 'Updates available',
     defaultMessage: 'Updates available',
   },
+  noUpgradesAvailable: {
+    id: 'No Upgrades available',
+    defaultMessage:
+      'No upgrades in this corner. You are up to date. High fives.',
+  },
+  noAddonAvailable: {
+    id: 'No Addon available',
+    defaultMessage: 'No addons available for installation.',
+  },
+  noInstalledAvailable: {
+    id: 'No Installed available',
+    defaultMessage: 'No installed addons.',
+  },
   updateInstalledAddons: {
     id: 'Update installed addons:',
     defaultMessage: 'Update installed addons:',
@@ -116,11 +129,6 @@ const messages = defineMessages({
     id: 'Addon could not be uninstalled',
     defaultMessage: 'Addon could not be uninstalled',
   },
-  addonUpgradableInfo: {
-    id: 'This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}',
-    defaultMessage:
-      'This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}',
-  },
 });
 
 interface Props extends RouteComponentProps {
@@ -129,11 +137,9 @@ interface Props extends RouteComponentProps {
 
 const AddonsControlpanel = (props: Props) => {
   const { title } = props;
-  console.log(props);
   const intl = useIntl();
   const dispatch = useDispatch();
   const pathname = props.location.pathname;
-  const [activeIndex, setactiveIndex] = useState(-1);
   const isClient = useClient();
   const installedAddons = useSelector<Record<string, any>>(
     (state) => (state.addons.installedAddons ?? []) as GetAddonResponse[],
@@ -147,59 +153,10 @@ const AddonsControlpanel = (props: Props) => {
     (state) => (state.addons.upgradableAddons ?? []) as GetAddonResponse[],
     shallowEqual,
   );
-  const testUpgradableAddons: GetAddonResponse[] = useMemo(() => {
-    return [
-      ...(upgradableAddons as GetAddonResponse[]),
-      ...(availableAddons as GetAddonResponse[]).filter(
-        (aa) => aa.upgrade_info.available,
-      ),
-      ...(installedAddons as GetAddonResponse[]).filter(
-        (aa) => aa.upgrade_info.available,
-      ),
-      {
-        '@id': 'https://v3.io-comune.redturtle.it/api/@addons/redturtle.volto',
-        description: 'Installs the redturtle.volto add-on.',
-        id: 'redturtle.volto',
-        install_profile_id: 'redturtle.volto:default',
-        is_installed: true,
-        profile_type: 'default',
-        title: 'RedTurtle: Volto',
-        uninstall_profile_id: 'redturtle.volto:uninstall',
-        upgrade_info: {
-          available: true,
-          hasProfile: true,
-          installedVersion: '4306',
-          newVersion: '4307',
-          required: true,
-        },
-        version: '5.5.2',
-      },
-      {
-        '@id': 'https://v3.io-comune.redturtle.it/api/@addons/redturtle.volto2',
-        description: 'Installs the redturtle.volto2 add-on.',
-        id: 'redturtle.volto2',
-        install_profile_id: 'redturtle.volto:default',
-        is_installed: true,
-        profile_type: 'default',
-        title: 'RedTurtle: Volto',
-        uninstall_profile_id: 'redturtle.volto:uninstall',
-        upgrade_info: {
-          available: true,
-          hasProfile: true,
-          installedVersion: '4306',
-          newVersion: '4307',
-          required: true,
-        },
-        version: '5.5.2',
-      },
-    ].filter(Boolean);
-  }, [upgradableAddons, availableAddons, installedAddons]);
+
   const loadingAddons = useSelector<Record<string, any>>(
     (state) => state.addons.loading,
   );
-  console.log('upgradable', upgradableAddons);
-  console.log('available', availableAddons);
-  console.log('installed', installedAddons);
 
   useEffect(() => {
     dispatch(listAddons() as AnyAction);
@@ -237,7 +194,7 @@ const AddonsControlpanel = (props: Props) => {
 
   const onUninstall = useCallback(
     (event: PressEvent) => {
-      const value = event.target.id;
+      const value = event.target.id.replace('installed-', '');
       dispatch(uninstallAddon(value) as AnyAction)
         .then(() => {
           toast.success(
@@ -266,7 +223,7 @@ const AddonsControlpanel = (props: Props) => {
 
   const onUpgrade = useCallback(
     (event: PressEvent) => {
-      const value = event.target.id;
+      const value = event.target.id.replace('upgradable-', '');
       dispatch(upgradeAddon(value) as AnyAction)
         .then(() => {
           toast.success(
@@ -332,7 +289,7 @@ const AddonsControlpanel = (props: Props) => {
             <AddonPanel
               type="upgradable"
               containerId="header-upgradable"
-              addons={testUpgradableAddons}
+              addons={upgradableAddons as GetAddonResponse[]}
               onUpgrade={onUpgrade}
               aria-label="Upgradable addons"
             />
@@ -373,6 +330,7 @@ const AddonsControlpanel = (props: Props) => {
               </>
             }
           />,
+          // @ts-ignore
           document.getElementById('toolbar'),
         )}
     </div>

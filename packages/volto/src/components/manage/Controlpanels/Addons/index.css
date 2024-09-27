@@ -4,11 +4,19 @@
   --btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15),
     0 1px 1px rgba(0, 0, 0, 0.075);
   --btn-color-foreground: #ffffff;
+  /* Black, guarantees a11y contrast */
+  --focus-shadow-rgb: 0, 0, 0;
+  --focus-box-shadow: 0 0 0 0.2rem rgba(var(--focus-shadow-rgb));
 }
 
 #page-addons.controlpanel-addons .addon-item {
   padding: 1.25rem 1rem;
   border-bottom: 1px solid var(--border-color);
+}
+
+#page-addons.controlpanel-addons .addon-item:focus-visible {
+  box-shadow: var(--focus-box-shadow);
+  outline: none;
 }
 
 #page-addons.controlpanel-addons .addon-item .addon-item-header {
@@ -18,10 +26,15 @@
   padding-bottom: 1rem;
 }
 
+#page-addons.controlpanel-addons .no-upgrades-available,
+#page-addons.controlpanel-addons .no-installed-available,
+#page-addons.controlpanel-addons .no-addon-available {
+  padding: 2rem 1.5rem;
+}
+
 #page-addons .btn-primary {
   --btn-bg-color: rgb(0, 126, 177);
-  --btn-focus-shadow-rgb: 38, 143, 189;
-  --btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--btn-focus-shadow-rgb), 0.5);
+
   padding: 0.5rem 0.85rem;
   border: none;
   border-radius: 4px;
@@ -32,14 +45,12 @@
 
 #page-addons .btn-primary:focus-visible {
   border-color: var(--btn-hover-border-color);
-  box-shadow: var(--btn-focus-box-shadow);
+  box-shadow: var(--focus-box-shadow);
   outline: 0;
 }
 
 #page-addons .btn-danger {
   --btn-bg-color: rgb(220, 53, 69);
-  --btn-focus-shadow-rgb: 225, 83, 97;
-  --btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--btn-focus-shadow-rgb), 0.5);
   padding: 0.5rem 0.85rem;
   border: none;
   border-radius: 4px;
@@ -50,7 +61,7 @@
 
 #page-addons .btn-danger:focus-visible {
   border-color: var(--btn-hover-border-color);
-  box-shadow: var(--btn-focus-box-shadow);
+  box-shadow: var(--focus-box-shadow);
   outline: 0;
 }
 

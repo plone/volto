@@ -7,9 +7,9 @@ import {
   UpgradableItem,
   type UpgradableAddonProps,
 } from './AddonItem';
-import { GetAddonResponse } from './types';
+import type { GetAddonResponse } from '@plone/types';
 import { IntlShape, useIntl } from 'react-intl';
-import { GridList } from 'react-aria-components';
+import { GridList, GridListItem } from 'react-aria-components';
 
 interface BasePanelProps extends AriaAttributes {
   addons: GetAddonResponse[];
@@ -58,9 +58,18 @@ const UpgradesPanel: React.FC<UpgradablePanelProps & { intl: IntlShape }> = (
       </div>
       <div>
         <GridList aria-labelledby={type}>
-          {addons.map((ua: GetAddonResponse) => (
-            <UpgradableItem {...rest} addon={ua} />
-          ))}
+          {addons.length ? (
+            addons.map((ua: GetAddonResponse) => (
+              <UpgradableItem {...rest} addon={ua} />
+            ))
+          ) : (
+            <GridListItem
+              key="no-upgrades-available"
+              className="no-upgrades-available"
+            >
+              {intl.formatMessage({ id: 'No Upgrades available' })}
+            </GridListItem>
+          )}
         </GridList>
       </div>
     </div>
@@ -86,9 +95,18 @@ const AvailablePanel: React.FC<AvailablePanelProps & { intl: IntlShape }> = (
       </div>
       <div>
         <GridList aria-labelledby={type}>
-          {addons.map((ua: GetAddonResponse) => (
-            <AvailableItem {...rest} addon={ua} />
-          ))}
+          {addons.length ? (
+            addons.map((ua: GetAddonResponse) => (
+              <AvailableItem {...rest} addon={ua} />
+            ))
+          ) : (
+            <GridListItem
+              key="no-addon-available"
+              className="no-addon-available"
+            >
+              {intl.formatMessage({ id: 'No Addon available' })}
+            </GridListItem>
+          )}
         </GridList>
       </div>
     </div>
@@ -114,9 +132,18 @@ const InstalledPanel: React.FC<InstalledPanelProps & { intl: IntlShape }> = (
       </div>
       <div>
         <GridList aria-labelledby={type}>
-          {addons.map((ua: GetAddonResponse) => (
-            <InstalledItem {...rest} addon={ua} />
-          ))}
+          {addons.length ? (
+            addons.map((ua: GetAddonResponse) => (
+              <InstalledItem {...rest} addon={ua} />
+            ))
+          ) : (
+            <GridListItem
+              key="no-installed-available"
+              className="no-installed-available"
+            >
+              {intl.formatMessage({ id: 'No Installed available' })}
+            </GridListItem>
+          )}
         </GridList>
       </div>
     </div>
