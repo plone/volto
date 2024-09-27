@@ -631,9 +631,16 @@ class Toolbar extends Component {
                     <Icon
                       name={userSVG}
                       size="30px"
-                      title={this.props.intl.formatMessage(
-                        messages.adminUserlTools,
-                      )}
+                      title={
+                        userHasRoles(this.props.user, [
+                          'Site Administrator',
+                          'Manager',
+                        ])
+                          ? this.props.intl.formatMessage(
+                              messages.adminUserlTools,
+                            )
+                          : this.props.intl.formatMessage(messages.userTools)
+                      }
                     />
                   </button>
                 )}
