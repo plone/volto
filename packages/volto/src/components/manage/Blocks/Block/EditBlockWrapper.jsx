@@ -23,6 +23,10 @@ const messages = defineMessages({
     id: 'delete',
     defaultMessage: 'delete',
   },
+  dragAndDrop: {
+    id: 'drag and drop block',
+    defaultMessage: 'drag and drop block',
+  },
 });
 
 const EditBlockWrapper = (props) => {
@@ -82,18 +86,23 @@ const EditBlockWrapper = (props) => {
       })}
     >
       <div style={{ position: 'relative' }}>
-        <div
-          style={{
-            visibility: visible ? 'visible' : 'hidden',
-            display: 'inline-block',
-          }}
-          {...draginfo.dragHandleProps}
-          className="drag handle wrapper"
-        >
-          <Icon name={dragSVG} size="18px" />
-        </div>
         <div className={`ui drag block inner ${type}`}>
-          {children}
+          {/* Drag&Drop button */}
+          <Button
+            icon
+            basic
+            style={{
+              visibility: visible ? 'visible' : 'hidden',
+              display: 'inline-block',
+            }}
+            {...draginfo.dragHandleProps}
+            className="drag handle wrapper"
+            aria-label={intl.formatMessage(messages.dragAndDrop)}
+          >
+            <Icon name={dragSVG} size="18px" />
+          </Button>
+
+          {/* Delete button */}
           {selected && !required && editable && (
             <Button
               icon
@@ -105,6 +114,8 @@ const EditBlockWrapper = (props) => {
               <Icon name={trashSVG} size="18px" />
             </Button>
           )}
+
+          {/* Add button */}
           {config.experimental.addBlockButton.enabled && showBlockChooser && (
             <BlockChooserButton
               data={data}
@@ -140,6 +151,12 @@ const EditBlockWrapper = (props) => {
               contentType={contentType}
             />
           )}
+
+          {/* Blocks */}
+          {/* eslint-disable-next-line */}
+          <div role="region" className="block-wrapper" tabIndex="0">
+            {children}
+          </div>
         </div>
       </div>
     </div>

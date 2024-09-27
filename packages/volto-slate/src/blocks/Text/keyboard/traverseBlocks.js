@@ -76,6 +76,6 @@ export function goDown({ editor, event }) {
 export function traverseBlocks(opts) {
   const { event } = opts;
   event.preventDefault();
-  // return event.shiftKey ? goUp(opts) : goDown(opts);
-  return true;
+  //return event.shiftKey ? goUp(opts) : goDown(opts);
+  return false;
 }

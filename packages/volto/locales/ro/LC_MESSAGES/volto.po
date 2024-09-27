@@ -4486,6 +4486,11 @@ msgstr "Parola este în curs de schimbare. Urmați instrucțiunile primite pe ad
 msgid "draft"
 msgstr "proiect"
 
+#. Default: "drag and drop block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag and drop block"
+msgstr ""
+
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
 msgid "email"

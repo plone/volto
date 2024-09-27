@@ -4492,6 +4492,11 @@ msgstr "您的密码重置请求邮件已发送。稍后它将到达您的邮箱
 msgid "draft"
 msgstr "草案"
 
+#. Default: "drag and drop block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag and drop block"
+msgstr ""
+
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
 msgid "email"

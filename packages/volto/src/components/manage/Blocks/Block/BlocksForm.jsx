@@ -250,6 +250,10 @@ const BlocksForm = (props) => {
     </EditBlockWrapper>
   );
 
+  const onSelectWrapper = (blockNode, blockIndex) => {
+    return blockNode.focus();
+  };
+
   const editBlockWrapper = children || defaultBlockWrapper;
 
   // Remove invalid blocks on saving
@@ -340,6 +344,7 @@ const BlocksForm = (props) => {
                 onMoveBlock,
                 onMutateBlock,
                 onSelectBlock,
+                onSelectWrapper,
                 pathname,
                 metadata,
                 properties,
