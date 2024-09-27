@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
-import { Embed, Message, Button, Icon } from 'semantic-ui-react';
+import { Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 
