@@ -69,6 +69,14 @@ const messages = defineMessages({
     id: 'Personal tools',
     defaultMessage: 'Personal tools',
   },
+  adminUserlTools: {
+    id: 'Site tools and user settings',
+    defaultMessage: 'Site and user settings',
+  },
+  userTools: {
+    id: 'User settings',
+    defaultMessage: 'User settings',
+  },
   shrinkToolbar: {
     id: 'Shrink toolbar',
     defaultMessage: 'Shrink toolbar',
@@ -611,8 +619,10 @@ class Toolbar extends Component {
                         'Site Administrator',
                         'Manager',
                       ])
-                        ? this.props.intl.formatMessage(messages.personalTools)
-                        : 'test'
+                        ? this.props.intl.formatMessage(
+                            messages.adminUserlTools,
+                          )
+                        : this.props.intl.formatMessage(messages.userTools)
                     }
                     onClick={(e) => this.toggleMenu(e, 'personalTools')}
                     tabIndex={0}
@@ -622,7 +632,7 @@ class Toolbar extends Component {
                       name={userSVG}
                       size="30px"
                       title={this.props.intl.formatMessage(
-                        messages.personalTools,
+                        messages.adminUserlTools,
                       )}
                     />
                   </button>

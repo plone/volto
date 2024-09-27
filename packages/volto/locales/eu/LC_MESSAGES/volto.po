@@ -3359,6 +3359,11 @@ msgstr "Atariaren kudeaketa"
 msgid "Site Setup"
 msgstr "Atariaren konfigurazioa"
 
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "Site tools and user settings"
+msgstr ""
+
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
@@ -4119,6 +4124,11 @@ msgstr "Erabiltzaile Izena"
 #: helpers/MessageLabels/MessageLabels
 msgid "User roles updated"
 msgstr "Erabiltzailearen rolak eguneratu egin dira"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "User settings"
+msgstr ""
 
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels

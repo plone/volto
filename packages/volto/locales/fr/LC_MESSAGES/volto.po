@@ -3359,6 +3359,11 @@ msgstr "Administration du site"
 msgid "Site Setup"
 msgstr "Configuration du site"
 
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "Site tools and user settings"
+msgstr ""
+
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
@@ -4119,6 +4124,11 @@ msgstr "Nom d'utilisateur"
 #: helpers/MessageLabels/MessageLabels
 msgid "User roles updated"
 msgstr "Rôles de l'utilisateur mis à jour"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "User settings"
+msgstr ""
 
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels

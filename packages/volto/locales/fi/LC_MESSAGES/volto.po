@@ -3357,6 +3357,11 @@ msgstr "Sivuston ylläpito"
 msgid "Site Setup"
 msgstr "Sivuston asetukset"
 
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "Site tools and user settings"
+msgstr ""
+
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
@@ -4117,6 +4122,11 @@ msgstr "Käyttäjän nimi"
 #: helpers/MessageLabels/MessageLabels
 msgid "User roles updated"
 msgstr "Käyttäjän roolit päivitetty"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "User settings"
+msgstr ""
 
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels
