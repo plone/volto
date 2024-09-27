@@ -4,20 +4,20 @@ describe('Accessibility Tests', () => {
     cy.injectAxe(); // make sure axe is available on the page
   });
 
-  it('Front page has not a11y violations', () => {
+  it('Test front page with cypress-axe', () => {
     cy.checkA11y(); // fail for a11y violations
   });
 
-  it('Contact form has not a11y violations', () => {
+  it('Test contact form with cypress-axe', () => {
     cy.navigate('/contact-form');
     cy.get('#field-name').click().type('input');
     cy.get('#field-from').click().type('something@domain.com');
     cy.get('#field-subject').click().type('input');
     cy.get('#field-message').click().type('input');
-    cy.checkA11y();
+    cy.checkA11y(); // fail for a11y violations
   });
 
-  it('Image block has not a11y violations', () => {
+  it('Test image block with cypress-axe', () => {
     cy.autologin();
     cy.createContent({
       contentType: 'Document',
@@ -44,10 +44,10 @@ describe('Accessibility Tests', () => {
     cy.get('img').should('have.attr', 'src');
     cy.wait(1000);
     cy.injectAxe();
-    cy.checkA11y();
+    cy.checkA11y(); // fail for a11y violations
   });
 
-  it('Table has no a11y violations', () => {
+  it('Test table block with cypress-axe', () => {
     cy.autologin();
     cy.createContent({
       contentType: 'Document',
@@ -74,10 +74,10 @@ describe('Accessibility Tests', () => {
     cy.get('thead th').last().should('exist');
     cy.wait(500);
     cy.injectAxe();
-    cy.checkA11y();
+    cy.checkA11y(); // fail for a11y violations
   });
 
-  it('Maps has no a11y violations', () => {
+  it('Test maps block with cypress-axe', () => {
     cy.autologin();
     cy.createContent({
       contentType: 'Document',
@@ -99,10 +99,10 @@ describe('Accessibility Tests', () => {
     cy.get('#toolbar-save').click();
     cy.wait(1000);
     cy.injectAxe();
-    cy.checkA11y();
+    cy.checkA11y(); // fail for a11y violations
   });
 
-  it('Text block has no a11y violations', () => {
+  it('Test text block with cypress-axe', () => {
     cy.autologin();
     cy.createContent({
       contentType: 'Document',
@@ -119,10 +119,10 @@ describe('Accessibility Tests', () => {
     cy.get('#toolbar-save').click();
     cy.wait(1000);
     cy.injectAxe();
-    cy.checkA11y();
+    cy.checkA11y(); // fail for a11y violations
   });
 
-  it('Teaser block has no a11y violations', () => {
+  it('Test teaser block with cypress-axe', () => {
     cy.autologin();
     cy.createContent({
       contentType: 'Document',
@@ -153,7 +153,7 @@ describe('Accessibility Tests', () => {
     cy.get('#toolbar-save').click();
     cy.wait(1000);
     cy.injectAxe();
-    cy.checkA11y();
+    cy.checkA11y(); // fail for a11y violations
   });
 
   // TODO: Update video block
