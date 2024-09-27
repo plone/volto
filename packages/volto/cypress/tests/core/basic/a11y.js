@@ -122,6 +122,40 @@ describe('Accessibility Tests', () => {
     cy.checkA11y();
   });
 
+  it('Teaser block has no a11y violations', () => {
+    cy.autologin();
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'a11y-teaser-block',
+      contentTitle: 'a11y teaser block',
+    });
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'blue-orchids',
+      contentTitle: 'Blue Orchids',
+      contentDescription: 'are growing on the mountain tops',
+      image: true,
+      path: '/a11y-teaser-block',
+    });
+    cy.visit('/a11y-teaser-block/edit');
+    // Add a teaser block
+    cy.get('.block .slate-editor [contenteditable=true]').click();
+    cy.get('.button .block-add-button').click({ force: true });
+    cy.get('.blocks-chooser .mostUsed .button.teaser')
+      .contains('Teaser')
+      .click({ force: true });
+    cy.get(
+      '.objectbrowser-field[aria-labelledby="fieldset-default-field-label-href"] button[aria-label="Open object browser"]',
+    ).click();
+    cy.get('[aria-label="Select Blue Orchids"]').dblclick();
+    cy.wait(500);
+    cy.get('.align-buttons .ui.buttons button[aria-label="Center"]').click();
+    cy.get('#toolbar-save').click();
+    cy.wait(1000);
+    cy.injectAxe();
+    cy.checkA11y();
+  });
+
   // TODO: Update video block
   // a11y tests are failing because placeholder image has no alt attribute.
   // Embed component from semantic-ui doesn't accept alt property.
