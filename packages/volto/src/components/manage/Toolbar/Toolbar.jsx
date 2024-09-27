@@ -680,7 +680,7 @@ export default compose(
       pathname: props.pathname,
       types: filter(state.types.types, 'addable'),
       unlockRequest: state.content.unlock,
-      user: state.users.user,
+      user: state.users?.user,
     }),
     { getTypes, listActions, setExpandedToolbar, unlockContent, getUser },
   ),
