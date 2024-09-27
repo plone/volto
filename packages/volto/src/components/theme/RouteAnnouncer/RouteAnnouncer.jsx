@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 function RouteAnnouncer() {
-  const [pageTitle, setPageTitle] = useState('Route content change');
+  const [pageTitle, setPageTitle] = useState('');
 
   function updatePage(title) {
     setPageTitle(title);
