@@ -3,6 +3,18 @@
 exports[`History redirects if unassigned 1`] = `
 <div>
   <div
+    class="ui container view-wrapper"
+  >
+    <h1>
+      Forbidden
+    </h1>
+    <p
+      class="description"
+    >
+      We apologize for the inconvenience, but you don't have permissions on this resource.
+    </p>
+  </div>
+  <div
     id="toolbar"
   />
 </div>
@@ -10,6 +22,37 @@ exports[`History redirects if unassigned 1`] = `
 
 exports[`History redirects if unassigned, no token gives unauthorized 1`] = `
 <div>
+  <div
+    class="ui container view-wrapper"
+  >
+    <h1>
+      Unauthorized
+    </h1>
+    <h3 />
+    <p
+      class="description"
+    >
+      You are trying to access a protected resource, please 
+      <a
+        href="/blog/login"
+      >
+        log in
+      </a>
+       first.
+    </p>
+    <p>
+      If you are certain you have the correct web address but are encountering an error, please contact the 
+      <a
+        href="/contact-form"
+      >
+        Site Administration
+      </a>
+      .
+    </p>
+    <p>
+      Thank you.
+    </p>
+  </div>
   <div
     id="toolbar"
   />
