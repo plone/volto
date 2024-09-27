@@ -33,6 +33,8 @@ import config from '@plone/volto/registry';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import backSVG from '@plone/volto/icons/back.svg';
+import readySVG from '@plone/volto/icons/ready.svg';
+import ploneSVG from '@plone/volto/icons/plone.svg';
 
 const messages = defineMessages({
   searchForUserOrGroup: {
@@ -333,10 +335,40 @@ class SharingComponent extends Component {
             id="sharing-component-description"
           >
             <Segment secondary>
-              <FormattedMessage
-                id="You can control who can view and edit your item using the list below."
-                defaultMessage="You can control who can view and edit your item using the list below."
-              />
+              <p>
+                <FormattedMessage
+                  id="You can control who can view and edit your item using the list below."
+                  defaultMessage="You can control who can view and edit your item using the list below."
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  id="By default, permissions from the container of this item are inherited. If you disable inheritance, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+                  defaultMessage="By default, permissions from the container of this item are inherited. If you disable inheritance, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+                  values={{
+                    inherited: (
+                      <Icon
+                        title={this.props.intl.formatMessage(
+                          messages.inheritedValue,
+                        )}
+                        size="20px"
+                        name={readySVG}
+                        color="green"
+                      />
+                    ),
+                    global: (
+                      <Icon
+                        title={this.props.intl.formatMessage(
+                          messages.globalRole,
+                        )}
+                        size="20px"
+                        color="#007EB1"
+                        name={ploneSVG}
+                      />
+                    ),
+                  }}
+                />
+              </p>
             </Segment>
           </Plug>
           <Plug pluggable="sharing-component" id="sharing-component-search">
@@ -404,21 +436,23 @@ class SharingComponent extends Component {
                       {this.props.available_roles?.map((role) => (
                         <Table.Cell key={role.id}>
                           {entry.roles[role.id] === 'global' && (
-                            <IconOld
-                              name="check circle outline"
+                            <Icon
                               title={this.props.intl.formatMessage(
                                 messages.globalRole,
                               )}
-                              color="blue"
+                              size="20px"
+                              name={ploneSVG}
+                              color="#007EB1"
                             />
                           )}
                           {entry.roles[role.id] === 'acquired' && (
-                            <IconOld
-                              name="check circle outline"
-                              color="green"
+                            <Icon
                               title={this.props.intl.formatMessage(
                                 messages.inheritedValue,
                               )}
+                              size="20px"
+                              name={readySVG}
+                              color="green"
                             />
                           )}
                           {typeof entry.roles[role.id] === 'boolean' && (
@@ -463,20 +497,6 @@ class SharingComponent extends Component {
                     }
                   />
                 </Form.Field>
-                <p className="help">
-                  <FormattedMessage
-                    id="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-                    defaultMessage="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-                    values={{
-                      inherited: (
-                        <IconOld name="check circle outline" color="green" />
-                      ),
-                      global: (
-                        <IconOld name="check circle outline" color="blue" />
-                      ),
-                    }}
-                  />
-                </p>
               </Segment>
               <Segment className="actions" attached clearing>
                 <Button
