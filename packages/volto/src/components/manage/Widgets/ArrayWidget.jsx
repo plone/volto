@@ -314,6 +314,7 @@ class ArrayWidget extends Component {
           // small fix for https://github.com/clauderic/react-sortable-hoc/pull/352:
           getHelperDimensions={({ node }) => node.getBoundingClientRect()}
           id={`field-${this.props.id}`}
+          aria-labelledby={`fieldset-${this.props.fieldSet}-field-label-${this.props.id}`}
           key={this.props.id}
           isDisabled={this.props.disabled || this.props.isDisabled}
           className="react-select-container"
