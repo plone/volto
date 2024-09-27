@@ -4544,7 +4544,7 @@ msgstr "elimina intIds e ricrea le relazioni"
 #. Default: "<ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>"
 #: helpers/MessageLabels/MessageLabels
 msgid "flushAndRebuildRelationsHints"
-msgstr ""
+msgstr "<ul><li>Rigenera intIds (i token delle relazioni nel catalogo delle relazioni)</li><li>Ricrea le relazioni</li></ul><p>Controlla il log per i dettagli!</p><p><b>Attenzione</b>: Se ci sono prodotti aggiuntivi che hanno bisogno degli intIds, non dovresti eliminarli.</p>"
 
 #. Default: "Head title"
 #: components/manage/Blocks/Teaser/schema
