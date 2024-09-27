@@ -181,7 +181,7 @@ exports[`AddRule renders rules add interface 1`] = `
     id="toolbar"
   >
     <div
-      id="Toolbar"
+      id="Portal"
     />
   </div>
 </div>

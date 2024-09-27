@@ -7,7 +7,7 @@ import AddonsControlpanel from './AddonsControlpanel';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('@plone/volto/components/manage/Toolbar');
 
 describe('AddonsControlpanel', () => {
   it('renders an addon control component', () => {

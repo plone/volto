@@ -18,7 +18,7 @@ const userSchema = {
   loading: false,
 };
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('@plone/volto/components/manage/Toolbar');
 
 describe('PersonalInformation', () => {
   it('renders a personal information component', async () => {

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-08-10T17:00:27.117Z\n"
+"POT-Creation-Date: 2024-09-26T09:04:18.957Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -495,7 +495,7 @@ msgid "Browse"
 msgstr ""
 
 #. Default: "Browse the site, drop an image, or use a URL"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "Browse the site, drop an image, or type a URL"
 msgstr ""
 
@@ -4058,7 +4058,7 @@ msgid "Upload files"
 msgstr ""
 
 #. Default: "Uploading image"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "Uploading image"
 msgstr ""
 
@@ -4619,7 +4619,7 @@ msgid "leadimage"
 msgstr ""
 
 #. Default: "Enter a URL to an image"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "linkAnImage"
 msgstr ""
 
@@ -4718,7 +4718,7 @@ msgid "pending"
 msgstr ""
 
 #. Default: "Pick an existing image"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "pickAnImage"
 msgstr ""
 
@@ -4994,7 +4994,7 @@ msgid "upgradeVersions"
 msgstr ""
 
 #. Default: "Upload an image from your computer"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "uploadAnImage"
 msgstr ""
 

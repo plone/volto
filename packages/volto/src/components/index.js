@@ -31,10 +31,15 @@ export { default as PreviewImage } from '@plone/volto/components/theme/PreviewIm
 
 export { default as Error } from '@plone/volto/components/theme/Error/Error';
 export { default as ErrorBoundary } from '@plone/volto/components/theme/Error/ErrorBoundary';
-export { default as NotFound } from '@plone/volto/components/theme/NotFound/NotFound';
-export { default as Forbidden } from '@plone/volto/components/theme/Forbidden/Forbidden';
-export { default as Unauthorized } from '@plone/volto/components/theme/Unauthorized/Unauthorized';
-
+export const NotFound = loadable(
+  () => import('@plone/volto/components/theme/NotFound/NotFound'),
+);
+export const Forbidden = loadable(
+  () => import('@plone/volto/components/theme/Forbidden/Forbidden'),
+);
+export const Unauthorized = loadable(
+  () => import('@plone/volto/components/theme/Unauthorized/Unauthorized'),
+);
 export { default as Avatar } from '@plone/volto/components/theme/Avatar/Avatar';
 export { default as Icon } from '@plone/volto/components/theme/Icon/Icon';
 export { default as Image } from '@plone/volto/components/theme/Image/Image';
@@ -43,22 +48,43 @@ export { default as UniversalLink } from '@plone/volto/components/manage/Univers
 export { default as LinkMore } from '@plone/volto/components/manage/LinkMore/LinkMore';
 
 // Lazy load them, since we want them and its deps to be in its own chunk
-export { default as ContactForm } from '@plone/volto/components/theme/ContactForm/ContactForm';
-export { default as Login } from '@plone/volto/components/theme/Login/Login';
+export const ContactForm = loadable(
+  () => import('@plone/volto/components/theme/ContactForm/ContactForm'),
+);
+export const Login = loadable(
+  () => import('@plone/volto/components/theme/Login/Login'),
+);
 export { default as Logout } from '@plone/volto/components/theme/Logout/Logout';
-export { default as Sitemap } from '@plone/volto/components/theme/Sitemap/Sitemap';
-export { default as Search } from '@plone/volto/components/theme/Search/Search';
-export { default as Comments } from '@plone/volto/components/theme/Comments/Comments';
-export { default as Register } from '@plone/volto/components/theme/Register/Register';
-export { default as PasswordReset } from '@plone/volto/components/theme/PasswordReset/PasswordReset';
-export { default as RequestPasswordReset } from '@plone/volto/components/theme/PasswordReset/RequestPasswordReset';
-export { default as ChangePassword } from '@plone/volto/components/manage/Preferences/ChangePassword';
-export { default as PersonalPreferences } from '@plone/volto/components/manage/Preferences/PersonalPreferences';
-export { default as PersonalInformation } from '@plone/volto/components/manage/Preferences/PersonalInformation';
-export { default as CreateTranslation } from '@plone/volto/components/manage/Multilingual/CreateTranslation';
-export { default as TranslationObject } from '@plone/volto/components/manage/Multilingual/TranslationObject';
-export { default as CompareLanguages } from '@plone/volto/components/manage/Multilingual/CompareLanguages';
+export const Sitemap = loadable(
+  () => import('@plone/volto/components/theme/Sitemap/Sitemap'),
+);
+export const Search = loadable(
+  () => import('@plone/volto/components/theme/Search/Search'),
+);
 
+export { default as Comments } from '@plone/volto/components/theme/Comments/Comments';
+export const Register = loadable(
+  () => import('@plone/volto/components/theme/Register/Register'),
+);
+export const PasswordReset = loadable(
+  () => import('@plone/volto/components/theme/PasswordReset/PasswordReset'),
+);
+export const RequestPasswordReset = loadable(
+  () =>
+    import('@plone/volto/components/theme/PasswordReset/RequestPasswordReset'),
+);
+export {
+  ChangePassword,
+  PersonalPreferences,
+  PersonalInformation,
+} from '@plone/volto/components/manage/Preferences';
+
+export {
+  CreateTranslation,
+  TranslationObject,
+  CompareLanguages,
+  ManageTranslations,
+} from '@plone/volto/components/manage/Multilingual';
 export { default as FileView } from '@plone/volto/components/theme/View/FileView';
 export { default as ImageView } from '@plone/volto/components/theme/View/ImageView';
 export { default as NewsItemView } from '@plone/volto/components/theme/View/NewsItemView';
@@ -70,10 +96,11 @@ export const EventView = loadable(
 export { default as ListingView } from '@plone/volto/components/theme/View/ListingView';
 export { default as SummaryView } from '@plone/volto/components/theme/View/SummaryView';
 export { default as TabularView } from '@plone/volto/components/theme/View/TabularView';
-export { default as AlbumView } from '@plone/volto/components/theme/View/AlbumView';
-
+export const AlbumView = loadable(
+  () => import('@plone/volto/components/theme/View/AlbumView'),
+);
 export { default as Actions } from '@plone/volto/components/manage/Actions/Actions';
-export { default as Add } from '@plone/volto/components/manage/Add/Add';
+export { Add } from '@plone/volto/components/manage/Add';
 export {
   Controlpanels,
   Controlpanel,
@@ -102,7 +129,12 @@ export {
 
 export { default as Circle } from '@plone/volto/components/manage/Contents/circle';
 
-export { default as Delete } from '@plone/volto/components/manage/Delete/Delete';
+export const Delete = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Manage" */ '@plone/volto/components/manage/Delete/Delete'
+    ),
+);
 export const Diff = loadable(
   () =>
     import(
@@ -115,28 +147,66 @@ export const DiffField = loadable(
       /* webpackChunkName: "HistoryView" */ '@plone/volto/components/manage/Diff/DiffField'
     ),
 );
-export { default as Display } from '@plone/volto/components/manage/Display/Display';
-export { default as Edit } from '@plone/volto/components/manage/Edit/Edit';
-export { default as History } from '@plone/volto/components/manage/History/History';
-export { default as Sharing } from '@plone/volto/components/manage/Sharing/Sharing';
+export const Display = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Manage" */ '@plone/volto/components/manage/Display/Display'
+    ),
+);
+
+export { Edit } from '@plone/volto/components/manage/Edit';
+export const History = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Manage" */ '@plone/volto/components/manage/History/History'
+    ),
+);
+export const Sharing = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Manage" */ '@plone/volto/components/manage/Sharing/Sharing'
+    ),
+);
 export const Rules = loadable(
   () => import('@plone/volto/components/manage/Rules/Rules'),
 );
-export { default as Aliases } from '@plone/volto/components/manage/Aliases/Aliases';
-export { default as LinksToItem } from '@plone/volto/components/manage/LinksToItem/LinksToItem';
-export { default as Workflow } from '@plone/volto/components/manage/Workflow/Workflow';
+export const Aliases = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Manage" */ '@plone/volto/components/manage/Aliases/Aliases'
+    ),
+);
+export const LinksToItem = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Manage" */ '@plone/volto/components/manage/LinksToItem/LinksToItem'
+    ),
+);
+export const Workflow = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Manage" */ '@plone/volto/components/manage/Workflow/Workflow'
+    ),
+);
 export { default as Messages } from '@plone/volto/components/manage/Messages/Messages';
-export { default as BlockChooser } from '@plone/volto/components/manage/BlockChooser/BlockChooser';
-export { default as BlockChooserButton } from '@plone/volto/components/manage/BlockChooser/BlockChooserButton';
-export { default as Toolbar } from '@plone/volto/components/manage/Toolbar/Toolbar';
-export { default as Sidebar } from '@plone/volto/components/manage/Sidebar/Sidebar';
-export { default as SidebarPopup } from '@plone/volto/components/manage/Sidebar/SidebarPopup';
-export { default as SidebarPortal } from '@plone/volto/components/manage/Sidebar/SidebarPortal';
-export { default as PersonalTools } from '@plone/volto/components/manage/Toolbar/PersonalTools';
-export { default as More } from '@plone/volto/components/manage/Toolbar/More';
-export { default as Types } from '@plone/volto/components/manage/Toolbar/Types';
+export {
+  BlockChooser,
+  BlockChooserButton,
+} from '@plone/volto/components/manage/BlockChooser';
+
+export {
+  Toolbar,
+  More,
+  PersonalTools,
+  Types,
+} from '@plone/volto/components/manage/Toolbar';
+export {
+  Sidebar,
+  SidebarPopup,
+  SidebarPortal,
+} from '@plone/volto/components/manage/Sidebar';
+
 export { default as Toast } from '@plone/volto/components/manage/Toast/Toast';
-export { default as ManageTranslations } from '@plone/volto/components/manage/Multilingual/ManageTranslations';
 
 export {
   Field,
@@ -194,7 +264,7 @@ export {
   SelectMetadataWidget,
   SelectAutoComplete,
   ColorPickerWidget,
-  DatetimeWidget,
+  // DatetimeWidget,
   RecurrenceWidget,
   FormFieldWrapper,
 } from '@plone/volto/components/manage/Widgets';

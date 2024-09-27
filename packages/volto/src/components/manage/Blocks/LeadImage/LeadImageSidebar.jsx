@@ -9,7 +9,7 @@ import {
   TextWidget,
 } from '@plone/volto/components/manage/Widgets';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
+import { AlignBlock } from '@plone/volto/components/manage/Sidebar';
 
 import imageSVG from '@plone/volto/icons/image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

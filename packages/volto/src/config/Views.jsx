@@ -9,15 +9,31 @@ import NewsItemView from '@plone/volto/components/theme/View/NewsItemView';
 import SummaryView from '@plone/volto/components/theme/View/SummaryView';
 import TabularView from '@plone/volto/components/theme/View/TabularView';
 import LinkView from '@plone/volto/components/theme/View/LinkView';
-import NotFoundView from '@plone/volto/components/theme/NotFound/NotFound';
-import ConnectionRefused from '@plone/volto/components/theme/ConnectionRefused/ConnectionRefused';
-import CorsError from '@plone/volto/components/theme/CorsError/CorsError';
-import RequestTimeout from '@plone/volto/components/theme/RequestTimeout/RequestTimeout';
-import AlbumView from '@plone/volto/components/theme/View/AlbumView';
-import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
-import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
-import ServerError from '@plone/volto/components/theme/Error/ServerError';
-
+const NotFound = loadable(
+  () => import('@plone/volto/components/theme/NotFound/NotFound'),
+);
+const Forbidden = loadable(
+  () => import('@plone/volto/components/theme/Forbidden/Forbidden'),
+);
+const Unauthorized = loadable(
+  () => import('@plone/volto/components/theme/Unauthorized/Unauthorized'),
+);
+const ConnectionRefused = loadable(
+  () =>
+    import('@plone/volto/components/theme/ConnectionRefused/ConnectionRefused'),
+);
+const CorsError = loadable(
+  () => import('@plone/volto/components/theme/CorsError/CorsError'),
+);
+const RequestTimeout = loadable(
+  () => import('@plone/volto/components/theme/RequestTimeout/RequestTimeout'),
+);
+const AlbumView = loadable(
+  () => import('@plone/volto/components/theme/View/AlbumView'),
+);
+const ServerError = loadable(
+  () => import('@plone/volto/components/theme/Error/ServerError'),
+);
 const EventView = loadable(
   () => import('@plone/volto/components/theme/View/EventView'),
 );
@@ -111,7 +127,7 @@ export const contentTypesViews = {
 export const defaultView = DefaultView;
 
 export const errorViews = {
-  404: NotFoundView,
+  404: NotFound,
   401: Unauthorized,
   403: Forbidden,
   408: RequestTimeout,

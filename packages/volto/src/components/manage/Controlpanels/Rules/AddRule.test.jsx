@@ -10,7 +10,7 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 jest.mock('@plone/volto/components/manage/Form');
-jest.mock('../../Toolbar/Toolbar', () => jest.fn(() => <div id="Toolbar" />));
+jest.mock('@plone/volto/components/manage/Toolbar');
 
 describe('AddRule', () => {
   it('renders rules add interface', () => {

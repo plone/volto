@@ -499,7 +499,7 @@ msgid "Browse"
 msgstr "Navegui"
 
 #. Default: "Browse the site, drop an image, or use a URL"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "Browse the site, drop an image, or type a URL"
 msgstr "Navegueu pel lloc, deixeu anar una imatge o escriviu un URL"
 
@@ -4062,7 +4062,7 @@ msgid "Upload files"
 msgstr "Carregueu fitxers"
 
 #. Default: "Uploading image"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "Uploading image"
 msgstr "S'està carregant la imatge"
 
@@ -4623,7 +4623,7 @@ msgid "leadimage"
 msgstr "Camp d'imatge principal"
 
 #. Default: "Enter a URL to an image"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "linkAnImage"
 msgstr ""
 
@@ -4722,7 +4722,7 @@ msgid "pending"
 msgstr ""
 
 #. Default: "Pick an existing image"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "pickAnImage"
 msgstr ""
 
@@ -4998,7 +4998,7 @@ msgid "upgradeVersions"
 msgstr ""
 
 #. Default: "Upload an image from your computer"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "uploadAnImage"
 msgstr ""
 

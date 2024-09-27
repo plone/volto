@@ -26,9 +26,7 @@ global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
 const mockStore = configureStore();
 
-jest.mock('../../manage/Toolbar/Toolbar', () =>
-  jest.fn(() => <div id="Portal" />),
-);
+jest.mock('@plone/volto/components/manage/Toolbar');
 
 jest.mock('../Comments/Comments', () => jest.fn(() => <div id="Comments" />));
 jest.mock('../Tags/Tags', () => jest.fn(() => <div id="Tags" />));

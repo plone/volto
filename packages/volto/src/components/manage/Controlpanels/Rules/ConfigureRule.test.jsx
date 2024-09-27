@@ -9,7 +9,7 @@ import ConfigureRule from './ConfigureRule';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('../../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('@plone/volto/components/manage/Toolbar');
 
 describe('ConfigureRule', () => {
   it('renders rules configure interface', () => {

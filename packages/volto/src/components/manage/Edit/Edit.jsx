@@ -19,13 +19,13 @@ import { toast } from 'react-toastify';
 import {
   Forbidden,
   Icon,
-  Sidebar,
   Toast,
-  Toolbar,
   Unauthorized,
   CompareLanguages,
   TranslationObject,
 } from '@plone/volto/components';
+import { Sidebar } from '@plone/volto/components/manage/Sidebar';
+import { Toolbar } from '@plone/volto/components/manage/Toolbar';
 import { Form } from '@plone/volto/components/manage/Form';
 import {
   updateContent,

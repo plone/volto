@@ -9,7 +9,8 @@ import FakeTimers from '@sinonjs/fake-timers';
 import History from './History';
 
 const mockStore = configureStore();
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('@plone/volto/components/manage/Toolbar');
+jest.mock('@plone/volto/components/manage/Sidebar');
 
 const FIXED_SYSTEM_TIME = '2017-04-23T15:38:00.000Z';
 

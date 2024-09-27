@@ -493,7 +493,7 @@ msgid "Browse"
 msgstr "Sfoglia"
 
 #. Default: "Browse the site, drop an image, or use a URL"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "Browse the site, drop an image, or type a URL"
 msgstr "Sfoglia i contenuti, rilascia un'immagine o digita un URL"
 
@@ -4056,7 +4056,7 @@ msgid "Upload files"
 msgstr "Carica file"
 
 #. Default: "Uploading image"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "Uploading image"
 msgstr "Caricamento dell'immagine"
 
@@ -4617,7 +4617,7 @@ msgid "leadimage"
 msgstr "Immagine di testata"
 
 #. Default: "Enter a URL to an image"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "linkAnImage"
 msgstr "Inserisci l'URL di un'immagine"
 
@@ -4716,7 +4716,7 @@ msgid "pending"
 msgstr "In attesa"
 
 #. Default: "Pick an existing image"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "pickAnImage"
 msgstr "Seleziona un'immagine esistente"
 
@@ -4992,7 +4992,7 @@ msgid "upgradeVersions"
 msgstr "Aggiorna da versione {origin} a {destination}"
 
 #. Default: "Upload an image from your computer"
-#: components/manage/Widgets/ImageWidget
+#: components/manage/Widgets/ImageWidget/ImageInput
 msgid "uploadAnImage"
 msgstr "Carica un'immagine dal tuo computer"
 

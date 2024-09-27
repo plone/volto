@@ -21,13 +21,10 @@ import { createPortal } from 'react-dom';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { asyncConnect } from '@plone/volto/helpers';
 
-import {
-  FormattedDate,
-  Icon as IconNext,
-  Toolbar,
-  Forbidden,
-  Unauthorized,
-} from '@plone/volto/components';
+import { FormattedDate, Icon as IconNext } from '@plone/volto/components';
+import { Toolbar } from '@plone/volto/components/manage/Toolbar';
+import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 import { getHistory, revertHistory, listActions } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';

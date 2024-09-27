@@ -9,8 +9,8 @@ import EditRule from './EditRule';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('../../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
-
+jest.mock('@plone/volto/components/manage/Toolbar');
+jest.mock('@plone/volto/components/manage/Sidebar');
 jest.mock('@plone/volto/components/manage/Form');
 
 describe('EditRule', () => {

@@ -14,7 +14,7 @@ jest.mock('../Form/Form', () =>
     </div>
   )),
 );
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('@plone/volto/components/manage/Toolbar');
 
 const store = mockStore({
   controlpanels: {

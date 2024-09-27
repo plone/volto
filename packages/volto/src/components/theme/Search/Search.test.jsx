@@ -8,9 +8,8 @@ import { __test__ as Search } from './Search';
 
 const mockStore = configureStore();
 
-jest.mock('../../manage/Toolbar/Toolbar', () =>
-  jest.fn(() => <div id="Portal" />),
-);
+jest.mock('@plone/volto/components/manage/Toolbar');
+jest.mock('@plone/volto/components/manage/Sidebar');
 
 jest.mock('./SearchTags', () => jest.fn(() => <div id="search-tags" />));
 

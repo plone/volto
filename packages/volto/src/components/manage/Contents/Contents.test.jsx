@@ -14,7 +14,7 @@ beforeAll(
     await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
 );
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('@plone/volto/components/manage/Toolbar');
 
 jest.mock('../../theme/Pagination/Pagination', () =>
   jest.fn(() => <div className="Pagination" />),
