@@ -441,6 +441,7 @@ export class ObjectBrowserWidgetComponent extends Component {
 
     const fieldPlaceholder =
       placeholder ?? this.props.intl.formatMessage(messages.placeholder);
+    const hasValue = Array.isArray(value) ? value.length > 0 : !!value;
 
     return (
       <FormFieldWrapper
@@ -451,7 +452,7 @@ export class ObjectBrowserWidgetComponent extends Component {
           {/* TODO: Is there a prop to get this "full width, no margin" styling? */}
           <Grid style={{ margin: '0', width: '100%' }} stretched>
             <Grid.Row>
-              <Grid.Column width="8">
+              <Grid.Column width={hasValue ? '8' : '10'}>
                 <WidgetBody
                   id={id}
                   onChange={onChange}
@@ -463,16 +464,18 @@ export class ObjectBrowserWidgetComponent extends Component {
                   creatable={allowExternals}
                 />
               </Grid.Column>
-              <Grid.Column width="4">
+              <Grid.Column width={hasValue ? '4' : '2'}>
                 <Button.Group>
-                  <Button
-                    aria-label="Clear entry"
-                    onClick={iconAction}
-                    className="action"
-                    disabled={isDisabled}
-                  >
-                    <Icon name={clearSVG} size="24px" />
-                  </Button>
+                  {hasValue ? (
+                    <Button
+                      aria-label="Clear entry"
+                      onClick={iconAction}
+                      className="action"
+                      disabled={isDisabled}
+                    >
+                      <Icon name={clearSVG} size="24px" />
+                    </Button>
+                  ) : null}
                   <Button
                     aria-label={this.props.intl.formatMessage(
                       messages.openObjectBrowser,
