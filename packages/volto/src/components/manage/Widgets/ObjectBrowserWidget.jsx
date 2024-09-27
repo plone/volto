@@ -59,19 +59,28 @@ const messages = defineMessages({
   },
 });
 
-function SingleInput({ id, value, onChange, placeholder, readOnly }) {
+function SingleInput({
+  id,
+  value,
+  onChange,
+  placeholder,
+  readOnly,
+  type = 'text',
+  disabled,
+}) {
   return (
     <Input
       id={`field-${id}`}
       name={id}
       value={value || ''}
-      // disabled={isDisabled}
+      disabled={disabled}
       // icon={icon || null}
       placeholder={placeholder}
       onChange={({ target }) =>
         onChange(id, target.value === '' ? undefined : target.value)
       }
       readOnly={readOnly}
+      type={type}
 
       // ref={ref}
       // onBlur={({ target }) =>
@@ -91,6 +100,7 @@ function MultipleNoTextBody({
   readOnly,
   placeholder,
   reactSelect,
+  disabled,
 }) {
   const Select = reactSelect.default;
 
@@ -110,6 +120,14 @@ function MultipleNoTextBody({
     });
   }
 
+  function removeValue(valueToRemove) {
+    const indexToRemove = value.findIndex(
+      (option) => option === valueToRemove.value,
+    );
+    value.splice(indexToRemove, 1);
+    onChange(id, value);
+  }
+
   console.log('VALUE', value);
 
   return (
@@ -117,7 +135,7 @@ function MultipleNoTextBody({
       id={`field-${id}`}
       name={id}
       menuShouldScrollIntoView={false}
-      // isDisabled={disabled}
+      isDisabled={disabled}
       isSearchable={true}
       className="react-select-container"
       classNamePrefix="react-select"
@@ -135,7 +153,10 @@ function MultipleNoTextBody({
         Option: Option,
       }}
       value={normalizeValue(value)}
-      onChange={(selectedOption) => {
+      onChange={(selectedOption, action) => {
+        if (action.action === 'remove-value') {
+          removeValue(action.removedValue);
+        }
         // TODO: On change from existing input
         return onChange(
           id,
@@ -376,18 +397,19 @@ export class ObjectBrowserWidgetComponent extends Component {
     });
   };
 
-  handleSelectedItemsRefClick = (e) => {
-    if (this.props.isDisabled) {
-      return;
-    }
+  // TODO: NOT USING NOW, IS THIS OKAY?
+  // handleSelectedItemsRefClick = (e) => {
+  //   if (this.props.isDisabled) {
+  //     return;
+  //   }
 
-    if (
-      e.target.contains(this.selectedItemsRef.current) ||
-      e.target.contains(this.placeholderRef.current)
-    ) {
-      this.showObjectBrowser(e);
-    }
-  };
+  //   if (
+  //     e.target.contains(this.selectedItemsRef.current) ||
+  //     e.target.contains(this.placeholderRef.current)
+  //   ) {
+  //     this.showObjectBrowser(e);
+  //   }
+  // };
 
   /**
    * Render method.
@@ -398,7 +420,6 @@ export class ObjectBrowserWidgetComponent extends Component {
     const {
       id,
       description,
-      fieldSet,
       value,
       mode,
       allowExternals,
@@ -432,8 +453,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     }
 
     const fieldPlaceholder =
-      this.props.placeholder ??
-      this.props.intl.formatMessage(messages.placeholder);
+      placeholder ?? this.props.intl.formatMessage(messages.placeholder);
 
     return (
       <FormFieldWrapper
@@ -451,6 +471,8 @@ export class ObjectBrowserWidgetComponent extends Component {
                   value={items}
                   readOnly={!isMultiple && !allowExternals}
                   placeholder={fieldPlaceholder}
+                  type={!isMultiple && allowExternals ? 'url' : null}
+                  disabled={isDisabled}
                 />
               </Grid.Column>
               <Grid.Column width="4">
@@ -563,18 +585,6 @@ export default compose(
 //         <Icon name={aheadSVG} size="18px" />
 //       </Button>
 //     </Button.Group>
-//   )}
-//   {!this.state.manualLinkInput && (
-//     <Button
-//       aria-label={this.props.intl.formatMessage(
-//         messages.openObjectBrowser,
-//       )}
-//       onClick={iconAction}
-//       className="action"
-//       disabled={isDisabled}
-//     >
-//       <Icon name={icon} size="18px" />
-//     </Button>
 //   )}
 // </div>
 // }
