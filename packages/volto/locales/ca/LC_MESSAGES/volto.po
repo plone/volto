@@ -4492,6 +4492,11 @@ msgstr "La vostra sol·licitud de restabliment de la contrasenya s'ha enviat per
 msgid "draft"
 msgstr "Esborrany"
 
+#. Default: "drag and drop block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag and drop block"
+msgstr ""
+
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
 msgid "email"

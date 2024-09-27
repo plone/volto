@@ -4492,6 +4492,11 @@ msgstr "Sua solicitação de redefinição de senha foi enviada. Ela deve chegar
 msgid "draft"
 msgstr "Rascunho"
 
+#. Default: "drag and drop block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag and drop block"
+msgstr ""
+
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
 msgid "email"

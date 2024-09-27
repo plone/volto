@@ -4493,6 +4493,11 @@ msgstr "Se han enviado las instrucciones para restablecer su contraseña. Deben 
 msgid "draft"
 msgstr "Borrador"
 
+#. Default: "drag and drop block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag and drop block"
+msgstr ""
+
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
 msgid "email"

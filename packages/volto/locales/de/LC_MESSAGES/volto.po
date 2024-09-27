@@ -4491,6 +4491,11 @@ msgstr "Der Link, um das Passwort neu zu setzen, wurde Ihnen zugesendet. Die E-M
 msgid "draft"
 msgstr "Entwurf"
 
+#. Default: "drag and drop block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag and drop block"
+msgstr "Drag & Drop-Block"
+
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
 msgid "email"
