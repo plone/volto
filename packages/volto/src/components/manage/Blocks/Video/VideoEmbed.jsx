@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Icon } from '@plone/volto/components';
+
+import PlayIcon from '@plone/volto/icons/play.svg';
+import Broccoli from './broccoli.jpg';
 
 const VideoEmbed = (props) => {
   const {
@@ -47,7 +51,7 @@ const VideoEmbed = (props) => {
   };
 
   return (
-    <div className="ui embed 16:9">
+    <div className="ui embed 16:9 video-embed">
       {isActive ? (
         <iframe
           allowFullScreen={false}
@@ -60,13 +64,15 @@ const VideoEmbed = (props) => {
         />
       ) : (
         <>
-          {placeholder && <img src={placeholder} alt="" />}
+          {placeholder && <img src={placeholder} alt="" aria-hidden />}
           <button
+            className="video-play-button"
             onClick={() => {
               PlayVideo();
             }}
+            aria-label="Play Video"
           >
-            Play
+            <Icon name={PlayIcon} color="white" size="100%" />
           </button>
         </>
       )}
