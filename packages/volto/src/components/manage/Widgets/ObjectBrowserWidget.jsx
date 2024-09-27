@@ -81,7 +81,7 @@ function SingleInput({
         onChange(id, target.value === '' ? undefined : target.value)
       }
       readOnly={readOnly}
-      type={type}
+      // type={type}
       // onBlur={({ target }) =>
       //   onBlur(id, target.value === '' ? undefined : target.value)
       // }
