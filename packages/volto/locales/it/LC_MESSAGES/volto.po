@@ -1011,7 +1011,7 @@ msgstr "Elimina riga"
 #. Default: "Delete selected items?"
 #: components/manage/Contents/Contents
 msgid "Delete selected items?"
-msgstr "Vuoi cancellare l'elemento sezionato?"
+msgstr "Vuoi cancellare l'elemento selezionato?"
 
 #. Default: "Delete this item?"
 #: components/manage/Contents/Contents
