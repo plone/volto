@@ -19,7 +19,6 @@ describe('Accessibility Tests', () => {
 
   it('Image block has not a11y violations', () => {
     cy.autologin();
-
     cy.createContent({
       contentType: 'Document',
       contentId: 'a11y-image-block',
@@ -50,7 +49,6 @@ describe('Accessibility Tests', () => {
 
   it('Table has no a11y violations', () => {
     cy.autologin();
-
     cy.createContent({
       contentType: 'Document',
       contentId: 'a11y-table-block',
@@ -81,7 +79,6 @@ describe('Accessibility Tests', () => {
 
   it('Maps has no a11y violations', () => {
     cy.autologin();
-
     cy.createContent({
       contentType: 'Document',
       contentId: 'a11y-maps-block',
@@ -107,7 +104,6 @@ describe('Accessibility Tests', () => {
 
   it('Text block has no a11y violations', () => {
     cy.autologin();
-
     cy.createContent({
       contentType: 'Document',
       contentId: 'a11y-text-block',
@@ -125,6 +121,32 @@ describe('Accessibility Tests', () => {
     cy.injectAxe();
     cy.checkA11y();
   });
+
+  // TODO: Update video block
+  // a11y tests are failing because placeholder image has no alt attribute.
+  // Embed component from semantic-ui doesn't accept alt property.
+
+  // it('Video block has no a11y violations', () => {
+  //   cy.autologin();
+  //   cy.createContent({
+  //     contentType: 'Document',
+  //     contentId: 'a11y-video-block',
+  //     contentTitle: 'a11y video block',
+  //   });
+  //   cy.visit('/a11y-video-block/edit');
+  //   // Add a video block
+  //   cy.getSlate().click();
+  //   cy.get('.ui.basic.icon.button.block-add-button').click();
+  //   cy.get('.ui.basic.icon.button.video').contains('Video').click();
+  //   cy.get('.toolbar-inner > .ui > input')
+  //     .click()
+  //     .type('https://youtu.be/T6J3d35oIAY')
+  //     .type('{enter}');
+  //   cy.get('#toolbar-save').click();
+  //   cy.wait(1000);
+  //   cy.injectAxe();
+  //   cy.checkA11y();
+  // });
 
   // TODO: Adapt this to volto-slate table
   // it('Table has no a11y violations', () => {
