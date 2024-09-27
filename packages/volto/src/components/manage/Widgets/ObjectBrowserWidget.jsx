@@ -68,11 +68,12 @@ function SingleInput({
   type = 'text',
   disabled,
 }) {
+  const realValue = Array.isArray(value) ? value[0] : value;
   return (
     <Input
       id={`field-${id}`}
       name={id}
-      value={value || ''}
+      value={realValue || ''}
       disabled={disabled}
       // icon={icon || null}
       placeholder={placeholder}
@@ -81,8 +82,6 @@ function SingleInput({
       }
       readOnly={readOnly}
       type={type}
-
-      // ref={ref}
       // onBlur={({ target }) =>
       //   onBlur(id, target.value === '' ? undefined : target.value)
       // }
@@ -93,16 +92,20 @@ function SingleInput({
   );
 }
 
-function MultipleNoTextBody({
+function MultipleInputBody({
   id,
   value,
   onChange,
   readOnly,
   placeholder,
   reactSelect,
+  reactSelectCreateable,
   disabled,
+  creatable,
 }) {
-  const Select = reactSelect.default;
+  const Select = creatable
+    ? reactSelectCreateable.default
+    : reactSelect.default;
 
   const options = [
     { value: 'Op1', label: 'OP 1' },
@@ -128,8 +131,6 @@ function MultipleNoTextBody({
     onChange(id, value);
   }
 
-  console.log('VALUE', value);
-
   return (
     <Select
       id={`field-${id}`}
@@ -144,9 +145,6 @@ function MultipleNoTextBody({
       styles={customSelectStyles}
       theme={selectTheme}
       components={{
-        // ...(options?.length > 25 && {
-        // MenuList,
-        // }),
         MultiValueContainer,
         DropdownIndicator: () => null,
         ClearIndicator: () => null,
@@ -166,9 +164,6 @@ function MultipleNoTextBody({
       readOnly
       // value={['Op1']}
       placeholder={placeholder}
-      // placeholder={
-      //   this.props.placeholder ?? this.props.intl.formatMessage(messages.select)
-      // }
       // onChange={(selectedOption) => {
       //   if (isMulti) {
 
@@ -183,7 +178,9 @@ function MultipleNoTextBody({
     />
   );
 }
-const MultipleNoText = injectLazyLibs('reactSelect')(MultipleNoTextBody);
+const MultipleInput = injectLazyLibs(['reactSelect', 'reactSelectCreateable'])(
+  MultipleInputBody,
+);
 
 function MultipleWithText() {
   return <p>Multiple with text</p>;
@@ -239,12 +236,6 @@ export class ObjectBrowserWidgetComponent extends Component {
     manualLinkInput: '',
     validURL: false,
   };
-
-  constructor(props) {
-    super(props);
-    this.selectedItemsRef = React.createRef();
-    this.placeholderRef = React.createRef();
-  }
 
   removeItem = (item) => {
     let value = [...this.props.value];
@@ -443,11 +434,7 @@ export class ObjectBrowserWidgetComponent extends Component {
 
     let WidgetBody;
     if (isMultiple) {
-      if (allowExternals) {
-        WidgetBody = MultipleWithText;
-      } else {
-        WidgetBody = MultipleNoText;
-      }
+      WidgetBody = MultipleInput;
     } else {
       WidgetBody = SingleInput;
     }
@@ -473,6 +460,7 @@ export class ObjectBrowserWidgetComponent extends Component {
                   placeholder={fieldPlaceholder}
                   type={!isMultiple && allowExternals ? 'url' : null}
                   disabled={isDisabled}
+                  creatable={allowExternals}
                 />
               </Grid.Column>
               <Grid.Column width="4">
