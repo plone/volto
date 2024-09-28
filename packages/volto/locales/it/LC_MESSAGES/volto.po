@@ -1927,6 +1927,11 @@ msgstr "Lingua"
 msgid "Language independent field."
 msgstr "Campo indipendete dalla lingua"
 
+#. Default: "This is a language independent field. Any value you enter here will overwrite the corresponding field of all members of the translation group when you save this form."
+#: components/manage/Widgets/FormFieldWrapper
+msgid "Language independent icon title"
+msgstr ""
+
 #. Default: "Large"
 #: components/manage/Widgets/ImageSizeWidget
 msgid "Large"
