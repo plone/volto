@@ -151,7 +151,7 @@ Array [
         className="toolbar-bottom"
       >
         <button
-          aria-label="Personal tools"
+          aria-label="User settings"
           className="user"
           id="toolbar-personal"
           onClick={[Function]}
@@ -161,7 +161,7 @@ Array [
             className="icon"
             dangerouslySetInnerHTML={
               Object {
-                "__html": "<title>Personal tools</title>undefined",
+                "__html": "<title>User settings</title>undefined",
               }
             }
             onClick={null}
@@ -345,7 +345,7 @@ Array [
         className="toolbar-bottom"
       >
         <button
-          aria-label="Personal tools"
+          aria-label="User settings"
           className="user"
           id="toolbar-personal"
           onClick={[Function]}
@@ -355,7 +355,7 @@ Array [
             className="icon"
             dangerouslySetInnerHTML={
               Object {
-                "__html": "<title>Personal tools</title>undefined",
+                "__html": "<title>User settings</title>undefined",
               }
             }
             onClick={null}

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-08-10T17:00:27.117Z\n"
+"POT-Creation-Date: 2024-09-27T12:26:44.650Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -3354,6 +3354,11 @@ msgstr ""
 msgid "Site Setup"
 msgstr ""
 
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "Site tools and user settings"
+msgstr ""
+
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
@@ -4113,6 +4118,11 @@ msgstr ""
 #. Default: "User roles updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "User roles updated"
+msgstr ""
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "User settings"
 msgstr ""
 
 #. Default: "User updated successfuly"

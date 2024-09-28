@@ -3358,6 +3358,11 @@ msgstr "网站管理员"
 msgid "Site Setup"
 msgstr "网站设置"
 
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "Site tools and user settings"
+msgstr ""
+
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
@@ -4118,6 +4123,11 @@ msgstr "用户名"
 #: helpers/MessageLabels/MessageLabels
 msgid "User roles updated"
 msgstr "用户角色更新"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "User settings"
+msgstr ""
 
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels

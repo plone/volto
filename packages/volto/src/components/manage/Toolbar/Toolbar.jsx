@@ -27,6 +27,7 @@ import {
   listActions,
   setExpandedToolbar,
   unlockContent,
+  getUser,
 } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 import {
@@ -34,6 +35,7 @@ import {
   getBaseUrl,
   getCookieOptions,
   hasApiExpander,
+  userHasRoles,
 } from '@plone/volto/helpers';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 
@@ -66,6 +68,14 @@ const messages = defineMessages({
   personalTools: {
     id: 'Personal tools',
     defaultMessage: 'Personal tools',
+  },
+  adminUserlTools: {
+    id: 'Site tools and user settings',
+    defaultMessage: 'Site and user settings',
+  },
+  userTools: {
+    id: 'User settings',
+    defaultMessage: 'User settings',
   },
   shrinkToolbar: {
     id: 'Shrink toolbar',
@@ -195,6 +205,7 @@ class Toolbar extends Component {
       menuComponents: [],
       loadedComponents: [],
       hideToolbarBody: false,
+      user: null,
     };
   }
 
@@ -220,6 +231,9 @@ class Toolbar extends Component {
     };
     this.props.setExpandedToolbar(this.state.expanded);
     document.addEventListener('mousedown', this.handleClickOutside, false);
+
+    const { userId, getUser } = this.props;
+    getUser(userId);
   }
 
   /**
@@ -600,9 +614,16 @@ class Toolbar extends Component {
                 {!this.props.hideDefaultViewButtons && (
                   <button
                     className="user"
-                    aria-label={this.props.intl.formatMessage(
-                      messages.personalTools,
-                    )}
+                    aria-label={
+                      userHasRoles(this.props.user, [
+                        'Site Administrator',
+                        'Manager',
+                      ])
+                        ? this.props.intl.formatMessage(
+                            messages.adminUserlTools,
+                          )
+                        : this.props.intl.formatMessage(messages.userTools)
+                    }
                     onClick={(e) => this.toggleMenu(e, 'personalTools')}
                     tabIndex={0}
                     id="toolbar-personal"
@@ -610,9 +631,16 @@ class Toolbar extends Component {
                     <Icon
                       name={userSVG}
                       size="30px"
-                      title={this.props.intl.formatMessage(
-                        messages.personalTools,
-                      )}
+                      title={
+                        userHasRoles(this.props.user, [
+                          'Site Administrator',
+                          'Manager',
+                        ])
+                          ? this.props.intl.formatMessage(
+                              messages.adminUserlTools,
+                            )
+                          : this.props.intl.formatMessage(messages.userTools)
+                      }
                     />
                   </button>
                 )}
@@ -652,7 +680,8 @@ export default compose(
       pathname: props.pathname,
       types: filter(state.types.types, 'addable'),
       unlockRequest: state.content.unlock,
+      user: state.users?.user,
     }),
-    { getTypes, listActions, setExpandedToolbar, unlockContent },
+    { getTypes, listActions, setExpandedToolbar, unlockContent, getUser },
   ),
 )(Toolbar);
