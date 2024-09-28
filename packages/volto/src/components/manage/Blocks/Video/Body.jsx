@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
@@ -58,6 +58,8 @@ const getVideoIDAndPlaceholder = (url) => {
 };
 
 const Body = ({ data, isEditMode }) => {
+  const intl = useIntl();
+
   let placeholder = data.preview_image
     ? isInternalURL(data.preview_image)
       ? `${flattenToAppURL(data.preview_image)}/@@images/image`
@@ -65,6 +67,13 @@ const Body = ({ data, isEditMode }) => {
     : null;
 
   const { videoID, listID, thumbnailURL } = getVideoIDAndPlaceholder(data.url);
+
+  const messages = defineMessages({
+    arialabel: {
+      id: 'Load video player',
+      defaultMessage: 'Load video player',
+    },
+  });
 
   placeholder = !placeholder ? thumbnailURL : placeholder;
 
@@ -84,6 +93,8 @@ const Body = ({ data, isEditMode }) => {
     tabIndex: 0,
     onKeyPress: onKeyDown,
     ref: ref,
+    'aria-label': intl.formatMessage(messages.arialabel),
+    role: 'button',
   };
 
   return (

@@ -2062,6 +2062,11 @@ msgstr "Auflistung"
 msgid "Load more"
 msgstr "Mehr laden"
 
+#. Default: "Load video player"
+#: components/manage/Blocks/Video/Body
+msgid "Load video player"
+msgstr ""
+
 #. Default: "Loading."
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
