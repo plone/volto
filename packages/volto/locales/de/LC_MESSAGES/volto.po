@@ -1934,6 +1934,11 @@ msgstr "Sprache"
 msgid "Language independent field."
 msgstr "Sprachunabhängiges Feld."
 
+#. Default: "This is a language independent field. Any value you enter here will overwrite the corresponding field of all members of the translation group when you save this form."
+#: components/manage/Widgets/FormFieldWrapper
+msgid "Language independent icon title"
+msgstr "Dies ist ein sprachunabhängiges Feld. Jeder Wert, den Sie hier eingeben, überschreibt das entsprechende Feld aller Mitglieder der Übersetzungsgruppe, wenn Sie dieses Formular speichern."
+
 #. Default: "Large"
 #: components/manage/Widgets/ImageSizeWidget
 msgid "Large"

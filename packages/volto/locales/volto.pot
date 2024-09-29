@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-08-10T17:00:27.117Z\n"
+"POT-Creation-Date: 2024-09-19T10:10:37.548Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1929,6 +1929,11 @@ msgstr ""
 #. Default: "Language independent field."
 #: components/manage/Widgets/FormFieldWrapper
 msgid "Language independent field."
+msgstr ""
+
+#. Default: "This is a language independent field. Any value you enter here will overwrite the corresponding field of all members of the translation group when you save this form."
+#: components/manage/Widgets/FormFieldWrapper
+msgid "Language independent icon title"
 msgstr ""
 
 #. Default: "Large"

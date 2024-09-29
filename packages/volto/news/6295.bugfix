@@ -1,0 +1,2 @@
+- Join validation errors in one single toast and update errors from response. @cekk
+- Toast content now has a <div> wrapper instead of a <p>. @cekk
