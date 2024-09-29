@@ -61,7 +61,11 @@ describe('[GET] QuerystringSearch', () => {
       title: `get-search${randomId}`,
     };
     const path = '/test-folder';
-    await createContent({ path: '/', data: { '@type': 'Folder', id: 'test-folder' }, config: cli.config });
+    await createContent({
+      path: '/',
+      data: { '@type': 'Folder', id: 'test-folder' },
+      config: cli.config,
+    });
     await createContent({ path, data: contentData, config: cli.config });
 
     const querystringSearchData = {
@@ -77,7 +81,10 @@ describe('[GET] QuerystringSearch', () => {
     const { result } = renderHook(
       () =>
         useQuery(
-          getQuerystringSearchQuery({ query: querystringSearchData.query, path }),
+          getQuerystringSearchQuery({
+            query: querystringSearchData.query,
+            path,
+          }),
         ),
       {
         wrapper: createWrapper(),

@@ -20,7 +20,7 @@ export const getQuerystringSearch = async ({
     query,
     path, // Include path in validation
   });
-  const queryObject = { 
+  const queryObject = {
     query: validatedArgs.query,
     path: validatedArgs.path, // Include path in queryObject if it exists
   };
