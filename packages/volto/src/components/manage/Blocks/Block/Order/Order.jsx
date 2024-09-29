@@ -5,7 +5,22 @@ import { find, min } from 'lodash-es';
 import { flattenTree, getProjection, removeChildrenOf } from './utilities';
 import SortableItem from './SortableItem';
 
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  DragOverlay,
+  MeasuringStrategy,
+  defaultDropAnimation,
+} from '@dnd-kit/core';
+import {
+  SortableContext,
+  arrayMove,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
 export function Order({
   items = [],
@@ -14,29 +29,12 @@ export function Order({
   onSelectBlock,
   indentationWidth = 25,
   removable,
-  dndKitCore,
-  dndKitSortable,
-  dndKitUtilities,
   errors,
 }) {
   const [activeId, setActiveId] = useState(null);
   const [overId, setOverId] = useState(null);
   const [offsetLeft, setOffsetLeft] = useState(0);
   const [currentPosition, setCurrentPosition] = useState(null);
-
-  const {
-    DndContext,
-    closestCenter,
-    PointerSensor,
-    useSensor,
-    useSensors,
-    DragOverlay,
-    MeasuringStrategy,
-    defaultDropAnimation,
-  } = dndKitCore;
-  const { SortableContext, arrayMove, verticalListSortingStrategy } =
-    dndKitSortable;
-  const { CSS } = dndKitUtilities;
 
   const measuring = {
     droppable: {
@@ -362,8 +360,4 @@ export function Order({
   }
 }
 
-export default injectLazyLibs([
-  'dndKitCore',
-  'dndKitSortable',
-  'dndKitUtilities',
-])(Order);
+export default Order;

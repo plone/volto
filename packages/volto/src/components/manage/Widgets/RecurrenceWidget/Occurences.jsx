@@ -12,10 +12,11 @@ import Icon from '@plone/volto/components/theme/Icon/Icon';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import { useSelector } from 'react-redux';
 import { toISOString } from './Utils';
+
+import moment from 'moment';
 
 const messages = defineMessages({
   selected_dates: {
@@ -65,9 +66,7 @@ const Occurences_ = ({
   intl,
   showTitle,
   editOccurences,
-  moment: momentlib,
 }) => {
-  const moment = momentlib.default;
   const lang = useSelector((state) => state.intl.locale);
   moment.locale(toBackendLang(lang));
   let all = [];
@@ -187,7 +186,7 @@ const Occurences_ = ({
   );
 };
 
-export const Occurences = injectLazyLibs(['moment'])(Occurences_);
+export const Occurences = Occurences_;
 
 /**
  * Property types.

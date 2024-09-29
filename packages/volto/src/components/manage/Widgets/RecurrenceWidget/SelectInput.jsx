@@ -12,22 +12,15 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
+const Select = React.lazy(() => import('react-select'));
 
 /**
  * SelectInput component class.
  * @function SelectInput
  * @returns {string} Markup of the component.
  */
-const SelectInput = ({
-  name,
-  disabled,
-  options,
-  value,
-  onChange,
-  reactSelect,
-}) => {
-  const Select = reactSelect.default;
+const SelectInput = ({ name, disabled, options, value, onChange }) => {
   const inlineSelectStyles = {
     ...customSelectStyles,
     control: (styles, state) => ({
@@ -87,4 +80,4 @@ SelectInput.defaultProps = {
   onChange: null,
 };
 
-export default injectLazyLibs('reactSelect')(SelectInput);
+export default SelectInput;

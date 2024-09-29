@@ -19,9 +19,9 @@ import {
 import move from 'lodash-move';
 import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import { slugify } from '@plone/volto/helpers/Utils/Utils';
 
+import { Draggable, DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { slugify } from '@plone/volto/helpers/Utils/Utils';
 import SchemaWidgetFieldset from '@plone/volto/components/manage/Widgets/SchemaWidgetFieldset';
 import { Field, ModalForm } from '@plone/volto/components/manage/Form';
 
@@ -1082,8 +1082,8 @@ class SchemaWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { error, reactBeautifulDnd } = this.props;
-    const { Draggable, DragDropContext, Droppable } = reactBeautifulDnd;
+    const { error } = this.props;
+
     if (!this.props.value) {
       return '';
     }
@@ -1431,7 +1431,6 @@ class SchemaWidget extends Component {
 
 export default compose(
   injectIntl,
-  injectLazyLibs(['reactBeautifulDnd']),
   connect(
     (state, props) => ({
       value: isString(props.value) ? JSON.parse(props.value) : props.value,

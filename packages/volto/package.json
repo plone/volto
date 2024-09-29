@@ -45,7 +45,6 @@
     "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
-    "start:prod": "NODE_ENV=production node build/server.js",
     "prettier": "prettier --single-quote --check '{src,cypress}/**/*.{js,jsx,ts,tsx}' --check '*.js'",
     "prettier:fix": "prettier --single-quote --write '{src,cypress}/**/*.{js,jsx,ts,tsx}' --write '*.js'",
     "prettier:husky": "prettier --single-quote --write",
@@ -65,8 +64,11 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "dev": "vite",
-    "dev:server": "node src/vite-server.js",
-    "dev:server:debug": "NODE_INSPECT_RESUME_ON_START=1 node inspect src/vite-server.js"
+    "dev:server": "node server.js",
+    "dev:server:debug": "NODE_INSPECT_RESUME_ON_START=1 node inspect src/vite-server.js",
+    "build:client": "vite build --ssrManifest --outDir dist/client",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
+    "start:prod": "NODE_ENV=production node server.js"
   },
   "bundlewatch": {
     "files": [
@@ -180,8 +182,6 @@
     "node": "^16 || ^18 || ^20"
   },
   "dependencies": {
-    "@loadable/component": "5.14.1",
-    "@loadable/server": "5.14.0",
     "@plone/registry": "workspace:*",
     "@plone/scripts": "workspace:*",
     "@plone/volto-slate": "workspace:*",
@@ -292,8 +292,6 @@
     "@dnd-kit/utilities": "3.2.2",
     "@fiverr/afterbuild-webpack-plugin": "^1.0.0",
     "@jest/globals": "^29.7.0",
-    "@loadable/babel-plugin": "5.13.2",
-    "@loadable/webpack-plugin": "5.15.2",
     "@plone/types": "workspace:*",
     "@plone/volto-coresandbox": "workspace:*",
     "@sinonjs/fake-timers": "^6.0.1",

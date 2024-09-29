@@ -8,7 +8,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
 import {
   normalizeValue,
   normalizeChoices,
@@ -36,6 +36,8 @@ import {
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+
+const SelectAsync = React.lazy(() => import('react-select/async'));
 
 const messages = defineMessages({
   select: {
@@ -211,7 +213,6 @@ class SelectAutoComplete extends Component {
       this.props.value,
       this.props.intl,
     );
-    const SelectAsync = this.props.reactSelectAsync.default;
 
     return (
       <FormFieldWrapper {...this.props}>
@@ -262,7 +263,6 @@ export const SelectAutoCompleteComponent = injectIntl(SelectAutoComplete);
 
 export default compose(
   injectIntl,
-  injectLazyLibs(['reactSelectAsync']),
   connect(
     (state, props) => {
       const vocabBaseUrl =

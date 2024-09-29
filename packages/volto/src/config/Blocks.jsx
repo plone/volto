@@ -81,6 +81,12 @@ import TeaserBlockDefaultBody from '@plone/volto/components/manage/Blocks/Teaser
 import { TeaserSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
 import { TeaserBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Teaser/adapter';
 
+// TODO: lazy load the blocks
+// HTML
+// DateRangeFacet, SelectFacet (search)
+// Field component?
+// RecurrenceWidget
+
 defineMessages({
   title: {
     id: 'title',

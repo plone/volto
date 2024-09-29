@@ -4,7 +4,7 @@ import { Field, BlocksForm } from '@plone/volto/components/manage/Form';
 import BlocksToolbar from '@plone/volto/components/manage/Form/BlocksToolbar';
 import UndoToolbar from '@plone/volto/components/manage/Form/UndoToolbar';
 import { difference } from '@plone/volto/helpers/Utils/Utils';
-import { FormValidation } from '@plone/volto/helpers/FormValidation/FormValidation';
+import FormValidation from '@plone/volto/helpers/FormValidation/FormValidation';
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,

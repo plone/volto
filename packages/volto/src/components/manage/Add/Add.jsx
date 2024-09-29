@@ -42,7 +42,6 @@ import {
   getDefaultBlocks,
 } from '@plone/volto/helpers/Blocks/defaultBlocks';
 
-import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
 import { tryParseJSON } from '@plone/volto/helpers/FormValidation/FormValidation';
 
 import config from '@plone/volto/registry';
@@ -501,5 +500,4 @@ export default compose(
     }),
     { createContent, getSchema, changeLanguage, setFormData },
   ),
-  preloadLazyLibs('cms'),
 )(Add);

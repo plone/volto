@@ -3,15 +3,17 @@
  * @module components/manage/Widgets/RecurrenceWidget/ByYearField
  */
 
-import React from 'react';
+import React, { lazy } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Form, Grid, Radio } from 'semantic-ui-react';
 
 import ByMonthDayField from './ByMonthDayField';
-import MonthOfTheYearField from './MonthOfTheYearField';
 import WeekdayOfTheMonthIndexField from './WeekdayOfTheMonthIndexField';
-import WeekdayOfTheMonthField from './WeekdayOfTheMonthField';
+
+const MonthOfTheYearField = lazy(() => import('./MonthOfTheYearField'));
+const WeekdayOfTheMonthField = lazy(() => import('./WeekdayOfTheMonthField'));
+
 const messages = defineMessages({
   ofTheMonth: { id: 'of the month', defaultMessage: 'of the month' },
 });

@@ -27,8 +27,6 @@ import {
   UpgradeControlPanel,
 } from '@plone/volto/components/manage/Controlpanels';
 
-// Deliberatelly use of absolute path of these components, since we do not want them
-// in the components/index.js file.
 import App from '@plone/volto/components/theme/App/App';
 import View from '@plone/volto/components/theme/View/View';
 

@@ -3,7 +3,7 @@
  * @module components/manage/Diff/Diff
  */
 
-import React, { Component } from 'react';
+import React, { lazy, Component } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
 import { connect } from 'react-redux';
@@ -28,7 +28,6 @@ import FormattedDate from '@plone/volto/components/theme/FormattedDate/Formatted
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
-import DiffField from '@plone/volto/components/manage/Diff/DiffField';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -50,6 +49,10 @@ const messages = defineMessages({
     defaultMessage: 'Unified',
   },
 });
+
+const DiffField = lazy(
+  () => import('@plone/volto/components/manage/Diff/DiffField'),
+);
 
 /**
  * Diff class.

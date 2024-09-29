@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { lazy, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
-import { lazy } from 'react';
 import cx from 'classnames';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import { parseDateTime, toBackendLang } from '@plone/volto/helpers/Utils/Utils';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
+import moment from 'moment';
 
 import leftKey from '@plone/volto/icons/left-key.svg';
 import rightKey from '@plone/volto/icons/right-key.svg';
@@ -17,6 +17,11 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
 const TimePicker = lazy(() => import('rc-time-picker'));
+const SingleDatePicker = lazy(() =>
+  import('react-dates').then((mod) => ({
+    default: mod.SingleDatePicker,
+  })),
+);
 
 const messages = defineMessages({
   date: {
@@ -71,9 +76,7 @@ const DatetimeWidgetComponent = (props) => {
   const {
     id,
     resettable,
-    reactDates,
     widgetOptions,
-    moment,
     value,
     onChange,
     dateOnly,
@@ -88,22 +91,18 @@ const DatetimeWidgetComponent = (props) => {
   const [focused, setFocused] = useState(false);
   const [isDefault, setIsDefault] = useState(false);
 
-  const { SingleDatePicker } = reactDates;
-
   useEffect(() => {
     const parsedDateTime = parseDateTime(
       toBackendLang(lang),
       value,
       undefined,
-      moment.default,
+      moment,
     );
-    setIsDefault(
-      parsedDateTime?.toISOString() === moment.default().utc().toISOString(),
-    );
+    setIsDefault(parsedDateTime?.toISOString() === moment.utc().toISOString());
   }, [value, lang, moment]);
 
   const getInternalValue = () => {
-    return parseDateTime(toBackendLang(lang), value, undefined, moment.default);
+    return parseDateTime(toBackendLang(lang), value, undefined, moment);
   };
 
   const getDateOnly = () => {
@@ -113,7 +112,7 @@ const DatetimeWidgetComponent = (props) => {
   const onDateChange = (date) => {
     if (date) {
       const isDateOnly = getDateOnly();
-      const base = (getInternalValue() || moment.default()).set({
+      const base = (getInternalValue() || moment).set({
         year: date.year(),
         month: date.month(),
         date: date.date(),
@@ -129,7 +128,7 @@ const DatetimeWidgetComponent = (props) => {
 
   const onTimeChange = (time) => {
     if (time) {
-      const base = (getInternalValue() || moment.default()).set({
+      const base = (getInternalValue() || moment).set({
         hours: time?.hours() ?? 0,
         minutes: time?.minutes() ?? 0,
         seconds: 0,
@@ -168,7 +167,7 @@ const DatetimeWidgetComponent = (props) => {
             {...(noPastDates ? {} : { isOutsideRange: () => false })}
             onFocusChange={onFocusChange}
             noBorder
-            displayFormat={moment.default
+            displayFormat={moment
               .localeData(toBackendLang(lang))
               .longDateFormat('L')}
             navPrev={<PrevIcon />}
@@ -192,7 +191,7 @@ const DatetimeWidgetComponent = (props) => {
               showSecond={false}
               use12Hours={lang === 'en'}
               id={`${id}-time`}
-              format={moment.default
+              format={moment
                 .localeData(toBackendLang(lang))
                 .longDateFormat('LT')}
               placeholder={intl.formatMessage(messages.time)}
@@ -240,6 +239,4 @@ DatetimeWidgetComponent.defaultProps = {
   resettable: true,
 };
 
-export default injectLazyLibs(['reactDates', 'moment'])(
-  DatetimeWidgetComponent,
-);
+export default DatetimeWidgetComponent;

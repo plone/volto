@@ -3,7 +3,7 @@
  * @module components/manage/Widgets/RecurrenceWidget
  */
 
-import React, { Component } from 'react';
+import React, { Component, lazy } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -25,7 +25,6 @@ import Icon from '@plone/volto/components/theme/Icon/Icon';
 import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
 import SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
 import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import editingSVG from '@plone/volto/icons/editing.svg';
@@ -41,11 +40,15 @@ import {
 } from './Utils';
 
 import IntervalField from './IntervalField';
-import ByDayField from './ByDayField';
 import EndField from './EndField';
 import ByMonthField from './ByMonthField';
 import ByYearField from './ByYearField';
-import Occurences from './Occurences';
+
+import moment from 'moment';
+import { RRuleSet, rrulestr } from 'rrule';
+
+const ByDayField = lazy(() => import('./ByDayField'));
+const Occurences = lazy(() => import('./Occurences'));
 
 const messages = defineMessages({
   editRecurrence: {
@@ -181,9 +184,8 @@ class RecurrenceWidget extends Component {
    */
   constructor(props, intl) {
     super(props);
-    const { RRuleSet, rrulestr } = props.rrule;
 
-    this.moment = this.props.moment.default;
+    this.moment = moment;
     this.moment.locale(toBackendLang(this.props.lang));
 
     let rruleSet = this.props.value
@@ -1016,7 +1018,6 @@ class RecurrenceWidget extends Component {
 }
 
 export default compose(
-  injectLazyLibs(['moment', 'rrule']),
   connect((state) => ({
     lang: state.intl.locale,
   })),

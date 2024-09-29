@@ -10,7 +10,7 @@ import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import Error from '@plone/volto/components/theme/Error/Error';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
-import VersionOverview from '@plone/volto/components/manage/Controlpanels';
+import { VersionOverview } from '@plone/volto/components/manage/Controlpanels';
 
 import config from '@plone/volto/registry';
 

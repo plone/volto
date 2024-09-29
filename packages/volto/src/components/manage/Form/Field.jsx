@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { DropTarget, DragSource } from 'react-dnd';
 
 const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not rendered
 /**
@@ -170,7 +170,6 @@ const UnconnectedField = (props, { intl }) => {
   };
 
   if (props.onOrder) {
-    const { DropTarget, DragSource } = props.reactDnd;
     const WrappedWidget = DropTarget(
       'field',
       {
@@ -228,7 +227,7 @@ const UnconnectedField = (props, { intl }) => {
   return <Widget {...widgetProps} />;
 };
 
-const DndConnectedField = injectLazyLibs(['reactDnd'])(UnconnectedField);
+const DndConnectedField = UnconnectedField;
 
 const Field = (props) =>
   props.onOrder ? (

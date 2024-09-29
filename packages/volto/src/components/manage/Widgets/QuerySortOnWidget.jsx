@@ -10,7 +10,8 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
+const Select = React.lazy(() => import('react-select'));
 
 const messages = defineMessages({
   SortOn: {
@@ -24,12 +25,11 @@ const messages = defineMessages({
 });
 
 function QueryStringSortOrderWidget(props) {
-  const { id, value, onChange, reactSelect, isDisabled } = props;
+  const { id, value, onChange, isDisabled } = props;
   const sortable_indexes = useSelector(
     (state) => state.querystring.sortable_indexes,
   );
   const intl = useIntl();
-  const Select = reactSelect.default;
 
   return (
     <FormFieldWrapper
@@ -80,4 +80,4 @@ function QueryStringSortOrderWidget(props) {
   );
 }
 
-export default injectLazyLibs(['reactSelect'])(QueryStringSortOrderWidget);
+export default QueryStringSortOrderWidget;

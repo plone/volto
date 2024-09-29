@@ -3,7 +3,7 @@
  * @module components/manage/Widgets/TokenWidget
  */
 
-import React, { Component } from 'react';
+import React, { lazy, Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -25,7 +25,8 @@ import {
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
+const CreatableSelect = lazy(() => import('react-select/creatable'));
 
 const messages = defineMessages({
   select: {
@@ -167,7 +168,6 @@ class TokenWidget extends Component {
         label: item.label || item.value,
         value: item.value,
       }));
-    const CreatableSelect = this.props.reactSelectCreateable.default;
 
     return (
       <FormFieldWrapper {...this.props}>
@@ -206,7 +206,6 @@ class TokenWidget extends Component {
 
 export default compose(
   injectIntl,
-  injectLazyLibs(['reactSelectCreateable']),
   connect(
     (state, props) => {
       const vocabBaseUrl =

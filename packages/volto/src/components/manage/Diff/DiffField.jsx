@@ -19,7 +19,7 @@ import configureStore from '@plone/volto/store';
 import DefaultView from '@plone/volto/components/theme/View/View';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
 
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { diffWords as dWords } from 'diff';
 
 /**
  * Enhanced diff words utility
@@ -36,22 +36,14 @@ import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
  * @param {Object} schema Field schema
  * @returns {string} Markup of the component.
  */
-const DiffField = ({
-  one,
-  two,
-  contentOne,
-  contentTwo,
-  view,
-  schema,
-  diffLib,
-}) => {
+const DiffField = ({ one, two, contentOne, contentTwo, view, schema }) => {
   const language = useSelector((state) => state.intl.locale);
   const readable_date_format = {
     dateStyle: 'full',
     timeStyle: 'short',
   };
   const diffWords = (oneStr, twoStr) => {
-    return diffLib.diffWords(String(oneStr), String(twoStr));
+    return dWords(String(oneStr), String(twoStr));
   };
 
   let parts, oneArray, twoArray;
@@ -216,4 +208,4 @@ DiffField.propTypes = {
   }).isRequired,
 };
 
-export default injectLazyLibs('diffLib')(DiffField);
+export default DiffField;

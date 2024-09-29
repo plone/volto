@@ -1,21 +1,14 @@
 import React from 'react';
 
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
 import { Item } from './Item';
 
 const animateLayoutChanges = ({ isSorting, wasDragging }) =>
   isSorting || wasDragging ? false : true;
 
-export function SortableItem({
-  id,
-  depth,
-  dndKitSortable,
-  dndKitUtilities,
-  ...props
-}) {
-  const { useSortable } = dndKitSortable;
-  const { CSS } = dndKitUtilities;
+export function SortableItem({ id, depth, ...props }) {
   const {
     attributes,
     isDragging,
@@ -53,6 +46,4 @@ export function SortableItem({
   );
 }
 
-export default injectLazyLibs(['dndKitSortable', 'dndKitUtilities'])(
-  SortableItem,
-);
+export default SortableItem;

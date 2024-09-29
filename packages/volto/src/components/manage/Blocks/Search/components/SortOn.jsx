@@ -1,17 +1,16 @@
 import { Button } from 'semantic-ui-react';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import cx from 'classnames';
-import { compose } from 'redux';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import {
   Option,
   DropdownIndicator,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { selectTheme, sortOnSelectStyles } from './SelectStyling';
 
 import upSVG from '@plone/volto/icons/sort-up.svg';
 import downSVG from '@plone/volto/icons/sort-down.svg';
+import { lazy } from 'react';
 
 const messages = defineMessages({
   noSelection: {
@@ -36,20 +35,20 @@ const messages = defineMessages({
   },
 });
 
+const Select = lazy(() => import('react-select'));
+
 const SortOn = (props) => {
   const {
     data = {},
-    reactSelect,
     sortOn = null,
     sortOrder = null,
     setSortOn,
     setSortOrder,
     isEditMode,
     querystring = {},
-    intl,
   } = props;
+  const intl = useIntl();
   const { sortable_indexes } = querystring;
-  const Select = reactSelect.default;
 
   const defaultSortOn = data?.query?.sort_on || '';
   const activeSortOn = sortOn || defaultSortOn;
@@ -146,4 +145,4 @@ const SortOn = (props) => {
   );
 };
 
-export default compose(injectIntl, injectLazyLibs(['reactSelect']))(SortOn);
+export default SortOn;

@@ -12,7 +12,11 @@ import { lazy } from 'react';
 import { isEqual } from 'lodash-es';
 
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
+import prettierStandalone from 'prettier/standalone';
+import prettierParserHtml from 'prettier/parser-html';
+import prismCore from 'prismjs/components/prism-core';
+
 import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
@@ -152,9 +156,9 @@ class Edit extends Component {
   async onPreview() {
     try {
       const code = (
-        await this.props.prettierStandalone.format(this.getValue(), {
+        await prettierStandalone.format(this.getValue(), {
           parser: 'html',
-          plugins: [this.props.prettierParserHtml],
+          plugins: [prettierParserHtml],
         })
       ).trim();
       this.setState(
@@ -177,9 +181,9 @@ class Edit extends Component {
   onPrettify = async () => {
     try {
       const code = (
-        await this.props.prettierStandalone.format(this.getValue(), {
+        await prettierStandalone.format(this.getValue(), {
           parser: 'html',
-          plugins: [this.props.prettierParserHtml],
+          plugins: [prettierParserHtml],
         })
       ).trim();
       this.onChangeCode(code);
@@ -316,14 +320,9 @@ class Edit extends Component {
             placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}
             highlight={
-              this.props.prismCore?.highlight &&
-              this.props.prismCore?.languages?.html
+              prismCore?.highlight && prismCore?.languages?.html
                 ? (code) =>
-                    this.props.prismCore.highlight(
-                      code,
-                      this.props.prismCore.languages.html,
-                      'html',
-                    )
+                    prismCore.highlight(code, prismCore.languages.html, 'html')
                 : () => {}
             }
             padding={8}
@@ -361,8 +360,4 @@ const withPrismMarkup = (WrappedComponent) => (props) => {
   return loaded ? <WrappedComponent {...props} /> : null;
 };
 
-export default compose(
-  injectLazyLibs(['prettierStandalone', 'prettierParserHtml', 'prismCore']),
-  withPrismMarkup,
-  injectIntl,
-)(Edit);
+export default compose(withPrismMarkup, injectIntl)(Edit);

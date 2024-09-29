@@ -16,7 +16,6 @@ import {
   initialBlocksFocus,
 } from './Blocks';
 import { components } from './Components';
-// import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 import slots from './slots';
 

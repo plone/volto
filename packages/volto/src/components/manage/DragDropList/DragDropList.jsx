@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { isEmpty } from 'lodash-es';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { v4 as uuid } from 'uuid';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 const getPlaceholder = (draggedDOM, sourceIndex, destinationIndex, uid) => {
   // Because of the margin rendering rules, there is no easy
@@ -58,9 +58,7 @@ const DragDropList = (props) => {
     as = 'div',
     style,
     forwardedAriaLabelledBy,
-    reactBeautifulDnd,
   } = props; //renderChild
-  const { DragDropContext, Draggable, Droppable } = reactBeautifulDnd;
   const [placeholderProps, setPlaceholderProps] = React.useState({});
   const [uid] = React.useState(uuid());
   // queueing timed action
@@ -185,4 +183,4 @@ const DragDropList = (props) => {
   );
 };
 
-export default injectLazyLibs(['reactBeautifulDnd'])(DragDropList);
+export default DragDropList;

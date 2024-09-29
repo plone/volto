@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { lazy, useState } from 'react';
 import { Header } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
 import { compose } from 'redux';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
@@ -13,6 +13,12 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
+
+import moment from 'moment';
+
+const DateRangePicker = lazy(() =>
+  import('react-dates').then((mod) => ({ default: mod.DateRangePicker })),
+);
 
 const messages = defineMessages({
   startDate: {
@@ -61,9 +67,7 @@ const NextIcon = () => (
 const CloseIcon = () => <Icon name={clearSVG} size="24px" className="close" />;
 
 const DateRangeFacet = (props) => {
-  const { facet, isEditMode, onChange, value, reactDates, intl, lang } = props;
-  const moment = props.moment.default;
-  const { DateRangePicker } = reactDates;
+  const { facet, isEditMode, onChange, value, intl, lang } = props;
   const [focused, setFocused] = useState(null);
 
   return (
@@ -119,7 +123,6 @@ DateRangeFacet.valueToQuery = ({ value, facet }) => {
 };
 
 export default compose(
-  injectLazyLibs(['reactDates', 'moment']),
   connect((state) => ({
     lang: state.intl.locale,
   })),

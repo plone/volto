@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import SelectWidget, { SelectWidgetComponent } from './SelectWidget';
 import WidgetStory from './story';
 
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import checkSVG from '@plone/volto/icons/check.svg';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 
@@ -205,15 +204,18 @@ MultiSelection.args = {
   ],
 };
 
-const Option = injectLazyLibs('reactSelect')((props) => {
-  const { Option } = props.reactSelect.components;
+const SelectOption = lazy(() =>
+  import('react-select').then((mod) => ({ default: mod.components.Option })),
+);
+
+const Option = (props) => {
   const icons = {
     FooBar: bellRingingSVG,
     Bar: blogSVG,
     Foo: bookSVG,
   };
   return (
-    <Option {...props}>
+    <SelectOption {...props}>
       <div>
         {icons[props.value] && <Icon name={icons[props.value]} size="24px" />}
         {props.label}
@@ -222,9 +224,9 @@ const Option = injectLazyLibs('reactSelect')((props) => {
         <Icon name={checkSVG} size="24px" color="#b8c6c8" />
       )}
       {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
-    </Option>
+    </SelectOption>
   );
-});
+};
 
 export const CustomOptions = WidgetStory.bind({
   widget: SelectWidget,
