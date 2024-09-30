@@ -301,7 +301,7 @@ const querystring = {
     },
     end: {
       description: 'The end date and time of an event',
-      enabled: true,
+      enabled: false,
       group: 'Dates',
       operations: [
         'plone.app.querystring.operation.date.lessThan',
