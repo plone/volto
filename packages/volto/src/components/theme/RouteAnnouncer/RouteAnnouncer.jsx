@@ -3,12 +3,11 @@ import { useEffect, useState } from 'react';
 function RouteAnnouncer() {
   const [pageTitle, setPageTitle] = useState('');
 
-  function updatePage(title) {
-    setPageTitle(title);
-    document.activeElement.blur();
-  }
-
   useEffect(() => {
+    function updatePage(title) {
+      setPageTitle(title);
+      document.activeElement.blur();
+    }
     function handlePop(event) {
       const pageTitle = event.target.document.title;
       updatePage(pageTitle);
