@@ -1814,6 +1814,11 @@ msgstr "पंक्ति पहले डालें"
 msgid "Inspect relations"
 msgstr "संबंधों का निरीक्षण करें"
 
+#. Default: "Install"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Install"
+msgstr ""
+
 #. Default: "Installed"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
@@ -2319,12 +2324,12 @@ msgstr "नहीं"
 #. Default: "No addons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr ""
+msgstr "इंस्टॉलेशन के लिए कोई ऐड-ऑन उपलब्ध नहीं है।"
 
 #. Default: "No installed addons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Installed available"
-msgstr ""
+msgstr "कोई इंस्टॉल किया हुआ ऐड-ऑन उपलब्ध नहीं है।"
 
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
@@ -2344,7 +2349,7 @@ msgstr "कोई लेन-देन चयनित नहीं है जि
 #. Default: "No upgrades in this corner. You are up to date. High fives."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Upgrades available"
-msgstr ""
+msgstr "इस कोने में कोई अपग्रेड नहीं हैं। आप अद्यतित हैं। हाई फाइव्स!"
 
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
@@ -3766,7 +3771,7 @@ msgstr "तीसरा"
 #. Default: "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr ""
+msgstr "यह ऐड-ऑन अपडेट किया गया है। वर्तमान में स्थापित प्रोफ़ाइल संस्करण {installedVersion} है। उपलब्ध नया प्रोफ़ाइल संस्करण {newVersion} है।"
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory

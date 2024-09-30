@@ -1820,6 +1820,11 @@ msgstr "在前面插入行"
 msgid "Inspect relations"
 msgstr ""
 
+#. Default: "Install"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Install"
+msgstr ""
+
 #. Default: "Installed"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
@@ -2325,12 +2330,12 @@ msgstr "否"
 #. Default: "No addons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr ""
+msgstr "没有可供安装的插件。"
 
 #. Default: "No installed addons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Installed available"
-msgstr ""
+msgstr "没有已安装的插件。"
 
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
@@ -2350,7 +2355,7 @@ msgstr ""
 #. Default: "No upgrades in this corner. You are up to date. High fives."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Upgrades available"
-msgstr ""
+msgstr "这里没有更新。你是最新的。击个掌！"
 
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
@@ -3772,7 +3777,7 @@ msgstr "第三"
 #. Default: "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr ""
+msgstr "此插件已更新。当前安装的配置文件版本为 {installedVersion}。新可用的配置文件版本为 {newVersion}."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory

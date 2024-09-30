@@ -1814,6 +1814,11 @@ msgstr ""
 msgid "Inspect relations"
 msgstr ""
 
+#. Default: "Install"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Install"
+msgstr ""
+
 #. Default: "Installed"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
@@ -2344,7 +2349,7 @@ msgstr ""
 #. Default: "No upgrades in this corner. You are up to date. High fives."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Upgrades available"
-msgstr ""
+msgstr "No upgrades in this corner. You are up to date. High fives."
 
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar

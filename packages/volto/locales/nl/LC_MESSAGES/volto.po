@@ -1818,6 +1818,11 @@ msgstr ""
 msgid "Inspect relations"
 msgstr ""
 
+#. Default: "Install"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Install"
+msgstr ""
+
 #. Default: "Installed"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
@@ -2323,12 +2328,12 @@ msgstr ""
 #. Default: "No addons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr ""
+msgstr "Geen add-ons beschikbaar voor installatie."
 
 #. Default: "No installed addons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Installed available"
-msgstr ""
+msgstr "Geen geïnstalleerde add-ons beschikbaar."
 
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
@@ -2348,7 +2353,7 @@ msgstr ""
 #. Default: "No upgrades in this corner. You are up to date. High fives."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Upgrades available"
-msgstr ""
+msgstr "Geen upgrades in deze hoek. Je bent up-to-date. High five!"
 
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
@@ -3770,7 +3775,7 @@ msgstr ""
 #. Default: "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr ""
+msgstr "Deze add-on is bijgewerkt. De momenteel geïnstalleerde profielversie is {installedVersion}. De nieuwe beschikbare profielversie is {newVersion}."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory

@@ -54,7 +54,7 @@ const UpgradableItem: React.FC<UpgradableAddonProps> = ({
                 ' ' +
                 intl.formatMessage({ id: 'upgradeVersions' })
               }
-              className={'btn-primary'}
+              className={'install-action'}
             >
               {intl.formatMessage({ id: 'Update' }) + ' ' + addon.title}
             </RACButton>
@@ -94,7 +94,7 @@ const AvailableItem: React.FC<AvailableAddonProps> = ({ addon, onInstall }) => {
             aria-label={
               intl.formatMessage({ id: 'Install' }) + ' ' + addon.title
             }
-            className={'btn-primary'}
+            className={'install-action'}
           >
             {intl.formatMessage({ id: 'Install' })}
           </RACButton>
@@ -126,7 +126,7 @@ const InstalledItem: React.FC<InstalledAddonProps> = ({
             aria-label={
               intl.formatMessage({ id: 'Uninstall' }) + ' ' + addon.title
             }
-            className={'btn-danger'}
+            className={'uninstall-action'}
           >
             {intl.formatMessage({ id: 'Uninstall' })}
           </RACButton>

@@ -48,6 +48,10 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  install: {
+    id: 'Install',
+    defaultMessage: 'Install',
+  },
   installed: {
     id: 'Installed',
     defaultMessage: 'Installed',

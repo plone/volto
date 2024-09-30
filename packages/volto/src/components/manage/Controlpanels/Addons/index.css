@@ -32,7 +32,7 @@
   padding: 2rem 1.5rem;
 }
 
-#page-addons .btn-primary {
+#page-addons .install-action {
   --btn-bg-color: rgb(0, 126, 177);
 
   padding: 0.5rem 0.85rem;
@@ -41,25 +41,28 @@
   background-color: var(--btn-bg-color);
   box-shadow: var(--btn-box-shadow);
   color: var(--btn-color-foreground);
+  cursor: pointer;
 }
 
-#page-addons .btn-primary:focus-visible {
+#page-addons .install-action:focus-visible {
   border-color: var(--btn-hover-border-color);
   box-shadow: var(--focus-box-shadow);
   outline: 0;
 }
 
-#page-addons .btn-danger {
+#page-addons .uninstall-action {
   --btn-bg-color: rgb(220, 53, 69);
+
   padding: 0.5rem 0.85rem;
   border: none;
   border-radius: 4px;
   background-color: var(--btn-bg-color);
   box-shadow: var(--btn-box-shadow);
   color: var(--btn-color-foreground);
+  cursor: pointer;
 }
 
-#page-addons .btn-danger:focus-visible {
+#page-addons .uninstall-action:focus-visible {
   border-color: var(--btn-hover-border-color);
   box-shadow: var(--focus-box-shadow);
   outline: 0;

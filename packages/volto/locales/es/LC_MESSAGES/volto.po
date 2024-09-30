@@ -1821,6 +1821,11 @@ msgstr "Insertar fila antes"
 msgid "Inspect relations"
 msgstr "Inspeccionar relaciones"
 
+#. Default: "Install"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Install"
+msgstr ""
+
 #. Default: "Installed"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
@@ -2326,12 +2331,12 @@ msgstr "No"
 #. Default: "No addons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr ""
+msgstr "No hay complementos disponibles para instalar."
 
 #. Default: "No installed addons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Installed available"
-msgstr ""
+msgstr "No hay complementos instalados disponibles."
 
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
@@ -2351,7 +2356,7 @@ msgstr "No se han seleccionado transacciones a deshacer"
 #. Default: "No upgrades in this corner. You are up to date. High fives."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Upgrades available"
-msgstr ""
+msgstr "No hay actualizaciones en esta esquina. Estás al día. ¡Choca esos cinco!"
 
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
@@ -3773,7 +3778,7 @@ msgstr "Tercero"
 #. Default: "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr ""
+msgstr "Este complemento ha sido actualizado. La versión del perfil instalada actualmente es {installedVersion}. La nueva versión del perfil disponible es {newVersion}."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
