@@ -17,6 +17,11 @@ msgstr ""
 "X-Is-Fallback-For: zh-cn\n"
 "X-Generator: Poedit 3.2\n"
 
+#. Default: "End Date"
+#: components/manage/Contents/Contents
+msgid " N"
+msgstr ""
+
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
 msgid "<p>Add some HTML here</p>"
@@ -1264,7 +1269,6 @@ msgstr "启用？"
 
 #. Default: "End Date"
 #: components/manage/Blocks/Search/components/DateRangeFacet
-#: components/manage/Contents/Contents
 msgid "End Date"
 msgstr "结束日期"
 

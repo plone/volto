@@ -18,6 +18,11 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 "X-Poedit-Bookmarks: -1,38,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
+#. Default: "End Date"
+#: components/manage/Contents/Contents
+msgid " N"
+msgstr ""
+
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
 msgid "<p>Add some HTML here</p>"
@@ -1265,7 +1270,6 @@ msgstr "Aktibatuta?"
 
 #. Default: "End Date"
 #: components/manage/Blocks/Search/components/DateRangeFacet
-#: components/manage/Contents/Contents
 msgid "End Date"
 msgstr "Bukaera data"
 

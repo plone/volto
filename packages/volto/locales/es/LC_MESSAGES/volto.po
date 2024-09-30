@@ -18,6 +18,11 @@ msgstr ""
 "Domain: volto\n"
 "X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
 
+#. Default: "End Date"
+#: components/manage/Contents/Contents
+msgid " N"
+msgstr ""
+
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
 msgid "<p>Add some HTML here</p>"
@@ -1265,7 +1270,6 @@ msgstr "¿Activado?"
 
 #. Default: "End Date"
 #: components/manage/Blocks/Search/components/DateRangeFacet
-#: components/manage/Contents/Contents
 msgid "End Date"
 msgstr "Fecha final"
 

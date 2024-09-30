@@ -264,7 +264,7 @@ const messages = defineMessages({
     defaultMessage: 'Creator',
   },
   endDate: {
-    id: ' N',
+    id: 'End Date',
     defaultMessage: 'End Date',
   },
   startDate: {

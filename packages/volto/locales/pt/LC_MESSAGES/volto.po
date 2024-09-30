@@ -16,6 +16,11 @@ msgstr ""
 "Language-Name: Portuguese\n"
 "Preferred-Encodings: utf-8\n"
 
+#. Default: "End Date"
+#: components/manage/Contents/Contents
+msgid " N"
+msgstr ""
+
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
 msgid "<p>Add some HTML here</p>"
@@ -1263,7 +1268,6 @@ msgstr ""
 
 #. Default: "End Date"
 #: components/manage/Blocks/Search/components/DateRangeFacet
-#: components/manage/Contents/Contents
 msgid "End Date"
 msgstr ""
 
