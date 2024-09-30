@@ -31,7 +31,10 @@ import {
   StaticTextWidget,
   ColorPickerWidget,
   DatetimeWidget,
+  TimeWidget,
   RecurrenceWidget,
+  RadioGroupWidget,
+  CheckboxGroupWidget,
 } from '@plone/volto/components/manage/Widgets';
 
 import ArrayViewWidget from '@plone/volto/components/theme/Widgets/ArrayWidget';
@@ -70,6 +73,7 @@ export const widgetMapping = {
     textarea: TextareaWidget,
     datetime: DatetimeWidget,
     date: DatetimeWidget,
+    time: TimeWidget,
     password: PasswordWidget,
     file: FileWidget,
     image: ImageWidget,
@@ -94,6 +98,9 @@ export const widgetMapping = {
     select: SelectWidget,
     schema: SchemaWidget,
     static_text: StaticTextWidget,
+    hidden: HiddenWidget,
+    radio_group: RadioGroupWidget,
+    checkbox_group: CheckboxGroupWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
@@ -113,7 +120,6 @@ export const widgetMapping = {
     number: NumberWidget,
     integer: NumberWidget,
     id: IdWidget,
-    hidden: HiddenWidget,
   },
   views: {
     getWidget: getWidgetView,

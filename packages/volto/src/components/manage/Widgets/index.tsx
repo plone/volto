@@ -28,6 +28,13 @@ export const CheckboxWidget = loadable(
     ),
 );
 
+export const CheckboxGroupWidget = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/CheckboxGroupWidget'
+    ),
+);
+
 export const FileWidget = loadable(
   () =>
     import(
@@ -74,6 +81,13 @@ export const QuerystringWidget = loadable(
   () =>
     import(
       /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/QuerystringWidget'
+    ),
+);
+
+export const RadioGroupWidget = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/RadioGroupWidget'
     ),
 );
 
@@ -228,6 +242,13 @@ export const DatetimeWidget = loadable(
   () =>
     import(
       /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/DatetimeWidget'
+    ),
+);
+
+export const TimeWidget = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/TimeWidget'
     ),
 );
 
