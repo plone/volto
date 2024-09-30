@@ -219,6 +219,7 @@ map(
     'label_datetime_field',
     'Date',
     'label_date_field',
+    'time',
     'File',
     'File Upload',
     'Image',
@@ -243,6 +244,8 @@ map(
     'label_multi_choice_field',
     'Choice',
     'label_choice_field',
+    'radio_group',
+    'checkbox_group',
   ],
   (factory) => {
     config.registerUtility({
@@ -272,11 +275,34 @@ config.registerUtility({
 });
 
 config.registerUtility({
-  name: 'static_text',
+  name: 'number',
+  type: 'fieldFactoryProperties',
+  method: (intl) => ({
+    default: {
+      type: 'number',
+      title: intl.formatMessage(messages.defaultValue),
+    },
+  }),
+});
+
+config.registerUtility({
+  name: 'hidden',
   type: 'fieldFactoryProperties',
   method: (intl) => ({
     default: {
       type: 'string',
+      title: intl.formatMessage(messages.defaultValue),
+    },
+  }),
+});
+
+config.registerUtility({
+  name: 'textarea',
+  type: 'fieldFactoryProperties',
+  method: (intl) => ({
+    default: {
+      type: 'string',
+      widget: 'textarea',
       title: intl.formatMessage(messages.defaultValue),
     },
   }),
@@ -306,6 +332,16 @@ map(['Date', 'label_date_field'], (factory) => {
       factory,
     }),
   });
+});
+
+config.registerUtility({
+  name: 'time',
+  type: 'fieldFactoryInitialData',
+  method: () => ({
+    type: 'string',
+    widget: 'time',
+    factory: 'time',
+  }),
 });
 
 map(['Email', 'label_email'], (factory) => {
@@ -473,6 +509,46 @@ config.registerUtility({
     type: 'string',
     widget: 'hidden',
     factory: 'hidden',
+  }),
+});
+
+config.registerUtility({
+  name: 'number',
+  type: 'fieldFactoryInitialData',
+  method: () => ({
+    type: 'number',
+    factory: 'number',
+  }),
+});
+
+config.registerUtility({
+  name: 'radio_group',
+  type: 'fieldFactoryInitialData',
+  method: () => ({
+    type: 'string',
+    choices: [],
+    widget: 'radio_group',
+    factory: 'radio_group',
+  }),
+});
+
+config.registerUtility({
+  name: 'checkbox_group',
+  type: 'fieldFactoryInitialData',
+  method: () => ({
+    type: 'array',
+    widget: 'checkbox_group',
+    factory: 'checkbox_group',
+  }),
+});
+
+config.registerUtility({
+  name: 'textarea',
+  type: 'fieldFactoryInitialData',
+  method: () => ({
+    type: 'string',
+    widget: 'textarea',
+    factory: 'textarea',
   }),
 });
 
@@ -787,12 +863,13 @@ class SchemaWidget extends Component {
           title: values.title,
           description: values.description,
           id: fieldId,
-          ...initialData,
+          ...omit(initialData, ['required']),
         },
       },
-      required: values.required
-        ? [...this.props.value.required, fieldId]
-        : this.props.value.required,
+      required: [
+        ...this.props.value.required,
+        ...(values.required || initialData.required ? [fieldId] : []),
+      ],
     });
     this.onCancel();
   }
@@ -938,7 +1015,7 @@ class SchemaWidget extends Component {
     listOfProp.forEach((prop) => {
       formattedValues = {
         ...formattedValues,
-        ...{ [prop]: values[prop] ? parseFloat(values[prop]) : null },
+        ...{ [prop]: values[prop] ? parseFloat(values[prop]) : undefined },
       };
     });
 
