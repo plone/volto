@@ -54,14 +54,17 @@ export function getLayoutFieldname(props) {
  * @function getContentIcon
  * @param {string} type Content type
  * @param {boolean} isFolderish
+ * @param {boolean} useQuantaIcons
  * @returns {Object} Icon component
  */
-export function getContentIcon(type, isFolderish) {
+export function getContentIcon(type, isFolderish, useQuantaIcons) {
   const { settings } = config;
-  const { contentIcons } = settings;
+  const { contentIcons, quantaContentIcons } = settings;
 
-  if (type in contentIcons) return contentIcons[type];
-  return isFolderish ? contentIcons.Folder : contentIcons.File;
+  const icons = useQuantaIcons ? quantaContentIcons : contentIcons;
+
+  if (type in icons) return icons[type];
+  return isFolderish ? icons.Folder : icons.File;
 }
 
 /**
