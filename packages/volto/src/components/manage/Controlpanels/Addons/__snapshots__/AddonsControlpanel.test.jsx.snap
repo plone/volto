@@ -83,7 +83,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
                   <div>
                     <button
                       aria-label="Update Whatever upgradeVersions"
-                      class="btn-primary"
+                      class="install-action"
                       data-rac=""
                       id="upgradable-plone.app.whatever"
                       type="button"
@@ -163,7 +163,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
                   <div>
                     <button
                       aria-label="Install Something Else"
-                      class="btn-primary"
+                      class="install-action"
                       data-rac=""
                       id="plone.app.somethingelse"
                       type="button"
@@ -243,7 +243,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
                   <div>
                     <button
                       aria-label="Uninstall Whatever"
-                      class="btn-danger"
+                      class="uninstall-action"
                       data-rac=""
                       id="installed-plone.app.whatever"
                       type="button"
