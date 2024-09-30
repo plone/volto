@@ -53,11 +53,11 @@ if (window.env.publicURL) {
 // This is specially important when the hydration of the store coming from the first SSR
 // request happens, since there all the server URLs might be the internalApiPath ones,
 // and the client should be able to take care of them properly.
-if (window.env.RAZZLE_INTERNAL_API_PATH) {
-  config.settings.internalApiPath = window.env.RAZZLE_INTERNAL_API_PATH;
+if (window.env.VITE_INTERNAL_API_PATH) {
+  config.settings.internalApiPath = window.env.VITE_INTERNAL_API_PATH;
 }
 // TODO: To be removed when the use of the legacy traverse is deprecated.
-if (window.env.RAZZLE_LEGACY_TRAVERSE) {
+if (window.env.VITE_LEGACY_TRAVERSE) {
   config.settings.legacyTraverse = true;
 }
 

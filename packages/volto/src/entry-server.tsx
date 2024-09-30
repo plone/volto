@@ -3,7 +3,7 @@ import * as React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { ServerResponse } from 'http';
 import express from 'express';
-import { TitleWidget, Moment } from './test_loadable';
+// import { TitleWidget, Moment } from './test_loadable';
 // import './config';
 // import { CookiesProvider } from 'react-cookie';
 import { parse as parseUrl } from 'url';
@@ -33,6 +33,7 @@ import debug from 'debug';
 import userSession from '@plone/volto/reducers/userSession/userSession';
 
 import config from '@plone/volto/registry';
+import serverConfig from './config/server';
 
 // index.js
 // import './fetch-polyfill';
@@ -53,7 +54,8 @@ function reactIntlErrorHandler(error) {
   debug('i18n')(error);
 }
 
-export async function getConfig() {
+export function getConfig() {
+  config.settings.serverConfig = serverConfig;
   return config;
 }
 
@@ -224,6 +226,7 @@ export async function render(opts: {
             // criticalCss={readCriticalCss(req)}
             apiPath={res.locals.detectedHost || config.settings.apiPath}
             publicURL={res.locals.detectedHost || config.settings.publicURL}
+            headElements={opts.head}
           />,
         )}
       `,

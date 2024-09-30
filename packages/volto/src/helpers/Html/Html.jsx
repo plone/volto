@@ -83,7 +83,8 @@ class Html extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { markup, store, criticalCss, apiPath, publicURL } = this.props;
+    const { markup, store, criticalCss, apiPath, publicURL, headElements } =
+      this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
     const htmlAttributes = head.htmlAttributes.toComponent();
@@ -168,6 +169,28 @@ class Html extends Component {
               extractor.getStyleElements()
             )
           ) : undefined} */}
+          {import.meta.env.PROD ? (
+            <>
+              {headElements.scripts.map((elem) => {
+                return (
+                  <script
+                    type={elem.type}
+                    crossOrigin={elem.crossorigin}
+                    src={elem.src}
+                  ></script>
+                );
+              })}
+              {headElements.links.map((elem) => {
+                return (
+                  <link
+                    rel={elem.rel}
+                    crossOrigin={elem.crossorigin}
+                    href={elem.href}
+                  ></link>
+                );
+              })}
+            </>
+          ) : undefined}
         </head>
         <body className={bodyClass}>
           <div role="navigation" aria-label="Toolbar" id="toolbar" />
@@ -188,21 +211,25 @@ class Html extends Component {
                 process.env.NODE_ENV === 'production' ? undefined : 'true',
             }),
           )} */}
-          <script
-            type="module"
-            suppressHydrationWarning
-            dangerouslySetInnerHTML={{
-              __html: `
+          {import.meta.env.DEV ? (
+            <>
+              <script
+                type="module"
+                suppressHydrationWarning
+                dangerouslySetInnerHTML={{
+                  __html: `
               import RefreshRuntime from "/@react-refresh"
               RefreshRuntime.injectIntoGlobalHook(window)
               window.$RefreshReg$ = () => {}
               window.$RefreshSig$ = () => (type) => type
               window.__vite_plugin_react_preamble_installed__ = true
             `,
-            }}
-          />
-          <script type="module" src="/@vite/client" />
-          <script type="module" src="/src/entry-client.tsx"></script>
+                }}
+              />
+              <script type="module" src="/@vite/client" />
+              <script type="module" src="/src/entry-client.tsx"></script>
+            </>
+          ) : undefined}
           {/* Hydration error debugger overlay, to use in conjunction with */}
           {/* https://github.com/BuilderIO/hydration-overlay/blob/main/README.md */}
           {/* Uncomment to enable */}

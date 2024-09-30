@@ -93,6 +93,11 @@ export default defineConfig({
     // external: ['lodash', 'semantic-ui-react'],
     noExternal: ['use-deep-compare-effect'],
   },
+  esbuild: {
+    supported: {
+      'top-level-await': true, //browsers can handle top-level-await features
+    },
+  },
   optimizeDeps: {
     esbuildOptions: {
       plugins: [fixReactVirtualized],

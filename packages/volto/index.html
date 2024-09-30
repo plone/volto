@@ -1,16 +1,13 @@
+<!-- This file is only being used by the "vite build" command as it takes the "module" script entries -->
+<!-- and transpile them. The actual dev/prod build is not using it at all -->
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
   </head>
   <body>
     <div role="navigation" aria-label="Toolbar" id="toolbar"></div>
     <div id="main"></div>
     <div role="complementary" aria-label="Sidebar" id="sidebar"></div>
-    <script type="module" src="/src/client.js"></script>
-    <script type="module" src="/src/init-store.js"></script>
+    <script type="module" src="/src/entry-client.tsx"></script>
   </body>
 </html>

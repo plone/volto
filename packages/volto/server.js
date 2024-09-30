@@ -3,6 +3,7 @@ import express from 'express';
 import getPort, { portNumbers } from 'get-port';
 import dns from 'dns';
 import cookiesMiddleware from 'universal-cookie-express';
+import { JSDOM } from 'jsdom';
 
 const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD;
 
@@ -24,42 +25,51 @@ export async function createServer(
    * @type {import('vite').ViteDevServer}
    */
   let vite;
-  if (!isProd) {
-    vite = await (
-      await import('vite')
-    ).createServer({
-      root,
-      logLevel: isTest ? 'error' : 'info',
-      server: {
-        middlewareMode: true,
-        watch: {
-          // During tests we edit the files too fast and sometimes chokidar
-          // misses change events, so enforce polling for consistency
-          usePolling: true,
-          interval: 100,
-        },
-        hmr: {
-          port: hmrPort,
-        },
+  vite = await (
+    await import('vite')
+  ).createServer({
+    root,
+    logLevel: isTest ? 'error' : 'info',
+    server: {
+      middlewareMode: true,
+      watch: {
+        // During tests we edit the files too fast and sometimes chokidar
+        // misses change events, so enforce polling for consistency
+        usePolling: true,
+        interval: 100,
       },
-      appType: 'custom',
-    });
+      hmr: {
+        port: hmrPort,
+      },
+    },
+    appType: 'custom',
+  });
+  if (!isProd) {
     // use vite's connect instance as middleware
     app.use(vite.middlewares);
-    app.use(cookiesMiddleware());
   } else {
     const sirv = (await import('sirv')).default;
     app.use((await import('compression')).default());
     app.use('/', sirv('./dist/client', { extensions: [] }));
   }
 
+  app.use(cookiesMiddleware());
+
   // Load the current config for the Express server to consume it
-  const currentConfig = (await vite.ssrLoadModule('/src/config')).currentConfig;
+  // const currentConfig = (await vite.ssrLoadModule('/src/config')).currentConfig;
   // console.log(currentConfig);
+
+  const entry = await (async () => {
+    if (!isProd) {
+      return vite.ssrLoadModule('/src/entry-server.tsx');
+    } else {
+      return import('./dist/server/entry-server.js');
+    }
+  })();
 
   // Loads the Express server middleware from the settings.
   const middleware = (
-    currentConfig.settings.serverConfig.expressMiddleware || []
+    entry.getConfig().settings?.serverConfig?.expressMiddleware || []
   ).filter((m) => m);
   if (middleware.length) app.use('/', middleware);
 
@@ -74,7 +84,7 @@ export async function createServer(
         return;
       }
 
-      // Extract the head from vite's index transformation hook
+      // Extract the head from vite's index transformation hook (while in dev)
       let viteHead = !isProd
         ? await vite.transformIndexHtml(
             url,
@@ -87,20 +97,40 @@ export async function createServer(
         viteHead.indexOf('</head>'),
       );
 
-      const entry = await (async () => {
-        if (!isProd) {
-          return vite.ssrLoadModule('/src/entry-server.tsx');
-        } else {
-          return import('./dist/server/entry-server.js');
-        }
-      })();
+      // Parse the HTML string with jsdom
+      const dom = new JSDOM(viteHead);
+      const document = dom.window.document;
+
+      // Extract script elements
+      const scripts = Array.from(document.querySelectorAll('script')).map(
+        (script) => ({
+          type: script.getAttribute('type'),
+          crossorigin: script.getAttribute('crossorigin'),
+          src: script.getAttribute('src'),
+        }),
+      );
+
+      // Extract link elements
+      const links = Array.from(document.querySelectorAll('link')).map(
+        (link) => ({
+          rel: link.getAttribute('rel'),
+          crossorigin: link.getAttribute('crossorigin'),
+          href: link.getAttribute('href'),
+        }),
+      );
+
+      // Combine the results into a single object
+      const headElements = {
+        scripts,
+        links,
+      };
 
       console.log('Rendering: ', url, '...');
       entry.render({
         req,
         res,
         url,
-        head: isProd ? viteHead : '',
+        head: isProd ? headElements : '',
       });
     } catch (e) {
       !isProd && vite.ssrFixStacktrace(e);

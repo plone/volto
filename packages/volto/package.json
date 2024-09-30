@@ -68,7 +68,8 @@
     "dev:server:debug": "NODE_INSPECT_RESUME_ON_START=1 node inspect src/vite-server.js",
     "build:client": "vite build --ssrManifest --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
-    "start:prod": "NODE_ENV=production node server.js"
+    "start:prod": "NODE_ENV=production node server.js",
+    "start:prod:debug": "NODE_INSPECT_RESUME_ON_START=1 NODE_ENV=production node --inspect-brk server.js"
   },
   "bundlewatch": {
     "files": [
