@@ -116,11 +116,7 @@
     ],
     "globals": {
       "__DEV__": true
-    },
-    "testMatch": [
-      "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
-      "<rootDir>/../**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}"
-    ]
+    }
   },
   "stylelint": {
     "extends": [
