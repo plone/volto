@@ -63,7 +63,7 @@ describe('[GET] QuerystringSearch', () => {
     const path = '/test-folder';
     await createContent({
       path: '/',
-      data: { '@type': 'Folder', id: 'test-folder' },
+      data: { '@type': 'Folder', id: 'test-folder', title: 'Test Folder' },
       config: cli.config,
     });
     await createContent({ path, data: contentData, config: cli.config });
