@@ -451,7 +451,7 @@ The `Tags` component has been moved to the `belowContent` slot.
 It now receives the `content` property instead of the `tags` property.
 
 
-{upgrade-18-cookieplone-label}=
+(upgrade-18-cookieplone-label)=
 
 ### Cookieplone is now the recommended project and add-on generator for Volto 18
 
