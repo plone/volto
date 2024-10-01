@@ -71,6 +71,19 @@ const View = ({ data }) => {
     });
   }, [state, rows]);
 
+  const handleSort = (index) => {
+    if (!data.table.sortable) return;
+    setState({
+      column: index,
+      direction:
+        state.column !== index
+          ? 'ascending'
+          : state.direction === 'ascending'
+            ? 'descending'
+            : 'ascending',
+    });
+  };
+
   return (
     <>
       {data && data.table && (
@@ -92,19 +105,20 @@ const View = ({ data }) => {
                     key={cell.key}
                     textAlign="left"
                     verticalAlign="middle"
+                    tabIndex={data.table.sortable ? '0' : '-1'}
                     sorted={state.column === index ? state.direction : null}
                     onClick={() => {
-                      if (!data.table.sortable) return;
-                      setState({
-                        column: index,
-                        direction:
-                          state.column !== index
-                            ? 'ascending'
-                            : state.direction === 'ascending'
-                              ? 'descending'
-                              : 'ascending',
-                      });
+                      handleSort(index);
                     }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        handleSort(index);
+                      }
+                    }}
+                    aria-sort={
+                      state.column === index ? state.direction : 'none'
+                    }
                   >
                     {cell.value &&
                     Node.string({ children: cell.value }).length > 0
