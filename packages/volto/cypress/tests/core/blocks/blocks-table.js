@@ -29,7 +29,7 @@ describe('Table Block Tests', () => {
     cy.get('.block-editor-slateTable [role=textbox]')
       .first()
       .click()
-      .should('have.css', 'outline', 'rgb(135, 143, 147) none 0px');
+      .should('have.css', 'outline', 'rgba(0, 0, 0, 0.87) none 0px');
 
     cy.get(
       '.celled.fixed.table thead tr th:first-child() [contenteditable="true"]',
