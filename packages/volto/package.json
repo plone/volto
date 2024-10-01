@@ -39,7 +39,7 @@
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "start": "make build-deps && razzle start",
     "start:coresandbox": "make build-deps && ADDONS=coresandbox razzle start",
-    "build": "make build-deps && razzle build --noninteractive",
+    "build": "make build-deps && pnpm run build:client && pnpm run build:server",
     "build:types": "tsc --project tsconfig.declarations.json",
     "test": "razzle test --maxWorkers=50%",
     "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test",
