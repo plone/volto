@@ -8,7 +8,7 @@ exports[`renders an edit video block component 1`] = `
     className="video-inner"
   >
     <div
-      className="ui embed video-embed 16:9 foo"
+      className="ui embed video-embed 16:9"
     >
       <img
         alt=""
