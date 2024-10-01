@@ -7,6 +7,7 @@ import { svgLoader } from './vite-plugins/svg';
 
 import AddonConfigurationRegistry from '@plone/registry/src/addon-registry';
 import createAddonsLoader from '@plone/registry/src/create-addons-loader';
+import { poToJson } from '@plone/scripts/i18n.cjs';
 
 const projectRootPath = path.resolve('.');
 const registry = new AddonConfigurationRegistry(projectRootPath);
@@ -15,6 +16,9 @@ const addonsLoaderPath = createAddonsLoader(
   registry.getAddonDependencies(),
   registry.getAddons(),
 );
+
+// Compile language JSON files from po files
+poToJson({ registry, addonMode: false });
 
 // https://vitejs.dev/config/
 export default defineConfig({
