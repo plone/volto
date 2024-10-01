@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-08-10T17:00:27.117Z\n"
+"POT-Creation-Date: 2024-10-01T08:57:25.996Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -3698,6 +3698,11 @@ msgstr ""
 msgid "The value does not match the pattern {pattern}"
 msgstr ""
 
+#. Default: "The videos title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the Video is already sufficiently titled by a headline above, please leave this field empty."
+#: components/manage/Blocks/Video/schema
+msgid "The videos title is not displayed, but only used for accessibility reason to identify the video for screen reader users. If the Video is already sufficiently titled by a headline above, please leave this field empty."
+msgstr ""
+
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More
 msgid "The working copy was discarded"
@@ -3798,6 +3803,7 @@ msgstr ""
 #. Default: "Title"
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
+#: components/manage/Blocks/Video/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes

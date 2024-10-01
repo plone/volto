@@ -12,6 +12,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
       \\"fields\\": [
         \\"url\\",
         \\"preview_image\\",
+        \\"title\\",
         \\"align\\"
       ]
     }
@@ -24,6 +25,10 @@ exports[`renders an Image Block Sidebar component 1`] = `
     \\"preview_image\\": {
       \\"title\\": \\"Preview Image URL\\",
       \\"widget\\": \\"url\\"
+    },
+    \\"title\\": {
+      \\"title\\": \\"Title\\",
+      \\"description\\": \\"The videos title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the Video is already sufficiently titled by a headline above, please leave this field empty.\\"
     },
     \\"align\\": {
       \\"title\\": \\"Alignment\\",

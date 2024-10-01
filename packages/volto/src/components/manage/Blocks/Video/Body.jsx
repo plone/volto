@@ -102,12 +102,7 @@ const Body = ({ data, isEditMode }) => {
                   {...embedSettings}
                 />
               ) : (
-                <VideoEmbed
-                  id={videoID}
-                  source="youtube"
-                  {...embedSettings}
-                  className="foo"
-                />
+                <VideoEmbed id={videoID} source="youtube" {...embedSettings} />
               )}
             </>
           ) : (

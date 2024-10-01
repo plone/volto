@@ -8,20 +8,37 @@ exports[`renders an edit video block component 1`] = `
     className="video-inner"
   >
     <div
-      className="ui 16:9 embed"
-      onClick={[Function]}
-      onKeyPress={[Function]}
-      tabIndex={0}
+      className="ui embed video-embed 16:9 foo"
     >
-      <i
-        aria-hidden="true"
-        className="play icon"
-        onClick={[Function]}
-      />
       <img
-        className="placeholder"
+        alt=""
+        aria-hidden={true}
         src="https://img.youtube.com/vi/KqjeO_ekW3g/sddefault.jpg"
       />
+      <button
+        aria-label="Play video"
+        className="video-play-button"
+        onClick={[Function]}
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "white",
+              "height": "100%",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </button>
     </div>
   </div>
 </div>
