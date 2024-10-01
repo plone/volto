@@ -9,16 +9,30 @@ myst:
 
 # Accessibility guidelines
 
-Attention should be paid to improve and maintain accessibility. In documentation, code and filenames you will often see this abbreviated as "a11y".
+Attention should be paid to improve and maintain accessibility, abbreviated as "a11y".
 
-## Clickable elements that have a symbol or icon and no visible text
 
-If the symbol or icon is clear enough for sighted users, for instance a big "X" to close a dialog, it will still need a text for screen reader users.
+## Tests
 
-You can achieve a 'hidden' label by setting the property "aria-label" on the element.
-If available, use the translation machinery available to make the label appear in the correct language.
+We use [`cypress-axe`](https://github.com/component-driven/cypress-axe) for automated testing of accessibility in Volto via Cypress.
 
-Example:
+Place accessibility test files in the subfolder in the Volto package.
+For example, `packages/volto/cypress/tests/core/blocks/blocks-a11y.js`.
+
+Name accessibility tests `[THING] tested for a11y axe violations`
+
+
+## Common accessibility issues
+
+This section describes common issues that you might need to address while developing for Volto core or an add-on.
+
+
+### Clickable elements that have a symbol or icon and no visible text
+
+If the symbol or icon is clear enough for sighted users—for instance a big "X" to close a dialog—it will still need a text for screen reader users.
+
+You can achieve a "hidden" label by setting the property `aria-label` on the element.
+If available, use the translation machinery to make the label appear in the correct language.
 
 ```jsx
 <button className="cancel" aria-label="Cancel" onClick={() => this.onCancel()}>
@@ -31,11 +45,14 @@ Example:
 </button>
 ```
 
-## Do not use `<a>` tags without href
+### Do not use `<a>` tags without `href`
 
-If an element has an event listener on it and performs an action, but does not point to a proper URL, use a `<button>` and style with CSS to style.
-The reasoning is that the `<a></a>` HTML tag has specific behavior that screenreaders support and that screenreader users expect.
+If an element has an event listener on it and performs an action, but does not point to a proper URL, use a `<button>` and style with CSS.
+The `<a></a>` HTML tag has specific behavior that screen readers support and users expect.
 
-## Make sure form elements have a label
 
-This is true for one-element forms as well, such as the "Search" form on the folder-contents component. Putting an icon on it does not convey any meaning to screenreader-users, you should clarify it with an aria-label.
+### Make sure form elements have a label
+
+This is true for single element forms as well, such as the "Search" form on the folder contents component.
+Putting an icon on it does not convey any meaning to screen reader users.
+You should clarify it with an `aria-label` attribute.
