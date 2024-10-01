@@ -4,11 +4,8 @@
  */
 
 import { GET_CONTENT, GET_TYPES } from '@plone/volto/constants/ActionTypes';
-import {
-  flattenToAppURL,
-  getBaseUrl,
-  hasApiExpander,
-} from '@plone/volto/helpers';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
 
 const initialState = {
   error: null,

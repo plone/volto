@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { lazy, useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
-import { cloneDeep, map } from 'lodash';
+import { cloneDeep, map } from 'lodash-es';
 import EditBlock from './Edit';
-import { DragDropList } from '@plone/volto/components';
+
 import {
   getBlocks,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   applyBlockDefaults,
   getBlocksHierarchy,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
+
 import {
   addBlock,
   insertBlock,
@@ -20,15 +21,21 @@ import {
   mutateBlock,
   nextBlockId,
   previousBlockId,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
+
 import EditBlockWrapper from './EditBlockWrapper';
-import { setSidebarTab, setUIState } from '@plone/volto/actions';
+import { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
+import { setUIState } from '@plone/volto/actions/form/form';
 import { useDispatch } from 'react-redux';
-import { useDetectClickOutside, useEvent } from '@plone/volto/helpers';
+import { useDetectClickOutside } from '@plone/volto/helpers/Utils/useDetectClickOutside';
+import { useEvent } from '@plone/volto/helpers/Utils/useEvent';
 import config from '@plone/volto/registry';
 import { createPortal } from 'react-dom';
 
-import Order from './Order/Order';
+const Order = lazy(() => import('./Order/Order'));
+const DragDropList = lazy(
+  () => import('@plone/volto/components/manage/DragDropList/DragDropList'),
+);
 
 const BlocksForm = (props) => {
   const {

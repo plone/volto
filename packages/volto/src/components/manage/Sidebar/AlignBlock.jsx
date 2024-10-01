@@ -1,5 +1,5 @@
 import { defineMessages, useIntl } from 'react-intl';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Button } from 'semantic-ui-react';
 import imageLeftSVG from '@plone/volto/icons/image-left.svg';
 import imageRightSVG from '@plone/volto/icons/image-right.svg';

@@ -5,7 +5,7 @@
 
 import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode';
-import { compact, flatten, union } from 'lodash';
+import { compact, flatten, union } from 'lodash-es';
 import { matchPath } from 'react-router';
 import qs from 'query-string';
 
@@ -17,12 +17,13 @@ import {
   RESET_APIERROR,
   SET_APIERROR,
 } from '@plone/volto/constants/ActionTypes';
-import { changeLanguage, updateUploadedFiles } from '@plone/volto/actions';
+import { changeLanguage } from '@plone/volto/actions/language/language';
+import { updateUploadedFiles } from '@plone/volto/actions/content/content';
 import {
   toGettextLang,
   toReactIntlLang,
-  getCookieOptions,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Utils/Utils';
+import { getCookieOptions } from '@plone/volto/helpers/Cookies/cookies';
 let socket = null;
 
 /**
@@ -238,9 +239,7 @@ const apiMiddlewareFactory =
               config.settings.supportedLanguages.includes(lang)
             ) {
               const langFileName = toGettextLang(lang);
-              import(
-                /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-              ).then((locale) => {
+              import(`../../locales/${langFileName}.json`).then((locale) => {
                 dispatch(changeLanguage(lang, locale.default));
               });
             }
@@ -288,7 +287,7 @@ const apiMiddlewareFactory =
             });
             // Rethrow the original exception on the client side only,
             // so it doesn't fall through to express on the server.
-            if (__CLIENT__) throw error;
+            if (!import.meta.env.SSR) throw error;
           }
         },
         (error) => {

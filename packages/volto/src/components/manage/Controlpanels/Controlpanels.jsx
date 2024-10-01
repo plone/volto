@@ -1,10 +1,5 @@
-/**
- * Controlpanels component.
- * @module components/manage/Controlpanels/Controlpanels
- */
-
-import { Helmet } from '@plone/volto/helpers';
-import { concat, filter, last, map, sortBy, uniqBy } from 'lodash';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
+import { concat, filter, last, map, sortBy, uniqBy } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { createPortal } from 'react-dom';
@@ -12,7 +7,10 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
 
-import { Error, Icon, Toolbar, VersionOverview } from '@plone/volto/components';
+import Error from '@plone/volto/components/theme/Error/Error';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import { VersionOverview } from '@plone/volto/components/manage/Controlpanels';
 
 import config from '@plone/volto/registry';
 

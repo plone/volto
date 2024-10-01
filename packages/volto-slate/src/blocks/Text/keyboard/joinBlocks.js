@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import { Editor } from 'slate';
 import {
@@ -16,7 +16,7 @@ import {
   deleteBlock,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
 /**
  * Joins the current block (which has an active Slate Editor)
  * with the previous block, to make a single block.

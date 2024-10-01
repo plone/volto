@@ -5,9 +5,11 @@ import { defineMessages, useIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
 
 import cx from 'classnames';
-import { BodyClass, getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
+import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
 import config from '@plone/volto/registry';
-import { getNavigation } from '@plone/volto/actions';
+import { getNavigation } from '@plone/volto/actions/navigation/navigation';
 import { CSSTransition } from 'react-transition-group';
 import NavItems from '@plone/volto/components/theme/Navigation/NavItems';
 

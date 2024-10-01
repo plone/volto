@@ -12,7 +12,7 @@ const userSessionReset =
 
     switch (action.type) {
       case LOCATION_CHANGE:
-        if (action.request?.subrequest || __SERVER__) {
+        if (action.request?.subrequest || import.meta.env.SSR) {
           return next(action);
         }
 

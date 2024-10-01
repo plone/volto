@@ -1,8 +1,4 @@
-/**
- * Controlpanels reducer.
- * @module reducers/controlpanels/controlpanels
- */
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import {
   GET_CONTROLPANEL,
   POST_CONTROLPANEL,

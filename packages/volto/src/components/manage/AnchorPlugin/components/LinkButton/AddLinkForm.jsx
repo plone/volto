@@ -14,9 +14,9 @@ import {
   isInternalURL,
   flattenToAppURL,
   URLUtils,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Url/Url';
 
-import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
+import doesNodeContainClick from '@plone/volto/helpers/Utils/doesNodeContainClick';
 import { Input, Form, Button } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 
@@ -28,7 +28,7 @@ import linkSVG from '@plone/volto/icons/link.svg';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { withRouter } from 'react-router';
 
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 
 const messages = defineMessages({
   placeholder: {

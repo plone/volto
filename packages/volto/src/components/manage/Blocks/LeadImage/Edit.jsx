@@ -4,7 +4,8 @@ import { defineMessages, useIntl } from 'react-intl';
 import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
 
-import { LeadImageSidebar, SidebarPortal } from '@plone/volto/components';
+import LeadImageSidebar from '@plone/volto/components/manage/Blocks/LeadImage/LeadImageSidebar';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import config from '@plone/volto/registry';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { usePrevious } from '@plone/volto/helpers';
-import { updateComment } from '@plone/volto/actions';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
+import { updateComment } from '@plone/volto/actions/comments/comments';
 import { ModalForm } from '@plone/volto/components/manage/Form';
 
 const messages = defineMessages({

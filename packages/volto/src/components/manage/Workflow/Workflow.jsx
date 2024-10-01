@@ -1,25 +1,24 @@
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { uniqBy } from 'lodash';
+import { uniqBy } from 'lodash-es';
 import { toast } from 'react-toastify';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { Icon, Toast } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import {
-  flattenToAppURL,
   getWorkflowOptions,
   getCurrentStateMapping,
-} from '@plone/volto/helpers';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+} from '@plone/volto/helpers/Workflows/Workflows';
 
+import { getContent } from '@plone/volto/actions/content/content';
 import {
-  getContent,
   getWorkflow,
   transitionWorkflow,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/workflow/workflow';
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
@@ -39,7 +38,33 @@ const messages = defineMessages({
   },
 });
 
-const SingleValue = injectLazyLibs('reactSelect')(({ children, ...props }) => {
+const Select = lazy(() => import('react-select'));
+
+const SelectSingleValue = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.SingleValue,
+  })),
+);
+
+const SelectOption = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.Option,
+  })),
+);
+
+const SelectDropdownIndicator = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.DropdownIndicator,
+  })),
+);
+
+const SelectPlaceholder = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.Placeholder,
+  })),
+);
+
+const SingleValue = ({ children, ...props }) => {
   const stateDecorator = {
     marginRight: '10px',
     display: 'inline-block',
@@ -49,16 +74,16 @@ const SingleValue = injectLazyLibs('reactSelect')(({ children, ...props }) => {
     width: '10px',
     borderRadius: '50%',
   };
-  const { SingleValue } = props.reactSelect.components;
+
   return (
-    <SingleValue {...props}>
+    <SelectSingleValue {...props}>
       <span style={stateDecorator} />
       {children}
-    </SingleValue>
+    </SelectSingleValue>
   );
-});
+};
 
-const Option = injectLazyLibs('reactSelect')((props) => {
+const Option = (props) => {
   const stateDecorator = {
     marginRight: '10px',
     display: 'inline-block',
@@ -76,31 +101,29 @@ const Option = injectLazyLibs('reactSelect')((props) => {
         : null,
   };
 
-  const { Option } = props['reactSelect'].components;
   return (
-    <Option {...props}>
+    <SelectOption {...props}>
       <span style={stateDecorator} />
       <div style={{ marginRight: 'auto' }}>{props.label}</div>
       {props.isFocused && !props.isSelected && (
         <Icon name={checkSVG} size="18px" color="#b8c6c8" />
       )}
       {props.isSelected && <Icon name={checkSVG} size="18px" color="#007bc1" />}
-    </Option>
+    </SelectOption>
   );
-});
+};
 
-const DropdownIndicator = injectLazyLibs('reactSelect')((props) => {
-  const { DropdownIndicator } = props.reactSelect.components;
+const DropdownIndicator = (props) => {
   return (
-    <DropdownIndicator {...props} data-testid="workflow-select-dropdown">
+    <SelectDropdownIndicator {...props} data-testid="workflow-select-dropdown">
       {props.selectProps.menuIsOpen ? (
         <Icon name={upSVG} size="24px" color="#007bc1" />
       ) : (
         <Icon name={downSVG} size="24px" color="#007bc1" />
       )}
-    </DropdownIndicator>
+    </SelectDropdownIndicator>
   );
-});
+};
 
 const selectTheme = (theme) => ({
   ...theme,
@@ -198,9 +221,6 @@ const Workflow = (props) => {
     );
   };
 
-  const { Placeholder } = props.reactSelect.components;
-  const Select = props.reactSelect.default;
-
   return (
     <FormFieldWrapper
       id="state-select"
@@ -221,7 +241,7 @@ const Workflow = (props) => {
         theme={selectTheme}
         components={{
           DropdownIndicator,
-          Placeholder,
+          SelectPlaceholder,
           Option,
           SingleValue,
         }}
@@ -244,4 +264,4 @@ Workflow.propTypes = {
   pathname: PropTypes.string.isRequired,
 };
 
-export default compose(injectLazyLibs(['reactSelect']))(Workflow);
+export default Workflow;

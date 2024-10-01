@@ -5,13 +5,11 @@
 
 import React from 'react';
 import cx from 'classnames';
-import { ImageSidebar, SidebarPortal } from '@plone/volto/components';
+import ImageSidebar from '@plone/volto/components/manage/Blocks/Image/ImageSidebar';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 
-import {
-  flattenToAppURL,
-  isInternalURL,
-  withBlockExtensions,
-} from '@plone/volto/helpers';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
+import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
 import config from '@plone/volto/registry';
 
 import { ImageInput } from '@plone/volto/components/manage/Widgets/ImageWidget';

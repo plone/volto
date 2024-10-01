@@ -17,7 +17,6 @@ import {
   initialBlocksFocus,
 } from './Blocks';
 import { components } from './Components';
-import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 import slots from './slots';
 
@@ -34,14 +33,14 @@ import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
 import ConfigRegistry from '@plone/volto/registry';
 
-import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
+import { getSiteAsyncPropExtender } from '@plone/volto/helpers/Site';
 import { registerValidators } from './validation';
 
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
 
 const apiPath =
-  process.env.RAZZLE_API_PATH ||
+  import.meta.env.VOLTO_API_PATH ||
   (__DEVELOPMENT__ ? `http://${host}:${port}` : '');
 
 const getServerURL = (url) => {
@@ -53,20 +52,15 @@ const getServerURL = (url) => {
 };
 
 // Sensible defaults for publicURL
-// if RAZZLE_PUBLIC_URL is present, use it
+// if VOLTO_PUBLIC_URL is present, use it
 // if in DEV, use the host/port combination by default
-// if in PROD, assume it's RAZZLE_API_PATH server name (no /api or alikes) or fallback
-// to DEV settings if RAZZLE_API_PATH is not present
+// if in PROD, assume it's VOLTO_API_PATH server name (no /api or alikes) or fallback
+// to DEV settings if VOLTO_API_PATH is not present
 const publicURL =
-  process.env.RAZZLE_PUBLIC_URL ||
+  import.meta.env.VOLTO_PUBLIC_URL ||
   (__DEVELOPMENT__
     ? `http://${host}:${port}`
-    : getServerURL(process.env.RAZZLE_API_PATH) || `http://${host}:${port}`);
-
-const serverConfig =
-  typeof __SERVER__ !== 'undefined' && __SERVER__
-    ? require('./server').default
-    : {};
+    : getServerURL(import.meta.env.VOLTO_API_PATH) || `http://${host}:${port}`);
 
 let config = {
   settings: {
@@ -97,21 +91,21 @@ let config = {
     // front of both the frontend and the backend so you can bypass CORS safely.
     // https://6.docs.plone.org/volto/deploying/seamless-mode.html
     devProxyToApiPath:
-      process.env.RAZZLE_DEV_PROXY_API_PATH ||
-      process.env.RAZZLE_INTERNAL_API_PATH ||
-      process.env.RAZZLE_API_PATH ||
+      import.meta.env.VOLTO_DEV_PROXY_API_PATH ||
+      import.meta.env.VOLTO_INTERNAL_API_PATH ||
+      import.meta.env.VOLTO_API_PATH ||
       'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
     // proxyRewriteTarget Set it for set a custom target for the proxy or override the internal VHM rewrite
     // proxyRewriteTarget: '/VirtualHostBase/http/localhost:8080/Plone/VirtualHostRoot/_vh_api'
     // proxyRewriteTarget: 'https://myvoltositeinproduction.com'
-    proxyRewriteTarget: process.env.RAZZLE_PROXY_REWRITE_TARGET || undefined,
-    // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8000', // for Volto reference
-    // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
+    proxyRewriteTarget: import.meta.env.VOLTO_PROXY_REWRITE_TARGET || undefined,
+    // apiPath: import.meta.env.VOLTO_API_PATH || 'http://localhost:8000', // for Volto reference
+    // apiPath: import.meta.env.VOLTO_API_PATH || 'http://localhost:8081/db/web', // for guillotina
     actions_raising_api_errors: ['GET_CONTENT', 'UPDATE_CONTENT'],
-    internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
-    websockets: process.env.RAZZLE_WEBSOCKETS || false,
+    internalApiPath: import.meta.env.VOLTO_INTERNAL_API_PATH || undefined,
+    websockets: import.meta.env.VOLTO_WEBSOCKETS || false,
     // TODO: legacyTraverse to be removed when the use of the legacy traverse is deprecated.
-    legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
+    legacyTraverse: import.meta.env.VOLTO_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
     nonContentRoutesPublic,
@@ -127,7 +121,6 @@ let config = {
     supportedLanguages: ['en'],
     defaultLanguage: 'en',
     navDepth: 1,
-    expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'slate',
     verticalFormTabs: false,
     useEmailAsLogin: false,
@@ -135,7 +128,7 @@ let config = {
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     asyncPropsExtenders: [getSiteAsyncPropExtender], // per route asyncConnect customizers
     contentIcons: contentIcons,
-    loadables,
+    // loadables,
     lazyBundles: {
       cms: [
         'prettierStandalone',
@@ -150,7 +143,6 @@ let config = {
     appExtras: [],
     maxResponseSize: 2000000000, // This is superagent default (200 mb)
     maxFileUploadSize: null,
-    serverConfig,
     storeExtenders: [],
     showTags: true,
     controlpanels: [],
@@ -262,4 +254,8 @@ Object.entries(slots).forEach(([slotName, components]) => {
 
 registerValidators(ConfigRegistry);
 
-applyAddonConfiguration(ConfigRegistry);
+const currentConfig = applyAddonConfiguration(ConfigRegistry);
+
+// [Vite] This is required to pass the evaluated config to the Express Server
+// not as an import side-effect but as a return value.
+export { currentConfig };

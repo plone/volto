@@ -5,12 +5,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { map } from 'lodash';
+import { map } from 'lodash-es';
 import { List } from 'semantic-ui-react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import Slugger from 'github-slugger';
-import { UniversalLink } from '@plone/volto/components';
-import { normalizeString } from '@plone/volto/helpers';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
+import { normalizeString } from '@plone/volto/helpers/Utils/Utils';
 
 const RenderListItems = ({ items, data }) => {
   return map(items, (item) => {

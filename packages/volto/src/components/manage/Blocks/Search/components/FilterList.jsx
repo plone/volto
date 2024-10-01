@@ -1,10 +1,10 @@
 import React from 'react';
-import { Accordion, Button, Icon } from 'semantic-ui-react';
+import { Accordion, Button, Icon as SemanticIcon } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
-import { isEmpty } from 'lodash';
+import { isEmpty } from 'lodash-es';
 
-import { Icon as VoltoIcon } from '@plone/volto/components';
-import { resolveExtension } from '@plone/volto/helpers';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { resolveExtension } from '@plone/volto/helpers/Extensions';
 import config from '@plone/volto/registry';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
@@ -49,7 +49,7 @@ const FilterList = (props) => {
         onClick={() => setIsOpened(!isOpened)}
       >
         <div className="filter-list-title">
-          <VoltoIcon name={downSVG} size="18px" />
+          <Icon name={downSVG} size="18px" />
           {intl.formatMessage(messages.currentFilters)}: {totalFilters}
         </div>
         <Button
@@ -62,7 +62,7 @@ const FilterList = (props) => {
             !isEditMode && setFacets({});
           }}
         >
-          <Icon name="trash" />
+          <SemanticIcon name="trash" />
           {intl.formatMessage(messages.clearFilters)}
         </Button>
       </Accordion.Title>

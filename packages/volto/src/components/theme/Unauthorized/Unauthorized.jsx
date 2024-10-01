@@ -4,7 +4,7 @@ import { Container } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { withServerErrorCode } from '@plone/volto/helpers/Utils/Utils';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 
 const Unauthorized = () => {
   const error_message = useSelector((state) => state.apierror?.message);

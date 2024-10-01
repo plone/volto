@@ -1,5 +1,5 @@
 import { GET_SITE } from '@plone/volto/constants/ActionTypes';
-import { getSite } from '@plone/volto/actions';
+import { getSite } from '@plone/volto/actions/site/site';
 
 const getSiteAsyncPropExtender = {
   path: '/',
@@ -11,7 +11,7 @@ const getSiteAsyncPropExtender = {
       dispatchActions.push({
         key: GET_SITE,
         promise: ({ location, store: { dispatch } }) =>
-          __SERVER__ && dispatch(getSite()),
+          import.meta.env.SSR && dispatch(getSite()),
       });
     }
     return dispatchActions;

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Segment, Breadcrumb } from 'semantic-ui-react';
 
-import { join } from 'lodash';
+import { join } from 'lodash-es';
 
 // These absolute imports (without using the corresponding centralized index.js) are required
 // to cut circular import problems, this file should never use them. This is because of

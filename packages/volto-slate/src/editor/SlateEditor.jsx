@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
-import { isEqual } from 'lodash';
+import { isEqual } from 'lodash-es';
 import { Transforms, Editor } from 'slate'; // , Transforms
 import { Slate, Editable, ReactEditor } from 'slate-react';
 import React, { Component } from 'react'; // , useState
@@ -377,6 +377,6 @@ SlateEditor.defaultProps = {
 };
 
 // May be needed to wrap in React.memo(), it used to be wrapped in connect()
-export default __CLIENT__ && window?.Cypress
+export default !import.meta.env.SSR && window?.Cypress
   ? withTestingFeatures(SlateEditor)
   : SlateEditor;

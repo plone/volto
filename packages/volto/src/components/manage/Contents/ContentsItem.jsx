@@ -7,10 +7,13 @@ import React from 'react';
 import { Button, Table, Menu, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { map } from 'lodash';
+import { map } from 'lodash-es';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
-import { Circle, FormattedDate, Icon, Popup } from '@plone/volto/components';
-import { getContentIcon } from '@plone/volto/helpers';
+import Circle from '@plone/volto/components/manage/Contents/circle';
+import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Popup from '@plone/volto/components/theme/Popup/Popup';
+import { getContentIcon } from '@plone/volto/helpers/Content/Content';
 import moreSVG from '@plone/volto/icons/more.svg';
 import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
 import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
@@ -24,7 +27,7 @@ import editingSVG from '@plone/volto/icons/editing.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import cx from 'classnames';
 
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { DropTarget, DragSource } from 'react-dnd';
 
 const messages = defineMessages({
   private: {
@@ -338,8 +341,6 @@ ContentsItemComponent.propTypes = {
 };
 
 const DragDropConnector = (props) => {
-  const { DropTarget, DragSource } = props.reactDnd;
-
   const DndConnectedContentsItem = React.useMemo(
     () =>
       DropTarget(
@@ -400,4 +401,4 @@ const DragDropConnector = (props) => {
   return <DndConnectedContentsItem {...props} />;
 };
 
-export default injectLazyLibs('reactDnd')(DragDropConnector);
+export default DragDropConnector;

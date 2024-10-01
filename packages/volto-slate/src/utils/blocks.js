@@ -4,8 +4,8 @@ import config from '@plone/volto/registry';
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
-import _ from 'lodash';
+} from '@plone/volto/helpers/Blocks/Blocks';
+import _ from 'lodash-es';
 import { makeEditor } from './editor';
 
 // case sensitive; first in an inner array is the default and preffered format

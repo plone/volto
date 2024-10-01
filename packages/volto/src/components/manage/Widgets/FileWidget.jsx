@@ -9,10 +9,12 @@ import { Button, Image, Dimmer } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
 import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
-import { Icon, UniversalLink } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import loadable from '@loadable/component';
-import { flattenToAppURL, validateFileUploadSize } from '@plone/volto/helpers';
+import { lazy } from 'react';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { defineMessages, useIntl } from 'react-intl';
 
 const imageMimetypes = [
@@ -23,7 +25,7 @@ const imageMimetypes = [
   'image/gif',
   'image/svg+xml',
 ];
-const Dropzone = loadable(() => import('react-dropzone'));
+const Dropzone = lazy(() => import('react-dropzone'));
 
 const messages = defineMessages({
   releaseDrag: {

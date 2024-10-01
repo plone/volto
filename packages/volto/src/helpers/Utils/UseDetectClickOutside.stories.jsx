@@ -2,7 +2,7 @@ import React from 'react';
 import { useDetectClickOutside } from './useDetectClickOutside';
 import { createPortal } from 'react-dom';
 import { usePopper } from 'react-popper';
-import { BlockChooser } from '@plone/volto/components';
+import BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
 
 function OpenedChooser(props) {
   const blockChooserRef = useDetectClickOutside({

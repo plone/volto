@@ -1,11 +1,9 @@
-import React from 'react';
-import { compose } from 'redux';
-import { defineMessages, injectIntl } from 'react-intl';
+import React, { lazy } from 'react';
+import { defineMessages, useIntl } from 'react-intl';
 import {
   Option,
   DropdownIndicator,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import { selectTheme, sortOnSelectStyles } from './SelectStyling';
 
@@ -22,9 +20,11 @@ const messages = defineMessages({
   },
 });
 
+const Select = lazy(() => import('react-select'));
+
 function ViewSwitcher(props) {
-  const { data, intl, reactSelect, selectedView, setSelectedView } = props;
-  const Select = reactSelect.default;
+  const { data, selectedView, setSelectedView } = props;
+  const intl = useIntl();
 
   return (
     <Select
@@ -48,7 +48,4 @@ function ViewSwitcher(props) {
   );
 }
 
-export default compose(
-  injectIntl,
-  injectLazyLibs(['reactSelect']),
-)(ViewSwitcher);
+export default ViewSwitcher;

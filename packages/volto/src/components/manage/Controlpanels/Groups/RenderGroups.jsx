@@ -3,8 +3,8 @@ import { FormattedMessage } from 'react-intl';
 import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import ploneSVG from '@plone/volto/icons/plone.svg';
-import { Icon } from '@plone/volto/components';
-import { canAssignRole } from '@plone/volto/helpers';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { canAssignRole } from '@plone/volto/helpers/User/User';
 
 const RenderGroups = (props) => {
   const onChange = (event, { value }) => {

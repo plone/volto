@@ -1,7 +1,7 @@
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Container, Segment, Grid, Label } from 'semantic-ui-react';
-import { ErrorBoundary } from '@plone/volto/components';
+import ErrorBoundary from '@plone/volto/components/theme/Error/ErrorBoundary';
 import { getWidget } from '@plone/volto/helpers/Widget/utils';
 import config from '@plone/volto/registry';
 

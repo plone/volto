@@ -3,7 +3,8 @@ import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
-import { FormattedDate, Toast } from '@plone/volto/components';
+import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
 const messages = defineMessages({

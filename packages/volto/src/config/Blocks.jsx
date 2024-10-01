@@ -1,5 +1,5 @@
 import { defineMessages } from 'react-intl';
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 import ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
 import ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
@@ -80,6 +80,12 @@ import TeaserEditBlock from '@plone/volto/components/manage/Blocks/Teaser/Edit';
 import TeaserBlockDefaultBody from '@plone/volto/components/manage/Blocks/Teaser/DefaultBody';
 import { TeaserSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
 import { TeaserBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Teaser/adapter';
+
+// TODO: lazy load the blocks
+// HTML
+// DateRangeFacet, SelectFacet (search)
+// Field component?
+// RecurrenceWidget
 
 defineMessages({
   title: {

@@ -31,35 +31,36 @@ import {
   map,
   mapValues,
   pull,
-} from 'lodash';
+} from 'lodash-es';
 import move from 'lodash-move';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { asyncConnect } from '@plone/volto/helpers';
-import { flattenToAppURL } from '@plone/volto/helpers';
-
+import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { searchContent } from '@plone/volto/actions/search/search';
 import {
-  searchContent,
   cut,
   copy,
   copyContent,
-  deleteContent,
-  listActions,
   moveContent,
+} from '@plone/volto/actions/clipboard/clipboard';
+
+import {
+  deleteContent,
   orderContent,
   sortContent,
   updateColumnsContent,
   linkIntegrityCheck,
   getContent,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/content/content';
+
+import { listActions } from '@plone/volto/actions/actions/actions';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
-import {
-  Pagination,
-  Popup,
-  Toolbar,
-  Toast,
-  Icon,
-  Unauthorized,
-} from '@plone/volto/components';
+import Pagination from '@plone/volto/components/theme/Pagination/Pagination';
+import Popup from '@plone/volto/components/theme/Popup/Popup';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 import ContentsBreadcrumbs from '@plone/volto/components/manage/Contents/ContentsBreadcrumbs';
 import ContentsIndexHeader from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
 import ContentsItem from '@plone/volto/components/manage/Contents/ContentsItem';
@@ -69,8 +70,13 @@ import ContentsWorkflowModal from '@plone/volto/components/manage/Contents/Conte
 import ContentsTagsModal from '@plone/volto/components/manage/Contents/ContentsTagsModal';
 import ContentsPropertiesModal from '@plone/volto/components/manage/Contents/ContentsPropertiesModal';
 
-import { Helmet, getBaseUrl } from '@plone/volto/helpers';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { Helmet } from '@plone/volto/helpers/Helmet/Helmet';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+
+import { toast } from 'react-toastify';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+
 import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -504,7 +510,7 @@ class Contents extends Component {
       this.fetchContents(nextProps.pathname);
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      this.props.toastify.toast.success(
+      toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -537,7 +543,7 @@ class Contents extends Component {
       const msgBody =
         nextProps.clipboardRequest.error?.response?.body?.message ||
         this.props.intl.formatMessage(messages.error);
-      this.props.toastify.toast.error(
+      toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
@@ -550,7 +556,7 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.loaded
     ) {
-      this.props.toastify.toast.success(
+      toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -560,7 +566,7 @@ class Contents extends Component {
     }
 
     if (this.props.deleteRequest.loading && nextProps.deleteRequest.error) {
-      this.props.toastify.toast.error(
+      toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.deleteError)}
@@ -570,7 +576,7 @@ class Contents extends Component {
     }
 
     if (this.props.orderRequest.loading && nextProps.orderRequest.loaded) {
-      this.props.toastify.toast.success(
+      toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -977,7 +983,7 @@ class Contents extends Component {
       showWorkflow: false,
       selected: [],
     });
-    this.props.toastify.toast.success(
+    toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -1051,7 +1057,7 @@ class Contents extends Component {
   cut(event, { value }) {
     this.props.cut(value ? [value] : this.state.selected);
     this.onSelectNone();
-    this.props.toastify.toast.success(
+    toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -1070,7 +1076,7 @@ class Contents extends Component {
   copy(event, { value }) {
     this.props.copy(value ? [value] : this.state.selected);
     this.onSelectNone();
-    this.props.toastify.toast.success(
+    toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -2202,9 +2208,6 @@ class Contents extends Component {
 let dndContext;
 
 const DragDropConnector = (props) => {
-  const { DragDropContext } = props.reactDnd;
-  const HTML5Backend = props.reactDndHtml5Backend.default;
-
   const DndConnectedContents = React.useMemo(() => {
     if (!dndContext) {
       dndContext = DragDropContext(HTML5Backend);
@@ -2217,7 +2220,6 @@ const DragDropConnector = (props) => {
 
 export const __test__ = compose(
   injectIntl,
-  injectLazyLibs(['toastify', 'reactDnd']),
   connect(
     (store, props) => {
       return {
@@ -2307,5 +2309,4 @@ export default compose(
         await dispatch(listActions(getBaseUrl(location.pathname))),
     },
   ]),
-  injectLazyLibs(['toastify', 'reactDnd', 'reactDndHtml5Backend']),
 )(DragDropConnector);

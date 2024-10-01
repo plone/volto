@@ -1,4 +1,4 @@
-import { castArray, map } from 'lodash';
+import { castArray, map } from 'lodash-es';
 import { Editor, Path, Point, Range, Transforms } from 'slate';
 
 /**

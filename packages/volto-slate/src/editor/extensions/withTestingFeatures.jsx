@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { ReactEditor } from 'slate-react';
-import { omit } from 'lodash';
+import { omit } from 'lodash-es';
 
 const withTestingFeatures = (WrappedComponent) => {
   return (props) => {

@@ -1,9 +1,9 @@
 /* eslint no-console: ["error", { allow: ["error"] }] */
-import { isEqual } from 'lodash';
+import { isEqual } from 'lodash-es';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { ReactEditor } from 'slate-react';
-import { Icon as VoltoIcon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import { setPluginOptions } from '@plone/volto-slate/actions';
 import BaseSchemaProvider from './SchemaProvider';

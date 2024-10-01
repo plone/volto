@@ -3,7 +3,7 @@
  * @module reducers/schema/schema
  */
 
-import { flatten, keys, pickBy, isArray, map, mapKeys, merge } from 'lodash';
+import { flatten, keys, pickBy, isArray, map, mapKeys, merge } from 'lodash-es';
 
 import {
   GET_SCHEMA,

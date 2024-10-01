@@ -3,7 +3,7 @@ import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import loadable from '@loadable/component';
+import { lazy } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import useLinkEditor from '@plone/volto/components/manage/AnchorPlugin/useLinkEditor';
@@ -13,12 +13,13 @@ import {
   flattenToAppURL,
   getBaseUrl,
   isInternalURL,
-  validateFileUploadSize,
-  usePrevious,
-} from '@plone/volto/helpers';
-import { createContent } from '@plone/volto/actions';
+} from '@plone/volto/helpers/Url/Url';
+import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
+import { createContent } from '@plone/volto/actions/content/content';
 import { readAsDataURL } from 'promise-file-reader';
-import { FormFieldWrapper, Icon } from '@plone/volto/components';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -26,7 +27,7 @@ import navTreeSVG from '@plone/volto/icons/nav.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
 
-const Dropzone = loadable(() => import('react-dropzone'));
+const Dropzone = lazy(() => import('react-dropzone'));
 
 export const ImageToolbar = ({ className, data, id, onChange, selected }) => (
   <div className="image-upload-widget-toolbar">

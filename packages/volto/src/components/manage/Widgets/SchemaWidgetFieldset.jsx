@@ -6,10 +6,14 @@
  */
 
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { lazy } from 'react';
 import { Icon } from 'semantic-ui-react';
 
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+const ReactBeautifulDndDraggable = lazy(() =>
+  import('react-beautiful-dnd').then((mod) => ({
+    default: mod.Draggable,
+  })),
+);
 
 /**
  * Schema widget fieldset component.
@@ -27,9 +31,8 @@ export const SchemaWidgetFieldsetComponent = ({
   getItemStyle,
   isDraggable,
   isDisabled,
-  reactBeautifulDnd,
 }) => (
-  <reactBeautifulDnd.Draggable draggableId={title} index={order} key={title}>
+  <ReactBeautifulDndDraggable draggableId={title} index={order} key={title}>
     {(provided, snapshot) => (
       <div
         className={`item${active ? ' active' : ''}`}
@@ -73,7 +76,7 @@ export const SchemaWidgetFieldsetComponent = ({
         )}
       </div>
     )}
-  </reactBeautifulDnd.Draggable>
+  </ReactBeautifulDndDraggable>
 );
 
 /**
@@ -93,6 +96,4 @@ SchemaWidgetFieldsetComponent.propTypes = {
   isDisabled: PropTypes.bool,
 };
 
-export default injectLazyLibs(['reactBeautifulDnd'])(
-  SchemaWidgetFieldsetComponent,
-);
+export default SchemaWidgetFieldsetComponent;

@@ -3,7 +3,7 @@
  * @module constants/Languages
  */
 
-module.exports = {
+export default {
   ca: 'Català',
   de: 'Deutsch',
   en: 'English',

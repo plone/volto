@@ -1,12 +1,12 @@
 import React from 'react';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import {
   applyBlockInitialValue,
   getBlocksFieldname,
   blockHasValue,
   buildStyleClassNamesFromData,
   buildStyleObjectFromData,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
@@ -14,7 +14,7 @@ import isBoolean from 'lodash/isBoolean';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
-import { BlockChooserButton } from '@plone/volto/components';
+import BlockChooserButton from '@plone/volto/components/manage/BlockChooser/BlockChooserButton';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
 

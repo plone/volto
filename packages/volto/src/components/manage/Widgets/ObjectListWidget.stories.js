@@ -3,7 +3,7 @@ import { RealStoreWrapper, FormUndoWrapper } from '@plone/volto/storybook';
 import React from 'react';
 import { searchResults } from './ObjectBrowserWidget.stories';
 
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 const defaultSchema = {
   title: 'Item',

@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import serialize from 'serialize-javascript';
-import { join } from 'lodash';
+import { join } from 'lodash-es';
 import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 import { runtimeConfig } from '@plone/volto/runtime_config';
 import config from '@plone/volto/registry';
@@ -21,7 +21,8 @@ if (window.addEventListener) {
   window.onload=alter
 }`;
 
-export const loadReducers = (state = {}) => {
+// Better only export components for HMR to work fine
+const loadReducers = (state = {}) => {
   const { settings } = config;
   return Object.assign(
     {},
@@ -70,11 +71,6 @@ class Html extends Component {
    * @static
    */
   static propTypes = {
-    extractor: PropTypes.shape({
-      getLinkElements: PropTypes.func.isRequired,
-      getScriptElements: PropTypes.func.isRequired,
-      getStyleElements: PropTypes.func.isRequired,
-    }).isRequired,
     markup: PropTypes.string.isRequired,
     store: PropTypes.shape({
       getState: PropTypes.func,
@@ -87,7 +83,7 @@ class Html extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { extractor, markup, store, criticalCss, apiPath, publicURL } =
+    const { markup, store, criticalCss, apiPath, publicURL, headElements } =
       this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
@@ -136,7 +132,7 @@ class Html extends Component {
             />
           )}
           {/* Add the crossorigin while in development */}
-          {extractor.getLinkElements().map((elem) =>
+          {/* {extractor.getLinkElements().map((elem) =>
             React.cloneElement(elem, {
               crossOrigin:
                 process.env.NODE_ENV === 'production' ? undefined : 'true',
@@ -146,10 +142,10 @@ class Html extends Component {
                   ? 'prefetch'
                   : elem.props.rel,
             }),
-          )}
+          )} */}
           {/* Styles in development are loaded with Webpack's style-loader, in production,
               they need to be static*/}
-          {process.env.NODE_ENV === 'production' ? (
+          {/* {process.env.NODE_ENV === 'production' ? (
             criticalCss ? (
               <>
                 <script
@@ -172,6 +168,28 @@ class Html extends Component {
             ) : (
               extractor.getStyleElements()
             )
+          ) : undefined} */}
+          {import.meta.env.PROD ? (
+            <>
+              {headElements.scripts.map((elem) => {
+                return (
+                  <script
+                    type={elem.type}
+                    crossOrigin={elem.crossorigin}
+                    src={elem.src}
+                  ></script>
+                );
+              })}
+              {headElements.links.map((elem) => {
+                return (
+                  <link
+                    rel={elem.rel}
+                    crossOrigin={elem.crossorigin}
+                    href={elem.href}
+                  ></link>
+                );
+              })}
+            </>
           ) : undefined}
         </head>
         <body className={bodyClass}>
@@ -187,12 +205,35 @@ class Html extends Component {
             charSet="UTF-8"
           />
           {/* Add the crossorigin while in development */}
-          {extractor.getScriptElements().map((elem) =>
+          {/* {extractor.getScriptElements().map((elem) =>
             React.cloneElement(elem, {
               crossOrigin:
                 process.env.NODE_ENV === 'production' ? undefined : 'true',
             }),
-          )}
+          )} */}
+          {import.meta.env.DEV ? (
+            <>
+              <script
+                type="module"
+                suppressHydrationWarning
+                dangerouslySetInnerHTML={{
+                  __html: `
+              import RefreshRuntime from "/@react-refresh"
+              RefreshRuntime.injectIntoGlobalHook(window)
+              window.$RefreshReg$ = () => {}
+              window.$RefreshSig$ = () => (type) => type
+              window.__vite_plugin_react_preamble_installed__ = true
+            `,
+                }}
+              />
+              <script type="module" src="/@vite/client" />
+              <script type="module" src="/src/entry-client.tsx"></script>
+            </>
+          ) : undefined}
+          {/* Hydration error debugger overlay, to use in conjunction with */}
+          {/* https://github.com/BuilderIO/hydration-overlay/blob/main/README.md */}
+          {/* Uncomment to enable */}
+          {/* <script src="/src/hydration-overlay.js" /> */}
         </body>
       </html>
     );
