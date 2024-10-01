@@ -13,6 +13,7 @@ exports[`renders an edit video block component 1`] = `
       <img
         alt=""
         aria-hidden={true}
+        className="placeholder"
         src="https://img.youtube.com/vi/KqjeO_ekW3g/sddefault.jpg"
       />
       <button

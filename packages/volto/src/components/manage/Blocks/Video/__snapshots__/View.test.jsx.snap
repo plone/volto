@@ -13,6 +13,7 @@ exports[`renders a view video component 1`] = `
       <img
         alt=""
         aria-hidden={true}
+        className="placeholder"
         src="https://img.youtube.com/vi/KqjeO_ekW3g/sddefault.jpg"
       />
       <button
@@ -57,6 +58,7 @@ exports[`renders a view video component with placeholder 1`] = `
       <img
         alt=""
         aria-hidden={true}
+        className="placeholder"
         src="https://github.com/plone/volto/raw/main/logos/volto-colorful.png"
       />
       <button
