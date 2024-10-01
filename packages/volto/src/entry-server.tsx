@@ -69,7 +69,7 @@ export async function render(opts: {
 
   // Sync the config object with the values coming from the Express server
   // detected host from headers
-  if (!process.env.VITE_API_PATH && req.headers.host) {
+  if (!import.meta.env.VOLTO_API_PATH && req.headers.host) {
     config.settings.apiPath = res.locals.detectedHost;
     config.settings.publicURL = res.locals.detectedHost;
   }

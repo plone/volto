@@ -19,12 +19,12 @@ const ploneRobots = function (req, res, next) {
 
 const envRobots = function (req, res, next) {
   res.type('text/plain');
-  res.send(process.env.VOLTO_ROBOTSTXT);
+  res.send(import.meta.env.VOLTO_ROBOTSTXT);
 };
 
 export default function robotstxtMiddleware() {
   const middleware = express.Router();
-  if (process.env.VOLTO_ROBOTSTXT) {
+  if (import.meta.env.VOLTO_ROBOTSTXT) {
     middleware.all('**/robots.txt', envRobots);
   } else {
     middleware.all('**/robots.txt', ploneRobots);

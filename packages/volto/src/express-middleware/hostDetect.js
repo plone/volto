@@ -6,7 +6,7 @@ function hostDetectionFn(req, res, next) {
   res.locals.devProxyToApiPath = config.settings.devProxyToApiPath;
   res.locals.proxyRewriteTarget = config.settings.proxyRewriteTarget;
 
-  if (!process.env.VITE_API_PATH && req.headers.host) {
+  if (!import.meta.env.VOLTO_API_PATH && req.headers.host) {
     res.locals.detectedHost = `${
       req.headers['x-forwarded-proto'] || req.protocol
     }://${req.headers.host}`;

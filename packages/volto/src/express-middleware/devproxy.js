@@ -7,30 +7,6 @@ import {
 } from 'http-proxy-middleware';
 import querystring from 'querystring';
 
-// let _env = null;
-
-// the config is not available at the middleware creation time, so it needs to
-// read/cache the global configuration on first request.
-// TODO: remove since it's now obsolete
-// function getEnv() {
-//   if (_env) {
-//     return _env;
-//   }
-
-//   const apiPathURL = parseUrl(networking.apiPath);
-//   const proxyURL = parseUrl(networking.devProxyToApiPath);
-//   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
-//   const instancePath = proxyURL.pathname;
-
-//   _env = {
-//     apiPathURL,
-//     serverURL,
-//     instancePath,
-//   };
-
-//   return _env;
-// }
-
 function devProxyMiddlewareFn(req, res, next) {
   const apiPathURL = new URL(res.locals.detectedHost || res.locals.apiPath);
   const proxyURL = new URL(res.locals.devProxyToApiPath);

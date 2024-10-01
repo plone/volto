@@ -39,7 +39,7 @@ const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
 
 const apiPath =
-  process.env.VITE_API_PATH ||
+  import.meta.env.VOLTO_API_PATH ||
   (__DEVELOPMENT__ ? `http://${host}:${port}` : '');
 
 const getServerURL = (url) => {
@@ -51,15 +51,15 @@ const getServerURL = (url) => {
 };
 
 // Sensible defaults for publicURL
-// if VITE_PUBLIC_URL is present, use it
+// if VOLTO_PUBLIC_URL is present, use it
 // if in DEV, use the host/port combination by default
-// if in PROD, assume it's VITE_API_PATH server name (no /api or alikes) or fallback
-// to DEV settings if VITE_API_PATH is not present
+// if in PROD, assume it's VOLTO_API_PATH server name (no /api or alikes) or fallback
+// to DEV settings if VOLTO_API_PATH is not present
 const publicURL =
-  process.env.VITE_PUBLIC_URL ||
+  import.meta.env.VOLTO_PUBLIC_URL ||
   (__DEVELOPMENT__
     ? `http://${host}:${port}`
-    : getServerURL(process.env.VITE_API_PATH) || `http://${host}:${port}`);
+    : getServerURL(import.meta.env.VOLTO_API_PATH) || `http://${host}:${port}`);
 
 let config = {
   settings: {
@@ -90,21 +90,21 @@ let config = {
     // front of both the frontend and the backend so you can bypass CORS safely.
     // https://6.docs.plone.org/volto/deploying/seamless-mode.html
     devProxyToApiPath:
-      process.env.VITE_DEV_PROXY_API_PATH ||
-      process.env.VITE_INTERNAL_API_PATH ||
-      process.env.VITE_API_PATH ||
+      import.meta.env.VOLTO_DEV_PROXY_API_PATH ||
+      import.meta.env.VOLTO_INTERNAL_API_PATH ||
+      import.meta.env.VOLTO_API_PATH ||
       'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
     // proxyRewriteTarget Set it for set a custom target for the proxy or override the internal VHM rewrite
     // proxyRewriteTarget: '/VirtualHostBase/http/localhost:8080/Plone/VirtualHostRoot/_vh_api'
     // proxyRewriteTarget: 'https://myvoltositeinproduction.com'
-    proxyRewriteTarget: process.env.VITE_PROXY_REWRITE_TARGET || undefined,
-    // apiPath: process.env.VITE_API_PATH || 'http://localhost:8000', // for Volto reference
-    // apiPath: process.env.VITE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
+    proxyRewriteTarget: import.meta.env.VOLTO_PROXY_REWRITE_TARGET || undefined,
+    // apiPath: import.meta.env.VOLTO_API_PATH || 'http://localhost:8000', // for Volto reference
+    // apiPath: import.meta.env.VOLTO_API_PATH || 'http://localhost:8081/db/web', // for guillotina
     actions_raising_api_errors: ['GET_CONTENT', 'UPDATE_CONTENT'],
-    internalApiPath: process.env.VITE_INTERNAL_API_PATH || undefined,
-    websockets: process.env.VITE_WEBSOCKETS || false,
+    internalApiPath: import.meta.env.VOLTO_INTERNAL_API_PATH || undefined,
+    websockets: import.meta.env.VOLTO_WEBSOCKETS || false,
     // TODO: legacyTraverse to be removed when the use of the legacy traverse is deprecated.
-    legacyTraverse: process.env.VITE_LEGACY_TRAVERSE || false,
+    legacyTraverse: import.meta.env.VOLTO_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
     imageObjects: ['Image'],

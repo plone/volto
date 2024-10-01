@@ -38,13 +38,29 @@ const messages = defineMessages({
   },
 });
 
-const Select = lazy(() =>
-  import('react-select').then((module) => ({
-    default: module.default,
-    SingleValue: module.SingleValue,
-    Option: module.Option,
-    DropdownIndicator: module.DropdownIndicator,
-    Placeholder: module.Placeholder,
+const Select = lazy(() => import('react-select'));
+
+const SelectSingleValue = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.SingleValue,
+  })),
+);
+
+const SelectOption = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.Option,
+  })),
+);
+
+const SelectDropdownIndicator = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.DropdownIndicator,
+  })),
+);
+
+const SelectPlaceholder = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.Placeholder,
   })),
 );
 
@@ -60,10 +76,10 @@ const SingleValue = ({ children, ...props }) => {
   };
 
   return (
-    <Select.SingleValue {...props}>
+    <SelectSingleValue {...props}>
       <span style={stateDecorator} />
       {children}
-    </Select.SingleValue>
+    </SelectSingleValue>
   );
 };
 
@@ -86,26 +102,26 @@ const Option = (props) => {
   };
 
   return (
-    <Select.Option {...props}>
+    <SelectOption {...props}>
       <span style={stateDecorator} />
       <div style={{ marginRight: 'auto' }}>{props.label}</div>
       {props.isFocused && !props.isSelected && (
         <Icon name={checkSVG} size="18px" color="#b8c6c8" />
       )}
       {props.isSelected && <Icon name={checkSVG} size="18px" color="#007bc1" />}
-    </Select.Option>
+    </SelectOption>
   );
 };
 
 const DropdownIndicator = (props) => {
   return (
-    <Select.DropdownIndicator {...props} data-testid="workflow-select-dropdown">
+    <SelectDropdownIndicator {...props} data-testid="workflow-select-dropdown">
       {props.selectProps.menuIsOpen ? (
         <Icon name={upSVG} size="24px" color="#007bc1" />
       ) : (
         <Icon name={downSVG} size="24px" color="#007bc1" />
       )}
-    </Select.DropdownIndicator>
+    </SelectDropdownIndicator>
   );
 };
 
@@ -205,8 +221,6 @@ const Workflow = (props) => {
     );
   };
 
-  const Placeholder = Select.Placeholder;
-
   return (
     <FormFieldWrapper
       id="state-select"
@@ -227,7 +241,7 @@ const Workflow = (props) => {
         theme={selectTheme}
         components={{
           DropdownIndicator,
-          Placeholder,
+          SelectPlaceholder,
           Option,
           SingleValue,
         }}

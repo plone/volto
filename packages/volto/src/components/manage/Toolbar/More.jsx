@@ -7,7 +7,7 @@ import { find } from 'lodash-es';
 import { toast } from 'react-toastify';
 
 import Toast from '@plone/volto/components/manage/Toast/Toast';
-import { Pluggable, Plug } from '@plone/volto/components/manage/Pluggable';
+import Pluggable, { Plug } from '@plone/volto/components/manage/Pluggable';
 import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Display from '@plone/volto/components/manage/Display/Display';

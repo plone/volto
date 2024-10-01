@@ -83,6 +83,7 @@ export default defineConfig({
       },
     ],
   },
+  envPrefix: 'VOLTO_',
   define: {
     // By default, Vite doesn't include shims for NodeJS/
     // necessary for segment analytics lib to work

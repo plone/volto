@@ -42,8 +42,8 @@ const ConnectionRefused = () => (
         }}
       >
         <FormattedMessage
-          id="The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the VITE_API_PATH Volto's environment variable."
-          defaultMessage="The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the VITE_API_PATH Volto's environment variable."
+          id="The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the VOLTO_API_PATH Volto's environment variable."
+          defaultMessage="The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the VOLTO_API_PATH Volto's environment variable."
         />
       </p>
     )}
