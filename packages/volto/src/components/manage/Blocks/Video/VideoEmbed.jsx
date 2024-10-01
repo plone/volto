@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Icon } from '@plone/volto/components';
+import cx from 'classnames';
 
 import PlayIcon from '@plone/volto/icons/play.svg';
-import Broccoli from './broccoli.jpg';
 
 const VideoEmbed = (props) => {
   const {
-    aspectRatio,
-    autoplay = true,
+    aspectRatio = '16:9',
+    autoplay,
     brandedUI = false,
-    children,
     className,
     color = '#444444',
-    content,
     hd = true,
-    icon,
     id,
     placeholder,
     source,
+    title,
   } = props;
+
   const [isActive, setIsActive] = useState(false);
   const PlayVideo = () => {
     setIsActive(true);
@@ -51,7 +50,7 @@ const VideoEmbed = (props) => {
   };
 
   return (
-    <div className="ui embed 16:9 video-embed">
+    <div className={cx('ui embed video-embed', aspectRatio, className)}>
       {isActive ? (
         <iframe
           allowFullScreen={false}
@@ -64,13 +63,17 @@ const VideoEmbed = (props) => {
         />
       ) : (
         <>
-          {placeholder && <img src={placeholder} alt="" aria-hidden />}
+          {placeholder ? (
+            <img src={placeholder} alt="" aria-hidden />
+          ) : (
+            <div className="fallback-placeholder"></div>
+          )}
           <button
             className="video-play-button"
             onClick={() => {
               PlayVideo();
             }}
-            aria-label="Play Video"
+            aria-label={title ? `Play video ${title}` : 'Play video'}
           >
             <Icon name={PlayIcon} color="white" size="100%" />
           </button>

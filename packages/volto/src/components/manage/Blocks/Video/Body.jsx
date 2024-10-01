@@ -57,7 +57,6 @@ const getVideoIDAndPlaceholder = (url) => {
   }
   return { videoID, listID, thumbnailURL };
 };
-
 const Body = ({ data, isEditMode }) => {
   let placeholder = data.preview_image
     ? isInternalURL(data.preview_image)
@@ -78,13 +77,13 @@ const Body = ({ data, isEditMode }) => {
 
   const embedSettings = {
     placeholder: placeholder,
-    icon: 'play',
     defaultActive: false,
-    autoplay: true,
+    autoplay: false,
     aspectRatio: '16:9',
     tabIndex: 0,
     onKeyPress: onKeyDown,
     ref: ref,
+    title: data.title,
   };
 
   return (
@@ -103,7 +102,12 @@ const Body = ({ data, isEditMode }) => {
                   {...embedSettings}
                 />
               ) : (
-                <VideoEmbed id={videoID} source="youtube" {...embedSettings} />
+                <VideoEmbed
+                  id={videoID}
+                  source="youtube"
+                  {...embedSettings}
+                  className="foo"
+                />
               )}
             </>
           ) : (
