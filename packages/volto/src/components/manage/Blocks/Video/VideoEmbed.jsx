@@ -64,7 +64,7 @@ const VideoEmbed = (props) => {
       ) : (
         <>
           {placeholder ? (
-            <img src={placeholder} alt="" aria-hidden />
+            <img className="placeholder" src={placeholder} alt="" aria-hidden />
           ) : (
             <div className="fallback-placeholder"></div>
           )}
