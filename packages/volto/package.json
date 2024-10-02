@@ -216,6 +216,7 @@
     "query-string": "7.1.0",
     "rc-time-picker": "3.7.3",
     "react": "18.2.0",
+    "react-aria-components": "1.2.0",
     "react-anchor-link-smooth-scroll": "1.0.12",
     "react-animate-height": "2.0.17",
     "react-beautiful-dnd": "13.0.0",

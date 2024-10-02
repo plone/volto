@@ -52,7 +52,7 @@ msgid "Actions"
 msgstr "Acțiuni"
 
 #. Default: "Activate and deactivate add-ons in the lists below."
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Activate and deactivate"
 msgstr "Activare și dezactivare"
 
@@ -84,7 +84,7 @@ msgid "Add (object list)"
 msgstr "Adăugare (listă de obiecte)"
 
 #. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Addons"
 msgstr "Adăugare add-on-uri"
 
@@ -229,12 +229,12 @@ msgid "Add-on Configuration"
 msgstr ""
 
 #. Default: "Add-ons"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons"
 msgstr ""
 
 #. Default: "Add-ons Settings"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons Settings"
 msgstr "Setări add-on-uri"
 
@@ -249,32 +249,32 @@ msgid "Additional date"
 msgstr "Dată suplimentară"
 
 #. Default: "Addon could not be installed"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be installed"
 msgstr ""
 
 #. Default: "Addon could not be uninstalled"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be uninstalled"
 msgstr ""
 
 #. Default: "Addon could not be upgraded"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be upgraded"
 msgstr ""
 
 #. Default: "Addon installed succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
 msgstr ""
 
 #. Default: "Addon uninstalled succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
 msgstr ""
 
 #. Default: "Addon upgraded succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
 msgstr ""
 
@@ -413,7 +413,7 @@ msgid "Assignments"
 msgstr ""
 
 #. Default: "Available"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available"
 msgstr "Disponibil"
 
@@ -425,7 +425,7 @@ msgstr ""
 #. Default: "Back"
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -1326,7 +1326,7 @@ msgstr ""
 
 #. Default: "Error"
 #: components/manage/Add/Add
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UndoControlpanel
@@ -1815,22 +1815,22 @@ msgid "Inspect relations"
 msgstr ""
 
 #. Default: "Install"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Install"
-msgstr "Instalare"
+msgstr ""
 
 #. Default: "Installed"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
 msgstr "Instalat"
 
 #. Default: "Installed version"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed version"
 msgstr "Versiunea instalată"
 
 #. Default: "Installing a third party add-on"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installing a third party add-on"
 msgstr ""
 
@@ -1963,7 +1963,7 @@ msgid "Latest available configuration"
 msgstr ""
 
 #. Default: "Latest version"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Latest version"
 msgstr "Ultima versiune"
 
@@ -2321,6 +2321,16 @@ msgstr ""
 msgid "No"
 msgstr "Nu"
 
+#. Default: "No addons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No Addon available"
+msgstr "Nu există module disponibile pentru instalare."
+
+#. Default: "No installed addons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No Installed available"
+msgstr "Nu există module instalate disponibile."
+
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2335,6 +2345,11 @@ msgstr ""
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Selected To Do Undo"
 msgstr ""
+
+#. Default: "No upgrades in this corner. You are up to date. High fives."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No Upgrades available"
+msgstr "Nicio actualizare în această zonă. Ești la zi. Bate palma!"
 
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
@@ -2434,7 +2449,7 @@ msgid "No selection"
 msgstr "Fără selecție"
 
 #. Default: "This addon does not provide an uninstall profile."
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No uninstall profile"
 msgstr "Niciun profil de dezinstalare"
 
@@ -3513,7 +3528,7 @@ msgstr ""
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -3753,6 +3768,11 @@ msgstr "Au aparut unele erori."
 msgid "Third"
 msgstr "Al treilea"
 
+#. Default: "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+msgstr "Acest addon a fost actualizat. Versiunea curentă a profilului instalat este {installedVersion}. Noua versiune disponibilă a profilului este {newVersion}."
+
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
@@ -3974,7 +3994,7 @@ msgid "Unified"
 msgstr "Unificat"
 
 #. Default: "Uninstall"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Uninstall"
 msgstr "Dezinstalare"
 
@@ -4001,7 +4021,7 @@ msgid "Unsorted"
 msgstr ""
 
 #. Default: "Update"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Update"
 msgstr "Actualizare"
 
@@ -4010,18 +4030,13 @@ msgstr "Actualizare"
 msgid "Update User"
 msgstr ""
 
-#. Default: "Update installed addons"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Update installed addons"
-msgstr "Actualizați suplimentele instalate"
-
 #. Default: "Update installed addons:"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Update installed addons:"
 msgstr "Actualizați suplimentele instalate:"
 
 #. Default: "Updates available"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Updates available"
 msgstr "Actualizări disponibile"
 
@@ -4989,11 +5004,6 @@ msgstr "Cuprins"
 #. Default: "Toggle"
 #: config/Blocks
 msgid "toggleFacet"
-msgstr ""
-
-#. Default: "Update from version {origin} to {destination}"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "upgradeVersions"
 msgstr ""
 
 #. Default: "Upload an image from your computer"
