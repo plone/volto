@@ -116,6 +116,7 @@ function ContentsUploadPage() {
 
   const pendingUploads = useRef(0);
   const uploadPropsRef = useRef();
+  const prevTime = useRef(Date.now());
 
   const [open, setOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
@@ -330,9 +331,6 @@ function ContentsUploadPage() {
       if (items[0]['file']['type'].startsWith('image')) {
         ctype = 'Image';
       }
-      if (items[0]['file']['type'].startsWith('video')) {
-        ctype = 'Video';
-      }
 
       return {
         options: {
@@ -354,7 +352,14 @@ function ContentsUploadPage() {
     });
 
     useItemProgressListener((item) => {
-      updateItems(item, 'progress');
+      const MIN_TIME_ELAPSED = 300;
+      const currentTime = Date.now();
+      const timeElapsed = currentTime - prevTime.current;
+
+      if (timeElapsed >= MIN_TIME_ELAPSED) {
+        updateItems(item, 'progress');
+        prevTime.current = currentTime;
+      }
     });
 
     useItemErrorListener((item) => {
