@@ -1,0 +1,1 @@
+Pass `errors` property to BlocksForm and Form. @sneridagh @tedw87
