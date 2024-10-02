@@ -1,1 +1,1 @@
-Added the new configuration for Markdown in the vscodeSettingsJSON object @aadityaforwork
+Added the configuration for VSCode not to reformat Markdown and MyST files. @aadityaforwork
