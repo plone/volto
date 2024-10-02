@@ -6,6 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/ColorArea.css';
 
 const meta = {
+  title: 'Widgets/ColorArea',
   component: ColorArea,
   parameters: {
     layout: 'centered',

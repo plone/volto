@@ -6,6 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/ColorSlider.css';
 
 const meta = {
+  title: 'Widgets/ColorSlider',
   component: ColorSlider,
   parameters: {
     layout: 'centered',

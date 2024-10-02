@@ -6,6 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/ColorWheel.css';
 
 const meta = {
+  title: 'Widgets/ColorWheel',
   component: ColorWheel,
   parameters: {
     layout: 'centered',

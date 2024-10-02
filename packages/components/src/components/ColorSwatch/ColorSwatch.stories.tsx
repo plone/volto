@@ -6,6 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/ColorSwatch.css';
 
 const meta = {
+  title: 'Widgets/ColorSwatch',
   component: ColorSwatch,
   parameters: {
     layout: 'centered',
