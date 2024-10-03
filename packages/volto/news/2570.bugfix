@@ -1,0 +1,2 @@
+Change Form input:focus text color to the `textColor` value for a11y. 
+Add Cypress test for contact form inputs. @ThomasKindermann @tedw87

@@ -395,7 +395,7 @@ If you shadowed the module {file}`packages/volto/src/helpers/FormValidation/Form
 This prop must be assigned with the new prop passed down from the blocks engine `blocksErrors`.
 If not passed down, the block can't display any field validation error.
 
-```tsx
+```jsx
 // More component code above here
 
   const {
@@ -451,7 +451,7 @@ The `Tags` component has been moved to the `belowContent` slot.
 It now receives the `content` property instead of the `tags` property.
 
 
-{upgrade-18-cookieplone-label}=
+(upgrade-18-cookieplone-label)=
 
 ### Cookieplone is now the recommended project and add-on generator for Volto 18
 
