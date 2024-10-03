@@ -477,10 +477,10 @@ Please update your code to use the `pnpm` based setup.
 ### Update needed to project boilerplate generated with `@plone/generator-volto`
 
 ```{versionadded} Volto 18.0.0-alpha.42
-From this version, a new feature introduced a breaking change in the boilerplates created using `@plone/generator-volto` previous to version 9.0.0-alpha.17.
+Effective with Volto 18.0.0-alpha.42, a new feature introduced a breaking change in the boilerplates created using `@plone/generator-volto` 9.0.0-alpha.17 and earlier.
 ```
 
-This is the change that you need to introduce in your `razzle.config.js` file in the root of your boilerplate.
+You need to change your {file}`razzle.config.js` file in the root of your boilerplate.
 
 ```diff
 razzle.config.js
