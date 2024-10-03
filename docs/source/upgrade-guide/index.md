@@ -474,6 +474,35 @@ The recommended way of generating a project boilerplate is [Cookieplone](https:/
 Please update your code to use the `pnpm` based setup.
 ```
 
+### Update needed to project boilerplate generated with `@plone/generator-volto`
+
+```{versionadded} Volto 18.0.0-alpha.42
+From this version, a new feature introduced a breaking change in the boilerplates created using `@plone/generator-volto` previous to version 9.0.0-alpha.17.
+```
+
+This is the change that you need to introduce in your `razzle.config.js` file in the root of your boilerplate.
+
+```diff
+razzle.config.js
+@@ -27,12 +27,14 @@ const customModifyWebpackConfig = ({
+   webpackConfig,
+   webpackObject,
+   options,
++  path,
+ }) => {
+   const config = modifyWebpackConfig({
+     env: { target, dev },
+     webpackConfig,
+     webpackObject,
+     options,
++    path,
+   });
+   // add custom code here..
+   return config;
+```
+
+The change involves adding a new `path` argument to the `customModifyWebpackConfig` function.
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x
