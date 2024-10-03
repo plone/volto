@@ -1,1 +1,0 @@
-Fetch `user` before pass it to the `restricted` function of the block settings. @wesleybl
