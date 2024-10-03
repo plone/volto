@@ -224,6 +224,7 @@ class SelectWidget extends Component {
           id={`field-${id}`}
           key={choices}
           name={id}
+          aria-labelledby={`fieldset-${this.props.fieldSet}-field-label-${id}`}
           menuShouldScrollIntoView={false}
           isDisabled={disabled}
           isSearchable={true}
