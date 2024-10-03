@@ -474,6 +474,12 @@ The recommended way of generating a project boilerplate is [Cookieplone](https:/
 Please update your code to use the `pnpm` based setup.
 ```
 
+### Table of Contents block markup change
+
+The `View` component for the Table of Contents block was updated to use a `nav` element instead of a `div`.
+If you've applied custom styles or shadowed this component, you might need to make adjustments.
+
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x
