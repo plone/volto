@@ -488,20 +488,20 @@ razzle.config.js
    webpackConfig,
    webpackObject,
    options,
-+  path,
++  paths,
  }) => {
    const config = modifyWebpackConfig({
      env: { target, dev },
      webpackConfig,
      webpackObject,
      options,
-+    path,
++    paths,
    });
    // add custom code here..
    return config;
 ```
 
-The change involves adding a new `path` argument to the `customModifyWebpackConfig` function.
+The change involves adding a new `paths` argument to the `customModifyWebpackConfig` function.
 
 (volto-upgrade-guide-17.x.x)=
 
