@@ -71,9 +71,9 @@ Volto has the following folder structure.
 ```
 
 
-## Development pre-requisites
+## Development prerequisites
 
-To set up a Volto core development environment, your system must satisfy the following pre-requisites.
+To set up a Volto core development environment, your system must satisfy the following prerequisites.
 
 ```{include} ./install-operating-system.md
 ```
