@@ -1,0 +1,2 @@
+Dropping support for Node.js 18 since Volto only supports the last two LTS versions @sneridagh
+Volto might continue to work on it, but it will be no longer tested in CI.
