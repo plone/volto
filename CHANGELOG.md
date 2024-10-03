@@ -17,6 +17,26 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.19.0 (2024-10-03)
+
+### Feature
+
+- The schema for the `ContentsPropertiesModal` can be enhanced using the `contentPropertiesSchemaEnhancer` setting.
+  Also, the properties form is now prepopulated with values if all selected items share the same value. @davisagli [#6248](https://github.com/plone/volto/issues/6248)
+- Pass `errors` property to BlocksForm and Form. @sneridagh @tedw87 [#6331](https://github.com/plone/volto/issues/6331)
+
+### Bugfix
+
+- Fix search block showing no option select in sort on property @iRohitSingh [#5055](https://github.com/plone/volto/issues/5055)
+- Disable save button when loading POST query @sabrina-bongiovanni [#6250](https://github.com/plone/volto/issues/6250)
+- Fix error in `SortOn` component when no sort is selected. @davisagli [#6273](https://github.com/plone/volto/issues/6273)
+- Fix the toolbar handler color for the homepage to match its "published" state. @sabrina-bongiovanni [#6294](https://github.com/plone/volto/issues/6294)
+- Fix internalUrl Widget to Reflect Prop Changes via onChangeBlock @dobri1408 @ichim-david @tedw87 [#6305](https://github.com/plone/volto/issues/6305)
+
+### Internal
+
+- Bump actions/upload-artifact to v4 and replace `docker-compose` with `docker compose`. @stevepiercy, @davisagli [#6253](https://github.com/plone/volto/issues/6253)
+
 ## 17.18.2 (2024-07-10)
 
 ### Bugfix
