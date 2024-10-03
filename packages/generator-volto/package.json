@@ -62,7 +62,7 @@
     "testEnvironment": "node"
   },
   "engines": {
-    "node": "^16 || ^18 || ^20"
+    "node": "^16 || ^18 || ^20 || ^22"
   },
   "dependencies": {
     "ansi-escapes": "2.0.0",
