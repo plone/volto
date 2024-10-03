@@ -9,3 +9,7 @@
 - [ ] I included a [change log entry](https://6.docs.plone.org/contributing/index.html#contributing-change-log-label) in my commits.
 
 -----
+
+If your pull request closes an open issue, include the exact text below, immediately followed by the issue number. When your pull request gets merged, then that issue will close automatically.
+
+Closes #
