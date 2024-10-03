@@ -147,7 +147,7 @@ export function isBlockContainer(block: any): boolean;
  * @param {Object} types A list with the list of types to be matched
  * @return {Array} An array of block ids
  */
-export function findBlocks(blocks: any, types: any, result?: any[]): any[];
+export function findBlocks(blocks: {}, types: any, result?: any[]): any[];
 /**
  * Move block to different location index within blocks_layout
  * @function moveBlock
@@ -158,6 +158,12 @@ export function findBlocks(blocks: any, types: any, result?: any[]): any[];
  */
 export function moveBlockEnhanced(formData: any, { source, destination }: number): any;
 export function getBlocks(properties: any): any[];
+export function applyBlockInitialValue({ id, value, blocksConfig, formData, }: {
+    id: any;
+    value: any;
+    blocksConfig: any;
+    formData: any;
+}): any;
 export function styleToClassName(key: any, value: any, prefix?: string): any;
 export function buildStyleClassNamesFromData(obj?: {}, prefix?: string): any;
 export function buildStyleClassNamesExtenders({ block, content, data, classNames, }: any): any[];

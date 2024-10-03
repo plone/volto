@@ -40,7 +40,7 @@ For this purpose, we have developed a {ref}`new utility <upgrade-guide-new-depen
 It is mandatory that you run the utility to make Volto version 18.0.0-alpha.21 or later work in your projects.
 This opens the door to use {term}`pnpm` in projects, too, and other goodies.
 
-```{versionremoved} 18.0.0-alpha.33
+```{versionremoved} Volto 18.0.0-alpha.33
 The setting `config.settings.serverConfig.extractScripts.errorPages` has been removed.
 ```
 
@@ -52,7 +52,7 @@ This setting is no longer necessary.
 
 ### New dependencies synchronizer
 
-```{versionadded} 18.0.0-alpha.21
+```{versionadded} Volto 18.0.0-alpha.21
 ```
 
 ```{versionadded} @plone/scripts 3.6.1
@@ -395,7 +395,7 @@ If you shadowed the module {file}`packages/volto/src/helpers/FormValidation/Form
 This prop must be assigned with the new prop passed down from the blocks engine `blocksErrors`.
 If not passed down, the block can't display any field validation error.
 
-```tsx
+```jsx
 // More component code above here
 
   const {
@@ -450,6 +450,30 @@ schema: {
 The `Tags` component has been moved to the `belowContent` slot.
 It now receives the `content` property instead of the `tags` property.
 
+
+(upgrade-18-cookieplone-label)=
+
+### Cookieplone is now the recommended project and add-on generator for Volto 18
+
+```{versionadded} Volto 18.0.0-alpha.43
+```
+
+[Cookieplone](https://github.com/plone/cookieplone) is now the recommended way to develop Volto projects, using it as a boilerplate generator.
+Cookieplone uses the frontend code installed using `pnpm` instead of `yarn`.
+This affects the way that the Plone Release Team generates the Sponsored OSS Docker images, since they must be compatible with the `pnpm` setup.
+
+Since Volto `18.0.0-alpha.43`, the Docker image [`plone-frontend`](https://hub.docker.com/r/plone/plone-frontend) uses `pnpm`.
+
+For developers that won't migrate their boilerplate and code to the new setup with `pnpm` instead of `yarn`, the Release Team will generate a new Docker image named `plone-frontend:18-yarn` for the Volto 18 series of alpha releases.
+
+Support for `yarn` will be dropped in Volto 19.
+
+```{deprecated} Volto 18.0.0-alpha.43
+The `yarn`-based generator [`@plone/generator-volto`](https://www.npmjs.com/package/@plone/generator-volto) package and project boilerplates generated from it are deprecated and will not receive any further updates.
+The recommended way of generating a project boilerplate is [Cookieplone](https://github.com/plone/cookieplone).
+Please update your code to use the `pnpm` based setup.
+```
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x
@@ -501,7 +525,7 @@ Upgrade your local dependencies in projects and add-ons by editing your {file}`p
 
 ### TypeScript support in Volto
 
-```{versionadded} 17.0.0-alpha.27
+```{versionadded} Volto 17.0.0-alpha.27
 ```
 
 We added full support of TypeScript in Volto core.
@@ -604,7 +628,7 @@ make develop
 
 ### Upgrade ESlint and use `@babel/eslint-parser`
 
-```{versionchanged} 17.0.0-alpha.27
+```{versionchanged} Volto 17.0.0-alpha.27
 ```
 
 ESlint uses a library to parse the language under analysis.
@@ -617,7 +641,7 @@ Once upgraded, run the linters again to make sure that your code is free of viol
 
 Technically not a breaking, the API nor the component contract has changed, but it's worth noting this change in here.
 
-```{versionadded} 17.0.0-alpha.1
+```{versionadded} Volto 17.0.0-alpha.1
 The `BlockChooser` component now uses `popperjs` library to position itself in the screen.
 It spawns at the end of the body instead of inner the block that called it.
 This is better from the UI point of view, since any other element can take precedence in the CSS element flow, preventing the block chooser to get overlapped by anything else.
@@ -675,7 +699,7 @@ Check the official [Cypress Migration Guide](https://docs.cypress.io/guides/refe
 
 ### New Image component
 
-```{versionadded} 17.0.0-alpha.21
+```{versionadded} Volto 17.0.0-alpha.21
 A new image component has been added to core to render optimized images.
 It requires the latest version of `plone.restapi` (>=8.42.0) installed in the backend to work properly.
 ```
@@ -727,11 +751,11 @@ From Volto 16.0.0-alpha.15 onwards, `volto-slate` is integrated into Volto core 
 The previous text block `text` based on `draftJS` is now deprecated and is restricted (hidden) in Volto bootstrap.
 This is a major change and should be planned in advance before you install 16.0.0-alpha.15 or later.
 
-```{versionadded} 16.0.0-alpha.15
+```{versionadded} Volto 16.0.0-alpha.15
 `volto-slate` added to Volto core as the default text block.
 ```
 
-```{deprecated} 16.0.0-alpha.15
+```{deprecated} Volto 16.0.0-alpha.15
 `text` text block based on `draftJS` is now deprecated and will be removed from core in Volto 18.
 ```
 
@@ -825,7 +849,7 @@ Version 16 is recommended.
 
 ### Upgraded to Razzle 4
 
-```{versionadded} 16.0.0-alpha.38
+```{versionadded} Volto 16.0.0-alpha.38
 Volto has upgraded from Razzle 3 to Razzle 4.
 You should perform these steps in case you are upgrading to this version or above.
 ```
@@ -1128,7 +1152,7 @@ It maintains signature compatibility with `registry.resolve`, but introduces new
 
 See documentation for more information.
 
-````{versionchanged} 16.0.0-alpha.23
+````{versionchanged} Volto 16.0.0-alpha.23
 The `component` argument changed in 16.0.0-alpha.23.
 The `component` key has been flattened for simplification and now it's mapped directly to the `component` argument of `registerComponent`:
 
@@ -1207,7 +1231,7 @@ During the alpha stage, we received feedback and determined that it's too diffic
 We decided it is best to deal with it as any other schema field and enhance it via schema enhancers.
 This improves the developer experience, especially when dealing with variations that can provide their own styles and other schema fields.
 
-```{deprecated} 16.0.0-alpha.46
+```{deprecated} Volto 16.0.0-alpha.46
 The options `enableStyling` and `stylesSchema` no longer work.
 You need to provide them using your own block schema.
 If you are extending an existing one, you should add it as a normal `schemaEnhancer` modification.
@@ -1224,7 +1248,7 @@ Since then, the add-on story has improved.
 It now makes sense to extract this feature into its own add-on.
 Integrate Sentry in your app with [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
 
-```{versionchanged} 16.0.0.alpha.45
+```{versionchanged} Volto 16.0.0.alpha.45
 ```
 
 ### Upgrade `husky` to latest version
@@ -1245,7 +1269,7 @@ You can copy over the Volto ones (take a look in Volto's `.husky` folder).
 
 ### Better defaults handling
 
-````{versionadded} 16.0.0-alpha.51
+````{versionadded} Volto 16.0.0-alpha.51
 Prior to this version, we handled default values in schemas for blocks settings in a faulty and buggy manner.
 The state inferred was not deterministic and depended on the fields with defaults present.
 
@@ -1361,7 +1385,7 @@ A new `@root` alias has been set up to replace the `~` alias.
 Support for the `~` alias is still in place, but we now mark it as deprecated.
 The use of `~` will be removed in Volto 16.
 
-```{deprecated} 15.0
+```{deprecated} Volto 15.0
 ```
 
 ## Upgrading to Volto 14.x.x

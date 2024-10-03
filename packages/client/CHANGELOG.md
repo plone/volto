@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.18 (2024-10-03)
+
+### Bugfix
+
+- Fixed client copy mutation, cleanup up move mutation for consistency @pnicolli [#6349](https://github.com/plone/volto/pull/6349)
+
+## 1.0.0-alpha.17 (2024-09-13)
+
+### Documentation
+
+- Add documentation about optional `token` parameter for `ploneClient` initialization. @MAX-786 [#6076](https://github.com/plone/volto/pull/6076)
+
 ## 1.0.0-alpha.16 (2024-06-06)
 
 ### Bugfix
