@@ -18,3 +18,4 @@ sphinxcontrib-htmlhelp==2.0.1  # https://github.com/plone/documentation/issues/1
 sphinxcontrib-qthelp==1.0.3  # https://github.com/plone/documentation/issues/1604
 sphinxcontrib-serializinghtml==1.1.5  # https://github.com/plone/documentation/issues/1604
 sphinxcontrib-video
+vale<3.0.0
