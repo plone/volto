@@ -5,20 +5,7 @@ import { VoltoVitePlugin } from './vite-plugins/volto';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    VoltoVitePlugin(),
-    nodePolyfills(),
-    react(),
-    (() => {
-      return {
-        name: 'debug',
-        enforce: 'post',
-        configResolved: (resolvedConfig) => {
-          console.log(resolvedConfig.resolve.alias);
-        },
-      };
-    })(),
-  ],
+  plugins: [VoltoVitePlugin(), nodePolyfills(), react()],
   server: {
     port: 3000,
     proxy: {

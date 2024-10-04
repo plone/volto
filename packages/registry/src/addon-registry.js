@@ -388,8 +388,10 @@ class AddonConfigurationRegistry {
         fullPathsPath,
         options[item][0].replace(/\/\*$/, ''),
       );
-
-      aliases[name] = value;
+      // We don't want to alias Volto itself, since that's fixed
+      if (name !== '@plone/volto') {
+        aliases[name] = value;
+      }
     });
 
     return aliases;

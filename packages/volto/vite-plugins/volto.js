@@ -5,6 +5,7 @@ import { svgLoader } from './svg';
 
 import AddonConfigurationRegistry from '@plone/registry/src/addon-registry';
 import createAddonsLoader from '@plone/registry/src/create-addons-loader';
+import createThemeAddonsLoader from '@plone/registry/src/create-theme-addons-loader';
 import { poToJson } from '@plone/scripts/i18n.cjs';
 
 export const VoltoVitePlugin = () => {
@@ -21,6 +22,18 @@ export const VoltoVitePlugin = () => {
     registry.getAddonDependencies(),
     registry.getAddons(),
   );
+
+  const [addonsThemeLoaderVariablesPath, addonsThemeLoaderMainPath] =
+    createThemeAddonsLoader(registry.getCustomThemeAddons());
+
+  let themeConfigPath, themePath;
+  if (registry.theme) {
+    // The themes should be located in `src/theme`
+    themePath = registry.packages[registry.theme].modulePath;
+    themeConfigPath = `${themePath}/theme/theme.config`;
+  }
+
+  const addOns = Object.keys(registry.packages);
 
   // Compile language JSON files from po files
   poToJson({ registry, addonMode: false });
@@ -49,9 +62,9 @@ export const VoltoVitePlugin = () => {
       config: () => ({
         envPrefix: 'VOLTO_',
         ssr: {
-          // optimizeDeps: {
-          //   include: ['lodash', 'lodash-es'],
-          // },
+          optimizeDeps: {
+            exclude: addOns,
+          },
           // external: ['lodash', 'semantic-ui-react'],
           noExternal: ['use-deep-compare-effect'],
         },
@@ -61,6 +74,7 @@ export const VoltoVitePlugin = () => {
           },
         },
         optimizeDeps: {
+          exclude: addOns,
           esbuildOptions: {
             plugins: [fixReactVirtualized],
           },
@@ -75,23 +89,42 @@ export const VoltoVitePlugin = () => {
               find: '@plone/volto/config',
               replacement: path.resolve(__dirname, '../src/config'),
             },
-            // {
-            //   find: '@plone/volto',
-            //   replacement: path.resolve(__dirname, '../src/'),
-            // },
+            {
+              find: '@plone/volto',
+              replacement: path.resolve(__dirname, '../src/'),
+            },
             { find: '@root', replacement: path.resolve(__dirname, '../src/') },
             {
               find: '@root/../themes',
               replacement: path.resolve(__dirname, '../theme/'),
             },
-            // {
-            //   find: '@plone/volto-slate',
-            //   replacement: path.resolve(__dirname, '../../volto-slate/src/'),
-            // },
             {
-              find: '../../theme.config',
-              replacement: path.resolve(__dirname, '../theme/theme.config'),
+              find: '@plone/volto-slate',
+              replacement: path.resolve(__dirname, '../../volto-slate/src/'),
             },
+            ...(registry.theme
+              ? // Load the theme config from the theme
+                [
+                  { find: '../../theme.config', replacement: themeConfigPath },
+                  {
+                    find: 'addonsThemeCustomizationsVariables',
+                    replacement: addonsThemeLoaderVariablesPath,
+                  },
+                  {
+                    find: 'addonsThemeCustomizationsMain',
+                    replacement: addonsThemeLoaderMainPath,
+                  },
+                ]
+              : // Load the theme config from SemanticUI
+                [
+                  {
+                    find: '../../theme.config',
+                    replacement: path.resolve(
+                      __dirname,
+                      '../theme/theme.config',
+                    ),
+                  },
+                ]),
             { find: 'load-volto-addons', replacement: addonsLoaderPath },
             {
               find: 'volto-themes',
@@ -106,6 +139,16 @@ export const VoltoVitePlugin = () => {
         },
       }),
     },
+    (() => {
+      return {
+        name: 'debug',
+        enforce: 'post',
+        apply: false,
+        configResolved: (resolvedConfig) => {
+          console.log(resolvedConfig.resolve.alias);
+        },
+      };
+    })(),
   ];
 };
 

@@ -323,6 +323,7 @@ const defaultModify = ({
     createThemeAddonsLoader(registry.getCustomThemeAddons());
 
   // Automatic Theme Loading
+  // OK
   if (registry.theme) {
     // The themes should be located in `src/theme`
     const themePath = registry.packages[registry.theme].modulePath;
