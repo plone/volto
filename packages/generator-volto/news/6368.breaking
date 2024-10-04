@@ -1,1 +1,0 @@
-Updated `razzle.config.js` to accommodate new argument `paths` passed down to `customModifyWebpackConfig`. @sneridagh
