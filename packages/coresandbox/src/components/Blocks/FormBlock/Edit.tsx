@@ -1,7 +1,7 @@
-import { SidebarPortal } from '@plone/volto/components';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import Data from './Data';
 import type { BlockEditProps } from '@plone/types';
-import { Helmet } from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 
 import { defineMessages, useIntl } from 'react-intl';
 import { Container } from 'semantic-ui-react';

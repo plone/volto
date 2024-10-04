@@ -300,23 +300,23 @@ const defaultModify = ({
   config.resolve.alias = {
     ...registry.getAddonCustomizationPaths(),
     ...registry.getAddonsFromEnvVarCustomizationPaths(),
-    ...registry.getProjectCustomizationPaths(),
+    ...registry.getProjectCustomizationPaths(), // NOT supported anymore
     ...config.resolve.alias,
-    '../../theme.config$': `${projectRootPath}/theme/theme.config`,
-    'volto-themes': `${registry.voltoPath}/theme/themes`,
-    'load-volto-addons': addonsLoaderPath,
-    ...registry.getResolveAliases(),
-    '@plone/volto': `${registry.voltoPath}/src`,
+    '../../theme.config$': `${projectRootPath}/theme/theme.config`, // OK
+    'volto-themes': `${registry.voltoPath}/theme/themes`, // OK - to remove when Semantic is OUT
+    'load-volto-addons': addonsLoaderPath, // OK
+    ...registry.getResolveAliases(), // OK
+    '@plone/volto': `${registry.voltoPath}/src`, // OK
     // to be able to reference path uncustomized by webpack
-    '@plone/volto-original': `${registry.voltoPath}/src`,
+    '@plone/volto-original': `${registry.voltoPath}/src`, // Not Necessary
     // be able to reference current package from customized package
-    '@package': `${projectRootPath}/src`,
-    '@root': `${projectRootPath}/src`,
+    '@package': `${projectRootPath}/src`, // Deprecated
+    '@root': `${projectRootPath}/src`, // OK Really no longer necessary
     // we're incorporating redux-connect
-    'redux-connect': `${registry.voltoPath}/src/helpers/AsyncConnect`,
+    'redux-connect': `${registry.voltoPath}/src/helpers/AsyncConnect`, // Deprecated
     // avoids including lodash multiple times.
     // semantic-ui-react uses lodash-es, everything else uses lodash
-    'lodash-es': path.dirname(require.resolve('lodash')),
+    'lodash-es': path.dirname(require.resolve('lodash')), // Obsolete
   };
 
   const [addonsThemeLoaderVariablesPath, addonsThemeLoaderMainPath] =

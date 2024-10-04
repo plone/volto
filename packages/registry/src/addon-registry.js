@@ -109,6 +109,10 @@ class AddonConfigurationRegistry {
       this.voltoConfigJS = require(
         path.join(projectRootPath, 'volto.config.js'),
       );
+    } else if (fs.existsSync(path.join(projectRootPath, 'volto.config.cjs'))) {
+      this.voltoConfigJS = require(
+        path.join(projectRootPath, 'volto.config.cjs'),
+      );
     } else {
       this.voltoConfigJS = {};
     }
@@ -396,7 +400,7 @@ class AddonConfigurationRegistry {
    * It includes all registered add-ons and their `src` paths, and also the paths
    * defined in the `tsconfig.json` files of the add-ons.
    */
-  getResolveAliases() {
+  getResolveAliases(mode = 'flat') {
     const pairs = [
       ...Object.keys(this.packages).map((o) => [
         o,
@@ -417,7 +421,15 @@ class AddonConfigurationRegistry {
       }
     });
 
-    return { ...fromEntries(pairs), ...aliasesFromTSPaths };
+    const flatAliases = { ...fromEntries(pairs), ...aliasesFromTSPaths };
+    if (mode === 'flat') {
+      return flatAliases;
+    } else {
+      return Object.entries(flatAliases).map(([key, value]) => ({
+        find: key,
+        replacement: value,
+      }));
+    }
   }
 
   /**
@@ -568,7 +580,7 @@ class AddonConfigurationRegistry {
    * customizations in volto-addonB if the declaration in package.json is like:
    * `addons:volto-addonA,volto-addonB`
    */
-  getAddonCustomizationPaths() {
+  getAddonCustomizationPaths(mode = 'flat') {
     let aliases = {};
     this.getAddons().forEach((addon) => {
       aliases = {
@@ -579,7 +591,14 @@ class AddonConfigurationRegistry {
         ),
       };
     });
-    return aliases;
+    if (mode === 'flat') {
+      return aliases;
+    } else {
+      return Object.entries(aliases).map(([key, value]) => ({
+        find: key,
+        replacement: value,
+      }));
+    }
   }
 
   /**

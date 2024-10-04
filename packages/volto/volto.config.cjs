@@ -1,3 +1,3 @@
 module.exports = {
-  addons: [],
+  addons: ['@plone/volto-coresandbox'],
 };
