@@ -16,10 +16,9 @@ Attention should be paid to improve and maintain accessibility, abbreviated as "
 
 We use [`cypress-axe`](https://github.com/component-driven/cypress-axe) for automated testing of accessibility in Volto via Cypress.
 
-Place accessibility test files in the subfolder in the Volto package.
-For example, `packages/volto/cypress/tests/core/blocks/blocks-a11y.js`.
+Place accessibility test files in the directory {file}`packages/volto/cypress/tests/core/a11y/`.
 
-Name accessibility tests `[THING] tested for a11y axe violations`
+Name accessibility tests `[THING] tested for a11y axe violations`.
 
 
 ## Common accessibility issues
