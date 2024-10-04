@@ -10,6 +10,9 @@ on:
     paths:
       - 'docs/**'
       - 'styles/**'
+      - '.github/workflows/docs.yml'
+      - 'requirements-docs.txt'
+      - '.vale.ini'
 
 jobs:
   docs:
@@ -42,6 +45,7 @@ jobs:
 
       - name: Run vale
         run: |
-          git clone https://github.com/errata-ai/Microsoft.git
-          cp -r ./Microsoft/Microsoft ./styles
-          vale --no-exit ./docs
+          make docs-vale
+#          git clone https://github.com/errata-ai/Microsoft.git
+#          cp -r ./Microsoft/Microsoft ./styles
+#          vale --no-exit ./docs
