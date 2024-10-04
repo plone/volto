@@ -1,1 +1,2 @@
-Removed pin on Vale for documentation spelling, grammar, and style checks, and upgrade to v3.x configuration. @stevepiercy
+Removed pin on Vale for documentation spelling, grammar, and style checks, and upgrade to v3.x configuration.
+Updated CI and `Makefile` to allow `VALEOPTS=--no-exit`. @stevepiercy

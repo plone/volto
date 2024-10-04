@@ -16,6 +16,7 @@ include variables.mk
 # Sphinx variables
 # You can set these variables from the command line.
 SPHINXOPTS      ?=
+VALEOPTS        ?=
 # Internal variables.
 SPHINXBUILD     = "$(realpath bin/sphinx-build)"
 SPHINXAUTOBUILD = "$(realpath bin/sphinx-autobuild)"
@@ -120,7 +121,7 @@ docs-linkcheckbroken: bin/python docs-news  ## Run linkcheck and show only broke
 .PHONY: docs-vale
 docs-vale: bin/python docs-news  ## Install (once) and run Vale style, grammar, and spell checks
 	bin/vale sync
-	bin/vale --no-wrap $(VALEFILES)
+	bin/vale --no-wrap $(VALEOPTS) $(VALEFILES)
 	@echo
 	@echo "Vale is finished; look for any errors in the above output."
 
