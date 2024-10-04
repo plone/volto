@@ -65,7 +65,7 @@ export async function render(opts: {
   req: express.Request;
   res: ServerResponse;
 }) {
-  const { req, res } = opts;
+  const { req, res, url } = opts;
 
   // Sync the config object with the values coming from the Express server
   // detected host from headers
@@ -77,7 +77,7 @@ export async function render(opts: {
   function errorHandler(error) {
     const errorPage = (
       <Provider store={store} onError={reactIntlErrorHandler}>
-        <StaticRouter context={{}} location={req.url}>
+        <StaticRouter context={{}} location={url}>
           <ErrorPage message={error.message} />
         </StaticRouter>
       </Provider>
@@ -127,7 +127,7 @@ export async function render(opts: {
   };
 
   const history = createMemoryHistory({
-    initialEntries: [req.url],
+    initialEntries: [url],
   });
 
   // Create a fake Redux store instance for the `errorHandler` to render
@@ -135,7 +135,6 @@ export async function render(opts: {
   const store = configureStore(initialState, history, api);
   persistAuthToken(store, req);
 
-  const url = req.originalUrl || req.url;
   // const location = new URL(url, `http://${req.headers.host}`);
   const location = parseUrl(url); // TODO: improve the parsing with above?
   loadOnServer({ store, location, routes, api })
@@ -168,7 +167,7 @@ export async function render(opts: {
       const markup = ReactDOMServer.renderToString(
         <CookiesProvider cookies={req.universalCookies}>
           <Provider store={store} onError={reactIntlErrorHandler}>
-            <StaticRouter context={context} location={req.url}>
+            <StaticRouter context={context} location={url}>
               <React.Suspense>
                 <ReduxAsyncConnect routes={routes} helpers={api} />
               </React.Suspense>
