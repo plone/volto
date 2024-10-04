@@ -147,7 +147,7 @@ export function isBlockContainer(block: any): boolean;
  * @param {Object} types A list with the list of types to be matched
  * @return {Array} An array of block ids
  */
-export function findBlocks(blocks: any, types: any, result?: any[]): any[];
+export function findBlocks(blocks: {}, types: any, result?: any[]): any[];
 /**
  * Move block to different location index within blocks_layout
  * @function moveBlock
