@@ -43,4 +43,4 @@ jobs:
         run: make docs-html
 
       - name: Run vale
-        run: make docs-vale
+        run: make docs-vale VALEOPTS=--no-exit

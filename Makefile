@@ -27,6 +27,7 @@ TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 # Sphinx variables
 # You can set these variables from the command line.
 SPHINXOPTS      ?=
+VALEOPTS        ?=
 # Internal variables.
 SPHINXBUILD     = $(realpath bin/sphinx-build)
 SPHINXAUTOBUILD = $(realpath bin/sphinx-autobuild)
@@ -149,7 +150,7 @@ docs-linkcheckbroken: bin/python  ## Run linkcheck and show only broken links
 .PHONY: docs-vale
 docs-vale:  ## Run Vale style, grammar, and spell checks
 	vale sync
-	vale --no-wrap $(VALEFILES)
+	vale --no-wrap $(VALEOPTS) $(VALEFILES)
 	@echo
 	@echo "Vale is finished; look for any errors in the above output."
 
