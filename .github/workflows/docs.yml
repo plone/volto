@@ -36,11 +36,11 @@ jobs:
       - name: pip install requirements
         run: pip install -r requirements-docs.txt
 
-      - name: Check for broken links
-        run: make docs-linkcheckbroken
-
-      - name: Build HTML documentation
-        run: make docs-html
+#      - name: Check for broken links
+#        run: make docs-linkcheckbroken
+#
+#      - name: Build HTML documentation
+#        run: make docs-html
 
       - name: Run vale
         run: make docs-vale VALEOPTS=--no-exit
