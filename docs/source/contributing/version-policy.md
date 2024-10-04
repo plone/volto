@@ -74,7 +74,6 @@ We recommend using the current LTS version.
 
 - Node.js 22 LTS: Supported since Volto 18.
 - Node.js 20 LTS: Supported since Volto 17.
-- Node.js 18 LTS: Supported since Volto 17.
 - Node.js 18: No longer supported. It was supported in Volto 16 - 17.
 - Node.js 16: No longer supported. It was supported in Volto 14 - 16.
 - Node.js 14: No longer supported. It was supported in Volto 8.8.0 - 16.
