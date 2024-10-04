@@ -28,6 +28,18 @@ Thus it is safe to run it on top of your project and answer the prompts.
 
 ## Upgrading to Volto 18.x.x
 
+### Node.js version support: adding 22, dropping 18
+
+Added support for Node.js 22, since it will become LTS on 2024-10-29.
+
+Long Term Support (LTS) for {term}`Node.js` 18 by the Node.js community will end on 2025-04-30.
+Volto 18 no longer supports Node.js 18, since it only supports the last two LTS versions.
+Volto might continue to work on Node.js 18, but it is not tested in CI.
+
+Please update your projects to a supported Node.js version, either 20 or 22.
+Version 22 is recommended, as the latest LTS version of Node.js.
+
+
 ### Volto's internal `dependencies` and `devDependencies` are now properly sorted out
 
 Volto internal `dependencies` and `devDependencies` have been correctly sorted out.
