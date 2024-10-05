@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.12 (2024-10-03)
+
+### Feature
+
+- Update RAC to 1.4.0 - Added new `Disclosure` component and new Color widgets @sneridagh [#6364](https://github.com/plone/volto/issues/6364)
+
 ## 2.0.0-alpha.11 (2024-06-06)
 
 ### Bugfix

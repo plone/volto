@@ -103,16 +103,14 @@ exports[`DiffField renders a datetime field 1`] = `
           <span
             class="deletion"
           >
-            Tuesday
+            Tuesday,
           </span>
           <span
             class="addition"
           >
-            Monday
+            Monday,
           </span>
-          <span>
-            , April 25, 
-          </span>
+           April 25, 
           <span
             class="deletion"
           >
@@ -123,9 +121,7 @@ exports[`DiffField renders a datetime field 1`] = `
           >
             2016
           </span>
-          <span>
-             at 2:14 PM
-          </span>
+           at 2:14 PM
         </span>
       </div>
     </div>
@@ -155,34 +151,26 @@ exports[`DiffField renders a diff field in split mode 1`] = `
         class="top aligned six wide column"
       >
         <span>
-          <span>
-            My 
-          </span>
+          My 
           <span
             class="deletion"
           >
             old
           </span>
-          <span>
-             string
-          </span>
+           string
         </span>
       </div>
       <div
         class="top aligned six wide column"
       >
         <span>
-          <span>
-            My 
-          </span>
+          My 
           <span
             class="addition"
           >
             new
           </span>
-          <span>
-             string
-          </span>
+           string
         </span>
       </div>
     </div>
@@ -212,9 +200,7 @@ exports[`DiffField renders a diff field in unified mode 1`] = `
         class="top aligned sixteen wide column"
       >
         <span>
-          <span>
-            My 
-          </span>
+          My 
           <span
             class="deletion"
           >
@@ -225,9 +211,7 @@ exports[`DiffField renders a diff field in unified mode 1`] = `
           >
             new
           </span>
-          <span>
-             string
-          </span>
+           string
         </span>
       </div>
     </div>
@@ -257,9 +241,7 @@ exports[`DiffField renders a richtext field 1`] = `
         class="top aligned sixteen wide column"
       >
         <span>
-          <span>
-            My 
-          </span>
+          My 
           <span
             class="deletion"
           >
@@ -270,9 +252,7 @@ exports[`DiffField renders a richtext field 1`] = `
           >
             new
           </span>
-          <span>
-             string
-          </span>
+           string
         </span>
       </div>
     </div>
@@ -302,9 +282,7 @@ exports[`DiffField renders a textarea field 1`] = `
         class="top aligned sixteen wide column"
       >
         <span>
-          <span>
-            My 
-          </span>
+          My 
           <span
             class="deletion"
           >
@@ -315,9 +293,7 @@ exports[`DiffField renders a textarea field 1`] = `
           >
             new
           </span>
-          <span>
-             string
-          </span>
+           string
         </span>
       </div>
     </div>
@@ -347,9 +323,7 @@ exports[`DiffField renders an array field 1`] = `
         class="top aligned sixteen wide column"
       >
         <span>
-          <span>
-            one,
-          </span>
+          one, 
           <span
             class="deletion"
           >
@@ -389,9 +363,7 @@ exports[`DiffField renders an array of objects field 1`] = `
         class="top aligned sixteen wide column"
       >
         <span>
-          <span>
-            one,
-          </span>
+          one, 
           <span
             class="deletion"
           >
