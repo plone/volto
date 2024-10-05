@@ -5,6 +5,7 @@ import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import BlockChooser from './BlockChooser';
 import config from '@plone/volto/registry';
+import jwt from 'jsonwebtoken';
 
 const blockSVG = {};
 
@@ -121,6 +122,9 @@ const store = mockStore({
   intl: {
     locale: 'en',
     messages: {},
+  },
+  userSession: {
+    token: jwt.sign({ fullname: 'John Doe' }, 'secret'),
   },
 });
 
