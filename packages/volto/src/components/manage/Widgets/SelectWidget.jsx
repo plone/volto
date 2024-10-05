@@ -201,7 +201,6 @@ class SelectWidget extends Component {
       filterChoices,
       additionalChoices,
     } = this.props;
-    const normalizedValue = normalizeValue(choices, value, intl);
     // Make sure that both disabled and isDisabled (from the DX layout feat work)
     const disabled = this.props.disabled || this.props.isDisabled;
     const Select = this.props.reactSelect.default;
@@ -229,12 +228,23 @@ class SelectWidget extends Component {
         ];
 
     if (additionalChoices) {
-      options = [...(options || []), ...additionalChoices];
+      options = [
+        ...(options || []),
+        ...map(additionalChoices, (choice) => ({
+          value: choice.value,
+          label: intl.formatMessage({
+            id: choice.value,
+            defaultMessage: choice.label,
+          }),
+        })),
+      ];
     }
 
     if (filterChoices) {
       options = filter(options, (item) => filterChoices.includes(item.value));
     }
+
+    const normalizedValue = normalizeValue(options, value, intl);
 
     const isMulti = this.props.isMulti
       ? this.props.isMulti
