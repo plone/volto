@@ -1,1 +1,0 @@
- Added server and client environment detection with `global.__SERVER__` and `global.__CLIENT__` flags, and polyfill for `window.matchMedia` on the client-side.
