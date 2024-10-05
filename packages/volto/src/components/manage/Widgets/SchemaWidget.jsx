@@ -316,7 +316,7 @@ map(['Date/Time', 'label_datetime_field'], (factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
-    method: () => ({
+    method: (intl) => ({
       type: 'string',
       widget: 'datetime',
       factory,
@@ -328,7 +328,7 @@ map(['Date', 'label_date_field'], (factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
-    method: () => ({
+    method: (intl) => ({
       type: 'string',
       widget: 'date',
       factory,
@@ -339,7 +339,7 @@ map(['Date', 'label_date_field'], (factory) => {
 config.registerUtility({
   name: 'time',
   type: 'fieldFactoryInitialData',
-  method: () => ({
+  method: (intl) => ({
     type: 'string',
     widget: 'time',
     factory: 'time',
@@ -350,7 +350,7 @@ map(['Email', 'label_email'], (factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
-    method: () => ({
+    method: (intl) => ({
       type: 'string',
       widget: 'email',
       factory,
@@ -362,7 +362,7 @@ map(['File', 'File Upload'], (factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
-    method: () => ({
+    method: (intl) => ({
       type: 'object',
       factory,
     }),
@@ -373,7 +373,7 @@ map(['Floating-point number', 'label_float_field'], (factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
-    method: () => ({
+    method: (intl) => ({
       type: 'number',
       factory,
     }),
@@ -384,7 +384,7 @@ map(['Interger', 'label_integer_field'], (factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
-    method: () => ({
+    method: (intl) => ({
       type: 'integer',
       factory,
     }),
@@ -394,7 +394,7 @@ map(['Interger', 'label_integer_field'], (factory) => {
 config.registerUtility({
   name: 'Image',
   type: 'fieldFactoryInitialData',
-  method: () => ({
+  method: (intl) => ({
     type: 'object',
     factory: 'Image',
   }),
@@ -403,7 +403,7 @@ config.registerUtility({
 config.registerUtility({
   name: 'JSONField',
   type: 'fieldFactoryInitialData',
-  method: () => ({
+  method: (intl) => ({
     type: 'dict',
     widget: 'json',
     factory: 'JSONField',
@@ -414,7 +414,7 @@ map(['Multiple Choice', 'label_multi_choice_field'], (factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
-    method: () => ({
+    method: (intl) => ({
       type: 'array',
       factory,
     }),
@@ -424,7 +424,7 @@ map(['Multiple Choice', 'label_multi_choice_field'], (factory) => {
 config.registerUtility({
   name: 'Relation List',
   type: 'fieldFactoryInitialData',
-  method: () => ({
+  method: (intl) => ({
     type: 'array',
     factory: 'Relation List',
   }),
@@ -434,7 +434,7 @@ map(['Choice', 'label_choice_field'], (factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
-    method: () => ({
+    method: (intl) => ({
       type: 'string',
       choices: [],
       factory,
@@ -445,7 +445,7 @@ map(['Choice', 'label_choice_field'], (factory) => {
 config.registerUtility({
   name: 'Relation Choice',
   type: 'fieldFactoryInitialData',
-  method: () => ({
+  method: (intl) => ({
     type: 'string',
     factory: 'Relation Choice',
   }),
@@ -455,7 +455,7 @@ map(['Password', 'label_password_field'], (factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
-    method: () => ({
+    method: (intl) => ({
       type: 'string',
       widget: 'password',
       factory,
@@ -466,7 +466,7 @@ map(['Password', 'label_password_field'], (factory) => {
 config.registerUtility({
   name: 'Rich Text',
   type: 'fieldFactoryInitialData',
-  method: () => ({
+  method: (intl) => ({
     type: 'string',
     widget: 'richtext',
     factory: 'Rich Text',
@@ -476,7 +476,7 @@ config.registerUtility({
 config.registerUtility({
   name: 'URL',
   type: 'fieldFactoryInitialData',
-  method: () => ({
+  method: (intl) => ({
     type: 'string',
     widget: 'url',
     factory: 'URL',
@@ -487,7 +487,7 @@ map(['Yes/No', 'label_boolean_field'], (factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
-    method: () => ({
+    method: (intl) => ({
       type: 'boolean',
       factory,
     }),
@@ -497,7 +497,7 @@ map(['Yes/No', 'label_boolean_field'], (factory) => {
 config.registerUtility({
   name: 'static_text',
   type: 'fieldFactoryInitialData',
-  method: () => ({
+  method: (intl) => ({
     type: 'object',
     widget: 'static_text',
     factory: 'static_text',
@@ -507,7 +507,7 @@ config.registerUtility({
 config.registerUtility({
   name: 'hidden',
   type: 'fieldFactoryInitialData',
-  method: () => ({
+  method: (intl) => ({
     type: 'string',
     widget: 'hidden',
     factory: 'hidden',
@@ -517,7 +517,7 @@ config.registerUtility({
 config.registerUtility({
   name: 'number',
   type: 'fieldFactoryInitialData',
-  method: () => ({
+  method: (intl) => ({
     type: 'number',
     factory: 'number',
   }),
@@ -526,7 +526,7 @@ config.registerUtility({
 config.registerUtility({
   name: 'radio_group',
   type: 'fieldFactoryInitialData',
-  method: () => ({
+  method: (intl) => ({
     type: 'string',
     choices: [],
     widget: 'radio_group',
@@ -537,7 +537,7 @@ config.registerUtility({
 config.registerUtility({
   name: 'checkbox_group',
   type: 'fieldFactoryInitialData',
-  method: () => ({
+  method: (intl) => ({
     type: 'array',
     widget: 'checkbox_group',
     factory: 'checkbox_group',
@@ -547,7 +547,7 @@ config.registerUtility({
 config.registerUtility({
   name: 'textarea',
   type: 'fieldFactoryInitialData',
-  method: () => ({
+  method: (intl) => ({
     type: 'string',
     widget: 'textarea',
     factory: 'textarea',
@@ -843,7 +843,7 @@ class SchemaWidget extends Component {
     });
 
     const initialData = utility.method
-      ? utility.method()
+      ? utility.method(this.props.intl)
       : {
           type: 'string',
           factory: values.factory,
