@@ -71,9 +71,9 @@ Volto has the following folder structure.
 ```
 
 
-## Development prerequisites
+## Development pre-requisites
 
-To set up a Volto core development environment, your system must satisfy the following prerequisites.
+To set up a Volto core development environment, your system must satisfy the following pre-requisites.
 
 ```{include} ./install-operating-system.md
 ```
@@ -183,7 +183,8 @@ To stop either the backend or frontend, use {kbd}`ctrl-c`.
 
 ### Start the backend
 
-`````{versionadded} 18.0.0-alpha.42
+#### Option 1: Using Docker (Recommended)
+
 Persist backend data across Docker sessions.
 
 ````{warning}
@@ -194,50 +195,50 @@ It is intended only for development.
 {doc}`../deploying/index`
 ```
 ````
-`````
 
-In the first session, start the backend.
+In the first session, start the backend using Docker.
 You can browse to the backend running at http://localhost:8080.
 
-```shell
-make backend-docker-start
-```
+````shell
+pip install -r requirements.txt
+make start-backend
+````
 
 When you run this command for the first time, it will download Docker images, configure the backend, create a Docker volume to persist the data named `volto-backend-data`, and start the backend.
 
-Subsequently, when you run `make backend-docker-start`, it will only start the backend using the existing configuration and Docker image and volume.
+Subsequently, when you run `make start-backend`, it will only start the backend using the existing configuration and Docker image and volume.
 
-````{note}
-If you would like to start the backend with a clean data volume, you can run the following command.
+#### Option 2: Using Python directly
 
-```shell
-docker volume rm volto-backend-data
-```
+If you prefer not to use Docker, you can run the backend directly with Python:
 
-Then run `make backend-docker-start` again to start the backend with a clean data volume.
+1. Create a virtual environment:
+````shell
+python -m venv venv
+source venv/bin/activate  
 ````
 
+2. Install dependencies:
+````shell
+pip install -r requirements-docs.txt
+````
 
-(develop-volto-configure-backend-language-label)=
+3. Start the backend:
+````shell
+make start-backend-py
+````
 
-#### Configure backend language
+The backend will be available at http://localhost:8080.
 
-If you use the Docker image [`plone-backend`](https://github.com/plone/plone-backend), you can set its `LANGUAGE` environment variable, overriding the default of `en`, when you start it.
-
-This variable is applied only when the Plone site is created.
-If you persist data through restarts, you only need to do this once.
-Conversely, if you create a Plone site in the wrong language, you can delete the data volume, and recreate it with the correct language.
-
-You can either pass an environment variable into the make command to start the backend, or export an environment variable in your shell session and start the backend.
+````{note}
+For both options, if you would like to start the backend with a clean data volume, you can run:
 
 ```shell
-# pass method
-LANGUAGE=pt-br make backend-docker-start
-
-# export method
-export LANGUAGE=pt-br
-make backend-docker-start
+make stop-backend
 ```
+
+Then run `make start-backend` (for Docker) or `make start-backend-py` (for Python) again to start the backend with a clean slate.
+````
 
 
 (develop-volto-start-the-frontend-label)=
