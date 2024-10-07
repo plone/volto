@@ -255,3 +255,139 @@
   overflow: auto;
   max-height: 75vh;
 }
+
+// contents upload page theme
+.upload-page-wrapper {
+  display: flex;
+  min-height: 90vh;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 20px;
+
+  .upload-page-heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .dropzone-area {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #cccccc;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    .browse-button {
+      padding: 0px;
+      background: none;
+      color: #0074a3;
+      font-size: 20px;
+      font-weight: normal;
+      text-decoration: underline;
+    }
+  }
+
+  .dropzone-area-focus {
+    border: 2px dashed #0074a3;
+    transform: scale(1.02);
+  }
+
+  .dropzone-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      color: #a9acb4;
+      font-size: 20px;
+    }
+
+    span {
+      color: #0074a3;
+    }
+
+    span:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .uploaded-files-list {
+    display: flex;
+    max-height: 400px;
+    flex-direction: column;
+    gap: 3px;
+    overflow-y: scroll;
+  }
+
+  .upload-item {
+    display: flex;
+    height: 150px;
+    min-height: 150px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+    border: 1px solid #cbd0dc;
+    gap: 15px;
+
+    .preview-image {
+      display: flex;
+      width: 25%;
+      max-width: 15em;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        max-height: 120px;
+      }
+    }
+
+    .preview-icon {
+      display: flex;
+      width: 25%;
+      max-width: 14em;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        height: 100%;
+      }
+    }
+
+    .meta {
+      margin-top: 2px;
+      color: #777777;
+    }
+
+    .progress {
+      border-radius: 10px;
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+
+    .bar {
+      min-width: 0;
+      border-radius: 10px;
+      background: #0074a3;
+    }
+
+    .content {
+      display: flex;
+      width: 70%;
+      min-width: 150px;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .upload-complete {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 3px;
+      }
+    }
+  }
+}

@@ -51,6 +51,10 @@ const BreadcrumbsComponent = ({ pathname }) => {
     }
   }, [dispatch, pathname]);
 
+  if (pathname.endsWith('/uploads')) {
+    return null;
+  }
+
   return (
     <Segment
       role="navigation"

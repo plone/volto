@@ -64,7 +64,6 @@ import ContentsBreadcrumbs from '@plone/volto/components/manage/Contents/Content
 import ContentsIndexHeader from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
 import ContentsItem from '@plone/volto/components/manage/Contents/ContentsItem';
 import { ContentsRenameModal } from '@plone/volto/components/manage/Contents';
-import ContentsUploadModal from '@plone/volto/components/manage/Contents/ContentsUploadModal';
 import ContentsWorkflowModal from '@plone/volto/components/manage/Contents/ContentsWorkflowModal';
 import ContentsTagsModal from '@plone/volto/components/manage/Contents/ContentsTagsModal';
 import ContentsPropertiesModal from '@plone/volto/components/manage/Contents/ContentsPropertiesModal';
@@ -156,7 +155,7 @@ const messages = defineMessages({
     defaultMessage: 'Item(s) has been updated.',
   },
   messageReorder: {
-    id: 'Item successfully moved.',
+    id: 'Item succesfully moved.',
     defaultMessage: 'Item successfully moved.',
   },
   messagePasted: {
@@ -369,8 +368,6 @@ class Contents extends Component {
     this.onSelectNone = this.onSelectNone.bind(this);
     this.onDeleteOk = this.onDeleteOk.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
-    this.onUploadOk = this.onUploadOk.bind(this);
-    this.onUploadCancel = this.onUploadCancel.bind(this);
     this.onRenameOk = this.onRenameOk.bind(this);
     this.onRenameCancel = this.onRenameCancel.bind(this);
     this.onTagsOk = this.onTagsOk.bind(this);
@@ -391,7 +388,6 @@ class Contents extends Component {
     this.cut = this.cut.bind(this);
     this.copy = this.copy.bind(this);
     this.delete = this.delete.bind(this);
-    this.upload = this.upload.bind(this);
     this.rename = this.rename.bind(this);
     this.tags = this.tags.bind(this);
     this.properties = this.properties.bind(this);
@@ -404,7 +400,6 @@ class Contents extends Component {
     this.state = {
       selected: [],
       showDelete: false,
-      showUpload: false,
       showRename: false,
       showTags: false,
       showProperties: false,
@@ -875,29 +870,6 @@ class Contents extends Component {
   }
 
   /**
-   * On upload ok
-   * @method onUploadOk
-   * @returns {undefined}
-   */
-  onUploadOk() {
-    this.fetchContents();
-    this.setState({
-      showUpload: false,
-    });
-  }
-
-  /**
-   * On upload cancel
-   * @method onUploadCancel
-   * @returns {undefined}
-   */
-  onUploadCancel() {
-    this.setState({
-      showUpload: false,
-    });
-  }
-
-  /**
    * On rename ok
    * @method onRenameOk
    * @returns {undefined}
@@ -1090,17 +1062,6 @@ class Contents extends Component {
     this.setState({
       showDelete: true,
       itemsToDelete: value ? [value] : this.state.selected,
-    });
-  }
-
-  /**
-   * Upload handler
-   * @method upload
-   * @returns {undefined}
-   */
-  upload() {
-    this.setState({
-      showUpload: true,
     });
   }
 
@@ -1502,12 +1463,6 @@ class Contents extends Component {
                     onConfirm={this.onDeleteOk}
                     size="medium"
                   />
-                  <ContentsUploadModal
-                    open={this.state.showUpload}
-                    onCancel={this.onUploadCancel}
-                    onOk={this.onUploadOk}
-                    pathname={getBaseUrl(this.props.pathname)}
-                  />
                   <ContentsRenameModal
                     open={this.state.showRename}
                     onCancel={this.onRenameCancel}
@@ -1532,9 +1487,6 @@ class Contents extends Component {
                     onCancel={this.onPropertiesCancel}
                     onOk={this.onPropertiesOk}
                     items={this.state.selected}
-                    values={map(this.state.selected, (id) =>
-                      find(this.state.items, { '@id': id }),
-                    ).filter((item) => item)}
                   />
                   {this.state.showWorkflow && (
                     <ContentsWorkflowModal
@@ -1550,22 +1502,28 @@ class Contents extends Component {
                         <Menu.Menu className="top-menu-menu">
                           <Popup
                             trigger={
-                              <Menu.Item
-                                icon
-                                as={Button}
-                                onClick={this.upload}
-                                className="upload"
-                                aria-label={this.props.intl.formatMessage(
-                                  messages.upload,
+                              <Link
+                                to={this.props.pathname.replace(
+                                  'contents',
+                                  'uploads',
                                 )}
                               >
-                                <Icon
-                                  name={uploadSVG}
-                                  color="#007eb1"
-                                  size="24px"
+                                <Menu.Item
+                                  icon
+                                  as={Button}
                                   className="upload"
-                                />
-                              </Menu.Item>
+                                  aria-label={this.props.intl.formatMessage(
+                                    messages.upload,
+                                  )}
+                                >
+                                  <Icon
+                                    name={uploadSVG}
+                                    color="#007eb1"
+                                    size="24px"
+                                    className="upload"
+                                  />
+                                </Menu.Item>
+                              </Link>
                             }
                             position="top center"
                             content={this.props.intl.formatMessage(

@@ -27,7 +27,10 @@ import {
   Sitemap,
   PersonalInformation,
 } from '@plone/volto/components';
-import { Contents } from '@plone/volto/components/manage/Contents';
+import {
+  Contents,
+  ContentsUploadPage,
+} from '@plone/volto/components/manage/Contents';
 import { Rules } from '@plone/volto/components/manage/Rules';
 import {
   RulesControlpanel,
@@ -251,6 +254,10 @@ export const defaultRoutes = [
   {
     path: ['/contents', '/**/contents'],
     component: Contents,
+  },
+  {
+    path: ['/uploads', '/**/uploads'],
+    component: ContentsUploadPage,
   },
   {
     path: ['/sharing', '/**/sharing'],

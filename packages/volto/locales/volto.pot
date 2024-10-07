@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-09-19T10:10:37.548Z\n"
+"POT-Creation-Date: 2024-09-27T17:38:52.828Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -388,6 +388,11 @@ msgstr ""
 msgid "Apply working copy"
 msgstr ""
 
+#. Default: "Are you sure you want to abort the remaining file uploads?"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Are you sure you want to abort the remaining file uploads?"
+msgstr ""
+
 #. Default: "Are you sure you want to delete this field?"
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -427,6 +432,7 @@ msgstr ""
 #. Default: "Back"
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsUploadPage
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
@@ -490,6 +496,7 @@ msgstr ""
 
 #. Default: "Browse"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/ContentsUploadPage
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr ""
@@ -522,6 +529,7 @@ msgstr ""
 #. Default: "Cancel"
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/ContentsUploadPage
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -535,6 +543,11 @@ msgstr ""
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
+msgstr ""
+
+#. Default: "Cancel uploads"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Cancel uploads"
 msgstr ""
 
 #. Default: "Cell"
@@ -690,6 +703,11 @@ msgstr ""
 #. Default: "Compare"
 #: components/manage/Diff/Diff
 msgid "Compare"
+msgstr ""
+
+#. Default: "Complete"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Complete"
 msgstr ""
 
 #. Default: "Condition changed"
@@ -959,6 +977,7 @@ msgstr ""
 #. Default: "Delete"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
+#: components/manage/Contents/ContentsUploadPage
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/Groups/RenderGroups
 #: components/manage/Controlpanels/ModerateComments
@@ -1125,6 +1144,11 @@ msgstr ""
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
+msgstr ""
+
+#. Default: "Drag and Drop or"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Drag and Drop or"
 msgstr ""
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -1879,7 +1903,7 @@ msgstr ""
 
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
-msgid "Item successfully moved."
+msgid "Item succesfully moved."
 msgstr ""
 
 #. Default: "Item(s) copied."
@@ -1957,6 +1981,11 @@ msgstr ""
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
+msgstr ""
+
+#. Default: "Last modified:"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Last modified:"
 msgstr ""
 
 #. Default: "Latest available configuration"
@@ -2356,6 +2385,11 @@ msgstr ""
 #. Default: "There is no connection to the server, due to a timeout o no network connection."
 #: components/theme/RequestTimeout/RequestTimeout
 msgid "No connection to the server"
+msgstr ""
+
+#. Default: "No files uploaded yet!"
+#: components/manage/Contents/ContentsUploadPage
+msgid "No files uploaded yet!"
 msgstr ""
 
 #. Default: "No image selected"
@@ -3454,6 +3488,11 @@ msgstr ""
 msgid "Start Date"
 msgstr ""
 
+#. Default: "Start Upload"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Start Upload"
+msgstr ""
+
 #. Default: "Start of the recurrence"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Start of the recurrence"
@@ -3732,6 +3771,11 @@ msgstr ""
 #. Default: "There is a configuration problem on the backend"
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
+msgstr ""
+
+#. Default: "There was an error"
+#: components/manage/Contents/ContentsUploadPage
+msgid "There was an error"
 msgstr ""
 
 #. Default: "There was an error with the upgrade."
@@ -4062,9 +4106,24 @@ msgstr ""
 msgid "Upload files"
 msgstr ""
 
+#. Default: "Upload more files"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Upload more files"
+msgstr ""
+
+#. Default: "Uploaded"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Uploaded"
+msgstr ""
+
 #. Default: "Uploading image"
 #: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
+msgstr ""
+
+#. Default: "Uploading to {uploadFolder}"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Uploading to {uploadFolder}"
 msgstr ""
 
 #. Default: "Use the form below to define the new content rule"

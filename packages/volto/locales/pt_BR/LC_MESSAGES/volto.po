@@ -392,6 +392,11 @@ msgstr "Aplicar em subpastas"
 msgid "Apply working copy"
 msgstr "Aplicar a cópia de trabalho"
 
+#. Default: "Are you sure you want to abort the remaining file uploads?"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Are you sure you want to abort the remaining file uploads?"
+msgstr ""
+
 #. Default: "Are you sure you want to delete this field?"
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -431,6 +436,7 @@ msgstr "Regras de conteúdo disponíveis:"
 #. Default: "Back"
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsUploadPage
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
@@ -494,6 +500,7 @@ msgstr "Relacionamentos rompidos"
 
 #. Default: "Browse"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/ContentsUploadPage
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Procurar"
@@ -526,6 +533,7 @@ msgstr "Não é possível editar layout para o tipo de conteúdo <strong>{type}<
 #. Default: "Cancel"
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/ContentsUploadPage
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -540,6 +548,11 @@ msgstr "Não é possível editar layout para o tipo de conteúdo <strong>{type}<
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
 msgstr "Cancelar"
+
+#. Default: "Cancel uploads"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Cancel uploads"
+msgstr ""
 
 #. Default: "Cell"
 #: config/Blocks
@@ -695,6 +708,11 @@ msgstr "Comentários"
 #: components/manage/Diff/Diff
 msgid "Compare"
 msgstr "Comparar"
+
+#. Default: "Complete"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Complete"
+msgstr ""
 
 #. Default: "Condition changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -963,6 +981,7 @@ msgstr "Visão padrão"
 #. Default: "Delete"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
+#: components/manage/Contents/ContentsUploadPage
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/Groups/RenderGroups
 #: components/manage/Controlpanels/ModerateComments
@@ -1130,6 +1149,11 @@ msgstr "Visão do Documento"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
 msgstr "Baixar evento"
+
+#. Default: "Drag and Drop or"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Drag and Drop or"
+msgstr ""
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -1883,8 +1907,8 @@ msgstr "Tamanho do lote de itens"
 
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
-msgid "Item successfully moved."
-msgstr "Item movido com sucesso."
+msgid "Item succesfully moved."
+msgstr ""
 
 #. Default: "Item(s) copied."
 #: components/manage/Contents/Contents
@@ -1962,6 +1986,11 @@ msgstr "Data do último comentário"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Última modificação"
+
+#. Default: "Last modified:"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Last modified:"
+msgstr ""
 
 #. Default: "Latest available configuration"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -2361,6 +2390,11 @@ msgstr "Nenhum relacionamento rompido foi encontrado"
 #: components/theme/RequestTimeout/RequestTimeout
 msgid "No connection to the server"
 msgstr "Sem conexão ao servidor"
+
+#. Default: "No files uploaded yet!"
+#: components/manage/Contents/ContentsUploadPage
+msgid "No files uploaded yet!"
+msgstr ""
 
 #. Default: "No image selected"
 #: components/manage/Blocks/Image/ImageSidebar
@@ -3458,6 +3492,11 @@ msgstr "Dividir"
 msgid "Start Date"
 msgstr "Data de Início"
 
+#. Default: "Start Upload"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Start Upload"
+msgstr ""
+
 #. Default: "Start of the recurrence"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Start of the recurrence"
@@ -3737,6 +3776,11 @@ msgstr "Existem alguns erros."
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
 msgstr "Há um problema de configuração no backend"
+
+#. Default: "There was an error"
+#: components/manage/Contents/ContentsUploadPage
+msgid "There was an error"
+msgstr ""
 
 #. Default: "There was an error with the upgrade."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -4066,10 +4110,25 @@ msgstr "Enviar uma imagem para o campo de imagem principal."
 msgid "Upload files"
 msgstr "Enviar arquivos"
 
+#. Default: "Upload more files"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Upload more files"
+msgstr ""
+
+#. Default: "Uploaded"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Uploaded"
+msgstr ""
+
 #. Default: "Uploading image"
 #: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
 msgstr "Enviando imagem"
+
+#. Default: "Uploading to {uploadFolder}"
+#: components/manage/Contents/ContentsUploadPage
+msgid "Uploading to {uploadFolder}"
+msgstr ""
 
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule

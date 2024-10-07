@@ -5,6 +5,7 @@ import okMiddleware from '@plone/volto/express-middleware/ok';
 import sitemapMiddleware from '@plone/volto/express-middleware/sitemap';
 import staticsMiddleware from '@plone/volto/express-middleware/static';
 import devProxyMiddleware from '@plone/volto/express-middleware/devproxy';
+import uploadMiddleware from '@plone/volto/express-middleware/upload';
 
 const settings = {
   expressMiddleware: [
@@ -15,6 +16,7 @@ const settings = {
     okMiddleware(),
     sitemapMiddleware(),
     staticsMiddleware(),
+    uploadMiddleware(),
   ],
   criticalCssPath: 'public/critical.css',
   readCriticalCss: null, // so it will be defaultReadCriticalCss
