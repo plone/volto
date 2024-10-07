@@ -37,17 +37,10 @@
 /*-------------------
         States
 --------------------*/
-
-
-/*-------------------
-      Variations
---------------------*/
-
-/* Float */
-
-/* Horizontal */
-
-/* Inverted */
+@itemPublishedColor: #007bc1;
+@itemPrivateColor: #ed4033;
+@itemPendingColor: #f6a808;
+@itemSubmitColor: #f4e037;
 @invertedItemLinkHoverColor: @white;
 
 /* Link List */

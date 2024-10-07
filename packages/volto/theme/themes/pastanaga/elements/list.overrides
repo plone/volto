@@ -41,3 +41,18 @@
     margin-left: @64px;
   }
 }
+
+#main .items .ui.list.summary-listing {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  li::before {
+    content: none;
+  }
+}
+
+#main .items .ui.list.summary-listing .listing-item-header {
+  &:extend(h3 all);
+  color: @linkColor;
+}

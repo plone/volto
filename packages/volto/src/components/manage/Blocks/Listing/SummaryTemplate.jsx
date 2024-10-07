@@ -22,17 +22,28 @@ const SummaryTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
   return (
     <>
       <div className="items">
-        {items.map((item) => (
-          <div className="listing-item" key={item['@id']}>
-            <ConditionalLink item={item} condition={!isEditMode}>
-              <Component componentName="PreviewImage" item={item} alt="" />
-              <div className="listing-body">
-                <h3>{item.title || item.id}</h3>
-                <p>{item.description}</p>
+        <ul className="ui list summary-listing">
+          {items.map((item) => (
+            <li key={item['@id']}>
+              <div
+                className={`listing-item ${
+                  item.review_state ? `state-${item.review_state}` : ''
+                }`}
+                role="listitem"
+              >
+                <ConditionalLink item={item} condition={!isEditMode}>
+                  <Component componentName="PreviewImage" item={item} alt="" />
+                  <div className="listing-body">
+                    <div className="listing-item-header">
+                      {item.title ? item.title : item.id}
+                    </div>
+                    {item.description && <p>{item.description}</p>}
+                  </div>
+                </ConditionalLink>
               </div>
-            </ConditionalLink>
-          </div>
-        ))}
+            </li>
+          ))}
+        </ul>
       </div>
 
       {link && <div className="footer">{link}</div>}
