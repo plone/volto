@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
-import VideoEmbed from './VideoEmbed';
+import { VideoEmbed } from '@plone/volto/components';
 
 //Extracting videoID, listID and thumbnailURL from the video URL
 const getVideoIDAndPlaceholder = (url) => {
