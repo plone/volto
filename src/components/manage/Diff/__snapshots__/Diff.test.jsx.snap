@@ -266,13 +266,9 @@ exports[`Diff renders a diff component 1`] = `
         </div>
       </div>
     </div>
-  </div>
   <div
-    id="toolbar"
-  >
-    <div
-      id="Portal"
-    />
+    id="Portal"
+  />
   </div>
 </div>
 `;
