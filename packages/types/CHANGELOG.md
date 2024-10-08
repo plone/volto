@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.20 (2024-10-08)
+
+### Bugfix
+
+- Fixed types for image fields and BlocksFormData @pnicolli @deodorhunter [#6382](https://github.com/plone/volto/issues/6382)
+
 ## 1.0.0-alpha.19 (2024-07-30)
 
 ### Feature
