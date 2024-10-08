@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.13 (2024-10-08)
+
+### Bugfix
+
+- Fixed flattenToAppURL types @pnicolli @deodorhunter [#6382](https://github.com/plone/volto/issues/6382)
+
+### Internal
+
+- Update Vite and vitest versions @sneridagh [#6373](https://github.com/plone/volto/issues/6373)
+
 ## 2.0.0-alpha.12 (2024-10-03)
 
 ### Feature
