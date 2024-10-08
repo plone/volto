@@ -85,6 +85,6 @@
     "release-it": "16.2.1",
     "tsconfig": "workspace:*",
     "typescript": "5.4.2",
-    "vitest": "^0.34.6"
+    "vitest": "^2.1.2"
   }
 }
