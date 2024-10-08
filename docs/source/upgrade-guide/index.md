@@ -395,7 +395,7 @@ If you shadowed the module {file}`packages/volto/src/helpers/FormValidation/Form
 This prop must be assigned with the new prop passed down from the blocks engine `blocksErrors`.
 If not passed down, the block can't display any field validation error.
 
-```tsx
+```jsx
 // More component code above here
 
   const {
@@ -473,6 +473,35 @@ The `yarn`-based generator [`@plone/generator-volto`](https://www.npmjs.com/pack
 The recommended way of generating a project boilerplate is [Cookieplone](https://github.com/plone/cookieplone).
 Please update your code to use the `pnpm` based setup.
 ```
+
+### Update needed to project boilerplate generated with `@plone/generator-volto`
+
+```{versionadded} Volto 18.0.0-alpha.42
+Effective with Volto 18.0.0-alpha.42, a new feature introduced a breaking change in the boilerplates created using `@plone/generator-volto` 9.0.0-alpha.17 and earlier.
+```
+
+You need to change your {file}`razzle.config.js` file in the root of your boilerplate.
+
+```diff
+razzle.config.js
+@@ -27,12 +27,14 @@ const customModifyWebpackConfig = ({
+   webpackConfig,
+   webpackObject,
+   options,
++  paths,
+ }) => {
+   const config = modifyWebpackConfig({
+     env: { target, dev },
+     webpackConfig,
+     webpackObject,
+     options,
++    paths,
+   });
+   // add custom code here..
+   return config;
+```
+
+The change involves adding a new `paths` argument to the `customModifyWebpackConfig` function.
 
 (volto-upgrade-guide-17.x.x)=
 
