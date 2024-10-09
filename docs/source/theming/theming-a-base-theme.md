@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Customize a base theme such as Volto Light Theme via SCSS."
-  "property=og:description": "Customize a base theme such as Volto Light Theme via SCSS."
-  "property=og:title": "Theming a base theme such as Volto Light Theme"
-  "keywords": "Volto, Plone, frontend, React, themes, Volto Light Theme"
+myst:
+  html_meta:
+    "description": "Customize a base theme such as Volto Light Theme via SCSS."
+    "property=og:description": "Customize a base theme such as Volto Light Theme via SCSS."
+    "property=og:title": "Theming a base theme such as Volto Light Theme"
+    "keywords": "Volto, Plone, frontend, React, themes, Volto Light Theme"
 ---
 
 # Customize a base theme
