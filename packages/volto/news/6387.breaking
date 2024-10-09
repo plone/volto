@@ -1,0 +1,1 @@
+Added `react/jsx-key` rule for ESlint to detect missing key property in iterators. @sneridagh
