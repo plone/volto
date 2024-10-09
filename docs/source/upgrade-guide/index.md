@@ -506,7 +506,7 @@ The change involves adding a new `paths` argument to the `customModifyWebpackCon
 ### Added rule for ESlint to detect missing key property in iterators.
 
 The `react/jsx-key` rule has been enabled in ESlint for catching missing `key` in JSX iterators.
-Might be that you catch up some violations in your project or add-on code after running ESlint.
+You might catch some violations in your project or add-on code after running ESlint.
 Adding the missing `key` property whenever the violation is reported will fix it.
 
 (volto-upgrade-guide-17.x.x)=
