@@ -3,6 +3,8 @@ import type { Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import Providers from '@/components/providers/Providers';
 import { getServerQueryClient, client as ploneClient } from '@/helpers/client';
+import '@plone/components/src/styles/basic/theme.css';
+import '@plone/components/src/styles/quanta/theme.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
