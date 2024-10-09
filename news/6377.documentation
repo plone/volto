@@ -1,1 +1,0 @@
-Install Vale via pip, and pin to <3.0.0, allowing it to run locally and in CI without reconfiguration. @stevepiercy

@@ -17,6 +17,17 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.20.0 (2024-10-09)
+
+### Feature
+
+- Pass the `user`, `navRoot`, and `contentType` objects to the `restricted` function of the block settings. @wesleybl [#6264](https://github.com/plone/volto/issues/6264)
+- improve DiffField.jsx with better support for displaying HTML elements such as images @dobri1408 [#6384](https://github.com/plone/volto/issues/6384)
+
+### Documentation
+
+- Install Vale via pip, and pin to <3.0.0, allowing it to run locally and in CI without reconfiguration. @stevepiercy [#6377](https://github.com/plone/volto/issues/6377)
+
 ## 17.19.0 (2024-10-03)
 
 ### Feature
