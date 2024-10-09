@@ -17,6 +17,17 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.45 (2024-10-08)
+
+### Bugfix
+
+- Added missing arg for `buildStyleClassNamesExtenders` @sneridagh [#6381](https://github.com/plone/volto/issues/6381)
+
+### Documentation
+
+- Removed pin on Vale for documentation spelling, grammar, and style checks, and upgrade to v3.x configuration.
+  Updated CI and `Makefile` to allow `VALEOPTS=--no-exit`. @stevepiercy [#6376](https://github.com/plone/volto/issues/6376)
+
 ## 18.0.0-alpha.44 (2024-10-03)
 
 ### Feature

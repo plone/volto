@@ -57,8 +57,8 @@ describe('<Pluggable />', () => {
                     </header>
                     <div className="pastanaga-menu-list">
                       <ul>
-                        {pluggables.map((p) => (
-                          <>{p()}</>
+                        {pluggables.map((p, index) => (
+                          <React.Fragment key={index}>{p()}</React.Fragment>
                         ))}
                       </ul>
                     </div>
@@ -92,7 +92,7 @@ describe('<Pluggable />', () => {
                     <div className="pastanaga-menu-list">
                       <ul>
                         {pluggables.map((p) => (
-                          <>{p()}</>
+                          <React.Fragment key={p}>{p()}</React.Fragment>
                         ))}
                       </ul>
                     </div>

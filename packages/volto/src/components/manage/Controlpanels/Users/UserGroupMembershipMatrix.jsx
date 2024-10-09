@@ -188,18 +188,20 @@ const UserGroupMembershipMatrix = ({ many_users, many_groups }) => {
           </Form>
           {(!many_groups || query_group_filter.length > 1) &&
             filter_options?.map((filter_option) => (
-              <Form.Field>
-                <Checkbox
-                  name={`filter_option_${filter_option.value}`}
-                  key={filter_option.value}
-                  title={filter_option.label}
-                  label={filter_option.label}
-                  defaultChecked={false}
-                  onChange={(event, { checked }) => {
-                    onSelectOptionHandler(filter_option, checked);
-                  }}
-                />
-              </Form.Field>
+              <React.Fragment key={filter_option.value}>
+                <Form.Field>
+                  <Checkbox
+                    name={`filter_option_${filter_option.value}`}
+                    key={filter_option.value}
+                    title={filter_option.label}
+                    label={filter_option.label}
+                    defaultChecked={false}
+                    onChange={(event, { checked }) => {
+                      onSelectOptionHandler(filter_option, checked);
+                    }}
+                  />
+                </Form.Field>
+              </React.Fragment>
             ))}
         </div>
         <UserGroupMembershipListing
