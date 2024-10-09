@@ -51,6 +51,7 @@ const ObjectBrowserNav = ({
         currentSearchResults.items.map((item) =>
           view === 'icons' ? (
             <li
+              key={item['@id']}
               className="image-wrapper"
               title={`${item['@id']} (${item['@type']})`}
             >

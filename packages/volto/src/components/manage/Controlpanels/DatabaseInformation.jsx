@@ -150,6 +150,7 @@ const DatabaseInformation = () => {
               </Table.Row>
             </Table.Header>
             {databaseInformation.cache_detail_length.map((item) => (
+              // eslint-disable-next-line react/jsx-key
               <Table.Row>
                 <Table.Cell>{item.connection}</Table.Cell>
                 <Table.Cell>{item.ngsize}</Table.Cell>
