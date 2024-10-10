@@ -17,6 +17,56 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.45 (2024-10-08)
+
+### Bugfix
+
+- Added missing arg for `buildStyleClassNamesExtenders` @sneridagh [#6381](https://github.com/plone/volto/issues/6381)
+
+### Documentation
+
+- Removed pin on Vale for documentation spelling, grammar, and style checks, and upgrade to v3.x configuration.
+  Updated CI and `Makefile` to allow `VALEOPTS=--no-exit`. @stevepiercy [#6376](https://github.com/plone/volto/issues/6376)
+
+## 18.0.0-alpha.44 (2024-10-03)
+
+### Feature
+
+- Added `config.settings.nonContentRoutesPublic` to avoid `isCmsUi` issues in these public routes. @giuliaghisini [#6173](https://github.com/plone/volto/issues/6173)
+- Add language independent field icon. @iRohitSingh [#6297](https://github.com/plone/volto/issues/6297)
+- Improve DiffField.jsx to render only the blocks on the page with better support for displaying HTML elements such as images. @dobri1408 [#6309](https://github.com/plone/volto/issues/6309)
+- Updated Italian Italian translations. @gianniftp [#6342](https://github.com/plone/volto/issues/6342)
+- Update Brazilian Portuguese translations. @ericof 
+
+### Bugfix
+
+- Increase specificity of table header style selector to properly override colors for better contrast @jackahl [#2487](https://github.com/plone/volto/issues/2487)
+- Change Form input:focus text color to the `textColor` value for a11y. 
+  Add Cypress test for contact form inputs. @ThomasKindermann @tedw87 [#2570](https://github.com/plone/volto/issues/2570)
+- Add missing `for` attribute to checkbox label to improve accessibility. @gomez [#6249](https://github.com/plone/volto/issues/6249)
+- - Fixed build style classnames in edit mode. Also use buildStyleClassNamesExtenders. @giuliaghisini [#6259](https://github.com/plone/volto/issues/6259)
+- Fetch `user` before pass it to the `restricted` function of the block settings. @wesleybl [#6293](https://github.com/plone/volto/issues/6293)
+- - Join validation errors in one single toast and update errors from response. @cekk
+  - Toast content now has a <div> wrapper instead of a <p>. @cekk [#6295](https://github.com/plone/volto/issues/6295)
+- Fixed findBlocks when no blocks are passed. @giuliaghisini [#6299](https://github.com/plone/volto/issues/6299)
+- Fixed toolbar buttons not having a focus outline. @JeffersonBledsoe [#6313](https://github.com/plone/volto/issues/6313)
+- fix: SidebarPopup close on ESC keypress @nileshgulia1 [#6315](https://github.com/plone/volto/issues/6315)
+- Changed sidebar accordion text colour from @teal to @textColor. @JeffersonBledsoe [#6330](https://github.com/plone/volto/issues/6330)
+- Labels accessibility for ArrayWidget, SelectWidget, TokenWidget. @folix-01 [#6332](https://github.com/plone/volto/issues/6332)
+- Use lighter blue as link color in inverted tables to improve contrast for a11y @jackahl [#6334](https://github.com/plone/volto/issues/6334)
+
+### Internal
+
+- Added a pull request template as a checklist before submitting a PR. @stevepiercy [#6365](https://github.com/plone/volto/issues/6365)
+
+### Documentation
+
+- Update references to cookiecutter-plone-starter in docs. @davisagli [#6289](https://github.com/plone/volto/issues/6289)
+- - Revised Cookieplone section in the Upgrade Guide. @stevepiercy [#6290](https://github.com/plone/volto/issues/6290)
+- - Fix the MyST syntax for the label `upgrade-18-cookieplone-label`. @stevepiercy [#6360](https://github.com/plone/volto/issues/6360)
+- Fixed spelling of prerequisites. @stevepiercy [#6362](https://github.com/plone/volto/issues/6362)
+- Fix links to Vite website. @stevepiercy [#6366](https://github.com/plone/volto/issues/6366)
+
 ## 18.0.0-alpha.43 (2024-09-13)
 
 ### Breaking

@@ -1,0 +1,2 @@
+Revert "Fix block chooser search is not focusable when clicked on add button" #5867 @sneridagh
+It was causing a regression described in #6389

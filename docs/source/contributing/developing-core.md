@@ -71,9 +71,9 @@ Volto has the following folder structure.
 ```
 
 
-## Development pre-requisites
+## Development prerequisites
 
-To set up a Volto core development environment, your system must satisfy the following pre-requisites.
+To set up a Volto core development environment, your system must satisfy the following prerequisites.
 
 ```{include} ./install-operating-system.md
 ```
@@ -330,13 +330,6 @@ By default, the use of TypeScript is required in Plone frontend libraries, Volto
 
 The monorepository consists of several core libraries.
 
-### Volto project generator
-
-`@plone/generator-volto` is a Yeoman generator that helps you set up Volto via command line.
-It generates all the boilerplate needed to start developing a Plone Volto project.
-It is used by [CookieCutter Plone Starter](https://github.com/collective/cookiecutter-plone-starter), the recommended way to set up Plone projects.
-The generator features an `addon` template for scaffolding Volto add-ons in your projects.
-
 ### Registry
 
 `@plone/registry` provides support for building an add-on registry and infrastructure for JavaScript and TypeScript-based apps.
@@ -354,6 +347,17 @@ Used by Volto, you can also use it in other JavaScript frameworks and environmen
 
 `@plone/volto-slate` is the glue package that provides support for the Slate library in Volto.
 
+### Volto project generator
+
+`@plone/generator-volto` is a Yeoman generator that helps you set up Volto via command line.
+It generates all the boilerplate needed to start developing a Plone Volto project.
+It is used by [CookieCutter Plone Starter](https://github.com/collective/cookiecutter-plone-starter), the recommended way to set up Plone projects.
+The generator features an `addon` template for scaffolding Volto add-ons in your projects.
+
+```{deprecated} 18.0.0-alpha.43
+For Volto 18, `@plone/generator-volto` is replaced by [Cookieplone](https://github.com/plone/cookieplone).
+```
+
 
 ## Supported frontends
 
@@ -362,7 +366,7 @@ Volto is the default frontend, and is React-based.
 Classic UI is the Python-based, server-side rendered frontend.
 
 In Volto's `apps` folder, you'll find a Volto project scaffolding that uses Volto as a library.
-This is the same as that which you'll have when you run the Volto generator or `cookiecutter-plone-starter`.
+This is the same as that which you'll have when you follow the instructions in {doc}`plone:install/create-project`).
 
 
 ## Experimental frontends

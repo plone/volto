@@ -43,6 +43,7 @@ const iconElements = Object.keys(icons).map((iconName) => {
   const icon = icons[iconName];
   return (
     <center
+      key={icons[iconName]}
       style={{
         float: 'left',
         width: '150px',
