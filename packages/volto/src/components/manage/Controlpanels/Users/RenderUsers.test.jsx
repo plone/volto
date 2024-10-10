@@ -16,6 +16,7 @@ const testUser = {
   id: 'testuser',
   location: 'somewhere',
   roles: ['Member'],
+  groups: { '@id': 'http://localhost:8080/Plone/@groups', items: [] },
   username: 'testuser',
 };
 
@@ -51,6 +52,7 @@ describe('UsersControlpanelUser', () => {
           user={testUser}
           roles={testRoles}
           onDelete={() => {}}
+          selected={[]}
           isUserManager={true}
         />
       </Provider>,
