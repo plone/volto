@@ -47,10 +47,16 @@ export default function devProxyMiddleware() {
       },
     ),
     onProxyReq: (proxyReq, req, res) => {
+      //Fixes https://github.com/plone/volto/issues/6283
+      proxyReq.setHeader('Host', new URL(config.settings.apiPath).host);
       // Fixes https://github.com/chimurai/http-proxy-middleware/issues/320
       if (!req.body || !Object.keys(req.body).length) {
         return;
       }
+      // Set headers for the proxy request
+      proxyReq.setHeader('X-Real-IP', req.ip);
+      proxyReq.setHeader('X-Forwarded-For', req.ip);
+      proxyReq.setHeader('X-Forwarded-Host', req.hostname);
 
       const contentType = proxyReq.getHeader('Content-Type');
       const writeBody = (bodyData) => {

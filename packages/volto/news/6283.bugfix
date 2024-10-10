@@ -1,0 +1,1 @@
+- Fixed proxy request handling by setting appropriate headers in `devproxy.js`. @viveak910
