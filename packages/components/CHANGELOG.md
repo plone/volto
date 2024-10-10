@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.14 (2024-10-10)
+
+### Bugfix
+
+- Add missing export for new components @sneridagh [#6391](https://github.com/plone/volto/issues/6391)
+
 ## 2.0.0-alpha.13 (2024-10-08)
 
 ### Bugfix
