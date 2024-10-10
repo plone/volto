@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
+import { VideoEmbed } from '@plone/volto/components';
 
 //Extracting videoID, listID and thumbnailURL from the video URL
 const getVideoIDAndPlaceholder = (url) => {
@@ -56,7 +57,6 @@ const getVideoIDAndPlaceholder = (url) => {
   }
   return { videoID, listID, thumbnailURL };
 };
-
 const Body = ({ data, isEditMode }) => {
   let placeholder = data.preview_image
     ? isInternalURL(data.preview_image)
@@ -77,13 +77,13 @@ const Body = ({ data, isEditMode }) => {
 
   const embedSettings = {
     placeholder: placeholder,
-    icon: 'play',
     defaultActive: false,
     autoplay: false,
     aspectRatio: '16:9',
     tabIndex: 0,
     onKeyPress: onKeyDown,
     ref: ref,
+    title: data.title,
   };
 
   return (
@@ -102,13 +102,13 @@ const Body = ({ data, isEditMode }) => {
                   {...embedSettings}
                 />
               ) : (
-                <Embed id={videoID} source="youtube" {...embedSettings} />
+                <VideoEmbed id={videoID} source="youtube" {...embedSettings} />
               )}
             </>
           ) : (
             <>
               {data.url.match('vimeo') ? (
-                <Embed id={videoID} source="vimeo" {...embedSettings} />
+                <VideoEmbed id={videoID} source="vimeo" {...embedSettings} />
               ) : (
                 <>
                   {data.url.match('.mp4') ? (
