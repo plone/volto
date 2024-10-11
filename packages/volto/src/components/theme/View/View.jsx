@@ -11,6 +11,7 @@ import { Redirect } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { injectIntl } from 'react-intl';
 import qs from 'query-string';
+import { cloneDeep } from 'lodash';
 
 import {
   ContentMetadataTags,
@@ -28,6 +29,10 @@ import {
 
 import config from '@plone/volto/registry';
 import SlotRenderer from '../SlotRenderer/SlotRenderer';
+
+
+const ViewContext = React.createContext();
+
 
 /**
  * View container class.
@@ -247,13 +252,15 @@ class View extends Component {
           }
         />
         <SlotRenderer name="aboveContent" content={this.props.content} />
-        <RenderedView
-          key={this.props.content['@id']}
-          content={this.props.content}
-          location={this.props.location}
-          token={this.props.token}
-          history={this.props.history}
-        />
+        <ViewContext.Provider value={cloneDeep(config.views.viewContext)}>
+          <RenderedView
+            key={this.props.content['@id']}
+            content={this.props.content}
+            location={this.props.location}
+            token={this.props.token}
+            history={this.props.history}
+          />
+        </ViewContext.Provider>
         <SlotRenderer name="belowContent" content={this.props.content} />
         {this.props.content.allow_discussion && (
           <Comments pathname={this.props.pathname} />
@@ -266,6 +273,19 @@ class View extends Component {
       </div>
     );
   }
+}
+
+
+export function getViewContext(name) {
+  const viewContext = React.useContext(ViewContext);
+
+  if (!viewContext) {
+    throw new Error(
+      'Using getViewContext hook outside of <View>',
+    );
+  }
+
+  return viewContext[name] || {};
 }
 
 export default compose(
