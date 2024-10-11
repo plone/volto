@@ -78,9 +78,7 @@ const Login = (props) => {
   const token = useSelector((state) => state.userSession.token, shallowEqual);
   const error = useSelector((state) => state.userSession.login.error);
   const loading = useSelector((state) => state.userSession.login.loading);
-  const returnUrl = qs.parse(props.location?.search ?? location.search).return_url ||
-                    location.pathname.replace(/\/[^/]*\/?$/, '') || '/';
-
+  const returnUrl = qs.parse(props.location?.search ?? location.search).return_url || location.pathname.replace(/\/[^/]*\/?$/, '') || '/';
   const previousToken = usePrevious(token);
 
   useEffect(() => {
