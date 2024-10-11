@@ -474,6 +474,41 @@ The recommended way of generating a project boilerplate is [Cookieplone](https:/
 Please update your code to use the `pnpm` based setup.
 ```
 
+### Update needed to project boilerplate generated with `@plone/generator-volto`
+
+```{versionadded} Volto 18.0.0-alpha.42
+Effective with Volto 18.0.0-alpha.42, a new feature introduced a breaking change in the boilerplates created using `@plone/generator-volto` 9.0.0-alpha.17 and earlier.
+```
+
+You need to change your {file}`razzle.config.js` file in the root of your boilerplate.
+
+```diff
+razzle.config.js
+@@ -27,12 +27,14 @@ const customModifyWebpackConfig = ({
+   webpackConfig,
+   webpackObject,
+   options,
++  paths,
+ }) => {
+   const config = modifyWebpackConfig({
+     env: { target, dev },
+     webpackConfig,
+     webpackObject,
+     options,
++    paths,
+   });
+   // add custom code here..
+   return config;
+```
+
+The change involves adding a new `paths` argument to the `customModifyWebpackConfig` function.
+
+### Added rule for ESlint to detect missing key property in iterators.
+
+The `react/jsx-key` rule has been enabled in ESlint for catching missing `key` in JSX iterators.
+You might catch some violations in your project or add-on code after running ESlint.
+Adding the missing `key` property whenever the violation is reported will fix it.
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x

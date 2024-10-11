@@ -1,0 +1,33 @@
+@import './theme.css';
+@import './Button.css';
+
+.react-aria-Disclosure {
+  .react-aria-Button[slot='trigger'] {
+    display: flex;
+    align-items: center;
+    border: none;
+    background: none;
+    box-shadow: none;
+    font-size: 16px;
+    font-weight: bold;
+    gap: 8px;
+
+    svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      rotate: 0deg;
+      stroke: currentColor;
+      stroke-width: 3px;
+      transition: rotate 200ms;
+    }
+  }
+
+  &[data-expanded] .react-aria-Button[slot='trigger'] svg {
+    rotate: 90deg;
+  }
+}
+
+.react-aria-DisclosurePanel {
+  margin-left: 32px;
+}
