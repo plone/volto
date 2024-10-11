@@ -1,1 +1,1 @@
-create new video embed component for usage in video block helping to fix a11y issues with the semantic ui one @jackahl
+Created a new `VideoEmbed` component for usage in a video block, helping to fix a11y issues with the Semantic UI one. @jackahl
