@@ -30,9 +30,7 @@ import {
 import config from '@plone/volto/registry';
 import SlotRenderer from '../SlotRenderer/SlotRenderer';
 
-
 const ViewContext = React.createContext();
-
 
 /**
  * View container class.
@@ -275,14 +273,11 @@ class View extends Component {
   }
 }
 
-
-export function getViewContext(name) {
+export function useViewContext(name) {
   const viewContext = React.useContext(ViewContext);
 
   if (!viewContext) {
-    throw new Error(
-      'Using getViewContext hook outside of <View>',
-    );
+    throw new Error('Using useViewContext hook outside of <View>');
   }
 
   return viewContext[name] || {};

@@ -29,10 +29,10 @@ config.views.viewContext["volto-slate-glossary"] = [];
 Get the context and use it:
 
 ```js
-import { getViewContext } from '@plone/volto/components/theme/View/View';
+import { useViewContext } from '@plone/volto/components/theme/View/View';
 
 
-    let matchedGlossaryTerms = getViewContext("volto-slate-glossary");
+    let matchedGlossaryTerms = useViewContext("volto-slate-glossary");
 ```
 
 
