@@ -16,14 +16,14 @@ An add-on registry is a facility that allows an app, which was built on an exist
 
 The add-on registry is a store where you can register a number of add-ons that your app consumes.
 
-Add-on packages are just CommonJS packages.
+Add-on packages are just CommonJS/ESM packages.
 The only requirement is that they point the `main` key of their `package.json` to a module that exports as a default function, which acts as a configuration loader.
 
 An add-on can be published in an npm registry, just as any other package.
 However, add-ons are meant to not be transpiled.
 They should be released as source packages.
 
-## Register an add-on
+### Register an add-on
 
 You should declare your add-on in your project.
 This is done in your app's `package.json`'s `addons` key:
@@ -40,15 +40,21 @@ This is done in your app's `package.json`'s `addons` key:
 ```
 
 The `addons` key ensures the add-on's main default export function is executed, being passed the configuration registry.
-In that function, the add-on can customize the registry.
+In that function, the add-on can customize the configuration registry.
 The function needs to return the `config` object (the configuration registry), so that it's passed further along to the other add-ons.
 
 The add-ons are registered in the order they are found in the `addons` key.
 The last add-on takes precedence over the others.
 This means that if you configure something in `acme-volto-foo-addon`, then the same thing later in `collective-another-volto-addon`, the latter configured thing will win and its configuration will be applied.
 
-The default export of any add-on main `index.js` file should be a function with the signature `config => config`.
+The default export of any add-on `main` entry module in `package.json` (eg. `src/index.js`) file should be a function with the signature `config => config`.
 That is, it should take the configuration registry object and return it, possibly mutated or changed.
+
+```ts
+import type { ConfigType } from '@plone/registry'
+
+export default applyConfig(config: ConfigType) => config)
+```
 
 ## Configuration registry
 
@@ -106,7 +112,13 @@ export default function applyConfig(config: ConfigData) {
 Once the app starts, the add-on registry will execute, in order, all the registered add-ons' default export functions, configuring the new block.
 The add-on will then become available to the CMS when it asks the configuration registry for it.
 
-## Accessing the configuration registry
+### Initialization
+
+**TODO**
+By default, the configuration registry is empty.
+In the context of a Volto app, the registry gets initialized by Volto by default.
+
+### Accessing the configuration registry
 
 The configuration registry can be accessed by:
 
@@ -118,16 +130,17 @@ const blocksConfig = config.blocks.blocksConfig
 
 ## Component registry
 
+The configuration registry can also store special elements that can be queried and retrieved in a pluggable way.
 The configuration registry also stores a components registry in itself.
 The components registry is a mapping of name to component.
 You can look up a name, and receive a component that you can reference in your code.
-This provides an alternative, and more convenient, way to customize components.
+This provides an alternative, and more convenient, way to customize components, in a pluggable way.
 You can override programmatically such registrations from your add-on or projects because it's stored in the configuration registry.
 You can customize a component without using shadowing at all, if the code that uses the component retrieves from the component registry, rather then import it directly.
 You can even have modifiers to the component registrations through dependencies.
 Thus you can adapt the call, given an array of such dependencies.
 
-## Register components by name using `config.registerComponent`
+### Register components by name using `config.registerComponent`
 
 You can register components by name, typically from an add-on or project configuration:
 
@@ -140,7 +153,7 @@ config.registerComponent({
 });
 ```
 
-## Retrieve a component from the component registry
+### Retrieve a component from the component registry
 
 You can programmatically retrieve a component from the registry using `config.getComponent`:
 
@@ -158,7 +171,7 @@ import Component from '@plone/volto/components/theme/Component/Component';
 
 Note that you can pass `props` down to the retrieved component.
 
-## Adapt the component using the `dependencies` array
+### Adapt the component using the `dependencies` array
 
 You can register components, then retrieve them, given a list of modifiers using `dependencies`.
 
@@ -205,3 +218,126 @@ In the example, given a content type value coming from the `content` prop, you w
 ```jsx
 <Component componentName="Toolbar" dependencies={[props.content['@type']]} {...props} />
 ```
+
+### Lazy load components
+**TODO** Test it properly
+
+You could lazy load the component too in the registry, if you need it.
+
+```js
+const MyTeaserDefaultComponent = lazy(()=> import(./MyTeaserDefaultComponent))
+
+config.registerComponent({
+    name: 'Teaser',
+    component: MyTeaserDefaultComponent,
+  });
+```
+
+## Utilities registry
+
+The configuration registry also stores a utilities registry in itself.
+The components registry is a mapping of a `name` and a `type` to a method or function.
+It works in a similar way as the components registry, but for methods and functions and by adding an additional query argument `type`.
+
+### Register utilities using `config.registerUtility`
+
+You register an utility using a specific `name` and `type` arguments.
+
+```js
+config.registerUtility({
+  name: 'url',
+  type: 'validator',
+  method: () => 'this is a simple validator utility',
+});
+```
+
+For a same `type` you can register different `name` utilities.
+
+```js
+config.registerUtility({
+  name: 'url',
+  type: 'validator',
+  method: () => 'this is a simple validator utility',
+});
+
+config.registerUtility({
+  name: 'email',
+  type: 'validator',
+  method: () => 'this is a simple validator utility',
+});
+```
+
+However, registering two utilities under the same `name`, the latter will override the former.
+So you can override existing utilities in your add-ons.
+
+```js
+config.registerUtility({
+  name: 'url',
+  type: 'validator',
+  method: () => 'this is a simple url validator utility',
+});
+
+config.registerUtility({
+  name: 'url',
+  type: 'validator',
+  method: () => 'this registered url validator utility will prevail, as defined later',
+});
+```
+
+### Register utilities using a `dependencies` object
+
+It is possible to register utilities using a `dependencies` object.
+This is useful in order to narrow even more the specificity of the utility.
+
+```js
+config.registerUtility({
+  name: 'email',
+  type: 'validator',
+  dependencies: { fieldType: 'email' },
+  method: () => 'this is a validator utility with dependencies for email',
+});
+```
+
+### Retrieve an utility from the utilities registry
+
+You can retrieve one specific utility using `config.getUtility`, given the `name` and `type`.
+
+```js
+config.getUtility({ name: 'url', type: 'validator' }).method(),
+```
+
+or using a `dependencies` object:
+
+```js
+config.getUtility({
+  name: 'email',
+  dependencies: { fieldType: 'string' },
+  type: 'validator',
+}).method(),
+```
+
+### Retrieve all the utilities of the same `type`
+
+You can also retrieve all the utilities registered under the same `type`.
+
+```js
+config.getUtilities({ type: 'validator' })
+```
+
+or given a `dependencies` object:
+
+```js
+config.getUtilities({
+  type: 'validator',
+  dependencies: { fieldType: 'string' },
+}).length,
+```
+
+This is useful when building pluggable systems, so you can query all the utilities present in the registry.
+For example, retrieve all validator utilities for the `fieldType` `string`.
+
+###
+
+## Shadow components registry
+
+**TODO**
