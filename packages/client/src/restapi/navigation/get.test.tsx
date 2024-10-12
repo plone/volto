@@ -39,4 +39,21 @@ describe('[GET] Navigation', () => {
 
     expect(result.current.error).toBeDefined();
   });
+
+  test('Depth parameter', async () => {
+    const path = '/';
+    const depth = 3;
+    const { result } = renderHook(
+      () => useQuery(getNavigationQuery({ path, depth })),
+      {
+        wrapper: createWrapper(),
+      },
+    );
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+
+    expect(result.current.data?.['@id']).toBe(
+      'http://localhost:55001/plone/@navigation?expand.navigation.depth=3',
+    );
+  });
 });
