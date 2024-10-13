@@ -53,7 +53,7 @@ describe('[GET] Navigation', () => {
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
     expect(result.current.data?.['@id']).toBe(
-      'http://localhost:55001/plone/@navigation?expand.navigation.depth=3',
+      'http://localhost:55001/plone/@navigation',
     );
   });
 });

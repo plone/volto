@@ -27,9 +27,9 @@ export const getNavigation = async ({
     params: {},
   };
 
-  let navigationPath = `${validatedArgs.path}/@navigation`;
+  const navigationPath = `${validatedArgs.path}/@navigation`;
   if (validatedArgs.depth) {
-    navigationPath += `?expand.navigation.depth=${validatedArgs.depth}`;
+    options.params['expand.navigation.depth'] = validatedArgs.depth;
   }
 
   return apiRequest('get', navigationPath, options);
