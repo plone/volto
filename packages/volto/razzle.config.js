@@ -8,8 +8,8 @@ const fs = require('fs');
 const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
 const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
 const { poToJson } = require('@plone/scripts/i18n.cjs');
-const createAddonsLoader = require('@plone/registry/src/create-addons-loader');
-const createThemeAddonsLoader = require('@plone/registry/src/create-theme-addons-loader');
+const createAddonsLoader = require('@plone/registry/src/addon-registry/create-addons-loader');
+const createThemeAddonsLoader = require('@plone/registry/src/addon-registry/create-theme-addons-loader');
 const AddonConfigurationRegistry =
   require('@plone/registry/addon-registry').default;
 const CircularDependencyPlugin = require('circular-dependency-plugin');
