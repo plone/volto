@@ -14,6 +14,63 @@ vi.mock(
   { virtual: true },
 );
 
+describe('AddonConfigurationRegistry - get()', () => {
+  it('Basic get() information', () => {
+    const base = path.join(
+      import.meta.dirname,
+      'fixtures',
+      'test-volto-project',
+    );
+    const registry = new AddonConfigurationRegistry(base).get();
+    expect(registry.addons).toStrictEqual([
+      'test-released-unmentioned:extra1,extra2',
+      'test-released-dummy',
+      'test-addon',
+      'test-released-addon:extra',
+      'test-released-source-addon',
+      'my-volto-config-addon',
+    ]);
+    expect(registry.shadowAliases).toStrictEqual([
+      {
+        find: 'test-released-source-addon/index',
+        replacement:
+          '/Users/sneridagh/Development/plone/volto/packages/registry/__tests__/fixtures/test-volto-project/addons/test-addon/src/custom-addons/test-released-source-addon/index.js',
+      },
+      {
+        find: '@plone/volto/server',
+        replacement:
+          '/Users/sneridagh/Development/plone/volto/packages/registry/__tests__/fixtures/test-volto-project/addons/test-addon/src/custom-addons/volto/server.jsx',
+      },
+      {
+        find: '@root/marker',
+        replacement:
+          '/Users/sneridagh/Development/plone/volto/packages/registry/__tests__/fixtures/test-volto-project/node_modules/test-released-source-addon/src/customizations/@root/marker.js',
+      },
+      {
+        find: '@plone/volto/client',
+        replacement:
+          '/Users/sneridagh/Development/plone/volto/packages/registry/__tests__/fixtures/test-volto-project/node_modules/test-released-source-addon/src/customizations/client.js',
+      },
+      {
+        find: '@plone/volto/LanguageSwitcher',
+        replacement:
+          '/Users/sneridagh/Development/plone/volto/packages/registry/__tests__/fixtures/test-volto-project/node_modules/test-released-source-addon/src/customizations/LanguageSwitcher.js',
+      },
+      {
+        find: '@plone/volto/routes',
+        replacement:
+          '/Users/sneridagh/Development/plone/volto/packages/registry/__tests__/fixtures/test-volto-project/node_modules/test-released-source-addon/src/customizations/routes.tsx',
+      },
+      {
+        find: '@plone/volto/TSComponent',
+        replacement:
+          '/Users/sneridagh/Development/plone/volto/packages/registry/__tests__/fixtures/test-volto-project/node_modules/test-released-source-addon/src/customizations/TSComponent.jsx',
+      },
+    ]);
+    expect(registry.theme).toStrictEqual(undefined);
+  });
+});
+
 describe('AddonConfigurationRegistry - Project', () => {
   it('works in a mock project directory', () => {
     const base = path.join(

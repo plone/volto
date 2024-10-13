@@ -22,12 +22,24 @@ type Package = {
 };
 
 type Aliases = Record<string, string>;
+type AliasesObject = { find: string; replacement: string }[];
 type CoreAddons = { [x: string]: { package: string } };
 type PackageJsonObject = {
   addons: Array<string>;
   coreAddons: CoreAddons;
   theme: string;
   customizationPaths: string[];
+};
+
+type flatAliases = Record<string, string>;
+
+type AddonRegistryGet = {
+  /** The ordered list of addons */
+  addons: Array<string>;
+  /** The theme name */
+  theme: string;
+  /** The customizations (shadows) aliases */
+  shadowAliases: AliasesObject;
 };
 
 function getPackageBasePath(base: string) {
@@ -43,6 +55,13 @@ function fromEntries(pairs: [string, any][]) {
     res[p[0]] = p[1];
   });
   return res;
+}
+
+function flatAliasesToObject(flatAliases: flatAliases): AliasesObject {
+  return Object.entries(flatAliases).map(([key, value]) => ({
+    find: key,
+    replacement: value,
+  }));
 }
 
 function buildDependencyGraph(
@@ -123,7 +142,7 @@ function getAddonsLoaderChain(graph: DepGraph<string | []>) {
  *   addons to customize the webpack configuration)
  *
  */
-class AddonConfigurationRegistry {
+class AddonRegistry {
   public packageJson: PackageJsonObject;
   public voltoConfigJS: {
     addons: Array<string>;
@@ -213,6 +232,14 @@ class AddonConfigurationRegistry {
     );
 
     this.initAddonExtenders();
+  }
+
+  public get(): AddonRegistryGet {
+    return {
+      addons: this.getAddonDependencies(),
+      theme: this.theme,
+      shadowAliases: flatAliasesToObject(this.getAddonCustomizationPaths()),
+    };
   }
 
   /**
@@ -723,5 +750,5 @@ class AddonConfigurationRegistry {
   }
 }
 
-export default AddonConfigurationRegistry;
+export default AddonRegistry;
 export { getAddonsLoaderChain, buildDependencyGraph };
