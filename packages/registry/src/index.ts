@@ -205,7 +205,10 @@ class Config {
       return;
     }
     const { slots, data } = this._data.slots[name];
-    const slotComponents = [];
+    const slotComponents: {
+      component: SlotComponent['component'];
+      name: string;
+    }[] = [];
     // For all enabled slots
     for (const slotName of slots) {
       // For all registered components for that slot, inversed, since the last one registered wins

@@ -1519,6 +1519,15 @@ importers:
       '@plone/types':
         specifier: workspace:*
         version: link:../types
+      '@types/debug':
+        specifier: ^4.1.12
+        version: 4.1.12
+      '@types/glob':
+        specifier: ^8.1.0
+        version: 8.1.0
+      '@types/node':
+        specifier: ^20
+        version: 20.12.7
       '@types/react':
         specifier: ^18
         version: 18.2.79

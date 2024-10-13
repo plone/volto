@@ -31,16 +31,22 @@
   "publishConfig": {
     "access": "public"
   },
+  "type": "module",
   "source": "src/index.ts",
-  "main": "dist/main.js",
-  "module": "dist/module.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "types": "dist/types.d.ts",
   "exports": {
-    "./src/*": "./src/*.js",
+    "./src/*": "./src/*.cjs",
+    "./addon-registry": {
+      "require": "./dist/cjs/addon-registry.cjs",
+      "import": "./dist/esm/addon-registry.js",
+      "types": "./dist/esm/addon-registry.d.ts"
+    },
     ".": {
       "types": "./dist/types.d.ts",
-      "import": "./dist/module.js",
-      "require": "./dist/main.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
   "targets": {
@@ -50,9 +56,12 @@
   },
   "scripts": {
     "watch": "parcel watch",
-    "build": "parcel build",
-    "build:force": "parcel build --no-cache",
+    "build": "parcel build && pnpm build:node:esm && pnpm build:node:cjs",
+    "build:force": "parcel build --no-cache && pnpm build:node:esm && pnpm build:node:cjs",
+    "build:node:esm": "tsc --project tsconfig.node.json || true",
+    "build:node:cjs": "tsc --project tsconfig.node.json --module commonjs --moduleResolution Node --outDir dist/cjs || true && mv dist/cjs/addon-registry.js dist/cjs/addon-registry.cjs",
     "test": "vitest",
+    "test:debug": "vitest --inspect-brk --no-file-parallelism registry",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
@@ -77,6 +86,9 @@
     "@parcel/packager-ts": "^2.12.0",
     "@parcel/transformer-typescript-types": "^2.12.0",
     "@plone/types": "workspace:*",
+    "@types/debug": "^4.1.12",
+    "@types/glob": "^8.1.0",
+    "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "parcel": "^2.12.0",
