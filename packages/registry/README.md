@@ -10,6 +10,15 @@ That means you have to build something that has very specific requirements, beha
 Sometimes you need to build something generic that is pluggable and extensible.
 In the JavaScript and TypeScript ecosystem, this is often quite complex, and the existing frameworks do not provide the means to do this.
 
+`@plone/registry` provides tools for providing plug-ability to your app:
+
+- Add-on registry
+- Configuration registry
+- Component registry
+- Utilities registry
+- Shadow components registry
+- Slot registry
+
 ## Add-on registry
 
 An add-on registry is a facility that allows an app, which was built on an existing framework, to itself be extensible and pluggable.

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const transform = require('@babel/core').transform;
 
-const getLoader = require('../../registry/src/create-addons-loader');
+const getLoader = require('../../registry/src/addon-registry/create-addons-loader.cjs');
 
 describe('create-addons-loader code generation', () => {
   test('no addon creates simple loader', () => {
