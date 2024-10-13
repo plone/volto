@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-import AddonConfigurationRegistry from '@plone/registry/src/addon-registry';
+import AddonConfigurationRegistry from '@plone/registry/addon-registry';
 import config from '@plone/volto/registry';
 
 const projectRootPath = path.resolve('.');
