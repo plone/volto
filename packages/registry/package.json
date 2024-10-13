@@ -43,6 +43,16 @@
       "import": "./dist/esm/addon-registry.js",
       "types": "./dist/esm/addon-registry.d.ts"
     },
+    "./create-addons-loader": {
+      "require": "./dist/cjs/create-addons-loader.cjs",
+      "import": "./dist/esm/create-addons-loader.js",
+      "types": "./dist/esm/create-addons-loader.d.ts"
+    },
+    "./create-theme-loader": {
+      "require": "./dist/cjs/create-theme-loader.cjs",
+      "import": "./dist/esm/create-theme-loader.js",
+      "types": "./dist/esm/create-theme-loader.d.ts"
+    },
     ".": {
       "types": "./dist/types.d.ts",
       "import": "./dist/index.js",
@@ -59,7 +69,7 @@
     "build": "parcel build && pnpm build:node:esm && pnpm build:node:cjs",
     "build:force": "parcel build --no-cache && pnpm build:node:esm && pnpm build:node:cjs",
     "build:node:esm": "tsc --project tsconfig.node.json || true",
-    "build:node:cjs": "tsc --project tsconfig.node.json --module commonjs --moduleResolution Node --outDir dist/cjs || true && mv dist/cjs/addon-registry.js dist/cjs/addon-registry.cjs",
+    "build:node:cjs": "tsc --project tsconfig.node.json --module commonjs --moduleResolution Node --outDir dist/cjs || true && make rename-to-cjs",
     "test": "vitest",
     "test:debug": "vitest --inspect-brk --no-file-parallelism registry",
     "dry-release": "release-it --dry-run",
@@ -80,7 +90,8 @@
     "crypto-random-string": "3.2.0",
     "debug": "4.3.2",
     "dependency-graph": "0.10.0",
-    "glob": "7.1.6"
+    "glob": "7.1.6",
+    "tmp": "0.2.1"
   },
   "devDependencies": {
     "@parcel/packager-ts": "^2.12.0",
@@ -91,6 +102,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/tmp": "^0.2.6",
     "parcel": "^2.12.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

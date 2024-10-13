@@ -7,7 +7,7 @@ import { DepGraph } from 'dependency-graph';
 
 const debug = _debug('shadowing');
 
-type Package = {
+export type Package = {
   name: string;
   version: string;
   isPublishedPackage: boolean;
