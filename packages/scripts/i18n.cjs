@@ -293,6 +293,21 @@ function main({ addonMode }) {
             '/node_modules/@plone/registry/dist/cjs/addon-registry.cjs',
           ),
         ).default;
+        // Detect where is the registry (if we are in Volto 18-alpha.46 or below)
+      } else if (
+        fs.existsSync(
+          path.join(
+            projectRootPath,
+            '/node_modules/@plone/registry/src/addon-registry.js',
+          ),
+        )
+      ) {
+        AddonConfigurationRegistry = require(
+          path.join(
+            projectRootPath,
+            '/node_modules/@plone/registry/src/addon-registry',
+          ),
+        );
       } else {
         // We are in Volto 17 or below
         // Check if core Volto or project
