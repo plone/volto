@@ -1,0 +1,3 @@
+Move to ESM @sneridagh
+Unfortunately, this forces a change in imports in `razzle.config.js` and other files.
+Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html)
