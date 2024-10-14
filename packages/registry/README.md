@@ -10,7 +10,7 @@ That means you have to build something that has very specific requirements, beha
 Sometimes you need to build something generic that is pluggable and extensible.
 In the JavaScript and TypeScript ecosystem, this is often quite complex, and the existing frameworks do not provide the means to do this.
 
-`@plone/registry` provides tools for providing plug-ability to your app:
+`@plone/registry` provides tools to facilitate pluggability for your app through the following registries:
 
 - Add-on registry
 - Configuration registry
@@ -56,7 +56,7 @@ The add-ons are registered in the order they are found in the `addons` key.
 The last add-on takes precedence over the others.
 This means that if you configure something in `acme-volto-foo-addon`, then the same thing later in `collective-another-volto-addon`, the latter configured thing will win and its configuration will be applied.
 
-The default export of any add-on `main` entry module in `package.json` (eg. `src/index.js`) file should be a function with the signature `config => config`.
+The default export of any add-on `main` entry module in `package.json` (for example, `src/index.js`) file should be a function with the signature `config => config`.
 That is, it should take the configuration registry object and return it, possibly mutated or changed.
 
 ```ts
@@ -143,7 +143,7 @@ The configuration registry can also store special elements that can be queried a
 The configuration registry also stores a components registry in itself.
 The components registry is a mapping of name to component.
 You can look up a name, and receive a component that you can reference in your code.
-This provides an alternative, and more convenient, way to customize components, in a pluggable way.
+This provides an alternative, and more convenient, way to customize components in a pluggable way.
 You can override programmatically such registrations from your add-on or projects because it's stored in the configuration registry.
 You can customize a component without using shadowing at all, if the code that uses the component retrieves from the component registry, rather then import it directly.
 You can even have modifiers to the component registrations through dependencies.
@@ -250,7 +250,7 @@ It works in a similar way as the components registry, but for methods and functi
 
 ### Register utilities using `config.registerUtility`
 
-You register an utility using a specific `name` and `type` arguments.
+You can register a utility using specific `name` and `type` arguments.
 
 ```js
 config.registerUtility({
@@ -276,8 +276,8 @@ config.registerUtility({
 });
 ```
 
-However, registering two utilities under the same `name`, the latter will override the former.
-So you can override existing utilities in your add-ons.
+However, if you register two utilities under the same `name`, then the latter will override the former.
+Thus you can override existing utilities in your add-ons.
 
 ```js
 config.registerUtility({
@@ -296,7 +296,7 @@ config.registerUtility({
 ### Register utilities using a `dependencies` object
 
 It is possible to register utilities using a `dependencies` object.
-This is useful in order to narrow even more the specificity of the utility.
+This is useful to further specify the utility.
 
 ```js
 config.registerUtility({
@@ -307,7 +307,7 @@ config.registerUtility({
 });
 ```
 
-### Retrieve an utility from the utilities registry
+### Retrieve a utility from the utilities registry
 
 You can retrieve one specific utility using `config.getUtility`, given the `name` and `type`.
 
@@ -315,7 +315,7 @@ You can retrieve one specific utility using `config.getUtility`, given the `name
 config.getUtility({ name: 'url', type: 'validator' }).method(),
 ```
 
-or using a `dependencies` object:
+You can do the same using a `dependencies` object:
 
 ```js
 config.getUtility({
@@ -325,15 +325,15 @@ config.getUtility({
 }).method(),
 ```
 
-### Retrieve all the utilities of the same `type`
+### Retrieve all utilities of the same `type`
 
-You can also retrieve all the utilities registered under the same `type`.
+You can retrieve all utilities registered under the same `type`.
 
 ```js
 config.getUtilities({ type: 'validator' })
 ```
 
-or given a `dependencies` object:
+You can do the same using a `dependencies` object:
 
 ```js
 config.getUtilities({

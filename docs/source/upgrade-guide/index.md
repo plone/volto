@@ -512,13 +512,13 @@ Adding the missing `key` property whenever the violation is reported will fix it
 ### `@plone/registry` moved to ESM
 
 The `@plone/registry` package has been moved to ESM.
-This unfortunately forces some import paths changes that should be patched in your Plone project or add-on boilerplates.
+This unfortunately forces some import path changes that should be patched in your Plone project or add-on boilerplates.
 
 ```{note}
-As always that something changes in the boilerplate, you have the option to regenerate one from Cookieplone and move your code into it instead of fiddling with it.
+As always, when something changes in the boilerplate, you may regenerate one from Cookieplone and move your code into it, instead of fiddling with it.
 ```
 
-in `razzle.config.js`:
+For example, in {file}`razzle.config.js`:
 
 
 
