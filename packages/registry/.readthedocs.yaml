@@ -16,7 +16,7 @@ build:
     # golang: "1.19"
   jobs:
     post_install:
-      - cd packages/registry && make docs-rtd-registry
+      - cd ./packages/registry && make docs-rtd-registry
 
 # Build documentation in the "docs/" directory with Sphinx
 #sphinx:
