@@ -2607,7 +2607,6 @@ msgstr "Preferències personals"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Eines personals"
 
@@ -3362,11 +3361,6 @@ msgstr "Administració del lloc"
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Configuració del lloc"
-
-#. Default: "Site and user settings"
-#: components/manage/Toolbar/Toolbar
-msgid "Site tools and user settings"
-msgstr ""
 
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
@@ -4129,11 +4123,6 @@ msgstr "Nom d'usuari"
 msgid "User roles updated"
 msgstr "Rols d'usuari actualitzats"
 
-#. Default: "User settings"
-#: components/manage/Toolbar/Toolbar
-msgid "User settings"
-msgstr ""
-
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels
 msgid "User updated successfuly"
@@ -4424,6 +4413,11 @@ msgstr ""
 #. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
+msgstr ""
+
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
 msgstr ""
 
 #. Default: "Available views"
@@ -5026,6 +5020,11 @@ msgstr "L'entrada ha de ser un URL vàlid (www.something.com o http(s)://www.som
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "avatar de l'usuari"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks

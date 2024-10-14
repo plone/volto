@@ -2607,7 +2607,6 @@ msgstr "Preferências pessoais"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Ferramentas pessoais"
 
@@ -3362,11 +3361,6 @@ msgstr "Administração do site"
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Configuração do site"
-
-#. Default: "Site and user settings"
-#: components/manage/Toolbar/Toolbar
-msgid "Site tools and user settings"
-msgstr "Ferramentas de utilizo do site e configuração do usuário"
 
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
@@ -4129,11 +4123,6 @@ msgstr "Nome de usuário"
 msgid "User roles updated"
 msgstr "Papéis do grupo atualizados"
 
-#. Default: "User settings"
-#: components/manage/Toolbar/Toolbar
-msgid "User settings"
-msgstr "Configuração de usuário"
-
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels
 msgid "User updated successfuly"
@@ -4425,6 +4414,11 @@ msgstr "Informe a sua nova senha. Mínimo de 8 caracteres."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "Informe o nome do usuário que você deseja, geralmente algo como 'jsilva'. Não use espaços ou caracteres especiais. Nomes de usuários e senhas são sensíveis a letras maiúsculas e minúsculas, certifique-se que a tecla Caps Lock não esteja ativada. Esse é o nome que você usará para acessar."
+
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
+msgstr ""
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -5026,6 +5020,11 @@ msgstr "URL"
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "avatar do usuário"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks

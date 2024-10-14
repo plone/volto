@@ -2601,7 +2601,6 @@ msgstr "व्यक्तिगत पसंद"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "व्यक्तिगत उपकरण"
 
@@ -3356,11 +3355,6 @@ msgstr "साइट प्रशासन"
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "साइट सेटअप"
-
-#. Default: "Site and user settings"
-#: components/manage/Toolbar/Toolbar
-msgid "Site tools and user settings"
-msgstr ""
 
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
@@ -4123,11 +4117,6 @@ msgstr "उपयोगकर्ता नाम"
 msgid "User roles updated"
 msgstr "उपयोगकर्ता भूमिकाएँ अपडेट की गई"
 
-#. Default: "User settings"
-#: components/manage/Toolbar/Toolbar
-msgid "User settings"
-msgstr ""
-
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels
 msgid "User updated successfuly"
@@ -4419,6 +4408,11 @@ msgstr "अपना नया पासवर्ड दर्ज करें�
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "एक उपयोगकर्ता नाम दर्ज करें, सामान्यत: "jsmith" कुछ ऐसा। कोई रिक्त स्थान या विशेष वर्ण नहीं। उपयोगकर्ता नाम और पासवर्ड मामूली हैं, सुनिश्चित करें कि कैप्स लॉक कुंजी सक्षम नहीं है। यह लॉगिन के लिए उपयोग किया जाने वाला नाम है।"
+
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
+msgstr ""
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -5020,6 +5014,11 @@ msgstr "इनपुट मान्य URL (www.something.com या http(s)://
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "उपयोगकर्ता अवतार"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks

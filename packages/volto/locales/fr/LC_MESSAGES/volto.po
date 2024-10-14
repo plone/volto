@@ -2608,7 +2608,6 @@ msgstr "Préférences personnelles"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Outils personnelles"
 
@@ -3363,11 +3362,6 @@ msgstr "Administration du site"
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Configuration du site"
-
-#. Default: "Site and user settings"
-#: components/manage/Toolbar/Toolbar
-msgid "Site tools and user settings"
-msgstr ""
 
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
@@ -4130,11 +4124,6 @@ msgstr "Nom d'utilisateur"
 msgid "User roles updated"
 msgstr "Rôles de l'utilisateur mis à jour"
 
-#. Default: "User settings"
-#: components/manage/Toolbar/Toolbar
-msgid "User settings"
-msgstr ""
-
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels
 msgid "User updated successfuly"
@@ -4426,6 +4415,11 @@ msgstr "Saisissez votre nouveau mot de passe, minimum 8 caractères."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "Saisissez un nom d'utilisateur, haituellement quelque chose comme "jdupont". Pas d'espace ou de caractères spéciaux. Les noms d'utilisateurs et mots de passes sont sensible à la casse, vérifiez que la touche verrouillage majuscule n'est pas activée. C'est le nom utilisé pour se connecté."
+
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
+msgstr ""
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -5027,6 +5021,11 @@ msgstr "Le champ doit être une URL valide (www.quelquechose.com or http(s)://ww
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "Avatar de l'utilisateur"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks

@@ -2607,7 +2607,6 @@ msgstr "个人偏好"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "个人工具"
 
@@ -3362,11 +3361,6 @@ msgstr "网站管理员"
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "网站设置"
-
-#. Default: "Site and user settings"
-#: components/manage/Toolbar/Toolbar
-msgid "Site tools and user settings"
-msgstr ""
 
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
@@ -4129,11 +4123,6 @@ msgstr "用户名"
 msgid "User roles updated"
 msgstr "用户角色更新"
 
-#. Default: "User settings"
-#: components/manage/Toolbar/Toolbar
-msgid "User settings"
-msgstr ""
-
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels
 msgid "User updated successfuly"
@@ -4424,6 +4413,11 @@ msgstr ""
 #. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
+msgstr ""
+
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
 msgstr ""
 
 #. Default: "Available views"
@@ -5026,6 +5020,11 @@ msgstr ""
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "用户头像"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks

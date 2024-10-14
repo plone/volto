@@ -2601,7 +2601,6 @@ msgstr "Preferenze Personali"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Strumenti"
 
@@ -3356,11 +3355,6 @@ msgstr "Amministratore del sito"
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Configurazione del sito"
-
-#. Default: "Site and user settings"
-#: components/manage/Toolbar/Toolbar
-msgid "Site tools and user settings"
-msgstr "Funzionalità del sito e impostazioni utente"
 
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
@@ -4123,11 +4117,6 @@ msgstr "Nome utente"
 msgid "User roles updated"
 msgstr "Ruoli utente aggiornati"
 
-#. Default: "User settings"
-#: components/manage/Toolbar/Toolbar
-msgid "User settings"
-msgstr ""
-
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels
 msgid "User updated successfuly"
@@ -4419,6 +4408,11 @@ msgstr "Inserisci la nuova password. Minimo 8 caratteri."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "Inserisci uno username, ad esempio 'jsmith'. Non sono consentiti spazi o caratteri speciali. Username e password sono case sensitive, assicurati che il caps lock non sia abilitato. Questo sarà il nome che userai per fare il login."
+
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
+msgstr ""
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -5020,6 +5014,11 @@ msgstr "Il testo inserito deve essere un url valido (www.qualcosa.com oppure htt
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "Avatar dell'utente"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks

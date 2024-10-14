@@ -2601,7 +2601,6 @@ msgstr "Preferințe personale"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Instrumente personale"
 
@@ -3356,11 +3355,6 @@ msgstr "Administrare site"
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Configurare site"
-
-#. Default: "Site and user settings"
-#: components/manage/Toolbar/Toolbar
-msgid "Site tools and user settings"
-msgstr ""
 
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
@@ -4123,11 +4117,6 @@ msgstr "Nume utilizator"
 msgid "User roles updated"
 msgstr "Rolurile utilizatorului au fost actualizate"
 
-#. Default: "User settings"
-#: components/manage/Toolbar/Toolbar
-msgid "User settings"
-msgstr ""
-
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels
 msgid "User updated successfuly"
@@ -4418,6 +4407,11 @@ msgstr ""
 #. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
+msgstr ""
+
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
 msgstr ""
 
 #. Default: "Available views"
@@ -5020,6 +5014,11 @@ msgstr "url"
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "avatarul utilizatorului"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks

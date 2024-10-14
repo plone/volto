@@ -2606,7 +2606,6 @@ msgstr "Meine Einstellungen"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Persönliche Einstellungen"
 
@@ -3361,11 +3360,6 @@ msgstr "Website-Administrator"
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Systemeinstellungen"
-
-#. Default: "Site and user settings"
-#: components/manage/Toolbar/Toolbar
-msgid "Site tools and user settings"
-msgstr "Website-Werkzeuge und Benutzereinstellungen"
 
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
@@ -4128,11 +4122,6 @@ msgstr "Benutzername"
 msgid "User roles updated"
 msgstr "Nutzerrollen aktualisiert"
 
-#. Default: "User settings"
-#: components/manage/Toolbar/Toolbar
-msgid "User settings"
-msgstr "Benutzereinstellungen"
-
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels
 msgid "User updated successfuly"
@@ -4424,6 +4413,11 @@ msgstr "Geben Sie Ihr neues Passwort ein. Das Passwort muss aus mindestens 8 Zei
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "Geben Sie einen Nutzernamen ein, beispielsweise etwas wie "m.muster". Benutzen Sie keine Leer- oder Sonderzeichen. Bitte beachten Sie Groß- und Kleinschreibung und stellen Sie sicher, dass die Feststelltaste nicht aktiviert ist. Dieser Name wird zum Anmelden genutzt."
+
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
+msgstr ""
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -5025,6 +5019,11 @@ msgstr "URL"
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "Nutzer Avatar"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks

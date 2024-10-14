@@ -2608,7 +2608,6 @@ msgstr "Hobespen Pertsonalak"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Tresna pertsonalak"
 
@@ -3363,11 +3362,6 @@ msgstr "Atariaren kudeaketa"
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Atariaren konfigurazioa"
-
-#. Default: "Site and user settings"
-#: components/manage/Toolbar/Toolbar
-msgid "Site tools and user settings"
-msgstr ""
 
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
@@ -4130,11 +4124,6 @@ msgstr "Erabiltzaile Izena"
 msgid "User roles updated"
 msgstr "Erabiltzailearen rolak eguneratu egin dira"
 
-#. Default: "User settings"
-#: components/manage/Toolbar/Toolbar
-msgid "User settings"
-msgstr ""
-
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels
 msgid "User updated successfuly"
@@ -4426,6 +4415,11 @@ msgstr "Idatzi zure pasahitz berria. Gutxienez 8 karaktere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "Idatzi zure erabiltzaile izena, "jgarmendia" moduko zerbait. Ez da onartzen espaziorik edo karaktere berezirik. Erabiltzaile izenak eta pasahitzak letra larri eta xeheak bereizten dituzte. Hau da webgunera sartzeko erabiliko den izena."
+
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
+msgstr ""
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -5027,6 +5021,11 @@ msgstr "URL zuzen bat izan behar da (www.zerbait.eus) edo http(s)://www.zerbitza
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "Erabiltzailearen argazkia"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks

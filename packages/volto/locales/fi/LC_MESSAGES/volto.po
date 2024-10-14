@@ -2606,7 +2606,6 @@ msgstr "Omat asetukset"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Omat työkalut"
 
@@ -3361,11 +3360,6 @@ msgstr "Sivuston ylläpito"
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Sivuston asetukset"
-
-#. Default: "Site and user settings"
-#: components/manage/Toolbar/Toolbar
-msgid "Site tools and user settings"
-msgstr ""
 
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
@@ -4128,11 +4122,6 @@ msgstr "Käyttäjän nimi"
 msgid "User roles updated"
 msgstr "Käyttäjän roolit päivitetty"
 
-#. Default: "User settings"
-#: components/manage/Toolbar/Toolbar
-msgid "User settings"
-msgstr ""
-
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels
 msgid "User updated successfuly"
@@ -4424,6 +4413,11 @@ msgstr "Lisää salasana. Minimissään 8 merkkiä."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "Lisää käyttäjätunnus, esim. mameikal. Älä käytä erikoismerkkejä."
+
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
+msgstr ""
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -5025,6 +5019,11 @@ msgstr "URL"
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "käyttäjäkuva"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks
