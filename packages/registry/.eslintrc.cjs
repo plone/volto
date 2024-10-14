@@ -16,6 +16,8 @@ module.exports = {
   // Base config
   extends: ['eslint:recommended'],
 
+  ignorePatterns: ['docs/_static/searchtools.js'],
+
   overrides: [
     // React
     {
