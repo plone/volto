@@ -518,7 +518,7 @@ This unfortunately forces some import path changes that should be patched in you
 As always, when something changes in the boilerplate, you may regenerate one from Cookieplone and move your code into it, instead of fiddling with it.
 ```
 
-For example, in your projects {file}`.eslintrc.js`:
+For example, in your project's {file}`.eslintrc.js`:
 
 ```diff
  const fs = require('fs');
@@ -528,7 +528,7 @@ For example, in your projects {file}`.eslintrc.js`:
 +  require('@plone/registry/addon-registry').default;
 ```
 
-also, in the Storybook configuration {file}`
+Also in the Storybook configuration {file}`INSERT_FILE_NAME_HERE`.
 
 ```diff
        defaultRazzleOptions,

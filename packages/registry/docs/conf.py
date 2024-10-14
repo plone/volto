@@ -116,8 +116,6 @@ master_doc = "index"
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = [
-    "spelling_wordlist.txt",
-    "contributing/branch-policy.md",
 ]
 
 suppress_warnings = [
@@ -187,7 +185,7 @@ html_theme_options = {
 
 # Announce that we have an opensearch plugin
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_use_opensearch
-html_use_opensearch = "https://6.docs.plone.org"  # TODO: Confirm usage of opensearch in theme
+html_use_opensearch = "https://volto-registry.readthedocs.io/"  # TODO: Confirm usage of opensearch in theme
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -246,9 +244,9 @@ intersphinx_mapping = {
 
 # -- OpenGraph configuration ----------------------------------
 
-ogp_site_url = "https://6.docs.plone.org/"
+ogp_site_url = "https://volto-registry.readthedocs.io/"
 ogp_description_length = 200
-ogp_image = "https://6.docs.plone.org/_static/Plone_logo_square.png"
+ogp_image = "https://volto-registry.readthedocs.io/en/latest/_static/Plone_logo_square.png"
 ogp_site_name = "@plone/registry Documentation"
 ogp_type = "website"
 ogp_custom_meta_tags = [
