@@ -156,7 +156,7 @@ const messages = defineMessages({
     defaultMessage: 'Item(s) has been updated.',
   },
   messageReorder: {
-    id: 'Item succesfully moved.',
+    id: 'Item successfully moved.',
     defaultMessage: 'Item successfully moved.',
   },
   messagePasted: {
@@ -1397,6 +1397,7 @@ class Contents extends Component {
                                         {breach.targets
                                           .map((target) => (
                                             <Link
+                                              key={target['@id']}
                                               to={flattenToAppURL(
                                                 target['@id'],
                                               )}
@@ -1467,6 +1468,7 @@ class Contents extends Component {
                                     {breach.targets
                                       .map((target) => (
                                         <Link
+                                          key={target['@id']}
                                           to={flattenToAppURL(target['@id'])}
                                           title="Navigate to this item"
                                         >
@@ -1532,6 +1534,9 @@ class Contents extends Component {
                     onCancel={this.onPropertiesCancel}
                     onOk={this.onPropertiesOk}
                     items={this.state.selected}
+                    values={map(this.state.selected, (id) =>
+                      find(this.state.items, { '@id': id }),
+                    ).filter((item) => item)}
                   />
                   {this.state.showWorkflow && (
                     <ContentsWorkflowModal

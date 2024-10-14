@@ -6,4 +6,3 @@ declare namespace _default {
     export let argTypes: {};
 }
 export default _default;
-import { DatetimeWidgetComponent } from './DatetimeWidget';

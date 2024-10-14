@@ -58,7 +58,7 @@ exports[`Aliases renders an aliases control component 1`] = `
               <p
                 class="help"
               >
-                Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
+                Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target.
               </p>
               <div
                 class="field"
@@ -180,11 +180,7 @@ exports[`Aliases renders an aliases control component 1`] = `
               </div>
               <div
                 class="field"
-              >
-                <div
-                  id="DatetimeWidget"
-                />
-              </div>
+              />
               <button
                 class="ui primary button"
               >

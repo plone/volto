@@ -222,7 +222,8 @@ const apiMiddlewareFactory =
           }
 
           const { settings } = config;
-          if (getState().apierror.connectionRefused) {
+          const state = getState();
+          if (state.apierror.connectionRefused) {
             next({
               ...rest,
               type: RESET_APIERROR,
@@ -232,18 +233,19 @@ const apiMiddlewareFactory =
             const lang = result?.language?.token;
             if (
               lang &&
-              getState().intl.locale !== toReactIntlLang(lang) &&
+              state.intl.locale !== toReactIntlLang(lang) &&
               !subrequest &&
               config.settings.supportedLanguages.includes(lang)
             ) {
               const langFileName = toGettextLang(lang);
-              import('@root/../locales/' + langFileName + '.json').then(
-                (locale) => {
-                  dispatch(changeLanguage(lang, locale.default));
-                },
-              );
+              import(
+                /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
+              ).then((locale) => {
+                dispatch(changeLanguage(lang, locale.default));
+              });
             }
           }
+
           if (type === LOGIN && settings.websockets) {
             const cookies = new Cookies();
             cookies.set(

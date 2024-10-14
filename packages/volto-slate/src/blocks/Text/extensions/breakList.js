@@ -35,6 +35,8 @@ export const breakList = (editor) => {
 
     const { slate } = config.settings;
     const { anchor } = editor.selection;
+    const blockProps = editor.getBlockProps();
+    const detached = blockProps.detached;
 
     const ref = Editor.rangeRef(editor, editor.selection, {
       affinity: 'inward',
@@ -65,8 +67,7 @@ export const breakList = (editor) => {
       return; // applies default behaviour, as defined in insertBreak.js extension
     }
 
-    if (parent) {
-      const blockProps = editor.getBlockProps();
+    if (parent && !detached) {
       const { data } = blockProps;
       // Don't add new block if not allowed
       if (data?.disableNewBlocks) {
@@ -77,22 +78,36 @@ export const breakList = (editor) => {
     Editor.deleteBackward(editor, { unit: 'line' });
     // also account for empty nodes [{text: ''}]
     if (Editor.isEmpty(editor, parent)) {
-      createAndSelectNewBlockAfter(editor, [createEmptyParagraph()]);
-      Transforms.removeNodes(editor, { at: ref.current });
+      if (detached) {
+        Transforms.removeNodes(editor, { at: ref.current });
+
+        Transforms.insertNodes(editor, createEmptyParagraph(), {
+          at: [editor.children.length],
+        });
+        Transforms.select(editor, Editor.end(editor, []));
+      } else {
+        createAndSelectNewBlockAfter(editor, [createEmptyParagraph()]);
+        Transforms.removeNodes(editor, { at: ref.current });
+      }
       return true;
     }
 
     Transforms.removeNodes(editor, { at: ref.current });
 
     if (isCursorAtBlockEnd(editor)) {
-      createAndSelectNewBlockAfter(editor, [createEmptyParagraph()]);
+      if (detached) {
+        Editor.insertNode(editor, createEmptyParagraph());
+      } else {
+        createAndSelectNewBlockAfter(editor, [createEmptyParagraph()]);
+      }
       return true;
     }
 
-    const [top, bottom] = splitEditorInTwoFragments(editor, ref.current);
-    setEditorContent(editor, top);
-    createAndSelectNewBlockAfter(editor, bottom);
-
+    if (!detached) {
+      const [top, bottom] = splitEditorInTwoFragments(editor, ref.current);
+      setEditorContent(editor, top);
+      createAndSelectNewBlockAfter(editor, bottom);
+    }
     return true;
   };
 

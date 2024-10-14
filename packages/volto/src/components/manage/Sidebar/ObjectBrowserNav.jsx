@@ -51,6 +51,7 @@ const ObjectBrowserNav = ({
         currentSearchResults.items.map((item) =>
           view === 'icons' ? (
             <li
+              key={item['@id']}
               className="image-wrapper"
               title={`${item['@id']} (${item['@type']})`}
             >
@@ -60,9 +61,11 @@ const ObjectBrowserNav = ({
                 onClick={(e) => handleClickOnItem(item)}
                 onDoubleClick={() => handleDoubleClickOnItem(item)}
                 className="image-preview"
-                aria-label={`${intl.formatMessage(messages.select)} ${
-                  item.title
-                }`}
+                aria-label={
+                  item.is_folderish && mode === 'image'
+                    ? `${intl.formatMessage(messages.browse)} ${item.title}`
+                    : `${intl.formatMessage(messages.select)} ${item.title}`
+                }
               >
                 {item['@type'] === 'Image' ? (
                   <img

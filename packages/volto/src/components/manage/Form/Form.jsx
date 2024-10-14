@@ -12,6 +12,7 @@ import {
   FormValidation,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
+  hasBlocksData,
   messages,
 } from '@plone/volto/helpers';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
@@ -273,19 +274,22 @@ class Form extends Component {
         selected: null,
       });
     }
-
-    if (requestError && prevProps.requestError !== requestError) {
+    if (requestError) {
       errors =
         FormValidation.giveServerErrorsToCorrespondingFields(requestError);
-      activeIndex = FormValidation.showFirstTabWithErrors({
-        errors,
-        schema: this.props.schema,
-      });
-
-      this.setState({
-        errors,
-        activeIndex,
-      });
+      if (
+        !isEqual(prevProps.requestError, requestError) ||
+        !isEqual(this.state.errors, errors)
+      ) {
+        activeIndex = FormValidation.showFirstTabWithErrors({
+          errors,
+          schema: this.props.schema,
+        });
+        this.setState({
+          errors,
+          activeIndex,
+        });
+      }
     }
 
     if (this.props.onChangeFormData) {
@@ -349,7 +353,7 @@ class Form extends Component {
 
   /**
    * If user clicks on input, the form will be not considered pristine
-   * this will avoid onBlur effects without interraction with the form
+   * this will avoid onBlur effects without interaction with the form
    * @param {Object} e event
    */
   onClickInput(e) {
@@ -527,30 +531,99 @@ class Form extends Component {
         })
       : {};
 
-    if (keys(errors).length > 0) {
+    let blocksErrors = {};
+
+    if (hasBlocksData(formData)) {
+      // Validate blocks
+      const blocks = this.state.formData[getBlocksFieldname(formData)];
+      const blocksLayout =
+        this.state.formData[getBlocksLayoutFieldname(formData)];
+      const defaultSchema = {
+        properties: {},
+        fieldsets: [],
+        required: [],
+      };
+      blocksLayout.items.forEach((block) => {
+        let blockSchema =
+          config.blocks.blocksConfig[blocks[block]['@type']].blockSchema ||
+          defaultSchema;
+        if (typeof blockSchema === 'function') {
+          blockSchema = blockSchema({
+            intl: this.props.intl,
+            formData: blocks[block],
+          });
+        }
+        const blockErrors = FormValidation.validateFieldsPerFieldset({
+          schema: blockSchema,
+          formData: blocks[block],
+          formatMessage: this.props.intl.formatMessage,
+        });
+        if (keys(blockErrors).length > 0) {
+          blocksErrors = {
+            ...blocksErrors,
+            [block]: { ...blockErrors },
+          };
+        }
+      });
+    }
+    if (keys(errors).length > 0 || keys(blocksErrors).length > 0) {
       const activeIndex = FormValidation.showFirstTabWithErrors({
         errors,
         schema: this.props.schema,
       });
-      this.setState(
-        {
-          errors,
-          activeIndex,
+      this.setState({
+        errors: {
+          ...errors,
+          ...(!isEmpty(blocksErrors) && { blocks: blocksErrors }),
         },
-        () => {
-          Object.keys(errors).forEach((err) =>
-            toast.error(
-              <Toast
-                error
-                title={this.props.schema.properties[err].title || err}
-                content={errors[err].join(', ')}
-              />,
-            ),
-          );
-        },
-      );
-      // Changes the focus to the metadata tab in the sidebar if error
-      this.props.setSidebarTab(0);
+        activeIndex,
+      });
+
+      if (keys(errors).length > 0) {
+        // Changes the focus to the metadata tab in the sidebar if error
+        toast.error(
+          <Toast
+            error
+            title={this.props.intl.formatMessage(messages.error)}
+            content={
+              <ul>
+                {Object.keys(errors).map((err, index) => (
+                  <li key={index}>
+                    <strong>
+                      {this.props.schema.properties[err].title || err}:
+                    </strong>{' '}
+                    {errors[err]}
+                  </li>
+                ))}
+              </ul>
+            }
+          />,
+        );
+        this.props.setSidebarTab(0);
+      } else if (keys(blocksErrors).length > 0) {
+        const errorField = Object.entries(
+          Object.entries(blocksErrors)[0][1],
+        )[0][0];
+        const errorMessage = Object.entries(
+          Object.entries(blocksErrors)[0][1],
+        )[0][1];
+        toast.error(
+          <Toast
+            error
+            title={this.props.intl.formatMessage(
+              messages.blocksFieldsErrorTitle,
+              { errorField },
+            )}
+            content={errorMessage}
+          />,
+        );
+        this.props.setSidebarTab(1);
+        this.props.setUIState({
+          selected: Object.keys(blocksErrors)[0],
+          multiSelected: [],
+          hovered: null,
+        });
+      }
     } else {
       // Get only the values that have been modified (Edit forms), send all in case that
       // it's an add form
@@ -651,7 +724,6 @@ class Form extends Component {
     const schema = this.removeBlocksLayoutFields(originalSchema);
     const Container =
       config.getComponent({ name: 'Container' }).component || SemanticContainer;
-
     return this.props.visual ? (
       // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
       // but draftJS don't like it much and the hydration gets messed up
@@ -730,6 +802,8 @@ class Form extends Component {
                 history={this.props.history}
                 location={this.props.location}
                 token={this.props.token}
+                errors={this.state.errors}
+                blocksErrors={this.state.errors.blocks}
               />
               {this.state.isClient &&
                 this.state.sidebarMetadataIsAvailable &&
@@ -774,7 +848,14 @@ class Form extends Component {
                                     id={field}
                                     fieldSet={fieldset.title.toLowerCase()}
                                     formData={formData}
-                                    focus={this.state.inFocus[field]}
+                                    focus={
+                                      this.state.isClient &&
+                                      document
+                                        .getElementById('sidebar-metadata')
+                                        ?.contains(document.activeElement)
+                                        ? this.state.inFocus[field]
+                                        : false
+                                    }
                                     value={formData?.[field]}
                                     required={
                                       schema.required.indexOf(field) !== -1

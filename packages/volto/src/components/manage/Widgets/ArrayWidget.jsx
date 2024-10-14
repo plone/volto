@@ -129,7 +129,7 @@ const compareOption = (inputValue = '', option, accessors) => {
  * @class ArrayWidget
  * @extends Component
  *
- * A createable select array widget will be rendered if the named vocabulary is
+ * A creatable select array widget will be rendered if the named vocabulary is
  * in the widget definition (hint) like:
  *
  * ```
@@ -280,7 +280,7 @@ class ArrayWidget extends Component {
     const { SortableContainer } = this.props.reactSortableHOC;
     const Select = this.props.reactSelect.default;
     const SortableSelect =
-      // It will be only createable if the named vocabulary is in the widget definition
+      // It will be only creatable if the named vocabulary is in the widget definition
       // (hint) like:
       // list_field_voc_unconstrained = schema.List(
       //     title=u"List field with values from vocabulary but not constrained to them.",
@@ -314,6 +314,7 @@ class ArrayWidget extends Component {
           // small fix for https://github.com/clauderic/react-sortable-hoc/pull/352:
           getHelperDimensions={({ node }) => node.getBoundingClientRect()}
           id={`field-${this.props.id}`}
+          aria-labelledby={`fieldset-${this.props.fieldSet}-field-label-${this.props.id}`}
           key={this.props.id}
           isDisabled={this.props.disabled || this.props.isDisabled}
           className="react-select-container"

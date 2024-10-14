@@ -251,6 +251,7 @@ class UpgradeControlPanel extends Component {
                 <Container>
                   {map(upgradeSteps, (upgradeGroup) => [
                     <UpgradeStep
+                      key={upgradeGroup[0]}
                       title={upgradeGroup[0]}
                       steps={upgradeGroup[1]}
                     />,

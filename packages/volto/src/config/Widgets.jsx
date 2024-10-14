@@ -50,11 +50,11 @@ import TextViewWidget from '@plone/volto/components/theme/Widgets/TextWidget';
 import TitleViewWidget from '@plone/volto/components/theme/Widgets/TitleWidget';
 import TokenViewWidget from '@plone/volto/components/theme/Widgets/TokenWidget';
 import UrlViewWidget from '@plone/volto/components/theme/Widgets/UrlWidget';
+import ImageWidget from '@plone/volto/components/manage/Widgets/ImageWidget';
 
 // Widgets mapping
 export const widgetMapping = {
   id: {
-    schema: SchemaWidget,
     subjects: TokenWidget,
     query: QuerystringWidget,
     recurrence: RecurrenceWidget,
@@ -68,6 +68,7 @@ export const widgetMapping = {
     date: DatetimeWidget,
     password: PasswordWidget,
     file: FileWidget,
+    image: ImageWidget,
     align: AlignWidget,
     buttons: ButtonsWidget,
     url: UrlWidget,
@@ -87,6 +88,7 @@ export const widgetMapping = {
     autocomplete: SelectAutoComplete,
     color_picker: ColorPickerWidget,
     select: SelectWidget,
+    schema: SchemaWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,

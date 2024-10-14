@@ -66,7 +66,7 @@
     },
     "setupFiles": [
       "@plone/volto/test-setup-globals.js",
-      "@plone/volto/test-setup-config.js"
+      "@plone/volto/test-setup-config.jsx"
     ],
     "globals": {
       "__DEV__": true

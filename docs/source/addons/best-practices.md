@@ -62,6 +62,9 @@ a screenshot.
 Ideally, the Readme should also include install instructions and details on any
 possible settings.
 
+
+(testing-the-add-on-label)=
+
 ## Testing the add-on
 
 It is not easy, right now, to ship an add-on with a self-bootstraping and
@@ -84,4 +87,4 @@ Even if you think your add-on is not generic or it's tricky to integrate, please
 consider including your add-on in the
 [`collective/awesome-volto`](https://github.com/collective/awesome-volto) add-ons
 list. This provides visibility to your add-on but also further solidifies
-Volto's possition in our Plone community.
+Volto's position in our Plone community.
