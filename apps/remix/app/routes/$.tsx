@@ -46,16 +46,14 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   return json({ dehydratedState: dehydrate(queryClient) });
 };
 
-export default function Index() {
-  const { dehydratedState } = useLoaderData<typeof loader>();
+function Page() {
   const { getContentQuery } = usePloneClient();
   const pathname = useLocation().pathname;
   const { data } = useQuery(getContentQuery({ path: pathname, expand }));
 
   if (!data) return null;
-
   return (
-    <HydrationBoundary state={dehydratedState}>
+    <>
       <Breadcrumbs
         items={data['@components'].breadcrumbs.items || []}
         root={data['@components'].breadcrumbs.root}
@@ -66,6 +64,16 @@ export default function Index() {
         blocksConfig={config.blocks.blocksConfig}
         pathname="/"
       />
+    </>
+  );
+}
+
+export default function Index() {
+  const { dehydratedState } = useLoaderData<typeof loader>();
+
+  return (
+    <HydrationBoundary state={dehydratedState}>
+      <Page />
     </HydrationBoundary>
   );
 }

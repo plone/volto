@@ -13,6 +13,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { flattenToAppURL } from './utils';
 import config from './config';
 
+// Custom hook to unify the location object between NextJS and Plone
 function useLocation() {
   let pathname = usePathname();
   let search = useSearchParams();
@@ -62,7 +63,6 @@ const Providers: React.FC<{
       // in a custom hook
       useLocation={useLocation}
       navigate={(to) => {
-        debugger;
         router.push(to);
       }}
       useParams={useParams}

@@ -24,7 +24,7 @@ export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
 ];
 
-function useHrefLocal(to) {
+function useHrefLocal(to: string) {
   return useHref(flattenToAppURL(to));
 }
 
@@ -50,7 +50,7 @@ export default function App() {
 
   const RRNavigate = useNavigate();
 
-  const navigate = (to) => {
+  const navigate = (to: string) => {
     return RRNavigate(flattenToAppURL(to));
   };
 

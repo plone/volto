@@ -5,7 +5,7 @@ import Providers from './Providers';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'NextJS-powered Plone',
+  title: 'NextJS app powered by Plone',
   description: '',
 };
 
