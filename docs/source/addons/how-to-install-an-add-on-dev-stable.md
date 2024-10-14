@@ -123,17 +123,13 @@ you'll have to set your addon package as a "Yarn workspace". You do this by
 adding a `workspaces` key to the the `package.json` of your Volto project:
 
 ```json
-...
 "workspaces": ["src/addons/my-volto-addon"],
-...
 ```
 
 It is common practice to use a star glob pattern for the workspaces:
 
 ```json
-...
 "workspaces": ["src/addons/*"],
-...
 ```
 
 If you do this, make sure to always cleanup the `src/addons` folder whenever

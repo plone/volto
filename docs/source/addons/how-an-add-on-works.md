@@ -24,7 +24,7 @@ They should be released as "source" packages.
 
 See [@kitconcept/volto-button-block](https://github.com/kitconcept/volto-button-block) as an example.
 
-### Add-on configuration
+## Add-on configuration
 
 The default export of your add-on main `index.js` file should be a function with
 the signature `config => config`.
@@ -73,7 +73,7 @@ So the Volto add-on needs to export a default function that receives the Volto c
 
 Volto will chain-execute all the add-on configuration functions to compute the final configuration registry.
 
-```{info}
+```{note}
 An add-on's default configuration method will always be loaded.
 ```
 
@@ -90,7 +90,7 @@ export default applyConfig;
 ```
 
 ```{seealso}
-{doc}`./how-to-load-addon-configuration`
+{doc}`how-to-load-add-on-configuration`
 ```
 
 ## Customizations

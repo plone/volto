@@ -15,7 +15,7 @@ This chapter describes how you can create a Volto add-on using the latest **deve
 {term}`Cookieplone` is now the method to create a Plone add-on with unstable versions of Volto, version 18.0.0-alpha.43 and above.
 ```
 
-Follow the steps required to install [Cookieplone]({doc}`plone:install/create-project-cookieplone.md`).
+Follow the steps required to install Cookieplone as described in {doc}`plone:install/create-project-cookieplone`.
 
 ```shell
 pipx run cookieplone frontend_addon
@@ -114,7 +114,7 @@ To install the frontend setup, use the following command.
 make install
 ```
 
-### Start Plone backend Docker container
+## Start Plone backend Docker container
 
 In the currently open session, issue the following command.
 
@@ -146,7 +146,7 @@ Starting server in PID 1.
 
 This will start a clean Plone server for development purposes so you can start developing your add-on.
 
-### Start Plone development frontend
+## Start Plone development frontend
 
 Create a second shell session in a new window.
 Change your current working directory to {file}`volto-addon`.
