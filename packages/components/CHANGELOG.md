@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.15 (2024-10-14)
+
+### Bugfix
+
+- Fix Select component logic to support `items` use case @sneridagh [#6405](https://github.com/plone/volto/issues/6405)
+
 ## 2.0.0-alpha.14 (2024-10-10)
 
 ### Bugfix
