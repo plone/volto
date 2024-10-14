@@ -10,8 +10,6 @@ That means you have to build something that has very specific requirements, beha
 Sometimes you need to build something generic that is pluggable and extensible.
 In the JavaScript and TypeScript ecosystem, this is often quite complex, and the existing frameworks do not provide the means to do this.
 
-`@plone/registry` provides tools to facilitate pluggability for your app through the following registries:
-
 - Add-on registry
 - Configuration registry
 - Component registry
@@ -25,13 +23,23 @@ An add-on registry is a facility that allows an app, which was built on an exist
 
 The add-on registry is a store where you can register a number of add-ons that your app consumes.
 
+The add-on registry can be queried, so it can provide a list of add-ons installed in the registry and their properties.
+
+% More explanation
+### What is an add-on
+
 Add-on packages are just CommonJS/ESM packages.
-The only requirement is that they point the `main` key of their `package.json` to a module that exports as a default function, which acts as a configuration loader.
+Their main purpose is encapsulate logic, configuration and customizations in a reusable way.
+The only requirement is that their primary entry point (`main` key of their `package.json`) points to a module that exports a default function, which acts as a default configuration loader for that package.
+
+Add-ons are applied in the order they are declared in the `addons` key of `package.json` or programatically via the configuration file (`volto.config.js` or `registry.config.js`).
+Add-ons can override configuration coming from other add-ons, providing a hierarchy of configuration stacks.
 
 An add-on can be published in an npm registry, just as any other package.
-However, add-ons are meant to not be transpiled.
-They should be released as source packages.
+However, add-ons are meant to not be transpiled, but built along with your app code.
+They can be released as "source" packages or used directly in your app as local code.
 
+% QUESTION: Should this go to "HowTo"s?
 ### Register an add-on
 
 You should declare your add-on in your project.
@@ -123,12 +131,13 @@ The add-on will then become available to the CMS when it asks the configuration 
 
 ### Initialization
 
+% QUESTION: Should this go to "HowTo"s?
 **TODO**
 By default, the configuration registry is empty.
 In the context of a Volto app, the registry gets initialized by Volto by default.
 
 ### Accessing the configuration registry
-
+% QUESTION: Should this go to "HowTo"s?
 The configuration registry can be accessed by:
 
 ```ts
