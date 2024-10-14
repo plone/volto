@@ -102,7 +102,8 @@ module.exports = {
       [],
       defaultRazzleOptions,
     );
-    const AddonConfigurationRegistry = require('@plone/registry/addon-registry');
+    const AddonConfigurationRegistry =
+      require('@plone/registry/addon-registry').default;
     const registry = new AddonConfigurationRegistry(projectRootPath);
     config = lessPlugin({
       registry,
