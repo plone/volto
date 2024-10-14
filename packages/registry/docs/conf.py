@@ -185,7 +185,7 @@ html_theme_options = {
 
 # Announce that we have an opensearch plugin
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_use_opensearch
-html_use_opensearch = "https://volto-registry.readthedocs.io/"  # TODO: Confirm usage of opensearch in theme
+html_use_opensearch = "https://plone-registry.readthedocs.io/"  # TODO: Confirm usage of opensearch in theme
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -244,9 +244,9 @@ intersphinx_mapping = {
 
 # -- OpenGraph configuration ----------------------------------
 
-ogp_site_url = "https://volto-registry.readthedocs.io/"
+ogp_site_url = "https://plone-registry.readthedocs.io/"
 ogp_description_length = 200
-ogp_image = "https://volto-registry.readthedocs.io/en/latest/_static/Plone_logo_square.png"
+ogp_image = "https://plone-registry.readthedocs.io/en/latest/_static/Plone_logo_square.png"
 ogp_site_name = "@plone/registry Documentation"
 ogp_type = "website"
 ogp_custom_meta_tags = [
