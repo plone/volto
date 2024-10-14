@@ -6,6 +6,7 @@ import { beforeEach } from 'vitest';
 import { expect, test } from 'vitest';
 import PloneClient from '../../client';
 import { CreateContentArgs } from './add';
+import { createContent } from '../content/add';
 
 const cli = PloneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
@@ -44,6 +45,40 @@ describe('[POST] Content', () => {
       'http://localhost:55001/plone/my-page',
     );
     expect(result.current.data?.title).toBe('My Page');
+  });
+
+  test.only('Hook - create content in path', async () => {
+    const myPageData = {
+      '@type': 'Document',
+      title: 'My Page',
+    };
+
+    await createContent({
+      path: '/',
+      data: myPageData,
+      config: cli.config,
+    });
+
+    const path = '/my-page';
+    const data: CreateContentArgs['data'] = {
+      '@type': 'Document',
+      title: 'My nested Page',
+    };
+
+    const { result } = renderHook(() => useMutation(createContentMutation()), {
+      wrapper: createWrapper(),
+    });
+
+    act(() => {
+      result.current.mutate({ path, data });
+    });
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+
+    expect(result.current.data?.['@id']).toBe(
+      'http://localhost:55001/plone/my-page/my-nested-page',
+    );
+    expect(result.current.data?.title).toBe('My nested Page');
   });
 
   test('Hook - Successful - setup/tearingDown setup', async () => {
