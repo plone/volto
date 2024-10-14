@@ -14,9 +14,8 @@ build:
     # nodejs: "19"
     # rust: "1.64"
     # golang: "1.19"
-  jobs:
-    post_install:
-      - cd ./packages/registry && make docs-rtd-registry
+  commands:
+    - cd ./packages/registry && make docs-rtd-registry
 
 # Build documentation in the "docs/" directory with Sphinx
 #sphinx:
