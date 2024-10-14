@@ -1,3 +1,3 @@
 Improve and group providers @sneridagh
 Breaking:
-  - The interface of the providers themselves have changed, please check the new one, adapt your apps conviniently
+  - The interface of the providers has changed. Please check the new one, and adapt your apps accordingly.
