@@ -311,8 +311,8 @@ const More = (props) => {
                 </header>
                 <div className="pastanaga-menu-list">
                   <ul>
-                    {pluggables.map((p) => (
-                      <>{p()}</>
+                    {pluggables.map((p, index) => (
+                      <React.Fragment key={index}>{p()}</React.Fragment>
                     ))}
                   </ul>
                 </div>
