@@ -47,7 +47,7 @@ describe('[POST] Content', () => {
     expect(result.current.data?.title).toBe('My Page');
   });
 
-  test.only('Hook - create content in path', async () => {
+  test('Hook - create content in path', async () => {
     const myPageData = {
       '@type': 'Document',
       title: 'My Page',
