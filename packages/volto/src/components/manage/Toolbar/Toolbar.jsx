@@ -65,16 +65,12 @@ const messages = defineMessages({
     id: 'More',
     defaultMessage: 'More',
   },
-  personalTools: {
-    id: 'Personal tools',
-    defaultMessage: 'Personal tools',
-  },
-  adminUserlTools: {
-    id: 'Site tools and user settings',
+  adminUserTools: {
+    id: 'adminUserTools',
     defaultMessage: 'Site and user settings',
   },
   userTools: {
-    id: 'User settings',
+    id: 'userTools',
     defaultMessage: 'User settings',
   },
   shrinkToolbar: {
@@ -383,6 +379,13 @@ class Toolbar extends Component {
     });
     const { expanded } = this.state;
 
+    const isAdmin = userHasRoles(this.props.user, [
+      'Site Administrator',
+      'Manager',
+    ])
+      ? this.props.intl.formatMessage(messages.adminUserTools)
+      : this.props.intl.formatMessage(messages.userTools);
+
     return (
       this.props.token && (
         <>
@@ -614,34 +617,12 @@ class Toolbar extends Component {
                 {!this.props.hideDefaultViewButtons && (
                   <button
                     className="user"
-                    aria-label={
-                      userHasRoles(this.props.user, [
-                        'Site Administrator',
-                        'Manager',
-                      ])
-                        ? this.props.intl.formatMessage(
-                            messages.adminUserlTools,
-                          )
-                        : this.props.intl.formatMessage(messages.userTools)
-                    }
+                    aria-label={isAdmin}
                     onClick={(e) => this.toggleMenu(e, 'personalTools')}
                     tabIndex={0}
                     id="toolbar-personal"
                   >
-                    <Icon
-                      name={userSVG}
-                      size="30px"
-                      title={
-                        userHasRoles(this.props.user, [
-                          'Site Administrator',
-                          'Manager',
-                        ])
-                          ? this.props.intl.formatMessage(
-                              messages.adminUserlTools,
-                            )
-                          : this.props.intl.formatMessage(messages.userTools)
-                      }
-                    />
+                    <Icon name={userSVG} size="30px" title={isAdmin} />
                   </button>
                 )}
               </div>
