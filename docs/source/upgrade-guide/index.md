@@ -528,7 +528,7 @@ For example, in your project's {file}`.eslintrc.js`:
 +  require('@plone/registry/addon-registry').default;
 ```
 
-Also in the Storybook configuration {file}`INSERT_FILE_NAME_HERE`.
+Also in the Storybook configuration {file}`.storybook/main.js`.
 
 ```diff
        defaultRazzleOptions,
