@@ -77,6 +77,11 @@ docs-rtd-pr-preview: ## Build previews of pull requests that have documentation 
 	pip install -r requirements-docs.txt
 	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) ${READTHEDOCS_OUTPUT}/html/
 
+.PHONY: docs-rtd-registry
+docs-rtd-registry: ## Build Plone Registry docs on RTD
+	pip install -r requirements-docs.txt
+	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) ${READTHEDOCS_OUTPUT}/html/
+
 ## Build
 
 .PHONY: rename-to-cjs
