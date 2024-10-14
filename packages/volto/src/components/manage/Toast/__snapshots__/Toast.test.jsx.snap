@@ -27,9 +27,9 @@ Array [
     <h4>
       I'm a title
     </h4>
-    <p>
+    <div>
       This is the content, lorem ipsum
-    </p>
+    </div>
   </div>,
 ]
 `;
