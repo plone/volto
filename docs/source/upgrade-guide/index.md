@@ -518,10 +518,25 @@ This unfortunately forces some import path changes that should be patched in you
 As always, when something changes in the boilerplate, you may regenerate one from Cookieplone and move your code into it, instead of fiddling with it.
 ```
 
-For example, in {file}`razzle.config.js`:
+For example, in your projects {file}`.eslintrc.js`:
 
+```diff
+ const fs = require('fs');
+ const projectRootPath = __dirname;
+-const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
++const AddonConfigurationRegistry =
++  require('@plone/registry/addon-registry').default;
+```
 
+also, in the Storybook configuration {file}`
 
+```diff
+       defaultRazzleOptions,
+     );
+-    const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
++    const AddonConfigurationRegistry =
++      require('@plone/registry/addon-registry').default;
+```
 
 ```{versionadded} Volto 18.0.0-alpha.21
 ```
