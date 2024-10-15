@@ -17,6 +17,25 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.46 (2024-10-10)
+
+### Breaking
+
+- Added `react/jsx-key` rule for ESlint to detect missing key property in iterators. @sneridagh [#6387](https://github.com/plone/volto/issues/6387)
+
+### Bugfix
+
+- Revert "Fix block chooser search is not focusable when clicked on add button" #5867 @sneridagh
+  It was causing a regression described in #6389 [#6390](https://github.com/plone/volto/issues/6390)
+
+### Internal
+
+- Added missing improvement to the `build-deps` Makefile command. @sneridagh [#6383](https://github.com/plone/volto/issues/6383)
+
+### Documentation
+
+- Add reference to Translate Volto in the main documentation. @stevepiercy [#6386](https://github.com/plone/volto/issues/6386)
+
 ## 18.0.0-alpha.45 (2024-10-08)
 
 ### Bugfix
