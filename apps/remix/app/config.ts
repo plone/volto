@@ -6,10 +6,10 @@ const settings = {
   slate,
 };
 
-// @ts-ignore
+// @ts-expect-error We need to fix typing
 config.set('settings', settings);
 
-// @ts-ignore
+// @ts-expect-error We need to fix typing
 config.set('blocks', { blocksConfig });
 
 export default config;
