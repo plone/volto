@@ -9,6 +9,7 @@ interface PloneProvider {
   ploneClient: InstanceType<typeof PloneClient>;
   queryClient: QueryClient;
   useLocation: () => Location | undefined;
+  useParams: (opts?: any) => Record<string, string>;
   navigate: (path: string) => void;
   useHref: (to: string, options?: any) => string;
   flattenToAppURL: (path: string | undefined) => string | undefined;
@@ -24,6 +25,7 @@ const PloneProviderContext = createContext<PloneProvider>({
     searchStr: '',
     hash: '',
   }),
+  useParams: () => ({}),
   navigate: () => {},
   useHref: () => '',
   flattenToAppURL,
@@ -33,7 +35,7 @@ interface PloneProviderProps {
   ploneClient: InstanceType<typeof PloneClient>;
   queryClient: QueryClient;
   useLocation: () => Location | undefined;
-  useParams: () => Record<string, string>;
+  useParams: (opts?: any) => Record<string, string>;
   navigate: (path: string) => void;
   useHref?: (to: string, options?: any) => string;
   flattenToAppURL: (path: string | undefined) => string | undefined;

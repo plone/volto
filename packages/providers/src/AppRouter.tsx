@@ -5,27 +5,18 @@ import { flattenToAppURL } from './utils';
 
 export type AnySearchSchema = {};
 export interface Location<TSearchObj extends AnySearchSchema = {}> {
-  href: string;
-  pathname: string;
-  search: TSearchObj;
-  searchStr: string;
-  hash: string;
+  href?: string; // TSR
+  searchStr?: string; // TSR
+  pathname: string; // TSR, RR and Remix
+  search: TSearchObj; // TSR, RR and Remix
+  hash: string; // TSR, RR and Remix
+  state?: any; // TSR, RR and Remix
+  key?: string; // RR and Remix
 }
-
-// interface ParsedLocation {
-//   href: string
-//   pathname: string
-//   search: TFullSearchSchema
-//   searchStr: string
-//   state: HistoryState
-//   hash: string
-//   maskedLocation?: ParsedLocation
-//   unmaskOnReload?: boolean
-// }
 
 interface AppRouter {
   useLocation: () => Location | undefined;
-  useParams: () => Record<string, string>;
+  useParams: (opts?: any) => Record<string, string>;
   navigate: (path: string) => void;
   useHref: (to: string, options?: any) => string;
   flattenToAppURL: (path: string | undefined) => string | undefined;
@@ -47,7 +38,7 @@ const AppRouterContext = createContext<AppRouter>({
 
 interface AppRouterProps {
   useLocation: () => Location | undefined;
-  useParams: () => Record<string, string>;
+  useParams: (opts?: any) => Record<string, string>;
   navigate: (path: string) => void;
   useHref?: (to: string, options?: any) => string;
   flattenToAppURL: (path: string | undefined) => string | undefined;

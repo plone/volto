@@ -4,6 +4,7 @@ import {
   RouterProvider,
   createRouter,
   useLocation,
+  useParams,
 } from '@tanstack/react-router';
 import { routeTree } from './routeTree.gen';
 import { QueryClient } from '@tanstack/react-query';
@@ -64,7 +65,7 @@ if (!rootElement.innerHTML) {
       useHref={(to) => {
         return flattenToAppURL(to);
       }}
-      useParams={router.useParams}
+      useParams={useParams}
       flattenToAppURL={flattenToAppURL}
     >
       <RouterProvider router={router} />
