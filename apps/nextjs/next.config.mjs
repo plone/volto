@@ -1,4 +1,9 @@
 import path from 'path';
+import AddonConfigurationRegistry from '@plone/registry/src/addon-registry';
+import createAddonsLoader from '@plone/registry/src/create-addons-loader';
+
+const projectRootPath = path.resolve('.');
+const registry = new AddonConfigurationRegistry(projectRootPath);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -6,14 +11,29 @@ const nextConfig = {
   //   includePaths: [path.join(__dirname, 'src/lib/components/src/styles')],
   // },
 
-  // webpack(config) {
-  //   config.resolve.alias = {
-  //     ...config.resolve.alias,
-  //     '../fonts': path.resolve(__dirname, 'src/lib/components/src/fonts'),
-  //   };
+  webpack(
+    config,
+    // { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack },
+  ) {
+    const addonsLoaderPath = createAddonsLoader(
+      registry.getAddonDependencies(),
+      registry.getAddons(),
+    );
 
-  //   return config;
-  // },
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '../fonts': path.resolve('src/lib/components/src/fonts'),
+      ...registry.getAddonCustomizationPaths(),
+      ...registry.getAddonsFromEnvVarCustomizationPaths(),
+      ...registry.getProjectCustomizationPaths(),
+      'load-volto-addons': addonsLoaderPath,
+      ...registry.getResolveAliases(),
+    };
+
+    return config;
+  },
+
+  transpilePackages: Object.keys(registry.packages),
 
   // Rewrite to the backend to avoid CORS
   async rewrites() {
