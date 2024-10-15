@@ -9,6 +9,7 @@ import {
   useHref,
   useLocation,
   useNavigate,
+  useParams,
 } from '@remix-run/react';
 import { useState } from 'react';
 import { QueryClient } from '@tanstack/react-query';
@@ -66,8 +67,9 @@ export default function App() {
         <PloneProvider
           ploneClient={ploneClient}
           queryClient={queryClient}
-          useHref={useHrefLocal}
           useLocation={useLocation}
+          useParams={useParams}
+          useHref={useHrefLocal}
           navigate={navigate}
         >
           <Outlet />
