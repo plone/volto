@@ -1,3 +1,4 @@
+import '@/config';
 import cx from 'clsx';
 import type { Viewport } from 'next';
 import { Inter } from 'next/font/google';

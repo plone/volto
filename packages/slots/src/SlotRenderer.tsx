@@ -1,8 +1,7 @@
 import React from 'react';
-import { useRouterLocation } from '@plone/providers';
 import config from '@plone/registry';
 
-import type { Content } from '@plone/types';
+import type { GetSlotArgs } from '@plone/types';
 
 /*
 Usage:
@@ -12,17 +11,17 @@ Usage:
 const SlotRenderer = ({
   name,
   content,
+  location,
   navRoot,
 }: {
   name: string;
-  content: Content;
-  navRoot?: Content;
+  content: GetSlotArgs['content'];
+  location: GetSlotArgs['location'];
+  navRoot?: GetSlotArgs['navRoot'];
 }) => {
-  const pathname = useRouterLocation().pathname;
-
-  let slots = config.getSlot(name, {
+  const slots = config.getSlot(name, {
     content,
-    pathname,
+    location,
     // This is to cover the use case while adding a new content and we don't have
     // have the navRoot information in the initial content. This will be
     // useful for SlotRenderers rendered in the `Add` route.
@@ -49,7 +48,7 @@ const SlotRenderer = ({
             <SlotComponent
               key={name}
               content={content}
-              pathname={pathname}
+              location={location}
               navRoot={navRoot}
             />
           );
