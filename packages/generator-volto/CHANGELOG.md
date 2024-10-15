@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.18 (2024-10-04)
+
+### Breaking
+
+- Updated `razzle.config.js` to accommodate new argument `paths` passed down to `customModifyWebpackConfig`. @sneridagh [#6368](https://github.com/plone/volto/issues/6368)
+
 ## 9.0.0-alpha.17 (2024-06-28)
 
 ### Bugfix

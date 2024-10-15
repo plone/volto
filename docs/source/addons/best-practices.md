@@ -62,6 +62,9 @@ a screenshot.
 Ideally, the Readme should also include install instructions and details on any
 possible settings.
 
+
+(testing-the-add-on-label)=
+
 ## Testing the add-on
 
 It is not easy, right now, to ship an add-on with a self-bootstraping and
