@@ -11,7 +11,7 @@ import '@plone/components/dist/basic.css';
 export default function Content() {
   const { getContentQuery } = usePloneClient();
   const pathname = usePathname();
-  const { data, isLoading } = useQuery(getContentQuery({ path: pathname }));
+  const { data } = useQuery(getContentQuery({ path: pathname }));
 
   if (data) {
     return (

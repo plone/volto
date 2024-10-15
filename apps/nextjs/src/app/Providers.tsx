@@ -36,7 +36,7 @@ const Providers: React.FC<{
     }),
   );
 
-  let router = useRouter();
+  const router = useRouter();
 
   return (
     <RouterProvider navigate={router.push}>
