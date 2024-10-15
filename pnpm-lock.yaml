@@ -1382,7 +1382,7 @@ importers:
         specifier: ^3.0.7
         version: 3.1.1
       jest:
-        specifier: 26.6.3
+        specifier: ^26.6.3
         version: 26.6.3
       release-it:
         specifier: ^16.1.3
