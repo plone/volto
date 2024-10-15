@@ -1,12 +1,12 @@
 import React from 'react';
-import { useRouterLocation } from '@plone/providers';
+import { useAppRouter } from '@plone/providers';
 import config from '@plone/registry';
 
 import type { Content } from '@plone/types';
 
 /*
 Usage:
-<SlotRenderer name="aboveContent" content={content} route={} />
+<SlotRenderer name="aboveContent" content={content} />
 */
 
 const SlotRenderer = ({
@@ -18,11 +18,12 @@ const SlotRenderer = ({
   content: Content;
   navRoot?: Content;
 }) => {
-  const pathname = useRouterLocation().pathname;
+  const location = useAppRouter().useLocation();
 
   let slots = config.getSlot(name, {
     content,
-    pathname,
+    // @ts-expect-error TODO: improve the types of @plone/registry later
+    location,
     // This is to cover the use case while adding a new content and we don't have
     // have the navRoot information in the initial content. This will be
     // useful for SlotRenderers rendered in the `Add` route.
@@ -35,26 +36,17 @@ const SlotRenderer = ({
 
   return (
     <>
-      {slots.map(
-        ({
-          component,
-          name,
-        }: {
-          component: React.ComponentType<any>;
-          name: string;
-        }) => {
-          // ^^ Weird compilation issue for Jest tests, that forced to re-declare the type above
-          const SlotComponent = component;
-          return (
-            <SlotComponent
-              key={name}
-              content={content}
-              pathname={pathname}
-              navRoot={navRoot}
-            />
-          );
-        },
-      )}
+      {slots.map(({ component, name }) => {
+        const SlotComponent = component;
+        return (
+          <SlotComponent
+            key={name}
+            content={content}
+            location={location}
+            navRoot={navRoot}
+          />
+        );
+      })}
     </>
   );
 };
