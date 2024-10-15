@@ -2,15 +2,15 @@ import React from 'react';
 import { createContext, ReactNode, useContext, useMemo } from 'react';
 
 interface FlattenToAppURL {
-  flattenToAppURL: (path: string | undefined) => string | undefined;
+  flattenToAppURL: (path: string | undefined) => string;
 }
 
 const FlattenToAppURLContext = createContext<FlattenToAppURL>({
-  flattenToAppURL: (path) => path,
+  flattenToAppURL: (path) => path ?? '',
 });
 
 interface FlattenToAppURLProps {
-  flattenToAppURL: (path: string | undefined) => string | undefined;
+  flattenToAppURL: (path: string | undefined) => string;
   children: ReactNode;
 }
 
