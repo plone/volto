@@ -1,7 +1,7 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
 import { usePathname } from 'next/navigation';
-import { usePloneClient, usePloneProvider } from '@plone/providers';
+import { usePloneClient } from '@plone/providers';
 import { Breadcrumbs, RenderBlocks } from '@plone/components';
 import config from '@plone/registry';
 

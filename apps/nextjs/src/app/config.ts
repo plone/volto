@@ -10,10 +10,10 @@ const settings = {
   slate,
 };
 
-//@ts-ignore
+// @ts-expect-error Improve typings
 config.set('settings', settings);
 
-//@ts-ignore
+// @ts-expect-error Improve typings
 config.set('blocks', { blocksConfig });
 
 export default config;
