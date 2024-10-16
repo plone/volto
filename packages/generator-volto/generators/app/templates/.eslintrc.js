@@ -1,6 +1,7 @@
 const fs = require('fs');
 const projectRootPath = __dirname;
-const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
+const AddonConfigurationRegistry =
+  require('@plone/registry/addon-registry').default;
 
 let voltoPath = './node_modules/@plone/volto';
 

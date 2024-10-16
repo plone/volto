@@ -509,6 +509,41 @@ The `react/jsx-key` rule has been enabled in ESlint for catching missing `key` i
 You might catch some violations in your project or add-on code after running ESlint.
 Adding the missing `key` property whenever the violation is reported will fix it.
 
+### `@plone/registry` moved to ESM
+
+The `@plone/registry` package has been moved to ESM.
+This unfortunately forces some import path changes that should be patched in your Plone project or add-on boilerplates.
+
+```{note}
+As always, when something changes in the boilerplate, you may regenerate one from Cookieplone and move your code into it, instead of fiddling with it.
+```
+
+For example, in your project's {file}`.eslintrc.js`:
+
+```diff
+ const fs = require('fs');
+ const projectRootPath = __dirname;
+-const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
++const AddonConfigurationRegistry =
++  require('@plone/registry/addon-registry').default;
+```
+
+Also in the Storybook configuration {file}`.storybook/main.js`.
+
+```diff
+       defaultRazzleOptions,
+     );
+-    const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
++    const AddonConfigurationRegistry =
++      require('@plone/registry/addon-registry').default;
+```
+
+```{versionadded} Volto 18.0.0-alpha.21
+```
+
+```{versionadded} @plone/scripts 3.6.1
+```
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x
