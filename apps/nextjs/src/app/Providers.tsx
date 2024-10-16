@@ -53,7 +53,7 @@ const Providers: React.FC<{
     }),
   );
 
-  let router = useRouter();
+  const router = useRouter();
 
   return (
     <PloneProvider
