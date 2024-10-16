@@ -72,6 +72,5 @@ export function AppRouterProvider(props: AppRouterProps) {
 }
 
 export function useAppRouter() {
-  const { useLocation } = useContext(AppRouterContext);
-  return useLocation();
+  return useContext(AppRouterContext);
 }
