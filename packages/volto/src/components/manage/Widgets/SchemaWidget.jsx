@@ -60,6 +60,10 @@ const messages = defineMessages({
     id: 'Default value',
     defaultMessage: 'Default value',
   },
+  placeholder: {
+    id: 'Placeholder',
+    defaultMessage: 'Placeholder',
+  },
   idTitle: {
     id: 'Short Name',
     defaultMessage: 'Short Name',
@@ -302,10 +306,22 @@ config.registerUtility({
   name: 'textarea',
   type: 'fieldFactoryProperties',
   method: (intl) => ({
+    minLength: {
+      type: 'integer',
+      title: intl.formatMessage(messages.minLength),
+    },
+    maxLength: {
+      type: 'integer',
+      title: intl.formatMessage(messages.maxLength),
+    },
     default: {
       type: 'string',
       widget: 'textarea',
       title: intl.formatMessage(messages.defaultValue),
+    },
+    placeholder: {
+      type: 'string',
+      title: intl.formatMessage(messages.placeholder),
     },
   }),
 });
@@ -561,9 +577,10 @@ config.registerUtility({
  * @param {string} factory - the kind of field
  * @param {Object} intl
  * @param {*} fieldsets
+ * @param {Boolean} allowEditId
  * @return {Object} - schema
  */
-const schemaField = (factory, intl, fieldsets) => {
+const schemaField = (factory, intl, fieldsets, allowEditId) => {
   const utility = config.getUtility({
     name: factory,
     type: 'fieldFactoryProperties',
@@ -584,6 +601,10 @@ const schemaField = (factory, intl, fieldsets) => {
           type: 'string',
           title: intl.formatMessage(messages.defaultValue),
         },
+        placeholder: {
+          type: 'string',
+          title: intl.formatMessage(messages.placeholder),
+        },
       };
 
   return {
@@ -592,6 +613,7 @@ const schemaField = (factory, intl, fieldsets) => {
         id: 'default',
         title: 'default',
         fields: [
+          ...(allowEditId ? ['id'] : []),
           ...['title', 'description', 'parentFieldSet'],
           ...keys(properties),
           ...['required'],
@@ -599,6 +621,14 @@ const schemaField = (factory, intl, fieldsets) => {
       },
     ],
     properties: {
+      ...(allowEditId
+        ? {
+            id: {
+              type: 'string',
+              title: intl.formatMessage(messages.idTitle),
+            },
+          }
+        : {}),
       title: {
         type: 'string',
         title: intl.formatMessage(messages.title),
@@ -758,9 +788,13 @@ class SchemaWidget extends Component {
      */
     filterFactory: PropTypes.arrayOf(PropTypes.string),
     /**
-     * On change handler
+     * Additional factories
      */
     additionalFactory: PropTypes.arrayOf(PropTypes.object),
+    /**
+     * Allow editing of the id
+     */
+    allowEditId: PropTypes.bool,
     /**
      * On change handler
      */
@@ -778,6 +812,7 @@ class SchemaWidget extends Component {
     error: [],
     filterFactory: null,
     additionalFactory: null,
+    allowEditId: false,
   };
 
   /**
@@ -1026,22 +1061,35 @@ class SchemaWidget extends Component {
         'Multiple Choice' ||
       this.props.value.properties[this.state.editField.id]?.factory ===
         'label_multi_choice_field';
+
+    let fieldsets = this.props.value.fieldsets;
+
+    if (this.state.editField.id !== formattedValues.id) {
+      this.props.value.fieldsets[this.state.currentFieldset].fields = map(
+        this.props.value.fieldsets[this.state.currentFieldset].fields,
+        (field) =>
+          field === this.state.editField.id ? formattedValues.id : field,
+      );
+    }
+
+    if (formattedValues.parentFieldSet) {
+      fieldsets = this.editFieldset(
+        this.props.value.fieldsets,
+        formattedValues.parentFieldSet,
+        this.state.currentFieldset,
+        this.state.editField.id,
+        formattedValues.id,
+      );
+    }
+
     const result = {
       ...this.props.value,
-      fieldsets: formattedValues.parentFieldSet
-        ? this.editFieldset(
-            this.props.value.fieldsets,
-            formattedValues.parentFieldSet,
-            this.state.currentFieldset,
-            this.state.editField.id,
-            formattedValues.id,
-          )
-        : this.props.value.fieldsets,
+      fieldsets,
       properties: {
         ...omit(this.props.value.properties, [this.state.editField.id]),
         [formattedValues.id]: {
           ...this.props.value.properties[this.state.editField.id],
-          ...omit(formattedValues, ['id', 'parentFieldSet']),
+          ...omit(formattedValues, ['parentFieldSet']),
           ...formatTextareaToArray(formattedValues.values),
           ...formatTextareaToChoices(formattedValues.values, multiple),
         },
@@ -1622,6 +1670,7 @@ class SchemaWidget extends Component {
                   fieldset.id === 'default' ||
                   fieldset.behavior.includes('generated'),
               ),
+              this.props.allowEditId,
             )}
           />
         )}
