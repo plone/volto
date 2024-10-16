@@ -58,6 +58,7 @@ exports[`SelectFacet renders a facet component with select dropdown 1`] = `
           class="react-select__indicator react-select__dropdown-indicator css-1ib5zur-DropdownIndicator"
         >
           <svg
+            aria-label=""
             class="icon"
             style="height: 24px; width: auto; fill: #007bc1;"
             viewBox=""

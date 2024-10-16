@@ -17,6 +17,7 @@ Array [
         title="Clear image"
       >
         <svg
+          aria-label=""
           className="icon"
           dangerouslySetInnerHTML={
             Object {

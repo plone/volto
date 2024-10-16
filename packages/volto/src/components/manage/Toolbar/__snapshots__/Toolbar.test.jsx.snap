@@ -31,10 +31,11 @@ Array [
           onClick={[Function]}
         >
           <svg
+            aria-label="Edit"
             className="icon circled"
             dangerouslySetInnerHTML={
               Object {
-                "__html": "<title>Edit</title>undefined",
+                "__html": "<title >Edit</title>undefined",
               }
             }
             onClick={null}
@@ -55,10 +56,11 @@ Array [
           onClick={[Function]}
         >
           <svg
+            aria-label="Contents"
             className="icon"
             dangerouslySetInnerHTML={
               Object {
-                "__html": "<title>Contents</title>undefined",
+                "__html": "<title >Contents</title>undefined",
               }
             }
             onClick={null}
@@ -81,10 +83,11 @@ Array [
           tabIndex={0}
         >
           <svg
+            aria-label="Add"
             className="icon"
             dangerouslySetInnerHTML={
               Object {
-                "__html": "<title>Add</title>undefined",
+                "__html": "<title >Add</title>undefined",
               }
             }
             onClick={null}
@@ -110,10 +113,11 @@ Array [
           tabIndex={0}
         >
           <svg
+            aria-label="More"
             className="icon mobile hidden"
             dangerouslySetInnerHTML={
               Object {
-                "__html": "<title>More</title>undefined",
+                "__html": "<title >More</title>undefined",
               }
             }
             onClick={null}
@@ -128,6 +132,7 @@ Array [
             xmlns=""
           />
           <svg
+            aria-label=""
             className="icon mobile only"
             dangerouslySetInnerHTML={
               Object {
@@ -158,10 +163,11 @@ Array [
           tabIndex={0}
         >
           <svg
+            aria-label="Personal tools"
             className="icon"
             dangerouslySetInnerHTML={
               Object {
-                "__html": "<title>Personal tools</title>undefined",
+                "__html": "<title >Personal tools</title>undefined",
               }
             }
             onClick={null}
@@ -225,10 +231,11 @@ Array [
           tabIndex={0}
         >
           <svg
+            aria-label="Unlock"
             className="icon unlock"
             dangerouslySetInnerHTML={
               Object {
-                "__html": "<title>Unlock</title>undefined",
+                "__html": "<title >Unlock</title>undefined",
               }
             }
             onClick={null}
@@ -249,10 +256,11 @@ Array [
           onClick={[Function]}
         >
           <svg
+            aria-label="Contents"
             className="icon"
             dangerouslySetInnerHTML={
               Object {
-                "__html": "<title>Contents</title>undefined",
+                "__html": "<title >Contents</title>undefined",
               }
             }
             onClick={null}
@@ -275,10 +283,11 @@ Array [
           tabIndex={0}
         >
           <svg
+            aria-label="Add"
             className="icon"
             dangerouslySetInnerHTML={
               Object {
-                "__html": "<title>Add</title>undefined",
+                "__html": "<title >Add</title>undefined",
               }
             }
             onClick={null}
@@ -304,10 +313,11 @@ Array [
           tabIndex={0}
         >
           <svg
+            aria-label="More"
             className="icon mobile hidden"
             dangerouslySetInnerHTML={
               Object {
-                "__html": "<title>More</title>undefined",
+                "__html": "<title >More</title>undefined",
               }
             }
             onClick={null}
@@ -322,6 +332,7 @@ Array [
             xmlns=""
           />
           <svg
+            aria-label=""
             className="icon mobile only"
             dangerouslySetInnerHTML={
               Object {
@@ -352,10 +363,11 @@ Array [
           tabIndex={0}
         >
           <svg
+            aria-label="Personal tools"
             className="icon"
             dangerouslySetInnerHTML={
               Object {
-                "__html": "<title>Personal tools</title>undefined",
+                "__html": "<title >Personal tools</title>undefined",
               }
             }
             onClick={null}

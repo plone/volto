@@ -69,6 +69,7 @@ exports[`FileWidget renders a file widget component with value 1`] = `
               type="button"
             >
               <svg
+                aria-label=""
                 class="icon"
                 style="height: 20px; width: auto; fill: currentColor;"
                 viewBox=""
@@ -151,6 +152,7 @@ exports[`FileWidget renders a file widget component with value in raw data 1`] =
               type="button"
             >
               <svg
+                aria-label=""
                 class="icon"
                 style="height: 20px; width: auto; fill: currentColor;"
                 viewBox=""

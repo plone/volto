@@ -108,6 +108,7 @@ exports[`renders event details component with all props 1`] = `
     className="download-event"
   >
     <svg
+      aria-label=""
       className="icon"
       dangerouslySetInnerHTML={
         Object {
@@ -150,6 +151,7 @@ exports[`renders event details component with only required props 1`] = `
     className="download-event"
   >
     <svg
+      aria-label=""
       className="icon"
       dangerouslySetInnerHTML={
         Object {
@@ -192,6 +194,7 @@ exports[`renders event details component without links to api in the text 1`] = 
     className="download-event"
   >
     <svg
+      aria-label=""
       className="icon"
       dangerouslySetInnerHTML={
         Object {

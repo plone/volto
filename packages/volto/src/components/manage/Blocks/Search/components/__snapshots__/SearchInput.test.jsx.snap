@@ -24,6 +24,7 @@ exports[`SearchInput renders a search input component 1`] = `
       onClick={[Function]}
     >
       <svg
+        aria-label=""
         className="icon"
         dangerouslySetInnerHTML={
           Object {

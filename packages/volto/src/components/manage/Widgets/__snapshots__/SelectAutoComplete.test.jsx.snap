@@ -85,6 +85,7 @@ exports[`renders a select widget component 1`] = `
                   class="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
                 >
                   <svg
+                    aria-label=""
                     class="icon"
                     style="height: 24px; width: auto; fill: #007bc1;"
                     viewBox=""

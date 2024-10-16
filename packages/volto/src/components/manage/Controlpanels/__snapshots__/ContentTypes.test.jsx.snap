@@ -97,6 +97,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon"
                           style="height: 15px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -109,6 +110,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon"
                           style="height: 15px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -121,6 +123,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon"
                           style="height: 15px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -133,6 +136,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon"
                           style="height: 15px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -185,6 +189,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon"
                           style="height: 15px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -197,6 +202,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon"
                           style="height: 15px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -209,6 +215,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon"
                           style="height: 15px; width: auto; fill: currentColor;"
                           viewBox=""
@@ -221,6 +228,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         role="option"
                       >
                         <svg
+                          aria-label=""
                           class="icon"
                           style="height: 15px; width: auto; fill: currentColor;"
                           viewBox=""

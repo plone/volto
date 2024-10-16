@@ -420,6 +420,7 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
                     class="icon item"
                   >
                     <svg
+                      aria-label="Undo"
                       class="icon circled"
                       id="undo-button"
                       style="height: 30px; width: auto; fill: currentColor;"

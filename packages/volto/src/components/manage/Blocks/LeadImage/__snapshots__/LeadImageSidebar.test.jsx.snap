@@ -68,6 +68,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                   onClick={[Function]}
                 >
                   <svg
+                    aria-label=""
                     className="icon"
                     dangerouslySetInnerHTML={
                       Object {
@@ -96,6 +97,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                   onClick={[Function]}
                 >
                   <svg
+                    aria-label=""
                     className="icon"
                     dangerouslySetInnerHTML={
                       Object {
@@ -124,6 +126,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                   onClick={[Function]}
                 >
                   <svg
+                    aria-label=""
                     className="icon"
                     dangerouslySetInnerHTML={
                       Object {
@@ -152,6 +155,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                   onClick={[Function]}
                 >
                   <svg
+                    aria-label=""
                     className="icon"
                     dangerouslySetInnerHTML={
                       Object {
@@ -186,6 +190,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
     >
       Link Settings
       <svg
+        aria-label=""
         className="icon"
         dangerouslySetInnerHTML={
           Object {

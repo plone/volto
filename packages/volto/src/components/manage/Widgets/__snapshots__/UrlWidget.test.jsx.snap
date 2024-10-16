@@ -49,6 +49,7 @@ exports[`renders an url widget component 1`] = `
                 class="ui basic icon button"
               >
                 <svg
+                  aria-label=""
                   class="icon"
                   style="height: 24px; width: auto; fill: currentColor;"
                   viewBox=""

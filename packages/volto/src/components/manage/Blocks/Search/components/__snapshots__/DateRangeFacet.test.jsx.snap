@@ -86,6 +86,7 @@ exports[`DateRangeFaceg renders a facet component with a date range widget 1`] =
                 type="button"
               >
                 <svg
+                  aria-label=""
                   class="icon close"
                   style="height: 24px; width: auto; fill: currentColor;"
                   viewBox=""
