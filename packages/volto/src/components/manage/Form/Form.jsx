@@ -90,6 +90,7 @@ class Form extends Component {
     onCancel: PropTypes.func,
     submitLabel: PropTypes.string,
     cancelLabel: PropTypes.string,
+    textButtons: PropTypes.bool,
     resetAfterSubmit: PropTypes.bool,
     resetOnCancel: PropTypes.bool,
     isEditForm: PropTypes.bool,
@@ -124,6 +125,7 @@ class Form extends Component {
     onCancel: null,
     submitLabel: null,
     cancelLabel: null,
+    textButtons: false,
     resetAfterSubmit: false,
     resetOnCancel: false,
     isEditForm: false,
@@ -999,47 +1001,90 @@ class Form extends Component {
               )}
               {!this.props.hideActions && (
                 <Segment className="actions" clearing>
-                  {onSubmit && (
-                    <Button
-                      basic
-                      primary
-                      floated="right"
-                      type="submit"
-                      aria-label={
-                        this.props.submitLabel
+                  {onSubmit &&
+                    (this.props.textButtons ? (
+                      <Button
+                        primary
+                        floated="right"
+                        type="submit"
+                        aria-label={
+                          this.props.submitLabel
+                            ? this.props.submitLabel
+                            : this.props.intl.formatMessage(messages.save)
+                        }
+                        title={
+                          this.props.submitLabel
+                            ? this.props.submitLabel
+                            : this.props.intl.formatMessage(messages.save)
+                        }
+                        loading={this.props.loading}
+                      >
+                        {this.props.submitLabel
                           ? this.props.submitLabel
-                          : this.props.intl.formatMessage(messages.save)
-                      }
-                      title={
-                        this.props.submitLabel
-                          ? this.props.submitLabel
-                          : this.props.intl.formatMessage(messages.save)
-                      }
-                      loading={this.props.loading}
-                    >
-                      <Icon className="circled" name={aheadSVG} size="30px" />
-                    </Button>
-                  )}
-                  {onCancel && (
-                    <Button
-                      basic
-                      secondary
-                      aria-label={
-                        this.props.cancelLabel
+                          : this.props.intl.formatMessage(messages.save)}
+                      </Button>
+                    ) : (
+                      <Button
+                        basic
+                        primary
+                        floated="right"
+                        type="submit"
+                        aria-label={
+                          this.props.submitLabel
+                            ? this.props.submitLabel
+                            : this.props.intl.formatMessage(messages.save)
+                        }
+                        title={
+                          this.props.submitLabel
+                            ? this.props.submitLabel
+                            : this.props.intl.formatMessage(messages.save)
+                        }
+                        loading={this.props.loading}
+                      >
+                        <Icon className="circled" name={aheadSVG} size="30px" />
+                      </Button>
+                    ))}
+                  {onCancel &&
+                    (this.props.textButtons ? (
+                      <Button
+                        secondary
+                        aria-label={
+                          this.props.cancelLabel
+                            ? this.props.cancelLabel
+                            : this.props.intl.formatMessage(messages.cancel)
+                        }
+                        title={
+                          this.props.cancelLabel
+                            ? this.props.cancelLabel
+                            : this.props.intl.formatMessage(messages.cancel)
+                        }
+                        floated="right"
+                        onClick={this.onCancel}
+                      >
+                        {this.props.cancelLabel
                           ? this.props.cancelLabel
-                          : this.props.intl.formatMessage(messages.cancel)
-                      }
-                      title={
-                        this.props.cancelLabel
-                          ? this.props.cancelLabel
-                          : this.props.intl.formatMessage(messages.cancel)
-                      }
-                      floated="right"
-                      onClick={this.onCancel}
-                    >
-                      <Icon className="circled" name={clearSVG} size="30px" />
-                    </Button>
-                  )}
+                          : this.props.intl.formatMessage(messages.cancel)}
+                      </Button>
+                    ) : (
+                      <Button
+                        basic
+                        secondary
+                        aria-label={
+                          this.props.cancelLabel
+                            ? this.props.cancelLabel
+                            : this.props.intl.formatMessage(messages.cancel)
+                        }
+                        title={
+                          this.props.cancelLabel
+                            ? this.props.cancelLabel
+                            : this.props.intl.formatMessage(messages.cancel)
+                        }
+                        floated="right"
+                        onClick={this.onCancel}
+                      >
+                        <Icon className="circled" name={clearSVG} size="30px" />
+                      </Button>
+                    ))}
                 </Segment>
               )}
             </Segment.Group>
