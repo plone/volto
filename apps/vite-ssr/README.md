@@ -5,8 +5,7 @@ This is intended to serve as both a playground for the development of both packa
 
 It also uses [TanStack Router](https://tanstack.com/router/latest/docs/framework/react/overview) for its routing library.
 
-## EXPERIMENTAL
-
-This package or app is experimental.
-The community offers no support whatsoever for it.
-Breaking changes may occur without notice.
+> [!WARNING]
+> This package or app is experimental.
+> The community offers no support whatsoever for it.
+> Breaking changes may occur without notice.

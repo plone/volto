@@ -6,8 +6,7 @@ It's one of the Plone frontend strategic packages and part of the headless CMS s
 
 `@plone/blocks` is not part of Volto, and thus, is not used by it.
 
-## EXPERIMENTAL
-
-This package or app is experimental.
-The community offers no support whatsoever for it.
-Breaking changes may occur without notice.
+> [!WARNING]
+> This package or app is experimental.
+> The community offers no support whatsoever for it.
+> Breaking changes may occur without notice.
