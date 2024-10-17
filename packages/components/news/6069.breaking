@@ -1,6 +1,6 @@
-Removed the `FlattenToAppURLProvider` since is no longer needed @sneridagh
-The components in here are meant to to need it.
-Refactored the `Link` component to not use it since `react-aria-components` use the React Client Routing facilities that can be injected in the React tree.
+Removed the `FlattenToAppURLProvider` since it's no longer needed. @sneridagh
+The components in here need it.
+Refactored the `Link` component to not use it, since `react-aria-components` uses the React Client Routing facilities that can be injected into the React tree.
 
 Breaking:
-  - Use the new providers in @plone/providers instead to make the new Link work with them
+  - Use the new providers in `@plone/providers` instead to make the new `Link` work with them.
