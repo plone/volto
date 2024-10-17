@@ -1622,6 +1622,12 @@ importers:
 
   packages/slots:
     dependencies:
+      '@plone/client':
+        specifier: workspace:*
+        version: link:../client
+      '@plone/components':
+        specifier: workspace:*
+        version: link:../components
       '@plone/providers':
         specifier: workspace:*
         version: link:../providers
