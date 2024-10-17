@@ -7,7 +7,7 @@ myst:
     "keywords": "Volto, Plone, Semantic UI, CSS, Volto theme, add-on, static, assets, files, build"
 ---
 
-# Add static files from your add-on to your build
+# How to add static files from your add-on to your build
 
 In the Volto build process, you can add static files to your build, then serve them along with the compiled files.
 Static files are not transformed or compiled by the build process.
