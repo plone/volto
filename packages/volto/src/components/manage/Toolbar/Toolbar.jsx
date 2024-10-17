@@ -445,6 +445,7 @@ class Toolbar extends Component {
                         theToolbar={this.toolbarWindow}
                         key={`personalToolsComponent-${index}`}
                         closeMenu={this.closeMenu}
+                        actions={this.props.actions}
                         content={
                           toolbarComponents[component].contentAsProps
                             ? this.props.content
