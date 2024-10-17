@@ -11,7 +11,7 @@ describe('Navigation', () => {
     cy.wait('@content');
   });
   it('Given an private page, when I logout it is not present in nav anymore', function () {
-    cy.findByLabelText('Personal tools').click();
+    cy.findByLabelText('Site and user settings').click();
     cy.get('#toolbar-logout').click();
     cy.wait(1000);
     cy.get('#navigation a.item').contains('My Page').should('not.exist');
