@@ -146,7 +146,7 @@ export type PloneClientProviderProps = {
 };
 ```
 
-Second, use its related hook through the following example.
+Second, use its related hook through either of the following examples.
 
 ```tsx
 import { usePloneClient } from '@plone/providers';
