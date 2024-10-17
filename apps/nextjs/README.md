@@ -2,6 +2,11 @@
 
 This is a proof of concept of a [Next.js](https://nextjs.org) app, using the app router and the `@plone/client` and `@plone/components` library. This is intended to serve as both a playground for the development of both packages and as demo of Plone using Next.js.
 
+> [!WARNING]
+> This package or app is experimental.
+> The community offers no support whatsoever for it.
+> Breaking changes may occur without notice.
+
 ## Development
 
 To start, from the root of the monorepo:
