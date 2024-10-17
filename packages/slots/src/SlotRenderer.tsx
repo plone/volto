@@ -1,28 +1,28 @@
 import React from 'react';
-import { useAppRouter } from '@plone/providers';
 import config from '@plone/registry';
 
-import type { Content } from '@plone/types';
+import type { GetSlotArgs } from '@plone/types';
 
 /*
-Usage:
-<SlotRenderer name="aboveContent" content={content} />
-*/
-
+ * The SlotRenderer component is used to render the components registered for a
+ * given slot.
+ *
+ * Usage:
+ * <SlotRenderer name="aboveContent" content={content} location={location} />
+ */
 const SlotRenderer = ({
   name,
   content,
+  location,
   navRoot,
 }: {
   name: string;
-  content: Content;
-  navRoot?: Content;
+  content: GetSlotArgs['content'];
+  location: GetSlotArgs['location'];
+  navRoot?: GetSlotArgs['navRoot'];
 }) => {
-  const location = useAppRouter().useLocation();
-
   let slots = config.getSlot(name, {
     content,
-    // @ts-expect-error TODO: improve the types of @plone/registry later
     location,
     // This is to cover the use case while adding a new content and we don't have
     // have the navRoot information in the initial content. This will be
