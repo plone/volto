@@ -12,7 +12,9 @@ export function flattenToAppURL(url: string | undefined) {
   const { settings } = config;
   return (
     (url &&
-      url.replace(settings.apiPath, '').replace('http://localhost:3000', '')) ||
+      url
+        .replace(settings.apiPath, '')
+        .replace('http://localhost:8080/Plone', '')) ||
     '/'
   );
 }

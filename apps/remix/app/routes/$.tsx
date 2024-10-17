@@ -18,8 +18,8 @@ import { ploneClient } from '../client';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'New Remix App' },
-    { name: 'description', content: 'Welcome to Remix!' },
+    { title: 'Plone on Remix' },
+    { name: 'description', content: 'Welcome to Plone on Remix!' },
   ];
 };
 
