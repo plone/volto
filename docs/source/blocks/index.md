@@ -19,5 +19,6 @@ editcomponent
 block-style-wrapper
 extensions
 ssr
+viewcontext
 core/index
 ```

@@ -1,0 +1,1 @@
+Introduce context provider in view component. @ksuess

@@ -138,3 +138,5 @@ export const layoutViewsNamesMapping = {
   view: 'Default view',
   default: 'Default view',
 };
+
+export const viewContext = {};

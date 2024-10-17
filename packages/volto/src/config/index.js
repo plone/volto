@@ -6,6 +6,7 @@ import {
   defaultView,
   errorViews,
   layoutViewsNamesMapping,
+  viewContext,
 } from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
 import { nonContentRoutesPublic } from './NonContentRoutesPublic';
@@ -205,6 +206,7 @@ let config = {
     defaultView,
     errorViews,
     layoutViewsNamesMapping,
+    viewContext,
   },
   blocks: {
     requiredBlocks,
