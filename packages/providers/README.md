@@ -2,7 +2,7 @@
 
 This package contains utility providers for Plone React components.
 The main purpose is to provide dependency injection of common required artifacts needed by any app.
-This artifacts are:
+These artifacts include:
 - Router related
 - Plone Client
 - URL handling methods
@@ -28,7 +28,7 @@ interface PloneProvider {
 }
 ```
 
-It should be instantated at the top of your app.
+It should be instantiated at the top of your app.
 You have to provide the required props depending on the framework and the router used.
 This is the example for a Next.js app.
 Please refer to the {file}`apps` folder of the Volto repository for more examples of the usage of `PloneProvider` in different React frameworks.
@@ -115,7 +115,7 @@ export default Providers;
 
 ```
 
-You can use anywhere in your app by using the hook `usePloneProvider`.
+You can use it anywhere in your app by using the hook `usePloneProvider`.
 
 ```tsx
 import { usePloneProvider } from '@plone/providers';
@@ -123,17 +123,20 @@ import { usePloneProvider } from '@plone/providers';
 const { ploneClient } = usePloneProvider()
 ```
 
-or any other context property.
+Alternatively, you can use it in any other context property.
 
 ```tsx
 const { navigate } = usePloneProvider()
 ```
 
-### `PloneClientProvider`
+## `PloneClientProvider`
 
 `PloneProvider` in a group of other smaller providers.
-In case you need them separatedly, you can also instantiate and use them standalone.
-However, only do this is the framework has some limitation on using the bulk `PloneClientProvider`.
+You can also instantiate and use them as standalone providers.
+However, you should do this only if the framework has some limitation on using the bulk `PloneClientProvider`.
+
+The following snippets show its usage.
+First, instantiate the provider.
 
 ```ts
 export type PloneClientProviderProps = {
@@ -143,7 +146,7 @@ export type PloneClientProviderProps = {
 };
 ```
 
-and the related hook:
+Second, use its related hook through the following example.
 
 ```tsx
 import { usePloneClient } from '@plone/providers';
@@ -157,11 +160,13 @@ or
 const { getContentQuery } = usePloneClient()
 ```
 
-### `AppRouterProvider`
+## `AppRouterProvider`
 
 This provider is included also in `PloneProvider`.
-In case you need it separatedly, you can also instantiate and use it standalone.
-However, only do this is the framework has some limitation on using the bulk `PloneClientProvider`.
+You can also instantiate and use it as a standalone provider.
+However, you should do this only if the framework has some limitation on using the bulk `PloneClientProvider`.
+
+The following code example shows its usage.
 
 ```ts
 interface AppRouterProps {
@@ -174,7 +179,7 @@ interface AppRouterProps {
 }
 ```
 
-and the related hook:
+The following code sample shows its related hook.
 
 ```tsx
 import { useAppRouter } from '@plone/providers';
