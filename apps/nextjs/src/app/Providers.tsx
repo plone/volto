@@ -15,8 +15,8 @@ import config from './config';
 
 // Custom hook to unify the location object between NextJS and Plone
 function useLocation() {
-  let pathname = usePathname();
-  let search = useSearchParams();
+  const pathname = usePathname();
+  const search = useSearchParams();
 
   return {
     pathname,
@@ -53,7 +53,7 @@ const Providers: React.FC<{
     }),
   );
 
-  let router = useRouter();
+  const router = useRouter();
 
   return (
     <PloneProvider

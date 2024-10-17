@@ -1,7 +1,7 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
 import { usePathname } from 'next/navigation';
-import { usePloneClient, usePloneProvider } from '@plone/providers';
+import { usePloneClient } from '@plone/providers';
 import { Breadcrumbs, RenderBlocks } from '@plone/components';
 import config from '@plone/registry';
 
@@ -10,7 +10,7 @@ import '@plone/components/dist/basic.css';
 export default function Content() {
   const { getContentQuery } = usePloneClient();
   const pathname = usePathname();
-  const { data, isLoading } = useQuery(getContentQuery({ path: pathname }));
+  const { data } = useQuery(getContentQuery({ path: pathname }));
 
   if (data) {
     return (

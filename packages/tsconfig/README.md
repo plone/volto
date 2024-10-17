@@ -28,8 +28,7 @@ In `package.json`:
 }
 ```
 
-## EXPERIMENTAL
-
-This package or app is experimental.
-The community offers no support whatsoever for it.
-Breaking changes may occur without notice.
+> [!WARNING]
+> This package or app is experimental.
+> The community offers no support whatsoever for it.
+> Breaking changes may occur without notice.

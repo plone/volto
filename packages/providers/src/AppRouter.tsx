@@ -1,7 +1,6 @@
 import React, { createContext, ReactNode, useContext, useMemo } from 'react';
 import { RouterProvider } from 'react-aria-components';
-import { FlattenToAppURLProvider } from '@plone/components';
-import { flattenToAppURL } from './utils';
+import { flattenToAppURL as defaultFlattenToAppURL } from './utils';
 
 export type AnySearchSchema = {};
 export interface Location<TSearchObj extends AnySearchSchema = {}> {
@@ -33,7 +32,7 @@ const AppRouterContext = createContext<AppRouter>({
   useParams: () => ({}),
   navigate: () => {},
   useHref: () => '',
-  flattenToAppURL,
+  flattenToAppURL: defaultFlattenToAppURL,
 });
 
 interface AppRouterProps {
@@ -49,6 +48,10 @@ export function AppRouterProvider(props: AppRouterProps) {
   let { children, navigate, useLocation, useParams, useHref, flattenToAppURL } =
     props;
 
+  if (!flattenToAppURL) {
+    flattenToAppURL = defaultFlattenToAppURL;
+  }
+
   let ctx = useMemo(
     () => ({
       useLocation,
@@ -63,9 +66,7 @@ export function AppRouterProvider(props: AppRouterProps) {
   return (
     <AppRouterContext.Provider value={ctx}>
       <RouterProvider navigate={navigate} useHref={useHref}>
-        <FlattenToAppURLProvider flattenToAppURL={flattenToAppURL}>
-          {children}
-        </FlattenToAppURLProvider>
+        {children}
       </RouterProvider>
     </AppRouterContext.Provider>
   );

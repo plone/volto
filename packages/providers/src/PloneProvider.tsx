@@ -3,7 +3,7 @@ import { QueryClient } from '@tanstack/react-query';
 import { AppRouterProvider, Location } from './AppRouter';
 import { PloneClientProvider } from './PloneClient';
 import PloneClient from '@plone/client';
-import { flattenToAppURL } from './utils';
+import { flattenToAppURL as defaultFlattenToAppURL } from './utils';
 
 interface PloneProvider {
   ploneClient: InstanceType<typeof PloneClient>;
@@ -28,7 +28,7 @@ const PloneProviderContext = createContext<PloneProvider>({
   useParams: () => ({}),
   navigate: () => {},
   useHref: () => '',
-  flattenToAppURL,
+  flattenToAppURL: defaultFlattenToAppURL,
 });
 
 interface PloneProviderProps {
@@ -38,7 +38,7 @@ interface PloneProviderProps {
   useParams: (opts?: any) => Record<string, string>;
   navigate: (path: string) => void;
   useHref?: (to: string, options?: any) => string;
-  flattenToAppURL: (path: string | undefined) => string | undefined;
+  flattenToAppURL?: (path: string | undefined) => string | undefined;
   children: ReactNode;
 }
 
@@ -51,7 +51,12 @@ export function PloneProvider(props: PloneProviderProps) {
     useHref,
     ploneClient,
     queryClient,
+    flattenToAppURL,
   } = props;
+
+  if (!flattenToAppURL) {
+    flattenToAppURL = defaultFlattenToAppURL;
+  }
 
   let ctx = useMemo(
     () => ({
