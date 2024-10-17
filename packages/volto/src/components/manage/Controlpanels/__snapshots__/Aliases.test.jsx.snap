@@ -181,6 +181,9 @@ exports[`Aliases renders an aliases control component 1`] = `
               <div
                 class="field"
               />
+              <div
+                class="field"
+              />
               <button
                 class="ui primary button"
               >

@@ -1,12 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import {
-  getBaseUrl,
-  getParentUrl,
-  Helmet,
-  usePrevious,
-} from '@plone/volto/helpers';
+import { getBaseUrl, getParentUrl, Helmet } from '@plone/volto/helpers';
 import { removeAliases, addAliases, getAliases } from '@plone/volto/actions';
 import { createPortal } from 'react-dom';
 import {
@@ -67,92 +62,84 @@ const Aliases = (props) => {
   const { pathname } = useLocation();
   const history = useHistory();
 
+  const hasAdvancedFiltering = useSelector(
+    (state) => state.site.data?.features?.filter_aliases_by_date,
+  );
   const aliases = useSelector((state) => state.aliases);
   const [filterType, setFilterType] = useState(filterChoices[0]);
   const [createdBefore, setCreatedBefore] = useState(null);
+  const [createdAfter, setCreatedAfter] = useState(null);
   const [altUrlPath, setAltUrlPath] = useState('');
-  const [isAltUrlCorrect, setIsAltUrlCorrect] = useState(false);
   const [targetUrlPath, setTargetUrlPath] = useState('');
   const [aliasesToRemove, setAliasesToRemove] = useState([]);
-  const [errorMessageAdd, setErrorMessageAdd] = useState('');
   const [filterQuery, setFilterQuery] = useState('');
   const [activePage, setActivePage] = useState(1);
-  const [pages, setPages] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const isClient = useClient();
 
-  const prevaliasesitemstotal = usePrevious(aliases.items_total);
-  const previtemsPerPage = usePrevious(itemsPerPage);
-  const prevactivePage = usePrevious(activePage);
-  const prevalturlpath = usePrevious(altUrlPath);
-  const prevtargetUrlPath = usePrevious(targetUrlPath);
-  const prevaliasesaddloading = usePrevious(aliases.add.loading);
-  const prevaliasesremoveloading = usePrevious(aliases.remove.loading);
-
-  useEffect(() => {
-    if (
-      prevaliasesitemstotal !== aliases.items_total ||
-      previtemsPerPage !== itemsPerPage
-    ) {
-      const pages = Math.ceil(aliases.items_total / itemsPerPage);
-
-      if (pages === 0 || isNaN(pages)) {
-        setPages('');
-      } else {
-        setPages(pages);
-      }
+  const updateResults = useCallback(() => {
+    const options = {
+      query: filterQuery,
+      manual: filterType.value,
+      batchStart: (activePage - 1) * itemsPerPage,
+      batchSize: itemsPerPage === 'All' ? 999999999999 : itemsPerPage,
+    };
+    if (hasAdvancedFiltering) {
+      options.start = createdAfter || '';
+      options.end = createdBefore || '';
+    } else {
+      options.datetime = createdBefore || '';
     }
-    if (prevactivePage !== activePage || previtemsPerPage !== itemsPerPage) {
-      dispatch(
-        getAliases(getBaseUrl(pathname), {
-          query: filterQuery,
-          manual: filterType.value,
-          datetime: createdBefore,
-          batchSize: itemsPerPage === 'All' ? 999999999999 : itemsPerPage,
-          batchStart: (activePage - 1) * itemsPerPage,
-        }),
-      );
-    }
-    if (prevalturlpath !== altUrlPath) {
-      if (altUrlPath.charAt(0) === '/') {
-        setIsAltUrlCorrect(true);
-      } else {
-        setIsAltUrlCorrect(false);
-      }
-    }
+    dispatch(getAliases(getBaseUrl(pathname), options));
   }, [
-    itemsPerPage,
-    pathname,
-    prevaliasesitemstotal,
-    aliases.items_total,
-    previtemsPerPage,
-    prevactivePage,
     activePage,
-    prevalturlpath,
-    altUrlPath,
-    prevtargetUrlPath,
-    targetUrlPath,
+    createdAfter,
+    createdBefore,
     dispatch,
     filterQuery,
     filterType.value,
-    createdBefore,
+    hasAdvancedFiltering,
+    itemsPerPage,
+    pathname,
   ]);
 
-  useEffect(() => {
-    if (prevaliasesaddloading && !aliases.add.loaded) {
-      if (aliases.add.error) {
-        setErrorMessageAdd(aliases.add.error.response.body.message);
-      }
+  // Update results after changing the page.
+  // (We intentionally leave updateResults out of the deps.)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => updateResults(), [activePage, itemsPerPage]);
+
+  // Calculate page count from results
+  const pages = useMemo(() => {
+    let pages = Math.ceil(aliases.items_total / itemsPerPage);
+    if (pages === 0 || isNaN(pages)) {
+      pages = '';
     }
-    if (prevaliasesaddloading && aliases.add.loaded) {
-      dispatch(
-        getAliases(getBaseUrl(pathname), {
-          query: filterQuery,
-          manual: filterType.value,
-          datetime: createdBefore,
-          batchSize: itemsPerPage,
-        }),
-      );
+    return pages;
+  }, [aliases.items_total, itemsPerPage]);
+
+  // Validate altUrlPath starts with a slash
+  const isAltUrlCorrect = useMemo(() => {
+    return Boolean(altUrlPath.charAt(0) === '/');
+  }, [altUrlPath]);
+
+  // Check for errors on add
+  const errorMessageAdd = aliases.add.error?.response?.body?.message;
+
+  // Add new alias
+  const handleSubmitAlias = useCallback(() => {
+    dispatch(
+      addAliases('', {
+        items: [
+          {
+            path: altUrlPath,
+            'redirect-to': targetUrlPath,
+          },
+        ],
+      }),
+    ).then(() => {
+      updateResults();
+      setAltUrlPath('');
+      setTargetUrlPath('');
       toast.success(
         <Toast
           success
@@ -160,122 +147,26 @@ const Aliases = (props) => {
           content={intl.formatMessage(messages.successAdd)}
         />,
       );
-      if (!aliases.add.error) {
-        setErrorMessageAdd('');
-      }
-    }
-    if (prevaliasesremoveloading && aliases.remove.loaded) {
-      dispatch(
-        getAliases(getBaseUrl(pathname), {
-          query: filterQuery,
-          manual: filterType.value,
-          datetime: createdBefore,
-          batchSize: itemsPerPage,
-        }),
-      );
-    }
-  }, [
-    prevaliasesaddloading,
-    aliases.add.loaded,
-    aliases.add.error,
-    aliases.remove.loaded,
-    prevaliasesremoveloading,
-    dispatch,
-    pathname,
-    filterQuery,
-    filterType.value,
-    createdBefore,
-    itemsPerPage,
-    intl,
-  ]);
+    });
+  }, [altUrlPath, targetUrlPath, dispatch, intl, updateResults]);
 
-  const onCancel = () => {
-    history.push(getParentUrl(pathname));
-  };
-
-  const handleSelectFilterType = (type) => {
-    setFilterType(type);
-  };
-
-  const handleFilterQueryChange = (query) => {
-    setFilterQuery(query);
-  };
-
-  const handleCreateDate = (date) => {
-    setCreatedBefore(date);
-  };
-
-  const handleSubmitFilter = () => {
-    dispatch(
-      getAliases(getBaseUrl(pathname), {
-        query: filterQuery,
-        manual: filterType.value,
-        datetime: createdBefore,
-        batchSize: itemsPerPage,
-      }),
-    );
-  };
-
-  const handleAltUrlChange = (url) => {
-    setAltUrlPath(url);
-  };
-
-  const handleTargetUrlChange = (url) => {
-    setTargetUrlPath(url);
-  };
-
-  const handleSubmitAlias = useCallback(() => {
-    if (isAltUrlCorrect) {
-      dispatch(
-        addAliases('', {
-          items: [
-            {
-              path: altUrlPath,
-              'redirect-to': targetUrlPath,
-            },
-          ],
-        }),
-      );
-      setAltUrlPath('');
-      setTargetUrlPath('');
-    }
-  }, [isAltUrlCorrect, altUrlPath, targetUrlPath, dispatch]);
-
+  // Check/uncheck an alias
   const handleCheckAlias = (alias) => {
-    const aliasess = [...aliasesToRemove];
-    if (aliasess.includes(alias)) {
-      const index = aliasess.indexOf(alias);
-      if (index > -1) {
-        let newAliasesArr = aliasess;
-        newAliasesArr.splice(index, 1);
-        setAliasesToRemove(newAliasesArr);
-      }
+    if (aliasesToRemove.includes(alias)) {
+      setAliasesToRemove(aliasesToRemove.filter((x) => x !== alias));
     } else {
       setAliasesToRemove([...aliasesToRemove, alias]);
     }
   };
-  const handleRemoveAliases = () => {
-    const items = aliasesToRemove.map((a) => {
-      return {
-        path: a,
-      };
-    });
 
+  // Remove selected aliases
+  const handleRemoveAliases = () => {
     dispatch(
       removeAliases('', {
-        items,
+        items: aliasesToRemove.map((a) => ({ path: a })),
       }),
-    );
+    ).then(updateResults);
     setAliasesToRemove([]);
-  };
-
-  const handlePageChange = (e, { activePage }) => {
-    setActivePage(activePage);
-  };
-
-  const handleItemsPerPage = (e, { value }) => {
-    setItemsPerPage(value);
-    setActivePage(1);
   };
 
   return (
@@ -311,7 +202,7 @@ const Aliases = (props) => {
                     name="alternative-url-path"
                     placeholder="/example"
                     value={altUrlPath}
-                    onChange={(e) => handleAltUrlChange(e.target.value)}
+                    onChange={(e) => setAltUrlPath(e.target.value)}
                   />
                   {!isAltUrlCorrect && altUrlPath !== '' && (
                     <p style={{ color: 'red' }}>
@@ -340,7 +231,7 @@ const Aliases = (props) => {
                     name="target-url-path"
                     placeholder="/example"
                     value={targetUrlPath}
-                    onChange={(e) => handleTargetUrlChange(e.target.value)}
+                    onChange={(e) => setTargetUrlPath(e.target.value)}
                   />
                 </Form.Field>
                 <Button
@@ -387,7 +278,7 @@ const Aliases = (props) => {
                     name="filter"
                     placeholder="/example"
                     value={filterQuery}
-                    onChange={(e) => handleFilterQueryChange(e.target.value)}
+                    onChange={(e) => setFilterQuery(e.target.value)}
                   />
                 </Form.Field>
                 <Header size="small">
@@ -403,7 +294,7 @@ const Aliases = (props) => {
                       name="radioGroup"
                       value={o.value}
                       checked={filterType === o}
-                      onChange={() => handleSelectFilterType(o)}
+                      onChange={() => setFilterType(o)}
                     />
                   </Form.Field>
                 ))}
@@ -414,11 +305,24 @@ const Aliases = (props) => {
                     dateOnly={true}
                     value={createdBefore}
                     onChange={(id, value) => {
-                      handleCreateDate(value);
+                      setCreatedBefore(value);
                     }}
                   />
                 </Form.Field>
-                <Button onClick={() => handleSubmitFilter()} primary>
+                {hasAdvancedFiltering && (
+                  <Form.Field>
+                    <DatetimeWidget
+                      id="created-after-date"
+                      title={'Created after'}
+                      dateOnly={true}
+                      value={createdAfter}
+                      onChange={(id, value) => {
+                        setCreatedAfter(value);
+                      }}
+                    />
+                  </Form.Field>
+                )}
+                <Button onClick={() => updateResults()} primary>
                   Filter
                 </Button>
                 <Header size="small">
@@ -492,7 +396,9 @@ const Aliases = (props) => {
                       lastItem={null}
                       siblingRange={1}
                       totalPages={pages}
-                      onPageChange={(e, o) => handlePageChange(e, o)}
+                      onPageChange={(e, { activePage }) =>
+                        setActivePage(activePage)
+                      }
                     />
                   )}
                   <Menu.Menu
@@ -512,7 +418,10 @@ const Aliases = (props) => {
                         key={size}
                         value={size}
                         active={size === itemsPerPage}
-                        onClick={(e, o) => handleItemsPerPage(e, o)}
+                        onClick={(e, { value }) => {
+                          setItemsPerPage(value);
+                          setActivePage(1);
+                        }}
                       >
                         {size}
                       </Menu.Item>
@@ -540,7 +449,11 @@ const Aliases = (props) => {
             pathname={pathname}
             hideDefaultViewButtons
             inner={
-              <Link className="item" to="#" onClick={() => onCancel()}>
+              <Link
+                className="item"
+                to="#"
+                onClick={() => history.push(getParentUrl(pathname))}
+              >
                 <Icon
                   name={backSVG}
                   className="contents circled"
