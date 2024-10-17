@@ -1,18 +1,19 @@
-import type { Content } from '@plone/types';
+import type { GetSlotArgs } from '@plone/types';
 import SlotRenderer from './SlotRenderer';
 
 type HeaderProps = {
-  content: Content;
+  content: GetSlotArgs['content'];
+  location: GetSlotArgs['location'];
 };
 
 const Header = (props: HeaderProps) => {
-  const { content } = props;
+  const { content, location } = props;
 
   return (
     <>
-      <SlotRenderer name="logo" content={content} />
-      <SlotRenderer name="Sections" content={content} />
-      <SlotRenderer name="tools" content={content} />
+      <SlotRenderer name="logo" content={content} location={location} />
+      <SlotRenderer name="Sections" content={content} location={location} />
+      <SlotRenderer name="tools" content={content} location={location} />
     </>
   );
 };
