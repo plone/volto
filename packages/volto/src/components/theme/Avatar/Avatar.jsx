@@ -5,6 +5,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getInitials } from '@plone/volto/helpers';
+import { Image } from '@plone/volto/components';
 
 const defaultSize = 30;
 const defaultColor = 'Teal';
@@ -15,7 +16,7 @@ const Avatar = ({ src, title, text, size, color, className }) => {
   return (
     <div className={className} title={title}>
       {src ? (
-        <img src={src} alt={title}></img>
+        <Image src={src} alt={title} />
       ) : (
         <svg width={size} height={size}>
           <circle cx={radius} cy={radius} r={radius} fill={color} />
