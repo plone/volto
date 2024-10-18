@@ -55,9 +55,6 @@ export { Tooltip } from './components/Tooltip/Tooltip';
 export { RenderBlocks } from './views/RenderBlocks/RenderBlocks';
 export { DefaultBlockView } from './views/RenderBlocks/DefaultBlockView';
 
-export { FlattenToAppURLProvider } from './providers/flattenToAppURL';
-export { useFlattenToAppURL } from './providers/flattenToAppURL';
-
 // Quanta components
 export { QuantaTextField } from './components/quanta/TextField/TextField';
 export { QuantaTextAreaField } from './components/quanta/TextAreaField/TextAreaField';

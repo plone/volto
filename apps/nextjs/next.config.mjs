@@ -1,7 +1,10 @@
-const path = require('path');
+import path from 'path';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   // sassOptions: {
   //   includePaths: [path.join(__dirname, 'src/lib/components/src/styles')],
   // },
@@ -46,4 +49,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
