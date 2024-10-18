@@ -7,6 +7,7 @@ import {
   GET_ALIASES,
   ADD_ALIASES,
   REMOVE_ALIASES,
+  UPLOAD_ALIASES,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -65,6 +66,23 @@ export function removeAliases(url, data) {
       op: 'del',
       path: `${url}/@aliases`,
       data,
+    },
+  };
+}
+
+/**
+ * Upload aliases function.
+ * @function uploadAliases
+ * @param {Object} file CSV file.
+ * @returns {Object} Upload aliases action.
+ */
+export function uploadAliases(file) {
+  return {
+    type: UPLOAD_ALIASES,
+    request: {
+      op: 'post',
+      path: '/@aliases',
+      attach: [['file', file]],
     },
   };
 }

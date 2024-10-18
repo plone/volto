@@ -2,7 +2,12 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { getBaseUrl, getParentUrl, Helmet } from '@plone/volto/helpers';
-import { removeAliases, addAliases, getAliases } from '@plone/volto/actions';
+import {
+  removeAliases,
+  addAliases,
+  getAliases,
+  uploadAliases,
+} from '@plone/volto/actions/aliases/aliases';
 import { createPortal } from 'react-dom';
 import {
   Container,
@@ -50,6 +55,10 @@ const messages = defineMessages({
   successAdd: {
     id: 'Alias has been added',
     defaultMessage: 'Alias has been added',
+  },
+  successUpload: {
+    id: 'Aliases have been uploaded.',
+    defaultMessage: 'Aliases have been uploaded.',
   },
   filterByPrefix: {
     id: 'Filter by prefix',
@@ -119,6 +128,7 @@ const Aliases = (props) => {
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [addModalOpen, setAddModalOpen] = useState(false);
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
+  const [uploadError, setUploadError] = useState(null);
   const isClient = useClient();
 
   const updateResults = useCallback(() => {
@@ -216,7 +226,28 @@ const Aliases = (props) => {
     setAliasesToRemove([]);
   };
 
-  const handleBulkUpload = () => {};
+  const handleBulkUpload = (formData) => {
+    fetch(`data:${formData.file['content-type']};base64,${formData.file.data}`)
+      .then((res) => res.blob())
+      .then((blob) => {
+        dispatch(uploadAliases(blob))
+          .then(() => {
+            updateResults();
+            setUploadError(null);
+            setUploadModalOpen(false);
+            toast.success(
+              <Toast
+                success
+                title={intl.formatMessage(messages.success)}
+                content={intl.formatMessage(messages.successUpload)}
+              />,
+            );
+          })
+          .catch((error) => {
+            setUploadError(error.response?.body?.message);
+          });
+      });
+  };
 
   return (
     <div id="page-aliases">
@@ -346,7 +377,9 @@ const Aliases = (props) => {
               <ModalForm
                 open={uploadModalOpen}
                 onSubmit={handleBulkUpload}
+                onCancel={() => setUploadModalOpen(false)}
                 title={intl.formatMessage(messages.BulkUploadAltUrls)}
+                submitError={uploadError}
                 description={
                   <>
                     <p>
