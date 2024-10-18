@@ -93,6 +93,11 @@ msgstr ""
 msgid "Add Addons"
 msgstr ""
 
+#. Default: "Add Alternative URL"
+#: components/manage/Controlpanels/Aliases
+msgid "Add Alternative URL"
+msgstr ""
+
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
 msgid "Add Content"
@@ -328,11 +333,6 @@ msgstr "Tudo"
 msgid "All content"
 msgstr ""
 
-#. Default: "All existing alternative urls for this site"
-#: components/manage/Controlpanels/Aliases
-msgid "All existing alternative urls for this site"
-msgstr ""
-
 #. Default: "Alphabetically"
 #: components/theme/Search/Search
 msgid "Alphabetically"
@@ -355,20 +355,24 @@ msgstr ""
 msgid "Alt text hint link text"
 msgstr ""
 
-#. Default: "Alternative url path (Required)"
+#. Default: "Alternative URL path (Required)"
 #: components/manage/Controlpanels/Aliases
-msgid "Alternative url path (Required)"
+msgid "Alternative URL path (Required)"
+msgstr ""
+
+#. Default: "Alternative URL path must start with a slash."
+#: components/manage/Controlpanels/Aliases
+msgid "Alternative URL path must start with a slash."
+msgstr ""
+
+#. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
+#: components/manage/Controlpanels/Aliases
+msgid "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
 msgstr ""
 
 #. Default: "Alternative url path must start with a slash."
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 msgid "Alternative url path must start with a slash."
-msgstr ""
-
-#. Default: "Alternative url path → target url path (date and time of creation, manually created yes/no)"
-#: components/manage/Controlpanels/Aliases
-msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr ""
 
 #. Default: "Applied to subfolders"
@@ -525,6 +529,7 @@ msgstr ""
 #. Default: "Cancel"
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -833,6 +838,16 @@ msgstr ""
 #. Default: "Create working copy"
 #: components/manage/Toolbar/More
 msgid "Create working copy"
+msgstr ""
+
+#. Default: "Created after"
+#: components/manage/Controlpanels/Aliases
+msgid "Created after"
+msgstr ""
+
+#. Default: "Created before"
+#: components/manage/Controlpanels/Aliases
+msgid "Created before"
 msgstr ""
 
 #. Default: "Created by {creator} on {date}"
@@ -1292,14 +1307,18 @@ msgstr "Escreva o nome completo. Por exemplo, José Silva."
 msgid "Enter map Embed Code"
 msgstr ""
 
-#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
 #: components/manage/Controlpanels/Aliases
-msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
+msgstr ""
+
+#. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+#: components/manage/Controlpanels/Aliases
+msgid "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
 msgstr ""
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 msgstr ""
 
@@ -1388,6 +1407,11 @@ msgstr ""
 #. Default: "Excluded from navigation"
 #: components/manage/Contents/Contents
 msgid "Excluded from navigation"
+msgstr ""
+
+#. Default: "Existing alternative URLs for this site"
+#: components/manage/Controlpanels/Aliases
+msgid "Existing alternative URLs for this site"
 msgstr ""
 
 #. Default: "Existing alternative urls for this item"
@@ -1495,7 +1519,7 @@ msgstr ""
 msgid "Filter Rules:"
 msgstr ""
 
-#. Default: "Filter by prefix"
+#. Default: "Filter by path"
 #: components/manage/Controlpanels/Aliases
 msgid "Filter by prefix"
 msgstr ""
@@ -2144,11 +2168,6 @@ msgstr ""
 #. Default: "Manual"
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
-msgstr ""
-
-#. Default: "Manually or automatically added?"
-#: components/manage/Controlpanels/Aliases
-msgid "Manually or automatically added?"
 msgstr ""
 
 #. Default: "Many relations found. Please search."
@@ -3590,7 +3609,6 @@ msgstr "Etiquetas a remover"
 
 #. Default: "Target"
 #: components/manage/Blocks/Teaser/schema
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Target"
@@ -4645,6 +4663,11 @@ msgstr ""
 #. Default: "log in"
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
+msgstr ""
+
+#. Default: "Manually or automatically added?"
+#: components/manage/Controlpanels/Aliases
+msgid "manualOrAuto"
 msgstr ""
 
 #. Default: "Maps"

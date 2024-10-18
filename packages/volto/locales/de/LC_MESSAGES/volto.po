@@ -93,6 +93,11 @@ msgstr "Hinzufügen"
 msgid "Add Addons"
 msgstr "Hier werden verfügbare und installierte Backend-Add-ons gezeigt. Informationen wie Weitere hinzugefügt werden können, finden sich hier:"
 
+#. Default: "Add Alternative URL"
+#: components/manage/Controlpanels/Aliases
+msgid "Add Alternative URL"
+msgstr ""
+
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
 msgid "Add Content"
@@ -328,11 +333,6 @@ msgstr "Alle"
 msgid "All content"
 msgstr "Alle Inhalte"
 
-#. Default: "All existing alternative urls for this site"
-#: components/manage/Controlpanels/Aliases
-msgid "All existing alternative urls for this site"
-msgstr "Alle existierenden, alternativen Pfade für diese Seite"
-
 #. Default: "Alphabetically"
 #: components/theme/Search/Search
 msgid "Alphabetically"
@@ -355,21 +355,25 @@ msgstr "Das Feld kann leer bleiben, wenn das Bild rein dekorativ ist."
 msgid "Alt text hint link text"
 msgstr "Beschreiben Sie, was auf dem Bild zu sehen ist."
 
-#. Default: "Alternative url path (Required)"
+#. Default: "Alternative URL path (Required)"
 #: components/manage/Controlpanels/Aliases
-msgid "Alternative url path (Required)"
-msgstr "Alternativer Pfad (erforderlich)"
+msgid "Alternative URL path (Required)"
+msgstr ""
+
+#. Default: "Alternative URL path must start with a slash."
+#: components/manage/Controlpanels/Aliases
+msgid "Alternative URL path must start with a slash."
+msgstr ""
+
+#. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
+#: components/manage/Controlpanels/Aliases
+msgid "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
+msgstr ""
 
 #. Default: "Alternative url path must start with a slash."
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 msgid "Alternative url path must start with a slash."
 msgstr "Alternativer Pfad muss mit einem Schrägstrich beginnen"
-
-#. Default: "Alternative url path → target url path (date and time of creation, manually created yes/no)"
-#: components/manage/Controlpanels/Aliases
-msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
-msgstr "Alternativer URL Pfad → Zielpfad (Datum und Zeit der Erstellung, manuell erstellt ja/nein)"
 
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
@@ -525,6 +529,7 @@ msgstr "Layout für <strong>{type}</strong> kann nicht verändert werden, da das
 #. Default: "Cancel"
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -834,6 +839,16 @@ msgstr "Relationen mit diesem Ziel erstellen oder löschen"
 #: components/manage/Toolbar/More
 msgid "Create working copy"
 msgstr "Arbeitskopie erstellen"
+
+#. Default: "Created after"
+#: components/manage/Controlpanels/Aliases
+msgid "Created after"
+msgstr ""
+
+#. Default: "Created before"
+#: components/manage/Controlpanels/Aliases
+msgid "Created before"
+msgstr ""
 
 #. Default: "Created by {creator} on {date}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -1292,14 +1307,18 @@ msgstr "Tragen Sie bitte Ihren vollen Namen ein."
 msgid "Enter map Embed Code"
 msgstr "Karten-Einbettungscode eingeben"
 
-#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
 #: components/manage/Controlpanels/Aliases
-msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
-msgstr "Geben Sie den absoluten Pfad des Ziels ein. Das Ziel muss existieren oder ein existierender, alternativer Pfad zum Ziel sein."
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
+msgstr ""
+
+#. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+#: components/manage/Controlpanels/Aliases
+msgid "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+msgstr ""
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 msgstr "Geben Sie den absoluten Pfad ein, an dem die alternative URL existieren soll. Der Pfad muss mit '/' beginnen. Es werden nur URLs die in einem '404 Nicht Gefunden' enden, weitergeleitet."
 
@@ -1389,6 +1408,11 @@ msgstr "Dieses Datum ausschließen"
 #: components/manage/Contents/Contents
 msgid "Excluded from navigation"
 msgstr "Von Navigation ausgeschlossen"
+
+#. Default: "Existing alternative URLs for this site"
+#: components/manage/Controlpanels/Aliases
+msgid "Existing alternative URLs for this site"
+msgstr ""
 
 #. Default: "Existing alternative urls for this item"
 #: components/manage/Aliases/Aliases
@@ -1495,7 +1519,7 @@ msgstr ""
 msgid "Filter Rules:"
 msgstr "Filterregeln:"
 
-#. Default: "Filter by prefix"
+#. Default: "Filter by path"
 #: components/manage/Controlpanels/Aliases
 msgid "Filter by prefix"
 msgstr "Nach Präfix filtern"
@@ -2145,11 +2169,6 @@ msgstr "Übersetzungen für {} verwalten"
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
 msgstr "Manuell"
-
-#. Default: "Manually or automatically added?"
-#: components/manage/Controlpanels/Aliases
-msgid "Manually or automatically added?"
-msgstr "Manuell oder automatisch hinzugefügt?"
 
 #. Default: "Many relations found. Please search."
 #: helpers/MessageLabels/MessageLabels
@@ -3590,7 +3609,6 @@ msgstr "Zu entfernende Tags"
 
 #. Default: "Target"
 #: components/manage/Blocks/Teaser/schema
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Target"
@@ -4646,6 +4664,11 @@ msgstr "laden"
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
 msgstr "Einloggen"
+
+#. Default: "Manually or automatically added?"
+#: components/manage/Controlpanels/Aliases
+msgid "manualOrAuto"
+msgstr ""
 
 #. Default: "Maps"
 #: config/Blocks
