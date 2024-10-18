@@ -33,7 +33,7 @@ Thus it is safe to run it on top of your project and answer the prompts.
 Added support for Node.js 22.
 It is the long-term support (LTS) release effective 2024-10-29.
 
-Long Term Support (LTS) for {term}`Node.js` 18 by the Node.js community will end on 2025-04-30.
+Long-term support for {term}`Node.js` 18 by the Node.js community will end on 2025-04-30.
 Volto 18 no longer supports Node.js 18, since Volto only supports the latest two LTS versions.
 Volto might continue to work on Node.js 18, but it is not tested in CI.
 
