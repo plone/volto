@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UsersControlpanel renders a user control component 1`] = `
+<div
+  className="ui container users-control-panel"
+>
+  <div
+    className="container"
+  />
+  <div
+    className="ui raised segments"
+  >
+    <div
+      className="ui segment primary"
+    >
+      Groups
+    </div>
+    <div
+      className="ui secondary segment"
+    >
+      Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<title>plone-svg</title>undefined",
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+      indicates a role inherited from membership in another group.
+    </div>
+    <div
+      className="ui segment"
+    >
+      <div
+        className="ui secondary attached menu"
+      >
+        <div
+          className="left item"
+          onClick={[Function]}
+          style={
+            Object {
+              "width": "90%",
+            }
+          }
+        >
+          <div
+            className="ui large fluid transparent input"
+          >
+            <input
+              id="group-search-input"
+              name="SearchableText"
+              onChange={[Function]}
+              placeholder="Search group…"
+              type="text"
+            />
+          </div>
+          <svg
+            className="icon zoom"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={[Function]}
+            style={
+              Object {
+                "fill": "#007eb1",
+                "height": "28px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </div>
+        <button
+          className="ui button disabled icon item"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <svg
+            className="icon delete"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "grey",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      className="table"
+    >
+      <table
+        className="ui striped unstackable attached padded table"
+      >
+        <thead
+          className=""
+        >
+          <tr
+            className=""
+          >
+            <th
+              className=""
+            >
+              <div
+                className="ui fitted checkbox"
+                onChange={[Function]}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+              >
+                <input
+                  checked={false}
+                  className="hidden"
+                  readOnly={true}
+                  tabIndex={0}
+                  type="checkbox"
+                />
+                <label />
+              </div>
+            </th>
+            <th
+              className=""
+            >
+              Groupname
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          className=""
+          data-group="groups"
+        />
+      </table>
+    </div>
+    <div
+      className="contents-pagination"
+    >
+      <div
+        className="ui secondary attached menu"
+      >
+        <div
+          className="menu"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    id="Portal"
+  />
+</div>
+`;

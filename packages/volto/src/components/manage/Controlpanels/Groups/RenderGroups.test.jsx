@@ -47,8 +47,10 @@ describe('UsersControlpanelGroups', () => {
       <Provider store={store}>
         <RenderGroups
           group={testGroups}
+          groups={[]}
           roles={testRoles}
           onDelete={() => {}}
+          selected={[]}
           isUserManager={true}
         />
       </Provider>,
