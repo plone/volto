@@ -22,6 +22,7 @@ import {
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import { ModalForm } from '@plone/volto/components/manage/Form';
 import { Icon, Toolbar } from '@plone/volto/components';
 import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
 import { useClient } from '@plone/volto/hooks';
@@ -78,6 +79,14 @@ const messages = defineMessages({
     id: 'Target Path (Required)',
     defaultMessage: 'Target Path (Required)',
   },
+  BulkUploadAltUrls: {
+    id: 'BulkUploadAltUrls',
+    defaultMessage: 'Bulk upload alternative URLs',
+  },
+  CSVFile: {
+    id: 'CSVFile',
+    defaultMessage: 'CSV file',
+  },
 });
 
 const filterChoices = [
@@ -109,6 +118,7 @@ const Aliases = (props) => {
   const [activePage, setActivePage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [addModalOpen, setAddModalOpen] = useState(false);
+  const [uploadModalOpen, setUploadModalOpen] = useState(false);
   const isClient = useClient();
 
   const updateResults = useCallback(() => {
@@ -206,6 +216,8 @@ const Aliases = (props) => {
     setAliasesToRemove([]);
   };
 
+  const handleBulkUpload = () => {};
+
   return (
     <div id="page-aliases">
       <Helmet title={intl.formatMessage(messages.aliases)} />
@@ -220,28 +232,28 @@ const Aliases = (props) => {
               />
             </Segment>
             <Segment>
-              <Form>
-                <Modal
-                  closeIcon
-                  open={addModalOpen}
-                  onClose={() => setAddModalOpen(false)}
-                  trigger={
-                    <Button primary onClick={() => setAddModalOpen(true)}>
-                      <FormattedMessage
-                        id="Add Alternative URL"
-                        defaultMessage="Add Alternative URL"
-                      />
-                      &hellip;
-                    </Button>
-                  }
-                >
-                  <Modal.Header size="medium">
+              <Modal
+                closeIcon
+                open={addModalOpen}
+                onClose={() => setAddModalOpen(false)}
+                trigger={
+                  <Button primary onClick={() => setAddModalOpen(true)}>
                     <FormattedMessage
                       id="Add Alternative URL"
                       defaultMessage="Add Alternative URL"
                     />
-                  </Modal.Header>
-                  <Modal.Content>
+                    &hellip;
+                  </Button>
+                }
+              >
+                <Modal.Header size="medium">
+                  <FormattedMessage
+                    id="Add Alternative URL"
+                    defaultMessage="Add Alternative URL"
+                  />
+                </Modal.Header>
+                <Modal.Content>
+                  <Form>
                     <FormFieldWrapper
                       id="alternative-url-path"
                       title={intl.formatMessage(messages.altUrlPathTitle)}
@@ -294,40 +306,84 @@ const Aliases = (props) => {
                         <p>{errorMessageAdd}</p>
                       </Message>
                     )}
-                  </Modal.Content>
-                  <Modal.Actions>
-                    <Button
-                      basic
-                      primary
-                      circular
-                      floated="right"
-                      aria-label={
-                        <FormattedMessage id="Add" defaultMessage="Add" />
-                      }
-                      onClick={handleSubmitAlias}
-                      disabled={
-                        !isAltUrlCorrect ||
-                        altUrlPath === '' ||
-                        targetUrlPath === ''
-                      }
-                    >
-                      <Icon name={aheadSVG} className="circled" size="30px" />
-                    </Button>
-                    <Button
-                      basic
-                      secondary
-                      circular
-                      floated="right"
-                      aria-label={
-                        <FormattedMessage id="Cancel" defaultMessage="Cancel" />
-                      }
-                      onClick={() => setAddModalOpen(false)}
-                    >
-                      <Icon name={clearSVG} className="circled" size="30px" />
-                    </Button>
-                  </Modal.Actions>
-                </Modal>
-              </Form>
+                  </Form>
+                </Modal.Content>
+                <Modal.Actions>
+                  <Button
+                    basic
+                    primary
+                    circular
+                    floated="right"
+                    aria-label={
+                      <FormattedMessage id="Add" defaultMessage="Add" />
+                    }
+                    onClick={handleSubmitAlias}
+                    disabled={
+                      !isAltUrlCorrect ||
+                      altUrlPath === '' ||
+                      targetUrlPath === ''
+                    }
+                  >
+                    <Icon name={aheadSVG} className="circled" size="30px" />
+                  </Button>
+                  <Button
+                    basic
+                    secondary
+                    circular
+                    floated="right"
+                    aria-label={
+                      <FormattedMessage id="Cancel" defaultMessage="Cancel" />
+                    }
+                    onClick={() => setAddModalOpen(false)}
+                  >
+                    <Icon name={clearSVG} className="circled" size="30px" />
+                  </Button>
+                </Modal.Actions>
+              </Modal>
+              <Button onClick={() => setUploadModalOpen(true)}>
+                {intl.formatMessage(messages.BulkUploadAltUrls)}&hellip;
+              </Button>
+              <ModalForm
+                open={uploadModalOpen}
+                onSubmit={handleBulkUpload}
+                title={intl.formatMessage(messages.BulkUploadAltUrls)}
+                description={
+                  <>
+                    <p>
+                      <FormattedMessage
+                        id="bulkUploadUrlsHelp"
+                        defaultMessage="Add many alternative urls at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
+                      />
+                    </p>
+                    <p>
+                      Example:
+                      <br />
+                      <code>
+                        /old-home-page.asp,/front-page,2019/01/27 10:42:59
+                        GMT+1,true
+                        <br />
+                        /people/JoeT,/Users/joe-thurston,2018-12-31,false
+                      </code>
+                    </p>
+                  </>
+                }
+                schema={{
+                  fieldsets: [
+                    {
+                      id: 'default',
+                      fields: ['file'],
+                    },
+                  ],
+                  properties: {
+                    file: {
+                      title: intl.formatMessage(messages.CSVFile),
+                      type: 'object',
+                      factory: 'File Upload',
+                    },
+                  },
+                  required: ['file'],
+                }}
+              />
             </Segment>
             <Segment>
               <Form>
