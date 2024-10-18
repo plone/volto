@@ -43,6 +43,14 @@ describe('Toolbar Personal Tools component', () => {
               theToolbar={{
                 current: { getBoundingClientRect: () => ({ width: '320' }) },
               }}
+              actions={{
+                user: [
+                  {
+                    id: 'plone_setup',
+                    title: 'Site Setup',
+                  },
+                ],
+              }}
             />
           </MemoryRouter>
         </PluggablesProvider>
@@ -83,6 +91,14 @@ describe('Toolbar Personal Tools component', () => {
               loadComponent={() => {}}
               theToolbar={{
                 current: { getBoundingClientRect: () => ({ width: '320' }) },
+              }}
+              actions={{
+                user: [
+                  {
+                    id: 'plone_setup',
+                    title: 'Site Setup',
+                  },
+                ],
               }}
             />
           </MemoryRouter>
@@ -125,6 +141,58 @@ describe('Toolbar Personal Tools component', () => {
               loadComponent={() => {}}
               theToolbar={{
                 current: { getBoundingClientRect: () => ({ width: '320' }) },
+              }}
+              actions={{
+                user: [
+                  {
+                    id: 'plone_setup',
+                    title: 'Site Setup',
+                  },
+                ],
+              }}
+            />
+          </MemoryRouter>
+        </PluggablesProvider>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
+  it('renders an Toolbar Personal Tools component without Site Setup access', () => {
+    const store = mockStore({
+      users: {
+        user: {
+          fullname: 'regular_user',
+          email: 'user@plone.org',
+          roles: ['Member'],
+        },
+      },
+      userSession: {
+        token: jwt.sign({ sub: 'regular_user' }, 'secret'),
+      },
+      content: {
+        data: {
+          '@type': 'Folder',
+          is_folderish: true,
+        },
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <PluggablesProvider>
+          <MemoryRouter>
+            <PersonalTools
+              loadComponent={() => {}}
+              theToolbar={{
+                current: { getBoundingClientRect: () => ({ width: '320' }) },
+              }}
+              actions={{
+                user: [],
               }}
             />
           </MemoryRouter>
