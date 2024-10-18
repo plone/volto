@@ -309,6 +309,11 @@ msgstr "उपनाम"
 msgid "Alias has been added"
 msgstr "उपनाम जोड़ा गया है"
 
+#. Default: "Aliases have been uploaded."
+#: components/manage/Controlpanels/Aliases
+msgid "Aliases have been uploaded."
+msgstr ""
+
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
