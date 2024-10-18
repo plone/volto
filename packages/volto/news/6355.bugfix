@@ -1,0 +1,1 @@
+Fix site setup access check by using `@actions` endpoint to validate permissions. @Faakhir30
