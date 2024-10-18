@@ -62,7 +62,9 @@ That is, it should take the configuration registry object and return it, possibl
 ```ts
 import type { ConfigType } from '@plone/registry'
 
-export default applyConfig(config: ConfigType) => config)
+export default function applyConfig(config: ConfigType) {
+  return config
+};
 ```
 
 ## Configuration registry
