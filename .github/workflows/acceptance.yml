@@ -521,6 +521,9 @@ jobs:
       - name: Install yalc
         run: npm -g install yalc
 
+      - name: Build dependencies
+        run: make build-deps
+
       - name: Install a yalc'ed version of the current Volto in the project - publish
         run: |
           yalc publish packages/types

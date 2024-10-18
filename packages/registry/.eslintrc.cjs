@@ -16,6 +16,8 @@ module.exports = {
   // Base config
   extends: ['eslint:recommended'],
 
+  ignorePatterns: ['docs/_static/searchtools.js'],
+
   overrides: [
     // React
     {
@@ -61,7 +63,11 @@ module.exports = {
 
     // Node
     {
-      files: ['.eslintrc.js', 'src/*.js'],
+      files: [
+        '.eslintrc.cjs',
+        'src/addon-registry/**/*.{js,ts}',
+        '__tests__/**/*.{js,ts}',
+      ],
       env: {
         node: true,
         es6: true,
