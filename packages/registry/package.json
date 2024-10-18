@@ -84,7 +84,7 @@
     "react-dom": "^18.2.0",
     "release-it": "16.2.1",
     "tsconfig": "workspace:*",
-    "typescript": "5.4.2",
-    "vitest": "^2.1.2"
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.3"
   }
 }
