@@ -1,31 +1,13 @@
 import express from 'express';
-import { getAPIResourceWithAuth } from '@plone/volto/helpers';
+import { defaultHttpProxyOptions } from '@plone/volto/helpers';
+import { createProxyMiddleware } from 'http-proxy-middleware';
+// import config from '@plone/volto/registry';
 
-const HEADERS = [
-  'accept-ranges',
-  'cache-control',
-  'content-disposition',
-  'content-range',
-  'content-type',
-  'x-sendfile',
-  'x-accel-redirect',
-  'x-robots-tag',
-];
-
-function filesMiddlewareFn(req, res, next) {
-  getAPIResourceWithAuth(req)
-    .then((resource) => {
-      // Just forward the headers that we need
-      HEADERS.forEach((header) => {
-        if (resource.headers[header]) {
-          res.set(header, resource.get(header));
-        }
-      });
-      res.status(resource.statusCode);
-      res.send(resource.body);
-    })
-    .catch(next);
-}
+const filesMiddlewareFn = createProxyMiddleware({
+  ...defaultHttpProxyOptions,
+  // ...config.settings.serverConfig?.httpProxyOptions,
+  // ...config.settings.serverConfig?.httpProxyOptionsFiles,
+});
 
 export default function filesMiddleware() {
   const middleware = express.Router();
