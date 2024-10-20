@@ -28,7 +28,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "src/index.ts",
+  "type": "module",
+  "main": "index.ts",
   "targets": {
     "main": {
       "includeNodeModules": false
@@ -53,6 +54,8 @@
     }
   },
   "dependencies": {
+    "@plone/client": "workspace:*",
+    "@plone/components": "workspace:*",
     "@plone/providers": "workspace:*",
     "@plone/registry": "workspace:*"
   },
