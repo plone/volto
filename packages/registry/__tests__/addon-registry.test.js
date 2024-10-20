@@ -313,3 +313,51 @@ describe('Addon via env var - Released addon (same as dev add-on, when resolved 
     ).toBe(true);
   });
 });
+
+describe('Add-on via config file provided using an env var', () => {
+  const originalEnv = process.env;
+  const base = path.join(import.meta.dirname, 'fixtures', 'test-volto-project');
+
+  beforeEach(() => {
+    vi.resetModules();
+  });
+
+  afterEach(() => {
+    process.env = originalEnv;
+  });
+
+  it('VOLTOCONFIG - provides a list of addon records ordered using an env var for providing the configuration file', () => {
+    process.env = {
+      ...originalEnv,
+      VOLTOCONFIG: `${base}/volto.config.envvar.js`,
+    };
+    const reg = new AddonConfigurationRegistry(base);
+    const addons = reg.getAddons();
+    expect(addons.map((a) => a.name)).toStrictEqual([
+      'test-released-unmentioned',
+      'test-released-dummy',
+      'test-addon',
+      'test-released-addon',
+      'test-released-source-addon',
+      'my-volto-config-addon-via-env-var',
+    ]);
+  });
+
+  it('[REGISTRYCONFIG - provides a list of addon records ordered using an env var for providing the configuration file', () => {
+    process.env = {
+      ...originalEnv,
+      REGISTRYCONFIG: `${base}/volto.config.envvar.js`,
+    };
+
+    const reg = new AddonConfigurationRegistry(base);
+    const addons = reg.getAddons();
+    expect(addons.map((a) => a.name)).toStrictEqual([
+      'test-released-unmentioned',
+      'test-released-dummy',
+      'test-addon',
+      'test-released-addon',
+      'test-released-source-addon',
+      'my-volto-config-addon-via-env-var',
+    ]);
+  });
+});

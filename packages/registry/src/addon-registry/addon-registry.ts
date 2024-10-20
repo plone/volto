@@ -20,7 +20,10 @@ export type Package = {
   razzleExtender?: string;
   eslintExtender?: string;
 };
-
+type VoltoConfigJS = {
+  addons: Array<string>;
+  theme: string;
+};
 type Aliases = Record<string, string>;
 type AliasesObject = { find: string; replacement: string }[];
 type CoreAddons = { [x: string]: { package: string } };
@@ -144,10 +147,7 @@ function getAddonsLoaderChain(graph: DepGraph<string | []>) {
  */
 class AddonRegistry {
   public packageJson: PackageJsonObject;
-  public voltoConfigJS: {
-    addons: Array<string>;
-    theme: string;
-  };
+  public voltoConfigJS: VoltoConfigJS;
   public projectRootPath: string;
   public isVoltoProject: boolean;
   public voltoPath: string;
@@ -160,25 +160,14 @@ class AddonRegistry {
   public dependencyGraph: DepGraph<string | []>;
 
   constructor(projectRootPath: string) {
-    const packageJson = (this.packageJson = require(
-      path.join(projectRootPath, 'package.json'),
+    const packageJson = (this.packageJson = JSON.parse(
+      fs.readFileSync(path.join(projectRootPath, 'package.json'), {
+        encoding: 'utf-8',
+      }),
     ));
-    this.voltoConfigJS = {
-      addons: [],
-      theme: '',
-    };
+
     // Loads the dynamic config, if any
-    if (process.env.VOLTOCONFIG) {
-      if (fs.existsSync(path.resolve(process.env.VOLTOCONFIG))) {
-        const voltoConfigPath = path.resolve(process.env.VOLTOCONFIG);
-        console.log(`Using volto.config.js in: ${voltoConfigPath}`);
-        this.voltoConfigJS = require(voltoConfigPath);
-      }
-    } else if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
-      this.voltoConfigJS = require(
-        path.join(projectRootPath, 'volto.config.js'),
-      );
-    }
+    this.voltoConfigJS = this.getRegistryConfig(projectRootPath);
 
     this.projectRootPath = projectRootPath;
     this.isVoltoProject = packageJson.name !== '@plone/volto';
@@ -240,6 +229,34 @@ class AddonRegistry {
       theme: this.theme,
       shadowAliases: flatAliasesToObject(this.getAddonCustomizationPaths()),
     };
+  }
+
+  getRegistryConfig(projectRootPath: string) {
+    let config: VoltoConfigJS = {
+      addons: [],
+      theme: '',
+    };
+    const CONFIGMAP = {
+      REGISTRYCONFIG: 'registry.config.js',
+      VOLTOCONFIG: 'volto.config.js',
+    };
+
+    for (const key in CONFIGMAP) {
+      if (process.env[key]) {
+        const resolvedPath = path.resolve(process.env[key]);
+        if (fs.existsSync(resolvedPath)) {
+          const voltoConfigPath = resolvedPath;
+          console.log(`Using configuration file in: ${voltoConfigPath}`);
+          config = require(voltoConfigPath);
+          break;
+        }
+      } else if (fs.existsSync(path.join(projectRootPath, CONFIGMAP[key]))) {
+        config = require(path.join(projectRootPath, CONFIGMAP[key]));
+        break;
+      }
+    }
+
+    return config;
   }
 
   /**

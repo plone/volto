@@ -1,7 +1,9 @@
-### Register an add-on
+# How to register an add-on in your app
 
-You should declare your add-on in your project.
-This is done in your app's `package.json`'s `addons` key:
+You have two ways available for registering an add-on in your app.
+Via `package.json` key or using a configuration file.
+
+## Via `addons` key in `package.json`
 
 ```json
 {
@@ -32,3 +34,30 @@ export default function applyConfig(config: ConfigType) {
   return config
 };
 ```
+
+## Via a configuration file
+
+The configuration file can be provided via an environment variable.
+Because of legacy reasons, you can use one of these two:
+
+- `REGISTRYCONFIG`.
+- `VOLTOCONFIG`
+
+If it exists, `@plone/registry` uses the file provided as the add-ons configuration.
+If it does not, `@plone/registry` looks up for the configuration file existing in these places:
+
+- `registry.config.js`
+- `volto.config.js`
+
+in the root of your app, in this order.
+If (one of them) exists, it will load it.
+
+This is an example of a configuration file.
+
+```js
+module.exports = {
+  addons: ['my-volto-config-addon'],
+};
+```
+
+It has to be defined in commonJS format.
