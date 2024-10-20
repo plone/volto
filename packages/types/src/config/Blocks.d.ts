@@ -1,6 +1,7 @@
 import type { Content } from '../content';
 import type { BlockViewProps, BlockEditProps } from '../blocks';
 import type { IntlShape } from 'react-intl';
+import { User } from '../services';
 
 export interface BlocksConfig {
   blocksConfig: BlocksConfigData;
@@ -79,6 +80,7 @@ export interface BlockConfigBase {
         block: BlockConfigBase; // TODO: This has to be extendable
         navRoot: Content;
         contentType: string;
+        user: User;
       }) => boolean)
     | boolean;
 
@@ -124,6 +126,7 @@ export interface BlockExtension {
   title: string;
   template?: React.ComponentType<any>;
   render?: React.ComponentType<any>;
+  view?: React.ComponentType<any>;
   fullobjects?: boolean;
 }
 

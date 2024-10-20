@@ -69,7 +69,15 @@ export function Select<T extends object>({
           {description && <Text slot="description">{description}</Text>}
           <FieldError>{errorMessage}</FieldError>
           <Popover {...popoverProps}>
-            <ListBox items={items}>{children}</ListBox>
+            {children ? (
+              <ListBox items={items}>{children}</ListBox>
+            ) : (
+              <ListBox items={items}>
+                {(item: SelectItemObject) => (
+                  <SelectItem id={item.label}>{item.value}</SelectItem>
+                )}
+              </ListBox>
+            )}
           </Popover>
         </>
       )}
