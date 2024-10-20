@@ -1,5 +1,5 @@
 /* eslint no-console: 0 */
-import { sync as glob } from 'glob';
+import { globSync as glob } from 'glob';
 import path from 'path';
 import fs from 'fs';
 import _debug from 'debug';

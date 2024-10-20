@@ -44,20 +44,20 @@ describe('AddonConfigurationRegistry - get()', () => {
         replacement: `${base}/node_modules/test-released-source-addon/src/customizations/@root/marker.js`,
       },
       {
-        find: '@plone/volto/client',
-        replacement: `${base}/node_modules/test-released-source-addon/src/customizations/client.js`,
-      },
-      {
-        find: '@plone/volto/LanguageSwitcher',
-        replacement: `${base}/node_modules/test-released-source-addon/src/customizations/LanguageSwitcher.js`,
-      },
-      {
         find: '@plone/volto/routes',
         replacement: `${base}/node_modules/test-released-source-addon/src/customizations/routes.tsx`,
       },
       {
+        find: '@plone/volto/client',
+        replacement: `${base}/node_modules/test-released-source-addon/src/customizations/client.js`,
+      },
+      {
         find: '@plone/volto/TSComponent',
         replacement: `${base}/node_modules/test-released-source-addon/src/customizations/TSComponent.jsx`,
+      },
+      {
+        find: '@plone/volto/LanguageSwitcher',
+        replacement: `${base}/node_modules/test-released-source-addon/src/customizations/LanguageSwitcher.js`,
       },
     ]);
     expect(registry.theme).toStrictEqual(undefined);
