@@ -66,7 +66,7 @@ const messages = defineMessages({
     defaultMessage: 'Filter by path',
   },
   manualOrAuto: {
-    id: 'manualOrAuto',
+    id: 'Manually or automatically added?',
     defaultMessage: 'Manually or automatically added?',
   },
   createdAfter: {
@@ -78,11 +78,11 @@ const messages = defineMessages({
     defaultMessage: 'Created before',
   },
   altUrlPathTitle: {
-    id: 'Alternative URL path (Required)',
+    id: 'Alternative url path (Required)',
     defaultMessage: 'Alternative URL path (Required)',
   },
   altUrlError: {
-    id: 'Alternative URL path must start with a slash.',
+    id: 'Alternative url path must start with a slash.',
     defaultMessage: 'Alternative URL path must start with a slash.',
   },
   targetUrlPathTitle: {
@@ -292,7 +292,7 @@ const Aliases = (props) => {
                       title={intl.formatMessage(messages.altUrlPathTitle)}
                       description={
                         <FormattedMessage
-                          id="Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+                          id="Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
                           defaultMessage="Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
                         />
                       }
@@ -315,7 +315,7 @@ const Aliases = (props) => {
                       title={intl.formatMessage(messages.targetUrlPathTitle)}
                       description={
                         <FormattedMessage
-                          id="Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
+                          id="Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
                           defaultMessage="Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
                         />
                       }
@@ -389,7 +389,7 @@ const Aliases = (props) => {
                         <p>
                           <FormattedMessage
                             id="bulkUploadUrlsHelp"
-                            defaultMessage="Add many alternative urls at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
+                            defaultMessage="Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
                           />
                         </p>
                         <p>
@@ -428,7 +428,7 @@ const Aliases = (props) => {
               <Form>
                 <Header size="medium">
                   <FormattedMessage
-                    id="Existing alternative URLs for this site"
+                    id="All existing alternative urls for this site"
                     defaultMessage="Existing alternative URLs for this site"
                   />
                 </Header>
@@ -499,7 +499,7 @@ const Aliases = (props) => {
             <Segment>
               <Header size="small">
                 <FormattedMessage
-                  id="Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
+                  id="Alternative url path → target url path (date and time of creation, manually created yes/no)"
                   defaultMessage="Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
                 />
               </Header>

@@ -338,6 +338,11 @@ msgstr "Kaikki"
 msgid "All content"
 msgstr "Kaikki sisältö"
 
+#. Default: "Existing alternative URLs for this site"
+#: components/manage/Controlpanels/Aliases
+msgid "All existing alternative urls for this site"
+msgstr "Kaikki vaihtoehtoiset URL:t tälle sivustolle"
+
 #. Default: "Alphabetically"
 #: components/theme/Search/Search
 msgid "Alphabetically"
@@ -362,23 +367,19 @@ msgstr "Kuvaustekstin vihjeen linkkiteksti"
 
 #. Default: "Alternative URL path (Required)"
 #: components/manage/Controlpanels/Aliases
-msgid "Alternative URL path (Required)"
-msgstr ""
-
-#. Default: "Alternative URL path must start with a slash."
-#: components/manage/Controlpanels/Aliases
-msgid "Alternative URL path must start with a slash."
-msgstr ""
-
-#. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
-#: components/manage/Controlpanels/Aliases
-msgid "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
-msgstr ""
+msgid "Alternative url path (Required)"
+msgstr "Vaihtoehtoinen URL-polku (pakollinen)"
 
 #. Default: "Alternative url path must start with a slash."
 #: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
 msgid "Alternative url path must start with a slash."
 msgstr "Vaihtoehtoisen URL-polun pitää alkaa kauttaviivalla"
+
+#. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
+#: components/manage/Controlpanels/Aliases
+msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
+msgstr "Vaihtoehtoinen URL-polku -> kohteen URL-polku (päivämäärä ja luontiaika, käsin luotu kyllä/ei)"
 
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
@@ -1324,12 +1325,12 @@ msgstr "Syötä Google Maps -upotuskoodi"
 
 #. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
 #: components/manage/Controlpanels/Aliases
-msgid "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
-msgstr ""
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+msgstr "Syötä kohteen osoite. Kohteen tulee olla olemassa tai sen tulee olla olemassaoleva vaihtoehtoinen URL-polku kohteelle."
 
 #. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Controlpanels/Aliases
-msgid "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
 msgstr ""
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
@@ -1423,11 +1424,6 @@ msgstr "Jätä pois tämä päivä"
 #: components/manage/Contents/Contents
 msgid "Excluded from navigation"
 msgstr "Piilota navigoinnista"
-
-#. Default: "Existing alternative URLs for this site"
-#: components/manage/Controlpanels/Aliases
-msgid "Existing alternative URLs for this site"
-msgstr ""
 
 #. Default: "Existing alternative urls for this item"
 #: components/manage/Aliases/Aliases
@@ -2184,6 +2180,11 @@ msgstr "Hallitse käännöksiä: {title}"
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
 msgstr "Manuaalinen"
+
+#. Default: "Manually or automatically added?"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually or automatically added?"
+msgstr "Manuaalisesti vai automaattisesti lisätty?"
 
 #. Default: "Many relations found. Please search."
 #: helpers/MessageLabels/MessageLabels
@@ -4464,7 +4465,7 @@ msgstr ""
 msgid "box_forgot_password_option"
 msgstr "Unohditko salasanasi?"
 
-#. Default: "Add many alternative urls at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
+#. Default: "Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
 #: components/manage/Controlpanels/Aliases
 msgid "bulkUploadUrlsHelp"
 msgstr ""
@@ -4684,11 +4685,6 @@ msgstr "ladataan"
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
 msgstr "kirjaudu"
-
-#. Default: "Manually or automatically added?"
-#: components/manage/Controlpanels/Aliases
-msgid "manualOrAuto"
-msgstr ""
 
 #. Default: "Maps"
 #: config/Blocks

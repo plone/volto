@@ -339,6 +339,11 @@ msgstr "Tots"
 msgid "All content"
 msgstr "Tot el contingut"
 
+#. Default: "Existing alternative URLs for this site"
+#: components/manage/Controlpanels/Aliases
+msgid "All existing alternative urls for this site"
+msgstr ""
+
 #. Default: "Alphabetically"
 #: components/theme/Search/Search
 msgid "Alphabetically"
@@ -363,22 +368,18 @@ msgstr "Descriu el propòsit de la imatge"
 
 #. Default: "Alternative URL path (Required)"
 #: components/manage/Controlpanels/Aliases
-msgid "Alternative URL path (Required)"
-msgstr ""
-
-#. Default: "Alternative URL path must start with a slash."
-#: components/manage/Controlpanels/Aliases
-msgid "Alternative URL path must start with a slash."
-msgstr ""
-
-#. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
-#: components/manage/Controlpanels/Aliases
-msgid "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
+msgid "Alternative url path (Required)"
 msgstr ""
 
 #. Default: "Alternative url path must start with a slash."
 #: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
 msgid "Alternative url path must start with a slash."
+msgstr ""
+
+#. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
+#: components/manage/Controlpanels/Aliases
+msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr ""
 
 #. Default: "Applied to subfolders"
@@ -1325,12 +1326,12 @@ msgstr "Introduïu el codi d'inserció del mapa"
 
 #. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
 #: components/manage/Controlpanels/Aliases
-msgid "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
 msgstr ""
 
 #. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Controlpanels/Aliases
-msgid "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
 msgstr ""
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
@@ -1424,11 +1425,6 @@ msgstr "Exclou aquesta ocurrència"
 #: components/manage/Contents/Contents
 msgid "Excluded from navigation"
 msgstr "Exclòs de la navegació"
-
-#. Default: "Existing alternative URLs for this site"
-#: components/manage/Controlpanels/Aliases
-msgid "Existing alternative URLs for this site"
-msgstr ""
 
 #. Default: "Existing alternative urls for this item"
 #: components/manage/Aliases/Aliases
@@ -2184,6 +2180,11 @@ msgstr "Gestiona les traduccions per a {title}"
 #. Default: "Manual"
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
+msgstr ""
+
+#. Default: "Manually or automatically added?"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually or automatically added?"
 msgstr ""
 
 #. Default: "Many relations found. Please search."
@@ -4465,7 +4466,7 @@ msgstr ""
 msgid "box_forgot_password_option"
 msgstr "Has oblidat la teva contrasenya?"
 
-#. Default: "Add many alternative urls at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
+#. Default: "Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
 #: components/manage/Controlpanels/Aliases
 msgid "bulkUploadUrlsHelp"
 msgstr ""
@@ -4685,11 +4686,6 @@ msgstr "Carregant"
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
 msgstr "Iniciar Sessió"
-
-#. Default: "Manually or automatically added?"
-#: components/manage/Controlpanels/Aliases
-msgid "manualOrAuto"
-msgstr ""
 
 #. Default: "Maps"
 #: config/Blocks
