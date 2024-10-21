@@ -45,6 +45,7 @@ Thus, the order in which you register add-ons matters.
 
 ```{toctree}
 :maxdepth: 1
+howto/how-to-instantiate-registry
 howto/how-to-register-an-addon
 howto/how-to-shadow-a-component
 ```
