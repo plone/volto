@@ -8,9 +8,11 @@ const fs = require('fs');
 const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
 const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
 const { poToJson } = require('@plone/scripts/i18n.cjs');
-const createAddonsLoader = require('@plone/registry/src/create-addons-loader');
-const createThemeAddonsLoader = require('@plone/registry/src/create-theme-addons-loader');
-const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
+const { createAddonsLoader } = require('@plone/registry/create-addons-loader');
+const {
+  createThemeAddonsLoader,
+} = require('@plone/registry/create-theme-loader');
+const { AddonRegistry } = require('@plone/registry/addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -23,8 +25,7 @@ const projectRootPath = path.resolve('.');
 const languages = require('./src/constants/Languages.cjs');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
-
-const registry = new AddonConfigurationRegistry(projectRootPath);
+const { registry } = AddonRegistry.init(projectRootPath);
 
 const defaultModify = ({
   env: { target, dev },
@@ -290,6 +291,8 @@ const defaultModify = ({
   const addonsLoaderPath = createAddonsLoader(
     registry.getAddonDependencies(),
     registry.getAddons(),
+    // The load of the project config is deprecated and will be removed in Volto 19.
+    { loadProjectConfig: true },
   );
 
   config.resolve.plugins = [
