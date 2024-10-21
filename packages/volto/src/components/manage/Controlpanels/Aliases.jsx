@@ -10,19 +10,20 @@ import {
 } from '@plone/volto/actions/aliases/aliases';
 import { createPortal } from 'react-dom';
 import {
-  Container,
   Button,
-  Segment,
-  Form,
   Checkbox,
+  Container,
+  Form,
   Header,
   Input,
-  Radio,
+  Loader,
+  Menu,
   Message,
   Modal,
-  Table,
   Pagination,
-  Menu,
+  Radio,
+  Segment,
+  Table,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
@@ -90,7 +91,7 @@ const messages = defineMessages({
   },
   BulkUploadAltUrls: {
     id: 'BulkUploadAltUrls',
-    defaultMessage: 'Bulk upload alternative URLs',
+    defaultMessage: 'Bulk upload CSV',
   },
   CSVFile: {
     id: 'CSVFile',
@@ -116,6 +117,7 @@ const Aliases = (props) => {
   const hasAdvancedFiltering = useSelector(
     (state) => state.site.data?.features?.filter_aliases_by_date,
   );
+  const hasBulkUpload = hasAdvancedFiltering !== undefined;
   const aliases = useSelector((state) => state.aliases);
   const [filterType, setFilterType] = useState(filterChoices[0]);
   const [createdBefore, setCreatedBefore] = useState(null);
@@ -371,52 +373,56 @@ const Aliases = (props) => {
                   </Button>
                 </Modal.Actions>
               </Modal>
-              <Button onClick={() => setUploadModalOpen(true)}>
-                {intl.formatMessage(messages.BulkUploadAltUrls)}&hellip;
-              </Button>
-              <ModalForm
-                open={uploadModalOpen}
-                onSubmit={handleBulkUpload}
-                onCancel={() => setUploadModalOpen(false)}
-                title={intl.formatMessage(messages.BulkUploadAltUrls)}
-                submitError={uploadError}
-                description={
-                  <>
-                    <p>
-                      <FormattedMessage
-                        id="bulkUploadUrlsHelp"
-                        defaultMessage="Add many alternative urls at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
-                      />
-                    </p>
-                    <p>
-                      Example:
-                      <br />
-                      <code>
-                        /old-home-page.asp,/front-page,2019/01/27 10:42:59
-                        GMT+1,true
-                        <br />
-                        /people/JoeT,/Users/joe-thurston,2018-12-31,false
-                      </code>
-                    </p>
-                  </>
-                }
-                schema={{
-                  fieldsets: [
-                    {
-                      id: 'default',
-                      fields: ['file'],
-                    },
-                  ],
-                  properties: {
-                    file: {
-                      title: intl.formatMessage(messages.CSVFile),
-                      type: 'object',
-                      factory: 'File Upload',
-                    },
-                  },
-                  required: ['file'],
-                }}
-              />
+              {hasBulkUpload && (
+                <>
+                  <Button onClick={() => setUploadModalOpen(true)}>
+                    {intl.formatMessage(messages.BulkUploadAltUrls)}&hellip;
+                  </Button>
+                  <ModalForm
+                    open={uploadModalOpen}
+                    onSubmit={handleBulkUpload}
+                    onCancel={() => setUploadModalOpen(false)}
+                    title={intl.formatMessage(messages.BulkUploadAltUrls)}
+                    submitError={uploadError}
+                    description={
+                      <>
+                        <p>
+                          <FormattedMessage
+                            id="bulkUploadUrlsHelp"
+                            defaultMessage="Add many alternative urls at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
+                          />
+                        </p>
+                        <p>
+                          Example:
+                          <br />
+                          <code>
+                            /old-home-page.asp,/front-page,2019/01/27 10:42:59
+                            GMT+1,true
+                            <br />
+                            /people/JoeT,/Users/joe-thurston,2018-12-31,false
+                          </code>
+                        </p>
+                      </>
+                    }
+                    schema={{
+                      fieldsets: [
+                        {
+                          id: 'default',
+                          fields: ['file'],
+                        },
+                      ],
+                      properties: {
+                        file: {
+                          title: intl.formatMessage(messages.CSVFile),
+                          type: 'object',
+                          factory: 'File Upload',
+                        },
+                      },
+                      required: ['file'],
+                    }}
+                  />
+                </>
+              )}
             </Segment>
             <Segment>
               <Form>
@@ -501,21 +507,28 @@ const Aliases = (props) => {
               <Table celled compact>
                 <Table.Header>
                   <Table.Row>
-                    <Table.HeaderCell>
+                    <Table.HeaderCell width="1">
                       <FormattedMessage id="Select" defaultMessage="Select" />
                     </Table.HeaderCell>
-                    <Table.HeaderCell>
+                    <Table.HeaderCell width="10">
                       <FormattedMessage id="Alias" defaultMessage="Alias" />
                     </Table.HeaderCell>
-                    <Table.HeaderCell>
+                    <Table.HeaderCell width="1">
                       <FormattedMessage id="Date" defaultMessage="Date" />
                     </Table.HeaderCell>
-                    <Table.HeaderCell>
+                    <Table.HeaderCell width="1">
                       <FormattedMessage id="Manual" defaultMessage="Manual" />
                     </Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
+                  {aliases.get.loading && (
+                    <Table.Row>
+                      <Table.Cell colspan="4">
+                        <Loader active inline="centered" />
+                      </Table.Cell>
+                    </Table.Row>
+                  )}
                   {aliases.items.length > 0 &&
                     aliases.items.map((alias, i) => (
                       <Table.Row key={i} verticalAlign="top">

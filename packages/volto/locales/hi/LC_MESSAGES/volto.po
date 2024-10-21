@@ -506,7 +506,7 @@ msgstr "ब्राउज़ करें"
 msgid "Browse the site, drop an image, or type a URL"
 msgstr "साइट ब्राउज़ करें, एक छवि छोड़ें, या एक URL टाइप करें"
 
-#. Default: "Bulk upload alternative URLs"
+#. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
 msgstr ""

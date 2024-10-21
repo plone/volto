@@ -513,7 +513,7 @@ msgstr "Arakatu"
 msgid "Browse the site, drop an image, or type a URL"
 msgstr "Atarian bilatu, irudi bat hona arrastatu edo URL bat idatzi"
 
-#. Default: "Bulk upload alternative URLs"
+#. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
 msgstr ""

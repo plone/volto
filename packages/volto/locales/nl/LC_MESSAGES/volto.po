@@ -510,7 +510,7 @@ msgstr "Bladeren"
 msgid "Browse the site, drop an image, or type a URL"
 msgstr ""
 
-#. Default: "Bulk upload alternative URLs"
+#. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
 msgstr ""

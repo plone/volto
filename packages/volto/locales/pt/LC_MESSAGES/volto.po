@@ -511,7 +511,7 @@ msgstr "Navegar"
 msgid "Browse the site, drop an image, or type a URL"
 msgstr "Navegue no website, largue uma imagem ou escreva um URL"
 
-#. Default: "Bulk upload alternative URLs"
+#. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
 msgstr ""

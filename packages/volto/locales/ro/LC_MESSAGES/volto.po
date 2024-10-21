@@ -506,7 +506,7 @@ msgstr "Răsfoiește"
 msgid "Browse the site, drop an image, or type a URL"
 msgstr "Navigați site-ul, adaugați o imagine sau introduceți o adresă URL"
 
-#. Default: "Bulk upload alternative URLs"
+#. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
 msgstr ""

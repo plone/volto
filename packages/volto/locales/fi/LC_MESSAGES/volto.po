@@ -511,7 +511,7 @@ msgstr "Selaa"
 msgid "Browse the site, drop an image, or type a URL"
 msgstr "Selaa sivustoa, raahaa ja pudota kuva, tai syötä URL"
 
-#. Default: "Bulk upload alternative URLs"
+#. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
 msgstr ""

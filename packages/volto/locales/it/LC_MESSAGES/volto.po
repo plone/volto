@@ -506,7 +506,7 @@ msgstr "Sfoglia"
 msgid "Browse the site, drop an image, or type a URL"
 msgstr "Sfoglia i contenuti, rilascia un'immagine o digita un URL"
 
-#. Default: "Bulk upload alternative URLs"
+#. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
 msgstr ""

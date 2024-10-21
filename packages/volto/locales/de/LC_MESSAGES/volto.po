@@ -511,7 +511,7 @@ msgstr "Durchsuchen"
 msgid "Browse the site, drop an image, or type a URL"
 msgstr "Seite durchsuchen, Bild ablegen oder URL eingeben"
 
-#. Default: "Bulk upload alternative URLs"
+#. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
 msgstr ""
