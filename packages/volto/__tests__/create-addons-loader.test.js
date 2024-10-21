@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { transform } from '@babel/core';
-import getAddonsLoader, {
+import {
+  createAddonsLoader,
   getAddonsLoaderCode,
   nameFromPackage,
 } from '@plone/registry/create-addons-loader';
@@ -184,7 +185,7 @@ function makeAddonLoader(addons, load = true) {
       : require.resolve(name),
   );
 
-  const loaderPath = getAddonsLoader(addons);
+  const loaderPath = createAddonsLoader(addons);
   transpile(loaderPath);
 
   if (load) {

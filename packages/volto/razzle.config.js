@@ -8,10 +8,10 @@ const fs = require('fs');
 const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
 const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
 const { poToJson } = require('@plone/scripts/i18n.cjs');
-const createAddonsLoader =
-  require('@plone/registry/create-addons-loader').default;
-const createThemeAddonsLoader =
-  require('@plone/registry/create-theme-loader').default;
+const { createAddonsLoader } = require('@plone/registry/create-addons-loader');
+const {
+  createThemeAddonsLoader,
+} = require('@plone/registry/create-theme-loader');
 const { AddonRegistry } = require('@plone/registry/addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');

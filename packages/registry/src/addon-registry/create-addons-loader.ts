@@ -106,7 +106,7 @@ export default load;
   return buf;
 }
 
-export default function getaddonsLoader(
+export function createAddonsLoader(
   addons: string[],
   addonsInfo: Package[],
   {

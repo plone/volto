@@ -38,7 +38,7 @@ Add a ./theme/_${name}.scss in your add-on to load your theme customizations in 
   return buf;
 }
 
-export default function getThemeLoader({
+export function createThemeAddonsLoader({
   main,
   variables,
 }: {

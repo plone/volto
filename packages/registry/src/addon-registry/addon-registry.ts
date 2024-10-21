@@ -44,6 +44,8 @@ type AddonRegistryGet = {
   theme: string;
   /** The customizations (shadows) aliases */
   shadowAliases: AliasesObject;
+  /** The add-ons aliases - Only for Volto add-ons which code lives inside `src` */
+  addonAliases: AliasesObject;
 };
 
 function getPackageBasePath(base: string) {
@@ -228,6 +230,7 @@ class AddonRegistry {
     return {
       addons: this.getAddonDependencies(),
       theme: this.theme,
+      addonAliases: flatAliasesToObject(this.getResolveAliases()),
       shadowAliases: flatAliasesToObject(this.getAddonCustomizationPaths()),
     };
   }

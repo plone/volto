@@ -53,6 +53,10 @@
       "import": "./dist/esm/create-theme-loader.js",
       "types": "./dist/esm/create-theme-loader.d.ts"
     },
+    "./vite-plugin": {
+      "import": "./vite-plugin.js",
+      "types": "./vite-plugin.d.ts"
+    },
     ".": {
       "types": "./dist/types.d.ts",
       "import": "./dist/index.js",
@@ -109,6 +113,7 @@
     "release-it": "16.2.1",
     "tsconfig": "workspace:*",
     "typescript": "^5.6.3",
+    "vite": "^5.4.8",
     "vitest": "^2.1.3"
   }
 }
