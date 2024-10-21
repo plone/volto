@@ -9,11 +9,7 @@ import { FormattedMessage, useIntl, defineMessages } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import { getUser } from '@plone/volto/actions';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
-import {
-  expandToBackendURL,
-  getBaseUrl,
-  userHasRoles,
-} from '@plone/volto/helpers';
+import { expandToBackendURL, getBaseUrl } from '@plone/volto/helpers';
 import logoutSVG from '@plone/volto/icons/log-out.svg';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import backSVG from '@plone/volto/icons/back.svg';
@@ -50,7 +46,11 @@ const PersonalTools = (props) => {
   const token = useSelector((state) => state.userSession.token, shallowEqual);
   const user = useSelector((state) => state.users.user);
   const userId = token ? jwtDecode(token).sub : '';
-
+  const siteSetupAction = useSelector((state) =>
+    state.actions?.actions?.user?.find(
+      (action) => action?.id === 'plone_setup',
+    ),
+  );
   useEffect(() => {
     dispatch(getUser(userId));
   }, [dispatch, userId]);
@@ -127,7 +127,7 @@ const PersonalTools = (props) => {
             </button>
           </li>
 
-          {userHasRoles(user, ['Site Administrator', 'Manager']) && (
+          {siteSetupAction && (
             <li>
               <Link to="/controlpanel">
                 <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />
