@@ -70,6 +70,7 @@ class ModalForm extends Component {
       required: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
     title: PropTypes.string.isRequired,
+    description: PropTypes.objectOf(PropTypes.any),
     formData: PropTypes.objectOf(PropTypes.any),
     submitError: PropTypes.string,
     onSubmit: PropTypes.func.isRequired,
@@ -211,7 +212,7 @@ class ModalForm extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { schema, onCancel } = this.props;
+    const { schema, onCancel, description } = this.props;
     const currentFieldset = schema.fieldsets[this.state.currentTab];
 
     const fields = map(currentFieldset.fields, (field) => ({
@@ -245,6 +246,7 @@ class ModalForm extends Component {
             onSubmit={this.onSubmit}
             error={state_errors || Boolean(this.props.submitError)}
           >
+            {description}
             <Message error>
               {state_errors ? (
                 <FormattedMessage
