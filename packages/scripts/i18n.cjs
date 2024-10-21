@@ -276,7 +276,7 @@ function main({ addonMode }) {
   console.log('Synchronizing messages to po files...');
   syncPoByPot();
   if (!addonMode) {
-    let AddonConfigurationRegistry;
+    let AddonRegistry, AddonConfigurationRegistry, registry;
     try {
       // Detect where is the registry (if we are in Volto 18 or above for either core and projects)
       if (
@@ -287,12 +287,12 @@ function main({ addonMode }) {
           ),
         )
       ) {
-        AddonConfigurationRegistry = require(
+        AddonRegistry = require(
           path.join(
             projectRootPath,
             '/node_modules/@plone/registry/dist/cjs/addon-registry.cjs',
           ),
-        ).default;
+        ).AddonRegistry;
         // Detect where is the registry (if we are in Volto 18-alpha.46 or below)
       } else if (
         fs.existsSync(
@@ -339,7 +339,11 @@ function main({ addonMode }) {
       process.exit();
     }
     console.log('Generating the language JSON files...');
-    const registry = new AddonConfigurationRegistry(projectRootPath);
+    if (AddonConfigurationRegistry) {
+      registry = new AddonConfigurationRegistry(projectRootPath);
+    } else if (AddonRegistry) {
+      registry = AddonRegistry.init(projectRootPath).registry;
+    }
     poToJson({ registry, addonMode });
   }
   console.log('done!');
