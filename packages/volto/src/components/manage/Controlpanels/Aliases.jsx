@@ -22,6 +22,8 @@ import {
   Table,
   Pagination,
   Menu,
+  Dimmer,
+  Loader,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
@@ -428,7 +430,7 @@ const Aliases = (props) => {
                   />
                 </Header>
 
-                <Table>
+                <Table className="aliases-table">
                   <Table.Body>
                     <Table.Row>
                       <Table.HeaderCell>
@@ -447,7 +449,14 @@ const Aliases = (props) => {
                         <FormattedMessage id="Manual" defaultMessage="Manual" />
                       </Table.HeaderCell>
                     </Table.Row>
-                    {aliases.items.length > 0 &&
+                    {aliases.get.loading ? (
+                      <Table.Row>
+                        <Dimmer active>
+                          <Loader indeterminate>this is loading</Loader>
+                        </Dimmer>
+                      </Table.Row>
+                    ) : (
+                      aliases.items.length > 0 &&
                       aliases.items.map((alias, i) => (
                         <Table.Row key={i}>
                           <Table.Cell>
@@ -472,7 +481,8 @@ const Aliases = (props) => {
                             <p>{`${alias.manual}`}</p>
                           </Table.Cell>
                         </Table.Row>
-                      ))}
+                      ))
+                    )}
                   </Table.Body>
                 </Table>
                 <div
