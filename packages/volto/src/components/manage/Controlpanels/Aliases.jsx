@@ -270,7 +270,11 @@ const Aliases = (props) => {
                 open={addModalOpen}
                 onClose={() => setAddModalOpen(false)}
                 trigger={
-                  <Button primary onClick={() => setAddModalOpen(true)}>
+                  <Button
+                    id="add-alt-url"
+                    primary
+                    onClick={() => setAddModalOpen(true)}
+                  >
                     <FormattedMessage
                       id="Add Alternative URL"
                       defaultMessage="Add Alternative URL"
@@ -343,6 +347,7 @@ const Aliases = (props) => {
                 </Modal.Content>
                 <Modal.Actions>
                   <Button
+                    id="submit-alias"
                     basic
                     primary
                     circular
