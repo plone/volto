@@ -8,6 +8,22 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.16 (2024-10-18)
+
+### Breaking
+
+- Removed the `FlattenToAppURLProvider` since it's no longer needed. @sneridagh
+  The components in here need it.
+  Refactored the `Link` component to not use it, since `react-aria-components` uses the React Client Routing facilities that can be injected into the React tree.
+
+  Breaking:
+    - Use the new providers in `@plone/providers` instead to make the new `Link` work with them. [#6069](https://github.com/plone/volto/issues/6069)
+
+### Internal
+
+- Update typescript and vitest everywhere @sneridagh [#6407](https://github.com/plone/volto/issues/6407)
+- Adjust the path to perform a proper `git diff` between the cached and current commits to determine whether to build the Storybook for the components package on Netlify. @stevepiercy [#6410](https://github.com/plone/volto/issues/6410)
+
 ## 2.0.0-alpha.15 (2024-10-14)
 
 ### Bugfix

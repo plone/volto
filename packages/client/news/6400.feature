@@ -1,1 +1,0 @@
-Add support for the `depth` parameter on `getNavigationQuery`. @ebrehault
