@@ -29,6 +29,16 @@ describe('Toolbar Personal Tools component', () => {
           is_folderish: true,
         },
       },
+      actions: {
+        actions: {
+          user: [
+            {
+              id: 'plone_setup',
+              title: 'Site Setup',
+            },
+          ],
+        },
+      },
       intl: {
         locale: 'en',
         messages: {},
@@ -68,6 +78,16 @@ describe('Toolbar Personal Tools component', () => {
         data: {
           '@type': 'Folder',
           is_folderish: true,
+        },
+      },
+      actions: {
+        actions: {
+          user: [
+            {
+              id: 'plone_setup',
+              title: 'Site Setup',
+            },
+          ],
         },
       },
       intl: {
@@ -110,6 +130,16 @@ describe('Toolbar Personal Tools component', () => {
         data: {
           '@type': 'Folder',
           is_folderish: true,
+        },
+      },
+      actions: {
+        actions: {
+          user: [
+            {
+              id: 'plone_setup',
+              title: 'Site Setup',
+            },
+          ],
         },
       },
       intl: {
