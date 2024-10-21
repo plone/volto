@@ -24,6 +24,7 @@ exports[`Aliases renders an aliases control component 1`] = `
           >
             <button
               class="ui primary button"
+              id="add-alt-url"
             >
               Add Alternative URL
               …
