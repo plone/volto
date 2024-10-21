@@ -474,7 +474,7 @@ class Config {
       .join('+');
 
     const utilityName = `${depsString ? `|${depsString}` : ''}`;
-    const utilitiesKeys = Object.keys(this._data.utilities[type]).filter(
+    const utilitiesKeys = Object.keys(this._data.utilities[type] || {}).filter(
       (key) => key.startsWith(utilityName),
     );
     const utilities = utilitiesKeys.map(
