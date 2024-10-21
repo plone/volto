@@ -12,8 +12,7 @@ const createAddonsLoader =
   require('@plone/registry/create-addons-loader').default;
 const createThemeAddonsLoader =
   require('@plone/registry/create-theme-loader').default;
-const AddonConfigurationRegistry =
-  require('@plone/registry/addon-registry').default;
+const { AddonRegistry } = require('@plone/registry/addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -26,7 +25,7 @@ const projectRootPath = path.resolve('.');
 const languages = require('./src/constants/Languages.cjs');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
-const registry = new AddonConfigurationRegistry(projectRootPath);
+const { registry } = AddonRegistry.init(projectRootPath);
 
 const defaultModify = ({
   env: { target, dev },

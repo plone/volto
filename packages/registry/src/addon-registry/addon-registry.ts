@@ -28,6 +28,7 @@ type Aliases = Record<string, string>;
 type AliasesObject = { find: string; replacement: string }[];
 type CoreAddons = { [x: string]: { package: string } };
 type PackageJsonObject = {
+  type: 'module' | 'commonjs';
   addons: Array<string>;
   coreAddons: CoreAddons;
   theme: string;
@@ -231,14 +232,28 @@ class AddonRegistry {
     };
   }
 
+  public static init(projectRootPath: string) {
+    const registry = new AddonRegistry(projectRootPath);
+    return {
+      registry,
+      addons: registry.getAddonDependencies(),
+      theme: registry.theme,
+      shadowAliases: flatAliasesToObject(registry.getAddonCustomizationPaths()),
+    };
+  }
+
+  isESM = () => this.packageJson.type === 'module';
+
   getRegistryConfig(projectRootPath: string) {
     let config: VoltoConfigJS = {
       addons: [],
       theme: '',
     };
     const CONFIGMAP = {
-      REGISTRYCONFIG: 'registry.config.js',
-      VOLTOCONFIG: 'volto.config.js',
+      REGISTRYCONFIG: this.isESM()
+        ? 'registry.config.cjs'
+        : 'registry.config.js',
+      VOLTOCONFIG: this.isESM() ? 'volto.config.cjs' : 'volto.config.js',
     };
 
     for (const key in CONFIGMAP) {
@@ -767,5 +782,4 @@ class AddonRegistry {
   }
 }
 
-export default AddonRegistry;
-export { getAddonsLoaderChain, buildDependencyGraph };
+export { AddonRegistry, getAddonsLoaderChain, buildDependencyGraph };

@@ -67,7 +67,7 @@
   "scripts": {
     "watch": "parcel watch",
     "build": "parcel build && pnpm build:node:esm && pnpm build:node:cjs",
-    "build:force": "parcel build --no-cache && pnpm build:node:esm && pnpm build:node:cjs",
+    "build:force": "rm -rf dist && parcel build --no-cache && pnpm build:node:esm && pnpm build:node:cjs",
     "build:node:esm": "tsc --project tsconfig.node.json || true",
     "build:node:cjs": "tsc --project tsconfig.node.json --module commonjs --moduleResolution Node --outDir dist/cjs || true && make rename-to-cjs",
     "test": "vitest",

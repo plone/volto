@@ -1,10 +1,10 @@
 import express from 'express';
 import path from 'path';
-import AddonConfigurationRegistry from '@plone/registry/addon-registry';
+import { AddonRegistry } from '@plone/registry/addon-registry';
 import config from '@plone/volto/registry';
 
 const projectRootPath = path.resolve('.');
-const registry = new AddonConfigurationRegistry(projectRootPath);
+const { registry } = AddonRegistry.init(projectRootPath);
 
 const staticDirectory = () => {
   if (process.env.BUILD_DIR) {
