@@ -92,6 +92,8 @@ class Html extends Component {
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
     const htmlAttributes = head.htmlAttributes.toComponent();
+    const shouldPrefix =
+      config.settings.prefixPath && process.env.NODE_ENV === 'production';
 
     return (
       <html lang={htmlAttributes.lang}>
@@ -119,14 +121,35 @@ class Html extends Component {
             }}
           />
 
-          <link rel="icon" href="/favicon.ico" sizes="any" />
-          <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+          <link
+            rel="icon"
+            href={
+              (shouldPrefix ? config.settings.prefixPath : '') + '/favicon.ico'
+            }
+            sizes="any"
+          />
+          <link
+            rel="icon"
+            href={
+              (shouldPrefix ? config.settings.prefixPath : '') + '/icon.svg'
+            }
+            type="image/svg+xml"
+          />
           <link
             rel="apple-touch-icon"
             sizes="180x180"
-            href="/apple-touch-icon.png"
+            href={
+              (shouldPrefix ? config.settings.prefixPath : '') +
+              '/apple-touch-icon.png'
+            }
           />
-          <link rel="manifest" href="/site.webmanifest" />
+          <link
+            rel="manifest"
+            href={
+              (shouldPrefix ? config.settings.prefixPath : '') +
+              '/site.webmanifest'
+            }
+          />
           <meta name="generator" content="Plone 6 - https://plone.org" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
