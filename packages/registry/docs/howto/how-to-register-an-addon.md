@@ -1,9 +1,11 @@
 # How to register an add-on in your app
 
 You have two ways available for registering an add-on in your app.
-Via `package.json` key or using a configuration file.
+You can do so either through the `addons` key in your {file}`package.json` or by using a configuration file.
 
 ## Via `addons` key in `package.json`
+
+The following code sample shows how to register your add-on in your app through the `addons` key in your {file}`package.json`.
 
 ```json
 {
@@ -38,21 +40,30 @@ export default function applyConfig(config: ConfigType) {
 ## Via a configuration file
 
 The configuration file can be provided via an environment variable.
-Because of legacy reasons, you can use one of these two:
+You can use one of these two environment variables.
 
-- `REGISTRYCONFIG`.
+- `REGISTRYCONFIG`
 - `VOLTOCONFIG`
 
-If it exists, `@plone/registry` uses the file provided as the add-ons configuration.
-If it does not, `@plone/registry` looks up for the configuration file existing in these places:
+The value of the environment variable must point to a file that exists relative to the ______.
+
+For example, if your configuration file is named {file}`my-add-on-config.json` and is located at the root of your add-on package, you would set your environment variable as shown.
+
+```shell
+set REGISTRYCONFIG="my-add-on-config.json"
+```
+
+If the file that you specify in the environment variable exists, then `@plone/registry` uses it to configure your add-on.
+If it does not exist, then `@plone/registry` looks for the configuration file in the following locations in the root of your app in order.
+The first found configuration file wins.
+If `@plone/registry` finds no configuration file, then it 💩 the bed.  [TODO: What does it actually do?]
 
 - `registry.config.js`
 - `volto.config.js`
 
-in the root of your app, in this order.
-If (one of them) exists, it will load it.
 
 This is an example of a configuration file.
+You must define it in [CommonJS](https://en.wikipedia.org/wiki/CommonJS) format.
 
 ```js
 module.exports = {
@@ -60,4 +71,3 @@ module.exports = {
 };
 ```
 
-It has to be defined in commonJS format.

@@ -25,7 +25,7 @@ Add-on packages are just CommonJS/ESM packages.
 Their main purpose is encapsulate logic, configuration and customizations in a reusable way.
 The only requirement is that their primary entry point (`main` key of their `package.json`) points to a module that exports a default function, which acts as a default configuration loader for that package.
 
-Add-ons are applied in the order they are declared in the `addons` key of `package.json` or programatically via a provided configuration file.
+Add-ons are applied in the order they are declared in the `addons` key of {file}`package.json` or programatically via a provided configuration file.
 Add-ons can override configuration coming from other add-ons, providing a hierarchy of configuration stacks.
 
 An add-on can be published in an npm registry, just as any other package.
@@ -33,10 +33,12 @@ However, add-ons are meant to not be transpiled, but built along with your app c
 They can be released as "source" packages or used directly in your app as local code.
 
 Add-ons can define shadowed components.
-"Component shadowing" is a technique for overriding modules of other packages on build time.
+"Component shadowing" is a technique for overriding modules of other packages at build time.
 This technique builds upon the `resolve.aliases` facilities of bundlers, so modules can be replaced when the app is being built.
 
-Add-ons can be chained, so each one can configure the app in some way, but if needed, the next add-on can override and extend the previous configuration set by other add-ons. Thus, the order in which is add-on is registered matters.
+Add-ons can be chained, where each one can configure the app in some way.
+If needed, each add-on in the chain can override or extend the previous configuration that other add-ons set.
+Thus, the order in which you register add-ons matters.
 
 % QUESTION: Should this go to "HowTo"s?
 ## How To's
@@ -50,10 +52,10 @@ howto/how-to-shadow-a-component
 ## Configuration registry
 
 The configuration registry supplements the add-on registry.
-They both work together to provide an extensibility and pluggability capabilities.
-The configuration registry is a facility that stores app configuration to be shared in the app.
+They both work together to provide extensibility and pluggability capabilities.
+The configuration registry is a facility that stores app configuration to share in the app.
 The add-ons save configuration from the registry using their default export function on app bootstrap time.
-They retrieve this config as needed by the functionality and components they expose.
+They retrieve this configuration as needed by the functionality and components they expose.
 
 ### Example use case - Pluggable block system
 
@@ -109,13 +111,13 @@ The add-on will then become available to the CMS when it asks the configuration 
 
 ### Configuration registry artifacts
 
-The configuration registry also store special elements that can be queried and retrieved in a pluggable way:
+The configuration registry also stores special elements that can be queried and retrieved in a pluggable way.
 
 - Components
 - Slots
 - Utilities
 
-Some of this components are particular to the use case of a CMS (Slots) but the abstraction can be ported and applied to different scenarios.
+Some of the components are particular to the use case of a CMS, such as Slots, but the abstraction can be ported and applied to different scenarios.
 
 ## How To's
 

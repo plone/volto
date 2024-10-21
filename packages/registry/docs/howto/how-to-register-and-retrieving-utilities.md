@@ -1,8 +1,8 @@
 # How to register and retrieve utilities (Utility registry)
 
-### Register utilities using `config.registerUtility`
+## Register utilities
 
-You can register a utility using specific `name` and `type` arguments.
+You can register a utility using `config.registerUtility` by using its specific `name` and `type` arguments.
 
 ```js
 config.registerUtility({
@@ -12,19 +12,19 @@ config.registerUtility({
 });
 ```
 
-For a same `type` you can register different `name` utilities.
+For utilities of the same `type`, you can register different `name` utilities.
 
 ```js
 config.registerUtility({
   name: 'url',
   type: 'validator',
-  method: () => 'this is a simple validator utility',
+  method: () => 'this is a simple URL validator utility',
 });
 
 config.registerUtility({
   name: 'email',
   type: 'validator',
-  method: () => 'this is a simple validator utility',
+  method: () => 'this is a simple email validator utility',
 });
 ```
 
@@ -35,13 +35,13 @@ Thus you can override existing utilities in your add-ons.
 config.registerUtility({
   name: 'url',
   type: 'validator',
-  method: () => 'this is a simple url validator utility',
+  method: () => 'this is a simple URL validator utility',
 });
 
 config.registerUtility({
   name: 'url',
   type: 'validator',
-  method: () => 'this registered url validator utility will prevail, as defined later',
+  method: () => 'this registered URL validator utility is the last defined, and therefore overrides all previous utilities with the same `name`',
 });
 ```
 
@@ -55,7 +55,7 @@ config.registerUtility({
   name: 'email',
   type: 'validator',
   dependencies: { fieldType: 'email' },
-  method: () => 'this is a validator utility with dependencies for email',
+  method: () => 'this is an email validator utility with dependencies for email',
 });
 ```
 
@@ -67,7 +67,7 @@ You can retrieve one specific utility using `config.getUtility`, given the `name
 config.getUtility({ name: 'url', type: 'validator' }).method(),
 ```
 
-You can do the same using a `dependencies` object:
+You can do the same using a `dependencies` object.
 
 ```js
 config.getUtility({
@@ -85,7 +85,7 @@ You can retrieve all utilities registered under the same `type`.
 config.getUtilities({ type: 'validator' })
 ```
 
-You can do the same using a `dependencies` object:
+You can do the same using a `dependencies` object.
 
 ```js
 config.getUtilities({
@@ -95,4 +95,4 @@ config.getUtilities({
 ```
 
 This is useful when building pluggable systems, so you can query all the utilities present in the registry.
-For example, retrieve all validator utilities for the `fieldType` `string`.
+For example, retrieve all validator utilities with the `fieldType` of `string`.

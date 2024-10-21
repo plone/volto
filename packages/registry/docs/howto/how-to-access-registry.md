@@ -1,6 +1,6 @@
 ### Accessing the configuration registry
 % QUESTION: Should this go to "HowTo"s?
-The configuration registry can be accessed by:
+You can access the configuration registry as follows.
 
 ```ts
 import config from '@plone/registry'
