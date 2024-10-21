@@ -1,1 +1,1 @@
- Enable Volto Login to Redirect Back to Original Route After Authentication @dobri1408
+Enable login to redirect back to original requested route after authentication. @dobri1408
