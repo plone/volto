@@ -32,12 +32,12 @@
   "devDependencies": {
     "@parcel/packager-ts": "^2.12.0",
     "@parcel/transformer-typescript-types": "^2.12.0",
-    "concurrently": "^8.2.2",
-    "husky": "9.0.11",
-    "lint-staged": "15.2.2",
+    "concurrently": "^9.0.1",
+    "husky": "9.1.6",
+    "lint-staged": "15.2.10",
     "tsconfig": "workspace:*",
-    "typescript": "^5.4.5",
-    "vitest": "^1.5.0"
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.2"
   },
   "packageManager": "pnpm@9.1.1",
   "pnpm": {
