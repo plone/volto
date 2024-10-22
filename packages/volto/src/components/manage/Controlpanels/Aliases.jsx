@@ -66,6 +66,10 @@ const messages = defineMessages({
     id: 'Aliases have been uploaded.',
     defaultMessage: 'Aliases have been uploaded.',
   },
+  successRemove: {
+    id: 'Aliases have been removed.',
+    defaultMessage: 'Aliases have been removed.',
+  },
   filterByPrefix: {
     id: 'Filter by prefix',
     defaultMessage: 'Filter by path',
@@ -231,7 +235,16 @@ const Aliases = (props) => {
       removeAliases('', {
         items: aliasesToRemove.map((a) => ({ path: a })),
       }),
-    ).then(updateResults);
+    ).then(() => {
+      updateResults();
+      toast.success(
+        <Toast
+          success
+          title={intl.formatMessage(messages.success)}
+          content={intl.formatMessage(messages.successRemove)}
+        />,
+      );
+    });
     setAliasesToRemove([]);
   };
 
@@ -322,7 +335,7 @@ const Aliases = (props) => {
                     },
                     required: ['altUrlPath', 'targetUrlPath'],
                   }}
-                  formData={editingData}
+                  formData={editingData || {}}
                 />
               )}
               {hasBulkUpload && (
@@ -570,6 +583,7 @@ const Aliases = (props) => {
                 </Menu.Menu>
               </div>
               <Button
+                id="remove-alt-urls"
                 disabled={aliasesToRemove.length === 0}
                 onClick={handleRemoveAliases}
                 primary

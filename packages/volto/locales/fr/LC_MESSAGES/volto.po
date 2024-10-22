@@ -315,6 +315,11 @@ msgstr "Alias"
 msgid "Alias has been added"
 msgstr "L'alias a été ajouté"
 
+#. Default: "Aliases have been removed."
+#: components/manage/Controlpanels/Aliases
+msgid "Aliases have been removed."
+msgstr ""
+
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been uploaded."
