@@ -44,7 +44,7 @@ type AddonRegistryGet = {
   theme: string;
   /** The customizations (shadows) aliases */
   shadowAliases: AliasesObject;
-  /** The add-ons aliases - Only for Volto add-ons which code lives inside `src` */
+  /** The add-ons aliases - Only for Volto add-ons for which code lives inside `src` */
   addonAliases: AliasesObject;
 };
 
