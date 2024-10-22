@@ -18,495 +18,491 @@ exports[`Aliases renders an aliases control component 1`] = `
         >
           URL Management
         </div>
-        <form
-          className="ui form"
-          onSubmit={[Function]}
+        <div
+          className="ui segment"
         >
-          <div
-            className="ui segment"
+          <button
+            className="ui primary button"
+            id="add-alt-url"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            Add Alternative URL
+            …
+          </button>
+        </div>
+        <div
+          className="ui segment"
+        >
+          <form
+            className="ui form"
+            onSubmit={[Function]}
           >
             <div
               className="ui medium header"
             >
-              Alternative url path (Required)
+              Existing alternative URLs for this site
             </div>
-            <p
-              className="help"
-            >
-              Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring.
-            </p>
             <div
-              className="field"
+              className="ui segment"
             >
               <div
-                className="ui input"
+                className="field"
               >
-                <input
-                  id="alternative-url-input"
-                  name="alternative-url-path"
-                  onChange={[Function]}
-                  placeholder="/example"
-                  type="text"
-                  value=""
-                />
+                <div
+                  className="inline field field-wrapper-filterQuery"
+                >
+                  <div
+                    className="ui grid"
+                  >
+                    <div
+                      className="stretched row"
+                    >
+                      <div
+                        className="four wide column"
+                      >
+                        <div
+                          className="wrapper"
+                        >
+                          <label
+                            htmlFor="field-filterQuery"
+                            id="fieldset-undefined-field-label-filterQuery"
+                          >
+                            Filter by path
+                          </label>
+                        </div>
+                      </div>
+                      <div
+                        className="eight wide column"
+                      >
+                        <div
+                          className="ui input"
+                        >
+                          <input
+                            name="filter"
+                            onChange={[Function]}
+                            placeholder="/example"
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div
-              className="ui medium header"
-            >
-              Target Path (Required)
-            </div>
-            <p
-              className="help"
-            >
-              Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target.
-            </p>
-            <div
-              className="field"
-            >
               <div
-                className="ui input"
+                className="field"
               >
-                <input
-                  id="target-url-input"
-                  name="target-url-path"
-                  onChange={[Function]}
-                  placeholder="/example"
-                  type="text"
-                  value=""
-                />
+                <div
+                  className="inline field field-wrapper-filterType"
+                >
+                  <div
+                    className="ui grid"
+                  >
+                    <div
+                      className="stretched row"
+                    >
+                      <div
+                        className="four wide column"
+                      >
+                        <div
+                          className="wrapper"
+                        >
+                          <label
+                            htmlFor="field-filterType"
+                            id="fieldset-undefined-field-label-filterType"
+                          >
+                            Manually or automatically added?
+                          </label>
+                        </div>
+                      </div>
+                      <div
+                        className="eight wide column"
+                      >
+                        <div
+                          className="inline fields"
+                        >
+                          <div
+                            className="field"
+                          >
+                            <div
+                              className="ui checked radio checkbox"
+                              onChange={[Function]}
+                              onClick={[Function]}
+                              onMouseDown={[Function]}
+                              onMouseUp={[Function]}
+                            >
+                              <input
+                                checked={true}
+                                className="hidden"
+                                name="radioGroup"
+                                readOnly={true}
+                                tabIndex={0}
+                                type="radio"
+                                value=""
+                              />
+                              <label>
+                                Both
+                              </label>
+                            </div>
+                          </div>
+                          <div
+                            className="field"
+                          >
+                            <div
+                              className="ui radio checkbox"
+                              onChange={[Function]}
+                              onClick={[Function]}
+                              onMouseDown={[Function]}
+                              onMouseUp={[Function]}
+                            >
+                              <input
+                                checked={false}
+                                className="hidden"
+                                name="radioGroup"
+                                readOnly={true}
+                                tabIndex={0}
+                                type="radio"
+                                value="no"
+                              />
+                              <label>
+                                Automatically
+                              </label>
+                            </div>
+                          </div>
+                          <div
+                            className="field"
+                          >
+                            <div
+                              className="ui radio checkbox"
+                              onChange={[Function]}
+                              onClick={[Function]}
+                              onMouseDown={[Function]}
+                              onMouseUp={[Function]}
+                            >
+                              <input
+                                checked={false}
+                                className="hidden"
+                                name="radioGroup"
+                                readOnly={true}
+                                tabIndex={0}
+                                type="radio"
+                                value="yes"
+                              />
+                              <label>
+                                Manually
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
+              <div
+                className="field"
+              />
+              <button
+                className="ui primary button"
+                onClick={[Function]}
+              >
+                Filter
+              </button>
             </div>
-            <button
-              className="ui primary disabled button"
-              disabled={true}
-              id="submit-alias"
-              onClick={[Function]}
-              tabIndex={-1}
-            >
-              Add
-            </button>
+          </form>
+        </div>
+        <div
+          className="ui segment"
+        >
+          <div
+            className="ui small header"
+          >
+            Alternative URL path → target URL path (date and time of creation, manually created yes/no)
           </div>
-        </form>
-        <form
-          className="ui form"
-          onSubmit={[Function]}
-        >
-          <div
-            className="ui segment primary"
+          <table
+            className="ui celled compact table"
           >
-            <div
-              className="ui medium header"
+            <thead
+              className=""
             >
-              All existing alternative urls for this site
-            </div>
-            <div
-              className="ui small header"
-            >
-              Filter by prefix
-            </div>
-            <div
-              className="field"
-            >
-              <div
-                className="ui input"
-              >
-                <input
-                  name="filter"
-                  onChange={[Function]}
-                  placeholder="/example"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-            <div
-              className="ui small header"
-            >
-              Manually or automatically added?
-            </div>
-            <div
-              className="field"
-            >
-              <div
-                className="ui checked radio checkbox"
-                onChange={[Function]}
-                onClick={[Function]}
-                onMouseDown={[Function]}
-                onMouseUp={[Function]}
-              >
-                <input
-                  checked={true}
-                  className="hidden"
-                  name="radioGroup"
-                  readOnly={true}
-                  tabIndex={0}
-                  type="radio"
-                  value=""
-                />
-                <label>
-                  Both
-                </label>
-              </div>
-            </div>
-            <div
-              className="field"
-            >
-              <div
-                className="ui radio checkbox"
-                onChange={[Function]}
-                onClick={[Function]}
-                onMouseDown={[Function]}
-                onMouseUp={[Function]}
-              >
-                <input
-                  checked={false}
-                  className="hidden"
-                  name="radioGroup"
-                  readOnly={true}
-                  tabIndex={0}
-                  type="radio"
-                  value="no"
-                />
-                <label>
-                  Automatically
-                </label>
-              </div>
-            </div>
-            <div
-              className="field"
-            >
-              <div
-                className="ui radio checkbox"
-                onChange={[Function]}
-                onClick={[Function]}
-                onMouseDown={[Function]}
-                onMouseUp={[Function]}
-              >
-                <input
-                  checked={false}
-                  className="hidden"
-                  name="radioGroup"
-                  readOnly={true}
-                  tabIndex={0}
-                  type="radio"
-                  value="yes"
-                />
-                <label>
-                  Manually
-                </label>
-              </div>
-            </div>
-            <div
-              className="field"
-            />
-            <button
-              className="ui primary button"
-              onClick={[Function]}
-            >
-              Filter
-            </button>
-            <div
-              className="ui small header"
-            >
-              Alternative url path → target url path (date and time of creation, manually created yes/no)
-            </div>
-            <table
-              className="ui table"
-            >
-              <tbody
+              <tr
                 className=""
               >
-                <tr
+                <th
+                  className="one wide"
+                >
+                  Select
+                </th>
+                <th
+                  className="ten wide"
+                >
+                  Alias
+                </th>
+                <th
+                  className="one wide"
+                >
+                  Date
+                </th>
+                <th
+                  className="one wide"
+                >
+                  Manual
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              className=""
+            >
+              <tr
+                className="top aligned"
+              >
+                <td
                   className=""
                 >
-                  <th
-                    className=""
+                  <div
+                    className="ui fitted checkbox"
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseUp={[Function]}
                   >
-                    Select
-                  </th>
-                  <th
-                    className=""
-                  >
-                    Alias
-                  </th>
-                  <th
-                    className=""
-                  >
-                    Target
-                  </th>
-                  <th
-                    className=""
-                  >
-                    Date
-                  </th>
-                  <th
-                    className=""
-                  >
-                    Manual
-                  </th>
-                </tr>
-                <tr
+                    <input
+                      checked={false}
+                      className="hidden"
+                      readOnly={true}
+                      tabIndex={0}
+                      type="checkbox"
+                      value="/eventsalias"
+                    />
+                    <label />
+                  </div>
+                </td>
+                <td
                   className=""
                 >
-                  <td
-                    className=""
-                  >
-                    <div
-                      className="ui fitted checkbox"
-                      onChange={[Function]}
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseUp={[Function]}
-                    >
-                      <input
-                        checked={false}
-                        className="hidden"
-                        readOnly={true}
-                        tabIndex={0}
-                        type="checkbox"
-                        value="/eventsalias"
-                      />
-                      <label />
-                    </div>
-                  </td>
-                  <td
-                    className=""
-                  >
-                    <p>
-                      /eventsalias
-                    </p>
-                  </td>
-                  <td
-                    className=""
-                  >
-                    <p>
-                      /events
-                    </p>
-                  </td>
-                  <td
-                    className=""
-                  >
-                    <p>
-                      2022-05-16T11:52:35+00:00
-                    </p>
-                  </td>
-                  <td
-                    className=""
-                  >
-                    <p>
-                      true
-                    </p>
-                  </td>
-                </tr>
-                <tr
+                  /eventsalias
+                  <br />
+                    → 
+                  /events
+                </td>
+                <td
                   className=""
                 >
-                  <td
-                    className=""
+                  <time
+                    dateTime="2022-05-16T11:52:35+00:00"
+                    title="Monday, May 16, 2022 at 11:52 AM"
                   >
-                    <div
-                      className="ui fitted checkbox"
-                      onChange={[Function]}
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseUp={[Function]}
-                    >
-                      <input
-                        checked={false}
-                        className="hidden"
-                        readOnly={true}
-                        tabIndex={0}
-                        type="checkbox"
-                        value="/eventsgreatalias"
-                      />
-                      <label />
-                    </div>
-                  </td>
-                  <td
-                    className=""
-                  >
-                    <p>
-                      /eventsgreatalias
-                    </p>
-                  </td>
-                  <td
-                    className=""
-                  >
-                    <p>
-                      /events
-                    </p>
-                  </td>
-                  <td
-                    className=""
-                  >
-                    <p>
-                      2022-05-17T09:38:19+00:00
-                    </p>
-                  </td>
-                  <td
-                    className=""
-                  >
-                    <p>
-                      true
-                    </p>
-                  </td>
-                </tr>
-                <tr
+                    5/16/2022
+                  </time>
+                </td>
+                <td
                   className=""
                 >
-                  <td
-                    className=""
+                  true
+                </td>
+              </tr>
+              <tr
+                className="top aligned"
+              >
+                <td
+                  className=""
+                >
+                  <div
+                    className="ui fitted checkbox"
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseUp={[Function]}
                   >
-                    <div
-                      className="ui fitted checkbox"
-                      onChange={[Function]}
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseUp={[Function]}
-                    >
-                      <input
-                        checked={false}
-                        className="hidden"
-                        readOnly={true}
-                        tabIndex={0}
-                        type="checkbox"
-                        value="/eventsincredible"
-                      />
-                      <label />
-                    </div>
-                  </td>
-                  <td
-                    className=""
+                    <input
+                      checked={false}
+                      className="hidden"
+                      readOnly={true}
+                      tabIndex={0}
+                      type="checkbox"
+                      value="/eventsgreatalias"
+                    />
+                    <label />
+                  </div>
+                </td>
+                <td
+                  className=""
+                >
+                  /eventsgreatalias
+                  <br />
+                    → 
+                  /events
+                </td>
+                <td
+                  className=""
+                >
+                  <time
+                    dateTime="2022-05-17T09:38:19+00:00"
+                    title="Tuesday, May 17, 2022 at 9:38 AM"
                   >
-                    <p>
-                      /eventsincredible
-                    </p>
-                  </td>
-                  <td
-                    className=""
+                    5/17/2022
+                  </time>
+                </td>
+                <td
+                  className=""
+                >
+                  true
+                </td>
+              </tr>
+              <tr
+                className="top aligned"
+              >
+                <td
+                  className=""
+                >
+                  <div
+                    className="ui fitted checkbox"
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseUp={[Function]}
                   >
-                    <p>
-                      /events
-                    </p>
-                  </td>
-                  <td
-                    className=""
+                    <input
+                      checked={false}
+                      className="hidden"
+                      readOnly={true}
+                      tabIndex={0}
+                      type="checkbox"
+                      value="/eventsincredible"
+                    />
+                    <label />
+                  </div>
+                </td>
+                <td
+                  className=""
+                >
+                  /eventsincredible
+                  <br />
+                    → 
+                  /events
+                </td>
+                <td
+                  className=""
+                >
+                  <time
+                    dateTime="2022-05-17T09:38:35+00:00"
+                    title="Tuesday, May 17, 2022 at 9:38 AM"
                   >
-                    <p>
-                      2022-05-17T09:38:35+00:00
-                    </p>
-                  </td>
-                  <td
-                    className=""
-                  >
-                    <p>
-                      true
-                    </p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                    5/17/2022
+                  </time>
+                </td>
+                <td
+                  className=""
+                >
+                  true
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div
+            style={
+              Object {
+                "alignItems": "center",
+                "display": "flex",
+                "flexWrap": "wrap",
+                "marginBottom": "20px",
+              }
+            }
+          >
+            
             <div
+              className="right menu"
               style={
                 Object {
-                  "alignItems": "center",
                   "display": "flex",
-                  "flexWrap": "wrap",
-                  "marginBottom": "20px",
+                  "marginLeft": "auto",
                 }
               }
             >
-              
               <div
-                className="right menu"
+                className="item"
+                onClick={[Function]}
                 style={
                   Object {
-                    "display": "flex",
-                    "marginLeft": "auto",
+                    "color": "grey",
                   }
                 }
               >
-                <div
-                  className="item"
-                  onClick={[Function]}
-                  style={
-                    Object {
-                      "color": "grey",
-                    }
-                  }
-                >
-                  Show
-                  :
-                </div>
-                <a
-                  className="active item"
-                  onClick={[Function]}
-                  style={
-                    Object {
-                      "cursor": "pointer",
-                      "margin": "0em 0.357em",
-                      "padding": "0 0.4em",
-                    }
-                  }
-                  value={10}
-                >
-                  10
-                </a>
-                <a
-                  className="item"
-                  onClick={[Function]}
-                  style={
-                    Object {
-                      "cursor": "pointer",
-                      "margin": "0em 0.357em",
-                      "padding": "0 0.4em",
-                    }
-                  }
-                  value={25}
-                >
-                  25
-                </a>
-                <a
-                  className="item"
-                  onClick={[Function]}
-                  style={
-                    Object {
-                      "cursor": "pointer",
-                      "margin": "0em 0.357em",
-                      "padding": "0 0.4em",
-                    }
-                  }
-                  value={50}
-                >
-                  50
-                </a>
-                <a
-                  className="item"
-                  onClick={[Function]}
-                  style={
-                    Object {
-                      "cursor": "pointer",
-                      "margin": "0em 0.357em",
-                      "padding": "0 0.4em",
-                    }
-                  }
-                  value="All"
-                >
-                  All
-                </a>
+                Show
+                :
               </div>
+              <a
+                className="active item"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "cursor": "pointer",
+                    "margin": "0em 0.357em",
+                    "padding": "0 0.4em",
+                  }
+                }
+                value={10}
+              >
+                10
+              </a>
+              <a
+                className="item"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "cursor": "pointer",
+                    "margin": "0em 0.357em",
+                    "padding": "0 0.4em",
+                  }
+                }
+                value={25}
+              >
+                25
+              </a>
+              <a
+                className="item"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "cursor": "pointer",
+                    "margin": "0em 0.357em",
+                    "padding": "0 0.4em",
+                  }
+                }
+                value={50}
+              >
+                50
+              </a>
+              <a
+                className="item"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "cursor": "pointer",
+                    "margin": "0em 0.357em",
+                    "padding": "0 0.4em",
+                  }
+                }
+                value="All"
+              >
+                All
+              </a>
             </div>
-            <button
-              className="ui primary disabled button"
-              disabled={true}
-              onClick={[Function]}
-              tabIndex={-1}
-            >
-              Remove selected
-            </button>
           </div>
-        </form>
+          <button
+            className="ui primary disabled button"
+            disabled={true}
+            onClick={[Function]}
+            tabIndex={-1}
+          >
+            Remove selected
+          </button>
+        </div>
       </div>
     </article>
   </div>

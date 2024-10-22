@@ -92,6 +92,11 @@ msgstr "Toevoegen (object lijst)"
 msgid "Add Addons"
 msgstr "Voeg modules toe"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Add Alternative URL
+msgid "Add Alternative URL"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 # defaultMessage: Add Content…
 msgid "Add Content"
@@ -288,6 +293,11 @@ msgstr "Alias"
 msgid "Alias has been added"
 msgstr "Alias toegevoegd"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Aliases have been uploaded.
+msgid "Aliases have been uploaded."
+msgstr ""
+
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -308,7 +318,7 @@ msgid "All content"
 msgstr "Alle inhoud"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: All existing alternative urls for this site
+# defaultMessage: Existing alternative URLs for this site
 msgid "All existing alternative urls for this site"
 msgstr "Alle bestaande alternatieve url's voor deze website"
 
@@ -335,7 +345,7 @@ msgid "Alt text hint link text"
 msgstr "Alt tekst hint link tekst"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Alternative url path (Required)
+# defaultMessage: Alternative URL path (Required)
 msgid "Alternative url path (Required)"
 msgstr "Alternatieve url (verplicht)"
 
@@ -346,7 +356,7 @@ msgid "Alternative url path must start with a slash."
 msgstr "Alternatieve url moet beginnen met een slash."
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Alternative url path → target url path (date and time of creation, manually created yes/no)
+# defaultMessage: Alternative URL path → target URL path (date and time of creation, manually created yes/no)
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "Alternatieve url → doel url (datum en tijd van aanmaak, manuaal aangemaakt ja/nee)"
 
@@ -472,10 +482,20 @@ msgstr "Bladeren"
 msgid "Browse the site, drop an image, or type an URL"
 msgstr "Doorbalder de site, gebruik een afbeelding of typ een URL"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Bulk upload CSV
+msgid "BulkUploadAltUrls"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator.
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Standaard worden de rechten overgenomen van de bovenliggende map.  Als je dit uitschakelt, worden alleen de expliciet toegekende rechten gebruikt. In het overzicht geeft het symbool ${image_confirm_icon} een overgenomen waarde aan. Vergelijkbaar geeft het icoon ${image_link_icon} een globale rol aan, die wordt beheerd door de websitebeheerder."
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: CSV file
+msgid "CSVFile"
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Cache Name
@@ -494,6 +514,7 @@ msgstr "Kan de editeer lay-out voor content type <strong>{type}</strong> niet ed
 
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -787,6 +808,16 @@ msgstr ""
 # defaultMessage: Create working copy
 msgid "Create working copy"
 msgstr "Maak werkkopie"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Created after
+msgid "Created after"
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Created before
+msgid "Created before"
+msgstr ""
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: Created by {creator} on {date}
@@ -1242,12 +1273,16 @@ msgid "Enter map Embed Code"
 msgstr "Geef embed code voor kaart"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target.
+# defaultMessage: Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target.
 msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
 msgstr "Geef het absolute pad van het doel. Het doel moet bestaan of een alternatieve url zijn."
 
-#: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
+# defaultMessage: Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring.
+msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+msgstr ""
+
+#: components/manage/Aliases/Aliases
 # defaultMessage: Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring.
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 msgstr "Geef het absolute pad naar de alternatieve url. Het pad moet starten met '/'. Enkel URL's die in een 404 resulteren zullen een redirect doen."
@@ -1429,7 +1464,7 @@ msgid "Filter Rules:"
 msgstr ""
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Filter by prefix
+# defaultMessage: Filter by path
 msgid "Filter by prefix"
 msgstr "Filter op prefix"
 
@@ -3404,7 +3439,6 @@ msgid "Tags to remove"
 msgstr "Te verwijderen tags"
 
 #: components/manage/Blocks/Teaser/schema
-#: components/manage/Controlpanels/Aliases
 # defaultMessage: Target
 msgid "Target"
 msgstr "Doel"
@@ -4226,6 +4260,11 @@ msgstr ""
 # defaultMessage: Forgot your password?
 msgid "box_forgot_password_option"
 msgstr "Wachtwoord vergeten?"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true).
+msgid "bulkUploadUrlsHelp"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Checkbox
