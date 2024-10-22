@@ -9,10 +9,12 @@ import {
   HydrationBoundary,
   useQuery,
 } from '@tanstack/react-query';
-import ploneClient from '@plone/client';
 import { flattenToAppURL } from '../utils';
 import { useLoaderData, useLocation } from '@remix-run/react';
 import { usePloneClient } from '@plone/providers';
+import { Breadcrumbs, RenderBlocks } from '@plone/components';
+import config from '@plone/registry';
+import { ploneClient } from '../client';
 
 export const meta: MetaFunction = () => {
   return [
@@ -35,10 +37,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     },
   });
 
-  const cli = ploneClient.initialize({
-    apiPath: 'http://localhost:8080/Plone',
-  });
-  const { getContentQuery } = cli;
+  const { getContentQuery } = ploneClient;
 
   await queryClient.prefetchQuery(
     getContentQuery({ path: flattenToAppURL(request.url), expand }),
@@ -47,17 +46,34 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   return json({ dehydratedState: dehydrate(queryClient) });
 };
 
-export default function Index() {
-  const { dehydratedState } = useLoaderData<typeof loader>();
+function Page() {
   const { getContentQuery } = usePloneClient();
   const pathname = useLocation().pathname;
   const { data } = useQuery(getContentQuery({ path: pathname, expand }));
 
+  if (!data) return null;
+  return (
+    <>
+      <Breadcrumbs
+        items={data['@components'].breadcrumbs.items || []}
+        root={data['@components'].breadcrumbs.root}
+        includeRoot
+      />
+      <RenderBlocks
+        content={data}
+        blocksConfig={config.blocks.blocksConfig}
+        pathname="/"
+      />
+    </>
+  );
+}
+
+export default function Index() {
+  const { dehydratedState } = useLoaderData<typeof loader>();
+
   return (
     <HydrationBoundary state={dehydratedState}>
-      <div>
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      </div>
+      <Page />
     </HydrationBoundary>
   );
 }
