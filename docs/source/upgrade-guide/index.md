@@ -527,7 +527,7 @@ Adding the missing `key` property whenever the violation is reported will fix it
 The `@plone/registry` package has been moved to ESM.
 The Add-on Registry scripts have also been refactored to TypeScript.
 For maximum compatibility with CommonJS builds, the default exports have been moved to named exports.
-The modules affected are now built, and the import paths now have changed too.
+The modules affected are now built, and the import paths have changed, too.
 These changes force some import path changes that should be patched in your Plone project or add-on boilerplates.
 
 ```{note}
