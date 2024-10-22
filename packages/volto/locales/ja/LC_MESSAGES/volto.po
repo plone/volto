@@ -2606,7 +2606,6 @@ msgstr "個人別設定"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "個人設定"
 
@@ -4415,6 +4414,11 @@ msgstr ""
 msgid "addUserFormUsernameDescription"
 msgstr ""
 
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
+msgstr ""
+
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
@@ -5015,6 +5019,11 @@ msgstr "正しいURLを入力してください"
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "ユーザアイコン"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks
