@@ -86,7 +86,6 @@ exports[`Aliases renders an aliases control component 1`] = `
             >
               Add
             </button>
-            
           </div>
         </form>
         <form
