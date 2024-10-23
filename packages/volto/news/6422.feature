@@ -1,1 +1,1 @@
-Introducing "client transforms for Redux reducers" @sneridagh
+Introducing "client transforms for Redux reducers". @sneridagh
