@@ -25,7 +25,7 @@ An add-on registry is a facility that allows an app, which was built on an exist
 
 The add-on registry is a store where you can register a number of add-ons that your app consumes.
 
-Add-on packages are just CommonJS/ESM packages.
+Add-on packages are just CommonJS or ESM packages.
 The only requirement is that they point the `main` key of their `package.json` to a module that exports as a default function, which acts as a configuration loader.
 
 An add-on can be published in an npm registry, just as any other package.
@@ -151,9 +151,9 @@ You can customize a component without using shadowing at all, if the code that u
 You can even have modifiers to the component registrations through dependencies.
 Thus you can adapt the call, given an array of such dependencies.
 
-### Register components by name using `config.registerComponent`
+### Register components by name
 
-You can register components by name, typically from an add-on or project configuration:
+You can register components by name, typically from an add-on or project configuration, by using `config.registerComponent`.
 
 ```js
 import MyToolbarComponent from './MyToolbarComponent'
@@ -182,9 +182,9 @@ import Component from '@plone/volto/components/theme/Component/Component';
 
 Note that you can pass `props` down to the retrieved component.
 
-### Adapt the component using the `dependencies` array
+### Adapt the component
 
-You can register components, then retrieve them, given a list of modifiers using `dependencies`.
+You can register components, then retrieve them, given a list of modifiers using the `dependencies` array.
 
 ```js
 import MyTeaserNewsItemComponent from './MyTeaserNewsItemComponent'
@@ -233,7 +233,7 @@ In the example, given a content type value coming from the `content` prop, you w
 ### Lazy load components
 **TODO** Test it properly
 
-You could lazy load the component too in the registry, if you need it.
+You can lazy load the component in the registry.
 
 ```js
 const MyTeaserDefaultComponent = lazy(()=> import(./MyTeaserDefaultComponent))
@@ -246,13 +246,13 @@ config.registerComponent({
 
 ## Utilities registry
 
-The configuration registry also stores a utilities registry in itself.
+The configuration registry also stores a utilities registry.
 The components registry is a mapping of a `name` and a `type` to a method or function.
-It works in a similar way as the components registry, but for methods and functions and by adding an additional query argument `type`.
+It works in a similar way as the components registry, but for methods and functions, and by adding an additional query argument `type`.
 
-### Register utilities using `config.registerUtility`
+### Register utilities
 
-You can register a utility using specific `name` and `type` arguments.
+You can register a utility using `config.registerUtility` with specific `name` and `type` arguments.
 
 ```js
 config.registerUtility({
