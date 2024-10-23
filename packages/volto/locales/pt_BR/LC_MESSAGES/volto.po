@@ -2845,6 +2845,11 @@ msgstr "Cadastro"
 msgid "Registration form"
 msgstr "Formulário de cadastro"
 
+#. Default: "Related Items"
+#: components/theme/RelatedItems/RelatedItems
+msgid "Related Items"
+msgstr "Itens relacionados"
+
 #. Default: "Relation"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 #: helpers/MessageLabels/MessageLabels
