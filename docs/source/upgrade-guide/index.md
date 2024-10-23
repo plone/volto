@@ -530,7 +530,7 @@ Adding the missing `key` property whenever the violation is reported will fix it
 ```
 
 The Node.js-based Volto project boilerplate generator is deprecated from Volto 18 onwards.
-Although you can still migrate your project to Volto 18 using this boilerplate, is recommended that you migrate to use [Cookieplone](https://github.com/plone/cookieplone).
+Although you can still migrate your project to Volto 18 using this boilerplate, you should migrate to using [Cookieplone](https://github.com/plone/cookieplone).
 After the release of Volto 18, it will be marked as deprecated, archived, and it won't receive any further updates.
 
 ##### Alternative
@@ -543,64 +543,77 @@ Migrate your project to use a [Cookieplone](https://github.com/plone/cookieplone
 ```
 
 It's been a while that you can configure Volto using an add-on.
-The "project" way, so you configure Volto using `src/config.js` in your project is deprecated and will be removed in Volto 19.
+The "project" way, where you configure Volto using {file}`src/config.js` in your project, is deprecated in Volto 18, and will be removed in Volto 19.
 
-https://github.com/plone/volto/issues/6396
+```{seealso}
+See https://github.com/plone/volto/issues/6396 for details.
+```
 
 ##### Alternative
 
-It's recommended and hevily encouraged that you do all your project configuration in a policy add-on.
-You can move your project to use [Cookieplone](https://github.com/plone/cookieplone) which provide the necessary boilerplate for it.
+You should configure your projects in a policy add-on.
+You can move your project to use [Cookieplone](https://github.com/plone/cookieplone) which provides the necessary boilerplate for it.
 
-#### SemanticUI
+#### Semantic UI
 
 ```{deprecated} Volto 18.0.0
 ```
 
-SemanticUI library is not maintained anymore and will be removed in Plone 7.
-Any usage in add-ons and projects is discouraged and not recommended.
+The Semantic UI library is not maintained anymore, and will be removed in Plone 7.
+You should no longer use Semantic UI in add-ons and projects.
 
+```{seealso}
 Related PLIPs:
 
 - https://github.com/plone/volto/issues/6321
 - https://github.com/plone/volto/issues/6323
 
+```
+
 ##### Alternatives
 
-Use any supported component framework of your choice for implementing new components, specially in the public theme side.
-In the case that you create new widgets or components for use them in the CMSUI (non-public side) it is recommended that you use [`@plone/components`](https://github.com/plone/volto/tree/main/packages/components) library as an alternative, although it's still in development phase and has still to be finished in the next months.
+You can use any supported component framework of your choice for implementing new components, especially in the public theme side.
+If you create new widgets or components for the CMSUI—in other words, the non-public side—you should use the [`@plone/components`](https://github.com/plone/volto/tree/main/packages/components) library as an alternative.
+Even though it's still in the development phase, it will be completed in the next few months, and will be supported in the future.
 
 #### `lodash` library
 
 ```{deprecated} Volto 18.0.0
 ```
 
-`lodash` has not received any updates since 2021 which makes it kind of concerning too in terms of future maintainability.
-Lots of `lodash` utility helpers can be replaced nowadays by vanilla ES. It is decided that will be removed from Plone 7 since it has performance issues (bloated bundles) and it's not prepared for ESM.
-Plone 7 will use the `lodash-es` library (ESM ready) instead and it will be replaced by modern vanilla ES alternatives whenever possible.
+`lodash` is deprecated in Volto 18, and will be removed in Plone 7.
+
+`lodash` has not received any updates since 2021.
+It has performance issues from bloated bundles and it's not prepared for ESM.
+Lots of `lodash` utility helpers can be replaced with vanilla ES.
+These issues cause concern about its future maintainability.
+
+In place of `lodash`, Plone 7 will use both the `lodash-es` library, which is ESM ready, and modern vanilla ES alternatives whenever possible.
 
 ##### Alternatives
 
-The usage of `lodash` is becoming not necessary, since over time vanilla JS/ES features has make them obsolete.
-Take a look at this URL to check if you have better alternatives every time that you want to use `lodash`:
+```{seealso}
+The following links suggest alternatives to `lodash`.
 
-https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore
-https://javascript.plainenglish.io/you-dont-need-lodash-how-i-gave-up-lodash-693c8b96a07c
+-   https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore
+-   https://javascript.plainenglish.io/you-dont-need-lodash-how-i-gave-up-lodash-693c8b96a07c
 
-If you still need some of its utilities you can use `lodash-es` instead.
+If you still need some of the utilities in `lodash` and cannot use vanilla ES, you can use `lodash-es` instead.
+```
 
 #### `@loadable/component` and Volto `Loadables` framework
 
 ```{deprecated} Volto 18.0.0
 ```
 
-`@loadable/component` and Volto `Loadables` framework will be removed from Plone 7 because it's a Webpack only library and it does not have Vite plugin support.
-Overall, from React 18 this library is not necessary since it has the initial implementation of the "concurrent mode".
-React 19 will improve even add more the features around it.
+`@loadable/component` and the Volto `Loadables` framework is deprecated in Volto 18, and will be removed from Plone 7.
+It's a Webpack-only library, and it does not have Vite plugin support.
+Since React 18, this library is no longer necessary, as it has the initial implementation of the "concurrent mode".
+React 19 will further improve it and add more features around it.
 
 ##### Alternatives
 
-The recommendation is to use plain React 18 lazy load features and its idiom for lazy load components.
+Use plain React 18 lazy load features and its idioms for lazy load components.
 
 ```jsx
 const myLazyComponent = lazy(()=> import('@plone/volto/components/theme/MyLazyComponent/MyLazyComponent'))
@@ -612,32 +625,40 @@ const RandomComponent = (props) => (
 )
 ```
 
-There's no support for pre-loading or lazy load entire libraries as in `@loadable/component` but there would not be really necessary anymore, once we get rid of all the barrel imports files (see next deprecation).
+There's no support for pre-loading or lazy loading entire libraries as in `@loadable/component`.
+With the removal of barrel imports files, as described in the next deprecation notice, it is now unnecessary.
 
-#### Removal of all existing main barrel imports files (`src/components/index.js`, `src/helpers/index.js`, `src/actions/index.js`)
+#### Removal of barrel import files
 
 ```{deprecated} Volto 18.0.0
 ```
 
-Volto had this barrel imports (centralized files where other imports are re-exported in order to improve the developer user experience since the developer only has to remember to import from the re-exported place, not the full path).
+Volto previously used barrel imports, which are centralized files where other imports are re-exported, to improve the developer user experience.
+With barrel imports, a developer only needs to remember to import from the re-exported place, not the full path.
 
-It became a bad practice, since bundlers rely on the import pathway in order to determine if bundle code together or not.
+It became a bad practice, because bundlers rely upon the import path to determine whether to bundle code together or not.
 Since the barrel imports direct import all the code, a lot of imports ended up in the same main chunk of code.
 Modern bundlers like Vite also use that technique, so it heavily relies on this.
-We have to remove the barrel imports in order to increase the natural number of chunks that Volto divides on (specially on routes), and the code splitting is done the right and natural way.
+The barrel imports must be removed to increase the natural number of chunks that Volto divides on—especially on routes—resulting in code splitting done the right and natural way.
 
-This will force us to rewrite all the imports everywhere (core, projects and add-ons) once we implement it.
+This forces us to rewrite all the imports everywhere—including core, projects, and add-ons—once we implement it.
+
+The barrel imports files include the following.
+
+-   {file}`src/components/index.js`
+-   {file}`src/helpers/index.js`
+-   {file}`src/actions/index.js`
 
 ##### Alternative
 
-We can start implementing only direct imports in our code right away, preparing for the upcoming change, so we don't have to in the future.
+Implement only direct imports in code, preparing now for the upcoming change.
 
 ```diff
 -import { BodyClass } from '@plone/volto/helpers';
 +import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 ```
 
-Once this is implemented, a codemod will be provided to fulfill a smooth migration.
+Once this is implemented, a code modification will be provided for a smooth migration.
 
 
 (volto-upgrade-guide-17.x.x)=
