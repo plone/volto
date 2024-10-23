@@ -18,7 +18,6 @@ The add-on registry is a store where you can register a number of add-ons that y
 
 The add-on registry can be queried, so it can provide a list of add-ons installed in the registry and their properties.
 
-% More explanation
 ### What is an add-on
 
 Add-on packages are just CommonJS/ESM packages.
@@ -40,7 +39,6 @@ Add-ons can be chained, where each one can configure the app in some way.
 If needed, each add-on in the chain can override or extend the previous configuration that other add-ons set.
 Thus, the order in which you register add-ons matters.
 
-% QUESTION: Should this go to "HowTo"s?
 ## How To's
 
 ```{toctree}

@@ -20,3 +20,28 @@ const { registry, addons, theme, shadowAliases } = AddonRegistry.init(appRootPat
 ```
 
 Which can be useful for configure your build process.
+
+## Initialization
+
+By default, the configuration registry is empty.
+It only contains the base object keys for it required to work properly.
+These are the keys present on initialization.
+The optional keys are excluded.
+
+```ts
+export type ConfigData = {
+  settings: SettingsConfig | Record<string, never>;
+  blocks: BlocksConfig | Record<string, never>;
+  views: ViewsConfig | Record<string, never>;
+  widgets: WidgetsConfig | Record<string, never>;
+  addonReducers?: AddonReducersConfig;
+  addonRoutes?: AddonRoutesConfig;
+  slots: SlotsConfig | Record<string, never>;
+  components: ComponentsConfig | Record<string, never>;
+  utilities: UtilitiesConfig | Record<string, never>;
+  experimental?: ExperimentalConfig;
+};
+```
+
+In the context of a Volto app, the registry gets initialized by Volto by default.
+
