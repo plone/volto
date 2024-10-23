@@ -95,7 +95,7 @@ msgstr "Add-on hinzufügen"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Add Alternative URL
 msgid "Add Alternative URL"
-msgstr ""
+msgstr "Quell URL hinzufügen"
 
 #: components/manage/Toolbar/Types
 # defaultMessage: Add Content…
@@ -296,12 +296,12 @@ msgstr "Alias wurde hinzugefügt"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Aliases have been removed.
 msgid "Aliases have been removed."
-msgstr ""
+msgstr "Weiterleitungen wurden entfernt."
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Aliases have been uploaded.
 msgid "Aliases have been uploaded."
-msgstr ""
+msgstr "Weiterleitungen wurden hochgeladen."
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -490,7 +490,7 @@ msgstr "Seite durchsuchen, Bild ablegen oder URL eingeben"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Bulk upload CSV
 msgid "BulkUploadAltUrls"
-msgstr ""
+msgstr "CSV Massenupload"
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator.
@@ -500,7 +500,7 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: CSV file
 msgid "CSVFile"
-msgstr ""
+msgstr "CSV Datei"
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Cache Name
@@ -1168,7 +1168,7 @@ msgstr "Bearbeiten"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Edit Alternative URL
 msgid "Edit Alternative URL"
-msgstr ""
+msgstr "Quell URL bearbeiten"
 
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Edit Rule
@@ -1289,7 +1289,7 @@ msgstr "Geben Sie den absoluten Pfad des Ziels ein. Das Ziel muss existieren ode
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring.
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
-msgstr ""
+msgstr "Geben Sie den absoluten Pfad an wo die Quell URL hinterlegt werden sollte. Der Pfad muss mit einem '/' beginnen. Nur URLs welche einen 404 (Not Found) Fehler auslösen werden weitergeleitet."
 
 #: components/manage/Aliases/Aliases
 # defaultMessage: Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring.
@@ -1320,7 +1320,7 @@ msgstr "Geben Sie Ihren Nutzernamen zur Verifikation ein."
 #: components/manage/Blocks/ToC/Schema
 # defaultMessage: Entries
 msgid "Entries"
-msgstr ""
+msgstr "Einträge"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
