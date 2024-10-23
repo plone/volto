@@ -74,7 +74,6 @@ msgid "Active content rules in this Page"
 msgstr "Règles de contenu actives dans cette page"
 
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Rules/Rules
@@ -297,6 +296,11 @@ msgid "Alias has been added"
 msgstr "L'alias a été ajouté"
 
 #: components/manage/Controlpanels/Aliases
+# defaultMessage: Aliases have been removed.
+msgid "Aliases have been removed."
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
 # defaultMessage: Aliases have been uploaded.
 msgid "Aliases have been uploaded."
 msgstr ""
@@ -517,7 +521,6 @@ msgstr "Impossible de modifier la mise en page pour le type de contenu <strong>{
 
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1164,6 +1167,11 @@ msgstr "Les adresses e-mails ne correspondent pas."
 msgid "Edit"
 msgstr "Modifier"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Edit Alternative URL
+msgid "Edit Alternative URL"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Edit Rule
 msgid "Edit Rule"
@@ -1329,11 +1337,6 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Error
 msgid "Error"
-msgstr "Erreur"
-
-#: components/manage/Controlpanels/Aliases
-# defaultMessage: Error
-msgid "ErrorHeader"
 msgstr "Erreur"
 
 #: components/manage/Controlpanels/Rules/Rules

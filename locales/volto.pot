@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-10-23T17:32:43.868Z\n"
+"POT-Creation-Date: 2024-10-23T17:43:38.615Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -69,7 +69,6 @@ msgid "Active content rules in this Page"
 msgstr ""
 
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Rules/Rules
@@ -289,6 +288,11 @@ msgstr ""
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alias has been added
 msgid "Alias has been added"
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Aliases have been removed.
+msgid "Aliases have been removed."
 msgstr ""
 
 #: components/manage/Controlpanels/Aliases
@@ -512,7 +516,6 @@ msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1159,6 +1162,11 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Edit Alternative URL
+msgid "Edit Alternative URL"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Edit Rule
 msgid "Edit Rule"
@@ -1324,11 +1332,6 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Error
 msgid "Error"
-msgstr ""
-
-#: components/manage/Controlpanels/Aliases
-# defaultMessage: Error
-msgid "ErrorHeader"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/Rules

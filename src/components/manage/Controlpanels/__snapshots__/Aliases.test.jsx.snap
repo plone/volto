@@ -24,11 +24,7 @@ exports[`Aliases renders an aliases control component 1`] = `
           <button
             className="ui primary button"
             id="add-alt-url"
-            onBlur={[Function]}
             onClick={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
           >
             Add Alternative URL
             …
@@ -289,6 +285,36 @@ exports[`Aliases renders an aliases control component 1`] = `
                   <br />
                     → 
                   /events
+                   
+                  <button
+                    aria-label="Edit Alternative URL"
+                    className="ui basic button"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "verticalAlign": "middle",
+                      }
+                    }
+                  >
+                    <svg
+                      className="icon"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "18px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </button>
                 </td>
                 <td
                   className=""
@@ -337,6 +363,36 @@ exports[`Aliases renders an aliases control component 1`] = `
                   <br />
                     → 
                   /events
+                   
+                  <button
+                    aria-label="Edit Alternative URL"
+                    className="ui basic button"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "verticalAlign": "middle",
+                      }
+                    }
+                  >
+                    <svg
+                      className="icon"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "18px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </button>
                 </td>
                 <td
                   className=""
@@ -385,6 +441,36 @@ exports[`Aliases renders an aliases control component 1`] = `
                   <br />
                     → 
                   /events
+                   
+                  <button
+                    aria-label="Edit Alternative URL"
+                    className="ui basic button"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "verticalAlign": "middle",
+                      }
+                    }
+                  >
+                    <svg
+                      className="icon"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "18px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </button>
                 </td>
                 <td
                   className=""
@@ -497,6 +583,7 @@ exports[`Aliases renders an aliases control component 1`] = `
           <button
             className="ui primary disabled button"
             disabled={true}
+            id="remove-alt-urls"
             onClick={[Function]}
             tabIndex={-1}
           >
