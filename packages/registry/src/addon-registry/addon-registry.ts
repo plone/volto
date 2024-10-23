@@ -563,7 +563,7 @@ class AddonRegistry {
     const aliases: Aliases = {};
     let { customizationPaths } = packageJson;
     if (!customizationPaths) {
-      customizationPaths = ['src/customizations'];
+      customizationPaths = ['src/customizations', 'customizations'];
     }
     customizationPaths.forEach((customizationPath) => {
       customizationPath = customizationPath.endsWith('/')
@@ -576,8 +576,8 @@ class AddonRegistry {
         name: string;
       }> = [];
 
-      // All registered addon packages (in tsconfig.json/jsconfig.json and package.json:addons)
-      // can be customized
+      // All registered addon packages (in tsconfig.json/jsconfig.json and
+      // package.json:addons) can be customized by other addons
       Object.values(this.packages).forEach((addon) => {
         const { name, modulePath } = addon;
         if (fs.existsSync(path.join(base, name))) {

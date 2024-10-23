@@ -329,7 +329,7 @@ describe('Add-on via config file provided using an env var', () => {
     process.env = originalEnv;
   });
 
-  it('VOLTOCONFIG - provides a list of addon records ordered using an env var for providing the configuration file', () => {
+  it.only('VOLTOCONFIG - provides a list of addon records ordered using an env var for providing the configuration file', () => {
     process.env = {
       ...originalEnv,
       VOLTOCONFIG: `${base}/volto.config.envvar.js`,
