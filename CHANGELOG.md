@@ -8,6 +8,27 @@
 
 <!-- towncrier release notes start -->
 
+## 16.33.0 (2024-10-23)
+
+### Feature
+
+- URL Management control panel: add a filter for redirects created after a given date.
+  **Note:** This requires `Products.CMFPlone` 6.0.14 and `plone.restapi` 9.7.3 or later.
+  @davisagli [#6414](https://github.com/plone/volto/issues/6414)
+- URL Management control panel: Move the form for adding a new redirect into a modal. @davisagli [#6421](https://github.com/plone/volto/issues/6421)
+- URL Management control panel: Add feature to bulk upload redirects in a CSV file.
+  **Note:** This requires `plone.restapi` 9.7.3 or later.
+  @davisagli [#6421](https://github.com/plone/volto/issues/6421)
+- URL Management control panel: Add a way to edit existing aliases. @davisagli [#6425](https://github.com/plone/volto/issues/6425)
+
+### Bugfix
+
+- URL Management control panel: Improve layout for long paths. @davisagli [#6421](https://github.com/plone/volto/issues/6421)
+
+### Internal
+
+- Update upload-artifact action to fix CI. @davisagli [#6432](https://github.com/plone/volto/issues/6432)
+
 ## 16.32.1 (2024-08-28)
 
 ### Bugfix
