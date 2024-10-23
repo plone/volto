@@ -95,7 +95,7 @@ msgstr "Hier werden verfügbare und installierte Backend-Add-ons gezeigt. Inform
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
 msgid "Add Alternative URL"
-msgstr ""
+msgstr "Quell URL hinzufügen"
 
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
@@ -175,7 +175,7 @@ msgstr "Datum hinzufügen"
 #. Default: "Add element to container"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 msgid "Add element to container"
-msgstr ""
+msgstr "Element zum Container hinzufügen"
 
 #. Default: "Add field"
 #: components/manage/Widgets/SchemaWidget
@@ -316,12 +316,12 @@ msgstr "Alias wurde hinzugefügt"
 #. Default: "Aliases have been removed."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been removed."
-msgstr ""
+msgstr "Weiterleitungen wurden entfernt."
 
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been uploaded."
-msgstr ""
+msgstr "Weiterleitungen wurden hochgeladen."
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
@@ -424,7 +424,7 @@ msgstr "Aufsteigend"
 #. Default: "Assign the {role} role to {entry}"
 #: components/manage/Sharing/Sharing
 msgid "Assign the {role} role to {entry}"
-msgstr ""
+msgstr "Rolle {role} zum {entry} zugewiesen."
 
 #. Default: "Assignments"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -519,7 +519,7 @@ msgstr "Seite durchsuchen, Bild ablegen oder URL eingeben"
 #. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
-msgstr ""
+msgstr "CSV Massenupload"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
@@ -529,7 +529,7 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
 msgid "CSVFile"
-msgstr ""
+msgstr "CSV Datei"
 
 #. Default: "Cache Name"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -1218,7 +1218,7 @@ msgstr "Bearbeiten"
 #. Default: "Edit Alternative URL"
 #: components/manage/Controlpanels/Aliases
 msgid "Edit Alternative URL"
-msgstr ""
+msgstr "Quell URL bearbeiten"
 
 #. Default: "Edit Rule"
 #: components/manage/Controlpanels/Rules/EditRule
@@ -1339,7 +1339,7 @@ msgstr "Geben Sie den absoluten Pfad des Ziels ein. Das Ziel muss existieren ode
 #. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
-msgstr ""
+msgstr "Geben Sie den absoluten Pfad an wo die Quell URL hinterlegt werden sollte. Der Pfad muss mit einem '/' beginnen. Nur URLs welche einen 404 (Not Found) Fehler auslösen werden weitergeleitet."
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
@@ -1370,7 +1370,7 @@ msgstr "Geben Sie Ihren Nutzernamen zur Verifikation ein."
 #. Default: "Entries"
 #: components/manage/Blocks/ToC/Schema
 msgid "Entries"
-msgstr ""
+msgstr "Einträge"
 
 #. Default: "Error"
 #: components/manage/Add/Add
