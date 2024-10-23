@@ -170,6 +170,7 @@ const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
                   checkUrl: settings.actions_raising_api_errors.includes(
                     action.type,
                   ),
+                  attach: item.attach,
                 },
               ).then((reqres) => {
                 return [...acc, reqres];
@@ -186,6 +187,7 @@ const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
                 checkUrl: settings.actions_raising_api_errors.includes(
                   action.type,
                 ),
+                attach: item.attach,
               }),
             ),
           )
@@ -195,6 +197,7 @@ const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
           headers: request.headers,
           params: request.params,
           checkUrl: settings.actions_raising_api_errors.includes(action.type),
+          attach: request.attach,
         });
     actionPromise.then(
       (result) => {
