@@ -296,6 +296,24 @@ multilingual-ci-acceptance-test: ## Run Cypress tests in headless mode for CI fo
 multilingual-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests
 	$(MAKE) -C "./packages/volto/" multilingual-ci-acceptance-test-run-all
 
+######### Prefixed Core Acceptance tests
+
+.PHONY: prefixed-acceptance-frontend-prod-start
+prefixed-acceptance-frontend-prod-start: ## Start the prefixed Core Acceptance Frontend Fixture
+	$(MAKE) -C "./packages/volto/" prefixed-acceptance-frontend-prod-start
+
+.PHONY: prefixed-ci-acceptance-test-run-all
+prefixed-ci-acceptance-test-run-all: ## Runs prefixed Core Full Acceptance Testing in headless mode
+	$(MAKE) -C "./packages/volto/" prefixed-ci-acceptance-test-run-all
+
+.PHONY: prefixed-acceptance-test
+prefixed-acceptance-test: ## Start Prefixed Cypress Acceptance Tests
+	$(MAKE) -C "./packages/volto/" prefixed-acceptance-test
+
+.PHONY: deployment-prefixed-acceptance-web-server-start
+deployment-prefixed-acceptance-web-server-start: ## Start the prefixed webserver
+	$(MAKE) -C "./packages/volto/" deployment-prefixed-acceptance-web-server-start
+
 ######### Deployment Multilingual Acceptance tests
 
 .PHONY: deployment-multilingual-acceptance-backend-start
