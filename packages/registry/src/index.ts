@@ -16,16 +16,16 @@ import type {
 } from '@plone/types';
 
 export type ConfigData = {
-  settings: SettingsConfig;
-  blocks: BlocksConfig;
-  views: ViewsConfig;
-  widgets: WidgetsConfig;
-  addonReducers: AddonReducersConfig;
-  addonRoutes: AddonRoutesConfig;
-  slots: SlotsConfig;
-  components: ComponentsConfig;
-  utilities: UtilitiesConfig;
-  experimental: ExperimentalConfig;
+  settings: SettingsConfig | Record<string, never>;
+  blocks: BlocksConfig | Record<string, never>;
+  views: ViewsConfig | Record<string, never>;
+  widgets: WidgetsConfig | Record<string, never>;
+  addonReducers?: AddonReducersConfig;
+  addonRoutes?: AddonRoutesConfig;
+  slots: SlotsConfig | Record<string, never>;
+  components: ComponentsConfig | Record<string, never>;
+  utilities: UtilitiesConfig | Record<string, never>;
+  experimental?: ExperimentalConfig;
 };
 
 type GetComponentResult = {
@@ -44,7 +44,15 @@ class Config {
 
   constructor() {
     if (!Config.instance) {
-      this._data = {};
+      this._data = {
+        settings: {},
+        blocks: {},
+        views: {},
+        widgets: {},
+        slots: {},
+        components: {},
+        utilities: {},
+      };
       Config.instance = this;
     }
 
@@ -205,7 +213,10 @@ class Config {
       return;
     }
     const { slots, data } = this._data.slots[name];
-    const slotComponents = [];
+    const slotComponents: {
+      component: SlotComponent['component'];
+      name: string;
+    }[] = [];
     // For all enabled slots
     for (const slotName of slots) {
       // For all registered components for that slot, inversed, since the last one registered wins

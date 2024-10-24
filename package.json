@@ -44,6 +44,9 @@
     "overrides": {
       "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
       "react-refresh": "0.14.0"
+    },
+    "patchedDependencies": {
+      "jest-resolve@26.6.2": "patches/jest-resolve@26.6.2.patch"
     }
   }
 }

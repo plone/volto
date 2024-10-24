@@ -1,64 +1,120 @@
 /* eslint no-console: 0 */
-const glob = require('glob').sync;
-const path = require('path');
-const fs = require('fs');
-const debug = require('debug')('shadowing');
-const { DepGraph } = require('dependency-graph');
+import { globSync as glob } from 'glob';
+import path from 'path';
+import fs from 'fs';
+import _debug from 'debug';
+import { DepGraph } from 'dependency-graph';
 
-function getPackageBasePath(base) {
+const debug = _debug('shadowing');
+
+export type Package = {
+  name: string;
+  version: string;
+  isPublishedPackage: boolean;
+  isRegisteredAddon: boolean;
+  modulePath: string;
+  packageJson: string;
+  basePath?: string;
+  tsConfigPaths?: [string, any] | null;
+  addons: Array<string>;
+  razzleExtender?: string;
+  eslintExtender?: string;
+};
+type VoltoConfigJS = {
+  addons: Array<string>;
+  theme: string;
+};
+type Aliases = Record<string, string>;
+type AliasesObject = { find: string; replacement: string }[];
+type CoreAddons = { [x: string]: { package: string } };
+type PackageJsonObject = {
+  type: 'module' | 'commonjs';
+  addons: Array<string>;
+  coreAddons: CoreAddons;
+  theme: string;
+  customizationPaths: string[];
+};
+
+type flatAliases = Record<string, string>;
+
+type AddonRegistryGet = {
+  /** The ordered list of addons */
+  addons: Array<string>;
+  /** The theme name */
+  theme: string;
+  /** The customizations (shadows) aliases */
+  shadowAliases: AliasesObject;
+  /** The add-ons aliases - Only for Volto add-ons for which code lives inside `src` */
+  addonAliases: AliasesObject;
+};
+
+function getPackageBasePath(base: string) {
   while (!fs.existsSync(`${base}/package.json`)) {
     base = path.join(base, '../');
   }
   return path.resolve(base);
 }
 
-function fromEntries(pairs) {
-  const res = {};
+function fromEntries(pairs: [string, any][]) {
+  const res: { [key: string]: any } = {};
   pairs.forEach((p) => {
     res[p[0]] = p[1];
   });
   return res;
 }
 
-function buildDependencyGraph(addons, extractDependency) {
+function flatAliasesToObject(flatAliases: flatAliases): AliasesObject {
+  return Object.entries(flatAliases).map(([key, value]) => ({
+    find: key,
+    replacement: value,
+  }));
+}
+
+function buildDependencyGraph(
+  addons: Array<string>,
+  extractDependency: (name: string) => Array<string>,
+) {
   // getAddonsLoaderChain
-  const graph = new DepGraph({ circular: true });
+  const graph = new DepGraph<string | []>({ circular: true });
   graph.addNode('@root');
 
   const seen = ['@root'];
-  const stack = [['@root', addons]];
+  const stack: Array<[string, Array<string>]> = [['@root', addons]];
 
   while (stack.length > 0) {
-    const [pkgName, addons] = stack.shift();
-    if (!graph.hasNode(pkgName)) {
-      graph.addNode(pkgName, []);
+    const [pkgName, addons] = stack.shift() || [];
+    if (pkgName && addons) {
+      if (!graph.hasNode(pkgName)) {
+        graph.addNode(pkgName, []);
+      }
+
+      if (!seen.includes(pkgName)) {
+        stack.push([pkgName, extractDependency(pkgName)]);
+        seen.push(pkgName);
+      }
+
+      addons.forEach((loaderString) => {
+        const [name, extra] = loaderString.split(':');
+        if (!graph.hasNode(name)) {
+          graph.addNode(name, []);
+        }
+
+        const data = graph.getNodeData(name) || [];
+        if (extra) {
+          extra.split(',').forEach((funcName) => {
+            // @ts-expect-error TODO: fix this
+            if (!data.includes(funcName)) data.push(funcName);
+          });
+        }
+        graph.setNodeData(name, data);
+
+        graph.addDependency(pkgName, name);
+
+        if (!seen.includes(name)) {
+          stack.push([name, extractDependency(name)]);
+        }
+      });
     }
-
-    if (!seen.includes(pkgName)) {
-      stack.push([pkgName, extractDependency(pkgName)]);
-      seen.push(pkgName);
-    }
-
-    addons.forEach((loaderString) => {
-      const [name, extra] = loaderString.split(':');
-      if (!graph.hasNode(name)) {
-        graph.addNode(name, []);
-      }
-
-      const data = graph.getNodeData(name) || [];
-      if (extra) {
-        extra.split(',').forEach((funcName) => {
-          if (!data.includes(funcName)) data.push(funcName);
-        });
-      }
-      graph.setNodeData(name, data);
-
-      graph.addDependency(pkgName, name);
-
-      if (!seen.includes(name)) {
-        stack.push([name, extractDependency(name)]);
-      }
-    });
   }
 
   return graph;
@@ -68,7 +124,7 @@ function buildDependencyGraph(addons, extractDependency) {
  * Given an addons loader string, it generates an addons loader string with
  * a resolved chain of dependencies
  */
-function getAddonsLoaderChain(graph) {
+function getAddonsLoaderChain(graph: DepGraph<string | []>) {
   return graph.dependenciesOf('@root').map((name) => {
     const extras = graph.getNodeData(name) || [].join(',');
     return extras.length ? `${name}:${extras}` : name;
@@ -92,26 +148,29 @@ function getAddonsLoaderChain(graph) {
  *   addons to customize the webpack configuration)
  *
  */
-class AddonConfigurationRegistry {
-  constructor(projectRootPath) {
-    const packageJson = (this.packageJson = require(
-      path.join(projectRootPath, 'package.json'),
+class AddonRegistry {
+  public packageJson: PackageJsonObject;
+  public voltoConfigJS: VoltoConfigJS;
+  public projectRootPath: string;
+  public isVoltoProject: boolean;
+  public voltoPath: string;
+  public coreAddons: CoreAddons;
+  public resultantMergedAddons: Array<string>;
+  public addonNames: Array<string>;
+  public packages: Record<string, Package>;
+  public customizations: any;
+  public theme: any;
+  public dependencyGraph: DepGraph<string | []>;
+
+  constructor(projectRootPath: string) {
+    const packageJson = (this.packageJson = JSON.parse(
+      fs.readFileSync(path.join(projectRootPath, 'package.json'), {
+        encoding: 'utf-8',
+      }),
     ));
-    this.voltoConfigJS = {};
+
     // Loads the dynamic config, if any
-    if (process.env.VOLTOCONFIG) {
-      if (fs.existsSync(path.resolve(process.env.VOLTOCONFIG))) {
-        const voltoConfigPath = path.resolve(process.env.VOLTOCONFIG);
-        console.log(`Using volto.config.js in: ${voltoConfigPath}`);
-        this.voltoConfigJS = require(voltoConfigPath);
-      }
-    } else if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
-      this.voltoConfigJS = require(
-        path.join(projectRootPath, 'volto.config.js'),
-      );
-    } else {
-      this.voltoConfigJS = {};
-    }
+    this.voltoConfigJS = this.getRegistryConfig(projectRootPath);
 
     this.projectRootPath = projectRootPath;
     this.isVoltoProject = packageJson.name !== '@plone/volto';
@@ -123,15 +182,21 @@ class AddonConfigurationRegistry {
     this.coreAddons =
       packageJson.name === '@plone/volto'
         ? packageJson.coreAddons || {}
-        : require(`${getPackageBasePath(this.voltoPath)}/package.json`)
-            .coreAddons || {};
+        : JSON.parse(
+            fs.readFileSync(
+              `${getPackageBasePath(this.voltoPath)}/package.json`,
+              'utf-8',
+            ),
+          ).coreAddons || {};
 
     this.resultantMergedAddons = [
       ...(packageJson.addons || []),
       ...(this.voltoConfigJS.addons || []),
     ];
 
-    this.addonNames = this.resultantMergedAddons.map((s) => s.split(':')[0]);
+    this.addonNames = this.resultantMergedAddons.map(
+      (s: string) => s.split(':')[0],
+    );
     this.packages = {};
     this.customizations = new Map();
 
@@ -161,22 +226,77 @@ class AddonConfigurationRegistry {
     this.initAddonExtenders();
   }
 
+  public get(): AddonRegistryGet {
+    return {
+      addons: this.getAddonDependencies(),
+      theme: this.theme,
+      addonAliases: flatAliasesToObject(this.getResolveAliases()),
+      shadowAliases: flatAliasesToObject(this.getAddonCustomizationPaths()),
+    };
+  }
+
+  public static init(projectRootPath: string) {
+    const registry = new AddonRegistry(projectRootPath);
+    return {
+      registry,
+      addons: registry.getAddonDependencies(),
+      theme: registry.theme,
+      shadowAliases: flatAliasesToObject(registry.getAddonCustomizationPaths()),
+    };
+  }
+
+  isESM = () => this.packageJson.type === 'module';
+
+  getRegistryConfig(projectRootPath: string) {
+    let config: VoltoConfigJS = {
+      addons: [],
+      theme: '',
+    };
+    const CONFIGMAP = {
+      REGISTRYCONFIG: this.isESM()
+        ? 'registry.config.cjs'
+        : 'registry.config.js',
+      VOLTOCONFIG: this.isESM() ? 'volto.config.cjs' : 'volto.config.js',
+    };
+
+    for (const key in CONFIGMAP) {
+      if (process.env[key]) {
+        const resolvedPath = path.resolve(process.env[key]);
+        if (fs.existsSync(resolvedPath)) {
+          const voltoConfigPath = resolvedPath;
+          console.log(`Using configuration file in: ${voltoConfigPath}`);
+          config = require(voltoConfigPath);
+          break;
+        }
+      } else if (fs.existsSync(path.join(projectRootPath, CONFIGMAP[key]))) {
+        config = require(path.join(projectRootPath, CONFIGMAP[key]));
+        break;
+      }
+    }
+
+    return config;
+  }
+
   /**
    * Gets the `tsconfig.json` `compilerOptions.baseUrl` and `compilerOptions.paths`
    * Returns a tuple `[baseUrl, pathsConfig]`
    *
    */
-  getTSConfigPaths(rootPath = this.projectRootPath) {
-    let configFile;
+  getTSConfigPaths(
+    rootPath = this.projectRootPath,
+  ): [string, Record<string, string[]> | undefined] {
+    let configFile: string | undefined;
     if (fs.existsSync(`${rootPath}/tsconfig.json`))
       configFile = `${rootPath}/tsconfig.json`;
     else if (fs.existsSync(`${rootPath}/jsconfig.json`))
       configFile = `${rootPath}/jsconfig.json`;
 
-    let pathsConfig;
-    let baseUrl;
+    let pathsConfig: Record<string, string[]> | undefined;
+    let baseUrl: string = '';
     if (configFile) {
-      const jsConfig = require(configFile).compilerOptions;
+      const jsConfig = JSON.parse(
+        fs.readFileSync(configFile, 'utf-8'),
+      ).compilerOptions;
       pathsConfig = jsConfig.paths;
       baseUrl = jsConfig.baseUrl;
     }
@@ -209,28 +329,31 @@ class AddonConfigurationRegistry {
    * Given an add-on name, it registers it as a development package
    *
    */
-  initDevelopmentPackage(name) {
+  initDevelopmentPackage(name: string) {
     const [baseUrl, pathsConfig] = this.getTSConfigPaths();
-    const packagePath = `${this.projectRootPath}/${baseUrl}/${pathsConfig[name][0]}`;
-    const packageJsonPath = `${getPackageBasePath(packagePath)}/package.json`;
-    const innerAddons = require(packageJsonPath).addons || [];
-    const innerAddonsNormalized = innerAddons.map((s) => s.split(':')[0]);
-    if (this.addonNames.includes(name) && innerAddonsNormalized.length > 0) {
-      innerAddonsNormalized.forEach((name) => {
-        if (!this.addonNames.includes(name)) this.addonNames.push(name);
-      });
-    }
-    const pkg = {
-      modulePath: packagePath,
-      packageJson: packageJsonPath,
-      version: require(packageJsonPath).version,
-      isPublishedPackage: false,
-      isRegisteredAddon: this.addonNames.includes(name),
-      name,
-      addons: require(packageJsonPath).addons || [],
-    };
+    if (pathsConfig && pathsConfig.hasOwnProperty(name)) {
+      const packagePath = `${this.projectRootPath}/${baseUrl}/${pathsConfig[name][0]}`;
+      const packageJsonPath = `${getPackageBasePath(packagePath)}/package.json`;
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+      const innerAddons: Array<string> = packageJson.addons || [];
+      const innerAddonsNormalized = innerAddons.map((s) => s.split(':')[0]);
+      if (this.addonNames.includes(name) && innerAddonsNormalized.length > 0) {
+        innerAddonsNormalized.forEach((name) => {
+          if (!this.addonNames.includes(name)) this.addonNames.push(name);
+        });
+      }
+      const pkg = {
+        modulePath: packagePath,
+        packageJson: packageJsonPath,
+        version: packageJson.version,
+        isPublishedPackage: false,
+        isRegisteredAddon: this.addonNames.includes(name),
+        name,
+        addons: packageJson.addons || [],
+      };
 
-    this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
+      this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
+    }
   }
 
   /**
@@ -243,11 +366,11 @@ class AddonConfigurationRegistry {
     this.addonNames.forEach(this.initPublishedPackage.bind(this));
   }
 
-  initPublishedPackage(name) {
+  initPublishedPackage(name: string) {
     // I am in the paths list, if so, register it as a development package
     // instead than a published one
     const [, pathsConfig] = this.getTSConfigPaths();
-    if (pathsConfig.hasOwnProperty(name)) {
+    if (pathsConfig && pathsConfig.hasOwnProperty(name)) {
       return this.initDevelopmentPackage(name);
     }
 
@@ -255,10 +378,10 @@ class AddonConfigurationRegistry {
       const resolved = require.resolve(name, { paths: [this.projectRootPath] });
       const basePath = getPackageBasePath(resolved);
       const packageJson = path.join(basePath, 'package.json');
-      const pkg = require(packageJson);
+      const pkg = JSON.parse(fs.readFileSync(packageJson, 'utf-8'));
       const main = pkg.main || 'src/index.js';
       const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
-      const innerAddons = pkg.addons || [];
+      const innerAddons: Array<string> = pkg.addons || [];
       const innerAddonsNormalized = innerAddons.map((s) => s.split(':')[0]);
       if (this.addonNames.includes(name) && innerAddonsNormalized.length > 0) {
         innerAddonsNormalized.forEach((name) => {
@@ -290,7 +413,7 @@ class AddonConfigurationRegistry {
   }
 
   // An add-on from the ADDONS env var can only be a published one
-  initAddonFromEnvVar(name) {
+  initAddonFromEnvVar(name: string) {
     const normalizedAddonName = name.split(':')[0];
     this.initPublishedPackage(normalizedAddonName);
   }
@@ -341,7 +464,10 @@ class AddonConfigurationRegistry {
   }
 
   getCustomThemeAddons() {
-    const customThemeAddonsInfo = {
+    const customThemeAddonsInfo: {
+      variables: string[];
+      main: string[];
+    } = {
       variables: [],
       main: [],
     };
@@ -372,11 +498,11 @@ class AddonConfigurationRegistry {
   /**
    * Returns a list of aliases given the defined paths in `tsconfig.json`
    */
-  getAliasesFromTSConfig(basePath, tsConfig) {
+  getAliasesFromTSConfig(basePath: string, tsConfig: [string, any]) {
     const [baseUrl, options] = tsConfig;
     const fullPathsPath = baseUrl ? `${basePath}/${baseUrl}` : basePath;
 
-    let aliases = {};
+    const aliases: { [x: string]: string } = {};
     Object.keys(options || {}).forEach((item) => {
       const name = item.replace(/\/\*$/, '');
       // webpack5 allows arrays here, fix later
@@ -397,12 +523,10 @@ class AddonConfigurationRegistry {
    * defined in the `tsconfig.json` files of the add-ons.
    */
   getResolveAliases() {
-    const pairs = [
-      ...Object.keys(this.packages).map((o) => [
-        o,
-        this.packages[o].modulePath,
-      ]),
-    ];
+    const pairs: [string, string][] = Object.keys(this.packages).map((o) => [
+      o,
+      this.packages[o].modulePath,
+    ]);
 
     let aliasesFromTSPaths = {};
     Object.keys(this.packages).forEach((o) => {
@@ -410,7 +534,7 @@ class AddonConfigurationRegistry {
         aliasesFromTSPaths = {
           ...aliasesFromTSPaths,
           ...this.getAliasesFromTSConfig(
-            this.packages[o].basePath,
+            this.packages[o].basePath || '',
             this.packages[o].tsConfigPaths,
           ),
         };
@@ -435,21 +559,25 @@ class AddonConfigurationRegistry {
    * convention, we use a folder called "volto" inside customizations folder
    * and separate folder for each addon, identified by its addon (package) name.
    */
-  getCustomizationPaths(packageJson, rootPath) {
-    const aliases = {};
+  getCustomizationPaths(packageJson: PackageJsonObject, rootPath: string) {
+    const aliases: Aliases = {};
     let { customizationPaths } = packageJson;
     if (!customizationPaths) {
-      customizationPaths = ['src/customizations'];
+      customizationPaths = ['src/customizations', 'customizations'];
     }
     customizationPaths.forEach((customizationPath) => {
       customizationPath = customizationPath.endsWith('/')
         ? customizationPath.slice(0, customizationPath.length - 1)
         : customizationPath;
       const base = path.join(rootPath, customizationPath);
-      const reg = [];
+      const reg: Array<{
+        customPath: string;
+        sourcePath: string;
+        name: string;
+      }> = [];
 
-      // All registered addon packages (in tsconfig.json/jsconfig.json and package.json:addons)
-      // can be customized
+      // All registered addon packages (in tsconfig.json/jsconfig.json and
+      // package.json:addons) can be customized by other addons
       Object.values(this.packages).forEach((addon) => {
         const { name, modulePath } = addon;
         if (fs.existsSync(path.join(base, name))) {
@@ -491,12 +619,14 @@ class AddonConfigurationRegistry {
         glob(
           `${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx|ts|tsx)`,
         ).map((filename) => {
-          function changeFileExtension(filePath) {
+          function changeFileExtension(filePath: string) {
             // Extract the current file extension
-            const currentExtension = filePath.split('.').pop();
+            const currentExtension = filePath.split('.').pop() || '';
 
             // Define the mapping between file extensions
-            const extensionMapping = {
+            const extensionMapping: {
+              [key: string]: string;
+            } = {
               jsx: 'tsx',
               tsx: 'jsx',
               js: 'ts',
@@ -523,7 +653,7 @@ class AddonConfigurationRegistry {
            *
            * @param {*} filePath
            */
-          function simpleSwapFileExtension(filePath) {
+          function simpleSwapFileExtension(filePath: string) {
             // Extract the current file extension
             const currentExtension = filePath.split('.').pop();
             return filePath.replace(`.${currentExtension}`, '.jsx');
@@ -569,12 +699,12 @@ class AddonConfigurationRegistry {
    * `addons:volto-addonA,volto-addonB`
    */
   getAddonCustomizationPaths() {
-    let aliases = {};
+    let aliases: Aliases = {};
     this.getAddons().forEach((addon) => {
       aliases = {
         ...aliases,
         ...this.getCustomizationPaths(
-          require(addon.packageJson),
+          JSON.parse(fs.readFileSync(addon.packageJson, 'utf-8')),
           getPackageBasePath(addon.modulePath),
         ),
       };
@@ -586,9 +716,13 @@ class AddonConfigurationRegistry {
    * Allow packages from addons set in env vars to customize Volto and other addons.
    *
    * Same as the above one, but specific for Volto addons coming from env vars
+   *
+   * This is no longer necessary in the pnpm setup, as all valid packages have to be
+   * released or declared as a workspace
+   *
    */
   getAddonsFromEnvVarCustomizationPaths() {
-    let aliases = {};
+    let aliases: Aliases = {};
     if (process.env.ADDONS) {
       process.env.ADDONS.split(';').forEach((addon) => {
         const normalizedAddonName = addon.split(':')[0];
@@ -598,7 +732,10 @@ class AddonConfigurationRegistry {
           const packageJson = path.join(basePath, 'package.json');
           aliases = {
             ...aliases,
-            ...this.getCustomizationPaths(require(packageJson), basePath),
+            ...this.getCustomizationPaths(
+              JSON.parse(fs.readFileSync(packageJson, 'utf-8')),
+              basePath,
+            ),
           };
         }
       });
@@ -626,11 +763,11 @@ class AddonConfigurationRegistry {
 
   "@root" [color = red fillcolor=yellow style=filled]
 `;
-    let queue = ['@root'];
-    let name;
+    const queue = ['@root'];
+    let name: string;
 
     while (queue.length > 0) {
-      name = queue.pop();
+      name = queue.pop() || '';
 
       const deps = this.dependencyGraph.directDependenciesOf(name);
       for (let i = 0; i < deps.length; i++) {
@@ -648,6 +785,4 @@ class AddonConfigurationRegistry {
   }
 }
 
-module.exports = AddonConfigurationRegistry;
-module.exports.getAddonsLoaderChain = getAddonsLoaderChain;
-module.exports.buildDependencyGraph = buildDependencyGraph;
+export { AddonRegistry, getAddonsLoaderChain, buildDependencyGraph };
