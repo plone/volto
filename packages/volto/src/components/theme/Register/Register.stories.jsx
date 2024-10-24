@@ -20,6 +20,32 @@ function StoryComponent(args) {
           locale: 'en',
           messages: {},
         },
+        userschema: {
+          loaded: true,
+          loading: false,
+          userschema: {
+            fieldsets: [
+              {
+                id: 'default',
+                title: 'default',
+                fields: ['fullname', 'email'],
+              },
+            ],
+            properties: {
+              fullname: {
+                type: 'string',
+                title: 'Fullname',
+                description: 'Enter your fullname',
+              },
+              email: {
+                type: 'string',
+                title: 'email',
+                description: 'Enter your email address',
+              },
+            },
+            required: ['fullname', 'email'],
+          },
+        },
       }}
     >
       <div id="toolbar" style={{ display: 'none' }} />

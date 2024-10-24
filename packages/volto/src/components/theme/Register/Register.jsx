@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { Helmet, usePrevious } from '@plone/volto/helpers';
 import { Toast } from '@plone/volto/components';
 import { Form } from '@plone/volto/components/manage/Form';
-import { createUser } from '@plone/volto/actions';
+import { createUser, getUserSchema } from '@plone/volto/actions';
 
 const messages = defineMessages({
   title: {
@@ -64,6 +64,13 @@ const Register = () => {
   const { loaded, loading, error } = useUsers();
 
   const prevloading = usePrevious(loading);
+  const userschema = useSelector((state) => state.userschema);
+
+  useEffect(() => {
+    if (!userschema.loading && !userschema.loaded) {
+      dispatch(getUserSchema());
+    }
+  }, [userschema, dispatch]);
 
   useEffect(() => {
     if (prevloading && loaded) {
@@ -90,6 +97,12 @@ const Register = () => {
     setError(null);
   };
 
+  const emptySchema = {
+    fieldsets: [],
+    properties: {},
+    required: [],
+  }
+
   return (
     <div id="page-register">
       <Helmet title={intl.formatMessage(messages.register)} />
@@ -99,28 +112,7 @@ const Register = () => {
         error={errors || error}
         loading={loading}
         submitLabel={intl.formatMessage(messages.register)}
-        schema={{
-          fieldsets: [
-            {
-              id: 'default',
-              title: intl.formatMessage(messages.default),
-              fields: ['fullname', 'email'],
-            },
-          ],
-          properties: {
-            fullname: {
-              type: 'string',
-              title: intl.formatMessage(messages.fullnameTitle),
-              description: intl.formatMessage(messages.fullnameDescription),
-            },
-            email: {
-              type: 'string',
-              title: intl.formatMessage(messages.emailTitle),
-              description: intl.formatMessage(messages.emailDescription),
-            },
-          },
-          required: ['fullname', 'email'],
-        }}
+        schema={userschema.loaded ? userschema.userschema: emptySchema}
       />
     </div>
   );
