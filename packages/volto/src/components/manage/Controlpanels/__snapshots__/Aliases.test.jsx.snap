@@ -272,6 +272,19 @@ exports[`Aliases renders an aliases control component 1`] = `
                     <br />
                       → 
                     /events
+                     
+                    <button
+                      aria-label="Edit Alternative URL"
+                      class="ui basic button"
+                      style="vertical-align: middle;"
+                    >
+                      <svg
+                        class="icon"
+                        style="height: 18px; width: auto; fill: currentColor;"
+                        viewBox=""
+                        xmlns=""
+                      />
+                    </button>
                   </td>
                   <td
                     class=""
@@ -315,6 +328,19 @@ exports[`Aliases renders an aliases control component 1`] = `
                     <br />
                       → 
                     /events
+                     
+                    <button
+                      aria-label="Edit Alternative URL"
+                      class="ui basic button"
+                      style="vertical-align: middle;"
+                    >
+                      <svg
+                        class="icon"
+                        style="height: 18px; width: auto; fill: currentColor;"
+                        viewBox=""
+                        xmlns=""
+                      />
+                    </button>
                   </td>
                   <td
                     class=""
@@ -358,6 +384,19 @@ exports[`Aliases renders an aliases control component 1`] = `
                     <br />
                       → 
                     /events
+                     
+                    <button
+                      aria-label="Edit Alternative URL"
+                      class="ui basic button"
+                      style="vertical-align: middle;"
+                    >
+                      <svg
+                        class="icon"
+                        style="height: 18px; width: auto; fill: currentColor;"
+                        viewBox=""
+                        xmlns=""
+                      />
+                    </button>
                   </td>
                   <td
                     class=""
@@ -424,6 +463,7 @@ exports[`Aliases renders an aliases control component 1`] = `
             <button
               class="ui primary disabled button"
               disabled=""
+              id="remove-alt-urls"
               tabindex="-1"
             >
               Remove selected
