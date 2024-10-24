@@ -9,7 +9,7 @@ exports[`Register renders a register component 1`] = `
   \\"fieldsets\\": [
     {
       \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\",
+      \\"title\\": \\"default\\",
       \\"fields\\": [
         \\"fullname\\",
         \\"email\\"
@@ -19,13 +19,13 @@ exports[`Register renders a register component 1`] = `
   \\"properties\\": {
     \\"fullname\\": {
       \\"type\\": \\"string\\",
-      \\"title\\": \\"Full Name\\",
-      \\"description\\": \\"Enter full name, e.g. John Smith.\\"
+      \\"title\\": \\"Fullname\\",
+      \\"description\\": \\"Enter your fullname\\"
     },
     \\"email\\": {
       \\"type\\": \\"string\\",
-      \\"title\\": \\"E-mail\\",
-      \\"description\\": \\"Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.\\"
+      \\"title\\": \\"email\\",
+      \\"description\\": \\"Enter your email address\\"
     }
   },
   \\"required\\": [
