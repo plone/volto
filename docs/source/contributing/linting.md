@@ -76,7 +76,7 @@ From here we will have access to the commands to check for errors and to fix the
 You can run the pnpm `eslint`, `prettier`, and `stylelint` commands from the Volto package folder:
 
 ```shell
-pnpm lint 
+pnpm lint
 pnpm prettier
 pnpm stylelint
 ```
@@ -89,8 +89,13 @@ pnpm prettier:fix
 pnpm stylelint:fix
 ```
 
-````{note}
-The same commands can be found in your Volto add-on projects, as seen in the [`package.json.tpl`](https://github.com/plone/volto/blob/main/packages/generator-volto/generators/app/templates/package.json.tpl#L10) file.
+```{versionadded} Volto 18.0.0-alpha.43
+[Cookieplone](https://github.com/plone/cookieplone) is now the recommended way to develop Volto projects, using it as a boilerplate generator.
+Cookieplone uses the frontend code installed using `pnpm` instead of `yarn`.
+```
+
+````{deprecated} 18.0.0
+The same commands can be found in your Volto leagacy add-ons and projects created with `@plone/generator-volto`, as seen in the [`package.json.tpl`](https://github.com/plone/volto/blob/main/packages/generator-volto/generators/app/templates/package.json.tpl#L10) file.
 
 You will use similar commands to run the linting commands, but with `yarn` instead of `pnpm`:
 

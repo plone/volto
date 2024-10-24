@@ -36,7 +36,7 @@ You can find the complete `@loadable/component` documentation here: https://load
 You can check the code splitting state by using the included bundle analyzer:
 
 ```shell
-yarn analyze
+pnpm analyze
 ```
 
 A browser will open with the bundle inspector.
