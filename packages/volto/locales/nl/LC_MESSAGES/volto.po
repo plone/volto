@@ -430,6 +430,11 @@ msgstr ""
 msgid "Assignments"
 msgstr ""
 
+#. Default: "Automatically"
+#: components/manage/Controlpanels/Aliases
+msgid "Automatically"
+msgstr ""
+
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
@@ -487,6 +492,11 @@ msgstr ""
 #. Default: "Block"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
+msgstr ""
+
+#. Default: "Both"
+#: components/manage/Controlpanels/Aliases
+msgid "Both"
 msgstr ""
 
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -1412,6 +1422,11 @@ msgstr ""
 msgid "Event view"
 msgstr ""
 
+#. Default: "Example"
+#: components/manage/Controlpanels/Aliases
+msgid "Example"
+msgstr ""
+
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Exclude from navigation"
@@ -1523,6 +1538,7 @@ msgid "Files uploaded: {uploadedFiles}"
 msgstr "Geüploade bestanden: {uploadedFiles}"
 
 #. Default: "Filter"
+#: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
 msgstr ""
@@ -2181,6 +2197,11 @@ msgstr ""
 #. Default: "Manual"
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
+msgstr ""
+
+#. Default: "Manually"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually"
 msgstr ""
 
 #. Default: "Manually or automatically added?"
@@ -4580,6 +4601,11 @@ msgstr ""
 #. Default: "Where"
 #: components/theme/EventDetails/EventDetails
 msgid "event_where"
+msgstr ""
+
+#. Default: "/example"
+#: components/manage/Controlpanels/Aliases
+msgid "examplePath"
 msgstr ""
 
 #. Default: "This website does not accept files larger than {limit}"

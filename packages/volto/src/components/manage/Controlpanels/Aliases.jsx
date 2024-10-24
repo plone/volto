@@ -106,6 +106,22 @@ const messages = defineMessages({
     id: 'CSVFile',
     defaultMessage: 'CSV file',
   },
+  Both: {
+    id: 'Both',
+    defaultMessage: 'Both',
+  },
+  Automatically: {
+    id: 'Automatically',
+    defaultMessage: 'Automatically',
+  },
+  Manually: {
+    id: 'Manually',
+    defaultMessage: 'Manually',
+  },
+  examplePath: {
+    id: 'examplePath',
+    defaultMessage: '/example',
+  },
 });
 
 const filterChoices = [
@@ -320,7 +336,7 @@ const Aliases = (props) => {
                             defaultMessage="Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
                           />
                         ),
-                        placeholder: '/example',
+                        placeholder: intl.formatMessage(messages.examplePath),
                       },
                       targetUrlPath: {
                         title: intl.formatMessage(messages.targetUrlPathTitle),
@@ -330,7 +346,7 @@ const Aliases = (props) => {
                             defaultMessage="Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
                           />
                         ),
-                        placeholder: '/example',
+                        placeholder: intl.formatMessage(messages.examplePath),
                       },
                     },
                     required: ['altUrlPath', 'targetUrlPath'],
@@ -359,7 +375,11 @@ const Aliases = (props) => {
                             />
                           </p>
                           <p>
-                            Example:
+                            <FormattedMessage
+                              id="Example"
+                              defaultMessage="Example"
+                            />
+                            :
                             <br />
                             <code>
                               /old-home-page.asp,/front-page,2019/01/27 10:42:59
@@ -407,7 +427,7 @@ const Aliases = (props) => {
                     >
                       <Input
                         name="filter"
-                        placeholder="/example"
+                        placeholder={intl.formatMessage(messages.examplePath)}
                         value={filterQuery}
                         onChange={(e) => setFilterQuery(e.target.value)}
                       />
@@ -422,7 +442,7 @@ const Aliases = (props) => {
                         {filterChoices.map((o, i) => (
                           <Form.Field key={i}>
                             <Radio
-                              label={o.label}
+                              label={intl.formatMessage({ id: o.label })}
                               name="radioGroup"
                               value={o.value}
                               checked={filterType === o}
@@ -458,7 +478,7 @@ const Aliases = (props) => {
                     </Form.Field>
                   )}
                   <Button onClick={() => updateResults()} primary>
-                    Filter
+                    <FormattedMessage id="Filter" defaultMessage="Filter" />
                   </Button>
                 </Segment>
               </Form>
