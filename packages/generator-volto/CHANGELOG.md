@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.19 (2024-10-18)
+
+### Internal
+
+- Update to use jest 26 @sneridagh [#6406](https://github.com/plone/volto/issues/6406)
+
 ## 9.0.0-alpha.18 (2024-10-04)
 
 ### Breaking
