@@ -41,6 +41,7 @@ describe('Add Content Tests', () => {
   });
 
   it('After removing value of widget the focus should be removed from the field', () => {
+    cy.wait(2000);
     cy.get('#field-creators').type('aaa');
     cy.get('#field-creators')
       .type('aaa{Enter}')
