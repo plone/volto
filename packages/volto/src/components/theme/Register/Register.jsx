@@ -101,7 +101,7 @@ const Register = () => {
     fieldsets: [],
     properties: {},
     required: [],
-  }
+  };
 
   return (
     <div id="page-register">
@@ -112,7 +112,7 @@ const Register = () => {
         error={errors || error}
         loading={loading}
         submitLabel={intl.formatMessage(messages.register)}
-        schema={userschema.loaded ? userschema.userschema: emptySchema}
+        schema={userschema.loaded ? userschema.userschema : emptySchema}
       />
     </div>
   );
