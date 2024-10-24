@@ -48,13 +48,13 @@ All the environment variables that are configurable now work at runtime, not at 
 Before Volto 13, you'd do:
 
 ```bash
-RAZZLE_API_PATH=https://plone.org yarn build && yarn start:prod
+RAZZLE_API_PATH=https://plone.org pnpm build && pnpm start:prod
 ```
 
 From Volto 13 onwards, you can now do:
 
 ```bash
-yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
+pnpm build && RAZZLE_API_PATH=https://plone.org pnpm start:prod
 ```
 ````
 
@@ -130,7 +130,7 @@ server {
   error_log /dev/stdout;
 
   # [seamless mode] Recommended as default configuration, using seamless mode new plone.rest traversal
-  # yarn build && yarn start:prod
+  # pnpm build && pnpm start:prod
   location ~ /\+\+api\+\+($|/.*) {
       rewrite ^/\+\+api\+\+($|/.*) /VirtualHostBase/http/myservername.org/Plone/++api++/VirtualHostRoot/$1 break;
       proxy_pass http://backend;
@@ -138,7 +138,7 @@ server {
 
   # Legacy deployment example, using RAZZLE_LEGACY_TRAVERSE Volto won't append ++api++ automatically
   # Recommended only if you can't upgrade to latest `plone.restapi` and `plone.rest`
-  # yarn build && RAZZLE_API_PATH=http://myservername.org/api RAZZLE_LEGACY_TRAVERSE=true yarn start:prod
+  # pnpm build && RAZZLE_API_PATH=http://myservername.org/api RAZZLE_LEGACY_TRAVERSE=true pnpm start:prod
   # location ~ /api($|/.*) {
   #     rewrite ^/api($|/.*) /VirtualHostBase/http/myservername.org/Plone/VirtualHostRoot/_vh_api$1 break;
   #    proxy_pass http://backend;

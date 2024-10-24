@@ -61,7 +61,7 @@ export const settings = {
 or use the environment variable:
 
 ```bash
-RAZZLE_DEV_PROXY_API_PATH=http://localhost:8081/mysite yarn start
+RAZZLE_DEV_PROXY_API_PATH=http://localhost:8081/mysite pnpm start
 ```
 
 This redefines the request path from the internal proxy of the server side Node.js process to the Plone content backend API, but leaves the frontend Volto process making all content requests to `http://localhost:3000/++api++/`.

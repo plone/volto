@@ -33,7 +33,7 @@ or add a key in your `package.json` project:
 or via a `THEME` variable:
 
 ```shell
-THEME='volto-my-theme' yarn start
+THEME='volto-my-theme' pnpm start
 ```
 
 2. Create a directory `src/theme` in your add-on, then add this file `theme.config`, replacing `<name_of_your_theme>` with your add-on name:
