@@ -346,11 +346,15 @@ class Edit extends Component {
               <>
                 <Helmet
                   title={
-                    this.props?.schema?.title
+                    this.props?.content?.title
                       ? this.props.intl.formatMessage(messages.edit, {
-                          title: this.props.schema.title,
+                          title: this.props?.content?.title,
                         })
-                      : null
+                      : this.props?.schema?.title
+                        ? this.props.intl.formatMessage(messages.edit, {
+                            title: this.props.schema.title,
+                          })
+                        : null
                   }
                 >
                   {this.props.content?.language && (
