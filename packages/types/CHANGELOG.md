@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.21 (2024-10-18)
+
+### Bugfix
+
+- Some improvements and fixes in blocks and settings types. @sneridagh [#6412](https://github.com/plone/volto/issues/6412)
+
+### Internal
+
+- Update typescript and vitest everywhere @sneridagh [#6407](https://github.com/plone/volto/issues/6407)
+
 ## 1.0.0-alpha.20 (2024-10-08)
 
 ### Bugfix

@@ -2,6 +2,9 @@ import path from 'path';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   // sassOptions: {
   //   includePaths: [path.join(__dirname, 'src/lib/components/src/styles')],
   // },

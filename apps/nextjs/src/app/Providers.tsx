@@ -1,14 +1,31 @@
 'use client';
 import React from 'react';
-import { useRouter } from 'next/navigation';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { PloneClientProvider } from '@plone/providers';
+import {
+  useRouter,
+  usePathname,
+  useSearchParams,
+  useParams,
+} from 'next/navigation';
+import { QueryClient } from '@tanstack/react-query';
+import { PloneProvider } from '@plone/providers';
 import PloneClient from '@plone/client';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { RouterProvider } from 'react-aria-components';
-import { FlattenToAppURLProvider } from '@plone/components';
 import { flattenToAppURL } from './utils';
 import config from './config';
+
+// Custom hook to unify the location object between NextJS and Plone
+function useLocation() {
+  const pathname = usePathname();
+  const search = useSearchParams();
+
+  return {
+    pathname,
+    search,
+    searchStr: '',
+    hash: (typeof window !== 'undefined' && window.location.hash) || '',
+    href: (typeof window !== 'undefined' && window.location.href) || '',
+  };
+}
 
 const Providers: React.FC<{
   children?: React.ReactNode;
@@ -39,16 +56,22 @@ const Providers: React.FC<{
   const router = useRouter();
 
   return (
-    <RouterProvider navigate={router.push}>
-      <PloneClientProvider client={ploneClient}>
-        <QueryClientProvider client={queryClient}>
-          <FlattenToAppURLProvider flattenToAppURL={flattenToAppURL}>
-            {children}
-            <ReactQueryDevtools initialIsOpen={false} />
-          </FlattenToAppURLProvider>
-        </QueryClientProvider>
-      </PloneClientProvider>
-    </RouterProvider>
+    <PloneProvider
+      ploneClient={ploneClient}
+      queryClient={queryClient}
+      // NextJS doesn't have a useLocation hook, so we need to unify this
+      // in a custom hook
+      useLocation={useLocation}
+      navigate={(to) => {
+        router.push(to);
+      }}
+      useParams={useParams}
+      useHref={(to) => flattenToAppURL(to)}
+      flattenToAppURL={flattenToAppURL}
+    >
+      {children}
+      <ReactQueryDevtools initialIsOpen={false} />
+    </PloneProvider>
   );
 };
 
