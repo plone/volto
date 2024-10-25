@@ -33,6 +33,14 @@ You need to create this environment variable in the Vercel deployment's control 
 API_SERVER_URL=https://my-server-DNS-name.tld/api
 ```
 
+For production deployments, we need to force the deployment URL, otherwise, we have CORS problems.
+We need another environment variable to set the production URL: `NEXT_PRODUCTION_URL`.
+This URL needs to be schema-less, so without `http` or `https`:
+
+```shell
+NEXT_PRODUCTION_URL=my-nextjs-production-DNS-name.tld
+```
+
 ### Application rewrite configuragtion
 
 To avoid issues with CORS and maintain the server counterpart private, our Next.js app should have a rewrite, configured as follows:
@@ -41,15 +49,37 @@ To avoid issues with CORS and maintain the server counterpart private, our Next.
 const nextConfig = {
   // Rewrite to the backend to avoid CORS
   async rewrites() {
-    const apiServerURL =
-      process.env.API_SERVER_URL ||
-      'http://localhost:8080/Plone/%2B%2Bapi%2B%2B';
+    let apiServerURL, vhmRewriteRule;
+    if (
+      process.env.API_SERVER_URL &&
+      (process.env.NEXT_PRODUCTION_URL || process.env.NEXT_PUBLIC_VERCEL_URL)
+    ) {
+      // We are in Vercel
+      apiServerURL = process.env.API_SERVER_URL;
+      vhmRewriteRule = `/VirtualHostBase/https/${
+        process.env.NEXT_PRODUCTION_URL
+          ? // We are in the production deployment
+            process.env.NEXT_PRODUCTION_URL
+          : // We are in the preview deployment
+            process.env.NEXT_PUBLIC_VERCEL_URL
+      }%3A443/Plone/%2B%2Bapi%2B%2B/VirtualHostRoot`;
+    } else if (process.env.API_SERVER_URL) {
+      // We are in development
+      apiServerURL = process.env.API_SERVER_URL;
+      vhmRewriteRule =
+        '/VirtualHostBase/http/localhost%3A3000/Plone/%2B%2Bapi%2B%2B/VirtualHostRoot';
+    } else {
+      // We are in development and the API_SERVER_URL is not set, so we use a local backend
+      apiServerURL = 'http://localhost:8080';
+      vhmRewriteRule =
+        '/VirtualHostBase/http/localhost%3A3000/Plone/%2B%2Bapi%2B%2B/VirtualHostRoot';
+    }
 
     return [
       {
         source: '/\\+\\+api\\+\\+/:slug*',
         destination:
-          `${apiServerURL}/VirtualHostBase/https/${process.env.NEXT_PUBLIC_VERCEL_URL}%3A443/Plone/%2B%2Bapi%2B%2B/VirtualHostRoot/:slug*`,
+          `${apiServerURL}${vhmRewriteRule}/:slug*`,
       },
     ];
   },
