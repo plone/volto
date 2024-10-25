@@ -1063,4 +1063,13 @@ describe('Utilities registry', () => {
         .method(),
     ).toEqual('this is a validator for maxLength');
   });
+
+  it('getUtilities - registers two utilities with the same dependencies and different names', () => {
+    expect(
+      config.getUtilities({
+        dependencies: { fieldType: 'string' },
+        type: 'validator',
+      }),
+    ).toEqual([]);
+  });
 });
