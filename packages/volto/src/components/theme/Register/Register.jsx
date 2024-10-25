@@ -14,27 +14,6 @@ const messages = defineMessages({
     id: 'Registration form',
     defaultMessage: 'Registration form',
   },
-  default: {
-    id: 'Default',
-    defaultMessage: 'Default',
-  },
-  fullnameTitle: {
-    id: 'Full Name',
-    defaultMessage: 'Full Name',
-  },
-  fullnameDescription: {
-    id: 'Enter full name, e.g. John Smith.',
-    defaultMessage: 'Enter full name, e.g. John Smith.',
-  },
-  emailTitle: {
-    id: 'E-mail',
-    defaultMessage: 'E-mail',
-  },
-  emailDescription: {
-    id: 'Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.',
-    defaultMessage:
-      'Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.',
-  },
   successRegisterCompletedTitle: {
     id: 'Account Registration Completed',
     defaultMessage: 'Account Registration Completed',
