@@ -985,7 +985,6 @@ msgstr "Data (mais novo primeiro)"
 #: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
-#: components/theme/Register/Register
 msgid "Default"
 msgstr "Padrão"
 
@@ -1193,11 +1192,6 @@ msgstr "Soltar aquivos aqui…"
 msgid "Dry run selected, transaction aborted."
 msgstr "Simulação selecionada, transação abortada."
 
-#. Default: "E-mail"
-#: components/theme/Register/Register
-msgid "E-mail"
-msgstr "E-mail"
-
 #. Default: "E-mail addresses do not match."
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
@@ -1316,16 +1310,6 @@ msgstr "Digite URL ou selecione um item"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
 msgstr "Digite um nome de usuário acima para pesquisar ou clique em 'Mostrar todos'"
-
-#. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-#: components/theme/Register/Register
-msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "Digite um endereço de e-mail. Este será o seu nome de usuário. Respeitamos a sua privacidade e nunca iremos ceder o seu endereço a terceiros ou expô-lo onde quer que seja."
-
-#. Default: "Enter full name, e.g. John Smith."
-#: components/theme/Register/Register
-msgid "Enter full name, e.g. John Smith."
-msgstr "Digite o nome completo. Por exemplo, José da Silva."
 
 #. Default: "Enter map Embed Code"
 #: components/manage/Blocks/Maps/Edit
@@ -1600,11 +1584,6 @@ msgstr "E-mail"
 #: components/manage/Widgets/AlignWidget
 msgid "Full"
 msgstr "Cheia"
-
-#. Default: "Full Name"
-#: components/theme/Register/Register
-msgid "Full Name"
-msgstr "Nome completo"
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels

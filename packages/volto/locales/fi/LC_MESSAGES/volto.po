@@ -984,7 +984,6 @@ msgstr "Päivä (uusin ensin)"
 #: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
-#: components/theme/Register/Register
 msgid "Default"
 msgstr "Oletus"
 
@@ -1192,11 +1191,6 @@ msgstr "Pudota tiedosto tänne... "
 msgid "Dry run selected, transaction aborted."
 msgstr "Koeajo valittu, toiminto keskeytetty."
 
-#. Default: "E-mail"
-#: components/theme/Register/Register
-msgid "E-mail"
-msgstr "Sähköposti"
-
 #. Default: "E-mail addresses do not match."
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
@@ -1315,16 +1309,6 @@ msgstr "Syötä URL-osoite tai valitse kohde"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
 msgstr "Syötä yläpuolelle etsittävä käyttäjähimi tai valitse 'Näytä kaikki'"
-
-#. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-#: components/theme/Register/Register
-msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "Syötä sähköpostiosoite, jota haluat käyttää kirjautumistunnuksena. Me kunnioitamme yksityisyyttäsi, emmekä jaa sähköpostiosoitettasi kenellekään muulle tai julkaise sitä missään."
-
-#. Default: "Enter full name, e.g. John Smith."
-#: components/theme/Register/Register
-msgid "Enter full name, e.g. John Smith."
-msgstr "Syötä koko nimi, esimerkiksi Lumi Vuorinen."
 
 #. Default: "Enter map Embed Code"
 #: components/manage/Blocks/Maps/Edit
@@ -1599,11 +1583,6 @@ msgstr "Sähköposti"
 #: components/manage/Widgets/AlignWidget
 msgid "Full"
 msgstr "Kokoleveästi"
-
-#. Default: "Full Name"
-#: components/theme/Register/Register
-msgid "Full Name"
-msgstr "Koko nimi"
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels

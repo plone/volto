@@ -986,7 +986,6 @@ msgstr "Data (berriena lehenengo)"
 #: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
-#: components/theme/Register/Register
 msgid "Default"
 msgstr "Defektuzkoa"
 
@@ -1194,11 +1193,6 @@ msgstr "Arrastatu fitxategiak hona..."
 msgid "Dry run selected, transaction aborted."
 msgstr "Modu lehorra aukeratu duzunez, transakzioa bertan behera utzi da."
 
-#. Default: "E-mail"
-#: components/theme/Register/Register
-msgid "E-mail"
-msgstr "Eposta"
-
 #. Default: "E-mail addresses do not match."
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
@@ -1317,16 +1311,6 @@ msgstr "Sartu URL bat edo aukeratu elementu bat"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
 msgstr "Idatzi erabiltzaile-izen bat bilaketa egiteko edo sakatu 'Ikusi guztiak'"
-
-#. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-#: components/theme/Register/Register
-msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "Idatzi eposta helbidea. Hau zure erabiltzaile-izena izango da. Zure pribatutasuna errespetatzen dugu eta ez dugu helbidea argitaratu edo inori emango."
-
-#. Default: "Enter full name, e.g. John Smith."
-#: components/theme/Register/Register
-msgid "Enter full name, e.g. John Smith."
-msgstr "Idatzi izen osoa, adb. Jon Garmendia."
 
 #. Default: "Enter map Embed Code"
 #: components/manage/Blocks/Maps/Edit
@@ -1601,11 +1585,6 @@ msgstr "Nok"
 #: components/manage/Widgets/AlignWidget
 msgid "Full"
 msgstr "Osoa"
-
-#. Default: "Full Name"
-#: components/theme/Register/Register
-msgid "Full Name"
-msgstr "Izen-abizenak"
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels

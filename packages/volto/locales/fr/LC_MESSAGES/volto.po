@@ -986,7 +986,6 @@ msgstr "Date (le plus récent en premier)"
 #: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
-#: components/theme/Register/Register
 msgid "Default"
 msgstr "Défaut"
 
@@ -1194,11 +1193,6 @@ msgstr "Déposez les fichiers ici ..."
 msgid "Dry run selected, transaction aborted."
 msgstr "Essai sélectionné, transaction abandonnée."
 
-#. Default: "E-mail"
-#: components/theme/Register/Register
-msgid "E-mail"
-msgstr "E-mail"
-
 #. Default: "E-mail addresses do not match."
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
@@ -1317,16 +1311,6 @@ msgstr "Saisissez l'URL ou sélectionnez un élément"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
 msgstr "Saisissez un nom d'utilisateur ci-dessus à rechercher ou cliquez sur 'Afficher tous'"
-
-#. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-#: components/theme/Register/Register
-msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "Saisissez votre adresse e-mail. Elle sera votre nom d'utilisateur. Nous respectons votre vie privée, nous ne donnerons pas votre adresse à un tiers et elle ne sera pas exposée."
-
-#. Default: "Enter full name, e.g. John Smith."
-#: components/theme/Register/Register
-msgid "Enter full name, e.g. John Smith."
-msgstr "Saisissez votre nom complet (par exemple : John Smith)"
 
 #. Default: "Enter map Embed Code"
 #: components/manage/Blocks/Maps/Edit
@@ -1601,11 +1585,6 @@ msgstr "De"
 #: components/manage/Widgets/AlignWidget
 msgid "Full"
 msgstr "Complet"
-
-#. Default: "Full Name"
-#: components/theme/Register/Register
-msgid "Full Name"
-msgstr "Nom complet"
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels

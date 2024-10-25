@@ -984,7 +984,6 @@ msgstr "日付 (新しい順)"
 #: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
-#: components/theme/Register/Register
 msgid "Default"
 msgstr "基本"
 
@@ -1192,11 +1191,6 @@ msgstr "ファイルをここにドロップ"
 msgid "Dry run selected, transaction aborted."
 msgstr ""
 
-#. Default: "E-mail"
-#: components/theme/Register/Register
-msgid "E-mail"
-msgstr "メール"
-
 #. Default: "E-mail addresses do not match."
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
@@ -1315,16 +1309,6 @@ msgstr "URLを入力または項目を選択"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
 msgstr "検索するユーザ名を上に入力するか、[すべて表示]をクリックしてください。"
-
-#. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-#: components/theme/Register/Register
-msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "メールアドレスを入力してください。このメールアドレスがログイン名になります。当サイトはプライバシーを尊重しています。メールアドレスを第三者に提供したり、公開することはありません。"
-
-#. Default: "Enter full name, e.g. John Smith."
-#: components/theme/Register/Register
-msgid "Enter full name, e.g. John Smith."
-msgstr "氏名（フルネーム）を入力。例： Hanako Suzuki や 山田太郎 "
 
 #. Default: "Enter map Embed Code"
 #: components/manage/Blocks/Maps/Edit
@@ -1599,11 +1583,6 @@ msgstr "メールアドレス"
 #: components/manage/Widgets/AlignWidget
 msgid "Full"
 msgstr "フルサイズ"
-
-#. Default: "Full Name"
-#: components/theme/Register/Register
-msgid "Full Name"
-msgstr "氏名"
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels

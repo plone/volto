@@ -979,7 +979,6 @@ msgstr "Data (cea mai recentă mai întâi)"
 #: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
-#: components/theme/Register/Register
 msgid "Default"
 msgstr "Implicit"
 
@@ -1187,11 +1186,6 @@ msgstr "Trageți fișierele aici..."
 msgid "Dry run selected, transaction aborted."
 msgstr ""
 
-#. Default: "E-mail"
-#: components/theme/Register/Register
-msgid "E-mail"
-msgstr "E-mail"
-
 #. Default: "E-mail addresses do not match."
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
@@ -1310,16 +1304,6 @@ msgstr "Introduceți adresa URL sau selectați un obiect"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
 msgstr "Introduceți un nume de utilizator mai sus pentru a căuta sau faceți clic pe „Afișați tot”"
-
-#. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-#: components/theme/Register/Register
-msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "Introduceți o adresă de e-mail. Acesta va fi numele dvs. de autentificare. Respectăm confidențialitatea dvs. și nu vom oferi adresa niciunui terț și nu o vom expune nicăieri."
-
-#. Default: "Enter full name, e.g. John Smith."
-#: components/theme/Register/Register
-msgid "Enter full name, e.g. John Smith."
-msgstr "Introduceți numele complet, de exemplu, Valentin Popescu."
 
 #. Default: "Enter map Embed Code"
 #: components/manage/Blocks/Maps/Edit
@@ -1594,11 +1578,6 @@ msgstr "Din"
 #: components/manage/Widgets/AlignWidget
 msgid "Full"
 msgstr "Complet"
-
-#. Default: "Full Name"
-#: components/theme/Register/Register
-msgid "Full Name"
-msgstr "Numele complet"
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels

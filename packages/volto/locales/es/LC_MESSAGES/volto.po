@@ -986,7 +986,6 @@ msgstr "Fecha (primero los más recientes)"
 #: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
-#: components/theme/Register/Register
 msgid "Default"
 msgstr "Por defecto"
 
@@ -1194,11 +1193,6 @@ msgstr "Arrastrar archivos aquí..."
 msgid "Dry run selected, transaction aborted."
 msgstr "Se ha seleccionado el modo de prueba, transacción abortada"
 
-#. Default: "E-mail"
-#: components/theme/Register/Register
-msgid "E-mail"
-msgstr "Correo electrónico"
-
 #. Default: "E-mail addresses do not match."
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
@@ -1317,16 +1311,6 @@ msgstr "Introduzca una URL o seleccione un elemento"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
 msgstr "Introduzca un nombre de usuario o haga clic en 'Mostrar todos'"
-
-#. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-#: components/theme/Register/Register
-msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "Introduzca una dirección de correo electrónico. Este será el nombre de usuario. Nosotros respetamos su privacidad: y no daremos la dirección de correo electrónico a terceros, o la expondremos de alguna forma en el portal."
-
-#. Default: "Enter full name, e.g. John Smith."
-#: components/theme/Register/Register
-msgid "Enter full name, e.g. John Smith."
-msgstr "Introduzca el nombre completo, por ejemplo Leonardo Caballero."
 
 #. Default: "Enter map Embed Code"
 #: components/manage/Blocks/Maps/Edit
@@ -1601,11 +1585,6 @@ msgstr "De"
 #: components/manage/Widgets/AlignWidget
 msgid "Full"
 msgstr "Completo"
-
-#. Default: "Full Name"
-#: components/theme/Register/Register
-msgid "Full Name"
-msgstr "Nombre completo"
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels

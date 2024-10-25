@@ -979,7 +979,6 @@ msgstr "तारीख (नवीनतम पहले)"
 #: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
-#: components/theme/Register/Register
 msgid "Default"
 msgstr "डिफ़ॉल्ट"
 
@@ -1187,11 +1186,6 @@ msgstr "यहाँ फ़ाइलें ड्रॉप करें ..."
 msgid "Dry run selected, transaction aborted."
 msgstr "सूखा परीक्षण चुना गया, लेन-देन रद्द किया गया।"
 
-#. Default: "E-mail"
-#: components/theme/Register/Register
-msgid "E-mail"
-msgstr "ईमेल"
-
 #. Default: "E-mail addresses do not match."
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
@@ -1310,16 +1304,6 @@ msgstr "URL दर्ज करें या आइटम का चयन क�
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
 msgstr "खोज करने के लिए ऊपर एक उपयोगकर्ता नाम दर्ज करें या 'सभी दिखाएं' पर क्लिक करें"
-
-#. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-#: components/theme/Register/Register
-msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "एक ईमेल पता दर्ज करें। यह आपका लॉगिन नाम होगा। हम आपकी गोपनीयता का सम्मान करते हैं, और हम इस पते को किसी तीसरे पक्ष को नहीं देंगे या इसे कहीं भी प्रकट नहीं करेंगे।"
-
-#. Default: "Enter full name, e.g. John Smith."
-#: components/theme/Register/Register
-msgid "Enter full name, e.g. John Smith."
-msgstr "पूरा नाम दर्ज करें, उदाहरण के लिए, John Smith।"
 
 #. Default: "Enter map Embed Code"
 #: components/manage/Blocks/Maps/Edit
@@ -1594,11 +1578,6 @@ msgstr "से"
 #: components/manage/Widgets/AlignWidget
 msgid "Full"
 msgstr "पूरा"
-
-#. Default: "Full Name"
-#: components/theme/Register/Register
-msgid "Full Name"
-msgstr "पूरा नाम"
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels

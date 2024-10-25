@@ -985,7 +985,6 @@ msgstr "日期（最新在前）"
 #: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
-#: components/theme/Register/Register
 msgid "Default"
 msgstr "默认"
 
@@ -1193,11 +1192,6 @@ msgstr "在此处放置文件 ..."
 msgid "Dry run selected, transaction aborted."
 msgstr "，事务已被终止。"
 
-#. Default: "E-mail"
-#: components/theme/Register/Register
-msgid "E-mail"
-msgstr "E-mail"
-
 #. Default: "E-mail addresses do not match."
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
@@ -1316,16 +1310,6 @@ msgstr "输入 URL 或选择一个项目"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
 msgstr "输入用户名进行搜索或点击显示全部"
-
-#. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-#: components/theme/Register/Register
-msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "输入一个 Email 地址。这会成为您的登录名。我们尊重您的隐私，不会向第三方透漏您的个人信息。"
-
-#. Default: "Enter full name, e.g. John Smith."
-#: components/theme/Register/Register
-msgid "Enter full name, e.g. John Smith."
-msgstr "输入您的姓名，如：张三"
 
 #. Default: "Enter map Embed Code"
 #: components/manage/Blocks/Maps/Edit
@@ -1600,11 +1584,6 @@ msgstr ""
 #: components/manage/Widgets/AlignWidget
 msgid "Full"
 msgstr ""
-
-#. Default: "Full Name"
-#: components/theme/Register/Register
-msgid "Full Name"
-msgstr "姓名"
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels

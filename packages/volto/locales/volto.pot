@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-10-22T18:13:27.236Z\n"
+"POT-Creation-Date: 2024-10-25T16:54:59.838Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -981,7 +981,6 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
-#: components/theme/Register/Register
 msgid "Default"
 msgstr ""
 
@@ -1189,11 +1188,6 @@ msgstr ""
 msgid "Dry run selected, transaction aborted."
 msgstr ""
 
-#. Default: "E-mail"
-#: components/theme/Register/Register
-msgid "E-mail"
-msgstr ""
-
 #. Default: "E-mail addresses do not match."
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
@@ -1311,16 +1305,6 @@ msgstr ""
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
-msgstr ""
-
-#. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-#: components/theme/Register/Register
-msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr ""
-
-#. Default: "Enter full name, e.g. John Smith."
-#: components/theme/Register/Register
-msgid "Enter full name, e.g. John Smith."
 msgstr ""
 
 #. Default: "Enter map Embed Code"
@@ -1595,11 +1579,6 @@ msgstr ""
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
 msgid "Full"
-msgstr ""
-
-#. Default: "Full Name"
-#: components/theme/Register/Register
-msgid "Full Name"
 msgstr ""
 
 #. Default: "Fullname"

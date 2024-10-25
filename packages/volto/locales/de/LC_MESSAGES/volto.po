@@ -984,7 +984,6 @@ msgstr "Datum (neustes zuerst)"
 #: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
-#: components/theme/Register/Register
 msgid "Default"
 msgstr "Standard"
 
@@ -1192,11 +1191,6 @@ msgstr "Datei hier ablegen um die bestehende Datei zu ersetzen"
 msgid "Dry run selected, transaction aborted."
 msgstr "Probelauf gewählt, Transaktion abgebrochen."
 
-#. Default: "E-mail"
-#: components/theme/Register/Register
-msgid "E-mail"
-msgstr "E-Mail"
-
 #. Default: "E-mail addresses do not match."
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
@@ -1315,16 +1309,6 @@ msgstr "URL eingeben oder Objekt auswählen"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
 msgstr "Benutzername oben eingeben oder auf 'Alle anzeigen' klicken"
-
-#. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-#: components/theme/Register/Register
-msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "Tragen Sie Ihre E-Mail-Adresse ein, mit der Sie sich künftig anmelden müssen. Wir respektieren den Datenschutz und werden die E-Mail-Adresse nicht an Dritte weitergeben und auch nirgends anzeigen."
-
-#. Default: "Enter full name, e.g. John Smith."
-#: components/theme/Register/Register
-msgid "Enter full name, e.g. John Smith."
-msgstr "Tragen Sie bitte Ihren vollen Namen ein."
 
 #. Default: "Enter map Embed Code"
 #: components/manage/Blocks/Maps/Edit
@@ -1599,11 +1583,6 @@ msgstr "E-Mail"
 #: components/manage/Widgets/AlignWidget
 msgid "Full"
 msgstr "Volle Breite"
-
-#. Default: "Full Name"
-#: components/theme/Register/Register
-msgid "Full Name"
-msgstr "Vor- und Nachname"
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels
