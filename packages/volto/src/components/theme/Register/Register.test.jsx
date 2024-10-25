@@ -46,7 +46,7 @@ describe('Register', () => {
             fullname: {
               type: 'string',
               title: 'Fullname',
-              description: 'Enter your fullname',
+              description: 'Enter your full name',
             },
             email: {
               type: 'string',
