@@ -95,7 +95,7 @@ Cookieplone uses the frontend code installed using `pnpm` instead of `yarn`.
 ```
 
 ````{deprecated} 18.0.0
-The same commands can be found in your Volto leagacy add-ons and projects created with `@plone/generator-volto`, as seen in the [`package.json.tpl`](https://github.com/plone/volto/blob/main/packages/generator-volto/generators/app/templates/package.json.tpl#L10) file.
+The same commands can be found in your Volto legacy add-ons and projects created with `@plone/generator-volto`, as seen in the [`package.json.tpl`](https://github.com/plone/volto/blob/main/packages/generator-volto/generators/app/templates/package.json.tpl#L10) file.
 
 You will use similar commands to run the linting commands, but with `yarn` instead of `pnpm`:
 

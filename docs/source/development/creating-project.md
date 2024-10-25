@@ -11,7 +11,7 @@ myst:
 
 [Cookieplone](https://github.com/plone/cookieplone) is now the recommended way to develop Volto projects, using it as a boilerplate generator.
 Even if you don't need the backend, create a Plone project, then use only the {file}`frontend` folder for your purposes.
-As a bonus, it will contain the meaning for deploying your project.
+As a bonus, it will contain the means for deploying your project.
 
 ```{seealso}
 To create a full Plone project with both frontend and backend, see {doc}`plone:install/create-project` instead.
