@@ -20,9 +20,9 @@ The add-on registry can be queried, so it can provide a list of add-ons installe
 
 ### What is an add-on
 
-Add-on packages are just CommonJS/ESM packages.
-Their main purpose is encapsulate logic, configuration and customizations in a reusable way.
-The only requirement is that their primary entry point (`main` key of their `package.json`) points to a module that exports a default function, which acts as a default configuration loader for that package.
+Add-on packages are just CommonJS or ESM packages.
+Their main purpose is to encapsulate logic, configuration and customizations in a reusable way.
+The only requirement is that their primary entry point (the `main` key of their `package.json`) points to a module that exports a default function, which acts as a default configuration loader for that package.
 
 Add-ons are applied in the order they are declared in the `addons` key of {file}`package.json` or programatically via a provided configuration file.
 Add-ons can override configuration coming from other add-ons, providing a hierarchy of configuration stacks.

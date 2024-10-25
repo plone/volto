@@ -4,7 +4,7 @@ Component (or module) shadowing is a technique that allows you to define an alte
 You normally would want to override a module from another add-on.
 This add-on should meet the Add-on Registry rules and not be transpiled.
 
-This technique relies on `resolve.alias` feature of the bundlers, so the module is effectively being replaced by the alternative one supplied.
+This technique relies on the `resolve.alias` feature of the bundlers, so the module is effectively being replaced by the alternative one supplied.
 You will need to modify some imports in the alternative module to comply with the new placement and convert relative imports to absolute ones.
 
 To override the component, first, you should identify the component you want to shadow in the package that is being defined.

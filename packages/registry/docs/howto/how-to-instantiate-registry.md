@@ -1,6 +1,6 @@
 # How to instantiate the registry
 
-The registry is instantiated on the top of your app folder.
+The registry is instantiated in the context of your app folder.
 It gets your app folder path as argument.
 
 ```js
@@ -19,7 +19,7 @@ By default, you also get these objects after calling `init`:
 const { registry, addons, theme, shadowAliases } = AddonRegistry.init(appRootPath)
 ```
 
-Which can be useful for configure your build process.
+This can be useful for configuring your build process.
 
 ## Initialization
 

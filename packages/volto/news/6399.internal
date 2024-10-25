@@ -1,1 +1,1 @@
-Adapt to the changes in #6399, fix imports whenever necessary @sneridagh
+Adapt to `@plone/registry` as an ESM module, fix imports whenever necessary @sneridagh
