@@ -34,7 +34,7 @@ function StoryComponent(args) {
             properties: {
               fullname: {
                 type: 'string',
-                title: 'Fullname',
+                title: 'Full name',
                 description: 'Enter your fullname',
               },
               email: {
