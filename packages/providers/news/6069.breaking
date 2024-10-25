@@ -1,3 +1,0 @@
-Improve and group providers. @sneridagh
-Breaking:
-  - The interface of the providers has changed. Please check the new one, and adapt your apps accordingly.
