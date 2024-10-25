@@ -530,8 +530,8 @@ Adding the missing `key` property whenever the violation is reported will fix it
 ```
 
 The Node.js-based Volto project boilerplate generator is deprecated from Volto 18 onwards.
-Although you can still migrate your project to Volto 18 using this boilerplate, you should migrate to using [Cookieplone](https://github.com/plone/cookieplone).
 After the release of Volto 18, it will be marked as deprecated, archived, and it won't receive any further updates.
+Although you can still migrate your project to Volto 18 using this boilerplate, you should migrate to using [Cookieplone](https://github.com/plone/cookieplone).
 
 ##### Alternative
 
@@ -542,8 +542,7 @@ Migrate your project to use a [Cookieplone](https://github.com/plone/cookieplone
 ```{deprecated} Volto 18.0.0
 ```
 
-It's been a while that you can configure Volto using an add-on.
-The "project" way, where you configure Volto using {file}`src/config.js` in your project, is deprecated in Volto 18, and will be removed in Volto 19.
+Configuring Volto using {file}`src/config.js` at the project level is deprecated in Volto 18, and will be removed in Volto 19.
 
 ```{seealso}
 See https://github.com/plone/volto/issues/6396 for details.
