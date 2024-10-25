@@ -1135,7 +1135,7 @@ If you have already updated your configuration to use Cypress 10 or later in a p
 It is possible that forcing your project to use older versions might still work with old configurations.
 
 ```{seealso}
-See https://docs.cypress.io/app/references/migration-guide#Migrating-to-Cypress-version-10-0 for more information.
+See https://docs.cypress.io/app/references/migration-guide#Migrating-to-Cypress-100 for more information.
 ```
 
 ### The complete configuration registry is passed to the add-ons and the project configuration pipeline
