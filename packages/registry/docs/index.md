@@ -122,7 +122,6 @@ Some of the components are particular to the use case of a CMS, such as Slots, b
 
 ```{toctree}
 :maxdepth: 1
-howto/how-to-initialize-registry
 howto/how-to-access-registry
 ```
 

@@ -125,7 +125,6 @@ The add-on will then become available to the CMS when it asks the configuration 
 
 ### Initialization
 
-**TODO**
 By default, the configuration registry is empty.
 In the context of a Volto app, the registry gets initialized by Volto by default.
 
