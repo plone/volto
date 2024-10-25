@@ -431,6 +431,11 @@ msgstr ""
 msgid "Assignments"
 msgstr ""
 
+#. Default: "Automatically"
+#: components/manage/Controlpanels/Aliases
+msgid "Automatically"
+msgstr ""
+
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
@@ -489,6 +494,11 @@ msgstr ""
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "ブロック"
+
+#. Default: "Both"
+#: components/manage/Controlpanels/Aliases
+msgid "Both"
+msgstr ""
 
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
@@ -1397,6 +1407,11 @@ msgstr ""
 msgid "Event view"
 msgstr ""
 
+#. Default: "Example"
+#: components/manage/Controlpanels/Aliases
+msgid "Example"
+msgstr ""
+
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Exclude from navigation"
@@ -1508,6 +1523,7 @@ msgid "Files uploaded: {uploadedFiles}"
 msgstr "アップロードされたファイル: {uploadedFiles}"
 
 #. Default: "Filter"
+#: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
 msgstr ""
@@ -2161,6 +2177,11 @@ msgstr "{title}の翻訳を管理する"
 #. Default: "Manual"
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
+msgstr ""
+
+#. Default: "Manually"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually"
 msgstr ""
 
 #. Default: "Manually or automatically added?"
@@ -4561,6 +4582,11 @@ msgstr "日時"
 #: components/theme/EventDetails/EventDetails
 msgid "event_where"
 msgstr "場所"
+
+#. Default: "/example"
+#: components/manage/Controlpanels/Aliases
+msgid "examplePath"
+msgstr ""
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

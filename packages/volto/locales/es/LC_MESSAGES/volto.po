@@ -433,6 +433,11 @@ msgstr ""
 msgid "Assignments"
 msgstr "Tareas"
 
+#. Default: "Automatically"
+#: components/manage/Controlpanels/Aliases
+msgid "Automatically"
+msgstr ""
+
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
@@ -491,6 +496,11 @@ msgstr "Consulta base de la búsqueda"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Bloque"
+
+#. Default: "Both"
+#: components/manage/Controlpanels/Aliases
+msgid "Both"
+msgstr ""
 
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
@@ -1399,6 +1409,11 @@ msgstr ""
 msgid "Event view"
 msgstr "Vista de evento"
 
+#. Default: "Example"
+#: components/manage/Controlpanels/Aliases
+msgid "Example"
+msgstr ""
+
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Exclude from navigation"
@@ -1510,6 +1525,7 @@ msgid "Files uploaded: {uploadedFiles}"
 msgstr "Archivos subidos: {uploadedFiles}"
 
 #. Default: "Filter"
+#: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
 msgstr "Filtrar"
@@ -2164,6 +2180,11 @@ msgstr "Administrar traducciones de {title}"
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
 msgstr "Manual"
+
+#. Default: "Manually"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually"
+msgstr ""
 
 #. Default: "Manually or automatically added?"
 #: components/manage/Controlpanels/Aliases
@@ -4563,6 +4584,11 @@ msgstr "Cuándo"
 #: components/theme/EventDetails/EventDetails
 msgid "event_where"
 msgstr "Dónde"
+
+#. Default: "/example"
+#: components/manage/Controlpanels/Aliases
+msgid "examplePath"
+msgstr ""
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
