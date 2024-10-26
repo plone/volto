@@ -1,1 +1,1 @@
-Adapt to `@plone/registry` as an ESM module, fix imports whenever necessary. @sneridagh
+Adapt `@plone/registry` as an ESM module, and fix its imports. @sneridagh
