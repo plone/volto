@@ -9,7 +9,7 @@ myst:
 
 # Create a Volto project without a backend
 
-```{versionadded} Volto 18.0.0
+```{versionadded} Volto 18.0.0-alpha.43
 ```
 
 [Cookieplone](https://github.com/plone/cookieplone) is now the recommended way to develop Volto projects, using it as a boilerplate generator.
