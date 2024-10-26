@@ -41,7 +41,7 @@ import MyTeaserNewsItemComponent from './MyTeaserNewsItemComponent'
 config.registerComponent({
     name: 'Teaser',
     component: MyTeaserNewsItemComponent,
-    dependencies: 'News Item',
+    dependencies: ['News Item'],
   });
 ```
 
@@ -53,6 +53,8 @@ config.getComponent({
     dependencies: ['News Item'],
   }).component
 ```
+
+If you have a single dependency, you can use a string instead of an array.
 
 You can have both, either with or without dependencies.
 
