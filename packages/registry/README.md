@@ -14,6 +14,6 @@ In the JavaScript and TypeScript ecosystem, this is often quite complex, and the
 
 ## Documentation
 
-You can find the detailed documentation of this package in:
+You can find the detailed documentation of this package by visiting the following link.
 
 https://plone-registry.readthedocs.io
