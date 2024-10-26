@@ -525,10 +525,10 @@ Adding the missing `key` property whenever the violation is reported will fix it
 ### `@plone/registry` moved to ESM
 
 The `@plone/registry` package has been moved to ESM.
-The Add-on Registry scripts have also been refactored to TypeScript.
+The add-on registry scripts have also been refactored to TypeScript.
 For maximum compatibility with CommonJS builds, the default exports have been moved to named exports.
 The modules affected are now built, and the import paths have changed, too.
-These changes force some import path changes that should be patched in your Plone project or add-on boilerplates.
+These changes force some import path changes that you should patch in your Plone project or add-on boilerplates.
 
 ```{note}
 As always, when something changes in the boilerplate, you may regenerate one from Cookieplone and move your code into it, instead of fiddling with it.
