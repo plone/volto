@@ -25,7 +25,7 @@ const SlotRenderer = ({
     content,
     location,
     // This is to cover the use case while adding a new content and we don't have
-    // have the navRoot information in the initial content. This will be
+    // the navRoot information in the initial content. This will be
     // useful for SlotRenderers rendered in the `Add` route.
     navRoot: content?.['@components']?.navroot?.navroot || navRoot,
   });

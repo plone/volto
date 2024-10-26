@@ -1,8 +1,11 @@
 import type { ConfigType } from '@plone/registry';
-import App from './App';
-import Header from './Header';
-import Main from './Main';
-import Footer from './Footer';
+import App from './components/App';
+import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
+import Logo from './components/Logo';
+import Sections from './components/Sections';
+import HeaderTools from './components/Tools';
 
 export default function install(config: ConfigType) {
   // Main App Slot
@@ -13,6 +16,27 @@ export default function install(config: ConfigType) {
     name: 'Header',
     slot: 'header',
     component: Header,
+  });
+
+  // Logo
+  config.registerSlotComponent({
+    name: 'Logo',
+    slot: 'logo',
+    component: Logo,
+  });
+
+  // Sections
+  config.registerSlotComponent({
+    name: 'Sections',
+    slot: 'sections',
+    component: Sections,
+  });
+
+  // Tools
+  config.registerSlotComponent({
+    name: 'Tools',
+    slot: 'headertools',
+    component: HeaderTools,
   });
 
   // Main Slot
