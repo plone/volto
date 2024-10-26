@@ -23,7 +23,7 @@ export async function generateMetadata({
   const data = await queryClient.fetchQuery(getContentQuery({ path, expand }));
 
   return {
-    title: `${data.title || ''} - NextJS-powered Plone`,
+    title: `${data.title || ''} - Next.js app powered by Plone`,
     description: data.description,
   };
 }
