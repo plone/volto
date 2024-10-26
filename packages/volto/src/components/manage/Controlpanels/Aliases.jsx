@@ -18,8 +18,6 @@ import {
   Input,
   Loader,
   Menu,
-  Message,
-  Modal,
   Pagination,
   Radio,
   Segment,
@@ -34,11 +32,10 @@ import FormattedDate from '@plone/volto/components/theme/FormattedDate/Formatted
 import { useClient } from '@plone/volto/hooks';
 
 import backSVG from '@plone/volto/icons/back.svg';
+import editingSVG from '@plone/volto/icons/editing.svg';
 import { map } from 'lodash';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
-import aheadSVG from '@plone/volto/icons/ahead.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   back: {
@@ -48,6 +45,14 @@ const messages = defineMessages({
   aliases: {
     id: 'URL Management',
     defaultMessage: 'URL Management',
+  },
+  AddUrl: {
+    id: 'Add Alternative URL',
+    defaultMessage: 'Add Alternative URL',
+  },
+  EditUrl: {
+    id: 'Edit Alternative URL',
+    defaultMessage: 'Edit Alternative URL',
   },
   success: {
     id: 'Success',
@@ -60,6 +65,10 @@ const messages = defineMessages({
   successUpload: {
     id: 'Aliases have been uploaded.',
     defaultMessage: 'Aliases have been uploaded.',
+  },
+  successRemove: {
+    id: 'Aliases have been removed.',
+    defaultMessage: 'Aliases have been removed.',
   },
   filterByPrefix: {
     id: 'Filter by prefix',
@@ -97,6 +106,22 @@ const messages = defineMessages({
     id: 'CSVFile',
     defaultMessage: 'CSV file',
   },
+  Both: {
+    id: 'Both',
+    defaultMessage: 'Both',
+  },
+  Automatically: {
+    id: 'Automatically',
+    defaultMessage: 'Automatically',
+  },
+  Manually: {
+    id: 'Manually',
+    defaultMessage: 'Manually',
+  },
+  examplePath: {
+    id: 'examplePath',
+    defaultMessage: '/example',
+  },
 });
 
 const filterChoices = [
@@ -122,13 +147,13 @@ const Aliases = (props) => {
   const [filterType, setFilterType] = useState(filterChoices[0]);
   const [createdBefore, setCreatedBefore] = useState(null);
   const [createdAfter, setCreatedAfter] = useState(null);
-  const [altUrlPath, setAltUrlPath] = useState('');
-  const [targetUrlPath, setTargetUrlPath] = useState('');
   const [aliasesToRemove, setAliasesToRemove] = useState([]);
   const [filterQuery, setFilterQuery] = useState('');
   const [activePage, setActivePage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [addModalOpen, setAddModalOpen] = useState(false);
+  const [addError, setAddError] = useState(null);
+  const [editingData, setEditingData] = useState(null);
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
   const [uploadError, setUploadError] = useState(null);
   const isClient = useClient();
@@ -173,41 +198,43 @@ const Aliases = (props) => {
     return pages;
   }, [aliases.items_total, itemsPerPage]);
 
-  // Validate altUrlPath starts with a slash
-  const isAltUrlCorrect = useMemo(() => {
-    return Boolean(altUrlPath.charAt(0) === '/');
-  }, [altUrlPath]);
-
-  // Check for errors on add
-  const errorMessageAdd = aliases.add.error?.response?.body?.message;
-
   // Add new alias
-  const handleSubmitAlias = useCallback(() => {
-    dispatch(
-      addAliases('', {
-        items: [
-          {
-            path: altUrlPath,
-            'redirect-to': targetUrlPath,
-          },
-        ],
-      }),
-    )
-      .then(() => {
-        updateResults();
-        setAddModalOpen(false);
-        setAltUrlPath('');
-        setTargetUrlPath('');
-        toast.success(
-          <Toast
-            success
-            title={intl.formatMessage(messages.success)}
-            content={intl.formatMessage(messages.successAdd)}
-          />,
-        );
-      })
-      .catch((error) => {});
-  }, [altUrlPath, targetUrlPath, dispatch, intl, updateResults]);
+  const handleAdd = (formData) => {
+    const { altUrlPath, targetUrlPath } = formData;
+    // Validate altUrlPath starts with a slash
+    if (!altUrlPath || altUrlPath.charAt(0) !== '/') {
+      setAddError(intl.formatMessage(messages.altUrlError));
+      return;
+    }
+    // Remove existing alias first if we're editing it.
+    const precondition = editingData
+      ? dispatch(
+          removeAliases('', { items: [{ path: editingData.altUrlPath }] }),
+        )
+      : Promise.resolve();
+    precondition.then(() => {
+      dispatch(
+        addAliases('', {
+          items: [{ path: altUrlPath, 'redirect-to': targetUrlPath }],
+        }),
+      )
+        .then(() => {
+          updateResults();
+          setAddModalOpen(false);
+          setEditingData(null);
+          toast.success(
+            <Toast
+              success
+              title={intl.formatMessage(messages.success)}
+              content={intl.formatMessage(messages.successAdd)}
+            />,
+          );
+        })
+        .catch((error) => {
+          setAddError(error.response?.body?.message);
+        });
+    });
+  };
 
   // Check/uncheck an alias
   const handleCheckAlias = (alias) => {
@@ -224,10 +251,20 @@ const Aliases = (props) => {
       removeAliases('', {
         items: aliasesToRemove.map((a) => ({ path: a })),
       }),
-    ).then(updateResults);
+    ).then(() => {
+      updateResults();
+      toast.success(
+        <Toast
+          success
+          title={intl.formatMessage(messages.success)}
+          content={intl.formatMessage(messages.successRemove)}
+        />,
+      );
+    });
     setAliasesToRemove([]);
   };
 
+  // Upload CSV
   const handleBulkUpload = (formData) => {
     fetch(`data:${formData.file['content-type']};base64,${formData.file.data}`)
       .then((res) => res.blob())
@@ -265,167 +302,112 @@ const Aliases = (props) => {
               />
             </Segment>
             <Segment>
-              <Modal
-                closeIcon
-                open={addModalOpen}
-                onClose={() => setAddModalOpen(false)}
-                trigger={
-                  <Button
-                    id="add-alt-url"
-                    primary
-                    onClick={() => setAddModalOpen(true)}
-                  >
-                    <FormattedMessage
-                      id="Add Alternative URL"
-                      defaultMessage="Add Alternative URL"
-                    />
-                    &hellip;
-                  </Button>
-                }
+              <Button
+                primary
+                id="add-alt-url"
+                onClick={() => setAddModalOpen(true)}
               >
-                <Modal.Header size="medium">
-                  <FormattedMessage
-                    id="Add Alternative URL"
-                    defaultMessage="Add Alternative URL"
-                  />
-                </Modal.Header>
-                <Modal.Content>
-                  <Form>
-                    <FormFieldWrapper
-                      id="alternative-url-path"
-                      title={intl.formatMessage(messages.altUrlPathTitle)}
-                      description={
-                        <FormattedMessage
-                          id="Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
-                          defaultMessage="Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
-                        />
-                      }
-                      error={
-                        !isAltUrlCorrect && altUrlPath !== ''
-                          ? [intl.formatMessage(messages.altUrlError)]
-                          : []
-                      }
-                    >
-                      <Input
-                        id="alternative-url-input"
-                        name="alternative-url-path"
-                        placeholder="/example"
-                        value={altUrlPath}
-                        onChange={(e) => setAltUrlPath(e.target.value)}
-                      />
-                    </FormFieldWrapper>
-                    <FormFieldWrapper
-                      id="target-url-path"
-                      title={intl.formatMessage(messages.targetUrlPathTitle)}
-                      description={
-                        <FormattedMessage
-                          id="Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
-                          defaultMessage="Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
-                        />
-                      }
-                    >
-                      <Input
-                        id="target-url-input"
-                        name="target-url-path"
-                        placeholder="/example"
-                        value={targetUrlPath}
-                        onChange={(e) => setTargetUrlPath(e.target.value)}
-                      />
-                    </FormFieldWrapper>
-                    {errorMessageAdd && (
-                      <Message color="red">
-                        <Message.Header>
+                {intl.formatMessage(messages.AddUrl)}&hellip;
+              </Button>
+              {addModalOpen && (
+                <ModalForm
+                  open={true}
+                  onSubmit={handleAdd}
+                  onCancel={() => setAddModalOpen(false)}
+                  title={
+                    editingData
+                      ? intl.formatMessage(messages.EditUrl)
+                      : intl.formatMessage(messages.AddUrl)
+                  }
+                  submitError={addError}
+                  schema={{
+                    fieldsets: [
+                      {
+                        id: 'default',
+                        fields: ['altUrlPath', 'targetUrlPath'],
+                      },
+                    ],
+                    properties: {
+                      altUrlPath: {
+                        title: intl.formatMessage(messages.altUrlPathTitle),
+                        description: (
                           <FormattedMessage
-                            id="ErrorHeader"
-                            defaultMessage="Error"
+                            id="Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+                            defaultMessage="Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
                           />
-                        </Message.Header>
-                        <p>{errorMessageAdd}</p>
-                      </Message>
-                    )}
-                  </Form>
-                </Modal.Content>
-                <Modal.Actions>
-                  <Button
-                    id="submit-alias"
-                    basic
-                    primary
-                    circular
-                    floated="right"
-                    aria-label={
-                      <FormattedMessage id="Add" defaultMessage="Add" />
-                    }
-                    onClick={handleSubmitAlias}
-                    disabled={
-                      !isAltUrlCorrect ||
-                      altUrlPath === '' ||
-                      targetUrlPath === ''
-                    }
-                  >
-                    <Icon name={aheadSVG} className="circled" size="30px" />
-                  </Button>
-                  <Button
-                    basic
-                    secondary
-                    circular
-                    floated="right"
-                    aria-label={
-                      <FormattedMessage id="Cancel" defaultMessage="Cancel" />
-                    }
-                    onClick={() => setAddModalOpen(false)}
-                  >
-                    <Icon name={clearSVG} className="circled" size="30px" />
-                  </Button>
-                </Modal.Actions>
-              </Modal>
+                        ),
+                        placeholder: intl.formatMessage(messages.examplePath),
+                      },
+                      targetUrlPath: {
+                        title: intl.formatMessage(messages.targetUrlPathTitle),
+                        description: (
+                          <FormattedMessage
+                            id="Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+                            defaultMessage="Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
+                          />
+                        ),
+                        placeholder: intl.formatMessage(messages.examplePath),
+                      },
+                    },
+                    required: ['altUrlPath', 'targetUrlPath'],
+                  }}
+                  formData={editingData || {}}
+                />
+              )}
               {hasBulkUpload && (
                 <>
                   <Button onClick={() => setUploadModalOpen(true)}>
                     {intl.formatMessage(messages.BulkUploadAltUrls)}&hellip;
                   </Button>
-                  <ModalForm
-                    open={uploadModalOpen}
-                    onSubmit={handleBulkUpload}
-                    onCancel={() => setUploadModalOpen(false)}
-                    title={intl.formatMessage(messages.BulkUploadAltUrls)}
-                    submitError={uploadError}
-                    description={
-                      <>
-                        <p>
-                          <FormattedMessage
-                            id="bulkUploadUrlsHelp"
-                            defaultMessage="Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
-                          />
-                        </p>
-                        <p>
-                          Example:
-                          <br />
-                          <code>
-                            /old-home-page.asp,/front-page,2019/01/27 10:42:59
-                            GMT+1,true
+                  {uploadModalOpen && (
+                    <ModalForm
+                      open={true}
+                      onSubmit={handleBulkUpload}
+                      onCancel={() => setUploadModalOpen(false)}
+                      title={intl.formatMessage(messages.BulkUploadAltUrls)}
+                      submitError={uploadError}
+                      description={
+                        <>
+                          <p>
+                            <FormattedMessage
+                              id="bulkUploadUrlsHelp"
+                              defaultMessage="Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
+                            />
+                          </p>
+                          <p>
+                            <FormattedMessage
+                              id="Example"
+                              defaultMessage="Example"
+                            />
+                            :
                             <br />
-                            /people/JoeT,/Users/joe-thurston,2018-12-31,false
-                          </code>
-                        </p>
-                      </>
-                    }
-                    schema={{
-                      fieldsets: [
-                        {
-                          id: 'default',
-                          fields: ['file'],
+                            <code>
+                              /old-home-page.asp,/front-page,2019/01/27 10:42:59
+                              GMT+1,true
+                              <br />
+                              /people/JoeT,/Users/joe-thurston,2018-12-31,false
+                            </code>
+                          </p>
+                        </>
+                      }
+                      schema={{
+                        fieldsets: [
+                          {
+                            id: 'default',
+                            fields: ['file'],
+                          },
+                        ],
+                        properties: {
+                          file: {
+                            title: intl.formatMessage(messages.CSVFile),
+                            type: 'object',
+                            factory: 'File Upload',
+                          },
                         },
-                      ],
-                      properties: {
-                        file: {
-                          title: intl.formatMessage(messages.CSVFile),
-                          type: 'object',
-                          factory: 'File Upload',
-                        },
-                      },
-                      required: ['file'],
-                    }}
-                  />
+                        required: ['file'],
+                      }}
+                    />
+                  )}
                 </>
               )}
             </Segment>
@@ -445,7 +427,7 @@ const Aliases = (props) => {
                     >
                       <Input
                         name="filter"
-                        placeholder="/example"
+                        placeholder={intl.formatMessage(messages.examplePath)}
                         value={filterQuery}
                         onChange={(e) => setFilterQuery(e.target.value)}
                       />
@@ -460,7 +442,7 @@ const Aliases = (props) => {
                         {filterChoices.map((o, i) => (
                           <Form.Field key={i}>
                             <Radio
-                              label={o.label}
+                              label={intl.formatMessage({ id: o.label })}
                               name="radioGroup"
                               value={o.value}
                               checked={filterType === o}
@@ -496,7 +478,7 @@ const Aliases = (props) => {
                     </Form.Field>
                   )}
                   <Button onClick={() => updateResults()} primary>
-                    Filter
+                    <FormattedMessage id="Filter" defaultMessage="Filter" />
                   </Button>
                 </Segment>
               </Form>
@@ -529,7 +511,7 @@ const Aliases = (props) => {
                 <Table.Body>
                   {aliases.get.loading && (
                     <Table.Row>
-                      <Table.Cell colspan="4">
+                      <Table.Cell colSpan="4">
                         <Loader active inline="centered" />
                       </Table.Cell>
                     </Table.Row>
@@ -547,7 +529,21 @@ const Aliases = (props) => {
                         <Table.Cell>
                           {alias.path}
                           <br />
-                          &nbsp;&nbsp;&rarr; {alias['redirect-to']}
+                          &nbsp;&nbsp;&rarr; {alias['redirect-to']}{' '}
+                          <Button
+                            basic
+                            style={{ verticalAlign: 'middle' }}
+                            aria-label={intl.formatMessage(messages.EditUrl)}
+                            onClick={() => {
+                              setEditingData({
+                                altUrlPath: alias.path,
+                                targetUrlPath: alias['redirect-to'],
+                              });
+                              setAddModalOpen(true);
+                            }}
+                          >
+                            <Icon name={editingSVG} size="18px" />
+                          </Button>
                         </Table.Cell>
                         <Table.Cell>
                           <FormattedDate date={alias.datetime} />
@@ -607,6 +603,7 @@ const Aliases = (props) => {
                 </Menu.Menu>
               </div>
               <Button
+                id="remove-alt-urls"
                 disabled={aliasesToRemove.length === 0}
                 onClick={handleRemoveAliases}
                 primary
