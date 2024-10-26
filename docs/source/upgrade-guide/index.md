@@ -566,7 +566,6 @@ Related PLIPs:
 
 - https://github.com/plone/volto/issues/6321
 - https://github.com/plone/volto/issues/6323
-
 ```
 
 ##### Alternatives
@@ -635,9 +634,10 @@ With the removal of barrel imports files, as described in the next deprecation n
 Volto previously used barrel imports, which are centralized files where other imports are re-exported, to improve the developer user experience.
 With barrel imports, a developer only needs to remember to import from the re-exported place, not the full path.
 
-It became a bad practice, because bundlers rely upon the import path to determine whether to bundle code together or not.
-Since the barrel imports direct import all the code, a lot of imports ended up in the same main chunk of code.
-Modern bundlers like Vite also use that technique, so it heavily relies on this.
+Since the barrel imports directly import all the code, a lot of imports ended up in the same main chunk of code.
+It became a bad practice.
+Modern bundlers, such as Vite, rely upon the import path to determine whether to bundle code together or not, reducing the bundle size.
+
 The barrel imports must be removed to increase the natural number of chunks that Volto divides on—especially on routes—resulting in code splitting done the right and natural way.
 
 This forces us to rewrite all the imports everywhere—including core, projects, and add-ons—once we implement it.
