@@ -431,6 +431,11 @@ msgstr "Rolle {role} zum {entry} zugewiesen."
 msgid "Assignments"
 msgstr "Zuweisungen"
 
+#. Default: "Automatically"
+#: components/manage/Controlpanels/Aliases
+msgid "Automatically"
+msgstr "automatisch"
+
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
@@ -489,6 +494,11 @@ msgstr "Basis Suchfilter"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Block"
+
+#. Default: "Both"
+#: components/manage/Controlpanels/Aliases
+msgid "Both"
+msgstr "beide"
 
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
@@ -862,12 +872,12 @@ msgstr "Arbeitskopie erstellen"
 #. Default: "Created after"
 #: components/manage/Controlpanels/Aliases
 msgid "Created after"
-msgstr ""
+msgstr "Erstellt nach"
 
 #. Default: "Created before"
 #: components/manage/Controlpanels/Aliases
 msgid "Created before"
-msgstr ""
+msgstr "Erstellt vor"
 
 #. Default: "Created by {creator} on {date}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -1413,6 +1423,11 @@ msgstr ""
 msgid "Event view"
 msgstr "Termin"
 
+#. Default: "Example"
+#: components/manage/Controlpanels/Aliases
+msgid "Example"
+msgstr "Beispiel"
+
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Exclude from navigation"
@@ -1524,9 +1539,10 @@ msgid "Files uploaded: {uploadedFiles}"
 msgstr "Hochgeladene Dateien: {uploadedFiles}"
 
 #. Default: "Filter"
+#: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
-msgstr ""
+msgstr "Filtern"
 
 #. Default: "Filter Rules:"
 #: components/manage/Controlpanels/Rules/Rules
@@ -1536,7 +1552,7 @@ msgstr "Filterregeln:"
 #. Default: "Filter by path"
 #: components/manage/Controlpanels/Aliases
 msgid "Filter by prefix"
-msgstr "Nach Präfix filtern"
+msgstr "Nach Pfad filtern"
 
 #. Default: "Filter users by groups"
 #: helpers/MessageLabels/MessageLabels
@@ -2183,6 +2199,11 @@ msgstr "Übersetzungen für {} verwalten"
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
 msgstr "Manuell"
+
+#. Default: "Manually"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually"
+msgstr "manuell"
 
 #. Default: "Manually or automatically added?"
 #: components/manage/Controlpanels/Aliases
@@ -4471,7 +4492,7 @@ msgstr "Passwort vergessen?"
 #. Default: "Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
 #: components/manage/Controlpanels/Aliases
 msgid "bulkUploadUrlsHelp"
-msgstr ""
+msgstr "Fügen Sie mehrere alternative URLs auf einmal hinzu, indem Sie eine CSV-Datei hochladen. Die erste Spalte sollte den Pfad enthalten, von dem die Weiterleitung erfolgen soll; die zweite den Pfad, zu dem die Weiterleitung erfolgen soll. Beide Pfade müssen relativ zur Plone-Site sein und mit einem Schrägstrich (/) beginnen. Eine optionale dritte Spalte kann ein Datum und eine Uhrzeit enthalten. Eine optionale vierte Spalte kann einen Booleschen Wert enthalten, um eine manuelle Weiterleitung zu kennzeichnen (Standard: „true“)."
 
 #. Default: "Checkbox"
 #: config/Blocks
@@ -4582,6 +4603,11 @@ msgstr "Datum"
 #: components/theme/EventDetails/EventDetails
 msgid "event_where"
 msgstr "Ort"
+
+#. Default: "/example"
+#: components/manage/Controlpanels/Aliases
+msgid "examplePath"
+msgstr "/beispiel"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
