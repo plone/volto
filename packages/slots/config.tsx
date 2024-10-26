@@ -8,6 +8,13 @@ import Sections from './components/Sections';
 import HeaderTools from './components/Tools';
 
 export default function install(config: ConfigType) {
+  // Translation factory
+  config.registerUtility({
+    name: 'translation',
+    type: 'factory',
+    method: (id: string) => id,
+  });
+
   // Main App Slot
   config.registerSlotComponent({ name: 'App', slot: 'App', component: App });
 

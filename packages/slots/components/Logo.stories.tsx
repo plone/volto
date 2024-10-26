@@ -18,6 +18,24 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args: any) => <Logo {...args} />,
   args: {
-    label: 'Ice cream flavor',
+    content: {
+      '@id': 'http://localhost:3000/Plone',
+      title: 'Plone site',
+      description: 'Welcome to Plone',
+      items: [],
+      '@components': {
+        navroot: {
+          // @ts-expect-error This is a test object, missing all content properties
+          navroot: {
+            '@id': 'http://localhost:3000/Plone',
+            title: 'Plone site',
+          },
+        },
+        site: {
+          'plone.site_title': 'Plone site',
+          // 'plone.site_logo': 'https://sneridagh.dev/',
+        },
+      },
+    },
   },
 };

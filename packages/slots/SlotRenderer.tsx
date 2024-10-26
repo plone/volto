@@ -1,7 +1,11 @@
-import React from 'react';
 import config from '@plone/registry';
-
 import type { GetSlotArgs } from '@plone/types';
+
+export type SlotComponentProps = {
+  content: GetSlotArgs['content'];
+  location: GetSlotArgs['location'];
+  navRoot?: GetSlotArgs['navRoot'];
+};
 
 /*
  * The SlotRenderer component is used to render the components registered for a
