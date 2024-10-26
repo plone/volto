@@ -107,8 +107,8 @@ You can also generate builds on your continuous integration, then deploy them an
     `ADDONS` can be used to temporarily add an add-on to your build for testing purposes.
 
     ```shell
-    pnpm add volto-slate
-    ADDONS=volto-slate:asDefault pnpm start
+    pnpm add @kitconcept/volto-light-theme
+    ADDONS=@kitconcept/volto-light-theme pnpm start
     ```
 
     `ADDONS` can also be used to temporarily enable a feature or a set of customizations.
