@@ -743,7 +743,7 @@ This is because the overrides that `@testing-library/cypress` introduce can be r
 Since there are some commands that can call exports in {file}`cypress/support/commands.js`, this import may be run more than once, and then it errors.
 So you have to make sure that import is run only once while the tests are run.
 
-Check the official [Cypress Migration Guide](https://docs.cypress.io/guides/references/migration-guide) for more information.
+Check the official [Cypress Migration Guide](https://docs.cypress.io/app/references/migration-guide) for more information.
 
 ### New Image component
 
@@ -1135,7 +1135,7 @@ If you have already updated your configuration to use Cypress 10 or later in a p
 It is possible that forcing your project to use older versions might still work with old configurations.
 
 ```{seealso}
-See https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0 for more information.
+See https://docs.cypress.io/app/references/migration-guide#Migrating-to-Cypress-100 for more information.
 ```
 
 ### The complete configuration registry is passed to the add-ons and the project configuration pipeline
