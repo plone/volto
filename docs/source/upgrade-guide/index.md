@@ -639,9 +639,7 @@ It became a bad practice.
 Modern bundlers, such as Vite, rely upon the import path to determine whether to bundle code together or not, reducing the bundle size.
 
 The barrel imports must be removed to increase the natural number of chunks that Volto divides on—especially on routes—resulting in code splitting done the right and natural way.
-
 This forces us to rewrite all the imports everywhere—including core, projects, and add-ons—once we implement it.
-
 The barrel imports files include the following.
 
 -   {file}`src/components/index.js`
