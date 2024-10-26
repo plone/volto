@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-10-21T16:31:16.503Z\n"
+"POT-Creation-Date: 2024-10-24T16:41:21.354Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -70,7 +70,6 @@ msgstr ""
 
 #. Default: "Add"
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Rules/Rules
@@ -311,6 +310,11 @@ msgstr ""
 msgid "Alias has been added"
 msgstr ""
 
+#. Default: "Aliases have been removed."
+#: components/manage/Controlpanels/Aliases
+msgid "Aliases have been removed."
+msgstr ""
+
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been uploaded."
@@ -424,6 +428,11 @@ msgstr ""
 msgid "Assignments"
 msgstr ""
 
+#. Default: "Automatically"
+#: components/manage/Controlpanels/Aliases
+msgid "Automatically"
+msgstr ""
+
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
@@ -481,6 +490,11 @@ msgstr ""
 #. Default: "Block"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
+msgstr ""
+
+#. Default: "Both"
+#: components/manage/Controlpanels/Aliases
+msgid "Both"
 msgstr ""
 
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -542,7 +556,6 @@ msgstr ""
 #. Default: "Cancel"
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1209,6 +1222,11 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+#. Default: "Edit Alternative URL"
+#: components/manage/Controlpanels/Aliases
+msgid "Edit Alternative URL"
+msgstr ""
+
 #. Default: "Edit Rule"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Edit Rule"
@@ -1377,11 +1395,6 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#. Default: "Error"
-#: components/manage/Controlpanels/Aliases
-msgid "ErrorHeader"
-msgstr ""
-
 #. Default: "Event"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Event"
@@ -1405,6 +1418,11 @@ msgstr ""
 #. Default: "Event view"
 #: config/Views
 msgid "Event view"
+msgstr ""
+
+#. Default: "Example"
+#: components/manage/Controlpanels/Aliases
+msgid "Example"
 msgstr ""
 
 #. Default: "Exclude from navigation"
@@ -1518,6 +1536,7 @@ msgid "Files uploaded: {uploadedFiles}"
 msgstr ""
 
 #. Default: "Filter"
+#: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
 msgstr ""
@@ -2176,6 +2195,11 @@ msgstr ""
 #. Default: "Manual"
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
+msgstr ""
+
+#. Default: "Manually"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually"
 msgstr ""
 
 #. Default: "Manually or automatically added?"
@@ -4575,6 +4599,11 @@ msgstr ""
 #. Default: "Where"
 #: components/theme/EventDetails/EventDetails
 msgid "event_where"
+msgstr ""
+
+#. Default: "/example"
+#: components/manage/Controlpanels/Aliases
+msgid "examplePath"
 msgstr ""
 
 #. Default: "This website does not accept files larger than {limit}"

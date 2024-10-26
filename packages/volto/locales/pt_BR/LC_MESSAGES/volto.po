@@ -74,7 +74,6 @@ msgstr "Regras de conteúdo ativas nesta página"
 
 #. Default: "Add"
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Rules/Rules
@@ -315,6 +314,11 @@ msgstr "Alternativa"
 msgid "Alias has been added"
 msgstr "Alternativa foi adicionada"
 
+#. Default: "Aliases have been removed."
+#: components/manage/Controlpanels/Aliases
+msgid "Aliases have been removed."
+msgstr ""
+
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been uploaded."
@@ -428,6 +432,11 @@ msgstr "Atribuir o papel de {role} à {entry}"
 msgid "Assignments"
 msgstr "Atribuições"
 
+#. Default: "Automatically"
+#: components/manage/Controlpanels/Aliases
+msgid "Automatically"
+msgstr ""
+
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
@@ -486,6 +495,11 @@ msgstr "Base da consulta para busca"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Bloco"
+
+#. Default: "Both"
+#: components/manage/Controlpanels/Aliases
+msgid "Both"
+msgstr ""
 
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
@@ -546,7 +560,6 @@ msgstr "Não é possível editar layout para o tipo de conteúdo <strong>{type}<
 #. Default: "Cancel"
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1213,6 +1226,11 @@ msgstr "Os endereços de e-mail não coincidem."
 msgid "Edit"
 msgstr "Editar"
 
+#. Default: "Edit Alternative URL"
+#: components/manage/Controlpanels/Aliases
+msgid "Edit Alternative URL"
+msgstr ""
+
 #. Default: "Edit Rule"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Edit Rule"
@@ -1381,11 +1399,6 @@ msgstr "Entradas"
 msgid "Error"
 msgstr "Erro"
 
-#. Default: "Error"
-#: components/manage/Controlpanels/Aliases
-msgid "ErrorHeader"
-msgstr "Erro"
-
 #. Default: "Event"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Event"
@@ -1410,6 +1423,11 @@ msgstr "A data de início do evento deve ser igual ou anterior a {endDateValueOr
 #: config/Views
 msgid "Event view"
 msgstr "Visão de Evento"
+
+#. Default: "Example"
+#: components/manage/Controlpanels/Aliases
+msgid "Example"
+msgstr ""
 
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1522,6 +1540,7 @@ msgid "Files uploaded: {uploadedFiles}"
 msgstr "Arquivos carregados: {uploadedFiles}"
 
 #. Default: "Filter"
+#: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
 msgstr "Filtrar"
@@ -2181,6 +2200,11 @@ msgstr "Gerenciar traduções para {title}"
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
 msgstr "Manual"
+
+#. Default: "Manually"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually"
+msgstr ""
 
 #. Default: "Manually or automatically added?"
 #: components/manage/Controlpanels/Aliases
@@ -4580,6 +4604,11 @@ msgstr "Quando"
 #: components/theme/EventDetails/EventDetails
 msgid "event_where"
 msgstr "Onde"
+
+#. Default: "/example"
+#: components/manage/Controlpanels/Aliases
+msgid "examplePath"
+msgstr ""
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

@@ -73,7 +73,6 @@ msgstr "Aktiiviset sisältösäännöt tällä sivulla"
 
 #. Default: "Add"
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Rules/Rules
@@ -314,6 +313,11 @@ msgstr "Alias"
 msgid "Alias has been added"
 msgstr "Alias on lisätty"
 
+#. Default: "Aliases have been removed."
+#: components/manage/Controlpanels/Aliases
+msgid "Aliases have been removed."
+msgstr ""
+
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been uploaded."
@@ -427,6 +431,11 @@ msgstr ""
 msgid "Assignments"
 msgstr "Tehtävät"
 
+#. Default: "Automatically"
+#: components/manage/Controlpanels/Aliases
+msgid "Automatically"
+msgstr ""
+
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
@@ -485,6 +494,11 @@ msgstr ""
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Palikka"
+
+#. Default: "Both"
+#: components/manage/Controlpanels/Aliases
+msgid "Both"
+msgstr ""
 
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
@@ -545,7 +559,6 @@ msgstr "Sisältötyypin <strong>{type}</strong> asettelua ei voi muokata, koska 
 #. Default: "Cancel"
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1212,6 +1225,11 @@ msgstr "Sähköpostiosoitteet eivät olleet identtiset."
 msgid "Edit"
 msgstr "Muokkaa"
 
+#. Default: "Edit Alternative URL"
+#: components/manage/Controlpanels/Aliases
+msgid "Edit Alternative URL"
+msgstr ""
+
 #. Default: "Edit Rule"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Edit Rule"
@@ -1380,11 +1398,6 @@ msgstr ""
 msgid "Error"
 msgstr "Virhe"
 
-#. Default: "Error"
-#: components/manage/Controlpanels/Aliases
-msgid "ErrorHeader"
-msgstr ""
-
 #. Default: "Event"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Event"
@@ -1409,6 +1422,11 @@ msgstr ""
 #: config/Views
 msgid "Event view"
 msgstr "Tapahtuman näkymä"
+
+#. Default: "Example"
+#: components/manage/Controlpanels/Aliases
+msgid "Example"
+msgstr ""
 
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1521,6 +1539,7 @@ msgid "Files uploaded: {uploadedFiles}"
 msgstr "Lähetetyt tiedostot: {uploadedFiles} "
 
 #. Default: "Filter"
+#: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
 msgstr ""
@@ -2180,6 +2199,11 @@ msgstr "Hallitse käännöksiä: {title}"
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
 msgstr "Manuaalinen"
+
+#. Default: "Manually"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually"
+msgstr ""
 
 #. Default: "Manually or automatically added?"
 #: components/manage/Controlpanels/Aliases
@@ -4579,6 +4603,11 @@ msgstr "Milloin"
 #: components/theme/EventDetails/EventDetails
 msgid "event_where"
 msgstr "Missä"
+
+#. Default: "/example"
+#: components/manage/Controlpanels/Aliases
+msgid "examplePath"
+msgstr ""
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

@@ -19,6 +19,8 @@ import TestForm from './components/TestForm';
 import FormBlockView from './components/Blocks/FormBlock/View';
 import FormBlockEdit from './components/Blocks/FormBlock/Edit';
 import { formBlockSchema } from './components/Blocks/FormBlock/schema';
+import { Login } from '@plone/volto/components';
+
 const testBlock: BlockConfigBase = {
   id: 'testBlock',
   title: 'testBlock',
@@ -207,6 +209,12 @@ const applyConfig = (config: ConfigType) => {
       exact: false,
     },
   ];
+
+  config.addonRoutes.push({
+    path: '/fallback_login',
+    component: Login,
+    exact: false,
+  });
   config.blocks.blocksConfig.testBlock = testBlock;
   config.blocks.blocksConfig.inputBlock = inputBlock;
   config.blocks.blocksConfig.testBlockConditional = testBlockConditional;

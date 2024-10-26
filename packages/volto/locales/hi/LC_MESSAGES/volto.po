@@ -68,7 +68,6 @@ msgstr "पेज में सक्रिए कंटेंट रूल्�
 
 #. Default: "Add"
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Rules/Rules
@@ -309,6 +308,11 @@ msgstr "उपनाम"
 msgid "Alias has been added"
 msgstr "उपनाम जोड़ा गया है"
 
+#. Default: "Aliases have been removed."
+#: components/manage/Controlpanels/Aliases
+msgid "Aliases have been removed."
+msgstr ""
+
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been uploaded."
@@ -422,6 +426,11 @@ msgstr "{entry} को {role} भूमिका का काम दें"
 msgid "Assignments"
 msgstr "असाइनमेंट"
 
+#. Default: "Automatically"
+#: components/manage/Controlpanels/Aliases
+msgid "Automatically"
+msgstr ""
+
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
@@ -480,6 +489,11 @@ msgstr "मूल खोज क्वेरी"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "ब्लॉक"
+
+#. Default: "Both"
+#: components/manage/Controlpanels/Aliases
+msgid "Both"
+msgstr ""
 
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
@@ -540,7 +554,6 @@ msgstr ""
 #. Default: "Cancel"
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1207,6 +1220,11 @@ msgstr "ईमेल पते मेल नहीं खाते।"
 msgid "Edit"
 msgstr "संपादित करें"
 
+#. Default: "Edit Alternative URL"
+#: components/manage/Controlpanels/Aliases
+msgid "Edit Alternative URL"
+msgstr ""
+
 #. Default: "Edit Rule"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Edit Rule"
@@ -1375,11 +1393,6 @@ msgstr "एन्ट्रीज़"
 msgid "Error"
 msgstr "त्रुटि"
 
-#. Default: "Error"
-#: components/manage/Controlpanels/Aliases
-msgid "ErrorHeader"
-msgstr "त्रुटि"
-
 #. Default: "Event"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Event"
@@ -1404,6 +1417,11 @@ msgstr ""
 #: config/Views
 msgid "Event view"
 msgstr "आयोजन दृश्य"
+
+#. Default: "Example"
+#: components/manage/Controlpanels/Aliases
+msgid "Example"
+msgstr ""
 
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1516,6 +1534,7 @@ msgid "Files uploaded: {uploadedFiles}"
 msgstr ""फ़ाइलें अपलोड की गईं: {uploadedFiles}"
 
 #. Default: "Filter"
+#: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
 msgstr "फ़िल्टर"
@@ -2175,6 +2194,11 @@ msgstr "{title} के लिए अनुवाद प्रबंधित क
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
 msgstr "मैनुअल"
+
+#. Default: "Manually"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually"
+msgstr ""
 
 #. Default: "Manually or automatically added?"
 #: components/manage/Controlpanels/Aliases
@@ -4574,6 +4598,11 @@ msgstr "कब"
 #: components/theme/EventDetails/EventDetails
 msgid "event_where"
 msgstr "कहाँ"
+
+#. Default: "/example"
+#: components/manage/Controlpanels/Aliases
+msgid "examplePath"
+msgstr ""
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

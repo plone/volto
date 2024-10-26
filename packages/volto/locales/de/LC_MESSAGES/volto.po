@@ -73,7 +73,6 @@ msgstr "Aktivierte Inhaltsregeln auf dieser Seite"
 
 #. Default: "Add"
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Rules/Rules
@@ -96,7 +95,7 @@ msgstr "Hier werden verfügbare und installierte Backend-Add-ons gezeigt. Inform
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
 msgid "Add Alternative URL"
-msgstr ""
+msgstr "Quell URL hinzufügen"
 
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
@@ -176,7 +175,7 @@ msgstr "Datum hinzufügen"
 #. Default: "Add element to container"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 msgid "Add element to container"
-msgstr ""
+msgstr "Element zum Container hinzufügen"
 
 #. Default: "Add field"
 #: components/manage/Widgets/SchemaWidget
@@ -314,10 +313,15 @@ msgstr "Alias"
 msgid "Alias has been added"
 msgstr "Alias wurde hinzugefügt"
 
+#. Default: "Aliases have been removed."
+#: components/manage/Controlpanels/Aliases
+msgid "Aliases have been removed."
+msgstr "Weiterleitungen wurden entfernt."
+
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been uploaded."
-msgstr ""
+msgstr "Weiterleitungen wurden hochgeladen."
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
@@ -420,12 +424,17 @@ msgstr "Aufsteigend"
 #. Default: "Assign the {role} role to {entry}"
 #: components/manage/Sharing/Sharing
 msgid "Assign the {role} role to {entry}"
-msgstr ""
+msgstr "Rolle {role} zum {entry} zugewiesen."
 
 #. Default: "Assignments"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Assignments"
 msgstr "Zuweisungen"
+
+#. Default: "Automatically"
+#: components/manage/Controlpanels/Aliases
+msgid "Automatically"
+msgstr "automatisch"
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -486,6 +495,11 @@ msgstr "Basis Suchfilter"
 msgid "Block"
 msgstr "Block"
 
+#. Default: "Both"
+#: components/manage/Controlpanels/Aliases
+msgid "Both"
+msgstr "beide"
+
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -515,7 +529,7 @@ msgstr "Seite durchsuchen, Bild ablegen oder URL eingeben"
 #. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
-msgstr ""
+msgstr "CSV Massenupload"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
@@ -525,7 +539,7 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
 msgid "CSVFile"
-msgstr ""
+msgstr "CSV Datei"
 
 #. Default: "Cache Name"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -545,7 +559,6 @@ msgstr "Layout für <strong>{type}</strong> kann nicht verändert werden, da das
 #. Default: "Cancel"
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -859,12 +872,12 @@ msgstr "Arbeitskopie erstellen"
 #. Default: "Created after"
 #: components/manage/Controlpanels/Aliases
 msgid "Created after"
-msgstr ""
+msgstr "Erstellt nach"
 
 #. Default: "Created before"
 #: components/manage/Controlpanels/Aliases
 msgid "Created before"
-msgstr ""
+msgstr "Erstellt vor"
 
 #. Default: "Created by {creator} on {date}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -1212,6 +1225,11 @@ msgstr "E-Mail-Adressen stimmen nicht überein."
 msgid "Edit"
 msgstr "Bearbeiten"
 
+#. Default: "Edit Alternative URL"
+#: components/manage/Controlpanels/Aliases
+msgid "Edit Alternative URL"
+msgstr "Quell URL bearbeiten"
+
 #. Default: "Edit Rule"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Edit Rule"
@@ -1331,7 +1349,7 @@ msgstr "Geben Sie den absoluten Pfad des Ziels ein. Das Ziel muss existieren ode
 #. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
-msgstr ""
+msgstr "Geben Sie den absoluten Pfad an wo die Quell URL hinterlegt werden sollte. Der Pfad muss mit einem '/' beginnen. Nur URLs welche einen 404 (Not Found) Fehler auslösen werden weitergeleitet."
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
@@ -1362,7 +1380,7 @@ msgstr "Geben Sie Ihren Nutzernamen zur Verifikation ein."
 #. Default: "Entries"
 #: components/manage/Blocks/ToC/Schema
 msgid "Entries"
-msgstr ""
+msgstr "Einträge"
 
 #. Default: "Error"
 #: components/manage/Add/Add
@@ -1378,11 +1396,6 @@ msgstr ""
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Error"
-msgstr "Fehler"
-
-#. Default: "Error"
-#: components/manage/Controlpanels/Aliases
-msgid "ErrorHeader"
 msgstr "Fehler"
 
 #. Default: "Event"
@@ -1409,6 +1422,11 @@ msgstr ""
 #: config/Views
 msgid "Event view"
 msgstr "Termin"
+
+#. Default: "Example"
+#: components/manage/Controlpanels/Aliases
+msgid "Example"
+msgstr "Beispiel"
 
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1521,9 +1539,10 @@ msgid "Files uploaded: {uploadedFiles}"
 msgstr "Hochgeladene Dateien: {uploadedFiles}"
 
 #. Default: "Filter"
+#: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
-msgstr ""
+msgstr "Filtern"
 
 #. Default: "Filter Rules:"
 #: components/manage/Controlpanels/Rules/Rules
@@ -1533,7 +1552,7 @@ msgstr "Filterregeln:"
 #. Default: "Filter by path"
 #: components/manage/Controlpanels/Aliases
 msgid "Filter by prefix"
-msgstr "Nach Präfix filtern"
+msgstr "Nach Pfad filtern"
 
 #. Default: "Filter users by groups"
 #: helpers/MessageLabels/MessageLabels
@@ -2180,6 +2199,11 @@ msgstr "Übersetzungen für {} verwalten"
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
 msgstr "Manuell"
+
+#. Default: "Manually"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually"
+msgstr "manuell"
 
 #. Default: "Manually or automatically added?"
 #: components/manage/Controlpanels/Aliases
@@ -4468,7 +4492,7 @@ msgstr "Passwort vergessen?"
 #. Default: "Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
 #: components/manage/Controlpanels/Aliases
 msgid "bulkUploadUrlsHelp"
-msgstr ""
+msgstr "Fügen Sie mehrere alternative URLs auf einmal hinzu, indem Sie eine CSV-Datei hochladen. Die erste Spalte sollte den Pfad enthalten, von dem die Weiterleitung erfolgen soll; die zweite den Pfad, zu dem die Weiterleitung erfolgen soll. Beide Pfade müssen relativ zur Plone-Site sein und mit einem Schrägstrich (/) beginnen. Eine optionale dritte Spalte kann ein Datum und eine Uhrzeit enthalten. Eine optionale vierte Spalte kann einen Booleschen Wert enthalten, um eine manuelle Weiterleitung zu kennzeichnen (Standard: „true“)."
 
 #. Default: "Checkbox"
 #: config/Blocks
@@ -4579,6 +4603,11 @@ msgstr "Datum"
 #: components/theme/EventDetails/EventDetails
 msgid "event_where"
 msgstr "Ort"
+
+#. Default: "/example"
+#: components/manage/Controlpanels/Aliases
+msgid "examplePath"
+msgstr "/beispiel"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
