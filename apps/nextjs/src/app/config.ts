@@ -8,16 +8,16 @@ const settings: Partial<ConfigType['settings']> = {
 };
 
 if (process.env.NEXT_PUBLIC_VERCEL_URL) {
-  // If we are in Vercel
+  // This app is at Vercel
   if (process.env.NEXT_PRODUCTION_URL) {
-    // We are in production deployment, we set the apiPath to the production URL
+    // This app is in a production deployment, so set the apiPath to the production URL
     settings.apiPath = process.env.NEXT_PRODUCTION_URL;
   } else {
-    // We are in preview deployment, we set the apiPath to the Vercel URL
+    // This app is in a preview deployment, so set the apiPath to the Vercel URL
     settings.apiPath = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
   }
 } else {
-  // We are in development, we set the apiPath to localhost
+  // This app is in development, so set the apiPath to localhost
   settings.apiPath = 'http://localhost:3000/';
 }
 
