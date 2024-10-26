@@ -1,4 +1,4 @@
-Moved the package to ESM and refactored the Add-on Registry scripts to TypeScript. @sneridagh
+Moved the package to ESM and refactored the add-on registry scripts to TypeScript. @sneridagh
 Breaking:
 - For maximum compatibility with CommonJS builds, the default exports have been moved to named exports.
 - The modules affected are now built, and the import paths have changed, too.
