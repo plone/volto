@@ -1,1 +1,1 @@
-Added an experimental Vite plugin @sneridagh
+Added an experimental Vite plugin. @sneridagh
