@@ -9,8 +9,11 @@ myst:
 
 # Create a Volto project without a backend
 
+```{versionadded} Volto 18.0.0
+```
+
 [Cookieplone](https://github.com/plone/cookieplone) is now the recommended way to develop Volto projects, using it as a boilerplate generator.
-Even if you don't need the backend, create a Plone project, then use only the {file}`frontend` folder for your purposes.
+Even if you don't need the backend, you can create a Plone project, then use only the {file}`frontend` folder for your purposes.
 As a bonus, it will contain the means for deploying your project.
 
 ```{seealso}
