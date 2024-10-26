@@ -33,9 +33,9 @@ You need to create this environment variable in the Vercel deployment's control 
 API_SERVER_URL=https://my-server-DNS-name.tld/api
 ```
 
-For production deployments, we need to force the deployment URL, otherwise, we have CORS problems.
-We need another environment variable to set the production URL: `NEXT_PRODUCTION_URL`.
-This URL needs to be schema-less, so without `http` or `https`:
+For production deployments, you need to force the deployment URL, otherwise you will have issues with CORS.
+To do so, set another environment variable for the production URL, `NEXT_PRODUCTION_URL`.
+This URL needs to be scheme-less, without `http` or `https`, and consist only of the domain name:
 
 ```shell
 NEXT_PRODUCTION_URL=my-nextjs-production-DNS-name.tld
