@@ -3,6 +3,11 @@
 You have two ways available for registering an add-on in your app.
 You can do so either through the `addons` key in your {file}`package.json` or by using a configuration file.
 
+```{note}
+Using a configuration file is useful when you want to add some logic to the `addons` list if you want it to be dynamic.
+For example, you can make the list dynamic given an environment variable.
+```
+
 ## Via `addons` key in `package.json`
 
 The following code sample shows how to register your add-on in your app through the `addons` key in your {file}`package.json`.
@@ -51,6 +56,10 @@ For example, if your configuration file is named {file}`my-add-on-registry-confi
 
 ```shell
 set REGISTRYCONFIG="my-add-on-registry.config.js"
+```
+
+```{note}
+This is useful in case that you want to provide different `addon` configurations files under different scenarios.
 ```
 
 If the file that you specify in the environment variable exists, then `@plone/registry` uses it to configure your add-on.
