@@ -11,11 +11,14 @@ myst:
 # Volto add-ons
 
 Volto has a built-in extensible and pluggable system.
-It uses under the hood [`@plone/registry`](https://plone-registry.readthedocs.io/) package.
+This system is implemented through the [`@plone/registry`](https://plone-registry.readthedocs.io/) package.
 % Question: add-on products or add-on packages?
-It allows to extend Volto in a pluggable way using {term}`add-on` products.
+% Answer: Neither. People use npmjs.com to deploy add-ons as "packages", I'd call them "packages". "add-ons" is also OK. We can explain that an add-on is one kind of package. That also helps educate developers not to modify Volto source code for a project, and drive home the "add-on" and "package" mentality. Also "add-on products" or "add-on packages" is verbose, and "add-on products" is just weird and Plone-y. I'm not sure where "products" came from.
+It helps developers extend Volto in a pluggable way through {term}`add-on`s.
 
-%TODO: This matches with https://plone-registry.readthedocs.io/#what-is-an-add-on copy here when that one is ready.
+%TODO: This matches with https://plone-registry.readthedocs.io/conceptual-guides/add-on-registry.html#what-is-an-add-on. Copy here when that one is ready.
+% Why copy here? It is an Explanation. An Index is navigation or orientation only. We need to purge content from this index.md.
+
 ```{include} what-is-an-add-on.md
 ```
 
