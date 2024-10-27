@@ -1,5 +1,8 @@
 # Register and retrieve components
 
+This section of the documentation describes how to register, retrieve, adapt, and load components.
+
+
 ## Register components by name
 
 You can register components by name, typically from an add-on or project configuration, using `config.registerComponent`.
@@ -13,9 +16,10 @@ config.registerComponent({
 });
 ```
 
+
 ## Retrieve a component from the component registry
 
-You can programmatically retrieve a component from the registry using `config.getComponent`.
+You can programmatically retrieve a component from the component registry using `config.getComponent`.
 
 ```js
 const Toolbar = config.getComponent('Toolbar').component
@@ -30,6 +34,7 @@ import Component from '@plone/volto/components/theme/Component/Component';
 ```
 
 Note that you can pass `props` down to the retrieved component.
+
 
 ## Adapt the component
 
@@ -80,6 +85,7 @@ In the next example, given a content type value coming from the `content` prop, 
 ```jsx
 <Component componentName="Toolbar" dependencies={[props.content['@type']]} {...props} />
 ```
+
 
 ## Lazy load components
 

@@ -8,4 +8,4 @@ import config from '@plone/registry'
 const blocksConfig = config.blocks.blocksConfig
 ```
 
-Given the fact that you created a `blocksConfig` key in `blocks` previously in your add-on, or being set by another add-on.
+This method assumes that either you previously created a `blocksConfig` key in `blocks` in your add-on, or another add-on sets it.

@@ -11,9 +11,9 @@ const appRootPath = path.resolve('.');
 const { registry } = AddonRegistry.init(appRootPath)
 ```
 
-You have full access to the Add-on Registry API in the `registry` object.
+You have full access to the add-on registry API in the `registry` object.
 
-By default, you also get these objects after calling `init`:
+By default, you also get these objects after calling `init`.
 
 ```js
 const { registry, addons, theme, shadowAliases } = AddonRegistry.init(appRootPath)
@@ -21,10 +21,11 @@ const { registry, addons, theme, shadowAliases } = AddonRegistry.init(appRootPat
 
 This can be useful for configuring your build process.
 
+
 ## Initialization
 
 By default, the configuration registry is empty.
-It only contains the base object keys for it required to work properly.
+It only contains the base object keys which are required for it to work properly.
 These are the keys present on initialization.
 The optional keys are excluded.
 
@@ -44,4 +45,3 @@ export type ConfigData = {
 ```
 
 In the context of a Volto app, the registry gets initialized by Volto by default.
-

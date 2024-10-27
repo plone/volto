@@ -1,6 +1,9 @@
 # Register and retrieve utilities
 
-## Register utilities
+This section of the documentation describes how to register and retrieve utilities.
+
+
+## Register utilities by `name` and `type`
 
 You can register a utility using `config.registerUtility` by using its specific `name` and `type` arguments.
 
@@ -45,7 +48,8 @@ config.registerUtility({
 });
 ```
 
-### Register utilities using a `dependencies` object
+
+## Register utilities using a `dependencies` object
 
 It is possible to register utilities using a `dependencies` object.
 This is useful to further specify the utility.
@@ -59,12 +63,13 @@ config.registerUtility({
 });
 ```
 
-### Retrieve a utility from the utilities registry
+
+## Retrieve a specific utility
 
 You can retrieve one specific utility using `config.getUtility`, given the `name` and `type`.
 
 ```js
-config.getUtility({ name: 'url', type: 'validator' }).method(),
+config.getUtility({ name: 'url', type: 'validator' }).method()
 ```
 
 You can do the same using a `dependencies` object.
@@ -74,10 +79,11 @@ config.getUtility({
   name: 'email',
   dependencies: { fieldType: 'string' },
   type: 'validator',
-}).method(),
+}).method()
 ```
 
-### Retrieve all utilities of the same `type`
+
+### Retrieve groups of utilities
 
 You can retrieve all utilities registered under the same `type`.
 
@@ -91,7 +97,7 @@ You can do the same using a `dependencies` object.
 config.getUtilities({
   type: 'validator',
   dependencies: { fieldType: 'string' },
-}).length,
+}).length
 ```
 
 This is useful when building pluggable systems, so you can query all the utilities present in the registry.
