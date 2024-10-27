@@ -1,2 +1,0 @@
-Breaking changes in `.eslintrc.js` and `.storybook/main.js` because of #6399. @sneridagh
-Please see the [Upgrade Guide](https://6.docs.plone.org/volto/upgrade-guide/index.html).
