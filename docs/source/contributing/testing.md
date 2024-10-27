@@ -66,10 +66,9 @@ This makes it faster and easier to test code changes.
 
 In GitHub workflows or for testing add-ons, it's useful to use an alternate Jest configuration.
 Volto provides a way to do so using a file {file}`jest.config.js`, or pointing the test runner to a file of your choice, using the `RAZZLE_JEST_CONFIG` environment variable.
-Because the Volto add-ons and Volto add-ons projects still use `yarn`, you must run the test command using `yarn` instead of `pnpm`.
 
 ```shell
-RAZZLE_JEST_CONFIG=my-custom-jest-config.js yarn test
+RAZZLE_JEST_CONFIG=my-custom-jest-config.js pnpm test
 ```
 
 ```{note}
@@ -85,7 +84,7 @@ Sometimes you need to enable different configurations and enable optional compon
 You can use the `ADDONS` environment variable to define them.
 
 ```bash
-ADDONS=test-addon,test-addon2 yarn start
+ADDONS=test-addon,test-addon2 pnpm start
 ```
 
 See {doc}`../configuration/environmentvariables` for more information.
