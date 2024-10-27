@@ -7,7 +7,7 @@ declare namespace slots {
                 content: {
                     subjects?: any[];
                 };
-            }): JSX.Element;
+            }): JSX.Element | null;
             propTypes: {
                 content: any;
             };
