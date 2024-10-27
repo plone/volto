@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export declare const AlignWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const ButtonsWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const ArrayWidget: import("@loadable/component").LoadableClassComponent<any>;
@@ -53,7 +52,7 @@ export declare const UrlWidget: import("@loadable/component").LoadableClassCompo
         data: {};
         block: string;
     };
-    contextType?: import("react").Context<any>;
+    contextType?: import("react").Context<any> | undefined;
 }>;
 export declare const InternalUrlWidget: import("@loadable/component").LoadableClassComponent<{
     new (): {
@@ -93,7 +92,7 @@ export declare const InternalUrlWidget: import("@loadable/component").LoadableCl
         data: {};
         block: string;
     };
-    contextType?: import("react").Context<any>;
+    contextType?: import("react").Context<any> | undefined;
 }>;
 export declare const EmailWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const NumberWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
