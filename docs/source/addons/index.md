@@ -19,7 +19,7 @@ This system is implemented through the [`@plone/registry`](https://plone-registr
 It helps developers extend Volto in a pluggable way through {term}`add-on`s.
 
 %TODO: This matches with https://plone-registry.readthedocs.io/conceptual-guides/add-on-registry.html#what-is-an-add-on. Copy here when that one is ready.
-
+%This should be a separate page, not included here. [@stevepiercy]
 ```{include} what-is-an-add-on.md
 ```
 
@@ -31,14 +31,13 @@ how-an-add-on-works
 add-on-configuration-pipeline
 ```
 
-% This reads more like an introduction to a how-to guide than explanation. I think it should be moved to the how-to guide.
+% All of the following content reads more like an introduction to a how-to guide than explanation. I think it should be moved to the how-to guide.
 ## Configure Volto add-ons
 
 Volto can be configured to use multiple add-ons.
 You have to install the code, then enable the add-on in the configuration.
 You can install the code by installing a released add-on package in the setup, or use a development add-on package.
 A development add-on package can be either local to the Plone project or as a checkout from a repository.
-
 
 ### Install a released add-on
 
@@ -48,15 +47,15 @@ These are the instructions for the stable release.
 
 {doc}`../development/addons/how-to-install-an-add-on-stable`
 
-### Installing a released add-on (development or pre-release)
+### Install a development or pre-release add-on
 
-These are the instructions for the development or pre-release.
+These are the instructions to install a development or pre-release add-on.
 
 {doc}`../development/addons/how-to-install-an-add-on-prerelease`
 
-### Installing an add-on in development mode
+### Install an add-on in development mode
 
-It is also usual that you develop an add-on at the same time that you are developing a project.
+You can develop an add-on at the same time you develop a project.
 These are the instructions for the stable release.
 
 {doc}`../development/addons/how-to-install-an-add-on-dev-stable`
