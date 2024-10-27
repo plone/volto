@@ -14,12 +14,12 @@ In the JavaScript and TypeScript ecosystem, this is often quite complex, and the
 :maxdepth: 1
 :hidden:
 :caption: How-to guides
-howto/how-to-instantiate-registry
-howto/how-to-register-an-addon
-howto/how-to-shadow-a-component
-howto/how-to-access-registry
-howto/how-to-register-and-retrieving-components
-howto/how-to-register-and-retrieving-utilities
+how-to-guides/instantiate-registry
+how-to-guides/register-an-add-on
+how-to-guides/shadow-a-component
+how-to-guides/access-registry
+how-to-guides/register-and-retrieve-components
+how-to-guides/register-and-retrieve-utilities
 ```
 
 
@@ -27,8 +27,8 @@ howto/how-to-register-and-retrieving-utilities
 :maxdepth: 1
 :hidden:
 :caption: Conceptual guides
-conceptual-guides/add-on-registry.md
-conceptual-guides/configuration-registry.md
-conceptual-guides/component-registry.md
-conceptual-guides/utility-registry.md
+conceptual-guides/add-on-registry
+conceptual-guides/configuration-registry
+conceptual-guides/component-registry
+conceptual-guides/utility-registry
 ```
