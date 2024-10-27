@@ -1,3 +1,12 @@
+---
+myst:
+  html_meta:
+    "description": "How to instantiate the registry in @plone/registry"
+    "property=og:description": "How to instantiate the registry in @plone/registry"
+    "property=og:title": "Instantiate the registry"
+    "keywords": "@plone/registry, registry, instantiate"
+---
+
 # Instantiate the registry
 
 The registry is instantiated in the context of your app folder.

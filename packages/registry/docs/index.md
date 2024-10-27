@@ -1,3 +1,12 @@
+---
+myst:
+  html_meta:
+    "description": "@plone/registry provides support for building an add-on and configuration registry with infrastructure for JavaScript and TypeScript-based apps."
+    "property=og:description": "@plone/registry provides support for building an add-on and configuration registry with infrastructure for JavaScript and TypeScript-based apps."
+    "property=og:title": "@plone/registry"
+    "keywords": "@plone/registry, registry, add-on, configuration, component, utility, JavaScript, TypeScript, app"
+---
+
 # `@plone/registry`
 
 `@plone/registry` provides support for building an add-on and configuration registry with infrastructure for JavaScript and TypeScript-based apps.

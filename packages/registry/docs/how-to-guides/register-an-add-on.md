@@ -1,3 +1,12 @@
+---
+myst:
+  html_meta:
+    "description": "How to register an add-on in @plone/registry"
+    "property=og:description": "How to register an add-on in @plone/registry"
+    "property=og:title": "Register an add-on"
+    "keywords": "@plone/registry, registry, add-on"
+---
+
 # Register an add-on
 
 You have two ways available to register an add-on in your app.

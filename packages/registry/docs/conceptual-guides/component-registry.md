@@ -1,3 +1,12 @@
+---
+myst:
+  html_meta:
+    "description": "An explanation of the component registry in @plone/registry"
+    "property=og:description": "An explanation of the component registry in @plone/registry"
+    "property=og:title": "Component registry"
+    "keywords": "@plone/registry, registry, component"
+---
+
 # Component registry
 
 The configuration registry stores a component registry in itself.

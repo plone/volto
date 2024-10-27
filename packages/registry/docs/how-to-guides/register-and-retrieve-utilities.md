@@ -1,3 +1,12 @@
+---
+myst:
+  html_meta:
+    "description": "How to register and retrieve utilities in @plone/registry"
+    "property=og:description": "How to register and retrieve utilities in @plone/registry"
+    "property=og:title": "Register and retrieve utilities"
+    "keywords": "@plone/registry, registry, utilities, register, retrieve"
+---
+
 # Register and retrieve utilities
 
 This section of the documentation describes how to register and retrieve utilities.

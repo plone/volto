@@ -1,3 +1,12 @@
+---
+myst:
+  html_meta:
+    "description": "An explanation of the utility registry in @plone/registry"
+    "property=og:description": "An explanation of the utility registry in @plone/registry"
+    "property=og:title": "Utility registry"
+    "keywords": "@plone/registry, registry, utility"
+---
+
 # Utility registry
 
 The configuration registry stores a utility registry in itself.

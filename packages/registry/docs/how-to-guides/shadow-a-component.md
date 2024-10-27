@@ -1,3 +1,12 @@
+---
+myst:
+  html_meta:
+    "description": "How to shadow a component or module in @plone/registry"
+    "property=og:description": "How to shadow a component or module in @plone/registry"
+    "property=og:title": "Shadow a component or module"
+    "keywords": "@plone/registry, registry, shadow, component"
+---
+
 # Shadow a component or module
 
 Component or module shadowing is a technique that allows you to define an alternative module for a specific module.

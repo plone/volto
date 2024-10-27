@@ -1,3 +1,12 @@
+---
+myst:
+  html_meta:
+    "description": "An explanation of the add-on registry in @plone/registry"
+    "property=og:description": "An explanation of the add-on registry in @plone/registry"
+    "property=og:title": "Add-on registry"
+    "keywords": "@plone/registry, registry, add-on"
+---
+
 # Add-on registry
 
 An add-on registry is a facility that allows an app, which was built on an existing framework, to itself be extensible and pluggable.
