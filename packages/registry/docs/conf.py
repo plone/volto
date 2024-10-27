@@ -43,8 +43,8 @@ if version_from_package_json:
     # The full version, including alpha/beta/rc tags.
     release = version_from_package_json
 else:
-    version = "17.15.6"
-    release = "17.15.6"
+    version = "1.8.0"
+    release = "1.8.0"
 
 
 # -- General configuration ----------------------------------------------------
@@ -57,12 +57,9 @@ else:
 # or your custom ones.
 extensions = [
     "myst_parser",
-    "sphinx.ext.ifconfig",
     "sphinx.ext.intersphinx",
     "sphinx.ext.todo",
     "sphinx_copybutton",
-    "sphinx_examples",
-    "sphinxcontrib.video",
     "sphinxext.opengraph",
 ]
 
@@ -89,11 +86,6 @@ linkcheck_ignore = [
     # Ignore github.com pages with anchors
     r"https://github.com/.*#.*",
     # Ignore other specific anchors
-    # r"https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi",  # TODO retest with latest Sphinx when upgrading theme. chromewebstore recently changed its URL and has "too many redirects".
-    # r"https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd",  # TODO retest with latest Sphinx when upgrading theme. chromewebstore recently changed its URL and has "too many redirects".
-    r"https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue",
-    r"https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0",
-    # r"https://stackoverflow.com",  # volto and documentation  # TODO retest with latest Sphinx.
 ]
 linkcheck_anchors = True
 linkcheck_timeout = 5
@@ -148,9 +140,9 @@ html_theme_options = {
             }
         },
         {
-            "name": "Twitter",
-            "url": "https://twitter.com/plone",
-            "icon": "fa-brands fa-square-twitter",
+            "name": "Mastodon",
+            "url": "https://plone.social/@plone",
+            "icon": "fa-brands fa-mastodon",
             "type": "fontawesome",
             "attributes": {
                 "target": "_blank",
@@ -159,9 +151,9 @@ html_theme_options = {
             }
         },
         {
-            "name": "Mastodon",
-            "url": "https://plone.social/@plone",
-            "icon": "fa-brands fa-mastodon",
+            "name": "X (formerly Twitter)",
+            "url": "https://x.com/plone",
+            "icon": "fa-brands fa-square-x-twitter",
             "type": "fontawesome",
             "attributes": {
                 "target": "_blank",
@@ -303,4 +295,3 @@ source_replacements = {
 def setup(app):
     app.add_config_value("source_replacements", {}, True)
     app.connect("source-read", source_replace)
-    app.add_config_value("context", "volto", "env")
