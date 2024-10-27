@@ -33,7 +33,26 @@ Alternatively, you can browse the contents of the source package you want to sha
 
 To replace the `Logo` resource, your folder structure needs to match the folder structure of the package in the `customizations` folder.
 The `Logo` resource is located in the `@plone/slots` package in the {file}`components/Logo/Logo.svg` file.
-The final path of your new component will be {file}`src/customizations/@plone/slots/components/Logo/Logo.svg`.
+├── slots
+
+```text
+node_modules
+└── @plone
+    └── slots
+        └── components
+            └── Logo.svg
+```
+
+The structure inside your `customizations` of the component shadowing the original should be {file}`src/customizations/@plone/slots/components/Logo/Logo.svg`.
+
+```text
+src
+└── customizations
+    └── @plone
+        └── slots
+            └── components
+                └── Logo.svg
+```
 
 ```{warning}
 When upgrading add-ons in your project, it's important to review any shadowed components from the updated add-on.

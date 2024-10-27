@@ -25,10 +25,10 @@ In the JavaScript and TypeScript ecosystem, this is often quite complex, and the
 :caption: How-to guides
 how-to-guides/instantiate-registry
 how-to-guides/register-an-add-on
-how-to-guides/shadow-a-component
 how-to-guides/access-registry
 how-to-guides/register-and-retrieve-components
 how-to-guides/register-and-retrieve-utilities
+how-to-guides/shadow-a-component
 ```
 
 
