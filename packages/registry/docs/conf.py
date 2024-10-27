@@ -21,7 +21,7 @@ import json
 # -- Project information -----------------------------------------------------
 
 project = "@plone/registry documentation"
-copyright = "Volto Foundation"
+copyright = "Plone Foundation"
 author = "Plone Community"
 trademark_name = "Plone"
 now = datetime.now()
