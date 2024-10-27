@@ -1,1 +1,0 @@
-Fix redirect after login if the `Login` component is used on a route other than `/login` or `/logout`. @dobri1408
