@@ -1,0 +1,6 @@
+Moved the package to ESM and refactored the add-on registry scripts to TypeScript. @sneridagh
+Breaking:
+- For maximum compatibility with CommonJS builds, the default exports have been moved to named exports.
+- The modules affected are now built, and the import paths have changed, too.
+- These changes force the modification in imports in a couple of files.
+Please see the [Upgrade Guide](https://6.docs.plone.org/volto/upgrade-guide/index.html).
