@@ -1,4 +1,4 @@
-# How to register and retrieve components from the registry
+# Register and retrieve components
 
 ## Register components by name
 

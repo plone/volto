@@ -1,4 +1,4 @@
-# How to register and retrieve utilities (Utility registry)
+# Register and retrieve utilities
 
 ## Register utilities
 

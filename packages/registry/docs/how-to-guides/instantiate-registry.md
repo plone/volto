@@ -1,4 +1,4 @@
-# How to instantiate the registry
+# Instantiate the registry
 
 The registry is instantiated in the context of your app folder.
 It gets your app folder path as argument.

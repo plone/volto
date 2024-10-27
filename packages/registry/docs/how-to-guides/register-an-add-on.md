@@ -1,4 +1,4 @@
-# How to register an add-on in your app
+# Register an add-on
 
 You have two ways available for registering an add-on in your app.
 You can do so either through the `addons` key in your {file}`package.json` or by using a configuration file.

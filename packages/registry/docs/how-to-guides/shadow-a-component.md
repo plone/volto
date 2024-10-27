@@ -1,4 +1,4 @@
-# How to shadow a component (or module)
+# Shadow a component or module
 
 Component (or module) shadowing is a technique that allows you to define an alternative module for a specific module.
 You normally would want to override a module from another add-on.

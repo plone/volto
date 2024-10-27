@@ -1,4 +1,4 @@
-### Accessing the configuration registry
+# Access the configuration registry
 
 You can access the configuration registry as follows.
 
