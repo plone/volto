@@ -10,11 +10,13 @@ const App = (props: AppProps) => {
   const { content, location } = props;
 
   return (
-    <>
-      <SlotRenderer name="header" content={content} location={location} />
+    <div className="app-slot">
+      <header className="header-slot">
+        <SlotRenderer name="header" content={content} location={location} />
+      </header>
       <SlotRenderer name="main" content={content} location={location} />
       <SlotRenderer name="footer" content={content} location={location} />
-    </>
+    </div>
   );
 };
 

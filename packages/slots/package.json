@@ -59,7 +59,8 @@
     "@plone/client": "workspace:*",
     "@plone/components": "workspace:*",
     "@plone/providers": "workspace:*",
-    "@plone/registry": "workspace:*"
+    "@plone/registry": "workspace:*",
+    "react-aria-components": "^1.4.0"
   },
   "devDependencies": {
     "@parcel/packager-ts": "^2.12.0",

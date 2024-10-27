@@ -12,9 +12,10 @@ import {
 import { flattenToAppURL } from '../utils';
 import { useLoaderData, useLocation } from '@remix-run/react';
 import { usePloneClient } from '@plone/providers';
-import { Breadcrumbs, RenderBlocks } from '@plone/components';
-import config from '@plone/registry';
+// import { Breadcrumbs, RenderBlocks } from '@plone/components';
+// import config from '@plone/registry';
 import { ploneClient } from '../client';
+import App from '@plone/slots/components/App';
 
 export const meta: MetaFunction = () => {
   return [
@@ -54,16 +55,7 @@ function Page() {
   if (!data) return null;
   return (
     <>
-      <Breadcrumbs
-        items={data['@components'].breadcrumbs.items || []}
-        root={data['@components'].breadcrumbs.root}
-        includeRoot
-      />
-      <RenderBlocks
-        content={data}
-        blocksConfig={config.blocks.blocksConfig}
-        pathname="/"
-      />
+      <App content={data} location={{ pathname: '/' }} />
     </>
   );
 }

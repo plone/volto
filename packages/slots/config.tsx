@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import Logo from './components/Logo';
-import Sections from './components/Sections';
+import Navigation from './components/Navigation';
 import HeaderTools from './components/Tools';
 
 export default function install(config: ConfigType) {
@@ -32,11 +32,11 @@ export default function install(config: ConfigType) {
     component: Logo,
   });
 
-  // Sections
+  // Navigation
   config.registerSlotComponent({
-    name: 'Sections',
-    slot: 'sections',
-    component: Sections,
+    name: 'Navigation',
+    slot: 'navigation',
+    component: Navigation,
   });
 
   // Tools

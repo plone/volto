@@ -112,6 +112,9 @@ importers:
       '@plone/registry':
         specifier: 'workspace: *'
         version: link:../../packages/registry
+      '@plone/slots':
+        specifier: 'workspace: *'
+        version: link:../../packages/slots
       '@remix-run/css-bundle':
         specifier: ^2.13.1
         version: 2.13.1
@@ -931,6 +934,9 @@ importers:
       react:
         specifier: ^16.8.0 || ^17.0.0 || ^18.0.0
         version: 18.2.0
+      react-aria-components:
+        specifier: ^1.4.0
+        version: 1.4.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-dom:
         specifier: ^16.8.0 || ^17.0.0 || ^18.0.0
         version: 18.2.0(react@18.2.0)

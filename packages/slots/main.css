@@ -1,4 +1,15 @@
-body {
+:root {
+  /* These should come from @plone/components by default */
+  --layout-container-width: 1440px;
+  --default-container-width: 940px;
+  --narrow-container-width: 620px;
+
+  --align-right: end;
+  --align-left: start;
+  --align-center: center;
+}
+
+.app-slot {
   display: grid;
   grid-template-areas:
     'header'
