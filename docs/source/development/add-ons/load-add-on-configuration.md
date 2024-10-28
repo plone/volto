@@ -1,22 +1,19 @@
 ---
 myst:
   html_meta:
-    "description": "Loading configuration from add-ons"
-    "property=og:description": "Loading configuration from add-ons"
-    "property=og:title": "Loading configuration from add-ons"
+    "description": "Load configuration from add-ons"
+    "property=og:description": "Load configuration from add-ons"
+    "property=og:title": "Load configuration from add-ons"
     "keywords": "Volto, add-on, extensions, frontend, Plone, configuration"
 ---
 
-# Loading configuration from add-ons
+# Load configuration from add-ons
 
-As a convenience, an add-on can export configuration functions that can mutate,
-in-place, the overall Volto {term}`configuration registry`.
-An add-on can export multiple configurations methods, making it possible to selectively choose which specific add-on functionality you want to load.
+As a convenience, an add-on can export configuration functions that can mutate in-place the overall Volto {term}`configuration registry`.
+An add-on can export multiple configuration methods, making it possible to selectively choose which specific add-on functionality you want to load.
 
-Some add-ons might choose to allow the Volto project to selectively load some of
-their configuration, so they may offer additional configuration functions,
-which you can load by overloading the add-on name in the `addons` package.json
-key, like so:
+Some add-ons might allow the Volto project to selectively load some of their configuration, so they may offer additional configuration functions.
+You can load them by overloading the add-on name in the `addons` {file}`package.json` key, as shown.
 
 ```{code-block} json
 :emphasize-lines: 4
@@ -31,13 +28,12 @@ key, like so:
 ```
 
 ```{note}
-The additional comma-separated names should be exported from the add-on
-package's `index.js`. The main configuration function should be exported as
-the default. An add-on's default configuration method will always be loaded.
+The additional comma-separated names should be exported from the add-on package's {file}`index.js`.
+The main configuration function should be exported as the default.
+An add-on's default configuration method will always be loaded.
 ```
 
-If for some reason, you want to manually load the add-on, you could always do,
-in your project's `config.js` module:
+If for some reason you want to manually load the add-on, you can edit your project's {file}`config.js` module:
 
 ```js
 import loadExampleAddon, { enableOptionalBlocks } from 'volto-example-add-on';
@@ -50,7 +46,7 @@ export blocks = {
 }
 ```
 
-As this is a common operation, Volto provides a helper method for this:
+Volto provides a helper method `applyConfig` to do the same.
 
 ```js
 import { applyConfig } from '@plone/volto/helpers';
@@ -66,5 +62,4 @@ export blocks = {
 }
 ```
 
-The `applyConfig` helper ensures that each configuration methods returns the
-config object, avoiding odd and hard to track errors when developing add-ons.
+The `applyConfig` helper ensures that each configuration method returns the configuration object, avoiding errors when developing add-ons.
