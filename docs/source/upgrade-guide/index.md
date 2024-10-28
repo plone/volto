@@ -579,6 +579,27 @@ Also in the Storybook configuration {file}`.storybook/main.js`.
 ```{versionadded} @plone/registry 3.0.0-alpha.0
 ```
 
+### Add missing overrides to projects in `package.json`
+
+This will fix some issues with Hot Module Reload in projects.
+It's required from Volto `18.0.0-alpha.47` otherwise, the site breaks in development mode.
+Add this object to the `pnpm` key in your project `package.json`:
+
+```
+  "pnpm": {
+    "overrides": {
+			"@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+			"react-refresh": "^0.14.2"
+    }
+  },
+```
+
+```{versionadded} Volto 18.0.0-alpha.47
+```
+
+```{versionadded} @plone/registry 3.0.0-alpha.0
+```
+
 ### Deprecation notices for Volto 18
 
 #### `@plone/generator-volto`
