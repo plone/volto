@@ -229,11 +229,6 @@ map(
   [
     'Floating-point number',
     'label_float_field',
-    'Date/Time',
-    'label_datetime_field',
-    'Date',
-    'label_date_field',
-    'time',
     'Yes/No',
     'label_boolean_field',
     'JSONField',
@@ -248,6 +243,48 @@ map(
     });
   },
 );
+
+map(['Date/Time', 'label_datetime_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryProperties',
+    method: (intl) => ({
+      default: {
+        type: 'string',
+        widget: 'datetime',
+        title: intl.formatMessage(messages.defaultValue),
+      },
+    }),
+  });
+});
+
+map(['Date', 'label_date_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryProperties',
+    method: (intl) => ({
+      default: {
+        type: 'string',
+        widget: 'date',
+        title: intl.formatMessage(messages.defaultValue),
+      },
+    }),
+  });
+});
+
+map(['time'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryProperties',
+    method: (intl) => ({
+      default: {
+        type: 'string',
+        widget: 'time',
+        title: intl.formatMessage(messages.defaultValue),
+      },
+    }),
+  });
+});
 
 map(['File', 'File Upload', 'Image'], (factory) => {
   config.registerUtility({
@@ -267,14 +304,7 @@ map(['File', 'File Upload', 'Image'], (factory) => {
 });
 
 map(
-  [
-    'Multiple Choice',
-    'label_multi_choice_field',
-    'Choice',
-    'label_choice_field',
-    'radio_group',
-    'checkbox_group',
-  ],
+  ['Multiple Choice', 'label_multi_choice_field', 'checkbox_group'],
   (factory) => {
     config.registerUtility({
       name: factory,
@@ -285,10 +315,33 @@ map(
           title: intl.formatMessage(messages.choices),
           widget: 'textarea',
         },
+        default: {
+          type: 'string',
+          widget: 'textarea',
+          title: intl.formatMessage(messages.defaultValue),
+        },
       }),
     });
   },
 );
+
+map(['Choice', 'label_choice_field', 'radio_group'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryProperties',
+    method: (intl) => ({
+      values: {
+        type: 'string',
+        title: intl.formatMessage(messages.choices),
+        widget: 'textarea',
+      },
+      default: {
+        type: 'string',
+        title: intl.formatMessage(messages.defaultValue),
+      },
+    }),
+  });
+});
 
 config.registerUtility({
   name: 'static_text',
