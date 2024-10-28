@@ -48,6 +48,7 @@ integration with Volto's {term}`configuration registry`.
 
 The add-on can be published to an npm registry or directly installed from github by the package manager.
 By using [mrs-developer](https://github.com/collective/mrs-developer), it's possible to have a workflow similar to `zc.buildout`'s `mr.developer`, where you can "checkout" an add-on for development.
+[Eric Brehault](https://github.com/ebrehault) ported this amazing Python tool.
 
 An add-on can configure any aspect of Volto:
 - provide additional views and blocks
