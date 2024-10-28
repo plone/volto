@@ -1,4 +1,4 @@
-import path from 'path';
+// import path from 'path';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -21,17 +21,26 @@ const nextConfig = {
   // Rewrite to the backend to avoid CORS
   async rewrites() {
     let apiServerURL, vhmRewriteRule;
-    if (process.env.API_SERVER_URL) {
-      apiServerURL = process.env.API_SERVER_URL;
-      vhmRewriteRule = `/VirtualHostBase/https/${process.env.NEXT_PUBLIC_VERCEL_URL}%3A443/Plone/%2B%2Bapi%2B%2B/VirtualHostRoot`;
-    } else if (
+    if (
       process.env.API_SERVER_URL &&
-      !process.env.NEXT_PUBLIC_VERCEL_URL
+      (process.env.NEXT_PRODUCTION_URL || process.env.NEXT_PUBLIC_VERCEL_URL)
     ) {
-      throw new Error(
-        'API_SERVER_URL set and NEXT_PUBLIC_VERCEL_URL not present.',
-      );
+      // We are in Vercel
+      apiServerURL = process.env.API_SERVER_URL;
+      vhmRewriteRule = `/VirtualHostBase/https/${
+        process.env.NEXT_PRODUCTION_URL
+          ? // We are in the production deployment
+            process.env.NEXT_PRODUCTION_URL
+          : // We are in the preview deployment
+            process.env.NEXT_PUBLIC_VERCEL_URL
+      }%3A443/Plone/%2B%2Bapi%2B%2B/VirtualHostRoot`;
+    } else if (process.env.API_SERVER_URL) {
+      // We are in development
+      apiServerURL = process.env.API_SERVER_URL;
+      vhmRewriteRule =
+        '/VirtualHostBase/http/localhost%3A3000/Plone/%2B%2Bapi%2B%2B/VirtualHostRoot';
     } else {
+      // We are in development and the API_SERVER_URL is not set, so we use a local backend
       apiServerURL = 'http://localhost:8080';
       vhmRewriteRule =
         '/VirtualHostBase/http/localhost%3A3000/Plone/%2B%2Bapi%2B%2B/VirtualHostRoot';

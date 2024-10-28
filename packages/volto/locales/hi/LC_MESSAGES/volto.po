@@ -426,6 +426,11 @@ msgstr "{entry} को {role} भूमिका का काम दें"
 msgid "Assignments"
 msgstr "असाइनमेंट"
 
+#. Default: "Automatically"
+#: components/manage/Controlpanels/Aliases
+msgid "Automatically"
+msgstr ""
+
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
@@ -484,6 +489,11 @@ msgstr "मूल खोज क्वेरी"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "ब्लॉक"
+
+#. Default: "Both"
+#: components/manage/Controlpanels/Aliases
+msgid "Both"
+msgstr ""
 
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
@@ -1408,6 +1418,11 @@ msgstr ""
 msgid "Event view"
 msgstr "आयोजन दृश्य"
 
+#. Default: "Example"
+#: components/manage/Controlpanels/Aliases
+msgid "Example"
+msgstr ""
+
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Exclude from navigation"
@@ -1519,6 +1534,7 @@ msgid "Files uploaded: {uploadedFiles}"
 msgstr ""फ़ाइलें अपलोड की गईं: {uploadedFiles}"
 
 #. Default: "Filter"
+#: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
 msgstr "फ़िल्टर"
@@ -2178,6 +2194,11 @@ msgstr "{title} के लिए अनुवाद प्रबंधित क
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
 msgstr "मैनुअल"
+
+#. Default: "Manually"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually"
+msgstr ""
 
 #. Default: "Manually or automatically added?"
 #: components/manage/Controlpanels/Aliases
@@ -4577,6 +4598,11 @@ msgstr "कब"
 #: components/theme/EventDetails/EventDetails
 msgid "event_where"
 msgstr "कहाँ"
+
+#. Default: "/example"
+#: components/manage/Controlpanels/Aliases
+msgid "examplePath"
+msgstr ""
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

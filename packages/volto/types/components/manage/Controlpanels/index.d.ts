@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export declare const Controlpanels: any;
 export declare const Controlpanel: import("@loadable/component").LoadableComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>>;
 export declare const RulesControlpanel: import("@loadable/component").LoadableClassComponent<any>;
