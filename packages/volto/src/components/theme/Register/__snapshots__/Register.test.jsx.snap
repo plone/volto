@@ -19,7 +19,7 @@ exports[`Register renders a register component 1`] = `
   \\"properties\\": {
     \\"fullname\\": {
       \\"type\\": \\"string\\",
-      \\"title\\": \\"Full name\\",
+      \\"title\\": \\"Fullname\\",
       \\"description\\": \\"Enter your full name\\"
     },
     \\"email\\": {
