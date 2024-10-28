@@ -126,6 +126,14 @@ const messages = defineMessages({
     id: 'maximum',
     defaultMessage: 'End of the range (including the value itself)',
   },
+  size: {
+    id: 'size',
+    defaultMessage: 'Maximum size of the file in bytes',
+  },
+  accept: {
+    id: 'accept',
+    defaultMessage: 'File types allowed',
+  },
   deleteFieldset: {
     id: 'Are you sure you want to delete this fieldset including all fields?',
     defaultMessage:
@@ -224,9 +232,6 @@ map(
     'Date',
     'label_date_field',
     'time',
-    'File',
-    'File Upload',
-    'Image',
     'Yes/No',
     'label_boolean_field',
     'JSONField',
@@ -241,6 +246,23 @@ map(
     });
   },
 );
+
+map(['File', 'File Upload', 'Image'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryProperties',
+    method: (intl) => ({
+      size: {
+        type: 'integer',
+        title: intl.formatMessage(messages.size),
+      },
+      accept: {
+        type: 'string',
+        title: intl.formatMessage(messages.accept),
+      },
+    }),
+  });
+});
 
 map(
   [
