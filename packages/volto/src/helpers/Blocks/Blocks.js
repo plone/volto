@@ -681,14 +681,19 @@ export const buildStyleObjectFromData = (data = {}, prefix = '') => {
     prefix,
   );
 
-  const blockStyleDefinitions =
-    // We look up for the blockThemes in the block's data, then in the global config
-    // We keep data.colors for BBB, but data.themes should be used
-    data.themes || data.colors || config.blocks.blockThemes || [];
-  const stylesFromBlockThemes = data.theme
-    ? findStyleByName(blockStyleDefinitions, data.theme)
-    : {};
-  return { ...stylesFromCSSproperties, ...stylesFromBlockThemes };
+  let stylesFromObjectStyleEnhancers = {};
+  const enhancers = config.getUtilities({
+    type: 'styleWrapperStyleObjectEnhancer',
+  });
+
+  enhancers.forEach(({ method }) => {
+    stylesFromObjectStyleEnhancers = {
+      ...stylesFromObjectStyleEnhancers,
+      ...method(data),
+    };
+  });
+
+  return { ...stylesFromCSSproperties, ...stylesFromObjectStyleEnhancers };
 };
 
 /**
@@ -699,7 +704,7 @@ export const buildStyleObjectFromData = (data = {}, prefix = '') => {
  * @param {string} name The name of the style to find
  * @return {Object} The style object of the matching name
  */
-function findStyleByName(styleDefinitions, name) {
+export function findStyleByName(styleDefinitions, name) {
   return styleDefinitions.find((color) => color.name === name)?.style;
 }
 

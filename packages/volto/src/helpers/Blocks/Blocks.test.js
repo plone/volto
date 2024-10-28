@@ -24,6 +24,7 @@ import {
   findBlocks,
   findContainer,
   isBlockContainer,
+  findStyleByName,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -968,6 +969,22 @@ describe('Blocks', () => {
   });
 
   describe('buildStyleClassNamesFromData', () => {
+    beforeEach(() => {
+      function blockThemesEnhancer(data) {
+        const blockStyleDefinitions =
+          // We look up for the blockThemes in the block's data, then in the global config
+          // We keep data.colors for BBB, but data.themes should be used
+          data.themes || data.colors || config.blocks.blockThemes || [];
+        return data.theme
+          ? findStyleByName(blockStyleDefinitions, data.theme)
+          : {};
+      }
+      config.registerUtility({
+        name: 'blockThemesEnhancer',
+        type: 'styleWrapperStyleObjectEnhancer',
+        method: blockThemesEnhancer,
+      });
+    });
     it('Sets styles classname array according to style values', () => {
       const styles = {
         color: 'red',
