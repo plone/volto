@@ -54,8 +54,9 @@ Use it only if your package has a namespace.
 Since that is the convention for all Volto add-on packages, you must always include it.
 ```
 
-If you want to know more about `mrs-developer` config options, please refer to
-[its npm page](https://www.npmjs.com/package/mrs-developer).
+```{seealso}
+See [`mrs-developer` configuration options](https://www.npmjs.com/package/mrs-developer).
+```
 
 
 ## Resolve import paths
