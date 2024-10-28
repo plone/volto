@@ -63,6 +63,12 @@ module.exports = {
 
 They are added to the existing ones in `package.json`.
 
+```{important}
+Adding the add-on package to the `addons` key is mandatory.
+It tells Volto to treat that package properly, providing it with Babel language features.
+In Plone terminology, it is like including a Python egg in the `zcml` section of `zc.buildout`.
+```
+
 ```{seealso}
 {doc}`../configuration/volto-config-js`
 ```

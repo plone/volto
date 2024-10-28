@@ -1,51 +1,40 @@
 ---
 myst:
   html_meta:
-    "description": "How to install a frontend add-on in your Plone project"
-    "property=og:description": "How to install a frontend add-on in your Plone project"
-    "property=og:title": "How to install a frontend add-on"
+    "description": "How to install an add-on in Volto 17 (stable release)"
+    "property=og:description": "How to install an add-on in Volto 17 (stable release)"
+    "property=og:title": "Install an add-on in Volto 17 (stable release)"
     "keywords": "add-on, Volto, install"
 ---
 
-# Configuring Volto to use a released add-on (stable release)
+# Install an add-on in Volto 17 (stable release)
 
-You can install a Volto add-on just like any other JS package:
+This document describes how to install an add-on in Volto 17, the latest stable release.
+
+You can install an add-on just like any other JavaScript package from the [npm Registry](https://www.npmjs.com/).
 
 ```shell
 yarn add name-of-add-on
 ```
 
-If the add-on is not published on npm, you can retrieve it directly from Github:
+If the add-on is not published on the npm Registry, you can install it directly from GitHub.
 
 ```shell
 yarn add collective/volto-dropdownmenu
 ```
 
-Next, you'll need to add the add-on (identified by its JS package name) to the
-`addons` key of your Volto project's `package.json`.
+Next, you need to add the add-on to the `addons` key of your Plone project's {file}`package.json`.
 
-```js
+```json
 {
-  "name": "my-nice-volto-project",
-
+  "name": "my-volto-project",
   "addons": [
-    "acme-volto-foo-add-on",
-    "@plone/some-add-on",
-    "collective-another-volto-add-on"
-  ],
-
+    "name-of-add-on"
+  ]
 }
 ```
 
-```{warning}
-Adding the add-on package to the `addons` key is mandatory! It allows Volto
-to treat that package properly and provide it with BabelJS language
-features. In Plone terminology, it is like including a Python egg to the
-`zcml` section of `zc.buildout`.
-```
-
 ```{seealso}
-Alternatively, you can use `volto.config.js` to declare add-ons in your Plone project:
-{doc}`../configuration/volto-config-js`
+Alternatively, you can use {file}`volto.config.js` to declare add-ons in your Plone project.
+See {doc}`../configuration/volto-config-js`.
 ```
-
