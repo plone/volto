@@ -1,21 +1,28 @@
 ---
 myst:
   html_meta:
-    "description": "How to create a frontend add-on (development or pre-release)"
-    "property=og:description": "How to create a frontend add-on (development or pre-release)"
-    "property=og:title": "How to create a frontend add-on (development or pre-release)"
-    "keywords": "add-on, Volto, create"
+    "description": "How to create an add-on for Volto 18 (development or pre-release)"
+    "property=og:description": "How to create an add-on for Volto 18 (development or pre-release)"
+    "property=og:title": "Create an add-on for Volto 18 (development or pre-release)"
+    "keywords": "add-on, Volto, create, development, pre-release"
 ---
 
-# How to create a frontend add-on (development or pre-release)
+# Create an add-on for Volto 18 (development or pre-release)
 
-This chapter describes how you can create a Volto add-on using the latest **development release** version of Plone with **Volto 18 or later** for the frontend, while having full control over its development and deployment.
+This chapter describes how you can create a Volto add-on using the latest **development release** version of Plone with **Volto 18 or later** for the user interface, while having full control over its development and deployment.
 
 ```{versionadded} Volto 18.0.0-alpha.43
-{term}`Cookieplone` is now the method to create a Plone add-on with unstable versions of Volto, version 18.0.0-alpha.43 and above.
+{term}`Cookieplone` is now the method to create a Plone add-on with pre-release versions of Volto, version 18.0.0-alpha.43 and above.
 ```
 
-Follow the steps required to install Cookieplone as described in {doc}`plone:install/create-project-cookieplone`.
+## System requirements
+
+Follow the section {ref}`plone:create-project-cookieplone-system-requirements` to set up your system.
+
+
+## Generate the add-on project
+
+Run the following command to generate your add-on project using the `frontend_addon` Cookieplone template.
 
 ```shell
 pipx run cookieplone frontend_addon
@@ -24,7 +31,7 @@ pipx run cookieplone frontend_addon
 ```console
 ❯ pipx run cookieplone frontend_addon
 ⚠️  cookieplone is already on your PATH and installed at
-    /Users/sneridagh/.local/bin/cookieplone. Downloading and running anyway.
+    /Users/<username>/.local/bin/cookieplone. Downloading and running anyway.
 ╭──────────────────────────────── cookieplone ─────────────────────────────────╮
 │                                                                              │
 │                               .xxxxxxxxxxxxxx.                               │
@@ -56,7 +63,7 @@ pipx run cookieplone frontend_addon
 │                               .xxxxxxxxxxxxxx.                               │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
-You've downloaded /Users/sneridagh/.cookiecutters/cookieplone-templates before.
+You've downloaded /Users/<username>/.cookiecutters/cookieplone-templates before.
 Is it okay to delete and re-download it? [y/n] (y):
 ╭─────────────────────────── Volto Addon Generator ────────────────────────────╮
 │                                                                              │
@@ -82,7 +89,7 @@ Is it okay to delete and re-download it? [y/n] (y):
 │ Summary:                                                                     │
 │                                                                              │
 │   - Volto version: 18.0.0-alpha.46                                           │
-│   - Output folder: /Users/sneridagh/Development/plone/volto-addon            │
+│   - Output folder: /Users/<username>/Development/plone/volto-addon           │
 │                                                                              │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -102,25 +109,26 @@ Is it okay to delete and re-download it? [y/n] (y):
 │                                                                              │
 │ https://plone.org/                                                           │
 ╰──────────────────────────────────────────────────────────────────────────────╯
-
 ```
 
-Cookieplone has created a folder with the name of the add-on.
+Cookieplone creates a folder with the name of the add-on, in this example, `volto-addon`.
+
 Change your current working directory to {file}`volto-addon`.
 
 ```shell
 cd volto-addon
 ```
 
-To install the frontend setup, use the following command.
+To install the add-on setup, use the following command.
 
 ```shell
 make install
 ```
 
+
 ## Start Plone backend Docker container
 
-In the currently open session, issue the following command.
+In the currently open shell session, issue the following command.
 
 ```shell
 make backend-docker-start
@@ -149,6 +157,7 @@ Starting server in PID 1.
 ```
 
 This will start a clean Plone server for development purposes so you can start developing your add-on.
+
 
 ## Start Plone development frontend
 
@@ -182,7 +191,7 @@ You will see a page similar to the following.
 :class: figure
 ```
 
-Your newly created add-on will be installed by default in a vanilla core Volto.
-You can start developing it in the add-on package located in: {file}`packages/volto-addon`.
+Your newly created add-on will be installed with vanilla core Volto.
+You can start developing it in the add-on package located in {file}`packages/volto-addon`.
 
 You can stop the site with {kbd}`ctrl-c`.
