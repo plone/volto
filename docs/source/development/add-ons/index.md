@@ -12,8 +12,7 @@ myst:
 ```{toctree}
 :maxdepth: 1
 
-install-an-add-on-stable
-install-an-add-on-prerelease
+install-an-add-on
 install-an-add-on-dev-stable
 install-an-add-on-dev-prerelease
 load-add-on-configuration
