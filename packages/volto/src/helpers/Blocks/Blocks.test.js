@@ -974,7 +974,7 @@ describe('Blocks', () => {
         const blockStyleDefinitions =
           // We look up for the blockThemes in the block's data, then in the global config
           // We keep data.colors for BBB, but data.themes should be used
-          data.themes || data.colors || config.blocks.blockThemes || [];
+          data.themes || data.colors || config.blocks.blocksThemes || [];
         return data.theme
           ? findStyleByName(blockStyleDefinitions, data.theme)
           : {};
@@ -1187,7 +1187,7 @@ describe('Blocks', () => {
     });
 
     it('Supports named theme block - with global config', () => {
-      config.blocks.blockThemes = [
+      config.blocks.blocksThemes = [
         {
           style: {
             '--primary-color': '#fff',
@@ -1215,7 +1215,7 @@ describe('Blocks', () => {
     });
 
     it('Supports named theme block - with local block themes config', () => {
-      config.blocks.blockThemes = [
+      config.blocks.blocksThemes = [
         {
           style: {
             '--primary-color': '#fff',
@@ -1263,7 +1263,7 @@ describe('Blocks', () => {
     });
 
     it('All together now - named theme block - with local block themes config', () => {
-      config.blocks.blockThemes = [
+      config.blocks.blocksThemes = [
         {
           style: {
             '--primary-color': '#fff',
