@@ -1,3 +1,12 @@
+---
+myst:
+  html_meta:
+    "description": "How to develop Volto add-ons"
+    "property=og:description": "How to develop Volto add-ons"
+    "property=og:title": "Develop Volto add-ons"
+    "keywords": "Volto, Plone, CMS, add-on"
+---
+
 # Develop Volto add-ons
 
 ```{toctree}
