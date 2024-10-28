@@ -600,6 +600,15 @@ Add this object to the `pnpm` key in your project {file}`package.json`.
 ```{versionadded} @plone/registry 3.0.0-alpha.0
 ```
 
+### `buildStyleObjectFromData` helper arguments
+
+The first argument of `buildStyleObjectFromData` helper function now takes the full block `data` object.
+If you are using this helper in your code or add-on, please update the calls to this helper.
+
+```ts
+function buildStyleObjectFromData(data: BlocksFormData, prefix: string): Object
+```
+
 ### Deprecation notices for Volto 18
 
 #### `@plone/generator-volto`
