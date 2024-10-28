@@ -10,8 +10,8 @@ export interface BlocksConfig {
   requiredBlocks: string[];
   initialBlocks: Record<string, string[]> | Record<string, object[]>;
   initialBlocksFocus: Record<string, string>;
-  blocksThemes: StyleDefinition[];
-  blocksWidths: StyleDefinition[];
+  themes: StyleDefinition[];
+  widths: StyleDefinition[];
 }
 
 export interface BlocksConfigData {
