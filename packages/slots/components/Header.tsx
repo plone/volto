@@ -11,10 +11,16 @@ const Header = (props: HeaderProps) => {
   const { content, location } = props;
 
   return (
-    <Container layout>
+    <Container layout className="header-logo-nav-tools-wrapper">
       <SlotRenderer name="logo" content={content} location={location} />
       <SlotRenderer name="navigation" content={content} location={location} />
-      <SlotRenderer name="headertools" content={content} location={location} />
+      <div className="header-tools">
+        <SlotRenderer
+          name="headertools"
+          content={content}
+          location={location}
+        />
+      </div>
     </Container>
   );
 };

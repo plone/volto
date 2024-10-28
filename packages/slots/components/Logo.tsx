@@ -18,7 +18,7 @@ const Logo = (props: SlotComponentProps) => {
     : LogoImage;
 
   return (
-    <Link href={navRootPath} aria-label={intl(messages.home)}>
+    <Link href={navRootPath} aria-label={intl(messages.home)} className="logo">
       <img src={logoUrl} alt={intl(messages.logoOf) + ' ' + siteTitle} />
     </Link>
   );

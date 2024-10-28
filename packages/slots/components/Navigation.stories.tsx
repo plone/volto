@@ -1,21 +1,22 @@
-import Header from './Header';
+import React from 'react';
+import Navigation from './Navigation';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-  title: 'Header',
-  component: Header,
+  title: 'Navigation',
+  component: Navigation,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Header>;
+} satisfies Meta<typeof Navigation>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args: any) => <Header {...args} />,
+  render: (args: any) => <Navigation {...args} />,
   args: {
     content: {
       '@id': 'http://localhost:3000/Plone',
@@ -27,7 +28,7 @@ export const Default: Story = {
           items: [
             {
               '@id': 'http://localhost:3000/Plone',
-              title: 'Home',
+              title: 'Plone site',
             },
             {
               '@id': 'http://localhost:3000/Plone/news',
@@ -38,17 +39,6 @@ export const Default: Story = {
               title: 'About',
             },
           ],
-        },
-        navroot: {
-          // @ts-expect-error This is a test object, missing all content properties
-          navroot: {
-            '@id': 'http://localhost:3000/Plone',
-            title: 'Plone site',
-          },
-        },
-        site: {
-          'plone.site_title': 'Plone site',
-          // 'plone.site_logo': 'https://sneridagh.dev/',
         },
       },
     },

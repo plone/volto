@@ -11,14 +11,57 @@
 
 .app-slot {
   display: grid;
+  height: 100vh;
+  margin: 0;
   grid-template-areas:
     'header'
     'content'
     'footer';
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  height: 100vh;
-  margin: 0;
+}
+
+.header-logo-nav-tools-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 25px;
+  padding-bottom: 35px;
+}
+
+.logo {
+  flex: 1 1 0;
+  align-self: center;
+}
+
+.navigation {
+  display: flex;
+  flex: 3.5 1 0;
+  align-self: center;
+  justify-content: center;
+
+  ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li a {
+      padding: 1rem 0;
+      margin-left: 1rem;
+    }
+
+    li:first-child a {
+      margin-left: 0;
+    }
+  }
+}
+
+.header-tools {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: row-reverse;
 }
 
 main {

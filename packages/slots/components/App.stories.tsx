@@ -1,6 +1,7 @@
 import App from './App';
 
 import type { Meta, StoryObj } from '@storybook/react';
+import { storyData } from '../stories';
 
 const meta = {
   title: 'App',
@@ -8,7 +9,6 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
 } satisfies Meta<typeof App>;
 
 export default meta;
@@ -22,7 +22,29 @@ export const Default: Story = {
       title: 'Plone site',
       description: 'Welcome to Plone',
       items: [],
+      blocks: {
+        ...storyData.blocks,
+      },
+      blocks_layout: {
+        ...storyData.blocks_layout,
+      },
       '@components': {
+        navigation: {
+          items: [
+            {
+              '@id': 'http://localhost:3000/Plone',
+              title: 'Home',
+            },
+            {
+              '@id': 'http://localhost:3000/Plone/news',
+              title: 'News',
+            },
+            {
+              '@id': 'http://localhost:3000/Plone/about',
+              title: 'About',
+            },
+          ],
+        },
         navroot: {
           // @ts-expect-error This is a test object, missing all content properties
           navroot: {

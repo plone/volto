@@ -942,6 +942,9 @@ importers:
 
   packages/slots:
     dependencies:
+      '@plone/blocks':
+        specifier: workspace:*
+        version: link:../blocks
       '@plone/client':
         specifier: workspace:*
         version: link:../client

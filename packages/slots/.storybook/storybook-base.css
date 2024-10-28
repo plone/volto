@@ -13,3 +13,7 @@
     font-size: 16px;
   }
 }
+
+#storybook-root {
+  width: 100vw;
+}
