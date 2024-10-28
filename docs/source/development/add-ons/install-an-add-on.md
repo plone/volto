@@ -18,7 +18,6 @@ You can install an add-on just like any other JavaScript package from the [npm R
 
 ````{tab-item} Volto 17 (stable release)
 :sync: volto-17
-
 ```shell
 yarn add <name-of-add-on>
 ```
@@ -26,12 +25,10 @@ yarn add <name-of-add-on>
 
 ````{tab-item} Volto 18 (development or pre-release)
 :sync: volto-18
-
 ```shell
 pnpm --filter <name-of-your-policy-add-on> add <name-of-add-on>
 ```
 ````
-
 `````
 
 If the add-on is not published on the npm Registry, [you can install it directly from GitHub](https://pnpm.io/cli/add#install-from-git-repository).
@@ -42,7 +39,6 @@ If the add-on is not published on the npm Registry, [you can install it directly
 
 ````{tab-item} Volto 17 (stable release)
 :sync: volto-17
-
 ```shell
 yarn add collective/volto-dropdownmenu
 ```
@@ -50,12 +46,10 @@ yarn add collective/volto-dropdownmenu
 
 ````{tab-item} Volto 18 (development or pre-release)
 :sync: volto-18
-
 ```shell
 pnpm add collective/volto-dropdownmenu
 ```
 ````
-
 `````
 
 Next, you need to add the add-on to the `addons` key of your Plone project's {file}`package.json`.
