@@ -2,6 +2,7 @@ import type { Content } from '../content';
 import type { BlockViewProps, BlockEditProps } from '../blocks';
 import type { IntlShape } from 'react-intl';
 import { User } from '../services';
+import { Color } from '../widgets';
 
 export interface BlocksConfig {
   blocksConfig: BlocksConfigData;
@@ -9,6 +10,7 @@ export interface BlocksConfig {
   requiredBlocks: string[];
   initialBlocks: Record<string, string[]> | Record<string, object[]>;
   initialBlocksFocus: Record<string, string>;
+  blockThemes: Color[];
 }
 
 export interface BlocksConfigData {
