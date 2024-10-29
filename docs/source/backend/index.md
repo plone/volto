@@ -34,6 +34,23 @@ Block transformers
 Search and indexing integration
 :   By providing the right adapters, you can extract searchable text from blocks.
 
+Client reducer content transforms
+:   These transforms run in the client when the response from the backend is received.
+    These are useful when you need to modify the response from the backend on-the-fly for amending the backend data, such as a data migration of any kind.
+    You can register a utility that mutates the response at your convenience.
+
+    ```ts
+    import { upgradeV20241023 } from './upgrades/upgradeV20241023';
+
+    config.registerUtility({
+      name: 'upgradeV20241023',
+      type: 'transform',
+      dependencies: { reducer: 'content' },
+      method: upgradeV20241023,
+    });
+    ```
+
+    The `type` of the utility needs to be `transform`, and the `dependencies` set to `{reducer: 'content'}`.
 
 ## Proxied backend routes
 

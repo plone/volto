@@ -19,4 +19,5 @@ theming-engine
 theming-strategy
 custom-styling
 using-third-party-themes
+theming-a-base-theme
 ```

@@ -1,4 +1,3 @@
-/// <reference types="jest" />
 export declare const Field: jest.Mock<import("react/jsx-runtime").JSX.Element, [props: any], any>;
 export declare const InlineForm: jest.Mock<import("react/jsx-runtime").JSX.Element, [props: any], any>;
 export declare const ModalForm: jest.Mock<import("react/jsx-runtime").JSX.Element, [props: any], any>;

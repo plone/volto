@@ -8,6 +8,20 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.3 (2024-10-18)
+
+## 1.0.0-alpha.2 (2024-10-18)
+
+### Breaking
+
+- Improve and group providers. @sneridagh
+  Breaking:
+    - The interface of the providers has changed. Please check the new one, and adapt your apps accordingly. [#6069](https://github.com/plone/volto/issues/6069)
+
+### Internal
+
+- Update typescript and vitest everywhere @sneridagh [#6407](https://github.com/plone/volto/issues/6407)
+
 ## 1.0.0-alpha.1 (2024-05-23)
 
 ### Internal
