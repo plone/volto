@@ -9,11 +9,9 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
     <div
       class="main-section"
     >
-      <div
-        class="primary"
-      >
+      <h1>
         Add-ons Settings
-      </div>
+      </h1>
       <div>
         <h2>
           Activate and deactivate add-ons in the lists below.
