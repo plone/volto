@@ -60,7 +60,7 @@ const UpgradesPanel: React.FC<UpgradablePanelProps & { intl: IntlShape }> = (
         <GridList aria-labelledby={type}>
           {addons.length ? (
             addons.map((ua: GetAddonResponse) => (
-              <UpgradableItem {...rest} addon={ua} />
+              <UpgradableItem key={ua['@id']} {...rest} addon={ua} />
             ))
           ) : (
             <GridListItem
@@ -97,7 +97,7 @@ const AvailablePanel: React.FC<AvailablePanelProps & { intl: IntlShape }> = (
         <GridList aria-labelledby={type}>
           {addons.length ? (
             addons.map((ua: GetAddonResponse) => (
-              <AvailableItem {...rest} addon={ua} />
+              <AvailableItem key={ua['@id']} {...rest} addon={ua} />
             ))
           ) : (
             <GridListItem
@@ -134,7 +134,7 @@ const InstalledPanel: React.FC<InstalledPanelProps & { intl: IntlShape }> = (
         <GridList aria-labelledby={type}>
           {addons.length ? (
             addons.map((ua: GetAddonResponse) => (
-              <InstalledItem {...rest} addon={ua} />
+              <InstalledItem key={ua['@id']} {...rest} addon={ua} />
             ))
           ) : (
             <GridListItem

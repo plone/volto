@@ -56,6 +56,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
           <div
             aria-labelledby="upgradable"
             class="react-aria-GridList"
+            data-layout="stack"
             data-rac=""
             id="react-aria-:r0:"
             role="grid"
@@ -136,6 +137,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
           <div
             aria-labelledby="available"
             class="react-aria-GridList"
+            data-layout="stack"
             data-rac=""
             id="react-aria-:r1:"
             role="grid"
@@ -216,6 +218,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
           <div
             aria-labelledby="installed"
             class="react-aria-GridList"
+            data-layout="stack"
             data-rac=""
             id="react-aria-:r2:"
             role="grid"
