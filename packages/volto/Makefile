@@ -282,7 +282,7 @@ prefixed-acceptance-test: ## Start Prefixed Cypress Acceptance Tests
 
 .PHONY: deployment-prefixed-acceptance-web-server-start
 deployment-prefixed-acceptance-web-server-start: ## Start the prefixed webserver
-	cd cypress/docker && docker-compose -f prefixed.yml up
+	cd cypress/docker && docker compose -f prefixed.yml up
 
 ######### Prefixed Multilingual Acceptance tests
 
