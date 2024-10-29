@@ -69,6 +69,6 @@ declare function withObjectBrowser(WrappedComponent: any): {
         data: {};
         block: string;
     };
-    contextType?: React.Context<any>;
+    contextType?: React.Context<any> | undefined;
 };
 import React from 'react';

@@ -487,6 +487,11 @@ The recommended way of generating a project boilerplate is [Cookieplone](https:/
 Please update your code to use the `pnpm` based setup.
 ```
 
+### Table of Contents block markup change
+
+The `View` component for the Table of Contents block was updated to use a `nav` element instead of a `div`.
+If you've applied custom styles or shadowed this component, you might need to make adjustments.
+
 ### Update needed to project boilerplate generated with `@plone/generator-volto`
 
 ```{versionadded} Volto 18.0.0-alpha.42
@@ -521,6 +526,84 @@ The change involves adding a new `paths` argument to the `customModifyWebpackCon
 The `react/jsx-key` rule has been enabled in ESlint for catching missing `key` in JSX iterators.
 You might catch some violations in your project or add-on code after running ESlint.
 Adding the missing `key` property whenever the violation is reported will fix it.
+
+### `@plone/registry` moved to ESM
+
+The `@plone/registry` package has been moved to ESM.
+The add-on registry scripts have also been refactored to TypeScript.
+For maximum compatibility with CommonJS builds, the default exports have been moved to named exports.
+The modules affected are now built, and the import paths have changed, too.
+These changes force some import path changes that you should patch in your Plone project or add-on boilerplates.
+
+```{note}
+As always, when something changes in the boilerplate, you may regenerate one from Cookieplone and move your code into it, instead of fiddling with it.
+```
+
+For example, in your project's {file}`.eslintrc.js`:
+
+```diff
+ const fs = require('fs');
+ const projectRootPath = __dirname;
+-const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
++const { AddonRegistry } = require('@plone/registry/addon-registry');
+
+ let voltoPath = './node_modules/@plone/volto';
+
+@@ -17,15 +17,15 @@ if (configFile) {
+     voltoPath = `./${jsConfig.baseUrl}/${pathsConfig['@plone/volto'][0]}`;
+ }
+
+-const reg = new AddonConfigurationRegistry(__dirname);
++const { registry } = AddonRegistry.init(__dirname);
+
+ // Extends ESlint configuration for adding the aliases to `src` directories in Volto addons
+-const addonAliases = Object.keys(reg.packages).map((o) => [
++const addonAliases = Object.keys(registry.packages).map((o) => [
+   o,
+-  reg.packages[o].modulePath,
++  registry.packages[o].modulePath,
+ ]);
+
+-const addonExtenders = reg.getEslintExtenders().map((m) => require(m));
++const addonExtenders = registry.getEslintExtenders().map((m) => require(m));
+```
+
+Also in the Storybook configuration {file}`.storybook/main.js`.
+
+```diff
+-    const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
++    const { AddonRegistry } = require('@plone/registry/addon-registry');
+
+-    const registry = new AddonConfigurationRegistry(projectRootPath);
++    const { registry } = AddonRegistry.init(projectRootPath);
+```
+
+```{versionadded} Volto 18.0.0-alpha.47
+```
+
+```{versionadded} @plone/registry 3.0.0-alpha.0
+```
+
+### Add missing overrides to projects in `package.json`
+
+This will fix some issues with Hot Module Reload in projects.
+It's required in Volto `18.0.0-alpha.47` and later, otherwise the site breaks in development mode.
+Add this object to the `pnpm` key in your project {file}`package.json`.
+
+```json
+  "pnpm": {
+    "overrides": {
+			"@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+			"react-refresh": "^0.14.2"
+    }
+  },
+```
+
+```{versionadded} Volto 18.0.0-alpha.47
+```
+
+```{versionadded} @plone/registry 3.0.0-alpha.0
+```
 
 ### Deprecation notices for Volto 18
 

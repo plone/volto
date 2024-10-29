@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import { Menu, Dropdown } from 'semantic-ui-react';
-import { FormattedMessage, injectIntl } from 'react-intl';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Slugger from 'github-slugger';
 import { normalizeString } from '@plone/volto/helpers';
@@ -159,18 +158,7 @@ const View = ({ data, tocEntries }) => {
 
   return (
     <>
-      {data.title && !data.hide_title ? (
-        <h2>
-          {data.title || (
-            <FormattedMessage
-              id="Table of Contents"
-              defaultMessage="Table of Contents"
-            />
-          )}
-        </h2>
-      ) : (
-        ''
-      )}
+      {data.title && !data.hide_title ? <h2>{data.title}</h2> : ''}
       <Menu className="responsive-menu">
         <RenderMenuItems items={tocEntries} />
         <Dropdown
@@ -201,4 +189,4 @@ View.propTypes = {
   properties: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default injectIntl(View);
+export default View;
