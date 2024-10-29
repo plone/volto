@@ -18,7 +18,7 @@
     'content'
     'footer';
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr;
 }
 
 .header-logo-nav-tools-wrapper {
@@ -66,4 +66,10 @@
 
 main {
   grid-area: 'content';
+}
+
+.content-area > * {
+  max-width: var(--default-container-width);
+  margin-right: auto;
+  margin-left: auto;
 }

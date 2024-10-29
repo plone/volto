@@ -55,8 +55,8 @@ export default function install(config: ConfigType) {
   });
 
   config.registerSlotComponent({
-    name: 'ContentAres',
-    slot: 'main',
+    name: 'contentArea',
+    slot: 'contentArea',
     component: ContentArea,
   });
 
