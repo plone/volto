@@ -969,22 +969,6 @@ describe('Blocks', () => {
   });
 
   describe('buildStyleClassNamesFromData', () => {
-    beforeEach(() => {
-      function blockThemesEnhancer(data) {
-        const blockStyleDefinitions =
-          // We look up for the blockThemes in the block's data, then in the global config
-          // We keep data.colors for BBB, but data.themes should be used
-          data.themes || data.colors || config.blocks.blocksThemes || [];
-        return data.theme
-          ? findStyleByName(blockStyleDefinitions, data.theme)
-          : {};
-      }
-      config.registerUtility({
-        name: 'blockThemesEnhancer',
-        type: 'styleWrapperStyleObjectEnhancer',
-        method: blockThemesEnhancer,
-      });
-    });
     it('Sets styles classname array according to style values', () => {
       const styles = {
         color: 'red',
@@ -1120,8 +1104,30 @@ describe('Blocks', () => {
   });
 
   describe('buildStyleObjectFromData', () => {
+    beforeEach(() => {
+      function blockThemesEnhancer(data) {
+        const blockConfig = config.blocks.blocksConfig[data['@type']];
+        const blockStyleDefinitions =
+          // We look up for the blockThemes in the block's data, then in the global config
+          // We keep data.colors for BBB, but data.themes should be used
+          blockConfig.themes ||
+          blockConfig.colors ||
+          config.blocks.themes ||
+          [];
+        return data.theme
+          ? findStyleByName(blockStyleDefinitions, data.theme)
+          : {};
+      }
+      config.registerUtility({
+        name: 'blockThemesEnhancer',
+        type: 'styleWrapperStyleObjectEnhancer',
+        method: blockThemesEnhancer,
+      });
+    });
+
     it('Understands style converter for style values, no styles found', () => {
       const data = {
+        '@type': 'text',
         styles: {
           color: 'red',
           backgroundColor: '#FFF',
@@ -1132,6 +1138,7 @@ describe('Blocks', () => {
 
     it('Understands style converter for style values', () => {
       const data = {
+        '@type': 'text',
         styles: {
           color: 'red',
           '--background-color': '#FFF',
@@ -1144,6 +1151,7 @@ describe('Blocks', () => {
 
     it('Supports multiple nested levels', () => {
       const data = {
+        '@type': 'text',
         styles: {
           '--color': 'red',
           backgroundColor: '#AABBCC',
@@ -1166,6 +1174,7 @@ describe('Blocks', () => {
 
     it('Supports multiple nested levels and optional inclusion of the name of the level', () => {
       const data = {
+        '@type': 'text',
         styles: {
           '--color': 'red',
           backgroundColor: '#AABBCC',
@@ -1187,7 +1196,7 @@ describe('Blocks', () => {
     });
 
     it('Supports named theme block - with global config', () => {
-      config.blocks.blocksThemes = [
+      config.blocks.themes = [
         {
           style: {
             '--primary-color': '#fff',
@@ -1206,6 +1215,7 @@ describe('Blocks', () => {
         },
       ];
       const data = {
+        '@type': 'text',
         theme: 'primary',
       };
       expect(buildStyleObjectFromData(data)).toEqual({
@@ -1215,7 +1225,7 @@ describe('Blocks', () => {
     });
 
     it('Supports named theme block - with local block themes config', () => {
-      config.blocks.blocksThemes = [
+      config.blocks.themes = [
         {
           style: {
             '--primary-color': '#fff',
@@ -1251,11 +1261,12 @@ describe('Blocks', () => {
           label: 'Secondary',
         },
       ];
-
+      config.blocks.blocksConfig.text.themes = themes;
       const data = {
+        '@type': 'text',
         theme: 'secondary',
-        themes,
       };
+
       expect(buildStyleObjectFromData(data)).toEqual({
         '--secondary-color': '#bbb',
         '--secondary-foreground-color': '#ddd',
@@ -1301,6 +1312,7 @@ describe('Blocks', () => {
       ];
 
       const data = {
+        '@type': 'text',
         styles: {
           '--color': 'red',
           backgroundColor: '#AABBCC',
