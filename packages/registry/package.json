@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "1.8.0",
+  "version": "2.0.0-alpha.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
@@ -31,16 +31,36 @@
   "publishConfig": {
     "access": "public"
   },
+  "type": "module",
   "source": "src/index.ts",
-  "main": "dist/main.js",
-  "module": "dist/module.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "types": "dist/types.d.ts",
   "exports": {
-    "./src/*": "./src/*.js",
+    "./src/*": "./src/*.cjs",
+    "./addon-registry": {
+      "require": "./dist/cjs/addon-registry.cjs",
+      "import": "./dist/esm/addon-registry.js",
+      "types": "./dist/esm/addon-registry.d.ts"
+    },
+    "./create-addons-loader": {
+      "require": "./dist/cjs/create-addons-loader.cjs",
+      "import": "./dist/esm/create-addons-loader.js",
+      "types": "./dist/esm/create-addons-loader.d.ts"
+    },
+    "./create-theme-loader": {
+      "require": "./dist/cjs/create-theme-loader.cjs",
+      "import": "./dist/esm/create-theme-loader.js",
+      "types": "./dist/esm/create-theme-loader.d.ts"
+    },
+    "./vite-plugin": {
+      "import": "./vite-plugin.js",
+      "types": "./vite-plugin.d.ts"
+    },
     ".": {
       "types": "./dist/types.d.ts",
-      "import": "./dist/module.js",
-      "require": "./dist/main.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
   "targets": {
@@ -50,9 +70,12 @@
   },
   "scripts": {
     "watch": "parcel watch",
-    "build": "parcel build",
-    "build:force": "parcel build --no-cache",
+    "build": "parcel build && pnpm build:node:esm && pnpm build:node:cjs",
+    "build:force": "rm -rf dist && parcel build --no-cache && pnpm build:node:esm && pnpm build:node:cjs",
+    "build:node:esm": "tsc --project tsconfig.node.json || true",
+    "build:node:cjs": "tsc --project tsconfig.node.json --module commonjs --moduleResolution Node --outDir dist/cjs || true && make rename-to-cjs",
     "test": "vitest",
+    "test:debug": "vitest --inspect-brk --no-file-parallelism registry",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
@@ -71,20 +94,26 @@
     "crypto-random-string": "3.2.0",
     "debug": "4.3.2",
     "dependency-graph": "0.10.0",
-    "glob": "7.1.6"
+    "glob": "^10.4.5",
+    "tmp": "0.2.1"
   },
   "devDependencies": {
     "@parcel/packager-ts": "^2.12.0",
     "@parcel/transformer-typescript-types": "^2.12.0",
     "@plone/types": "workspace:*",
+    "@types/debug": "^4.1.12",
+    "@types/glob": "^8.1.0",
+    "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/tmp": "^0.2.6",
     "parcel": "^2.12.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "release-it": "16.2.1",
     "tsconfig": "workspace:*",
-    "typescript": "5.4.2",
-    "vitest": "^2.1.2"
+    "typescript": "^5.6.3",
+    "vite": "^5.4.8",
+    "vitest": "^2.1.3"
   }
 }

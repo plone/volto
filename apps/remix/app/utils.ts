@@ -9,9 +9,9 @@ import config from './config';
  */
 export function flattenToAppURL(url: string) {
   const { settings } = config;
+
   return (
-    (url &&
-      url.replace(settings.apiPath, '').replace('http://localhost:3000', '')) ||
-    '/'
+    url &&
+    url.replace(settings.apiPath, '').replace('http://localhost:3000', '')
   );
 }
