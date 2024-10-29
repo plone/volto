@@ -87,7 +87,7 @@ If you want to "disable" using the development version of an add-on, or keep a m
 Whenever you change a value in your {file}`mrs.developer.json`, you must run `make install` again.
 
 
-## Add-on dependencies, yarn workspaces
+## Add-on dependencies
 
 If your add-on needs to bring in additional JavaScript package dependencies, you'll have to declare them as normal package dependencies.
 
