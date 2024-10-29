@@ -7,7 +7,7 @@ import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 import Event from '@/views/Event/Event';
 import Page from '@/views/Page/Page';
 
-applyAddonConfiguration(config);
+// applyAddonConfiguration(config);
 
 const settings: Partial<ConfigType['settings']> = {
   slate,

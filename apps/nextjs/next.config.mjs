@@ -22,6 +22,7 @@ const nextConfig = {
       registry.getAddonDependencies(),
       registry.getAddons(),
     );
+    console.log(addonsLoaderPath);
 
     config.resolve.alias = {
       ...config.resolve.alias,
