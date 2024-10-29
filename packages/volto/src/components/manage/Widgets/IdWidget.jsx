@@ -3,7 +3,7 @@
  * @module components/manage/Widgets/IdWidget
  */
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { Input } from 'semantic-ui-react';
@@ -46,8 +46,8 @@ const IdWidget = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
   const ref = useRef();
-
-  const indexes = useSelector((state) => keys(state.querystring.indexes));
+  const indexesObj = useSelector((state) => state.querystring.indexes);
+  const indexes = useMemo(() => keys(indexesObj), [indexesObj]);
 
   const [errors, setError] = useState([]);
   const [reservedIds] = useState(
