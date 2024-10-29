@@ -108,6 +108,15 @@ const messages = defineMessages({
     id: 'Description',
     defaultMessage: 'Description',
   },
+  queryParameterName: {
+    id: 'Query Parameter Name',
+    defaultMessage: 'Query Parameter Name',
+  },
+  queryParameterNameDescription: {
+    id: 'Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name.',
+    defaultMessage:
+      'Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name.',
+  },
   required: {
     id: 'Required',
     defaultMessage: 'Required',
@@ -689,7 +698,7 @@ const schemaField = (factory, intl, fieldsets, allowEditId) => {
         title: 'default',
         fields: [
           ...(allowEditId ? ['id'] : []),
-          ...['title', 'description', 'parentFieldSet'],
+          ...['title', 'description', 'parentFieldSet', 'queryParameterName'],
           ...keys(properties),
           ...['required'],
         ],
@@ -717,6 +726,11 @@ const schemaField = (factory, intl, fieldsets, allowEditId) => {
         type: 'string',
         title: intl.formatMessage(messages.parentFieldSet),
         choices: makeFieldsetList(fieldsets),
+      },
+      queryParameterName: {
+        type: 'string',
+        title: intl.formatMessage(messages.queryParameterName),
+        description: intl.formatMessage(messages.queryParameterNameDescription),
       },
       required: {
         type: 'boolean',
