@@ -442,6 +442,11 @@ msgstr ""
 msgid "Available"
 msgstr "可用的"
 
+#. Default: "Available addons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Available addons"
+msgstr ""
+
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
 msgid "Available content rules:"
@@ -1883,6 +1888,11 @@ msgstr ""
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
 msgstr "已安装"
+
+#. Default: "Installed addons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Installed addons"
+msgstr ""
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -4102,6 +4112,11 @@ msgstr "更新已安装的插件："
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Updates available"
 msgstr "可用更新"
+
+#. Default: "Upgradable addons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Upgradable addons"
+msgstr ""
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel

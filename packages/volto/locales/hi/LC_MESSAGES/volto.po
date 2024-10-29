@@ -436,6 +436,11 @@ msgstr ""
 msgid "Available"
 msgstr "उपलब्ध"
 
+#. Default: "Available addons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Available addons"
+msgstr ""
+
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
 msgid "Available content rules:"
@@ -1877,6 +1882,11 @@ msgstr ""
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
 msgstr "स्थापित किया गया"
+
+#. Default: "Installed addons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Installed addons"
+msgstr ""
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -4096,6 +4106,11 @@ msgstr "इंस्टॉल किए गए एडऑन को अपडे�
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Updates available"
 msgstr "अपडेट्स उपलब्ध हैं"
+
+#. Default: "Upgradable addons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Upgradable addons"
+msgstr ""
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel

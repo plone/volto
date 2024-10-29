@@ -441,6 +441,11 @@ msgstr ""
 msgid "Available"
 msgstr "Saatavilla"
 
+#. Default: "Available addons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Available addons"
+msgstr ""
+
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
 msgid "Available content rules:"
@@ -1882,6 +1887,11 @@ msgstr ""
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
 msgstr "Asennettu"
+
+#. Default: "Installed addons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Installed addons"
+msgstr ""
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -4101,6 +4111,11 @@ msgstr "Päivitä asennetut lisäosat:"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Updates available"
 msgstr "Päivityksiä saatavilla"
+
+#. Default: "Upgradable addons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Upgradable addons"
+msgstr ""
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel

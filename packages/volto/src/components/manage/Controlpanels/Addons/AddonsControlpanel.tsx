@@ -133,6 +133,18 @@ const messages = defineMessages({
     id: 'Addon could not be uninstalled',
     defaultMessage: 'Addon could not be uninstalled',
   },
+  upgradableAddons: {
+    id: 'Upgradable addons',
+    defaultMessage: 'Upgradable addons',
+  },
+  availableAddons: {
+    id: 'Available addons',
+    defaultMessage: 'Available addons',
+  },
+  installedAddons: {
+    id: 'Installed addons',
+    defaultMessage: 'Installed addons',
+  },
 });
 
 interface Props extends RouteComponentProps {
@@ -256,12 +268,12 @@ const AddonsControlpanel = (props: Props) => {
     <div id="page-addons" className="ui container controlpanel-addons">
       <Helmet title={intl.formatMessage(messages.addOns)} />
       <div className="main-section">
-        <div className="primary">
+        <h1>
           <FormattedMessage
             id="Add-ons Settings"
             defaultMessage="Add-ons Settings"
           />
-        </div>
+        </h1>
 
         {loadingAddons ? (
           <Dimmer active>
@@ -295,21 +307,21 @@ const AddonsControlpanel = (props: Props) => {
               containerId="header-upgradable"
               addons={upgradableAddons as GetAddonResponse[]}
               onUpgrade={onUpgrade}
-              aria-label="Upgradable addons"
+              aria-label={intl.formatMessage(messages.upgradableAddons)}
             />
             <AddonPanel
               type="available"
               containerId="header-available"
               addons={availableAddons as GetAddonResponse[]}
               onInstall={onInstall}
-              aria-label="Available addons"
+              aria-label={intl.formatMessage(messages.availableAddons)}
             />
             <AddonPanel
               type="installed"
               containerId="header-installed"
               addons={installedAddons as GetAddonResponse[]}
               onUninstall={onUninstall}
-              aria-label="Installed addons"
+              aria-label={intl.formatMessage(messages.installedAddons)}
             />
           </>
         )}

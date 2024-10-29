@@ -443,6 +443,11 @@ msgstr ""
 msgid "Available"
 msgstr "Disponible"
 
+#. Default: "Available addons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Available addons"
+msgstr ""
+
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
 msgid "Available content rules:"
@@ -1884,6 +1889,11 @@ msgstr ""
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
 msgstr "Instalado"
+
+#. Default: "Installed addons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Installed addons"
+msgstr ""
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -4103,6 +4113,11 @@ msgstr "Actualizar complementos instalados:"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Updates available"
 msgstr "Actualizaciones disponibles"
+
+#. Default: "Upgradable addons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Upgradable addons"
+msgstr ""
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
