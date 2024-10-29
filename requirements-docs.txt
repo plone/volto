@@ -7,4 +7,4 @@ sphinx-copybutton
 sphinx-examples
 sphinxcontrib-video
 sphinxext-opengraph
-vale==2.30.0
+vale

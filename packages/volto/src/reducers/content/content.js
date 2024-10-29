@@ -20,6 +20,8 @@ import {
   UPDATE_UPLOADED_FILES,
 } from '@plone/volto/constants/ActionTypes';
 
+import config from '@plone/volto/registry';
+
 const initialState = {
   create: {
     loaded: false,
@@ -192,6 +194,16 @@ export default function content(state = initialState, action = {}) {
           };
         });
       }
+
+      const transforms = config.getUtilities({
+        type: 'transform',
+        dependencies: { reducer: 'content' },
+      });
+
+      transforms.forEach(({ method }) => {
+        method(result);
+      });
+
       return action.subrequest
         ? {
             ...state,

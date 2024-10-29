@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 3.7.0 (2024-10-27)
+
+### Feature
+
+- Support for the new `@plone/registry` ESM format. @sneridagh [#6399](https://github.com/plone/volto/issues/6399)
+
+### Documentation
+
+- Added the configuration for VSCode not to reformat Markdown and MyST files. @aadityaforwork [#6354](https://github.com/plone/volto/issues/6354)
+
 ## 3.6.2 (2024-06-06)
 
 ### Bugfix

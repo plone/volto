@@ -1,0 +1,1 @@
+Wrap Table of Contents block in a `nav` tag, instead of a `div` tag, for better representation improving the block accessibility. @Tishasoumya-02 @ichim-david

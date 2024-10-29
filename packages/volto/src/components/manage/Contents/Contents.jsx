@@ -1397,6 +1397,7 @@ class Contents extends Component {
                                         {breach.targets
                                           .map((target) => (
                                             <Link
+                                              key={target['@id']}
                                               to={flattenToAppURL(
                                                 target['@id'],
                                               )}
@@ -1467,6 +1468,7 @@ class Contents extends Component {
                                     {breach.targets
                                       .map((target) => (
                                         <Link
+                                          key={target['@id']}
                                           to={flattenToAppURL(target['@id'])}
                                           title="Navigate to this item"
                                         >
