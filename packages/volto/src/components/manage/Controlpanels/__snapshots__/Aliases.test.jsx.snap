@@ -19,412 +19,456 @@ exports[`Aliases renders an aliases control component 1`] = `
           >
             URL Management
           </div>
-          <form
-            class="ui form"
+          <div
+            class="ui segment"
           >
-            <div
-              class="ui segment"
+            <button
+              class="ui primary button"
+              id="add-alt-url"
+            >
+              Add Alternative URL
+              …
+            </button>
+            <button
+              class="ui button"
+            >
+              Bulk upload CSV
+              …
+            </button>
+          </div>
+          <div
+            class="ui segment"
+          >
+            <form
+              class="ui form"
             >
               <div
                 class="ui medium header"
               >
-                Alternative url path (Required)
+                Existing alternative URLs for this site
               </div>
-              <p
-                class="help"
-              >
-                Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring.
-              </p>
               <div
-                class="field"
+                class="ui segment"
               >
                 <div
-                  class="ui input"
-                >
-                  <input
-                    id="alternative-url-input"
-                    name="alternative-url-path"
-                    placeholder="/example"
-                    type="text"
-                    value=""
-                  />
-                </div>
-              </div>
-              <div
-                class="ui medium header"
-              >
-                Target Path (Required)
-              </div>
-              <p
-                class="help"
-              >
-                Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target.
-              </p>
-              <div
-                class="field"
-              >
-                <div
-                  class="ui input"
-                >
-                  <input
-                    id="target-url-input"
-                    name="target-url-path"
-                    placeholder="/example"
-                    type="text"
-                    value=""
-                  />
-                </div>
-              </div>
-              <button
-                class="ui primary disabled button"
-                disabled=""
-                id="submit-alias"
-                tabindex="-1"
-              >
-                Add
-              </button>
-            </div>
-          </form>
-          <form
-            class="ui form"
-          >
-            <div
-              class="ui segment primary"
-            >
-              <div
-                class="ui medium header"
-              >
-                All existing alternative urls for this site
-              </div>
-              <div
-                class="ui small header"
-              >
-                Filter by prefix
-              </div>
-              <div
-                class="field"
-              >
-                <div
-                  class="ui input"
-                >
-                  <input
-                    name="filter"
-                    placeholder="/example"
-                    type="text"
-                    value=""
-                  />
-                </div>
-              </div>
-              <div
-                class="ui small header"
-              >
-                Manually or automatically added?
-              </div>
-              <div
-                class="field"
-              >
-                <div
-                  class="ui checked radio checkbox"
-                >
-                  <input
-                    checked=""
-                    class="hidden"
-                    name="radioGroup"
-                    readonly=""
-                    tabindex="0"
-                    type="radio"
-                    value=""
-                  />
-                  <label>
-                    Both
-                  </label>
-                </div>
-              </div>
-              <div
-                class="field"
-              >
-                <div
-                  class="ui radio checkbox"
-                >
-                  <input
-                    class="hidden"
-                    name="radioGroup"
-                    readonly=""
-                    tabindex="0"
-                    type="radio"
-                    value="no"
-                  />
-                  <label>
-                    Automatically
-                  </label>
-                </div>
-              </div>
-              <div
-                class="field"
-              >
-                <div
-                  class="ui radio checkbox"
-                >
-                  <input
-                    class="hidden"
-                    name="radioGroup"
-                    readonly=""
-                    tabindex="0"
-                    type="radio"
-                    value="yes"
-                  />
-                  <label>
-                    Manually
-                  </label>
-                </div>
-              </div>
-              <div
-                class="field"
-              />
-              <button
-                class="ui primary button"
-              >
-                Filter
-              </button>
-              <div
-                class="ui small header"
-              >
-                Alternative url path → target url path (date and time of creation, manually created yes/no)
-              </div>
-              <table
-                class="ui table"
-              >
-                <tbody
-                  class=""
-                >
-                  <tr
-                    class=""
-                  >
-                    <th
-                      class=""
-                    >
-                      Select
-                    </th>
-                    <th
-                      class=""
-                    >
-                      Alias
-                    </th>
-                    <th
-                      class=""
-                    >
-                      Target
-                    </th>
-                    <th
-                      class=""
-                    >
-                      Date
-                    </th>
-                    <th
-                      class=""
-                    >
-                      Manual
-                    </th>
-                  </tr>
-                  <tr
-                    class=""
-                  >
-                    <td
-                      class=""
-                    >
-                      <div
-                        class="ui fitted checkbox"
-                      >
-                        <input
-                          class="hidden"
-                          readonly=""
-                          tabindex="0"
-                          type="checkbox"
-                          value="/eventsalias"
-                        />
-                        <label />
-                      </div>
-                    </td>
-                    <td
-                      class=""
-                    >
-                      <p>
-                        /eventsalias
-                      </p>
-                    </td>
-                    <td
-                      class=""
-                    >
-                      <p>
-                        /events
-                      </p>
-                    </td>
-                    <td
-                      class=""
-                    >
-                      <p>
-                        2022-05-16T11:52:35+00:00
-                      </p>
-                    </td>
-                    <td
-                      class=""
-                    >
-                      <p>
-                        true
-                      </p>
-                    </td>
-                  </tr>
-                  <tr
-                    class=""
-                  >
-                    <td
-                      class=""
-                    >
-                      <div
-                        class="ui fitted checkbox"
-                      >
-                        <input
-                          class="hidden"
-                          readonly=""
-                          tabindex="0"
-                          type="checkbox"
-                          value="/eventsgreatalias"
-                        />
-                        <label />
-                      </div>
-                    </td>
-                    <td
-                      class=""
-                    >
-                      <p>
-                        /eventsgreatalias
-                      </p>
-                    </td>
-                    <td
-                      class=""
-                    >
-                      <p>
-                        /events
-                      </p>
-                    </td>
-                    <td
-                      class=""
-                    >
-                      <p>
-                        2022-05-17T09:38:19+00:00
-                      </p>
-                    </td>
-                    <td
-                      class=""
-                    >
-                      <p>
-                        true
-                      </p>
-                    </td>
-                  </tr>
-                  <tr
-                    class=""
-                  >
-                    <td
-                      class=""
-                    >
-                      <div
-                        class="ui fitted checkbox"
-                      >
-                        <input
-                          class="hidden"
-                          readonly=""
-                          tabindex="0"
-                          type="checkbox"
-                          value="/eventsincredible"
-                        />
-                        <label />
-                      </div>
-                    </td>
-                    <td
-                      class=""
-                    >
-                      <p>
-                        /eventsincredible
-                      </p>
-                    </td>
-                    <td
-                      class=""
-                    >
-                      <p>
-                        /events
-                      </p>
-                    </td>
-                    <td
-                      class=""
-                    >
-                      <p>
-                        2022-05-17T09:38:35+00:00
-                      </p>
-                    </td>
-                    <td
-                      class=""
-                    >
-                      <p>
-                        true
-                      </p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div
-                style="display: flex; flex-wrap: wrap; align-items: center; margin-bottom: 20px;"
-              >
-                <div
-                  class="right menu"
-                  style="display: flex; margin-left: auto;"
+                  class="field"
                 >
                   <div
-                    class="item"
-                    style="color: grey;"
+                    class="inline field field-wrapper-filterQuery"
                   >
-                    Show
-                    :
+                    <div
+                      class="ui grid"
+                    >
+                      <div
+                        class="stretched row"
+                      >
+                        <div
+                          class="four wide column"
+                        >
+                          <div
+                            class="wrapper"
+                          >
+                            <label
+                              for="field-filterQuery"
+                              id="fieldset-undefined-field-label-filterQuery"
+                            >
+                              Filter by path
+                            </label>
+                          </div>
+                        </div>
+                        <div
+                          class="eight wide column"
+                        >
+                          <div
+                            class="ui input"
+                          >
+                            <input
+                              name="filter"
+                              placeholder="/example"
+                              type="text"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <a
-                    class="active item"
-                    style="padding: 0px 0.4em; margin: 0em 0.357em; cursor: pointer;"
-                    value="10"
-                  >
-                    10
-                  </a>
-                  <a
-                    class="item"
-                    style="padding: 0px 0.4em; margin: 0em 0.357em; cursor: pointer;"
-                    value="25"
-                  >
-                    25
-                  </a>
-                  <a
-                    class="item"
-                    style="padding: 0px 0.4em; margin: 0em 0.357em; cursor: pointer;"
-                    value="50"
-                  >
-                    50
-                  </a>
-                  <a
-                    class="item"
-                    style="padding: 0px 0.4em; margin: 0em 0.357em; cursor: pointer;"
-                    value="All"
-                  >
-                    All
-                  </a>
                 </div>
+                <div
+                  class="field"
+                >
+                  <div
+                    class="inline field field-wrapper-filterType"
+                  >
+                    <div
+                      class="ui grid"
+                    >
+                      <div
+                        class="stretched row"
+                      >
+                        <div
+                          class="four wide column"
+                        >
+                          <div
+                            class="wrapper"
+                          >
+                            <label
+                              for="field-filterType"
+                              id="fieldset-undefined-field-label-filterType"
+                            >
+                              Manually or automatically added?
+                            </label>
+                          </div>
+                        </div>
+                        <div
+                          class="eight wide column"
+                        >
+                          <div
+                            class="inline fields"
+                          >
+                            <div
+                              class="field"
+                            >
+                              <div
+                                class="ui checked radio checkbox"
+                              >
+                                <input
+                                  checked=""
+                                  class="hidden"
+                                  name="radioGroup"
+                                  readonly=""
+                                  tabindex="0"
+                                  type="radio"
+                                  value=""
+                                />
+                                <label>
+                                  Both
+                                </label>
+                              </div>
+                            </div>
+                            <div
+                              class="field"
+                            >
+                              <div
+                                class="ui radio checkbox"
+                              >
+                                <input
+                                  class="hidden"
+                                  name="radioGroup"
+                                  readonly=""
+                                  tabindex="0"
+                                  type="radio"
+                                  value="no"
+                                />
+                                <label>
+                                  Automatically
+                                </label>
+                              </div>
+                            </div>
+                            <div
+                              class="field"
+                            >
+                              <div
+                                class="ui radio checkbox"
+                              >
+                                <input
+                                  class="hidden"
+                                  name="radioGroup"
+                                  readonly=""
+                                  tabindex="0"
+                                  type="radio"
+                                  value="yes"
+                                />
+                                <label>
+                                  Manually
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="field"
+                />
+                <div
+                  class="field"
+                />
+                <button
+                  class="ui primary button"
+                >
+                  Filter
+                </button>
               </div>
-              <button
-                class="ui primary disabled button"
-                disabled=""
-                tabindex="-1"
-              >
-                Remove selected
-              </button>
+            </form>
+          </div>
+          <div
+            class="ui segment"
+          >
+            <div
+              class="ui small header"
+            >
+              Alternative URL path → target URL path (date and time of creation, manually created yes/no)
             </div>
-          </form>
+            <table
+              class="ui celled compact table"
+            >
+              <thead
+                class=""
+              >
+                <tr
+                  class=""
+                >
+                  <th
+                    class="one wide"
+                  >
+                    Select
+                  </th>
+                  <th
+                    class="ten wide"
+                  >
+                    Alias
+                  </th>
+                  <th
+                    class="one wide"
+                  >
+                    Date
+                  </th>
+                  <th
+                    class="one wide"
+                  >
+                    Manual
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class=""
+              >
+                <tr
+                  class="top aligned"
+                >
+                  <td
+                    class=""
+                  >
+                    <div
+                      class="ui fitted checkbox"
+                    >
+                      <input
+                        class="hidden"
+                        readonly=""
+                        tabindex="0"
+                        type="checkbox"
+                        value="/eventsalias"
+                      />
+                      <label />
+                    </div>
+                  </td>
+                  <td
+                    class=""
+                  >
+                    /eventsalias
+                    <br />
+                      → 
+                    /events
+                     
+                    <button
+                      aria-label="Edit Alternative URL"
+                      class="ui basic button"
+                      style="vertical-align: middle;"
+                    >
+                      <svg
+                        class="icon"
+                        style="height: 18px; width: auto; fill: currentColor;"
+                        viewBox=""
+                        xmlns=""
+                      />
+                    </button>
+                  </td>
+                  <td
+                    class=""
+                  >
+                    <time
+                      datetime="2022-05-16T11:52:35+00:00"
+                      title="Monday, May 16, 2022 at 11:52 AM"
+                    >
+                      5/16/2022
+                    </time>
+                  </td>
+                  <td
+                    class=""
+                  >
+                    true
+                  </td>
+                </tr>
+                <tr
+                  class="top aligned"
+                >
+                  <td
+                    class=""
+                  >
+                    <div
+                      class="ui fitted checkbox"
+                    >
+                      <input
+                        class="hidden"
+                        readonly=""
+                        tabindex="0"
+                        type="checkbox"
+                        value="/eventsgreatalias"
+                      />
+                      <label />
+                    </div>
+                  </td>
+                  <td
+                    class=""
+                  >
+                    /eventsgreatalias
+                    <br />
+                      → 
+                    /events
+                     
+                    <button
+                      aria-label="Edit Alternative URL"
+                      class="ui basic button"
+                      style="vertical-align: middle;"
+                    >
+                      <svg
+                        class="icon"
+                        style="height: 18px; width: auto; fill: currentColor;"
+                        viewBox=""
+                        xmlns=""
+                      />
+                    </button>
+                  </td>
+                  <td
+                    class=""
+                  >
+                    <time
+                      datetime="2022-05-17T09:38:19+00:00"
+                      title="Tuesday, May 17, 2022 at 9:38 AM"
+                    >
+                      5/17/2022
+                    </time>
+                  </td>
+                  <td
+                    class=""
+                  >
+                    true
+                  </td>
+                </tr>
+                <tr
+                  class="top aligned"
+                >
+                  <td
+                    class=""
+                  >
+                    <div
+                      class="ui fitted checkbox"
+                    >
+                      <input
+                        class="hidden"
+                        readonly=""
+                        tabindex="0"
+                        type="checkbox"
+                        value="/eventsincredible"
+                      />
+                      <label />
+                    </div>
+                  </td>
+                  <td
+                    class=""
+                  >
+                    /eventsincredible
+                    <br />
+                      → 
+                    /events
+                     
+                    <button
+                      aria-label="Edit Alternative URL"
+                      class="ui basic button"
+                      style="vertical-align: middle;"
+                    >
+                      <svg
+                        class="icon"
+                        style="height: 18px; width: auto; fill: currentColor;"
+                        viewBox=""
+                        xmlns=""
+                      />
+                    </button>
+                  </td>
+                  <td
+                    class=""
+                  >
+                    <time
+                      datetime="2022-05-17T09:38:35+00:00"
+                      title="Tuesday, May 17, 2022 at 9:38 AM"
+                    >
+                      5/17/2022
+                    </time>
+                  </td>
+                  <td
+                    class=""
+                  >
+                    true
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div
+              style="display: flex; flex-wrap: wrap; align-items: center; margin-bottom: 20px;"
+            >
+              <div
+                class="right menu"
+                style="display: flex; margin-left: auto;"
+              >
+                <div
+                  class="item"
+                  style="color: grey;"
+                >
+                  Show
+                  :
+                </div>
+                <a
+                  class="active item"
+                  style="padding: 0px 0.4em; margin: 0em 0.357em; cursor: pointer;"
+                  value="10"
+                >
+                  10
+                </a>
+                <a
+                  class="item"
+                  style="padding: 0px 0.4em; margin: 0em 0.357em; cursor: pointer;"
+                  value="25"
+                >
+                  25
+                </a>
+                <a
+                  class="item"
+                  style="padding: 0px 0.4em; margin: 0em 0.357em; cursor: pointer;"
+                  value="50"
+                >
+                  50
+                </a>
+                <a
+                  class="item"
+                  style="padding: 0px 0.4em; margin: 0em 0.357em; cursor: pointer;"
+                  value="All"
+                >
+                  All
+                </a>
+              </div>
+            </div>
+            <button
+              class="ui primary disabled button"
+              disabled=""
+              id="remove-alt-urls"
+              tabindex="-1"
+            >
+              Remove selected
+            </button>
+          </div>
         </div>
       </article>
     </div>

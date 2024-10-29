@@ -33,7 +33,7 @@ docker run -it --rm -p 55001:8080 -e SITE=Plone -e ADDONS='plone.restapi==8.20.0
 ```
 
 ```shell
-RAZZLE_DEV_PROXY_API_PATH='http://localhost:55001/Plone' yarn start
+RAZZLE_DEV_PROXY_API_PATH='http://localhost:55001/Plone' pnpm start
 ```
 
 Let's say that you do have it in a customized site id: http://localhost:55001/myplonesite
@@ -43,7 +43,7 @@ docker run -it --rm -p 55001:8080 -e SITE=myplonesite -e ADDONS='plone.restapi==
 ```
 
 ```shell
-RAZZLE_DEV_PROXY_API_PATH='http://localhost:55001/myplonesite' yarn start
+RAZZLE_DEV_PROXY_API_PATH='http://localhost:55001/myplonesite' pnpm start
 ```
 
 ### Debug an external site (provided you have access to it)
@@ -55,7 +55,7 @@ This is an advanced feature, and needs understanding of what you are doing and w
 Let's say you want to debug a deployed site in production, but the build does not allow you to look deeper into the tracebacks. You could bootstrap a frontend in your machine, and point it to the production server, combining environment variables like:
 
 ```
-RAZZLE_DEV_PROXY_API_PATH=https://2021.ploneconf.org RAZZLE_PROXY_REWRITE_TARGET=https://2021.ploneconf.org/++api++ yarn start
+RAZZLE_DEV_PROXY_API_PATH=https://2021.ploneconf.org RAZZLE_PROXY_REWRITE_TARGET=https://2021.ploneconf.org/++api++ pnpm start
 ```
 
 This has the drawback that could be that the proxy does not work well with the proxied SSL connection.
@@ -63,7 +63,7 @@ This has the drawback that could be that the proxy does not work well with the p
 If you have access (via tunnel) to the port of the deployed backend is even more easier:
 
 ```
-RAZZLE_DEV_PROXY_API_PATH=http://2021.ploneconf.org:8080/Plone yarn start
+RAZZLE_DEV_PROXY_API_PATH=http://2021.ploneconf.org:8080/Plone pnpm start
 ```
 
 This will use the internal proxy to access the backend, bypassing CORS.

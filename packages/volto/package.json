@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "18.0.0-alpha.44",
+  "version": "18.0.0-alpha.47",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -85,6 +85,8 @@
       "@plone/volto/babel": "<rootDir>/babel.js",
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
       "@plone/volto-slate/(.*)$": "<rootDir>/../volto-slate/src/$1",
+      "@plone/registry/addon-registry$": "<rootDir>/node_modules/@plone/registry/dist/esm/addon-registry.js",
+      "@plone/registry/create-addons-loader$": "<rootDir>/node_modules/@plone/registry/dist/esm/create-addons-loader.js",
       "@plone/registry": "<rootDir>/../registry/src",
       "@plone/registry/(.*)$": "<rootDir>/../registry/src/$1",
       "@plone/volto": "<rootDir>/src/index.js",
@@ -173,7 +175,7 @@
     "not dead"
   ],
   "engines": {
-    "node": "^16 || ^18 || ^20"
+    "node": "^20 || ^22"
   },
   "dependencies": {
     "@loadable/component": "5.14.1",
@@ -280,11 +282,11 @@
     "@babel/plugin-syntax-export-namespace-from": "7.8.3",
     "@babel/runtime": "7.20.6",
     "@babel/types": "7.20.5",
-    "@fiverr/afterbuild-webpack-plugin": "^1.0.0",
-    "@jest/globals": "^29.7.0",
     "@dnd-kit/core": "6.0.8",
     "@dnd-kit/sortable": "7.0.2",
     "@dnd-kit/utilities": "3.2.2",
+    "@fiverr/afterbuild-webpack-plugin": "^1.0.0",
+    "@jest/globals": "^29.7.0",
     "@loadable/babel-plugin": "5.13.2",
     "@loadable/webpack-plugin": "5.15.2",
     "@plone/types": "workspace:*",
@@ -381,7 +383,7 @@
     "tmp": "0.2.1",
     "ts-jest": "^26.4.2",
     "ts-loader": "9.4.4",
-    "typescript": "^5.4.2",
+    "typescript": "^5.6.3",
     "use-trace-update": "1.3.2",
     "wait-on": "6.0.0",
     "webpack": "5.90.1",
