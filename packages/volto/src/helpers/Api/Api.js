@@ -50,7 +50,14 @@ class Api {
     methods.forEach((method) => {
       this[method] = (
         path,
-        { params, data, type, headers = {}, checkUrl = false } = {},
+        {
+          params,
+          data,
+          type,
+          headers = {},
+          checkUrl = false,
+          attach = [],
+        } = {},
       ) => {
         let request;
         let promise = new Promise((resolve, reject) => {
@@ -87,6 +94,10 @@ class Api {
           if (data) {
             request.send(data);
           }
+
+          attach.forEach((attachment) => {
+            request.attach.apply(request, attachment);
+          });
 
           request.end((err, response) => {
             if (
