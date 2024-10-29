@@ -61,11 +61,11 @@ const IdWidget = (props) => {
       ),
     ),
   );
-  const fieldValidation = (values) => {
+  const fieldValidation = (value) => {
     const error = [];
 
     // Check reserved id's
-    if (reservedIds.indexOf(values) !== -1) {
+    if (reservedIds.indexOf(value) !== -1) {
       error.push(intl.formatMessage(messages.reservedId));
     }
 
@@ -73,14 +73,14 @@ const IdWidget = (props) => {
     if (
       // eslint-disable-next-line no-control-regex
       !/^(?!.*\\)(?!\+\+)(?!@@)(?!.*request)(?!.*contributors)(?!aq_)(?!.*__)(?!_)(?!((^|\/)\.\.?($|\/)|^"\s*"$))(?!.*[A-Z])(?:(?![\r\n<>/?&#\x00-\x1F\x7F])['\x00-\x7F\u0080-\uFFFF. _])*$/.test(
-        values,
+        value,
       )
     ) {
       error.push(intl.formatMessage(messages.invalidCharacters));
     }
 
     // Check indexes
-    if (values in indexes) {
+    if (value in indexes) {
       error.push(intl.formatMessage(messages.reservedId));
     }
 
