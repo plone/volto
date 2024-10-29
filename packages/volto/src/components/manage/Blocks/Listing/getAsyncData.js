@@ -24,6 +24,14 @@ export default function getListingBlockAsyncData(props) {
   const subrequestID = content?.UID ? `${content?.UID}-${id}` : id;
   const currentPage = getCurrentPage(location, id);
 
+  if (!data.querystring) {
+    return [
+      async () => {
+        return null;
+      },
+    ];
+  }
+
   return [
     dispatch(
       getQueryStringResults(
