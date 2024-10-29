@@ -602,8 +602,8 @@ Add this object to the `pnpm` key in your project {file}`package.json`.
 
 ### `buildStyleObjectFromData` helper arguments
 
-The first argument of `buildStyleObjectFromData` helper function now takes the full block `data` object.
-If you are using this helper in your code or add-on, please update the calls to this helper.
+The first argument of the `buildStyleObjectFromData` helper function now takes the full block `data` object.
+If you use this helper in your code or add-on, you must update the calls to this helper, as shown in its signature.
 
 ```ts
 function buildStyleObjectFromData(data: BlocksFormData, prefix: string): Object

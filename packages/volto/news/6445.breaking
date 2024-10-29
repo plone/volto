@@ -1,5 +1,5 @@
 Enhance the `buildStyleObjectFromData` helper. @sneridagh
 
 Breaking:
-- `buildStyleObjectFromData` first argument now takes the whole block `data` object.
+- The first argument of `buildStyleObjectFromData` now takes the whole block `data` object.
 Please see the [Upgrade Guide](https://6.docs.plone.org/volto/upgrade-guide/index.html).
