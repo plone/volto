@@ -6,6 +6,7 @@ import {
   blockHasValue,
   buildStyleClassNamesFromData,
   buildStyleObjectFromData,
+  buildStyleClassNamesExtenders,
 } from '@plone/volto/helpers';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import { Button } from 'semantic-ui-react';
@@ -61,8 +62,14 @@ const EditBlockWrapper = (props) => {
     ? data.required
     : includes(config.blocks.requiredBlocks, type);
 
-  const classNames = buildStyleClassNamesFromData(data.styles);
-  const style = buildStyleObjectFromData(data.styles);
+  let classNames = buildStyleClassNamesFromData(data.styles);
+  classNames = buildStyleClassNamesExtenders({
+    block,
+    content: properties,
+    data,
+    classNames,
+  });
+  const style = buildStyleObjectFromData(data);
 
   // We need to merge the StyleWrapper styles with the draggable props from b-D&D
   const styleMergedWithDragProps = {

@@ -8,6 +8,25 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.19 (2024-10-18)
+
+### Feature
+
+- Add support for the `depth` parameter on `getNavigationQuery`. @ebrehault [#6400](https://github.com/plone/volto/pull/6400)
+
+### Internal
+
+- Upgrade `@tanstack/react-query`. @sneridagh [#6069](https://github.com/plone/volto/pull/6069)
+- Update Vite and vitest versions @sneridagh [#6373](https://github.com/plone/volto/pull/6373)
+- Added watch script to package.json @pnicolli @deodorhunter [#6382](https://github.com/plone/volto/pull/6382)
+- Update typescript and vitest everywhere @sneridagh [#6407](https://github.com/plone/volto/pull/6407)
+
+## 1.0.0-alpha.18 (2024-10-03)
+
+### Bugfix
+
+- Fixed client copy mutation, cleanup up move mutation for consistency @pnicolli [#6349](https://github.com/plone/volto/pull/6349)
+
 ## 1.0.0-alpha.17 (2024-09-13)
 
 ### Documentation

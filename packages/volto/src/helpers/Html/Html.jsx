@@ -158,6 +158,7 @@ class Html extends Component {
                   }}
                 ></script>
                 {extractor.getStyleElements().map((elem) => (
+                  // eslint-disable-next-line react/jsx-key
                   <noscript>
                     {React.cloneElement(elem, {
                       rel: 'stylesheet',

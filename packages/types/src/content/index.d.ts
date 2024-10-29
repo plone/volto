@@ -1,4 +1,5 @@
 import type { Expanders, ContainedItem, Image, RelatedItem } from './common';
+import type { BlocksFormData } from '../blocks';
 
 export interface Content {
   '@components': Expanders;
@@ -12,10 +13,7 @@ export interface Content {
         token: boolean;
       };
   blocks: {
-    [k in string]: {
-      '@id': string;
-      '@type': string;
-    } & Record<string, unknown>;
+    [k in string]: BlocksFormData;
   };
   blocks_layout: {
     items: string[];

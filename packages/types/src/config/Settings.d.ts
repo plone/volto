@@ -1,5 +1,5 @@
 import { Content } from '../content';
-import { BlocksConfigData } from './Blocks';
+import { BlocksFormData } from '../blocks/index';
 
 type apiExpandersType =
   | { match: string; GET_CONTENT: string[] }
@@ -19,7 +19,7 @@ type styleClassNameExtendersType = ({
 }: {
   block: string;
   content: Content;
-  data: BlocksConfigData;
+  data: BlocksFormData;
   classNames: string[];
 }) => string[];
 

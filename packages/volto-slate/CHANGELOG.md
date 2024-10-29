@@ -8,6 +8,22 @@
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.19 (2024-10-03)
+
+### Feature
+
+- Update Brazilian Portuguese translations. @ericof [#6292](https://github.com/plone/volto/issues/6292)
+
+### Bugfix
+
+- Fetch `user` before pass it to the `restricted` function of the block settings. @wesleybl [#6293](https://github.com/plone/volto/issues/6293)
+
+## 18.0.0-alpha.18 (2024-09-13)
+
+### Feature
+
+- Pass `user`, `navRoot` and `contentType` objects to the `restricted` function of the block settings. @wesleybl [#6264](https://github.com/plone/volto/issues/6264)
+
 ## 18.0.0-alpha.17 (2024-07-05)
 
 ### Feature
