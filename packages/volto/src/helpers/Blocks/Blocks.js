@@ -675,25 +675,31 @@ export const buildStyleObjectFromData = (data = {}, prefix = '') => {
     );
   }
 
-  const styleObj = data.styles || {};
-  const stylesFromCSSproperties = recursiveBuildStyleObjectFromData(
-    styleObj,
-    prefix,
-  );
+  // If the block has a `@type`, it's a full data block object
+  // Then apply the style enhancers
+  if (data['@type']) {
+    const styleObj = data.styles || {};
+    const stylesFromCSSproperties = recursiveBuildStyleObjectFromData(
+      styleObj,
+      prefix,
+    );
 
-  let stylesFromObjectStyleEnhancers = {};
-  const enhancers = config.getUtilities({
-    type: 'styleWrapperStyleObjectEnhancer',
-  });
+    let stylesFromObjectStyleEnhancers = {};
+    const enhancers = config.getUtilities({
+      type: 'styleWrapperStyleObjectEnhancer',
+    });
 
-  enhancers.forEach(({ method }) => {
-    stylesFromObjectStyleEnhancers = {
-      ...stylesFromObjectStyleEnhancers,
-      ...method(data),
-    };
-  });
+    enhancers.forEach(({ method }) => {
+      stylesFromObjectStyleEnhancers = {
+        ...stylesFromObjectStyleEnhancers,
+        ...method(data),
+      };
+    });
 
-  return { ...stylesFromCSSproperties, ...stylesFromObjectStyleEnhancers };
+    return { ...stylesFromCSSproperties, ...stylesFromObjectStyleEnhancers };
+  } else {
+    return recursiveBuildStyleObjectFromData(data, prefix);
+  }
 };
 
 /**
