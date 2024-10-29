@@ -3595,8 +3595,7 @@ msgid "Table"
 msgstr "तालिका"
 
 #. Default: "Table of Contents"
-#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
-#: components/manage/Blocks/ToC/variations/HorizontalMenu
+#: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
 msgstr "सारांश की तालिका"
 

@@ -487,6 +487,11 @@ The recommended way of generating a project boilerplate is [Cookieplone](https:/
 Please update your code to use the `pnpm` based setup.
 ```
 
+### Table of Contents block markup change
+
+The `View` component for the Table of Contents block was updated to use a `nav` element instead of a `div`.
+If you've applied custom styles or shadowed this component, you might need to make adjustments.
+
 ### Update needed to project boilerplate generated with `@plone/generator-volto`
 
 ```{versionadded} Volto 18.0.0-alpha.42
@@ -571,6 +576,27 @@ Also in the Storybook configuration {file}`.storybook/main.js`.
 
 -    const registry = new AddonConfigurationRegistry(projectRootPath);
 +    const { registry } = AddonRegistry.init(projectRootPath);
+```
+
+```{versionadded} Volto 18.0.0-alpha.47
+```
+
+```{versionadded} @plone/registry 3.0.0-alpha.0
+```
+
+### Add missing overrides to projects in `package.json`
+
+This will fix some issues with Hot Module Reload in projects.
+It's required in Volto `18.0.0-alpha.47` and later, otherwise the site breaks in development mode.
+Add this object to the `pnpm` key in your project {file}`package.json`.
+
+```json
+  "pnpm": {
+    "overrides": {
+			"@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+			"react-refresh": "^0.14.2"
+    }
+  },
 ```
 
 ```{versionadded} Volto 18.0.0-alpha.47

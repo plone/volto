@@ -3602,8 +3602,7 @@ msgid "Table"
 msgstr "Tabla"
 
 #. Default: "Table of Contents"
-#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
-#: components/manage/Blocks/ToC/variations/HorizontalMenu
+#: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
 msgstr "Tabla de contenidos"
 
