@@ -1,0 +1,1 @@
+Fix useSelector is returned a different result when called with the same parameters in IdWidget. @iFlameing
