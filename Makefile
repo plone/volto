@@ -16,6 +16,7 @@ include variables.mk
 # Sphinx variables
 # You can set these variables from the command line.
 SPHINXOPTS      ?=
+VALEOPTS        ?=
 # Internal variables.
 SPHINXBUILD     = "$(realpath bin/sphinx-build)"
 SPHINXAUTOBUILD = "$(realpath bin/sphinx-autobuild)"
@@ -66,13 +67,14 @@ test: ## Run unit tests
 .PHONY: clean
 clean: ## Clean development environment
 	rm -rf node_modules
-	find ./packages -name node_modules -exec rm -rf {} \;
+	find ./packages -name node_modules -not -path "./packages/volto/__tests__/*" -exec rm -rf {} \;
 
 .PHONY: install
-install: build-deps ## Set up development environment
+install: ## Set up development environment
 	# Setup ESlint for VSCode
-	node packages/scripts/vscodesettings.js
 	pnpm i
+	node packages/scripts/vscodesettings.js
+	make build-deps
 
 ##### Documentation
 
@@ -119,7 +121,7 @@ docs-linkcheckbroken: bin/python docs-news  ## Run linkcheck and show only broke
 .PHONY: docs-vale
 docs-vale: bin/python docs-news  ## Install (once) and run Vale style, grammar, and spell checks
 	bin/vale sync
-	bin/vale --no-wrap $(VALEFILES)
+	bin/vale --no-wrap $(VALEOPTS) $(VALEFILES)
 	@echo
 	@echo "Vale is finished; look for any errors in the above output."
 
@@ -137,14 +139,18 @@ docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then 
 cypress-install: ## Install Cypress for acceptance tests
 	$(NODEBIN)/cypress install
 
-packages/registry/dist: packages/registry/src
+packages/registry/dist: $(shell find packages/registry/src -type f)
 	pnpm build:registry
 
-packages/components/dist: packages/components/src
+packages/components/dist: $(shell find packages/components/src -type f)
 	pnpm build:components
 
 .PHONY: build-deps
 build-deps: packages/registry/dist ## Build dependencies
+
+.PHONY: i18n
+i18n: ## Converts your po files into json to translate volto frontend
+	$(MAKE) -C "./packages/volto/" i18n
 
 ## Storybook
 

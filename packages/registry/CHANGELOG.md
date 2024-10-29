@@ -8,6 +8,41 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.0 (2024-10-27)
+
+### Breaking
+
+- Moved the package to ESM and refactored the add-on registry scripts to TypeScript. @sneridagh
+  Breaking:
+  - For maximum compatibility with CommonJS builds, the default exports have been moved to named exports.
+  - The modules affected are now built, and the import paths have changed, too.
+  - These changes force the modification in imports in a couple of files.
+  Please see the [Upgrade Guide](https://6.docs.plone.org/volto/upgrade-guide/index.html). [#6399](https://github.com/plone/volto/issues/6399)
+
+### Feature
+
+- Added an experimental Vite plugin. @sneridagh [#6399](https://github.com/plone/volto/issues/6399)
+
+### Bugfix
+
+- Return empty array when `getUtilities` does not match anything. @sneridagh [#6422](https://github.com/plone/volto/issues/6422)
+
+### Internal
+
+- Update typescript @sneridagh [#6371](https://github.com/plone/volto/issues/6371)
+- Update Vite and vitest versions @sneridagh [#6373](https://github.com/plone/volto/issues/6373)
+- Update typescript and vitest everywhere @sneridagh [#6407](https://github.com/plone/volto/issues/6407)
+
+## 1.8.0 (2024-07-30)
+
+### Feature
+
+- Added `Utilities` registry for `registerUtility`, `getUtility`, and `getUtilities`. @sneridagh [#6161](https://github.com/plone/volto/issues/6161)
+
+### Documentation
+
+- Changed a few typos within documentation, README's and comments. @FritzHoing [#6109](https://github.com/plone/volto/issues/6109)
+
 ## 1.7.0 (2024-06-26)
 
 ### Feature

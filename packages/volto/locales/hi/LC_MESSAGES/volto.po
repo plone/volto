@@ -68,7 +68,6 @@ msgstr "पेज में सक्रिए कंटेंट रूल्�
 
 #. Default: "Add"
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Rules/Rules
@@ -87,6 +86,11 @@ msgstr "जोड़े (वस्तु सूची)"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add Addons"
 msgstr "नए ऐड-ऑन को यहां दिखाने के लिए, उन्हें अपने कॉन्फ़िगरेशन में जोड़ें, बनाएं और सर्वर प्रक्रिया को पुनरारंभ करें। विस्तृत निर्देशों के लिए देखें"
+
+#. Default: "Add Alternative URL"
+#: components/manage/Controlpanels/Aliases
+msgid "Add Alternative URL"
+msgstr ""
 
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
@@ -304,6 +308,16 @@ msgstr "उपनाम"
 msgid "Alias has been added"
 msgstr "उपनाम जोड़ा गया है"
 
+#. Default: "Aliases have been removed."
+#: components/manage/Controlpanels/Aliases
+msgid "Aliases have been removed."
+msgstr ""
+
+#. Default: "Aliases have been uploaded."
+#: components/manage/Controlpanels/Aliases
+msgid "Aliases have been uploaded."
+msgstr ""
+
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -323,7 +337,7 @@ msgstr "सभी"
 msgid "All content"
 msgstr "सभी कंटेंट"
 
-#. Default: "All existing alternative urls for this site"
+#. Default: "Existing alternative URLs for this site"
 #: components/manage/Controlpanels/Aliases
 msgid "All existing alternative urls for this site"
 msgstr "इस साइट के लिए सभी मौजूदा वैकल्पिक यूआरएल"
@@ -350,7 +364,7 @@ msgstr "अगर छवि केवल सजावटी है तो खा
 msgid "Alt text hint link text"
 msgstr "छवि का उद्देश्य वर्णन करें।"
 
-#. Default: "Alternative url path (Required)"
+#. Default: "Alternative URL path (Required)"
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path (Required)"
 msgstr "वैकल्पिक URL पथ (आवश्यक)"
@@ -361,7 +375,7 @@ msgstr "वैकल्पिक URL पथ (आवश्यक)"
 msgid "Alternative url path must start with a slash."
 msgstr "वैकल्पिक URL पथ को स्लैश के साथ शुरू करना चाहिए।"
 
-#. Default: "Alternative url path → target url path (date and time of creation, manually created yes/no)"
+#. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "वैकल्पिक URL पथ → लक्ष्य URL पथ (निर्माण की तारीख और समय, मैन्युअल रूप से बनाया गया है/नहीं)"
@@ -411,6 +425,11 @@ msgstr "{entry} को {role} भूमिका का काम दें"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Assignments"
 msgstr "असाइनमेंट"
+
+#. Default: "Automatically"
+#: components/manage/Controlpanels/Aliases
+msgid "Automatically"
+msgstr ""
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -471,6 +490,11 @@ msgstr "मूल खोज क्वेरी"
 msgid "Block"
 msgstr "ब्लॉक"
 
+#. Default: "Both"
+#: components/manage/Controlpanels/Aliases
+msgid "Both"
+msgstr ""
+
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -497,10 +521,20 @@ msgstr "ब्राउज़ करें"
 msgid "Browse the site, drop an image, or type a URL"
 msgstr "साइट ब्राउज़ करें, एक छवि छोड़ें, या एक URL टाइप करें"
 
+#. Default: "Bulk upload CSV"
+#: components/manage/Controlpanels/Aliases
+msgid "BulkUploadAltUrls"
+msgstr ""
+
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "डिफ़ॉल्ट रूप से, इस आइटम के कंटेनर से अनुमतियाँ विरासत में होती हैं। यदि आप इसे अक्षम करते हैं, तो केवल स्पष्ट रूप से परिभागित अनुमतियाँ मान्य होंगी। अवलोकन में, प्रतीक {inherited} एक विरासत मान को दर्शाता है। उसी तरह, प्रतीक {global} एक वैश्विक भूमिका को दर्शाता है, जो साइट प्रशासक द्वारा प्रबंधित की जाती है।"
+
+#. Default: "CSV file"
+#: components/manage/Controlpanels/Aliases
+msgid "CSVFile"
+msgstr ""
 
 #. Default: "Cache Name"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -829,6 +863,16 @@ msgstr "लक्ष्य के साथ संबंध बनाएं य�
 #: components/manage/Toolbar/More
 msgid "Create working copy"
 msgstr "काम की प्रतिलिपि बनाएं"
+
+#. Default: "Created after"
+#: components/manage/Controlpanels/Aliases
+msgid "Created after"
+msgstr ""
+
+#. Default: "Created before"
+#: components/manage/Controlpanels/Aliases
+msgid "Created before"
+msgstr ""
 
 #. Default: "Created by {creator} on {date}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -1176,6 +1220,11 @@ msgstr "ईमेल पते मेल नहीं खाते।"
 msgid "Edit"
 msgstr "संपादित करें"
 
+#. Default: "Edit Alternative URL"
+#: components/manage/Controlpanels/Aliases
+msgid "Edit Alternative URL"
+msgstr ""
+
 #. Default: "Edit Rule"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Edit Rule"
@@ -1287,14 +1336,18 @@ msgstr "पूरा नाम दर्ज करें, उदाहरण क
 msgid "Enter map Embed Code"
 msgstr "नक्शे का एम्बेड कोड दर्ज करें"
 
-#. Default: "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
 #: components/manage/Controlpanels/Aliases
-msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr "लक्ष्य का पूर्ण रास्ता दर्ज करें। पथ '/ ' से प्रारंभ होना चाहिए। लक्ष्य मौजूद होना चाहिए या लक्ष्य के लिए मौजूदा वैकल्पिक URL पथ होना चाहिए।"
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+msgstr "लक्ष्य का पूर्ण रास्ता दर्ज करें। लक्ष्य मौजूद होना चाहिए या लक्ष्य के लिए मौजूदा वैकल्पिक URL पथ होना चाहिए।"
+
+#. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+#: components/manage/Controlpanels/Aliases
+msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+msgstr ""
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 msgstr "वैकल्पिक URL होनी चाहिए जहां का पूर्ण रास्ता दर्ज करें। पथ '/ ' से प्रारंभ होना चाहिए। केवल वे URL जिनके परिणामस्वरूप 404 नहीं मिला पेज एक रिडायरेक्ट होगा।"
 
@@ -1328,6 +1381,7 @@ msgstr "एन्ट्रीज़"
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
@@ -1339,25 +1393,35 @@ msgstr "एन्ट्रीज़"
 msgid "Error"
 msgstr "त्रुटि"
 
-#. Default: "Error"
-#: components/manage/Controlpanels/Aliases
-msgid "ErrorHeader"
-msgstr "त्रुटि"
-
 #. Default: "Event"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Event"
 msgstr "आयोजन"
+
+#. Default: "Event end date must be on or after {startDateValueOrStartFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event end date must be on or after {startDateValueOrStartFieldName}"
+msgstr ""
 
 #. Default: "Event listing"
 #: config/Views
 msgid "Event listing"
 msgstr "आयोजन सूची"
 
+#. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
+msgstr ""
+
 #. Default: "Event view"
 #: config/Views
 msgid "Event view"
 msgstr "आयोजन दृश्य"
+
+#. Default: "Example"
+#: components/manage/Controlpanels/Aliases
+msgid "Example"
+msgstr ""
 
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1470,6 +1534,7 @@ msgid "Files uploaded: {uploadedFiles}"
 msgstr ""फ़ाइलें अपलोड की गईं: {uploadedFiles}"
 
 #. Default: "Filter"
+#: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
 msgstr "फ़िल्टर"
@@ -1479,7 +1544,7 @@ msgstr "फ़िल्टर"
 msgid "Filter Rules:"
 msgstr "फ़िल्टर नियम:"
 
-#. Default: "Filter by prefix"
+#. Default: "Filter by path"
 #: components/manage/Controlpanels/Aliases
 msgid "Filter by prefix"
 msgstr "उपसर्ग द्वारा फ़िल्टर करें"
@@ -1921,6 +1986,11 @@ msgstr "भाषा"
 msgid "Language independent field."
 msgstr "भाषा स्वतंत्र क्षेत्र।"
 
+#. Default: "This is a language independent field. Any value you enter here will overwrite the corresponding field of all members of the translation group when you save this form."
+#: components/manage/Widgets/FormFieldWrapper
+msgid "Language independent icon title"
+msgstr ""
+
 #. Default: "Large"
 #: components/manage/Widgets/ImageSizeWidget
 msgid "Large"
@@ -2124,6 +2194,11 @@ msgstr "{title} के लिए अनुवाद प्रबंधित क
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
 msgstr "मैनुअल"
+
+#. Default: "Manually"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually"
+msgstr ""
 
 #. Default: "Manually or automatically added?"
 #: components/manage/Controlpanels/Aliases
@@ -3408,6 +3483,11 @@ msgstr "उपयोगकर्ता-नाम, पथ या तिथि द
 msgid "Sorted"
 msgstr "क्रमबद्ध किया गया"
 
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
+
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -3536,8 +3616,7 @@ msgid "Table"
 msgstr "तालिका"
 
 #. Default: "Table of Contents"
-#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
-#: components/manage/Blocks/ToC/variations/HorizontalMenu
+#: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
 msgstr "सारांश की तालिका"
 
@@ -3564,7 +3643,6 @@ msgstr "हटाने के लिए टैग"
 
 #. Default: "Target"
 #: components/manage/Blocks/Teaser/schema
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Target"
@@ -3585,11 +3663,6 @@ msgstr "प्रति कैश के लिए लक्षित मेम�
 msgid "Target number of objects in memory per cache"
 msgstr "प्रति कैश में मेमोरी में ऑब्जेक्ट की लक्षित संख्या"
 
-#. Default: "Target url path must start with a slash."
-#: components/manage/Controlpanels/Aliases
-msgid "Target url path must start with a slash."
-msgstr "लक्षित URL पथ को स्लैश के साथ शुरू होना चाहिए।"
-
 #. Default: "Teaser"
 #: components/manage/Blocks/Teaser/schema
 msgid "Teaser"
@@ -3608,11 +3681,6 @@ msgstr "टेक्स्ट"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "धन्यवाद।"
-
-#. Default: "The Database Manager allow you to view database status information"
-#: components/manage/Controlpanels/DatabaseInformation
-msgid "The Database Manager allow you to view database status information"
-msgstr "डेटाबेस प्रबंधक आपको डेटाबेस स्थिति जानकारी देखने की सुविधा प्रदान करता है"
 
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 #: components/theme/RequestTimeout/RequestTimeout
@@ -3659,6 +3727,16 @@ msgstr "आइटम को हटाया नहीं जा सका।"
 msgid "The link address is:"
 msgstr "लिंक पता है:"
 
+#. Default: "The number of items must be greater than or equal to {minItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be greater than or equal to {minItems}"
+msgstr ""
+
+#. Default: "The number of items must be less than or equal to {maxItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be less than or equal to {maxItems}"
+msgstr ""
+
 #. Default: "The provided alternative url already exists!"
 #: components/manage/Aliases/Aliases
 msgid "The provided alternative url already exists!"
@@ -3674,6 +3752,11 @@ msgstr "रजिस्ट्रेशन प्रक्रिया सफल 
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The site configuration is outdated and needs to be upgraded."
 msgstr "साइट कॉन्फ़िगरेशन पुरानी है और अपग्रेड की आवश्यकता है।"
+
+#. Default: "The value does not match the pattern {pattern}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The value does not match the pattern {pattern}"
+msgstr ""
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More
@@ -4389,11 +4472,21 @@ msgstr "एक उपयोगकर्ता नाम दर्ज करे�
 msgid "availableViews"
 msgstr "उपलब्ध दृश्य"
 
+#. Default: "Error in the block field {errorField}."
+#: helpers/MessageLabels/MessageLabels
+msgid "blocksFieldsErrorTitle"
+msgstr ""
+
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
 msgstr "पासवर्ड भूल गए?"
+
+#. Default: "Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
+#: components/manage/Controlpanels/Aliases
+msgid "bulkUploadUrlsHelp"
+msgstr ""
 
 #. Default: "Checkbox"
 #: config/Blocks
@@ -4504,6 +4597,11 @@ msgstr "कब"
 #: components/theme/EventDetails/EventDetails
 msgid "event_where"
 msgstr "कहाँ"
+
+#. Default: "/example"
+#: components/manage/Controlpanels/Aliases
+msgid "examplePath"
+msgstr ""
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

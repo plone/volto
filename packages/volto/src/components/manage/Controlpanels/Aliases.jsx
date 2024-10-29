@@ -1,35 +1,38 @@
-/**
- * Moderate comments component.
- * @module components/manage/Controlpanels/Aliases
- */
-
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { getBaseUrl, getParentUrl, Helmet } from '@plone/volto/helpers';
-import { removeAliases, addAliases, getAliases } from '@plone/volto/actions';
+import {
+  removeAliases,
+  addAliases,
+  getAliases,
+  uploadAliases,
+} from '@plone/volto/actions/aliases/aliases';
 import { createPortal } from 'react-dom';
 import {
-  Container,
   Button,
-  Segment,
-  Form,
   Checkbox,
+  Container,
+  Form,
   Header,
   Input,
-  Radio,
-  Message,
-  Table,
-  Pagination,
+  Loader,
   Menu,
+  Pagination,
+  Radio,
+  Segment,
+  Table,
 } from 'semantic-ui-react';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { DatetimeWidget } from '@plone/volto/components/manage/Widgets';
+import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
+import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import { ModalForm } from '@plone/volto/components/manage/Form';
 import { Icon, Toolbar } from '@plone/volto/components';
+import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
+import { useClient } from '@plone/volto/hooks';
 
 import backSVG from '@plone/volto/icons/back.svg';
+import editingSVG from '@plone/volto/icons/editing.svg';
 import { map } from 'lodash';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
@@ -43,6 +46,14 @@ const messages = defineMessages({
     id: 'URL Management',
     defaultMessage: 'URL Management',
   },
+  AddUrl: {
+    id: 'Add Alternative URL',
+    defaultMessage: 'Add Alternative URL',
+  },
+  EditUrl: {
+    id: 'Edit Alternative URL',
+    defaultMessage: 'Edit Alternative URL',
+  },
   success: {
     id: 'Success',
     defaultMessage: 'Success',
@@ -50,6 +61,66 @@ const messages = defineMessages({
   successAdd: {
     id: 'Alias has been added',
     defaultMessage: 'Alias has been added',
+  },
+  successUpload: {
+    id: 'Aliases have been uploaded.',
+    defaultMessage: 'Aliases have been uploaded.',
+  },
+  successRemove: {
+    id: 'Aliases have been removed.',
+    defaultMessage: 'Aliases have been removed.',
+  },
+  filterByPrefix: {
+    id: 'Filter by prefix',
+    defaultMessage: 'Filter by path',
+  },
+  manualOrAuto: {
+    id: 'Manually or automatically added?',
+    defaultMessage: 'Manually or automatically added?',
+  },
+  createdAfter: {
+    id: 'Created after',
+    defaultMessage: 'Created after',
+  },
+  createdBefore: {
+    id: 'Created before',
+    defaultMessage: 'Created before',
+  },
+  altUrlPathTitle: {
+    id: 'Alternative url path (Required)',
+    defaultMessage: 'Alternative URL path (Required)',
+  },
+  altUrlError: {
+    id: 'Alternative url path must start with a slash.',
+    defaultMessage: 'Alternative URL path must start with a slash.',
+  },
+  targetUrlPathTitle: {
+    id: 'Target Path (Required)',
+    defaultMessage: 'Target Path (Required)',
+  },
+  BulkUploadAltUrls: {
+    id: 'BulkUploadAltUrls',
+    defaultMessage: 'Bulk upload CSV',
+  },
+  CSVFile: {
+    id: 'CSVFile',
+    defaultMessage: 'CSV file',
+  },
+  Both: {
+    id: 'Both',
+    defaultMessage: 'Both',
+  },
+  Automatically: {
+    id: 'Automatically',
+    defaultMessage: 'Automatically',
+  },
+  Manually: {
+    id: 'Manually',
+    defaultMessage: 'Manually',
+  },
+  examplePath: {
+    id: 'examplePath',
+    defaultMessage: '/example',
   },
 });
 
@@ -61,627 +132,515 @@ const filterChoices = [
 
 const itemsPerPageChoices = [10, 25, 50, 'All'];
 
-/**
- * Aliases class.
- * @class Aliases
- * @extends Component
- */
-class Aliases extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    addAliases: PropTypes.func.isRequired,
-    getAliases: PropTypes.func.isRequired,
-    removeAliases: PropTypes.func.isRequired,
-  };
+const Aliases = (props) => {
+  const title = props;
+  const intl = useIntl();
+  const dispatch = useDispatch();
+  const { pathname } = useLocation();
+  const history = useHistory();
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs Aliases
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      isClient: false,
-      filterType: filterChoices[0],
-      createdBefore: null,
-      altUrlPath: '',
-      isAltUrlCorrect: false,
-      targetUrlPath: '',
-      isTargetUrlCorrect: false,
-      aliasesToRemove: [],
-      errorMessageAdd: '',
-      filterQuery: '',
-      aliases: [],
-      activePage: 1,
-      pages: '',
-      itemsPerPage: 10,
-    };
-  }
+  const hasAdvancedFiltering = useSelector(
+    (state) => state.site.data?.features?.filter_aliases_by_date,
+  );
+  const hasBulkUpload = hasAdvancedFiltering !== undefined;
+  const aliases = useSelector((state) => state.aliases);
+  const [filterType, setFilterType] = useState(filterChoices[0]);
+  const [createdBefore, setCreatedBefore] = useState(null);
+  const [createdAfter, setCreatedAfter] = useState(null);
+  const [aliasesToRemove, setAliasesToRemove] = useState([]);
+  const [filterQuery, setFilterQuery] = useState('');
+  const [activePage, setActivePage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [addModalOpen, setAddModalOpen] = useState(false);
+  const [addError, setAddError] = useState(null);
+  const [editingData, setEditingData] = useState(null);
+  const [uploadModalOpen, setUploadModalOpen] = useState(false);
+  const [uploadError, setUploadError] = useState(null);
+  const isClient = useClient();
 
-  /**
-   * Component did mount
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    const { filterQuery, filterType, createdBefore, itemsPerPage } = this.state;
-    this.setState({ isClient: true });
-    this.props.getAliases(getBaseUrl(this.props.pathname), {
+  const updateResults = useCallback(() => {
+    const options = {
       query: filterQuery,
       manual: filterType.value,
-      datetime: createdBefore,
-      batchSize: itemsPerPage,
-    });
-  }
-
-  /**
-   * Component did mount
-   * @method componentDidUpdate
-   * @returns {undefined}
-   */
-  componentDidUpdate(prevProps, prevState) {
-    const { filterQuery, filterType, createdBefore, itemsPerPage } = this.state;
-    if (
-      prevProps.aliases.items_total !== this.props.aliases.items_total ||
-      prevState.itemsPerPage !== this.state.itemsPerPage
-    ) {
-      const pages = Math.ceil(
-        this.props.aliases.items_total / this.state.itemsPerPage,
-      );
-
-      if (pages === 0 || isNaN(pages)) {
-        this.setState({ pages: '' });
-      } else {
-        this.setState({ pages });
-      }
+      batchStart: (activePage - 1) * itemsPerPage,
+      batchSize: itemsPerPage === 'All' ? 999999999999 : itemsPerPage,
+    };
+    if (hasAdvancedFiltering) {
+      options.start = createdAfter || '';
+      options.end = createdBefore || '';
+    } else {
+      options.datetime = createdBefore || '';
     }
-    if (
-      prevState.activePage !== this.state.activePage ||
-      prevState.itemsPerPage !== this.state.itemsPerPage
-    ) {
-      this.props.getAliases(getBaseUrl(this.props.pathname), {
-        query: filterQuery,
-        manual: filterType.value,
-        datetime: createdBefore,
-        batchSize: itemsPerPage === 'All' ? 999999999999 : itemsPerPage,
-        batchStart: (this.state.activePage - 1) * this.state.itemsPerPage,
-      });
-    }
-    if (prevState.altUrlPath !== this.state.altUrlPath) {
-      if (this.state.altUrlPath.charAt(0) === '/') {
-        this.setState({ isAltUrlCorrect: true });
-      } else {
-        this.setState({ isAltUrlCorrect: false });
-      }
-    }
+    dispatch(getAliases(getBaseUrl(pathname), options));
+  }, [
+    activePage,
+    createdAfter,
+    createdBefore,
+    dispatch,
+    filterQuery,
+    filterType.value,
+    hasAdvancedFiltering,
+    itemsPerPage,
+    pathname,
+  ]);
 
-    if (prevState.targetUrlPath !== this.state.targetUrlPath) {
-      if (this.state.targetUrlPath.charAt(0) === '/') {
-        this.setState({ isTargetUrlCorrect: true });
-      } else {
-        this.setState({ isTargetUrlCorrect: false });
-      }
-    }
-  }
+  // Update results after changing the page.
+  // (We intentionally leave updateResults out of the deps.)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => updateResults(), [activePage, itemsPerPage]);
 
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.aliases.add.loading && !nextProps.aliases.add.loaded) {
-      if (nextProps.aliases.add.error) {
-        this.setState({
-          errorMessageAdd: nextProps.aliases.add.error.response.body.message,
+  // Calculate page count from results
+  const pages = useMemo(() => {
+    let pages = Math.ceil(aliases.items_total / itemsPerPage);
+    if (pages === 0 || isNaN(pages)) {
+      pages = '';
+    }
+    return pages;
+  }, [aliases.items_total, itemsPerPage]);
+
+  // Add new alias
+  const handleAdd = (formData) => {
+    const { altUrlPath, targetUrlPath } = formData;
+    // Validate altUrlPath starts with a slash
+    if (!altUrlPath || altUrlPath.charAt(0) !== '/') {
+      setAddError(intl.formatMessage(messages.altUrlError));
+      return;
+    }
+    // Remove existing alias first if we're editing it.
+    const precondition = editingData
+      ? dispatch(
+          removeAliases('', { items: [{ path: editingData.altUrlPath }] }),
+        )
+      : Promise.resolve();
+    precondition.then(() => {
+      dispatch(
+        addAliases('', {
+          items: [{ path: altUrlPath, 'redirect-to': targetUrlPath }],
+        }),
+      )
+        .then(() => {
+          updateResults();
+          setAddModalOpen(false);
+          setEditingData(null);
+          toast.success(
+            <Toast
+              success
+              title={intl.formatMessage(messages.success)}
+              content={intl.formatMessage(messages.successAdd)}
+            />,
+          );
+        })
+        .catch((error) => {
+          setAddError(error.response?.body?.message);
         });
-      }
-    }
-    if (this.props.aliases.add.loading && nextProps.aliases.add.loaded) {
-      const { filterQuery, filterType, createdBefore, itemsPerPage } =
-        this.state;
+    });
+  };
 
-      this.props.getAliases(getBaseUrl(this.props.pathname), {
-        query: filterQuery,
-        manual: filterType.value,
-        datetime: createdBefore,
-        batchSize: itemsPerPage,
-      });
+  // Check/uncheck an alias
+  const handleCheckAlias = (alias) => {
+    if (aliasesToRemove.includes(alias)) {
+      setAliasesToRemove(aliasesToRemove.filter((x) => x !== alias));
+    } else {
+      setAliasesToRemove([...aliasesToRemove, alias]);
+    }
+  };
+
+  // Remove selected aliases
+  const handleRemoveAliases = () => {
+    dispatch(
+      removeAliases('', {
+        items: aliasesToRemove.map((a) => ({ path: a })),
+      }),
+    ).then(() => {
+      updateResults();
       toast.success(
         <Toast
           success
-          title={this.props.intl.formatMessage(messages.success)}
-          content={this.props.intl.formatMessage(messages.successAdd)}
+          title={intl.formatMessage(messages.success)}
+          content={intl.formatMessage(messages.successRemove)}
         />,
       );
-      if (!nextProps.aliases.add.error) {
-        this.setState({
-          errorMessageAdd: '',
-        });
-      }
-    }
-    if (this.props.aliases.remove.loading && nextProps.aliases.remove.loaded) {
-      const { filterQuery, filterType, createdBefore, itemsPerPage } =
-        this.state;
-
-      this.props.getAliases(getBaseUrl(this.props.pathname), {
-        query: filterQuery,
-        manual: filterType.value,
-        datetime: createdBefore,
-        batchSize: itemsPerPage,
-      });
-    }
-  }
-
-  /**
-   * Back/Cancel handler
-   * @method onCancel
-   * @returns {undefined}
-   */
-  onCancel() {
-    this.props.history.push(getParentUrl(this.props.pathname));
-  }
-
-  /**
-   * Select filter type handler
-   * @method handleSelectFilterType
-   * @returns {undefined}
-   */
-  handleSelectFilterType(type) {
-    this.setState({ filterType: type });
-  }
-
-  /**
-   * Select filter type handler
-   * @method handleFilterQueryChange
-   * @returns {undefined}
-   */
-  handleFilterQueryChange(query) {
-    this.setState({ filterQuery: query });
-  }
-
-  /**
-   * Select Creation date handler
-   * @method handleCreateDate
-   * @returns {undefined}
-   */
-  handleCreateDate(date) {
-    this.setState({ createdBefore: date });
-  }
-
-  /**
-   * Select Creation date handler
-   * @method handleSubmitFilter
-   * @returns {undefined}
-   */
-  handleSubmitFilter() {
-    const { filterQuery, filterType, createdBefore, itemsPerPage } = this.state;
-    this.props.getAliases(getBaseUrl(this.props.pathname), {
-      query: filterQuery,
-      manual: filterType.value,
-      datetime: createdBefore,
-      batchSize: itemsPerPage,
     });
-  }
-
-  /**
-   * Alternative url handler
-   * @method handleAltUrlChange
-   * @returns {undefined}
-   */
-  handleAltUrlChange(url) {
-    this.setState({ altUrlPath: url });
-  }
-
-  /**
-   * Target url handler
-   * @method handleTargetUrlChange
-   * @returns {undefined}
-   */
-  handleTargetUrlChange(url) {
-    this.setState({ targetUrlPath: url });
-  }
-
-  /**
-   * New alias submit handler
-   * @method handleSubmitAlias
-   * @returns {undefined}
-   */
-  handleSubmitAlias() {
-    if (this.state.isAltUrlCorrect && this.state.isTargetUrlCorrect) {
-      this.props.addAliases('', {
-        items: [
-          {
-            path: this.state.altUrlPath,
-            'redirect-to': this.state.targetUrlPath,
-          },
-        ],
-      });
-      this.setState({ altUrlPath: '', targetUrlPath: '' });
-    }
-  }
-
-  /**
-   * Check to-remove aliases handler
-   * @method handleSubmitAlias
-   * @returns {undefined}
-   */
-  handleCheckAlias(alias) {
-    const aliases = this.state.aliasesToRemove;
-    if (aliases.includes(alias)) {
-      const index = aliases.indexOf(alias);
-      if (index > -1) {
-        let newAliasesArr = aliases;
-        newAliasesArr.splice(index, 1);
-        this.setState({ aliasesToRemove: newAliasesArr });
-      }
-    } else {
-      this.setState({
-        aliasesToRemove: [...this.state.aliasesToRemove, alias],
-      });
-    }
-  }
-
-  /**
-   * Remove aliases handler
-   * @method handleRemoveAliases
-   * @returns {undefined}
-   */
-  handleRemoveAliases = () => {
-    const items = this.state.aliasesToRemove.map((a) => {
-      return {
-        path: a,
-      };
-    });
-    this.props.removeAliases('', {
-      items,
-    });
-    this.setState({ aliasesToRemove: [] });
+    setAliasesToRemove([]);
   };
 
-  /**
-   * Pagination change handler
-   * @method handlePageChange
-   * @returns {undefined}
-   */
-  handlePageChange(e, { activePage }) {
-    this.setState({ activePage });
-  }
+  // Upload CSV
+  const handleBulkUpload = (formData) => {
+    fetch(`data:${formData.file['content-type']};base64,${formData.file.data}`)
+      .then((res) => res.blob())
+      .then((blob) => {
+        dispatch(uploadAliases(blob))
+          .then(() => {
+            updateResults();
+            setUploadError(null);
+            setUploadModalOpen(false);
+            toast.success(
+              <Toast
+                success
+                title={intl.formatMessage(messages.success)}
+                content={intl.formatMessage(messages.successUpload)}
+              />,
+            );
+          })
+          .catch((error) => {
+            setUploadError(error.response?.body?.message);
+          });
+      });
+  };
 
-  /**
-   * Items per page change handler
-   * @method handleItemsPerPage
-   * @returns {undefined}
-   */
-  handleItemsPerPage(e, { value }) {
-    this.setState({ itemsPerPage: value, activePage: 1 });
-  }
-
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    return (
-      <div id="page-aliases">
-        <Helmet title={this.props.intl.formatMessage(messages.aliases)} />
-        <Container>
-          <article id="content">
-            <Segment.Group raised>
-              <Segment className="primary">
-                <FormattedMessage
-                  id="URL Management"
-                  defaultMessage="URL Management"
-                  values={{ title: <q>{this.props.title}</q> }}
+  return (
+    <div id="page-aliases">
+      <Helmet title={intl.formatMessage(messages.aliases)} />
+      <Container>
+        <article id="content">
+          <Segment.Group raised>
+            <Segment className="primary">
+              <FormattedMessage
+                id="URL Management"
+                defaultMessage="URL Management"
+                values={{ title: <q>{title}</q> }}
+              />
+            </Segment>
+            <Segment>
+              <Button
+                primary
+                id="add-alt-url"
+                onClick={() => setAddModalOpen(true)}
+              >
+                {intl.formatMessage(messages.AddUrl)}&hellip;
+              </Button>
+              {addModalOpen && (
+                <ModalForm
+                  open={true}
+                  onSubmit={handleAdd}
+                  onCancel={() => setAddModalOpen(false)}
+                  title={
+                    editingData
+                      ? intl.formatMessage(messages.EditUrl)
+                      : intl.formatMessage(messages.AddUrl)
+                  }
+                  submitError={addError}
+                  schema={{
+                    fieldsets: [
+                      {
+                        id: 'default',
+                        fields: ['altUrlPath', 'targetUrlPath'],
+                      },
+                    ],
+                    properties: {
+                      altUrlPath: {
+                        title: intl.formatMessage(messages.altUrlPathTitle),
+                        description: (
+                          <FormattedMessage
+                            id="Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+                            defaultMessage="Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+                          />
+                        ),
+                        placeholder: intl.formatMessage(messages.examplePath),
+                      },
+                      targetUrlPath: {
+                        title: intl.formatMessage(messages.targetUrlPathTitle),
+                        description: (
+                          <FormattedMessage
+                            id="Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+                            defaultMessage="Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
+                          />
+                        ),
+                        placeholder: intl.formatMessage(messages.examplePath),
+                      },
+                    },
+                    required: ['altUrlPath', 'targetUrlPath'],
+                  }}
+                  formData={editingData || {}}
                 />
-              </Segment>
-              <Form>
-                <Segment>
-                  <Header size="medium">
-                    <FormattedMessage
-                      id="Alternative url path (Required)"
-                      defaultMessage="Alternative url path (Required)"
-                    />
-                  </Header>
-                  <p className="help">
-                    <FormattedMessage
-                      id="Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
-                      defaultMessage="Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
-                    />
-                  </p>
-                  <Form.Field>
-                    <Input
-                      id="alternative-url-input"
-                      name="alternative-url-path"
-                      placeholder="/example"
-                      value={this.state.altUrlPath}
-                      onChange={(e) => this.handleAltUrlChange(e.target.value)}
-                    />
-                    {!this.state.isAltUrlCorrect &&
-                      this.state.altUrlPath !== '' && (
-                        <p style={{ color: 'red' }}>
-                          <FormattedMessage
-                            id="Alternative url path must start with a slash."
-                            defaultMessage="Alternative url path must start with a slash."
-                          />
-                        </p>
-                      )}
-                  </Form.Field>
-                  <Header size="medium">
-                    <FormattedMessage
-                      id="Target Path (Required)"
-                      defaultMessage="Target Path (Required)"
-                    />
-                  </Header>
-                  <p className="help">
-                    <FormattedMessage
-                      id="Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-                      defaultMessage="Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-                    />
-                  </p>
-                  <Form.Field>
-                    <Input
-                      id="target-url-input"
-                      name="target-url-path"
-                      placeholder="/example"
-                      value={this.state.targetUrlPath}
-                      onChange={(e) =>
-                        this.handleTargetUrlChange(e.target.value)
-                      }
-                    />
-                    {!this.state.isTargetUrlCorrect &&
-                      this.state.targetUrlPath !== '' && (
-                        <p style={{ color: 'red' }}>
-                          <FormattedMessage
-                            id="Target url path must start with a slash."
-                            defaultMessage="Target url path must start with a slash."
-                          />
-                        </p>
-                      )}
-                  </Form.Field>
-                  <Button
-                    id="submit-alias"
-                    primary
-                    onClick={() => this.handleSubmitAlias()}
-                    disabled={
-                      !this.state.isAltUrlCorrect ||
-                      !this.state.isTargetUrlCorrect ||
-                      this.state.altUrlPath === '' ||
-                      this.state.targetUrlPath === ''
-                    }
-                  >
-                    <FormattedMessage id="Add" defaultMessage="Add" />
+              )}
+              {hasBulkUpload && (
+                <>
+                  <Button onClick={() => setUploadModalOpen(true)}>
+                    {intl.formatMessage(messages.BulkUploadAltUrls)}&hellip;
                   </Button>
-                  {this.state.errorMessageAdd && (
-                    <Message color="red">
-                      <Message.Header>
-                        <FormattedMessage
-                          id="ErrorHeader"
-                          defaultMessage="Error"
-                        />
-                      </Message.Header>
-                      <p>{this.state.errorMessageAdd}</p>
-                    </Message>
-                  )}
-                </Segment>
-              </Form>
-              <Form>
-                <Segment className="primary">
-                  <Header size="medium">
-                    <FormattedMessage
-                      id="All existing alternative urls for this site"
-                      defaultMessage="All existing alternative urls for this site"
-                    />
-                  </Header>
-                  <Header size="small">
-                    <FormattedMessage
-                      id="Filter by prefix"
-                      defaultMessage="Filter by prefix"
-                    />
-                  </Header>
-                  <Form.Field>
-                    <Input
-                      name="filter"
-                      placeholder="/example"
-                      value={this.state.filterQuery}
-                      onChange={(e) =>
-                        this.handleFilterQueryChange(e.target.value)
+                  {uploadModalOpen && (
+                    <ModalForm
+                      open={true}
+                      onSubmit={handleBulkUpload}
+                      onCancel={() => setUploadModalOpen(false)}
+                      title={intl.formatMessage(messages.BulkUploadAltUrls)}
+                      submitError={uploadError}
+                      description={
+                        <>
+                          <p>
+                            <FormattedMessage
+                              id="bulkUploadUrlsHelp"
+                              defaultMessage="Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
+                            />
+                          </p>
+                          <p>
+                            <FormattedMessage
+                              id="Example"
+                              defaultMessage="Example"
+                            />
+                            :
+                            <br />
+                            <code>
+                              /old-home-page.asp,/front-page,2019/01/27 10:42:59
+                              GMT+1,true
+                              <br />
+                              /people/JoeT,/Users/joe-thurston,2018-12-31,false
+                            </code>
+                          </p>
+                        </>
                       }
+                      schema={{
+                        fieldsets: [
+                          {
+                            id: 'default',
+                            fields: ['file'],
+                          },
+                        ],
+                        properties: {
+                          file: {
+                            title: intl.formatMessage(messages.CSVFile),
+                            type: 'object',
+                            factory: 'File Upload',
+                          },
+                        },
+                        required: ['file'],
+                      }}
                     />
-                  </Form.Field>
-                  <Header size="small">
-                    <FormattedMessage
-                      id="Manually or automatically added?"
-                      defaultMessage="Manually or automatically added?"
-                    />
-                  </Header>
-                  {filterChoices.map((o, i) => (
-                    <Form.Field key={i}>
-                      <Radio
-                        label={o.label}
-                        name="radioGroup"
-                        value={o.value}
-                        checked={this.state.filterType === o}
-                        onChange={() => this.handleSelectFilterType(o)}
+                  )}
+                </>
+              )}
+            </Segment>
+            <Segment>
+              <Form>
+                <Header size="medium">
+                  <FormattedMessage
+                    id="All existing alternative urls for this site"
+                    defaultMessage="Existing alternative URLs for this site"
+                  />
+                </Header>
+                <Segment>
+                  <Form.Field>
+                    <FormFieldWrapper
+                      id="filterQuery"
+                      title={intl.formatMessage(messages.filterByPrefix)}
+                    >
+                      <Input
+                        name="filter"
+                        placeholder={intl.formatMessage(messages.examplePath)}
+                        value={filterQuery}
+                        onChange={(e) => setFilterQuery(e.target.value)}
                       />
-                    </Form.Field>
-                  ))}
+                    </FormFieldWrapper>
+                  </Form.Field>
+                  <Form.Field>
+                    <FormFieldWrapper
+                      id="filterType"
+                      title={intl.formatMessage(messages.manualOrAuto)}
+                    >
+                      <Form.Group inline>
+                        {filterChoices.map((o, i) => (
+                          <Form.Field key={i}>
+                            <Radio
+                              label={intl.formatMessage({ id: o.label })}
+                              name="radioGroup"
+                              value={o.value}
+                              checked={filterType === o}
+                              onChange={() => setFilterType(o)}
+                            />
+                          </Form.Field>
+                        ))}
+                      </Form.Group>
+                    </FormFieldWrapper>
+                  </Form.Field>
                   <Form.Field>
                     <DatetimeWidget
                       id="created-before-date"
-                      title={'Created before'}
+                      title={intl.formatMessage(messages.createdBefore)}
                       dateOnly={true}
-                      value={this.state.createdBefore}
+                      value={createdBefore}
                       onChange={(id, value) => {
-                        this.handleCreateDate(value);
+                        setCreatedBefore(value);
                       }}
                     />
                   </Form.Field>
-                  <Button onClick={() => this.handleSubmitFilter()} primary>
-                    Filter
-                  </Button>
-                  <Header size="small">
-                    <FormattedMessage
-                      id="Alternative url path → target url path (date and time of creation, manually created yes/no)"
-                      defaultMessage="Alternative url path → target url path (date and time of creation, manually created yes/no)"
-                    />
-                  </Header>
-
-                  <Table>
-                    <Table.Body>
-                      <Table.Row>
-                        <Table.HeaderCell>
-                          <FormattedMessage
-                            id="Select"
-                            defaultMessage="Select"
-                          />
-                        </Table.HeaderCell>
-                        <Table.HeaderCell>
-                          <FormattedMessage id="Alias" defaultMessage="Alias" />
-                        </Table.HeaderCell>
-                        <Table.HeaderCell>
-                          <FormattedMessage
-                            id="Target"
-                            defaultMessage="Target"
-                          />
-                        </Table.HeaderCell>
-                        <Table.HeaderCell>
-                          <FormattedMessage id="Date" defaultMessage="Date" />
-                        </Table.HeaderCell>
-                        <Table.HeaderCell>
-                          <FormattedMessage
-                            id="Manual"
-                            defaultMessage="Manual"
-                          />
-                        </Table.HeaderCell>
-                      </Table.Row>
-                      {this.props.aliases.items.length > 0 &&
-                        this.props.aliases.items.map((alias, i) => (
-                          <Table.Row key={i}>
-                            <Table.Cell>
-                              <Checkbox
-                                onChange={(e, { value }) =>
-                                  this.handleCheckAlias(value)
-                                }
-                                checked={this.state.aliasesToRemove.includes(
-                                  alias.path,
-                                )}
-                                value={alias.path}
-                              />
-                            </Table.Cell>
-                            <Table.Cell>
-                              <p>{alias.path}</p>
-                            </Table.Cell>
-                            <Table.Cell>
-                              <p>{alias['redirect-to']}</p>
-                            </Table.Cell>
-                            <Table.Cell>
-                              <p>{alias.datetime}</p>
-                            </Table.Cell>
-                            <Table.Cell>
-                              <p>{`${alias.manual}`}</p>
-                            </Table.Cell>
-                          </Table.Row>
-                        ))}
-                    </Table.Body>
-                  </Table>
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexWrap: 'wrap',
-                      alignItems: 'center',
-                      marginBottom: '20px',
-                    }}
-                  >
-                    {this.state.pages && (
-                      <Pagination
-                        boundaryRange={0}
-                        activePage={this.state.activePage}
-                        ellipsisItem={null}
-                        firstItem={null}
-                        lastItem={null}
-                        siblingRange={1}
-                        totalPages={this.state.pages}
-                        onPageChange={(e, o) => this.handlePageChange(e, o)}
+                  {hasAdvancedFiltering && (
+                    <Form.Field>
+                      <DatetimeWidget
+                        id="created-after-date"
+                        title={intl.formatMessage(messages.createdAfter)}
+                        dateOnly={true}
+                        value={createdAfter}
+                        onChange={(id, value) => {
+                          setCreatedAfter(value);
+                        }}
                       />
-                    )}
-                    <Menu.Menu
-                      position="right"
-                      style={{ display: 'flex', marginLeft: 'auto' }}
-                    >
-                      <Menu.Item style={{ color: 'grey' }}>
-                        <FormattedMessage id="Show" defaultMessage="Show" />:
-                      </Menu.Item>
-                      {map(itemsPerPageChoices, (size) => (
-                        <Menu.Item
-                          style={{
-                            padding: '0 0.4em',
-                            margin: '0em 0.357em',
-                            cursor: 'pointer',
-                          }}
-                          key={size}
-                          value={size}
-                          active={size === this.state.itemsPerPage}
-                          onClick={(e, o) => this.handleItemsPerPage(e, o)}
-                        >
-                          {size}
-                        </Menu.Item>
-                      ))}
-                    </Menu.Menu>
-                  </div>
-                  <Button
-                    disabled={this.state.aliasesToRemove.length === 0}
-                    onClick={this.handleRemoveAliases}
-                    primary
-                  >
-                    <FormattedMessage
-                      id="Remove selected"
-                      defaultMessage="Remove selected"
-                    />
+                    </Form.Field>
+                  )}
+                  <Button onClick={() => updateResults()} primary>
+                    <FormattedMessage id="Filter" defaultMessage="Filter" />
                   </Button>
                 </Segment>
               </Form>
-            </Segment.Group>
-          </article>
-        </Container>
-        {this.state.isClient &&
-          createPortal(
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <Link className="item" to="#" onClick={() => this.onCancel()}>
-                  <Icon
-                    name={backSVG}
-                    className="contents circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.back)}
-                  />
-                </Link>
-              }
-            />,
-            document.getElementById('toolbar'),
-          )}
-      </div>
-    );
-  }
-}
+            </Segment>
+            <Segment>
+              <Header size="small">
+                <FormattedMessage
+                  id="Alternative url path → target url path (date and time of creation, manually created yes/no)"
+                  defaultMessage="Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
+                />
+              </Header>
 
-export default compose(
-  injectIntl,
-  connect(
-    (state, props) => ({
-      aliases: state.aliases,
-      pathname: props.location.pathname,
-    }),
-    { addAliases, getAliases, removeAliases },
-  ),
-)(Aliases);
+              <Table celled compact>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell width="1">
+                      <FormattedMessage id="Select" defaultMessage="Select" />
+                    </Table.HeaderCell>
+                    <Table.HeaderCell width="10">
+                      <FormattedMessage id="Alias" defaultMessage="Alias" />
+                    </Table.HeaderCell>
+                    <Table.HeaderCell width="1">
+                      <FormattedMessage id="Date" defaultMessage="Date" />
+                    </Table.HeaderCell>
+                    <Table.HeaderCell width="1">
+                      <FormattedMessage id="Manual" defaultMessage="Manual" />
+                    </Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  {aliases.get.loading && (
+                    <Table.Row>
+                      <Table.Cell colSpan="4">
+                        <Loader active inline="centered" />
+                      </Table.Cell>
+                    </Table.Row>
+                  )}
+                  {aliases.items.length > 0 &&
+                    aliases.items.map((alias, i) => (
+                      <Table.Row key={i} verticalAlign="top">
+                        <Table.Cell>
+                          <Checkbox
+                            onChange={(e, { value }) => handleCheckAlias(value)}
+                            checked={aliasesToRemove.includes(alias.path)}
+                            value={alias.path}
+                          />
+                        </Table.Cell>
+                        <Table.Cell>
+                          {alias.path}
+                          <br />
+                          &nbsp;&nbsp;&rarr; {alias['redirect-to']}{' '}
+                          <Button
+                            basic
+                            style={{ verticalAlign: 'middle' }}
+                            aria-label={intl.formatMessage(messages.EditUrl)}
+                            onClick={() => {
+                              setEditingData({
+                                altUrlPath: alias.path,
+                                targetUrlPath: alias['redirect-to'],
+                              });
+                              setAddModalOpen(true);
+                            }}
+                          >
+                            <Icon name={editingSVG} size="18px" />
+                          </Button>
+                        </Table.Cell>
+                        <Table.Cell>
+                          <FormattedDate date={alias.datetime} />
+                        </Table.Cell>
+                        <Table.Cell>{`${alias.manual}`}</Table.Cell>
+                      </Table.Row>
+                    ))}
+                </Table.Body>
+              </Table>
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  alignItems: 'center',
+                  marginBottom: '20px',
+                }}
+              >
+                {pages && (
+                  <Pagination
+                    boundaryRange={0}
+                    activePage={activePage}
+                    ellipsisItem={null}
+                    firstItem={null}
+                    lastItem={null}
+                    siblingRange={1}
+                    totalPages={pages}
+                    onPageChange={(e, { activePage }) =>
+                      setActivePage(activePage)
+                    }
+                  />
+                )}
+                <Menu.Menu
+                  position="right"
+                  style={{ display: 'flex', marginLeft: 'auto' }}
+                >
+                  <Menu.Item style={{ color: 'grey' }}>
+                    <FormattedMessage id="Show" defaultMessage="Show" />:
+                  </Menu.Item>
+                  {map(itemsPerPageChoices, (size) => (
+                    <Menu.Item
+                      style={{
+                        padding: '0 0.4em',
+                        margin: '0em 0.357em',
+                        cursor: 'pointer',
+                      }}
+                      key={size}
+                      value={size}
+                      active={size === itemsPerPage}
+                      onClick={(e, { value }) => {
+                        setItemsPerPage(value);
+                        setActivePage(1);
+                      }}
+                    >
+                      {size}
+                    </Menu.Item>
+                  ))}
+                </Menu.Menu>
+              </div>
+              <Button
+                id="remove-alt-urls"
+                disabled={aliasesToRemove.length === 0}
+                onClick={handleRemoveAliases}
+                primary
+              >
+                <FormattedMessage
+                  id="Remove selected"
+                  defaultMessage="Remove selected"
+                />
+              </Button>
+            </Segment>
+          </Segment.Group>
+        </article>
+      </Container>
+      {isClient &&
+        createPortal(
+          <Toolbar
+            pathname={pathname}
+            hideDefaultViewButtons
+            inner={
+              <Link
+                className="item"
+                to="#"
+                onClick={() => history.push(getParentUrl(pathname))}
+              >
+                <Icon
+                  name={backSVG}
+                  className="contents circled"
+                  size="30px"
+                  title={intl.formatMessage(messages.back)}
+                />
+              </Link>
+            }
+          />,
+          document.getElementById('toolbar'),
+        )}
+    </div>
+  );
+};
+
+export default Aliases;

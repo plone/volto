@@ -8,6 +8,7 @@ import {
   layoutViewsNamesMapping,
 } from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
+import { nonContentRoutesPublic } from './NonContentRoutesPublic';
 import {
   groupBlocksOrder,
   requiredBlocks,
@@ -18,6 +19,7 @@ import {
 import { components } from './Components';
 import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
+import slots from './slots';
 
 import { contentIcons } from './ContentIcons';
 import { styleClassNameConverters, styleClassNameExtenders } from './Style';
@@ -25,6 +27,7 @@ import {
   controlPanelsIcons,
   filterControlPanels,
   filterControlPanelsSchema,
+  unwantedControlPanelsFields,
 } from './ControlPanels';
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
@@ -32,6 +35,7 @@ import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 import ConfigRegistry from '@plone/volto/registry';
 
 import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
+import { registerValidators } from './validation';
 
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
@@ -110,6 +114,7 @@ let config = {
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
+    nonContentRoutesPublic,
     imageObjects: ['Image'],
     reservedIds: ['login', 'layout', 'plone', 'zip', 'properties'],
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
@@ -152,6 +157,7 @@ let config = {
     controlPanelsIcons,
     filterControlPanels,
     filterControlPanelsSchema,
+    unwantedControlPanelsFields,
     externalRoutes: [
       // URL to be considered as external
       // {
@@ -167,6 +173,7 @@ let config = {
     ],
     showSelfRegistration: false,
     contentMetadataTagsImageField: 'image',
+    contentPropertiesSchemaEnhancer: null,
     hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
@@ -209,8 +216,9 @@ let config = {
   },
   addonRoutes: [],
   addonReducers: {},
-  slots: {},
   components,
+  slots: {},
+  utilities: {},
 };
 
 // The apiExpanders depends on a config of the object, so it's done here
@@ -238,5 +246,20 @@ ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.components = config.components;
 ConfigRegistry.slots = config.slots;
+ConfigRegistry.utilities = config.utilities;
+
+// Register slots
+Object.entries(slots).forEach(([slotName, components]) => {
+  components.forEach(({ name, component, predicates = [] }) => {
+    ConfigRegistry.registerSlotComponent({
+      slot: slotName,
+      name,
+      component,
+      predicates,
+    });
+  });
+});
+
+registerValidators(ConfigRegistry);
 
 applyAddonConfiguration(ConfigRegistry);

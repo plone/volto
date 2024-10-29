@@ -71,15 +71,15 @@ Volto has the following folder structure.
 ```
 
 
-## Development pre-requisites
+## Development prerequisites
 
-To set up a Volto core development environment, your system must satisfy the following pre-requisites.
+To set up a Volto core development environment, your system must satisfy the following prerequisites.
 
 ```{include} ./install-operating-system.md
 ```
 
 -   {term}`nvm`
--   {term}`Node.js` LTS 20.x
+-   {term}`Node.js` LTS 22.x
 -   {term}`pnpm`
 -   {term}`GNU make`
 -   {term}`Docker`
@@ -169,7 +169,19 @@ pnpm install
 ```
 
 
-## Start the backend and Volto
+(develop-volto-start-plone-label)=
+
+## Start Plone
+
+Every time you want to run Volto for core development, you will need to create two terminal sessions, one for the {ref}`backend <develop-volto-start-the-backend-label>` and one for the {ref}`frontend <develop-volto-start-the-frontend-label>`.
+For both sessions, change your working directory to the root of your Volto clone.
+
+To stop either the backend or frontend, use {kbd}`ctrl-c`.
+
+
+(develop-volto-start-the-backend-label)=
+
+### Start the backend
 
 `````{versionadded} 18.0.0-alpha.42
 Persist backend data across Docker sessions.
@@ -184,10 +196,8 @@ It is intended only for development.
 ````
 `````
 
-Every time you want to run Volto for core development, you will need to create two terminal sessions, one for the backend and one for the frontend.
-For both sessions, change your working directory to the root of your Volto clone.
-
 In the first session, start the backend.
+You can browse to the backend running at http://localhost:8080.
 
 ```shell
 make backend-docker-start
@@ -206,18 +216,41 @@ docker volume rm volto-backend-data
 
 Then run `make backend-docker-start` again to start the backend with a clean data volume.
 ````
-    
-Browse to the backend running at http://localhost:8080.
 
-In the second session, start the frontend.
+
+(develop-volto-configure-backend-language-label)=
+
+#### Configure backend language
+
+If you use the Docker image [`plone-backend`](https://github.com/plone/plone-backend), you can set its `LANGUAGE` environment variable, overriding the default of `en`, when you start it.
+
+This variable is applied only when the Plone site is created.
+If you persist data through restarts, you only need to do this once.
+Conversely, if you create a Plone site in the wrong language, you can delete the data volume, and recreate it with the correct language.
+
+You can either pass an environment variable into the make command to start the backend, or export an environment variable in your shell session and start the backend.
+
+```shell
+# pass method
+LANGUAGE=pt-br make backend-docker-start
+
+# export method
+export LANGUAGE=pt-br
+make backend-docker-start
+```
+
+
+(develop-volto-start-the-frontend-label)=
+
+## Start the frontend
+
+In the second session, start the frontend, Volto.
 
 ```shell
 pnpm start
 ```
 
 Browse to the frontend running at http://localhost:3000.
-
-To stop either the backend or frontend, use {kbd}`ctrl-c`.
 
 
 (developing-core-run-commands-for-pnpm-workspaces-label)=
@@ -297,13 +330,6 @@ By default, the use of TypeScript is required in Plone frontend libraries, Volto
 
 The monorepository consists of several core libraries.
 
-### Volto project generator
-
-`@plone/generator-volto` is a Yeoman generator that helps you set up Volto via command line.
-It generates all the boilerplate needed to start developing a Plone Volto project.
-It is used by [CookieCutter Plone Starter](https://github.com/collective/cookiecutter-plone-starter), the recommended way to set up Plone projects.
-The generator features an `addon` template for scaffolding Volto add-ons in your projects.
-
 ### Registry
 
 `@plone/registry` provides support for building an add-on registry and infrastructure for JavaScript and TypeScript-based apps.
@@ -321,6 +347,17 @@ Used by Volto, you can also use it in other JavaScript frameworks and environmen
 
 `@plone/volto-slate` is the glue package that provides support for the Slate library in Volto.
 
+### Volto project generator
+
+`@plone/generator-volto` is a Yeoman generator that helps you set up Volto via command line.
+It generates all the boilerplate needed to start developing a Plone Volto project.
+It is used by [CookieCutter Plone Starter](https://github.com/collective/cookiecutter-plone-starter), the recommended way to set up Plone projects.
+The generator features an `addon` template for scaffolding Volto add-ons in your projects.
+
+```{deprecated} 18.0.0-alpha.43
+For Volto 18, `@plone/generator-volto` is replaced by [Cookieplone](https://github.com/plone/cookieplone).
+```
+
 
 ## Supported frontends
 
@@ -329,7 +366,7 @@ Volto is the default frontend, and is React-based.
 Classic UI is the Python-based, server-side rendered frontend.
 
 In Volto's `apps` folder, you'll find a Volto project scaffolding that uses Volto as a library.
-This is the same as that which you'll have when you run the Volto generator or `cookiecutter-plone-starter`.
+This is the same as that which you'll have when you follow the instructions in {doc}`plone:install/create-project`).
 
 
 ## Experimental frontends
