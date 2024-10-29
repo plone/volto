@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet, extractInvariantErrors } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { asyncConnect, hasApiExpander } from '@plone/volto/helpers';
@@ -208,9 +208,7 @@ class Edit extends Component {
       const errorsList = tryParseJSON(error);
       let erroMessage;
       if (Array.isArray(errorsList)) {
-        const invariantErrors = errorsList
-          .filter((errorItem) => !('field' in errorItem))
-          .map((errorItem) => errorItem['message']);
+        const invariantErrors = extractInvariantErrors(errorsList);
         if (invariantErrors.length > 0) {
           // Plone invariant validation message.
           erroMessage = invariantErrors.join(' - ');
@@ -348,11 +346,15 @@ class Edit extends Component {
               <>
                 <Helmet
                   title={
-                    this.props?.schema?.title
+                    this.props?.content?.title
                       ? this.props.intl.formatMessage(messages.edit, {
-                          title: this.props.schema.title,
+                          title: this.props?.content?.title,
                         })
-                      : null
+                      : this.props?.schema?.title
+                        ? this.props.intl.formatMessage(messages.edit, {
+                            title: this.props.schema.title,
+                          })
+                        : null
                   }
                 >
                   {this.props.content?.language && (

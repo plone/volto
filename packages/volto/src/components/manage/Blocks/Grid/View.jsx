@@ -7,6 +7,9 @@ import config from '@plone/volto/registry';
 const GridBlockView = (props) => {
   const { data, path, className, style } = props;
   const metadata = props.metadata || props.properties;
+  if (data.blocks_layout === undefined) {
+    return null;
+  }
   const columns = data.blocks_layout.items;
   const blocksConfig =
     config.blocks.blocksConfig[data['@type']].blocksConfig ||

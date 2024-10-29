@@ -1,5 +1,5 @@
 import { map, keys, intersection, isEmpty } from 'lodash';
-import { messages } from '../MessageLabels/MessageLabels';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import config from '@plone/volto/registry';
 import { toast } from 'react-toastify';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
@@ -35,7 +35,14 @@ export const tryParseJSON = (requestItem) => {
     try {
       resultObj = JSON.parse(requestItem.replace(/'/g, '"'));
     } catch (e) {
-      resultObj = null;
+      try {
+        // Treats strings like: `'String "double quotes"'`
+        resultObj = JSON.parse(
+          requestItem.replace(/"/g, '\\"').replace(/'/g, '"'),
+        );
+      } catch (e) {
+        resultObj = null;
+      }
     }
   }
   return resultObj;
@@ -337,4 +344,14 @@ export const validateFileUploadSize = (file, intlFunc) => {
     );
   }
   return isValid;
+};
+
+/**
+ * Extract invariant errors given an array of errors.
+ * @param {Array} erros
+ */
+export const extractInvariantErrors = (erros) => {
+  return erros
+    .filter((errorItem) => !('field' in errorItem))
+    .map((errorItem) => errorItem['message']);
 };

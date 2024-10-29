@@ -161,7 +161,7 @@ export function addBlock(formData, type, index, blocksConfig) {
 
   return [
     id,
-    _applyBlockInitialValue({
+    applyBlockInitialValue({
       id,
       value,
       blocksConfig,
@@ -197,8 +197,12 @@ export function addBlock(formData, type, index, blocksConfig) {
  * to call `onChangeBlock` at their creation time, as this is prone to racing
  * issue on block data storage.
  */
-const _applyBlockInitialValue = ({ id, value, blocksConfig, formData }) => {
-  const blocksFieldname = getBlocksFieldname(formData);
+export const applyBlockInitialValue = ({
+  id,
+  value,
+  blocksConfig,
+  formData,
+}) => {
   const type = value['@type'];
   blocksConfig = blocksConfig || config.blocks.blocksConfig;
 
@@ -208,6 +212,7 @@ const _applyBlockInitialValue = ({ id, value, blocksConfig, formData }) => {
       value,
       formData,
     });
+    const blocksFieldname = getBlocksFieldname(formData);
     formData[blocksFieldname][id] = value;
   }
 
@@ -238,7 +243,7 @@ export function mutateBlock(formData, id, value, blocksConfig) {
   const trailId = formData[blocksLayoutFieldname].items[index];
   if (trailId) {
     const block = formData[blocksFieldname][trailId];
-    newFormData = _applyBlockInitialValue({
+    newFormData = applyBlockInitialValue({
       id,
       value,
       blocksConfig,
@@ -256,7 +261,7 @@ export function mutateBlock(formData, id, value, blocksConfig) {
   }
 
   const idTrailingBlock = uuid();
-  newFormData = _applyBlockInitialValue({
+  newFormData = applyBlockInitialValue({
     id,
     value,
     blocksConfig,
@@ -307,8 +312,8 @@ export function insertBlock(
   });
 
   const newBlockId = uuid();
-  const newFormData = _applyBlockInitialValue({
-    id,
+  const newFormData = applyBlockInitialValue({
+    id: newBlockId,
     value,
     blocksConfig,
     formData: {
@@ -624,11 +629,11 @@ export const styleDataToStyleObject = (key, value, prefix = '') => {
  * Generate styles object from data
  *
  * @function buildStyleObjectFromData
- * @param {Object} obj A style wrapper object data
+ * @param {Object} data A block data object
  * @param {string} prefix The prefix (could be dragged from a recursive call, initially empty)
  * @return {Object} The style object ready to be passed as prop
  */
-export const buildStyleObjectFromData = (obj = {}, prefix = '') => {
+export const buildStyleObjectFromData = (data = {}, prefix = '') => {
   // style wrapper object has the form:
   // const styles = {
   //   color: 'red',
@@ -636,38 +641,78 @@ export const buildStyleObjectFromData = (obj = {}, prefix = '') => {
   // }
   // Returns: {'--background-color: '#AABBCC'}
 
-  return Object.fromEntries(
-    Object.entries(obj)
-      .filter(([k, v]) => k.startsWith('--') || isObject(v))
-      .reduce(
-        (acc, [k, v]) => [
-          ...acc,
-          // Kept for easy debugging
-          // ...(() => {
-          //   if (isObject(v)) {
-          //     return Object.entries(
-          //       buildStyleObjectFromData(
-          //         v,
-          //         `${k.endsWith(':noprefix') ? '' : `${prefix}${k}--`}`,
-          //       ),
-          //     );
-          //   }
-          //   return [styleDataToStyleObject(k, v, prefix)];
-          // })(),
-          ...(isObject(v)
-            ? Object.entries(
-                buildStyleObjectFromData(
-                  v,
-                  `${k.endsWith(':noprefix') ? '' : `${prefix}${k}--`}`, // We don't add a prefix if the key ends with the marker suffix
-                ),
-              )
-            : [styleDataToStyleObject(k, v, prefix)]),
-        ],
-        [],
-      )
-      .filter((v) => !!v),
-  );
+  function recursiveBuildStyleObjectFromData(obj, prefix) {
+    return Object.fromEntries(
+      Object.entries(obj)
+        .filter(([k, v]) => k.startsWith('--') || isObject(v))
+        .reduce(
+          (acc, [k, v]) => [
+            ...acc,
+            // Kept for easy debugging
+            // ...(() => {
+            //   if (isObject(v)) {
+            //     return Object.entries(
+            //       buildStyleObjectFromData(
+            //         v,
+            //         `${k.endsWith(':noprefix') ? '' : `${prefix}${k}--`}`,
+            //       ),
+            //     );
+            //   }
+            //   return [styleDataToStyleObject(k, v, prefix)];
+            // })(),
+            ...(isObject(v)
+              ? Object.entries(
+                  recursiveBuildStyleObjectFromData(
+                    v,
+                    `${k.endsWith(':noprefix') ? '' : `${prefix}${k}--`}`, // We don't add a prefix if the key ends with the marker suffix
+                  ),
+                )
+              : [styleDataToStyleObject(k, v, prefix)]),
+          ],
+          [],
+        )
+        .filter((v) => !!v),
+    );
+  }
+
+  // If the block has a `@type`, it's a full data block object
+  // Then apply the style enhancers
+  if (data['@type']) {
+    const styleObj = data.styles || {};
+    const stylesFromCSSproperties = recursiveBuildStyleObjectFromData(
+      styleObj,
+      prefix,
+    );
+
+    let stylesFromObjectStyleEnhancers = {};
+    const enhancers = config.getUtilities({
+      type: 'styleWrapperStyleObjectEnhancer',
+    });
+
+    enhancers.forEach(({ method }) => {
+      stylesFromObjectStyleEnhancers = {
+        ...stylesFromObjectStyleEnhancers,
+        ...method(data),
+      };
+    });
+
+    return { ...stylesFromCSSproperties, ...stylesFromObjectStyleEnhancers };
+  } else {
+    return recursiveBuildStyleObjectFromData(data, prefix);
+  }
 };
+
+/**
+ * Find a matching style by name given a style definition
+ *
+ * @function findStyleByName
+ * @param {Object} styleDefinitions An object with the style definitions
+ * @param {string} name The name of the style to find
+ * @return {Object} The style object of the matching name
+ */
+export function findStyleByName(styleDefinitions, name) {
+  return styleDefinitions.find((color) => color.name === name)?.style;
+}
 
 /**
  * Return previous/next blocks given the content object and the current block id
@@ -713,7 +758,7 @@ export function isBlockContainer(block) {
  * @param {Object} types A list with the list of types to be matched
  * @return {Array} An array of block ids
  */
-export function findBlocks(blocks, types, result = []) {
+export function findBlocks(blocks = {}, types, result = []) {
   Object.keys(blocks).forEach((blockId) => {
     const block = blocks[blockId];
     // check blocks from data as well since some add-ons use that
