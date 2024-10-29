@@ -57,6 +57,13 @@ describe('Aliases', () => {
         locale: 'en',
         messages: {},
       },
+      site: {
+        data: {
+          features: {
+            filter_aliases_by_date: true,
+          },
+        },
+      },
     });
     const { container } = render(
       <Provider store={store}>

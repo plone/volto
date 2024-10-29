@@ -2,6 +2,13 @@ export { BlockToolbar } from './components/BlockToolbar/BlockToolbar';
 export { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
 export { Button } from './components/Button/Button';
 export { Calendar } from './components/Calendar/Calendar';
+export { ColorArea } from './components/ColorArea/ColorArea';
+export { ColorField } from './components/ColorField/ColorField';
+export { ColorPicker } from './components/ColorPicker/ColorPicker';
+export { ColorSlider } from './components/ColorSlider/ColorSlider';
+export { ColorSwatch } from './components/ColorSwatch/ColorSwatch';
+export { ColorSwatchPicker } from './components/ColorSwatchPicker/ColorSwatchPicker';
+export { ColorWheel } from './components/ColorWheel/ColorWheel';
 export { Checkbox } from './components/Checkbox/Checkbox';
 export { CheckboxField } from './components/CheckboxField/CheckboxField';
 export { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
@@ -11,6 +18,8 @@ export { DateField } from './components/DateField/DateField';
 export { DatePicker } from './components/DatePicker/DatePicker';
 export { DateRangePicker } from './components/DateRangePicker/DateRangePicker';
 export { Dialog } from './components/Dialog/Dialog';
+export { Disclosure } from './components/Disclosure/Disclosure';
+export { DisclosureGroup } from './components/DisclosureGroup/DisclosureGroup';
 export { Form } from './components/Form/Form';
 export { GridList, GridListItem } from './components/GridList/GridList';
 export { Icon } from './components/Icon/Icon';
@@ -45,9 +54,6 @@ export { Tooltip } from './components/Tooltip/Tooltip';
 
 export { RenderBlocks } from './views/RenderBlocks/RenderBlocks';
 export { DefaultBlockView } from './views/RenderBlocks/DefaultBlockView';
-
-export { FlattenToAppURLProvider } from './providers/flattenToAppURL';
-export { useFlattenToAppURL } from './providers/flattenToAppURL';
 
 // Quanta components
 export { QuantaTextField } from './components/quanta/TextField/TextField';

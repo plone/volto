@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useUser } from '@plone/volto/hooks';
 import PropTypes from 'prop-types';
 import { filter, map, groupBy, isEmpty } from 'lodash';
 import { Accordion, Button } from 'semantic-ui-react';
@@ -36,7 +36,7 @@ const BlockChooser = ({
   contentType,
 }) => {
   const intl = useIntl();
-  const user = useSelector((state) => state.users?.user);
+  const user = useUser();
   const hasAllowedBlocks = !isEmpty(allowedBlocks);
 
   const filteredBlocksConfig = filter(blocksConfig, (item) => {

@@ -10,6 +10,7 @@ on:
       - "docs/source/**"
       - .readthedocs.yaml
       - requirements-docs.txt
+      - "packages/registry/docs/**"
 
 permissions:
   pull-requests: write

@@ -71,15 +71,15 @@ Volto has the following folder structure.
 ```
 
 
-## Development pre-requisites
+## Development prerequisites
 
-To set up a Volto core development environment, your system must satisfy the following pre-requisites.
+To set up a Volto core development environment, your system must satisfy the following prerequisites.
 
 ```{include} ./install-operating-system.md
 ```
 
 -   {term}`nvm`
--   {term}`Node.js` LTS 20.x
+-   {term}`Node.js` LTS 22.x
 -   {term}`pnpm`
 -   {term}`GNU make`
 -   {term}`Docker`

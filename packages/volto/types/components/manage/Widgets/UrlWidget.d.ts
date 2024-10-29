@@ -74,7 +74,7 @@ declare const _default: {
         data: {};
         block: string;
     };
-    contextType?: React.Context<any>;
+    contextType?: React.Context<any> | undefined;
 };
 export default _default;
 import React from 'react';

@@ -10,6 +10,7 @@ import type { Location, History } from 'history';
 export interface BlocksFormData {
   '@type': AvailableBlocks;
   variation?: string;
+  [x: string]: unknown;
 }
 
 export interface BlockViewProps {
@@ -119,3 +120,15 @@ export interface BlockEditProps {
   errors: Record<string, Array<string>>;
   blocksErrors: Record<string, Record<string, Array<string>>>;
 }
+
+export type StyleDefinition =
+  | {
+      name: string;
+      label: string;
+      style: Record<`--${string}`, string>;
+    }
+  | {
+      name: string;
+      label: string;
+      style: undefined;
+    };
