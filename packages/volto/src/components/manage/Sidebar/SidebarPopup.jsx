@@ -16,6 +16,13 @@ const SidebarPopup = (props) => {
     onClose();
   };
 
+  const handleEscapeKey = (e) => {
+    if (open && e.key === 'Escape') {
+      onClose();
+      e.stopPropagation();
+    }
+  };
+
   const [isClient, setIsClient] = React.useState(false);
   React.useEffect(() => {
     setIsClient(true);
@@ -23,11 +30,12 @@ const SidebarPopup = (props) => {
 
   React.useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside, false);
+    document.addEventListener('keyup', handleEscapeKey, false);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside, false);
+      document.removeEventListener('keyup', handleEscapeKey, false);
     };
   });
-
   return (
     <>
       {overlay && (
