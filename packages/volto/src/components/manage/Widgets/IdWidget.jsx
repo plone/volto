@@ -3,11 +3,11 @@
  * @module components/manage/Widgets/IdWidget
  */
 
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { Input } from 'semantic-ui-react';
-import { compact, concat, keys, map, union, uniq } from 'lodash';
+import { compact, concat, map, union, uniq } from 'lodash';
 
 import { defineMessages, useIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
@@ -46,8 +46,7 @@ const IdWidget = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
   const ref = useRef();
-  const indexesObj = useSelector((state) => state.querystring.indexes);
-  const indexes = useMemo(() => keys(indexesObj), [indexesObj]);
+  const indexes = useSelector((state) => state.querystring.indexes);
 
   const [errors, setError] = useState([]);
   const [reservedIds] = useState(
@@ -81,7 +80,7 @@ const IdWidget = (props) => {
     }
 
     // Check indexes
-    if (indexes.indexOf(values) !== -1) {
+    if (values in indexes) {
       error.push(intl.formatMessage(messages.reservedId));
     }
 
