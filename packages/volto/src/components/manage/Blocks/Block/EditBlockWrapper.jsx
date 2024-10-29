@@ -69,7 +69,7 @@ const EditBlockWrapper = (props) => {
     data,
     classNames,
   });
-  const style = buildStyleObjectFromData(data.styles);
+  const style = buildStyleObjectFromData(data);
 
   // We need to merge the StyleWrapper styles with the draggable props from b-D&D
   const styleMergedWithDragProps = {
