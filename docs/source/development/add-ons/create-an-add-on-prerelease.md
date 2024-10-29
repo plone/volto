@@ -22,7 +22,10 @@ Follow the section {ref}`plone:create-project-cookieplone-system-requirements` t
 
 ## Generate the add-on project
 
-Run the following command to generate your add-on project using the `frontend_addon` Cookieplone template.
+To develop an add-on for only the frontend, then run the following command to generate your add-on project using the `frontend_addon` Cookieplone template.
+To develop add-ons for each the frontend and backend that work together, then instead use the Cookieplone template `project` in the command.
+See {doc}`plone:install/create-project-cookieplone` for details of the latter scenario.
+The following output assumes the former scenario.
 
 ```shell
 pipx run cookieplone frontend_addon
