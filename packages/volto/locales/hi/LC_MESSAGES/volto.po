@@ -994,6 +994,11 @@ msgstr "तारीख (नवीनतम पहले)"
 msgid "Default"
 msgstr "डिफ़ॉल्ट"
 
+#. Default: "Default value"
+#: components/manage/Widgets/SchemaWidget
+msgid "Default value"
+msgstr ""
+
 #. Default: "Default view"
 #: config/Views
 msgid "Default view"
@@ -1514,6 +1519,11 @@ msgstr "क्षेत्र"
 msgid "File"
 msgstr "फ़ाइल"
 
+#. Default: "File is not of the accepted type {accept}"
+#: components/manage/Widgets/FileWidget
+msgid "File is not of the accepted type {accept}"
+msgstr ""
+
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
@@ -1533,6 +1543,11 @@ msgstr "फ़ाइल का नाम"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Files uploaded: {uploadedFiles}"
 msgstr ""फ़ाइलें अपलोड की गईं: {uploadedFiles}"
+
+#. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+#: components/manage/Widgets/SchemaWidget
+msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+msgstr ""
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
@@ -2675,6 +2690,11 @@ msgstr "व्यक्तिगत उपकरण"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "इस आइटम की कंटेंट बनाने के लिए जिम्मेदार व्यक्तियों। कृपया प्रति पंक्ति एक उपयोगकर्ता नाम की सूची दर्ज करें। प्रमुख निर्मूल पहले आना चाहिए।"
 
+#. Default: "Placeholder"
+#: components/manage/Widgets/SchemaWidget
+msgid "Placeholder"
+msgstr ""
+
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
@@ -2791,6 +2811,11 @@ msgstr "प्रकाशन तिथि"
 #: components/manage/Blocks/Listing/schema
 msgid "Query"
 msgstr "पूछताछ"
+
+#. Default: "Query Parameter Name"
+#: components/manage/Widgets/SchemaWidget
+msgid "Query Parameter Name"
+msgstr ""
 
 #. Default: "Re-enter the password. Make sure the passwords are identical."
 #: components/manage/Preferences/ChangePassword
@@ -3723,6 +3748,11 @@ msgstr "आपकी वेबसाइट के बैकएंड सर्�
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr "बटन की उपस्थिति लाइव खोज को अक्षम करती है, प्रश्न ENTER दबाने पर जारी किया जाता है"
 
+#. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+#: components/manage/Widgets/FileWidget
+msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+msgstr ""
+
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
 msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
@@ -3873,6 +3903,7 @@ msgstr "यह नियम निम्नलिखित स्थानों
 
 #. Default: "Time"
 #: components/manage/Widgets/DatetimeWidget
+#: components/manage/Widgets/TimeWidget
 msgid "Time"
 msgstr "समय"
 
@@ -4468,6 +4499,11 @@ msgstr "आपकी साइट अपडेट है।"
 msgid "Your usernaame is required for reset your password."
 msgstr "आपका उपयोगकर्ता नाम पासवर्ड रीसेट करने के लिए आवश्यक है।"
 
+#. Default: "File types allowed"
+#: components/manage/Widgets/SchemaWidget
+msgid "accept"
+msgstr ""
+
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -5042,6 +5078,11 @@ msgstr "चयन करें"
 #: components/manage/Blocks/Search/components/ViewSwitcher
 msgid "selectView"
 msgstr "दृश्य चुनें"
+
+#. Default: "Maximum size of the file in bytes"
+#: components/manage/Widgets/SchemaWidget
+msgid "size"
+msgstr ""
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks
