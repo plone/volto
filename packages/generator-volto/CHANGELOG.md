@@ -8,6 +8,21 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.20 (2024-10-27)
+
+### Breaking
+
+- Dropped support for Node.js 18, since Volto only supports the last two LTS versions. @sneridagh
+  Volto might continue to work on it, but it will be no longer tested in CI. [#6371](https://github.com/plone/volto/issues/6371)
+- Breaking changes in `.eslintrc.js` and `.storybook/main.js` because of #6399. @sneridagh
+  Please see the [Upgrade Guide](https://6.docs.plone.org/volto/upgrade-guide/index.html). [#6399](https://github.com/plone/volto/issues/6399)
+
+## 9.0.0-alpha.19 (2024-10-18)
+
+### Internal
+
+- Update to use jest 26 @sneridagh [#6406](https://github.com/plone/volto/issues/6406)
+
 ## 9.0.0-alpha.18 (2024-10-04)
 
 ### Breaking

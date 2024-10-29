@@ -79,7 +79,7 @@ To set up a Volto core development environment, your system must satisfy the fol
 ```
 
 -   {term}`nvm`
--   {term}`Node.js` LTS 20.x
+-   {term}`Node.js` LTS 22.x
 -   {term}`pnpm`
 -   {term}`GNU make`
 -   {term}`Docker`

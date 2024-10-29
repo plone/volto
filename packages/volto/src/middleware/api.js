@@ -186,6 +186,7 @@ const apiMiddlewareFactory =
                     checkUrl: settings.actions_raising_api_errors.includes(
                       action.type,
                     ),
+                    attach: item.attach,
                   },
                 ).then((reqres) => {
                   if (action.subrequest === 'batch-upload') {
@@ -205,6 +206,7 @@ const apiMiddlewareFactory =
                   checkUrl: settings.actions_raising_api_errors.includes(
                     action.type,
                   ),
+                  attach: item.attach,
                 }),
               ),
             )
@@ -214,6 +216,7 @@ const apiMiddlewareFactory =
             headers: request.headers,
             params: request.params,
             checkUrl: settings.actions_raising_api_errors.includes(action.type),
+            attach: request.attach,
           });
       actionPromise.then(
         (result) => {
