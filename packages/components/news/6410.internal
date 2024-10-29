@@ -1,1 +1,0 @@
-Adjust the path to perform a proper `git diff` between the cached and current commits to determine whether to build the Storybook for the components package on Netlify. @stevepiercy
