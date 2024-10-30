@@ -6,6 +6,7 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 import { SliderSchema as TestBlockSchema } from './components/Blocks/TestBlock/schema';
 import { multipleFieldsetsSchema } from './components/Blocks/TestBlock/schema';
 import { conditionalVariationsSchemaEnhancer } from './components/Blocks/schemaEnhancers';
+import { Login } from '@plone/volto/components';
 import codeSVG from '@plone/volto/icons/code.svg';
 
 const testBlock = {
@@ -148,6 +149,11 @@ export const workingCopyFixture = (config) => {
 };
 
 const applyConfig = (config) => {
+  config.addonRoutes.push({
+    path: '/fallback_login',
+    component: Login,
+    exact: false,
+  });
   config.blocks.blocksConfig.testBlock = testBlock;
   config.blocks.blocksConfig.testBlockConditional = testBlockConditional;
   config.blocks.blocksConfig.testBlockWithConditionalVariations =
