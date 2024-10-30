@@ -25,11 +25,6 @@ const RenderMenuItems = ({ items }) => {
   });
 };
 
-/**
- * View toc block class.
- * @class View
- * @extends Component
- */
 const View = ({ data, tocEntries }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   // When the page is resized to prevent items from the TOC from going out of the viewport,
