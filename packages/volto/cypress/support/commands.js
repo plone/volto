@@ -967,3 +967,24 @@ Cypress.Commands.add('queryCounter', (path, steps, number = 1) => {
 
   cy.get('@counterName').its('callCount').should('equal', number);
 });
+
+Cypress.Commands.add('enableSelfRegister', () => {
+  let api_url;
+  if (Cypress.env('API') === 'guillotina') {
+    api_url = GUILLOTINA_API_URL;
+  } else {
+    api_url = PLONE_API_URL;
+  }
+
+  cy.request({
+    method: 'PATCH',
+    url: `${api_url}/@controlpanels/security`,
+    headers: { Accept: 'application/json' },
+    auth: ploneAuthObj,
+    body: {
+      enable_self_reg: true,
+      use_email_as_login: true,
+      use_uuid_as_userid: true,
+    },
+  });
+});
