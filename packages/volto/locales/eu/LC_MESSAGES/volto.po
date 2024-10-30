@@ -274,12 +274,12 @@ msgstr "Produktu gehigarria ezin izan da kendu"
 msgid "Addon could not be upgraded"
 msgstr "Produktu gehigarria ezin izan da eguneratu"
 
-#. Default: "Addon installed succesfully"
+#. Default: "Addon installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
 msgstr "Produktu gehigarria ondo instalatu da"
 
-#. Default: "Addon uninstalled succesfully"
+#. Default: "Addon uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
 msgstr "Produktu gehigarria ondo kendu da"

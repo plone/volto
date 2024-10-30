@@ -272,12 +272,12 @@ msgstr "Laajennosta ei voitu poistaa"
 msgid "Addon could not be upgraded"
 msgstr "Laajennosta ei voitu päivittää"
 
-#. Default: "Addon installed succesfully"
+#. Default: "Addon installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
 msgstr "Laajennos asennettu onnistuneesti"
 
-#. Default: "Addon uninstalled succesfully"
+#. Default: "Addon uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
 msgstr "Laajennos poistettu onnistuneesti"

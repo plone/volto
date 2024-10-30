@@ -273,12 +273,12 @@ msgstr "无法卸载附件"
 msgid "Addon could not be upgraded"
 msgstr "无法升级附件"
 
-#. Default: "Addon installed succesfully"
+#. Default: "Addon installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
 msgstr "附件安装成功"
 
-#. Default: "Addon uninstalled succesfully"
+#. Default: "Addon uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
 msgstr "附件卸载成功"

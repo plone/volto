@@ -272,12 +272,12 @@ msgstr "Erweiterung konnte nicht deaktiviert werden"
 msgid "Addon could not be upgraded"
 msgstr "Erweiterung konnte nicht aktualisiert werden"
 
-#. Default: "Addon installed succesfully"
+#. Default: "Addon installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
 msgstr "Erweiterungen erfolgreich aktiviert"
 
-#. Default: "Addon uninstalled succesfully"
+#. Default: "Addon uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
 msgstr "Erweiterung erfolgreich deaktiviert"

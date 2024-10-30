@@ -267,12 +267,12 @@ msgstr "अड-ऑन को अनइंस्टॉल नहीं किय�
 msgid "Addon could not be upgraded"
 msgstr "एड-ऑन को अपग्रेड नहीं किया जा सका"
 
-#. Default: "Addon installed succesfully"
+#. Default: "Addon installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
 msgstr "एडऑन सफलतापूर्वक स्थापित किया गया"
 
-#. Default: "Addon uninstalled succesfully"
+#. Default: "Addon uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
 msgstr "एडऑन को सफलतापूर्वक अनइंस्टॉल किया गया"

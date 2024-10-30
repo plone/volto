@@ -267,12 +267,12 @@ msgstr "Non è stato possibile disinstallare l'addon"
 msgid "Addon could not be upgraded"
 msgstr "Non è stato possibile aggiornare l'addon"
 
-#. Default: "Addon installed succesfully"
+#. Default: "Addon installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
 msgstr "L'addon è stato installato correttamente"
 
-#. Default: "Addon uninstalled succesfully"
+#. Default: "Addon uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
 msgstr "L'addon è stato disinstallato correttamente"
