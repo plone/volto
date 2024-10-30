@@ -90,7 +90,7 @@ export default applyConfig;
 ```
 
 ```{seealso}
-{doc}`how-to-load-add-on-configuration`
+{doc}`../development/add-ons/load-add-on-configuration`
 ```
 
 ## Customizations
