@@ -284,6 +284,27 @@ prefixed-acceptance-test: ## Start Prefixed Cypress Acceptance Tests
 deployment-prefixed-acceptance-web-server-start: ## Start the prefixed webserver
 	cd cypress/docker && docker compose -f prefixed.yml up
 
+######### Prefixed Working Copy Acceptance tests
+
+.PHONY: prefixed-working-copy-acceptance-frontend-prod-start
+prefixed-working-copy-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for prefixed working copy tests
+	RAZZLE_PREFIX_PATH=/foo ADDONS=@plone/volto-coresandbox:workingCopyFixture RAZZLE_API_PATH=http://localhost/foo pnpm build && pnpm start:prod
+
+.PHONY: prefixed-working-copy-acceptance-test
+prefixed-working-copy-acceptance-test: ## Start Cypress in interactive mode for prefixed working copy tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/workingCopy/**/*.{js,jsx,ts,tsx}' --config baseUrl='http://localhost/foo' --env prefixPath='/foo'
+
+.PHONY: prefixed-working-copy-ci-acceptance-test
+prefixed-working-copy-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for prefixed working copy tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/workingCopy/**/*.{js,jsx,ts,tsx}' --config baseUrl='http://localhost/foo' --env prefixPath='/foo'
+
+.PHONY: prefixed-working-copy-ci-acceptance-test-run-all
+prefixed-working-copy-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for prefixed working copy tests
+	$(NODEBIN)/start-test \
+		"make working-copy-acceptance-backend-start & make prefixed-working-copy-acceptance-frontend-prod-start & make deployment-prefixed-acceptance-web-server-start" \
+		http://localhost/foo \
+		"make prefixed-working-copy-ci-acceptance-test"
+
 ######### Prefixed Multilingual Acceptance tests
 
 .PHONY: prefixed-multilingual-acceptance-frontend-prod-start

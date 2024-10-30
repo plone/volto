@@ -1083,8 +1083,8 @@ jobs:
           config: baseUrl=http://localhost/foo
           env: prefixPath=/foo
           start: |
-            make ci-acceptance-backend-start
-            make prefixed-acceptance-frontend-prod-start
+            make working-copy-acceptance-backend-start
+            make prefixed-working-copy-acceptance-frontend-prod-start
             make deployment-prefixed-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000/foo http://localhost/foo'
 
