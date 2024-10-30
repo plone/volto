@@ -17,6 +17,27 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.48 (2024-10-30)
+
+### Breaking
+
+- Wrap Table of Contents block in a `nav` tag, instead of a `div` tag, for better representation improving the block accessibility. @Tishasoumya-02 @ichim-david [#6082](https://github.com/plone/volto/issues/6082)
+
+### Feature
+
+- Enhance the `buildStyleObjectFromData` helper. @sneridagh [#6445](https://github.com/plone/volto/issues/6445)
+
+### Bugfix
+
+- Fix error "Exception: No query supplied" in the listing block, when there is no criteria selected. @tedw87 [#3839](https://github.com/plone/volto/issues/3839)
+- Fixed page changes not being announced to screen reader users. @JeffersonBledsoe [#5288](https://github.com/plone/volto/issues/5288)
+- Fix useSelector is returned a different result when called with the same parameters in IdWidget. @iFlameing [#6449](https://github.com/plone/volto/issues/6449)
+- Moved `applyBlockDefaults` one component up so the style is computed correctly. @sneridagh [#6451](https://github.com/plone/volto/issues/6451)
+
+### Documentation
+
+- Added upgrade guide fix for HMR. @sneridagh [#6446](https://github.com/plone/volto/issues/6446)
+
 ## 18.0.0-alpha.47 (2024-10-27)
 
 ### Breaking
