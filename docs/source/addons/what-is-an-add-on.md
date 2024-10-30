@@ -7,7 +7,7 @@ myst:
     "keywords": "add-on, Volto, create"
 ---
 %Explanation
-## What is a Volto add-on
+# What is a Volto add-on
 
 There are several advanced scenarios where we might want to have more control and flexibility beyond using the plain Volto project to build a site.
 
