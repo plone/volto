@@ -1,1 +1,0 @@
-Moved `applyBlockDefaults` one component up so the style is computed correctly. @sneridagh
