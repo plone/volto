@@ -1,0 +1,42 @@
+@import './ColorSwatch.css';
+@import './ColorField.css';
+@import './theme.css';
+
+.react-aria-ColorSwatchPicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.react-aria-ColorSwatchPickerItem {
+  position: relative;
+  width: fit-content;
+  border-radius: 4px;
+  forced-color-adjust: none;
+  outline: none;
+
+  &[data-focus-visible] {
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: 2px;
+  }
+
+  &[data-selected]::after {
+    position: absolute;
+    border: 2px solid black;
+    border-radius: inherit;
+    content: '';
+    inset: 0;
+    outline: 2px solid white;
+    outline-offset: -4px;
+  }
+
+  &[data-disabled] {
+    opacity: 0.2;
+  }
+}
+
+.react-aria-ColorSwatchPicker {
+  &[data-layout='stack'] {
+    flex-direction: column;
+  }
+}
