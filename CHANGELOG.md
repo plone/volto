@@ -17,6 +17,13 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.20.1 (2024-10-30)
+
+### Bugfix
+
+- Fix error "Exception: No query supplied" in the listing block, when there is no criteria selected. @tedw87 [#3839](https://github.com/plone/volto/issues/3839)
+- Fix redirect after login if the `Login` component is used on a route other than `/login` or `/logout`. @dobri1408 [#6452](https://github.com/plone/volto/issues/6452)
+
 ## 17.20.0 (2024-10-09)
 
 ### Feature
