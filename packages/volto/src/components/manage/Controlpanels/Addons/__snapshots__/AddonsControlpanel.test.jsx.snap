@@ -62,7 +62,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
             tabindex="0"
           >
             <div
-              aria-label=". Press Enter to upgrade this addon"
+              aria-label=" Press Enter to upgrade this addon"
               aria-selected="false"
               class="addon-item"
               data-key="react-aria-1"
@@ -147,7 +147,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
             tabindex="0"
           >
             <div
-              aria-label="Something Else Does other things…. Press Enter to install this addon"
+              aria-label="Something Else Does other things… Press Enter to install this addon"
               aria-selected="false"
               class="addon-item"
               data-key="react-aria-1"
@@ -232,7 +232,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
             tabindex="0"
           >
             <div
-              aria-label="Whatever Does stuff and junk…. Press Enter to install this addon"
+              aria-label="Whatever Does stuff and junk… Press Enter to install this addon"
               aria-selected="false"
               class="addon-item"
               data-key="react-aria-1"
