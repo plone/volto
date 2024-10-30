@@ -119,7 +119,7 @@ const messages = defineMessages({
   },
   addonInstalled: {
     id: 'Addon installed succesfuly',
-    defaultMessage: 'Addon installed succesfully',
+    defaultMessage: 'Addon installed successfully',
   },
   addonNotInstalled: {
     id: 'Addon could not be installed',
@@ -127,7 +127,7 @@ const messages = defineMessages({
   },
   addonUninstalled: {
     id: 'Addon uninstalled succesfuly',
-    defaultMessage: 'Addon uninstalled succesfully',
+    defaultMessage: 'Addon uninstalled successfully',
   },
   addonNotUninstalled: {
     id: 'Addon could not be uninstalled',

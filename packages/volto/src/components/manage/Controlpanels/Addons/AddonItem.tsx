@@ -70,7 +70,7 @@ const UpgradableItem: React.FC<UpgradableAddonProps> = ({
         addon.upgrade_info.installedVersion && addon.upgrade_info.newVersion
           ? `${addon.description} ${descriptionText}`
           : addon.description + addon.upgrade_info.available &&
-            `. ${intl.formatMessage({ id: 'Press Enter to upgrade this addon' })}`
+            ` ${intl.formatMessage({ id: 'Press Enter to upgrade this addon' })}`
       }
       onAction={onActionWrapper(addon.id, onUpgrade)}
     >
@@ -112,7 +112,7 @@ const AvailableItem: React.FC<AvailableAddonProps> = ({ addon, onInstall }) => {
     <GridListItem
       key={addon['@id']}
       className="addon-item"
-      textValue={`${addon.title} ${addon.description}. ${intl.formatMessage({ id: 'Press Enter to install this addon' })}`}
+      textValue={`${addon.title} ${addon.description} ${intl.formatMessage({ id: 'Press Enter to install this addon' })}`}
       onAction={onActionWrapper(addon.id, onInstall)}
     >
       <div className="addon-item-header">
@@ -145,7 +145,7 @@ const InstalledItem: React.FC<InstalledAddonProps> = ({
     <GridListItem
       key={addon['@id']}
       className="addon-item"
-      textValue={`${addon.title} ${addon.description}. ${intl.formatMessage({ id: 'Press Enter to install this addon' })}`}
+      textValue={`${addon.title} ${addon.description} ${intl.formatMessage({ id: 'Press Enter to install this addon' })}`}
       onAction={onActionWrapper(addon.id, onUninstall)}
     >
       <div className="addon-item-header">
