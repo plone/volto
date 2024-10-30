@@ -31,6 +31,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
         aria-label="Upgradable addons"
         class="addons-section "
         id="header-upgradable"
+        role="group"
       >
         <div
           class="addons-section-header"
@@ -61,9 +62,12 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
             tabindex="0"
           >
             <div
+              aria-label=". Press Enter to upgrade this addon"
+              aria-selected="false"
               class="addon-item"
               data-key="react-aria-1"
               data-rac=""
+              data-selection-mode="single"
               id="react-aria-:r0:-react-aria-1"
               role="row"
               tabindex="-1"
@@ -112,6 +116,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
         aria-label="Available addons"
         class="addons-section "
         id="header-available"
+        role="group"
       >
         <div
           class="addons-section-header"
@@ -119,7 +124,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
           <h3
             id="available"
           >
-            Available
+            Available addons
             :
              
             <span>
@@ -142,9 +147,12 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
             tabindex="0"
           >
             <div
+              aria-label="Something Else Does other things…. Press Enter to install this addon"
+              aria-selected="false"
               class="addon-item"
               data-key="react-aria-1"
               data-rac=""
+              data-selection-mode="single"
               id="react-aria-:r1:-react-aria-1"
               role="row"
               tabindex="-1"
@@ -193,6 +201,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
         aria-label="Installed addons"
         class="addons-section "
         id="header-installed"
+        role="group"
       >
         <div
           class="addons-section-header"
@@ -200,7 +209,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
           <h3
             id="installed"
           >
-            Installed
+            Installed addons
             :
              
             <span>
@@ -223,9 +232,12 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
             tabindex="0"
           >
             <div
+              aria-label="Whatever Does stuff and junk…. Press Enter to install this addon"
+              aria-selected="false"
               class="addon-item"
               data-key="react-aria-1"
               data-rac=""
+              data-selection-mode="single"
               id="react-aria-:r2:-react-aria-1"
               role="row"
               tabindex="-1"

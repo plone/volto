@@ -272,12 +272,12 @@ msgstr "Erweiterung konnte nicht deaktiviert werden"
 msgid "Addon could not be upgraded"
 msgstr "Erweiterung konnte nicht aktualisiert werden"
 
-#. Default: "Addon installed succesfuly"
+#. Default: "Addon installed succesfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
 msgstr "Erweiterungen erfolgreich aktiviert"
 
-#. Default: "Addon uninstalled succesfuly"
+#. Default: "Addon uninstalled succesfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
 msgstr "Erweiterung erfolgreich deaktiviert"
@@ -2773,6 +2773,21 @@ msgstr "Powered by Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Einstellungen"
+
+#. Default: "Press Enter to install this addon"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this addon"
+msgstr ""
+
+#. Default: "Press Enter to uninstall this addon"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this addon"
+msgstr ""
+
+#. Default: "Press Enter to update this addon"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this addon"
+msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

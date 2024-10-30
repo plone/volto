@@ -272,12 +272,12 @@ msgstr "Laajennosta ei voitu poistaa"
 msgid "Addon could not be upgraded"
 msgstr "Laajennosta ei voitu päivittää"
 
-#. Default: "Addon installed succesfuly"
+#. Default: "Addon installed succesfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
 msgstr "Laajennos asennettu onnistuneesti"
 
-#. Default: "Addon uninstalled succesfuly"
+#. Default: "Addon uninstalled succesfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
 msgstr "Laajennos poistettu onnistuneesti"
@@ -2773,6 +2773,21 @@ msgstr "Voimanlähteenä Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Asetukset"
+
+#. Default: "Press Enter to install this addon"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this addon"
+msgstr ""
+
+#. Default: "Press Enter to uninstall this addon"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this addon"
+msgstr ""
+
+#. Default: "Press Enter to update this addon"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this addon"
+msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

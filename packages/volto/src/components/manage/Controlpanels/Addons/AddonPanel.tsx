@@ -47,6 +47,7 @@ const UpgradesPanel: React.FC<UpgradablePanelProps & { intl: IntlShape }> = (
     <div
       key={containerId}
       id={containerId}
+      role="group"
       aria-label={rest['aria-label']}
       className={`addons-section ${containerClassname ?? ''}`}
     >
@@ -57,7 +58,12 @@ const UpgradesPanel: React.FC<UpgradablePanelProps & { intl: IntlShape }> = (
         </h3>
       </div>
       <div>
-        <GridList aria-labelledby={type}>
+        <GridList
+          aria-labelledby={type}
+          selectionBehavior="replace"
+          disabledBehavior="selection"
+          selectionMode="single"
+        >
           {addons.length ? (
             addons.map((ua: GetAddonResponse) => (
               <UpgradableItem key={ua['@id']} {...rest} addon={ua} />
@@ -84,17 +90,23 @@ const AvailablePanel: React.FC<AvailablePanelProps & { intl: IntlShape }> = (
     <div
       key={containerId}
       id={containerId}
+      role="group"
       aria-label={rest['aria-label']}
       className={`addons-section ${containerClassname ?? ''}`}
     >
       <div className="addons-section-header">
         <h3 id={type}>
-          {intl.formatMessage({ id: 'Available' })}:{' '}
+          {intl.formatMessage({ id: 'Available addons' })}:{' '}
           <span>{addons.length}</span>
         </h3>
       </div>
       <div>
-        <GridList aria-labelledby={type}>
+        <GridList
+          aria-labelledby={type}
+          selectionBehavior="replace"
+          disabledBehavior="selection"
+          selectionMode="single"
+        >
           {addons.length ? (
             addons.map((ua: GetAddonResponse) => (
               <AvailableItem key={ua['@id']} {...rest} addon={ua} />
@@ -121,17 +133,23 @@ const InstalledPanel: React.FC<InstalledPanelProps & { intl: IntlShape }> = (
     <div
       key={containerId}
       id={containerId}
+      role="group"
       aria-label={rest['aria-label']}
       className={`addons-section ${containerClassname ?? ''}`}
     >
       <div className="addons-section-header">
         <h3 id={type}>
-          {intl.formatMessage({ id: 'Installed' })}:{' '}
+          {intl.formatMessage({ id: 'Installed addons' })}:{' '}
           <span>{addons.length}</span>
         </h3>
       </div>
       <div>
-        <GridList aria-labelledby={type}>
+        <GridList
+          aria-labelledby={type}
+          selectionBehavior="replace"
+          disabledBehavior="selection"
+          selectionMode="single"
+        >
           {addons.length ? (
             addons.map((ua: GetAddonResponse) => (
               <InstalledItem key={ua['@id']} {...rest} addon={ua} />

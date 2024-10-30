@@ -13,6 +13,18 @@ const messages = defineMessages({
     defaultMessage:
       'This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}',
   },
+  srHelperInstallAddon: {
+    id: 'Press Enter to install this addon',
+    defaultMessage: 'Press Enter to install this addon',
+  },
+  srHelperUpdateAddon: {
+    id: 'Press Enter to update this addon',
+    defaultMessage: 'Press Enter to update this addon',
+  },
+  srHelperUninstallAddon: {
+    id: 'Press Enter to uninstall this addon',
+    defaultMessage: 'Press Enter to uninstall this addon',
+  },
 });
 
 interface BaseAddonProps {
@@ -29,16 +41,38 @@ interface InstalledAddonProps extends BaseAddonProps {
   onUninstall: (event: PressEvent) => void;
 }
 
+const onActionWrapper =
+  (
+    id: PressEvent['target']['id'],
+    cbx:
+      | UpgradableAddonProps['onUpgrade']
+      | AvailableAddonProps['onInstall']
+      | InstalledAddonProps['onUninstall'],
+  ) =>
+  () => {
+    return cbx({ target: { id } } as PressEvent);
+  };
+
 const UpgradableItem: React.FC<UpgradableAddonProps> = ({
   addon,
   onUpgrade,
 }) => {
   const intl = useIntl();
+  const descriptionText = intl.formatMessage(messages.addonUpgradableInfo, {
+    installedVersion: addon.upgrade_info.installedVersion ?? '',
+    newVersion: addon.upgrade_info.newVersion ?? '',
+  });
   return (
     <GridListItem
       key={addon['@id']}
       className="addon-item"
-      aria-describedby={`addon-desc-${addon.id}`}
+      textValue={
+        addon.upgrade_info.installedVersion && addon.upgrade_info.newVersion
+          ? `${addon.description} ${descriptionText}`
+          : addon.description + addon.upgrade_info.available &&
+            `. ${intl.formatMessage({ id: 'Press Enter to upgrade this addon' })}`
+      }
+      onAction={onActionWrapper(addon.id, onUpgrade)}
     >
       <div className="addon-item-header">
         <h4>{addon.title + ` - ${addon.version}`}</h4>
@@ -65,12 +99,7 @@ const UpgradableItem: React.FC<UpgradableAddonProps> = ({
         <p>{addon.description}</p>
         {addon.upgrade_info.installedVersion &&
         addon.upgrade_info.newVersion ? (
-          <p>
-            {intl.formatMessage(messages.addonUpgradableInfo, {
-              installedVersion: addon.upgrade_info.installedVersion ?? '',
-              newVersion: addon.upgrade_info.newVersion ?? '',
-            })}
-          </p>
+          <p>{descriptionText}</p>
         ) : null}
       </div>
     </GridListItem>
@@ -83,7 +112,8 @@ const AvailableItem: React.FC<AvailableAddonProps> = ({ addon, onInstall }) => {
     <GridListItem
       key={addon['@id']}
       className="addon-item"
-      aria-describedby={`addon-desc-${addon.id}`}
+      textValue={`${addon.title} ${addon.description}. ${intl.formatMessage({ id: 'Press Enter to install this addon' })}`}
+      onAction={onActionWrapper(addon.id, onInstall)}
     >
       <div className="addon-item-header">
         <h4>{addon.title + ` - ${addon.version}`}</h4>
@@ -115,7 +145,8 @@ const InstalledItem: React.FC<InstalledAddonProps> = ({
     <GridListItem
       key={addon['@id']}
       className="addon-item"
-      aria-describedby={`addon-desc-${addon.id}`}
+      textValue={`${addon.title} ${addon.description}. ${intl.formatMessage({ id: 'Press Enter to install this addon' })}`}
+      onAction={onActionWrapper(addon.id, onUninstall)}
     >
       <div className="addon-item-header">
         <h4>{addon.title + ` - ${addon.version}`}</h4>

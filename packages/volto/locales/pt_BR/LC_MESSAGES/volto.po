@@ -273,12 +273,12 @@ msgstr "Complemento não pode ser desinstalado"
 msgid "Addon could not be upgraded"
 msgstr "Complemento não pode ser atualizado"
 
-#. Default: "Addon installed succesfuly"
+#. Default: "Addon installed succesfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
 msgstr "Complemento instalado com sucesso"
 
-#. Default: "Addon uninstalled succesfuly"
+#. Default: "Addon uninstalled succesfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
 msgstr "Complemento desinstalado com sucesso"
@@ -2774,6 +2774,21 @@ msgstr "Criado com Plone e Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Preferências"
+
+#. Default: "Press Enter to install this addon"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this addon"
+msgstr ""
+
+#. Default: "Press Enter to uninstall this addon"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this addon"
+msgstr ""
+
+#. Default: "Press Enter to update this addon"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this addon"
+msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

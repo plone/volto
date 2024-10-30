@@ -267,12 +267,12 @@ msgstr ""
 msgid "Addon could not be upgraded"
 msgstr ""
 
-#. Default: "Addon installed succesfuly"
+#. Default: "Addon installed succesfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
 msgstr ""
 
-#. Default: "Addon uninstalled succesfuly"
+#. Default: "Addon uninstalled succesfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
 msgstr ""
@@ -2767,6 +2767,21 @@ msgstr ""
 #. Default: "Preferences"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
+msgstr ""
+
+#. Default: "Press Enter to install this addon"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this addon"
+msgstr ""
+
+#. Default: "Press Enter to uninstall this addon"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this addon"
+msgstr ""
+
+#. Default: "Press Enter to update this addon"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this addon"
 msgstr ""
 
 #. Default: "Prettify your code"
