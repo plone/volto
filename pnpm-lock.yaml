@@ -866,6 +866,9 @@ importers:
       '@types/tmp':
         specifier: ^0.2.6
         version: 0.2.6
+      next:
+        specifier: 14.2.14
+        version: 14.2.14(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0)
       parcel:
         specifier: ^2.12.0
         version: 2.12.0(@swc/helpers@0.5.13)(postcss@8.4.47)(relateurl@0.2.7)(srcset@4.0.0)(terser@5.30.3)(typescript@5.6.3)
