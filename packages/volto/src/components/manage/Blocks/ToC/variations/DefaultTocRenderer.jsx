@@ -35,11 +35,6 @@ const RenderListItems = ({ items, data }) => {
   });
 };
 
-/**
- * View toc block class.
- * @class View
- * @extends Component
- */
 const View = ({ data, tocEntries }) => {
   return (
     <>

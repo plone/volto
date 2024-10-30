@@ -12,7 +12,6 @@ import cx from 'classnames';
 import { setSidebarTab, setUIState } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-import { applyBlockDefaults } from '@plone/volto/helpers';
 import { ViewDefaultBlock, EditDefaultBlock } from '@plone/volto/components';
 
 import {
@@ -199,7 +198,7 @@ export class Edit extends Component {
             <Block
               {...this.props}
               blockNode={this.blockNode}
-              data={applyBlockDefaults(this.props)}
+              data={this.props.data}
             />
             {this.props.manage && (
               <SidebarPortal
