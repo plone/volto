@@ -57,17 +57,14 @@ which you can adjust depending on the environments you are targeting in your loc
 `package.json` file. You can find more information about how the queries in `broserlist`
 works in: https://github.com/browserslist/browserslist#queries
 
-### Support to deprecated browsers
+### Support of deprecated browsers
 
 ```{warning}
-Volto does not support deprecated browsers from its vendor (eg. IE11).
+Volto does not support deprecated browsers, such as Internet Explorer 11.
 ```
 
-If you still need to support deprecated browsers, you should use `browserslist` in your
-project to enable the required transforms for the target deprecated environments you
-have to support.
+If you still need to support deprecated browsers, you should use `browserslist` in your project to enable the required transforms for the target deprecated environments you have to support.
 
-However, Volto (or its dependencies) might not be compatible with old browsers anyways,
-and you might need to provide some other workarounds to make the build work (and the
-deprecated browser not crash). You can refer to {doc}`this (outdated)
-document <../development/ie11compat>` in order to get some hints on how to do it.
+However, Volto (or its dependencies) might not be compatible with old browsers.
+You might need to create some workarounds to make the build work, and the
+deprecated browser not crash.
