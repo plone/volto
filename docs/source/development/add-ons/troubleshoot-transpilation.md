@@ -1,23 +1,21 @@
 ---
 myst:
   html_meta:
-    "description": "Problems with untranspiled add-on dependencies"
-    "property=og:description": "Problems with untranspiled add-on dependencies"
-    "property=og:title": "Problems with untranspiled add-on dependencies"
-    "keywords": "Volto, add-on, extensions, frontend, Plone, configuration"
+    "description": "Troubleshoot untranspiled add-on dependencies"
+    "property=og:description": "Troubleshoot untranspiled add-on dependencies"
+    "property=og:title": "Troubleshoot untranspiled add-on dependencies"
+    "keywords": "Volto, add-on, extensions, frontend, Plone, configuration, troubleshoot"
 ---
 
-# Problems with untranspiled add-on dependencies
+# Troubleshoot untranspiled add-on dependencies
 
 ```{note}
-From Volto 18, the Babel support for ES specifications like the null coalescence operator has improved.
-However, this procedure can be useful in other scenarios.
-We are keeping it as reference.
+In Volto 18 and later, Babel improved support for ES specifications, such as for the null coalescence operator.
+However the following procedure can be useful in other scenarios.
 ```
 
-When using external add-ons in your project, sometimes you will run into add-ons
-that are not securely transpiled or haven't been transpiled at all. In that case
-you might see an error like the following:
+When using external add-ons in your project, sometimes you will run into add-ons that are not securely transpiled or haven't been transpiled at all.
+In that case, you might see an error such as the following:
 
 ```console
 Module parse failed: Unexpected token (10:41) in @react-leaflet/core/esm/path.js
@@ -26,12 +24,10 @@ const options = props.pathOptions ?? {};
 ...
 ```
 
-Babel automatically transpiles the code in your add-on, but `node_modules` are
-excluded from this process, so we need to include the add-on path in the list of
-modules to be transpiled. This can be accomplished by customizing the webpack
-configuration in the `razzle.config.js` file in your add-on. For example,
-suppose that we want to use react-leaflet, which has a known transpilation
-issue:
+Babel automatically transpiles the code in your add-on, but {file}`node_modules` are excluded from this process.
+You need to include the add-on path in the list of modules to be transpiled.
+To do so, customize the webpack configuration in the {file}`razzle.config.js` file in your add-on.
+For example, suppose that you want to use react-leaflet, which has a known transpilation issue.
 
 ```js
 const path = require('path');
@@ -77,6 +73,6 @@ const customModifyWebpackConfig = ({ env, webpackConfig, webpackObject, options 
 module.exports = { modifyWebpackConfig: customModifyWebpackConfig, plugins };
 ```
 
-First we need some setup to get the webpack configuration from Volto's configuration.
-Once we have that, we need to resolve the path to the desired add-ons and push it
-into the Babel loader include list. After this, the add-ons will load correctly.
+First you need some setup to get the webpack configuration from Volto's configuration.
+Once you have that, you need to resolve the path to the desired add-ons, and push it into the Babel loader include list.
+After this, the add-ons will load correctly.
