@@ -7,7 +7,7 @@ myst:
     "keywords": "Volto, Plone, Testing, CI, Add-ons"
 ---
 
-# Testing add-ons (stable release)
+# Test add-ons in Volto 17
 
 We should let jest know about our aliases and make them available to it to resolve them, so in `package.json`:
 

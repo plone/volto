@@ -1,13 +1,13 @@
 ---
 myst:
   html_meta:
-    "description": "How to install an add-on in development mode in Volto (development or pre-release) in your Plone project"
-    "property=og:description": "How to install an add-on in development mode in Volto (development or pre-release) in your Plone project"
-    "property=og:title": "Install an add-on in development mode in Volto (development or pre-release)"
-    "keywords": "Volto, Plone, add-on, pre-release, development, mode"
+    "description": "How to install an add-on in development mode in Volto 18 in your Plone project"
+    "property=og:description": "How to install an add-on in development mode in Volto 18 in your Plone project"
+    "property=og:title": "Install an add-on in development mode in Volto 18"
+    "keywords": "Volto, Plone, add-on, development, mode"
 ---
 
-# Install an add-on in development mode in Volto (development or pre-release)
+# Install an add-on in development mode in Volto 18
 
 Use [`mrs-developer`](https://www.npmjs.com/package/mrs-developer) to manage the development cycle of Volto add-ons.
 This tool pulls the remote code and configures the current project, making the add-on available for the build.

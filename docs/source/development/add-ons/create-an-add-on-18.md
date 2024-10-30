@@ -1,18 +1,18 @@
 ---
 myst:
   html_meta:
-    "description": "How to create an add-on for Volto 18 (development or pre-release)"
-    "property=og:description": "How to create an add-on for Volto 18 (development or pre-release)"
-    "property=og:title": "Create an add-on for Volto 18 (development or pre-release)"
-    "keywords": "add-on, Volto, create, development, pre-release"
+    "description": "How to create an add-on for Volto 18"
+    "property=og:description": "How to create an add-on for Volto 18"
+    "property=og:title": "Create an add-on for Volto 18"
+    "keywords": "add-on, Volto, create, development"
 ---
 
-# Create an add-on for Volto 18 (development or pre-release)
+# Create an add-on for Volto 18
 
-This chapter describes how you can create a Volto add-on using the latest **development release** version of Plone with **Volto 18 or later** for the user interface, while having full control over its development and deployment.
+This chapter describes how you can create an add-on using Volto 18 or later for the Plone user interface, while having full control over its development and deployment.
 
 ```{versionadded} Volto 18.0.0-alpha.43
-{term}`Cookieplone` is now the method to create a Plone add-on with pre-release versions of Volto, version 18.0.0-alpha.43 and above.
+{term}`Cookieplone` is now the method to create a Plone add-on with Volto version 18.0.0-alpha.43 and above.
 ```
 
 ## System requirements

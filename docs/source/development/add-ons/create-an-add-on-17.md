@@ -1,13 +1,13 @@
 ---
 myst:
   html_meta:
-    "description": "How to create an add-on for Volto 17 (stable release)"
-    "property=og:description": "How to create an add-on for Volto 17 (stable release)"
-    "property=og:title": "Create an add-on for Volto 17 (stable release)"
+    "description": "How to create an add-on for Volto 17"
+    "property=og:description": "How to create an add-on for Volto 17"
+    "property=og:title": "Create an add-on for Volto 17"
     "keywords": "add-on, Volto, create"
 ---
 
-# Create an add-on for Volto 17 (stable release)
+# Create an add-on for Volto 17
 
 Volto add-on packages are just CommonJS packages.
 The only requirement is that they point the `main` key of their {file}`package.json` to a module that exports as a default function, acting as a {term}`Volto configuration loader`.

@@ -13,13 +13,13 @@ myst:
 :maxdepth: 1
 
 install-an-add-on
-install-an-add-on-dev-stable
-install-an-add-on-dev-prerelease
+install-an-add-on-dev-18
+install-an-add-on-dev-17
 load-add-on-configuration
-create-an-add-on-stable
-create-an-add-on-prerelease
-test-add-ons
-test-add-ons-prerelease
+create-an-add-on-18
+create-an-add-on-17
+test-add-ons-18
+test-add-ons-17
 extend-webpack-add-on
 extend-eslint-add-on
 troubleshoot-transpilation
