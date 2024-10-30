@@ -31,77 +31,73 @@ You can use `yarn test src/addons/addon-name` to run tests.
 
 ## Override Jest configuration
 
-In {term}`CI` or for testing add-ons, it's useful to modify Jest's configuration.
+In {term}`CI` or for testing add-ons, it's useful to modify Jest's {file}`package.json` configuration file.
 You can use a {file}`jest.config.js` file, or point the test runner to a file of your choice, using the `RAZZLE_JEST_CONFIG` environment variable.
 
 ```shell
 RAZZLE_JEST_CONFIG=my-custom-jest-config.js yarn test
 ```
 
-```{note}
 Both configurations are merged in a way that the keys of the configuration provided override the initial {file}`package.json` configuration, either in Volto or in your projects.
-```
-
-This is useful in CI while developing add-ons, so you can pass a specific configuration that deals with the add-on configuration properly.
 
 
 ## Test add-ons in isolation
 
-Testing an add-on in isolation as you would do when you develop a Plone Python backend add-on can be a bit challenging, since an add-on needs a working project in order to bootstrap itself.
-The latest generator has the boilerplate needed in order to bootstrap a dockerized environment where you can run any test to your add-on.
+Testing an add-on in isolation, as you would when you develop a Plone Python backend add-on, can be a bit challenging, since an add-on needs a working project in order to bootstrap itself.
+The latest generator has the boilerplate needed to bootstrap a dockerized environment where you can run any test to your add-on.
 
-### Setup the environment
 
-Run once
+### Set up the environment
+
+Run the following command once.
 
 ```shell
 make dev
 ```
 
+
 ### Build the containers manually
 
-Run
+Run the following commands.
 
 ```shell
 make build-backend
 make build-addon
 ```
 
+
 ### Unit tests
 
-Run
+Run the following command.
 
 ```shell
 make test
 ```
 
+
 ### Acceptance tests
 
-Run once
+Use {term}`Cypress` to run acceptance tests.
+Run the following command once.
 
 ```shell
 make install-acceptance
 ```
 
-For starting the servers
-
-Run
+To start the servers, run the following command.
 
 ```shell
 make start-test-acceptance-server
 ```
 
-The frontend is run in dev mode, so development while writing tests is possible.
-
-Run
+You run the frontend in development mode, so you can develop while writing tests.
+Run the following command to run Cypress tests afterward.
 
 ```shell
 make test-acceptance
 ```
 
-To run Cypress tests afterwards.
-
-When finished, don't forget to shutdown the backend server.
+When finished, shut down the backend server.
 
 ```shell
 make stop-test-acceptance-server
