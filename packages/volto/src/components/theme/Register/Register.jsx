@@ -65,14 +65,7 @@ const Register = () => {
   }, [intl, history, loaded, prevloading]);
 
   const onSubmit = (data) => {
-    const { fullname, email } = data;
-    dispatch(
-      createUser({
-        fullname: fullname,
-        email: email,
-        sendPasswordReset: true,
-      }),
-    );
+    dispatch(createUser(data));
     setError(null);
   };
 
