@@ -27,7 +27,8 @@
     "lockhook": "node packages/scripts/lockhook.js",
     "prepare": "husky",
     "husky:uninstall": "husky uninstall",
-    "prereleaser": "node packages/scripts/preleaser.js"
+    "prereleaser": "node packages/scripts/preleaser.js",
+    "update:browserlist": "pnpm --filter @plone/volto add caniuse-lite && pnpm --filter @plone/volto remove caniuse-lite"
   },
   "devDependencies": {
     "@parcel/packager-ts": "^2.12.0",

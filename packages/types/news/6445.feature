@@ -1,1 +1,0 @@
-`StyleDefinitions` in types. @sneridagh
