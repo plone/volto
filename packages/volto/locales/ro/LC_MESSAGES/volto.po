@@ -3372,7 +3372,7 @@ msgstr "Afișează sursele potențiale. Nu doar obiectele care sunt sursa unei a
 #. Default: "Show potential targets. Not only objects that are target of some relation."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Show potential targets. Not only objects that are target of some relation."
-msgstr "Afișează destinațiile potențiale. Nu doar obiectele care sunt destinația unei anumite relații."
+msgstr "Afișează destinațiile potențiale. Nu doar obiectele care sunt destinația unor anumite relații."
 
 #. Default: "Show search button?"
 #: components/manage/Blocks/Search/schema
