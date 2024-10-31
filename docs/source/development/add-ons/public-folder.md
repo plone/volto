@@ -1,13 +1,13 @@
 ---
 myst:
   html_meta:
-    "description": "How to add static served files from your add-on to your build"
-    "property=og:description": "How to add static served files to the build from an add-on"
+    "description": "How to add static files from your add-on to your build"
+    "property=og:description": "How to add static files from your add-on to your build"
     "property=og:title": "Add static files from your add-on to your build"
-    "keywords": "Volto, Plone, Semantic UI, CSS, Volto theme, add-on, static, assets, files, build"
+    "keywords": "Volto, Plone, Semantic UI, CSS, theme, add-on, static, assets, files, build"
 ---
 
-# How to add static files from your add-on to your build
+# Add static files from your add-on to your build
 
 In the Volto build process, you can add static files to your build, then serve them along with the compiled files.
 Static files are not transformed or compiled by the build process.
@@ -22,8 +22,7 @@ It is useful to define static files such as the following:
 
 ## Procedure to include static files
 
-Create a folder named `public` at the root of your add-on, and add the static files to it.
+Create a folder named {file}`public` at the root of your add-on, and add the static files to it.
 The build process will copy the files, taking into account all add-ons' defined order.
 The build process copies first the static files defined by Volto, then the static files from add-ons as defined by their configuration order.
 The last defined file overwrites any previously defined files.
-
