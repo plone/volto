@@ -3440,7 +3440,7 @@ msgstr "Mic"
 #. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
 #: components/manage/Contents/Contents
 msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-msgstr "Unele elemente sunt de asemenea o dosar. Prin eliminarea lor veți elimina {containedItemsToDelete} {variation} în dosare."
+msgstr "Unele elemente sunt de asemenea un dosar. Prin eliminarea lor veți elimina {containedItemsToDelete} {variation} înauntru acelor dosare."
 
 #. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
 #: components/manage/Contents/Contents
