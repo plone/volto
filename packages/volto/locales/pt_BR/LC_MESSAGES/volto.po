@@ -4522,8 +4522,7 @@ msgstr "Comparar com"
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "countBrokenRelations"
-msgstr "{countofrelation} quebra {countofrelation, plural, one {relation} outras
-{relations}} do tipo {typeofrelation}"
+msgstr "{countofrelation} quebra {countofrelation, plural, one {relation} outras"
 
 #. Default: "Date Range"
 #: config/Blocks
