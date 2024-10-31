@@ -56,8 +56,14 @@ Ideally, the README should include requirements or compatability with various ve
 
 ## Test the add-on
 
-It is not easy, right now, to ship an add-on with a self-bootstrapping and testing framework.
-However, you can create a separate minimal Volto project that can hold the Cypress integration tests and trigger the CI tests.
+```{versionadded} Volto 18.0.0-alpha.43
+```
+
+Cookieplone provides a self-bootstrapping and testing framework in Volto 18.
+See {doc}`create-an-add-on-18`.
+
+Previously in Volto 17 and early alpha versions of Volto 18, it was not easy to ship an add-on with a self-bootstrapping and testing framework.
+However, for these older versions of Volto you can create a separate minimal Volto project that can hold the Cypress integration tests and trigger the CI tests.
 
 
 ## Use appropriate npm Registry tags
