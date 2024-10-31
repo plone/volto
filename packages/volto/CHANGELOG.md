@@ -481,6 +481,17 @@ myst:
 - Remove "legacy" term, now that we use "no longer supported". @stevepiercy [#5370](https://github.com/plone/volto/issues/5370)
 - Reduce the severity level of `Microsoft.Contractions` and `Microsoft.Units` from `error` to `suggestion` when running `make docs-vale` in preparation for requiring Vale passing without errors. @stevepiercy [#5371](https://github.com/plone/volto/issues/5371)
 - Improved wording in branching policy. @sneridagh [#5372](https://github.com/plone/volto/issues/5372)
+## 18.0.0-alpha.49 (2024-10-31)
+
+### Feature
+
+- Update Romanian translation. @avoinea [#6454](https://github.com/plone/volto/issues/6454)
+- Update Brazilian Portuguese translation [@ericof] 
+
+### Internal
+
+- Update Browserlist @sneridagh [#6455](https://github.com/plone/volto/issues/6455)
+
 ## 18.0.0-alpha.48 (2024-10-30)
 
 ### Breaking

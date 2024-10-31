@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0 (2024-10-31)
+
+### Internal
+
+- Release 1.0.0 @sneridagh 
+
 ## 1.0.0-alpha.22 (2024-10-30)
 
 ### Feature
