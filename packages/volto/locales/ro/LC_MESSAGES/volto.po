@@ -3878,7 +3878,7 @@ msgstr "Titlu"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Title field error. Value not provided or already existing."
-msgstr "Eroare câmpului Titlu. Valoarea nu a fost furnizată sau deja existentă."
+msgstr "Eroare a câmpului Titlu. Valoarea nu a fost furnizată sau este deja existentă."
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
