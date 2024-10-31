@@ -3482,7 +3482,7 @@ msgstr "Sortare pe opțiuni"
 #. Default: "Sort transactions by User-Name, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort transactions by User-Name, Path or Date"
-msgstr "Sortați tranzacțiile după nume de utilizator, cale sau dată"
+msgstr "Sortați tranzacțiile după numele de utilizator, cale sau dată"
 
 #. Default: "Sorted"
 #: components/manage/Controlpanels/UndoControlpanel
