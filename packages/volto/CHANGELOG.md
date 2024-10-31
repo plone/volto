@@ -17,7 +17,7 @@ myst:
 
 <!-- towncrier release notes start -->
 
-## 18.0.0 (Unreleased)
+## 18.0.0 (2024-10-31)
 
 (Summary)
 
