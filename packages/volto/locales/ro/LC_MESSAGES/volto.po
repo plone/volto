@@ -4342,7 +4342,7 @@ msgstr "Dacă se oprește sau nu execuția altor reguli după ce se execută ace
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
-msgstr "Dacă se declanșează sau nu alte reguli după acțiunile declanșate de această regulă. Activată doar dacă sunteți siguri că nu va crea bucle infinite"
+msgstr "Dacă se declanșează sau nu alte reguli după acțiunile declanșate de această regulă. Activați doar dacă sunteți siguri că nu va crea bucle infinite"
 
 #. Default: "Whether or not the rule is currently enabled"
 #: components/manage/Controlpanels/Rules/AddRule
