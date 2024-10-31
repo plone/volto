@@ -394,7 +394,7 @@ msgstr "Aplică pentru subdirectorare"
 #. Default: "Applies to subfolders?"
 #: components/manage/Rules/Rules
 msgid "Applies to subfolders?"
-msgstr "Se aplică și pentru subdirectorare?"
+msgstr "Se aplică și pentru subdirectoare?"
 
 #. Default: "Apply to subfolders"
 #: components/manage/Rules/Rules
