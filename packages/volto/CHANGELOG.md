@@ -110,7 +110,6 @@ myst:
 - Add support for configurable `public` directory defined per add-on. @sneridagh [#6072](https://github.com/plone/volto/issues/6072)
 - Removes navigation settings that are not used by Volto. @wesleybl [#5961](https://github.com/plone/volto/issues/5961)
 - Add Hindi translation in Volto. @iFlameing [#6015](https://github.com/plone/volto/issues/6015)
-- Add Vite (client only, no SSR) build. Update Next.js 14.2.2 and Remix to 2.8.0 @sneridagh [#5970](https://github.com/plone/volto/issues/5970)
 - Add parameters to `ContentsUploadModal` to be reusable in different scenarios. @erral [#5881](https://github.com/plone/volto/issues/5881)
 - Print error message from request in toast, if `clipboardRequest` return an error. @cekk [#5932](https://github.com/plone/volto/issues/5932)
 - Add id attribute to discussions container and individual comments [@ericof] [#5904](https://github.com/plone/volto/issues/5904)
@@ -154,10 +153,10 @@ myst:
 - Change Form input:focus text color to the `textColor` value for a11y.
   Add Cypress test for contact form inputs. @ThomasKindermann @tedw87 [#2570](https://github.com/plone/volto/issues/2570)
 - Add missing `for` attribute to checkbox label to improve accessibility. @gomez [#6249](https://github.com/plone/volto/issues/6249)
-- - Fixed build style classnames in edit mode. Also use buildStyleClassNamesExtenders. @giuliaghisini [#6259](https://github.com/plone/volto/issues/6259)
+- Fixed build style classnames in edit mode. Also use buildStyleClassNamesExtenders. @giuliaghisini [#6259](https://github.com/plone/volto/issues/6259)
 - Fetch `user` before pass it to the `restricted` function of the block settings. @wesleybl [#6293](https://github.com/plone/volto/issues/6293)
-- - Join validation errors in one single toast and update errors from response. @cekk
-  - Toast content now has a <div> wrapper instead of a <p>. @cekk [#6295](https://github.com/plone/volto/issues/6295)
+- Join validation errors in one single toast and update errors from response. @cekk
+- Toast content now has a <div> wrapper instead of a <p>. @cekk [#6295](https://github.com/plone/volto/issues/6295)
 - Fixed findBlocks when no blocks are passed. @giuliaghisini [#6299](https://github.com/plone/volto/issues/6299)
 - Fixed toolbar buttons not having a focus outline. @JeffersonBledsoe [#6313](https://github.com/plone/volto/issues/6313)
 - fix: SidebarPopup close on ESC keypress @nileshgulia1 [#6315](https://github.com/plone/volto/issues/6315)
@@ -341,7 +340,7 @@ myst:
 - Renamed `constants/Languages.js` to `constants/Languages.cjs` @sneridagh [#6130](https://github.com/plone/volto/issues/6130)
 - Improved the existing GitHub workflows by encapsulating a common operation into a reusable action for easier maintenance. @FritzHoing, @ichim-david [#6108](https://github.com/plone/volto/issues/6108)
 - Upgrade `react-intl` to maximum 3.x series to fix a bundling issue.
-  Rename missing js file that must be jsx. @sneridagh [#6128](https://github.com/plone/volto/issues/6128)
+- Rename missing js file that must be jsx. @sneridagh [#6128](https://github.com/plone/volto/issues/6128)
 - Rename the `Makefile` commands to unify them with the new agreed naming scheme. @sneridagh [#6104](https://github.com/plone/volto/issues/6104)
 - Remove `api` folder. Add `backend` folder using latest backend best practices. @sneridagh [#6110](https://github.com/plone/volto/issues/6110)
 - Rename files with wrong extension `js->jsx` when they contain JSX. @sneridagh [#6114](https://github.com/plone/volto/issues/6114)
