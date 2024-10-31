@@ -3950,7 +3950,7 @@ msgstr "Link-ul către traducere a fost șters"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Triggering event field error. Please select a value"
-msgstr "Eroare câmpului Eveniment de declanșare. Selectați o valoare"
+msgstr "Eroare la declanșarea câmpului evenimentului. Selectați o valoare"
 
 #. Default: "Type"
 #: components/manage/Controlpanels/ContentTypes
