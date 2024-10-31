@@ -5119,7 +5119,7 @@ msgstr "da"
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
-msgstr "Încărcați {count, plural, one {un fișier} other {fișiere}}"
+msgstr "Încărcați {count, plural, un {un fișier} alte {fișiere}}"
 
 #. Default: "{count} selected"
 #: components/manage/Contents/Contents
