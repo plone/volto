@@ -514,7 +514,7 @@ msgstr "Breadcrumbs"
 #. Default: "Broken relations"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "Broken relations"
-msgstr "Relații întrerupte"
+msgstr "Relații stricate"
 
 #. Default: "Browse"
 #: components/manage/Contents/ContentsUploadModal
@@ -530,7 +530,7 @@ msgstr "Navigați site-ul, adaugați o imagine sau introduceți o adresă URL"
 #. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
-msgstr "Încărcare masivă CSV"
+msgstr "Încărcare-a mai multor fișiere CSV"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
@@ -671,7 +671,7 @@ msgstr "Curațați filtrele"
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
 msgid "Clear search"
-msgstr "Curațați căutarea"
+msgstr "Ștergeți căutarea"
 
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
@@ -863,7 +863,7 @@ msgstr "Declarație de copyright sau alte informații privind drepturile asupra 
 #. Default: "Create or delete relations to target"
 #: helpers/MessageLabels/MessageLabels
 msgid "Create or delete relations to target"
-msgstr "Creare sau ștergere relații către obiectiv"
+msgstr "Crează sau șterge relațiile către obiectiv"
 
 #. Default: "Create working copy"
 #: components/manage/Toolbar/More
@@ -1289,7 +1289,7 @@ msgstr "Goliți lista de obiecte"
 #. Default: "Enable"
 #: components/manage/Rules/Rules
 msgid "Enable"
-msgstr "Activă"
+msgstr "Activează"
 
 #. Default: "Enable editable Blocks"
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -1345,7 +1345,7 @@ msgstr "Introduceți codul de integrare a hărții"
 #. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
 #: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
-msgstr "Introduceți calea absolută a destinației. Destinația trebuie să existe sau să fie un cale alternativă existentă."
+msgstr "Introduceți calea absolută a destinației. Destinația trebuie să existe sau să fie o cale alternativă existentă."
 
 #. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Controlpanels/Aliases
@@ -2688,7 +2688,7 @@ msgstr "Vă rugăm să continuați cu actualizarea."
 #. Default: "Please ensure you have a backup of your site before performing the upgrade."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Please ensure you have a backup of your site before performing the upgrade."
-msgstr "Vă rugăm să asigurați-vă că aveți o copie de rezervă a site-ului înainte de a efectua actualizarea."
+msgstr "Vă rugăm să vă asigurați că aveți o copie de rezervă a site-ului înainte de a efectua actualizarea."
 
 #. Default: "Please enter a valid URL by deleting the block and adding a new video block."
 #: components/manage/Blocks/Video/Body
@@ -2708,7 +2708,7 @@ msgstr "Vă rugăm să completați formularul de mai jos pentru a seta parola."
 #. Default: "Please search for users or use the filters on the side."
 #: helpers/MessageLabels/MessageLabels
 msgid "Please search for users or use the filters on the side."
-msgstr "Vă rugăm căutați utilizatori sau utilizați filtrele din stânga."
+msgstr "Vă rugăm folosiți căutarea pentru utilizatori sau utilizați filtrele din stânga."
 
 #. Default: "Please upgrade to plone.restapi >= 8.24.0."
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
@@ -3834,7 +3834,7 @@ msgstr "Aceasta este o copie de lucru a {title}"
 #. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
 #: components/manage/Contents/Contents
 msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-msgstr "Acest articol este, de asemenea, un dosar. Prin eliminarea lui veți șterge {containedItemsToDelete} {variation} în interiorul dosarului."
+msgstr "Acest articol este, de asemenea, un director. Prin eliminarea lui veți șterge {containedItemsToDelete} {variation} în interiorul directorului."
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
