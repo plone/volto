@@ -4159,7 +4159,7 @@ msgstr "Grupuri utilizator"
 #. Default: "User Group Settings"
 #: helpers/MessageLabels/MessageLabels
 msgid "User Group Settings"
-msgstr "Configurarea grupuri utilizator"
+msgstr "Configurare grupuri utilizator"
 
 #. Default: "User created"
 #: helpers/MessageLabels/MessageLabels
