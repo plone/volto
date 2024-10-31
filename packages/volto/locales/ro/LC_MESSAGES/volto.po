@@ -4492,7 +4492,7 @@ msgstr "Ați uitat parola?"
 #. Default: "Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
 #: components/manage/Controlpanels/Aliases
 msgid "bulkUploadUrlsHelp"
-msgstr "Adăugați multe alternative URL-uri în același timp prin încărcarea unui fișier CSV. Prima coloană ar trebui să fie calea de redirecționat de; a doua, calea de redirecționat la. Ambele căi trebuie să fie relativ la site-ul Plone, începând cu o bară oblică (/). O coloană opțională a trebuie să conțină o dată și timp. O coloană opțională poate conține un boolean pentru a marca ca un redirecționare manuală (implicit adevărat)."
+msgstr "Adăugați mai multe URL-uri alternative în același timp prin încărcarea unui fișier CSV. Prima coloană ar trebui să fie calea de redirecționat de la; a doua, calea de redirecționat la. Ambele căi trebuie să fie relative la site-ul Plone, începând cu o bară oblică (/). O a treia coloană opțională poate să conțină o dată și timp. O a patra coloană opțională poate conține un boolean pentru a marca o redirecționare manuală (implicit adevărat)."
 
 #. Default: "Checkbox"
 #: config/Blocks
