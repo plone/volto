@@ -59,6 +59,9 @@ myst:
 
 ### Feature
 
+- Update Romanian translation. @avoinea [#6454](https://github.com/plone/volto/issues/6454)
+- Update Brazilian Portuguese translation [@ericof]
+- Enhance the `buildStyleObjectFromData` helper. @sneridagh [#6445](https://github.com/plone/volto/issues/6445)
 - URL Management control panel: add a filter for redirects created after a given date.
   **Note:** This requires `Products.CMFPlone` 6.0.14 and `plone.restapi` 9.8.0 or later.
   @davisagli [#6414](https://github.com/plone/volto/issues/6414)
@@ -142,6 +145,10 @@ myst:
 
 ### Bugfix
 
+- Fix error "Exception: No query supplied" in the listing block, when there is no criteria selected. @tedw87 [#3839](https://github.com/plone/volto/issues/3839)
+- Fixed page changes not being announced to screen reader users. @JeffersonBledsoe [#5288](https://github.com/plone/volto/issues/5288)
+- Fix useSelector is returned a different result when called with the same parameters in IdWidget. @iFlameing [#6449](https://github.com/plone/volto/issues/6449)
+- Moved `applyBlockDefaults` one component up so the style is computed correctly. @sneridagh [#6451](https://github.com/plone/volto/issues/6451)
 - Fix site setup access check by using `@actions` endpoint to validate permissions. @Faakhir30 [#6355](https://github.com/plone/volto/issues/6355)
 - Fix redirect after login if the `Login` component is used on a route other than `/login` or `/logout`. @dobri1408 [#6419](https://github.com/plone/volto/issues/6419)
 - URL Management control panel: Improve layout for long paths. @davisagli [#6421](https://github.com/plone/volto/issues/6421)
@@ -316,6 +323,7 @@ myst:
 
 ### Internal
 
+- Update Browserlist @sneridagh [#6455](https://github.com/plone/volto/issues/6455)
 - Used `resource title` instead of `resource type` in page title on edit. @Faakhir30 [#6308](https://github.com/plone/volto/issues/6308)
 - Added support for Node.js 22, since it will become LTS on 2024-10-29. @sneridagh [#6371](https://github.com/plone/volto/issues/6371)
 - Adapt `@plone/registry` as an ESM module, and fix its imports. @sneridagh [#6399](https://github.com/plone/volto/issues/6399)
@@ -391,6 +399,7 @@ myst:
 
 ### Documentation
 
+- Added upgrade guide fix for HMR. @sneridagh [#6446](https://github.com/plone/volto/issues/6446)
 - Added deprecation notices to the upgrade guide for Volto 18. @sneridagh [#6426](https://github.com/plone/volto/issues/6426)
 - Replace `yarn` with `pnpm` wherever necessary. @sneridagh [#6433](https://github.com/plone/volto/issues/6433)
 - Rename page title from Frontend to Volto UI. @stevepiercy [#6438](https://github.com/plone/volto/issues/6438)
@@ -481,12 +490,13 @@ myst:
 - Remove "legacy" term, now that we use "no longer supported". @stevepiercy [#5370](https://github.com/plone/volto/issues/5370)
 - Reduce the severity level of `Microsoft.Contractions` and `Microsoft.Units` from `error` to `suggestion` when running `make docs-vale` in preparation for requiring Vale passing without errors. @stevepiercy [#5371](https://github.com/plone/volto/issues/5371)
 - Improved wording in branching policy. @sneridagh [#5372](https://github.com/plone/volto/issues/5372)
+
 ## 18.0.0-alpha.49 (2024-10-31)
 
 ### Feature
 
 - Update Romanian translation. @avoinea [#6454](https://github.com/plone/volto/issues/6454)
-- Update Brazilian Portuguese translation [@ericof] 
+- Update Brazilian Portuguese translation [@ericof]
 
 ### Internal
 
