@@ -4796,7 +4796,7 @@ msgstr "în așteptare"
 #. Default: "Pick an existing image"
 #: components/manage/Widgets/ImageWidget
 msgid "pickAnImage"
-msgstr "alegeți o imagine existentă"
+msgstr "Alegeți o imagine existentă"
 
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
