@@ -4360,7 +4360,7 @@ msgstr "Cine"
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
 msgid "Wide"
-msgstr "Tot ecranul"
+msgstr "Toată lățimea ecranului"
 
 #. Default: "Updating workflow states..."
 #: components/manage/Contents/ContentsWorkflowModal
