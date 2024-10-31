@@ -4137,7 +4137,7 @@ msgstr "Utilizați formularul de mai jos pentru a defini o regula de conținut n
 #. Default: "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
-msgstr "Utilizați formularul de mai jos pentru a defini, modificați sau eliminați regulile de conținut. Regulile vor efectua automat acțiuni asupra conținutului atunci când se produc anumite evenimente. După definirea regulilor, poate fi necesar să vă deplasați într-o pagină pentru a le atribui, folosind elementul 'reguli' din meniul de acțiuni."
+msgstr "Utilizați formularul de mai jos pentru a defini, modifica sau elimina regulile de conținut. Regulile vor efectua automat acțiuni asupra conținutului atunci când se produc anumite evenimente. După definirea regulilor, poate fi necesar să vă deplasați într-o pagină pentru a le atribui, folosind elementul 'reguli' din meniul de acțiuni."
 
 #. Default: "Used for programmatic access to the fieldset."
 #: components/manage/Widgets/SchemaWidget
