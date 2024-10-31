@@ -3367,7 +3367,7 @@ msgstr "Afișează elementul"
 #. Default: "Show potential sources. Not only objects that are source of some relation."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Show potential sources. Not only objects that are source of some relation."
-msgstr "Afișează sursele potențiale. Nu doar obiectele care sunt sursa unei anumite relații."
+msgstr "Afișează sursele potențiale. Nu doar obiectele care sunt sursa unor anumite relații."
 
 #. Default: "Show potential targets. Not only objects that are target of some relation."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
