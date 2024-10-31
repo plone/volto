@@ -3928,7 +3928,7 @@ msgstr "Tranzacțiile au fost sortate"
 #. Default: "Transactions have been unsorted"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions Have Been Unsorted"
-msgstr "Tranzacțiile au fost sortate"
+msgstr "Tranzacțiile au fost nesortate"
 
 #. Default: "Translate to {lang}"
 #: components/manage/Add/Add
