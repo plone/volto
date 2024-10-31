@@ -17,6 +17,17 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.49 (2024-10-31)
+
+### Feature
+
+- Update Romanian translation. @avoinea [#6454](https://github.com/plone/volto/issues/6454)
+- Update Brazilian Portuguese translation [@ericof] 
+
+### Internal
+
+- Update Browserlist @sneridagh [#6455](https://github.com/plone/volto/issues/6455)
+
 ## 18.0.0-alpha.48 (2024-10-30)
 
 ### Breaking
