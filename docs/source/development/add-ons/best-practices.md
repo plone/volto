@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "Integrate your add-on with Volto's add-on framework"
-    "property=og:description": "Integrate your add-on with Volto's add-on framework"
+    "description": "Best practices for developing Volto add-ons"
+    "property=og:description": "Best practices for developing Volto add-ons"
     "property=og:title": "Best practices for add-ons"
-    "keywords": "Volto, Plone, frontend, React, best practices, add-ons"
+    "keywords": "Volto, Plone, frontend, React, best, practices, add-ons"
 ---
 
 # Best practices for add-ons
