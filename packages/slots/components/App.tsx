@@ -15,7 +15,9 @@ const App = (props: AppProps) => {
         <SlotRenderer name="header" content={content} location={location} />
       </header>
       <SlotRenderer name="main" content={content} location={location} />
-      <SlotRenderer name="footer" content={content} location={location} />
+      <footer id="footer">
+        <SlotRenderer name="footer" content={content} location={location} />
+      </footer>
     </div>
   );
 };

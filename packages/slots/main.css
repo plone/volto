@@ -9,6 +9,11 @@
   --align-center: center;
 }
 
+body {
+  /* This needs a proper reset */
+  margin: 0;
+}
+
 .app-slot {
   display: grid;
   height: 100vh;
@@ -18,7 +23,7 @@
     'content'
     'footer';
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
 }
 
 .header-logo-nav-tools-wrapper {
@@ -72,4 +77,9 @@ main {
   max-width: var(--default-container-width);
   margin-right: auto;
   margin-left: auto;
+}
+
+.footer {
+  padding: 2rem 0;
+  text-align: center;
 }

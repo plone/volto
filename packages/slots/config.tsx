@@ -7,6 +7,7 @@ import Logo from './components/Logo';
 import Navigation from './components/Navigation';
 import HeaderTools from './components/Tools';
 import ContentArea from './components/ContentArea';
+import MainFooter from './components/MainFooter';
 
 export default function install(config: ConfigType) {
   // Translation factory
@@ -65,6 +66,12 @@ export default function install(config: ConfigType) {
     name: 'Footer',
     slot: 'footer',
     component: Footer,
+  });
+
+  config.registerSlotComponent({
+    name: 'mainFooter',
+    slot: 'mainFooter',
+    component: MainFooter,
   });
 
   return config;
