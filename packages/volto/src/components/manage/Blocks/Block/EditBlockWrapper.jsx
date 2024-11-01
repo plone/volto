@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from '@plone/volto/components';
 import {
+  applyBlockDefaults,
   applyBlockInitialValue,
   getBlocksFieldname,
   blockHasValue,
@@ -48,13 +49,15 @@ const EditBlockWrapper = (props) => {
     onInsertBlock,
     onSelectBlock,
     onMutateBlock,
-    data,
+    data: originalData,
     editable,
     properties,
     showBlockChooser,
     navRoot,
     contentType,
   } = blockProps;
+
+  const data = applyBlockDefaults({ data: originalData, ...blockProps, intl });
 
   const visible = selected && !hideHandler(data);
 
