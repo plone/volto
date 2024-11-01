@@ -6,7 +6,7 @@ myst:
     "property=og:title": "How does a Volto add-on work?"
     "keywords": "Volto, Plone, add-ons, JavaScript, dependencies"
 ---
-%This is not explanation, but a how-to guide.
+
 # How does a Volto add-on work?
 
 
