@@ -2,27 +2,13 @@
 myst:
   html_meta:
     "description": "How does a Volto add-on work?"
-    "property=og:description": "How does a Volto add-on works?"
-    "property=og:title": "How does a Volto add-on works?"
-    "keywords": "Volto, Plone, Volto add-ons, JavaScript, JavaScript dependencies"
+    "property=og:description": "How does a Volto add-on work?"
+    "property=og:title": "How does a Volto add-on work?"
+    "keywords": "Volto, Plone, add-ons, JavaScript, dependencies"
 ---
-% Explanation
+%This is not explanation, but a how-to guide.
 # How does a Volto add-on work?
 
-Volto add-on packages are just CommonJS/ESM packages.
-Their main purpose is encapsulate logic, configuration and customizations in a reusable way.
-The only requirement is that they point the `main` key of their `package.json` to a module that exports, as a default function that acts as a Volto configuration loader.
-
-Similarly to how you develop a Plone backend Python add-on, you can control all aspects of Volto from a Volto add-on.
-
-This gives you the ability to move all your project configuration, components, customizations and even theme files to an add-on.
-This has the advantage to render the project configuration empty and expendable, so you could at any point not only reuse the add-on(s) outside the current project, but also have the project as simply boilerplate that could be replaced at any point (for example, a Volto version upgrade).
-
-An add-on can be published in an npm registry, just as any other package.
-However, Volto add-ons should not be transpiled.
-They should be released as "source" packages.
-
-See [@kitconcept/volto-button-block](https://github.com/kitconcept/volto-button-block) as an example.
 
 ## Add-on configuration
 
@@ -76,6 +62,9 @@ Volto will chain-execute all the add-on configuration functions to compute the f
 ```{note}
 An add-on's default configuration method will always be loaded.
 ```
+
+See [@kitconcept/volto-button-block](https://github.com/kitconcept/volto-button-block) as an example.
+
 
 ### Providing optional add-on configurations
 

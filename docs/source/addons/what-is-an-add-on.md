@@ -1,23 +1,30 @@
 ---
 myst:
   html_meta:
-    "description": "What is a Volto add-on"
-    "property=og:description": "What is a Volto add-on"
-    "property=og:title": "What is a Volto add-on"
-    "keywords": "add-on, Volto, create"
+    "description": "Volto add-on concepts"
+    "property=og:description": "Volto add-on concepts"
+    "property=og:title": "Volto add-on concepts"
+    "keywords": "add-on, Volto, package"
 ---
 
-# What is a Volto add-on
+# Volto add-on concepts
+
+Volto add-on packages are just CommonJS or ESM packages.
+Their main purpose is to encapsulate logic, configuration, components, customizations, and even themes in a reusable way.
 
 Suppose you want to have more control and flexibility beyond the plain Volto project when building a site.
-
-You can build a Volto {term}`add-on` and make it available as a generic JavaScript package.
+You can build a Volto {term}`add-on` and make it available as a generic JavaScript package by publishing it to an npm registry.
 Then you can reuse and include it in any Volto project.
 As a bonus, you will benefit from collaborating on open source software.
 
-Volto add-on packages are just CommonJS or ESM packages.
-Their main purpose is to encapsulate logic, configuration, and customizations in a reusable way.
-The only requirement is that their primary entry point (the `main` key of their {file}`package.json`) points to a module that exports a default function, which acts as a default configuration loader for that package.
+
+
+Volto add-ons should not be transpiled.
+They should be released as "source" packages.
+Their primary entry point (the `main` key of their {file}`package.json`) must point to a module that exports a default function, which acts as a default configuration loader for that package.
+
+
+
 
 Add-ons are applied in the order they are declared in the `addons` key of {file}`package.json` or programmatically via a provided configuration file.
 Add-ons can override configuration coming from other add-ons, providing a hierarchy of configuration stacks.
