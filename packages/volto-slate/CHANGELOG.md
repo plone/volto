@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 18.0.0 (2024-10-31)
+
+### Internal
+
+- Release 18.0.0 final @sneridagh 
+
+## 18.0.0-alpha.20 (2024-10-30)
+
+### Bugfix
+
+- Fix slight CSS lint violation in volto-slate @sneridagh [#6444](https://github.com/plone/volto/issues/6444)
+
 ## 18.0.0-alpha.19 (2024-10-03)
 
 ### Feature
