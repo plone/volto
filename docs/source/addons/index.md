@@ -74,12 +74,88 @@ These include {doc}`JavaScript language features <../contributing/language-featu
 ```
 
 
-### Practical application
+### Use cases
 
 In practice with the configuration pipeline, for example, you can create a "policy" core add-on for your project, and use another add-on for your project's theme.
 This way the project itself renders as a simple boilerplate, which you can extend or rebuild at any time.
 
 You can also reuse add-ons across projects, and adjust them using other add-ons, depending on the other projects' requirements.
+
+
+% TODO: Should this section be moved to a how-to guide?
+## Add-on configuration
+
+The default export of your add-on's main {file}`index.js` file should be a function with the signature `config => config`.
+That is, it should take the `global` configuration object and return it, possibly mutated or changed.
+An {file}`index.js` file should contain the following code.
+
+```js
+export default function applyConfig(config) {
+  config.blocks.blocksConfig.faq_viewer = {
+    id: 'faq_viewer',
+    title: 'FAQ Viewer',
+    edit: FAQBlockEdit,
+    view: FAQBlockView,
+    icon: chartIcon,
+    group: 'common',
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  };
+  return config;
+}
+```
+
+And the {file}`package.json` file of your add-on should contain the following code.
+
+```json
+{
+  "main": "src/index.js",
+}
+```
+
+In effect, Volto does the equivalent of the following pseudocode:
+
+```js
+import installMyVoltoAddon from 'my-volto-addon'
+
+// ... in the configuration registry setup step:
+const configRegistry = installMyVoltoAddon(defaultRegistry);
+```
+
+The Volto add-on needs to export a default function that receives the Volto configuration registry.
+Then it is free to change the registry.
+Finally, it must return that registry.
+
+Volto will execute all the add-on configuration functions in a chain to compute the final configuration registry.
+
+```{note}
+An add-on's default configuration method will always be loaded.
+```
+
+```{seealso}
+See [@kitconcept/volto-button-block](https://github.com/kitconcept/volto-button-block) as an example.
+```
+
+
+### Provide optional add-on configurations
+
+You can export additional configuration functions from your add-on's main {file}`index.js`.
+
+```js
+import applyConfig, {loadOptionalBlocks,overrideSomeDefaultBlock} from './config';
+
+export { loadOptionalBlocks, overrideSomeDefaultBlock };
+export default applyConfig;
+```
+
+```{seealso}
+{doc}`../development/add-ons/load-add-on-configuration`
+```
 
 
 % TODO: Should this section be moved to a how-to guide?
@@ -126,6 +202,22 @@ In Plone terminology, it is like including a Python egg in the `zcml` section of
 ```
 
 
+## Add-on dependencies
+
+Add-ons can depend on any other JavaScript package, including other Volto add-ons.
+To do this, specify the name of your Volto add-on dependency in your `dependencies` key of your {file}`package.json` file.
+Then create a new `addons` key in the {file}`package.json` file of your add-on, where you specify the extra Volto add-on dependency.
+By doing this, the add-ons can "chain load" one another.
+
+```json
+{
+  "name": "volto-slate",
+
+  "addons": ["@eeacms/volto-object-widget"]
+}
+```
+
+
 ## Publish an add-on
 
 Volto add-ons should not be transpiled.
@@ -140,12 +232,3 @@ If you publish your add-on to the [npm Registry](https://www.npmjs.com/) or make
 % Where does this go?
 By using [`mrs-developer`](https://github.com/collective/mrs-developer), it's possible to have a workflow similar to `zc.buildout`'s `mr.developer`, where you can "checkout" an add-on for development.
 [Eric Brehault](https://github.com/ebrehault) ported this amazing Python tool.
-
-
-
-```{toctree}
-:maxdepth: 1
-:hidden:
-
-how-an-add-on-works
-```
