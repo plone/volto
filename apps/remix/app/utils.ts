@@ -1,4 +1,4 @@
-import config from './config';
+import config from '@plone/registry';
 
 /**
  * Flatten to app server URL - Given a URL if it starts with the API server URL

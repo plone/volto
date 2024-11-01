@@ -79,6 +79,10 @@ main {
   margin-left: auto;
 }
 
+figure img {
+  width: 100%;
+}
+
 .footer {
   padding: 2rem 0;
   text-align: center;

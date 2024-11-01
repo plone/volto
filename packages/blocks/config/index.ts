@@ -1,5 +1,6 @@
 import TitleBlockView from '../Title/View';
 import TextBlockView from '../Text/View';
+import ImageBlockView from '../Image';
 
 export * from './slate';
 
@@ -14,5 +15,11 @@ export const blocksConfig = {
     id: 'slate',
     title: 'Rich text',
     view: TextBlockView,
+  },
+
+  image: {
+    id: 'image',
+    title: 'Image',
+    view: ImageBlockView,
   },
 };
