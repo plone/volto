@@ -5,7 +5,7 @@ import fs from 'fs';
 import _debug from 'debug';
 import { DepGraph } from 'dependency-graph';
 import { createRequire } from 'node:module';
-import load, { jsLoader, getConfigPath } from 'auto-config-loader';
+import { autoConf, jsLoader, getConfigPath } from 'auto-config-loader';
 
 const debugShadowing = _debug('shadowing');
 const debugConfig = _debug('config');
@@ -283,7 +283,7 @@ class AddonRegistry {
 
     function loadConfigFromNamespace(namespace: string) {
       let config: VoltoConfigJS | null = null;
-      config = load(namespace, {
+      config = autoConf(namespace, {
         cwd: projectRootPath,
         mustExist: true, // It seems that the bool is inverted
       });
