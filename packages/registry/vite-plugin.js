@@ -10,6 +10,7 @@ export const PloneRegistryVitePlugin = () => {
   const addonsLoaderPath = createAddonsLoader(
     registry.getAddonDependencies(),
     registry.getAddons(),
+    { tempInProject: true },
   );
 
   const [addonsThemeLoaderVariablesPath, addonsThemeLoaderMainPath] =

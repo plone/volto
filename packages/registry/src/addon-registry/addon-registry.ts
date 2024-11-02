@@ -4,6 +4,7 @@ import path from 'path';
 import fs from 'fs';
 import _debug from 'debug';
 import { DepGraph } from 'dependency-graph';
+import { createRequire } from 'node:module';
 
 const debug = _debug('shadowing');
 
@@ -264,11 +265,18 @@ class AddonRegistry {
         const resolvedPath = path.resolve(process.env[key]);
         if (fs.existsSync(resolvedPath)) {
           const voltoConfigPath = resolvedPath;
-          console.log(`Using configuration file in: ${voltoConfigPath}`);
+          console.log(
+            `[@plone/registry] Using configuration file in: ${voltoConfigPath}`,
+          );
+          const require = createRequire(import.meta.url);
           config = require(voltoConfigPath);
           break;
         }
       } else if (fs.existsSync(path.join(projectRootPath, CONFIGMAP[key]))) {
+        console.log(
+          `[@plone/registry] Using configuration file in: ${path.join(projectRootPath, CONFIGMAP[key])}`,
+        );
+        const require = createRequire(import.meta.url);
         config = require(path.join(projectRootPath, CONFIGMAP[key]));
         break;
       }
@@ -297,8 +305,13 @@ class AddonRegistry {
       const jsConfig = JSON.parse(
         fs.readFileSync(configFile, 'utf-8'),
       ).compilerOptions;
-      pathsConfig = jsConfig.paths;
-      baseUrl = jsConfig.baseUrl;
+      if (jsConfig) {
+        pathsConfig = jsConfig.paths;
+        baseUrl = jsConfig.baseUrl;
+      } else {
+        pathsConfig = {};
+        baseUrl = '';
+      }
     }
 
     return [baseUrl, pathsConfig];
@@ -375,6 +388,7 @@ class AddonRegistry {
     }
 
     if (!Object.keys(this.packages).includes(name)) {
+      const require = createRequire(import.meta.url);
       const resolved = require.resolve(name, { paths: [this.projectRootPath] });
       const basePath = getPackageBasePath(resolved);
       const packageJson = path.join(basePath, 'package.json');
