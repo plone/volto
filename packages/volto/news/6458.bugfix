@@ -1,0 +1,1 @@
+Fix ERR_REQUIRE from ESM module requiring CJS module in `@plone/registry` fix tests. @sneridagh
