@@ -91,6 +91,7 @@
     }
   },
   "dependencies": {
+    "auto-config-loader": "^1.7.7",
     "crypto-random-string": "3.2.0",
     "debug": "4.3.2",
     "dependency-graph": "0.10.0",
