@@ -88,4 +88,3 @@ fix-build: ## Rename the built files js -> cjs and fix import.meta.url appearenc
 	mv dist/cjs/addon-registry.js dist/cjs/addon-registry.cjs
 	mv dist/cjs/create-addons-loader.js dist/cjs/create-addons-loader.cjs
 	mv dist/cjs/create-theme-loader.js dist/cjs/create-theme-loader.cjs
-	sed -i '' 's/import\.meta\.url/__dirname/g' dist/cjs/addon-registry.cjs
