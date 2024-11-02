@@ -83,8 +83,9 @@ docs-rtd-registry: ## Build Plone Registry docs on RTD
 
 ## Build
 
-.PHONY: rename-to-cjs
-rename-to-cjs: ## Rename the built files js -> cjs
+.PHONY: fix-build
+fix-build: ## Rename the built files js -> cjs and fix import.meta.url appearences in cjs
 	mv dist/cjs/addon-registry.js dist/cjs/addon-registry.cjs
 	mv dist/cjs/create-addons-loader.js dist/cjs/create-addons-loader.cjs
 	mv dist/cjs/create-theme-loader.js dist/cjs/create-theme-loader.cjs
+	sed -i '' 's/import\.meta\.url/__dirname/g' dist/cjs/addon-registry.cjs

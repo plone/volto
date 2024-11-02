@@ -162,7 +162,6 @@ class AddonRegistry {
   public customizations: any;
   public theme: any;
   public dependencyGraph: DepGraph<string | []>;
-  requireModule: NodeRequire;
 
   constructor(projectRootPath: string) {
     const packageJson = (this.packageJson = JSON.parse(
@@ -170,12 +169,6 @@ class AddonRegistry {
         encoding: 'utf-8',
       }),
     ));
-
-    if (this.isESM()) {
-      this.requireModule = createRequire(import.meta.url);
-    } else {
-      this.requireModule = require;
-    }
 
     // Loads the dynamic config, if any
     this.voltoConfigJS = this.getRegistryConfig(projectRootPath);
@@ -275,14 +268,16 @@ class AddonRegistry {
           console.log(
             `[@plone/registry] Using configuration file in: ${voltoConfigPath}`,
           );
-          config = this.requireModule(voltoConfigPath);
+          const require = createRequire(import.meta.url);
+          config = require(voltoConfigPath);
           break;
         }
       } else if (fs.existsSync(path.join(projectRootPath, CONFIGMAP[key]))) {
         console.log(
           `[@plone/registry] Using configuration file in: ${path.join(projectRootPath, CONFIGMAP[key])}`,
         );
-        config = this.requireModule(path.join(projectRootPath, CONFIGMAP[key]));
+        const require = createRequire(import.meta.url);
+        config = require(path.join(projectRootPath, CONFIGMAP[key]));
         break;
       }
     }
@@ -393,16 +388,13 @@ class AddonRegistry {
     }
 
     if (!Object.keys(this.packages).includes(name)) {
-      const resolved = this.requireModule.resolve(name, {
-        paths: [this.projectRootPath],
-      });
+      const require = createRequire(import.meta.url);
+      const resolved = require.resolve(name, { paths: [this.projectRootPath] });
       const basePath = getPackageBasePath(resolved);
       const packageJson = path.join(basePath, 'package.json');
       const pkg = JSON.parse(fs.readFileSync(packageJson, 'utf-8'));
       const main = pkg.main || 'src/index.js';
-      const modulePath = path.dirname(
-        this.requireModule.resolve(`${basePath}/${main}`),
-      );
+      const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
       const innerAddons: Array<string> = pkg.addons || [];
       const innerAddonsNormalized = innerAddons.map((s) => s.split(':')[0]);
       if (this.addonNames.includes(name) && innerAddonsNormalized.length > 0) {
