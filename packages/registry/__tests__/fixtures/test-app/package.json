@@ -1,3 +1,4 @@
 {
-  "name": "test-app"
+  "name": "test-app",
+  "type": "module"
 }
