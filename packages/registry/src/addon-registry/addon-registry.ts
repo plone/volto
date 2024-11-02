@@ -5,8 +5,10 @@ import fs from 'fs';
 import _debug from 'debug';
 import { DepGraph } from 'dependency-graph';
 import { createRequire } from 'node:module';
+import { autoConf, jsLoader, getConfigPath } from 'auto-config-loader';
 
-const debug = _debug('shadowing');
+const debugShadowing = _debug('shadowing');
+const debugConfig = _debug('config');
 
 export type Package = {
   name: string;
@@ -248,41 +250,55 @@ class AddonRegistry {
 
   isESM = () => this.packageJson.type === 'module';
 
+  /**
+   * Gets the registry configuration from the project's config file (.js, .cjs, .ts, .mts).
+   * It tries first if there's an environment variable pointing to the config file.
+   * If it doesn't exist, it tries to load one from the local project.
+   * If it doesn't exist, it returns an empty config object.
+   */
   getRegistryConfig(projectRootPath: string) {
-    let config: VoltoConfigJS = {
+    const config: VoltoConfigJS = {
       addons: [],
       theme: '',
     };
-    const CONFIGMAP = {
-      REGISTRYCONFIG: this.isESM()
-        ? 'registry.config.cjs'
-        : 'registry.config.js',
-      VOLTOCONFIG: this.isESM() ? 'volto.config.cjs' : 'volto.config.js',
-    };
 
-    for (const key in CONFIGMAP) {
-      if (process.env[key]) {
-        const resolvedPath = path.resolve(process.env[key]);
-        if (fs.existsSync(resolvedPath)) {
-          const voltoConfigPath = resolvedPath;
-          console.log(
-            `[@plone/registry] Using configuration file in: ${voltoConfigPath}`,
-          );
-          const require = createRequire(import.meta.url);
-          config = require(voltoConfigPath);
-          break;
+    function loadConfigFromEnvVar() {
+      let config: VoltoConfigJS | null = null;
+      const ENVVARCONFIG = ['REGISTRYCONFIG', 'VOLTOCONFIG'];
+      ENVVARCONFIG.forEach((envVar) => {
+        if (process.env[envVar]) {
+          const resolvedPath = path.resolve(process.env[envVar]);
+          if (fs.existsSync(resolvedPath)) {
+            // @ts-expect-error It seems that the types are not correct in the auto-config-loader
+            config = jsLoader(resolvedPath);
+            debugConfig(
+              `[@plone/registry] Using configuration file in: ${resolvedPath}`,
+            );
+          }
         }
-      } else if (fs.existsSync(path.join(projectRootPath, CONFIGMAP[key]))) {
-        console.log(
-          `[@plone/registry] Using configuration file in: ${path.join(projectRootPath, CONFIGMAP[key])}`,
-        );
-        const require = createRequire(import.meta.url);
-        config = require(path.join(projectRootPath, CONFIGMAP[key]));
-        break;
-      }
+      });
+
+      return config;
     }
 
-    return config;
+    function loadConfigFromNamespace(namespace: string) {
+      let config: VoltoConfigJS | null = null;
+      config = autoConf(namespace, {
+        cwd: projectRootPath,
+        mustExist: true, // It seems that the bool is inverted
+      });
+      debugConfig(
+        `[@plone/registry] Using configuration file in: ${getConfigPath()}`,
+      );
+      return config;
+    }
+
+    return (
+      loadConfigFromEnvVar() ||
+      loadConfigFromNamespace('registry') ||
+      loadConfigFromNamespace('volto') ||
+      config
+    );
   }
 
   /**
@@ -388,7 +404,7 @@ class AddonRegistry {
     }
 
     if (!Object.keys(this.packages).includes(name)) {
-      const require = createRequire(import.meta.url);
+      const require = createRequire(this.projectRootPath);
       const resolved = require.resolve(name, { paths: [this.projectRootPath] });
       const basePath = getPackageBasePath(resolved);
       const packageJson = path.join(basePath, 'package.json');
@@ -688,7 +704,7 @@ class AddonRegistry {
                 .replace(/\.(js|jsx|ts|tsx)$/, '')
             ] = path.resolve(filename);
           } else {
-            debug(
+            debugShadowing(
               `The file ${filename} doesn't exist in the ${name} (${targetPath}), unable to customize.`,
             );
           }
