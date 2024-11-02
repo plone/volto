@@ -73,7 +73,7 @@
     "build": "parcel build && pnpm build:node:esm && pnpm build:node:cjs",
     "build:force": "rm -rf dist && parcel build --no-cache && pnpm build:node:esm && pnpm build:node:cjs",
     "build:node:esm": "tsc --project tsconfig.node.json || true",
-    "build:node:cjs": "tsc --project tsconfig.node.json --module commonjs --moduleResolution Node --outDir dist/cjs || true && make rename-to-cjs",
+    "build:node:cjs": "tsc --project tsconfig.node.json --module commonjs --moduleResolution Node --outDir dist/cjs || true && make fix-build",
     "test": "vitest",
     "test:debug": "vitest --inspect-brk --no-file-parallelism registry",
     "dry-release": "release-it --dry-run",
@@ -91,6 +91,7 @@
     }
   },
   "dependencies": {
+    "auto-config-loader": "^1.7.7",
     "crypto-random-string": "3.2.0",
     "debug": "4.3.2",
     "dependency-graph": "0.10.0",

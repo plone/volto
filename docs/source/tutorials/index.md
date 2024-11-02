@@ -40,8 +40,8 @@ In recent years the React based Volto frontend for Plone has been presented in m
 
 ### PloneConf 2023
 
--   [State of Plone Keynote](https://www.youtube.com/watch?v=jl19wuC0wtw&list=PLGN9BI-OAQkSXMXVBXLWQAQr0AF2xM_NU&index=1)
--   [Piero Nicolli - Theming Volto in 2024](https://www.youtube.com/watch?v=LkPOsIn1jYY&list=PLGN9BI-OAQkSXMXVBXLWQAQr0AF2xM_NU&index=6)
+-   [State of Plone Keynote](https://www.youtube.com/watch?v=jl19wuC0wtw&%3Blist=PLGN9BI-OAQkSXMXVBXLWQAQr0AF2xM_NU&%3Bindex=1)
+-   [Piero Nicolli - Theming Volto in 2024](https://www.youtube.com/watch?v=LkPOsIn1jYY&%3Blist=PLGN9BI-OAQkSXMXVBXLWQAQr0AF2xM_NU&%3Bindex=6)
 -   [Víctor Fernández de Alba - Breaking boundaries: Plone as headless CMS](https://www.youtube.com/watch?v=43LVtjYyo28&list=PLGN9BI-OAQkSXMXVBXLWQAQr0AF2xM_NU&index=7)
 -   [Rob Gietema - How to build a site using Nick](https://www.youtube.com/watch?v=ZbdYvNAnamM&list=PLGN9BI-OAQkSXMXVBXLWQAQr0AF2xM_NU&index=18)
 -   [Alok Kumar - Is your Volto add-on developer friendly?](https://www.youtube.com/watch?v=E6fH3NhR2Hc&list=PLGN9BI-OAQkSXMXVBXLWQAQr0AF2xM_NU&index=20)
@@ -56,14 +56,14 @@ In recent years the React based Volto frontend for Plone has been presented in m
 Plone 6 site presentations:
 
 -   [Rai Way: Plone6 supporting the world of italian information, sports and entertainment](https://www.youtube.com/watch?v=hHHGlSjf5O4&list=PLGN9BI-OAQkQxqQcCZeJefMC8XlA_qv3Z)
--   [How Plone Powers Hundreds of Websites at one of the Largest Research Institutions in Europe](https://www.youtube.com/watch?v=bxWt-GEmPcc&list=PLGN9BI-OAQkQxqQcCZeJefMC8XlA_qv3Z)
+-   [How Plone Powers Hundreds of Websites at one of the Largest Research Institutions in Europe](https://www.youtube.com/watch?v=bxWt-GEmPcc&%3Blist=PLGN9BI-OAQkQxqQcCZeJefMC8XlA_qv3Z)
 
 Developer/integrator talks:
 
 -   [Anatomy of a Volto project](https://www.youtube.com/watch?v=JtNufyFlgc8&list=PLGN9BI-OAQkQxqQcCZeJefMC8XlA_qv3Z)
--   [Creating a Volto Theme](https://www.youtube.com/watch?v=AMHN74Jr27Y&list=PLGN9BI-OAQkQxqQcCZeJefMC8XlA_qv3Z)
+-   [Creating a Volto Theme](https://www.youtube.com/watch?v=AMHN74Jr27Y&%3Blist=PLGN9BI-OAQkQxqQcCZeJefMC8XlA_qv3Z)
 -   [A Deep Dive Into Internals Of Volto](https://www.youtube.com/watch?v=sMeTDRgp3uI&list=PLGN9BI-OAQkQxqQcCZeJefMC8XlA_qv3Z)
--   [DevOps Bird's Eye View on the Plone 6 Backend](https://www.youtube.com/watch?v=L5PvGwWC9P4&list=PLGN9BI-OAQkQxqQcCZeJefMC8XlA_qv3Z)
+-   [DevOps Bird's Eye View on the Plone 6 Backend](https://www.youtube.com/watch?v=L5PvGwWC9P4&%3Blist=PLGN9BI-OAQkQxqQcCZeJefMC8XlA_qv3Z)
 
 
 ### Previous PloneConfs
@@ -78,5 +78,5 @@ World Plone Day is a 24-hour streaming event, with the goal was to promote and e
 
 -   [Plone 6 Volto's Seamless Mode](https://www.youtube.com/watch?v=Mj8pHRBls-w&list=PLGN9BI-OAQkQmEqf6O8jeyoFY1b2hD1uL)
 -   [Volto add ons separator and carousel](https://www.youtube.com/watch?v=eyTMI5TYcVg&list=PLGN9BI-OAQkQmEqf6O8jeyoFY1b2hD1uL)
--   [Weekly Volto Live – Retrospective](https://www.youtube.com/watch?v=WT6OjkSrB20&list=PLGN9BI-OAQkQmEqf6O8jeyoFY1b2hD1uL)
+-   [Weekly Volto Live – Retrospective](https://www.youtube.com/watch?v=WT6OjkSrB20&%3Blist=PLGN9BI-OAQkQmEqf6O8jeyoFY1b2hD1uL)
 -   [Migrating from Classic to Volto](https://www.youtube.com/watch?v=09fg456T90s&list=PLGN9BI-OAQkQmEqf6O8jeyoFY1b2hD1uL)
