@@ -15,7 +15,7 @@ For the `fish` shell, see [`nvm.fish`](https://github.com/jorgebucaran/nvm.fish)
 2.  Download and run the `nvm` install and update script, and pipe it into `bash`.
 
     ```shell
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v{NVM_VERSION}/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.39.5/install.sh | bash
     ```
 
 3.  Source your profile.
