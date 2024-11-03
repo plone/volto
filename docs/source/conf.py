@@ -289,20 +289,19 @@ latex_logo = "_static/logo_2x.png"
 # An extension that allows replacements for code blocks that
 # are not supported in `rst_epilog` or other substitutions.
 # https://stackoverflow.com/a/56328457/2214933
-def source_replace(app, docname, source):
-    result = source[0]
-    for key in app.config.source_replacements:
-        result = result.replace(key, app.config.source_replacements[key])
-    source[0] = result
+# def source_replace(app, docname, source):
+#     result = source[0]
+#     for key in app.config.source_replacements:
+#         result = result.replace(key, app.config.source_replacements[key])
+#     source[0] = result
 
 
 # Dict of replacements.
-source_replacements = {
-    "{NVM_VERSION}": "0.39.5",
-}
+# source_replacements = {
+# }
 
 
 def setup(app):
-    app.add_config_value("source_replacements", {}, True)
-    app.connect("source-read", source_replace)
+    # app.add_config_value("source_replacements", {}, True)
+    # app.connect("source-read", source_replace)
     app.add_config_value("context", "volto", "env")
