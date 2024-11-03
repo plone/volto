@@ -4,6 +4,19 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import { PloneRegistryVitePlugin } from '@plone/registry/vite-plugin';
 
 export default defineConfig({
+  server: {
+    port: 3000,
+    proxy: {
+      '^/\\+\\+api\\+\\+($$|/.*)': {
+        target:
+          'http://localhost:8080/VirtualHostBase/http/localhost:3000/Plone/++api++/VirtualHostRoot',
+        rewrite: (path) => {
+          console.log(path);
+          return path.replace('/++api++', '');
+        },
+      },
+    },
+  },
   plugins: [
     remix({
       future: {
@@ -15,7 +28,4 @@ export default defineConfig({
     tsconfigPaths(),
     PloneRegistryVitePlugin(),
   ],
-  server: {
-    port: 3000,
-  },
 });

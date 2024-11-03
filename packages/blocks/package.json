@@ -50,9 +50,11 @@
       "optional": true
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "@plone/components": "workspace:*",
+    "@plone/registry": "workspace:*"
+  },
   "devDependencies": {
-    "@plone/registry": "workspace:*",
     "@plone/types": "workspace:*",
     "@types/react": "^18",
     "@types/react-dom": "^18",

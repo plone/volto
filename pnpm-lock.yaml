@@ -330,6 +330,12 @@ importers:
 
   packages/blocks:
     dependencies:
+      '@plone/components':
+        specifier: workspace:*
+        version: link:../components
+      '@plone/registry':
+        specifier: workspace:*
+        version: link:../registry
       react:
         specifier: ^16.8.0 || ^17.0.0 || ^18.0.0
         version: 18.2.0
@@ -337,9 +343,6 @@ importers:
         specifier: ^16.8.0 || ^17.0.0 || ^18.0.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@plone/registry':
-        specifier: workspace:*
-        version: link:../registry
       '@plone/types':
         specifier: workspace:*
         version: link:../types

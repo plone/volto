@@ -1,6 +1,7 @@
 import TitleBlockView from '../Title/View';
 import TextBlockView from '../Text/View';
 import ImageBlockView from '../Image';
+import TeaserBlockView from '../Teaser';
 
 export * from './slate';
 
@@ -21,5 +22,11 @@ export const blocksConfig = {
     id: 'image',
     title: 'Image',
     view: ImageBlockView,
+  },
+
+  teaser: {
+    id: 'teaser',
+    title: 'Teaser',
+    view: TeaserBlockView,
   },
 };

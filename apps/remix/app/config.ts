@@ -1,12 +1,8 @@
 import config from '@plone/registry';
-import installBlocks from '@plone/blocks';
-import installSlots from '@plone/slots';
+import applyAddonConfiguration from 'load-plone-registry-addons';
 
-config.set('slots', {});
-config.set('utilities', {});
-installBlocks(config);
-installSlots(config);
+applyAddonConfiguration(config);
 
-config.settings.apiPath = 'http://localhost:8080/Plone';
+config.settings.apiPath = 'http://localhost:3000';
 
 export default config;
