@@ -283,14 +283,14 @@ function main({ addonMode }) {
         fs.existsSync(
           path.join(
             projectRootPath,
-            '/node_modules/@plone/registry/dist/cjs/addon-registry.cjs',
+            '/node_modules/@plone/registry/dist/addon-registry/addon-registry.cjs',
           ),
         )
       ) {
         AddonRegistry = require(
           path.join(
             projectRootPath,
-            '/node_modules/@plone/registry/dist/cjs/addon-registry.cjs',
+            '/node_modules/@plone/registry/dist/addon-registry/addon-registry.cjs',
           ),
         ).AddonRegistry;
         // Detect where is the registry (if we are in Volto 18-alpha.46 or below)

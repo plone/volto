@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "composite": true,
     /* Base Options: */
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -10,11 +11,10 @@
     "isolatedModules": true,
     /* Strictness */
     "strict": true,
-    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
     /* If transpiling with TypeScript: */
-    "moduleResolution": "NodeNext",
-    "module": "NodeNext",
-    "outDir": "dist/esm",
+    "module": "Preserve",
+    "outDir": "dist",
     "sourceMap": true,
     /* If your code doesn't run in the DOM: */
     "lib": ["es2022"],
