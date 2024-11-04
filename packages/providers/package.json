@@ -71,7 +71,7 @@
     "release-it": "17.1.1",
     "tsconfig": "workspace:*",
     "tsup": "^8.3.5",
-    "typescript": "^5.4.5",
+    "typescript": "^5.6.3",
     "vitest": "^2.1.3"
   }
 }
