@@ -389,27 +389,6 @@ importers:
       '@arethetypeswrong/cli':
         specifier: ^0.16.4
         version: 0.16.4
-      '@parcel/config-default':
-        specifier: ^2.12.0
-        version: 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.10))(@swc/helpers@0.5.10)(postcss@8.4.47)(relateurl@0.2.7)(srcset@4.0.0)(terser@5.30.3)(typescript@5.6.3)
-      '@parcel/core':
-        specifier: ^2.12.0
-        version: 2.12.0(@swc/helpers@0.5.10)
-      '@parcel/optimizer-terser':
-        specifier: 2.12.0
-        version: 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.10))(@swc/helpers@0.5.10)
-      '@parcel/packager-ts':
-        specifier: ^2.12.0
-        version: 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.10))(@swc/helpers@0.5.10)
-      '@parcel/transformer-js':
-        specifier: ^2.12.0
-        version: 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.10))
-      '@parcel/transformer-react-refresh-wrap':
-        specifier: ^2.12.0
-        version: 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.10))(@swc/helpers@0.5.10)
-      '@parcel/transformer-typescript-types':
-        specifier: ^2.12.0
-        version: 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.10))(@swc/helpers@0.5.10)(typescript@5.6.3)
       '@plone/types':
         specifier: 'workspace: *'
         version: link:../types
@@ -443,9 +422,6 @@ importers:
       jsdom:
         specifier: ^21.1.1
         version: 21.1.2
-      parcel:
-        specifier: ^2.12.0
-        version: 2.12.0(@swc/helpers@0.5.10)(postcss@8.4.47)(relateurl@0.2.7)(srcset@4.0.0)(terser@5.30.3)(typescript@5.6.3)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -4472,10 +4448,6 @@ packages:
 
   '@parcel/optimizer-swc@2.12.0':
     resolution: {integrity: sha512-iBi6LZB3lm6WmbXfzi8J3DCVPmn4FN2lw7DGXxUXu7MouDPVWfTsM6U/5TkSHJRNRogZ2gqy5q9g34NPxHbJcw==}
-    engines: {node: '>= 12.0.0', parcel: ^2.12.0}
-
-  '@parcel/optimizer-terser@2.12.0':
-    resolution: {integrity: sha512-cIAJ+nLPk7MUGiSbsam8vM8gQNiaVavKhJN13PsEBzv0QLOQm0TCl02cGC9WJIukyc90AO5p3MnFP4/1U1M8iA==}
     engines: {node: '>= 12.0.0', parcel: ^2.12.0}
 
   '@parcel/package-manager@2.12.0':
@@ -20779,18 +20751,6 @@ snapshots:
       '@parcel/utils': 2.12.0
       '@swc/core': 1.4.16(@swc/helpers@0.5.10)
       nullthrows: 1.1.1
-    transitivePeerDependencies:
-      - '@parcel/core'
-      - '@swc/helpers'
-
-  '@parcel/optimizer-terser@2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.10))(@swc/helpers@0.5.10)':
-    dependencies:
-      '@parcel/diagnostic': 2.12.0
-      '@parcel/plugin': 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.10))(@swc/helpers@0.5.10)
-      '@parcel/source-map': 2.1.1
-      '@parcel/utils': 2.12.0
-      nullthrows: 1.1.1
-      terser: 5.30.3
     transitivePeerDependencies:
       - '@parcel/core'
       - '@swc/helpers'
