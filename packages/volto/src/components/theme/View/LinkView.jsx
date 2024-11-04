@@ -1,27 +1,18 @@
-import { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
-import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
-import { Container as SemanticContainer } from 'semantic-ui-react';
 import { UniversalLink } from '@plone/volto/components';
-import { Redirect } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
+import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
+import { Redirect } from 'react-router-dom';
+import { Container as SemanticContainer } from 'semantic-ui-react';
 
 const LinkView = ({ token, content }) => {
-  const history = useHistory();
-  useEffect(() => {
-    if (!token) {
-      const { remoteUrl } = content;
-      if (isInternalURL(remoteUrl)) {
-        history.replace(flattenToAppURL(remoteUrl));
-      } else if (!__SERVER__) {
-        window.location.href = flattenToAppURL(remoteUrl);
-      }
+  if (!token && content.remoteUrl) {
+    if (isInternalURL(content.remoteUrl)) {
+      return <Redirect to={flattenToAppURL(content.remoteUrl)} />;
     }
-  }, [content, history, token]);
-  if (__SERVER__ && !token && content.remoteUrl) {
-    return <Redirect to={content.remoteUrl} />;
+    window.location.href = flattenToAppURL(content.remoteUrl);
+    return null;
   }
   const { title, description, remoteUrl } = content;
   const { openExternalLinkInNewTab } = config.settings;
