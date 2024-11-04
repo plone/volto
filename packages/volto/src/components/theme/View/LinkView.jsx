@@ -8,21 +8,7 @@ import { Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import config from '@plone/volto/registry';
 
-const LinkView = ({ token, content }) => {
-  const history = useHistory();
-  useEffect(() => {
-    if (!token) {
-      const { remoteUrl } = content;
-      if (isInternalURL(remoteUrl)) {
-        history.replace(flattenToAppURL(remoteUrl));
-      } else if (!__SERVER__) {
-        window.location.href = flattenToAppURL(remoteUrl);
-      }
-    }
-  }, [content, history, token]);
-  if (__SERVER__ && !token && content.remoteUrl) {
-    return <Redirect to={content.remoteUrl} />;
-  }
+export function DefaultLinkViewBody({ content }) {
   const { title, description, remoteUrl } = content;
   const { openExternalLinkInNewTab } = config.settings;
   const Container =
@@ -52,6 +38,27 @@ const LinkView = ({ token, content }) => {
       )}
     </Container>
   );
+}
+
+const LinkView = ({ token, content }) => {
+  const history = useHistory();
+  useEffect(() => {
+    if (!token) {
+      const { remoteUrl } = content;
+      if (isInternalURL(remoteUrl)) {
+        history.replace(flattenToAppURL(remoteUrl));
+      } else if (!__SERVER__) {
+        window.location.href = flattenToAppURL(remoteUrl);
+      }
+    }
+  }, [content, history, token]);
+  if (__SERVER__ && !token && content.remoteUrl) {
+    return <Redirect to={content.remoteUrl} />;
+  }
+
+  const LinkViewBody = config.getComponent({ name: 'LinkViewBody' }).component;
+
+  return <LinkViewBody content={content} />;
 };
 
 LinkView.propTypes = {
