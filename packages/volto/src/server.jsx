@@ -75,9 +75,6 @@ if (process.env.RAZZLE_PREFIX_PATH) {
       process.env.BUILD_DIR
         ? path.join(process.env.BUILD_DIR, 'public')
         : process.env.RAZZLE_PUBLIC_DIR,
-      {
-        redirect: false, // Avoid /my-prefix from being redirected to /my-prefix/
-      },
     ),
   );
 }
