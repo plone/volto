@@ -94,7 +94,7 @@ If your add-on needs to bring in additional JavaScript package dependencies, you
 
 ## `pnpm` workspaces
 
-Your need to configure your add-ons using a `pnpm` workspace.
+You need to configure your add-ons using a `pnpm` workspace.
 You can configure them using the file {file}`pnpm-workspace.yaml` and declare all your development add-ons in there.
 
 ```yaml
