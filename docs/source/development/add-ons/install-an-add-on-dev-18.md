@@ -118,7 +118,7 @@ packages:
   - 'packages/*'
 ```
 
-If the add-on you are developing uses the `pnpm` setup, then you have to add the following to {file}`pnpm-workspace.yaml` detect them.
+If the add-on you are developing was created using {term}`Cookieplone`, then you have to add the following to {file}`pnpm-workspace.yaml` detect them.
 
 ```yaml
 packages:
@@ -127,13 +127,14 @@ packages:
   - 'packages/**/packages/*'
 ```
 
+Note the nesting of `packages` since a {term}`Cookieplone` generated add-on will have a `packages` folder in itself.
 You can explicitly declare the add-ons, too.
 
 ```yaml
 packages:
   - 'core/packages'
   - 'packages/my-policy-addon'
-  - 'packages/my-development-mode-addon'
+  - 'packages/my-development-mode-addon/packages/my-development-mode-addon'
   - 'packages/**/packages/*'
 ```
 
