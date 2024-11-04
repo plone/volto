@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2024-09-15 14:20-0300\n"
+"PO-Revision-Date: 2024-10-31 09:02-0300\n"
 "Last-Translator: Érico Andrei <ericof@plone.org>\n"
 "Language: pt_BR\n"
 "Language-Team: Portuguese (https://www.transifex.com/plone/teams/14552/pt/)\n"
@@ -96,7 +96,7 @@ msgstr "Adicionar complementos"
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
 msgid "Add Alternative URL"
-msgstr ""
+msgstr "Adicionar URL alternativa"
 
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
@@ -176,7 +176,7 @@ msgstr "Adicionar data"
 #. Default: "Add element to container"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 msgid "Add element to container"
-msgstr ""
+msgstr "Adicionar elemento ao contêiner"
 
 #. Default: "Add field"
 #: components/manage/Widgets/SchemaWidget
@@ -317,12 +317,12 @@ msgstr "Alternativa foi adicionada"
 #. Default: "Aliases have been removed."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been removed."
-msgstr ""
+msgstr "Alternativas foram removidas."
 
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been uploaded."
-msgstr ""
+msgstr "Alternativas foram carregadas."
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
@@ -435,7 +435,7 @@ msgstr "Atribuições"
 #. Default: "Automatically"
 #: components/manage/Controlpanels/Aliases
 msgid "Automatically"
-msgstr ""
+msgstr "Automaticamente"
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -499,7 +499,7 @@ msgstr "Bloco"
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
-msgstr ""
+msgstr "Ambos"
 
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
@@ -530,7 +530,7 @@ msgstr "Navegue no site, arraste uma imagem ou digite uma URL"
 #. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
-msgstr ""
+msgstr "Carregamento em massa de CSV"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
@@ -540,7 +540,7 @@ msgstr "Por padrão, as permissões do container deste item são herdadas. Se vo
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
 msgid "CSVFile"
-msgstr ""
+msgstr "Arquivo CSV"
 
 #. Default: "Cache Name"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -873,12 +873,12 @@ msgstr "Criar cópia de trabalho"
 #. Default: "Created after"
 #: components/manage/Controlpanels/Aliases
 msgid "Created after"
-msgstr ""
+msgstr "Criado após"
 
 #. Default: "Created before"
 #: components/manage/Controlpanels/Aliases
 msgid "Created before"
-msgstr ""
+msgstr "Criado antes"
 
 #. Default: "Created by {creator} on {date}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -1223,7 +1223,7 @@ msgstr "Editar"
 #. Default: "Edit Alternative URL"
 #: components/manage/Controlpanels/Aliases
 msgid "Edit Alternative URL"
-msgstr ""
+msgstr "Editar URL alternativa"
 
 #. Default: "Edit Rule"
 #: components/manage/Controlpanels/Rules/EditRule
@@ -1334,7 +1334,7 @@ msgstr "Informe o caminho absoluto do destino. O destino deve existir ou ser um 
 #. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
-msgstr ""
+msgstr "Informe o caminho absoluto onde a URL alternativa deve existir. O caminho deve começar com ‘/‘. Somente urls que resultam em uma página não encontrada (404) utilizarão esse redirecionamento."
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
@@ -1411,7 +1411,7 @@ msgstr "Visão de Evento"
 #. Default: "Example"
 #: components/manage/Controlpanels/Aliases
 msgid "Example"
-msgstr ""
+msgstr "Exemplo"
 
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1974,7 +1974,7 @@ msgstr "Campo independente da linguagem."
 #. Default: "This is a language independent field. Any value you enter here will overwrite the corresponding field of all members of the translation group when you save this form."
 #: components/manage/Widgets/FormFieldWrapper
 msgid "Language independent icon title"
-msgstr ""
+msgstr "Esse é um campo independente do idioma. Qualquer valor que você inserir aqui substituirá o campo correspondente de todos os membros do grupo de tradução quando você salvar este formulário."
 
 #. Default: "Large"
 #: components/manage/Widgets/ImageSizeWidget
@@ -2183,7 +2183,7 @@ msgstr "Manual"
 #. Default: "Manually"
 #: components/manage/Controlpanels/Aliases
 msgid "Manually"
-msgstr ""
+msgstr "Manualmente"
 
 #. Default: "Manually or automatically added?"
 #: components/manage/Controlpanels/Aliases
@@ -4471,7 +4471,7 @@ msgstr "Esqueceu sua senha?"
 #. Default: "Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
 #: components/manage/Controlpanels/Aliases
 msgid "bulkUploadUrlsHelp"
-msgstr ""
+msgstr "Adicione vários URLs alternativos de uma só vez fazendo upload de um arquivo CSV. A primeira coluna deve ser o caminho do qual redirecionar; a segunda, o caminho para o qual redirecionar. Ambos os caminhos devem ser relativos ao site do Plone, começando com uma barra (/). Uma terceira coluna (opcional) pode conter uma data e uma hora. Uma quarta coluna (opcional) pode conter um valor booleano para marcar como um redirecionamento manual (padrão true)."
 
 #. Default: "Checkbox"
 #: config/Blocks
@@ -4501,7 +4501,7 @@ msgstr "Comparar com"
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "countBrokenRelations"
-msgstr ""
+msgstr "{countofrelation} quebra {countofrelation, plural, one {relation} outras"
 
 #. Default: "Date Range"
 #: config/Blocks
@@ -4586,7 +4586,7 @@ msgstr "Onde"
 #. Default: "/example"
 #: components/manage/Controlpanels/Aliases
 msgid "examplePath"
-msgstr ""
+msgstr "/exemplo"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
