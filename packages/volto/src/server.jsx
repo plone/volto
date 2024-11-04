@@ -272,8 +272,7 @@ server.get('/*', (req, res) => {
                 context={context}
                 location={req.url}
                 basename={
-                  config.settings.prefixPath &&
-                  process.env.NODE_ENV === 'production'
+                  config.settings.prefixPath
                     ? config.settings.prefixPath
                     : undefined
                 }
