@@ -736,24 +736,9 @@ importers:
         specifier: ^16.8.0 || ^17.0.0 || ^18.0.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@parcel/config-default':
-        specifier: ^2.12.0
-        version: 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.10))(@swc/helpers@0.5.10)(postcss@8.4.47)(relateurl@0.2.7)(srcset@4.0.0)(terser@5.30.3)(typescript@5.6.3)
-      '@parcel/core':
-        specifier: ^2.12.0
-        version: 2.12.0(@swc/helpers@0.5.10)
-      '@parcel/packager-ts':
-        specifier: ^2.12.0
-        version: 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.10))(@swc/helpers@0.5.10)
-      '@parcel/transformer-js':
-        specifier: ^2.12.0
-        version: 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.10))
-      '@parcel/transformer-react-refresh-wrap':
-        specifier: ^2.12.0
-        version: 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.10))(@swc/helpers@0.5.10)
-      '@parcel/transformer-typescript-types':
-        specifier: ^2.12.0
-        version: 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.10))(@swc/helpers@0.5.10)(typescript@5.6.3)
+      '@arethetypeswrong/cli':
+        specifier: ^0.16.4
+        version: 0.16.4
       '@plone/types':
         specifier: workspace:*
         version: link:../types
@@ -763,15 +748,15 @@ importers:
       '@types/react-dom':
         specifier: ^18
         version: 18.2.25
-      parcel:
-        specifier: ^2.12.0
-        version: 2.12.0(@swc/helpers@0.5.10)(postcss@8.4.47)(relateurl@0.2.7)(srcset@4.0.0)(terser@5.30.3)(typescript@5.6.3)
       release-it:
         specifier: 17.1.1
         version: 17.1.1(typescript@5.6.3)
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
+      tsup:
+        specifier: ^8.3.5
+        version: 8.3.5(@microsoft/api-extractor@7.43.0(@types/node@20.12.7))(@swc/core@1.4.16(@swc/helpers@0.5.10))(jiti@1.21.6)(postcss@8.4.47)(tsx@4.19.1)(typescript@5.6.3)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -7193,6 +7178,10 @@ packages:
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
     engines: {node: '>=8'}
+
+  ansi-regex@6.0.1:
+    resolution: {integrity: sha512-n5M855fKb2SsfMIiFFoVrABHJC8QtHwVx+mHWP3QcEqBHYienj5dHSgjbxtC0WEZXYt4wcD6zrQElDPhFuZgfA==}
+    engines: {node: '>=12'}
 
   ansi-regex@6.1.0:
     resolution: {integrity: sha512-7HSX4QQb4CspciLpVFwyRe79O3xsIZDDLER21kERQ71oaPodF8jL725AgJMFAYbooIqolJoRLuM81SpeUkpkvA==}
@@ -17662,7 +17651,7 @@ snapshots:
   '@babel/code-frame@7.24.2':
     dependencies:
       '@babel/highlight': 7.24.2
-      picocolors: 1.1.1
+      picocolors: 1.1.0
 
   '@babel/code-frame@7.25.7':
     dependencies:
@@ -17912,14 +17901,14 @@ snapshots:
       '@babel/helper-validator-identifier': 7.22.20
       chalk: 2.4.2
       js-tokens: 4.0.0
-      picocolors: 1.1.1
+      picocolors: 1.1.0
 
   '@babel/highlight@7.25.7':
     dependencies:
       '@babel/helper-validator-identifier': 7.25.7
       chalk: 2.4.2
       js-tokens: 4.0.0
-      picocolors: 1.1.1
+      picocolors: 1.1.0
 
   '@babel/parser@7.24.4':
     dependencies:
@@ -25052,6 +25041,8 @@ snapshots:
   ansi-regex@4.1.1: {}
 
   ansi-regex@5.0.1: {}
+
+  ansi-regex@6.0.1: {}
 
   ansi-regex@6.1.0: {}
 
@@ -36775,7 +36766,7 @@ snapshots:
 
   strip-ansi@7.1.0:
     dependencies:
-      ansi-regex: 6.1.0
+      ansi-regex: 6.0.1
 
   strip-bom-buf@1.0.0:
     dependencies:
@@ -37756,7 +37747,7 @@ snapshots:
     dependencies:
       browserslist: 4.23.0
       escalade: 3.1.2
-      picocolors: 1.1.1
+      picocolors: 1.1.0
 
   update-browserslist-db@1.1.1(browserslist@4.24.0):
     dependencies:
@@ -38060,7 +38051,7 @@ snapshots:
       cac: 6.7.14
       debug: 4.3.4(supports-color@8.1.1)
       pathe: 1.1.2
-      picocolors: 1.1.1
+      picocolors: 1.1.0
       vite: 5.4.9(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.24.1)(sass@1.75.0)(terser@5.30.3)
     transitivePeerDependencies:
       - '@types/node'

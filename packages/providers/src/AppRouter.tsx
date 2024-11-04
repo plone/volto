@@ -1,4 +1,9 @@
-import React, { createContext, ReactNode, useContext, useMemo } from 'react';
+import React, {
+  createContext,
+  type ReactNode,
+  useContext,
+  useMemo,
+} from 'react';
 import { RouterProvider } from 'react-aria-components';
 import { flattenToAppURL as defaultFlattenToAppURL } from './utils';
 
@@ -17,7 +22,7 @@ interface AppRouter {
   useLocation: () => Location | undefined;
   useParams: (opts?: any) => Record<string, string>;
   navigate: (path: string) => void;
-  useHref: (to: string, options?: any) => string;
+  useHref?: (to: string, options?: any) => string;
   flattenToAppURL: (path: string | undefined) => string | undefined;
 }
 
