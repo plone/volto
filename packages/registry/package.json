@@ -56,11 +56,6 @@
       "default": "./dist/index.cjs"
     }
   },
-  "targets": {
-    "main": {
-      "includeNodeModules": false
-    }
-  },
   "scripts": {
     "build": "tsup",
     "build:force": "rm -rf dist && tsup",
