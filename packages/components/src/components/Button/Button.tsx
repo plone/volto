@@ -1,5 +1,5 @@
-import React, { forwardRef, ForwardedRef } from 'react';
-import { Button as RACButton, ButtonProps } from 'react-aria-components';
+import React, { forwardRef, type ForwardedRef } from 'react';
+import { Button as RACButton, type ButtonProps } from 'react-aria-components';
 
 export const Button = forwardRef(function _Button(
   props: ButtonProps,
