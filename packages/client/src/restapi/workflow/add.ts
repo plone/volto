@@ -1,11 +1,11 @@
 import { z } from 'zod';
-import { apiRequest, ApiRequestParams } from '../../API';
+import { apiRequest, type ApiRequestParams } from '../../API';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
 } from '../../validation/config';
 import { createWorkflowDataSchema } from '../../validation/workflow';
-import { CreateWorkflowResponse } from '@plone/types';
+import type { CreateWorkflowResponse } from '@plone/types';
 
 export const createWorkflowArgsSchema = z.object({
   path: z.string(),

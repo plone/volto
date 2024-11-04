@@ -1,7 +1,7 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
-import { GetVocabulariesResponse } from '@plone/types';
 import { z } from 'zod';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
+import type { GetVocabulariesResponse } from '@plone/types';
 
 const getVocabulariesSchema = z.object({
   path: z.string(),
