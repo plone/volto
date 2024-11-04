@@ -1,10 +1,10 @@
-import { Login } from '@plone/types';
-import { apiRequest, ApiRequestParams } from '../../API';
+import { apiRequest, type ApiRequestParams } from '../../API';
 import { z } from 'zod';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
 } from '../../validation/config';
+import type { Login } from '@plone/types';
 
 export const loginArgsSchema = z.object({
   username: z.string(),
