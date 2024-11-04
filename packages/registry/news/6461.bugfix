@@ -1,1 +1,1 @@
-Fix types for addons TS, fix tsconfig for node side @sneridagh
+Fix types for add-on's TypeScript. Fix `.tsconfig` for Node.js side. @sneridagh
