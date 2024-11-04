@@ -19,7 +19,6 @@
   "type": "module",
   "files": [
     "dist",
-    "src",
     "README.md"
   ],
   "main": "./dist/index.js",
