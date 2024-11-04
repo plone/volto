@@ -12,6 +12,38 @@ myst:
 Attention should be paid to improve and maintain accessibility, abbreviated as "a11y".
 
 
+## Tools
+
+Volto developers use several tools to analyze and test the accessibility of their projects.
+
+[`cypress-axe`](https://github.com/component-driven/cypress-axe)
+:   Automate accessibility testing with [`axe-core`](https://github.com/dequelabs/axe-core) in [Cypress](https://cypress.io/).
+    See also [axe devTools](https://www.deque.com/axe/devtools/), a tool that helps developers check digital content against accessibility standards.
+
+[IBM Equal Access Accessibility Checker browser extensions](https://www.ibm.com/able/toolkit/tools#develop)
+:   Browser extensions that test your code for accessibility issues.
+
+[Accessible Web](https://accessibleweb.com/)
+:   A commercial tool that helps teams discover, understand, and remediate web accessibility issues.
+
+[VoiceOver](https://developer.apple.com/documentation/accessibility/voiceover/)
+:   A gesture-based screen reader that provides an auditory description of the content onscreen for Apple iOS and macOS devices.
+    See [VoiceOver keyboard shortcuts](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts) for usage.
+
+[A11Y-Color-Blindness-Empathy-Test](https://vinceumo.github.io/A11Y-Color-Blindness-Empathy-Test/)
+:   Help designers and developers to understand color blindness and visual imparity.
+
+[WAI-ARIA - Screen reader compatibility](https://www.powermapper.com/tests/screen-readers/aria/)
+:   Shows how different WAI-ARIA attributes behave in commonly used screen readers.
+    The results include two types of tests.
+
+    -   Expected to work - these tests show support when accessibility features are used correctly
+    -   Expected to fail - these tests show what happens when accessibility features are used incorrectly 
+
+
+
+
+
 ## Tests
 
 We use [`cypress-axe`](https://github.com/component-driven/cypress-axe) for automated testing of accessibility in Volto via Cypress.
