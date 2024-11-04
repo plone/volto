@@ -20,6 +20,21 @@ Use the following command to install the configuration of `mrs.developer.json` i
 make install
 ```
 
+Next, you need to add the add-on to the `addons` key of your Plone project's {file}`package.json`.
+
+```json
+{
+  "name": "my-volto-project",
+  "addons": [
+    "name-of-add-on"
+  ]
+}
+```
+
+```{seealso}
+Alternatively, you can use {file}`volto.config.js` to declare add-ons in your Plone project.
+See {doc}`../../configuration/volto-config-js`.
+```
 
 ## Configure `mrs-developer`
 
