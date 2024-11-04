@@ -62,7 +62,6 @@
     }
   },
   "scripts": {
-    "watch": "parcel watch",
     "build": "tsup",
     "build:force": "rm -rf dist && tsup",
     "check:exports": "attw --pack .",
