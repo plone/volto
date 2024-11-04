@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   Button,
   ColorPicker as RACColorPicker,
-  ColorPickerProps as RACColorPickerProps,
+  type ColorPickerProps as RACColorPickerProps,
   Dialog,
   DialogTrigger,
   Popover,
