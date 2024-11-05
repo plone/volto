@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a hidden widget component 1`] = `
+<input
+  id="field-my-field"
+  name="my-field"
+  type="hidden"
+  value=""
+/>
+`;
