@@ -1,11 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2024-10-24T16:41:21.354Z\n"
-=======
-"POT-Creation-Date: 2024-10-29T14:14:49.682Z\n"
->>>>>>> ea692b5ad (Add query parameter name.)
+"POT-Creation-Date: 2024-11-05T12:18:08.511Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
