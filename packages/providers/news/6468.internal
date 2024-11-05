@@ -1,1 +1,0 @@
-Replace `parcel` with `tsup`. Better types, better tsconfig. Move to ESM. @sneridagh
