@@ -29,7 +29,8 @@
       "import": "./dist/index.js",
       "default": "./dist/index.cjs"
     },
-    "./dist/*.css": "./dist/*.css"
+    "./dist/*.css": "./dist/*.css",
+    "./src/*": "./src/*"
   },
   "homepage": "https://plone.org",
   "keywords": [
