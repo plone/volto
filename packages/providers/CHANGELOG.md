@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.5 (2024-11-05)
+
+### Internal
+
+- Improve packaging. @sneridagh 
+
 ## 1.0.0-alpha.4 (2024-11-05)
 
 ### Internal
