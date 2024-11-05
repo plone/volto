@@ -1,40 +1,30 @@
-# Welcome to React Router!
+# Plone on React Router 7
 
-- 📖 [React Router docs](https://reactrouter.com/dev)
+This is a proof of concept of a [React Router](https://reactrouter.com/dev/docs) app, using the `@plone/*` libraries.
+This is intended to serve as both a playground for the development of both packages and as a demo of Plone using Remix.
+
+> [!WARNING]
+> This package or app is experimental.
+> The community offers no support whatsoever for it.
+> Breaking changes may occur without notice.
 
 ## Development
 
-Run the dev server:
+To start, from the root of the monorepo:
 
-```shellscript
-npm run dev
+```shell
+pnpm install
+pnpm --filter plone-remix run dev
 ```
 
-## Deployment
+Then start the Plone backend:
 
-First, build your app for production:
-
-```sh
-npm run build
+% TODO MAKEFILE
+```shell
+make backend-docker-start
 ```
 
-Then run the app in production mode:
 
-```sh
-npm start
-```
+## About this app
 
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+- [Remix Docs](https://remix.run/docs/en/main)
