@@ -1,1 +1,0 @@
-Fixed image generation because of a bug in the docker build with registry typings. @sneridagh
