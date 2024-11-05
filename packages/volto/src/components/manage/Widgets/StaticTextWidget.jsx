@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
