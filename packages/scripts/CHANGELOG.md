@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.8.1 (2024-11-05)
+
+### Internal
+
+- Improve packaging. @sneridagh 
+
 ## 3.8.0 (2024-11-05)
 
 ### Internal
