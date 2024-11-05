@@ -74,6 +74,7 @@ module.exports = {
       },
       rules: {
         'no-prototype-builtins': 0,
+        '@typescript-eslint/ban-ts-comment': 0,
       },
     },
   ],

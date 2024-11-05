@@ -125,8 +125,7 @@ export function createAddonsLoader(
   }
 
   const code = getAddonsLoaderCode(addons, addonsInfo, loadProjectConfig);
-  // @ts-expect-error No clue why it's complaining
-  fs.writeFileSync(addonsLoaderPath, Buffer.from(code));
+  fs.writeFileSync(addonsLoaderPath, code);
   return addonsLoaderPath;
 }
 
