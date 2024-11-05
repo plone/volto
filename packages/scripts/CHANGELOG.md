@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.8.0 (2024-11-05)
+
+### Internal
+
+- Improve exports in `@plone/registry`. Adapt its detection in i18n script. @sneridagh [#6461](https://github.com/plone/volto/issues/6461)
+
 ## 3.7.0 (2024-10-27)
 
 ### Feature
