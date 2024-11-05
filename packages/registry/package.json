@@ -31,12 +31,12 @@
   "publishConfig": {
     "access": "public"
   },
+  "type": "module",
   "files": [
     "dist",
     "README.md",
     "vite-plugin.*"
   ],
-  "type": "module",
   "main": "dist/index.js",
   "exports": {
     "./package.json": "./package.json",
