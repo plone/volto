@@ -156,6 +156,7 @@ const Aliases = (props) => {
   const [editingData, setEditingData] = useState(null);
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
   const [uploadError, setUploadError] = useState(null);
+  const [csvErrors, setCSVErrors] = useState([]);
   const isClient = useClient();
 
   const updateResults = useCallback(() => {
@@ -273,6 +274,7 @@ const Aliases = (props) => {
           .then(() => {
             updateResults();
             setUploadError(null);
+            setCSVErrors([]);
             setUploadModalOpen(false);
             toast.success(
               <Toast
@@ -284,6 +286,7 @@ const Aliases = (props) => {
           })
           .catch((error) => {
             setUploadError(error.response?.body?.message);
+            setCSVErrors(error.response?.body?.csv_errors ?? []);
           });
       });
   };
@@ -388,6 +391,20 @@ const Aliases = (props) => {
                               /people/JoeT,/Users/joe-thurston,2018-12-31,false
                             </code>
                           </p>
+                          {csvErrors.length ? (
+                            <div
+                              className="ui error message"
+                              style={{ 'overflow-x': 'auto' }}
+                            >
+                              <pre>
+                                Errors:{'\n'}
+                                {csvErrors.map(
+                                  (err) =>
+                                    `${err.line_number}: ${err.line} - ${err.message}\n`,
+                                )}
+                              </pre>
+                            </div>
+                          ) : null}
                         </>
                       }
                       schema={{
