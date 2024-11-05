@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.20 (2024-11-05)
+
+### Internal
+
+- Bump local `typescript` version. @sneridagh [#6461](https://github.com/plone/volto/pull/6461)
+- Replace `parcel` with `tsup`. @sneridagh [#6466](https://github.com/plone/volto/pull/6466)
+
 ## 1.0.0-alpha.19 (2024-10-18)
 
 ### Feature

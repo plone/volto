@@ -8,7 +8,7 @@
     }
   ],
   "license": "MIT",
-  "version": "2.0.0",
+  "version": "2.1.1",
   "repository": {
     "type": "git",
     "url": "http://github.com/plone/components.git"
@@ -29,7 +29,8 @@
       "import": "./dist/index.js",
       "default": "./dist/index.cjs"
     },
-    "./dist/*.css": "./dist/*.css"
+    "./dist/*.css": "./dist/*.css",
+    "./src/*": "./src/*"
   },
   "homepage": "https://plone.org",
   "keywords": [
