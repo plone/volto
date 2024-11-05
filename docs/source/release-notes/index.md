@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.2 (2024-11-05)
+
+### Internal
+
+- Fix missing export src in @plone/components Also improve packaging in packages. @sneridagh [#6470](https://github.com/plone/volto/issues/6470)
+
 ## 18.0.1 (2024-11-05)
 
 ### Bugfix
