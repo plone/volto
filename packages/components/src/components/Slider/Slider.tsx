@@ -3,7 +3,7 @@ import {
   Label,
   Slider as RACSlider,
   SliderOutput,
-  SliderProps as RACSliderProps,
+  type SliderProps as RACSliderProps,
   SliderThumb,
   SliderTrack,
 } from 'react-aria-components';

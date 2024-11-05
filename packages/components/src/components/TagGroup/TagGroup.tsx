@@ -4,10 +4,10 @@ import {
   Label,
   Tag as RACTag,
   TagGroup as RACTagGroup,
-  TagGroupProps as RACTagGroupProps,
+  type TagGroupProps as RACTagGroupProps,
   TagList,
-  TagListProps,
-  TagProps,
+  type TagListProps,
+  type TagProps,
   Text,
 } from 'react-aria-components';
 

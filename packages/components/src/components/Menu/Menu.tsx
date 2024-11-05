@@ -2,12 +2,12 @@ import React from 'react';
 import {
   Menu as RACMenu,
   MenuItem as RACMenuItem,
-  MenuItemProps,
-  MenuProps,
+  type MenuItemProps,
+  type MenuProps,
   MenuTrigger,
-  MenuTriggerProps,
+  type MenuTriggerProps,
   Popover,
-  PressEvent,
+  type PressEvent,
 } from 'react-aria-components';
 
 import { Button } from '../Button/Button';
