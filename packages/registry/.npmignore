@@ -4,3 +4,7 @@ towncrier.toml
 node_modules/
 .release-it.json
 .eslintrc.js
+lib
+bin
+docs
+include
