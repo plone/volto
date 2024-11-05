@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Label,
   ProgressBar as RACProgressBar,
-  ProgressBarProps as RACProgressBarProps,
+  type ProgressBarProps as RACProgressBarProps,
 } from 'react-aria-components';
 
 export interface ProgressBarProps extends RACProgressBarProps {

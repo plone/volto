@@ -1,11 +1,11 @@
-import { apiRequest, ApiRequestParams } from '../../API';
+import { apiRequest, type ApiRequestParams } from '../../API';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
 } from '../../validation/config';
 import { z } from 'zod';
 import { updateContentDataSchema } from '../../validation/content';
-import { UpdateContentResponse } from '@plone/types';
+import type { UpdateContentResponse } from '@plone/types';
 
 export const updateContentArgsSchema = z.object({
   path: z.string(),
