@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { type ReactElement } from 'react';
 import type {
   AriaLabelingProps,
   DOMProps,
@@ -7,7 +7,7 @@ import type {
 } from '@react-types/shared';
 import {
   baseStyleProps,
-  StyleHandlers,
+  type StyleHandlers,
   useSlotProps,
   useStyleProps,
 } from '@react-spectrum/utils';
