@@ -20,7 +20,6 @@ import { flattenToAppURL } from './utils';
 import config from '@plone/registry';
 import './config';
 
-import './app.css';
 import '@plone/components/dist/basic.css';
 
 function useHrefLocal(to: string) {
