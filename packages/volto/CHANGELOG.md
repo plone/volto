@@ -17,6 +17,27 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.2 (2024-11-05)
+
+### Internal
+
+- Fix missing export src in @plone/components Also improve packaging in packages. @sneridagh [#6470](https://github.com/plone/volto/issues/6470)
+
+## 18.0.1 (2024-11-05)
+
+### Bugfix
+
+- Fix ERR_REQUIRE from ESM module requiring CJS module in `@plone/registry` fix tests. @sneridagh [#6458](https://github.com/plone/volto/issues/6458)
+
+### Internal
+
+- Improve exports in @plone/registry, adapt the Jest test setup. @sneridagh [#6461](https://github.com/plone/volto/issues/6461)
+- Removed `parcel` completely from core. @sneridagh [#6469](https://github.com/plone/volto/issues/6469)
+
+### Documentation
+
+- Fix display of nvm version when installing it for Contributing to Volto. @stevepiercy [#6460](https://github.com/plone/volto/issues/6460)
+
 ## 18.0.0 (2024-10-31)
 
 (Summary)
