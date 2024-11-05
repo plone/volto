@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.1.1 (2024-11-05)
+
+### Internal
+
+- Repackage registry, the previous build was including the docs. @sneridagh 
+
 ## 2.1.0 (2024-11-05)
 
 ### Feature
