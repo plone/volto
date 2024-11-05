@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.1.0 (2024-11-05)
+
+### Internal
+
+- Replace `parcel` with `tsup`. Better types, better tsconfig. Move to ESM. @sneridagh [#6467](https://github.com/plone/volto/issues/6467)
+
 ## 2.0.0 (2024-10-31)
 
 ### Internal
