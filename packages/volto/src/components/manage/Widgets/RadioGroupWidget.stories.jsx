@@ -1,7 +1,7 @@
 import React from 'react';
 import RadioGroupWidget, {
   RadioGroupWidgetComponent,
-} from './RadioGroupGroupWidget';
+} from './RadioGroupWidget';
 import WidgetStory from './story';
 
 export const Default = WidgetStory.bind({

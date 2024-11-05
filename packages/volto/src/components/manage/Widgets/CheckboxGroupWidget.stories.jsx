@@ -1,7 +1,7 @@
 import React from 'react';
 import CheckboxGroupWidget, {
   CheckboxGroupWidgetComponent,
-} from './CheckboxGroupGroupWidget';
+} from './CheckboxGroupWidget';
 import WidgetStory from './story';
 
 export const Default = WidgetStory.bind({

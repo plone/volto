@@ -150,6 +150,7 @@ class CheckboxGroupWidget extends Component {
         {options.map((option) => (
           <Checkbox
             label={option.label}
+            key={option.value}
             name={id}
             value={option.value}
             checked={includes(value, option.value)}

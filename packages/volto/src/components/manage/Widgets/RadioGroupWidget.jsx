@@ -151,6 +151,7 @@ class RadioGroupWidget extends Component {
           <Radio
             label={option.label}
             name={id}
+            key={option.value}
             value={option.value}
             checked={option.value === value}
             onChange={(e, { value }) => {
