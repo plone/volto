@@ -9,6 +9,11 @@ myst:
 
 # Extend webpack setup from an add-on
 
+```{deprecated} Volto 18
+The project configuration approach as described in this document is deprecated in Volto 18 and will be removed in Volto 19.
+You should instead follow the add-on approach as described in {doc}`../conceptual-guides/add-ons`.
+```
+
 Just like you can extend Razzle's configuration from the project, you can do the same with an add-on.
 You should provide a {file}`razzle.extend.js` file in your add-on root folder.
 The following code example manages two things.
