@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.1.1 (2024-11-05)
+
+### Internal
+
+- Improve packaging and bring back the export for `src` folder. @sneridagh 
+
 ## 2.1.0 (2024-11-05)
 
 ### Internal
