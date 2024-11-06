@@ -4,7 +4,7 @@ import {
   useMutation,
   useQuery,
 } from '@tanstack/react-query';
-import { PloneClientConfig } from '../validation/config';
+import type { PloneClientConfig } from '../validation/config';
 
 /*
   configGetter is required instead of using the config directly to make sure

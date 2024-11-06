@@ -1,8 +1,8 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
 import { z } from 'zod';
 import { querystringSearchDataSchema as getQuerystringSearchSchema } from '../../validation/querystring-search';
-import { QuerystringSearchResponse as GetQuerystringSearchResponse } from '@plone/types';
+import type { QuerystringSearchResponse as GetQuerystringSearchResponse } from '@plone/types';
 
 export type QuerystringSearchArgs = z.infer<
   typeof getQuerystringSearchSchema

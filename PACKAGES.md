@@ -28,18 +28,12 @@ Core packages must not depend on any other `@plone/*` package, with only one exc
 They must be published and bundled in a traditional (transpiled) way.
 The bundle of these packages must work on both CommonJS and ECMAScript Module (ESM) environments.
 
-## Feature packages
-
--   `@plone/contents`
-
-
 ## Utility packages
 
--   `@plone/blocks`
+-   `@plone/providers`
 -   `@plone/helpers`
 -   `@plone/drivers`
 -   `@plone/rsc`
-
 
 ### Rules
 
@@ -47,6 +41,18 @@ Utility packages can depend on core packages and other utility packages.
 They must be published in a traditional way, bundled.
 This bundle must work on both CommonJS and ESM environments.
 
+## Feature packages
+
+-   `@plone/blocks`
+-   `@plone/slots`
+-   `@plone/contents`
+
+### Rules
+
+Feature packages (or add-on packages) can depend on any other package.
+They must not be transpiled, but as source.
+They must provide a default configuration registry loader as default main entry point export.
+They must be able to be loaded as any other add-on.
 
 ## Development utility packages
 
@@ -55,7 +61,7 @@ They contain utilities that are useful for the development of a Volto project.
 Some of them are released:
 
 - `@plone/scripts`
-- `@plone/generator-volto`
+- `@plone/generator-volto` (deprecated)
 
 Some of them are used by the build, and separated in packages for convenience.
 

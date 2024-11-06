@@ -8,6 +8,19 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.5 (2024-11-05)
+
+### Internal
+
+- Improve packaging. @sneridagh 
+
+## 1.0.0-alpha.4 (2024-11-05)
+
+### Internal
+
+- Bump local `typescript` version. @sneridagh [#6461](https://github.com/plone/volto/issues/6461)
+- Replace `parcel` with `tsup`. Better types, better tsconfig. Move to ESM. @sneridagh [#6468](https://github.com/plone/volto/issues/6468)
+
 ## 1.0.0-alpha.3 (2024-10-18)
 
 ## 1.0.0-alpha.2 (2024-10-18)

@@ -29,11 +29,6 @@
     "access": "public"
   },
   "main": "index.ts",
-  "targets": {
-    "main": {
-      "includeNodeModules": false
-    }
-  },
   "scripts": {
     "test": "vitest",
     "dry-release": "release-it --dry-run",
@@ -55,6 +50,7 @@
     "@plone/registry": "workspace:*"
   },
   "devDependencies": {
+    "@plone/registry": "workspace:*",
     "@plone/types": "workspace:*",
     "@types/react": "^18",
     "@types/react-dom": "^18",
