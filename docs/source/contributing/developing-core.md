@@ -165,7 +165,7 @@ cd volto
 Install the frontend dependencies.
 
 ```shell
-pnpm install
+make install
 ```
 
 

@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 2.1.2 (2024-11-05)
+
+### Bugfix
+
+- Fix weird typings issue happening in docker build but not locally. @sneridagh [#6471](https://github.com/plone/volto/issues/6471)
+
+### Internal
+
+- Improve packaging. @sneridagh 
+
 ## 2.1.1 (2024-11-05)
 
 ### Internal

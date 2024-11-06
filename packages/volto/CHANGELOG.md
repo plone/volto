@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.3 (2024-11-05)
+
+### Bugfix
+
+- Fixed image generation because of a bug in the docker build with registry typings. @sneridagh [#6471](https://github.com/plone/volto/issues/6471)
+
 ## 18.0.2 (2024-11-05)
 
 ### Internal
