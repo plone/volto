@@ -196,7 +196,7 @@
     "github-slugger": "1.4.0",
     "history": "4.10.1",
     "hoist-non-react-statics": "3.3.2",
-    "http-proxy-middleware": "2.0.1",
+    "http-proxy-middleware": "2.0.7",
     "image-extensions": "1.1.0",
     "immutable": "3",
     "is-hotkey": "0.2.0",
