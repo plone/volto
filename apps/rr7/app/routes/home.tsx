@@ -12,7 +12,6 @@ import { usePloneClient } from '@plone/providers';
 import { ploneClient } from '../client';
 import App from '@plone/slots/components/App';
 import type { MetaFunction } from 'react-router';
-import '@plone/slots/main.css';
 
 export const meta: MetaFunction = () => {
   return [
