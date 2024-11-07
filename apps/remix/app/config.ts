@@ -1,5 +1,5 @@
 import config from '@plone/registry';
-import applyAddonConfiguration from 'load-plone-registry-addons';
+import applyAddonConfiguration from '@plone/registry/addons-loader';
 
 applyAddonConfiguration(config);
 

@@ -203,6 +203,9 @@ importers:
       '@plone/registry':
         specifier: workspace:*
         version: link:../../packages/registry
+      '@plone/slots':
+        specifier: workspace:*
+        version: link:../../packages/slots
       '@react-router/dev':
         specifier: 7.0.0-pre.4
         version: 7.0.0-pre.4(@react-router/serve@7.0.0-pre.4(react-router@7.0.0-pre.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(typescript@5.6.3))(@types/node@20.12.7)(babel-plugin-macros@3.1.0)(less@3.11.1)(lightningcss@1.24.1)(react-router@7.0.0-pre.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(sass@1.75.0)(terser@5.30.3)(typescript@5.6.3)(vite@5.4.9(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.24.1)(sass@1.75.0)(terser@5.30.3))
@@ -388,6 +391,9 @@ importers:
       '@plone/components':
         specifier: workspace:*
         version: link:../components
+      '@plone/providers':
+        specifier: workspace:*
+        version: link:../providers
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
@@ -17926,7 +17932,7 @@ snapshots:
   '@babel/plugin-syntax-decorators@7.24.1(@babel/core@7.24.4)':
     dependencies:
       '@babel/core': 7.24.4
-      '@babel/helper-plugin-utils': 7.24.0
+      '@babel/helper-plugin-utils': 7.25.7
 
   '@babel/plugin-syntax-decorators@7.24.1(@babel/core@7.25.8)':
     dependencies:
@@ -18006,7 +18012,7 @@ snapshots:
   '@babel/plugin-syntax-json-strings@7.8.3(@babel/core@7.25.8)':
     dependencies:
       '@babel/core': 7.25.8
-      '@babel/helper-plugin-utils': 7.25.7
+      '@babel/helper-plugin-utils': 7.24.0
 
   '@babel/plugin-syntax-jsx@7.24.1(@babel/core@7.24.4)':
     dependencies:

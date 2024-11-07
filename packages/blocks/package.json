@@ -47,7 +47,8 @@
   },
   "dependencies": {
     "@plone/components": "workspace:*",
-    "@plone/registry": "workspace:*"
+    "@plone/registry": "workspace:*",
+    "@plone/providers": "workspace:*"
   },
   "devDependencies": {
     "@plone/registry": "workspace:*",

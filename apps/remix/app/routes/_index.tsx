@@ -7,6 +7,7 @@ import {
   dehydrate,
   QueryClient,
   HydrationBoundary,
+  useQueryClient,
   useQuery,
 } from '@tanstack/react-query';
 import { flattenToAppURL } from '../utils';
@@ -60,11 +61,12 @@ function Page() {
   );
 }
 
-export default function Index() {
+export default function Content() {
   const { dehydratedState } = useLoaderData<typeof loader>();
+  const queryClient = useQueryClient();
 
   return (
-    <HydrationBoundary state={dehydratedState}>
+    <HydrationBoundary state={dehydratedState} queryClient={queryClient}>
       <Page />
     </HydrationBoundary>
   );

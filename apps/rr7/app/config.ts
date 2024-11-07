@@ -1,15 +1,8 @@
 import config from '@plone/registry';
-import { blocksConfig, slate } from '@plone/blocks';
+import applyAddonConfiguration from '@plone/registry/addons-loader';
 
-const settings = {
-  apiPath: 'http://localhost:3000',
-  slate,
-};
+applyAddonConfiguration(config);
 
-// @ts-expect-error We need to fix typing
-config.set('settings', settings);
-
-// @ts-expect-error We need to fix typing
-config.set('blocks', { blocksConfig });
+config.settings.apiPath = 'http://localhost:3000';
 
 export default config;

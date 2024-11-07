@@ -9,11 +9,10 @@ import {
 import { flattenToAppURL } from '../utils';
 import { useLoaderData, useLocation } from 'react-router';
 import { usePloneClient } from '@plone/providers';
-import { Breadcrumbs, RenderBlocks } from '@plone/components';
-import config from '@plone/registry';
 import { ploneClient } from '../client';
-
+import App from '@plone/slots/components/App';
 import type { MetaFunction } from 'react-router';
+import '@plone/slots/main.css';
 
 export const meta: MetaFunction = () => {
   return [
@@ -51,20 +50,7 @@ function Page() {
   const { data } = useQuery(getContentQuery({ path: pathname, expand }));
 
   if (!data) return 'Loading...';
-  return (
-    <>
-      <Breadcrumbs
-        items={data['@components'].breadcrumbs.items || []}
-        root={data['@components'].breadcrumbs.root}
-        includeRoot
-      />
-      <RenderBlocks
-        content={data}
-        blocksConfig={config.blocks.blocksConfig}
-        pathname="/"
-      />
-    </>
-  );
+  return <App content={data} location={{ pathname: '/' }} />;
 }
 
 export default function Content() {
