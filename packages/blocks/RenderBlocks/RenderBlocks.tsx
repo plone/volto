@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
-import { hasBlocksData } from '../../helpers/blocks';
+import { Fragment } from 'react';
+import { hasBlocksData } from '../helpers/blocks';
 import { DefaultBlockView } from './DefaultBlockView';
 import type { Content } from '@plone/types';
 import type { BlocksConfigData } from '@plone/types';
+import BlockWrapper from './BlockWrapper';
 
-type RenderBlocksProps = {
+export type RenderBlocksProps = {
   /**
    * Plone content object
    */
@@ -31,7 +32,7 @@ type RenderBlocksProps = {
   metadata?: Content;
 };
 
-export const RenderBlocks = (props: RenderBlocksProps) => {
+const RenderBlocks = (props: RenderBlocksProps) => {
   const { blocksConfig, content, pathname, metadata } = props;
   const CustomTag = props.as || Fragment;
 
@@ -44,16 +45,18 @@ export const RenderBlocks = (props: RenderBlocksProps) => {
         const Block = blocksConfig[blockType]?.view || DefaultBlockView;
 
         return Block ? (
-          // @ts-ignore It's ok to pass the blockData as is
-          <Block
-            key={block}
-            id={block}
-            metadata={metadata}
-            properties={content}
-            data={blockData}
-            path={pathname || ''}
-            blocksConfig={blocksConfig}
-          />
+          <BlockWrapper {...props} block={block}>
+            {/* @ts-ignore It's ok to pass the blockData as is */}
+            <Block
+              key={block}
+              id={block}
+              metadata={metadata}
+              properties={content}
+              data={blockData}
+              path={pathname || ''}
+              blocksConfig={blocksConfig}
+            />
+          </BlockWrapper>
         ) : blockData ? (
           <div key={block}>Unknown block found: {blockType}</div>
         ) : (
@@ -65,3 +68,5 @@ export const RenderBlocks = (props: RenderBlocksProps) => {
     ''
   );
 };
+
+export default RenderBlocks;
