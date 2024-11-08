@@ -46,10 +46,11 @@ Instead, change the "addons" setting in your package.json file.
     let extras: string[] | string[][] = []; // TODO: Improve this typing
     const addonConfigLoadInfo = addonConfigString.split(':');
     const pkgName = addonConfigLoadInfo[0];
-    const defaultImport = nameFromPackage(pkgName);
+    const defaultImport = nameFromPackage(pkgName as string);
     if (addonConfigLoadInfo.length > 1) {
       extras = addonConfigLoadInfo[1].split(',');
     }
+    // @ts-expect-error This forEach is a complete mess
     extras = extras.map((name) => [name, `${name}${counter++}`]);
     const line = `import ${defaultImport}${
       extras.length
@@ -124,8 +125,7 @@ export function createAddonsLoader(
   }
 
   const code = getAddonsLoaderCode(addons, addonsInfo, loadProjectConfig);
-  // @ts-expect-error No clue why it's complaining
-  fs.writeFileSync(addonsLoaderPath, Buffer.from(code));
+  fs.writeFileSync(addonsLoaderPath, code);
   return addonsLoaderPath;
 }
 

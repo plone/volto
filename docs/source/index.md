@@ -71,6 +71,7 @@ tutorials/index
 contributing/index
 release-notes/index
 release-management-notes/index
+conceptual-guides/index
 ```
 
 % Only check change log entries in Volto documentation—not when it is included in the main Plone documentation—to ensure links work and do not redirect.

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   UNSTABLE_Disclosure as RACDisclosure,
-  DisclosureProps,
+  type DisclosureProps,
 } from 'react-aria-components';
 
 /**

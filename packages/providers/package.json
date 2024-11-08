@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
@@ -28,22 +28,23 @@
   "publishConfig": {
     "access": "public"
   },
-  "source": "./src/index.ts",
-  "main": "./dist/main.js",
-  "module": "./dist/module.mjs",
-  "types": "./dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "main": "./dist/index.js",
   "exports": {
+    "./package.json": "./package.json",
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/module.mjs",
-      "require": "./dist/main.js"
-    },
-    "./src/*": "./src/*"
+      "import": "./dist/index.js",
+      "default": "./dist/index.cjs"
+    }
   },
   "scripts": {
-    "watch": "parcel watch",
-    "build": "parcel build",
-    "build:force": "rm -rf dist && parcel build --no-cache",
+    "build": "tsup",
+    "build:force": "tsup",
+    "check:exports": "attw --pack .",
     "test": "vitest",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
@@ -67,19 +68,14 @@
     "react-aria-components": "^1.4.0"
   },
   "devDependencies": {
-    "@parcel/config-default": "^2.12.0",
-    "@parcel/core": "^2.12.0",
-    "@parcel/packager-ts": "^2.12.0",
-    "@parcel/transformer-js": "^2.12.0",
-    "@parcel/transformer-react-refresh-wrap": "^2.12.0",
-    "@parcel/transformer-typescript-types": "^2.12.0",
+    "@arethetypeswrong/cli": "^0.16.4",
     "@plone/types": "workspace:*",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "parcel": "^2.12.0",
     "release-it": "17.1.1",
     "tsconfig": "workspace:*",
-    "typescript": "^5.4.5",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
     "vitest": "^2.1.3"
   }
 }

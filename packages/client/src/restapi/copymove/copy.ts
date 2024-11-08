@@ -1,8 +1,8 @@
 import { z } from 'zod';
-import { ApiRequestParams, apiRequest } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
+import { type ApiRequestParams, apiRequest } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
 import { copyMoveDataSchema as copyDataSchema } from '../../validation/copymove';
-import { CopyMoveResponse as CopyResponse } from '@plone/types';
+import type { CopyMoveResponse as CopyResponse } from '@plone/types';
 
 export type CopyArgs = z.infer<typeof copyDataSchema> & {
   config: PloneClientConfig;

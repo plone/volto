@@ -35,7 +35,8 @@ Both use the same method, using a function as the default export. This function 
 add-ons, it must be provided in the main `index.js` module of the add-on. For project's
 it must be provided in the `src/config.js` module of the project.
 
-See the {doc}`../addons/index` section for extended information on how to work with add-ons.
+See the {doc}`../conceptual-guides/add-ons` and {doc}`../development/add-ons/index` sections for extended information on how to work with add-ons.
+
 
 ## Extending configuration in a project
 
