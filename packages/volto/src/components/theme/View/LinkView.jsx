@@ -40,7 +40,8 @@ export function DefaultLinkViewBody({ content }) {
   );
 }
 
-const LinkView = ({ token, content }) => {
+const LinkView = (props) => {
+  const { token, content } = props;
   const history = useHistory();
   useEffect(() => {
     if (!token) {
@@ -58,7 +59,7 @@ const LinkView = ({ token, content }) => {
 
   const LinkViewBody = config.getComponent({ name: 'LinkViewBody' }).component;
 
-  return <LinkViewBody content={content} />;
+  return <LinkViewBody {...props} />;
 };
 
 LinkView.propTypes = {
