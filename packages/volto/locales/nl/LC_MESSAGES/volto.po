@@ -1319,16 +1319,6 @@ msgstr "Vul de URL in of selecteer een item"
 msgid "Enter a username above to search or click 'Show All'"
 msgstr "Vul hierboven een gebruikersnaam in om te zoeken of klik 'Toon alles'"
 
-#. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-#: components/theme/Register/Register
-msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "Vul een e-mailadres in. Dit zal jouw inlognaam worden. Wij respecteren jouw privacy en zullen het niet delen met eender welke derde partij of het ergens blootstellen."
-
-#. Default: "Enter full name, e.g. John Smith."
-#: components/theme/Register/Register
-msgid "Enter full name, e.g. John Smith."
-msgstr "Vul de volledige naam in, bijvoorbeeld Jan Smit."
-
 #. Default: "Enter map Embed Code"
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter map Embed Code"
