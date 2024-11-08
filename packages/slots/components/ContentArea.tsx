@@ -1,4 +1,4 @@
-import { RenderBlocks } from '@plone/components';
+import RenderBlocks from '@plone/blocks/RenderBlocks/RenderBlocks';
 import { SlotComponentProps } from '../SlotRenderer';
 import config from '@plone/registry';
 

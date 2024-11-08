@@ -206,7 +206,7 @@ importers:
       '@plone/slots':
         specifier: workspace:*
         version: link:../../packages/slots
-      '@plone/theme':
+      '@plone/theming':
         specifier: workspace:*
         version: link:../../packages/theming
       '@react-router/dev':
@@ -400,6 +400,9 @@ importers:
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       react:
         specifier: ^16.8.0 || ^17.0.0 || ^18.0.0
         version: 18.2.0
@@ -1031,6 +1034,9 @@ importers:
 
   packages/theming:
     dependencies:
+      '@plone/components':
+        specifier: workspace:*
+        version: link:../components
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
@@ -19151,11 +19157,11 @@ snapshots:
 
   '@babel/preset-env@7.24.4(@babel/core@7.25.8)':
     dependencies:
-      '@babel/compat-data': 7.25.8
+      '@babel/compat-data': 7.24.4
       '@babel/core': 7.25.8
-      '@babel/helper-compilation-targets': 7.25.7
-      '@babel/helper-plugin-utils': 7.25.7
-      '@babel/helper-validator-option': 7.25.7
+      '@babel/helper-compilation-targets': 7.23.6
+      '@babel/helper-plugin-utils': 7.24.0
+      '@babel/helper-validator-option': 7.23.5
       '@babel/plugin-bugfix-firefox-class-in-computed-class-key': 7.24.4(@babel/core@7.25.8)
       '@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression': 7.24.1(@babel/core@7.25.8)
       '@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining': 7.24.1(@babel/core@7.25.8)

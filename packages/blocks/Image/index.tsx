@@ -1,7 +1,8 @@
-import { BlocksFormData } from '@plone/types';
+import { BlockViewProps } from '@plone/types';
 import { usePloneProvider } from '@plone/providers';
 
-const ImageBlockView = (props: BlocksFormData) => {
+const ImageBlockView = (props: BlockViewProps) => {
+  console.log(props);
   const flattenToAppURL = usePloneProvider().flattenToAppURL;
   const { data } = props;
   const url = data.image_scales

@@ -1,5 +1,5 @@
 {
-  "name": "@plone/theme",
+  "name": "@plone/theming",
   "description": "Plone base theming",
   "maintainers": [
     {
@@ -48,6 +48,7 @@
     }
   },
   "dependencies": {
+    "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
     "lightningcss": "1.28.1",
     "lightningcss-cli": "1.28.1"

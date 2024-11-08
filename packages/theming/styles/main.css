@@ -1,3 +1,4 @@
-@layer reset, components, layout, addons, theme;
+@layer reset, plone-components, layout, addons, theme;
 @import 'reset.css';
+@import '@plone/components/dist/basic.css';
 @import 'layout.css';
