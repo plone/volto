@@ -34,7 +34,7 @@ const SearchWidget = (props) => {
     const path =
       pathname?.length > 0 ? `&path=${encodeURIComponent(pathname)}` : '';
 
-    history.push(`./search?SearchableText=${encodeURIComponent(text)}${path}`);
+    history.push(`/search?SearchableText=${encodeURIComponent(text)}${path}`);
     // reset input value
     setText('');
     event.preventDefault();
