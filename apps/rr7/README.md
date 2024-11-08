@@ -10,14 +10,14 @@ This is intended to serve as both a playground for the development of both packa
 
 ## Development
 
-To start, from the root of the monorepo:
+To start, from the root of the monorepo, issue the following commands.
 
 ```shell
 pnpm install
 pnpm --filter plone-remix run dev
 ```
 
-Then start the Plone backend:
+Then start the Plone backend.
 
 % TODO MAKEFILE
 ```shell

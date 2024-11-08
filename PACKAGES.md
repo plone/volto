@@ -17,9 +17,9 @@ It's published "as is", so you can import the type definitions from anywhere in 
 
 ## Core packages
 
--   `@plone/registry`
 -   `@plone/client`
 -   `@plone/components`
+-   `@plone/registry`
 
 
 ### Rules
@@ -28,31 +28,36 @@ Core packages must not depend on any other `@plone/*` package, with only one exc
 They must be published and bundled in a traditional (transpiled) way.
 The bundle of these packages must work on both CommonJS and ECMAScript Module (ESM) environments.
 
+
 ## Utility packages
 
--   `@plone/providers`
--   `@plone/helpers`
 -   `@plone/drivers`
+-   `@plone/helpers`
+-   `@plone/providers`
 -   `@plone/rsc`
+
 
 ### Rules
 
 Utility packages can depend on core packages and other utility packages.
-They must be published in a traditional way, bundled.
+They must be published in the traditional way, as a bundle.
 This bundle must work on both CommonJS and ESM environments.
+
 
 ## Feature packages
 
 -   `@plone/blocks`
--   `@plone/slots`
 -   `@plone/contents`
+-   `@plone/slots`
+
 
 ### Rules
 
-Feature packages (or add-on packages) can depend on any other package.
-They must not be transpiled, but as source.
-They must provide a default configuration registry loader as default main entry point export.
-They must be able to be loaded as any other add-on.
+Feature packages, or add-on packages, can depend on any other package.
+You must distribute them as source code, and not transpile them.
+They must provide a default configuration registry loader as the default main entry point export.
+They must be loadable as any other add-on.
+
 
 ## Development utility packages
 
