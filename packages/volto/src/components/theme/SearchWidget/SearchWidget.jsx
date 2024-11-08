@@ -23,7 +23,6 @@ const messages = defineMessages({
 const SearchWidget = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
-
   const [text, setText] = useState('');
   const history = useHistory();
   const onChangeText = (event, { value }) => {
