@@ -1,2 +1,0 @@
-Added missing style Helmet serialization in the HTML component to make it work in SSR. @sneridagh
-Fix deprecation notice for the usage of apple-mobile-web-app-capable.
