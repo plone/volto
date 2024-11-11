@@ -1,0 +1,1 @@
+Added missing style Helmet serialization in the HTML component to make it work in SSR. @sneridagh
