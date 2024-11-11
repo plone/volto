@@ -102,6 +102,7 @@ class Html extends Component {
           {head.meta.toComponent()}
           {head.link.toComponent()}
           {head.script.toComponent()}
+          {head.style.toComponent()}
 
           <script
             dangerouslySetInnerHTML={{
