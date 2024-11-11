@@ -17,6 +17,26 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.1.0 (2024-11-11)
+
+### Feature
+
+- Update Dutch translations. @fredvd [#6476](https://github.com/plone/volto/issues/6476)
+
+### Bugfix
+
+- URL Management control panel: Show errors from a failed CSV upload. @davisagli [#6473](https://github.com/plone/volto/issues/6473)
+- Added missing style Helmet serialization in the HTML component to make it work in SSR. @sneridagh
+  Fix deprecation notice for the usage of apple-mobile-web-app-capable. [#6480](https://github.com/plone/volto/issues/6480)
+
+### Internal
+
+- Added React Router 7 experimental PoC. @sneridagh [#6472](https://github.com/plone/volto/issues/6472)
+
+### Documentation
+
+- Overhaul and update of the add-ons section in documentation. @sneridagh [#6397](https://github.com/plone/volto/issues/6397)
+
 ## 18.0.3 (2024-11-05)
 
 ### Bugfix
