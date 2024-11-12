@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.0.1 (2024-11-11)
+
+### Feature
+
+- Update Dutch translations. @fredvd [#6476](https://github.com/plone/volto/issues/6476)
+
 ## 18.0.0 (2024-10-31)
 
 ### Internal
