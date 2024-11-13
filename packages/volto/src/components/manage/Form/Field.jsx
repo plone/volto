@@ -13,41 +13,46 @@ const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not ren
 /**
  * Get default widget
  * @method getViewDefault
+ * @param {object} widgets Widgets config
  * @returns {string} Widget component.
  */
-const getWidgetDefault = () => config.widgets.default;
+const getWidgetDefault = (widgets) => widgets.default;
 
 /**
  * Get widget by field's `id` attribute
  * @method getWidgetById
+ * @param {object} widgets Widgets config
  * @param {string} id Id
  * @returns {string} Widget component.
  */
-const getWidgetByFieldId = (id) => config.widgets.id[id] || null;
+const getWidgetByFieldId = (widgets, id) => widgets.id[id] || null;
 
 /**
  * Get widget by factory attribute
  * @method getWidgetByFactory
+ * @param {object} widgets Widgets config
  * @param {string} id Id
  * @returns {string} Widget component.
  */
-const getWidgetByFactory = (factory) =>
-  config.widgets.factory?.[factory] || null;
+const getWidgetByFactory = (widgets, factory) =>
+  widgets.factory?.[factory] || null;
 
 /**
  * Get widget by field's `widget` attribute
  * @method getWidgetByName
+ * @param {object} widgets Widgets config
  * @param {string} widget Widget
  * @returns {string} Widget component.
  */
-const getWidgetByName = (widget) =>
+const getWidgetByName = (widgets, widget) =>
   typeof widget === 'string'
-    ? config.widgets.widget[widget] || getWidgetDefault()
+    ? widgets.widget[widget] || getWidgetDefault(widgets)
     : null;
 
 /**
  * Get widget by tagged values
  * @param {object} widgetOptions
+ * @param {object} widgets Widgets config
  * @returns {string} Widget component.
  *
 
@@ -59,13 +64,14 @@ directives.widget(
     })
 
  */
-const getWidgetFromTaggedValues = (widgetOptions) =>
+const getWidgetFromTaggedValues = (widgets, widgetOptions) =>
   typeof widgetOptions?.frontendOptions?.widget === 'string'
-    ? config.widgets.widget[widgetOptions.frontendOptions.widget]
+    ? widgets.widget[widgetOptions.frontendOptions.widget]
     : null;
 
 /**
  * Get widget props from tagged values
+ * @param {object} widgets Widgets config
  * @param {object} widgetOptions
  * @returns {string} Widget component.
  *
@@ -78,7 +84,7 @@ directives.widget(
     })
 
  */
-const getWidgetPropsFromTaggedValues = (widgetOptions) =>
+const getWidgetPropsFromTaggedValues = (widgets, widgetOptions) =>
   typeof widgetOptions?.frontendOptions?.widgetProps === 'object'
     ? widgetOptions.frontendOptions.widgetProps
     : null;
@@ -86,25 +92,25 @@ const getWidgetPropsFromTaggedValues = (widgetOptions) =>
 /**
  * Get widget by field's `vocabulary` attribute
  * @method getWidgetByVocabulary
+ * @param {object} widgets Widgets config
  * @param {string} vocabulary Widget
  * @returns {string} Widget component.
  */
-const getWidgetByVocabulary = (vocabulary) =>
+const getWidgetByVocabulary = (widgets, vocabulary) =>
   vocabulary && vocabulary['@id']
-    ? config.widgets.vocabulary[
-        vocabulary['@id'].replace(/^.*\/@vocabularies\//, '')
-      ]
+    ? widgets.vocabulary[vocabulary['@id'].replace(/^.*\/@vocabularies\//, '')]
     : null;
 
 /**
  * Get widget by field's hints `vocabulary` attribute in widgetOptions
  * @method getWidgetByVocabularyFromHint
+ * @param {object} widgets Widgets config
  * @param {string} props Widget props
  * @returns {string} Widget component.
  */
-const getWidgetByVocabularyFromHint = (props) =>
+const getWidgetByVocabularyFromHint = (widgets, props) =>
   props.widgetOptions && props.widgetOptions.vocabulary
-    ? config.widgets.vocabulary[
+    ? widgets.vocabulary[
         props.widgetOptions.vocabulary['@id'].replace(
           /^.*\/@vocabularies\//,
           '',
@@ -115,19 +121,20 @@ const getWidgetByVocabularyFromHint = (props) =>
 /**
  * Get widget by field's `choices` attribute
  * @method getWidgetByChoices
+ * @param {object} widgets Widgets config
  * @param {string} choices Widget
  * @returns {string} Widget component.
  */
-const getWidgetByChoices = (props) => {
+const getWidgetByChoices = (widgets, props) => {
   if (props.choices) {
-    return config.widgets.choices;
+    return widgets.choices;
   }
 
   if (props.vocabulary) {
     // If vocabulary exists, then it means it's a choice field in disguise with
     // no widget specified that probably contains a string then we force it
     // to be a select widget instead
-    return config.widgets.choices;
+    return widgets.choices;
   }
 
   return null;
@@ -136,10 +143,11 @@ const getWidgetByChoices = (props) => {
 /**
  * Get widget by field's `type` attribute
  * @method getWidgetByType
+ * @param {object} widgets Widgets config
  * @param {string} type Type
  * @returns {string} Widget component.
  */
-const getWidgetByType = (type) => config.widgets.type[type] || null;
+const getWidgetByType = (widgets, type) => widgets.type[type] || null;
 
 /**
  * Field component class.
@@ -148,16 +156,17 @@ const getWidgetByType = (type) => config.widgets.type[type] || null;
  * @returns {string} Markup of the component.
  */
 const UnconnectedField = (props, { intl }) => {
+  const widgets = props.widgets || config.widgets;
   const Widget =
-    getWidgetByFieldId(props.id) ||
-    getWidgetFromTaggedValues(props.widgetOptions) ||
-    getWidgetByName(props.widget) ||
-    getWidgetByChoices(props) ||
-    getWidgetByVocabulary(props.vocabulary) ||
-    getWidgetByVocabularyFromHint(props) ||
-    getWidgetByFactory(props.factory) ||
-    getWidgetByType(props.type) ||
-    getWidgetDefault();
+    getWidgetByFieldId(widgets, props.id) ||
+    getWidgetFromTaggedValues(widgets, props.widgetOptions) ||
+    getWidgetByName(widgets, props.widget) ||
+    getWidgetByChoices(widgets, props) ||
+    getWidgetByVocabulary(widgets, props.vocabulary) ||
+    getWidgetByVocabularyFromHint(widgets, props) ||
+    getWidgetByFactory(widgets, props.factory) ||
+    getWidgetByType(widgets, props.type) ||
+    getWidgetDefault(widgets);
 
   if (props.mode === MODE_HIDDEN) {
     return null;

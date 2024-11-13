@@ -1494,6 +1494,7 @@ class SchemaWidget extends Component {
               {...this.props.value.properties[field]}
               id={field}
               required={this.props.value.required.indexOf(field) !== -1}
+              widgets={this.props.widgets}
               onEdit={this.onShowEditField}
               draggable={false}
               isDisabled={true}
@@ -1532,6 +1533,7 @@ class SchemaWidget extends Component {
                   {...this.props.value.properties[field]}
                   id={field}
                   required={this.props.value.required.indexOf(field) !== -1}
+                  widgets={this.props.widgets}
                   onEdit={this.onShowEditField}
                   draggable={true}
                   isDisabled={false}

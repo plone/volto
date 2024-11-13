@@ -83,6 +83,7 @@ class Form extends Component {
       definitions: PropTypes.objectOf(PropTypes.any),
       required: PropTypes.arrayOf(PropTypes.string),
     }),
+    widgets: PropTypes.objectOf(PropTypes.any),
     formData: PropTypes.objectOf(PropTypes.any),
     globalData: PropTypes.objectOf(PropTypes.any),
     metadataFieldsets: PropTypes.arrayOf(PropTypes.string),
@@ -123,6 +124,7 @@ class Form extends Component {
    */
   static defaultProps = {
     formData: null,
+    widgets: null,
     onSubmit: null,
     onCancel: null,
     submitLabel: null,
@@ -278,22 +280,19 @@ class Form extends Component {
         selected: null,
       });
     }
-    if (requestError) {
+
+    if (requestError && prevProps.requestError !== requestError) {
       errors =
         FormValidation.giveServerErrorsToCorrespondingFields(requestError);
-      if (
-        !isEqual(prevProps.requestError, requestError) ||
-        !isEqual(this.state.errors, errors)
-      ) {
-        activeIndex = FormValidation.showFirstTabWithErrors({
-          errors,
-          schema: this.props.schema,
-        });
-        this.setState({
-          errors,
-          activeIndex,
-        });
-      }
+      activeIndex = FormValidation.showFirstTabWithErrors({
+        errors,
+        schema: this.props.schema,
+      });
+
+      this.setState({
+        errors,
+        activeIndex,
+      });
     }
 
     if (this.props.onChangeFormData) {
@@ -570,11 +569,13 @@ class Form extends Component {
         }
       });
     }
+
     if (keys(errors).length > 0 || keys(blocksErrors).length > 0) {
       const activeIndex = FormValidation.showFirstTabWithErrors({
         errors,
         schema: this.props.schema,
       });
+
       this.setState({
         errors: {
           ...errors,
@@ -585,23 +586,14 @@ class Form extends Component {
 
       if (keys(errors).length > 0) {
         // Changes the focus to the metadata tab in the sidebar if error
-        toast.error(
-          <Toast
-            error
-            title={this.props.intl.formatMessage(messages.error)}
-            content={
-              <ul>
-                {Object.keys(errors).map((err, index) => (
-                  <li key={index}>
-                    <strong>
-                      {this.props.schema.properties[err].title || err}:
-                    </strong>{' '}
-                    {errors[err]}
-                  </li>
-                ))}
-              </ul>
-            }
-          />,
+        Object.keys(errors).forEach((err) =>
+          toast.error(
+            <Toast
+              error
+              title={this.props.schema.properties[err].title || err}
+              content={errors[err].join(', ')}
+            />,
+          ),
         );
         this.props.setSidebarTab(0);
       } else if (keys(blocksErrors).length > 0) {
@@ -728,6 +720,7 @@ class Form extends Component {
     const schema = this.removeBlocksLayoutFields(originalSchema);
     const Container =
       config.getComponent({ name: 'Container' }).component || SemanticContainer;
+
     return this.props.visual ? (
       // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
       // but draftJS don't like it much and the hydration gets messed up
@@ -933,6 +926,7 @@ class Form extends Component {
                         ),
                         ...map(item.fields, (field, index) => (
                           <Field
+                            widgets={this.props.widgets}
                             {...schema.properties[field]}
                             id={field}
                             formData={formData}
@@ -988,6 +982,7 @@ class Form extends Component {
                   )}
                   {map(schema.fieldsets[0].fields, (field) => (
                     <Field
+                      widgets={this.props.widgets}
                       {...schema.properties[field]}
                       id={field}
                       value={formData?.[field]}
