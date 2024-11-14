@@ -25,9 +25,9 @@ const Footer = (props: SlotComponentProps) => {
             ))
           : null}
       </ul>
-      <div className="logo">
-        <Logo content={content} location={location} />
-      </div>
+
+      <Logo content={content} location={location} />
+
       <a className="item powered-by" href="https://plone.org">
         Powered by Plone & Python
       </a>

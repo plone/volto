@@ -83,7 +83,18 @@ figure img {
   width: 100%;
 }
 
+footer {
+  margin-top: 100px;
+}
+
 .footer {
+  display: flex;
+  flex-direction: column;
   padding: 2rem 0;
   text-align: center;
+
+  .logo {
+    margin: 20px 0;
+    place-self: center;
+  }
 }
