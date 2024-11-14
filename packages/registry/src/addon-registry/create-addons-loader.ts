@@ -125,7 +125,7 @@ export function createAddonsLoader(
   }
 
   const code = getAddonsLoaderCode(addons, addonsInfo, loadProjectConfig);
-  fs.writeFileSync(addonsLoaderPath, Buffer.from(code));
+  fs.writeFileSync(addonsLoaderPath, code);
   return addonsLoaderPath;
 }
 

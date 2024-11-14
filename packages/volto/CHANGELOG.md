@@ -17,6 +17,53 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.1.0 (2024-11-11)
+
+### Feature
+
+- Update Dutch translations. @fredvd [#6476](https://github.com/plone/volto/issues/6476)
+
+### Bugfix
+
+- URL Management control panel: Show errors from a failed CSV upload. @davisagli [#6473](https://github.com/plone/volto/issues/6473)
+- Added missing style Helmet serialization in the HTML component to make it work in SSR. @sneridagh
+  Fix deprecation notice for the usage of apple-mobile-web-app-capable. [#6480](https://github.com/plone/volto/issues/6480)
+
+### Internal
+
+- Added React Router 7 experimental PoC. @sneridagh [#6472](https://github.com/plone/volto/issues/6472)
+
+### Documentation
+
+- Overhaul and update of the add-ons section in documentation. @sneridagh [#6397](https://github.com/plone/volto/issues/6397)
+
+## 18.0.3 (2024-11-05)
+
+### Bugfix
+
+- Fixed image generation because of a bug in the docker build with registry typings. @sneridagh [#6471](https://github.com/plone/volto/issues/6471)
+
+## 18.0.2 (2024-11-05)
+
+### Internal
+
+- Fix missing export src in @plone/components Also improve packaging in packages. @sneridagh [#6470](https://github.com/plone/volto/issues/6470)
+
+## 18.0.1 (2024-11-05)
+
+### Bugfix
+
+- Fix ERR_REQUIRE from ESM module requiring CJS module in `@plone/registry` fix tests. @sneridagh [#6458](https://github.com/plone/volto/issues/6458)
+
+### Internal
+
+- Improve exports in @plone/registry, adapt the Jest test setup. @sneridagh [#6461](https://github.com/plone/volto/issues/6461)
+- Removed `parcel` completely from core. @sneridagh [#6469](https://github.com/plone/volto/issues/6469)
+
+### Documentation
+
+- Fix display of nvm version when installing it for Contributing to Volto. @stevepiercy [#6460](https://github.com/plone/volto/issues/6460)
+
 ## 18.0.0 (2024-10-31)
 
 (Summary)
