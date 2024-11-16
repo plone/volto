@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Scheduler</title>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <form id="event-form">
+        <label for="start-datetime">Start Datetime:</label>
+        <input type="datetime-local" id="start-datetime" name="start-datetime" required>
+
+        <label for="end-datetime">End Datetime:</label>
+        <input type="datetime-local" id="end-datetime" name="end-datetime">
+
+        <label for="all-day-checkbox">All-Day Event:</label>
+        <input type="checkbox" id="all-day-checkbox">
+
+        <label for="is-recurring">Recurring Event:</label>
+        <input type="checkbox" id="is-recurring">
+
+        <button type="submit">Save Event</button>
+    </form>
+</body>
+</html>
