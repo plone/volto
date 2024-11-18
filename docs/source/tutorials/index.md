@@ -30,7 +30,10 @@ On the [Plone Training website](https://training.plone.org), you'll find Volto-d
 
 You can watch the talk during the World Plone Day 2021:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/kHec4MXH8vo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```{youtube} kHec4MXH8vo
+:privacy_mode:
+:width: 100%
+```
 
 
 ## Presentations at Plone Conferences (PloneConf) and other events
