@@ -126,7 +126,7 @@ const FileWidget = (props) => {
             <Toast
               error
               title={intl.formatMessage(messages.acceptError, {
-                size: props.accept,
+                accept: props.accept,
               })}
             />,
           );

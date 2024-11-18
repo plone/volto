@@ -1493,6 +1493,7 @@ class SchemaWidget extends Component {
               id={field}
               required={this.props.value.required.indexOf(field) !== -1}
               widgets={this.props.widgets}
+              component={this.props.component}
               onEdit={this.onShowEditField}
               draggable={false}
               isDisabled={true}
@@ -1532,6 +1533,7 @@ class SchemaWidget extends Component {
                   id={field}
                   required={this.props.value.required.indexOf(field) !== -1}
                   widgets={this.props.widgets}
+                  component={this.props.component}
                   onEdit={this.onShowEditField}
                   draggable={true}
                   isDisabled={false}
@@ -1661,7 +1663,7 @@ class SchemaWidget extends Component {
           ) : null}
 
           {canAddFields && (
-            <Form.Field inline>
+            <Form.Field inline className="addfield">
               <Grid>
                 <Grid.Row stretched>
                   <Grid.Column width="12">
