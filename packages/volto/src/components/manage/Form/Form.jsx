@@ -84,6 +84,7 @@ class Form extends Component {
       required: PropTypes.arrayOf(PropTypes.string),
     }),
     widgets: PropTypes.objectOf(PropTypes.any),
+    component: PropTypes.any,
     formData: PropTypes.objectOf(PropTypes.any),
     globalData: PropTypes.objectOf(PropTypes.any),
     metadataFieldsets: PropTypes.arrayOf(PropTypes.string),
@@ -94,6 +95,7 @@ class Form extends Component {
     submitLabel: PropTypes.string,
     cancelLabel: PropTypes.string,
     textButtons: PropTypes.bool,
+    buttonComponent: PropTypes.any,
     resetAfterSubmit: PropTypes.bool,
     resetOnCancel: PropTypes.bool,
     isEditForm: PropTypes.bool,
@@ -125,11 +127,13 @@ class Form extends Component {
   static defaultProps = {
     formData: null,
     widgets: null,
+    component: null,
     onSubmit: null,
     onCancel: null,
     submitLabel: null,
     cancelLabel: null,
     textButtons: false,
+    buttonComponent: null,
     resetAfterSubmit: false,
     resetOnCancel: false,
     isEditForm: false,
@@ -715,11 +719,15 @@ class Form extends Component {
       navRoot,
       type,
       metadataFieldsets,
+      component,
+      buttonComponent,
     } = this.props;
     const formData = this.state.formData;
     const schema = this.removeBlocksLayoutFields(originalSchema);
     const Container =
       config.getComponent({ name: 'Container' }).component || SemanticContainer;
+    const FormComponent = component || UiForm;
+    const ButtonComponent = buttonComponent || Button;
 
     return this.props.visual ? (
       // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
@@ -884,7 +892,7 @@ class Form extends Component {
       )
     ) : (
       <Container>
-        <UiForm
+        <FormComponent
           method="post"
           onSubmit={this.onSubmit}
           error={keys(this.state.errors).length > 0}
@@ -927,6 +935,7 @@ class Form extends Component {
                         ...map(item.fields, (field, index) => (
                           <Field
                             widgets={this.props.widgets}
+                            component={this.props.component}
                             {...schema.properties[field]}
                             id={field}
                             formData={formData}
@@ -983,6 +992,7 @@ class Form extends Component {
                   {map(schema.fieldsets[0].fields, (field) => (
                     <Field
                       widgets={this.props.widgets}
+                      component={this.props.component}
                       {...schema.properties[field]}
                       id={field}
                       value={formData?.[field]}
@@ -1000,7 +1010,7 @@ class Form extends Component {
                 <Segment className="actions" clearing>
                   {onSubmit &&
                     (this.props.textButtons ? (
-                      <Button
+                      <ButtonComponent
                         primary
                         floated="right"
                         type="submit"
@@ -1019,9 +1029,9 @@ class Form extends Component {
                         {this.props.submitLabel
                           ? this.props.submitLabel
                           : this.props.intl.formatMessage(messages.save)}
-                      </Button>
+                      </ButtonComponent>
                     ) : (
-                      <Button
+                      <ButtonComponent
                         basic
                         primary
                         floated="right"
@@ -1039,11 +1049,11 @@ class Form extends Component {
                         loading={this.props.loading}
                       >
                         <Icon className="circled" name={aheadSVG} size="30px" />
-                      </Button>
+                      </ButtonComponent>
                     ))}
                   {onCancel &&
                     (this.props.textButtons ? (
-                      <Button
+                      <ButtonComponent
                         secondary
                         aria-label={
                           this.props.cancelLabel
@@ -1061,9 +1071,9 @@ class Form extends Component {
                         {this.props.cancelLabel
                           ? this.props.cancelLabel
                           : this.props.intl.formatMessage(messages.cancel)}
-                      </Button>
+                      </ButtonComponent>
                     ) : (
-                      <Button
+                      <ButtonComponent
                         basic
                         secondary
                         aria-label={
@@ -1080,13 +1090,13 @@ class Form extends Component {
                         onClick={this.onCancel}
                       >
                         <Icon className="circled" name={clearSVG} size="30px" />
-                      </Button>
+                      </ButtonComponent>
                     ))}
                 </Segment>
               )}
             </Segment.Group>
           </fieldset>
-        </UiForm>
+        </FormComponent>
       </Container>
     );
   }
