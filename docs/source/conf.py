@@ -63,6 +63,7 @@ extensions = [
     "sphinx_copybutton",
     "sphinx_examples",
     "sphinxcontrib.video",
+    "sphinxcontrib.youtube",
     "sphinxext.opengraph",
 ]
 
