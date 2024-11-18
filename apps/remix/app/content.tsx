@@ -1,29 +1,34 @@
-import type { LoaderArgs } from '../routes/+types.home';
+import {
+  json,
+  type LoaderFunctionArgs,
+  type MetaFunction,
+} from '@remix-run/node';
 import {
   dehydrate,
   QueryClient,
   HydrationBoundary,
-  useQuery,
   useQueryClient,
+  useQuery,
 } from '@tanstack/react-query';
-import { flattenToAppURL } from '../utils';
-import { useLoaderData, useLocation } from 'react-router';
+import { flattenToAppURL } from './utils';
+import { useLoaderData, useLocation } from '@remix-run/react';
 import { usePloneClient } from '@plone/providers';
-import { ploneClient } from '../client';
+// import { Breadcrumbs, RenderBlocks } from '@plone/components';
+// import config from '@plone/registry';
+import { ploneClient } from './client';
 import App from '@plone/slots/components/App';
-import type { MetaFunction } from 'react-router';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Plone on React Router 7' },
-    { name: 'description', content: 'Welcome to Plone!' },
+    { title: 'New Remix App' },
+    { name: 'description', content: 'Welcome to Remix!' },
   ];
 };
 
-const expand = ['breadcrumbs', 'navigation'];
+const expand = ['navroot', 'breadcrumbs', 'navigation'];
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export async function loader({ params, request }: LoaderArgs) {
+export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -37,19 +42,23 @@ export async function loader({ params, request }: LoaderArgs) {
   const { getContentQuery } = ploneClient;
 
   await queryClient.prefetchQuery(
-    getContentQuery({ path: flattenToAppURL(request.url), expand }),
+    getContentQuery({ path: flattenToAppURL(request.url || '/'), expand }),
   );
 
-  return { dehydratedState: dehydrate(queryClient) };
-}
+  return json({ dehydratedState: dehydrate(queryClient) });
+};
 
 function Page() {
   const { getContentQuery } = usePloneClient();
-  const pathname = useLocation().pathname;
-  const { data } = useQuery(getContentQuery({ path: pathname, expand }));
+  const { pathname } = useLocation();
+  const { data } = useQuery(getContentQuery({ path: pathname || '/', expand }));
 
-  if (!data) return 'Loading...';
-  return <App content={data} location={{ pathname: '/' }} />;
+  if (!data) return null;
+  return (
+    <>
+      <App content={data} location={{ pathname: '/' }} />
+    </>
+  );
 }
 
 export default function Content() {

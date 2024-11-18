@@ -2,9 +2,10 @@ import { BlockViewProps } from '@plone/types';
 import { usePloneProvider } from '@plone/providers';
 
 const ImageBlockView = (props: BlockViewProps) => {
-  console.log(props);
+  // console.log(props);
   const flattenToAppURL = usePloneProvider().flattenToAppURL;
   const { data } = props;
+  if (!data.url) return null;
   const url = data.image_scales
     ? `/++api++${flattenToAppURL(data.url)}/${data.image_scales[data.image_field][0].download}`
     : data.url;

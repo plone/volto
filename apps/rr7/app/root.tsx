@@ -18,14 +18,12 @@ import PloneClient from '@plone/client';
 import { PloneProvider } from '@plone/providers';
 import { flattenToAppURL } from './utils';
 import config from '@plone/registry';
-import './config';
+import install from './config';
 
 import '@plone/theming/styles/main.css';
 import '@plone/slots/main.css';
 
-function useHrefLocal(to: string) {
-  return useHref(flattenToAppURL(to));
-}
+install();
 
 export const links: LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -83,6 +81,10 @@ export default function App() {
     return RRNavigate(flattenToAppURL(to));
   };
 
+  function useHrefLocal(to: string) {
+    return useHref(flattenToAppURL(to));
+  }
+
   return (
     <PloneProvider
       ploneClient={ploneClient}
@@ -91,6 +93,7 @@ export default function App() {
       useParams={useParams}
       useHref={useHrefLocal}
       navigate={navigate}
+      flattenToAppURL={flattenToAppURL}
     >
       <Outlet />
       <ReactQueryDevtools initialIsOpen={false} />
