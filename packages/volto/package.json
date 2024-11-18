@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "18.0.0-alpha.47",
+  "version": "18.1.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -85,8 +85,8 @@
       "@plone/volto/babel": "<rootDir>/babel.js",
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
       "@plone/volto-slate/(.*)$": "<rootDir>/../volto-slate/src/$1",
-      "@plone/registry/addon-registry$": "<rootDir>/node_modules/@plone/registry/dist/esm/addon-registry.js",
-      "@plone/registry/create-addons-loader$": "<rootDir>/node_modules/@plone/registry/dist/esm/create-addons-loader.js",
+      "@plone/registry/addon-registry$": "<rootDir>/node_modules/@plone/registry/dist/addon-registry/addon-registry.js",
+      "@plone/registry/create-addons-loader$": "<rootDir>/node_modules/@plone/registry/dist/addon-registry/create-addons-loader.js",
       "@plone/registry": "<rootDir>/../registry/src",
       "@plone/registry/(.*)$": "<rootDir>/../registry/src/$1",
       "@plone/volto": "<rootDir>/src/index.js",

@@ -29,14 +29,9 @@
     "access": "public"
   },
   "main": "src/index.ts",
-  "targets": {
-    "main": {
-      "includeNodeModules": false
-    }
-  },
   "scripts": {
-    "watch": "parcel watch",
-    "build": "parcel build",
+    "watch": "tsup",
+    "build": "tsup",
     "test": "vitest",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
@@ -54,15 +49,13 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@parcel/packager-ts": "^2.12.0",
-    "@parcel/transformer-typescript-types": "^2.12.0",
     "@plone/types": "workspace:*",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "parcel": "^2.12.0",
     "release-it": "^17.1.1",
     "tsconfig": "workspace:*",
-    "typescript": "^5.4.5",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
     "vitest": "^2.1.3"
   }
 }

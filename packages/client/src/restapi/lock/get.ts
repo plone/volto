@@ -1,7 +1,7 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
 import { z } from 'zod';
-import { LockInfo as GetLockResponse } from '@plone/types';
+import type { LockInfo as GetLockResponse } from '@plone/types';
 
 const getLockSchema = z.object({
   path: z.string(),

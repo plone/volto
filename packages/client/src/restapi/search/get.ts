@@ -1,8 +1,8 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
 import { z } from 'zod';
 import { getSearchSchema } from '../../validation/search';
-import { GetSearchResponse } from '@plone/types';
+import type { GetSearchResponse } from '@plone/types';
 import { flattenToDottedNotation } from '../../utils/misc';
 
 export type SearchArgs = z.infer<typeof getSearchSchema> & {

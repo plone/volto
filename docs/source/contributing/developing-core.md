@@ -48,7 +48,8 @@ Volto has the following folder structure.
 ├─ apps/
 │  ├─ plone
 │  ├─ nextjs
-│  └─ remix
+│  ├─ remix
+│  └─ rr7
 ├─ packages/
 │  ├─ volto
 │  ├─ client
@@ -165,7 +166,7 @@ cd volto
 Install the frontend dependencies.
 
 ```shell
-pnpm install
+make install
 ```
 
 
@@ -397,6 +398,16 @@ You can try it out using the following command.
 
 ```shell
 pnpm --filter plone-remix dev
+```
+
+### React Router 7
+
+This frontend is a proof of concept using React Router 7 with Plone.
+
+You can try it out using the following command.
+
+```shell
+pnpm --filter plone-rr7 dev
 ```
 
 ### Vite build (client only)
