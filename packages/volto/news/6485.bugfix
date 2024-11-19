@@ -1,0 +1,1 @@
+Do not break toolbar if layout id is not registered in layoutViewsNamesMapping. @cekk
