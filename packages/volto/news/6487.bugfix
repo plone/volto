@@ -1,0 +1,1 @@
+Replace _all_ spaces with `-` in `BodyClass` classes, instead of with `-` or `` depending on the content type or section. @giuliaghisini
