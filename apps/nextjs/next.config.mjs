@@ -1,4 +1,4 @@
-import { withPlone } from '@plone/registry/next-plugin';
+import { withPlone } from '@plone/nextjs/plugin';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withPlone({

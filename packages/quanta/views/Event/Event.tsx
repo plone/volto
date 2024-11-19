@@ -1,5 +1,5 @@
-import { ViewProps } from '@plone/types';
-import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs';
+import { type ViewProps } from '@plone/types';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
 export default function Page({ content }: ViewProps) {
   return (
@@ -10,6 +10,7 @@ export default function Page({ content }: ViewProps) {
         includeRoot
       />
       <h1>{content.title}</h1>
+      <span>{content['@type']}</span>
     </div>
   );
 }

@@ -63,7 +63,7 @@ module.exports = {
 
     // Node
     {
-      files: ['.eslintrc.cjs', 'src/plugin.ts', '__tests__/**/*.{js,ts}'],
+      files: ['.eslintrc.cjs', '__tests__/**/*.{js,ts}'],
       env: {
         node: true,
         es6: true,

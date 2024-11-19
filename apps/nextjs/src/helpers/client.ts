@@ -4,7 +4,7 @@ import {
 } from '@tanstack/react-query';
 import { cache } from 'react';
 import PloneClient from '@plone/client';
-import config from '@/config';
+import config from '@plone/registry';
 
 export const client = PloneClient.initialize({
   apiPath: config.settings.apiPath,
