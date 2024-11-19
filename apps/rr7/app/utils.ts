@@ -9,11 +9,12 @@ import config from '@plone/registry';
  */
 export function flattenToAppURL(url: string) {
   const { settings } = config;
+
   const result =
     url &&
     url
       .replace(settings.apiPath, '')
-      .replace(settings.internalApiPath || '', '')
+      .replace(settings.internalApiPath, '')
       .replace('http://localhost:3000', '');
   return result;
 }

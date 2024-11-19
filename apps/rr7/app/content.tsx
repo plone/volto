@@ -6,12 +6,13 @@ import {
   useQuery,
   useQueryClient,
 } from '@tanstack/react-query';
-import { flattenToAppURL } from './utils';
 import { useLoaderData, useLocation } from 'react-router';
-import { usePloneClient } from '@plone/providers';
-import { ploneClient } from './client';
-import App from '@plone/slots/components/App';
 import type { MetaFunction } from 'react-router';
+import { usePloneClient } from '@plone/providers';
+import PloneClient from '@plone/client';
+import App from '@plone/slots/components/App';
+import { flattenToAppURL } from './utils';
+import config from '@plone/registry';
 
 export const meta: MetaFunction = () => {
   return [
@@ -34,11 +35,28 @@ export async function loader({ params, request }: LoaderArgs) {
     },
   });
 
-  const { getContentQuery } = ploneClient;
+  const ploneClient = config
+    .getUtility({
+      name: 'ploneClient',
+      type: 'client',
+    })
+    .method();
 
-  await queryClient.prefetchQuery(
-    getContentQuery({ path: flattenToAppURL(request.url), expand }),
-  );
+  const { getContentQuery } = ploneClient as PloneClient;
+
+  const path = flattenToAppURL(request.url);
+  if (
+    !(
+      /^https?:\/\//.test(path) ||
+      /^favicon.ico\/\//.test(path) ||
+      /expand/.test(path) ||
+      /^\/@@images/.test(path) ||
+      /^\/@@download/.test(path) ||
+      /^\/assets/.test(path)
+    )
+  ) {
+    await queryClient.prefetchQuery(getContentQuery({ path, expand }));
+  }
 
   return { dehydratedState: dehydrate(queryClient) };
 }
