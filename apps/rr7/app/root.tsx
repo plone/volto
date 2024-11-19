@@ -7,8 +7,9 @@ import {
   ScrollRestoration,
   useHref,
   useLocation,
-  useNavigate,
+  useNavigate as useRRNavigate,
   useParams,
+  useLoaderData,
 } from 'react-router';
 import type { LinksFunction } from 'react-router';
 
@@ -19,11 +20,21 @@ import { PloneProvider } from '@plone/providers';
 import { flattenToAppURL } from './utils';
 import config from '@plone/registry';
 import install from './config';
+import installSSR from './config.server';
+
+install();
 
 import '@plone/theming/styles/main.css';
 import '@plone/slots/main.css';
 
-install();
+function useNavigate() {
+  const navigate = useRRNavigate();
+  return (to: string) => navigate(flattenToAppURL(to));
+}
+
+function useHrefLocal(to: string) {
+  return useHref(flattenToAppURL(to));
+}
 
 export const links: LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -38,7 +49,20 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export async function loader() {
+  const ssrConfig = installSSR();
+
+  return {
+    env: {
+      PLONE_API_PATH: ssrConfig.settings.apiPath,
+      PLONE_INTERNAL_API_PATH: ssrConfig.settings.internalApiPath,
+    },
+  };
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
+  const data = useLoaderData<typeof loader>();
+
   return (
     <html lang="en">
       <head>
@@ -50,6 +74,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         {children}
         <ScrollRestoration />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.env = ${JSON.stringify(data.env)}`,
+          }}
+        />
         <Scripts />
       </body>
     </html>
@@ -57,6 +86,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  if (!import.meta.env.SSR) {
+    config.settings.apiPath = window.env.PLONE_API_PATH;
+    config.settings.internalApiPath = window.env.PLONE_INTERNAL_API_PATH;
+  }
+
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -76,14 +110,7 @@ export default function App() {
     }),
   );
 
-  const RRNavigate = useNavigate();
-  const navigate = (to: string) => {
-    return RRNavigate(flattenToAppURL(to));
-  };
-
-  function useHrefLocal(to: string) {
-    return useHref(flattenToAppURL(to));
-  }
+  const navigate = useNavigate();
 
   return (
     <PloneProvider

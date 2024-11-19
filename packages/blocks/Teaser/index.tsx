@@ -3,7 +3,7 @@ import { Link } from '@plone/components';
 
 const TeaserBlockView = (props: BlockViewProps) => {
   const { data } = props;
-  const href = Array.isArray(data.href) ? data.href[0]['@id'] : data.href;
+  const href = Array.isArray(data.href) ? data.href?.[0]?.['@id'] : data.href;
   const image = data.preview_image?.[0];
   // TODO: Improve the images download path including the ++api++ to avoid having to setup a redirect
   // for @@images and @@download
