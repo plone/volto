@@ -32,6 +32,7 @@ You can watch the talk during the World Plone Day 2021:
 
 ```{youtube} kHec4MXH8vo
 :privacy_mode:
+:url_parameters: ?privacy_mode=1
 :width: 100%
 ```
 
