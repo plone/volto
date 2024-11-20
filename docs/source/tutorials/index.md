@@ -54,7 +54,7 @@ In recent years the React based Volto frontend for Plone has been presented in m
 
 ### PloneConf 2022
 
-[PloneConf 2022 full Playlist on Youtube](https://www.youtube.com/playlist?list=PLGN9BI-OAQkQxqQcCZeJefMC8XlA_qv3Z)
+[PloneConf 2022 full Playlist on Youtube](https://www.youtube-nocookie.com/embed/playlist?list=PLGN9BI-OAQkQxqQcCZeJefMC8XlA_qv3Z)
 
 Plone 6 site presentations:
 
@@ -71,13 +71,13 @@ Developer/integrator talks:
 
 ### Previous PloneConfs
 
--   [PloneConf 2021 full Playlist on YouTube](https://www.youtube.com/playlist?list=PLGN9BI-OAQkQDLQinBwdEXpebDTQCwdGi)
--   [PloneConf 2020 full Playlist on YouTube](https://www.youtube.com/playlist?list=PLGN9BI-OAQkTJPayNdKIZ8lLDm5RVOLV3)
+-   [PloneConf 2021 full Playlist on YouTube](https://www.youtube-nocookie.com/embed/playlist?list=PLGN9BI-OAQkQDLQinBwdEXpebDTQCwdGi)
+-   [PloneConf 2020 full Playlist on YouTube](https://www.youtube-nocookie.com/embed/playlist?list=PLGN9BI-OAQkTJPayNdKIZ8lLDm5RVOLV3)
 
 
 ## World Plone Day 2022
 
-World Plone Day is a 24-hour streaming event, with the goal was to promote and educate the public about the benefits of using Plone and of being part of the Plone community. [Full World Plone Day 2022 playlist on Youtube](https://www.youtube.com/playlist?list=PLGN9BI-OAQkQmEqf6O8jeyoFY1b2hD1uL)
+World Plone Day is a 24-hour streaming event, with the goal was to promote and educate the public about the benefits of using Plone and of being part of the Plone community. [Full World Plone Day 2022 playlist on Youtube](https://www.youtube-nocookie.com/embed/playlist?list=PLGN9BI-OAQkQmEqf6O8jeyoFY1b2hD1uL)
 
 -   [Plone 6 Volto's Seamless Mode](https://www.youtube.com/watch?v=Mj8pHRBls-w&list=PLGN9BI-OAQkQmEqf6O8jeyoFY1b2hD1uL)
 -   [Volto add ons separator and carousel](https://www.youtube.com/watch?v=eyTMI5TYcVg&list=PLGN9BI-OAQkQmEqf6O8jeyoFY1b2hD1uL)
