@@ -92,7 +92,7 @@ We do not guarantee that outdated browsers, such as Internet Explorer 11, are su
 
 ## Branch policy
 
-```{include} ./branch-policy.md
+```{include} ../_inc/_branch-policy.md
 ```
 
 

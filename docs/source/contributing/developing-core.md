@@ -76,7 +76,7 @@ Volto has the following folder structure.
 
 To set up a Volto core development environment, your system must satisfy the following prerequisites.
 
-```{include} ./install-operating-system.md
+```{include} ../_inc/_install-operating-system.md
 ```
 
 -   {term}`nvm`
@@ -94,7 +94,7 @@ When developing a project using Plone, Yarn or other package managers may be use
 
 ### nvm
 
-```{include} ./install-nvm.md
+```{include} ../_inc/_install-nvm.md
 ```
 
 
@@ -103,7 +103,7 @@ When developing a project using Plone, Yarn or other package managers may be use
 We recommend that you install Node.js using nvm.
 Alternatively you can install Node.js using Homebrew or other package installer.
 
-```{include} ./install-nodejs.md
+```{include} ../_inc/_install-nodejs.md
 ```
 
 
@@ -136,19 +136,19 @@ Compare the output to the [latest pnpm release number](https://www.npmjs.com/pac
 
 ### Make
 
-```{include} ./install-make.md
+```{include} ../_inc/_install-make.md
 ```
 
 
 ### Docker
 
-```{include} ./install-docker.md
+```{include} ../_inc/_install-docker.md
 ```
 
 
 ### Git
 
-```{include} ../contributing/install-git.md
+```{include} ../_inc/_install-git.md
 ```
 
 

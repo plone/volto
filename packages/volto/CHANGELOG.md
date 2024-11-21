@@ -17,6 +17,24 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.1.1 (2024-11-21)
+
+### Bugfix
+
+- Do not break toolbar if layout id is not registered in layoutViewsNamesMapping. @cekk [#6485](https://github.com/plone/volto/issues/6485)
+- Replace _all_ spaces with `-` in `BodyClass` classes, instead of with `-` or `` depending on the content type or section. @giuliaghisini [#6487](https://github.com/plone/volto/issues/6487)
+
+### Internal
+
+- Update instructions to install `pipx` in `RELEASING.md`. @stevepiercy [#6496](https://github.com/plone/volto/issues/6496)
+
+### Documentation
+
+- More privacy concerning youtube links and fixing link check warnings for youtube playlist links. @stevepiercy @ksuess [#4203](https://github.com/plone/volto/issues/4203)
+- Remove conflicting `searchtools.js` file from documentation to allow default Sphinx search in main Plone documentation. @stevepiercy [#6482](https://github.com/plone/volto/issues/6482)
+- Add support for sphinxcontrib-youtube. @stevepiercy [#6486](https://github.com/plone/volto/issues/6486)
+- Refactor documentation includes to align with main documentation pattern. @stevepiercy [#6495](https://github.com/plone/volto/issues/6495)
+
 ## 18.1.0 (2024-11-11)
 
 ### Feature
