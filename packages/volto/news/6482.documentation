@@ -1,1 +1,0 @@
-Remove conflicting `searchtools.js` file from documentation to allow default Sphinx search in main Plone documentation. @stevepiercy
