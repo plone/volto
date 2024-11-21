@@ -13,7 +13,7 @@ myst:
 
 `volto-slate` is an interactive default text editor for Volto, developed on top of {term}`Slate` and integrated into the core system.
 It offers enhanced WYSIWYG functionality and behavior.
-See a [brief elevator pitch for `volto-slate`](https://www.youtube.com/watch?v=SOz-rk5e4_w).
+See a [brief elevator pitch for `volto-slate`](https://www.youtube-nocookie.com/embed/SOz-rk5e4_w?privacy_mode=1).
 
 We believe that Volto's rich text form editor (the Volto Composite Page editor) needs strong integration between the rich text capabilities and the rest of the Volto blocks.
 Some examples of the kind of strong integration we have in mind:

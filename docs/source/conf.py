@@ -63,6 +63,7 @@ extensions = [
     "sphinx_copybutton",
     "sphinx_examples",
     "sphinxcontrib.video",
+    "sphinxcontrib.youtube",
     "sphinxext.opengraph",
 ]
 
@@ -117,7 +118,7 @@ master_doc = "index"
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = [
     "spelling_wordlist.txt",
-    "contributing/branch-policy.md",
+    "_inc/*",
 ]
 
 suppress_warnings = [
