@@ -4,7 +4,7 @@ import { ContentTypeCondition } from '@plone/slots/src/helpers';
 import Event from './views/Event/Event';
 import Page from './views/Page/Page';
 
-export default function install(config: ConfigType) {
+export default function install(config: ConfigType): ConfigType {
   config.registerSlotComponent({
     slot: 'main',
     name: 'view',

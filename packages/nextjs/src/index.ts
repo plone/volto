@@ -4,8 +4,6 @@ import { type ConfigType } from '@plone/registry';
 import applyAddonConfiguration, { addonsInfo } from 'load-registry-addons'; // eslint-disable-line import/no-unresolved
 
 export default function install(config: ConfigType): ConfigType {
-  applyAddonConfiguration(config);
-
   const settings: Partial<ConfigType['settings']> = {
     slate,
     addonsInfo,
@@ -32,6 +30,8 @@ export default function install(config: ConfigType): ConfigType {
   config.set('blocks', { blocksConfig });
 
   config.set('slots', {});
+
+  applyAddonConfiguration(config);
 
   return config;
 }

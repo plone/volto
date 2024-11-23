@@ -18241,7 +18241,7 @@ snapshots:
       '@babel/helper-validator-identifier': 7.25.7
       chalk: 2.4.2
       js-tokens: 4.0.0
-      picocolors: 1.1.0
+      picocolors: 1.1.1
 
   '@babel/highlight@7.25.7':
     dependencies:
@@ -18668,7 +18668,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.25.8
       '@babel/helper-create-regexp-features-plugin': 7.22.15(@babel/core@7.25.8)
-      '@babel/helper-plugin-utils': 7.24.0
+      '@babel/helper-plugin-utils': 7.25.7
 
   '@babel/plugin-transform-arrow-functions@7.24.1(@babel/core@7.24.4)':
     dependencies:
@@ -18692,7 +18692,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.25.8
       '@babel/helper-environment-visitor': 7.22.20
-      '@babel/helper-plugin-utils': 7.24.0
+      '@babel/helper-plugin-utils': 7.25.7
       '@babel/helper-remap-async-to-generator': 7.22.20(@babel/core@7.25.8)
       '@babel/plugin-syntax-async-generators': 7.8.4(@babel/core@7.25.8)
 
@@ -18772,10 +18772,10 @@ snapshots:
     dependencies:
       '@babel/core': 7.25.8
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-compilation-targets': 7.23.6
+      '@babel/helper-compilation-targets': 7.25.7
       '@babel/helper-environment-visitor': 7.22.20
       '@babel/helper-function-name': 7.23.0
-      '@babel/helper-plugin-utils': 7.24.0
+      '@babel/helper-plugin-utils': 7.25.7
       '@babel/helper-replace-supers': 7.24.1(@babel/core@7.25.8)
       '@babel/helper-split-export-declaration': 7.22.6
       globals: 11.12.0
@@ -18846,7 +18846,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.25.8
       '@babel/helper-builder-binary-assignment-operator-visitor': 7.22.15
-      '@babel/helper-plugin-utils': 7.24.0
+      '@babel/helper-plugin-utils': 7.25.7
 
   '@babel/plugin-transform-export-namespace-from@7.24.1(@babel/core@7.24.4)':
     dependencies:
@@ -19127,7 +19127,7 @@ snapshots:
       '@babel/core': 7.25.8
       '@babel/helper-annotate-as-pure': 7.22.5
       '@babel/helper-create-class-features-plugin': 7.24.4(@babel/core@7.25.8)
-      '@babel/helper-plugin-utils': 7.24.0
+      '@babel/helper-plugin-utils': 7.25.7
       '@babel/plugin-syntax-private-property-in-object': 7.14.5(@babel/core@7.25.8)
 
   '@babel/plugin-transform-property-literals@7.24.1(@babel/core@7.24.4)':
@@ -19461,9 +19461,9 @@ snapshots:
     dependencies:
       '@babel/compat-data': 7.24.4
       '@babel/core': 7.25.8
-      '@babel/helper-compilation-targets': 7.23.6
-      '@babel/helper-plugin-utils': 7.24.0
-      '@babel/helper-validator-option': 7.23.5
+      '@babel/helper-compilation-targets': 7.25.7
+      '@babel/helper-plugin-utils': 7.25.7
+      '@babel/helper-validator-option': 7.25.7
       '@babel/plugin-bugfix-firefox-class-in-computed-class-key': 7.24.4(@babel/core@7.25.8)
       '@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression': 7.24.1(@babel/core@7.25.8)
       '@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining': 7.24.1(@babel/core@7.25.8)
@@ -19561,7 +19561,7 @@ snapshots:
   '@babel/preset-modules@0.1.6-no-external-plugins(@babel/core@7.25.8)':
     dependencies:
       '@babel/core': 7.25.8
-      '@babel/helper-plugin-utils': 7.24.0
+      '@babel/helper-plugin-utils': 7.25.7
       '@babel/types': 7.20.5
       esutils: 2.0.3
 
@@ -22748,7 +22748,7 @@ snapshots:
       '@swc/helpers': 0.5.10
       react: 18.2.0
 
-  '@react-router/dev@7.0.0-pre.4(@react-router/serve@7.0.0-pre.4(react-router@7.0.0-pre.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(typescript@5.6.3))(@types/node@20.12.7)(babel-plugin-macros@3.1.0)(less@3.11.1)(lightningcss@1.24.1)(react-router@7.0.0-pre.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(sass@1.75.0)(terser@5.30.3)(typescript@5.6.3)(vite@5.4.9(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.24.1)(sass@1.75.0)(terser@5.30.3))':
+  '@react-router/dev@7.0.0-pre.4(@react-router/serve@7.0.0-pre.4(react-router@7.0.0-pre.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(typescript@5.6.3))(@types/node@22.7.4)(babel-plugin-macros@3.1.0)(less@3.11.1)(lightningcss@1.24.1)(react-router@7.0.0-pre.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(sass@1.75.0)(terser@5.30.3)(typescript@5.6.3)(vite@5.4.9(@types/node@22.7.4)(less@3.11.1)(lightningcss@1.24.1)(sass@1.75.0)(terser@5.30.3))':
     dependencies:
       '@babel/core': 7.25.8
       '@babel/generator': 7.25.7
