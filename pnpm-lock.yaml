@@ -19127,7 +19127,7 @@ snapshots:
       '@babel/core': 7.25.8
       '@babel/helper-annotate-as-pure': 7.22.5
       '@babel/helper-create-class-features-plugin': 7.24.4(@babel/core@7.25.8)
-      '@babel/helper-plugin-utils': 7.25.7
+      '@babel/helper-plugin-utils': 7.24.0
       '@babel/plugin-syntax-private-property-in-object': 7.14.5(@babel/core@7.25.8)
 
   '@babel/plugin-transform-property-literals@7.24.1(@babel/core@7.24.4)':
@@ -19561,7 +19561,7 @@ snapshots:
   '@babel/preset-modules@0.1.6-no-external-plugins(@babel/core@7.25.8)':
     dependencies:
       '@babel/core': 7.25.8
-      '@babel/helper-plugin-utils': 7.25.7
+      '@babel/helper-plugin-utils': 7.24.0
       '@babel/types': 7.20.5
       esutils: 2.0.3
 
