@@ -18,6 +18,8 @@ On the [Plone Training website](https://training.plone.org), you'll find Volto-d
 
 -   [Mastering Plone 6 Development](https://training.plone.org/mastering-plone/)
     The comprehensive training on Plone 6 with best practice tips for developers and integrators.
+-   [Customizing Volto Light Theme](https://training.plone.org/customizing-volto-light-theme/index.html)
+-   [Volto Customization for JavaScript Beginners](https://training.plone.org/volto-customization/index.html)
 -   [Volto Hands-On](https://training.plone.org/voltohandson/index.html)
 -   [Volto Add-ons Development](https://training.plone.org/voltoaddons/index.html)
 -   [Effective Volto](https://training.plone.org/effective-volto/index.html)
