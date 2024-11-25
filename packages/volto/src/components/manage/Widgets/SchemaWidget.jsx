@@ -947,7 +947,7 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onAddField(values) {
-    const fieldId = slugify(values.title);
+    const fieldId = slugify(values.title, keys(this.props.value.properties));
     const currentFieldsetFields =
       this.props.value.fieldsets[this.state.currentFieldset].fields;
     const hasChangeNote = currentFieldsetFields.indexOf('changeNote') > -1;
