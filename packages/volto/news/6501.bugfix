@@ -1,0 +1,1 @@
+Remove `not ie 11` from browserslist configuration, because it is now included in `not dead`. @stevepiercy

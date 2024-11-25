@@ -44,7 +44,7 @@ The Volto Team reviews pull requests only from people with a GitHub account who 
 
 ## Branch policy
 
-```{include} ./branch-policy.md
+```{include} ../_inc/_branch-policy.md
 ```
 
 

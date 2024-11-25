@@ -123,13 +123,15 @@ const DisplaySelect = (props) => {
       ? state.content.data[getLayoutFieldname(state.content.data)]
       : '',
   );
+  const layoutMappingId = config.views.layoutViewsNamesMapping?.[layout];
   const [selectedOption, setselectedOption] = useState({
     value: layout,
-    label:
-      intl.formatMessage({
-        id: config.views.layoutViewsNamesMapping?.[layout],
-        defaultMessage: config.views.layoutViewsNamesMapping?.[layout],
-      }) || layout,
+    label: layoutMappingId
+      ? intl.formatMessage({
+          id: layoutMappingId,
+          defaultMessage: layoutMappingId,
+        })
+      : layout,
   });
 
   const type = useSelector((state) =>
