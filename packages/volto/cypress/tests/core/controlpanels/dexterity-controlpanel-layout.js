@@ -1,4 +1,5 @@
 describe('ControlPanel: Dexterity Content-Types Layout', () => {
+  let prefixPath;
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     // given a logged in editor
@@ -8,6 +9,7 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
     cy.autologin();
     cy.visit('/controlpanel/dexterity-types');
     cy.wait('@content');
+    prefixPath = Cypress.env('prefixPath') || '';
   });
 
   it('Edit Blocks Layout for Book', () => {
@@ -16,7 +18,7 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
     cy.get('input[id="field-description"]').type('A book content-type');
     cy.get('[title=Save]').click();
 
-    cy.get('a[href="/controlpanel/dexterity-types/book"]').should(
+    cy.get(`a[href="${prefixPath}/controlpanel/dexterity-types/book"]`).should(
       'have.text',
       'Book',
     );

@@ -423,6 +423,12 @@ const defaultModify = ({
     };
   }
 
+  const prefixPath = process.env.RAZZLE_PREFIX_PATH || '';
+
+  if (prefixPath && !dev) {
+    const publicPath = config.output.publicPath;
+    config.output.publicPath = `${publicPath}${prefixPath.slice(1)}/`;
+  }
   return config;
 };
 
