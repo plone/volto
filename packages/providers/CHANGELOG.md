@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.6 (2024-11-21)
+
+### Feature
+
+- Update RAC to 1.5.0 @sneridagh [#6498](https://github.com/plone/volto/issues/6498)
+
 ## 1.0.0-alpha.5 (2024-11-05)
 
 ### Internal
