@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { Input } from 'semantic-ui-react';
-import { compact, concat, keys, map, union, uniq } from 'lodash';
+import { compact, concat, map, union, uniq } from 'lodash';
 
 import { defineMessages, useIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
@@ -46,8 +46,7 @@ const IdWidget = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
   const ref = useRef();
-
-  const indexes = useSelector((state) => keys(state.querystring.indexes));
+  const indexes = useSelector((state) => state.querystring.indexes);
 
   const [errors, setError] = useState([]);
   const [reservedIds] = useState(
@@ -62,11 +61,11 @@ const IdWidget = (props) => {
       ),
     ),
   );
-  const fieldValidation = (values) => {
+  const fieldValidation = (value) => {
     const error = [];
 
     // Check reserved id's
-    if (reservedIds.indexOf(values) !== -1) {
+    if (reservedIds.indexOf(value) !== -1) {
       error.push(intl.formatMessage(messages.reservedId));
     }
 
@@ -74,14 +73,14 @@ const IdWidget = (props) => {
     if (
       // eslint-disable-next-line no-control-regex
       !/^(?!.*\\)(?!\+\+)(?!@@)(?!.*request)(?!.*contributors)(?!aq_)(?!.*__)(?!_)(?!((^|\/)\.\.?($|\/)|^"\s*"$))(?!.*[A-Z])(?:(?![\r\n<>/?&#\x00-\x1F\x7F])['\x00-\x7F\u0080-\uFFFF. _])*$/.test(
-        values,
+        value,
       )
     ) {
       error.push(intl.formatMessage(messages.invalidCharacters));
     }
 
     // Check indexes
-    if (indexes.indexOf(values) !== -1) {
+    if (value in indexes) {
       error.push(intl.formatMessage(messages.reservedId));
     }
 

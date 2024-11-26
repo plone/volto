@@ -135,6 +135,15 @@ export function applySchemaDefaults({ data, schema, intl }: {
  */
 export function applyBlockDefaults({ data, intl, navRoot, contentType, ...rest }: any, blocksConfig: any): any;
 /**
+ * Find a matching style by name given a style definition
+ *
+ * @function findStyleByName
+ * @param {Object} styleDefinitions An object with the style definitions
+ * @param {string} name The name of the style to find
+ * @return {Object} The style object of the matching name
+ */
+export function findStyleByName(styleDefinitions: any, name: string): any;
+/**
  * Check if a block is a container block
  * check blocks from data as well since some add-ons use that
  * such as @eeacms/volto-tabs-block
@@ -168,7 +177,7 @@ export function styleToClassName(key: any, value: any, prefix?: string): any;
 export function buildStyleClassNamesFromData(obj?: {}, prefix?: string): any;
 export function buildStyleClassNamesExtenders({ block, content, data, classNames, }: any): any[];
 export function styleDataToStyleObject(key: any, value: any, prefix?: string): any[];
-export function buildStyleObjectFromData(obj?: any, prefix?: string): any;
+export function buildStyleObjectFromData(data?: any, prefix?: string): any;
 export function getPreviousNextBlock({ content, block }: any): any[];
 export function getBlocksHierarchy(properties: any): any;
 export function findContainer(formData: object, { containerId }: {

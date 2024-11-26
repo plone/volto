@@ -109,7 +109,7 @@ import {
   queryWithConfig,
   mutationHookFromMutation,
 } from './utils/misc';
-import { PloneClientConfig } from './validation/config';
+import type { PloneClientConfig } from './validation/config';
 
 const PLONECLIENT_DEFAULT_CONFIG = { apiPath: 'http://localhost:8080/Plone' };
 

@@ -5,9 +5,9 @@ import {
   Input,
   Label,
   NumberField as RACNumberField,
-  NumberFieldProps as RACNumberFieldProps,
+  type NumberFieldProps as RACNumberFieldProps,
   Text,
-  ValidationResult,
+  type ValidationResult,
 } from 'react-aria-components';
 import { Button } from '../Button/Button';
 import { AddIcon } from '../Icons/AddIcon';

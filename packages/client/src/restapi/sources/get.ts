@@ -1,7 +1,7 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
 import { z } from 'zod';
-import { GetSourceResponse } from '@plone/types';
+import type { GetSourceResponse } from '@plone/types';
 
 const getSourceSchema = z.object({
   path: z.string(),

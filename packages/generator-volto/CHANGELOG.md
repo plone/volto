@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0 (2024-10-31)
+
+### Internal
+
+- Release 9.0.0 @sneridagh 
+
 ## 9.0.0-alpha.20 (2024-10-27)
 
 ### Breaking
