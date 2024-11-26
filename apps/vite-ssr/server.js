@@ -51,6 +51,80 @@ export async function createServer(
     app.use('/', sirv('./dist/client', { extensions: [] }));
   }
 
+<<<<<<< Updated upstream
+=======
+  // Middleware to parse JSON requests
+  app.use(express.json());
+
+  // Middleware to sanitize incoming data
+  app.use((req, res, next) => {
+    const sanitizeData = (data) => {
+      if (typeof data === 'string') {
+        return data.replace(/@/g, ''); // Replace '@' in strings
+      } else if (typeof data === 'object' && data !== null) {
+        // Recursively sanitize objects or arrays
+        for (let key in data) {
+          if (data.hasOwnProperty(key)) {
+            data[key] = sanitizeData(data[key]);
+          }
+        }
+      }
+      return data;
+    };
+
+    // Sanitize both body and query
+    req.body = sanitizeData(req.body);
+    req.query = sanitizeData(req.query);
+    next();
+  });
+
+  // Event scheduling validation logic
+  app.post('/schedule-event', (req, res) => {
+    const { startDatetime, endDatetime, isAllDay, isRecurring } = req.body;
+
+    if (!startDatetime) {
+      return res.status(400).json({ error: 'Start datetime is required.' });
+    }
+
+    const start = new Date(startDatetime);
+    let end = endDatetime ? new Date(endDatetime) : null;
+
+    // Validate event times
+    if (end && end <= start) {
+      return res.status(400).json({
+        error: 'End datetime must be after start datetime.',
+      });
+    }
+
+    // Handle all-day event logic
+    if (isAllDay) {
+      const startDate = new Date(start.toDateString());
+      const endDate = new Date(start.toDateString());
+      endDate.setHours(23, 59, 59);
+      end = endDate;
+
+      return res.json({
+        message: 'All-day event created.',
+        event: { start: startDate, end: endDate },
+      });
+    }
+
+    // Handle recurring event logic
+    if (isRecurring && !end) {
+      return res.json({
+        message: 'Recurring event created without end datetime.',
+        event: { start },
+      });
+    }
+
+    // Return successful response
+    res.json({
+      message: 'Event scheduled successfully.',
+      event: { start, end },
+    });
+  });
+
+>>>>>>> Stashed changes
   app.use('*', async (req, res) => {
     try {
       const url = req.originalUrl;
@@ -66,13 +140,13 @@ export async function createServer(
       let viteHead = !isProd
         ? await vite.transformIndexHtml(
             url,
-            `<html><head></head><body></body></html>`,
+            `<html><head></head><body></body></html>`
           )
         : prodIndexHtml;
 
       viteHead = viteHead.substring(
         viteHead.indexOf('<head>') + 6,
-        viteHead.indexOf('</head>'),
+        viteHead.indexOf('</head>')
       );
 
       const entry = await (async () => {
@@ -102,7 +176,7 @@ if (!isTest) {
       '0.0.0.0',
       () => {
         console.log('Client Server: http://localhost:3000');
-      },
-    ),
+      }
+    )
   );
 }
