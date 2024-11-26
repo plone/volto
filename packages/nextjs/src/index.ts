@@ -1,11 +1,11 @@
-import { blocksConfig, slate } from '@plone/blocks';
 import { type ConfigType } from '@plone/registry';
-// @ts-expect-error type load-registry-addons correctly
-import applyAddonConfiguration, { addonsInfo } from 'load-registry-addons'; // eslint-disable-line import/no-unresolved
+import applyAddonConfiguration, {
+  addonsInfo,
+  // @ts-expect-error Improve typings
+} from '@plone/registry/addons-loader'; // eslint-disable-line import/no-unresolved
 
 export default function install(config: ConfigType): ConfigType {
   const settings: Partial<ConfigType['settings']> = {
-    slate,
     addonsInfo,
   };
 
@@ -25,11 +25,6 @@ export default function install(config: ConfigType): ConfigType {
 
   // @ts-expect-error Improve typings
   config.set('settings', settings);
-
-  // @ts-expect-error Improve typings
-  config.set('blocks', { blocksConfig });
-
-  config.set('slots', {});
 
   applyAddonConfiguration(config);
 

@@ -5,7 +5,7 @@ declare function withRegistry(config?: NextConfig): NextConfig;
 
 export { withRegistry };
 
-declare module 'load-registry-addons' {
+declare module '@plone/registry/addons-loader' {
   export default function applyAddonConfiguration(config: ConfigType): void;
   export const addonsInfo: ConfigType['settings']['addonsInfo'];
 }

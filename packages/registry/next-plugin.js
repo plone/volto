@@ -47,7 +47,7 @@ export function withRegistry(config) {
             addonsThemeCustomizationsMain: addonsThemeLoaderMainPath,
           }
         : {}),
-      'load-registry-addons': addonsLoaderPath,
+      '@plone/registry/addons-loader': addonsLoaderPath,
     };
     return newWebpackConfig;
   };

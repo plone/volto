@@ -10,6 +10,8 @@
     "lint": "next lint"
   },
   "addons": [
+    "@plone/blocks",
+    "@plone/slots",
     "@plone/quanta"
   ],
   "dependencies": {

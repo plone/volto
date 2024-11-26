@@ -1,22 +1,14 @@
 import { type ConfigType } from '@plone/registry';
-
-import { ContentTypeCondition } from '@plone/slots/src/helpers';
-import Event from './views/Event/Event';
-import Page from './views/Page/Page';
+import Logo from './components/Logo/Logo';
 
 export default function install(config: ConfigType): ConfigType {
+  // config.unRegisterSlotComponent('logo', 'Logo', 0);
+  // console.log('slots', JSON.stringify(config.slots, null, 2));
   config.registerSlotComponent({
-    slot: 'main',
-    name: 'view',
-    component: Page,
-    predicates: [ContentTypeCondition(['Document', 'Plone Site'])],
-  });
-
-  config.registerSlotComponent({
-    slot: 'main',
-    name: 'view',
-    component: Event,
-    predicates: [ContentTypeCondition(['Event'])],
+    name: 'Logo',
+    slot: 'logo',
+    component: Logo,
+    predicates: [() => true],
   });
 
   return config;

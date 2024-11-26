@@ -1,0 +1,100 @@
+:root {
+  /* These should come from @plone/components by default */
+  --layout-container-width: 1440px;
+  --default-container-width: 940px;
+  --narrow-container-width: 620px;
+
+  --align-right: end;
+  --align-left: start;
+  --align-center: center;
+}
+
+body {
+  /* This needs a proper reset */
+  margin: 0;
+}
+
+.app-slot {
+  display: grid;
+  height: 100vh;
+  margin: 0;
+  grid-template-areas:
+    'header'
+    'content'
+    'footer';
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
+.header-logo-nav-tools-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 25px;
+  padding-bottom: 35px;
+}
+
+.logo {
+  flex: 1 1 0;
+  align-self: center;
+}
+
+.navigation {
+  display: flex;
+  flex: 3.5 1 0;
+  align-self: center;
+  justify-content: center;
+
+  ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li a {
+      padding: 1rem 0;
+      margin-left: 1rem;
+    }
+
+    li:first-child a {
+      margin-left: 0;
+    }
+  }
+}
+
+.header-tools {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: row-reverse;
+}
+
+main {
+  grid-area: 'content';
+}
+
+.content-area > * {
+  max-width: var(--default-container-width);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+figure img {
+  width: 100%;
+}
+
+footer {
+  margin-top: 100px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+  text-align: center;
+
+  .logo {
+    margin: 20px 0;
+    place-self: center;
+  }
+}
