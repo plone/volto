@@ -8,6 +8,39 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.6 (2024-11-21)
+
+### Feature
+
+- Update RAC to 1.5.0 @sneridagh [#6498](https://github.com/plone/volto/issues/6498)
+
+## 1.0.0-alpha.5 (2024-11-05)
+
+### Internal
+
+- Improve packaging. @sneridagh 
+
+## 1.0.0-alpha.4 (2024-11-05)
+
+### Internal
+
+- Bump local `typescript` version. @sneridagh [#6461](https://github.com/plone/volto/issues/6461)
+- Replace `parcel` with `tsup`. Better types, better tsconfig. Move to ESM. @sneridagh [#6468](https://github.com/plone/volto/issues/6468)
+
+## 1.0.0-alpha.3 (2024-10-18)
+
+## 1.0.0-alpha.2 (2024-10-18)
+
+### Breaking
+
+- Improve and group providers. @sneridagh
+  Breaking:
+    - The interface of the providers has changed. Please check the new one, and adapt your apps accordingly. [#6069](https://github.com/plone/volto/issues/6069)
+
+### Internal
+
+- Update typescript and vitest everywhere @sneridagh [#6407](https://github.com/plone/volto/issues/6407)
+
 ## 1.0.0-alpha.1 (2024-05-23)
 
 ### Internal

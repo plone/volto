@@ -48,7 +48,8 @@ Volto has the following folder structure.
 ├─ apps/
 │  ├─ plone
 │  ├─ nextjs
-│  └─ remix
+│  ├─ remix
+│  └─ rr7
 ├─ packages/
 │  ├─ volto
 │  ├─ client
@@ -75,11 +76,11 @@ Volto has the following folder structure.
 
 To set up a Volto core development environment, your system must satisfy the following prerequisites.
 
-```{include} ./install-operating-system.md
+```{include} ../_inc/_install-operating-system.md
 ```
 
 -   {term}`nvm`
--   {term}`Node.js` LTS 20.x
+-   {term}`Node.js` LTS 22.x
 -   {term}`pnpm`
 -   {term}`GNU make`
 -   {term}`Docker`
@@ -93,7 +94,7 @@ When developing a project using Plone, Yarn or other package managers may be use
 
 ### nvm
 
-```{include} ./install-nvm.md
+```{include} ../_inc/_install-nvm.md
 ```
 
 
@@ -102,7 +103,7 @@ When developing a project using Plone, Yarn or other package managers may be use
 We recommend that you install Node.js using nvm.
 Alternatively you can install Node.js using Homebrew or other package installer.
 
-```{include} ./install-nodejs.md
+```{include} ../_inc/_install-nodejs.md
 ```
 
 
@@ -135,19 +136,19 @@ Compare the output to the [latest pnpm release number](https://www.npmjs.com/pac
 
 ### Make
 
-```{include} ./install-make.md
+```{include} ../_inc/_install-make.md
 ```
 
 
 ### Docker
 
-```{include} ./install-docker.md
+```{include} ../_inc/_install-docker.md
 ```
 
 
 ### Git
 
-```{include} ../contributing/install-git.md
+```{include} ../_inc/_install-git.md
 ```
 
 
@@ -165,7 +166,7 @@ cd volto
 Install the frontend dependencies.
 
 ```shell
-pnpm install
+make install
 ```
 
 
@@ -397,6 +398,16 @@ You can try it out using the following command.
 
 ```shell
 pnpm --filter plone-remix dev
+```
+
+### React Router 7
+
+This frontend is a proof of concept using React Router 7 with Plone.
+
+You can try it out using the following command.
+
+```shell
+pnpm --filter plone-rr7 dev
 ```
 
 ### Vite build (client only)

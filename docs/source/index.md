@@ -1,18 +1,18 @@
 ---
 myst:
   html_meta:
-    "description": "Volto is the React-based frontend for the Plone CMS. It is the default UI for the Plone 6 release."
-    "property=og:description": "Volto is the React-based frontend for the Plone CMS. It is the default UI for the Plone 6 release."
-    "property=og:title": "Frontend"
-    "keywords": "Volto, Plone, frontend, React"
+    "description": "The Volto user interface (UI) is a React-based frontend for the Plone CMS. It is the default user interface starting with the release of Plone 6."
+    "property=og:description": "The Volto user interface (UI) is a React-based frontend for the Plone CMS. It is the default user interface starting with the release of Plone 6."
+    "property=og:title": "Volto UI"
+    "keywords": "Volto, Plone, frontend, user interface, React"
 ---
 
 (volto-index-label)=
 
-# Frontend
+# Volto UI
 
-Volto is a React-based frontend for the [Plone CMS](https://plone.org).
-It is the default frontend starting with the Plone 6 release.
+The Volto user interface (UI) is a React-based frontend for the [Plone content management system](https://plone.org).
+It is the default user interface starting with the release of Plone 6.
 
 Volto provides an attractive proposition: integration with the modern frontend development world, access to the huge ecosystem of React libraries and add-ons, combined with the ability to use the mature Plone CMS backend as a development platform.
 
@@ -38,7 +38,7 @@ An integrator is someone who uses Volto to build a project.
 
 ### Users
 
-A user of Volto is someone who edits content in a Plone content management system with Volto as the frontend.
+A user of Volto is someone who edits content in a Plone content management system with Volto as the user interface.
 
 -   {doc}`user-manual/index` provides information about how to manage content in a Plone site.
 
@@ -71,6 +71,7 @@ tutorials/index
 contributing/index
 release-notes/index
 release-management-notes/index
+conceptual-guides/index
 ```
 
 % Only check change log entries in Volto documentation—not when it is included in the main Plone documentation—to ensure links work and do not redirect.

@@ -1,20 +1,26 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language: \n"
-"Language-Team: \n"
-"Content-Type: \n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
+"PO-Revision-Date: 2024-10-31 15:00-0300\n"
+"Last-Translator: Alin Voinea <avoinea@plone.org>\n"
+"Language: ro\n"
+"Language-Team: Romanian (https://www.transifex.com/plone/teams/14552/ro/)\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Language-Code: ro\n"
+"Language-Name: Romanian\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: volto\n"
+"X-Generator: Poedit 3.5\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
 msgid "<p>Add some HTML here</p>"
-msgstr "Adăugați HTML aici"
+msgstr "<p>Adăugați HTML aici</p>"
 
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
@@ -34,12 +40,12 @@ msgstr "Acțiune"
 #. Default: "Action changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Action changed"
-msgstr ""
+msgstr "Acțiune actualizată"
 
 #. Default: "Action:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Action: "
-msgstr ""
+msgstr "Acțiune: "
 
 #. Default: "Actions"
 #: components/manage/Actions/Actions
@@ -59,16 +65,15 @@ msgstr "Activare și dezactivare"
 #. Default: "Active"
 #: components/manage/Rules/Rules
 msgid "Active"
-msgstr ""
+msgstr "Activă"
 
 #. Default: "Active content rules in this Page"
 #: components/manage/Rules/Rules
 msgid "Active content rules in this Page"
-msgstr ""
+msgstr "Activare regulă conținut în această pagină"
 
 #. Default: "Add"
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Rules/Rules
@@ -88,6 +93,11 @@ msgstr "Adăugare (listă de obiecte)"
 msgid "Add Addons"
 msgstr "Adăugare add-on-uri"
 
+#. Default: "Add Alternative URL"
+#: components/manage/Controlpanels/Aliases
+msgid "Add Alternative URL"
+msgstr "Adaugă URL alternativ"
+
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
 msgid "Add Content"
@@ -96,12 +106,12 @@ msgstr "Adăugare conținut"
 #. Default: "Add Content Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Content Rule"
-msgstr ""
+msgstr "Adaugă regulă conținut"
 
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
-msgstr ""
+msgstr "Adaugă regulă"
 
 #. Default: "Add Translation…"
 #: components/manage/Toolbar/Types
@@ -121,12 +131,12 @@ msgstr "Adăugați o descriere …"
 #. Default: "Add a new alternative url"
 #: components/manage/Aliases/Aliases
 msgid "Add a new alternative url"
-msgstr ""
+msgstr "Adaugă un nou URL alternativ"
 
 #. Default: "Action added"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Add action"
-msgstr ""
+msgstr "Adaugă acțiune"
 
 #. Default: "Add block"
 #: components/manage/BlockChooser/BlockChooserButton
@@ -136,7 +146,7 @@ msgstr "Adăugare bloc …"
 #. Default: "Add block in position {index}"
 #: components/manage/Blocks/Container/NewBlockAddButton
 msgid "Add block in position {index}"
-msgstr ""
+msgstr "Adaugă block la poziția {index}"
 
 #. Default: "Add block…"
 #: helpers/MessageLabels/MessageLabels
@@ -146,12 +156,12 @@ msgstr "Adăugare bloc …"
 #. Default: "Condition added"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Add condition"
-msgstr ""
+msgstr "Adaugă condiție"
 
 #. Default: "Add content rule"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Add content rule"
-msgstr ""
+msgstr "Adaugă regulă conținut"
 
 #. Default: "Add criteria"
 #: components/manage/Widgets/QueryWidget
@@ -166,7 +176,7 @@ msgstr "Adăugare dată"
 #. Default: "Add element to container"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 msgid "Add element to container"
-msgstr ""
+msgstr "Adaugă element în container"
 
 #. Default: "Add field"
 #: components/manage/Widgets/SchemaWidget
@@ -206,7 +216,7 @@ msgstr "Adăugare la grupuri"
 #. Default: "Add users to group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add users to group"
-msgstr ""
+msgstr "Adaugă utilizator în grup"
 
 #. Default: "Add term"
 #: components/manage/Widgets/VocabularyTermsWidget
@@ -221,17 +231,17 @@ msgstr "Adăugare {type}"
 #. Default: "Add-Ons"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Add-Ons"
-msgstr ""
+msgstr "Extensii Add-on"
 
 #. Default: "Add-on Configuration"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Add-on Configuration"
-msgstr ""
+msgstr "Configurare add-on-uri"
 
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons"
-msgstr ""
+msgstr "Extensii add-on"
 
 #. Default: "Add-ons Settings"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -241,7 +251,7 @@ msgstr "Setări add-on-uri"
 #. Default: "Added"
 #: components/manage/Rules/Rules
 msgid "Added"
-msgstr ""
+msgstr "Adăugat"
 
 #. Default: "Additional date"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
@@ -251,58 +261,68 @@ msgstr "Dată suplimentară"
 #. Default: "Addon could not be installed"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon could not be installed"
-msgstr ""
+msgstr "Extensia add-on nu a putut fi instalată"
 
 #. Default: "Addon could not be uninstalled"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon could not be uninstalled"
-msgstr ""
+msgstr "Extensia add-on nu a putut fi dezinstalată"
 
 #. Default: "Addon could not be upgraded"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon could not be upgraded"
-msgstr ""
+msgstr "Extensia add-on nu a putut fi actualizată"
 
 #. Default: "Addon installed succesfuly"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon installed succesfuly"
-msgstr ""
+msgstr "Extensia add-on a fost instalată cu succes"
 
 #. Default: "Addon uninstalled succesfuly"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
-msgstr ""
+msgstr "Extensia add-on a fost dezinstalată cu succes"
 
 #. Default: "Addon upgraded succesfuly"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
-msgstr ""
+msgstr "Extensia add-on a fost actualizată cu succes"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
 msgid "Advanced facet?"
-msgstr ""
+msgstr "Fațetare avansată?"
 
 #. Default: "Advanced facets are initially hidden and displayed on demand"
 #: components/manage/Blocks/Search/schema
 msgid "Advanced facets are initially hidden and displayed on demand"
-msgstr ""
+msgstr "Fațetarea avansată este inițial ascunsă și afișată la cerere"
 
 #. Default: "Album view"
 #: config/Views
 msgid "Album view"
-msgstr ""
+msgstr "Vizualizare album"
 
 #. Default: "Alias"
 #: components/manage/Controlpanels/Aliases
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 #. Default: "Alias has been added"
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 msgid "Alias has been added"
-msgstr ""
+msgstr "Aliasul a fost adăugat"
+
+#. Default: "Aliases have been removed."
+#: components/manage/Controlpanels/Aliases
+msgid "Aliases have been removed."
+msgstr "Aliasul a fost șters."
+
+#. Default: "Aliases have been uploaded."
+#: components/manage/Controlpanels/Aliases
+msgid "Aliases have been uploaded."
+msgstr "Aliasul a fost încărcat."
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
@@ -321,12 +341,12 @@ msgstr "Toate"
 #. Default: "All content"
 #: config/Views
 msgid "All content"
-msgstr ""
+msgstr "Tot conținutul"
 
-#. Default: "All existing alternative urls for this site"
+#. Default: "Existing alternative URLs for this site"
 #: components/manage/Controlpanels/Aliases
 msgid "All existing alternative urls for this site"
-msgstr ""
+msgstr "Toate URL-urile alternative existente pentru acest site"
 
 #. Default: "Alphabetically"
 #: components/theme/Search/Search
@@ -350,36 +370,36 @@ msgstr "Sugestie text alternativ"
 msgid "Alt text hint link text"
 msgstr "Link sugestie text alternativ"
 
-#. Default: "Alternative url path (Required)"
+#. Default: "Alternative URL path (Required)"
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path (Required)"
-msgstr ""
+msgstr "URL alternativ (necesar)"
 
 #. Default: "Alternative url path must start with a slash."
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path must start with a slash."
-msgstr ""
+msgstr "URL-ul alternativ trebuie să înceapă cu un slash."
 
-#. Default: "Alternative url path → target url path (date and time of creation, manually created yes/no)"
+#. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
-msgstr ""
+msgstr "Cale URL alternativ → URL-ul către care se face redirect (data și timpul de creare, creat manual da/nu)"
 
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
-msgstr ""
+msgstr "Aplică pentru subdirectorare"
 
 #. Default: "Applies to subfolders?"
 #: components/manage/Rules/Rules
 msgid "Applies to subfolders?"
-msgstr ""
+msgstr "Se aplică și pentru subdirectoare?"
 
 #. Default: "Apply to subfolders"
 #: components/manage/Rules/Rules
 msgid "Apply to subfolders"
-msgstr ""
+msgstr "Aplică pentru subdirectorare"
 
 #. Default: "Apply working copy"
 #: components/manage/Toolbar/More
@@ -405,12 +425,17 @@ msgstr "Crescător"
 #. Default: "Assign the {role} role to {entry}"
 #: components/manage/Sharing/Sharing
 msgid "Assign the {role} role to {entry}"
-msgstr ""
+msgstr "Atribuie rolul {role} la {entry}"
 
 #. Default: "Assignments"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Assignments"
-msgstr ""
+msgstr "Atribuiri"
+
+#. Default: "Automatically"
+#: components/manage/Controlpanels/Aliases
+msgid "Automatically"
+msgstr "Automat"
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -420,7 +445,7 @@ msgstr "Disponibil"
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
 msgid "Available content rules:"
-msgstr ""
+msgstr "Reguli de conținut disponibile:"
 
 #. Default: "Back"
 #: components/manage/Aliases/Aliases
@@ -471,6 +496,11 @@ msgstr "Interogare căutare de bază"
 msgid "Block"
 msgstr "Bloc"
 
+#. Default: "Both"
+#: components/manage/Controlpanels/Aliases
+msgid "Both"
+msgstr "Ambele"
+
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -484,7 +514,7 @@ msgstr "Breadcrumbs"
 #. Default: "Broken relations"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "Broken relations"
-msgstr ""
+msgstr "Relații stricate"
 
 #. Default: "Browse"
 #: components/manage/Contents/ContentsUploadModal
@@ -497,10 +527,20 @@ msgstr "Răsfoiește"
 msgid "Browse the site, drop an image, or type a URL"
 msgstr "Navigați site-ul, adaugați o imagine sau introduceți o adresă URL"
 
+#. Default: "Bulk upload CSV"
+#: components/manage/Controlpanels/Aliases
+msgid "BulkUploadAltUrls"
+msgstr "Încărcare a mai multor URL-uri alternative dintr-un fișier CSV"
+
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "În mod implicit, permisiunile din containerul acestui articol sunt moștenite. Dacă dezactivați acest lucru, numai permisiunile de partajare definite în mod explicit vor fi valide. În imagine, simbolul {inherited} indică o valoare moștenită. În mod similar, simbolul {global} indică un rol global, care este gestionat de administratorul site-ului. "
+
+#. Default: "CSV file"
+#: components/manage/Controlpanels/Aliases
+msgid "CSVFile"
+msgstr "Fișier CSV"
 
 #. Default: "Cache Name"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -589,7 +629,7 @@ msgstr "Modificări salvate."
 #. Default: "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
 #: components/manage/Blocks/Teaser/schema
 msgid "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
-msgstr ""
+msgstr "Selectați pentru a personaliza titlul, descrierea sau imaginea acestui teaser. Nu selectați daca doriți actualizarea dinamică a conținutul teaser-ului atunci când sursa este editată."
 
 #. Default: "Checkbox"
 #: components/manage/Widgets/SchemaWidget
@@ -631,7 +671,7 @@ msgstr "Curațați filtrele"
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
 msgid "Clear search"
-msgstr ""
+msgstr "Ștergeți căutarea"
 
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
@@ -666,7 +706,7 @@ msgstr "Colecție"
 #. Default: "Color"
 #: components/manage/Widgets/ColorPickerWidget
 msgid "Color"
-msgstr ""
+msgstr "Culoare"
 
 #. Default: "Comment"
 #: components/manage/Controlpanels/ModerateComments
@@ -693,32 +733,32 @@ msgstr "Compară"
 #. Default: "Condition changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Condition changed"
-msgstr ""
+msgstr "Condiție schimbată"
 
 #. Default: "Condition:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Condition: "
-msgstr ""
+msgstr "Condiție: "
 
 #. Default: "Configuration Versions"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Configuration Versions"
-msgstr ""
+msgstr "Versiuni de configurare"
 
 #. Default: "Configure Content Rule"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Configure Content Rule"
-msgstr ""
+msgstr "Configurare regulă conținut"
 
 #. Default: "Configure Content Rule: {title}"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Configure Content Rule: {title}"
-msgstr ""
+msgstr "Configurare regulă conținut: {title}"
 
 #. Default: "Configure content rule"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Configure content rule"
-msgstr ""
+msgstr "Configurare regulă conținut"
 
 #. Default: "Confirm password"
 #: components/manage/Preferences/ChangePassword
@@ -744,38 +784,38 @@ msgstr "Elemente conținute"
 #. Default: "Container settings"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 msgid "Container settings"
-msgstr ""
+msgstr "Setări container"
 
 #. Default: "Content"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Content"
-msgstr ""
+msgstr "Conținut"
 
 #. Default: "Content Rule"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Content Rule"
-msgstr ""
+msgstr "Regulă conținut"
 
 #. Default: "Content Rules"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Content Rules"
-msgstr ""
+msgstr "Reguli conținut"
 
 #. Default: "Content rules for {title}"
 #: components/manage/Rules/Rules
 msgid "Content rules for {title}"
-msgstr ""
+msgstr "Reguli conținut pentru {title}"
 
 #. Default: "Content rules from parent folders"
 #: components/manage/Rules/Rules
 msgid "Content rules from parent folders"
-msgstr ""
+msgstr "Reguli conținut din directoare părinți"
 
 #. Default: "Content that links to or references {title}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
-msgstr ""
+msgstr "Conținut care se referă la {title}"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -823,12 +863,22 @@ msgstr "Declarație de copyright sau alte informații privind drepturile asupra 
 #. Default: "Create or delete relations to target"
 #: helpers/MessageLabels/MessageLabels
 msgid "Create or delete relations to target"
-msgstr ""
+msgstr "Crează sau șterge relațiile către obiectiv"
 
 #. Default: "Create working copy"
 #: components/manage/Toolbar/More
 msgid "Create working copy"
 msgstr "Creați o copie de lucru"
+
+#. Default: "Created after"
+#: components/manage/Controlpanels/Aliases
+msgid "Created after"
+msgstr "Creat după"
+
+#. Default: "Created before"
+#: components/manage/Controlpanels/Aliases
+msgid "Created before"
+msgstr "Creat înainte"
 
 #. Default: "Created by {creator} on {date}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -859,7 +909,7 @@ msgstr "Criterii"
 #. Default: "Current active configuration"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Current active configuration"
-msgstr ""
+msgstr "Configurație activă curentă"
 
 #. Default: "Current filters applied"
 #: components/manage/Blocks/Search/components/FilterList
@@ -874,7 +924,7 @@ msgstr "Parolă curentă"
 #. Default: "Customize teaser content"
 #: components/manage/Blocks/Teaser/schema
 msgid "Customize teaser content"
-msgstr ""
+msgstr "Personalizează conținutul teaser-ului"
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
@@ -896,7 +946,7 @@ msgstr "Zilnic"
 #. Default: "Database"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Database"
-msgstr ""
+msgstr "Bază de date"
 
 #. Default: "Database Information"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -952,7 +1002,7 @@ msgstr "Implicit"
 #. Default: "Default view"
 #: config/Views
 msgid "Default view"
-msgstr ""
+msgstr "Vizualizare implicită"
 
 #. Default: "Delete"
 #: components/manage/Contents/Contents
@@ -986,7 +1036,7 @@ msgstr "Ștergeți utilizatorul"
 #. Default: "Action deleted"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Delete action"
-msgstr ""
+msgstr "Ștergeți acțiunea"
 
 #. Default: "Delete blocks"
 #: helpers/MessageLabels/MessageLabels
@@ -1001,7 +1051,7 @@ msgstr "Șterge coloană"
 #. Default: "Condition deleted"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Delete condition"
-msgstr ""
+msgstr "Ștergeți condiția"
 
 #. Default: "Delete row"
 #: config/Blocks
@@ -1011,22 +1061,22 @@ msgstr "Șterge rând"
 #. Default: "Delete selected items?"
 #: components/manage/Contents/Contents
 msgid "Delete selected items?"
-msgstr ""
+msgstr "Ștergeți elementele selectate?"
 
 #. Default: "Delete this item?"
 #: components/manage/Contents/Contents
 msgid "Delete this item?"
-msgstr ""
+msgstr "Ștergeți acest element?"
 
 #. Default: "Deleted"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Deleted"
-msgstr ""
+msgstr "Șters"
 
 #. Default: "Deleting this item breaks {brokenReferences} {variation}."
 #: components/manage/Contents/Contents
 msgid "Deleting this item breaks {brokenReferences} {variation}."
-msgstr ""
+msgstr "Ștergerea acestui element întrerupe {brokenReferences} {variation}."
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
@@ -1062,22 +1112,22 @@ msgstr "Diferența dintre versiunea {one} și {two} din {title}"
 #. Default: "Disable"
 #: components/manage/Rules/Rules
 msgid "Disable"
-msgstr ""
+msgstr "Dezactivați"
 
 #. Default: "Disable apply to subfolders"
 #: components/manage/Rules/Rules
 msgid "Disable apply to subfolders"
-msgstr ""
+msgstr "Dezactivați aplicarea la subdirectoare"
 
 #. Default: "Disabled"
 #: components/manage/Rules/Rules
 msgid "Disabled"
-msgstr ""
+msgstr "Dezactivată"
 
 #. Default: "Disabled apply to subfolders"
 #: components/manage/Rules/Rules
 msgid "Disabled apply to subfolders"
-msgstr ""
+msgstr "Dezactivată aplicarea la subdirectoare"
 
 #. Default: "Distributed under the {license}."
 #: components/theme/Footer/Footer
@@ -1118,12 +1168,12 @@ msgstr "Document"
 #. Default: "Document view"
 #: config/Views
 msgid "Document view"
-msgstr ""
+msgstr "Vizualizare document"
 
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
-msgstr ""
+msgstr "Descărcați evenimentul"
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -1151,7 +1201,7 @@ msgstr "Trageți fișierele aici..."
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
-msgstr ""
+msgstr "Testare selectată, tranzacție anulată."
 
 #. Default: "E-mail"
 #: components/theme/Register/Register
@@ -1176,10 +1226,15 @@ msgstr "Adresele de e-mail nu se potrivesc."
 msgid "Edit"
 msgstr "Editează"
 
+#. Default: "Edit Alternative URL"
+#: components/manage/Controlpanels/Aliases
+msgid "Edit Alternative URL"
+msgstr "Editați URL alternativ"
+
 #. Default: "Edit Rule"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Edit Rule"
-msgstr ""
+msgstr "Editați regula"
 
 #. Default: "Edit comment"
 #: components/theme/Comments/CommentEditModal
@@ -1234,7 +1289,7 @@ msgstr "Goliți lista de obiecte"
 #. Default: "Enable"
 #: components/manage/Rules/Rules
 msgid "Enable"
-msgstr ""
+msgstr "Activează"
 
 #. Default: "Enable editable Blocks"
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -1244,17 +1299,17 @@ msgstr "Activați câmpurile editabile"
 #. Default: "Enabled"
 #: components/manage/Rules/Rules
 msgid "Enabled"
-msgstr ""
+msgstr "Activată"
 
 #. Default: "Enabled here?"
 #: components/manage/Rules/Rules
 msgid "Enabled here?"
-msgstr ""
+msgstr "Activată aici?"
 
 #. Default: "Enabled?"
 #: components/manage/Rules/Rules
 msgid "Enabled?"
-msgstr ""
+msgstr "Activată?"
 
 #. Default: "End Date"
 #: components/manage/Blocks/Search/components/DateRangeFacet
@@ -1287,16 +1342,20 @@ msgstr "Introduceți numele complet, de exemplu, Valentin Popescu."
 msgid "Enter map Embed Code"
 msgstr "Introduceți codul de integrare a hărții"
 
-#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
 #: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
-msgstr ""
+msgstr "Introduceți calea absolută a destinației. Destinația trebuie să existe sau să fie o cale alternativă existentă."
+
+#. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+#: components/manage/Controlpanels/Aliases
+msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+msgstr "Introduceți calea absolută unde ar trebui să existe URL-ul alternativ. Calea trebuie să înceapă cu '/'. Doar URL-urile de tip 404 fi redirecționate."
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
-msgstr ""
+msgstr "Introduceți calea absolută unde ar trebui să existe URL-ul alternativ. Calea trebuie să înceapă cu '/'. Doar URL-urile de tip 404 fi redirecționate."
 
 #. Default: "Enter your current password."
 #: components/manage/Preferences/ChangePassword
@@ -1306,7 +1365,7 @@ msgstr "Introduceți parola curentă."
 #. Default: "Enter your email for verification."
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your email for verification."
-msgstr ""
+msgstr "Introduceți adresa de e-mail pentru verificare."
 
 #. Default: "Enter your new password. Minimum 8 characters."
 #: components/manage/Preferences/ChangePassword
@@ -1317,12 +1376,12 @@ msgstr "Introduceți noua parolă. Minim 8 caractere."
 #. Default: "Enter your username for verification."
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your username for verification."
-msgstr ""
+msgstr "Introduceți numele dvs. de utilizator pentru verificare."
 
 #. Default: "Entries"
 #: components/manage/Blocks/ToC/Schema
 msgid "Entries"
-msgstr ""
+msgstr "Intrări"
 
 #. Default: "Error"
 #: components/manage/Add/Add
@@ -1340,35 +1399,35 @@ msgstr ""
 msgid "Error"
 msgstr "Eroare"
 
-#. Default: "Error"
-#: components/manage/Controlpanels/Aliases
-msgid "ErrorHeader"
-msgstr ""
-
 #. Default: "Event"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Event"
-msgstr ""
+msgstr "Eveniment"
 
 #. Default: "Event end date must be on or after {startDateValueOrStartFieldName}"
 #: helpers/MessageLabels/MessageLabels
 msgid "Event end date must be on or after {startDateValueOrStartFieldName}"
-msgstr ""
+msgstr "Data de încheiere a evenimentului trebuie să fie după sau la aceeași dată ca {startDateValueOrStartFieldName}"
 
 #. Default: "Event listing"
 #: config/Views
 msgid "Event listing"
-msgstr ""
+msgstr "Listare eveniment"
 
 #. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
 #: helpers/MessageLabels/MessageLabels
 msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
-msgstr ""
+msgstr "Data de începere a evenimentului trebuie să fie înainte sau la aceeași dată ca {endDateValueOrEndFieldName}"
 
 #. Default: "Event view"
 #: config/Views
 msgid "Event view"
-msgstr ""
+msgstr "Vizualizare eveniment"
+
+#. Default: "Example"
+#: components/manage/Controlpanels/Aliases
+msgid "Example"
+msgstr "Exemplu"
 
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1388,7 +1447,7 @@ msgstr "Exclus din navigare"
 #. Default: "Existing alternative urls for this item"
 #: components/manage/Aliases/Aliases
 msgid "Existing alternative urls for this item"
-msgstr ""
+msgstr "URL-uri alternative existente pentru acest element"
 
 #. Default: "Expand sidebar"
 #: components/manage/Sidebar/Sidebar
@@ -1448,7 +1507,7 @@ msgstr "Fațete deasupra"
 #. Default: "Failed to undo transactions"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Failed To Undo Transactions"
-msgstr ""
+msgstr "Anularea tranzacțiilor nu a putut fi efectuată"
 
 #. Default: "Field"
 #: components/manage/Blocks/Search/schema
@@ -1468,7 +1527,7 @@ msgstr "Mărimea fișierului"
 #. Default: "File view"
 #: config/Views
 msgid "File view"
-msgstr ""
+msgstr "Vizualizare fișier"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
@@ -1481,24 +1540,25 @@ msgid "Files uploaded: {uploadedFiles}"
 msgstr "Fișiere încărcate: {uploadedFiles}"
 
 #. Default: "Filter"
+#: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
-msgstr ""
+msgstr "Filtrare"
 
 #. Default: "Filter Rules:"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Filter Rules:"
-msgstr ""
+msgstr "Reguli de filtrare:"
 
-#. Default: "Filter by prefix"
+#. Default: "Filter by path"
 #: components/manage/Controlpanels/Aliases
 msgid "Filter by prefix"
-msgstr ""
+msgstr "Filtrare după prefix"
 
 #. Default: "Filter users by groups"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter users by groups"
-msgstr ""
+msgstr "Filtrare utilizatori după grupuri"
 
 #. Default: "Filter…"
 #: components/manage/Contents/Contents
@@ -1513,7 +1573,7 @@ msgstr "Primul"
 #. Default: "Fix relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "Fix relations"
-msgstr ""
+msgstr "Corectează relațiile"
 
 #. Default: "Fixed width columns"
 #: config/Blocks
@@ -1533,7 +1593,7 @@ msgstr "Director"
 #. Default: "Folder listing"
 #: config/Views
 msgid "Folder listing"
-msgstr ""
+msgstr "Listare director"
 
 #. Default: "Forbidden"
 #: components/theme/Forbidden/Forbidden
@@ -1575,7 +1635,7 @@ msgstr "Licența GNU GPL"
 #. Default: "General"
 #: components/manage/Controlpanels/Controlpanels
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #. Default: "Global role"
 #: components/manage/Sharing/Sharing
@@ -1590,7 +1650,7 @@ msgstr "Bloc te tip Google Maps"
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
 msgid "Grid"
-msgstr ""
+msgstr "Grilă"
 
 #. Default: "Group"
 #: components/manage/Sharing/Sharing
@@ -1605,7 +1665,7 @@ msgstr "Grup creat"
 #. Default: "Group deleted"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group deleted"
-msgstr ""
+msgstr "Grup șters"
 
 #. Default: "Group roles updated"
 #: helpers/MessageLabels/MessageLabels
@@ -1645,7 +1705,7 @@ msgstr "Titlu"
 #. Default: "Headline level"
 #: components/manage/Blocks/Listing/schema
 msgid "Headline level"
-msgstr ""
+msgstr "Nivel titlu"
 
 #. Default: "Hidden facets will still filter the results if proper parameters are passed in URLs"
 #: components/manage/Blocks/Search/schema
@@ -1665,12 +1725,12 @@ msgstr "Ascundeți fațeta?"
 #. Default: "Hide filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Hide filters"
-msgstr ""
+msgstr "Ascundeți filtrele"
 
 #. Default: "Hide title"
 #: components/manage/Blocks/ToC/Schema
 msgid "Hide title"
-msgstr ""
+msgstr "Ascunde titlul"
 
 #. Default: "History"
 #: components/manage/History/History
@@ -1706,12 +1766,12 @@ msgstr "ID"
 #. Default: "Icon View"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Icon View"
-msgstr ""
+msgstr "Vizualizare iconă"
 
 #. Default: "If all of the following conditions are met:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "If all of the following conditions are met:"
-msgstr ""
+msgstr "Dacă sunt îndeplinite toate următoarele condiții:"
 
 #. Default: "If selected, this item will not appear in the navigation tree"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1749,17 +1809,17 @@ msgstr "Galerie de imagini"
 #. Default: "Image override"
 #: components/manage/Blocks/Teaser/schema
 msgid "Image override"
-msgstr ""
+msgstr "Suprascrie imaginea"
 
 #. Default: "Image size"
 #: components/manage/Blocks/Image/schema
 msgid "Image size"
-msgstr ""
+msgstr "Dimensiunea imaginii"
 
 #. Default: "Image view"
 #: config/Views
 msgid "Image view"
-msgstr ""
+msgstr "Vizualizare imagine"
 
 #. Default: "Include this occurrence"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
@@ -1777,7 +1837,7 @@ msgstr "Info"
 #. Default: "You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left."
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 msgid "InfoUserGroupSettings"
-msgstr ""
+msgstr "Ați selectat opțiunea 'mulți utilizatori' sau 'multe grupuri'. Prin urmare, trebuie să introduceți un nume de utilizator sau grup pentru a afișa rezultate. Dacă doriți să vedeți toți utilizatorii și toate grupurile, mergeți la setările utilizatorului și grupului. Vedeți butonul din stânga."
 
 #. Default: "Inherit permissions from higher levels"
 #: components/manage/Sharing/Sharing
@@ -1812,7 +1872,7 @@ msgstr "Introduceți rândul înainte"
 #. Default: "Inspect relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "Inspect relations"
-msgstr ""
+msgstr "Inspectează relațiile"
 
 #. Default: "Install"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1832,7 +1892,7 @@ msgstr "Versiunea instalată"
 #. Default: "Installing a third party add-on"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installing a third party add-on"
-msgstr ""
+msgstr "Instalarea unui modul add-on"
 
 #. Default: "days"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1842,7 +1902,7 @@ msgstr "Interval Zilnic"
 #. Default: "Month(s)"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Monthly"
-msgstr ""
+msgstr "Interval Lunar"
 
 #. Default: "week(s)"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1858,17 +1918,17 @@ msgstr "Interval Anual"
 #: components/manage/Blocks/Block/DefaultView
 #: components/theme/View/RenderBlocks
 msgid "Invalid Block"
-msgstr ""
+msgstr "Bloc invalid - va fi eliminat la salvare"
 
 #. Default: "Invalid teaser source"
 #: components/manage/Blocks/Teaser/Data
 msgid "Invalid teaser source"
-msgstr ""
+msgstr "Sursă teaser invalidă"
 
 #. Default: "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 #: helpers/MessageLabels/MessageLabels
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
-msgstr ""
+msgstr "Nu este permis să definiți atât parola, cât și să cereți trimiterea mesajului de resetare a parolei prin e-mail. Trebuie să selectați una dintre ele."
 
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
@@ -1935,12 +1995,12 @@ msgstr "Câmp independent de limbă."
 #. Default: "This is a language independent field. Any value you enter here will overwrite the corresponding field of all members of the translation group when you save this form."
 #: components/manage/Widgets/FormFieldWrapper
 msgid "Language independent icon title"
-msgstr ""
+msgstr "Acest câmp este independent de limbă. Orice valoare introdusă aici va suprascrie câmpul corespunzător membrilor grupului de traduceri atunci când veți salva acest formular."
 
 #. Default: "Large"
 #: components/manage/Widgets/ImageSizeWidget
 msgid "Large"
-msgstr ""
+msgstr "Mare"
 
 #. Default: "Last"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -1960,7 +2020,7 @@ msgstr "Ultima modificare"
 #. Default: "Latest available configuration"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Latest available configuration"
-msgstr ""
+msgstr "Ceea mai recenta configurație disponibilă"
 
 #. Default: "Latest version"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1987,7 +2047,7 @@ msgstr "Stânga"
 #. Default: "Less filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Less filters"
-msgstr ""
+msgstr "Mai puține filtre"
 
 #. Default: "Link"
 #: components/manage/Toolbar/Toolbar
@@ -1997,7 +2057,7 @@ msgstr "Legătură"
 #. Default: "Anchor link copied to the clipboard"
 #: helpers/MessageLabels/MessageLabels
 msgid "Link copied to clipboard"
-msgstr ""
+msgstr "Linkul a fost copiat în clipboard"
 
 #. Default: "Link more"
 #: components/manage/Blocks/Listing/schema
@@ -2007,12 +2067,12 @@ msgstr "Legătură către mai multe"
 #. Default: "Link redirect view"
 #: config/Views
 msgid "Link redirect view"
-msgstr ""
+msgstr "Redirecționare legătură"
 
 #. Default: "Link settings"
 #: components/manage/Blocks/Image/schema
 msgid "Link settings"
-msgstr ""
+msgstr "Configurații legătură"
 
 #. Default: "Link Title"
 #: components/manage/Blocks/Listing/schema
@@ -2034,18 +2094,18 @@ msgstr "Legătură traducere pentru"
 #. Default: "Linking this item with hyperlink in text"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Linking this item with hyperlink in text"
-msgstr ""
+msgstr "Legătură acestui obiect cu hiperlegătură în text"
 
 #. Default: "Links and references"
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Toolbar/More
 msgid "Links and references"
-msgstr ""
+msgstr "Legături și referințe"
 
 #. Default: "List View"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "List View"
-msgstr ""
+msgstr "Listare"
 
 #. Default: "Listing"
 #: components/manage/Blocks/Listing/schema
@@ -2055,7 +2115,7 @@ msgstr "Listare"
 #. Default: "Listing view"
 #: config/Views
 msgid "Listing view"
-msgstr ""
+msgstr "Listare"
 
 #. Default: "Load more..."
 #: components/theme/Comments/Comments
@@ -2083,7 +2143,7 @@ msgstr "Autentificare"
 #. Default: "Logged out"
 #: components/theme/Logout/Logout
 msgid "Logged out"
-msgstr ""
+msgstr "Deconectat"
 
 #. Default: "Login"
 #: components/theme/Login/Login
@@ -2103,7 +2163,7 @@ msgstr "Nume de autentificare"
 #. Default: "Logo of"
 #: components/theme/Logo/Logo
 msgid "Logo of"
-msgstr ""
+msgstr "Logo"
 
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools
@@ -2129,7 +2189,7 @@ msgstr "Gestionați traducerile"
 #. Default: "Manage content…"
 #: components/manage/Toolbar/More
 msgid "Manage content…"
-msgstr ""
+msgstr "Administrare conținut…"
 
 #. Default: "Manage translations for {title}"
 #: components/manage/Multilingual/ManageTranslations
@@ -2139,23 +2199,28 @@ msgstr "Gestionați traducerile pentru {title}"
 #. Default: "Manual"
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
-msgstr ""
+msgstr "Manual"
+
+#. Default: "Manually"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually"
+msgstr "Manual"
 
 #. Default: "Manually or automatically added?"
 #: components/manage/Controlpanels/Aliases
 msgid "Manually or automatically added?"
-msgstr ""
+msgstr "Manual sau automat adăugat?"
 
 #. Default: "Many relations found. Please search."
 #: helpers/MessageLabels/MessageLabels
 msgid "Many relations found. Please search."
-msgstr ""
+msgstr "Multe relații găsite. Cautați."
 
 #. Default: "Maps"
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
 msgid "Maps"
-msgstr ""
+msgstr "Hărți"
 
 #. Default: "Maps URL"
 #: components/manage/Blocks/Maps/schema
@@ -2175,12 +2240,12 @@ msgstr "Valoarea maximă este {len}."
 #. Default: "Medium"
 #: components/manage/Widgets/ImageSizeWidget
 msgid "Medium"
-msgstr ""
+msgstr "Mediu"
 
 #. Default: "Membership updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
-msgstr ""
+msgstr "Membru actualizat"
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
@@ -2231,22 +2296,22 @@ msgstr "Mai mult"
 #. Default: "More filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "More filters"
-msgstr ""
+msgstr "Filtre suplimentare"
 
 #. Default: "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
-msgstr ""
+msgstr "Mai multe informații despre procedura de actualizare pot fi găsite în secțiunea de documentație de pe plone.org în Ghidul de actualizare."
 
 #. Default: "Mosaic layout"
 #: config/Views
 msgid "Mosaic layout"
-msgstr ""
+msgstr "Aranjare Mosaic"
 
 #. Default: "Move down"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Move down"
-msgstr ""
+msgstr "Mutați în jos"
 
 #. Default: "Move to bottom of folder"
 #: components/manage/Contents/ContentsItem
@@ -2261,7 +2326,7 @@ msgstr "Mutați în partea de sus a folderului"
 #. Default: "Move up"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Move up"
-msgstr ""
+msgstr "Mutați în sus"
 
 #. Default: "Multiple choices?"
 #: components/manage/Blocks/Search/schema
@@ -2271,7 +2336,7 @@ msgstr "Alegeri multiple?"
 #. Default: "My email is"
 #: components/theme/PasswordReset/PasswordReset
 msgid "My email is"
-msgstr ""
+msgstr "Adresa mea de email este"
 
 #. Default: "My user name is"
 #: components/theme/PasswordReset/PasswordReset
@@ -2287,7 +2352,7 @@ msgstr "Nume"
 #. Default: "Narrow"
 #: components/manage/Widgets/AlignWidget
 msgid "Narrow"
-msgstr ""
+msgstr "Îngust"
 
 #. Default: "Navigate back"
 #: error
@@ -2313,7 +2378,7 @@ msgstr "Articol de știri"
 #. Default: "News item view"
 #: config/Views
 msgid "News item view"
-msgstr ""
+msgstr "Vizualizare articol de știri"
 
 #. Default: "No"
 #: components/manage/Contents/ContentsItem
@@ -2324,22 +2389,22 @@ msgstr "Nu"
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
-msgstr ""
+msgstr "Nu s-au găsit tranzacții"
 
 #. Default: "No transactions selected"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Selected"
-msgstr ""
+msgstr "Nu s-au selectat tranzacții"
 
 #. Default: "No transactions selected to do undo"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Selected To Do Undo"
-msgstr ""
+msgstr "Nu s-au selectat tranzacții pentru a le anula"
 
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
-msgstr ""
+msgstr "Nu s-a selectat niciun video"
 
 #. Default: "No addons found"
 #: components/manage/Controlpanels/VersionOverview
@@ -2349,17 +2414,17 @@ msgstr "Nu s-au găsit addons"
 #. Default: "No broken relations found."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "No broken relations found."
-msgstr ""
+msgstr "Nu s-au găsit relații rupte."
 
 #. Default: "There is no connection to the server, due to a timeout o no network connection."
 #: components/theme/RequestTimeout/RequestTimeout
 msgid "No connection to the server"
-msgstr ""
+msgstr "Nu există conexiunea la server, din cauza unui timeout sau a unei conexiuni întrerupte."
 
 #. Default: "No image selected"
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
-msgstr ""
+msgstr "Nu s-a selectat nicio imagine"
 
 #. Default: "No image set in Lead Image content field"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2374,7 +2439,7 @@ msgstr "Nicio imagine setată în câmpul imagine de continut"
 #. Default: "No images found."
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
-msgstr ""
+msgstr "Nu s-au găsit imagini."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -2389,7 +2454,7 @@ msgstr "Niciun element selectat"
 #. Default: "No links to this item found."
 #: components/manage/LinksToItem/LinksToItem
 msgid "No links to this item found."
-msgstr ""
+msgstr "Nu s-au găsit legături către acest element."
 
 #. Default: "No map selected"
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -2412,7 +2477,7 @@ msgstr "Nicio opțiune"
 #. Default: "No relation found"
 #: helpers/MessageLabels/MessageLabels
 msgid "No relation found"
-msgstr ""
+msgstr "Nu s-a găsit nicio relație"
 
 #. Default: "No results found"
 #: components/manage/BlockChooser/BlockChooser
@@ -2441,7 +2506,7 @@ msgstr "Niciun profil de dezinstalare"
 #. Default: "No user found"
 #: helpers/MessageLabels/MessageLabels
 msgid "No user found"
-msgstr ""
+msgstr "Nu s-a găsit niciun utilizator"
 
 #. Default: "No value"
 #: components/manage/Widgets/ArrayWidget
@@ -2465,7 +2530,7 @@ msgstr "Niciuna"
 #. Default: "Note"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Note"
-msgstr ""
+msgstr "Notă"
 
 #. Default: "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
 #: components/manage/Controlpanels/Users/UsersControlpanel
@@ -2495,7 +2560,7 @@ msgstr "Ok"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
-msgstr ""
+msgstr "Doar caractere de 7 biți sunt permise. Nu poate conține caractere majuscule, caractere speciale: <, >, &, #, /, ?, sau alte caractere care sunt interzise în URL-uri. Nu poate începe cu: _, aq_, @@, ++. Nu poate să se termine cu __. Nu poate fi: request, contributors, ., .., "". Nu poate conține linii noi."
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2518,12 +2583,12 @@ msgstr "Deschideți browserul de obiecte"
 #. Default: "Order"
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
-msgstr ""
+msgstr "Ordonați"
 
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
-msgstr ""
+msgstr "Ordonate"
 
 #. Default: "Origin"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2533,7 +2598,7 @@ msgstr "Origine"
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Overview of relations of all content items"
-msgstr ""
+msgstr "Prezentarea relațiilor tuturor elementelor de conținut"
 
 #. Default: "Page"
 #: components/manage/Toolbar/Toolbar
@@ -2576,7 +2641,7 @@ msgstr "Lipire câmpuri"
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Perform the following actions:"
-msgstr ""
+msgstr "Executați următoarele acțiuni:"
 
 #. Default: "Permissions have been updated successfully"
 #: components/manage/Sharing/Sharing
@@ -2613,17 +2678,17 @@ msgstr "Persoane responsabile de crearea conținutului acestui articol. Vă rug�
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
-msgstr ""
+msgstr "Vă rugăm să alegeți un conținut existent ca sursă pentru acest element"
 
 #. Default: "Please continue with the upgrade."
 #: components/manage/Controlpanels/Controlpanels
 msgid "Please continue with the upgrade."
-msgstr ""
+msgstr "Vă rugăm să continuați cu actualizarea."
 
 #. Default: "Please ensure you have a backup of your site before performing the upgrade."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Please ensure you have a backup of your site before performing the upgrade."
-msgstr ""
+msgstr "Vă rugăm să vă asigurați că aveți o copie de rezervă a site-ului înainte de a efectua actualizarea."
 
 #. Default: "Please enter a valid URL by deleting the block and adding a new video block."
 #: components/manage/Blocks/Video/Body
@@ -2643,17 +2708,17 @@ msgstr "Vă rugăm să completați formularul de mai jos pentru a seta parola."
 #. Default: "Please search for users or use the filters on the side."
 #: helpers/MessageLabels/MessageLabels
 msgid "Please search for users or use the filters on the side."
-msgstr ""
+msgstr "Vă rugăm folosiți căutarea pentru utilizatori sau utilizați filtrele din stânga."
 
 #. Default: "Please upgrade to plone.restapi >= 8.24.0."
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 msgid "Please upgrade to plone.restapi >= 8.24.0."
-msgstr ""
+msgstr "Vă rugăm să actualizați la plone.restapi >= 8.24.0."
 
 #. Default: "Please upgrade to plone.restapi >= 8.39.0."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "Please upgrade to plone.restapi >= 8.39.0."
-msgstr ""
+msgstr "Vă rugăm să actualizați la plone.restapi >= 8.39.0."
 
 #. Default: "Plone Foundation"
 #: components/theme/Footer/Footer
@@ -2668,7 +2733,7 @@ msgstr "Plone{reg} CMS/WCM Open Source"
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Position changed"
-msgstr ""
+msgstr "Poziție schimbată"
 
 #. Default: "Possible values (Enter allowed choices one per line)."
 #: components/manage/Widgets/SchemaWidget
@@ -2742,7 +2807,7 @@ msgstr "Citește mai mult …"
 #. Default: "Read only for this type of relation."
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "Read only for this type of relation."
-msgstr ""
+msgstr "Doar citire pentru acest tip de relație."
 
 #. Default: "Rearrange items by…"
 #: components/manage/Contents/Contents
@@ -2777,17 +2842,17 @@ msgstr "Reduce complexitatea"
 #. Default: "Referencing this item as related item"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item as related item"
-msgstr ""
+msgstr "Referința acestui element ca element asociat"
 
 #. Default: "Referencing this item with {relationship}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item with {relationship}"
-msgstr ""
+msgstr "Referința acestui element cu {relationship}"
 
 #. Default: "Refresh source content"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
-msgstr ""
+msgstr "Reîncarcă conținutul sursă"
 
 #. Default: "Register"
 #: components/theme/Anontools/Anontools
@@ -2805,24 +2870,24 @@ msgstr "Formular de înregistrare"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 #: helpers/MessageLabels/MessageLabels
 msgid "Relation name"
-msgstr ""
+msgstr "Nume relație"
 
 #. Default: "Relations"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Relations/Relations
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations"
-msgstr ""
+msgstr "Relații"
 
 #. Default: "Relations are editable with plone.api >= 2.0.3."
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "Relations are editable with plone.api >= 2.0.3."
-msgstr ""
+msgstr "Relațiile sunt editabile cu plone.api >= 2.0.3."
 
 #. Default: "Relations updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
-msgstr ""
+msgstr "Relațiile actualizate"
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -2832,12 +2897,12 @@ msgstr "Relevanţă"
 #. Default: "Remove"
 #: components/manage/Aliases/Aliases
 msgid "Remove"
-msgstr ""
+msgstr "Șterge"
 
 #. Default: "Remove element {index}"
 #: components/manage/Blocks/Container/EditBlockWrapper
 msgid "Remove element {index}"
-msgstr ""
+msgstr "Șterge elementul {index}"
 
 #. Default: "Remove item"
 #: components/manage/Widgets/ObjectListWidget
@@ -2852,7 +2917,7 @@ msgstr "Eliminați recurența"
 #. Default: "Remove selected"
 #: components/manage/Controlpanels/Aliases
 msgid "Remove selected"
-msgstr ""
+msgstr "Ștergeți elementele selectate"
 
 #. Default: "Remove term"
 #: components/manage/Widgets/VocabularyTermsWidget
@@ -2862,7 +2927,7 @@ msgstr "Eliminați termenul"
 #. Default: "Remove users from group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Remove users from group"
-msgstr ""
+msgstr "Ștergeți utilizatorii din grup"
 
 #. Default: "Remove working copy"
 #: components/manage/Toolbar/More
@@ -2926,7 +2991,7 @@ msgstr "Câmpul este obligatoriu."
 #. Default: "Reset element {index}"
 #: components/manage/Blocks/Container/EditBlockWrapper
 msgid "Reset element {index}"
-msgstr ""
+msgstr "Resetați elementul {index}"
 
 #. Default: "Reset title"
 #: components/manage/Widgets/VocabularyTermsWidget
@@ -2936,7 +3001,7 @@ msgstr "Resetați titlul termenului"
 #. Default: "Reset the block"
 #: components/manage/Blocks/Teaser/Data
 msgid "Reset the block"
-msgstr ""
+msgstr "Resetați blocul"
 
 #. Default: "Results limit"
 #: components/manage/Widgets/QuerystringWidget
@@ -3000,23 +3065,23 @@ msgstr "Root"
 #. Default: "Rule added"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Rule added"
-msgstr ""
+msgstr "Regulă adăugată"
 
 #. Default: "Rule enable changed"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Rule enable changed"
-msgstr ""
+msgstr "Regula a fost activată"
 
 #. Default: "Rules"
 #: components/manage/Rules/Rules
 #: components/manage/Toolbar/More
 msgid "Rules"
-msgstr ""
+msgstr "Reguli"
 
 #. Default: "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
-msgstr ""
+msgstr "Regulile se execută atunci când se declanșează un eveniment. Acțiunile vor fi invocate numai dacă toate condițiile sunt îndeplinite. Puteți adăuga noi acțiuni și condiții folosind butoanele de mai jos."
 
 #. Default: "Save"
 #: components/manage/Add/Add
@@ -3041,12 +3106,12 @@ msgstr "Salvați recurența"
 #. Default: "Saved"
 #: helpers/MessageLabels/MessageLabels
 msgid "Saved"
-msgstr ""
+msgstr "Salvat"
 
 #. Default: "Scheduled"
 #: components/manage/Contents/ContentsItem
 msgid "Scheduled"
-msgstr ""
+msgstr "Programat"
 
 #. Default: "Schema"
 #: components/manage/Controlpanels/ContentTypesActions
@@ -3126,12 +3191,12 @@ msgstr "Rezultatele căutării pentru {term}"
 #. Default: "Search sources by title or path"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search sources by title or path"
-msgstr ""
+msgstr "Căutare surse după titlu sau cale"
 
 #. Default: "Search targets by title or path"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search targets by title or path"
-msgstr ""
+msgstr "Căutare destinații după titlu sau cale"
 
 #. Default: "Search users…"
 #: helpers/MessageLabels/MessageLabels
@@ -3141,7 +3206,7 @@ msgstr "Căutare utilizatori..."
 #. Default: "Searched for: <em>{searchedtext}</em>."
 #: components/manage/Blocks/Search/components/SearchDetails
 msgid "Searched for: <em>{searchedtext}</em>."
-msgstr ""
+msgstr "Căutare pentru: <em>{searchedtext}</em>."
 
 #. Default: "Second"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -3174,7 +3239,7 @@ msgstr "Selectați coloane de afișat"
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
-msgstr ""
+msgstr "Selectați relația"
 
 #. Default: "Select the transition to be used for modifying the items state."
 #: components/manage/Contents/ContentsWorkflowModal
@@ -3184,7 +3249,7 @@ msgstr "Selectați tranziția care va fi utilizată pentru modificarea stării e
 #. Default: "Selected"
 #: helpers/MessageLabels/MessageLabels
 msgid "Selected"
-msgstr ""
+msgstr "Selectat"
 
 #. Default: "Selected dates"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
@@ -3224,12 +3289,12 @@ msgstr "Trimite"
 #. Default: "Send a confirmation mail with a link to set the password."
 #: helpers/MessageLabels/MessageLabels
 msgid "Send a confirmation mail with a link to set the password."
-msgstr ""
+msgstr "Trimiteți un e-mail de confirmare cu un link pentru a seta parola."
 
 #. Default: "Server Error"
 #: components/theme/Error/ServerError
 msgid "Server Error"
-msgstr ""
+msgstr "Eroare server"
 
 #. Default: "Set my password"
 #: components/theme/PasswordReset/PasswordReset
@@ -3287,12 +3352,12 @@ msgstr "Afișați răspunsurile"
 #. Default: "Show filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Show filters"
-msgstr ""
+msgstr "Afișează filtrele"
 
 #. Default: "Show groups of users below"
 #: helpers/MessageLabels/MessageLabels
 msgid "Show groups of users below"
-msgstr ""
+msgstr "Afișează grupurile de utilizatori de mai jos"
 
 #. Default: "Show item"
 #: components/manage/Widgets/ObjectListWidget
@@ -3302,12 +3367,12 @@ msgstr "Afișează elementul"
 #. Default: "Show potential sources. Not only objects that are source of some relation."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Show potential sources. Not only objects that are source of some relation."
-msgstr ""
+msgstr "Afișează sursele potențiale. Nu doar obiectele care sunt sursa unor anumite relații."
 
 #. Default: "Show potential targets. Not only objects that are target of some relation."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Show potential targets. Not only objects that are target of some relation."
-msgstr ""
+msgstr "Afișează destinațiile potențiale. Nu doar obiectele care sunt destinația unor anumite relații."
 
 #. Default: "Show search button?"
 #: components/manage/Blocks/Search/schema
@@ -3327,7 +3392,7 @@ msgstr "Afișează sortarea?"
 #. Default: "Show total results"
 #: components/manage/Blocks/Search/schema
 msgid "Show total results"
-msgstr ""
+msgstr "Afișează totalul rezultatelor"
 
 #. Default: "Shrink sidebar"
 #: components/manage/Sidebar/Sidebar
@@ -3370,22 +3435,22 @@ msgstr "Dimansiune: {size}"
 #. Default: "Small"
 #: components/manage/Widgets/ImageSizeWidget
 msgid "Small"
-msgstr ""
+msgstr "Mic"
 
 #. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
 #: components/manage/Contents/Contents
 msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-msgstr ""
+msgstr "Unele elemente sunt de asemenea un dosar. Prin eliminarea lor veți elimina {containedItemsToDelete} {variation} înauntru acelor dosare."
 
 #. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
 #: components/manage/Contents/Contents
 msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-msgstr ""
+msgstr "Unele elemente sunt referite de alte elemente. Prin eliminarea lor {brokenReferences} {variation} vor fi rupte."
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "Some relations are broken. Please fix."
-msgstr ""
+msgstr "Unele relații sunt rupte. Vă rugăm să le reparați."
 
 #. Default: "Sorry, something went wrong with your request"
 #: error
@@ -3395,7 +3460,7 @@ msgstr "Ne pare rău, a apârut o eroare"
 #. Default: "Sort by"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort By"
-msgstr ""
+msgstr "Sortați după"
 
 #. Default: "Sort by:"
 #: components/theme/Search/Search
@@ -3417,17 +3482,17 @@ msgstr "Sortare pe opțiuni"
 #. Default: "Sort transactions by User-Name, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort transactions by User-Name, Path or Date"
-msgstr ""
+msgstr "Sortați tranzacțiile după numele de utilizator, cale sau dată"
 
 #. Default: "Sorted"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sorted"
-msgstr ""
+msgstr "Sortat"
 
 #. Default: "Sorted on"
 #: components/manage/Blocks/Search/components/SortOn
 msgid "Sorted on"
-msgstr ""
+msgstr "Sortat după"
 
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
@@ -3472,12 +3537,12 @@ msgstr "Stare"
 #. Default: "Status"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Status"
-msgstr ""
+msgstr "Stare"
 
 #. Default: "Sticky"
 #: components/manage/Blocks/ToC/Schema
 msgid "Sticky"
-msgstr ""
+msgstr "Sticky"
 
 #. Default: "Stop compare"
 #: components/manage/Multilingual/CompareLanguages
@@ -3497,7 +3562,7 @@ msgstr "Colorati randurile alternativ"
 #. Default: "Styling"
 #: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Styling"
-msgstr ""
+msgstr "Stilizare"
 
 #. Default: "Subject"
 #: components/theme/ContactForm/ContactForm
@@ -3507,7 +3572,7 @@ msgstr "Subiect"
 #. Default: "Submit"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Submit"
-msgstr ""
+msgstr "Trimite"
 
 #. Default: "Success"
 #: components/manage/Actions/Actions
@@ -3534,7 +3599,7 @@ msgstr "Succes"
 #. Default: "Successfully undone transactions"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Successfully Undone Transactions"
-msgstr ""
+msgstr "Tranzacțiile au fost anulate cu succes"
 
 #. Default: "Summary"
 #: config/Blocks
@@ -3544,7 +3609,7 @@ msgstr "Rezumat"
 #. Default: "Summary view"
 #: config/Views
 msgid "Summary view"
-msgstr ""
+msgstr "Rezumat"
 
 #. Default: "Switch to"
 #: components/theme/LanguageSelector/LanguageSelector
@@ -3557,15 +3622,14 @@ msgid "Table"
 msgstr "Tabel"
 
 #. Default: "Table of Contents"
-#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
-#: components/manage/Blocks/ToC/variations/HorizontalMenu
+#: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
 msgstr "Cuprins"
 
 #. Default: "Tabular view"
 #: config/Views
 msgid "Tabular view"
-msgstr ""
+msgstr "Tabel"
 
 #. Default: "Tags"
 #: components/manage/Contents/Contents
@@ -3585,16 +3649,15 @@ msgstr "Etichete de eliminat"
 
 #. Default: "Target"
 #: components/manage/Blocks/Teaser/schema
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Target"
-msgstr ""
+msgstr "Destinație"
 
 #. Default: "Target Path (Required)"
 #: components/manage/Controlpanels/Aliases
 msgid "Target Path (Required)"
-msgstr ""
+msgstr "Calea destinației (necesar)"
 
 #. Default: "Target memory size per cache in bytes"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -3609,7 +3672,7 @@ msgstr "Numărul țintă de obiecte din memorie raportat la cache"
 #. Default: "Teaser"
 #: components/manage/Blocks/Teaser/schema
 msgid "Teaser"
-msgstr ""
+msgstr "Teaser"
 
 #. Default: "Text"
 #: components/manage/Widgets/SchemaWidget
@@ -3628,7 +3691,7 @@ msgstr "Mulțumesc."
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 #: components/theme/RequestTimeout/RequestTimeout
 msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
-msgstr ""
+msgstr "Backendul nu răspunde din cauza unui timeout sau a unei probleme de conectare a dispozitivului. Verificați conexiunea și încearcați din nou."
 
 #. Default: "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
 #: components/theme/ConnectionRefused/ConnectionRefused
@@ -3653,12 +3716,12 @@ msgstr "Prezența butonului dezactivează căutarea live, interogarea este emis�
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
 msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
-msgstr ""
+msgstr "Următoarele reguli de conținut sunt active pe această pagină. Utilizați panoul de control al regulilor de conținut pentru a crea noi reguli, pentru a le modifica sau a le șterge."
 
 #. Default: "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
-msgstr ""
+msgstr "Următoarea listă prezintă care dintre pașii de upgrade vor fi executați. Uneori, upgrade-ul efectuează o actualizare a catalogului/securității, care poate dura mult pe site-uri mari. Aveți răbdare."
 
 #. Default: "The item could not be deleted."
 #: components/manage/Contents/Contents
@@ -3673,17 +3736,17 @@ msgstr "Adresa linkului este:"
 #. Default: "The number of items must be greater than or equal to {minItems}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The number of items must be greater than or equal to {minItems}"
-msgstr ""
+msgstr "Numărul de elemente trebuie să fie mai mare sau egal cu {minItems}"
 
 #. Default: "The number of items must be less than or equal to {maxItems}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The number of items must be less than or equal to {maxItems}"
-msgstr ""
+msgstr "Numărul de elemente trebuie să fie mai mic sau egal cu {maxItems}"
 
 #. Default: "The provided alternative url already exists!"
 #: components/manage/Aliases/Aliases
 msgid "The provided alternative url already exists!"
-msgstr ""
+msgstr "URL-ul alternativ furnizat există deja!"
 
 #. Default: "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 #: components/theme/Register/Register
@@ -3694,12 +3757,12 @@ msgstr "Procesul de înregistrare a avut succes. Vă rugăm să verificați căs
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The site configuration is outdated and needs to be upgraded."
-msgstr ""
+msgstr "Configurația site-ului este veche și trebuie actualizată."
 
 #. Default: "The value does not match the pattern {pattern}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The value does not match the pattern {pattern}"
-msgstr ""
+msgstr "Valoarea nu se potrivește cu modelul {pattern}"
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More
@@ -3714,18 +3777,18 @@ msgstr "{plonecms} este {copyright} 2000- {current_year} de {plonefoundation} ș
 #. Default: "There are no groups with the searched criteria"
 #: helpers/MessageLabels/MessageLabels
 msgid "There are no groups with the searched criteria"
-msgstr ""
+msgstr "Nu există grupuri care îndeplinesc criteriile de căutare"
 
 #. Default: "There are no users with the searched criteria"
 #: helpers/MessageLabels/MessageLabels
 msgid "There are no users with the searched criteria"
-msgstr ""
+msgstr "Nu există utilizatori care îndeplinesc criteriile de căutare"
 
 #. Default: "There are some errors."
 #: components/manage/Add/Add
 #: components/manage/Edit/Edit
 msgid "There are some errors."
-msgstr ""
+msgstr "Există unele erori."
 
 #. Default: "There is a configuration problem on the backend"
 #: components/theme/CorsError/CorsError
@@ -3735,7 +3798,7 @@ msgstr "Există o problemă de configurare pe backend"
 #. Default: "There was an error with the upgrade."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "There was an error with the upgrade."
-msgstr ""
+msgstr "A avut loc o eroare cu actualizarea."
 
 #. Default: "There were some errors"
 #: components/manage/Form/InlineForm
@@ -3771,7 +3834,7 @@ msgstr "Aceasta este o copie de lucru a {title}"
 #. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
 #: components/manage/Contents/Contents
 msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-msgstr ""
+msgstr "Acest articol este, de asemenea, un director. Prin eliminarea lui veți șterge {containedItemsToDelete} {variation} în interiorul directorului."
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -3791,7 +3854,7 @@ msgstr "Se pare că această pagină nu există …"
 #. Default: "This rule is assigned to the following locations:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "This rule is assigned to the following locations:"
-msgstr ""
+msgstr "Această regulă este atribuită următoarelor locații:"
 
 #. Default: "Time"
 #: components/manage/Widgets/DatetimeWidget
@@ -3815,7 +3878,7 @@ msgstr "Titlu"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Title field error. Value not provided or already existing."
-msgstr ""
+msgstr "Eroare a câmpului Titlu. Valoarea nu a fost furnizată sau este deja existentă."
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -3850,22 +3913,22 @@ msgstr "Numărul total de obiecte din baza de date"
 #. Default: "Transactions"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions"
-msgstr ""
+msgstr "Tranzacții"
 
 #. Default: "#"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions Checkbox"
-msgstr ""
+msgstr "Căsuță Tranzacții"
 
 #. Default: "Transactions have been sorted"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions Have Been Sorted"
-msgstr ""
+msgstr "Tranzacțiile au fost sortate"
 
 #. Default: "Transactions have been unsorted"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions Have Been Unsorted"
-msgstr ""
+msgstr "Tranzacțiile au fost nesortate"
 
 #. Default: "Translate to {lang}"
 #: components/manage/Add/Add
@@ -3887,7 +3950,7 @@ msgstr "Link-ul către traducere a fost șters"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Triggering event field error. Please select a value"
-msgstr ""
+msgstr "Eroare la declanșarea câmpului evenimentului. Selectați o valoare"
 
 #. Default: "Type"
 #: components/manage/Controlpanels/ContentTypes
@@ -3910,7 +3973,7 @@ msgstr "Tastați text..."
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
 msgid "Type the heading…"
-msgstr ""
+msgstr "Tastați titlul …"
 
 #. Default: "Type the title…"
 #: components/manage/Blocks/Title/Edit
@@ -3928,22 +3991,22 @@ msgstr "UID"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/More
 msgid "URL Management"
-msgstr ""
+msgstr "URL-uri alternative"
 
 #. Default: "URL Management for {title}"
 #: components/manage/Aliases/Aliases
 msgid "URL Management for {title}"
-msgstr ""
+msgstr "URL-uri alternative pentru {title}"
 
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
-msgstr ""
+msgstr "Anulați atribuirea"
 
 #. Default: "Unassigned"
 #: components/manage/Rules/Rules
 msgid "Unassigned"
-msgstr ""
+msgstr "Anulat"
 
 #. Default: "Unauthorized"
 #: components/manage/Toolbar/More
@@ -3961,7 +4024,7 @@ msgstr "Anulați"
 #. Default: "Undo Controlpanel"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Undo Controlpanel"
-msgstr ""
+msgstr "Anulare tranzacții"
 
 #. Default: "Unfold"
 #: components/manage/BlockChooser/BlockChooser
@@ -3998,7 +4061,7 @@ msgstr "Deblocați"
 #. Default: "Unsorted"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Unsorted"
-msgstr ""
+msgstr "Neordonat"
 
 #. Default: "Update"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -4008,7 +4071,7 @@ msgstr "Actualizare"
 #. Default: "Update User"
 #: helpers/MessageLabels/MessageLabels
 msgid "Update User"
-msgstr ""
+msgstr "Actualizați utilizatorul"
 
 #. Default: "Update installed addons"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -4028,22 +4091,22 @@ msgstr "Actualizări disponibile"
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Upgrade"
-msgstr ""
+msgstr "Actualizare"
 
 #. Default: "Upgrade Plone Site"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Upgrade Plone Site"
-msgstr ""
+msgstr "Actualizați site-ul Plone"
 
 #. Default: "Upgrade Report"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Upgrade Report"
-msgstr ""
+msgstr "Raport de actualizare"
 
 #. Default: "Upgrade Steps"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Upgrade Steps"
-msgstr ""
+msgstr "Etape de actualizare"
 
 #. Default: "Upload"
 #: components/manage/Contents/Contents
@@ -4069,12 +4132,12 @@ msgstr "Se încarcă imaginea"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Use the form below to define the new content rule"
-msgstr ""
+msgstr "Utilizați formularul de mai jos pentru a defini o regula de conținut nouă"
 
 #. Default: "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
-msgstr ""
+msgstr "Utilizați formularul de mai jos pentru a defini, modifica sau elimina regulile de conținut. Regulile vor efectua automat acțiuni asupra conținutului atunci când se produc anumite evenimente. După definirea regulilor, poate fi necesar să vă deplasați într-o pagină pentru a le atribui, folosind elementul 'reguli' din meniul de acțiuni."
 
 #. Default: "Used for programmatic access to the fieldset."
 #: components/manage/Widgets/SchemaWidget
@@ -4091,12 +4154,12 @@ msgstr "Utilizator"
 #: components/manage/Controlpanels/Controlpanels
 #: helpers/MessageLabels/MessageLabels
 msgid "User Group Membership"
-msgstr ""
+msgstr "Grupuri utilizator"
 
 #. Default: "User Group Settings"
 #: helpers/MessageLabels/MessageLabels
 msgid "User Group Settings"
-msgstr ""
+msgstr "Configurare grupuri utilizator"
 
 #. Default: "User created"
 #: helpers/MessageLabels/MessageLabels
@@ -4106,7 +4169,7 @@ msgstr "Utilizator creat"
 #. Default: "User deleted"
 #: helpers/MessageLabels/MessageLabels
 msgid "User deleted"
-msgstr ""
+msgstr "Utilizator șters"
 
 #. Default: "User name"
 #: components/manage/Controlpanels/Users/UsersControlpanel
@@ -4121,7 +4184,7 @@ msgstr "Rolurile utilizatorului au fost actualizate"
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels
 msgid "User updated successfuly"
-msgstr ""
+msgstr "Utilizator actualizat cu succes"
 
 #. Default: "Username"
 #: helpers/MessageLabels/MessageLabels
@@ -4143,7 +4206,7 @@ msgstr "Utilizatori și grupuri"
 #. Default: "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
 #: components/manage/Aliases/Aliases
 msgid "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
-msgstr ""
+msgstr "Folosind acest formular, puteți gestiona adrese alternative pentru un element. Este o modalitate ușoară de a face un element disponibil sub două adrese URL diferite."
 
 #. Default: "Variation"
 #: helpers/Extensions/withBlockSchemaEnhancer
@@ -4180,7 +4243,7 @@ msgstr "Vizualizare modificări"
 #. Default: "View links and references to this item"
 #: components/manage/Contents/Contents
 msgid "View links and references to this item"
-msgstr ""
+msgstr "Vizualizați legăturile și referințele către acest element"
 
 #. Default: "View this revision"
 #: components/manage/History/History
@@ -4230,7 +4293,7 @@ msgstr "Ne cerem scuze pentru neplăceri, dar pagina pe care încercați să o a
 #. Default: "We apologize for the inconvenience, but there was an unexpected error on the server."
 #: components/theme/Error/ServerError
 msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
-msgstr ""
+msgstr "Ne cerem scuze pentru neplăceri, dar a apărut o eroare neașteptată pe server."
 
 #. Default: "We apologize for the inconvenience, but you don't have permissions on this resource."
 #: components/theme/Forbidden/Forbidden
@@ -4273,19 +4336,19 @@ msgstr "Când se ajunge la această dată, conținutul nu va fi mai vizibil în 
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Whether or not execution of further rules should stop after this rule is executed"
-msgstr ""
+msgstr "Dacă se oprește sau nu execuția altor reguli după ce se execută această regulă"
 
 #. Default: "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
-msgstr ""
+msgstr "Dacă se declanșează sau nu alte reguli după acțiunile declanșate de această regulă. Activați doar dacă sunteți siguri că nu va crea bucle infinite"
 
 #. Default: "Whether or not the rule is currently enabled"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Whether or not the rule is currently enabled"
-msgstr ""
+msgstr "Dacă se activează sau nu această regulă"
 
 #. Default: "Who"
 #: components/manage/Controlpanels/UndoControlpanel
@@ -4297,7 +4360,7 @@ msgstr "Cine"
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
 msgid "Wide"
-msgstr ""
+msgstr "Toată lățimea ecranului"
 
 #. Default: "Updating workflow states..."
 #: components/manage/Contents/ContentsWorkflowModal
@@ -4358,17 +4421,17 @@ msgstr "Nu puteți lipi acest conținut aici"
 #. Default: "You have been logged out from the site."
 #: components/theme/Logout/Logout
 msgid "You have been logged out from the site."
-msgstr ""
+msgstr "Ați fost deconectat de pe site."
 
 #. Default: "You have not the required permission for this control panel."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "You have not the required permission for this control panel."
-msgstr ""
+msgstr "Nu aveți permisiunea necesară pentru acest panou de control."
 
 #. Default: "Your email is required for reset your password."
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
-msgstr ""
+msgstr "Adresa dvs. de email este necesară pentru a reseta parola."
 
 #. Default: "Your password has been set successfully. You may now {link} with your new password."
 #: components/theme/PasswordReset/PasswordReset
@@ -4383,42 +4446,42 @@ msgstr "Limba dvs. preferată"
 #. Default: "Your site is up to date."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Your site is up to date."
-msgstr ""
+msgstr "Site-ul dvs. este la zi."
 
 #. Default: "Your username is required for reset your password."
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your usernaame is required for reset your password."
-msgstr ""
+msgstr "Numele dvs. de utilizator este necesar pentru a reseta parola."
 
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
-msgstr ""
+msgstr "Introduceți adresa de email. Acest lucru este necesar în cazul în care parola dvs. este pierdută. Respectăm confidențialitatea dvs. și nu vom împărtăși adresa cu niciun alt partener sau nu o vom expune în niciun fel."
 
 #. Default: "Enter full name, e.g. John Smith."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormFullnameDescription"
-msgstr ""
+msgstr "Introduceți numele complet, de exemplu Valentin Popescu."
 
 #. Default: "Enter your new password. Minimum 8 characters."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormPasswordDescription"
-msgstr ""
+msgstr "Introduceți noua dvs. parolă. Minim 8 caractere."
 
 #. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr ""
+msgstr "Introduceți un nume de utilizator, de obicei ceva de genul vpopescu. Fără spații sau caractere speciale. Nume de utilizator și parole sunt sensibile la majuscule, asigurați-vă că tasta Caps Lock nu este activată. Acesta este numele folosit pentru a vă autentifica."
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
-msgstr ""
+msgstr "Vizualizări disponibile"
 
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
-msgstr ""
+msgstr "Eroare în câmpul bloc {errorField}."
 
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login
@@ -4426,20 +4489,25 @@ msgstr ""
 msgid "box_forgot_password_option"
 msgstr "Ați uitat parola?"
 
+#. Default: "Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
+#: components/manage/Controlpanels/Aliases
+msgid "bulkUploadUrlsHelp"
+msgstr "Adăugați mai multe URL-uri alternative în același timp prin încărcarea unui fișier CSV. Prima coloană ar trebui să fie calea de redirecționat de la; a doua, calea de redirecționat la. Ambele căi trebuie să fie relative la site-ul Plone, începând cu o bară oblică (/). O a treia coloană opțională poate să conțină o dată și timp. O a patra coloană opțională poate conține un boolean pentru a marca o redirecționare manuală (implicit adevărat)."
+
 #. Default: "Checkbox"
 #: config/Blocks
 msgid "checkboxFacet"
-msgstr ""
+msgstr "Casetă de selectare"
 
 #. Default: "column"
 #: components/manage/Blocks/Grid/templates
 msgid "column"
-msgstr ""
+msgstr "coloană"
 
 #. Default: "columns"
 #: components/manage/Blocks/Grid/templates
 msgid "columns"
-msgstr ""
+msgstr "coloane"
 
 #. Default: "Common"
 #: config/Blocks
@@ -4454,12 +4522,12 @@ msgstr "Compara cu"
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "countBrokenRelations"
-msgstr ""
+msgstr "{countofrelation} relație defectă {countofrelation, plural, one {relation} other {relations}} de tip {typeofrelation}"
 
 #. Default: "Date Range"
 #: config/Blocks
 msgid "daterangeFacet"
-msgstr ""
+msgstr "Interval de date"
 
 #. Default: "delete"
 #: components/manage/Blocks/Block/EditBlockWrapper
@@ -4536,25 +4604,30 @@ msgstr "Data"
 msgid "event_where"
 msgstr "Locație"
 
+#. Default: "/example"
+#: components/manage/Controlpanels/Aliases
+msgid "examplePath"
+msgstr "/exemplu"
+
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
-msgstr ""
+msgstr "Acest site nu acceptă fișiere mai mari de {limit}"
 
 #. Default: "flush intIds and rebuild relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "flush intIds and rebuild relations"
-msgstr ""
+msgstr "ștergeți intIds și reconstruiește relațiile"
 
 #. Default: "<ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>"
 #: helpers/MessageLabels/MessageLabels
 msgid "flushAndRebuildRelationsHints"
-msgstr ""
+msgstr "<ul><li>Regenerează intIds (simboluri de relaţii în catalog de relaţii)</li><li>Reconstruiește relațiile</li></ul><p>Verificați registrul pentru detalii!</p><p><b>Atenție</b>: Dacă aveți module care depind de intIds, nu trebuie să ștergeți acestea.</p>"
 
 #. Default: "Head title"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
-msgstr ""
+msgstr "Titlu"
 
 #. Default: "Password reset confirmation sent"
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -4579,12 +4652,12 @@ msgstr "Imagine"
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "image_block_clear"
-msgstr ""
+msgstr "Ștergeți imaginea"
 
 #. Default: "Image preview"
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "image_block_preview"
-msgstr ""
+msgstr "Previzualizare imagine"
 
 #. Default: "Input must be integer"
 #: helpers/MessageLabels/MessageLabels
@@ -4599,17 +4672,17 @@ msgstr "intranet"
 #. Default: "item"
 #: components/manage/Contents/Contents
 msgid "item"
-msgstr ""
+msgstr "element"
 
 #. Default: "items"
 #: components/manage/Contents/Contents
 msgid "items"
-msgstr ""
+msgstr "elemente"
 
 #. Default: "My email is"
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_is"
-msgstr ""
+msgstr "Adresa mea de e-mail este"
 
 #. Default: "My user name is"
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -4624,7 +4697,7 @@ msgstr "Imagine (copertă)"
 #. Default: "Enter a URL to an image"
 #: components/manage/Widgets/ImageWidget
 msgid "linkAnImage"
-msgstr ""
+msgstr "Introduceți un URL către o imagine"
 
 #. Default: "Listing"
 #: config/Blocks
@@ -4680,7 +4753,7 @@ msgstr "Cele mai utilizate"
 #. Default: "Found {sources} sources and {targets} targets. Narrow down to {max}!"
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "narrowDownRelations"
-msgstr ""
+msgstr "Găsiți {sources} surse și {targets} destinații. Restrângeți la {max}!"
 
 #. Default: "No"
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
@@ -4718,12 +4791,12 @@ msgstr "altele"
 #. Default: "Pending"
 #: components/manage/Contents/ContentsItem
 msgid "pending"
-msgstr ""
+msgstr "în așteptare"
 
 #. Default: "Pick an existing image"
 #: components/manage/Widgets/ImageWidget
 msgid "pickAnImage"
-msgstr ""
+msgstr "Alegeți o imagine existentă"
 
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
@@ -4743,17 +4816,17 @@ msgstr "querystring-widget-select"
 #. Default: "rebuild relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "rebuild relations"
-msgstr ""
+msgstr "reconstruire relații"
 
 #. Default: "reference"
 #: components/manage/Contents/Contents
 msgid "reference"
-msgstr ""
+msgstr "referință"
 
 #. Default: "references"
 #: components/manage/Contents/Contents
 msgid "references"
-msgstr ""
+msgstr "referințe"
 
 #. Default: "results"
 #: components/theme/Search/Search
@@ -4928,12 +5001,12 @@ msgstr "ani"
 #. Default: "Select"
 #: config/Blocks
 msgid "selectFacet"
-msgstr ""
+msgstr "Alege"
 
 #. Default: "Select view"
 #: components/manage/Blocks/Search/components/ViewSwitcher
 msgid "selectView"
-msgstr ""
+msgstr "Alege vizualizare"
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks
@@ -4958,7 +5031,7 @@ msgstr "sortare"
 #. Default: "sources path"
 #: helpers/MessageLabels/MessageLabels
 msgid "sources path"
-msgstr ""
+msgstr "cale sursă"
 
 #. Default: "Table"
 #: config/Blocks
@@ -4968,12 +5041,12 @@ msgstr "Tabel"
 #. Default: "target path"
 #: helpers/MessageLabels/MessageLabels
 msgid "target path"
-msgstr ""
+msgstr "cale destinație"
 
 #. Default: "Text"
 #: config/Blocks
 msgid "text"
-msgstr ""
+msgstr "Text"
 
 #. Default: "Title"
 #: config/Blocks
@@ -4989,17 +5062,17 @@ msgstr "Cuprins"
 #. Default: "Toggle"
 #: config/Blocks
 msgid "toggleFacet"
-msgstr ""
+msgstr "Alternează"
 
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "upgradeVersions"
-msgstr ""
+msgstr "Actualizare de la versiunea {origin} la versiunea {destination}"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget
 msgid "uploadAnImage"
-msgstr ""
+msgstr "Încărcați o imagine de pe computerul dvs."
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -5019,7 +5092,7 @@ msgstr "Video"
 #. Default: "Views"
 #: components/manage/Blocks/Search/schema
 msgid "views"
-msgstr ""
+msgstr "Vizualizări"
 
 #. Default: "Visit external website"
 #: components/theme/EventDetails/EventDetails
@@ -5029,12 +5102,12 @@ msgstr "Vizitează site extern"
 #. Default: "You are not authorized to perform this operation."
 #: components/manage/Toolbar/More
 msgid "workingCopyErrorUnauthorized"
-msgstr ""
+msgstr "Nu aveți drepturi pentru a efectua această operațiune."
 
 #. Default: "An error occurred while performing this operation."
 #: components/manage/Toolbar/More
 msgid "workingCopyGenericError"
-msgstr ""
+msgstr "A apărut o eroare la efectuarea acestei operațiuni."
 
 #. Default: "Yes"
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
@@ -5046,7 +5119,7 @@ msgstr "da"
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
-msgstr ""
+msgstr "Încărcați {count, plural, un {un fișier} alte {fișiere}}"
 
 #. Default: "{count} selected"
 #: components/manage/Contents/Contents

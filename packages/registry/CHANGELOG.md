@@ -8,6 +8,68 @@
 
 <!-- towncrier release notes start -->
 
+## 2.1.2 (2024-11-05)
+
+### Bugfix
+
+- Fix weird typings issue happening in docker build but not locally. @sneridagh [#6471](https://github.com/plone/volto/issues/6471)
+
+### Internal
+
+- Improve packaging. @sneridagh 
+
+## 2.1.1 (2024-11-05)
+
+### Internal
+
+- Repackage registry, the previous build was including the docs. @sneridagh 
+
+## 2.1.0 (2024-11-05)
+
+### Feature
+
+- Allow any type `js`, `cjs`, `mjs`, `ts` as configuration for the add-on registry. @sneridagh [#6458](https://github.com/plone/volto/issues/6458)
+
+### Bugfix
+
+- Fix ERR_REQUIRE from ESM module requiring CJS module. @sneridagh [#6458](https://github.com/plone/volto/issues/6458)
+- Fix types for add-on's TypeScript. Fix `.tsconfig` for Node.js side. @sneridagh [#6461](https://github.com/plone/volto/issues/6461)
+
+### Internal
+
+- Replace `parcel` with `tsup` for build. @sneridagh [#6461](https://github.com/plone/volto/issues/6461)
+
+## 2.0.0 (2024-10-31)
+
+### Internal
+
+- Release 2.0.0 @sneridagh 
+
+## 2.0.0-alpha.0 (2024-10-27)
+
+### Breaking
+
+- Moved the package to ESM and refactored the add-on registry scripts to TypeScript. @sneridagh
+  Breaking:
+  - For maximum compatibility with CommonJS builds, the default exports have been moved to named exports.
+  - The modules affected are now built, and the import paths have changed, too.
+  - These changes force the modification in imports in a couple of files.
+  Please see the [Upgrade Guide](https://6.docs.plone.org/volto/upgrade-guide/index.html). [#6399](https://github.com/plone/volto/issues/6399)
+
+### Feature
+
+- Added an experimental Vite plugin. @sneridagh [#6399](https://github.com/plone/volto/issues/6399)
+
+### Bugfix
+
+- Return empty array when `getUtilities` does not match anything. @sneridagh [#6422](https://github.com/plone/volto/issues/6422)
+
+### Internal
+
+- Update typescript @sneridagh [#6371](https://github.com/plone/volto/issues/6371)
+- Update Vite and vitest versions @sneridagh [#6373](https://github.com/plone/volto/issues/6373)
+- Update typescript and vitest everywhere @sneridagh [#6407](https://github.com/plone/volto/issues/6407)
+
 ## 1.8.0 (2024-07-30)
 
 ### Feature
