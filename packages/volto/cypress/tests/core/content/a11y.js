@@ -5,7 +5,7 @@ describe('Accessibility Tests Content Types', () => {
     cy.injectAxe(); // make sure axe is available on the page
   });
 
-  it('Event has no a11y violations', () => {
+  it('Event tested for a11y axe violations', () => {
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-event').click();
     cy.get('.documentFirstHeading').type('Test Event Content Type');
@@ -17,7 +17,7 @@ describe('Accessibility Tests Content Types', () => {
     cy.checkA11y();
   });
 
-  it('File has no a11y violations', () => {
+  it('File tested for a11y axe violations', () => {
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-file').click();
     cy.get('#field-title').type('Test File Content Type');
@@ -36,7 +36,7 @@ describe('Accessibility Tests Content Types', () => {
     cy.checkA11y();
   });
 
-  it('Image has no a11y violations', () => {
+  it('Image tested for a11y axe violations', () => {
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-image').click();
     cy.get('#field-title').type('Test Image Content Type');
@@ -59,7 +59,7 @@ describe('Accessibility Tests Content Types', () => {
     cy.checkA11y();
   });
 
-  it('Link has no a11y violations', () => {
+  it('Link tested for a11y axe violations', () => {
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-link').click();
     cy.get('#field-title').type('Test Link Content Type');
@@ -76,7 +76,7 @@ describe('Accessibility Tests Content Types', () => {
     cy.checkA11y();
   });
 
-  it('News Item has no a11y violations', () => {
+  it('News Item tested for a11y axe violations', () => {
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-news-item').click();
     cy.get('.documentFirstHeading').type('Test News Content Type');
@@ -88,7 +88,7 @@ describe('Accessibility Tests Content Types', () => {
     cy.checkA11y();
   });
 
-  it('Page has no a11y violations', () => {
+  it('Page tested for a11y axe violations', () => {
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
     cy.get('.documentFirstHeading').type('My Page');
