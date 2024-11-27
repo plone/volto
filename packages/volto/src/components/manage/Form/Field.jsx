@@ -175,7 +175,7 @@ const UnconnectedField = (props, { intl }) => {
   // Adding the widget props from tagged values (if any)
   const widgetProps = {
     ...props,
-    ...getWidgetPropsFromTaggedValues(props.widgetOptions),
+    ...getWidgetPropsFromTaggedValues(widgets, props.widgetOptions),
   };
 
   if (props.onOrder) {
