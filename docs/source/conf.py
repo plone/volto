@@ -195,5 +195,3 @@ myst_enable_extensions = [
 redirects = {
     "**": "https://6.docs.plone.org/volto/",
 }
-
-
