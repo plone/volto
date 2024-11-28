@@ -193,7 +193,7 @@ myst_enable_extensions = [
 # -- sphinx-reredirects configuration ----------------------------------
 # https://documatt.com/sphinx-reredirects/usage.html
 redirects = {
-    # "**": "https://6.docs.plone.org/volto/",
+    "**": "https://6.docs.plone.org/volto/",
 }
 
 
