@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
 import keys from 'lodash/keys';
 import map from 'lodash/map';
 import {
@@ -76,6 +77,7 @@ class ModalForm extends Component {
     submitError: PropTypes.string,
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func,
+    onChangeFormData: PropTypes.func,
     open: PropTypes.bool,
     submitLabel: PropTypes.string,
     loading: PropTypes.bool,
@@ -205,6 +207,20 @@ class ModalForm extends Component {
     this.setState({
       currentTab: index,
     });
+  }
+
+  /**
+   * On updates caused by props change
+   * if errors from Backend come, these will be shown to their corresponding Fields
+   * also the first Tab to have any errors will be selected
+   * @param {Object} prevProps
+   */
+  async componentDidUpdate(prevProps, prevState) {
+    if (this.props.onChangeFormData) {
+      if (!isEqual(prevState?.formData, this.state.formData)) {
+        this.props.onChangeFormData(this.state.formData);
+      }
+    }
   }
 
   /**
