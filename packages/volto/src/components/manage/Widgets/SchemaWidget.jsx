@@ -662,9 +662,16 @@ config.registerUtility({
  * @param {Object} intl
  * @param {*} fieldsets
  * @param {Boolean} allowEditId
+ * @param {Object} extraFields
  * @return {Object} - schema
  */
-const schemaField = (factory, intl, fieldsets, allowEditId) => {
+const schemaField = (
+  factory,
+  intl,
+  fieldsets,
+  allowEditId,
+  extraFields = {},
+) => {
   const utility = config.getUtility({
     name: factory,
     type: 'fieldFactoryProperties',
@@ -697,6 +704,7 @@ const schemaField = (factory, intl, fieldsets, allowEditId) => {
         id: 'default',
         title: 'default',
         fields: [
+          ...keys(extraFields),
           ...(allowEditId ? ['id'] : []),
           ...['title', 'description', 'parentFieldSet', 'queryParameterName'],
           ...keys(properties),
@@ -705,6 +713,7 @@ const schemaField = (factory, intl, fieldsets, allowEditId) => {
       },
     ],
     properties: {
+      ...extraFields,
       ...(allowEditId
         ? {
             id: {
@@ -949,7 +958,10 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onAddField(values) {
-    const fieldId = slugify(values.title, keys(this.props.value.properties));
+    const fieldId = slugify(
+      values.id || values.title,
+      keys(this.props.value.properties),
+    );
     const currentFieldsetFields =
       this.props.value.fieldsets[this.state.currentFieldset].fields;
     const hasChangeNote = currentFieldsetFields.indexOf('changeNote') > -1;
@@ -965,6 +977,10 @@ class SchemaWidget extends Component {
       name: values.factory,
       type: 'fieldFactoryInitialData',
     });
+
+    const multiple =
+      values.factory === 'Multiple Choice' ||
+      values.factory === 'label_multi_choice_field';
 
     const initialData = utility.method
       ? utility.method(this.props.intl)
@@ -986,10 +1002,11 @@ class SchemaWidget extends Component {
       properties: {
         ...this.props.value.properties,
         [fieldId]: {
-          title: values.title,
-          description: values.description,
           id: fieldId,
           ...omit(initialData, ['required']),
+          ...omit(values, ['factory', 'required', 'id', 'parentFieldset']),
+          ...formatTextareaToArray(values.values),
+          ...formatTextareaToChoices(values.values, multiple),
         },
       },
       required: [
@@ -1303,7 +1320,7 @@ class SchemaWidget extends Component {
    */
   onShowAddField(event) {
     this.setState({
-      addField: true,
+      addField: '',
     });
     event.preventDefault();
   }
@@ -1694,21 +1711,24 @@ class SchemaWidget extends Component {
           <ModalForm
             onSubmit={this.onAddField}
             onCancel={this.onCancel}
-            title={this.props.intl.formatMessage(messages.addField)}
-            formData={{
-              type: '',
-              id: '',
-              title: '',
+            onChangeFormData={(data) => {
+              this.setState({
+                addField: data.factory,
+              });
             }}
-            schema={{
-              fieldsets: [
-                {
-                  id: 'default',
-                  title: this.props.intl.formatMessage(messages.default),
-                  fields: ['factory', 'title', 'description', 'required'],
-                },
-              ],
-              properties: {
+            title={this.props.intl.formatMessage(messages.addField)}
+            formData={{}}
+            schema={schemaField(
+              this.state.addField,
+              this.props.intl,
+              this.props.value.fieldsets.filter(
+                (fieldset) =>
+                  !fieldset.behavior ||
+                  fieldset.id === 'default' ||
+                  fieldset.behavior.includes('generated'),
+              ),
+              this.props.allowEditId,
+              {
                 factory: {
                   type: 'string',
                   factory: 'Choice',
@@ -1719,22 +1739,8 @@ class SchemaWidget extends Component {
                   filterChoices: filterFactory,
                   additionalChoices: additionalFactory,
                 },
-                title: {
-                  type: 'string',
-                  title: this.props.intl.formatMessage(messages.title),
-                },
-                description: {
-                  type: 'string',
-                  widget: 'textarea',
-                  title: this.props.intl.formatMessage(messages.description),
-                },
-                required: {
-                  type: 'boolean',
-                  title: this.props.intl.formatMessage(messages.required),
-                },
               },
-              required: ['type', 'title'],
-            }}
+            )}
           />
         )}
         {this.state.editField !== null && (
