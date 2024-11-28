@@ -2,10 +2,4 @@
 linkify-it-py
 myst-parser
 plone-sphinx-theme
-sphinx-autobuild
-sphinx-copybutton
-sphinx-examples
-sphinxcontrib-video
-sphinxcontrib-youtube
-sphinxext-opengraph
-vale
+sphinx-reredirects
