@@ -45,7 +45,7 @@ const RenderBlocks = (props: RenderBlocksProps) => {
         const Block = blocksConfig[blockType]?.view || DefaultBlockView;
 
         return Block ? (
-          <BlockWrapper {...props} block={block}>
+          <BlockWrapper {...props} key={block} block={block}>
             {/* @ts-ignore It's ok to pass the blockData as is */}
             <Block
               key={block}

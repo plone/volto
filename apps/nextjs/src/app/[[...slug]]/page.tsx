@@ -61,7 +61,6 @@ export default async function Main({
     `contenttype-${content['@type'].replace(' ', '').toLowerCase()}`,
     `section-${slug[slug.length - 1] || 'home'}`,
   );
-  console.log('lang', content.language);
 
   return (
     <html lang={content.language?.token || 'en'}>
