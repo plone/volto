@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "18.0.3",
+  "version": "18.1.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -171,7 +171,6 @@
     ">1%",
     "last 4 versions",
     "Firefox ESR",
-    "not ie 11",
     "not dead"
   ],
   "engines": {
