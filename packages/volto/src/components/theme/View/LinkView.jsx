@@ -8,10 +8,11 @@ import { Container as SemanticContainer } from 'semantic-ui-react';
 
 const LinkView = ({ token, content }) => {
   if (!token && content.remoteUrl) {
-    if (isInternalURL(content.remoteUrl)) {
+    // React router can handle all redirects except for client-side to an external URL.
+    if (isInternalURL(content.remoteUrl) || __SERVER__) {
       return <Redirect to={flattenToAppURL(content.remoteUrl)} />;
     }
-    window.location.href = flattenToAppURL(content.remoteUrl);
+    window.location.href = content.remoteUrl;
     return null;
   }
   const { title, description, remoteUrl } = content;
