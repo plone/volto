@@ -8,6 +8,43 @@
 
 <!-- towncrier release notes start -->
 
+## 2.1.2 (2024-11-05)
+
+### Bugfix
+
+- Fix weird typings issue happening in docker build but not locally. @sneridagh [#6471](https://github.com/plone/volto/issues/6471)
+
+### Internal
+
+- Improve packaging. @sneridagh 
+
+## 2.1.1 (2024-11-05)
+
+### Internal
+
+- Repackage registry, the previous build was including the docs. @sneridagh 
+
+## 2.1.0 (2024-11-05)
+
+### Feature
+
+- Allow any type `js`, `cjs`, `mjs`, `ts` as configuration for the add-on registry. @sneridagh [#6458](https://github.com/plone/volto/issues/6458)
+
+### Bugfix
+
+- Fix ERR_REQUIRE from ESM module requiring CJS module. @sneridagh [#6458](https://github.com/plone/volto/issues/6458)
+- Fix types for add-on's TypeScript. Fix `.tsconfig` for Node.js side. @sneridagh [#6461](https://github.com/plone/volto/issues/6461)
+
+### Internal
+
+- Replace `parcel` with `tsup` for build. @sneridagh [#6461](https://github.com/plone/volto/issues/6461)
+
+## 2.0.0 (2024-10-31)
+
+### Internal
+
+- Release 2.0.0 @sneridagh 
+
 ## 2.0.0-alpha.0 (2024-10-27)
 
 ### Breaking

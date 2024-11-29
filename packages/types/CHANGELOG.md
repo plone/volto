@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0 (2024-10-31)
+
+### Internal
+
+- Release 1.0.0 @sneridagh 
+
+## 1.0.0-alpha.22 (2024-10-30)
+
+### Feature
+
+- `StyleDefinitions` in types. @sneridagh [#6445](https://github.com/plone/volto/issues/6445)
+
 ## 1.0.0-alpha.21 (2024-10-18)
 
 ### Bugfix

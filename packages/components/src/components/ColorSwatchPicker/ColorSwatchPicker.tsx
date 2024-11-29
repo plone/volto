@@ -2,8 +2,8 @@ import * as React from 'react';
 import {
   ColorSwatchPicker as AriaColorSwatchPicker,
   ColorSwatchPickerItem as AriaColorSwatchPickerItem,
-  ColorSwatchPickerItemProps,
-  ColorSwatchPickerProps,
+  type ColorSwatchPickerItemProps,
+  type ColorSwatchPickerProps,
 } from 'react-aria-components';
 
 import { ColorSwatch } from '../ColorSwatch/ColorSwatch';

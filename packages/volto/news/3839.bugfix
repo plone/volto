@@ -1,1 +1,0 @@
-Fix error "Exception: No query supplied" in the listing block, when there is no criteria selected. @tedw87

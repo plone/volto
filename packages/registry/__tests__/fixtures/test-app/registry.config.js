@@ -1,3 +1,3 @@
-module.exports = {
-  addons: ['@plone/slots', 'my-addon'],
-};
+const addons = ['@plone/slots', 'my-addon'];
+
+export { addons };
