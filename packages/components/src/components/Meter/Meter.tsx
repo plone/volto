@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Label,
   Meter as RACMeter,
-  MeterProps as RACMeterProps,
+  type MeterProps as RACMeterProps,
 } from 'react-aria-components';
 
 export interface MeterProps extends RACMeterProps {

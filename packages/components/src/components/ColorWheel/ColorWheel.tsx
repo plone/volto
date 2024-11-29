@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   ColorThumb,
   ColorWheel as AriaColorWheel,
-  ColorWheelProps as AriaColorWheelProps,
+  type ColorWheelProps as AriaColorWheelProps,
   ColorWheelTrack,
 } from 'react-aria-components';
 

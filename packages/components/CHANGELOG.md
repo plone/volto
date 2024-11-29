@@ -8,6 +8,24 @@
 
 <!-- towncrier release notes start -->
 
+## 2.2.0 (2024-11-21)
+
+### Feature
+
+- Update RAC to 1.5.0 @sneridagh [#6498](https://github.com/plone/volto/issues/6498)
+
+## 2.1.1 (2024-11-05)
+
+### Internal
+
+- Improve packaging and bring back the export for `src` folder. @sneridagh 
+
+## 2.1.0 (2024-11-05)
+
+### Internal
+
+- Replace `parcel` with `tsup`. Better types, better tsconfig. Move to ESM. @sneridagh [#6467](https://github.com/plone/volto/issues/6467)
+
 ## 2.0.0 (2024-10-31)
 
 ### Internal

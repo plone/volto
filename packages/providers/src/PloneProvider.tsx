@@ -1,23 +1,26 @@
-import React, { createContext, ReactNode, useContext, useMemo } from 'react';
+import React, {
+  createContext,
+  type ReactNode,
+  useContext,
+  useMemo,
+} from 'react';
 import { QueryClient } from '@tanstack/react-query';
-import { AppRouterProvider, Location } from './AppRouter';
+import { AppRouterProvider, type Location } from './AppRouter';
 import { PloneClientProvider } from './PloneClient';
 import PloneClient from '@plone/client';
 import { flattenToAppURL as defaultFlattenToAppURL } from './utils';
 
 interface PloneProvider {
-  ploneClient: InstanceType<typeof PloneClient>;
-  queryClient: QueryClient;
+  ploneClient?: InstanceType<typeof PloneClient>;
+  queryClient?: QueryClient;
   useLocation: () => Location | undefined;
   useParams: (opts?: any) => Record<string, string>;
   navigate: (path: string) => void;
-  useHref: (to: string, options?: any) => string;
+  useHref?: (to: string, options?: any) => string;
   flattenToAppURL: (path: string | undefined) => string | undefined;
 }
 
 const PloneProviderContext = createContext<PloneProvider>({
-  ploneClient: null,
-  queryClient: null,
   useLocation: () => ({
     href: '',
     pathname: '',
