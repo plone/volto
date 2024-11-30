@@ -2770,7 +2770,7 @@ msgstr "URL de l'image d'aperçu"
 #. Default: "Profile"
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
-msgstr "Profile"
+msgstr "Profil"
 
 #. Default: "Properties"
 #: components/manage/Contents/Contents
