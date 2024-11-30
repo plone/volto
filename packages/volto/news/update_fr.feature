@@ -1,0 +1,1 @@
+Update French translation [@duchenean]
