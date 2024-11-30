@@ -1351,7 +1351,7 @@ msgstr "Saisissez le chemin absolu de la cible. La cible doit exister ou être u
 #. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
-msgstr ""
+msgstr "Saisissez le chemin absolu où l'URL alternative doit exister. Le chemin doit commencer par '/'. Seules les URL qui aboutissent à une page 404 introuvable entraîneront une redirection."
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
@@ -2095,7 +2095,7 @@ msgstr "Traduction du lien pour"
 #. Default: "Linking this item with hyperlink in text"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Linking this item with hyperlink in text"
-msgstr "Lié cet élément avec un hyperlien dans le texte"
+msgstr "Lié à cet élément avec un hyperlien dans le texte"
 
 #. Default: "Links and references"
 #: components/manage/LinksToItem/LinksToItem
@@ -3033,7 +3033,7 @@ msgstr "Revenir à cette révision"
 #: components/manage/Contents/Contents
 #: components/manage/LinksToItem/LinksToItem
 msgid "Review state"
-msgstr "Etat de révision"
+msgstr "État de révision"
 
 #. Default: "Richtext"
 #: components/manage/Widgets/SchemaWidget
@@ -3533,7 +3533,7 @@ msgstr "Lancer la réinitialisation du mot de passe"
 #: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 msgid "State"
-msgstr "Etat"
+msgstr "État"
 
 #. Default: "Status"
 #: components/manage/Controlpanels/Rules/Rules
@@ -5047,7 +5047,7 @@ msgstr "Chemin de la cible"
 #. Default: "Text"
 #: config/Blocks
 msgid "text"
-msgstr ""
+msgstr "Texte"
 
 #. Default: "Title"
 #: config/Blocks
