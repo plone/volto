@@ -723,11 +723,17 @@ Modern bundlers, such as Vite, rely upon the import path to determine whether to
 
 The barrel imports must be removed to increase the natural number of chunks that Volto divides on—especially on routes—resulting in code splitting done the right and natural way.
 This forces us to rewrite all the imports everywhere—including core, projects, and add-ons—once we implement it.
-The barrel imports files include the following.
+The barrel imports files include the following in Volto.
 
 -   {file}`src/components/index.js`
 -   {file}`src/helpers/index.js`
 -   {file}`src/actions/index.js`
+-   {file}`src/hooks/index.js`
+
+They also include the following in the `@plone/volto-slate` package.
+
+-   {file}`src/actions/index.js`
+-   {file}`src/utils/index.js`
 
 ##### Alternative
 
