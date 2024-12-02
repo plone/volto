@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ConditionalLink, Component } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
+import Component from '@plone/volto/components/theme/Component/Component';
 
-import { isInternalURL } from '@plone/volto/helpers/Url/Url';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
 
 const SummaryTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
   let link = null;

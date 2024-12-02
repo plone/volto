@@ -3,15 +3,21 @@
  * @module helpers/Blocks
  */
 
-import { omit, without, endsWith, find, isObject, keys, merge } from 'lodash';
+import omit from 'lodash/omit';
+import without from 'lodash/without';
+import endsWith from 'lodash/endsWith';
+import find from 'lodash/find';
+import isObject from 'lodash/isObject';
+import keys from 'lodash/keys';
+import merge from 'lodash/merge';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
+import { applySchemaEnhancer } from '@plone/volto/helpers/Extensions';
 import {
-  applySchemaEnhancer,
   insertInArray,
   removeFromArray,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Utils/Utils';
 
 /**
  * Get blocks field.

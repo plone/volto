@@ -2,18 +2,23 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import {
-  messages,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
+} from '@plone/volto/helpers/Blocks/Blocks';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Plug } from '@plone/volto/components/manage/Pluggable';
 import { v4 as uuid } from 'uuid';
 import { load } from 'redux-localstorage-simple';
-import { isEqual, omit, without } from 'lodash';
+import isEqual from 'lodash/isEqual';
+import omit from 'lodash/omit';
+import without from 'lodash/without';
 
-import { setBlocksClipboard, resetBlocksClipboard } from '@plone/volto/actions';
+import {
+  setBlocksClipboard,
+  resetBlocksClipboard,
+} from '@plone/volto/actions/blocksClipboard/blocksClipboard';
 import config from '@plone/volto/registry';
 
 import copySVG from '@plone/volto/icons/copy.svg';

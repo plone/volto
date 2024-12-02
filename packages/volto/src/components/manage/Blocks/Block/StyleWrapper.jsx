@@ -4,7 +4,7 @@ import {
   buildStyleClassNamesFromData,
   buildStyleClassNamesExtenders,
   buildStyleObjectFromData,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
 
 const StyleWrapper = (props) => {
   let classNames,

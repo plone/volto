@@ -9,11 +9,12 @@ import { Button, Image, Dimmer } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
 import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import loadable from '@loadable/component';
 import { defineMessages, useIntl } from 'react-intl';
-import { toPublicURL, validateFileUploadSize } from '@plone/volto/helpers';
+import { toPublicURL } from '@plone/volto/helpers/Url/Url';
+import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 
 const imageMimetypes = [
   'image/png',

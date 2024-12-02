@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
-import { cloneDeep, map } from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
+import map from 'lodash/map';
 import EditBlock from './Edit';
-import { DragDropList } from '@plone/volto/components';
+import DragDropList from '@plone/volto/components/manage/DragDropList/DragDropList';
 import {
   getBlocks,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   applyBlockDefaults,
   getBlocksHierarchy,
-} from '@plone/volto/helpers';
-import {
   addBlock,
   insertBlock,
   changeBlock,
@@ -20,11 +19,13 @@ import {
   mutateBlock,
   nextBlockId,
   previousBlockId,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
+import { useDetectClickOutside } from '@plone/volto/helpers/Utils/useDetectClickOutside';
+import { useEvent } from '@plone/volto/helpers/Utils/useEvent';
 import EditBlockWrapper from './EditBlockWrapper';
-import { setSidebarTab, setUIState } from '@plone/volto/actions';
+import { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
+import { setUIState } from '@plone/volto/actions/form/form';
 import { useDispatch } from 'react-redux';
-import { useDetectClickOutside, useEvent } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import { createPortal } from 'react-dom';
 
