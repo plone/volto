@@ -3,7 +3,7 @@ import { useSlate } from 'slate-react';
 import { Dropdown } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
 import cx from 'classnames';
-import { omit } from 'lodash';
+import omit from 'lodash/omit';
 import { isBlockStyleActive, isInlineStyleActive, toggleStyle } from './utils';
 import config from '@plone/volto/registry';
 import { ToolbarButton } from '@plone/volto-slate/editor/ui';

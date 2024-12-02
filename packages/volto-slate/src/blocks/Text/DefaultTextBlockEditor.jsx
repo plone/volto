@@ -6,22 +6,20 @@ import { defineMessages, useIntl } from 'react-intl';
 import { useInView } from 'react-intersection-observer';
 import { Dimmer, Loader, Message, Segment } from 'semantic-ui-react';
 
-import {
-  flattenToAppURL,
-  getBaseUrl,
-  validateFileUploadSize,
-} from '@plone/volto/helpers';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 import config from '@plone/volto/registry';
-import { SidebarPortal, BlockChooserButton } from '@plone/volto/components';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+import BlockChooserButton from '@plone/volto/components/manage/BlockChooser/BlockChooserButton';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
 
 import { SlateEditor } from '@plone/volto-slate/editor';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import {
   createImageBlock,
-  parseDefaultSelection,
   deconstructToVoltoBlocks,
-} from '@plone/volto-slate/utils';
+} from '@plone/volto-slate/utils/volto-blocks';
+import { parseDefaultSelection } from '@plone/volto-slate/utils/selection';
 import { Transforms } from 'slate';
 
 import PersistentSlashMenu from './SlashMenu';
