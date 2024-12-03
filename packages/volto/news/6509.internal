@@ -1,1 +1,1 @@
-Removed all imports from barrel files for components, actions, helpers, hooks and lodash @pnicolli
+Removed all imports from barrel files for components, actions, helpers, hooks and lodash. @pnicolli
