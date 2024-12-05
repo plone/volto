@@ -1,1 +1,1 @@
-Fix warnings related to snapshot.managedPaths on startup. @davisagli
+Fix warnings related to `snapshot.managedPaths` on startup. @davisagli
