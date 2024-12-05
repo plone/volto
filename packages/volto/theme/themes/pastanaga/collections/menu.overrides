@@ -172,6 +172,10 @@
   }
 }
 
+.users-control-panel .ui.attached.menu:not(.tabular) {
+border: none !important;
+}
+
 /* Pagination */
 .pagination-wrapper {
   text-align: center;

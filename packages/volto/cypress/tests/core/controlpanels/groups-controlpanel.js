@@ -23,6 +23,12 @@ describe('Groups Control Panel Test', () => {
     cy.get('input[id="field-email"]').clear().type('test@gmail.com');
     cy.get('button[title="Save"]').click(-50, -50, { force: true });
 
+    cy.wait('@addGroup');
+    // then the group section must contains a groupname when I searched the
+    // same with the same groupname
+    cy.get('input[id="group-search-input"]').clear().type('uni');
+    cy.get('.icon.zoom').click();
+    cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@groups');
     cy.contains('uniquename');
   });
@@ -51,13 +57,12 @@ describe('Groups Control Panel Test', () => {
     cy.visit('/controlpanel/groups');
 
     // select first group with name, delete it and search if its exists or not!
-    cy.get('div[role="listbox"]').first().click();
-    cy.get('div[role="option"]').should('be.visible');
-    cy.get('div[role="option"]').first().click();
+    cy.get('td:nth-child(1) > .checkbox').first().click();
+    cy.get('button.ui.item').should('not.have.class', 'disabled').click();
     cy.contains('Delete Group');
     cy.get('button.ui.primary.button').should('have.text', 'OK').click();
     cy.get('input[id="group-search-input"]').clear().type('Administrators');
-    cy.get('.icon.button:first').click();
+    cy.get('.icon.zoom').click();
     cy.getIfExists('.groupname').should('not.have.text', 'Administrators');
   });
 
@@ -65,18 +70,19 @@ describe('Groups Control Panel Test', () => {
     cy.intercept('PATCH', `**/++api++/@groups/Administrators`).as('editGroup');
     cy.visit('/controlpanel/groups');
 
-    cy.get('[data-group="groups"] input[type="checkbox"')
-      .first()
-      .check({ force: true });
+    cy.get('td:nth-child(3) > .checkbox').first().click();
     cy.get('Button[id="toolbar-save"]').click();
 
     cy.wait('@editGroup');
     cy.reload();
     cy.waitForResourceToLoad('@groups');
-
-    cy.get('[data-group="groups"] div.checkbox')
+    cy.get('td:nth-child(3) > .checkbox')
       .first()
       .should('have.class', 'checked');
+
+    // cy.get('[data-group="groups"] div.checkbox')
+    //   .first()
+    //   .should('have.class', 'checked');
   });
 });
 

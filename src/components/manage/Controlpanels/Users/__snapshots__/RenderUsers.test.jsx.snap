@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
+<tr
+  className=""
+>
+  <td
+    className=""
+  >
+    <div
+      className="ui fitted checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+    >
+      <input
+        checked={false}
+        className="hidden"
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value="testuser"
+      />
+      <label />
+    </div>
+  </td>
+  <td
+    className="fullname"
+  >
+    Test User
+  </td>
+  <td
+    className=""
+  >
+    <div
+      className="ui checked fitted checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+    >
+      <input
+        checked={true}
+        className="hidden"
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value="testuser.Member"
+      />
+      <label />
+    </div>
+  </td>
+  <td
+    className=""
+  >
+    <div
+      className="ui fitted checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+    >
+      <input
+        checked={false}
+        className="hidden"
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value="testuser.Reader"
+      />
+      <label />
+    </div>
+  </td>
+  <td
+    className=""
+  >
+    <div
+      className="ui fitted checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+    >
+      <input
+        checked={false}
+        className="hidden"
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value="testuser.Manager"
+      />
+      <label />
+    </div>
+  </td>
+</tr>
+`;
