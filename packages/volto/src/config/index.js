@@ -155,6 +155,7 @@ let config = {
     showTags: true,
     controlpanels: [],
     controlPanelsIcons,
+    contextualVocabularies: [],
     filterControlPanels,
     filterControlPanelsSchema,
     unwantedControlPanelsFields,
