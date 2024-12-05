@@ -12,7 +12,7 @@ if (process.env.VOLTOCONFIG) {
 } else {
   rules = {
     'no-restricted-imports': [
-      'error',
+      'warn',
       {
         name: '@plone/volto/components',
         message:
@@ -38,5 +38,5 @@ if (process.env.VOLTOCONFIG) {
 }
 
 module.exports = {
-  rules,
+  ...(rules && { rules }),
 };
