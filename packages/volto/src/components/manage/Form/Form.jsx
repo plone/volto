@@ -6,6 +6,7 @@
 import { Icon, Toast } from '@plone/volto/components';
 import { Field, BlocksForm } from '@plone/volto/components/manage/Form';
 import BlocksToolbar from '@plone/volto/components/manage/Form/BlocksToolbar';
+import { SidebarToggleButton } from '@plone/volto/components/manage/Form/SidebarToggleButton';
 import UndoToolbar from '@plone/volto/components/manage/Form/UndoToolbar';
 import {
   difference,
@@ -758,6 +759,10 @@ class Form extends Component {
                 }
                 onSelectBlock={this.onSelectBlock}
               />
+              {config.experimental.sidebarToggleButton?.position ===
+              'toolbar' ? (
+                <SidebarToggleButton />
+              ) : null}
               <UndoToolbar
                 state={{
                   formData,

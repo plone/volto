@@ -152,6 +152,7 @@ export {
 export { getQuerystring } from '@plone/volto/actions/querystring/querystring';
 export { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
 export {
+  setSidebarExpanded,
   setMetadataFieldsets,
   setMetadataFocus,
   resetMetadataFocus,

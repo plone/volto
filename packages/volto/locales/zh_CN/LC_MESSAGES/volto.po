@@ -3404,6 +3404,11 @@ msgstr "缩小侧边栏"
 msgid "Shrink toolbar"
 msgstr "缩小工具栏"
 
+#. Default: "Sidebar expanded"
+#: components/manage/Form/SidebarToggleButton
+msgid "Sidebar expanded"
+msgstr ""
+
 #. Default: "Sign in to start session"
 #: components/theme/Login/Login
 msgid "Sign in to start session"

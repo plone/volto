@@ -3398,6 +3398,11 @@ msgstr ""
 msgid "Shrink toolbar"
 msgstr ""
 
+#. Default: "Sidebar expanded"
+#: components/manage/Form/SidebarToggleButton
+msgid "Sidebar expanded"
+msgstr ""
+
 #. Default: "Sign in to start session"
 #: components/theme/Login/Login
 msgid "Sign in to start session"
