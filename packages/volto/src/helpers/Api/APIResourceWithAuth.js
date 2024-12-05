@@ -1,6 +1,8 @@
 /**
- * Sitemap helper.
- * @module helpers/Sitemap
+ * getAPIResourceWithAuth helper.
+ * @module helpers/Api/APIResourceWithAuth
+ *
+ * DEPRECATED: use http-proxy-middleware instead
  */
 
 import superagent from 'superagent';
@@ -11,7 +13,7 @@ import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
  * Get a resource image/file with authenticated (if token exist) API headers
  * @function getAPIResourceWithAuth
  * @param {Object} req Request object
- * @return {string} The response with the image
+ * @return {string} The response with the binary data
  */
 export const getAPIResourceWithAuth = (req) =>
   new Promise((resolve, reject) => {

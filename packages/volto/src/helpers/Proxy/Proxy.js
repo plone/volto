@@ -1,11 +1,11 @@
+import config from '@plone/volto/registry';
+
 /**
  * Create a function that add X-Forwarded Headers to superagent requests
  * @function addHeadersFactory
  * @param {Object} req Original request object
  * @return {function} Superagent request function
  */
-
-const HEADERS = ['range', 'if-range'];
 
 export const addHeadersFactory = (orig) => {
   return (request) => {
@@ -20,11 +20,28 @@ export const addHeadersFactory = (orig) => {
       request.set('x-forwarded-for', x_forwarded_for);
     }
     x_forwarded_host && request.set('x-forwarded-host', x_forwarded_host);
-    // forward additional headers
-    HEADERS.forEach((header) => {
-      if (orig.headers[header]) {
-        request.set(header, orig.headers[header]);
-      }
-    });
   };
+};
+
+export const defaultHttpProxyOptions = {
+  // we don't need/want that for proxying binary
+  // pathRewrite: (path, req) => {
+  //   return `${config.settings.legacyTraverse ? '' : '/++api++'}${path}`;
+  // },
+  router: (req) => {
+    if (config.settings.internalApiPath && __SERVER__) {
+      return config.settings.internalApiPath;
+    } else if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
+      return config.settings.devProxyToApiPath;
+    } else {
+      return config.settings.apiPath;
+    }
+  },
+  onProxyReq: (proxyReq, req, res) => {
+    const authToken = req.universalCookies.get('auth_token');
+    if (authToken) {
+      proxyReq.setHeader('Authorization', `Bearer ${authToken}`);
+    }
+  },
+  xfwd: true,
 };

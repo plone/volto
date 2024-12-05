@@ -1,28 +1,13 @@
 import express from 'express';
-import { getAPIResourceWithAuth } from '@plone/volto/helpers';
+import { defaultHttpProxyOptions } from '@plone/volto/helpers';
+import { createProxyMiddleware } from 'http-proxy-middleware';
+// import config from '@plone/volto/registry';
 
-const HEADERS = [
-  'content-type',
-  'content-disposition',
-  'cache-control',
-  'x-sendfile',
-  'x-accel-redirect',
-  'x-robots-tag',
-];
-
-function imageMiddlewareFn(req, res, next) {
-  getAPIResourceWithAuth(req)
-    .then((resource) => {
-      // Just forward the headers that we need
-      HEADERS.forEach((header) => {
-        if (resource.headers[header]) {
-          res.set(header, resource.headers[header]);
-        }
-      });
-      res.send(resource.body);
-    })
-    .catch(next);
-}
+const imageMiddlewareFn = createProxyMiddleware({
+  ...defaultHttpProxyOptions,
+  // ...config.settings.serverConfig?.httpProxyOptions,
+  // ...config.settings.serverConfig?.httpProxyOptionsImages,
+});
 
 export default function imagesMiddleware() {
   const middleware = express.Router();
