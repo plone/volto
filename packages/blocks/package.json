@@ -28,7 +28,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "src/index.ts",
+  "main": "index.ts",
   "scripts": {
     "test": "vitest",
     "dry-release": "release-it --dry-run",
@@ -45,7 +45,12 @@
       "optional": true
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "@plone/components": "workspace:*",
+    "@plone/registry": "workspace:*",
+    "@plone/providers": "workspace:*",
+    "clsx": "^2.1.1"
+  },
   "devDependencies": {
     "@plone/registry": "workspace:*",
     "@plone/types": "workspace:*",

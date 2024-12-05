@@ -65,6 +65,7 @@ module.exports = {
     {
       files: [
         '.eslintrc.cjs',
+        'next-plugin.js',
         'src/addon-registry/**/*.{js,ts}',
         '__tests__/**/*.{js,ts}',
       ],
