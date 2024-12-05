@@ -11,6 +11,7 @@ if (process.env.VOLTOCONFIG) {
   rules = null;
 } else {
   rules = {
+    'react/jsx-filename-extension': ['warn', { extensions: ['.tsx', '.jsx'] }],
     'no-restricted-imports': [
       'warn',
       {
