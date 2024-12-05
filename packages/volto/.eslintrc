@@ -1,5 +1,10 @@
 {
-  "extends": ["react-app", "prettier", "plugin:jsx-a11y/recommended"],
+  "extends": [
+    "react-app",
+    "prettier",
+    "plugin:jsx-a11y/recommended",
+    "./.eslintrc.core.js",
+  ],
   "plugins": ["prettier", "react-hooks", "jsx-a11y"],
   "root": true,
   "env": {
@@ -7,50 +12,31 @@
     "browser": true,
     "node": true,
     "mocha": true,
-    "jasmine": true
+    "jasmine": true,
   },
   "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
-      "legacyDecorators": true
-    }
+      "legacyDecorators": true,
+    },
   },
   "rules": {
     "import/no-unresolved": 1,
     "import/named": "error",
-    "no-restricted-imports": [
-      "error",
-      {
-        "name": "@plone/volto/components",
-        "message": "Importing from barrel files is not allowed. The usage of barrel files is discouraged and they will be removed in Plone 7. Please use direct imports of the modules instead."
-      },
-      {
-        "name": "@plone/volto/helpers",
-        "message": "Importing from barrel files is not allowed. The usage of barrel files is discouraged and they will be removed in Plone 7. Please use direct imports of the modules instead."
-      },
-      {
-        "name": "@plone/volto/actions",
-        "message": "Importing from barrel files is not allowed. The usage of barrel files is discouraged and they will be removed in Plone 7. Please use direct imports of the modules instead."
-      },
-      {
-        "name": "lodash",
-        "message": "Importing directly from `lodash` is not allowed. Please use `import <helper> from 'lodash/<helper>'` instead."
-      }
-    ],
     "react/jsx-key": [2, { "checkFragmentShorthand": true }],
     "no-alert": 1,
     "no-console": 1,
     "no-debugger": 1,
     "prettier/prettier": [
       "error",
-      { "trailingComma": "all", "singleQuote": true }
+      { "trailingComma": "all", "singleQuote": true },
     ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/react-in-jsx-scope": "off",
-    "jsx-a11y/label-has-associated-control": "off"
+    "jsx-a11y/label-has-associated-control": "off",
   },
   "settings": {
     "import/resolver": {
@@ -60,18 +46,18 @@
           ["@plone/volto-slate", "../volto-slate/src"],
           ["@plone/types", "../types"],
           ["@package", "./src"],
-          ["@root", "./src"]
+          ["@root", "./src"],
         ],
-        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"],
       },
       "babel-plugin-root-import": {
-        "rootPathSuffix": "src"
-      }
+        "rootPathSuffix": "src",
+      },
     },
     "import/core-modules": ["load-volto-addons"],
     "react": {
-      "version": "detect"
-    }
+      "version": "detect",
+    },
   },
   "overrides": [
     {
@@ -81,14 +67,14 @@
       // Re-add it if at some point, we stop relying on it
       "extends": ["react-app", "prettier", "plugin:jsx-a11y/recommended"],
       "plugins": ["prettier", "react-hooks", "jsx-a11y"],
-      "parser": "@typescript-eslint/parser"
+      "parser": "@typescript-eslint/parser",
     },
     {
       "files": ["**/*.stories.js", "**/*.stories.jsx"],
       "rules": {
-        "import/no-anonymous-default-export": "off"
-      }
-    }
+        "import/no-anonymous-default-export": "off",
+      },
+    },
   ],
   "globals": {
     "root": true,
@@ -104,6 +90,6 @@
     "Cypress": true,
     "jest": true,
     "socket": true,
-    "webpackIsomorphicTools": true
-  }
+    "webpackIsomorphicTools": true,
+  },
 }
