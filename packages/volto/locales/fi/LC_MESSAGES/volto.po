@@ -2665,7 +2665,6 @@ msgstr "Omat asetukset"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Omat työkalut"
 
@@ -4472,6 +4471,11 @@ msgstr "Lisää salasana. Minimissään 8 merkkiä."
 msgid "addUserFormUsernameDescription"
 msgstr "Lisää käyttäjätunnus, esim. mameikal. Älä käytä erikoismerkkejä."
 
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
+msgstr ""
+
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
@@ -5082,6 +5086,11 @@ msgstr "URL"
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "käyttäjäkuva"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks

@@ -2667,7 +2667,6 @@ msgstr "Préférences personnelles"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Outils personnelles"
 
@@ -4474,6 +4473,11 @@ msgstr "Saisissez votre nouveau mot de passe, minimum 8 caractères."
 msgid "addUserFormUsernameDescription"
 msgstr "Saisissez un nom d'utilisateur, haituellement quelque chose comme "jdupont". Pas d'espace ou de caractères spéciaux. Les noms d'utilisateurs et mots de passes sont sensible à la casse, vérifiez que la touche verrouillage majuscule n'est pas activée. C'est le nom utilisé pour se connecté."
 
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
+msgstr ""
+
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
@@ -5084,6 +5088,11 @@ msgstr "Le champ doit être une URL valide (www.quelquechose.com or http(s)://ww
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "Avatar de l'utilisateur"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks

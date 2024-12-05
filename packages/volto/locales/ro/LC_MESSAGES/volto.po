@@ -2666,7 +2666,6 @@ msgstr "Preferințe personale"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Instrumente personale"
 
@@ -4473,6 +4472,11 @@ msgstr "Introduceți noua dvs. parolă. Minim 8 caractere."
 msgid "addUserFormUsernameDescription"
 msgstr "Introduceți un nume de utilizator, de obicei ceva de genul vpopescu. Fără spații sau caractere speciale. Nume de utilizator și parole sunt sensibile la majuscule, asigurați-vă că tasta Caps Lock nu este activată. Acesta este numele folosit pentru a vă autentifica."
 
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
+msgstr ""
+
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
@@ -5083,6 +5087,11 @@ msgstr "url"
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "avatarul utilizatorului"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks

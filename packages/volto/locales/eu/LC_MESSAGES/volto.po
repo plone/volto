@@ -2667,7 +2667,6 @@ msgstr "Hobespen Pertsonalak"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Tresna pertsonalak"
 
@@ -4474,6 +4473,11 @@ msgstr "Idatzi zure pasahitz berria. Gutxienez 8 karaktere."
 msgid "addUserFormUsernameDescription"
 msgstr "Idatzi zure erabiltzaile izena, "jgarmendia" moduko zerbait. Ez da onartzen espaziorik edo karaktere berezirik. Erabiltzaile izenak eta pasahitzak letra larri eta xeheak bereizten dituzte. Hau da webgunera sartzeko erabiliko den izena."
 
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
+msgstr ""
+
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
@@ -5084,6 +5088,11 @@ msgstr "URL zuzen bat izan behar da (www.zerbait.eus) edo http(s)://www.zerbitza
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "Erabiltzailearen argazkia"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks

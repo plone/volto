@@ -2664,7 +2664,6 @@ msgstr "Persoonlijke voorkeuren"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Persoonlijke hulpmiddelen"
 
@@ -4471,6 +4470,11 @@ msgstr "Voer een nieuw wahtwoord in. Minimum 8 karakters."
 msgid "addUserFormUsernameDescription"
 msgstr "Voer een gebruikersnaam in, doorgaans iets zoals 'jsmit'. Geen spaties of speciale tekens. Gebruikersnamen en wachtwoorden zijn hoofdlettergevoelig, zorg dat de hoofdletterknop uit staat. Dit is de naam die je gebruikt om aan te melden."
 
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
+msgstr ""
+
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
@@ -5081,6 +5085,11 @@ msgstr "Invoer moet een geldige URL zijn (www.iets.com of http(s)://www.iets.com
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "avatar gebruiker"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks

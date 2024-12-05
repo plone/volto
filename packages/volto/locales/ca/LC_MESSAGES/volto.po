@@ -2666,7 +2666,6 @@ msgstr "Preferències personals"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Eines personals"
 
@@ -4473,6 +4472,11 @@ msgstr ""
 msgid "addUserFormUsernameDescription"
 msgstr ""
 
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
+msgstr ""
+
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
@@ -5083,6 +5087,11 @@ msgstr "L'entrada ha de ser un URL vàlid (www.something.com o http(s)://www.som
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "avatar de l'usuari"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks

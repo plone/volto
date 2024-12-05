@@ -2660,7 +2660,6 @@ msgstr "व्यक्तिगत पसंद"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "व्यक्तिगत उपकरण"
 
@@ -4467,6 +4466,11 @@ msgstr "अपना नया पासवर्ड दर्ज करें�
 msgid "addUserFormUsernameDescription"
 msgstr "एक उपयोगकर्ता नाम दर्ज करें, सामान्यत: "jsmith" कुछ ऐसा। कोई रिक्त स्थान या विशेष वर्ण नहीं। उपयोगकर्ता नाम और पासवर्ड मामूली हैं, सुनिश्चित करें कि कैप्स लॉक कुंजी सक्षम नहीं है। यह लॉगिन के लिए उपयोग किया जाने वाला नाम है।"
 
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
+msgstr ""
+
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
@@ -5077,6 +5081,11 @@ msgstr "इनपुट मान्य URL (www.something.com या http(s)://
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "उपयोगकर्ता अवतार"
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
+msgstr ""
 
 #. Default: "Video"
 #: config/Blocks

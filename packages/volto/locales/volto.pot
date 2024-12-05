@@ -2662,7 +2662,6 @@ msgstr ""
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr ""
 
@@ -4469,6 +4468,11 @@ msgstr ""
 msgid "addUserFormUsernameDescription"
 msgstr ""
 
+#. Default: "Site and user settings"
+#: components/manage/Toolbar/Toolbar
+msgid "adminUserTools"
+msgstr ""
+
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
@@ -5078,6 +5082,11 @@ msgstr ""
 #. Default: "user avatar"
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
+msgstr ""
+
+#. Default: "User settings"
+#: components/manage/Toolbar/Toolbar
+msgid "userTools"
 msgstr ""
 
 #. Default: "Video"
