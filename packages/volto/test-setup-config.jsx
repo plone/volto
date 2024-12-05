@@ -25,6 +25,7 @@ import {
 } from '@plone/volto/config/ControlPanels';
 
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
+import { DefaultLinkViewBody } from '@plone/volto/components/theme/View/LinkView';
 import { registerValidators } from '@plone/volto/config/validation';
 
 config.set('settings', {
@@ -157,6 +158,11 @@ config.set('components', {
   Image: {
     // eslint-disable-next-line jsx-a11y/img-redundant-alt
     component: (props) => <img alt="Image component mock" {...props} />,
+  },
+  LinkViewBody: {
+    // eslint-disable-next-line jsx-a11y/img-redundant-alt
+    // component: (props) => <p>Mock link view</p>,
+    component: DefaultLinkViewBody,
   },
 });
 
