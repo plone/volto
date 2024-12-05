@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.2.1 (2024-12-05)
+
+### Bugfix
+
+- Fix color picker usability. @sneridagh [#6512](https://github.com/plone/volto/issues/6512)
+
 ## 2.2.0 (2024-11-21)
 
 ### Feature
