@@ -1,0 +1,1 @@
+Add fixes to the form component for the Volto-Form block. @robgietema

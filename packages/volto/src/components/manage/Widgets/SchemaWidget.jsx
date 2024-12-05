@@ -7,10 +7,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
-import { concat, findIndex, isString, map, omit, slice, without } from 'lodash';
+import {
+  concat,
+  findIndex,
+  isString,
+  keys,
+  map,
+  omit,
+  slice,
+  without,
+} from 'lodash';
 import move from 'lodash-move';
 import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
+import config from '@plone/volto/registry';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { slugify } from '@plone/volto/helpers/Utils/Utils';
 
@@ -45,6 +55,14 @@ const messages = defineMessages({
   default: {
     id: 'Default',
     defaultMessage: 'Default',
+  },
+  defaultValue: {
+    id: 'Default value',
+    defaultMessage: 'Default value',
+  },
+  placeholder: {
+    id: 'Placeholder',
+    defaultMessage: 'Placeholder',
   },
   idTitle: {
     id: 'Short Name',
@@ -90,6 +108,15 @@ const messages = defineMessages({
     id: 'Description',
     defaultMessage: 'Description',
   },
+  queryParameterName: {
+    id: 'Query Parameter Name',
+    defaultMessage: 'Query Parameter Name',
+  },
+  queryParameterNameDescription: {
+    id: 'Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name.',
+    defaultMessage:
+      'Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name.',
+  },
   required: {
     id: 'Required',
     defaultMessage: 'Required',
@@ -109,6 +136,14 @@ const messages = defineMessages({
   maximum: {
     id: 'maximum',
     defaultMessage: 'End of the range (including the value itself)',
+  },
+  size: {
+    id: 'size',
+    defaultMessage: 'Maximum size of the file in bytes',
+  },
+  accept: {
+    id: 'accept',
+    defaultMessage: 'File types allowed',
   },
   deleteFieldset: {
     id: 'Are you sure you want to delete this fieldset including all fields?',
@@ -136,6 +171,489 @@ const makeFieldsetList = (listOfFieldsets, intl) => {
   return result;
 };
 
+// Register field factory properties utilities
+
+config.registerUtility({
+  name: 'Rich Text',
+  type: 'fieldFactoryProperties',
+  method: (intl) => ({
+    maxLength: {
+      type: 'integer',
+      title: intl.formatMessage(messages.maxLength),
+    },
+    default: {
+      title: intl.formatMessage(messages.defaultValue),
+      widget: 'richtext',
+      type: 'string',
+    },
+  }),
+});
+
+map(
+  ['URL', 'Password', 'label_password_field', 'Email', 'label_email'],
+  (factory) => {
+    config.registerUtility({
+      name: factory,
+      type: 'fieldFactoryProperties',
+      method: (intl) => ({
+        minLength: {
+          type: 'integer',
+          title: intl.formatMessage(messages.minLength),
+        },
+        maxLength: {
+          type: 'integer',
+          title: intl.formatMessage(messages.maxLength),
+        },
+        default: {
+          type: 'string',
+          title: intl.formatMessage(messages.defaultValue),
+        },
+      }),
+    });
+  },
+);
+
+map(['Integer', 'label_integer_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryProperties',
+    method: (intl) => ({
+      minimum: {
+        type: 'integer',
+        title: intl.formatMessage(messages.minimum),
+      },
+      maximum: {
+        type: 'integer',
+        title: intl.formatMessage(messages.maximum),
+      },
+      default: {
+        type: 'integer',
+        title: intl.formatMessage(messages.default),
+      },
+    }),
+  });
+});
+
+map(
+  [
+    'Floating-point number',
+    'label_float_field',
+    'Yes/No',
+    'label_boolean_field',
+    'JSONField',
+    'Relation Choice',
+    'Relation List',
+  ],
+  (factory) => {
+    config.registerUtility({
+      name: factory,
+      type: 'fieldFactoryProperties',
+      method: (intl) => ({}),
+    });
+  },
+);
+
+map(['Date/Time', 'label_datetime_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryProperties',
+    method: (intl) => ({
+      default: {
+        type: 'string',
+        widget: 'datetime',
+        title: intl.formatMessage(messages.defaultValue),
+      },
+    }),
+  });
+});
+
+map(['Date', 'label_date_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryProperties',
+    method: (intl) => ({
+      default: {
+        type: 'string',
+        widget: 'date',
+        title: intl.formatMessage(messages.defaultValue),
+      },
+    }),
+  });
+});
+
+map(['time'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryProperties',
+    method: (intl) => ({
+      default: {
+        type: 'string',
+        widget: 'time',
+        title: intl.formatMessage(messages.defaultValue),
+      },
+    }),
+  });
+});
+
+map(['File', 'File Upload', 'Image'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryProperties',
+    method: (intl) => ({
+      size: {
+        type: 'integer',
+        title: intl.formatMessage(messages.size),
+      },
+      accept: {
+        type: 'string',
+        title: intl.formatMessage(messages.accept),
+      },
+    }),
+  });
+});
+
+map(
+  ['Multiple Choice', 'label_multi_choice_field', 'checkbox_group'],
+  (factory) => {
+    config.registerUtility({
+      name: factory,
+      type: 'fieldFactoryProperties',
+      method: (intl) => ({
+        values: {
+          type: 'string',
+          title: intl.formatMessage(messages.choices),
+          widget: 'textarea',
+        },
+        default: {
+          type: 'string',
+          widget: 'textarea',
+          title: intl.formatMessage(messages.defaultValue),
+        },
+      }),
+    });
+  },
+);
+
+map(['Choice', 'label_choice_field', 'radio_group'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryProperties',
+    method: (intl) => ({
+      values: {
+        type: 'string',
+        title: intl.formatMessage(messages.choices),
+        widget: 'textarea',
+      },
+      default: {
+        type: 'string',
+        title: intl.formatMessage(messages.defaultValue),
+      },
+    }),
+  });
+});
+
+config.registerUtility({
+  name: 'static_text',
+  type: 'fieldFactoryProperties',
+  method: (intl) => ({
+    default: {
+      title: intl.formatMessage(messages.defaultValue),
+      widget: 'richtext',
+      type: 'string',
+    },
+  }),
+});
+
+config.registerUtility({
+  name: 'number',
+  type: 'fieldFactoryProperties',
+  method: (intl) => ({
+    default: {
+      type: 'number',
+      title: intl.formatMessage(messages.defaultValue),
+    },
+  }),
+});
+
+config.registerUtility({
+  name: 'hidden',
+  type: 'fieldFactoryProperties',
+  method: (intl) => ({
+    default: {
+      type: 'string',
+      title: intl.formatMessage(messages.defaultValue),
+    },
+  }),
+});
+
+config.registerUtility({
+  name: 'textarea',
+  type: 'fieldFactoryProperties',
+  method: (intl) => ({
+    minLength: {
+      type: 'integer',
+      title: intl.formatMessage(messages.minLength),
+    },
+    maxLength: {
+      type: 'integer',
+      title: intl.formatMessage(messages.maxLength),
+    },
+    default: {
+      type: 'string',
+      widget: 'textarea',
+      title: intl.formatMessage(messages.defaultValue),
+    },
+    placeholder: {
+      type: 'string',
+      title: intl.formatMessage(messages.placeholder),
+    },
+  }),
+});
+
+// Register field factory initial data utilities
+
+map(['Date/Time', 'label_datetime_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: (intl) => ({
+      type: 'string',
+      widget: 'datetime',
+      factory,
+    }),
+  });
+});
+
+map(['Date', 'label_date_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: (intl) => ({
+      type: 'string',
+      widget: 'date',
+      factory,
+    }),
+  });
+});
+
+config.registerUtility({
+  name: 'time',
+  type: 'fieldFactoryInitialData',
+  method: (intl) => ({
+    type: 'string',
+    widget: 'time',
+    factory: 'time',
+  }),
+});
+
+map(['Email', 'label_email'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: (intl) => ({
+      type: 'string',
+      widget: 'email',
+      factory,
+    }),
+  });
+});
+
+map(['File', 'File Upload'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: (intl) => ({
+      type: 'object',
+      factory,
+    }),
+  });
+});
+
+map(['Floating-point number', 'label_float_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: (intl) => ({
+      type: 'number',
+      factory,
+    }),
+  });
+});
+
+map(['Interger', 'label_integer_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: (intl) => ({
+      type: 'integer',
+      factory,
+    }),
+  });
+});
+
+config.registerUtility({
+  name: 'Image',
+  type: 'fieldFactoryInitialData',
+  method: (intl) => ({
+    type: 'object',
+    factory: 'Image',
+  }),
+});
+
+config.registerUtility({
+  name: 'JSONField',
+  type: 'fieldFactoryInitialData',
+  method: (intl) => ({
+    type: 'dict',
+    widget: 'json',
+    factory: 'JSONField',
+  }),
+});
+
+map(['Multiple Choice', 'label_multi_choice_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: (intl) => ({
+      type: 'array',
+      factory,
+    }),
+  });
+});
+
+config.registerUtility({
+  name: 'Relation List',
+  type: 'fieldFactoryInitialData',
+  method: (intl) => ({
+    type: 'array',
+    factory: 'Relation List',
+  }),
+});
+
+map(['Choice', 'label_choice_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: (intl) => ({
+      type: 'string',
+      choices: [],
+      factory,
+    }),
+  });
+});
+
+config.registerUtility({
+  name: 'Relation Choice',
+  type: 'fieldFactoryInitialData',
+  method: (intl) => ({
+    type: 'string',
+    factory: 'Relation Choice',
+  }),
+});
+
+map(['Password', 'label_password_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: (intl) => ({
+      type: 'string',
+      widget: 'password',
+      factory,
+    }),
+  });
+});
+
+config.registerUtility({
+  name: 'Rich Text',
+  type: 'fieldFactoryInitialData',
+  method: (intl) => ({
+    type: 'string',
+    widget: 'richtext',
+    factory: 'Rich Text',
+  }),
+});
+
+config.registerUtility({
+  name: 'URL',
+  type: 'fieldFactoryInitialData',
+  method: (intl) => ({
+    type: 'string',
+    widget: 'url',
+    factory: 'URL',
+  }),
+});
+
+map(['Yes/No', 'label_boolean_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryInitialData',
+    method: (intl) => ({
+      type: 'boolean',
+      factory,
+    }),
+  });
+});
+
+config.registerUtility({
+  name: 'static_text',
+  type: 'fieldFactoryInitialData',
+  method: (intl) => ({
+    type: 'object',
+    widget: 'static_text',
+    factory: 'static_text',
+  }),
+});
+
+config.registerUtility({
+  name: 'hidden',
+  type: 'fieldFactoryInitialData',
+  method: (intl) => ({
+    type: 'string',
+    widget: 'hidden',
+    factory: 'hidden',
+  }),
+});
+
+config.registerUtility({
+  name: 'number',
+  type: 'fieldFactoryInitialData',
+  method: (intl) => ({
+    type: 'number',
+    factory: 'number',
+  }),
+});
+
+config.registerUtility({
+  name: 'radio_group',
+  type: 'fieldFactoryInitialData',
+  method: (intl) => ({
+    type: 'string',
+    choices: [],
+    widget: 'radio_group',
+    factory: 'radio_group',
+  }),
+});
+
+config.registerUtility({
+  name: 'checkbox_group',
+  type: 'fieldFactoryInitialData',
+  method: (intl) => ({
+    type: 'array',
+    widget: 'checkbox_group',
+    factory: 'checkbox_group',
+  }),
+});
+
+config.registerUtility({
+  name: 'textarea',
+  type: 'fieldFactoryInitialData',
+  method: (intl) => ({
+    type: 'string',
+    widget: 'textarea',
+    factory: 'textarea',
+  }),
+});
+
 /**
  * schemaField used for modal form, when editing a field
  * - based on the factory a set of fields is presented
@@ -143,153 +661,95 @@ const makeFieldsetList = (listOfFieldsets, intl) => {
  * @param {string} factory - the kind of field
  * @param {Object} intl
  * @param {*} fieldsets
+ * @param {Boolean} allowEditId
+ * @param {Object} extraFields
  * @return {Object} - schema
  */
-const schemaField = (factory, intl, fieldsets) => ({
-  fieldsets: [
-    {
-      id: 'default',
-      title: 'default',
-      fields: [
-        ...['title', 'description', 'parentFieldSet'],
-        ...((factory) => {
-          switch (factory) {
-            case 'Rich Text':
-              return ['maxLength'];
-            case 'URL':
-            case 'Password':
-            case 'label_password_field':
-            case 'Email':
-            case 'label_email':
-              return ['minLength', 'maxLength'];
-            case 'Integer':
-            case 'label_integer_field':
-              return ['minimum', 'maximum'];
-            case 'Floating-point number':
-            case 'label_float_field':
-            case 'Date/Time':
-            case 'label_datetime_field':
-            case 'Date':
-            case 'label_date_field':
-            case 'File':
-            case 'File Upload':
-            case 'Image':
-            case 'Yes/No':
-            case 'label_boolean_field':
-            case 'JSONField':
-            case 'Relation Choice':
-            case 'Relation List':
-              return [];
-            case 'Multiple Choice':
-            case 'label_multi_choice_field':
-            case 'Choice':
-            case 'label_choice_field':
-              return ['values'];
-            default:
-              return ['minLength', 'maxLength'];
-          }
-        })(factory),
-        ...['required'],
-      ],
-    },
-  ],
-  properties: {
-    title: {
-      type: 'string',
-      title: intl.formatMessage(messages.title),
-    },
-    description: {
-      type: 'string',
-      widget: 'textarea',
-      title: intl.formatMessage(messages.description),
-    },
-    parentFieldSet: {
-      type: 'string',
-      title: intl.formatMessage(messages.parentFieldSet),
-      choices: makeFieldsetList(fieldsets),
-    },
-    required: {
-      type: 'boolean',
-      title: intl.formatMessage(messages.required),
-    },
-    ...((factory) => {
-      switch (factory) {
-        case 'Rich Text':
-          return {
-            maxLength: {
-              type: 'integer',
-              title: intl.formatMessage(messages.maxLength),
-            },
-          };
-        case 'URL':
-        case 'Password':
-        case 'label_password_field':
-        case 'Email':
-        case 'label_email':
-          return {
-            minLength: {
-              type: 'integer',
-              title: intl.formatMessage(messages.minLength),
-            },
-            maxLength: {
-              type: 'integer',
-              title: intl.formatMessage(messages.maxLength),
-            },
-          };
-        case 'Integer':
-        case 'label_integer_field':
-          return {
-            minimum: {
-              type: 'integer',
-              title: intl.formatMessage(messages.minimum),
-            },
-            maximum: {
-              type: 'integer',
-              title: intl.formatMessage(messages.maximum),
-            },
-          };
-        case 'Floating-point number':
-        case 'label_float_field':
-        case 'Date/Time':
-        case 'label_datetime_field':
-        case 'Date':
-        case 'label_date_field':
-        case 'File':
-        case 'File Upload':
-        case 'Image':
-        case 'Yes/No':
-        case 'label_boolean_field':
-        case 'JSONField':
-        case 'Relation Choice':
-        case 'Relation List':
-          return {};
-        case 'Multiple Choice':
-        case 'label_multi_choice_field':
-        case 'Choice':
-        case 'label_choice_field':
-          return {
-            values: {
+const schemaField = (
+  factory,
+  intl,
+  fieldsets,
+  allowEditId,
+  extraFields = {},
+) => {
+  const utility = config.getUtility({
+    name: factory,
+    type: 'fieldFactoryProperties',
+  });
+
+  const properties = utility.method
+    ? utility.method(intl)
+    : {
+        minLength: {
+          type: 'integer',
+          title: intl.formatMessage(messages.minLength),
+        },
+        maxLength: {
+          type: 'integer',
+          title: intl.formatMessage(messages.maxLength),
+        },
+        default: {
+          type: 'string',
+          title: intl.formatMessage(messages.defaultValue),
+        },
+        placeholder: {
+          type: 'string',
+          title: intl.formatMessage(messages.placeholder),
+        },
+      };
+
+  return {
+    fieldsets: [
+      {
+        id: 'default',
+        title: 'default',
+        fields: [
+          ...keys(extraFields),
+          ...(allowEditId ? ['id'] : []),
+          ...['title', 'description', 'parentFieldSet', 'queryParameterName'],
+          ...keys(properties),
+          ...['required'],
+        ],
+      },
+    ],
+    properties: {
+      ...extraFields,
+      ...(allowEditId
+        ? {
+            id: {
               type: 'string',
-              title: intl.formatMessage(messages.choices),
-              widget: 'textarea',
+              title: intl.formatMessage(messages.idTitle),
             },
-          };
-        default:
-          return {
-            minLength: {
-              type: 'integer',
-              title: intl.formatMessage(messages.minLength),
-            },
-            maxLength: {
-              type: 'integer',
-              title: intl.formatMessage(messages.maxLength),
-            },
-          };
-      }
-    })(factory),
-  },
-  required: ['type', 'title'],
-});
+          }
+        : {}),
+      title: {
+        type: 'string',
+        title: intl.formatMessage(messages.title),
+      },
+      description: {
+        type: 'string',
+        widget: 'textarea',
+        title: intl.formatMessage(messages.description),
+      },
+      parentFieldSet: {
+        type: 'string',
+        title: intl.formatMessage(messages.parentFieldSet),
+        choices: makeFieldsetList(fieldsets),
+      },
+      queryParameterName: {
+        type: 'string',
+        title: intl.formatMessage(messages.queryParameterName),
+        description: intl.formatMessage(messages.queryParameterNameDescription),
+      },
+      required: {
+        type: 'boolean',
+        title: intl.formatMessage(messages.required),
+      },
+      ...properties,
+    },
+    required: ['type', 'title'],
+  };
+};
 
 /**
  * schema for adding a new field
@@ -422,12 +882,21 @@ class SchemaWidget extends Component {
      */
     error: PropTypes.arrayOf(PropTypes.string),
     /**
+     * Filter for factory choices
+     */
+    filterFactory: PropTypes.arrayOf(PropTypes.string),
+    /**
+     * Additional factories
+     */
+    additionalFactory: PropTypes.arrayOf(PropTypes.object),
+    /**
+     * Allow editing of the id
+     */
+    allowEditId: PropTypes.bool,
+    /**
      * On change handler
      */
     onChange: PropTypes.func.isRequired,
-    /**
-     * Intl object
-     */
   };
 
   /**
@@ -439,6 +908,9 @@ class SchemaWidget extends Component {
     required: false,
     value: {},
     error: [],
+    filterFactory: null,
+    additionalFactory: null,
+    allowEditId: false,
   };
 
   /**
@@ -486,7 +958,10 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onAddField(values) {
-    const fieldId = slugify(values.title);
+    const fieldId = slugify(
+      values.id || values.title,
+      keys(this.props.value.properties),
+    );
     const currentFieldsetFields =
       this.props.value.fieldsets[this.state.currentFieldset].fields;
     const hasChangeNote = currentFieldsetFields.indexOf('changeNote') > -1;
@@ -497,6 +972,22 @@ class SchemaWidget extends Component {
           currentFieldsetFields[currentFieldsetFields.length - 1],
         ]
       : [...currentFieldsetFields, fieldId];
+
+    const utility = config.getUtility({
+      name: values.factory,
+      type: 'fieldFactoryInitialData',
+    });
+
+    const multiple =
+      values.factory === 'Multiple Choice' ||
+      values.factory === 'label_multi_choice_field';
+
+    const initialData = utility.method
+      ? utility.method(this.props.intl)
+      : {
+          type: 'string',
+          factory: values.factory,
+        };
 
     this.onChange({
       ...this.props.value,
@@ -511,121 +1002,17 @@ class SchemaWidget extends Component {
       properties: {
         ...this.props.value.properties,
         [fieldId]: {
-          title: values.title,
-          description: values.description,
           id: fieldId,
-          ...((factory) => {
-            switch (factory) {
-              case 'Date/Time':
-              case 'label_datetime_field':
-                return {
-                  type: 'string',
-                  widget: 'datetime',
-                  factory,
-                };
-              case 'Date':
-              case 'label_date_field':
-                return {
-                  type: 'string',
-                  widget: 'date',
-                  factory,
-                };
-              case 'Email':
-              case 'label_email':
-                return {
-                  type: 'string',
-                  widget: 'email',
-                  factory,
-                };
-              case 'File':
-              case 'File Upload':
-                return {
-                  type: 'object',
-                  factory,
-                };
-              case 'Floating-point number':
-              case 'label_float_field':
-                return {
-                  type: 'number',
-                  factory,
-                };
-              case 'Integer':
-              case 'label_integer_field':
-                return {
-                  type: 'integer',
-                  factory,
-                };
-              case 'Image':
-                return {
-                  type: 'object',
-                  factory,
-                };
-              case 'JSONField':
-                return {
-                  type: 'dict',
-                  widget: 'json',
-                  factory,
-                };
-              case 'Multiple Choice':
-              case 'label_multi_choice_field':
-                return {
-                  type: 'array',
-                  factory,
-                };
-              case 'Relation List':
-                return {
-                  type: 'array',
-                  factory,
-                };
-              case 'Choice':
-              case 'label_choice_field':
-                return {
-                  type: 'string',
-                  choices: [],
-                  factory,
-                };
-              case 'Relation Choice':
-                return {
-                  type: 'string',
-                  factory,
-                };
-              case 'Password':
-              case 'label_password_field':
-                return {
-                  type: 'string',
-                  widget: 'password',
-                  factory,
-                };
-              case 'Rich Text':
-                return {
-                  type: 'string',
-                  widget: 'richtext',
-                  factory,
-                };
-              case 'URL':
-                return {
-                  type: 'string',
-                  widget: 'url',
-                  factory,
-                };
-              case 'Yes/No':
-              case 'label_boolean_field':
-                return {
-                  type: 'boolean',
-                  factory,
-                };
-              default:
-                return {
-                  type: 'string',
-                  factory,
-                };
-            }
-          })(values.factory),
+          ...omit(initialData, ['required']),
+          ...omit(values, ['factory', 'required', 'id', 'parentFieldset']),
+          ...formatTextareaToArray(values.values),
+          ...formatTextareaToChoices(values.values, multiple),
         },
       },
-      required: values.required
-        ? [...this.props.value.required, fieldId]
-        : this.props.value.required,
+      required: [
+        ...this.props.value.required,
+        ...(values.required || initialData.required ? [fieldId] : []),
+      ],
     });
     this.onCancel();
   }
@@ -771,7 +1158,7 @@ class SchemaWidget extends Component {
     listOfProp.forEach((prop) => {
       formattedValues = {
         ...formattedValues,
-        ...{ [prop]: values[prop] ? parseFloat(values[prop]) : null },
+        ...{ [prop]: values[prop] ? parseFloat(values[prop]) : undefined },
       };
     });
 
@@ -780,22 +1167,35 @@ class SchemaWidget extends Component {
         'Multiple Choice' ||
       this.props.value.properties[this.state.editField.id]?.factory ===
         'label_multi_choice_field';
+
+    let fieldsets = this.props.value.fieldsets;
+
+    if (this.state.editField.id !== formattedValues.id) {
+      this.props.value.fieldsets[this.state.currentFieldset].fields = map(
+        this.props.value.fieldsets[this.state.currentFieldset].fields,
+        (field) =>
+          field === this.state.editField.id ? formattedValues.id : field,
+      );
+    }
+
+    if (formattedValues.parentFieldSet) {
+      fieldsets = this.editFieldset(
+        this.props.value.fieldsets,
+        formattedValues.parentFieldSet,
+        this.state.currentFieldset,
+        this.state.editField.id,
+        formattedValues.id,
+      );
+    }
+
     const result = {
       ...this.props.value,
-      fieldsets: formattedValues.parentFieldSet
-        ? this.editFieldset(
-            this.props.value.fieldsets,
-            formattedValues.parentFieldSet,
-            this.state.currentFieldset,
-            this.state.editField.id,
-            formattedValues.id,
-          )
-        : this.props.value.fieldsets,
+      fieldsets,
       properties: {
         ...omit(this.props.value.properties, [this.state.editField.id]),
         [formattedValues.id]: {
           ...this.props.value.properties[this.state.editField.id],
-          ...omit(formattedValues, ['id', 'parentFieldSet']),
+          ...omit(formattedValues, ['parentFieldSet']),
           ...formatTextareaToArray(formattedValues.values),
           ...formatTextareaToChoices(formattedValues.values, multiple),
         },
@@ -920,7 +1320,7 @@ class SchemaWidget extends Component {
    */
   onShowAddField(event) {
     this.setState({
-      addField: true,
+      addField: '',
     });
     event.preventDefault();
   }
@@ -1074,7 +1474,8 @@ class SchemaWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { error, reactBeautifulDnd } = this.props;
+    const { additionalFactory, error, reactBeautifulDnd, filterFactory } =
+      this.props;
     const { Draggable, DragDropContext, Droppable } = reactBeautifulDnd;
     if (!this.props.value) {
       return '';
@@ -1110,6 +1511,8 @@ class SchemaWidget extends Component {
               {...this.props.value.properties[field]}
               id={field}
               required={this.props.value.required.indexOf(field) !== -1}
+              widgets={this.props.widgets}
+              component={this.props.component}
               onEdit={this.onShowEditField}
               draggable={false}
               isDisabled={true}
@@ -1148,6 +1551,8 @@ class SchemaWidget extends Component {
                   {...this.props.value.properties[field]}
                   id={field}
                   required={this.props.value.required.indexOf(field) !== -1}
+                  widgets={this.props.widgets}
+                  component={this.props.component}
                   onEdit={this.onShowEditField}
                   draggable={true}
                   isDisabled={false}
@@ -1277,7 +1682,7 @@ class SchemaWidget extends Component {
           ) : null}
 
           {canAddFields && (
-            <Form.Field inline>
+            <Form.Field inline className="addfield">
               <Grid>
                 <Grid.Row stretched>
                   <Grid.Column width="12">
@@ -1306,21 +1711,24 @@ class SchemaWidget extends Component {
           <ModalForm
             onSubmit={this.onAddField}
             onCancel={this.onCancel}
-            title={this.props.intl.formatMessage(messages.addField)}
-            formData={{
-              type: '',
-              id: '',
-              title: '',
+            onChangeFormData={(data) => {
+              this.setState({
+                addField: data.factory,
+              });
             }}
-            schema={{
-              fieldsets: [
-                {
-                  id: 'default',
-                  title: this.props.intl.formatMessage(messages.default),
-                  fields: ['factory', 'title', 'description', 'required'],
-                },
-              ],
-              properties: {
+            title={this.props.intl.formatMessage(messages.addField)}
+            formData={{}}
+            schema={schemaField(
+              this.state.addField,
+              this.props.intl,
+              this.props.value.fieldsets.filter(
+                (fieldset) =>
+                  !fieldset.behavior ||
+                  fieldset.id === 'default' ||
+                  fieldset.behavior.includes('generated'),
+              ),
+              this.props.allowEditId,
+              {
                 factory: {
                   type: 'string',
                   factory: 'Choice',
@@ -1328,23 +1736,11 @@ class SchemaWidget extends Component {
                   vocabulary: {
                     '@id': `Fields`,
                   },
-                },
-                title: {
-                  type: 'string',
-                  title: this.props.intl.formatMessage(messages.title),
-                },
-                description: {
-                  type: 'string',
-                  widget: 'textarea',
-                  title: this.props.intl.formatMessage(messages.description),
-                },
-                required: {
-                  type: 'boolean',
-                  title: this.props.intl.formatMessage(messages.required),
+                  filterChoices: filterFactory,
+                  additionalChoices: additionalFactory,
                 },
               },
-              required: ['type', 'title'],
-            }}
+            )}
           />
         )}
         {this.state.editField !== null && (
@@ -1373,6 +1769,7 @@ class SchemaWidget extends Component {
                   fieldset.id === 'default' ||
                   fieldset.behavior.includes('generated'),
               ),
+              this.props.allowEditId,
             )}
           />
         )}

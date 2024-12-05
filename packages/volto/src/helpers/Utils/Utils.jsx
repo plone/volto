@@ -1,4 +1,11 @@
-import { cloneDeepWith, flatten, isEqual, isObject, transform } from 'lodash';
+import {
+  cloneDeepWith,
+  flatten,
+  includes,
+  isEqual,
+  isObject,
+  transform,
+} from 'lodash';
 import React from 'react';
 import { matchPath } from 'react-router';
 import config from '@plone/volto/registry';
@@ -297,13 +304,25 @@ export function normalizeString(str) {
 /**
  * Slugify a string: remove whitespaces, special chars and replace with _
  * @param {string} string String to be slugified
+ * @param {Array} slugs Array with slugs already taken
  * @returns {string} Slugified string
  */
-export const slugify = (string) => {
-  return string
+export const slugify = (string, slugs = []) => {
+  let slug = string
     .toLowerCase()
     .replace(/[\s-]+/g, '_')
     .replace(/[^\w]+/g, '');
+  let i = 1;
+
+  if (includes(slugs, slug)) {
+    while (includes(slugs, `${slug}_${i}`)) {
+      i++;
+    }
+
+    slug = `${slug}_${i}`;
+  }
+
+  return slug;
 };
 
 /**

@@ -106,7 +106,11 @@ const BlocksForm = (props) => {
       onFocusNextBlock(block, node, isMultipleSelection);
       e.preventDefault();
     }
-    if (e.key === 'Enter' && !disableEnter) {
+
+    const blockConfig =
+      blocksConfig[properties[getBlocksFieldname(properties)][block]['@type']];
+
+    if (e.key === 'Enter' && !disableEnter && !blockConfig.disableEnter) {
       if (!disableAddBlockOnEnterKey) {
         onSelectBlock(onAddBlock(config.settings.defaultBlockType, index + 1));
       }
