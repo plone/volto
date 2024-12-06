@@ -89,7 +89,7 @@ msgstr "Toevoegen"
 #. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Add-ons"
-msgstr "Om nieuwe modules hier te laten verschijnen voeg je ze toe in jouw configuratie, bouw en herstart dan het serverproces. Voor gedetailleerde instructies zie"
+msgstr ""
 
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
@@ -234,7 +234,7 @@ msgstr "Modules"
 #. Default: "Add-on Configuration"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Add-on Configuration"
-msgstr "Module configuratie"
+msgstr "Module configuratie<<<<<<< HEAD"
 
 #. Default: "Add-on could not be installed"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -264,7 +264,7 @@ msgstr "Module succesvol gedeïnstalleerd"
 #. Default: "Add-on upgraded succesfuly"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-on upgraded succesfuly"
-msgstr "Module succesvol bijgewerkt"
+msgstr "Module succesvol bijgewerkt=======>>>>>>> main"
 
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -284,7 +284,7 @@ msgstr "Toegevoegd"
 #. Default: "Additional date"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
-msgstr "Bijkomende datum"
+msgstr "Bijkomende datum<<<<<<< HEAD======="
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
@@ -438,12 +438,12 @@ msgstr "Automatisch"
 #. Default: "Available"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available"
-msgstr "Beschikbaar"
+msgstr "Beschikbaar<<<<<<< HEAD"
 
 #. Default: "Available add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available add-ons"
-msgstr ""
+msgstr "=======>>>>>>> main"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -1885,12 +1885,12 @@ msgstr "Installeren"
 #. Default: "Installed"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
-msgstr "Geïnstalleerd"
+msgstr "Geïnstalleerd<<<<<<< HEAD"
 
 #. Default: "Installed add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed add-ons"
-msgstr ""
+msgstr "=======>>>>>>> main"
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -2392,12 +2392,12 @@ msgstr "Nieuwsbericht weergave"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
 msgid "No"
-msgstr "Nee"
+msgstr "Nee<<<<<<< HEAD"
 
 #. Default: "No add-ons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr ""
+msgstr "=======>>>>>>> main"
 
 #. Default: "No installed add-ons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -2417,12 +2417,12 @@ msgstr "Geen transacties geselecteerd"
 #. Default: "No transactions selected to do undo"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Selected To Do Undo"
-msgstr "Geen transacties geselecteerd om ongedaan te maken"
+msgstr "Geen transacties geselecteerd om ongedaan te maken<<<<<<< HEAD"
 
 #. Default: "No upgrades in this corner. You are up to date. High fives."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Upgrades available"
-msgstr "Geen upgrades in deze hoek. Je bent up-to-date. High five!"
+msgstr "Geen upgrades in deze hoek. Je bent up-to-date. High five!=======>>>>>>> main"
 
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
@@ -2432,7 +2432,7 @@ msgstr "Geen video geselecteerd"
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
 msgid "No add-ons found"
-msgstr ""
+msgstr "======="
 
 #. Default: "No broken relations found."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -3837,12 +3837,12 @@ msgstr "Er zijn fouten opgetreden."
 #. Default: "Third"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
-msgstr "Derde"
+msgstr "Derde<<<<<<< HEAD"
 
 #. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr "Deze add-on is bijgewerkt. De momenteel geïnstalleerde profielversie is {installedVersion}. De nieuwe beschikbare profielversie is {newVersion}."
+msgstr "Deze add-on is bijgewerkt. De momenteel geïnstalleerde profielversie is {installedVersion}. De nieuwe beschikbare profielversie is {newVersion}.=======>>>>>>> main"
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -4099,22 +4099,22 @@ msgstr "Bijwerken"
 #. Default: "Update User"
 #: helpers/MessageLabels/MessageLabels
 msgid "Update User"
-msgstr "Gebruiker bijwerken<<<<<<< HEAD======="
+msgstr ""
 
 #. Default: "Update installed add-ons:"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Update installed add-ons:"
-msgstr "Geïnstalleerde modules bijwerken:"
+msgstr ""
 
 #. Default: "Updates available"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Updates available"
-msgstr "Updates beschikbaar"
+msgstr "Updates beschikbaar<<<<<<< HEAD"
 
 #. Default: "Upgradable add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Upgradable add-ons"
-msgstr ""
+msgstr "=======>>>>>>> main"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -5090,7 +5090,7 @@ msgstr "Inhoudstafel"
 #. Default: "Toggle"
 #: config/Blocks
 msgid "toggleFacet"
-msgstr "Schakelen<<<<<<< HEAD======="
+msgstr ""
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

@@ -236,7 +236,7 @@ msgstr "Extensii Add-on"
 #. Default: "Add-on Configuration"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Add-on Configuration"
-msgstr "Configurare add-on-uri"
+msgstr "Configurare add-on-uri<<<<<<< HEAD"
 
 #. Default: "Add-on could not be installed"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -266,7 +266,7 @@ msgstr "Extensia add-on a fost dezinstalată cu succes"
 #. Default: "Add-on upgraded succesfuly"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-on upgraded succesfuly"
-msgstr "Extensia add-on a fost actualizată cu succes"
+msgstr "Extensia add-on a fost actualizată cu succes=======>>>>>>> main"
 
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -286,7 +286,7 @@ msgstr "Adăugat"
 #. Default: "Additional date"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
-msgstr "Dată suplimentară"
+msgstr "Dată suplimentară<<<<<<< HEAD======="
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
@@ -2419,12 +2419,12 @@ msgstr "Nu s-au selectat tranzacții"
 #. Default: "No transactions selected to do undo"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Selected To Do Undo"
-msgstr "Nu s-au selectat tranzacții pentru a le anula"
+msgstr "Nu s-au selectat tranzacții pentru a le anula<<<<<<< HEAD"
 
 #. Default: "No upgrades in this corner. You are up to date. High fives."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Upgrades available"
-msgstr "Nicio actualizare în această zonă. Ești la zi. Bate palma!"
+msgstr "Nicio actualizare în această zonă. Ești la zi. Bate palma!=======>>>>>>> main"
 
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
@@ -5092,7 +5092,7 @@ msgstr "Cuprins"
 #. Default: "Toggle"
 #: config/Blocks
 msgid "toggleFacet"
-msgstr "Alternează<<<<<<< HEAD======="
+msgstr ""
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget
