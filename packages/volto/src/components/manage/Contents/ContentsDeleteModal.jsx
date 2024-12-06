@@ -19,7 +19,7 @@ const messages = defineMessages({
     defaultMessage: 'Delete selected items?',
   },
   navigate_to_this_item: {
-    id: 'Navigate to this items',
+    id: 'Navigate to this item',
     defaultMessage: 'Navigate to this item',
   },
   loading: {

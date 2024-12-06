@@ -2360,7 +2360,7 @@ msgstr "Navigeer terug"
 
 #. Default: "Navigate to this item"
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Navigate to this items"
+msgid "Navigate to this item"
 msgstr ""
 
 #. Default: "Navigation"
