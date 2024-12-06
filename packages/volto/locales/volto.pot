@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-10-30T14:04:52.670Z\n"
+"POT-Creation-Date: 2024-12-06T09:10:16.013Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -86,7 +86,7 @@ msgstr ""
 
 #. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add Addons"
+msgid "Add Add-ons"
 msgstr ""
 
 #. Default: "Add Alternative URL"
@@ -234,6 +234,36 @@ msgstr ""
 msgid "Add-on Configuration"
 msgstr ""
 
+#. Default: "Add-on could not be installed"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be installed"
+msgstr ""
+
+#. Default: "Add-on could not be uninstalled"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be uninstalled"
+msgstr ""
+
+#. Default: "Add-on could not be upgraded"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be upgraded"
+msgstr ""
+
+#. Default: "Add-on installed successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on installed succesfuly"
+msgstr ""
+
+#. Default: "Add-on uninstalled successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on uninstalled succesfuly"
+msgstr ""
+
+#. Default: "Add-on upgraded succesfuly"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on upgraded succesfuly"
+msgstr ""
+
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons"
@@ -252,36 +282,6 @@ msgstr ""
 #. Default: "Additional date"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
-msgstr ""
-
-#. Default: "Addon could not be installed"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon could not be installed"
-msgstr ""
-
-#. Default: "Addon could not be uninstalled"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon could not be uninstalled"
-msgstr ""
-
-#. Default: "Addon could not be upgraded"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon could not be upgraded"
-msgstr ""
-
-#. Default: "Addon installed successfully"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon installed succesfuly"
-msgstr ""
-
-#. Default: "Addon uninstalled successfully"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
-msgstr ""
-
-#. Default: "Addon upgraded succesfuly"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
 msgstr ""
 
 #. Default: "Advanced facet?"
@@ -438,9 +438,9 @@ msgstr ""
 msgid "Available"
 msgstr ""
 
-#. Default: "Available addons"
+#. Default: "Available add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Available addons"
+msgid "Available add-ons"
 msgstr ""
 
 #. Default: "Available content rules:"
@@ -1885,9 +1885,9 @@ msgstr ""
 msgid "Installed"
 msgstr ""
 
-#. Default: "Installed addons"
+#. Default: "Installed add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Installed addons"
+msgid "Installed add-ons"
 msgstr ""
 
 #. Default: "Installed version"
@@ -2392,12 +2392,12 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#. Default: "No addons available for installation."
+#. Default: "No add-ons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
 msgstr ""
 
-#. Default: "No installed addons."
+#. Default: "No installed add-ons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Installed available"
 msgstr ""
@@ -2519,7 +2519,7 @@ msgstr ""
 msgid "No selection"
 msgstr ""
 
-#. Default: "This addon does not provide an uninstall profile."
+#. Default: "This add-on does not provide an uninstall profile."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No uninstall profile"
 msgstr ""
@@ -2769,21 +2769,6 @@ msgstr ""
 #. Default: "Preferences"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
-msgstr ""
-
-#. Default: "Press Enter to install this addon"
-#: components/manage/Controlpanels/Addons/AddonItem
-msgid "Press Enter to install this addon"
-msgstr ""
-
-#. Default: "Press Enter to uninstall this addon"
-#: components/manage/Controlpanels/Addons/AddonItem
-msgid "Press Enter to uninstall this addon"
-msgstr ""
-
-#. Default: "Press Enter to update this addon"
-#: components/manage/Controlpanels/Addons/AddonItem
-msgid "Press Enter to update this addon"
 msgstr ""
 
 #. Default: "Prettify your code"
@@ -3852,9 +3837,9 @@ msgstr ""
 msgid "Third"
 msgstr ""
 
-#. Default: "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 msgstr ""
 
 #. Default: "This has an ongoing working copy in {title}"
@@ -4114,9 +4099,9 @@ msgstr ""
 msgid "Update User"
 msgstr ""
 
-#. Default: "Update installed addons:"
+#. Default: "Update installed add-ons:"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Update installed addons:"
+msgid "Update installed add-ons:"
 msgstr ""
 
 #. Default: "Updates available"
@@ -4124,9 +4109,9 @@ msgstr ""
 msgid "Updates available"
 msgstr ""
 
-#. Default: "Upgradable addons"
+#. Default: "Upgradable add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Upgradable addons"
+msgid "Upgradable add-ons"
 msgstr ""
 
 #. Default: "Upgrade"

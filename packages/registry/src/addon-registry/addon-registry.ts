@@ -4,8 +4,11 @@ import path from 'path';
 import fs from 'fs';
 import _debug from 'debug';
 import { DepGraph } from 'dependency-graph';
+import { createRequire } from 'node:module';
+import { autoConf, jsLoader, getConfigPath } from 'auto-config-loader';
 
-const debug = _debug('shadowing');
+const debugShadowing = _debug('shadowing');
+const debugConfig = _debug('config');
 
 export type Package = {
   name: string;
@@ -94,7 +97,10 @@ function buildDependencyGraph(
       }
 
       addons.forEach((loaderString) => {
-        const [name, extra] = loaderString.split(':');
+        const [name, extra] = loaderString.split(':') as [
+          string,
+          string | undefined,
+        ];
         if (!graph.hasNode(name)) {
           graph.addNode(name, []);
         }
@@ -196,7 +202,7 @@ class AddonRegistry {
 
     this.addonNames = this.resultantMergedAddons.map(
       (s: string) => s.split(':')[0],
-    );
+    ) as Array<string>;
     this.packages = {};
     this.customizations = new Map();
 
@@ -212,14 +218,14 @@ class AddonRegistry {
     this.dependencyGraph = buildDependencyGraph(
       [
         ...(Object.keys(this.coreAddons).map(
-          (key) => this.coreAddons[key].package,
+          (key) => this.coreAddons[key]?.package as string,
         ) || []),
         ...this.resultantMergedAddons,
         ...(process.env.ADDONS ? process.env.ADDONS.split(';') : []),
       ],
       (name) => {
         this.initPublishedPackage(name);
-        return this.packages[name].addons || [];
+        return this.packages[name]?.addons || [];
       },
     );
 
@@ -247,34 +253,55 @@ class AddonRegistry {
 
   isESM = () => this.packageJson.type === 'module';
 
+  /**
+   * Gets the registry configuration from the project's config file (.js, .cjs, .ts, .mts).
+   * It tries first if there's an environment variable pointing to the config file.
+   * If it doesn't exist, it tries to load one from the local project.
+   * If it doesn't exist, it returns an empty config object.
+   */
   getRegistryConfig(projectRootPath: string) {
-    let config: VoltoConfigJS = {
+    const config: VoltoConfigJS = {
       addons: [],
       theme: '',
     };
-    const CONFIGMAP = {
-      REGISTRYCONFIG: this.isESM()
-        ? 'registry.config.cjs'
-        : 'registry.config.js',
-      VOLTOCONFIG: this.isESM() ? 'volto.config.cjs' : 'volto.config.js',
-    };
 
-    for (const key in CONFIGMAP) {
-      if (process.env[key]) {
-        const resolvedPath = path.resolve(process.env[key]);
-        if (fs.existsSync(resolvedPath)) {
-          const voltoConfigPath = resolvedPath;
-          console.log(`Using configuration file in: ${voltoConfigPath}`);
-          config = require(voltoConfigPath);
-          break;
+    function loadConfigFromEnvVar() {
+      let config: VoltoConfigJS | null = null;
+      const ENVVARCONFIG = ['REGISTRYCONFIG', 'VOLTOCONFIG'];
+      ENVVARCONFIG.forEach((envVar) => {
+        if (process.env[envVar]) {
+          const resolvedPath = path.resolve(process.env[envVar]);
+          if (fs.existsSync(resolvedPath)) {
+            // @ts-expect-error It seems that the types are not correct in the auto-config-loader
+            config = jsLoader(resolvedPath);
+            debugConfig(
+              `[@plone/registry] Using configuration file in: ${resolvedPath}`,
+            );
+          }
         }
-      } else if (fs.existsSync(path.join(projectRootPath, CONFIGMAP[key]))) {
-        config = require(path.join(projectRootPath, CONFIGMAP[key]));
-        break;
-      }
+      });
+
+      return config;
     }
 
-    return config;
+    function loadConfigFromNamespace(namespace: string) {
+      let config: VoltoConfigJS | null = null;
+      config = autoConf(namespace, {
+        cwd: projectRootPath,
+        mustExist: true, // It seems that the bool is inverted
+      });
+      debugConfig(
+        `[@plone/registry] Using configuration file in: ${getConfigPath()}`,
+      );
+      return config;
+    }
+
+    return (
+      loadConfigFromEnvVar() ||
+      loadConfigFromNamespace('registry') ||
+      loadConfigFromNamespace('volto') ||
+      config
+    );
   }
 
   /**
@@ -297,8 +324,13 @@ class AddonRegistry {
       const jsConfig = JSON.parse(
         fs.readFileSync(configFile, 'utf-8'),
       ).compilerOptions;
-      pathsConfig = jsConfig.paths;
-      baseUrl = jsConfig.baseUrl;
+      if (jsConfig) {
+        pathsConfig = jsConfig.paths;
+        baseUrl = jsConfig.baseUrl;
+      } else {
+        pathsConfig = {};
+        baseUrl = '';
+      }
     }
 
     return [baseUrl, pathsConfig];
@@ -332,14 +364,15 @@ class AddonRegistry {
   initDevelopmentPackage(name: string) {
     const [baseUrl, pathsConfig] = this.getTSConfigPaths();
     if (pathsConfig && pathsConfig.hasOwnProperty(name)) {
-      const packagePath = `${this.projectRootPath}/${baseUrl}/${pathsConfig[name][0]}`;
+      const packagePath = `${this.projectRootPath}/${baseUrl}/${pathsConfig[name]![0]}`;
       const packageJsonPath = `${getPackageBasePath(packagePath)}/package.json`;
       const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
       const innerAddons: Array<string> = packageJson.addons || [];
       const innerAddonsNormalized = innerAddons.map((s) => s.split(':')[0]);
       if (this.addonNames.includes(name) && innerAddonsNormalized.length > 0) {
         innerAddonsNormalized.forEach((name) => {
-          if (!this.addonNames.includes(name)) this.addonNames.push(name);
+          if (!this.addonNames.includes(name as string))
+            this.addonNames.push(name as string);
         });
       }
       const pkg = {
@@ -375,6 +408,7 @@ class AddonRegistry {
     }
 
     if (!Object.keys(this.packages).includes(name)) {
+      const require = createRequire(this.projectRootPath);
       const resolved = require.resolve(name, { paths: [this.projectRootPath] });
       const basePath = getPackageBasePath(resolved);
       const packageJson = path.join(basePath, 'package.json');
@@ -385,7 +419,8 @@ class AddonRegistry {
       const innerAddonsNormalized = innerAddons.map((s) => s.split(':')[0]);
       if (this.addonNames.includes(name) && innerAddonsNormalized.length > 0) {
         innerAddonsNormalized.forEach((name) => {
-          if (!this.addonNames.includes(name)) this.addonNames.push(name);
+          if (!this.addonNames.includes(name as string))
+            this.addonNames.push(name as string);
         });
       }
       const packageTSConfig = this.getTSConfigPaths(basePath);
@@ -414,7 +449,7 @@ class AddonRegistry {
 
   // An add-on from the ADDONS env var can only be a published one
   initAddonFromEnvVar(name: string) {
-    const normalizedAddonName = name.split(':')[0];
+    const normalizedAddonName = name.split(':')[0] as string;
     this.initPublishedPackage(normalizedAddonName);
   }
 
@@ -430,14 +465,14 @@ class AddonRegistry {
    */
   initAddonExtenders() {
     this.getAddons().forEach((addon) => {
-      const base = path.dirname(addon.packageJson);
+      const base = path.dirname(addon!.packageJson);
       const razzlePath = path.resolve(`${base}/razzle.extend.js`);
       if (fs.existsSync(razzlePath)) {
-        addon.razzleExtender = razzlePath;
+        addon!.razzleExtender = razzlePath;
       }
       const eslintPath = path.resolve(`${base}/eslint.extend.js`);
       if (fs.existsSync(eslintPath)) {
-        addon.eslintExtender = eslintPath;
+        addon!.eslintExtender = eslintPath;
       }
     });
   }
@@ -453,13 +488,13 @@ class AddonRegistry {
 
   getAddonExtenders() {
     return this.getAddons()
-      .map((o) => o.razzleExtender)
+      .map((o) => o?.razzleExtender)
       .filter((e) => e);
   }
 
   getEslintExtenders() {
     return this.getAddons()
-      .map((o) => o.eslintExtender)
+      .map((o) => o?.eslintExtender)
       .filter((e) => e);
   }
 
@@ -473,11 +508,11 @@ class AddonRegistry {
     };
 
     this.getAddonDependencies().forEach((addon) => {
-      const normalizedAddonName = addon.split(':')[0];
+      const normalizedAddonName = addon.split(':')[0] as string;
       // We have two possible insertion points, variables and main
 
-      const customThemeVariables = `${this.packages[normalizedAddonName].modulePath}/theme/_variables.scss`;
-      const customThemeMain = `${this.packages[normalizedAddonName].modulePath}/theme/_main.scss`;
+      const customThemeVariables = `${this.packages[normalizedAddonName]?.modulePath}/theme/_variables.scss`;
+      const customThemeMain = `${this.packages[normalizedAddonName]?.modulePath}/theme/_main.scss`;
       if (
         fs.existsSync(customThemeVariables) &&
         normalizedAddonName !== this.theme
@@ -525,12 +560,12 @@ class AddonRegistry {
   getResolveAliases() {
     const pairs: [string, string][] = Object.keys(this.packages).map((o) => [
       o,
-      this.packages[o].modulePath,
+      this.packages[o]?.modulePath || '',
     ]);
 
     let aliasesFromTSPaths = {};
     Object.keys(this.packages).forEach((o) => {
-      if (this.packages[o].tsConfigPaths) {
+      if (this.packages[o]?.tsConfigPaths) {
         aliasesFromTSPaths = {
           ...aliasesFromTSPaths,
           ...this.getAliasesFromTSConfig(
@@ -674,7 +709,7 @@ class AddonRegistry {
                 .replace(/\.(js|jsx|ts|tsx)$/, '')
             ] = path.resolve(filename);
           } else {
-            debug(
+            debugShadowing(
               `The file ${filename} doesn't exist in the ${name} (${targetPath}), unable to customize.`,
             );
           }
@@ -704,8 +739,8 @@ class AddonRegistry {
       aliases = {
         ...aliases,
         ...this.getCustomizationPaths(
-          JSON.parse(fs.readFileSync(addon.packageJson, 'utf-8')),
-          getPackageBasePath(addon.modulePath),
+          JSON.parse(fs.readFileSync(addon!.packageJson, 'utf-8')),
+          getPackageBasePath(addon!.modulePath),
         ),
       };
     });
@@ -775,7 +810,7 @@ class AddonRegistry {
 
         if (!seen.has(dep)) {
           seen.add(dep);
-          queue.push(dep);
+          queue.push(dep as string);
         }
         out += `    "${name}" -> "${dep}"\n`;
       }

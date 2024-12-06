@@ -28,7 +28,7 @@ const messages = defineMessages({
     defaultMessage: 'Activate and deactivate add-ons in the lists below.',
   },
   addAddons: {
-    id: 'Add Addons',
+    id: 'Add Add-ons',
     defaultMessage:
       'To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see',
   },
@@ -62,7 +62,7 @@ const messages = defineMessages({
   },
   noUninstallProfile: {
     id: 'No uninstall profile',
-    defaultMessage: 'This addon does not provide an uninstall profile.',
+    defaultMessage: 'This add-on does not provide an uninstall profile.',
   },
   update: {
     id: 'Update',
@@ -79,15 +79,15 @@ const messages = defineMessages({
   },
   noAddonAvailable: {
     id: 'No Addon available',
-    defaultMessage: 'No addons available for installation.',
+    defaultMessage: 'No add-ons available for installation.',
   },
   noInstalledAvailable: {
     id: 'No Installed available',
-    defaultMessage: 'No installed addons.',
+    defaultMessage: 'No installed add-ons.',
   },
   updateInstalledAddons: {
-    id: 'Update installed addons:',
-    defaultMessage: 'Update installed addons:',
+    id: 'Update installed add-ons:',
+    defaultMessage: 'Update installed add-ons:',
   },
   uninstall: {
     id: 'Uninstall',
@@ -110,40 +110,40 @@ const messages = defineMessages({
     defaultMessage: 'Error',
   },
   addonUpgraded: {
-    id: 'Addon upgraded succesfuly',
-    defaultMessage: 'Addon upgraded succesfuly',
+    id: 'Add-on upgraded succesfuly',
+    defaultMessage: 'Add-on upgraded succesfuly',
   },
   addonNotUpgraded: {
-    id: 'Addon could not be upgraded',
-    defaultMessage: 'Addon could not be upgraded',
+    id: 'Add-on could not be upgraded',
+    defaultMessage: 'Add-on could not be upgraded',
   },
   addonInstalled: {
-    id: 'Addon installed succesfuly',
-    defaultMessage: 'Addon installed successfully',
+    id: 'Add-on installed succesfuly',
+    defaultMessage: 'Add-on installed successfully',
   },
   addonNotInstalled: {
-    id: 'Addon could not be installed',
-    defaultMessage: 'Addon could not be installed',
+    id: 'Add-on could not be installed',
+    defaultMessage: 'Add-on could not be installed',
   },
   addonUninstalled: {
-    id: 'Addon uninstalled succesfuly',
-    defaultMessage: 'Addon uninstalled successfully',
+    id: 'Add-on uninstalled succesfuly',
+    defaultMessage: 'Add-on uninstalled successfully',
   },
   addonNotUninstalled: {
-    id: 'Addon could not be uninstalled',
-    defaultMessage: 'Addon could not be uninstalled',
+    id: 'Add-on could not be uninstalled',
+    defaultMessage: 'Add-on could not be uninstalled',
   },
   upgradableAddons: {
-    id: 'Upgradable addons',
-    defaultMessage: 'Upgradable addons',
+    id: 'Upgradable add-ons',
+    defaultMessage: 'Upgradable add-ons',
   },
   availableAddons: {
-    id: 'Available addons',
-    defaultMessage: 'Available addons',
+    id: 'Available add-ons',
+    defaultMessage: 'Available add-ons',
   },
   installedAddons: {
-    id: 'Installed addons',
-    defaultMessage: 'Installed addons',
+    id: 'Installed add-ons',
+    defaultMessage: 'Installed add-ons',
   },
 });
 
@@ -289,12 +289,12 @@ const AddonsControlpanel = (props: Props) => {
                 />
               </h2>
               <FormattedMessage
-                id="Add Addons"
+                id="Add Add-ons"
                 defaultMessage="To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
               />
               &nbsp;
               <a
-                href="https://6.docs.plone.org/install/"
+                href="https://6.docs.plone.org/volto/development/add-ons/install-an-add-on.html"
                 target="_blank"
                 rel="noopener noreferrer"
               >

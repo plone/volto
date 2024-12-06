@@ -90,7 +90,7 @@ msgstr "添加（对象列表）"
 
 #. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add Addons"
+msgid "Add Add-ons"
 msgstr "添加附件"
 
 #. Default: "Add Alternative URL"
@@ -238,6 +238,36 @@ msgstr "附加组件"
 msgid "Add-on Configuration"
 msgstr "附加组件配置"
 
+#. Default: "Add-on could not be installed"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be installed"
+msgstr "无法安装附件"
+
+#. Default: "Add-on could not be uninstalled"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be uninstalled"
+msgstr "无法卸载附件"
+
+#. Default: "Add-on could not be upgraded"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be upgraded"
+msgstr "无法升级附件"
+
+#. Default: "Add-on installed successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on installed succesfuly"
+msgstr "附件安装成功"
+
+#. Default: "Add-on uninstalled successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on uninstalled succesfuly"
+msgstr "附件卸载成功"
+
+#. Default: "Add-on upgraded succesfuly"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on upgraded succesfuly"
+msgstr "附件升级成功"
+
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons"
@@ -257,36 +287,6 @@ msgstr "已添加"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
 msgstr "附加日期"
-
-#. Default: "Addon could not be installed"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon could not be installed"
-msgstr "无法安装附件"
-
-#. Default: "Addon could not be uninstalled"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon could not be uninstalled"
-msgstr "无法卸载附件"
-
-#. Default: "Addon could not be upgraded"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon could not be upgraded"
-msgstr "无法升级附件"
-
-#. Default: "Addon installed successfully"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon installed succesfuly"
-msgstr "附件安装成功"
-
-#. Default: "Addon uninstalled successfully"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
-msgstr "附件卸载成功"
-
-#. Default: "Addon upgraded succesfuly"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
-msgstr "附件升级成功"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
@@ -442,9 +442,9 @@ msgstr ""
 msgid "Available"
 msgstr "可用的"
 
-#. Default: "Available addons"
+#. Default: "Available add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Available addons"
+msgid "Available add-ons"
 msgstr ""
 
 #. Default: "Available content rules:"
@@ -1889,9 +1889,9 @@ msgstr ""
 msgid "Installed"
 msgstr "已安装"
 
-#. Default: "Installed addons"
+#. Default: "Installed add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Installed addons"
+msgid "Installed add-ons"
 msgstr ""
 
 #. Default: "Installed version"
@@ -2396,12 +2396,12 @@ msgstr "新闻视图"
 msgid "No"
 msgstr "否"
 
-#. Default: "No addons available for installation."
+#. Default: "No add-ons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr "没有可供安装的插件。"
+msgstr ""
 
-#. Default: "No installed addons."
+#. Default: "No installed add-ons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Installed available"
 msgstr "没有已安装的插件。"
@@ -2434,7 +2434,7 @@ msgstr "未选择视频"
 #. Default: "No addons found"
 #: components/manage/Controlpanels/VersionOverview
 msgid "No addons found"
-msgstr "没有找到附件"
+msgstr ""
 
 #. Default: "No broken relations found."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -2523,7 +2523,7 @@ msgstr "未找到结果。"
 msgid "No selection"
 msgstr "没有选择"
 
-#. Default: "This addon does not provide an uninstall profile."
+#. Default: "This add-on does not provide an uninstall profile."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No uninstall profile"
 msgstr "没有卸载配置文件"
@@ -2774,21 +2774,6 @@ msgstr ""
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "偏好"
-
-#. Default: "Press Enter to install this addon"
-#: components/manage/Controlpanels/Addons/AddonItem
-msgid "Press Enter to install this addon"
-msgstr ""
-
-#. Default: "Press Enter to uninstall this addon"
-#: components/manage/Controlpanels/Addons/AddonItem
-msgid "Press Enter to uninstall this addon"
-msgstr ""
-
-#. Default: "Press Enter to update this addon"
-#: components/manage/Controlpanels/Addons/AddonItem
-msgid "Press Enter to update this addon"
-msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -3856,9 +3841,9 @@ msgstr "这里出现了一些错误。"
 msgid "Third"
 msgstr "第三"
 
-#. Default: "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 msgstr "此插件已更新。当前安装的配置文件版本为 {installedVersion}。新可用的配置文件版本为 {newVersion}."
 
 #. Default: "This has an ongoing working copy in {title}"
@@ -4118,9 +4103,9 @@ msgstr "更新"
 msgid "Update User"
 msgstr ""
 
-#. Default: "Update installed addons:"
+#. Default: "Update installed add-ons:"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Update installed addons:"
+msgid "Update installed add-ons:"
 msgstr "更新已安装的插件："
 
 #. Default: "Updates available"
@@ -4128,9 +4113,9 @@ msgstr "更新已安装的插件："
 msgid "Updates available"
 msgstr "可用更新"
 
-#. Default: "Upgradable addons"
+#. Default: "Upgradable add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Upgradable addons"
+msgid "Upgradable add-ons"
 msgstr ""
 
 #. Default: "Upgrade"

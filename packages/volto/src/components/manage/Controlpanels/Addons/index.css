@@ -21,9 +21,13 @@
 
 #page-addons.controlpanel-addons .addon-item .addon-item-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   padding-bottom: 1rem;
+  gap: 1rem;
+  @media only screen and (max-width: 1071px) {
+    gap: 1.5rem;
+  }
 }
 
 #page-addons.controlpanel-addons .no-upgrades-available,

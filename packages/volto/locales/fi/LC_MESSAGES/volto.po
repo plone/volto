@@ -89,7 +89,7 @@ msgstr "Lisää (objektilista)"
 
 #. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add Addons"
+msgid "Add Add-ons"
 msgstr "Lisää laajennoksia"
 
 #. Default: "Add Alternative URL"
@@ -237,6 +237,36 @@ msgstr "Laajennokset"
 msgid "Add-on Configuration"
 msgstr "Laajennosten asetukset"
 
+#. Default: "Add-on could not be installed"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be installed"
+msgstr "Laajennosta ei voitu asentaa"
+
+#. Default: "Add-on could not be uninstalled"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be uninstalled"
+msgstr "Laajennosta ei voitu poistaa"
+
+#. Default: "Add-on could not be upgraded"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be upgraded"
+msgstr "Laajennosta ei voitu päivittää"
+
+#. Default: "Add-on installed successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on installed succesfuly"
+msgstr "Laajennos asennettu onnistuneesti"
+
+#. Default: "Add-on uninstalled successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on uninstalled succesfuly"
+msgstr "Laajennos poistettu onnistuneesti"
+
+#. Default: "Add-on upgraded succesfuly"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on upgraded succesfuly"
+msgstr "Laajennos päivitetty onnistuneesti"
+
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons"
@@ -256,36 +286,6 @@ msgstr "Lisätty"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
 msgstr "Erillinen päivä"
-
-#. Default: "Addon could not be installed"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon could not be installed"
-msgstr "Laajennosta ei voitu asentaa"
-
-#. Default: "Addon could not be uninstalled"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon could not be uninstalled"
-msgstr "Laajennosta ei voitu poistaa"
-
-#. Default: "Addon could not be upgraded"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon could not be upgraded"
-msgstr "Laajennosta ei voitu päivittää"
-
-#. Default: "Addon installed successfully"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon installed succesfuly"
-msgstr "Laajennos asennettu onnistuneesti"
-
-#. Default: "Addon uninstalled successfully"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
-msgstr "Laajennos poistettu onnistuneesti"
-
-#. Default: "Addon upgraded succesfuly"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
-msgstr "Laajennos päivitetty onnistuneesti"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
@@ -441,9 +441,9 @@ msgstr ""
 msgid "Available"
 msgstr "Saatavilla"
 
-#. Default: "Available addons"
+#. Default: "Available add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Available addons"
+msgid "Available add-ons"
 msgstr ""
 
 #. Default: "Available content rules:"
@@ -1888,9 +1888,9 @@ msgstr ""
 msgid "Installed"
 msgstr "Asennettu"
 
-#. Default: "Installed addons"
+#. Default: "Installed add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Installed addons"
+msgid "Installed add-ons"
 msgstr ""
 
 #. Default: "Installed version"
@@ -2395,12 +2395,12 @@ msgstr "Uutisnäkymä"
 msgid "No"
 msgstr "Ei"
 
-#. Default: "No addons available for installation."
+#. Default: "No add-ons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr "Ei lisäosia saatavilla asennettavaksi."
+msgstr ""
 
-#. Default: "No installed addons."
+#. Default: "No installed add-ons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Installed available"
 msgstr "Ei asennettuja lisäosia saatavilla."
@@ -2433,7 +2433,7 @@ msgstr "Videota ei valittu"
 #. Default: "No addons found"
 #: components/manage/Controlpanels/VersionOverview
 msgid "No addons found"
-msgstr "Lisäosia ei löytynyt"
+msgstr ""
 
 #. Default: "No broken relations found."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -2522,7 +2522,7 @@ msgstr "Ei tuloksia"
 msgid "No selection"
 msgstr "Ei valintaa"
 
-#. Default: "This addon does not provide an uninstall profile."
+#. Default: "This add-on does not provide an uninstall profile."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No uninstall profile"
 msgstr "Ei sisällä asennuksen poistamista"
@@ -2773,21 +2773,6 @@ msgstr "Voimanlähteenä Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Asetukset"
-
-#. Default: "Press Enter to install this addon"
-#: components/manage/Controlpanels/Addons/AddonItem
-msgid "Press Enter to install this addon"
-msgstr ""
-
-#. Default: "Press Enter to uninstall this addon"
-#: components/manage/Controlpanels/Addons/AddonItem
-msgid "Press Enter to uninstall this addon"
-msgstr ""
-
-#. Default: "Press Enter to update this addon"
-#: components/manage/Controlpanels/Addons/AddonItem
-msgid "Press Enter to update this addon"
-msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -3855,9 +3840,9 @@ msgstr "Löytyi joitakin puutteita tai virheitä."
 msgid "Third"
 msgstr "Kolmas"
 
-#. Default: "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 msgstr "Tämä lisäosa on päivitetty. Nykyinen asennettu profiiliversio on {installedVersion}. Uusi saatavilla oleva profiiliversio on {newVersion}."
 
 #. Default: "This has an ongoing working copy in {title}"
@@ -4117,9 +4102,9 @@ msgstr "Päivitä"
 msgid "Update User"
 msgstr ""
 
-#. Default: "Update installed addons:"
+#. Default: "Update installed add-ons:"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Update installed addons:"
+msgid "Update installed add-ons:"
 msgstr "Päivitä asennetut lisäosat:"
 
 #. Default: "Updates available"
@@ -4127,9 +4112,9 @@ msgstr "Päivitä asennetut lisäosat:"
 msgid "Updates available"
 msgstr "Päivityksiä saatavilla"
 
-#. Default: "Upgradable addons"
+#. Default: "Upgradable add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Upgradable addons"
+msgid "Upgradable add-ons"
 msgstr ""
 
 #. Default: "Upgrade"

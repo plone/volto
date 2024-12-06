@@ -1,0 +1,1 @@
+Fixed the `README.md` for Volto core when releasing to npm registry: copy it from the root of the monorepo on release. @sneridagh

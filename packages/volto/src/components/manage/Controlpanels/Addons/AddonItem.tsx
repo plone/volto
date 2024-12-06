@@ -9,21 +9,9 @@ import {
 
 const messages = defineMessages({
   addonUpgradableInfo: {
-    id: 'This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}',
+    id: 'This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}',
     defaultMessage:
-      'This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}',
-  },
-  srHelperInstallAddon: {
-    id: 'Press Enter to install this addon',
-    defaultMessage: 'Press Enter to install this addon',
-  },
-  srHelperUpdateAddon: {
-    id: 'Press Enter to update this addon',
-    defaultMessage: 'Press Enter to update this addon',
-  },
-  srHelperUninstallAddon: {
-    id: 'Press Enter to uninstall this addon',
-    defaultMessage: 'Press Enter to uninstall this addon',
+      'This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}',
   },
 });
 
@@ -40,18 +28,6 @@ interface AvailableAddonProps extends BaseAddonProps {
 interface InstalledAddonProps extends BaseAddonProps {
   onUninstall: (event: PressEvent) => void;
 }
-
-const onActionWrapper =
-  (
-    id: PressEvent['target']['id'],
-    cbx:
-      | UpgradableAddonProps['onUpgrade']
-      | AvailableAddonProps['onInstall']
-      | InstalledAddonProps['onUninstall'],
-  ) =>
-  () => {
-    return cbx({ target: { id } } as PressEvent);
-  };
 
 const UpgradableItem: React.FC<UpgradableAddonProps> = ({
   addon,
@@ -72,27 +48,25 @@ const UpgradableItem: React.FC<UpgradableAddonProps> = ({
           : addon.description + addon.upgrade_info.available &&
             ` ${intl.formatMessage({ id: 'Press Enter to upgrade this addon' })}`
       }
-      onAction={onActionWrapper(addon.id, onUpgrade)}
+      isDisabled
     >
       <div className="addon-item-header">
         <h4>{addon.title + ` - ${addon.version}`}</h4>
         {addon.upgrade_info.available ? (
-          <div>
-            <RACButton
-              id={'upgradable-' + addon.id}
-              onPress={onUpgrade}
-              aria-label={
-                intl.formatMessage({ id: 'Update' }) +
-                ' ' +
-                addon.title +
-                ' ' +
-                intl.formatMessage({ id: 'upgradeVersions' })
-              }
-              className={'install-action'}
-            >
-              {intl.formatMessage({ id: 'Update' }) + ' ' + addon.title}
-            </RACButton>
-          </div>
+          <RACButton
+            id={'upgradable-' + addon.id}
+            onPress={onUpgrade}
+            aria-label={
+              intl.formatMessage({ id: 'Update' }) +
+              ' ' +
+              addon.title +
+              ' ' +
+              intl.formatMessage({ id: 'upgradeVersions' })
+            }
+            className={'install-action'}
+          >
+            {intl.formatMessage({ id: 'Update' }) + ' ' + addon.title}
+          </RACButton>
         ) : null}
       </div>
       <div className="addonUpgradableInfo" id={`addon-desc-${addon.id}`}>
@@ -112,23 +86,19 @@ const AvailableItem: React.FC<AvailableAddonProps> = ({ addon, onInstall }) => {
     <GridListItem
       key={addon['@id']}
       className="addon-item"
-      textValue={`${addon.title} ${addon.description} ${intl.formatMessage({ id: 'Press Enter to install this addon' })}`}
-      onAction={onActionWrapper(addon.id, onInstall)}
+      textValue={`${addon.title} - ${addon.description} ${intl.formatMessage({ id: 'Press Enter to install this addon' })}`}
+      isDisabled
     >
       <div className="addon-item-header">
         <h4>{addon.title + ` - ${addon.version}`}</h4>
-        <div>
-          <RACButton
-            id={addon.id}
-            onPress={onInstall}
-            aria-label={
-              intl.formatMessage({ id: 'Install' }) + ' ' + addon.title
-            }
-            className={'install-action'}
-          >
-            {intl.formatMessage({ id: 'Install' })}
-          </RACButton>
-        </div>
+        <RACButton
+          id={addon.id}
+          onPress={onInstall}
+          aria-label={intl.formatMessage({ id: 'Install' }) + ' ' + addon.title}
+          className={'install-action'}
+        >
+          {intl.formatMessage({ id: 'Install' })}
+        </RACButton>
       </div>
       <div className="addonInfo" id={`addon-desc-${addon.id}`}>
         <p>{addon.description}</p>
@@ -146,22 +116,20 @@ const InstalledItem: React.FC<InstalledAddonProps> = ({
       key={addon['@id']}
       className="addon-item"
       textValue={`${addon.title} ${addon.description} ${intl.formatMessage({ id: 'Press Enter to install this addon' })}`}
-      onAction={onActionWrapper(addon.id, onUninstall)}
+      isDisabled
     >
       <div className="addon-item-header">
         <h4>{addon.title + ` - ${addon.version}`}</h4>
-        <div>
-          <RACButton
-            id={'installed-' + addon.id}
-            onPress={onUninstall}
-            aria-label={
-              intl.formatMessage({ id: 'Uninstall' }) + ' ' + addon.title
-            }
-            className={'uninstall-action'}
-          >
-            {intl.formatMessage({ id: 'Uninstall' })}
-          </RACButton>
-        </div>
+        <RACButton
+          id={'installed-' + addon.id}
+          onPress={onUninstall}
+          aria-label={
+            intl.formatMessage({ id: 'Uninstall' }) + ' ' + addon.title
+          }
+          className={'uninstall-action'}
+        >
+          {intl.formatMessage({ id: 'Uninstall' })}
+        </RACButton>
       </div>
       <div className="addonInfo" id={`addon-desc-${addon.id}`}>
         <p>{addon.description}</p>

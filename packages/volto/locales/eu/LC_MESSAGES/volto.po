@@ -91,7 +91,7 @@ msgstr "Gehitu"
 
 #. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add Addons"
+msgid "Add Add-ons"
 msgstr "Gehitu gehigarriak"
 
 #. Default: "Add Alternative URL"
@@ -239,6 +239,36 @@ msgstr "Produktuak"
 msgid "Add-on Configuration"
 msgstr "Produktuen konfigurazioa"
 
+#. Default: "Add-on could not be installed"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be installed"
+msgstr "Produktu gehigarria ezin izan da instalatu"
+
+#. Default: "Add-on could not be uninstalled"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be uninstalled"
+msgstr "Produktu gehigarria ezin izan da kendu"
+
+#. Default: "Add-on could not be upgraded"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be upgraded"
+msgstr "Produktu gehigarria ezin izan da eguneratu"
+
+#. Default: "Add-on installed successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on installed succesfuly"
+msgstr "Produktu gehigarria ondo instalatu da"
+
+#. Default: "Add-on uninstalled successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on uninstalled succesfuly"
+msgstr "Produktu gehigarria ondo kendu da"
+
+#. Default: "Add-on upgraded succesfuly"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on upgraded succesfuly"
+msgstr "Produktu gehigarria ondo eguneratu da"
+
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons"
@@ -258,36 +288,6 @@ msgstr "Ondo gehitu da"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
 msgstr "Data gehigarria"
-
-#. Default: "Addon could not be installed"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon could not be installed"
-msgstr "Produktu gehigarria ezin izan da instalatu"
-
-#. Default: "Addon could not be uninstalled"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon could not be uninstalled"
-msgstr "Produktu gehigarria ezin izan da kendu"
-
-#. Default: "Addon could not be upgraded"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon could not be upgraded"
-msgstr "Produktu gehigarria ezin izan da eguneratu"
-
-#. Default: "Addon installed successfully"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon installed succesfuly"
-msgstr "Produktu gehigarria ondo instalatu da"
-
-#. Default: "Addon uninstalled successfully"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
-msgstr "Produktu gehigarria ondo kendu da"
-
-#. Default: "Addon upgraded succesfuly"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
-msgstr "Produktu gehigarria ondo eguneratu da"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
@@ -443,9 +443,9 @@ msgstr ""
 msgid "Available"
 msgstr "Aukerak"
 
-#. Default: "Available addons"
+#. Default: "Available add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Available addons"
+msgid "Available add-ons"
 msgstr ""
 
 #. Default: "Available content rules:"
@@ -1890,9 +1890,9 @@ msgstr ""
 msgid "Installed"
 msgstr "Instalatuta"
 
-#. Default: "Installed addons"
+#. Default: "Installed add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Installed addons"
+msgid "Installed add-ons"
 msgstr ""
 
 #. Default: "Installed version"
@@ -2397,12 +2397,12 @@ msgstr "Albistearen bista"
 msgid "No"
 msgstr "Ez"
 
-#. Default: "No addons available for installation."
+#. Default: "No add-ons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr "Ez dago instalatzeko gehigarririk eskuragarri."
+msgstr ""
 
-#. Default: "No installed addons."
+#. Default: "No installed add-ons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Installed available"
 msgstr "Ez dago instalatutako gehigarririk eskuragarri."
@@ -2435,7 +2435,7 @@ msgstr "Ez da bideorik aukeratu"
 #. Default: "No addons found"
 #: components/manage/Controlpanels/VersionOverview
 msgid "No addons found"
-msgstr "Ez da gehigarririk aurkitu"
+msgstr ""
 
 #. Default: "No broken relations found."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -2524,7 +2524,7 @@ msgstr "Ez da emaitzarik aurkitu."
 msgid "No selection"
 msgstr "Ez da ezer aukeratu"
 
-#. Default: "This addon does not provide an uninstall profile."
+#. Default: "This add-on does not provide an uninstall profile."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No uninstall profile"
 msgstr "Ez du desinstalatzeko profilik"
@@ -2775,21 +2775,6 @@ msgstr "Plone eta Pythonekin eginda"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Hobespenak"
-
-#. Default: "Press Enter to install this addon"
-#: components/manage/Controlpanels/Addons/AddonItem
-msgid "Press Enter to install this addon"
-msgstr ""
-
-#. Default: "Press Enter to uninstall this addon"
-#: components/manage/Controlpanels/Addons/AddonItem
-msgid "Press Enter to uninstall this addon"
-msgstr ""
-
-#. Default: "Press Enter to update this addon"
-#: components/manage/Controlpanels/Addons/AddonItem
-msgid "Press Enter to update this addon"
-msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -3857,9 +3842,9 @@ msgstr "Errorea gertatu da"
 msgid "Third"
 msgstr "Hirugarren"
 
-#. Default: "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This addon was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 msgstr "Gehigarri hau eguneratu da. Instalatutako profilaren egungo bertsioa {installedVersion} da. Eskuragarri dagoen profilaren bertsio berria {newVersion} da."
 
 #. Default: "This has an ongoing working copy in {title}"
@@ -4119,9 +4104,9 @@ msgstr "Eguneratu"
 msgid "Update User"
 msgstr ""
 
-#. Default: "Update installed addons:"
+#. Default: "Update installed add-ons:"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Update installed addons:"
+msgid "Update installed add-ons:"
 msgstr "Eguneratu instalatutako gehigarriak"
 
 #. Default: "Updates available"
@@ -4129,9 +4114,9 @@ msgstr "Eguneratu instalatutako gehigarriak"
 msgid "Updates available"
 msgstr "Instalatu daitezkeen eguneraketak"
 
-#. Default: "Upgradable addons"
+#. Default: "Upgradable add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Upgradable addons"
+msgid "Upgradable add-ons"
 msgstr ""
 
 #. Default: "Upgrade"
