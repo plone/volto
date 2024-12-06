@@ -44,8 +44,8 @@ const ContentsDeleteModal = (props) => {
   const { itemsToDelete = [], open, onCancel, onOk, items } = props;
   const intl = useIntl();
   const dispatch = useDispatch();
-  const linkintegrityInfo = useSelector((state) => state.linkIntegrity.result);
-  const loading = useSelector((state) => state.linkIntegrity.loading);
+  const linkintegrityInfo = useSelector((state) => state.linkIntegrity?.result);
+  const loading = useSelector((state) => state.linkIntegrity?.loading);
 
   const [brokenReferences, setBrokenReferences] = useState(0);
   const [containedItemsToDelete, setContainedItemsToDelete] = useState([]);
