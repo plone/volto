@@ -85,7 +85,7 @@ msgstr "Aggiungi"
 #. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Add-ons"
-msgstr "Aggiungi Add-ons"
+msgstr "Per far apparire qui i nuovi add-on, aggiungili alla tua configurazione, rifai la build e riavvia il processo del server. Per istruzioni dettagliate, vedi"
 
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
@@ -270,7 +270,7 @@ msgstr "Add-On"
 #. Default: "Add-ons Settings"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons Settings"
-msgstr "Impostazioni Add-ons"
+msgstr "Impostazioni add-on"
 
 #. Default: "Added"
 #: components/manage/Rules/Rules
@@ -2393,7 +2393,7 @@ msgstr "No"
 #. Default: "No add-ons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr ""
+msgstr "Nessun add-on disponibile per l'installazione"
 
 #. Default: "No installed add-ons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -2425,10 +2425,10 @@ msgstr "Nessun aggiornamento disponibile. Il tuo sito è aggiornato. Batti il ci
 msgid "No Video selected"
 msgstr "Nessun video selezionato"
 
-#. Default: "No addons found"
+#. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
-msgid "No addons found"
-msgstr ""
+msgid "No add-ons found"
+msgstr "Nessun add-on trovato"
 
 #. Default: "No broken relations found."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -4100,7 +4100,7 @@ msgstr "Aggiorna Utente"
 #. Default: "Update installed add-ons:"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Update installed add-ons:"
-msgstr "Aggiorna gli add-ons installati:"
+msgstr "Aggiorna gli add-on installati:"
 
 #. Default: "Updates available"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel

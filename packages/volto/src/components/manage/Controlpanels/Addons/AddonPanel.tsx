@@ -96,7 +96,7 @@ const AvailablePanel: React.FC<AvailablePanelProps & { intl: IntlShape }> = (
     >
       <div className="addons-section-header">
         <h3 id={type}>
-          {intl.formatMessage({ id: 'Available addons' })}:{' '}
+          {intl.formatMessage({ id: 'Available add-ons' })}:{' '}
           <span>{addons.length}</span>
         </h3>
       </div>
@@ -116,7 +116,7 @@ const AvailablePanel: React.FC<AvailablePanelProps & { intl: IntlShape }> = (
               key="no-addon-available"
               className="no-addon-available"
             >
-              {intl.formatMessage({ id: 'No Addon available' })}
+              {intl.formatMessage({ id: 'No Add-on available' })}
             </GridListItem>
           )}
         </GridList>
@@ -139,7 +139,7 @@ const InstalledPanel: React.FC<InstalledPanelProps & { intl: IntlShape }> = (
     >
       <div className="addons-section-header">
         <h3 id={type}>
-          {intl.formatMessage({ id: 'Installed addons' })}:{' '}
+          {intl.formatMessage({ id: 'Installed add-ons' })}:{' '}
           <span>{addons.length}</span>
         </h3>
       </div>

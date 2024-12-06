@@ -2425,9 +2425,9 @@ msgstr "इस कोने में कोई अपग्रेड नही�
 msgid "No Video selected"
 msgstr "कोई वीडियो चयनित नहीं है"
 
-#. Default: "No addons found"
+#. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
-msgid "No addons found"
+msgid "No add-ons found"
 msgstr ""
 
 #. Default: "No broken relations found."

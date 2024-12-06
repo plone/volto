@@ -2432,9 +2432,9 @@ msgstr "Pas de mises à jour ici. Vous êtes à jour. Tape m'en cinq !"
 msgid "No Video selected"
 msgstr "Aucune vidéo sélectionnée"
 
-#. Default: "No addons found"
+#. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
-msgid "No addons found"
+msgid "No add-ons found"
 msgstr ""
 
 #. Default: "No broken relations found."

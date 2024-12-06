@@ -2425,9 +2425,9 @@ msgstr "No upgrades in this corner. You are up to date. High fives."
 msgid "No Video selected"
 msgstr ""
 
-#. Default: "No addons found"
+#. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
-msgid "No addons found"
+msgid "No add-ons found"
 msgstr ""
 
 #. Default: "No broken relations found."

@@ -2430,9 +2430,9 @@ msgstr "Täällä ei ole päivityksiä. Olet ajan tasalla. Ylävitoset!"
 msgid "No Video selected"
 msgstr "Videota ei valittu"
 
-#. Default: "No addons found"
+#. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
-msgid "No addons found"
+msgid "No add-ons found"
 msgstr ""
 
 #. Default: "No broken relations found."
