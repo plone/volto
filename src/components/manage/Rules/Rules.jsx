@@ -75,6 +75,10 @@ const messages = defineMessages({
     id: 'Unassigned',
     defaultMessage: 'Unassigned',
   },
+  select_rule: {
+    id: 'Select rule',
+    defaultMessage: 'Select rule',
+  },
 });
 
 /**
@@ -365,7 +369,9 @@ class Rules extends Component {
             />
             <div style={{ display: 'flex' }}>
               <Select
-                placeholder="Select rule"
+                placeholder={this.props.intl.formatMessage(
+                  messages.select_rule,
+                )}
                 value={this.state.newRule}
                 onChange={(e, { value }) => this.setState({ newRule: value })}
                 options={assignable_rules.map((rule, i) => {
