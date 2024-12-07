@@ -9,6 +9,7 @@ import {
   buildStyleObjectFromData,
   buildStyleClassNamesExtenders,
 } from '@plone/volto/helpers';
+import { hideHandler } from '@plone/volto/helpers/Blocks/Blocks';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
@@ -28,14 +29,6 @@ const messages = defineMessages({
 });
 
 const EditBlockWrapper = (props) => {
-  const hideHandler = (data) => {
-    return (
-      !!data.fixed ||
-      (!config.experimental.addBlockButton.enabled &&
-        !(blockHasValue(data) && props.blockProps.editable))
-    );
-  };
-
   const { intl, blockProps, draginfo, children } = props;
   const {
     allowedBlocks,
@@ -59,7 +52,7 @@ const EditBlockWrapper = (props) => {
 
   const data = applyBlockDefaults({ data: originalData, ...blockProps, intl });
 
-  const visible = selected && !hideHandler(data);
+  const visible = selected && !hideHandler(data, editable);
 
   const required = isBoolean(data.required)
     ? data.required

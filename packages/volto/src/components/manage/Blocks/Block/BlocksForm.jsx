@@ -283,6 +283,7 @@ const BlocksForm = (props) => {
               onDeleteBlock={onDeleteBlock}
               onSelectBlock={onSelectBlock}
               removable
+              editable={editable}
               errors={blocksErrors}
             />
           </div>,

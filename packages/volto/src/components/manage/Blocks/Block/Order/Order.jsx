@@ -17,6 +17,7 @@ export function Order({
   dndKitCore,
   dndKitSortable,
   dndKitUtilities,
+  editable,
   errors,
 }) {
   const [activeId, setActiveId] = useState(null);
@@ -147,6 +148,7 @@ export function Order({
             indentationWidth={indentationWidth}
             onRemove={removable ? () => handleRemove(id) : undefined}
             onSelectBlock={onSelectBlock}
+            editable={editable}
             errors={errors?.[id] || {}}
           />
         ))}
