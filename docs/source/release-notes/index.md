@@ -17,6 +17,23 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.1.2 (2024-12-05)
+
+### Bugfix
+
+- Remove `not ie 11` from browserslist configuration, because it is now included in `not dead`. @stevepiercy [#6501](https://github.com/plone/volto/issues/6501)
+- Fix warnings related to `snapshot.managedPaths` on startup. @davisagli [#6511](https://github.com/plone/volto/issues/6511)
+
+### Internal
+
+- Add Accessibility acceptance tests for content types. @ana-oprea @ichim-david [#6339](https://github.com/plone/volto/issues/6339)
+- Fixed the `README.md` for Volto core when releasing to npm registry: copy it from the root of the monorepo on release. @sneridagh [#6510](https://github.com/plone/volto/issues/6510)
+
+### Documentation
+
+- Add new Volto trainings to tutorials. @stevepiercy [#6499](https://github.com/plone/volto/issues/6499)
+- `html_use_opensearch` value must not have a trailing slash. Clean up comments. @stevepiercy [#6502](https://github.com/plone/volto/issues/6502)
+
 ## 18.1.1 (2024-11-21)
 
 ### Bugfix

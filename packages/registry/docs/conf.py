@@ -177,7 +177,7 @@ html_theme_options = {
 
 # Announce that we have an opensearch plugin
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_use_opensearch
-html_use_opensearch = "https://plone-registry.readthedocs.io/"  # TODO: Confirm usage of opensearch in theme
+html_use_opensearch = "https://plone-registry.readthedocs.io"
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
