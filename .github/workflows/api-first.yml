@@ -211,7 +211,7 @@ jobs:
         run: pnpm --filter plone-remix build
 
       - name: Start server
-        run: nohup pnpm --filter plone-remix start:prod &
+        run: PLONE_API_PATH=http://localhost:8080/Plone nohup pnpm --filter plone-remix start:prod &
 
       - name: Wait
         run: packages/scripts/node_modules/.bin/wait-on --httpTimeout 20000 http-get://127.0.0.1:8080/Plone
@@ -267,7 +267,7 @@ jobs:
         run: pnpm --filter plone-rr7 build
 
       - name: Start server
-        run: nohup pnpm --filter plone-rr7 start:prod &
+        run: PLONE_API_PATH=http://localhost:8080/Plone nohup pnpm --filter plone-rr7 start:prod &
 
       - name: Wait
         run: packages/scripts/node_modules/.bin/wait-on --httpTimeout 20000 http-get://127.0.0.1:8080/Plone
