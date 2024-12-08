@@ -1,7 +1,8 @@
 import React from 'react';
 import { Form } from 'semantic-ui-react';
 import { Grid, Button } from 'semantic-ui-react';
-import { isEmpty, isEqual } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
+import isEqual from 'lodash/isEqual';
 import { defineMessages, useIntl } from 'react-intl';
 
 const messages = defineMessages({

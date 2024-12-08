@@ -2,7 +2,7 @@ import { Button } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { compose } from 'redux';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import {
   Option,
   DropdownIndicator,

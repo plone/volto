@@ -5,7 +5,10 @@ import { renderRoutes } from 'react-router-config';
 import { createStore, combineReducers } from 'redux';
 import { render } from '@testing-library/react';
 
-import { endGlobalLoad, beginGlobalLoad } from '@plone/volto/actions';
+import {
+  endGlobalLoad,
+  beginGlobalLoad,
+} from '@plone/volto/actions/asyncConnect/asyncConnect';
 import reduxAsyncConnect from '@plone/volto/reducers/asyncConnect/asyncConnect';
 
 import { AsyncConnectWithContext, AsyncConnect } from './AsyncConnect'; // , AsyncConnect

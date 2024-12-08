@@ -7,7 +7,7 @@ import superagent from 'superagent';
 import Cookies from 'universal-cookie';
 import config from '@plone/volto/registry';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
-import { stripQuerystring } from '@plone/volto/helpers';
+import { stripQuerystring } from '@plone/volto/helpers/Url/Url';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
