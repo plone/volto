@@ -4,7 +4,7 @@ import TestBlockView from './components/Blocks/TestBlock/View';
 import TestBlockEdit from './components/Blocks/TestBlock/Edit';
 import InputBlockView from './components/Blocks/InputBlock/View';
 import InputBlockEdit from './components/Blocks/InputBlock/Edit';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { SliderSchema as TestBlockSchema } from './components/Blocks/TestBlock/schema';
 import { inputBlockSchema } from './components/Blocks/InputBlock/schema';
 import { multipleFieldsetsSchema } from './components/Blocks/TestBlock/schema';
@@ -13,13 +13,13 @@ import codeSVG from '@plone/volto/icons/code.svg';
 import type { BlockConfigBase } from '@plone/types';
 import type { ConfigType } from '@plone/registry';
 import SlotComponentTest from './components/Slots/SlotTest';
-import { ContentTypeCondition } from '@plone/volto/helpers';
+import { ContentTypeCondition } from '@plone/volto/helpers/Slots';
 import { RouteCondition } from '@plone/volto/helpers/Slots';
 import TestForm from './components/TestForm';
 import FormBlockView from './components/Blocks/FormBlock/View';
 import FormBlockEdit from './components/Blocks/FormBlock/Edit';
 import { formBlockSchema } from './components/Blocks/FormBlock/schema';
-import { Login } from '@plone/volto/components';
+import Login from '@plone/volto/components/theme/Login/Login';
 
 const testBlock: BlockConfigBase = {
   id: 'testBlock',

@@ -9,7 +9,11 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import cx from 'classnames';
-import { isEqual, map, find, concat, remove } from 'lodash';
+import isEqual from 'lodash/isEqual';
+import map from 'lodash/map';
+import find from 'lodash/find';
+import concat from 'lodash/concat';
+import remove from 'lodash/remove';
 import { defineMessages, injectIntl } from 'react-intl';
 import {
   Form,
@@ -21,10 +25,10 @@ import {
   Header,
 } from 'semantic-ui-react';
 
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
 import SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
-import { toBackendLang } from '@plone/volto/helpers';
+import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import saveSVG from '@plone/volto/icons/save.svg';
