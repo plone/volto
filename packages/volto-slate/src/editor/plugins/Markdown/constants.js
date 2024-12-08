@@ -1,5 +1,5 @@
 import { toggleList } from './utils';
-import { isBlockActive } from '@plone/volto-slate/utils';
+import { isBlockActive } from '@plone/volto-slate/utils/blocks';
 import { UL, OL, LI, H2, H3, BLOCKQUOTE } from '@plone/volto-slate/constants';
 
 /**
