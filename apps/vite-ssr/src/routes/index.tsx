@@ -3,7 +3,8 @@ import * as React from 'react';
 import { flattenToAppURL } from '../utils';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { usePloneClient } from '@plone/providers';
-import { Breadcrumbs, RenderBlocks } from '@plone/components';
+import { Breadcrumbs } from '@plone/components';
+import RenderBlocks from '@plone/blocks/RenderBlocks/RenderBlocks';
 import config from '@plone/registry';
 
 const expand = ['breadcrumbs', 'navigation'];

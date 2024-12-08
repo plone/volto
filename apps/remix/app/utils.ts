@@ -1,4 +1,4 @@
-import config from './config';
+import config from '@plone/registry';
 
 /**
  * Flatten to app server URL - Given a URL if it starts with the API server URL
@@ -9,9 +9,11 @@ import config from './config';
  */
 export function flattenToAppURL(url: string) {
   const { settings } = config;
-
-  return (
+  const result =
     url &&
-    url.replace(settings.apiPath, '').replace('http://localhost:3000', '')
-  );
+    url
+      .replace(settings.apiPath, '')
+      .replace(settings.internalApiPath || '', '')
+      .replace('http://localhost:3000', '');
+  return result;
 }

@@ -1,0 +1,280 @@
+name: API-first story Tests
+on: [push, pull_request]
+
+env:
+  node-version: 22.x
+
+jobs:
+  config:
+    runs-on: ubuntu-latest
+    outputs:
+      ENVIRONMENT: ${{ steps.vars.outputs.ENVIRONMENT }}
+      STACK_NAME: ${{ steps.vars.outputs.STACK_NAME }}
+      nextjs: ${{ steps.filter.outputs.nextjs }}
+      remix: ${{ steps.filter.outputs.remix }}
+      rr7: ${{ steps.filter.outputs.rr7 }}
+      tss: ${{ steps.filter.outputs.tss }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set Env Vars
+        id: vars
+        run: |
+          ENVIRONMENT=${{ vars.LIVE_ENV }}
+          echo "ENVIRONMENT=${ENVIRONMENT}" >> $GITHUB_OUTPUT
+          echo "STACK_NAME=${ENVIRONMENT//./-}" >> $GITHUB_OUTPUT
+
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            nextjs:
+              - 'apps/nextjs/**'
+              - '.github/workflows/api-first.yml'
+            remix:
+              - 'apps/remix/**'
+              - '.github/workflows/api-first.yml'
+            rr7:
+              - 'apps/rr7/**'
+              - '.github/workflows/api-first.yml'
+            tss:
+              - 'apps/vite-ssr/**'
+              - '.github/workflows/api-first.yml'
+
+  tss:
+    if: ${{ needs.config.outputs.tss == 'true' }} && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
+    runs-on: ubuntu-latest
+    name: Vite SSR
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+
+      # node setup
+      - name: Use Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.node-version }}
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build dependencies
+        run: pnpm build:all
+
+      - name: Start backend
+        run: make backend-docker-detached-start
+
+      - name: Build
+        run: pnpm --filter plone-vite-ssr build
+
+      - name: Start server
+        run: nohup pnpm --filter plone-vite-ssr start:prod &
+
+      - name: Wait
+        run: packages/scripts/node_modules/.bin/wait-on --httpTimeout 20000 http-get://127.0.0.1:8080/Plone
+
+      - name: Run tests
+        run: curl http://localhost:3000 || true
+
+      - name: Run tests
+        run: curl http://127.0.0.1:3000 || true
+
+      - name: Run tests
+        run: node packages/scripts/check_deployment.js
+
+      - name: Stop backend
+        run: make backend-docker-detached-stop
+
+  nextjs:
+    # if: ${{ needs.config.outputs.nextjs == 'true' }} && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
+    if: false
+    runs-on: ubuntu-latest
+    name: Next.JS
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+
+      # node setup
+      - name: Use Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.node-version }}
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build dependencies
+        run: pnpm build:all
+
+      - name: Start backend
+        run: make backend-docker-detached-start
+
+      - name: Build
+        run: pnpm --filter plone-nextjs build
+
+      - name: Start server
+        run: nohup pnpm --filter plone-nextjs start:prod &
+
+      - name: Wait
+        run: packages/scripts/node_modules/.bin/wait-on --httpTimeout 20000 http-get://127.0.0.1:8080/Plone
+
+      - name: Run tests
+        run: curl http://localhost:3000 || true
+
+      - name: Run tests
+        run: curl http://127.0.0.1:3000 || true
+
+      - name: Run tests
+        run: node packages/scripts/check_deployment.js
+
+      - name: Stop backend
+        run: make backend-docker-detached-stop
+
+  remix:
+    if: ${{ needs.config.outputs.remix == 'true' }} && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
+    runs-on: ubuntu-latest
+    name: Remix
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+
+      # node setup
+      - name: Use Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.node-version }}
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build dependencies
+        run: pnpm build:all
+
+      - name: Start backend
+        run: make backend-docker-detached-start
+
+      - name: Build
+        run: pnpm --filter plone-remix build
+
+      - name: Start server
+        run: PLONE_API_PATH=http://localhost:8080/Plone nohup pnpm --filter plone-remix start:prod &
+
+      - name: Wait
+        run: packages/scripts/node_modules/.bin/wait-on --httpTimeout 20000 http-get://127.0.0.1:8080/Plone
+
+      - name: Run tests
+        run: node packages/scripts/check_deployment.js
+
+      - name: Stop backend
+        run: make backend-docker-detached-stop
+
+  rr7:
+    if: ${{ needs.config.outputs.rr7 == 'true' }} && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
+    runs-on: ubuntu-latest
+    name: ReactRouter 7
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+
+      # node setup
+      - name: Use Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.node-version }}
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build dependencies
+        run: pnpm build:all
+
+      - name: Start backend
+        run: make backend-docker-detached-start
+
+      - name: Build
+        run: pnpm --filter plone-rr7 build
+
+      - name: Start server
+        run: PLONE_API_PATH=http://localhost:8080/Plone nohup pnpm --filter plone-rr7 start:prod &
+
+      - name: Wait
+        run: packages/scripts/node_modules/.bin/wait-on --httpTimeout 20000 http-get://127.0.0.1:8080/Plone
+
+      - name: Run tests
+        run: node packages/scripts/check_deployment.js
+
+      - name: Stop backend
+        run: make backend-docker-detached-stop

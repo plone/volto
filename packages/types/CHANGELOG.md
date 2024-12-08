@@ -1,4 +1,4 @@
-# @plone/volto-types Release Notes
+# @plone/types Release Notes
 
 <!-- Do *NOT* add new change log entries to this file.
      Instead create a file in the news directory.
@@ -12,7 +12,7 @@
 
 ### Internal
 
-- Release 1.0.0 @sneridagh 
+- Release 1.0.0 @sneridagh
 
 ## 1.0.0-alpha.22 (2024-10-30)
 
