@@ -30,7 +30,10 @@ function filesMiddlewareFn(req, res, next) {
 export default function filesMiddleware() {
   const middleware = express.Router();
 
-  middleware.all(['**/@@download/*', '**/@@display-file/*'], filesMiddlewareFn);
+  middleware.all(
+    ['**/@@download/*', '**/@@display-file/*', '**/ics_view'],
+    filesMiddlewareFn,
+  );
   middleware.id = 'filesResourcesProcessor';
   return middleware;
 }
