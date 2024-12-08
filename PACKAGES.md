@@ -4,7 +4,7 @@ This document describes the packages that come with Volto, the default frontend 
 
 These packages are part of Plone's API-first story.
 Most of them are experimental and are marked in their respective `README` files.
-Plone 6.1 (Volto 18) depends on:
+Plone 6.1.x (Volto 18) depends on:
 - `@plone/registry`
 - `@plone/scripts`
 - `@plone/volto-slate`
@@ -12,12 +12,12 @@ Plone 6.1 (Volto 18) depends on:
 and as a development dependency:
 - `@plone/types`
 
-Plone 6 (Volto 17 and below) does not use any of them.
+Plone 6.0.x (Volto 17 and below) does not use any of them.
 
-These packages are expected to be used and part of Plone 7.
-Could be that some of them will be part of the upcoming Plone minor versions prior to Plone 7.
+These packages are expected to be used and become part of Plone 7.
+Some of them might become part of Plone 6.1.x minor versions.
 
-The packages are divided in three categories or types:
+The packages are divided into three categories or types:
 
 - core
 - utilities
@@ -77,9 +77,9 @@ This bundle must work on both CommonJS and ESM environments.
 Add-on or feature packages, can depend on any other package.
 You must distribute them as source code, and not transpile them.
 They must provide a default configuration registry loader as the default main entry point export.
-Unlike Volto add-ons, it is preferibly *NOT* to place the code in `src` folder.
-If the package is not being transpiled, the direct resolution must work OOTB, so the bundlers resolution is direct, as well as the TypeScript resolution.
-They must be loadable as any other add-on and contain an add-on registry compatible `install`-able default export.
+Unlike Volto add-ons, do *NOT* place the code in the `src` folder.
+If you do not transpile the package, the direct resolution must work out of the box, where both the bundler and TypeScript resolution are direct.
+They must be loadable as any other add-on, and contain an add-on registry compatible `install`-able default export.
 
 
 ## Development utility packages
