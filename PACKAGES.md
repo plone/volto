@@ -2,17 +2,37 @@
 
 This document describes the packages that come with Volto, the default frontend for Plone 6.
 
+These packages are part of Plone's API-first story.
+Most of them are experimental and are marked in their respective `README` files.
+Plone 6.1 (Volto 18) depends on:
+- `@plone/registry`
+- `@plone/scripts`
+- `@plone/volto-slate`
+
+and as a development dependency:
+- `@plone/types`
+
+Plone 6 (Volto 17 and below) does not use any of them.
+
+These packages are expected to be used and part of Plone 7.
+Could be that some of them will be part of the upcoming Plone minor versions prior to Plone 7.
+
+The packages are divided in three categories or types:
+
+- core
+- utilities
+- add-ons
+
 
 ## `@plone/types`
 
 Plone types is a special development package.
 It contains the Plone typings for TypeScript.
-It's considered a core package, and it's the only package that the other core packages can rely on as
-a `devDependency` in your project configuration.
+It's considered a core package, and it's the only package that the other core packages can rely on as a `devDependency` in your project configuration.
 
 This package contains `.d.ts` typing definitions, curated by hand.
-Due to the nature of this package, it does not need bundling.
-It's published "as is", so you can import the type definitions from anywhere in your code.
+Due to the nature of this package, it does not need to be built nor bundled.
+It is published "as is", so you can import the type definitions from anywhere in your code.
 
 
 ## Core packages
@@ -29,11 +49,11 @@ They must be published and bundled in a traditional (transpiled) way.
 The bundle of these packages must work on both CommonJS and ECMAScript Module (ESM) environments.
 
 
-## Utility packages
+## Utilities packages
 
--   `@plone/drivers`
--   `@plone/helpers`
 -   `@plone/providers`
+-   `@plone/helpers`
+-   `@plone/drivers`
 -   `@plone/rsc`
 
 
@@ -44,19 +64,22 @@ They must be published in the traditional way, as a bundle.
 This bundle must work on both CommonJS and ESM environments.
 
 
-## Feature packages
+## Add-on packages
 
 -   `@plone/blocks`
--   `@plone/contents`
 -   `@plone/slots`
+-   `@plone/theming`
+-   `@plone/contents`
 
 
 ### Rules
 
-Feature packages, or add-on packages, can depend on any other package.
+Add-on or feature packages, can depend on any other package.
 You must distribute them as source code, and not transpile them.
 They must provide a default configuration registry loader as the default main entry point export.
-They must be loadable as any other add-on.
+Unlike Volto add-ons, it is preferibly *NOT* to place the code in `src` folder.
+If the package is not being transpiled, the direct resolution must work OOTB, so the bundlers resolution is direct, as well as the TypeScript resolution.
+They must be loadable as any other add-on and contain an add-on registry compatible `install`-able default export.
 
 
 ## Development utility packages
