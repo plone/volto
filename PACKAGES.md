@@ -53,8 +53,6 @@ The bundle of these packages must work on both CommonJS and ECMAScript Module (E
 
 -   `@plone/providers`
 -   `@plone/helpers`
--   `@plone/drivers`
--   `@plone/rsc`
 
 
 ### Rules
