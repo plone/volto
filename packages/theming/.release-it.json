@@ -17,13 +17,13 @@
     "changelog": "pipx run towncrier build --draft --yes --version 0.0.0",
     "requireUpstream": false,
     "requireCleanWorkingDir": false,
-    "commitMessage": "Release @plone/types ${version}",
-    "tagName": "plone-types-${version}",
-    "tagAnnotation": "Release @plone/types ${version}"
+    "commitMessage": "Release @plone/theming ${version}",
+    "tagName": "plone-theming-${version}",
+    "tagAnnotation": "Release @plone/theming ${version}"
   },
   "github": {
     "release": true,
-    "releaseName": "@plone/types ${version}",
+    "releaseName": "@plone/theming ${version}",
     "releaseNotes": "cat .changelog.draft"
   }
 }

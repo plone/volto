@@ -42,6 +42,12 @@ jobs:
               - 'packages/scripts/**'
             voltoSlate:
               - 'packages/volto-slate/**'
+            blocks:
+              - 'packages/blocks/**'
+            slots:
+              - 'packages/slots/**'
+            theming:
+              - 'packages/theming/**'
             wrongNews:
               - added|modified: 'news/**'
 
@@ -117,6 +123,30 @@ jobs:
         run: |
           git fetch --no-tags origin main
           towncrier check --compare-with origin/main --dir packages/volto-slate
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
+      - name: Blocks changelog check
+        if: steps.filter.outputs.blocks == 'true'
+        run: |
+          git fetch --no-tags origin main
+          towncrier check --compare-with origin/main --dir packages/blocks
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
+      - name: Slots changelog check
+        if: steps.filter.outputs.slots == 'true'
+        run: |
+          git fetch --no-tags origin main
+          towncrier check --compare-with origin/main --dir packages/slots
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
+      - name: Theming changelog check
+        if: steps.filter.outputs.theming == 'true'
+        run: |
+          git fetch --no-tags origin main
+          towncrier check --compare-with origin/main --dir packages/theming
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 

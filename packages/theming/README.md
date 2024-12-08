@@ -1,6 +1,6 @@
-# `@plone/slots`
+# @plone/theming
 
-This package provides default structural slots for Plone 7 and the API-first story.
+Base foundamental theming infrastructure for Plone 7 and the API-first story.
 
 > [!WARNING]
 > This package or app is experimental.

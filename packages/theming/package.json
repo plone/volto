@@ -1,6 +1,6 @@
 {
   "name": "@plone/theming",
-  "description": "Plone base theming",
+  "description": "Plone base foundamental theming",
   "maintainers": [
     {
       "name": "Plone Foundation",
