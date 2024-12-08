@@ -1,13 +1,10 @@
 import ReactDOM from 'react-dom';
 import { Editor } from 'slate';
 // import { ReactEditor } from 'slate-react';
-import {
-  splitEditorInTwoFragments,
-  setEditorContent,
-  createAndSelectNewBlockAfter,
-  rangeIsInSplittableNode,
-  // deconstructToVoltoBlocks,
-} from '@plone/volto-slate/utils';
+import { splitEditorInTwoFragments } from '@plone/volto-slate/utils/ops';
+import { setEditorContent } from '@plone/volto-slate/utils/editor';
+import { createAndSelectNewBlockAfter } from '@plone/volto-slate/utils/volto-blocks';
+import { rangeIsInSplittableNode } from '@plone/volto-slate/utils/internals';
 
 /**
  * @param {Editor} editor The Slate editor object to extend.

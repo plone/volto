@@ -1,22 +1,24 @@
 import ReactDOM from 'react-dom';
-import { cloneDeep } from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import { Editor } from 'slate';
 import {
   getPreviousVoltoBlock,
   getNextVoltoBlock,
-  isCursorAtBlockStart,
-  isCursorAtBlockEnd,
   mergeSlateWithBlockBackward,
   mergeSlateWithBlockForward,
-  makeEditor,
-} from '@plone/volto-slate/utils';
+} from '@plone/volto-slate/utils/volto-blocks';
+import {
+  isCursorAtBlockStart,
+  isCursorAtBlockEnd,
+} from '@plone/volto-slate/utils/selection';
+import { makeEditor } from '@plone/volto-slate/utils/editor';
 import {
   changeBlock,
   deleteBlock,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
 /**
  * Joins the current block (which has an active Slate Editor)
  * with the previous block, to make a single block.

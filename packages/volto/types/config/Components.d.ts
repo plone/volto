@@ -9,6 +9,6 @@ export namespace components {
         export { Image as component };
     }
 }
-import { PreviewImage as PreviewImage_1 } from '@plone/volto/components';
-import { App as App_1 } from '@plone/volto/components';
-import { Image as Image_1 } from '@plone/volto/components';
+import PreviewImage_1 from '@plone/volto/components/theme/PreviewImage/PreviewImage';
+import App_1 from '@plone/volto/components/theme/App/App';
+import Image_1 from '@plone/volto/components/theme/Image/Image';

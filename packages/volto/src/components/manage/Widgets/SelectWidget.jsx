@@ -7,15 +7,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { map } from 'lodash';
+import map from 'lodash/map';
 import { defineMessages, injectIntl } from 'react-intl';
 import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Vocabularies/Vocabularies';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
+import {
+  getVocabulary,
+  getVocabularyTokenTitle,
+} from '@plone/volto/actions/vocabularies/vocabularies';
 import { normalizeValue } from '@plone/volto/components/manage/Widgets/SelectUtils';
 
 import {

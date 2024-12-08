@@ -5,8 +5,8 @@
  */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { SidebarPopup } from '@plone/volto/components';
-import { setPluginOptions } from '@plone/volto-slate/actions';
+import SidebarPopup from '@plone/volto/components/manage/Sidebar/SidebarPopup';
+import { setPluginOptions } from '@plone/volto-slate/actions/plugins';
 
 const SidebarEditor = (props) => {
   const { editor, pluginId, getActiveElement, pluginEditor } = props;

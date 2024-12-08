@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { uniqBy } from 'lodash';
+import uniqBy from 'lodash/uniqBy';
 import { FormattedMessage } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { Divider, Segment, Table } from 'semantic-ui-react';
-import { queryRelations } from '@plone/volto/actions';
-import { flattenToAppURL } from '@plone/volto/helpers';
-import { ConditionalLink } from '@plone/volto/components';
+import { queryRelations } from '@plone/volto/actions/relations/relations';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
 
 const BrokenRelations = () => {
   const dispatch = useDispatch();
