@@ -33,7 +33,6 @@ export const Default: Story = {
         },
         site: {
           'plone.site_title': 'Plone site',
-          // 'plone.site_logo': 'https://sneridagh.dev/',
         },
       },
     },
