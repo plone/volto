@@ -733,6 +733,7 @@ The barrel imports files include the following in Volto.
 They also include the following in the `@plone/volto-slate` package.
 
 -   {file}`src/actions/index.js`
+-   {file}`src/editor/ui/index.js`
 -   {file}`src/utils/index.js`
 
 ##### Alternative

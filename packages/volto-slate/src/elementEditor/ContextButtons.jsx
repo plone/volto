@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl'; // , defineMessages
 
 import clearSVG from '@plone/volto/icons/delete.svg';
 
-import { ToolbarButton } from '@plone/volto-slate/editor/ui';
+import ToolbarButton from '@plone/volto-slate/editor/ui/ToolbarButton';
 import { setPluginOptions } from '@plone/volto-slate/actions/plugins';
 
 /*

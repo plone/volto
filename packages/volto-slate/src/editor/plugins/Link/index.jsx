@@ -13,10 +13,8 @@ import { SIMPLELINK, LINK } from '@plone/volto-slate/constants';
 import { LinkElement } from './render';
 import { simpleLinkDeserializer, withSimpleLink } from './extensions';
 import { setPluginOptions } from '@plone/volto-slate/actions/plugins';
-import {
-  ToolbarButton as UIToolbarButton,
-  PositionedToolbar,
-} from '@plone/volto-slate/editor/ui';
+import UIToolbarButton from '@plone/volto-slate/editor/ui/ToolbarButton';
+import PositionedToolbar from '@plone/volto-slate/editor/ui/PositionedToolbar';
 import { useSelectionPosition } from '@plone/volto-slate/hooks/useSelectionPosition';
 
 import linkSVG from '@plone/volto/icons/link.svg';

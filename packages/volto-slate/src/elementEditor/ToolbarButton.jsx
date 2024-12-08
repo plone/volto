@@ -6,7 +6,7 @@ import { useSlate } from 'slate-react';
 import { useDispatch } from 'react-redux';
 import omit from 'lodash/omit';
 
-import { ToolbarButton } from '@plone/volto-slate/editor/ui';
+import ToolbarButton from '@plone/volto-slate/editor/ui/ToolbarButton';
 import { hasRangeSelection } from '@plone/volto-slate/utils/selection';
 import { setPluginOptions } from '@plone/volto-slate/actions/plugins';
 

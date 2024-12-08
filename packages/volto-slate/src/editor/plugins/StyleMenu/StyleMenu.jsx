@@ -6,7 +6,7 @@ import cx from 'classnames';
 import omit from 'lodash/omit';
 import { isBlockStyleActive, isInlineStyleActive, toggleStyle } from './utils';
 import config from '@plone/volto/registry';
-import { ToolbarButton } from '@plone/volto-slate/editor/ui';
+import ToolbarButton from '@plone/volto-slate/editor/ui/ToolbarButton';
 import paintSVG from '@plone/volto/icons/paint.svg';
 
 const messages = defineMessages({

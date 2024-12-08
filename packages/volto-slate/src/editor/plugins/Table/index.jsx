@@ -12,7 +12,7 @@ import colAfterSVG from '@plone/volto/icons/column-after.svg';
 import rowDeleteSVG from '@plone/volto/icons/row-delete.svg';
 import colDeleteSVG from '@plone/volto/icons/column-delete.svg';
 
-import { ToolbarButton } from '@plone/volto-slate/editor/ui';
+import ToolbarButton from '@plone/volto-slate/editor/ui/ToolbarButton';
 import { Range, Transforms, Editor, Path } from 'slate';
 import { defineMessages, useIntl } from 'react-intl';
 import { TABLE, TR, P, TD, TH } from '@plone/volto-slate/constants';
