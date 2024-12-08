@@ -1,8 +1,8 @@
 # Useful Information while developing PLIPs
 
-## 6321 - SemanticUI free CMSUI
+## 6321 - Remove Semantic UI from CMSUI
 
-Link to PLIP: [SemanticUI free CMSUI](https://github.com/plone/volto/issues/6321)
+Link to PLIP: [Remove Semantic UI from CMSUI](https://github.com/plone/volto/issues/6321)
 
 ### Directives
 
