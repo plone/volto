@@ -52,6 +52,10 @@ export interface BlockConfigBase {
    */
   group: string;
   /**
+   * The category of the block
+   */
+  category: string;
+  /**
    * The view mode component
    */
   view?: React.ComponentType<BlockViewProps>;

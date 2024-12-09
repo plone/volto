@@ -1,0 +1,29 @@
+{
+  "plugins": {
+    "../scripts/prepublish.js": {}
+  },
+  "hooks": {
+    "after:bump": [
+      "pipx run towncrier build --draft --yes --version ${version} > .changelog.draft",
+      "pipx run towncrier build --yes --version ${version}"
+    ],
+    "after:release": "rm .changelog.draft"
+  },
+  "npm": {
+    "publish": false
+  },
+  "git": {
+    "commitArgs": ["--no-verify"],
+    "changelog": "pipx run towncrier build --draft --yes --version 0.0.0",
+    "requireUpstream": false,
+    "requireCleanWorkingDir": false,
+    "commitMessage": "Release @plone/slots ${version}",
+    "tagName": "plone-slots-${version}",
+    "tagAnnotation": "Release @plone/slots ${version}"
+  },
+  "github": {
+    "release": true,
+    "releaseName": "@plone/slots ${version}",
+    "releaseNotes": "cat .changelog.draft"
+  }
+}

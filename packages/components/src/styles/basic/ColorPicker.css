@@ -10,34 +10,36 @@
 @import './Select.css';
 @import './theme.css';
 
-.color-picker {
-  display: flex;
-  align-items: center;
-  padding: 0;
-  border: none;
-  border-radius: 4px;
-  appearance: none;
-  background: none;
-  color: var(--text-color);
-  font-size: 1rem;
-  gap: 8px;
-  outline: none;
-  vertical-align: middle;
+@layer plone-components {
+  .color-picker {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    appearance: none;
+    background: none;
+    color: var(--text-color);
+    font-size: 1rem;
+    gap: 8px;
+    outline: none;
+    vertical-align: middle;
 
-  &[data-focus-visible] {
-    outline: 2px solid var(--focus-ring-color);
-    outline-offset: 2px;
+    &[data-focus-visible] {
+      outline: 2px solid var(--focus-ring-color);
+      outline-offset: 2px;
+    }
   }
-}
 
-.color-picker-dialog {
-  display: flex;
-  overflow: auto;
-  min-width: 192px;
-  max-height: inherit;
-  box-sizing: border-box;
-  flex-direction: column;
-  padding: 15px;
-  gap: 8px;
-  outline: none;
+  .color-picker-dialog {
+    display: flex;
+    overflow: auto;
+    min-width: 192px;
+    max-height: inherit;
+    box-sizing: border-box;
+    flex-direction: column;
+    padding: 15px;
+    gap: 8px;
+    outline: none;
+  }
 }

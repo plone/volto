@@ -1,8 +1,6 @@
 # `@plone/blocks`
 
-This package contains the default blocks provided by Plone.
-This package is in alpha stages, experimental, under heavy development, and is subject to substantial changes in the future.
-It's one of the Plone frontend strategic packages and part of the headless CMS story.
+This package provides default blocks for Plone 7 and the API-first story.
 
 `@plone/blocks` is not part of Volto, and thus, is not used by it.
 

@@ -56,6 +56,9 @@
       "import": "./vite-plugin.js",
       "types": "./vite-plugin.d.ts"
     },
+    "./addons-loader": {
+      "types": "./vite-plugin.d.ts"
+    },
     ".": {
       "import": "./dist/index.js",
       "default": "./dist/index.cjs"
