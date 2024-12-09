@@ -1,1 +1,0 @@
-Fixed circular import error in dev with HMR in `App` component when imported in the main default config. @sneridagh
