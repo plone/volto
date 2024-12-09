@@ -5,11 +5,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Icon as IconOld, Label } from 'semantic-ui-react';
-import { map } from 'lodash';
+import map from 'lodash/map';
 import cx from 'classnames';
 import { defineMessages, injectIntl } from 'react-intl';
 import LanguageSVG from '@plone/volto/icons/language.svg';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 
 const messages = defineMessages({
   edit: {

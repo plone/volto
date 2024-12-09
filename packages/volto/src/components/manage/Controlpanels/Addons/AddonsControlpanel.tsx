@@ -5,21 +5,22 @@ import { createPortal } from 'react-dom';
 import { useClient } from '@plone/volto/hooks';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
-import {
-  installAddon,
-  listAddons,
-  uninstallAddon,
-  upgradeAddon,
-} from '@plone/volto/actions';
-import { Helmet } from '@plone/volto/helpers';
-import { Icon, Toolbar, Toast } from '@plone/volto/components';
 import backSVG from '@plone/volto/icons/back.svg';
 import { toast } from 'react-toastify';
 import type { GetAddonResponse } from '@plone/types';
 import { AnyAction } from 'redux';
 import type { PressEvent } from 'react-aria-components';
 import { AddonPanel } from './AddonPanel';
-
+import {
+  installAddon,
+  listAddons,
+  uninstallAddon,
+  upgradeAddon,
+} from '@plone/volto/actions/addons/addons';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import './index.css';
 
 const messages = defineMessages({
