@@ -19,7 +19,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
         To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
          
         <a
-          href="https://6.docs.plone.org/install/"
+          href="https://6.docs.plone.org/volto/development/add-ons/install-an-add-on.html"
           rel="noopener noreferrer"
           target="_blank"
         >
@@ -28,7 +28,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
         .
       </div>
       <div
-        aria-label="Upgradable addons"
+        aria-label="Upgradable add-ons"
         class="addons-section "
         id="header-upgradable"
         role="group"
@@ -62,8 +62,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
             tabindex="0"
           >
             <div
-              aria-label=" Press Enter to upgrade this addon"
-              aria-selected="false"
+              aria-label="Does stuff and junk…true"
               class="addon-item"
               data-key="react-aria-1"
               data-rac=""
@@ -83,17 +82,15 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
                   <h4>
                     Whatever - 1.0.0
                   </h4>
-                  <div>
-                    <button
-                      aria-label="Update Whatever upgradeVersions"
-                      class="install-action"
-                      data-rac=""
-                      id="upgradable-plone.app.whatever"
-                      type="button"
-                    >
-                      Update Whatever
-                    </button>
-                  </div>
+                  <button
+                    aria-label="Update Whatever upgradeVersions"
+                    class="install-action"
+                    data-rac=""
+                    id="upgradable-plone.app.whatever"
+                    type="button"
+                  >
+                    Update Whatever
+                  </button>
                 </div>
                 <div
                   class="addonUpgradableInfo"
@@ -113,7 +110,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
         </div>
       </div>
       <div
-        aria-label="Available addons"
+        aria-label="Available add-ons"
         class="addons-section "
         id="header-available"
         role="group"
@@ -124,7 +121,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
           <h3
             id="available"
           >
-            Available addons
+            Available add-ons
             :
              
             <span>
@@ -147,8 +144,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
             tabindex="0"
           >
             <div
-              aria-label="Something Else Does other things… Press Enter to install this addon"
-              aria-selected="false"
+              aria-label="Something Else - Does other things…"
               class="addon-item"
               data-key="react-aria-1"
               data-rac=""
@@ -168,17 +164,15 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
                   <h4>
                     Something Else - 1.0.0
                   </h4>
-                  <div>
-                    <button
-                      aria-label="Install Something Else"
-                      class="install-action"
-                      data-rac=""
-                      id="plone.app.somethingelse"
-                      type="button"
-                    >
-                      Install
-                    </button>
-                  </div>
+                  <button
+                    aria-label="Install Something Else"
+                    class="install-action"
+                    data-rac=""
+                    id="plone.app.somethingelse"
+                    type="button"
+                  >
+                    Install
+                  </button>
                 </div>
                 <div
                   class="addonInfo"
@@ -198,7 +192,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
         </div>
       </div>
       <div
-        aria-label="Installed addons"
+        aria-label="Installed add-ons"
         class="addons-section "
         id="header-installed"
         role="group"
@@ -209,7 +203,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
           <h3
             id="installed"
           >
-            Installed addons
+            Installed add-ons
             :
              
             <span>
@@ -232,8 +226,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
             tabindex="0"
           >
             <div
-              aria-label="Whatever Does stuff and junk… Press Enter to install this addon"
-              aria-selected="false"
+              aria-label="Whatever Does stuff and junk…"
               class="addon-item"
               data-key="react-aria-1"
               data-rac=""
@@ -253,17 +246,15 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
                   <h4>
                     Whatever - 1.0.0
                   </h4>
-                  <div>
-                    <button
-                      aria-label="Uninstall Whatever"
-                      class="uninstall-action"
-                      data-rac=""
-                      id="installed-plone.app.whatever"
-                      type="button"
-                    >
-                      Uninstall
-                    </button>
-                  </div>
+                  <button
+                    aria-label="Uninstall Whatever"
+                    class="uninstall-action"
+                    data-rac=""
+                    id="installed-plone.app.whatever"
+                    type="button"
+                  >
+                    Uninstall
+                  </button>
                 </div>
                 <div
                   class="addonInfo"

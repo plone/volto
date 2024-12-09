@@ -35,7 +35,14 @@ export function ColorPicker({ label, children, ...props }: ColorPickerProps) {
                   yChannel="brightness"
                 />
                 <ColorSlider colorSpace="hsb" channel="hue" />
-                <ColorField label="Hex" />
+                <ColorField
+                  label="Hex"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.currentTarget.blur();
+                    }
+                  }}
+                />
               </>
             )}
           </Dialog>
