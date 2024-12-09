@@ -1,13 +1,11 @@
 import { Editor, Range, Transforms } from 'slate';
 import config from '@plone/volto/registry';
-import {
-  isCursorAtBlockEnd,
-  splitEditorInTwoFragments,
-  setEditorContent,
-  createAndSelectNewBlockAfter,
-  getCurrentListItem,
-  createEmptyParagraph,
-} from '@plone/volto-slate/utils';
+import { isCursorAtBlockEnd } from '@plone/volto-slate/utils/selection';
+import { splitEditorInTwoFragments } from '@plone/volto-slate/utils/ops';
+import { setEditorContent } from '@plone/volto-slate/utils/editor';
+import { createAndSelectNewBlockAfter } from '@plone/volto-slate/utils/volto-blocks';
+import { getCurrentListItem } from '@plone/volto-slate/utils/lists';
+import { createEmptyParagraph } from '@plone/volto-slate/utils/blocks';
 
 /**
  * Handles `Enter` key on empty and non-empty list items.

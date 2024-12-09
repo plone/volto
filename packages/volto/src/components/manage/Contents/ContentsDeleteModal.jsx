@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { map, find } from 'lodash';
+import map from 'lodash/map';
+import find from 'lodash/find';
 import { defineMessages, useIntl, FormattedMessage } from 'react-intl';
-import { linkIntegrityCheck } from '@plone/volto/actions';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { linkIntegrityCheck } from '@plone/volto/actions/content/content';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 import { Confirm, Dimmer, Loader, Table } from 'semantic-ui-react';
 

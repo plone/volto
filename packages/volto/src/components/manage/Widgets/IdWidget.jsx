@@ -7,13 +7,17 @@ import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { Input } from 'semantic-ui-react';
-import { compact, concat, map, union, uniq } from 'lodash';
+import compact from 'lodash/compact';
+import concat from 'lodash/concat';
+import map from 'lodash/map';
+import union from 'lodash/union';
+import uniq from 'lodash/uniq';
 
 import { defineMessages, useIntl } from 'react-intl';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import config from '@plone/volto/registry';
-import { getQuerystring } from '@plone/volto/actions';
+import { getQuerystring } from '@plone/volto/actions/querystring/querystring';
 
 const messages = defineMessages({
   reservedId: {

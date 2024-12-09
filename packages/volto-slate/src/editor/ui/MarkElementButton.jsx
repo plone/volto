@@ -1,6 +1,9 @@
 import React from 'react';
 import { useSlate } from 'slate-react';
-import { isBlockActive, toggleInlineFormat } from '@plone/volto-slate/utils';
+import {
+  isBlockActive,
+  toggleInlineFormat,
+} from '@plone/volto-slate/utils/blocks';
 
 import ToolbarButton from './ToolbarButton';
 

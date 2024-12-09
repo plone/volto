@@ -2,8 +2,8 @@ import { updateIntl } from 'react-intl-redux';
 import {
   toGettextLang,
   toReactIntlLang,
-  getCookieOptions,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Utils/Utils';
+import { getCookieOptions } from '@plone/volto/helpers/Cookies/cookies';
 import Cookies from 'universal-cookie';
 
 export function changeLanguageCookies(language, req) {

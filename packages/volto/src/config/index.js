@@ -16,7 +16,6 @@ import {
   initialBlocks,
   initialBlocksFocus,
 } from './Blocks';
-import { components } from './Components';
 import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 import slots from './slots';
@@ -33,8 +32,9 @@ import {
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
 import ConfigRegistry from '@plone/volto/registry';
+import { installDefaultComponents } from './Components';
 
-import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
+import { getSiteAsyncPropExtender } from '@plone/volto/helpers/Site';
 import { registerValidators } from './validation';
 
 const host = process.env.HOST || 'localhost';
@@ -216,7 +216,7 @@ let config = {
   },
   addonRoutes: [],
   addonReducers: {},
-  components,
+  components: {},
   slots: {},
   utilities: {},
 };
@@ -261,5 +261,6 @@ Object.entries(slots).forEach(([slotName, components]) => {
 });
 
 registerValidators(ConfigRegistry);
+installDefaultComponents(ConfigRegistry);
 
 applyAddonConfiguration(ConfigRegistry);
