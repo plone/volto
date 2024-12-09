@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.2.3 (2024-12-09)
+
+### Bugfix
+
+- Fixed circular import error in dev with HMR in core Views and Widgets shadow customizations. @sneridagh [#6526](https://github.com/plone/volto/issues/6526)
+
 ## 18.2.2 (2024-12-09)
 
 ### Bugfix

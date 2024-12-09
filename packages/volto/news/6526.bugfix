@@ -1,1 +1,0 @@
-Fixed circular import error in dev with HMR in core Views and Widgets shadow customizations. @sneridagh
