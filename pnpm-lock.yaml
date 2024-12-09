@@ -1123,6 +1123,9 @@ importers:
       react-animate-height:
         specifier: 2.0.17
         version: 2.0.17(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      react-aria-components:
+        specifier: 1.4.0
+        version: 1.4.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-beautiful-dnd:
         specifier: 13.0.0
         version: 13.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -36136,7 +36139,7 @@ snapshots:
       react-aria: 3.35.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-dom: 18.2.0(react@18.2.0)
       react-stately: 3.33.0(react@18.2.0)
-      use-sync-external-store: 1.2.0(react@18.2.0)
+      use-sync-external-store: 1.2.2(react@18.2.0)
 
   react-aria-components@1.5.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:

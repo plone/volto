@@ -239,7 +239,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
           {
             type: 'prompt',
             name: 'useAddons',
-            message: 'Would you like to add addons?',
+            message: 'Would you like to add add-ons?',
             default: 'false',
           },
         ]);
