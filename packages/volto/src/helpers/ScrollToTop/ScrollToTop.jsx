@@ -10,12 +10,6 @@ import config from '@plone/volto/registry';
  * @extends {Component}
  */
 class ScrollToTop extends React.Component {
-  constructor(props) {
-    super(props);
-    this.isClientSide = false;
-    this.isFirstClientUpdatePending = true;
-  }
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -28,27 +22,18 @@ class ScrollToTop extends React.Component {
     children: PropTypes.node.isRequired,
   };
 
-  /**
-   * Used to indicate client-side rendering
-   * @memberof ScrollToTop
-   */
-  componentDidMount() {
-    this.isClientSide = true;
-  }
-
+  state = {
+    isFirstClientUpdatePending: true,
+  };
   /**
    * @param {*} prevProps Previous Props
    * @returns {null} Null
    * @memberof ScrollToTop
    */
   componentDidUpdate(prevProps) {
-    // avoid scrollToTop during SSR
-    if (!this.isClientSide) {
-      return;
-    }
     // Skip the first client-side update that happens right after hydration
-    if (this.isFirstClientUpdatePending) {
-      this.isFirstClientUpdatePending = false;
+    if (this.state.isFirstClientUpdatePending) {
+      this.setState({ isFirstClientUpdatePending: false });
       return;
     }
 
