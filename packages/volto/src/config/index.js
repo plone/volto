@@ -1,3 +1,4 @@
+import ConfigRegistry from '@plone/volto/registry';
 import { parse as parseUrl } from 'url';
 import { defaultWidget, widgetMapping } from './Widgets';
 import {
@@ -9,14 +10,6 @@ import {
 } from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
 import { nonContentRoutesPublic } from './NonContentRoutesPublic';
-import {
-  groupBlocksOrder,
-  requiredBlocks,
-  blocksConfig,
-  initialBlocks,
-  initialBlocksFocus,
-} from './Blocks';
-import { components } from './Components';
 import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 import slots from './slots';
@@ -32,7 +25,8 @@ import {
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
-import ConfigRegistry from '@plone/volto/registry';
+import { installDefaultComponents } from './Components';
+import { installDefaultBlocks } from './Blocks';
 
 import { getSiteAsyncPropExtender } from '@plone/volto/helpers/Site';
 import { registerValidators } from './validation';
@@ -206,17 +200,10 @@ let config = {
     errorViews,
     layoutViewsNamesMapping,
   },
-  blocks: {
-    requiredBlocks,
-    blocksConfig,
-    groupBlocksOrder,
-    initialBlocks,
-    initialBlocksFocus,
-    showEditBlocksInBabelView: false,
-  },
+  blocks: {},
   addonRoutes: [],
   addonReducers: {},
-  components,
+  components: {},
   slots: {},
   utilities: {},
 };
@@ -261,5 +248,7 @@ Object.entries(slots).forEach(([slotName, components]) => {
 });
 
 registerValidators(ConfigRegistry);
+installDefaultComponents(ConfigRegistry);
+installDefaultBlocks(ConfigRegistry);
 
 applyAddonConfiguration(ConfigRegistry);
