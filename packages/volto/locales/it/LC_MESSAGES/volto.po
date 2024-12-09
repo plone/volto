@@ -2428,7 +2428,7 @@ msgstr "Nessun video selezionato"
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
 msgid "No add-ons found"
-msgstr "Nessun add-on trovato"
+msgstr ""
 
 #. Default: "No broken relations found."
 #: components/manage/Controlpanels/Relations/RelationsMatrix

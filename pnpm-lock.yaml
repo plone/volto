@@ -36184,43 +36184,6 @@ snapshots:
       react-stately: 3.34.0(react@18.2.0)
       use-sync-external-store: 1.2.2(react@18.2.0)
 
-  react-aria-components@1.5.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
-    dependencies:
-      '@internationalized/date': 3.6.0
-      '@internationalized/string': 3.2.5
-      '@react-aria/collections': 3.0.0-alpha.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@react-aria/color': 3.0.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@react-aria/disclosure': 3.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@react-aria/dnd': 3.8.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@react-aria/focus': 3.19.0(react@18.2.0)
-      '@react-aria/interactions': 3.22.5(react@18.2.0)
-      '@react-aria/live-announcer': 3.4.1
-      '@react-aria/menu': 3.16.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@react-aria/toolbar': 3.0.0-beta.11(react@18.2.0)
-      '@react-aria/tree': 3.0.0-beta.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@react-aria/utils': 3.26.0(react@18.2.0)
-      '@react-aria/virtualizer': 4.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@react-stately/color': 3.8.1(react@18.2.0)
-      '@react-stately/disclosure': 3.0.0(react@18.2.0)
-      '@react-stately/layout': 4.1.0(react@18.2.0)
-      '@react-stately/menu': 3.9.0(react@18.2.0)
-      '@react-stately/selection': 3.18.0(react@18.2.0)
-      '@react-stately/table': 3.13.0(react@18.2.0)
-      '@react-stately/utils': 3.10.5(react@18.2.0)
-      '@react-stately/virtualizer': 4.2.0(react@18.2.0)
-      '@react-types/color': 3.0.1(react@18.2.0)
-      '@react-types/form': 3.7.8(react@18.2.0)
-      '@react-types/grid': 3.2.10(react@18.2.0)
-      '@react-types/shared': 3.26.0(react@18.2.0)
-      '@react-types/table': 3.10.3(react@18.2.0)
-      '@swc/helpers': 0.5.10
-      client-only: 0.0.1
-      react: 18.2.0
-      react-aria: 3.36.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      react-dom: 18.2.0(react@18.2.0)
-      react-stately: 3.34.0(react@18.2.0)
-      use-sync-external-store: 1.2.2(react@18.2.0)
-
   react-aria@3.35.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       '@internationalized/string': 3.2.4
