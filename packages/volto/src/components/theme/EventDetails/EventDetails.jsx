@@ -6,7 +6,7 @@ import {
   Recurrence,
 } from '@plone/volto/components/theme/View/EventDatesInfo';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { expandToBackendURL } from '@plone/volto/helpers/Url/Url';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 import calendarSVG from '@plone/volto/icons/calendar.svg';
 
@@ -147,7 +147,7 @@ const EventDetails = ({ content, display_as = 'aside' }) => {
           className="ics-download"
           target="_blank"
           rel="noreferrer"
-          href={`${expandToBackendURL(content['@id'])}/ics_view`}
+          href={`${flattenToAppURL(content['@id'])}/ics_view`}
         >
           {intl.formatMessage(messages.downloadEvent)}
         </a>
