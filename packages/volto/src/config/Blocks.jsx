@@ -530,6 +530,15 @@ const requiredBlocks = ['title'];
 const initialBlocks = {};
 const initialBlocksFocus = {}; //{Document:'title'}
 
+export function installDefaultBlocks(config) {
+  config.blocks.requiredBlocks = requiredBlocks;
+  config.blocks.blocksConfig = blocksConfig;
+  config.blocks.groupBlocksOrder = groupBlocksOrder;
+  config.blocks.initialBlocks = initialBlocks;
+  config.blocks.initialBlocksFocus = initialBlocksFocus;
+  config.blocks.showEditBlocksInBabelView = false;
+}
+
 export {
   groupBlocksOrder,
   requiredBlocks,
