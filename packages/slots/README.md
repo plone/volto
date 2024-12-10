@@ -1,6 +1,6 @@
-# `@plone/blocks`
+# `@plone/slots`
 
-This package contains the default blocks provided by Plone.
+This package contains the default slots provided by Plone.
 
 > [!WARNING]
 > This package or app is experimental.
