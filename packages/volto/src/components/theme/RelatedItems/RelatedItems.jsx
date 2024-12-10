@@ -7,7 +7,7 @@ import UniversalLink from '@plone/volto/components/manage/UniversalLink/Universa
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
-import config from '@plone/volto/registry';;
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   relatedItems: {
