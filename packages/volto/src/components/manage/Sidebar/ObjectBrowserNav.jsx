@@ -3,7 +3,8 @@ import { Button, Segment, Popup } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
 import cx from 'classnames';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { flattenToAppURL, getContentIcon } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { getContentIcon } from '@plone/volto/helpers/Content/Content';
 import config from '@plone/volto/registry';
 
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
@@ -51,6 +52,7 @@ const ObjectBrowserNav = ({
         currentSearchResults.items.map((item) =>
           view === 'icons' ? (
             <li
+              key={item['@id']}
               className="image-wrapper"
               title={`${item['@id']} (${item['@type']})`}
             >

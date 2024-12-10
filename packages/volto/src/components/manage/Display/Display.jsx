@@ -4,10 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { compose } from 'redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
-import { getSchema, updateContent, getContent } from '@plone/volto/actions';
-import { getLayoutFieldname } from '@plone/volto/helpers';
-import { usePrevious } from '@plone/volto/helpers';
-import { FormFieldWrapper, Icon } from '@plone/volto/components';
+import { getSchema } from '@plone/volto/actions/schema/schema';
+import {
+  updateContent,
+  getContent,
+} from '@plone/volto/actions/content/content';
+import { getLayoutFieldname } from '@plone/volto/helpers/Content/Content';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
+import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { defineMessages, useIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 
@@ -123,13 +128,15 @@ const DisplaySelect = (props) => {
       ? state.content.data[getLayoutFieldname(state.content.data)]
       : '',
   );
+  const layoutMappingId = config.views.layoutViewsNamesMapping?.[layout];
   const [selectedOption, setselectedOption] = useState({
     value: layout,
-    label:
-      intl.formatMessage({
-        id: config.views.layoutViewsNamesMapping?.[layout],
-        defaultMessage: config.views.layoutViewsNamesMapping?.[layout],
-      }) || layout,
+    label: layoutMappingId
+      ? intl.formatMessage({
+          id: layoutMappingId,
+          defaultMessage: layoutMappingId,
+        })
+      : layout,
   });
 
   const type = useSelector((state) =>

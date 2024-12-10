@@ -1,21 +1,7 @@
+import ConfigRegistry from '@plone/volto/registry';
 import { parse as parseUrl } from 'url';
-import { defaultWidget, widgetMapping } from './Widgets';
-import {
-  layoutViews,
-  contentTypesViews,
-  defaultView,
-  errorViews,
-  layoutViewsNamesMapping,
-} from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
-import {
-  groupBlocksOrder,
-  requiredBlocks,
-  blocksConfig,
-  initialBlocks,
-  initialBlocksFocus,
-} from './Blocks';
-import { components } from './Components';
+import { nonContentRoutesPublic } from './NonContentRoutesPublic';
 import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 import slots from './slots';
@@ -31,9 +17,12 @@ import {
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
-import ConfigRegistry from '@plone/volto/registry';
+import { installDefaultComponents } from './Components';
+import { installDefaultWidgets } from './Widgets';
+import { installDefaultViews } from './Views';
+import { installDefaultBlocks } from './Blocks';
 
-import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
+import { getSiteAsyncPropExtender } from '@plone/volto/helpers/Site';
 import { registerValidators } from './validation';
 
 const host = process.env.HOST || 'localhost';
@@ -113,6 +102,7 @@ let config = {
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
+    nonContentRoutesPublic,
     imageObjects: ['Image'],
     reservedIds: ['login', 'layout', 'plone', 'zip', 'properties'],
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
@@ -194,28 +184,12 @@ let config = {
       enabled: true,
     },
   },
-  widgets: {
-    ...widgetMapping,
-    default: defaultWidget,
-  },
-  views: {
-    layoutViews,
-    contentTypesViews,
-    defaultView,
-    errorViews,
-    layoutViewsNamesMapping,
-  },
-  blocks: {
-    requiredBlocks,
-    blocksConfig,
-    groupBlocksOrder,
-    initialBlocks,
-    initialBlocksFocus,
-    showEditBlocksInBabelView: false,
-  },
+  widgets: {},
+  views: {},
+  blocks: {},
   addonRoutes: [],
   addonReducers: {},
-  components,
+  components: {},
   slots: {},
   utilities: {},
 };
@@ -260,5 +234,9 @@ Object.entries(slots).forEach(([slotName, components]) => {
 });
 
 registerValidators(ConfigRegistry);
+installDefaultComponents(ConfigRegistry);
+installDefaultWidgets(ConfigRegistry);
+installDefaultViews(ConfigRegistry);
+installDefaultBlocks(ConfigRegistry);
 
 applyAddonConfiguration(ConfigRegistry);

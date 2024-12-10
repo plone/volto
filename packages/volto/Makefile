@@ -72,14 +72,18 @@ install: ## Set up development environment
 cypress-install: ## Install Cypress for acceptance tests
 	$(NODEBIN)/cypress install
 
-../registry/dist: ../registry/src
+../registry/dist: $(shell find ../registry/src -type f)
 	(cd ../../ && pnpm build:registry)
 
-../components/dist: ../components/src
+../components/dist: $(shell find ../components/src -type f)
 	(cd ../../ && pnpm build:components)
 
 .PHONY: build-deps
 build-deps: ../registry/dist ## Build dependencies
+
+.PHONY: i18n
+i18n: ## Extract and compile translations
+	pnpm i18n
 
 ## Storybook
 

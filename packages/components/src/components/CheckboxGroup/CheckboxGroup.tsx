@@ -1,10 +1,10 @@
 import React from 'react';
 import {
   CheckboxGroup as RACCheckboxGroup,
-  CheckboxGroupProps as RACCheckboxGroupProps,
+  type CheckboxGroupProps as RACCheckboxGroupProps,
   FieldError,
   Text,
-  ValidationResult,
+  type ValidationResult,
 } from 'react-aria-components';
 
 export interface CheckboxGroupProps

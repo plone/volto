@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Button, Form, Input } from 'semantic-ui-react';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { defineMessages, useIntl } from 'react-intl';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -35,7 +35,6 @@ const BlockChooserSearch = ({ onChange, searchValue }) => {
           placeholder={intl.formatMessage(messages.search)}
           title={intl.formatMessage(messages.search)}
           ref={searchInput}
-          autoFocus
         />
         {searchValue && (
           <Button

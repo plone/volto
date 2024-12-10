@@ -12,8 +12,8 @@ import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
-} from '@plone/volto/helpers';
-import { getVocabulary } from '@plone/volto/actions';
+} from '@plone/volto/helpers/Vocabularies/Vocabularies';
+import { getVocabulary } from '@plone/volto/actions/vocabularies/vocabularies';
 
 import {
   Option,
@@ -173,6 +173,7 @@ class TokenWidget extends Component {
       <FormFieldWrapper {...this.props}>
         <CreatableSelect
           id={`field-${this.props.id}`}
+          aria-labelledby={`fieldset-${this.props.fieldSet}-field-label-${this.props.id}`}
           key={this.props.id}
           menuShouldScrollIntoView={false}
           isDisabled={this.props.isDisabled}

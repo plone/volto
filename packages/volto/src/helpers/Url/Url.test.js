@@ -151,14 +151,28 @@ describe('Url', () => {
   describe('isCmsUi', () => {
     [...settings.nonContentRoutes, '/controlpanel/mypanel'].forEach((route) => {
       if (typeof route === 'string') {
-        it(`matches non-content-route ${route}`, () => {
-          expect(isCmsUi(`/mycontent/${route}`)).toBe(true);
-        });
+        if (settings.nonContentRoutesPublic.includes(route)) {
+          it(`matches non-content-route-public ${route}`, () => {
+            expect(isCmsUi(route)).toBe(false);
+          });
+        } else {
+          it(`matches non-content-route ${route}`, () => {
+            expect(isCmsUi(`/mycontent/${route}`)).toBe(true);
+          });
+        }
       }
     });
 
     it('returns false on non-cms-ui views', () => {
       expect(isCmsUi('/mycontent')).toBe(false);
+    });
+
+    it('returns true on non content routes', () => {
+      expect(isCmsUi('/mycontent/historyview')).toBe(true);
+    });
+
+    it('returns false on public non content routes', () => {
+      expect(isCmsUi('/mycontent/login')).toBe(false);
     });
   });
 

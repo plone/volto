@@ -17,15 +17,17 @@ import {
   Table,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { map } from 'lodash';
+import map from 'lodash/map';
 
+import { getSystemInformation } from '@plone/volto/actions/controlpanels/controlpanels';
 import {
-  getSystemInformation,
   getUpgradeInformation,
   runUpgrade,
-} from '@plone/volto/actions';
-import { Helmet } from '@plone/volto/helpers';
-import { Icon, Toast, Toolbar } from '@plone/volto/components';
+} from '@plone/volto/actions/upgrade/upgrade';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import { VersionOverview } from '@plone/volto/components/manage/Controlpanels';
 import backSVG from '@plone/volto/icons/back.svg';
 import { toast } from 'react-toastify';
@@ -251,6 +253,7 @@ class UpgradeControlPanel extends Component {
                 <Container>
                   {map(upgradeSteps, (upgradeGroup) => [
                     <UpgradeStep
+                      key={upgradeGroup[0]}
                       title={upgradeGroup[0]}
                       steps={upgradeGroup[1]}
                     />,

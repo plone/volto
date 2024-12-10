@@ -151,3 +151,8 @@ export const widgetMapping = {
 
 // Default Widget
 export const defaultWidget = TextWidget;
+
+export function installDefaultWidgets(config) {
+  config.widgets = widgetMapping;
+  config.widgets.default = defaultWidget;
+}

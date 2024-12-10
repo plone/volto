@@ -8,6 +8,52 @@
 
 <!-- towncrier release notes start -->
 
+## 18.0.3 (2024-12-09)
+
+### Internal
+
+- Fix extension in files containing JSX. @sneridagh [#6520](https://github.com/plone/volto/issues/6520)
+
+## 18.0.2 (2024-12-08)
+
+### Internal
+
+- Removed all imports from barrel files for components, actions, helpers, hooks and lodash. @pnicolli [#6509](https://github.com/plone/volto/issues/6509)
+
+## 18.0.1 (2024-11-11)
+
+### Feature
+
+- Update Dutch translations. @fredvd [#6476](https://github.com/plone/volto/issues/6476)
+
+## 18.0.0 (2024-10-31)
+
+### Internal
+
+- Release 18.0.0 final @sneridagh 
+
+## 18.0.0-alpha.20 (2024-10-30)
+
+### Bugfix
+
+- Fix slight CSS lint violation in volto-slate @sneridagh [#6444](https://github.com/plone/volto/issues/6444)
+
+## 18.0.0-alpha.19 (2024-10-03)
+
+### Feature
+
+- Update Brazilian Portuguese translations. @ericof [#6292](https://github.com/plone/volto/issues/6292)
+
+### Bugfix
+
+- Fetch `user` before pass it to the `restricted` function of the block settings. @wesleybl [#6293](https://github.com/plone/volto/issues/6293)
+
+## 18.0.0-alpha.18 (2024-09-13)
+
+### Feature
+
+- Pass `user`, `navRoot` and `contentType` objects to the `restricted` function of the block settings. @wesleybl [#6264](https://github.com/plone/volto/issues/6264)
+
 ## 18.0.0-alpha.17 (2024-07-05)
 
 ### Feature

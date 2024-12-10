@@ -4,7 +4,7 @@ import {
   buildStyleClassNamesFromData,
   buildStyleClassNamesExtenders,
   buildStyleObjectFromData,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
 
 const StyleWrapper = (props) => {
   let classNames,
@@ -19,7 +19,7 @@ const StyleWrapper = (props) => {
     classNames,
   });
 
-  style = buildStyleObjectFromData(data.styles);
+  style = buildStyleObjectFromData(data);
 
   const rewrittenChildren = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {

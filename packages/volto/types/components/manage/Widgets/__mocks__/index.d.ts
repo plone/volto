@@ -1,4 +1,3 @@
-/// <reference types="jest" />
 export declare const AlignWidget: jest.Mock<import("react/jsx-runtime").JSX.Element, [], any>;
 export declare const ButtonsWidget: jest.Mock<import("react/jsx-runtime").JSX.Element, [], any>;
 export declare const ArrayWidget: jest.Mock<import("react/jsx-runtime").JSX.Element, [], any>;

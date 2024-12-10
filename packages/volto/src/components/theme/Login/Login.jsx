@@ -12,17 +12,18 @@ import {
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
 
-import { Helmet, usePrevious } from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
 import config from '@plone/volto/registry';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import {
   login,
   logout,
   resetLoginRequest,
-  purgeMessages,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/userSession/userSession';
+import { purgeMessages } from '@plone/volto/actions/messages/messages';
 import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -80,9 +81,8 @@ const Login = (props) => {
   const loading = useSelector((state) => state.userSession.login.loading);
   const returnUrl =
     qs.parse(props.location?.search ?? location.search).return_url ||
-    location.pathname.replace(/\/login\/?$/, '').replace(/\/logout\/?$/, '') ||
+    location.pathname.replace(/\/[^/]*\/?$/, '') ||
     '/';
-
   const previousToken = usePrevious(token);
 
   useEffect(() => {

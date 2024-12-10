@@ -35,7 +35,8 @@ describe('Blocks Tests', () => {
       .last()
       .focus()
       .should('have.css', 'outline', 'rgb(16, 16, 16) auto 1px');
-    cy.get('.block.image .ui.input input[type="text"]').type(
+    cy.findByLabelText('Enter a URL to an image').click();
+    cy.get('.ui.input.editor-link.input-anchorlink-theme input').type(
       `https://github.com/plone/volto/raw/main/logos/volto-colorful.png{enter}`,
     );
     cy.get('#toolbar-save').click();
@@ -162,7 +163,7 @@ describe('Blocks Tests', () => {
       });
   });
 
-  it.only('Create an image block and initially alt attr is empty', () => {
+  it('Create an image block and initially alt attr is empty', () => {
     // when I add an image block via upload
     cy.get('.content-area .slate-editor [contenteditable=true]', {
       timeout: 10000,

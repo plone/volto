@@ -40,7 +40,7 @@ export namespace widgetMapping {
     };
     export let factory: {
         'Relation List': import("@loadable/component").LoadableComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>>;
-        'Relation Choice': import("@loadable/component").LoadableClassComponent<any>;
+        'Relation Choice': import("@loadable/component").LoadableComponent<any>;
     };
     export { SelectWidget as choices };
     export namespace type {

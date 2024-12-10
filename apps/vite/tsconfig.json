@@ -5,7 +5,6 @@
     "jsx": "react-jsx",
     "target": "esnext",
     "module": "esnext",
-    "types": ["vite/client"],
-    "moduleResolution": "Bundler",
-  },
+    "moduleResolution": "Bundler"
+  }
 }

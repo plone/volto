@@ -28,6 +28,19 @@ Thus it is safe to run it on top of your project and answer the prompts.
 
 ## Upgrading to Volto 18.x.x
 
+### Node.js version support: adding 22, dropping 18
+
+Added support for Node.js 22.
+It is the long-term support (LTS) release effective 2024-10-29.
+
+Long-term support for {term}`Node.js` 18 by the Node.js community will end on 2025-04-30.
+Volto 18 no longer supports Node.js 18, since Volto only supports the latest two LTS versions.
+Volto might continue to work on Node.js 18, but it is not tested in CI.
+
+Please update your projects to a supported Node.js version, either 20 or 22.
+Version 22 is recommended, as the latest LTS version of Node.js.
+
+
 ### Volto's internal `dependencies` and `devDependencies` are now properly sorted out
 
 Volto internal `dependencies` and `devDependencies` have been correctly sorted out.
@@ -40,7 +53,7 @@ For this purpose, we have developed a {ref}`new utility <upgrade-guide-new-depen
 It is mandatory that you run the utility to make Volto version 18.0.0-alpha.21 or later work in your projects.
 This opens the door to use {term}`pnpm` in projects, too, and other goodies.
 
-```{versionremoved} 18.0.0-alpha.33
+```{versionremoved} Volto 18.0.0-alpha.33
 The setting `config.settings.serverConfig.extractScripts.errorPages` has been removed.
 ```
 
@@ -52,7 +65,7 @@ This setting is no longer necessary.
 
 ### New dependencies synchronizer
 
-```{versionadded} 18.0.0-alpha.21
+```{versionadded} Volto 18.0.0-alpha.21
 ```
 
 ```{versionadded} @plone/scripts 3.6.1
@@ -395,7 +408,7 @@ If you shadowed the module {file}`packages/volto/src/helpers/FormValidation/Form
 This prop must be assigned with the new prop passed down from the blocks engine `blocksErrors`.
 If not passed down, the block can't display any field validation error.
 
-```tsx
+```jsx
 // More component code above here
 
   const {
@@ -450,6 +463,291 @@ schema: {
 The `Tags` component has been moved to the `belowContent` slot.
 It now receives the `content` property instead of the `tags` property.
 
+
+(upgrade-18-cookieplone-label)=
+
+### Cookieplone is now the recommended project and add-on generator for Volto 18
+
+```{versionadded} Volto 18.0.0-alpha.43
+```
+
+[Cookieplone](https://github.com/plone/cookieplone) is now the recommended way to develop Volto projects, using it as a boilerplate generator.
+Cookieplone uses the frontend code installed using `pnpm` instead of `yarn`.
+This affects the way that the Plone Release Team generates the Sponsored OSS Docker images, since they must be compatible with the `pnpm` setup.
+
+Since Volto `18.0.0-alpha.43`, the Docker image [`plone-frontend`](https://hub.docker.com/r/plone/plone-frontend) uses `pnpm`.
+
+For developers that won't migrate their boilerplate and code to the new setup with `pnpm` instead of `yarn`, the Release Team will generate a new Docker image named `plone-frontend:18-yarn` for the Volto 18 series of alpha releases.
+
+Support for `yarn` will be dropped in Volto 19.
+
+```{deprecated} Volto 18.0.0-alpha.43
+The `yarn`-based generator [`@plone/generator-volto`](https://www.npmjs.com/package/@plone/generator-volto) package and project boilerplates generated from it are deprecated and will not receive any further updates.
+The recommended way of generating a project boilerplate is [Cookieplone](https://github.com/plone/cookieplone).
+Please update your code to use the `pnpm` based setup.
+```
+
+### Table of Contents block markup change
+
+The `View` component for the Table of Contents block was updated to use a `nav` element instead of a `div`.
+If you've applied custom styles or shadowed this component, you might need to make adjustments.
+
+### Update needed to project boilerplate generated with `@plone/generator-volto`
+
+```{versionadded} Volto 18.0.0-alpha.42
+Effective with Volto 18.0.0-alpha.42, a new feature introduced a breaking change in the boilerplates created using `@plone/generator-volto` 9.0.0-alpha.17 and earlier.
+```
+
+You need to change your {file}`razzle.config.js` file in the root of your boilerplate.
+
+```diff
+razzle.config.js
+@@ -27,12 +27,14 @@ const customModifyWebpackConfig = ({
+   webpackConfig,
+   webpackObject,
+   options,
++  paths,
+ }) => {
+   const config = modifyWebpackConfig({
+     env: { target, dev },
+     webpackConfig,
+     webpackObject,
+     options,
++    paths,
+   });
+   // add custom code here..
+   return config;
+```
+
+The change involves adding a new `paths` argument to the `customModifyWebpackConfig` function.
+
+### Added rule for ESlint to detect missing key property in iterators.
+
+The `react/jsx-key` rule has been enabled in ESlint for catching missing `key` in JSX iterators.
+You might catch some violations in your project or add-on code after running ESlint.
+Adding the missing `key` property whenever the violation is reported will fix it.
+
+### `@plone/registry` moved to ESM
+
+The `@plone/registry` package has been moved to ESM.
+The add-on registry scripts have also been refactored to TypeScript.
+For maximum compatibility with CommonJS builds, the default exports have been moved to named exports.
+The modules affected are now built, and the import paths have changed, too.
+These changes force some import path changes that you should patch in your Plone project or add-on boilerplates.
+
+```{note}
+As always, when something changes in the boilerplate, you may regenerate one from Cookieplone and move your code into it, instead of fiddling with it.
+```
+
+For example, in your project's {file}`.eslintrc.js`:
+
+```diff
+ const fs = require('fs');
+ const projectRootPath = __dirname;
+-const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
++const { AddonRegistry } = require('@plone/registry/addon-registry');
+
+ let voltoPath = './node_modules/@plone/volto';
+
+@@ -17,15 +17,15 @@ if (configFile) {
+     voltoPath = `./${jsConfig.baseUrl}/${pathsConfig['@plone/volto'][0]}`;
+ }
+
+-const reg = new AddonConfigurationRegistry(__dirname);
++const { registry } = AddonRegistry.init(__dirname);
+
+ // Extends ESlint configuration for adding the aliases to `src` directories in Volto addons
+-const addonAliases = Object.keys(reg.packages).map((o) => [
++const addonAliases = Object.keys(registry.packages).map((o) => [
+   o,
+-  reg.packages[o].modulePath,
++  registry.packages[o].modulePath,
+ ]);
+
+-const addonExtenders = reg.getEslintExtenders().map((m) => require(m));
++const addonExtenders = registry.getEslintExtenders().map((m) => require(m));
+```
+
+Also in the Storybook configuration {file}`.storybook/main.js`.
+
+```diff
+-    const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
++    const { AddonRegistry } = require('@plone/registry/addon-registry');
+
+-    const registry = new AddonConfigurationRegistry(projectRootPath);
++    const { registry } = AddonRegistry.init(projectRootPath);
+```
+
+```{versionadded} Volto 18.0.0-alpha.47
+```
+
+```{versionadded} @plone/registry 3.0.0-alpha.0
+```
+
+### Add missing overrides to projects in `package.json`
+
+This will fix some issues with Hot Module Reload in projects.
+It's required in Volto `18.0.0-alpha.47` and later, otherwise the site breaks in development mode.
+Add this object to the `pnpm` key in your project {file}`package.json`.
+
+```json
+  "pnpm": {
+    "overrides": {
+			"@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+			"react-refresh": "^0.14.2"
+    }
+  },
+```
+
+```{versionadded} Volto 18.0.0-alpha.47
+```
+
+```{versionadded} @plone/registry 3.0.0-alpha.0
+```
+
+### Deprecation notices for Volto 18
+
+#### `@plone/generator-volto`
+
+```{deprecated} Volto 18.0.0
+```
+
+The Node.js-based Volto project boilerplate generator is deprecated from Volto 18 onwards.
+After the release of Volto 18, it will be marked as deprecated, archived, and it won't receive any further updates.
+Although you can still migrate your project to Volto 18 using this boilerplate, you should migrate to using [Cookieplone](https://github.com/plone/cookieplone).
+
+##### Alternative
+
+Migrate your project to use a [Cookieplone](https://github.com/plone/cookieplone) boilerplate.
+
+#### Volto project configurations
+
+```{deprecated} Volto 18.0.0
+```
+
+Configuring Volto using {file}`src/config.js` at the project level is deprecated in Volto 18, and will be removed in Volto 19.
+
+```{seealso}
+See https://github.com/plone/volto/issues/6396 for details.
+```
+
+##### Alternative
+
+You should configure your projects in a policy add-on.
+You can move your project to use [Cookieplone](https://github.com/plone/cookieplone) which provides the necessary boilerplate for it.
+
+#### Semantic UI
+
+```{deprecated} Volto 18.0.0
+```
+
+The Semantic UI library is not maintained anymore, and will be removed in Plone 7.
+You should no longer use Semantic UI in add-ons and projects.
+
+```{seealso}
+Related PLIPs:
+
+- https://github.com/plone/volto/issues/6321
+- https://github.com/plone/volto/issues/6323
+```
+
+##### Alternatives
+
+You can use any supported component framework of your choice for implementing new components, especially in the public theme side.
+If you create new widgets or components for the CMSUI—in other words, the non-public side—you should use the [`@plone/components`](https://github.com/plone/volto/tree/main/packages/components) library as an alternative.
+Even though it's still in the development phase, it will be completed in the next few months, and will be supported in the future.
+
+#### `lodash` library
+
+```{deprecated} Volto 18.0.0
+```
+
+`lodash` is deprecated in Volto 18, and will be removed in Plone 7.
+
+`lodash` has not received any updates since 2021.
+It has performance issues from bloated bundles and it's not prepared for ESM.
+Lots of `lodash` utility helpers can be replaced with vanilla ES.
+These issues cause concern about its future maintainability.
+
+In place of `lodash`, Plone 7 will use both the `lodash-es` library, which is ESM ready, and modern vanilla ES alternatives whenever possible.
+
+##### Alternatives
+
+```{seealso}
+The following links suggest alternatives to `lodash`.
+
+-   https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore
+-   https://javascript.plainenglish.io/you-dont-need-lodash-how-i-gave-up-lodash-693c8b96a07c
+
+If you still need some of the utilities in `lodash` and cannot use vanilla ES, you can use `lodash-es` instead.
+```
+
+#### `@loadable/component` and Volto `Loadables` framework
+
+```{deprecated} Volto 18.0.0
+```
+
+`@loadable/component` and the Volto `Loadables` framework is deprecated in Volto 18, and will be removed from Plone 7.
+It's a Webpack-only library, and it does not have Vite plugin support.
+Since React 18, this library is no longer necessary, as it has the initial implementation of the "concurrent mode".
+React 19 will further improve it and add more features around it.
+
+##### Alternatives
+
+Use plain React 18 lazy load features and its idioms for lazy load components.
+
+```jsx
+const myLazyComponent = lazy(()=> import('@plone/volto/components/theme/MyLazyComponent/MyLazyComponent'))
+
+const RandomComponent = (props) => (
+    <React.Suspense>
+        <MyLazyComponent />
+    </React.Suspense>
+)
+```
+
+There's no support for pre-loading or lazy loading entire libraries as in `@loadable/component`.
+With the removal of barrel imports files, as described in the next deprecation notice, it is now unnecessary.
+
+#### Removal of barrel import files
+
+```{deprecated} Volto 18.0.0
+```
+
+Volto previously used barrel imports, which are centralized files where other imports are re-exported, to improve the developer user experience.
+With barrel imports, a developer only needs to remember to import from the re-exported place, not the full path.
+
+Since the barrel imports directly import all the code, a lot of imports ended up in the same main chunk of code.
+It became a bad practice.
+Modern bundlers, such as Vite, rely upon the import path to determine whether to bundle code together or not, reducing the bundle size.
+
+The barrel imports must be removed to increase the natural number of chunks that Volto divides on—especially on routes—resulting in code splitting done the right and natural way.
+This forces us to rewrite all the imports everywhere—including core, projects, and add-ons—once we implement it.
+The barrel imports files include the following in Volto.
+
+-   {file}`src/components/index.js`
+-   {file}`src/helpers/index.js`
+-   {file}`src/actions/index.js`
+-   {file}`src/hooks/index.js`
+
+They also include the following in the `@plone/volto-slate` package.
+
+-   {file}`src/actions/index.js`
+-   {file}`src/editor/ui/index.js`
+-   {file}`src/utils/index.js`
+
+##### Alternative
+
+Implement only direct imports in code, preparing now for the upcoming change.
+
+```diff
+-import { BodyClass } from '@plone/volto/helpers';
++import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
+```
+
+Once this is implemented, a code modification will be provided for a smooth migration.
+
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x
@@ -501,7 +799,7 @@ Upgrade your local dependencies in projects and add-ons by editing your {file}`p
 
 ### TypeScript support in Volto
 
-```{versionadded} 17.0.0-alpha.27
+```{versionadded} Volto 17.0.0-alpha.27
 ```
 
 We added full support of TypeScript in Volto core.
@@ -604,7 +902,7 @@ make develop
 
 ### Upgrade ESlint and use `@babel/eslint-parser`
 
-```{versionchanged} 17.0.0-alpha.27
+```{versionchanged} Volto 17.0.0-alpha.27
 ```
 
 ESlint uses a library to parse the language under analysis.
@@ -617,7 +915,7 @@ Once upgraded, run the linters again to make sure that your code is free of viol
 
 Technically not a breaking, the API nor the component contract has changed, but it's worth noting this change in here.
 
-```{versionadded} 17.0.0-alpha.1
+```{versionadded} Volto 17.0.0-alpha.1
 The `BlockChooser` component now uses `popperjs` library to position itself in the screen.
 It spawns at the end of the body instead of inner the block that called it.
 This is better from the UI point of view, since any other element can take precedence in the CSS element flow, preventing the block chooser to get overlapped by anything else.
@@ -671,11 +969,11 @@ This is because the overrides that `@testing-library/cypress` introduce can be r
 Since there are some commands that can call exports in {file}`cypress/support/commands.js`, this import may be run more than once, and then it errors.
 So you have to make sure that import is run only once while the tests are run.
 
-Check the official [Cypress Migration Guide](https://docs.cypress.io/guides/references/migration-guide) for more information.
+Check the official [Cypress Migration Guide](https://docs.cypress.io/app/references/migration-guide) for more information.
 
 ### New Image component
 
-```{versionadded} 17.0.0-alpha.21
+```{versionadded} Volto 17.0.0-alpha.21
 A new image component has been added to core to render optimized images.
 It requires the latest version of `plone.restapi` (>=8.42.0) installed in the backend to work properly.
 ```
@@ -727,11 +1025,11 @@ From Volto 16.0.0-alpha.15 onwards, `volto-slate` is integrated into Volto core 
 The previous text block `text` based on `draftJS` is now deprecated and is restricted (hidden) in Volto bootstrap.
 This is a major change and should be planned in advance before you install 16.0.0-alpha.15 or later.
 
-```{versionadded} 16.0.0-alpha.15
+```{versionadded} Volto 16.0.0-alpha.15
 `volto-slate` added to Volto core as the default text block.
 ```
 
-```{deprecated} 16.0.0-alpha.15
+```{deprecated} Volto 16.0.0-alpha.15
 `text` text block based on `draftJS` is now deprecated and will be removed from core in Volto 18.
 ```
 
@@ -825,7 +1123,7 @@ Version 16 is recommended.
 
 ### Upgraded to Razzle 4
 
-```{versionadded} 16.0.0-alpha.38
+```{versionadded} Volto 16.0.0-alpha.38
 Volto has upgraded from Razzle 3 to Razzle 4.
 You should perform these steps in case you are upgrading to this version or above.
 ```
@@ -1063,7 +1361,7 @@ If you have already updated your configuration to use Cypress 10 or later in a p
 It is possible that forcing your project to use older versions might still work with old configurations.
 
 ```{seealso}
-See https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0 for more information.
+See https://docs.cypress.io/app/references/migration-guide#Migrating-to-Cypress-100 for more information.
 ```
 
 ### The complete configuration registry is passed to the add-ons and the project configuration pipeline
@@ -1128,7 +1426,7 @@ It maintains signature compatibility with `registry.resolve`, but introduces new
 
 See documentation for more information.
 
-````{versionchanged} 16.0.0-alpha.23
+````{versionchanged} Volto 16.0.0-alpha.23
 The `component` argument changed in 16.0.0-alpha.23.
 The `component` key has been flattened for simplification and now it's mapped directly to the `component` argument of `registerComponent`:
 
@@ -1207,7 +1505,7 @@ During the alpha stage, we received feedback and determined that it's too diffic
 We decided it is best to deal with it as any other schema field and enhance it via schema enhancers.
 This improves the developer experience, especially when dealing with variations that can provide their own styles and other schema fields.
 
-```{deprecated} 16.0.0-alpha.46
+```{deprecated} Volto 16.0.0-alpha.46
 The options `enableStyling` and `stylesSchema` no longer work.
 You need to provide them using your own block schema.
 If you are extending an existing one, you should add it as a normal `schemaEnhancer` modification.
@@ -1224,7 +1522,7 @@ Since then, the add-on story has improved.
 It now makes sense to extract this feature into its own add-on.
 Integrate Sentry in your app with [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
 
-```{versionchanged} 16.0.0.alpha.45
+```{versionchanged} Volto 16.0.0.alpha.45
 ```
 
 ### Upgrade `husky` to latest version
@@ -1245,7 +1543,7 @@ You can copy over the Volto ones (take a look in Volto's `.husky` folder).
 
 ### Better defaults handling
 
-````{versionadded} 16.0.0-alpha.51
+````{versionadded} Volto 16.0.0-alpha.51
 Prior to this version, we handled default values in schemas for blocks settings in a faulty and buggy manner.
 The state inferred was not deterministic and depended on the fields with defaults present.
 
@@ -1361,7 +1659,7 @@ A new `@root` alias has been set up to replace the `~` alias.
 Support for the `~` alias is still in place, but we now mark it as deprecated.
 The use of `~` will be removed in Volto 16.
 
-```{deprecated} 15.0
+```{deprecated} Volto 15.0
 ```
 
 ## Upgrading to Volto 14.x.x

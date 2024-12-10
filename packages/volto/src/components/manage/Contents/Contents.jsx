@@ -22,44 +22,42 @@ import {
   Loader,
   Dimmer,
 } from 'semantic-ui-react';
-import {
-  concat,
-  filter,
-  find,
-  indexOf,
-  keys,
-  map,
-  mapValues,
-  pull,
-} from 'lodash';
+import concat from 'lodash/concat';
+import filter from 'lodash/filter';
+import find from 'lodash/find';
+import indexOf from 'lodash/indexOf';
+import keys from 'lodash/keys';
+import map from 'lodash/map';
+import mapValues from 'lodash/mapValues';
+import pull from 'lodash/pull';
 import move from 'lodash-move';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { asyncConnect } from '@plone/volto/helpers';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
 
+import { searchContent } from '@plone/volto/actions/search/search';
 import {
-  searchContent,
-  cut,
-  copy,
-  copyContent,
   deleteContent,
-  listActions,
-  moveContent,
   orderContent,
   sortContent,
   updateColumnsContent,
   linkIntegrityCheck,
   getContent,
-} from '@plone/volto/actions';
-import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
+} from '@plone/volto/actions/content/content';
 import {
-  Pagination,
-  Popup,
-  Toolbar,
-  Toast,
-  Icon,
-  Unauthorized,
-} from '@plone/volto/components';
+  copyContent,
+  moveContent,
+  cut,
+  copy,
+} from '@plone/volto/actions/clipboard/clipboard';
+import { listActions } from '@plone/volto/actions/actions/actions';
+import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
+import Pagination from '@plone/volto/components/theme/Pagination/Pagination';
+import Popup from '@plone/volto/components/theme/Popup/Popup';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 import ContentsBreadcrumbs from '@plone/volto/components/manage/Contents/ContentsBreadcrumbs';
 import ContentsIndexHeader from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
 import ContentsItem from '@plone/volto/components/manage/Contents/ContentsItem';
@@ -69,7 +67,7 @@ import ContentsWorkflowModal from '@plone/volto/components/manage/Contents/Conte
 import ContentsTagsModal from '@plone/volto/components/manage/Contents/ContentsTagsModal';
 import ContentsPropertiesModal from '@plone/volto/components/manage/Contents/ContentsPropertiesModal';
 
-import { Helmet, getBaseUrl } from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import config from '@plone/volto/registry';
 
@@ -1397,6 +1395,7 @@ class Contents extends Component {
                                         {breach.targets
                                           .map((target) => (
                                             <Link
+                                              key={target['@id']}
                                               to={flattenToAppURL(
                                                 target['@id'],
                                               )}
@@ -1467,6 +1466,7 @@ class Contents extends Component {
                                     {breach.targets
                                       .map((target) => (
                                         <Link
+                                          key={target['@id']}
                                           to={flattenToAppURL(target['@id'])}
                                           title="Navigate to this item"
                                         >
