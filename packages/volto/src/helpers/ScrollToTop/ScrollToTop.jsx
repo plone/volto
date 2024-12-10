@@ -22,21 +22,12 @@ class ScrollToTop extends React.Component {
     children: PropTypes.node.isRequired,
   };
 
-  state = {
-    isFirstClientUpdatePending: true,
-  };
   /**
    * @param {*} prevProps Previous Props
    * @returns {null} Null
    * @memberof ScrollToTop
    */
   componentDidUpdate(prevProps) {
-    // Skip the first client-side update that happens right after hydration
-    if (this.state.isFirstClientUpdatePending) {
-      this.setState({ isFirstClientUpdatePending: false });
-      return;
-    }
-
     const { location } = this.props;
     const noInitialBlocksFocus = // Do not scroll on /edit
       config.blocks?.initialBlocksFocus === null
@@ -46,6 +37,7 @@ class ScrollToTop extends React.Component {
     const isHash = location?.hash || location?.pathname.hash;
     if (
       !isHash &&
+      prevProps.location !== undefined &&
       noInitialBlocksFocus &&
       location?.pathname !== prevProps.location?.pathname
     ) {
