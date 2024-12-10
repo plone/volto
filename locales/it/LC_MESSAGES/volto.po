@@ -1296,7 +1296,7 @@ msgstr "Inserisci il path assoluto per la destinazione. Il path deve iniziare co
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
-msgstr "Inserisci il path assoluto per cui esiste un url alternativo. Il path deve iniziare con '/'. Solo gli url che portano a una pagina '404 not found' causeranno una redirect."
+msgstr "Inserisci il path assoluto per cui esiste un url alternativo. Il path deve iniziare con '/'. Non si possono usare come alternativi path già esistenti nel sito."
 
 #. Default: "Enter your current password."
 #: components/manage/Preferences/ChangePassword
