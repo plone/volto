@@ -1296,7 +1296,7 @@ msgstr "Inserisci il path assoluto per la destinazione. Il path deve iniziare co
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
-msgstr "Inserisci il path assoluto per cui esiste un url alternativo. Il path deve iniziare con '/'. Non si possono usare come alternativi path già esistenti nel sito."
+msgstr "Inserisci un path per generare un URL alternativo per questo contenuto. Il path deve iniziare con '/'. Non si possono usare come alternativi path già esistenti nel sito."
 
 #. Default: "Enter your current password."
 #: components/manage/Preferences/ChangePassword
@@ -4113,7 +4113,7 @@ msgstr "Utenti e gruppi"
 #. Default: "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
 #: components/manage/Aliases/Aliases
 msgid "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
-msgstr "Utilizzando questo modulo, è possibile gestire url alternativi per gli elementi per rendere un elemento disponibile sotto due diversi indirizzi in modo facile."
+msgstr "Utilizzando questo modulo, è possibile creare URL alternativi per i contenuti in modo da renderli disponibili con due diversi indirizzi URL. Digitando su browser l'URL alternativo creato per un contenuto verrà fatto un redirect all'URL originale del contenuto stesso."
 
 #. Default: "Variation"
 #: helpers/Extensions/withBlockSchemaEnhancer
