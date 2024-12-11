@@ -17,6 +17,13 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.20.2 (2024-12-11)
+
+### Bugfix
+
+- Fixes ICS download in non-public event content. @sneridagh [#6497](https://github.com/plone/volto/issues/6497)
+- improved Contents delete modal and linkintegrity check. @giuliaghisini [#6517](https://github.com/plone/volto/issues/6517)
+
 ## 17.20.1 (2024-10-30)
 
 ### Bugfix
