@@ -17,6 +17,29 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.2.3 (2024-12-09)
+
+### Bugfix
+
+- Fixed circular import error in dev with HMR in core Views and Widgets shadow customizations. @sneridagh [#6526](https://github.com/plone/volto/issues/6526)
+
+## 18.2.2 (2024-12-09)
+
+### Bugfix
+
+- Fixed circular import error in dev with HMR in core Blocks shadow customizations. @sneridagh [#6525](https://github.com/plone/volto/issues/6525)
+
+## 18.2.1 (2024-12-09)
+
+### Bugfix
+
+- Fixes ICS download in non-public event content. @sneridagh [#6515](https://github.com/plone/volto/issues/6515)
+- Fixed circular import error in dev with HMR in `App` component when imported in the main default config. @sneridagh [#6524](https://github.com/plone/volto/issues/6524)
+
+### Internal
+
+- Fix extension in files containing JSX. @sneridagh [#6520](https://github.com/plone/volto/issues/6520)
+
 ## 18.2.0 (2024-12-08)
 
 ### Internal
