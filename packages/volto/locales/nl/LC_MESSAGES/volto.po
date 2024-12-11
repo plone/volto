@@ -866,7 +866,7 @@ msgstr "Maak of wis relaties naar doel"
 #. Default: "Create working copy"
 #: components/manage/Toolbar/More
 msgid "Create working copy"
-msgstr "Maak werkkopij"
+msgstr "Maak werkkopie"
 
 #. Default: "Created after"
 #: components/manage/Controlpanels/Aliases
@@ -2171,7 +2171,7 @@ msgstr "Afmelden"
 #. Default: "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
-msgstr "Gemaakt door {creator} op {date}. Dit is geen werkkopij meer, maar de inhoud zelf."
+msgstr "Gemaakt door {creator} op {date}. Dit is geen werkkopie meer, maar de inhoud zelf."
 
 #. Default: "Reduce cell padding"
 #: config/Blocks
@@ -2930,7 +2930,7 @@ msgstr "Gebruikers uit groep verwijderen"
 #. Default: "Remove working copy"
 #: components/manage/Toolbar/More
 msgid "Remove working copy"
-msgstr "Werkkopij verwijderen"
+msgstr "Werkkopie verwijderen"
 
 #. Default: "Rename"
 #: components/manage/Actions/Actions
@@ -3765,7 +3765,7 @@ msgstr "De waarde komt niet overeen met het patroon {pattern}"
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More
 msgid "The working copy was discarded"
-msgstr "De werkkopij werd weggegooid"
+msgstr "De werkkopie werd weggegooid"
 
 #. Default: "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 #: components/theme/Footer/Footer
@@ -3817,7 +3817,7 @@ msgstr "Derde"
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
-msgstr "Deze heeft een lopende werkkopij in {title}"
+msgstr "Deze heeft een lopende werkkopie in {title}"
 
 #. Default: "This is a reserved name and can't be used"
 #: components/manage/Widgets/IdWidget
@@ -3827,7 +3827,7 @@ msgstr "Dit is een gereserveerde naam en kan niet gebruikt worden"
 #. Default: "This is a working copy of {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This is a working copy of {title}"
-msgstr "Dit is een werkkopij van {title}"
+msgstr "Dit is een werkkopie van {title}"
 
 #. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
 #: components/manage/Contents/Contents
@@ -3847,7 +3847,7 @@ msgstr "Deze naam wordt getoond in de URL."
 #. Default: "This page does not seem to exist…"
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
-msgstr "Deze pagina lijt niet te bestaan…"
+msgstr "Deze pagina lijkt niet te bestaan…"
 
 #. Default: "This rule is assigned to the following locations:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4251,7 +4251,7 @@ msgstr "Bekijk deze revisie"
 #. Default: "View working copy"
 #: components/manage/Toolbar/More
 msgid "View working copy"
-msgstr "Bekijk werkkopij"
+msgstr "Bekijk werkkopie"
 
 #. Default: "View"
 #: components/manage/Display/Display
