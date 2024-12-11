@@ -206,6 +206,9 @@
       "release": true,
       "releaseName": "${version}",
       "releaseNotes": "cat .changelog.draft"
+    },
+    "npm": {
+      "tag": "legacy"
     }
   },
   "lint-staged": {
