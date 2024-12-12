@@ -1,3 +1,5 @@
-.q.react-aria-Popover {
-  --border-color: transparent;
+@layer plone-components.quanta {
+  .q.react-aria-Popover {
+    --border-color: transparent;
+  }
 }

@@ -1,81 +1,83 @@
 @import './Button.css';
 @import './theme.css';
 
-.react-aria-Calendar {
-  width: fit-content;
-  max-width: 100%;
-  color: var(--text-color);
+@layer plone-components {
+  .react-aria-Calendar {
+    width: fit-content;
+    max-width: 100%;
+    color: var(--text-color);
 
-  header {
-    display: flex;
-    align-items: center;
-    margin: 0 4px 0.5rem 4px;
+    header {
+      display: flex;
+      align-items: center;
+      margin: 0 4px 0.5rem 4px;
 
-    .react-aria-Heading {
-      flex: 1;
-      margin: 0;
-      font-size: 1.375rem;
+      .react-aria-Heading {
+        flex: 1;
+        margin: 0;
+        font-size: 1.375rem;
+        text-align: center;
+      }
+    }
+
+    .react-aria-Button {
+      width: 2rem;
+      height: 2rem;
+      padding: 0;
+    }
+
+    .react-aria-CalendarCell {
+      width: 2rem;
+      border-radius: 6px;
+      margin: 1px;
+      cursor: default;
+      forced-color-adjust: none;
+      line-height: 2rem;
+      outline: none;
       text-align: center;
-    }
-  }
 
-  .react-aria-Button {
-    width: 2rem;
-    height: 2rem;
-    padding: 0;
-  }
+      &[data-outside-month] {
+        display: none;
+      }
 
-  .react-aria-CalendarCell {
-    width: 2rem;
-    border-radius: 6px;
-    margin: 1px;
-    cursor: default;
-    forced-color-adjust: none;
-    line-height: 2rem;
-    outline: none;
-    text-align: center;
+      &[data-pressed] {
+        background: var(--gray-100);
+      }
 
-    &[data-outside-month] {
-      display: none;
+      &[data-focus-visible] {
+        outline: 2px solid var(--focus-ring-color);
+        outline-offset: 2px;
+      }
+
+      &[data-selected] {
+        background: var(--highlight-background);
+        color: var(--highlight-foreground);
+      }
     }
 
-    &[data-pressed] {
-      background: var(--gray-100);
+    .react-aria-CalendarCell {
+      &[data-disabled] {
+        color: var(--text-color-disabled);
+      }
     }
 
-    &[data-focus-visible] {
-      outline: 2px solid var(--focus-ring-color);
-      outline-offset: 2px;
+    .react-aria-CalendarCell {
+      &[data-unavailable] {
+        color: var(--color-invalid);
+        text-decoration: line-through;
+      }
     }
 
-    &[data-selected] {
-      background: var(--highlight-background);
-      color: var(--highlight-foreground);
+    .react-aria-CalendarCell {
+      &[data-invalid] {
+        background: var(--color-invalid);
+        color: var(--highlight-foreground);
+      }
     }
-  }
 
-  .react-aria-CalendarCell {
-    &[data-disabled] {
-      color: var(--text-color-disabled);
-    }
-  }
-
-  .react-aria-CalendarCell {
-    &[data-unavailable] {
+    [slot='errorMessage'] {
       color: var(--color-invalid);
-      text-decoration: line-through;
+      font-size: 12px;
     }
-  }
-
-  .react-aria-CalendarCell {
-    &[data-invalid] {
-      background: var(--color-invalid);
-      color: var(--highlight-foreground);
-    }
-  }
-
-  [slot='errorMessage'] {
-    color: var(--color-invalid);
-    font-size: 12px;
   }
 }

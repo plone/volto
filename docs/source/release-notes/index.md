@@ -17,6 +17,42 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.3.0 (2024-12-12)
+
+### Feature
+
+- Add disable Teaser block Align handlers for teasers inside containers. @sneridagh [#6527](https://github.com/plone/volto/issues/6527)
+
+### Bugfix
+
+- Fix inline comment in `SlotRenderer`. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+- Enhanced linkintegrity popup and moved all logic in a separate component ContentsDeleteModal @giuliaghisini [#6516](https://github.com/plone/volto/issues/6516)
+- Disable initial scroll to top after SSR completion. @Faakhir30 [#6523](https://github.com/plone/volto/issues/6523)
+- Add missing styleWrapper style builder information in container/Grid. @sneridagh [#6527](https://github.com/plone/volto/issues/6527)
+
+## 18.2.3 (2024-12-09)
+
+### Bugfix
+
+- Fixed circular import error in dev with HMR in core Views and Widgets shadow customizations. @sneridagh [#6526](https://github.com/plone/volto/issues/6526)
+
+## 18.2.2 (2024-12-09)
+
+### Bugfix
+
+- Fixed circular import error in dev with HMR in core Blocks shadow customizations. @sneridagh [#6525](https://github.com/plone/volto/issues/6525)
+
+## 18.2.1 (2024-12-09)
+
+### Bugfix
+
+- Fixes ICS download in non-public event content. @sneridagh [#6515](https://github.com/plone/volto/issues/6515)
+- Fixed circular import error in dev with HMR in `App` component when imported in the main default config. @sneridagh [#6524](https://github.com/plone/volto/issues/6524)
+
+### Internal
+
+- Fix extension in files containing JSX. @sneridagh [#6520](https://github.com/plone/volto/issues/6520)
+
 ## 18.2.0 (2024-12-08)
 
 ### Internal

@@ -52,9 +52,6 @@ export { ToggleButton } from './components/ToggleButton/ToggleButton';
 export { Toolbar } from './components/Toolbar/Toolbar';
 export { Tooltip } from './components/Tooltip/Tooltip';
 
-export { RenderBlocks } from './views/RenderBlocks/RenderBlocks';
-export { DefaultBlockView } from './views/RenderBlocks/DefaultBlockView';
-
 // Quanta components
 export { QuantaTextField } from './components/quanta/TextField/TextField';
 export { QuantaTextAreaField } from './components/quanta/TextAreaField/TextAreaField';

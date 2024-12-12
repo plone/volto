@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@plone/blocks": "workspace: *",
+    "@plone/slots": "workspace: *",
     "@plone/client": "workspace: *",
     "@plone/components": "workspace: *",
     "@plone/providers": "workspace: *",

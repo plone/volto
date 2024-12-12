@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0 (2024-12-12)
+
+### Breaking
+
+- All the styles use now the CSS layer `plone-components`. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+- Moved the `RenderBlocks` component to `@plone/blocks`. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+
 ## 2.2.1 (2024-12-05)
 
 ### Bugfix
