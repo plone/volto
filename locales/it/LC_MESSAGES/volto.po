@@ -1554,7 +1554,7 @@ msgstr "licenza GNU GPL"
 #. Default: "General"
 #: components/manage/Controlpanels/Controlpanels
 msgid "General"
-msgstr "Generali"
+msgstr "Generale"
 
 #. Default: "Global role"
 #: components/manage/Sharing/Sharing
@@ -3909,7 +3909,7 @@ msgstr "Non autorizzato"
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Form/UndoToolbar
 msgid "Undo"
-msgstr "Annulla"
+msgstr "Annulla operazioni"
 
 #. Default: "Undo Controlpanel"
 #: components/manage/Controlpanels/UndoControlpanel
