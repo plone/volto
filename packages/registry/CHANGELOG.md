@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 2.2.0 (2024-12-12)
+
+### Feature
+
+- Added an experimental Vite plugin for the registry. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+
+### Documentation
+
+- `html_use_opensearch` value must not have a trailing slash. Clean up comments. @stevepiercy [#6502](https://github.com/plone/volto/issues/6502)
+
 ## 2.1.2 (2024-11-05)
 
 ### Bugfix
