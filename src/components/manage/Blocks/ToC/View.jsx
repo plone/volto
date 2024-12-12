@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
 import config from '@plone/volto/registry';
@@ -167,7 +167,7 @@ const View = (props) => {
   return (
     <div className={cx('table-of-contents', variation?.id)}>
       {props.mode === 'edit' && !data.title && !tocEntries.length && (
-        <Message>Table of content</Message>
+        <Message>{props.intl.formatMessage(messages.toc_placeholder)}</Message>
       )}
 
       {Renderer ? (
@@ -189,3 +189,10 @@ View.propTypes = {
 };
 
 export default injectIntl(withBlockExtensions(View));
+
+const messages = defineMessages({
+  toc_placeholder: {
+    id: 'Table of Contents',
+    defaultMessage: 'Table of Contents',
+  },
+});

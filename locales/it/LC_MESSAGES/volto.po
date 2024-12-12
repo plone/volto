@@ -1322,7 +1322,7 @@ msgstr "Inserisci il tuo username per la verifica."
 #. Default: "Entries"
 #: components/manage/Blocks/ToC/Schema
 msgid "Entries"
-msgstr ""
+msgstr "Entità da inserire"
 
 #. Default: "Error"
 #: components/manage/Add/Add
@@ -3189,7 +3189,7 @@ msgstr "Invia una mail di conferma con un link per impostare la password."
 #. Default: "Server Error"
 #: components/theme/Error/ServerError
 msgid "Server Error"
-msgstr ""
+msgstr "Errore del server"
 
 #. Default: "Set my password"
 #: components/theme/PasswordReset/PasswordReset
@@ -3437,7 +3437,7 @@ msgstr "Status"
 #. Default: "Sticky"
 #: components/manage/Blocks/ToC/Schema
 msgid "Sticky"
-msgstr ""
+msgstr "Posizione fissa"
 
 #. Default: "Stop compare"
 #: components/manage/Multilingual/CompareLanguages
@@ -3514,6 +3514,7 @@ msgstr "Tabella"
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/variations/DefaultTocRenderer
 #: components/manage/Blocks/ToC/variations/HorizontalMenu
+#: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
 msgstr "Indice dei contenuti"
 
@@ -4509,12 +4510,12 @@ msgstr "Questo sito non accetta file più grandi di {limit}"
 #. Default: "flush intIds and rebuild relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "flush intIds and rebuild relations"
-msgstr "elimina intIds e ricrea le relazioni"
+msgstr "Elimina intId e ricrea le relazioni"
 
 #. Default: "<ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>"
 #: helpers/MessageLabels/MessageLabels
 msgid "flushAndRebuildRelationsHints"
-msgstr ""
+msgstr "<ul><li>Rigenera gli intId (i token delle relazioni nel catalogo delle relazioni)</li><li>Ricrea le relazioni</li></ul><p>Controlla i log per i dettagli!</p><p><b>Attenzione</b>: se hai add-on che dipendono dagli intId, non dovresti eliminarli.</p>"
 
 #. Default: "Head title"
 #: components/manage/Blocks/Teaser/schema
@@ -4723,7 +4724,7 @@ msgstr "Seleziona…"
 #. Default: "rebuild relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "rebuild relations"
-msgstr "ricrea le relazioni"
+msgstr "Ricrea le relazioni"
 
 #. Default: "reference"
 #: components/manage/Contents/ContentsDeleteModal
@@ -4984,7 +4985,7 @@ msgstr "Aggiorna da versione {origin} a {destination}"
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget
 msgid "uploadAnImage"
-msgstr ""
+msgstr "Carica un'immagine dal tuo computer"
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
 #: helpers/MessageLabels/MessageLabels
