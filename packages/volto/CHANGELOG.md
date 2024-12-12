@@ -17,6 +17,19 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.3.0 (2024-12-12)
+
+### Feature
+
+- Add disable Teaser block Align handlers for teasers inside containers. @sneridagh [#6527](https://github.com/plone/volto/issues/6527)
+
+### Bugfix
+
+- Fix inline comment in `SlotRenderer`. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+- Enhanced linkintegrity popup and moved all logic in a separate component ContentsDeleteModal @giuliaghisini [#6516](https://github.com/plone/volto/issues/6516)
+- Disable initial scroll to top after SSR completion. @Faakhir30 [#6523](https://github.com/plone/volto/issues/6523)
+- Add missing styleWrapper style builder information in container/Grid. @sneridagh [#6527](https://github.com/plone/volto/issues/6527)
+
 ## 18.2.3 (2024-12-09)
 
 ### Bugfix
