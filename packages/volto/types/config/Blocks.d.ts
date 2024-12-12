@@ -1,3 +1,4 @@
+export function installDefaultBlocks(config: any): void;
 export const groupBlocksOrder: {
     id: string;
     title: string;
