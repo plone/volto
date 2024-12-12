@@ -8,6 +8,24 @@
 
 <!-- towncrier release notes start -->
 
+## 18.0.4 (2024-12-12)
+
+### Bugfix
+
+- Stylelint in less file. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+
+## 18.0.3 (2024-12-09)
+
+### Internal
+
+- Fix extension in files containing JSX. @sneridagh [#6520](https://github.com/plone/volto/issues/6520)
+
+## 18.0.2 (2024-12-08)
+
+### Internal
+
+- Removed all imports from barrel files for components, actions, helpers, hooks and lodash. @pnicolli [#6509](https://github.com/plone/volto/issues/6509)
+
 ## 18.0.1 (2024-11-11)
 
 ### Feature

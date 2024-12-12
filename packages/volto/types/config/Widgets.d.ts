@@ -1,3 +1,4 @@
+export function installDefaultWidgets(config: any): void;
 export namespace widgetMapping {
     export namespace id {
         export { TokenWidget as subjects };

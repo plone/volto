@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useIntl } from 'react-intl';
 import { Checkbox, Form, Input } from 'semantic-ui-react';
 
-import { isEqual, debounce } from 'lodash';
+import isEqual from 'lodash/isEqual';
+import debounce from 'lodash/debounce';
 
-import { messages } from '@plone/volto/helpers';
-import { listGroups } from '@plone/volto/actions'; // getRegistry
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import { listGroups } from '@plone/volto/actions/groups/groups'; // getRegistry
 import UserGroupMembershipListing from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipListing';
 
 const UserGroupMembershipMatrix = ({ many_users, many_groups }) => {

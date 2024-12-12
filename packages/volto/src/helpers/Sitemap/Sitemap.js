@@ -4,9 +4,9 @@
  */
 
 import superagent from 'superagent';
-import { map } from 'lodash';
+import map from 'lodash/map';
 import zlib from 'zlib';
-import { toPublicURL } from '@plone/volto/helpers';
+import { toPublicURL } from '@plone/volto/helpers/Url/Url';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 
 import config from '@plone/volto/registry';
