@@ -1,0 +1,4832 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-23T10:42:17.489Z\n"
+"PO-Revision-Date: 2024-04-14 17:50+0200\n"
+"Last-Translator: Andreas Jonsson <andreas.jonsson@kreablo.se>\n"
+"Language: Swedish\n"
+"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Language-Code: sv\n"
+"Language-Name: Svenska\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: volto\n"
+"X-Is-Fallback-For: sv-fi sv-se\n"
+
+#: components/manage/Blocks/HTML/Edit
+# defaultMessage: <p>Add some HTML here</p>
+msgid "<p>Add some HTML here</p>"
+msgstr "<p>Lägg till HTML här</p>"
+
+#: components/theme/Register/Register
+# defaultMessage: Account Registration Completed
+msgid "Account Registration Completed"
+msgstr "Kontoregistrering färdigställd"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Account activation completed
+msgid "Account activation completed"
+msgstr "Kontoaktivering färdiställd"
+
+#: components/manage/Controlpanels/ModerateComments
+# defaultMessage: Action
+msgid "Action"
+msgstr "Åtgärd"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action changed
+msgid "Action changed"
+msgstr "Åtgärd ändrad"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action:
+msgid "Action: "
+msgstr "Åtgärd: "
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: components/manage/Controlpanels/Rules/Rules
+#: components/manage/Controlpanels/Users/UsersControlpanel
+# defaultMessage: Actions
+msgid "Actions"
+msgstr "Åtgärder"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Activate and deactivate add-ons in the lists below.
+msgid "Activate and deactivate"
+msgstr "Aktivera och avaktivera"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Active
+msgid "Active"
+msgstr "Aktiv"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Active content rules in this Page
+msgid "Active content rules in this Page"
+msgstr "Aktiva innehållsregler på denna sida"
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Rules/Rules
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/SchemaWidget
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add
+msgid "Add"
+msgstr "Lägg till"
+
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
+msgid "Add (object list)"
+msgstr "Lägg till (objektlista)"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
+msgid "Add Addons"
+msgstr "Lägg till tillägsfunktioner"
+
+#: components/manage/Toolbar/Types
+# defaultMessage: Add Content…
+msgid "Add Content"
+msgstr "Lägg till innehåll"
+
+#: components/manage/Controlpanels/Rules/AddRule
+# defaultMessage: Add Content Rule
+msgid "Add Content Rule"
+msgstr "Lägg till innehållsregel"
+
+#: components/manage/Controlpanels/Rules/AddRule
+# defaultMessage: Add Rule
+msgid "Add Rule"
+msgstr "Lägg till regel"
+
+#: components/manage/Toolbar/Types
+# defaultMessage: Add Translation…
+msgid "Add Translation…"
+msgstr "Lägg till översättning…"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add User
+msgid "Add User"
+msgstr "Lägg till användare"
+
+#: components/manage/Blocks/Description/Edit
+# defaultMessage: Add a description…
+msgid "Add a description…"
+msgstr "Lägg till beskrivning…"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: Add a new alternative url
+msgid "Add a new alternative url"
+msgstr "Lägg till alternativ url"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action added
+msgid "Add action"
+msgstr "Åtgärd tillagd"
+
+#: components/manage/BlockChooser/BlockChooserButton
+# defaultMessage: Add block
+msgid "Add block"
+msgstr "Lägg till block"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add block…
+msgid "Add block…"
+msgstr "Lägg till block…"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition added
+msgid "Add condition"
+msgstr "Lägg till villkor"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Add content rule
+msgid "Add content rule"
+msgstr "Lägg till innehållsregel"
+
+#: components/manage/Widgets/QueryWidget
+# defaultMessage: Add criteria
+msgid "Add criteria"
+msgstr "Lägg till kriterium"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Add date
+msgid "Add date"
+msgstr "Lägg till datum"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Add field
+msgid "Add field"
+msgstr "Lägg till fält"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Add fieldset
+msgid "Add fieldset"
+msgstr "Lägg till fältgrupp"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add group
+msgid "Add group"
+msgstr "Lägg till grupp"
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Add new content type
+msgid "Add new content type"
+msgstr "Lägg till ny innehållstyp"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add new group
+msgid "Add new group"
+msgstr "Lägg till ny grupp"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add new user
+msgid "Add new user"
+msgstr "Lägg till ny användare"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add to Groups
+msgid "Add to Groups"
+msgstr "Lägg till grupper"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users to group
+msgid "Add users to group"
+msgstr "Lägg till användare till grupp"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Add term
+msgid "Add vocabulary term"
+msgstr "Lägg till vokabulärterm"
+
+#: components/manage/Add/Add
+# defaultMessage: Add {type}
+msgid "Add {type}"
+msgstr "Lägg till {type}"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-Ons
+msgid "Add-Ons"
+msgstr "Tillägg"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-on Configuration
+msgid "Add-on Configuration"
+msgstr "Tilläggskonfiguration"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons
+msgid "Add-ons"
+msgstr "Tillägg"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons Settings
+msgid "Add-ons Settings"
+msgstr "Tilläggsinställningar"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Added
+msgid "Added"
+msgstr "Lade till"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Additional date
+msgid "Additional date"
+msgstr "Ytterligare datum"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be installed
+msgid "Addon could not be installed"
+msgstr "Tillägg kunde ej installeras"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be uninstalled
+msgid "Addon could not be uninstalled"
+msgstr "Tillägg kunde ej avinstalleras"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be upgraded
+msgid "Addon could not be upgraded"
+msgstr "Tillägg kunde inte uppgraderas"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon installed succesfuly
+msgid "Addon installed succesfuly"
+msgstr "Lyckades installera tillägg"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon uninstalled succesfuly
+msgid "Addon uninstalled succesfuly"
+msgstr "Lyckades avinstallera tillägg"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon upgraded succesfuly
+msgid "Addon upgraded succesfuly"
+msgstr "Lyckades uppgradera tillägg"
+
+#: config/Views
+# defaultMessage: Album view
+msgid "Album view"
+msgstr "Albumvy"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alias
+msgid "Alias"
+msgstr "Alias"
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alias has been added
+msgid "Alias has been added"
+msgstr "Aliaset har lagts till"
+
+#: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
+#: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/Video/schema
+# defaultMessage: Alignment
+msgid "Alignment"
+msgstr "Placering"
+
+#: components/manage/Contents/Contents
+# defaultMessage: All
+msgid "All"
+msgstr "Allihop"
+
+#: config/Views
+# defaultMessage: All content
+msgid "All content"
+msgstr "Allt innehåll"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: All existing alternative urls for this site
+msgid "All existing alternative urls for this site"
+msgstr "Alla existerande alternativa url:er för denna webbplats"
+
+#: components/theme/Search/Search
+# defaultMessage: Alphabetically
+msgid "Alphabetically"
+msgstr "Alfabetisk"
+
+#: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Alt text
+msgid "Alt text"
+msgstr "Alt-text"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Leave empty if the image is purely decorative.
+msgid "Alt text hint"
+msgstr "Lämna tom om bilden endast är dekorativ."
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Describe the purpose of the image.
+msgid "Alt text hint link text"
+msgstr "Beskriv bildens syfte."
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alternative url path (Required)
+msgid "Alternative url path (Required)"
+msgstr "Alternativ url-sökväg (Obligatorisk)"
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alternative url path must start with a slash.
+msgid "Alternative url path must start with a slash."
+msgstr "Alternativa urlsökvägar måste inledas med snedstreck (/)."
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alternative url path → target url path (date and time of creation, manually created yes/no)
+msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
+msgstr "Alternativ url-sökväg → målurl-sökväg (datum och tid för skapande, manellt skapad ja/nej)"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Applied to subfolders
+msgid "Applied to subfolders"
+msgstr "Appliceras på undermappar"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Applies to subfolders?
+msgid "Applies to subfolders?"
+msgstr "Aliceras på undermappar?"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Apply to subfolders
+msgid "Apply to subfolders"
+msgstr "Applicera på undermappar"
+
+#: components/manage/Toolbar/More
+# defaultMessage: Apply working copy
+msgid "Apply working copy"
+msgstr "Applicera arbetskopia"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Are you sure you want to delete this field?
+msgid "Are you sure you want to delete this field?"
+msgstr "Är du säker på att du vill radera det här fältet?"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Are you sure you want to delete this fieldset including all fields?
+msgid "Are you sure you want to delete this fieldset including all fields?"
+msgstr "Är du säker på att du vill radera den här fältgruppen inklusive alla fält?"
+
+#: components/manage/Blocks/Search/components/SortOn
+#: components/manage/Contents/Contents
+# defaultMessage: Ascending
+msgid "Ascending"
+msgstr "Stigande"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Assignments
+msgid "Assignments"
+msgstr "Uppgifter"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Available
+msgid "Available"
+msgstr "Tillgänglig"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Available content rules:
+msgid "Available content rules:"
+msgstr "Tillgängliga innehållsregler"
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/DatabaseInformation
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Rules/Rules
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Controlpanels/UpgradeControlPanel
+#: components/manage/Diff/Diff
+#: components/manage/History/History
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Rules/Rules
+#: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/Toolbar
+#: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Back
+msgid "Back"
+msgstr "Tillbaka"
+
+#: components/manage/Diff/Diff
+# defaultMessage: Base
+msgid "Base"
+msgstr "Bas"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Base search query
+msgid "Base search query"
+msgstr "Bassökfråga"
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Block
+msgid "Block"
+msgstr "Block"
+
+#: components/theme/Login/Login
+# defaultMessage: Both email address and password are case sensitive, check that caps lock is not enabled.
+msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
+msgstr "Både epostadress och lösenord är känsliga för stor och liten bokstav.  Kontrollera att caps-lock inte är aktiverad."
+
+#: components/theme/Breadcrumbs/Breadcrumbs
+# defaultMessage: Breadcrumbs
+msgid "Breadcrumbs"
+msgstr "Brödsmulor"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
+# defaultMessage: Browse
+msgid "Browse"
+msgstr "Bläddra"
+
+#: components/manage/Blocks/Image/Edit
+# defaultMessage: Browse the site, drop an image, or type an URL
+msgid "Browse the site, drop an image, or type an URL"
+msgstr "Bläddra bland sidor på webbplatsen, dra och släpp en bild, eller skriv en URL"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator.
+msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+msgstr "Om inget annat anges ärvs accessreglerna för detta objekt från containern. Om du avaktiverar detta kommer endast utryckligen angivna accessregler för delning att vara giltiga. I översikten indikerar symbolen {inherited} att accessregeln är ärvd. Symbolen {global} indikerar en global roll som styrs av webblatsens adminstratör."
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Cache Name
+msgid "Cache Name"
+msgstr "Namn på cache"
+
+#: components/manage/Controlpanels/ContentTypeLayout
+# defaultMessage: Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+msgstr "Kan ej redigera layout för innehållstypen <strong>{type}</strong> eftersom den ej har stöd för <strong>Volto-block</strong>."
+
+#: components/manage/Controlpanels/ContentTypeLayout
+# defaultMessage: Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+msgstr "Kan ej redigera layout för innehållstypen <strong>{type}</strong> för <strong>blockets beteende</strong> är aktiverat och i <strong>endast läsläge</strong>"
+
+#: components/manage/Add/Add
+#: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Delete/Delete
+#: components/manage/Edit/Edit
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
+#: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Cancel
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Cell
+msgid "Cell"
+msgstr "Cell"
+
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Center
+msgid "Center"
+msgstr "Centrerad"
+
+#: components/manage/History/History
+# defaultMessage: Change Note
+msgid "Change Note"
+msgstr "Ändringsmeddelande"
+
+#: components/manage/Preferences/ChangePassword
+# defaultMessage: Change Password
+msgid "Change Password"
+msgstr "Ändra lösenord"
+
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Change State
+msgid "Change State"
+msgstr "Ändra tillstånd"
+
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Change workflow state recursively
+msgid "Change workflow state recursively"
+msgstr "Ändra arbetsflödets tillstånd rekursivt"
+
+#: components/manage/Toolbar/More
+# defaultMessage: Changes applied
+msgid "Changes applied."
+msgstr "Ändringar applicerade."
+
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalPreferences
+# defaultMessage: Changes saved
+msgid "Changes saved"
+msgstr "Ändringar sparade"
+
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+# defaultMessage: Changes saved.
+msgid "Changes saved."
+msgstr "Ändringar sparade."
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Checkbox
+msgid "Checkbox"
+msgstr "Kryssruta"
+
+#: components/manage/Widgets/SelectWidget
+# defaultMessage: Choices
+msgid "Choices"
+msgstr "Alternativ"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Choose Image
+msgid "Choose Image"
+msgstr "Välj bild"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Choose Target
+msgid "Choose Target"
+msgstr "Välj mål"
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Choose a file
+msgid "Choose a file"
+msgstr "Välj en fil"
+
+#: components/manage/Blocks/HTML/Edit
+# defaultMessage: Clear
+msgid "Clear"
+msgstr "Rensa"
+
+#: components/manage/Blocks/Search/components/FilterList
+# defaultMessage: Clear filters
+msgid "Clear filters"
+msgstr "Rensa filter"
+
+#: components/theme/View/ImageView
+# defaultMessage: Click to download full sized image
+msgid "Click to download full sized image"
+msgstr "Klicka för att hämta bild i full storlek"
+
+#: components/manage/Widgets/SelectWidget
+# defaultMessage: Close
+msgid "Close"
+msgstr "Stäng"
+
+#: components/theme/Navigation/Navigation
+# defaultMessage: Close menu
+msgid "Close menu"
+msgstr "Stäng meny"
+
+#: components/manage/Blocks/HTML/Edit
+# defaultMessage: Code
+msgid "Code"
+msgstr "Kod"
+
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Collapse item
+msgid "Collapse item"
+msgstr "Fäll ihop objekt"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Collection
+msgid "Collection"
+msgstr "Samling"
+
+#: components/manage/Widgets/ColorPickerWidget
+# defaultMessage: Color
+msgid "Color"
+msgstr "Färg"
+
+#: components/manage/Controlpanels/ModerateComments
+#: components/theme/Comments/CommentEditModal
+#: components/theme/Comments/Comments
+# defaultMessage: Comment
+msgid "Comment"
+msgstr "Kommentar"
+
+#: components/manage/Controlpanels/ModerateComments
+# defaultMessage: Commenter
+msgid "Commenter"
+msgstr "Kommentator"
+
+#: components/theme/Comments/Comments
+# defaultMessage: Comments
+msgid "Comments"
+msgstr "Kommentarer"
+
+#: components/manage/Diff/Diff
+# defaultMessage: Compare
+msgid "Compare"
+msgstr "Jämför"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition changed
+msgid "Condition changed"
+msgstr "Villkor ändrat"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition:
+msgid "Condition: "
+msgstr "Villkor: "
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Configuration Versions
+msgid "Configuration Versions"
+msgstr "Konfigurationsversioner"
+
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Configure Content Rule
+msgid "Configure Content Rule"
+msgstr "Konfigurera innehållsregel"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Configure Content Rule: {title}
+msgid "Configure Content Rule: {title}"
+msgstr "Konfigurera innehålldregel: {title}"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Configure content rule
+msgid "Configure content rule"
+msgstr "Konfigurera innehållsregel"
+
+#: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Confirm password
+msgid "Confirm password"
+msgstr "Bekräfta lösenord"
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: Connection refused
+msgid "Connection refused"
+msgstr "Förbindelse vägrad"
+
+#: components/theme/ContactForm/ContactForm
+# defaultMessage: Contact form
+msgid "Contact form"
+msgstr "Kontaktformulär"
+
+#: components/manage/Blocks/Listing/Edit
+# defaultMessage: Contained items
+msgid "Contained items"
+msgstr "Inneslutna objekt"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Content
+msgid "Content"
+msgstr "Innehåll"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Content Rule
+msgid "Content Rule"
+msgstr "Innehållsregel"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Content Rules
+msgid "Content Rules"
+msgstr "Innehållsregler"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Content rules for {title}
+msgid "Content rules for {title}"
+msgstr "Innehållsregler för {title}"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Content rules from parent folders
+msgid "Content rules from parent folders"
+msgstr "Innehållsregler från föräldermapp"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Content that links to or references {title}
+msgid "Content that links to or references {title}"
+msgstr "Innehåll som länkar eller hänvisar till {title}"
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Content type created
+msgid "Content type created"
+msgstr "Innehållstyp skapad"
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Content type deleted
+msgid "Content type deleted"
+msgstr "Innehållstyp borttagen"
+
+#: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Contents
+msgid "Contents"
+msgstr "Innehåll"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Controls
+msgid "Controls"
+msgstr "Kontroller"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Copy
+msgid "Copy"
+msgstr "Kopiera"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Copy blocks
+msgid "Copy blocks"
+msgstr "Kopera block"
+
+#: components/theme/Footer/Footer
+# defaultMessage: Copyright
+msgid "Copyright"
+msgstr "Copyright"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Copyright statement or other rights information on this item.
+msgid "Copyright statement or other rights information on this item."
+msgstr "Upphovsrättsdeklaration eller annan rättighetsinformation för detta objekt."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Create or delete relations to target
+msgid "Create or delete relations to target"
+msgstr "Skapa eller radera relationer till mål"
+
+#: components/manage/Toolbar/More
+# defaultMessage: Create working copy
+msgid "Create working copy"
+msgstr "Skapa arbetskopia"
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+# defaultMessage: Created by {creator} on {date}
+msgid "Created by {creator} on {date}"
+msgstr "Skapad av {creator} on {date}"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Created on
+msgid "Created on"
+msgstr "Skapad den"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Creator
+msgid "Creator"
+msgstr "Upphovsman"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Creators
+msgid "Creators"
+msgstr "Upphovsmän"
+
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
+# defaultMessage: Criteria
+msgid "Criteria"
+msgstr "Kriterium"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Current active configuration
+msgid "Current active configuration"
+msgstr "Nu aktiva konfigurationer"
+
+#: components/manage/Blocks/Search/components/FilterList
+# defaultMessage: Current filters applied
+msgid "Current filters applied"
+msgstr "Aktuella filter applicerade"
+
+#: components/manage/Preferences/ChangePassword
+# defaultMessage: Current password
+msgid "Current password"
+msgstr "Nuvarande lösenord"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Cut
+msgid "Cut"
+msgstr "Klipp ut"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Cut blocks
+msgid "Cut blocks"
+msgstr "Klipp ut block"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Daily
+msgid "Daily"
+msgstr "Dagligen"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Database
+msgid "Database"
+msgstr "Databas"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database Information
+msgid "Database Information"
+msgstr "Databasinformation"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database Location
+msgid "Database Location"
+msgstr "Databasplats"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database Size
+msgid "Database Size"
+msgstr "Databasstorlek"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database main
+msgid "Database main"
+msgstr "Huvuddatabas"
+
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/DatetimeWidget
+# defaultMessage: Date
+msgid "Date"
+msgstr "Datum"
+
+#: components/theme/Search/Search
+# defaultMessage: Date (newest first)
+msgid "Date (newest first)"
+msgstr "Datum (nyast först)"
+
+#: components/manage/Contents/ContentsPropertiesModal
+#: components/manage/Contents/ContentsRenameModal
+#: components/manage/Contents/ContentsTagsModal
+#: components/manage/Contents/ContentsWorkflowModal
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/Comments/CommentEditModal
+#: components/theme/Comments/Comments
+#: components/theme/ContactForm/ContactForm
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
+#: components/theme/Register/Register
+# defaultMessage: Default
+msgid "Default"
+msgstr "Förvalt"
+
+#: config/Views
+# defaultMessage: Default view
+msgid "Default view"
+msgstr "Förvald vy"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypesActions
+#: components/manage/Controlpanels/Groups/RenderGroups
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/Users/RenderUsers
+#: components/manage/Delete/Delete
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/Comments/Comments
+# defaultMessage: Delete
+msgid "Delete"
+msgstr "Ta bort"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Delete Group
+msgid "Delete Group"
+msgstr "Ta bort grupp"
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Delete Type
+msgid "Delete Type"
+msgstr "Ta bort typ"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Delete User
+msgid "Delete User"
+msgstr "Ta bort användare"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action deleted
+msgid "Delete action"
+msgstr "Ta bort åtgärd"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Delete blocks
+msgid "Delete blocks"
+msgstr "Ta bort block"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Delete col
+msgid "Delete col"
+msgstr "Ta bort kol"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition deleted
+msgid "Delete condition"
+msgstr "Ta bort villkor"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Delete row
+msgid "Delete row"
+msgstr "Ta bort rad"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Delete selected items?
+msgid "Delete selected items?"
+msgstr "Ta bort valda objekt?"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Delete this item?
+msgid "Delete this item?"
+msgstr "Ta bort det här objektet?"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Deleted
+msgid "Deleted"
+msgstr "Borttagen"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Deleting this item breaks {brokenReferences} {variation}.
+msgid "Deleting this item breaks {brokenReferences} {variation}."
+msgstr "Att ta bort detta objekt trasar sönder {brokenReferences} {variation}."
+
+#: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Depth
+msgid "Depth"
+msgstr "Djup"
+
+#: components/manage/Blocks/Search/components/SortOn
+#: components/manage/Contents/Contents
+# defaultMessage: Descending
+msgid "Descending"
+msgstr "Fallande"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Teaser/schema
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Description
+msgid "Description"
+msgstr "Beskrivning"
+
+#: components/manage/Diff/Diff
+# defaultMessage: Diff
+msgid "Diff"
+msgstr "Skillnad"
+
+#: components/manage/Diff/Diff
+# defaultMessage: Difference between revision {one} and {two} of {title}
+msgid "Difference between revision {one} and {two} of {title}"
+msgstr "Skillnad mellan revision {one} och {två} för {title}"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disable
+msgid "Disable"
+msgstr "Avaktivera"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disable apply to subfolders
+msgid "Disable apply to subfolders"
+msgstr "Avaktivera applicerande på undermappar"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disabled
+msgid "Disabled"
+msgstr "Avaktiverad"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disabled apply to subfolders
+msgid "Disabled apply to subfolders"
+msgstr "Applicering på undermapp avaktiverad"
+
+#: components/theme/Footer/Footer
+# defaultMessage: Distributed under the {license}.
+msgid "Distributed under the {license}."
+msgstr "Distribueras enligt villkor i {license}"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Add border to inner columns
+msgid "Divide each row into separate cells"
+msgstr "Dela upp varje rad i separata celler"
+
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+# defaultMessage: Do you really want to delete the group {groupname}?
+msgid "Do you really want to delete the group {groupname}?"
+msgstr "Vill du verkligen ta bort gruppen {groupname}?"
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Do you really want to delete type {typename}?
+msgid "Do you really want to delete the type {typename}?"
+msgstr "Vill du verkligen ta bort typen {typename}?"
+
+#: components/manage/Controlpanels/Users/UsersControlpanel
+# defaultMessage: Do you really want to delete the user {username}?
+msgid "Do you really want to delete the user {username}?"
+msgstr "Vill du verkligen ta bort användaren {username}?"
+
+#: components/manage/Delete/Delete
+# defaultMessage: Do you really want to delete this item?
+msgid "Do you really want to delete this item?"
+msgstr "Vill du verkligen ta bort detta objekt?"
+
+#: components/manage/Multilingual/TranslationObject
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Document
+msgid "Document"
+msgstr "Dokument"
+
+#: config/Views
+# defaultMessage: Document view
+msgid "Document view"
+msgstr "Dokumentvy"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Download Event
+msgid "Download Event"
+msgstr "Ladda ned händelse"
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
+msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
+msgstr "Dra och släpp filer från din dator till den här arean eller klicka på knappen “Bläddra”."
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Drop file here to replace the existing file
+msgid "Drop file here to replace the existing file"
+msgstr "Släpp filen här för att ersätta befintlig fil"
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Drop file here to upload a new file
+msgid "Drop file here to upload a new file"
+msgstr "Släpp filen här för att ladda upp ny fil"
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Drop files here ...
+msgid "Drop files here ..."
+msgstr "Släpp filer här ..."
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Dry run selected, transaction aborted.
+msgid "Dry run selected, transaction aborted."
+msgstr "Torrkörning vald, transaktionen avbröts."
+
+#: components/theme/Register/Register
+# defaultMessage: E-mail
+msgid "E-mail"
+msgstr "Epost"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: E-mail addresses do not match.
+msgid "E-mail addresses do not match."
+msgstr "Epostadresserna matchar inte"
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypesActions
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Users/RenderUsers
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
+#: components/theme/Comments/Comments
+# defaultMessage: Edit
+msgid "Edit"
+msgstr "Redigera"
+
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Edit Rule
+msgid "Edit Rule"
+msgstr "Redigera regel"
+
+#: components/theme/Comments/CommentEditModal
+# defaultMessage: Edit comment
+msgid "Edit comment"
+msgstr "Redigera kommentar"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Edit field
+msgid "Edit field"
+msgstr "Redigera fält"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Edit fieldset
+msgid "Edit fieldset"
+msgstr "Redigera fältgrupp"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Edit recurrence
+msgid "Edit recurrence"
+msgstr "Redigera återkommande"
+
+#: components/manage/Form/InlineForm
+# defaultMessage: Edit values
+msgid "Edit values"
+msgstr "Redigera värden"
+
+#: components/manage/Edit/Edit
+# defaultMessage: Edit {title}
+msgid "Edit {title}"
+msgstr "Redigera {title}"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Email
+msgid "Email"
+msgstr "Epost"
+
+#: components/theme/ContactForm/ContactForm
+# defaultMessage: Email sent
+msgid "Email sent"
+msgstr "Epost skickat"
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Embed code error, please follow the instructions and try again.
+msgid "Embed code error, please follow the instructions and try again."
+msgstr "Fel på inbäddningskod, kontrollera instruktionerna och försök igen."
+
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Empty object list
+msgid "Empty object list"
+msgstr "Tom objektlista"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enable
+msgid "Enable"
+msgstr "Aktivera"
+
+#: components/manage/Controlpanels/ContentTypeLayout
+# defaultMessage: Enable editable Blocks
+msgid "Enable editable Blocks"
+msgstr "Aktivera redigerbara block"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enabled
+msgid "Enabled"
+msgstr "Aktiverad"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enabled here?
+msgid "Enabled here?"
+msgstr "Aktiverad här?"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enabled?
+msgid "Enabled?"
+msgstr "Aktiverad?"
+
+#: components/manage/Blocks/Search/components/DateRangeFacet
+#: components/manage/Contents/Contents
+# defaultMessage: End Date
+msgid "End Date"
+msgstr "Slutdatum"
+
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+# defaultMessage: Enter URL or select an item
+msgid "Enter URL or select an item"
+msgstr "Skriv in URL eller välj ett objekt"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter a username above to search or click 'Show All'
+msgid "Enter a username above to search or click 'Show All'"
+msgstr "Skriv in ett användarnamn ovan för att söka eller klicka 'Visa alla'"
+
+#: components/theme/Register/Register
+# defaultMessage: Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
+msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
+msgstr "Skriv in en epostadress. Den blir ditt inloggningsnamn. Vi respekterar din integritet och lämnar inte ut adressen till någon tredjepart eller exponerar den någonstans."
+
+#: components/theme/Register/Register
+# defaultMessage: Enter full name, e.g. John Smith.
+msgid "Enter full name, e.g. John Smith."
+msgstr "Skriv in fullständigt namn, e.g. Jon Johansson."
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Enter map Embed Code
+msgid "Enter map Embed Code"
+msgstr "Ange inbäddningskod"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
+msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+msgstr "Skriv in den fullständiga sökvägen till målet. Sökvägen måste inledas med snedstreck '/'. Målet måste finnas eller vara en alternativ url-sökväg till målet."
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring.
+msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
+msgstr "Skriv in absolut sökväg där den alternativa url:en måste finnas. Sökvägen måste börja med snedstreck '/'. Endast url:er som svarar med felkod 404 \"not found\" kommer att redigeras om."
+
+#: components/manage/Preferences/ChangePassword
+# defaultMessage: Enter your current password.
+msgid "Enter your current password."
+msgstr "Skriv in ditt nuvarande lösenord."
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your email for verification.
+msgid "Enter your email for verification."
+msgstr "Skriv in din epostadress för verifiering."
+
+#: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Skriv in ditt nya lösenord. Minst 8 tecken."
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr "Skriv in ditt användarnamn för verifiering."
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr "Artiklar"
+
+#: components/manage/Add/Add
+#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Edit/Edit
+#: components/manage/Form/InlineForm
+#: components/manage/Toolbar/More
+#: components/manage/Widgets/SchemaWidget
+#: components/theme/ContactForm/ContactForm
+#: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Error
+msgid "Error"
+msgstr "Fel"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Error
+msgid "ErrorHeader"
+msgstr "Felhuvud"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Event
+msgid "Event"
+msgstr "Händelse"
+
+#: config/Views
+# defaultMessage: Event listing
+msgid "Event listing"
+msgstr "Händelselista"
+
+#: config/Views
+# defaultMessage: Event view
+msgid "Event view"
+msgstr "Händelsevy"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Exclude from navigation
+msgid "Exclude from navigation"
+msgstr "Exkludera från navigering"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Exclude this occurence
+msgid "Exclude this occurence"
+msgstr "Exkludera detta inträffande"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Excluded from navigation
+msgid "Excluded from navigation"
+msgstr "Exkludera från navigering"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: Existing alternative urls for this item
+msgid "Existing alternative urls for this item"
+msgstr "Existerande alternativa url:er för detta objekt"
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Expand sidebar
+msgid "Expand sidebar"
+msgstr "Fäll ut sidomeny"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Expiration Date
+msgid "Expiration Date"
+msgstr "Utgångsdatum"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Expiration date
+msgid "Expiration date"
+msgstr "Utgångsdatum"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Expired
+msgid "Expired"
+msgstr "Utgången"
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: External URL
+msgid "External URL"
+msgstr "Extern URL"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Facet
+msgid "Facet"
+msgstr "Facett"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Facet widget
+msgid "Facet widget"
+msgstr "Facettwidget"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Facets
+msgid "Facets"
+msgstr "Facetter"
+
+#: config/Blocks
+# defaultMessage: Facets on left side
+msgid "Facets on left side"
+msgstr "Facetter på vänster sida"
+
+#: config/Blocks
+# defaultMessage: Facets on right side
+msgid "Facets on right side"
+msgstr "Facetter på höger sida"
+
+#: config/Blocks
+# defaultMessage: Facets on top
+msgid "Facets on top"
+msgstr "Facetter överst"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Failed to undo transactions
+msgid "Failed To Undo Transactions"
+msgstr "Misslyckades att rulla tillbaka transaktion"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Field
+msgid "Field"
+msgstr "Fält"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: File
+msgid "File"
+msgstr "Fil"
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: File size
+msgid "File size"
+msgstr "Filstorlek"
+
+#: config/Views
+# defaultMessage: File view
+msgid "File view"
+msgstr "Filvy"
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Filename
+msgid "Filename"
+msgstr "Filnamn"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter
+msgid "Filter"
+msgstr "Filter"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Filter Rules:
+msgid "Filter Rules:"
+msgstr "Filterregler:"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Filter by prefix
+msgid "Filter by prefix"
+msgstr "Filtrera på prefix"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter users by groups
+msgid "Filter users by groups"
+msgstr "Filtrera användare på grupptillhörighet"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Filter…
+msgid "Filter…"
+msgstr "Filtrera…"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: First
+msgid "First"
+msgstr "Första"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Fix relations
+msgid "Fix relations"
+msgstr "Fixa relationer"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Fixed width columns
+msgid "Fixed width table cells"
+msgstr "Fast bredd på tabellceller"
+
+#: components/manage/BlockChooser/BlockChooser
+# defaultMessage: Fold
+msgid "Fold"
+msgstr "Fäll ihop"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Folder
+msgid "Folder"
+msgstr "Mapp"
+
+#: config/Views
+# defaultMessage: Folder listing
+msgid "Folder listing"
+msgstr "Mapplistning"
+
+#: components/theme/Forbidden/Forbidden
+# defaultMessage: Forbidden
+msgid "Forbidden"
+msgstr "Förbjuden"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Fourth
+msgid "Fourth"
+msgstr "Fjärde"
+
+#: components/theme/ContactForm/ContactForm
+# defaultMessage: From
+msgid "From"
+msgstr "Från"
+
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Full
+msgid "Full"
+msgstr "Full"
+
+#: components/theme/Register/Register
+# defaultMessage: Full Name
+msgid "Full Name"
+msgstr "Fullständigt namn"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Fullname
+msgid "Fullname"
+msgstr "Fullständigt namn"
+
+#: components/theme/Footer/Footer
+# defaultMessage: GNU GPL license
+msgid "GNU GPL license"
+msgstr "GNU GPL licens"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: General
+msgid "General"
+msgstr "Allmän"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Global role
+msgid "Global role"
+msgstr "Global roll"
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Google Maps Embedded Block
+msgid "Google Maps Embedded Block"
+msgstr "Block med inbäddad Google-karta"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Group
+msgid "Group"
+msgstr "Grupp"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Group created
+msgid "Group created"
+msgstr "Grupp skapad"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Group roles updated
+msgid "Group roles updated"
+msgstr "Grupproller uppdaterade"
+
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Groupname
+msgid "Groupname"
+msgstr "Gruppnamn"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Groups
+msgid "Groups"
+msgstr "Grupper"
+
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+# defaultMessage: Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group.
+msgid "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
+msgstr "Grupper består av meningsfulla sammanslutningar av användare exempelvis avdelningar eller företagsenheter. Grupper är inte direkt relaterade till accessrättigheter på global nivå, normalt används roller för detta och grupper kan tilldelas specifika roller. Symbolen{plone_svg}indikerar att en roll ärvts via medlemskap i en annan grupp."
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Header cell
+msgid "Header cell"
+msgstr "Rubrikcell"
+
+#: components/manage/Blocks/Listing/schema
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Headline
+msgid "Headline"
+msgstr "Rubrik"
+
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Headline level
+msgid "Headline level"
+msgstr "Rubriknivå"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
+msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
+msgstr "Dolda facetter filtrerar resultatet även om andra parametrar används i URL:erna"
+
+#: components/theme/Comments/Comments
+# defaultMessage: Hide Replies
+msgid "Hide Replies"
+msgstr "Dölj svar"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Hide facet?
+msgid "Hide facet?"
+msgstr "Dölj facett?"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
+msgstr "Dölj titel"
+
+#: components/manage/History/History
+#: components/manage/Toolbar/More
+# defaultMessage: History
+msgid "History"
+msgstr "Historik"
+
+#: components/manage/History/History
+# defaultMessage: #
+msgid "History Version Number"
+msgstr "#"
+
+#: components/manage/History/History
+# defaultMessage: History of {title}
+msgid "History of {title}"
+msgstr "Historik för {title}"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsBreadcrumbs
+#: components/manage/Contents/ContentsBreadcrumbsHomeItem
+#: components/theme/Breadcrumbs/Breadcrumbs
+# defaultMessage: Home
+msgid "Home"
+msgstr "Förstasidan"
+
+#: components/manage/Contents/Contents
+# defaultMessage: ID
+msgid "ID"
+msgstr "ID"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: If all of the following conditions are met:
+msgid "If all of the following conditions are met:"
+msgstr "Om alla följande vilkor är uppfyllda:"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: If selected, this item will not appear in the navigation tree
+msgid "If selected, this item will not appear in the navigation tree"
+msgstr "Det här objektet kommer ej att visas i navigationsträdet"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: If this date is in the future, the content will not show up in listings and searches until this date.
+msgid "If this date is in the future, the content will not show up in listings and searches until this date."
+msgstr "Ett framtida datum innebär att innehållet inte visas i listningar och sökningar förrän detta datum."
+
+#: components/manage/LockingToastsFactory/LockingToastsFactory
+# defaultMessage: If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.
+msgid "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
+msgstr "Om du är säker på att den här användaren har övergett objektet kan du låsa upp det. Sedan kan du redigera."
+
+#: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}.
+msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
+msgstr "Om du är säker på att du har rätt webbadress men stöter på detta fel kan du kontakta {site_admin}."
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: Image
+msgid "Image"
+msgstr "Bild"
+
+#: config/Blocks
+# defaultMessage: Image gallery
+msgid "Image gallery"
+msgstr "Bildgalleri"
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Image override
+msgid "Image override"
+msgstr "Åsidosättande bild"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Image size
+msgid "Image size"
+msgstr "Bildstorlek"
+
+#: config/Views
+# defaultMessage: Image view
+msgid "Image view"
+msgstr "Bildvy"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Include this occurrence
+msgid "Include this occurence"
+msgstr "Inkludera detta inträffande"
+
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+# defaultMessage: Info
+msgid "Info"
+msgstr "Info"
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+msgid "InfoUserGroupSettings"
+msgstr "Du har valt alternativet 'många användare' eller 'många grupper'. Därför visas den här panelen för inmatning av användare och grupepr.  Om du vill se användare och grupper omedelbart, gå till användargruppinställningarna. Se knapp till vänster."
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Inherit permissions from higher levels
+msgid "Inherit permissions from higher levels"
+msgstr "Ärv accessrättigheter från högre nivåer"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Inherited value
+msgid "Inherited value"
+msgstr "Ärvt värde"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Insert col after
+msgid "Insert col after"
+msgstr "Infoga kol efter"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Insert col before
+msgid "Insert col before"
+msgstr "Infoga kol före"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Insert row after
+msgid "Insert row after"
+msgstr "Infoga rad efter"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Insert row before
+msgid "Insert row before"
+msgstr "Infoga rad före"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Inspect relations
+msgid "Inspect relations"
+msgstr "Inspektera relationer"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Install
+msgid "Install"
+msgstr "Installera"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installed
+msgid "Installed"
+msgstr "Installerad"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installed version
+msgid "Installed version"
+msgstr "Installerade versioner"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installing a third party add-on
+msgid "Installing a third party add-on"
+msgstr "Installerar tredjepartstillägg"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: days
+msgid "Interval Daily"
+msgstr "dagar"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Month(s)
+msgid "Interval Monthly"
+msgstr "månader"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: week(s)
+msgid "Interval Weekly"
+msgstr "veckor"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: year(s)
+msgid "Interval Yearly"
+msgstr "år"
+
+#: components/manage/Blocks/Block/DefaultView
+#: components/theme/View/RenderBlocks
+# defaultMessage: Invalid block - Will be removed on saving
+msgid "Invalid Block"
+msgstr "Felaktigt block"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.
+msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
+msgstr "Det är ej tillåtet att både sätta lösenor och begära lösenordsåterställning via epost. Du måste välja endera."
+
+#: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Item batch size
+msgid "Item batch size"
+msgstr "Storlek på objektsats"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Item successfully moved.
+msgid "Item succesfully moved."
+msgstr "Lyckades flytta objekt."
+
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) copied.
+msgid "Item(s) copied."
+msgstr "Objekt kopierade."
+
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) cut.
+msgid "Item(s) cut."
+msgstr "Objekt utklippt."
+
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) has been updated.
+msgid "Item(s) has been updated."
+msgstr "Objekt uppdaterat."
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) pasted.
+msgid "Item(s) pasted."
+msgstr "Objekt inklistrat"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) state has been updated.
+msgid "Item(s) state has been updated."
+msgstr "Objettillstånd uppdaterat."
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Items
+msgid "Items"
+msgstr "Objekt"
+
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Items must be unique.
+msgid "Items must be unique."
+msgstr "Objekt måste vara unika."
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Label
+msgid "Label"
+msgstr "Etikett"
+
+#: components/manage/Preferences/PersonalPreferences
+# defaultMessage: Language
+msgid "Language"
+msgstr "Språk"
+
+#: components/manage/Widgets/FormFieldWrapper
+# defaultMessage: Language independent field.
+msgid "Language independent field."
+msgstr "Språkoberoende fält."
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Large
+msgid "Large"
+msgstr "Stor"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Last
+msgid "Last"
+msgstr "Sist"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Last comment date
+msgid "Last comment date"
+msgstr "Datum för senaste kommentar"
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Last modified
+msgid "Last modified"
+msgstr "Senast modifierad"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Latest available configuration
+msgid "Latest available configuration"
+msgstr "Senast tillgängliga konfiguration"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Latest version
+msgid "Latest version"
+msgstr "Senaste version"
+
+#: components/manage/Controlpanels/ContentTypesActions
+# defaultMessage: Layout
+msgid "Layout"
+msgstr "Layout"
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: Lead Image
+msgid "Lead Image"
+msgstr "Försättsbild"
+
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Left
+msgid "Left"
+msgstr "Vänster"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Link
+msgid "Link"
+msgstr "Länk"
+
+#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Link more
+msgid "Link more"
+msgstr "Länka fler"
+
+#: config/Views
+# defaultMessage: Link redirect view
+msgid "Link redirect view"
+msgstr "Länkomdirigeringsvy"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
+msgstr "Länkinställningar"
+
+#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Link Title
+msgid "Link title"
+msgstr "Länktitel"
+
+#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Link to
+msgid "Link to"
+msgstr "Länka till"
+
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Link translation for
+msgid "Link translation for"
+msgstr "Länka översättning för"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Linking this item with hyperlink in text
+msgid "Linking this item with hyperlink in text"
+msgstr "Länka till det här objektet med en hyperlänk i text"
+
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Toolbar/More
+# defaultMessage: Links and references
+msgid "Links and references"
+msgstr "Länkar och hänvisningar"
+
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Listing
+msgid "Listing"
+msgstr "Listning"
+
+#: config/Views
+# defaultMessage: Listing view
+msgid "Listing view"
+msgstr "Listningsvy"
+
+#: components/theme/Comments/Comments
+# defaultMessage: Load more...
+msgid "Load more"
+msgstr "Ladda fler..."
+
+#: components/manage/Form/ModalForm
+# defaultMessage: Loading.
+msgid "Loading"
+msgstr "Laddar."
+
+#: components/theme/Login/Login
+# defaultMessage: Login
+msgid "Log In"
+msgstr "Logga in"
+
+#: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
+# defaultMessage: Log in
+msgid "Log in"
+msgstr "Logga in"
+
+#: components/theme/Logout/Logout
+# defaultMessage: Logged out
+msgid "Logged out"
+msgstr "Utloggad"
+
+#: components/theme/Login/Login
+# defaultMessage: Login
+msgid "Login"
+msgstr "Logga in"
+
+#: components/theme/Login/Login
+# defaultMessage: Login Failed
+msgid "Login Failed"
+msgstr "Inloggningen misslyckades"
+
+#: components/theme/Login/Login
+# defaultMessage: Login Name
+msgid "Login Name"
+msgstr "Inloggningsnamn"
+
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Logout
+msgid "Logout"
+msgstr "Logga ut"
+
+#: components/manage/Toolbar/More
+# defaultMessage: Made by {creator} on {date}. This is not a working copy anymore, but the main content.
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr "Skapad av {creator} den {date}. Det här är inte längre en arbetskopia utan huvudkopian."
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Reduce cell padding
+msgid "Make the table compact"
+msgstr "Minska luftigheten i cellerna"
+
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+# defaultMessage: Manage Translations
+msgid "Manage Translations"
+msgstr "Hantera översättningar"
+
+#: components/manage/Toolbar/More
+# defaultMessage: Manage content…
+msgid "Manage content…"
+msgstr "Hantera innehåll…"
+
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Manage translations for {title}
+msgid "Manage translations for {title}"
+msgstr "Hantera översättningar för {title}"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Manual
+msgid "Manual"
+msgstr "Manuell"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Manually or automatically added?
+msgid "Manually or automatically added?"
+msgstr "Manuellt ellr automatiskt tillagd?"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Many relations found. Please search.
+msgid "Many relations found. Please search."
+msgstr "Flera relationer hittades. Vänligen sök."
+
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps
+msgid "Maps"
+msgstr "Kartor"
+
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps URL
+msgid "Maps URL"
+msgstr "Kart-URL"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Maximum length is {len}.
+msgid "Maximum length is {len}."
+msgstr "Maximal längd är {len}."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Maximum value is {len}.
+msgid "Maximum value is {len}."
+msgstr "Maximalt värde är {len}."
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Medium
+msgid "Medium"
+msgstr "Medium"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Membership updated
+msgid "Membership updated"
+msgstr "Medlesskap uppdaterat"
+
+#: components/theme/ContactForm/ContactForm
+# defaultMessage: Message
+msgid "Message"
+msgstr "Meddelande"
+
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Minimum length is {len}.
+msgid "Minimum length is {len}."
+msgstr "Minsta längd är {len}."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Minimum value is {len}.
+msgid "Minimum value is {len}."
+msgstr "Minsta värde är {len}."
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Moderate Comments
+msgid "Moderate Comments"
+msgstr "Moderera kommentarer"
+
+#: components/manage/Controlpanels/ModerateComments
+# defaultMessage: Moderate comments
+msgid "Moderate comments"
+msgstr "Moderera kommentarer"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Monday and Friday
+msgid "Monday and Friday"
+msgstr "Måndag och fredag"
+
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+# defaultMessage: Day
+msgid "Month day"
+msgstr "Dag i månad"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Monthly
+msgid "Monthly"
+msgstr "Månatligen"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: More
+msgid "More"
+msgstr "Mer"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
+msgid "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
+msgstr "Mer information om uppgraderingsproceduren finns i avsnittet \"Upgrade Guide\" på plone.org."
+
+#: config/Views
+# defaultMessage: Mosaic layout
+msgid "Mosaic layout"
+msgstr "Mosaic layout"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Move down
+msgid "Move down"
+msgstr "Flytta ned"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Move to bottom of folder
+msgid "Move to bottom of folder"
+msgstr "Flytta nederst i mapp"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Move to top of folder
+msgid "Move to top of folder"
+msgstr "Flytta överst i mapp"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Move up
+msgid "Move up"
+msgstr "Flytta upp"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Multiple choices?
+msgid "Multiple choices?"
+msgstr "Flerval?"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: My email is
+msgid "My email is"
+msgstr "Min epost är"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: My user name is
+msgid "My username is"
+msgstr "Mitt användarnamn är"
+
+#: components/manage/Sharing/Sharing
+#: components/theme/ContactForm/ContactForm
+# defaultMessage: Name
+msgid "Name"
+msgstr "Namn\n"
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
+msgstr "Smal"
+
+#: error
+# defaultMessage: Navigate back
+msgid "Navigate back"
+msgstr "Navigera tillbaka"
+
+#: components/theme/Navigation/ContextNavigation
+# defaultMessage: Navigation
+msgid "Navigation"
+msgstr "Navigering"
+
+#: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: New password
+msgid "New password"
+msgstr "Nytt lösenord"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: News Item
+msgid "News Item"
+msgstr "Nyhet"
+
+#: config/Views
+# defaultMessage: News item view
+msgid "News item view"
+msgstr "Nyhetsvy"
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: No
+msgid "No"
+msgstr "Nej"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions found
+msgid "No Transactions Found"
+msgstr "Ingen transaktion kunde hittas"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions selected
+msgid "No Transactions Selected"
+msgstr "Ingen transaktion vald"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions selected to do undo
+msgid "No Transactions Selected To Do Undo"
+msgstr "Inga transaktioner att ångra är valda"
+
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr "Ingen video vald"
+
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
+msgstr "Inga tillägg funna"
+
+#: components/theme/RequestTimeout/RequestTimeout
+# defaultMessage: There is no connection to the server, due to a timeout o no network connection.
+msgid "No connection to the server"
+msgstr "Ingen förbindelse till server"
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: No image selected
+msgid "No image selected"
+msgstr "Ingen bild vald"
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: No image set in Lead Image content field
+msgid "No image set in Lead Image content field"
+msgstr "Ingen bild vald som försättsbild"
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: No image set in image content field
+msgid "No image set in image content field"
+msgstr "Ingen bild vald i bildfältet"
+
+#: components/manage/Blocks/Listing/GalleryNoResultsComponent
+# defaultMessage: No images found.
+msgid "No images found."
+msgstr "Inga bilder kunde hittas."
+
+#: components/manage/Blocks/Listing/ListingBody
+# defaultMessage: No items found in this container.
+msgid "No items found in this container."
+msgstr "Inga objekt finns i den här containern."
+
+#: components/manage/Widgets/ObjectBrowserWidget
+# defaultMessage: No items selected
+msgid "No items selected"
+msgstr "Inga objekt valda"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: No links to this item found.
+msgid "No links to this item found."
+msgstr "Inga länkar till detta objekt kunde hittas."
+
+#: components/manage/Blocks/Maps/MapsSidebar
+# defaultMessage: No map selected
+msgid "No map selected"
+msgstr "Ingen karta vald"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: No occurences set
+msgid "No occurences set"
+msgstr "Inga förekomster valda"
+
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+# defaultMessage: No options
+msgid "No options"
+msgstr "Inga alternativ"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No relation found
+msgid "No relation found"
+msgstr "Inga relationer kunde hittas"
+
+#: components/manage/BlockChooser/BlockChooser
+#: components/theme/Search/Search
+# defaultMessage: No results found
+msgid "No results found"
+msgstr "Inga resultat"
+
+#: components/manage/Blocks/Listing/DefaultNoResultsComponent
+#: components/manage/Widgets/ReferenceWidget
+# defaultMessage: No results found.
+msgid "No results found."
+msgstr "Inga resultat."
+
+#: components/manage/Blocks/Search/components/SortOn
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
+# defaultMessage: No selection
+msgid "No selection"
+msgstr "Inget valt"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: This addon does not provide an uninstall profile.
+msgid "No uninstall profile"
+msgstr "Ingen avinstallationsprofil"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
+msgid "No user found"
+msgstr "Ingen användare kunde hittas"
+
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectUtils
+#: components/manage/Widgets/SelectWidget
+# defaultMessage: No value
+msgid "No value"
+msgstr "Inget värde"
+
+#: components/manage/Workflow/Workflow
+# defaultMessage: No workflow
+msgid "No workflow"
+msgstr "Inget arbetsflöde"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+# defaultMessage: None
+msgid "None"
+msgstr "Ingen"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Note
+msgid "Note"
+msgstr "Notera"
+
+#: components/manage/Controlpanels/Users/UsersControlpanel
+# defaultMessage: Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group.
+msgid "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
+msgstr "Notera att rollerna som väljs här appliceras direkt på en användare. Symbolen{plone_svt}indikerar att en roll ärvts via ett medlemsskap i en grupp."
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Number of active objects
+msgid "Number of active objects"
+msgstr "Antal aktiva objekt"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Object Size
+msgid "Object Size"
+msgstr "Objektsstorlek"
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: occurrence(s)
+msgid "Occurences"
+msgstr "Förekomster"
+
+#: components/manage/Delete/Delete
+# defaultMessage: Ok
+msgid "Ok"
+msgstr "Ok"
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
+msgstr "Endast gemener (a-z) utan accenter, siffror (0-9), och tecknen \"-\", \"_\", och \".\" är tillåtna."
+
+#: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Open in a new tab
+msgid "Open in a new tab"
+msgstr "Öppna i ny tabb"
+
+#: components/theme/Navigation/Navigation
+# defaultMessage: Open menu
+msgid "Open menu"
+msgstr "Öppna meny"
+
+#: components/manage/Widgets/ObjectBrowserWidget
+# defaultMessage: Open object browser
+msgid "Open object browser"
+msgstr "Öppna objektbläddrare"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr "Sorterad"
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: Origin
+msgid "Origin"
+msgstr "Ursprung"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Overview of relations of all content items
+msgid "Overview of relations of all content items"
+msgstr "Översikt över relationer mellan alla innehållsobjekt"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Page
+msgid "Page"
+msgstr "Sida"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Parent fieldset
+msgid "Parent fieldset"
+msgstr "Föräldrafältgrupp"
+
+#: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Password
+msgid "Password"
+msgstr "Lösenord"
+
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Password reset
+msgid "Password reset"
+msgstr "Återställ lösenord"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Passwords do not match.
+msgid "Passwords do not match."
+msgstr "Lösenorden matchar ej"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+# defaultMessage: Paste
+msgid "Paste"
+msgstr "Klistra in"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Paste blocks
+msgid "Paste blocks"
+msgstr "Klistra in block"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Perform the following actions:
+msgid "Perform the following actions:"
+msgstr "Utför följande åtgärder:"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Permissions have been updated successfully
+msgid "Permissions have been updated successfully"
+msgstr "Lyckades uppdatera accessrättigheter"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Permissions updated
+msgid "Permissions updated"
+msgstr "Accessrättigheter uppdaterade"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Personal Information
+msgid "Personal Information"
+msgstr "Personlig information"
+
+#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Personal Preferences
+msgid "Personal Preferences"
+msgstr "Preferenser"
+
+#: components/manage/Toolbar/More
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Personal tools
+msgid "Personal tools"
+msgstr "Personliga verktyg"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
+msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
+msgstr "Personer ansvariga för innehållet i detta objekt. Ange en lista av användarnamn, ett per rad. Den huvudsakliga skaparen av innehåll bör stå först."
+
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Please choose an existing content as source for this element
+msgid "Please choose an existing content as source for this element"
+msgstr "Var god välj befintligt innehåll som källa till detta element"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Please continue with the upgrade.
+msgid "Please continue with the upgrade."
+msgstr "Fortsätt uppgraderingen."
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Please ensure you have a backup of your site before performing the upgrade.
+msgid "Please ensure you have a backup of your site before performing the upgrade."
+msgstr "Verifiera att det finns backup av webbplatsen innan du genomför uppgraderingen."
+
+#: components/manage/Blocks/Video/Body
+# defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
+msgid "Please enter a valid URL by deleting the block and adding a new video block."
+msgstr "Ta bort videoblocket och lägg till ett nytt med en giltig URL."
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it.
+msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
+msgstr "Mata in inbäddningskoden från Google Maps -> Dela eller bädda in kart -> Bädda in karta"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Please fill out the form below to set your password.
+msgid "Please fill out the form below to set your password."
+msgstr "Fyll i formuläret nedan för att sätta lösenord."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr "Mata in användarsökfråga eller använd filtren på sidan."
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
+msgid "Please upgrade to plone.restapi >= 8.24.0."
+msgstr "Uppgradera till plone.restapi >= 8.24.0."
+
+#: components/theme/Footer/Footer
+# defaultMessage: Plone Foundation
+msgid "Plone Foundation"
+msgstr "Plone Foundation"
+
+#: components/theme/Logo/Logo
+# defaultMessage: Plone Site
+msgid "Plone Site"
+msgstr "Plone-webbplats"
+
+#: components/theme/Footer/Footer
+# defaultMessage: Plone{reg} Open Source CMS/WCM
+msgid "Plone{reg} Open Source CMS/WCM"
+msgstr "Plone{reg} öppen källkod CMS/WCM"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Position changed
+msgid "Position changed"
+msgstr "Positionen ändrad"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Possible values (Enter allowed choices one per line).
+msgid "Possible values"
+msgstr "Möjliga värden"
+
+#: components/theme/Footer/Footer
+# defaultMessage: Powered by Plone & Python
+msgid "Powered by Plone & Python"
+msgstr "Drivs av Plone & Python"
+
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Preferences
+msgid "Preferences"
+msgstr "Preferenser"
+
+#: components/manage/Blocks/HTML/Edit
+# defaultMessage: Prettify your code
+msgid "Prettify your code"
+msgstr "Snygga till kod"
+
+#: components/manage/Blocks/HTML/Edit
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Preview
+msgid "Preview"
+msgstr "Förhandsvisning"
+
+#: components/manage/Blocks/Video/schema
+# defaultMessage: Preview Image URL
+msgid "Preview Image URL"
+msgstr "URL till förhandsvisningsbild"
+
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Profile
+msgid "Profile"
+msgstr "Profil"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Properties
+msgid "Properties"
+msgstr "Egenskaper"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Publication date
+msgid "Publication date"
+msgstr "Publiceringsdatum"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Publishing Date
+msgid "Publishing Date"
+msgstr "Publiceringsdatum"
+
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Query
+msgid "Query"
+msgstr "Sökfråga"
+
+#: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Re-enter the password. Make sure the passwords are identical.
+msgid "Re-enter the password. Make sure the passwords are identical."
+msgstr "Mata in lösenordet igen. Kontrollera att båda lösenorden är identiska."
+
+#: components/theme/Search/Search
+#: components/theme/View/SummaryView
+# defaultMessage: Read More…
+msgid "Read More…"
+msgstr "Läs mer…"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Rearrange items by…
+msgid "Rearrange items by…"
+msgstr "Arrangera om objekt enligt…"
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: Ends
+msgid "Recurrence ends"
+msgstr "Återkommanden avslutas"
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: after
+msgid "Recurrence ends after"
+msgstr "Återkommanden avslutas efter"
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: on
+msgid "Recurrence ends on"
+msgstr "Återkommanden avslutas den"
+
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Redo
+msgid "Redo"
+msgstr "Gör om"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Minimalistic table design
+msgid "Reduce complexity"
+msgstr "Reducera komplexitet"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item as related item
+msgid "Referencing this item as related item"
+msgstr "Hänvisar till det här objektet som relaterat objekt"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item with {relationship}
+msgid "Referencing this item with {relationship}"
+msgstr "Hänvisar till det här objektet med {relationship}"
+
+#: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
+#: components/theme/Register/Register
+# defaultMessage: Register
+msgid "Register"
+msgstr "Registrera"
+
+#: components/theme/Register/Register
+# defaultMessage: Registration form
+msgid "Registration form"
+msgstr "Registreringsformulär"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: relation
+msgid "Relation name"
+msgstr "Relationsnamn"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relations
+msgid "Relations"
+msgstr "Relationer"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relations updated
+msgid "Relations updated"
+msgstr "Relationer uppdaterade"
+
+#: components/theme/Search/Search
+# defaultMessage: Relevance
+msgid "Relevance"
+msgstr "Relevans"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: Remove
+msgid "Remove"
+msgstr "Ta bort"
+
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Remove item
+msgid "Remove item"
+msgstr "Ta bort objekt"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Remove
+msgid "Remove recurrence"
+msgstr "Ta bort återkommande"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Remove selected
+msgid "Remove selected"
+msgstr "Ta bort vald(a)"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Remove term
+msgid "Remove term"
+msgstr "Ta bort term"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove users from group
+msgid "Remove users from group"
+msgstr "Ta bort användare från grupp"
+
+#: components/manage/Toolbar/More
+# defaultMessage: Remove working copy
+msgid "Remove working copy"
+msgstr "Ta bort arbetskopia"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+# defaultMessage: Rename
+msgid "Rename"
+msgstr "Byt namn"
+
+#: components/manage/Contents/ContentsRenameModal
+# defaultMessage: Renaming items...
+msgid "Rename Items Loading Message"
+msgstr "Byter namn..."
+
+#: components/manage/Contents/ContentsRenameModal
+# defaultMessage: Rename items
+msgid "Rename items"
+msgstr "Byt namn på objekt"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Repeat
+msgid "Repeat"
+msgstr "Återkommande"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Repeat every
+msgid "Repeat every"
+msgstr "Återkommer varje"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Repeat on
+msgid "Repeat on"
+msgstr "Återkommande aktiverat"
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Replace existing file
+msgid "Replace existing file"
+msgstr "Ersätt befintlig fil"
+
+#: components/theme/Comments/Comments
+# defaultMessage: Reply
+msgid "Reply"
+msgstr "Svara"
+
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+# defaultMessage: Required
+msgid "Required"
+msgstr "Obligatorisk"
+
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Required input is missing.
+msgid "Required input is missing."
+msgstr "Obligatoriskt värde saknas."
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Reset title
+msgid "Reset term title"
+msgstr "Återställ term-titel"
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Reset the block
+msgid "Reset the block"
+msgstr "Återställ blocket"
+
+#: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Results limit
+msgid "Results limit"
+msgstr "Resultatbegräsning"
+
+#: components/manage/Blocks/Listing/Edit
+# defaultMessage: Results preview
+msgid "Results preview"
+msgstr "Resultatförhandsvisning"
+
+#: components/manage/Blocks/Search/SearchBlockEdit
+# defaultMessage: Results template
+msgid "Results template"
+msgstr "Resultatmall"
+
+#: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Reversed order
+msgid "Reversed order"
+msgstr "Omvänd sorteringsordning"
+
+#: components/manage/History/History
+# defaultMessage: Revert to this revision
+msgid "Revert to this revision"
+msgstr "Återgå till denna revision"
+
+#: components/manage/Contents/Contents
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Review state
+msgid "Review state"
+msgstr "Granskningstillstånd"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Richtext
+msgid "Richtext"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Right
+msgid "Right"
+msgstr "Höger"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Rights
+msgid "Rights"
+msgstr "Accessrättigheter"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Roles
+msgid "Roles"
+msgstr "Roller"
+
+#: components/manage/Contents/ContentsBreadcrumbs
+#: components/manage/Contents/ContentsBreadcrumbsRootItem
+# defaultMessage: Root
+msgid "Root"
+msgstr "Rot"
+
+#: components/manage/Controlpanels/Rules/AddRule
+# defaultMessage: Rule added
+msgid "Rule added"
+msgstr "Regel tillagd"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Rule enable changed
+msgid "Rule enable changed"
+msgstr "Regel aktiv ändrad"
+
+#: components/manage/Rules/Rules
+#: components/manage/Toolbar/More
+# defaultMessage: Rules
+msgid "Rules"
+msgstr "Regler"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below.
+msgid "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
+msgstr "Regler utlöses av att en händelse inträffar då alla villkoren är uppfyllda. Du kan lägga till fler åtgärder och villkor med knapparna nedan."
+
+#: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Edit/Edit
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Save
+msgid "Save"
+msgstr "Spara"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Save
+msgid "Save recurrence"
+msgstr "Spara"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Saved
+msgid "Saved"
+msgstr "Sparad"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Scheduled
+msgid "Scheduled"
+msgstr "Schemalagd"
+
+#: components/manage/Controlpanels/ContentTypesActions
+# defaultMessage: Schema
+msgid "Schema"
+msgstr "Schema"
+
+#: components/manage/Controlpanels/ContentTypeSchema
+# defaultMessage: Schema updates
+msgid "Schema updates"
+msgstr "Schemauppdateringar"
+
+#: components/manage/BlockChooser/BlockChooserSearch
+#: components/manage/Blocks/Search/components/SearchInput
+#: components/manage/Blocks/Search/layout/LeftColumnFacets
+#: components/manage/Blocks/Search/layout/RightColumnFacets
+#: components/manage/Blocks/Search/layout/TopSideFacets
+#: components/manage/Blocks/Search/schema
+#: components/theme/Search/Search
+#: components/theme/SearchWidget/SearchWidget
+# defaultMessage: Search
+msgid "Search"
+msgstr "Sök"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Search SVG
+msgid "Search SVG"
+msgstr "Sök SVG"
+
+#: components/theme/SearchWidget/SearchWidget
+# defaultMessage: Search Site
+msgid "Search Site"
+msgstr "Sök"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Search block
+msgid "Search block"
+msgstr "Sök block"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Search button label
+msgid "Search button label"
+msgstr "Sökknappsetikett"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Search content
+msgid "Search content"
+msgstr "Sök innehåll"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Search for user or group
+msgid "Search for user or group"
+msgstr "Sök användare eller grupp"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search group…
+msgid "Search group…"
+msgstr "Sök grupp…"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Search input label
+msgid "Search input label"
+msgstr "Etikett för sökfält"
+
+#: components/manage/Blocks/Search/components/SearchDetails
+#: components/theme/Search/Search
+# defaultMessage: Search results
+msgid "Search results"
+msgstr "Sökresultat"
+
+#: components/theme/Search/Search
+# defaultMessage: Search results for {term}
+msgid "Search results for {term}"
+msgstr "Sökresultat för {term}"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search sources by title or path
+msgid "Search sources by title or path"
+msgstr "Sök bland källor efter titel eller sökväg"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search targets by title or path
+msgid "Search targets by title or path"
+msgstr "Sök bland mål efter titel eller sökväg"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search users…
+msgid "Search users…"
+msgstr "Sök användare…"
+
+#: components/manage/Blocks/Search/components/SearchDetails
+# defaultMessage: Searched for: <em>{searchedtext}</em>.
+msgid "Searched for: <em>{searchedtext}</em>."
+msgstr "Sökte efter: <em>{searchedtext}</em>."
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Second
+msgid "Second"
+msgstr "Andra"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Section title
+msgid "Section title"
+msgstr "Sektionstitel"
+
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Rules/Rules
+#: components/manage/Sidebar/ObjectBrowserNav
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Select
+msgid "Select"
+msgstr "Välj"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Select a date to add to recurrence
+msgid "Select a date to add to recurrence"
+msgstr "Välj ytterligare datum för återkomst"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Select columns to show
+msgid "Select columns to show"
+msgstr "Välj kolumner att visa"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Select relation
+msgid "Select relation"
+msgstr "Välj relation"
+
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Select the transition to be used for modifying the items state.
+msgid "Select the transition to be used for modifying the items state."
+msgstr "Välj övergång till nästa tillstånd."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Selected
+msgid "Selected"
+msgstr "Vald"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Selected dates
+msgid "Selected dates"
+msgstr "Valda datum"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Selected items
+msgid "Selected items"
+msgstr "Valda objekt"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: of
+msgid "Selected items - x of y"
+msgstr "Valda objekt - x av y"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Selection
+msgid "Selection"
+msgstr "Urval"
+
+#: components/manage/Blocks/Search/widgets/SelectMetadataField
+#: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+# defaultMessage: Select…
+msgid "Select…"
+msgstr "Välj…"
+
+#: components/theme/ContactForm/ContactForm
+# defaultMessage: Send
+msgid "Send"
+msgstr "Skicka"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Send a confirmation mail with a link to set the password.
+msgid "Send a confirmation mail with a link to set the password."
+msgstr "Skicka ett bekräftelsebrev med en länk för att sätta lösenord."
+
+#: components/theme/Error/ServerError
+# defaultMessage: Server Error
+msgid "Server Error"
+msgstr "Serverfel"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Set my password
+msgid "Set my password"
+msgstr "Sätt mitt lösenord"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Set your password
+msgid "Set your password"
+msgstr "Sätt ditt lösenord"
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Settings
+msgid "Settings"
+msgstr "Inställningar"
+
+#: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/More
+# defaultMessage: Sharing
+msgid "Sharing"
+msgstr "Delning"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Sharing for {title}
+msgid "Sharing for {title}"
+msgstr "Delningar för {title}"
+
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+# defaultMessage: Short Name
+msgid "Short Name"
+msgstr "Kortnamn"
+
+#: components/manage/Contents/ContentsRenameModal
+# defaultMessage: Short name
+msgid "Short name"
+msgstr "Kortnamn"
+
+#: components/manage/Controlpanels/Aliases
+#: components/theme/Pagination/Pagination
+# defaultMessage: Show
+msgid "Show"
+msgstr "Visa"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show All
+msgid "Show All"
+msgstr "Visa alla"
+
+#: components/theme/Comments/Comments
+# defaultMessage: Show Replies
+msgid "Show Replies"
+msgstr "Visa svar"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users below
+msgid "Show groups of users below"
+msgstr "Visa användargrupper nedan"
+
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Show item
+msgid "Show item"
+msgstr "Visa objekt"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show search button?
+msgid "Show search button?"
+msgstr "Visa sökknapp?"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show search input?
+msgid "Show search input?"
+msgstr "Visa sökfält?"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show sorting?
+msgid "Show sorting?"
+msgstr "Visa sorteringsalternativ?"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show total results
+msgid "Show total results"
+msgstr "Visa totalt antal resultat"
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Shrink sidebar
+msgid "Shrink sidebar"
+msgstr "Fäll in sidomenu"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Shrink toolbar
+msgid "Shrink toolbar"
+msgstr "Fäll in verktygsfält"
+
+#: components/theme/Login/Login
+# defaultMessage: Sign in to start session
+msgid "Sign in to start session"
+msgstr "Logga in för att påbörja session"
+
+#: components/theme/Logo/Logo
+# defaultMessage: Site
+msgid "Site"
+msgstr "Webbplats"
+
+#: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: Site Administration
+msgid "Site Administration"
+msgstr "Webbplatsadministratör"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Site Setup
+msgid "Site Setup"
+msgstr "Webbplatsinställningar"
+
+#: components/theme/Sitemap/Sitemap
+# defaultMessage: Sitemap
+msgid "Sitemap"
+msgstr "Webbplatskarta"
+
+#: components/theme/View/ImageView
+# defaultMessage: Size: {size}
+msgid "Size: {size}"
+msgstr "Storlel: {size}"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Small
+msgid "Small"
+msgstr "Liten"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders.
+msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+msgstr "Vissa objekt är också mappar. Genom att ta bort dessa tas även {contanedItemsToDelete} {variation} bort inuti mapparna."
+
+#: components/manage/Contents/Contents
+# defaultMessage: Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken.
+msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+msgstr "Vissa objekt hänvisas till från annat innehåll. Genom att ta bort den bryts {brokenReferences} {variation}."
+
+#: error
+# defaultMessage: Sorry, something went wrong with your request
+msgid "Sorry, something went wrong with your request"
+msgstr "Något gick fel med din begäran"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sort by
+msgid "Sort By"
+msgstr "Sortera efter"
+
+#: components/theme/Search/Search
+# defaultMessage: Sort by:
+msgid "Sort By:"
+msgstr "Sortera efter:"
+
+#: components/manage/Blocks/Search/components/SortOn
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Sort on
+msgid "Sort on"
+msgstr "Sortera på"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Sort on options
+msgid "Sort on options"
+msgstr "Sortera på alternativ"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sort transactions by User-Name, Path or Date
+msgid "Sort transactions by User-Name, Path or Date"
+msgstr "Sortera transaktion efter användarnamn, sökväg eller datum"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sorted
+msgid "Sorted"
+msgstr "Sorterad"
+
+#: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Source
+msgid "Source"
+msgstr "Källa"
+
+#: components/manage/Blocks/Video/Edit
+# defaultMessage: Specify a youtube video or playlist url
+msgid "Specify a youtube video or playlist url"
+msgstr "Ange en youtube-video eller spellisteurl"
+
+#: components/manage/Diff/Diff
+# defaultMessage: Split
+msgid "Split"
+msgstr "Dela"
+
+#: components/manage/Blocks/Search/components/DateRangeFacet
+#: components/manage/Contents/Contents
+# defaultMessage: Start Date
+msgid "Start Date"
+msgstr "Startdatum"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Start of the recurrence
+msgid "Start of the recurrence"
+msgstr "Startpunk för återkommande"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Start password reset
+msgid "Start password reset"
+msgstr "Börja lösenordsåterställning"
+
+#: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
+#: components/theme/View/TabularView
+# defaultMessage: State
+msgid "State"
+msgstr "Tillstånd"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Status
+msgid "Status"
+msgstr "Status"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr "Fäster"
+
+#: components/manage/Multilingual/CompareLanguages
+# defaultMessage: Stop compare
+msgid "Stop compare"
+msgstr "Avsluta jämförelse"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: String
+msgid "String"
+msgstr "Sträng"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Alternate row background color
+msgid "Stripe alternate rows with color"
+msgstr "Alternera färg på rader"
+
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr "Stilsättning"
+
+#: components/theme/ContactForm/ContactForm
+# defaultMessage: Subject
+msgid "Subject"
+msgstr "Ärende"
+
+#: components/manage/Actions/Actions
+#: components/manage/Aliases/Aliases
+#: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Rules/Rules
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Rules/Rules
+#: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Success
+msgid "Success"
+msgstr "Lyckad"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Successfully undone transactions
+msgid "Successfully Undone Transactions"
+msgstr "Lyckades rulla tillbaka transaktion"
+
+#: config/Blocks
+# defaultMessage: Summary
+msgid "Summary"
+msgstr "Sammanfattning"
+
+#: config/Views
+# defaultMessage: Summary view
+msgid "Summary view"
+msgstr "Sammanfattningsvy"
+
+#: components/theme/LanguageSelector/LanguageSelector
+# defaultMessage: Switch to
+msgid "Switch to"
+msgstr "Byt till"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Table
+msgid "Table"
+msgstr "Tabell"
+
+#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
+#: components/manage/Blocks/ToC/variations/HorizontalMenu
+# defaultMessage: Table of Contents
+msgid "Table of Contents"
+msgstr "Innehållsförteckning"
+
+#: config/Views
+# defaultMessage: Tabular view
+msgid "Tabular view"
+msgstr "Tabulär vy"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsTagsModal
+# defaultMessage: Tags
+msgid "Tags"
+msgstr "Taggar"
+
+#: components/manage/Contents/ContentsTagsModal
+# defaultMessage: Tags to add
+msgid "Tags to add"
+msgstr "Taggar att lägga till"
+
+#: components/manage/Contents/ContentsTagsModal
+# defaultMessage: Tags to remove
+msgid "Tags to remove"
+msgstr "Taggar att ta bort"
+
+#: components/manage/Blocks/Teaser/schema
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Target
+msgid "Target"
+msgstr "Mål"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Target Path (Required)
+msgid "Target Path (Required)"
+msgstr "Målsökväg (obligatorisk)"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Target memory size per cache in bytes
+msgid "Target memory size per cache in bytes"
+msgstr "Målsättning för minnesstorlek per cache i antal byte"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Target number of objects in memory per cache
+msgid "Target number of objects in memory per cache"
+msgstr "Målsättning för antal objekt i minne per cache"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Target url path must start with a slash.
+msgid "Target url path must start with a slash."
+msgstr "Målurlsökväg måste inledas med snedstreck (/)."
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Teaser
+msgid "Teaser"
+msgstr "Smakprov"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Text
+msgid "Text"
+msgstr "Text"
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+#: components/theme/CorsError/CorsError
+#: components/theme/NotFound/NotFound
+#: components/theme/RequestTimeout/RequestTimeout
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: Thank you.
+msgid "Thank you."
+msgstr "Tack."
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: The Database Manager allow you to view database status information
+msgid "The Database Manager allow you to view database status information"
+msgstr "Databashanteraren visar statusinformation för databasen"
+
+#: components/theme/RequestTimeout/RequestTimeout
+# defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
+msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
+msgstr "Backend-delen svarar inte inom angiven timeout vilket kanske beror på anslutningsproblem från din enhet. Kontrolera anslutning och försök igen."
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
+msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
+msgstr "Backend-delen svarar inte, kontroller att Plone är startat, projektkonfigurationens apiPath (eller om intern proxy används, devProxyToApiPath) eller miljövariablen RAZZLE_API_PATH."
+
+#: components/theme/CorsError/CorsError
+# defaultMessage: The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources.
+msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
+msgstr "Backend-delen svarar, men CORS-huvudena är inte rätt konfigurerade så webbläsaren nekar tillträde till backend-resurserna."
+
+#: components/theme/CorsError/CorsError
+# defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
+msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+msgstr "Backend-serern svarar tyvärr inte. Försök ladda om sidan. Vänligen kontakta webbplatsadministratör om problemet består."
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
+msgid "The button presence disables the live search, the query is issued when you press ENTER"
+msgstr "Närvaron av knapp avvaktiverar live-söking, sökfrågan skickas då man trycker på ENTER"
+
+#: components/manage/Rules/Rules
+# defaultMessage: The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones.
+msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
+msgstr "Följande regler är aktiva på sidan.  Använd regelkontrollpanelen för att lägga till eller ta bort regler."
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient.
+msgid "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
+msgstr "Följande lista visar vilka uppgraderingssteg som kommer att köras. Uppgradering kan ibland innebära uppdatering av katalog eller säkerhetsinställningar, vilket kan ta lång tid på stora webbplatser. Var god vänta."
+
+#: components/manage/Contents/Contents
+# defaultMessage: The item could not be deleted.
+msgid "The item could not be deleted."
+msgstr "Objektet kunde inte tas bort."
+
+#: components/theme/View/LinkView
+# defaultMessage: The link address is:
+msgid "The link address is:"
+msgstr "Länkadressen är:"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: The provided alternative url already exists!
+msgid "The provided alternative url already exists!"
+msgstr "Angiven alternativ url finns redan!"
+
+#: components/theme/Register/Register
+# defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
+msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
+msgstr "Registreringsprocessen lyckades. Titta i din epost för information hur du aktiverar kontot."
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: The site configuration is outdated and needs to be upgraded.
+msgid "The site configuration is outdated and needs to be upgraded."
+msgstr "Webbplatskonfigurationen är gammal och behöver uppgraderas."
+
+#: components/manage/Toolbar/More
+# defaultMessage: The working copy was discarded
+msgid "The working copy was discarded"
+msgstr "Arbetskopian kasserades"
+
+#: components/theme/Footer/Footer
+# defaultMessage: The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends.
+msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
+msgstr "{plonecms}, {copyright} 2000-{current_year}, {plonefoundation} med vänner."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: There are no groups with the searched criteria
+msgid "There are no groups with the searched criteria"
+msgstr "Ingen grupp matchade sökkriterium"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: There are no users with the searched criteria
+msgid "There are no users with the searched criteria"
+msgstr "Ingen användare matchade sökkriterium"
+
+#: components/theme/CorsError/CorsError
+# defaultMessage: There is a configuration problem on the backend
+msgid "There is a configuration problem on the backend"
+msgstr "Konfigurationsproblem med backend-delen"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: There was an error with the upgrade.
+msgid "There was an error with the upgrade."
+msgstr "Fel uppstod vid uppgradering."
+
+#: components/manage/Form/InlineForm
+# defaultMessage: There were some errors
+msgid "There were some errors"
+msgstr "Fel uppstod"
+
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: There were some errors.
+msgid "There were some errors."
+msgstr "Fel uppstod."
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Third
+msgid "Third"
+msgstr "Tredje"
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+# defaultMessage: This has an ongoing working copy in {title}
+msgid "This has an ongoing working copy in {title}"
+msgstr "Den här har en pågående arbetskopia i {title}"
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: This is a reserved name and can't be used
+msgid "This is a reserved name and can't be used"
+msgstr "Det här är ett reserverat namn som ej kan användas"
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+# defaultMessage: This is a working copy of {title}
+msgid "This is a working copy of {title}"
+msgstr "Det här är en arbetskopia av {title}"
+
+#: components/manage/Contents/Contents
+# defaultMessage: This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder.
+msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+msgstr "Det här objektet är också en mapp. Om du tar bort det tas även innehållet bort from mappen: {containedItemsToDelete} {variation}."
+
+#: components/manage/LockingToastsFactory/LockingToastsFactory
+# defaultMessage: This item was locked by {creator} on {date}
+msgid "This item was locked by {creator} on {date}"
+msgstr "Det här objektet är låst av {creator} on {date}"
+
+#: components/manage/Contents/ContentsRenameModal
+# defaultMessage: This name will be displayed in the URL.
+msgid "This name will be displayed in the URL."
+msgstr "Det här namnet visas i URL:en."
+
+#: components/theme/NotFound/NotFound
+# defaultMessage: This page does not seem to exist…
+msgid "This page does not seem to exist…"
+msgstr "Den här sidan verkar inte finnas…"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: This rule is assigned to the following locations:
+msgid "This rule is assigned to the following locations:"
+msgstr "Den här regeln appliceras på följande platser:"
+
+#: components/manage/Widgets/DatetimeWidget
+# defaultMessage: Time
+msgid "Time"
+msgstr "Tid"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Title
+msgid "Title"
+msgstr "Titel"
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Title field error. Value not provided or already existing.
+msgid "Title field error. Value not provided or already existing."
+msgstr "Fel på titelfält. Inget värde angivet eller redan existerande."
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total active and non-active objects
+msgid "Total active and non-active objects"
+msgstr "Totalt antal aktiva och icke-aktiva objekt"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Total comments
+msgid "Total comments"
+msgstr "Totalt antal kommentarer"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total number of objects in each cache
+msgid "Total number of objects in each cache"
+msgstr "Totalt antal objekt i varje cache"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total number of objects in memory from all caches
+msgid "Total number of objects in memory from all caches"
+msgstr "Totalt antal objekt i minnet från alla cacher"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total number of objects in the database
+msgid "Total number of objects in the database"
+msgstr "Totalt antal objekt i databasen"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions
+msgid "Transactions"
+msgstr "Transaktioner"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: #
+msgid "Transactions Checkbox"
+msgstr "#"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions have been sorted
+msgid "Transactions Have Been Sorted"
+msgstr "Transaktionerna är sorterade"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions have been unsorted
+msgid "Transactions Have Been Unsorted"
+msgstr "Transaktionernas oordning återställd"
+
+#: components/manage/Add/Add
+#: components/manage/Toolbar/Types
+# defaultMessage: Translate to {lang}
+msgid "Translate to {lang}"
+msgstr "Översätt till {lang}"
+
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Translation linked
+msgid "Translation linked"
+msgstr "Översättning länkad"
+
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Translation linking removed
+msgid "Translation linking removed"
+msgstr "Översättningslänk borttagen"
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Triggering event field error. Please select a value
+msgid "Triggering event field error. Please select a value"
+msgstr "Fel på fält för händelseutlösare. Var god välj ett värde"
+
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Widgets/SchemaWidget
+#: components/theme/View/TabularView
+# defaultMessage: Type
+msgid "Type"
+msgstr "Typ"
+
+#: components/manage/Blocks/Video/Edit
+# defaultMessage: Type a Video (YouTube, Vimeo or mp4) URL
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr "Ange URL till Video (YouTube, Vimeo eller mp4)"
+
+#: components/manage/Widgets/SelectAutoComplete
+# defaultMessage: Type text...
+msgid "Type text..."
+msgstr "Skriv text..."
+
+#: components/manage/Blocks/Text/Edit
+# defaultMessage: Type text…
+msgid "Type text…"
+msgstr "Skriv text…"
+
+#: components/manage/TextLineEdit/TextLineEdit
+# defaultMessage: Type the heading…
+msgid "Type the heading…"
+msgstr "Skriv rubrik…"
+
+#: components/manage/Blocks/Title/Edit
+# defaultMessage: Type the title…
+msgid "Type the title…"
+msgstr "Skriv titel…"
+
+#: components/manage/Contents/Contents
+# defaultMessage: UID
+msgid "UID"
+msgstr "UID"
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/More
+# defaultMessage: URL Management
+msgid "URL Management"
+msgstr "URL-hantering"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: URL Management for {title}
+msgid "URL Management for {title}"
+msgstr "URL-hantering för {titel}"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Unassign
+msgid "Unassign"
+msgstr "Ta bort applicering"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Unassigned
+msgid "Unassigned"
+msgstr "Applicering borttagen"
+
+#: components/manage/Toolbar/More
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: Unauthorized
+msgid "Unauthorized"
+msgstr "Behörighet saknas"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Undo
+msgid "Undo"
+msgstr "Ångra"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Undo Controlpanel
+msgid "Undo Controlpanel"
+msgstr "Ångra"
+
+#: components/manage/BlockChooser/BlockChooser
+# defaultMessage: Unfold
+msgid "Unfold"
+msgstr "Fäll ut"
+
+#: components/manage/Diff/Diff
+# defaultMessage: Unified
+msgid "Unified"
+msgstr "Unified"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Uninstall
+msgid "Uninstall"
+msgstr "Avinstaller"
+
+#: components/manage/Blocks/Block/DefaultView
+#: components/manage/Blocks/Block/Edit
+#: components/theme/View/RenderBlocks
+# defaultMessage: Unknown Block {block}
+msgid "Unknown Block"
+msgstr "Okänt block"
+
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Unlink translation for
+msgid "Unlink translation for"
+msgstr "Ta bort översättningslänk för"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Unlock
+msgid "Unlock"
+msgstr "Lås upp"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Unsorted
+msgid "Unsorted"
+msgstr "Oordning återställd"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update
+msgid "Update"
+msgstr "Uppdatera"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Update User
+msgid "Update User"
+msgstr "Uppdatera användare"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update installed addons
+msgid "Update installed addons"
+msgstr "Uppdatera installerade tillägg"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update installed addons:
+msgid "Update installed addons:"
+msgstr "Uppdatera installerade tillägg:"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Updates available
+msgid "Updates available"
+msgstr "Uppdateringar tillgängliga"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Upgrade
+msgid "Upgrade"
+msgstr "Uppgradera"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Upgrade Plone Site
+msgid "Upgrade Plone Site"
+msgstr "Uppgradera Plone-webbplats"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Upgrade Report
+msgid "Upgrade Report"
+msgstr "Uppgraderingsrapprot"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Upgrade Steps
+msgid "Upgrade Steps"
+msgstr "Uppgraderingssteg"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Upload
+msgid "Upload"
+msgstr "Ladda upp"
+
+#: components/manage/Blocks/LeadImage/Edit
+# defaultMessage: Upload a lead image in the 'Lead Image' content field.
+msgid "Upload a lead image in the 'Lead Image' content field."
+msgstr "Ladda upp försättsbild till innehållsfältet 'försättsbild'."
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+# defaultMessage: Upload a new image
+msgid "Upload a new image"
+msgstr "Ladda upp ny bild"
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Upload files
+msgid "Upload files"
+msgstr "Ladda upp filer"
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Uploading files
+msgid "Uploading files"
+msgstr "Laddar upp fler"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/Edit
+# defaultMessage: Uploading image
+msgid "Uploading image"
+msgstr "Laddar upp bild"
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Use the form below to define the new content rule
+msgid "Use the form below to define the new content rule"
+msgstr "Använd formuläret nedan för att definiera ny innehållsregel"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu.
+msgid "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
+msgstr "Använd formuläret nedan för att definiera, ändra eller ta bort innehållsregler. Reglerna styr vilka åtgärder som skall genomföras då vissa händelser inträffar. När reglerna har definierats kan de appliceras genom att gå till en mapp och välja 'regler' i åtgärdsmenyn."
+
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+# defaultMessage: Used for programmatic access to the fieldset.
+msgid "Used for programmatic access to the fieldset."
+msgstr "Används för programmatisk tillgång till fältgrupp."
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: User
+msgid "User"
+msgstr "Användare"
+
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr "Medlemsskap i användargrupp"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Settings
+msgid "User Group Settings"
+msgstr "Inställningar för användargrupp"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User created
+msgid "User created"
+msgstr "Användare skapad"
+
+#: components/manage/Controlpanels/Users/UsersControlpanel
+# defaultMessage: User name
+msgid "User name"
+msgstr "Användarnamn"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User roles updated
+msgid "User roles updated"
+msgstr "Användarroller uppdaterade"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User updated successfuly
+msgid "User updated successfuly"
+msgstr "Lyckades uppdatera användare"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Username
+msgid "Username"
+msgstr "Användarnamn"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Users/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Users
+msgid "Users"
+msgstr "Användare"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Users and Groups
+msgid "Users and Groups"
+msgstr "Användare och grupper"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs.
+msgid "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
+msgstr "Med det här formulerat kan du ange alternativa url:er för ett objekt. Det här är ett enkelt sätt att göra samma objekt tillgänglig under flera olika URL:er."
+
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Variation
+msgid "Variation"
+msgstr "Variation"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Version Overview
+msgid "Version Overview"
+msgstr "Versionsöversikt"
+
+#: components/manage/Blocks/Video/schema
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: Video
+msgid "Video"
+msgstr "Video"
+
+#: components/manage/Blocks/Video/schema
+# defaultMessage: Video URL
+msgid "Video URL"
+msgstr "Video-URL"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: View
+msgid "View"
+msgstr "Visa"
+
+#: components/manage/History/History
+# defaultMessage: View changes
+msgid "View changes"
+msgstr "Visa ändringar"
+
+#: components/manage/Contents/Contents
+# defaultMessage: View links and references to this item
+msgid "View links and references to this item"
+msgstr "Visa länkar och hänvisningar tll det här objektet"
+
+#: components/manage/History/History
+# defaultMessage: View this revision
+msgid "View this revision"
+msgstr "Visa den här revisionen"
+
+#: components/manage/Toolbar/More
+# defaultMessage: View working copy
+msgid "View working copy"
+msgstr "Visa arbetskopia"
+
+#: components/manage/Display/Display
+# defaultMessage: View
+msgid "Viewmode"
+msgstr "Visningsläge"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Vocabulary term
+msgid "Vocabulary term"
+msgstr "Vokabulärterm"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Title
+msgid "Vocabulary term title"
+msgstr "Titel för vokabulärterm"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Vocabulary terms
+msgid "Vocabulary terms"
+msgstr "Vokabulärtermer"
+
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: You are running in 'debug mode'. This mode is intended for sites that are under development. This allows many configuration changes to be immediately visible, but will make your site run more slowly. To turn off debug mode, stop the server, set 'debug-mode=off' in your buildout.cfg, re-run bin/buildout and then restart the server process.
+msgid "Warning Regarding debug mode"
+msgstr "Systemet körs i 'debug-läge'. Detta är avsett för webbplatser under utveckling. Det möjliggör konfigurationsändringar omedelbart tar effekt, men gör också webbplatsen långsammare. Avaktiver debugläget genom att stänga ned server och sätta 'debug-mode=off' i buildout.cfg och starta om serverprocessen."
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later.
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
+msgstr "Backend-delen till webbplatsen är beklagligtvis inte tillgänglig just nu. Var god försök igen senare."
+
+#: components/theme/NotFound/NotFound
+# defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
+msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
+msgstr "Tyvärr är sidan du försöker nå inte tillgänglig på denna adress. Använd länkarna nedan för att försöka hitta vad du letar efer."
+
+#: components/theme/Error/ServerError
+# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr "Fel uppstod på servern."
+
+#: components/theme/Forbidden/Forbidden
+# defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
+msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
+msgstr "Behörighet saknas för denna resurls."
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: The
+msgid "Weeek day of month"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Weekday
+msgid "Weekday"
+msgstr "Veckodag"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Weekly
+msgid "Weekly"
+msgstr "Veckovis"
+
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/History/History
+# defaultMessage: What
+msgid "What"
+msgstr "Vad"
+
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/History/History
+# defaultMessage: When
+msgid "When"
+msgstr "När"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: When this date is reached, the content will nolonger be visible in listings and searches.
+msgid "When this date is reached, the content will nolonger be visible in listings and searches."
+msgstr "Vid detta datum upphör innehållet att visas i listningar och sökningar."
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Whether or not execution of further rules should stop after this rule is executed
+msgid "Whether or not execution of further rules should stop after this rule is executed"
+msgstr "Huruvida utförande av ytterligare regler skall avbrytas efter åtgärderna i denna regel genomförts"
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops
+msgid "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
+msgstr "Huruvida andra regler skall utlösas av åtgärderna i denna regel. Var noga med att säkerställa att det inte uppstår en obruten loop av åtgärder om detta aktiveras"
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Whether or not the rule is currently enabled
+msgid "Whether or not the rule is currently enabled"
+msgstr "Huruvida regeln är aktiverad"
+
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/History/History
+# defaultMessage: Who
+msgid "Who"
+msgstr "Vem"
+
+#: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Wide
+msgid "Wide"
+msgstr "Bred"
+
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Updating workflow states...
+msgid "Workflow Change Loading Message"
+msgstr "Uppdaterar arbetsflödets tillstånd..."
+
+#: components/manage/Workflow/Workflow
+# defaultMessage: Workflow updated.
+msgid "Workflow updated."
+msgstr "Arbetsflöde uppdaterat."
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Yearly
+msgid "Yearly"
+msgstr "Årligen"
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Yes
+msgid "Yes"
+msgstr "Ja"
+
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: You are trying to access a protected resource, please {login} first.
+msgid "You are trying to access a protected resource, please {login} first."
+msgstr "Du försöker komma åt en skyddad resurs, var god {login} först."
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+# defaultMessage: You are using an outdated browser
+msgid "You are using an outdated browser"
+msgstr "Det verkar som du använder en gammal webbläsare"
+
+#: components/theme/Comments/Comments
+# defaultMessage: You can add a comment by filling out the form below. Plain text formatting.
+msgid "You can add a comment by filling out the form below. Plain text formatting."
+msgstr "Du kan lägga till en kommentar med formuläret nedan. Endast enkel text utan formattering"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: You can control who can view and edit your item using the list below.
+msgid "You can control who can view and edit your item using the list below."
+msgstr "Du kan kontrollera vem som kan se och redigera ditt objekt med listorna nedan."
+
+#: components/manage/Diff/Diff
+# defaultMessage: You can view the difference of the revisions below.
+msgid "You can view the difference of the revisions below."
+msgstr "Du kan se skillnaden mellan revisionerna nedan."
+
+#: components/manage/History/History
+# defaultMessage: You can view the history of your item below.
+msgid "You can view the history of your item below."
+msgstr "Du kan visa historiken för ditt objekt nedan."
+
+#: components/manage/Contents/Contents
+# defaultMessage: You can't paste this content here
+msgid "You can't paste this content here"
+msgstr "Du kan inte klistra in det här innehållet här"
+
+#: components/theme/Logout/Logout
+# defaultMessage: You have been logged out from the site.
+msgid "You have been logged out from the site."
+msgstr "Du har blivit utloggad från webbplatsen."
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your email is required for reset your password.
+msgid "Your email is required for reset your password."
+msgstr "Epostadress måste anges för återställning av lösenord."
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Your password has been set successfully. You may now {link} with your new password.
+msgid "Your password has been set successfully. You may now {link} with your new password."
+msgstr "Lyckades sätta lösenord. Du kan nu {link} med det nya lösenordet."
+
+#: components/manage/Preferences/PersonalPreferences
+# defaultMessage: Your preferred language
+msgid "Your preferred language"
+msgstr "Föredraget språk"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Your site is up to date.
+msgid "Your site is up to date."
+msgstr "Webbplatsen är i fas med senaste programvaruversion."
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your username is required for reset your password.
+msgid "Your usernaame is required for reset your password."
+msgstr "Användarnamn krävs för lösenordsåterställning."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
+msgid "addUserFormEmailDescription"
+msgstr "Ange en epostadress. Detta behövs i det fall lösenordet förloras. Epostadressen behålls konfidentiellt och kommer inte att delas eller exponeras."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter full name, e.g. John Smith.
+msgid "addUserFormFullnameDescription"
+msgstr "Mata in fullständigt namn."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "addUserFormPasswordDescription"
+msgstr "Välj ett lösenord, minst 8 tecken."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in.
+msgid "addUserFormUsernameDescription"
+msgstr "Välj ett användarnamn. Mellanslag eller specialtecken är ej tillåtna. Användarnamn och lösenord är känsliga för stor ock liten bokstav, se till att caps-lock-tangenten inte är aktiverad. Detta namn används vid inloggning."
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Available views
+msgid "availableViews"
+msgstr "Tillgängliga vyer"
+
+#: components/theme/Login/Login
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Forgot your password?
+msgid "box_forgot_password_option"
+msgstr "Glömt lösenord?"
+
+#: config/Blocks
+# defaultMessage: Checkbox
+msgid "checkboxFacet"
+msgstr "Kryssruta"
+
+#: config/Blocks
+# defaultMessage: Common
+msgid "common"
+msgstr "Vanliga"
+
+#: components/manage/Multilingual/CompareLanguages
+# defaultMessage: Compare to language
+msgid "compare_to"
+msgstr "Jämför med språk"
+
+#: config/Blocks
+# defaultMessage: Date Range
+msgid "daterangeFacet"
+msgstr "Datumintervall"
+
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: delete
+msgid "delete"
+msgstr "ta bort"
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+# defaultMessage: You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser.
+msgid "deprecated_browser_notice_message"
+msgstr "Du verkar använda {browsername} {browserversion} vilken inte längre stöds av programvaruleverantör. Det innebär att inga säkerhetsuppdateringar genomförs och moderna webbfunktioner kan saknas, vilket leder till en försämrad användarupplevelse. Vi rekommenderar att du använder en nyare webbläsare."
+
+#: config/Blocks
+# defaultMessage: Description
+msgid "description"
+msgstr "Beskrivning"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password.
+msgid "description_lost_password"
+msgstr "Av säkerhetskäl lagras ditt lösenord på ett hashat format som ej kan läsas av oss och vi kan därför inte eposta lösenordet direkt till dig. Om du vill återställa lösenordet kan du använda formuläret nedan så får du information om hur du går tillväga i ett ebrev som skickas till den epostadress du registrerat på ditt konto."
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your password reset request has been mailed. It should arrive in your mailbox shortly. When you receive the message, visit the address it contains to reset your password.
+msgid "description_sent_password"
+msgstr "Begäran om lösenordsåterställning har skickats med epost. Den bör landa i din epostlåda inom kort. I meddelandet finns en länk för lösenordsåterställning."
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Draft
+msgid "draft"
+msgstr "Utkast"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be valid email (something@domain.com)
+msgid "email"
+msgstr "Måste innehålla gilting epostadress (finemang@example.com)"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: All dates
+msgid "event_alldates"
+msgstr "Alla datum"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Attendees
+msgid "event_attendees"
+msgstr "Deltagare"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Contact Name
+msgid "event_contactname"
+msgstr "Namn på kontaktperson"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Contact Phone
+msgid "event_contactphone"
+msgstr "Telefonnummer till kontaktperson"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Website
+msgid "event_website"
+msgstr "Webbplats"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: What
+msgid "event_what"
+msgstr "Vad"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: When
+msgid "event_when"
+msgstr "När"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Where
+msgid "event_where"
+msgstr "Var"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
+msgstr "Den här webbplatsen accepterar inte filer större än {limit}"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: flush intIds and rebuild relations
+msgid "flush intIds and rebuild relations"
+msgstr "Rensa intiDs och bygg om relationer"
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Head title
+msgid "head_title"
+msgstr "Huvudtitel"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Password reset confirmation sent
+msgid "heading_sent_password"
+msgstr "Bekräftelse på lösenordsåterställning skickad"
+
+#: config/Blocks
+# defaultMessage: Hero
+msgid "hero"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: HTML
+msgid "html"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image
+msgid "image"
+msgstr "Bild"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be integer
+msgid "integer"
+msgstr "Inmatat värde måste vara ett heltal"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Intranet
+msgid "intranet"
+msgstr "Intranät"
+
+#: components/manage/Contents/Contents
+# defaultMessage: item
+msgid "item"
+msgstr "objekt"
+
+#: components/manage/Contents/Contents
+# defaultMessage: items
+msgid "items"
+msgstr "objekt"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: My email is
+msgid "label_my_email_is"
+msgstr "Min epostadress är"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: My user name is
+msgid "label_my_username_is"
+msgstr "Mitt användarnamn är"
+
+#: config/Blocks
+# defaultMessage: Lead Image Field
+msgid "leadimage"
+msgstr "Försättsbild"
+
+#: config/Blocks
+# defaultMessage: Listing
+msgid "listing"
+msgstr "Listning"
+
+#: components/manage/Blocks/Listing/ListingBody
+#: components/manage/Contents/Contents
+# defaultMessage: Loading
+msgid "loading"
+msgstr "Laddar"
+
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: log in
+msgid "log in"
+msgstr "Logga in"
+
+#: config/Blocks
+# defaultMessage: Maps
+msgid "maps"
+msgstr "Kartor"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Maximum Length
+msgid "maxLength"
+msgstr "Maxlängd"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: End of the range (including the value itself)
+msgid "maximum"
+msgstr "Slutet på intervall (inklusive angivet slutvärde)"
+
+#: config/Blocks
+# defaultMessage: Media
+msgid "media"
+msgstr "Media"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Minimum Length
+msgid "minLength"
+msgstr "Minimilängd"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Start of the range
+msgid "minimum"
+msgstr "Början på intervall"
+
+#: config/Blocks
+# defaultMessage: Most used
+msgid "mostUsed"
+msgstr "Mest använda"
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
+# defaultMessage: No
+msgid "no"
+msgstr "Nej"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: No workflow state
+msgid "no workflow state"
+msgstr "Inga tillstånd i arbetsflödet"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be number
+msgid "number"
+msgstr "Inmatat värde måste vara ett nummer"
+
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+#: components/manage/Widgets/RecurrenceWidget/ByYearField
+# defaultMessage: of the month
+msgid "of the month"
+msgstr "i månaden"
+
+#: error
+# defaultMessage: or try a different page.
+msgid "or try a different page."
+msgstr "eller försök med en annan sida."
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: others
+msgid "others"
+msgstr "andra"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr "väntande"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Private
+msgid "private"
+msgstr "Privat"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Published
+msgid "published"
+msgstr "Publicerad"
+
+#: components/manage/Widgets/QueryWidget
+# defaultMessage: Select…
+msgid "querystring-widget-select"
+msgstr "Välj…"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: rebuild relations
+msgid "rebuild relations"
+msgstr "bygg om relationer"
+
+#: components/manage/Contents/Contents
+# defaultMessage: reference
+msgid "reference"
+msgstr "hänvisning"
+
+#: components/manage/Contents/Contents
+# defaultMessage: references
+msgid "references"
+msgstr "hänvisningar"
+
+#: components/theme/Search/Search
+# defaultMessage: results
+msgid "results found"
+msgstr "resultat"
+
+#: error
+# defaultMessage: return to the site root
+msgid "return to the site root"
+msgstr "återvänd till webbplatsens startsida"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: and
+msgid "rrule_and"
+msgstr "och"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: (~approximate)
+msgid "rrule_approximate"
+msgstr "(~ungefärlig)"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: at
+msgid "rrule_at"
+msgstr "vid"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: [month] [day], [year]
+msgid "rrule_dateFormat"
+msgstr "[månad] [dag], [år]"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: day
+msgid "rrule_day"
+msgstr "dag"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: days
+msgid "rrule_days"
+msgstr "dagar"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: every
+msgid "rrule_every"
+msgstr "varje"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: for
+msgid "rrule_for"
+msgstr "för"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: hour
+msgid "rrule_hour"
+msgstr "timma"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: hours
+msgid "rrule_hours"
+msgstr "timmar"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: in
+msgid "rrule_in"
+msgstr "i"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: last
+msgid "rrule_last"
+msgstr "sist"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: minutes
+msgid "rrule_minutes"
+msgstr "minuter"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: month
+msgid "rrule_month"
+msgstr "månad"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: months
+msgid "rrule_months"
+msgstr "månader"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: nd
+msgid "rrule_nd"
+msgstr "\n"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: on
+msgid "rrule_on"
+msgstr "på"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: on the
+msgid "rrule_on the"
+msgstr "den"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: or
+msgid "rrule_or"
+msgstr "eller"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: rd
+msgid "rrule_rd"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: st
+msgid "rrule_st"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: th
+msgid "rrule_th"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: the
+msgid "rrule_the"
+msgstr "​"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: time
+msgid "rrule_time"
+msgstr "tid"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: times
+msgid "rrule_times"
+msgstr "tid"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: until
+msgid "rrule_until"
+msgstr "tills"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: week
+msgid "rrule_week"
+msgstr "vecka"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: weekday
+msgid "rrule_weekday"
+msgstr "veckodag"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: weekdays
+msgid "rrule_weekdays"
+msgstr "veckodagar"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: weeks
+msgid "rrule_weeks"
+msgstr "veckor"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: year
+msgid "rrule_year"
+msgstr "år"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: years
+msgid "rrule_years"
+msgstr "år"
+
+#: config/Blocks
+# defaultMessage: Select
+msgid "selectFacet"
+msgstr "Välj"
+
+#: components/manage/Blocks/Search/components/ViewSwitcher
+# defaultMessage: Select view
+msgid "selectView"
+msgstr "Välj vy"
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to footer
+msgid "skiplink-footer"
+msgstr "Hoppa till sidfot"
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to main content
+msgid "skiplink-main-content"
+msgstr "Hoppa till huvudinnehåll"
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to navigation
+msgid "skiplink-navigation"
+msgstr "Hoppa till navigering"
+
+#: components/manage/Contents/Contents
+# defaultMessage: sort
+msgid "sort"
+msgstr "sortera"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: sources path
+msgid "sources path"
+msgstr "källsökväg"
+
+#: config/Blocks
+# defaultMessage: Table
+msgid "table"
+msgstr "Tabell"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: target path
+msgid "target path"
+msgstr "målsökväg"
+
+#: config/Blocks
+# defaultMessage: Text
+msgid "text"
+msgstr "Text"
+
+#: config/Blocks
+# defaultMessage: Title
+msgid "title"
+msgstr "Titel"
+
+#: components/manage/Blocks/ToC/Schema
+#: config/Blocks
+# defaultMessage: Table of Contents
+msgid "toc"
+msgstr "Innehållsförteckning"
+
+#: config/Blocks
+# defaultMessage: Toggle
+msgid "toggleFacet"
+msgstr "Växla"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update from version {origin} to {destination}
+msgid "upgradeVersions"
+msgstr "Uppdatera från version {origin} till {destination}"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
+msgid "url"
+msgstr "url"
+
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: user avatar
+msgid "user avatar"
+msgstr "användaravatar"
+
+#: config/Blocks
+# defaultMessage: Video
+msgid "video"
+msgstr "Video"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Views
+msgid "views"
+msgstr "Vyer"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Visit external website
+msgid "visit_external_website"
+msgstr "Besök extern webbplats"
+
+#: components/manage/Toolbar/More
+# defaultMessage: You are not authorized to perform this operation.
+msgid "workingCopyErrorUnauthorized"
+msgstr "Behörighet saknas för denna operation."
+
+#: components/manage/Toolbar/More
+# defaultMessage: An error occurred while performing this operation.
+msgid "workingCopyGenericError"
+msgstr "Ett fel uppstod under operationen."
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
+# defaultMessage: Yes
+msgid "yes"
+msgstr "Ja"
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+msgstr "{count, plural, one {Ladda upp {count} fil} other {Ladda upp {count} filer}}"
+
+#: components/manage/Contents/Contents
+# defaultMessage: {count} selected
+msgid "{count} selected"
+msgstr "{count} valda"
+
+#: components/manage/Controlpanels/ContentType
+# defaultMessage: {id} Content Type
+msgid "{id} Content Type"
+msgstr "{id} Innehållstyp"
+
+#: components/manage/Controlpanels/ContentTypeSchema
+# defaultMessage: {id} Schema
+msgid "{id} Schema"
+msgstr "{id} Schema"
+
+#: components/manage/Actions/Actions
+# defaultMessage: {title} copied.
+msgid "{title} copied."
+msgstr "{title} kopierad."
+
+#: components/manage/Actions/Actions
+# defaultMessage: {title} cut.
+msgid "{title} cut."
+msgstr "{title} utklippt."
+
+#: components/manage/Actions/Actions
+# defaultMessage: {title} has been deleted.
+msgid "{title} has been deleted."
+msgstr "{title} har tagits bort."
