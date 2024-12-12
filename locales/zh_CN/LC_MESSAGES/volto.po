@@ -229,11 +229,6 @@ msgstr "添加{type}"
 msgid "Add-Ons"
 msgstr "附加组件"
 
-#. Default: "Add-on Configuration"
-#: components/manage/Controlpanels/Controlpanels
-msgid "Add-on Configuration"
-msgstr "附加组件配置"
-
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons"
@@ -3520,6 +3515,7 @@ msgstr "表格"
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/variations/DefaultTocRenderer
 #: components/manage/Blocks/ToC/variations/HorizontalMenu
+#: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
 msgstr "表格内容"
 
@@ -4110,11 +4106,6 @@ msgstr "用户名"
 #: helpers/MessageLabels/MessageLabels
 msgid "Users"
 msgstr "用户"
-
-#. Default: "Users and Groups"
-#: components/manage/Controlpanels/Controlpanels
-msgid "Users and Groups"
-msgstr "用户和组"
 
 #. Default: "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
 #: components/manage/Aliases/Aliases
