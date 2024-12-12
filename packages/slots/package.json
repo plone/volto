@@ -52,7 +52,7 @@
     "@plone/client": "workspace:*",
     "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
-    "react-aria-components": "^1.4.0"
+    "react-aria-components": "^1.5.0"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
