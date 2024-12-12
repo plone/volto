@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.20.3 (2024-12-12)
+
+### Bugfix
+
+- Added missing translation in Table of Contents block and added missing Italian translations. @pnicolli [#6533](https://github.com/plone/volto/issues/6533)
+
 ## 17.20.2 (2024-12-11)
 
 ### Bugfix
