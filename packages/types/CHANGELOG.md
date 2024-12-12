@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.1.0 (2024-12-12)
+
+### Feature
+
+- Added block category type. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+
 ## 1.0.0 (2024-10-31)
 
 ### Internal
