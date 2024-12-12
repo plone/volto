@@ -208,7 +208,7 @@
       "releaseNotes": "cat .changelog.draft"
     },
     "npm": {
-      "tag": "legacy"
+      "tag": "legacy-17"
     }
   },
   "lint-staged": {
