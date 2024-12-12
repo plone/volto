@@ -228,11 +228,6 @@ msgstr "Lisää {type}"
 msgid "Add-Ons"
 msgstr "Laajennokset"
 
-#. Default: "Add-on Configuration"
-#: components/manage/Controlpanels/Controlpanels
-msgid "Add-on Configuration"
-msgstr "Laajennosten asetukset"
-
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons"
@@ -4110,11 +4105,6 @@ msgstr "Käyttäjätunnus"
 #: helpers/MessageLabels/MessageLabels
 msgid "Users"
 msgstr "Käyttäjät"
-
-#. Default: "Users and Groups"
-#: components/manage/Controlpanels/Controlpanels
-msgid "Users and Groups"
-msgstr "Käyttäjät ja ryhmät"
 
 #. Default: "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
 #: components/manage/Aliases/Aliases

@@ -30,17 +30,9 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
-  versionoverview: {
-    id: 'Version Overview',
-    defaultMessage: 'Version Overview',
-  },
   general: {
     id: 'General',
     defaultMessage: 'General',
-  },
-  addonconfiguration: {
-    id: 'Add-on Configuration',
-    defaultMessage: 'Add-on Configuration',
   },
   content: {
     id: 'Content',
@@ -49,10 +41,6 @@ const messages = defineMessages({
   moderatecomments: {
     id: 'Moderate Comments',
     defaultMessage: 'Moderate Comments',
-  },
-  usersandgroups: {
-    id: 'Users and Groups',
-    defaultMessage: 'Users and Groups',
   },
   usersControlPanelCategory: {
     id: 'Users',

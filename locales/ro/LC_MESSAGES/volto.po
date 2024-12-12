@@ -223,11 +223,6 @@ msgstr "Adăugare {type}"
 msgid "Add-Ons"
 msgstr ""
 
-#. Default: "Add-on Configuration"
-#: components/manage/Controlpanels/Controlpanels
-msgid "Add-on Configuration"
-msgstr ""
-
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons"
@@ -4105,11 +4100,6 @@ msgstr "Nume utilizator"
 #: helpers/MessageLabels/MessageLabels
 msgid "Users"
 msgstr "Utilizatori"
-
-#. Default: "Users and Groups"
-#: components/manage/Controlpanels/Controlpanels
-msgid "Users and Groups"
-msgstr "Utilizatori și grupuri"
 
 #. Default: "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
 #: components/manage/Aliases/Aliases
