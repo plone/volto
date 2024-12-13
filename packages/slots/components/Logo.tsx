@@ -1,4 +1,4 @@
-import { SlotComponentProps } from '../SlotRenderer';
+import type { SlotComponentProps } from '../SlotRenderer';
 import { Link } from '@plone/components';
 import LogoImage from './Logo.svg';
 import config from '@plone/registry';

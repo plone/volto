@@ -1,5 +1,5 @@
 import RenderBlocks from '@plone/blocks/RenderBlocks/RenderBlocks';
-import { SlotComponentProps } from '../SlotRenderer';
+import type { SlotComponentProps } from '../SlotRenderer';
 import config from '@plone/registry';
 
 const ContentArea = (props: SlotComponentProps) => {
