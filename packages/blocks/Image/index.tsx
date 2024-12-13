@@ -1,4 +1,4 @@
-import { BlockViewProps } from '@plone/types';
+import type { BlockViewProps } from '@plone/types';
 import { usePloneProvider } from '@plone/providers';
 
 const ImageBlockView = (props: BlockViewProps) => {
