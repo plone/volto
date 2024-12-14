@@ -357,7 +357,7 @@ config.registerUtility({
   type: 'fieldFactoryProperties',
   method: (intl) => ({
     default: {
-      title: intl.formatMessage(messages.defaultValue),
+      title: intl.formatMessage(messages.text),
       widget: 'richtext',
       type: 'string',
     },
