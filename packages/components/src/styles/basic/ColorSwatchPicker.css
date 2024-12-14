@@ -2,7 +2,7 @@
 @import './ColorField.css';
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   .react-aria-ColorSwatchPicker {
     display: flex;
     flex-wrap: wrap;

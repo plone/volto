@@ -1,6 +1,6 @@
 @import './ColorSlider.css';
 
-@layer plone-components {
+@layer plone-components.base {
   .react-aria-ColorSwatch {
     width: 32px;
     height: 32px;

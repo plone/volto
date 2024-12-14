@@ -2,7 +2,7 @@
 @import './Link.css';
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   .react-aria-Tabs {
     display: flex;
     color: var(--text-color);

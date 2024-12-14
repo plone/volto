@@ -5,7 +5,7 @@
 @import './Menu.css';
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   :root {
     --plone-table-border: 0 none;
     --plone-table-border-radius: 0;
