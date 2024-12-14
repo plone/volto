@@ -64,7 +64,7 @@ You can override them in your classes while maintaining them for others.
 
 ### CSS layers
 
-This package use CSS layers to provide a way to style the components in a more flexible way.
+This package uses CSS layers to style the components in a more flexible way.
 It uses the `plone-components` layer name to scope all the CSS declarations in the package.
 The basic styling uses the nested `plone-components.base` named layer.
 You can use the `plone-components` layer to override the basic styling, or use the `plone-components.base` layer to override the basic styling in a more specific way.
@@ -72,7 +72,7 @@ You can use the `plone-components` layer to override the basic styling, or use t
 ### Quanta
 
 This package also features the Quanta components.
-These components use the basic styling as a baseline, extending them to achieve Quanta look and feel.
+These components use the basic styling as a baseline, extending them to achieve the Quanta look and feel.
 They also extend the basic React components in a composable way.
 The Quanta styling is scoped in the `plone-components.quanta` named layer.
 

@@ -1,1 +1,1 @@
-Added a setting in config object for setting the site's CSS layers, if required. @sneridagh
+Added a setting in the `config` object to set the site's CSS layers, if required. @sneridagh

@@ -464,7 +464,7 @@ querystringSearchGet
     Please test this setting properly before enabling in a production site.
 
 cssLayers
-    If you want to use CSS layers in Volto styling, it's possible to define them making sure that they are defined and applied at the very top level of the page (head tag).
+   To use CSS layers when styling Volto, you can define and apply them at the very top level of the page, where they appear in the `<head>` tag.
     By using this configuration, you can pass the layer list definition as an array:
 
     ```js

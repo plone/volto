@@ -1,1 +1,1 @@
-Added the type for a setting in config object for setting the site's CSS layers. @sneridagh
+Added the typing for the new `cssLayers` configuration object setting. @sneridagh
