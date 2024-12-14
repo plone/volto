@@ -31,10 +31,13 @@ canary
 
     If the pull request is a feature or a bugfix, and if the release manager deems it useful to the latest version's branch, they may ask you to backport it to that branch.
 
-`17.x.x`
-:   `17.x.x` is the current stable and actively developed branch in git.
-    Upon the final release of version `18.0.0`, the `17.x.x` branch line will be no longer supported.
+`18.x.x`
+:   `18.x.x` is the current stable and actively developed branch in git.
+    Upon the final release of version `19.0.0`, the `18.x.x` branch line will be no longer supported.
     Any new feature will be merged into the `main` branch, and only backported to and released in older versions, if the Volto Team approves it.
+
+`17.x.x`
+:   `17.x.x` is no longer supported and became legacy when Volto 18 was released.
 
 `16.x.x`
 :   This version of Volto has the [same maintenance and support schedule as Plone 6.0](https://plone.org/download/release-schedule).

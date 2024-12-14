@@ -16,10 +16,18 @@ This chapter describes the versions of software that Volto supports and how Volt
 
 (volto-generator-compatibility-with-volto-label)=
 
-## `volto-generator` compatibility with Volto
+## `@plone/volto-generator` compatibility with Volto
 
-`volto-generator` is a tool that generates a Volto project.
-The following table describes the compatibility between versions of `volto-generator` and Volto.
+```{deprecated} Volto 18.0.0
+
+```{important}
+`@plone/volto-generator` is deprecated, unmaintaned, and its usage is discouraged from Volto 18.0.0.
+For new projects, please use [Cookieplone](https://github.com/plone/cookieplone) instead.
+In case of having an existing project and you need to upgrade to Volto 18 but don't have time to migrate to use Cookieplone, you can still use it.
+```
+
+`@plone/volto-generator` is a tool that generates a Volto project.
+The following table describes the compatibility between versions of `@plone/volto-generator` and Volto.
 
 | Generator version | Volto version |
 |-------------------|---------------|
@@ -40,10 +48,11 @@ We will always support the [latest major Plone release](https://plone.org/downlo
 
 The versions of Python that are supported in Volto depend on the version of Plone that you use.
 
-| Plone | Python       | Volto        |
-| ----- | ------------ | ------------ |
-| 6.0   | 3.8-3.11     | 16.0 or 17.0 |
-| 5.2   | 2.7, 3.6-3.8 | 15.0         |
+| Plone | Python       | Volto            |
+| ----- | ------------ | ---------------- |
+| 6.1   | 3.10-3.12    | 18.0.0           |
+| 6.0   | 3.8-3.11     | 16.0.0 or 17.0.0 |
+| 5.2   | 2.7, 3.6-3.8 | 15.0.0           |
 
 On Plone 6, we recommend using the known good set (KGS) of package versions that are specified in the Plone release.
 
@@ -72,6 +81,12 @@ Volto runs using [Node.js](https://nodejs.org/en).
 Volto supports only the latest two [LTS versions of Node.js](https://github.com/nodejs/release#release-schedule).
 We recommend using the current LTS version.
 
+| Node.js | Volto       |
+| ------- | ----------- |
+| 20, 22  | Volto 18    |
+| 18, 20  | Volto 17    |
+| 16, 18  | Volto 16    |
+
 - Node.js 22 LTS: Supported since Volto 18.
 - Node.js 20 LTS: Supported since Volto 17.
 - Node.js 18: No longer supported. It was supported in Volto 16 - 17.
@@ -83,11 +98,10 @@ We recommend using the current LTS version.
 
 (version-policy-supported-browsers)=
 
-## Supported browsers
+### Supported web browsers
 
-Volto works well with the current version of any modern browser—including Chrome, Firefox, Safari, and Edge—as well as their mobile flavors.
-
-We do not guarantee that outdated browsers, such as Internet Explorer 11, are supported by Volto.
+```{include} /_inc/_install-browser-reqs-volto.md
+```
 
 
 ## Branch policy
