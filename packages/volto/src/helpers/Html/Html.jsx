@@ -102,6 +102,12 @@ class Html extends Component {
           {head.meta.toComponent()}
           {head.link.toComponent()}
           {head.script.toComponent()}
+
+          {config.settings.cssLayers && (
+            // Load the CSS layers from config, if any
+            <style>{`@layer ${config.settings.cssLayers.join(', ')};`}</style>
+          )}
+
           {head.style.toComponent()}
 
           <script
