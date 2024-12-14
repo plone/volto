@@ -7,6 +7,11 @@ myst:
     "keywords": "Volto, Plone, frontend, React, themes, Volto Light Theme"
 ---
 
+```{deprecated} Volto 18
+Using SemanticUI theming for your project or add-on is deprecated from Volto 18 on and will be removed from Plone 7.
+Plone 7 will use another theming approach, based on `@plone/components` and `@plone/theming` packages.
+```
+
 # Customize a base theme
 
 You can customize a base theme for your add-on.
