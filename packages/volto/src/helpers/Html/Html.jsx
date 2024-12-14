@@ -105,7 +105,7 @@ class Html extends Component {
 
           {config.settings.cssLayers && (
             // Load the CSS layers from config, if any
-            <style>{config.settings.cssLayers}</style>
+            <style>{`@layer ${config.settings.cssLayers.join(', ')};`}</style>
           )}
 
           {head.style.toComponent()}
