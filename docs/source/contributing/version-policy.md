@@ -19,10 +19,9 @@ This chapter describes the versions of software that Volto supports and how Volt
 ## `@plone/volto-generator` compatibility with Volto
 
 ```{deprecated} Volto 18.0.0
-
-```{important}
-`@plone/volto-generator` is deprecated, unmaintaned, and its usage is discouraged from Volto 18.0.0.
-For new projects, please use [Cookieplone](https://github.com/plone/cookieplone) instead.
+`@plone/volto-generator` was deprecated in Volto 18.0.0.
+It is not maintained, and you should not use it.
+For new projects, use [Cookieplone](https://github.com/plone/cookieplone) instead.
 In case of having an existing project and you need to upgrade to Volto 18 but don't have time to migrate to use Cookieplone, you can still use it.
 ```
 
@@ -87,8 +86,6 @@ We recommend using the current LTS version.
 | 18, 20  | Volto 17    |
 | 16, 18  | Volto 16    |
 
-- Node.js 22 LTS: Supported since Volto 18.
-- Node.js 20 LTS: Supported since Volto 17.
 - Node.js 18: No longer supported. It was supported in Volto 16 - 17.
 - Node.js 16: No longer supported. It was supported in Volto 14 - 16.
 - Node.js 14: No longer supported. It was supported in Volto 8.8.0 - 16.
@@ -98,7 +95,7 @@ We recommend using the current LTS version.
 
 (version-policy-supported-browsers)=
 
-### Supported web browsers
+## Supported web browsers
 
 ```{include} /_inc/_install-browser-reqs-volto.md
 ```
