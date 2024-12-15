@@ -36,6 +36,33 @@ You can build your own or choose from the community released ones:
 You can try a Volto online demo at [https://demo.plone.org/](https://demo.plone.org/).
 
 
+## Monorepo structure
+
+Since version 18.0.0-alpha4, the Volto core repository has had the shape of a monorepo, where "mono" means "single" and "repo" is short for "repository".
+This means that several apps and libraries related to each other are stored in the same repository.
+They are managed together but released individually.
+This allows the code to be shared effectively, and unifies tracking of changes across all of the apps and libraries.
+
+Some packages released to npm were previously in separate repositories, but are now included in this monorepo.
+They include the following items.
+
+| Package | Location |
+|---|---|
+| [`@plone/client`](https://www.npmjs.com/package/@plone/client) | [`packages/client`](https://github.com/plone/volto/tree/main/packages/client#readme) |
+| [`@plone/components`](https://www.npmjs.com/package/@plone/components) | [`packages/components`](https://github.com/plone/volto/tree/main/packages/components#readme) |
+| [`@plone/generator-volto`](https://www.npmjs.com/package/@plone/generator-volto) | [`packages/generator-volto`](https://github.com/plone/volto/tree/main/packages/generator-volto#readme) |
+| [`@plone/helpers`](https://www.npmjs.com/package/@plone/helpers) | [`packages/helpers`](https://github.com/plone/volto/tree/main/packages/helpers#readme) |
+| [`@plone/providers`](https://www.npmjs.com/package/@plone/providers) | [`packages/providers`](https://github.com/plone/volto/tree/main/packages/providers#readme) |
+| [`@plone/registry`](https://www.npmjs.com/package/@plone/registry) | [`packages/registry`](https://github.com/plone/volto/tree/main/packages/registry#readme) |
+| [`@plone/scripts`](https://www.npmjs.com/package/@plone/scripts) | [`packages/scripts`](https://github.com/plone/volto/tree/main/packages/scripts#readme) |
+| [`@plone/types`](https://www.npmjs.com/package/@plone/types) | [`packages/types`](https://github.com/plone/volto/tree/main/packages/types#readme) |
+| n/a | [`packages/volto-guillotina`](https://github.com/plone/volto/tree/main/packages/volto-guillotina) |
+| [`@plone/volto-slate`](https://www.npmjs.com/package/@plone/volto-slate) | [`packages/volto-slate`](https://github.com/plone/volto/tree/main/packages/volto-slate#readme) |
+| [`@plone/volto-testing`](https://www.npmjs.com/package/@plone/volto-testing) | [`packages/volto-testing`](https://github.com/plone/volto/tree/main/packages/volto-testing) |
+
+See also [Monorepo structure](https://6.docs.plone.org/volto/contributing/developing-core.html#monorepo-structure).
+
+
 ## Create a Volto project
 
 To start a new project using Volto, follow the [Plone installation documentation](https://6.docs.plone.org/install/create-project.html).

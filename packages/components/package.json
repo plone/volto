@@ -11,10 +11,10 @@
   "version": "3.0.0",
   "repository": {
     "type": "git",
-    "url": "http://github.com/plone/components.git"
+    "url": "http://github.com/plone/volto.git"
   },
   "bugs": {
-    "url": "https://github.com/plone/components/issues"
+    "url": "https://github.com/plone/volto/issues"
   },
   "type": "module",
   "files": [
