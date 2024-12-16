@@ -7,12 +7,10 @@ myst:
     "keywords": "Volto, Plone, frontend, React, Theming, Strategy"
 ---
 
-```{deprecated} Volto 18
-Using SemanticUI theming for your project or add-on is deprecated from Volto 18 on and will be removed from Plone 7.
-Plone 7 will use another theming approach, based on `@plone/components` and `@plone/theming` packages.
-```
-
 # Theming Strategy
+
+```{include} /_inc/_semanticui-deprecation.md
+```
 
 One approaches the theming of a Volto site usually with a predefined mockup or
 design from a design agency or an UX/UI designer in the form of Sketch files

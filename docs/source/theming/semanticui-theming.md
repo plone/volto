@@ -7,12 +7,10 @@ myst:
     "keywords": "Volto, Plone, frontend, React, Semantic UI, Theming"
 ---
 
-```{deprecated} Volto 18
-Using SemanticUI theming for your project or add-on is deprecated from Volto 18 on and will be removed from Plone 7.
-Plone 7 will use another theming approach, based on `@plone/components` and `@plone/theming` packages.
-```
-
 # Semantic UI Theming
+
+```{include} /_inc/_semanticui-deprecation.md
+```
 
 As we hinted previously, Semantic UI theming happens in several stages using several layers of inheritance.
 Let's discover each of these layers.

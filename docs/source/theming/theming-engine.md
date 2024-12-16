@@ -7,12 +7,10 @@ myst:
     "keywords": "Volto, Plone, frontend, React, theming, engine, LESS"
 ---
 
-```{deprecated} Volto 18
-Using SemanticUI theming for your project or add-on is deprecated from Volto 18 on and will be removed from Plone 7.
-Plone 7 will use another theming approach, based on `@plone/components` and `@plone/theming` packages.
-```
-
 # How does the theming engine work?
+
+```{include} /_inc/_semanticui-deprecation.md
+```
 
 It basically uses heavily the LESS precompiler language features. No code is involved (which is good).
 

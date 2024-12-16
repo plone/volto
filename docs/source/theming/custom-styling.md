@@ -7,14 +7,12 @@ myst:
     "keywords": "Volto, Plone, frontend, React, Custom, Styling, Semantic UI, LESS, Pastanaga"
 ---
 
-```{deprecated} Volto 18
-Using SemanticUI theming for your project or add-on is deprecated from Volto 18 on and will be removed from Plone 7.
-Plone 7 will use another theming approach, based on `@plone/components` and `@plone/theming` packages.
-```
-
 # Custom Styling
 
 ## Semantic UI
+
+```{include} /_inc/_semanticui-deprecation.md
+```
 
 For styling our website in Volto we use Semantic UI. It uses LESS as
 the underlying technology. By default Volto uses the Pastanaga theme but any
