@@ -43,9 +43,6 @@ This means that several apps and libraries related to each other are stored in t
 They are managed together but released individually.
 This allows the code to be shared effectively, and unifies tracking of changes across all of the apps and libraries.
 
-Some packages released to npm were previously in separate repositories, but are now included in this monorepo.
-They include the following items.
-
 | Package | Location |
 |---|---|
 | [`@plone/client`](https://www.npmjs.com/package/@plone/client) | [`packages/client`](https://github.com/plone/volto/tree/main/packages/client#readme) |
@@ -56,7 +53,7 @@ They include the following items.
 | [`@plone/registry`](https://www.npmjs.com/package/@plone/registry) | [`packages/registry`](https://github.com/plone/volto/tree/main/packages/registry#readme) |
 | [`@plone/scripts`](https://www.npmjs.com/package/@plone/scripts) | [`packages/scripts`](https://github.com/plone/volto/tree/main/packages/scripts#readme) |
 | [`@plone/types`](https://www.npmjs.com/package/@plone/types) | [`packages/types`](https://github.com/plone/volto/tree/main/packages/types#readme) |
-| n/a | [`packages/volto-guillotina`](https://github.com/plone/volto/tree/main/packages/volto-guillotina) |
+| none | [`packages/volto-guillotina`](https://github.com/plone/volto/tree/main/packages/volto-guillotina) |
 | [`@plone/volto-slate`](https://www.npmjs.com/package/@plone/volto-slate) | [`packages/volto-slate`](https://github.com/plone/volto/tree/main/packages/volto-slate#readme) |
 | [`@plone/volto-testing`](https://www.npmjs.com/package/@plone/volto-testing) | [`packages/volto-testing`](https://github.com/plone/volto/tree/main/packages/volto-testing) |
 
