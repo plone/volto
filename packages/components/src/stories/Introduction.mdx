@@ -11,8 +11,8 @@ The purpose of this package is to provide an agnostic set of baseline components
 
 ## Usage
 
-Using the package manager of your choice (npm, yarn, pnpm) to install the package in your app.
-Use pnpm in case you are adding them a Volto add-on/workspace:
+You can use your choice of package manager (npm, yarn, or pnpm) to install the package in your app.
+If you add the components to a Volto add-on or workspace, use pnpm, as shown.
 
 ```shell
 pnpm add @plone/components
@@ -56,15 +56,15 @@ import '@plone/components/src/styles/basic/TextField.css';
 
 ### CSS layers
 
-This package use CSS layers to provide a way to style the components in a more flexible way.
+This package uses CSS layers to style the components in a more flexible way.
 It uses the `plone-components` layer name to scope all the CSS declarations in the package.
 The basic styling uses the nested `plone-components.base` named layer.
 You can use the `plone-components` layer to override the basic styling, or use the `plone-components.base` layer to override the basic styling in a more specific way.
 
-## Quanta
+### Quanta
 
 This package also features the Quanta components.
-These components use the basic styling as a baseline, extending them to achieve Quanta look and feel.
+These components use the basic styling as a baseline, extending them to achieve the Quanta look and feel.
 They also extend the basic React components in a composable way.
 The Quanta styling is scoped in the `plone-components.quanta` named layer.
 
