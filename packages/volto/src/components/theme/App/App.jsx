@@ -44,6 +44,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
 import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
 import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
+// TODO: RouteAnnouncer fails with hydation error?
 import RouteAnnouncer from '@plone/volto/components/theme/RouteAnnouncer/RouteAnnouncer';
 
 /**
@@ -185,7 +186,7 @@ export class App extends Component {
             </main>
           </Segment>
         </MultilingualRedirector>
-        <RouteAnnouncer />
+        {/* <RouteAnnouncer /> */}
         <Footer />
         <LockingToastsFactory
           content={this.props.content}

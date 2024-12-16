@@ -14,7 +14,9 @@ import {
   unwantedControlPanelsFields,
 } from './ControlPanels';
 
-import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
+import applyAddonConfiguration, {
+  addonsInfo,
+} from '@plone/registry/addons-loader';
 
 import { installDefaultComponents } from './Components';
 import { installDefaultWidgets } from './Widgets';

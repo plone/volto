@@ -101,7 +101,7 @@
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",
-      "load-volto-addons": "<rootDir>/jest-addons-loader.js",
+      "@plone/registry/addons-loader": "<rootDir>/jest-addons-loader.js",
       "@package/(.*)$": "<rootDir>/src/$1",
       "@root/config": "<rootDir>/jest-addons-loader.js",
       "@root/(.*)$": "<rootDir>/src/$1",

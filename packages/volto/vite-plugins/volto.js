@@ -2,41 +2,25 @@ import fs from 'fs';
 import path from 'path';
 import fixReactVirtualized from 'esbuild-plugin-react-virtualized';
 import { svgLoader } from './svg';
-
-import AddonConfigurationRegistry from '@plone/registry/src/addon-registry';
-import createAddonsLoader from '@plone/registry/src/create-addons-loader';
-import createThemeAddonsLoader from '@plone/registry/src/create-theme-addons-loader';
+import { PloneRegistryVitePlugin } from '@plone/registry/vite-plugin';
+import { AddonRegistry } from '@plone/registry/addon-registry';
 import { poToJson } from '@plone/scripts/i18n.cjs';
 
 export const VoltoVitePlugin = () => {
   const projectRootPath = path.resolve('.');
-  const registry = new AddonConfigurationRegistry(projectRootPath);
-  console.log(
-    registry,
-    // registry.getAddonsFromEnvVarCustomizationPaths(),
-    registry.getResolveAliases('vite'),
-    registry.getAddonCustomizationPaths('vite'),
-    // registry.getAddonsFromEnvVarCustomizationPaths(),
-  );
-  const addonsLoaderPath = createAddonsLoader(
-    registry.getAddonDependencies(),
-    registry.getAddons(),
-  );
+  const { registry } = AddonRegistry.init(projectRootPath);
 
-  const [addonsThemeLoaderVariablesPath, addonsThemeLoaderMainPath] =
-    createThemeAddonsLoader(registry.getCustomThemeAddons());
+  // Compile language JSON files from po files
+  // TODO: make a vite plugin for it
+  poToJson({ registry, addonMode: false });
 
+  // TODO: improve later
   let themeConfigPath, themePath;
   if (registry.theme) {
     // The themes should be located in `src/theme`
     themePath = registry.packages[registry.theme].modulePath;
     themeConfigPath = `${themePath}/theme/theme.config`;
   }
-
-  const addOns = Object.keys(registry.packages);
-
-  // Compile language JSON files from po files
-  poToJson({ registry, addonMode: false });
 
   return [
     svgLoader({
@@ -56,15 +40,13 @@ export const VoltoVitePlugin = () => {
         ],
       },
     }),
+    PloneRegistryVitePlugin(),
     {
       name: 'volto',
       enforce: 'pre',
       config: () => ({
-        envPrefix: 'VOLTO_',
+        envPrefix: 'PLONE_',
         ssr: {
-          optimizeDeps: {
-            exclude: addOns,
-          },
           // external: ['lodash', 'semantic-ui-react'],
           noExternal: ['use-deep-compare-effect'],
         },
@@ -74,7 +56,6 @@ export const VoltoVitePlugin = () => {
           },
         },
         optimizeDeps: {
-          exclude: addOns,
           esbuildOptions: {
             plugins: [fixReactVirtualized],
           },
@@ -82,9 +63,6 @@ export const VoltoVitePlugin = () => {
         resolve: {
           alias: [
             { find: /^~/, replacement: '' },
-            ...registry.getAddonCustomizationPaths('vite'),
-            ...registry.getAddonsFromEnvVarCustomizationPaths('vite'),
-            ...registry.getResolveAliases('vite'),
             {
               find: '@plone/volto/config',
               replacement: path.resolve(__dirname, '../src/config'),
@@ -104,17 +82,7 @@ export const VoltoVitePlugin = () => {
             },
             ...(registry.theme
               ? // Load the theme config from the theme
-                [
-                  { find: '../../theme.config', replacement: themeConfigPath },
-                  {
-                    find: 'addonsThemeCustomizationsVariables',
-                    replacement: addonsThemeLoaderVariablesPath,
-                  },
-                  {
-                    find: 'addonsThemeCustomizationsMain',
-                    replacement: addonsThemeLoaderMainPath,
-                  },
-                ]
+                [{ find: '../../theme.config', replacement: themeConfigPath }]
               : // Load the theme config from SemanticUI
                 [
                   {
@@ -125,16 +93,15 @@ export const VoltoVitePlugin = () => {
                     ),
                   },
                 ]),
-            { find: 'load-volto-addons', replacement: addonsLoaderPath },
             {
               find: 'volto-themes',
               replacement: path.resolve(__dirname, '../theme/themes'),
             },
             // This is needed to make lodash work with Vite as lodash-es is full ESM
-            {
-              find: 'lodash',
-              replacement: 'lodash-es',
-            },
+            // {
+            //   find: 'lodash',
+            //   replacement: 'lodash-es',
+            // },
           ],
         },
       }),

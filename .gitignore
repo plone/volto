@@ -10,6 +10,7 @@ eslint.xml
 yarn-error.log
 build
 .changelog.draft
+.registry.loader.js
 
 # yarn 3
 .pnp.*
