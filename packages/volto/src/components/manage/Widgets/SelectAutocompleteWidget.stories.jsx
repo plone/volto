@@ -2,12 +2,6 @@ import React from 'react';
 import { SelectAutoCompleteComponent } from './SelectAutoComplete';
 import WidgetStory from './story';
 
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-
-const SelectAutocompleteWidget = injectLazyLibs(['reactSelectAsync'])(
-  SelectAutoCompleteComponent,
-);
-
 const props = {
   choices: [
     { token: 'foo', title: 'Foo' },
@@ -22,7 +16,7 @@ const props = {
 };
 
 export const Default = WidgetStory.bind({
-  widget: SelectAutocompleteWidget,
+  widget: SelectAutoCompleteComponent,
 });
 Default.args = {
   ...props,
@@ -33,7 +27,7 @@ Default.args = {
 };
 
 export const Required = WidgetStory.bind({
-  widget: SelectAutocompleteWidget,
+  widget: SelectAutoCompleteComponent,
 });
 Required.args = {
   ...props,
@@ -45,7 +39,7 @@ Required.args = {
 };
 
 export const FilledWithToken = WidgetStory.bind({
-  widget: SelectAutocompleteWidget,
+  widget: SelectAutoCompleteComponent,
 });
 FilledWithToken.args = {
   ...props,
@@ -58,7 +52,7 @@ FilledWithToken.args = {
 };
 
 export const FilledWithString = WidgetStory.bind({
-  widget: SelectAutocompleteWidget,
+  widget: SelectAutoCompleteComponent,
 });
 FilledWithString.args = {
   ...props,
@@ -71,7 +65,7 @@ FilledWithString.args = {
 };
 
 export const Errored = WidgetStory.bind({
-  widget: SelectAutocompleteWidget,
+  widget: SelectAutoCompleteComponent,
 });
 Errored.args = {
   ...props,
@@ -85,7 +79,7 @@ Errored.args = {
 };
 
 export const NoPlaceholder = WidgetStory.bind({
-  widget: SelectAutocompleteWidget,
+  widget: SelectAutoCompleteComponent,
 });
 NoPlaceholder.args = {
   ...props,
@@ -96,7 +90,7 @@ NoPlaceholder.args = {
 };
 
 export const Disabled = WidgetStory.bind({
-  widget: SelectAutocompleteWidget,
+  widget: SelectAutoCompleteComponent,
 });
 Disabled.args = {
   ...props,
@@ -117,7 +111,7 @@ const getOptionsGenerator = (count) => {
 const manyOptions1000 = getOptionsGenerator(1000);
 
 export const ManyOptions1000 = WidgetStory.bind({
-  widget: SelectAutocompleteWidget,
+  widget: SelectAutoCompleteComponent,
 });
 ManyOptions1000.args = {
   ...props,

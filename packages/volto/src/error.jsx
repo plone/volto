@@ -27,7 +27,7 @@ const Error = ({ message, stackTrace }) => {
         alignItems: 'center',
       }}
     >
-      {/* TODO: Replace inline styling with a CSS class, inline style only for __SERVER__ */}
+      {/* TODO: Replace inline styling with a CSS class, inline style only for import.meta.env.SSR */}
       <h2>
         <FormattedMessage
           id="Sorry, something went wrong with your request"

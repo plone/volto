@@ -26,7 +26,6 @@ module.exports = function (api) {
         messagesDir: './build/messages/',
       },
     ],
-    '@loadable/babel-plugin', // Required by the @loadable plugin
   ];
 
   return {

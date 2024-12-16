@@ -16,7 +16,7 @@ import {
   URLUtils,
 } from '@plone/volto/helpers/Url/Url';
 
-import doesNodeContainClick from 'semantic-ui-react/dist/commonjs/lib/doesNodeContainClick';
+import doesNodeContainClick from '@plone/volto/helpers/Utils/doesNodeContainClick/doesNodeContainClick';
 import { Input, Form, Button } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 

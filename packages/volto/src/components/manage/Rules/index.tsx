@@ -1,5 +1,5 @@
-import loadable from '@loadable/component';
+import { lazy } from 'react';
 
-export const Rules = loadable(
+export const Rules = lazy(
   () => import('@plone/volto/components/manage/Rules/Rules'),
 );

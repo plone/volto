@@ -4,21 +4,24 @@
  */
 
 import { compose } from 'redux';
-import React, { Component } from 'react';
+import React, { lazy, Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Popup } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-import loadable from '@loadable/component';
 import isEqual from 'lodash/isEqual';
 
+import prettierStandalone from 'prettier/standalone';
+import prettierParserHtml from 'prettier/parser-html';
+import prismCore from 'prismjs/components/prism-core';
+
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
 import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import indentSVG from '@plone/volto/icons/indent.svg';
 
-const Editor = loadable(() => import('react-simple-code-editor'));
+const Editor = lazy(() => import('react-simple-code-editor'));
 
 const messages = defineMessages({
   source: {
@@ -152,9 +155,9 @@ class Edit extends Component {
   async onPreview() {
     try {
       const code = (
-        await this.props.prettierStandalone.format(this.getValue(), {
+        await prettierStandalone.format(this.getValue(), {
           parser: 'html',
-          plugins: [this.props.prettierParserHtml],
+          plugins: [prettierParserHtml],
         })
       ).trim();
       this.setState(
@@ -177,9 +180,9 @@ class Edit extends Component {
   onPrettify = async () => {
     try {
       const code = (
-        await this.props.prettierStandalone.format(this.getValue(), {
+        await prettierStandalone.format(this.getValue(), {
           parser: 'html',
-          plugins: [this.props.prettierParserHtml],
+          plugins: [prettierParserHtml],
         })
       ).trim();
       this.onChangeCode(code);
@@ -316,14 +319,9 @@ class Edit extends Component {
             placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}
             highlight={
-              this.props.prismCore?.highlight &&
-              this.props.prismCore?.languages?.html
+              prismCore?.highlight && prismCore?.languages?.html
                 ? (code) =>
-                    this.props.prismCore.highlight(
-                      code,
-                      this.props.prismCore.languages.html,
-                      'html',
-                    )
+                    prismCore.highlight(code, prismCore.languages.html, 'html')
                 : () => {}
             }
             padding={8}
@@ -361,8 +359,4 @@ const withPrismMarkup = (WrappedComponent) => (props) => {
   return loaded ? <WrappedComponent {...props} /> : null;
 };
 
-export default compose(
-  injectLazyLibs(['prettierStandalone', 'prettierParserHtml', 'prismCore']),
-  withPrismMarkup,
-  injectIntl,
-)(Edit);
+export default compose(withPrismMarkup, injectIntl)(Edit);

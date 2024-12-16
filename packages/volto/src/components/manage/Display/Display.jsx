@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { lazy, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { compose } from 'redux';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import { getSchema } from '@plone/volto/actions/schema/schema';
 import {
@@ -27,31 +25,43 @@ const messages = defineMessages({
   },
 });
 
-const Option = injectLazyLibs('reactSelect')((props) => {
-  const { Option } = props.reactSelect.components;
+const Select = lazy(() => import('react-select'));
+
+const SelectOption = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.Option,
+  })),
+);
+
+const SelectDropdownIndicator = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.DropdownIndicator,
+  })),
+);
+
+const Option = (props) => {
   return (
-    <Option {...props}>
+    <SelectOption {...props}>
       <div>{props.label}</div>
       {props.isFocused && !props.isSelected && (
         <Icon name={checkSVG} size="18px" color="#b8c6c8" />
       )}
       {props.isSelected && <Icon name={checkSVG} size="18px" color="#007bc1" />}
-    </Option>
+    </SelectOption>
   );
-});
+};
 
-const DropdownIndicator = injectLazyLibs('reactSelect')((props) => {
-  const { DropdownIndicator } = props.reactSelect.components;
+const DropdownIndicator = (props) => {
   return (
-    <DropdownIndicator {...props}>
+    <SelectDropdownIndicator {...props}>
       {props.selectProps.menuIsOpen ? (
         <Icon name={upSVG} size="24px" color="#007bc1" />
       ) : (
         <Icon name={downSVG} size="24px" color="#007bc1" />
       )}
-    </DropdownIndicator>
+    </SelectDropdownIndicator>
   );
-});
+};
 
 const selectTheme = (theme) => ({
   ...theme,
@@ -166,7 +176,6 @@ const DisplaySelect = (props) => {
     setselectedOption(selectedOption);
   };
 
-  const Select = props.reactSelect.default;
   const layoutsNames = config.views.layoutViewsNamesMapping;
   const layoutOptions = layouts
     .filter(
@@ -209,4 +218,4 @@ DisplaySelect.propTypes = {
   pathname: PropTypes.string.isRequired,
 };
 
-export default compose(injectLazyLibs('reactSelect'))(DisplaySelect);
+export default DisplaySelect;

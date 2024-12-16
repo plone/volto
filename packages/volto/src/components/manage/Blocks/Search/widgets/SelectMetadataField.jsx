@@ -7,9 +7,8 @@ import map from 'lodash/map';
 import filter from 'lodash/filter';
 import toPairs from 'lodash/toPairs';
 import groupBy from 'lodash/groupBy';
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { compose } from 'redux';
 
 import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets';
@@ -31,6 +30,8 @@ const messages = defineMessages({
     defaultMessage: 'Select…',
   },
 });
+
+const Select = lazy(() => import('react-select'));
 
 /**
  * SelectWidget component function.
@@ -57,7 +58,6 @@ const SelectWidget = (props) => {
 
   const isDisabled = false;
   const { indexes = [] } = querystring;
-  const Select = props.reactSelect.default;
 
   return (
     <FormFieldWrapper {...props}>
@@ -146,7 +146,4 @@ SelectWidget.defaultProps = {
   onDelete: null,
 };
 
-export default compose(
-  withQueryString,
-  injectLazyLibs(['reactSelect']),
-)(SelectWidget);
+export default compose(withQueryString)(SelectWidget);

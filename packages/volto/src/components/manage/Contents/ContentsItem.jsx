@@ -26,8 +26,7 @@ import moveDownSVG from '@plone/volto/icons/move-down.svg';
 import editingSVG from '@plone/volto/icons/editing.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import cx from 'classnames';
-
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { DropTarget, DragSource } from 'react-dnd';
 
 const messages = defineMessages({
   private: {
@@ -341,8 +340,6 @@ ContentsItemComponent.propTypes = {
 };
 
 const DragDropConnector = (props) => {
-  const { DropTarget, DragSource } = props.reactDnd;
-
   const DndConnectedContentsItem = React.useMemo(
     () =>
       DropTarget(
@@ -397,10 +394,12 @@ const DragDropConnector = (props) => {
           }),
         )(ContentsItemComponent),
       ),
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [DragSource, DropTarget],
   );
 
   return <DndConnectedContentsItem {...props} />;
 };
 
-export default injectLazyLibs('reactDnd')(DragDropConnector);
+export default DragDropConnector;
