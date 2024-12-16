@@ -38,6 +38,9 @@ canary
 
 `17.x.x`
 :   `17.x.x` is no longer supported and became legacy when Volto 18 was released.
+    It won't receive any bug fixes nor security updates.
+    It is recommended that you update to 18.x.x.
+    If you need a bug fix or security update for this version, please submit a pull request, and the Volto Team will review it to determine whether it's suitable to merge.
 
 `16.x.x`
 :   This version of Volto has the [same maintenance and support schedule as Plone 6.0](https://plone.org/download/release-schedule).
