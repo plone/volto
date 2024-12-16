@@ -101,4 +101,5 @@ export interface SettingsConfig {
     includeSiteTitle: boolean;
     titleAndSiteTitleSeparator: string;
   };
+  cssLayers: string[];
 }

@@ -2,7 +2,7 @@
 @import './Popover.css';
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   .react-aria-Menu {
     overflow: auto;
     min-width: 150px;
