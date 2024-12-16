@@ -49,7 +49,7 @@ The versions of Python that are supported in Volto depend on the version of Plon
 | Plone | Python       | Volto            |
 | ----- | ------------ | ---------------- |
 | 6.1   | 3.10-3.12    | 18.0.0           |
-| 6.0   | 3.8-3.11     | 16.0.0 or 17.0.0 |
+| 6.0   | 3.8-3.12     | 16.0.0 or 17.0.0 |
 | 5.2   | 2.7, 3.6-3.8 | 15.0.0           |
 
 On Plone 6, we recommend using the known good set (KGS) of package versions that are specified in the Plone release.

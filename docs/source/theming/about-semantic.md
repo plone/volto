@@ -9,7 +9,7 @@ myst:
 
 # About Semantic UI
 
-```{include} /_inc/_semanticui-deprecation.md
+```{include} ../_inc/_semantic-ui-deprecation.md
 ```
 
 Volto uses [Semantic UI](https://semantic-ui.com/) and
