@@ -13,7 +13,6 @@ import {
   Segment,
   Table,
   Menu,
-  Input,
   Dimmer,
   Loader,
   Checkbox,
