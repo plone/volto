@@ -17,6 +17,20 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.4.0 (2024-12-17)
+
+### Feature
+
+- Added a setting in the `config` object to set the site's CSS layers, if required. @sneridagh [#6539](https://github.com/plone/volto/issues/6539)
+
+### Internal
+
+- Fixed and re-enabled the types declaration extractor from core Volto. @sneridagh [#6534](https://github.com/plone/volto/issues/6534)
+
+### Documentation
+
+- Add monorepo structure to the README. Update the monorepo structure file tree. @stevepiercy [#6542](https://github.com/plone/volto/issues/6542)
+
 ## 18.3.0 (2024-12-12)
 
 ### Feature
