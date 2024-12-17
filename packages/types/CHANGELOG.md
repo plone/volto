@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.2.0 (2024-12-17)
+
+### Feature
+
+- Added the typing for the new `cssLayers` configuration object setting. @sneridagh [#6539](https://github.com/plone/volto/issues/6539)
+
 ## 1.1.0 (2024-12-12)
 
 ### Feature
