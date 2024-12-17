@@ -1745,7 +1745,10 @@ class SchemaWidget extends Component {
               });
             }}
             title={this.props.intl.formatMessage(messages.addField)}
-            formData={{}}
+            formData={{
+              factory:
+                find(choices, { value: 'label_text_field' }) || undefined,
+            }}
             schema={schemaField(
               this.state.addField,
               this.props.intl,
