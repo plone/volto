@@ -1738,6 +1738,7 @@ class SchemaWidget extends Component {
                   },
                   filterChoices: filterFactory,
                   additionalChoices: additionalFactory,
+                  sort: true,
                 },
               },
             )}
