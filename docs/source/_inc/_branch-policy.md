@@ -13,6 +13,13 @@ canary
     During the development process, a canary release will be cut from the `main` branch.
     When it becomes worthy of a beta or release candidate version, a new numbered branch should be cut, and non-breaking changes must be merged into it.
 
+legacy
+:   The term _legacy_ refers to a version that is no longer supported or actively maintained.
+    They are the versions between official Plone minor releases.
+    It is recommended that you update to minor Plone releases as soon as possible.
+    They won't receive any new features.
+    They might receive occasional bugfixes or security updates, via a pull request, and it's approved by the Volto Team.
+
 `main`
 :   This is the bleeding edge branch in git.
     It is the branch upon which future development occurs, and from which future releases shall be cut.
@@ -38,7 +45,6 @@ canary
 
 `17.x.x`
 :   `17.x.x` is no longer supported and became legacy when Volto 18 was released.
-    It won't receive any bug fixes nor security updates.
     It is recommended that you update to 18.x.x.
     If you need a bug fix or security update for this version, please submit a pull request, and the Volto Team will review it to determine whether it's suitable to merge.
 
