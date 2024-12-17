@@ -21,7 +21,7 @@ This chapter describes the versions of software that Volto supports and how Volt
 ```{deprecated} Volto 18.0.0
 `@plone/volto-generator` was deprecated in Volto 18.0.0.
 It is not maintained, and you should not use it.
-For new projects, use [Cookieplone](https://github.com/plone/cookieplone) instead.
+For new projects, follow {doc}`plone:install/create-project-cookieplone` instead.
 ```
 
 `@plone/volto-generator` is a tool that generates a Volto project.
