@@ -833,7 +833,7 @@ class UndoControlpanel extends Component {
               />
             </Segment>
 
-            {this.props.getRequest.loading ? (
+            {this.props.getRequest?.loading ? (
               <Dimmer active>
                 <Loader />
               </Dimmer>

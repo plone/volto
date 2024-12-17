@@ -24,40 +24,40 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
       \\"id\\": \\"default\\",
       \\"title\\": \\"Default\\",
       \\"fields\\": [
-        \\"sortingTypes\\"
+        \\"filterTypes\\"
       ]
     }
   ],
   \\"properties\\": {
-    \\"sortingTypes\\": {
-      \\"title\\": \\"Sort by\\",
-      \\"description\\": \\"Sort transactions by User-Name, Path or Date\\",
+    \\"filterTypes\\": {
+      \\"title\\": \\"Filter transactions by\\",
+      \\"description\\": \\"Filter transactions by User, Path or Date\\",
       \\"type\\": \\"string\\",
       \\"choices\\": [
         [
-          \\"User Name\\",
-          \\"User Name\\"
+          \\"user\\",
+          \\"Username\\"
         ],
         [
-          \\"Path\\",
+          \\"path\\",
           \\"Path\\"
         ],
         [
-          \\"Date\\",
+          \\"date\\",
           \\"Date\\"
         ]
       ]
     },
-    \\"sortByUsername\\": {
+    \\"filterByUsername\\": {
       \\"title\\": \\"Enter Username\\",
       \\"type\\": \\"string\\"
     },
-    \\"sortByPath\\": {
+    \\"filterByPath\\": {
       \\"title\\": \\"Enter Path\\",
       \\"type\\": \\"string\\"
     },
-    \\"sortByDate\\": {
-      \\"title\\": \\"Enter Date and Time\\",
+    \\"filterByDate\\": {
+      \\"title\\": \\"Enter Date and time\\",
       \\"type\\": \\"date\\"
     }
   },
@@ -84,27 +84,28 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
               class=""
             >
               <th
-                class="one wide"
+                class="center aligned one wide"
+                style="width: 40px;"
               >
                 #
               </th>
               <th
-                class="three wide"
+                class="eight wide"
               >
                 What
               </th>
               <th
-                class="three wide"
+                class="one wide"
               >
                 Who
               </th>
               <th
-                class="three wide"
+                class="two wide"
               >
                 When
               </th>
               <th
-                class="three wide"
+                class="one wide"
               >
                 Note
               </th>
@@ -121,34 +122,72 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
               id="QStrR0RRc0M5TjA9"
             >
               <td
-                class="one wide"
+                class="center aligned one wide"
               >
                 <div
-                  class="ui input transactions-checkboxes"
+                  class="ui fitted checkbox"
                 >
                   <input
+                    class="hidden"
+                    readonly=""
+                    tabindex="0"
                     type="checkbox"
+                    value=""
                   />
+                  <label />
                 </div>
               </td>
               <td
-                class="three wide"
+                class="eight wide"
                 title="Added default view for root object"
               >
-                Added default view for root object
+                <div>
+                  Added
+                </div>
+                <div
+                  style="font-style: italic; color: rgb(135, 143, 147);"
+                >
+                  default
+                </div>
+                <div
+                  style="font-style: italic; color: rgb(135, 143, 147);"
+                >
+                  view
+                </div>
+                <div
+                  style="font-style: italic; color: rgb(135, 143, 147);"
+                >
+                  for
+                </div>
+                <div
+                  style="font-style: italic; color: rgb(135, 143, 147);"
+                >
+                  root
+                </div>
+                <div
+                  style="font-style: italic; color: rgb(135, 143, 147);"
+                >
+                  object
+                </div>
               </td>
               <td
-                class="three wide"
+                class="one wide"
+                title="Zope"
               >
                 Zope
               </td>
               <td
-                class="three wide"
+                class="two wide"
               >
-                2022-06-19T22:15:02
+                <time
+                  datetime="2022-06-19T22:15:02"
+                  title="Sunday, June 19, 2022 at 10:15 PM"
+                >
+                  Jun 19, 2022, 10:15:02 PM
+                </time>
               </td>
               <td
-                class="three wide"
+                class="one wide"
               />
             </tr>
             <tr
@@ -156,34 +195,52 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
               id="QStrR0RRcTVrbFU9"
             >
               <td
-                class="one wide"
+                class="center aligned one wide"
               >
                 <div
-                  class="ui input transactions-checkboxes"
+                  class="ui fitted checkbox"
                 >
                   <input
+                    class="hidden"
+                    readonly=""
+                    tabindex="0"
                     type="checkbox"
+                    value=""
                   />
+                  <label />
                 </div>
               </td>
               <td
-                class="three wide"
+                class="eight wide"
                 title="Added virtual_hosting"
               >
-                Added virtual_hosting
+                <div>
+                  Added
+                </div>
+                <div
+                  style="font-style: italic; color: rgb(135, 143, 147);"
+                >
+                  virtual_hosting
+                </div>
               </td>
               <td
-                class="three wide"
+                class="one wide"
+                title="Zope"
               >
                 Zope
               </td>
               <td
-                class="three wide"
+                class="two wide"
               >
-                2022-06-19T22:15:02
+                <time
+                  datetime="2022-06-19T22:15:02"
+                  title="Sunday, June 19, 2022 at 10:15 PM"
+                >
+                  Jun 19, 2022, 10:15:02 PM
+                </time>
               </td>
               <td
-                class="three wide"
+                class="one wide"
               />
             </tr>
             <tr
@@ -191,34 +248,67 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
               id="QStrR0RRcVh4cGs9"
             >
               <td
-                class="one wide"
+                class="center aligned one wide"
               >
                 <div
-                  class="ui input transactions-checkboxes"
+                  class="ui fitted checkbox"
                 >
                   <input
+                    class="hidden"
+                    readonly=""
+                    tabindex="0"
                     type="checkbox"
+                    value=""
                   />
+                  <label />
                 </div>
               </td>
               <td
-                class="three wide"
+                class="eight wide"
                 title="Added site error_log at /error_log"
               >
-                Added site error_log at /error_log
+                <div>
+                  Added
+                </div>
+                <div
+                  style="font-style: italic; color: rgb(135, 143, 147);"
+                >
+                  site
+                </div>
+                <div
+                  style="font-style: italic; color: rgb(135, 143, 147);"
+                >
+                  error_log
+                </div>
+                <div
+                  style="font-style: italic; color: rgb(135, 143, 147);"
+                >
+                  at
+                </div>
+                <div
+                  style="font-style: italic; color: rgb(135, 143, 147);"
+                >
+                  /error_log
+                </div>
               </td>
               <td
-                class="three wide"
+                class="one wide"
+                title="Zope"
               >
                 Zope
               </td>
               <td
-                class="three wide"
+                class="two wide"
               >
-                2022-06-19T22:15:02
+                <time
+                  datetime="2022-06-19T22:15:02"
+                  title="Sunday, June 19, 2022 at 10:15 PM"
+                >
+                  Jun 19, 2022, 10:15:02 PM
+                </time>
               </td>
               <td
-                class="three wide"
+                class="one wide"
               />
             </tr>
             <tr
@@ -226,34 +316,52 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
               id="QStrR0RRcDlFaUk9"
             >
               <td
-                class="one wide"
+                class="center aligned one wide"
               >
                 <div
-                  class="ui input transactions-checkboxes"
+                  class="ui fitted checkbox"
                 >
                   <input
+                    class="hidden"
+                    readonly=""
+                    tabindex="0"
                     type="checkbox"
+                    value=""
                   />
+                  <label />
                 </div>
               </td>
               <td
-                class="three wide"
+                class="eight wide"
                 title="Added session_data_manager"
               >
-                Added session_data_manager
+                <div>
+                  Added
+                </div>
+                <div
+                  style="font-style: italic; color: rgb(135, 143, 147);"
+                >
+                  session_data_manager
+                </div>
               </td>
               <td
-                class="three wide"
+                class="one wide"
+                title="Zope"
               >
                 Zope
               </td>
               <td
-                class="three wide"
+                class="two wide"
               >
-                2022-06-19T22:15:02
+                <time
+                  datetime="2022-06-19T22:15:02"
+                  title="Sunday, June 19, 2022 at 10:15 PM"
+                >
+                  Jun 19, 2022, 10:15:02 PM
+                </time>
               </td>
               <td
-                class="three wide"
+                class="one wide"
               />
             </tr>
             <tr
@@ -261,34 +369,52 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
               id="QStrR0RRcFU2KzQ9"
             >
               <td
-                class="one wide"
+                class="center aligned one wide"
               >
                 <div
-                  class="ui input transactions-checkboxes"
+                  class="ui fitted checkbox"
                 >
                   <input
+                    class="hidden"
+                    readonly=""
+                    tabindex="0"
                     type="checkbox"
+                    value=""
                   />
+                  <label />
                 </div>
               </td>
               <td
-                class="three wide"
+                class="eight wide"
                 title="Added browser_id_manager"
               >
-                Added browser_id_manager
+                <div>
+                  Added
+                </div>
+                <div
+                  style="font-style: italic; color: rgb(135, 143, 147);"
+                >
+                  browser_id_manager
+                </div>
               </td>
               <td
-                class="three wide"
+                class="one wide"
+                title="Zope"
               >
                 Zope
               </td>
               <td
-                class="three wide"
+                class="two wide"
               >
-                2022-06-19T22:15:02
+                <time
+                  datetime="2022-06-19T22:15:02"
+                  title="Sunday, June 19, 2022 at 10:15 PM"
+                >
+                  Jun 19, 2022, 10:15:02 PM
+                </time>
               </td>
               <td
-                class="three wide"
+                class="one wide"
               />
             </tr>
             <tr
@@ -296,34 +422,57 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
               id="QStrR0RRbUkzKzQ9"
             >
               <td
-                class="one wide"
+                class="center aligned one wide"
               >
                 <div
-                  class="ui input transactions-checkboxes"
+                  class="ui fitted checkbox"
                 >
                   <input
+                    class="hidden"
+                    readonly=""
+                    tabindex="0"
                     type="checkbox"
+                    value=""
                   />
+                  <label />
                 </div>
               </td>
               <td
-                class="three wide"
+                class="eight wide"
                 title="Created initial user"
               >
-                Created initial user
+                <div>
+                  Created
+                </div>
+                <div
+                  style="font-style: italic; color: rgb(135, 143, 147);"
+                >
+                  initial
+                </div>
+                <div
+                  style="font-style: italic; color: rgb(135, 143, 147);"
+                >
+                  user
+                </div>
               </td>
               <td
-                class="three wide"
+                class="one wide"
+                title="Zope"
               >
                 Zope
               </td>
               <td
-                class="three wide"
+                class="two wide"
               >
-                2022-06-19T22:15:02
+                <time
+                  datetime="2022-06-19T22:15:02"
+                  title="Sunday, June 19, 2022 at 10:15 PM"
+                >
+                  Jun 19, 2022, 10:15:02 PM
+                </time>
               </td>
               <td
-                class="three wide"
+                class="one wide"
               />
             </tr>
             <tr
@@ -331,32 +480,45 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
               id="QStrR0RRbEVVa1E9"
             >
               <td
-                class="one wide"
+                class="center aligned one wide"
               >
                 <div
-                  class="ui input transactions-checkboxes"
+                  class="ui fitted checkbox"
                 >
                   <input
+                    class="hidden"
+                    readonly=""
+                    tabindex="0"
                     type="checkbox"
+                    value=""
                   />
+                  <label />
                 </div>
               </td>
               <td
-                class="three wide"
+                class="eight wide"
                 title=""
-              />
+              >
+                <div />
+              </td>
               <td
-                class="three wide"
+                class="one wide"
+                title="Zope"
               >
                 Zope
               </td>
               <td
-                class="three wide"
+                class="two wide"
               >
-                2022-06-19T22:15:02
+                <time
+                  datetime="2022-06-19T22:15:02"
+                  title="Sunday, June 19, 2022 at 10:15 PM"
+                >
+                  Jun 19, 2022, 10:15:02 PM
+                </time>
               </td>
               <td
-                class="three wide"
+                class="one wide"
               />
             </tr>
             <tr
@@ -364,34 +526,57 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
               id="QStrR0ROWlo5YW89"
             >
               <td
-                class="one wide"
+                class="center aligned one wide"
               >
                 <div
-                  class="ui input transactions-checkboxes"
+                  class="ui fitted checkbox"
                 >
                   <input
+                    class="hidden"
+                    readonly=""
+                    tabindex="0"
                     type="checkbox"
+                    value=""
                   />
+                  <label />
                 </div>
               </td>
               <td
-                class="three wide"
+                class="eight wide"
                 title="initial database creation"
               >
-                initial database creation
+                <div>
+                  initial
+                </div>
+                <div
+                  style="font-style: italic; color: rgb(135, 143, 147);"
+                >
+                  database
+                </div>
+                <div
+                  style="font-style: italic; color: rgb(135, 143, 147);"
+                >
+                  creation
+                </div>
               </td>
               <td
-                class="three wide"
+                class="one wide"
+                title="Zope"
               >
                 Zope
               </td>
               <td
-                class="three wide"
+                class="two wide"
               >
-                2022-06-19T22:14:50
+                <time
+                  datetime="2022-06-19T22:14:50"
+                  title="Sunday, June 19, 2022 at 10:14 PM"
+                >
+                  Jun 19, 2022, 10:14:50 PM
+                </time>
               </td>
               <td
-                class="three wide"
+                class="one wide"
               />
             </tr>
           </tbody>
@@ -408,16 +593,9 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
                 <div
                   class="ui pagination menu"
                 >
-                  <a
-                    class="icon item"
-                    id="prev-button"
-                  >
-                    <div
-                      style="width: 36px;"
-                    />
-                  </a>
-                  <a
-                    class="icon item"
+                  <button
+                    class="disabled icon item"
+                    title="Undo"
                   >
                     <svg
                       class="icon circled"
@@ -431,15 +609,16 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
                       </title>
                       undefined
                     </svg>
-                  </a>
-                  <a
+                  </button>
+                  <button
                     class="icon item"
                     id="next-button"
+                    title="Next page"
                   >
                     <div
                       style="width: 36px;"
                     />
-                  </a>
+                  </button>
                 </div>
               </th>
             </tr>
