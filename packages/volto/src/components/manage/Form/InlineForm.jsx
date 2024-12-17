@@ -14,7 +14,7 @@ import {
   arrayRange,
 } from '@plone/volto/helpers/Utils/Utils';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { Field } from '@plone/volto/components/manage/Form';
+import Field from '@plone/cmsui/components/Field/Field';
 import { applySchemaDefaults } from '@plone/volto/helpers/Blocks/Blocks';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
