@@ -48,7 +48,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
               </span>
             </span>
             <div
-              class="react-select__control react-select__control--is-focused react-select__control--menu-is-open css-1ptmoe7-control"
+              class="react-select__control react-select__control--is-focused react-select__control--menu-is-open css-1hjt58o-control"
             >
               <div
                 class="react-select__value-container react-select__value-container--has-value css-1a9cv00-ValueContainer"
@@ -121,7 +121,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
                 class="react-select__menu-list css-4ljt47-MenuList"
               >
                 <div
-                  class="react-select__option react-select__option--is-focused react-select__option--is-selected css-zq2nh-option"
+                  class="react-select__option react-select__option--is-focused react-select__option--is-selected css-1bv2on4-option"
                   id="react-select-3-option-0"
                   tabindex="-1"
                 >
@@ -204,7 +204,7 @@ exports[`renders a select widget component 1`] = `
               class="css-1f43avz-a11yText-A11yText"
             />
             <div
-              class="react-select__control css-1ard45z-control"
+              class="react-select__control css-j8u6so-control"
             >
               <div
                 class="react-select__value-container css-1a9cv00-ValueContainer"
