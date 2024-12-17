@@ -1,0 +1,1 @@
+Fixed missing visible focus for multiple select inputs across components using the SelectStyling widget in Site Setup. The fix ensures proper focus indication for accessibility across all instances of the widget.@Abhishek-17h
