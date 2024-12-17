@@ -25,7 +25,7 @@ function formatUrl(path) {
 
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
   let apiPath = '';
-  if (settings.internalApiPath && __SERVER__) {
+  if (settings.internalApiPath && import.meta.env.SSR) {
     apiPath = settings.internalApiPath;
   } else if (settings.apiPath) {
     apiPath = settings.apiPath;
@@ -87,7 +87,11 @@ class Api {
 
           Object.keys(headers).forEach((key) => request.set(key, headers[key]));
 
-          if (__SERVER__ && checkUrl && ['get', 'head'].includes(method)) {
+          if (
+            import.meta.env.SSR &&
+            checkUrl &&
+            ['get', 'head'].includes(method)
+          ) {
             request.redirects(0);
           }
 

@@ -18,7 +18,7 @@ import Api from '@plone/volto/helpers/Api/Api';
 import configureStore from '@plone/volto/store';
 import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { diffArrays } from 'diff';
 
 const isHtmlTag = (str) => {
   // Match complete HTML tags, including:
@@ -145,25 +145,14 @@ const formatDiffPart = (part, value, side) => {
  * @returns {string} Markup of the component.
  */
 
-const DiffField = ({
-  one,
-  two,
-  contentOne,
-  contentTwo,
-  view,
-  schema,
-  diffLib,
-}) => {
+const DiffField = ({ one, two, contentOne, contentTwo, view, schema }) => {
   const language = useSelector((state) => state.intl.locale);
   const readable_date_format = {
     dateStyle: 'full',
     timeStyle: 'short',
   };
   const diffWords = (oneStr, twoStr) => {
-    return diffLib.diffArrays(
-      splitWords(String(oneStr)),
-      splitWords(String(twoStr)),
-    );
+    return diffArrays(splitWords(String(oneStr)), splitWords(String(twoStr)));
   };
 
   let parts, oneArray, twoArray;
@@ -345,4 +334,4 @@ DiffField.propTypes = {
   }).isRequired,
 };
 
-export default injectLazyLibs('diffLib')(DiffField);
+export default DiffField;

@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { Popup } from 'semantic-ui-react';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import DynamicHeightList from '@plone/volto/components/manage/ReactVirtualized/DynamicRowHeightList';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
@@ -10,16 +8,62 @@ import checkSVG from '@plone/volto/icons/check.svg';
 import checkBlankSVG from '@plone/volto/icons/check-blank.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
+import { SortableElement, SortableHandle } from 'react-sortable-hoc';
+
+const DynamicHeightList = lazy(
+  () =>
+    import(
+      '@plone/volto/components/manage/ReactVirtualized/DynamicRowHeightList'
+    ),
+);
+
+const SelectDropdownIndicator = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.DropdownIndicator,
+  })),
+);
+
+const SelectClearIndicator = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.ClearIndicator,
+  })),
+);
+
+const SelectOption = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.Option,
+  })),
+);
+
+const SelectGroup = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.Group,
+  })),
+);
+
+const SelectMultiValue = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.MultiValue,
+  })),
+);
+
+const SelectMultiValueLabel = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.MultiValueLabel,
+  })),
+);
+
+const SelectMultiValueContainer = lazy(() =>
+  import('react-select').then((mod) => ({
+    default: mod.components.MultiValueContainer,
+  })),
+);
+
 export const MenuList = ({ children }) => {
   return <DynamicHeightList>{children}</DynamicHeightList>;
 };
 
-export const SortableMultiValue = injectLazyLibs([
-  'reactSelect',
-  'reactSortableHOC',
-])((props) => {
-  const { MultiValue } = props.reactSelect.components;
-  const { SortableElement } = props.reactSortableHOC;
+export const SortableMultiValue = (props) => {
   // this prevents the menu from being opened/closed when the user clicks
   // on a value to begin dragging it. ideally, detecting a click (instead of
   // a drag) would still focus the control and toggle the menu, but that
@@ -29,74 +73,64 @@ export const SortableMultiValue = injectLazyLibs([
     e.stopPropagation();
   };
   const innerProps = { ...props.innerProps, onMouseDown };
-  const SortableComponent = SortableElement(MultiValue);
+  const SortableComponent = SortableElement(SelectMultiValue);
   return <SortableComponent {...props} innerProps={innerProps} />;
-});
+};
 
-export const SortableMultiValueLabel = injectLazyLibs([
-  'reactSelect',
-  'reactSortableHOC',
-])((props) => {
-  const { MultiValueLabel } = props.reactSelect.components;
-  const { SortableHandle } = props.reactSortableHOC;
-  const SortableComponent = SortableHandle(MultiValueLabel);
+export const SortableMultiValueLabel = (props) => {
+  const SortableComponent = SortableHandle(SelectMultiValueLabel);
   return <SortableComponent {...props} />;
-});
+};
 
-export const MultiValueContainer = injectLazyLibs('reactSelect')((props) => {
-  const { MultiValueContainer } = props.reactSelect.components;
+export const MultiValueContainer = (props) => {
   return (
     <Popup
       content={props.data.label}
       trigger={
         <div {...props.innerProps}>
-          <MultiValueContainer {...props} />
+          <SelectMultiValueContainer {...props} />
         </div>
       }
     />
   );
-});
+};
 
-export const Option = injectLazyLibs('reactSelect')((props) => {
-  const { Option } = props.reactSelect.components;
+export const Option = (props) => {
   const color = props.isFocused && !props.isSelected ? '#b8c6c8' : '#007bc1';
   const svgIcon =
     props.isFocused || props.isSelected ? checkSVG : checkBlankSVG;
 
   return (
-    <Option {...props}>
+    <SelectOption {...props}>
       <div>{props.label}</div>
       <Icon name={svgIcon} size="20px" color={color} />
-    </Option>
+    </SelectOption>
   );
-});
+};
 
-export const DropdownIndicator = injectLazyLibs('reactSelect')((props) => {
-  const { DropdownIndicator } = props.reactSelect.components;
+export const DropdownIndicator = (props) => {
   return (
-    <DropdownIndicator {...props}>
+    <SelectDropdownIndicator {...props}>
       {props.selectProps.menuIsOpen ? (
         <Icon name={upSVG} size="24px" color="#007bc1" />
       ) : (
         <Icon name={downSVG} size="24px" color="#007bc1" />
       )}
-    </DropdownIndicator>
+    </SelectDropdownIndicator>
   );
-});
+};
 
-export const ClearIndicator = injectLazyLibs('reactSelect')((props) => {
-  const { ClearIndicator } = props.reactSelect.components;
+export const ClearIndicator = (props) => {
   return (
-    <ClearIndicator {...props}>
+    <SelectClearIndicator {...props}>
       <Icon name={clearSVG} size="18px" color="#e40166" />
-    </ClearIndicator>
+    </SelectClearIndicator>
   );
-});
+};
 
-export const Group = injectLazyLibs('reactSelect')((props) => {
-  const { Group } = props.reactSelect.components;
-  return <Group {...props}></Group>;
-});
+export const Group = (props) => {
+  return <SelectGroup {...props}></SelectGroup>;
+};
 
 export const selectTheme = (theme) => ({
   ...theme,

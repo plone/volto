@@ -1,5 +1,4 @@
-import React from 'react';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import React, { lazy } from 'react';
 import {
   Option,
   DropdownIndicator,
@@ -12,10 +11,10 @@ import {
   selectFacetValueToQuery,
 } from './base';
 
+const Select = lazy(() => import('react-select'));
+
 const SelectFacet = (props) => {
-  const { facet, choices, reactSelect, isMulti, onChange, value, isEditMode } =
-    props;
-  const Select = reactSelect.default;
+  const { facet, choices, isMulti, onChange, value, isEditMode } = props;
   const v = Array.isArray(value) && value.length === 0 ? null : value;
 
   return (
@@ -50,4 +49,4 @@ SelectFacet.schemaEnhancer = selectFacetSchemaEnhancer;
 SelectFacet.stateToValue = selectFacetStateToValue;
 SelectFacet.valueToQuery = selectFacetValueToQuery;
 
-export default injectLazyLibs('reactSelect')(SelectFacet);
+export default SelectFacet;

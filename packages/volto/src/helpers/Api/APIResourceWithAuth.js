@@ -19,7 +19,7 @@ export const getAPIResourceWithAuth = (req) =>
     const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
 
     let apiPath = '';
-    if (settings.internalApiPath && __SERVER__) {
+    if (settings.internalApiPath && import.meta.env.SSR) {
       apiPath = settings.internalApiPath;
     } else if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
       apiPath = settings.devProxyToApiPath;

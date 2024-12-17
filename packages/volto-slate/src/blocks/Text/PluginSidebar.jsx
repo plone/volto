@@ -5,7 +5,7 @@ const PluginSidebar = ({ children, selected }) => {
   return (
     <>
       {selected &&
-        __CLIENT__ &&
+        !import.meta.env.SSR &&
         createPortal(
           <>{children}</>,
           document.getElementById('slate-plugin-sidebar'),

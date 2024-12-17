@@ -3,7 +3,7 @@
  * @module components/theme/View/View
  */
 
-import React, { Component } from 'react';
+import React, { lazy, Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -13,8 +13,6 @@ import { injectIntl } from 'react-intl';
 import qs from 'query-string';
 
 import ContentMetadataTags from '@plone/volto/components/theme/ContentMetadataTags/ContentMetadataTags';
-import Comments from '@plone/volto/components/theme/Comments/Comments';
-import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import { listActions } from '@plone/volto/actions/actions/actions';
 import { getContent } from '@plone/volto/actions/content/content';
 import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
@@ -24,6 +22,13 @@ import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
 
 import config from '@plone/volto/registry';
 import SlotRenderer from '../SlotRenderer/SlotRenderer';
+
+const Toolbar = lazy(
+  () => import('@plone/volto/components/manage/Toolbar/Toolbar'),
+);
+const Comments = lazy(
+  () => import('@plone/volto/components/theme/Comments/Comments'),
+);
 
 /**
  * View container class.

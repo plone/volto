@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import PropTypes from 'prop-types';
-import loadable from '@loadable/component';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import { Button } from 'semantic-ui-react';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
@@ -14,7 +13,7 @@ import galleryPauseSVG from '@plone/volto/icons/pause.svg';
 import galleryFullScreenSVG from '@plone/volto/icons/fullscreen.svg';
 import galleryBackDownSVG from '@plone/volto/icons/back-down.svg';
 
-const ImageGallery = loadable(() => import('react-image-gallery'));
+const ImageGallery = lazy(() => import('react-image-gallery'));
 
 const renderLeftNav = (onClick, disabled) => {
   return (

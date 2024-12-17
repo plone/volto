@@ -38,7 +38,6 @@ import { listActions } from '@plone/volto/actions/actions/actions';
 import { setFormData } from '@plone/volto/actions/form/form';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import { hasBlocksData } from '@plone/volto/helpers/Blocks/Blocks';
-import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
 import { tryParseJSON } from '@plone/volto/helpers/FormValidation/FormValidation';
 
 import saveSVG from '@plone/volto/icons/save.svg';
@@ -554,5 +553,4 @@ export default compose(
       setFormData,
     },
   ),
-  preloadLazyLibs('cms'),
 )(Edit);

@@ -1,15 +1,11 @@
 import React from 'react';
 import { compose } from 'redux';
 import { injectIntl } from 'react-intl';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import { QuerystringWidgetComponent } from './QueryWidget';
 import WidgetStory from './story';
 
-const QuerystringWidget = compose(
-  injectIntl,
-  injectLazyLibs(['reactSelect']),
-)(QuerystringWidgetComponent);
+const QuerystringWidget = compose(injectIntl)(QuerystringWidgetComponent);
 
 const querystring = {
   error: null,

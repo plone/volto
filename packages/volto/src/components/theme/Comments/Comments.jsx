@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { createPortal } from 'react-dom';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { compose } from 'redux';
 import { Button, Comment, Container, Icon } from 'semantic-ui-react';
 
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import {
   addComment,
   deleteComment,
@@ -19,6 +17,7 @@ import { CommentEditModal } from '@plone/volto/components/theme/Comments';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import { getColor } from '@plone/volto/helpers/Utils/Utils';
 import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
+import moment from 'moment';
 
 const messages = defineMessages({
   comment: {
@@ -200,8 +199,6 @@ const Comments = (props) => {
     return allCommentsWithCildren;
   };
 
-  const moment = props.moment.default;
-
   const allCommentsWithCildren = useMemo(
     () => addRepliesAsChildrenToComments(items),
     [items],
@@ -375,4 +372,4 @@ Comments.propTypes = {
   pathname: PropTypes.string.isRequired,
 };
 
-export default compose(injectLazyLibs(['moment']))(Comments);
+export default Comments;

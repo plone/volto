@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { lazy, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import {
@@ -13,7 +13,6 @@ import {
   Input,
   Progress,
 } from 'semantic-ui-react';
-import loadable from '@loadable/component';
 import concat from 'lodash/concat';
 import filter from 'lodash/filter';
 import map from 'lodash/map';
@@ -25,7 +24,7 @@ import { createContent } from '@plone/volto/actions/content/content';
 import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
 
-const Dropzone = loadable(() => import('react-dropzone'));
+const Dropzone = lazy(() => import('react-dropzone'));
 
 const messages = defineMessages({
   cancel: {

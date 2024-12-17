@@ -3,7 +3,7 @@
  * @module components/manage/Widgets/RegistryImageWidget
  */
 
-import React from 'react';
+import React, { lazy } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Image, Dimmer } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
@@ -11,7 +11,6 @@ import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import loadable from '@loadable/component';
 import { defineMessages, useIntl } from 'react-intl';
 import { toPublicURL } from '@plone/volto/helpers/Url/Url';
 import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
@@ -24,7 +23,7 @@ const imageMimetypes = [
   'image/gif',
   'image/svg+xml',
 ];
-const Dropzone = loadable(() => import('react-dropzone'));
+const Dropzone = lazy(() => import('react-dropzone'));
 
 const messages = defineMessages({
   releaseDrag: {

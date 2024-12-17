@@ -2,7 +2,7 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
-import doesNodeContainClick from 'semantic-ui-react/dist/commonjs/lib/doesNodeContainClick';
+import doesNodeContainClick from '@plone/volto/helpers/Utils/doesNodeContainClick';
 
 const DEFAULT_TIMEOUT = 500;
 

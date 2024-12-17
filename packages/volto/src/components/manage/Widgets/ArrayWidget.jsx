@@ -3,12 +3,11 @@
  * @module components/manage/Widgets/ArrayWidget
  */
 
-import React, { Component } from 'react';
+import React, { lazy, Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import find from 'lodash/find';
 import isObject from 'lodash/isObject';
 
@@ -32,6 +31,10 @@ import {
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import { SortableContainer } from 'react-sortable-hoc';
+
+const Select = lazy(() => import('react-select'));
+const CreatableSelect = lazy(() => import('react-select/creatable'));
 
 const messages = defineMessages({
   select: {
@@ -277,9 +280,6 @@ class ArrayWidget extends Component {
     const choices = normalizeChoices(this.props?.choices || []);
     const selectedOption = normalizeArrayValue(choices, this.props.value);
 
-    const CreatableSelect = this.props.reactSelectCreateable.default;
-    const { SortableContainer } = this.props.reactSortableHOC;
-    const Select = this.props.reactSelect.default;
     const SortableSelect =
       // It will be only creatable if the named vocabulary is in the widget definition
       // (hint) like:
@@ -396,7 +396,6 @@ export const ArrayWidgetComponent = injectIntl(ArrayWidget);
 
 export default compose(
   injectIntl,
-  injectLazyLibs(['reactSelect', 'reactSelectCreateable', 'reactSortableHOC']),
   connect(
     (state, props) => {
       const vocabBaseUrl =

@@ -82,7 +82,7 @@ def TalkTypesVocabulary(context):
  * or see https://docs.voltocms.com/storybook/
  */
 
-import React from 'react';
+import React, { lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import find from 'lodash/find';
 import findIndex from 'lodash/findIndex';
@@ -92,7 +92,6 @@ import { v4 as uuid } from 'uuid';
 
 import { Button } from 'semantic-ui-react';
 
-import DragDropList from '@plone/volto/components/manage/DragDropList/DragDropList';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
@@ -101,6 +100,10 @@ import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import addSVG from '@plone/volto/icons/add.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
+
+const DragDropList = lazy(
+  () => import('@plone/volto/components/manage/DragDropList/DragDropList'),
+);
 
 const messages = defineMessages({
   title: {

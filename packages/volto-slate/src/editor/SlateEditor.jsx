@@ -375,6 +375,6 @@ SlateEditor.defaultProps = {
 };
 
 // May be needed to wrap in React.memo(), it used to be wrapped in connect()
-export default __CLIENT__ && window?.Cypress
+export default !import.meta.env.SSR && window?.Cypress
   ? withTestingFeatures(SlateEditor)
   : SlateEditor;

@@ -54,7 +54,7 @@
         "rootPathSuffix": "src",
       },
     },
-    "import/core-modules": ["load-volto-addons"],
+    "import/core-modules": ["@plone/registry/addons-loader"],
     "react": {
       "version": "detect",
     },

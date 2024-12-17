@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Accordion, Button, Segment } from 'semantic-ui-react';
-import DragDropList from '@plone/volto/components/manage/DragDropList/DragDropList';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import { applySchemaDefaults } from '@plone/volto/helpers/Blocks/Blocks';
@@ -14,6 +13,10 @@ import deleteSVG from '@plone/volto/icons/delete.svg';
 import addSVG from '@plone/volto/icons/add.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import { v4 as uuid } from 'uuid';
+
+const DragDropList = lazy(
+  () => import('@plone/volto/components/manage/DragDropList/DragDropList'),
+);
 
 const messages = defineMessages({
   labelRemoveItem: {

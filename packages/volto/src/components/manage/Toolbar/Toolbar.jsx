@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import doesNodeContainClick from 'semantic-ui-react/dist/commonjs/lib/doesNodeContainClick';
+import doesNodeContainClick from '@plone/volto/helpers/Utils/doesNodeContainClick';
 import { withCookies } from 'react-cookie';
 import filter from 'lodash/filter';
 import find from 'lodash/find';

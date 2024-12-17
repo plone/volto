@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Segment, Header, List } from 'semantic-ui-react';
-import {
-  When,
-  Recurrence,
-} from '@plone/volto/components/theme/View/EventDatesInfo';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 import calendarSVG from '@plone/volto/icons/calendar.svg';
+
+const When = lazy(() =>
+  import('@plone/volto/components/theme/View/EventDatesInfo').then(
+    (module) => ({ default: module.When }),
+  ),
+);
+
+const Recurrence = lazy(() =>
+  import('@plone/volto/components/theme/View/EventDatesInfo').then(
+    (module) => ({ default: module.Recurrence }),
+  ),
+);
 
 const messages = defineMessages({
   what: {

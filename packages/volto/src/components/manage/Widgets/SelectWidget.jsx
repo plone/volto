@@ -3,7 +3,7 @@
  * @module components/manage/Widgets/SelectWidget
  */
 
-import React, { Component } from 'react';
+import React, { lazy, Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -30,7 +30,8 @@ import {
   MenuList,
   MultiValueContainer,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
+const Select = lazy(() => import('react-select'));
 
 const messages = defineMessages({
   default: {
@@ -193,7 +194,6 @@ class SelectWidget extends Component {
     const normalizedValue = normalizeValue(choices, value, intl);
     // Make sure that both disabled and isDisabled (from the DX layout feat work)
     const disabled = this.props.disabled || this.props.isDisabled;
-    const Select = this.props.reactSelect.default;
 
     let options = this.props.vocabBaseUrl
       ? this.props.choices
@@ -275,7 +275,6 @@ class SelectWidget extends Component {
 export const SelectWidgetComponent = injectIntl(SelectWidget);
 
 export default compose(
-  injectLazyLibs(['reactSelect']),
   connect(
     (state, props) => {
       const vocabBaseUrl = !props.choices
