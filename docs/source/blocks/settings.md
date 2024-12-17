@@ -192,42 +192,140 @@ const groupBlocksOrder = [
 
 You can change it (and add your own group) in your project configuration object.
 
-### initialBlocks - Initial Blocks per content type
+### initialBlocks - Initial Blocks Configuration in Volto
 
-By default, the default blocks for all content types are a title block and a text block. You can override this and provide your own by modifying the configuration object:
+The `config.blocks.initialBlocks` setting allows developers to specify the initial blocks automatically added for specific content types in Volto. By default, all content types include a title block and a text block. You can override this behavior and define custom initial blocks for each content type.
 
-```js
-const initialBlocks = {};
-```
+### Example: Setting Custom Initial Blocks
 
-and provide your own per content type, e.g:
+Here’s how to configure the `initialBlocks` object to define blocks for a custom content type:
+
+Basic Example:
 
 ```js
 const initialBlocks = {
-    Document: ['leadimage', 'title', 'text', 'listing' ]
+  Document: ['leadimage', 'title', 'text', 'listing'],
 };
 ```
 
-You can also pass the full configuration for the block using an object:
+This configuration ensures that when a new Document is created, it initializes with the following blocks in order:
+
+1. Lead Image
+2. Title
+3. Text
+4. Listing
+
+### Advanced Example: Full Block Configuration:
+
+You can also define detailed configurations for each block, including settings such as `fixed`, `required`, and default values:
 
 ```js
 const initialBlocks = {
   Document: [
     { '@type': 'leadImage', fixed: true, required: true },
     { '@type': 'title' },
-    { '@type': 'slate', value: 'My default text', plaintext: 'My default text' },
+    {
+      '@type': 'slate',
+      value: 'My default text',
+      plaintext: 'My default text',
+    },
   ],
 };
 ```
 
-## Listing block configuration
+### Disabling New Blocks and Requiring Specific Blocks
 
-`allowed_headline_tags`
-: Allows you to customize the choices of the "Headline Tag" types shown in the block settings by default. It has the following syntax (a list of lists, where a list item consists of `['token', 'display_name']`):
+For scenarios where you want to restrict users from adding new blocks or make certain blocks mandatory:
 
-  ```js
-  allowed_headline_tags: [['h2', 'h2'], ['h3', 'h3']]
-  ```
+### Configuring Required and `disableNewBlocks`:
+
+```js
+const initialBlocks = {
+  CustomContentType: [
+    { '@type': 'title', required: true, fixed: true },
+    { '@type': 'listing', required: true, fixed: true },
+  ],
+};
+```
+
+- `required`: Ensures the block cannot be removed.
+
+- `fixed`: Prevents the block from being reordered.
+
+### Schema Automation for Required and DisableNewBlocks:
+
+To automate these settings for a custom content type, you can override the content type schema or use a plugin that applies these properties programmatically.
+
+### Overwriting Block Behavior for a Custom Content Type
+
+To modify block behavior specifically for one content type without affecting others, you can shadow components. For example, to customize the title block for a specific content type:
+
+ 1. ### Component Shadowing for Title Block:
+
+    - Override the `Title` block component to check the content type and apply the desired settings:
+
+      ```js
+      import TitleBlockEdit from '@plone/volto/components/manage/Blocks/Title/Edit';
+      
+      const CustomTitleBlockEdit = (props) => {
+        const { data, block } = props;
+        if (data.contentType === 'CustomContentType') {
+          return <TitleBlockEdit {...props} disableNewBlocks={true} />;
+        }
+        return <TitleBlockEdit {...props} />;
+      };
+      
+      export default CustomTitleBlockEdit;
+      ```
+
+ 2. ### Customizing Layout in the Volto Add-On:
+
+    - Add schema configuration for your custom content type in your Volto add-on:
+      
+      ```js
+      const customSchemaEnhancer = (schema) => {
+        if (schema.id === 'CustomContentType') {
+          schema.disableNewBlocks = true;
+          schema.blocks = {
+            required: ['title', 'listing'],
+            allowedBlocks: ['title', 'listing'],
+          };
+        }
+        return schema;
+      };
+      ```
+
+### Restricting Blocks to Enforce Layout
+To enforce that a content type only allows specific blocks (e.g., title and listing), define `allowedBlocks` in your configuration:
+
+```js
+const blocksConfig = {
+  CustomContentType: {
+    allowedBlocks: ['title', 'listing'],
+    initialBlocks: [
+      { '@type': 'title', required: true },
+      { '@type': 'listing', required: true },
+    ],
+  },
+};
+```
+
+This ensures that only the `title` and `listing` blocks can be added to the content type.
+
+
+## Adding Listing Block Customization
+
+The Listing block can also be configured with advanced settings like `allowed_headline_tags`. Here’s an example:
+
+Example Configuration:
+
+```js
+const listingBlockConfig = {
+  allowed_headline_tags: [['h2', 'h2'], ['h3', 'h3']],
+};
+```
+
+  If only one tag is provided (e.g., `[['h2', 'h2']]`), the setting will hide itself from the listing block settings.
 
   If not specified, an internal hardcoded default is the above shown example.
 
