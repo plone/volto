@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import concat from 'lodash/concat';
+import find from 'lodash/find';
 import findIndex from 'lodash/findIndex';
 import isString from 'lodash/isString';
 import keys from 'lodash/keys';
@@ -21,6 +22,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { slugify } from '@plone/volto/helpers/Utils/Utils';
+import { getVocabulary } from '@plone/volto/actions';
 
 import SchemaWidgetFieldset from '@plone/volto/components/manage/Widgets/SchemaWidgetFieldset';
 import { Field, ModalForm } from '@plone/volto/components/manage/Form';
@@ -895,6 +897,10 @@ class SchemaWidget extends Component {
      * On change handler
      */
     onChange: PropTypes.func.isRequired,
+    /**
+     * Get vocabulary action
+     */
+    getVocabulary: PropTypes.func.isRequired,
   };
 
   /**
@@ -947,6 +953,19 @@ class SchemaWidget extends Component {
       deleteField: null,
       currentFieldset: 0,
     };
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.props.getVocabulary({
+      vocabNameOrURL: 'Fields',
+      size: -1,
+      subrequest: 'schemawidget',
+    });
   }
 
   /**
@@ -1478,6 +1497,17 @@ class SchemaWidget extends Component {
     if (!this.props.value) {
       return '';
     }
+    const choices = [...this.props.fields, ...this.props.additionalFactory];
+    let editFieldType = '';
+    if (this.state.editField) {
+      const fieldType = find(choices, {
+        value: this.props.value.properties[this.state.editField.id].factory,
+      });
+      editFieldType = this.props.intl.formatMessage({
+        id: fieldType.value,
+        defaultMessage: fieldType.label,
+      });
+    }
     const nonUserCreatedFields = this.props.value.fieldsets[
       this.state.currentFieldset
     ].fields.filter(
@@ -1746,7 +1776,7 @@ class SchemaWidget extends Component {
           <ModalForm
             onSubmit={this.onEditField}
             onCancel={this.onCancel}
-            title={this.props.intl.formatMessage(messages.editField)}
+            title={`${this.props.intl.formatMessage(messages.editField)}: ${editFieldType}`}
             formData={{
               ...this.props.value.properties[this.state.editField.id],
               id: this.state.editField.id,
@@ -1823,7 +1853,9 @@ export default compose(
   connect(
     (state, props) => ({
       value: isString(props.value) ? JSON.parse(props.value) : props.value,
+      fields:
+        state.vocabularies?.Fields?.subrequests?.schemawidget?.items || [],
     }),
-    {},
+    { getVocabulary },
   ),
 )(SchemaWidget);
