@@ -1500,13 +1500,21 @@ class SchemaWidget extends Component {
     const choices = [...this.props.fields, ...this.props.additionalFactory];
     let editFieldType = '';
     if (this.state.editField) {
+      let factory =
+        this.props.value.properties[this.state.editField.id].factory;
+
+      if (factory.value) {
+        factory = factory.value;
+      }
       const fieldType = find(choices, {
-        value: this.props.value.properties[this.state.editField.id].factory,
+        value: factory !== '' ? factory : 'label_text_field',
       });
-      editFieldType = this.props.intl.formatMessage({
-        id: fieldType.value,
-        defaultMessage: fieldType.label,
-      });
+      editFieldType = fieldType
+        ? this.props.intl.formatMessage({
+            id: fieldType.value,
+            defaultMessage: fieldType.label,
+          })
+        : '';
     }
     const nonUserCreatedFields = this.props.value.fieldsets[
       this.state.currentFieldset
