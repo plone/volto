@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import filter from 'lodash/filter';
 import map from 'lodash/map';
+import sortBy from 'lodash/sortBy';
 import { defineMessages, injectIntl } from 'react-intl';
 import {
   getVocabFromHint,
@@ -126,6 +127,7 @@ class SelectWidget extends Component {
     customOptionStyling: PropTypes.any,
     isMulti: PropTypes.bool,
     placeholder: PropTypes.string,
+    sort: PropTypes.bool,
   };
 
   /**
@@ -153,6 +155,7 @@ class SelectWidget extends Component {
     onDelete: null,
     noValueOption: true,
     customOptionStyling: null,
+    sort: false,
   };
 
   /**
@@ -242,6 +245,10 @@ class SelectWidget extends Component {
 
     if (filterChoices) {
       options = filter(options, (item) => filterChoices.includes(item.value));
+    }
+
+    if (this.props.sort) {
+      options = sortBy(options, ['label']);
     }
 
     const normalizedValue = normalizeValue(options, value, intl);
