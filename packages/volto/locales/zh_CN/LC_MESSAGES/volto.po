@@ -416,6 +416,11 @@ msgstr "确定要删除此字段？"
 msgid "Are you sure you want to delete this fieldset including all fields?"
 msgstr "确定要删除此包括所有字段的字段集？"
 
+#. Default: "Are you sure you want to undo selected actions?"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Are you sure you want to undo selected actions?"
+msgstr ""
+
 #. Default: "Ascending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1318,10 +1323,25 @@ msgstr "启用？"
 msgid "End Date"
 msgstr "结束日期"
 
+#. Default: "Enter Date and time"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter Date"
+msgstr ""
+
+#. Default: "Enter Path"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter Path"
+msgstr ""
+
 #. Default: "Enter URL or select an item"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
 msgstr "输入 URL 或选择一个项目"
+
+#. Default: "Enter Username"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter Username"
+msgstr ""
 
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
@@ -1556,10 +1576,25 @@ msgstr "过滤规则"
 msgid "Filter by prefix"
 msgstr "按前缀过滤"
 
+#. Default: "Filter transactions by"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filter transactions by"
+msgstr ""
+
+#. Default: "Filter transactions by User, Path or Date"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filter transactions by User, Path or Date"
+msgstr ""
+
 #. Default: "Filter users by groups"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter users by groups"
 msgstr "按组过滤用户"
+
+#. Default: "Filtered"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filtered"
+msgstr ""
 
 #. Default: "Filter…"
 #: components/manage/Contents/Contents
@@ -2386,6 +2421,11 @@ msgstr "新闻"
 msgid "News item view"
 msgstr "新闻视图"
 
+#. Default: "Next page"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Next page"
+msgstr ""
+
 #. Default: "No"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
@@ -2395,16 +2435,6 @@ msgstr "否"
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
-msgstr ""
-
-#. Default: "No transactions selected"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "No Transactions Selected"
-msgstr ""
-
-#. Default: "No transactions selected to do undo"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "No Transactions Selected To Do Undo"
 msgstr ""
 
 #. Default: "No Video selected"
@@ -2701,6 +2731,11 @@ msgstr "在执行升级前，请确定您已对网站进行备份。"
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr ""
 
+#. Default: "Please enter any input to perform filter"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Please enter any input to perform filter"
+msgstr ""
+
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
@@ -2760,6 +2795,11 @@ msgstr "偏好"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
 msgstr "美化你的代码"
+
+#. Default: "Previous page"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Prev page"
+msgstr ""
 
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
@@ -3468,11 +3508,6 @@ msgstr ""
 msgid "Sorry, something went wrong with your request"
 msgstr "对不起，您的请求出现了一些问题"
 
-#. Default: "Sort by"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sort By"
-msgstr "排序方式"
-
 #. Default: "Sort by:"
 #: components/theme/Search/Search
 msgid "Sort By:"
@@ -3489,16 +3524,6 @@ msgstr "排序"
 #: components/manage/Blocks/Search/schema
 msgid "Sort on options"
 msgstr "根据选项排序"
-
-#. Default: "Sort transactions by User-Name, Path or Date"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sort transactions by User-Name, Path or Date"
-msgstr "按用户名、路径或日期对事务进行排序"
-
-#. Default: "Sorted"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sorted"
-msgstr "排序"
 
 #. Default: "Sorted on"
 #: components/manage/Blocks/Search/components/SortOn
@@ -3936,14 +3961,14 @@ msgstr ""
 msgid "Transactions Checkbox"
 msgstr ""
 
-#. Default: "Transactions have been sorted"
+#. Default: "Transactions have been filtered"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Have Been Sorted"
+msgid "Transactions Have Been Filtered"
 msgstr ""
 
-#. Default: "Transactions have been unsorted"
+#. Default: "Transactions have been unfiltered"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Have Been Unsorted"
+msgid "Transactions Have Been Unfiltered"
 msgstr ""
 
 #. Default: "Translate to {lang}"
@@ -4042,6 +4067,11 @@ msgstr "撤销"
 msgid "Undo Controlpanel"
 msgstr ""
 
+#. Default: "Unfiltered"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Unfiltered"
+msgstr ""
+
 #. Default: "Unfold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Unfold"
@@ -4073,11 +4103,6 @@ msgstr "取消翻译链接"
 #: components/manage/Toolbar/Toolbar
 msgid "Unlock"
 msgstr "解锁"
-
-#. Default: "Unsorted"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Unsorted"
-msgstr "未排序"
 
 #. Default: "Update"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -4628,6 +4653,21 @@ msgstr ""
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
+msgstr ""
+
+#. Default: "Date"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by Date"
+msgstr ""
+
+#. Default: "Path"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by Path"
+msgstr ""
+
+#. Default: "Username"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by Username"
 msgstr ""
 
 #. Default: "flush intIds and rebuild relations"

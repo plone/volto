@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-12-06T13:45:21.266Z\n"
+"POT-Creation-Date: 2024-12-17T14:08:35.947Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -410,6 +410,11 @@ msgstr ""
 #. Default: "Are you sure you want to delete this fieldset including all fields?"
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this fieldset including all fields?"
+msgstr ""
+
+#. Default: "Are you sure you want to undo selected actions?"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Are you sure you want to undo selected actions?"
 msgstr ""
 
 #. Default: "Ascending"
@@ -1314,9 +1319,24 @@ msgstr ""
 msgid "End Date"
 msgstr ""
 
+#. Default: "Enter Date and time"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter Date"
+msgstr ""
+
+#. Default: "Enter Path"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter Path"
+msgstr ""
+
 #. Default: "Enter URL or select an item"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
+msgstr ""
+
+#. Default: "Enter Username"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter Username"
 msgstr ""
 
 #. Default: "Enter a username above to search or click 'Show All'"
@@ -1552,9 +1572,24 @@ msgstr ""
 msgid "Filter by prefix"
 msgstr ""
 
+#. Default: "Filter transactions by"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filter transactions by"
+msgstr ""
+
+#. Default: "Filter transactions by User, Path or Date"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filter transactions by User, Path or Date"
+msgstr ""
+
 #. Default: "Filter users by groups"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter users by groups"
+msgstr ""
+
+#. Default: "Filtered"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filtered"
 msgstr ""
 
 #. Default: "Filter…"
@@ -2382,6 +2417,11 @@ msgstr ""
 msgid "News item view"
 msgstr ""
 
+#. Default: "Next page"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Next page"
+msgstr ""
+
 #. Default: "No"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
@@ -2391,16 +2431,6 @@ msgstr ""
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
-msgstr ""
-
-#. Default: "No transactions selected"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "No Transactions Selected"
-msgstr ""
-
-#. Default: "No transactions selected to do undo"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "No Transactions Selected To Do Undo"
 msgstr ""
 
 #. Default: "No Video selected"
@@ -2697,6 +2727,11 @@ msgstr ""
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr ""
 
+#. Default: "Please enter any input to perform filter"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Please enter any input to perform filter"
+msgstr ""
+
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
@@ -2755,6 +2790,11 @@ msgstr ""
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
+msgstr ""
+
+#. Default: "Previous page"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Prev page"
 msgstr ""
 
 #. Default: "Preview"
@@ -3464,11 +3504,6 @@ msgstr ""
 msgid "Sorry, something went wrong with your request"
 msgstr ""
 
-#. Default: "Sort by"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sort By"
-msgstr ""
-
 #. Default: "Sort by:"
 #: components/theme/Search/Search
 msgid "Sort By:"
@@ -3484,16 +3519,6 @@ msgstr ""
 #. Default: "Sort on options"
 #: components/manage/Blocks/Search/schema
 msgid "Sort on options"
-msgstr ""
-
-#. Default: "Sort transactions by User-Name, Path or Date"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sort transactions by User-Name, Path or Date"
-msgstr ""
-
-#. Default: "Sorted"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sorted"
 msgstr ""
 
 #. Default: "Sorted on"
@@ -3932,14 +3957,14 @@ msgstr ""
 msgid "Transactions Checkbox"
 msgstr ""
 
-#. Default: "Transactions have been sorted"
+#. Default: "Transactions have been filtered"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Have Been Sorted"
+msgid "Transactions Have Been Filtered"
 msgstr ""
 
-#. Default: "Transactions have been unsorted"
+#. Default: "Transactions have been unfiltered"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Have Been Unsorted"
+msgid "Transactions Have Been Unfiltered"
 msgstr ""
 
 #. Default: "Translate to {lang}"
@@ -4038,6 +4063,11 @@ msgstr ""
 msgid "Undo Controlpanel"
 msgstr ""
 
+#. Default: "Unfiltered"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Unfiltered"
+msgstr ""
+
 #. Default: "Unfold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Unfold"
@@ -4068,11 +4098,6 @@ msgstr ""
 #. Default: "Unlock"
 #: components/manage/Toolbar/Toolbar
 msgid "Unlock"
-msgstr ""
-
-#. Default: "Unsorted"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Unsorted"
 msgstr ""
 
 #. Default: "Update"
@@ -4624,6 +4649,21 @@ msgstr ""
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
+msgstr ""
+
+#. Default: "Date"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by Date"
+msgstr ""
+
+#. Default: "Path"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by Path"
+msgstr ""
+
+#. Default: "Username"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by Username"
 msgstr ""
 
 #. Default: "flush intIds and rebuild relations"

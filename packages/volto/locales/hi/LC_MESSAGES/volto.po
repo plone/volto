@@ -410,6 +410,11 @@ msgstr "क्या आप इस फ़ील्ड को हटाना च
 msgid "Are you sure you want to delete this fieldset including all fields?"
 msgstr "क्या आप इस फ़ील्डसेट को हटाना चाहते हैं, सभी फ़ील्ड्स सहित?"
 
+#. Default: "Are you sure you want to undo selected actions?"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Are you sure you want to undo selected actions?"
+msgstr ""
+
 #. Default: "Ascending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1312,10 +1317,25 @@ msgstr "सक्षम?"
 msgid "End Date"
 msgstr "अंतिम तिथि"
 
+#. Default: "Enter Date and time"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter Date"
+msgstr ""
+
+#. Default: "Enter Path"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter Path"
+msgstr ""
+
 #. Default: "Enter URL or select an item"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
 msgstr "URL दर्ज करें या आइटम का चयन करें"
+
+#. Default: "Enter Username"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter Username"
+msgstr ""
 
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
@@ -1550,10 +1570,25 @@ msgstr "फ़िल्टर नियम:"
 msgid "Filter by prefix"
 msgstr "उपसर्ग द्वारा फ़िल्टर करें"
 
+#. Default: "Filter transactions by"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filter transactions by"
+msgstr ""
+
+#. Default: "Filter transactions by User, Path or Date"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filter transactions by User, Path or Date"
+msgstr ""
+
 #. Default: "Filter users by groups"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter users by groups"
 msgstr "समूहों द्वारा उपयोगकर्ताओं को फ़िल्टर करें"
+
+#. Default: "Filtered"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filtered"
+msgstr ""
 
 #. Default: "Filter…"
 #: components/manage/Contents/Contents
@@ -2380,6 +2415,11 @@ msgstr "समाचार आइटम"
 msgid "News item view"
 msgstr "समाचार आइटम देखें"
 
+#. Default: "Next page"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Next page"
+msgstr ""
+
 #. Default: "No"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
@@ -2390,16 +2430,6 @@ msgstr "नहीं"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
 msgstr "कोई लेन-देन नहीं मिला"
-
-#. Default: "No transactions selected"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "No Transactions Selected"
-msgstr "कोई लेन-देन चयनित नहीं है"
-
-#. Default: "No transactions selected to do undo"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "No Transactions Selected To Do Undo"
-msgstr "कोई लेन-देन चयनित नहीं है जिसे वापस किया जा सके"
 
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
@@ -2695,6 +2725,11 @@ msgstr "कृपया अपग्रेड करने से पहले �
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr "कृपया ब्लॉक को हटाकर एक वैध URL दर्ज करें और एक नया वीडियो ब्लॉक जोड़ें।"
 
+#. Default: "Please enter any input to perform filter"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Please enter any input to perform filter"
+msgstr ""
+
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
@@ -2754,6 +2789,11 @@ msgstr "पसंद"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
 msgstr "अपना कोड सुंदर बनाएं"
+
+#. Default: "Previous page"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Prev page"
+msgstr ""
 
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
@@ -3462,11 +3502,6 @@ msgstr "कुछ संबंध टूटे हुए हैं। कृप�
 msgid "Sorry, something went wrong with your request"
 msgstr "क्षमा करें, आपकी अनुरोध में कुछ गलत हो गया है"
 
-#. Default: "Sort by"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sort By"
-msgstr "क्रमबद्ध करें द्वारा"
-
 #. Default: "Sort by:"
 #: components/theme/Search/Search
 msgid "Sort By:"
@@ -3483,16 +3518,6 @@ msgstr "क्रमबद्ध करें द्वारा"
 #: components/manage/Blocks/Search/schema
 msgid "Sort on options"
 msgstr "क्रमबद्ध करें द्वारा विकल्प"
-
-#. Default: "Sort transactions by User-Name, Path or Date"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sort transactions by User-Name, Path or Date"
-msgstr "उपयोगकर्ता-नाम, पथ या तिथि द्वारा लेन-देन क्रमबद्ध करें"
-
-#. Default: "Sorted"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sorted"
-msgstr "क्रमबद्ध किया गया"
 
 #. Default: "Sorted on"
 #: components/manage/Blocks/Search/components/SortOn
@@ -3930,15 +3955,15 @@ msgstr "लेन-देन"
 msgid "Transactions Checkbox"
 msgstr "लेन-देन चेकबॉक्स"
 
-#. Default: "Transactions have been sorted"
+#. Default: "Transactions have been filtered"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Have Been Sorted"
-msgstr "लेन-देन क्रमबद्ध किए गए हैं"
+msgid "Transactions Have Been Filtered"
+msgstr ""
 
-#. Default: "Transactions have been unsorted"
+#. Default: "Transactions have been unfiltered"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Have Been Unsorted"
-msgstr "लेन-देन क्रमबद्ध नहीं किए गए हैं"
+msgid "Transactions Have Been Unfiltered"
+msgstr ""
 
 #. Default: "Translate to {lang}"
 #: components/manage/Add/Add
@@ -4036,6 +4061,11 @@ msgstr "पूर्ववत करें"
 msgid "Undo Controlpanel"
 msgstr "पूर्ववत कंट्रोल पैनल"
 
+#. Default: "Unfiltered"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Unfiltered"
+msgstr ""
+
 #. Default: "Unfold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Unfold"
@@ -4067,11 +4097,6 @@ msgstr "अनुवाद को अलग करें"
 #: components/manage/Toolbar/Toolbar
 msgid "Unlock"
 msgstr "अनलॉक"
-
-#. Default: "Unsorted"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Unsorted"
-msgstr "अक्रमण"
 
 #. Default: "Update"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -4623,6 +4648,21 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
 msgstr "यह वेबसाइट {limit} से अधिक बड़े फ़ाइलों को स्वीकार नहीं करती है"
+
+#. Default: "Date"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by Date"
+msgstr ""
+
+#. Default: "Path"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by Path"
+msgstr ""
+
+#. Default: "Username"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by Username"
+msgstr ""
 
 #. Default: "flush intIds and rebuild relations"
 #: helpers/MessageLabels/MessageLabels
