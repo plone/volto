@@ -4,7 +4,7 @@
  */
 
 import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
 import config from '@plone/volto/registry';
@@ -22,7 +22,8 @@ const messages = defineMessages({
  * @param {array} relatedItems Array of related items.
  * @returns {JSX.Element} Markup of the component.
  */
-const RelatedItems = ({ content, intl }) => {
+const RelatedItems = ({ content }) => {
+  const intl = useIntl();
   const relatedItems = content?.relatedItems;
   if (
     !config.settings.showRelatedItems ||
@@ -56,22 +57,14 @@ const RelatedItems = ({ content, intl }) => {
  * @static
  */
 RelatedItems.propTypes = {
-  relatedItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      '@id': PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    }),
-  ),
-  intl: PropTypes.object.isRequired,
+  content: PropTypes.shape({
+    relatedItems: PropTypes.arrayOf(
+      PropTypes.shape({
+        '@id': PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+      }),
+    ),
+  }),
 };
 
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
-RelatedItems.defaultProps = {
-  relatedItems: [],
-};
-
-export default injectIntl(RelatedItems);
+export default RelatedItems;
