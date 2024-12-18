@@ -9,6 +9,9 @@ myst:
 
 # How does the theming engine work?
 
+```{include} /_inc/_semanticui-deprecation.md
+```
+
 It basically uses heavily the LESS precompiler language features. No code is involved (which is good).
 
 ## `theme.config`
