@@ -53,7 +53,10 @@ export const PloneRegistryVitePlugin = () => {
                 },
               ]
             : []),
-          { find: 'load-plone-registry-addons', replacement: addonsLoaderPath },
+          {
+            find: '@plone/registry/addons-loader',
+            replacement: addonsLoaderPath,
+          },
         ],
       },
     }),

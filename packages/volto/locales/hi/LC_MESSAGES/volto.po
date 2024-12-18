@@ -553,6 +553,7 @@ msgstr ""
 
 #. Default: "Cancel"
 #: components/manage/Add/Add
+#: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -1053,12 +1054,12 @@ msgid "Delete row"
 msgstr "पंक्ति हटाएँ"
 
 #. Default: "Delete selected items?"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Delete selected items?"
 msgstr "चयनित आइटम हटाएं?"
 
 #. Default: "Delete this item?"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Delete this item?"
 msgstr "क्या आप इस आइटम को हटाना चाहते हैं?"
 
@@ -1068,7 +1069,7 @@ msgid "Deleted"
 msgstr "हटा दिया गया"
 
 #. Default: "Deleting this item breaks {brokenReferences} {variation}."
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item breaks {brokenReferences} {variation}."
 msgstr "इस आइटम को हटाने से {brokenReferences} {variation} टूट जाता है।"
 
@@ -2353,6 +2354,11 @@ msgstr "संकीर्ण"
 msgid "Navigate back"
 msgstr "पिछले पृष्ठ पर जाएं"
 
+#. Default: "Navigate to this item"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "Navigate to this item"
+msgstr ""
+
 #. Default: "Navigation"
 #: components/theme/Navigation/ContextNavigation
 msgid "Navigation"
@@ -3240,6 +3246,11 @@ msgstr "प्रदर्शित करने के लिए स्तं�
 msgid "Select relation"
 msgstr "रिश्ता चुनें"
 
+#. Default: "Select rule"
+#: components/manage/Rules/Rules
+msgid "Select rule"
+msgstr ""
+
 #. Default: "Select the transition to be used for modifying the items state."
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
@@ -3437,12 +3448,12 @@ msgid "Small"
 msgstr "छोटा"
 
 #. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
 msgstr "कुछ आइटम एक फ़ोल्डर भी हो सकते हैं। उन्हें हटा कर आप {containedItemsToDelete} {variation} फ़ोल्डर के अंदर में हटा देंगे।"
 
 #. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
 msgstr "कुछ आइटम अन्य सामग्रियों द्वारा संदर्भित होते हैं। उन्हें हटा कर आप {brokenReferences} {variation} टूट जाएगा।"
 
@@ -3810,6 +3821,11 @@ msgstr "कुछ त्रुटियाँ थीं"
 msgid "There were some errors."
 msgstr "कुछ त्रुटियाँ थीं।"
 
+#. Default: "These items will have broken links"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "These items will have broken links"
+msgstr ""
+
 #. Default: "Third"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
@@ -3831,7 +3847,7 @@ msgid "This is a working copy of {title}"
 msgstr "यह {title} की काम की प्रतिलिपि है"
 
 #. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
 msgstr "यह आइटम एक फ़ोल्डर भी है। इसे हटाकर आप {containedItemsToDelete} {variation} फ़ोल्डर के अंदर हटा देंगे।"
 
@@ -4240,7 +4256,7 @@ msgid "View changes"
 msgstr "परिवर्तन देखें"
 
 #. Default: "View links and references to this item"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "View links and references to this item"
 msgstr "इस आइटम के लिए लिंक और संदर्भ देखें"
 
@@ -4669,12 +4685,12 @@ msgid "intranet"
 msgstr "इंट्रानेट"
 
 #. Default: "item"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "item"
 msgstr "आइटम"
 
 #. Default: "items"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "items"
 msgstr "आइटम्स"
 
@@ -4692,6 +4708,21 @@ msgstr "मेरा उपयोगकर्ता नाम है"
 #: config/Blocks
 msgid "leadimage"
 msgstr "प्रमुख छवि फ़ील्ड"
+
+#. Default: "Delete"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "link-integrity: Delete"
+msgstr ""
+
+#. Default: "Delete item and break links"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "link-integrity: Delete item and break links"
+msgstr ""
+
+#. Default: "Checking references..."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "link-integrity: loading references"
+msgstr ""
 
 #. Default: "Enter a URL to an image"
 #: components/manage/Widgets/ImageWidget
@@ -4818,14 +4849,19 @@ msgid "rebuild relations"
 msgstr "रिश्तों को पुनः निर्माण करें"
 
 #. Default: "reference"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "reference"
 msgstr "संदर्भ"
 
 #. Default: "references"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "references"
 msgstr "संदर्भ"
+
+#. Default: "refers to"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "refers to"
+msgstr ""
 
 #. Default: "results"
 #: components/theme/Search/Search

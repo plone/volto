@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.0.4 (2024-12-12)
+
+### Bugfix
+
+- Stylelint in less file. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+
 ## 18.0.3 (2024-12-09)
 
 ### Internal

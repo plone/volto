@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
@@ -54,6 +54,9 @@
     },
     "./vite-plugin": {
       "import": "./vite-plugin.js",
+      "types": "./vite-plugin.d.ts"
+    },
+    "./addons-loader": {
       "types": "./vite-plugin.d.ts"
     },
     ".": {

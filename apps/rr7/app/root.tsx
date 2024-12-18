@@ -7,8 +7,9 @@ import {
   ScrollRestoration,
   useHref,
   useLocation,
-  useNavigate,
+  useNavigate as useRRNavigate,
   useParams,
+  useLoaderData,
 } from 'react-router';
 import type { LinksFunction } from 'react-router';
 
@@ -18,9 +19,18 @@ import PloneClient from '@plone/client';
 import { PloneProvider } from '@plone/providers';
 import { flattenToAppURL } from './utils';
 import config from '@plone/registry';
-import './config';
+import install from './config';
+import installSSR from './config.server';
 
-import '@plone/components/dist/basic.css';
+install();
+
+import '@plone/theming/styles/main.css';
+import '@plone/slots/main.css';
+
+function useNavigate() {
+  const navigate = useRRNavigate();
+  return (to: string) => navigate(flattenToAppURL(to));
+}
 
 function useHrefLocal(to: string) {
   return useHref(flattenToAppURL(to));
@@ -35,11 +45,24 @@ export const links: LinksFunction = () => [
   },
   {
     rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
+    href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap',
   },
 ];
 
+export async function loader() {
+  const ssrConfig = installSSR();
+
+  return {
+    env: {
+      PLONE_API_PATH: ssrConfig.settings.apiPath,
+      PLONE_INTERNAL_API_PATH: ssrConfig.settings.internalApiPath,
+    },
+  };
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
+  const data = useLoaderData<typeof loader>();
+
   return (
     <html lang="en">
       <head>
@@ -51,6 +74,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         {children}
         <ScrollRestoration />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.env = ${JSON.stringify(data.env)}`,
+          }}
+        />
         <Scripts />
       </body>
     </html>
@@ -58,6 +86,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  if (!import.meta.env.SSR) {
+    config.settings.apiPath = window.env.PLONE_API_PATH;
+    config.settings.internalApiPath = window.env.PLONE_INTERNAL_API_PATH;
+  }
+
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -77,10 +110,7 @@ export default function App() {
     }),
   );
 
-  const RRNavigate = useNavigate();
-  const navigate = (to: string) => {
-    return RRNavigate(flattenToAppURL(to));
-  };
+  const navigate = useNavigate();
 
   return (
     <PloneProvider
@@ -90,6 +120,7 @@ export default function App() {
       useParams={useParams}
       useHref={useHrefLocal}
       navigate={navigate}
+      flattenToAppURL={flattenToAppURL}
     >
       <Outlet />
       <ReactQueryDevtools initialIsOpen={false} />

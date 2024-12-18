@@ -17,6 +17,33 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.4.0 (2024-12-17)
+
+### Feature
+
+- Added a setting in the `config` object to set the site's CSS layers, if required. @sneridagh [#6539](https://github.com/plone/volto/issues/6539)
+
+### Internal
+
+- Fixed and re-enabled the types declaration extractor from core Volto. @sneridagh [#6534](https://github.com/plone/volto/issues/6534)
+
+### Documentation
+
+- Add monorepo structure to the README. Update the monorepo structure file tree. @stevepiercy [#6542](https://github.com/plone/volto/issues/6542)
+
+## 18.3.0 (2024-12-12)
+
+### Feature
+
+- Add disable Teaser block Align handlers for teasers inside containers. @sneridagh [#6527](https://github.com/plone/volto/issues/6527)
+
+### Bugfix
+
+- Fix inline comment in `SlotRenderer`. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+- Enhanced linkintegrity popup and moved all logic in a separate component ContentsDeleteModal @giuliaghisini [#6516](https://github.com/plone/volto/issues/6516)
+- Disable initial scroll to top after SSR completion. @Faakhir30 [#6523](https://github.com/plone/volto/issues/6523)
+- Add missing styleWrapper style builder information in container/Grid. @sneridagh [#6527](https://github.com/plone/volto/issues/6527)
+
 ## 18.2.3 (2024-12-09)
 
 ### Bugfix

@@ -28,7 +28,19 @@
   "publishConfig": {
     "access": "public"
   },
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "main": "src/index.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.cjs"
+    }
+  },
   "scripts": {
     "watch": "tsup",
     "build": "tsup",

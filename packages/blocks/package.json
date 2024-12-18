@@ -28,9 +28,11 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "src/index.ts",
+  "type": "module",
+  "main": "index.ts",
   "scripts": {
     "test": "vitest",
+    "check-ts": "tsc --project tsconfig.json",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
@@ -45,7 +47,12 @@
       "optional": true
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "@plone/components": "workspace:*",
+    "@plone/registry": "workspace:*",
+    "@plone/providers": "workspace:*",
+    "clsx": "^2.1.1"
+  },
   "devDependencies": {
     "@plone/registry": "workspace:*",
     "@plone/types": "workspace:*",
