@@ -16,6 +16,7 @@ import {
   Dimmer,
   Loader,
   Checkbox,
+  Message,
   Confirm,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
@@ -28,8 +29,6 @@ import map from 'lodash/map';
 import remove from 'lodash/remove';
 import findIndex from 'lodash/findIndex';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
-import nextIcon from '@plone/volto/icons/right-key.svg';
-import prevIcon from '@plone/volto/icons/left-key.svg';
 import undoSVG from '@plone/volto/icons/undo.svg';
 import {
   getTransactions,
@@ -37,6 +36,7 @@ import {
 } from '@plone/volto/actions/transactions/transactions';
 import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
 import { toast } from 'react-toastify';
+import Pagination from '@plone/volto/components/theme/Pagination/Pagination';
 
 const messages = defineMessages({
   success: {
@@ -88,16 +88,21 @@ const messages = defineMessages({
     defaultMessage: 'Filter transactions by User, Path or Date',
   },
   filterByUsername_filter: {
-    id: 'Enter Username',
+    id: 'Enter Username to filter',
     defaultMessage: 'Enter Username',
   },
   filterByPath_filter: {
-    id: 'Enter Path',
+    id: 'Enter path to filter',
     defaultMessage: 'Enter Path',
   },
   filterByDate_filter: {
-    id: 'Enter Date',
+    id: 'Enter Date and time to filter',
     defaultMessage: 'Enter Date and time',
+  },
+  filterByDate_filter_description: {
+    id: 'Enter Date description filter',
+    defaultMessage:
+      'Will display transactions from start of selected day, until time selected',
   },
   failedToUndoTransactions: {
     id: 'Failed To Undo Transactions',
@@ -123,15 +128,13 @@ const messages = defineMessages({
     id: 'Please enter any input to perform filter',
     defaultMessage: 'Please enter any input to perform filter',
   },
-  prevPage: {
-    id: 'Prev page',
-    defaultMessage: 'Previous page',
-  },
-  nextPage: {
-    id: 'Next page',
-    defaultMessage: 'Next page',
+  selectAll: {
+    id: 'Select all',
+    defaultMessage: 'Select all',
   },
 });
+
+const PAGE_SIZES = [20, 50, 100, 200, 500];
 
 /**
  * UndoControlpanel class.
@@ -177,32 +180,28 @@ class UndoControlpanel extends Component {
     this.state = {
       isClient: false,
       filterType: 'no value',
+      currentPage: 0,
       lowerIndex: 0,
       upperIndex: 20,
       selectedTransactions: [],
-      defaultTransactionsLenInTable: 20,
+      pageSize: 20,
       isFilterTypeSelected: false,
       filteredTransactions: [],
       isemptyInputForFiltering: false,
       isTransactionsNotFound: false,
       undoRequested: false,
       doUndo: false,
-      showPrevButton: false,
-      showNextButton: false,
     };
     this.onCancelFilter = this.onCancelFilter.bind(this);
     this.onFilter = this.onFilter.bind(this);
     this.onSelect = this.onSelect.bind(this);
-    this.onPrev = this.onPrev.bind(this);
-    this.onNext = this.onNext.bind(this);
+
     this.onUndo = this.onUndo.bind(this);
     this.handleTableVisiblity = this.handleTableVisiblity.bind(this);
-    this.handleNotFilteredNextPrevButtons =
-      this.handleNotFilteredNextPrevButtons.bind(this);
-    this.handleFilteredNextPrevButtons =
-      this.handleFilteredNextPrevButtons.bind(this);
     this.checkTransactionsUndoneStatus =
       this.checkTransactionsUndoneStatus.bind(this);
+    this.toggleCheckedTransactions = this.toggleCheckedTransactions.bind(this);
+    this.onChangePageSize = this.onChangePageSize.bind(this);
   }
 
   /**
@@ -234,7 +233,7 @@ class UndoControlpanel extends Component {
     if (filteredTransactions.length > 0) {
       this.setState({
         lowerIndex: 0,
-        upperIndex: this.state.defaultTransactionsLenInTable,
+        upperIndex: this.state.pageSize,
         filteredTransactions: filteredTransactions,
         isemptyInputForFiltering: false,
         isTransactionsNotFound: false,
@@ -268,7 +267,7 @@ class UndoControlpanel extends Component {
       filterType: 'no value',
       filteredTransactions: [],
       lowerIndex: 0,
-      upperIndex: this.state.defaultTransactionsLenInTable,
+      upperIndex: this.state.pageSize,
     });
   }
 
@@ -385,87 +384,12 @@ class UndoControlpanel extends Component {
   }
 
   /**
-   * On Prev
-   * @method onPrev
-   * @returns {undefined}
-   */
-  onPrev() {
-    0 < this.state.lowerIndex &&
-      this.setState({
-        upperIndex: this.state.lowerIndex,
-        lowerIndex:
-          this.state.lowerIndex - this.state.defaultTransactionsLenInTable,
-      });
-  }
-
-  /**
-   * On Next
-   * @method onNext
-   * @returns {undefined}
-   */
-  onNext() {
-    this.props.transactions.length > this.state.upperIndex &&
-      this.setState({
-        lowerIndex: this.state.upperIndex,
-        upperIndex:
-          this.state.upperIndex + this.state.defaultTransactionsLenInTable,
-      });
-  }
-
-  /**
-   * Handle next and prev buttons visibility when transactions are filtered
-   * @method handleFilteredNextPrevButtons
-   * @returns {undefined}
-   */
-  handleFilteredNextPrevButtons() {
-    this.state.upperIndex >= this.state.filteredTransactions.length &&
-      this.state.showNextButton &&
-      this.setState({ showNextButton: false });
-
-    this.state.upperIndex < this.state.filteredTransactions.length &&
-      !this.state.showNextButton &&
-      this.setState({ showNextButton: true });
-
-    this.state.lowerIndex <= 0 &&
-      this.state.showPrevButton &&
-      this.setState({ showPrevButton: false });
-
-    this.state.lowerIndex > 0 &&
-      !this.state.showPrevButton &&
-      this.setState({ showPrevButton: true });
-  }
-
-  /**
-   * Handle next and prev buttons visibility when transactions are not filtered
-   * @method handleNotFilteredNextPrevButtons
-   * @returns {undefined}
-   */
-  handleNotFilteredNextPrevButtons() {
-    this.state.upperIndex >= this.props.transactions?.length &&
-      this.state.showNextButton &&
-      this.setState({ showNextButton: false });
-
-    this.state.upperIndex < this.props.transactions?.length &&
-      !this.state.showNextButton &&
-      this.setState({ showNextButton: true });
-
-    this.state.lowerIndex <= 0 &&
-      this.state.showPrevButton &&
-      this.setState({ showPrevButton: false });
-
-    this.state.lowerIndex > 0 &&
-      !this.state.showPrevButton &&
-      this.setState({ showPrevButton: true });
-  }
-
-  /**
-   * Handle next, prev buttons and table visibility
+   * Handle table visibility
    * @method handleTableVisiblity
    * @returns {undefined}
    */
   handleTableVisiblity() {
     if (this.state.filteredTransactions.length > 0) {
-      this.handleFilteredNextPrevButtons();
     } else if (!this.state.isFilterTypeSelected) {
       this.props.transactions?.length > 0 &&
         this.state.isTransactionsNotFound &&
@@ -474,10 +398,6 @@ class UndoControlpanel extends Component {
       this.props.transactions?.length <= 0 &&
         !this.state.isTransactionsNotFound &&
         this.setState({ isTransactionsNotFound: true });
-
-      this.handleNotFilteredNextPrevButtons();
-    } else {
-      this.handleNotFilteredNextPrevButtons();
     }
   }
 
@@ -523,16 +443,37 @@ class UndoControlpanel extends Component {
     }
   }
 
-  toggleCheckedTransactions(t, checked) {
+  toggleCheckedTransactions(items, checked) {
     let list = [...this.state.selectedTransactions];
-    if (checked) {
-      list.push(t);
-    } else {
-      remove(list, t);
-    }
+    items.map((t) => {
+      const selected = findIndex(list, t) >= 0;
+      if (selected) {
+        if (!checked) {
+          remove(list, t);
+        }
+      } else {
+        if (checked) {
+          list.push(t);
+        }
+      }
+    });
     this.setState({ selectedTransactions: list });
   }
 
+  onChangePageSize(e, v) {
+    this.setState({
+      upperIndex: this.state.pageSize,
+      lowerIndex: 0,
+      selectAll: false,
+      pageSize: v.value,
+    });
+  }
+
+  onChangePage = (event, { value }) => {
+    this.setState({
+      currentPage: value,
+    });
+  };
   /**
    * Render method.
    * @method render
@@ -542,19 +483,33 @@ class UndoControlpanel extends Component {
     const transactionsRange =
       (this.state.filteredTransactions.length > 0 &&
         this.state.filteredTransactions.slice(
-          this.state.lowerIndex,
-          this.state.upperIndex,
+          this.state.currentPage * this.state.pageSize,
+          this.state.pageSize * (this.state.currentPage + 1),
         )) ||
       this.props.transactions?.slice(
-        this.state.lowerIndex,
-        this.state.upperIndex,
+        this.state.currentPage * this.state.pageSize,
+        this.state.pageSize * (this.state.currentPage + 1),
       );
     this.handleTableVisiblity();
     this.checkTransactionsUndoneStatus();
 
     const TransactionsTable = ({ items, summary = false }) => {
+      const getReqType = (str) => {
+        const regex = /\/([^\/@]*_application_json_[^\/@]*)/;
+
+        const matches = str.match(regex);
+
+        const t = matches?.length > 0 ? matches[1] : null;
+        return {
+          t: t,
+          type: t?.replace('_application_json_', ''),
+          clearStr: t ? str.replaceAll(t, '') : str,
+        };
+      };
+
       const elabDescription = (d) => {
-        const parts = d
+        const str = getReqType(d).clearStr ?? '';
+        const parts = str
           .replaceAll('\nUndo', '<br/>Undo:')
           .replaceAll('\n', '<br/>')
           .replaceAll(' ', '<br/>')
@@ -573,6 +528,7 @@ class UndoControlpanel extends Component {
           </>
         );
       };
+
       return (
         <Table selectable fixed celled compact singleLine attached>
           <Table.Header>
@@ -583,13 +539,20 @@ class UndoControlpanel extends Component {
                   textAlign="center"
                   style={{ width: '40px' }}
                 >
-                  <FormattedMessage
-                    id="Transactions Checkbox"
-                    defaultMessage="#"
+                  <Checkbox
+                    title={this.props.intl.formatMessage(messages.selectAll)}
+                    onChange={(e, data) => {
+                      this.setState({ selectAll: data.checked });
+                      this.toggleCheckedTransactions(items, data.checked);
+                    }}
+                    checked={this.state.selectAll}
                   />
                 </Table.HeaderCell>
               )}
-              <Table.HeaderCell width={summary ? 10 : 8}>
+              <Table.HeaderCell width={1}>
+                <FormattedMessage id="Request type" defaultMessage="OP" />
+              </Table.HeaderCell>
+              <Table.HeaderCell width={summary ? 9 : 7}>
                 <FormattedMessage id="What" defaultMessage="What" />
               </Table.HeaderCell>
               <Table.HeaderCell width={1}>
@@ -614,7 +577,7 @@ class UndoControlpanel extends Component {
                     <Checkbox
                       onChange={(e, data) => {
                         this.toggleCheckedTransactions(
-                          transaction,
+                          [transaction],
                           data.checked,
                         );
                       }}
@@ -627,8 +590,11 @@ class UndoControlpanel extends Component {
                     />
                   </Table.Cell>
                 )}
+                <Table.Cell width={1}>
+                  {getReqType(transaction.description).type ?? ''}
+                </Table.Cell>
                 <Table.Cell
-                  width={summary ? 10 : 8}
+                  width={summary ? 9 : 7}
                   title={[transaction.description].join(' ')}
                 >
                   {elabDescription(transaction.description)}
@@ -660,24 +626,18 @@ class UndoControlpanel extends Component {
             <Table.Footer>
               <Table.Row>
                 <Table.HeaderCell textAlign="center" colSpan="6">
-                  <Menu pagination>
-                    {this.state.showPrevButton && (
-                      <Menu.Item
-                        as="button"
-                        id="prev-button"
-                        icon
-                        style={{ border: 'none' }}
-                        title={this.props.intl.formatMessage(messages.prevPage)}
-                      >
-                        <Icon
-                          onClick={this.onPrev}
-                          name={prevIcon}
-                          title={this.props.intl.formatMessage(
-                            messages.prevPage,
-                          )}
-                        />
-                      </Menu.Item>
+                  <Pagination
+                    current={this.state.currentPage}
+                    total={Math.ceil(
+                      this.props.transactions?.length / this.state.pageSize,
                     )}
+                    onChangePage={this.onChangePage}
+                    pageSize={this.state.pageSize}
+                    pageSizes={PAGE_SIZES}
+                    onChangePageSize={this.onChangePageSize}
+                  />
+
+                  <Menu pagination>
                     <Menu.Item
                       as="button"
                       icon
@@ -697,25 +657,6 @@ class UndoControlpanel extends Component {
                           });
                         }}
                       />
-                    </Menu.Item>
-                    <Menu.Item
-                      as="button"
-                      id="next-button"
-                      icon
-                      style={{ border: 'none' }}
-                      title={this.props.intl.formatMessage(messages.nextPage)}
-                    >
-                      {this.state.showNextButton ? (
-                        <Icon
-                          onClick={this.onNext}
-                          name={nextIcon}
-                          title={this.props.intl.formatMessage(
-                            messages.nextPage,
-                          )}
-                        />
-                      ) : (
-                        <div style={{ width: '36px' }}></div>
-                      )}
                     </Menu.Item>
                   </Menu>
                 </Table.HeaderCell>
@@ -797,6 +738,9 @@ class UndoControlpanel extends Component {
                       title: this.props.intl.formatMessage(
                         messages.filterByDate_filter,
                       ),
+                      description: this.props.intl.formatMessage(
+                        messages.filterByDate_filter_description,
+                      ),
                       type: 'date',
                     },
                   },
@@ -844,7 +788,20 @@ class UndoControlpanel extends Component {
                 />
               </Segment>
             ) : (
-              <TransactionsTable items={transactionsRange} />
+              <>
+                {this.state.selectedTransactions.length > 0 && (
+                  <Message info>
+                    <FormattedMessage
+                      id="{n_transactions} transactions selected."
+                      defaultMessage="{n_transactions} transactions selected."
+                      values={{
+                        n_transactions: this.state.selectedTransactions.length,
+                      }}
+                    />
+                  </Message>
+                )}
+                <TransactionsTable items={transactionsRange} />
+              </>
             )}
           </Segment.Group>
         </Segment.Group>
