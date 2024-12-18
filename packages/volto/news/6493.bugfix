@@ -1,0 +1,1 @@
+Fixed body class handling to prevent query string inclusion in is-adding-contenttype.@Abhishek-17h
