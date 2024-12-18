@@ -161,19 +161,19 @@ button {
       border: @checkboxBorderUnchecked;
       border-radius: unset;
       box-shadow: 0 2px 2px 0 #0000001a;
-      outline: none;
     }
 
     &:hover:before {
       border: @checkboxBorderUnchecked;
     }
+
+    &:focus:before {
+      border: @checkboxBorderUnchecked;
+    }
   }
 
-  input:focus {
-    & ~ label:before {
-      outline: 2px solid #000 !important;
-      outline-offset: 2px;
-    }
+  input:focus ~ label:before {
+    border: @checkboxBorderUnchecked;
   }
 }
 
@@ -193,7 +193,7 @@ button {
   /* Focus */
   &:focus {
     & ~ label:before {
-      // border: @checkboxBorderChecked;
+      border: @checkboxBorderChecked;
     }
 
     & ~ label:after,
