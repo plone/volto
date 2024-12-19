@@ -79,31 +79,34 @@ exports[`ContentsItem renders a contents item component 1`] = `
       <div
         className="expire-align"
       >
-        <svg
-          className="icon icon-margin"
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<title>Pagina</title>undefined",
-            }
-          }
-          onClick={null}
-          style={
-            Object {
-              "fill": "#878f93",
-              "height": "20px",
-              "width": "auto",
-            }
-          }
-          viewBox=""
-          xmlns=""
-        />
-         
-        <span
-          title="Blog"
+        <div
+          className="preview-image-container"
         >
-           
-          Blog
-        </span>
+          <svg
+            className="icon icon-margin"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<title>Pagina</title>undefined",
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#878f93",
+                "height": "20px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+          <span
+            title="Blog"
+          >
+             
+            Blog
+          </span>
+        </div>
       </div>
     </a>
   </td>
