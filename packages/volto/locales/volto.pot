@@ -1577,7 +1577,7 @@ msgstr ""
 msgid "Filter transactions by"
 msgstr ""
 
-#. Default: "Filter transactions by User, Path or Date"
+#. Default: "Filter transactions by user, path, or date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Filter transactions by user, path, or date"
 msgstr ""
