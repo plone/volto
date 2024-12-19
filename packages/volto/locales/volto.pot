@@ -1319,7 +1319,7 @@ msgstr ""
 msgid "End Date"
 msgstr ""
 
-#. Default: "Enter Date and time"
+#. Default: "Enter end date and time"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Enter Date"
 msgstr ""
