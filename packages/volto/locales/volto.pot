@@ -1579,7 +1579,7 @@ msgstr ""
 
 #. Default: "Filter transactions by User, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Filter transactions by User, Path or Date"
+msgid "Filter transactions by user, path, or date"
 msgstr ""
 
 #. Default: "Filter users by groups"
