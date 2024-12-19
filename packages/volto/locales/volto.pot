@@ -2794,7 +2794,7 @@ msgstr ""
 
 #. Default: "Previous page"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Prev page"
+msgid "Previous page"
 msgstr ""
 
 #. Default: "Preview"
