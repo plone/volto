@@ -1324,7 +1324,7 @@ msgstr ""
 msgid "Enter end date and time"
 msgstr ""
 
-#. Default: "Enter Path"
+#. Default: "Enter path"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Enter Path"
 msgstr ""
