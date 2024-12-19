@@ -1334,7 +1334,7 @@ msgstr ""
 msgid "Enter URL or select an item"
 msgstr ""
 
-#. Default: "Enter Username"
+#. Default: "Enter username"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Enter Username"
 msgstr ""
