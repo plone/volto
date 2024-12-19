@@ -4663,7 +4663,7 @@ msgstr ""
 
 #. Default: "Username"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "filter by Username"
+msgid "Filter by username"
 msgstr ""
 
 #. Default: "flush intIds and rebuild relations"
