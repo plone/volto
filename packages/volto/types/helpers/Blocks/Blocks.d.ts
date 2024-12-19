@@ -40,36 +40,43 @@ export function moveBlock(formData: any, source: number, destination: number): a
  * @function deleteBlock
  * @param {Object} formData Form data
  * @param {string} blockId Block uid
+ * @param {Object} intl intl object.
  * @return {Object} New form data
  */
-export function deleteBlock(formData: any, blockId: string): any;
+export function deleteBlock(formData: any, blockId: string, intl: Object): any;
 /**
  * Adds a block to the blocks form
  * @function addBlock
  * @param {Object} formData Form data
  * @param {string} type Block type
  * @param {number} index Destination index
+ * @param {Object} blocksConfig Blocks configuration.
+ * @param {Object} intl intl object.
  * @return {Array} New block id, New form data
  */
-export function addBlock(formData: any, type: string, index: number, blocksConfig: any): any[];
+export function addBlock(formData: any, type: string, index: number, blocksConfig: any, intl: Object): any[];
 /**
  * Mutate block, changes the block @type
  * @function mutateBlock
  * @param {Object} formData Form data
  * @param {string} id Block uid to mutate
  * @param {number} value Block's new value
+ * @param {Object} blocksConfig Blocks configuration.
+ * @param {Object} intl intl object.
  * @return {Object} New form data
  */
-export function mutateBlock(formData: any, id: string, value: number, blocksConfig: any): any;
+export function mutateBlock(formData: any, id: string, value: number, blocksConfig: any, intl: Object): any;
 /**
  * Insert new block before another block
  * @function insertBlock
  * @param {Object} formData Form data
  * @param {string} id Insert new block before the block with this id
  * @param {number} value New block's value
+ * @param {Object} blocksConfig Blocks configuration.
+ * @param {Object} intl intl object.
  * @return {Array} New block id, New form data
  */
-export function insertBlock(formData: any, id: string, value: number, current: {}, offset: number, blocksConfig: any): any[];
+export function insertBlock(formData: any, id: string, value: number, current: {}, offset: number, blocksConfig: any, intl: Object): any[];
 /**
  * Change block
  * @function changeBlock
@@ -167,11 +174,12 @@ export function findBlocks(blocks: {}, types: any, result?: any[]): any[];
  */
 export function moveBlockEnhanced(formData: any, { source, destination }: number): any;
 export function getBlocks(properties: any): any[];
-export function applyBlockInitialValue({ id, value, blocksConfig, formData, }: {
+export function applyBlockInitialValue({ id, value, blocksConfig, formData, intl}: {
     id: any;
     value: any;
     blocksConfig: any;
     formData: any;
+    intl: Object;
 }): any;
 export function styleToClassName(key: any, value: any, prefix?: string): any;
 export function buildStyleClassNamesFromData(obj?: {}, prefix?: string): any;

@@ -8,6 +8,7 @@ import { rangeIsInSplittableNode } from '@plone/volto-slate/utils/internals';
 
 /**
  * @param {Editor} editor The Slate editor object to extend.
+ * @param {Object} intl intl object.
  * @description If the selection exists and touches with one of its edges a
  * closest-to-root `Text` node (`Path` with length `2`)
  *
@@ -18,7 +19,7 @@ import { rangeIsInSplittableNode } from '@plone/volto-slate/utils/internals';
  * and if the selection does not exist or does not touch with one of its edges a
  * closest-to-root `Text` node, call the default behavior.
  */
-export const withSplitBlocksOnBreak = (editor) => {
+export const withSplitBlocksOnBreak = (editor, intl) => {
   const { insertBreak } = editor;
 
   editor.insertBreak = () => {
@@ -40,7 +41,7 @@ export const withSplitBlocksOnBreak = (editor) => {
         ReactDOM.unstable_batchedUpdates(() => {
           const [top, bottom] = splitEditorInTwoFragments(editor);
           // ReactEditor.blur(editor);
-          createAndSelectNewBlockAfter(editor, bottom);
+          createAndSelectNewBlockAfter(editor, bottom, intl);
           setEditorContent(editor, top);
         });
       }

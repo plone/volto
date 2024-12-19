@@ -568,6 +568,52 @@ describe('Blocks', () => {
         marker: true,
       });
     });
+
+    it('initialValue with intl', () => {
+      // Mock intl with formatMessage function
+      const intl = {
+        formatMessage: jest.fn(({ id }) => id),
+      };
+
+      const messages = {
+        intl: {
+          id: 'intl',
+          defaultMessage: 'intl',
+        },
+      };
+
+      config.blocks.blocksConfig.text.initialValue = ({
+        id,
+        value,
+        formData,
+        intl,
+      }) => {
+        return {
+          ...formData.blocks[id],
+          intl: intl.formatMessage(messages.intl),
+        };
+      };
+      const [newId, form] = addBlock(
+        {
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        },
+        'text',
+        1,
+        config.blocks.blocksConfig,
+        intl,
+      );
+
+      delete config.blocks.blocksConfig.text.initialValue;
+
+      expect(form.blocks[newId]).toStrictEqual({
+        '@type': 'text',
+        booleanField: false,
+        description: 'Default description',
+        title: 'Default title',
+        intl: 'intl',
+      });
+    });
   });
 
   describe('moveBlock', () => {

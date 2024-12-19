@@ -135,6 +135,7 @@ const EditBlockWrapper = (props) => {
                         [id]: value || null,
                       },
                     },
+                    intl,
                   });
                   const newValue = newFormData[blocksFieldname][id];
                   onChangeBlock(id, newValue);
