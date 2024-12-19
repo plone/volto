@@ -112,10 +112,13 @@ export const customSelectStyles = {
   control: (styles, state) => ({
     ...styles,
     border: 'none',
-    borderBottom: '1px solid #c7d5d8',
-    boxShadow: 'none',
-    borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
+    borderBottom: `1px ${state.menuIsOpen ? 'dotted' : 'solid'} ${
+      state.isFocused ? '#339edc' : '#c7d5d8'
+    }`,
+    boxShadow: state.isFocused ? '0 2px 0 #339edc' : 'none',
     minHeight: '60px',
+    transition: 'all 0.2s ease-in-out',
+    outline: 'none',
   }),
   menu: (styles, state) => ({
     ...styles,
@@ -141,21 +144,21 @@ export const customSelectStyles = {
   }),
   option: (styles, state) => ({
     ...styles,
-    backgroundColor: null,
-    minHeight: '50px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '12px 12px',
+    backgroundColor: state.isFocused ? '#e5f4fb' : null,
     color: state.isSelected
       ? '#007bc1'
       : state.isDisabled
         ? '#b5b5b5'
         : state.isFocused
-          ? '#4a4a4a'
+          ? '#339edc'
           : 'inherit',
+    minHeight: '50px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '12px 12px',
     ':active': {
-      backgroundColor: null,
+      backgroundColor: state.isFocused ? '#e5f4fb' : null,
     },
     svg: {
       flex: '0 0 auto',
