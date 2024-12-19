@@ -1,1 +1,1 @@
-Fixed body class handling to prevent query string inclusion in is-adding-contenttype.@Abhishek-17h
+No longer add classes from the query string search text in the `body` tag. @Abhishek-17h
