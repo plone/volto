@@ -4658,7 +4658,7 @@ msgstr ""
 
 #. Default: "Path"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "filter by Path"
+msgid "Filter by path"
 msgstr ""
 
 #. Default: "Username"
