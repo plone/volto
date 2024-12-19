@@ -453,6 +453,7 @@ map(['Email', 'label_email'], (factory) => {
     method: (intl) => ({
       type: 'string',
       widget: 'email',
+      id: 'email',
       factory,
     }),
   });
@@ -1000,7 +1001,7 @@ class SchemaWidget extends Component {
       values.factory === 'label_multi_choice_field';
 
     const initialData = utility.method
-      ? utility.method(this.props.intl)
+      ? omit(utility.method(this.props.intl), ['id'])
       : {
           type: 'string',
           factory: values.factory,
@@ -1611,6 +1612,13 @@ class SchemaWidget extends Component {
         'generated',
       );
 
+    const utility = config.getUtility({
+      name: this.state.addField,
+      type: 'fieldFactoryInitialData',
+    });
+
+    const id = utility?.method ? utility.method(this.props.intl).id : undefined;
+
     return (
       <div>
         <Segment.Group
@@ -1757,6 +1765,7 @@ class SchemaWidget extends Component {
             formData={{
               factory:
                 find(choices, { value: 'label_text_field' }) || undefined,
+              id,
             }}
             schema={schemaField(
               this.state.addField,

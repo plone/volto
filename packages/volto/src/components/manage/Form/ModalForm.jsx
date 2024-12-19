@@ -221,6 +221,20 @@ class ModalForm extends Component {
         this.props.onChangeFormData(this.state.formData);
       }
     }
+    if (!isEqual(prevProps.formData, this.props.formData)) {
+      let newFormData = {};
+      map(keys(this.props.formData), (field) => {
+        if (!isEqual(prevProps.formData[field], this.props.formData[field])) {
+          newFormData[field] = this.props.formData[field];
+        }
+      });
+      this.setState({
+        formData: {
+          ...this.state.formData,
+          ...newFormData,
+        },
+      });
+    }
   }
 
   /**
