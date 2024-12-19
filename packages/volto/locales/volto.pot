@@ -4653,7 +4653,7 @@ msgstr ""
 
 #. Default: "Date"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "filter by Date"
+msgid "Filter by date"
 msgstr ""
 
 #. Default: "Path"
