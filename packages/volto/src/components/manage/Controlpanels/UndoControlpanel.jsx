@@ -113,11 +113,11 @@ const messages = defineMessages({
     defaultMessage: 'Successfully undone transactions',
   },
   transactionsHaveBeenFiltered: {
-    id: 'Transactions Have Been Filtered',
+    id: 'Transactions Have Been Sorted',
     defaultMessage: 'Transactions have been filtered',
   },
   transactionsHaveBeenUnfiltered: {
-    id: 'Transactions Have Been Unfiltered',
+    id: 'Transactions Have Been Unsorted',
     defaultMessage: 'Transactions have been unfiltered',
   },
   executeUndo: {

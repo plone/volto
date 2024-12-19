@@ -1324,12 +1324,12 @@ msgstr "Enddatum"
 
 #. Default: "Enter Date and time"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Enter Date"
+msgid "Enter Date and time to filter"
 msgstr ""
 
-#. Default: "Enter Path"
+#. Default: "Will display transactions from start of selected day, until time selected"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Enter Path"
+msgid "Enter Date description filter"
 msgstr ""
 
 #. Default: "Enter URL or select an item"
@@ -1339,7 +1339,7 @@ msgstr "URL eingeben oder Objekt auswählen"
 
 #. Default: "Enter Username"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Enter Username"
+msgid "Enter Username to filter"
 msgstr ""
 
 #. Default: "Enter a username above to search or click 'Show All'"
@@ -1361,6 +1361,11 @@ msgstr "Tragen Sie bitte Ihren vollen Namen ein."
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter map Embed Code"
 msgstr "Karten-Einbettungscode eingeben"
+
+#. Default: "Enter Path"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter path to filter"
+msgstr ""
 
 #. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
 #: components/manage/Controlpanels/Aliases
@@ -2420,11 +2425,6 @@ msgstr "Nachricht"
 msgid "News item view"
 msgstr "Nachricht"
 
-#. Default: "Next page"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Next page"
-msgstr ""
-
 #. Default: "No"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
@@ -2795,11 +2795,6 @@ msgstr "Einstellungen"
 msgid "Prettify your code"
 msgstr "Quellcode aufräumen"
 
-#. Default: "Previous page"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Prev page"
-msgstr ""
-
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
@@ -3020,6 +3015,11 @@ msgstr "Bestehende Datei ersetzen"
 #: components/theme/Comments/Comments
 msgid "Reply"
 msgstr "Antworten"
+
+#. Default: "OP"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Request type"
+msgstr ""
 
 #. Default: "Required"
 #: components/manage/Widgets/SchemaWidget
@@ -3275,6 +3275,11 @@ msgstr "Auswählen"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
 msgstr "Wählen Sie ein Datum um ein wiederkehrendes Datum einzustellen"
+
+#. Default: "Select all"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Select all"
+msgstr ""
 
 #. Default: "Select columns to show"
 #: components/manage/Contents/Contents
@@ -3955,19 +3960,14 @@ msgstr "Anzahl aller Objekte in der Datenbank"
 msgid "Transactions"
 msgstr "Transaktionen"
 
-#. Default: "#"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Checkbox"
-msgstr "auswählen"
-
 #. Default: "Transactions have been filtered"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Have Been Filtered"
+msgid "Transactions Have Been Sorted"
 msgstr ""
 
 #. Default: "Transactions have been unfiltered"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Have Been Unfiltered"
+msgid "Transactions Have Been Unsorted"
 msgstr ""
 
 #. Default: "Translate to {lang}"
@@ -5210,6 +5210,11 @@ msgstr "{id} Inhaltstyp"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} Schema"
+
+#. Default: "{n_transactions} transactions selected."
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "{n_transactions} transactions selected."
+msgstr ""
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions

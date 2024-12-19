@@ -1319,13 +1319,13 @@ msgstr "Data di fine"
 
 #. Default: "Enter Date and time"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Enter Date"
-msgstr "Inserisci data e ora"
+msgid "Enter Date and time to filter"
+msgstr "Inserisci data e ora per filtrare"
 
-#. Default: "Enter Path"
+#. Default: "Will display transactions from start of selected day, until time selected"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Enter Path"
-msgstr "Inserisci un path"
+msgid "Enter Date description filter"
+msgstr "Verranno mostrate le transazioni dall'inizio del giorno selezionato, fino all'ora selezionata"
 
 #. Default: "Enter URL or select an item"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
@@ -1334,8 +1334,8 @@ msgstr "Inserisci un URL o seleziona un elemento"
 
 #. Default: "Enter Username"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Enter Username"
-msgstr "Inserisci uno Nome utente"
+msgid "Enter Username to filter"
+msgstr "Inserisci uno username"
 
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
@@ -1356,6 +1356,11 @@ msgstr "Inserisci il tuo nome completo, ad esempio Mario Rossi."
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter map Embed Code"
 msgstr "Inserisci il codice di incorporamento della mappa"
+
+#. Default: "Enter Path"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter path to filter"
+msgstr "Inserisci un path da trovare"
 
 #. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
 #: components/manage/Controlpanels/Aliases
@@ -2415,11 +2420,6 @@ msgstr "Notizia"
 msgid "News item view"
 msgstr "Vista notizia"
 
-#. Default: "Next page"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Next page"
-msgstr "Pagina successiva"
-
 #. Default: "No"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
@@ -2790,11 +2790,6 @@ msgstr "Preferenze"
 msgid "Prettify your code"
 msgstr "Formatta il tuo codice"
 
-#. Default: "Previous page"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Prev page"
-msgstr "Pagina precedente"
-
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
@@ -3015,6 +3010,11 @@ msgstr "Sostituisci file esistente"
 #: components/theme/Comments/Comments
 msgid "Reply"
 msgstr "Rispondi"
+
+#. Default: "OP"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Request type"
+msgstr "OP"
 
 #. Default: "Required"
 #: components/manage/Widgets/SchemaWidget
@@ -3270,6 +3270,11 @@ msgstr "Seleziona"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
 msgstr "Seleziona una data da aggiungere alla ricorrenza"
+
+#. Default: "Select all"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Select all"
+msgstr "Seleziona tutti"
 
 #. Default: "Select columns to show"
 #: components/manage/Contents/Contents
@@ -3950,20 +3955,15 @@ msgstr "Numero totale di oggetti nel database"
 msgid "Transactions"
 msgstr "Transazioni"
 
-#. Default: "#"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Checkbox"
-msgstr "Checkbox transazioni"
-
 #. Default: "Transactions have been filtered"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Have Been Filtered"
+msgid "Transactions Have Been Sorted"
 msgstr "Le transazioni sono state filtrate"
 
 #. Default: "Transactions have been unfiltered"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Have Been Unfiltered"
-msgstr "Sono stati rimossi i filtri sulle transazioni"
+msgid "Transactions Have Been Unsorted"
+msgstr "Rimossi i filtri sulle transazioni"
 
 #. Default: "Translate to {lang}"
 #: components/manage/Add/Add
@@ -5205,6 +5205,11 @@ msgstr "{id} Tipo di Contenuto"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} Schema"
+
+#. Default: "{n_transactions} transactions selected."
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "{n_transactions} transactions selected."
+msgstr "{n_transactions} transazioni selezionate."
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions

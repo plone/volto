@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-12-17T14:08:35.947Z\n"
+"POT-Creation-Date: 2024-12-19T11:36:07.708Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1326,7 +1326,7 @@ msgstr ""
 
 #. Default: "Enter path"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Enter Path"
+msgid "Enter Date description filter"
 msgstr ""
 
 #. Default: "Enter URL or select an item"
@@ -1336,7 +1336,7 @@ msgstr ""
 
 #. Default: "Enter username"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Enter Username"
+msgid "Enter Username to filter"
 msgstr ""
 
 #. Default: "Enter a username above to search or click 'Show All'"
@@ -1357,6 +1357,11 @@ msgstr ""
 #. Default: "Enter map Embed Code"
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter map Embed Code"
+msgstr ""
+
+#. Default: "Enter Path"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter path to filter"
 msgstr ""
 
 #. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
@@ -2417,11 +2422,6 @@ msgstr ""
 msgid "News item view"
 msgstr ""
 
-#. Default: "Next page"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Next page"
-msgstr ""
-
 #. Default: "No"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
@@ -3018,6 +3018,11 @@ msgstr ""
 msgid "Reply"
 msgstr ""
 
+#. Default: "OP"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Request type"
+msgstr ""
+
 #. Default: "Required"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -3271,6 +3276,11 @@ msgstr ""
 #. Default: "Select a date to add to recurrence"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
+msgstr ""
+
+#. Default: "Select all"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Select all"
 msgstr ""
 
 #. Default: "Select columns to show"
@@ -3952,19 +3962,14 @@ msgstr ""
 msgid "Transactions"
 msgstr ""
 
-#. Default: "#"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Checkbox"
-msgstr ""
-
 #. Default: "Transactions have been filtered"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Have Been Filtered"
+msgid "Transactions Have Been Sorted"
 msgstr ""
 
 #. Default: "Transactions have been unfiltered"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Have Been Unfiltered"
+msgid "Transactions Have Been Unsorted"
 msgstr ""
 
 #. Default: "Translate to {lang}"
@@ -5206,6 +5211,11 @@ msgstr ""
 #. Default: "{id} Schema"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
+msgstr ""
+
+#. Default: "{n_transactions} transactions selected."
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "{n_transactions} transactions selected."
 msgstr ""
 
 #. Default: "{title} copied."

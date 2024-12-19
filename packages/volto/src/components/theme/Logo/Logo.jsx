@@ -46,7 +46,7 @@ const Logo = () => {
 
   return (
     <Link to={navRootPath} aria-label={intl.formatMessage(messages.home)}>
-      {/* <Image
+      <Image
         src={
           site['plone.site_logo']
             ? flattenToAppURL(site['plone.site_logo'])
@@ -55,7 +55,7 @@ const Logo = () => {
         alt={
           intl.formatMessage(messages.logoOf) + ' ' + site['plone.site_title']
         }
-      /> */}
+      />
     </Link>
   );
 };
