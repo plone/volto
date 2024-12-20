@@ -88,5 +88,5 @@ If the image is rendered at full viewport width when the viewport is less than `
 
 More information on this subject can be found at the following resources.
 
-- https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Responsive_images
 - https://www.builder.io/blog/fast-images
