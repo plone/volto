@@ -178,6 +178,14 @@ let config = {
       includeSiteTitle: false,
       titleAndSiteTitleSeparator: '-',
     },
+    cssLayers: [
+      'reset',
+      'semanticUI',
+      'plone-components',
+      'layout',
+      'addons',
+      'theme',
+    ],
   },
   experimental: {
     addBlockButton: {

@@ -30,6 +30,9 @@
   "coreAddons": {
     "volto-slate": {
       "package": "@plone/volto-slate"
+    },
+    "cmsui": {
+      "package": "@plone/cmsui"
     }
   },
   "main": "src/index.js",
@@ -179,6 +182,7 @@
   "dependencies": {
     "@loadable/component": "5.14.1",
     "@loadable/server": "5.14.0",
+    "@plone/cmsui": "workspace:*",
     "@plone/registry": "workspace:*",
     "@plone/scripts": "workspace:*",
     "@plone/volto-slate": "workspace:*",
