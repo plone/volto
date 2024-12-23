@@ -6,9 +6,9 @@ Add checkbox group widget. @robgietema
 Add taken slugs to slugify helper. @robgietema
 Add filter choices, additional choices and sort to select widget. @robgietema
 Add max size and accept type checks to file widget. @robgietema
-Fix bug with pressing enter in blocks form. @robgietema
-Add option to pass custom widget config to field component. @robgietema
-Add optional widgets config to form component. @robgietema
+Fix bug with pressing enter in blocks form that events gets bubbled from modal to blocks area. @robgietema
+Add option to pass custom widget `config` to field component. @robgietema
+Add optional widgets `config` to form component. @robgietema
 Add option to override the form component and the buttons in the form component. @robgietema
 Add option to override cancel label in form. @robgietema
 Add option to choose bewteen icon and text buttons in the form component. @robgietema

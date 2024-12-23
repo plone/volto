@@ -7,16 +7,22 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { filter, includes, map, without } from 'lodash';
+import filter from 'lodash/filter';
+import includes from 'lodash/includes';
+import map from 'lodash/map';
+import without from 'lodash/without';
 import { injectIntl } from 'react-intl';
 import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Vocabularies/Vocabularies';
 import { Checkbox } from 'semantic-ui-react';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
+import {
+  getVocabulary,
+  getVocabularyTokenTitle,
+} from '@plone/volto/actions/vocabularies/vocabularies';
 
 /**
  * CheckboxGroupWidget component class.
