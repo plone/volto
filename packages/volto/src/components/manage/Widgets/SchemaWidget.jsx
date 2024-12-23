@@ -22,7 +22,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { slugify } from '@plone/volto/helpers/Utils/Utils';
-import { getVocabulary } from '@plone/volto/actions';
+import { getVocabulary } from '@plone/volto/actions/vocabularies/vocabularies';
 
 import SchemaWidgetFieldset from '@plone/volto/components/manage/Widgets/SchemaWidgetFieldset';
 import { Field, ModalForm } from '@plone/volto/components/manage/Form';
@@ -1498,7 +1498,10 @@ class SchemaWidget extends Component {
     if (!this.props.value) {
       return '';
     }
-    const choices = [...this.props.fields, ...this.props.additionalFactory];
+    const choices = [
+      ...this.props.fields,
+      ...(this.props.additionalFactory || []),
+    ];
     let editFieldType = '';
     if (this.state.editField) {
       let factory =
