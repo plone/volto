@@ -17,6 +17,19 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.20.3 (2024-12-12)
+
+### Bugfix
+
+- Added missing translation in Table of Contents block and added missing Italian translations. @pnicolli [#6533](https://github.com/plone/volto/issues/6533)
+
+## 17.20.2 (2024-12-11)
+
+### Bugfix
+
+- Fixes ICS download in non-public event content. @sneridagh [#6497](https://github.com/plone/volto/issues/6497)
+- improved Contents delete modal and linkintegrity check. @giuliaghisini [#6517](https://github.com/plone/volto/issues/6517)
+
 ## 17.20.1 (2024-10-30)
 
 ### Bugfix
