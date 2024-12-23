@@ -1646,6 +1646,11 @@ msgstr ""
 msgid "Hide Replies"
 msgstr "隐藏回复"
 
+#. Default: "Hide blocks from page preview"
+#: components/manage/Form/ShowHideBlocksToolbar
+msgid "Hide blocks from page preview"
+msgstr ""
+
 #. Default: "Hide facet?"
 #: components/manage/Blocks/Search/schema
 msgid "Hide facet?"
@@ -3240,6 +3245,11 @@ msgstr "显示全部"
 msgid "Show Replies"
 msgstr "显示回复"
 
+#. Default: "Show blocks from page preview"
+#: components/manage/Form/ShowHideBlocksToolbar
+msgid "Show blocks from page preview"
+msgstr ""
+
 #. Default: "Show filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Show filters"
@@ -4521,6 +4531,11 @@ msgstr "密码重置确认邮件已发送"
 msgid "hero"
 msgstr ""
 
+#. Default: "hide"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "hide"
+msgstr ""
+
 #. Default: "HTML"
 #: config/Blocks
 msgid "html"
@@ -4889,6 +4904,11 @@ msgstr ""
 #: components/manage/Blocks/Search/components/ViewSwitcher
 msgid "selectView"
 msgstr "选择视图"
+
+#. Default: "show"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "show"
+msgstr ""
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks

@@ -1645,6 +1645,11 @@ msgstr "Versteckte Facetten können die Ergebnisse weiterhin filtern, wenn die e
 msgid "Hide Replies"
 msgstr "Antworten ausblenden"
 
+#. Default: "Hide blocks from page preview"
+#: components/manage/Form/ShowHideBlocksToolbar
+msgid "Hide blocks from page preview"
+msgstr ""
+
 #. Default: "Hide facet?"
 #: components/manage/Blocks/Search/schema
 msgid "Hide facet?"
@@ -3239,6 +3244,11 @@ msgstr "Alle anzeigen"
 msgid "Show Replies"
 msgstr "Antworten anzeigen"
 
+#. Default: "Show blocks from page preview"
+#: components/manage/Form/ShowHideBlocksToolbar
+msgid "Show blocks from page preview"
+msgstr ""
+
 #. Default: "Show filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Show filters"
@@ -4520,6 +4530,11 @@ msgstr "Bestätigung für das Zurücksetzen des Passwortes wurde gesendet!"
 msgid "hero"
 msgstr "Hero"
 
+#. Default: "hide"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "hide"
+msgstr ""
+
 #. Default: "HTML"
 #: config/Blocks
 msgid "html"
@@ -4888,6 +4903,11 @@ msgstr "Auswählen"
 #: components/manage/Blocks/Search/components/ViewSwitcher
 msgid "selectView"
 msgstr "Ansicht wählen"
+
+#. Default: "show"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "show"
+msgstr ""
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks

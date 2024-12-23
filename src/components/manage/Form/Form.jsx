@@ -44,7 +44,11 @@ import {
 } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
-import { BlocksToolbar, UndoToolbar } from '@plone/volto/components';
+import {
+  BlocksToolbar,
+  UndoToolbar,
+  ShowHideBlocksToolbar,
+} from '@plone/volto/components';
 import {
   setMetadataFieldsets,
   resetMetadataFocus,
@@ -662,6 +666,21 @@ class Form extends Component {
               this.setState({ multiSelected: blockIds })
             }
             onSelectBlock={this.onSelectBlock}
+          />
+          <ShowHideBlocksToolbar
+            formData={formData}
+            onChangeBlocks={(newBlockData) => {
+              const newFormData = {
+                ...formData,
+                ...newBlockData,
+              };
+              this.setState({
+                formData: newFormData,
+              });
+              if (this.props.global) {
+                this.props.setFormData(newFormData);
+              }
+            }}
           />
           <UndoToolbar
             state={{

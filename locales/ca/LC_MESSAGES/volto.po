@@ -1646,6 +1646,11 @@ msgstr "Les facetes ocultes encara filtraran els resultats si es passen els par√
 msgid "Hide Replies"
 msgstr "Amaga les respostes"
 
+#. Default: "Hide blocks from page preview"
+#: components/manage/Form/ShowHideBlocksToolbar
+msgid "Hide blocks from page preview"
+msgstr ""
+
 #. Default: "Hide facet?"
 #: components/manage/Blocks/Search/schema
 msgid "Hide facet?"
@@ -3240,6 +3245,11 @@ msgstr "Mostrar tots"
 msgid "Show Replies"
 msgstr "Mostra les respostes"
 
+#. Default: "Show blocks from page preview"
+#: components/manage/Form/ShowHideBlocksToolbar
+msgid "Show blocks from page preview"
+msgstr ""
+
 #. Default: "Show filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Show filters"
@@ -4521,6 +4531,11 @@ msgstr "S'ha enviat la confirmaci√≥ de restabliment de la contrasenya"
 msgid "hero"
 msgstr "Heroi"
 
+#. Default: "hide"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "hide"
+msgstr ""
+
 #. Default: "HTML"
 #: config/Blocks
 msgid "html"
@@ -4888,6 +4903,11 @@ msgstr ""
 #. Default: "Select view"
 #: components/manage/Blocks/Search/components/ViewSwitcher
 msgid "selectView"
+msgstr ""
+
+#. Default: "show"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "show"
 msgstr ""
 
 #. Default: "Skip to footer"

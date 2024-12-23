@@ -1647,6 +1647,11 @@ msgstr "Ezkutatutako fazetek emaitzak filtratzen dituzte parametro egokiak URLan
 msgid "Hide Replies"
 msgstr "Ezkutatu erantzunak"
 
+#. Default: "Hide blocks from page preview"
+#: components/manage/Form/ShowHideBlocksToolbar
+msgid "Hide blocks from page preview"
+msgstr ""
+
 #. Default: "Hide facet?"
 #: components/manage/Blocks/Search/schema
 msgid "Hide facet?"
@@ -3241,6 +3246,11 @@ msgstr "Erakutsi guztiak"
 msgid "Show Replies"
 msgstr "Erakutsi erantzunak"
 
+#. Default: "Show blocks from page preview"
+#: components/manage/Form/ShowHideBlocksToolbar
+msgid "Show blocks from page preview"
+msgstr ""
+
 #. Default: "Show filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Show filters"
@@ -4522,6 +4532,11 @@ msgstr "Pasahitza aldatzeko eskaera bidalia"
 msgid "hero"
 msgstr "Hero"
 
+#. Default: "hide"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "hide"
+msgstr ""
+
 #. Default: "HTML"
 #: config/Blocks
 msgid "html"
@@ -4890,6 +4905,11 @@ msgstr "Aukeraketa laukia"
 #: components/manage/Blocks/Search/components/ViewSwitcher
 msgid "selectView"
 msgstr "Aukeratu bista"
+
+#. Default: "show"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "show"
+msgstr ""
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks

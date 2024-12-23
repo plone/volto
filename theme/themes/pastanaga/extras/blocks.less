@@ -51,6 +51,33 @@
   }
 }
 
+.block .block.hidden {
+  opacity: 0.6;
+
+  &::before {
+    border-style: dashed;
+  }
+
+  &.collapsed {
+    position: relative;
+    overflow: hidden;
+    height: 17px;
+    padding-top: 17px;
+    border-top: 1px dashed rgba(120, 192, 215, 0.75);
+
+    &::after {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      color: rgb(120, 192, 215);
+      content: '\e912';
+      font-family: 'Icons';
+      font-size: 22px;
+      transform: rotate(180deg);
+    }
+  }
+}
+
 .block .block:hover::before {
   border-color: rgba(120, 192, 215, 0.375);
 }
@@ -573,6 +600,24 @@ div.image-upload-widget-image {
   }
 }
 
+.block .ui.basic.button.hide-show-button {
+  position: absolute;
+  top: -18px;
+  right: calc(50% - (26px / 2));
+  display: flex;
+  width: 26px;
+  justify-content: center;
+  margin-right: 0;
+  background-color: white !important;
+
+  &:hover,
+  &:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #e40166 !important;
+  }
+}
+
 // .ui.basic.button.block-delete-button {
 //   top: 22px;
 //   right: 0;
@@ -826,11 +871,13 @@ div.image-upload-widget-image {
     // reseting the default Accordion behavior
     display: initial;
   }
+
   .ui.form .ui.input input {
     padding-left: 5px;
     //reset for semantic-ui outline:none
     border-width: @1px;
     border-color: transparent;
+
     &:focus {
       border-color: @focusedFormBorderColor;
     }

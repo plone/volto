@@ -15,11 +15,21 @@ import config from '@plone/volto/registry';
 import { BlockChooserButton } from '@plone/volto/components';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
+import hideSVG from '@plone/volto/icons/hide.svg';
+import showSVG from '@plone/volto/icons/show.svg';
 
 const messages = defineMessages({
   delete: {
     id: 'delete',
     defaultMessage: 'delete',
+  },
+  show: {
+    id: 'show',
+    defaultMessage: 'show',
+  },
+  hide: {
+    id: 'hide',
+    defaultMessage: 'hide',
   },
 });
 
@@ -92,15 +102,34 @@ const EditBlockWrapper = (props) => {
         <div className={`ui drag block inner ${type}`}>
           {children}
           {selected && !required && editable && (
-            <Button
-              icon
-              basic
-              onClick={() => onDeleteBlock(block, true)}
-              className="delete-button"
-              aria-label={intl.formatMessage(messages.delete)}
-            >
-              <Icon name={trashSVG} size="18px" />
-            </Button>
+            <>
+              <Button
+                icon
+                basic
+                color={!data.hidden ? 'grey' : 'red'}
+                onClick={() =>
+                  onChangeBlock(block, {
+                    ...data,
+                    hidden: !data.hidden,
+                  })
+                }
+                className="hide-show-button"
+                aria-label={intl.formatMessage(
+                  !data.hidden ? messages.hide : messages.show,
+                )}
+              >
+                <Icon name={!data.hidden ? hideSVG : showSVG} size="18px" />
+              </Button>
+              <Button
+                icon
+                basic
+                onClick={() => onDeleteBlock(block, true)}
+                className="delete-button"
+                aria-label={intl.formatMessage(messages.delete)}
+              >
+                <Icon name={trashSVG} size="18px" />
+              </Button>
+            </>
           )}
           {config.experimental.addBlockButton.enabled && showBlockChooser && (
             <BlockChooserButton
