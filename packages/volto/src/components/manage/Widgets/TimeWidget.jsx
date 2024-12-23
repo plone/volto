@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
 import loadable from '@loadable/component';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import { toBackendLang } from '@plone/volto/helpers';
+import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import clearSVG from '@plone/volto/icons/clear.svg';

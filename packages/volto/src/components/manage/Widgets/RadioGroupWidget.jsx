@@ -7,16 +7,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { filter, map } from 'lodash';
+import filter from 'lodash/filter';
+import map from 'lodash/map';
 import { injectIntl } from 'react-intl';
 import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Vocabularies/Vocabularies.js';
 import { Radio } from 'semantic-ui-react';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
+import {
+  getVocabulary,
+  getVocabularyTokenTitle,
+} from '@plone/volto/actions/vocabularies/vocabularies';
 
 /**
  * RadioGroupWidget component class.
