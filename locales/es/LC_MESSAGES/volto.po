@@ -230,11 +230,6 @@ msgstr "Agregar {type}"
 msgid "Add-Ons"
 msgstr "Complementos"
 
-#. Default: "Add-on Configuration"
-#: components/manage/Controlpanels/Controlpanels
-msgid "Add-on Configuration"
-msgstr "Configuración de Complementos"
-
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons"
@@ -532,6 +527,7 @@ msgstr "No se puede editar la plantilla de <strong>{type}</strong> porque el sop
 
 #. Default: "Cancel"
 #: components/manage/Add/Add
+#: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -1013,12 +1009,12 @@ msgid "Delete row"
 msgstr "Eliminar fila"
 
 #. Default: "Delete selected items?"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Delete selected items?"
 msgstr "¿Eliminar elementos seleccionados?"
 
 #. Default: "Delete this item?"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Delete this item?"
 msgstr "¿Eliminar este elemento?"
 
@@ -1028,7 +1024,7 @@ msgid "Deleted"
 msgstr "Eliminado"
 
 #. Default: "Deleting this item breaks {brokenReferences} {variation}."
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item breaks {brokenReferences} {variation}."
 msgstr ""
 
@@ -2261,6 +2257,11 @@ msgstr "Filtrar"
 msgid "Navigate back"
 msgstr "Navegar hacia atrás"
 
+#. Default: "Navigate to this item"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "Navigate to this item"
+msgstr ""
+
 #. Default: "Navigation"
 #: components/theme/Navigation/ContextNavigation
 msgid "Navigation"
@@ -3132,6 +3133,11 @@ msgstr "Seleccionar columnas a mostrar"
 msgid "Select relation"
 msgstr "Seleccionar relación"
 
+#. Default: "Select rule"
+#: components/manage/Rules/Rules
+msgid "Select rule"
+msgstr ""
+
 #. Default: "Select the transition to be used for modifying the items state."
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
@@ -3329,12 +3335,12 @@ msgid "Small"
 msgstr "Pequeño"
 
 #. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
 msgstr ""
 
 #. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
 msgstr "Algunos elementos están referenciados por otros contenidos. Al eliminarlos, {brokenReferences} {variation} se romperá."
 
@@ -3510,6 +3516,7 @@ msgstr "Tabla"
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/variations/DefaultTocRenderer
 #: components/manage/Blocks/ToC/variations/HorizontalMenu
+#: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
 msgstr "Tabla de contenidos"
 
@@ -3694,6 +3701,11 @@ msgstr "Ha habido algunos errores"
 msgid "There were some errors."
 msgstr "Hay algunos errores."
 
+#. Default: "These items will have broken links"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "These items will have broken links"
+msgstr ""
+
 #. Default: "Third"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
@@ -3715,7 +3727,7 @@ msgid "This is a working copy of {title}"
 msgstr "Es una copia de trabajo de {title}"
 
 #. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
 msgstr ""
 
@@ -4096,11 +4108,6 @@ msgstr "Nombre de usuario"
 msgid "Users"
 msgstr "Usuarios"
 
-#. Default: "Users and Groups"
-#: components/manage/Controlpanels/Controlpanels
-msgid "Users and Groups"
-msgstr "Usuarios y Grupos"
-
 #. Default: "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
 #: components/manage/Aliases/Aliases
 msgid "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
@@ -4139,7 +4146,7 @@ msgid "View changes"
 msgstr "Mostrar los cambios"
 
 #. Default: "View links and references to this item"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "View links and references to this item"
 msgstr ""
 
@@ -4553,12 +4560,12 @@ msgid "intranet"
 msgstr "Intranet"
 
 #. Default: "item"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "item"
 msgstr "elemento"
 
 #. Default: "items"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "items"
 msgstr "elementos"
 
@@ -4576,6 +4583,21 @@ msgstr "Mi nombre de usuario es"
 #: config/Blocks
 msgid "leadimage"
 msgstr "Imagen Principal"
+
+#. Default: "Delete"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "link-integrity: Delete"
+msgstr ""
+
+#. Default: "Delete item and break links"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "link-integrity: Delete item and break links"
+msgstr ""
+
+#. Default: "Checking references..."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "link-integrity: loading references"
+msgstr ""
 
 #. Default: "Enter a URL to an image"
 #: components/manage/Widgets/ImageWidget
@@ -4702,14 +4724,19 @@ msgid "rebuild relations"
 msgstr "reconstruir relaciones"
 
 #. Default: "reference"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "reference"
 msgstr "referencia"
 
 #. Default: "references"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "references"
 msgstr "referencias"
+
+#. Default: "refers to"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "refers to"
+msgstr ""
 
 #. Default: "results"
 #: components/theme/Search/Search

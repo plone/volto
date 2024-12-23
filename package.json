@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "17.18.2",
+  "version": "17.20.3",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -206,6 +206,9 @@
       "release": true,
       "releaseName": "${version}",
       "releaseNotes": "cat .changelog.draft"
+    },
+    "npm": {
+      "tag": "legacy-17"
     }
   },
   "lint-staged": {

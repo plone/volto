@@ -27,6 +27,7 @@ TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 # Sphinx variables
 # You can set these variables from the command line.
 SPHINXOPTS      ?=
+VALEOPTS        ?=
 # Internal variables.
 SPHINXBUILD     = $(realpath bin/sphinx-build)
 SPHINXAUTOBUILD = $(realpath bin/sphinx-autobuild)
@@ -149,7 +150,7 @@ docs-linkcheckbroken: bin/python  ## Run linkcheck and show only broken links
 .PHONY: docs-vale
 docs-vale:  ## Run Vale style, grammar, and spell checks
 	vale sync
-	vale --no-wrap $(VALEFILES)
+	vale --no-wrap $(VALEOPTS) $(VALEFILES)
 	@echo
 	@echo "Vale is finished; look for any errors in the above output."
 
@@ -192,7 +193,7 @@ start-frontend-docker:
 
 .PHONY: start-backend-docker-guillotina
 start-backend-docker-guillotina:
-	docker-compose -f g-api/docker-compose.yml up -d
+	docker compose -f g-api/docker-compose.yml up -d
 
 ##### Acceptance tests (Cypress)
 
@@ -217,7 +218,7 @@ start-test-backend: ## Start Test Plone Backend (api folder)
 
 .PHONY: stop-backend-docker-guillotina
 stop-backend-docker-guillotina:
-	docker-compose -f g-api/docker-compose.yml down
+	docker compose -f g-api/docker-compose.yml down
 
 
 .PHONY: test-acceptance-server-old
@@ -264,7 +265,7 @@ test-acceptance-seamless: ## Start Seamless Cypress Acceptance Tests
 
 .PHONY: start-test-acceptance-webserver-seamless
 start-test-acceptance-webserver-seamless: ## Start the seamless webserver
-	cd cypress/docker && docker-compose -f seamless.yml up
+	cd cypress/docker && docker compose -f seamless.yml up
 
 .PHONY: full-test-acceptance-seamless
 full-test-acceptance-seamless: ## Runs Seamless Core Full Acceptance Testing in headless mode
@@ -374,7 +375,7 @@ full-test-acceptance-workingcopy: ## Runs WorkingCopy Full Acceptance Testing in
 
 .PHONY: start-test-acceptance-server-guillotina
 start-test-acceptance-server-guillotina: ## Start Guillotina Test Acceptance Server (docker container)
-	docker-compose -f g-api/docker-compose.yml up > /dev/null
+	docker compose -f g-api/docker-compose.yml up > /dev/null
 
 .PHONY: start-test-acceptance-frontend-guillotina
 start-test-acceptance-frontend-guillotina: ## Start the Guillotina Acceptance Frontend Fixture

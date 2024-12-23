@@ -408,6 +408,7 @@ class Add extends Component {
                       aria-label={this.props.intl.formatMessage(messages.save)}
                       onClick={() => this.form.current.onSubmit()}
                       loading={this.props.createRequest.loading}
+                      disabled={this.props.createRequest.loading}
                     >
                       <Icon
                         name={saveSVG}

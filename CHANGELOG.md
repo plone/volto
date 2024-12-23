@@ -17,6 +17,57 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.20.3 (2024-12-12)
+
+### Bugfix
+
+- Added missing translation in Table of Contents block and added missing Italian translations. @pnicolli [#6533](https://github.com/plone/volto/issues/6533)
+
+## 17.20.2 (2024-12-11)
+
+### Bugfix
+
+- Fixes ICS download in non-public event content. @sneridagh [#6497](https://github.com/plone/volto/issues/6497)
+- improved Contents delete modal and linkintegrity check. @giuliaghisini [#6517](https://github.com/plone/volto/issues/6517)
+
+## 17.20.1 (2024-10-30)
+
+### Bugfix
+
+- Fix error "Exception: No query supplied" in the listing block, when there is no criteria selected. @tedw87 [#3839](https://github.com/plone/volto/issues/3839)
+- Fix redirect after login if the `Login` component is used on a route other than `/login` or `/logout`. @dobri1408 [#6452](https://github.com/plone/volto/issues/6452)
+
+## 17.20.0 (2024-10-09)
+
+### Feature
+
+- Pass the `user`, `navRoot`, and `contentType` objects to the `restricted` function of the block settings. @wesleybl [#6264](https://github.com/plone/volto/issues/6264)
+- improve DiffField.jsx with better support for displaying HTML elements such as images @dobri1408 [#6384](https://github.com/plone/volto/issues/6384)
+
+### Documentation
+
+- Install Vale via pip, and pin to <3.0.0, allowing it to run locally and in CI without reconfiguration. @stevepiercy [#6377](https://github.com/plone/volto/issues/6377)
+
+## 17.19.0 (2024-10-03)
+
+### Feature
+
+- The schema for the `ContentsPropertiesModal` can be enhanced using the `contentPropertiesSchemaEnhancer` setting.
+  Also, the properties form is now prepopulated with values if all selected items share the same value. @davisagli [#6248](https://github.com/plone/volto/issues/6248)
+- Pass `errors` property to BlocksForm and Form. @sneridagh @tedw87 [#6331](https://github.com/plone/volto/issues/6331)
+
+### Bugfix
+
+- Fix search block showing no option select in sort on property @iRohitSingh [#5055](https://github.com/plone/volto/issues/5055)
+- Disable save button when loading POST query @sabrina-bongiovanni [#6250](https://github.com/plone/volto/issues/6250)
+- Fix error in `SortOn` component when no sort is selected. @davisagli [#6273](https://github.com/plone/volto/issues/6273)
+- Fix the toolbar handler color for the homepage to match its "published" state. @sabrina-bongiovanni [#6294](https://github.com/plone/volto/issues/6294)
+- Fix internalUrl Widget to Reflect Prop Changes via onChangeBlock @dobri1408 @ichim-david @tedw87 [#6305](https://github.com/plone/volto/issues/6305)
+
+### Internal
+
+- Bump actions/upload-artifact to v4 and replace `docker-compose` with `docker compose`. @stevepiercy, @davisagli [#6253](https://github.com/plone/volto/issues/6253)
+
 ## 17.18.2 (2024-07-10)
 
 ### Bugfix
