@@ -1,7 +1,7 @@
 @import './Checkbox.css';
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   .react-aria-ListBox {
     display: flex;
     overflow: auto;

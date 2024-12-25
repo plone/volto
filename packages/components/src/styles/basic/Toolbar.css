@@ -4,7 +4,7 @@
 @import './Menu.css';
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   .react-aria-Toolbar {
     display: flex;
     flex-wrap: wrap;

@@ -42,32 +42,35 @@ The workspaces are located in the `packages` or `apps` folder.
 ### Folder layout
 
 Volto has the following folder structure.
+The package `volto` is the core code of Volto.
 
 ```text
-(volto-monorepo)/
+/
 ├─ apps/
-│  ├─ plone
 │  ├─ nextjs
 │  ├─ remix
-│  └─ rr7
+│  ├─ rr7
+│  ├─ vite
+│  └─ vite-ssr
+├─ ...
 ├─ packages/
-│  ├─ volto
+│  ├─ blocks
 │  ├─ client
 │  ├─ components
-│  ├─ registry
-│  ├─ types
 │  ├─ coresandbox
 │  ├─ generator-volto
+│  ├─ helpers
+│  ├─ providers
+│  ├─ registry
 │  ├─ scripts
+│  ├─ slots
+│  ├─ theming
 │  ├─ tsconfig
+│  ├─ types
+│  ├─ volto
 │  ├─ volto-guillotina
 │  ├─ volto-slate
 │  └─ volto-testing
-├─ .gitignore
-├─ package.json
-├─ pnpm-workspace.yaml
-├─ turbo.json
-├─ tsconfig.json
 ├─ ...
 ```
 

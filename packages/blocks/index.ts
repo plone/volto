@@ -1,4 +1,4 @@
-import { ConfigType } from '@plone/registry';
+import type { ConfigType } from '@plone/registry';
 import { slate } from './config/slate';
 import { blocksConfig } from './config';
 

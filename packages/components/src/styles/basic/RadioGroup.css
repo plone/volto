@@ -2,7 +2,7 @@
 @import './Form.css';
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   .react-aria-RadioGroup {
     display: flex;
     flex-direction: column;

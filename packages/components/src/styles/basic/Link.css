@@ -1,6 +1,6 @@
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   .react-aria-Link {
     position: relative;
     color: var(--link-color);

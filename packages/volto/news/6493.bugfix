@@ -1,0 +1,1 @@
+No longer add classes from the query string search text in the `body` tag. @Abhishek-17h

@@ -5,16 +5,17 @@ import { Meta } from '@storybook/blocks';
 
 # `@plone/components`
 
-This package contains ReactJS components for using Plone as a headless CMS.
+This package contains ReactJS components for Plone 7 and Plone's API-first CMS story.
 
 The purpose of this package is to provide an agnostic set of baseline components to build Plone sites upon.
 
 ## Usage
 
-Using the package manager of your choice (npm, yarn, pnpm) install the package:
+You can use your choice of package manager (npm, yarn, or pnpm) to install the package in your app.
+If you add the components to a Volto add-on or workspace, use pnpm, as shown.
 
 ```shell
-yarn add @plone/components
+pnpm add @plone/components
 ```
 
 Whenever you want to use the components, all are exported as named exports:
@@ -53,12 +54,19 @@ or selectively:
 import '@plone/components/src/styles/basic/TextField.css';
 ```
 
+### CSS layers
 
-## Quanta
+This package uses CSS layers to style the components in a more flexible way.
+It uses the `plone-components` layer name to scope all the CSS declarations in the package.
+The basic styling uses the nested `plone-components.base` named layer.
+You can use the `plone-components` layer to override the basic styling, or use the `plone-components.base` layer to override the basic styling in a more specific way.
+
+### Quanta
 
 This package also features the Quanta components.
-The Quanta theme is an example of it.
-These components use the basic styling as a baseline, not only in styling, but also in the component side, reusing the CSS and custom CSS properties in it.
+These components use the basic styling as a baseline, extending them to achieve the Quanta look and feel.
+They also extend the basic React components in a composable way.
+The Quanta styling is scoped in the `plone-components.quanta` named layer.
 
 Quanta is built upon the basic styles in an additive way.
 The use of the Quanta CSS implies using it upon basic styling.

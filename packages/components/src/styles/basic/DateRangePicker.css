@@ -6,7 +6,7 @@
 @import './Form.css';
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   .react-aria-DateRangePicker {
     color: var(--text-color);
 
