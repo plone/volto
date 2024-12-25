@@ -157,3 +157,82 @@ exports[`PersonalInformation renders a personal information component embedded i
   </form>
 </div>
 `;
+
+exports[`PersonalInformation renders a personal information component embedded in the Toolbar 2`] = `
+<div
+  className="ui container"
+>
+  <form
+    className="ui form"
+    method="post"
+    onSubmit={[Function]}
+  >
+    <fieldset
+      className="invisible"
+    >
+      <div
+        className="ui raised segments"
+      >
+        <div
+          className="ui segment"
+        />
+        <div
+          className="ui clearing segment actions"
+        >
+          <button
+            aria-label="Save"
+            className="ui basic primary right floated button"
+            onClick={[Function]}
+            title="Save"
+            type="submit"
+          >
+            <svg
+              className="icon circled"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "30px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+          <button
+            aria-label="Cancel"
+            className="ui basic secondary right floated button"
+            onClick={[Function]}
+            title="Cancel"
+          >
+            <svg
+              className="icon circled"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "30px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+`;
