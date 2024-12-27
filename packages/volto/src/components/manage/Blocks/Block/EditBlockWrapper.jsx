@@ -17,6 +17,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 import BlockChooserButton from '@plone/volto/components/manage/BlockChooser/BlockChooserButton';
+import { hideHandler } from '@plone/volto/helpers/Blocks/Blocks';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
 
@@ -28,14 +29,6 @@ const messages = defineMessages({
 });
 
 const EditBlockWrapper = (props) => {
-  const hideHandler = (data) => {
-    return (
-      !!data.fixed ||
-      (!config.experimental.addBlockButton.enabled &&
-        !(blockHasValue(data) && props.blockProps.editable))
-    );
-  };
-
   const { intl, blockProps, draginfo, children } = props;
   const {
     allowedBlocks,
@@ -59,7 +52,7 @@ const EditBlockWrapper = (props) => {
 
   const data = applyBlockDefaults({ data: originalData, ...blockProps, intl });
 
-  const visible = selected && !hideHandler(data);
+  const visible = selected && !hideHandler(data, editable);
 
   const required = isBoolean(data.required)
     ? data.required

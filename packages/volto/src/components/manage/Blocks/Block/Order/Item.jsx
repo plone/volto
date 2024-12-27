@@ -2,10 +2,12 @@ import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import includes from 'lodash/includes';
+import isBoolean from 'lodash/isBoolean';
 import cx from 'classnames';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { setUIState } from '@plone/volto/actions/form/form';
 import config from '@plone/volto/registry';
+import { hideHandler } from '@plone/volto/helpers/Blocks/Blocks';
 
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
@@ -38,6 +40,12 @@ export const Item = forwardRef(
     const multiSelected = useSelector((state) => state.form.ui.multiSelected);
     const gridSelected = useSelector((state) => state.form.ui.gridSelected);
     const dispatch = useDispatch();
+
+    const visible = !hideHandler(data, props?.editable);
+
+    const required = isBoolean(data?.required)
+      ? data?.required
+      : includes(config.blocks.requiredBlocks, data?.['@type']);
 
     return (
       <li
@@ -93,6 +101,10 @@ export const Item = forwardRef(
             {...handleProps}
             className={classNames('action', 'drag')}
             tabIndex={0}
+            style={{
+              visibility: visible ? 'visible' : 'hidden',
+            }}
+            disabled={!visible}
             data-cypress="draggable-handle"
           >
             <Icon name={dragSVG} size="16px" />
@@ -112,7 +124,7 @@ export const Item = forwardRef(
             {data?.plaintext ||
               config.blocks.blocksConfig[data?.['@type']]?.title}
           </span>
-          {!clone && onRemove && (
+          {!clone && onRemove && !required && (
             <button
               onClick={onRemove}
               className={classNames('action', 'delete')}
