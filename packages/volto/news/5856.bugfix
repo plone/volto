@@ -1,0 +1,1 @@
+Fixed: The depth field in the base search query of the search block was ignored, causing search results to include items beyond the specified depth level. Search results now respect the specified depth configuration.
