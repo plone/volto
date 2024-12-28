@@ -26,11 +26,11 @@ const messages = defineMessages({
     defaultMessage: 'delete',
   },
   save: {
-    id: 'save',
-    defaultMessage: 'save',
+    id: 'Save',
+    defaultMessage: 'Save',
   },
   addToFavorites: {
-    id: 'addToFavorites',
+    id: 'Add to favorites',
     defaultMessage: 'Add to Favorites',
   },
 });

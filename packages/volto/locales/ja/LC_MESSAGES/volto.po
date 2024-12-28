@@ -212,6 +212,11 @@ msgstr "新しいユーザを追加"
 msgid "Add to Groups"
 msgstr "グループに追加"
 
+#. Default: "Add to Favorites"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "Add to favorites"
+msgstr ""
+
 #. Default: "Add users to group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add users to group"
@@ -854,7 +859,7 @@ msgstr "コピー"
 
 #. Default: "Copy Block"
 #: components/manage/Sidebar/FavoriteItem
-msgid "Copy Block"
+msgid "Copy block"
 msgstr ""
 
 #. Default: "Copy blocks"
@@ -3117,6 +3122,7 @@ msgstr ""
 
 #. Default: "Save"
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/EditBlockWrapper
 #: components/manage/Blocks/Block/SaveBlockDialog
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -3132,9 +3138,9 @@ msgstr ""
 msgid "Save"
 msgstr "保存"
 
-#. Default: "Save Block"
+#. Default: "Save block"
 #: components/manage/Blocks/Block/SaveBlockDialog
-msgid "Save Block"
+msgid "Save block"
 msgstr ""
 
 #. Default: "Save"
@@ -4502,11 +4508,6 @@ msgstr ""
 msgid "Your usernaame is required for reset your password."
 msgstr ""
 
-#. Default: "Add to Favorites"
-#: components/manage/Blocks/Block/EditBlockWrapper
-msgid "addToFavorites"
-msgstr ""
-
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -5071,11 +5072,6 @@ msgstr "年"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
 msgstr "年"
-
-#. Default: "save"
-#: components/manage/Blocks/Block/EditBlockWrapper
-msgid "save"
-msgstr ""
 
 #. Default: "Select"
 #: config/Blocks

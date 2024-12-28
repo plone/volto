@@ -214,6 +214,11 @@ msgstr "Gehitu erabiltzaile berria"
 msgid "Add to Groups"
 msgstr "Gehitu taldeetara"
 
+#. Default: "Add to Favorites"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "Add to favorites"
+msgstr ""
+
 #. Default: "Add users to group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add users to group"
@@ -856,7 +861,7 @@ msgstr "Kopiatu"
 
 #. Default: "Copy Block"
 #: components/manage/Sidebar/FavoriteItem
-msgid "Copy Block"
+msgid "Copy block"
 msgstr ""
 
 #. Default: "Copy blocks"
@@ -3119,6 +3124,7 @@ msgstr "Erregelak akzio bat gertatzen denean exekutatzen dira. Erregelaren akzio
 
 #. Default: "Save"
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/EditBlockWrapper
 #: components/manage/Blocks/Block/SaveBlockDialog
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -3134,9 +3140,9 @@ msgstr "Erregelak akzio bat gertatzen denean exekutatzen dira. Erregelaren akzio
 msgid "Save"
 msgstr "Gorde"
 
-#. Default: "Save Block"
+#. Default: "Save block"
 #: components/manage/Blocks/Block/SaveBlockDialog
-msgid "Save Block"
+msgid "Save block"
 msgstr ""
 
 #. Default: "Save"
@@ -4504,11 +4510,6 @@ msgstr "Zure ataria eguneratuta dago."
 msgid "Your usernaame is required for reset your password."
 msgstr "Erabiltzaile-izena derrigorrezkoa da zure pasahitza berrezartzeko."
 
-#. Default: "Add to Favorites"
-#: components/manage/Blocks/Block/EditBlockWrapper
-msgid "addToFavorites"
-msgstr ""
-
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -5073,11 +5074,6 @@ msgstr "urte"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
 msgstr "urte"
-
-#. Default: "save"
-#: components/manage/Blocks/Block/EditBlockWrapper
-msgid "save"
-msgstr ""
 
 #. Default: "Select"
 #: config/Blocks

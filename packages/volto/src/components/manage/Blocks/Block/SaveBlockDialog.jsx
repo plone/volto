@@ -7,8 +7,8 @@ import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   saveBlock: {
-    id: 'Save Block',
-    defaultMessage: 'Save Block',
+    id: 'Save block',
+    defaultMessage: 'Save block',
   },
   enterName: {
     id: 'Enter a name for this block',
