@@ -495,6 +495,11 @@ msgstr "Basis Suchfilter"
 msgid "Block"
 msgstr "Block"
 
+#. Default: "Block copied to clipboard"
+#: components/manage/Sidebar/FavoriteItem
+msgid "Block copied to clipboard"
+msgstr ""
+
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
@@ -558,6 +563,7 @@ msgstr "Layout für <strong>{type}</strong> kann nicht verändert werden, da das
 
 #. Default: "Cancel"
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/SaveBlockDialog
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
@@ -679,6 +685,7 @@ msgid "Click to download full sized image"
 msgstr "Klicken um das Bild in der vollen Größe runterzuladen"
 
 #. Default: "Close"
+#: components/manage/Sidebar/FavoriteItem
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr "Schließen"
@@ -844,6 +851,11 @@ msgstr "Einstellungen"
 #: components/manage/Contents/ContentsItem
 msgid "Copy"
 msgstr "Kopieren"
+
+#. Default: "Copy Block"
+#: components/manage/Sidebar/FavoriteItem
+msgid "Copy Block"
+msgstr ""
 
 #. Default: "Copy blocks"
 #: helpers/MessageLabels/MessageLabels
@@ -1322,6 +1334,11 @@ msgstr "Enddatum"
 msgid "Enter URL or select an item"
 msgstr "URL eingeben oder Objekt auswählen"
 
+#. Default: "Enter a name for this block"
+#: components/manage/Blocks/Block/SaveBlockDialog
+msgid "Enter a name for this block"
+msgstr ""
+
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
@@ -1508,6 +1525,11 @@ msgstr "Facetten oben"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Failed To Undo Transactions"
 msgstr "Transaktion rückgänig machen fehlgeschlagen"
+
+#. Default: "Favorite"
+#: components/manage/Sidebar/Sidebar
+msgid "Favorite"
+msgstr ""
 
 #. Default: "Field"
 #: components/manage/Blocks/Search/schema
@@ -3095,6 +3117,7 @@ msgstr "Regeln werden nach einem auslösenden Ereignis ausgeführt. Regelaktione
 
 #. Default: "Save"
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/SaveBlockDialog
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -3104,9 +3127,15 @@ msgstr "Regeln werden nach einem auslösenden Ereignis ausgeführt. Regelaktione
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/Sidebar
 #: helpers/MessageLabels/MessageLabels
 msgid "Save"
 msgstr "Speichern"
+
+#. Default: "Save Block"
+#: components/manage/Blocks/Block/SaveBlockDialog
+msgid "Save Block"
+msgstr ""
 
 #. Default: "Save"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -4473,6 +4502,11 @@ msgstr "Ihre Seite ist auf dem neusten Stand."
 msgid "Your usernaame is required for reset your password."
 msgstr "Ihr Nutzername wird zum Zurücksetzen Ihres Passworts benötigt."
 
+#. Default: "Add to Favorites"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "addToFavorites"
+msgstr ""
+
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -5037,6 +5071,11 @@ msgstr "Regel Jahr"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
 msgstr "Regel Jahre"
+
+#. Default: "save"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "save"
+msgstr ""
 
 #. Default: "Select"
 #: config/Blocks

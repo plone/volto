@@ -496,6 +496,11 @@ msgstr "Base da consulta para busca"
 msgid "Block"
 msgstr "Bloco"
 
+#. Default: "Block copied to clipboard"
+#: components/manage/Sidebar/FavoriteItem
+msgid "Block copied to clipboard"
+msgstr ""
+
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
@@ -559,6 +564,7 @@ msgstr "Não é possível editar layout para o tipo de conteúdo <strong>{type}<
 
 #. Default: "Cancel"
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/SaveBlockDialog
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
@@ -680,6 +686,7 @@ msgid "Click to download full sized image"
 msgstr "Clique para baixar a imagem em tamanho original"
 
 #. Default: "Close"
+#: components/manage/Sidebar/FavoriteItem
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr "Fechar"
@@ -845,6 +852,11 @@ msgstr "Controles"
 #: components/manage/Contents/ContentsItem
 msgid "Copy"
 msgstr "Copiar"
+
+#. Default: "Copy Block"
+#: components/manage/Sidebar/FavoriteItem
+msgid "Copy Block"
+msgstr ""
 
 #. Default: "Copy blocks"
 #: helpers/MessageLabels/MessageLabels
@@ -1323,6 +1335,11 @@ msgstr "Data Final"
 msgid "Enter URL or select an item"
 msgstr "Digite URL ou selecione um item"
 
+#. Default: "Enter a name for this block"
+#: components/manage/Blocks/Block/SaveBlockDialog
+msgid "Enter a name for this block"
+msgstr ""
+
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
@@ -1509,6 +1526,11 @@ msgstr "Facetas no topo"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Failed To Undo Transactions"
 msgstr "Falha ao desfazer transações"
+
+#. Default: "Favorite"
+#: components/manage/Sidebar/Sidebar
+msgid "Favorite"
+msgstr ""
 
 #. Default: "Field"
 #: components/manage/Blocks/Search/schema
@@ -3096,6 +3118,7 @@ msgstr "As regras são realizadas quando ocorre um evento de disparo. As ações
 
 #. Default: "Save"
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/SaveBlockDialog
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -3105,9 +3128,15 @@ msgstr "As regras são realizadas quando ocorre um evento de disparo. As ações
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/Sidebar
 #: helpers/MessageLabels/MessageLabels
 msgid "Save"
 msgstr "Salvar"
+
+#. Default: "Save Block"
+#: components/manage/Blocks/Block/SaveBlockDialog
+msgid "Save Block"
+msgstr ""
 
 #. Default: "Save"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -4474,6 +4503,11 @@ msgstr "Seu site está atualizado."
 msgid "Your usernaame is required for reset your password."
 msgstr "Seu nome de usuário é necessário para redefinir sua senha."
 
+#. Default: "Add to Favorites"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "addToFavorites"
+msgstr ""
+
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -5038,6 +5072,11 @@ msgstr "ano"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
 msgstr "anos"
+
+#. Default: "save"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "save"
+msgstr ""
 
 #. Default: "Select"
 #: config/Blocks

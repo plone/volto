@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import {
   applyBlockDefaults,
@@ -17,13 +17,21 @@ import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 import BlockChooserButton from '@plone/volto/components/manage/BlockChooser/BlockChooserButton';
-
+import saveSVG from '@plone/volto/icons/save.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
-
+import SaveBlockDialog from './SaveBlockDialog';
 const messages = defineMessages({
   delete: {
     id: 'delete',
     defaultMessage: 'delete',
+  },
+  save: {
+    id: 'save',
+    defaultMessage: 'save',
+  },
+  addToFavorites: {
+    id: 'addToFavorites',
+    defaultMessage: 'Add to Favorites',
   },
 });
 
@@ -58,6 +66,7 @@ const EditBlockWrapper = (props) => {
   } = blockProps;
 
   const data = applyBlockDefaults({ data: originalData, ...blockProps, intl });
+  const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
 
   const visible = selected && !hideHandler(data);
 
@@ -105,15 +114,58 @@ const EditBlockWrapper = (props) => {
         <div className={`ui drag block inner ${type}`}>
           {children}
           {selected && !required && editable && (
-            <Button
-              icon
-              basic
-              onClick={() => onDeleteBlock(block, true)}
-              className="delete-button"
-              aria-label={intl.formatMessage(messages.delete)}
+            <div
+              style={{
+                position: 'absolute',
+                top: '-3px',
+                right: '-35px',
+                display: 'flex',
+                zIndex: 10,
+              }}
             >
-              <Icon name={trashSVG} size="18px" />
-            </Button>
+              <Button
+                icon
+                basic
+                onClick={() => onDeleteBlock(block, true)}
+                className="delete-button"
+                aria-label={intl.formatMessage(messages.delete)}
+                style={{
+                  marginRight: '3px',
+                  transition: 'background-color 0.3s, color 0.3s',
+                }}
+              >
+                <Icon
+                  name={trashSVG}
+                  size="20px"
+                  className="hover:text-red-500 transition-colors duration-300"
+                />
+              </Button>
+
+              <Button
+                icon
+                basic
+                onClick={() => setIsSaveDialogOpen(true)}
+                className="save-button"
+                aria-label={intl.formatMessage(messages.save)}
+                style={{
+                  marginRight: '3px',
+                  transition: 'background-color 0.3s, color 0.3s',
+                }}
+              >
+                <Icon
+                  name={saveSVG}
+                  size="22px"
+                  className="hover:text-green-500 transition-colors duration-300"
+                />
+              </Button>
+              <SaveBlockDialog
+                block={block}
+                type={type}
+                data={data}
+                isOpen={isSaveDialogOpen}
+                onClose={() => setIsSaveDialogOpen(false)}
+              />
+            </div>
           )}
           {config.experimental.addBlockButton.enabled && showBlockChooser && (
             <BlockChooserButton

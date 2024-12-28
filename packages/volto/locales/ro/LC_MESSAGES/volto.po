@@ -496,6 +496,11 @@ msgstr "Interogare căutare de bază"
 msgid "Block"
 msgstr "Bloc"
 
+#. Default: "Block copied to clipboard"
+#: components/manage/Sidebar/FavoriteItem
+msgid "Block copied to clipboard"
+msgstr ""
+
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
@@ -559,6 +564,7 @@ msgstr "Nu se poate edita aspectul pentru tipul de conținut <strong>{type}</str
 
 #. Default: "Cancel"
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/SaveBlockDialog
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
@@ -680,6 +686,7 @@ msgid "Click to download full sized image"
 msgstr "Faceți clic pentru a descărca imaginea cu dimensiuni complete"
 
 #. Default: "Close"
+#: components/manage/Sidebar/FavoriteItem
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr "Închideți"
@@ -845,6 +852,11 @@ msgstr "Elemente de control"
 #: components/manage/Contents/ContentsItem
 msgid "Copy"
 msgstr "Copiere"
+
+#. Default: "Copy Block"
+#: components/manage/Sidebar/FavoriteItem
+msgid "Copy Block"
+msgstr ""
 
 #. Default: "Copy blocks"
 #: helpers/MessageLabels/MessageLabels
@@ -1323,6 +1335,11 @@ msgstr "Data de încheiere"
 msgid "Enter URL or select an item"
 msgstr "Introduceți adresa URL sau selectați un obiect"
 
+#. Default: "Enter a name for this block"
+#: components/manage/Blocks/Block/SaveBlockDialog
+msgid "Enter a name for this block"
+msgstr ""
+
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
@@ -1509,6 +1526,11 @@ msgstr "Fațete deasupra"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Failed To Undo Transactions"
 msgstr "Anularea tranzacțiilor nu a putut fi efectuată"
+
+#. Default: "Favorite"
+#: components/manage/Sidebar/Sidebar
+msgid "Favorite"
+msgstr ""
 
 #. Default: "Field"
 #: components/manage/Blocks/Search/schema
@@ -3096,6 +3118,7 @@ msgstr "Regulile se execută atunci când se declanșează un eveniment. Acțiun
 
 #. Default: "Save"
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/SaveBlockDialog
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -3105,9 +3128,15 @@ msgstr "Regulile se execută atunci când se declanșează un eveniment. Acțiun
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/Sidebar
 #: helpers/MessageLabels/MessageLabels
 msgid "Save"
 msgstr "Salvare"
+
+#. Default: "Save Block"
+#: components/manage/Blocks/Block/SaveBlockDialog
+msgid "Save Block"
+msgstr ""
 
 #. Default: "Save"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -4474,6 +4503,11 @@ msgstr "Site-ul dvs. este la zi."
 msgid "Your usernaame is required for reset your password."
 msgstr "Numele dvs. de utilizator este necesar pentru a reseta parola."
 
+#. Default: "Add to Favorites"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "addToFavorites"
+msgstr ""
+
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -5038,6 +5072,11 @@ msgstr "an"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
 msgstr "ani"
+
+#. Default: "save"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "save"
+msgstr ""
 
 #. Default: "Select"
 #: config/Blocks

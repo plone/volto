@@ -7,9 +7,10 @@ import doesNodeContainClick from 'semantic-ui-react/dist/commonjs/lib/doesNodeCo
 const DEFAULT_TIMEOUT = 500;
 
 const SidebarPopup = (props) => {
-  const { children, open, onClose, overlay } = props;
+  const { children, open, onClose, overlay, selectedBlock } = props;
 
   const asideElement = React.useRef();
+  const [copied, setCopied] = React.useState(false);
 
   const handleClickOutside = (e) => {
     if (asideElement && doesNodeContainClick(asideElement.current, e)) return;
@@ -20,6 +21,21 @@ const SidebarPopup = (props) => {
     if (open && e.key === 'Escape') {
       onClose();
       e.stopPropagation();
+    }
+  };
+
+  const handleCopyContent = async () => {
+    if (asideElement.current) {
+      const text = asideElement.current.innerText;
+      try {
+        await navigator.clipboard.writeText(text);
+        setCopied(true);
+        setTimeout(() => {
+          setCopied(false);
+        }, 2000);
+      } catch {
+        setCopied(false);
+      }
     }
   };
 
@@ -64,18 +80,31 @@ const SidebarPopup = (props) => {
           {isClient &&
             createPortal(
               <aside
-                role="presentation"
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
-                onKeyDown={(e) => {
-                  e.stopPropagation();
-                }}
                 ref={asideElement}
                 key="sidebarpopup"
                 className="sidebar-container"
                 style={{ overflowY: 'auto' }}
               >
+                {selectedBlock && (
+                  <button
+                    type="button"
+                    className="sidebar-copy-button"
+                    style={{
+                      position: 'absolute',
+                      top: '10px',
+                      right: '10px',
+                      zIndex: 1000,
+                      padding: '5px 10px',
+                      backgroundColor: copied ? 'green' : '#f0f0f0',
+                      color: copied ? 'white' : 'black',
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                    }}
+                    onClick={handleCopyContent}
+                  >
+                    {copied ? 'Copied!' : 'Copy'}
+                  </button>
+                )}
                 {children}
               </aside>,
               document.body,
@@ -90,12 +119,14 @@ SidebarPopup.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.func,
   overlay: PropTypes.bool,
+  selectedBlock: PropTypes.object,
 };
 
 SidebarPopup.defaultProps = {
   open: false,
   onClose: () => {},
   overlay: false,
+  selectedBlock: null,
 };
 
 export default SidebarPopup;
