@@ -145,7 +145,7 @@ Array [
           xmlns=""
         />
       </div>
-    <div
+      <div
         className="ui bottom attached segment tab tab-wrapper"
         id="sidebar-Favorite"
       >
@@ -181,6 +181,7 @@ Array [
           </div>
         </div>
       </div>
+    </div>
   </div>,
   <div
     className="pusher expanded"
