@@ -212,7 +212,7 @@ msgstr "Neuen Benutzer hinzufügen"
 msgid "Add to Groups"
 msgstr "Zu Gruppe hinzufügen"
 
-#. Default: "Add to Favorites"
+#. Default: "Add to favorites"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "Add to favorites"
 msgstr ""
@@ -857,7 +857,7 @@ msgstr "Einstellungen"
 msgid "Copy"
 msgstr "Kopieren"
 
-#. Default: "Copy Block"
+#. Default: "Copy block"
 #: components/manage/Sidebar/FavoriteItem
 msgid "Copy block"
 msgstr ""

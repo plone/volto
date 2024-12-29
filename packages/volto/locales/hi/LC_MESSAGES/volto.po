@@ -207,7 +207,7 @@ msgstr "नया उपयोगकर्ता जोड़ें"
 msgid "Add to Groups"
 msgstr "समूह में जोड़ें"
 
-#. Default: "Add to Favorites"
+#. Default: "Add to favorites"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "Add to favorites"
 msgstr ""
@@ -852,7 +852,7 @@ msgstr "नियंत्रण"
 msgid "Copy"
 msgstr "प्रतिलिपि"
 
-#. Default: "Copy Block"
+#. Default: "Copy block"
 #: components/manage/Sidebar/FavoriteItem
 msgid "Copy block"
 msgstr ""

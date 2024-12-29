@@ -17,7 +17,7 @@ const messages = defineMessages({
   },
   copyBlock: {
     id: 'Copy block',
-    defaultMessage: 'Copy Block',
+    defaultMessage: 'Copy block',
   },
   blockCopied: {
     id: 'Block copied to clipboard',

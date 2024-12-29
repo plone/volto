@@ -212,7 +212,7 @@ msgstr "Lisää uusi käyttäjä"
 msgid "Add to Groups"
 msgstr "Lisää ryhmiin"
 
-#. Default: "Add to Favorites"
+#. Default: "Add to favorites"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "Add to favorites"
 msgstr ""
@@ -857,7 +857,7 @@ msgstr "Kontrollit"
 msgid "Copy"
 msgstr "Kopioi"
 
-#. Default: "Copy Block"
+#. Default: "Copy block"
 #: components/manage/Sidebar/FavoriteItem
 msgid "Copy block"
 msgstr ""

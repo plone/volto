@@ -31,7 +31,7 @@ const messages = defineMessages({
   },
   addToFavorites: {
     id: 'Add to favorites',
-    defaultMessage: 'Add to Favorites',
+    defaultMessage: 'Add to favorites',
   },
 });
 
