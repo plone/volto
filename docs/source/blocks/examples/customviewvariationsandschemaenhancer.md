@@ -1,19 +1,21 @@
 ---
 myst:
   html_meta:
-    "description": "Volto block with custom schema and view components using variations"
-    "property=og:description": "Volto block with custom schema and view components using variations"
-    "property=og:title": "Volto block with custom schema and variations"
+    "description": "Volto block with custom schema and view components using variations and a schema enhancer in one of the variations"
+    "property=og:description": "Volto block with custom schema and view components using variations and a schema enhancer in one of the variations"
+    "property=og:title": "Volto block with custom schema, variations and schema enhancer"
     "keywords": "Volto, React, blocks, grid, container, Plone"
 ---
 
-(custom-schema-view-and-variations)=
+(custom-schema-view-variations-schema-enhancer)=
 
-# Block with a custom schema and variations
+# Block with a custom schema, variations and a schema enhancer in a variation.
 
-We can create a block that uses `variations`. A {term}`variation` is an alternative view of a block. This variation is shown as an additional option in the schema editor and lets the webmaster to change how this block is viewed. Think of it as a different view of the same block
+We can create a block that uses `variations`. A {term}`variation` is an alternative view of a block. This variation is shown as an additional option in the schema editor and lets the webmaster to change how this block is viewed. Think of it as a different view of the same block.
 
-What we need to do is to define the schema, the view component, the variations and configure the block settings.
+A schema enhancer is an option of a variation. Using this schema enhancer, the block schema can be extended to have additional fields.
+
+What we need to do is to define the schema, the view component, the variations, the schema enhancer and configure the block settings.
 
 ## Preparations
 
@@ -30,8 +32,8 @@ import messages from './messages';
 
 const Schema = ({ intl }) => {
   return {
-    title: intl.formatMessage(messages.block05),
-    block: 'block05',
+    title: intl.formatMessage(messages.block06),
+    block: 'block06',
     fieldsets: [
       {
         id: 'default',
@@ -66,9 +68,9 @@ So we need a file {file}`messages.js` in the same {file}`ExampleBlock` folder wi
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
-  block05: {
-    id: 'block05',
-    defaultMessage: 'Block 05',
+  block06: {
+    id: 'block06',
+    defaultMessage: 'Block 06',
   },
   default: {
     id: 'default',
@@ -113,8 +115,8 @@ const View = (props) => {
     <div
       className={cx(
         'block',
-        'block05',
-        `block05-variation-${variation?.id}`,
+        'block06',
+        `block06-variation-${variation?.id}`,
         className,
       )}
       style={style}
@@ -127,6 +129,28 @@ const View = (props) => {
 // the `withBlockExtensions` HOC, makes the variation selector available in the block edit form
 // and provides the `variation` property in the props.
 export default withBlockExtensions(View);
+```
+
+## Schema enhancer
+
+We need to configure the schema enhancer function. In this case we will be adding a new field named `color` when using the Variation 2.
+
+Create a file {file}`enhancers.js` in the {file}`BlockSchema` folder with the following content:
+
+```js
+const schemaEnhancerVariation02 = ({ formData, schema, intl }) => {
+  // schema holds the original schema (see the Schema.js file)
+  // so we need to define the new property under `schema.properties`
+  // and push its name to the relevant fieldset, in our case the first one (note the `fieldsets[0]`)
+  schema.properties.color = {
+    title: 'Color',
+  };
+  schema.fieldsets[0].fields.push('color');
+  return schema;
+};
+
+export default schemaEnhancerVariation02;
+
 ```
 
 ## Variations
@@ -202,12 +226,12 @@ export default applyConfig;
 And before the last `return config;` statement, write the following configuration:
 
 ```js
-  config.blocks.blocksConfig.block05 = {
-    id: 'block05', // this is the block id, it must match the id on the previous line
-    title: 'Block 05', // this is the block title
-    view: View05, // this is the block's view component
+  config.blocks.blocksConfig.block06 = {
+    id: 'block06', // this is the block id, it must match the id on the previous line
+    title: 'Block 06', // this is the block title
+    view: View06, // this is the block's view component
     //edit: Edit05,
-    blockSchema: Schema05, // this is the schema that will be used to render the edit form
+    blockSchema: Schema06, // this is the schema that will be used to render the edit form
     icon: imagesSVG, // this is the image that will be shown in the block selector
     sidebarTab: 1, // this is set to 1 to have the `Block` tab selected in the sidebar editor when editing this block
     // these are the variations available for this block
@@ -216,13 +240,14 @@ And before the last `return config;` statement, write the following configuratio
         id: 'variation01', // this is the id of the variation
         title: 'Variation 01', // this is the title of the variation
         isDefault: true, // this signals if this is the default variation for this block
-        template: VariationView0501, // this is the component that will render the variation
+        template: VariationView0601, // this is the component that will render the variation
       },
       {
         id: 'variation02',
         title: 'Variation 02',
         isDefault: false,
-        template: VariationView0502,
+        template: VariationView0602,
+        schemaEnhancer: schemaEnhancerBlock06Variation02, // this is the schema enhancer definition
       },
     ],
   };
@@ -232,10 +257,11 @@ And before the last `return config;` statement, write the following configuratio
 On the top of the file you will need to import the relevant components, as follows:
 
 ```js
-import View05 from './components/ExampleBlock/View';
-import Schema05 from './components/ExampleBlock/Schema';
-import VariationView0501 from './components/ExampleBlock/VariationView01';
-import VariationView0502 from './components/ExampleBlock/VariationView02';
+import View06 from './components/ExampleBlock/View';
+import Schema06 from './components/ExampleBlock/Schema';
+import VariationView0601 from './components/ExampleBlock/VariationView01';
+import VariationView0602 from './components/ExampleBlock/VariationView02';
+import schemaEnhancerBlock06Variation02 from './components/ExampleBlock/enhancers';
 
 // This is the icon we use for the example, use a meaningful one or provide your own image.
 import imagesSVG from '@plone/volto/icons/images.svg';
