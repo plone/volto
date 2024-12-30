@@ -141,13 +141,13 @@ And before the last `return config;` statement, write the following configuratio
 
 ```js
 config.blocks.blocksConfig.block02 = {
-    id: 'block02',
-    title: 'Block 02',
-    view: View02,
+    id: 'block02', // this is the block id, it must match the id on the previous line
+    title: 'Block 02', // this is the block title
+    view: View02, // this is the block's view component
     // edit: null;
-    blockSchema: Schema02,
-    icon: imagesSVG,
-    sidebarTab: 1,
+    blockSchema: Schema02, // this is the schema that will be used to render the edit form
+    icon: imagesSVG, // this is the image that will be shown in the block selector
+    sidebarTab: 1, // this is set to 1 to have the `Block` tab selected in the sidebar editor when editing this block
   };
 ```
 
