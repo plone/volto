@@ -28,11 +28,19 @@ You need to instantiate it this way:
 ```jsx
 import { SidebarPortal } from '@plone/volto/components';
 
-[...]
+const Edit = (props) => {
+  const { selected } = props;
+  return (
 
-<SidebarPortal selected={this.props.selected}>
-  // ...
-</SidebarPortal>
+    [...]
+
+    <SidebarPortal selected={selected}>
+      // ...
+    </SidebarPortal>
+  )
+
+}
+
 ```
 
 Everything that's inside the `SidebarPortal` component will be rendered in the sidebar. If you need an extra layer of configuration within `SidebarPortal`, you can use `SidebarPopup`.
@@ -41,9 +49,18 @@ Everything that's inside the `SidebarPortal` component will be rendered in the s
 
 import { SidebarPopup } from '@plone/volto/components';
 
-<SidebarPopup open={this.props.sidebarOpen}>
-  ...
-</SidebarPopup>
+const Edit = (props) => {
+  const { sidebarOpen } = props;
+
+  return (
+    [...]
+
+    <SidebarPopup open={sidebarOpen}>
+      ...
+    </SidebarPopup>
+  )
+}
+
 ```
 
 ## Schema driven automated block settings forms
