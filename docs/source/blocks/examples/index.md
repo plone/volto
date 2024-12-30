@@ -11,6 +11,8 @@ myst:
 
 This part of the documentation shows some examples of custom blocks that you can use as a base to develop your own blocks.
 
+These blocks have been tested using Volto 18.4.0.
+
 ```{toctree}
 :maxdepth: 1
 

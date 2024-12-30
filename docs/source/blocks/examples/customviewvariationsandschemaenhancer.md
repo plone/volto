@@ -13,7 +13,7 @@ myst:
 
 We can create a block that uses `variations`. A {term}`variation` is an alternative view of a block. This variation is shown as an additional option in the schema editor and lets the webmaster to change how this block is viewed. Think of it as a different view of the same block.
 
-A schema enhancer is an option of a variation. Using this schema enhancer, the block schema can be extended to have additional fields.
+A {term}`schema enhancer` is an option of a variation. Using this schema enhancer, the block schema can be extended to have additional fields.
 
 What we need to do is to define the schema, the view component, the variations, the schema enhancer and configure the block settings.
 
