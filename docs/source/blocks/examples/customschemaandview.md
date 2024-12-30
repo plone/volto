@@ -15,7 +15,7 @@ We can create a block with several settings defined using a schema, and let Volt
 
 What we need to do is to define the schema, the view component, and configure the block settings.
 
-## Preparation
+## Preparations
 
 In your volto addon, create a folder inside the {file}`components` folder to save all the files required to create a block.
 
@@ -23,7 +23,7 @@ Name this folder as {file}`ExampleBlock`.
 
 ## Schema
 
-Create a {file}`schema.js` inside the {file}`ExampleBlock` folder, with the following contents:
+Create a {file}`Schema.js` file inside the {file}`ExampleBlock` folder, with the following contents:
 
 ```js
 import messages from './messages';
@@ -101,8 +101,8 @@ import React from 'react';
 
 const View = (props) => {
   // data holds the values entered in the block edit form
-  // className holds the CSS class names injected to this block by other Volto features
-  // style holds the CSS properties injected to this block by other Volto featured
+  // className holds the CSS class names injected to this block by Volto's `styleClassNameExtenders`
+  // style holds the CSS properties injected to this block by Volto's `Block Sytle Wrapper`
   const { data, className, style } = props;
   return (
     <div className={cx('block', 'block02', className)} style={style}>
@@ -157,6 +157,12 @@ On the top of the file you will need to import the relevant components, as follo
 import View02 from './components/ExampleBlock/View';
 import Schema02 from './components/ExampleBlock/Schema';
 
-
-
+// This is the icon we use for the example, use a meaningful one or provide your own image.
+import imagesSVG from '@plone/volto/icons/images.svg';
 ```
+
+## See it in action
+
+Your block is ready to be used in your site.
+
+Restart your Volto site and you will be able to add it using the block add form.
