@@ -11,7 +11,7 @@ myst:
 
 The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block.
 This UX can be very complex depending on the kind of block and the feature that it is trying to provide.
-The project requirements will tell how far you should go with the UX story of each tile, and how complex it will become.
+The project requirements will tell how far you should go with the UX story of each block, and how complex it will become.
 You can use all the props that the edit component is receiving to model the UX for the block and how it will render.
 
 See the complete list of {ref}`block-edit-component-props-label`.
