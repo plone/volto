@@ -124,24 +124,31 @@ import schema from './schema';
 import BlockDataForm from '@plone/volto/components/manage/Form/BlockDataForm';
 import { Icon } from '@plone/volto/components';
 
-<SidebarPortal selected={this.props.selected}>
-  <BlockDataForm
-    icon={<Icon size="24px" name={nameSVG} />}
-    schema={schema}
-    title={schema.title}
-    headerActions={<button onClick={() => {}}>Action</button>}
-    footer={<div>I am footer</div>}
-    onChangeField={(id, value) => {
-      this.props.onChangeBlock(this.props.block, {
-        ...this.props.data,
-        [id]: value,
-      });
-    }}
-    onChangeBlock={onChangeBlock}
-    formData={this.props.data}
-    block={block}
-  />
-</SidebarPortal>;
+const Edit = (props) => {
+  const {selected, block, data, onChangeBlock} = props;
+
+  return (
+    <SidebarPortal selected={selected}>
+      <BlockDataForm
+        icon={<Icon size="24px" name={nameSVG} />}
+        schema={schema}
+        title={schema.title}
+        headerActions={<button onClick={() => {}}>Action</button>}
+        footer={<div>I am footer</div>}
+        onChangeField={(id, value) => {
+          onChangeBlock(block, {
+            ...data,
+            [id]: value,
+          });
+        }}
+        onChangeBlock={onChangeBlock}
+        formData={data}
+        block={block}
+      />
+    </SidebarPortal>;
+  )
+}
+
 ```
 
 ## Object Browser
