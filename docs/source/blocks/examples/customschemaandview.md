@@ -19,11 +19,11 @@ What we need to do is to define the schema, the view component, and configure th
 
 In your volto addon, create a folder inside the {file}`components` folder to save all the files required to create a block.
 
-Name this folder as {file}`ExampleBlock`.
+Name this folder as {file}`ExampleBlock02`.
 
 ## Schema
 
-Create a {file}`Schema.js` file inside the {file}`ExampleBlock` folder, with the following contents:
+Create a {file}`Schema.js` file inside the {file}`ExampleBlock02` folder, with the following contents:
 
 ```js
 import messages from './messages';
@@ -60,7 +60,7 @@ export default Schema;
 
 As you have noted, we have prepared the block to be internationalized, {term}`internanationalization` (i18n), is the process of creating user interfaces which are suitable for different languages and cultural contexts.
 
-So we need a file {file}`messages.js` in the same {file}`ExampleBlock` folder with the following contents:
+So we need a file {file}`messages.js` in the same {file}`ExampleBlock02` folder with the following contents:
 
 ```js
 import { defineMessages } from 'react-intl';
@@ -93,7 +93,7 @@ The view component will have all the required logic to show the information save
 
 In our case will be a samll HTML fragment.
 
-Create a file {file}`View.jsx` in the {file}`ExampleBlock` folder with the following contents:
+Create a file {file}`View.jsx` in the {file}`ExampleBlock02` folder with the following contents:
 
 ```jsx
 import cx from 'classnames';
@@ -154,8 +154,8 @@ config.blocks.blocksConfig.block02 = {
 On the top of the file you will need to import the relevant components, as follows:
 
 ```js
-import View02 from './components/ExampleBlock/View';
-import Schema02 from './components/ExampleBlock/Schema';
+import View02 from './components/ExampleBlock02/View';
+import Schema02 from './components/ExampleBlock02/Schema';
 
 // This is the icon we use for the example, use a meaningful one or provide your own image.
 import imagesSVG from '@plone/volto/icons/images.svg';

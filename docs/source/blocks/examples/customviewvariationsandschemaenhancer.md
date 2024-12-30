@@ -21,11 +21,11 @@ What we need to do is to define the schema, the view component, the variations, 
 
 In your volto addon, create a folder inside the {file}`components` folder to save all the files required to create a block.
 
-Name this folder as {file}`ExampleBlock`.
+Name this folder as {file}`ExampleBlock06`.
 
 ## Schema
 
-Create a {file}`Schema.js` file inside the {file}`ExampleBlock` folder, with the following contents:
+Create a {file}`Schema.js` file inside the {file}`ExampleBlock06` folder, with the following contents:
 
 ```js
 import messages from './messages';
@@ -62,7 +62,7 @@ export default Schema;
 
 As you have noted, we have prepared the block to be internationalized, {term}`internanationalization` (i18n), is the process of creating user interfaces which are suitable for different languages and cultural contexts.
 
-So we need a file {file}`messages.js` in the same {file}`ExampleBlock` folder with the following contents:
+So we need a file {file}`messages.js` in the same {file}`ExampleBlock06` folder with the following contents:
 
 ```js
 import { defineMessages } from 'react-intl';
@@ -95,7 +95,7 @@ In this case, as we are using variations, the view component needs to use the va
 
 This is easily achieved using the `variation` coming on the `props` of the block.
 
-Create a file {file}`View.jsx` in the {file}`ExampleBlock` folder with the following contents:
+Create a file {file}`View.jsx` in the {file}`ExampleBlock06` folder with the following contents:
 
 ```jsx
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
@@ -157,7 +157,7 @@ export default schemaEnhancerVariation02;
 
 Now we need to create one or more variations that will be available for this block.
 
-Create a file {file}`VariationView01.jsx` in the {file}`ExampleBlock` folder with the following contents:
+Create a file {file}`VariationView01.jsx` in the {file}`ExampleBlock06` folder with the following contents:
 
 ```jsx
 import React from 'react';
@@ -179,7 +179,7 @@ const View = (props) => {
 
 export default View;
 ```
-Create a file {file}`VariationView02.jsx` in the {file}`ExampleBlock` folder with the following contents:
+Create a file {file}`VariationView02.jsx` in the {file}`ExampleBlock06` folder with the following contents:
 
 ```jsx
 import React from 'react';
@@ -257,11 +257,11 @@ And before the last `return config;` statement, write the following configuratio
 On the top of the file you will need to import the relevant components, as follows:
 
 ```js
-import View06 from './components/ExampleBlock/View';
-import Schema06 from './components/ExampleBlock/Schema';
-import VariationView0601 from './components/ExampleBlock/VariationView01';
-import VariationView0602 from './components/ExampleBlock/VariationView02';
-import schemaEnhancerBlock06Variation02 from './components/ExampleBlock/enhancers';
+import View06 from './components/ExampleBlock06/View';
+import Schema06 from './components/ExampleBlock06/Schema';
+import VariationView0601 from './components/ExampleBlock06/VariationView01';
+import VariationView0602 from './components/ExampleBlock06/VariationView02';
+import schemaEnhancerBlock06Variation02 from './components/ExampleBlock06/enhancers';
 
 // This is the icon we use for the example, use a meaningful one or provide your own image.
 import imagesSVG from '@plone/volto/icons/images.svg';
