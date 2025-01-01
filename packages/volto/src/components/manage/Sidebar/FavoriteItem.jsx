@@ -8,7 +8,6 @@ import { setBlocksClipboard } from '@plone/volto/actions/blocksClipboard/blocksC
 import config from '@plone/volto/registry';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import copySVG from '@plone/volto/icons/copy.svg';
-import './save.css';
 
 const messages = defineMessages({
   close: {

@@ -63,7 +63,7 @@ const Sidebar = (props) => {
     blockTab,
     settingsTab,
     orderTab = true,
-    FavoriteTab = true,
+    favoriteTab = true,
   } = props;
   const [expanded, setExpanded] = useState(
     cookies.get('sidebar_expanded') !== 'false',
@@ -247,7 +247,7 @@ const Sidebar = (props) => {
                 </Tab.Pane>
               ),
             },
-            !!FavoriteTab && {
+            !!favoriteTab && {
               menuItem: intl.formatMessage(messages.Favorite),
               pane: (
                 <Tab.Pane
@@ -295,14 +295,14 @@ Sidebar.propTypes = {
   documentTab: PropTypes.bool,
   blockTab: PropTypes.bool,
   settingsTab: PropTypes.bool,
-  FavoriteTab: PropTypes.bool,
+  favoriteTab: PropTypes.bool,
 };
 
 Sidebar.defaultProps = {
   documentTab: true,
   blockTab: true,
   settingsTab: false,
-  FavoriteTab: true,
+  favoriteTab: true,
 };
 
 export default compose(withCookies)(Sidebar);

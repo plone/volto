@@ -210,7 +210,7 @@ msgstr "Aggiungi ai gruppi"
 #. Default: "Add to favorites"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "Add to favorites"
-msgstr ""
+msgstr "Aggiungi ai preferiti"
 
 #. Default: "Add users to group"
 #: helpers/MessageLabels/MessageLabels
@@ -498,7 +498,7 @@ msgstr "Blocco"
 #. Default: "Block copied to clipboard"
 #: components/manage/Sidebar/FavoriteItem
 msgid "Block copied to clipboard"
-msgstr ""
+msgstr "Il blocco è stato copiato negli appunti"
 
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
@@ -855,7 +855,7 @@ msgstr "Copia"
 #. Default: "Copy block"
 #: components/manage/Sidebar/FavoriteItem
 msgid "Copy block"
-msgstr ""
+msgstr "Copia blocco"
 
 #. Default: "Copy blocks"
 #: helpers/MessageLabels/MessageLabels
@@ -1337,7 +1337,7 @@ msgstr "Inserisci un URL o seleziona un elemento"
 #. Default: "Enter a name for this block"
 #: components/manage/Blocks/Block/SaveBlockDialog
 msgid "Enter a name for this block"
-msgstr ""
+msgstr "Inserisci un nome per questo blocco"
 
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
@@ -1529,7 +1529,7 @@ msgstr "Non è stato possibile annullare le transazioni"
 #. Default: "Favorite"
 #: components/manage/Sidebar/Sidebar
 msgid "Favorite"
-msgstr ""
+msgstr "Preferiti"
 
 #. Default: "Field"
 #: components/manage/Blocks/Search/schema
@@ -3136,7 +3136,7 @@ msgstr "Salva"
 #. Default: "Save block"
 #: components/manage/Blocks/Block/SaveBlockDialog
 msgid "Save block"
-msgstr ""
+msgstr "Salva blocco"
 
 #. Default: "Save"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget

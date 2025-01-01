@@ -19,7 +19,9 @@ import config from '@plone/volto/registry';
 import BlockChooserButton from '@plone/volto/components/manage/BlockChooser/BlockChooserButton';
 import saveSVG from '@plone/volto/icons/save.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
-import SaveBlockDialog from './SaveBlockDialog';
+import SaveBlockDialog from '@plone/volto/components/manage/Blocks/Block/SaveBlockDialog';
+import './save.css';
+
 const messages = defineMessages({
   delete: {
     id: 'delete',
@@ -114,15 +116,7 @@ const EditBlockWrapper = (props) => {
         <div className={`ui drag block inner ${type}`}>
           {children}
           {selected && !required && editable && (
-            <div
-              style={{
-                position: 'absolute',
-                top: '-3px',
-                right: '-35px',
-                display: 'flex',
-                zIndex: 10,
-              }}
-            >
+            <div class="absolute-div">
               <Button
                 icon
                 basic

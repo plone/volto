@@ -4,6 +4,7 @@ import { Button, Modal, Input, Header } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import { addToFavorites } from '@plone/volto/actions/favorites/favorites';
 import config from '@plone/volto/registry';
+import { cloneBlocks } from '@plone/volto/helpers/Blocks/cloneBlocks';
 
 const messages = defineMessages({
   saveBlock: {
@@ -43,6 +44,8 @@ const SaveBlockDialog = ({ block, type, data, isOpen, onClose }) => {
 
     if (blockConfig?.cloneData) {
       blockData.data = blockConfig.cloneData(blockData.data)[1];
+    } else {
+      blockData.data = cloneBlocks(blockData.data);
     }
     dispatch(addToFavorites(blockData));
     setName('');

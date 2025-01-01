@@ -1,3 +1,4 @@
+import config from '@plone/volto/registry';
 import {
   ADD_TO_FAVORITES,
   REMOVE_FROM_FAVORITES,
@@ -9,7 +10,15 @@ const STORAGE_KEY = 'volto_favorite_blocks';
 const extractPreviewData = (blockData) => {
   if (!blockData) return null;
 
-  switch (blockData['@type']) {
+  const blockType = blockData['@type'];
+  const blockConfig = config.blocks?.blocksConfig?.[blockType];
+
+  // Allow custom preview extraction through config
+  if (blockConfig?.extractPreview) {
+    return blockConfig.extractPreview(blockData);
+  }
+
+  switch (blockType) {
     case 'image':
       return {
         type: 'single',
@@ -41,7 +50,7 @@ const extractPreviewData = (blockData) => {
     default:
       return {
         type: 'default',
-        content: blockData['@type'],
+        content: blockType,
       };
   }
 };

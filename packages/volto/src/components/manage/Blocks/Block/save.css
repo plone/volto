@@ -1,0 +1,7 @@
+.absolute-div {
+  position: absolute;
+  top: -3px;
+  right: -35px;
+  display: flex;
+  z-index: 10;
+}

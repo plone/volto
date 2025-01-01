@@ -6,7 +6,6 @@ import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { getContentIcon } from '@plone/volto/helpers/Content/Content';
 import config from '@plone/volto/registry';
-
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import homeSVG from '@plone/volto/icons/home.svg';
 
