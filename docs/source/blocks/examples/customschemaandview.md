@@ -11,7 +11,7 @@ myst:
 
 # Block with a custom schema
 
-We can create a block with several settings defined using a schema, and let Volto render the edit form by itself.
+You can create a block with several settings defined using a schema, and let Volto render the edit form by itself.
 
 What we need to do is to define the schema, the view component, and configure the block settings.
 
