@@ -34,6 +34,7 @@ config.set('settings', {
   supportedLanguages: ['en'],
   defaultPageSize: 25,
   showTags: true,
+  showRelatedItems: true,
   isMultilingual: false,
   nonContentRoutes,
   nonContentRoutesPublic,

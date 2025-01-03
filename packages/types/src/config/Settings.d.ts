@@ -76,6 +76,7 @@ export interface SettingsConfig {
   serverConfig: unknown;
   storeExtenders: unknown[];
   showTags: boolean;
+  showRelatedItems: boolean;
   controlpanels: unknown[];
   controlPanelsIcons: Record<string, React.ComponentType>;
   filterControlPanels: unknown;

@@ -464,12 +464,22 @@ querystringSearchGet
     Please test this setting properly before enabling in a production site.
 
 cssLayers
-   To use CSS layers when styling Volto, you can define and apply them at the very top level of the page, where they appear in the `<head>` tag.
+    To use CSS layers when styling Volto, you can define and apply them at the very top level of the page, where they appear in the `<head>` tag.
     By using this configuration, you can pass the layer list definition as an array:
 
     ```js
     config.settings.cssLayers = ['reset', 'plone-components', 'layout', 'addons', 'theme'];
     ```
+
+showRelatedItems
+    If true, the `RelatedItems` component will show items from the `relatedItems` field. Default: false.
+
+    ```{versionadded} 18.5.0
+    ```
+
+
+showTags
+    If true, the `Tags` component will show tags from the `subjects` field. Default: true.
 ```
 
 ## Views settings
