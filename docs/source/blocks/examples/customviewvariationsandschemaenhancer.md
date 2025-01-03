@@ -251,7 +251,6 @@ Before the last `return config;` statement, write the following configuration.
       },
     ],
   };
-
 ```
 
 On the top of the file you will need to import the relevant components, as follows:
