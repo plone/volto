@@ -253,7 +253,7 @@ Before the last `return config;` statement, write the following configuration.
   };
 ```
 
-On the top of the file you will need to import the relevant components, as follows:
+At the top of the file, import the relevant components as follows.
 
 ```js
 import View06 from './components/ExampleBlock06/View';
