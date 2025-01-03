@@ -139,7 +139,7 @@ export default withBlockExtensions(View);
 Next you need to configure the schema enhancer function.
 In this example, you will add a new field named `color` when using `schemaEnhancerVariation02`.
 
-Create a file {file}`enhancers.js` in the {file}`BlockSchema` folder with the following content.
+Create a file {file}`enhancers.js` in the {file}`BlockSchema06` folder with the following content:
 
 ```js
 const schemaEnhancerVariation02 = ({ formData, schema, intl }) => {
