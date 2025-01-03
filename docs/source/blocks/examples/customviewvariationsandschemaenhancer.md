@@ -208,7 +208,7 @@ As you can see, in this case the variations are pretty much the same, the only d
 
 With all the block components ready, you need to register the block into Volto.
 
-To do so, open your addon's {file}`index.js` file, that will have the following contents:
+To do so, open your add-on's {file}`index.js` file, and add the following contents.
 
 ```js
 const applyConfig = (config) => {
