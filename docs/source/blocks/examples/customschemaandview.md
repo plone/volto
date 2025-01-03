@@ -3,7 +3,7 @@ myst:
   html_meta:
     "description": "Volto block with custom schema and view components"
     "property=og:description": "Volto block with custom schema and view components"
-    "property=og:title": "Volto block with custom schema"
+    "property=og:title": "Volto block with custom schema and view components"
     "keywords": "Volto, React, blocks, grid, container, Plone"
 ---
 
