@@ -47,7 +47,7 @@ msgstr "Elimina tabella"
 
 #: blocks/Table/TableBlockEdit
 msgid "Divide each row into separate cells"
-msgstr "Dividi ogni riga in celle separate"
+msgstr "Mostra i margini delle colonne"
 
 #: elementEditor/messages
 msgid "Edit element"
