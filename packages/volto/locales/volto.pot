@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-12-19T11:36:07.708Z\n"
+"POT-Creation-Date: 2025-01-03T10:33:45.949Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1319,12 +1319,12 @@ msgstr ""
 msgid "End Date"
 msgstr ""
 
-#. Default: "Enter end date and time"
+#. Default: "Enter Date and time"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Enter end date and time"
+msgid "Enter Date and time to filter"
 msgstr ""
 
-#. Default: "Enter path"
+#. Default: "Will display transactions from start of selected day, until time selected"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Enter Date description filter"
 msgstr ""
@@ -1334,7 +1334,7 @@ msgstr ""
 msgid "Enter URL or select an item"
 msgstr ""
 
-#. Default: "Enter username"
+#. Default: "Enter Username"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Enter Username to filter"
 msgstr ""
@@ -1582,9 +1582,9 @@ msgstr ""
 msgid "Filter transactions by"
 msgstr ""
 
-#. Default: "Filter transactions by user, path, or date"
+#. Default: "Filter transactions by User, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Filter transactions by user, path, or date"
+msgid "Filter transactions by User, Path or Date"
 msgstr ""
 
 #. Default: "Filter users by groups"
@@ -2790,11 +2790,6 @@ msgstr ""
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
-msgstr ""
-
-#. Default: "Previous page"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Previous page"
 msgstr ""
 
 #. Default: "Preview"
@@ -4663,17 +4658,17 @@ msgstr ""
 
 #. Default: "Date"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Filter by date"
+msgid "filter by Date"
 msgstr ""
 
 #. Default: "Path"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Filter by path"
+msgid "filter by Path"
 msgstr ""
 
 #. Default: "Username"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "Filter by username"
+msgid "filter by Username"
 msgstr ""
 
 #. Default: "flush intIds and rebuild relations"

@@ -64,15 +64,15 @@ const messages = defineMessages({
     defaultMessage: 'Filter transactions by',
   },
   filterByUsername: {
-    id: 'filter by Username',
+    id: 'filter by username',
     defaultMessage: 'Username',
   },
   filterByPath: {
-    id: 'filter by Path',
+    id: 'filter by path',
     defaultMessage: 'Path',
   },
   filterByDate: {
-    id: 'filter by Date',
+    id: 'filter by date',
     defaultMessage: 'Date',
   },
   filtered: {
@@ -85,19 +85,19 @@ const messages = defineMessages({
   },
   filterByDescription: {
     id: 'Filter transactions by User, Path or Date',
-    defaultMessage: 'Filter transactions by User, Path or Date',
+    defaultMessage: 'Filter transactions by user, path or date',
   },
   filterByUsername_filter: {
     id: 'Enter Username to filter',
-    defaultMessage: 'Enter Username',
+    defaultMessage: 'Enter username',
   },
   filterByPath_filter: {
     id: 'Enter path to filter',
     defaultMessage: 'Enter Path',
   },
   filterByDate_filter: {
-    id: 'Enter Date and time to filter',
-    defaultMessage: 'Enter Date and time',
+    id: 'Enter date and time to filter',
+    defaultMessage: 'Enter date and time',
   },
   filterByDate_filter_description: {
     id: 'Enter Date description filter',
