@@ -1,0 +1,1 @@
+Added Italian translations @giuliaghisini
