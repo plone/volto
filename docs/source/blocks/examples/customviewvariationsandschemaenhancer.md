@@ -270,4 +270,4 @@ import imagesSVG from '@plone/volto/icons/images.svg';
 
 Your block is ready to be used in your site.
 
-Restart your Volto site and you will be able to add it using the block add form.
+Restart your Volto site, and you can add it using the block add form.
