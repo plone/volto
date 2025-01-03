@@ -2,7 +2,7 @@
 myst:
   html_meta:
     "description": "Volto block examples"
-    "property=og:description": "Volto block examples."
+    "property=og:description": "Volto block examples"
     "property=og:title": "Block examples"
     "keywords": "Volto, React, blocks, example, edit, view, Plone"
 ---
