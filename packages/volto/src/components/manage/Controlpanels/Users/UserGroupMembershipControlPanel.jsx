@@ -72,7 +72,7 @@ const UserGroupMembershipPanel = () => {
 
   return (
     <>
-      <div className="users-control-panel">
+      <div className="users-control-panel ui container">
         <Helmet title={intl.formatMessage(messages.usergroupmemberbership)} />
         <Segment.Group raised>
           <Segment className="primary">

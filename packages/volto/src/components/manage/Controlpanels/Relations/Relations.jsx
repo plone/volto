@@ -47,7 +47,7 @@ const RelationsControlPanel = () => {
 
   return (
     <>
-      <div className="relations-control-panel">
+      <div className="relations-control-panel ui container">
         <Helmet title={intl.formatMessage(messages.relations)} />
         {can_edit ? (
           <Segment.Group raised>
@@ -63,9 +63,10 @@ const RelationsControlPanel = () => {
                   <Divider hidden />
                 </React.Fragment>
               ) : null}
-              <h1>
+
+              <div>
                 <FormattedMessage id="Relations" defaultMessage="Relations" />
-              </h1>
+              </div>
               {relations_stats?.error ? (
                 <React.Fragment>
                   <Divider hidden />

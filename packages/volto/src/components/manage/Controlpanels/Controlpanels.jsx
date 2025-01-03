@@ -201,9 +201,9 @@ export default function Controlpanels({ location }) {
   const { controlPanelsIcons: icons } = config.settings;
 
   return (
-    <div className="view-wrapper">
+    <div className="view-wrapper ">
       <Helmet title={intl.formatMessage(messages.sitesetup)} />
-      <Container className="controlpanel">
+      <Container className="controlpanel controlpanels-container">
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />
