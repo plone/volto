@@ -16,7 +16,7 @@ These blocks have been tested using Volto 18.4.0.
 ```{toctree}
 :maxdepth: 1
 
-customschemaandview
-customviewandvariations
-customviewvariationsandschemaenhancer
+custom-schema-and-view
+custom-view-and-variations
+custom-view-variations-and-schema-enhancer
 ```
