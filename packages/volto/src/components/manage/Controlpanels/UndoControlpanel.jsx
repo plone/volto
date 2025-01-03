@@ -445,7 +445,7 @@ class UndoControlpanel extends Component {
 
   toggleCheckedTransactions(items, checked) {
     let list = [...this.state.selectedTransactions];
-    items.map((t) => {
+    items.forEach((t) => {
       const selected = findIndex(list, t) >= 0;
       if (selected) {
         if (!checked) {
@@ -495,7 +495,7 @@ class UndoControlpanel extends Component {
 
     const TransactionsTable = ({ items, summary = false }) => {
       const getReqType = (str) => {
-        const regex = /\/([^\/@]*_application_json_[^\/@]*)/;
+        const regex = /\/([^/@]*_application_json_[^/@]*)/;
 
         const matches = str.match(regex);
 
