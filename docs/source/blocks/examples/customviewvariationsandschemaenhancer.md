@@ -3,29 +3,31 @@ myst:
   html_meta:
     "description": "Volto block with custom schema and view components using variations and a schema enhancer in one of the variations"
     "property=og:description": "Volto block with custom schema and view components using variations and a schema enhancer in one of the variations"
-    "property=og:title": "Volto block with custom schema, variations and schema enhancer"
-    "keywords": "Volto, React, blocks, grid, container, Plone"
+    "property=og:title": "Volto block with custom schema, variations, and schema enhancer"
+    "keywords": "Volto, React, blocks, variation, custom, schema, enhancer, Plone"
 ---
 
 (custom-schema-view-variations-schema-enhancer)=
 
-# Block with a custom schema, variations and a schema enhancer in a variation.
+# Block with a custom schema, variations, and a schema enhancer in a variation.
 
-We can create a block that uses `variations`. A {term}`variation` is an alternative view of a block. This variation is shown as an additional option in the schema editor and lets the webmaster to change how this block is viewed. Think of it as a different view of the same block.
+This example builds upon the previous example, {doc}`custom-view-and-variations`, where you can create a block with a custom schema, variations, and a schema enhancer in one of the variations.
+A {term}`variation` is an alternative view of a block.
+The variation is shown as an additional option in the schema editor, and lets the developer change how this block is viewed.
 
-A {term}`schema enhancer` is an option of a variation. Using this schema enhancer, the block schema can be extended to have additional fields.
+A {term}`schema enhancer` is an option of a variation.
+Using this schema enhancer, you can extend the block schema to have additional fields.
 
-What we need to do is to define the schema, the view component, the variations, the schema enhancer and configure the block settings.
+To do so, define the schema, view component, variations, and schema enhancer, then configure the block settings.
 
 ## Preparations
 
-In your volto addon, create a folder inside the {file}`components` folder to save all the files required to create a block.
+In your Volto add-on, create a subfolder {file}`ExampleBlock06` inside the {file}`components` folder to save all the files required to create a block.
 
-Name this folder as {file}`ExampleBlock06`.
 
 ## Schema
 
-Create a {file}`Schema.js` file inside the {file}`ExampleBlock06` folder, with the following contents:
+Create a {file}`Schema.js` file inside the {file}`ExampleBlock06` folder, with the following contents.
 
 ```js
 import messages from './messages';
@@ -60,9 +62,10 @@ export default Schema;
 
 ## Messages
 
-As you have noted, we have prepared the block to be internationalized, {term}`internanationalization` (i18n), is the process of creating user interfaces which are suitable for different languages and cultural contexts.
+As you may have noted, you prepared the block for internationalization.
+{term}`Internationalization` (i18n) is the process of creating user interfaces which are suitable for different languages and cultural contexts.
 
-So we need a file {file}`messages.js` in the same {file}`ExampleBlock06` folder with the following contents:
+Create a file {file}`messages.js` in the same {file}`ExampleBlock06` folder with the following contents.
 
 ```js
 import { defineMessages } from 'react-intl';
@@ -91,11 +94,11 @@ export default messages;
 
 ## View component
 
-In this case, as we are using variations, the view component needs to use the variation template to render the contents of the block.
+For variations, the view component needs to use the variation template to render the contents of the block.
 
-This is easily achieved using the `variation` coming on the `props` of the block.
+You can do so using the `variation` from the `props` of the block.
 
-Create a file {file}`View.jsx` in the {file}`ExampleBlock06` folder with the following contents:
+Create a file {file}`View.jsx` in the {file}`ExampleBlock06` folder with the following contents.
 
 ```jsx
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
@@ -103,10 +106,10 @@ import cx from 'classnames';
 import React from 'react';
 
 const View = (props) => {
-  // data holds the values entered in the block edit form
+  // `data` holds the values entered in the block edit form
   // className holds the CSS class names injected to this block by Volto's `styleClassNameExtenders`
-  // style holds the CSS properties injected to this block by Volto's `Block Sytle Wrapper`
-  // variation holds the variation selected in the block editor, and it is an object as defined in the block configuration
+  // `style` holds the CSS properties injected into this block by Volto's `Block Style Wrapper`
+  // `variation` holds the variation selected in the block editor, and it is an object as defined in the block configuration
   const { data, className, style, variation } = props;
 
   const BodyTemplate = variation?.template;
@@ -133,15 +136,16 @@ export default withBlockExtensions(View);
 
 ## Schema enhancer
 
-We need to configure the schema enhancer function. In this case we will be adding a new field named `color` when using the Variation 2.
+Next you need to configure the schema enhancer function.
+In this example, you will add a new field named `color` when using `schemaEnhancerVariation02`.
 
-Create a file {file}`enhancers.js` in the {file}`BlockSchema` folder with the following content:
+Create a file {file}`enhancers.js` in the {file}`BlockSchema` folder with the following content.
 
 ```js
 const schemaEnhancerVariation02 = ({ formData, schema, intl }) => {
   // schema holds the original schema (see the Schema.js file)
-  // so we need to define the new property under `schema.properties`
-  // and push its name to the relevant fieldset, in our case the first one (note the `fieldsets[0]`)
+  // so you need to define the new property under `schema.properties`
+  // and push its name to the relevant fieldset, in this case the first one (note the `fieldsets[0]`)
   schema.properties.color = {
     title: 'Color',
   };
@@ -155,9 +159,9 @@ export default schemaEnhancerVariation02;
 
 ## Variations
 
-Now we need to create one or more variations that will be available for this block.
+Next create one or more variations that will be available for this block.
 
-Create a file {file}`VariationView01.jsx` in the {file}`ExampleBlock06` folder with the following contents:
+Create a file {file}`VariationView01.jsx` in the {file}`ExampleBlock06` folder with the following contents.
 
 ```jsx
 import React from 'react';
@@ -179,7 +183,8 @@ const View = (props) => {
 
 export default View;
 ```
-Create a file {file}`VariationView02.jsx` in the {file}`ExampleBlock06` folder with the following contents:
+
+Create a file {file}`VariationView02.jsx` in the {file}`ExampleBlock06` folder with the following contents.
 
 ```jsx
 import React from 'react';
@@ -202,7 +207,9 @@ const View = (props) => {
 export default View;
 ```
 
-As you can see, in this case the variations are pretty much the same, the only difference is the text that is rendered in the `<h2>` tag. But it can be anything.
+As you can see, the variations are pretty much the same.
+The only difference is the text that is rendered in the `<h2>` tag.
+But it can be anything.
 
 ## Block configuration
 

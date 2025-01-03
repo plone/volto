@@ -13,17 +13,15 @@ myst:
 
 You can create a block with several settings defined using a schema, and let Volto render the edit form by itself.
 
-What we need to do is to define the schema, the view component, and configure the block settings.
+To do so, define the schema, the view component, and configure the block settings.
 
 ## Preparations
 
-In your volto addon, create a folder inside the {file}`components` folder to save all the files required to create a block.
-
-Name this folder as {file}`ExampleBlock02`.
+In your Volto add-on, create a subfolder {file}`ExampleBlock02` inside the {file}`components` folder to save all the files required to create a block.
 
 ## Schema
 
-Create a {file}`Schema.js` file inside the {file}`ExampleBlock02` folder, with the following contents:
+Create a {file}`Schema.js` file inside the {file}`ExampleBlock02` folder, with the following contents.
 
 ```js
 import messages from './messages';
@@ -58,9 +56,9 @@ export default Schema;
 
 ## Messages
 
-As you have noted, we have prepared the block to be internationalized, {term}`internanationalization` (i18n), is the process of creating user interfaces which are suitable for different languages and cultural contexts.
-
-So we need a file {file}`messages.js` in the same {file}`ExampleBlock02` folder with the following contents:
+As you may have noted, you prepared the block for internationalization.
+{term}`Internationalization` (i18n) is the process of creating user interfaces which are suitable for different languages and cultural contexts.
+To add translatable messages, create file {file}`messages.js` in the same {file}`ExampleBlock02` folder with the following contents.
 
 ```js
 import { defineMessages } from 'react-intl';
@@ -90,19 +88,18 @@ export default messages;
 ## View component
 
 The view component will have all the required logic to show the information saved on the block.
+It will be a small HTML fragment.
 
-In our case will be a samll HTML fragment.
-
-Create a file {file}`View.jsx` in the {file}`ExampleBlock02` folder with the following contents:
+Create a file {file}`View.jsx` in the {file}`ExampleBlock02` folder with the following contents.
 
 ```jsx
 import cx from 'classnames';
 import React from 'react';
 
 const View = (props) => {
-  // data holds the values entered in the block edit form
-  // className holds the CSS class names injected to this block by Volto's `styleClassNameExtenders`
-  // style holds the CSS properties injected to this block by Volto's `Block Sytle Wrapper`
+  // `data` holds the values entered in the block edit form.
+  // `className` holds the CSS class names injected into this block by Volto's `styleClassNameExtenders`.
+  // `style` holds the CSS properties injected into this block by Volto's `Block Sytle Wrapper`.
   const { data, className, style } = props;
   return (
     <div className={cx('block', 'block02', className)} style={style}>
@@ -122,7 +119,7 @@ export default View;
 
 With all the block components ready, you need to register the block into Volto.
 
-To do so, open your addon's {file}`index.js` file, that will have the following contents:
+To do so, open your add-on's {file}`index.js` file, and insert the following contents.
 
 ```js
 const applyConfig = (config) => {
@@ -151,7 +148,7 @@ config.blocks.blocksConfig.block02 = {
   };
 ```
 
-On the top of the file you will need to import the relevant components, as follows:
+At the top of the file, import the relevant components as follows.
 
 ```js
 import View02 from './components/ExampleBlock02/View';
@@ -164,5 +161,4 @@ import imagesSVG from '@plone/volto/icons/images.svg';
 ## See it in action
 
 Your block is ready to be used in your site.
-
-Restart your Volto site and you will be able to add it using the block add form.
+Restart your Volto site, and you can add it using the block add form.
