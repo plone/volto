@@ -58,6 +58,7 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
     },
     \\"filterByDate\\": {
       \\"title\\": \\"Enter Date and time\\",
+      \\"description\\": \\"Will display transactions from start of selected day, until time selected\\",
       \\"type\\": \\"date\\"
     }
   },
@@ -87,10 +88,27 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
                 class="center aligned one wide"
                 style="width: 40px;"
               >
-                #
+                <div
+                  class="ui fitted checkbox"
+                >
+                  <input
+                    class="hidden"
+                    readonly=""
+                    tabindex="0"
+                    title="Select all"
+                    type="checkbox"
+                    value=""
+                  />
+                  <label />
+                </div>
               </th>
               <th
-                class="eight wide"
+                class="one wide"
+              >
+                OP
+              </th>
+              <th
+                class="seven wide"
               >
                 What
               </th>
@@ -138,7 +156,10 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
                 </div>
               </td>
               <td
-                class="eight wide"
+                class="one wide"
+              />
+              <td
+                class="seven wide"
                 title="Added default view for root object"
               >
                 <div>
@@ -211,7 +232,10 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
                 </div>
               </td>
               <td
-                class="eight wide"
+                class="one wide"
+              />
+              <td
+                class="seven wide"
                 title="Added virtual_hosting"
               >
                 <div>
@@ -264,7 +288,10 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
                 </div>
               </td>
               <td
-                class="eight wide"
+                class="one wide"
+              />
+              <td
+                class="seven wide"
                 title="Added site error_log at /error_log"
               >
                 <div>
@@ -332,7 +359,10 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
                 </div>
               </td>
               <td
-                class="eight wide"
+                class="one wide"
+              />
+              <td
+                class="seven wide"
                 title="Added session_data_manager"
               >
                 <div>
@@ -385,7 +415,10 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
                 </div>
               </td>
               <td
-                class="eight wide"
+                class="one wide"
+              />
+              <td
+                class="seven wide"
                 title="Added browser_id_manager"
               >
                 <div>
@@ -438,7 +471,10 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
                 </div>
               </td>
               <td
-                class="eight wide"
+                class="one wide"
+              />
+              <td
+                class="seven wide"
                 title="Created initial user"
               >
                 <div>
@@ -496,7 +532,10 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
                 </div>
               </td>
               <td
-                class="eight wide"
+                class="one wide"
+              />
+              <td
+                class="seven wide"
                 title=""
               >
                 <div />
@@ -542,7 +581,10 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
                 </div>
               </td>
               <td
-                class="eight wide"
+                class="one wide"
+              />
+              <td
+                class="seven wide"
                 title="initial database creation"
               >
                 <div>
@@ -591,6 +633,53 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
                 colspan="6"
               >
                 <div
+                  class="ui secondary attached menu"
+                >
+                  <div
+                    class="menu"
+                  />
+                  <div
+                    class="right menu"
+                  >
+                    <div
+                      class="item"
+                    >
+                      Show
+                      :
+                    </div>
+                    <a
+                      class="active item"
+                      value="20"
+                    >
+                      20
+                    </a>
+                    <a
+                      class="item"
+                      value="50"
+                    >
+                      50
+                    </a>
+                    <a
+                      class="item"
+                      value="100"
+                    >
+                      100
+                    </a>
+                    <a
+                      class="item"
+                      value="200"
+                    >
+                      200
+                    </a>
+                    <a
+                      class="item"
+                      value="500"
+                    >
+                      500
+                    </a>
+                  </div>
+                </div>
+                <div
                   class="ui pagination menu"
                 >
                   <button
@@ -609,15 +698,6 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
                       </title>
                       undefined
                     </svg>
-                  </button>
-                  <button
-                    class="icon item"
-                    id="next-button"
-                    title="Next page"
-                  >
-                    <div
-                      style="width: 36px;"
-                    />
                   </button>
                 </div>
               </th>

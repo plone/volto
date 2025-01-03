@@ -3,10 +3,10 @@
 exports[`Controlpanels renders a controlpanels component 1`] = `
 <div>
   <div
-    class="view-wrapper"
+    class="view-wrapper "
   >
     <div
-      class="ui container controlpanel"
+      class="ui container controlpanel controlpanels-container"
     >
       <div
         class="ui raised segments"
@@ -434,10 +434,10 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
 exports[`Controlpanels renders an additional control panel 1`] = `
 <div>
   <div
-    class="view-wrapper"
+    class="view-wrapper "
   >
     <div
-      class="ui container controlpanel"
+      class="ui container controlpanel controlpanels-container"
     >
       <div
         class="ui raised segments"
