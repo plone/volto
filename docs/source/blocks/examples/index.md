@@ -7,7 +7,7 @@ myst:
     "keywords": "Volto, React, blocks, example, edit, view, Plone"
 ---
 
-# Volto Block examples
+# Volto block examples
 
 This part of the documentation shows some examples of custom blocks that you can use as a base to develop your own blocks.
 
