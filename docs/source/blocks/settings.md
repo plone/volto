@@ -48,7 +48,6 @@ const customBlocks = {
       // Required for alternate default block types implementations.
       // See also [Settings reference](/configuration/settings-reference)
     },
-    // A block can have a function that returns the schema or directly the schema
     // of the block that will be automatically rendered in the sidebar editor
     // in case that the `edit` setting of the block is set to `null`
     blockSchema: CustomSchema,
