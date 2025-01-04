@@ -161,8 +161,5 @@ import imagesSVG from '@plone/volto/icons/images.svg';
 ## See it in action
 
 Your block is ready to be used in your site.
-<<<<<<< HEAD
-=======
 
->>>>>>> 168bd09a7 (minor fixes)
 Restart your Volto site, and you can add it using the block add form.
