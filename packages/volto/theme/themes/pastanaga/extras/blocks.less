@@ -1237,13 +1237,21 @@ div.image-upload-widget-image {
   }
 }
 
-.parent-class {
-  .absolute-div {
-    position: absolute;
-    z-index: 10;
-    top: -3px;
-    right: -35px;
-    display: flex;
+// css for save icon
+
+.Control-Icons {
+  position: absolute;
+  z-index: 10;
+  top: -3px;
+  right: -35px;
+  display: flex;
+
+  .delete-button,
+  .save-button {
+    margin-right: 3px;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
   }
 }
 

@@ -20,7 +20,6 @@ import BlockChooserButton from '@plone/volto/components/manage/BlockChooser/Bloc
 import saveSVG from '@plone/volto/icons/save.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import SaveBlockDialog from '@plone/volto/components/manage/Blocks/Block/SaveBlockDialog';
-import './save.css';
 
 const messages = defineMessages({
   delete: {
@@ -116,17 +115,13 @@ const EditBlockWrapper = (props) => {
         <div className={`ui drag block inner ${type}`}>
           {children}
           {selected && !required && editable && (
-            <div class="absolute-div">
+            <div className="Control-Icons">
               <Button
                 icon
                 basic
                 onClick={() => onDeleteBlock(block, true)}
                 className="delete-button"
                 aria-label={intl.formatMessage(messages.delete)}
-                style={{
-                  marginRight: '3px',
-                  transition: 'background-color 0.3s, color 0.3s',
-                }}
               >
                 <Icon
                   name={trashSVG}
@@ -141,10 +136,6 @@ const EditBlockWrapper = (props) => {
                 onClick={() => setIsSaveDialogOpen(true)}
                 className="save-button"
                 aria-label={intl.formatMessage(messages.save)}
-                style={{
-                  marginRight: '3px',
-                  transition: 'background-color 0.3s, color 0.3s',
-                }}
               >
                 <Icon
                   name={saveSVG}
