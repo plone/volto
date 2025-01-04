@@ -9,11 +9,11 @@ myst:
 
 (custom-schema-view-variations-schema-enhancer)=
 
-# Block with a custom schema, variations, and a schema enhancer in a variation.
+# Block with a custom schema, variations, and a schema enhancer in a variation
 
 This example builds upon the previous example, {doc}`custom-view-and-variations`, where you can create a block with a custom schema, variations, and a schema enhancer in one of the variations.
 A {term}`variation` is an alternative view of a block.
-The variation is shown as an additional option in the schema editor, and lets the developer change how this block is viewed.
+The variation is shown as an additional option in the schema editor, and lets the editor change how this block is viewed.
 
 A {term}`schema enhancer` is an option of a variation.
 Using this schema enhancer, you can extend the block schema to have additional fields.
@@ -106,10 +106,10 @@ import cx from 'classnames';
 import React from 'react';
 
 const View = (props) => {
-  // `data` holds the values entered in the block edit form
-  // className holds the CSS class names injected to this block by Volto's `styleClassNameExtenders`
-  // `style` holds the CSS properties injected into this block by Volto's `Block Style Wrapper`
-  // `variation` holds the variation selected in the block editor, and it is an object as defined in the block configuration
+  // `data` holds the values entered in the block edit form.
+  // `className` holds the CSS class names injected to this block by Volto's `styleClassNameExtenders`.
+  // `style` holds the CSS properties injected into this block by Volto's `Block Style Wrapper`.
+  // `variation` holds the variation selected in the block editor, and it is an object as defined in the block configuration.
   const { data, className, style, variation } = props;
 
   const BodyTemplate = variation?.template;
@@ -129,10 +129,10 @@ const View = (props) => {
   );
 };
 
-// the `withBlockExtensions` HOC, makes the variation selector available in the block edit form
-// and provides the `variation` property in the props.
 export default withBlockExtensions(View);
 ```
+
+The `withBlockExtensions` {term}`HOC` makes the variation selector available in the block edit form and provides the `variation` property in the props.
 
 ## Schema enhancer
 
@@ -275,6 +275,6 @@ import imagesSVG from '@plone/volto/icons/images.svg';
 
 ## See it in action
 
-Your block is ready to be used in your site.
+Your block is ready to use in your site.
 
 Restart your Volto site, and you can add it using the block add form.
