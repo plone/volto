@@ -40,13 +40,11 @@ const Edit = (props) => {
   )
 
 }
-
 ```
 
 Everything that's inside the `SidebarPortal` component will be rendered in the sidebar. If you need an extra layer of configuration within `SidebarPortal`, you can use `SidebarPopup`.
 
 ```jsx
-
 import { SidebarPopup } from '@plone/volto/components';
 
 const Edit = (props) => {
@@ -60,7 +58,6 @@ const Edit = (props) => {
     </SidebarPopup>
   )
 }
-
 ```
 
 ## Schema driven automated block settings forms
@@ -148,7 +145,6 @@ const Edit = (props) => {
     </SidebarPortal>;
   )
 }
-
 ```
 
 ## Object Browser
