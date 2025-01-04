@@ -55,12 +55,11 @@ exports[`Allow override of blocksConfig 1`] = `
                 </div>
               </div>
               <div
-                class="absolute-div"
+                class="Control-Icons"
               >
                 <button
                   aria-label="delete"
                   class="ui basic icon button delete-button"
-                  style="margin-right: 3px; transition: background-color 0.3s, color 0.3s;"
                 >
                   <svg
                     class="icon hover:text-red-500 transition-colors duration-300"
@@ -72,7 +71,6 @@ exports[`Allow override of blocksConfig 1`] = `
                 <button
                   aria-label="Save"
                   class="ui basic icon button save-button"
-                  style="margin-right: 3px; transition: background-color 0.3s, color 0.3s;"
                 >
                   <svg
                     class="icon hover:text-green-500 transition-colors duration-300"
