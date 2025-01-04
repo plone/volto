@@ -124,10 +124,10 @@ const View = (props) => {
   );
 };
 
-// the `withBlockExtensions` HOC, makes the variation selector available in the block edit form
-// and provides the `variation` property in the props.
 export default withBlockExtensions(View);
 ```
+
+The `withBlockExtensions` {term}`HOC` makes the variation selector available in the block edit form and provides the `variation` property in the props.
 
 ## Variations
 
