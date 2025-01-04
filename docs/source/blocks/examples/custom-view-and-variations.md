@@ -11,7 +11,9 @@ myst:
 
 # Block with a custom schema and variations
 
-We can create a block that uses `variations`. A {term}`variation` is an alternative view of a block. This variation is shown as an additional option in the schema editor and lets the webmaster to change how this block is viewed. Think of it as a different view of the same block
+We can create a block that uses `variations`.
+A {term}`variation` is an alternative view of a block.
+This variation is shown as an additional option in the schema editor, and lets the editor change how this block is viewed.
 
 To do so, define the schema, view component, and variations, then configure the block settings.
 
