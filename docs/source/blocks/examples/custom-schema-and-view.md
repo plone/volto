@@ -58,7 +58,7 @@ export default Schema;
 
 As you may have noted, you prepared the block for internationalization.
 {term}`Internationalization` (i18n) is the process of creating user interfaces which are suitable for different languages and cultural contexts.
-To add translatable messages, create file {file}`messages.js` in the same {file}`ExampleBlock02` folder with the following contents.
+To add translatable messages, create a file {file}`messages.js` in the same {file}`ExampleBlock02` folder with the following contents.
 
 ```js
 import { defineMessages } from 'react-intl';
