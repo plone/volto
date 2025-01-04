@@ -134,7 +134,7 @@ const applyConfig = (config) => {
 export default applyConfig;
 ```
 
-And before the last `return config;` statement, write the following configuration:
+And before the last `return config;` statement, write the following configuration.
 
 ```js
 config.blocks.blocksConfig.block02 = {
