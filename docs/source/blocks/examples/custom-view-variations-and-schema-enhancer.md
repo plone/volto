@@ -22,7 +22,7 @@ To do so, define the schema, view component, variations, and schema enhancer, th
 
 ## Preparations
 
-In your Volto add-on, create a subfolder {file}`ExampleBlock04` inside the {file}`components` folder to save all the files required to create a block, its variations and the schema enhancer.
+In your Volto add-on, create a subfolder {file}`ExampleBlock04` inside the {file}`components` folder to save all the files required to create a block, its variations, and the schema enhancer.
 
 
 ## Schema
@@ -219,14 +219,14 @@ export default View;
 ```
 
 As you can see, the variations are pretty much the same.
-The differences are the text that is rendered in the `<h2>` tag and that we are showing the new field added by the schema enhancer.
+The differences are the text that is rendered in the `<h2>` tag, and the new field that you added with the schema enhancer.
 But it can be anything.
 
 ## Block configuration
 
 With all the block components ready, you need to register the block into Volto.
 
-To do so, open your add-on's {file}`index.js` file, and insert the following contents before the last `return config` statement:
+To do so, open your add-on's {file}`index.js` file, and insert the following contents before the last `return config;` statement.
 
 ```js
   config.blocks.blocksConfig.block04 = {
@@ -274,4 +274,4 @@ import imagesSVG from '@plone/volto/icons/images.svg';
 
 Your block is ready to use in your site.
 
-Restart your Volto site, and you can add it using the block add form.
+Restart your Volto site, and now you can add the new block from the block chooser found in the {guilabel}`Edit` <img alt="Edit icon" src="../../_static/pen.svg" class="inline"> or {guilabel}`Add` <img alt="Add icon" src="../../_static/add-document.svg" class="inline"> content views.

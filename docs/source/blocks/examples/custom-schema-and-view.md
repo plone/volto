@@ -121,7 +121,7 @@ export default View;
 
 With all the block components ready, you need to register the block into Volto.
 
-To do so, open your add-on's {file}`index.js` file, and insert the following contents before the last `return config` statement:
+To do so, open your add-on's {file}`index.js` file, and insert the following contents before the last `return config;` statement.
 
 ```js
 config.blocks.blocksConfig.block01 = {
@@ -150,4 +150,4 @@ import imagesSVG from '@plone/volto/icons/images.svg';
 
 Your block is ready to be used in your site.
 
-Restart your Volto site, and now you can add the new block from the block chooser found in the `edit` or `add` new content views.
+Restart your Volto site, and now you can add the new block from the block chooser found in the {guilabel}`Edit` <img alt="Edit icon" src="../../_static/pen.svg" class="inline"> or {guilabel}`Add` <img alt="Add icon" src="../../_static/add-document.svg" class="inline"> content views.
