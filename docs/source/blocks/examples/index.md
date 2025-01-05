@@ -17,6 +17,7 @@ These blocks have been tested using Volto 18.4.0.
 :maxdepth: 1
 
 custom-schema-and-view
+custom-schema-view-and-edit
 custom-view-and-variations
 custom-view-variations-and-schema-enhancer
 ```
