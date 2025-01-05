@@ -141,6 +141,7 @@ config.blocks.blocksConfig.block02 = {
     id: 'block02', // this is the block id, it must match the id on the previous line
     title: 'Block 02', // this is the block title
     view: View02, // this is the block's view component
+    // We do not need a specific edit component, Volto will use the default
     // edit: null;
     blockSchema: Schema02, // this is the schema that will be used to render the edit form
     icon: imagesSVG, // this is the image that will be shown in the block selector

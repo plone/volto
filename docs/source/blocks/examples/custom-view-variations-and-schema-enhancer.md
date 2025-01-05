@@ -237,7 +237,8 @@ Before the last `return config;` statement, write the following configuration.
     id: 'block06', // this is the block id, it must match the id on the previous line
     title: 'Block 06', // this is the block title
     view: View06, // this is the block's view component
-    //edit: Edit05,
+    // We do not need a specific edit component, Volto will use the default
+    // edit: null,
     blockSchema: Schema06, // this is the schema that will be used to render the edit form
     icon: imagesSVG, // this is the image that will be shown in the block selector
     sidebarTab: 1, // this is set to 1 to have the `Block` tab selected in the sidebar editor when editing this block
