@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "Volto block with custom schema, view and edit components"
-    "property=og:description": "Volto block with custom schema, view and edit components"
-    "property=og:title": "Volto block with custom schema, view and edit components"
-    "keywords": "Volto, React, blocks, grid, container, Plone"
+    "description": "Volto block with custom schema and edit components"
+    "property=og:description": "Volto block with custom schema and edit components"
+    "property=og:title": "Volto block with custom schema and edit components"
+    "keywords": "Volto, React, blocks, custom, schema, edit, component, Plone"
 ---
 
 (custom-schema-edit-and-view)=
@@ -119,27 +119,28 @@ export default View;
 
 ## Edit component
 
-The Edit component needs to render a form where the editor can change the block settings.
+The edit component renders a form where the editor can change the block settings.
+This edit component is a minimal component that renders the block and the same edit form as the one rendered automatically.
 
-This Edit component is a minimal component that renders the block and the same edit form as the one rendered automatically.
-
-Create a file {file}`Edit.jsx` in the {file}`ExampleBlock02` folder with the following contents:
+Create a file {file}`Edit.jsx` in the {file}`ExampleBlock02` folder with the following contents.
 
 ```jsx
 
-// We manually import the schema
+// manually import the schema
 import schema from './Schema';
 import BlockDataForm from '@plone/volto/components/manage/Form/BlockDataForm';
 import { SidebarPortal } from '@plone/volto/components';
-// The Edit component needs to render also the view of the block, not only the form
-// So we import the View component that we have just written to render its contents
+// The edit component also renders the view of the block,
+// not only the form.
+// So you must import the view component that you just wrote
+// to render its contents.
 import View from './View';
 
 
 const Edit = (props) => {
   const { onChangeBlock, block, data, selected, className, style } = props;
 
-  // The schema is a function, so we call it to have the definition
+  // The schema is a function. Call it to get its definition.
   const blockSchema = schema(props);
 
   return (
@@ -172,7 +173,7 @@ export default Edit;
 
 With all the block components ready, you need to register the block into Volto.
 
-To do so, open your add-on's {file}`index.js` file, and insert the following contents before the last `return config` statement:
+To do so, open your add-on's {file}`index.js` file, and insert the following contents before the last `return config;` statement.
 
 ```js
 config.blocks.blocksConfig.block02 = {
@@ -180,13 +181,13 @@ config.blocks.blocksConfig.block02 = {
     title: 'Block 02', // this is the block title
     view: View02, // this is the block's view component
     edit: Edit02, // this is the block's edit component
-    // We do not need to define the schema here,
-    // because we are using a custom edit component
+    // You do not need to define the schema here,
+    // because you are using a custom edit component
     // blockSchema: Schema02,
 
     // this is the image that will be shown in the block selector
     icon: imagesSVG,
-    // this is set to 1 to have the `Block` tab selected in the sidebar editor
+    // this is set to 1, which selects the `Block` tab in the sidebar editor
     // when editing this block
     sidebarTab: 1,
   };
@@ -199,12 +200,13 @@ import View02 from './components/ExampleBlock02/View';
 import Edit02 from './components/ExampleBlock02/Edit';
 import Schema02 from './components/ExampleBlock02/Schema';
 
-// This is the icon we use for the example, use a meaningful one or provide your own image.
+// This is the icon to use for this example.
+// Use a meaningful one or provide your own image.
 import imagesSVG from '@plone/volto/icons/images.svg';
 ```
 
 ## See it in action
 
-Your block is ready to be used in your site.
+Your block is ready to use in your site.
 
-Restart your Volto site, and now you can add the new block from the block chooser found in the `edit` or `add` new content views.
+Restart your Volto site, and now you can add the new block from the block chooser found in the {guilabel}`Edit` <img alt="Edit icon" src="../../_static/pen.svg" class="inline"> or {guilabel}`Add` <img alt="Add icon" src="../../_static/add-document.svg" class="inline"> content views.
