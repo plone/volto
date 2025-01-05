@@ -99,7 +99,7 @@ import React from 'react';
 const View = (props) => {
   // `data` holds the values entered in the block edit form.
   // `className` holds the CSS class names injected into this block by Volto's `styleClassNameExtenders`.
-  // `style` holds the CSS properties injected into this block by Volto's `Block Sytle Wrapper`.
+  // `style` holds the CSS properties injected into this block by Volto's `Block Style Wrapper`.
   const { data, className, style } = props;
   return (
     <div className={cx('block', 'block02', className)} style={style}>
@@ -162,4 +162,4 @@ import imagesSVG from '@plone/volto/icons/images.svg';
 
 Your block is ready to be used in your site.
 
-Restart your Volto site, and you can add it using the block add form.
+Restart your Volto site, and now you can add the new block from the block chooser found in the `edit` or `add` new content views.

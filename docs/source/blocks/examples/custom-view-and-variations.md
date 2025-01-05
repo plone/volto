@@ -13,7 +13,7 @@ myst:
 
 We can create a block that uses `variations`.
 A {term}`variation` is an alternative view of a block.
-This variation is shown as an additional option in the schema editor, and lets the editor change how this block is viewed.
+This variation is shown as an additional option in the block settings sidebar and lets the editor change how this block is rendered.
 
 To do so, define the schema, view component, and variations, then configure the block settings.
 
