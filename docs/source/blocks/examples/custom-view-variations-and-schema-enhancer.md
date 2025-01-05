@@ -198,6 +198,7 @@ const View = (props) => {
         <ul>
           <li>Title: {data.title}</li>
           <li>URL: {data.url}</li>
+          <li>Color: {data.color}</li>
         </ul>
       </div>
     </>
@@ -208,7 +209,7 @@ export default View;
 ```
 
 As you can see, the variations are pretty much the same.
-The only difference is the text that is rendered in the `<h2>` tag.
+The differences are the text that is rendered in the `<h2>` tag and that we are showing the new field added by the schema enhancer.
 But it can be anything.
 
 ## Block configuration
