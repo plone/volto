@@ -17,19 +17,19 @@ To do so, define the schema, the view component, and configure the block setting
 
 ## Preparations
 
-In your Volto add-on, create a subfolder {file}`ExampleBlock02` inside the {file}`components` folder to save all the files required to create a block.
+In your Volto add-on, create a subfolder {file}`ExampleBlock01` inside the {file}`components` folder to save all the files required to create a block.
 
 ## Schema
 
-Create a {file}`Schema.js` file inside the {file}`ExampleBlock02` folder, with the following contents.
+Create a {file}`Schema.js` file inside the {file}`ExampleBlock01` folder, with the following contents.
 
 ```js
 import messages from './messages';
 
 const Schema = ({ intl }) => {
   return {
-    title: intl.formatMessage(messages.block02),
-    block: 'block02',
+    title: intl.formatMessage(messages.block01),
+    block: 'block01',
     fieldsets: [
       {
         id: 'default',
@@ -58,15 +58,15 @@ export default Schema;
 
 As you may have noted, you prepared the block for internationalization.
 {term}`Internationalization` (i18n) is the process of creating user interfaces which are suitable for different languages and cultural contexts.
-To add translatable messages, create a file {file}`messages.js` in the same {file}`ExampleBlock02` folder with the following contents.
+To add translatable messages, create a file {file}`messages.js` in the same {file}`ExampleBlock01` folder with the following contents.
 
 ```js
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
-  block02: {
-    id: 'block02',
-    defaultMessage: 'Block 02',
+  block01: {
+    id: 'block01',
+    defaultMessage: 'Block 01',
   },
   default: {
     id: 'default',
@@ -90,7 +90,7 @@ export default messages;
 The view component will have all the required logic to show the information saved on the block.
 It will be a small HTML fragment.
 
-Create a file {file}`View.jsx` in the {file}`ExampleBlock02` folder with the following contents.
+Create a file {file}`View.jsx` in the {file}`ExampleBlock01` folder with the following contents.
 
 ```jsx
 import cx from 'classnames';
@@ -104,7 +104,7 @@ const View = (props) => {
   //   by Volto's `Block Style Wrapper`.
   const { data, className, style } = props;
   return (
-    <div className={cx('block', 'block02', className)} style={style}>
+    <div className={cx('block', 'block01', className)} style={style}>
       I am the Block view component!
       <ul>
         <li>Title: {data.title}</li>
@@ -124,13 +124,13 @@ With all the block components ready, you need to register the block into Volto.
 To do so, open your add-on's {file}`index.js` file, and insert the following contents before the last `return config` statement:
 
 ```js
-config.blocks.blocksConfig.block02 = {
-    id: 'block02', // this is the block id, it must match the id on the previous line
-    title: 'Block 02', // this is the block title
-    view: View02, // this is the block's view component
+config.blocks.blocksConfig.block01 = {
+    id: 'block01', // this is the block id, it must match the id on the previous line
+    title: 'Block 01', // this is the block title
+    view: View01, // this is the block's view component
     // We do not need a specific edit component, Volto will use the default
     // edit: null;
-    blockSchema: Schema02, // this is the schema that will be used to render the edit form
+    blockSchema: Schema01, // this is the schema that will be used to render the edit form
     icon: imagesSVG, // this is the image that will be shown in the block selector
     sidebarTab: 1, // this is set to 1 to have the `Block` tab selected in the sidebar editor when editing this block
   };
@@ -139,8 +139,8 @@ config.blocks.blocksConfig.block02 = {
 At the top of the file, import the relevant components as follows.
 
 ```js
-import View02 from './components/ExampleBlock02/View';
-import Schema02 from './components/ExampleBlock02/Schema';
+import View01 from './components/ExampleBlock01/View';
+import Schema01 from './components/ExampleBlock01/Schema';
 
 // This is the icon we use for the example, use a meaningful one or provide your own image.
 import imagesSVG from '@plone/volto/icons/images.svg';

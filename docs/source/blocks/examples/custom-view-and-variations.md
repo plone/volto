@@ -19,19 +19,19 @@ To do so, define the schema, view component, and variations, then configure the 
 
 ## Preparations
 
-In your Volto add-on, create a subfolder {file}`ExampleBlock05` inside the {file}`components` folder to save all the files required to create a block and its variations.
+In your Volto add-on, create a subfolder {file}`ExampleBlock03` inside the {file}`components` folder to save all the files required to create a block and its variations.
 
 ## Schema
 
-Create a {file}`Schema.js` file inside the {file}`ExampleBlock05` folder, with the following contents.
+Create a {file}`Schema.js` file inside the {file}`ExampleBlock03` folder, with the following contents.
 
 ```js
 import messages from './messages';
 
 const Schema = ({ intl }) => {
   return {
-    title: intl.formatMessage(messages.block05),
-    block: 'block05',
+    title: intl.formatMessage(messages.block03),
+    block: 'block03',
     fieldsets: [
       {
         id: 'default',
@@ -61,15 +61,15 @@ export default Schema;
 As you may have noted, you prepared the block for internationalization.
 {term}`Internationalization` (i18n) is the process of creating user interfaces which are suitable for different languages and cultural contexts.
 
-To do so, create a file {file}`messages.js` in the same {file}`ExampleBlock05` folder with the following contents.
+To do so, create a file {file}`messages.js` in the same {file}`ExampleBlock03` folder with the following contents.
 
 ```js
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
-  block05: {
-    id: 'block05',
-    defaultMessage: 'Block 05',
+  block03: {
+    id: 'block03',
+    defaultMessage: 'Block 03',
   },
   default: {
     id: 'default',
@@ -93,7 +93,7 @@ export default messages;
 For variations, the view component needs to use the variation template to render the contents of the block.
 You can do so using the `variation` from the `props` of the block.
 
-Create a file {file}`View.jsx` in the {file}`ExampleBlock05` folder with the following contents.
+Create a file {file}`View.jsx` in the {file}`ExampleBlock03` folder with the following contents.
 
 ```jsx
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
@@ -116,8 +116,8 @@ const View = (props) => {
     <div
       className={cx(
         'block',
-        'block05',
-        `block05-variation-${variation?.id}`,
+        'block03',
+        `block03-variation-${variation?.id}`,
         className,
       )}
       style={style}
@@ -136,7 +136,7 @@ The `withBlockExtensions` {term}`HOC` makes the variation selector available in 
 
 Next create one or more variations that will be available for this block.
 
-Create a file {file}`VariationView01.jsx` in the {file}`ExampleBlock05` folder with the following contents.
+Create a file {file}`VariationView01.jsx` in the {file}`ExampleBlock03` folder with the following contents.
 
 ```jsx
 import React from 'react';
@@ -159,7 +159,7 @@ const View = (props) => {
 export default View;
 ```
 
-Create a file {file}`VariationView02.jsx` in the {file}`ExampleBlock05` folder with the following contents.
+Create a file {file}`VariationView02.jsx` in the {file}`ExampleBlock03` folder with the following contents.
 
 ```jsx
 import React from 'react';
@@ -193,13 +193,13 @@ With all the block components ready, you need to register the block into Volto.
 To do so, open your add-on's {file}`index.js` file, and insert the following contents before the last `return config` statement:
 
 ```js
-  config.blocks.blocksConfig.block05 = {
-    id: 'block05', // this is the block id, it must match the id on the previous line
-    title: 'Block 05', // this is the block title
-    view: View05, // this is the block's view component
+  config.blocks.blocksConfig.block03 = {
+    id: 'block03', // this is the block id, it must match the id on the previous line
+    title: 'Block 03', // this is the block title
+    view: View03, // this is the block's view component
     // We do not need a specific edit component, Volto will use the default
     // edit: null,
-    blockSchema: Schema05, // this is the schema that will be used to render the edit form
+    blockSchema: Schema03, // this is the schema that will be used to render the edit form
     icon: imagesSVG, // this is the image that will be shown in the block selector
     sidebarTab: 1, // this is set to 1 to have the `Block` tab selected in the sidebar editor when editing this block
     // these are the variations available for this block
@@ -208,13 +208,13 @@ To do so, open your add-on's {file}`index.js` file, and insert the following con
         id: 'variation01', // this is the id of the variation
         title: 'Variation 01', // this is the title of the variation
         isDefault: true, // this signals if this is the default variation for this block
-        template: VariationView0501, // this is the component that will render the variation
+        template: VariationView0301, // this is the component that will render the variation
       },
       {
         id: 'variation02',
         title: 'Variation 02',
         isDefault: false,
-        template: VariationView0502,
+        template: VariationView0302,
       },
     ],
   };
@@ -224,10 +224,10 @@ To do so, open your add-on's {file}`index.js` file, and insert the following con
 At the top of the file, import the relevant components as follows.
 
 ```js
-import View05 from './components/ExampleBlock05/View';
-import Schema05 from './components/ExampleBlock05/Schema';
-import VariationView0501 from './components/ExampleBlock05/VariationView01';
-import VariationView0502 from './components/ExampleBlock05/VariationView02';
+import View03 from './components/ExampleBlock03/View';
+import Schema03 from './components/ExampleBlock03/Schema';
+import VariationView0301 from './components/ExampleBlock03/VariationView01';
+import VariationView0302 from './components/ExampleBlock03/VariationView02';
 
 // This is the icon we use for the example, use a meaningful one or provide your own image.
 import imagesSVG from '@plone/volto/icons/images.svg';
