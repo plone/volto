@@ -87,6 +87,10 @@ const messages = defineMessages({
     id: 'title',
     defaultMessage: 'Title',
   },
+  color: {
+    id: 'color',
+    defaultMessage: 'Color',
+  }
 });
 
 export default messages;
@@ -142,12 +146,15 @@ In this example, you will add a new field named `color` when using `schemaEnhanc
 Create a file {file}`enhancers.js` in the {file}`BlockSchema06` folder with the following content:
 
 ```js
+
+import messages from './messages';
+
 const schemaEnhancerVariation02 = ({ formData, schema, intl }) => {
   // schema holds the original schema (see the Schema.js file)
   // so you need to define the new property under `schema.properties`
   // and push its name to the relevant fieldset, in this case the first one (note the `fieldsets[0]`)
   schema.properties.color = {
-    title: 'Color',
+    title: intl.formatMessage(messages.color),
   };
   schema.fieldsets[0].fields.push('color');
   return schema;
