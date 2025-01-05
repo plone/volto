@@ -22,7 +22,7 @@ To do so, define the schema, view component, variations, and schema enhancer, th
 
 ## Preparations
 
-In your Volto add-on, create a subfolder {file}`ExampleBlock06` inside the {file}`components` folder to save all the files required to create a block.
+In your Volto add-on, create a subfolder {file}`ExampleBlock06` inside the {file}`components` folder to save all the files required to create a block, its variations and the schema enhancer.
 
 
 ## Schema
