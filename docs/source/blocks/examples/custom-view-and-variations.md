@@ -190,22 +190,7 @@ But it can be anything.
 
 With all the block components ready, you need to register the block into Volto.
 
-To do so, open your add-on's {file}`index.js` file, and add the following contents.
-
-```js
-const applyConfig = (config) => {
-  config.settings.isMultilingual = false;
-  config.settings.supportedLanguages = ['en'];
-  config.settings.defaultLanguage = 'en';
-
-
-  return config;
-}
-
-export default applyConfig;
-```
-
-Before the last `return config;` statement, write the following configuration.
+To do so, open your add-on's {file}`index.js` file, and insert the following contents before the last `return config` statement:
 
 ```js
   config.blocks.blocksConfig.block05 = {
