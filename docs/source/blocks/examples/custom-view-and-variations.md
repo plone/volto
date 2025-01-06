@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "Volto block with custom schema and view components using variations"
-    "property=og:description": "Volto block with custom schema and view components using variations"
-    "property=og:title": "Volto block with custom schema and view components using variations"
-    "keywords": "Volto, React, blocks, schema, variation, view component, Plone"
+    'description': 'Volto block with custom schema and view components using variations'
+    'property=og:description': 'Volto block with custom schema and view components using variations'
+    'property=og:title': 'Volto block with custom schema and view components using variations'
+    'keywords': 'Volto, React, blocks, schema, variation, view component, Plone'
 ---
 
 (custom-schema-view-and-variations)=
@@ -193,32 +193,31 @@ With all the block components ready, you need to register the block into Volto.
 To do so, open your add-on's {file}`index.js` file, and insert the following contents before the last `return config;` statement.
 
 ```js
-  config.blocks.blocksConfig.block03 = {
-    id: 'block03', // this is the block id, it must match the id on the previous line
-    title: 'Block 03', // this is the block title
-    view: View03, // this is the block's view component
-    // We do not need a specific edit component, Volto will use the default
-    // edit: null,
-    blockSchema: Schema03, // this is the schema that will be used to render the edit form
-    icon: imagesSVG, // this is the image that will be shown in the block selector
-    sidebarTab: 1, // this is set to 1 to have the `Block` tab selected in the sidebar editor when editing this block
-    // these are the variations available for this block
-    variations: [
-      {
-        id: 'variation01', // this is the id of the variation
-        title: 'Variation 01', // this is the title of the variation
-        isDefault: true, // this signals if this is the default variation for this block
-        template: VariationView0301, // this is the component that will render the variation
-      },
-      {
-        id: 'variation02',
-        title: 'Variation 02',
-        isDefault: false,
-        template: VariationView0302,
-      },
-    ],
-  };
-
+config.blocks.blocksConfig.block03 = {
+  id: 'block03', // this is the block id, it must match the id on the previous line
+  title: 'Block 03', // this is the block title
+  view: View03, // this is the block's view component
+  // We do not need a specific edit component, Volto will use the default
+  // edit: null,
+  blockSchema: Schema03, // this is the schema that will be used to render the edit form
+  icon: imagesSVG, // this is the image that will be shown in the block selector
+  sidebarTab: 1, // this is set to 1 to have the `Block` tab selected in the sidebar
+  // editor when editing this block these are the variations available for this block
+  variations: [
+    {
+      id: 'variation01', // this is the id of the variation
+      title: 'Variation 01', // this is the title of the variation
+      isDefault: true, // this signals if this is the default variation for this block
+      template: VariationView0301, // this is the component that will render the variation
+    },
+    {
+      id: 'variation02',
+      title: 'Variation 02',
+      isDefault: false,
+      template: VariationView0302,
+    },
+  ],
+};
 ```
 
 At the top of the file, import the relevant components as follows.

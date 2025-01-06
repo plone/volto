@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "Volto block with custom schema and view components using variations and a schema enhancer in one of the variations"
-    "property=og:description": "Volto block with custom schema and view components using variations and a schema enhancer in one of the variations"
-    "property=og:title": "Volto block with custom schema, variations, and schema enhancer"
-    "keywords": "Volto, React, blocks, variation, custom, schema, enhancer, Plone"
+    'description': 'Volto block with custom schema and view components using variations and a schema enhancer in one of the variations'
+    'property=og:description': 'Volto block with custom schema and view components using variations and a schema enhancer in one of the variations'
+    'property=og:title': 'Volto block with custom schema, variations, and schema enhancer'
+    'keywords': 'Volto, React, blocks, variation, custom, schema, enhancer, Plone'
 ---
 
 (custom-schema-view-variations-schema-enhancer)=
@@ -23,7 +23,6 @@ To do so, define the schema, view component, variations, and schema enhancer, th
 ## Preparations
 
 In your Volto add-on, create a subfolder {file}`ExampleBlock04` inside the {file}`components` folder to save all the files required to create a block, its variations, and the schema enhancer.
-
 
 ## Schema
 
@@ -90,7 +89,7 @@ const messages = defineMessages({
   color: {
     id: 'color',
     defaultMessage: 'Color',
-  }
+  },
 });
 
 export default messages;
@@ -149,13 +148,13 @@ In this example, you will add a new field named `color` when using `schemaEnhanc
 Create a file {file}`enhancers.js` in the {file}`BlockSchema04` folder with the following content:
 
 ```js
-
 import messages from './messages';
 
 const schemaEnhancerVariation02 = ({ formData, schema, intl }) => {
   // schema holds the original schema (see the Schema.js file)
   // so you need to define the new property under `schema.properties`
-  // and push its name to the relevant fieldset, in this case the first one (note the `fieldsets[0]`)
+  // and push its name to the relevant fieldset, in this case the first one
+  // (note the `fieldsets[0]`)
   schema.properties.color = {
     title: intl.formatMessage(messages.color),
   };
@@ -164,7 +163,6 @@ const schemaEnhancerVariation02 = ({ formData, schema, intl }) => {
 };
 
 export default schemaEnhancerVariation02;
-
 ```
 
 ## Variations
@@ -229,32 +227,35 @@ With all the block components ready, you need to register the block into Volto.
 To do so, open your add-on's {file}`index.js` file, and insert the following contents before the last `return config;` statement.
 
 ```js
-  config.blocks.blocksConfig.block04 = {
-    id: 'block04', // this is the block id, it must match the id on the previous line
-    title: 'Block 04', // this is the block title
-    view: View04, // this is the block's view component
-    // We do not need a specific edit component, Volto will use the default
-    // edit: null,
-    blockSchema: Schema04, // this is the schema that will be used to render the edit form
-    icon: imagesSVG, // this is the image that will be shown in the block selector
-    sidebarTab: 1, // this is set to 1 to have the `Block` tab selected in the sidebar editor when editing this block
-    // these are the variations available for this block
-    variations: [
-      {
-        id: 'variation01', // this is the id of the variation
-        title: 'Variation 01', // this is the title of the variation
-        isDefault: true, // this signals if this is the default variation for this block
-        template: VariationView0401, // this is the component that will render the variation
-      },
-      {
-        id: 'variation02',
-        title: 'Variation 02',
-        isDefault: false,
-        template: VariationView0402,
-        schemaEnhancer: schemaEnhancerBlock04Variation02, // this is the schema enhancer definition
-      },
-    ],
-  };
+config.blocks.blocksConfig.block04 = {
+  id: 'block04', // this is the block id, it must match the id on the previous line
+  title: 'Block 04', // this is the block title
+  view: View04, // this is the block's view component
+  // We do not need a specific edit component, Volto will use the default
+  // edit: null,
+  blockSchema: Schema04, // this is the schema that will be used to render the edit form
+  icon: imagesSVG, // this is the image that will be shown in the block selector
+  sidebarTab: 1, // this is set to 1 to have the `Block` tab selected in the sidebar
+  // editor when editing this block these are the variations available for this block
+  // these are the variations available for this block
+  variations: [
+    {
+      id: 'variation01', // this is the id of the variation
+      title: 'Variation 01', // this is the title of the variation
+      isDefault: true, // this signals if this is the default variation for this block
+      template: VariationView0401, // this is the component that will render
+      // the variation
+    },
+    {
+      id: 'variation02',
+      title: 'Variation 02',
+      isDefault: false,
+      template: VariationView0402,
+      schemaEnhancer: schemaEnhancerBlock04Variation02, // this is the schema enhancer
+      // definition
+    },
+  ],
+};
 ```
 
 At the top of the file, import the relevant components as follows.

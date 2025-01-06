@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "Volto block with custom schema and view components"
-    "property=og:description": "Volto block with custom schema and view components"
-    "property=og:title": "Volto block with custom schema and view components"
-    "keywords": "Volto, React, blocks, grid, container, Plone"
+    'description': 'Volto block with custom schema and view components'
+    'property=og:description': 'Volto block with custom schema and view components'
+    'property=og:title': 'Volto block with custom schema and view components'
+    'keywords': 'Volto, React, blocks, grid, container, Plone'
 ---
 
 (custom-schema-and-view)=
@@ -125,15 +125,16 @@ To do so, open your add-on's {file}`index.js` file, and insert the following con
 
 ```js
 config.blocks.blocksConfig.block01 = {
-    id: 'block01', // this is the block id, it must match the id on the previous line
-    title: 'Block 01', // this is the block title
-    view: View01, // this is the block's view component
-    // We do not need a specific edit component, Volto will use the default
-    // edit: null;
-    blockSchema: Schema01, // this is the schema that will be used to render the edit form
-    icon: imagesSVG, // this is the image that will be shown in the block selector
-    sidebarTab: 1, // this is set to 1 to have the `Block` tab selected in the sidebar editor when editing this block
-  };
+  id: 'block01', // this is the block id, it must match the id on the previous line
+  title: 'Block 01', // this is the block title
+  view: View01, // this is the block's view component
+  // We do not need a specific edit component, Volto will use the default
+  // edit: null;
+  blockSchema: Schema01, // this is the schema that will be used to render the edit form
+  icon: imagesSVG, // this is the image that will be shown in the block selector
+  sidebarTab: 1, // this is set to 1 to have the `Block` tab selected in the sidebar
+  // editor when editing this block
+};
 ```
 
 At the top of the file, import the relevant components as follows.
