@@ -12,6 +12,8 @@ const { createAddonsLoader } = require('@plone/registry/create-addons-loader');
 const {
   createThemeAddonsLoader,
 } = require('@plone/registry/create-theme-loader');
+const { GenerateSW } = require('workbox-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { AddonRegistry } = require('@plone/registry/addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -63,6 +65,44 @@ const defaultModify = ({
       new LoadablePlugin({
         outputAsset: false,
         writeToDisk: { filename: path.resolve(`${projectRootPath}/build`) },
+      }),
+    );
+
+    config.plugins.push(
+      new GenerateSW({
+        clientsClaim: true,
+        skipWaiting: true,
+        maximumFileSizeToCacheInBytes: 5000000,
+        runtimeCaching: [
+          {
+            urlPattern: /images/,
+            handler: 'CacheFirst',
+          },
+          {
+            urlPattern: new RegExp(
+              '^https://fonts.(?:googleapis|gstatic).com/(.*)',
+            ),
+            handler: 'CacheFirst',
+          },
+          {
+            urlPattern: /.*/,
+            handler: 'NetworkFirst',
+          },
+        ],
+      }),
+      new WebpackPwaManifest({
+        name: packageJson.name,
+        short_name: packageJson.description,
+        theme_color: '#ffffff',
+        background_color: '#000000',
+        inject: false,
+        fingerprints: false,
+        icons: [
+          {
+            src: path.resolve('public/android-chrome-192x192.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+          },
+        ],
       }),
     );
 

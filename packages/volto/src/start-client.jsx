@@ -17,6 +17,7 @@ import configureStore from '@plone/volto/store';
 import Api from '@plone/volto/helpers/Api/Api';
 import { persistAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
 import ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
+import * as serviceWorker from '../serviceWorker';
 
 export const history = createBrowserHistory();
 
@@ -76,3 +77,7 @@ export default function client() {
     );
   });
 }
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below.
+serviceWorker.register();

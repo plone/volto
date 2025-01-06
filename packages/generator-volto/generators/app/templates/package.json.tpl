@@ -4,7 +4,7 @@
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
-    "start": "razzle start",
+    "start": "NODE_ENV=production razzle start",
     "postinstall": "make omelette && make patches",
     "build": "razzle build --noninteractive",
     "lint": "eslint --max-warnings=0 'src/**/*.{js,jsx,ts,tsx}'",

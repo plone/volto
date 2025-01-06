@@ -268,7 +268,9 @@
     "universal-cookie-express": "4.0.3",
     "url": "^0.11.3",
     "use-deep-compare-effect": "1.8.1",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "webpack-pwa-manifest": "^4.3.0",
+    "workbox-webpack-plugin": "^7.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
