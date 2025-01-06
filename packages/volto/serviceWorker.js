@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 export function register(config) {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -11,10 +12,10 @@ function registerValidSW(swUrl, config) {
   navigator.serviceWorker
     .register(swUrl)
     .then((registration) => {
-      //sucessfully registered
+      console.log('ServiceWorker registered');
     })
     .catch((error) => {
-      //error registering
+      console.error('Error during service worker registration:', error);
     });
 }
 
