@@ -1,1 +1,1 @@
-Added Italian translations @giuliaghisini
+Added Italian translations. @giuliaghisini
