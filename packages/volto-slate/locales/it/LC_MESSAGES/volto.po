@@ -16,12 +16,12 @@ msgid "Add link"
 msgstr "Aggiungi un link"
 
 #: widgets/HtmlSlateWidget
-msgid "An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
-msgstr "E' occorso un errore durante la modifica del campo "{name}". Siamo stati notificati e stiamo indagando. Si prega di salvare il lavoro e riprovare. Se il problema persiste, contattare l'amministratore del sito."
+msgid "An error has occurred while editing \"{name}\" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
+msgstr "E' occorso un errore durante la modifica del campo \"{name}\". Siamo stati notificati e stiamo indagando. Si prega di salvare il lavoro e riprovare. Se il problema persiste, contattare l'amministratore del sito."
 
 #: widgets/RichTextWidgetView
-msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
-msgstr "E' occorso un errore durante il rendering del campo "{name}". Siamo stati notificati e stiamo indagando. Se il problema persiste, contattare l'amministratore del sito."
+msgid "An error has occurred while rendering \"{name}\" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
+msgstr "E' occorso un errore durante il rendering del campo \"{name}\". Siamo stati notificati e stiamo indagando. Se il problema persiste, contattare l'amministratore del sito."
 
 #: blocks/Table/TableBlockEdit
 msgid "Bottom"
