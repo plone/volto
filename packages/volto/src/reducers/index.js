@@ -53,7 +53,10 @@ import upgrade from './upgrade/upgrade';
 import userschema from './userschema/userschema';
 import site from './site/site';
 import navroot from './navroot/navroot';
-
+import {
+  getContentTranslationServices,
+  getContentTranslation,
+} from './translations/translations';
 /**
  * Root reducer.
  * @function
@@ -111,6 +114,8 @@ const reducers = {
   userschema,
   site,
   navroot,
+  content_translation: getContentTranslation,
+  content_translation_services: getContentTranslationServices,
 };
 
 export default reducers;

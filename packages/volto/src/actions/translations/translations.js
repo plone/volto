@@ -7,6 +7,8 @@ import {
   DELETE_TRANSLATION,
   GET_TRANSLATION_LOCATOR,
   LINK_TRANSLATION,
+  GET_CONTENT_TRANSLATION,
+  GET_CONTENT_TRANSLATION_SERVICES,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -62,5 +64,53 @@ export function deleteLinkTranslation(url, lang) {
         language: lang,
       },
     },
+  };
+}
+
+/**
+ * Get content translation services
+ * @function getContentTranslationServices
+ * @returns {Object} Get registered content translation services action
+ */
+export function getContentTranslationServices() {
+  return {
+    type: GET_CONTENT_TRANSLATION_SERVICES,
+    request: {
+      op: 'get',
+      path: '/@translation-services',
+    },
+  };
+}
+
+/**
+ * Get content translation
+ * @function getContentTranslation
+ * @param {string} source_language language code of the source string
+ * @param {string} target_language language code of the desired translation
+ * @param {string} original_text the text to be translated
+ * @param {string} service. Optional. The name of the service that should be used to translate the text
+ * @param {string} subrequest. Optional. Key of the subrequest.
+ * @returns {Object} Get content translation action.
+ */
+export function getContentTranslation(
+  source_language,
+  target_language,
+  original_text,
+  service,
+  subrequest,
+) {
+  return {
+    type: GET_CONTENT_TRANSLATION,
+    request: {
+      op: 'post',
+      path: '/@translate-text',
+      data: {
+        source_language: source_language,
+        target_language: target_language,
+        original_text: original_text,
+        service: service,
+      },
+    },
+    subrequest: subrequest,
   };
 }
