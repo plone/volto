@@ -73,7 +73,7 @@ describe('ControlPanel: Dexterity Content-Types Schema', () => {
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-bike').click();
     cy.get('input[name="title"]').type('Kona').should('have.value', 'Kona');
-    cy.get('.formtabs a').contains('Specifications').click();
+    cy.get('.formtabs a').click();
     cy.get('.react-select-container[id="field-color"]')
       .click()
       .type('Green{enter}');
