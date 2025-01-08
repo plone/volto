@@ -207,6 +207,9 @@ let config = {
     addBlockButton: {
       enabled: false,
     },
+    hideShowBlocks: {
+      enabled: true,
+    },
   },
   widgets: {
     ...widgetMapping,

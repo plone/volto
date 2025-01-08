@@ -667,21 +667,23 @@ class Form extends Component {
             }
             onSelectBlock={this.onSelectBlock}
           />
-          <ShowHideBlocksToolbar
-            formData={formData}
-            onChangeBlocks={(newBlockData) => {
-              const newFormData = {
-                ...formData,
-                ...newBlockData,
-              };
-              this.setState({
-                formData: newFormData,
-              });
-              if (this.props.global) {
-                this.props.setFormData(newFormData);
-              }
-            }}
-          />
+          {config.experimental.hideShowBlocks.enabled && (
+            <ShowHideBlocksToolbar
+              formData={formData}
+              onChangeBlocks={(newBlockData) => {
+                const newFormData = {
+                  ...formData,
+                  ...newBlockData,
+                };
+                this.setState({
+                  formData: newFormData,
+                });
+                if (this.props.global) {
+                  this.props.setFormData(newFormData);
+                }
+              }}
+            />
+          )}
           <UndoToolbar
             state={{
               formData,

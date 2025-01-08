@@ -55,17 +55,6 @@ exports[`Allow override of blocksConfig 1`] = `
                 </div>
               </div>
               <button
-                aria-label="hide"
-                class="ui grey basic icon button hide-show-button"
-              >
-                <svg
-                  class="icon"
-                  style="height: 18px; width: auto; fill: currentColor;"
-                  viewBox=""
-                  xmlns=""
-                />
-              </button>
-              <button
                 aria-label="delete"
                 class="ui basic icon button delete-button"
               >

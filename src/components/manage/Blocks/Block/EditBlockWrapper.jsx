@@ -103,23 +103,25 @@ const EditBlockWrapper = (props) => {
           {children}
           {selected && !required && editable && (
             <>
-              <Button
-                icon
-                basic
-                color={!data.hidden ? 'grey' : 'red'}
-                onClick={() =>
-                  onChangeBlock(block, {
-                    ...data,
-                    hidden: !data.hidden,
-                  })
-                }
-                className="hide-show-button"
-                aria-label={intl.formatMessage(
-                  !data.hidden ? messages.hide : messages.show,
-                )}
-              >
-                <Icon name={!data.hidden ? hideSVG : showSVG} size="18px" />
-              </Button>
+              {config.experimental.hideShowBlocks.enabled && (
+                <Button
+                  icon
+                  basic
+                  color={!data.hidden ? 'grey' : 'red'}
+                  onClick={() =>
+                    onChangeBlock(block, {
+                      ...data,
+                      hidden: !data.hidden,
+                    })
+                  }
+                  className="hide-show-button"
+                  aria-label={intl.formatMessage(
+                    !data.hidden ? messages.hide : messages.show,
+                  )}
+                >
+                  <Icon name={!data.hidden ? hideSVG : showSVG} size="18px" />
+                </Button>
+              )}
               <Button
                 icon
                 basic
