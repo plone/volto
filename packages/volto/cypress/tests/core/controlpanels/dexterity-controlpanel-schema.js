@@ -28,7 +28,7 @@ describe('ControlPanel: Dexterity Content-Types Schema', () => {
 
     // Add field
     cy.get('button[id=addfield]').click();
-    cy.wait(2000);
+    cy.wait(4000);
     cy.get('.modal .react-select-container').click().type('Choice{enter}');
     cy.get('.modal input[id="field-title"]')
       .type('Color')
