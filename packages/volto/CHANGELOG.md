@@ -22,6 +22,7 @@ myst:
 ### Feature
 
 - Added a setting in the `config` object to set the site's CSS layers, if required. @sneridagh [#6539](https://github.com/plone/volto/issues/6539)
+- Added pwa @mohit-nagaraj [#68](https://github.com/plone/volto/issues/68)
 
 ### Internal
 
