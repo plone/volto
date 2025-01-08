@@ -78,6 +78,10 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
         [
           \\"zh_CN\\",
           \\"中文\\"
+        ],
+        [
+          \\"sv\\",
+          \\"Svenska\\"
         ]
       ]
     }
