@@ -31,7 +31,7 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
   \\"properties\\": {
     \\"filterTypes\\": {
       \\"title\\": \\"Filter transactions by\\",
-      \\"description\\": \\"Filter transactions by User, Path or Date\\",
+      \\"description\\": \\"Filter transactions by user, path or date\\",
       \\"type\\": \\"string\\",
       \\"choices\\": [
         [
@@ -49,7 +49,7 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
       ]
     },
     \\"filterByUsername\\": {
-      \\"title\\": \\"Enter Username\\",
+      \\"title\\": \\"Enter username\\",
       \\"type\\": \\"string\\"
     },
     \\"filterByPath\\": {
@@ -57,7 +57,7 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
       \\"type\\": \\"string\\"
     },
     \\"filterByDate\\": {
-      \\"title\\": \\"Enter Date and time\\",
+      \\"title\\": \\"Enter date and time\\",
       \\"description\\": \\"Will display transactions from start of selected day, until time selected\\",
       \\"type\\": \\"date\\"
     }
