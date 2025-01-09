@@ -1,0 +1,1 @@
+Resolved an issue where block restrictions only applied to top-level blocks, allowing restricted blocks (e.g., Title) in nested contexts. The system now enforces restrictions across all block levels, preventing duplicates throughout the page.
