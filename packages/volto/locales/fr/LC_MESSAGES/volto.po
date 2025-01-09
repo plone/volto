@@ -1324,11 +1324,6 @@ msgstr "Activé ?"
 msgid "End Date"
 msgstr "Date de fin"
 
-#. Default: "Enter Date and time"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Enter Date and time to filter"
-msgstr ""
-
 #. Default: "Will display transactions from start of selected day, until time selected"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Enter Date description filter"
@@ -1339,7 +1334,7 @@ msgstr ""
 msgid "Enter URL or select an item"
 msgstr "Saisissez l'URL ou sélectionnez un élément"
 
-#. Default: "Enter Username"
+#. Default: "Enter username"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Enter Username to filter"
 msgstr ""
@@ -1353,6 +1348,11 @@ msgstr "Saisissez un nom d'utilisateur ci-dessus à rechercher ou cliquez sur 'A
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Saisissez votre adresse e-mail. Elle sera votre nom d'utilisateur. Nous respectons votre vie privée, nous ne donnerons pas votre adresse à un tiers et elle ne sera pas exposée."
+
+#. Default: "Enter date and time"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter date and time to filter"
+msgstr ""
 
 #. Default: "Enter full name, e.g. John Smith."
 #: components/theme/Register/Register
@@ -1587,7 +1587,7 @@ msgstr "Filtrer par préfixe"
 msgid "Filter transactions by"
 msgstr ""
 
-#. Default: "Filter transactions by User, Path or Date"
+#. Default: "Filter transactions by user, path or date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Filter transactions by User, Path or Date"
 msgstr ""
@@ -4663,17 +4663,17 @@ msgstr ""
 
 #. Default: "Date"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "filter by Date"
+msgid "filter by date"
 msgstr ""
 
 #. Default: "Path"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "filter by Path"
+msgid "filter by path"
 msgstr ""
 
 #. Default: "Username"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "filter by Username"
+msgid "filter by username"
 msgstr ""
 
 #. Default: "flush intIds and rebuild relations"

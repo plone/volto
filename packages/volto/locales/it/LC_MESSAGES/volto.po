@@ -1317,11 +1317,6 @@ msgstr "Abilitato?"
 msgid "End Date"
 msgstr "Data di fine"
 
-#. Default: "Enter Date and time"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Enter Date and time to filter"
-msgstr "Inserisci data e ora per filtrare"
-
 #. Default: "Will display transactions from start of selected day, until time selected"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Enter Date description filter"
@@ -1332,7 +1327,7 @@ msgstr "Verranno mostrate le transazioni dall'inizio del giorno selezionato, fin
 msgid "Enter URL or select an item"
 msgstr "Inserisci un URL o seleziona un elemento"
 
-#. Default: "Enter Username"
+#. Default: "Enter username"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Enter Username to filter"
 msgstr "Inserisci uno username"
@@ -1346,6 +1341,11 @@ msgstr "Inserisci uno username da ricercare, oppure clicca su 'Vedi tutto'"
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Inserisci un indirizzo e-mail. Esso sarà il tuo nome utente. Rispettiamo la tua privacy: non daremo l'indirizzo a terzi, né verrà esposto nel portale."
+
+#. Default: "Enter date and time"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter date and time to filter"
+msgstr ""
 
 #. Default: "Enter full name, e.g. John Smith."
 #: components/theme/Register/Register
@@ -1580,7 +1580,7 @@ msgstr "Filtra per prefisso"
 msgid "Filter transactions by"
 msgstr "Filtra le transazioni per"
 
-#. Default: "Filter transactions by User, Path or Date"
+#. Default: "Filter transactions by user, path or date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Filter transactions by User, Path or Date"
 msgstr "Filtra le transazioni per Utnete, Path o Data"
@@ -4656,18 +4656,18 @@ msgstr "Questo sito non accetta file più grandi di {limit}"
 
 #. Default: "Date"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "filter by Date"
-msgstr "Data"
+msgid "filter by date"
+msgstr ""
 
 #. Default: "Path"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "filter by Path"
-msgstr "Path"
+msgid "filter by path"
+msgstr ""
 
 #. Default: "Username"
 #: components/manage/Controlpanels/UndoControlpanel
-msgid "filter by Username"
-msgstr "Nome utente"
+msgid "filter by username"
+msgstr ""
 
 #. Default: "flush intIds and rebuild relations"
 #: helpers/MessageLabels/MessageLabels
