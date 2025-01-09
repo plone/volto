@@ -1,1 +1,1 @@
-Resolved an issue where block restrictions only applied to top-level blocks, allowing restricted blocks (e.g., Title) in nested contexts. The system now enforces restrictions across all block levels, preventing duplicates throughout the page.
+Previously block restrictions only applied to top-level blocks, allowing restricted blocks, such as Title, in nested contexts. This change now enforces restrictions across all block levels, preventing duplicates throughout the page. @TechSubham
