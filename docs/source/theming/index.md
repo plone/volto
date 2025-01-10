@@ -11,6 +11,8 @@ myst:
 
 This section of the documentation describes theming in Volto.
 
+```{include} /_inc/_semanticui-deprecation.md
+```
 
 ## Conceptual guides
 
