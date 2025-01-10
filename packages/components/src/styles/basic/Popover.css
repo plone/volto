@@ -3,7 +3,7 @@
 @import './Switch.css';
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   .react-aria-Popover {
     --background-color: var(--overlay-background);
     max-width: 250px;

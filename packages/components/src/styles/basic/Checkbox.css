@@ -1,6 +1,6 @@
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   .react-aria-Checkbox {
     --selected-color: var(--highlight-background);
     --selected-color-pressed: var(--highlight-background-pressed);

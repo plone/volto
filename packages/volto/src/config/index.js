@@ -134,6 +134,7 @@ let config = {
     maxFileUploadSize: null,
     storeExtenders: [],
     showTags: true,
+    showRelatedItems: false,
     controlpanels: [],
     controlPanelsIcons,
     filterControlPanels,

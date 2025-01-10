@@ -1,6 +1,6 @@
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   :root {
     /* These has to be mapped to global css custom properties based on the SG scales */
     --quanta-icon-default-size-s: 18px;

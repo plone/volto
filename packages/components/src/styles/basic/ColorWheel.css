@@ -1,4 +1,4 @@
-@layer plone-components {
+@layer plone-components.base {
   .react-aria-ColorThumb {
     width: 20px;
     height: 20px;

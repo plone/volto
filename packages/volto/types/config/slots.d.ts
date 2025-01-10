@@ -1,6 +1,6 @@
 export default slots;
 declare namespace slots {
-    let belowContent: {
+    let belowContent: ({
         name: string;
         component: {
             ({ content }: {
@@ -17,5 +17,13 @@ declare namespace slots {
                 };
             };
         };
-    }[];
+    } | {
+        name: string;
+        component: {
+            ({ content }: any[]): JSX.Element;
+            propTypes: {
+                content: any;
+            };
+        };
+    })[];
 }

@@ -19,6 +19,7 @@ const languages = {
   pt: 'Português',
   pt_BR: 'Português (Brasil)',
   zh_CN: '中文',
+  sv: 'Svenska',
 };
 
 // module.exports = languages;
