@@ -54,17 +54,32 @@ exports[`Allow override of blocksConfig 1`] = `
                   a
                 </div>
               </div>
-              <button
-                aria-label="delete"
-                class="ui basic icon button delete-button"
+              <div
+                class="Control-Icons"
               >
-                <svg
-                  class="icon"
-                  style="height: 18px; width: auto; fill: currentColor;"
-                  viewBox=""
-                  xmlns=""
-                />
-              </button>
+                <button
+                  aria-label="delete"
+                  class="ui basic icon button delete-button"
+                >
+                  <svg
+                    class="icon hover:text-red-500 transition-colors duration-300"
+                    style="height: 20px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+                <button
+                  aria-label="Save"
+                  class="ui basic icon button save-button"
+                >
+                  <svg
+                    class="icon hover:text-green-500 transition-colors duration-300"
+                    style="height: 22px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
             </div>
           </div>
         </div>
