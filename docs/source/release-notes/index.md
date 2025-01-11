@@ -17,12 +17,29 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.6.0 (2025-01-11)
+
+### Feature
+
+- Add component to show related items, which can be enabled using the `showRelatedItems` setting. @wesleybl [#3740](https://github.com/plone/volto/issues/3740)
+
+### Bugfix
+
+- The depth field in the base search query of the search block was ignored, causing search results to include items beyond the specified depth level. Search results now respect the specified depth configuration. @TechSubham [#5856](https://github.com/plone/volto/issues/5856)
+- No longer add classes from the query string search text in the `body` tag. @Abhishek-17h [#6493](https://github.com/plone/volto/issues/6493)
+- Fixed folder contents issues with persistent selection across page changes. @pnicolli [#6554](https://github.com/plone/volto/issues/6554)
+- Fix robots.txt in devmode @reebalazs [#6572](https://github.com/plone/volto/issues/6572)
+
+### Documentation
+
+- Fix redirecting links to Mozilla Developer Network's responsive images. @stevepiercy [#6552](https://github.com/plone/volto/issues/6552)
+- Add Volto block examples in the documentation. @erral [#6560](https://github.com/plone/volto/issues/6560)
+
 ## 18.5.0 (2025-01-09)
 
 ### Feature
 
 - Add component to show related items, which can be enabled using the `showRelatedItems` setting. @wesleybl [#3740](https://github.com/plone/volto/issues/3740)
-- Added {file}sv/LC_MESSAGES/volto.poinlocales and updated{file}/volto/src/constants/Languages.js to include Swedish @TechSubham [#5957](https://github.com/plone/volto/issues/5957)
 
 ### Bugfix
 

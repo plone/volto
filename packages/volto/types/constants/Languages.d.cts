@@ -13,4 +13,3 @@ export let ja: string;
 export let pt: string;
 export let pt_BR: string;
 export let zh_CN: string;
-export let sv: string;
