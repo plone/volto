@@ -22,7 +22,6 @@ myst:
 ### Feature
 
 - Add component to show related items, which can be enabled using the `showRelatedItems` setting. @wesleybl [#3740](https://github.com/plone/volto/issues/3740)
-- Added {file}sv/LC_MESSAGES/volto.poinlocales and updated{file}/volto/src/constants/Languages.js to include Swedish @TechSubham [#5957](https://github.com/plone/volto/issues/5957)
 
 ### Bugfix
 
