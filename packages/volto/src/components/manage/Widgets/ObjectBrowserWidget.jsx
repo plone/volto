@@ -16,10 +16,10 @@ import { Image, Label, Popup, Button } from 'semantic-ui-react';
 import {
   flattenToAppURL,
   isInternalURL,
-  isUrl,
   normalizeUrl,
   removeProtocol,
 } from '@plone/volto/helpers/Url/Url';
+import { urlValidator } from '@plone/volto/helpers/FormValidation/validators';
 import { searchContent } from '@plone/volto/actions/search/search';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -102,6 +102,7 @@ export class ObjectBrowserWidgetComponent extends Component {
   state = {
     manualLinkInput: '',
     validURL: false,
+    errors: [],
   };
 
   constructor(props) {
@@ -230,7 +231,16 @@ export class ObjectBrowserWidgetComponent extends Component {
 
   validateManualLink = (url) => {
     if (this.props.allowExternals) {
-      return isUrl(url);
+      const error = urlValidator({
+        value: url,
+        formatMessage: this.props.intl.formatMessage,
+      });
+      if (error && url !== '') {
+        this.setState({ errors: [error] });
+      } else {
+        this.setState({ errors: [] });
+      }
+      return !Boolean(error);
     } else {
       return isInternalURL(url);
     }
@@ -341,9 +351,14 @@ export class ObjectBrowserWidgetComponent extends Component {
             onChange(id, this.props.return === 'single' ? null : []);
           };
 
+    const props = {
+      ...this.props,
+      error: this.props.error.concat(this.state.errors),
+    };
+
     return (
       <FormFieldWrapper
-        {...this.props}
+        {...props}
         className={description ? 'help text' : 'text'}
       >
         <div
@@ -372,6 +387,7 @@ export class ObjectBrowserWidgetComponent extends Component {
               items.length === 0 &&
               this.props.mode !== 'multiple' && (
                 <input
+                  onBlur={this.onSubmitManualLink}
                   onKeyDown={this.onKeyDownManualLink}
                   onChange={this.onManualLinkInput}
                   value={this.state.manualLinkInput}
