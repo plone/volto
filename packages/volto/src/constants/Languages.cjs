@@ -3,7 +3,7 @@
  * @module constants/Languages
  */
 
-module.exports = {
+const languages = {
   ca: 'Català',
   de: 'Deutsch',
   en: 'English',
@@ -21,4 +21,7 @@ module.exports = {
   zh_CN: '中文',
 };
 
-// export default languages;
+// module.exports = languages;
+// module.exports = { default: languages };
+// TODO: For some reason loading cjs from ESM fails, and this has to export default as ESM :/
+export default languages;

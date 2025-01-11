@@ -15,12 +15,12 @@ const LinkView = ({ token, content }) => {
       const { remoteUrl } = content;
       if (isInternalURL(remoteUrl)) {
         history.replace(flattenToAppURL(remoteUrl));
-      } else if (!__SERVER__) {
+      } else if (!import.meta.env.SSR) {
         window.location.href = flattenToAppURL(remoteUrl);
       }
     }
   }, [content, history, token]);
-  if (__SERVER__ && !token && content.remoteUrl) {
+  if (import.meta.env.SSR && !token && content.remoteUrl) {
     return <Redirect to={content.remoteUrl} />;
   }
   const { title, description, remoteUrl } = content;

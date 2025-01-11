@@ -62,7 +62,7 @@ class Cell extends Component {
 
   render() {
     return (
-      __CLIENT__ && (
+      !import.meta.env.SSR && (
         <SlateEditor
           tabIndex={0}
           onChange={this.onChange}

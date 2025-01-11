@@ -9,22 +9,15 @@ import map from 'lodash/map';
 import { Form } from 'semantic-ui-react';
 import SelectInput from './SelectInput';
 import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { useSelector } from 'react-redux';
+import moment from 'moment';
 
 /**
  * MonthOfTheYearField component class.
  * @function MonthOfTheYearField
  * @returns {string} Markup of the component.
  */
-const MonthOfTheYearField = ({
-  value,
-  disabled,
-  inline,
-  onChange,
-  moment: momentlib,
-}) => {
-  const moment = momentlib.default;
+const MonthOfTheYearField = ({ value, disabled, inline, onChange }) => {
   const lang = useSelector((state) => state.intl.locale);
   moment.locale(toBackendLang(lang));
   const monthList = [
@@ -71,4 +64,4 @@ MonthOfTheYearField.defaultProps = {
   onChange: null,
 };
 
-export default injectLazyLibs(['moment'])(MonthOfTheYearField);
+export default MonthOfTheYearField;

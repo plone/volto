@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { DropTarget, DragSource } from 'react-dnd';
 
 const widthValues = [
   'one',
@@ -70,8 +70,6 @@ ContentsIndexHeaderComponent.propTypes = {
 };
 
 const DragDropConnector = (props) => {
-  const { DropTarget, DragSource } = props.reactDnd;
-
   const DndConnectedContentsIndexHeader = React.useMemo(
     () =>
       DropTarget(
@@ -110,10 +108,11 @@ const DragDropConnector = (props) => {
           }),
         )(injectIntl(ContentsIndexHeaderComponent)),
       ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [DragSource, DropTarget],
   );
 
   return <DndConnectedContentsIndexHeader {...props} />;
 };
 
-export default injectLazyLibs('reactDnd')(DragDropConnector);
+export default DragDropConnector;

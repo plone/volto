@@ -170,7 +170,7 @@ export const TextLineEdit = (props) => {
     [renderClassName],
   );
 
-  if (typeof window.__SERVER__ !== 'undefined') {
+  if (import.meta.env.SSR) {
     return <div />;
   }
   return (

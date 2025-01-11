@@ -5,7 +5,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { save, load } from 'redux-localstorage-simple';
 
 import config from '@plone/volto/registry';
-import reducers from '@root/reducers';
+import reducers from './reducers';
 
 import {
   api,
@@ -21,11 +21,11 @@ const configureStore = (initialState, history, apiHelper) => {
     blacklistRoutes,
     protectLoadStart,
     routerMiddleware(history),
-    thunk,
+    thunk.default || thunk, // This makes vite SSR happy, since the default import is wrong in Node land. Maybe need to be tweaked for it to continue working in Browser land. TODO: investigate why
     ...(apiHelper ? [api(apiHelper)] : []),
     userSessionReset,
     protectLoadEnd,
-    ...(__CLIENT__
+    ...(!import.meta.env.SSR
       ? [save({ states: config.settings.persistentReducers, debounce: 500 })]
       : []),
   ];
@@ -43,7 +43,7 @@ const configureStore = (initialState, history, apiHelper) => {
     }),
     {
       ...initialState,
-      ...(__CLIENT__
+      ...(!import.meta.env.SSR
         ? load({ states: config.settings.persistentReducers })
         : {}),
     },

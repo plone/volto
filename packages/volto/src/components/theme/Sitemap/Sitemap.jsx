@@ -107,7 +107,7 @@ export default compose(
     {
       key: 'navigation',
       promise: ({ location, store: { dispatch, getState } }) => {
-        if (!__SERVER__) return;
+        if (!import.meta.env.SSR) return;
         const { settings } = config;
         const path = getSitemapPath(
           location.pathname,

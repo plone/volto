@@ -4,8 +4,10 @@ import { List } from 'semantic-ui-react';
 import cx from 'classnames';
 
 import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { useSelector } from 'react-redux';
+
+import moment from 'moment';
+import { RRule, rrulestr } from 'rrule';
 
 export const datesForDisplay = (start, end, moment) => {
   const mStart = moment(start);
@@ -25,10 +27,9 @@ export const datesForDisplay = (start, end, moment) => {
   };
 };
 
-const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
+const When_ = ({ start, end, whole_day, open_end }) => {
   const lang = useSelector((state) => state.intl.locale);
 
-  const moment = momentlib.default;
   moment.locale(toBackendLang(lang));
 
   const datesInfo = datesForDisplay(start, end, moment);
@@ -100,7 +101,7 @@ const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
   );
 };
 
-export const When = injectLazyLibs(['moment'])(When_);
+export const When = When_;
 
 When.propTypes = {
   start: PropTypes.string.isRequired,
@@ -109,14 +110,7 @@ When.propTypes = {
   open_end: PropTypes.bool,
 };
 
-export const Recurrence_ = ({
-  recurrence,
-  start,
-  moment: momentlib,
-  rrule,
-}) => {
-  const moment = momentlib.default;
-  const { RRule, rrulestr } = rrule;
+export const Recurrence_ = ({ recurrence, start }) => {
   if (recurrence.indexOf('DTSTART') < 0) {
     var dtstart = RRule.optionsToString({
       dtstart: new Date(start),
@@ -134,7 +128,7 @@ export const Recurrence_ = ({
     />
   );
 };
-export const Recurrence = injectLazyLibs(['moment', 'rrule'])(Recurrence_);
+export const Recurrence = Recurrence_;
 
 Recurrence.propTypes = {
   recurrence: PropTypes.string.isRequired,

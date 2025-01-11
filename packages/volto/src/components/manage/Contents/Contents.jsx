@@ -67,7 +67,6 @@ import ContentsTagsModal from '@plone/volto/components/manage/Contents/ContentsT
 import ContentsPropertiesModal from '@plone/volto/components/manage/Contents/ContentsPropertiesModal';
 
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -90,6 +89,10 @@ import sortUpSVG from '@plone/volto/icons/sort-up.svg';
 import downKeySVG from '@plone/volto/icons/down-key.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+import { toast } from 'react-toastify';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 const messages = defineMessages({
   back: {
@@ -442,7 +445,7 @@ class Contents extends Component {
       this.fetchContents(nextProps.pathname);
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      this.props.toastify.toast.success(
+      toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -476,7 +479,7 @@ class Contents extends Component {
       const msgBody =
         nextProps.clipboardRequest.error?.response?.body?.message ||
         this.props.intl.formatMessage(messages.error);
-      this.props.toastify.toast.error(
+      toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
@@ -489,7 +492,7 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.loaded
     ) {
-      this.props.toastify.toast.success(
+      toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -499,7 +502,7 @@ class Contents extends Component {
     }
 
     if (this.props.deleteRequest.loading && nextProps.deleteRequest.error) {
-      this.props.toastify.toast.error(
+      toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.deleteError)}
@@ -509,7 +512,7 @@ class Contents extends Component {
     }
 
     if (this.props.orderRequest.loading && nextProps.orderRequest.loaded) {
-      this.props.toastify.toast.success(
+      toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -921,7 +924,7 @@ class Contents extends Component {
       showWorkflow: false,
       selected: [],
     });
-    this.props.toastify.toast.success(
+    toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -995,7 +998,7 @@ class Contents extends Component {
   cut(event, { value }) {
     this.props.cut(value ? [value] : this.state.selected);
     this.onSelectNone();
-    this.props.toastify.toast.success(
+    toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -1014,7 +1017,7 @@ class Contents extends Component {
   copy(event, { value }) {
     this.props.copy(value ? [value] : this.state.selected);
     this.onSelectNone();
-    this.props.toastify.toast.success(
+    toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -1862,14 +1865,12 @@ class Contents extends Component {
 let dndContext;
 
 const DragDropConnector = (props) => {
-  const { DragDropContext } = props.reactDnd;
-  const HTML5Backend = props.reactDndHtml5Backend.default;
-
   const DndConnectedContents = React.useMemo(() => {
     if (!dndContext) {
       dndContext = DragDropContext(HTML5Backend);
     }
     return dndContext(Contents);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [DragDropContext, HTML5Backend]);
 
   return <DndConnectedContents {...props} />;
@@ -1877,7 +1878,6 @@ const DragDropConnector = (props) => {
 
 export const __test__ = compose(
   injectIntl,
-  injectLazyLibs(['toastify', 'reactDnd']),
   connect(
     (store, props) => {
       return {
@@ -1965,5 +1965,4 @@ export default compose(
         await dispatch(listActions(getBaseUrl(location.pathname))),
     },
   ]),
-  injectLazyLibs(['toastify', 'reactDnd', 'reactDndHtml5Backend']),
 )(DragDropConnector);

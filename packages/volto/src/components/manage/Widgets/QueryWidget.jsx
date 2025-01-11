@@ -3,7 +3,7 @@
  * @module components/manage/Widgets/QuerystringWidget
  */
 
-import React, { Component } from 'react';
+import React, { lazy, Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -17,7 +17,6 @@ import map from 'lodash/map';
 import { defineMessages, injectIntl } from 'react-intl';
 import { getQuerystring } from '@plone/volto/actions/querystring/querystring';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 
@@ -29,6 +28,8 @@ import {
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+const Select = lazy(() => import('react-select'));
 
 const messages = defineMessages({
   Criteria: {
@@ -266,11 +267,8 @@ export class QuerystringWidgetComponent extends Component {
       onEdit,
       indexes,
       fieldSet,
-      reactSelect,
       intl,
     } = this.props;
-
-    const Select = reactSelect.default;
 
     return (
       <Form.Field
@@ -499,7 +497,6 @@ export class QuerystringWidgetComponent extends Component {
 
 export default compose(
   injectIntl,
-  injectLazyLibs(['reactSelect']),
   connect(
     (state) => ({
       indexes: state.querystring.indexes,

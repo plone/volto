@@ -1,44 +1,23 @@
 // Internal proxy to bypass CORS while developing.
 
 import express from 'express';
-import config from '@plone/volto/registry';
 import {
   createProxyMiddleware,
   responseInterceptor,
 } from 'http-proxy-middleware';
 import querystring from 'querystring';
-import { parse as parseUrl } from 'url';
 
-const filter = function (pathname, req) {
-  // This is the proxy to the API in case the accept header is 'application/json'
-  return config.settings.devProxyToApiPath && pathname.startsWith('/++api++');
-};
-
-let _env = null;
-
-// the config is not available at the middleware creation time, so it needs to
-// read/cache the global configuration on first request.
-function getEnv() {
-  if (_env) {
-    return _env;
-  }
-
-  const apiPathURL = parseUrl(config.settings.apiPath);
-  const proxyURL = parseUrl(config.settings.devProxyToApiPath);
+function devProxyMiddlewareFn(req, res, next) {
+  const apiPathURL = new URL(res.locals.detectedHost || res.locals.apiPath);
+  const proxyURL = new URL(res.locals.devProxyToApiPath);
   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
   const instancePath = proxyURL.pathname;
 
-  _env = {
-    apiPathURL,
-    serverURL,
-    instancePath,
+  const filter = function (pathname, req) {
+    // This is the proxy to the API in case the accept header is 'application/json'
+    return res.locals.devProxyToApiPath && pathname.startsWith('/++api++');
   };
 
-  return _env;
-}
-
-export default function devProxyMiddleware() {
-  const middleware = express.Router();
   const devProxy = createProxyMiddleware(filter, {
     selfHandleResponse: true,
     onProxyRes: responseInterceptor(
@@ -68,13 +47,13 @@ export default function devProxyMiddleware() {
     },
     // target: serverURL,
     router: (req) => {
-      const { serverURL } = getEnv();
+      // const { serverURL } = getEnv();
       return serverURL;
     },
     pathRewrite: (path, req) => {
-      const { apiPathURL, instancePath } = getEnv();
+      // const { apiPathURL, instancePath } = getEnv();
       const target =
-        config.settings.proxyRewriteTarget ||
+        res.locals.proxyRewriteTarget ||
         `/VirtualHostBase/${apiPathURL.protocol.slice(0, -1)}/${
           apiPathURL.hostname
         }:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot`;
@@ -88,7 +67,13 @@ export default function devProxyMiddleware() {
     }),
   });
 
-  middleware.all('*', devProxy);
+  return devProxy(req, res, next);
+}
+
+export default function devProxyMiddleware() {
+  const middleware = express.Router();
+
+  middleware.all('*', devProxyMiddlewareFn);
   middleware.id = 'devProxy';
 
   return middleware;

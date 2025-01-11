@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
+import { getAPIResourceWithAuth } from '../helpers/Api/APIResourceWithAuth';
 
 const HEADERS = [
   'content-type',

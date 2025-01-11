@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { lazy, useEffect, useRef } from 'react';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import loadable from '@loadable/component';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import useLinkEditor from '@plone/volto/components/manage/AnchorPlugin/useLinkEditor';
@@ -27,7 +26,7 @@ import navTreeSVG from '@plone/volto/icons/nav.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
 
-const Dropzone = loadable(() => import('react-dropzone'));
+const Dropzone = lazy(() => import('react-dropzone'));
 
 export const ImageToolbar = ({ className, data, id, onChange, selected }) => (
   <div className="image-upload-widget-toolbar">

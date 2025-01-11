@@ -44,6 +44,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
 import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
 import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
+// TODO: RouteAnnouncer fails with hydation error?
 import RouteAnnouncer from '@plone/volto/components/theme/RouteAnnouncer/RouteAnnouncer';
 
 /**
@@ -188,7 +189,7 @@ export class App extends Component {
             </main>
           </Segment>
         </MultilingualRedirector>
-        <RouteAnnouncer />
+        {/* <RouteAnnouncer /> */}
         <Footer />
         <LockingToastsFactory
           content={this.props.content}
@@ -271,7 +272,7 @@ export function connectAppComponent(AppComponent) {
         promise: ({ location, store: { dispatch } }) => {
           // Do not trigger the breadcrumbs action if the expander is present
           if (
-            __SERVER__ &&
+            import.meta.env.SSR &&
             !hasApiExpander('breadcrumbs', getBaseUrl(location.pathname))
           ) {
             return dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
@@ -281,14 +282,14 @@ export function connectAppComponent(AppComponent) {
       {
         key: 'content',
         promise: ({ location, store }) =>
-          __SERVER__ && fetchContent({ store, location }),
+          import.meta.env.SSR && fetchContent({ store, location }),
       },
       {
         key: 'navigation',
         promise: ({ location, store: { dispatch } }) => {
           // Do not trigger the navigation action if the expander is present
           if (
-            __SERVER__ &&
+            import.meta.env.SSR &&
             !hasApiExpander('navigation', getBaseUrl(location.pathname))
           ) {
             return dispatch(
@@ -305,7 +306,7 @@ export function connectAppComponent(AppComponent) {
         promise: ({ location, store: { dispatch } }) => {
           // Do not trigger the types action if the expander is present
           if (
-            __SERVER__ &&
+            import.meta.env.SSR &&
             !hasApiExpander('types', getBaseUrl(location.pathname))
           ) {
             return dispatch(getTypes(getBaseUrl(location.pathname)));
@@ -315,7 +316,8 @@ export function connectAppComponent(AppComponent) {
       {
         key: 'workflow',
         promise: ({ location, store: { dispatch } }) =>
-          __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
+          import.meta.env.SSR &&
+          dispatch(getWorkflow(getBaseUrl(location.pathname))),
       },
     ]),
     injectIntl,
