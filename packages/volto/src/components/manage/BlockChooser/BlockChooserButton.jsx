@@ -135,8 +135,15 @@ const BlockChooserButton = (props) => {
               onInsertBlock={
                 onInsertBlock
                   ? (id, value) => {
+                      if (
+                        data['@type'] === value['@type'] &&
+                        value['@type'] === 'slate'
+                      ) {
+                        onMutateBlock(block, { ...data, ...value });
+                      } else {
+                        onInsertBlock(id, value);
+                      }
                       setAddNewBlockOpened(false);
-                      onInsertBlock(id, value);
                     }
                   : null
               }
