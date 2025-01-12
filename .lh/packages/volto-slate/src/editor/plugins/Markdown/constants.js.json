@@ -1,0 +1,30 @@
+{
+    "sourceFile": "packages/volto-slate/src/editor/plugins/Markdown/constants.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1736672349933,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1736672416159,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,5 +19,64 @@\n  * The autoformat rules created by this plugin for the Markdown language.\n  *\n  * @todo Use constants instead of the remaining hard-coded types (h2, h3 etc.).\n  */\n-e\n+export const autoformatRules = [\n+  {\n+    type: H2, //\n+    markup: '##',\n+  },\n+  {\n+    type: H3,\n+    markup: '###',\n+  },\n+  {\n+    type: LI,\n+    markup: ['*', '-', '+'],\n+    format: (editor) => {\n+      localToggleList(editor, 'ul');\n+    },\n+  },\n+  {\n+    type: LI,\n+    markup: ['1.', '1)'],\n+    format: (editor) => {\n+      localToggleList(editor, 'ol');\n+    },\n+  },\n+  {\n+    type: BLOCKQUOTE,\n+    markup: ['>'],\n+    // preFormat,\n+  },\n+  {\n+    type: 'strong',\n+    between: ['**', '**'],\n+    mode: 'inline',\n+    insertTrigger: true,\n+  },\n+  {\n+    type: 'strong',\n+    between: ['__', '__'],\n+    mode: 'inline',\n+    insertTrigger: true,\n+  },\n+  {\n+    type: 'em',\n+    between: ['*', '*'],\n+    mode: 'inline',\n+    insertTrigger: true,\n+  },\n+  {\n+    type: 'em',\n+    between: ['_', '_'],\n+    mode: 'inline',\n+    insertTrigger: true,\n+  },\n+  {\n+    type: 'del',\n+    between: ['~~', '~~'],\n+    mode: 'inline',\n+    insertTrigger: true,\n+  },\n+];\n+\n"
+                },
+                {
+                    "date": 1736672424746,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n  * @todo Use constants instead of the remaining hard-coded types (h2, h3 etc.).\n  */\n export const autoformatRules = [\n   {\n-    type: H2, //\n+    type: H2, ///Change made acc to suggestions\n     markup: '##',\n   },\n   {\n     type: H3,\n"
+                },
+                {
+                    "date": 1736672490510,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n  * @todo Use constants instead of the remaining hard-coded types (h2, h3 etc.).\n  */\n export const autoformatRules = [\n   {\n-    type: H2, ///Change made acc to suggestions\n+    type: H2, \n     markup: '##',\n   },\n   {\n     type: H3,\n"
+                }
+            ],
+            "date": 1736672349933,
+            "name": "Commit-0",
+            "content": "import { toggleList } from './utils';\nimport { isBlockActive } from '@plone/volto-slate/utils/blocks';\nimport { UL, OL, LI, H2, H3, BLOCKQUOTE } from '@plone/volto-slate/constants';\n\n/**\n * Uses the old toggleList function to toggle lists on or off or from a type to another.\n * @param {Editor} editor The editor to which to apply the change.\n * @param {string} format A list type.\n */\nexport const localToggleList = (editor, format) => {\n  toggleList(editor, {\n    typeList: format,\n    isBulletedActive: !!isBlockActive(editor, UL),\n    isNumberedActive: !!isBlockActive(editor, OL),\n  });\n};\n\n/**\n * The autoformat rules created by this plugin for the Markdown language.\n *\n * @todo Use constants instead of the remaining hard-coded types (h2, h3 etc.).\n */\ne\n"
+        }
+    ]
+}

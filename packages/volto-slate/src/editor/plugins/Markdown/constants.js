@@ -22,12 +22,12 @@ export const localToggleList = (editor, format) => {
  */
 export const autoformatRules = [
   {
-    type: H2,
-    markup: '#',
+    type: H2, // title block, heading autoformatting now starts from '##' for <h2> and '###' for <h3>.
+    markup: '##',
   },
   {
     type: H3,
-    markup: '##',
+    markup: '###',
   },
   {
     type: LI,
@@ -79,3 +79,4 @@ export const autoformatRules = [
     insertTrigger: true,
   },
 ];
+
