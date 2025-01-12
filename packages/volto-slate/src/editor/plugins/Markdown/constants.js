@@ -22,12 +22,16 @@ export const localToggleList = (editor, format) => {
  */
 export const autoformatRules = [
   {
-    type: H2,
+    type: H1,
     markup: '#',
   },
   {
-    type: H3,
+    type: H2,
     markup: '##',
+  },
+  {
+    type: H3,
+    markup: '###',
   },
   {
     type: LI,
