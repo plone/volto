@@ -22,6 +22,7 @@ export const P = 'p';
 export const LI = 'li';
 export const UL = 'ul';
 export const OL = 'ol';
+export const H1 = 'h1';
 export const H2 = 'h2';
 export const H3 = 'h3';
 export const BLOCKQUOTE = 'blockquote';
