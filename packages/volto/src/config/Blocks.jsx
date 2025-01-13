@@ -247,27 +247,14 @@ const groupBlocksOrder = [
   { id: 'common', title: 'Common' },
 ];
 
-const checkBlockRestriction = ({ properties, block }) => {
-  const checkBlockRecursively = (blocks, blockId) => {
-    if (!blocks || typeof blocks !== 'object') return false;
-    return Object.entries(blocks).some(([_uid, blockData]) => {
-      if (!blockData) return false;
-      if (blockData['@type'] === blockId) {
-        return true;
-      }
-      if (
-        (blockData.blocks && blockData.blocks_layout) ||
-        (blockData.data &&
-          blockData.data.blocks &&
-          blockData.data.blocks_layout)
-      ) {
-        const nestedBlocks = blockData.data?.blocks || blockData.blocks;
-        return checkBlockRecursively(nestedBlocks, blockId);
-      }
-      return false;
-    });
-  };
-  return checkBlockRecursively(properties.blocks, block.id);
+const checkTitleBlockRestriction = ({ properties }) => {
+  if (!properties.blocks || typeof properties.blocks !== 'object') {
+    return false;
+  }
+
+  return Object.values(properties.blocks).some(
+    (blockData) => blockData && blockData['@type'] === 'title',
+  );
 };
 
 const blocksConfig = {
@@ -279,7 +266,7 @@ const blocksConfig = {
     view: ViewTitleBlock,
     edit: EditTitleBlock,
     schema: BlockSettingsSchema,
-    restricted: checkBlockRestriction,
+    restricted: checkTitleBlockRestriction,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
