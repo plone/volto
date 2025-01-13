@@ -1,6 +1,14 @@
 import { toggleList } from './utils';
 import { isBlockActive } from '@plone/volto-slate/utils/blocks';
-import { UL, OL, LI,H1, H2, H3, BLOCKQUOTE } from '@plone/volto-slate/constants';
+import {
+  UL,
+  OL,
+  LI,
+  H1,
+  H2,
+  H3,
+  BLOCKQUOTE,
+} from '@plone/volto-slate/constants';
 
 /**
  * Uses the old toggleList function to toggle lists on or off or from a type to another.
