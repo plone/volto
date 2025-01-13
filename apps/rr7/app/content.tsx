@@ -11,7 +11,6 @@ import type { MetaFunction } from 'react-router';
 import { usePloneClient } from '@plone/providers';
 import PloneClient from '@plone/client';
 import App from '@plone/slots/components/App';
-import { flattenToAppURL } from './utils';
 import config from '@plone/registry';
 
 export const meta: MetaFunction = () => {
@@ -44,18 +43,23 @@ export async function loader({ params, request }: LoaderArgs) {
 
   const { getContentQuery } = ploneClient as PloneClient;
 
-  const path = flattenToAppURL(request.url);
+  const path = new URL(request.url).pathname;
+
   if (
     !(
       /^https?:\/\//.test(path) ||
       /^favicon.ico\/\//.test(path) ||
       /expand/.test(path) ||
-      /^\/@@images/.test(path) ||
-      /^\/@@download/.test(path) ||
-      /^\/assets/.test(path)
+      /\/@@images\//.test(path) ||
+      /\/@@download\//.test(path) ||
+      /^\/assets/.test(path) ||
+      /\.(css|css\.map)$/.test(path)
     )
   ) {
+    console.log('prefetching', path);
     await queryClient.prefetchQuery(getContentQuery({ path, expand }));
+  } else {
+    console.log('path not prefetched', path);
   }
 
   return { dehydratedState: dehydrate(queryClient) };
