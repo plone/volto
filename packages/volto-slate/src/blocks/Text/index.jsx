@@ -22,6 +22,7 @@ import {
 import { withDeleteSelectionOnEnter } from '@plone/volto-slate/editor/extensions';
 import {
   breakList,
+  breakListInWidget,
   withDeserializers,
   withLists,
   withSplitBlocksOnBreak,
@@ -47,6 +48,7 @@ export default function applyConfig(config) {
       breakList,
       normalizeExternalData,
     ],
+    slateWidgetExtensions: [breakListInWidget],
 
     // Pluggable handlers for the onKeyDown event of <Editable />
     // Order matters here. A handler can return `true` to stop executing any
@@ -128,8 +130,8 @@ export default function applyConfig(config) {
       return override_toc && level
         ? [parseInt(level.slice(1)), entry_text]
         : config.settings.slate.topLevelTargetElements.includes(type)
-          ? [parseInt(type.slice(1)), plaintext]
-          : null;
+        ? [parseInt(type.slice(1)), plaintext]
+        : null;
     },
   };
 
