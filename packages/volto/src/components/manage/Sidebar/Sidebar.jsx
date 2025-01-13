@@ -186,19 +186,20 @@ const Sidebar = (props) => {
             },
             !!orderTab && {
               menuItem: intl.formatMessage(messages.order),
-              pane: (
-                <Tab.Pane
-                  key="order"
-                  className="tab-wrapper"
-                  id="sidebar-order"
-                >
-                  <Icon
-                    className="tab-forbidden"
-                    name={forbiddenSVG}
-                    size="48px"
-                  />
-                </Tab.Pane>
-              ),
+              pane:
+                tab === 2 ? (
+                  <Tab.Pane
+                    key="order"
+                    className="tab-wrapper"
+                    id="sidebar-order"
+                  >
+                    <Icon
+                      className="tab-forbidden"
+                      name={forbiddenSVG}
+                      size="48px"
+                    />
+                  </Tab.Pane>
+                ) : null,
             },
             !!settingsTab && {
               menuItem: intl.formatMessage(messages.settings),

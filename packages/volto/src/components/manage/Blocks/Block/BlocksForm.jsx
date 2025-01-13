@@ -280,6 +280,7 @@ const BlocksForm = (props) => {
     <>
       {isMainForm &&
         isClient &&
+        document.getElementById('sidebar-order') &&
         createPortal(
           <div>
             <Order
@@ -357,7 +358,6 @@ const BlocksForm = (props) => {
                 editable,
                 showBlockChooser: selectedBlock === childId,
                 detached: isContainer,
-                // Properties to pass to the BlocksForm to match the View ones
                 content: properties,
                 history,
                 location,
@@ -377,5 +377,4 @@ const BlocksForm = (props) => {
     </>
   );
 };
-
 export default BlocksForm;
