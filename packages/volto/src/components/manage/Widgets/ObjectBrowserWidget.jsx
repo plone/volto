@@ -351,14 +351,11 @@ export class ObjectBrowserWidgetComponent extends Component {
             onChange(id, this.props.return === 'single' ? null : []);
           };
 
-    const props = {
-      ...this.props,
-      error: this.props.error.concat(this.state.errors),
-    };
-
     return (
       <FormFieldWrapper
-        {...props}
+        {...this.props}
+        // At the moment, OBW handles its own errors and validation
+        error={this.state.errors}
         className={description ? 'help text' : 'text'}
       >
         <div
