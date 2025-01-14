@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.20.4 (2025-01-07)
+
+### Bugfix
+
+- Fixed folder contents issues with persistent selection across page changes. @pnicolli [#6555](https://github.com/plone/volto/issues/6555)
+
 ## 17.20.3 (2024-12-12)
 
 ### Bugfix
