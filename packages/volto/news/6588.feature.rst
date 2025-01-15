@@ -1,1 +1,1 @@
-- Added Markdown heading
+Fixed keyboard shortcuts for typing headings using Markdown notation. @Shyam-Raghuwanshi 
