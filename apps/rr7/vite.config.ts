@@ -9,14 +9,7 @@ const prodServerName =
     : '';
 
 export default defineConfig({
-  plugins: [
-    reactRouter({
-      // Server-side render by default, to enable SPA mode set this to `false`
-      ssr: true,
-    }),
-    tsconfigPaths(),
-    PloneRegistryVitePlugin(),
-  ],
+  plugins: [PloneRegistryVitePlugin(), reactRouter(), tsconfigPaths()],
   server: {
     port: 3000,
     proxy: {
@@ -29,7 +22,7 @@ export default defineConfig({
           secure: false,
         }),
         rewrite: (path) => {
-          console.log(path);
+          console.log('rewritten path', path);
           return path.replace('/++api++', '');
         },
       },
