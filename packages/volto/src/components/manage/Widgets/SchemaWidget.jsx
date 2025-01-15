@@ -238,8 +238,6 @@ map(
   [
     'Floating-point number',
     'label_float_field',
-    'Yes/No',
-    'label_boolean_field',
     'JSONField',
     'Relation Choice',
     'Relation List',
@@ -252,6 +250,19 @@ map(
     });
   },
 );
+
+map(['Yes/No', 'label_boolean_field'], (factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryProperties',
+    method: (intl) => ({
+      default: {
+        type: 'string',
+        title: intl.formatMessage(messages.defaultValue),
+      },
+    }),
+  });
+});
 
 map(['Date/Time', 'label_datetime_field'], (factory) => {
   config.registerUtility({
