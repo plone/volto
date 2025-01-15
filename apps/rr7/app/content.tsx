@@ -1,14 +1,6 @@
-import type { LoaderArgs } from './routes/+types.home';
-import {
-  dehydrate,
-  QueryClient,
-  HydrationBoundary,
-  useQuery,
-  useQueryClient,
-} from '@tanstack/react-query';
-import { useLoaderData, useLocation } from 'react-router';
+import type { Route } from './+types/content';
+import { data, useLoaderData, useLocation } from 'react-router';
 import type { MetaFunction } from 'react-router';
-import { usePloneClient } from '@plone/providers';
 import PloneClient from '@plone/client';
 import App from '@plone/slots/components/App';
 import config from '@plone/registry';
@@ -23,17 +15,7 @@ export const meta: MetaFunction = () => {
 const expand = ['navroot', 'breadcrumbs', 'navigation'];
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export async function loader({ params, request }: LoaderArgs) {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        // With SSR, we usually want to set some default staleTime
-        // above 0 to avoid refetching immediately on the client
-        staleTime: 60 * 1000,
-      },
-    },
-  });
-
+export async function loader({ params, request }: Route.LoaderArgs) {
   const ploneClient = config
     .getUtility({
       name: 'ploneClient',
@@ -41,7 +23,7 @@ export async function loader({ params, request }: LoaderArgs) {
     })
     .method();
 
-  const { getContentQuery } = ploneClient as PloneClient;
+  const { getContent } = ploneClient as PloneClient;
 
   const path = new URL(request.url).pathname;
 
@@ -57,30 +39,20 @@ export async function loader({ params, request }: LoaderArgs) {
     )
   ) {
     console.log('prefetching', path);
-    await queryClient.prefetchQuery(getContentQuery({ path, expand }));
+    try {
+      return await getContent({ path, expand });
+    } catch (error) {
+      throw data('Content Not Found', { status: 404 });
+    }
   } else {
     console.log('path not prefetched', path);
+    throw data('Content Not Found', { status: 404 });
   }
-
-  return { dehydratedState: dehydrate(queryClient) };
-}
-
-function Page() {
-  const { getContentQuery } = usePloneClient();
-  const pathname = useLocation().pathname;
-  const { data } = useQuery(getContentQuery({ path: pathname, expand }));
-
-  if (!data) return 'Loading...';
-  return <App content={data} location={{ pathname: '/' }} />;
 }
 
 export default function Content() {
-  const { dehydratedState } = useLoaderData<typeof loader>();
-  const queryClient = useQueryClient();
+  const data = useLoaderData<typeof loader>();
+  const pathname = useLocation().pathname;
 
-  return (
-    <HydrationBoundary state={dehydratedState} queryClient={queryClient}>
-      <Page />
-    </HydrationBoundary>
-  );
+  return <App content={data} location={{ pathname }} />;
 }
