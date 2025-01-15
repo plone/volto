@@ -4,6 +4,7 @@ import {
 } from './restapi/login/post';
 import type { LoginArgs } from './restapi/login/post';
 
+import { getContent as _getContent } from './restapi/content/get';
 import { getContentQuery as _getContentQuery } from './restapi/content/get';
 import { createContentMutation as _createContentMutation } from './restapi/content/add';
 import { updateContentMutation as _updateContentMutation } from './restapi/content/update';
@@ -150,6 +151,7 @@ export default class PloneClient {
   /*
     Content queries
   */
+  getContent = queryWithConfig(_getContent, this.getConfig);
   getContentQuery = queryWithConfig(_getContentQuery, this.getConfig);
   createContentMutation = mutationWithConfig(
     _createContentMutation,
