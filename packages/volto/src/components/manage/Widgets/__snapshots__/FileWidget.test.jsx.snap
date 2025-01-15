@@ -39,6 +39,7 @@ exports[`FileWidget renders a file widget component with value 1`] = `
             />
             <label
               class="label-file-widget-input"
+              for="field-my-field"
             >
               Replace existing file
             </label>
@@ -122,6 +123,7 @@ exports[`FileWidget renders a file widget component with value in raw data 1`] =
             />
             <label
               class="label-file-widget-input"
+              for="field-my-field"
             >
               Replace existing file
             </label>
@@ -208,6 +210,7 @@ exports[`FileWidget renders an empty file widget component 1`] = `
             </div>
             <label
               class="label-file-widget-input"
+              for="field-my-field"
             >
               Choose a file
             </label>
