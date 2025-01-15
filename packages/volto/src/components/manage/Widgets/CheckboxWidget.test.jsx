@@ -18,7 +18,11 @@ describe('CheckboxWidget', () => {
 
     const { asFragment } = render(
       <Provider store={store}>
-        <CheckboxWidget id="my-field" title="My field" onChange={() => {}} />
+        <CheckboxWidget
+          id="checkbox-widget"
+          title="Checkbox Widget"
+          onChange={() => {}}
+        />
       </Provider>,
     );
 
@@ -37,8 +41,8 @@ describe('CheckboxWidget', () => {
       <Provider store={store}>
         <CheckboxWidget
           value={true}
-          id="my-field"
-          title="My field"
+          id="checked-checkbox-widget"
+          title="Checked Checkbox Widget"
           onChange={() => {}}
         />
       </Provider>,
