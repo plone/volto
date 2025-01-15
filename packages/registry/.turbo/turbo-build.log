@@ -1,0 +1,12 @@
+
+> @plone/registry@1.2.1 build /home/manas/volto/packages/registry
+> parcel build
+
+Building...
+Bundling...
+Packaging & Optimizing...
+✨ Built in 1.08s
+
+dist/main.js       4.24 KB    182ms
+dist/module.js     3.92 KB    162ms
+dist/types.d.ts    2.07 KB     50ms

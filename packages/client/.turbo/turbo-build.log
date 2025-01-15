@@ -1,0 +1,32 @@
+
+> @plone/client@1.0.0-alpha.12 build /home/manas/volto/packages/client
+> tsup
+
+CLI Building entry: src/index.ts, src/provider.tsx
+CLI Using tsconfig: tsconfig.json
+CLI tsup v8.0.1
+CLI Using tsup config: /home/manas/volto/packages/client/tsup.config.ts
+CLI Target: es2020
+CLI Cleaning output folder
+CJS Build start
+ESM Build start
+ESM dist/index.js              48.14 KB
+ESM dist/provider.js           430.00 B
+ESM dist/chunk-GQSCBKA6.js     226.00 B
+ESM dist/chunk-GQSCBKA6.js.map 71.00 B
+ESM dist/index.js.map          226.73 KB
+ESM dist/provider.js.map       1.18 KB
+ESM ⚡️ Build success in 233ms
+CJS dist/provider.cjs     1.05 KB
+CJS dist/index.cjs        49.29 KB
+CJS dist/provider.cjs.map 1.31 KB
+CJS dist/index.cjs.map    226.44 KB
+CJS ⚡️ Build success in 234ms
+DTS Build start
+DTS ⚡️ Build success in 9497ms
+DTS dist/index.d.cts           184.00 B
+DTS dist/provider.d.cts        597.00 B
+DTS dist/client-U7UD9aEF.d.cts 80.87 KB
+DTS dist/index.d.ts            183.00 B
+DTS dist/provider.d.ts         596.00 B
+DTS dist/client-U7UD9aEF.d.ts  80.87 KB

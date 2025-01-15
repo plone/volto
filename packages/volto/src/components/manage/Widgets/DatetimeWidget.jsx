@@ -33,15 +33,15 @@ const PrevIcon = () => (
   <div
     style={{
       color: '#000',
-      left: '22px',
+      left: '10px',
       padding: '5px',
       position: 'absolute',
-      top: '15px',
+      top: '25px',
     }}
     // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
     tabIndex="0"
   >
-    <Icon name={leftKey} size="30px" />
+    <Icon name={leftKey} size="24px" />
   </div>
 );
 
@@ -49,15 +49,15 @@ const NextIcon = () => (
   <div
     style={{
       color: '#000',
-      right: '22px',
+      right: '10px',
       padding: '5px',
       position: 'absolute',
-      top: '15px',
+      top: '25px',
     }}
     // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
     tabIndex="0"
   >
-    <Icon name={rightKey} size="30px" />
+    <Icon name={rightKey} size="24px" />
   </div>
 );
 
@@ -151,6 +151,65 @@ const DatetimeWidgetComponent = (props) => {
   const datetime = getInternalValue();
   const isDateOnly = getDateOnly();
 
+  const renderMonthElement = ({ month, onMonthSelect, onYearSelect }) => {
+    const year = month.year();
+    const currentYear = moment.default().year();
+
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '8px',
+          padding: '4px',
+          width: '90%',
+          margin: '0 auto',
+        }}
+      >
+        <select
+          value={month.month()}
+          onChange={(e) => onMonthSelect(month, e.target.value)}
+          style={{
+            flex: 2,
+            padding: '4px 8px',
+            borderRadius: '4px',
+            border: '1px solid #ccc',
+            background: 'white',
+          }}
+        >
+          {moment.default.months().map((label, value) => (
+            <option value={value} key={value}>
+              {label}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={year}
+          onChange={(e) => {
+            onYearSelect(month, e.target.value);
+          }}
+          style={{
+            flex: 1,
+            padding: '4px 8px',
+            borderRadius: '4px',
+            border: '1px solid #ccc',
+            background: 'white',
+          }}
+        >
+          {Array.from({ length: 101 }, (_, i) => currentYear - 50 + i).map(
+            (year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ),
+          )}
+        </select>
+      </div>
+    );
+  };
+
   return (
     <FormFieldWrapper {...props}>
       <div className="date-time-widget-wrapper">
@@ -175,6 +234,7 @@ const DatetimeWidgetComponent = (props) => {
             navNext={<NextIcon />}
             id={`${id}-date`}
             placeholder={intl.formatMessage(messages.date)}
+            renderMonthElement={renderMonthElement}
           />
         </div>
         {!isDateOnly && (
