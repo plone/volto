@@ -1,14 +1,13 @@
 import type { Route } from './+types/content';
 import { data, useLoaderData, useLocation } from 'react-router';
-import type { MetaFunction } from 'react-router';
 import PloneClient from '@plone/client';
 import App from '@plone/slots/components/App';
 import config from '@plone/registry';
 
-export const meta: MetaFunction = () => {
+export const meta: Route.MetaFunction = ({ data }) => {
   return [
-    { title: 'Plone on React Router 7' },
-    { name: 'description', content: 'Welcome to Plone!' },
+    { title: data?.title },
+    { name: 'description', content: data?.description },
   ];
 };
 
