@@ -16,9 +16,9 @@ canary
 legacy
 :   The term _legacy_ refers to a version that is no longer supported or actively maintained.
     They are the versions between official Plone minor releases.
-    It is recommended that you update to minor Plone releases as soon as possible.
-    They won't receive any new features.
-    They might receive occasional bugfixes or security updates, via a pull request, and it's approved by the Volto Team.
+    You should update to minor Plone releases as soon as possible.
+    Legacy versions won't receive any new features.
+    They might receive occasional bug fixes or security updates, subject to approval from the Volto Team.
 
 `main`
 :   This is the bleeding edge branch in git.
@@ -44,9 +44,12 @@ legacy
     Any new feature will be merged into the `main` branch, and only backported to and released in older versions, if the Volto Team approves it.
 
 `17.x.x`
-:   `17.x.x` is no longer supported and became legacy when Volto 18 was released.
-    It is recommended that you update to 18.x.x.
-    If you need a bug fix or security update for this version, please submit a pull request, and the Volto Team will review it to determine whether it's suitable to merge.
+:   `17.x.x` is no longer supported and became _legacy_ (see above definition) when Volto 18 was released.
+    You should upgrade to the latest released version of Volto 18.
+    You can use Cookieplone to generate a new Volto 18 project, then copy-paste over the relevant parts from your existing project into the new one.
+    See {ref}`volto-upgrade-guide-18.x.x`.
+    If you need a bug fix, please create an issue to discuss with the Volto Team.
+    For security issues, please contact the Plone Security Team by sending email to security@plone.org.
 
 `16.x.x`
 :   This version of Volto has the [same maintenance and support schedule as Plone 6.0](https://plone.org/download/release-schedule).
