@@ -81,11 +81,45 @@ function getColor(string) {
   }
 }
 
+// PreviewImage Component
+const PreviewImage = ({ item }) => {
+  const previewImageUrl = `${item['@id']}/${item.image_scales?.image?.[0]?.scales?.teaser?.download}`;
+  const previewIconUrl = `${item['@id']}/${item.image_scales?.image?.[0]?.scales?.thumb?.download}`;
+
+  return (
+    <SemanticUiPopup
+      trigger={
+        <div className="preview-image-container">
+          <img
+            className="popup-image-icon"
+            src={previewIconUrl}
+            alt=""
+            loading="lazy"
+          />{' '}
+          <span title={item.title}> {item.title}</span>
+        </div>
+      }
+    >
+      <SemanticUiPopup.Content>
+        <div>
+          <img
+            className="popup-preview-image"
+            src={previewImageUrl}
+            alt=""
+            loading="lazy"
+          />
+        </div>
+      </SemanticUiPopup.Content>
+    </SemanticUiPopup>
+  );
+};
+
 /**
  * Contents item component class.
  * @function ContentsItemComponent
  * @returns {string} Markup of the component.
  */
+
 export const ContentsItemComponent = ({
   item,
   selected,
@@ -103,8 +137,6 @@ export const ContentsItemComponent = ({
   order,
 }) => {
   const intl = useIntl();
-  const previewImageUrl = `${item['@id']}/${item.image_scales?.image?.[0]?.scales?.teaser?.download}`;
-  const previewIconUrl = `${item['@id']}/${item.image_scales?.image?.[0]?.scales?.thumb?.download}`;
 
   return connectDropTarget(
     connectDragPreview(
@@ -165,28 +197,7 @@ export const ContentsItemComponent = ({
           >
             <div className="expire-align">
               {item['@type'] === 'Image' ? (
-                <SemanticUiPopup
-                  trigger={
-                    <div className="preview-image-container">
-                      <img
-                        className="popup-image-icon"
-                        src={previewIconUrl}
-                        alt=""
-                      />{' '}
-                      <span title={item.title}> {item.title}</span>
-                    </div>
-                  }
-                >
-                  <SemanticUiPopup.Content>
-                    <div>
-                      <img
-                        className="popup-preview-image"
-                        src={previewImageUrl}
-                        alt=""
-                      />
-                    </div>
-                  </SemanticUiPopup.Content>
-                </SemanticUiPopup>
+                <PreviewImage item={item} />
               ) : (
                 <div className="preview-image-container">
                   <Icon
