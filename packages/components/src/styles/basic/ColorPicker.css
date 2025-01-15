@@ -10,7 +10,7 @@
 @import './Select.css';
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   .color-picker {
     display: flex;
     align-items: center;

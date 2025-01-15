@@ -2873,6 +2873,11 @@ msgstr "Registro"
 msgid "Registration form"
 msgstr "Formulario de registro"
 
+#. Default: "Related Items"
+#: components/theme/RelatedItems/RelatedItems
+msgid "Related Items"
+msgstr ""
+
 #. Default: "Relation"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 #: helpers/MessageLabels/MessageLabels

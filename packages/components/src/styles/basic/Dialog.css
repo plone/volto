@@ -3,7 +3,7 @@
 @import './Modal.css';
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   .react-aria-Dialog {
     padding: 30px;
     outline: none;
