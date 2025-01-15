@@ -9,7 +9,7 @@ myst:
 
 # Theming Strategy
 
-```{include} /_inc/_semanticui-deprecation.md
+```{include} ../_inc/_semantic-ui-deprecation.md
 ```
 
 One approaches the theming of a Volto site usually with a predefined mockup or

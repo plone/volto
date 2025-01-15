@@ -9,7 +9,7 @@ myst:
 
 # Semantic UI Theming
 
-```{include} /_inc/_semanticui-deprecation.md
+```{include} ../_inc/_semantic-ui-deprecation.md
 ```
 
 As we hinted previously, Semantic UI theming happens in several stages using several layers of inheritance.

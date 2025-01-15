@@ -11,7 +11,7 @@ myst:
 
 ## Semantic UI
 
-```{include} /_inc/_semanticui-deprecation.md
+```{include} ../_inc/_semantic-ui-deprecation.md
 ```
 
 For styling our website in Volto we use Semantic UI. It uses LESS as
