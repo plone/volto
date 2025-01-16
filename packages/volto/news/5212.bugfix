@@ -1,0 +1,2 @@
+Fixed accessibility issues in the "Add Block" modal of the Plone editor. Focus now stays inside the modal while navigating.
+@Manas-Kenge
