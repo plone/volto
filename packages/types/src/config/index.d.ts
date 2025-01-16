@@ -4,6 +4,7 @@ import type { ViewsConfig } from './Views';
 import type { WidgetsConfig } from './Widgets';
 import type { SlotsConfig } from './Slots';
 import type { UtilitiesConfig } from './Utilities';
+import type { RequireAtLeastOne } from './utils';
 
 export type AddonReducersConfig = Record<string, Function>;
 
@@ -12,6 +13,30 @@ export type AddonRoutesConfig = {
   exact: boolean;
   component: React.ComponentType;
 }[];
+
+export type AddonRoutesEntry = {
+  path: string;
+  exact: boolean;
+  component: React.ComponentType;
+};
+
+interface ReactRouterRouteHelpers {
+  route?: any;
+  index?: any;
+  prefix?: any;
+  layout?: any;
+}
+
+export type ReactRouterRouteEntry = {
+  path: string;
+  file: string;
+  options?: {
+    id?: string;
+    index?: boolean;
+    caseSensitive?: boolean;
+  };
+  children?: ReactRouterRouteEntry[];
+};
 
 export type ComponentsConfig = Record<
   string,

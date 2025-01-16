@@ -1073,3 +1073,16 @@ describe('Utilities registry', () => {
     ).toEqual([]);
   });
 });
+
+describe('Routes registry', () => {
+  afterEach(() => {
+    config.set('routes', []);
+  });
+
+  it.only('registers a simple route', () => {
+    config.registerRoute({
+      path: '/login',
+      file: 'login.tsx',
+    });
+  });
+});
