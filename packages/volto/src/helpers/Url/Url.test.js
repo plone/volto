@@ -19,6 +19,7 @@ import {
   normaliseMail,
   normalizeTelephone,
   flattenScales,
+  isMail,
 } from './Url';
 
 beforeEach(() => {
@@ -531,6 +532,20 @@ describe('Url', () => {
         size: 319364,
         width: 1182,
       });
+    });
+  });
+
+  describe('isMail', () => {
+    it('isMale test', () => {
+      const mailExamples = [
+        'mailto:test1@example.com',
+        'mailto:test1@example.com,test2@example.com',
+        'mailto:test1@example.com?cc=test2@example.com',
+        'mailto:test1@example.com?subject=Hello&body=World',
+      ];
+      for (let mail of mailExamples) {
+        expect(isMail(mail)).toBe(true);
+      }
     });
   });
 });
