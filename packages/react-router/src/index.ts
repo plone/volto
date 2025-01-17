@@ -16,35 +16,45 @@ export type ReactRouterRouteEntry = {
 export function getAddonRoutesConfig(
   routesConfig: Array<ReactRouterRouteEntry>,
 ): RouteConfig {
+  let resultRoutesConfig: RouteConfig = [];
   for (const routeConfig of routesConfig) {
     switch (routeConfig.type) {
       case 'route':
         if (routeConfig.options) {
-          route(routeConfig.path, routeConfig.file, routeConfig.options);
-        }
-        if (routeConfig.children) {
-          route(
-            routeConfig.path,
-            routeConfig.file,
-            routeConfig.options || {},
-            routeConfig.children,
+          resultRoutesConfig.push(
+            route(routeConfig.path, routeConfig.file, routeConfig.options),
           );
+        } else if (routeConfig.children) {
+          resultRoutesConfig.push(
+            route(
+              routeConfig.path,
+              routeConfig.file,
+              routeConfig.options || {},
+              getAddonRoutesConfig(routeConfig.children),
+            ),
+          );
+        } else {
+          resultRoutesConfig.push(route(routeConfig.path, routeConfig.file));
         }
         break;
 
       case 'index':
-        index(routeConfig.file, routeConfig.options);
+        resultRoutesConfig.push(index(routeConfig.file, routeConfig.options));
         break;
 
       case 'layout':
         if (routeConfig.options) {
-          layout(routeConfig.file, routeConfig.options);
+          resultRoutesConfig.push(
+            layout(routeConfig.file, routeConfig.options),
+          );
         }
         if (routeConfig.children) {
-          layout(
-            routeConfig.file,
-            routeConfig.options || {},
-            routeConfig.children,
+          resultRoutesConfig.push(
+            layout(
+              routeConfig.file,
+              routeConfig.options || {},
+              getAddonRoutesConfig(routeConfig.children),
+            ),
           );
         }
         break;
@@ -55,5 +65,6 @@ export function getAddonRoutesConfig(
       default:
         break;
     }
+    return resultRoutesConfig;
   }
 }
