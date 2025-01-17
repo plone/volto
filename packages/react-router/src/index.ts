@@ -1,17 +1,6 @@
 import { route, index, layout, prefix } from '@react-router/dev/routes';
-import type { RouteConfig } from '@react-router/dev/routes';
-
-export type ReactRouterRouteEntry = {
-  type: 'route' | 'index' | 'layout' | 'prefix';
-  path: string;
-  file: string;
-  options?: {
-    id?: string;
-    index?: boolean;
-    caseSensitive?: boolean;
-  };
-  children?: ReactRouterRouteEntry[];
-};
+import type { RouteConfig, RouteConfigEntry } from '@react-router/dev/routes';
+import type { ReactRouterRouteEntry } from '@plone/types';
 
 export function getAddonRoutesConfig(
   routesConfig: Array<ReactRouterRouteEntry>,
@@ -30,7 +19,9 @@ export function getAddonRoutesConfig(
               routeConfig.path,
               routeConfig.file,
               routeConfig.options || {},
-              getAddonRoutesConfig(routeConfig.children),
+              getAddonRoutesConfig(
+                routeConfig.children,
+              ) as Array<RouteConfigEntry>,
             ),
           );
         } else {
@@ -53,7 +44,9 @@ export function getAddonRoutesConfig(
             layout(
               routeConfig.file,
               routeConfig.options || {},
-              getAddonRoutesConfig(routeConfig.children),
+              getAddonRoutesConfig(
+                routeConfig.children,
+              ) as Array<RouteConfigEntry>,
             ),
           );
         }
@@ -65,6 +58,6 @@ export function getAddonRoutesConfig(
       default:
         break;
     }
-    return resultRoutesConfig;
   }
+  return resultRoutesConfig;
 }

@@ -1,9 +1,10 @@
 import { describe, expect, it, afterEach, beforeEach } from 'vitest';
 import { getAddonRoutesConfig } from './index';
+import type { ReactRouterRouteEntry } from '@plone/types';
 
 describe('getAddonRoutesConfig', () => {
   it('route - basic', () => {
-    const routesConfig = [
+    const routesConfig: Array<ReactRouterRouteEntry> = [
       {
         type: 'route',
         path: '/login',
@@ -16,7 +17,7 @@ describe('getAddonRoutesConfig', () => {
   });
 
   it('route - with options', () => {
-    const routesConfig = [
+    const routesConfig: Array<ReactRouterRouteEntry> = [
       {
         type: 'route',
         path: '/login',
@@ -32,7 +33,7 @@ describe('getAddonRoutesConfig', () => {
   });
 
   it('route - nested', () => {
-    const routesConfig = [
+    const routesConfig: Array<ReactRouterRouteEntry> = [
       {
         type: 'route',
         path: '/login',
