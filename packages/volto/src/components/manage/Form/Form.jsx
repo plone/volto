@@ -15,6 +15,7 @@ import {
   getBlocksLayoutFieldname,
   hasBlocksData,
 } from '@plone/volto/helpers/Blocks/Blocks';
+import { applySchemaEnhancer } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
 import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -558,6 +559,16 @@ class Form extends Component {
             formData: blocks[block],
           });
         }
+
+        blockSchema = applySchemaEnhancer({
+          schema: blockSchema,
+          formData: blocks[block],
+          intl: this.props.intl,
+          blocksConfig: config.blocks.blocksConfig,
+          navRoot: this.props.navRoot,
+          contentType: this.props.content['@type'],
+        });
+
         const blockErrors = FormValidation.validateFieldsPerFieldset({
           schema: blockSchema,
           formData: blocks[block],
