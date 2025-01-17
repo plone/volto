@@ -34,7 +34,6 @@ export const TitleBlockEdit = (props) => {
     block,
     blockNode,
     data,
-    detached,
     editable,
     index,
     metadata,
@@ -68,7 +67,10 @@ export const TitleBlockEdit = (props) => {
     () => data.placeholder || intl.formatMessage(messages['title']),
     [data.placeholder, intl],
   );
-  const disableNewBlocks = useMemo(() => detached, [detached]);
+  const disableNewBlocksByDefault = useMemo(
+    () => data?.disableNewBlocks,
+    [data?.disableNewBlocks],
+  );
 
   useEffect(() => {
     if (!prevSelected && selected) {
@@ -104,7 +106,7 @@ export const TitleBlockEdit = (props) => {
     (ev) => {
       if (ev.key === 'Return' || ev.key === 'Enter') {
         ev.preventDefault();
-        if (!disableNewBlocks) {
+        if (!disableNewBlocksByDefault) {
           onSelectBlock(
             onAddBlock(config.settings.defaultBlockType, index + 1),
           );
@@ -120,12 +122,12 @@ export const TitleBlockEdit = (props) => {
     [
       index,
       blockNode,
-      disableNewBlocks,
       onSelectBlock,
       onAddBlock,
       onFocusPreviousBlock,
       onFocusNextBlock,
       block,
+      disableNewBlocksByDefault,
     ],
   );
 
