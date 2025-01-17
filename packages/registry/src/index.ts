@@ -14,7 +14,6 @@ import type {
   ViewsConfig,
   WidgetsConfig,
   ReactRouterRouteEntry,
-  AddonRoutesEntry,
 } from '@plone/types';
 
 export type ConfigData = {
@@ -507,8 +506,6 @@ class Config {
   }
 
   registerRoute(options: ReactRouterRouteEntry) {
-    console.log('component', options.file);
-
     const route = this._data.routes || [];
     route.push(options);
     this._data.routes = route;

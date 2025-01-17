@@ -4,7 +4,6 @@ import type { ViewsConfig } from './Views';
 import type { WidgetsConfig } from './Widgets';
 import type { SlotsConfig } from './Slots';
 import type { UtilitiesConfig } from './Utilities';
-import type { RequireAtLeastOne } from './utils';
 
 export type AddonReducersConfig = Record<string, Function>;
 
@@ -20,14 +19,8 @@ export type AddonRoutesEntry = {
   component: React.ComponentType;
 };
 
-interface ReactRouterRouteHelpers {
-  route?: any;
-  index?: any;
-  prefix?: any;
-  layout?: any;
-}
-
 export type ReactRouterRouteEntry = {
+  type: 'route' | 'index' | 'layout' | 'prefix';
   path: string;
   file: string;
   options?: {

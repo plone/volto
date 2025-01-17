@@ -236,11 +236,16 @@ const applyConfig = (config: ConfigType) => {
   });
 
   config.registerRoute({
+    type: 'route',
     path: '/hello',
     file: 'src/components/Views/NewsAndEvents/asd.tsx',
-    {index: true},
     children: [],
+    options: {
+      id: 'hello',
+      index: true,
+    },
   });
+
   return config;
 };
 
