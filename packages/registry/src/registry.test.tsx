@@ -1095,6 +1095,24 @@ describe('Routes registry', () => {
     ]);
   });
 
+  it('registers a simple route with options', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+      options: { id: 'login', caseSensitive: true },
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+        options: { id: 'login', caseSensitive: true },
+      },
+    ]);
+  });
+
   it('registers a nested route', () => {
     config.registerRoute({
       type: 'route',

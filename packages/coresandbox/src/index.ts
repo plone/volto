@@ -239,7 +239,6 @@ const applyConfig = (config: ConfigType) => {
     type: 'route',
     path: '/hello',
     file: 'src/components/Views/NewsAndEvents/asd.tsx',
-    children: [],
     options: {
       id: 'hello',
       index: true,
