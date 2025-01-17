@@ -1,1 +1,1 @@
-- Added useState to hangle siteLogo @Shyam-Raghuwanshi
+- Fixed handling of the site logo preview to appear after upload. @Shyam-Raghuwanshi
