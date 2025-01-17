@@ -13,6 +13,8 @@ exports[`Can render a custom button 1`] = `
 exports[`Renders a button 1`] = `
 <div>
   <button
+    aria-expanded="false"
+    aria-haspopup="dialog"
     class="ui basic icon button block-add-button"
     title="Add block"
   >
