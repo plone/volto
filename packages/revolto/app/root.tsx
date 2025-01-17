@@ -1,7 +1,6 @@
-import type { LinksFunction } from 'react-router';
-import type { Route } from './+types/root';
 import { useState } from 'react';
 import {
+  isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
@@ -12,8 +11,9 @@ import {
   useNavigate as useRRNavigate,
   useParams,
   useLoaderData,
-  isRouteErrorResponse,
+  useRouteLoaderData,
 } from 'react-router';
+import type { Route } from './+types/root';
 
 import { QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -38,7 +38,22 @@ function useHrefLocal(to: string) {
   return useHref(flattenToAppURL(to));
 }
 
-export const links: LinksFunction = () => [
+export const meta: Route.MetaFunction = () => [
+  { name: 'generator', content: 'Plone 7 - https://plone.org' },
+];
+
+export const links: Route.LinksFunction = () => [
+  {
+    rel: 'icon',
+    href: '/favicon.png',
+    type: 'image/png',
+    sizes: 'any',
+  },
+  {
+    rel: 'icon',
+    href: '/icon.svg',
+    type: 'image/svg+xml',
+  },
   { rel: 'stylesheet', href: themingMain },
   { rel: 'stylesheet', href: slotsMain },
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -66,17 +81,23 @@ export async function loader() {
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const data = useLoaderData<typeof loader>();
+  const indexLoaderData = useRouteLoaderData('index');
+  const contentLoaderData = useRouteLoaderData('content');
+  const contentData = indexLoaderData || contentLoaderData;
 
   return (
-    <html lang="en">
+    <html lang={contentData?.language?.token || 'en'}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <Meta />
         <Links />
       </head>
       <body>
-        {children}
+        <div role="navigation" aria-label="Toolbar" id="toolbar" />
+        <div id="main">{children}</div>
+        <div role="complementary" aria-label="Sidebar" id="sidebar" />
         <ScrollRestoration />
         <script
           dangerouslySetInnerHTML={{
