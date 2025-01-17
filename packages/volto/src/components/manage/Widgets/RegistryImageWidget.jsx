@@ -86,6 +86,12 @@ const RegistryImageWidget = (props) => {
       : '';
   });
 
+  /**
+   * Drop handler
+   * @method onDrop
+   * @param {array} files File objects
+   * @returns {undefined}
+   */
   const onDrop = (files) => {
     const file = files[0];
     if (!validateFileUploadSize(file, intl.formatMessage)) return;
