@@ -1,1 +1,1 @@
-Fixing disable new blocks
+Fixed the behavior of the Title block in the Book content type to prevent the creation of a new block when pressing Enter if "Disable new blocks" is enabled @Shyam-Raghuwanshi
