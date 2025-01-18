@@ -1,0 +1,1 @@
+- Fixed handling of the site logo preview to appear after upload. @Shyam-Raghuwanshi
