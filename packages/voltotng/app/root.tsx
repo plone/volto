@@ -31,11 +31,11 @@ import slotsMain from '@plone/slots/main.css?url';
 
 function useNavigate() {
   const navigate = useRRNavigate();
-  return (to: string) => navigate(flattenToAppURL(to));
+  return (to: string) => navigate(flattenToAppURL(to) || '');
 }
 
 function useHrefLocal(to: string) {
-  return useHref(flattenToAppURL(to));
+  return useHref(flattenToAppURL(to) || '');
 }
 
 export const meta: Route.MetaFunction = () => [
@@ -136,6 +136,15 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       )}
     </main>
   );
+}
+
+declare global {
+  interface Window {
+    env: {
+      PLONE_API_PATH: string;
+      PLONE_INTERNAL_API_PATH: string;
+    };
+  }
 }
 
 export default function App() {

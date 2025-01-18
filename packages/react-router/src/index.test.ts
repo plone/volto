@@ -3,6 +3,13 @@ import { getAddonRoutesConfig } from './index';
 import type { ReactRouterRouteEntry } from '@plone/types';
 
 describe('getAddonRoutesConfig', () => {
+  const addonsInfo = [
+    {
+      name: '@plone/components',
+      modulePath: '/my/path/to/plone/components',
+    },
+  ];
+
   it('route - basic', () => {
     const routesConfig: Array<ReactRouterRouteEntry> = [
       {
@@ -11,8 +18,25 @@ describe('getAddonRoutesConfig', () => {
         file: './login.tsx',
       },
     ];
-    expect(getAddonRoutesConfig(routesConfig)).toEqual([
+    expect(getAddonRoutesConfig(routesConfig, addonsInfo)).toEqual([
       { children: undefined, file: './login.tsx', path: '/login' },
+    ]);
+  });
+
+  it('route - basic with addon name', () => {
+    const routesConfig: Array<ReactRouterRouteEntry> = [
+      {
+        type: 'route',
+        path: '/login',
+        file: '@plone/components/login.tsx',
+      },
+    ];
+    expect(getAddonRoutesConfig(routesConfig, addonsInfo)).toEqual([
+      {
+        children: undefined,
+        file: '/my/path/to/plone/components/login.tsx',
+        path: '/login',
+      },
     ]);
   });
 
@@ -27,8 +51,13 @@ describe('getAddonRoutesConfig', () => {
         },
       },
     ];
-    expect(getAddonRoutesConfig(routesConfig)).toEqual([
-      { children: undefined, file: './login.tsx', path: '/login', id: 'login' },
+    expect(getAddonRoutesConfig(routesConfig, addonsInfo)).toEqual([
+      {
+        children: undefined,
+        file: './login.tsx',
+        path: '/login',
+        id: 'login',
+      },
     ]);
   });
 
@@ -47,7 +76,7 @@ describe('getAddonRoutesConfig', () => {
         ],
       },
     ];
-    expect(getAddonRoutesConfig(routesConfig)).toEqual([
+    expect(getAddonRoutesConfig(routesConfig, addonsInfo)).toEqual([
       {
         file: './login.tsx',
         path: '/login',

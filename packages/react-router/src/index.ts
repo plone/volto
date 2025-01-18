@@ -1,12 +1,24 @@
 import { route, index, layout, prefix } from '@react-router/dev/routes';
 import type { RouteConfig, RouteConfigEntry } from '@react-router/dev/routes';
 import type { ReactRouterRouteEntry } from '@plone/types';
+import path from 'node:path';
 
 export function getAddonRoutesConfig(
   routesConfig: Array<ReactRouterRouteEntry>,
-): RouteConfig {
+  addonsInfo: Array<any>,
+): Array<RouteConfigEntry> {
   let resultRoutesConfig: RouteConfig = [];
+
   for (const routeConfig of routesConfig) {
+    const containsAddonModule = addonsInfo.find((addon) =>
+      routeConfig.file.includes(addon.name),
+    );
+    if (containsAddonModule) {
+      routeConfig.file = path.join(
+        containsAddonModule.modulePath,
+        routeConfig.file.replace(containsAddonModule.name, ''),
+      );
+    }
     switch (routeConfig.type) {
       case 'route':
         if (routeConfig.options) {
@@ -21,6 +33,7 @@ export function getAddonRoutesConfig(
               routeConfig.options || {},
               getAddonRoutesConfig(
                 routeConfig.children,
+                addonsInfo,
               ) as Array<RouteConfigEntry>,
             ),
           );
@@ -46,6 +59,7 @@ export function getAddonRoutesConfig(
               routeConfig.options || {},
               getAddonRoutesConfig(
                 routeConfig.children,
+                addonsInfo,
               ) as Array<RouteConfigEntry>,
             ),
           );

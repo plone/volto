@@ -7,7 +7,7 @@ import config from '@plone/registry';
  * directory other than /, eg. /myapp)
  * @method flattenToAppURL
  */
-export function flattenToAppURL(url: string) {
+export function flattenToAppURL(url: string | undefined): string | undefined {
   const { settings } = config;
 
   const result =

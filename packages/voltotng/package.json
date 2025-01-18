@@ -17,6 +17,7 @@
     "@plone/components": "workspace:*",
     "@plone/providers": "workspace:*",
     "@plone/registry": "workspace:*",
+    "@plone/react-router": "workspace:*",
     "@plone/slots": "workspace:*",
     "@plone/theming": "workspace:*",
     "@react-router/node": "7.1.2",
