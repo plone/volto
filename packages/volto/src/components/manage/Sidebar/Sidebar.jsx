@@ -10,6 +10,7 @@ import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 import { getCookieOptions } from '@plone/volto/helpers/Cookies/cookies';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import forbiddenSVG from '@plone/volto/icons/forbidden.svg';
+import loaderSVG from '@plone/volto/icons/loader.svg';
 import { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
 import expandSVG from '@plone/volto/icons/left-key.svg';
 import collapseSVG from '@plone/volto/icons/right-key.svg';
@@ -57,6 +58,7 @@ const Sidebar = (props) => {
   );
   const [size] = useState(0);
   const [showFull, setshowFull] = useState(true);
+  const [isOrderTabRendered, setIsOrderTabRendered] = useState(false);
 
   const tab = useSelector((state) => state.sidebar.tab);
   const toolbarExpanded = useSelector((state) => state.toolbar.expanded);
@@ -101,6 +103,10 @@ const Sidebar = (props) => {
   const onTabChange = (event, data) => {
     event.nativeEvent.stopImmediatePropagation();
     dispatch(setSidebarTab(data.activeIndex));
+
+    if (data.activeIndex === 2) {
+      setIsOrderTabRendered(true);
+    }
   };
 
   return (
@@ -187,17 +193,13 @@ const Sidebar = (props) => {
             !!orderTab && {
               menuItem: intl.formatMessage(messages.order),
               pane:
-                tab === 2 ? (
+                isOrderTabRendered || tab === 2 ? (
                   <Tab.Pane
                     key="order"
                     className="tab-wrapper"
                     id="sidebar-order"
                   >
-                    <Icon
-                      className="tab-forbidden"
-                      name={forbiddenSVG}
-                      size="48px"
-                    />
+                    <Icon className="tab-loader" name={loaderSVG} size="60px" />
                   </Tab.Pane>
                 ) : null,
             },
