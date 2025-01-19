@@ -74,10 +74,5 @@ export default function install(config: ConfigType) {
     component: MainFooter,
   });
 
-  config.registerRoute({
-    type: 'route',
-    file: '@plone/slots/components/Tools.tsx',
-    path: '/test',
-  });
   return config;
 }
