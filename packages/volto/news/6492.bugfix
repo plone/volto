@@ -1,1 +1,1 @@
-You can now render the order side panel only when the 'Order' tab is active. Previously, the panel would render unnecessarily even when not active.@Abhishek-17h
+The Order side panel now renders only when the "Order" tab is active. Previously, the panel would render unnecessarily even when inactive. @Abhishek-17h
