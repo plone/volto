@@ -161,7 +161,7 @@ packages/react-router/dist: $(shell find packages/react-router/src -type f)
 build-deps: packages/registry/dist ## Build dependencies
 
 .PHONY: build-all-deps
-build-all-deps: ../registry/dist ../components/dist ../client/dist ../providers/dist ../react-router/dist ../helpers/dist ## Build all dependencies
+build-all-deps: packages/registry/dist packages/components/dist packages/client/dist packages/providers/dist packages/react-router/dist packages/helpers/dist ## Build all dependencies
 
 .PHONY: i18n
 i18n: ## Converts your po files into json to translate volto frontend
