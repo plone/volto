@@ -560,14 +560,16 @@ class Form extends Component {
           });
         }
 
-        blockSchema = applySchemaEnhancer({
-          schema: blockSchema,
-          formData: blocks[block],
-          intl: this.props.intl,
-          blocksConfig: config.blocks.blocksConfig,
-          navRoot: this.props.navRoot,
-          contentType: this.props.content['@type'],
-        });
+        if (config.blocks.blocksConfig[blocks[block]['@type']].blockSchema) {
+          blockSchema = applySchemaEnhancer({
+            schema: blockSchema,
+            formData: blocks[block],
+            intl: this.props.intl,
+            blocksConfig: config.blocks.blocksConfig,
+            navRoot: this.props.navRoot,
+            contentType: this.props.content['@type'],
+          });
+        }
 
         const blockErrors = FormValidation.validateFieldsPerFieldset({
           schema: blockSchema,
