@@ -23,6 +23,9 @@ module.exports = {
   // Base config
   extends: ['eslint:recommended'],
 
+  // Ignore Cypress folder
+  ignorePatterns: ['cypress/', '.react-router/**/*'],
+
   overrides: [
     // React
     {

@@ -16,7 +16,7 @@
     "build": "pnpm --filter @plone/volto build",
     "start": "pnpm --filter @plone/volto start",
     "start:project": "pnpm --filter plone run start",
-    "lint": "pnpm build:all && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
+    "lint": "make build-all-deps && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
     "lint:volto": "pnpm --filter @plone/volto run lint",
     "test": "pnpm --filter @plone/volto run test",
     "test:ci": "pnpm --filter @plone/volto run test:ci",
