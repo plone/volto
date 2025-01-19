@@ -109,6 +109,7 @@ export const selectTheme = (theme) => ({
 });
 
 export const customSelectStyles = {
+  menuPortal: (base) => ({ ...base, zIndex: 9999 }),
   control: (styles, state) => ({
     ...styles,
     border: 'none',
