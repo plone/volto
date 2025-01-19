@@ -1,0 +1,2 @@
+Initial implementation.
+Added `getAddonRoutesConfig` for configuring routes in add-ons. @sneridagh
