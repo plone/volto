@@ -10,7 +10,7 @@ myst:
 # Register new routes
 
 ````{admonition} Warning! This feature is experimental and only applies to registering routes for React Router 7 applications. Click to accept the risks and read details.
-:class: warning
+:class: warning, toggle
 
 The `config.registerRoute` method adds a route to the configuration registry.
 The `@plone/react-router` helper loads the route and configures it in a React Router 7 app.

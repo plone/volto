@@ -5,6 +5,7 @@ plone-sphinx-theme
 sphinx-autobuild
 sphinx-copybutton
 sphinx-examples
+sphinx-togglebutton
 sphinxcontrib-video
 sphinxcontrib-youtube
 sphinxext-opengraph
