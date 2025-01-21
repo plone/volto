@@ -585,14 +585,34 @@ class Form extends Component {
             title={this.props.intl.formatMessage(messages.error)}
             content={
               <ul>
-                {Object.keys(errors).map((err, index) => (
-                  <li key={index}>
-                    <strong>
-                      {this.props.schema.properties[err].title || err}:
-                    </strong>{' '}
-                    {errors[err]}
-                  </li>
-                ))}
+                {Object.keys(errors).map((err, index) => {
+                  return (
+                    <React.Fragment key={index}>
+                      {typeof errors[err] === 'object' &&
+                      !Array.isArray(errors[err]) ? (
+                        Object.keys(errors[err]).map((nestedErr, index) => {
+                          return (
+                            <li key={index}>
+                              <strong>
+                                {this.props.schema.properties[err].title ||
+                                  errors[err][nestedErr]}
+                                :
+                              </strong>{' '}
+                              {`[${nestedErr}]: ${errors[err][nestedErr]}`}
+                            </li>
+                          );
+                        })
+                      ) : (
+                        <li key={index}>
+                          <strong>
+                            {this.props.schema.properties[err].title || err}:
+                          </strong>{' '}
+                          {errors[err]}
+                        </li>
+                      )}
+                    </React.Fragment>
+                  );
+                })}
               </ul>
             }
           />,

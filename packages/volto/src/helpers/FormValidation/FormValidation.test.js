@@ -988,5 +988,55 @@ describe('FormValidation', () => {
         customField: [messages.isValidURL.defaultMessage],
       });
     });
+
+    it('JSONField - Basic Required', () => {
+      let JSONSchemaField = ({ intl }) => ({
+        properties: {
+          innerJSONField: {
+            title: 'Default field',
+            description: '',
+          },
+        },
+        required: ['innerJSONField'],
+      });
+      config.registerUtility({
+        type: 'schema',
+        dependencies: { fieldName: 'customJSONSchemaField' },
+        method: JSONSchemaField,
+      });
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Default field',
+            description: '',
+          },
+          customJSONSchemaField: {
+            factory: 'JSONField',
+            title: 'JSON Field',
+            widgetOptions: {
+              frontendOptions: {
+                schema: 'customJSONSchemaField',
+              },
+            },
+          },
+        },
+        required: [],
+      };
+
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            otherField: 'test',
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customJSONSchemaField: {
+          innerJSONField: [messages.required.defaultMessage],
+        },
+      });
+    });
   });
 });

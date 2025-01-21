@@ -75,6 +75,7 @@ const ObjectListWidget = (props) => {
     value = [],
     onChange,
     schemaExtender,
+    error = {},
   } = props;
   const [localActiveObject, setLocalActiveObject] = React.useState(
     props.activeObject ?? value.length - 1,
@@ -243,6 +244,7 @@ const ObjectListWidget = (props) => {
                         );
                         onChange(id, newvalue);
                       }}
+                      errors={error}
                     />
                   </Segment>
                 </Accordion.Content>

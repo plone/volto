@@ -214,6 +214,31 @@ const validateFieldsPerFieldset = (
       );
     }
 
+    // Validation per JSONField type with own schema
+    let jsonFieldErrors = [];
+    if (
+      field.factory === 'JSONField' &&
+      field.widgetOptions?.frontendOptions?.schema
+    ) {
+      const JSONFieldSchema = config.getUtility({
+        name: fieldId,
+        type: 'schema',
+        dependencies: { fieldName: fieldId },
+      });
+
+      jsonFieldErrors = validateFieldsPerFieldset(
+        JSONFieldSchema.method({
+          intl: {
+            formatMessage: () => {},
+          },
+          formData: {},
+        }),
+        fieldData || {},
+        formatMessage,
+        touchedField,
+      );
+    }
+
     const mergedErrors = [
       ...specificFieldErrors,
       ...fieldErrors,
@@ -231,6 +256,10 @@ const validateFieldsPerFieldset = (
         ...perBehaviorFieldErrors,
         ...blockTypeFieldErrors,
       ];
+    }
+
+    if (!isEmpty(jsonFieldErrors)) {
+      errors[fieldId] = { ...jsonFieldErrors };
     }
   });
 
