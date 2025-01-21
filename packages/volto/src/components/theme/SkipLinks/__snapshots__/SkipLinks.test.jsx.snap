@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SkipLinks renders skip links 1`] = `
+exports[`SkipLinks > renders skip links 1`] = `
 <div
   aria-label="Skiplinks"
   className="skiplinks-wrapper"
