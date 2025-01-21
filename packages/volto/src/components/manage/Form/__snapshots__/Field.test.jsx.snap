@@ -1,67 +1,67 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Field renders a \`boolean\` type field 1`] = `
+exports[`Field > renders a \`boolean\` type field 1`] = `
 <div
   className="CheckboxWidget"
 />
 `;
 
-exports[`Field renders a \`datetime\` named field 1`] = `
+exports[`Field > renders a \`datetime\` named field 1`] = `
 <div
   className="DatetimeWidget"
 />
 `;
 
-exports[`Field renders a \`password\` named field 1`] = `
+exports[`Field > renders a \`password\` named field 1`] = `
 <div
   className="PasswordWidget"
 />
 `;
 
-exports[`Field renders a \`richtext\` named field 1`] = `
+exports[`Field > renders a \`richtext\` named field 1`] = `
 <div
   className="WysiwygWidget"
 />
 `;
 
-exports[`Field renders a \`text\` named field 1`] = `
+exports[`Field > renders a \`text\` named field 1`] = `
 <div
   className="TextWidget"
 />
 `;
 
-exports[`Field renders a \`textarea\` named field 1`] = `
+exports[`Field > renders a \`textarea\` named field 1`] = `
 <div
   className="TextareaWidget"
 />
 `;
 
-exports[`Field renders a fallback field 1`] = `
+exports[`Field > renders a fallback field 1`] = `
 <div
   className="TextWidget"
 />
 `;
 
-exports[`Field renders a field with a specific id 1`] = `
+exports[`Field > renders a field with a specific id 1`] = `
 <div
   className="SchemaWidget"
 />
 `;
 
-exports[`Field renders a select widget for a choices-based field 1`] = `
+exports[`Field > renders a select widget for a choices-based field 1`] = `
 <div
   className="SelectWidget"
 />
 `;
 
-exports[`Field renders a select widget for a vocabulary-based field 1`] = `
+exports[`Field > renders a select widget for a vocabulary-based field 1`] = `
 <div
   className="SelectWidget"
 />
 `;
 
-exports[`Field renders a widget regarding the priority of tagged value over name 1`] = `
-Array [
+exports[`Field > renders a widget regarding the priority of tagged value over name 1`] = `
+[
   <div
     className="TextareaWidget"
   />,
@@ -71,13 +71,13 @@ Array [
 ]
 `;
 
-exports[`Field renders a widget with the image object browser 1`] = `
+exports[`Field > renders a widget with the image object browser 1`] = `
 <div
   className="ObjectBrowserWidget"
 />
 `;
 
-exports[`Field renders an \`array\` type field 1`] = `
+exports[`Field > renders an \`array\` type field 1`] = `
 <div
   className="ArrayWidget"
 />

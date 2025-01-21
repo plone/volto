@@ -7,7 +7,7 @@ import ContentsTagsModal from './ContentsTagsModal';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/components/manage/Form');
+vi.mock('@plone/volto/components/manage/Form');
 
 describe('ContentsTagsModal', () => {
   it('renders a contents tags modal component', () => {

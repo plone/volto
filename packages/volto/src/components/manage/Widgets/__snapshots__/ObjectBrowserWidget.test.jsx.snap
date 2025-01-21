@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders a objectBrowser widget component 1`] = `
 <div>
@@ -50,8 +50,6 @@ exports[`renders a objectBrowser widget component 1`] = `
               <svg
                 class="icon"
                 style="height: 18px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
               />
             </button>
           </div>

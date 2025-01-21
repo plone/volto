@@ -3,18 +3,22 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { waitFor, render, screen } from '@testing-library/react';
+import { __setLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 
 import Diff from './Diff';
 
+import { vi, beforeAll } from 'vitest';
+
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(async () => {
+  await __setLoadables();
+});
 
 describe('Diff', () => {
   it('renders a diff component', async () => {

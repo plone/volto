@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`datetime widget converts UTC date and adapt to local datetime 1`] = `
+exports[`datetime widget converts UTC date and adapts to local datetime 1`] = `
 <div>
   <div
     class="inline field field-wrapper-my-field"
@@ -91,8 +91,6 @@ exports[`datetime widget converts UTC date and adapt to local datetime 1`] = `
               <svg
                 class="icon close"
                 style="height: 24px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
               />
             </button>
           </div>
@@ -171,22 +169,7 @@ exports[`renders a datetime widget component 1`] = `
             </div>
             <div
               class="ui input time-input"
-            >
-              <span
-                class="rc-time-picker"
-              >
-                <input
-                  class="rc-time-picker-input"
-                  id="my-field-time"
-                  placeholder="Time"
-                  type="text"
-                  value="12:00 AM"
-                />
-                <span
-                  class="rc-time-picker-icon"
-                />
-              </span>
-            </div>
+            />
             <button
               class="item ui noborder button"
               type="button"
@@ -194,8 +177,6 @@ exports[`renders a datetime widget component 1`] = `
               <svg
                 class="icon close"
                 style="height: 24px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
               />
             </button>
           </div>

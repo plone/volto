@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
+exports[`UsersControlpanelUser > renders a UsersControlpanelUser component 1`] = `
 <tr
   className=""
 >
@@ -111,20 +111,18 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "15px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
           Delete
         </div>
@@ -134,7 +132,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
 </tr>
 `;
 
-exports[`UsersControlpanelUser renders a UsersControlpanelUser component with options disabled if not allowed 1`] = `
+exports[`UsersControlpanelUser > renders a UsersControlpanelUser component with options disabled if not allowed 1`] = `
 <tr
   className=""
 >
@@ -245,20 +243,18 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component with op
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "15px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
           Delete
         </div>

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ContentTypes renders dexterity content-types controlpanel component 1`] = `
+exports[`ContentTypes > renders dexterity content-types controlpanel component 1`] = `
 <div>
   <div
     class="ui container types-control-panel"
@@ -99,8 +99,6 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         <svg
                           class="icon"
                           style="height: 15px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         Edit
                       </div>
@@ -111,8 +109,6 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         <svg
                           class="icon"
                           style="height: 15px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         Schema
                       </div>
@@ -123,8 +119,6 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         <svg
                           class="icon"
                           style="height: 15px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         Layout
                       </div>
@@ -135,8 +129,6 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         <svg
                           class="icon"
                           style="height: 15px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         Delete
                       </div>
@@ -187,8 +179,6 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         <svg
                           class="icon"
                           style="height: 15px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         Edit
                       </div>
@@ -199,8 +189,6 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         <svg
                           class="icon"
                           style="height: 15px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         Schema
                       </div>
@@ -211,8 +199,6 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         <svg
                           class="icon"
                           style="height: 15px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         Layout
                       </div>
@@ -223,8 +209,6 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         <svg
                           class="icon"
                           style="height: 15px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         Delete
                       </div>
@@ -240,10 +224,6 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
   </div>
   <div
     id="toolbar"
-  >
-    <div
-      id="Portal"
-    />
-  </div>
+  />
 </div>
 `;

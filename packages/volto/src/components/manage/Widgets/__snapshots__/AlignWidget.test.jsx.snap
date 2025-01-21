@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`renders an align widget component basic 1`] = `
+exports[`renders an align widget component > basic 1`] = `
 <DocumentFragment>
   <div
     class="inline field align-widget field-wrapper-align"
@@ -41,8 +41,6 @@ exports[`renders an align widget component basic 1`] = `
                 <svg
                   class="icon"
                   style="height: 24px; width: auto; fill: currentColor;"
-                  viewBox=""
-                  xmlns=""
                 >
                   <title>
                     Left
@@ -61,8 +59,6 @@ exports[`renders an align widget component basic 1`] = `
                 <svg
                   class="icon"
                   style="height: 24px; width: auto; fill: currentColor;"
-                  viewBox=""
-                  xmlns=""
                 >
                   <title>
                     Right
@@ -81,8 +77,6 @@ exports[`renders an align widget component basic 1`] = `
                 <svg
                   class="icon"
                   style="height: 24px; width: auto; fill: currentColor;"
-                  viewBox=""
-                  xmlns=""
                 >
                   <title>
                     Center
@@ -101,8 +95,6 @@ exports[`renders an align widget component basic 1`] = `
                 <svg
                   class="icon"
                   style="height: 24px; width: auto; fill: currentColor;"
-                  viewBox=""
-                  xmlns=""
                 >
                   <title>
                     Full
@@ -119,7 +111,7 @@ exports[`renders an align widget component basic 1`] = `
 </DocumentFragment>
 `;
 
-exports[`renders an align widget component extended with actions and actionsInfoMap props 1`] = `
+exports[`renders an align widget component > extended with actions and actionsInfoMap props 1`] = `
 <DocumentFragment>
   <div
     class="inline field align-widget field-wrapper-align"
@@ -160,8 +152,6 @@ exports[`renders an align widget component extended with actions and actionsInfo
                 <svg
                   class="icon"
                   style="height: 24px; width: auto; fill: currentColor;"
-                  viewBox=""
-                  xmlns=""
                 >
                   <title>
                     Additional action title

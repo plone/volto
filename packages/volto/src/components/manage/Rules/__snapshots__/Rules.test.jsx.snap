@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Rules renders rules object control 1`] = `
+exports[`Rules > renders rules object control 1`] = `
 <div>
   <div
     class="ui container"

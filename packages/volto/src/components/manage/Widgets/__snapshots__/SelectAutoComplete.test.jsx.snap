@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders a select widget component 1`] = `
 <div>
@@ -87,8 +87,6 @@ exports[`renders a select widget component 1`] = `
                   <svg
                     class="icon"
                     style="height: 24px; width: auto; fill: #007bc1;"
-                    viewBox=""
-                    xmlns=""
                   />
                 </div>
               </div>

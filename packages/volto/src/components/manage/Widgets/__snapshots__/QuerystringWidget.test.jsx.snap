@@ -1,79 +1,13 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`can take a schemaEnhancer 1`] = `
 <div
   className="querystring-widget"
->
-  <div
-    className="mocked-default-widget"
-    id="mocked-field-query-0-my-field"
-  >
-    Criteria
-     - 
-    No description
-  </div>
-  <div
-    className="mocked-default-widget"
-    id="mocked-field-sort_on-1-my-field"
-  >
-    Sort on
-     - 
-    No description
-  </div>
-  <div
-    className="mocked-boolean-widget"
-    id="mocked-field-sort_order_boolean-2-my-field"
-  >
-    Reversed order
-     - 
-    No description
-  </div>
-</div>
+/>
 `;
 
 exports[`renders an querystring widget component 1`] = `
 <div
   className="querystring-widget"
->
-  <div
-    className="mocked-default-widget"
-    id="mocked-field-query-0-my-field"
-  >
-    Criteria
-     - 
-    No description
-  </div>
-  <div
-    className="mocked-default-widget"
-    id="mocked-field-sort_on-1-my-field"
-  >
-    Sort on
-     - 
-    No description
-  </div>
-  <div
-    className="mocked-boolean-widget"
-    id="mocked-field-sort_order_boolean-2-my-field"
-  >
-    Reversed order
-     - 
-    No description
-  </div>
-  <div
-    className="mocked-number-widget"
-    id="mocked-field-limit-3-my-field"
-  >
-    Results limit
-     - 
-    No description
-  </div>
-  <div
-    className="mocked-number-widget"
-    id="mocked-field-b_size-4-my-field"
-  >
-    Item batch size
-     - 
-    No description
-  </div>
-</div>
+/>
 `;

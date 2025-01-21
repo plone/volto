@@ -1,10 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools component 1`] = `
+exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools component 1`] = `
 <div
   className="profile pastanaga-menu has-inner-actions"
   style={
-    Object {
+    {
       "flex": "0 0 320px",
     }
   }
@@ -18,20 +18,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       <svg
         className="icon"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": undefined,
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "currentColor",
             "height": "30px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
     </button>
     <div

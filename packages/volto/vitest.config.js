@@ -9,6 +9,10 @@ export default defineConfig({
       '@plone/volto': path.resolve(__dirname, 'src'),
       '@plone/volto-slate': path.resolve(__dirname, '../volto-slate/src'),
       '@root': path.resolve(__dirname, 'src'),
+      '@plone/registry/addon-registry': path.resolve(
+        __dirname,
+        'src/registry.js',
+      ),
     },
   },
   test: {
@@ -21,15 +25,17 @@ export default defineConfig({
       './jest-setup-afterenv.js',
     ],
     globalSetup: './global-test-setup.js',
-    include: ['src/**/*.{test,spec}.{js,ts,jsx,tsx}'],
+    include: [
+      'src/**/*.{test,spec}.{js,ts,jsx,tsx}',
+      '__test__/**/*.{test,spec}.{js,ts,jsx,tsx}',
+    ],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
-      include: ['src/**/*.{js,ts,jsx,tsx}'],
+      include: ['__tests__/**/*.{test,spec}.{js,ts,jsx,tsx}'],
       exclude: [
         'node_modules/**',
         '**/dist/**',
-        '**/test/**',
         '**/*.config.{js,ts}',
         '**/jest-*.js',
       ],

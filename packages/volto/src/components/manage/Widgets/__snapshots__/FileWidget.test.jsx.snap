@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`FileWidget renders a file widget component with value 1`] = `
+exports[`FileWidget > renders a file widget component with value 1`] = `
 <div>
   <div
     class="inline field field-wrapper-my-field"
@@ -71,8 +71,6 @@ exports[`FileWidget renders a file widget component with value 1`] = `
               <svg
                 class="icon"
                 style="height: 20px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
               />
             </button>
           </div>
@@ -83,7 +81,7 @@ exports[`FileWidget renders a file widget component with value 1`] = `
 </div>
 `;
 
-exports[`FileWidget renders a file widget component with value in raw data 1`] = `
+exports[`FileWidget > renders a file widget component with value in raw data 1`] = `
 <div>
   <div
     class="inline field field-wrapper-my-field"
@@ -153,8 +151,6 @@ exports[`FileWidget renders a file widget component with value in raw data 1`] =
               <svg
                 class="icon"
                 style="height: 20px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
               />
             </button>
           </div>
@@ -165,7 +161,7 @@ exports[`FileWidget renders a file widget component with value in raw data 1`] =
 </div>
 `;
 
-exports[`FileWidget renders an empty file widget component 1`] = `
+exports[`FileWidget > renders an empty file widget component 1`] = `
 <div>
   <div
     class="inline field field-wrapper-my-field"
@@ -193,34 +189,6 @@ exports[`FileWidget renders an empty file widget component 1`] = `
         <div
           class="eight wide column"
         >
-          <div
-            class="file-widget-dropzone"
-            tabindex="0"
-          >
-            <div
-              class="dropzone-placeholder"
-            >
-              <p
-                class="dropzone-text"
-              >
-                Drop file here to upload a new file
-              </p>
-            </div>
-            <label
-              class="label-file-widget-input"
-            >
-              Choose a file
-            </label>
-            <input
-              autocomplete="off"
-              id="field-my-field"
-              multiple=""
-              name="my-field"
-              style="display: none;"
-              tabindex="-1"
-              type="file"
-            />
-          </div>
           <div
             class="field-file-name"
           />

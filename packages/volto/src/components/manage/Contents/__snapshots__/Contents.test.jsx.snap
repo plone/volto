@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Contents renders a folder contents view component 1`] = `
+exports[`Contents > renders a folder contents view component 1`] = `
 <div>
   <div
     aria-live="polite"
@@ -51,8 +51,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                     <svg
                       class="icon upload"
                       style="height: 24px; width: auto; fill: #007eb1;"
-                      viewBox=""
-                      xmlns=""
                     />
                   </button>
                 </div>
@@ -66,8 +64,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                     <svg
                       class="icon rename"
                       style="height: 24px; width: auto; fill: grey;"
-                      viewBox=""
-                      xmlns=""
                     />
                   </button>
                   <button
@@ -77,8 +73,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                     <svg
                       class="icon semaphore"
                       style="height: 24px; width: auto; fill: grey;"
-                      viewBox=""
-                      xmlns=""
                     />
                   </button>
                   <button
@@ -88,8 +82,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                     <svg
                       class="icon tag"
                       style="height: 24px; width: auto; fill: grey;"
-                      viewBox=""
-                      xmlns=""
                     />
                   </button>
                   <button
@@ -99,8 +91,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                     <svg
                       class="icon properties"
                       style="height: 24px; width: auto; fill: grey;"
-                      viewBox=""
-                      xmlns=""
                     />
                   </button>
                 </div>
@@ -114,8 +104,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                     <svg
                       class="icon cut"
                       style="height: 24px; width: auto; fill: grey;"
-                      viewBox=""
-                      xmlns=""
                     />
                   </button>
                   <button
@@ -125,8 +113,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                     <svg
                       class="icon copy"
                       style="height: 24px; width: auto; fill: grey;"
-                      viewBox=""
-                      xmlns=""
                     />
                   </button>
                   <button
@@ -136,8 +122,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                     <svg
                       class="icon paste"
                       style="height: 24px; width: auto; fill: grey;"
-                      viewBox=""
-                      xmlns=""
                     />
                   </button>
                   <button
@@ -147,8 +131,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                     <svg
                       class="icon delete"
                       style="height: 24px; width: auto; fill: grey;"
-                      viewBox=""
-                      xmlns=""
                     />
                   </button>
                 </div>
@@ -170,8 +152,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                     <svg
                       class="icon zoom"
                       style="height: 30px; width: auto; fill: #007eb1; flex-shrink: 0;"
-                      viewBox=""
-                      xmlns=""
                     />
                     <div
                       class="results"
@@ -212,8 +192,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                   <svg
                     class="icon"
                     style="height: 24px; width: auto; fill: #826a6a;"
-                    viewBox=""
-                    xmlns=""
                   />
                   <div
                     class="menu transition left"
@@ -233,8 +211,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Review state"
                           style="height: 24px; width: auto; fill: #007eb1;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -248,8 +224,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Last modified"
                           style="height: 24px; width: auto; fill: #007eb1;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -263,8 +237,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Publication date"
                           style="height: 24px; width: auto; fill: #007eb1;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -278,8 +250,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon ID"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -293,8 +263,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Expiration date"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -308,8 +276,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Created on"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -323,8 +289,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Tags"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -338,8 +302,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Type"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -353,8 +315,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Folder"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -368,8 +328,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Excluded from navigation"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -383,8 +341,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Object Size"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -398,8 +354,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Last comment date"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -413,8 +367,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Total comments"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -428,8 +380,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon End Date"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -443,8 +393,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Description"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -458,8 +406,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Creator"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -473,8 +419,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Location"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -488,8 +432,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon UID"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -503,8 +445,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Start Date"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -518,8 +458,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon Type"
                           style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
                         />
                         <span>
                            
@@ -548,8 +486,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon dropdown-popup-trigger configuration-svg"
                           style="height: 24px; width: auto; fill: #826a6a;"
-                          viewBox=""
-                          xmlns=""
                         />
                       </th>
                       <th
@@ -558,8 +494,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                         <svg
                           class="icon dropdown-popup-trigger"
                           style="height: 24px; width: auto; fill: #826a6a;"
-                          viewBox=""
-                          xmlns=""
                         />
                       </th>
                       <th

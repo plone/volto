@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`ObjectBrowserNav handles selected as empty object without errors 1`] = `
 <ul
@@ -24,20 +24,18 @@ exports[`ObjectBrowserNav handles selected as empty object without errors 1`] = 
         <svg
           className="icon"
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": undefined,
             }
           }
           onClick={null}
           style={
-            Object {
+            {
               "fill": "currentColor",
               "height": "24px",
               "width": "auto",
             }
           }
-          viewBox=""
-          xmlns=""
         />
       </span>
       Welcome to Plone
@@ -63,20 +61,18 @@ exports[`ObjectBrowserNav handles selected as empty object without errors 1`] = 
         <svg
           className="icon"
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": undefined,
             }
           }
           onClick={null}
           style={
-            Object {
+            {
               "fill": "currentColor",
               "height": "24px",
               "width": "auto",
             }
           }
-          viewBox=""
-          xmlns=""
         />
       </span>
       News

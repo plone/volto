@@ -1,10 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools component - in a non-root path 1`] = `
+exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools component - in a non-root path 1`] = `
 <div
   className="personal-tools pastanaga-menu"
   style={
-    Object {
+    {
       "flex": "0 0 320px",
     }
   }
@@ -19,20 +19,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       <svg
         className="icon"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": "<title>Back</title>undefined",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "currentColor",
             "height": "30px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
     </button>
     <div
@@ -49,20 +47,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       <svg
         className="icon logout"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": "<title>Logout</title>undefined",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "currentColor",
             "height": "30px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
     </a>
   </header>
@@ -72,20 +68,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
     <svg
       className="icon"
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": undefined,
         }
       }
       onClick={null}
       style={
-        Object {
+        {
           "fill": "currentColor",
           "height": "96px",
           "width": "auto",
         }
       }
-      viewBox=""
-      xmlns=""
     />
   </div>
   <div
@@ -102,20 +96,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "24px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </a>
       </li>
@@ -128,20 +120,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "24px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </button>
       </li>
@@ -154,20 +144,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "24px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </a>
       </li>
@@ -176,11 +164,11 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
 </div>
 `;
 
-exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools component 1`] = `
+exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools component 1`] = `
 <div
   className="personal-tools pastanaga-menu"
   style={
-    Object {
+    {
       "flex": "0 0 320px",
     }
   }
@@ -195,20 +183,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       <svg
         className="icon"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": "<title>Back</title>undefined",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "currentColor",
             "height": "30px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
     </button>
     <div
@@ -225,20 +211,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       <svg
         className="icon logout"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": "<title>Logout</title>undefined",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "currentColor",
             "height": "30px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
     </a>
   </header>
@@ -248,20 +232,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
     <svg
       className="icon"
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": undefined,
         }
       }
       onClick={null}
       style={
-        Object {
+        {
           "fill": "currentColor",
           "height": "96px",
           "width": "auto",
         }
       }
-      viewBox=""
-      xmlns=""
     />
   </div>
   <div
@@ -278,20 +260,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "24px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </a>
       </li>
@@ -304,20 +284,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "24px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </button>
       </li>
@@ -330,20 +308,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "24px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </a>
       </li>
@@ -352,11 +328,11 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
 </div>
 `;
 
-exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools component with portrait set 1`] = `
+exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools component with portrait set 1`] = `
 <div
   className="personal-tools pastanaga-menu"
   style={
-    Object {
+    {
       "flex": "0 0 320px",
     }
   }
@@ -371,20 +347,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       <svg
         className="icon"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": "<title>Back</title>undefined",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "currentColor",
             "height": "30px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
     </button>
     <div
@@ -401,20 +375,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       <svg
         className="icon logout"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": "<title>Logout</title>undefined",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "currentColor",
             "height": "30px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
     </a>
   </header>
@@ -440,20 +412,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "24px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </a>
       </li>
@@ -466,20 +436,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "24px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </button>
       </li>
@@ -492,20 +460,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "24px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </a>
       </li>
@@ -514,11 +480,11 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
 </div>
 `;
 
-exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools component without Site Setup access 1`] = `
+exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools component without Site Setup access 1`] = `
 <div
   className="personal-tools pastanaga-menu"
   style={
-    Object {
+    {
       "flex": "0 0 320px",
     }
   }
@@ -533,20 +499,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       <svg
         className="icon"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": "<title>Back</title>undefined",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "currentColor",
             "height": "30px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
     </button>
     <div
@@ -563,20 +527,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       <svg
         className="icon logout"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": "<title>Logout</title>undefined",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "currentColor",
             "height": "30px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
     </a>
   </header>
@@ -586,20 +548,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
     <svg
       className="icon"
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": undefined,
         }
       }
       onClick={null}
       style={
-        Object {
+        {
           "fill": "currentColor",
           "height": "96px",
           "width": "auto",
         }
       }
-      viewBox=""
-      xmlns=""
     />
   </div>
   <div
@@ -616,20 +576,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "24px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </a>
       </li>
@@ -642,20 +600,18 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "24px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </button>
       </li>

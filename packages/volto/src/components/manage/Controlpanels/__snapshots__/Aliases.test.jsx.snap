@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Aliases renders an aliases control component 1`] = `
+exports[`Aliases > renders an aliases control component 1`] = `
 <div>
   <div
     id="page-aliases"
@@ -281,8 +281,6 @@ exports[`Aliases renders an aliases control component 1`] = `
                       <svg
                         class="icon"
                         style="height: 18px; width: auto; fill: currentColor;"
-                        viewBox=""
-                        xmlns=""
                       />
                     </button>
                   </td>
@@ -337,8 +335,6 @@ exports[`Aliases renders an aliases control component 1`] = `
                       <svg
                         class="icon"
                         style="height: 18px; width: auto; fill: currentColor;"
-                        viewBox=""
-                        xmlns=""
                       />
                     </button>
                   </td>
@@ -393,8 +389,6 @@ exports[`Aliases renders an aliases control component 1`] = `
                       <svg
                         class="icon"
                         style="height: 18px; width: auto; fill: currentColor;"
-                        viewBox=""
-                        xmlns=""
                       />
                     </button>
                   </td>
@@ -475,10 +469,6 @@ exports[`Aliases renders an aliases control component 1`] = `
   </div>
   <div
     id="toolbar"
-  >
-    <div
-      id="Portal"
-    />
-  </div>
+  />
 </div>
 `;

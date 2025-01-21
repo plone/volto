@@ -5,6 +5,7 @@ import {
   getAddonsLoaderCode,
   nameFromPackage,
 } from '@plone/registry/create-addons-loader';
+import { describe, expect } from 'vitest';
 
 describe('create-addons-loader code generation', () => {
   test('no addon creates simple loader, default = no loadProjectConfig', () => {

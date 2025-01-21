@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders a dictionary widget component 1`] = `
 <div>
@@ -38,8 +38,6 @@ exports[`renders a dictionary widget component 1`] = `
               <svg
                 class="icon"
                 style="height: 18px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
               />
               Add term
             </button>
@@ -69,8 +67,6 @@ exports[`renders a dictionary widget component 1`] = `
                   <svg
                     class="icon"
                     style="height: 18px; width: auto; fill: currentColor;"
-                    viewBox=""
-                    xmlns=""
                   />
                 </div>
                 <div
@@ -104,8 +100,6 @@ exports[`renders a dictionary widget component 1`] = `
                     <svg
                       class="icon"
                       style="height: 20px; width: auto; fill: #e40166;"
-                      viewBox=""
-                      xmlns=""
                     />
                   </button>
                 </div>
@@ -131,8 +125,6 @@ exports[`renders a dictionary widget component 1`] = `
                   <svg
                     class="icon"
                     style="height: 18px; width: auto; fill: currentColor;"
-                    viewBox=""
-                    xmlns=""
                   />
                 </div>
                 <div
@@ -166,8 +158,6 @@ exports[`renders a dictionary widget component 1`] = `
                     <svg
                       class="icon"
                       style="height: 20px; width: auto; fill: #e40166;"
-                      viewBox=""
-                      xmlns=""
                     />
                   </button>
                 </div>
@@ -193,8 +183,6 @@ exports[`renders a dictionary widget component 1`] = `
                   <svg
                     class="icon"
                     style="height: 18px; width: auto; fill: currentColor;"
-                    viewBox=""
-                    xmlns=""
                   />
                 </div>
                 <div
@@ -228,8 +216,6 @@ exports[`renders a dictionary widget component 1`] = `
                     <svg
                       class="icon"
                       style="height: 20px; width: auto; fill: #e40166;"
-                      viewBox=""
-                      xmlns=""
                     />
                   </button>
                 </div>

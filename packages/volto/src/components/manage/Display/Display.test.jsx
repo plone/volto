@@ -3,17 +3,17 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { render, waitFor } from '@testing-library/react';
 import config from '@plone/volto/registry';
+import { __setLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 
 import Display from './Display';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/components/manage/Widgets');
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/components/manage/Widgets');
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(async () => {
+  await __setLoadables();
+});
 
 beforeEach(() => {
   config.views.layoutViewsNamesMapping = {

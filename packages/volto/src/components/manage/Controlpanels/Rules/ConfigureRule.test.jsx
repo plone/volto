@@ -9,7 +9,9 @@ import ConfigureRule from './ConfigureRule';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('../../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
 describe('ConfigureRule', () => {
   it('renders rules configure interface', () => {

@@ -11,8 +11,9 @@ beforeAll(() => {
   config.settings.isMultilingual = true;
   config.settings.supportedLanguages = ['de', 'es'];
 });
-
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
 const mockStore = configureStore();
 

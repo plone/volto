@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`No 'No value' option when default value is 0 1`] = `
 <div>
@@ -94,8 +94,6 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   <svg
                     class="icon"
                     style="height: 18px; width: auto; fill: #e40166;"
-                    viewBox=""
-                    xmlns=""
                   />
                 </div>
                 <span
@@ -108,8 +106,6 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   <svg
                     class="icon"
                     style="height: 24px; width: auto; fill: #007bc1;"
-                    viewBox=""
-                    xmlns=""
                   />
                 </div>
               </div>
@@ -131,8 +127,6 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   <svg
                     class="icon"
                     style="height: 20px; width: auto; fill: #007bc1;"
-                    viewBox=""
-                    xmlns=""
                   />
                 </div>
                 <div
@@ -146,8 +140,6 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   <svg
                     class="icon"
                     style="height: 20px; width: auto; fill: #007bc1;"
-                    viewBox=""
-                    xmlns=""
                   />
                 </div>
               </div>
@@ -253,8 +245,6 @@ exports[`renders a select widget component 1`] = `
                   <svg
                     class="icon"
                     style="height: 24px; width: auto; fill: #007bc1;"
-                    viewBox=""
-                    xmlns=""
                   />
                 </div>
               </div>

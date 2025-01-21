@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`IdWidget renders an empty id widget component 1`] = `
+exports[`IdWidget > renders an empty id widget component 1`] = `
 <div>
   <div
     class="inline field text field-wrapper-my-field"
@@ -45,7 +45,7 @@ exports[`IdWidget renders an empty id widget component 1`] = `
 </div>
 `;
 
-exports[`IdWidget renders an id widget with a valid dot character 1`] = `
+exports[`IdWidget > renders an id widget with a valid dot character 1`] = `
 <div>
   <div
     class="inline field text field-wrapper-my-field.jpg"
@@ -90,7 +90,7 @@ exports[`IdWidget renders an id widget with a valid dot character 1`] = `
 </div>
 `;
 
-exports[`IdWidget renders an id widget with a valid value 1`] = `
+exports[`IdWidget > renders an id widget with a valid value 1`] = `
 <div>
   <div
     class="inline field text field-wrapper-my-field"
@@ -135,7 +135,7 @@ exports[`IdWidget renders an id widget with a valid value 1`] = `
 </div>
 `;
 
-exports[`IdWidget renders an id widget with an reserved name 1`] = `
+exports[`IdWidget > renders an id widget with an reserved name 1`] = `
 <div>
   <div
     class="error inline field text field-wrapper-my-field"
@@ -185,7 +185,7 @@ exports[`IdWidget renders an id widget with an reserved name 1`] = `
 </div>
 `;
 
-exports[`IdWidget renders an id widget with invalid characters 1`] = `
+exports[`IdWidget > renders an id widget with invalid characters 1`] = `
 <div>
   <div
     class="error inline field text field-wrapper-my-field"

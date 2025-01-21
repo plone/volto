@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component 1`] = `
+exports[`UsersControlpanelGroups > renders a UsersControlpanelGroups component 1`] = `
 <tr
   className=""
 >
@@ -106,20 +106,18 @@ exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component 1`]
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "15px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
           Delete
         </div>
@@ -129,7 +127,7 @@ exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component 1`]
 </tr>
 `;
 
-exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component with no Manager user 1`] = `
+exports[`UsersControlpanelGroups > renders a UsersControlpanelGroups component with no Manager user 1`] = `
 <tr
   className=""
 >
