@@ -7,9 +7,9 @@ describe('Actions action', () => {
       const url = 'http://localhost';
       const action = listActions(url);
 
-      expect(action.type).toEqual(LIST_ACTIONS);
-      expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(`${url}/@actions`);
+      expect(action.type).toBe(LIST_ACTIONS);
+      expect(action.request.op).toBe('get');
+      expect(action.request.path).toBe(`${url}/@actions`);
     });
   });
 });

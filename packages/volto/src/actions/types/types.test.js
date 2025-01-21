@@ -1,5 +1,6 @@
 import { getTypes } from './types';
 import { GET_TYPES } from '@plone/volto/constants/ActionTypes';
+import { vi } from 'vitest';
 
 describe('Types action', () => {
   describe('getTypes', () => {
@@ -10,7 +11,7 @@ describe('Types action', () => {
         },
       });
       const url = '/blog';
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
       getTypes(url)(dispatch, getState);
 
