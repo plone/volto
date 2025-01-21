@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
@@ -7,7 +7,7 @@ import ContentsPropertiesModal from './ContentsPropertiesModal';
 
 const mockStore = configureStore();
 
-jest.mock('../Form/ModalForm', () => jest.fn(() => <div id="modalform" />));
+jest.mock('@plone/volto/components/manage/Form');
 
 describe('ContentsPropertiesModal', () => {
   it('renders a contents properties modal component', () => {
@@ -23,7 +23,7 @@ describe('ContentsPropertiesModal', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <ContentsPropertiesModal
           open
@@ -33,7 +33,7 @@ describe('ContentsPropertiesModal', () => {
         />
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

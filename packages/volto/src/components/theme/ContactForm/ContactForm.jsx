@@ -1,15 +1,19 @@
 import { useCallback, useEffect } from 'react';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { Container, Message, Icon } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { emailNotification } from '@plone/volto/actions';
+import { emailNotification } from '@plone/volto/actions/emailNotification/emailNotification';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, Toolbar, Toast } from '@plone/volto/components';
-import { getBaseUrl, Helmet, usePrevious } from '@plone/volto/helpers';
-import { useClient } from '@plone/volto/hooks';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import { Form } from '@plone/volto/components/manage/Form';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
+import { useClient } from '@plone/volto/hooks/client/useClient';
 
 const messages = defineMessages({
   send: {
@@ -149,8 +153,8 @@ const ContactFormComponent = () => {
             required: ['from', 'message'],
           }}
         />
-        {isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {isClient &&
+          createPortal(
             <Toolbar
               pathname={pathname}
               hideDefaultViewButtons
@@ -164,9 +168,9 @@ const ContactFormComponent = () => {
                   />
                 </Link>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Container>
     </div>
   );

@@ -44,8 +44,9 @@ The Volto Team reviews pull requests only from people with a GitHub account who 
 
 ## Branch policy
 
-```{include} ./branch-policy.md
+```{include} ../_inc/_branch-policy.md
 ```
+
 
 (contributing-install-volto-for-development-label)=
 
@@ -53,12 +54,13 @@ The Volto Team reviews pull requests only from people with a GitHub account who 
 
 For developing Volto, follow {doc}`developing-core`.
 
+
 (contributing-translations-label)=
 
 ## Translations
 
 All text that can be shown in a browser must be translatable.
-Please mark all such strings as translatable as defined in the [i18n guide](../recipes/i18n.md).
+Please mark all such strings as translatable as defined in the [i18n guide](../development/i18n.md).
 
 
 (contributing-branch-policy-for-translations-label)=
@@ -125,6 +127,7 @@ redux
 routing
 icons
 accessibility-guidelines
+bundle-size-optimization
 typescript
 volto-core-addons
 version-policy

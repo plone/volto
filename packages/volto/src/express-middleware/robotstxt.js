@@ -1,5 +1,5 @@
 import express from 'express';
-import { generateRobots } from '@plone/volto/helpers';
+import { generateRobots } from '@plone/volto/helpers/Robots/Robots';
 
 /*
 robots.txt - priority order:

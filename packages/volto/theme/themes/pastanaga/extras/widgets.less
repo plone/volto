@@ -153,3 +153,142 @@ body.babel-view .field.language-independent-field {
 .react-select__option {
   .word-break();
 }
+
+// makes sure event recurrence form buttons don't overflow when font is big
+.recurrence-form {
+  .byday-field {
+    .button {
+      flex-grow: 1;
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+  }
+
+  .byyear-field {
+    .byyear-byday {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  }
+}
+
+.image-widget {
+  container-type: inline-size;
+
+  .no-image-wrapper {
+    display: flex;
+    width: ~'min(100%, 450px)';
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .toolbar-inner {
+    display: flex;
+    width: ~'min(100%, 450px)';
+    height: 40px;
+    padding: 4px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.975);
+    box-shadow:
+      0 0 8px rgba(0, 0, 0, 0.1),
+      0 2px 4px rgba(0, 0, 0, 0.05);
+
+    .ui.form & .ui.input input[type='text'] {
+      height: initial;
+    }
+
+    & > svg {
+      display: inline-block !important;
+      box-sizing: content-box;
+      padding: 4px;
+      margin-right: 4px;
+      color: @brown !important;
+    }
+
+    .ui.input {
+      width: 100%;
+      margin-left: 8px;
+    }
+
+    .ui.input > input {
+      padding: 0;
+      border: none;
+    }
+
+    .ui.icon.button {
+      padding: 4px;
+      border-radius: 1px;
+      margin-left: -3px;
+      color: @brown !important;
+
+      &:hover {
+        background-color: #edf1f2 !important;
+      }
+    }
+
+    .ui.buttons:first-child {
+      & .ui.icon.button {
+        margin-left: 0;
+      }
+    }
+  }
+
+  @blueArctic: #e2f1fd;
+  @greySnow: #f3f5f7;
+  @greySmoke: #e4e8ec;
+
+  .image-widget-preview-wrapper {
+    position: relative;
+  }
+
+  .ui.basic.button.remove-block-button {
+    position: absolute;
+    z-index: 2;
+    top: 6px;
+    right: 2px;
+    background-color: transparent;
+    box-shadow: none;
+
+    .icon {
+      height: 18px !important;
+    }
+
+    .circled {
+      padding: 8px;
+      border: 1px solid @greySmoke;
+      background: @greySnow;
+
+      &:hover {
+        background-color: @greySmoke;
+      }
+    }
+
+    &:hover {
+      background-color: transparent !important;
+    }
+  }
+
+  .image-widget-filepath-preview {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    word-break: break-all;
+
+    a {
+      margin-left: 5px;
+    }
+  }
+}
+
+// ### FormFieldWrapper ###
+.language-independent-field .wrapper > label {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+
+  .languageIndependent-icon {
+    display: flex;
+    margin-left: 8px;
+  }
+}

@@ -4,11 +4,11 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import {
   Button,
   Checkbox,
@@ -19,7 +19,7 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { getBaseUrl } from '@plone/volto/helpers';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import {
   addRule,
   getRules,
@@ -28,15 +28,16 @@ import {
   applyRulesToSubfolders,
   unapplyRulesToSubfolders,
   removeRules,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/rules/rules';
 
-import { Icon, Toolbar } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
 
 import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 
 const messages = defineMessages({
   back: {
@@ -74,6 +75,10 @@ const messages = defineMessages({
   remove: {
     id: 'Unassigned',
     defaultMessage: 'Unassigned',
+  },
+  select_rule: {
+    id: 'Select rule',
+    defaultMessage: 'Select rule',
   },
 });
 
@@ -365,7 +370,9 @@ class Rules extends Component {
             />
             <div style={{ display: 'flex' }}>
               <Select
-                placeholder="Select rule"
+                placeholder={this.props.intl.formatMessage(
+                  messages.select_rule,
+                )}
                 value={this.state.newRule}
                 onChange={(e, { value }) => this.setState({ newRule: value })}
                 options={assignable_rules.map((rule, i) => {
@@ -484,8 +491,8 @@ class Rules extends Component {
             </Button>
           </React.Fragment>
         )}
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -502,9 +509,9 @@ class Rules extends Component {
                   />
                 </Link>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Container>
     );
   }

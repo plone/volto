@@ -10,6 +10,7 @@ export default defineConfig({
       entry: [path.resolve(__dirname, 'src/index.ts')],
       name: 'PloneComponents',
     },
+    cssMinify: 'lightningcss',
     rollupOptions: {
       external: [
         'react',
@@ -17,8 +18,6 @@ export default defineConfig({
         'react-aria',
         'react-aria-components',
         '@react-spectrum/utils',
-        'classnames',
-        'lodash',
       ],
       output: {
         globals: {
@@ -27,5 +26,8 @@ export default defineConfig({
         },
       },
     },
+  },
+  css: {
+    transformer: 'lightningcss',
   },
 });

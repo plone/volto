@@ -13,9 +13,17 @@ if (fs.existsSync('.vscode')) {
 
 if (!vscodeSettingsJSON['eslint.workingDirectories']) {
   vscodeSettingsJSON['eslint.workingDirectories'] = [{ mode: 'auto' }];
-
-  fs.writeFileSync(
-    '.vscode/settings.json',
-    `${stringify(vscodeSettingsJSON, null, 2)}`,
-  );
 }
+
+if (!vscodeSettingsJSON['[markdown]']) {
+  vscodeSettingsJSON['[markdown]'] = {
+    'editor.formatOnSave': false,
+  };
+} else {
+  vscodeSettingsJSON['[markdown]']['editor.formatOnSave'] = false;
+}
+
+fs.writeFileSync(
+  '.vscode/settings.json',
+  `${stringify(vscodeSettingsJSON, null, 2)}`,
+);

@@ -2,11 +2,11 @@ import React from 'react';
 import { Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
-import { getVocabulary } from '@plone/volto/actions';
+import { getVocabulary } from '@plone/volto/actions/vocabularies/vocabularies';
 import { injectIntl } from 'react-intl';
 import { compose } from 'redux';
 
-import { ModalForm } from '@plone/volto/components';
+import { ModalForm } from '@plone/volto/components/manage/Form';
 
 const setSchema = (name, choices = '') => {
   switch (name) {

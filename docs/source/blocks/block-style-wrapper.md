@@ -218,8 +218,11 @@ Finally, assuming that you select the default value for the {guilabel}`Aspect Ra
 </div>
 ```
 
-The custom CSS property definition will only apply within the div that it's defined.
-As you can see, the custom CSS property applies only within the `div` in which it is defined.
+As you can see, the custom CSS declaration applies only in the `div` where you inject the property.
+
+```{seealso}
+[CSS custom properties basics](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+```
 
 If you want to use it in your custom components, you need to apply it in the root of your block's view component as follows:
 
@@ -234,6 +237,95 @@ const BlockView = (props)=> (
 ```{note}
 You need to manually add the above code in your view component block code to benefit from the style injection.
 The styles in the block edit component are injected automatically into the blocks engine editor wrappers, so you don't have to take any action.
+```
+
+## Nested custom CSS properties
+
+This section describes how to work with nested custom CSS properties.
+You can inject custom CSS properties in a nested manner.
+You can also avoid some nesting, where useful.
+
+
+(inject-nested-custom-css-properties)=
+
+### Inject nested custom CSS properties
+
+Given this block enhancer:
+
+```js
+  schema.properties.styles.schema.fieldsets[0].fields = [
+    ...schema.properties.styles.schema.fieldsets[0].fields,
+    'theme',
+  ];
+
+  schema.properties.styles.schema.properties['theme'] = {
+    widget: 'color_picker',
+    title: 'Theme',
+    colors,
+    default: defaultBGColor,
+  };
+```
+
+It will generate these values for the `StyleWrapper` to use:
+
+```js
+{
+  "styles": {
+    "theme": {
+      "--background-color": "#222",
+      "--font-color": "white"
+    }
+  }
+}
+```
+
+The resultant injected custom CSS properties will be prefixed with two dashes plus the name of the key, `--theme` in this example.
+
+```html
+<div class="block teaser" style="--theme--background-color: #222, --theme--font-color: white">
+ ...
+</div>
+```
+
+
+### Avoid injecting nested custom CSS properties
+
+Sometimes you might not want to build the custom CSS property name with a prefix in a nested structure, as described in {ref}`inject-nested-custom-css-properties`, because you want to use the exact names defined in your custom CSS properties.
+To avoid building a prefix, you can append the suffix `:noprefix` in your block enhancer.
+
+```js
+  schema.properties.styles.schema.fieldsets[0].fields = [
+    ...schema.properties.styles.schema.fieldsets[0].fields,
+    'theme:noprefix',
+  ];
+
+  schema.properties.styles.schema.properties['theme:noprefix'] = {
+    widget: 'color_picker',
+    title: "Theme",
+    colors,
+    default: defaultBGColor,
+  };
+```
+
+It will generate these values for the `StyleWrapper` to use:
+
+```js
+{
+  "styles": {
+    "theme:noprefix": {
+      "--background-color": "#222",
+      "--font-color": "white"
+    }
+  }
+}
+```
+
+This will yield the resultant markup without a prefix.
+
+```html
+<div class="block teaser" style="--background-color: #222, --font-color: white">
+ ...
+</div>
 ```
 
 ## Align class injection

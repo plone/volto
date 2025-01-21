@@ -36,14 +36,14 @@ export function listControlpanels(): any;
  */
 export function updateControlpanel(url: string, data: any): any;
 export function getSystemInformation(): {
-    type: any;
+    type: string;
     request: {
         op: string;
         path: string;
     };
 };
 export function getDatabaseInformation(): {
-    type: any;
+    type: string;
     request: {
         op: string;
         path: string;

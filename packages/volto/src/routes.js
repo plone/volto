@@ -3,55 +3,55 @@
  * @module routes
  */
 import debug from 'debug';
-import { compact } from 'lodash';
+import compact from 'lodash/compact';
+
+import Add from '@plone/volto/components/manage/Add/Add';
+import Aliases from '@plone/volto/components/manage/Aliases/Aliases';
+import ChangePassword from '@plone/volto/components/manage/Preferences/ChangePassword';
+import ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
+import CreateTranslation from '@plone/volto/components/manage/Multilingual/CreateTranslation';
+import Delete from '@plone/volto/components/manage/Delete/Delete';
+import Diff from '@plone/volto/components/manage/Diff/Diff';
+import Edit from '@plone/volto/components/manage/Edit/Edit';
+import History from '@plone/volto/components/manage/History/History';
+import LinksToItem from '@plone/volto/components/manage/LinksToItem/LinksToItem';
+import Login from '@plone/volto/components/theme/Login/Login';
+import Logout from '@plone/volto/components/theme/Logout/Logout';
+import ManageTranslations from '@plone/volto/components/manage/Multilingual/ManageTranslations';
+import NotFound from '@plone/volto/components/theme/NotFound/NotFound';
+import PasswordReset from '@plone/volto/components/theme/PasswordReset/PasswordReset';
+import Register from '@plone/volto/components/theme/Register/Register';
+import RequestPasswordReset from '@plone/volto/components/theme/PasswordReset/RequestPasswordReset';
+import Search from '@plone/volto/components/theme/Search/Search';
+import Sharing from '@plone/volto/components/manage/Sharing/Sharing';
+import Sitemap from '@plone/volto/components/theme/Sitemap/Sitemap';
+import PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
+
+import { Contents } from '@plone/volto/components/manage/Contents';
+import { Rules } from '@plone/volto/components/manage/Rules';
 import {
-  Add,
+  RulesControlpanel,
+  AddRuleControlpanel,
+  EditRuleControlpanel,
+  ConfigureRuleControlpanel,
+  UsersControlpanel,
+  UserGroupMembershipControlPanel,
+  GroupsControlpanel,
   AddonsControlpanel,
-  Aliases,
-  ChangePassword,
-  ContactForm,
-  Contents,
+  AliasesControlpanel,
   ContentType,
   ContentTypeLayout,
   ContentTypeSchema,
   ContentTypes,
   Controlpanel,
   Controlpanels,
-  CreateTranslation,
   DatabaseInformation,
-  Delete,
-  Diff,
-  Edit,
-  History,
-  LinksToItem,
-  Login,
-  Logout,
-  ManageTranslations,
   ModerateComments,
-  NotFound,
-  PasswordReset,
-  Relations,
-  Register,
-  Rules,
-  RequestPasswordReset,
-  Search,
-  Sharing,
-  Sitemap,
-  AliasesControlpanel,
+  RelationsControlpanel,
   UndoControlpanel,
-  UsersControlpanel,
-  UserGroupMembershipControlPanel,
-  GroupsControlpanel,
-  RulesControlpanel,
-  AddRuleControlpanel,
-  EditRuleControlpanel,
-  ConfigureRuleControlpanel,
   UpgradeControlPanel,
-  PersonalInformation,
-} from '@plone/volto/components';
+} from '@plone/volto/components/manage/Controlpanels';
 
-// Deliberatelly use of absolute path of these components, since we do not want them
-// in the components/index.js file.
 import App from '@plone/volto/components/theme/App/App';
 import View from '@plone/volto/components/theme/View/View';
 
@@ -228,7 +228,7 @@ export const defaultRoutes = [
   },
   {
     path: '/controlpanel/relations',
-    component: Relations,
+    component: RelationsControlpanel,
   },
   {
     path: '/controlpanel/:id',

@@ -5,42 +5,41 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { extractInvariantErrors } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { asyncConnect, hasApiExpander } from '@plone/volto/helpers';
+import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
+import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Grid, Menu } from 'semantic-ui-react';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import qs from 'query-string';
-import { find } from 'lodash';
+import find from 'lodash/find';
 import { toast } from 'react-toastify';
 
-import {
-  Forbidden,
-  Form,
-  Icon,
-  Sidebar,
-  Toast,
-  Toolbar,
-  Unauthorized,
-  CompareLanguages,
-  TranslationObject,
-} from '@plone/volto/components';
+import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
+import CompareLanguages from '@plone/volto/components/manage/Multilingual/CompareLanguages';
+import TranslationObject from '@plone/volto/components/manage/Multilingual/TranslationObject';
+import { Form } from '@plone/volto/components/manage/Form';
 import {
   updateContent,
   getContent,
   lockContent,
   unlockContent,
-  getSchema,
-  listActions,
-} from '@plone/volto/actions';
-import {
-  flattenToAppURL,
-  getBaseUrl,
-  hasBlocksData,
-} from '@plone/volto/helpers';
+} from '@plone/volto/actions/content/content';
+import { getSchema } from '@plone/volto/actions/schema/schema';
+import { listActions } from '@plone/volto/actions/actions/actions';
+import { setFormData } from '@plone/volto/actions/form/form';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { hasBlocksData } from '@plone/volto/helpers/Blocks/Blocks';
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
+import { tryParseJSON } from '@plone/volto/helpers/FormValidation/FormValidation';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -63,6 +62,10 @@ const messages = defineMessages({
   error: {
     id: 'Error',
     defaultMessage: 'Error',
+  },
+  someErrors: {
+    id: 'There are some errors.',
+    defaultMessage: 'There are some errors.',
   },
 });
 
@@ -182,6 +185,7 @@ class Edit extends Component {
       });
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
+      this.props.setFormData({});
       this.props.history.push(
         this.props.returnUrl || getBaseUrl(this.props.pathname),
       );
@@ -198,13 +202,28 @@ class Edit extends Component {
         new DOMParser().parseFromString(message, 'text/html')?.all[0]
           ?.textContent || message;
 
+      const errorsList = tryParseJSON(error);
+      let erroMessage;
+      if (Array.isArray(errorsList)) {
+        const invariantErrors = extractInvariantErrors(errorsList);
+        if (invariantErrors.length > 0) {
+          // Plone invariant validation message.
+          erroMessage = invariantErrors.join(' - ');
+        } else {
+          // Error in specific field.
+          erroMessage = this.props.intl.formatMessage(messages.someErrors);
+        }
+      } else {
+        erroMessage = error;
+      }
+
       this.setState({ error: error });
 
       toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={`${nextProps.updateRequest.error.status} ${error}`}
+          content={erroMessage}
         />,
       );
     }
@@ -257,6 +276,7 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onCancel() {
+    this.props.setFormData({});
     this.props.history.push(
       this.props.returnUrl || getBaseUrl(this.props.pathname),
     );
@@ -307,6 +327,11 @@ class Edit extends Component {
         onSelectForm={() => {
           this.setState({ formSelected: 'editForm' });
         }}
+        global
+        // Properties to pass to the BlocksForm to match the View ones
+        history={this.props.history}
+        location={this.props.location}
+        token={this.props.token}
       />
     );
 
@@ -318,11 +343,15 @@ class Edit extends Component {
               <>
                 <Helmet
                   title={
-                    this.props?.schema?.title
+                    this.props?.content?.title
                       ? this.props.intl.formatMessage(messages.edit, {
-                          title: this.props.schema.title,
+                          title: this.props?.content?.title,
                         })
-                      : null
+                      : this.props?.schema?.title
+                        ? this.props.intl.formatMessage(messages.edit, {
+                            title: this.props.schema.title,
+                          })
+                        : null
                   }
                 >
                   {this.props.content?.language && (
@@ -374,11 +403,10 @@ class Edit extends Component {
               </>
             )}
 
-            {editPermission && this.state.visual && this.state.isClient && (
-              <Portal node={document.getElementById('sidebar')}>
-                <Sidebar />
-              </Portal>
-            )}
+            {editPermission &&
+              this.state.visual &&
+              this.state.isClient &&
+              createPortal(<Sidebar />, document.getElementById('sidebar'))}
           </>
         )}
         {!editPermission && (
@@ -396,8 +424,8 @@ class Edit extends Component {
             )}
           </>
         )}
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -445,9 +473,9 @@ class Edit extends Component {
                   )}
                 </>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </div>
     );
   }
@@ -523,6 +551,7 @@ export default compose(
       getSchema,
       lockContent,
       unlockContent,
+      setFormData,
     },
   ),
   preloadLazyLibs('cms'),

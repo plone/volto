@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Map = (props: IconPropsWithoutChildren) => {
+export const MapIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -20,5 +21,3 @@ const Map = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Map;

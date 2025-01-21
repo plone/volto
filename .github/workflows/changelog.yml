@@ -6,13 +6,13 @@ on:
       - main
 
 env:
-  node-version: 20.x
+  node-version: 22.x
 
 jobs:
   towncrier:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           # Fetch all history
           fetch-depth: '0'
@@ -20,7 +20,7 @@ jobs:
       - name: Install towncrier
         run: pip install towncrier
 
-      - uses: dorny/paths-filter@v2
+      - uses: dorny/paths-filter@v3
         id: filter
         with:
           filters: |
@@ -34,12 +34,20 @@ jobs:
               - 'packages/components/**'
             types:
               - 'packages/types/**'
+            providers:
+              - 'packages/providers/**'
             generator:
               - 'packages/generator-volto/**'
             scripts:
               - 'packages/scripts/**'
             voltoSlate:
               - 'packages/volto-slate/**'
+            blocks:
+              - 'packages/blocks/**'
+            slots:
+              - 'packages/slots/**'
+            theming:
+              - 'packages/theming/**'
             wrongNews:
               - added|modified: 'news/**'
 
@@ -86,6 +94,14 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
+      - name: Providers changelog check
+        if: steps.filter.outputs.providers == 'true'
+        run: |
+          git fetch --no-tags origin main
+          towncrier check --compare-with origin/main --dir packages/providers
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
       - name: Generator changelog check
         if: steps.filter.outputs.generator == 'true'
         run: |
@@ -107,6 +123,30 @@ jobs:
         run: |
           git fetch --no-tags origin main
           towncrier check --compare-with origin/main --dir packages/volto-slate
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
+      - name: Blocks changelog check
+        if: steps.filter.outputs.blocks == 'true'
+        run: |
+          git fetch --no-tags origin main
+          towncrier check --compare-with origin/main --dir packages/blocks
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
+      - name: Slots changelog check
+        if: steps.filter.outputs.slots == 'true'
+        run: |
+          git fetch --no-tags origin main
+          towncrier check --compare-with origin/main --dir packages/slots
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
+      - name: Theming changelog check
+        if: steps.filter.outputs.theming == 'true'
+        run: |
+          git fetch --no-tags origin main
+          towncrier check --compare-with origin/main --dir packages/theming
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 

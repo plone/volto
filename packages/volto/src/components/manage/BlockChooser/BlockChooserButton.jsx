@@ -1,13 +1,14 @@
 import React from 'react';
-import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
+import doesNodeContainClick from 'semantic-ui-react/dist/commonjs/lib/doesNodeContainClick';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
-import { blockHasValue } from '@plone/volto/helpers';
-import { Icon, BlockChooser } from '@plone/volto/components';
+import { blockHasValue } from '@plone/volto/helpers/Blocks/Blocks';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
 import config from '@plone/volto/registry';
 import { Button, Ref } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import { usePopper } from 'react-popper';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 
 const messages = defineMessages({
   addBlock: {
@@ -115,8 +116,8 @@ const BlockChooserButton = (props) => {
             />
           </Ref>
         )}
-      {addNewBlockOpened && (
-        <Portal node={document.getElementById('body')}>
+      {addNewBlockOpened &&
+        createPortal(
           <div
             ref={setPopperElement}
             style={styles.popper}
@@ -148,9 +149,9 @@ const BlockChooserButton = (props) => {
               navRoot={navRoot}
               contentType={contentType}
             />
-          </div>
-        </Portal>
-      )}
+          </div>,
+          document.body,
+        )}
     </>
   );
 };

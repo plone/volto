@@ -5,8 +5,8 @@ import { useLocation, useHistory } from 'react-router-dom';
 
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import config from '@plone/volto/registry';
-import { usePrevious } from '@plone/volto/helpers';
-import { isEqual } from 'lodash';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
+import isEqual from 'lodash/isEqual';
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
@@ -18,6 +18,7 @@ const SEARCH_ENDPOINT_FIELDS = [
   'limit',
   'sort_on',
   'sort_order',
+  'depth',
 ];
 
 const PAQO = 'plone.app.querystring.operation';
@@ -73,6 +74,7 @@ function getInitialState(
     sort_order: sortOrderParam || data.query?.sort_order,
     b_size: data.query?.b_size,
     limit: data.query?.limit,
+    depth: data.query?.depth,
     block: id,
   };
 }
@@ -130,6 +132,7 @@ function normalizeState({
     sort_order: sortOrder || query.sort_order,
     b_size: query.b_size,
     limit: query.limit,
+    depth: query.depth,
     block: id,
   };
 
@@ -321,7 +324,7 @@ const withSearch = (options) => (WrappedComponent) => {
     const previousUrlQuery = usePrevious(urlQuery);
 
     // During first render the previousUrlQuery is undefined and urlQuery
-    // is empty so it ressetting the facet when you are navigating but during reload we have urlQuery and we need
+    // is empty so it resetting the facet when you are navigating but during reload we have urlQuery and we need
     // to set the facet at first render.
     const preventOverrideOfFacetState =
       previousUrlQuery === undefined && urlQuery.length === 0;
@@ -404,12 +407,12 @@ const withSearch = (options) => (WrappedComponent) => {
               query: data.query || {},
               facets: toSearchFacets || facets,
               searchText: toSearchText ? toSearchText.trim() : '',
-              sortOn: toSortOn || sortOn,
+              sortOn: toSortOn || undefined,
               sortOrder: toSortOrder || sortOrder,
               facetSettings,
             });
             if (toSearchFacets) setFacets(toSearchFacets);
-            if (toSortOn) setSortOn(toSortOn);
+            if (toSortOn) setSortOn(toSortOn || undefined);
             if (toSortOrder) setSortOrder(toSortOrder);
             setSearchData(newSearchData);
             setLocationSearchData(getSearchFields(newSearchData));

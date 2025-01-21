@@ -1,4 +1,6 @@
-export function getExternalRoutes(): any[];
+export function getExternalRoutes(): {
+    component: (props: any) => import("react/jsx-runtime").JSX.Element;
+}[];
 /**
  * Default routes array.
  * @array
@@ -13,7 +15,20 @@ export const multilingualRoutes: ({
     component: any;
     exact: boolean;
 })[];
-export const defaultRoutes: any[];
+export const defaultRoutes: ({
+    path: string;
+    component: any;
+    exact?: undefined;
+} | {
+    path: string;
+    component: any;
+    exact: boolean;
+} | {
+    component: (props: any) => import("react/jsx-runtime").JSX.Element;
+} | {
+    path: string[];
+    component: any;
+})[];
 export default routes;
 /**
  * Routes array.
@@ -23,5 +38,18 @@ export default routes;
 declare const routes: {
     path: string;
     component: any;
-    routes: any[];
+    routes: ({
+        path: string;
+        component: any;
+        exact?: undefined;
+    } | {
+        path: string;
+        component: any;
+        exact: boolean;
+    } | {
+        component: (props: any) => import("react/jsx-runtime").JSX.Element;
+    } | {
+        path: string[];
+        component: any;
+    })[];
 }[];

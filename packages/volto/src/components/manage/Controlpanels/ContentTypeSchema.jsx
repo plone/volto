@@ -3,16 +3,20 @@
  * @module components/manage/Controlpanels/ContentTypeSchema
  */
 
-import { getSchema, putSchema } from '@plone/volto/actions';
-import { getParentUrl } from '@plone/volto/helpers';
-import { nth } from 'lodash';
-import { Error, Form, Icon, Toast, Toolbar } from '@plone/volto/components';
+import { getSchema, putSchema } from '@plone/volto/actions/schema/schema';
+import { getParentUrl } from '@plone/volto/helpers/Url/Url';
+import nth from 'lodash/nth';
+import Error from '@plone/volto/components/theme/Error/Error';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import { Form } from '@plone/volto/components/manage/Form';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { compose } from 'redux';
@@ -212,6 +216,7 @@ class ContentTypeSchema extends Component {
           title: 'Form schema',
           type: 'schema',
           id: 'schema',
+          widget: 'schema',
         },
       },
       required: [],
@@ -283,8 +288,8 @@ class ContentTypeSchema extends Component {
             onCancel={this.onCancel}
             hideActions
           />
-          {this.state.isClient && (
-            <Portal node={document.getElementById('toolbar')}>
+          {this.state.isClient &&
+            createPortal(
               <Toolbar
                 pathname={this.props.pathname}
                 hideDefaultViewButtons
@@ -321,9 +326,9 @@ class ContentTypeSchema extends Component {
                     </Button>
                   </>
                 }
-              />
-            </Portal>
-          )}
+              />,
+              document.getElementById('toolbar'),
+            )}
         </div>
       );
     }

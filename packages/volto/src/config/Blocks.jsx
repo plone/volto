@@ -1,22 +1,19 @@
 import { defineMessages } from 'react-intl';
+import cloneDeep from 'lodash/cloneDeep';
 
 import ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
 import ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
 import ViewToCBlock from '@plone/volto/components/manage/Blocks/ToC/View';
-import ViewTextBlock from '@plone/volto/components/manage/Blocks/Text/View';
 import ViewImageBlock from '@plone/volto/components/manage/Blocks/Image/View';
 import ViewLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/View';
 import ViewListingBlock from '@plone/volto/components/manage/Blocks/Listing/View';
 import ViewVideoBlock from '@plone/volto/components/manage/Blocks/Video/View';
-import ViewHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/View';
 import ViewMapBlock from '@plone/volto/components/manage/Blocks/Maps/View';
 import ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
-import ViewTableBlock from '@plone/volto/components/manage/Blocks/Table/View';
 
 import EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
 import EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
 import EditToCBlock from '@plone/volto/components/manage/Blocks/ToC/Edit';
-import EditTextBlock from '@plone/volto/components/manage/Blocks/Text/Edit';
 import EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
 import EditLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/Edit';
 import EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit';
@@ -25,20 +22,15 @@ import GalleryNoResultsComponent from '@plone/volto/components/manage/Blocks/Lis
 import DefaultListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/DefaultTemplate';
 import SummaryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/SummaryTemplate';
 import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
-import EditHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/Edit';
 import EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
 import EditHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/Edit';
-import EditTableBlock from '@plone/volto/components/manage/Blocks/Table/Edit';
 
 import descriptionSVG from '@plone/volto/icons/description.svg';
 import titleSVG from '@plone/volto/icons/text.svg';
-import textSVG from '@plone/volto/icons/subtext.svg';
 import cameraSVG from '@plone/volto/icons/camera.svg';
 import videoSVG from '@plone/volto/icons/videocamera.svg';
 import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
-import heroSVG from '@plone/volto/icons/hero.svg';
-import tableSVG from '@plone/volto/icons/table.svg';
 import listingBlockSVG from '@plone/volto/icons/content-listing.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
@@ -47,7 +39,6 @@ import imagesSVG from '@plone/volto/icons/images.svg';
 
 import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
-import TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
 import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/LayoutSchema';
 import ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
 
@@ -79,7 +70,6 @@ import { getImageBlockSizes } from '@plone/volto/components/manage/Blocks/Image/
 import { getLeadImageBlockSizes } from '@plone/volto/components/manage/Blocks/LeadImage/utils';
 
 // block sidebar schemas (not the Dexterity Layout block settings schemas)
-import HeroImageLeftBlockSchema from '@plone/volto/components/manage/Blocks/HeroImageLeft/schema';
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
 import SearchBlockSchema from '@plone/volto/components/manage/Blocks/Search/schema';
 
@@ -191,6 +181,63 @@ defineMessages({
     id: 'toggleFacet',
     defaultMessage: 'Toggle',
   },
+  // BBB Table messages
+  Table: {
+    id: 'Table',
+    defaultMessage: 'Table',
+  },
+  cell: {
+    id: 'Cell',
+    defaultMessage: 'Cell',
+  },
+  insertRowBefore: {
+    id: 'Insert row before',
+    defaultMessage: 'Insert row before',
+  },
+  insertRowAfter: {
+    id: 'Insert row after',
+    defaultMessage: 'Insert row after',
+  },
+  deleteRow: {
+    id: 'Delete row',
+    defaultMessage: 'Delete row',
+  },
+  insertColBefore: {
+    id: 'Insert col before',
+    defaultMessage: 'Insert col before',
+  },
+  insertColAfter: {
+    id: 'Insert col after',
+    defaultMessage: 'Insert col after',
+  },
+  deleteCol: {
+    id: 'Delete col',
+    defaultMessage: 'Delete col',
+  },
+  fixed: {
+    id: 'Fixed width table cells',
+    defaultMessage: 'Fixed width columns',
+  },
+  compact: {
+    id: 'Make the table compact',
+    defaultMessage: 'Reduce cell padding',
+  },
+  basic: {
+    id: 'Reduce complexity',
+    defaultMessage: 'Minimalistic table design',
+  },
+  celled: {
+    id: 'Divide each row into separate cells',
+    defaultMessage: 'Add border to inner columns',
+  },
+  striped: {
+    id: 'Stripe alternate rows with color',
+    defaultMessage: 'Alternate row background color',
+  },
+  headerCell: {
+    id: 'Header cell',
+    defaultMessage: 'Header cell',
+  },
 });
 
 const groupBlocksOrder = [
@@ -229,25 +276,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
-  },
-  text: {
-    id: 'text',
-    title: 'Text',
-    icon: textSVG,
-    group: 'text',
-    view: ViewTextBlock,
-    edit: EditTextBlock,
-    schema: TextSettingsSchema,
-    restricted: false,
-    mostUsed: false,
-    blockHasOwnFocusManagement: true,
-    sidebarTab: 0,
-    blockHasValue: (data) => {
-      const isEmpty =
-        !data.text ||
-        (data.text?.blocks?.length === 1 && data.text.blocks[0].text === '');
-      return !isEmpty;
-    },
   },
   image: {
     id: 'image',
@@ -335,21 +363,6 @@ const blocksConfig = {
     mostUsed: false,
     sidebarTab: 1,
   },
-  hero: {
-    id: 'hero',
-    title: 'Hero',
-    icon: heroSVG,
-    group: 'common',
-    view: ViewHeroImageLeftBlock,
-    edit: EditHeroImageLeftBlock,
-    schema: BlockSettingsSchema,
-    blockSchema: HeroImageLeftBlockSchema,
-    restricted: false,
-    mostUsed: false,
-    blockHasOwnFocusManagement: true,
-    sidebarTab: 1,
-  },
-
   maps: {
     id: 'maps',
     title: 'Maps',
@@ -373,19 +386,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 0,
-  },
-  table: {
-    id: 'table',
-    title: 'Table',
-    icon: tableSVG,
-    group: 'common',
-    view: ViewTableBlock,
-    edit: EditTableBlock,
-    schema: BlockSettingsSchema,
-    restricted: false,
-    mostUsed: false,
-    blockHasOwnFocusManagement: true,
-    sidebarTab: 1,
   },
   search: {
     id: 'search',
@@ -451,7 +451,7 @@ const blocksConfig = {
           },
           {
             id: 'daterangeFacet',
-            title: 'Date range',
+            title: 'Date Range',
             view: DateRangeFacet,
             isDefault: false,
             stateToValue: DateRangeFacet.stateToValue,
@@ -519,20 +519,25 @@ const blocksConfig = {
 // for the grid block, since we need to modify how the inner teaser
 // block behave in it (= no schemaEnhancer fields for teasers inside a grid)
 // Afterwards, it can be further customized in add-ons using the same technique.
-blocksConfig.gridBlock.blocksConfig = { ...blocksConfig };
-blocksConfig.gridBlock.blocksConfig.teaser = {
-  ...blocksConfig.teaser,
-  schemaEnhancer: gridTeaserDisableStylingSchema,
-};
-blocksConfig.gridBlock.blocksConfig.image = {
-  ...blocksConfig.image,
-  schemaEnhancer: gridImageDisableSizeAndPositionHandlersSchema,
-};
+blocksConfig.gridBlock.blocksConfig = cloneDeep(blocksConfig);
+blocksConfig.gridBlock.blocksConfig.teaser.schemaEnhancer =
+  gridTeaserDisableStylingSchema;
+blocksConfig.gridBlock.blocksConfig.image.schemaEnhancer =
+  gridImageDisableSizeAndPositionHandlersSchema;
 
 const requiredBlocks = ['title'];
 
 const initialBlocks = {};
 const initialBlocksFocus = {}; //{Document:'title'}
+
+export function installDefaultBlocks(config) {
+  config.blocks.requiredBlocks = requiredBlocks;
+  config.blocks.blocksConfig = blocksConfig;
+  config.blocks.groupBlocksOrder = groupBlocksOrder;
+  config.blocks.initialBlocks = initialBlocks;
+  config.blocks.initialBlocksFocus = initialBlocksFocus;
+  config.blocks.showEditBlocksInBabelView = false;
+}
 
 export {
   groupBlocksOrder,

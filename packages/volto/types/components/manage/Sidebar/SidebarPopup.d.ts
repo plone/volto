@@ -1,5 +1,5 @@
 export default SidebarPopup;
-declare function SidebarPopup(props: any): JSX.Element;
+declare function SidebarPopup(props: any): import("react/jsx-runtime").JSX.Element;
 declare namespace SidebarPopup {
     namespace propTypes {
         let open: any;

@@ -1,8 +1,27 @@
+import { Content } from '../content';
+import { BlocksFormData } from '../blocks/index';
+
 type apiExpandersType =
+  | { match: string; GET_CONTENT: string[] }
   | {
-      [key: string]: string[];
-    }
-  | { match: string; querystring: { [key: string]: unknown } };
+      match: string;
+      GET_CONTENT: string[];
+      querystring:
+        | { [key: string]: string }
+        | (() => { [key: string]: string });
+    };
+
+type styleClassNameExtendersType = ({
+  block,
+  content,
+  data,
+  classNames,
+}: {
+  block: string;
+  content: Content;
+  data: BlocksFormData;
+  classNames: string[];
+}) => string[];
 
 export interface SettingsConfig {
   [key: string]: unknown;
@@ -57,6 +76,7 @@ export interface SettingsConfig {
   serverConfig: unknown;
   storeExtenders: unknown[];
   showTags: boolean;
+  showRelatedItems: boolean;
   controlpanels: unknown[];
   controlPanelsIcons: Record<string, React.ComponentType>;
   filterControlPanels: unknown;
@@ -74,13 +94,13 @@ export interface SettingsConfig {
   errorHandlers: unknown[];
   styleClassNameConverters: unknown;
   hashLinkSmoothScroll: boolean;
-  styleClassNameExtenders: unknown;
+  styleClassNameExtenders: styleClassNameExtendersType[];
   querystringSearchGet: boolean;
   blockSettingsTabFieldsetsInitialStateOpen: boolean;
   excludeLinksAndReferencesMenuItem: boolean;
-  containerBlockTypes: string[];
   siteTitleFormat: {
     includeSiteTitle: boolean;
     titleAndSiteTitleSeparator: string;
   };
+  cssLayers: string[];
 }

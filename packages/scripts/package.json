@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "3.1.0",
+  "version": "3.8.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -36,7 +36,8 @@
   "bin": {
     "addon": "./addon/index.js",
     "changelogupdater": "./changelogupdater.cjs",
-    "i18n": "./i18n.cjs"
+    "i18n": "./i18n.cjs",
+    "volto-update-deps": "./volto-update-deps.js"
   },
   "publishConfig": {
     "access": "public"
@@ -48,12 +49,15 @@
     "chalk": "4",
     "commander": "8.2.0",
     "comment-json": "^4.2.3",
+    "execa": "0.6.3",
+    "find-parent-dir": "^0.3.1",
     "fs-extra": "10.1.0",
     "git-url-parse": "^13.1.0",
     "glob": "7.1.6",
     "lodash": "4.17.21",
-    "mrs-developer": "*",
-    "pofile": "1.0.10"
+    "mrs-developer": "^2.1.1",
+    "pofile": "1.0.10",
+    "wait-on": "^7.2.0"
   },
   "devDependencies": {
     "release-it": "^16.1.3"

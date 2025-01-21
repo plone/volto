@@ -3,13 +3,12 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { render } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 
 import ModalForm from './ModalForm';
 
 const mockStore = configureStore();
 
-jest.mock('./Field', () => jest.fn(() => <div className="Field" />));
+jest.mock('@plone/volto/components/manage/Form');
 
 describe('ModalForm', () => {
   it('renders a modal form component', () => {

@@ -7,7 +7,7 @@ import superagent from 'superagent';
 import Cookies from 'universal-cookie';
 import config from '@plone/volto/registry';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
-import { stripQuerystring } from '@plone/volto/helpers';
+import { stripQuerystring } from '@plone/volto/helpers/Url/Url';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
@@ -50,7 +50,14 @@ class Api {
     methods.forEach((method) => {
       this[method] = (
         path,
-        { params, data, type, headers = {}, checkUrl = false } = {},
+        {
+          params,
+          data,
+          type,
+          headers = {},
+          checkUrl = false,
+          attach = [],
+        } = {},
       ) => {
         let request;
         let promise = new Promise((resolve, reject) => {
@@ -80,9 +87,17 @@ class Api {
 
           Object.keys(headers).forEach((key) => request.set(key, headers[key]));
 
+          if (__SERVER__ && checkUrl && ['get', 'head'].includes(method)) {
+            request.redirects(0);
+          }
+
           if (data) {
             request.send(data);
           }
+
+          attach.forEach((attachment) => {
+            request.attach.apply(request, attachment);
+          });
 
           request.end((err, response) => {
             if (
@@ -104,6 +119,14 @@ class Api {
                 url: request.xhr.responseURL,
               });
             }
+
+            if ([301, 302].includes(err?.status)) {
+              return reject({
+                code: err.status,
+                url: err.response.headers.location,
+              });
+            }
+
             return err ? reject(err) : resolve(response.body || response.text);
           });
         });

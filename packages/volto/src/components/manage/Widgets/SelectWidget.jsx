@@ -7,15 +7,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { map } from 'lodash';
+import map from 'lodash/map';
 import { defineMessages, injectIntl } from 'react-intl';
 import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
-} from '@plone/volto/helpers';
-import { FormFieldWrapper } from '@plone/volto/components';
-import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
+} from '@plone/volto/helpers/Vocabularies/Vocabularies';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import {
+  getVocabulary,
+  getVocabularyTokenTitle,
+} from '@plone/volto/actions/vocabularies/vocabularies';
 import { normalizeValue } from '@plone/volto/components/manage/Widgets/SelectUtils';
 
 import {
@@ -224,6 +227,7 @@ class SelectWidget extends Component {
           id={`field-${id}`}
           key={choices}
           name={id}
+          aria-labelledby={`fieldset-${this.props.fieldSet}-field-label-${id}`}
           menuShouldScrollIntoView={false}
           isDisabled={disabled}
           isSearchable={true}

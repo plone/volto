@@ -10,7 +10,7 @@ myst:
 # Integration with the backend
 
 Integration with the Plone CMS is provided by the Plone API framework, namely [`plone.restapi`](https://github.com/plone/plone.restapi) and its lower-level [`plone.rest`](https://github.com/plone/plone.rest).
-For details, check the {doc}`plone.restapi/docs/source/index` documentation.
+For details, check the {doc}`plone:plone.restapi/docs/source/index` documentation.
 
 Some of the more interesting integration features that you can look up in the `plone.restapi` documentation include the following.
 
@@ -34,6 +34,23 @@ Block transformers
 Search and indexing integration
 :   By providing the right adapters, you can extract searchable text from blocks.
 
+Client reducer content transforms
+:   These transforms run in the client when the response from the backend is received.
+    These are useful when you need to modify the response from the backend on-the-fly for amending the backend data, such as a data migration of any kind.
+    You can register a utility that mutates the response at your convenience.
+
+    ```ts
+    import { upgradeV20241023 } from './upgrades/upgradeV20241023';
+
+    config.registerUtility({
+      name: 'upgradeV20241023',
+      type: 'transform',
+      dependencies: { reducer: 'content' },
+      method: upgradeV20241023,
+    });
+    ```
+
+    The `type` of the utility needs to be `transform`, and the `dependencies` set to `{reducer: 'content'}`.
 
 ## Proxied backend routes
 

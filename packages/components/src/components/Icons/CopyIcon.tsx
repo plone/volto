@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Copy = (props: IconPropsWithoutChildren) => {
+export const CopyIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -20,5 +21,3 @@ const Copy = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Copy;
