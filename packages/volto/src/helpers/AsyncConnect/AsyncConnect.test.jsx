@@ -1,3 +1,4 @@
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import React from 'react';
 import { Provider, connect } from 'react-redux';
 import { withRouter, StaticRouter, MemoryRouter } from 'react-router';
@@ -11,7 +12,7 @@ import {
 } from '@plone/volto/actions/asyncConnect/asyncConnect';
 import reduxAsyncConnect from '@plone/volto/reducers/asyncConnect/asyncConnect';
 
-import { AsyncConnectWithContext, AsyncConnect } from './AsyncConnect'; // , AsyncConnect
+import { AsyncConnectWithContext, AsyncConnect } from './AsyncConnect';
 import { asyncConnect, loadOnServer } from './';
 import { matchAllRoutes } from './utils';
 
@@ -23,6 +24,7 @@ describe('<ReduxAsyncConnect />', () => {
       },
     },
   };
+
   const initialState = {
     router: {
       location: {
@@ -44,8 +46,8 @@ describe('<ReduxAsyncConnect />', () => {
     };
   };
 
-  const endGlobalLoadSpy = jest.fn(() => endGlobalLoad());
-  const beginGlobalLoadSpy = jest.fn(() => beginGlobalLoad());
+  const endGlobalLoadSpy = vi.fn(() => endGlobalLoad());
+  const beginGlobalLoadSpy = vi.fn(() => beginGlobalLoad());
 
   const ReduxAsyncConnect = withRouter(
     connect(null, {
@@ -54,11 +56,7 @@ describe('<ReduxAsyncConnect />', () => {
     })(AsyncConnectWithContext),
   );
 
-  /* eslint-disable no-unused-vars */
-  /* eslint-enable no-unused-vars */
   const App = ({
-    // NOTE: use this as a reference of props passed to your component from router
-    // these are the params that are passed from router
     history,
     location,
     params,
@@ -69,9 +67,7 @@ describe('<ReduxAsyncConnect />', () => {
     externalState,
     remappedProp,
     staticContext,
-    // our param
     lunch,
-    // react-redux dispatch prop
     dispatch,
     ...rest
   }) => (
@@ -85,13 +81,7 @@ describe('<ReduxAsyncConnect />', () => {
     </div>
   );
 
-  const MultiAppA = ({
-    route,
-    // our param
-    breakfast,
-    // react-redux dispatch prop
-    ...rest
-  }) => (
+  const MultiAppA = ({ route, breakfast, ...rest }) => (
     <div data-testid="MultiAppA">
       <div>{breakfast}</div>
       {renderRoutes(route.routes)}
@@ -100,6 +90,13 @@ describe('<ReduxAsyncConnect />', () => {
 
   const MultiAppB = ({ dinner, ...rest }) => (
     <div data-testid="MultiAppB">{dinner}</div>
+  );
+
+  const UnwrappedApp = ({ route }) => (
+    <div data-testid="UnwrappedApp">
+      {'Hi, I do not use @asyncConnect'}
+      {renderRoutes(route.routes)}
+    </div>
   );
 
   const WrappedApp = asyncConnect(
@@ -164,30 +161,6 @@ describe('<ReduxAsyncConnect />', () => {
     }),
   )(MultiAppB);
 
-  const UnwrappedApp = ({ route }) => (
-    <div data-testid="UnwrappedApp">
-      {'Hi, I do not use @asyncConnect'}
-      {renderRoutes(route.routes)}
-    </div>
-  );
-
-  const reducers = combineReducers({
-    reduxAsyncConnect,
-    router: routerReducer,
-  });
-
-  /*
-  const routes = (
-    <Route path="/">
-      <IndexRoute component={WrappedApp} remap="on" />
-      <Route path="/notconnected" component={UnwrappedApp} />
-      <Route path="/multi" component={WrappedAppA}>
-        <IndexRoute components={{ compA: UnwrappedApp, compB: WrappedAppB }} />
-      </Route>
-    </Route>
-  );
-  */
-
   const routes = [
     {
       path: '/',
@@ -213,15 +186,24 @@ describe('<ReduxAsyncConnect />', () => {
     },
   ];
 
-  // inter-test state
+  const reducers = combineReducers({
+    reduxAsyncConnect,
+    router: routerReducer,
+  });
+
   let testState;
 
-  it('properly fetches data on the server', async () => {
-    endGlobalLoadSpy.mockClear();
-    beginGlobalLoadSpy.mockClear();
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
 
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('properly fetches data on the server', async () => {
     const store = createStore(reducers, initialEmptyState);
-    const eat = jest.fn(() => 'yammi');
+    const eat = vi.fn(() => 'yammi');
     const helpers = { eat };
     const location = { pathname: '/' };
 
@@ -258,22 +240,17 @@ describe('<ReduxAsyncConnect />', () => {
     expect(testState.reduxAsyncConnect.loadState.lunch.error).toBe(null);
 
     expect(eat).toHaveBeenCalledTimes(1);
-
-    // global loader spy
     expect(endGlobalLoadSpy).not.toHaveBeenCalled();
     expect(beginGlobalLoadSpy).not.toHaveBeenCalled();
   });
 
-  it('properly picks data up from the server', function test() {
-    endGlobalLoadSpy.mockClear();
-    beginGlobalLoadSpy.mockClear();
-
+  it('properly picks data up from the server', () => {
     const store = createStore(reducers, testState);
     const proto = AsyncConnect.prototype;
-    const eat = jest.fn(() => 'yammi');
+    const eat = vi.fn(() => 'yammi');
 
-    const spyLoadAsyncData = jest.spyOn(proto, 'loadAsyncData');
-    const spyComponentDidMount = jest.spyOn(proto, 'componentDidMount');
+    const spyLoadAsyncData = vi.spyOn(proto, 'loadAsyncData');
+    const spyComponentDidMount = vi.spyOn(proto, 'componentDidMount');
 
     const { getByTestId } = render(
       <Provider store={store} key="provider">
@@ -285,29 +262,22 @@ describe('<ReduxAsyncConnect />', () => {
 
     expect(spyLoadAsyncData).not.toHaveBeenCalled();
     expect(spyComponentDidMount).toHaveBeenCalledTimes(1);
-
     expect(eat).not.toHaveBeenCalled();
 
     const app = getByTestId('App');
     expect(app).toHaveTextContent('sandwich');
 
-    // global loader spy
     expect(endGlobalLoadSpy).not.toHaveBeenCalled();
     expect(beginGlobalLoadSpy).not.toHaveBeenCalled();
-
-    spyLoadAsyncData.mockClear();
-    spyComponentDidMount.mockClear();
   });
 
-  it("loads data on client side when it wasn't provided by server", function test() {
-    endGlobalLoadSpy.mockClear();
-    beginGlobalLoadSpy.mockClear();
+  it("loads data on client side when it wasn't provided by server", async () => {
     const store = createStore(reducers);
-    const eat = jest.fn(() => 'yammi');
+    const eat = vi.fn(() => 'yammi');
     const proto = AsyncConnect.prototype;
 
-    const spyLoadAsyncData = jest.spyOn(proto, 'loadAsyncData');
-    const spyComponentDidMount = jest.spyOn(proto, 'componentDidMount');
+    const spyLoadAsyncData = vi.spyOn(proto, 'loadAsyncData');
+    const spyComponentDidMount = vi.spyOn(proto, 'componentDidMount');
 
     render(
       <Provider store={store} key="provider">
@@ -319,27 +289,20 @@ describe('<ReduxAsyncConnect />', () => {
 
     expect(spyLoadAsyncData).toHaveBeenCalledTimes(1);
     expect(spyComponentDidMount).toHaveBeenCalledTimes(1);
-
-    // global loader spy
     expect(beginGlobalLoadSpy).toHaveBeenCalled();
-    beginGlobalLoadSpy.mockClear();
 
-    return spyLoadAsyncData.mock.results[0].value.then(() => {
-      expect(endGlobalLoadSpy).toHaveBeenCalled();
-      endGlobalLoadSpy.mockClear();
-
-      spyLoadAsyncData.mockClear();
-      spyComponentDidMount.mockClear();
-    });
+    await spyLoadAsyncData.mock.results[0].value;
+    expect(endGlobalLoadSpy).toHaveBeenCalled();
   });
 
-  it('supports extended connect signature', function test() {
+  it('supports extended connect signature', async () => {
     const store = createStore(reducers, initialState);
-    const eat = jest.fn(() => 'yammi');
+    const eat = vi.fn(() => 'yammi');
     const proto = AsyncConnect.prototype;
 
-    const spyLoadAsyncData = jest.spyOn(proto, 'loadAsyncData');
-    // const spyComponentDidMount = jest.spyOn(proto, 'componentDidMount');
+    // Add spies for both methods
+    const spyLoadAsyncData = vi.spyOn(proto, 'loadAsyncData');
+    const spyComponentDidMount = vi.spyOn(proto, 'componentDidMount');
 
     const { getByTestId } = render(
       <Provider store={store} key="provider">
@@ -349,133 +312,116 @@ describe('<ReduxAsyncConnect />', () => {
       </Provider>,
     );
 
-    expect(proto.loadAsyncData).toHaveBeenCalledTimes(1);
-    expect(proto.componentDidMount).toHaveBeenCalledTimes(1);
-
-    // global loader spy
+    expect(spyLoadAsyncData).toHaveBeenCalledTimes(1);
+    expect(spyComponentDidMount).toHaveBeenCalledTimes(1);
     expect(beginGlobalLoadSpy).toHaveBeenCalled();
-    beginGlobalLoadSpy.mockClear();
 
-    return spyLoadAsyncData.mock.results[0].value.then(() => {
-      expect(endGlobalLoadSpy).toHaveBeenCalled();
+    await spyLoadAsyncData.mock.results[0].value;
+    expect(endGlobalLoadSpy).toHaveBeenCalled();
 
-      const app = getByTestId('App');
-      expect(app).toHaveTextContent('sandwich');
-      expect(app).toHaveAttribute('external-state', 'supported');
-      expect(app).toHaveAttribute('remapped-prop', 'on');
-      expect(app).toHaveTextContent('sandwich');
-
-      endGlobalLoadSpy.mockClear();
-      spyLoadAsyncData.mockClear();
-    });
+    const app = getByTestId('App');
+    expect(app).toHaveTextContent('sandwich');
+    expect(app).toHaveAttribute('external-state', 'supported');
+    expect(app).toHaveAttribute('remapped-prop', 'on');
+    expect(app).toHaveTextContent('sandwich');
   });
 
-  it('renders even when no component is connected', function test() {
+  it('renders even when no component is connected', async () => {
     const store = createStore(reducers);
-    const eat = jest.fn(() => 'yammi');
+    const eat = vi.fn(() => 'yammi');
     const location = { pathname: '/notconnected' };
     const helpers = { eat };
 
-    return loadOnServer({
+    await loadOnServer({
       store,
       location,
       routes,
       helpers,
-    }).then(() => {
-      const context = {};
-
-      const { getByTestId } = render(
-        <Provider store={store} key="provider">
-          <StaticRouter location={location} context={context}>
-            <ReduxAsyncConnect routes={routes} helpers={helpers} />
-          </StaticRouter>
-        </Provider>,
-      );
-
-      if (context.url) {
-        throw new Error('redirected');
-      }
-
-      const app = getByTestId('UnwrappedApp');
-      expect(app).toHaveTextContent('Hi, I do not use @asyncConnect');
-
-      testState = store.getState();
-      expect(testState.reduxAsyncConnect.loaded).toBe(true);
-      expect(testState.reduxAsyncConnect.lunch).toBe(undefined);
-      expect(eat).not.toHaveBeenCalled();
-
-      // global loader spy
-      expect(endGlobalLoadSpy).not.toHaveBeenCalled();
-      expect(beginGlobalLoadSpy).not.toHaveBeenCalled();
-
-      endGlobalLoadSpy.mockClear();
-      beginGlobalLoadSpy.mockClear();
     });
+
+    const context = {};
+
+    const { getByTestId } = render(
+      <Provider store={store} key="provider">
+        <StaticRouter location={location} context={context}>
+          <ReduxAsyncConnect routes={routes} helpers={helpers} />
+        </StaticRouter>
+      </Provider>,
+    );
+
+    if (context.url) {
+      throw new Error('redirected');
+    }
+
+    const app = getByTestId('UnwrappedApp');
+    expect(app).toHaveTextContent('Hi, I do not use @asyncConnect');
+
+    testState = store.getState();
+    expect(testState.reduxAsyncConnect.loaded).toBe(true);
+    expect(testState.reduxAsyncConnect.lunch).toBe(undefined);
+    expect(eat).not.toHaveBeenCalled();
+
+    expect(endGlobalLoadSpy).not.toHaveBeenCalled();
+    expect(beginGlobalLoadSpy).not.toHaveBeenCalled();
   });
 
-  it('properly fetches data in the correct order given a nested routing structure', function test() {
+  it('properly fetches data in the correct order given a nested routing structure', async () => {
     const store = createStore(reducers);
     const promiseOrder = [];
-    const eat = jest.fn((meal) => {
+    const eat = vi.fn((meal) => {
       promiseOrder.push(meal);
       return `yammi ${meal}`;
     });
     const location = { pathname: '/multi' };
     const helpers = { eat };
 
-    return loadOnServer({
+    await loadOnServer({
       store,
       routes,
       location,
       helpers,
-    }).then(() => {
-      const context = {};
-
-      const { container } = render(
-        <Provider store={store} key="provider">
-          <StaticRouter location={location} context={context}>
-            <ReduxAsyncConnect routes={routes} helpers={helpers} />
-          </StaticRouter>
-        </Provider>,
-      );
-
-      if (context.url) {
-        throw new Error('redirected');
-      }
-
-      expect(container).toHaveTextContent('omelette');
-      expect(container).toHaveTextContent('chicken');
-
-      testState = store.getState();
-      expect(testState.reduxAsyncConnect.loaded).toBe(true);
-      expect(testState.reduxAsyncConnect.breakfast).toBe('omelette');
-      expect(testState.reduxAsyncConnect.dinner).toBe('chicken');
-      expect(testState.reduxAsyncConnect.action).toBe('yammi dinner');
-      expect(testState.reduxAsyncConnect.loadState.dinner.loading).toBe(false);
-      expect(testState.reduxAsyncConnect.loadState.dinner.loaded).toBe(true);
-      expect(testState.reduxAsyncConnect.loadState.dinner.error).toBe(null);
-      expect(testState.reduxAsyncConnect.loadState.breakfast.loading).toBe(
-        false,
-      );
-      expect(testState.reduxAsyncConnect.loadState.breakfast.loaded).toBe(true);
-      expect(testState.reduxAsyncConnect.loadState.breakfast.error).toBe(null);
-      expect(eat).toHaveBeenCalledTimes(2);
-
-      expect(promiseOrder).toEqual(['breakfast', 'dinner']);
-
-      // global loader spy
-      expect(endGlobalLoadSpy).not.toHaveBeenCalled();
-      expect(beginGlobalLoadSpy).not.toHaveBeenCalled();
-
-      endGlobalLoadSpy.mockClear();
-      beginGlobalLoadSpy.mockClear();
     });
+
+    const context = {};
+
+    const { container } = render(
+      <Provider store={store} key="provider">
+        <StaticRouter location={location} context={context}>
+          <ReduxAsyncConnect routes={routes} helpers={helpers} />
+        </StaticRouter>
+      </Provider>,
+    );
+
+    if (context.url) {
+      throw new Error('redirected');
+    }
+
+    expect(container).toHaveTextContent('omelette');
+    expect(container).toHaveTextContent('chicken');
+
+    testState = store.getState();
+    expect(testState.reduxAsyncConnect.loaded).toBe(true);
+    expect(testState.reduxAsyncConnect.breakfast).toBe('omelette');
+    expect(testState.reduxAsyncConnect.dinner).toBe('chicken');
+    expect(testState.reduxAsyncConnect.action).toBe('yammi dinner');
+    expect(testState.reduxAsyncConnect.loadState.dinner.loading).toBe(false);
+    expect(testState.reduxAsyncConnect.loadState.dinner.loaded).toBe(true);
+    expect(testState.reduxAsyncConnect.loadState.dinner.error).toBe(null);
+    expect(testState.reduxAsyncConnect.loadState.breakfast.loading).toBe(false);
+    expect(testState.reduxAsyncConnect.loadState.breakfast.loaded).toBe(true);
+    expect(testState.reduxAsyncConnect.loadState.breakfast.error).toBe(null);
+    expect(eat).toHaveBeenCalledTimes(2);
+
+    expect(promiseOrder).toEqual(['breakfast', 'dinner']);
+
+    expect(endGlobalLoadSpy).not.toHaveBeenCalled();
+    expect(beginGlobalLoadSpy).not.toHaveBeenCalled();
   });
 
-  it('Doesnt call same extender twice', function test() {
+  it('Doesnt call same extender twice', async () => {
     const store = createStore(reducers);
     const promiseOrder = [];
-    const eat = jest.fn((meal) => {
+    const eat = vi.fn((meal) => {
       promiseOrder.push(meal);
       return `yammi ${meal}`;
     });
@@ -483,25 +429,25 @@ describe('<ReduxAsyncConnect />', () => {
     const helpers = { eat };
     serial = 0;
 
-    return loadOnServer({
+    await loadOnServer({
       store,
       routes,
       location,
       helpers,
-    }).then(() => {
-      const context = {};
-
-      render(
-        <Provider store={store} key="provider">
-          <StaticRouter location={location} context={context}>
-            <ReduxAsyncConnect routes={routes} helpers={helpers} />
-          </StaticRouter>
-        </Provider>,
-      );
-      expect(serial).toBe(1);
     });
-  });
 
+    const context = {};
+
+    render(
+      <Provider store={store} key="provider">
+        <StaticRouter location={location} context={context}>
+          <ReduxAsyncConnect routes={routes} helpers={helpers} />
+        </StaticRouter>
+      </Provider>,
+    );
+
+    expect(serial).toBe(1);
+  });
   it('Matches multiple asyncPropExtenders', function () {
     const routes = [
       {

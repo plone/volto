@@ -1,5 +1,6 @@
 import React from 'react';
 import config from '@plone/volto/registry';
+import { vi } from 'vitest';
 const loadables = config.settings.loadables;
 
 let mockAllLoadables = Object.create(null);
@@ -18,21 +19,21 @@ export const __setLoadables = async () => {
 };
 
 // TODO: filter mockAllLoadables
-export const injectLazyLibs = jest.fn().mockImplementation(function ([
+export const injectLazyLibs = vi.fn().mockImplementation(function ([
   libraries,
 ]) {
-  return jest.fn((WrappedComponent) =>
-    jest.fn((props) => {
+  return vi.fn((WrappedComponent) =>
+    vi.fn((props) => {
       return <WrappedComponent {...props} {...mockAllLoadables} />;
     }),
   );
 });
 
-export const preloadLazyLibs = jest.fn().mockImplementation(function ([
+export const preloadLazyLibs = vi.fn().mockImplementation(function ([
   libraries,
 ]) {
-  return jest.fn((WrappedComponent) =>
-    jest.fn((props) => {
+  return vi.fn((WrappedComponent) =>
+    vi.fn((props) => {
       return <WrappedComponent {...props} />;
     }),
   );
