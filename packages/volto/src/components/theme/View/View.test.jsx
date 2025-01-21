@@ -26,18 +26,25 @@ global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
 const mockStore = configureStore();
 
-jest.mock('../../manage/Toolbar/Toolbar', () =>
-  jest.fn(() => <div id="Portal" />),
-);
+vi.mock('../../manage/Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
-jest.mock('../Comments/Comments', () => jest.fn(() => <div id="Comments" />));
-jest.mock('../Tags/Tags', () => jest.fn(() => <div id="Tags" />));
-jest.mock('../SlotRenderer/SlotRenderer', () =>
-  jest.fn(() => <div id="SlotRenderer" />),
-);
-jest.mock('../ContentMetadataTags/ContentMetadataTags', () =>
-  jest.fn(() => <div id="ContentMetadataTags" />),
-);
+vi.mock('../Comments/Comments', () => ({
+  default: vi.fn(() => <div id="Comments" />),
+}));
+
+vi.mock('../Tags/Tags', () => ({
+  default: vi.fn(() => <div id="Tags" />),
+}));
+
+vi.mock('../SlotRenderer/SlotRenderer', () => ({
+  default: vi.fn(() => <div id="SlotRenderer" />),
+}));
+
+vi.mock('../ContentMetadataTags/ContentMetadataTags', () => ({
+  default: vi.fn(() => <div id="ContentMetadataTags" />),
+}));
 
 const actions = {
   document_actions: [],

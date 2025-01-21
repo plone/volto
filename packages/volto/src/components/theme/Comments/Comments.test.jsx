@@ -4,23 +4,22 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
 import Comments from './Comments';
+import { __setLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 
 const mockStore = configureStore();
-
-jest.mock('moment', () =>
-  jest.fn(() => ({
-    format: jest.fn(() => 'Sunday, April 23, 2017 3:38 AM'),
-    fromNow: jest.fn(() => 'a few seconds ago'),
+vi.mock('moment', () => ({
+  default: vi.fn(() => ({
+    format: vi.fn(() => 'Sunday, April 23, 2017 3:38 AM'),
+    fromNow: vi.fn(() => 'a few seconds ago'),
   })),
-);
+}));
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-jest.mock('@plone/volto/components/manage/Form');
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+vi.mock('@plone/volto/components/manage/Form');
 
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+beforeAll(async () => {
+  await __setLoadables();
+});
 
 describe('Comments', () => {
   it('renders a comments component', () => {

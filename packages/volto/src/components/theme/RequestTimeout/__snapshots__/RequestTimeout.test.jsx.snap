@@ -1,10 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`RequestTimeout renders a request timeout or no connection component 1`] = `
+exports[`RequestTimeout > renders a request timeout or no connection component 1`] = `
 <div
   className="ui container view-wrapper"
   style={
-    Object {
+    {
       "alignItems": "center",
       "display": "flex",
       "flexDirection": "column",
@@ -16,7 +16,7 @@ exports[`RequestTimeout renders a request timeout or no connection component 1`]
 >
   <h1
     style={
-      Object {
+      {
         "lineHeight": "40px",
         "textAlign": "center",
       }
@@ -33,7 +33,7 @@ exports[`RequestTimeout renders a request timeout or no connection component 1`]
   <p
     className="description"
     style={
-      Object {
+      {
         "margin": "20px auto",
         "textAlign": "center",
         "width": "475px",

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Login renders a login component 1`] = `
+exports[`Login > renders a login component 1`] = `
 <div
   id="page-login"
 >
@@ -152,20 +152,18 @@ exports[`Login renders a login component 1`] = `
             <svg
               className="icon circled"
               dangerouslySetInnerHTML={
-                Object {
+                {
                   "__html": undefined,
                 }
               }
               onClick={null}
               style={
-                Object {
+                {
                   "fill": "currentColor",
                   "height": "30px",
                   "width": "auto",
                 }
               }
-              viewBox=""
-              xmlns=""
             />
           </button>
           <a
@@ -180,20 +178,18 @@ exports[`Login renders a login component 1`] = `
             <svg
               className="icon circled"
               dangerouslySetInnerHTML={
-                Object {
+                {
                   "__html": undefined,
                 }
               }
               onClick={null}
               style={
-                Object {
+                {
                   "fill": "currentColor",
                   "height": "30px",
                   "width": "auto",
                 }
               }
-              viewBox=""
-              xmlns=""
             />
           </a>
         </div>

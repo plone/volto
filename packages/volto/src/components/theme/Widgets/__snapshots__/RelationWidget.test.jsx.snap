@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`RelationWidget renders a full relation view widget component 1`] = `
+exports[`RelationWidget > renders a full relation view widget component 1`] = `
 <a
   className="metadata relation widget"
   href="/a-page"
@@ -11,26 +11,24 @@ exports[`RelationWidget renders a full relation view widget component 1`] = `
   <svg
     className="icon icon-margin"
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": undefined,
       }
     }
     onClick={null}
     style={
-      Object {
+      {
         "fill": "#878f93",
         "height": "20px",
         "width": "auto",
       }
     }
-    viewBox=""
-    xmlns=""
   />
   Foo Bar
 </a>
 `;
 
-exports[`RelationWidget renders a full relation view widget component with children 1`] = `
+exports[`RelationWidget > renders a full relation view widget component with children 1`] = `
 <a
   className="metadata relation widget Document private"
   href="/a-page"
@@ -41,20 +39,18 @@ exports[`RelationWidget renders a full relation view widget component with child
   <svg
     className="icon icon-margin"
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "<title>Document</title>undefined",
       }
     }
     onClick={null}
     style={
-      Object {
+      {
         "fill": "#878f93",
         "height": "20px",
         "width": "auto",
       }
     }
-    viewBox=""
-    xmlns=""
   />
   <strong>
     Foo Bar
@@ -62,7 +58,7 @@ exports[`RelationWidget renders a full relation view widget component with child
 </a>
 `;
 
-exports[`RelationWidget renders a relation view widget component 1`] = `
+exports[`RelationWidget > renders a relation view widget component 1`] = `
 <a
   className="metadata relation widget"
   href="/"
@@ -73,23 +69,21 @@ exports[`RelationWidget renders a relation view widget component 1`] = `
   <svg
     className="icon icon-margin"
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": undefined,
       }
     }
     onClick={null}
     style={
-      Object {
+      {
         "fill": "#878f93",
         "height": "20px",
         "width": "auto",
       }
     }
-    viewBox=""
-    xmlns=""
   />
   Foo Bar
 </a>
 `;
 
-exports[`RelationWidget renders an empty relation view widget component 1`] = `null`;
+exports[`RelationWidget > renders an empty relation view widget component 1`] = `null`;

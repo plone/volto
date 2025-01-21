@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders an event view component with all props 1`] = `
 <div
@@ -23,7 +23,7 @@ exports[`renders an event view component with all props 1`] = `
       </p>
       <div
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": "<p>Hello World!</p>",
           }
         }
@@ -234,20 +234,18 @@ exports[`renders an event view component with all props 1`] = `
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "36px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
           <a
             className="ics-download"
@@ -275,7 +273,7 @@ exports[`renders an event view component with all props 1`] = `
       </p>
       <div
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": "<p>Hello World!</p>",
           }
         }
@@ -340,20 +338,18 @@ exports[`renders an event view component with only required props 1`] = `
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "36px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
           <a
             className="ics-download"
@@ -397,8 +393,8 @@ exports[`renders an event view component without links to api in the text 1`] = 
       </h1>
       <div
         dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p>Hello World!</p><p>This is an <a href=\\"/foo/bar\\">internal link</a> and a <a href=\\"/foo/baz\\">second link</a></p>",
+          {
+            "__html": "<p>Hello World!</p><p>This is an <a href="/foo/bar">internal link</a> and a <a href="/foo/baz">second link</a></p>",
           }
         }
       />
@@ -441,20 +437,18 @@ exports[`renders an event view component without links to api in the text 1`] = 
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "36px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
           <a
             className="ics-download"
@@ -477,8 +471,8 @@ exports[`renders an event view component without links to api in the text 1`] = 
       </h1>
       <div
         dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p>Hello World!</p><p>This is an <a href=\\"/foo/bar\\">internal link</a> and a <a href=\\"/foo/baz\\">second link</a></p>",
+          {
+            "__html": "<p>Hello World!</p><p>This is an <a href="/foo/bar">internal link</a> and a <a href="/foo/baz">second link</a></p>",
           }
         }
       />

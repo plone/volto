@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`DatetimeWidget renders a date view widget component 1`] = `
+exports[`DatetimeWidget > renders a date view widget component 1`] = `
 <span
   className="metadata datetime widget"
 >
@@ -8,7 +8,7 @@ exports[`DatetimeWidget renders a date view widget component 1`] = `
 </span>
 `;
 
-exports[`DatetimeWidget renders a date view widget component with LLLL format 1`] = `
+exports[`DatetimeWidget > renders a date view widget component with LLLL format 1`] = `
 <span
   className="metadata datetime widget"
 >
@@ -16,7 +16,7 @@ exports[`DatetimeWidget renders a date view widget component with LLLL format 1`
 </span>
 `;
 
-exports[`DatetimeWidget renders a date view widget component with children 1`] = `
+exports[`DatetimeWidget > renders a date view widget component with children 1`] = `
 <span
   className="metadata datetime widget"
 >
@@ -26,4 +26,4 @@ exports[`DatetimeWidget renders a date view widget component with children 1`] =
 </span>
 `;
 
-exports[`DatetimeWidget renders an empty date view widget component 1`] = `null`;
+exports[`DatetimeWidget > renders an empty date view widget component 1`] = `null`;

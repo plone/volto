@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
+exports[`Breadcrumbs > renders a breadcrumbs component 1`] = `
 <div
   aria-label="Breadcrumbs"
   className="ui secondary vertical segment breadcrumbs"
@@ -21,20 +21,18 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
         <svg
           className="icon"
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": undefined,
             }
           }
           onClick={null}
           style={
-            Object {
+            {
               "fill": "currentColor",
               "height": "18px",
               "width": "auto",
             }
           }
-          viewBox=""
-          xmlns=""
         />
       </a>
       <div

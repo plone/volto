@@ -1,7 +1,7 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`App renders a app component 1`] = `
-Array [
+exports[`App > renders a app component 1`] = `
+[
   <div
     aria-label="Skiplinks"
     className="skiplinks-wrapper"
@@ -27,7 +27,7 @@ Array [
     </a>
   </div>,
   <div
-    id="toolbar"
+    id="header"
   />,
   <div
     id="breadcrumbs"
@@ -39,7 +39,7 @@ Array [
     id="route-announcer"
     role="alert"
     style={
-      Object {
+      {
         "border": 0,
         "clip": "rect(1px 1px 1px 1px)",
         "height": "1px",

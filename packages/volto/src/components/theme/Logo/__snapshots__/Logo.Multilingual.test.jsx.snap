@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Multilingual Logo renders a logo component in a multilingual site language root 1`] = `
+exports[`Multilingual Logo > renders a logo component in a multilingual site language root 1`] = `
 <a
   aria-label="Home"
   href="/en"
@@ -9,12 +9,12 @@ exports[`Multilingual Logo renders a logo component in a multilingual site langu
   <img
     alt="Logo of Plone Site"
     className="ui image"
-    src="Logo.svg"
+    src="/src/components/theme/Logo/Logo.svg"
   />
 </a>
 `;
 
-exports[`Multilingual Logo renders a logo component in a multilingual site root 1`] = `
+exports[`Multilingual Logo > renders a logo component in a multilingual site root 1`] = `
 <a
   aria-label="Home"
   href="/en"
@@ -23,12 +23,12 @@ exports[`Multilingual Logo renders a logo component in a multilingual site root 
   <img
     alt="Logo of Plone Site"
     className="ui image"
-    src="Logo.svg"
+    src="/src/components/theme/Logo/Logo.svg"
   />
 </a>
 `;
 
-exports[`Multilingual Logo renders a logo component with a custom logo in a non-root url 1`] = `
+exports[`Multilingual Logo > renders a logo component with a custom logo in a non-root url 1`] = `
 <a
   aria-label="Home"
   href="/en"
@@ -42,7 +42,7 @@ exports[`Multilingual Logo renders a logo component with a custom logo in a non-
 </a>
 `;
 
-exports[`Multilingual Logo renders a logo component with a custom logo in a non-root url with path 1`] = `
+exports[`Multilingual Logo > renders a logo component with a custom logo in a non-root url with path 1`] = `
 <a
   aria-label="Home"
   href="/en"

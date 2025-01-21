@@ -1,6 +1,5 @@
 import renderer from 'react-test-renderer';
 import TsTest from './TsTest';
-import { expect } from '@jest/globals';
 
 describe('Ts test component', () => {
   test('Renders', () => {
