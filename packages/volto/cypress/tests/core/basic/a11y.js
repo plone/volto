@@ -15,6 +15,9 @@ describe('Accessibility Tests', () => {
     cy.get('#field-subject').click().type('input');
     cy.get('#field-message').click().type('input');
     cy.checkA11y();
+
+    //working example of checkAccessibility()
+    cy.checkAccessibility();
   });
 
   // TODO: Adapt this to volto-slate table
