@@ -7,19 +7,25 @@ import Header from './Header';
 
 const mockStore = configureStore();
 
-jest.mock('../Logo/Logo', () => jest.fn(() => <div id="logo" />));
-jest.mock('../SearchWidget/SearchWidget', () =>
-  jest.fn(() => <div id="searchwidget" />),
-);
-jest.mock('../Anontools/Anontools', () =>
-  jest.fn(() => <div id="anontools" />),
-);
-jest.mock('../Navigation/Navigation', () =>
-  jest.fn(() => <div id="navigation" />),
-);
-jest.mock('../LanguageSelector/LanguageSelector', () =>
-  jest.fn(() => <div id="language-selector" />),
-);
+vi.mock('../Logo/Logo', () => ({
+  default: vi.fn(() => <div id="logo" />),
+}));
+
+vi.mock('../SearchWidget/SearchWidget', () => ({
+  default: vi.fn(() => <div id="searchwidget" />),
+}));
+
+vi.mock('../Anontools/Anontools', () => ({
+  default: vi.fn(() => <div id="anontools" />),
+}));
+
+vi.mock('../Navigation/Navigation', () => ({
+  default: vi.fn(() => <div id="navigation" />),
+}));
+
+vi.mock('../LanguageSelector/LanguageSelector', () => ({
+  default: vi.fn(() => <div id="language-selector" />),
+}));
 
 describe('Header', () => {
   it('renders a header component', () => {

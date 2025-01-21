@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`TabularView renders a summary view component 1`] = `
+exports[`TabularView > renders a summary view component 1`] = `
 <div
   className="ui container view-wrapper summary-view"
 >
