@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Display renders a Display component empty in case that there is only one option 1`] = `<div />`;
+exports[`Display > renders a Display component empty in case that there is only one option 1`] = `<div />`;
 
-exports[`Display renders a Display component with more than one option 1`] = `
+exports[`Display > renders a Display component with more than one option 1`] = `
 <div>
   <div
     id="FormFieldWrapper"

@@ -3,7 +3,6 @@ import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import config from '@plone/volto/registry';
-
 import Add from './Add';
 
 const mockStore = configureStore();
@@ -16,9 +15,15 @@ beforeAll(() => {
   config.settings.loadables = {};
 });
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../Toolbar/Toolbar', () => ({
+  __esModule: true,
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
-jest.mock('../Form/Form', () => jest.fn(() => <div className="Form" />));
+vi.mock('../Form/Form', () => ({
+  __esModule: true,
+  default: vi.fn(() => <div className="Form" />),
+}));
 
 describe('Add', () => {
   it('renders an empty add component', () => {

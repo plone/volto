@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ManageTranslations renders a ManageTranslations component 1`] = `
+exports[`ManageTranslations > renders a ManageTranslations component 1`] = `
 <div>
   <div
     class="ui container"
@@ -75,8 +75,6 @@ exports[`ManageTranslations renders a ManageTranslations component 1`] = `
                   <svg
                     class="icon"
                     style="height: 24px; width: auto; fill: currentColor;"
-                    viewBox=""
-                    xmlns=""
                   />
                 </a>
               </div>
@@ -90,8 +88,6 @@ exports[`ManageTranslations renders a ManageTranslations component 1`] = `
                   <svg
                     class="icon"
                     style="height: 24px; width: auto; fill: currentColor;"
-                    viewBox=""
-                    xmlns=""
                   />
                 </button>
               </div>
@@ -126,8 +122,6 @@ exports[`ManageTranslations renders a ManageTranslations component 1`] = `
                   <svg
                     class="icon"
                     style="height: 24px; width: auto; fill: currentColor;"
-                    viewBox=""
-                    xmlns=""
                   />
                 </a>
               </div>
@@ -141,8 +135,6 @@ exports[`ManageTranslations renders a ManageTranslations component 1`] = `
                   <svg
                     class="icon"
                     style="height: 24px; width: auto; fill: currentColor;"
-                    viewBox=""
-                    xmlns=""
                   />
                 </button>
               </div>

@@ -1,15 +1,15 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Toolbar renders the Toolbar component 1`] = `
-Array [
+exports[`Toolbar > renders the Toolbar component 1`] = `
+[
   <div
     className="toolbar-content"
-    style={Object {}}
+    style={{}}
   >
     <div
       className="pusher-puller"
       style={
-        Object {
+        {
           "transform": null,
         }
       }
@@ -33,20 +33,18 @@ Array [
           <svg
             className="icon circled"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": "<title>Edit</title>undefined",
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "30px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </a>
         <a
@@ -57,20 +55,18 @@ Array [
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": "<title>Contents</title>undefined",
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "30px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </a>
         <button
@@ -83,20 +79,18 @@ Array [
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": "<title>Add</title>undefined",
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "30px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </button>
         <div
@@ -112,38 +106,34 @@ Array [
           <svg
             className="icon mobile hidden"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": "<title>More</title>undefined",
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "30px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
           <svg
             className="icon mobile only"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "30px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </button>
       </div>
@@ -160,20 +150,18 @@ Array [
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": "<title>Personal tools</title>undefined",
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "30px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </button>
       </div>
@@ -194,16 +182,16 @@ Array [
 ]
 `;
 
-exports[`Toolbar renders the Toolbar component with lock 1`] = `
-Array [
+exports[`Toolbar > renders the Toolbar component with lock 1`] = `
+[
   <div
     className="toolbar-content"
-    style={Object {}}
+    style={{}}
   >
     <div
       className="pusher-puller"
       style={
-        Object {
+        {
           "transform": null,
         }
       }
@@ -227,20 +215,18 @@ Array [
           <svg
             className="icon unlock"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": "<title>Unlock</title>undefined",
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "30px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </button>
         <a
@@ -251,20 +237,18 @@ Array [
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": "<title>Contents</title>undefined",
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "30px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </a>
         <button
@@ -277,20 +261,18 @@ Array [
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": "<title>Add</title>undefined",
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "30px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </button>
         <div
@@ -306,38 +288,34 @@ Array [
           <svg
             className="icon mobile hidden"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": "<title>More</title>undefined",
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "30px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
           <svg
             className="icon mobile only"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": undefined,
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "30px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </button>
       </div>
@@ -354,20 +332,18 @@ Array [
           <svg
             className="icon"
             dangerouslySetInnerHTML={
-              Object {
+              {
                 "__html": "<title>Personal tools</title>undefined",
               }
             }
             onClick={null}
             style={
-              Object {
+              {
                 "fill": "currentColor",
                 "height": "30px",
                 "width": "auto",
               }
             }
-            viewBox=""
-            xmlns=""
           />
         </button>
       </div>

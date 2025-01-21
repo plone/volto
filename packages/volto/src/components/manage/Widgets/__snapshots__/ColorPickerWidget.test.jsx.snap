@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ColorPickerWidget renders a color picker widget component 1`] = `
+exports[`ColorPickerWidget > renders a color picker widget component 1`] = `
 <DocumentFragment>
   <div
     class="inline field"
@@ -45,7 +45,7 @@ exports[`ColorPickerWidget renders a color picker widget component 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ColorPickerWidget renders a color picker widget component with a default 1`] = `
+exports[`ColorPickerWidget > renders a color picker widget component with a default 1`] = `
 <DocumentFragment>
   <div
     class="inline field"
