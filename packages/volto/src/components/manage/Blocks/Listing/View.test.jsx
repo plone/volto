@@ -2,7 +2,9 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import View from './View';
 
-jest.mock('./ListingBody', () => jest.fn(() => <div className="theblock" />));
+vi.mock('./ListingBody', () => ({
+  default: () => <div className="theblock" />,
+}));
 
 test('renders a view image component for the listing block', () => {
   const component = renderer.create(

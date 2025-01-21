@@ -7,7 +7,7 @@ import ContentsPropertiesModal from './ContentsPropertiesModal';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/components/manage/Form');
+vi.mock('@plone/volto/components/manage/Form');
 
 describe('ContentsPropertiesModal', () => {
   it('renders a contents properties modal component', () => {

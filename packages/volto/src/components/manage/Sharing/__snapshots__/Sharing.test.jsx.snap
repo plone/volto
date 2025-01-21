@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Sharing renders a sharing component 1`] = `
+exports[`Sharing > renders a sharing component 1`] = `
 <div>
   <div
     class="ui container"
@@ -155,8 +155,6 @@ exports[`Sharing renders a sharing component 1`] = `
             <svg
               class="icon circled"
               style="height: 30px; width: auto; fill: currentColor;"
-              viewBox=""
-              xmlns=""
             />
           </button>
           <button
@@ -167,8 +165,6 @@ exports[`Sharing renders a sharing component 1`] = `
             <svg
               class="icon circled"
               style="height: 30px; width: auto; fill: currentColor;"
-              viewBox=""
-              xmlns=""
             />
           </button>
         </div>

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders a token widget component 1`] = `
 <div
@@ -57,7 +57,7 @@ exports[`renders a token widget component 1`] = `
                 <div
                   className="react-select__input"
                   style={
-                    Object {
+                    {
                       "display": "inline-block",
                     }
                   }
@@ -75,7 +75,7 @@ exports[`renders a token widget component 1`] = `
                     onFocus={[Function]}
                     spellCheck="false"
                     style={
-                      Object {
+                      {
                         "background": 0,
                         "border": 0,
                         "boxSizing": "content-box",
@@ -94,7 +94,7 @@ exports[`renders a token widget component 1`] = `
                   />
                   <div
                     style={
-                      Object {
+                      {
                         "height": 0,
                         "left": 0,
                         "overflow": "scroll",
@@ -123,20 +123,18 @@ exports[`renders a token widget component 1`] = `
                 <svg
                   className="icon"
                   dangerouslySetInnerHTML={
-                    Object {
+                    {
                       "__html": undefined,
                     }
                   }
                   onClick={null}
                   style={
-                    Object {
+                    {
                       "fill": "#007bc1",
                       "height": "24px",
                       "width": "auto",
                     }
                   }
-                  viewBox=""
-                  xmlns=""
                 />
               </div>
             </div>

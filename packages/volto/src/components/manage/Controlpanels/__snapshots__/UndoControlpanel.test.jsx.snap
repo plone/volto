@@ -1,458 +1,454 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`UndoControlpanel renders undo controlpanel component 1`] = `
+exports[`UndoControlpanel > renders undo controlpanel component 1`] = `
 <div>
-  <div
-    class="ui container controlpanel-undo"
-    id="page-undo"
-  >
+  <div>
     <div
-      class="ui raised segments"
+      class="ui container controlpanel-undo"
+      id="page-undo"
     >
-      <div
-        class="ui segment primary"
-      >
-        Undo Controlpanel
-      </div>
-      <div
-        class="ui segment"
-      >
-        <div
-          data-schema="{
-  \\"fieldsets\\": [
-    {
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\",
-      \\"fields\\": [
-        \\"sortingTypes\\"
-      ]
-    }
-  ],
-  \\"properties\\": {
-    \\"sortingTypes\\": {
-      \\"title\\": \\"Sort by\\",
-      \\"description\\": \\"Sort transactions by User-Name, Path or Date\\",
-      \\"type\\": \\"string\\",
-      \\"choices\\": [
-        [
-          \\"User Name\\",
-          \\"User Name\\"
-        ],
-        [
-          \\"Path\\",
-          \\"Path\\"
-        ],
-        [
-          \\"Date\\",
-          \\"Date\\"
-        ]
-      ]
-    },
-    \\"sortByUsername\\": {
-      \\"title\\": \\"Enter Username\\",
-      \\"type\\": \\"string\\"
-    },
-    \\"sortByPath\\": {
-      \\"title\\": \\"Enter Path\\",
-      \\"type\\": \\"string\\"
-    },
-    \\"sortByDate\\": {
-      \\"title\\": \\"Enter Date and Time\\",
-      \\"type\\": \\"date\\"
-    }
-  },
-  \\"required\\": []
-}"
-          id="Form"
-        />
-      </div>
       <div
         class="ui raised segments"
       >
         <div
           class="ui segment primary"
         >
-          Transactions
+          Undo Controlpanel
         </div>
-        <table
-          class="ui celled fixed selectable single line attached compact table"
+        <div
+          class="ui segment"
         >
-          <thead
-            class=""
+          <div
+            data-schema="{
+  "fieldsets": [
+    {
+      "id": "default",
+      "title": "Default",
+      "fields": [
+        "sortingTypes"
+      ]
+    }
+  ],
+  "properties": {
+    "sortingTypes": {
+      "title": "Sort by",
+      "description": "Sort transactions by User-Name, Path or Date",
+      "type": "string",
+      "choices": [
+        [
+          "User Name",
+          "User Name"
+        ],
+        [
+          "Path",
+          "Path"
+        ],
+        [
+          "Date",
+          "Date"
+        ]
+      ]
+    },
+    "sortByUsername": {
+      "title": "Enter Username",
+      "type": "string"
+    },
+    "sortByPath": {
+      "title": "Enter Path",
+      "type": "string"
+    },
+    "sortByDate": {
+      "title": "Enter Date and Time",
+      "type": "date"
+    }
+  },
+  "required": []
+}"
+            id="Form"
+          />
+        </div>
+        <div
+          class="ui raised segments"
+        >
+          <div
+            class="ui segment primary"
           >
-            <tr
+            Transactions
+          </div>
+          <table
+            class="ui celled fixed selectable single line attached compact table"
+          >
+            <thead
               class=""
             >
-              <th
-                class="one wide"
-              >
-                #
-              </th>
-              <th
-                class="three wide"
-              >
-                What
-              </th>
-              <th
-                class="three wide"
-              >
-                Who
-              </th>
-              <th
-                class="three wide"
-              >
-                When
-              </th>
-              <th
-                class="three wide"
-              >
-                Note
-              </th>
-              <th
+              <tr
                 class=""
-              />
-            </tr>
-          </thead>
-          <tbody
-            class=""
-          >
-            <tr
-              class=""
-              id="QStrR0RRc0M5TjA9"
-            >
-              <td
-                class="one wide"
               >
-                <div
-                  class="ui input transactions-checkboxes"
+                <th
+                  class="one wide"
                 >
-                  <input
-                    type="checkbox"
-                  />
-                </div>
-              </td>
-              <td
-                class="three wide"
-                title="Added default view for root object"
-              >
-                Added default view for root object
-              </td>
-              <td
-                class="three wide"
-              >
-                Zope
-              </td>
-              <td
-                class="three wide"
-              >
-                2022-06-19T22:15:02
-              </td>
-              <td
-                class="three wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRcTVrbFU9"
-            >
-              <td
-                class="one wide"
-              >
-                <div
-                  class="ui input transactions-checkboxes"
+                  #
+                </th>
+                <th
+                  class="three wide"
                 >
-                  <input
-                    type="checkbox"
-                  />
-                </div>
-              </td>
-              <td
-                class="three wide"
-                title="Added virtual_hosting"
-              >
-                Added virtual_hosting
-              </td>
-              <td
-                class="three wide"
-              >
-                Zope
-              </td>
-              <td
-                class="three wide"
-              >
-                2022-06-19T22:15:02
-              </td>
-              <td
-                class="three wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRcVh4cGs9"
-            >
-              <td
-                class="one wide"
-              >
-                <div
-                  class="ui input transactions-checkboxes"
+                  What
+                </th>
+                <th
+                  class="three wide"
                 >
-                  <input
-                    type="checkbox"
-                  />
-                </div>
-              </td>
-              <td
-                class="three wide"
-                title="Added site error_log at /error_log"
-              >
-                Added site error_log at /error_log
-              </td>
-              <td
-                class="three wide"
-              >
-                Zope
-              </td>
-              <td
-                class="three wide"
-              >
-                2022-06-19T22:15:02
-              </td>
-              <td
-                class="three wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRcDlFaUk9"
-            >
-              <td
-                class="one wide"
-              >
-                <div
-                  class="ui input transactions-checkboxes"
+                  Who
+                </th>
+                <th
+                  class="three wide"
                 >
-                  <input
-                    type="checkbox"
-                  />
-                </div>
-              </td>
-              <td
-                class="three wide"
-                title="Added session_data_manager"
-              >
-                Added session_data_manager
-              </td>
-              <td
-                class="three wide"
-              >
-                Zope
-              </td>
-              <td
-                class="three wide"
-              >
-                2022-06-19T22:15:02
-              </td>
-              <td
-                class="three wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRcFU2KzQ9"
-            >
-              <td
-                class="one wide"
-              >
-                <div
-                  class="ui input transactions-checkboxes"
+                  When
+                </th>
+                <th
+                  class="three wide"
                 >
-                  <input
-                    type="checkbox"
-                  />
-                </div>
-              </td>
-              <td
-                class="three wide"
-                title="Added browser_id_manager"
-              >
-                Added browser_id_manager
-              </td>
-              <td
-                class="three wide"
-              >
-                Zope
-              </td>
-              <td
-                class="three wide"
-              >
-                2022-06-19T22:15:02
-              </td>
-              <td
-                class="three wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRbUkzKzQ9"
-            >
-              <td
-                class="one wide"
-              >
-                <div
-                  class="ui input transactions-checkboxes"
-                >
-                  <input
-                    type="checkbox"
-                  />
-                </div>
-              </td>
-              <td
-                class="three wide"
-                title="Created initial user"
-              >
-                Created initial user
-              </td>
-              <td
-                class="three wide"
-              >
-                Zope
-              </td>
-              <td
-                class="three wide"
-              >
-                2022-06-19T22:15:02
-              </td>
-              <td
-                class="three wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRbEVVa1E9"
-            >
-              <td
-                class="one wide"
-              >
-                <div
-                  class="ui input transactions-checkboxes"
-                >
-                  <input
-                    type="checkbox"
-                  />
-                </div>
-              </td>
-              <td
-                class="three wide"
-                title=""
-              />
-              <td
-                class="three wide"
-              >
-                Zope
-              </td>
-              <td
-                class="three wide"
-              >
-                2022-06-19T22:15:02
-              </td>
-              <td
-                class="three wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0ROWlo5YW89"
-            >
-              <td
-                class="one wide"
-              >
-                <div
-                  class="ui input transactions-checkboxes"
-                >
-                  <input
-                    type="checkbox"
-                  />
-                </div>
-              </td>
-              <td
-                class="three wide"
-                title="initial database creation"
-              >
-                initial database creation
-              </td>
-              <td
-                class="three wide"
-              >
-                Zope
-              </td>
-              <td
-                class="three wide"
-              >
-                2022-06-19T22:14:50
-              </td>
-              <td
-                class="three wide"
-              />
-            </tr>
-          </tbody>
-          <tfoot
-            class=""
-          >
-            <tr
+                  Note
+                </th>
+                <th
+                  class=""
+                />
+              </tr>
+            </thead>
+            <tbody
               class=""
             >
-              <th
-                class="center aligned"
-                colspan="6"
+              <tr
+                class=""
+                id="QStrR0RRc0M5TjA9"
               >
-                <div
-                  class="ui pagination menu"
+                <td
+                  class="one wide"
                 >
-                  <a
-                    class="icon item"
-                    id="prev-button"
+                  <div
+                    class="ui input transactions-checkboxes"
                   >
-                    <div
-                      style="width: 36px;"
+                    <input
+                      type="checkbox"
                     />
-                  </a>
-                  <a
-                    class="icon item"
+                  </div>
+                </td>
+                <td
+                  class="three wide"
+                  title="Added default view for root object"
+                >
+                  Added default view for root object
+                </td>
+                <td
+                  class="three wide"
+                >
+                  Zope
+                </td>
+                <td
+                  class="three wide"
+                >
+                  2022-06-19T22:15:02
+                </td>
+                <td
+                  class="three wide"
+                />
+              </tr>
+              <tr
+                class=""
+                id="QStrR0RRcTVrbFU9"
+              >
+                <td
+                  class="one wide"
+                >
+                  <div
+                    class="ui input transactions-checkboxes"
                   >
-                    <svg
-                      class="icon circled"
-                      id="undo-button"
-                      style="height: 30px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
+                    <input
+                      type="checkbox"
+                    />
+                  </div>
+                </td>
+                <td
+                  class="three wide"
+                  title="Added virtual_hosting"
+                >
+                  Added virtual_hosting
+                </td>
+                <td
+                  class="three wide"
+                >
+                  Zope
+                </td>
+                <td
+                  class="three wide"
+                >
+                  2022-06-19T22:15:02
+                </td>
+                <td
+                  class="three wide"
+                />
+              </tr>
+              <tr
+                class=""
+                id="QStrR0RRcVh4cGs9"
+              >
+                <td
+                  class="one wide"
+                >
+                  <div
+                    class="ui input transactions-checkboxes"
+                  >
+                    <input
+                      type="checkbox"
+                    />
+                  </div>
+                </td>
+                <td
+                  class="three wide"
+                  title="Added site error_log at /error_log"
+                >
+                  Added site error_log at /error_log
+                </td>
+                <td
+                  class="three wide"
+                >
+                  Zope
+                </td>
+                <td
+                  class="three wide"
+                >
+                  2022-06-19T22:15:02
+                </td>
+                <td
+                  class="three wide"
+                />
+              </tr>
+              <tr
+                class=""
+                id="QStrR0RRcDlFaUk9"
+              >
+                <td
+                  class="one wide"
+                >
+                  <div
+                    class="ui input transactions-checkboxes"
+                  >
+                    <input
+                      type="checkbox"
+                    />
+                  </div>
+                </td>
+                <td
+                  class="three wide"
+                  title="Added session_data_manager"
+                >
+                  Added session_data_manager
+                </td>
+                <td
+                  class="three wide"
+                >
+                  Zope
+                </td>
+                <td
+                  class="three wide"
+                >
+                  2022-06-19T22:15:02
+                </td>
+                <td
+                  class="three wide"
+                />
+              </tr>
+              <tr
+                class=""
+                id="QStrR0RRcFU2KzQ9"
+              >
+                <td
+                  class="one wide"
+                >
+                  <div
+                    class="ui input transactions-checkboxes"
+                  >
+                    <input
+                      type="checkbox"
+                    />
+                  </div>
+                </td>
+                <td
+                  class="three wide"
+                  title="Added browser_id_manager"
+                >
+                  Added browser_id_manager
+                </td>
+                <td
+                  class="three wide"
+                >
+                  Zope
+                </td>
+                <td
+                  class="three wide"
+                >
+                  2022-06-19T22:15:02
+                </td>
+                <td
+                  class="three wide"
+                />
+              </tr>
+              <tr
+                class=""
+                id="QStrR0RRbUkzKzQ9"
+              >
+                <td
+                  class="one wide"
+                >
+                  <div
+                    class="ui input transactions-checkboxes"
+                  >
+                    <input
+                      type="checkbox"
+                    />
+                  </div>
+                </td>
+                <td
+                  class="three wide"
+                  title="Created initial user"
+                >
+                  Created initial user
+                </td>
+                <td
+                  class="three wide"
+                >
+                  Zope
+                </td>
+                <td
+                  class="three wide"
+                >
+                  2022-06-19T22:15:02
+                </td>
+                <td
+                  class="three wide"
+                />
+              </tr>
+              <tr
+                class=""
+                id="QStrR0RRbEVVa1E9"
+              >
+                <td
+                  class="one wide"
+                >
+                  <div
+                    class="ui input transactions-checkboxes"
+                  >
+                    <input
+                      type="checkbox"
+                    />
+                  </div>
+                </td>
+                <td
+                  class="three wide"
+                  title=""
+                />
+                <td
+                  class="three wide"
+                >
+                  Zope
+                </td>
+                <td
+                  class="three wide"
+                >
+                  2022-06-19T22:15:02
+                </td>
+                <td
+                  class="three wide"
+                />
+              </tr>
+              <tr
+                class=""
+                id="QStrR0ROWlo5YW89"
+              >
+                <td
+                  class="one wide"
+                >
+                  <div
+                    class="ui input transactions-checkboxes"
+                  >
+                    <input
+                      type="checkbox"
+                    />
+                  </div>
+                </td>
+                <td
+                  class="three wide"
+                  title="initial database creation"
+                >
+                  initial database creation
+                </td>
+                <td
+                  class="three wide"
+                >
+                  Zope
+                </td>
+                <td
+                  class="three wide"
+                >
+                  2022-06-19T22:14:50
+                </td>
+                <td
+                  class="three wide"
+                />
+              </tr>
+            </tbody>
+            <tfoot
+              class=""
+            >
+              <tr
+                class=""
+              >
+                <th
+                  class="center aligned"
+                  colspan="6"
+                >
+                  <div
+                    class="ui pagination menu"
+                  >
+                    <a
+                      class="icon item"
+                      id="prev-button"
                     >
-                      <title>
-                        Undo
-                      </title>
-                      undefined
-                    </svg>
-                  </a>
-                  <a
-                    class="icon item"
-                    id="next-button"
-                  >
-                    <div
-                      style="width: 36px;"
-                    />
-                  </a>
-                </div>
-              </th>
-            </tr>
-          </tfoot>
-        </table>
+                      <div
+                        style="width: 36px;"
+                      />
+                    </a>
+                    <a
+                      class="icon item"
+                    >
+                      <svg
+                        class="icon circled"
+                        id="undo-button"
+                        style="height: 30px; width: auto; fill: currentColor;"
+                      >
+                        <title>
+                          Undo
+                        </title>
+                        undefined
+                      </svg>
+                    </a>
+                    <a
+                      class="icon item"
+                      id="next-button"
+                    >
+                      <div
+                        style="width: 36px;"
+                      />
+                    </a>
+                  </div>
+                </th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div
-    id="toolbar"
-  >
     <div
-      id="Portal"
+      id="toolbar"
     />
   </div>
 </div>

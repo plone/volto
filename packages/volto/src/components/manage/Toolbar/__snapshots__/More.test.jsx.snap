@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Toolbar More component renders a Toolbar More component 1`] = `
+exports[`Toolbar More component > renders a Toolbar More component 1`] = `
 <div>
   <div
     class="menu-more pastanaga-menu"
@@ -16,8 +16,6 @@ exports[`Toolbar More component renders a Toolbar More component 1`] = `
         <svg
           class="icon"
           style="height: 30px; width: auto; fill: currentColor;"
-          viewBox=""
-          xmlns=""
         >
           <title>
             Personal tools
@@ -61,8 +59,6 @@ exports[`Toolbar More component renders a Toolbar More component 1`] = `
             <svg
               class="icon"
               style="height: 24px; width: auto; fill: currentColor;"
-              viewBox=""
-              xmlns=""
             />
           </a>
         </li>
@@ -74,8 +70,6 @@ exports[`Toolbar More component renders a Toolbar More component 1`] = `
             <svg
               class="icon"
               style="height: 24px; width: auto; fill: currentColor;"
-              viewBox=""
-              xmlns=""
             />
           </a>
         </li>
@@ -87,8 +81,6 @@ exports[`Toolbar More component renders a Toolbar More component 1`] = `
             <svg
               class="icon"
               style="height: 24px; width: auto; fill: currentColor;"
-              viewBox=""
-              xmlns=""
             />
           </a>
         </li>
@@ -100,8 +92,6 @@ exports[`Toolbar More component renders a Toolbar More component 1`] = `
             <svg
               class="icon"
               style="height: 24px; width: auto; fill: currentColor;"
-              viewBox=""
-              xmlns=""
             />
           </a>
         </li>
@@ -111,7 +101,7 @@ exports[`Toolbar More component renders a Toolbar More component 1`] = `
 </div>
 `;
 
-exports[`Toolbar More component renders a Toolbar More component with manage content (working copy) 1`] = `
+exports[`Toolbar More component > renders a Toolbar More component with manage content (working copy) 1`] = `
 <div>
   <div
     class="menu-more pastanaga-menu"
@@ -127,8 +117,6 @@ exports[`Toolbar More component renders a Toolbar More component with manage con
         <svg
           class="icon"
           style="height: 30px; width: auto; fill: currentColor;"
-          viewBox=""
-          xmlns=""
         >
           <title>
             Personal tools
@@ -172,8 +160,6 @@ exports[`Toolbar More component renders a Toolbar More component with manage con
             <svg
               class="icon"
               style="height: 24px; width: auto; fill: currentColor;"
-              viewBox=""
-              xmlns=""
             />
           </a>
         </li>
@@ -185,8 +171,6 @@ exports[`Toolbar More component renders a Toolbar More component with manage con
             <svg
               class="icon"
               style="height: 24px; width: auto; fill: currentColor;"
-              viewBox=""
-              xmlns=""
             />
           </a>
         </li>
@@ -198,8 +182,6 @@ exports[`Toolbar More component renders a Toolbar More component with manage con
             <svg
               class="icon"
               style="height: 24px; width: auto; fill: currentColor;"
-              viewBox=""
-              xmlns=""
             />
           </a>
         </li>
@@ -211,8 +193,6 @@ exports[`Toolbar More component renders a Toolbar More component with manage con
             <svg
               class="icon"
               style="height: 24px; width: auto; fill: currentColor;"
-              viewBox=""
-              xmlns=""
             />
           </a>
         </li>
@@ -235,8 +215,6 @@ exports[`Toolbar More component renders a Toolbar More component with manage con
             <svg
               class="icon"
               style="height: 24px; width: auto; fill: currentColor;"
-              viewBox=""
-              xmlns=""
             />
           </button>
         </li>

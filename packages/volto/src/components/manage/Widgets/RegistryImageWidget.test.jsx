@@ -7,7 +7,7 @@ import RegistryImageWidget from './RegistryImageWidget';
 
 import config from '@plone/volto/registry';
 
-jest.spyOn(global.Date, 'now').mockImplementation(() => '0');
+vi.spyOn(global.Date, 'now').mockImplementation(() => '0');
 
 const mockStore = configureStore();
 

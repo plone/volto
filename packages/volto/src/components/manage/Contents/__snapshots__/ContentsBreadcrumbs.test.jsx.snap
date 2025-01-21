@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ContentsBreadcrumbs renders a ContentsBreadcrumbs component 1`] = `
+exports[`ContentsBreadcrumbs > renders a ContentsBreadcrumbs component 1`] = `
 <div
   className="ui breadcrumb"
 >
@@ -38,7 +38,7 @@ exports[`ContentsBreadcrumbs renders a ContentsBreadcrumbs component 1`] = `
 </div>
 `;
 
-exports[`ContentsBreadcrumbs renders a breadcrumbs component containing items with nav_title 1`] = `
+exports[`ContentsBreadcrumbs > renders a breadcrumbs component containing items with nav_title 1`] = `
 <div
   className="ui breadcrumb"
 >
