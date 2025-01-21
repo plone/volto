@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ContextNavigation renders a navigation component with an active item 1`] = `
+exports[`ContextNavigation > renders a navigation component with an active item 1`] = `
 <div>
   <nav
     class="context-navigation"
@@ -47,8 +47,6 @@ exports[`ContextNavigation renders a navigation component with an active item 1`
               <svg
                 class="icon"
                 style="height: 30px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
               />
             </div>
           </a>
@@ -74,7 +72,7 @@ exports[`ContextNavigation renders a navigation component with an active item 1`
 </div>
 `;
 
-exports[`ContextNavigation renders a navigation component with an active item when its subchildren are accessed 1`] = `
+exports[`ContextNavigation > renders a navigation component with an active item when its subchildren are accessed 1`] = `
 <div>
   <nav
     class="context-navigation"
@@ -139,8 +137,6 @@ exports[`ContextNavigation renders a navigation component with an active item wh
               <svg
                 class="icon"
                 style="height: 30px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
               />
             </div>
           </a>
@@ -151,9 +147,9 @@ exports[`ContextNavigation renders a navigation component with an active item wh
 </div>
 `;
 
-exports[`ContextNavigation renders a navigation component with only one active item even if there are similar item names 1`] = `<div />`;
+exports[`ContextNavigation > renders a navigation component with only one active item even if there are similar item names 1`] = `<div />`;
 
-exports[`ContextNavigation renders a navigation slot component without active items 1`] = `
+exports[`ContextNavigation > renders a navigation slot component without active items 1`] = `
 <div>
   <nav
     class="context-navigation"

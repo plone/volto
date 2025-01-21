@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Tags renders with tags 1`] = `
+exports[`Tags > renders with tags 1`] = `
 <div
   className="ui container tags"
 >
@@ -21,4 +21,4 @@ exports[`Tags renders with tags 1`] = `
 </div>
 `;
 
-exports[`Tags renders without tags 1`] = `null`;
+exports[`Tags > renders without tags 1`] = `null`;

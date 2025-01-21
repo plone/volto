@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`RelationsWidget renders a full vocabulary array view widget component 1`] = `
+exports[`RelationsWidget > renders a full vocabulary array view widget component 1`] = `
 <ul
   className="metadata relations widget"
 >
@@ -15,20 +15,18 @@ exports[`RelationsWidget renders a full vocabulary array view widget component 1
       <svg
         className="icon icon-margin"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": undefined,
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
       Foo
     </a>
@@ -44,20 +42,18 @@ exports[`RelationsWidget renders a full vocabulary array view widget component 1
       <svg
         className="icon icon-margin"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": undefined,
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
       Bar
     </a>
@@ -65,7 +61,7 @@ exports[`RelationsWidget renders a full vocabulary array view widget component 1
 </ul>
 `;
 
-exports[`RelationsWidget renders a full vocabulary relations view widget component with children 1`] = `
+exports[`RelationsWidget > renders a full vocabulary relations view widget component with children 1`] = `
 <ul
   className="metadata relations widget"
 >
@@ -80,20 +76,18 @@ exports[`RelationsWidget renders a full vocabulary relations view widget compone
       <svg
         className="icon icon-margin"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": "<title>Foo</title>undefined",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
       <strong>
         Foo
@@ -111,20 +105,18 @@ exports[`RelationsWidget renders a full vocabulary relations view widget compone
       <svg
         className="icon icon-margin"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": "<title>Bar</title>undefined",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
       <strong>
         Bar
@@ -134,7 +126,7 @@ exports[`RelationsWidget renders a full vocabulary relations view widget compone
 </ul>
 `;
 
-exports[`RelationsWidget renders a simple relations view widget component 1`] = `
+exports[`RelationsWidget > renders a simple relations view widget component 1`] = `
 <ul
   className="metadata relations widget"
 >
@@ -149,20 +141,18 @@ exports[`RelationsWidget renders a simple relations view widget component 1`] = 
       <svg
         className="icon icon-margin"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": undefined,
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
       foo
     </a>
@@ -178,20 +168,18 @@ exports[`RelationsWidget renders a simple relations view widget component 1`] = 
       <svg
         className="icon icon-margin"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": undefined,
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
       bar
     </a>
@@ -199,7 +187,7 @@ exports[`RelationsWidget renders a simple relations view widget component 1`] = 
 </ul>
 `;
 
-exports[`RelationsWidget renders a vocabulary relations view widget component 1`] = `
+exports[`RelationsWidget > renders a vocabulary relations view widget component 1`] = `
 <ul
   className="metadata relations widget"
 >
@@ -214,20 +202,18 @@ exports[`RelationsWidget renders a vocabulary relations view widget component 1`
       <svg
         className="icon icon-margin"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": undefined,
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
       Foo
     </a>
@@ -243,20 +229,18 @@ exports[`RelationsWidget renders a vocabulary relations view widget component 1`
       <svg
         className="icon icon-margin"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": undefined,
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
       Bar
     </a>
@@ -264,4 +248,4 @@ exports[`RelationsWidget renders a vocabulary relations view widget component 1`
 </ul>
 `;
 
-exports[`RelationsWidget renders an empty relations view widget component 1`] = `null`;
+exports[`RelationsWidget > renders an empty relations view widget component 1`] = `null`;
