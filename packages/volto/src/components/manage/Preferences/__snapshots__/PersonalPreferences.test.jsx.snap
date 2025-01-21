@@ -1,88 +1,88 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`PersonalPreferences renders a personal preferences component 1`] = `
+exports[`PersonalPreferences > renders a personal preferences component 1`] = `
 <div>
   <div
     data-schema="{
-  \\"fieldsets\\": [
+  "fieldsets": [
     {
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\",
-      \\"fields\\": [
-        \\"language\\"
+      "id": "default",
+      "title": "Default",
+      "fields": [
+        "language"
       ]
     }
   ],
-  \\"properties\\": {
-    \\"language\\": {
-      \\"description\\": \\"Your preferred language\\",
-      \\"title\\": \\"Language\\",
-      \\"type\\": \\"string\\",
-      \\"choices\\": [
+  "properties": {
+    "language": {
+      "description": "Your preferred language",
+      "title": "Language",
+      "type": "string",
+      "choices": [
         [
-          \\"ca\\",
-          \\"Català\\"
+          "ca",
+          "Català"
         ],
         [
-          \\"de\\",
-          \\"Deutsch\\"
+          "de",
+          "Deutsch"
         ],
         [
-          \\"en\\",
-          \\"English\\"
+          "en",
+          "English"
         ],
         [
-          \\"es\\",
-          \\"Español\\"
+          "es",
+          "Español"
         ],
         [
-          \\"eu\\",
-          \\"Euskara\\"
+          "eu",
+          "Euskara"
         ],
         [
-          \\"fi\\",
-          \\"Suomi\\"
+          "fi",
+          "Suomi"
         ],
         [
-          \\"fr\\",
-          \\"Français\\"
+          "fr",
+          "Français"
         ],
         [
-          \\"hi\\",
-          \\"Hindi\\"
+          "hi",
+          "Hindi"
         ],
         [
-          \\"it\\",
-          \\"Italiano\\"
+          "it",
+          "Italiano"
         ],
         [
-          \\"nl\\",
-          \\"Nederlands\\"
+          "nl",
+          "Nederlands"
         ],
         [
-          \\"ro\\",
-          \\"Română\\"
+          "ro",
+          "Română"
         ],
         [
-          \\"ja\\",
-          \\"日本語\\"
+          "ja",
+          "日本語"
         ],
         [
-          \\"pt\\",
-          \\"Português\\"
+          "pt",
+          "Português"
         ],
         [
-          \\"pt_BR\\",
-          \\"Português (Brasil)\\"
+          "pt_BR",
+          "Português (Brasil)"
         ],
         [
-          \\"zh_CN\\",
-          \\"中文\\"
+          "zh_CN",
+          "中文"
         ]
       ]
     }
   },
-  \\"required\\": []
+  "required": []
 }"
     id="Form"
   />

@@ -1,24 +1,22 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders a Toast info component 1`] = `
-Array [
+[
   <svg
     className="icon"
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": undefined,
       }
     }
     onClick={null}
     style={
-      Object {
+      {
         "fill": "currentColor",
         "height": "18px",
         "width": "auto",
       }
     }
-    viewBox=""
-    xmlns=""
   />,
   <div
     className="toast-inner-content"

@@ -9,7 +9,9 @@ import FakeTimers from '@sinonjs/fake-timers';
 import History from './History';
 
 const mockStore = configureStore();
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
 const FIXED_SYSTEM_TIME = '2017-04-23T15:38:00.000Z';
 

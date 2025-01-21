@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SearchInput renders a search input component 1`] = `
+exports[`SearchInput > renders a search input component 1`] = `
 <div
   className="search-input"
 >
@@ -27,20 +27,18 @@ exports[`SearchInput renders a search input component 1`] = `
       <svg
         className="icon"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": undefined,
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "currentColor",
             "height": "36px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
     </button>
   </div>

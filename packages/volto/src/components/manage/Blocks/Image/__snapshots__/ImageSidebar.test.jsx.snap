@@ -1,7 +1,7 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders an Image Block Sidebar component 1`] = `
-Array [
+[
   <header
     className="header pulled"
   >
@@ -20,20 +20,18 @@ Array [
         <svg
           className="icon"
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": undefined,
             }
           }
           onClick={null}
           style={
-            Object {
+            {
               "fill": "red",
               "height": "24px",
               "width": "auto",
             }
           }
-          viewBox=""
-          xmlns=""
         />
       </button>
     </div>
@@ -52,7 +50,7 @@ Array [
       sizes="188px"
       src="image"
       style={
-        Object {
+        {
           "width": "50%",
         }
       }
@@ -60,56 +58,56 @@ Array [
   </div>,
   <div
     data-schema="{
-  \\"fieldsets\\": [
+  "fieldsets": [
     {
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\",
-      \\"fields\\": [
-        \\"alt\\",
-        \\"align\\",
-        \\"size\\"
+      "id": "default",
+      "title": "Default",
+      "fields": [
+        "alt",
+        "align",
+        "size"
       ]
     },
     {
-      \\"id\\": \\"link_settings\\",
-      \\"title\\": \\"Link settings\\",
-      \\"fields\\": [
-        \\"href\\",
-        \\"openLinkInNewTab\\"
+      "id": "link_settings",
+      "title": "Link settings",
+      "fields": [
+        "href",
+        "openLinkInNewTab"
       ]
     }
   ],
-  \\"properties\\": {
-    \\"alt\\": {
-      \\"title\\": \\"Alt text\\"
+  "properties": {
+    "alt": {
+      "title": "Alt text"
     },
-    \\"align\\": {
-      \\"title\\": \\"Alignment\\",
-      \\"widget\\": \\"align\\",
-      \\"default\\": \\"center\\"
+    "align": {
+      "title": "Alignment",
+      "widget": "align",
+      "default": "center"
     },
-    \\"size\\": {
-      \\"title\\": \\"Image size\\",
-      \\"widget\\": \\"image_size\\",
-      \\"default\\": \\"l\\"
+    "size": {
+      "title": "Image size",
+      "widget": "image_size",
+      "default": "l"
     },
-    \\"href\\": {
-      \\"title\\": \\"Link to\\",
-      \\"widget\\": \\"object_browser\\",
-      \\"mode\\": \\"link\\",
-      \\"selectedItemAttrs\\": [
-        \\"Title\\",
-        \\"Description\\",
-        \\"hasPreviewImage\\"
+    "href": {
+      "title": "Link to",
+      "widget": "object_browser",
+      "mode": "link",
+      "selectedItemAttrs": [
+        "Title",
+        "Description",
+        "hasPreviewImage"
       ],
-      \\"allowExternals\\": true
+      "allowExternals": true
     },
-    \\"openLinkInNewTab\\": {
-      \\"title\\": \\"Open in a new tab\\",
-      \\"type\\": \\"boolean\\"
+    "openLinkInNewTab": {
+      "title": "Open in a new tab",
+      "type": "boolean"
     }
   },
-  \\"required\\": []
+  "required": []
 }"
     id="BlockDataForm"
   />,

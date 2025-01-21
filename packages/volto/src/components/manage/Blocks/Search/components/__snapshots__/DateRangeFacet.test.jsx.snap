@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`DateRangeFaceg renders a facet component with a date range widget 1`] = `
+exports[`DateRangeFacet > renders a facet component with a date range widget 1`] = `
 <div>
   <div
     class="daterange-facet"
@@ -88,8 +88,6 @@ exports[`DateRangeFaceg renders a facet component with a date range widget 1`] =
                 <svg
                   class="icon close"
                   style="height: 24px; width: auto; fill: currentColor;"
-                  viewBox=""
-                  xmlns=""
                 />
               </button>
             </div>

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Can render a custom button 1`] = `
 <div>
@@ -20,8 +20,6 @@ exports[`Renders a button 1`] = `
     <svg
       class="icon block-add-button"
       style="height: 19px; width: auto; fill: currentColor;"
-      viewBox=""
-      xmlns=""
     />
   </button>
 </div>

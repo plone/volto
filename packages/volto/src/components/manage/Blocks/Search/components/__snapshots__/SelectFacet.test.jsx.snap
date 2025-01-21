@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SelectFacet renders a facet component with select dropdown 1`] = `
+exports[`SelectFacet > renders a facet component with select dropdown 1`] = `
 <div>
   <div
     class="react-select-container css-2b097c-container"
@@ -60,8 +60,6 @@ exports[`SelectFacet renders a facet component with select dropdown 1`] = `
           <svg
             class="icon"
             style="height: 24px; width: auto; fill: #007bc1;"
-            viewBox=""
-            xmlns=""
           />
         </div>
       </div>

@@ -1,10 +1,10 @@
 import config from '@plone/volto/registry';
-
 import { JSDOM } from 'jsdom';
 import { deserialize } from '@plone/volto-slate/editor/deserialize';
 import * as htmlUtils from '@plone/volto-slate/editor/utils';
 import { makeEditor } from '@plone/volto-slate/utils/editor';
 import installSlate from '@plone/volto-slate/index';
+import { it, describe, expect } from 'vitest';
 
 const tojson = (html) => {
   const parsed = new JSDOM(html);

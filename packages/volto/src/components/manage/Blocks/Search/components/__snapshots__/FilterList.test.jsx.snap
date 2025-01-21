@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`FilterList renders filters listing component for search block 1`] = `
+exports[`FilterList > renders filters listing component for search block 1`] = `
 <div
   className="accordion ui filter-listing"
 >
@@ -14,20 +14,18 @@ exports[`FilterList renders filters listing component for search block 1`] = `
       <svg
         className="icon"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": undefined,
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "currentColor",
             "height": "18px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
       Current filters applied
       : 

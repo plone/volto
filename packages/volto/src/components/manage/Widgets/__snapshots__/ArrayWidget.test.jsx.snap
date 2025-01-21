@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`No 'No value' option when default value is 0 1`] = `
 <div>
@@ -97,8 +97,6 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   <svg
                     class="icon"
                     style="height: 24px; width: auto; fill: #007bc1;"
-                    viewBox=""
-                    xmlns=""
                   />
                 </div>
               </div>
@@ -120,8 +118,6 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   <svg
                     class="icon"
                     style="height: 20px; width: auto; fill: #b8c6c8;"
-                    viewBox=""
-                    xmlns=""
                   />
                 </div>
                 <div
@@ -135,8 +131,6 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   <svg
                     class="icon"
                     style="height: 20px; width: auto; fill: #007bc1;"
-                    viewBox=""
-                    xmlns=""
                   />
                 </div>
               </div>
@@ -206,7 +200,7 @@ exports[`renders an array widget component 1`] = `
                 <div
                   className="react-select__input"
                   style={
-                    Object {
+                    {
                       "display": "inline-block",
                     }
                   }
@@ -224,7 +218,7 @@ exports[`renders an array widget component 1`] = `
                     onFocus={[Function]}
                     spellCheck="false"
                     style={
-                      Object {
+                      {
                         "background": 0,
                         "border": 0,
                         "boxSizing": "content-box",
@@ -243,7 +237,7 @@ exports[`renders an array widget component 1`] = `
                   />
                   <div
                     style={
-                      Object {
+                      {
                         "height": 0,
                         "left": 0,
                         "overflow": "scroll",
@@ -272,20 +266,18 @@ exports[`renders an array widget component 1`] = `
                 <svg
                   className="icon"
                   dangerouslySetInnerHTML={
-                    Object {
+                    {
                       "__html": undefined,
                     }
                   }
                   onClick={null}
                   style={
-                    Object {
+                    {
                       "fill": "#007bc1",
                       "height": "24px",
                       "width": "auto",
                     }
                   }
-                  viewBox=""
-                  xmlns=""
                 />
               </div>
             </div>

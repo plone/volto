@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
+exports[`BlocksChooser > Fallback BlockChooser component onMutateBlock 1`] = `
 <div>
   <div
     class="blocks-chooser"
@@ -42,8 +42,6 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
           <svg
             class="icon"
             style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
           />
         </div>
       </div>
@@ -114,8 +112,6 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
           <svg
             class="icon"
             style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
           />
         </div>
       </div>
@@ -158,8 +154,6 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
           <svg
             class="icon"
             style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
           />
         </div>
       </div>
@@ -230,8 +224,6 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
           <svg
             class="icon"
             style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
           />
         </div>
       </div>
@@ -338,7 +330,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
 </div>
 `;
 
-exports[`BlocksChooser renders a BlockChooser component 1`] = `
+exports[`BlocksChooser > renders a BlockChooser component 1`] = `
 <div>
   <div
     class="blocks-chooser"
@@ -380,8 +372,6 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
           <svg
             class="icon"
             style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
           />
         </div>
       </div>
@@ -452,8 +442,6 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
           <svg
             class="icon"
             style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
           />
         </div>
       </div>
@@ -496,8 +484,6 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
           <svg
             class="icon"
             style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
           />
         </div>
       </div>
@@ -568,8 +554,6 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
           <svg
             class="icon"
             style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
           />
         </div>
       </div>

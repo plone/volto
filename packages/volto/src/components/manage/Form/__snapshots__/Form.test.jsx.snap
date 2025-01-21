@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Form renders a form component 1`] = `
+exports[`Form > renders a form component 1`] = `
 <div
   className="ui container"
 >
@@ -36,20 +36,18 @@ exports[`Form renders a form component 1`] = `
             <svg
               className="icon circled"
               dangerouslySetInnerHTML={
-                Object {
+                {
                   "__html": undefined,
                 }
               }
               onClick={null}
               style={
-                Object {
+                {
                   "fill": "currentColor",
                   "height": "30px",
                   "width": "auto",
                 }
               }
-              viewBox=""
-              xmlns=""
             />
           </button>
           <button
@@ -62,20 +60,18 @@ exports[`Form renders a form component 1`] = `
             <svg
               className="icon circled"
               dangerouslySetInnerHTML={
-                Object {
+                {
                   "__html": undefined,
                 }
               }
               onClick={null}
               style={
-                Object {
+                {
                   "fill": "currentColor",
                   "height": "30px",
                   "width": "auto",
                 }
               }
-              viewBox=""
-              xmlns=""
             />
           </button>
         </div>

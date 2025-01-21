@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders a Lead Image block Sidebar component 1`] = `
 <div
@@ -71,20 +71,18 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                   <svg
                     className="icon"
                     dangerouslySetInnerHTML={
-                      Object {
+                      {
                         "__html": undefined,
                       }
                     }
                     onClick={null}
                     style={
-                      Object {
+                      {
                         "fill": "currentColor",
                         "height": "24px",
                         "width": "auto",
                       }
                     }
-                    viewBox=""
-                    xmlns=""
                   />
                 </button>
               </div>
@@ -100,20 +98,18 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                   <svg
                     className="icon"
                     dangerouslySetInnerHTML={
-                      Object {
+                      {
                         "__html": undefined,
                       }
                     }
                     onClick={null}
                     style={
-                      Object {
+                      {
                         "fill": "currentColor",
                         "height": "24px",
                         "width": "auto",
                       }
                     }
-                    viewBox=""
-                    xmlns=""
                   />
                 </button>
               </div>
@@ -129,20 +125,18 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                   <svg
                     className="icon"
                     dangerouslySetInnerHTML={
-                      Object {
+                      {
                         "__html": undefined,
                       }
                     }
                     onClick={null}
                     style={
-                      Object {
+                      {
                         "fill": "currentColor",
                         "height": "24px",
                         "width": "auto",
                       }
                     }
-                    viewBox=""
-                    xmlns=""
                   />
                 </button>
               </div>
@@ -158,20 +152,18 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                   <svg
                     className="icon"
                     dangerouslySetInnerHTML={
-                      Object {
+                      {
                         "__html": undefined,
                       }
                     }
                     onClick={null}
                     style={
-                      Object {
+                      {
                         "fill": "currentColor",
                         "height": "24px",
                         "width": "auto",
                       }
                     }
-                    viewBox=""
-                    xmlns=""
                   />
                 </button>
               </div>
@@ -192,20 +184,18 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
       <svg
         className="icon"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": undefined,
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "currentColor",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
       />
     </div>
     <div
