@@ -1,1 +1,0 @@
-feat: Add check accessibility custom command to cypress @tishasoumya-02 
