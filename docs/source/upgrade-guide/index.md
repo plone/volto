@@ -498,6 +498,12 @@ If you've applied custom styles or shadowed this component, you might need to ma
 Effective with Volto 18.0.0-alpha.42, a new feature introduced a breaking change in the boilerplates created using `@plone/generator-volto` 9.0.0-alpha.17 and earlier.
 ```
 
+```{deprecated} Volto 18.0.0-alpha.43
+The `yarn`-based generator [`@plone/generator-volto`](https://www.npmjs.com/package/@plone/generator-volto) package and project boilerplates generated from it are deprecated and will not receive any further updates.
+The recommended way of generating a project boilerplate is [Cookieplone](https://github.com/plone/cookieplone).
+Please update your code to use the `pnpm` based setup.
+```
+
 You need to change your {file}`razzle.config.js` file in the root of your boilerplate.
 
 ```diff
@@ -613,8 +619,10 @@ Add this object to the `pnpm` key in your project {file}`package.json`.
 ```
 
 The Node.js-based Volto project boilerplate generator is deprecated from Volto 18 onwards.
-After the release of Volto 18, it will be marked as deprecated, archived, and it won't receive any further updates.
+It is marked as deprecated, archived, and it won't receive any further updates.
 Although you can still migrate your project to Volto 18 using this boilerplate, you should migrate to using [Cookieplone](https://github.com/plone/cookieplone).
+See {ref}`upgrade-18-cookieplone-label` for details.
+
 
 ##### Alternative
 
