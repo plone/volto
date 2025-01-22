@@ -32,7 +32,7 @@ The `type`, `path`, and `file` are mandatory.
 The `type` key specifies the route type to create, specifically one of `route`, `index`, `layout`, or `prefix`.
 The type `route` can contain nested routes.
 
-```{info}
+```{note}
 The routes registered with this method must be compliant with React Router 7 routes.
 They are loaded by a helper provided by `@plone/react-router` in an existing React Router 7 app.
 Check the official [React Router 7 documentation](https://reactrouter.com/start/framework/routing) for more information on how to define React Router 7 routes.
