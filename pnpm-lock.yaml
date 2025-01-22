@@ -1004,6 +1004,85 @@ importers:
         specifier: ^16.1.3
         version: 16.2.1(encoding@0.1.13)(typescript@5.6.3)
 
+  packages/seven:
+    dependencies:
+      '@plone/blocks':
+        specifier: workspace:*
+        version: link:../blocks
+      '@plone/client':
+        specifier: workspace:*
+        version: link:../client
+      '@plone/components':
+        specifier: workspace:*
+        version: link:../components
+      '@plone/providers':
+        specifier: workspace:*
+        version: link:../providers
+      '@plone/react-router':
+        specifier: workspace:*
+        version: link:../react-router
+      '@plone/registry':
+        specifier: workspace:*
+        version: link:../registry
+      '@plone/slots':
+        specifier: workspace:*
+        version: link:../slots
+      '@plone/theming':
+        specifier: workspace:*
+        version: link:../theming
+      '@react-router/node':
+        specifier: 7.1.2
+        version: 7.1.2(react-router@7.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(typescript@5.6.3)
+      '@react-router/serve':
+        specifier: 7.1.2
+        version: 7.1.2(react-router@7.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(typescript@5.6.3)
+      '@tanstack/react-query':
+        specifier: ^5.59.0
+        version: 5.59.15(react@18.2.0)
+      '@tanstack/react-query-devtools':
+        specifier: ^5.59.0
+        version: 5.59.15(@tanstack/react-query@5.59.15(react@18.2.0))(react@18.2.0)
+      isbot:
+        specifier: ^5.1.17
+        version: 5.1.17
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      react-router:
+        specifier: 7.1.2
+        version: 7.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+    devDependencies:
+      '@react-router/dev':
+        specifier: 7.1.2
+        version: 7.1.2(@react-router/serve@7.1.2(react-router@7.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(typescript@5.6.3))(@types/node@22.10.7)(babel-plugin-macros@3.1.0)(less@3.11.1)(lightningcss@1.28.1)(react-router@7.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(sass@1.75.0)(terser@5.30.3)(typescript@5.6.3)(vite@5.4.9(@types/node@22.10.7)(less@3.11.1)(lightningcss@1.28.1)(sass@1.75.0)(terser@5.30.3))
+      '@testing-library/cypress':
+        specifier: 10.0.2
+        version: 10.0.2(cypress@13.13.2)
+      '@types/react':
+        specifier: ^18.3.9
+        version: 18.3.12
+      '@types/react-dom':
+        specifier: ^18.3.0
+        version: 18.3.1
+      cypress:
+        specifier: ^13.13.2
+        version: 13.13.2
+      typescript:
+        specifier: ^5.6.3
+        version: 5.6.3
+      vite:
+        specifier: ^5.4.9
+        version: 5.4.9(@types/node@22.10.7)(less@3.11.1)(lightningcss@1.28.1)(sass@1.75.0)(terser@5.30.3)
+      vite-tsconfig-paths:
+        specifier: ^5.0.1
+        version: 5.1.0(typescript@5.6.3)(vite@5.4.9(@types/node@22.10.7)(less@3.11.1)(lightningcss@1.28.1)(sass@1.75.0)(terser@5.30.3))
+      wait-on:
+        specifier: ^8.0.0
+        version: 8.0.2
+
   packages/slots:
     dependencies:
       '@plone/blocks':
@@ -1964,85 +2043,6 @@ importers:
       release-it:
         specifier: ^17.1.1
         version: 17.1.1(typescript@5.6.3)
-
-  packages/voltotng:
-    dependencies:
-      '@plone/blocks':
-        specifier: workspace:*
-        version: link:../blocks
-      '@plone/client':
-        specifier: workspace:*
-        version: link:../client
-      '@plone/components':
-        specifier: workspace:*
-        version: link:../components
-      '@plone/providers':
-        specifier: workspace:*
-        version: link:../providers
-      '@plone/react-router':
-        specifier: workspace:*
-        version: link:../react-router
-      '@plone/registry':
-        specifier: workspace:*
-        version: link:../registry
-      '@plone/slots':
-        specifier: workspace:*
-        version: link:../slots
-      '@plone/theming':
-        specifier: workspace:*
-        version: link:../theming
-      '@react-router/node':
-        specifier: 7.1.2
-        version: 7.1.2(react-router@7.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(typescript@5.6.3)
-      '@react-router/serve':
-        specifier: 7.1.2
-        version: 7.1.2(react-router@7.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(typescript@5.6.3)
-      '@tanstack/react-query':
-        specifier: ^5.59.0
-        version: 5.59.15(react@18.2.0)
-      '@tanstack/react-query-devtools':
-        specifier: ^5.59.0
-        version: 5.59.15(@tanstack/react-query@5.59.15(react@18.2.0))(react@18.2.0)
-      isbot:
-        specifier: ^5.1.17
-        version: 5.1.17
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
-      react-router:
-        specifier: 7.1.2
-        version: 7.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-    devDependencies:
-      '@react-router/dev':
-        specifier: 7.1.2
-        version: 7.1.2(@react-router/serve@7.1.2(react-router@7.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(typescript@5.6.3))(@types/node@22.10.7)(babel-plugin-macros@3.1.0)(less@3.11.1)(lightningcss@1.28.1)(react-router@7.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(sass@1.75.0)(terser@5.30.3)(typescript@5.6.3)(vite@5.4.9(@types/node@22.10.7)(less@3.11.1)(lightningcss@1.28.1)(sass@1.75.0)(terser@5.30.3))
-      '@testing-library/cypress':
-        specifier: 10.0.2
-        version: 10.0.2(cypress@13.13.2)
-      '@types/react':
-        specifier: ^18.3.9
-        version: 18.3.12
-      '@types/react-dom':
-        specifier: ^18.3.0
-        version: 18.3.1
-      cypress:
-        specifier: ^13.13.2
-        version: 13.13.2
-      typescript:
-        specifier: ^5.6.3
-        version: 5.6.3
-      vite:
-        specifier: ^5.4.9
-        version: 5.4.9(@types/node@22.10.7)(less@3.11.1)(lightningcss@1.28.1)(sass@1.75.0)(terser@5.30.3)
-      vite-tsconfig-paths:
-        specifier: ^5.0.1
-        version: 5.1.0(typescript@5.6.3)(vite@5.4.9(@types/node@22.10.7)(less@3.11.1)(lightningcss@1.28.1)(sass@1.75.0)(terser@5.30.3))
-      wait-on:
-        specifier: ^8.0.0
-        version: 8.0.2
 
 packages:
 
@@ -18104,7 +18104,7 @@ snapshots:
 
   '@babel/helper-function-name@7.23.0':
     dependencies:
-      '@babel/template': 7.24.0
+      '@babel/template': 7.25.7
       '@babel/types': 7.25.8
 
   '@babel/helper-hoist-variables@7.22.5':
@@ -18117,7 +18117,7 @@ snapshots:
 
   '@babel/helper-module-imports@7.24.3':
     dependencies:
-      '@babel/types': 7.24.0
+      '@babel/types': 7.25.8
 
   '@babel/helper-module-imports@7.25.7':
     dependencies:
@@ -18546,7 +18546,7 @@ snapshots:
   '@babel/plugin-syntax-json-strings@7.8.3(@babel/core@7.25.8)':
     dependencies:
       '@babel/core': 7.25.8
-      '@babel/helper-plugin-utils': 7.24.0
+      '@babel/helper-plugin-utils': 7.25.7
 
   '@babel/plugin-syntax-jsx@7.24.1(@babel/core@7.24.4)':
     dependencies:
@@ -18651,7 +18651,12 @@ snapshots:
   '@babel/plugin-syntax-typescript@7.24.1(@babel/core@7.24.4)':
     dependencies:
       '@babel/core': 7.24.4
-      '@babel/helper-plugin-utils': 7.24.0
+      '@babel/helper-plugin-utils': 7.25.7
+
+  '@babel/plugin-syntax-typescript@7.24.1(@babel/core@7.25.8)':
+    dependencies:
+      '@babel/core': 7.25.8
+      '@babel/helper-plugin-utils': 7.25.7
 
   '@babel/plugin-syntax-typescript@7.25.7(@babel/core@7.24.4)':
     dependencies:
@@ -18711,9 +18716,11 @@ snapshots:
   '@babel/plugin-transform-async-to-generator@7.24.1(@babel/core@7.25.8)':
     dependencies:
       '@babel/core': 7.25.8
-      '@babel/helper-module-imports': 7.24.3
+      '@babel/helper-module-imports': 7.25.7
       '@babel/helper-plugin-utils': 7.25.7
       '@babel/helper-remap-async-to-generator': 7.22.20(@babel/core@7.25.8)
+    transitivePeerDependencies:
+      - supports-color
 
   '@babel/plugin-transform-block-scoped-functions@7.24.1(@babel/core@7.24.4)':
     dependencies:
@@ -19476,7 +19483,7 @@ snapshots:
 
   '@babel/preset-env@7.24.4(@babel/core@7.25.8)':
     dependencies:
-      '@babel/compat-data': 7.24.4
+      '@babel/compat-data': 7.25.8
       '@babel/core': 7.25.8
       '@babel/helper-compilation-targets': 7.25.7
       '@babel/helper-plugin-utils': 7.25.7
@@ -19650,7 +19657,7 @@ snapshots:
 
   '@babel/template@7.24.0':
     dependencies:
-      '@babel/code-frame': 7.24.2
+      '@babel/code-frame': 7.25.7
       '@babel/parser': 7.25.8
       '@babel/types': 7.25.8
 
@@ -24832,7 +24839,7 @@ snapshots:
 
   '@types/babel__template@7.4.4':
     dependencies:
-      '@babel/parser': 7.24.4
+      '@babel/parser': 7.25.8
       '@babel/types': 7.20.5
 
   '@types/babel__traverse@7.20.6':
@@ -31826,7 +31833,7 @@ snapshots:
 
   jest-message-util@26.6.2:
     dependencies:
-      '@babel/code-frame': 7.24.2
+      '@babel/code-frame': 7.25.7
       '@jest/types': 26.6.2
       '@types/stack-utils': 2.0.3
       chalk: 4.1.2
@@ -33036,8 +33043,8 @@ snapshots:
 
   magicast@0.3.4:
     dependencies:
-      '@babel/parser': 7.24.4
-      '@babel/types': 7.24.0
+      '@babel/parser': 7.25.8
+      '@babel/types': 7.25.8
       source-map-js: 1.2.0
 
   make-dir@2.1.0:
@@ -34931,7 +34938,7 @@ snapshots:
 
   parse-json@5.2.0:
     dependencies:
-      '@babel/code-frame': 7.24.2
+      '@babel/code-frame': 7.25.7
       error-ex: 1.3.2
       json-parse-even-better-errors: 2.3.1
       lines-and-columns: 1.2.4
@@ -39160,9 +39167,9 @@ snapshots:
 
   vinxi@0.4.3(@types/node@22.10.7)(encoding@0.1.13)(ioredis@5.4.1)(less@3.11.1)(lightningcss@1.28.1)(magicast@0.3.4)(sass@1.75.0)(terser@5.30.3)(webpack-sources@3.2.3):
     dependencies:
-      '@babel/core': 7.24.4
-      '@babel/plugin-syntax-jsx': 7.24.1(@babel/core@7.24.4)
-      '@babel/plugin-syntax-typescript': 7.24.1(@babel/core@7.24.4)
+      '@babel/core': 7.25.8
+      '@babel/plugin-syntax-jsx': 7.25.7(@babel/core@7.25.8)
+      '@babel/plugin-syntax-typescript': 7.24.1(@babel/core@7.25.8)
       '@types/micromatch': 4.0.7
       '@vinxi/listhen': 1.5.6
       boxen: 7.1.1
@@ -39172,7 +39179,7 @@ snapshots:
       crossws: 0.2.4
       dax-sh: 0.39.2
       defu: 6.1.4
-      es-module-lexer: 1.5.0
+      es-module-lexer: 1.6.0
       esbuild: 0.20.2
       fast-glob: 3.3.2
       get-port-please: 3.1.2

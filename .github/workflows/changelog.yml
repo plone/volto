@@ -48,8 +48,8 @@ jobs:
               - 'packages/slots/**'
             theming:
               - 'packages/theming/**'
-            plone7:
-              - 'packages/voltotng/**'
+            seven:
+              - 'packages/seven/**'
             wrongNews:
               - added|modified: 'news/**'
 
@@ -152,11 +152,11 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
-      - name: Plone 7 changelog check
-        if: steps.filter.outputs.plone7 == 'true'
+      - name: seven changelog check
+        if: steps.filter.outputs.seven == 'true'
         run: |
           git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/voltotng
+          towncrier check --compare-with origin/main --dir packages/seven
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
