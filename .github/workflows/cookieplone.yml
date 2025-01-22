@@ -34,7 +34,6 @@ jobs:
           (cd core && git fetch --depth 1 origin ${GITHUB_REF#refs/heads/}:${GITHUB_REF#refs/heads/} && git checkout ${GITHUB_REF#refs/heads/})
           pnpm i
           make build-deps
-          ls
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -46,7 +45,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          working-directory: seven-add-on
+          working-directory: packages/seven
           browser: chrome
           spec: cypress/tests/core/basic/**/*.cy.ts
           start: |
