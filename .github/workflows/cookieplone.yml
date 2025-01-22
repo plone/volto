@@ -32,9 +32,9 @@ jobs:
         run: |
           pnpm dlx mrs-developer missdev --no-config --fetch-https
           (cd core && git fetch --depth 1 origin ${GITHUB_REF#refs/heads/}:${GITHUB_REF#refs/heads/} && git checkout ${GITHUB_REF#refs/heads/})
-          ls -la core
           pnpm i
           make build-deps
+          ls
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
