@@ -73,12 +73,12 @@ describe('AlternateHrefLangs', () => {
     expect(helmetLinks).toContainEqual({
       rel: 'alternate',
       href: '/es',
-      hreflang: 'es',
+      hrefLang: 'es',
     });
     expect(helmetLinks).toContainEqual({
       rel: 'alternate',
       href: '/en',
-      hreflang: 'en',
+      hrefLang: 'en',
     });
   });
   it('multilingual site, with all available translations', () => {
@@ -119,17 +119,17 @@ describe('AlternateHrefLangs', () => {
     expect(helmetLinks).toContainEqual({
       rel: 'alternate',
       href: '/eu',
-      hreflang: 'eu',
+      hrefLang: 'eu',
     });
     expect(helmetLinks).toContainEqual({
       rel: 'alternate',
       href: '/es',
-      hreflang: 'es',
+      hrefLang: 'es',
     });
     expect(helmetLinks).toContainEqual({
       rel: 'alternate',
       href: '/en',
-      hreflang: 'en',
+      hrefLang: 'en',
     });
   });
 });
