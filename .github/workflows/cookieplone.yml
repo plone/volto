@@ -16,7 +16,7 @@ jobs:
         node-version: [22.x]
     steps:
       - uses: actions/checkout@v4
-
+      - run: echo "Current branch is ${GITHUB_REF#refs/heads/}"
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
         with:
@@ -31,7 +31,7 @@ jobs:
         working-directory: 'project-title/frontend'
         run: |
           make install
-          (cd core && git checkout -b ${{ github.base_ref }})
+          (cd core && git checkout -b ${GITHUB_REF#refs/heads/})
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
