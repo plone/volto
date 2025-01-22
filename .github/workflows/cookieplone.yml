@@ -25,13 +25,15 @@ jobs:
       - name: Generate Cookieplone-based frontend addon
         run: |
           pipx install cookieplone
-          pipx run cookieplone . --no-input
+          COOKIEPLONE_REPOSITORY_TAG=seventemplate pipx run --no-cache cookieplone seven_addon --no-input
 
       - name: Install generated package
-        working-directory: 'project-title/frontend'
+        working-directory: seven-add-on
         run: |
           make install
           (cd core && git checkout -b ${GITHUB_REF#refs/heads/})
+          pnpm install
+          make build-deps
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -43,7 +45,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          working-directory: packages/seven
+          working-directory: seven-add-on
           browser: chrome
           spec: cypress/tests/core/basic/**/*.cy.ts
           start: |
