@@ -30,9 +30,9 @@ jobs:
       - name: Install generated package
         working-directory: seven-add-on
         run: |
-          make install
+          pnpm dlx mrs-developer missdev --no-config --fetch-https
           (cd core && git checkout -b ${GITHUB_REF#refs/heads/})
-          pnpm install
+          pnpm i
           make build-deps
 
       - name: Cypress acceptance tests
