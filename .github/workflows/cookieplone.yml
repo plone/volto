@@ -15,19 +15,16 @@ jobs:
       matrix:
         node-version: [22.x]
     steps:
-      - uses: actions/checkout@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Generate Cookieplone-based frontend addon
         run: |
           pipx install cookieplone
           pipx run cookieplone . --no-input
 
-      - name: Set up Node.js environment
-        uses: ./.github/actions/node_env_setup
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: ls -la
-      - run: ls project-title/frontend
       - name: Install generated package
         working-directory: 'project-title/frontend'
         run: |
