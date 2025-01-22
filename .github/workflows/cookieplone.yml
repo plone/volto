@@ -17,11 +17,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - run: python --version
+
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
         with:
           python-version: "${{ env.PYTHON_VERSION }}"
           cache: "pip"
+          cache-dependency-path: 'requirements-cookieplone.txt'
 
       - name: Generate Cookieplone-based frontend addon
         run: |
