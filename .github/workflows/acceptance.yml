@@ -692,10 +692,10 @@ jobs:
           name: cypress-videos
           path: packages/volto/cypress/videos
 
-  plone7:
+  seven:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
-    name: Plone 7
+    name: Seven
     timeout-minutes: 45
     strategy:
       fail-fast: false
