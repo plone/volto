@@ -29,10 +29,9 @@ export const generateRobots = (req) =>
         resolve(text || error);
       } else {
         resolve(
-          body['plone.robots_txt'].replace(
-            '{portal_url}',
-            config.settings.publicURL,
-          ),
+          body['plone.robots_txt']
+            .replace('{portal_url}', config.settings.publicURL)
+            .replace('sitemap.xml.gz', 'sitemap-index.xml'),
         );
       }
     });
