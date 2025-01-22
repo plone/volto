@@ -31,6 +31,7 @@ jobs:
         working-directory: 'project-title/frontend'
         run: |
           make install
+          (cd core && git checkout -b ${{ github.base_ref }})
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6

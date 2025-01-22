@@ -23,6 +23,8 @@ CHECKOUT_BRANCH=$(shell git branch --show-current)
 CHECKOUT_TMP=../$(CHECKOUT_BASENAME).tmp
 CHECKOUT_TMP_ABS="$(shell realpath $(CHECKOUT_TMP))"
 
+CURRENT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
 RED=`tput setaf 1`
@@ -177,7 +179,7 @@ deployment-ci-acceptance-test-run-all: ## With a single command, run the backend
 
 .PHONY: project-acceptance-frontend-prod-start
 project-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for project tests
-	(cd ../../project-title && pnpm --filter seven build && PLONE_API_PATH=http://127.0.0.1:55001/plone pnpm --filter seven start:prod)
+	(cd ../../project-title && pnpm --filter seven build && REGISTRYCONFIG=$(CURRENT_DIR)/testing/registry.config.ts PLONE_API_PATH=http://127.0.0.1:55001/plone pnpm --filter seven start:prod)
 
 ######### Core Sandbox Acceptance tests
 

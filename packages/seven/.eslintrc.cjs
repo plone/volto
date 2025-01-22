@@ -24,7 +24,11 @@ module.exports = {
   extends: ['eslint:recommended'],
 
   // Ignore Cypress folder
-  ignorePatterns: ['cypress/', '.react-router/**/*'],
+  ignorePatterns: [
+    'cypress/',
+    '.react-router/**/*',
+    'tests/registry.config.ts',
+  ],
 
   overrides: [
     // React
