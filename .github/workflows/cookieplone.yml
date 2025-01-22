@@ -44,7 +44,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          working-directory: packages/seven
+          working-directory: seven-add-on/core/packages/seven
           browser: chrome
           spec: cypress/tests/core/basic/**/*.cy.ts
           start: |
