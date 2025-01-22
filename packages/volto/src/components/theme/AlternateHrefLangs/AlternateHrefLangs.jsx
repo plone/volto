@@ -11,7 +11,7 @@ const AlternateHrefLangs = (props) => {
             <link
               key={key}
               rel="alternate"
-              hreflang={item.language}
+              hrefLang={item.language}
               href={item['@id']}
             />
           );
