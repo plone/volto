@@ -26,9 +26,10 @@ jobs:
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
+      - run: ls -la
+      - run: ls project-title/frontend
       - name: Install generated package
-        working-directory: project-title/frontend
+        working-directory: 'project-title/frontend'
         run: |
           make install
 
