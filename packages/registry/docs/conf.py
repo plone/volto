@@ -60,7 +60,6 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.todo",
     "sphinx_copybutton",
-    "sphinx_togglebutton",  # Toggle admonitions in @plone/registry
     "sphinxext.opengraph",
 ]
 
