@@ -517,6 +517,91 @@ importers:
         specifier: ^7.2.0
         version: 7.2.0(debug@4.3.4)
 
+  packages/cmsui:
+    dependencies:
+      '@plone/client':
+        specifier: workspace:*
+        version: link:../client
+      '@plone/components':
+        specifier: workspace:*
+        version: link:../components
+      '@plone/registry':
+        specifier: workspace:*
+        version: link:../registry
+      react:
+        specifier: ^16.8.0 || ^17.0.0 || ^18.0.0
+        version: 18.2.0
+      react-aria-components:
+        specifier: ^1.5.0
+        version: 1.5.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      react-dom:
+        specifier: ^16.8.0 || ^17.0.0 || ^18.0.0
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@plone/types':
+        specifier: workspace:*
+        version: link:../types
+      '@storybook/addon-essentials':
+        specifier: ^8.0.4
+        version: 8.0.8(@types/react@18.3.12)(encoding@0.1.13)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@storybook/addon-interactions':
+        specifier: ^8.0.4
+        version: 8.0.8(@jest/globals@29.7.0)(@types/jest@29.5.12)(jest@29.7.0(@types/node@20.12.7))(vitest@2.1.3(@types/node@20.12.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.28.1)(sass@1.75.0)(terser@5.30.3))
+      '@storybook/addon-links':
+        specifier: ^8.0.4
+        version: 8.0.8(react@18.2.0)
+      '@storybook/addon-mdx-gfm':
+        specifier: ^8.0.4
+        version: 8.0.8
+      '@storybook/blocks':
+        specifier: ^8.0.4
+        version: 8.0.8(@types/react@18.3.12)(encoding@0.1.13)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@storybook/manager-api':
+        specifier: ^8.0.4
+        version: 8.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@storybook/react':
+        specifier: ^8.0.4
+        version: 8.0.8(encoding@0.1.13)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.6.3)
+      '@storybook/react-vite':
+        specifier: ^8.0.4
+        version: 8.0.8(@preact/preset-vite@2.8.2(@babel/core@7.25.8)(vite@5.4.9(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.28.1)(sass@1.75.0)(terser@5.30.3)))(encoding@0.1.13)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.9(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.28.1)(sass@1.75.0)(terser@5.30.3))
+      '@storybook/theming':
+        specifier: ^8.0.4
+        version: 8.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@types/react':
+        specifier: ^18
+        version: 18.3.12
+      '@types/react-dom':
+        specifier: ^18
+        version: 18.3.1
+      eslint-plugin-storybook:
+        specifier: ^0.8.0
+        version: 0.8.0(eslint@8.57.0)(typescript@5.6.3)
+      jest-axe:
+        specifier: ^8.0.0
+        version: 8.0.0
+      release-it:
+        specifier: 17.1.1
+        version: 17.1.1(typescript@5.6.3)
+      storybook:
+        specifier: ^8.0.4
+        version: 8.0.8(@babel/preset-env@7.24.4(@babel/core@7.25.8))(encoding@0.1.13)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
+      typescript:
+        specifier: ^5.6.3
+        version: 5.6.3
+      vite:
+        specifier: ^5.4.8
+        version: 5.4.9(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.28.1)(sass@1.75.0)(terser@5.30.3)
+      vitest:
+        specifier: ^2.1.3
+        version: 2.1.3(@types/node@20.12.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.28.1)(sass@1.75.0)(terser@5.30.3)
+      vitest-axe:
+        specifier: ^0.1.0
+        version: 0.1.0(vitest@2.1.3(@types/node@20.12.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.28.1)(sass@1.75.0)(terser@5.30.3))
+
   packages/components:
     dependencies:
       '@react-aria/utils':
@@ -1157,6 +1242,9 @@ importers:
       '@loadable/server':
         specifier: 5.14.0
         version: 5.14.0(@loadable/component@5.14.1(react@18.2.0))(react@18.2.0)
+      '@plone/cmsui':
+        specifier: workspace:*
+        version: link:../cmsui
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
@@ -18393,9 +18481,11 @@ snapshots:
   '@babel/plugin-transform-async-to-generator@7.24.1(@babel/core@7.25.8)':
     dependencies:
       '@babel/core': 7.25.8
-      '@babel/helper-module-imports': 7.24.3
+      '@babel/helper-module-imports': 7.25.7
       '@babel/helper-plugin-utils': 7.25.7
       '@babel/helper-remap-async-to-generator': 7.22.20(@babel/core@7.25.8)
+    transitivePeerDependencies:
+      - supports-color
 
   '@babel/plugin-transform-block-scoped-functions@7.24.1(@babel/core@7.24.4)':
     dependencies:
@@ -23542,12 +23632,12 @@ snapshots:
   '@storybook/react-vite@8.0.8(@preact/preset-vite@2.8.2(@babel/core@7.25.8)(vite@5.4.8(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.24.1)(sass@1.75.0)(terser@5.30.3)))(encoding@0.1.13)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.8(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.24.1)(sass@1.75.0)(terser@5.30.3))':
     dependencies:
       '@joshwooding/vite-plugin-react-docgen-typescript': 0.3.0(typescript@5.6.3)(vite@5.4.8(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.24.1)(sass@1.75.0)(terser@5.30.3))
-      '@rollup/pluginutils': 5.1.0(rollup@4.24.0)
+      '@rollup/pluginutils': 5.1.2(rollup@4.24.0)
       '@storybook/builder-vite': 8.0.8(@preact/preset-vite@2.8.2(@babel/core@7.25.8)(vite@5.4.8(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.24.1)(sass@1.75.0)(terser@5.30.3)))(encoding@0.1.13)(typescript@5.6.3)(vite@5.4.8(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.24.1)(sass@1.75.0)(terser@5.30.3))
       '@storybook/node-logger': 8.0.8
       '@storybook/react': 8.0.8(encoding@0.1.13)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.6.3)
       find-up: 5.0.0
-      magic-string: 0.30.10
+      magic-string: 0.30.11
       react: 18.2.0
       react-docgen: 7.0.3
       react-dom: 18.2.0(react@18.2.0)

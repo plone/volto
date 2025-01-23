@@ -1,0 +1,19 @@
+/* Todo: Better class naming to identify things in the sidebar? */
+.sidebar-container {
+  @layer plone-components {
+    /* ToDo: Infer a `field` classname? */
+    .q.react-aria-TextField {
+      width: 100%;
+    }
+
+    .q.react-aria-TextField,
+    .q.react-aria-TextArea {
+      margin-bottom: var(--form-spacing-small);
+    }
+
+    .q.react-aria-TextField:first-child,
+    .q.react-aria-TextArea:first-child {
+      margin-top: var(--form-spacing-small);
+    }
+  }
+}
