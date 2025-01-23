@@ -18,6 +18,7 @@ import {
   Tags,
   Toolbar,
 } from '@plone/volto/components';
+import { AlternateHrefLangs } from '@plone/volto/components/theme/AlternateHrefLangs/AlternateHrefLangs';
 import { listActions, getContent } from '@plone/volto/actions';
 import {
   BodyClass,
@@ -236,6 +237,7 @@ class View extends Component {
     return (
       <div id="view">
         <ContentMetadataTags content={this.props.content} />
+        <AlternateHrefLangs content={this.props.content} />
         {/* Body class if displayName in component is set */}
         <BodyClass
           className={
