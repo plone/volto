@@ -15,10 +15,10 @@ const MarkdownIntroduction = (props) => {
       <Segment secondary attached style={{ fontFamily: 'monospace' }}>
         <List>
           <List.Item key={1} style={{ fontSize: 'xx-large' }}>
-            # Title
+            ## Heading
           </List.Item>
           <List.Item key={2} style={{ fontSize: 'x-large' }}>
-            ## Subtitle
+            ### Subheading
           </List.Item>
 
           <List.Item key={3} style={{ paddingTop: '1rem' }}>

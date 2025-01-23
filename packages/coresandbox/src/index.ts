@@ -235,6 +235,16 @@ const applyConfig = (config: ConfigType) => {
     predicates: [ContentTypeCondition(['Document']), RouteCondition('/hello')],
   });
 
+  config.registerRoute({
+    type: 'route',
+    path: '/hello',
+    file: 'src/components/Views/NewsAndEvents/asd.tsx',
+    options: {
+      id: 'hello',
+      index: true,
+    },
+  });
+
   return config;
 };
 

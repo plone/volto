@@ -48,6 +48,10 @@ const customBlocks = {
       // Required for alternate default block types implementations.
       // See also [Settings reference](/configuration/settings-reference)
     },
+    // The `blockSchema` property can either be a schema by itself
+    // (a JavaScript object describing the schema),
+    // or a function that returns a schema.
+    blockSchema: CustomSchema,
     // A block can have an schema enhancer function with the signature: (schema) => schema
     // It can be either be at block level (it's applied always), at a variation level
     // or both. It's up to the developer to make them work nicely (not conflict) between them

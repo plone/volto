@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.1.0 (2025-01-11)
+
+### Feature
+
+- Added Italian translations. @giuliaghisini [#6563](https://github.com/plone/volto/issues/6563)
+
 ## 18.0.4 (2024-12-12)
 
 ### Bugfix

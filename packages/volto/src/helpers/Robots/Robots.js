@@ -16,7 +16,9 @@ import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 export const generateRobots = (req) =>
   new Promise((resolve) => {
     const internalUrl =
-      config.settings.internalApiPath ?? config.settings.apiPath;
+      config.settings.internalApiPath ??
+      config.settings.devProxyToApiPath ??
+      config.settings.apiPath;
     const request = superagent.get(`${internalUrl}/robots.txt`);
     request.set('Accept', 'text/plain');
     const authToken = req.universalCookies.get('auth_token');

@@ -10,6 +10,7 @@ const Logo = (props: SlotComponentProps) => {
     name: 'translation',
     type: 'factory',
   }).method;
+
   const navRootPath = content['@components'].navroot?.navroot?.['@id'] || '/';
   const site = content['@components'].site;
   const siteTitle = site?.['plone.site_title'] || '';

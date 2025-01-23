@@ -1,0 +1,1 @@
+Fix lint-staged throwing warnings when a file is checked-in and ignored. @sneridagh

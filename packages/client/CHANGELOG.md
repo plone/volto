@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.21 (2025-01-15)
+
+### Feature
+
+- Import `getContent` bare fetcher. @sneridagh [#6594](https://github.com/plone/volto/pull/6594)
+
 ## 1.0.0-alpha.20 (2024-11-05)
 
 ### Internal

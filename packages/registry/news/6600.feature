@@ -1,0 +1,1 @@
+Added route registry. @sneridagh
