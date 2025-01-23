@@ -46,6 +46,7 @@ export type ConfigData = {
   widgets: WidgetsConfig | Record<string, never>;
   addonReducers?: AddonReducersConfig;
   addonRoutes?: AddonRoutesConfig;
+  routes?: Array<ReactRouterRouteEntry>;
   slots: SlotsConfig | Record<string, never>;
   components: ComponentsConfig | Record<string, never>;
   utilities: UtilitiesConfig | Record<string, never>;
