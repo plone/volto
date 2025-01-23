@@ -151,7 +151,7 @@ acceptance-test: ## Start Cypress in interactive mode
 
 .PHONY: ci-acceptance-test
 ci-acceptance-test: ## Run cypress tests in headless mode for CI
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/core/**/*.{js,jsx,ts,tsx}'
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/core/**/*.{ts,tsx}'
 
 .PHONY: ci-acceptance-test-run-all
 ci-acceptance-test-run-all: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode
@@ -272,31 +272,3 @@ working-copy-ci-acceptance-test: ## Run Cypress tests in headless mode for CI fo
 .PHONY: working-copy-ci-acceptance-test-run-all
 working-copy-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for working copy tests
 	$(NODEBIN)/start-test "make working-copy-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make working-copy-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make working-copy-ci-acceptance-test"
-
-######### Guillotina Acceptance tests
-
-.PHONY: guillotina-acceptance-backend-start
-guillotina-acceptance-backend-start: ## Start backend acceptance server for Guillotina tests
-	docker-compose -f g-api/docker-compose.yml up > /dev/null
-
-.PHONY: guillotina-acceptance-frontend-prod-start
-guillotina-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for Guillotina tests
-	ADDONS=volto-guillotina PLONE_API_PATH=http://127.0.0.1:8081/db/web RAZZLE_LEGACY_TRAVERSE=true pnpm build && pnpm start:prod
-
-.PHONY: guillotina-acceptance-test
-guillotina-acceptance-test: ## Start Cypress in interactive mode for Guillotina tests
-	NODE_ENV=production CYPRESS_API=guillotina $(NODEBIN)/cypress open --config specPattern='cypress/tests/guillotina/**/*.{js,jsx,ts,tsx}'
-
-.PHONY: guillotina-ci-acceptance-test
-guillotina-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for Guillotina tests
-	NODE_ENV=production CYPRESS_API=guillotina $(NODEBIN)/cypress run --config specPattern='cypress/tests/guillotina/**/*.{js,jsx,ts,tsx}'
-
-.PHONY: guillotina-ci-acceptance-test-run-all
-guillotina-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for Guillotina tests
-	$(NODEBIN)/start-test "make guillotina-acceptance-backend-start" http-get://127.0.0.1:8081 "make guillotina-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make guillotina-ci-acceptance-test"
-
-######### Plone 5 Acceptance tests
-
-.PHONY: plone5-acceptance-backend-start
-plone5-acceptance-backend-start: ## Start backend acceptance server for Plone 5 tests
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS5) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE5) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING

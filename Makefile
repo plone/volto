@@ -393,6 +393,28 @@ acceptance-server-detached-start: ## Starts test acceptance server main fixture 
 acceptance-server-detached-stop: ## Stop test acceptance server main fixture in detached mode (daemon)
 	docker kill plone-client-acceptance-server
 
+######### Seven acceptance tests
+
+.PHONY: seven-acceptance-frontend-dev-start
+seven-acceptance-frontend-dev-start: ## Start acceptance frontend in development mode for Seven
+	$(MAKE) -C "./packages/seven/" acceptance-frontend-dev-start
+
+.PHONY: seven-acceptance-frontend-prod-start
+seven-acceptance-frontend-prod-start:: ## Start acceptance frontend in production mode for Seven
+	$(MAKE) -C "./packages/seven/" acceptance-frontend-prod-start
+
+.PHONY: seven-acceptance-test
+seven-acceptance-test: ## Start Cypress in interactive mode for Seven
+	$(MAKE) -C "./packages/seven/" acceptance-test
+
+.PHONY: seven-ci-acceptance-test
+seven-ci-acceptance-test: ## Run cypress tests in headless mode for CI for Seven
+	$(MAKE) -C "./packages/seven/" ci-acceptance-test
+
+.PHONY: seven-ci-acceptance-test-run-all
+seven-ci-acceptance-test-run-all: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode for Seven
+	$(MAKE) -C "./packages/seven/" ci-acceptance-test-run-all
+
 # include local overrides if present
 -include Makefile.local
 -include ../../../Makefile.local
