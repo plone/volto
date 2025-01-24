@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0 (2025-01-24)
+
+### Bugfix
+
+- Initial implementation.
+  Added `getAddonRoutesConfig` for configuring routes in add-ons. @sneridagh [#6599](https://github.com/plone/volto/issues/6599)
+
 ## 1.0.0-alpha.6 (2024-11-21)
 
 ### Feature
