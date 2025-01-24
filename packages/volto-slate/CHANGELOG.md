@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.2.0 (2025-01-24)
+
+### Feature
+
+- Fixed keyboard shortcuts for typing headings using Markdown notation. @Shyam-Raghuwanshi [#6588](https://github.com/plone/volto/issues/6588)
+
 ## 18.1.0 (2025-01-11)
 
 ### Feature
