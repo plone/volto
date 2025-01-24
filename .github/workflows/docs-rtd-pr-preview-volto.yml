@@ -1,16 +1,17 @@
-# .github/workflows/docs-rtd-pr-preview.yml
+# .github/workflows/docs-rtd-pr-preview-volto.yml
 name: readthedocs/actions
 on:
   pull_request_target:
     types:
       - opened
     # Execute this action only on PRs that touch
-    # documentation files.
+    # documentation files for Volto.
+    branches:
+      - main
     paths:
       - "docs/source/**"
       - .readthedocs.yaml
       - requirements-docs.txt
-      - "packages/registry/docs/**"
 
 permissions:
   pull-requests: write
