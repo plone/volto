@@ -47,7 +47,7 @@
 # Comment to be posted to welcome users when they open their first PR
 firstPRWelcomeComment: >
   > [!CAUTION]
-  > The Volto Team has suspended its review of new pull requests from first-time contributors until the release of Plone 7 in the second half of 2025.
+  > The Volto Team has suspended its review of new pull requests from first-time contributors until the [release of Plone 7](https://plone.org/download/release-schedule), which is preliminarily scheduled for the second quarter of 2026.
   > [Read details](https://6.docs.plone.org/volto/contributing/index.html).
   
   Thanks for submitting your first pull request! You are awesome! :hugs:

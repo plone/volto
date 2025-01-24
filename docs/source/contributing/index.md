@@ -12,7 +12,7 @@ myst:
 # Contributing to Volto
 
 ```{important}
-The Volto Team has suspended its review of new pull requests from first-time contributors until the release of Plone 7 in the second half of 2025.
+The Volto Team has suspended its review of new pull requests from first-time contributors until the [release of Plone 7](https://plone.org/download/release-schedule), which is preliminarily scheduled for the second quarter of 2026.
 This will allow the Volto Team to focus its efforts on delivering the next generation of Plone in a timely manner.
 
 The Plone community welcomes contributions to {doc}`Plone 6 Documentation <plone:contributing/documentation/index>` or other {doc}`Plone <plone:contributing/index>` packages.
