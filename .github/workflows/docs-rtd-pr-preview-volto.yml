@@ -10,6 +10,7 @@ on:
       - main
     paths:
       - "docs/source/**"
+      - "packages/volto/.storybook/**"
       - .readthedocs.yaml
       - requirements-docs.txt
 
