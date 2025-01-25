@@ -41,11 +41,28 @@ exports[`renders an align widget component > basic 1`] = `
                 <svg
                   class="icon"
                   style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <title>
                     Text Left
                   </title>
-                  undefined
+                  <g
+                    fill-rule="evenodd"
+                  >
+                    <polygon
+                      points="3 7 33 7 33 5 3 5"
+                    />
+                    <polygon
+                      points="3 15 27 15 27 13 3 13"
+                    />
+                    <polygon
+                      points="3 23 33 23 33 21 3 21"
+                    />
+                    <polygon
+                      points="3 31 21 31 21 29 3 29"
+                    />
+                  </g>
                 </svg>
               </button>
             </div>
@@ -59,11 +76,28 @@ exports[`renders an align widget component > basic 1`] = `
                 <svg
                   class="icon"
                   style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <title>
                     Text Right
                   </title>
-                  undefined
+                  <g
+                    fill-rule="evenodd"
+                  >
+                    <polygon
+                      points="3 7 33 7 33 5 3 5"
+                    />
+                    <polygon
+                      points="9 15 32.999 15 32.999 13 9 13"
+                    />
+                    <polygon
+                      points="3 23 33 23 33 21 3 21"
+                    />
+                    <polygon
+                      points="15 31 33 31 33 29 15 29"
+                    />
+                  </g>
                 </svg>
               </button>
             </div>
@@ -77,11 +111,28 @@ exports[`renders an align widget component > basic 1`] = `
                 <svg
                   class="icon"
                   style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <title>
                     Text Centered
                   </title>
-                  undefined
+                  <g
+                    fill-rule="evenodd"
+                  >
+                    <polygon
+                      points="3 7 33 7 33 5 3 5"
+                    />
+                    <polygon
+                      points="6 15 30 15 30 13 6 13"
+                    />
+                    <polygon
+                      points="3 23 33 23 33 21 3 21"
+                    />
+                    <polygon
+                      points="9 31 27 31 27 29 9 29"
+                    />
+                  </g>
                 </svg>
               </button>
             </div>
@@ -95,11 +146,28 @@ exports[`renders an align widget component > basic 1`] = `
                 <svg
                   class="icon"
                   style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <title>
                     Text Justified
                   </title>
-                  undefined
+                  <g
+                    fill-rule="evenodd"
+                  >
+                    <polygon
+                      points="3 7 33 7 33 5 3 5"
+                    />
+                    <polygon
+                      points="3 15 33 15 33 13 3 13"
+                    />
+                    <polygon
+                      points="3 23 33 23 33 21 3 21"
+                    />
+                    <polygon
+                      points="3 31 33 31 33 29 3 29"
+                    />
+                  </g>
                 </svg>
               </button>
             </div>
@@ -152,11 +220,26 @@ exports[`renders an align widget component > extended with actions and actionsIn
                 <svg
                   class="icon"
                   style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <title>
                     Additional action title
                   </title>
-                  undefined
+                  <g
+                    fill-rule="evenodd"
+                  >
+                    <path
+                      d="M3,7 L5,5 L5,25 L3,23 L33,23 L31,25 L31,5 L33,7 L3,7 Z M33,5 L33,25 L3,25 L3,5 L33,5 Z"
+                      fill-rule="nonzero"
+                    />
+                    <polygon
+                      points="7 31 29 31 29 29 7 29"
+                    />
+                    <polygon
+                      points="25.314 10.757 28.557 14 7.444 14 10.687 10.757 9.272 9.343 3.616 15 9.272 20.657 10.687 19.243 7.444 16 28.557 16 25.314 19.243 26.728 20.657 32.385 15 26.728 9.343"
+                    />
+                  </g>
                 </svg>
               </button>
             </div>

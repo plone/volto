@@ -19,7 +19,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
         className="icon"
         dangerouslySetInnerHTML={
           {
-            "__html": undefined,
+            "__html": "<polygon fill-rule="evenodd" points="31 17 8.414 17 18.707 6.707 17.293 5.293 4.586 18 17.293 30.707 18.707 29.293 8.414 19 31 19"/>",
           }
         }
         onClick={null}
@@ -30,6 +30,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             "width": "auto",
           }
         }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
     </button>
     <div

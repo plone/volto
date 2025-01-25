@@ -124,7 +124,7 @@ exports[`renders a token widget component 1`] = `
                   className="icon"
                   dangerouslySetInnerHTML={
                     {
-                      "__html": undefined,
+                      "__html": "<polygon fill-rule="evenodd" points="9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414"/>",
                     }
                   }
                   onClick={null}
@@ -135,6 +135,8 @@ exports[`renders a token widget component 1`] = `
                       "width": "auto",
                     }
                   }
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
                 />
               </div>
             </div>

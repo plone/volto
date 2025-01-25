@@ -72,7 +72,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                     className="icon"
                     dangerouslySetInnerHTML={
                       {
-                        "__html": undefined,
+                        "__html": "<g fill-rule="evenodd"><polygon points="23 7 33 7 33 5 23 5"/><path fill-rule="nonzero" d="M3,7 L5,5 L5,19 L3,17 L19,17 L17,19 L17,5 L19,7 L3,7 Z M19,5 L19,19 L3,19 L3,5 L19,5 Z"/><polygon points="23 13 33 13 33 11 23 11"/><polygon points="23 19 33 19 33 17 23 17"/><polygon points="3 31 33 31 33 29 3 29"/><polygon points="3 25 33 25 33 23 3 23"/></g>",
                       }
                     }
                     onClick={null}
@@ -83,6 +83,8 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                         "width": "auto",
                       }
                     }
+                    viewBox="0 0 36 36"
+                    xmlns="http://www.w3.org/2000/svg"
                   />
                 </button>
               </div>
@@ -99,7 +101,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                     className="icon"
                     dangerouslySetInnerHTML={
                       {
-                        "__html": undefined,
+                        "__html": "<g fill-rule="evenodd"><polygon points="3 7 13 7 13 5 3 5"/><path fill-rule="nonzero" d="M17,7 L19,5 L19,19 L17,17 L33,17 L31,19 L31,5 L33,7 L17,7 Z M33,5 L33,19 L17,19 L17,5 L33,5 Z"/><polygon points="3 13 13 13 13 11 3 11"/><polygon points="3 19 13 19 13 17 3 17"/><polygon points="3 31 33 31 33 29 3 29"/><polygon points="3 25 33 25 33 23 3 23"/></g>",
                       }
                     }
                     onClick={null}
@@ -110,6 +112,8 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                         "width": "auto",
                       }
                     }
+                    viewBox="0 0 36 36"
+                    xmlns="http://www.w3.org/2000/svg"
                   />
                 </button>
               </div>
@@ -126,7 +130,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                     className="icon"
                     dangerouslySetInnerHTML={
                       {
-                        "__html": undefined,
+                        "__html": "<g fill-rule="evenodd"><path fill-rule="nonzero" d="M7,13 L9,11 L9,25 L7,23 L29,23 L27,25 L27,11 L29,13 L7,13 Z M29,11 L29,25 L7,25 L7,11 L29,11 Z"/><polygon points="7 31 29 31 29 29 7 29"/><polygon points="7 7 29 7 29 5 7 5"/></g>",
                       }
                     }
                     onClick={null}
@@ -137,6 +141,8 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                         "width": "auto",
                       }
                     }
+                    viewBox="0 0 36 36"
+                    xmlns="http://www.w3.org/2000/svg"
                   />
                 </button>
               </div>
@@ -153,7 +159,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                     className="icon"
                     dangerouslySetInnerHTML={
                       {
-                        "__html": undefined,
+                        "__html": "<g fill-rule="evenodd"><path fill-rule="nonzero" d="M3,7 L5,5 L5,25 L3,23 L33,23 L31,25 L31,5 L33,7 L3,7 Z M33,5 L33,25 L3,25 L3,5 L33,5 Z"/><polygon points="7 31 29 31 29 29 7 29"/><polygon points="25.314 10.757 28.557 14 7.444 14 10.687 10.757 9.272 9.343 3.616 15 9.272 20.657 10.687 19.243 7.444 16 28.557 16 25.314 19.243 26.728 20.657 32.385 15 26.728 9.343"/></g>",
                       }
                     }
                     onClick={null}
@@ -164,6 +170,8 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                         "width": "auto",
                       }
                     }
+                    viewBox="0 0 36 36"
+                    xmlns="http://www.w3.org/2000/svg"
                   />
                 </button>
               </div>
@@ -185,7 +193,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
         className="icon"
         dangerouslySetInnerHTML={
           {
-            "__html": undefined,
+            "__html": "<polygon fill-rule="evenodd" points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"/>",
           }
         }
         onClick={null}
@@ -196,6 +204,8 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
             "width": "auto",
           }
         }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
     </div>
     <div

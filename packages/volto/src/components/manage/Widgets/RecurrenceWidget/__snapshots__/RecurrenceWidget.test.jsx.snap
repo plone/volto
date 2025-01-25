@@ -253,3 +253,261 @@ exports[`renders a recurrence widget component with aligned columns 1`] = `
   </div>
 </div>
 `;
+
+exports[`renders a recurrence widget component with aligned columns 2`] = `
+<div
+  className="inline field recurrence-widget"
+  id="field-my-field"
+>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="stretched middle aligned row"
+    >
+      <div
+        className="four wide column"
+      >
+        <div
+          className="wrapper"
+        >
+          <label
+            htmlFor="field-my-field"
+          >
+            My field
+          </label>
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
+        <div
+          className="ui label"
+          onClick={[Function]}
+        >
+          every day until March 24, 2020
+        </div>
+        <div
+          className="ui segment"
+        >
+          <div
+            className="occurences"
+          >
+            <div
+              className="ui divided middle aligned list"
+              role="list"
+            >
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Wednesday, March 11, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Thursday, March 12, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Friday, March 13, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Saturday, March 14, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Sunday, March 15, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Monday, March 16, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Tuesday, March 17, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Wednesday, March 18, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Thursday, March 19, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Friday, March 20, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Saturday, March 21, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Sunday, March 22, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Monday, March 23, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Tuesday, March 24, 2020
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button
+            aria-label="Edit recurrence"
+            className="ui blue basic button edit-recurrence"
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              className="icon"
+              dangerouslySetInnerHTML={
+                {
+                  "__html": "<title>Edit recurrence</title><g fill-rule="evenodd"><path d="M29.082,8.8701 L27.946,10.0061 L26.178,8.2381 L27.314,7.1021 L29.082,8.8701 Z M15.91,21.7981 L14.111,22.3351 L13.771,21.9951 L14.368,20.2551 L15.91,21.7981 Z M23.928,10.4881 L24.764,9.6521 L26.532,11.4201 L25.696,12.2561 L23.928,10.4881 Z M24.282,13.6701 L17.447,20.5061 L15.678,18.7371 L22.514,11.9021 L24.282,13.6701 Z M10.45,25.5141 L17.316,23.4651 L30.673,10.1071 C31.355,9.4251 31.355,8.3151 30.673,7.6331 L28.552,5.5121 C27.891,4.8501 26.738,4.8491 26.077,5.5121 L12.735,18.8531 L10.45,25.5141 Z"/><polygon points="29 29 7 29 7 7 22 7 22 5 5 5 5 31 31 31 31 14 29 14"/></g>",
+                }
+              }
+              onClick={null}
+              style={
+                {
+                  "fill": "currentColor",
+                  "height": "20px",
+                  "width": "auto",
+                }
+              }
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </button>
+          <button
+            aria-label="Remove"
+            className="ui pink basic button remove-recurrence"
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              className="icon"
+              dangerouslySetInnerHTML={
+                {
+                  "__html": "<title>Remove</title><g fill-rule="evenodd"><path d="M27,30 C27,30.552 26.551,31 26,31 L12,31 C11.449,31 11,30.552 11,30 L11,9 L27,9 L27,30 Z M19,5 C20.103,5 21,5.897 21,7 L17,7 C17,5.897 17.897,5 19,5 L19,5 Z M31,7 L23,7 C23,4.794 21.206,3 19,3 C16.794,3 15,4.794 15,7 L7,7 L7,9 L9,9 L9,30 C9,31.654 10.346,33 12,33 L26,33 C27.654,33 29,31.654 29,30 L29,9 L31,9 L31,7 Z"/><polygon points="15 28 17 28 17 12 15 12"/><polygon points="21 28 23 28 23 12 21 12"/></g>",
+                }
+              }
+              onClick={null}
+              style={
+                {
+                  "fill": "currentColor",
+                  "height": "20px",
+                  "width": "auto",
+                }
+              }
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

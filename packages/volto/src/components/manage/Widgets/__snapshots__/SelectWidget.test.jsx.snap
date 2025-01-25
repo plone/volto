@@ -94,7 +94,14 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   <svg
                     class="icon"
                     style="height: 18px; width: auto; fill: #e40166;"
-                  />
+                    viewBox="0 0 36 36"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <polygon
+                      fill-rule="evenodd"
+                      points="27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18"
+                    />
+                  </svg>
                 </div>
                 <span
                   class="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
@@ -106,7 +113,14 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   <svg
                     class="icon"
                     style="height: 24px; width: auto; fill: #007bc1;"
-                  />
+                    viewBox="0 0 36 36"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <polygon
+                      fill-rule="evenodd"
+                      points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
+                    />
+                  </svg>
                 </div>
               </div>
             </div>
@@ -127,7 +141,20 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   <svg
                     class="icon"
                     style="height: 20px; width: auto; fill: #007bc1;"
-                  />
+                    viewBox="0 0 36 36"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g
+                      fill-rule="evenodd"
+                    >
+                      <polygon
+                        points="29 8 13.561 23.439 7.121 17 5 19.12 13.561 27.681 31.12 10.12"
+                      />
+                      <polygon
+                        points="29 8 13.561 23.439 7.121 17 5 19.12 13.561 27.681 31.12 10.12"
+                      />
+                    </g>
+                  </svg>
                 </div>
                 <div
                   class="react-select__option css-4khget-option"
@@ -140,7 +167,21 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   <svg
                     class="icon"
                     style="height: 20px; width: auto; fill: #007bc1;"
-                  />
+                    viewBox="0 0 36 36"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g
+                      fill-opacity="0"
+                      fill-rule="evenodd"
+                    >
+                      <polygon
+                        points="29 8 13.561 23.439 7.121 17 5 19.12 13.561 27.681 31.12 10.12"
+                      />
+                      <polygon
+                        points="29 8 13.561 23.439 7.121 17 5 19.12 13.561 27.681 31.12 10.12"
+                      />
+                    </g>
+                  </svg>
                 </div>
               </div>
             </div>
@@ -245,7 +286,14 @@ exports[`renders a select widget component 1`] = `
                   <svg
                     class="icon"
                     style="height: 24px; width: auto; fill: #007bc1;"
-                  />
+                    viewBox="0 0 36 36"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <polygon
+                      fill-rule="evenodd"
+                      points="9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414"
+                    />
+                  </svg>
                 </div>
               </div>
             </div>
