@@ -2871,6 +2871,11 @@ msgstr "Rekisteröidy"
 msgid "Registration form"
 msgstr "Rekisteröitymislomake"
 
+#. Default: "Related Items"
+#: components/theme/RelatedItems/RelatedItems
+msgid "Related Items"
+msgstr ""
+
 #. Default: "Relation"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 #: helpers/MessageLabels/MessageLabels

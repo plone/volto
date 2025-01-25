@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Related Items renders with related items 1`] = `
+<div
+  className="ui container related-items"
+>
+  <h2>
+    Related Items
+  </h2>
+  <ul>
+    <li>
+      <a
+        className={null}
+        href="/test-1"
+        onClick={[Function]}
+        target={null}
+        title={null}
+      >
+        Title 1
+      </a>
+    </li>
+    <li>
+      <a
+        className={null}
+        href="/test-2"
+        onClick={[Function]}
+        target={null}
+        title={null}
+      >
+        Title 2
+      </a>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Related Items renders with related items has null 1`] = `
+<div
+  className="ui container related-items"
+>
+  <h2>
+    Related Items
+  </h2>
+  <ul>
+    <li>
+      <a
+        className={null}
+        href="/test-1"
+        onClick={[Function]}
+        target={null}
+        title={null}
+      >
+        Title 1
+      </a>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Related Items renders without related items 1`] = `null`;

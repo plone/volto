@@ -141,6 +141,7 @@ let config = {
     serverConfig,
     storeExtenders: [],
     showTags: true,
+    showRelatedItems: false,
     controlpanels: [],
     controlPanelsIcons,
     filterControlPanels,

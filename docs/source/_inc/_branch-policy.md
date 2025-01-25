@@ -13,6 +13,13 @@ canary
     During the development process, a canary release will be cut from the `main` branch.
     When it becomes worthy of a beta or release candidate version, a new numbered branch should be cut, and non-breaking changes must be merged into it.
 
+legacy
+:   The term _legacy_ refers to a version that is no longer supported or actively maintained.
+    They are the versions between official Plone minor releases.
+    You should update to minor Plone releases as soon as possible.
+    Legacy versions won't receive any new features.
+    They might receive occasional bug fixes or security updates, subject to approval from the Volto Team.
+
 `main`
 :   This is the bleeding edge branch in git.
     It is the branch upon which future development occurs, and from which future releases shall be cut.
@@ -31,10 +38,18 @@ canary
 
     If the pull request is a feature or a bugfix, and if the release manager deems it useful to the latest version's branch, they may ask you to backport it to that branch.
 
-`17.x.x`
-:   `17.x.x` is the current stable and actively developed branch in git.
-    Upon the final release of version `18.0.0`, the `17.x.x` branch line will be no longer supported.
+`18.x.x`
+:   `18.x.x` is the current stable and actively developed branch in git.
+    This version of Volto has the [same maintenance and support schedule as Plone 6.1](https://plone.org/download/release-schedule).
     Any new feature will be merged into the `main` branch, and only backported to and released in older versions, if the Volto Team approves it.
+
+`17.x.x`
+:   `17.x.x` is no longer supported and became _legacy_ (see above definition) when Volto 18 was released.
+    You should upgrade to the latest released version of Volto 18.
+    You can use Cookieplone to generate a new Volto 18 project, then copy-paste over the relevant parts from your existing project into the new one.
+    See {ref}`volto-upgrade-guide-18.x.x`.
+    If you need a bug fix, please create an issue to discuss with the Volto Team.
+    For security issues, please contact the Plone Security Team by sending email to security@plone.org.
 
 `16.x.x`
 :   This version of Volto has the [same maintenance and support schedule as Plone 6.0](https://plone.org/download/release-schedule).
