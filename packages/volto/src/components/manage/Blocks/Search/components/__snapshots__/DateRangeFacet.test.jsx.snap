@@ -88,7 +88,14 @@ exports[`DateRangeFacet > renders a facet component with a date range widget 1`]
                 <svg
                   class="icon close"
                   style="height: 24px; width: auto; fill: currentColor;"
-                />
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polygon
+                    fill-rule="evenodd"
+                    points="27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18"
+                  />
+                </svg>
               </button>
             </div>
           </div>

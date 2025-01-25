@@ -72,7 +72,20 @@ exports[`AddonsControlpanel > renders an addon control component 1`] = `
                 <svg
                   class="icon accordionToggle Something Else"
                   style="height: 23px; width: auto; fill: currentColor;"
-                />
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g
+                    fill-rule="evenodd"
+                  >
+                    <path
+                      d="M31,18 C31,10.832 25.168,5 18,5 C10.832,5 5,10.832 5,18 C5,25.168 10.832,31 18,31 C25.168,31 31,25.168 31,18 M3,18 C3,9.729 9.729,3 18,3 C26.271,3 33,9.729 33,18 C33,26.271 26.271,33 18,33 C9.729,33 3,26.271 3,18"
+                    />
+                    <polygon
+                      points="11.293 16.707 12.707 15.293 18 20.586 23.293 15.293 24.707 16.707 18 23.414"
+                    />
+                  </g>
+                </svg>
               </div>
               <div
                 class="content"
@@ -139,7 +152,20 @@ exports[`AddonsControlpanel > renders an addon control component 1`] = `
                 <svg
                   class="icon accordionToggle Whatever"
                   style="height: 24px; width: auto; fill: #878f93;"
-                />
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g
+                    fill-rule="evenodd"
+                  >
+                    <path
+                      d="M31,18 C31,10.832 25.168,5 18,5 C10.832,5 5,10.832 5,18 C5,25.168 10.832,31 18,31 C25.168,31 31,25.168 31,18 M3,18 C3,9.729 9.729,3 18,3 C26.271,3 33,9.729 33,18 C33,26.271 26.271,33 18,33 C9.729,33 3,26.271 3,18"
+                    />
+                    <polygon
+                      points="11.293 16.707 12.707 15.293 18 20.586 23.293 15.293 24.707 16.707 18 23.414"
+                    />
+                  </g>
+                </svg>
               </div>
               <div
                 class="content"

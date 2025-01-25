@@ -37,7 +37,7 @@ exports[`Form > renders a form component 1`] = `
               className="icon circled"
               dangerouslySetInnerHTML={
                 {
-                  "__html": undefined,
+                  "__html": "<polygon fill-rule="evenodd" points="18.707 5.293 17.293 6.707 27.586 17 5 17 5 19 27.586 19 17.293 29.293 18.707 30.707 31.414 18"/>",
                 }
               }
               onClick={null}
@@ -48,6 +48,8 @@ exports[`Form > renders a form component 1`] = `
                   "width": "auto",
                 }
               }
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
             />
           </button>
           <button
@@ -61,7 +63,7 @@ exports[`Form > renders a form component 1`] = `
               className="icon circled"
               dangerouslySetInnerHTML={
                 {
-                  "__html": undefined,
+                  "__html": "<polygon fill-rule="evenodd" points="27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18"/>",
                 }
               }
               onClick={null}
@@ -72,6 +74,8 @@ exports[`Form > renders a form component 1`] = `
                   "width": "auto",
                 }
               }
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
             />
           </button>
         </div>
