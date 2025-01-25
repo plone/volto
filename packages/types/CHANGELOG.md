@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.3.0 (2025-01-24)
+
+### Feature
+
+- Added typings for the route registry. @sneridagh [#6600](https://github.com/plone/volto/issues/6600)
+
 ## 1.2.0 (2024-12-17)
 
 ### Feature

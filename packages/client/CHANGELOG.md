@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.22 (2025-01-24)
+
+### Documentation
+
+- Fix typo in README. @sneridagh [#6599](https://github.com/plone/volto/pull/6599)
+
 ## 1.0.0-alpha.21 (2025-01-15)
 
 ### Feature

@@ -43,6 +43,7 @@ export class ObjectBrowserWidgetComponent extends React.Component<any, any, any>
     state: {
         manualLinkInput: string;
         validURL: boolean;
+        errors: any[];
     };
     selectedItemsRef: React.RefObject<any>;
     placeholderRef: React.RefObject<any>;
