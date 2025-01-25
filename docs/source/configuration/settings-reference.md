@@ -177,6 +177,11 @@ contentMetadataTagsImageField
     The OpenGraph image that will represent this content item, will be used in the metadata HEAD tag as og:image for SEO purposes. Defaults to image. See the OpenGraph Protocol for more details.
 
 hasWorkingCopySupport
+    ```{deprecated} Volto 18
+
+    This setting is no longer used. Working copy support is now based on whether the `plone.app.iterate` add-on is installed in the backend.
+    ```
+
     This setting will enable working copy support in your site. You need to install the `plone.app.iterate` add-on in your Plone site in order to make it working.
 
 controlpanels
