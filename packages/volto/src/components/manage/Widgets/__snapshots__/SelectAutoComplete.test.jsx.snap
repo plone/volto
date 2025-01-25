@@ -87,7 +87,14 @@ exports[`renders a select widget component 1`] = `
                   <svg
                     class="icon"
                     style="height: 24px; width: auto; fill: #007bc1;"
-                  />
+                    viewBox="0 0 36 36"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <polygon
+                      fill-rule="evenodd"
+                      points="9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414"
+                    />
+                  </svg>
                 </div>
               </div>
             </div>

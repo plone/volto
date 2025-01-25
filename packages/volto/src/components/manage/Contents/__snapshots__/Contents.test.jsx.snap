@@ -51,7 +51,20 @@ exports[`Contents > renders a folder contents view component 1`] = `
                     <svg
                       class="icon upload"
                       style="height: 24px; width: auto; fill: #007eb1;"
-                    />
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g
+                        fill-rule="evenodd"
+                      >
+                        <polygon
+                          points="12.293 22.293 13.707 23.707 17 20.414 17 31 19 31 19 20.414 22.293 23.707 23.707 22.293 18 16.586"
+                        />
+                        <path
+                          d="M28.9707,15.6641 C28.9907,15.4401 28.9997,15.2191 28.9997,15.0001 C28.9997,10.5891 25.4107,7.0001 20.9997,7.0001 C17.9547,7.0001 15.2217,8.7151 13.8727,11.3711 C13.2807,11.1261 12.6477,11.0001 11.9997,11.0001 C9.3517,11.0001 7.1777,13.0691 7.0107,15.6761 C4.5837,16.8221 2.9997,19.2771 2.9997,22.0001 C2.9997,25.8591 6.1407,29.0001 9.9997,29.0001 L11.9997,29.0001 L11.9997,27.0001 L9.9997,27.0001 C7.2427,27.0001 4.9997,24.7571 4.9997,22.0001 C4.9997,19.8761 6.3517,17.9791 8.3627,17.2801 L9.0977,17.0251 L8.9997,16.0001 C8.9997,14.3461 10.3457,13.0001 11.9997,13.0001 C12.6307,13.0001 13.2427,13.2051 13.7697,13.5931 L14.8757,14.4071 L15.3107,13.1031 C16.1287,10.6491 18.4147,9.0001 20.9997,9.0001 C24.3087,9.0001 26.9997,11.6911 26.9997,15.0001 C26.9997,15.3601 26.9637,15.7361 26.8917,16.1161 L26.7287,16.9781 L27.5617,17.2531 C29.6177,17.9301 30.9997,19.8371 30.9997,22.0001 C30.9997,24.7571 28.7567,27.0001 25.9997,27.0001 L23.9997,27.0001 L23.9997,29.0001 L25.9997,29.0001 C29.8597,29.0001 32.9997,25.8591 32.9997,22.0001 C32.9997,19.2551 31.4107,16.8041 28.9707,15.6641"
+                        />
+                      </g>
+                    </svg>
                   </button>
                 </div>
                 <div
@@ -64,7 +77,17 @@ exports[`Contents > renders a folder contents view component 1`] = `
                     <svg
                       class="icon rename"
                       style="height: 24px; width: auto; fill: grey;"
-                    />
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g
+                        fill-rule="evenodd"
+                      >
+                        <path
+                          d="M11.1667 19L14.0837 9 14.2497 9 17.1667 19 11.1667 19zM15.7497 7L12.5837 7 6.7497 27 4.9997 27 4.9997 29 9.9997 29 9.9997 27 8.8337 27 10.5837 21 17.7497 21 19.4997 27 17.9997 27 17.9997 29 22.9997 29 22.9997 27 21.5837 27 15.7497 7zM31 7L31 5C29.8 5 28.734 5.542 28 6.382 27.266 5.542 26.2 5 25 5L25 7C26.103 7 27 7.897 27 9L27 27C27 28.103 26.103 29 25 29L25 31C26.2 31 27.266 30.458 28 29.618 28.734 30.458 29.8 31 31 31L31 29C29.897 29 29 28.103 29 27L29 9C29 7.897 29.897 7 31 7"
+                        />
+                      </g>
+                    </svg>
                   </button>
                   <button
                     aria-label="State"
@@ -73,7 +96,20 @@ exports[`Contents > renders a folder contents view component 1`] = `
                     <svg
                       class="icon semaphore"
                       style="height: 24px; width: auto; fill: grey;"
-                    />
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g
+                        fill-rule="evenodd"
+                      >
+                        <path
+                          d="M18 11C17.449 11 17 10.552 17 10 17 9.448 17.449 9 18 9 18.551 9 19 9.448 19 10 19 10.552 18.551 11 18 11M18 7C16.346 7 15 8.346 15 10 15 11.654 16.346 13 18 13 19.654 13 21 11.654 21 10 21 8.346 19.654 7 18 7M18 19C17.449 19 17 18.552 17 18 17 17.448 17.449 17 18 17 18.551 17 19 17.448 19 18 19 18.552 18.551 19 18 19M18 15C16.346 15 15 16.346 15 18 15 19.654 16.346 21 18 21 19.654 21 21 19.654 21 18 21 16.346 19.654 15 18 15"
+                        />
+                        <path
+                          d="M23,22 C23,22.552 22.551,23 22,23 L14,23 C13.449,23 13,22.552 13,22 L13,6 C13,5.448 13.449,5 14,5 L22,5 C22.551,5 23,5.448 23,6 L23,22 Z M27,11 L27,9 L25,9 L25,6 C25,4.346 23.654,3 22,3 L14,3 C12.346,3 11,4.346 11,6 L11,9 L9,9 L9,11 L11,11 L11,17 L9,17 L9,19 L11,19 L11,22 C11,23.654 12.346,25 14,25 L17,25 L17,31 L13,31 L13,33 L23,33 L23,31 L19,31 L19,25 L22,25 C23.654,25 25,23.654 25,22 L25,19 L27,19 L27,17 L25,17 L25,11 L27,11 Z"
+                        />
+                      </g>
+                    </svg>
                   </button>
                   <button
                     aria-label="Tags"
@@ -82,7 +118,20 @@ exports[`Contents > renders a folder contents view component 1`] = `
                     <svg
                       class="icon tag"
                       style="height: 24px; width: auto; fill: grey;"
-                    />
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g
+                        fill-rule="evenodd"
+                      >
+                        <path
+                          d="M19.0596,7 C18.7926,7 18.5416,7.104 18.3536,7.292 L6.9346,18.691 C6.7446,18.881 6.6406,19.134 6.6416,19.403 C6.6426,19.672 6.7496,19.925 6.9416,20.113 L15.6346,28.626 C16.0126,28.996 16.6616,28.995 17.0356,28.624 L28.7016,17.143 C28.8916,16.956 28.9996,16.696 28.9996,16.43 L28.9996,8 C28.9996,7.448 28.5516,7 27.9996,7 L19.0596,7 Z M16.3336,30.911 C15.5446,30.911 14.7996,30.607 14.2356,30.056 L5.5426,21.542 C4.9656,20.977 4.6456,20.22 4.6416,19.412 C4.6386,18.604 4.9506,17.846 5.5216,17.275 L16.9396,5.877 C17.5056,5.312 18.2586,5 19.0596,5 L27.9996,5 C29.6546,5 30.9996,6.346 30.9996,8 L30.9996,16.43 C30.9996,17.229 30.6736,18.008 30.1046,18.568 L18.4386,30.05 C17.8736,30.605 17.1266,30.911 16.3336,30.911 L16.3336,30.911 Z"
+                        />
+                        <path
+                          d="M24,11 C23.449,11 23,11.448 23,12 C23,12.552 23.449,13 24,13 C24.551,13 25,12.552 25,12 C25,11.448 24.551,11 24,11 M24,15 C22.346,15 21,13.654 21,12 C21,10.346 22.346,9 24,9 C25.654,9 27,10.346 27,12 C27,13.654 25.654,15 24,15"
+                        />
+                      </g>
+                    </svg>
                   </button>
                   <button
                     aria-label="Properties"
@@ -91,7 +140,32 @@ exports[`Contents > renders a folder contents view component 1`] = `
                     <svg
                       class="icon properties"
                       style="height: 24px; width: auto; fill: grey;"
-                    />
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g
+                        fill-rule="evenodd"
+                      >
+                        <polygon
+                          points="14 11 29 11 29 9 14 9"
+                        />
+                        <polygon
+                          points="14 19 29 19 29 17 14 17"
+                        />
+                        <polygon
+                          points="14 27 29 27 29 25 14 25"
+                        />
+                        <polygon
+                          points="8 20.414 5.293 17.707 6.707 16.293 8 17.586 11.293 14.293 12.707 15.707"
+                        />
+                        <polygon
+                          points="8 12.414 5.293 9.707 6.707 8.293 8 9.586 11.293 6.293 12.707 7.707"
+                        />
+                        <polygon
+                          points="8 28.414 5.293 25.707 6.707 24.293 8 25.586 11.293 22.293 12.707 23.707"
+                        />
+                      </g>
+                    </svg>
                   </button>
                 </div>
                 <div
@@ -104,7 +178,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                     <svg
                       class="icon cut"
                       style="height: 24px; width: auto; fill: grey;"
-                    />
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M26,29 C24.346,29 23,27.654 23,26 C23,24.346 24.346,23 26,23 C27.654,23 29,24.346 29,26 C29,27.654 27.654,29 26,29 M10,29 C8.346,29 7,27.654 7,26 C7,24.346 8.346,23 10,23 C11.654,23 13,24.346 13,26 C13,27.654 11.654,29 10,29 M26,21 C24.983,21 24.038,21.309 23.247,21.833 L19.414,18 L29.707,7.707 L28.293,6.293 L18,16.586 L7.707,6.293 L6.293,7.707 L16.586,18 L12.753,21.833 C11.962,21.309 11.017,21 10,21 C7.243,21 5,23.243 5,26 C5,28.757 7.243,31 10,31 C12.757,31 15,28.757 15,26 C15,24.983 14.691,24.038 14.167,23.247 L18,19.414 L21.833,23.247 C21.309,24.038 21,24.983 21,26 C21,28.757 23.243,31 26,31 C28.757,31 31,28.757 31,26 C31,23.243 28.757,21 26,21"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
                   </button>
                   <button
                     aria-label="Copy"
@@ -113,7 +194,20 @@ exports[`Contents > renders a folder contents view component 1`] = `
                     <svg
                       class="icon copy"
                       style="height: 24px; width: auto; fill: grey;"
-                    />
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g
+                        fill-rule="evenodd"
+                      >
+                        <path
+                          d="M14.9997,3.0003 L14.9997,7.0003 L17.0007,7.0003 L17.0007,5.0003 L24.9997,5.0003 L24.9997,11.0003 L30.9997,11.0003 L30.9997,25.0003 L24.9997,25.0003 L24.9997,26.9993 L32.9997,26.9993 L32.9997,9.5853 L26.4147,3.0003 L14.9997,3.0003 Z M27.0007,6.4143 L29.5857,8.9993 L27.0007,8.9993 L27.0007,6.4143 Z"
+                        />
+                        <path
+                          d="M4.9998,8.9997 L4.9998,32.9997 L22.9998,32.9997 L22.9998,15.5857 L16.4148,8.9997 L4.9998,8.9997 Z M6.9998,11.0007 L14.9998,11.0007 L14.9998,16.9997 L20.9998,16.9997 L20.9998,31.0007 L6.9998,31.0007 L6.9998,11.0007 Z M17.0008,12.4147 L19.5858,14.9997 L17.0008,14.9997 L17.0008,12.4147 Z"
+                        />
+                      </g>
+                    </svg>
                   </button>
                   <button
                     aria-label="Paste"
@@ -122,7 +216,20 @@ exports[`Contents > renders a folder contents view component 1`] = `
                     <svg
                       class="icon paste"
                       style="height: 24px; width: auto; fill: grey;"
-                    />
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g
+                        fill-rule="evenodd"
+                      >
+                        <polygon
+                          points="25 7 25 9 27.001 9 27.001 31 9.001 31 9.001 9 11.001 9 11.001 7 7 7 7 33 29.001 33 29.001 7"
+                        />
+                        <path
+                          d="M21,9 L15,9 L15,7 L17,7 L17,6 C17,5.448 17.448,5 18,5 C18.552,5 19,5.448 19,6 L19,7 L21,7 L21,9 Z M23,5 L20.829,5 C20.416,3.836 19.304,3 18,3 C16.696,3 15.584,3.836 15.171,5 L13,5 L13,11 L23,11 L23,5 Z"
+                        />
+                      </g>
+                    </svg>
                   </button>
                   <button
                     aria-label="Delete"
@@ -131,7 +238,23 @@ exports[`Contents > renders a folder contents view component 1`] = `
                     <svg
                       class="icon delete"
                       style="height: 24px; width: auto; fill: grey;"
-                    />
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g
+                        fill-rule="evenodd"
+                      >
+                        <path
+                          d="M27,30 C27,30.552 26.551,31 26,31 L12,31 C11.449,31 11,30.552 11,30 L11,9 L27,9 L27,30 Z M19,5 C20.103,5 21,5.897 21,7 L17,7 C17,5.897 17.897,5 19,5 L19,5 Z M31,7 L23,7 C23,4.794 21.206,3 19,3 C16.794,3 15,4.794 15,7 L7,7 L7,9 L9,9 L9,30 C9,31.654 10.346,33 12,33 L26,33 C27.654,33 29,31.654 29,30 L29,9 L31,9 L31,7 Z"
+                        />
+                        <polygon
+                          points="15 28 17 28 17 12 15 12"
+                        />
+                        <polygon
+                          points="21 28 23 28 23 12 21 12"
+                        />
+                      </g>
+                    </svg>
                   </button>
                 </div>
                 <div
@@ -152,7 +275,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                     <svg
                       class="icon zoom"
                       style="height: 30px; width: auto; fill: #007eb1; flex-shrink: 0;"
-                    />
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7,16 C7,11.038 11.037,7 16,7 C20.963,7 25,11.038 25,16 C25,20.962 20.963,25 16,25 C11.037,25 7,20.962 7,16 L7,16 Z M32.707,31.293 L24.448,23.034 C26.039,21.125 27,18.673 27,16 C27,9.935 22.065,5 16,5 C9.935,5 5,9.935 5,16 C5,22.065 9.935,27 16,27 C18.673,27 21.125,26.039 23.034,24.448 L31.293,32.707 L32.707,31.293 Z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
                     <div
                       class="results"
                     />
@@ -192,7 +322,17 @@ exports[`Contents > renders a folder contents view component 1`] = `
                   <svg
                     class="icon"
                     style="height: 24px; width: auto; fill: #826a6a;"
-                  />
+                    viewBox="0 0 36 36"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g
+                      fill-rule="evenodd"
+                    >
+                      <path
+                        d="M8 16C6.897 16 6 16.897 6 18 6 19.103 6.897 20 8 20 9.103 20 10 19.103 10 18 10 16.897 9.103 16 8 16M8 22C5.794 22 4 20.206 4 18 4 15.794 5.794 14 8 14 10.206 14 12 15.794 12 18 12 20.206 10.206 22 8 22M18 16C16.897 16 16 16.897 16 18 16 19.103 16.897 20 18 20 19.103 20 20 19.103 20 18 20 16.897 19.103 16 18 16M18 22C15.794 22 14 20.206 14 18 14 15.794 15.794 14 18 14 20.206 14 22 15.794 22 18 22 20.206 20.206 22 18 22M28 16C26.897 16 26 16.897 26 18 26 19.103 26.897 20 28 20 29.103 20 30 19.103 30 18 30 16.897 29.103 16 28 16M28 22C25.794 22 24 20.206 24 18 24 15.794 25.794 14 28 14 30.206 14 32 15.794 32 18 32 20.206 30.206 22 28 22"
+                      />
+                    </g>
+                  </svg>
                   <div
                     class="menu transition left"
                   >
@@ -211,7 +351,20 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Review state"
                           style="height: 24px; width: auto; fill: #007eb1;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g
+                            fill-rule="evenodd"
+                          >
+                            <path
+                              d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            />
+                            <polygon
+                              points="15 24.414 9.293 18.707 10.707 17.293 15 21.586 25.293 11.293 26.707 12.707"
+                            />
+                          </g>
+                        </svg>
                         <span>
                            
                           Review state
@@ -224,7 +377,20 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Last modified"
                           style="height: 24px; width: auto; fill: #007eb1;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g
+                            fill-rule="evenodd"
+                          >
+                            <path
+                              d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            />
+                            <polygon
+                              points="15 24.414 9.293 18.707 10.707 17.293 15 21.586 25.293 11.293 26.707 12.707"
+                            />
+                          </g>
+                        </svg>
                         <span>
                            
                           Last modified
@@ -237,7 +403,20 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Publication date"
                           style="height: 24px; width: auto; fill: #007eb1;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g
+                            fill-rule="evenodd"
+                          >
+                            <path
+                              d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            />
+                            <polygon
+                              points="15 24.414 9.293 18.707 10.707 17.293 15 21.586 25.293 11.293 26.707 12.707"
+                            />
+                          </g>
+                        </svg>
                         <span>
                            
                           Publication date
@@ -250,7 +429,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon ID"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           ID
@@ -263,7 +449,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Expiration date"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           Expiration date
@@ -276,7 +469,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Created on"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           Created on
@@ -289,7 +489,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Tags"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           Tags
@@ -302,7 +509,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Type"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           Type
@@ -315,7 +529,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Folder"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           Folder
@@ -328,7 +549,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Excluded from navigation"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           Excluded from navigation
@@ -341,7 +569,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Object Size"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           Object Size
@@ -354,7 +589,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Last comment date"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           Last comment date
@@ -367,7 +609,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Total comments"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           Total comments
@@ -380,7 +629,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon End Date"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           End Date
@@ -393,7 +649,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Description"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           Description
@@ -406,7 +669,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Creator"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           Creator
@@ -419,7 +689,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Location"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           Location
@@ -432,7 +709,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon UID"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           UID
@@ -445,7 +729,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Start Date"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           Start Date
@@ -458,7 +749,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon Type"
                           style="height: 24px; width: auto; fill: currentColor;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                         <span>
                            
                           Type
@@ -486,7 +784,89 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon dropdown-popup-trigger configuration-svg"
                           style="height: 24px; width: auto; fill: #826a6a;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g
+                            fill-rule="evenodd"
+                          >
+                            <polygon
+                              points="29 31 31 31 31 29 29 29"
+                            />
+                            <polygon
+                              points="17 31 19 31 19 29 17 29"
+                            />
+                            <polygon
+                              points="25 31 27 31 27 29 25 29"
+                            />
+                            <polygon
+                              points="21 31 23 31 23 29 21 29"
+                            />
+                            <polygon
+                              points="13 31 15 31 15 29 13 29"
+                            />
+                            <polygon
+                              points="9 31 11 31 11 29 9 29"
+                            />
+                            <polygon
+                              points="5 31 7 31 7 29 5 29"
+                            />
+                            <polygon
+                              points="5 19 7 19 7 17 5 17"
+                            />
+                            <polygon
+                              points="5 11 7 11 7 9 5 9"
+                            />
+                            <polygon
+                              points="5 27 7 27 7 25 5 25"
+                            />
+                            <polygon
+                              points="5 15 7 15 7 13 5 13"
+                            />
+                            <polygon
+                              points="5 23 7 23 7 21 5 21"
+                            />
+                            <polygon
+                              points="5 7 7 7 7 5 5 5"
+                            />
+                            <polygon
+                              points="21 7 23 7 23 5 21 5"
+                            />
+                            <polygon
+                              points="9 7 11 7 11 5 9 5"
+                            />
+                            <polygon
+                              points="13 7 15 7 15 5 13 5"
+                            />
+                            <polygon
+                              points="17 7 19 7 19 5 17 5"
+                            />
+                            <polygon
+                              points="25 7 27 7 27 5 25 5"
+                            />
+                            <polygon
+                              points="29 7 31 7 31 5 29 5"
+                            />
+                            <polygon
+                              points="29 11 31 11 31 9 29 9"
+                            />
+                            <polygon
+                              points="29 19 31 19 31 17 29 17"
+                            />
+                            <polygon
+                              points="29 15 31 15 31 13 29 13"
+                            />
+                            <polygon
+                              points="29 27 31 27 31 25 29 25"
+                            />
+                            <polygon
+                              points="29 23 31 23 31 21 29 21"
+                            />
+                            <path
+                              d="M18,21 C16.346,21 15,19.654 15,18 C15,16.346 16.346,15 18,15 C19.654,15 21,16.346 21,18 C21,19.654 19.654,21 18,21 M22.899,19 L25,19 L25,17 L22.899,17 C22.769,16.363 22.515,15.772 22.167,15.247 L23.657,13.757 L22.243,12.343 L20.753,13.833 C20.229,13.485 19.637,13.231 19,13.101 L19,11 L17,11 L17,13.101 C16.363,13.231 15.771,13.485 15.247,13.833 L13.757,12.343 L12.343,13.757 L13.833,15.247 C13.485,15.772 13.231,16.363 13.101,17 L11,17 L11,19 L13.101,19 C13.231,19.637 13.485,20.228 13.833,20.753 L12.343,22.243 L13.757,23.657 L15.247,22.167 C15.771,22.515 16.363,22.769 17,22.899 L17,25 L19,25 L19,22.899 C19.637,22.769 20.229,22.515 20.753,22.167 L22.243,23.657 L23.657,22.243 L22.167,20.753 C22.515,20.228 22.769,19.637 22.899,19"
+                            />
+                          </g>
+                        </svg>
                       </th>
                       <th
                         class=""
@@ -494,7 +874,14 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         <svg
                           class="icon dropdown-popup-trigger"
                           style="height: 24px; width: auto; fill: #826a6a;"
-                        />
+                          viewBox="0 0 36 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5,31 L31,31 L31,5 L5,5 L5,31 Z M7,29.001 L29.001,29.001 L29.001,7 L7,7 L7,29.001 Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                       </th>
                       <th
                         class="four wide"

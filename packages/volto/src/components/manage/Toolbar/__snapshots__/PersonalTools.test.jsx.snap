@@ -20,7 +20,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
         className="icon"
         dangerouslySetInnerHTML={
           {
-            "__html": "<title>Back</title>undefined",
+            "__html": "<title>Back</title><polygon fill-rule="evenodd" points="31 17 8.414 17 18.707 6.707 17.293 5.293 4.586 18 17.293 30.707 18.707 29.293 8.414 19 31 19"/>",
           }
         }
         onClick={null}
@@ -31,6 +31,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             "width": "auto",
           }
         }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
     </button>
     <div
@@ -48,7 +50,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
         className="icon logout"
         dangerouslySetInnerHTML={
           {
-            "__html": "<title>Logout</title>undefined",
+            "__html": "<title>Logout</title><g fill-rule="evenodd"><path d="M28.1631,13.7905 C27.0391,11.0755 24.9251,8.9615 22.2101,7.8375 L21.4441,9.6855 C23.6651,10.6045 25.3951,12.3345 26.3151,14.5555 C27.2351,16.7765 27.2351,19.2235 26.3151,21.4435 C24.4161,26.0285 19.1381,28.2145 14.5561,26.3145 C12.3351,25.3945 10.6041,23.6655 9.6841,21.4445 C8.7651,19.2235 8.7651,16.7765 9.6841,14.5565 C10.6051,12.3345 12.3351,10.6045 14.5561,9.6855 L13.7901,7.8375 C11.0761,8.9615 8.9621,11.0755 7.8371,13.7905 C6.7131,16.5045 6.7131,19.4955 7.8371,22.2095 C8.9611,24.9245 11.0751,27.0385 13.7901,28.1625 C15.1621,28.7305 16.5851,28.9995 17.9851,28.9995 C22.3041,28.9995 26.4101,26.4405 28.1631,22.2095 C29.2871,19.4955 29.2871,16.5045 28.1631,13.7905"/><polygon points="17 18 19 18 19 5 17 5"/></g>",
           }
         }
         onClick={null}
@@ -59,6 +61,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             "width": "auto",
           }
         }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
     </a>
   </header>
@@ -69,7 +73,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
       className="icon"
       dangerouslySetInnerHTML={
         {
-          "__html": undefined,
+          "__html": "<g fill-rule="evenodd"><path d="M6,11 C5.449,11 5,11.448 5,12 L5,26 C5,26.552 5.449,27 6,27 L30,27 C30.551,27 31,26.552 31,26 L31,12 C31,11.448 30.551,11 30,11 L25.382,11 L23.382,7 L12.618,7 L10.618,11 L6,11 Z M30,29 L6,29 C4.346,29 3,27.654 3,26 L3,12 C3,10.346 4.346,9 6,9 L9.382,9 L11.382,5 L24.618,5 L26.618,9 L30,9 C31.654,9 33,10.346 33,12 L33,26 C33,27.654 31.654,29 30,29 L30,29 Z"/><path d="M18 13C15.243 13 13 15.243 13 18 13 20.757 15.243 23 18 23 20.757 23 23 20.757 23 18 23 15.243 20.757 13 18 13M18 25C14.14 25 11 21.859 11 18 11 14.141 14.14 11 18 11 21.86 11 25 14.141 25 18 25 21.859 21.86 25 18 25M29.5 14C29.5 14.828 28.828 15.5 28 15.5 27.172 15.5 26.5 14.828 26.5 14 26.5 13.172 27.172 12.5 28 12.5 28.828 12.5 29.5 13.172 29.5 14"/></g>",
         }
       }
       onClick={null}
@@ -80,6 +84,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
           "width": "auto",
         }
       }
+      viewBox="0 0 36 36"
+      xmlns="http://www.w3.org/2000/svg"
     />
   </div>
   <div
@@ -97,7 +103,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             className="icon"
             dangerouslySetInnerHTML={
               {
-                "__html": undefined,
+                "__html": "<polygon fill-rule="evenodd" points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"/>",
               }
             }
             onClick={null}
@@ -108,6 +114,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
                 "width": "auto",
               }
             }
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
           />
         </a>
       </li>
@@ -121,7 +129,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             className="icon"
             dangerouslySetInnerHTML={
               {
-                "__html": undefined,
+                "__html": "<polygon fill-rule="evenodd" points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"/>",
               }
             }
             onClick={null}
@@ -132,6 +140,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
                 "width": "auto",
               }
             }
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
           />
         </button>
       </li>
@@ -145,7 +155,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             className="icon"
             dangerouslySetInnerHTML={
               {
-                "__html": undefined,
+                "__html": "<polygon fill-rule="evenodd" points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"/>",
               }
             }
             onClick={null}
@@ -156,6 +166,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
                 "width": "auto",
               }
             }
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
           />
         </a>
       </li>
@@ -184,7 +196,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
         className="icon"
         dangerouslySetInnerHTML={
           {
-            "__html": "<title>Back</title>undefined",
+            "__html": "<title>Back</title><polygon fill-rule="evenodd" points="31 17 8.414 17 18.707 6.707 17.293 5.293 4.586 18 17.293 30.707 18.707 29.293 8.414 19 31 19"/>",
           }
         }
         onClick={null}
@@ -195,6 +207,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             "width": "auto",
           }
         }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
     </button>
     <div
@@ -212,7 +226,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
         className="icon logout"
         dangerouslySetInnerHTML={
           {
-            "__html": "<title>Logout</title>undefined",
+            "__html": "<title>Logout</title><g fill-rule="evenodd"><path d="M28.1631,13.7905 C27.0391,11.0755 24.9251,8.9615 22.2101,7.8375 L21.4441,9.6855 C23.6651,10.6045 25.3951,12.3345 26.3151,14.5555 C27.2351,16.7765 27.2351,19.2235 26.3151,21.4435 C24.4161,26.0285 19.1381,28.2145 14.5561,26.3145 C12.3351,25.3945 10.6041,23.6655 9.6841,21.4445 C8.7651,19.2235 8.7651,16.7765 9.6841,14.5565 C10.6051,12.3345 12.3351,10.6045 14.5561,9.6855 L13.7901,7.8375 C11.0761,8.9615 8.9621,11.0755 7.8371,13.7905 C6.7131,16.5045 6.7131,19.4955 7.8371,22.2095 C8.9611,24.9245 11.0751,27.0385 13.7901,28.1625 C15.1621,28.7305 16.5851,28.9995 17.9851,28.9995 C22.3041,28.9995 26.4101,26.4405 28.1631,22.2095 C29.2871,19.4955 29.2871,16.5045 28.1631,13.7905"/><polygon points="17 18 19 18 19 5 17 5"/></g>",
           }
         }
         onClick={null}
@@ -223,6 +237,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             "width": "auto",
           }
         }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
     </a>
   </header>
@@ -233,7 +249,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
       className="icon"
       dangerouslySetInnerHTML={
         {
-          "__html": undefined,
+          "__html": "<g fill-rule="evenodd"><path d="M6,11 C5.449,11 5,11.448 5,12 L5,26 C5,26.552 5.449,27 6,27 L30,27 C30.551,27 31,26.552 31,26 L31,12 C31,11.448 30.551,11 30,11 L25.382,11 L23.382,7 L12.618,7 L10.618,11 L6,11 Z M30,29 L6,29 C4.346,29 3,27.654 3,26 L3,12 C3,10.346 4.346,9 6,9 L9.382,9 L11.382,5 L24.618,5 L26.618,9 L30,9 C31.654,9 33,10.346 33,12 L33,26 C33,27.654 31.654,29 30,29 L30,29 Z"/><path d="M18 13C15.243 13 13 15.243 13 18 13 20.757 15.243 23 18 23 20.757 23 23 20.757 23 18 23 15.243 20.757 13 18 13M18 25C14.14 25 11 21.859 11 18 11 14.141 14.14 11 18 11 21.86 11 25 14.141 25 18 25 21.859 21.86 25 18 25M29.5 14C29.5 14.828 28.828 15.5 28 15.5 27.172 15.5 26.5 14.828 26.5 14 26.5 13.172 27.172 12.5 28 12.5 28.828 12.5 29.5 13.172 29.5 14"/></g>",
         }
       }
       onClick={null}
@@ -244,6 +260,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
           "width": "auto",
         }
       }
+      viewBox="0 0 36 36"
+      xmlns="http://www.w3.org/2000/svg"
     />
   </div>
   <div
@@ -261,7 +279,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             className="icon"
             dangerouslySetInnerHTML={
               {
-                "__html": undefined,
+                "__html": "<polygon fill-rule="evenodd" points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"/>",
               }
             }
             onClick={null}
@@ -272,6 +290,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
                 "width": "auto",
               }
             }
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
           />
         </a>
       </li>
@@ -285,7 +305,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             className="icon"
             dangerouslySetInnerHTML={
               {
-                "__html": undefined,
+                "__html": "<polygon fill-rule="evenodd" points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"/>",
               }
             }
             onClick={null}
@@ -296,6 +316,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
                 "width": "auto",
               }
             }
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
           />
         </button>
       </li>
@@ -309,7 +331,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             className="icon"
             dangerouslySetInnerHTML={
               {
-                "__html": undefined,
+                "__html": "<polygon fill-rule="evenodd" points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"/>",
               }
             }
             onClick={null}
@@ -320,6 +342,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
                 "width": "auto",
               }
             }
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
           />
         </a>
       </li>
@@ -348,7 +372,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
         className="icon"
         dangerouslySetInnerHTML={
           {
-            "__html": "<title>Back</title>undefined",
+            "__html": "<title>Back</title><polygon fill-rule="evenodd" points="31 17 8.414 17 18.707 6.707 17.293 5.293 4.586 18 17.293 30.707 18.707 29.293 8.414 19 31 19"/>",
           }
         }
         onClick={null}
@@ -359,6 +383,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             "width": "auto",
           }
         }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
     </button>
     <div
@@ -376,7 +402,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
         className="icon logout"
         dangerouslySetInnerHTML={
           {
-            "__html": "<title>Logout</title>undefined",
+            "__html": "<title>Logout</title><g fill-rule="evenodd"><path d="M28.1631,13.7905 C27.0391,11.0755 24.9251,8.9615 22.2101,7.8375 L21.4441,9.6855 C23.6651,10.6045 25.3951,12.3345 26.3151,14.5555 C27.2351,16.7765 27.2351,19.2235 26.3151,21.4435 C24.4161,26.0285 19.1381,28.2145 14.5561,26.3145 C12.3351,25.3945 10.6041,23.6655 9.6841,21.4445 C8.7651,19.2235 8.7651,16.7765 9.6841,14.5565 C10.6051,12.3345 12.3351,10.6045 14.5561,9.6855 L13.7901,7.8375 C11.0761,8.9615 8.9621,11.0755 7.8371,13.7905 C6.7131,16.5045 6.7131,19.4955 7.8371,22.2095 C8.9611,24.9245 11.0751,27.0385 13.7901,28.1625 C15.1621,28.7305 16.5851,28.9995 17.9851,28.9995 C22.3041,28.9995 26.4101,26.4405 28.1631,22.2095 C29.2871,19.4955 29.2871,16.5045 28.1631,13.7905"/><polygon points="17 18 19 18 19 5 17 5"/></g>",
           }
         }
         onClick={null}
@@ -387,6 +413,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             "width": "auto",
           }
         }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
     </a>
   </header>
@@ -413,7 +441,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             className="icon"
             dangerouslySetInnerHTML={
               {
-                "__html": undefined,
+                "__html": "<polygon fill-rule="evenodd" points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"/>",
               }
             }
             onClick={null}
@@ -424,6 +452,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
                 "width": "auto",
               }
             }
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
           />
         </a>
       </li>
@@ -437,7 +467,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             className="icon"
             dangerouslySetInnerHTML={
               {
-                "__html": undefined,
+                "__html": "<polygon fill-rule="evenodd" points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"/>",
               }
             }
             onClick={null}
@@ -448,6 +478,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
                 "width": "auto",
               }
             }
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
           />
         </button>
       </li>
@@ -461,7 +493,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             className="icon"
             dangerouslySetInnerHTML={
               {
-                "__html": undefined,
+                "__html": "<polygon fill-rule="evenodd" points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"/>",
               }
             }
             onClick={null}
@@ -472,6 +504,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
                 "width": "auto",
               }
             }
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
           />
         </a>
       </li>
@@ -500,7 +534,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
         className="icon"
         dangerouslySetInnerHTML={
           {
-            "__html": "<title>Back</title>undefined",
+            "__html": "<title>Back</title><polygon fill-rule="evenodd" points="31 17 8.414 17 18.707 6.707 17.293 5.293 4.586 18 17.293 30.707 18.707 29.293 8.414 19 31 19"/>",
           }
         }
         onClick={null}
@@ -511,6 +545,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             "width": "auto",
           }
         }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
     </button>
     <div
@@ -528,7 +564,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
         className="icon logout"
         dangerouslySetInnerHTML={
           {
-            "__html": "<title>Logout</title>undefined",
+            "__html": "<title>Logout</title><g fill-rule="evenodd"><path d="M28.1631,13.7905 C27.0391,11.0755 24.9251,8.9615 22.2101,7.8375 L21.4441,9.6855 C23.6651,10.6045 25.3951,12.3345 26.3151,14.5555 C27.2351,16.7765 27.2351,19.2235 26.3151,21.4435 C24.4161,26.0285 19.1381,28.2145 14.5561,26.3145 C12.3351,25.3945 10.6041,23.6655 9.6841,21.4445 C8.7651,19.2235 8.7651,16.7765 9.6841,14.5565 C10.6051,12.3345 12.3351,10.6045 14.5561,9.6855 L13.7901,7.8375 C11.0761,8.9615 8.9621,11.0755 7.8371,13.7905 C6.7131,16.5045 6.7131,19.4955 7.8371,22.2095 C8.9611,24.9245 11.0751,27.0385 13.7901,28.1625 C15.1621,28.7305 16.5851,28.9995 17.9851,28.9995 C22.3041,28.9995 26.4101,26.4405 28.1631,22.2095 C29.2871,19.4955 29.2871,16.5045 28.1631,13.7905"/><polygon points="17 18 19 18 19 5 17 5"/></g>",
           }
         }
         onClick={null}
@@ -539,6 +575,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             "width": "auto",
           }
         }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
     </a>
   </header>
@@ -549,7 +587,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
       className="icon"
       dangerouslySetInnerHTML={
         {
-          "__html": undefined,
+          "__html": "<g fill-rule="evenodd"><path d="M6,11 C5.449,11 5,11.448 5,12 L5,26 C5,26.552 5.449,27 6,27 L30,27 C30.551,27 31,26.552 31,26 L31,12 C31,11.448 30.551,11 30,11 L25.382,11 L23.382,7 L12.618,7 L10.618,11 L6,11 Z M30,29 L6,29 C4.346,29 3,27.654 3,26 L3,12 C3,10.346 4.346,9 6,9 L9.382,9 L11.382,5 L24.618,5 L26.618,9 L30,9 C31.654,9 33,10.346 33,12 L33,26 C33,27.654 31.654,29 30,29 L30,29 Z"/><path d="M18 13C15.243 13 13 15.243 13 18 13 20.757 15.243 23 18 23 20.757 23 23 20.757 23 18 23 15.243 20.757 13 18 13M18 25C14.14 25 11 21.859 11 18 11 14.141 14.14 11 18 11 21.86 11 25 14.141 25 18 25 21.859 21.86 25 18 25M29.5 14C29.5 14.828 28.828 15.5 28 15.5 27.172 15.5 26.5 14.828 26.5 14 26.5 13.172 27.172 12.5 28 12.5 28.828 12.5 29.5 13.172 29.5 14"/></g>",
         }
       }
       onClick={null}
@@ -560,6 +598,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
           "width": "auto",
         }
       }
+      viewBox="0 0 36 36"
+      xmlns="http://www.w3.org/2000/svg"
     />
   </div>
   <div
@@ -577,7 +617,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             className="icon"
             dangerouslySetInnerHTML={
               {
-                "__html": undefined,
+                "__html": "<polygon fill-rule="evenodd" points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"/>",
               }
             }
             onClick={null}
@@ -588,6 +628,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
                 "width": "auto",
               }
             }
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
           />
         </a>
       </li>
@@ -601,7 +643,7 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
             className="icon"
             dangerouslySetInnerHTML={
               {
-                "__html": undefined,
+                "__html": "<polygon fill-rule="evenodd" points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"/>",
               }
             }
             onClick={null}
@@ -612,6 +654,8 @@ exports[`Toolbar Personal Tools component > renders an Toolbar Personal Tools co
                 "width": "auto",
               }
             }
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
           />
         </button>
       </li>
