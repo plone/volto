@@ -176,22 +176,7 @@ exports[`renders a datetime widget component 1`] = `
             </div>
             <div
               class="ui input time-input"
-            >
-              <span
-                class="rc-time-picker"
-              >
-                <input
-                  class="rc-time-picker-input"
-                  id="my-field-time"
-                  placeholder="Time"
-                  type="text"
-                  value="12:00 AM"
-                />
-                <span
-                  class="rc-time-picker-icon"
-                />
-              </span>
-            </div>
+            />
             <button
               class="item ui noborder button"
               type="button"
