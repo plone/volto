@@ -9,6 +9,9 @@ myst:
 
 # Theming Strategy
 
+```{include} ../_inc/_semantic-ui-deprecation.md
+```
+
 One approaches the theming of a Volto site usually with a predefined mockup or
 design from a design agency or an UX/UI designer in the form of Sketch files
 (a common design and prototyping tool), a series of photoshop or PDFs with the
