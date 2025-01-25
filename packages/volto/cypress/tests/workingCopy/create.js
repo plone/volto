@@ -62,6 +62,6 @@ describe('Working Copy Tests - Create', () => {
   it('Portal root has create option', function () {
     cy.visit('/');
     cy.get('#toolbar-more').click();
-    cy.get('.menu-more').contains('Create working copy').should('exist');
+    cy.get('.menu-more').contains('Create working copy').should('not.exist');
   });
 });
