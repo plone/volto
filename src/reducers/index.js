@@ -44,6 +44,7 @@ import vocabularies from '@plone/volto/reducers/vocabularies/vocabularies';
 import workflow from '@plone/volto/reducers/workflow/workflow';
 import toolbar from '@plone/volto/reducers/toolbar/toolbar';
 import blocksClipboard from '@plone/volto/reducers/blocksClipboard/blocksClipboard';
+import toggleBlocksPreview from '@plone/volto/reducers/toggleBlocksPreview/toggleBlocksPreview';
 import lazyLibraries from '@plone/volto/reducers/lazyLibraries/lazyLibraries';
 import contextNavigation from '@plone/volto/reducers/contextNavigation/contextNavigation';
 import reduxAsyncConnect from './asyncConnect/asyncConnect';
@@ -103,6 +104,7 @@ const reducers = {
   workflow,
   toolbar,
   blocksClipboard,
+  toggleBlocksPreview,
   lazyLibraries,
   contextNavigation,
   upgrade,
