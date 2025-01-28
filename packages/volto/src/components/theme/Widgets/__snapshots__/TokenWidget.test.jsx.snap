@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`TokenWidget renders an empty tags view widget component 1`] = `null`;
+exports[`TokenWidget > renders an empty tags view widget component 1`] = `null`;
 
-exports[`TokenWidget renders tags view widget component 1`] = `
+exports[`TokenWidget > renders tags view widget component 1`] = `
 <span
   className="meta tags token widget"
 >
@@ -27,7 +27,7 @@ exports[`TokenWidget renders tags view widget component 1`] = `
 </span>
 `;
 
-exports[`TokenWidget renders tags view widget component with children 1`] = `
+exports[`TokenWidget > renders tags view widget component with children 1`] = `
 <span
   className="meta tags token widget"
 >

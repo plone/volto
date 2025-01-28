@@ -8,13 +8,12 @@ import config from '@plone/volto/registry';
 
 import More from './More';
 
-jest.mock('../../manage/Display/Display', () =>
-  jest.fn(() => <div id="display-select" />),
-);
-
-jest.mock('../../manage/Workflow/Workflow', () =>
-  jest.fn(() => <div id="state-select" />),
-);
+vi.mock('../../manage/Display/Display', () => ({
+  default: vi.fn(() => <div id="display-select" />),
+}));
+vi.mock('../../manage/Workflow/Workflow', () => ({
+  default: vi.fn(() => <div id="state-select" />),
+}));
 
 const mockStore = configureStore();
 

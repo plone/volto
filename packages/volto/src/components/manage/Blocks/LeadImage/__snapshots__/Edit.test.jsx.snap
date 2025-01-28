@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders an edit Lead Image block component 1`] = `
 <div
@@ -9,12 +9,12 @@ exports[`renders an edit Lead Image block component 1`] = `
     className="responsive"
     imageField="image"
     item={
-      Object {
-        "image": Object {
+      {
+        "image": {
           "download": "http://localhost:3000/image.png",
           "height": 400,
-          "scales": Object {
-            "preview": Object {
+          "scales": {
+            "preview": {
               "download": "http://localhost:3000/image.png/@@images/image/image-400.png",
               "height": 400,
               "width": 400,

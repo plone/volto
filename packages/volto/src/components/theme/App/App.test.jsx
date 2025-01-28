@@ -7,6 +7,8 @@ import configureStore from 'redux-mock-store';
 
 import { __test__ as App } from './App';
 
+import { vi } from 'vitest';
+
 beforeAll(() => {
   config.settings.navDepth = 1;
   config.views.errorViews = {
@@ -16,24 +18,28 @@ beforeAll(() => {
 
 const mockStore = configureStore();
 
-jest.mock('../../manage/Toolbar/Toolbar', () =>
-  jest.fn(() => <div id="toolbar" />),
-);
-jest.mock('../Header/Header', () => jest.fn(() => <div id="toolbar" />));
-jest.mock('../Breadcrumbs/Breadcrumbs', () =>
-  jest.fn(() => <div id="breadcrumbs" />),
-);
-jest.mock('../../manage/Messages/Messages', () =>
-  jest.fn(() => <div id="messages" />),
-);
-jest.mock('../Navigation/Navigation', () =>
-  jest.fn(() => <div id="navigation" />),
-);
-jest.mock('semantic-ui-react', () => ({
-  Segment: jest.fn(() => <div id="segment" />),
-  Container: jest.fn(() => <div id="container" />),
+vi.mock('../../manage/Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="toolbar" />),
 }));
-jest.mock('../Footer/Footer', () => jest.fn(() => <div id="footer" />));
+vi.mock('../Header/Header', () => ({
+  default: vi.fn(() => <div id="header" />),
+}));
+vi.mock('../Breadcrumbs/Breadcrumbs', () => ({
+  default: vi.fn(() => <div id="breadcrumbs" />),
+}));
+vi.mock('../../manage/Messages/Messages', () => ({
+  default: vi.fn(() => <div id="messages" />),
+}));
+vi.mock('../Navigation/Navigation', () => ({
+  default: vi.fn(() => <div id="navigation" />),
+}));
+vi.mock('semantic-ui-react', () => ({
+  Segment: vi.fn(() => <div id="segment" />),
+  Container: vi.fn(() => <div id="container" />),
+}));
+vi.mock('../Footer/Footer', () => ({
+  default: vi.fn(() => <div id="footer" />),
+}));
 
 describe('App', () => {
   it('renders a app component', () => {

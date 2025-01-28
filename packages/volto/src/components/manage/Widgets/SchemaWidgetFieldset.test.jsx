@@ -2,12 +2,12 @@ import React from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { render } from '@testing-library/react';
 import SchemaWidgetFieldsetComponent from './SchemaWidgetFieldset';
+import { __setLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(async () => {
+  await __setLoadables();
+});
 
 test('renders a contents item component', () => {
   const { container } = render(
