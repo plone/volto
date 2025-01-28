@@ -1,6 +1,6 @@
 # .readthedocs.yaml
 # Read the Docs configuration file
-# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
+# See https://docs.readthedocs.com/platform/stable/config-file/v2.html for details
 
 # Required
 version: 2
@@ -11,27 +11,25 @@ build:
   tools:
     python: "3.12"
     nodejs: "20"
-  jobs:
-    post_checkout:
-      # Cancel building pull requests when there aren't changes in the docs directory or YAML file.
-      # You can add any other files or directories that you'd like here as well,
-      # like your docs requirements file, or other files that will change your docs build.
-      #
-      # If there are no changes (git diff exits with 0) we force the command to return with 183.
-      # This is a special exit code on Read the Docs that will cancel the build immediately.
-      - |
-        if [ "$READTHEDOCS_VERSION_TYPE" = "external" ] && git diff --quiet origin/main -- docs/ .readthedocs.yaml requirements-docs.txt packages/volto/.storybook;
-        then
-          exit 183;
-        fi
-    post_install:
-      # Install dependencies defined in your ``package.json``
-      # - npm ci
-      # Install any other extra dependencies to build the docs
-      - corepack enable
-      - corepack prepare pnpm@* --activate
-      - asdf reshim nodejs
-      - pnpm install
-      - pnpm build:registry
-      - (cd packages/volto && pnpm build-storybook -o ${READTHEDOCS_OUTPUT}/html/storybook)
-      - make docs-rtd-pr-preview
+  commands:
+    # Cancel building pull requests when there aren't changes in the docs directory or YAML file.
+    # You can add any other files or directories that you'd like here as well,
+    # like your docs requirements file, or other files that will change your docs build.
+    #
+    # If there are no changes (git diff exits with 0) we force the command to return with 183.
+    # This is a special exit code on Read the Docs that will cancel the build immediately.
+    - |
+      if [ "$READTHEDOCS_VERSION_TYPE" = "external" ] && git diff --quiet origin/main -- docs/ .readthedocs.yaml requirements-docs.txt packages/volto/.storybook;
+      then
+        exit 183;
+      fi
+    # Install dependencies defined in your ``package.json``
+    # - npm ci
+    # Install any other extra dependencies to build the docs
+    - corepack enable
+    - corepack prepare pnpm@* --activate
+    - asdf reshim nodejs
+    - pnpm install
+    - pnpm build:registry
+    - (cd packages/volto && pnpm build-storybook -o ${READTHEDOCS_OUTPUT}/html/storybook)
+    - make docs-rtd-pr-preview
