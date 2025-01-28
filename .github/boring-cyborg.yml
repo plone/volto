@@ -79,7 +79,7 @@ firstIssueWelcomeComment: >
   Also please follow the issue template, as it helps both you and other community members contribute more effectively.
   
   <br>If your issue is a feature request, others may raise its prominence through
-  [feature voting](https://6.docs.plone.org/contributing/documentation/index.html#github-menu).
+  [feature voting](https://github.com/plone/volto/issues?q=is%3Aissue%20state%3Aopen%20sort%3Areactions-%2B1-desc%20).
 
   <br>Welcome to the Plone community! :tada:
 
