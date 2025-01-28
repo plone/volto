@@ -183,7 +183,10 @@ hasWorkingCopySupport
     ```
 
     For Plone sites using a Volto version prior to 18.8.0, this setting enables working copy support.
-    To make it work, you need to install the add-on `plone.app.iterate` in your Plone site.
+    
+    ```{seealso}
+    See {doc}`workingcopy` for configuration.
+    ```
 
 controlpanels
     Register a component as control panel.
