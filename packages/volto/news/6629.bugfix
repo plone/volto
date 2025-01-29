@@ -1,1 +1,1 @@
-Fixed Relations controlpanel when have broken relations. @giuliaghisini
+Correctly handle when one of the items is `null` in the Relations control panel. @giuliaghisini
