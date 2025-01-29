@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import concat from 'lodash/concat';
 import find from 'lodash/find';
 import findIndex from 'lodash/findIndex';
+import isArray from 'lodash/isArray';
 import isString from 'lodash/isString';
 import keys from 'lodash/keys';
 import map from 'lodash/map';
@@ -1205,6 +1206,13 @@ class SchemaWidget extends Component {
         (field) =>
           field === this.state.editField.id ? formattedValues.id : field,
       );
+      const index = isArray(this.props.value.required)
+        ? this.props.value.required.indexOf(formattedValues.id)
+        : -1;
+
+      if (index > -1) {
+        this.props.value.required[index] = formattedValues.id;
+      }
     }
 
     if (formattedValues.parentFieldSet) {
