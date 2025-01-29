@@ -30,12 +30,18 @@ export default function loadConfig(config: ConfigType) {
 }
 ```
 
-`@plone/registry` will generate an add-ons loader file that contains the code needed to load the add-ons configuration of all the registered add-ons, keeping the order in which they were defined.
+`@plone/registry` has a helper utility `createAddonsLoader` for generating an add-ons loader file that contains the code needed to load the add-ons configuration of all the registered add-ons, keeping the order in which they were defined.
 
-This loader is a JavaScript file and is placed in the root of your application.
+This loader is a JavaScript file and it is placed in the root of your application.
 By default, it's called {file}`.registry.loader.js`.
 
-The add-ons loader generator is meant to be run before bundling your app or by the bundler when it runs.
+```{important}
+This file is generated and maintained by `@plone/registry`.
+You should not modify it and add your own styles in here.
+It will be overwriten in the next bundler run.
+```
+
+The add-ons loader generator is meant to be run before bundling your app or by the bundler itself when it runs.
 The `@plone/registry` Vite plugin generates this file so the framework can load it on app bootstrap time.
 
 ```js
@@ -67,7 +73,7 @@ You can take the implementation of the Vite plugin as reference.
 
 ## Provide optional add-on configurations
 
-You can export additional configuration functions from your add-on's configuration loader file.
+You can export additional configuration functions from your add-ons configuration loader file.
 The default export is always loaded by `@plone/registry`, while the named exports are optional for loading, if required.
 
 The way you specify if these optional loaders must be loaded is through the add-on registration using comma-separated values following a colon after the add-on name:
