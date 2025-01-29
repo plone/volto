@@ -10,9 +10,10 @@ import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
+import doesNodeContainClick from 'semantic-ui-react/dist/commonjs/lib/doesNodeContainClick';
 import { withCookies } from 'react-cookie';
-import { filter, find } from 'lodash';
+import filter from 'lodash/filter';
+import find from 'lodash/find';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 
@@ -22,19 +23,15 @@ import Types from '@plone/volto/components/manage/Toolbar/Types';
 import PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
 import PersonalPreferences from '@plone/volto/components/manage/Preferences/PersonalPreferences';
 import StandardWrapper from '@plone/volto/components/manage/Toolbar/StandardWrapper';
-import {
-  getTypes,
-  listActions,
-  setExpandedToolbar,
-  unlockContent,
-} from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components';
-import {
-  BodyClass,
-  getBaseUrl,
-  getCookieOptions,
-  hasApiExpander,
-} from '@plone/volto/helpers';
+import { getTypes } from '@plone/volto/actions/types/types';
+import { listActions } from '@plone/volto/actions/actions/actions';
+import { setExpandedToolbar } from '@plone/volto/actions/toolbar/toolbar';
+import { unlockContent } from '@plone/volto/actions/content/content';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { getCookieOptions } from '@plone/volto/helpers/Cookies/cookies';
+import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 
 import penSVG from '@plone/volto/icons/pen.svg';
@@ -623,7 +620,7 @@ class Toolbar extends Component {
                 aria-label={this.props.intl.formatMessage(
                   messages.shrinkToolbar,
                 )}
-                className={cx({
+                className={cx('toolbar-handler-button', {
                   [this.props.content?.review_state]:
                     this.props.content?.review_state,
                 })}

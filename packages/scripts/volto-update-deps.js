@@ -27,6 +27,26 @@ async function getVoltoPackageJSON(tag) {
   return JSON.parse(requestContent);
 }
 
+async function getPloneTypesVersion(tag) {
+  const url = `https://raw.githubusercontent.com/plone/volto/${tag}/packages/types/package.json`;
+  const requestContent = await new Promise((resolve, reject) => {
+    https
+      .get(url, {}, (resp) => {
+        let data = '';
+        resp.on('data', (chunk) => {
+          data += chunk;
+        });
+        resp.on('end', () => {
+          resolve(data);
+        });
+      })
+      .on('error', (err) => {
+        reject(err);
+      });
+  });
+  return JSON.parse(requestContent).version;
+}
+
 function orderedDependencies(dependencies) {
   return Object.keys(dependencies)
     .sort()
@@ -55,32 +75,42 @@ async function main() {
   const packageJSON = loadPackageJSON(path);
   const currentVoltoVersion = packageJSON.dependencies['@plone/volto'];
   let voltoPackageJSON;
+  let ploneTypesVersion;
   if (currentVoltoVersion === 'workspace:*') {
     voltoPackageJSON = loadPackageJSON('packages/volto');
+    ploneTypesVersion = await getPloneTypesVersion('main');
   } else {
     voltoPackageJSON = await getVoltoPackageJSON(currentVoltoVersion);
+    ploneTypesVersion = await getPloneTypesVersion(currentVoltoVersion);
   }
 
   const VoltoDependencies = voltoPackageJSON.dependencies;
   const VoltoDevDependencies = voltoPackageJSON.devDependencies;
 
+  // Manually add devDependency on @plone/types
+  packageJSON.devDependencies['@plone/types'] = ploneTypesVersion;
+
   Object.entries(VoltoDevDependencies).forEach(([pkg, version]) => {
-    if (packageJSON.devDependencies[pkg]) {
-      packageJSON.devDependencies[pkg] = version;
-      console.log(`Updated devDependency on ${pkg} to version ${version}`);
-    } else {
-      packageJSON.devDependencies[pkg] = version;
-      console.log(`Added devDependency on ${pkg} to version ${version}`);
+    if (!pkg.startsWith('@plone')) {
+      if (packageJSON.devDependencies[pkg]) {
+        packageJSON.devDependencies[pkg] = version;
+        console.log(`Updated devDependency on ${pkg} to version ${version}`);
+      } else {
+        packageJSON.devDependencies[pkg] = version;
+        console.log(`Added devDependency on ${pkg} to version ${version}`);
+      }
     }
   });
 
   Object.entries(VoltoDependencies).forEach(([pkg, version]) => {
-    if (packageJSON.dependencies[pkg]) {
-      packageJSON.dependencies[pkg] = version;
-      console.log(`Updated dependency on ${pkg} to version ${version}`);
-    } else {
-      packageJSON.dependencies[pkg] = version;
-      console.log(`Added dependency on ${pkg} to version ${version}`);
+    if (!pkg.startsWith('@plone')) {
+      if (packageJSON.dependencies[pkg]) {
+        packageJSON.dependencies[pkg] = version;
+        console.log(`Updated dependency on ${pkg} to version ${version}`);
+      } else {
+        packageJSON.dependencies[pkg] = version;
+        console.log(`Added dependency on ${pkg} to version ${version}`);
+      }
     }
   });
 

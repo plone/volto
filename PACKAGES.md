@@ -2,24 +2,43 @@
 
 This document describes the packages that come with Volto, the default frontend for Plone 6.
 
+These packages are part of Plone's API-first story.
+Most of them are experimental and are marked in their respective `README` files.
+Plone 6.1.x (Volto 18) depends on:
+- `@plone/registry`
+- `@plone/scripts`
+- `@plone/volto-slate`
+
+and as a development dependency:
+- `@plone/types`
+
+Plone 6.0.x (Volto 17 and below) does not use any of them.
+
+These packages are expected to be used and become part of Plone 7.
+
+These packages are divided into three categories or types:
+
+- core
+- utilities
+- add-ons
+
 
 ## `@plone/types`
 
 Plone types is a special development package.
 It contains the Plone typings for TypeScript.
-It's considered a core package, and it's the only package that the other core packages can rely on as
-a `devDependency` in your project configuration.
+It's considered a core package, and it's the only package that the other core packages can rely on as a `devDependency` in your project configuration.
 
 This package contains `.d.ts` typing definitions, curated by hand.
-Due to the nature of this package, it does not need bundling.
-It's published "as is", so you can import the type definitions from anywhere in your code.
+Due to the nature of this package, it does not need to be built nor bundled.
+It is published "as is", so you can import the type definitions from anywhere in your code.
 
 
 ## Core packages
 
--   `@plone/registry`
 -   `@plone/client`
 -   `@plone/components`
+-   `@plone/registry`
 
 
 ### Rules
@@ -28,24 +47,38 @@ Core packages must not depend on any other `@plone/*` package, with only one exc
 They must be published and bundled in a traditional (transpiled) way.
 The bundle of these packages must work on both CommonJS and ECMAScript Module (ESM) environments.
 
-## Feature packages
 
--   `@plone/contents`
+## Utilities packages
 
-
-## Utility packages
-
--   `@plone/blocks`
+-   `@plone/providers`
 -   `@plone/helpers`
--   `@plone/drivers`
--   `@plone/rsc`
+-   `@plone/react-router`
 
 
 ### Rules
 
 Utility packages can depend on core packages and other utility packages.
-They must be published in a traditional way, bundled.
+They must be published in the traditional way, as a bundle.
 This bundle must work on both CommonJS and ESM environments.
+
+
+## Add-on packages
+
+-   `@plone/blocks`
+-   `@plone/slots`
+-   `@plone/theming`
+-   `@plone/cmsui`
+-   `@plone/contents`
+
+
+### Rules
+
+Add-on or feature packages, can depend on any other package.
+You must distribute them as source code, and not transpile them.
+They must provide a default configuration registry loader as the default main entry point export.
+Unlike Volto add-ons, do *NOT* place the code in the `src` folder.
+If you do not transpile the package, the direct resolution must work out of the box, where both the bundler and TypeScript resolution are direct.
+They must be loadable as any other add-on, and contain an add-on registry compatible `install`-able default export.
 
 
 ## Development utility packages
@@ -55,15 +88,14 @@ They contain utilities that are useful for the development of a Volto project.
 Some of them are released:
 
 - `@plone/scripts`
-- `@plone/generator-volto`
+- `@plone/generator-volto` (deprecated)
 
 Some of them are used by the build, and separated in packages for convenience.
 
 - `tsconfig`
-- `parcel-optimizer-react-client`
 
 
-## Volto add-ons packages
+## Volto add-on packages
 
 These Volto add-ons are packages used by Volto core.
 They are always loaded, so they are also called "core packages".

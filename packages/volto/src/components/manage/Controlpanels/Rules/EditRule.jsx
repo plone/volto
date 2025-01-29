@@ -8,7 +8,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { getParentUrl, Helmet, getBaseUrl } from '@plone/volto/helpers';
+import { getParentUrl, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { createPortal } from 'react-dom';
 import {
   Button,
@@ -20,14 +21,16 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { Icon, Toolbar, Field } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import { Field } from '@plone/volto/components/manage/Form';
 import {
   getControlPanelRule,
   editRule,
   getContentRulesEvents,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/rules/rules';
 import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
 

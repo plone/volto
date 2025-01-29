@@ -22,6 +22,9 @@ import {
   getPreviousNextBlock,
   blocksFormGenerator,
   findBlocks,
+  findContainer,
+  isBlockContainer,
+  findStyleByName,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -502,6 +505,21 @@ describe('Blocks', () => {
         },
         'dummyText',
         1,
+      );
+      expect(form.blocks[newId]).toStrictEqual({
+        '@type': 'dummyText',
+        marker: true,
+      });
+    });
+
+    it('initializes data for new block with initialValue in insertBlock', () => {
+      const [newId, form] = insertBlock(
+        {
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        },
+        'b',
+        { '@type': 'dummyText' },
       );
       expect(form.blocks[newId]).toStrictEqual({
         '@type': 'dummyText',
@@ -1086,38 +1104,68 @@ describe('Blocks', () => {
   });
 
   describe('buildStyleObjectFromData', () => {
+    beforeEach(() => {
+      function blockThemesEnhancer(data) {
+        const blockConfig = config.blocks.blocksConfig[data['@type']];
+        const blockStyleDefinitions =
+          // We look up for the blockThemes in the block's data, then in the global config
+          // We keep data.colors for BBB, but data.themes should be used
+          blockConfig.themes ||
+          blockConfig.colors ||
+          config.blocks.themes ||
+          [];
+        return data.theme
+          ? findStyleByName(blockStyleDefinitions, data.theme)
+          : {};
+      }
+      config.registerUtility({
+        name: 'blockThemesEnhancer',
+        type: 'styleWrapperStyleObjectEnhancer',
+        method: blockThemesEnhancer,
+      });
+    });
+
     it('Understands style converter for style values, no styles found', () => {
-      const styles = {
-        color: 'red',
-        backgroundColor: '#FFF',
+      const data = {
+        '@type': 'text',
+        styles: {
+          color: 'red',
+          backgroundColor: '#FFF',
+        },
       };
-      expect(buildStyleObjectFromData(styles)).toEqual({});
+      expect(buildStyleObjectFromData(data)).toEqual({});
     });
 
     it('Understands style converter for style values', () => {
-      const styles = {
-        color: 'red',
-        '--background-color': '#FFF',
+      const data = {
+        '@type': 'text',
+        styles: {
+          color: 'red',
+          '--background-color': '#FFF',
+        },
       };
-      expect(buildStyleObjectFromData(styles)).toEqual({
+      expect(buildStyleObjectFromData(data)).toEqual({
         '--background-color': '#FFF',
       });
     });
 
     it('Supports multiple nested levels', () => {
-      const styles = {
-        '--color': 'red',
-        backgroundColor: '#AABBCC',
-        nested: {
-          l1: 'white',
-          '--foo': 'white',
-          level2: {
-            '--foo': '#fff',
-            bar: '#000',
+      const data = {
+        '@type': 'text',
+        styles: {
+          '--color': 'red',
+          backgroundColor: '#AABBCC',
+          nested: {
+            l1: 'white',
+            '--foo': 'white',
+            level2: {
+              '--foo': '#fff',
+              bar: '#000',
+            },
           },
         },
       };
-      expect(buildStyleObjectFromData(styles)).toEqual({
+      expect(buildStyleObjectFromData(data)).toEqual({
         '--color': 'red',
         '--nested--foo': 'white',
         '--nested--level2--foo': '#fff',
@@ -1125,22 +1173,168 @@ describe('Blocks', () => {
     });
 
     it('Supports multiple nested levels and optional inclusion of the name of the level', () => {
-      const styles = {
-        '--color': 'red',
-        backgroundColor: '#AABBCC',
-        'nested:noprefix': {
-          l1: 'white',
-          '--foo': 'white',
-          level2: {
-            '--foo': '#fff',
-            bar: '#000',
+      const data = {
+        '@type': 'text',
+        styles: {
+          '--color': 'red',
+          backgroundColor: '#AABBCC',
+          'nested:noprefix': {
+            l1: 'white',
+            '--foo': 'white',
+            level2: {
+              '--foo': '#fff',
+              bar: '#000',
+            },
           },
         },
       };
-      expect(buildStyleObjectFromData(styles)).toEqual({
+      expect(buildStyleObjectFromData(data)).toEqual({
         '--color': 'red',
         '--foo': 'white',
         '--level2--foo': '#fff',
+      });
+    });
+
+    it('Supports named theme block - with global config', () => {
+      config.blocks.themes = [
+        {
+          style: {
+            '--primary-color': '#fff',
+            '--primary-foreground-color': '#ecebeb',
+          },
+          name: 'default',
+          label: 'Default',
+        },
+        {
+          style: {
+            '--primary-color': '#000',
+            '--primary-foreground-color': '#fff',
+          },
+          name: 'primary',
+          label: 'Primary',
+        },
+      ];
+      const data = {
+        '@type': 'text',
+        theme: 'primary',
+      };
+      expect(buildStyleObjectFromData(data)).toEqual({
+        '--primary-color': '#000',
+        '--primary-foreground-color': '#fff',
+      });
+    });
+
+    it('Supports named theme block - with local block themes config', () => {
+      config.blocks.themes = [
+        {
+          style: {
+            '--primary-color': '#fff',
+            '--primary-foreground-color': '#ecebeb',
+          },
+          name: 'default',
+          label: 'Default',
+        },
+        {
+          style: {
+            '--primary-color': '#000',
+            '--primary-foreground-color': '#fff',
+          },
+          name: 'primary',
+          label: 'Primary',
+        },
+      ];
+      const themes = [
+        {
+          style: {
+            '--primary-color': '#fff',
+            '--primary-foreground-color': '#ecebeb',
+          },
+          name: 'default',
+          label: 'Default',
+        },
+        {
+          style: {
+            '--secondary-color': '#bbb',
+            '--secondary-foreground-color': '#ddd',
+          },
+          name: 'secondary',
+          label: 'Secondary',
+        },
+      ];
+      config.blocks.blocksConfig.text.themes = themes;
+      const data = {
+        '@type': 'text',
+        theme: 'secondary',
+      };
+
+      expect(buildStyleObjectFromData(data)).toEqual({
+        '--secondary-color': '#bbb',
+        '--secondary-foreground-color': '#ddd',
+      });
+    });
+
+    it('All together now - named theme block - with local block themes config', () => {
+      config.blocks.blocksThemes = [
+        {
+          style: {
+            '--primary-color': '#fff',
+            '--primary-foreground-color': '#ecebeb',
+          },
+          name: 'default',
+          label: 'Default',
+        },
+        {
+          style: {
+            '--primary-color': '#000',
+            '--primary-foreground-color': '#fff',
+          },
+          name: 'primary',
+          label: 'Primary',
+        },
+      ];
+      const themes = [
+        {
+          style: {
+            '--primary-color': '#fff',
+            '--primary-foreground-color': '#ecebeb',
+          },
+          name: 'default',
+          label: 'Default',
+        },
+        {
+          style: {
+            '--secondary-color': '#bbb',
+            '--secondary-foreground-color': '#ddd',
+          },
+          name: 'secondary',
+          label: 'Secondary',
+        },
+      ];
+
+      const data = {
+        '@type': 'text',
+        styles: {
+          '--color': 'red',
+          backgroundColor: '#AABBCC',
+          'nested:noprefix': {
+            l1: 'white',
+            '--foo': 'white',
+            level2: {
+              '--foo': '#fff',
+              bar: '#000',
+            },
+          },
+        },
+        theme: 'secondary',
+        themes,
+      };
+
+      expect(buildStyleObjectFromData(data)).toEqual({
+        '--color': 'red',
+        '--foo': 'white',
+        '--level2--foo': '#fff',
+        '--secondary-color': '#bbb',
+        '--secondary-foreground-color': '#ddd',
       });
     });
   });
@@ -1505,5 +1699,194 @@ describe('findBlocks', () => {
     };
     const types = ['description', 'slate'];
     expect(findBlocks(blocks, types)).toStrictEqual(['3', '4', '8', '9']);
+  });
+});
+
+describe('findContainer', () => {
+  const blocksData = { blocks: {}, blocks_layout: { items: [] } };
+
+  it('Get a container in the first level (main block container)', () => {
+    const formData = {
+      title: 'Example',
+      blocks: {
+        1: { title: 'title', '@type': 'title' },
+        2: { title: 'an image', '@type': 'image' },
+        3: { title: 'description', '@type': 'description' },
+        4: { title: 'a container', '@type': 'container', ...blocksData },
+      },
+      blocks_layout: {
+        items: ['1', '2', '3', '4'],
+      },
+    };
+
+    expect(findContainer(formData, { containerId: '4' })).toStrictEqual({
+      title: 'a container',
+      '@type': 'container',
+      ...blocksData,
+    });
+  });
+
+  it('Get a container in the second level', () => {
+    const formData = {
+      title: 'Example',
+      blocks: {
+        1: { title: 'title', '@type': 'title' },
+        2: { title: 'an image', '@type': 'image' },
+        3: { title: 'description', '@type': 'description' },
+        4: {
+          title: 'a container',
+          '@type': 'container',
+          blocks: {
+            1: { title: 'title', '@type': 'title' },
+            2: { title: 'an image', '@type': 'image' },
+            'second-level': {
+              title: 'a container',
+              '@type': 'container',
+              blocks: {},
+              blocks_layout: { items: [] },
+            },
+          },
+          blocks_layout: { items: [1, 2, 'second-level'] },
+        },
+      },
+      blocks_layout: {
+        items: ['1', '2', '3', '4'],
+      },
+    };
+
+    expect(
+      findContainer(formData, { containerId: 'second-level' }),
+    ).toStrictEqual({
+      title: 'a container',
+      '@type': 'container',
+      blocks: {},
+      blocks_layout: { items: [] },
+    });
+  });
+
+  it('Get a container in the third level', () => {
+    const formData = {
+      title: 'Example',
+      blocks: {
+        1: { title: 'title', '@type': 'title' },
+        2: { title: 'an image', '@type': 'image' },
+        3: { title: 'description', '@type': 'description' },
+        4: {
+          title: 'a container',
+          '@type': 'container',
+          blocks: {
+            1: { title: 'title', '@type': 'title' },
+            2: { title: 'an image', '@type': 'image' },
+            'second-level': {
+              title: 'a second level container',
+              '@type': 'container',
+              blocks: {
+                'third-level': {
+                  title: 'a third level container',
+                  '@type': 'container',
+                  blocks: {},
+                  blocks_layout: { items: [] },
+                },
+              },
+              blocks_layout: { items: ['third-level'] },
+            },
+          },
+          blocks_layout: { items: [1, 2, 'second-level'] },
+        },
+      },
+      blocks_layout: {
+        items: ['1', '2', '3', '4'],
+      },
+    };
+
+    expect(
+      findContainer(formData, { containerId: 'third-level' }),
+    ).toStrictEqual({
+      title: 'a third level container',
+      '@type': 'container',
+      blocks: {},
+      blocks_layout: { items: [] },
+    });
+  });
+
+  describe('findContainer then modify it', () => {
+    const blocksData = { blocks: {}, blocks_layout: { items: [] } };
+
+    it('Get and modifies a container in the first level (main block container)', () => {
+      const formData = {
+        title: 'Example',
+        blocks: {
+          1: { title: 'title', '@type': 'title' },
+          2: { title: 'an image', '@type': 'image' },
+          3: { title: 'description', '@type': 'description' },
+          4: { title: 'a container', '@type': 'container', ...blocksData },
+        },
+        blocks_layout: {
+          items: ['1', '2', '3', '4'],
+        },
+      };
+
+      const container = findContainer(formData, { containerId: '4' });
+      container.title = 'Modified the title of the container';
+      expect(findContainer(formData, { containerId: '4' })).toStrictEqual({
+        title: 'Modified the title of the container',
+        '@type': 'container',
+        ...blocksData,
+      });
+    });
+  });
+
+  describe('isBlockContainer', () => {
+    const blocksData = { blocks: {}, blocks_layout: { items: [] } };
+
+    it('basic test', () => {
+      const formData = {
+        title: 'Example',
+        blocks: {
+          1: { title: 'title', '@type': 'title' },
+          2: { title: 'an image', '@type': 'image' },
+          3: { title: 'description', '@type': 'description' },
+          4: { title: 'a container', '@type': 'container', ...blocksData },
+        },
+        blocks_layout: {
+          items: ['1', '2', '3', '4'],
+        },
+      };
+
+      const container = isBlockContainer(formData);
+      expect(container).toBeTruthy();
+    });
+
+    it('in data key (EEA add-ons)', () => {
+      const formData = {
+        title: 'Example',
+        data: {
+          blocks: {
+            1: { title: 'title', '@type': 'title' },
+            2: { title: 'an image', '@type': 'image' },
+            3: { title: 'description', '@type': 'description' },
+            4: { title: 'a container', '@type': 'container', ...blocksData },
+          },
+          blocks_layout: {
+            items: ['1', '2', '3', '4'],
+          },
+        },
+      };
+
+      const container = isBlockContainer(formData);
+      expect(container).toBeTruthy();
+    });
+
+    it('not a container', () => {
+      const formData = {
+        title: 'Example',
+        styles: {
+          color: 'red',
+        },
+      };
+
+      const container = isBlockContainer(formData);
+      expect(container).toBeFalsy();
+    });
   });
 });

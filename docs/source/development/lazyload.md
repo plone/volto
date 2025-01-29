@@ -36,7 +36,7 @@ You can find the complete `@loadable/component` documentation here: https://load
 You can check the code splitting state by using the included bundle analyzer:
 
 ```shell
-yarn analyze
+pnpm --filter=volto analyze
 ```
 
 A browser will open with the bundle inspector.
@@ -46,8 +46,8 @@ A browser will open with the bundle inspector.
 Lazy-loading libraries is not as straight-forward as with the React components.
 The API offered by `@loadable/component` is not very ergonomic and
 importing a library as lazy library introduces a lot of pain points in your
-code: you have to alway check if the library is loaded, depending on multiple
-lazy libraries further complicates the code, etc. To aleviate this and to
+code: you have to always check if the library is loaded, depending on multiple
+lazy libraries further complicates the code, etc. To alleviate this and to
 promote the use of lazy libraries everywhere, we have the `injectLazyLibs` HOC
 wrapper that can automatically inject lazy-loaded libraries as props to your
 components. To use it:

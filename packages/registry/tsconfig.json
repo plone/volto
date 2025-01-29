@@ -1,23 +1,30 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "module": "commonjs",
-    "allowJs": true,
-    "skipLibCheck": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
     "strict": true,
+    "noImplicitOverride": true,
+
+    "lib": ["es2022", "dom", "dom.iterable"],
+    "module": "preserve",
+    "noEmit": true,
+
+    "jsx": "react-jsx",
+
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "strictPropertyInitialization": false,
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
+
     "paths": {}
   },
-  "include": ["src", "src/**/*.js"],
+  "include": ["src/index.ts"],
   "exclude": [
     "node_modules",
     "build",
@@ -26,5 +33,6 @@
     "src/**/*.test.{js,jsx,ts,tsx}",
     "src/**/*.spec.{js,jsx,ts,tsx}",
     "src/**/*.stories.{js,jsx,ts,tsx}"
-  ]
+  ],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

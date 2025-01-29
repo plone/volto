@@ -10,6 +10,7 @@ import { MemoryRouter } from 'react-router';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
+jest.mock('@plone/volto/components/manage/Widgets');
 jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
 
 describe('Aliases', () => {
@@ -55,6 +56,13 @@ describe('Aliases', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      site: {
+        data: {
+          features: {
+            filter_aliases_by_date: true,
+          },
+        },
       },
     });
     const { container } = render(

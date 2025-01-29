@@ -37,7 +37,7 @@ The main artifact that the client provides is the `ploneClient` entry point.
 
 Once imported, you should call `initialize` to setup its basic parameters, like `apiPath`, headers or authentication options.
 
-After initialization, you can import all the prorvided query options factories.
+After initialization, you can import all the provided query options factories.
 
 ```ts
 import ploneClient from '@plone/client';

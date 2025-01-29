@@ -1,23 +1,10 @@
+import ConfigRegistry from '@plone/volto/registry';
 import { parse as parseUrl } from 'url';
-import { defaultWidget, widgetMapping } from './Widgets';
-import {
-  layoutViews,
-  contentTypesViews,
-  defaultView,
-  errorViews,
-  layoutViewsNamesMapping,
-} from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
-import {
-  groupBlocksOrder,
-  requiredBlocks,
-  blocksConfig,
-  initialBlocks,
-  initialBlocksFocus,
-} from './Blocks';
-import { components } from './Components';
+import { nonContentRoutesPublic } from './NonContentRoutesPublic';
 import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
+import slots from './slots';
 
 import { contentIcons } from './ContentIcons';
 import { styleClassNameConverters, styleClassNameExtenders } from './Style';
@@ -25,13 +12,18 @@ import {
   controlPanelsIcons,
   filterControlPanels,
   filterControlPanelsSchema,
+  unwantedControlPanelsFields,
 } from './ControlPanels';
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
-import ConfigRegistry from '@plone/volto/registry';
+import { installDefaultComponents } from './Components';
+import { installDefaultWidgets } from './Widgets';
+import { installDefaultViews } from './Views';
+import { installDefaultBlocks } from './Blocks';
 
-import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
+import { getSiteAsyncPropExtender } from '@plone/volto/helpers/Site';
+import { registerValidators } from './validation';
 
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
@@ -97,7 +89,7 @@ let config = {
       process.env.RAZZLE_INTERNAL_API_PATH ||
       process.env.RAZZLE_API_PATH ||
       'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
-    // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
+    // proxyRewriteTarget Set it for set a custom target for the proxy or override the internal VHM rewrite
     // proxyRewriteTarget: '/VirtualHostBase/http/localhost:8080/Plone/VirtualHostRoot/_vh_api'
     // proxyRewriteTarget: 'https://myvoltositeinproduction.com'
     proxyRewriteTarget: process.env.RAZZLE_PROXY_REWRITE_TARGET || undefined,
@@ -110,6 +102,7 @@ let config = {
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
+    nonContentRoutesPublic,
     imageObjects: ['Image'],
     reservedIds: ['login', 'layout', 'plone', 'zip', 'properties'],
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
@@ -149,10 +142,12 @@ let config = {
     serverConfig,
     storeExtenders: [],
     showTags: true,
+    showRelatedItems: false,
     controlpanels: [],
     controlPanelsIcons,
     filterControlPanels,
     filterControlPanelsSchema,
+    unwantedControlPanelsFields,
     externalRoutes: [
       // URL to be considered as external
       // {
@@ -168,6 +163,7 @@ let config = {
     ],
     showSelfRegistration: false,
     contentMetadataTagsImageField: 'image',
+    contentPropertiesSchemaEnhancer: null,
     hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
@@ -179,7 +175,6 @@ let config = {
     querystringSearchGet: false,
     blockSettingsTabFieldsetsInitialStateOpen: true,
     excludeLinksAndReferencesMenuItem: false,
-    containerBlockTypes: ['gridBlock'],
     siteTitleFormat: {
       includeSiteTitle: false,
       titleAndSiteTitleSeparator: '-',
@@ -190,29 +185,14 @@ let config = {
       enabled: true,
     },
   },
-  widgets: {
-    ...widgetMapping,
-    default: defaultWidget,
-  },
-  views: {
-    layoutViews,
-    contentTypesViews,
-    defaultView,
-    errorViews,
-    layoutViewsNamesMapping,
-  },
-  blocks: {
-    requiredBlocks,
-    blocksConfig,
-    groupBlocksOrder,
-    initialBlocks,
-    initialBlocksFocus,
-    showEditBlocksInBabelView: false,
-  },
+  widgets: {},
+  views: {},
+  blocks: {},
   addonRoutes: [],
   addonReducers: {},
+  components: {},
   slots: {},
-  components,
+  utilities: {},
 };
 
 // The apiExpanders depends on a config of the object, so it's done here
@@ -240,5 +220,24 @@ ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.components = config.components;
 ConfigRegistry.slots = config.slots;
+ConfigRegistry.utilities = config.utilities;
+
+// Register slots
+Object.entries(slots).forEach(([slotName, components]) => {
+  components.forEach(({ name, component, predicates = [] }) => {
+    ConfigRegistry.registerSlotComponent({
+      slot: slotName,
+      name,
+      component,
+      predicates,
+    });
+  });
+});
+
+registerValidators(ConfigRegistry);
+installDefaultComponents(ConfigRegistry);
+installDefaultWidgets(ConfigRegistry);
+installDefaultViews(ConfigRegistry);
+installDefaultBlocks(ConfigRegistry);
 
 applyAddonConfiguration(ConfigRegistry);

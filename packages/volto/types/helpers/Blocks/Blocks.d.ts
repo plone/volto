@@ -107,10 +107,10 @@ export function emptyBlocksForm(): any;
  * (could be empty, if not type given) and the number of blocks
  * @function blocksFormGenerator
  * @param {number} number How many blocks to generate of the type (could be "empty", if no type provided)
- * @param {number} type The type of the blocks
+ * @param {string} type The type of the blocks
  * @return {Object} blocks/blocks_layout pair filled with the generated blocks
  */
-export function blocksFormGenerator(number: number, type: number): any;
+export function blocksFormGenerator(number: number, type: string): any;
 /**
  * Recursively discover blocks in data and call the provided callback
  * @function visitBlocks
@@ -135,17 +135,51 @@ export function applySchemaDefaults({ data, schema, intl }: {
  */
 export function applyBlockDefaults({ data, intl, navRoot, contentType, ...rest }: any, blocksConfig: any): any;
 /**
+ * Find a matching style by name given a style definition
+ *
+ * @function findStyleByName
+ * @param {Object} styleDefinitions An object with the style definitions
+ * @param {string} name The name of the style to find
+ * @return {Object} The style object of the matching name
+ */
+export function findStyleByName(styleDefinitions: any, name: string): any;
+/**
+ * Check if a block is a container block
+ * check blocks from data as well since some add-ons use that
+ * such as @eeacms/volto-tabs-block
+ */
+export function isBlockContainer(block: any): boolean;
+/**
  * Given a `block` object and a list of block types, return a list of block ids matching the types
  *
  * @function findBlocks
  * @param {Object} types A list with the list of types to be matched
  * @return {Array} An array of block ids
  */
-export function findBlocks(blocks: any, types: any, result?: any[]): any[];
+export function findBlocks(blocks: {}, types: any, result?: any[]): any[];
+/**
+ * Move block to different location index within blocks_layout
+ * @function moveBlock
+ * @param {Object} formData Form data
+ * @param {number} source index within form blocks_layout items
+ * @param {number} destination index within form blocks_layout items
+ * @return {Object} New form data
+ */
+export function moveBlockEnhanced(formData: any, { source, destination }: number): any;
 export function getBlocks(properties: any): any[];
+export function applyBlockInitialValue({ id, value, blocksConfig, formData, }: {
+    id: any;
+    value: any;
+    blocksConfig: any;
+    formData: any;
+}): any;
 export function styleToClassName(key: any, value: any, prefix?: string): any;
 export function buildStyleClassNamesFromData(obj?: {}, prefix?: string): any;
 export function buildStyleClassNamesExtenders({ block, content, data, classNames, }: any): any[];
 export function styleDataToStyleObject(key: any, value: any, prefix?: string): any[];
-export function buildStyleObjectFromData(obj?: any, prefix?: string): any;
+export function buildStyleObjectFromData(data?: any, prefix?: string): any;
 export function getPreviousNextBlock({ content, block }: any): any[];
+export function getBlocksHierarchy(properties: any): any;
+export function findContainer(formData: object, { containerId }: {
+    containerId: string;
+}): object | undefined;

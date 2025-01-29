@@ -3,8 +3,9 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
-import { Login, Toast } from '@plone/volto/components';
-import { logout, purgeMessages } from '@plone/volto/actions';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import { logout } from '@plone/volto/actions/userSession/userSession';
+import { purgeMessages } from '@plone/volto/actions/messages/messages';
 import { toast } from 'react-toastify';
 
 const messages = defineMessages({
@@ -55,7 +56,7 @@ const Logout = ({ location }) => {
     }
   }, [history, returnUrl, intl, token]);
 
-  return <Login location={{ query: location.query }} isLogout={true} />;
+  return '';
 };
 
 export default Logout;

@@ -2,7 +2,7 @@ name: Code Analysis Check
 on: [push, pull_request]
 
 env:
-  node-version: 20.x
+  node-version: 22.x
 
 jobs:
   prettier:
@@ -18,11 +18,8 @@ jobs:
         with:
           node-version: ${{ env.node-version }}
 
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 8
-          run_install: false
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Get pnpm store directory
         shell: bash
@@ -55,11 +52,8 @@ jobs:
         with:
           node-version: ${{ env.node-version }}
 
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 8
-          run_install: false
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Get pnpm store directory
         shell: bash
@@ -95,11 +89,8 @@ jobs:
         with:
           node-version: ${{ env.node-version }}
 
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 8
-          run_install: false
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Get pnpm store directory
         shell: bash
@@ -135,11 +126,8 @@ jobs:
         with:
           node-version: ${{ env.node-version }}
 
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 8
-          run_install: false
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Get pnpm store directory
         shell: bash

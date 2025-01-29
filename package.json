@@ -3,17 +3,23 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "postinstall": "make setup",
-    "watch": "pnpm --filter @plone/registry watch",
-    "build:deps": "pnpm --filter @plone/registry --filter @plone/client build",
+    "watch": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers watch",
+    "build:deps": "pnpm --filter @plone/registry build",
+    "build:all": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers --filter @plone/react-router build",
+    "build:all:force": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers --filter @plone/react-router build:force",
     "build:registry": "pnpm --filter @plone/registry run build",
     "build:components": "pnpm --filter @plone/components run build",
-    "build": "pnpm build:deps && pnpm --filter @plone/volto build",
-    "start": "pnpm build:deps && pnpm --filter @plone/volto start",
+    "build:client": "pnpm --filter @plone/client run build",
+    "build:providers": "pnpm --filter @plone/providers run build",
+    "build:helpers": "pnpm --filter @plone/helpers run build",
+    "build:react-router": "pnpm --filter @plone/react-router run build",
+    "build": "pnpm --filter @plone/volto build",
+    "start": "pnpm --filter @plone/volto start",
     "start:project": "pnpm --filter plone run start",
-    "lint": "pnpm build:deps && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
+    "lint": "make build-all-deps && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
     "lint:volto": "pnpm --filter @plone/volto run lint",
-    "test": "pnpm --filter @plone/volto run test:ci",
+    "test": "pnpm --filter @plone/volto run test",
+    "test:ci": "pnpm --filter @plone/volto run test:ci",
     "i18n": "pnpm --filter @plone/volto run i18n",
     "i18n:ci": "pnpm --filter @plone/volto i18n:ci",
     "prettier": "prettier --check '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
@@ -25,34 +31,25 @@
     "lockhook": "node packages/scripts/lockhook.js",
     "prepare": "husky",
     "husky:uninstall": "husky uninstall",
-    "prereleaser": "node packages/scripts/preleaser.js"
+    "prereleaser": "node packages/scripts/preleaser.js",
+    "update:browserlist": "pnpm --filter @plone/volto add caniuse-lite && pnpm --filter @plone/volto remove caniuse-lite"
   },
   "devDependencies": {
-    "@parcel/packager-ts": "^2.12.0",
-    "@parcel/transformer-typescript-types": "^2.12.0",
-    "@typescript-eslint/eslint-plugin": "7.1.1",
-    "@typescript-eslint/parser": "7.1.1",
     "concurrently": "^8.2.2",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "2.29.1",
-    "eslint-plugin-prettier": "5.1.3",
-    "eslint-plugin-react": "7.33.2",
     "husky": "9.0.11",
     "lint-staged": "15.2.2",
-    "prettier": "3.2.5",
-    "stylelint": "^16.2.1",
     "tsconfig": "workspace:*",
-    "typescript": "5.2.2",
-    "vitest": "^1.3.1"
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.3"
   },
-  "packageManager": "pnpm@8.15.4",
+  "packageManager": "pnpm@9.1.1",
   "pnpm": {
     "overrides": {
       "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
-      "react-refresh": "0.14.0",
-      "webpack": "5.90.1"
+      "react-refresh": "0.14.0"
+    },
+    "patchedDependencies": {
+      "jest-resolve@26.6.2": "patches/jest-resolve@26.6.2.patch"
     }
   }
 }

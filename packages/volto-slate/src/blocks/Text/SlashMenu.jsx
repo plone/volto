@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, isEmpty } from 'lodash';
+import filter from 'lodash/filter';
+import isEmpty from 'lodash/isEmpty';
 import { Menu } from 'semantic-ui-react';
 import { useIntl, FormattedMessage } from 'react-intl';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import useUser from '@plone/volto/hooks/user/useUser';
 
 const emptySlateBlock = () => ({
   value: [
@@ -105,8 +107,12 @@ const PersistentSlashMenu = ({ editor }) => {
     selected,
     allowedBlocks,
     detached,
+    navRoot,
+    contentType,
   } = props;
   const disableNewBlocks = data?.disableNewBlocks || detached;
+
+  const user = useUser();
 
   const [slashMenuSelected, setSlashMenuSelected] = React.useState(0);
 
@@ -122,7 +128,13 @@ const PersistentSlashMenu = ({ editor }) => {
         hasAllowedBlocks
           ? allowedBlocks.includes(item.id)
           : typeof item.restricted === 'function'
-            ? !item.restricted({ properties, block: item })
+            ? !item.restricted({
+                properties,
+                block: item,
+                navRoot,
+                contentType,
+                user,
+              })
             : !item.restricted,
       )
         .filter((block) => Boolean(block.title && block.id))
@@ -152,6 +164,9 @@ const PersistentSlashMenu = ({ editor }) => {
       properties,
       slashCommand,
       hasAllowedBlocks,
+      navRoot,
+      contentType,
+      user,
     ],
   );
 

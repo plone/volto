@@ -1,16 +1,17 @@
 import React from 'react';
-import { getBaseUrl, applyBlockDefaults } from '@plone/volto/helpers';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import { defineMessages, useIntl } from 'react-intl';
-import { map } from 'lodash';
-import { MaybeWrap } from '@plone/volto/components';
+import map from 'lodash/map';
+import MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
 import {
+  applyBlockDefaults,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
 import StyleWrapper from '@plone/volto/components/manage/Blocks/Block/StyleWrapper';
 import config from '@plone/volto/registry';
-import { ViewDefaultBlock } from '@plone/volto/components';
+import ViewDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultView';
 import RenderEmptyBlock from './RenderEmptyBlock';
 
 const messages = defineMessages({

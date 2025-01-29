@@ -1,6 +1,8 @@
 import type { Content } from '../content';
 import type { BlockViewProps, BlockEditProps } from '../blocks';
 import type { IntlShape } from 'react-intl';
+import { User } from '../services';
+import { StyleDefinition } from '../blocks';
 
 export interface BlocksConfig {
   blocksConfig: BlocksConfigData;
@@ -8,6 +10,8 @@ export interface BlocksConfig {
   requiredBlocks: string[];
   initialBlocks: Record<string, string[]> | Record<string, object[]>;
   initialBlocksFocus: Record<string, string>;
+  themes: StyleDefinition[];
+  widths: StyleDefinition[];
 }
 
 export interface BlocksConfigData {
@@ -48,6 +52,10 @@ export interface BlockConfigBase {
    */
   group: string;
   /**
+   * The category of the block
+   */
+  category: string;
+  /**
    * The view mode component
    */
   view?: React.ComponentType<BlockViewProps>;
@@ -79,6 +87,7 @@ export interface BlockConfigBase {
         block: BlockConfigBase; // TODO: This has to be extendable
         navRoot: Content;
         contentType: string;
+        user: User;
       }) => boolean)
     | boolean;
 
@@ -118,21 +127,15 @@ export interface BlockConfigBase {
   blocksConfig?: Partial<BlocksConfigData>;
 }
 
-export type BlockExtension = (
-  | {
-      id: string;
-      isDefault: true;
-      title: string;
-    }
-  | {
-      id: string;
-      title: string;
-    }
-) & {
+export interface BlockExtension {
+  id: string;
+  isDefault?: boolean;
+  title: string;
   template?: React.ComponentType<any>;
   render?: React.ComponentType<any>;
+  view?: React.ComponentType<any>;
   fullobjects?: boolean;
-};
+}
 
 export interface SlateBlock extends BlockConfigBase {
   /**
@@ -193,10 +196,15 @@ export type JSONSchema = {
   required: string[];
 };
 
+export interface BlocksDataBlocks {
+  '@type': string;
+  styles?: any;
+}
+
+type BlocksDataBlocksType = BlocksDataBlocks & Record<string, any>;
+
 export type BlocksData = {
-  blocks: {
-    [key: string]: object;
-  };
+  blocks: Record<string, BlocksDataBlocksType>;
   blocks_layout: {
     items: string[];
   };

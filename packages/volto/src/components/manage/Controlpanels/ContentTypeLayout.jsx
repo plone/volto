@@ -8,31 +8,29 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
+import { getParentUrl } from '@plone/volto/helpers/Url/Url';
 import {
-  getParentUrl,
   hasBlocksData,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
 import { createPortal } from 'react-dom';
 import { Button, Segment } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
-import { nth, join } from 'lodash';
+import nth from 'lodash/nth';
+import join from 'lodash/join';
+import Error from '@plone/volto/components/theme/Error/Error';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import { Form } from '@plone/volto/components/manage/Form';
+import { getSchema, updateSchema } from '@plone/volto/actions/schema/schema';
 import {
-  Error,
-  Form,
-  Icon,
-  Toolbar,
-  Sidebar,
-  Toast,
-} from '@plone/volto/components';
-import {
-  getSchema,
-  updateSchema,
   getControlpanel,
   updateControlpanel,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/controlpanels/controlpanels';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

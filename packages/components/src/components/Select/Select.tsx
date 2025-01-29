@@ -5,15 +5,15 @@ import {
   Label,
   ListBox,
   ListBoxItem,
-  ListBoxItemProps,
+  type ListBoxItemProps,
   Popover,
   PopoverContext,
   Select as RACSelect,
-  SelectProps as RACSelectProps,
+  type SelectProps as RACSelectProps,
   SelectValue,
   Text,
   useContextProps,
-  ValidationResult,
+  type ValidationResult,
 } from 'react-aria-components';
 
 import { ChevrondownIcon } from '../Icons/ChevrondownIcon';
@@ -43,7 +43,7 @@ export interface SelectProps<T extends object>
  * the data.
  *
  */
-export function Select<T extends object>({
+export function Select<T extends SelectItemObject>({
   label,
   description,
   errorMessage,
@@ -69,13 +69,26 @@ export function Select<T extends object>({
           {description && <Text slot="description">{description}</Text>}
           <FieldError>{errorMessage}</FieldError>
           <Popover {...popoverProps}>
-            <ListBox items={items}>{children}</ListBox>
+            {children ? (
+              <ListBox items={items}>{children}</ListBox>
+            ) : (
+              <ListBox items={items}>
+                {(item) => (
+                  <SelectItem id={item.label}>{item.value}</SelectItem>
+                )}
+              </ListBox>
+            )}
           </Popover>
         </>
       )}
     </RACSelect>
   );
 }
+
+export type SelectItemObject = {
+  label: string;
+  value: string;
+};
 
 export function SelectItem(props: ListBoxItemProps) {
   return <ListBoxItem {...props} />;

@@ -61,15 +61,28 @@ const defaultRazzleOptions = {
 };
 
 module.exports = {
-  core: {
-    builder: 'webpack5',
-  },
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    // '@storybook/preset-scss',
+    '@storybook/addon-webpack5-compiler-babel',
   ],
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: { builder: { useSWC: true } },
+  },
+  typescript: {
+    check: false,
+    checkOptions: {},
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      compilerOptions: {
+        allowSyntheticDefaultImports: false,
+        esModuleInterop: false,
+      },
+      propFilter: () => true,
+    },
+  },
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
@@ -91,9 +104,9 @@ module.exports = {
       [],
       defaultRazzleOptions,
     );
-    const AddonConfigurationRegistry = require('@plone/volto/addon-registry');
+    const { AddonRegistry } = require('@plone/registry/addon-registry');
 
-    const registry = new AddonConfigurationRegistry(projectRootPath);
+    const { registry } = AddonRegistry.init(projectRootPath);
 
     config = lessPlugin({ registry }).modifyWebpackConfig({
       env: { target: 'web', dev: 'dev' },
@@ -135,12 +148,16 @@ module.exports = {
     };
 
     // Addons have to be loaded with babel
-    const addonPaths = registry.addonNames.map((addon) =>
-      fs.realpathSync(registry.packages[addon].modulePath),
-    );
-    resultConfig.module.rules[1].exclude = (input) =>
+    const addonPaths = registry
+      .getAddons()
+      .map((addon) => fs.realpathSync(addon.modulePath));
+
+    resultConfig.module.rules[13].exclude = (input) =>
       // exclude every input from node_modules except from @plone/volto
       /node_modules\/(?!(@plone\/volto)\/)/.test(input) &&
+      // Storybook default exclusions
+      /storybook-config-entry\.js$/.test(input) &&
+      /storybook-stories\.js$/.test(input) &&
       // If input is in an addon, DON'T exclude it
       !addonPaths.some((p) => input.includes(p));
 
@@ -158,20 +175,5 @@ module.exports = {
     // loaders).
 
     return extendedConfig;
-  },
-  babel: async (options) => {
-    return {
-      ...options,
-      plugins: [
-        ...options.plugins,
-        [
-          './node_modules/babel-plugin-root-import/build/index.js',
-          {
-            rootPathSuffix: './src',
-          },
-        ],
-      ],
-      // any extra options you want to set
-    };
   },
 };

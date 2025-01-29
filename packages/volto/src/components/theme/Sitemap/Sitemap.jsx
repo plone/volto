@@ -5,11 +5,11 @@ import { connect, useSelector } from 'react-redux';
 import { asyncConnect, expandToBackendURL } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Container as SemanticContainer } from 'semantic-ui-react';
-import { Helmet } from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { Link } from 'react-router-dom';
 import config from '@plone/volto/registry';
 
-import { getNavigation } from '@plone/volto/actions';
+import { getNavigation } from '@plone/volto/actions/navigation/navigation';
 
 const messages = defineMessages({
   Sitemap: {

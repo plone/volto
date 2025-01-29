@@ -12,14 +12,13 @@ import {
   deleteComment,
   listComments,
   listMoreComments,
-} from '@plone/volto/actions';
-import { Avatar, CommentEditModal, Form } from '@plone/volto/components';
-import {
-  flattenToAppURL,
-  getBaseUrl,
-  getColor,
-  usePrevious,
-} from '@plone/volto/helpers';
+} from '@plone/volto/actions/comments/comments';
+import Avatar from '@plone/volto/components/theme/Avatar/Avatar';
+import { Form } from '@plone/volto/components/manage/Form';
+import { CommentEditModal } from '@plone/volto/components/theme/Comments';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { getColor } from '@plone/volto/helpers/Utils/Utils';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
 
 const messages = defineMessages({
   comment: {
@@ -213,7 +212,7 @@ const Comments = (props) => {
   // recursively makes comments with their replies nested
   // each iteration will show replies to the specific comment using allCommentsWithCildren
   const commentElement = (comment) => (
-    <Comment key={comment.comment_id}>
+    <Comment key={comment.comment_id} id={comment.comment_id}>
       <Avatar
         src={flattenToAppURL(comment.author_image)}
         title={comment.author_name || 'Anonymous'}
@@ -345,7 +344,7 @@ const Comments = (props) => {
         </div>
       )}
       {/* all comments  */}
-      <Comment.Group threaded>
+      <Comment.Group threaded id={'discussion'}>
         {allPrimaryComments.map((item) => commentElement(item))}
       </Comment.Group>
 

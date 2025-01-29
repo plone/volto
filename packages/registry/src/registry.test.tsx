@@ -1,21 +1,23 @@
 import config from './index';
-import { describe, expect, it, afterEach } from 'vitest';
+import { describe, expect, it, afterEach, beforeEach } from 'vitest';
 
-config.set('components', {
-  Toolbar: { component: 'this is the Toolbar component' },
-  'Toolbar.Types': { component: 'this is the Types component' },
-  'Teaser|News Item': { component: 'This is the News Item Teaser component' },
+beforeEach(() => {
+  config.set('components', {
+    Toolbar: { component: 'this is the Toolbar component' },
+    'Toolbar.Types': { component: 'this is the Types component' },
+    'Teaser|News Item': { component: 'This is the News Item Teaser component' },
+  });
+  config.set('slots', {});
+  config.set('utilities', {});
 });
 
-config.set('slots', {});
-
 describe('Component registry', () => {
-  it('get components', () => {
+  it('get a component', () => {
     expect(config.getComponent('Toolbar').component).toEqual(
       'this is the Toolbar component',
     );
   });
-  it('get components with context', () => {
+  it('get a component with context', () => {
     expect(
       config.getComponent({ name: 'Teaser', dependencies: 'News Item' })
         .component,
@@ -474,24 +476,24 @@ describe('Slots registry', () => {
     expect(config.getSlotComponents('toolbar')).toEqual(['edit', 'save']);
   });
 
-  it('reorderSlotComponent - after', () => {
+  it('reorderSlotComponent - after (target after origin)', () => {
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: 'save',
+      name: '1',
       component: 'this is a toolbar save component with a true predicate',
       predicates: [RouteConditionTrue('/de')],
     });
 
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: 'edit',
+      name: '2',
       component: 'this is a toolbar component with a false predicate',
       predicates: [RouteConditionFalse('/de')],
     });
 
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: 'cancel',
+      name: '3',
       component: 'this is a toolbar edit component with true predicate',
       predicates: [
         RouteConditionTrue('/folder/path'),
@@ -501,7 +503,7 @@ describe('Slots registry', () => {
 
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: 'bold',
+      name: '4',
       component: 'this is a toolbar edit component with true predicate',
       predicates: [
         RouteConditionTrue('/folder/path'),
@@ -509,44 +511,34 @@ describe('Slots registry', () => {
       ],
     });
 
-    expect(config.getSlotComponents('toolbar')).toEqual([
-      'save',
-      'edit',
-      'cancel',
-      'bold',
-    ]);
+    expect(config.getSlotComponents('toolbar')).toEqual(['1', '2', '3', '4']);
     config.reorderSlotComponent({
       slot: 'toolbar',
-      name: 'save',
+      name: '1',
       action: 'after',
-      target: 'cancel',
+      target: '3',
     });
-    expect(config.getSlotComponents('toolbar')).toEqual([
-      'edit',
-      'cancel',
-      'save',
-      'bold',
-    ]);
+    expect(config.getSlotComponents('toolbar')).toEqual(['2', '3', '1', '4']);
   });
 
-  it('reorderSlotComponent - before', () => {
+  it('reorderSlotComponent - after (target before origin)', () => {
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: 'save',
+      name: '1',
       component: 'this is a toolbar save component with a true predicate',
       predicates: [RouteConditionTrue('/de')],
     });
 
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: 'edit',
+      name: '2',
       component: 'this is a toolbar component with a false predicate',
       predicates: [RouteConditionFalse('/de')],
     });
 
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: 'cancel',
+      name: '3',
       component: 'this is a toolbar edit component with true predicate',
       predicates: [
         RouteConditionTrue('/folder/path'),
@@ -556,7 +548,7 @@ describe('Slots registry', () => {
 
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: 'bold',
+      name: '4',
       component: 'this is a toolbar edit component with true predicate',
       predicates: [
         RouteConditionTrue('/folder/path'),
@@ -564,24 +556,202 @@ describe('Slots registry', () => {
       ],
     });
 
-    expect(config.getSlotComponents('toolbar')).toEqual([
-      'save',
-      'edit',
-      'cancel',
-      'bold',
-    ]);
+    expect(config.getSlotComponents('toolbar')).toEqual(['1', '2', '3', '4']);
+    // Reorder Slot with original position 1 before Slot with position 3
+    // Before reordering the positions should be ["1", "2", "3", "4"]
+    // After the reordering the positions should be ["2", "1", "3", "4"]
     config.reorderSlotComponent({
       slot: 'toolbar',
-      name: 'save',
-      action: 'before',
-      target: 'cancel',
+      name: '3',
+      action: 'after',
+      target: '1',
     });
-    expect(config.getSlotComponents('toolbar')).toEqual([
-      'edit',
-      'save',
-      'cancel',
-      'bold',
-    ]);
+
+    expect(config.getSlotComponents('toolbar')).toEqual(['1', '3', '2', '4']);
+  });
+
+  it('reorderSlotComponent - after (target = origin)', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '1',
+      component: 'this is a toolbar save component with a true predicate',
+      predicates: [RouteConditionTrue('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '2',
+      component: 'this is a toolbar component with a false predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '3',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [
+        RouteConditionTrue('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '4',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [
+        RouteConditionTrue('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    expect(config.getSlotComponents('toolbar')).toEqual(['1', '2', '3', '4']);
+    // Reorder Slot with original position 1 before Slot with position 3
+    // Before reordering the positions should be ["1", "2", "3", "4"]
+    // After the reordering the positions should be ["2", "1", "3", "4"]
+    config.reorderSlotComponent({
+      slot: 'toolbar',
+      name: '3',
+      action: 'after',
+      target: '3',
+    });
+
+    expect(config.getSlotComponents('toolbar')).toEqual(['1', '2', '3', '4']);
+  });
+
+  it('reorderSlotComponent - before (target before origin)', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '1',
+      component: 'this is a toolbar save component with a true predicate',
+      predicates: [RouteConditionTrue('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '2',
+      component: 'this is a toolbar component with a false predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '3',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '4',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    expect(config.getSlotComponents('toolbar')).toEqual(['1', '2', '3', '4']);
+    // Reorder Slot with original position 4 before Slot with position 3
+    // Before reordering the positions should be ["1", "2", "3", "4"]
+    // After the reordering the positions should be ["1", "2", "4", "3 "]
+    config.reorderSlotComponent({
+      slot: 'toolbar',
+      name: '3',
+      action: 'before',
+      target: '1',
+    });
+
+    expect(config.getSlotComponents('toolbar')).toEqual(['3', '1', '2', '4']);
+  });
+
+  it('reorderSlotComponent - before (target after origin)', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '1',
+      component: 'this is a toolbar save component with a true predicate',
+      predicates: [RouteConditionTrue('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '2',
+      component: 'this is a toolbar component with a false predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '3',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [
+        RouteConditionTrue('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '4',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [
+        RouteConditionTrue('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    expect(config.getSlotComponents('toolbar')).toEqual(['1', '2', '3', '4']);
+    // Reorder Slot with original position 1 before Slot with position 3
+    // Before reordering the positions should be ["1", "2", "3", "4"]
+    // After the reordering the positions should be ["2", "1", "3", "4"]
+    config.reorderSlotComponent({
+      slot: 'toolbar',
+      name: '1',
+      action: 'before',
+      target: '3',
+    });
+
+    expect(config.getSlotComponents('toolbar')).toEqual(['2', '1', '3', '4']);
+  });
+
+  it('reorderSlotComponent - before (target = origin)', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '1',
+      component: 'this is a toolbar save component with a true predicate',
+      predicates: [RouteConditionTrue('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '2',
+      component: 'this is a toolbar component with a false predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '3',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '4',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    expect(config.getSlotComponents('toolbar')).toEqual(['1', '2', '3', '4']);
+    // Reorder Slot with original position 4 before Slot with position 3
+    // Before reordering the positions should be ["1", "2", "3", "4"]
+    // After the reordering the positions should be ["1", "2", "4", "3 "]
+    config.reorderSlotComponent({
+      slot: 'toolbar',
+      name: '3',
+      action: 'before',
+      target: '3',
+    });
+
+    expect(config.getSlotComponents('toolbar')).toEqual(['1', '2', '3', '4']);
   });
 
   it('reorderSlotComponent - last', () => {
@@ -749,5 +919,254 @@ describe('Slots registry', () => {
       name: 'save',
       component: TestComponent,
     });
+  });
+});
+
+describe('Utilities registry', () => {
+  afterEach(() => {
+    config.set('utilities', {});
+  });
+
+  it('registers a simple utility', () => {
+    config.registerUtility({
+      name: 'url',
+      type: 'validator',
+      method: () => 'this is a simple validator utility',
+    });
+
+    expect(
+      config.getUtility({ name: 'url', type: 'validator' }).method(),
+    ).toEqual('this is a simple validator utility');
+  });
+
+  it('registers a utility with dependencies', () => {
+    config.registerUtility({
+      name: 'email',
+      type: 'validator',
+      dependencies: { fieldType: 'email' },
+      method: () => 'this is a validator utility with dependencies',
+    });
+
+    expect(
+      config
+        .getUtility({
+          name: 'email',
+          dependencies: { fieldType: 'email' },
+          type: 'validator',
+        })
+        .method(),
+    ).toEqual('this is a validator utility with dependencies');
+  });
+
+  it('registers utilities, one with and one without dependencies', () => {
+    config.registerUtility({
+      name: 'email',
+      type: 'validator',
+      method: () => 'this is a simple validator utility',
+    });
+
+    config.registerUtility({
+      name: 'email',
+      type: 'validator',
+      dependencies: { fieldType: 'email' },
+      method: () => 'this is a validator utility with dependencies',
+    });
+
+    expect(
+      config.getUtility({ name: 'email', type: 'validator' }).method(),
+    ).toEqual('this is a simple validator utility');
+
+    expect(
+      config
+        .getUtility({
+          name: 'email',
+          dependencies: { fieldType: 'email' },
+          type: 'validator',
+        })
+        .method(),
+    ).toEqual('this is a validator utility with dependencies');
+  });
+
+  it('registers utilities with the same name, but different dependencies', () => {
+    config.registerUtility({
+      name: 'email',
+      type: 'validator',
+      dependencies: { fieldType: 'email' },
+      method: () => 'this is a validator utility with dependencies for email',
+    });
+
+    config.registerUtility({
+      name: 'email',
+      type: 'validator',
+      dependencies: { fieldType: 'string' },
+      method: () => 'this is a validator utility with dependencies for string',
+    });
+
+    expect(
+      config
+        .getUtility({
+          name: 'email',
+          dependencies: { fieldType: 'string' },
+          type: 'validator',
+        })
+        .method(),
+    ).toEqual('this is a validator utility with dependencies for string');
+
+    expect(
+      config
+        .getUtility({
+          name: 'email',
+          dependencies: { fieldType: 'email' },
+          type: 'validator',
+        })
+        .method(),
+    ).toEqual('this is a validator utility with dependencies for email');
+  });
+
+  it('getUtilities - registers two utilities with the same dependencies and different names', () => {
+    config.registerUtility({
+      name: 'minLength',
+      type: 'validator',
+      dependencies: { fieldType: 'string' },
+      method: () => 'this is a validator for minLength',
+    });
+
+    config.registerUtility({
+      name: 'maxLength',
+      type: 'validator',
+      dependencies: { fieldType: 'string' },
+      method: () => 'this is a validator for maxLength',
+    });
+
+    expect(
+      config.getUtilities({
+        dependencies: { fieldType: 'string' },
+        type: 'validator',
+      }).length,
+    ).toEqual(2);
+
+    expect(
+      config
+        .getUtilities({
+          dependencies: { fieldType: 'string' },
+          type: 'validator',
+        })[0]
+        .method(),
+    ).toEqual('this is a validator for minLength');
+
+    expect(
+      config
+        .getUtilities({
+          dependencies: { fieldType: 'string' },
+          type: 'validator',
+        })[1]
+        .method(),
+    ).toEqual('this is a validator for maxLength');
+  });
+
+  it('getUtilities - registers two utilities with the same dependencies and different names', () => {
+    expect(
+      config.getUtilities({
+        dependencies: { fieldType: 'string' },
+        type: 'validator',
+      }),
+    ).toEqual([]);
+  });
+});
+
+describe('Routes registry', () => {
+  afterEach(() => {
+    config.set('routes', []);
+  });
+
+  it('registers a simple route', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+      },
+    ]);
+  });
+
+  it('registers a simple route with options', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+      options: { id: 'login', caseSensitive: true },
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+        options: { id: 'login', caseSensitive: true },
+      },
+    ]);
+  });
+
+  it('registers a nested route', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+      children: [
+        {
+          type: 'route',
+          path: '/login/ok',
+          file: 'ok.tsx',
+        },
+      ],
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+        children: [
+          {
+            type: 'route',
+            path: '/login/ok',
+            file: 'ok.tsx',
+          },
+        ],
+      },
+    ]);
+  });
+
+  it('registers a couple of routes', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+    });
+
+    config.registerRoute({
+      type: 'route',
+      path: '/logout',
+      file: 'logout.tsx',
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+      },
+      {
+        type: 'route',
+        path: '/logout',
+        file: 'logout.tsx',
+      },
+    ]);
   });
 });

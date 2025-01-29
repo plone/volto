@@ -4,13 +4,16 @@ import {
   Outlet,
   createRootRouteWithContext,
   useRouter,
+  useLocation,
 } from '@tanstack/react-router';
-import { DehydrateRouter } from '@tanstack/react-router-server/client';
+import { DehydrateRouter } from '@tanstack/start/client';
 import { RouterContext } from '../routerContext';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { RouterProvider } from 'react-aria-components';
 
 import '@plone/components/dist/basic.css';
+import { AppRouterProvider } from '@plone/providers';
+import { flattenToAppURL } from '../utils';
 
 export const Route = createRootRouteWithContext<RouterContext>()({
   component: RootComponent,
@@ -53,11 +56,19 @@ function RootComponent() {
         </head>
       )}
       <body>
-        <RouterProvider
-          navigate={(path: string) => router.navigate({ to: path })}
+        <AppRouterProvider
+          useLocation={useLocation}
+          navigate={(path: string) =>
+            router.navigate({ to: flattenToAppURL(path) })
+          }
+          // TODO: Investigate why this fails in @tanstack/router :/
+          useHref={(to) => {
+            return flattenToAppURL(to);
+          }}
+          flattenToAppURL={flattenToAppURL}
         >
           <Outlet /> {/* Start rendering router matches */}
-        </RouterProvider>
+        </AppRouterProvider>
         <ReactQueryDevtools buttonPosition="top-right" />
         <TanStackRouterDevtools position="bottom-right" />
         <DehydrateRouter />

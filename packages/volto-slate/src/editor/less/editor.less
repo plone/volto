@@ -25,6 +25,12 @@
     &.upper {
       transform: translateY(-100%);
     }
+
+    .link-form-container {
+      display: flex;
+      align-items: center;
+      margin-left: 2px;
+    }
   }
 
   .toolbar-wrapper.active {
@@ -38,6 +44,7 @@
 
   .slate-toolbar {
     display: flex;
+    min-width: 300px; // needed for image widget slate toolbar
     box-sizing: border-box;
     padding: 3px;
     border: none;
