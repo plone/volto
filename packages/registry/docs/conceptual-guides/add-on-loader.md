@@ -34,7 +34,7 @@ export default function loadConfig(config: ConfigType) {
 That file contains the code needed to load the add-ons configuration of all the registered add-ons, keeping the order in which they were defined.
 
 This loader is a JavaScript file and it is placed in the root of your application.
-By default, it's called {file}`.registry.loader.js`.
+By default, it's called {file}`registry.loader.js`.
 
 ```{important}
 This file is generated and maintained by `@plone/registry`.
@@ -56,13 +56,13 @@ The `@plone/registry` Vite plugin generates this file, so the framework can load
   );
 ```
 
-This will create {file}`.registry.loader.js` in the root of your app.
+This will create {file}`registry.loader.js` in the root of your app.
 
 Afterwards, configure your app to load the code during the app bootstrap, as early as possible in both your client and server code, and as a module side-effect, as shown in the following example.
 
 ```js
 import config from '@plone/registry';
-import applyAddonConfiguration from './.registry.loader';
+import applyAddonConfiguration from './registry.loader';
 
 applyAddonConfiguration(config);
 ```

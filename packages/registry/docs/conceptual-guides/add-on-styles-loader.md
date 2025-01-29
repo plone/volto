@@ -17,7 +17,7 @@ This file is a `.css` file containing the styles that you want your app to load.
 That file contains the aggregated files from all the registered add-ons, keeping the order in which they were defined.
 
 This loader is also a `.css` file and is placed in the root of your application.
-By default, it's called {file}`.addons.styles.css`.
+By default, it's called {file}`addons.styles.css`.
 
 ```{important}
 This file is generated and maintained by `@plone/registry`.
@@ -35,12 +35,12 @@ The `@plone/registry` Vite plugin generates this file, so the framework can load
   createAddonsStyleLoader(registry.getAddonStyles());
 ```
 
-This will create {file}`.addons.styles.css` in the root of your app.
+This will create {file}`addons.styles.css` in the root of your app.
 Afterwards, configure your app to load the CSS according to the framework's convention, and in both a centralized and performant manner.
 
 ```css
 @import "tailwind";
-@import "./.addons.styles.css"
+@import "./addons.styles.css"
 ```
 
 ```{note}

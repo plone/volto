@@ -19,7 +19,7 @@ Add a ./styles/main.css in your add-on to load your add-on styles in the app.
 }
 
 export function createAddonsStyleLoader(addonsStylesInfo: Array<string>) {
-  const addonsLoaderPath = path.join(process.cwd(), '.addons.styles.css');
+  const addonsLoaderPath = path.join(process.cwd(), 'addons.styles.css');
 
   fs.writeFileSync(addonsLoaderPath, buildLoaderCode(addonsStylesInfo));
 }
