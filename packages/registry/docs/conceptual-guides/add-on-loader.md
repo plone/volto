@@ -30,7 +30,7 @@ export default function loadConfig(config: ConfigType) {
 }
 ```
 
-`@plone/registry` has a mean to generate an add-ons loader file that contains the code needed to load the add-ons configuration of all the registered add-ons, keeping the order in which they were defined.
+`@plone/registry` will generate an add-ons loader file that contains the code needed to load the add-ons configuration of all the registered add-ons, keeping the order in which they were defined.
 
 This loader is a JavaScript file and is placed in the root of your application.
 By default, it's called {file}`.registry.loader.js`.
