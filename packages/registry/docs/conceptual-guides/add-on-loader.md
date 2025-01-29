@@ -9,9 +9,9 @@ myst:
 
 # Add-ons configuration loader
 
-The `@plone/registry` compatible add-ons are able to load configuration into the configuration registry.
+Add-ons that are compatible with `@plone/registry` can load configuration into the configuration registry.
 This is achieved by using the `main` key entry point specified in the add-on {file}`package.json`.
-This should be a JavaScript or TypeScript file, eg. {file}`index.ts` or {file}`index.js` placed somewhere (generally in the root) of your add-on.
+This should be a JavaScript or TypeScript file, such as {file}`index.ts` or {file}`index.js`, placed somewhere in your add-on, conventionally at its root.
 
 ```json
 {
@@ -37,12 +37,12 @@ By default, it's called {file}`.registry.loader.js`.
 
 ```{important}
 This file is generated and maintained by `@plone/registry`.
-You should not modify it and add your own styles in here.
-It will be overwriten in the next bundler run.
+You should neither modify it nor add your own styles in here.
+It will be overwritten in the next bundler run.
 ```
 
 The add-ons loader generator is meant to be run before bundling your app or by the bundler itself when it runs.
-The `@plone/registry` Vite plugin generates this file so the framework can load it on app bootstrap time.
+The `@plone/registry` Vite plugin generates this file, so the framework can load it during app bootstrap time, as shown below.
 
 ```js
   const projectRootPath = path.resolve('.');
@@ -56,7 +56,8 @@ The `@plone/registry` Vite plugin generates this file so the framework can load 
 ```
 
 This will create {file}`.registry.loader.js` in the root of your app.
-Afterwards, you have to make sure that your app loads the code on the app bootstrap, as early as possible in your client (and server) code and as a module side-effect.
+
+Afterwards, configure your app to load the code during the app bootstrap, as early as possible in both your client and server code, and as a module side-effect, as shown in the following example.
 
 ```js
 import config from '@plone/registry';
@@ -67,16 +68,16 @@ applyAddonConfiguration(config);
 
 ```{note}
 If you are using a Vite-powered framework, just use the `@plone/registry` Vite plugin.
-Only in the case that you are using a non-Vite framework, you will have to build your own integration.
+If you use a non-Vite framework, you will have to build your own integration.
 You can take the implementation of the Vite plugin as reference.
 ```
 
 ## Provide optional add-on configurations
 
 You can export additional configuration functions from your add-ons configuration loader file.
-The default export is always loaded by `@plone/registry`, while the named exports are optional for loading, if required.
+The default export is always loaded by `@plone/registry`, while the named exports are optional for loading as needed.
 
-The way you specify if these optional loaders must be loaded is through the add-on registration using comma-separated values following a colon after the add-on name:
+To specify optional loaders as needed, in the add-on registration, use the name of your add-on, followed by a colon (`:`), followed by the names of the optional loaders as comma-separated values as shown in the following example.
 
 ```{code-block} json
 :emphasize-lines: 4
@@ -84,7 +85,7 @@ The way you specify if these optional loaders must be loaded is through the add-
 {
   "name": "my-nice-volto-project",
   "addons": [
-    "volto-foo-add-on:loadOptionalBlocks,overrideSomeDefaultBlock",
+    "my-volto-add-on-name:loadOptionalBlocks,overrideSomeDefaultBlock",
     "volto-another-add-on"
   ],
 }

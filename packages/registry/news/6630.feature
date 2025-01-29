@@ -1,1 +1,1 @@
-Added addons styles loader. @sneridagh
+Added add-ons styles loader. @sneridagh
