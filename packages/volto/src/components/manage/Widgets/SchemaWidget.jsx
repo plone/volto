@@ -492,7 +492,7 @@ map(['Floating-point number', 'label_float_field'], (factory) => {
   });
 });
 
-map(['Interger', 'label_integer_field'], (factory) => {
+map(['Integer', 'label_integer_field'], (factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
