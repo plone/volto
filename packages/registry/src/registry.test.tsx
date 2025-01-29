@@ -1073,3 +1073,100 @@ describe('Utilities registry', () => {
     ).toEqual([]);
   });
 });
+
+describe('Routes registry', () => {
+  afterEach(() => {
+    config.set('routes', []);
+  });
+
+  it('registers a simple route', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+      },
+    ]);
+  });
+
+  it('registers a simple route with options', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+      options: { id: 'login', caseSensitive: true },
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+        options: { id: 'login', caseSensitive: true },
+      },
+    ]);
+  });
+
+  it('registers a nested route', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+      children: [
+        {
+          type: 'route',
+          path: '/login/ok',
+          file: 'ok.tsx',
+        },
+      ],
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+        children: [
+          {
+            type: 'route',
+            path: '/login/ok',
+            file: 'ok.tsx',
+          },
+        ],
+      },
+    ]);
+  });
+
+  it('registers a couple of routes', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+    });
+
+    config.registerRoute({
+      type: 'route',
+      path: '/logout',
+      file: 'logout.tsx',
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+      },
+      {
+        type: 'route',
+        path: '/logout',
+        file: 'logout.tsx',
+      },
+    ]);
+  });
+});

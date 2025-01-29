@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
@@ -28,9 +28,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "type": "module",
   "main": "index.ts",
   "scripts": {
     "test": "vitest",
+    "check-ts": "tsc --project tsconfig.json",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
@@ -52,7 +54,7 @@
     "@plone/client": "workspace:*",
     "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
-    "react-aria-components": "^1.4.0"
+    "react-aria-components": "^1.5.0"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
@@ -65,6 +67,10 @@
     "@storybook/react": "^8.0.4",
     "@storybook/react-vite": "^8.0.4",
     "@storybook/theming": "^8.0.4",
+    "@testing-library/jest-dom": "6.4.2",
+    "@testing-library/react": "14.2.1",
+    "@types/jest-axe": "^3.5.7",
+    "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint-plugin-storybook": "^0.8.0",

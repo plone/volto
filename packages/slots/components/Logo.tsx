@@ -1,4 +1,4 @@
-import { SlotComponentProps } from '../SlotRenderer';
+import type { SlotComponentProps } from '../SlotRenderer';
 import { Link } from '@plone/components';
 import LogoImage from './Logo.svg';
 import config from '@plone/registry';
@@ -10,6 +10,7 @@ const Logo = (props: SlotComponentProps) => {
     name: 'translation',
     type: 'factory',
   }).method;
+
   const navRootPath = content['@components'].navroot?.navroot?.['@id'] || '/';
   const site = content['@components'].site;
   const siteTitle = site?.['plone.site_title'] || '';

@@ -2,7 +2,7 @@
 @import './Button.css';
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   .react-aria-TimeField {
     color: var(--text-color);
   }

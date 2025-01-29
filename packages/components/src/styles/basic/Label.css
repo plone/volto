@@ -1,6 +1,6 @@
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   .react-aria-Label {
     /* TODO: Review since taken from default quanta */
     font-size: 0.9rem;

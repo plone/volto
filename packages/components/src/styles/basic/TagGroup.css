@@ -1,7 +1,7 @@
 @import './ToggleButton.css';
 @import './theme.css';
 
-@layer plone-components {
+@layer plone-components.base {
   .react-aria-TagGroup {
     display: flex;
     flex-direction: column;

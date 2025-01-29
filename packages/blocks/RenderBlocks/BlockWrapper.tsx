@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import cx from 'clsx';
 import type { RenderBlocksProps } from './RenderBlocks';
 
@@ -11,8 +11,8 @@ const BlockWrapper = (props: BlockWrapperProps) => {
   const data = content.blocks?.[block];
   const category = blocksConfig?.[data['@type']]?.category;
   // TODO: Bring in the StyleWrapper helpers for calculating styles and classes
-  const classNames = null;
-  const style = null;
+  const classNames = undefined;
+  const style = undefined;
 
   return (
     <div
