@@ -10,7 +10,7 @@ myst:
 # Add-ons styles loader
 
 The `@plone/registry` compatible add-ons are able to define styles that should be loaded by the app.
-This is achieved by creating a folder {file}`styles` with a {file}`_main.css` file that serves as entry point.
+This is achieved by creating a folder {file}`styles` with a {file}`main.css` file that serves as entry point.
 This file is a `.css` file containing the styles that we want our app to load.
 
 `@plone/registry` has a mean to generate an add-ons style loader file that contains the aggregated files from all the registered add-ons, keeping the order in which they were defined.
