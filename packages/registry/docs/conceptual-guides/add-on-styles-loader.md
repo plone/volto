@@ -44,7 +44,7 @@ Afterwards, configure your app to load the CSS according to the framework's conv
 ```
 
 ```{note}
-If you are using a Vite-powered framework, just use the `@plone/registry` Vite plugin.
+If you use a Vite-powered framework, use the `@plone/registry` Vite plugin.
 If you use a non-Vite framework, you will have to build your own integration.
 You can take the implementation of the Vite plugin as reference.
 ```

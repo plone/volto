@@ -10,7 +10,7 @@ myst:
 # Add-ons configuration loader
 
 Add-ons that are compatible with `@plone/registry` can load configuration into the configuration registry.
-This is achieved by using the `main` key entry point specified in the add-on {file}`package.json`.
+`@plone/registry` reads the value of the `main` key entry point in the add-on {file}`package.json`, which specifies the source of the loader.
 This should be a JavaScript or TypeScript file, such as {file}`index.ts` or {file}`index.js`, placed somewhere in your add-on, conventionally at its root.
 
 ```json
@@ -30,7 +30,8 @@ export default function loadConfig(config: ConfigType) {
 }
 ```
 
-`@plone/registry` has a helper utility `createAddonsLoader` for generating an add-ons loader file that contains the code needed to load the add-ons configuration of all the registered add-ons, keeping the order in which they were defined.
+`@plone/registry` has a helper utility `createAddonsLoader` which generates the add-ons loader file.
+That file contains the code needed to load the add-ons configuration of all the registered add-ons, keeping the order in which they were defined.
 
 This loader is a JavaScript file and it is placed in the root of your application.
 By default, it's called {file}`.registry.loader.js`.
@@ -67,7 +68,7 @@ applyAddonConfiguration(config);
 ```
 
 ```{note}
-If you are using a Vite-powered framework, just use the `@plone/registry` Vite plugin.
+If you use a Vite-powered framework, use the `@plone/registry` Vite plugin.
 If you use a non-Vite framework, you will have to build your own integration.
 You can take the implementation of the Vite plugin as reference.
 ```
