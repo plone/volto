@@ -59,7 +59,7 @@ describe('Working Copy Tests - Create', () => {
     cy.findByText('View working copy');
   });
 
-  it('Portal root does not have create option', function () {
+  it('Portal root has create option', function () {
     cy.visit('/');
     cy.get('#toolbar-more').click();
     cy.get('.menu-more').contains('Create working copy').should('not.exist');
