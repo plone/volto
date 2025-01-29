@@ -3,10 +3,13 @@
 exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
 <div>
   <div
+    aria-label="Block chooser"
     class="blocks-chooser"
+    role="dialog"
   >
     <form
       class="ui form"
+      role="search"
       style="padding: 0.5em;"
     >
       <div
@@ -32,8 +35,12 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
       class="accordion ui fluid styled form"
     >
       <div
+        aria-controls="section-mostUsed"
+        aria-expanded="true"
         aria-label="Fold Most used blocks"
         class="active title"
+        role="button"
+        tabindex="0"
       >
         Most used
         <div
@@ -48,7 +55,10 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
         </div>
       </div>
       <div
+        aria-labelledby="header-mostUsed"
         class="content active mostUsed"
+        id="section-mostUsed"
+        role="region"
       >
         <div
           aria-hidden="false"
@@ -59,50 +69,67 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
             style="transition: opacity 500ms ease 0ms;"
           >
             <div
-              class="ui buttons"
+              role="list"
             >
-              <button
-                class="ui basic icon button image"
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Image
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button listing"
+                <button
+                  aria-label="Image"
+                  class="ui basic icon button image"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Image
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Listing
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button video"
+                <button
+                  aria-label="Listing"
+                  class="ui basic icon button listing"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Listing
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Video
-              </button>
+                <button
+                  aria-label="Video"
+                  class="ui basic icon button video"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Video
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div
+        aria-controls="section-text"
+        aria-expanded="false"
         aria-label="Unfold Text blocks"
         class="title"
+        role="button"
+        tabindex="0"
       >
         Text
         <div
@@ -117,7 +144,10 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
         </div>
       </div>
       <div
+        aria-labelledby="header-text"
         class="content text"
+        id="section-text"
+        role="region"
       >
         <div
           aria-hidden="true"
@@ -128,24 +158,35 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
             style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
           >
             <div
-              class="ui buttons"
+              role="list"
             >
-              <button
-                class="ui basic icon button text"
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Text
-              </button>
+                <button
+                  aria-label="Text"
+                  class="ui basic icon button text"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Text
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div
+        aria-controls="section-media"
+        aria-expanded="false"
         aria-label="Unfold Media blocks"
         class="title"
+        role="button"
+        tabindex="0"
       >
         Media
         <div
@@ -160,7 +201,10 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
         </div>
       </div>
       <div
+        aria-labelledby="header-media"
         class="content media"
+        id="section-media"
+        role="region"
       >
         <div
           aria-hidden="true"
@@ -171,50 +215,67 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
             style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
           >
             <div
-              class="ui buttons"
+              role="list"
             >
-              <button
-                class="ui basic icon button image"
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Image
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button leadimage"
+                <button
+                  aria-label="Image"
+                  class="ui basic icon button image"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Image
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Lead Image Field
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button video"
+                <button
+                  aria-label="Lead Image Field"
+                  class="ui basic icon button leadimage"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Lead Image Field
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Video
-              </button>
+                <button
+                  aria-label="Video"
+                  class="ui basic icon button video"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Video
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div
+        aria-controls="section-common"
+        aria-expanded="false"
         aria-label="Unfold Common blocks"
         class="title"
+        role="button"
+        tabindex="0"
       >
         Common
         <div
@@ -229,7 +290,10 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
         </div>
       </div>
       <div
+        aria-labelledby="header-common"
         class="content common"
+        id="section-common"
+        role="region"
       >
         <div
           aria-hidden="true"
@@ -240,82 +304,104 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
             style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
           >
             <div
-              class="ui buttons"
+              role="list"
             >
-              <button
-                class="ui basic icon button listing"
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Listing
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button toc"
+                <button
+                  aria-label="Listing"
+                  class="ui basic icon button listing"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Listing
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Table of Contents
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button hero"
+                <button
+                  aria-label="Table of Contents"
+                  class="ui basic icon button toc"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Table of Contents
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Hero
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button maps"
+                <button
+                  aria-label="Hero"
+                  class="ui basic icon button hero"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Hero
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Maps
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button html"
+                <button
+                  aria-label="Maps"
+                  class="ui basic icon button maps"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Maps
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                HTML
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button table"
+                <button
+                  aria-label="HTML"
+                  class="ui basic icon button html"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  HTML
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Table
-              </button>
+                <button
+                  aria-label="Table"
+                  class="ui basic icon button table"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Table
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -328,10 +414,13 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
 exports[`BlocksChooser renders a BlockChooser component 1`] = `
 <div>
   <div
+    aria-label="Block chooser"
     class="blocks-chooser"
+    role="dialog"
   >
     <form
       class="ui form"
+      role="search"
       style="padding: 0.5em;"
     >
       <div
@@ -357,8 +446,12 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
       class="accordion ui fluid styled form"
     >
       <div
+        aria-controls="section-mostUsed"
+        aria-expanded="true"
         aria-label="Fold Most used blocks"
         class="active title"
+        role="button"
+        tabindex="0"
       >
         Most used
         <div
@@ -373,7 +466,10 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
         </div>
       </div>
       <div
+        aria-labelledby="header-mostUsed"
         class="content active mostUsed"
+        id="section-mostUsed"
+        role="region"
       >
         <div
           aria-hidden="false"
@@ -384,50 +480,67 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
             style="transition: opacity 500ms ease 0ms;"
           >
             <div
-              class="ui buttons"
+              role="list"
             >
-              <button
-                class="ui basic icon button image"
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Image
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button listing"
+                <button
+                  aria-label="Image"
+                  class="ui basic icon button image"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Image
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Listing
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button video"
+                <button
+                  aria-label="Listing"
+                  class="ui basic icon button listing"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Listing
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Video
-              </button>
+                <button
+                  aria-label="Video"
+                  class="ui basic icon button video"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Video
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div
+        aria-controls="section-text"
+        aria-expanded="false"
         aria-label="Unfold Text blocks"
         class="title"
+        role="button"
+        tabindex="0"
       >
         Text
         <div
@@ -442,7 +555,10 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
         </div>
       </div>
       <div
+        aria-labelledby="header-text"
         class="content text"
+        id="section-text"
+        role="region"
       >
         <div
           aria-hidden="true"
@@ -453,24 +569,35 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
             style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
           >
             <div
-              class="ui buttons"
+              role="list"
             >
-              <button
-                class="ui basic icon button text"
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Text
-              </button>
+                <button
+                  aria-label="Text"
+                  class="ui basic icon button text"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Text
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div
+        aria-controls="section-media"
+        aria-expanded="false"
         aria-label="Unfold Media blocks"
         class="title"
+        role="button"
+        tabindex="0"
       >
         Media
         <div
@@ -485,7 +612,10 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
         </div>
       </div>
       <div
+        aria-labelledby="header-media"
         class="content media"
+        id="section-media"
+        role="region"
       >
         <div
           aria-hidden="true"
@@ -496,50 +626,67 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
             style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
           >
             <div
-              class="ui buttons"
+              role="list"
             >
-              <button
-                class="ui basic icon button image"
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Image
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button leadimage"
+                <button
+                  aria-label="Image"
+                  class="ui basic icon button image"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Image
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Lead Image Field
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button video"
+                <button
+                  aria-label="Lead Image Field"
+                  class="ui basic icon button leadimage"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Lead Image Field
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Video
-              </button>
+                <button
+                  aria-label="Video"
+                  class="ui basic icon button video"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Video
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div
+        aria-controls="section-common"
+        aria-expanded="false"
         aria-label="Unfold Common blocks"
         class="title"
+        role="button"
+        tabindex="0"
       >
         Common
         <div
@@ -554,7 +701,10 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
         </div>
       </div>
       <div
+        aria-labelledby="header-common"
         class="content common"
+        id="section-common"
+        role="region"
       >
         <div
           aria-hidden="true"
@@ -565,82 +715,104 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
             style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
           >
             <div
-              class="ui buttons"
+              role="list"
             >
-              <button
-                class="ui basic icon button listing"
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Listing
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button toc"
+                <button
+                  aria-label="Listing"
+                  class="ui basic icon button listing"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Listing
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Table of Contents
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button hero"
+                <button
+                  aria-label="Table of Contents"
+                  class="ui basic icon button toc"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Table of Contents
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Hero
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button maps"
+                <button
+                  aria-label="Hero"
+                  class="ui basic icon button hero"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Hero
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Maps
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button html"
+                <button
+                  aria-label="Maps"
+                  class="ui basic icon button maps"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Maps
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                HTML
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                class="ui basic icon button table"
+                <button
+                  aria-label="HTML"
+                  class="ui basic icon button html"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  HTML
+                </button>
+              </div>
+              <div
+                class="ui buttons"
               >
-                <svg
-                  class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
-                />
-                Table
-              </button>
+                <button
+                  aria-label="Table"
+                  class="ui basic icon button table"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 36px; width: auto; fill: currentColor;"
+                  />
+                  Table
+                </button>
+              </div>
             </div>
           </div>
         </div>

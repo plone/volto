@@ -4,6 +4,7 @@ exports[`BlocksChooserSearch renders a BlockChooserSearch component 1`] = `
 <div>
   <form
     class="ui form"
+    role="search"
     style="padding: 0.5em;"
   >
     <div
