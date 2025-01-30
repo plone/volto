@@ -3,18 +3,16 @@
  */
 import config from '@plone/registry';
 import ploneClient from '@plone/client';
-import applyAddonConfiguration from '@plone/registry/addons-loader';
+import applyAddonConfiguration from '../registry.loader';
 
 export default function install() {
   applyAddonConfiguration(config);
 
   config.settings.apiPath =
-    process.env.PLONE_API_PATH || 'http://localhost:3000';
-  config.settings.internalApiPath =
-    process.env.PLONE_INTERNAL_API_PATH || undefined;
+    process.env.PLONE_API_PATH || 'http://localhost:8080/Plone';
 
   const cli = ploneClient.initialize({
-    apiPath: config.settings.internalApiPath || config.settings.apiPath,
+    apiPath: config.settings.apiPath,
   });
 
   config.registerUtility({
@@ -24,9 +22,6 @@ export default function install() {
   });
 
   console.log('API_PATH is:', config.settings.apiPath);
-  console.log(
-    'INTERNAL_API_PATH is:',
-    config.settings.internalApiPath || 'not set',
-  );
+
   return config;
 }

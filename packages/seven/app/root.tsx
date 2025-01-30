@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   isRouteErrorResponse,
   Links,
@@ -11,23 +10,18 @@ import {
   useNavigate as useRRNavigate,
   useParams,
   useLoaderData,
-  useRouteLoaderData,
 } from 'react-router';
 import type { Route } from './+types/root';
+import contentLoader from './loaders/content';
 
-import { QueryClient } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import PloneClient from '@plone/client';
-import { PloneProvider } from '@plone/providers';
+import { AppRouterProvider } from '@plone/providers';
 import { flattenToAppURL } from './utils';
-import config from '@plone/registry';
 import install from './config';
-import installSSR from './config.server';
+import installServer from './config.server';
 
 install();
 
-import themingMain from '@plone/theming/styles/main.css?url';
-import slotsMain from '@plone/slots/main.css?url';
+import stylesheet from '../addons.styles.css?url';
 
 function useNavigate() {
   const navigate = useRRNavigate();
@@ -38,15 +32,17 @@ function useHrefLocal(to: string) {
   return useHref(flattenToAppURL(to) || '');
 }
 
-export const meta: Route.MetaFunction = () => [
+export const meta: Route.MetaFunction = ({ data }) => [
+  { title: data?.title },
+  { name: 'description', content: data?.description },
   { name: 'generator', content: 'Plone 7 - https://plone.org' },
 ];
 
 export const links: Route.LinksFunction = () => [
   {
     rel: 'icon',
-    href: '/favicon.png',
-    type: 'image/png',
+    href: '/favicon.ico',
+    type: 'image/x-icon',
     sizes: 'any',
   },
   {
@@ -54,8 +50,7 @@ export const links: Route.LinksFunction = () => [
     href: '/icon.svg',
     type: 'image/svg+xml',
   },
-  { rel: 'stylesheet', href: themingMain },
-  { rel: 'stylesheet', href: slotsMain },
+  { rel: 'stylesheet', href: stylesheet },
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
   {
     rel: 'preconnect',
@@ -68,25 +63,17 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
-export async function loader() {
-  const ssrConfig = installSSR();
+export async function loader({ params, request }: Route.LoaderArgs) {
+  installServer();
 
-  return {
-    env: {
-      PLONE_API_PATH: ssrConfig.settings.apiPath,
-      PLONE_INTERNAL_API_PATH: ssrConfig.settings.internalApiPath,
-    },
-  };
+  return await contentLoader({ params, request });
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const data = useLoaderData<typeof loader>();
-  const indexLoaderData = useRouteLoaderData('index');
-  const contentLoaderData = useRouteLoaderData('content');
-  const contentData = indexLoaderData || contentLoaderData;
 
   return (
-    <html lang={contentData?.language?.token || 'en'}>
+    <html lang={data?.language?.token || 'en'}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -99,11 +86,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div id="main">{children}</div>
         <div role="complementary" aria-label="Sidebar" id="sidebar" />
         <ScrollRestoration />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.env = ${JSON.stringify(data.env)}`,
-          }}
-        />
         <Scripts />
       </body>
     </html>
@@ -138,46 +120,11 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   );
 }
 
-declare global {
-  interface Window {
-    env: {
-      PLONE_API_PATH: string;
-      PLONE_INTERNAL_API_PATH: string;
-    };
-  }
-}
-
 export default function App() {
-  if (!import.meta.env.SSR) {
-    config.settings.apiPath = window.env.PLONE_API_PATH;
-    config.settings.internalApiPath = window.env.PLONE_INTERNAL_API_PATH;
-  }
-
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            // With SSR, we usually want to set some default staleTime
-            // above 0 to avoid refetching immediately on the client
-            staleTime: 60 * 1000,
-          },
-        },
-      }),
-  );
-
-  const [ploneClient] = useState(() =>
-    PloneClient.initialize({
-      apiPath: config.settings.apiPath,
-    }),
-  );
-
   const navigate = useNavigate();
 
   return (
-    <PloneProvider
-      ploneClient={ploneClient}
-      queryClient={queryClient}
+    <AppRouterProvider
       useLocation={useLocation}
       useParams={useParams}
       useHref={useHrefLocal}
@@ -185,7 +132,6 @@ export default function App() {
       flattenToAppURL={flattenToAppURL}
     >
       <Outlet />
-      <ReactQueryDevtools initialIsOpen={false} />
-    </PloneProvider>
+    </AppRouterProvider>
   );
 }

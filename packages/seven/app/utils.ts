@@ -12,9 +12,6 @@ export function flattenToAppURL(url: string | undefined): string | undefined {
 
   const result =
     url &&
-    url
-      .replace(settings.apiPath, '')
-      .replace(settings.internalApiPath, '')
-      .replace('http://localhost:3000', '');
+    url.replace(settings.apiPath, '').replace('http://localhost:3000', '');
   return result;
 }
