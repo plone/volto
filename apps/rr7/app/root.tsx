@@ -27,7 +27,7 @@ import installSSR from './config.server';
 install();
 
 import themingMain from '@plone/theming/styles/main.css?url';
-import slotsMain from '@plone/slots/main.css?url';
+import slotsMain from '@plone/slots/styles/main.css?url';
 
 function useNavigate() {
   const navigate = useRRNavigate();

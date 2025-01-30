@@ -21,6 +21,7 @@ import installServer from './config.server';
 
 install();
 
+// eslint-disable-next-line import/no-unresolved
 import stylesheet from '../addons.styles.css?url';
 
 function useNavigate() {
