@@ -1,4 +1,4 @@
-# @plone/volto-types Release Notes
+# @plone/types Release Notes
 
 <!-- Do *NOT* add new change log entries to this file.
      Instead create a file in the news directory.
@@ -8,11 +8,29 @@
 
 <!-- towncrier release notes start -->
 
+## 1.3.0 (2025-01-24)
+
+### Feature
+
+- Added typings for the route registry. @sneridagh [#6600](https://github.com/plone/volto/issues/6600)
+
+## 1.2.0 (2024-12-17)
+
+### Feature
+
+- Added the typing for the new `cssLayers` configuration object setting. @sneridagh [#6539](https://github.com/plone/volto/issues/6539)
+
+## 1.1.0 (2024-12-12)
+
+### Feature
+
+- Added block category type. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+
 ## 1.0.0 (2024-10-31)
 
 ### Internal
 
-- Release 1.0.0 @sneridagh 
+- Release 1.0.0 @sneridagh
 
 ## 1.0.0-alpha.22 (2024-10-30)
 

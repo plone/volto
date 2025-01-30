@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.22 (2025-01-24)
+
+### Documentation
+
+- Fix typo in README. @sneridagh [#6599](https://github.com/plone/volto/pull/6599)
+
+## 1.0.0-alpha.21 (2025-01-15)
+
+### Feature
+
+- Import `getContent` bare fetcher. @sneridagh [#6594](https://github.com/plone/volto/pull/6594)
+
 ## 1.0.0-alpha.20 (2024-11-05)
 
 ### Internal

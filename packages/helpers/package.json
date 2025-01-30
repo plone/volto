@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
@@ -28,7 +28,19 @@
   "publishConfig": {
     "access": "public"
   },
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "main": "src/index.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.cjs"
+    }
+  },
   "scripts": {
     "watch": "tsup",
     "build": "tsup",

@@ -8,6 +8,23 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.1 (2024-12-17)
+
+### Bugfix
+
+- Fixed precedence of the Quanta layer by adding a base layer for all the basic components. @sneridagh [#6539](https://github.com/plone/volto/issues/6539)
+
+### Internal
+
+- Update `@plone/components`'s URLs in its `package.json`. @stevepiercy [#6542](https://github.com/plone/volto/issues/6542)
+
+## 3.0.0 (2024-12-12)
+
+### Breaking
+
+- All the styles use now the CSS layer `plone-components`. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+- Moved the `RenderBlocks` component to `@plone/blocks`. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+
 ## 2.2.1 (2024-12-05)
 
 ### Bugfix
