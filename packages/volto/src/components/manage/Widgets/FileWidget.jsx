@@ -154,7 +154,7 @@ const FileWidget = (props) => {
               </div>
             )}
 
-            <label className="label-file-widget-input">
+            <label htmlFor={`field-${id}`} className="label-file-widget-input">
               {value
                 ? intl.formatMessage(messages.replaceFile)
                 : intl.formatMessage(messages.addNewFile)}
