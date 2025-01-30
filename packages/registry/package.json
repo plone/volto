@@ -52,6 +52,10 @@
       "import": "./dist/addon-registry/create-theme-loader.js",
       "default": "./dist/addon-registry/create-theme-loader.cjs"
     },
+    "./create-addons-styles-loader": {
+      "import": "./dist/addon-registry/create-addons-styles-loader.js",
+      "default": "./dist/addon-registry/create-addons-styles-loader.cjs"
+    },
     "./vite-plugin": {
       "import": "./vite-plugin.js",
       "types": "./vite-plugin.d.ts"
