@@ -8,24 +8,24 @@ import config from '@plone/volto/registry';
 import { __test__ as Sitemap, getSitemapPath } from './Sitemap';
 
 const mockStore = configureStore();
-
+const ploneUrl = 'http://localhost:8080/Plone';
 describe('Sitemap', () => {
   it('renders a sitemap component', () => {
     const store = mockStore({
       navigation: {
-        url: 'http://localhost:8080/Plone/@navigation',
+        url: `${ploneUrl}/@navigation`,
         items: [
           {
-            url: 'http://localhost:8080/Plone/page-1',
+            url: `${ploneUrl}/page-1`,
             description: '',
             items: [
               {
-                url: 'http://localhost:8080/Plone/page-1/page-1-2',
+                url: `${ploneUrl}/page-1/page-1-2`,
                 description: '',
                 title: 'Page 1-2',
               },
               {
-                url: 'http://localhost:8080/Plone/page-1/page-1-3',
+                url: `${ploneUrl}/page-1/page-1-3`,
                 description: '',
                 title: 'Page 1-3',
               },
@@ -33,7 +33,7 @@ describe('Sitemap', () => {
             title: 'Page 1-3',
           },
           {
-            url: 'http://localhost:8080/Plone/page-2',
+            url: `${ploneUrl}/page-2`,
             description: '',
             title: 'Page 2',
           },
@@ -44,8 +44,10 @@ describe('Sitemap', () => {
         messages: {},
       },
       navroot: {
-        navroot: {
-          '@id': 'http://localhost:8080/Plone',
+        data: {
+          navroot: {
+            '@id': `${ploneUrl}`,
+          },
         },
       },
     });
@@ -69,19 +71,19 @@ describe('Sitemap in a multilingual site', () => {
   it('renders a sitemap component', () => {
     const store = mockStore({
       navigation: {
-        url: 'http://localhost:8080/Plone/en/@navigation',
+        url: `${ploneUrl}/en/@navigation`,
         items: [
           {
-            url: 'http://localhost:8080/Plone/en/page-1',
+            url: `${ploneUrl}/en/page-1`,
             description: '',
             items: [
               {
-                url: 'http://localhost:8080/Plone/en/page-1/page-1-2',
+                url: `${ploneUrl}/en/page-1/page-1-2`,
                 description: '',
                 title: 'Page 1-2',
               },
               {
-                url: 'http://localhost:8080/Plone/en/page-1/page-1-3',
+                url: `${ploneUrl}/en/page-1/page-1-3`,
                 description: '',
                 title: 'Page 1-3',
               },
@@ -89,7 +91,7 @@ describe('Sitemap in a multilingual site', () => {
             title: 'Page 1-3',
           },
           {
-            url: 'http://localhost:8080/Plone/en/page-2',
+            url: `${ploneUrl}/en/page-2`,
             description: '',
             title: 'Page 2',
           },
@@ -100,8 +102,10 @@ describe('Sitemap in a multilingual site', () => {
         messages: {},
       },
       navroot: {
-        navroot: {
-          '@id': 'http://localhost:8080/Plone/en',
+        data: {
+          navroot: {
+            '@id': `${ploneUrl}/en`,
+          },
         },
       },
     });
