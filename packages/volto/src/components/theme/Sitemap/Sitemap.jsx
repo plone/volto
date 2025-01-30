@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect, useSelector } from 'react-redux';
-import { asyncConnect } from '@plone/volto/helpers/AsyncConnect/AsyncConnect';
+import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { expandToBackendURL } from '@plone/volto/helpers/Url/Url';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Container as SemanticContainer } from 'semantic-ui-react';
