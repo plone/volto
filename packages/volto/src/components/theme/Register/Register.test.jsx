@@ -31,6 +31,32 @@ describe('Register', () => {
           loaded: true,
         },
       },
+      userschema: {
+        loaded: true,
+        loading: false,
+        userschema: {
+          fieldsets: [
+            {
+              id: 'default',
+              title: 'default',
+              fields: ['fullname', 'email'],
+            },
+          ],
+          properties: {
+            fullname: {
+              type: 'string',
+              title: 'Full name',
+              description: 'Enter your full name',
+            },
+            email: {
+              type: 'string',
+              title: 'email',
+              description: 'Enter your email address',
+            },
+          },
+          required: ['fullname', 'email'],
+        },
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
