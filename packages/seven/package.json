@@ -23,14 +23,13 @@
     "@plone/theming": "workspace:*",
     "@react-router/node": "7.1.2",
     "@react-router/serve": "7.1.2",
-    "@tanstack/react-query": "^5.59.0",
-    "@tanstack/react-query-devtools": "^5.59.0",
     "isbot": "^5.1.17",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "7.1.2"
   },
   "devDependencies": {
+    "@plone/types": "workspace:*",
     "@react-router/dev": "7.1.2",
     "@testing-library/cypress": "10.0.2",
     "@types/react": "^18.3.9",
