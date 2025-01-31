@@ -54,7 +54,14 @@ export default function Image({
     attrs.className = cx(className, { responsive });
 
     if (!isSvg && image.scales && Object.keys(image.scales).length > 0) {
-      const sortedScales = Object.values(image.scales).sort((a, b) => {
+      const sortedScales = Object.values({
+        ...image.scales,
+        original: {
+          download: `${image.download}`,
+          width: image.width,
+          height: image.height,
+        },
+      }).sort((a, b) => {
         if (a.width > b.width) return 1;
         else if (a.width < b.width) return -1;
         else return 0;
