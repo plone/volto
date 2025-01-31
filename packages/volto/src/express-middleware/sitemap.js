@@ -50,7 +50,8 @@ export const sitemapIndex = function (req, res, next) {
 export default function sitemapMiddleware() {
   const middleware = express.Router();
 
-  middleware.all('**/sitemap.xml.gz', sitemap);
+  // Do not deliver the old sitemap.xml.gz as it might cause issues if Google parses it
+  // in addition to the sitemap-index.xml.
   middleware.all('**/sitemap:batch.xml.gz', sitemap);
   middleware.all('**/sitemap-index.xml', sitemapIndex);
   middleware.id = 'sitemap.xml.gz';
