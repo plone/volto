@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.2.1 (2025-01-31)
+
+### Bugfix
+
+- Pass `intl` object to `initialValue` function. @wesleybl [#6529](https://github.com/plone/volto/issues/6529)
+
 ## 18.2.0 (2025-01-24)
 
 ### Feature
