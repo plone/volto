@@ -17,6 +17,36 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.8.0 (2025-01-31)
+
+### Feature
+
+- Show the working copy actions (checkin/checkout) based on whether they are enabled in the backend, instead of the `hasWorkingCopySupport` setting. @wesleybl, @davisagli [#5284](https://github.com/plone/volto/issues/5284)
+- Expose `robots.txt` setting in Volto control panel, and render `robots.txt` based on REST API call. @robgietema [#5580](https://github.com/plone/volto/issues/5580)
+- Update tests to match the new message in the add-ons loader. @sneridagh [#6630](https://github.com/plone/volto/issues/6630)
+
+### Bugfix
+
+- Pass `intl` object to `initialValue` function. @wesleybl [#6529](https://github.com/plone/volto/issues/6529)
+- Update Dutch translations @fredvd [#6531](https://github.com/plone/volto/issues/6531)
+- Correctly handle when one of the items is `null` in the Relations control panel. @giuliaghisini [#6629](https://github.com/plone/volto/issues/6629)
+- Added `field.pattern` as a parameter to the internationalized message. @ionlizarazu [#6631](https://github.com/plone/volto/issues/6631)
+- Display the appropriately sized image to eliminate blurring from upsizing smaller images in the `srcSet` generation. @giuliaghisini [#6634](https://github.com/plone/volto/issues/6634)
+
+### Internal
+
+- Add acceptance test for non-manager user editing group memberships. @ksuess [#5786](https://github.com/plone/volto/issues/5786)
+- Enhance Volto contributing guidelines. @stevepiercy [#6613](https://github.com/plone/volto/issues/6613)
+- Split Read the Docs pull request preview builds between Volto and `@plone/registry`. @stevepiercy [#6617](https://github.com/plone/volto/issues/6617)
+- Updates the first-timer message to use the correct link for feature voting. @stevepiercy [#6625](https://github.com/plone/volto/issues/6625)
+- Allow `2021.ploneconf.org` to fail readme-link-check. @stevepiercy [#6627](https://github.com/plone/volto/issues/6627)
+
+### Documentation
+
+- Amended version policy documentation. @sneridagh
+  Added deprecation notice for Semantic UI theming. [#6541](https://github.com/plone/volto/issues/6541)
+- Document how to migrate projects to Cookieplone. @stevepiercy @erral [#6626](https://github.com/plone/volto/issues/6626)
+
 ## 18.7.0 (2025-01-24)
 
 ### Feature
