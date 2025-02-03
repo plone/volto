@@ -1,0 +1,2 @@
+Fix `corepack` in CI. @sneridagh
+For more info: https://github.com/nodejs/corepack/issues/612
