@@ -756,10 +756,10 @@ importers:
   packages/helpers:
     dependencies:
       react:
-        specifier: ^16.8.0 || ^17.0.0 || ^18.0.0
+        specifier: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
         version: 18.2.0
       react-dom:
-        specifier: ^16.8.0 || ^17.0.0 || ^18.0.0
+        specifier: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@plone/types':
