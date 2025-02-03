@@ -39,8 +39,8 @@
     "build-storybook": "storybook build"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
   },
   "peerDependenciesMeta": {
     "react-dom": {
@@ -60,7 +60,7 @@
     "jest-axe": "^8.0.0",
     "release-it": "17.1.1",
     "tsconfig": "workspace:*",
-    "typescript": "^5.6.3",
+    "typescript": "^5.7.3",
     "vite": "^5.4.9",
     "vitest": "^2.1.3",
     "vitest-axe": "^0.1.0"

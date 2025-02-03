@@ -80,8 +80,8 @@
     "release-alpha": "release-it --preRelease=alpha"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "peerDependenciesMeta": {
     "react-dom": {
@@ -110,7 +110,7 @@
     "release-it": "16.2.1",
     "tsconfig": "workspace:*",
     "tsup": "^8.3.5",
-    "typescript": "^5.6.3",
+    "typescript": "^5.7.3",
     "vite": "^5.4.9",
     "vitest": "^2.1.3"
   }
