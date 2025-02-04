@@ -17,6 +17,18 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.8.1 (2025-02-04)
+
+### Bugfix
+
+- Fix regression in moving blocks from Grid block. @sneridagh [#6642](https://github.com/plone/volto/issues/6642)
+
+### Internal
+
+- Fix `corepack` in CI. @sneridagh
+  For more info: https://github.com/nodejs/corepack/issues/612 [#6640](https://github.com/plone/volto/issues/6640)
+- Update TS version. @sneridagh [#6641](https://github.com/plone/volto/issues/6641)
+
 ## 18.8.0 (2025-01-31)
 
 ### Feature
