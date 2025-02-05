@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.3.1 (2025-01-31)
+
+### Bugfix
+
+- Remove `hasWorkingCopySupport` setting. @davisagli [#6393](https://github.com/plone/volto/issues/6393)
+
 ## 1.3.0 (2025-01-24)
 
 ### Feature

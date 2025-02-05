@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.4.0 (2025-01-31)
+
+### Feature
+
+- Added add-ons styles loader. @sneridagh [#6630](https://github.com/plone/volto/issues/6630)
+
 ## 2.3.0 (2025-01-24)
 
 ### Feature

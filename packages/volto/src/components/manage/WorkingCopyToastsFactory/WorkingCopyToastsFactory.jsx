@@ -7,7 +7,6 @@ import { defineMessages, useIntl } from 'react-intl';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
-import config from '@plone/volto/registry';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
 const messages = defineMessages({
@@ -39,48 +38,28 @@ const WorkingCopyToastsFactory = (props) => {
   };
 
   useDeepCompareEffect(() => {
-    if (content && config.settings.hasWorkingCopySupport) {
-      if (working_copy) {
-        let toastMessage, toastTitle;
-        if (content.working_copy_of) {
-          // I'm a working copy
-          toastMessage = messages.thisIsAWorkingCopyOf;
-          toastTitle = (
-            <Link to={flattenToAppURL(content.working_copy_of['@id'])}>
-              {content.working_copy_of?.title}
-            </Link>
-          );
-        } else {
-          // I'm a baseline
-          toastMessage = messages.workingCopyIs;
-          toastTitle = (
-            <Link to={flattenToAppURL(working_copy['@id'])}>
-              {working_copy?.title}
-            </Link>
-          );
-        }
-        if (toast.isActive('workingcopyinfo')) {
-          toast.update('workingcopyinfo', {
-            render: (
-              <Toast
-                info
-                title={intl.formatMessage(toastMessage, {
-                  title: toastTitle,
-                })}
-                content={intl.formatMessage(messages.workingCopyCreatedBy, {
-                  creator: working_copy?.creator_name,
-                  date: (
-                    <FormattedDate
-                      date={working_copy?.created}
-                      format={dateOptions}
-                    />
-                  ),
-                })}
-              />
-            ),
-          });
-        } else {
-          toast.info(
+    if (working_copy) {
+      let toastMessage, toastTitle;
+      if (content.working_copy_of) {
+        // I'm a working copy
+        toastMessage = messages.thisIsAWorkingCopyOf;
+        toastTitle = (
+          <Link to={flattenToAppURL(content.working_copy_of['@id'])}>
+            {content.working_copy_of?.title}
+          </Link>
+        );
+      } else {
+        // I'm a baseline
+        toastMessage = messages.workingCopyIs;
+        toastTitle = (
+          <Link to={flattenToAppURL(working_copy['@id'])}>
+            {working_copy?.title}
+          </Link>
+        );
+      }
+      if (toast.isActive('workingcopyinfo')) {
+        toast.update('workingcopyinfo', {
+          render: (
             <Toast
               info
               title={intl.formatMessage(toastMessage, {
@@ -95,20 +74,38 @@ const WorkingCopyToastsFactory = (props) => {
                   />
                 ),
               })}
-            />,
-            {
-              toastId: 'workingcopyinfo',
-              autoClose: false,
-              closeButton: false,
-              transition: null,
-            },
-          );
-        }
+            />
+          ),
+        });
+      } else {
+        toast.info(
+          <Toast
+            info
+            title={intl.formatMessage(toastMessage, {
+              title: toastTitle,
+            })}
+            content={intl.formatMessage(messages.workingCopyCreatedBy, {
+              creator: working_copy?.creator_name,
+              date: (
+                <FormattedDate
+                  date={working_copy?.created}
+                  format={dateOptions}
+                />
+              ),
+            })}
+          />,
+          {
+            toastId: 'workingcopyinfo',
+            autoClose: false,
+            closeButton: false,
+            transition: null,
+          },
+        );
       }
-      if (!working_copy) {
-        if (toast.isActive('workingcopyinfo')) {
-          toast.dismiss('workingcopyinfo');
-        }
+    }
+    if (!working_copy) {
+      if (toast.isActive('workingcopyinfo')) {
+        toast.dismiss('workingcopyinfo');
       }
     }
   }, [pathname, content, title, working_copy, intl, lang, dateOptions]);

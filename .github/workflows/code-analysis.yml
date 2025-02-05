@@ -19,7 +19,7 @@ jobs:
           node-version: ${{ env.node-version }}
 
       - name: Enable corepack
-        run: corepack enable
+        run: npm i -g corepack@latest && corepack enable
 
       - name: Get pnpm store directory
         shell: bash
@@ -53,7 +53,7 @@ jobs:
           node-version: ${{ env.node-version }}
 
       - name: Enable corepack
-        run: corepack enable
+        run: npm i -g corepack@latest && corepack enable
 
       - name: Get pnpm store directory
         shell: bash
@@ -90,7 +90,7 @@ jobs:
           node-version: ${{ env.node-version }}
 
       - name: Enable corepack
-        run: corepack enable
+        run: npm i -g corepack@latest && corepack enable
 
       - name: Get pnpm store directory
         shell: bash
@@ -127,7 +127,7 @@ jobs:
           node-version: ${{ env.node-version }}
 
       - name: Enable corepack
-        run: corepack enable
+        run: npm i -g corepack@latest && corepack enable
 
       - name: Get pnpm store directory
         shell: bash
