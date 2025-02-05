@@ -171,7 +171,9 @@ export const patternValidator = ({
   }
   const regex = new RegExp(field.pattern);
   const isValid = regex.test(value);
-  return !isValid ? formatMessage(messages.pattern) : null;
+  return !isValid
+    ? formatMessage(messages.pattern, { pattern: field.pattern })
+    : null;
 };
 
 export const maxItemsValidator = ({

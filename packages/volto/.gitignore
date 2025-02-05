@@ -61,4 +61,4 @@ docs/_build/
 /.tool-versions
 docs/source/news
 
-.registry.loader.js
+registry.loader.js

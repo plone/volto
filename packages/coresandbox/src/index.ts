@@ -180,12 +180,6 @@ export const multilingualFixture = (config: ConfigType) => {
   return config;
 };
 
-export const workingCopyFixture = (config: ConfigType) => {
-  config.settings.hasWorkingCopySupport = true;
-
-  return config;
-};
-
 // We extend the block types with the custom ones
 declare module '@plone/types' {
   export interface BlocksConfigData {
