@@ -387,7 +387,7 @@ plone5-acceptance-backend-start: ## Start backend acceptance server for Plone 5 
 
 .PHONY: acceptance-server-detached-start
 acceptance-server-detached-start: ## Starts test acceptance server main fixture in detached mode (daemon)
-	docker run -d --name plone-client-acceptance-server -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -d --name plone-client-acceptance-server -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default,plone.app.discussion:default $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: acceptance-server-detached-stop
 acceptance-server-detached-stop: ## Stop test acceptance server main fixture in detached mode (daemon)
