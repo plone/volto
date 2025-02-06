@@ -1,6 +1,6 @@
 /**
- * SelectWidget component.
- * @module components/manage/Widgets/SelectWidget
+ * CheckboxGroupWidget component.
+ * @module components/manage/Widgets/CheckboxGroupWidget
  */
 
 import React, { Component } from 'react';
@@ -8,85 +8,28 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import filter from 'lodash/filter';
+import includes from 'lodash/includes';
 import map from 'lodash/map';
-import sortBy from 'lodash/sortBy';
-import { defineMessages, injectIntl } from 'react-intl';
+import without from 'lodash/without';
+import { injectIntl } from 'react-intl';
 import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers/Vocabularies/Vocabularies';
+import { Checkbox } from 'semantic-ui-react';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import {
   getVocabulary,
   getVocabularyTokenTitle,
 } from '@plone/volto/actions/vocabularies/vocabularies';
-import { normalizeValue } from '@plone/volto/components/manage/Widgets/SelectUtils';
-
-import {
-  customSelectStyles,
-  DropdownIndicator,
-  ClearIndicator,
-  Option,
-  selectTheme,
-  MenuList,
-  MultiValueContainer,
-} from '@plone/volto/components/manage/Widgets/SelectStyling';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-
-const messages = defineMessages({
-  default: {
-    id: 'Default',
-    defaultMessage: 'Default',
-  },
-  idTitle: {
-    id: 'Short Name',
-    defaultMessage: 'Short Name',
-  },
-  idDescription: {
-    id: 'Used for programmatic access to the fieldset.',
-    defaultMessage: 'Used for programmatic access to the fieldset.',
-  },
-  title: {
-    id: 'Title',
-    defaultMessage: 'Title',
-  },
-  description: {
-    id: 'Description',
-    defaultMessage: 'Description',
-  },
-  close: {
-    id: 'Close',
-    defaultMessage: 'Close',
-  },
-  choices: {
-    id: 'Choices',
-    defaultMessage: 'Choices',
-  },
-  required: {
-    id: 'Required',
-    defaultMessage: 'Required',
-  },
-  select: {
-    id: 'Select…',
-    defaultMessage: 'Select…',
-  },
-  no_value: {
-    id: 'No value',
-    defaultMessage: 'No value',
-  },
-  no_options: {
-    id: 'No options',
-    defaultMessage: 'No options',
-  },
-});
 
 /**
- * SelectWidget component class.
- * @function SelectWidget
+ * CheckboxGroupWidget component class.
+ * @function CheckboxGroupWidget
  * @returns {string} Markup of the component.
  */
-class SelectWidget extends Component {
+class CheckboxGroupWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -122,12 +65,6 @@ class SelectWidget extends Component {
     onClick: PropTypes.func,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
-    wrapped: PropTypes.bool,
-    noValueOption: PropTypes.bool,
-    customOptionStyling: PropTypes.any,
-    isMulti: PropTypes.bool,
-    placeholder: PropTypes.string,
-    sort: PropTypes.bool,
   };
 
   /**
@@ -153,9 +90,6 @@ class SelectWidget extends Component {
     onClick: () => {},
     onEdit: null,
     onDelete: null,
-    noValueOption: true,
-    customOptionStyling: null,
-    sort: false,
   };
 
   /**
@@ -195,18 +129,8 @@ class SelectWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const {
-      id,
-      choices,
-      value,
-      intl,
-      onChange,
-      filterChoices,
-      additionalChoices,
-    } = this.props;
-    // Make sure that both disabled and isDisabled (from the DX layout feat work)
-    const disabled = this.props.disabled || this.props.isDisabled;
-    const Select = this.props.reactSelect.default;
+    const { id, choices, value, onChange, filterChoices, additionalChoices } =
+      this.props;
 
     let options = this.props.vocabBaseUrl
       ? this.props.choices
@@ -217,101 +141,43 @@ class SelectWidget extends Component {
               // Fix "None" on the serializer, to remove when fixed in p.restapi
               option[1] !== 'None' && option[1] ? option[1] : option[0],
           })),
-          // Only set "no-value" option if there's no default in the field
-          // TODO: also if this.props.defaultValue?
-          ...(this.props.noValueOption &&
-          (this.props.default === undefined || this.props.default === null)
-            ? [
-                {
-                  label: this.props.intl.formatMessage(messages.no_value),
-                  value: 'no-value',
-                },
-              ]
-            : []),
         ];
 
     if (additionalChoices) {
-      options = [
-        ...(options || []),
-        ...map(additionalChoices, (choice) => ({
-          value: choice.value,
-          label: intl.formatMessage({
-            id: choice.value,
-            defaultMessage: choice.label,
-          }),
-        })),
-      ];
+      options = [...(options || []), ...additionalChoices];
     }
 
     if (filterChoices) {
       options = filter(options, (item) => filterChoices.includes(item.value));
     }
 
-    if (this.props.sort) {
-      options = sortBy(options, ['label']);
-    }
-
-    const normalizedValue = normalizeValue(options, value, intl);
-
-    const isMulti = this.props.isMulti
-      ? this.props.isMulti
-      : id === 'roles' || id === 'groups' || this.props.type === 'array';
-
     return (
       <FormFieldWrapper {...this.props}>
-        <Select
-          id={`field-${id}`}
-          key={choices}
-          name={id}
-          aria-labelledby={`fieldset-${this.props.fieldSet}-field-label-${id}`}
-          menuShouldScrollIntoView={false}
-          isDisabled={disabled}
-          isSearchable={true}
-          className="react-select-container"
-          classNamePrefix="react-select"
-          isMulti={isMulti}
-          options={options}
-          styles={customSelectStyles}
-          theme={selectTheme}
-          components={{
-            ...(options?.length > 25 && {
-              MenuList,
-            }),
-            MultiValueContainer,
-            DropdownIndicator,
-            ClearIndicator,
-            Option: this.props.customOptionStyling || Option,
-          }}
-          value={normalizedValue}
-          placeholder={
-            this.props.placeholder ??
-            this.props.intl.formatMessage(messages.select)
-          }
-          onChange={(selectedOption) => {
-            if (isMulti) {
-              return onChange(
-                id,
-                selectedOption.map((el) => el.value),
-              );
-            }
-            return onChange(
-              id,
-              selectedOption && selectedOption.value !== 'no-value'
-                ? selectedOption.value
-                : undefined,
-            );
-          }}
-          isClearable
-        />
+        {options.map((option) => (
+          <Checkbox
+            label={option.label}
+            key={option.value}
+            name={id}
+            value={option.value}
+            checked={includes(value, option.value)}
+            onChange={(e, data) => {
+              const newValue = value || [];
+              if (data.checked) {
+                onChange(id, [...newValue, data.value]);
+              } else {
+                onChange(id, without(newValue, data.value));
+              }
+            }}
+          />
+        ))}
       </FormFieldWrapper>
     );
   }
 }
 
-export const SelectWidgetComponent = injectIntl(SelectWidget);
+export const CheckboxGroupWidgetComponent = injectIntl(CheckboxGroupWidget);
 
 export default compose(
-  injectLazyLibs(['reactSelect']),
   connect(
     (state, props) => {
       const vocabBaseUrl = !props.choices
@@ -348,4 +214,4 @@ export default compose(
     },
     { getVocabulary, getVocabularyTokenTitle },
   ),
-)(SelectWidgetComponent);
+)(CheckboxGroupWidgetComponent);
