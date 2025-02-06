@@ -183,7 +183,7 @@ Please note that you have to run a Plone backend as well.
 E.g. with docker:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="" plone/plone-backend:6.0.8
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default" plone/plone-backend:6.1.0rc1
 ```
 
 Consult the [Plone frontend Volto documentation](https://6.docs.plone.org/volto/index.html) for further details.
