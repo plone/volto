@@ -8,6 +8,8 @@ assignees: ''
 projects: 'plone/47'
 ---
 
+<!-- Keep this admonition when you submit your PLIP -->
+
 > [!IMPORTANT]
 > If you are not a member of the Volto Team or Developers Team in the Plone GitHub organization, then do not work on or comment on this issue.
 
