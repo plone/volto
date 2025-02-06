@@ -3,7 +3,7 @@
 exports[`CheckboxWidget renders a checkbox widget component 1`] = `
 <DocumentFragment>
   <div
-    class="inline field field-wrapper-undefined"
+    class="inline field field-wrapper-my-field"
   >
     <div
       class="ui grid"
@@ -45,7 +45,7 @@ exports[`CheckboxWidget renders a checkbox widget component 1`] = `
 exports[`CheckboxWidget renders a checkbox widget component checked 1`] = `
 <DocumentFragment>
   <div
-    class="inline field field-wrapper-undefined"
+    class="inline field field-wrapper-my-field"
   >
     <div
       class="ui grid"

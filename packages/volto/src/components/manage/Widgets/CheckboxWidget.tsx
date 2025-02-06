@@ -14,16 +14,11 @@ export interface CheckboxWidgetProps {
   onChange?: (id: string, checked: boolean) => void;
 }
 
-const CheckboxWidget: React.FC<CheckboxWidgetProps> = ({
-  id,
-  title,
-  value = false,
-  onChange,
-  isDisabled = false,
-  description,
-  ...props
-}) => {
-  const intl = useIntl(); // Get access to i18n messages
+const CheckboxWidget: React.FC<CheckboxWidgetProps> = (
+  props: CheckboxWidgetProps,
+) => {
+  const { id, title, value, onChange, isDisabled, description } = props;
+  const intl = useIntl();
 
   return (
     <FormFieldWrapper {...props} columns={1}>
