@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckboxWidget renders a checkbox widget component 1`] = `
+<DocumentFragment>
+  <div
+    class="inline field field-wrapper-undefined"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="twelve wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <div
+              class="ui checkbox"
+            >
+              <input
+                class="hidden"
+                name="field-my-field"
+                readonly=""
+                tabindex="0"
+                type="checkbox"
+                value=""
+              />
+              <label
+                for="field-my-field"
+              >
+                My field
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CheckboxWidget renders a checkbox widget component checked 1`] = `
+<DocumentFragment>
+  <div
+    class="inline field field-wrapper-undefined"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="twelve wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <div
+              class="ui checked checkbox"
+            >
+              <input
+                checked=""
+                class="hidden"
+                name="field-my-field"
+                readonly=""
+                tabindex="0"
+                type="checkbox"
+                value=""
+              />
+              <label
+                for="field-my-field"
+              >
+                My field
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
