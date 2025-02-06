@@ -1,0 +1,1 @@
+Refactored CheckboxWidget.jsx to TypeScript (.tsx), ensuring it is a "dumb" component that receives data via props and implements onChange without external dependencies. @Shyam-Raghuwanshi
