@@ -35,7 +35,7 @@ yo @plone/volto
 ```
 
 This will bootstrap a new Volto project inside the current folder.
-It will ask a few questions for the project name, project description, and a list of add-ons. 
+It will ask a few questions for the project name, project description, and a list of add-ons.
 
 Run:
 
@@ -66,7 +66,7 @@ Arguments:
 
 to see a full list of options and arguments.
 
-> [!NOTE]  
+> [!NOTE]
 > In addition to the Volto project, the generator creates a theme add-on inside `src/addons` with the default name of `volto-[<project-name>]`.
 > You can provide a specific name for the theme add-on that is created on project generation like:
 > ```shell
@@ -183,7 +183,7 @@ Please note that you have to run a Plone backend as well.
 E.g. with docker:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.8
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="" plone/plone-backend:6.0.8
 ```
 
 Consult the [Plone frontend Volto documentation](https://6.docs.plone.org/volto/index.html) for further details.
