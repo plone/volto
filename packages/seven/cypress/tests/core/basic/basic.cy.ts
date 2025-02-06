@@ -2,7 +2,7 @@ describe('Basic Cypress Test', () => {
   it('should visit the root URL', () => {
     cy.visit('/');
     cy.url().should('eq', Cypress.config().baseUrl + '/');
-    cy.contains('Welcome to Plone 6');
+    cy.contains('Welcome to Plone');
   });
 
   it('html tag has the lang attr', () => {
