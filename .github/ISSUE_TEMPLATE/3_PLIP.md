@@ -1,12 +1,15 @@
 ---
-name: "\U0001F680 PLIP"
-about: Plone Improvement Proposal
+name: "🚀 PLIP"
+about: 'A Plone Improvement Proposal (PLIP) is a change to a Plone package that would affect everyone who uses that package. PLIPs go through a formal process compared to bug fixes because of their broad reach.'
 title: ''
 labels: '03 type: feature (plip)'
+type: 'PLIP'
 assignees: ''
 projects: 'plone/47'
-
 ---
+
+> [!IMPORTANT]
+> If you are not a member of the Volto Team or Developers Team in the Plone GitHub organization, then do not work on or comment on this issue.
 
 ## PLIP (Plone Improvement Proposal)
 
