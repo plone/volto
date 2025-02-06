@@ -3020,7 +3020,7 @@ msgstr "Resultaten limiet"
 #. Default: "Results preview"
 #: components/manage/Blocks/Listing/Edit
 msgid "Results preview"
-msgstr "Resultaten voorproefje"
+msgstr "Resultaten voorvertoning"
 
 #. Default: "Results template"
 #: components/manage/Blocks/Search/SearchBlockEdit
