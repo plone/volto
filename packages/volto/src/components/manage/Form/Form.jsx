@@ -254,6 +254,7 @@ class Form extends Component {
     this.onBlurField = this.onBlurField.bind(this);
     this.onClickInput = this.onClickInput.bind(this);
     this.onToggleMetadataFieldset = this.onToggleMetadataFieldset.bind(this);
+    this.handleChangeFormData = this.handleChangeFormData.bind(this);
   }
 
   /**
@@ -703,6 +704,19 @@ class Form extends Component {
     this.props.setMetadataFieldsets(xor(this.props.metadataFieldsets, [index]));
   }
 
+  handleChangeFormData(newData) {
+    const newFormData = {
+      ...this.state.formData,
+      ...newData,
+    };
+
+    this.setState({ formData: newFormData });
+
+    if (this.props.global) {
+      this.props.setFormData(newFormData);
+    }
+  }
+
   /**
    * Render method.
    * @method render
@@ -771,18 +785,7 @@ class Form extends Component {
                 }}
               />
               <BlocksForm
-                onChangeFormData={(newData) => {
-                  const newFormData = {
-                    ...formData,
-                    ...newData,
-                  };
-                  this.setState({
-                    formData: newFormData,
-                  });
-                  if (this.props.global) {
-                    this.props.setFormData(newFormData);
-                  }
-                }}
+                onChangeFormData={this.handleChangeFormData}
                 onChangeField={this.onChangeField}
                 onSelectBlock={this.onSelectBlock}
                 properties={formData}

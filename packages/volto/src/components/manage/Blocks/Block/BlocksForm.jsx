@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { useIntl } from 'react-intl';
 import cloneDeep from 'lodash/cloneDeep';
 import map from 'lodash/map';
@@ -70,6 +70,10 @@ const BlocksForm = (props) => {
   }, []);
 
   const blockList = getBlocks(properties);
+  const propertiesRef = useRef(properties);
+  useEffect(() => {
+    propertiesRef.current = properties;
+  }, [properties]);
 
   const dispatch = useDispatch();
   const intl = useIntl();
@@ -87,165 +91,214 @@ const BlocksForm = (props) => {
     disableKeys: !isMainForm,
   });
 
-  const handleKeyDown = (
-    e,
-    index,
-    block,
-    node,
-    {
-      disableEnter = false,
-      disableArrowUp = false,
-      disableArrowDown = false,
-    } = {},
-  ) => {
-    const isMultipleSelection = e.shiftKey;
-    if (e.key === 'ArrowUp' && !disableArrowUp) {
-      onFocusPreviousBlock(block, node, isMultipleSelection);
-      e.preventDefault();
-    }
-    if (e.key === 'ArrowDown' && !disableArrowDown) {
-      onFocusNextBlock(block, node, isMultipleSelection);
-      e.preventDefault();
-    }
-    if (e.key === 'Enter' && !disableEnter) {
-      if (!disableAddBlockOnEnterKey) {
-        onSelectBlock(onAddBlock(config.settings.defaultBlockType, index + 1));
-      }
-      e.preventDefault();
-    }
-  };
+  const onFocusPreviousBlock = useCallback(
+    (currentBlock, blockNode, isMultipleSelection) => {
+      const prev = previousBlockId(propertiesRef.current, currentBlock);
+      if (prev === null) return;
 
-  const onFocusPreviousBlock = (
-    currentBlock,
-    blockNode,
-    isMultipleSelection,
-  ) => {
-    const prev = previousBlockId(properties, currentBlock);
-    if (prev === null) return;
+      blockNode.blur();
+      onSelectBlock(prev, isMultipleSelection);
+    },
+    [onSelectBlock],
+  );
 
-    blockNode.blur();
+  const onFocusNextBlock = useCallback(
+    (currentBlock, blockNode, isMultipleSelection) => {
+      const next = nextBlockId(propertiesRef.current, currentBlock);
+      if (next === null) return;
 
-    onSelectBlock(prev, isMultipleSelection);
-  };
+      blockNode.blur();
+      onSelectBlock(next, isMultipleSelection);
+    },
+    [onSelectBlock],
+  );
 
-  const onFocusNextBlock = (currentBlock, blockNode, isMultipleSelection) => {
-    const next = nextBlockId(properties, currentBlock);
-    if (next === null) return;
+  const onMutateBlock = useCallback(
+    (id, value) => {
+      const newFormData = mutateBlock(
+        propertiesRef.current,
+        id,
+        value,
+        {},
+        intl,
+      );
+      onChangeFormData(newFormData);
+    },
+    [onChangeFormData, intl],
+  );
 
-    blockNode.blur();
-
-    onSelectBlock(next, isMultipleSelection);
-  };
-
-  const onMutateBlock = (id, value) => {
-    const newFormData = mutateBlock(properties, id, value, {}, intl);
-    onChangeFormData(newFormData);
-  };
-
-  const onInsertBlock = (id, value, current) => {
-    const [newId, newFormData] = insertBlock(
-      properties,
-      id,
-      value,
-      current,
-      config.experimental.addBlockButton.enabled ? 1 : 0,
-      {},
-      intl,
-    );
-
-    const blocksFieldname = getBlocksFieldname(newFormData);
-    const blockData = newFormData[blocksFieldname][newId];
-    newFormData[blocksFieldname][newId] = applyBlockDefaults({
-      data: blockData,
-      intl,
-      metadata,
-      properties,
-    });
-
-    onChangeFormData(newFormData);
-    return newId;
-  };
-
-  const onAddBlock = (type, index) => {
-    if (editable) {
-      const [id, newFormData] = addBlock(properties, type, index, {}, intl);
+  const onInsertBlock = useCallback(
+    (id, value, current) => {
+      const [newId, newFormData] = insertBlock(
+        propertiesRef.current,
+        id,
+        value,
+        current,
+        config.experimental.addBlockButton.enabled ? 1 : 0,
+        {},
+        intl,
+      );
       const blocksFieldname = getBlocksFieldname(newFormData);
-      const blockData = newFormData[blocksFieldname][id];
-      newFormData[blocksFieldname][id] = applyBlockDefaults({
+      const blockData = newFormData[blocksFieldname][newId];
+      newFormData[blocksFieldname][newId] = applyBlockDefaults({
         data: blockData,
         intl,
         metadata,
-        properties,
+        properties: propertiesRef.current,
       });
+
       onChangeFormData(newFormData);
-      return id;
-    }
-  };
+      return newId;
+    },
+    [onChangeFormData, intl, metadata], // Dependencies
+  );
 
-  const onChangeBlock = (id, value) => {
-    const newFormData = changeBlock(properties, id, value);
-    onChangeFormData(newFormData);
-  };
-
-  const onDeleteBlock = (id, selectPrev) => {
-    const previous = previousBlockId(properties, id);
-
-    const newFormData = deleteBlock(properties, id, intl);
-    onChangeFormData(newFormData);
-
-    onSelectBlock(selectPrev ? previous : null);
-  };
-
-  const onMoveBlock = (dragIndex, hoverIndex) => {
-    const newFormData = moveBlock(properties, dragIndex, hoverIndex);
-    onChangeFormData(newFormData);
-  };
-
-  const onMoveBlockEnhanced = ({ source, destination }) => {
-    const newFormData = moveBlockEnhanced(cloneDeep(properties), {
-      source,
-      destination,
-    });
-    const blocksFieldname = getBlocksFieldname(newFormData);
-    const blocksLayoutFieldname = getBlocksLayoutFieldname(newFormData);
-    let error = false;
-
-    const allowedBlocks = Object.keys(blocksConfig);
-
-    map(newFormData[blocksLayoutFieldname].items, (id) => {
-      const block = newFormData[blocksFieldname][id];
-      if (!allowedBlocks.includes(block['@type'])) {
-        error = true;
+  const onAddBlock = useCallback(
+    (type, index) => {
+      if (editable) {
+        const [id, newFormData] = addBlock(
+          propertiesRef.current,
+          type,
+          index,
+          {},
+          intl,
+        );
+        const blocksFieldname = getBlocksFieldname(newFormData);
+        const blockData = newFormData[blocksFieldname][id];
+        newFormData[blocksFieldname][id] = applyBlockDefaults({
+          data: blockData,
+          intl,
+          metadata,
+          properties: propertiesRef.current,
+        });
+        onChangeFormData(newFormData);
+        return id;
       }
-      if (Array.isArray(block[blocksLayoutFieldname]?.items)) {
-        const size = block[blocksLayoutFieldname].items.length;
-        const allowedSubBlocks = [
-          ...(blocksConfig[block['@type']].allowedBlocks || allowedBlocks),
-          'empty',
-        ] || ['empty'];
-        if (size < 1 || size > (blocksConfig[block['@type']].maxLength || 4)) {
+    },
+    [editable, intl, metadata, onChangeFormData],
+  );
+
+  const onChangeBlock = useCallback(
+    (id, value) => {
+      const newFormData = changeBlock(propertiesRef.current, id, value);
+      onChangeFormData(newFormData);
+    },
+    [onChangeFormData], // Dependencies
+  );
+
+  const onDeleteBlock = useCallback(
+    (id, selectPrev) => {
+      const previous = previousBlockId(propertiesRef.current, id);
+      const newFormData = deleteBlock(propertiesRef.current, id, intl);
+      onChangeFormData(newFormData);
+
+      onSelectBlock(selectPrev ? previous : null);
+    },
+    [onChangeFormData, intl, onSelectBlock],
+  );
+
+  const onMoveBlock = useCallback(
+    (dragIndex, hoverIndex) => {
+      const newFormData = moveBlock(
+        propertiesRef.current,
+        dragIndex,
+        hoverIndex,
+      );
+      onChangeFormData(newFormData);
+    },
+    [onChangeFormData], // Dependencies
+  );
+
+  const onMoveBlockEnhanced = useCallback(
+    ({ source, destination }) => {
+      const newFormData = moveBlockEnhanced(cloneDeep(propertiesRef.current), {
+        source,
+        destination,
+      });
+      const blocksFieldname = getBlocksFieldname(newFormData);
+      const blocksLayoutFieldname = getBlocksLayoutFieldname(newFormData);
+      let error = false;
+
+      const allowedBlocks = Object.keys(blocksConfig);
+
+      map(newFormData[blocksLayoutFieldname].items, (id) => {
+        const block = newFormData[blocksFieldname][id];
+        if (!allowedBlocks.includes(block['@type'])) {
           error = true;
         }
-        map(block[blocksLayoutFieldname].items, (subId) => {
-          const subBlock = block[blocksFieldname][subId];
-          if (!allowedSubBlocks.includes(subBlock['@type'])) {
+        if (Array.isArray(block[blocksLayoutFieldname]?.items)) {
+          const size = block[blocksLayoutFieldname].items.length;
+          const allowedSubBlocks = [
+            ...(blocksConfig[block['@type']].allowedBlocks || allowedBlocks),
+            'empty',
+          ] || ['empty'];
+          if (
+            size < 1 ||
+            size > (blocksConfig[block['@type']].maxLength || 4)
+          ) {
             error = true;
           }
-        });
-      }
-    });
+          map(block[blocksLayoutFieldname].items, (subId) => {
+            const subBlock = block[blocksFieldname][subId];
+            if (!allowedSubBlocks.includes(subBlock['@type'])) {
+              error = true;
+            }
+          });
+        }
+      });
 
-    if (!error) {
-      onChangeFormData(newFormData);
-      dispatch(
-        setUIState({
-          selected: null,
-          multiSelected: [],
-          gridSelected: null,
-        }),
-      );
-    }
-  };
+      if (!error) {
+        onChangeFormData(newFormData);
+        dispatch(
+          setUIState({
+            selected: null,
+            multiSelected: [],
+            gridSelected: null,
+          }),
+        );
+      }
+    },
+    [onChangeFormData, blocksConfig, dispatch],
+  );
+
+  const handleKeyDown = useCallback(
+    (
+      e,
+      index,
+      block,
+      node,
+      {
+        disableEnter = false,
+        disableArrowUp = false,
+        disableArrowDown = false,
+      } = {},
+    ) => {
+      const isMultipleSelection = e.shiftKey;
+      if (e.key === 'ArrowUp' && !disableArrowUp) {
+        onFocusPreviousBlock(block, node, isMultipleSelection);
+        e.preventDefault();
+      }
+      if (e.key === 'ArrowDown' && !disableArrowDown) {
+        onFocusNextBlock(block, node, isMultipleSelection);
+        e.preventDefault();
+      }
+      if (e.key === 'Enter' && !disableEnter) {
+        if (!disableAddBlockOnEnterKey) {
+          onSelectBlock(
+            onAddBlock(config.settings.defaultBlockType, index + 1),
+          );
+        }
+        e.preventDefault();
+      }
+    },
+    [
+      disableAddBlockOnEnterKey,
+      onAddBlock,
+      onFocusNextBlock,
+      onFocusPreviousBlock,
+      onSelectBlock,
+    ],
+  );
 
   const defaultBlockWrapper = ({ draginfo }, editBlock, blockProps) => (
     <EditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
@@ -345,7 +398,7 @@ const BlocksForm = (props) => {
                 onSelectBlock,
                 pathname,
                 metadata,
-                properties,
+                properties: propertiesRef,
                 contentType: type,
                 navRoot,
                 blocksConfig,
@@ -356,7 +409,7 @@ const BlocksForm = (props) => {
                 showBlockChooser: selectedBlock === childId,
                 detached: isContainer,
                 // Properties to pass to the BlocksForm to match the View ones
-                content: properties,
+                content: propertiesRef,
                 history,
                 location,
                 token,
