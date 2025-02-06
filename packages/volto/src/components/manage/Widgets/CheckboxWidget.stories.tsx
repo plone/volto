@@ -1,5 +1,11 @@
-import { Meta, StoryFn } from '@storybook/react';
-import CheckboxWidget, { CheckboxWidgetProps } from './CheckboxWidget';
+import { Meta } from '@storybook/react';
+import CheckboxWidget from './CheckboxWidget';
+import WidgetStory from './story';
+
+export const Checkbox = WidgetStory.bind({
+  props: { id: 'field', title: 'Checkbox', block: 'block' },
+  widget: CheckboxWidget,
+});
 
 export default {
   title: 'Edit Widgets/Checkbox',
@@ -12,11 +18,4 @@ export default {
     ),
   ],
   argTypes: {},
-} as Meta<typeof CheckboxWidget>;
-
-const Template: StoryFn<CheckboxWidgetProps> = (args) => (
-  <CheckboxWidget {...args} />
-);
-
-export const Checkbox = Template.bind({});
-Checkbox.args = { id: 'field', title: 'Checkbox' };
+} satisfies Meta<typeof CheckboxWidget>;
