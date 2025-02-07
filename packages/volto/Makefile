@@ -290,7 +290,7 @@ deployment-prefixed-acceptance-web-server-start: ## Start the prefixed webserver
 
 .PHONY: prefixed-working-copy-acceptance-frontend-prod-start
 prefixed-working-copy-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for prefixed working copy tests
-	RAZZLE_PREFIX_PATH=/foo ADDONS=@plone/volto-coresandbox:workingCopyFixture RAZZLE_API_PATH=http://localhost/foo pnpm build && pnpm start:prod
+	RAZZLE_PREFIX_PATH=/foo RAZZLE_API_PATH=http://localhost/foo pnpm build && pnpm start:prod
 
 .PHONY: prefixed-working-copy-acceptance-test
 prefixed-working-copy-acceptance-test: ## Start Cypress in interactive mode for prefixed working copy tests
