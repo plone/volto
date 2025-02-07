@@ -106,7 +106,7 @@ jobs:
           install: false
           working-directory: packages/volto
           browser: chrome
-          spec: cypress/tests/core/basic/**/*.cy.ts
+          spec: cypress/tests/minimal/**/*.js
           start: |
             make ci-acceptance-backend-start
             make cookieplone-acceptance-frontend-prod-start
