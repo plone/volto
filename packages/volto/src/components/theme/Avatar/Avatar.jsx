@@ -5,7 +5,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getInitials } from '@plone/volto/helpers/Utils/Utils';
-import { Image } from '@plone/volto/components/theme/Image/Image';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 const defaultSize = 30;
 const defaultColor = 'Teal';
