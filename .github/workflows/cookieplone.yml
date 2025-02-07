@@ -106,7 +106,7 @@ jobs:
           install: false
           working-directory: volto-add-on
           browser: chrome
-          spec: cypress/tests/core/basic/**/*.cy.ts
+          spec: ../packages/volto/cypress/tests/core/basic/**/*.cy.ts
           start: |
             make ci-acceptance-backend-start
             make acceptance-frontend-prod-start
