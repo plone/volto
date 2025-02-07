@@ -1,1 +1,1 @@
-Remove hard dependencies on `react`, move to `peerDependencies` @sneridagh
+Back to use `react` 18 for now, due to the incompatibilities with Volto `react` @sneridagh
