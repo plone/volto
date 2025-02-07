@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { getBaseUrl, getParentUrl, Helmet } from '@plone/volto/helpers';
+import { getBaseUrl, getParentUrl } from '@plone/volto/helpers/Url/Url';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import {
   removeAliases,
   addAliases,
@@ -27,15 +28,16 @@ import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import { ModalForm } from '@plone/volto/components/manage/Form';
-import { Icon, Toolbar } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
-import { useClient } from '@plone/volto/hooks';
+import { useClient } from '@plone/volto/hooks/client/useClient';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import editingSVG from '@plone/volto/icons/editing.svg';
-import { map } from 'lodash';
+import map from 'lodash/map';
 import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
 
 const messages = defineMessages({
   back: {
@@ -156,6 +158,7 @@ const Aliases = (props) => {
   const [editingData, setEditingData] = useState(null);
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
   const [uploadError, setUploadError] = useState(null);
+  const [csvErrors, setCSVErrors] = useState([]);
   const isClient = useClient();
 
   const updateResults = useCallback(() => {
@@ -273,6 +276,7 @@ const Aliases = (props) => {
           .then(() => {
             updateResults();
             setUploadError(null);
+            setCSVErrors([]);
             setUploadModalOpen(false);
             toast.success(
               <Toast
@@ -284,6 +288,7 @@ const Aliases = (props) => {
           })
           .catch((error) => {
             setUploadError(error.response?.body?.message);
+            setCSVErrors(error.response?.body?.csv_errors ?? []);
           });
       });
   };
@@ -388,6 +393,20 @@ const Aliases = (props) => {
                               /people/JoeT,/Users/joe-thurston,2018-12-31,false
                             </code>
                           </p>
+                          {csvErrors.length ? (
+                            <div
+                              className="ui error message"
+                              style={{ 'overflow-x': 'auto' }}
+                            >
+                              <pre>
+                                Errors:{'\n'}
+                                {csvErrors.map(
+                                  (err) =>
+                                    `${err.line_number}: ${err.line} - ${err.message}\n`,
+                                )}
+                              </pre>
+                            </div>
+                          ) : null}
                         </>
                       }
                       schema={{

@@ -8,6 +8,60 @@
 
 <!-- towncrier release notes start -->
 
+## 18.2.1 (2025-01-31)
+
+### Bugfix
+
+- Pass `intl` object to `initialValue` function. @wesleybl [#6529](https://github.com/plone/volto/issues/6529)
+
+## 18.2.0 (2025-01-24)
+
+### Feature
+
+- Fixed keyboard shortcuts for typing headings using Markdown notation. @Shyam-Raghuwanshi [#6588](https://github.com/plone/volto/issues/6588)
+
+## 18.1.0 (2025-01-11)
+
+### Feature
+
+- Added Italian translations. @giuliaghisini [#6563](https://github.com/plone/volto/issues/6563)
+
+## 18.0.4 (2024-12-12)
+
+### Bugfix
+
+- Stylelint in less file. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+
+## 18.0.3 (2024-12-09)
+
+### Internal
+
+- Fix extension in files containing JSX. @sneridagh [#6520](https://github.com/plone/volto/issues/6520)
+
+## 18.0.2 (2024-12-08)
+
+### Internal
+
+- Removed all imports from barrel files for components, actions, helpers, hooks and lodash. @pnicolli [#6509](https://github.com/plone/volto/issues/6509)
+
+## 18.0.1 (2024-11-11)
+
+### Feature
+
+- Update Dutch translations. @fredvd [#6476](https://github.com/plone/volto/issues/6476)
+
+## 18.0.0 (2024-10-31)
+
+### Internal
+
+- Release 18.0.0 final @sneridagh 
+
+## 18.0.0-alpha.20 (2024-10-30)
+
+### Bugfix
+
+- Fix slight CSS lint violation in volto-slate @sneridagh [#6444](https://github.com/plone/volto/issues/6444)
+
 ## 18.0.0-alpha.19 (2024-10-03)
 
 ### Feature

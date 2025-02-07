@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
+import doesNodeContainClick from 'semantic-ui-react/dist/commonjs/lib/doesNodeContainClick';
 
 /**
  * Hook used to detect clicks outside a component (or an escape key press).

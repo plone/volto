@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelected, useFocused } from 'slate-react';
-import { Image } from '@plone/volto/components';
+import { Image } from '@plone/volto/components/theme/Image/Image';
 
 export const ImageElement = (props) => {
   const { attributes, children, element } = props;

@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container as SemanticContainer } from 'semantic-ui-react';
-import { UniversalLink } from '@plone/volto/components';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import config from '@plone/volto/registry';
 
 /**

@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
-import { flattenToAppURL } from '@plone/volto/helpers';
-import { Image } from '@plone/volto/components';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { Image } from '@plone/volto/components/theme/Image/Image';
 
 const niceBytes = (bytes) => {
   bytes = Number(bytes);

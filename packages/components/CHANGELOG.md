@@ -8,6 +8,53 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.1 (2024-12-17)
+
+### Bugfix
+
+- Fixed precedence of the Quanta layer by adding a base layer for all the basic components. @sneridagh [#6539](https://github.com/plone/volto/issues/6539)
+
+### Internal
+
+- Update `@plone/components`'s URLs in its `package.json`. @stevepiercy [#6542](https://github.com/plone/volto/issues/6542)
+
+## 3.0.0 (2024-12-12)
+
+### Breaking
+
+- All the styles use now the CSS layer `plone-components`. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+- Moved the `RenderBlocks` component to `@plone/blocks`. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+
+## 2.2.1 (2024-12-05)
+
+### Bugfix
+
+- Fix color picker usability. @sneridagh [#6512](https://github.com/plone/volto/issues/6512)
+
+## 2.2.0 (2024-11-21)
+
+### Feature
+
+- Update RAC to 1.5.0 @sneridagh [#6498](https://github.com/plone/volto/issues/6498)
+
+## 2.1.1 (2024-11-05)
+
+### Internal
+
+- Improve packaging and bring back the export for `src` folder. @sneridagh 
+
+## 2.1.0 (2024-11-05)
+
+### Internal
+
+- Replace `parcel` with `tsup`. Better types, better tsconfig. Move to ESM. @sneridagh [#6467](https://github.com/plone/volto/issues/6467)
+
+## 2.0.0 (2024-10-31)
+
+### Internal
+
+- Release 2.0.0 @sneridagh 
+
 ## 2.0.0-alpha.16 (2024-10-18)
 
 ### Breaking

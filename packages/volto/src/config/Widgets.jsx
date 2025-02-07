@@ -61,6 +61,7 @@ export const widgetMapping = {
     remoteUrl: UrlWidget,
     id: IdWidget,
     site_logo: RegistryImageWidget,
+    frontend_domain: TextWidget,
   },
   widget: {
     textarea: TextareaWidget,
@@ -151,3 +152,8 @@ export const widgetMapping = {
 
 // Default Widget
 export const defaultWidget = TextWidget;
+
+export function installDefaultWidgets(config) {
+  config.widgets = widgetMapping;
+  config.widgets.default = defaultWidget;
+}

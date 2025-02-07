@@ -11,6 +11,13 @@ myst:
 
 # Contributing to Volto
 
+```{important}
+The Volto Team has suspended its review of new pull requests from first-time contributors until the [release of Plone 7](https://plone.org/download/release-schedule), which is preliminarily scheduled for the second quarter of 2026.
+This will allow the Volto Team to focus its efforts on delivering the next generation of Plone in a timely manner.
+
+The Plone community welcomes contributions to {doc}`Plone 6 Documentation <plone:contributing/documentation/index>` or other {doc}`Plone <plone:contributing/index>` packages.
+```
+
 First read {doc}`plone:contributing/index`.
 Volto follows those guidelines with a few specific variations, as described in this chapter.
 
@@ -44,7 +51,7 @@ The Volto Team reviews pull requests only from people with a GitHub account who 
 
 ## Branch policy
 
-```{include} ./branch-policy.md
+```{include} ../_inc/_branch-policy.md
 ```
 
 

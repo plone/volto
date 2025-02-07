@@ -124,15 +124,17 @@ acceptance-frontend-dev-start: ## Start acceptance frontend in development mode
 
 .PHONY: acceptance-backend-start
 acceptance-backend-start: ## Start backend acceptance server
-	#docker run -it --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+	# docker run -it --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -it --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default,plone.app.discussion:default $(DOCKER_IMAGE_ACCEPTANCE)
 	# Uncomment next line and comment line above to use a custom image with the acceptance server (in case you need to use an specific backend add-on or version)
-	docker run -it --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
+	# docker run -it --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
 .PHONY: ci-acceptance-backend-start
 ci-acceptance-backend-start: ## Start backend acceptance server in headless mode for CI
-	#docker run -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+	# docker run -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default,plone.app.discussion:default $(DOCKER_IMAGE_ACCEPTANCE)
 	# Uncomment next line and comment line above to use a custom image with the acceptance server (in case you need to use an specific backend add-on or version)
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
+	# docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
 .PHONY: acceptance-frontend-prod-start
 acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode
@@ -178,7 +180,7 @@ project-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend 
 
 .PHONY: coresandbox-acceptance-backend-start
 coresandbox-acceptance-backend-start: ## Start backend acceptance server for core sandbox tests
-	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default,plone.volto:coresandbox -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: coresandbox-acceptance-frontend-prod-start
 coresandbox-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for core sandbox tests
@@ -248,11 +250,11 @@ deployment-multilingual-ci-acceptance-test-run-all: ## With a single command, ru
 
 .PHONY: working-copy-acceptance-backend-start
 working-copy-acceptance-backend-start: ## Start backend acceptance server for working copy tests
-	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: working-copy-acceptance-frontend-prod-start
 working-copy-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for working copy tests
-	ADDONS=@plone/volto-coresandbox:workingCopyFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+	RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: working-copy-acceptance-test
 working-copy-acceptance-test: ## Start Cypress in interactive mode for working copy tests

@@ -1,0 +1,3 @@
+Update internal `peerDependencies` to include React 19.
+Update to latest RR7, and use React 19.
+Update TS version. @sneridagh

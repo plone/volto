@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { uniqBy } from 'lodash';
+import uniqBy from 'lodash/uniqBy';
 import { FormattedMessage } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { Divider, Segment, Table } from 'semantic-ui-react';
-import { queryRelations } from '@plone/volto/actions';
-import { flattenToAppURL } from '@plone/volto/helpers';
-import { ConditionalLink } from '@plone/volto/components';
+import { queryRelations } from '@plone/volto/actions/relations/relations';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
 
 const BrokenRelations = () => {
   const dispatch = useDispatch();
@@ -60,22 +60,26 @@ const BrokenRelations = () => {
                 }).map((el, index) => (
                   <Table.Row key={index}>
                     <Table.Cell>
-                      <ConditionalLink
-                        to={`${el[0]}/edit`}
-                        openLinkInNewTab={true}
-                        condition={el[0].includes('http')}
-                      >
-                        {flattenToAppURL(el[0])}
-                      </ConditionalLink>
+                      {el[0] && (
+                        <ConditionalLink
+                          to={`${el[0]}/edit`}
+                          openLinkInNewTab={true}
+                          condition={el[0].includes('http')}
+                        >
+                          {flattenToAppURL(el[0])}
+                        </ConditionalLink>
+                      )}
                     </Table.Cell>
                     <Table.Cell>
-                      <ConditionalLink
-                        to={`${el[1]}/edit`}
-                        openLinkInNewTab={true}
-                        condition={el[1].includes('http')}
-                      >
-                        {flattenToAppURL(el[1])}
-                      </ConditionalLink>
+                      {el[1] && (
+                        <ConditionalLink
+                          to={`${el[1]}/edit`}
+                          openLinkInNewTab={true}
+                          condition={el[1].includes('http')}
+                        >
+                          {flattenToAppURL(el[1])}
+                        </ConditionalLink>
+                      )}
                     </Table.Cell>
                   </Table.Row>
                 ))}

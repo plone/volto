@@ -8,7 +8,8 @@ import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { asyncConnect, Helmet } from '@plone/volto/helpers';
+import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { Segment } from 'semantic-ui-react';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
@@ -23,29 +24,21 @@ import { injectIntl } from 'react-intl';
 
 import Error from '@plone/volto/error';
 
-import {
-  Breadcrumbs,
-  Footer,
-  Header,
-  Icon,
-  OutdatedBrowser,
-  AppExtras,
-  SkipLinks,
-} from '@plone/volto/components';
-import {
-  BodyClass,
-  getBaseUrl,
-  getView,
-  hasApiExpander,
-  isCmsUi,
-} from '@plone/volto/helpers';
-import {
-  getBreadcrumbs,
-  getContent,
-  getNavigation,
-  getTypes,
-  getWorkflow,
-} from '@plone/volto/actions';
+import Breadcrumbs from '@plone/volto/components/theme/Breadcrumbs/Breadcrumbs';
+import Footer from '@plone/volto/components/theme/Footer/Footer';
+import Header from '@plone/volto/components/theme/Header/Header';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import OutdatedBrowser from '@plone/volto/components/theme/OutdatedBrowser/OutdatedBrowser';
+import AppExtras from '@plone/volto/components/theme/AppExtras/AppExtras';
+import SkipLinks from '@plone/volto/components/theme/SkipLinks/SkipLinks';
+import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
+import { getBaseUrl, getView, isCmsUi } from '@plone/volto/helpers/Url/Url';
+import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
+import { getBreadcrumbs } from '@plone/volto/actions/breadcrumbs/breadcrumbs';
+import { getContent } from '@plone/volto/actions/content/content';
+import { getNavigation } from '@plone/volto/actions/navigation/navigation';
+import { getTypes } from '@plone/volto/actions/types/types';
+import { getWorkflow } from '@plone/volto/actions/workflow/workflow';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
@@ -141,7 +134,7 @@ export class App extends Component {
         {this.props.content && this.props.content['@type'] && (
           <BodyClass
             className={`contenttype-${this.props.content['@type']
-              .replace(' ', '-')
+              .replaceAll(' ', '-')
               .toLowerCase()}`}
           />
         )}
@@ -153,10 +146,13 @@ export class App extends Component {
               this.props.pathname !== '/',
             siteroot: this.props.pathname === '/',
             [`is-adding-contenttype-${decodeURIComponent(
-              this.props.location?.search?.replace('?type=', ''),
+              this.props.location?.search?.startsWith('?type=')
+                ? this.props.location?.search?.replace('?type=', '')
+                : '',
             )
-              .replace(' ', '')
-              .toLowerCase()}`]: this.props.location?.search,
+              .replaceAll(' ', '-')
+              .toLowerCase()}`]:
+              this.props.location?.search?.startsWith('?type='),
             'is-authenticated': !!this.props.token,
             'is-anonymous': !this.props.token,
             'cms-ui': isCmsUI,

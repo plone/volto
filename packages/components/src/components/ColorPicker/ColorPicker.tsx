@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   Button,
   ColorPicker as RACColorPicker,
-  ColorPickerProps as RACColorPickerProps,
+  type ColorPickerProps as RACColorPickerProps,
   Dialog,
   DialogTrigger,
   Popover,
@@ -35,7 +35,14 @@ export function ColorPicker({ label, children, ...props }: ColorPickerProps) {
                   yChannel="brightness"
                 />
                 <ColorSlider colorSpace="hsb" channel="hue" />
-                <ColorField label="Hex" />
+                <ColorField
+                  label="Hex"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.currentTarget.blur();
+                    }
+                  }}
+                />
               </>
             )}
           </Dialog>

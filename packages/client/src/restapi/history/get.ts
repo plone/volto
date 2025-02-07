@@ -1,7 +1,7 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
 import { z } from 'zod';
-import { GetHistoryResponse } from '@plone/types';
+import type { GetHistoryResponse } from '@plone/types';
 
 const getHistorySchema = z.object({
   path: z.string(),

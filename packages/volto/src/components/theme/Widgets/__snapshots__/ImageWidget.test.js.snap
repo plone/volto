@@ -8,11 +8,9 @@ exports[`ImageWidget renders an image view widget component 1`] = `
 >
   <img
     alt=""
-    className=""
     data-content-type=""
     data-size={0}
     data-size-fmt="0B"
-    fetchpriority="high"
     src="/foo-bar.png"
   />
 </span>
@@ -24,11 +22,9 @@ exports[`ImageWidget renders an image view widget component with children 1`] = 
 >
   <img
     alt="foo-bar.png"
-    className=""
     data-content-type=""
     data-size={0}
     data-size-fmt="0B"
-    fetchpriority="high"
     src="/foo-bar.png"
   />
 </span>

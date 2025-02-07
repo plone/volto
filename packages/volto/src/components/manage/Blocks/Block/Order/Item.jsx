@@ -1,10 +1,10 @@
 import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
-import { includes } from 'lodash';
+import includes from 'lodash/includes';
 import cx from 'classnames';
-import { Icon } from '@plone/volto/components';
-import { setUIState } from '@plone/volto/actions';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { setUIState } from '@plone/volto/actions/form/form';
 import config from '@plone/volto/registry';
 
 import deleteSVG from '@plone/volto/icons/delete.svg';

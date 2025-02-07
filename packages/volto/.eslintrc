@@ -1,6 +1,12 @@
 {
-  "extends": ["react-app", "prettier", "plugin:jsx-a11y/recommended"],
+  "extends": [
+    "react-app",
+    "prettier",
+    "plugin:jsx-a11y/recommended",
+    "./.eslintrc.core.js",
+  ],
   "plugins": ["prettier", "react-hooks", "jsx-a11y"],
+  "root": true,
   "env": {
     "es6": true,
     "browser": true,
@@ -18,6 +24,7 @@
   },
   "rules": {
     "import/no-unresolved": 1,
+    "import/named": "error",
     "react/jsx-key": [2, { "checkFragmentShorthand": true }],
     "no-alert": 1,
     "no-console": 1,

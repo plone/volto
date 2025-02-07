@@ -1,7 +1,7 @@
 import { Grid } from 'semantic-ui-react';
 import cx from 'classnames';
-import { RenderBlocks } from '@plone/volto/components';
-import { withBlockExtensions } from '@plone/volto/helpers';
+import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
+import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
 import config from '@plone/volto/registry';
 
 const GridBlockView = (props) => {

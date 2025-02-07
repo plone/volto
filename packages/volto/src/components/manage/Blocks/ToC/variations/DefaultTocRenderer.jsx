@@ -4,11 +4,11 @@
  */
 
 import PropTypes from 'prop-types';
-import { map } from 'lodash';
+import map from 'lodash/map';
 import { List } from 'semantic-ui-react';
 import Slugger from 'github-slugger';
-import { UniversalLink } from '@plone/volto/components';
-import { normalizeString } from '@plone/volto/helpers';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
+import { normalizeString } from '@plone/volto/helpers/Utils/Utils';
 
 const RenderListItems = ({ items, data }) => {
   return map(items, (item) => {
@@ -35,11 +35,6 @@ const RenderListItems = ({ items, data }) => {
   });
 };
 
-/**
- * View toc block class.
- * @class View
- * @extends Component
- */
 const View = ({ data, tocEntries }) => {
   return (
     <>

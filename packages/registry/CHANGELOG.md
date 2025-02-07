@@ -8,6 +8,69 @@
 
 <!-- towncrier release notes start -->
 
+## 2.4.0 (2025-01-31)
+
+### Feature
+
+- Added add-ons styles loader. @sneridagh [#6630](https://github.com/plone/volto/issues/6630)
+
+## 2.3.0 (2025-01-24)
+
+### Feature
+
+- Added route registry. @sneridagh [#6600](https://github.com/plone/volto/issues/6600)
+
+### Documentation
+
+- Document the route API. @sneridagh [#6604](https://github.com/plone/volto/issues/6604)
+
+## 2.2.0 (2024-12-12)
+
+### Feature
+
+- Added an experimental Vite plugin for the registry. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+
+### Documentation
+
+- `html_use_opensearch` value must not have a trailing slash. Clean up comments. @stevepiercy [#6502](https://github.com/plone/volto/issues/6502)
+
+## 2.1.2 (2024-11-05)
+
+### Bugfix
+
+- Fix weird typings issue happening in docker build but not locally. @sneridagh [#6471](https://github.com/plone/volto/issues/6471)
+
+### Internal
+
+- Improve packaging. @sneridagh 
+
+## 2.1.1 (2024-11-05)
+
+### Internal
+
+- Repackage registry, the previous build was including the docs. @sneridagh 
+
+## 2.1.0 (2024-11-05)
+
+### Feature
+
+- Allow any type `js`, `cjs`, `mjs`, `ts` as configuration for the add-on registry. @sneridagh [#6458](https://github.com/plone/volto/issues/6458)
+
+### Bugfix
+
+- Fix ERR_REQUIRE from ESM module requiring CJS module. @sneridagh [#6458](https://github.com/plone/volto/issues/6458)
+- Fix types for add-on's TypeScript. Fix `.tsconfig` for Node.js side. @sneridagh [#6461](https://github.com/plone/volto/issues/6461)
+
+### Internal
+
+- Replace `parcel` with `tsup` for build. @sneridagh [#6461](https://github.com/plone/volto/issues/6461)
+
+## 2.0.0 (2024-10-31)
+
+### Internal
+
+- Release 2.0.0 @sneridagh 
+
 ## 2.0.0-alpha.0 (2024-10-27)
 
 ### Breaking

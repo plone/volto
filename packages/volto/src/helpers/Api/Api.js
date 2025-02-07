@@ -7,7 +7,7 @@ import superagent from 'superagent';
 import Cookies from 'universal-cookie';
 import config from '@plone/volto/registry';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
-import { stripQuerystring } from '@plone/volto/helpers';
+import { stripQuerystring } from '@plone/volto/helpers/Url/Url';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
@@ -17,7 +17,7 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  * @param {string} path Path (or URL) to be formatted.
  * @returns {string} Formatted path.
  */
-function formatUrl(path) {
+export function formatUrl(path) {
   const { settings } = config;
   const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
   const prefix = settings.prefixPath;

@@ -14,7 +14,9 @@ import routes from '@root/routes';
 import config from '@plone/volto/registry';
 
 import configureStore from '@plone/volto/store';
-import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
+import Api from '@plone/volto/helpers/Api/Api';
+import { persistAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
+import ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 
 export const history = createBrowserHistory({
   basename: config.settings.prefixPath ? config.settings.prefixPath : '/',
