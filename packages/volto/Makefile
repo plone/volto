@@ -170,7 +170,11 @@ deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in 
 deployment-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for deployment tests
 	$(NODEBIN)/start-test "make acceptance-backend-start" http-get://127.0.0.1:55001/plone "make deployment-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make ci-acceptance-test"
 
-######### Project Acceptance tests
+######### Cookieplone / (deprecated) Project Acceptance tests
+
+.PHONY: cookieplone-acceptance-frontend-prod-start
+cookieplone-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for cookieplone tests
+	(cd ../../volto-add-on && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
 
 .PHONY: project-acceptance-frontend-prod-start
 project-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for project tests

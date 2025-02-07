@@ -257,7 +257,11 @@ deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in 
 deployment-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for deployment tests
 	$(MAKE) -C "./packages/volto/" deployment-ci-acceptance-test-run-all
 
-######### Project Acceptance tests
+######### Cookieplone / (deprecated) Project Acceptance tests
+
+.PHONY: cookieplone-acceptance-frontend-prod-start
+cookieplone-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for project tests
+	$(MAKE) -C "./packages/volto/" cookieplone-acceptance-frontend-prod-start
 
 .PHONY: project-acceptance-frontend-prod-start
 project-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for project tests
