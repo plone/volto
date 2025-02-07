@@ -110,7 +110,8 @@ jobs:
           start: |
             make ci-acceptance-backend-start
             make acceptance-frontend-prod-start
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
+            wait-on: 'http-get://127.0.0.1:55001/plone, http://127.0.0.1:3000'
+            wait-on-timeout: 20
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v4
