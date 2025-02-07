@@ -109,7 +109,7 @@ jobs:
           spec: cypress/tests/core/basic/**/*.cy.ts
           start: |
             make ci-acceptance-backend-start
-            make project-acceptance-frontend-prod-start
+            make acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
