@@ -26,7 +26,7 @@ import {
  * @param {Editor} editor
  * @param {KeyboardEvent} event
  */
-export function joinWithPreviousBlock({ editor, event }) {
+export function joinWithPreviousBlock({ editor, event }, intl) {
   if (!isCursorAtBlockStart(editor)) return;
 
   const blockProps = editor.getBlockProps();
@@ -60,7 +60,7 @@ export function joinWithPreviousBlock({ editor, event }) {
   const text = Editor.string(editor, []);
   if (!text) {
     const cursor = getBlockEndAsRange(otherBlock);
-    const newFormData = deleteBlock(properties, block);
+    const newFormData = deleteBlock(properties, block, intl);
 
     ReactDOM.unstable_batchedUpdates(() => {
       saveSlateBlockSelection(otherBlockId, cursor);
@@ -89,7 +89,7 @@ export function joinWithPreviousBlock({ editor, event }) {
     value: combined,
     plaintext: serializeNodesToText(combined || []),
   });
-  const newFormData = deleteBlock(formData, block);
+  const newFormData = deleteBlock(formData, block, intl);
 
   ReactDOM.unstable_batchedUpdates(() => {
     saveSlateBlockSelection(otherBlockId, cursor);
@@ -107,7 +107,7 @@ export function joinWithPreviousBlock({ editor, event }) {
  * @param {Editor} editor
  * @param {KeyboardEvent} event
  */
-export function joinWithNextBlock({ editor, event }) {
+export function joinWithNextBlock({ editor, event }, intl) {
   if (!isCursorAtBlockEnd(editor)) return;
 
   const blockProps = editor.getBlockProps();
@@ -146,7 +146,7 @@ export function joinWithNextBlock({ editor, event }) {
     value: combined,
     plaintext: serializeNodesToText(combined || []),
   });
-  const newFormData = deleteBlock(formData, block);
+  const newFormData = deleteBlock(formData, block, intl);
 
   ReactDOM.unstable_batchedUpdates(() => {
     // saveSlateBlockSelection(otherBlockId, cursor);

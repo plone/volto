@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.7 (2025-01-24)
+
+### Internal
+
+- Centralize `tsconfig`. @sneridagh [#6536](https://github.com/plone/volto/issues/6536)
+
 ## 1.0.0-alpha.6 (2024-11-21)
 
 ### Feature

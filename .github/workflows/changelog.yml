@@ -48,6 +48,8 @@ jobs:
               - 'packages/slots/**'
             theming:
               - 'packages/theming/**'
+            seven:
+              - 'packages/seven/**'
             wrongNews:
               - added|modified: 'news/**'
 
@@ -147,6 +149,14 @@ jobs:
         run: |
           git fetch --no-tags origin main
           towncrier check --compare-with origin/main --dir packages/theming
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
+      - name: seven changelog check
+        if: steps.filter.outputs.seven == 'true'
+        run: |
+          git fetch --no-tags origin main
+          towncrier check --compare-with origin/main --dir packages/seven
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 

@@ -1,0 +1,77 @@
+{
+  "name": "@plone/react-router",
+  "description": "Plone React Router integration package",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "url": "https://plone.org"
+    }
+  ],
+  "funding": "https://github.com/sponsors/plone",
+  "license": "MIT",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plone/volto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/volto/issues"
+  },
+  "homepage": "https://plone.org",
+  "keywords": [
+    "volto",
+    "plone",
+    "plone6",
+    "react",
+    "helpers"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "main": "./dist/index.js",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "build:force": "tsup",
+    "check:exports": "attw --pack .",
+    "test": "vitest",
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.16.4",
+    "@plone/types": "workspace:*",
+    "@react-router/dev": "7.1.2",
+    "@types/node": "22.10.7",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "release-it": "17.1.1",
+    "tsconfig": "workspace:*",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.3"
+  }
+}

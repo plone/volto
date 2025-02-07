@@ -1,0 +1,1 @@
+Use a text widget for editing the frontend domain setting in the Volto Settings control panel, instead of the URL widget which causes problems by erasing the current domain. @davisagli

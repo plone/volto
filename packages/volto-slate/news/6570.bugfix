@@ -1,0 +1,1 @@
+In `RichTextWidget` and `HtmlSlateWidget`, fix breaking a list by typing Enter. @nileshgulia1

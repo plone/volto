@@ -8,6 +8,22 @@
 
 <!-- towncrier release notes start -->
 
+## 2.4.0 (2025-01-31)
+
+### Feature
+
+- Added add-ons styles loader. @sneridagh [#6630](https://github.com/plone/volto/issues/6630)
+
+## 2.3.0 (2025-01-24)
+
+### Feature
+
+- Added route registry. @sneridagh [#6600](https://github.com/plone/volto/issues/6600)
+
+### Documentation
+
+- Document the route API. @sneridagh [#6604](https://github.com/plone/volto/issues/6604)
+
 ## 2.2.0 (2024-12-12)
 
 ### Feature

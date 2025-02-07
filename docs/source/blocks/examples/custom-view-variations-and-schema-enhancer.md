@@ -238,6 +238,7 @@ config.blocks.blocksConfig.block04 = {
   sidebarTab: 1, // this is set to 1 to have the `Block` tab selected in the sidebar
   // editor when editing this block these are the variations available for this block
   // these are the variations available for this block
+  group: 'common', // to show the block in the block select under the `common` category
   variations: [
     {
       id: 'variation01', // this is the id of the variation

@@ -18,7 +18,7 @@ describe('[GET] Content', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(result.current.data?.title).toBe('Welcome to Plone 6!');
+    expect(result.current.data?.title).toBe('Welcome to Plone');
   });
 
   test('Hook - Failure', async () => {
@@ -41,7 +41,7 @@ describe('[GET] Content', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(result.current.data?.title).toBe('Welcome to Plone 6!');
+    expect(result.current.data?.title).toBe('Welcome to Plone');
   });
 
   test('Hook - expand', async () => {
@@ -59,7 +59,7 @@ describe('[GET] Content', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(result.current.data?.title).toBe('Welcome to Plone 6!');
+    expect(result.current.data?.title).toBe('Welcome to Plone');
     expect(
       result.current.data?.['@components']?.breadcrumbs?.items,
     ).toStrictEqual([]);
@@ -90,7 +90,7 @@ describe('[GET] Content', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(result.current.data?.title).toBe('Welcome to Plone 6!');
+    expect(result.current.data?.title).toBe('Welcome to Plone');
   });
 
   test.skip('Hook - fullObjects && version', async () => {
@@ -106,7 +106,7 @@ describe('[GET] Content', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(result.current.data?.title).toBe('Welcome to Plone 6!');
+    expect(result.current.data?.title).toBe('Welcome to Plone');
   });
 });
 

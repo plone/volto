@@ -148,9 +148,9 @@ html_theme_options = {
             }
         },
         {
-            "name": "Twitter",
-            "url": "https://twitter.com/plone",
-            "icon": "fa-brands fa-square-twitter",
+            "name": "Mastodon",
+            "url": "https://plone.social/@plone",
+            "icon": "fa-brands fa-mastodon",
             "type": "fontawesome",
             "attributes": {
                 "target": "_blank",
@@ -159,9 +159,20 @@ html_theme_options = {
             }
         },
         {
-            "name": "Mastodon",
-            "url": "https://plone.social/@plone",
-            "icon": "fa-brands fa-mastodon",
+            "name": "YouTube",
+            "url": "https://www.youtube.com/@PloneCMS",
+            "icon": "fa-brands fa-youtube",
+            "type": "fontawesome",
+            "attributes": {
+                "target": "_blank",
+                "rel": "noopener me",
+                "class": "nav-link custom-fancy-css"
+            }
+        },
+        {
+            "name": "X (formerly Twitter)",
+            "url": "https://x.com/plone",
+            "icon": "fa-brands fa-square-x-twitter",
             "type": "fontawesome",
             "attributes": {
                 "target": "_blank",

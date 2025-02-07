@@ -1,0 +1,1 @@
+Remove hard dependencies on react-intl and history in @plone/types @sneridagh
