@@ -899,6 +899,12 @@ importers:
       glob:
         specifier: ^10.4.5
         version: 10.4.5
+      react:
+        specifier: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+        version: 18.2.0(react@18.2.0)
       tmp:
         specifier: 0.2.1
         version: 0.2.1
@@ -927,12 +933,6 @@ importers:
       '@types/tmp':
         specifier: ^0.2.6
         version: 0.2.6
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
       release-it:
         specifier: 16.2.1
         version: 16.2.1(encoding@0.1.13)(typescript@5.7.3)
@@ -20530,7 +20530,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.24.4
       '@babel/helper-plugin-utils': 7.25.7
-      '@babel/helper-validator-option': 7.25.7
+      '@babel/helper-validator-option': 7.25.9
       '@babel/plugin-syntax-jsx': 7.25.7(@babel/core@7.24.4)
       '@babel/plugin-transform-modules-commonjs': 7.24.1(@babel/core@7.24.4)
       '@babel/plugin-transform-typescript': 7.24.4(@babel/core@7.24.4)
