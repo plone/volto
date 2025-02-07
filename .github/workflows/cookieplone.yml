@@ -88,7 +88,7 @@ jobs:
           pipx run --no-cache cookieplone frontend_addon --no-input
 
       - name: Install generated package
-        working-directory: frontend-addon
+        working-directory: volto-add-on
         run: |
           pnpm dlx mrs-developer missdev --no-config --fetch-https
           (cd core && git fetch --depth 1 origin ${GITHUB_REF#refs/heads/}:${GITHUB_REF#refs/heads/} && git checkout ${GITHUB_REF#refs/heads/})
@@ -104,7 +104,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          working-directory: frontend-addon
+          working-directory: volto-add-on
           browser: chrome
           spec: cypress/tests/core/basic/**/*.cy.ts
           start: |
