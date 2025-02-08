@@ -12,6 +12,11 @@ export default defineConfig({
   plugins: [PloneRegistryVitePlugin(), reactRouter(), tsconfigPaths()],
   server: {
     port: 3000,
+    fs: {
+      // Allow serving files from one level up to the project root
+      // (required by the Cookieplone setup)
+      allow: ['../../../.'],
+    },
     proxy: {
       '^/\\+\\+api\\+\\+($$|/.*)': {
         target: prodServerName
