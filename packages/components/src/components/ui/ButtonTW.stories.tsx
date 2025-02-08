@@ -6,7 +6,7 @@ import { AddIcon } from '../Icons/AddIcon';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../main.css';
+import '../../styles/tailwind/base.css';
 
 const meta = {
   title: 'Components/TW/Button',
@@ -15,10 +15,10 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Button>;
+} satisfies Meta;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: (args: any) => <Button {...args}>Press me</Button>,

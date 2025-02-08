@@ -1,3 +1,6 @@
+/* We pre-define here the @layer before tailwind does, adding our own layers */
+@layer theme, base, components, plone-components, utilities, custom;
+
 @import 'tailwindcss';
 
 @plugin 'tailwindcss-animate';
