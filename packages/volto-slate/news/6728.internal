@@ -1,1 +1,0 @@
-Remove hard dependencies on `react`, move to `peerDependencies` @sneridagh

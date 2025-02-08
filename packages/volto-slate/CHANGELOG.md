@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 18.2.2 (2025-02-08)
+
+### Bugfix
+
+- In `RichTextWidget` and `HtmlSlateWidget`, fix breaking a list by typing Enter. @nileshgulia1 [#6570](https://github.com/plone/volto/issues/6570)
+
+### Internal
+
+- Remove hard dependencies on `react`, move to `peerDependencies` @sneridagh [#6728](https://github.com/plone/volto/issues/6728)
+
 ## 18.2.1 (2025-01-31)
 
 ### Bugfix
