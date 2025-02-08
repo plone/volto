@@ -2,7 +2,7 @@ version: '3.3'
 services:
 
   backend:
-    image: plone/plone-backend:6.1.0rc1
+    image: plone/plone-backend:6.1.0
     # Plone 5.2 series can be used too
     # image: plone/plone-backend:5.2.10
     ports:
