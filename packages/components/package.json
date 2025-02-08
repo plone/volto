@@ -76,13 +76,18 @@
     "not dead"
   ],
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.2",
     "@react-aria/utils": "^3.27.0",
     "@react-spectrum/utils": "^3.12.1",
     "@storybook/test": "^8.5.3",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "lucide-react": "^0.475.0",
     "react-aria-components": "^1.6.0",
     "tailwind-merge": "^3.0.1",
-    "tailwind-variants": "^0.3.1"
+    "tailwind-variants": "^0.3.1",
+    "tailwindcss": "^4.0.4",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",
@@ -114,7 +119,6 @@
     "prettier-plugin-tailwindcss": "^0.6.11",
     "release-it": "17.1.1",
     "storybook": "^8.5.3",
-    "tailwindcss": "^4.0.4",
     "tsup": "^8.3.5",
     "typescript": "^5.7.3",
     "vite": "^5.4.9",
