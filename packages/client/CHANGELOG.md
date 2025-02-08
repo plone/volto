@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.23 (2025-02-08)
+
+### Internal
+
+- Update Vite version. @sneridagh [#6640](https://github.com/plone/volto/pull/6640)
+- Update internal `peerDependencies` to include React 19.
+  Update TS version. @sneridagh [#6641](https://github.com/plone/volto/pull/6641)
+- Test with Plone 6.1.0rc1. @sneridagh [#6682](https://github.com/plone/volto/pull/6682)
+- Remove hard dependencies on `react`, use `peerDependencies` instead. @sneridagh [#6728](https://github.com/plone/volto/pull/6728)
+
 ## 1.0.0-alpha.22 (2025-01-24)
 
 ### Documentation
