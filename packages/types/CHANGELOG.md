@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.3.2 (2025-02-08)
+
+### Internal
+
+- Update TS version. @sneridagh [#6641](https://github.com/plone/volto/issues/6641)
+- Remove hard dependencies on react-intl and history in @plone/types @sneridagh [#6728](https://github.com/plone/volto/issues/6728)
+
 ## 1.3.1 (2025-01-31)
 
 ### Bugfix
