@@ -285,6 +285,7 @@ const BlocksForm = (props) => {
               onMoveBlock={onMoveBlockEnhanced}
               onDeleteBlock={onDeleteBlock}
               onSelectBlock={onSelectBlock}
+              editable={editable}
               removable
               errors={blocksErrors}
             />
