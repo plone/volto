@@ -203,6 +203,7 @@ config.blocks.blocksConfig.block03 = {
   icon: imagesSVG, // this is the image that will be shown in the block selector
   sidebarTab: 1, // this is set to 1 to have the `Block` tab selected in the sidebar
   // editor when editing this block these are the variations available for this block
+  group: 'common', // to show the block in the block select under the `common` category
   variations: [
     {
       id: 'variation01', // this is the id of the variation

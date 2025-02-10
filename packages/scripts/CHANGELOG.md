@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.8.2 (2025-02-08)
+
+### Internal
+
+- Test with Plone 6.1.0rc1. @sneridagh [#6682](https://github.com/plone/volto/issues/6682)
+
 ## 3.8.1 (2024-11-05)
 
 ### Internal

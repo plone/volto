@@ -8,7 +8,7 @@
     }
   ],
   "license": "MIT",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "repository": {
     "type": "git",
     "url": "http://github.com/plone/volto.git"
@@ -75,6 +75,13 @@
     "last 2 versions",
     "not dead"
   ],
+  "dependencies": {
+    "@react-aria/utils": "^3.27.0",
+    "@react-spectrum/utils": "^3.12.1",
+    "@storybook/test": "^8.5.3",
+    "clsx": "^2.1.1",
+    "react-aria-components": "^1.6.0"
+  },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",
     "@plone/types": "workspace: *",
@@ -99,8 +106,8 @@
     "eslint-plugin-storybook": "^0.11.2",
     "jest-axe": "^8.0.0",
     "jsdom": "^22.1.0",
-    "lightningcss": "^1.24.0",
-    "lightningcss-cli": "^1.24.0",
+    "lightningcss": "^1.29.0",
+    "lightningcss-cli": "^1.29.1",
     "release-it": "17.1.1",
     "storybook": "^8.5.3",
     "tsup": "^8.3.5",
@@ -108,13 +115,6 @@
     "vite": "^5.4.9",
     "vitest": "^2.1.3",
     "vitest-axe": "^0.1.0"
-  },
-  "dependencies": {
-    "@react-aria/utils": "^3.26.0",
-    "@react-spectrum/utils": "^3.12.0",
-    "@storybook/test": "^8.5.3",
-    "clsx": "^2.1.1",
-    "react-aria-components": "^1.5.0"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",

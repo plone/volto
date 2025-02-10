@@ -17,6 +17,23 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.8.2 (2025-02-08)
+
+### Bugfix
+
+- Use a text widget for editing the frontend domain setting in the Volto Settings control panel, instead of the URL widget which causes problems by erasing the current domain. @davisagli [#4171](https://github.com/plone/volto/issues/4171)
+- Update Dutch translations. @mauritsvanrees [#6476](https://github.com/plone/volto/issues/6476)
+
+### Internal
+
+- Test(cypress): fix breaking a list by typing Enter refs- #6586 @nileshgulia1 [#6570](https://github.com/plone/volto/issues/6570)
+- Add the block `group` name in the block configuration. @erral [#6679](https://github.com/plone/volto/issues/6679)
+- Test with Plone 6.1.0rc1. @sneridagh [#6682](https://github.com/plone/volto/issues/6682)
+- Revise the existing issue templates and create a new one for PLIP tasks. @stevepiercy [#6683](https://github.com/plone/volto/issues/6683)
+- Fix documentation build at Read the Docs. @sneridagh [#6684](https://github.com/plone/volto/issues/6684)
+- Upgrade jotai to 2.11.3 @ksuess [#6685](https://github.com/plone/volto/issues/6685)
+- Add Makefile command for testing Cookieplone in CI @sneridagh [#6728](https://github.com/plone/volto/issues/6728)
+
 ## 18.8.1 (2025-02-04)
 
 ### Bugfix
