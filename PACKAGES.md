@@ -15,9 +15,8 @@ and as a development dependency:
 Plone 6.0.x (Volto 17 and below) does not use any of them.
 
 These packages are expected to be used and become part of Plone 7.
-Some of them might become part of Plone 6.1.x minor versions.
 
-The packages are divided into three categories or types:
+These packages are divided into three categories or types:
 
 - core
 - utilities
@@ -53,6 +52,7 @@ The bundle of these packages must work on both CommonJS and ECMAScript Module (E
 
 -   `@plone/providers`
 -   `@plone/helpers`
+-   `@plone/react-router`
 
 
 ### Rules
@@ -67,6 +67,7 @@ This bundle must work on both CommonJS and ESM environments.
 -   `@plone/blocks`
 -   `@plone/slots`
 -   `@plone/theming`
+-   `@plone/cmsui`
 -   `@plone/contents`
 
 
@@ -94,7 +95,7 @@ Some of them are used by the build, and separated in packages for convenience.
 - `tsconfig`
 
 
-## Volto add-ons packages
+## Volto add-on packages
 
 These Volto add-ons are packages used by Volto core.
 They are always loaded, so they are also called "core packages".
