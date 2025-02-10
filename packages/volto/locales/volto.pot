@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-12-06T13:45:21.266Z\n"
+"POT-Creation-Date: 2024-12-29T22:04:01.625Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -207,6 +207,11 @@ msgstr ""
 #. Default: "Add to Groups"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
+msgstr ""
+
+#. Default: "Add to favorites"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "Add to favorites"
 msgstr ""
 
 #. Default: "Add users to group"
@@ -492,6 +497,11 @@ msgstr ""
 msgid "Block"
 msgstr ""
 
+#. Default: "Block copied to clipboard"
+#: components/manage/Sidebar/FavoriteItem
+msgid "Block copied to clipboard"
+msgstr ""
+
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
@@ -555,6 +565,7 @@ msgstr ""
 
 #. Default: "Cancel"
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/SaveBlockDialog
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
@@ -676,6 +687,7 @@ msgid "Click to download full sized image"
 msgstr ""
 
 #. Default: "Close"
+#: components/manage/Sidebar/FavoriteItem
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr ""
@@ -840,6 +852,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Copy"
+msgstr ""
+
+#. Default: "Copy block"
+#: components/manage/Sidebar/FavoriteItem
+msgid "Copy block"
 msgstr ""
 
 #. Default: "Copy blocks"
@@ -1319,6 +1336,11 @@ msgstr ""
 msgid "Enter URL or select an item"
 msgstr ""
 
+#. Default: "Enter a name for this block"
+#: components/manage/Blocks/Block/SaveBlockDialog
+msgid "Enter a name for this block"
+msgstr ""
+
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
@@ -1504,6 +1526,11 @@ msgstr ""
 #. Default: "Failed to undo transactions"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Failed To Undo Transactions"
+msgstr ""
+
+#. Default: "Favorite"
+#: components/manage/Sidebar/Sidebar
+msgid "Favorite"
 msgstr ""
 
 #. Default: "Field"
@@ -3092,6 +3119,8 @@ msgstr ""
 
 #. Default: "Save"
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/EditBlockWrapper
+#: components/manage/Blocks/Block/SaveBlockDialog
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -3101,8 +3130,14 @@ msgstr ""
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/Sidebar
 #: helpers/MessageLabels/MessageLabels
 msgid "Save"
+msgstr ""
+
+#. Default: "Save block"
+#: components/manage/Blocks/Block/SaveBlockDialog
+msgid "Save block"
 msgstr ""
 
 #. Default: "Save"
