@@ -8,7 +8,6 @@
 [![Acceptance Tests](https://github.com/plone/volto/actions/workflows/acceptance.yml/badge.svg)](https://github.com/plone/volto/actions/workflows/acceptance.yml)
 [![Build Status Docs](https://github.com/plone/volto/actions/workflows/docs.yml/badge.svg)](https://github.com/plone/volto/actions)
 
-
 ## Introduction
 
 [Volto](https://github.com/plone/volto) is a ReactJS-based frontend for the [Plone](https://plone.org) Content Management System.
@@ -30,11 +29,9 @@ You can build your own or choose from the community released ones:
 - [Volto Add-ons in NPM](https://www.npmjs.com/search?q=keywords%3Avolto-addon%2Cvolto)
 - [Volto Awesome](https://github.com/collective/awesome-volto)
 
-
 ## Demo
 
 You can try a Volto online demo at [https://demo.plone.org/](https://demo.plone.org/).
-
 
 ## Monorepo structure
 
@@ -59,11 +56,9 @@ This allows the code to be shared effectively, and unifies tracking of changes a
 
 See also [Monorepo structure](https://6.docs.plone.org/volto/contributing/developing-core.html#monorepo-structure).
 
-
 ## Create a Volto project
 
 To start a new project using Volto, follow the [Plone installation documentation](https://6.docs.plone.org/install/create-project.html).
-
 
 ## Documentation
 
@@ -71,23 +66,19 @@ You can find the latest documentation at [https://6.docs.plone.org/](https://6.d
 
 For links to trainings and videos, see [Other learning resources](https://6.docs.plone.org/volto/tutorials/index.html).
 
-
 ## Supported Plone, Python, and Plone REST API versions
 
 See [Plone, Python, and Plone REST API compatibility](https://6.docs.plone.org/volto/contributing/version-policy.html#version-policy-plone-python-and-plone-rest-api-compatibility)
 
 See the [Plone Release Schedule](https://plone.org/download/release-schedule) for details of maintenance and support.
 
-
 ## Supported Node.js versions
 
 See [Node.js version policy](https://6.docs.plone.org/volto/contributing/version-policy.html#version-policy-plone-python-and-plone-rest-api-compatibility).
 
-
 ## Supported browsers
 
 See [Supported browsers](https://6.docs.plone.org/volto/contributing/version-policy.html#version-policy-supported-browsers).
-
 
 ## Contributing
 
@@ -98,20 +89,17 @@ For newcomers to Volto, Plone, or open source software, you must read and follow
 Since December 2023, this repository has a monorepo structure.
 Volto itself is treated as a library and you can find it in the `packages/volto` folder.
 
-
 ## Contributors
 
 <a href="https://github.com/plone/volto/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=plone/volto" />
 </a>
 
-
 ## License
 
 MIT License. Copyrights held by the [Plone Foundation](https://plone.org/foundation).
 
 See [LICENSE.md](LICENSE.md) for details.
-
 
 ## Volto in production
 
@@ -167,7 +155,6 @@ To ensure your website gets the greatest exposure, add it both to [Awesome Volto
 - [WISE-Freshwater](https://water.europa.eu/freshwater) (WISE-Freshwater, the Freshwater Information System for Europe. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2021)
 - [Zeelandia](https://www.zeelandia.de/) (Corporate website for one of the leading bakery ingredients manufacturers in Germany, developed by [kitconcept GmbH](https://kitconcept.com/en), 2019)
 
-
 ### Open-source websites built with Volto
 
 The following websites have been built with Volto.
@@ -183,7 +170,7 @@ You should check the dependencies in their `package.json` for more details.
 - [Climate and energy in the EU](https://github.com/eea/climate-energy-frontend) - Volto project for [Climate and energy in the EU website](https://climate-energy.eea.europa.eu)
 - [volto-bise](https://github.com/eea/volto-bise) - A Volto project packaged as an addon. It provides Theming using a razzle.extend.js provided alias.
 - [design-volto-theme](https://github.com/RedTurtle/design-volto-theme) Volto theme for Italian Public Administration
-- [2021.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2021) - Volto project for [Plone Conference 2021 site](https://2021.ploneconf.org)
+- [2021.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2021) - Volto project for Plone Conference 2021 site
 - [2022.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2022) - Volto project for [Plone Conference 2022 site](https://2022.ploneconf.org)
 - [2023.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2023) - Volto project for [Plone Conference 2023 site](https://2023.ploneconf.org)
 - [plone.org.br](https://github.com/plonegovbr/plone.org.br) - Volto project for the [Brazilian Plone Community](https://plone.org.br)
