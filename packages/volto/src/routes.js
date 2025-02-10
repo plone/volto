@@ -56,6 +56,7 @@ import App from '@plone/volto/components/theme/App/App';
 import View from '@plone/volto/components/theme/View/View';
 
 import config from '@plone/volto/registry';
+import { ProtectedRoutes } from './protected-routes';
 
 /**
  * Default routes array.
@@ -232,7 +233,10 @@ export const defaultRoutes = [
   },
   {
     path: '/controlpanel/:id',
-    component: Controlpanel,
+    component: (props) => (
+      // eslint-disable-next-line
+      <ProtectedRoutes component={Controlpanel} {...props} />
+    ),
   },
   {
     path: '/change-password',
