@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
@@ -72,6 +72,7 @@
     "build": "tsup",
     "build:force": "rm -rf dist && tsup",
     "check:exports": "attw --pack .",
+    "check-ts": "tsc --project tsconfig.json",
     "test": "vitest",
     "test:debug": "vitest --inspect-brk --no-file-parallelism registry",
     "dry-release": "release-it --dry-run",
@@ -105,8 +106,6 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/tmp": "^0.2.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "release-it": "16.2.1",
     "tsconfig": "workspace:*",
     "tsup": "^8.3.5",
