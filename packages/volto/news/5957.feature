@@ -1,1 +1,0 @@
-Added {file}sv/LC_MESSAGES/volto.poinlocales and updated{file}/volto/src/constants/Languages.js to include Swedish @TechSubham

@@ -1,3 +1,9 @@
+> [!CAUTION]
+The Volto Team has suspended its review of new pull requests from first-time contributors until the [release of Plone 7](https://plone.org/download/release-schedule), which is preliminarily scheduled for the second quarter of 2026.
+> [Read details](https://6.docs.plone.org/volto/contributing/index.html).
+
+-----
+
 - [ ] I signed and returned the [Plone Contributor Agreement](https://plone.org/foundation/contributors-agreement), and received and accepted an invitation to join a team in the Plone GitHub organization.
 - [ ] I verified there aren't other open [pull requests](https://github.com/plone/volto/pulls) for the same change.
 - [ ] I followed the guidelines in [Contributing to Volto](https://6.docs.plone.org/volto/contributing/index.html).

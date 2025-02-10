@@ -87,7 +87,6 @@ export interface SettingsConfig {
 
   showSelfRegistration: boolean;
   contentMetadataTagsImageField: string;
-  hasWorkingCopySupport: boolean;
   maxUndoLevels: number;
   addonsInfo: unknown;
   workflowMapping: unknown;

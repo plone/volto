@@ -19,7 +19,6 @@ module.exports = {
   pt: 'Português',
   pt_BR: 'Português (Brasil)',
   zh_CN: '中文',
-  sv: 'Svenska',
 };
 
 // export default languages;
