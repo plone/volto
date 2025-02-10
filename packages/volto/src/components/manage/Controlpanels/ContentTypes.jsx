@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { getParentUrl, getId } from '@plone/volto/helpers/Url/Url';
 import { createPortal } from 'react-dom';
 import last from 'lodash/last';
-import { Confirm, Container, Table, Button, Header } from 'semantic-ui-react';
+import { Confirm, Container, Table, Button, Segment } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import Error from '@plone/volto/components/theme/Error/Error';
@@ -345,7 +345,7 @@ class ContentTypes extends Component {
     }
     return (
       <Container className="types-control-panel">
-        <div className="container">
+        <div className="ui container">
           <Confirm
             open={this.state.showDelete}
             header={this.props.intl.formatMessage(messages.deleteConfirmTitle)}
@@ -404,55 +404,62 @@ class ContentTypes extends Component {
           />
         </div>
         <Container>
-          <article id="content">
-            <Header disabled>{this.props.controlpanel.title}</Header>
-            <section id="content-core">
-              <Table compact singleLine striped>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>
-                      <FormattedMessage id="Type" defaultMessage="Type" />
-                    </Table.HeaderCell>
-                    <Table.HeaderCell>
-                      <FormattedMessage
-                        id="Description"
-                        defaultMessage="Description"
+          <Segment.Group raised>
+            <Segment className="primary">
+              {this.props.controlpanel.title}
+            </Segment>
+
+            <Table
+              attached
+              compact
+              singleLine
+              striped
+              className="content-types-content"
+            >
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>
+                    <FormattedMessage id="Type" defaultMessage="Type" />
+                  </Table.HeaderCell>
+                  <Table.HeaderCell>
+                    <FormattedMessage
+                      id="Description"
+                      defaultMessage="Description"
+                    />
+                  </Table.HeaderCell>
+                  <Table.HeaderCell>
+                    <FormattedMessage id="Items" defaultMessage="Items" />
+                  </Table.HeaderCell>
+                  <Table.HeaderCell textAlign="right">
+                    <FormattedMessage id="Actions" defaultMessage="Actions" />
+                  </Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                {this.props.controlpanel.items.map((item) => (
+                  <Table.Row key={item['@id']}>
+                    <Table.Cell>
+                      <Link to={`${this.props.pathname}/${item['id']}`}>
+                        {item.title}
+                      </Link>
+                    </Table.Cell>
+                    <Table.Cell>{item.description}</Table.Cell>
+                    <Table.Cell>{item.count}</Table.Cell>
+                    <Table.Cell textAlign="right">
+                      <ContentTypesActions
+                        item={item}
+                        path={this.props.pathname}
+                        onEdit={this.onEdit}
+                        onDelete={this.onDelete}
+                        onSchema={this.onSchema}
+                        onLayout={this.onLayout}
                       />
-                    </Table.HeaderCell>
-                    <Table.HeaderCell>
-                      <FormattedMessage id="Items" defaultMessage="Items" />
-                    </Table.HeaderCell>
-                    <Table.HeaderCell textAlign="right">
-                      <FormattedMessage id="Actions" defaultMessage="Actions" />
-                    </Table.HeaderCell>
+                    </Table.Cell>
                   </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                  {this.props.controlpanel.items.map((item) => (
-                    <Table.Row key={item['@id']}>
-                      <Table.Cell>
-                        <Link to={`${this.props.pathname}/${item['id']}`}>
-                          {item.title}
-                        </Link>
-                      </Table.Cell>
-                      <Table.Cell>{item.description}</Table.Cell>
-                      <Table.Cell>{item.count}</Table.Cell>
-                      <Table.Cell textAlign="right">
-                        <ContentTypesActions
-                          item={item}
-                          path={this.props.pathname}
-                          onEdit={this.onEdit}
-                          onDelete={this.onDelete}
-                          onSchema={this.onSchema}
-                          onLayout={this.onLayout}
-                        />
-                      </Table.Cell>
-                    </Table.Row>
-                  ))}
-                </Table.Body>
-              </Table>
-            </section>
-          </article>
+                ))}
+              </Table.Body>
+            </Table>
+          </Segment.Group>
         </Container>
         {this.state.isClient &&
           createPortal(
