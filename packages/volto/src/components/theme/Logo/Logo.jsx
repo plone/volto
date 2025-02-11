@@ -43,7 +43,7 @@ const Logo = () => {
   }, [dispatch, pathname]);
 
   const navRootPath = flattenToAppURL(navroot?.navroot?.['@id']) || '/';
-  return null;
+
   return (
     <Link to={navRootPath} aria-label={intl.formatMessage(messages.home)}>
       <Image
