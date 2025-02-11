@@ -12,7 +12,7 @@ import isArray from 'lodash/isArray';
 import isEmpty from 'lodash/isEmpty';
 import remove from 'lodash/remove';
 import { connect } from 'react-redux';
-import { Image, Label, Popup, Button } from 'semantic-ui-react';
+import { Label, Popup, Button } from 'semantic-ui-react';
 import {
   flattenToAppURL,
   isInternalURL,
@@ -33,6 +33,7 @@ import homeSVG from '@plone/volto/icons/home.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import blankSVG from '@plone/volto/icons/blank.svg';
 import { withRouter } from 'react-router';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 const messages = defineMessages({
   placeholder: {
@@ -131,7 +132,7 @@ export class ObjectBrowserWidgetComponent extends Component {
             <div className="item-title">
               {includes(config.settings.imageObjects, item['@type']) ? (
                 <Image
-                  size="small"
+                  className="small ui image"
                   src={`${item['@id']}/@@images/image/thumb`}
                 />
               ) : (

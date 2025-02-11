@@ -33,7 +33,7 @@ export default function Image({
   const attrs = {};
 
   if (!item && src) {
-    attrs.src = src;
+    attrs.src = addPrefixPath(src);
     attrs.className = cx(className, { responsive });
   } else {
     const isFromRealObject = !item.image_scales;
