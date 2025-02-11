@@ -7,8 +7,6 @@ import configureStore from 'redux-mock-store';
 
 import { __test__ as App } from './App';
 
-import { vi } from 'vitest';
-
 beforeAll(() => {
   config.settings.navDepth = 1;
   config.views.errorViews = {

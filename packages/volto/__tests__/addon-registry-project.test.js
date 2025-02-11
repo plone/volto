@@ -4,21 +4,27 @@ import {
   buildDependencyGraph,
   getAddonsLoaderChain,
 } from '@plone/registry/addon-registry';
-import { vi, expect, describe, test, beforeEach, afterEach } from 'vitest';
 
 describe('AddonRegistry - Project', () => {
-  vi.mock(
-    `${path.join(
-      __dirname,
-      'fixtures',
-      'test-volto-project',
-    )}/node_modules/@plone/volto/package.json`,
-    () => ({
-      coreAddons: {},
-    }),
-    { virtual: true },
-  );
+  beforeEach(async () => {
+    await vi.doMock(
+      path.join(
+        __dirname,
+        'fixtures',
+        'test-volto-project',
+        'node_modules/@plone/volto/package.json',
+      ),
+      () => ({
+        default: {
+          coreAddons: {},
+        },
+      }),
+    );
+  });
 
+  afterEach(() => {
+    vi.resetModules();
+  });
   test('works in a mock project directory', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
     const { registry } = AddonRegistry.init(base);
@@ -217,7 +223,7 @@ describe('Addon chain loading dependencies', () => {
 });
 
 describe('Addon via env var - Released addon', () => {
-  const originalEnv = process.env;
+  const originalEnv = { ...process.env };
 
   beforeEach(() => {
     vi.resetModules();

@@ -57,7 +57,11 @@ describe('Aliases', () => {
       },
       intl: {
         locale: 'en',
-        messages: {},
+        messages: {
+          Both: 'Both',
+          Automatically: 'Automatically',
+          Manually: 'Manually',
+        },
       },
       site: {
         data: {

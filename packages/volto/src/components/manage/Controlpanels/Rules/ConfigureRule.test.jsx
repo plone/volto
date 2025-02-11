@@ -23,10 +23,12 @@ describe('ConfigureRule', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <ConfigureRule
-          location={{ pathname: '/controlpanel/rules/:id/configure' }}
-        />
-        <div id="toolbar"></div>
+        <>
+          <ConfigureRule
+            location={{ pathname: '/controlpanel/rules/:id/configure' }}
+          />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
 

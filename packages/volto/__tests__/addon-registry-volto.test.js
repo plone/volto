@@ -1,6 +1,5 @@
 import path from 'path';
 import { AddonRegistry } from '@plone/registry/addon-registry';
-import { describe, expect, it } from 'vitest';
 
 describe('AddonRegistry - Volto', () => {
   it('works in Volto', () => {

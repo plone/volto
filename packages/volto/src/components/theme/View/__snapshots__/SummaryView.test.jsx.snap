@@ -24,29 +24,21 @@ exports[`TabularView > renders a summary view component 1`] = `
     >
       <article>
         <h2>
-          <a
-            className={null}
-            href="/"
-            onClick={[Function]}
-            target={null}
-            title="News Item"
+          <div
+            data-testid="universal-link"
           >
             My item
-          </a>
+          </div>
         </h2>
         <p>
           My item description
         </p>
         <p>
-          <a
-            className={null}
-            href="/"
-            onClick={[Function]}
-            target={null}
-            title={null}
+          <div
+            data-testid="universal-link"
           >
-            Read More…
-          </a>
+            My item
+          </div>
         </p>
       </article>
     </section>
