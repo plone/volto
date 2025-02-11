@@ -89,7 +89,14 @@ describe('Contents', () => {
       },
       intl: {
         locale: 'en',
-        messages: {},
+        messages: {
+          ID: 'ID',
+          Title: 'Title',
+          'Publication date': 'Publication date',
+          'Created on': 'Created on',
+          'Last modified': 'Last modified',
+          Type: 'Type',
+        },
       },
     });
     const { container } = render(

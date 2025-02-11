@@ -1,4 +1,3 @@
-import { describe, it, expect } from 'vitest';
 const path = require('path');
 const { AddonRegistry } = require('@plone/registry/addon-registry');
 const WebpackRelativeResolver = require('../../volto/webpack-plugins/webpack-relative-resolver');
