@@ -126,9 +126,6 @@ class Api {
                 url: err.response.headers.location,
               });
             }
-            if (response.status === 401) {
-              window.location.href = '/login';
-            }
             return err ? reject(err) : resolve(response.body || response.text);
           });
         });
