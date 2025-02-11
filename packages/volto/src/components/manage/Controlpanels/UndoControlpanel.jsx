@@ -9,7 +9,6 @@ import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import {
-  Container,
   Segment,
   Table,
   Menu,
@@ -128,9 +127,10 @@ const messages = defineMessages({
     id: 'Please enter any input to perform filter',
     defaultMessage: 'Please enter any input to perform filter',
   },
-  selectAll: {
-    id: 'Select all',
-    defaultMessage: 'Select all',
+  transaction_check: {
+    id: 'Undo this transaction and all subsequent transactions. Previous transactions will not undo',
+    defaultMessage:
+      'Undo this transaction and all subsequent transactions. Previous transactions will not undo',
   },
 });
 
@@ -443,20 +443,30 @@ class UndoControlpanel extends Component {
     }
   }
 
-  toggleCheckedTransactions(items, checked) {
-    let list = [...this.state.selectedTransactions];
-    items.forEach((t) => {
-      const selected = findIndex(list, t) >= 0;
-      if (selected) {
-        if (!checked) {
-          remove(list, t);
-        }
-      } else {
-        if (checked) {
-          list.push(t);
-        }
+  toggleCheckedTransactions(item, checked) {
+    let list = checked ? [] : [...this.state.selectedTransactions];
+
+    const selected = findIndex(list, item) >= 0;
+
+    if (selected) {
+      if (!checked) {
+        //remove this transaction from list and all transaction after this
+        [...list]
+          .filter((l) => Date.parse(l.time) <= Date.parse(item.time))
+          .forEach((l) => {
+            remove(list, l);
+          });
       }
-    });
+    } else {
+      if (checked) {
+        this.props.transactions
+          .filter((l) => Date.parse(l.time) >= Date.parse(item.time))
+          .forEach((l) => {
+            list.push(l);
+          });
+      }
+    }
+
     this.setState({ selectedTransactions: list });
   }
 
@@ -464,7 +474,6 @@ class UndoControlpanel extends Component {
     this.setState({
       upperIndex: this.state.pageSize,
       lowerIndex: 0,
-      selectAll: false,
       pageSize: v.value,
     });
   }
@@ -538,16 +547,7 @@ class UndoControlpanel extends Component {
                   width={1}
                   textAlign="center"
                   style={{ width: '40px' }}
-                >
-                  <Checkbox
-                    title={this.props.intl.formatMessage(messages.selectAll)}
-                    onChange={(e, data) => {
-                      this.setState({ selectAll: data.checked });
-                      this.toggleCheckedTransactions(items, data.checked);
-                    }}
-                    checked={this.state.selectAll}
-                  />
-                </Table.HeaderCell>
+                ></Table.HeaderCell>
               )}
               <Table.HeaderCell width={1}>
                 <FormattedMessage id="Request type" defaultMessage="OP" />
@@ -577,7 +577,7 @@ class UndoControlpanel extends Component {
                     <Checkbox
                       onChange={(e, data) => {
                         this.toggleCheckedTransactions(
-                          [transaction],
+                          transaction,
                           data.checked,
                         );
                       }}
@@ -587,6 +587,9 @@ class UndoControlpanel extends Component {
                           transaction,
                         ) >= 0
                       }
+                      aria-label={this.props.intl.formatMessage(
+                        messages.transaction_check,
+                      )}
                     />
                   </Table.Cell>
                 )}
@@ -668,7 +671,7 @@ class UndoControlpanel extends Component {
     };
 
     return (
-      <Container id="page-undo" className="controlpanel-undo">
+      <div id="page-undo" className="ui container controlpanel-undo">
         <Helmet title="Undo" />
         <Segment.Group raised>
           <Segment className="primary">
@@ -792,10 +795,23 @@ class UndoControlpanel extends Component {
                 {this.state.selectedTransactions.length > 0 && (
                   <Message info>
                     <FormattedMessage
-                      id="{n_transactions} transactions selected."
-                      defaultMessage="{n_transactions} transactions selected."
+                      id="{n_transactions} transactions selected. All transactions between {first_transaction_time} and now will be reverted."
+                      defaultMessage="{n_transactions} transactions selected. All transactions between {first_transaction_time} and now will be reverted."
                       values={{
                         n_transactions: this.state.selectedTransactions.length,
+                        first_transaction_time: (
+                          <FormattedDate
+                            date={
+                              this.state.selectedTransactions.sort((a, b) => {
+                                return Date.parse(a.time) - Date.parse(b.time);
+                              })[0].time
+                            }
+                            format={{
+                              dateStyle: 'medium',
+                              timeStyle: 'medium',
+                            }}
+                          />
+                        ),
                       }}
                     />
                   </Message>
@@ -852,7 +868,7 @@ class UndoControlpanel extends Component {
             />,
             document.getElementById('toolbar'),
           )}
-      </Container>
+      </div>
     );
   }
 }
