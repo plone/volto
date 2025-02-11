@@ -222,7 +222,7 @@ exports[`Aliases renders an aliases control component 1`] = `
                   class=""
                 >
                   <th
-                    class="one wide"
+                    class="center aligned"
                   >
                     Select
                   </th>
@@ -250,7 +250,7 @@ exports[`Aliases renders an aliases control component 1`] = `
                   class="top aligned"
                 >
                   <td
-                    class=""
+                    class="center aligned"
                   >
                     <div
                       class="ui fitted checkbox"
@@ -306,7 +306,7 @@ exports[`Aliases renders an aliases control component 1`] = `
                   class="top aligned"
                 >
                   <td
-                    class=""
+                    class="center aligned"
                   >
                     <div
                       class="ui fitted checkbox"
@@ -362,7 +362,7 @@ exports[`Aliases renders an aliases control component 1`] = `
                   class="top aligned"
                 >
                   <td
-                    class=""
+                    class="center aligned"
                   >
                     <div
                       class="ui fitted checkbox"

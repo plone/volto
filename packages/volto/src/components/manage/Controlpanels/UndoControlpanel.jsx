@@ -8,7 +8,16 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
-import { Container, Segment, Table, Menu, Input } from 'semantic-ui-react';
+import {
+  Segment,
+  Table,
+  Menu,
+  Dimmer,
+  Loader,
+  Checkbox,
+  Message,
+  Confirm,
+} from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
@@ -16,15 +25,17 @@ import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { Form } from '@plone/volto/components/manage/Form';
 import backSVG from '@plone/volto/icons/back.svg';
 import map from 'lodash/map';
+import remove from 'lodash/remove';
+import findIndex from 'lodash/findIndex';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
-import nextIcon from '@plone/volto/icons/right-key.svg';
-import prevIcon from '@plone/volto/icons/left-key.svg';
 import undoSVG from '@plone/volto/icons/undo.svg';
 import {
   getTransactions,
   revertTransactions,
 } from '@plone/volto/actions/transactions/transactions';
+import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
 import { toast } from 'react-toastify';
+import Pagination from '@plone/volto/components/theme/Pagination/Pagination';
 
 const messages = defineMessages({
   success: {
@@ -47,21 +58,50 @@ const messages = defineMessages({
     id: 'Default',
     defaultMessage: 'Default',
   },
-  sortBy: {
-    id: 'Sort By',
-    defaultMessage: 'Sort by',
+  filterBy: {
+    id: 'Filter transactions by',
+    defaultMessage: 'Filter transactions by',
   },
-  sorted: {
-    id: 'Sorted',
-    defaultMessage: 'Sorted',
+  filterByUsername: {
+    id: 'filter by username',
+    defaultMessage: 'Username',
   },
-  unsorted: {
-    id: 'Unsorted',
-    defaultMessage: 'Unsorted',
+  filterByPath: {
+    id: 'filter by path',
+    defaultMessage: 'Path',
   },
-  sortByDescription: {
-    id: 'Sort transactions by User-Name, Path or Date',
-    defaultMessage: 'Sort transactions by User-Name, Path or Date',
+  filterByDate: {
+    id: 'filter by date',
+    defaultMessage: 'Date',
+  },
+  filtered: {
+    id: 'Filtered',
+    defaultMessage: 'Filtered',
+  },
+  unfiltered: {
+    id: 'Unfiltered',
+    defaultMessage: 'Unfiltered',
+  },
+  filterByDescription: {
+    id: 'Filter transactions by User, Path or Date',
+    defaultMessage: 'Filter transactions by user, path or date',
+  },
+  filterByUsername_filter: {
+    id: 'Enter Username to filter',
+    defaultMessage: 'Enter username',
+  },
+  filterByPath_filter: {
+    id: 'Enter path to filter',
+    defaultMessage: 'Enter Path',
+  },
+  filterByDate_filter: {
+    id: 'Enter date and time to filter',
+    defaultMessage: 'Enter date and time',
+  },
+  filterByDate_filter_description: {
+    id: 'Enter Date description filter',
+    defaultMessage:
+      'Will display transactions from start of selected day, until time selected',
   },
   failedToUndoTransactions: {
     id: 'Failed To Undo Transactions',
@@ -71,23 +111,30 @@ const messages = defineMessages({
     id: 'Successfully Undone Transactions',
     defaultMessage: 'Successfully undone transactions',
   },
-  transactionsHaveBeenSorted: {
+  transactionsHaveBeenFiltered: {
     id: 'Transactions Have Been Sorted',
-    defaultMessage: 'Transactions have been sorted',
+    defaultMessage: 'Transactions have been filtered',
   },
-  transactionsHaveBeenUnsorted: {
+  transactionsHaveBeenUnfiltered: {
     id: 'Transactions Have Been Unsorted',
-    defaultMessage: 'Transactions have been unsorted',
+    defaultMessage: 'Transactions have been unfiltered',
   },
-  noTransactionsSelected: {
-    id: 'No Transactions Selected',
-    defaultMessage: 'No transactions selected',
+  executeUndo: {
+    id: 'Are you sure you want to undo selected actions?',
+    defaultMessage: 'Are you sure you want to undo selected actions?',
   },
-  noTransactionsSelectedToDoUndo: {
-    id: 'No Transactions Selected To Do Undo',
-    defaultMessage: 'No transactions selected to do undo',
+  emptyInputForFiltering: {
+    id: 'Please enter any input to perform filter',
+    defaultMessage: 'Please enter any input to perform filter',
+  },
+  transaction_check: {
+    id: 'Undo this transaction and all subsequent transactions. Previous transactions will not undo',
+    defaultMessage:
+      'Undo this transaction and all subsequent transactions. Previous transactions will not undo',
   },
 });
+
+const PAGE_SIZES = [20, 50, 100, 200, 500];
 
 /**
  * UndoControlpanel class.
@@ -116,6 +163,10 @@ class UndoControlpanel extends Component {
       loaded: PropTypes.bool,
       loading: PropTypes.bool,
     }).isRequired,
+    getRequest: PropTypes.shape({
+      loaded: PropTypes.bool,
+      loading: PropTypes.bool,
+    }).isRequired,
   };
 
   /**
@@ -128,31 +179,29 @@ class UndoControlpanel extends Component {
     super(props);
     this.state = {
       isClient: false,
-      sortType: 'no value',
+      filterType: 'no value',
+      currentPage: 0,
       lowerIndex: 0,
       upperIndex: 20,
-      defaultTransactionsLenInTable: 20,
-      isSortingTypeSelected: false,
-      sortedTransactions: [],
-      isEmptyInputForSorting: false,
+      selectedTransactions: [],
+      pageSize: 20,
+      isFilterTypeSelected: false,
+      filteredTransactions: [],
+      isemptyInputForFiltering: false,
       isTransactionsNotFound: false,
-      isClickedOnUndoButton: false,
-      showPrevButton: false,
-      showNextButton: false,
+      undoRequested: false,
+      doUndo: false,
     };
-    this.onCancel = this.onCancel.bind(this);
-    this.onSort = this.onSort.bind(this);
+    this.onCancelFilter = this.onCancelFilter.bind(this);
+    this.onFilter = this.onFilter.bind(this);
     this.onSelect = this.onSelect.bind(this);
-    this.onPrev = this.onPrev.bind(this);
-    this.onNext = this.onNext.bind(this);
+
     this.onUndo = this.onUndo.bind(this);
     this.handleTableVisiblity = this.handleTableVisiblity.bind(this);
-    this.handleNotSortedNextPrevButtons =
-      this.handleNotSortedNextPrevButtons.bind(this);
-    this.handleSortedNextPrevButtons =
-      this.handleSortedNextPrevButtons.bind(this);
     this.checkTransactionsUndoneStatus =
       this.checkTransactionsUndoneStatus.bind(this);
+    this.toggleCheckedTransactions = this.toggleCheckedTransactions.bind(this);
+    this.onChangePageSize = this.onChangePageSize.bind(this);
   }
 
   /**
@@ -176,16 +225,17 @@ class UndoControlpanel extends Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.revertRequest.loading && nextProps.revertRequest.loaded) {
       this.props.getTransactions();
+      this.setState({ selectedTransactions: [], doUndo: false });
     }
   }
 
-  setSortedTransactions(sortedTransactions) {
-    if (sortedTransactions.length > 0) {
+  setfilteredTransactions(filteredTransactions) {
+    if (filteredTransactions.length > 0) {
       this.setState({
         lowerIndex: 0,
-        upperIndex: this.state.defaultTransactionsLenInTable,
-        sortedTransactions: sortedTransactions,
-        isEmptyInputForSorting: false,
+        upperIndex: this.state.pageSize,
+        filteredTransactions: filteredTransactions,
+        isemptyInputForFiltering: false,
         isTransactionsNotFound: false,
       });
     } else {
@@ -195,29 +245,29 @@ class UndoControlpanel extends Component {
 
   /**
    * On Cancel
-   * @method onCancel
+   * @method onCancelFilter
    * @returns {undefined}
    */
-  onCancel() {
-    if (this.state.sortedTransactions.length > 0) {
+  onCancelFilter() {
+    if (this.state.filteredTransactions.length > 0) {
       toast.info(
         <Toast
           info
-          title={this.props.intl.formatMessage(messages.unsorted)}
+          title={this.props.intl.formatMessage(messages.unfiltered)}
           content={this.props.intl.formatMessage(
-            messages.transactionsHaveBeenUnsorted,
+            messages.transactionsHaveBeenUnfiltered,
           )}
         />,
       );
     }
     this.setState({
-      isSortingTypeSelected: false,
+      isFilterTypeSelected: false,
       isTransactionsNotFound: false,
-      isEmptyInputForSorting: false,
-      sortType: 'no value',
-      sortedTransactions: [],
+      isemptyInputForFiltering: false,
+      filterType: 'no value',
+      filteredTransactions: [],
       lowerIndex: 0,
-      upperIndex: this.state.defaultTransactionsLenInTable,
+      upperIndex: this.state.pageSize,
     });
   }
 
@@ -230,93 +280,87 @@ class UndoControlpanel extends Component {
   onSelect(data) {
     if (
       data !== null &&
-      data.sortingTypes !== null &&
-      this.state.sortType.toLowerCase() === data.sortingTypes.toLowerCase()
+      data.filterTypes !== null &&
+      this.state.filterType === data.filterTypes
     ) {
       return;
     }
-    let sortType = (data !== null && data.sortingTypes) || 'no value';
+    let filterType = (data !== null && data.filterTypes) || 'no value';
 
-    if (sortType.toLowerCase() !== 'no value') {
-      this.setState({ isSortingTypeSelected: true });
-      sortType.toLowerCase() === 'user name' &&
-        this.setState({ sortType: 'user name' });
-      sortType.toLowerCase() === 'date' && this.setState({ sortType: 'date' });
-      sortType.toLowerCase() === 'path' && this.setState({ sortType: 'path' });
+    if (filterType !== 'no value') {
+      this.setState({ isFilterTypeSelected: true, filterType });
     } else {
-      this.onCancel();
+      this.onCancelFilter();
     }
   }
 
   /**
-   * On Sort
-   * @method onSort
+   * On Filter
+   * @method onFilter
    * @param {object} data
    * @returns {undefined}
    */
-  onSort(data) {
-    let sortType = data.sortingTypes || 'no value';
+  onFilter(data) {
+    let filterType = data.filterTypes || 'no value';
     let value;
-    (sortType.toLowerCase() === 'user name' && (value = data.sortByUsername)) ||
-      (sortType.toLowerCase() === 'path' && (value = data.sortByPath)) ||
-      (sortType.toLowerCase() === 'date' && (value = data.sortByDate)) ||
+    (filterType === 'user' && (value = data.filterByUsername)) ||
+      (filterType === 'path' && (value = data.filterByPath)) ||
+      (filterType === 'date' && (value = data.filterByDate)) ||
       (value = undefined);
 
-    if (sortType.toLowerCase() !== 'no value' && value !== undefined) {
-      let sortedTransactions = [];
-      if (sortType.toLowerCase() === 'user name') {
+    if (filterType !== 'no value' && value !== undefined) {
+      let filteredTransactions = [];
+      if (filterType === 'user') {
         this.props.transactions.forEach((element) => {
           if (value.trim().toLowerCase() === 'zope' && !element.username) {
-            sortedTransactions.push(element);
+            filteredTransactions.push(element);
           } else if (
             element.username
               .trim()
               .toLowerCase()
               .includes(value.trim().toLowerCase())
           ) {
-            sortedTransactions.push(element);
+            filteredTransactions.push(element);
           }
         });
-        this.setSortedTransactions(sortedTransactions);
-      } else if (sortType.toLowerCase() === 'path') {
+        this.setfilteredTransactions(filteredTransactions);
+      } else if (filterType === 'path') {
         this.props.transactions.forEach((element) => {
           if (
             element.id.trim().toLowerCase().includes(value.trim().toLowerCase())
           ) {
-            sortedTransactions.push(element);
+            filteredTransactions.push(element);
           }
         });
-        this.setSortedTransactions(sortedTransactions);
+        this.setfilteredTransactions(filteredTransactions);
       } else {
         // MS is Milli Seconds
         let MSInADay = 86400000;
-        let sortingTimeInMS = Date.parse(value);
-        let endTimeOfSortingDateInMS =
-          sortingTimeInMS - (sortingTimeInMS % MSInADay) + MSInADay - 1;
-        let startTimeOfSortingDateInMS =
-          sortingTimeInMS - (sortingTimeInMS % MSInADay);
+        let timeInMS = Date.parse(value);
+        let endInMS = timeInMS + (timeInMS % 60000) + 60000; // next minute
+        let startInMS = timeInMS - (timeInMS % MSInADay);
 
         this.props.transactions.forEach((element) => {
           if (
-            endTimeOfSortingDateInMS >= Date.parse(element.time) &&
-            Date.parse(element.time) >= startTimeOfSortingDateInMS
+            endInMS >= Date.parse(element.time) &&
+            Date.parse(element.time) >= startInMS
           ) {
-            sortedTransactions.push(element);
+            filteredTransactions.push(element);
           }
         });
-        this.setSortedTransactions(sortedTransactions);
+        this.setfilteredTransactions(filteredTransactions);
       }
       toast.info(
         <Toast
           info
-          title={this.props.intl.formatMessage(messages.sorted)}
+          title={this.props.intl.formatMessage(messages.filtered)}
           content={this.props.intl.formatMessage(
-            messages.transactionsHaveBeenSorted,
+            messages.transactionsHaveBeenFiltered,
           )}
         />,
       );
     } else {
-      this.setState({ isEmptyInputForSorting: true });
+      this.setState({ isemptyInputForFiltering: true });
     }
   }
 
@@ -326,128 +370,27 @@ class UndoControlpanel extends Component {
    * @returns {undefined}
    */
   onUndo() {
-    let transactionsSelected = false;
-    let undoTransactionsIds = map(
-      this.props.transactions.slice(0, this.props.transactions.length),
+    const undoTransactionsIds = map(
+      this.state.selectedTransactions,
       (transaction) => {
-        if (
-          document.getElementById(transaction.id) !== null &&
-          document.getElementById(transaction.id).firstElementChild
-            .firstElementChild.firstElementChild.checked
-        ) {
-          transactionsSelected = true;
-          return transaction.id;
-        }
-        return '';
+        return transaction.id;
       },
     );
-    if (transactionsSelected) {
-      this.setState({
-        isClickedOnUndoButton: true,
-      });
-      this.props.revertTransactions(undoTransactionsIds);
-    } else {
-      toast.error(
-        <Toast
-          error
-          title={this.props.intl.formatMessage(messages.noTransactionsSelected)}
-          content={this.props.intl.formatMessage(
-            messages.noTransactionsSelectedToDoUndo,
-          )}
-        />,
-      );
-    }
 
-    Array.from(
-      document.getElementsByClassName('transactions-checkboxes'),
-    ).forEach((element) => {
-      element.firstElementChild.checked = false;
+    this.setState({
+      undoRequested: true,
     });
+    this.props.revertTransactions(undoTransactionsIds);
   }
 
   /**
-   * On Prev
-   * @method onPrev
-   * @returns {undefined}
-   */
-  onPrev() {
-    0 < this.state.lowerIndex &&
-      this.setState({
-        upperIndex: this.state.lowerIndex,
-        lowerIndex:
-          this.state.lowerIndex - this.state.defaultTransactionsLenInTable,
-      });
-  }
-
-  /**
-   * On Next
-   * @method onNext
-   * @returns {undefined}
-   */
-  onNext() {
-    this.props.transactions.length > this.state.upperIndex &&
-      this.setState({
-        lowerIndex: this.state.upperIndex,
-        upperIndex:
-          this.state.upperIndex + this.state.defaultTransactionsLenInTable,
-      });
-  }
-
-  /**
-   * Handle next and prev buttons visibility when transactions are sorted
-   * @method handleSortedNextPrevButtons
-   * @returns {undefined}
-   */
-  handleSortedNextPrevButtons() {
-    this.state.upperIndex >= this.state.sortedTransactions.length &&
-      this.state.showNextButton &&
-      this.setState({ showNextButton: false });
-
-    this.state.upperIndex < this.state.sortedTransactions.length &&
-      !this.state.showNextButton &&
-      this.setState({ showNextButton: true });
-
-    this.state.lowerIndex <= 0 &&
-      this.state.showPrevButton &&
-      this.setState({ showPrevButton: false });
-
-    this.state.lowerIndex > 0 &&
-      !this.state.showPrevButton &&
-      this.setState({ showPrevButton: true });
-  }
-
-  /**
-   * Handle next and prev buttons visibility when transactions are not sorted
-   * @method handleNotSortedNextPrevButtons
-   * @returns {undefined}
-   */
-  handleNotSortedNextPrevButtons() {
-    this.state.upperIndex >= this.props.transactions?.length &&
-      this.state.showNextButton &&
-      this.setState({ showNextButton: false });
-
-    this.state.upperIndex < this.props.transactions?.length &&
-      !this.state.showNextButton &&
-      this.setState({ showNextButton: true });
-
-    this.state.lowerIndex <= 0 &&
-      this.state.showPrevButton &&
-      this.setState({ showPrevButton: false });
-
-    this.state.lowerIndex > 0 &&
-      !this.state.showPrevButton &&
-      this.setState({ showPrevButton: true });
-  }
-
-  /**
-   * Handle next, prev buttons and table visibility
+   * Handle table visibility
    * @method handleTableVisiblity
    * @returns {undefined}
    */
   handleTableVisiblity() {
-    if (this.state.sortedTransactions.length > 0) {
-      this.handleSortedNextPrevButtons();
-    } else if (!this.state.isSortingTypeSelected) {
+    if (this.state.filteredTransactions.length > 0) {
+    } else if (!this.state.isFilterTypeSelected) {
       this.props.transactions?.length > 0 &&
         this.state.isTransactionsNotFound &&
         this.setState({ isTransactionsNotFound: false });
@@ -455,10 +398,6 @@ class UndoControlpanel extends Component {
       this.props.transactions?.length <= 0 &&
         !this.state.isTransactionsNotFound &&
         this.setState({ isTransactionsNotFound: true });
-
-      this.handleNotSortedNextPrevButtons();
-    } else {
-      this.handleNotSortedNextPrevButtons();
     }
   }
 
@@ -471,10 +410,10 @@ class UndoControlpanel extends Component {
     if (
       this.props.revertRequest.error &&
       this.props.revertRequest.error !== null &&
-      this.state.isClickedOnUndoButton
+      this.state.undoRequested
     ) {
       this.setState({
-        isClickedOnUndoButton: false,
+        undoRequested: false,
       });
       toast.error(
         <Toast
@@ -487,10 +426,10 @@ class UndoControlpanel extends Component {
       );
     } else if (
       this.props.revertRequest.error === null &&
-      this.state.isClickedOnUndoButton
+      this.state.undoRequested
     ) {
       this.setState({
-        isClickedOnUndoButton: false,
+        undoRequested: false,
       });
       toast.success(
         <Toast
@@ -504,6 +443,46 @@ class UndoControlpanel extends Component {
     }
   }
 
+  toggleCheckedTransactions(item, checked) {
+    let list = checked ? [] : [...this.state.selectedTransactions];
+
+    const selected = findIndex(list, item) >= 0;
+
+    if (selected) {
+      if (!checked) {
+        //remove this transaction from list and all transaction after this
+        [...list]
+          .filter((l) => Date.parse(l.time) <= Date.parse(item.time))
+          .forEach((l) => {
+            remove(list, l);
+          });
+      }
+    } else {
+      if (checked) {
+        this.props.transactions
+          .filter((l) => Date.parse(l.time) >= Date.parse(item.time))
+          .forEach((l) => {
+            list.push(l);
+          });
+      }
+    }
+
+    this.setState({ selectedTransactions: list });
+  }
+
+  onChangePageSize(e, v) {
+    this.setState({
+      upperIndex: this.state.pageSize,
+      lowerIndex: 0,
+      pageSize: v.value,
+    });
+  }
+
+  onChangePage = (event, { value }) => {
+    this.setState({
+      currentPage: value,
+    });
+  };
   /**
    * Render method.
    * @method render
@@ -511,20 +490,188 @@ class UndoControlpanel extends Component {
    */
   render() {
     const transactionsRange =
-      (this.state.sortedTransactions.length > 0 &&
-        this.state.sortedTransactions.slice(
-          this.state.lowerIndex,
-          this.state.upperIndex,
+      (this.state.filteredTransactions.length > 0 &&
+        this.state.filteredTransactions.slice(
+          this.state.currentPage * this.state.pageSize,
+          this.state.pageSize * (this.state.currentPage + 1),
         )) ||
       this.props.transactions?.slice(
-        this.state.lowerIndex,
-        this.state.upperIndex,
+        this.state.currentPage * this.state.pageSize,
+        this.state.pageSize * (this.state.currentPage + 1),
       );
     this.handleTableVisiblity();
     this.checkTransactionsUndoneStatus();
 
+    const TransactionsTable = ({ items, summary = false }) => {
+      const getReqType = (str) => {
+        const regex = /\/([^/@]*_application_json_[^/@]*)/;
+
+        const matches = str.match(regex);
+
+        const t = matches?.length > 0 ? matches[1] : null;
+        return {
+          t: t,
+          type: t?.replace('_application_json_', ''),
+          clearStr: t ? str.replaceAll(t, '') : str,
+        };
+      };
+
+      const elabDescription = (d) => {
+        const str = getReqType(d).clearStr ?? '';
+        const parts = str
+          .replaceAll('\nUndo', '<br/>Undo:')
+          .replaceAll('\n', '<br/>')
+          .replaceAll(' ', '<br/>')
+          .split('<br/>');
+        return (
+          <>
+            {parts.map((p, i) =>
+              i === 0 ? (
+                <div key={i}>{p}</div>
+              ) : (
+                <div key={i} style={{ fontStyle: 'italic', color: '#878f93' }}>
+                  {p}
+                </div>
+              ),
+            )}
+          </>
+        );
+      };
+
+      return (
+        <Table selectable fixed celled compact singleLine attached>
+          <Table.Header>
+            <Table.Row>
+              {!summary && (
+                <Table.HeaderCell
+                  width={1}
+                  textAlign="center"
+                  style={{ width: '40px' }}
+                ></Table.HeaderCell>
+              )}
+              <Table.HeaderCell width={1}>
+                <FormattedMessage id="Request type" defaultMessage="OP" />
+              </Table.HeaderCell>
+              <Table.HeaderCell width={summary ? 9 : 7}>
+                <FormattedMessage id="What" defaultMessage="What" />
+              </Table.HeaderCell>
+              <Table.HeaderCell width={1}>
+                <FormattedMessage id="Who" defaultMessage="Who" />
+              </Table.HeaderCell>
+              <Table.HeaderCell width={2}>
+                <FormattedMessage id="When" defaultMessage="When" />
+              </Table.HeaderCell>
+              {!summary && (
+                <Table.HeaderCell width={1}>
+                  <FormattedMessage id="Note" defaultMessage="Note" />
+                </Table.HeaderCell>
+              )}
+              <Table.HeaderCell />
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {map(items, (transaction) => (
+              <Table.Row id={transaction.id} key={transaction.id}>
+                {!summary && (
+                  <Table.Cell width={1} textAlign="center">
+                    <Checkbox
+                      onChange={(e, data) => {
+                        this.toggleCheckedTransactions(
+                          transaction,
+                          data.checked,
+                        );
+                      }}
+                      checked={
+                        findIndex(
+                          this.state.selectedTransactions,
+                          transaction,
+                        ) >= 0
+                      }
+                      aria-label={this.props.intl.formatMessage(
+                        messages.transaction_check,
+                      )}
+                    />
+                  </Table.Cell>
+                )}
+                <Table.Cell width={1}>
+                  {getReqType(transaction.description).type ?? ''}
+                </Table.Cell>
+                <Table.Cell
+                  width={summary ? 9 : 7}
+                  title={[transaction.description].join(' ')}
+                >
+                  {elabDescription(transaction.description)}
+                </Table.Cell>
+                <Table.Cell
+                  width={1}
+                  title={transaction.username ? transaction.username : 'Zope'}
+                >
+                  {transaction.username ? transaction.username : 'Zope'}
+                </Table.Cell>
+                <Table.Cell width={2}>
+                  <FormattedDate
+                    date={transaction.time}
+                    format={{
+                      dateStyle: 'medium',
+                      timeStyle: 'medium',
+                    }}
+                  />
+                </Table.Cell>
+                {!summary && (
+                  <Table.Cell width={1}>
+                    {transaction.description.includes('Undo') ? 'Undone' : ''}
+                  </Table.Cell>
+                )}
+              </Table.Row>
+            ))}
+          </Table.Body>
+          {!summary && (
+            <Table.Footer>
+              <Table.Row>
+                <Table.HeaderCell textAlign="center" colSpan="6">
+                  <Pagination
+                    current={this.state.currentPage}
+                    total={Math.ceil(
+                      this.props.transactions?.length / this.state.pageSize,
+                    )}
+                    onChangePage={this.onChangePage}
+                    pageSize={this.state.pageSize}
+                    pageSizes={PAGE_SIZES}
+                    onChangePageSize={this.onChangePageSize}
+                  />
+
+                  <Menu pagination>
+                    <Menu.Item
+                      as="button"
+                      icon
+                      disabled={this.state.selectedTransactions?.length <= 0}
+                      style={{ border: 'none' }}
+                      title={this.props.intl.formatMessage(messages.undo)}
+                    >
+                      <Icon
+                        name={undoSVG}
+                        id="undo-button"
+                        className="circled"
+                        size="30px"
+                        title={this.props.intl.formatMessage(messages.undo)}
+                        onClick={() => {
+                          this.setState({
+                            doUndo: true,
+                          });
+                        }}
+                      />
+                    </Menu.Item>
+                  </Menu>
+                </Table.HeaderCell>
+              </Table.Row>
+            </Table.Footer>
+          )}
+        </Table>
+      );
+    };
+
     return (
-      <Container id="page-undo" className="controlpanel-undo">
+      <div id="page-undo" className="ui container controlpanel-undo">
         <Helmet title="Undo" />
         <Segment.Group raised>
           <Segment className="primary">
@@ -541,58 +688,84 @@ class UndoControlpanel extends Component {
                     {
                       id: 'default',
                       title: this.props.intl.formatMessage(messages.default),
-                      fields: this.state.isSortingTypeSelected
+                      fields: this.state.isFilterTypeSelected
                         ? [
-                            'sortingTypes',
-                            (this.state.sortType.toLowerCase() ===
-                              'user name' &&
-                              'sortByUsername') ||
-                              (this.state.sortType.toLowerCase() === 'path' &&
-                                'sortByPath') ||
-                              (this.state.sortType.toLowerCase() === 'date' &&
-                                'sortByDate'),
+                            'filterTypes',
+                            (this.state.filterType === 'user' &&
+                              'filterByUsername') ||
+                              (this.state.filterType === 'path' &&
+                                'filterByPath') ||
+                              (this.state.filterType === 'date' &&
+                                'filterByDate'),
                           ]
-                        : ['sortingTypes'],
+                        : ['filterTypes'],
                     },
                   ],
                   properties: {
-                    sortingTypes: {
-                      title: this.props.intl.formatMessage(messages.sortBy),
+                    filterTypes: {
+                      title: this.props.intl.formatMessage(messages.filterBy),
                       description: this.props.intl.formatMessage(
-                        messages.sortByDescription,
+                        messages.filterByDescription,
                       ),
                       type: 'string',
-                      choices: map(['User Name', 'Path', 'Date'], (type) => [
-                        type,
-                        type,
-                      ]),
+                      choices: [
+                        [
+                          'user',
+                          this.props.intl.formatMessage(
+                            messages.filterByUsername,
+                          ),
+                        ],
+                        [
+                          'path',
+                          this.props.intl.formatMessage(messages.filterByPath),
+                        ],
+                        [
+                          'date',
+                          this.props.intl.formatMessage(messages.filterByDate),
+                        ],
+                      ],
                     },
-                    sortByUsername: {
-                      title: `Enter Username`,
+                    filterByUsername: {
+                      title: this.props.intl.formatMessage(
+                        messages.filterByUsername_filter,
+                      ),
                       type: 'string',
                     },
-                    sortByPath: {
-                      title: `Enter Path`,
+                    filterByPath: {
+                      title: this.props.intl.formatMessage(
+                        messages.filterByPath_filter,
+                      ),
                       type: 'string',
                     },
-                    sortByDate: {
-                      title: `Enter Date and Time`,
+                    filterByDate: {
+                      title: this.props.intl.formatMessage(
+                        messages.filterByDate_filter,
+                      ),
+                      description: this.props.intl.formatMessage(
+                        messages.filterByDate_filter_description,
+                      ),
                       type: 'date',
                     },
                   },
                   required: [],
                 }}
                 error={
-                  this.state.isEmptyInputForSorting
-                    ? { message: 'Please enter any input to perform sorting' }
+                  this.state.isemptyInputForFiltering
+                    ? {
+                        message: this.props.intl.formatMessage(
+                          messages.emptyInputForFiltering,
+                        ),
+                      }
                     : undefined
                 }
                 onChangeFormData={this.onSelect}
                 onSubmit={
-                  this.state.isSortingTypeSelected ? this.onSort : undefined
+                  this.state.isFilterTypeSelected ? this.onFilter : undefined
                 }
                 onCancel={
-                  this.state.isSortingTypeSelected ? this.onCancel : undefined
+                  this.state.isFilterTypeSelected
+                    ? this.onCancelFilter
+                    : undefined
                 }
                 resetOnCancel={true}
               />
@@ -605,7 +778,12 @@ class UndoControlpanel extends Component {
                 defaultMessage="Transactions"
               />
             </Segment>
-            {this.state.isTransactionsNotFound ? (
+
+            {this.props.getRequest?.loading ? (
+              <Dimmer active>
+                <Loader />
+              </Dimmer>
+            ) : this.state.isTransactionsNotFound ? (
               <Segment>
                 <FormattedMessage
                   id="No Transactions Found"
@@ -613,101 +791,62 @@ class UndoControlpanel extends Component {
                 />
               </Segment>
             ) : (
-              <Table selectable fixed celled compact singleLine attached>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell width={1}>
-                      <FormattedMessage
-                        id="Transactions Checkbox"
-                        defaultMessage="#"
-                      />
-                    </Table.HeaderCell>
-                    <Table.HeaderCell width={3}>
-                      <FormattedMessage id="What" defaultMessage="What" />
-                    </Table.HeaderCell>
-                    <Table.HeaderCell width={3}>
-                      <FormattedMessage id="Who" defaultMessage="Who" />
-                    </Table.HeaderCell>
-                    <Table.HeaderCell width={3}>
-                      <FormattedMessage id="When" defaultMessage="When" />
-                    </Table.HeaderCell>
-                    <Table.HeaderCell width={3}>
-                      <FormattedMessage id="Note" defaultMessage="Note" />
-                    </Table.HeaderCell>
-                    <Table.HeaderCell />
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                  {map(transactionsRange, (transaction) => (
-                    <Table.Row id={transaction.id} key={transaction.id}>
-                      <Table.Cell width={1}>
-                        <Input
-                          type="checkbox"
-                          className="transactions-checkboxes"
-                        />
-                      </Table.Cell>
-                      <Table.Cell
-                        width={3}
-                        title={[transaction.description].join(' ')}
-                      >
-                        {transaction.description}
-                      </Table.Cell>
-                      <Table.Cell width={3}>
-                        {transaction.username ? transaction.username : 'Zope'}
-                      </Table.Cell>
-                      <Table.Cell width={3}>{transaction.time}</Table.Cell>
-                      <Table.Cell width={3}>
-                        {transaction.description.includes('Undo')
-                          ? 'Undone'
-                          : ''}
-                      </Table.Cell>
-                    </Table.Row>
-                  ))}
-                </Table.Body>
-                <Table.Footer>
-                  <Table.Row>
-                    <Table.HeaderCell textAlign="center" colSpan="6">
-                      <Menu pagination>
-                        <Menu.Item as="a" id="prev-button" icon>
-                          {this.state.showPrevButton ? (
-                            <Icon
-                              onClick={this.onPrev}
-                              name={prevIcon}
-                              title="Prev"
-                            />
-                          ) : (
-                            <div style={{ width: '36px' }}></div>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item as="a" icon>
-                          <Icon
-                            name={undoSVG}
-                            id="undo-button"
-                            className="circled"
-                            size="30px"
-                            title={this.props.intl.formatMessage(messages.undo)}
-                            onClick={this.onUndo}
+              <>
+                {this.state.selectedTransactions.length > 0 && (
+                  <Message info>
+                    <FormattedMessage
+                      id="{n_transactions} transactions selected. All transactions between {first_transaction_time} and now will be reverted."
+                      defaultMessage="{n_transactions} transactions selected. All transactions between {first_transaction_time} and now will be reverted."
+                      values={{
+                        n_transactions: this.state.selectedTransactions.length,
+                        first_transaction_time: (
+                          <FormattedDate
+                            date={
+                              this.state.selectedTransactions.sort((a, b) => {
+                                return Date.parse(a.time) - Date.parse(b.time);
+                              })[0].time
+                            }
+                            format={{
+                              dateStyle: 'medium',
+                              timeStyle: 'medium',
+                            }}
                           />
-                        </Menu.Item>
-                        <Menu.Item as="a" id="next-button" icon>
-                          {this.state.showNextButton ? (
-                            <Icon
-                              onClick={this.onNext}
-                              name={nextIcon}
-                              title="Next"
-                            />
-                          ) : (
-                            <div style={{ width: '36px' }}></div>
-                          )}
-                        </Menu.Item>
-                      </Menu>
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Footer>
-              </Table>
+                        ),
+                      }}
+                    />
+                  </Message>
+                )}
+                <TransactionsTable items={transactionsRange} />
+              </>
             )}
           </Segment.Group>
         </Segment.Group>
+
+        {this.state.doUndo && (
+          <Confirm
+            open
+            header={this.props.intl.formatMessage(messages.executeUndo)}
+            onCancel={() => {
+              this.setState({ doUndo: false });
+            }}
+            onConfirm={this.onUndo}
+            size="fullscreen"
+            content={
+              <div className="content">
+                <TransactionsTable
+                  items={this.state.selectedTransactions}
+                  summary={true}
+                />
+
+                {this.props.revertRequest.loading && (
+                  <Dimmer active>
+                    <Loader />
+                  </Dimmer>
+                )}
+              </div>
+            }
+          />
+        )}
         {this.state.isClient &&
           createPortal(
             <Toolbar
@@ -729,7 +868,7 @@ class UndoControlpanel extends Component {
             />,
             document.getElementById('toolbar'),
           )}
-      </Container>
+      </div>
     );
   }
 }
@@ -740,6 +879,7 @@ export default compose(
     (state, props) => ({
       pathname: props.location.pathname,
       transactions: state.transactions.transactions_recieved,
+      getRequest: state.transactions.get,
       revertRequest: state.transactions.revert,
     }),
     { getTransactions, revertTransactions },
