@@ -1,10 +1,8 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import React from 'react';
 import { Provider, connect } from 'react-redux';
 import { withRouter, StaticRouter, MemoryRouter } from 'react-router';
 import { renderRoutes } from 'react-router-config';
 import { createStore, combineReducers } from 'redux';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 
 import {
   endGlobalLoad,
@@ -215,13 +213,15 @@ describe('<ReduxAsyncConnect />', () => {
     });
     const context = {};
 
-    const { getByTestId } = render(
-      <Provider store={store} key="provider">
-        <StaticRouter location={location} context={context}>
-          <ReduxAsyncConnect routes={routes} helpers={helpers} />
-        </StaticRouter>
-      </Provider>,
-    );
+    const { getByTestId } = await act(async () => {
+      return render(
+        <Provider store={store} key="provider">
+          <MemoryRouter>
+            <ReduxAsyncConnect routes={routes} helpers={{ eat }} />
+          </MemoryRouter>
+        </Provider>,
+      );
+    });
 
     if (context.url) {
       throw new Error('redirected');
@@ -244,7 +244,7 @@ describe('<ReduxAsyncConnect />', () => {
     expect(beginGlobalLoadSpy).not.toHaveBeenCalled();
   });
 
-  it('properly picks data up from the server', () => {
+  it('properly picks data up from the server', async () => {
     const store = createStore(reducers, testState);
     const proto = AsyncConnect.prototype;
     const eat = vi.fn(() => 'yammi');
@@ -252,13 +252,15 @@ describe('<ReduxAsyncConnect />', () => {
     const spyLoadAsyncData = vi.spyOn(proto, 'loadAsyncData');
     const spyComponentDidMount = vi.spyOn(proto, 'componentDidMount');
 
-    const { getByTestId } = render(
-      <Provider store={store} key="provider">
-        <MemoryRouter>
-          <ReduxAsyncConnect routes={routes} helpers={{ eat }} />
-        </MemoryRouter>
-      </Provider>,
-    );
+    const { getByTestId } = await act(async () => {
+      return render(
+        <Provider store={store} key="provider">
+          <MemoryRouter>
+            <ReduxAsyncConnect routes={routes} helpers={{ eat }} />
+          </MemoryRouter>
+        </Provider>,
+      );
+    });
 
     expect(spyLoadAsyncData).not.toHaveBeenCalled();
     expect(spyComponentDidMount).toHaveBeenCalledTimes(1);
@@ -278,14 +280,15 @@ describe('<ReduxAsyncConnect />', () => {
 
     const spyLoadAsyncData = vi.spyOn(proto, 'loadAsyncData');
     const spyComponentDidMount = vi.spyOn(proto, 'componentDidMount');
-
-    render(
-      <Provider store={store} key="provider">
-        <MemoryRouter>
-          <ReduxAsyncConnect routes={routes} helpers={{ eat }} />
-        </MemoryRouter>
-      </Provider>,
-    );
+    await act(async () => {
+      render(
+        <Provider store={store} key="provider">
+          <MemoryRouter>
+            <ReduxAsyncConnect routes={routes} helpers={{ eat }} />
+          </MemoryRouter>
+        </Provider>,
+      );
+    });
 
     expect(spyLoadAsyncData).toHaveBeenCalledTimes(1);
     expect(spyComponentDidMount).toHaveBeenCalledTimes(1);
@@ -304,13 +307,15 @@ describe('<ReduxAsyncConnect />', () => {
     const spyLoadAsyncData = vi.spyOn(proto, 'loadAsyncData');
     const spyComponentDidMount = vi.spyOn(proto, 'componentDidMount');
 
-    const { getByTestId } = render(
-      <Provider store={store} key="provider">
-        <MemoryRouter>
-          <ReduxAsyncConnect routes={routes} helpers={{ eat }} />
-        </MemoryRouter>
-      </Provider>,
-    );
+    const { getByTestId } = await act(async () => {
+      return render(
+        <Provider store={store} key="provider">
+          <MemoryRouter>
+            <ReduxAsyncConnect routes={routes} helpers={{ eat }} />
+          </MemoryRouter>
+        </Provider>,
+      );
+    });
 
     expect(spyLoadAsyncData).toHaveBeenCalledTimes(1);
     expect(spyComponentDidMount).toHaveBeenCalledTimes(1);
@@ -341,13 +346,15 @@ describe('<ReduxAsyncConnect />', () => {
 
     const context = {};
 
-    const { getByTestId } = render(
-      <Provider store={store} key="provider">
-        <StaticRouter location={location} context={context}>
-          <ReduxAsyncConnect routes={routes} helpers={helpers} />
-        </StaticRouter>
-      </Provider>,
-    );
+    const { getByTestId } = await act(async () => {
+      return render(
+        <Provider store={store} key="provider">
+          <StaticRouter location={location} context={context}>
+            <ReduxAsyncConnect routes={routes} helpers={helpers} />
+          </StaticRouter>
+        </Provider>,
+      );
+    });
 
     if (context.url) {
       throw new Error('redirected');
@@ -384,13 +391,15 @@ describe('<ReduxAsyncConnect />', () => {
 
     const context = {};
 
-    const { container } = render(
-      <Provider store={store} key="provider">
-        <StaticRouter location={location} context={context}>
-          <ReduxAsyncConnect routes={routes} helpers={helpers} />
-        </StaticRouter>
-      </Provider>,
-    );
+    const { container } = await act(async () => {
+      return render(
+        <Provider store={store} key="provider">
+          <StaticRouter location={location} context={context}>
+            <ReduxAsyncConnect routes={routes} helpers={helpers} />
+          </StaticRouter>
+        </Provider>,
+      );
+    });
 
     if (context.url) {
       throw new Error('redirected');
@@ -437,14 +446,15 @@ describe('<ReduxAsyncConnect />', () => {
     });
 
     const context = {};
-
-    render(
-      <Provider store={store} key="provider">
-        <StaticRouter location={location} context={context}>
-          <ReduxAsyncConnect routes={routes} helpers={helpers} />
-        </StaticRouter>
-      </Provider>,
-    );
+    await act(async () => {
+      render(
+        <Provider store={store} key="provider">
+          <StaticRouter location={location} context={context}>
+            <ReduxAsyncConnect routes={routes} helpers={helpers} />
+          </StaticRouter>
+        </Provider>,
+      );
+    });
 
     expect(serial).toBe(1);
   });

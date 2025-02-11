@@ -25,8 +25,10 @@ describe('EditRule', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <EditRule location={{ pathname: '/controlpanel/rules/:id/edit' }} />
-        <div id="toolbar"></div>
+        <>
+          <EditRule location={{ pathname: '/controlpanel/rules/:id/edit' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
 

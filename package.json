@@ -35,12 +35,13 @@
     "update:browserlist": "pnpm --filter @plone/volto add caniuse-lite && pnpm --filter @plone/volto remove caniuse-lite"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
     "concurrently": "^8.2.2",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "tsconfig": "workspace:*",
-    "typescript": "^5.7.3",
-    "vitest": "^2.1.3"
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.8"
   },
   "packageManager": "pnpm@9.1.1",
   "pnpm": {

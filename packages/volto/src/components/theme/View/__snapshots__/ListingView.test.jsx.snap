@@ -16,10 +16,10 @@ exports[`ListingView > renders a listing_view component 1`] = `
       >
         <h2>
           <a
-            className={null}
-            href="/"
-            onClick={[Function]}
-            target={null}
+            className="external"
+            href="http://item1"
+            rel="noopener noreferrer"
+            target="_blank"
             title="Document"
           >
             My item
@@ -38,10 +38,10 @@ exports[`ListingView > renders a listing_view component 1`] = `
       >
         <h2>
           <a
-            className={null}
-            href="/"
-            onClick={[Function]}
-            target={null}
+            className="external"
+            href="http://item2"
+            rel="noopener noreferrer"
+            target="_blank"
             title="Document"
           >
             Second item

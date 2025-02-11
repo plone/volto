@@ -24,8 +24,10 @@ describe('AddRule', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <AddRule location={{ pathname: '/controlpanel/rules/add' }} />
-        <div id="toolbar"></div>
+        <>
+          <AddRule location={{ pathname: '/controlpanel/rules/add' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
 
