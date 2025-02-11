@@ -213,6 +213,11 @@ msgstr "Afegeix un nou usuari"
 msgid "Add to Groups"
 msgstr "Afegeix a grups"
 
+#. Default: "Add to favorites"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "Add to favorites"
+msgstr ""
+
 #. Default: "Add users to group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add users to group"
@@ -496,6 +501,11 @@ msgstr "Base de cerca"
 msgid "Block"
 msgstr "Bloc"
 
+#. Default: "Block copied to clipboard"
+#: components/manage/Sidebar/FavoriteItem
+msgid "Block copied to clipboard"
+msgstr ""
+
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
@@ -559,6 +569,7 @@ msgstr "No es pot editar el disseny per al tipus de contingut <strong>{type}</st
 
 #. Default: "Cancel"
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/SaveBlockDialog
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
@@ -680,6 +691,7 @@ msgid "Click to download full sized image"
 msgstr "Feu clic per descarregar la imatge a mida completa"
 
 #. Default: "Close"
+#: components/manage/Sidebar/FavoriteItem
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr "Tanca"
@@ -845,6 +857,11 @@ msgstr "Controls"
 #: components/manage/Contents/ContentsItem
 msgid "Copy"
 msgstr "Copia"
+
+#. Default: "Copy block"
+#: components/manage/Sidebar/FavoriteItem
+msgid "Copy block"
+msgstr ""
 
 #. Default: "Copy blocks"
 #: helpers/MessageLabels/MessageLabels
@@ -1323,6 +1340,11 @@ msgstr "Data de finalització"
 msgid "Enter URL or select an item"
 msgstr "Introduïu l'URL o seleccioneu un element"
 
+#. Default: "Enter a name for this block"
+#: components/manage/Blocks/Block/SaveBlockDialog
+msgid "Enter a name for this block"
+msgstr ""
+
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
@@ -1508,6 +1530,11 @@ msgstr "Facetes a la part superior"
 #. Default: "Failed to undo transactions"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Failed To Undo Transactions"
+msgstr ""
+
+#. Default: "Favorite"
+#: components/manage/Sidebar/Sidebar
+msgid "Favorite"
 msgstr ""
 
 #. Default: "Field"
@@ -3096,6 +3123,8 @@ msgstr ""
 
 #. Default: "Save"
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/EditBlockWrapper
+#: components/manage/Blocks/Block/SaveBlockDialog
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -3105,9 +3134,15 @@ msgstr ""
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/Sidebar
 #: helpers/MessageLabels/MessageLabels
 msgid "Save"
 msgstr "Desa"
+
+#. Default: "Save block"
+#: components/manage/Blocks/Block/SaveBlockDialog
+msgid "Save block"
+msgstr ""
 
 #. Default: "Save"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
