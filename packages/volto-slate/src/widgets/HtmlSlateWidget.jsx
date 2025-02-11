@@ -12,6 +12,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { FormFieldWrapper } from '@plone/volto/components';
 import SlateEditor from '@plone/volto-slate/editor/SlateEditor';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
+import { handleKeyDetached } from '@plone/volto-slate/blocks/Text/keyboard';
 import { makeEditor } from '@plone/volto-slate/utils';
 import deserialize from '@plone/volto-slate/editor/deserialize';
 
@@ -19,14 +20,15 @@ import {
   createEmptyParagraph,
   normalizeExternalData,
 } from '@plone/volto-slate/utils';
+import config from '@plone/volto/registry';
+
 import { ErrorBoundary } from './ErrorBoundary';
 
 import './style.css';
 
 const messages = defineMessages({
   error: {
-    id:
-      'An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.',
+    id: 'An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.',
     defaultMessage:
       'An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.',
   },
@@ -44,6 +46,8 @@ const HtmlSlateWidget = (props) => {
     properties,
     intl,
   } = props;
+
+  const { slateWidgetExtensions } = config.settings.slate;
 
   const [selected, setSelected] = React.useState(focus);
 
@@ -128,6 +132,9 @@ const HtmlSlateWidget = (props) => {
             block={block}
             selected={selected}
             properties={properties}
+            extensions={slateWidgetExtensions}
+            onKeyDown={handleKeyDetached}
+            editableProps={{ 'aria-multiline': 'true' }}
             placeholder={placeholder}
           />
         </ErrorBoundary>
