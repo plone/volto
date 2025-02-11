@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import jwt from 'jsonwebtoken';
@@ -12,7 +12,7 @@ vi.mock('../../Toolbar/Toolbar', () => ({
 }));
 
 describe('UsersControlpanel', () => {
-  it('renders a user control component', () => {
+  it('renders a user control component', async () => {
     const store = mockStore({
       userSession: {
         token: jwt.sign({ sub: 'john' }, 'secret'),
@@ -38,12 +38,16 @@ describe('UsersControlpanel', () => {
         messages: {},
       },
     });
-    const { container } = render(
-      <Provider store={store}>
-        <GroupsControlpanel location={{ pathname: '/blog' }} />
-        <div id="toolbar"></div>
-      </Provider>,
-    );
+    const { container } = await act(async () => {
+      return render(
+        <Provider store={store}>
+          <>
+            <GroupsControlpanel location={{ pathname: '/blog' }} />
+            <div id="toolbar"></div>
+          </>
+        </Provider>,
+      );
+    });
 
     expect(container).toMatchSnapshot();
   });

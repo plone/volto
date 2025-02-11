@@ -18,7 +18,7 @@
     "paths": {
       "@plone/volto/*": ["./src/*"],
       "@plone/volto-slate/*": ["../volto-slate/src/*"],
-      "@root/*": ["./src/*"],
+      "@root/*": ["./src/*"]
     }
   },
   "include": ["src", "packages","vitest.config.ts"],

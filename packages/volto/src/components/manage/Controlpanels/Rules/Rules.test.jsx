@@ -66,8 +66,10 @@ describe('Rules', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <Rules location={{ pathname: '/controlpanel/rules' }} />
-        <div id="toolbar"></div>
+        <>
+          <Rules location={{ pathname: '/controlpanel/rules' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
 

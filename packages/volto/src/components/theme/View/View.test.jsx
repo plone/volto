@@ -158,8 +158,10 @@ describe('View', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <View location={{ pathname: '/test' }} />
-        <div id="toolbar"></div>
+        <>
+          <View location={{ pathname: '/test' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
 
@@ -179,8 +181,10 @@ describe('View', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <View location={{ pathname: '/test' }} />
-        <div id="toolbar"></div>
+        <>
+          <View location={{ pathname: '/test' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
 
@@ -200,8 +204,10 @@ describe('View', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <View location={{ pathname: '/test' }} />
-        <div id="toolbar"></div>
+        <>
+          <View location={{ pathname: '/test' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
 
@@ -221,8 +227,10 @@ describe('View', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <View location={{ pathname: '/test' }} />
-        <div id="toolbar"></div>
+        <>
+          <View location={{ pathname: '/test' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
 
@@ -250,16 +258,20 @@ describe('View', () => {
     });
     const { rerender } = render(
       <Provider store={store}>
-        <View location={{ pathname: '/a' }} />
-        <div id="toolbar"></div>
+        <>
+          <View location={{ pathname: '/test' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
     expect(instanceCount).toBe(1);
     store.getState().content.data['@id'] = '/b';
     rerender(
       <Provider store={store}>
-        <View location={{ pathname: '/b' }} />
-        <div id="toolbar"></div>
+        <>
+          <View location={{ pathname: '/test' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
     expect(instanceCount).toBe(2);

@@ -32,6 +32,7 @@ export default defineConfig({
       './test-setup-globals.js',
       './test-setup-config.jsx',
       './jest-setup-afterenv.js',
+      './jest-addons-loader.js',
     ],
     globalSetup: './global-test-setup.js',
     coverage: {
