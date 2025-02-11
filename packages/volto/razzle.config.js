@@ -414,15 +414,6 @@ const defaultModify = ({
         ]
       : [];
 
-  if (config.devServer) {
-    config.devServer.static.watch.ignored = /node_modules\/(?!@plone\/volto)/;
-    config.snapshot = {
-      managedPaths: [
-        /^(.+?[\\/]node_modules[\\/](?!(@plone[\\/]volto))(@.+?[\\/])?.+?)[\\/]/,
-      ],
-    };
-  }
-
   const prefixPath = process.env.RAZZLE_PREFIX_PATH || '';
 
   if (prefixPath && !dev) {
