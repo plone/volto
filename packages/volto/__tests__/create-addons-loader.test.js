@@ -5,7 +5,7 @@ import {
   getAddonsLoaderCode,
   nameFromPackage,
 } from '@plone/registry/create-addons-loader';
-import { describe, expect } from 'vitest';
+import jiti from 'jiti';
 
 describe('create-addons-loader code generation', () => {
   test('no addon creates simple loader, default = no loadProjectConfig', () => {
@@ -166,9 +166,10 @@ describe('create-addons-loader default name generation', () => {
   });
 });
 
+const _import = jiti(import.meta.url, { esmResolve: true });
+
 function transpile(fpath) {
   const code = fs.readFileSync(fpath, 'utf-8');
-  // console.log('original code', code);
   const output = transform(code, {
     root: '.',
     plugins: ['@babel/plugin-transform-modules-commonjs'],
@@ -179,18 +180,18 @@ function transpile(fpath) {
 function makeAddonLoader(addons, load = true) {
   addons = addons.map((name) =>
     name.includes(':')
-      ? `${require.resolve(name.split(':')[0])}:${name.substring(
+      ? `${_import.resolve(name.split(':')[0])}:${name.substring(
           name.indexOf(':') + 1,
           name.length,
         )}`
-      : require.resolve(name),
+      : _import.resolve(name),
   );
 
   const loaderPath = createAddonsLoader(addons);
   transpile(loaderPath);
 
   if (load) {
-    return require(loaderPath).default;
+    return _import(loaderPath).default;
   } else {
     return loaderPath;
   }
