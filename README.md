@@ -142,15 +142,17 @@ To ensure your website gets the greatest exposure, add it both to [Awesome Volto
 - [Debako Udala / Ayuntamiento de Deba](https://www.deba.eus/eu) (Website of the municipality of Deba, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
 - [European Environment Agency](https://www.eea.europa.eu/en) (Website of the European Environment Agency. Developed by [Eau de Web](https://eaudeweb.ro), 2023)
 - [Energy Climate Union portal for Europe](https://climate-energy.eea.europa.eu/) (Thematic website focusing on European strides towards mitigating climate change, developed by [Eau de Web](https://eaudeweb.ro/), 2020)
-- [Excellence at Humboldt-Universität zu Berlin](https://www.alles-beginnt-mit-einer-frage.de) (Website for the excellence initiative of the [Humboldt University Berlin](https://www.hu-berlin.de/de), developed by [kitconcept GmbH](https://kitconcept.com/en), 2019)
+- Excellence at Humboldt-Universität zu Berlin (Website for the excellence initiative of the [Humboldt University Berlin](https://www.hu-berlin.de/de), developed by [kitconcept GmbH](https://kitconcept.com/en), 2019)
 - [Film Basque Country](https://www.filmbasquecountry.eus/en) (Website to attract, guide, and support international productions, making it easier for them to film in the Basque Country, developed by [CodeSyntax](https://www.codesyntax.com/en), 2025)
 - [Forest Information System for Europe](https://forest.eea.europa.eu) (Thematic website focusing on European forests, developed by [Eau de Web](https://eaudeweb.ro/), 2019)
 - [Forschungszentrum Jülich](https://www.fz-juelich.de/de) (Website for Forschungzentrum Jülich, which is one of the largest research institutions in Europe, developed by [kitconcept GmbH](https://kitconcept.com/en), 2022)
+- [Geosphere Austria](https://www.geosphere.at/de) (Website of the Austrian Federal Institute, national geological, geophysical, climatological and meteorological service, 2023)
 - [German Aerospace Center (DLR)](https://www.dlr.de/de) (The German Aerospace Center (DLR) is the Federal Republic of Germany's research center for aeronautics. With more than 10.000 employees and a yearly budget of more than 1 billion euros, it is one of the largest research institutions in Germany, developed by [kitconcept GmbH](https://kitconcept.com/en), 2023)
 - [Helmholtz-Institut Erlangen-Nürnberg für Erneuerbare Energien (HI-ERN)](https://www.hi-ern.de/de) (Website for HI ERN, a research institution for renewable energies, developed by [kitconcept GmbH](https://kitconcept.com/en), 2022)
 - [Humboldt Labor](https://www.humboldtforum.org/de/programm/dauerangebot/ausstellung/nach-der-natur-14144/) (The Humboldt Lab is a website where the Humboldt University Berlin presents its latest research projects and findings. Developed by [WLDX](https://wldx.de/) and [kitconcept GmbH](https://kitconcept.com/en), 2020)
 - [ILPO](https://ilpo.jyu.fi/) (the registration portal of continuous learning at the University of Jyväskylä. Developed by University of Jyväskylä, 2022)
 - [Industrial Emissions portal for Europe](https://industry.eea.europa.eu) (Thematic website focusing on European industrial emissions, developed by [Eau de Web](https://eaudeweb.ro/), 2020)
+- [iTlent - Basque Institute of Talent in VET](https://www.itlent.eus/en) (developed by [CodeSyntax](https://www.codesyntax.com/en), 2024)
 - [Jobfamilie MEDICE](https://jobfamilie.medice.de/de) (Carrer website for MEDICE Arzneimittel Pütter GmbH & Co. KG), developed by [Werkbank GmbH](https://werkbank.de/), 2020)
 - [Lanku](https://www.lanku.eus) (Website for Lanku Kultur Zerbitzuak, a company offering cultural services and improvised Basque verse singing sessions across the Basque Country, developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
 - [Leibniz Institute for Science and Mathematics Education (IPN)](https://www.leibniz-ipn.de/de) (Website of the IPN, a research institute dedicated to issues related to learning and teaching of science, mathematics and computer science in and outside of schools, developed by [Starzel](https://www.starzel.de), 2023)
@@ -180,7 +182,7 @@ You should check the dependencies in their `package.json` for more details.
 - [Freshwater Information System for Europe](https://github.com/eea/freshwater-frontend) - Volto project for [Freshwater Information System for Europe website](https://water.europa.eu/freshwater)
 - [European Industrial Emissions Portal](https://github.com/eea/industry-frontend ) - Volto project for [European Industrial Emissions Portal website](https://industry.eea.europa.eu)
 - [Biodiversity Information System for Europe](https://github.com/eea/bise-frontend) - Volto project for [Biodiversity Information System for Europe website](https://biodiversity.europa.eu)
-- [EEA Main Website frontend](https://github.com/eea/eea-website-frontend) - Volto project for [European Environment Agency](https://www.eea.europa.eu/en)
+- [EEA Main Website frontend](https://github.com/eea/eea-website-frontend) - Plone 6 Volto frontend for [European Environment Agency](https://www.eea.europa.eu/en)
 - [Climate and energy in the EU](https://github.com/eea/climate-energy-frontend) - Volto project for [Climate and energy in the EU website](https://climate-energy.eea.europa.eu)
 - [volto-bise](https://github.com/eea/volto-bise) - A Volto project packaged as an addon. It provides Theming using a razzle.extend.js provided alias.
 - [design-volto-theme](https://github.com/RedTurtle/design-volto-theme) Volto theme for Italian Public Administration
@@ -191,7 +193,6 @@ You should check the dependencies in their `package.json` for more details.
 - [nsw-design-system-plone6-kit](https://github.com/pretagov/nsw-design-system-plone6-kit) - NSW Design System Plone 6 Kit Volto project for [NSW.gov.au sites](https://digitalnsw.pretagov.com.au/)
 - [volto-centraalmuseum-theme](https://github.com/intk/volto-centraalmuseum-theme) - Volto project for the [Centraal Museum & Rietveld](https://www.centraalmuseum.nl/nl) made for [INTK](https://www.intk.com/en).
 - [volto-eea-design-system](https://github.com/eea/volto-eea-design-system) - EEA Design System Plone 6 Kit Volto project for [European Environment Agency web sites](https://eea.github.io/volto-eea-design-system/)
-- [volto-eea-website-theme](https://github.com/eea/volto-eea-website-theme) - EEA Plone 6 Volto Theme for [European Environment Agency web sites](https://www.eea.europa.eu/en)
 - [volto-eea-kitkat](https://github.com/eea/volto-eea-kitkat) - A known good set of Volto add-ons to be used within all EEA projects and beyond, made for [European Environment Agency](https://www.eea.europa.eu/en)
 - [volto-rietveldschroderhuis-theme](https://github.com/intk/volto-rietveldschroderhuis-theme) - Volto project for the [Rietveld Schröder House](https://www.rietveldschroderhuis.nl/en) made for [INTK](https://www.intk.com/en).
 - [volto-zeeuwsmuseum-theme](https://github.com/intk/volto-zeeuwsmuseum-theme) - Volto project for the [Zeeuws Museum](https://www.zeeuwsmuseum.nl/en) made for [INTK](https://www.intk.com/en).
