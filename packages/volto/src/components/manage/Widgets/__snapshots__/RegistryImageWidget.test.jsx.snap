@@ -117,6 +117,34 @@ exports[`RegistryImageWidget > renders an empty file widget component 1`] = `
           class="eight wide column"
         >
           <div
+            class="file-widget-dropzone"
+            tabindex="0"
+          >
+            <div
+              class="dropzone-placeholder"
+            >
+              <p
+                class="dropzone-text"
+              >
+                Drop file here to upload a new file
+              </p>
+            </div>
+            <label
+              class="label-file-widget-input"
+            >
+              Choose a file
+            </label>
+            <input
+              autocomplete="off"
+              id="field-my-field"
+              multiple=""
+              name="my-field"
+              style="display: none;"
+              tabindex="-1"
+              type="file"
+            />
+          </div>
+          <div
             class="field-file-name"
           />
         </div>
