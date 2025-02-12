@@ -22,9 +22,16 @@ export default defineConfig({
       '@plone/volto': path.resolve(__dirname, 'src'),
       '@plone/volto-slate': path.resolve(__dirname, '../volto-slate/src'),
       '@root': path.resolve(__dirname, 'src'),
+      'promise-file-reader': require.resolve('promise-file-reader'),
+      'react-dropzone': require.resolve('react-dropzone'),
+      'prop-types': require.resolve('prop-types'),
     },
   },
   test: {
+    isolate: true,
+    deps: {
+      moduleDirectories: ['node_modules'],
+    },
     snapshotFormat: { printBasicPrototype: false },
     globals: true,
     environment: 'jsdom',
