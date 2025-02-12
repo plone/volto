@@ -1,7 +1,14 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "types": [
+      "vitest/globals"
+    ],
     "module": "commonjs",
     "allowJs": true,
     "skipLibCheck": true,
@@ -16,12 +23,22 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@plone/volto/*": ["./src/*"],
-      "@plone/volto-slate/*": ["../volto-slate/src/*"],
-      "@root/*": ["./src/*"]
+      "@plone/volto/*": [
+        "./src/*"
+      ],
+      "@plone/volto-slate/*": [
+        "../volto-slate/src/*"
+      ],
+      "@root/*": [
+        "./src/*"
+      ]
     }
   },
-  "include": ["src", "packages","vitest.config.ts"],
+  "include": [
+    "src",
+    "packages",
+    "vitest.config.ts"
+  ],
   "exclude": [
     "node_modules",
     "build",

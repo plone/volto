@@ -4,7 +4,8 @@ import { deserialize } from '@plone/volto-slate/editor/deserialize';
 import * as htmlUtils from '@plone/volto-slate/editor/utils';
 import { makeEditor } from '@plone/volto-slate/utils/editor';
 import installSlate from '@plone/volto-slate/index';
-import { it, describe, expect } from 'vitest';
+
+vi.mock('@plone/volto-slate/editor/less/editor.less', () => ({}));
 
 const tojson = (html) => {
   const parsed = new JSDOM(html);

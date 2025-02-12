@@ -1,6 +1,5 @@
 import { getTypes } from './types';
 import { GET_TYPES } from '@plone/volto/constants/ActionTypes';
-import { vi } from 'vitest';
 
 describe('Types action', () => {
   describe('getTypes', () => {

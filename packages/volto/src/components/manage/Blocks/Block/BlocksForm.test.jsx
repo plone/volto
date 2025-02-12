@@ -3,7 +3,6 @@ import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import BlocksForm from './BlocksForm';
 import { render } from '@testing-library/react';
-import { vi } from 'vitest';
 import config from '@plone/volto/registry';
 import { __setLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 
