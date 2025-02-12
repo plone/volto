@@ -5167,6 +5167,11 @@ msgstr "Încărcați {count, plural, un {un fișier} alte {fișiere}}"
 msgid "{count} selected"
 msgstr "{count} selectat"
 
+#. Default: "{date} from {time}"
+#: components/theme/View/EventDatesInfo
+msgid "{date} from {time}"
+msgstr ""
+
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
 msgid "{id} Content Type"

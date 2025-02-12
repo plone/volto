@@ -5166,6 +5166,11 @@ msgstr ""
 msgid "{count} selected"
 msgstr "{count} seleccionados"
 
+#. Default: "{date} from {time}"
+#: components/theme/View/EventDatesInfo
+msgid "{date} from {time}"
+msgstr ""
+
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
 msgid "{id} Content Type"

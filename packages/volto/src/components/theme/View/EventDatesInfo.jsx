@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'semantic-ui-react';
 import cx from 'classnames';
+import { defineMessages, useIntl } from 'react-intl';
 
 import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -26,6 +27,7 @@ export const datesForDisplay = (start, end, moment) => {
 };
 
 const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
+  const intl = useIntl();
   const lang = useSelector((state) => state.intl.locale);
 
   const moment = momentlib.default;
@@ -35,6 +37,19 @@ const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
   if (!datesInfo) {
     return;
   }
+
+  const messages = defineMessages({
+    dateFromTime: {
+      id: '{date} from {time}',
+      defaultMessage: '{date} from {time}',
+    },
+  });
+
+  const teste = intl.formatMessage(messages.dateFromTime, {
+    date: <span className="start-date">{datesInfo.startDate}</span>,
+    time: <span className="start-time">{datesInfo.startTime}</span>,
+  });
+
   // TODO I18N INTL
   return (
     <p
@@ -45,57 +60,7 @@ const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
         'open-end': open_end,
       })}
     >
-      {!datesInfo.sameDay ? (
-        <>
-          <span className="start">
-            <span className="start-date">{datesInfo.startDate}</span>
-            {!whole_day && (
-              <>
-                {/* Plone has an optional word based on locale here */}
-                <span> </span>
-                <span className="start-time">{datesInfo.startTime}</span>
-              </>
-            )}
-          </span>
-          {!open_end && (
-            <>
-              &nbsp;to&nbsp;
-              <span className="end">
-                <span className="end-date">{datesInfo.endDate}</span>
-                {!whole_day && (
-                  <>
-                    {/* Plone has an optional word based on locale here */}
-                    <span> </span>
-                    <span className="end-time">{datesInfo.endTime}</span>
-                  </>
-                )}
-              </span>
-            </>
-          )}
-        </>
-      ) : (
-        <>
-          {whole_day && (
-            <span className="start-date">{datesInfo.startDate}</span>
-          )}
-          {open_end && !whole_day && (
-            <>
-              <span className="start-date">{datesInfo.startDate}</span>
-              &nbsp;from&nbsp;
-              <span className="start-time">{datesInfo.startTime}</span>
-            </>
-          )}
-          {!(whole_day || open_end) && (
-            <>
-              <span className="start-date">{datesInfo.startDate}</span>
-              &nbsp;from&nbsp;
-              <span className="start-time">{datesInfo.startTime}</span>
-              &nbsp;to&nbsp;
-              <span className="end-time">{datesInfo.endTime}</span>
-            </>
-          )}
-        </>
-      )}
+      {teste}
     </p>
   );
 };
