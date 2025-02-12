@@ -21,8 +21,8 @@ describe('FileWidget', () => {
     const { container } = render(
       <Provider store={store}>
         <FileWidget
-          id="my-field"
-          title="My field"
+          id="empty-file-widget"
+          title="Empty File Widget"
           fieldSet="default"
           onChange={() => {}}
         />
@@ -43,8 +43,8 @@ describe('FileWidget', () => {
     const { container } = render(
       <Provider store={store}>
         <FileWidget
-          id="my-field"
-          title="My field"
+          id="file-widget-with-value"
+          title="File Widget With Value"
           fieldSet="default"
           onChange={() => {}}
           value={{
@@ -71,8 +71,8 @@ describe('FileWidget', () => {
     const { container } = render(
       <Provider store={store}>
         <FileWidget
-          id="my-field"
-          title="My field"
+          id="file-widget-raw-data"
+          title="File Widget With Raw Data"
           fieldSet="default"
           onChange={() => {}}
           value={{
