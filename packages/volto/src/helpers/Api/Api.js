@@ -126,7 +126,6 @@ class Api {
                 url: err.response.headers.location,
               });
             }
-
             return err ? reject(err) : resolve(response.body || response.text);
           });
         });
