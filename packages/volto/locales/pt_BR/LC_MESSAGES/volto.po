@@ -5167,6 +5167,11 @@ msgstr "{count, plural, one {Enviar {count} arquivo} ou {Enviar {count} arquivos
 msgid "{count} selected"
 msgstr "{count} selecionados"
 
+#. Default: "{date} from {time}"
+#: components/theme/View/EventDatesInfo
+msgid "{date} from {time}"
+msgstr "{date} a partir de {time}"
+
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
 msgid "{id} Content Type"

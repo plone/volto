@@ -5161,6 +5161,11 @@ msgstr "{count, plural, one {Carica {count} file} other {Carica {count} file}}"
 msgid "{count} selected"
 msgstr "{count} selezionati."
 
+#. Default: "{date} from {time}"
+#: components/theme/View/EventDatesInfo
+msgid "{date} from {time}"
+msgstr ""
+
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
 msgid "{id} Content Type"
