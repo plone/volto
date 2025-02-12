@@ -20,15 +20,21 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
 export function formatUrl(path) {
   const { settings } = config;
   const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+  const prefix = settings.prefixPath;
 
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
-  const adjustedPath = path[0] !== '/' ? `/${path}` : path;
   let apiPath = '';
   if (settings.internalApiPath && __SERVER__) {
     apiPath = settings.internalApiPath;
   } else if (settings.apiPath) {
     apiPath = settings.apiPath;
+  }
+
+  let adjustedPath = path[0] !== '/' ? `/${path}` : path;
+  if (prefix && adjustedPath.match(new RegExp(`^${prefix}(/|$)`))) {
+    adjustedPath = adjustedPath.slice(prefix.length);
+    adjustedPath = adjustedPath[0] !== '/' ? `/${adjustedPath}` : adjustedPath;
   }
 
   return `${apiPath}${APISUFIX}${adjustedPath}`;
