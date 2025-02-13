@@ -22,7 +22,7 @@ import {
 } from '@plone/volto/helpers/Blocks/Blocks';
 import { useDetectClickOutside } from '@plone/volto/helpers/Utils/useDetectClickOutside';
 import { useEvent } from '@plone/volto/helpers/Utils/useEvent';
-import EditBlockWrapper from './EditBlockWrapper';
+import EditBlockWrapper from '@plone/volto/components/manage/Blocks/Block/EditBlockWrapper';
 import { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
 import { setUIState } from '@plone/volto/actions/form/form';
 import { useDispatch } from 'react-redux';
