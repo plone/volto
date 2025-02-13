@@ -71,6 +71,17 @@ const BlocksForm = (props) => {
 
   const blockList = getBlocks(properties);
 
+  useEffect(() => {
+    for (const [n, v] of blockList) {
+      if (!v) {
+        const newFormData = deleteBlock(properties, n, intl);
+        onChangeFormData(newFormData);
+      }
+    }
+  }, [blockList]);
+
+  const blocksWithData = blockList.filter((block) => !!block[1]);
+
   const dispatch = useDispatch();
   const intl = useIntl();
 
@@ -260,13 +271,6 @@ const BlocksForm = (props) => {
   // to be removed when the user saves the page next. Otherwise the invalid
   // blocks would linger for ever.
 
-  for (const [n, v] of blockList) {
-    if (!v) {
-      const newFormData = deleteBlock(properties, n, intl);
-      onChangeFormData(newFormData);
-    }
-  }
-
   useEvent('voltoClickBelowContent', () => {
     if (!config.experimental.addBlockButton.enabled || !isMainForm) return;
     onSelectBlock(
@@ -303,7 +307,7 @@ const BlocksForm = (props) => {
       >
         <fieldset className="invisible" disabled={!editable}>
           <DragDropList
-            childList={blockList}
+            childList={blocksWithData}
             onMoveItem={(result) => {
               const { source, destination } = result;
               if (!destination) {
