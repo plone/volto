@@ -64,6 +64,8 @@ const BlocksForm = (props) => {
   } = props;
 
   const [isClient, setIsClient] = useState(false);
+  const intl = useIntl();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setIsClient(true);
@@ -78,12 +80,9 @@ const BlocksForm = (props) => {
         onChangeFormData(newFormData);
       }
     }
-  }, [blockList]);
+  }, [blockList, intl, onChangeFormData, properties]);
 
   const blocksWithData = blockList.filter((block) => !!block[1]);
-
-  const dispatch = useDispatch();
-  const intl = useIntl();
 
   const ClickOutsideListener = () => {
     onSelectBlock(null);
