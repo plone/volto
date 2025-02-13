@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import cloneDeep from 'lodash/cloneDeep';
 import map from 'lodash/map';
-import EditBlock from './Edit';
+import EditBlock from '@plone/volto/components/manage/Blocks/Block/Edit';
 import DragDropList from '@plone/volto/components/manage/DragDropList/DragDropList';
 import {
   getBlocks,
@@ -29,7 +29,7 @@ import { useDispatch } from 'react-redux';
 import config from '@plone/volto/registry';
 import { createPortal } from 'react-dom';
 
-import Order from './Order/Order';
+import Order from '@plone/volto/components/manage/Blocks/Block/Order/Order';
 
 const BlocksForm = (props) => {
   const {
