@@ -3,7 +3,6 @@
  * @module helpers/Blocks
  */
 
-import omit from 'lodash/omit';
 import without from 'lodash/without';
 import endsWith from 'lodash/endsWith';
 import find from 'lodash/find';
@@ -126,23 +125,38 @@ export function moveBlock(formData, source, destination) {
 export function deleteBlock(formData, blockId, intl) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+  const { [formData[blocksFieldname]]: _, ...newBlocks } =
+    formData[blocksFieldname];
 
   let newFormData = {
     ...formData,
     [blocksLayoutFieldname]: {
       items: without(formData[blocksLayoutFieldname].items, blockId),
     },
-    [blocksFieldname]: omit(formData[blocksFieldname], [blockId]),
+    [blocksFieldname]: newBlocks ?? {},
   };
 
   if (newFormData[blocksLayoutFieldname].items.length === 0) {
-    newFormData = addBlock(
-      newFormData,
-      config.settings.defaultBlockType,
-      0,
-      {},
-      intl,
-    );
+    if (Object.keys(newFormData.blocks).length > 0) {
+      const existingTitleBlock = Object.entries(formData.blocks).find(
+        ([blockId, blockValue]) => blockValue['@type'] === 'title',
+      )?.[0];
+      // Some messy syntax to get every block other than the already found title block
+      const { [existingTitleBlock]: _, ...existingOtherBlocks } =
+        newFormData.blocks;
+      newFormData[blocksLayoutFieldname].items = [
+        existingTitleBlock,
+        ...Object.keys(existingOtherBlocks ?? {}),
+      ];
+    } else {
+      newFormData = addBlock(
+        newFormData,
+        config.settings.defaultBlockType,
+        0,
+        {},
+        intl,
+      );
+    }
   }
 
   return newFormData;
