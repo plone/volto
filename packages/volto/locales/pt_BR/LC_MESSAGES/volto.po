@@ -5170,7 +5170,7 @@ msgstr "{count} selecionados"
 #. Default: "{date} from {startTime} to {endTime}"
 #: components/theme/View/EventDatesInfo
 msgid "{date} from {startTime} to {endTime}"
-msgstr ""
+msgstr "{date} a partir de {startTime} até {endTime}"
 
 #. Default: "{date} from {time}"
 #: components/theme/View/EventDatesInfo
@@ -5190,7 +5190,7 @@ msgstr "Esquema {id}"
 #. Default: "{startDate} to {endDate}"
 #: components/theme/View/EventDatesInfo
 msgid "{startDate} to {endDate}"
-msgstr ""
+msgstr "{startDate} até {endDate}"
 
 #. Default: "{startDate} {startTime} to {endDate} {endTime}"
 #: components/theme/View/EventDatesInfo
