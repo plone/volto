@@ -5165,6 +5165,11 @@ msgstr "{count, plural, one {{count} bestand opladen} other {{count} bestanden o
 msgid "{count} selected"
 msgstr "{count} geselecteerd"
 
+#. Default: "{date} from {startTime} to {endTime}"
+#: components/theme/View/EventDatesInfo
+msgid "{date} from {startTime} to {endTime}"
+msgstr ""
+
 #. Default: "{date} from {time}"
 #: components/theme/View/EventDatesInfo
 msgid "{date} from {time}"
@@ -5179,6 +5184,16 @@ msgstr "{id} contenttype"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} schema"
+
+#. Default: "{startDate} to {endDate}"
+#: components/theme/View/EventDatesInfo
+msgid "{startDate} to {endDate}"
+msgstr ""
+
+#. Default: "{startDate} {startTime} to {endDate} {endTime}"
+#: components/theme/View/EventDatesInfo
+msgid "{startDate} {startTime} to {endDate} {endTime}"
+msgstr ""
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions

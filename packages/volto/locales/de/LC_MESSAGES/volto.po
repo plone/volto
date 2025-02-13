@@ -5166,6 +5166,11 @@ msgstr "Lade {count, plural, one {# Datei} other {# Dateien}} hoch"
 msgid "{count} selected"
 msgstr "{count} ausgewählt"
 
+#. Default: "{date} from {startTime} to {endTime}"
+#: components/theme/View/EventDatesInfo
+msgid "{date} from {startTime} to {endTime}"
+msgstr ""
+
 #. Default: "{date} from {time}"
 #: components/theme/View/EventDatesInfo
 msgid "{date} from {time}"
@@ -5180,6 +5185,16 @@ msgstr "{id} Inhaltstyp"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} Schema"
+
+#. Default: "{startDate} to {endDate}"
+#: components/theme/View/EventDatesInfo
+msgid "{startDate} to {endDate}"
+msgstr ""
+
+#. Default: "{startDate} {startTime} to {endDate} {endTime}"
+#: components/theme/View/EventDatesInfo
+msgid "{startDate} {startTime} to {endDate} {endTime}"
+msgstr ""
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions

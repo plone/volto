@@ -33,22 +33,64 @@ const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
   const moment = momentlib.default;
   moment.locale(toBackendLang(lang));
 
+  const messages = defineMessages({
+    dateTimeToDateTime: {
+      id: '{startDate} {startTime} to {endDate} {endTime}',
+      defaultMessage: '{startDate} {startTime} to {endDate} {endTime}',
+    },
+    dateToDate: {
+      id: '{startDate} to {endDate}',
+      defaultMessage: '{startDate} to {endDate}',
+    },
+    dateFromTime: {
+      id: '{date} from {time}',
+      defaultMessage: '{date} from {time}',
+    },
+    dateFromTimeToTime: {
+      id: '{date} from {startTime} to {endTime}',
+      defaultMessage: '{date} from {startTime} to {endTime}',
+    },
+  });
+
   const datesInfo = datesForDisplay(start, end, moment);
   if (!datesInfo) {
     return;
   }
 
-  const messages = defineMessages({
-    dateFromTime: {
-      id: '{date} from {time}',
-      defaultMessage: '{date} from {time}',
-    },
-  });
+  const sameDay = datesInfo.sameDay;
+  let when = null;
 
-  const teste = intl.formatMessage(messages.dateFromTime, {
-    date: <span className="start-date">{datesInfo.startDate}</span>,
-    time: <span className="start-time">{datesInfo.startTime}</span>,
-  });
+  if (!sameDay && whole_day && !open_end) {
+    // Different day, whole day
+    when = intl.formatMessage(messages.dateTimeToDateTime, {
+      startDate: <span className="start-date">{datesInfo.startDate}</span>,
+      startTime: <span className="start-time">{datesInfo.startTime}</span>,
+      endDate: <span className="end-date">{datesInfo.endDate}</span>,
+      endTime: <span className="end-time">{datesInfo.endTime}</span>,
+    });
+  } else if (!sameDay && !whole_day && !open_end) {
+    // Different day, not whole day
+    when = intl.formatMessage(messages.dateToDate, {
+      startDate: <span className="start-date">{datesInfo.startDate}</span>,
+      endDate: <span className="end-date">{datesInfo.endDate}</span>,
+    });
+  } else if (sameDay && whole_day && !open_end) {
+    // Same day, whole day
+    when = <span className="start-date">{datesInfo.startDate}</span>;
+  } else if (sameDay && !whole_day && open_end) {
+    // Same day, not whole day, open end
+    when = intl.formatMessage(messages.dateFromTime, {
+      date: <span className="start-date">{datesInfo.startDate}</span>,
+      time: <span className="start-time">{datesInfo.startTime}</span>,
+    });
+  } else {
+    // Same day, not whole day, not open end
+    when = intl.formatMessage(messages.dateFromTimeToTime, {
+      date: <span className="start-date">{datesInfo.startDate}</span>,
+      startTime: <span className="start-time">{datesInfo.startTime}</span>,
+      endTime: <span className="end-time">{datesInfo.endTime}</span>,
+    });
+  }
 
   // TODO I18N INTL
   return (
@@ -60,7 +102,7 @@ const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
         'open-end': open_end,
       })}
     >
-      {teste}
+      {when}
     </p>
   );
 };
