@@ -730,10 +730,13 @@ Cypress.Commands.add('getSlate', (createNewSlate = false) => {
   cy.getIfExists(
     SLATE_SELECTOR,
     () => {
-      slate = cy.get(SLATE_SELECTOR).last();
+      slate = cy.get(SLATE_SELECTOR).last().should('be.visible');
     },
     () => {
-      slate = cy.get(SLATE_SELECTOR, { timeout: 10000 }).last();
+      slate = cy
+        .get(SLATE_SELECTOR, { timeout: 10000 })
+        .last()
+        .should('be.visible');
     },
   );
   return slate;
