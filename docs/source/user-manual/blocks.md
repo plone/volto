@@ -60,15 +60,16 @@ To rearrange blocks, to the right of the block you want to move, click on its dr
 
 (copy-anchor-links-label)=
 
-### Copy slate headings as anchor links
+### Copy Slate headings as anchor links
 
-When you move your mouse over a heading, a link icon appears on the right side. Click this icon to copy a direct link to that specific heading on the page.
+When you move your mouse over a heading, a link icon <img alt="Link icon" src="../../_images/link.svg" class="inline"> appears on the right side.
+Click this icon to copy a direct link to that specific heading on the page onto your clipboard.
 
-These links are useful for sharing a specific section of a page with others.
+Now you can paste the copied link to share a specific section of a page with others.
 
 
 ```{note}
-This feature is enabled by default and can be used only when user is loggedin.
+This feature is enabled by default, and only authenticated users can use this feature.
 ```
 
 
