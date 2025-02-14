@@ -22,7 +22,7 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@shadcn/*": ["./src/shadcn/*"]
     }
   },
   "include": ["src", "./setupTesting.ts"],

@@ -1,15 +1,15 @@
 import React from 'react';
 import { Button } from './button';
-import { Link } from '../Link/Link';
+import { Link } from '../../../components/Link/Link';
 import { Text } from 'react-aria-components';
-import { AddIcon } from '../Icons/AddIcon';
+import { AddIcon } from '../../../components/Icons/AddIcon';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/tailwind/base.css';
+import '../../../styles/tailwind/base.css';
 
 const meta = {
-  title: 'Components/TW/Button',
+  title: 'Tailwind/Button',
   component: Button,
   parameters: {
     layout: 'centered',
