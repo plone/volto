@@ -11,18 +11,16 @@ exports[`ModerateComments renders a moderate comments component 1`] = `
     <div
       class="ui container"
     >
-      <article
-        id="content"
+      <div
+        class="ui raised segments"
       >
-        <header>
-          <h1
-            class="documentFirstHeading"
-          >
-            Moderate comments
-          </h1>
-        </header>
-        <section
-          id="content-core"
+        <div
+          class="ui segment primary"
+        >
+          Moderate comments
+        </div>
+        <div
+          class="ui segment moderate-comments-content"
         >
           <table
             class="ui single line striped compact table"
@@ -59,8 +57,8 @@ exports[`ModerateComments renders a moderate comments component 1`] = `
               class=""
             />
           </table>
-        </section>
-      </article>
+        </div>
+      </div>
     </div>
   </div>
   <div
