@@ -1636,6 +1636,11 @@ msgstr ""
 msgid "Hide Replies"
 msgstr ""
 
+#. Default: "Hide blocks from page preview"
+#: components/manage/Form/ShowHideBlocksToolbar
+msgid "Hide blocks from page preview"
+msgstr ""
+
 #. Default: "Hide facet?"
 #: components/manage/Blocks/Search/schema
 msgid "Hide facet?"
@@ -3240,6 +3245,11 @@ msgstr ""
 msgid "Show Replies"
 msgstr ""
 
+#. Default: "Show blocks from page preview"
+#: components/manage/Form/ShowHideBlocksToolbar
+msgid "Show blocks from page preview"
+msgstr ""
+
 #. Default: "Show filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Show filters"
@@ -4522,6 +4532,11 @@ msgstr ""
 msgid "hero"
 msgstr ""
 
+#. Default: "hide"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "hide"
+msgstr ""
+
 #. Default: "HTML"
 #: config/Blocks
 msgid "html"
@@ -4909,6 +4924,11 @@ msgstr ""
 #. Default: "Select view"
 #: components/manage/Blocks/Search/components/ViewSwitcher
 msgid "selectView"
+msgstr ""
+
+#. Default: "show"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "show"
 msgstr ""
 
 #. Default: "Skip to footer"
