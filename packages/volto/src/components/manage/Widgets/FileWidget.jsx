@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Image, Dimmer } from 'semantic-ui-react';
+import { Button, Dimmer } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
 import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
@@ -16,6 +16,7 @@ import loadable from '@loadable/component';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { defineMessages, useIntl } from 'react-intl';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 const imageMimetypes = [
   'image/png',
@@ -131,9 +132,8 @@ const FileWidget = (props) => {
             {isDragActive && <Dimmer active></Dimmer>}
             {fileType ? (
               <Image
-                className="image-preview"
+                className="image-preview small ui image"
                 id={`field-${id}-image`}
-                size="small"
                 src={imgsrc}
               />
             ) : (
