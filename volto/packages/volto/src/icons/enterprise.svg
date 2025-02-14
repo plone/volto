@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <g fill-rule="evenodd">
+    <path d="M25,31 L27,31 L27,19 L21,19 L21,31 L23,31 L23,29 L25,29 L25,31 Z M27.5,17 L29,17 L29,31 L31,31 L31,33 L5,33 L5,31 L7,31 L7,7 L11,7 L11,3 L17,3 L17,7 L21,7 L21,17 L27.5,17 Z M13,5 L13,7 L15,7 L15,5 L13,5 Z M19,9 L9,9 L9,31 L19,31 L19,9 Z"/>
+    <rect width="6" height="2" x="11" y="11" />
+    <rect width="6" height="2" x="11" y="15" />
+    <rect width="6" height="2" x="11" y="19" />
+    <rect width="2" height="2" x="23" y="21" />
+    <rect width="2" height="2" x="23" y="25" />
+    <rect width="6" height="2" x="11" y="23" />
+    <rect width="6" height="2" x="11" y="27" />
+  </g>
+</svg>

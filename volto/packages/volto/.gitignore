@@ -1,0 +1,64 @@
+# Node
+node_modules
+coverage
+jsdoc
+webpack-assets.json
+webpack-stats.json
+npm-debug.log
+junit.xml
+eslint.xml
+yarn-error.log
+build
+.changelog.draft
+
+# yarn 3
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Other
+/cache
+.yarn/
+.DS_Store
+.idea
+lighthouse-report.html
+.vscode/
+.#*
+*~
+/.settings/
+.*project
+
+# locales
+locales/*.json
+
+# Tests
+/tests/bin
+/tests/develop-eggs
+/tests/parts
+/tests/.installed.cfg
+*.pyc
+geckodriver.log
+log.html
+output.xml
+report.html
+selenium-screenshot-*.png
+/selenium/
+cypress/videos/
+cypress/screenshots
+/styles/Microsoft
+
+# Local environment setup
+.env
+public/critical.css
+
+# Sphinx and MyST
+docs/_build/
+/.python-version
+/.tool-versions
+docs/source/news
+
+registry.loader.js

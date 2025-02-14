@@ -1,0 +1,5 @@
+Toolbar example:
+
+```js
+<Toolbar />
+```

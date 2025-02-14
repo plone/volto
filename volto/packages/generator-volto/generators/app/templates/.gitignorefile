@@ -1,0 +1,94 @@
+.vscode/
+logs
+*.log
+npm-debug.log*
+.DS_Store
+
+coverage
+
+# Node
+node_modules
+coverage
+jsdoc
+webpack-assets.json
+webpack-stats.json
+npm-debug.log
+dist
+junit.xml
+eslint.xml
+yarn-error.log
+build
+
+# Other
+.DS_Store
+.idea
+lighthouse-report.html
+.vscode/
+.#*
+*~
+
+# Python
+/api/.installed.cfg
+/api/.mr.developer.cfg
+/api/bin/
+/api/develop-eggs/
+/api/eggs/
+/api/include/
+/api/lib/
+/api/lib64/
+/api/notebook/env/
+/api/parts/
+/api/share/python-wheels/
+/api/src/
+/api/var/
+/api/venv/
+/bin/
+/lib/
+.Python
+include
+pip-selfcheck.json
+pyvenv.cfg
+share
+
+# locales
+locales/*.json
+
+# Tests
+/tests/bin
+/tests/develop-eggs
+/tests/parts
+/tests/.installed.cfg
+*.pyc
+geckodriver.log
+log.html
+output.xml
+report.html
+selenium-screenshot-*.png
+/selenium/
+cypress/videos/
+cypress/screenshots
+
+# Local environment setup
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# generic
+data
+omelette
+
+# build
+public/critical.css
+src/addons/*
+/cache
+
+# yarn 3
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

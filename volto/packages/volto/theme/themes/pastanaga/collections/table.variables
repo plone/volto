@@ -1,0 +1,76 @@
+/*******************************
+             Table
+*******************************/
+
+/*-------------------
+       Element
+--------------------*/
+
+/*--------------
+     Parts
+---------------*/
+
+/* Table Row */
+
+/* Table Cell */
+
+/* Table Header */
+@headerBackground: #FAF8F8;
+@headerFontWeight: @normal;
+@headerTextTransform: uppercase;
+@headerColor: #878f93;
+@borderRadius: 0;
+@borderCollapse: collapse;
+
+/* Table Footer */
+@footerBackground: @white;
+
+/* Responsive Size */
+
+/*-------------------
+       Types
+--------------------*/
+
+/* Definition */
+
+/*--------------
+    Couplings
+---------------*/
+
+/*--------------
+     States
+---------------*/
+
+/* Positive */
+
+/* Negative */
+
+/* Error */
+
+/* Warning */
+
+/* Active */
+
+/*--------------
+     Types
+---------------*/
+
+/* Attached */
+
+/* Striped */
+
+/* Selectable */
+
+/* Sortable */
+
+/* Colors */
+
+/* Inverted */
+
+/* Basic */
+
+/* Padded */
+
+/* Compact */
+
+/* Sizes */

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders icon 1`] = `
+<svg
+  className="icon my-icon"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<title>My Icon</title>Accessibility",
+    }
+  }
+  onClick={null}
+  style={
+    Object {
+      "fill": "#007bc1",
+      "height": "14px",
+      "width": "auto",
+    }
+  }
+  viewBox="0 0 36 36"
+  xmlns="http://www.w3.org/2000/svg"
+/>
+`;

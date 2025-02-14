@@ -1,0 +1,15 @@
+news
+towncrier.toml
+.changelog.draft
+node_modules/
+.release-it.json
+.eslintrc.cjs
+
+# yarn 3
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

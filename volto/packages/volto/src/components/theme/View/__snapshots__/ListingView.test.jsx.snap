@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListingView renders a listing_view component 1`] = `
+<div
+  className="ui container"
+  id="page-home"
+>
+  <section
+    id="content-core"
+  >
+    <div
+      className="ui segment listing-item"
+    >
+      <div
+        className="ui container"
+      >
+        <h2>
+          <a
+            className={null}
+            href="/"
+            onClick={[Function]}
+            target={null}
+            title="Document"
+          >
+            My item
+          </a>
+        </h2>
+        <p>
+          My item description
+        </p>
+      </div>
+    </div>
+    <div
+      className="ui segment listing-item"
+    >
+      <div
+        className="ui container"
+      >
+        <h2>
+          <a
+            className={null}
+            href="/"
+            onClick={[Function]}
+            target={null}
+            title="Document"
+          >
+            Second item
+          </a>
+        </h2>
+        <p>
+          My second item description
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+`;

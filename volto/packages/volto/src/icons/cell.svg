@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <g fill-rule="evenodd">
+    <polygon points="29 31 31 31 31 29 29 29"/>
+    <polygon points="9 31 11 31 11 29 9 29"/>
+    <polygon points="25 31 27 31 27 29 25 29"/>
+    <polygon points="5 31 7 31 7 29 5 29"/>
+    <polygon points="5 11 7 11 7 9 5 9"/>
+    <polygon points="5 27 7 27 7 25 5 25"/>
+    <polygon points="5 7 7 7 7 5 5 5"/>
+    <polygon points="9 7 11 7 11 5 9 5"/>
+    <polygon points="25 7 27 7 27 5 25 5"/>
+    <polygon points="29 7 31 7 31 5 29 5"/>
+    <polygon points="29 27 31 27 31 25 29 25"/>
+    <polygon points="29 11 31 11 31 9 29 9"/>
+    <polygon points="21 31 23 31 23 29 21 29"/>
+    <polygon points="17 31 19 31 19 29 17 29"/>
+    <polygon points="13 31 15 31 15 29 13 29"/>
+    <polygon points="13 27 15 27 15 25 13 25"/>
+    <polygon points="21 27 23 27 23 25 21 25"/>
+    <polygon points="13 11 15 11 15 9 13 9"/>
+    <polygon points="13 7 15 7 15 5 13 5"/>
+    <polygon points="17 7 19 7 19 5 17 5"/>
+    <polygon points="21 7 23 7 23 5 21 5"/>
+    <polygon points="21 11 23 11 23 9 21 9"/>
+    <polygon points="29 23 31 23 31 21 29 21"/>
+    <polygon points="9 23 11 23 11 21 9 21"/>
+    <polygon points="25 23 27 23 27 21 25 21"/>
+    <polygon points="5 23 7 23 7 21 5 21"/>
+    <polygon points="5 19 7 19 7 17 5 17"/>
+    <polygon points="5 15 7 15 7 13 5 13"/>
+    <polygon points="9 15 11 15 11 13 9 13"/>
+    <polygon points="25 15 27 15 27 13 25 13"/>
+    <polygon points="29 15 31 15 31 13 29 13"/>
+    <polygon points="29 19 31 19 31 17 29 17"/>
+    <path d="M21,21 L19,21 L17,21 L15,21 L15,15 L17,15 L19,15 L21,15 L21,21 Z M19,13 L17,13 L15,13 L13,13 L13,15 L13,21 L13,23 L15,23 L17,23 L19,23 L21,23 L23,23 L23,21 L23,15 L23,13 L21,13 L19,13 Z"/>
+  </g>
+</svg>

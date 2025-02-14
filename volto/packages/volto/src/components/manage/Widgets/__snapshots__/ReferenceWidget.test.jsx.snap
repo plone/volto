@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an array widget component 1`] = `
+<div
+  className="inline field field-wrapper-my-field"
+>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="stretched row"
+    >
+      <div
+        className="four wide column"
+      >
+        <div
+          className="wrapper"
+        >
+          <label
+            htmlFor="field-my-field"
+            id="fieldset-default-field-label-my-field"
+          >
+            My field
+          </label>
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
+        <div
+          aria-expanded={false}
+          className="ui fluid multiple search selection dropdown"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autoComplete="off"
+            className="search"
+            onChange={[Function]}
+            style={
+              Object {
+                "width": undefined,
+              }
+            }
+            tabIndex={0}
+            type="text"
+            value=""
+          />
+          <span
+            className="sizer"
+          />
+          <div
+            aria-atomic={true}
+            aria-live="polite"
+            className="divider default text"
+            role="alert"
+          >
+            My field
+          </div>
+          <i
+            aria-hidden="true"
+            className="dropdown icon"
+            onClick={[Function]}
+          />
+          <div
+            aria-multiselectable={true}
+            className="menu transition"
+            role="listbox"
+          >
+            <div
+              className="message"
+            >
+              No results found.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

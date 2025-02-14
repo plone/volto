@@ -1,0 +1,140 @@
+/*******************************
+            Dropdown
+*******************************/
+@dropdownTextColor: #636363;
+
+/*-------------------
+       Element
+--------------------*/
+
+@borderRadius: 0;
+
+/*-------------------
+       Content
+--------------------*/
+
+/* Icon */
+@dropdownIconSize: 0;
+@dropdownIconMargin: 0;
+
+/* Current Text */
+
+/* Menu */
+
+/* Text */
+
+/* Menu Item */
+@itemColor: @dropdownTextColor;
+@itemFontWeight: 300;
+
+/* Sub Menu */
+
+/* Menu Header */
+
+/* Menu Divider */
+
+/* Menu Input */
+
+/* Menu Image */
+
+/* Item Sub-Element */
+
+/* Sub-Menu Dropdown Icon */
+
+/* Description */
+
+/* Message */
+
+/* Floated Content */
+
+/*-------------------
+        Types
+--------------------*/
+
+/*------------
+   Selection
+--------------*/
+
+@selectionItemDivider: none;
+
+/* <select> */
+@selectionBorder: none;
+@selectionMenuBorderRadius: 0em 0em 0em 0em;
+
+/* Responsive */
+
+/* Derived */
+
+/* Hover */
+
+
+/* Focus */
+@selectionFocusMenuBoxShadow: none;
+
+/* Visible */
+@selectionVisibleBoxShadow: none;
+@selectionVisibleMenuBoxShadow: none;
+
+/* Visible Hover */
+@selectionVisibleIconOpacity: 1;
+
+/*--------------
+     Search
+--------------*/
+
+/* Search Selection */
+
+/* Inline */
+@inlineIconMargin: 0em @relative7px 0em @relative3px;
+
+/*--------------
+    Multiple
+--------------*/
+
+/* Split Actual Padding Between Child and Parent (allows for label spacing) */
+
+/* Child Elements */
+
+/* Dropdown Icon */
+
+/* Selection Label */
+
+/*-------------------
+       States
+--------------------*/
+
+/* Hovered */
+@hoveredItemColor: @dropdownTextColor;
+
+/* Default Text */
+
+/* Loading */
+
+/* Active Menu Item */
+@activeItemFontWeight: 300;
+
+/* Selected */
+@selectedBackground: none;
+@selectedColor: @blue;
+
+/* Error */
+
+/*-------------------
+      Variations
+--------------------*/
+
+/* Scrolling */
+
+/* Upward */
+
+/* Flyout Direction */
+
+/* Left */
+
+/* Simple */
+
+/* Floating */
+
+/* Pointing */
+
+/* Pointing Upward */

@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders a app component 1`] = `
+Array [
+  <div
+    aria-label="Skiplinks"
+    className="skiplinks-wrapper"
+    role="complementary"
+  >
+    <a
+      className="skiplink"
+      href="#view"
+    >
+      Skip to main content
+    </a>
+    <a
+      className="skiplink"
+      href="#navigation"
+    >
+      Skip to navigation
+    </a>
+    <a
+      className="skiplink"
+      href="#footer"
+    >
+      Skip to footer
+    </a>
+  </div>,
+  <div
+    id="toolbar"
+  />,
+  <div
+    id="breadcrumbs"
+  />,
+  <div
+    id="segment"
+  />,
+  <p
+    id="route-announcer"
+    role="alert"
+    style={
+      Object {
+        "border": 0,
+        "clip": "rect(1px 1px 1px 1px)",
+        "height": "1px",
+        "margin": "-1px",
+        "overflow": "hidden",
+        "padding": 0,
+        "position": "absolute",
+        "whiteSpace": "nowrap",
+        "width": "1px",
+        "wordWrap": "normal",
+      }
+    }
+  />,
+  <div
+    id="footer"
+  />,
+  <div
+    className="Toastify"
+  />,
+]
+`;

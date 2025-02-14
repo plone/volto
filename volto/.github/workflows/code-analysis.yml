@@ -1,0 +1,148 @@
+name: Code Analysis Check
+on: [push, pull_request]
+
+env:
+  node-version: 22.x
+
+jobs:
+  prettier:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    name: Prettier
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # node setup
+      - name: Use Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.node-version }}
+
+      - name: Enable corepack
+        run: npm i -g corepack@latest && corepack enable
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - run: pnpm i
+
+      - name: Prettier check
+        run: pnpm prettier
+
+  eslint:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    name: ESlint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # node setup
+      - name: Use Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.node-version }}
+
+      - name: Enable corepack
+        run: npm i -g corepack@latest && corepack enable
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - run: pnpm i
+
+      - name: Main ESlint check
+        run: pnpm lint
+
+      - name: Volto ESlint check
+        run: pnpm lint:volto
+
+  stylelint:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    name: Stylelint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # node setup
+      - name: Use Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.node-version }}
+
+      - name: Enable corepack
+        run: npm i -g corepack@latest && corepack enable
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - run: pnpm i
+
+      - name: Volto Stylelint check
+        run: pnpm --filter @plone/volto stylelint
+
+      - name: Components Stylelint check
+        run: pnpm --filter @plone/components stylelint
+
+  i18n:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    name: i18n
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # node setup
+      - name: Use Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.node-version }}
+
+      - name: Enable corepack
+        run: npm i -g corepack@latest && corepack enable
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - run: pnpm i
+
+      - name: i18n locales in sync
+        run: pnpm i18n:ci

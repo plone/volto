@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentsBreadcrumbs Multilingual renders a ContentsBreadcrumbs component - Multilingual 1`] = `
+<div
+  className="ui breadcrumb"
+>
+  <a
+    className="section"
+    href="/contents"
+    onClick={[Function]}
+    title="Root"
+  >
+    Root
+  </a>
+  <div
+    className="divider"
+  >
+    /
+  </div>
+  <a
+    className="section"
+    href="/en/contents"
+    onClick={[Function]}
+    title="Home"
+  >
+    English
+  </a>
+  <div
+    className="divider"
+  >
+    /
+  </div>
+  <a
+    className="section"
+    href="/en/blog/contents"
+    onClick={[Function]}
+  >
+    Blog
+  </a>
+  <div
+    className="divider"
+  >
+    /
+  </div>
+  <div
+    className="active section"
+    onClick={[Function]}
+  >
+    My first blog
+  </div>
+</div>
+`;
+
+exports[`ContentsBreadcrumbs Multilingual renders a breadcrumbs component containing items with nav_title - Multilingual 1`] = `
+<div
+  className="ui breadcrumb"
+>
+  <a
+    className="section"
+    href="/contents"
+    onClick={[Function]}
+    title="Root"
+  >
+    Root
+  </a>
+  <div
+    className="divider"
+  >
+    /
+  </div>
+  <a
+    className="section"
+    href="/en/contents"
+    onClick={[Function]}
+    title="Home"
+  >
+    English
+  </a>
+  <div
+    className="divider"
+  >
+    /
+  </div>
+  <a
+    className="section"
+    href="/en/blog/contents"
+    onClick={[Function]}
+  >
+    Blog
+  </a>
+  <div
+    className="divider"
+  >
+    /
+  </div>
+  <div
+    className="active section"
+    onClick={[Function]}
+  >
+    First one
+  </div>
+</div>
+`;

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an email widget component 1`] = `
+<div
+  className="inline field email field-wrapper-test-email"
+>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="stretched row"
+    >
+      <div
+        className="four wide column"
+      >
+        <div
+          className="wrapper"
+        >
+          <label
+            htmlFor="field-test-email"
+            id="fieldset-default-field-label-test-email"
+          >
+            My Email
+          </label>
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
+        <div
+          className="ui input"
+        >
+          <input
+            id="field-test-email"
+            maxLength={null}
+            minLength={null}
+            name="test-email"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            type="email"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

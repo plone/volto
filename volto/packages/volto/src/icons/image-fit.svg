@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <g fill-rule="evenodd">
+    <path fill-rule="nonzero" d="M7,13 L9,11 L9,25 L7,23 L29,23 L27,25 L27,11 L29,13 L7,13 Z M29,11 L29,25 L7,25 L7,11 L29,11 Z"/>
+    <polygon points="7 31 29 31 29 29 7 29"/>
+    <polygon points="7 7 29 7 29 5 7 5"/>
+  </g>
+</svg>

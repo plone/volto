@@ -1,0 +1,41 @@
+/*******************************
+            Message
+*******************************/
+
+/*-------------------
+       Elements
+--------------------*/
+
+@verticalPadding: 1.5em;
+@borderRadius: 0;
+@borderWidth: 0;
+
+/* Header */
+@headerParagraphDistance: 0.15em;
+
+/* Paragraph */
+
+/* List */
+
+/* Icon */
+@iconDistance: 0.3em;
+
+/* Close Icon */
+
+/*-------------------
+        Types
+--------------------*/
+
+/* Icon Message */
+@iconSize: 2em;
+@iconVerticalAlign: top;
+
+/* Attached */
+@attachedXOffset: 0;
+@attachedYOffset: 0;
+
+/* Floating */
+
+/* Colors */
+
+/* Warning / Positive / Negative / Info */

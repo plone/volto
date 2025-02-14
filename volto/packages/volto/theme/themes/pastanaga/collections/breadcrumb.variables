@@ -1,0 +1,22 @@
+/*******************************
+          Breadcrumb
+*******************************/
+
+/*-------------------
+     Breadcrumb
+--------------------*/
+
+// Pastanaga custom variable
+@breadcrumb-bg: @tealBackground;
+
+@dividerSpacing: @10px;
+@dividerColor: @teal;
+
+/* Coupling */
+
+
+/*-------------------
+       States
+--------------------*/
+
+@activeFontWeight: @normal;

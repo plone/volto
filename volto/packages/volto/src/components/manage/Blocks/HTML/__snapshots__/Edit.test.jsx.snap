@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an edit html block component 1`] = `
+<div>
+  <div
+    class="html-editor"
+    style="position: relative; text-align: left; white-space: pre-wrap; word-break: keep-all; box-sizing: border-box; padding: 0px;"
+  >
+    <textarea
+      autocapitalize="off"
+      autocomplete="off"
+      autocorrect="off"
+      class="npm__react-simple-code-editor__textarea "
+      data-gramm="false"
+      placeholder="<p>Add some HTML here</p>"
+      spellcheck="false"
+      style="box-sizing: inherit; display: inherit; font-family: inherit; font-style: inherit; font-variant-ligatures: inherit; font-weight: inherit; letter-spacing: inherit; line-height: inherit; tab-size: inherit; text-indent: inherit; text-rendering: inherit; text-transform: inherit; white-space: inherit; word-break: inherit; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; margin: 0px; border: 0px; resize: none; background: none; overflow: hidden; padding: 8px 8px 8px 8px;"
+    >
+      &lt;h1&gt;&lt;/h1&gt;
+    </textarea>
+    <pre
+      aria-hidden="true"
+      style="box-sizing: inherit; display: inherit; font-family: inherit; font-style: inherit; font-variant-ligatures: inherit; font-weight: inherit; letter-spacing: inherit; line-height: inherit; tab-size: inherit; text-indent: inherit; text-rendering: inherit; text-transform: inherit; white-space: inherit; word-break: inherit; position: relative; margin: 0px; border: 0px; pointer-events: none; padding: 8px 8px 8px 8px;"
+    >
+      <span
+        class="token tag"
+      >
+        <span
+          class="token tag"
+        >
+          <span
+            class="token punctuation"
+          >
+            &lt;
+          </span>
+          h1
+        </span>
+        <span
+          class="token punctuation"
+        >
+          &gt;
+        </span>
+      </span>
+      <span
+        class="token tag"
+      >
+        <span
+          class="token tag"
+        >
+          <span
+            class="token punctuation"
+          >
+            &lt;/
+          </span>
+          h1
+        </span>
+        <span
+          class="token punctuation"
+        >
+          &gt;
+        </span>
+      </span>
+      <br />
+    </pre>
+    <style
+      type="text/css"
+    >
+      
+/**
+ * Reset the text fill color so that placeholder is visible
+ */
+.npm__react-simple-code-editor__textarea:empty {
+  -webkit-text-fill-color: inherit !important;
+}
+
+/**
+ * IE doesn't support '-webkit-text-fill-color'
+ * So we use 'color: transparent' to make the text transparent on IE
+ * Unlike other browsers, it doesn't affect caret color in IE
+ */
+.npm__react-simple-code-editor__textarea-ie {
+  color: transparent !important;
+}
+
+.npm__react-simple-code-editor__textarea-ie::selection {
+  background-color: #accef7 !important;
+  color: transparent !important;
+}
+
+    </style>
+  </div>
+</div>
+`;

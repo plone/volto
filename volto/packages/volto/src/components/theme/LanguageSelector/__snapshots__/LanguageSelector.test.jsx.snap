@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LanguageSelector renders a language selector component 1`] = `
+<div
+  className="language-selector"
+>
+  <a
+    aria-label="Switch to deutsch"
+    className=""
+    href="/de"
+    onClick={[Function]}
+    title="Deutsch"
+  >
+    Deutsch
+  </a>
+  <a
+    aria-label="Switch to español"
+    className=""
+    href="/es"
+    onClick={[Function]}
+    title="Español"
+  >
+    Español
+  </a>
+</div>
+`;

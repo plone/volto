@@ -1,0 +1,29 @@
+.skiplinks-wrapper {
+  position: absolute;
+  top: -100%;
+
+  a.skiplink {
+    display: inline-block;
+    color: @linkColor;
+
+    &:focus {
+      position: fixed;
+      z-index: 9999;
+      top: 10px;
+      left: 10px;
+      padding: 10px;
+      border: 2px solid @linkColor;
+      background: #fff;
+      outline: 3px solid @linkColor;
+    }
+
+    &:hover {
+      border-color: @linkHoverColor;
+      color: @linkHoverColor;
+    }
+  }
+
+  + .ui.segment {
+    margin-top: 0;
+  }
+}

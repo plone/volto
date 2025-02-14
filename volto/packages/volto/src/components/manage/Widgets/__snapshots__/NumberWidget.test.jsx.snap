@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a number widget component 1`] = `
+Array [
+  <div
+    className="inline field field-wrapper-my-field"
+  >
+    <div
+      className="ui grid"
+    >
+      <div
+        className="stretched row"
+      >
+        <div
+          className="four wide column"
+        >
+          <div
+            className="wrapper"
+          >
+            <label
+              htmlFor="field-my-field"
+              id="fieldset-default-field-label-my-field"
+            >
+              My field
+            </label>
+          </div>
+        </div>
+        <div
+          className="eight wide column"
+        >
+          <div
+            className="ui input"
+          >
+            <input
+              id="field-my-field"
+              max={null}
+              min={null}
+              name="my-field"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              type="number"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  ",",
+]
+`;

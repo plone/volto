@@ -1,0 +1,367 @@
+/*******************************
+         Site Settings
+*******************************/
+
+/*-------------------
+       Fonts
+--------------------*/
+
+@importGoogleFonts: false;
+@fontName          : 'Poppins';
+@fontDisplay: swap;
+
+@toolbarWidth: 80px;
+@toolbarWidthMin: 20px;
+@fullSizeIcon: 36px;
+
+
+/*-------------------
+      Base Sizes
+--------------------*/
+
+
+/*-------------------
+    Border Radius
+--------------------*/
+
+
+/*-------------------
+    Brand Colors
+--------------------*/
+
+@secondaryColor      : @brown;
+
+@lightSecondaryColor : @lightGrey;
+
+
+/*--------------
+  Page Heading
+---------------*/
+
+@headerFontWeight : 500;
+
+
+/*--------------
+   Form Input
+---------------*/
+
+/* This adjusts the default form input across all elements */
+@inputHorizontalPadding : 0;
+
+/* Input Text Color */
+@inputPlaceholderColor: #B8C6C8;
+
+
+/*-------------------
+    Focused Input
+--------------------*/
+
+
+/*-------------------
+        Sizes
+--------------------*/
+
+/*
+  Sizes are all expressed in terms of 14px/em (default em)
+  This ensures these "ratios" remain constant despite changes in EM
+*/
+
+@bigSize         : (19 / 14);
+@hugeSize        : (22 / 14);
+@massiveSize     : (26 / 14);
+
+
+/*-------------------
+        Page
+--------------------*/
+
+@pageBackground      : @white;
+
+
+/*-------------------
+      Paragraph
+--------------------*/
+
+
+/*-------------------
+       Links
+--------------------*/
+
+@linkColor           : @blue;
+
+
+/*-------------------
+    Scroll Bars
+--------------------*/
+@mobileScrollbarWidth: 4px;
+@mobileScrollbarTrackBackground: transparent;
+
+
+/*-------------------
+  Highlighted Text
+--------------------*/
+
+
+/*-------------------
+       Loader
+--------------------*/
+
+
+/*-------------------
+        Grid
+--------------------*/
+
+@columnCount: 12;
+
+/*-------------------
+     Transitions
+--------------------*/
+
+
+/*------------------
+     Animations
+--------------------*/
+
+@sidebarToggleButtonAnimationsDuration: 0.5s;
+@sidebarToggleButtonIterations: 4;
+
+/*-------------------
+     Breakpoints
+--------------------*/
+
+
+/*-------------------
+      Site Colors
+--------------------*/
+
+/*---  Colors  ---*/
+@orange           : #FA5C2A; // Palette: reddishOrange
+@yellow           : #F6A808; // Palette: goldenRod
+@green            : #51AA55; // Palette: darkPastelGreen
+@teal             : #517776; // Palette: slate
+@blue             : #007EB1; // Palette: Plone (tealBlue/cerulean)
+@pink             : #E40166; // Palette: darkHotPink
+@red              : @pink;
+@brown            : #826A6A; // Palette: reddishGrey
+@grey             : #68778D; // Palette: blueishGrey
+@black            : #252525; // Palette: darkishGrey
+
+/*---  Light Colors  ---*/
+@lightOlive       : #C9EAB1; // Palette: lightSage
+@lightGrey        : #878F93;
+
+/*---   Neutrals  ---*/
+@fullBlack        : #000000;
+@offWhite         : #F9FAFB;
+@darkWhite        : #F3F4F5;
+@midWhite         : #DCDDDE;
+@white            : #FFFFFF;
+
+/*--- Colored Backgrounds ---*/
+@redBackground    : #F5C1C1; // Palette: alertError
+@tealBackground   : #EDF1F2; // Palette: Breadcrumbs
+@blueBackground   : #F2F6F8;
+@purpleBackground : #B8C6C8; // Dublin Core Summary
+
+/*--- Colored Headers ---*/
+
+/*--- Colored Text ---*/
+@tealTextColor   : @teal;
+
+/*--- Colored Border ---*/
+// Pastanaga custom borders colors
+@greyBorderColor      : #C7D5D8; // breadcrumbs border
+@lightGreyBorderColor : #EDF1F2; // breadcrumbs background
+
+@sidebarToggleButtonHighlightColor: @grey;
+
+/*-------------------
+     Alpha Colors
+--------------------*/
+
+
+/*-------------------
+       Accents
+--------------------*/
+
+
+/*-------------------
+      Opacities
+--------------------*/
+
+@sidebarToggleButtonNormalOpacity: 0.05;
+
+/*******************************
+           Power-User
+*******************************/
+
+
+/*-------------------
+    Emotive Colors
+--------------------*/
+
+/* Positive */
+
+/* Negative */
+@negativeBackgroundColor : rgb(237, 195, 194);
+@negativeHeaderColor     : @black;
+@negativeTextColor       : @black;
+
+/* Info */
+
+/* Warning */
+@warningBorderColor     : #F3E2AB;
+@warningBackgroundColor : #F3E2AB;
+@warningHeaderColor     : @black;
+@warningTextColor       : @black;
+
+
+/*-------------------
+        Paths
+--------------------*/
+
+
+/*-------------------
+       Em Sizes
+--------------------*/
+
+/* em */
+
+/* rem */
+
+
+/*-------------------
+       Icons
+--------------------*/
+
+
+/*-------------------
+     Neutral Text
+--------------------*/
+
+@selectedTextColor           : @lightGrey;
+@inverteditemlinkcolor       : @white;
+
+/*-------------------
+     Brand Colors
+--------------------*/
+
+@youtubeColor    : #CC181E;
+
+
+/*-------------------
+      Borders
+--------------------*/
+
+@borderColor               : @greyBorderColor;
+
+
+/*-------------------
+    Derived Values
+--------------------*/
+
+/* Loaders Position Offset */
+
+
+/* Rendered Scrollbar Width */
+
+/* Maximum Single Character Glyph Width, aka Capital "W" */
+
+/* Used to match floats with text */
+
+/* Header Spacing */
+
+/* Minimum Mobile Width */
+
+
+/* Positive / Negative Dupes */
+
+
+/* Responsive */
+
+
+/*-------------------
+  Exact Pixel Values
+--------------------*/
+/*
+  These are used to specify exact pixel values in em
+  for things like borders that remain constantly
+  sized as emSize adjusts
+
+  Since there are many more sizes than names for sizes,
+  these are named by their original pixel values.
+
+*/
+
+/* Columns */
+
+
+/*******************************
+             States
+*******************************/
+
+/*-------------------
+      Disabled
+--------------------*/
+
+
+/*-------------------
+        Hover
+--------------------*/
+
+/*---  Shadows  ---*/
+
+/*---  Colors  ---*/
+
+/*---  Emotive  ---*/
+
+/*---  Brand   ---*/
+
+/*---  Dark Tones  ---*/
+
+/*---  Light Tones  ---*/
+
+
+/*-------------------
+        Focus
+--------------------*/
+
+/*---  Colors  ---*/
+
+/*---  Emotive  ---*/
+
+/*---  Brand   ---*/
+
+/*---  Dark Tones  ---*/
+
+/*---  Light Tones  ---*/
+
+
+/*-------------------
+    Down (:active)
+--------------------*/
+
+/*---  Colors  ---*/
+
+/*---  Emotive  ---*/
+
+/*---  Brand   ---*/
+
+/*---  Dark Tones  ---*/
+
+/*---  Light Tones  ---*/
+
+
+/*-------------------
+        Active
+--------------------*/
+
+/*---  Colors  ---*/
+
+/*---  Emotive  ---*/
+
+/*---  Brand   ---*/
+
+/*---  Dark Tones  ---*/
+
+/*---  Light Tones  ---*/

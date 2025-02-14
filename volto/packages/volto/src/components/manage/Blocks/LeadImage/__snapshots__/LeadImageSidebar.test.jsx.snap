@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a Lead Image block Sidebar component 1`] = `
+<div
+  className="ui raised segments"
+>
+  <header
+    className="header pulled"
+  >
+    <h2>
+      Lead Image
+    </h2>
+  </header>
+  <div
+    className="ui secondary segment sidebar-metadata-container"
+  >
+    <img
+      alt="alternate text"
+      className="responsive"
+      fetchpriority="high"
+      height={400}
+      sizes="188px"
+      src="/image.png/@@images/image-1200.png"
+      srcSet="/image.png/@@images/image-400.png 400w, /image.png/@@images/image-1200.png 400w"
+      width={400}
+    />
+  </div>
+  <div
+    className="ui segment form sidebar-image-data"
+  >
+    <div
+      id="TextWidget"
+    />
+    <div
+      className="inline field"
+    >
+      <div
+        className="ui grid"
+      >
+        <div
+          className="row"
+        >
+          <div
+            className="four wide column"
+          >
+            <div
+              className="wrapper"
+            >
+              <label
+                htmlFor="field-align"
+              >
+                Alignment
+              </label>
+            </div>
+          </div>
+          <div
+            className="eight wide column align-tools"
+          >
+            <div
+              className="align-buttons"
+            >
+              <div
+                className="ui buttons"
+              >
+                <button
+                  aria-label="Left"
+                  className="ui basic icon button"
+                  onClick={[Function]}
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "24px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+              <div
+                className="ui buttons"
+              >
+                <button
+                  aria-label="Right"
+                  className="ui basic icon button"
+                  onClick={[Function]}
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "24px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+              <div
+                className="ui buttons"
+              >
+                <button
+                  aria-label="Center"
+                  className="ui active basic icon button"
+                  onClick={[Function]}
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "24px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+              <div
+                className="ui buttons"
+              >
+                <button
+                  aria-label="Full"
+                  className="ui basic icon button"
+                  onClick={[Function]}
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "24px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="accordion ui fluid styled form"
+  >
+    <div
+      className="active title"
+      onClick={[Function]}
+    >
+      Link Settings
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </div>
+    <div
+      className="content active"
+    >
+      <div
+        id="TextWidget"
+      />
+      <div
+        id="CheckboxWidget"
+      />
+    </div>
+  </div>
+</div>
+`;

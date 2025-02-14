@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentsWorkflowModal renders a contents workflow modal component 1`] = `null`;
+
+exports[`ContentsWorkflowModal renders a loading message contents workflow modal component 1`] = `null`;

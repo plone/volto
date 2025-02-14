@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchTags renders a search tags component 1`] = `
+<div>
+  <a
+    className="ui label"
+    href="/search?Subject=Tag 1"
+    onClick={[Function]}
+  >
+    Tag 1
+  </a>
+  <a
+    className="ui label"
+    href="/search?Subject=Tag 2"
+    onClick={[Function]}
+  >
+    Tag 2
+  </a>
+</div>
+`;

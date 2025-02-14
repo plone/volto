@@ -1,0 +1,79 @@
+/*******************************
+             Form
+*******************************/
+
+/*-------------------
+       Elements
+--------------------*/
+
+/* Form */
+
+/* Text */
+
+/* Field */
+
+/* Fields */
+
+/* Form Label */
+@labelFontSize: @14px;
+@labelFontWeight: 500;
+
+/* Input */
+
+/* Select */
+
+/* Text Area */
+
+/* Checkbox */
+
+/* Inline Validation Prompt */
+
+/*-------------------
+        States
+--------------------*/
+
+/* Focus */
+
+/* Input Focus */
+
+/* Text Area Focus */
+
+/* Disabled */
+
+/* Errored Input */
+
+/* AutoFill */
+
+/* Input Error */
+
+/* Dropdown Error */
+
+/* Focused Error */
+
+/* Placeholder Error */
+
+/* Loading Dimmer */
+
+/* Loading Spinner */
+
+
+/*-------------------
+        Types
+--------------------*/
+
+/* Required */
+
+/* Inverted */
+
+
+/*-------------------
+      Variations
+--------------------*/
+
+/* Grouped Fields */
+
+/* Inline */
+
+/*-------------------
+       Groups
+--------------------*/

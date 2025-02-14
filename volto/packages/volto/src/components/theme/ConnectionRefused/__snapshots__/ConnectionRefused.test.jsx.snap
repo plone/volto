@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConnectionRefused renders a not found component 1`] = `
+<div
+  className="ui container view-wrapper"
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "column",
+      "fontFamily": "Helvetica, sans-serif",
+      "fontSize": "20px",
+      "justifyContent": "center",
+    }
+  }
+>
+  <h1
+    style={
+      Object {
+        "lineHeight": "40px",
+        "textAlign": "center",
+      }
+    }
+  >
+    Connection refused
+    <br />
+    <a
+      href="http://localhost:8080/Plone"
+    >
+      http://localhost:8080/Plone
+    </a>
+  </h1>
+  <p
+    className="description"
+    style={
+      Object {
+        "margin": "20px auto",
+        "textAlign": "center",
+        "width": "475px",
+      }
+    }
+  >
+    The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
+  </p>
+</div>
+`;

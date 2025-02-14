@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
+    "strict": true,
+    "noImplicitOverride": true,
+
+    "lib": ["es2022", "dom", "dom.iterable"],
+    "module": "preserve",
+    "noEmit": true,
+
+    "jsx": "react-jsx",
+
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": false,
+
+    "useDefineForClassFields": true
+  },
+  "exclude": ["node_modules", "dist", "coverage", "src/**/*.test.{ts,tsx}"],
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

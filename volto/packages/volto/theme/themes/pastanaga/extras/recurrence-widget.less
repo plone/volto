@@ -1,0 +1,48 @@
+.recurrence-widget {
+  padding-top: 1em;
+}
+
+.recurrence-widget,
+.recurrence-form {
+  .ui.basic.button {
+    &.edit-recurrence,
+    &.remove-recurrence,
+    &.exclude-button,
+    &.include-button,
+    &.save {
+      border: none;
+      -webkit-box-shadow: none !important;
+      box-shadow: none !important;
+
+      &:hover,
+      &:focus {
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+      }
+    }
+
+    &.exclude-button {
+      &:hover,
+      &:focus {
+        color: @darkHotPink!important;
+      }
+    }
+
+    &.include-button {
+      &:hover,
+      &:focus {
+        color: #826a6a !important ;
+      }
+    }
+
+    &.save {
+      color: @teal-blue!important;
+    }
+  }
+
+  /*Excluded dates*/
+  .excluded {
+    color: @grey;
+    text-decoration: line-through;
+  }
+}

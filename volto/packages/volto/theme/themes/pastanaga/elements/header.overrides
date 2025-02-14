@@ -1,0 +1,77 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.basic.segment.header-wrapper {
+  margin-bottom: 0;
+}
+
+.ui.basic.segment .header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .logo-nav-wrapper {
+    display: flex;
+    flex-grow: 2;
+    align-items: center;
+
+    .logo {
+      flex: 0 0 auto;
+    }
+
+    .navigation {
+      &::-webkit-scrollbar {
+        height: 0; /* remove scrollbar space */
+        background: transparent; /* optional: just make scrollbar invisible */
+      }
+
+      /* optional: show position indicator in red */
+      &::-webkit-scrollbar-thumb {
+        background: #f00;
+      }
+
+      @media only screen and (max-width: @largestTabletScreen) {
+        overflow-x: initial;
+      }
+
+      .ui.secondary.pointing.menu {
+      }
+    }
+  }
+
+  @media only screen and (max-width: @largestTabletScreen) {
+    flex-direction: column;
+    align-items: initial;
+
+    .logo-nav-wrapper {
+      align-items: initial;
+      justify-content: space-between;
+    }
+  }
+
+  .tools-search-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 2;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: @huge;
+
+    & > * {
+      display: flex;
+    }
+
+    .tools {
+    }
+
+    .search {
+      form {
+        @media only screen and (min-width: @largestTabletScreen) {
+          padding: 1.7em 0 @relativeBig;
+        }
+      }
+    }
+  }
+}

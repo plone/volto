@@ -1,0 +1,24 @@
+.section-sitemap {
+  #page-sitemap {
+    ul {
+      line-height: 2.5em;
+      list-style-type: none;
+    }
+
+    ul {
+      li {
+        font-weight: @bold;
+
+        ul {
+          li {
+            font-weight: normal;
+          }
+        }
+      }
+    }
+
+    li.with-children {
+      font-weight: @bold;
+    }
+  }
+}

@@ -1,0 +1,76 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.basic.segment.content-area {
+  flex: 1 0 auto; /* IE11 fix, can't barely use  flex: 1; */
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.ui.primary.segment {
+  border-bottom: @4px solid @greyBorderColor;
+  font-size: @16px;
+  font-weight: @headerFontWeight;
+}
+
+.ui.secondary.segment {
+  font-size: @12px;
+}
+
+.ui.discreet.segment {
+  color: @lightGrey;
+  font-size: @12px;
+}
+
+.ui.form.segment {
+  padding: 0;
+
+  .ui.grid > .row {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.ui.actions.segment {
+  border-top: @1px solid @lightGreyBorderColor;
+}
+
+.inverted.segment a.item {
+  color: @white;
+  text-decoration: underline;
+}
+
+.pusher > .ui.basic.segment {
+  padding-bottom: 0;
+}
+
+.ui.secondary.attached.segment {
+  text-transform: uppercase;
+}
+
+.ui.segment.dashed {
+  border: 3px dashed #ccc;
+  box-shadow: none;
+}
+
+.users-control-panel .ui.clearing.segment.actions {
+  display: inline-block;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.users-control-panel table div.item::after {
+  display: none;
+}
+
+.ui.segment.imageborder {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.ui.segment.listing-item {
+  display: flex;
+  align-items: center;
+}

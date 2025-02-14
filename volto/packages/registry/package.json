@@ -1,0 +1,116 @@
+{
+  "name": "@plone/registry",
+  "description": "Add-on and configuration registry for Plone and for JavaScript and TypeScript-based apps.",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "url": "https://plone.org"
+    }
+  ],
+  "funding": "https://github.com/sponsors/plone",
+  "license": "MIT",
+  "version": "2.4.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plone/volto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/volto/issues"
+  },
+  "homepage": "https://plone.org",
+  "keywords": [
+    "volto",
+    "plone",
+    "plone6",
+    "react",
+    "add-ons",
+    "registry",
+    "configuration",
+    "config"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md",
+    "vite-plugin.*"
+  ],
+  "main": "dist/index.js",
+  "exports": {
+    "./package.json": "./package.json",
+    "./addon-registry": {
+      "import": "./dist/addon-registry/addon-registry.js",
+      "default": "./dist/addon-registry/addon-registry.cjs"
+    },
+    "./create-addons-loader": {
+      "import": "./dist/addon-registry/create-addons-loader.js",
+      "default": "./dist/addon-registry/create-addons-loader.cjs"
+    },
+    "./create-theme-loader": {
+      "import": "./dist/addon-registry/create-theme-loader.js",
+      "default": "./dist/addon-registry/create-theme-loader.cjs"
+    },
+    "./create-addons-styles-loader": {
+      "import": "./dist/addon-registry/create-addons-styles-loader.js",
+      "default": "./dist/addon-registry/create-addons-styles-loader.cjs"
+    },
+    "./vite-plugin": {
+      "import": "./vite-plugin.js",
+      "types": "./vite-plugin.d.ts"
+    },
+    "./addons-loader": {
+      "types": "./vite-plugin.d.ts"
+    },
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "build:force": "rm -rf dist && tsup",
+    "check:exports": "attw --pack .",
+    "check-ts": "tsc --project tsconfig.json",
+    "test": "vitest",
+    "test:debug": "vitest --inspect-brk --no-file-parallelism registry",
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "auto-config-loader": "^1.7.7",
+    "crypto-random-string": "3.2.0",
+    "debug": "4.3.2",
+    "dependency-graph": "0.10.0",
+    "glob": "^10.4.5",
+    "tmp": "0.2.1"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.16.4",
+    "@plone/types": "workspace:*",
+    "@types/debug": "^4.1.12",
+    "@types/glob": "^8.1.0",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/tmp": "^0.2.6",
+    "release-it": "16.2.1",
+    "tsconfig": "workspace:*",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3",
+    "vite": "^5.4.9",
+    "vitest": "^2.1.3"
+  }
+}

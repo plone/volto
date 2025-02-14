@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders avatar 1`] = `
+<div
+  className="avatar circular"
+  title="John Smith"
+>
+  <svg
+    height={40}
+    width={40}
+  >
+    <circle
+      cx={20}
+      cy={20}
+      fill="OrangeRed"
+      r={20}
+    />
+    <text
+      dy=".3em"
+      fill="white"
+      fontFamily="Arial"
+      fontSize="20px"
+      textAnchor="middle"
+      x="50%"
+      y="50%"
+    >
+      JS
+    </text>
+  </svg>
+</div>
+`;

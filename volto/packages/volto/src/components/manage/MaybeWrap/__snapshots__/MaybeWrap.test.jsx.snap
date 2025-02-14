@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MaybeWrap /> renders the component not wrapped (condition false) 1`] = `
+<div>
+  Text
+</div>
+`;
+
+exports[`<MaybeWrap /> renders the component wrapped in the specified component 1`] = `
+<div>
+  <div
+    class="the-classname"
+  >
+    Text
+  </div>
+</div>
+`;

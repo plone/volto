@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterList renders filters listing component for search block 1`] = `
+<div
+  className="accordion ui filter-listing"
+>
+  <div
+    className="title filter-list-header"
+    onClick={[Function]}
+  >
+    <div
+      className="filter-list-title"
+    >
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "18px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+      Current filters applied
+      : 
+      1
+    </div>
+    <button
+      className="ui small basic compact icon button"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="trash icon"
+        onClick={[Function]}
+      />
+      Clear filters
+    </button>
+  </div>
+  <div
+    className="content filter-list-content"
+  >
+    <div
+      className="filter-list"
+    >
+      <div>
+        <div
+          className="filter-list-group"
+        >
+          <span
+            className="label-title"
+          >
+            Portal type
+          </span>
+          <div
+            className="ui small label"
+            onClick={[Function]}
+          >
+            Document
+            <i
+              aria-hidden="true"
+              className="delete icon"
+              onClick={[Function]}
+            />
+          </div>
+          <div
+            className="ui small label"
+            onClick={[Function]}
+          >
+            Folder
+            <i
+              aria-hidden="true"
+              className="delete icon"
+              onClick={[Function]}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

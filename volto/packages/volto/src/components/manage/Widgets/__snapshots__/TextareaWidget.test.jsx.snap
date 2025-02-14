@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a textarea widget component 1`] = `
+<div
+  className="inline field textarea field-wrapper-my-field"
+>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="stretched row"
+    >
+      <div
+        className="four wide column"
+      >
+        <div
+          className="wrapper"
+        >
+          <label
+            htmlFor="field-my-field"
+            id="fieldset-default-field-label-my-field"
+          >
+            My field
+          </label>
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
+        <textarea
+          id="field-my-field"
+          name="my-field"
+          onChange={[Function]}
+          onInput={[Function]}
+          rows={3}
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

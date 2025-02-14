@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConditionalLink renders a ConditionalLink component not link 1`] = `
+<h1>
+  Title
+</h1>
+`;
+
+exports[`ConditionalLink renders a ConditionalLink component with link 1`] = `
+<h1>
+  Title
+</h1>
+`;

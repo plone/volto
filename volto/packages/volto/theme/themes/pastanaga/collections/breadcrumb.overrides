@@ -1,0 +1,27 @@
+/*******************************
+        Theme Overrides
+*******************************/
+
+.ui.breadcrumb {
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
+
+  a.section {
+    color: #0074a3;
+  }
+
+  .section.active {
+    color: #4e7372;
+  }
+
+  .home.icon {
+    margin-right: 0;
+  }
+
+  @media only screen and (min-width: @tabletBreakpoint) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
