@@ -1,6 +1,6 @@
 {
   "extends": "tsconfig/react-library.json",
-  "include": ["src", "src/**/*.js"],
+  "include": ["src", "src/**/*.js", "index.ts", "types.d.ts"],
   "exclude": [
     "node_modules",
     "build",

@@ -28,21 +28,18 @@
   "publishConfig": {
     "access": "public"
   },
-  "source": "./src/index.ts",
-  "main": "./src/index.ts",
+  "main": "index.ts",
   "scripts": {
-    "watch": "parcel watch",
-    "build": "parcel build",
-    "build:force": "parcel build --no-cache",
     "test": "vitest",
+    "check-ts": "tsc --project tsconfig.json",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
     "release-alpha": "release-it --preRelease=alpha"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "peerDependenciesMeta": {
     "react-dom": {
@@ -55,14 +52,17 @@
     "@plone/providers": "workspace:*",
     "@plone/registry": "workspace:*",
     "@tanstack/react-query": "^5.59.0",
-    "react-aria": "^3.33.0",
+    "react-aria": "^3.37.0",
     "react-aria-components": "^1.6.0",
     "usehooks-ts": "^3.1.0"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
+    "@testing-library/jest-dom": "6.4.2",
+    "@types/jest-axe": "^3.5.7",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "jest-axe": "^8.0.0",
     "release-it": "17.1.1",
     "tsconfig": "workspace:*",
     "typescript": "5.2.2",

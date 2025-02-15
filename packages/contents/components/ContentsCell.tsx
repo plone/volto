@@ -1,6 +1,6 @@
-import React, { ComponentProps, useRef, useState } from 'react';
+import React, { type ComponentProps, useRef, useState } from 'react';
 import { useDateFormatter } from 'react-aria';
-import { Brain } from '../../../types/src';
+import type { Brain } from '../../types';
 import { Button, Link, MoreoptionsIcon } from '@plone/components';
 import { ItemActionsPopover } from './ItemActionsPopover';
 import { useContentsContext } from '../providers/contents';
