@@ -1,0 +1,8 @@
+{
+  "extends": ["stylelint-config-idiomatic-order"],
+  "plugins": ["stylelint-prettier"],
+  "rules": {
+    "prettier/prettier": true,
+    "order/properties-alphabetical-order": null
+  }
+}

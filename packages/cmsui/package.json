@@ -1,0 +1,53 @@
+{
+  "name": "@plone/cmsui",
+  "private": true,
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "react-router dev",
+    "start": "react-router dev",
+    "build": "react-router build",
+    "start:prod": "react-router-serve ./build/server/index.js",
+    "typecheck": "react-router typegen && tsc",
+    "typegen": "react-router typegen",
+    "release": "release-it"
+  },
+  "dependencies": {
+    "@plone/blocks": "workspace:*",
+    "@plone/client": "workspace:*",
+    "@plone/components": "workspace:*",
+    "@plone/providers": "workspace:*",
+    "@plone/react-router": "workspace:*",
+    "@plone/registry": "workspace:*",
+    "@plone/slots": "workspace:*",
+    "@plone/theming": "workspace:*",
+    "@react-router/node": "^7.1.5",
+    "@react-router/serve": "^7.1.5",
+    "@tanstack/react-query": "^5.59.0",
+    "@tanstack/react-query-devtools": "^5.59.0",
+    "clsx": "^2.1.1",
+    "isbot": "^5.1.17",
+    "react": "^18.2.0",
+    "react-aria-components": "^1.6.0",
+    "react-dom": "^18.2.0",
+    "react-router": "^7.1.5",
+    "tailwind-merge": "^3.0.1",
+    "tailwind-variants": "^0.3.1"
+  },
+  "devDependencies": {
+    "@plone/types": "workspace:*",
+    "@react-router/dev": "^7.1.5",
+    "@tailwindcss/vite": "^4.0.0",
+    "@testing-library/cypress": "10.0.2",
+    "@types/node": "^20",
+    "@types/react": "^18.3.9",
+    "@types/react-dom": "^18.3.0",
+    "cypress": "^13.13.2",
+    "prettier-plugin-tailwindcss": "0.6.11",
+    "react-router-devtools": "1.1.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
+}
