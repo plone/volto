@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { map } from 'lodash';
+import map from 'lodash/map';
 import { defineMessages, useIntl } from 'react-intl';
 import { Form as UiForm, Menu, Segment } from 'semantic-ui-react';
 import { Provider } from 'react-intl-redux';
 import { Form, Field } from '@plone/volto/components/manage/Form';
 import config from '@plone/volto/registry';
 import configureStore from '@plone/volto/store';
+import Api from '@plone/volto/helpers/Api/Api';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
 import {
-  Api,
-  flattenToAppURL,
-  langmap,
   toGettextLang,
   toReactIntlLang,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Utils/Utils';
 import { createBrowserHistory } from 'history';
 
 const messages = defineMessages({
@@ -48,7 +48,9 @@ const TranslationObject = ({
       let lang =
         config.settings.supportedLanguages[Object.keys(locales).length];
       const langFileName = toGettextLang(lang);
-      import('@root/../locales/' + langFileName + '.json').then((locale) => {
+      import(
+        /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
+      ).then((locale) => {
         setLocales({ ...locales, [toReactIntlLang(lang)]: locale.default });
         setLoadingLocale(false);
       });

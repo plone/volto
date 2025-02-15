@@ -1,68 +1,62 @@
-import { Suspense, lazy } from 'react';
+import loadable from '@loadable/component';
 
-const LazyContents = lazy(
+export const Contents = loadable(
   () =>
     import(
       /* webpackChunkName: "Contents" */ '@plone/volto/components/manage/Contents/Contents'
     ),
 );
 
-export const Contents = (props: any) => (
-  <Suspense fallback={null}>
-    <LazyContents {...props} />
-  </Suspense>
-);
-
-export const ContentsRenameModal = lazy(
+export const ContentsRenameModal = loadable(
   () =>
     import(
       /* webpackChunkName: "Contents" */ '@plone/volto/components/manage/Contents/ContentsRenameModal'
     ),
 );
 
-export const ContentsBreadcrumbs = lazy(
+export const ContentsBreadcrumbs = loadable(
   () =>
     import(
       /* webpackChunkName: "Contents" */ '@plone/volto/components/manage/Contents/ContentsBreadcrumbs'
     ),
 );
 
-export const ContentsIndexHeader = lazy(
+export const ContentsIndexHeader = loadable(
   () =>
     import(
       /* webpackChunkName: "Contents" */ '@plone/volto/components/manage/Contents/ContentsIndexHeader'
     ),
 );
 
-export const ContentsItem = lazy(
+export const ContentsItem = loadable(
   () =>
     import(
       /* webpackChunkName: "Contents" */ '@plone/volto/components/manage/Contents/ContentsItem'
     ),
 );
 
-export const ContentsUploadModal = lazy(
+export const ContentsUploadModal = loadable(
   () =>
     import(
       /* webpackChunkName: "Contents" */ '@plone/volto/components/manage/Contents/ContentsUploadModal'
     ),
 );
 
-export const ContentsPropertiesModal = lazy(
+export const ContentsPropertiesModal = loadable(
   () =>
     import(
       /* webpackChunkName: "Contents" */ '@plone/volto/components/manage/Contents/ContentsPropertiesModal'
     ),
 );
 
-export const ContentsWorkflowModal = lazy(
+export const ContentsWorkflowModal = loadable(
   () =>
     import(
       /* webpackChunkName: "Contents" */ '@plone/volto/components/manage/Contents/ContentsWorkflowModal'
     ),
 );
 
-export const ContentsTagsModal = lazy(
+export const ContentsTagsModal = loadable(
   () =>
     import(
       /* webpackChunkName: "Contents" */ '@plone/volto/components/manage/Contents/ContentsTagsModal'

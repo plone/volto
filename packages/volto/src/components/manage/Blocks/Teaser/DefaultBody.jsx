@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Message } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
-import { isInternalURL } from '@plone/volto/helpers';
-import { MaybeWrap } from '@plone/volto/components';
-import { UniversalLink } from '@plone/volto/components';
+import { isInternalURL } from '@plone/volto/helpers/Url/Url';
+import MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 
@@ -22,6 +22,7 @@ const TeaserDefaultTemplate = (props) => {
   const intl = useIntl();
   const href = data.href?.[0];
   const image = data.preview_image?.[0];
+  const url = data.preview_image?.[0]?.['@id'];
 
   const Image = config.getComponent('Image').component;
   const { openExternalLinkInNewTab } = config.settings;
@@ -50,16 +51,22 @@ const TeaserDefaultTemplate = (props) => {
             }
           >
             <div className="teaser-item default">
-              {(href.hasPreviewImage || href.image_field || image) && (
+              {url && !image?.image_field ? (
                 <div className="image-wrapper">
-                  <Image
-                    item={image || href}
-                    imageField={image ? image.image_field : href.image_field}
-                    alt=""
-                    loading="lazy"
-                    responsive={true}
-                  />
+                  <Image src={url} alt="" loading="lazy" responsive={true} />
                 </div>
+              ) : (
+                (href.hasPreviewImage || href.image_field || image) && (
+                  <div className="image-wrapper">
+                    <Image
+                      item={image || href}
+                      imageField={image ? image.image_field : href.image_field}
+                      alt=""
+                      loading="lazy"
+                      responsive={true}
+                    />
+                  </div>
+                )
               )}
               <div className="content">
                 {data?.head_title && (

@@ -3,7 +3,13 @@
  * @module helpers/Content
  */
 
-import { omitBy, mapKeys, pickBy, map, keys, endsWith, find } from 'lodash';
+import omitBy from 'lodash/omitBy';
+import mapKeys from 'lodash/mapKeys';
+import pickBy from 'lodash/pickBy';
+import map from 'lodash/map';
+import keys from 'lodash/keys';
+import endsWith from 'lodash/endsWith';
+import find from 'lodash/find';
 import config from '@plone/volto/registry';
 
 /**
@@ -54,17 +60,14 @@ export function getLayoutFieldname(props) {
  * @function getContentIcon
  * @param {string} type Content type
  * @param {boolean} isFolderish
- * @param {boolean} useQuantaIcons
  * @returns {Object} Icon component
  */
-export function getContentIcon(type, isFolderish, useQuantaIcons) {
+export function getContentIcon(type, isFolderish) {
   const { settings } = config;
-  const { contentIcons, quantaContentIcons } = settings;
+  const { contentIcons } = settings;
 
-  const icons = useQuantaIcons ? quantaContentIcons : contentIcons;
-
-  if (type in icons) return icons[type];
-  return isFolderish ? icons.Folder : icons.File;
+  if (type in contentIcons) return contentIcons[type];
+  return isFolderish ? contentIcons.Folder : contentIcons.File;
 }
 
 /**

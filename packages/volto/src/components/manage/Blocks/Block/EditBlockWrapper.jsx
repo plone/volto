@@ -1,10 +1,14 @@
 import React from 'react';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import {
+  applyBlockDefaults,
+  applyBlockInitialValue,
+  getBlocksFieldname,
   blockHasValue,
   buildStyleClassNamesFromData,
   buildStyleObjectFromData,
-} from '@plone/volto/helpers';
+  buildStyleClassNamesExtenders,
+} from '@plone/volto/helpers/Blocks/Blocks';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
@@ -12,7 +16,7 @@ import isBoolean from 'lodash/isBoolean';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
-import { BlockChooserButton } from '@plone/volto/components';
+import BlockChooserButton from '@plone/volto/components/manage/BlockChooser/BlockChooserButton';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
 
@@ -35,6 +39,7 @@ const EditBlockWrapper = (props) => {
   const { intl, blockProps, draginfo, children } = props;
   const {
     allowedBlocks,
+    showRestricted,
     block,
     blocksConfig,
     selected,
@@ -44,7 +49,7 @@ const EditBlockWrapper = (props) => {
     onInsertBlock,
     onSelectBlock,
     onMutateBlock,
-    data,
+    data: originalData,
     editable,
     properties,
     showBlockChooser,
@@ -52,14 +57,22 @@ const EditBlockWrapper = (props) => {
     contentType,
   } = blockProps;
 
+  const data = applyBlockDefaults({ data: originalData, ...blockProps, intl });
+
   const visible = selected && !hideHandler(data);
 
   const required = isBoolean(data.required)
     ? data.required
     : includes(config.blocks.requiredBlocks, type);
 
-  const classNames = buildStyleClassNamesFromData(data.styles);
-  const style = buildStyleObjectFromData(data.styles);
+  let classNames = buildStyleClassNamesFromData(data.styles);
+  classNames = buildStyleClassNamesExtenders({
+    block,
+    content: properties,
+    data,
+    classNames,
+  });
+  const style = buildStyleObjectFromData(data);
 
   // We need to merge the StyleWrapper styles with the draggable props from b-D&D
   const styleMergedWithDragProps = {
@@ -110,11 +123,27 @@ const EditBlockWrapper = (props) => {
                 if (blockHasValue(data)) {
                   onSelectBlock(onInsertBlock(id, value));
                 } else {
-                  onChangeBlock(id, value);
+                  const blocksFieldname = getBlocksFieldname(properties);
+                  const newFormData = applyBlockInitialValue({
+                    id,
+                    value,
+                    blocksConfig,
+                    formData: {
+                      ...properties,
+                      [blocksFieldname]: {
+                        ...properties[blocksFieldname],
+                        [id]: value || null,
+                      },
+                    },
+                    intl,
+                  });
+                  const newValue = newFormData[blocksFieldname][id];
+                  onChangeBlock(id, newValue);
                 }
               }}
               onMutateBlock={onMutateBlock}
               allowedBlocks={allowedBlocks}
+              showRestricted={showRestricted}
               blocksConfig={blocksConfig}
               size="24px"
               properties={properties}

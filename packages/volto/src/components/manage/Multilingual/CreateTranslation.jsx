@@ -1,12 +1,11 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  changeLanguage,
-  getTranslationLocator,
-  getContent,
-} from '@plone/volto/actions';
-import { flattenToAppURL, toGettextLang } from '@plone/volto/helpers';
+import { changeLanguage } from '@plone/volto/actions/language/language';
+import { getTranslationLocator } from '@plone/volto/actions/translations/translations';
+import { getContent } from '@plone/volto/actions/content/content';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { toGettextLang } from '@plone/volto/helpers/Utils/Utils';
 import config from '@plone/volto/registry';
 
 const CreateTranslation = (props) => {
@@ -34,7 +33,9 @@ const CreateTranslation = (props) => {
       // We change the interface language
       if (config.settings.supportedLanguages.includes(language)) {
         const langFileName = toGettextLang(language);
-        import('@root/../locales/' + langFileName + '.json').then((locale) => {
+        import(
+          /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
+        ).then((locale) => {
           dispatch(changeLanguage(language, locale.default));
         });
       }

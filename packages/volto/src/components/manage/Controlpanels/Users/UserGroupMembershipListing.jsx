@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { cloneDeep, uniqBy } from 'lodash';
+import React, { useEffect, useState, useMemo } from 'react';
+import cloneDeep from 'lodash/cloneDeep';
+import uniqBy from 'lodash/uniqBy';
+import debounce from 'lodash/debounce';
 import { useIntl } from 'react-intl';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 import { Button, Checkbox } from 'semantic-ui-react';
-import { messages, isManager, canAssignGroup } from '@plone/volto/helpers';
-import { listGroups, getUser } from '@plone/volto/actions';
-import { Icon, Toast } from '@plone/volto/components';
-import { updateGroup, listUsers } from '@plone/volto/actions';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import { isManager, canAssignGroup } from '@plone/volto/helpers/User/User';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import { listGroups, updateGroup } from '@plone/volto/actions/groups/groups';
+import { getUser, listUsers } from '@plone/volto/actions/users/users';
 
 import down_key from '@plone/volto/icons/down-key.svg';
 
@@ -114,25 +118,41 @@ const ListingTemplate = ({
     matrix_options = [];
   }
 
+  const debouncedListUsers = useMemo(
+    () =>
+      debounce((query_user, groups_filter, userLimit) => {
+        dispatch(
+          listUsers({
+            search: query_user,
+            groups_filter: groups_filter.map((el) => el.value),
+            limit: userLimit,
+          }),
+        );
+      }, 300),
+    [dispatch],
+  );
+
   useEffect(() => {
     // Get users.
     if (show_users) {
-      dispatch(
-        listUsers({
-          search: query_user,
-          groups_filter: groups_filter.map((el) => el.value),
-          limit: userLimit,
-        }),
-      );
+      debouncedListUsers(query_user, groups_filter, userLimit);
     }
-  }, [dispatch, query_user, groups_filter, show_users, userLimit]);
+  }, [debouncedListUsers, query_user, groups_filter, show_users, userLimit]);
+
+  const debouncedListGroups = useMemo(
+    () =>
+      debounce((query_group) => {
+        dispatch(listGroups(query_group));
+      }, 300),
+    [dispatch],
+  );
 
   useEffect(() => {
     // Get matrix groups.
     if (show_matrix_options) {
-      dispatch(listGroups(query_group));
+      debouncedListGroups(query_group);
     }
-  }, [dispatch, query_group, show_matrix_options, groups_filter]);
+  }, [debouncedListGroups, query_group, show_matrix_options]);
 
   const onSelectOptionHandler = (selectedvalue, checked, singleClick) => {
     singleClick = singleClick ?? false;

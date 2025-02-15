@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useIntl } from 'react-intl';
 import { Checkbox, Form, Input } from 'semantic-ui-react';
 
-import { isEqual } from 'lodash';
+import isEqual from 'lodash/isEqual';
+import debounce from 'lodash/debounce';
 
-import { messages } from '@plone/volto/helpers';
-import { listGroups } from '@plone/volto/actions'; // getRegistry
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import { listGroups } from '@plone/volto/actions/groups/groups'; // getRegistry
 import UserGroupMembershipListing from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipListing';
 
 const UserGroupMembershipMatrix = ({ many_users, many_groups }) => {
@@ -38,12 +39,20 @@ const UserGroupMembershipMatrix = ({ many_users, many_groups }) => {
     });
   }
 
+  const debouncedListGroups = useMemo(
+    () =>
+      debounce((query_group_filter) => {
+        dispatch(listGroups('', query_group_filter));
+      }, 300),
+    [dispatch],
+  );
+
   useEffect(() => {
     // TODO fetch group for at least query_group_filter.length > 1?
     if (!many_groups || (many_groups && query_group_filter.length > 1)) {
-      dispatch(listGroups('', query_group_filter));
+      debouncedListGroups(query_group_filter);
     }
-  }, [dispatch, many_groups, query_group_filter]);
+  }, [debouncedListGroups, many_groups, query_group_filter]);
 
   const onReset = (event) => {
     // event.preventDefault();
@@ -180,18 +189,20 @@ const UserGroupMembershipMatrix = ({ many_users, many_groups }) => {
           </Form>
           {(!many_groups || query_group_filter.length > 1) &&
             filter_options?.map((filter_option) => (
-              <Form.Field>
-                <Checkbox
-                  name={`filter_option_${filter_option.value}`}
-                  key={filter_option.value}
-                  title={filter_option.label}
-                  label={filter_option.label}
-                  defaultChecked={false}
-                  onChange={(event, { checked }) => {
-                    onSelectOptionHandler(filter_option, checked);
-                  }}
-                />
-              </Form.Field>
+              <React.Fragment key={filter_option.value}>
+                <Form.Field>
+                  <Checkbox
+                    name={`filter_option_${filter_option.value}`}
+                    key={filter_option.value}
+                    title={filter_option.label}
+                    label={filter_option.label}
+                    defaultChecked={false}
+                    onChange={(event, { checked }) => {
+                      onSelectOptionHandler(filter_option, checked);
+                    }}
+                  />
+                </Form.Field>
+              </React.Fragment>
             ))}
         </div>
         <UserGroupMembershipListing

@@ -2,7 +2,7 @@ import React from 'react';
 import { MapsSchema } from './schema';
 import { useIntl, defineMessages } from 'react-intl';
 import globeSVG from '@plone/volto/icons/globe.svg';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import { Segment } from 'semantic-ui-react';
 
@@ -18,7 +18,8 @@ const messages = defineMessages({
 });
 
 const MapsSidebar = (props) => {
-  const { data, block, onChangeBlock, navRoot, contentType } = props;
+  const { data, block, blocksErrors, onChangeBlock, navRoot, contentType } =
+    props;
   const intl = useIntl();
   const schema = MapsSchema({ ...props, intl });
 
@@ -44,6 +45,7 @@ const MapsSidebar = (props) => {
           block={block}
           navRoot={navRoot}
           contentType={contentType}
+          errors={blocksErrors}
         />
       )}
     </>

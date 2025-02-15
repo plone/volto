@@ -8,7 +8,7 @@ import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { parse as parseUrl } from 'url';
-import { keys } from 'lodash';
+import keys from 'lodash/keys';
 import locale from 'locale';
 import { detect } from 'detect-browser';
 import path from 'path';
@@ -21,22 +21,22 @@ import debug from 'debug';
 import routes from '@root/routes';
 import config from '@plone/volto/registry';
 
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import Html from '@plone/volto/helpers/Html/Html';
+import Api from '@plone/volto/helpers/Api/Api';
+import { persistAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
 import {
-  flattenToAppURL,
-  Html,
-  Api,
-  persistAuthToken,
   toBackendLang,
   toGettextLang,
   toReactIntlLang,
-} from '@plone/volto/helpers';
-import { changeLanguage } from '@plone/volto/actions';
+} from '@plone/volto/helpers/Utils/Utils';
+import { changeLanguage } from '@plone/volto/actions/language/language';
 
 import userSession from '@plone/volto/reducers/userSession/userSession';
 
 import ErrorPage from '@plone/volto/error';
 
-import languages from '@plone/volto/constants/Languages';
+import languages from '@plone/volto/constants/Languages.cjs';
 
 import configureStore from '@plone/volto/store';
 import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
@@ -46,7 +46,9 @@ let locales = {};
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
     const langFileName = toGettextLang(lang);
-    import('@root/../locales/' + langFileName + '.json').then((locale) => {
+    import(
+      /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
+    ).then((locale) => {
       locales = { ...locales, [toReactIntlLang(lang)]: locale.default };
     });
   });
@@ -272,50 +274,48 @@ server.get('/*', (req, res) => {
         });
       }
 
+      const sendHtmlResponse = (
+        res,
+        statusCode,
+        extractor,
+        markup,
+        store,
+        req,
+        config,
+      ) => {
+        res.status(statusCode).send(
+          `<!doctype html>
+        ${renderToString(
+          <Html
+            extractor={extractor}
+            markup={markup}
+            store={store}
+            criticalCss={readCriticalCss(req)}
+            apiPath={res.locals.detectedHost || config.settings.apiPath}
+            publicURL={res.locals.detectedHost || config.settings.publicURL}
+          />,
+        )}
+      `,
+        );
+      };
+
       if (context.url) {
         res.redirect(flattenToAppURL(context.url));
       } else if (context.error_code) {
         res.set({
           'Cache-Control': 'no-cache',
         });
-
-        res.status(context.error_code).send(
-          `<!doctype html>
-              ${renderToString(
-                <Html
-                  extractor={extractor}
-                  markup={markup}
-                  store={store}
-                  extractScripts={
-                    config.settings.serverConfig.extractScripts?.errorPages ||
-                    process.env.NODE_ENV !== 'production'
-                  }
-                  criticalCss={readCriticalCss(req)}
-                  apiPath={res.locals.detectedHost || config.settings.apiPath}
-                  publicURL={
-                    res.locals.detectedHost || config.settings.publicURL
-                  }
-                />,
-              )}
-            `,
+        sendHtmlResponse(
+          res,
+          context.error_code,
+          extractor,
+          markup,
+          store,
+          req,
+          config,
         );
       } else {
-        res.status(200).send(
-          `<!doctype html>
-              ${renderToString(
-                <Html
-                  extractor={extractor}
-                  markup={markup}
-                  store={store}
-                  criticalCss={readCriticalCss(req)}
-                  apiPath={res.locals.detectedHost || config.settings.apiPath}
-                  publicURL={
-                    res.locals.detectedHost || config.settings.publicURL
-                  }
-                />,
-              )}
-            `,
-        );
+        sendHtmlResponse(res, 200, extractor, markup, store, req, config);
       }
     }, errorHandler)
     .catch(errorHandler);

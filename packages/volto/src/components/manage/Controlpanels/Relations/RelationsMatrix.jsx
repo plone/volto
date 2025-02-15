@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { capitalize, find } from 'lodash';
+import capitalize from 'lodash/capitalize';
+import find from 'lodash/find';
 import { compose } from 'redux';
 import { useSelector, useDispatch } from 'react-redux';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -15,13 +16,14 @@ import {
   Tab,
 } from 'semantic-ui-react';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-import { messages } from '@plone/volto/helpers';
-import { Icon, Toast } from '@plone/volto/components';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import {
   getRelationStats,
   queryRelations,
-  rebuildRelations,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/relations/relations';
+import { rebuildRelations } from '@plone/volto/actions/relations/rebuild';
 import RelationsListing from '@plone/volto/components/manage/Controlpanels/Relations/RelationsListing';
 import BrokenRelations from '@plone/volto/components/manage/Controlpanels/Relations/BrokenRelations';
 import helpSVG from '@plone/volto/icons/help.svg';
@@ -414,7 +416,7 @@ const RelationsMatrix = (props) => {
                           <Popup
                             trigger={
                               <a
-                                href="https://6.docs.plone.org/volto/recipes/widget.html#restricting-potential-targets"
+                                href="https://6.docs.plone.org/volto/development/widget.html#widget-relation-field-label"
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >

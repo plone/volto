@@ -12,20 +12,16 @@ import { createPortal } from 'react-dom';
 import { injectIntl } from 'react-intl';
 import qs from 'query-string';
 
-import {
-  ContentMetadataTags,
-  Comments,
-  Tags,
-  Toolbar,
-} from '@plone/volto/components';
-import { listActions, getContent } from '@plone/volto/actions';
-import {
-  BodyClass,
-  getBaseUrl,
-  flattenToAppURL,
-  getLayoutFieldname,
-  hasApiExpander,
-} from '@plone/volto/helpers';
+import ContentMetadataTags from '@plone/volto/components/theme/ContentMetadataTags/ContentMetadataTags';
+import Comments from '@plone/volto/components/theme/Comments/Comments';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import { listActions } from '@plone/volto/actions/actions/actions';
+import { getContent } from '@plone/volto/actions/content/content';
+import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
+import { getBaseUrl, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { getLayoutFieldname } from '@plone/volto/helpers/Content/Content';
+import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
+import { AlternateHrefLangs } from '@plone/volto/components/theme/AlternateHrefLangs/AlternateHrefLangs';
 
 import config from '@plone/volto/registry';
 import SlotRenderer from '../SlotRenderer/SlotRenderer';
@@ -237,8 +233,9 @@ class View extends Component {
       this.getViewByLayout() || this.getViewByType() || this.getViewDefault();
 
     return (
-      <div id="view">
+      <div id="view" tabIndex="-1">
         <ContentMetadataTags content={this.props.content} />
+        <AlternateHrefLangs content={this.props.content} />
         {/* Body class if displayName in component is set */}
         <BodyClass
           className={
@@ -256,18 +253,6 @@ class View extends Component {
           history={this.props.history}
         />
         <SlotRenderer name="belowContent" content={this.props.content} />
-        {config.settings.showTags &&
-          this.props.content.subjects &&
-          this.props.content.subjects.length > 0 && (
-            <Tags tags={this.props.content.subjects} />
-          )}
-        {/* Add opt-in social sharing if required, disabled by default */}
-        {/* In the future this might be parameterized from the app config */}
-        {/* <SocialSharing
-          url={typeof window === 'undefined' ? '' : window.location.href}
-          title={this.props.content.title}
-          description={this.props.content.description || ''}
-        /> */}
         {this.props.content.allow_discussion && (
           <Comments pathname={this.props.pathname} />
         )}
