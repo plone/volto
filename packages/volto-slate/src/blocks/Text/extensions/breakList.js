@@ -1,18 +1,17 @@
 import { Editor, Range, Transforms } from 'slate';
 import config from '@plone/volto/registry';
-import {
-  isCursorAtBlockEnd,
-  splitEditorInTwoFragments,
-  setEditorContent,
-  createAndSelectNewBlockAfter,
-  getCurrentListItem,
-  createEmptyParagraph,
-} from '@plone/volto-slate/utils';
+import { isCursorAtBlockEnd } from '@plone/volto-slate/utils/selection';
+import { splitEditorInTwoFragments } from '@plone/volto-slate/utils/ops';
+import { setEditorContent } from '@plone/volto-slate/utils/editor';
+import { createAndSelectNewBlockAfter } from '@plone/volto-slate/utils/volto-blocks';
+import { getCurrentListItem } from '@plone/volto-slate/utils/lists';
+import { createEmptyParagraph } from '@plone/volto-slate/utils/blocks';
 
 /**
  * Handles `Enter` key on empty and non-empty list items.
  *
  * @param {Editor} editor The editor which should be modified by this extension
+ * @param {Object} intl intl object.
  * with a new version of the `insertBreak` method of the Slate editor.
  *
  * @description If the selection does not exist or is expanded, handle with the
@@ -22,7 +21,7 @@ import {
  * text cursor and then split the editor in two fragments, and convert them to
  * separate Slate Text blocks, based on the selection.
  */
-export const breakList = (editor) => {
+export const breakList = (editor, intl) => {
   const { insertBreak } = editor;
 
   editor.insertBreak = () => {
@@ -35,6 +34,8 @@ export const breakList = (editor) => {
 
     const { slate } = config.settings;
     const { anchor } = editor.selection;
+    const blockProps = editor.getBlockProps();
+    const detached = blockProps.detached;
 
     const ref = Editor.rangeRef(editor, editor.selection, {
       affinity: 'inward',
@@ -65,8 +66,7 @@ export const breakList = (editor) => {
       return; // applies default behaviour, as defined in insertBreak.js extension
     }
 
-    if (parent) {
-      const blockProps = editor.getBlockProps();
+    if (parent && !detached) {
       const { data } = blockProps;
       // Don't add new block if not allowed
       if (data?.disableNewBlocks) {
@@ -77,22 +77,36 @@ export const breakList = (editor) => {
     Editor.deleteBackward(editor, { unit: 'line' });
     // also account for empty nodes [{text: ''}]
     if (Editor.isEmpty(editor, parent)) {
-      createAndSelectNewBlockAfter(editor, [createEmptyParagraph()]);
-      Transforms.removeNodes(editor, { at: ref.current });
+      if (detached) {
+        Transforms.removeNodes(editor, { at: ref.current });
+
+        Transforms.insertNodes(editor, createEmptyParagraph(), {
+          at: [editor.children.length],
+        });
+        Transforms.select(editor, Editor.end(editor, []));
+      } else {
+        createAndSelectNewBlockAfter(editor, [createEmptyParagraph()], intl);
+        Transforms.removeNodes(editor, { at: ref.current });
+      }
       return true;
     }
 
     Transforms.removeNodes(editor, { at: ref.current });
 
     if (isCursorAtBlockEnd(editor)) {
-      createAndSelectNewBlockAfter(editor, [createEmptyParagraph()]);
+      if (detached) {
+        Editor.insertNode(editor, createEmptyParagraph());
+      } else {
+        createAndSelectNewBlockAfter(editor, [createEmptyParagraph()], intl);
+      }
       return true;
     }
 
-    const [top, bottom] = splitEditorInTwoFragments(editor, ref.current);
-    setEditorContent(editor, top);
-    createAndSelectNewBlockAfter(editor, bottom);
-
+    if (!detached) {
+      const [top, bottom] = splitEditorInTwoFragments(editor, ref.current);
+      setEditorContent(editor, top);
+      createAndSelectNewBlockAfter(editor, bottom, intl);
+    }
     return true;
   };
 

@@ -1,4 +1,4 @@
-# @plone/volto-types Release Notes
+# @plone/types Release Notes
 
 <!-- Do *NOT* add new change log entries to this file.
      Instead create a file in the news directory.
@@ -7,6 +7,114 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 1.3.2 (2025-02-08)
+
+### Internal
+
+- Update TS version. @sneridagh [#6641](https://github.com/plone/volto/issues/6641)
+- Remove hard dependencies on react-intl and history in @plone/types @sneridagh [#6728](https://github.com/plone/volto/issues/6728)
+
+## 1.3.1 (2025-01-31)
+
+### Bugfix
+
+- Remove `hasWorkingCopySupport` setting. @davisagli [#6393](https://github.com/plone/volto/issues/6393)
+
+## 1.3.0 (2025-01-24)
+
+### Feature
+
+- Added typings for the route registry. @sneridagh [#6600](https://github.com/plone/volto/issues/6600)
+
+## 1.2.0 (2024-12-17)
+
+### Feature
+
+- Added the typing for the new `cssLayers` configuration object setting. @sneridagh [#6539](https://github.com/plone/volto/issues/6539)
+
+## 1.1.0 (2024-12-12)
+
+### Feature
+
+- Added block category type. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+
+## 1.0.0 (2024-10-31)
+
+### Internal
+
+- Release 1.0.0 @sneridagh
+
+## 1.0.0-alpha.22 (2024-10-30)
+
+### Feature
+
+- `StyleDefinitions` in types. @sneridagh [#6445](https://github.com/plone/volto/issues/6445)
+
+## 1.0.0-alpha.21 (2024-10-18)
+
+### Bugfix
+
+- Some improvements and fixes in blocks and settings types. @sneridagh [#6412](https://github.com/plone/volto/issues/6412)
+
+### Internal
+
+- Update typescript and vitest everywhere @sneridagh [#6407](https://github.com/plone/volto/issues/6407)
+
+## 1.0.0-alpha.20 (2024-10-08)
+
+### Bugfix
+
+- Fixed types for image fields and BlocksFormData @pnicolli @deodorhunter [#6382](https://github.com/plone/volto/issues/6382)
+
+## 1.0.0-alpha.19 (2024-07-30)
+
+### Feature
+
+- Added `errors` shape to the `BlockEditProps`.
+  Added typings for `Utilities` registry. @sneridagh [#6161](https://github.com/plone/volto/issues/6161)
+
+## 1.0.0-alpha.18 (2024-07-26)
+
+### Feature
+
+- Change the types in `common.d.ts` to interfaces, to make them extendable. @tomschall [#6191](https://github.com/plone/volto/issues/6191)
+
+## 1.0.0-alpha.17 (2024-06-27)
+
+### Internal
+
+- Upgrade `react-intl` to maximum 3.x series to fix a bundling issue.
+  Rename missing js file that must be jsx. @sneridagh [#6128](https://github.com/plone/volto/issues/6128)
+
+## 1.0.0-alpha.16 (2024-06-13)
+
+### Breaking
+
+- Remove unused `config.settings.containerBlockTypes` @sneridagh [#6099](https://github.com/plone/volto/issues/6099)
+
+## 1.0.0-alpha.15 (2024-06-13)
+
+### Bugfix
+
+- Better `styleClassNameExtenders` typings @sneridagh [#6095](https://github.com/plone/volto/issues/6095)
+
+## 1.0.0-alpha.14 (2024-06-06)
+
+### Breaking
+
+- The `GetSlotArgs` type no longer supports `pathname` as a key, instead using `location`. @sneridagh [#6063](https://github.com/plone/volto/issues/6063)
+
+### Bugfix
+
+- BlockExtension as Interface @sneridagh [#6049](https://github.com/plone/volto/issues/6049)
+- Improved image typings @pnicolli [#6064](https://github.com/plone/volto/issues/6064)
+
+## 1.0.0-alpha.13 (2024-05-23)
+
+### Feature
+
+- New Brain type and new ArrayElement utility @pnicolli [#6029](https://github.com/plone/volto/issues/6029)
 
 ## 1.0.0-alpha.12 (2024-05-15)
 

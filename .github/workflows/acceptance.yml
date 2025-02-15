@@ -9,50 +9,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x, 22.x]
     steps:
       - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 9
-          # We don't want to install until later,
-          # when the cache and Cypress are in place
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -68,18 +32,18 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/basic/**/*.js
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend
+            make ci-acceptance-backend-start
+            make acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -93,48 +57,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x, 22.x]
     steps:
       - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 9
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -150,18 +80,18 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/content/**/*.js
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend
+            make ci-acceptance-backend-start
+            make acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -175,48 +105,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x, 22.x]
     steps:
       - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 9
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -232,18 +128,18 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/controlpanels/**/*.js
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend
+            make ci-acceptance-backend-start
+            make acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -257,48 +153,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x, 22.x]
     steps:
       - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 9
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -314,18 +176,18 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/blocks/*.js
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend
+            make ci-acceptance-backend-start
+            make acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -339,48 +201,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x, 22.x]
     steps:
       - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 9
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -396,18 +224,18 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/blocks/listing/*.js
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend
+            make ci-acceptance-backend-start
+            make acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -421,48 +249,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x, 22.x]
     steps:
       - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 9
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -478,18 +272,18 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/volto-slate/**/*.js
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend
+            make ci-acceptance-backend-start
+            make acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -502,48 +296,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18.x]
+        node-version: [22.x]
     steps:
       - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 9
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -559,18 +319,18 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/basic/**/*.js
           start: |
-            make start-test-acceptance-server-5
-            make start-test-acceptance-frontend
+            make plone5-acceptance-backend-start
+            make acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -584,48 +344,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18.x]
+        node-version: [22.x]
     steps:
       - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 9
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
 
       - name: Cypress Coresandbox Acceptance tests
         uses: cypress-io/github-action@v6
@@ -641,93 +367,22 @@ jobs:
           browser: chrome
           spec: cypress/tests/coresandbox/**/*.js
           start: |
-            make start-test-acceptance-server-coresandbox
-            make start-test-acceptance-frontend-coresandbox
+            make coresandbox-acceptance-backend-start
+            make coresandbox-acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
           path: packages/volto/cypress/videos
-
-  # guillotina:
-  #   if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-  #   name: Guillotina
-  #   runs-on: ubuntu-latest
-  #   timeout-minutes: 35
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       node-version: [18.x]
-  #   steps:
-  #     - uses: actions/checkout@v4
-
-  #     # node setup
-  #     - name: Use Node.js ${{ matrix.node-version }}
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: ${{ matrix.node-version }}
-
-  #     - uses: pnpm/action-setup@v3
-  #       name: Install pnpm
-  #       with:
-  #         version: 9
-  #         run_install: false
-
-  #     - name: Get pnpm store directory
-  #       shell: bash
-  #       run: |
-  #         echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-  #     - uses: actions/cache@v4
-  #       name: Setup pnpm cache
-  #       with:
-  #         path: ${{ env.STORE_PATH }}
-  #         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-pnpm-store-
-
-  #     - run: pnpm i
-
-  #     - name: Cypress acceptance tests
-  #       uses: cypress-io/github-action@v6
-  #       env:
-  #         BABEL_ENV: production
-  #         CYPRESS_API: guillotina
-  #         CYPRESS_RETRIES: 2
-  #         # Recommended: pass the GitHub token lets this action correctly
-  #         # determine the unique run id necessary to re-run the checks
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #       with:
-  #         install: false
-  #         working-directory: packages/volto
-  #         browser: chrome
-  #         spec: cypress/tests/guillotina/**/*.js
-  #         start: |
-  #           make start-test-acceptance-server-guillotina
-  #           make start-test-acceptance-frontend-guillotina
-  #         wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:8081 http://127.0.0.1:3000'
-
-  #     # Upload Cypress screenshots
-  #     - uses: actions/upload-artifact@v1
-  #       if: failure()
-  #       with:
-  #         name: cypress-screenshots
-  #         path: packages/volto/cypress/screenshots
-  #     # Upload Cypress videos
-  #     - uses: actions/upload-artifact@v1
-  #       if: failure()
-  #       with:
-  #         name: cypress-videos
-  #         path: packages/volto/cypress/videos
 
   multilingual:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -737,48 +392,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18.x]
+        node-version: [22.x]
     steps:
       - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 9
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -794,18 +415,18 @@ jobs:
           browser: chrome
           spec: cypress/tests/multilingual/**/*.js
           start: |
-            make start-test-acceptance-server-multilingual
-            make start-test-acceptance-frontend-multilingual
+            make multilingual-acceptance-backend-start
+            make multilingual-acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -819,73 +440,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18.x]
+        node-version: [22.x]
         # python-version: [3.7]
     steps:
       - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 9
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
-
-      # # python setup (temporary, while p.a.iterate changes are in a PR)
-      # - name: Set up Python ${{ matrix.python-version }}
-      #   uses: actions/setup-python@v1
-      #   with:
-      #     python-version: ${{ matrix.python-version }}
-
-      # # python cache
-      # - uses: actions/cache@v1
-      #   with:
-      #     path: ~/.cache/pip
-      #     key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-pip-
-      # # python install
-      # - run: pip install virtualenv
-      # - name: pip install
-      #   working-directory: api
-      #   run: pip install -r requirements.txt
-      # - name: buildout
-      #   working-directory: api
-      #   run: buildout
-      #   env:
-      #     CI: true
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -901,18 +464,18 @@ jobs:
           browser: chrome
           spec: cypress/tests/workingCopy/**/*.js
           start: |
-            make start-test-acceptance-server-workingcopy
-            make start-test-acceptance-frontend-workingcopy
+            make working-copy-acceptance-backend-start
+            make working-copy-acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -926,7 +489,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x, 22.x]
     env:
       generator-directory: ./packages/generator-volto
       project-directory: ./my-volto-app
@@ -934,47 +497,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 9
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Build dependencies
-        run: pnpm build:deps
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
 
       # Generator own tests
       - name: Generator tests
@@ -994,6 +520,9 @@ jobs:
 
       - name: Install yalc
         run: npm -g install yalc
+
+      - name: Build dependencies
+        run: make build-deps
 
       - name: Install a yalc'ed version of the current Volto in the project - publish
         run: |
@@ -1040,19 +569,19 @@ jobs:
           browser: chrome
           spec: cypress/tests/minimal/**/*.js
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend-project
+            make ci-acceptance-backend-start
+            make project-acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: packages/volto/cypress/screenshots
 
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -1063,56 +592,22 @@ jobs:
         if: success()
         working-directory: ${{env.generator-directory}}
 
-  seamless:
+  deployment:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    name: Seamless Mode
+    name: Deployment Mode
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18.x]
+        node-version: [22.x]
     steps:
       - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 9
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -1129,74 +624,40 @@ jobs:
           spec: cypress/tests/core/basic/**/*.js
           config: baseUrl=http://localhost
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend-seamless
-            make start-test-acceptance-webserver-seamless
+            make ci-acceptance-backend-start
+            make deployment-acceptance-frontend-prod-start
+            make deployment-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000 http://localhost'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos-seamless
           path: packages/volto/cypress/videos
 
-  multilingualseamless:
+  multilingual-deployment:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    name: Multilingual in Seamless Mode
+    name: Multilingual in Deployment Mode
     runs-on: ubuntu-latest
     timeout-minutes: 25
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18.x]
+        node-version: [22.x]
     steps:
       - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 9
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -1213,20 +674,68 @@ jobs:
           spec: cypress/tests/multilingual/**/*.js
           config: baseUrl=http://localhost
           start: |
-            make start-test-acceptance-server-seamless-multilingual
-            make start-test-acceptance-frontend-seamless-multilingual
-            make start-test-acceptance-webserver-seamless
+            make deployment-multilingual-acceptance-backend-start
+            make deployment-multilingual-acceptance-frontend-prod-start
+            make deployment-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000 http://localhost'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
           path: packages/volto/cypress/videos
+
+  seven:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    runs-on: ubuntu-latest
+    name: Seven
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [22.x]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v6
+        env:
+          BABEL_ENV: production
+          CYPRESS_RETRIES: 2
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          install: false
+          working-directory: packages/seven
+          browser: chrome
+          spec: cypress/tests/core/basic/**/*.cy.ts
+          start: |
+            make ci-acceptance-backend-start
+            make acceptance-frontend-prod-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: packages/seven/cypress/screenshots
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos
+          path: packages/seven/cypress/videos

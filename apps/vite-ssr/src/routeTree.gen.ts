@@ -37,14 +37,23 @@ const IndexRoute = IndexImport.update({
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
     '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
       preLoaderRoute: typeof SplatImport
       parentRoute: typeof rootRoute
     }
     '/error': {
+      id: '/error'
+      path: '/error'
+      fullPath: '/error'
       preLoaderRoute: typeof ErrorImport
       parentRoute: typeof rootRoute
     }
@@ -53,10 +62,72 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([
-  IndexRoute,
-  SplatRoute,
-  ErrorRoute,
-])
+export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/error': typeof ErrorRoute
+}
+
+export interface FileRoutesByTo {
+  '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/error': typeof ErrorRoute
+}
+
+export interface FileRoutesById {
+  __root__: typeof rootRoute
+  '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/error': typeof ErrorRoute
+}
+
+export interface FileRouteTypes {
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/$' | '/error'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/$' | '/error'
+  id: '__root__' | '/' | '/$' | '/error'
+  fileRoutesById: FileRoutesById
+}
+
+export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
+  SplatRoute: typeof SplatRoute
+  ErrorRoute: typeof ErrorRoute
+}
+
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  SplatRoute: SplatRoute,
+  ErrorRoute: ErrorRoute,
+}
+
+export const routeTree = rootRoute
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>()
 
 /* prettier-ignore-end */
+
+/* ROUTE_MANIFEST_START
+{
+  "routes": {
+    "__root__": {
+      "filePath": "__root.tsx",
+      "children": [
+        "/",
+        "/$",
+        "/error"
+      ]
+    },
+    "/": {
+      "filePath": "index.tsx"
+    },
+    "/$": {
+      "filePath": "$.tsx"
+    },
+    "/error": {
+      "filePath": "error.tsx"
+    }
+  }
+}
+ROUTE_MANIFEST_END */

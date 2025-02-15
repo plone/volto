@@ -8,6 +8,44 @@
 
 <!-- towncrier release notes start -->
 
+## 3.8.2 (2025-02-08)
+
+### Internal
+
+- Test with Plone 6.1.0rc1. @sneridagh [#6682](https://github.com/plone/volto/issues/6682)
+
+## 3.8.1 (2024-11-05)
+
+### Internal
+
+- Improve packaging. @sneridagh 
+
+## 3.8.0 (2024-11-05)
+
+### Internal
+
+- Improve exports in `@plone/registry`. Adapt its detection in i18n script. @sneridagh [#6461](https://github.com/plone/volto/issues/6461)
+
+## 3.7.0 (2024-10-27)
+
+### Feature
+
+- Support for the new `@plone/registry` ESM format. @sneridagh [#6399](https://github.com/plone/volto/issues/6399)
+
+### Documentation
+
+- Added the configuration for VSCode not to reformat Markdown and MyST files. @aadityaforwork [#6354](https://github.com/plone/volto/issues/6354)
+
+## 3.6.2 (2024-06-06)
+
+### Bugfix
+
+- 'Fix `poToJson` script, making it support `volto.config.js` @sneridagh [#6073](https://github.com/plone/volto/issues/6073)
+
+### Documentation
+
+- Improve comments @sneridagh [#6072](https://github.com/plone/volto/issues/6072)
+
 ## 3.6.1 (2024-03-18)
 
 ### Bugfix

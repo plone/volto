@@ -1,9 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router';
 import * as React from 'react';
+import { createFileRoute } from '@tanstack/react-router';
 import { flattenToAppURL } from '../utils';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { usePloneClient } from '@plone/providers';
-import { Breadcrumbs, RenderBlocks } from '@plone/components';
+import { Breadcrumbs } from '@plone/components';
+import RenderBlocks from '@plone/blocks/RenderBlocks/RenderBlocks';
 import config from '@plone/registry';
 
 const expand = ['breadcrumbs', 'navigation'];
@@ -23,6 +24,7 @@ function IndexComponent() {
   const { data } = useSuspenseQuery(
     getContentQuery({ path: flattenToAppURL('/'), expand }),
   );
+
   return (
     <>
       <Breadcrumbs

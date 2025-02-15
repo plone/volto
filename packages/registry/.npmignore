@@ -2,7 +2,9 @@ news
 towncrier.toml
 .changelog.draft
 node_modules/
-.parcel-cache
-.parcelrc
 .release-it.json
 .eslintrc.js
+lib
+bin
+docs
+include

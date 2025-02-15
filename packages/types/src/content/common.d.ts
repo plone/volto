@@ -19,26 +19,26 @@ export interface Expanders {
   workflow: WorkflowResponse;
 }
 
-export type ContainedItem = {
+export interface ContainedItem {
   '@id': string;
   '@type': string;
   description: string;
-  image_field: null;
-  image_scales: null;
+  image_field: string;
+  image_scales: Record<string, Image> | null;
   review_state: string;
   title: string;
-};
+}
 
-export type RelatedItem = {
+export interface RelatedItem {
   '@id': string;
   '@type': string;
   UID: string;
   description: string;
-  image_field: unknown;
-  image_scales: unknown;
+  image_field: string;
+  image_scales: Record<string, Image> | null;
   review_state: string;
   title: string;
-};
+}
 
 export type ImageScale = {
   download: string;
@@ -46,7 +46,7 @@ export type ImageScale = {
   width: number;
 };
 
-export type PreviewImage = {
+export type Image = {
   'content-type': string;
   download: string;
   filename: string;

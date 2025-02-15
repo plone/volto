@@ -177,7 +177,16 @@ contentMetadataTagsImageField
     The OpenGraph image that will represent this content item, will be used in the metadata HEAD tag as og:image for SEO purposes. Defaults to image. See the OpenGraph Protocol for more details.
 
 hasWorkingCopySupport
-    This setting will enable working copy support in your site. You need to install the `plone.app.iterate` add-on in your Plone site in order to make it working.
+    ```{versionremoved} Volto 18.8.0
+    This setting is unnecessary since Volto 18.8.0.
+    Working copy support is now based on whether the `plone.app.iterate` add-on is installed in the backend.
+    ```
+
+    For Plone sites using a Volto version prior to 18.8.0, this setting enables working copy support.
+    
+    ```{seealso}
+    See {doc}`workingcopy` for configuration.
+    ```
 
 controlpanels
     Register a component as control panel.
@@ -206,7 +215,13 @@ controlpanels
     The group can be one of the default groups 'General', 'Content', 'Security', 'Add-on Configuration', 'Users and Groups' or a custom group.
 
 filterControlPanelsSchema
-    A schema factory for a control panel. It is used internally, to tweak the schemas provided by the controlpanel endpoint, to make them fit for Volto.
+    A schema factory for a control panel.
+    It is used internally, to tweak the schemas provided by the `@controlpanels` endpoint, making them fit for Volto.
+    It uses the `unwantedControlPanelsFields` setting.
+
+unwantedControlPanelsFields
+    Control panels' fields that are not used in Volto.
+    It is used internally by the `filterControlPanelsSchema` function.
 
 errorHandlers
     A list of error handlers that will be called when there is an unhandled exception. Each error handler is a function that
@@ -457,6 +472,23 @@ querystringSearchGet
     [See an explanation of character limits in URLs](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers/417184#417184).
     Please test this setting properly before enabling in a production site.
 
+cssLayers
+    To use CSS layers when styling Volto, you can define and apply them at the very top level of the page, where they appear in the `<head>` tag.
+    By using this configuration, you can pass the layer list definition as an array:
+
+    ```js
+    config.settings.cssLayers = ['reset', 'plone-components', 'layout', 'addons', 'theme'];
+    ```
+
+showRelatedItems
+    If true, the `RelatedItems` component will show items from the `relatedItems` field. Default: false.
+
+    ```{versionadded} 18.5.0
+    ```
+
+
+showTags
+    If true, the `Tags` component will show tags from the `subjects` field. Default: true.
 ```
 
 ## Views settings
@@ -522,11 +554,4 @@ criticalCssPath
     this file exists it is loaded and its content is embedded inline into the
     generated HTML. By default this path is `public/critical.css`. See the
     {doc}`../deploying/performance` section for more details.
-
-extractScripts
-    An object that allows you to configure the insertion of scripts on the page
-    in some particular cases.
-    For the moment it admits only one property: `errorPages` whose value is a Boolean.
-
-    If `extractScripts.errorPages` is `true`, the JS will be inserted into the error page.
 ```

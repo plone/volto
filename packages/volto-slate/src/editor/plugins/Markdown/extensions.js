@@ -1,4 +1,5 @@
-import { castArray, map } from 'lodash';
+import castArray from 'lodash/castArray';
+import map from 'lodash/map';
 import { Editor, Path, Point, Range, Transforms } from 'slate';
 
 /**
@@ -199,6 +200,7 @@ export const autoformatBlock = (editor, type, at, { preFormat, format }) => {
     Transforms.setNodes(
       editor,
       { type },
+      { at },
       { match: (n) => Editor.isBlock(editor, n) },
     );
   } else {

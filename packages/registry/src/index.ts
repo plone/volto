@@ -10,24 +10,32 @@ import type {
   SlotComponent,
   SlotPredicate,
   SlotsConfig,
+  UtilitiesConfig,
   ViewsConfig,
   WidgetsConfig,
+  ReactRouterRouteEntry,
 } from '@plone/types';
 
 export type ConfigData = {
-  settings: SettingsConfig;
-  blocks: BlocksConfig;
-  views: ViewsConfig;
-  widgets: WidgetsConfig;
-  addonReducers: AddonReducersConfig;
-  addonRoutes: AddonRoutesConfig;
-  slots: SlotsConfig;
-  components: ComponentsConfig;
-  experimental: ExperimentalConfig;
+  settings: SettingsConfig | Record<string, never>;
+  blocks: BlocksConfig | Record<string, never>;
+  views: ViewsConfig | Record<string, never>;
+  widgets: WidgetsConfig | Record<string, never>;
+  addonReducers?: AddonReducersConfig;
+  addonRoutes?: AddonRoutesConfig;
+  routes?: Array<ReactRouterRouteEntry>;
+  slots: SlotsConfig | Record<string, never>;
+  components: ComponentsConfig | Record<string, never>;
+  utilities: UtilitiesConfig | Record<string, never>;
+  experimental?: ExperimentalConfig;
 };
 
 type GetComponentResult = {
   component: React.ComponentType<any>;
+};
+
+type GetUtilityResult = {
+  method: (...args: any[]) => any;
 };
 
 export type ConfigType = InstanceType<typeof Config>;
@@ -38,7 +46,15 @@ class Config {
 
   constructor() {
     if (!Config.instance) {
-      this._data = {};
+      this._data = {
+        settings: {},
+        blocks: {},
+        views: {},
+        widgets: {},
+        slots: {},
+        components: {},
+        utilities: {},
+      };
       Config.instance = this;
     }
 
@@ -112,6 +128,14 @@ class Config {
     this._data.addonRoutes = addonRoutes;
   }
 
+  get routes() {
+    return this._data.routes;
+  }
+
+  set routes(routes) {
+    this._data.routes = routes;
+  }
+
   get slots() {
     return this._data.slots;
   }
@@ -126,6 +150,14 @@ class Config {
 
   set components(components) {
     this._data.components = components;
+  }
+
+  get utilities() {
+    return this._data.utilities;
+  }
+
+  set utilities(utilities) {
+    this._data.utilities = utilities;
   }
 
   getComponent(
@@ -191,7 +223,10 @@ class Config {
       return;
     }
     const { slots, data } = this._data.slots[name];
-    const slotComponents = [];
+    const slotComponents: {
+      component: SlotComponent['component'];
+      name: string;
+    }[] = [];
     // For all enabled slots
     for (const slotName of slots) {
       // For all registered components for that slot, inversed, since the last one registered wins
@@ -405,6 +440,75 @@ class Config {
     }
     const result = currentSlotComponents.slice();
     currentSlot.data[name] = result.splice(position, 1);
+  }
+
+  registerUtility(options: {
+    name: string;
+    type: string;
+    dependencies?: Record<string, string>;
+    method: (args: any) => any;
+  }) {
+    const { name, type, method, dependencies = {} } = options;
+    let depsString: string = '';
+    if (!method) {
+      throw new Error('No method provided');
+    } else {
+      depsString = Object.keys(dependencies)
+        .sort()
+        .map((key) => `${key}:${dependencies[key]}`)
+        .join('+');
+    }
+    const utilityName = `${depsString ? `|${depsString}` : ''}${name}`;
+
+    let utilityType = this._data.utilities[type];
+    if (!utilityType) {
+      this._data.utilities[type] = {};
+      utilityType = this._data.utilities[type];
+    }
+    utilityType[utilityName] = { method };
+  }
+
+  getUtility(options: {
+    name: string;
+    type: string;
+    dependencies?: Record<string, string>;
+  }): GetUtilityResult {
+    const { name, type, dependencies = {} } = options;
+    let depsString: string = '';
+    depsString = Object.keys(dependencies)
+      .map((key) => `${key}:${dependencies[key]}`)
+      .join('+');
+
+    const utilityName = `${depsString ? `|${depsString}` : ''}${name}`;
+
+    return this._data.utilities[type][utilityName] || {};
+  }
+
+  getUtilities(options: {
+    type: string;
+    dependencies?: Record<string, string>;
+  }): Array<GetUtilityResult> {
+    const { type, dependencies = {} } = options;
+    let depsString: string = '';
+    depsString = Object.keys(dependencies)
+      .map((key) => `${key}:${dependencies[key]}`)
+      .join('+');
+
+    const utilityName = `${depsString ? `|${depsString}` : ''}`;
+    const utilitiesKeys = Object.keys(this._data.utilities[type] || {}).filter(
+      (key) => key.startsWith(utilityName),
+    );
+    const utilities = utilitiesKeys.map(
+      (key) => this._data.utilities[type][key],
+    );
+
+    return utilities;
+  }
+
+  registerRoute(options: ReactRouterRouteEntry) {
+    const route = this._data.routes || [];
+    route.push(options);
+    this._data.routes = route;
   }
 }
 
