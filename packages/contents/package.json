@@ -29,6 +29,7 @@
     "access": "public"
   },
   "main": "index.ts",
+  "type": "module",
   "scripts": {
     "test": "vitest",
     "check-ts": "tsc --project tsconfig.json",
