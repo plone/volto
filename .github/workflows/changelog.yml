@@ -50,6 +50,8 @@ jobs:
               - 'packages/theming/**'
             seven:
               - 'packages/seven/**'
+            cmsui:
+              - 'packages/cmsui/**'
             wrongNews:
               - added|modified: 'news/**'
 
@@ -157,6 +159,14 @@ jobs:
         run: |
           git fetch --no-tags origin main
           towncrier check --compare-with origin/main --dir packages/seven
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
+      - name: cmsui changelog check
+        if: steps.filter.outputs.cmsui == 'true'
+        run: |
+          git fetch --no-tags origin main
+          towncrier check --compare-with origin/main --dir packages/cmsui
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 

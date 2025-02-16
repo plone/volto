@@ -14,13 +14,13 @@
     "changelog": "pipx run towncrier build --draft --yes --version 0.0.0",
     "requireUpstream": false,
     "requireCleanWorkingDir": false,
-    "commitMessage": "Release Seven ${version}",
-    "tagName": "seven-${version}",
-    "tagAnnotation": "Release Seven ${version}"
+    "commitMessage": "Release @plone/cmsui ${version}",
+    "tagName": "@plone/cmsui-${version}",
+    "tagAnnotation": "Release @plone/cmsui ${version}"
   },
   "github": {
     "release": true,
-    "releaseName": "Seven ${version}",
+    "releaseName": "@plone/cmsui ${version}",
     "releaseNotes": "cat .changelog.draft"
   }
 }

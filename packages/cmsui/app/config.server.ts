@@ -3,6 +3,7 @@
  */
 import config from '@plone/registry';
 import ploneClient from '@plone/client';
+// eslint-disable-next-line import/no-unresolved
 import applyAddonConfiguration from '../registry.loader';
 
 export default function install() {

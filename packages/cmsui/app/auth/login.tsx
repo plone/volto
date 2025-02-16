@@ -1,5 +1,5 @@
 import type { Route } from './+types/login';
-import { data, Form, Link, useActionData, redirect } from 'react-router';
+import { data, Form, useActionData, redirect } from 'react-router';
 
 import { redirectIfLoggedInLoader, setAuthOnResponse } from './auth';
 import { Button, TextField } from '@plone/components';
@@ -58,7 +58,6 @@ export default function Login() {
           <Form className="space-y-6" method="post">
             <div>
               <TextField
-                autoFocus
                 id="username"
                 name="username"
                 aria-describedby={
