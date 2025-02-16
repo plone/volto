@@ -4,4 +4,4 @@ node_modules
 /build
 /public/build
 .env
-.registry.loader.js
+registry.loader.js

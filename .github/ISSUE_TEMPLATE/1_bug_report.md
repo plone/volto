@@ -1,8 +1,8 @@
 ---
-name: Bug report
-about: Create a report to help us improve Volto
+name: '🐞 Bug report'
+about: 'Create a report to help us improve Volto'
 title: ''
-labels: ['01 type: bug', 'needs: triage']
+labels: ['01 type: bug', '30 needs: triage']
 assignees: ''
 ---
 
@@ -13,23 +13,23 @@ A clear and concise description of what the bug is.
 Steps to reproduce the behavior:
 
 1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
+2. Click on '...'
+3. Scroll down to '...'
 4. See error
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
 **Screenshots**
-If applicable, add screenshots to help explain your problem.
+If applicable, add screenshots or videos to help explain your problem.
 
 **Software (please complete the following information):**
 
 - OS: [e.g. iOS]
-- Browser [e.g. chrome, safari]
-- Volto Version [e.g. 8.5.0]
-- Plone Version [e.g. 5.2.2]
-- Plone REST API Version [e.g. 7.0.1]
+- Browser [e.g. firefox, chrome, safari]
+- Volto Version [e.g. 18.4.0]
+- Plone Version [e.g. 6.1.0]
+- Plone REST API Version [e.g. 9.1.0]
 
 **Additional context**
 Add any other context about the problem here.

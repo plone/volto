@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.2 (2025-02-08)
+
+### Internal
+
+- Update Storybook version.
+  Update Vite version. @sneridagh [#6640](https://github.com/plone/volto/issues/6640)
+- Update internal `peerDependencies` to include React 19. @sneridagh [#6641](https://github.com/plone/volto/issues/6641)
+- Test with Plone 6.1.0rc1. @sneridagh [#6682](https://github.com/plone/volto/issues/6682)
+- Update dependencies versions. @sneridagh [#6728](https://github.com/plone/volto/issues/6728)
+
 ## 3.0.1 (2024-12-17)
 
 ### Bugfix

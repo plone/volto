@@ -1,1 +1,0 @@
-Expose `robots.txt` setting in Volto control panel, and render `robots.txt` based on REST API call. @robgietema

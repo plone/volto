@@ -7,6 +7,7 @@ export namespace widgetMapping {
         export { UrlWidget as remoteUrl };
         export { IdWidget as id };
         export { RegistryImageWidget as site_logo };
+        export { TextWidget as frontend_domain };
     }
     export namespace widget {
         export { TextareaWidget as textarea };
@@ -105,6 +106,7 @@ import { RecurrenceWidget } from '@plone/volto/components/manage/Widgets';
 import { UrlWidget } from '@plone/volto/components/manage/Widgets';
 import { IdWidget } from '@plone/volto/components/manage/Widgets';
 import { RegistryImageWidget } from '@plone/volto/components/manage/Widgets';
+import { TextWidget } from '@plone/volto/components/manage/Widgets';
 import { TextareaWidget } from '@plone/volto/components/manage/Widgets';
 import { DatetimeWidget } from '@plone/volto/components/manage/Widgets';
 import { PasswordWidget } from '@plone/volto/components/manage/Widgets';

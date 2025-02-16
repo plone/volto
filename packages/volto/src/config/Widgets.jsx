@@ -61,6 +61,7 @@ export const widgetMapping = {
     remoteUrl: UrlWidget,
     id: IdWidget,
     site_logo: RegistryImageWidget,
+    frontend_domain: TextWidget,
   },
   widget: {
     textarea: TextareaWidget,

@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.1 (2025-02-08)
+
+### Breaking
+
+- Move the styles to `./styles/main.css`. @sneridagh [#6636](https://github.com/plone/volto/issues/6636)
+
+### Internal
+
+- Update Storybook version. @sneridagh [#6640](https://github.com/plone/volto/issues/6640)
+- Update internal `peerDependencies` to include React 19.
+  Update TS version. @sneridagh [#6641](https://github.com/plone/volto/issues/6641)
+
 ## 1.0.0-alpha.0 (2025-01-24)
 
 ### Bugfix

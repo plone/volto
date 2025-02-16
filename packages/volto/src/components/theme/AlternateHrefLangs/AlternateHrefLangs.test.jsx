@@ -40,12 +40,11 @@ describe('AlternateHrefLangs', () => {
     config.settings.supportedLanguages = ['en', 'es', 'eu'];
 
     const content = {
+      '@id': '/en',
+      language: { token: 'en', title: 'English' },
       '@components': {
         translations: {
-          items: [
-            { '@id': '/en', language: 'en' },
-            { '@id': '/es', language: 'es' },
-          ],
+          items: [{ '@id': '/es', language: 'es' }],
         },
       },
     };
@@ -81,6 +80,7 @@ describe('AlternateHrefLangs', () => {
       hrefLang: 'en',
     });
   });
+
   it('multilingual site, with all available translations', () => {
     config.settings.isMultilingual = true;
     config.settings.supportedLanguages = ['en', 'es', 'eu'];
@@ -92,10 +92,11 @@ describe('AlternateHrefLangs', () => {
     });
 
     const content = {
+      '@id': '/en',
+      language: { token: 'en', title: 'English' },
       '@components': {
         translations: {
           items: [
-            { '@id': '/en', language: 'en' },
             { '@id': '/eu', language: 'eu' },
             { '@id': '/es', language: 'es' },
           ],

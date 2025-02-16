@@ -17,6 +17,65 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.8.2 (2025-02-08)
+
+### Bugfix
+
+- Use a text widget for editing the frontend domain setting in the Volto Settings control panel, instead of the URL widget which causes problems by erasing the current domain. @davisagli [#4171](https://github.com/plone/volto/issues/4171)
+- Update Dutch translations. @mauritsvanrees [#6476](https://github.com/plone/volto/issues/6476)
+
+### Internal
+
+- Test(cypress): fix breaking a list by typing Enter refs- #6586 @nileshgulia1 [#6570](https://github.com/plone/volto/issues/6570)
+- Add the block `group` name in the block configuration. @erral [#6679](https://github.com/plone/volto/issues/6679)
+- Test with Plone 6.1.0rc1. @sneridagh [#6682](https://github.com/plone/volto/issues/6682)
+- Revise the existing issue templates and create a new one for PLIP tasks. @stevepiercy [#6683](https://github.com/plone/volto/issues/6683)
+- Fix documentation build at Read the Docs. @sneridagh [#6684](https://github.com/plone/volto/issues/6684)
+- Upgrade jotai to 2.11.3 @ksuess [#6685](https://github.com/plone/volto/issues/6685)
+- Add Makefile command for testing Cookieplone in CI @sneridagh [#6728](https://github.com/plone/volto/issues/6728)
+
+## 18.8.1 (2025-02-04)
+
+### Bugfix
+
+- Fix regression in moving blocks from Grid block. @sneridagh [#6642](https://github.com/plone/volto/issues/6642)
+
+### Internal
+
+- Fix `corepack` in CI. @sneridagh
+  For more info: https://github.com/nodejs/corepack/issues/612 [#6640](https://github.com/plone/volto/issues/6640)
+- Update TS version. @sneridagh [#6641](https://github.com/plone/volto/issues/6641)
+
+## 18.8.0 (2025-01-31)
+
+### Feature
+
+- Show the working copy actions (checkin/checkout) based on whether they are enabled in the backend, instead of the `hasWorkingCopySupport` setting. @wesleybl, @davisagli [#5284](https://github.com/plone/volto/issues/5284)
+- Expose `robots.txt` setting in Volto control panel, and render `robots.txt` based on REST API call. @robgietema [#5580](https://github.com/plone/volto/issues/5580)
+- Update tests to match the new message in the add-ons loader. @sneridagh [#6630](https://github.com/plone/volto/issues/6630)
+
+### Bugfix
+
+- Pass `intl` object to `initialValue` function. @wesleybl [#6529](https://github.com/plone/volto/issues/6529)
+- Update Dutch translations @fredvd [#6531](https://github.com/plone/volto/issues/6531)
+- Correctly handle when one of the items is `null` in the Relations control panel. @giuliaghisini [#6629](https://github.com/plone/volto/issues/6629)
+- Added `field.pattern` as a parameter to the internationalized message. @ionlizarazu [#6631](https://github.com/plone/volto/issues/6631)
+- Display the appropriately sized image to eliminate blurring from upsizing smaller images in the `srcSet` generation. @giuliaghisini [#6634](https://github.com/plone/volto/issues/6634)
+
+### Internal
+
+- Add acceptance test for non-manager user editing group memberships. @ksuess [#5786](https://github.com/plone/volto/issues/5786)
+- Enhance Volto contributing guidelines. @stevepiercy [#6613](https://github.com/plone/volto/issues/6613)
+- Split Read the Docs pull request preview builds between Volto and `@plone/registry`. @stevepiercy [#6617](https://github.com/plone/volto/issues/6617)
+- Updates the first-timer message to use the correct link for feature voting. @stevepiercy [#6625](https://github.com/plone/volto/issues/6625)
+- Allow `2021.ploneconf.org` to fail readme-link-check. @stevepiercy [#6627](https://github.com/plone/volto/issues/6627)
+
+### Documentation
+
+- Amended version policy documentation. @sneridagh
+  Added deprecation notice for Semantic UI theming. [#6541](https://github.com/plone/volto/issues/6541)
+- Document how to migrate projects to Cookieplone. @stevepiercy @erral [#6626](https://github.com/plone/volto/issues/6626)
+
 ## 18.7.0 (2025-01-24)
 
 ### Feature

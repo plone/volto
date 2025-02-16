@@ -29,7 +29,9 @@ describe('[GET] History', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(result.current.data?.[0].action).toBe('Create');
+    expect(result.current.data?.[result.current.data?.length - 1].action).toBe(
+      'Create',
+    );
   });
 
   test('Hook - Failure', async () => {

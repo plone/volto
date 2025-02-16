@@ -7,7 +7,8 @@ const cli = ploneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-const { getAliasesListQuery } = cli;
+const { login, getAliasesListQuery } = cli;
+await login({ username: 'admin', password: 'secret' });
 
 describe('[GET] AliasesList', () => {
   test('Hook - Successful', async () => {
