@@ -38,6 +38,12 @@ export const getBaseUrl = memoize((url) => {
     url,
   );
 
+  //TODO: we can strip prefix from here /sharing pages
+  // //strip prefix path from url
+  // if (prefix && adjustedUrl.match(new RegExp(`^${prefix}(/|$)`))) {
+  //   adjustedUrl = adjustedUrl.slice(prefix.length);
+  // }
+
   adjustedUrl = adjustedUrl || '/';
   return adjustedUrl === '/' ? '' : adjustedUrl;
 });
@@ -162,11 +168,29 @@ export const isCmsUi = memoize((currentPathname) => {
  */
 export function flattenHTMLToAppURL(html) {
   const { settings } = config;
+  const replacer = config.settings.prefixPath ?? '';
   return settings.internalApiPath
     ? html
-        .replace(new RegExp(settings.internalApiPath, 'g'), '')
-        .replace(new RegExp(settings.apiPath, 'g'), '')
-    : html.replace(new RegExp(settings.apiPath, 'g'), '');
+        .replace(new RegExp(settings.internalApiPath, 'g'), replacer)
+        .replace(new RegExp(settings.apiPath, 'g'), replacer)
+    : html.replace(new RegExp(settings.apiPath, 'g'), replacer);
+}
+
+/**
+ * Adds the prefix to the URL if the prefix is defined and it's an internal.
+ * This function should be used where it is not possible to use the Link and UniversalLink components.
+ * @method addPrefixPath
+ * @param {string} url Some URL
+ * @returns {string} Perfixed URL
+ */
+export function addPrefixPath(url) {
+  const { prefixPath } = config.settings;
+  if (!prefixPath || !isInternalURL(url) || url.startsWith(prefixPath))
+    return url;
+  if (url === '/') {
+    return prefixPath;
+  }
+  return `${prefixPath}${url}`; // Add prefixPath to url if it's an internal URL and not a static resource.
 }
 
 /**
