@@ -7,7 +7,7 @@ import ContentsRenameModal from './ContentsRenameModal';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/components/manage/Form');
+vi.mock('@plone/volto/components/manage/Form');
 
 describe('ContentsRenameModal', () => {
   it('renders a contents rename modal component', () => {

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Comments renders a comments component 1`] = `
+exports[`Comments > renders a comments component 1`] = `
 <div
   className="ui container comments"
 >
@@ -9,24 +9,24 @@ exports[`Comments renders a comments component 1`] = `
   >
     <div
       data-schema="{
-  \\"fieldsets\\": [
+  "fieldsets": [
     {
-      \\"fields\\": [
-        \\"comment\\"
+      "fields": [
+        "comment"
       ],
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\"
+      "id": "default",
+      "title": "Default"
     }
   ],
-  \\"properties\\": {
-    \\"comment\\": {
-      \\"title\\": \\"Comment\\",
-      \\"type\\": \\"string\\",
-      \\"widget\\": \\"textarea\\"
+  "properties": {
+    "comment": {
+      "title": "Comment",
+      "type": "string",
+      "widget": "textarea"
     }
   },
-  \\"required\\": [
-    \\"comment1\\"
+  "required": [
+    "comment1"
   ]
 }"
       id="Form"
@@ -108,7 +108,7 @@ exports[`Comments renders a comments component 1`] = `
             className=""
             onClick={[Function]}
             value={
-              Object {
+              {
                 "id": "someurl",
                 "text": "Some comment",
               }
