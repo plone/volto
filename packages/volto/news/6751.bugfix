@@ -1,1 +1,0 @@
-Move the block chooser beneath the block, instead of covering the block and preventing making a choice, when `config.experimental.addBlockButton` is enabled. @giuliaghisini
