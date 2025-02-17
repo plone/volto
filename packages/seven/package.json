@@ -1,5 +1,5 @@
 {
-  "name": "seven",
+  "name": "@plone/seven",
   "private": true,
   "sideEffects": false,
   "type": "module",
