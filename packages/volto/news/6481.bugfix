@@ -1,0 +1,1 @@
+While editing a block, and in the sidebar under the {guilabel}`Settings` tab, when an item has {guilabel}`Required` checked, then it can no longer be deleted under the {guilabel}`Order` tab. Similarly, when  {guilabel}`Fixed position` is checked, the item's ordered position can no longer be changed. Previously neither option was honored. @alihamza1221

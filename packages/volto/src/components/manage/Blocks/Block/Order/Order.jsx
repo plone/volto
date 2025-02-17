@@ -15,6 +15,7 @@ export function Order({
   onSelectBlock,
   indentationWidth = 25,
   removable,
+  editable,
   dndKitCore,
   dndKitSortable,
   dndKitUtilities,
@@ -148,6 +149,7 @@ export function Order({
             indentationWidth={indentationWidth}
             onRemove={removable ? () => handleRemove(id) : undefined}
             onSelectBlock={onSelectBlock}
+            editable={editable}
             errors={errors?.[id] || {}}
           />
         ))}
