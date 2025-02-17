@@ -999,6 +999,11 @@ msgstr "Datum (neustes zuerst)"
 msgid "Default"
 msgstr "Standard"
 
+#. Default: "Default value"
+#: components/manage/Widgets/SchemaWidget
+msgid "Default value"
+msgstr ""
+
 #. Default: "Default view"
 #: config/Views
 msgid "Default view"
@@ -1519,6 +1524,11 @@ msgstr "Feld"
 msgid "File"
 msgstr "Datei"
 
+#. Default: "File is not of the accepted type {accept}"
+#: components/manage/Widgets/FileWidget
+msgid "File is not of the accepted type {accept}"
+msgstr ""
+
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
@@ -1538,6 +1548,11 @@ msgstr "Dateiname"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Hochgeladene Dateien: {uploadedFiles}"
+
+#. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+#: components/manage/Widgets/SchemaWidget
+msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+msgstr "Füllt den Wert des Feldes mit dem Wert eines Query-Parameters innerhalb der URL mit dem selben Namen."
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
@@ -2680,6 +2695,11 @@ msgstr "Persönliche Einstellungen"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Eine Liste von Personen, die an der Erstellung dieses Artikels beteiligt waren. Bitte geben Sie einen Benutzernamen pro Zeile ein. Der Hauptverantwortliche sollte zuerst genannt werden."
 
+#. Default: "Placeholder"
+#: components/manage/Widgets/SchemaWidget
+msgid "Placeholder"
+msgstr ""
+
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
@@ -2796,6 +2816,11 @@ msgstr "Freigabedatum"
 #: components/manage/Blocks/Listing/schema
 msgid "Query"
 msgstr "Anfrage"
+
+#. Default: "Query Parameter Name"
+#: components/manage/Widgets/SchemaWidget
+msgid "Query Parameter Name"
+msgstr "Abfrageparametername"
 
 #. Default: "Re-enter the password. Make sure the passwords are identical."
 #: components/manage/Preferences/ChangePassword
@@ -3728,6 +3753,11 @@ msgstr "Der Server antwortet nicht, wir entschuldigen uns für die Unannehmlichk
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr "Der Button deaktiviert die Live-Suche, die Suchanfrage wird abgeschickt wenn die ENTER-Taste gedrückt wird"
 
+#. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+#: components/manage/Widgets/FileWidget
+msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+msgstr ""
+
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
 msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
@@ -3878,6 +3908,7 @@ msgstr "Diese Regel ist an den folgenden Orten zugewiesen:"
 
 #. Default: "Time"
 #: components/manage/Widgets/DatetimeWidget
+#: components/manage/Widgets/TimeWidget
 msgid "Time"
 msgstr "Zeit"
 
@@ -4473,6 +4504,11 @@ msgstr "Ihre Seite ist auf dem neusten Stand."
 msgid "Your usernaame is required for reset your password."
 msgstr "Ihr Nutzername wird zum Zurücksetzen Ihres Passworts benötigt."
 
+#. Default: "File types allowed"
+#: components/manage/Widgets/SchemaWidget
+msgid "accept"
+msgstr ""
+
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -5047,6 +5083,11 @@ msgstr "Auswählen"
 #: components/manage/Blocks/Search/components/ViewSwitcher
 msgid "selectView"
 msgstr "Ansicht wählen"
+
+#. Default: "Maximum size of the file in bytes"
+#: components/manage/Widgets/SchemaWidget
+msgid "size"
+msgstr ""
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks
