@@ -4,8 +4,7 @@ import { createContent } from '../content/add';
 import { createAliases } from './add';
 import { useMutation } from '@tanstack/react-query';
 import { setup, teardown } from '../../resetFixture';
-import { beforeEach } from 'vitest';
-import { expect, test } from 'vitest';
+import { beforeEach, expect, test } from 'vitest';
 import PloneClient from '../../client';
 
 const cli = PloneClient.initialize({
