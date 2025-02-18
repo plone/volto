@@ -5168,6 +5168,16 @@ msgstr "{count, plural, one {Cargar {count} archivo} other {Cargar {count} archi
 msgid "{count} selected"
 msgstr "{count} seleccionado"
 
+#. Default: "{date} from {startTime} to {endTime}"
+#: components/theme/View/EventDatesInfo
+msgid "{date} from {startTime} to {endTime}"
+msgstr ""
+
+#. Default: "{date} from {time}"
+#: components/theme/View/EventDatesInfo
+msgid "{date} from {time}"
+msgstr ""
+
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
 msgid "{id} Content Type"
@@ -5177,6 +5187,16 @@ msgstr "{id} Tipo de Contenido"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} Esquema"
+
+#. Default: "{startDate} to {endDate}"
+#: components/theme/View/EventDatesInfo
+msgid "{startDate} to {endDate}"
+msgstr ""
+
+#. Default: "{startDate} {startTime} to {endDate} {endTime}"
+#: components/theme/View/EventDatesInfo
+msgid "{startDate} {startTime} to {endDate} {endTime}"
+msgstr ""
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions
