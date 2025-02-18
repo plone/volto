@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ManageTranslations renders a ManageTranslations component 1`] = `
+<div>
+  <div
+    class="ui container"
+    id="page-manage-translations"
+  >
+    <div
+      class="ui raised segments"
+    >
+      <div
+        class="ui segment primary"
+      >
+        Manage translations for 
+        <q>
+          My page
+        </q>
+      </div>
+      <table
+        class="ui selectable single line attached compact table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            >
+              Language
+            </th>
+            <th
+              class=""
+            >
+              Path
+            </th>
+            <th
+              class="right aligned"
+            >
+              Tools
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <td
+              class="collapsing"
+            >
+              Deutsch
+            </td>
+            <td
+              class=""
+            >
+              <a
+                href="/"
+              />
+            </td>
+            <td
+              class="right aligned manage-multilingual-tools"
+            >
+              <div
+                class="ui buttons"
+              >
+                <a
+                  class="ui basic icon button"
+                  href="//create-translation"
+                  role="button"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 24px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </a>
+              </div>
+              <div
+                class="ui buttons"
+              >
+                <button
+                  aria-label="Link translation for deutsch"
+                  class="ui basic icon button"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 24px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr
+            class=""
+          >
+            <td
+              class="collapsing"
+            >
+              Español
+            </td>
+            <td
+              class=""
+            >
+              <a
+                href="/"
+              />
+            </td>
+            <td
+              class="right aligned manage-multilingual-tools"
+            >
+              <div
+                class="ui buttons"
+              >
+                <a
+                  class="ui basic icon button"
+                  href="//create-translation"
+                  role="button"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 24px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </a>
+              </div>
+              <div
+                class="ui buttons"
+              >
+                <button
+                  aria-label="Link translation for español"
+                  class="ui basic icon button"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 24px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;

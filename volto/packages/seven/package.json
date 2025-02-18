@@ -1,0 +1,48 @@
+{
+  "name": "seven",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "dev": "react-router dev",
+    "start": "react-router dev",
+    "build": "react-router build",
+    "start:prod": "react-router-serve ./build/server/index.js",
+    "typecheck": "react-router typegen && tsc",
+    "typegen": "react-router typegen",
+    "release": "release-it"
+  },
+  "dependencies": {
+    "@plone/blocks": "workspace:*",
+    "@plone/client": "workspace:*",
+    "@plone/components": "workspace:*",
+    "@plone/providers": "workspace:*",
+    "@plone/registry": "workspace:*",
+    "@plone/react-router": "workspace:*",
+    "@plone/slots": "workspace:*",
+    "@plone/theming": "workspace:*",
+    "@react-router/node": "^7.1.5",
+    "@react-router/serve": "^7.1.5",
+    "isbot": "^5.1.17",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router": "^7.1.5"
+  },
+  "devDependencies": {
+    "@plone/types": "workspace:*",
+    "@react-router/dev": "^7.1.5",
+    "@testing-library/cypress": "10.0.2",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "cypress": "^13.13.2",
+    "react-router-devtools": "^1.1.0",
+    "typescript": "^5.7.3",
+    "vite": "^5.4.9",
+    "vite-tsconfig-paths": "^5.0.1",
+    "wait-on": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

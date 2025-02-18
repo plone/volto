@@ -1,0 +1,64 @@
+/*******************************
+            Segment
+*******************************/
+
+/*-------------------
+       Element
+--------------------*/
+
+@borderRadius: 0;
+
+/*-------------------
+       Group
+--------------------*/
+
+@groupedSegmentDivider: none;
+
+
+/*-------------------
+       Coupling
+--------------------*/
+
+/* Page Grid Segment */
+
+
+/*******************************
+            States
+*******************************/
+
+/* Loading Dimmer */
+
+/* Loading Spinner */
+
+
+/*******************************
+            Variations
+*******************************/
+
+/* Piled */
+
+/* Circular */
+
+/* Stacked */
+
+/* Raised */
+
+/* Padded */
+
+/* Attached */
+@attachedHorizontalOffset: 0;
+@attachedWidth: 100%;
+@attachedBoxShadow: none;
+@attachedBorder: 0;
+
+/* Inverted */
+
+/* Floated */
+
+/* Basic */
+
+/* Colors */
+
+/* Ordinality */
+@secondaryBackground: @tealBackground;
+@secondaryColor: @teal;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a view title component 1`] = `
+<h1
+  className="documentFirstHeading"
+>
+  My Title
+</h1>
+`;

@@ -1,0 +1,42 @@
+{
+  "name": "@plone/volto-coresandbox",
+  "description": "Volto Core Sandbox addon - Contains configuration and elements that are not present in vanilla Volto",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "email": "plone-developers@lists.sourceforge.net",
+      "url": "http://plone.org"
+    }
+  ],
+  "main": "src/index.ts",
+  "license": "MIT",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:plone/volto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/volto/issues",
+    "email": "plone-developers@lists.sourceforge.net"
+  },
+  "homepage": "https://plone.org",
+  "keywords": [
+    "volto",
+    "plone",
+    "react"
+  ],
+  "peerDependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-intl": "3.12.1",
+    "react-redux": "8.1.2",
+    "semantic-ui-react": "2.1.5"
+  },
+  "devDependencies": {
+    "@plone/types": "workspace:*",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@plone/registry": "workspace:*",
+    "@types/react-redux": "^7.1.33"
+  }
+}

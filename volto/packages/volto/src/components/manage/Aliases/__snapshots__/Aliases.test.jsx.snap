@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Aliases renders aliases object control 1`] = `
+<div>
+  <div
+    class="ui container"
+    id="aliases"
+  >
+    <div
+      class="ui raised segments"
+    >
+      <div
+        class="ui segment primary"
+      >
+        URL Management for 
+        <q>
+          Blog
+        </q>
+      </div>
+      <div
+        class="ui secondary segment"
+      >
+        Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs.
+      </div>
+      <form
+        class="ui form"
+      >
+        <div
+          class="ui segment"
+        >
+          <div
+            class="ui medium header"
+          >
+            Add a new alternative url
+          </div>
+          <p
+            class="help"
+          >
+            Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring.
+          </p>
+          <div
+            class="field"
+          >
+            <div
+              class="ui input"
+            >
+              <input
+                id="alternative-url-input"
+                name="alternative-url"
+                placeholder="/example"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <button
+            class="ui primary disabled button"
+            disabled=""
+            id="submit-alias"
+            tabindex="-1"
+          >
+            Add
+          </button>
+        </div>
+      </form>
+      <form
+        class="ui form"
+      >
+        <div
+          class="ui segment"
+        >
+          <div
+            class="ui medium header"
+          >
+            Existing alternative urls for this item
+          </div>
+          <button
+            class="ui primary disabled button"
+            disabled=""
+            id="remove-alias"
+            tabindex="-1"
+          >
+            Remove
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;

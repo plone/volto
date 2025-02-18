@@ -1,0 +1,68 @@
+{
+  "name": "@plone/theming",
+  "description": "Plone base foundamental theming",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "url": "https://plone.org"
+    }
+  ],
+  "funding": "https://github.com/sponsors/plone",
+  "license": "MIT",
+  "version": "1.0.0-alpha.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plone/volto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/volto/issues"
+  },
+  "homepage": "https://plone.org",
+  "keywords": [
+    "volto",
+    "plone",
+    "plone6",
+    "react",
+    "helpers"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "index.ts",
+  "scripts": {
+    "test": "vitest",
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@plone/components": "workspace:*",
+    "@plone/registry": "workspace:*",
+    "lightningcss": "1.28.1",
+    "lightningcss-cli": "1.28.1"
+  },
+  "devDependencies": {
+    "@plone/types": "workspace:*",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "jest-axe": "^8.0.0",
+    "release-it": "17.1.1",
+    "tsconfig": "workspace:*",
+    "typescript": "^5.7.3",
+    "vite": "^5.4.9",
+    "vitest": "^2.1.3",
+    "vitest-axe": "^0.1.0"
+  }
+}

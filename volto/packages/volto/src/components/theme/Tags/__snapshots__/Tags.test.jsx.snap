@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tags renders with tags 1`] = `
+<div
+  className="ui container tags"
+>
+  <a
+    className="ui label"
+    href="/search?Subject=Tag 1"
+    onClick={[Function]}
+  >
+    Tag 1
+  </a>
+  <a
+    className="ui label"
+    href="/search?Subject=Tag 2"
+    onClick={[Function]}
+  >
+    Tag 2
+  </a>
+</div>
+`;
+
+exports[`Tags renders without tags 1`] = `null`;

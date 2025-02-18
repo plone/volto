@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a file view component 1`] = `
+<div
+  className="ui container view-wrapper"
+>
+  <h1
+    className="documentFirstHeading"
+  >
+    Hello World!
+  </h1>
+  <p
+    className="documentDescription"
+  >
+    Hi
+  </p>
+  <a
+    href="file:///preview.pdf"
+  >
+    preview.pdf
+  </a>
+</div>
+`;

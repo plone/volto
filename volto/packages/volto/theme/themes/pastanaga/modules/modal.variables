@@ -1,0 +1,82 @@
+/*******************************
+             Modal
+*******************************/
+
+@borderRadius: 0;
+
+/* Close Icon */
+
+/* Header */
+@headerFontSize: @16px;
+@headerFontWeight: 500;
+@headerBorder: @4px solid @borderColor;
+
+/* Content */
+
+/* Image / Description */
+
+/* Modal Actions */
+@actionBorder: @1px solid @lightGreyBorderColor;
+@actionBackground: @white;
+
+/* Inner Close Position (Tablet/Mobile) */
+
+/* Mobile Positions */
+
+/* Responsive Widths */
+@mobileMargin: 0em 0em 0em -(@mobileWidth / 2);
+@tabletMargin: 0em 0em 0em -(@tabletWidth / 2);
+@computerMargin: 0em 0em 0em -(@computerWidth / 2);
+@largeMonitorMargin: 0em 0em 0em -(@largeMonitorWidth / 2);
+@widescreenMonitorMargin: 0em 0em 0em -(@widescreenMonitorWidth / 2);
+
+@fullScreenOffset: (100% - @fullScreenWidth) / 2;
+
+/* Coupling */
+
+/*-------------------
+       States
+--------------------*/
+
+/*-------------------
+        Types
+--------------------*/
+
+/* Basic */
+
+/* Scrolling Margin */
+@scrollingMargin: 3.5rem;
+@mobileScrollingMargin: 1rem;
+
+/* Scrolling Content */
+
+/*-------------------
+      Variations
+--------------------*/
+
+/* Size Widths */
+
+/* Derived Responsive Sizes */
+@miniMobileMargin: 0em 0em 0em -(@miniMobileWidth / 2);
+@miniTabletMargin: 0em 0em 0em -(@miniTabletWidth / 2);
+@miniComputerMargin: 0em 0em 0em -(@miniComputerWidth / 2);
+@miniLargeMonitorMargin: 0em 0em 0em -(@miniLargeMonitorWidth / 2);
+@miniWidescreenMonitorMargin: 0em 0em 0em -(@miniWidescreenMonitorWidth / 2);
+
+@tinyMobileMargin: 0em 0em 0em -(@tinyMobileWidth / 2);
+@tinyTabletMargin: 0em 0em 0em -(@tinyTabletWidth / 2);
+@tinyComputerMargin: 0em 0em 0em -(@tinyComputerWidth / 2);
+@tinyLargeMonitorMargin: 0em 0em 0em -(@tinyLargeMonitorWidth / 2);
+@tinyWidescreenMonitorMargin: 0em 0em 0em -(@tinyWidescreenMonitorWidth / 2);
+
+@smallMobileMargin: 0em 0em 0em -(@smallMobileWidth / 2);
+@smallTabletMargin: 0em 0em 0em -(@smallTabletWidth / 2);
+@smallComputerMargin: 0em 0em 0em -(@smallComputerWidth / 2);
+@smallLargeMonitorMargin: 0em 0em 0em -(@smallLargeMonitorWidth / 2);
+@smallWidescreenMonitorMargin: 0em 0em 0em -(@smallWidescreenMonitorWidth / 2);
+
+@largeMobileMargin: 0em 0em 0em -(@largeMobileWidth / 2);
+@largeTabletMargin: 0em 0em 0em -(@largeTabletWidth / 2);
+@largeComputerMargin: 0em 0em 0em -(@largeComputerWidth / 2);
+@largeLargeMonitorMargin: 0em 0em 0em -(@largeLargeMonitorWidth / 2);
+@largeWidescreenMonitorMargin: 0em 0em 0em -(@largeWidescreenMonitorWidth / 2);

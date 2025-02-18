@@ -1,0 +1,151 @@
+/*******************************
+             Menu
+*******************************/
+
+/*-------------------
+      Collection
+--------------------*/
+
+/* Menu */
+
+/* Menu Item */
+@itemTextColor: @grey;
+
+/* Divider */
+
+/* Sub Menu */
+
+/* Text Item */
+
+
+/*--------------
+    Elements
+---------------*/
+
+/* Icon */
+@iconMargin: 0em @relative5px 0em @relative5px;
+
+/* Dropdown Icon */
+
+/* Header */
+
+/* Vertical Icon */
+@verticalIconFloat: none;
+
+/* Vertical Header */
+
+/* Pointing Arrow */
+
+
+/*--------------
+    Couplings
+---------------*/
+
+/* Button */
+
+/* Input */
+
+/* Image */
+
+/* Label */
+
+/* Dropdown in Menu */
+
+/* Dropdown Variations */
+
+
+/*--------------
+     States
+---------------*/
+
+/* Hovered Item */
+@hoverItemBackground: none;
+
+/* Pressed Item */
+@pressedItemBackground: none;
+
+/* Active Item */
+@activeItemBackground: none;
+
+/* Active Hovered Item */
+
+/* Selected Dropdown */
+
+/* Active Dropdown */
+
+/* Active Sub Menu */
+
+
+/*--------------
+     Types
+---------------*/
+
+/* Vertical */
+
+/* Secondary */
+
+/* Pointing */
+@secondaryPointingBorderWidth: 4px;
+@secondaryPointingItemTextTransform: uppercase;
+@secondaryPointingItemHorizontalPadding: @relativeMini;
+
+@secondaryPointingActiveBorderColor: @pink;
+@secondaryPointingActiveTextColor: @black;
+@secondaryPointingActiveFontWeight: @normal;
+
+@secondaryPointingActiveDropdownBorderColor: transparent;
+
+/* Inverted Secondary */
+
+/* Inverted Pointing */
+
+/* Tiered */
+
+/* Icon */
+@iconMenuItemColor: @grey;
+
+/* Tabular */
+
+/* Pagination */
+
+/* Labeled Icon */
+
+/* Text */
+
+
+/*--------------
+   Variations
+---------------*/
+
+/* Inverted */
+
+/* Inverted Sub Menu */
+
+/* Inverted Hover */
+
+/* Pressed */
+
+/* Inverted Active */
+
+/* Inverted Active Hover  */
+
+/* Inverted Menu Divider */
+
+/* Inverted Colored */
+
+/* Fixed */
+
+/* Floated */
+
+/* Attached */
+
+/* Resize large sizes */
+@mini: @9px;
+@huge: @16px;
+@big: @17px;
+
+/* Sizes */
+@miniWidth: 6rem;
+@mediumWidth: 6rem;
+@hugeWidth: 20rem;
+@bigWidth: 22rem;

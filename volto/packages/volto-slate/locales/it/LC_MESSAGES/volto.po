@@ -1,0 +1,148 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#: editor/plugins/Link/index
+msgid "Add link"
+msgstr "Aggiungi un link"
+
+#: widgets/HtmlSlateWidget
+msgid "An error has occurred while editing \"{name}\" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
+msgstr "E' occorso un errore durante la modifica del campo \"{name}\". Siamo stati notificati e stiamo indagando. Si prega di salvare il lavoro e riprovare. Se il problema persiste, contattare l'amministratore del sito."
+
+#: widgets/RichTextWidgetView
+msgid "An error has occurred while rendering \"{name}\" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
+msgstr "E' occorso un errore durante il rendering del campo \"{name}\". Siamo stati notificati e stiamo indagando. Se il problema persiste, contattare l'amministratore del sito."
+
+#: blocks/Table/TableBlockEdit
+msgid "Bottom"
+msgstr "In basso"
+
+#: blocks/Table/TableBlockEdit
+msgid "Center"
+msgstr "Al centro"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Delete col"
+msgstr "Elimina colonna"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Delete row"
+msgstr "Elimina riga"
+
+#: editor/plugins/Table/index
+msgid "Delete table"
+msgstr "Elimina tabella"
+
+#: blocks/Table/TableBlockEdit
+msgid "Divide each row into separate cells"
+msgstr "Mostra i margini delle colonne"
+
+#: elementEditor/messages
+msgid "Edit element"
+msgstr "Modifica elemento"
+
+#: editor/plugins/AdvancedLink/index
+#: editor/plugins/Link/index
+msgid "Edit link"
+msgstr "Modifica link"
+
+#: blocks/Table/TableBlockEdit
+msgid "Fixed width table cells"
+msgstr "Celle della tabella a larghezza fissa"
+
+#: blocks/Table/TableBlockEdit
+msgid "Hide headers"
+msgstr "Nascodi intestazioni"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert col after"
+msgstr "Inserisci una colonna dopo"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert col before"
+msgstr "Inserisci una colonna prima"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert row after"
+msgstr "Inserisci una riga dopo"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert row before"
+msgstr "Inserisci una riga prima"
+
+#: blocks/Table/TableBlockEdit
+msgid "Left"
+msgstr "A sinistra"
+
+#: blocks/Table/TableBlockEdit
+msgid "Make the table compact"
+msgstr "Rendi la tabella compatta"
+
+#: blocks/Table/TableBlockEdit
+msgid "Make the table sortable"
+msgstr "Rendi la tabella ordinabile"
+
+#: blocks/Table/TableBlockEdit
+msgid "Middle"
+msgstr "Al centro"
+
+#: blocks/Text/SlashMenu
+msgid "No matching blocks"
+msgstr "Nessun blocco corrispondente"
+
+#: blocks/Table/TableBlockEdit
+msgid "Reduce complexity"
+msgstr "Riduci complessita"
+
+#: elementEditor/messages
+msgid "Remove element"
+msgstr "Rimuovi elemento"
+
+#: editor/plugins/AdvancedLink/index
+msgid "Remove link"
+msgstr "Rimuovi link"
+
+#: blocks/Table/TableBlockEdit
+msgid "Right"
+msgstr "A destra"
+
+#: blocks/Table/TableBlockEdit
+msgid "Stripe alternate rows with color"
+msgstr "Evidezia le righe alternate con un colore"
+
+#: blocks/Table/TableBlockEdit
+msgid "Table"
+msgstr "Tabella"
+
+#: blocks/Table/TableBlockEdit
+msgid "Table color inverted"
+msgstr "Inverti i colori della tabella"
+
+#: blocks/Table/TableBlockEdit
+msgid "Top"
+msgstr "In alto"
+
+#: blocks/Text/DefaultTextBlockEditor
+#: blocks/Text/DetachedTextBlockEditor
+msgid "Type text…"
+msgstr "Inserisci il testo…"
+
+#: blocks/Table/TableBlockEdit
+msgid "Visible only in view mode"
+msgstr "Visibile solo in modalità di visualizzazione"

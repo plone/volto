@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Types renders a types component 1`] = `<span />`;
+
+exports[`Types renders an active types component 1`] = `<span />`;
+
+exports[`Types renders an empty types component 1`] = `<span />`;
+
+exports[`Types types component if the user is anonymous 1`] = `<span />`;

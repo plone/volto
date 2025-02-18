@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Generic Error renders a not found component 1`] = `
+<div
+  id="view"
+>
+  <div
+    className="401"
+  />
+</div>
+`;

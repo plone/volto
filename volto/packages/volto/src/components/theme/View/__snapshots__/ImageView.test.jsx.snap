@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an image view component 1`] = `
+<div
+  className="ui container view-wrapper"
+>
+  <h1
+    className="documentFirstHeading"
+  >
+    Hello World!
+  </h1>
+  <p
+    className="documentDescription"
+  >
+    Hi
+  </p>
+  <a
+    href="file:///preview.jpg"
+  >
+    <img
+      alt="Hello World!"
+      imageField="image"
+      item={
+        Object {
+          "description": "Hi",
+          "image": Object {
+            "download": "file:///preview.jpg",
+            "height": 400,
+            "scales": Object {
+              "preview": Object {
+                "download": "file:///preview.jpg",
+                "height": 400,
+                "width": 400,
+              },
+            },
+            "size": 123123,
+            "width": 400,
+          },
+          "title": "Hello World!",
+        }
+      }
+      responsive={true}
+    />
+    <figcaption>
+      Size: 123 kB
+        —  
+      Click to download full sized image
+    </figcaption>
+  </a>
+</div>
+`;

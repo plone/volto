@@ -1,0 +1,50 @@
+/*******************************
+            Checkbox
+*******************************/
+
+/* Label */
+
+/* Checkbox */
+
+/* Checkmark */
+
+/* Label */
+
+/*-------------------
+        States
+--------------------*/
+
+/* Hover */
+
+/* Pressed */
+
+/* Focus */
+
+/* Active */
+
+/* Active Focus */
+
+/* Indeterminate */
+
+/* Disabled */
+
+/*-------------------
+        Types
+--------------------*/
+
+/* Radio */
+/* Uses px to avoid rounding issues with circles */
+
+/* Slider & Toggle Handle */
+
+/* Slider */
+
+/* Slider States */
+
+/* Toggle */
+@toggleOffHandleBoxShadow: none;
+@toggleOnHandleBoxShadow: none;
+
+/*-------------------
+      Variations
+--------------------*/

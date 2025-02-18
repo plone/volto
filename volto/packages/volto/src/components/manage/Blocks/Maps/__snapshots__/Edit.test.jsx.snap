@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an edit map block component 1`] = `
+<div
+  className="block maps align center"
+>
+  <div
+    className="maps-inner"
+  >
+    <iframe
+      allowFullScreen={true}
+      className="google-map"
+      frameBorder="0"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.7835278268726!2d14.38842915203974!3d40.634655679238854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133b994881d943cb%3A0x6ab93db57d3272f0!2sHotel+Mediterraneo+Sorrento!5e0!3m2!1sen!2ses!4v1550168740166"
+      title="Google Maps Embedded Block"
+    />
+  </div>
+  <div
+    className="map-overlay"
+  />
+</div>
+`;

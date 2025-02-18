@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentsTagsModal renders a contents tags modal component 1`] = `
+<div
+  data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\",
+      \\"fields\\": [
+        \\"tags_to_remove\\",
+        \\"tags_to_add\\"
+      ]
+    }
+  ],
+  \\"properties\\": {
+    \\"tags_to_remove\\": {
+      \\"type\\": \\"array\\",
+      \\"widget\\": \\"array\\",
+      \\"title\\": \\"Tags to remove\\",
+      \\"choices\\": []
+    },
+    \\"tags_to_add\\": {
+      \\"type\\": \\"array\\",
+      \\"widget\\": \\"token\\",
+      \\"title\\": \\"Tags to add\\",
+      \\"items\\": {
+        \\"vocabulary\\": {
+          \\"@id\\": \\"plone.app.vocabularies.Keywords\\"
+        }
+      }
+    }
+  },
+  \\"required\\": []
+}"
+  id="ModalForm"
+/>
+`;

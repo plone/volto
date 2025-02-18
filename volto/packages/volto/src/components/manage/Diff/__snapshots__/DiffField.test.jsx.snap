@@ -1,0 +1,382 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DiffField renders a boolean field 1`] = `
+<div>
+  <div
+    class="ui grid"
+    data-testid="DiffField"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="twelve wide column"
+      >
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
+    >
+      <div
+        class="top aligned sixteen wide column"
+      >
+        <span>
+          <span
+            class="deletion"
+          >
+            true
+          </span>
+          <span
+            class="addition"
+          >
+            false
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DiffField renders a boolean field with inverse values 1`] = `
+<div>
+  <div
+    class="ui grid"
+    data-testid="DiffField"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="twelve wide column"
+      >
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
+    >
+      <div
+        class="top aligned sixteen wide column"
+      >
+        <span>
+          <span
+            class="deletion"
+          >
+            false
+          </span>
+          <span
+            class="addition"
+          >
+            true
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DiffField renders a datetime field 1`] = `
+<div>
+  <div
+    class="ui grid"
+    data-testid="DiffField"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="twelve wide column"
+      >
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
+    >
+      <div
+        class="top aligned sixteen wide column"
+      >
+        <span>
+          <span
+            class="deletion"
+          >
+            Tuesday,
+          </span>
+          <span
+            class="addition"
+          >
+            Monday,
+          </span>
+           April 25, 
+          <span
+            class="deletion"
+          >
+            2017
+          </span>
+          <span
+            class="addition"
+          >
+            2016
+          </span>
+           at 2:14 PM
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DiffField renders a diff field in split mode 1`] = `
+<div>
+  <div
+    class="ui grid"
+    data-testid="DiffField"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="twelve wide column"
+      >
+        Title
+      </div>
+    </div>
+    <div
+      class="row"
+    >
+      <div
+        class="top aligned six wide column"
+      >
+        <span>
+          My 
+          <span
+            class="deletion"
+          >
+            old
+          </span>
+           string
+        </span>
+      </div>
+      <div
+        class="top aligned six wide column"
+      >
+        <span>
+          My 
+          <span
+            class="addition"
+          >
+            new
+          </span>
+           string
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DiffField renders a diff field in unified mode 1`] = `
+<div>
+  <div
+    class="ui grid"
+    data-testid="DiffField"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="twelve wide column"
+      >
+        Title
+      </div>
+    </div>
+    <div
+      class="row"
+    >
+      <div
+        class="top aligned sixteen wide column"
+      >
+        <span>
+          My 
+          <span
+            class="deletion"
+          >
+            old
+          </span>
+          <span
+            class="addition"
+          >
+            new
+          </span>
+           string
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DiffField renders a richtext field 1`] = `
+<div>
+  <div
+    class="ui grid"
+    data-testid="DiffField"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="twelve wide column"
+      >
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
+    >
+      <div
+        class="top aligned sixteen wide column"
+      >
+        <span>
+          My 
+          <span
+            class="deletion"
+          >
+            old
+          </span>
+          <span
+            class="addition"
+          >
+            new
+          </span>
+           string
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DiffField renders a textarea field 1`] = `
+<div>
+  <div
+    class="ui grid"
+    data-testid="DiffField"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="twelve wide column"
+      >
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
+    >
+      <div
+        class="top aligned sixteen wide column"
+      >
+        <span>
+          My 
+          <span
+            class="deletion"
+          >
+            old
+          </span>
+          <span
+            class="addition"
+          >
+            new
+          </span>
+           string
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DiffField renders an array field 1`] = `
+<div>
+  <div
+    class="ui grid"
+    data-testid="DiffField"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="twelve wide column"
+      >
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
+    >
+      <div
+        class="top aligned sixteen wide column"
+      >
+        <span>
+          one, 
+          <span
+            class="deletion"
+          >
+            two
+          </span>
+          <span
+            class="addition"
+          >
+            three
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DiffField renders an array of objects field 1`] = `
+<div>
+  <div
+    class="ui grid"
+    data-testid="DiffField"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="twelve wide column"
+      >
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
+    >
+      <div
+        class="top aligned sixteen wide column"
+      >
+        <span>
+          one, 
+          <span
+            class="deletion"
+          >
+            two
+          </span>
+          <span
+            class="addition"
+          >
+            three
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

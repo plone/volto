@@ -1,0 +1,13 @@
+.md-header-nav__button.md-logo {
+  display: none !important;
+}
+
+.admonition.block {
+  padding: unset;
+  border-left: unset;
+  margin: unset;
+  margin-left: 2em;
+  background-color: unset;
+  box-shadow: unset;
+  font-size: 0.9em;
+}

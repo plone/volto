@@ -1,0 +1,47 @@
+name: Documentation
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+  # Build pull requests
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'styles/**'
+      - '.github/workflows/docs.yml'
+      - 'requirements-docs.txt'
+      - '.vale.ini'
+
+jobs:
+  docs:
+    name: Documentation
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.12']
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+          cache-dependency-path: 'requirements-docs.txt'
+
+      - name: Create Python virtual environment
+        run: pip install virtualenv
+
+      - name: pip install requirements
+        run: pip install -r requirements-docs.txt
+
+      - name: Check for broken links
+        run: make docs-linkcheckbroken
+
+      - name: Build HTML documentation
+        run: make docs-html
+
+      - name: Run vale
+        run: make docs-vale VALEOPTS=--no-exit

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an Image Block Sidebar component 1`] = `
+<div
+  data-schema="{
+  \\"title\\": \\"Video\\",
+  \\"block\\": \\"Video\\",
+  \\"fieldsets\\": [
+    {
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\",
+      \\"fields\\": [
+        \\"url\\",
+        \\"preview_image\\",
+        \\"align\\"
+      ]
+    }
+  ],
+  \\"properties\\": {
+    \\"url\\": {
+      \\"title\\": \\"Video URL\\",
+      \\"widget\\": \\"url\\"
+    },
+    \\"preview_image\\": {
+      \\"title\\": \\"Preview Image URL\\",
+      \\"widget\\": \\"url\\"
+    },
+    \\"align\\": {
+      \\"title\\": \\"Alignment\\",
+      \\"widget\\": \\"align\\"
+    }
+  },
+  \\"required\\": []
+}"
+  id="BlockDataForm"
+/>
+`;

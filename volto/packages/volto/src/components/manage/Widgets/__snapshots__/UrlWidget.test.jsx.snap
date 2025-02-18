@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an url widget component 1`] = `
+<div>
+  <div
+    class="inline field url wide field-wrapper-test-url"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-test-url"
+              id="fieldset-default-field-label-test-url"
+            >
+              My Url
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <div
+              class="ui input"
+            >
+              <input
+                id="field-test-url"
+                name="test-url"
+                type="url"
+                value=""
+              />
+            </div>
+            <div
+              class="ui buttons"
+            >
+              <button
+                aria-label="openUrlBrowser"
+                class="ui basic icon button"
+              >
+                <svg
+                  class="icon"
+                  style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

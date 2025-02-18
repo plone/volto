@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a view image component for the listing block 1`] = `
+<div
+  className="block listing default"
+>
+  <div
+    className="theblock"
+  />
+</div>
+`;

@@ -1,0 +1,44 @@
+/*******************************
+            Search
+*******************************/
+
+/* Search Prompt */
+
+/* Result Box */
+
+/* Result */
+
+/* Result Image */
+
+/* Result Content */
+
+/* Description */
+
+/* Price */
+
+/* Special Message */
+
+/* All Results Link */
+
+/*******************************
+            States
+*******************************/
+
+/* Focus */
+
+/* Hover */
+
+/* Loading */
+
+/* Active Category */
+
+/* Active Result */
+
+/*******************************
+            Types
+*******************************/
+
+/* Selection */
+
+/* Category */
+@categoryNameFloat: left;

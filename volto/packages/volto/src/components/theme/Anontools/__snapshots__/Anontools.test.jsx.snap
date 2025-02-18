@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Anontools renders an anontools component when no token is specified 1`] = `
+<div
+  className="ui pointing secondary right floated menu"
+>
+  <div
+    className="item"
+    onClick={[Function]}
+  >
+    <a
+      aria-label="login"
+      href="/login?return_url=myid"
+      onClick={[Function]}
+    >
+      Log in
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Anontools should not render an anontools component when a token is specified 1`] = `null`;

@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a view image component 1`] = `
+<ul
+  className="ui segment object-listing"
+>
+  <li
+    aria-label="Select Welcome to Plone"
+    className=""
+    onClick={[Function]}
+    onDoubleClick={[Function]}
+    role="presentation"
+  >
+    <span
+      title="/front-page (Document)"
+    >
+      <span
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "currentColor",
+              "height": "24px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </span>
+      Welcome to Plone
+    </span>
+  </li>
+  <li
+    aria-label="Select News"
+    className=""
+    onClick={[Function]}
+    onDoubleClick={[Function]}
+    role="presentation"
+  >
+    <span
+      title="/news (Folder)"
+    >
+      <span
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "currentColor",
+              "height": "24px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </span>
+      News
+    </span>
+  </li>
+</ul>
+`;

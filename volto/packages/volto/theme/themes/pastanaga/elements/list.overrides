@@ -1,0 +1,43 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.inverted.list > a.item {
+  text-decoration: underline;
+}
+
+.ui.inverted.list .item a:not(.ui) {
+  color: @white !important;
+}
+
+.ui.grid > .row > .navigation.column {
+  margin-top: unit(-@relativeBig * 1.5, em);
+
+  .menu {
+    flex-wrap: wrap;
+  }
+}
+
+.header .tools.column .list .item {
+  color: @grey;
+  font-size: @13px;
+  font-weight: 100;
+}
+
+.ui.bulleted.list {
+  .item.header-three {
+    margin-left: @16px;
+  }
+
+  .item.header-four {
+    margin-left: @32px;
+  }
+
+  .item.header-five {
+    margin-left: @48px;
+  }
+
+  .item.header-six {
+    margin-left: @64px;
+  }
+}

@@ -1,0 +1,50 @@
+name: Set up Node.js environment
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: Enable corepack
+      shell: bash
+      run: npm i -g corepack@latest && corepack enable
+
+    - name: Get pnpm store directory
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+    - uses: actions/cache@v4
+      name: Setup pnpm cache
+      with:
+        path: ${{ env.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
+
+    - name: Cache Cypress Binary
+      id: cache-cypress-binary
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/Cypress
+        key: binary-${{ inputs.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
+
+    - name: Install Volto dependencies
+      shell: bash
+      run: make install
+
+    - name: Install Cypress if not in cache
+      if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+      shell: bash
+      working-directory: packages/volto
+      run: make cypress-install
+
+inputs:
+  node-version:
+    description: 'Node.js version'
+    required: true

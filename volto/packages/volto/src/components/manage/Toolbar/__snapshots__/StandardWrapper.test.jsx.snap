@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools component 1`] = `
+<div
+  className="profile pastanaga-menu has-inner-actions"
+  style={
+    Object {
+      "flex": "0 0 320px",
+    }
+  }
+>
+  <header
+    className="header pulled"
+  >
+    <button
+      onClick={[Function]}
+    >
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "30px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </button>
+    <div
+      className="vertical divider"
+    />
+    <h2>
+      profile
+    </h2>
+  </header>
+</div>
+`;

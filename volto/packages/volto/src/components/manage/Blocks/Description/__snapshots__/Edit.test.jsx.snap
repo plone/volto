@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders edit blocks renders an edit description block component 1`] = `
+<div
+  aria-multiline="false"
+  autoCapitalize="false"
+  autoCorrect="false"
+  contentEditable={true}
+  data-slate-editor={true}
+  data-slate-node="value"
+  onBeforeInput={[Function]}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onCompositionEnd={[Function]}
+  onCompositionStart={[Function]}
+  onCompositionUpdate={[Function]}
+  onCopy={[Function]}
+  onCut={[Function]}
+  onDragEnd={[Function]}
+  onDragOver={[Function]}
+  onDragStart={[Function]}
+  onDrop={[Function]}
+  onFocus={[Function]}
+  onInput={[Function]}
+  onKeyDown={[Function]}
+  onPaste={[Function]}
+  role="textbox"
+  spellCheck={false}
+  style={
+    Object {
+      "position": "relative",
+      "whiteSpace": "pre-wrap",
+      "wordWrap": "break-word",
+    }
+  }
+  suppressContentEditableWarning={true}
+  zindex={-1}
+>
+  <div
+    className="documentDescription"
+    data-slate-node="element"
+  >
+    <span
+      data-slate-node="text"
+    >
+      <span
+        data-slate-leaf={true}
+      >
+        <span
+          data-slate-string={true}
+        >
+          My Description
+        </span>
+      </span>
+    </span>
+  </div>
+</div>
+`;

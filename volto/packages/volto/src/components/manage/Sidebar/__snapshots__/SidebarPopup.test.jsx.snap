@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sidebar popup is not rendered when the block is not selected 1`] = `
+<React.Fragment>
+  <CSSTransition
+    classNames="sidebar-container"
+    in={false}
+    timeout={500}
+    unmountOnExit={true}
+  >
+    <React.Fragment />
+  </CSSTransition>
+</React.Fragment>
+`;
+
+exports[`sidebar popup is rendered when the block is selected 1`] = `
+<React.Fragment>
+  <CSSTransition
+    classNames="sidebar-container"
+    in={true}
+    timeout={500}
+    unmountOnExit={true}
+  >
+    <React.Fragment />
+  </CSSTransition>
+</React.Fragment>
+`;

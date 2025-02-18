@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a view image component 1`] = `
+<p
+  className="block image align center"
+>
+  <img
+    alt=""
+    className=""
+    imageField="image"
+    item={
+      Object {
+        "image": Object {
+          "download": "http://localhost:3000/image.png",
+          "height": 400,
+          "scales": Object {
+            "preview": Object {
+              "download": "http://localhost:3000/image.png/@@images/image/image-400.png",
+              "height": 400,
+              "width": 400,
+            },
+          },
+          "width": 400,
+        },
+      }
+    }
+    responsive={true}
+  />
+</p>
+`;
