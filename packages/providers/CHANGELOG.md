@@ -8,6 +8,20 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.8 (2025-02-08)
+
+### Internal
+
+- Update internal `peerDependencies` to include React 19.
+  Update TS version. @sneridagh [#6641](https://github.com/plone/volto/issues/6641)
+- Remove no longer required dependencies.  @sneridagh [#6728](https://github.com/plone/volto/issues/6728)
+
+## 1.0.0-alpha.7 (2025-01-24)
+
+### Internal
+
+- Centralize `tsconfig`. @sneridagh [#6536](https://github.com/plone/volto/issues/6536)
+
 ## 1.0.0-alpha.6 (2024-11-21)
 
 ### Feature

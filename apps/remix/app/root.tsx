@@ -17,7 +17,7 @@ import PloneClient from '@plone/client';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import '@plone/components/dist/basic.css';
-import '@plone/slots/main.css';
+import '@plone/slots/styles/main.css';
 import { flattenToAppURL } from './utils';
 import { PloneProvider } from '@plone/providers';
 

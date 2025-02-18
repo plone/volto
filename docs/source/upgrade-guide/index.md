@@ -15,14 +15,18 @@ This upgrade guide lists all breaking changes in Volto and explains the steps th
 Volto uses Semantic Versioning.
 For more information see {doc}`../contributing/version-policy`.
 
-```{note}
+````{note}
 [Cookieplone](https://github.com/plone/cookieplone) is the official project generator for Plone.
 We keep Cookieplone up to date and in sync with the current Volto release.
 
 To make it easier for you to maintain your projects, you should keep all your code inside your project add-ons.
 If you do so, when you want to upgrade your project, you can generate a new project using Cookieplone with the same name as your old one, and copy over your add-ons to the new project.
 It is usually better and quicker to move your items into new locations and copy your dependencies than dealing with following the upgrade steps, regardless of whether you have modified the boilerplate.
+
+```{seealso}
+{ref}`upgrade-18-cookieplone-label`
 ```
+````
 
 (volto-upgrade-guide-18.x.x)=
 
@@ -40,6 +44,22 @@ Cookieplone uses the frontend code installed using `pnpm` instead of `yarn`.
 This affects the way that the Plone Release Team generates the Sponsored OSS Docker images, since they must be compatible with the `pnpm` setup.
 
 Since Volto `18.0.0-alpha.43`, the Docker image [`plone-frontend`](https://hub.docker.com/r/plone/plone-frontend) uses `pnpm`.
+
+To migrate your projects to the new setup, take the following steps.
+
+1.  From the root of your project, create the new project structure with Cookieplone using the `frontend_addon` template using the following command.
+
+    ```shell
+    pipx run cookieplone frontend_addon
+    ```
+
+1.  Take the contents of the {file}`src` folder in the old structure, and copy them over to `packages/<your-addon-name>/src/`.
+
+```{seealso}
+-   {doc}`../development/add-ons/create-an-add-on-18`
+-   [update for Volto 18 codesyntax/volto-maplibre-block#4](https://github.com/codesyntax/volto-maplibre-block/pull/4)
+-   [update for volto 18 codesyntax/volto-countup-block#5](https://github.com/codesyntax/volto-countup-block/pull/5)
+```
 
 For developers that won't migrate their projects to the new setup with `pnpm` instead of `yarn`, the Release Team will generate a new Docker image named `plone-frontend:18-yarn` for the Volto 18 series of alpha releases.
 
@@ -549,6 +569,12 @@ If you've applied custom styles or shadowed this component, you might need to ma
 Effective with Volto 18.0.0-alpha.42, a new feature introduced a breaking change in the boilerplates created using `@plone/generator-volto` 9.0.0-alpha.17 and earlier.
 ```
 
+```{deprecated} Volto 18.0.0-alpha.43
+The `yarn`-based generator [`@plone/generator-volto`](https://www.npmjs.com/package/@plone/generator-volto) package and project boilerplates generated from it are deprecated and will not receive any further updates.
+The recommended way of generating a project boilerplate is [Cookieplone](https://github.com/plone/cookieplone).
+Please update your code to use the `pnpm` based setup.
+```
+
 You need to change your {file}`razzle.config.js` file in the root of your boilerplate.
 
 ```diff
@@ -607,8 +633,10 @@ Add this object to the `pnpm` key in your project {file}`package.json`.
 ```
 
 The Node.js-based Volto project boilerplate generator is deprecated from Volto 18 onwards.
-After the release of Volto 18, it will be marked as deprecated, archived, and it won't receive any further updates.
+It is marked as deprecated, archived, and it won't receive any further updates.
 Although you can still migrate your project to Volto 18 using this boilerplate, you should migrate to using [Cookieplone](https://github.com/plone/cookieplone).
+See {ref}`upgrade-18-cookieplone-label` for details.
+
 
 ##### Alternative
 

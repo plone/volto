@@ -8,6 +8,28 @@
 
 <!-- towncrier release notes start -->
 
+## 18.2.2 (2025-02-08)
+
+### Bugfix
+
+- In `RichTextWidget` and `HtmlSlateWidget`, fix breaking a list by typing Enter. @nileshgulia1 [#6570](https://github.com/plone/volto/issues/6570)
+
+### Internal
+
+- Remove hard dependencies on `react`, move to `peerDependencies` @sneridagh [#6728](https://github.com/plone/volto/issues/6728)
+
+## 18.2.1 (2025-01-31)
+
+### Bugfix
+
+- Pass `intl` object to `initialValue` function. @wesleybl [#6529](https://github.com/plone/volto/issues/6529)
+
+## 18.2.0 (2025-01-24)
+
+### Feature
+
+- Fixed keyboard shortcuts for typing headings using Markdown notation. @Shyam-Raghuwanshi [#6588](https://github.com/plone/volto/issues/6588)
+
 ## 18.1.0 (2025-01-11)
 
 ### Feature

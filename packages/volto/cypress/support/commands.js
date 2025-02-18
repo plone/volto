@@ -730,10 +730,13 @@ Cypress.Commands.add('getSlate', (createNewSlate = false) => {
   cy.getIfExists(
     SLATE_SELECTOR,
     () => {
-      slate = cy.get(SLATE_SELECTOR).last();
+      slate = cy.get(SLATE_SELECTOR).last().should('be.visible');
     },
     () => {
-      slate = cy.get(SLATE_SELECTOR, { timeout: 10000 }).last();
+      slate = cy
+        .get(SLATE_SELECTOR, { timeout: 10000 })
+        .last()
+        .should('be.visible');
     },
   );
   return slate;
@@ -967,3 +970,25 @@ Cypress.Commands.add('queryCounter', (path, steps, number = 1) => {
 
   cy.get('@counterName').its('callCount').should('equal', number);
 });
+
+// Print cypress-axe violations to the terminal
+function printAccessibilityViolations(violations) {
+  cy.task(
+    'table',
+    violations.map(({ id, impact, description, nodes }) => ({
+      impact,
+      description: `${description} (${id})`,
+      nodes: nodes.length,
+    })),
+  );
+}
+
+Cypress.Commands.add(
+  'checkAccessibility',
+  (subject, { skipFailures = false } = {}) => {
+    cy.checkA11y(subject, null, printAccessibilityViolations, skipFailures);
+  },
+  {
+    prevSubject: 'optional',
+  },
+);
