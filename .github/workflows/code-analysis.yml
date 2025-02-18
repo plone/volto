@@ -19,7 +19,7 @@ jobs:
           node-version: ${{ env.node-version }}
 
       - name: Enable corepack
-        run: npm i -g corepack@latest && corepack enable
+        run: corepack enable
 
       - name: Get pnpm store directory
         shell: bash
