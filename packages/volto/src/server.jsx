@@ -58,7 +58,7 @@ function reactIntlErrorHandler(error) {
   debug('i18n')(error);
 }
 
-const supported = new locale.Locales(keys(languages), 'en');
+const supported = config.settings.supportedLanguages.length > 0 ? new locale.Locales(config.settings.supportedLanguages, 'en') : new locale.Locales(keys(languages), 'en');
 
 const server = express()
   .disable('x-powered-by')
