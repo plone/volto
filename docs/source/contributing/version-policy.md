@@ -99,7 +99,7 @@ We recommend using the current LTS version.
 
 ## Supported web browsers
 
-```{include} ../../_inc/_install-browser-reqs-volto.md
+```{include} ../_inc/_install-browser-reqs-volto.md
 ```
 
 
