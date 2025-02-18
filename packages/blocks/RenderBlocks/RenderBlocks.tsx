@@ -1,8 +1,7 @@
 import { Fragment } from 'react';
 import { hasBlocksData } from '../helpers/blocks';
 import { DefaultBlockView } from './DefaultBlockView';
-import type { Content } from '@plone/types';
-import type { BlocksConfigData } from '@plone/types';
+import type { BlocksConfigData, Content } from '@plone/types';
 import BlockWrapper from './BlockWrapper';
 
 export type RenderBlocksProps = {

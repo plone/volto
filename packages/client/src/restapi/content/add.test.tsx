@@ -2,11 +2,9 @@ import { act, renderHook, waitFor } from '@testing-library/react';
 import { createWrapper } from '../../testUtils';
 import { useMutation } from '@tanstack/react-query';
 import { setup, teardown } from '../../resetFixture';
-import { beforeEach } from 'vitest';
-import { expect, test } from 'vitest';
+import { beforeEach, expect, test } from 'vitest';
 import PloneClient from '../../client';
-import { CreateContentArgs } from './add';
-import { createContent } from '../content/add';
+import { CreateContentArgs, createContent } from './add';
 
 const cli = PloneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
