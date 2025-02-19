@@ -38,12 +38,6 @@ export const getBaseUrl = memoize((url) => {
     url,
   );
 
-  //TODO: we can strip prefix from here /sharing pages
-  // //strip prefix path from url
-  // if (prefix && adjustedUrl.match(new RegExp(`^${prefix}(/|$)`))) {
-  //   adjustedUrl = adjustedUrl.slice(prefix.length);
-  // }
-
   adjustedUrl = adjustedUrl || '/';
   return adjustedUrl === '/' ? '' : adjustedUrl;
 });
