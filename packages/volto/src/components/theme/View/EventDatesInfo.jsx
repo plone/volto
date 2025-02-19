@@ -35,12 +35,14 @@ const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
 
   const messages = defineMessages({
     dateTimeToDateTime: {
-      id: '{startDate} {startTime} to {endDate} {endTime}',
-      defaultMessage: '{startDate} {startTime} to {endDate} {endTime}',
+      id: '<span className="start">{startDate}<span> </span>{startTime}</span> to <span className="end">{endDate}<span> </span>{endTime}</span>',
+      defaultMessage:
+        '<span className="start">{startDate}<span> </span>{startTime}</span> to <span className="end">{endDate}<span> </span>{endTime}</span>',
     },
     dateToDate: {
-      id: '{startDate} to {endDate}',
-      defaultMessage: '{startDate} to {endDate}',
+      id: '<span className="start">{startDate}</span> to <span className="end">{endDate}</span>',
+      defaultMessage:
+        '<span className="start">{startDate}</span> to <span className="end">{endDate}</span>',
     },
     dateFromTime: {
       id: '{date} from {time}',
