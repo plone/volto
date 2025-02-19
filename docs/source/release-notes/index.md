@@ -17,6 +17,28 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.9.0 (2025-02-17)
+
+### Feature
+
+- Add self link in alternate language links @erral [#6602](https://github.com/plone/volto/issues/6602)
+
+### Bugfix
+
+- Serve `sitemap.xml.gz` as an alias for `sitemap-index.xml`. @reebalazs [#6561](https://github.com/plone/volto/issues/6561)
+- Move the block chooser beneath the block, instead of covering the block and preventing making a choice, when `config.experimental.addBlockButton` is enabled. @giuliaghisini [#6751](https://github.com/plone/volto/issues/6751)
+
+### Internal
+
+- Use Plone 6.1.0 final release. @sneridagh [#6731](https://github.com/plone/volto/issues/6731)
+- Add Film Basque Country website to README. @erral [#6741](https://github.com/plone/volto/issues/6741)
+- Sync content from Awesome Volto into README. @stevepiercy [#6745](https://github.com/plone/volto/issues/6745)
+- Fixes intermittent error in cypress "Index Text Block" test. @wesleybl [#6755](https://github.com/plone/volto/issues/6755)
+
+### Documentation
+
+- Document Slate heading as anchor links in Volto blocks user manual. @nileshgulia1 [#5755](https://github.com/plone/volto/issues/5755)
+
 ## 18.8.2 (2025-02-08)
 
 ### Bugfix
