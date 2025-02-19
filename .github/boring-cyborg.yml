@@ -47,19 +47,19 @@
 # Comment to be posted to welcome users when they open their first PR
 firstPRWelcomeComment: >
 
+  ---
   > [!CAUTION]
   > The Volto Team has suspended its review of new pull requests from first-time contributors until the [release of Plone 7](https://plone.org/download/release-schedule), which is preliminarily scheduled for the second quarter of 2026.
   > [Read details](https://6.docs.plone.org/volto/contributing/index.html).
+  ---
   
-  Thanks for submitting your first pull request! You are awesome! :hugs:
-
+  Thanks for submitting your first pull request! You are awesome! :hugs:<br>
   If you haven't done so already, read
   [Plone's Code of Conduct](https://plone.org/foundation/about/materials/foundation-resolutions/code-of-conduct),
   [Contributing to Plone](https://6.docs.plone.org/contributing/index.html),
   [First-time contributors](https://6.docs.plone.org/contributing/first-time.html), and
   [Contributing to Volto](https://6.docs.plone.org/volto/contributing/index.html),
-  as this will greatly help the review process.
-
+  as this will greatly help the review process.<br>
   Welcome to the Plone community! :tada:
 
 # Comment to be posted to congratulate user on their first merged PR
