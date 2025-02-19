@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'semantic-ui-react';
 import cx from 'classnames';
+import { defineMessages, useIntl } from 'react-intl';
 
 import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -26,15 +27,73 @@ export const datesForDisplay = (start, end, moment) => {
 };
 
 const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
+  const intl = useIntl();
   const lang = useSelector((state) => state.intl.locale);
 
   const moment = momentlib.default;
   moment.locale(toBackendLang(lang));
 
+  const messages = defineMessages({
+    dateTimeToDateTime: {
+      id: '<span className="start">{startDate}<span> </span>{startTime}</span> to <span className="end">{endDate}<span> </span>{endTime}</span>',
+      defaultMessage:
+        '<span className="start">{startDate}<span> </span>{startTime}</span> to <span className="end">{endDate}<span> </span>{endTime}</span>',
+    },
+    dateToDate: {
+      id: '<span className="start">{startDate}</span> to <span className="end">{endDate}</span>',
+      defaultMessage:
+        '<span className="start">{startDate}</span> to <span className="end">{endDate}</span>',
+    },
+    dateFromTime: {
+      id: '{date} from {time}',
+      defaultMessage: '{date} from {time}',
+    },
+    dateFromTimeToTime: {
+      id: '{date} from {startTime} to {endTime}',
+      defaultMessage: '{date} from {startTime} to {endTime}',
+    },
+  });
+
   const datesInfo = datesForDisplay(start, end, moment);
   if (!datesInfo) {
     return;
   }
+
+  const sameDay = datesInfo.sameDay;
+  let when = null;
+
+  if (!sameDay && whole_day && !open_end) {
+    // Different day, whole day
+    when = intl.formatMessage(messages.dateTimeToDateTime, {
+      startDate: <span className="start-date">{datesInfo.startDate}</span>,
+      startTime: <span className="start-time">{datesInfo.startTime}</span>,
+      endDate: <span className="end-date">{datesInfo.endDate}</span>,
+      endTime: <span className="end-time">{datesInfo.endTime}</span>,
+    });
+  } else if (!sameDay && !whole_day && !open_end) {
+    // Different day, not whole day
+    when = intl.formatMessage(messages.dateToDate, {
+      startDate: <span className="start-date">{datesInfo.startDate}</span>,
+      endDate: <span className="end-date">{datesInfo.endDate}</span>,
+    });
+  } else if (sameDay && whole_day && !open_end) {
+    // Same day, whole day
+    when = <span className="start-date">{datesInfo.startDate}</span>;
+  } else if (sameDay && !whole_day && open_end) {
+    // Same day, not whole day, open end
+    when = intl.formatMessage(messages.dateFromTime, {
+      date: <span className="start-date">{datesInfo.startDate}</span>,
+      time: <span className="start-time">{datesInfo.startTime}</span>,
+    });
+  } else {
+    // Same day, not whole day, not open end
+    when = intl.formatMessage(messages.dateFromTimeToTime, {
+      date: <span className="start-date">{datesInfo.startDate}</span>,
+      startTime: <span className="start-time">{datesInfo.startTime}</span>,
+      endTime: <span className="end-time">{datesInfo.endTime}</span>,
+    });
+  }
+
   // TODO I18N INTL
   return (
     <p
@@ -45,57 +104,7 @@ const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
         'open-end': open_end,
       })}
     >
-      {!datesInfo.sameDay ? (
-        <>
-          <span className="start">
-            <span className="start-date">{datesInfo.startDate}</span>
-            {!whole_day && (
-              <>
-                {/* Plone has an optional word based on locale here */}
-                <span> </span>
-                <span className="start-time">{datesInfo.startTime}</span>
-              </>
-            )}
-          </span>
-          {!open_end && (
-            <>
-              &nbsp;to&nbsp;
-              <span className="end">
-                <span className="end-date">{datesInfo.endDate}</span>
-                {!whole_day && (
-                  <>
-                    {/* Plone has an optional word based on locale here */}
-                    <span> </span>
-                    <span className="end-time">{datesInfo.endTime}</span>
-                  </>
-                )}
-              </span>
-            </>
-          )}
-        </>
-      ) : (
-        <>
-          {whole_day && (
-            <span className="start-date">{datesInfo.startDate}</span>
-          )}
-          {open_end && !whole_day && (
-            <>
-              <span className="start-date">{datesInfo.startDate}</span>
-              &nbsp;from&nbsp;
-              <span className="start-time">{datesInfo.startTime}</span>
-            </>
-          )}
-          {!(whole_day || open_end) && (
-            <>
-              <span className="start-date">{datesInfo.startDate}</span>
-              &nbsp;from&nbsp;
-              <span className="start-time">{datesInfo.startTime}</span>
-              &nbsp;to&nbsp;
-              <span className="end-time">{datesInfo.endTime}</span>
-            </>
-          )}
-        </>
-      )}
+      {when}
     </p>
   );
 };
