@@ -1,7 +1,7 @@
 import config from '@plone/registry';
 import type { ConfigType } from '@plone/registry';
-import { slate } from '@plone/blocks';
-import { blocksConfig } from '@plone/blocks';
+import { slate } from '@plone/blocks/config/slate';
+import { blocksConfig } from '@plone/blocks/config';
 
 const settings: Partial<ConfigType['settings']> = {
   slate,
