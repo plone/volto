@@ -39,19 +39,19 @@ For convenience, it can also be set via a `THEME` environment variable.
     ```
 
 2.  Create a directory {file}`src/theme` in your add-on.
-    Inside that directory, create a new file {file}`theme.config`, adding the following content, but replacing `<name_of_your_theme>` with your add-on name.
+    Inside that directory, create a new file {file}`theme.config`, adding the following content, but replacing `<name_of_your_theme>` with your add-on name. You can also copy the contents of Volto's core {file}`theme.config` file copying it from {file}`core/packages/volto/theme/theme.config`
 
     ```less
     /*******************************
             Theme Selection
     *******************************/
-    
+
     /* To override a theme for an individual element specify theme name below */
-    
+
     /* Global */
     @site        : 'pastanaga';
     @reset       : 'pastanaga';
-    
+
     /* Elements */
     @button      : 'pastanaga';
     @container   : 'pastanaga';
@@ -69,7 +69,7 @@ For convenience, it can also be set via a `THEME` environment variable.
     @reveal      : 'pastanaga';
     @segment     : 'pastanaga';
     @step        : 'pastanaga';
-    
+
     /* Collections */
     @breadcrumb  : 'pastanaga';
     @form        : 'pastanaga';
@@ -77,7 +77,7 @@ For convenience, it can also be set via a `THEME` environment variable.
     @menu        : 'pastanaga';
     @message     : 'pastanaga';
     @table       : 'pastanaga';
-    
+
     /* Modules */
     @accordion   : 'pastanaga';
     @checkbox    : 'pastanaga';
@@ -95,7 +95,7 @@ For convenience, it can also be set via a `THEME` environment variable.
     @sticky      : 'pastanaga';
     @tab         : 'pastanaga';
     @transition  : 'pastanaga';
-    
+
     /* Views */
     @ad          : 'pastanaga';
     @card        : 'pastanaga';
@@ -103,32 +103,32 @@ For convenience, it can also be set via a `THEME` environment variable.
     @feed        : 'pastanaga';
     @item        : 'pastanaga';
     @statistic   : 'pastanaga';
-    
+
     /* Extras */
     @main        : 'pastanaga';
     @custom      : 'pastanaga';
-    
+
     /*******************************
                 Folders
     *******************************/
-    
+
     /* Path to theme packages */
     @themesFolder : '~volto-themes';
-    
+
     /* Path to site override folder */
     @siteFolder  : "<name_of_your_theme>/theme";
-    
+
     /*******************************
              Import Theme
     *******************************/
-    
+
     @import (multiple) "~semantic-ui-less/theme.less";
     @fontPath : "~volto-themes/@{theme}/assets/fonts";
-    
+
     .loadAddonOverrides() {
       @import (optional) "@{siteFolder}/@{addon}/@{addontype}s/@{addonelement}.overrides";
     }
-    
+
     /* End Config */
     ```
 
@@ -136,8 +136,6 @@ For convenience, it can also be set via a `THEME` environment variable.
 
 4.  After starting Volto, the theme should be active.
     Now you can add overrides to the default theme in {file}`src/theme`, the same as you would in a project.
-
-5.  Finally, you can safely delete your project's original {file}`theme` folder, since the one in the add-on will take precedence, and a project can only have one active theme at a time.
 
 
 ## Using your own theming escape hatch
@@ -147,6 +145,10 @@ However, while maintaining and playing well with the Semantic UI Volto base, you
 
 At the same time, you can either discard or complement the `extras` escape hatch and add your own, by customizing the {file}`theme.js` module in Volto.
 
+Customizing the base theme is a special use case in Volto.
+To begin, add a {file}`./@root/theme.js` file structure in your {file}`customizations` folder in your add-on or project and put the following example contents:
+
+
 ```js
 import 'semantic-ui-less/semantic.less';
 import '@plone/volto/../theme/themes/pastanaga/extras/extras.less';
@@ -155,8 +157,6 @@ import '@plone/volto/../theme/themes/pastanaga/extras/extras.less';
 import '@kitconcept/volto-light-theme/theme/main.scss';
 ```
 
-Customizing the base theme is a special use case in Volto.
-To begin, add a {file}`./@root/theme.js` file structure in your {file}`customizations` folder in your add-on or project.
 
 You may want to do this to create a completely new theming experience adapted to your way of doing things that do not match the current Volto theming experience.
 For example, if you want to use another preprocessor in the theme, such as SCSS.

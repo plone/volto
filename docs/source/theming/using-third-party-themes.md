@@ -35,7 +35,7 @@ An example of this behavior is the blocks view: you are in a public view because
 
 ## Setting up the theme
 
-In your Volto project, customize the file `src/theme.js`:
+In your Volto project, customize the file `src/theme.js`, creating a `customization/@root/theme.js` file:
 
 ```diff
 - import 'semantic-ui-less/semantic.less';
@@ -46,7 +46,7 @@ import '@plone/volto/../theme/themes/pastanaga/extras/extras.less'
 + import '../theme/site.scss';
 ```
 
-Then, in your `theme.config` change the following and the needed variables:
+Then, copy the `theme.config` file present in core Volto (`core/packages/volto/theme/theme.config`) to your add-on's `src/theme/` folder and change the following and the needed variables:
 
 ```diff
 - @container   : 'pastanaga';
@@ -54,6 +54,10 @@ Then, in your `theme.config` change the following and the needed variables:
 ```
 
 ### Use Sass loader
+
+```{note}
+This is not required anymore since Volto 18.
+```
 
 If you have to load Sass, you will need `razzle-plugin-scss` and you will have to customize `razzle.config.js` integrating that plugin into Razzle configuration.
 
@@ -120,3 +124,4 @@ For any other customization, you can put styles in your site theme and override 
 ## Example themes using this approach
 
 https://github.com/RedTurtle/design-volto-theme
+
