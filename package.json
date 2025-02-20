@@ -42,14 +42,11 @@
     "typescript": "^5.7.3",
     "vitest": "^2.1.3"
   },
-  "packageManager": "pnpm@9.1.1",
+  "packageManager": "pnpm@10.4.1",
   "pnpm": {
     "overrides": {
-      "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
-      "react-refresh": "0.14.0"
-    },
-    "patchedDependencies": {
-      "jest-resolve@26.6.2": "patches/jest-resolve@26.6.2.patch"
+      "react": "^19.0.0",
+      "react-dom": "^19.0.0"
     }
   }
 }

@@ -24,8 +24,8 @@
     "@react-router/node": "^7.1.5",
     "@react-router/serve": "^7.1.5",
     "isbot": "^5.1.17",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "react-router": "^7.1.5"
   },
   "devDependencies": {
@@ -33,12 +33,12 @@
     "@react-router/dev": "^7.1.5",
     "@testing-library/cypress": "10.0.2",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
     "cypress": "^13.13.2",
     "react-router-devtools": "^1.1.0",
-    "typescript": "^5.7.3",
-    "vite": "^5.4.9",
+    "typescript": "catalog:",
+    "vite": "catalog:",
     "vite-tsconfig-paths": "^5.0.1",
     "wait-on": "^8.0.0"
   },
