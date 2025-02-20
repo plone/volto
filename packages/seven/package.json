@@ -36,6 +36,8 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "cypress": "^13.13.2",
+    "cypress-axe": "1.5.0",
+    "cypress-file-upload": "5.0.8",
     "react-router-devtools": "^1.1.0",
     "typescript": "catalog:",
     "vite": "catalog:",

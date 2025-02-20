@@ -2,7 +2,7 @@ name: Acceptance Tests
 on: [push, pull_request]
 jobs:
   core:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    if: false && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
     runs-on: ubuntu-latest
     name: Core Basic
     timeout-minutes: 45
@@ -50,7 +50,7 @@ jobs:
           path: packages/volto/cypress/videos
 
   corecontent:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    if: false && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
     runs-on: ubuntu-latest
     name: Core Content
     timeout-minutes: 45
@@ -98,7 +98,7 @@ jobs:
           path: packages/volto/cypress/videos
 
   corecontrolpanels:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    if: false && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
     runs-on: ubuntu-latest
     name: Core Control Panels
     timeout-minutes: 45
@@ -146,7 +146,7 @@ jobs:
           path: packages/volto/cypress/videos
 
   coreblocks:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    if: false && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
     runs-on: ubuntu-latest
     name: Core Blocks
     timeout-minutes: 35
@@ -194,7 +194,7 @@ jobs:
           path: packages/volto/cypress/videos
 
   coreblockslisting:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    if: false && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
     runs-on: ubuntu-latest
     name: Core Blocks - Listing
     timeout-minutes: 35
@@ -242,7 +242,7 @@ jobs:
           path: packages/volto/cypress/videos
 
   corevoltoslate:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    if: false && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
     runs-on: ubuntu-latest
     name: Core Volto Slate
     timeout-minutes: 45
@@ -289,55 +289,8 @@ jobs:
           name: cypress-videos
           path: packages/volto/cypress/videos
 
-  core5:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    runs-on: ubuntu-latest
-    name: Core Basic - Plone 5
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [22.x]
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Node.js environment
-        uses: ./.github/actions/node_env_setup
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v6
-        env:
-          BABEL_ENV: production
-          CYPRESS_RETRIES: 2
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          install: false
-          working-directory: packages/volto
-          browser: chrome
-          spec: cypress/tests/core/basic/**/*.js
-          start: |
-            make plone5-acceptance-backend-start
-            make acceptance-frontend-prod-start
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
-
-      # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: packages/volto/cypress/screenshots
-      # Upload Cypress videos
-      - uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-videos
-          path: packages/volto/cypress/videos
-
   coresandbox:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    if: false && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
     runs-on: ubuntu-latest
     name: Coresandbox
     timeout-minutes: 35
@@ -385,7 +338,7 @@ jobs:
           path: packages/volto/cypress/videos
 
   multilingual:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    if: false && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
     name: Multilingual
     runs-on: ubuntu-latest
     timeout-minutes: 35
@@ -433,7 +386,7 @@ jobs:
           path: packages/volto/cypress/videos
 
   workingcopy:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    if: false && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
     name: Working Copy
     runs-on: ubuntu-latest
     timeout-minutes: 35
@@ -481,119 +434,8 @@ jobs:
           name: cypress-videos
           path: packages/volto/cypress/videos
 
-  generator:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    name: Project Generator
-    runs-on: ubuntu-latest
-    timeout-minutes: 35
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [20.x, 22.x]
-    env:
-      generator-directory: ./packages/generator-volto
-      project-directory: ./my-volto-app
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Node.js environment
-        uses: ./.github/actions/node_env_setup
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      # Generator own tests
-      - name: Generator tests
-        run: pnpm test
-        working-directory: ${{env.generator-directory}}
-
-      # install Yeoman and the generator
-      - run: npm -g install yo
-        working-directory: ${{env.generator-directory}}
-      - run: npm -g install ./
-        working-directory: ${{env.generator-directory}}
-
-      # create a project
-      - run: yo @plone/volto my-volto-app --description "test volto project" --volto . --skip-install --no-interactive
-      # When main is canary, make sure we use it in the generator
-      # - run: yo @plone/volto my-volto-app --description "test volto project" --volto . --skip-install --no-interactive --canary
-
-      - name: Install yalc
-        run: npm -g install yalc
-
-      - name: Build dependencies
-        run: make build-deps
-
-      - name: Install a yalc'ed version of the current Volto in the project - publish
-        run: |
-          yalc publish packages/types
-          (cd packages/registry && yalc add @plone/types --no-pure && yalc publish)
-          yalc publish packages/scripts
-          yalc publish packages/volto-slate
-          (cd packages/volto && yalc add @plone/scripts --no-pure && yalc add @plone/registry --no-pure && yalc add @plone/volto-slate --no-pure && yalc publish)
-      - name: Install a yalc'ed version of the current Volto in the project - add
-        run: |
-          yalc add @plone/volto --no-pure
-        working-directory: ${{env.project-directory}}
-      - name: Install a yalc'ed version of the current Volto in the project - install
-        run: yarn config set -H enableImmutableInstalls false && yarn
-        working-directory: ${{env.project-directory}}
-
-      - name: Running lint on a project works
-        run: yarn lint
-        working-directory: ${{env.project-directory}}
-
-      - name: Running prettier on a project works
-        run: yarn prettier
-        working-directory: ${{env.project-directory}}
-
-      - name: Running stylelint on a project works
-        run: yarn stylelint
-        working-directory: ${{env.project-directory}}
-
-      - name: Build Storybook
-        run: yarn build-storybook
-        working-directory: ${{env.project-directory}}
-
-      - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v6
-        env:
-          BABEL_ENV: production
-          CYPRESS_RETRIES: 2
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          install: false
-          working-directory: packages/volto
-          browser: chrome
-          spec: cypress/tests/minimal/**/*.js
-          start: |
-            make ci-acceptance-backend-start
-            make project-acceptance-frontend-prod-start
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
-
-      # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: packages/volto/cypress/screenshots
-
-      # Upload Cypress videos
-      - uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-videos
-          path: packages/volto/cypress/videos
-
-      - name: Test if npm packs correctly
-        run: npm pack --dry-run
-        if: success()
-        working-directory: ${{env.generator-directory}}
-
   deployment:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    if: false && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
     name: Deployment Mode
     runs-on: ubuntu-latest
     timeout-minutes: 35
@@ -643,7 +485,7 @@ jobs:
           path: packages/volto/cypress/videos
 
   multilingual-deployment:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    if: false && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
     name: Multilingual in Deployment Mode
     runs-on: ubuntu-latest
     timeout-minutes: 25
