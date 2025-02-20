@@ -22,7 +22,7 @@ export interface IconProps extends DOMProps, AriaLabelingProps, StyleProps {
   /**
    * The content to display. Should be an SVG.
    */
-  children: ReactElement;
+  children: ReactElement<any>;
   /**
    * Size of Icon (changes based on scale).
    */
@@ -53,9 +53,6 @@ const iconStyleProps: StyleHandlers = {
   color: ['color', iconColorValue],
 };
 
-/**
- * Spectrum icons are clear, minimal, and consistent across platforms. They follow the focused and rational principles of the design system in both metaphor and style.
- */
 export function Icon(props: IconProps) {
   props = useSlotProps(props, 'icon');
   let {
