@@ -44,7 +44,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          working-directory: seven-add-on/core/packages/seven
+          working-directory: seven-add-on/core/apps/seven
           browser: chrome
           spec: cypress/tests/core/basic/**/*.cy.ts
           start: |
@@ -57,10 +57,10 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: packages/seven/cypress/screenshots
+          path: apps/seven/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
-          path: packages/seven/cypress/videos
+          path: apps/seven/cypress/videos
