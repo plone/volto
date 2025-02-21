@@ -16,16 +16,5 @@ module.exports = {
       'pnpm prettier --single-quote --write',
     ];
   },
-  'packages/volto/**/*.{js,jsx,ts,tsx}': [
-    'pnpm --filter @plone/volto lint:husky',
-    'pnpm --filter @plone/volto prettier:husky',
-  ],
-  'packages/volto/src/**/*.{jsx, tsx}': ['pnpm --filter @plone/volto i18n'],
-  'packages/!(volto)/**/*.{css,less,scss}': ['pnpm stylelint --fix'],
-  'packages/volto/**/*.{css,less,scss}': [
-    'pnpm --filter @plone/volto stylelint --fix',
-  ],
-  'packages/volto/**/*.overrides': [
-    'pnpm --filter @plone/volto stylelint --fix',
-  ],
+  '**/*.{css,less,scss}': ['pnpm stylelint --fix'],
 };

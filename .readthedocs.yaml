@@ -26,11 +26,11 @@ build:
     # Install dependencies defined in your ``package.json``
     # - npm ci
     # Install any other extra dependencies to build the docs
-    - npm i -g corepack@latest
-    - corepack enable
-    - corepack prepare pnpm@* --activate
-    - asdf reshim nodejs
-    - pnpm install
-    - pnpm build:registry
-    - (cd packages/volto && pnpm build-storybook -o ${READTHEDOCS_OUTPUT}/html/storybook)
+    # - npm i -g corepack@latest
+    # - corepack enable
+    # - corepack prepare pnpm@* --activate
+    # - asdf reshim nodejs
+    # - pnpm install
+    # - pnpm build:registry
+    # - (cd packages/volto && pnpm build-storybook -o ${READTHEDOCS_OUTPUT}/html/storybook)
     - make docs-rtd-pr-preview

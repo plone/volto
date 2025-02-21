@@ -5,34 +5,6 @@ env:
   node-version: 22.x
 
 jobs:
-  volto:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    name: '@plone/volto'
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [20.x, 22.x]
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Node.js environment
-        uses: ./.github/actions/node_env_setup
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      # Locales in place are needed for the tests to pass
-      - run: pnpm --filter @plone/volto i18n
-
-      - name: Run unit tests Volto
-        run: pnpm --filter @plone/volto test
-
-      # Bundlewatch
-      # - run: yarn build
-      # - uses: jackyef/bundlewatch-gh-action@master
-      #   with:
-      #     bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
-
   registry:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: '@plone/registry'

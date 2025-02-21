@@ -41,7 +41,7 @@ runs:
     - name: Install Cypress if not in cache
       if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
       shell: bash
-      working-directory: packages/volto
+      working-directory: apps/seven
       run: make cypress-install
 
 inputs:

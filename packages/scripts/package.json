@@ -37,7 +37,8 @@
     "addon": "./addon/index.js",
     "changelogupdater": "./changelogupdater.cjs",
     "i18n": "./i18n.cjs",
-    "volto-update-deps": "./volto-update-deps.js"
+    "volto-update-deps": "./volto-update-deps.js",
+    "catalog-sync": "./catalogSync.js"
   },
   "publishConfig": {
     "access": "public"
@@ -60,6 +61,6 @@
     "wait-on": "^7.2.0"
   },
   "devDependencies": {
-    "release-it": "^16.1.3"
+    "release-it": "catalog:"
   }
 }

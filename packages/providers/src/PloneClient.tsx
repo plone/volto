@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import type { JSX } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import PloneClient from '@plone/client';

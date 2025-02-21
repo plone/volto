@@ -158,10 +158,7 @@ packages/react-router/dist: $(shell find packages/react-router/src -type f)
 	pnpm build:react-router
 
 .PHONY: build-deps
-build-deps: packages/registry/dist ## Build dependencies
-
-.PHONY: build-all-deps
-build-all-deps: packages/registry/dist packages/components/dist packages/client/dist packages/providers/dist packages/react-router/dist packages/helpers/dist ## Build all dependencies
+build-deps: packages/registry/dist packages/components/dist packages/client/dist packages/providers/dist packages/react-router/dist packages/helpers/dist  ## Build dependencies
 
 .PHONY: i18n
 i18n: ## Converts your po files into json to translate volto frontend
@@ -358,34 +355,6 @@ working-copy-ci-acceptance-test: ## Run Cypress tests in headless mode for CI fo
 .PHONY: working-copy-ci-acceptance-test-run-all
 working-copy-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for working copy tests
 	$(MAKE) -C "./packages/volto/" working-copy-ci-acceptance-test-run-all
-
-######### Guillotina Acceptance tests
-
-.PHONY: guillotina-acceptance-backend-start
-guillotina-acceptance-backend-start: ## Start backend acceptance server for Guillotina tests
-	docker-compose -f g-api/docker-compose.yml up > /dev/null
-
-.PHONY: guillotina-acceptance-frontend-prod-start
-guillotina-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-acceptance-frontend-prod-start
-
-.PHONY: guillotina-acceptance-test
-guillotina-acceptance-test: ## Start Cypress in interactive mode for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-acceptance-test
-
-.PHONY: guillotina-ci-acceptance-test
-guillotina-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-ci-acceptance-test
-
-.PHONY: guillotina-ci-acceptance-test-run-all
-guillotina-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-ci-acceptance-test-run-all
-
-######### Plone 5 Acceptance tests
-
-.PHONY: plone5-acceptance-backend-start
-plone5-acceptance-backend-start: ## Start backend acceptance server for Plone 5 tests
-	$(MAKE) -C "./packages/volto/" plone5-acceptance-backend-start
 
 ######### @plone/client
 

@@ -7,3 +7,4 @@ dist
 packages/registry/lib
 packages/registry/docs
 apps/rr7/.react-router
+apps/*
