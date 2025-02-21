@@ -208,8 +208,10 @@ class SlateEditor extends Component {
 
   render() {
     const {
+      id,
       selected,
       placeholder,
+      fieldSet,
       onKeyDown,
       testingEditorRef,
       readOnly,
@@ -261,6 +263,7 @@ class SlateEditor extends Component {
             editor={editor}
             initialValue={this.props.value || slateSettings.defaultValue()}
             onChange={this.handleChange}
+            label="teste"
           >
             {selected ? (
               <>
@@ -335,6 +338,7 @@ class SlateEditor extends Component {
                 onKeyDown && onKeyDown({ editor, event });
               }}
               {...editableProps}
+              aria-labelledby={`fieldset-${fieldSet}-field-label-${id}`}
             />
             {selected &&
               slateSettings.persistentHelpers.map((Helper, i) => {
