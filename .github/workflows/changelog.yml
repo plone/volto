@@ -24,43 +24,38 @@ jobs:
         id: filter
         with:
           filters: |
-            volto:
-              - 'packages/volto/**'
+            seven:
+              - 'apps/seven/**'
             client:
               - 'packages/client/**'
             registry:
               - 'packages/registry/**'
             components:
               - 'packages/components/**'
+            helpers:
+              - 'packages/providers/**'
             types:
               - 'packages/types/**'
             providers:
               - 'packages/providers/**'
-            generator:
-              - 'packages/generator-volto/**'
+            reactrouter:
+              - 'packages/react-router/**'
             scripts:
               - 'packages/scripts/**'
-            voltoSlate:
-              - 'packages/volto-slate/**'
             blocks:
               - 'packages/blocks/**'
             slots:
               - 'packages/slots/**'
             theming:
               - 'packages/theming/**'
-            seven:
-              - 'packages/seven/**'
             wrongNews:
               - added|modified: 'news/**'
 
-      - name: Volto changelog check
-        if: steps.filter.outputs.volto == 'true'
+      - name: seven changelog check
+        if: steps.filter.outputs.seven == 'true'
         run: |
-          # Fetch the pull request' base branch so towncrier will be able to
-          # compare the current branch with the base branch.
-          # Source: https://github.com/actions/checkout/#fetch-all-branches.
           git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/volto
+          towncrier check --compare-with origin/main --dir apps/seven
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
@@ -88,6 +83,14 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
+      - name: Helpers changelog check
+        if: steps.filter.outputs.helpers == 'true'
+        run: |
+          git fetch --no-tags origin main
+          towncrier check --compare-with origin/main --dir packages/helpers
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
       - name: Types changelog check
         if: steps.filter.outputs.types == 'true'
         run: |
@@ -104,11 +107,11 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
-      - name: Generator changelog check
-        if: steps.filter.outputs.generator == 'true'
+      - name: React Router changelog check
+        if: steps.filter.outputs.reactrouter == 'true'
         run: |
           git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/generator-volto
+          towncrier check --compare-with origin/main --dir packages/react-router
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
@@ -117,14 +120,6 @@ jobs:
         run: |
           git fetch --no-tags origin main
           towncrier check --compare-with origin/main --dir packages/scripts
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: volto-slate changelog check
-        if: steps.filter.outputs.voltoSlate == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/volto-slate
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
@@ -149,14 +144,6 @@ jobs:
         run: |
           git fetch --no-tags origin main
           towncrier check --compare-with origin/main --dir packages/theming
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: seven changelog check
-        if: steps.filter.outputs.seven == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/seven
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
