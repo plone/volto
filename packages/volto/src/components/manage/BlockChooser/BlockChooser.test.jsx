@@ -156,7 +156,11 @@ describe('BlocksChooser', () => {
     );
     expect(container.firstChild).not.toHaveTextContent('Video');
     // There are 2 because the others are aria-hidden="true"
-    expect(screen.getAllByRole('button')).toHaveLength(2);
+    const blockButtons = screen
+      .getAllByRole('button')
+      .filter((button) => button.classList.contains('basic'));
+
+    expect(blockButtons).toHaveLength(2);
   });
   it('allowedBlocks bypasses showRestricted', () => {
     config.blocks.blocksConfig.listing.restricted = true;
@@ -184,7 +188,10 @@ describe('BlocksChooser', () => {
     );
     expect(container.firstChild).not.toHaveTextContent('Video');
     // There's 1 because the others are aria-hidden="true"
-    expect(screen.getAllByRole('button')).toHaveLength(1);
+    const blockButtons = screen
+      .getAllByRole('button')
+      .filter((button) => button.classList.contains('basic'));
+    expect(blockButtons).toHaveLength(1);
     expect(container.firstChild).toHaveTextContent('Title');
   });
   it('uses custom blocksConfig test', () => {

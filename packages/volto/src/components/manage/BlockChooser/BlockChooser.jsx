@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import useUser from '@plone/volto/hooks/user/useUser';
 import PropTypes from 'prop-types';
 import filter from 'lodash/filter';
@@ -37,10 +37,12 @@ const BlockChooser = ({
   properties = {},
   navRoot,
   contentType,
+  onClose,
 }) => {
   const intl = useIntl();
   const user = useUser();
   const hasAllowedBlocks = !isEmpty(allowedBlocks);
+  const accordionRefs = useRef([]);
 
   const filteredBlocksConfig = filter(blocksConfig, (item) => {
     // Check if the block is well formed (has at least id and title)
@@ -76,7 +78,7 @@ const BlockChooser = ({
 
   let blocksAvailable = {};
   const mostUsedBlocks = filter(filteredBlocksConfig, (item) => item.mostUsed);
-  if (mostUsedBlocks) {
+  if (mostUsedBlocks.length) {
     blocksAvailable.mostUsed = mostUsedBlocks;
   }
   const groupedBlocks = groupBy(filteredBlocksConfig, (item) => item.group);
@@ -88,15 +90,31 @@ const BlockChooser = ({
   const groupBlocksOrder = filter(config.blocks.groupBlocksOrder, (item) =>
     Object.keys(blocksAvailable).includes(item.id),
   );
-  const [activeIndex, setActiveIndex] = React.useState(0);
 
-  function handleClick(e, titleProps) {
-    const { index } = titleProps;
-    const newIndex = activeIndex === index ? -1 : index;
+  const handleAccordionKeyDown = (e, index) => {
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+      e.preventDefault();
+      handleAccordionInteraction(index);
+    }
+  };
 
-    setActiveIndex(newIndex);
-  }
-  const [filterValue, setFilterValue] = React.useState('');
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        onClose?.();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const handleAccordionInteraction = (index) => {
+    setActiveIndex(activeIndex === index ? -1 : index);
+  };
+
+  const [filterValue, setFilterValue] = useState('');
 
   const getFormatMessage = (message) =>
     intl.formatMessage({
@@ -141,6 +159,9 @@ const BlockChooser = ({
                 });
             e.stopPropagation();
           }}
+          tabIndex={0}
+          role="button"
+          aria-label={getFormatMessage(block.title)}
         >
           <Icon name={block.icon} size="36px" />
           {getFormatMessage(block.title)}
@@ -158,13 +179,15 @@ const BlockChooser = ({
         config.experimental.addBlockButton.enabled ? ' new-add-block' : ''
       }`}
       ref={blockChooserRef}
+      role="dialog"
+      aria-label="Block chooser"
     >
       <BlockChooserSearch
         onChange={(value) => setFilterValue(value)}
         searchValue={filterValue}
       />
       {filterValue ? (
-        <>
+        <div role="list">
           {map(blocksAvailableFilter(filteredBlocksConfig), (block) => (
             <ButtonGroup block={block} key={block.id} />
           ))}
@@ -176,7 +199,7 @@ const BlockChooser = ({
               />
             </h4>
           )}
-        </>
+        </div>
       ) : (
         <Accordion fluid styled className="form">
           {map(groupBlocksOrder, (groupName, index) => (
@@ -191,9 +214,15 @@ const BlockChooser = ({
                         groupName.title
                       } blocks`
                 }
+                aria-expanded={activeIndex === index}
+                aria-controls={`section-${groupName.id}`}
                 active={activeIndex === index}
                 index={index}
-                onClick={handleClick}
+                onClick={() => handleAccordionInteraction(index)}
+                onKeyDown={(e) => handleAccordionKeyDown(e, index)}
+                ref={(el) => (accordionRefs.current[index] = el)}
+                role="button"
+                tabIndex={0}
               >
                 {intl.formatMessage({
                   id: groupName.id,
@@ -208,17 +237,22 @@ const BlockChooser = ({
                 </div>
               </Accordion.Title>
               <Accordion.Content
+                id={`section-${groupName.id}`}
                 className={groupName.id}
                 active={activeIndex === index}
+                role="region"
+                aria-labelledby={`header-${groupName.id}`}
               >
                 <AnimateHeight
                   animateOpacity
                   duration={500}
                   height={activeIndex === index ? 'auto' : 0}
                 >
-                  {map(blocksAvailable[groupName.id], (block) => (
-                    <ButtonGroup block={block} key={block.id} />
-                  ))}
+                  <div role="list">
+                    {map(blocksAvailable[groupName.id], (block) => (
+                      <ButtonGroup block={block} key={block.id} />
+                    ))}
+                  </div>
                 </AnimateHeight>
               </Accordion.Content>
             </React.Fragment>
@@ -235,6 +269,7 @@ BlockChooser.propTypes = {
   onInsertBlock: PropTypes.func,
   allowedBlocks: PropTypes.arrayOf(PropTypes.string),
   blocksConfig: PropTypes.objectOf(PropTypes.any),
+  onClose: PropTypes.func,
 };
 
 export default React.forwardRef((props, ref) => (

@@ -27,6 +27,13 @@ export const ButtonComponent = (props) => {
     onShowBlockChooser,
   } = props;
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+      e.preventDefault();
+      onShowBlockChooser();
+    }
+  };
+
   return (
     <Button
       icon
@@ -37,7 +44,10 @@ export const ButtonComponent = (props) => {
         e.stopPropagation();
         onShowBlockChooser();
       }}
+      onKeyDown={handleKeyDown}
       className={className}
+      aria-haspopup="dialog"
+      aria-expanded={false}
     >
       <Icon name={addSVG} className={className} size={size} />
     </Button>
@@ -61,7 +71,7 @@ const BlockChooserButton = (props) => {
 
   const { disableNewBlocks } = data;
   const [addNewBlockOpened, setAddNewBlockOpened] = React.useState(false);
-
+  const triggerButtonRef = React.useRef(null);
   const blockChooserRef = React.useRef();
 
   const handleClickOutside = React.useCallback((e) => {
@@ -73,6 +83,11 @@ const BlockChooserButton = (props) => {
     setAddNewBlockOpened(false);
   }, []);
 
+  const handleClose = React.useCallback(() => {
+    setAddNewBlockOpened(false);
+    triggerButtonRef.current?.focus();
+  }, []);
+
   const Component = buttonComponent || ButtonComponent;
 
   React.useEffect(() => {
@@ -81,6 +96,17 @@ const BlockChooserButton = (props) => {
       document.removeEventListener('mousedown', handleClickOutside, false);
     };
   }, [handleClickOutside]);
+
+  React.useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && addNewBlockOpened) {
+        handleClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [addNewBlockOpened, handleClose]);
 
   const [referenceElement, setReferenceElement] = React.useState(null);
   const [popperElement, setPopperElement] = React.useState(null);
@@ -111,10 +137,18 @@ const BlockChooserButton = (props) => {
       {!disableNewBlocks &&
         (config.experimental.addBlockButton.enabled ||
           !blockHasValue(data)) && (
-          <Ref innerRef={setReferenceElement}>
+          <Ref
+            innerRef={(node) => {
+              setReferenceElement(node);
+              if (node) {
+                triggerButtonRef.current = node;
+              }
+            }}
+          >
             <Component
               {...props}
               onShowBlockChooser={() => setAddNewBlockOpened(true)}
+              aria-expanded={addNewBlockOpened}
             />
           </Ref>
         )}
@@ -124,12 +158,14 @@ const BlockChooserButton = (props) => {
             ref={setPopperElement}
             style={styles.popper}
             {...attributes.popper}
+            role="dialog"
+            aria-modal="true"
           >
             <BlockChooser
               onMutateBlock={
                 onMutateBlock
                   ? (id, value) => {
-                      setAddNewBlockOpened(false);
+                      handleClose();
                       onMutateBlock(id, value);
                     }
                   : null
@@ -137,11 +173,12 @@ const BlockChooserButton = (props) => {
               onInsertBlock={
                 onInsertBlock
                   ? (id, value) => {
-                      setAddNewBlockOpened(false);
+                      handleClose();
                       onInsertBlock(id, value);
                     }
                   : null
               }
+              initialFocus="search"
               currentBlock={block}
               allowedBlocks={allowedBlocks}
               blocksConfig={blocksConfig}
@@ -150,6 +187,7 @@ const BlockChooserButton = (props) => {
               ref={blockChooserRef}
               navRoot={navRoot}
               contentType={contentType}
+              onClose={handleClose}
             />
           </div>,
           document.body,

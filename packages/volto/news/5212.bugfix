@@ -1,0 +1,1 @@
+Fixed accessibility issues in the "Add Block" modal of the editor where focus now stays inside the modal while navigating. @Manas-Kenge
