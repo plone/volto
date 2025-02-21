@@ -34,6 +34,10 @@ jobs:
           (cd core && git fetch --depth 1 origin ${GITHUB_REF#refs/heads/}:${GITHUB_REF#refs/heads/} && git checkout ${GITHUB_REF#refs/heads/})
           pnpm i
 
+      - name: Run ESlint in the generated package
+        working-directory: seven-add-on
+        run: pnpm lint
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
