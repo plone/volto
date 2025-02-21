@@ -8,5 +8,3 @@ packages/volto
 packages/registry/docs/*
 packages/registry/lib
 storybook-static
-apps/vite-ssr/src/routeTree.gen.ts
-apps/vite/src/routeTree.gen.ts
