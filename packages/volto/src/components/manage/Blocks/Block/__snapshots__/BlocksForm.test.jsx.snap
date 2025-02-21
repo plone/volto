@@ -153,6 +153,7 @@ exports[`Allow override of blocksConfig 1`] = `
             class="action drag"
             data-cypress="draggable-handle"
             role="button"
+            style="visibility: visible;"
             tabindex="0"
           >
             <svg
@@ -215,6 +216,7 @@ exports[`Allow override of blocksConfig 1`] = `
             class="action drag"
             data-cypress="draggable-handle"
             role="button"
+            style="visibility: visible;"
             tabindex="0"
           >
             <svg
