@@ -38,7 +38,7 @@
     "changelogupdater": "./changelogupdater.cjs",
     "i18n": "./i18n.cjs",
     "volto-update-deps": "./volto-update-deps.js",
-    "catalog-sync": "./catalogSync.js",
+    "catalog-sync": "./catalogSync.js"
   },
   "publishConfig": {
     "access": "public"
