@@ -1294,6 +1294,7 @@ class SchemaWidget extends Component {
         ...slice(this.props.value.fieldsets, this.state.currentFieldset + 1),
       ],
       properties: omit(this.props.value.properties, [this.state.deleteField]),
+      required: omit(this.props.value.required || [], [this.state.deleteField]),
     });
     this.onCancel();
   }
