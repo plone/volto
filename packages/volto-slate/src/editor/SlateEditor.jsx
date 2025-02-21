@@ -5,6 +5,9 @@ import { Transforms, Editor } from 'slate'; // , Transforms
 import { Slate, Editable, ReactEditor } from 'slate-react';
 import React, { Component } from 'react'; // , useState
 import { v4 as uuid } from 'uuid';
+import { Portal } from 'react-portal';
+import { createPopper } from '@popperjs/core';
+import { Ref } from 'semantic-ui-react';
 
 import config from '@plone/volto/registry';
 
@@ -57,6 +60,9 @@ class SlateEditor extends Component {
     this.getSavedSelection = this.getSavedSelection.bind(this);
     this.setSavedSelection = this.setSavedSelection.bind(this);
 
+    this.triggerRef = React.createRef();
+    this.popupRef = React.createRef();
+
     this.savedSelection = null;
 
     const uid = uuid(); // used to namespace the editor's plugins
@@ -107,6 +113,25 @@ class SlateEditor extends Component {
         this.props.onChange(value, this.editor);
       }
     });
+    this.popper = createPopper(this.triggerRef.current, this.popupRef.current, {
+      placement: 'bottom-start',
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, -15],
+          },
+        },
+        {
+          name: 'flip',
+          options: {
+            fallbackPlacements: ['right-end', 'top-start'],
+            rootBoundary: 'viewport',
+          },
+        },
+      ],
+    });
+    // console.log(this.popper);
   }
 
   multiDecorator([node, path]) {
@@ -136,10 +161,33 @@ class SlateEditor extends Component {
 
       this.state.editor.normalize({ force: true });
     }
+    this.popper = createPopper(this.triggerRef.current, this.popupRef.current, {
+      placement: 'bottom-start',
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, -15],
+          },
+        },
+        {
+          name: 'flip',
+          options: {
+            fallbackPlacements: ['right-end', 'top-start'],
+            rootBoundary: 'viewport',
+          },
+        },
+      ],
+    });
+    console.log(this.popper);
   }
 
   componentWillUnmount() {
     this.isUnmounted = true;
+    // if (this.popper) {
+    //   this.popper.destroy();
+    //   this.popper = null;
+    // }
   }
 
   componentDidUpdate(prevProps) {
@@ -291,59 +339,73 @@ class SlateEditor extends Component {
             ) : (
               ''
             )}
-            <Editable
-              tabIndex={this.props.tabIndex || 0}
-              readOnly={readOnly}
-              placeholder={placeholder}
-              renderElement={(props) => <Element {...props} />}
-              renderLeaf={(props) => <Leaf {...props} />}
-              decorate={this.multiDecorator}
-              spellCheck={false}
-              scrollSelectionIntoView={
-                slateSettings.scrollIntoView ? undefined : () => null
-              }
-              onBlur={() => {
-                this.props.onBlur && this.props.onBlur();
-                return null;
-              }}
-              onClick={this.props.onClick}
-              onSelect={(e) => {
-                if (!selected && this.props.onFocus) {
-                  // we can't overwrite the onFocus of Editable, as the onFocus
-                  // in Slate has too much builtin behaviour that's not
-                  // accessible otherwise. Instead we try to detect such an
-                  // event based on observing selected state
-                  if (!editor.selection) {
-                    setTimeout(() => {
-                      this.props.onFocus();
-                    }, 100); // TODO: why 100 is chosen here?
-                  }
+            <Ref innerRef={this.triggerRef}>
+              <Editable
+                tabIndex={this.props.tabIndex || 0}
+                readOnly={readOnly}
+                placeholder={placeholder}
+                renderElement={(props) => <Element {...props} />}
+                renderLeaf={(props) => <Leaf {...props} />}
+                decorate={this.multiDecorator}
+                spellCheck={false}
+                scrollSelectionIntoView={
+                  slateSettings.scrollIntoView ? undefined : () => null
                 }
-
-                if (this.selectionTimeout) clearTimeout(this.selectionTimeout);
-                this.selectionTimeout = setTimeout(() => {
-                  if (
-                    editor.selection &&
-                    !isEqual(editor.selection, this.savedSelection) &&
-                    !this.isUnmounted
-                  ) {
-                    this.setState((state) => ({ update: !this.state.update }));
-                    this.setSavedSelection(
-                      JSON.parse(JSON.stringify(editor.selection)),
-                    );
+                onBlur={() => {
+                  this.props.onBlur && this.props.onBlur();
+                  return null;
+                }}
+                onClick={this.props.onClick}
+                onSelect={(e) => {
+                  if (!selected && this.props.onFocus) {
+                    // we can't overwrite the onFocus of Editable, as the onFocus
+                    // in Slate has too much builtin behaviour that's not
+                    // accessible otherwise. Instead we try to detect such an
+                    // event based on observing selected state
+                    if (!editor.selection) {
+                      setTimeout(() => {
+                        this.props.onFocus();
+                      }, 100); // TODO: why 100 is chosen here?
+                    }
                   }
-                }, 200);
-              }}
-              onKeyDown={(event) => {
-                const handled = handleHotKeys(editor, event, slateSettings);
-                if (handled) return;
-                onKeyDown && onKeyDown({ editor, event });
-              }}
-              {...editableProps}
-            />
+
+                  if (this.selectionTimeout)
+                    clearTimeout(this.selectionTimeout);
+                  this.selectionTimeout = setTimeout(() => {
+                    if (
+                      editor.selection &&
+                      !isEqual(editor.selection, this.savedSelection) &&
+                      !this.isUnmounted
+                    ) {
+                      this.setState((state) => ({
+                        update: !this.state.update,
+                      }));
+                      this.setSavedSelection(
+                        JSON.parse(JSON.stringify(editor.selection)),
+                      );
+                    }
+                  }, 200);
+                }}
+                onKeyDown={(event) => {
+                  const handled = handleHotKeys(editor, event, slateSettings);
+                  if (handled) return;
+                  onKeyDown && onKeyDown({ editor, event });
+                }}
+                {...editableProps}
+              />
+            </Ref>
+
             {selected &&
               slateSettings.persistentHelpers.map((Helper, i) => {
-                return <Helper key={i} editor={editor} />;
+                return Helper.name === 'PersistentSlashMenu' ? (
+                  <Portal key={i}>
+                    <div ref={this.popupRef}>
+                      <Helper key={i} editor={editor} />
+                    </div>
+                  </Portal>
+                ) : (
+                  <Helper key={i} editor={editor} />
+                );
               })}
             {this.props.debug ? (
               <ul>
