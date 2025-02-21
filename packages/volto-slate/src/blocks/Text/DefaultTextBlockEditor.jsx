@@ -164,15 +164,13 @@ export const DefaultTextBlockEditor = (props) => {
   );
 
   const onEditorChange = (value, editor) => {
-    ReactDOM.unstable_batchedUpdates(() => {
-      onChangeBlock(block, {
-        ...data,
-        value,
-        plaintext: serializeNodesToText(value || []),
-        // TODO: also add html serialized value
-      });
-      deconstructToVoltoBlocks(editor);
+    onChangeBlock(block, {
+      ...data,
+      value,
+      plaintext: serializeNodesToText(value || []),
+      // TODO: also add html serialized value
     });
+    deconstructToVoltoBlocks(editor);
   };
 
   // Get editing instructions from block settings or props
