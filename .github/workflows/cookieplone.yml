@@ -38,6 +38,14 @@ jobs:
         working-directory: seven-add-on
         run: pnpm lint
 
+      - name: Run Prettier in the generated package
+        working-directory: seven-add-on
+        run: pnpm prettier
+
+      - name: Run Stylelint in the generated package
+        working-directory: seven-add-on
+        run: pnpm stylelint
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
