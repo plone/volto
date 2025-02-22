@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React from 'react';
 import { Button } from './Button';
 import { Link } from '../Link/Link';

@@ -1,6 +1,5 @@
 import { setup, teardown } from '../../resetFixture';
-import { beforeEach } from 'vitest';
-import { expect, test } from 'vitest';
+import { beforeEach, expect, test } from 'vitest';
 import PloneClient from '../../client';
 import { login, loginMutation } from './post';
 

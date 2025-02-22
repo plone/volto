@@ -7,7 +7,7 @@ export function getAddonRoutesConfig(
   routesConfig: Array<ReactRouterRouteEntry>,
   addonsInfo: Array<any>,
 ): Array<RouteConfigEntry> {
-  let resultRoutesConfig: RouteConfig = [];
+  const resultRoutesConfig: RouteConfig = [];
 
   for (const routeConfig of routesConfig) {
     const containsAddonModule = addonsInfo.find((addon) =>

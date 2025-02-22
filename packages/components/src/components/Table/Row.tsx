@@ -16,7 +16,7 @@ export function Row<T extends object>({
   children,
   ...otherProps
 }: RowProps<T>) {
-  let { selectionBehavior, allowsDragging } = useTableOptions();
+  const { selectionBehavior, allowsDragging } = useTableOptions();
 
   return (
     <RACRow id={id} {...otherProps}>

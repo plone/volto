@@ -4,8 +4,10 @@ import {
 } from './restapi/login/post';
 import type { LoginArgs } from './restapi/login/post';
 
-import { getContent as _getContent } from './restapi/content/get';
-import { getContentQuery as _getContentQuery } from './restapi/content/get';
+import {
+  getContent as _getContent,
+  getContentQuery as _getContentQuery,
+} from './restapi/content/get';
 import { createContentMutation as _createContentMutation } from './restapi/content/add';
 import { updateContentMutation as _updateContentMutation } from './restapi/content/update';
 import { deleteContentMutation as _deleteContentMutation } from './restapi/content/delete';
