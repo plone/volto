@@ -56,6 +56,9 @@ import { setFormData, setUIState } from '@plone/volto/actions/form/form';
 import { compose } from 'redux';
 import config from '@plone/volto/registry';
 import SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRenderer';
+import BlockValidation, {
+  extractFirstMessageToast,
+} from '@plone/volto/helpers/BlockValidation/BlockValidation';
 
 /**
  * Form container class.
@@ -536,30 +539,16 @@ class Form extends Component {
       const blocks = this.state.formData[getBlocksFieldname(formData)];
       const blocksLayout =
         this.state.formData[getBlocksLayoutFieldname(formData)];
-      const defaultSchema = {
-        properties: {},
-        fieldsets: [],
-        required: [],
-      };
-      blocksLayout.items.forEach((block) => {
-        let blockSchema =
-          config.blocks.blocksConfig[blocks[block]['@type']].blockSchema ||
-          defaultSchema;
-        if (typeof blockSchema === 'function') {
-          blockSchema = blockSchema({
-            intl: this.props.intl,
-            formData: blocks[block],
-          });
-        }
-        const blockErrors = FormValidation.validateFieldsPerFieldset({
-          schema: blockSchema,
-          formData: blocks[block],
-          formatMessage: this.props.intl.formatMessage,
-        });
+      blocksLayout.items.forEach((blockId) => {
+        const blockErrors = BlockValidation.blockFormDataValidator(
+          blocks[blockId],
+          this.props.intl,
+        );
         if (keys(blockErrors).length > 0) {
           blocksErrors = {
             ...blocksErrors,
-            [block]: { ...blockErrors },
+            [blockId]: blockErrors,
+            ...(blockErrors['@internal_errors'] || {}),
           };
         }
       });
@@ -599,12 +588,8 @@ class Form extends Component {
         );
         this.props.setSidebarTab(0);
       } else if (keys(blocksErrors).length > 0) {
-        const errorField = Object.entries(
-          Object.entries(blocksErrors)[0][1],
-        )[0][0];
-        const errorMessage = Object.entries(
-          Object.entries(blocksErrors)[0][1],
-        )[0][1];
+        const { errorField, errorMessage, uiState } =
+          extractFirstMessageToast(blocksErrors);
         toast.error(
           <Toast
             error
@@ -616,11 +601,7 @@ class Form extends Component {
           />,
         );
         this.props.setSidebarTab(1);
-        this.props.setUIState({
-          selected: Object.keys(blocksErrors)[0],
-          multiSelected: [],
-          hovered: null,
-        });
+        this.props.setUIState(uiState);
       }
     } else {
       // Get only the values that have been modified (Edit forms), send all in case that
