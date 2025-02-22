@@ -1,6 +1,7 @@
 // @ts-check
 
 // import eslint from '@eslint/js';
+// eslint-disable-next-line import/no-unresolved
 import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
 import importPlugin from 'eslint-plugin-import';
@@ -10,9 +11,23 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks';
 
 const JS_GLOB_INCLUDE = ['**/*.{ts,tsx,js,jsx}'];
 
+const generateFilesArray = (packages) => {
+  return packages.map((pkg) => `**/${pkg}/**/*.{tsx,jsx}`);
+};
+// '**/packages/blocks/**/*.{ts,tsx}'
+const addonPackages = [
+  'apps/seven',
+  'packages/blocks',
+  'packages/contents',
+  'packages/cmsui',
+  'packages/coresandbox',
+  'packages/slots',
+  'packages/theming',
+  // Add more packages as needed
+];
+
 export default tseslint.config(
   reactPlugin.configs.flat.recommended,
-  reactPlugin.configs.flat['jsx-runtime'],
   importPlugin.flatConfigs.recommended,
   prettierPlugin,
   jsxA11y.flatConfigs.recommended,
@@ -46,6 +61,7 @@ export default tseslint.config(
     },
   },
   {
+    name: 'Specific rules for TypeScript',
     files: ['**/*.ts', '**/*.tsx'],
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
@@ -53,11 +69,17 @@ export default tseslint.config(
     },
   },
   {
+    name: 'Specific rules for JS React',
     files: ['**/*.js', '**/*.jsx'],
     rules: {
       'react/prop-types': 0,
       'react/no-unescaped-entities': 0,
     },
+  },
+  {
+    name: 'plone/addons',
+    files: generateFilesArray(addonPackages),
+    ...reactPlugin.configs.flat['jsx-runtime'],
   },
   {
     name: 'plone/ignores',

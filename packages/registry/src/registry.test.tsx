@@ -1,3 +1,4 @@
+import React from 'react';
 import config from './index';
 import { describe, expect, it, afterEach, beforeEach } from 'vitest';
 
