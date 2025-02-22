@@ -172,7 +172,7 @@ export const AsLinks: Story = {
 
 export const SingleSelection: Story = {
   render: (args: any) => {
-    let [selected, setSelected] = React.useState<Selection>(
+    const [selected, setSelected] = React.useState<Selection>(
       new Set(['center']),
     );
 
@@ -201,7 +201,7 @@ export const SingleSelection: Story = {
 
 export const MultipleSelection: Story = {
   render: (args: any) => {
-    let [selected, setSelected] = React.useState<Selection>(
+    const [selected, setSelected] = React.useState<Selection>(
       new Set(['sidebar', 'console']),
     );
 
@@ -231,7 +231,7 @@ export const MultipleSelection: Story = {
 
 export const ControlledState: Story = {
   render: (args: any) => {
-    let [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
     return (
       <Menu
         {...args}

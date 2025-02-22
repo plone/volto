@@ -25,7 +25,7 @@ const SlotRenderer = ({
   location: GetSlotArgs['location'];
   navRoot?: GetSlotArgs['navRoot'];
 }) => {
-  let slots = config.getSlot(name, {
+  const slots = config.getSlot(name, {
     content,
     location,
     // This is to cover the use case while adding a new content and we don't have

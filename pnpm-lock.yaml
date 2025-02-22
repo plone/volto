@@ -15637,14 +15637,6 @@ snapshots:
     optionalDependencies:
       vite: 5.4.14(@types/node@22.10.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)
 
-  '@vitest/mocker@2.1.8(vite@5.4.14(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))':
-    dependencies:
-      '@vitest/spy': 2.1.8
-      estree-walker: 3.0.3
-      magic-string: 0.30.17
-    optionalDependencies:
-      vite: 5.4.14(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)
-
   '@vitest/mocker@2.1.8(vite@5.4.14(@types/node@22.10.7)(less@3.11.1)(lightningcss@1.28.1)(sass@1.75.0)(terser@5.30.3))':
     dependencies:
       '@vitest/spy': 2.1.8
@@ -22648,7 +22640,7 @@ snapshots:
   vitest@2.1.8(@types/node@20.12.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3):
     dependencies:
       '@vitest/expect': 2.1.8
-      '@vitest/mocker': 2.1.8(vite@5.4.14(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))
+      '@vitest/mocker': 2.1.8(vite@5.4.14(@types/node@22.10.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))
       '@vitest/pretty-format': 2.1.8
       '@vitest/runner': 2.1.8
       '@vitest/snapshot': 2.1.8

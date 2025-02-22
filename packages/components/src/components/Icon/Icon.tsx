@@ -55,20 +55,16 @@ const iconStyleProps: StyleHandlers = {
 
 export function Icon(props: IconProps) {
   props = useSlotProps(props, 'icon');
-  let {
-    children,
-    size,
-    'aria-label': ariaLabel,
-    'aria-hidden': ariaHidden,
-    ...otherProps
-  } = props;
-  let { styleProps } = useStyleProps(otherProps, iconStyleProps);
+  const { children, size, 'aria-label': ariaLabel, ...otherProps } = props;
+  let { 'aria-hidden': ariaHidden } = props;
+
+  const { styleProps } = useStyleProps(otherProps, iconStyleProps);
 
   if (!ariaHidden) {
     ariaHidden = undefined;
   }
 
-  let iconSize = size ? size : 'M';
+  const iconSize = size ? size : 'M';
 
   return React.cloneElement(children, {
     ...filterDOMProps(otherProps),

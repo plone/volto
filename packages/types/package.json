@@ -29,6 +29,7 @@
     "access": "public"
   },
   "types": "src/index.d.ts",
+  "type": "module",
   "scripts": {
     "check-ts": "tsc --project tsconfig.json",
     "dry-release": "release-it --dry-run",

@@ -50,14 +50,15 @@ interface AppRouterProps {
 }
 
 export function AppRouterProvider(props: AppRouterProps) {
-  let { children, navigate, useLocation, useParams, useHref, flattenToAppURL } =
-    props;
+  const { children, navigate, useLocation, useParams, useHref } = props;
+
+  let { flattenToAppURL } = props;
 
   if (!flattenToAppURL) {
     flattenToAppURL = defaultFlattenToAppURL;
   }
 
-  let ctx = useMemo(
+  const ctx = useMemo(
     () => ({
       useLocation,
       useParams,

@@ -1,6 +1,6 @@
 // @ts-check
 
-import eslint from '@eslint/js';
+// import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
 import importPlugin from 'eslint-plugin-import';
@@ -16,21 +16,20 @@ export default tseslint.config(
   importPlugin.flatConfigs.recommended,
   prettierPlugin,
   jsxA11y.flatConfigs.recommended,
+  tseslint.configs.recommended,
   {
     name: 'plone/setup',
     files: JS_GLOB_INCLUDE,
     languageOptions: {
-      sourceType: 'module',
       ecmaVersion: 2020,
-      parser: tseslint.parser,
     },
     plugins: {
-      '@typescript-eslint': tseslint.plugin,
       'react-hooks': reactHooksPlugin,
     },
     rules: {
       ...reactHooksPlugin.configs.recommended.rules,
       '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-empty-object-type': 'off',
       'jsx-a11y/no-autofocus': 'off',
     },
     linterOptions: {
@@ -77,6 +76,7 @@ export default tseslint.config(
       '**/*.config.js',
       'packages/registry/lib',
       'packages/registry/docs',
+      '**/+types/*',
     ],
   },
 );

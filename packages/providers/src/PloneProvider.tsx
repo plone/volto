@@ -46,7 +46,7 @@ interface PloneProviderProps {
 }
 
 export function PloneProvider(props: PloneProviderProps) {
-  let {
+  const {
     children,
     navigate,
     useLocation,
@@ -54,14 +54,15 @@ export function PloneProvider(props: PloneProviderProps) {
     useHref,
     ploneClient,
     queryClient,
-    flattenToAppURL,
   } = props;
+
+  let { flattenToAppURL } = props;
 
   if (!flattenToAppURL) {
     flattenToAppURL = defaultFlattenToAppURL;
   }
 
-  let ctx = useMemo(
+  const ctx = useMemo(
     () => ({
       ploneClient,
       queryClient,

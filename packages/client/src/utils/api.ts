@@ -21,7 +21,9 @@ export const addHeadersFactory = (orig) => {
     } else if (x_forwarded_for) {
       request.set('x-forwarded-for', x_forwarded_for);
     }
-    x_forwarded_host && request.set('x-forwarded-host', x_forwarded_host);
+    if (x_forwarded_host) {
+      request.set('x-forwarded-host', x_forwarded_host);
+    }
     // forward additional headers
     HEADERS.forEach((header) => {
       if (orig.headers[header]) {
