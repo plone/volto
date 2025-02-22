@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import { Menu, MenuItem } from './Menu';

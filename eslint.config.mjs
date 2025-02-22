@@ -9,7 +9,7 @@ import prettierPlugin from 'eslint-plugin-prettier/recommended';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 
-const JS_GLOB_INCLUDE = ['**/*.{ts,tsx,js,jsx}'];
+const JS_GLOB = ['**/*.{ts,tsx,js,jsx}'];
 
 const generateFilesArray = (packages) => {
   return packages.map((pkg) => `**/${pkg}/**/*.{tsx,jsx}`);
@@ -33,8 +33,8 @@ export default tseslint.config(
   jsxA11y.flatConfigs.recommended,
   tseslint.configs.recommended,
   {
-    name: 'plone/setup',
-    files: JS_GLOB_INCLUDE,
+    name: 'General ESlint Config',
+    files: JS_GLOB,
     languageOptions: {
       ecmaVersion: 2020,
     },
@@ -51,9 +51,8 @@ export default tseslint.config(
         'error',
         { extensions: ['.tsx', '.jsx'] },
       ],
-      'no-alert': 1,
-      'no-console': 1,
-      'no-debugger': 1,
+      'no-alert': 'warn',
+      'no-debugger': 'warn',
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'off',
@@ -69,7 +68,7 @@ export default tseslint.config(
     },
   },
   {
-    name: 'Specific rules for TypeScript',
+    name: 'TypeScript Specific - Rules',
     files: ['**/*.ts', '**/*.tsx'],
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
@@ -77,7 +76,7 @@ export default tseslint.config(
     },
   },
   {
-    name: 'Specific rules for JS React',
+    name: 'JS React - Rules',
     files: ['**/*.js', '**/*.jsx'],
     rules: {
       'react/prop-types': 0,
@@ -85,12 +84,19 @@ export default tseslint.config(
     },
   },
   {
-    name: 'plone/addons',
+    name: 'Addons - JSX Runtime plugin',
     files: generateFilesArray(addonPackages),
     ...reactPlugin.configs.flat['jsx-runtime'],
   },
   {
-    name: 'plone/ignores',
+    name: 'Addons - Rules',
+    files: generateFilesArray(addonPackages),
+    rules: {
+      'no-console': 'warn',
+    },
+  },
+  {
+    name: 'General Ignores',
     ignores: [
       '**/node_modules',
       '**/build',
