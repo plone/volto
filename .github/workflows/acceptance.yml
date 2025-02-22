@@ -692,54 +692,6 @@ jobs:
           name: cypress-videos
           path: packages/volto/cypress/videos
 
-  seven:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    runs-on: ubuntu-latest
-    name: Seven
-    timeout-minutes: 45
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [22.x]
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Node.js environment
-        uses: ./.github/actions/node_env_setup
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v6
-        env:
-          BABEL_ENV: production
-          CYPRESS_RETRIES: 2
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          install: false
-          working-directory: packages/seven
-          browser: chrome
-          spec: cypress/tests/core/basic/**/*.cy.ts
-          start: |
-            make ci-acceptance-backend-start
-            make acceptance-frontend-prod-start
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
-
-      # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: packages/seven/cypress/screenshots
-      # Upload Cypress videos
-      - uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-videos
-          path: packages/seven/cypress/videos
-
   prefix-core:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest

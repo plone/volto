@@ -17,6 +17,20 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.9.1 (2025-02-20)
+
+### Bugfix
+
+- Fix load more comments link. @sneridagh [#6759](https://github.com/plone/volto/issues/6759)
+
+### Internal
+
+- Move Seven to its own branch. @sneridagh [#6769](https://github.com/plone/volto/issues/6769)
+
+### Documentation
+
+- Fix reference to `link.svg` and include of `_inc/_install-browser-reqs-volto.md`. @stevepiercy [#6760](https://github.com/plone/volto/issues/6760)
+
 ## 18.9.0 (2025-02-17)
 
 ### Feature
