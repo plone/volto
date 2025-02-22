@@ -46,6 +46,14 @@ export default tseslint.config(
       '@typescript-eslint/no-unused-vars': 'off',
       '@typescript-eslint/no-empty-object-type': 'off',
       'jsx-a11y/no-autofocus': 'off',
+      'react/jsx-key': [2, { checkFragmentShorthand: true }],
+      'react/jsx-filename-extension': [
+        'error',
+        { extensions: ['.tsx', '.jsx'] },
+      ],
+      'no-alert': 1,
+      'no-console': 1,
+      'no-debugger': 1,
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'off',
