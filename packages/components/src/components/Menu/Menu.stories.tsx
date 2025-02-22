@@ -1,15 +1,15 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import { Menu, MenuItem } from './Menu';
 import {
   Header,
   Keyboard,
   Section,
-  Selection,
+  type Selection,
   Separator,
   Text,
 } from 'react-aria-components';
 import { SettingsIcon } from '../Icons/SettingsIcon';
-import type {} from 'react-aria-components';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import '../../styles/basic/Menu.css';

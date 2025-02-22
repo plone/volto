@@ -5,6 +5,8 @@ import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
 import importPlugin from 'eslint-plugin-import';
 import prettierPlugin from 'eslint-plugin-prettier/recommended';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
 
 const JS_GLOB_INCLUDE = ['**/*.{ts,tsx,js,jsx}'];
 
@@ -13,6 +15,7 @@ export default tseslint.config(
   reactPlugin.configs.flat['jsx-runtime'],
   importPlugin.flatConfigs.recommended,
   prettierPlugin,
+  jsxA11y.flatConfigs.recommended,
   {
     name: 'plone/setup',
     files: JS_GLOB_INCLUDE,
@@ -21,9 +24,14 @@ export default tseslint.config(
       ecmaVersion: 2020,
       parser: tseslint.parser,
     },
-    plugins: { '@typescript-eslint': tseslint.plugin },
+    plugins: {
+      '@typescript-eslint': tseslint.plugin,
+      'react-hooks': reactHooksPlugin,
+    },
     rules: {
+      ...reactHooksPlugin.configs.recommended.rules,
       '@typescript-eslint/no-unused-vars': 'off',
+      'jsx-a11y/no-autofocus': 'off',
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'off',
@@ -63,14 +71,12 @@ export default tseslint.config(
       'packages/coresandbox/*',
       'packages/volto-guillotina',
       'packages/volto-slate',
-      'packages/generator-volto/*',
       '!**/.*',
       '**/dist',
       '**/*.config.ts',
       '**/*.config.js',
       'packages/registry/lib',
       'packages/registry/docs',
-      'apps/rr7/.react-router',
     ],
   },
 );
