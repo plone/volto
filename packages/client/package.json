@@ -11,7 +11,8 @@
   "version": "1.0.0-alpha.23",
   "repository": {
     "type": "git",
-    "url": "git@github.com:plone/volto.git"
+    "url": "git@github.com:plone/volto.git",
+    "directory": "packages/client"
   },
   "bugs": {
     "url": "https://github.com/plone/volto/issues"
@@ -72,8 +73,7 @@
     "@types/react-dom": "catalog:",
     "@types/uuid": "^9.0.2",
     "@vitejs/plugin-react": "^4.1.0",
-    "@vitest/coverage-v8": "^1.3.1",
-    "glob": "7.1.6",
+    "@vitest/coverage-v8": "catalog:",
     "jsdom": "^21.1.1",
     "release-it": "catalog:",
     "tsup": "^8.3.5",
