@@ -42,7 +42,7 @@ exports[`renders a select widget component 1`] = `
               class="react-select__control css-1ard45z-control"
             >
               <div
-                class="react-select__value-container react-select__value-container--is-multi css-1dvrfad"
+                class="react-select__value-container react-select__value-container--is-multi css-1a9cv00-ValueContainer"
               >
                 <div
                   class="react-select__placeholder css-1wa3eu0-placeholder"
@@ -50,7 +50,7 @@ exports[`renders a select widget component 1`] = `
                   Select…
                 </div>
                 <div
-                  class="css-1g6gooi"
+                  class="css-b8ldur-Input"
                 >
                   <div
                     class="react-select__input"
@@ -75,14 +75,14 @@ exports[`renders a select widget component 1`] = `
                 </div>
               </div>
               <div
-                class="react-select__indicators css-1wy0on6"
+                class="react-select__indicators css-1hb7zxy-IndicatorsContainer"
               >
                 <span
                   class="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
                 />
                 <div
                   aria-hidden="true"
-                  class="react-select__indicator react-select__dropdown-indicator css-9t8fgp"
+                  class="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
                 >
                   <svg
                     class="icon"
