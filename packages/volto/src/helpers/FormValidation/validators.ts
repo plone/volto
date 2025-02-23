@@ -171,6 +171,13 @@ export const patternValidator = ({
   }
   const regex = new RegExp(field.pattern);
   const isValid = regex.test(value);
+
+  if (field.type === 'password' && field.pattern === '^[\x00-\xFF]*$') {
+    return !isValid
+      ? formatMessage(messages.addUserFormPasswordLatinOnly)
+      : null;
+  }
+
   return !isValid ? formatMessage(messages.pattern) : null;
 };
 

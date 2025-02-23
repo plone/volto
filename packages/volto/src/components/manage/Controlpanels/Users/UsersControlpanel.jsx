@@ -497,7 +497,9 @@ class UsersControlpanel extends Component {
         description: this.props.intl.formatMessage(
           messages.addUserFormPasswordDescription,
         ),
+        pattern: '^[\x00-\xFF]*$',
         widget: 'password',
+        minLength: 8,
       };
       adduserschema.properties['sendPasswordReset'] = {
         title: this.props.intl.formatMessage(

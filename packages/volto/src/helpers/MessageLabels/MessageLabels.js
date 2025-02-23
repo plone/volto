@@ -136,6 +136,11 @@ export const messages = defineMessages({
     id: 'addUserFormPasswordDescription',
     defaultMessage: 'Enter your new password. Minimum 8 characters.',
   },
+  addUserFormPasswordLatinOnly: {
+    id: 'addUserFormPasswordLatinOnly',
+    defaultMessage:
+      'Password can only contain Latin-1 characters (no €, emojis or other special characters)',
+  },
   addGroupsFormTitleTitle: {
     id: 'Title',
     defaultMessage: 'Title',
