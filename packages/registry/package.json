@@ -38,7 +38,7 @@
     "vite-plugin.*"
   ],
   "bin": {
-    "init-loaders": "./dist/addon-registry/init-loaders.js"
+    "init-loaders": "./bin/init-loaders.js"
   },
   "main": "dist/index.js",
   "exports": {
@@ -59,10 +59,6 @@
       "import": "./dist/addon-registry/create-addons-styles-loader.js",
       "default": "./dist/addon-registry/create-addons-styles-loader.cjs"
     },
-    "./init-loaders": {
-      "import": "./dist/addon-registry/init-loaders.js",
-      "default": "./dist/addon-registry/init-loaders.cjs"
-    },
     "./vite-plugin": {
       "import": "./vite-plugin.js",
       "types": "./vite-plugin.d.ts"
@@ -76,6 +72,7 @@
     }
   },
   "scripts": {
+    "postinstall": "tsup",
     "build": "tsup",
     "build:force": "rm -rf dist && tsup",
     "check:exports": "attw --pack .",
