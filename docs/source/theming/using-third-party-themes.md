@@ -46,7 +46,8 @@ import '@plone/volto/../theme/themes/pastanaga/extras/extras.less'
 + import '../theme/site.scss';
 ```
 
-Then, copy the `theme.config` file present in core Volto (`core/packages/volto/theme/theme.config`) to your add-on's `src/theme/` folder and change the following and the needed variables:
+Then, copy the {file}`theme.config` file from core Volto ({file}`core/packages/volto/theme/theme.config`) to your add-on's {file}`src/theme/` folder.
+Change the following variable as shown.
 
 ```diff
 - @container   : 'pastanaga';
