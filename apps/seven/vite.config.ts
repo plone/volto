@@ -1,7 +1,8 @@
 import { reactRouter } from '@react-router/dev/vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import { defineConfig } from 'vite';
+import { defineConfig, PluginOption } from 'vite';
 import { PloneRegistryVitePlugin } from '@plone/registry/vite-plugin';
+import { PloneSGVRVitePlugin } from '@plone/components/vite-plugin-sgvr';
 
 const prodServerName =
   process.env.PLONE_API_PATH && process.env.PLONE_API_PATH.startsWith('https')
@@ -9,7 +10,12 @@ const prodServerName =
     : '';
 
 export default defineConfig({
-  plugins: [PloneRegistryVitePlugin(), reactRouter(), tsconfigPaths()],
+  plugins: [
+    PloneSGVRVitePlugin() as PluginOption[],
+    PloneRegistryVitePlugin(),
+    reactRouter(),
+    tsconfigPaths(),
+  ],
   server: {
     port: 3000,
     fs: {
