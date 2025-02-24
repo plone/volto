@@ -33,6 +33,7 @@ jobs:
           pnpm dlx mrs-developer missdev --no-config --fetch-https
           (cd core && git fetch --depth 1 origin ${GITHUB_REF#refs/heads/}:${GITHUB_REF#refs/heads/} && git checkout ${GITHUB_REF#refs/heads/})
           pnpm i
+          make build-deps
 
       - name: Run ESlint in the generated package
         working-directory: seven-add-on
