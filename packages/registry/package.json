@@ -37,6 +37,9 @@
     "README.md",
     "vite-plugin.*"
   ],
+  "bin": {
+    "init-loaders": "./dist/addon-registry/init-loaders.js"
+  },
   "main": "dist/index.js",
   "exports": {
     "./package.json": "./package.json",
@@ -55,6 +58,10 @@
     "./create-addons-styles-loader": {
       "import": "./dist/addon-registry/create-addons-styles-loader.js",
       "default": "./dist/addon-registry/create-addons-styles-loader.cjs"
+    },
+    "./init-loaders": {
+      "import": "./dist/addon-registry/init-loaders.js",
+      "default": "./dist/addon-registry/init-loaders.cjs"
     },
     "./vite-plugin": {
       "import": "./vite-plugin.js",

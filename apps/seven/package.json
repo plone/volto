@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "react-router dev",
     "start": "react-router dev",
-    "build": "react-router build",
+    "build": "pnpm exec init-loaders && react-router build",
     "start:prod": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "typegen": "react-router typegen",
