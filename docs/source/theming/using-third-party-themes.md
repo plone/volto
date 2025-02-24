@@ -56,8 +56,8 @@ Change the following variable as shown.
 
 ### Use Sass loader
 
-```{note}
-This is not required anymore since Volto 18.
+```{versionremoved} Volto 18
+This section is no longer required since Volto 18.
 ```
 
 If you have to load Sass, you will need `razzle-plugin-scss` and you will have to customize `razzle.config.js` integrating that plugin into Razzle configuration.
