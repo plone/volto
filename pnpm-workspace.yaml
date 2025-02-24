@@ -3,7 +3,6 @@ packages:
   - 'packages/*'
   # Only seven as an app
   - 'apps/seven'
-  - 'apps/my-app'
   # exclude packages that are inside test directories
   - '!**/test/**'
   # exclude Volto packages, leaving them as reference
