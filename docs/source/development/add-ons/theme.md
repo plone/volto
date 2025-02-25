@@ -39,7 +39,8 @@ For convenience, it can also be set via a `THEME` environment variable.
     ```
 
 2.  Create a directory {file}`src/theme` in your add-on.
-    Inside that directory, create a new file {file}`theme.config`, adding the following content, but replacing `<name_of_your_theme>` with your add-on name. You can also copy the contents of Volto's core {file}`theme.config` file copying it from {file}`core/packages/volto/theme/theme.config`
+    Inside that directory, create a new file {file}`theme.config`, adding the following content, but replacing `<name_of_your_theme>` with your add-on name.
+    You can also copy the contents of Volto's core {file}`theme.config` file, copying it from {file}`core/packages/volto/theme/theme.config` to use as a starting point.
 
     ```less
     /*******************************
