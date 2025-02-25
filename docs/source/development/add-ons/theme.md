@@ -147,8 +147,10 @@ However, while maintaining and playing well with the Semantic UI Volto base, you
 At the same time, you can either discard or complement the `extras` escape hatch and add your own, by customizing the {file}`theme.js` module in Volto.
 
 Customizing the base theme is a special use case in Volto.
-To begin, add a {file}`./@root/theme.js` file structure in your {file}`customizations` folder in your add-on or project and put the following example contents:
-
+The original file is in Volto at {file}`volto/src/theme.js`.
+This is the file to be customized.
+In the {file}`customizations` folder, override it as {file}`customizations/@root/theme.js`, using the `@root` alias to avoid writing the full path.
+Add the following code to this file.
 
 ```js
 import 'semantic-ui-less/semantic.less';
