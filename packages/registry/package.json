@@ -34,9 +34,13 @@
   "type": "module",
   "files": [
     "dist",
+    "bin",
     "README.md",
     "vite-plugin.*"
   ],
+  "bin": {
+    "init-loaders": "./bin/init-loaders.js"
+  },
   "main": "dist/index.js",
   "exports": {
     "./package.json": "./package.json",
@@ -69,6 +73,7 @@
     }
   },
   "scripts": {
+    "postinstall": "tsup",
     "build": "tsup",
     "build:force": "rm -rf dist && tsup",
     "check:exports": "attw --pack .",

@@ -1,0 +1,1 @@
+Fixed the upgrade to 7.2.0 problem introduced in remix-run/react-router#13078 @sneridagh
