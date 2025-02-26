@@ -16,12 +16,10 @@ beforeAll(() => {
 });
 
 vi.mock('../Toolbar/Toolbar', () => ({
-  __esModule: true,
   default: vi.fn(() => <div id="Portal" />),
 }));
 
 vi.mock('../Form/Form', () => ({
-  __esModule: true,
   default: vi.fn(() => <div className="Form" />),
 }));
 
