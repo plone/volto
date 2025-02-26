@@ -12,7 +12,7 @@ runs:
 
     - name: Enable corepack
       shell: bash
-      run: npm i -g corepack@latest && corepack enable
+      run: corepack enable
 
     - name: Get pnpm store directory
       shell: bash
@@ -29,6 +29,7 @@ runs:
 
     - name: Cache Cypress Binary
       id: cache-cypress-binary
+      if: ${{ inputs.cypress }}
       uses: actions/cache@v4
       with:
         path: ~/.cache/Cypress
@@ -39,7 +40,7 @@ runs:
       run: make install
 
     - name: Install Cypress if not in cache
-      if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+      if: ${{ inputs.cypress }} && steps.cache-cypress-binary.outputs.cache-hit != 'true'
       shell: bash
       working-directory: packages/volto
       run: make cypress-install
@@ -48,3 +49,8 @@ inputs:
   node-version:
     description: 'Node.js version'
     required: true
+
+  cypress:
+    description: 'Install Cypress'
+    required: true
+    default: false

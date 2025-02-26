@@ -17,6 +17,7 @@ jobs:
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
+          cypress: true
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -65,6 +66,7 @@ jobs:
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
+          cypress: true
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -113,6 +115,7 @@ jobs:
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
+          cypress: true
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -161,6 +164,7 @@ jobs:
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
+          cypress: true
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -209,6 +213,7 @@ jobs:
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
+          cypress: true
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -257,6 +262,7 @@ jobs:
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
+          cypress: true
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -304,6 +310,7 @@ jobs:
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
+          cypress: true
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -352,6 +359,7 @@ jobs:
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
+          cypress: true
 
       - name: Cypress Coresandbox Acceptance tests
         uses: cypress-io/github-action@v6
@@ -400,6 +408,7 @@ jobs:
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
+          cypress: true
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -449,6 +458,7 @@ jobs:
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
+          cypress: true
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -501,6 +511,7 @@ jobs:
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
+          cypress: true
 
       # Generator own tests
       - name: Generator tests
@@ -608,6 +619,7 @@ jobs:
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
+          cypress: true
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -658,6 +670,7 @@ jobs:
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
+          cypress: true
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -708,6 +721,7 @@ jobs:
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
+          cypress: true
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
