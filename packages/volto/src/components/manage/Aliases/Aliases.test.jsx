@@ -10,12 +10,10 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 vi.mock('../Toolbar/Toolbar', () => ({
-  __esModule: true,
   default: vi.fn(() => <div id="Portal" />),
 }));
 
 vi.mock('../Toolbar/More', () => ({
-  __esModule: true,
   default: vi.fn(() => <div className="More" />),
 }));
 
@@ -33,11 +31,7 @@ describe('Aliases', () => {
           loading: false,
           error: null,
         },
-        get: {
-          loading: false,
-          loaded: true,
-          error: null,
-        },
+        get: { __esModule: true, loading: false, loaded: true, error: null },
         items: [],
       },
       content: {
