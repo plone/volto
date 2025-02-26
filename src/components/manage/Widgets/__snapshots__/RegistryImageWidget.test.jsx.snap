@@ -18,7 +18,7 @@ exports[`RegistryImageWidget renders a file widget component with value 1`] = `
             class="wrapper"
           >
             <label
-              for="field-my-field"
+              for="fieldset-default-field-label-my-field"
               id="fieldset-default-field-label-my-field"
             >
               My field
@@ -92,7 +92,7 @@ exports[`RegistryImageWidget renders an empty file widget component 1`] = `
             class="wrapper"
           >
             <label
-              for="field-my-field"
+              for="fieldset-default-field-label-my-field"
               id="fieldset-default-field-label-my-field"
             >
               My field

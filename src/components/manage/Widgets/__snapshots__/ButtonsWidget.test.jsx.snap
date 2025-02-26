@@ -18,7 +18,7 @@ exports[`renders an align widget component basic 1`] = `
             class="wrapper"
           >
             <label
-              for="field-align"
+              for="fieldset-default-field-label-align"
               id="fieldset-default-field-label-align"
             >
               Alignment
@@ -137,7 +137,7 @@ exports[`renders an align widget component extended with actions and actionsInfo
             class="wrapper"
           >
             <label
-              for="field-align"
+              for="fieldset-default-field-label-align"
               id="fieldset-default-field-label-align"
             >
               Alignment
