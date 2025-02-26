@@ -263,7 +263,6 @@ class SlateEditor extends Component {
             editor={editor}
             initialValue={this.props.value || slateSettings.defaultValue()}
             onChange={this.handleChange}
-            label="teste"
           >
             {selected ? (
               <>
