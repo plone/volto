@@ -1,1 +1,1 @@
-Added an id to the “Checkbox” component in the checkbox widget for proper identification and correct label functionality for screen readers. @Wagner3UB
+a11y - Added id attribute to checkbox widget for proper identification and fixex label functionality for screen readers. @Wagner3UB
