@@ -1,1 +1,1 @@
-Added an aria-label to CreatableSelect inside TokenWidget to improve the component’s accessibility. @Wagner3UB
+Added an `aria-label` to `CreatableSelect` inside `TokenWidget` to improve the component’s accessibility. @Wagner3UB
