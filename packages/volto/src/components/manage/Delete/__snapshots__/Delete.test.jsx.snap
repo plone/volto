@@ -48,6 +48,7 @@ exports[`Delete renders a delete component 1`] = `
             aria-label="Cancel"
             class="ui big basic circular icon secondary right floated button"
             title="Cancel"
+            type="button"
           >
             <i
               aria-hidden="true"

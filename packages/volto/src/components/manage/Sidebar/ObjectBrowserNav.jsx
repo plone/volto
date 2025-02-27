@@ -164,6 +164,7 @@ const ObjectBrowserNav = ({
                   >
                     <Button.Group>
                       <Button
+                        type="button"
                         basic
                         icon
                         aria-label={`${intl.formatMessage(messages.browse)} ${

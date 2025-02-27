@@ -425,7 +425,11 @@ class Add extends Component {
                         title={this.props.intl.formatMessage(messages.save)}
                       />
                     </Button>
-                    <Button className="cancel" onClick={() => this.onCancel()}>
+                    <Button
+                      className="cancel"
+                      onClick={() => this.onCancel()}
+                      type="button"
+                    >
                       <Icon
                         name={clearSVG}
                         className="circled"

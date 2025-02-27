@@ -66,6 +66,7 @@ const EditBlockWrapper = (props) => {
             aria-label={intl.formatMessage(messages.reset, {
               index,
             })}
+            type="button"
             basic
             icon
             onClick={(e) => onResetBlock(block, {})}
@@ -75,6 +76,7 @@ const EditBlockWrapper = (props) => {
           </Button>
         ) : (
           <Button
+            type="button"
             basic
             icon
             className="remove-block-button"

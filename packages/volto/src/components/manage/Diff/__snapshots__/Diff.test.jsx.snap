@@ -29,12 +29,14 @@ exports[`Diff renders a diff component 1`] = `
         >
           <button
             class="ui active button"
+            type="button"
             value="split"
           >
             Split
           </button>
           <button
             class="ui button"
+            type="button"
             value="unified"
           >
             Unified
