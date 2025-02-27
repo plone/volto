@@ -3,18 +3,12 @@ import type {
   AriaLabelingProps,
   DOMProps,
   IconColorValue,
-  StyleProps,
 } from '@react-types/shared';
-import {
-  baseStyleProps,
-  type StyleHandlers,
-  useSlotProps,
-  useStyleProps,
-} from '@react-spectrum/utils';
+import { useSlotProps } from '@react-spectrum/utils';
 import { filterDOMProps } from '@react-aria/utils';
 import _clsx from 'clsx';
 
-export interface IconProps extends DOMProps, AriaLabelingProps, StyleProps {
+export interface IconProps extends DOMProps, AriaLabelingProps {
   /**
    * A screen reader only label for the Icon.
    */
@@ -40,25 +34,18 @@ export interface IconProps extends DOMProps, AriaLabelingProps, StyleProps {
    * Color of the Icon.
    */
   color?: IconColorValue;
+  /**
+   * Custom class name to apply to the icon.
+   */
+  className?: string;
 }
 
 export type IconPropsWithoutChildren = Omit<IconProps, 'children'>;
-
-function iconColorValue(value: IconColorValue) {
-  return `var(--quanta-color-icon-${value})`;
-}
-
-const iconStyleProps: StyleHandlers = {
-  ...baseStyleProps,
-  color: ['color', iconColorValue],
-};
 
 export function Icon(props: IconProps) {
   props = useSlotProps(props, 'icon');
   const { children, size, 'aria-label': ariaLabel, ...otherProps } = props;
   let { 'aria-hidden': ariaHidden } = props;
-
-  const { styleProps } = useStyleProps(otherProps, iconStyleProps);
 
   if (!ariaHidden) {
     ariaHidden = undefined;
@@ -68,7 +55,6 @@ export function Icon(props: IconProps) {
 
   return React.cloneElement(children, {
     ...filterDOMProps(otherProps),
-    ...styleProps,
     focusable: 'false',
     'aria-label': ariaLabel,
     'aria-hidden': ariaLabel ? ariaHidden || undefined : true,
@@ -77,7 +63,8 @@ export function Icon(props: IconProps) {
       'q icon',
       `icon--size${iconSize}`,
       children.props.className,
-      styleProps.className,
+      props.className,
     ),
+    style: { color: `var(${props.color})` },
   });
 }

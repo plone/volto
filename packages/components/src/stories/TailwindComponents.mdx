@@ -1,0 +1,66 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Tailwind/Introduction" />
+
+
+# Tailwind components
+
+This package contains ReactJS components for Plone 7 and it's a core package of Plone's modular frontend packages story.
+
+The purpose of this package is to provide an agnostic set of baseline components to build Plone sites upon.
+
+## Usage
+
+You can use your choice of package manager (npm, yarn, or pnpm) to install the package in your app.
+If you add the components to Seven or Volto add-ons, use pnpm, as shown.
+
+```shell
+pnpm add @plone/components
+```
+
+Whenever you want to use the components, all are exported as named exports:
+
+```ts
+import { TextField } from '@plone/components/tailwind';
+
+const MyComponent = (props) => {
+  return (
+    <>
+      <TextField label="Username" />
+    </>;
+  )
+}
+
+export default MyComponent;
+```
+
+## Styling
+
+The Tailwind components are styled using the Tailwind CSS utility-first framework.
+This means that the components are styled using utility classes, which are applied directly to the components.
+
+### CSS layers
+
+This package uses CSS layers to style the components to handle overrides and customizations in a more convenient way.
+Tailwind 4 already leverages CSS layers to provide a way to customize the components.
+This package extend the Tailwind defined layers:
+```
+@layer theme, base, components, plone-components, utilities, custom;
+```
+
+It introduces the `plone-components` layer to scope the components' styles included in this package.
+It also provides a final `custom` layer to allow customizations and overrides.
+
+### VSCODE configuration for Tailwind CSS
+
+To enable Tailwind CSS IntelliSense in VSCode, you need to add the following configuration to your workspace settings:
+
+```json
+  "tailwindCSS.experimental.classRegex": [
+    ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ],
+  "tailwindCSS.experimental.configFile": "packages/components/src/styles/tailwind/base.css",
+```
+
+For Tailwind 4, you need to point the `configFile` to a Tailwind CSS file in your reference package.
+In this case, we set it up to use the `base.css` file in the components package.
