@@ -150,7 +150,7 @@ Customizing the base theme is a special use case in Volto.
 The original file is in Volto at {file}`volto/src/theme.js`.
 This is the file to be customized.
 In the {file}`customizations` folder, override it as {file}`customizations/@root/theme.js`, using the `@root` alias to avoid writing the full path.
-Add the following code to this file.
+Edit the imports in this file to align with the following code.
 
 ```js
 import 'semantic-ui-less/semantic.less';
