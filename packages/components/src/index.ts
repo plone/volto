@@ -23,7 +23,6 @@ export { DisclosureGroup } from './components/DisclosureGroup/DisclosureGroup';
 export { Form } from './components/Form/Form';
 export { GridList, GridListItem } from './components/GridList/GridList';
 export { Icon } from './components/Icon/Icon';
-export * from './components/Icons';
 export { Link } from './components/Link/Link';
 export { ListBox, ListBoxItem } from './components/ListBox/ListBox';
 export { Menu, MenuItem } from './components/Menu/Menu';
