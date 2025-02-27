@@ -23,8 +23,7 @@ const meta = {
       control: { type: 'radio' },
     },
     color: {
-      options: ['informative', 'negative', 'notice', 'positive'],
-      control: { type: 'radio' },
+      control: { type: 'color' },
     },
   },
 } satisfies Meta<typeof IconSGVR>;
