@@ -64,6 +64,7 @@ exports[`renders a token widget component 1`] = `
                 >
                   <input
                     aria-autocomplete="list"
+                    aria-label="My field"
                     autoCapitalize="none"
                     autoComplete="off"
                     autoCorrect="off"
