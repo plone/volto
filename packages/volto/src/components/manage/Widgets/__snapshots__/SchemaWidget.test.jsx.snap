@@ -61,7 +61,7 @@ exports[`renders a schema widget component 1`] = `
         style="background: transparent;"
       />
       <div
-        class="inline field"
+        class="inline field addfield"
       >
         <div
           class="ui grid"

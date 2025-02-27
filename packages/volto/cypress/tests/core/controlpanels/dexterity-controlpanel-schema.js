@@ -29,7 +29,7 @@ describe('ControlPanel: Dexterity Content-Types Schema', () => {
     // Add field
     cy.get('button[id=addfield]').click();
     cy.wait(2000);
-    cy.get('.modal .react-select-container').click().type('Choice{enter}');
+    cy.get('.modal div[id="field-factory"]').click().type('Choice{enter}');
     cy.get('.modal input[id="field-title"]')
       .type('Color')
       .should('have.value', 'Color');
