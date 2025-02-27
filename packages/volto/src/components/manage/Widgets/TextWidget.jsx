@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Input } from 'semantic-ui-react';
+import { Input, Label } from 'semantic-ui-react';
 
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
@@ -22,6 +22,7 @@ const TextWidget = (props) => {
   } = props;
 
   const ref = useRef();
+  const [lengthError, setLengthError] = useState('');
 
   useEffect(() => {
     if (focus) {
@@ -29,6 +30,18 @@ const TextWidget = (props) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleChange = (id, newValue) => {
+    if (maxLength && newValue?.length > maxLength) {
+      setLengthError(
+        `You have exceeded the character limit by ${newValue.length - maxLength}`,
+      );
+    } else {
+      setLengthError('');
+    }
+
+    onChange(id, newValue);
+  };
 
   return (
     <FormFieldWrapper {...props} className="text">
@@ -40,7 +53,7 @@ const TextWidget = (props) => {
         icon={icon || null}
         placeholder={placeholder}
         onChange={({ target }) =>
-          onChange(id, target.value === '' ? undefined : target.value)
+          handleChange(id, target.value === '' ? undefined : target.value)
         }
         ref={ref}
         onBlur={({ target }) =>
@@ -48,12 +61,16 @@ const TextWidget = (props) => {
         }
         onClick={() => onClick()}
         minLength={minLength || null}
-        maxLength={maxLength || null}
       />
       {icon && iconAction && (
         <button className={`field-${id}-action-button`} onClick={iconAction}>
           <Icon name={icon} size="18px" />
         </button>
+      )}
+      {lengthError && (
+        <Label basic color="red" pointing>
+          {lengthError}
+        </Label>
       )}
     </FormFieldWrapper>
   );
