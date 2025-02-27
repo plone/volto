@@ -63,7 +63,7 @@
     "check:ts": "tsc --project tsconfig.json",
     "test": "vitest --passWithNoTests",
     "coverage": "vitest run --coverage --no-threads",
-    "lint": "pnpm eslint && pnpm prettier && pnpm stylelint && pnpm check-ts",
+    "lint": "pnpm eslint && pnpm prettier && pnpm stylelint && pnpm check:ts",
     "format": "pnpm eslint:fix && pnpm prettier:fix && pnpm stylelint:fix",
     "eslint": "eslint 'src/**/*.{js,ts,tsx}' --quiet",
     "eslint:fix": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",

@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import * as Icons from '../components/Icons';
+import * as Icons from '../components/icons';
 
 import '../styles/basic/icons.css';
 
