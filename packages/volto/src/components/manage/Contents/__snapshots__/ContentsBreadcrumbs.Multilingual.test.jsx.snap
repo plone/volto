@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ContentsBreadcrumbs Multilingual renders a ContentsBreadcrumbs component - Multilingual 1`] = `
+exports[`ContentsBreadcrumbs Multilingual > renders a ContentsBreadcrumbs component - Multilingual 1`] = `
 <div
   className="ui breadcrumb"
 >
@@ -51,7 +51,7 @@ exports[`ContentsBreadcrumbs Multilingual renders a ContentsBreadcrumbs componen
 </div>
 `;
 
-exports[`ContentsBreadcrumbs Multilingual renders a breadcrumbs component containing items with nav_title - Multilingual 1`] = `
+exports[`ContentsBreadcrumbs Multilingual > renders a breadcrumbs component containing items with nav_title - Multilingual 1`] = `
 <div
   className="ui breadcrumb"
 >

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders an object widget component with clicks on each tab in root level to load all of them 1`] = `
 <DocumentFragment>

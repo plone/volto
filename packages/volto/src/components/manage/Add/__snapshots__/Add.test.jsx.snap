@@ -1,18 +1,18 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Add renders an add component 1`] = `
+exports[`Add > renders an add component 1`] = `
 <div>
   <div />
 </div>
 `;
 
-exports[`Add renders an add component with schema 1`] = `
+exports[`Add > renders an add component with schema 1`] = `
 <div>
   <div />
 </div>
 `;
 
-exports[`Add renders an empty add component 1`] = `
+exports[`Add > renders an empty add component 1`] = `
 <div>
   <div />
 </div>

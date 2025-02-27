@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`TitleWidget renders a title view widget component 1`] = `
+exports[`TitleWidget > renders a title view widget component 1`] = `
 <h1
   className="metadata title widget documentFirstHeading"
 >
@@ -8,7 +8,7 @@ exports[`TitleWidget renders a title view widget component 1`] = `
 </h1>
 `;
 
-exports[`TitleWidget renders a title view widget component with children 1`] = `
+exports[`TitleWidget > renders a title view widget component with children 1`] = `
 <h1
   className="metadata title widget documentFirstHeading"
 >
@@ -18,4 +18,4 @@ exports[`TitleWidget renders a title view widget component with children 1`] = `
 </h1>
 `;
 
-exports[`TitleWidget renders an empty title view widget component 1`] = `null`;
+exports[`TitleWidget > renders an empty title view widget component 1`] = `null`;
