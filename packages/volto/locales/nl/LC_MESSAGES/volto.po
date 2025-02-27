@@ -211,6 +211,11 @@ msgstr "Nieuwe gebruiker toevoegen"
 msgid "Add to Groups"
 msgstr "Aan groepen toevoegen"
 
+#. Default: "Add to favorites"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "Add to favorites"
+msgstr ""
+
 #. Default: "Add users to group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add users to group"
@@ -494,6 +499,11 @@ msgstr "Basis zoekopdracht"
 msgid "Block"
 msgstr "Blok"
 
+#. Default: "Block copied to clipboard"
+#: components/manage/Sidebar/FavoriteItem
+msgid "Block copied to clipboard"
+msgstr ""
+
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
@@ -557,6 +567,7 @@ msgstr "Kan lay-out niet bewerken voor het <strong>{type}</strong>-contenttype o
 
 #. Default: "Cancel"
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/SaveBlockDialog
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
@@ -678,6 +689,7 @@ msgid "Click to download full sized image"
 msgstr "Klik om de afbeelding in volle grootte te downloaden"
 
 #. Default: "Close"
+#: components/manage/Sidebar/FavoriteItem
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr "Sluiten"
@@ -843,6 +855,11 @@ msgstr "Controles"
 #: components/manage/Contents/ContentsItem
 msgid "Copy"
 msgstr "Kopiëren"
+
+#. Default: "Copy block"
+#: components/manage/Sidebar/FavoriteItem
+msgid "Copy block"
+msgstr ""
 
 #. Default: "Copy blocks"
 #: helpers/MessageLabels/MessageLabels
@@ -1321,6 +1338,11 @@ msgstr "Einddatum"
 msgid "Enter URL or select an item"
 msgstr "Vul de URL in of selecteer een item"
 
+#. Default: "Enter a name for this block"
+#: components/manage/Blocks/Block/SaveBlockDialog
+msgid "Enter a name for this block"
+msgstr ""
+
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
@@ -1507,6 +1529,11 @@ msgstr "Facetten bovenaan"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Failed To Undo Transactions"
 msgstr "Transactie ongedaan maken mislukt"
+
+#. Default: "Favorite"
+#: components/manage/Sidebar/Sidebar
+msgid "Favorite"
+msgstr ""
 
 #. Default: "Field"
 #: components/manage/Blocks/Search/schema
@@ -3094,6 +3121,8 @@ msgstr "Regels worden uitgevoerd wanneer een triggergebeurtenis optreedt. Regela
 
 #. Default: "Save"
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/EditBlockWrapper
+#: components/manage/Blocks/Block/SaveBlockDialog
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -3103,9 +3132,15 @@ msgstr "Regels worden uitgevoerd wanneer een triggergebeurtenis optreedt. Regela
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/Sidebar
 #: helpers/MessageLabels/MessageLabels
 msgid "Save"
 msgstr "Opslaan"
+
+#. Default: "Save block"
+#: components/manage/Blocks/Block/SaveBlockDialog
+msgid "Save block"
+msgstr ""
 
 #. Default: "Save"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget

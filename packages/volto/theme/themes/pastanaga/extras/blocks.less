@@ -1237,6 +1237,24 @@ div.image-upload-widget-image {
   }
 }
 
+// css for save icon
+
+.Control-Icons {
+  position: absolute;
+  z-index: 10;
+  top: -3px;
+  right: -35px;
+  display: flex;
+
+  .delete-button,
+  .save-button {
+    margin-right: 3px;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
+  }
+}
+
 // If using popperjs, we need also to set preference too to the
 // popperjs container. The sidebar container has 150, so it has to be higher.
 [data-popper-placement] {

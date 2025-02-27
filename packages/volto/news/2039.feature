@@ -1,0 +1,1 @@
+Added favorites to the content browser sidebar. @TechSubham

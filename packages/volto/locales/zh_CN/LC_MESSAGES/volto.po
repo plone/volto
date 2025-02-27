@@ -213,6 +213,11 @@ msgstr "添加新用户"
 msgid "Add to Groups"
 msgstr "添加到组"
 
+#. Default: "Add to favorites"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "Add to favorites"
+msgstr ""
+
 #. Default: "Add users to group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add users to group"
@@ -496,6 +501,11 @@ msgstr "基本搜索查询"
 msgid "Block"
 msgstr "块"
 
+#. Default: "Block copied to clipboard"
+#: components/manage/Sidebar/FavoriteItem
+msgid "Block copied to clipboard"
+msgstr ""
+
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
@@ -559,6 +569,7 @@ msgstr ""
 
 #. Default: "Cancel"
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/SaveBlockDialog
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
@@ -680,6 +691,7 @@ msgid "Click to download full sized image"
 msgstr "点击下载完整大小的图片"
 
 #. Default: "Close"
+#: components/manage/Sidebar/FavoriteItem
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr "关闭"
@@ -845,6 +857,11 @@ msgstr "控制"
 #: components/manage/Contents/ContentsItem
 msgid "Copy"
 msgstr "复制"
+
+#. Default: "Copy block"
+#: components/manage/Sidebar/FavoriteItem
+msgid "Copy block"
+msgstr ""
 
 #. Default: "Copy blocks"
 #: helpers/MessageLabels/MessageLabels
@@ -1323,6 +1340,11 @@ msgstr "结束日期"
 msgid "Enter URL or select an item"
 msgstr "输入 URL 或选择一个项目"
 
+#. Default: "Enter a name for this block"
+#: components/manage/Blocks/Block/SaveBlockDialog
+msgid "Enter a name for this block"
+msgstr ""
+
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
@@ -1509,6 +1531,11 @@ msgstr ""
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Failed To Undo Transactions"
 msgstr "撤销事务失败"
+
+#. Default: "Favorite"
+#: components/manage/Sidebar/Sidebar
+msgid "Favorite"
+msgstr ""
 
 #. Default: "Field"
 #: components/manage/Blocks/Search/schema
@@ -3096,6 +3123,8 @@ msgstr "触发事件发生时执行规则。只有符合规则的所有条件，
 
 #. Default: "Save"
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/EditBlockWrapper
+#: components/manage/Blocks/Block/SaveBlockDialog
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -3105,9 +3134,15 @@ msgstr "触发事件发生时执行规则。只有符合规则的所有条件，
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/Sidebar
 #: helpers/MessageLabels/MessageLabels
 msgid "Save"
 msgstr "保存"
+
+#. Default: "Save block"
+#: components/manage/Blocks/Block/SaveBlockDialog
+msgid "Save block"
+msgstr ""
 
 #. Default: "Save"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget

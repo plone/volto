@@ -59,11 +59,46 @@ Array [
         >
           Order
         </a>
+        <a
+          className="item"
+          onClick={[Function]}
+        >
+          Favorite
+        </a>
       </div>
       <div
         className="ui bottom attached segment active tab tab-wrapper"
         id="sidebar-metadata"
-      />
+      >
+        <button
+          className="ui button save-button-wrapper"
+          onClick={[Function]}
+        >
+          <svg
+            className="icon save-icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+          <span
+            className="save-button-text"
+          >
+            Save
+          </span>
+        </button>
+      </div>
       <div
         className="ui bottom attached segment tab tab-wrapper"
         id="sidebar-properties"
@@ -109,6 +144,42 @@ Array [
           viewBox=""
           xmlns=""
         />
+      </div>
+      <div
+        className="ui bottom attached segment tab tab-wrapper"
+        id="sidebar-Favorite"
+      >
+        <div
+          className="saved-items-container"
+        >
+          <div
+            className="text-center py-4"
+          >
+            <svg
+              className="icon tab-forbidden mx-auto"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "48px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+            <p
+              className="mt-2 text-gray-500"
+            >
+              No Favorites blocks saved
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>,

@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useCallback } from 'react';
+import React, { useState, Fragment, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Tab } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,8 +13,20 @@ import forbiddenSVG from '@plone/volto/icons/forbidden.svg';
 import { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
 import expandSVG from '@plone/volto/icons/left-key.svg';
 import collapseSVG from '@plone/volto/icons/right-key.svg';
+import save from '@plone/volto/icons/save.svg';
+import { removeFromFavorites } from '@plone/volto/actions/favorites/favorites';
+import FavoriteItem from './FavoriteItem';
+import { loadFavorites } from '../../../actions/favorites/favorites';
 
 const messages = defineMessages({
+  save: {
+    id: 'Save',
+    defaultMessage: 'Save',
+  },
+  Favorite: {
+    id: 'Favorite',
+    defaultMessage: 'Favorite',
+  },
   document: {
     id: 'Document',
     defaultMessage: 'Document',
@@ -51,21 +63,32 @@ const Sidebar = (props) => {
     blockTab,
     settingsTab,
     orderTab = true,
+    favoriteTab = true,
   } = props;
   const [expanded, setExpanded] = useState(
     cookies.get('sidebar_expanded') !== 'false',
   );
   const [size] = useState(0);
   const [showFull, setshowFull] = useState(true);
-
-  const tab = useSelector((state) => state.sidebar.tab);
-  const toolbarExpanded = useSelector((state) => state.toolbar.expanded);
-  const type = useSelector((state) => state.schema?.schema?.title);
+  const FavoriteItems = useSelector((state) => state?.favorites?.items ?? []);
+  const tab = useSelector((state) => state?.sidebar?.tab ?? 0);
+  const toolbarExpanded = useSelector(
+    (state) => state?.toolbar?.expanded ?? false,
+  );
+  const type = useSelector((state) => state?.schema?.schema?.title);
 
   const onToggleExpanded = () => {
     cookies.set('sidebar_expanded', !expanded, getCookieOptions());
     setExpanded(!expanded);
     resetFullSizeSidebar();
+  };
+
+  useEffect(() => {
+    dispatch(loadFavorites());
+  }, [dispatch]);
+
+  const handleRemoveFavorite = (blockId) => {
+    dispatch(removeFromFavorites(blockId));
   };
 
   const resetFullSizeSidebar = useCallback(() => {
@@ -160,7 +183,14 @@ const Sidebar = (props) => {
                   key="metadata"
                   className="tab-wrapper"
                   id="sidebar-metadata"
-                />
+                >
+                  <Button className="save-button-wrapper">
+                    <Icon className="save-icon" name={save} size="24px" />
+                    <span className="save-button-text">
+                      {intl.formatMessage(messages.save)}
+                    </span>
+                  </Button>
+                </Tab.Pane>
               ),
             },
             !!blockTab && {
@@ -184,6 +214,7 @@ const Sidebar = (props) => {
                 </Tab.Pane>
               ),
             },
+
             !!orderTab && {
               menuItem: intl.formatMessage(messages.order),
               pane: (
@@ -216,6 +247,42 @@ const Sidebar = (props) => {
                 </Tab.Pane>
               ),
             },
+            !!favoriteTab && {
+              menuItem: intl.formatMessage(messages.Favorite),
+              pane: (
+                <Tab.Pane
+                  key="Favorite"
+                  className="tab-wrapper"
+                  id="sidebar-Favorite"
+                >
+                  <div className="saved-items-container">
+                    {Array.isArray(FavoriteItems) &&
+                    FavoriteItems.length > 0 ? (
+                      <div className="divide-y">
+                        {FavoriteItems.map((item) => (
+                          <FavoriteItem
+                            key={item.id}
+                            item={item}
+                            onRemove={handleRemoveFavorite}
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="text-center py-4">
+                        <Icon
+                          className="tab-forbidden mx-auto"
+                          name={forbiddenSVG}
+                          size="48px"
+                        />
+                        <p className="mt-2 text-gray-500">
+                          No Favorites blocks saved
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </Tab.Pane>
+              ),
+            },
           ].filter((tab) => tab)}
         />
       </div>
@@ -228,12 +295,14 @@ Sidebar.propTypes = {
   documentTab: PropTypes.bool,
   blockTab: PropTypes.bool,
   settingsTab: PropTypes.bool,
+  favoriteTab: PropTypes.bool,
 };
 
 Sidebar.defaultProps = {
   documentTab: true,
   blockTab: true,
   settingsTab: false,
+  favoriteTab: true,
 };
 
 export default compose(withCookies)(Sidebar);
