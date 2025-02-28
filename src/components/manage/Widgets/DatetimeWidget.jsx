@@ -193,6 +193,10 @@ export class DatetimeWidgetComponent extends Component {
     const dateOnly = this.getDateOnly();
     const { SingleDatePicker } = reactDates;
 
+    const screenReaderInputMessage = intl.formatMessage(
+      messages.publicationDateMessage,
+    );
+
     return (
       <FormFieldWrapper {...this.props}>
         <div className="date-time-widget-wrapper">
@@ -215,12 +219,10 @@ export class DatetimeWidgetComponent extends Component {
                 .longDateFormat('L')}
               navPrev={<PrevIcon />}
               navNext={<NextIcon />}
-              id={`field-${id}`}
+              id={`${id}-date`}
               placeholder={intl.formatMessage(messages.date)}
               ariaLabel={this.props.title}
-              screenReaderInputMessage={intl.formatMessage(
-                messages.publicationDateMessage,
-              )}
+              screenReaderInputMessage={screenReaderInputMessage}
             />
           </div>
           {!dateOnly && (

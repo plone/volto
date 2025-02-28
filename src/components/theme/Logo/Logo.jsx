@@ -36,25 +36,7 @@ const Logo = () => {
   const navRootPath = flattenToAppURL(navroot?.navroot?.['@id']) || '/';
   const currentURLIsNavRoot = pathname !== navRootPath;
 
-  return (
-    <ConditionalLink
-      href={navRootPath}
-      title={navroot?.navroot?.title}
-      // In case that the content returns 404, there is no information about the portal
-      // then render the link anyways to get out of the Unauthorized page
-      condition={!navroot || currentURLIsNavRoot}
-    >
-      <Image
-        src={
-          site['plone.site_logo']
-            ? flattenToAppURL(site['plone.site_logo'])
-            : LogoImage
-        }
-        alt={navroot?.navroot?.title}
-        title={navroot?.navroot?.title}
-      />
-    </ConditionalLink>
-  );
+  return <></>;
 };
 
 export default Logo;
