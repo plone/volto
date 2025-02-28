@@ -32,6 +32,11 @@ const messages = defineMessages({
     id: 'Time',
     defaultMessage: 'Time',
   },
+  publicationDateMessage: {
+    id: 'publicationDateMessage',
+    defaultMessage:
+      'Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.',
+  },
 });
 
 const PrevIcon = () => (
@@ -210,8 +215,12 @@ export class DatetimeWidgetComponent extends Component {
                 .longDateFormat('L')}
               navPrev={<PrevIcon />}
               navNext={<NextIcon />}
-              id={`${id}-date`}
+              id={`field-${id}`}
               placeholder={intl.formatMessage(messages.date)}
+              ariaLabel={this.props.title}
+              screenReaderInputMessage={intl.formatMessage(
+                messages.publicationDateMessage,
+              )}
             />
           </div>
           {!dateOnly && (
