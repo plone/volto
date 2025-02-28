@@ -4706,6 +4706,11 @@ msgstr ""
 msgid "private"
 msgstr "非表示"
 
+#. Default: "Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates."
+#: components/manage/Widgets/DatetimeWidget
+msgid "publicationDateMessage"
+msgstr "カレンダーを操作して日付を選択するには、前に進んでください。日付を変更するためのキーボードショートカットを表示するには、クエスチョンマークキーを押してください"
+
 #. Default: "Published"
 #: components/manage/Contents/ContentsItem
 msgid "published"
