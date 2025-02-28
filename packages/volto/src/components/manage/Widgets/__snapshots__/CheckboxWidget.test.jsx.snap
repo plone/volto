@@ -3,7 +3,7 @@
 exports[`CheckboxWidget renders a checkbox widget component 1`] = `
 <DocumentFragment>
   <div
-    class="inline field field-wrapper-my-field"
+    class="inline field field-wrapper-checkbox-widget"
   >
     <div
       class="ui grid"
@@ -22,16 +22,17 @@ exports[`CheckboxWidget renders a checkbox widget component 1`] = `
             >
               <input
                 class="hidden"
-                name="field-my-field"
+                id="field-checkbox-widget"
+                name="field-checkbox-widget"
                 readonly=""
                 tabindex="0"
                 type="checkbox"
                 value=""
               />
               <label
-                for="field-my-field"
+                for="field-checkbox-widget"
               >
-                My field
+                Checkbox Widget
               </label>
             </div>
           </div>
@@ -45,7 +46,7 @@ exports[`CheckboxWidget renders a checkbox widget component 1`] = `
 exports[`CheckboxWidget renders a checkbox widget component checked 1`] = `
 <DocumentFragment>
   <div
-    class="inline field field-wrapper-my-field"
+    class="inline field field-wrapper-checked-checkbox-widget"
   >
     <div
       class="ui grid"
@@ -65,16 +66,17 @@ exports[`CheckboxWidget renders a checkbox widget component checked 1`] = `
               <input
                 checked=""
                 class="hidden"
-                name="field-my-field"
+                id="field-checked-checkbox-widget"
+                name="field-checked-checkbox-widget"
                 readonly=""
                 tabindex="0"
                 type="checkbox"
                 value=""
               />
               <label
-                for="field-my-field"
+                for="field-checked-checkbox-widget"
               >
-                My field
+                Checked Checkbox Widget
               </label>
             </div>
           </div>
