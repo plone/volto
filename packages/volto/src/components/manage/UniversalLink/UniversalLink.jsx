@@ -21,6 +21,7 @@ const UniversalLink = ({
   item = null,
   openLinkInNewTab,
   download = false,
+  forceA = false,
   children,
   className = null,
   title = null,
@@ -77,6 +78,23 @@ const UniversalLink = ({
   const checkedURL = URLUtils.checkAndNormalizeUrl(url);
 
   url = checkedURL.url;
+
+  if (forceA) {
+    // Forces the use of a native <a> tag
+    return (
+      <a
+        href={addPrefixPath(flattenToAppURL(url))}
+        target={openLinkInNewTab ? '_blank' : '_self'}
+        rel={openLinkInNewTab ? 'noopener noreferrer' : undefined}
+        title={title}
+        className={className}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  }
+
   let tag = (
     <Link
       to={flattenToAppURL(url)}
