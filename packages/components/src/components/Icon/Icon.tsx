@@ -1,9 +1,5 @@
 import React, { type ReactElement } from 'react';
-import type {
-  AriaLabelingProps,
-  DOMProps,
-  IconColorValue,
-} from '@react-types/shared';
+import type { AriaLabelingProps, DOMProps } from '@react-types/shared';
 import { useSlotProps } from '@react-spectrum/utils';
 import { filterDOMProps } from '@react-aria/utils';
 import _clsx from 'clsx';
@@ -31,13 +27,14 @@ export interface IconProps extends DOMProps, AriaLabelingProps {
    */
   'aria-hidden'?: boolean | 'false' | 'true';
   /**
-   * Color of the Icon.
+   * Color of the Icon. It can be a HEX color or a CSS custom property.
    */
-  color?: IconColorValue;
+  color?: string;
   /**
    * Custom class name to apply to the icon.
    */
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export type IconPropsWithoutChildren = Omit<IconProps, 'children'>;
@@ -46,12 +43,14 @@ export function Icon(props: IconProps) {
   props = useSlotProps(props, 'icon');
   const { children, size, 'aria-label': ariaLabel, ...otherProps } = props;
   let { 'aria-hidden': ariaHidden } = props;
-
   if (!ariaHidden) {
     ariaHidden = undefined;
   }
 
   const iconSize = size ? size : 'M';
+  const color = props.color?.startsWith('--')
+    ? `var(${props.color})`
+    : props.color;
 
   return React.cloneElement(children, {
     ...filterDOMProps(otherProps),
@@ -65,6 +64,6 @@ export function Icon(props: IconProps) {
       children.props.className,
       props.className,
     ),
-    style: { color: `var(${props.color})` },
+    style: { color, ...otherProps.style },
   });
 }
