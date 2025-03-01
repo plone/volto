@@ -34,6 +34,7 @@ export interface IconProps extends DOMProps, AriaLabelingProps {
    * Custom class name to apply to the icon.
    */
   className?: string;
+  style: React.CSSProperties;
 }
 
 export type IconPropsWithoutChildren = Omit<IconProps, 'children'>;
@@ -50,7 +51,6 @@ export function Icon(props: IconProps) {
   const color = props.color?.startsWith('--')
     ? `var(${props.color})`
     : props.color;
-  console.log(color);
 
   return React.cloneElement(children, {
     ...filterDOMProps(otherProps),
@@ -64,6 +64,6 @@ export function Icon(props: IconProps) {
       children.props.className,
       props.className,
     ),
-    style: { color },
+    style: { color, ...otherProps.style },
   });
 }

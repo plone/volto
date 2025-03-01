@@ -55,3 +55,6 @@ export { Tooltip } from './components/Tooltip/Tooltip';
 export { QuantaTextField } from './components/quanta/TextField/TextField';
 export { QuantaTextAreaField } from './components/quanta/TextAreaField/TextAreaField';
 export { QuantaSelect } from './components/quanta/Select/Select';
+
+// types
+export type { IconProps } from './components/Icon/Icon';
