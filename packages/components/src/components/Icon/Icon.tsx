@@ -34,7 +34,7 @@ export interface IconProps extends DOMProps, AriaLabelingProps {
    * Custom class name to apply to the icon.
    */
   className?: string;
-  style: React.CSSProperties;
+  style?: React.CSSProperties;
 }
 
 export type IconPropsWithoutChildren = Omit<IconProps, 'children'>;
