@@ -90,4 +90,39 @@ describe('getAddonRoutesConfig', () => {
       },
     ]);
   });
+
+  it('route - prefix', () => {
+    const routesConfig: Array<ReactRouterRouteEntry> = [
+      {
+        type: 'prefix',
+        path: 'edit',
+        children: [
+          {
+            type: 'index',
+            file: './index.tsx',
+          },
+          {
+            type: 'route',
+            path: '*',
+            file: './edit.tsx',
+          },
+        ],
+      },
+    ];
+    expect(getAddonRoutesConfig(routesConfig, addonsInfo)).toEqual([
+      [
+        {
+          children: undefined,
+          path: 'edit',
+          file: './index.tsx',
+          index: true,
+        },
+        {
+          children: undefined,
+          path: 'edit/*',
+          file: './edit.tsx',
+        },
+      ],
+    ]);
+  });
 });
