@@ -1,1 +1,1 @@
-Add @plone/components Vite SGVR plugin proxy. @sneridagh
+Add @plone/components Vite SVGR plugin proxy. @sneridagh
