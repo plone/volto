@@ -1,6 +1,6 @@
-# `@plone/slots`
+# `@plone/cmsui`
 
-This package provides default structural slots for Plone 7 and the API-first story.
+This package is an add-on providing the Plone 7 CMSUI.
 
 > [!WARNING]
 > This package or app is experimental.
