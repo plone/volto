@@ -6,7 +6,7 @@ import type { Content } from '@plone/types';
 export default function Content() {
   const data = useRouteLoaderData('root') as Content;
   const pathname = useLocation().pathname;
-  console.log(data);
+
   return (
     <>
       <h1>{data.title}</h1>
