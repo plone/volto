@@ -182,17 +182,17 @@ const MyComponent = (props) => (
 
 ### Vite SVGR plugin
 
-This package provides a Vite plugin that uses and configures `vite-plugin-sgvr` to use `@plone/components` `Icon` component under the hood.
+This package provides a Vite plugin that uses and configures `vite-plugin-svgr` to use `@plone/components` `Icon` component under the hood.
 This plugin converts a raw SVG file into a React component, ready to be used.
 It wraps the SVG with the `@plone/components` `Icon` component.
 To use it, you have to add it to your `vite.config.ts` app configuration.
 
 ```ts
-import { PloneSGVRVitePlugin } from '@plone/components/vite-plugin-sgvr';
+import { PloneSVGRVitePlugin } from '@plone/components/vite-plugin-svgr';
 
 export default defineConfig({
   plugins: [
-    PloneSGVRVitePlugin(),
+    PloneSVGRVitePlugin(),
     // (...other plugins)
   ],
   // (...more Vite config)

@@ -31,9 +31,9 @@
       "types": "./src/icons.d.ts"
     },
     "./icons/*": "./src/icons/*",
-    "./vite-plugin-sgvr": {
-      "import": "./vite-plugin-sgvr.js",
-      "types": "./vite-plugin-sgvr.d.ts"
+    "./vite-plugin-svgr": {
+      "import": "./vite-plugin-svgr.js",
+      "types": "./vite-plugin-svgr.d.ts"
     },
     "./dist/*.css": "./dist/*.css",
     "./src/*": "./src/*",

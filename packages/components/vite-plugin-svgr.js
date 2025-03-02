@@ -1,7 +1,7 @@
 import svgr from 'vite-plugin-svgr';
 import { mergeConfig } from 'vite';
 
-export function PloneSGVRVitePlugin(customConfig = {}) {
+export function PloneSVGRVitePlugin(customConfig = {}) {
   return [
     svgr(
       mergeConfig(

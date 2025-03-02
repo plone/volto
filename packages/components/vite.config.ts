@@ -1,9 +1,9 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
-import { PloneSGVRVitePlugin } from './vite-plugin-sgvr';
+import { PloneSVGRVitePlugin } from './vite-plugin-svgr';
 
 export default defineConfig({
-  plugins: [PloneSGVRVitePlugin(), react()],
+  plugins: [PloneSVGRVitePlugin(), react()],
   css: {
     transformer: 'lightningcss',
   },
