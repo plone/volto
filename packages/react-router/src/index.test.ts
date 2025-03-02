@@ -110,19 +110,17 @@ describe('getAddonRoutesConfig', () => {
       },
     ];
     expect(getAddonRoutesConfig(routesConfig, addonsInfo)).toEqual([
-      [
-        {
-          children: undefined,
-          path: 'edit',
-          file: './index.tsx',
-          index: true,
-        },
-        {
-          children: undefined,
-          path: 'edit/*',
-          file: './edit.tsx',
-        },
-      ],
+      {
+        children: undefined,
+        path: 'edit',
+        file: './index.tsx',
+        index: true,
+      },
+      {
+        children: undefined,
+        path: 'edit/*',
+        file: './edit.tsx',
+      },
     ]);
   });
 });

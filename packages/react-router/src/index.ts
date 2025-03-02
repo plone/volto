@@ -70,8 +70,7 @@ export function getAddonRoutesConfig(
 
       case 'prefix':
         resultRoutesConfig.push(
-          // @ts-ignore
-          prefix(
+          ...prefix(
             routeConfig.path,
             getAddonRoutesConfig(routeConfig.children, addonsInfo),
           ),
