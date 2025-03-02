@@ -1,1 +1,1 @@
-Add own Vite SGVR plugin proxy. @sneridagh
+Add own Vite SVGR plugin proxy. @sneridagh
