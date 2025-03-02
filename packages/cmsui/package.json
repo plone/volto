@@ -1,6 +1,6 @@
 {
   "name": "@plone/cmsui",
-  "description": "Plone core slots like Header, Footer, etc",
+  "description": "Plone CMSUI based in Quanta DS",
   "maintainers": [
     {
       "name": "Plone Foundation",
@@ -9,10 +9,11 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "1.0.0-alpha.1",
+  "version": "0.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/plone/volto.git"
+    "url": "https://github.com/plone/volto.git",
+    "directory": "packages/cmsui"
   },
   "bugs": {
     "url": "https://github.com/plone/volto/issues"
@@ -36,9 +37,7 @@
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
-    "release-alpha": "release-it --preRelease=alpha",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "release-alpha": "release-it --preRelease=alpha"
   },
   "peerDependencies": {
     "react": "^18.2.0 || ^19.0.0",
@@ -54,20 +53,12 @@
     "@plone/client": "workspace:*",
     "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
-    "react-aria-components": "catalog:",
+    "react-router": "catalog:",
+    "tailwindcss": "^4.0.9",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
-    "@storybook/addon-essentials": "^8.5.3",
-    "@storybook/addon-interactions": "^8.5.3",
-    "@storybook/addon-links": "^8.5.3",
-    "@storybook/addon-mdx-gfm": "^8.5.3",
-    "@storybook/blocks": "^8.5.3",
-    "@storybook/manager-api": "^8.5.3",
-    "@storybook/react": "^8.5.3",
-    "@storybook/react-vite": "^8.5.3",
-    "@storybook/theming": "^8.5.3",
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "14.2.1",
     "@types/jest-axe": "^3.5.7",
@@ -78,10 +69,8 @@
     "jest-axe": "^8.0.0",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "release-it": "catalog:",
-    "storybook": "^8.5.3",
     "tsconfig": "workspace:*",
     "typescript": "catalog:",
-    "vite": "catalog:",
     "vitest": "catalog:",
     "vitest-axe": "^0.1.0"
   }

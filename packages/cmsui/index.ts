@@ -10,7 +10,6 @@ export default function install(config: ConfigType) {
 
   config.registerRoute({
     type: 'index',
-    path: '/',
     file: '@plone/cmsui/routes/index.tsx',
   });
 
@@ -21,9 +20,22 @@ export default function install(config: ConfigType) {
   });
 
   config.registerRoute({
-    type: 'route',
-    path: '/edit',
-    file: '@plone/cmsui/routes/edit.tsx',
+    type: 'prefix',
+    path: 'edit',
+    children: [
+      {
+        type: 'index',
+        file: '@plone/cmsui/routes/edit.tsx',
+        options: {
+          id: 'index-edit',
+        },
+      },
+      {
+        type: 'route',
+        path: '*',
+        file: '@plone/cmsui/routes/edit.tsx',
+      },
+    ],
   });
 
   return config;
