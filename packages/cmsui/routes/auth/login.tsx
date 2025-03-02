@@ -47,7 +47,7 @@ export default function Login() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2
           id="login-header"
-          className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
+          className="mt-6 text-center text-2xl leading-9 font-bold tracking-tight text-gray-900"
         >
           Log in
         </h2>
@@ -84,7 +84,7 @@ export default function Login() {
           </Form>
         </div>
       </div>
-      <div className="bg-amber-950">HELLO</div>
+      <div className="bg-amber-600">HELLO</div>
     </div>
   );
 }

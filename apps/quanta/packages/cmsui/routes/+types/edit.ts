@@ -11,8 +11,8 @@ export type Info = {
   parents: [Parent0],
   id: "/Users/sneridagh/Development/plone/7/packages/cmsui/routes/edit"
   file: "../../../packages/cmsui/routes/edit.tsx"
-  path: "/edit"
-  params: {} & { [key: string]: string | undefined }
+  path: "edit/*"
+  params: {"*": string} & { [key: string]: string | undefined }
   module: Module
   loaderData: T.CreateLoaderData<Module>
   actionData: T.CreateActionData<Module>
