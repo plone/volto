@@ -1,20 +1,10 @@
 import React, { type ReactElement } from 'react';
-import type {
-  AriaLabelingProps,
-  DOMProps,
-  IconColorValue,
-  StyleProps,
-} from '@react-types/shared';
-import {
-  baseStyleProps,
-  type StyleHandlers,
-  useSlotProps,
-  useStyleProps,
-} from '@react-spectrum/utils';
+import type { AriaLabelingProps, DOMProps } from '@react-types/shared';
+import { useSlotProps } from '@react-spectrum/utils';
 import { filterDOMProps } from '@react-aria/utils';
 import _clsx from 'clsx';
 
-export interface IconProps extends DOMProps, AriaLabelingProps, StyleProps {
+export interface IconProps extends DOMProps, AriaLabelingProps {
   /**
    * A screen reader only label for the Icon.
    */
@@ -37,38 +27,33 @@ export interface IconProps extends DOMProps, AriaLabelingProps, StyleProps {
    */
   'aria-hidden'?: boolean | 'false' | 'true';
   /**
-   * Color of the Icon.
+   * Color of the Icon. It can be a HEX color or a CSS custom property.
    */
-  color?: IconColorValue;
+  color?: string;
+  /**
+   * Custom class name to apply to the icon.
+   */
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 export type IconPropsWithoutChildren = Omit<IconProps, 'children'>;
-
-function iconColorValue(value: IconColorValue) {
-  return `var(--quanta-color-icon-${value})`;
-}
-
-const iconStyleProps: StyleHandlers = {
-  ...baseStyleProps,
-  color: ['color', iconColorValue],
-};
 
 export function Icon(props: IconProps) {
   props = useSlotProps(props, 'icon');
   const { children, size, 'aria-label': ariaLabel, ...otherProps } = props;
   let { 'aria-hidden': ariaHidden } = props;
-
-  const { styleProps } = useStyleProps(otherProps, iconStyleProps);
-
   if (!ariaHidden) {
     ariaHidden = undefined;
   }
 
   const iconSize = size ? size : 'M';
+  const color = props.color?.startsWith('--')
+    ? `var(${props.color})`
+    : props.color;
 
   return React.cloneElement(children, {
     ...filterDOMProps(otherProps),
-    ...styleProps,
     focusable: 'false',
     'aria-label': ariaLabel,
     'aria-hidden': ariaLabel ? ariaHidden || undefined : true,
@@ -77,7 +62,8 @@ export function Icon(props: IconProps) {
       'q icon',
       `icon--size${iconSize}`,
       children.props.className,
-      styleProps.className,
+      props.className,
     ),
+    style: { color, ...otherProps.style },
   });
 }

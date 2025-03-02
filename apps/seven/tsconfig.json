@@ -10,7 +10,7 @@
   ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
-    "types": ["@react-router/node", "vite/client"],
+    "types": ["@react-router/node", "vite/client", "@plone/components/icons"],
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
