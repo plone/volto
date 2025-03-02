@@ -2,6 +2,7 @@ import path from 'path';
 import { AddonRegistry } from '@plone/registry/addon-registry';
 import { createAddonsLoader } from '@plone/registry/create-addons-loader';
 import { createThemeAddonsLoader } from '@plone/registry/create-theme-loader';
+import { createAddonsStyleLoader } from '@plone/registry/create-addons-styles-loader';
 
 export const PloneRegistryVitePlugin = () => {
   const projectRootPath = path.resolve('.');
@@ -12,6 +13,8 @@ export const PloneRegistryVitePlugin = () => {
     registry.getAddons(),
     { tempInProject: true },
   );
+
+  createAddonsStyleLoader(registry.getAddonStyles());
 
   const [addonsThemeLoaderVariablesPath, addonsThemeLoaderMainPath] =
     createThemeAddonsLoader(registry.getCustomThemeAddons());
@@ -53,7 +56,10 @@ export const PloneRegistryVitePlugin = () => {
                 },
               ]
             : []),
-          { find: 'load-plone-registry-addons', replacement: addonsLoaderPath },
+          {
+            find: '@plone/registry/addons-loader',
+            replacement: addonsLoaderPath,
+          },
         ],
       },
     }),

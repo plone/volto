@@ -13,6 +13,7 @@ import type {
   UtilitiesConfig,
   ViewsConfig,
   WidgetsConfig,
+  ReactRouterRouteEntry,
 } from '@plone/types';
 
 export type ConfigData = {
@@ -22,6 +23,7 @@ export type ConfigData = {
   widgets: WidgetsConfig | Record<string, never>;
   addonReducers?: AddonReducersConfig;
   addonRoutes?: AddonRoutesConfig;
+  routes?: Array<ReactRouterRouteEntry>;
   slots: SlotsConfig | Record<string, never>;
   components: ComponentsConfig | Record<string, never>;
   utilities: UtilitiesConfig | Record<string, never>;
@@ -124,6 +126,14 @@ class Config {
 
   set addonRoutes(addonRoutes) {
     this._data.addonRoutes = addonRoutes;
+  }
+
+  get routes() {
+    return this._data.routes;
+  }
+
+  set routes(routes) {
+    this._data.routes = routes;
   }
 
   get slots() {
@@ -493,6 +503,12 @@ class Config {
     );
 
     return utilities;
+  }
+
+  registerRoute(options: ReactRouterRouteEntry) {
+    const route = this._data.routes || [];
+    route.push(options);
+    this._data.routes = route;
   }
 }
 

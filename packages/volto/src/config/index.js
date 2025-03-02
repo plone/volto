@@ -1,22 +1,7 @@
+import ConfigRegistry from '@plone/volto/registry';
 import { parse as parseUrl } from 'url';
-import { defaultWidget, widgetMapping } from './Widgets';
-import {
-  layoutViews,
-  contentTypesViews,
-  defaultView,
-  errorViews,
-  layoutViewsNamesMapping,
-} from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
 import { nonContentRoutesPublic } from './NonContentRoutesPublic';
-import {
-  groupBlocksOrder,
-  requiredBlocks,
-  blocksConfig,
-  initialBlocks,
-  initialBlocksFocus,
-} from './Blocks';
-import { components } from './Components';
 import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 import slots from './slots';
@@ -32,9 +17,12 @@ import {
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
-import ConfigRegistry from '@plone/volto/registry';
+import { installDefaultComponents } from './Components';
+import { installDefaultWidgets } from './Widgets';
+import { installDefaultViews } from './Views';
+import { installDefaultBlocks } from './Blocks';
 
-import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
+import { getSiteAsyncPropExtender } from '@plone/volto/helpers/Site';
 import { registerValidators } from './validation';
 
 const host = process.env.HOST || 'localhost';
@@ -153,6 +141,7 @@ let config = {
     serverConfig,
     storeExtenders: [],
     showTags: true,
+    showRelatedItems: false,
     controlpanels: [],
     controlPanelsIcons,
     filterControlPanels,
@@ -174,7 +163,6 @@ let config = {
     showSelfRegistration: false,
     contentMetadataTagsImageField: 'image',
     contentPropertiesSchemaEnhancer: null,
-    hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
     workflowMapping,
@@ -195,28 +183,12 @@ let config = {
       enabled: true,
     },
   },
-  widgets: {
-    ...widgetMapping,
-    default: defaultWidget,
-  },
-  views: {
-    layoutViews,
-    contentTypesViews,
-    defaultView,
-    errorViews,
-    layoutViewsNamesMapping,
-  },
-  blocks: {
-    requiredBlocks,
-    blocksConfig,
-    groupBlocksOrder,
-    initialBlocks,
-    initialBlocksFocus,
-    showEditBlocksInBabelView: false,
-  },
+  widgets: {},
+  views: {},
+  blocks: {},
   addonRoutes: [],
   addonReducers: {},
-  components,
+  components: {},
   slots: {},
   utilities: {},
 };
@@ -261,5 +233,9 @@ Object.entries(slots).forEach(([slotName, components]) => {
 });
 
 registerValidators(ConfigRegistry);
+installDefaultComponents(ConfigRegistry);
+installDefaultWidgets(ConfigRegistry);
+installDefaultViews(ConfigRegistry);
+installDefaultBlocks(ConfigRegistry);
 
 applyAddonConfiguration(ConfigRegistry);

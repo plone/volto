@@ -17,17 +17,15 @@ import PloneClient from '@plone/client';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import '@plone/components/dist/basic.css';
+import '@plone/slots/styles/main.css';
 import { flattenToAppURL } from './utils';
 import { PloneProvider } from '@plone/providers';
+
 import config from '@plone/registry';
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
 ];
-
-function useHrefLocal(to: string) {
-  return useHref(flattenToAppURL(to));
-}
 
 export default function App() {
   const [queryClient] = useState(
@@ -55,6 +53,10 @@ export default function App() {
     return RRNavigate(flattenToAppURL(to));
   };
 
+  function useHrefLocal(to: string) {
+    return useHref(flattenToAppURL(to));
+  }
+
   return (
     <html lang="en">
       <head>
@@ -71,6 +73,7 @@ export default function App() {
           useParams={useParams}
           useHref={useHrefLocal}
           navigate={navigate}
+          flattenToAppURL={flattenToAppURL}
         >
           <Outlet />
           <ScrollRestoration />

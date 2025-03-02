@@ -177,7 +177,16 @@ contentMetadataTagsImageField
     The OpenGraph image that will represent this content item, will be used in the metadata HEAD tag as og:image for SEO purposes. Defaults to image. See the OpenGraph Protocol for more details.
 
 hasWorkingCopySupport
-    This setting will enable working copy support in your site. You need to install the `plone.app.iterate` add-on in your Plone site in order to make it working.
+    ```{versionremoved} Volto 18.8.0
+    This setting is unnecessary since Volto 18.8.0.
+    Working copy support is now based on whether the `plone.app.iterate` add-on is installed in the backend.
+    ```
+
+    For Plone sites using a Volto version prior to 18.8.0, this setting enables working copy support.
+    
+    ```{seealso}
+    See {doc}`workingcopy` for configuration.
+    ```
 
 controlpanels
     Register a component as control panel.
@@ -463,6 +472,23 @@ querystringSearchGet
     [See an explanation of character limits in URLs](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers/417184#417184).
     Please test this setting properly before enabling in a production site.
 
+cssLayers
+    To use CSS layers when styling Volto, you can define and apply them at the very top level of the page, where they appear in the `<head>` tag.
+    By using this configuration, you can pass the layer list definition as an array:
+
+    ```js
+    config.settings.cssLayers = ['reset', 'plone-components', 'layout', 'addons', 'theme'];
+    ```
+
+showRelatedItems
+    If true, the `RelatedItems` component will show items from the `relatedItems` field. Default: false.
+
+    ```{versionadded} 18.5.0
+    ```
+
+
+showTags
+    If true, the `Tags` component will show tags from the `subjects` field. Default: true.
 ```
 
 ## Views settings

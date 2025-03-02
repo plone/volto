@@ -17,6 +17,233 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.9.1 (2025-02-20)
+
+### Bugfix
+
+- Fix load more comments link. @sneridagh [#6759](https://github.com/plone/volto/issues/6759)
+
+### Internal
+
+- Move Seven to its own branch. @sneridagh [#6769](https://github.com/plone/volto/issues/6769)
+
+### Documentation
+
+- Fix reference to `link.svg` and include of `_inc/_install-browser-reqs-volto.md`. @stevepiercy [#6760](https://github.com/plone/volto/issues/6760)
+
+## 18.9.0 (2025-02-17)
+
+### Feature
+
+- Add self link in alternate language links @erral [#6602](https://github.com/plone/volto/issues/6602)
+
+### Bugfix
+
+- Serve `sitemap.xml.gz` as an alias for `sitemap-index.xml`. @reebalazs [#6561](https://github.com/plone/volto/issues/6561)
+- Move the block chooser beneath the block, instead of covering the block and preventing making a choice, when `config.experimental.addBlockButton` is enabled. @giuliaghisini [#6751](https://github.com/plone/volto/issues/6751)
+
+### Internal
+
+- Use Plone 6.1.0 final release. @sneridagh [#6731](https://github.com/plone/volto/issues/6731)
+- Add Film Basque Country website to README. @erral [#6741](https://github.com/plone/volto/issues/6741)
+- Sync content from Awesome Volto into README. @stevepiercy [#6745](https://github.com/plone/volto/issues/6745)
+- Fixes intermittent error in cypress "Index Text Block" test. @wesleybl [#6755](https://github.com/plone/volto/issues/6755)
+
+### Documentation
+
+- Document Slate heading as anchor links in Volto blocks user manual. @nileshgulia1 [#5755](https://github.com/plone/volto/issues/5755)
+
+## 18.8.2 (2025-02-08)
+
+### Bugfix
+
+- Use a text widget for editing the frontend domain setting in the Volto Settings control panel, instead of the URL widget which causes problems by erasing the current domain. @davisagli [#4171](https://github.com/plone/volto/issues/4171)
+- Update Dutch translations. @mauritsvanrees [#6476](https://github.com/plone/volto/issues/6476)
+
+### Internal
+
+- Test(cypress): fix breaking a list by typing Enter refs- #6586 @nileshgulia1 [#6570](https://github.com/plone/volto/issues/6570)
+- Add the block `group` name in the block configuration. @erral [#6679](https://github.com/plone/volto/issues/6679)
+- Test with Plone 6.1.0rc1. @sneridagh [#6682](https://github.com/plone/volto/issues/6682)
+- Revise the existing issue templates and create a new one for PLIP tasks. @stevepiercy [#6683](https://github.com/plone/volto/issues/6683)
+- Fix documentation build at Read the Docs. @sneridagh [#6684](https://github.com/plone/volto/issues/6684)
+- Upgrade jotai to 2.11.3 @ksuess [#6685](https://github.com/plone/volto/issues/6685)
+- Add Makefile command for testing Cookieplone in CI @sneridagh [#6728](https://github.com/plone/volto/issues/6728)
+
+## 18.8.1 (2025-02-04)
+
+### Bugfix
+
+- Fix regression in moving blocks from Grid block. @sneridagh [#6642](https://github.com/plone/volto/issues/6642)
+
+### Internal
+
+- Fix `corepack` in CI. @sneridagh
+  For more info: https://github.com/nodejs/corepack/issues/612 [#6640](https://github.com/plone/volto/issues/6640)
+- Update TS version. @sneridagh [#6641](https://github.com/plone/volto/issues/6641)
+
+## 18.8.0 (2025-01-31)
+
+### Feature
+
+- Show the working copy actions (checkin/checkout) based on whether they are enabled in the backend, instead of the `hasWorkingCopySupport` setting. @wesleybl, @davisagli [#5284](https://github.com/plone/volto/issues/5284)
+- Expose `robots.txt` setting in Volto control panel, and render `robots.txt` based on REST API call. @robgietema [#5580](https://github.com/plone/volto/issues/5580)
+- Update tests to match the new message in the add-ons loader. @sneridagh [#6630](https://github.com/plone/volto/issues/6630)
+
+### Bugfix
+
+- Pass `intl` object to `initialValue` function. @wesleybl [#6529](https://github.com/plone/volto/issues/6529)
+- Update Dutch translations @fredvd [#6531](https://github.com/plone/volto/issues/6531)
+- Correctly handle when one of the items is `null` in the Relations control panel. @giuliaghisini [#6629](https://github.com/plone/volto/issues/6629)
+- Added `field.pattern` as a parameter to the internationalized message. @ionlizarazu [#6631](https://github.com/plone/volto/issues/6631)
+- Display the appropriately sized image to eliminate blurring from upsizing smaller images in the `srcSet` generation. @giuliaghisini [#6634](https://github.com/plone/volto/issues/6634)
+
+### Internal
+
+- Add acceptance test for non-manager user editing group memberships. @ksuess [#5786](https://github.com/plone/volto/issues/5786)
+- Enhance Volto contributing guidelines. @stevepiercy [#6613](https://github.com/plone/volto/issues/6613)
+- Split Read the Docs pull request preview builds between Volto and `@plone/registry`. @stevepiercy [#6617](https://github.com/plone/volto/issues/6617)
+- Updates the first-timer message to use the correct link for feature voting. @stevepiercy [#6625](https://github.com/plone/volto/issues/6625)
+- Allow `2021.ploneconf.org` to fail readme-link-check. @stevepiercy [#6627](https://github.com/plone/volto/issues/6627)
+
+### Documentation
+
+- Amended version policy documentation. @sneridagh
+  Added deprecation notice for Semantic UI theming. [#6541](https://github.com/plone/volto/issues/6541)
+- Document how to migrate projects to Cookieplone. @stevepiercy @erral [#6626](https://github.com/plone/volto/issues/6626)
+
+## 18.7.0 (2025-01-24)
+
+### Feature
+
+- - Fixed handling of the site logo preview to appear after upload. @Shyam-Raghuwanshi [#6591](https://github.com/plone/volto/issues/6591)
+- Provide language alternate links @erral [#6602](https://github.com/plone/volto/issues/6602)
+- feat(cypress):Add custom check Accessibility command @Tishasoumya-02 [#6606](https://github.com/plone/volto/issues/6606)
+
+### Bugfix
+
+- Improve the usability of the `ObjectBrowser` when inputting a manual value, checking it on blur, and adding a local validator. @sneridagh [#6576](https://github.com/plone/volto/issues/6576)
+- fix(useClipboard): Do not have a pending promise in a boolean state @nileshgulia1 [#6585](https://github.com/plone/volto/issues/6585)
+
+### Internal
+
+- Add Seven convenience Makefile commands. @sneridagh [#6599](https://github.com/plone/volto/issues/6599)
+- Restore pull request previews on Read the Docs. @stevepiercy [#6612](https://github.com/plone/volto/issues/6612)
+- Fix lint-staged throwing warnings when a file is checked-in and ignored. @sneridagh [#6614](https://github.com/plone/volto/issues/6614)
+
+### Documentation
+
+- Enhancements of the upgrade guide for Volto 18, since we detected some inconsistencies. @sneridagh [#6609](https://github.com/plone/volto/issues/6609)
+
+## 18.6.0 (2025-01-11)
+
+### Feature
+
+- Add component to show related items, which can be enabled using the `showRelatedItems` setting. @wesleybl [#3740](https://github.com/plone/volto/issues/3740)
+
+### Bugfix
+
+- The depth field in the base search query of the search block was ignored, causing search results to include items beyond the specified depth level. Search results now respect the specified depth configuration. @TechSubham [#5856](https://github.com/plone/volto/issues/5856)
+- No longer add classes from the query string search text in the `body` tag. @Abhishek-17h [#6493](https://github.com/plone/volto/issues/6493)
+- Fixed folder contents issues with persistent selection across page changes. @pnicolli [#6554](https://github.com/plone/volto/issues/6554)
+- Fix robots.txt in devmode @reebalazs [#6572](https://github.com/plone/volto/issues/6572)
+
+### Documentation
+
+- Fix redirecting links to Mozilla Developer Network's responsive images. @stevepiercy [#6552](https://github.com/plone/volto/issues/6552)
+- Add Volto block examples in the documentation. @erral [#6560](https://github.com/plone/volto/issues/6560)
+
+## 18.5.0 (2025-01-09)
+
+### Feature
+
+- Add component to show related items, which can be enabled using the `showRelatedItems` setting. @wesleybl [#3740](https://github.com/plone/volto/issues/3740)
+
+### Bugfix
+
+- The depth field in the base search query of the search block was ignored, causing search results to include items beyond the specified depth level. Search results now respect the specified depth configuration. @TechSubham [#5856](https://github.com/plone/volto/issues/5856)
+- No longer add classes from the query string search text in the `body` tag. @Abhishek-17h [#6493](https://github.com/plone/volto/issues/6493)
+- Fixed folder contents issues with persistent selection across page changes. @pnicolli [#6554](https://github.com/plone/volto/issues/6554)
+- Fix robots.txt in devmode @reebalazs [#6572](https://github.com/plone/volto/issues/6572)
+
+### Documentation
+
+- Fix redirecting links to Mozilla Developer Network's responsive images. @stevepiercy [#6552](https://github.com/plone/volto/issues/6552)
+- Add Volto block examples in the documentation. @erral [#6560](https://github.com/plone/volto/issues/6560)
+
+## 18.4.0 (2024-12-17)
+
+### Feature
+
+- Added a setting in the `config` object to set the site's CSS layers, if required. @sneridagh [#6539](https://github.com/plone/volto/issues/6539)
+
+### Internal
+
+- Fixed and re-enabled the types declaration extractor from core Volto. @sneridagh [#6534](https://github.com/plone/volto/issues/6534)
+
+### Documentation
+
+- Add monorepo structure to the README. Update the monorepo structure file tree. @stevepiercy [#6542](https://github.com/plone/volto/issues/6542)
+
+## 18.3.0 (2024-12-12)
+
+### Feature
+
+- Add disable Teaser block Align handlers for teasers inside containers. @sneridagh [#6527](https://github.com/plone/volto/issues/6527)
+
+### Bugfix
+
+- Fix inline comment in `SlotRenderer`. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+- Enhanced linkintegrity popup and moved all logic in a separate component ContentsDeleteModal @giuliaghisini [#6516](https://github.com/plone/volto/issues/6516)
+- Disable initial scroll to top after SSR completion. @Faakhir30 [#6523](https://github.com/plone/volto/issues/6523)
+- Add missing styleWrapper style builder information in container/Grid. @sneridagh [#6527](https://github.com/plone/volto/issues/6527)
+
+## 18.2.3 (2024-12-09)
+
+### Bugfix
+
+- Fixed circular import error in dev with HMR in core Views and Widgets shadow customizations. @sneridagh [#6526](https://github.com/plone/volto/issues/6526)
+
+## 18.2.2 (2024-12-09)
+
+### Bugfix
+
+- Fixed circular import error in dev with HMR in core Blocks shadow customizations. @sneridagh [#6525](https://github.com/plone/volto/issues/6525)
+
+## 18.2.1 (2024-12-09)
+
+### Bugfix
+
+- Fixes ICS download in non-public event content. @sneridagh [#6515](https://github.com/plone/volto/issues/6515)
+- Fixed circular import error in dev with HMR in `App` component when imported in the main default config. @sneridagh [#6524](https://github.com/plone/volto/issues/6524)
+
+### Internal
+
+- Fix extension in files containing JSX. @sneridagh [#6520](https://github.com/plone/volto/issues/6520)
+
+## 18.2.0 (2024-12-08)
+
+### Internal
+
+- Removed all imports from barrel files for components, actions, helpers, hooks and lodash. @pnicolli [#6509](https://github.com/plone/volto/issues/6509)
+
+## 18.1.2 (2024-12-05)
+
+### Bugfix
+
+- Remove `not ie 11` from browserslist configuration, because it is now included in `not dead`. @stevepiercy [#6501](https://github.com/plone/volto/issues/6501)
+- Fix warnings related to `snapshot.managedPaths` on startup. @davisagli [#6511](https://github.com/plone/volto/issues/6511)
+
+### Internal
+
+- Add Accessibility acceptance tests for content types. @ana-oprea @ichim-david [#6339](https://github.com/plone/volto/issues/6339)
+- Fixed the `README.md` for Volto core when releasing to npm registry: copy it from the root of the monorepo on release. @sneridagh [#6510](https://github.com/plone/volto/issues/6510)
+
+### Documentation
+
+- Add new Volto trainings to tutorials. @stevepiercy [#6499](https://github.com/plone/volto/issues/6499)
+- `html_use_opensearch` value must not have a trailing slash. Clean up comments. @stevepiercy [#6502](https://github.com/plone/volto/issues/6502)
+
 ## 18.1.1 (2024-11-21)
 
 ### Bugfix

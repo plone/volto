@@ -6,9 +6,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Input, Button } from 'semantic-ui-react';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import { isInternalURL, flattenToAppURL, URLUtils } from '@plone/volto/helpers';
+import {
+  isInternalURL,
+  flattenToAppURL,
+  URLUtils,
+} from '@plone/volto/helpers/Url/Url';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';

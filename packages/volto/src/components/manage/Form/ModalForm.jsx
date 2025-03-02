@@ -5,7 +5,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { keys, map } from 'lodash';
+import keys from 'lodash/keys';
+import map from 'lodash/map';
 import {
   Button,
   Form as UiForm,
@@ -17,8 +18,8 @@ import {
   Loader,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { FormValidation } from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
+import FormValidation from '@plone/volto/helpers/FormValidation/FormValidation';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Field } from '@plone/volto/components/manage/Form';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

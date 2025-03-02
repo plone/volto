@@ -3,14 +3,13 @@ import { useDispatch } from 'react-redux';
 import { defineMessages, useIntl } from 'react-intl';
 import { Button } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
-import { Icon, Toast } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
-import {
-  flattenToAppURL,
-  messages as defaultMessages,
-} from '@plone/volto/helpers';
-import { getContent } from '@plone/volto/actions';
-import { isEmpty } from 'lodash';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { messages as defaultMessages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import { getContent } from '@plone/volto/actions/content/content';
+import isEmpty from 'lodash/isEmpty';
 
 import reloadSVG from '@plone/volto/icons/reload.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';

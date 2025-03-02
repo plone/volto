@@ -6,17 +6,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-
-// import unionClassNames from 'union-class-names';
+import { withRouter } from 'react-router';
 import cx from 'classnames';
+
 import {
   addAppURL,
   isInternalURL,
   flattenToAppURL,
   URLUtils,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Url/Url';
 
-import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
+import doesNodeContainClick from 'semantic-ui-react/dist/commonjs/lib/doesNodeContainClick';
 import { Input, Form, Button } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 
@@ -25,10 +25,8 @@ import navTreeSVG from '@plone/volto/icons/nav.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-import { withRouter } from 'react-router';
-
-import { Icon } from '@plone/volto/components';
 
 const messages = defineMessages({
   placeholder: {

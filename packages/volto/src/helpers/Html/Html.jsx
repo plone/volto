@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import serialize from 'serialize-javascript';
-import { join } from 'lodash';
+import join from 'lodash/join';
 import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 import { runtimeConfig } from '@plone/volto/runtime_config';
 import config from '@plone/volto/registry';
@@ -102,6 +102,12 @@ class Html extends Component {
           {head.meta.toComponent()}
           {head.link.toComponent()}
           {head.script.toComponent()}
+
+          {config.settings.cssLayers && (
+            // Load the CSS layers from config, if any
+            <style>{`@layer ${config.settings.cssLayers.join(', ')};`}</style>
+          )}
+
           {head.style.toComponent()}
 
           <script

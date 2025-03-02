@@ -1,5 +1,5 @@
 import { defineMessages } from 'react-intl';
-import { cloneDeep } from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 
 import ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
 import ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
@@ -529,6 +529,15 @@ const requiredBlocks = ['title'];
 
 const initialBlocks = {};
 const initialBlocksFocus = {}; //{Document:'title'}
+
+export function installDefaultBlocks(config) {
+  config.blocks.requiredBlocks = requiredBlocks;
+  config.blocks.blocksConfig = blocksConfig;
+  config.blocks.groupBlocksOrder = groupBlocksOrder;
+  config.blocks.initialBlocks = initialBlocks;
+  config.blocks.initialBlocksFocus = initialBlocksFocus;
+  config.blocks.showEditBlocksInBabelView = false;
+}
 
 export {
   groupBlocksOrder,
