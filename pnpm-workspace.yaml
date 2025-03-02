@@ -1,8 +1,8 @@
 packages:
   # all packages in direct subdirs of packages/
   - 'packages/*'
-  # Only seven as an app
   - 'apps/seven'
+  - 'apps/quanta'
   # exclude packages that are inside test directories
   - '!**/test/**'
   # exclude Volto packages, leaving them as reference
