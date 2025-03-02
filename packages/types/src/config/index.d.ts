@@ -20,17 +20,42 @@ export type AddonRoutesEntry = {
   component: React.ComponentType;
 };
 
-export type ReactRouterRouteEntry = {
-  type: 'route' | 'index' | 'layout' | 'prefix';
-  path: string;
-  file: string;
-  options?: {
-    id?: string;
-    index?: boolean;
-    caseSensitive?: boolean;
-  };
-  children?: ReactRouterRouteEntry[];
-};
+export type ReactRouterRouteEntry =
+  | {
+      type: 'route';
+      path: string;
+      file: string;
+      options?: {
+        id?: string;
+        index?: boolean;
+        caseSensitive?: boolean;
+      };
+      children?: ReactRouterRouteEntry[];
+    }
+  | {
+      type: 'index';
+      file: string;
+      options?: {
+        id?: string;
+        index?: boolean;
+        caseSensitive?: boolean;
+      };
+    }
+  | {
+      type: 'layout';
+      file: string;
+      options?: {
+        id?: string;
+        index?: boolean;
+        caseSensitive?: boolean;
+      };
+      children: ReactRouterRouteEntry[];
+    }
+  | {
+      type: 'prefix';
+      path: string;
+      children: ReactRouterRouteEntry[];
+    };
 
 export type ComponentsConfig = Record<
   string,

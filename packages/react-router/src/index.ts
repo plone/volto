@@ -10,14 +10,16 @@ export function getAddonRoutesConfig(
   const resultRoutesConfig: RouteConfig = [];
 
   for (const routeConfig of routesConfig) {
-    const containsAddonModule = addonsInfo.find((addon) =>
-      routeConfig.file.includes(addon.name),
-    );
-    if (containsAddonModule) {
-      routeConfig.file = path.join(
-        containsAddonModule.modulePath,
-        routeConfig.file.replace(containsAddonModule.name, ''),
+    if (routeConfig.type !== 'prefix') {
+      const containsAddonModule = addonsInfo.find((addon) =>
+        routeConfig.file.includes(addon.name),
       );
+      if (containsAddonModule) {
+        routeConfig.file = path.join(
+          containsAddonModule.modulePath,
+          routeConfig.file.replace(containsAddonModule.name, ''),
+        );
+      }
     }
     switch (routeConfig.type) {
       case 'route':
@@ -67,7 +69,12 @@ export function getAddonRoutesConfig(
         break;
 
       case 'prefix':
-        console.log('prefix not implemented yet');
+        resultRoutesConfig.push(
+          ...prefix(
+            routeConfig.path,
+            getAddonRoutesConfig(routeConfig.children, addonsInfo),
+          ),
+        );
         break;
       default:
         break;
