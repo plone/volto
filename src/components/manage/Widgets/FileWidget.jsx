@@ -141,7 +141,7 @@ const FileWidget = (props) => {
                 src={imgsrc}
               />
             ) : (
-              <div id={'abc'} className="dropzone-placeholder">
+              <div className="dropzone-placeholder">
                 <p id="dropzone-description" className="dropzone-text">
                   {isDragActive
                     ? intl.formatMessage(messages.releaseDrag)
