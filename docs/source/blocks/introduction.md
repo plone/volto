@@ -75,14 +75,14 @@ You can enable them on any content type by enabling `Blocks` behavior provided b
 3. Select the `Blocks` behavior
 4. Save
 
-You can also add the behavior programmatically via GenericSetup:
+You can also add the behavior programatically via GenericSetup:
 
 ```xml
 <?xml version="1.0"?>
 <object name="LRF" meta_type="Dexterity FTI" i18n:domain="plone"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="behaviors" purge="false">
-  <element value="volto.blocks" />
+  <element value="plone.restapi.behaviors.IBlocks" />
  </property>
 </object>
 ```

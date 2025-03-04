@@ -50,6 +50,7 @@ export default function install(config) {
     // },
   };
 
+  config.blocks.blocksConfig.table.restricted = true;
   config.blocks.blocksConfig.slateTable = {
     ...tableBlockConfig,
     id: 'slateTable',

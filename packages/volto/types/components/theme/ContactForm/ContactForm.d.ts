@@ -1,2 +1,2 @@
 export default ContactFormComponent;
-declare function ContactFormComponent(): import("react/jsx-runtime").JSX.Element;
+declare function ContactFormComponent(): JSX.Element;

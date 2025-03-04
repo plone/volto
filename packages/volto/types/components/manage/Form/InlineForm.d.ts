@@ -1,5 +1,4 @@
-declare const _default: React.ForwardRefExoticComponent<Omit<import("react-intl").WithIntlProps<any>, "ref"> & React.RefAttributes<any>> & {
-    WrappedComponent: React.ComponentType<any>;
+declare const _default: import("react").ForwardRefExoticComponent<Pick<import("react-intl").WithIntlProps<any>, string | number | symbol> & import("react").RefAttributes<any>> & {
+    WrappedComponent: import("react").ComponentType<any>;
 };
 export default _default;
-import React from 'react';

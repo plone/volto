@@ -26,7 +26,7 @@ describe('Multilingual Logo', () => {
         },
       },
       site: {
-        data: { 'plone.site_title': 'Plone Site' },
+        data: {},
       },
       addons: {
         isMultilingual: true,
@@ -97,7 +97,6 @@ describe('Multilingual Logo', () => {
         data: {
           'plone.site_logo':
             'http://localhost:3000/@@site-logo/logo.cab945d8.svg',
-          'plone.site_title': 'Plone Site',
         },
       },
       addons: {
@@ -134,7 +133,6 @@ describe('Multilingual Logo', () => {
         data: {
           'plone.site_logo':
             'http://localhost:3000/@@site-logo/logo.cab945d8.svg',
-          'plone.site_title': 'Plone Site',
         },
       },
       addons: {

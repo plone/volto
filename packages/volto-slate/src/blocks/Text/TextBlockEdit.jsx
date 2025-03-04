@@ -2,8 +2,10 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import { uploadContent } from '@plone/volto-slate/actions/content';
-import saveSlateBlockSelection from '@plone/volto-slate/actions/selection';
+import {
+  uploadContent,
+  saveSlateBlockSelection,
+} from '@plone/volto-slate/actions';
 
 import DefaultTextBlockEditor from './DefaultTextBlockEditor';
 import DetachedTextBlockEditor from './DetachedTextBlockEditor';

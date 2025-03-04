@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { isInternalURL } from '@plone/volto/helpers/Url/Url';
-import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
+import { isInternalURL, toBackendLang } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const NavItem = ({ item, lang }) => {

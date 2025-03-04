@@ -1,19 +1,12 @@
 import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import concat from 'lodash/concat';
-import filter from 'lodash/filter';
-import last from 'lodash/last';
-import map from 'lodash/map';
-import uniqBy from 'lodash/uniqBy';
+import { concat, filter, last, map, uniqBy } from 'lodash';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
-import {
-  getWorkflow,
-  transitionWorkflow,
-} from '@plone/volto/actions/workflow/workflow';
-import { ModalForm } from '@plone/volto/components/manage/Form';
+import { usePrevious } from '@plone/volto/helpers';
+import { getWorkflow, transitionWorkflow } from '@plone/volto/actions';
+import { ModalForm } from '@plone/volto/components';
 
 const messages = defineMessages({
   default: {

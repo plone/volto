@@ -3,6 +3,7 @@ packages:
   - 'packages/*'
   # all packages in subdirs of components/
   - 'apps/*'
+  - 'apps/plone/src/addons/*'
   # exclude packages that are inside test directories
   - '!**/test/**'
   - '!packages/volto-guillotina'

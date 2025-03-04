@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TokenWidget renders an empty tags view widget component 1`] = `""`;
+
+exports[`TokenWidget renders tags view widget component 1`] = `
+<span
+  className="meta tags token widget"
+>
+  <a
+    className="ui label"
+    href="/search?Subject=foo"
+    onClick={[Function]}
+    target={null}
+    title={null}
+  >
+    foo
+  </a>
+  <a
+    className="ui label"
+    href="/search?Subject=bar"
+    onClick={[Function]}
+    target={null}
+    title={null}
+  >
+    bar
+  </a>
+</span>
+`;
+
+exports[`TokenWidget renders tags view widget component with children 1`] = `
+<span
+  className="meta tags token widget"
+>
+  <a
+    className="ui label"
+    href="/search?Subject=foo"
+    onClick={[Function]}
+    target={null}
+    title={null}
+  >
+    <strong>
+      foo
+    </strong>
+  </a>
+  <a
+    className="ui label"
+    href="/search?Subject=bar"
+    onClick={[Function]}
+    target={null}
+    title={null}
+  >
+    <strong>
+      bar
+    </strong>
+  </a>
+</span>
+`;

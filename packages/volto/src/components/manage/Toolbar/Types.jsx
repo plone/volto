@@ -2,14 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import filter from 'lodash/filter';
-import find from 'lodash/find';
-import isEmpty from 'lodash/isEmpty';
-import map from 'lodash/map';
+import { filter, find, isEmpty, map } from 'lodash';
 import { FormattedMessage } from 'react-intl';
-import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
-import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
-import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
+import { flattenToAppURL, langmap, toBackendLang } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const Types = ({

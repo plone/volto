@@ -2,36 +2,46 @@
 
 exports[`renders an Image Block Sidebar component 1`] = `
 <div
-  data-schema="{
-  \\"title\\": \\"Video\\",
-  \\"block\\": \\"Video\\",
-  \\"fieldsets\\": [
-    {
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\",
-      \\"fields\\": [
-        \\"url\\",
-        \\"preview_image\\",
-        \\"align\\"
-      ]
-    }
-  ],
-  \\"properties\\": {
-    \\"url\\": {
-      \\"title\\": \\"Video URL\\",
-      \\"widget\\": \\"url\\"
-    },
-    \\"preview_image\\": {
-      \\"title\\": \\"Preview Image URL\\",
-      \\"widget\\": \\"url\\"
-    },
-    \\"align\\": {
-      \\"title\\": \\"Alignment\\",
-      \\"widget\\": \\"align\\"
-    }
-  },
-  \\"required\\": []
-}"
-  id="BlockDataForm"
-/>
+  className="ui form"
+>
+  <header
+    className="header pulled"
+  >
+    <h2>
+      Video
+    </h2>
+  </header>
+  <div
+    id="blockform-fieldset-default"
+  >
+    <div
+      className="ui segment form attached"
+    >
+      <div
+        className="mocked-url-widget"
+        id="mocked-field-url"
+      >
+        Video URL
+         - 
+        No description
+      </div>
+      <div
+        className="mocked-url-widget"
+        id="mocked-field-preview_image"
+      >
+        Preview Image URL
+         - 
+        No description
+      </div>
+      <div
+        className="mocked-align-widget"
+        id="mocked-field-align"
+      >
+        Alignment
+         - 
+        No description
+      </div>
+    </div>
+  </div>
+</div>
 `;

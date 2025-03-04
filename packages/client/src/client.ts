@@ -1,10 +1,9 @@
 import {
-  loginMutation as _loginMutation,
+  loginQuery as _loginQuery,
   login as _login,
 } from './restapi/login/post';
 import type { LoginArgs } from './restapi/login/post';
 
-import { getContent as _getContent } from './restapi/content/get';
 import { getContentQuery as _getContentQuery } from './restapi/content/get';
 import { createContentMutation as _createContentMutation } from './restapi/content/add';
 import { updateContentMutation as _updateContentMutation } from './restapi/content/update';
@@ -110,7 +109,7 @@ import {
   queryWithConfig,
   mutationHookFromMutation,
 } from './utils/misc';
-import type { PloneClientConfig } from './validation/config';
+import { PloneClientConfig } from './interfaces/config';
 
 const PLONECLIENT_DEFAULT_CONFIG = { apiPath: 'http://localhost:8080/Plone' };
 
@@ -146,12 +145,11 @@ export default class PloneClient {
   /*
     Initialization queries
   */
-  loginMutation = mutationWithConfig(_loginMutation, this.getConfig);
+  loginQuery = queryWithConfig(_loginQuery, this.getConfig);
 
   /*
     Content queries
   */
-  getContent = queryWithConfig(_getContent, this.getConfig);
   getContentQuery = queryWithConfig(_getContentQuery, this.getConfig);
   createContentMutation = mutationWithConfig(
     _createContentMutation,
@@ -548,7 +546,7 @@ export default class PloneClient {
     Initialization hooks
   */
 
-  useLogin = mutationHookFromMutation(this.loginMutation);
+  useLogin = queryHookFromQuery(this.loginQuery);
 
   /*
     Actions hooks

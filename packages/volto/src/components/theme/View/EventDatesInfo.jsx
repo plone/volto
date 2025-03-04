@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { List } from 'semantic-ui-react';
 import cx from 'classnames';
 
-import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
+import { toBackendLang } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { useSelector } from 'react-redux';
 

@@ -1,10 +1,11 @@
-import { slateBeforeEach } from '../../../support/helpers';
+import { slateBeforeEach } from '../../../support/commands';
 
 describe('Block Tests: Links', () => {
   beforeEach(slateBeforeEach);
 
   it('As editor I can add links', function () {
-    cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
+    cy.get('#toolbar').click();
+    cy.getSlate().type('Colorless green ideas sleep furiously.');
 
     cy.log('Create a Link');
 
@@ -100,7 +101,7 @@ describe('Block Tests: Links', () => {
   it('As editor I can add a link and pressing enter does not add another link in the next block', function () {
     // https://github.com/plone/volto/pull/5186
     cy.get('#toolbar').click();
-    cy.getSlateEditorAndType('Colorless green ideas sleep furiously');
+    cy.getSlate().type('Colorless green ideas sleep furiously');
 
     cy.log('Create a Link');
 
@@ -111,8 +112,8 @@ describe('Block Tests: Links', () => {
       'https://google.com{enter}',
     );
     cy.getSlate().should('have.descendants', 'a.slate-editor-link');
-    cy.getSlateEditorAndType('{rightarrow}').type('{enter}');
-    cy.getSlateEditorAndType('Hello').type('{enter}');
+    cy.getSlate().type('{rightarrow}').type('{enter}');
+    cy.getSlate().type('Hello').type('{enter}');
 
     cy.toolbarSave();
 

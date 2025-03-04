@@ -18,7 +18,6 @@ beforeAll(() => {
 
 const api = new Api();
 const { settings } = config;
-global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
 test('get request', () => {});
 

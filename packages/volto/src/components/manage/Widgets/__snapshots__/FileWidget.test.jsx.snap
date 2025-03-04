@@ -55,18 +55,10 @@ exports[`FileWidget renders a file widget component with value 1`] = `
           <div
             class="field-file-name"
           >
-            <a
-              class="external"
-              href="http://myfile"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              myfile
-            </a>
+            myfile
             <button
               aria-label="delete file"
               class="ui basic icon button delete-button"
-              type="button"
             >
               <svg
                 class="icon"
@@ -138,17 +130,10 @@ exports[`FileWidget renders a file widget component with value in raw data 1`] =
           <div
             class="field-file-name"
           >
-            <a
-              class="external"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              myfile
-            </a>
+            myfile
             <button
               aria-label="delete file"
               class="ui basic icon button delete-button"
-              type="button"
             >
               <svg
                 class="icon"

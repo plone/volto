@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
@@ -8,10 +8,9 @@ import { __test__ as Search } from './Search';
 
 const mockStore = configureStore();
 
-jest.mock('../../manage/Toolbar/Toolbar', () =>
-  jest.fn(() => <div id="Portal" />),
-);
-
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
 jest.mock('./SearchTags', () => jest.fn(() => <div id="search-tags" />));
 
 describe('Search', () => {
@@ -28,16 +27,15 @@ describe('Search', () => {
     const history = {
       location: { pathname: '/blog', search: '?SearchableText=blog' },
     };
-    const { container } = render(
+    const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
           <Search history={history} />
-          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-
-    expect(container).toMatchSnapshot();
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
   });
 
   it('renders a search component', () => {
@@ -61,15 +59,14 @@ describe('Search', () => {
     const history = {
       location: { pathname: '/blog', search: '?SearchableText=blog' },
     };
-    const { container } = render(
+    const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
           <Search history={history} />
-          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-
-    expect(container).toMatchSnapshot();
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
   });
 });

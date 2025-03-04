@@ -4,11 +4,11 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { createPortal } from 'react-dom';
-import { toast } from 'react-toastify';
+import { Portal } from 'react-portal';
 import {
   Button,
   Checkbox,
@@ -20,21 +20,14 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import {
-  removeAliases,
-  addAliases,
-  getAliases,
-} from '@plone/volto/actions/aliases/aliases';
-import { getContent } from '@plone/volto/actions/content/content';
+import { removeAliases, addAliases, getAliases } from '@plone/volto/actions';
 
-import Helmet from '@plone/volto/helpers/Helmet/Helmet';
-import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
-
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
-import Toast from '@plone/volto/components/manage/Toast/Toast';
+import { Icon, Toolbar } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
+import { getBaseUrl } from '@plone/volto/helpers';
+import { toast } from 'react-toastify';
+import { Toast } from '@plone/volto/components';
 
 const messages = defineMessages({
   back: {
@@ -103,7 +96,6 @@ class Aliases extends Component {
       datetime: '',
       batchSize: '',
     });
-    this.props.getContent(getBaseUrl(this.props.pathname));
     this.setState({ isClient: true });
   }
 
@@ -325,8 +317,8 @@ class Aliases extends Component {
             </Segment>
           </Form>
         </Segment.Group>
-        {this.state.isClient &&
-          createPortal(
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -343,9 +335,9 @@ class Aliases extends Component {
                   />
                 </Link>
               }
-            />,
-            document.getElementById('toolbar'),
-          )}
+            />
+          </Portal>
+        )}
       </Container>
     );
   }
@@ -359,6 +351,6 @@ export default compose(
       pathname: props.location.pathname,
       title: state.content.data?.title || '',
     }),
-    { addAliases, getAliases, removeAliases, getContent },
+    { addAliases, getAliases, removeAliases },
   ),
 )(Aliases);

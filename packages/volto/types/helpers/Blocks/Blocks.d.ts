@@ -40,45 +40,36 @@ export function moveBlock(formData: any, source: number, destination: number): a
  * @function deleteBlock
  * @param {Object} formData Form data
  * @param {string} blockId Block uid
- * @param {Object} intl intl object.
  * @return {Object} New form data
  */
-export function deleteBlock(formData: any, blockId: string, intl: any): any;
+export function deleteBlock(formData: any, blockId: string): any;
 /**
  * Adds a block to the blocks form
  * @function addBlock
  * @param {Object} formData Form data
  * @param {string} type Block type
  * @param {number} index Destination index
- * @param {Object} blocksConfig Blocks configuration.
- * @param {Object} intl intl object.
  * @return {Array} New block id, New form data
  */
-export function addBlock(formData: any, type: string, index: number, blocksConfig: any, intl: any): any[];
+export function addBlock(formData: any, type: string, index: number, blocksConfig: any): any[];
 /**
  * Mutate block, changes the block @type
  * @function mutateBlock
  * @param {Object} formData Form data
  * @param {string} id Block uid to mutate
  * @param {number} value Block's new value
- * @param {Object} blocksConfig Blocks configuration.
- * @param {Object} intl intl object.
  * @return {Object} New form data
  */
-export function mutateBlock(formData: any, id: string, value: number, blocksConfig: any, intl: any): any;
+export function mutateBlock(formData: any, id: string, value: number, blocksConfig: any): any;
 /**
  * Insert new block before another block
  * @function insertBlock
  * @param {Object} formData Form data
  * @param {string} id Insert new block before the block with this id
  * @param {number} value New block's value
- * @param {Object} current Current block
- * @param {number} offset offset position
- * @param {Object} blocksConfig Blocks configuration.
- * @param {Object} intl intl object.
  * @return {Array} New block id, New form data
  */
-export function insertBlock(formData: any, id: string, value: number, current: any, offset: number, blocksConfig: any, intl: any): any[];
+export function insertBlock(formData: any, id: string, value: number, current: {}, offset: number, blocksConfig: any): any[];
 /**
  * Change block
  * @function changeBlock
@@ -116,10 +107,10 @@ export function emptyBlocksForm(): any;
  * (could be empty, if not type given) and the number of blocks
  * @function blocksFormGenerator
  * @param {number} number How many blocks to generate of the type (could be "empty", if no type provided)
- * @param {string} type The type of the blocks
+ * @param {number} type The type of the blocks
  * @return {Object} blocks/blocks_layout pair filled with the generated blocks
  */
-export function blocksFormGenerator(number: number, type: string): any;
+export function blocksFormGenerator(number: number, type: number): any;
 /**
  * Recursively discover blocks in data and call the provided callback
  * @function visitBlocks
@@ -142,22 +133,7 @@ export function applySchemaDefaults({ data, schema, intl }: {
  * @param {Object} params An object with data, intl and anything else
  * @return {Object} Derived data, with the defaults extracted from the schema
  */
-export function applyBlockDefaults({ data, intl, navRoot, contentType, ...rest }: any, blocksConfig: any): any;
-/**
- * Find a matching style by name given a style definition
- *
- * @function findStyleByName
- * @param {Object} styleDefinitions An object with the style definitions
- * @param {string} name The name of the style to find
- * @return {Object} The style object of the matching name
- */
-export function findStyleByName(styleDefinitions: any, name: string): any;
-/**
- * Check if a block is a container block
- * check blocks from data as well since some add-ons use that
- * such as @eeacms/volto-tabs-block
- */
-export function isBlockContainer(block: any): boolean;
+export function applyBlockDefaults({ data, intl, ...rest }: any, blocksConfig: any): any;
 /**
  * Given a `block` object and a list of block types, return a list of block ids matching the types
  *
@@ -165,31 +141,9 @@ export function isBlockContainer(block: any): boolean;
  * @param {Object} types A list with the list of types to be matched
  * @return {Array} An array of block ids
  */
-export function findBlocks(blocks: {}, types: any, result?: any[]): any[];
-/**
- * Move block to different location index within blocks_layout
- * @function moveBlock
- * @param {Object} formData Form data
- * @param {number} source index within form blocks_layout items
- * @param {number} destination index within form blocks_layout items
- * @return {Object} New form data
- */
-export function moveBlockEnhanced(formData: any, { source, destination }: number): any;
+export function findBlocks(blocks: any, types: any, result?: any[]): any[];
 export function getBlocks(properties: any): any[];
-export function applyBlockInitialValue({ id, value, blocksConfig, formData, intl, }: {
-    id: any;
-    value: any;
-    blocksConfig: any;
-    formData: any;
-    intl: any;
-}): any;
 export function styleToClassName(key: any, value: any, prefix?: string): any;
 export function buildStyleClassNamesFromData(obj?: {}, prefix?: string): any;
 export function buildStyleClassNamesExtenders({ block, content, data, classNames, }: any): any[];
-export function styleDataToStyleObject(key: any, value: any, prefix?: string): any[];
-export function buildStyleObjectFromData(data?: any, prefix?: string): any;
 export function getPreviousNextBlock({ content, block }: any): any[];
-export function getBlocksHierarchy(properties: any): any;
-export function findContainer(formData: object, { containerId }: {
-    containerId: string;
-}): object | undefined;

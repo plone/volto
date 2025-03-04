@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -9,7 +9,9 @@ import Rules from './Rules';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('../../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
 
 describe('Rules', () => {
   it('renders rules control panel control', () => {
@@ -62,13 +64,12 @@ describe('Rules', () => {
         messages: {},
       },
     });
-    const { container } = render(
+    const component = renderer.create(
       <Provider store={store}>
         <Rules location={{ pathname: '/controlpanel/rules' }} />
-        <div id="toolbar"></div>
       </Provider>,
     );
-
-    expect(container).toMatchSnapshot();
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
   });
 });

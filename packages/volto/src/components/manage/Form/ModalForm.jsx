@@ -5,8 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import keys from 'lodash/keys';
-import map from 'lodash/map';
+import { keys, map } from 'lodash';
 import {
   Button,
   Form as UiForm,
@@ -18,9 +17,8 @@ import {
   Loader,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import FormValidation from '@plone/volto/helpers/FormValidation/FormValidation';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { Field } from '@plone/volto/components/manage/Form';
+import { FormValidation } from '@plone/volto/helpers';
+import { Field, Icon } from '@plone/volto/components';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -71,7 +69,6 @@ class ModalForm extends Component {
       required: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
     title: PropTypes.string.isRequired,
-    description: PropTypes.objectOf(PropTypes.any),
     formData: PropTypes.objectOf(PropTypes.any),
     submitError: PropTypes.string,
     onSubmit: PropTypes.func.isRequired,
@@ -139,7 +136,7 @@ class ModalForm extends Component {
 
   /**
    * If user clicks on input, the form will be not considered pristine
-   * this will avoid onBlur effects without interaction with the form
+   * this will avoid onBlur effects without interraction with the form
    * @param {Object} e event
    */
   onClickInput(e) {
@@ -213,7 +210,7 @@ class ModalForm extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { schema, onCancel, description } = this.props;
+    const { schema, onCancel } = this.props;
     const currentFieldset = schema.fieldsets[this.state.currentTab];
 
     const fields = map(currentFieldset.fields, (field) => ({
@@ -247,7 +244,6 @@ class ModalForm extends Component {
             onSubmit={this.onSubmit}
             error={state_errors || Boolean(this.props.submitError)}
           >
-            {description}
             <Message error>
               {state_errors ? (
                 <FormattedMessage
@@ -308,7 +304,6 @@ class ModalForm extends Component {
           </Button>
           {onCancel && (
             <Button
-              type="button"
               basic
               circular
               secondary

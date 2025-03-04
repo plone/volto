@@ -1,9 +1,8 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
-import { MemoryRouter } from 'react-router-dom';
 
 import Logout from './Logout';
 
@@ -22,16 +21,14 @@ describe('Logout', () => {
         messages: {},
       },
     });
-    const { container } = render(
+    const component = renderer.create(
       <Provider store={store}>
         <IntlProvider locale="en">
-          <MemoryRouter>
-            <Logout location={{ pathname: '' }} />
-          </MemoryRouter>
+          <Logout location={{ pathname: '' }} />
         </IntlProvider>
       </Provider>,
     );
-
-    expect(container).toMatchSnapshot();
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
   });
 });

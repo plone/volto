@@ -9,9 +9,6 @@ myst:
 
 # About Semantic UI
 
-```{include} ../_inc/_semantic-ui-deprecation.md
-```
-
 Volto uses [Semantic UI](https://semantic-ui.com/) and
 [React Semantic UI](https://react.semantic-ui.com)
 (via [semantic-ui-less](https://github.com/Semantic-Org/Semantic-UI-LESS))

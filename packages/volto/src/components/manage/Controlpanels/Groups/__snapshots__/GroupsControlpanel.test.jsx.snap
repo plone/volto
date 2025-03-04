@@ -1,121 +1,128 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UsersControlpanel renders a user control component 1`] = `
-<div>
+<div
+  className="ui container users-control-panel"
+>
   <div
-    class="ui container users-control-panel"
+    className="container"
+  />
+  <div
+    className="ui raised segments"
   >
     <div
-      class="container"
-    />
-    <div
-      class="ui raised segments"
+      className="ui segment primary"
     >
-      <div
-        class="ui segment primary"
-      >
-        Groups
-      </div>
-      <div
-        class="ui secondary segment"
-      >
-        Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol
-        <svg
-          class="icon"
-          style="height: 20px; width: auto; fill: #007EB1;"
-          viewBox=""
-          xmlns=""
-        >
-          <title>
-            plone-svg
-          </title>
-          undefined
-        </svg>
-        indicates a role inherited from membership in another group.
-      </div>
-      <div
-        class="ui segment"
-      >
-        <form
-          class="ui form"
-        >
-          <div
-            class="field"
-          >
-            <div
-              class="ui action input"
-            >
-              <input
-                id="group-search-input"
-                name="SearchableText"
-                placeholder="Search group…"
-                type="text"
-              />
-              <button
-                class="ui icon button"
-              >
-                <i
-                  aria-hidden="true"
-                  class="search icon"
-                />
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
+      Groups
+    </div>
+    <div
+      className="ui secondary segment"
+    >
+      Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<title>plone-svg</title>undefined",
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "#007EB1",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+      indicates a role inherited from membership in another group.
+    </div>
+    <div
+      className="ui segment"
+    >
       <form
-        class="ui form"
+        className="ui form"
+        onSubmit={[Function]}
       >
         <div
-          class="table"
-        >
-          <table
-            class="ui striped unstackable attached padded table"
-          >
-            <thead
-              class=""
-            >
-              <tr
-                class=""
-              >
-                <th
-                  class=""
-                >
-                  Groupname
-                </th>
-                <th
-                  class=""
-                >
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody
-              class=""
-              data-group="groups"
-            />
-          </table>
-        </div>
-        <div
-          class="contents-pagination"
+          className="field"
         >
           <div
-            class="ui secondary attached menu"
+            className="ui action input"
           >
-            <div
-              class="menu"
+            <input
+              id="group-search-input"
+              name="SearchableText"
+              onChange={[Function]}
+              placeholder="Search group…"
+              type="text"
             />
+            <button
+              className="ui icon button"
+              onClick={[Function]}
+            >
+              <i
+                aria-hidden="true"
+                className="search icon"
+                onClick={[Function]}
+              />
+            </button>
           </div>
         </div>
       </form>
     </div>
+    <form
+      className="ui form"
+      onSubmit={[Function]}
+    >
+      <div
+        className="table"
+      >
+        <table
+          className="ui striped unstackable attached padded table"
+        >
+          <thead
+            className=""
+          >
+            <tr
+              className=""
+            >
+              <th
+                className=""
+              >
+                Groupname
+              </th>
+              <th
+                className=""
+              >
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            className=""
+            data-group="groups"
+          />
+        </table>
+        
+      </div>
+      <div
+        className="contents-pagination"
+      >
+        <div
+          className="ui secondary attached menu"
+        >
+          <div
+            className="menu"
+          />
+        </div>
+      </div>
+    </form>
   </div>
   <div
-    id="toolbar"
-  >
-    <div
-      id="Portal"
-    />
-  </div>
+    id="Portal"
+  />
 </div>
 `;

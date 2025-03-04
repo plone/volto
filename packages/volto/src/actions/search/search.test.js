@@ -18,21 +18,6 @@ describe('Search action', () => {
       );
     });
 
-    it('can be called with path special keys that are falseish', () => {
-      const url = '/blog';
-      const searchPath = '/blog/my-content';
-      const action = searchContent(url, {
-        'path.query': searchPath,
-        'path.depth': 0,
-      });
-
-      expect(action.type).toEqual(SEARCH_CONTENT);
-      expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(
-        `${url}/@search?path.query=${searchPath}&path.depth=0`,
-      );
-    });
-
     it('can be called with an option that is an array', () => {
       const text = 'cows';
       const url = '/blog';

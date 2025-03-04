@@ -1,15 +1,16 @@
 import express from 'express';
-import { generateRobots } from '@plone/volto/helpers/Robots/Robots';
+import { generateRobots } from '@plone/volto/helpers';
 
 /*
 robots.txt - priority order:
 
-1) VOLTO_ROBOTSTXT var in .env
-2) robots.txt setting in the site control panel
+1) robots.txt in /public folder
+2) VOLTO_ROBOTSTXT var in .env
+3) default: plone robots.txt
 
 */
 
-const siteRobots = function (req, res, next) {
+const ploneRobots = function (req, res, next) {
   generateRobots(req).then((robots) => {
     res.set('Content-Type', 'text/plain');
     res.send(robots);
@@ -26,7 +27,7 @@ export default function robotstxtMiddleware() {
   if (process.env.VOLTO_ROBOTSTXT) {
     middleware.all('**/robots.txt', envRobots);
   } else {
-    middleware.all('**/robots.txt', siteRobots);
+    middleware.all('**/robots.txt', ploneRobots);
   }
   middleware.id = 'robots.txt';
   return middleware;

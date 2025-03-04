@@ -1,2 +1,2 @@
 export default ContentsBreadcrumbs;
-declare function ContentsBreadcrumbs(props: any): import("react/jsx-runtime").JSX.Element;
+declare function ContentsBreadcrumbs(props: any): JSX.Element;

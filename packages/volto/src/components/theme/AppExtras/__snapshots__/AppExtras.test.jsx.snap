@@ -30,29 +30,6 @@ Array [
 ]
 `;
 
-exports[`AppExtras ignore property works 1`] = `
-Array [
-  <div
-    className="everywhere"
-  >
-    /frontpage
-  </div>,
-  <div
-    className="frontpage-content"
-  >
-    {"path":"/frontpage","url":"/frontpage","isExact":true,"params":{}}
-  </div>,
-]
-`;
-
-exports[`AppExtras ignore property works 2`] = `
-<div
-  className="everywhere"
->
-  /frontpage/images
-</div>
-`;
-
 exports[`AppExtras renders 2 app extras on specific path /blog/edit 1`] = `
 Array [
   <div

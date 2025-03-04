@@ -46,13 +46,6 @@ beforeAll(() => {
         <div className="something">{JSON.stringify(props.match)}</div>
       )),
     },
-    {
-      match: '/frontpage',
-      ignore: '/frontpage/images',
-      component: jest.fn((props) => (
-        <div className="frontpage-content">{JSON.stringify(props.match)}</div>
-      )),
-    },
   ];
 });
 
@@ -91,18 +84,5 @@ describe('AppExtras', () => {
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
-  });
-  it('ignore property works', () => {
-    const componentView = renderer.create(
-      <AppExtras pathname="/frontpage"></AppExtras>,
-    );
-    const componentEdit = renderer.create(
-      <AppExtras pathname="/frontpage/images"></AppExtras>,
-    );
-
-    const jsonView = componentView.toJSON();
-    expect(jsonView).toMatchSnapshot();
-    const jsonEdit = componentEdit.toJSON();
-    expect(jsonEdit).toMatchSnapshot();
   });
 });

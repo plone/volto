@@ -1,6 +1,6 @@
 import React from 'react';
-import { InlineForm } from '@plone/volto/components/manage/Form';
-import { withVariationSchemaEnhancer } from '@plone/volto/helpers/Extensions';
+import { InlineForm } from '@plone/volto/components';
+import { withVariationSchemaEnhancer } from '@plone/volto/helpers';
 
 const EnhancedBlockDataForm = withVariationSchemaEnhancer(InlineForm);
 

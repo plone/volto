@@ -4,7 +4,7 @@ import {
   useMutation,
   useQuery,
 } from '@tanstack/react-query';
-import type { PloneClientConfig } from '../validation/config';
+import { PloneClientConfig } from '../interfaces/config';
 
 /*
   configGetter is required instead of using the config directly to make sure
@@ -46,11 +46,11 @@ export const flattenToDottedNotation = (
 };
 
 /*
-  `queryHookFromQuery` and `mutationHookFromMutation` functions can be used to
-  create hooks from the query functions and mutation functions respectively. It
+  `queryHookFromQuery` and `mutationHookFromMutation` functions can be used to 
+  create hooks from the query functions and mutation functions respectively. It 
   takes a query function or a mutation function and returns a hook function.The
-  hook function is returned with appropriate type casting. They use useQuery and
-  useMutation internally so that the user doesn't have to use `useQuery` or
+  hook function is returned with appropriate type casting. They use useQuery and 
+  useMutation internally so that the user doesn't have to use `useQuery` or 
   `useMutation` directly.
 */
 type TArguments<T> = T extends (args: infer U) => any ? U : never;

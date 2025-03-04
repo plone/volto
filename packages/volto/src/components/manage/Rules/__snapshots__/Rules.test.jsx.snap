@@ -1,35 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Rules renders rules object control 1`] = `
-<div>
+<div
+  className="ui container"
+  id="rules"
+>
   <div
-    class="ui container"
-    id="rules"
+    className="ui raised segments"
   >
     <div
-      class="ui raised segments"
+      className="ui segment primary"
     >
-      <div
-        class="ui segment primary"
-      >
-        Content rules for 
-        <q>
-          Blog
-        </q>
-      </div>
-      <div
-        class="ui secondary segment"
-      >
-        The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones.
-      </div>
+      Content rules for 
+      <q>
+        Blog
+      </q>
+    </div>
+    <div
+      className="ui secondary segment"
+    >
+      The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones.
     </div>
   </div>
   <div
-    id="toolbar"
-  >
-    <div
-      id="Portal"
-    />
-  </div>
+    id="Portal"
+  />
 </div>
 `;

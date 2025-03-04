@@ -6,10 +6,8 @@
 import React from 'react';
 import isUndefined from 'lodash/isUndefined';
 import isString from 'lodash/isString';
-import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets';
-import { handleKeyDetached } from '@plone/volto-slate/blocks/Text/keyboard';
+import { FormFieldWrapper } from '@plone/volto/components';
 import SlateEditor from '@plone/volto-slate/editor/SlateEditor';
-import config from '@plone/volto/registry';
 
 import { createEmptyParagraph, createParagraph } from '../utils/blocks';
 
@@ -39,7 +37,6 @@ const SlateRichTextWidget = (props) => {
     readOnly = false,
   } = props;
   const [selected, setSelected] = React.useState(focus);
-  const { slateWidgetExtensions } = config.settings.slate;
 
   return (
     <FormFieldWrapper {...props} draggable={false} className="slate_wysiwyg">
@@ -65,10 +62,7 @@ const SlateRichTextWidget = (props) => {
           block={block}
           selected={selected}
           properties={properties}
-          extensions={slateWidgetExtensions}
-          onKeyDown={handleKeyDetached}
           placeholder={placeholder}
-          editableProps={{ 'aria-multiline': 'true' }}
         />
       </div>
     </FormFieldWrapper>

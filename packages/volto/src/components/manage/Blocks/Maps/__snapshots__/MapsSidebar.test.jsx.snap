@@ -2,35 +2,46 @@
 
 exports[`renders an Image Block Sidebar component 1`] = `
 <div
-  data-schema="{
-  \\"title\\": \\"Maps\\",
-  \\"block\\": \\"Maps\\",
-  \\"fieldsets\\": [
-    {
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\",
-      \\"fields\\": [
-        \\"url\\",
-        \\"title\\",
-        \\"align\\"
-      ]
-    }
-  ],
-  \\"properties\\": {
-    \\"url\\": {
-      \\"title\\": \\"Maps URL\\",
-      \\"widget\\": \\"url\\"
-    },
-    \\"title\\": {
-      \\"title\\": \\"Alt text\\"
-    },
-    \\"align\\": {
-      \\"title\\": \\"Alignment\\",
-      \\"widget\\": \\"align\\"
-    }
-  },
-  \\"required\\": []
-}"
-  id="BlockDataForm"
-/>
+  className="ui form"
+>
+  <header
+    className="header pulled"
+  >
+    <h2>
+      Maps
+    </h2>
+  </header>
+  <div
+    id="blockform-fieldset-default"
+  >
+    <div
+      className="ui segment form attached"
+    >
+      <div
+        className="mocked-url-widget"
+        id="mocked-field-url"
+      >
+        Maps URL
+         - 
+        No description
+      </div>
+      <div
+        className="mocked-default-widget"
+        id="mocked-field-title"
+      >
+        Alt text
+         - 
+        No description
+      </div>
+      <div
+        className="mocked-align-widget"
+        id="mocked-field-align"
+      >
+        Alignment
+         - 
+        No description
+      </div>
+    </div>
+  </div>
+</div>
 `;

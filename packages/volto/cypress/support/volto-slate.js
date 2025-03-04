@@ -75,7 +75,3 @@ export const selectSlateNodeOfWord = (el) => {
     win.document.dispatchEvent(event);
   });
 };
-
-export const getSlateEditorAndType = (selector, type) => {
-  return cy.get(selector).focus().click().wait(1000).type(type).wait(1000);
-};

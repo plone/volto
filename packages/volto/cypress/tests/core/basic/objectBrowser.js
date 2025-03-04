@@ -43,7 +43,7 @@ describe('Object Browser Tests', () => {
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
-    cy.get('.toolbar-inner button.ui.basic.icon.button').first().click();
+    cy.get('.toolbar-inner button.ui.basic.icon.button').click();
     cy.findByLabelText('Search SVG').click();
     cy.get('.ui.input.search').type('/my-page-1');
     cy.findByLabelText('Select My Image').dblclick();
@@ -60,7 +60,7 @@ describe('Object Browser Tests', () => {
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
-    cy.get('.toolbar-inner button.ui.basic.icon.button').first().click();
+    cy.get('.toolbar-inner button.ui.basic.icon.button').click();
     cy.findByLabelText('Search SVG').click();
     cy.window()
       .its('env.apiPath')
@@ -81,7 +81,7 @@ describe('Object Browser Tests', () => {
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
-    cy.get('.toolbar-inner button.ui.basic.icon.button').first().click();
+    cy.get('.toolbar-inner button.ui.basic.icon.button').click();
     cy.findByLabelText('Search SVG').click();
     cy.get('.ui.input.search input').should('be.focused');
   });
@@ -90,17 +90,14 @@ describe('Object Browser Tests', () => {
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
-    cy.get('.toolbar-inner button.ui.basic.icon.button').first().click();
+    cy.get('.toolbar-inner button.ui.basic.icon.button').click();
     cy.findByLabelText('Search SVG').click();
     cy.get('.ui.input.search').type('Searchable');
 
     // The document is not in the list
     cy.findByLabelText('Browse My Searchable Page').should('not.exist');
     // And the list has only 1 item
-    cy.get('.ui.segment.object-listing .image-wrapper').should(
-      'have.length',
-      1,
-    );
+    cy.get('.ui.segment.object-listing li').should('have.length', 1);
 
     // The image can be selected as usual
     cy.findByLabelText('Select My Searchable Image').dblclick();

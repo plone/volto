@@ -1,18 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import { BlockDataForm } from '@plone/volto/components/manage/Form';
+import { BlockDataForm } from '@plone/volto/components';
 
 const ListingData = (props) => {
-  const {
-    data,
-    block,
-    blocksConfig,
-    blocksErrors,
-    onChangeBlock,
-    navRoot,
-    contentType,
-  } = props;
+  const { data, block, blocksConfig, onChangeBlock, navRoot, contentType } =
+    props;
   const intl = useIntl();
   const schema = blocksConfig.listing.blockSchema({
     ...props,
@@ -35,7 +28,6 @@ const ListingData = (props) => {
       block={block}
       navRoot={navRoot}
       contentType={contentType}
-      errors={blocksErrors}
     />
   );
 };

@@ -1,5 +1,5 @@
 export default Actions;
-declare function Actions(props: any): import("react/jsx-runtime").JSX.Element;
+declare function Actions(props: any): JSX.Element;
 declare namespace Actions {
     namespace propTypes {
         let pathname: any;

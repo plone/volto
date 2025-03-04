@@ -26,8 +26,7 @@ describe('Blocks Tests', () => {
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
-    cy.get('.toolbar-inner .buttons').first().next().next().click();
-    cy.get('.ui.input.editor-link.input-anchorlink-theme input').type(
+    cy.get('.block.image .ui.input input[type="text"]').type(
       `https://github.com/plone/volto/raw/main/logos/volto-colorful.png{enter}`,
     );
     cy.get('#toolbar-save').click();

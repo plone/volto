@@ -16,7 +16,6 @@ exports[`renders a TemplateChooser component 1`] = `
         <button
           className="ui button template-chooser-item"
           onClick={[Function]}
-          type="button"
         >
           <img
             alt=""

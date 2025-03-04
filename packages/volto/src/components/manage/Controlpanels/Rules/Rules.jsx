@@ -8,9 +8,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import Helmet from '@plone/volto/helpers/Helmet/Helmet';
-import { getBaseUrl, getParentUrl } from '@plone/volto/helpers/Url/Url';
-import { createPortal } from 'react-dom';
+import { getBaseUrl, getParentUrl, Helmet } from '@plone/volto/helpers';
+import { Portal } from 'react-portal';
 import {
   Button,
   Checkbox,
@@ -21,17 +20,16 @@ import {
   Table,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import { Icon, Toolbar } from '@plone/volto/components';
 import { toast } from 'react-toastify';
-import Toast from '@plone/volto/components/manage/Toast/Toast';
+import { Toast } from '@plone/volto/components';
 
 import {
   getControlPanelRules,
   deleteControlPanelRule,
   getContentRulesEvents,
   editRule,
-} from '@plone/volto/actions/rules/rules';
+} from '@plone/volto/actions';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -422,8 +420,8 @@ class Rules extends Component {
             </Segment.Group>
           </article>
         </Container>
-        {this.state.isClient &&
-          createPortal(
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -437,9 +435,9 @@ class Rules extends Component {
                   />
                 </Link>
               }
-            />,
-            document.getElementById('toolbar'),
-          )}
+            />
+          </Portal>
+        )}
       </div>
     );
   }

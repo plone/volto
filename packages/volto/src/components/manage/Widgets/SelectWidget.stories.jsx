@@ -4,7 +4,7 @@ import WidgetStory from './story';
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import checkSVG from '@plone/volto/icons/check.svg';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { Icon } from '@plone/volto/components';
 
 import bellRingingSVG from '@plone/volto/icons/bell-ringing.svg';
 import blogSVG from '@plone/volto/icons/blog.svg';

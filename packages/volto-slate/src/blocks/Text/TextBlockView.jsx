@@ -3,9 +3,9 @@ import {
   serializeNodesToText,
 } from '@plone/volto-slate/editor/render';
 import config from '@plone/volto/registry';
-import isEqual from 'lodash/isEqual';
+import { isEqual } from 'lodash';
 import Slugger from 'github-slugger';
-import { normalizeString } from '@plone/volto/helpers/Utils/Utils';
+import { normalizeString } from '@plone/volto/helpers';
 
 const TextBlockView = (props) => {
   const { id, data, styling = {} } = props;

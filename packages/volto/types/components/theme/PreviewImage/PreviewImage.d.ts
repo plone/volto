@@ -8,7 +8,7 @@ declare function PreviewImage({ item, alt, image_field, showDefault, ...rest }: 
     alt: any;
     image_field: any;
     showDefault?: boolean;
-}): import("react/jsx-runtime").JSX.Element;
+}): JSX.Element;
 declare namespace PreviewImage {
     namespace propTypes {
         let item: any;

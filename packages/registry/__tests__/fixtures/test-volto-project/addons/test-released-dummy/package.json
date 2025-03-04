@@ -1,8 +1,0 @@
-{
-  "name": "test-released-dummy",
-  "version": "0.0.0",
-  "main": "index.js",
-  "addons": [
-    "test-released-unmentioned"
-  ]
-}

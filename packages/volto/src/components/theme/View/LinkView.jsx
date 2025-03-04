@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 import { Container as SemanticContainer } from 'semantic-ui-react';
-import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
-import { Redirect } from 'react-router-dom';
+import { UniversalLink } from '@plone/volto/components';
 import { FormattedMessage } from 'react-intl';
 import config from '@plone/volto/registry';
 
@@ -20,9 +19,6 @@ const LinkView = ({ token, content }) => {
       }
     }
   }, [content, history, token]);
-  if (__SERVER__ && !token && content.remoteUrl) {
-    return <Redirect to={content.remoteUrl} />;
-  }
   const { title, description, remoteUrl } = content;
   const { openExternalLinkInNewTab } = config.settings;
   const Container =

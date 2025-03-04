@@ -2,28 +2,6 @@
 
 exports[`CommentEditModal renders a comment edit modal component 1`] = `
 <div
-  data-schema="{
-  \\"fieldsets\\": [
-    {
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\",
-      \\"fields\\": [
-        \\"text\\"
-      ]
-    }
-  ],
-  \\"properties\\": {
-    \\"text\\": {
-      \\"title\\": \\"Comment\\",
-      \\"type\\": \\"string\\",
-      \\"widget\\": \\"textarea\\",
-      \\"description\\": \\"\\"
-    }
-  },
-  \\"required\\": [
-    \\"text\\"
-  ]
-}"
-  id="ModalForm"
+  id="modalform"
 />
 `;

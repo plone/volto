@@ -82,7 +82,7 @@ You can use all these props to render your edit block and model its behavior.
 Volto later then 16.0.0 ships with a set of default Edit and View components.
 The view component is mostly a placeholder, with an auto-generated listing of
 the block fields, while the default Edit component is the most interesting, as
-it can use the `blockSchema` that you can specify in the block configuration to
+it can use the `schema` that you can specify in the block configuration to
 automatically render a form for the Block settings, in the Volto Sidebar. In
 the main editing area, it will render the view component, so for many blocks
 you can just develop a schema and the View component.

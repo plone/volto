@@ -1,9 +1,9 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
+import { apiRequest, ApiRequestParams } from '../../API';
 import { z } from 'zod';
 import {
-  type PloneClientConfig,
+  PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../validation/config';
+} from '../../interfaces/config';
 
 export const deleteWorkingcopyArgsSchema = z.object({
   path: z.string(),

@@ -177,7 +177,7 @@ blocksConfig.dataTable.schemaEnhancer = composeSchema(
 
 (extensions-changing-variations)=
 
-## Conditional variations
+## Changing variations
 
 Apart from the form data and the schema, the schema enhancers will also get passed the navigation root and content type.
 These values can be used to dynamically change the variations to be used by the block.
@@ -185,46 +185,50 @@ These values can be used to dynamically change the variations to be used by the 
 For example:
 
 ```jsx
-import { defineMessages } from 'react-intl';
-import { addExtensionFieldToSchema } from '@plone/volto/helpers/Extensions';
-
 const messages = defineMessages({
-  variation: {
-    id: 'Variation',
-    defaultMessage: 'Variation',
+  title: {
+    id: 'Column renderer',
+    defaultMessage: 'Column renderer',
   },
 });
 
-export const conditionalVariationsSchemaEnhancer = ({
-  schema,
-  formData,
-  intl,
-  navRoot,
-  contentType,
-}) => {
-  if (contentType === 'Event' || navRoot.id === 'my-nav-root') {
-    // We redefine the variations in the case that it's an Event content type
-    const variations = [
-      {
-        id: 'default',
-        title: 'Default',
-        isDefault: true,
-      },
-      {
-        id: 'custom',
-        title: 'Custom modified variation',
-      },
-    ];
-
-    schema = addExtensionFieldToSchema({
-      schema,
-      name: 'variation',
-      items: variations,
-      intl,
-      title: messages.variation,
-    });
-  }
-  return schema;
+export default (config) => {
+  config.blocks.blocksConfig.dataTable.extensions = {
+    ...config.blocks.blocksConfig.dataTable.extensions,
+    columnRenderers: {
+      title: messages.title,
+      items: [
+        {
+          id: 'default',
+          title: 'Default',
+          isDefault: true,
+          template: DefaultColumnRenderer,
+        },
+        {
+          id: 'number',
+          title: 'Number',
+          template: NumberColumnRenderer,
+        },
+        {
+          id: 'colored',
+          title: 'Colored',
+          template: ColoredColumnRenderer,
+          schemaEnhancer: ({
+            formData,
+            schema,
+            intl,
+            navRoot,
+            contentType,
+          }) => {
+            if (contentType === 'News Item' && navRoot.id === 'my-nav-root') {
+              // Change variations to your liking here
+            }
+            return schema;
+          },
+        },
+      ],
+    },
+  };
 };
 ```
 

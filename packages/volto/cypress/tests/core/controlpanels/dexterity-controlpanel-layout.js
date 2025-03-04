@@ -21,13 +21,11 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
       'Book',
     );
 
-    cy.navigate('/controlpanel/dexterity-types/book/layout');
+    cy.visit('/controlpanel/dexterity-types/book/layout');
     cy.get('#page-controlpanel-layout').contains(
       'Can not edit Layout for Book',
     );
     cy.get('#page-controlpanel-layout button').click();
-
-    cy.get('#sidebar .formtabs').contains('Settings').click();
 
     // Wait a bit for draftjs to load, without this the title block
     // custom placeholder is missing and cypress gives a timeout error
@@ -54,8 +52,7 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
     cy.get('#toolbar-add-book').click();
     cy.get('.block.title').contains('Book title');
     cy.get('.block.slate').contains('About this book');
-    cy.get('.toolbar-inner .buttons').first().next().next().click();
-    cy.get('.ui.input.editor-link.input-anchorlink-theme input')
+    cy.get('.block.image input[type="text"]')
       .should('have.attr', 'placeholder')
       .and('match', /Book cover image/);
     cy.getSlateTitle()

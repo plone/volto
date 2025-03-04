@@ -1,11 +1,4 @@
 /**
- * update uploaded files count function
- * @function updateUploadedFiles
- * @param {number} number of files uploaded
- * @returns {Object} update uploaded files action
- */
-export function updateUploadedFiles(uploadedFiles: any): any;
-/**
  * Create content function.
  * @function createContent
  * @param {string} url Parent URL.
@@ -88,7 +81,7 @@ export function lockContent(urls: string): any;
  */
 export function unlockContent(urls: string | any[], force?: boolean): any;
 export function linkIntegrityCheck(selection: any): {
-    type: string;
+    type: any;
     mode: string;
     request: {
         op: string;

@@ -5,4 +5,4 @@ declare function AlignBlock({ align, onChangeBlock, data, block, actions, }: {
     data: any;
     block: any;
     actions?: string[];
-}): import("react/jsx-runtime").JSX.Element;
+}): JSX.Element;

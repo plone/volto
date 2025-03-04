@@ -1,57 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Edit renders an edit component 1`] = `
-<div>
+<div
+  id="page-edit"
+>
   <div
-    id="toolbar"
-  >
-    <div
-      id="Portal"
-    />
-  </div>
+    className="Form"
+  />
   <div
-    id="page-edit"
-  >
-    <div
-      data-schema="{
-  \\"some\\": \\"field\\"
-}"
-      id="Form"
-    />
-  </div>
+    id="Portal"
+  />
   <div
-    id="sidebar"
-  >
-    <div
-      id="Sidebar"
-    />
-  </div>
+    id="Portal"
+  />
 </div>
 `;
 
 exports[`Edit renders an empty edit component 1`] = `
-<div>
+<div
+  id="page-edit"
+>
   <div
-    id="toolbar"
-  >
-    <div
-      id="Portal"
-    />
-  </div>
+    className="Form"
+  />
   <div
-    id="page-edit"
-  >
-    <div
-      data-schema="null"
-      id="Form"
-    />
-  </div>
+    id="Portal"
+  />
   <div
-    id="sidebar"
-  >
-    <div
-      id="Sidebar"
-    />
-  </div>
+    id="Portal"
+  />
 </div>
 `;

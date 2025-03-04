@@ -1,6 +1,6 @@
 import React from 'react';
-import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { FormFieldWrapper } from '@plone/volto/components';
+import { Icon } from '@plone/volto/components';
 import { Button } from 'semantic-ui-react';
 
 // The ButtonsWidget

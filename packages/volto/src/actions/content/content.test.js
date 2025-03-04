@@ -8,7 +8,6 @@ import {
   sortContent,
   lockContent,
   unlockContent,
-  updateUploadedFiles,
 } from './content';
 import {
   CREATE_CONTENT,
@@ -19,7 +18,6 @@ import {
   RESET_CONTENT,
   LOCK_CONTENT,
   UNLOCK_CONTENT,
-  UPDATE_UPLOADED_FILES,
 } from '@plone/volto/constants/ActionTypes';
 
 describe('Content action', () => {
@@ -307,18 +305,6 @@ describe('Content action', () => {
       expect(action.request[0].path).toEqual(`${urls[0]}/@lock`);
       expect(action.request[1].op).toEqual('del');
       expect(action.request[1].path).toEqual(`${urls[1]}/@lock`);
-    });
-  });
-
-  describe('Uploaded Files action', () => {
-    describe('updateUploadedFiles', () => {
-      it('should create an action to update the number of uploaded files', () => {
-        const uploadedFiles = 5;
-        const action = updateUploadedFiles(uploadedFiles);
-
-        expect(action.type).toEqual(UPDATE_UPLOADED_FILES);
-        expect(action.uploadedFiles).toEqual(5);
-      });
     });
   });
 });

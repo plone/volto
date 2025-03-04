@@ -7,15 +7,7 @@ const base = path.join(__dirname, '../generators/addon');
 
 let tmpDir;
 
-const TEST_NAMES = [
-  'package.json',
-  'Makefile',
-  '.gitignore',
-  '.eslintrc',
-  '.prettierignore',
-  '.prettierrc',
-  'src/index.js',
-];
+const TEST_NAMES = ['package.json', 'Makefile', '.gitignore', 'src/index.js'];
 
 describe('generator-create-volto-app:addon run in Volto project', () => {
   beforeAll(() => {

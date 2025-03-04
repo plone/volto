@@ -1,8 +1,10 @@
+import React from 'react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 import { waitFor, render } from '@testing-library/react';
+import config from '@plone/volto/registry';
 
 import More from './More';
 
@@ -141,6 +143,28 @@ const store = mockStore({
 
 describe('Toolbar More component', () => {
   it('renders a Toolbar More component', async () => {
+    const { container } = render(
+      <PluggablesProvider>
+        <Provider store={store}>
+          <MemoryRouter>
+            <More
+              pathname="/blah"
+              loadComponent={() => {}}
+              theToolbar={{
+                current: { getBoundingClientRect: () => ({ width: '320' }) },
+              }}
+              closeMenu={() => {}}
+            />
+          </MemoryRouter>
+        </Provider>
+      </PluggablesProvider>,
+    );
+    await waitFor(() => {});
+    expect(container).toMatchSnapshot();
+  });
+  it('renders a Toolbar More component with manage content (working copy)', async () => {
+    config.settings.hasWorkingCopySupport = true;
+
     const { container } = render(
       <PluggablesProvider>
         <Provider store={store}>

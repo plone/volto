@@ -9,9 +9,9 @@ import PropTypes from 'prop-types';
 import { Button, Popup } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
-import isEqual from 'lodash/isEqual';
+import { isEqual } from 'lodash';
 
-import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { Icon } from '@plone/volto/components';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -248,7 +248,6 @@ class Edit extends Component {
             <Popup
               trigger={
                 <Button
-                  type="button"
                   icon
                   basic
                   aria-label={this.props.intl.formatMessage(messages.source)}
@@ -265,7 +264,6 @@ class Edit extends Component {
             <Popup
               trigger={
                 <Button
-                  type="button"
                   icon
                   basic
                   aria-label={this.props.intl.formatMessage(messages.preview)}
@@ -282,7 +280,6 @@ class Edit extends Component {
             <Popup
               trigger={
                 <Button
-                  type="button"
                   icon
                   basic
                   aria-label={this.props.intl.formatMessage(messages.prettier)}
@@ -299,12 +296,7 @@ class Edit extends Component {
             <Popup
               trigger={
                 <Button.Group>
-                  <Button
-                    type="button"
-                    icon
-                    basic
-                    onClick={() => this.onChangeCode('')}
-                  >
+                  <Button icon basic onClick={() => this.onChangeCode('')}>
                     <Icon name={clearSVG} size="24px" color="#e40166" />
                   </Button>
                 </Button.Group>

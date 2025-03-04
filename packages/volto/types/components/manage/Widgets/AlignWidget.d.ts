@@ -9,4 +9,4 @@ export function defaultActionsInfo({ intl }: {
     full: any[];
 };
 export default AlignWidget;
-declare function AlignWidget(props: any): import("react/jsx-runtime").JSX.Element;
+declare function AlignWidget(props: any): JSX.Element;

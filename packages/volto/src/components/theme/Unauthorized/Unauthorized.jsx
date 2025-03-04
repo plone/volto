@@ -1,11 +1,21 @@
+/**
+ * @module components/theme/Unauthorized/Unauthorized
+ */
+
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { withServerErrorCode } from '@plone/volto/helpers/Utils/Utils';
-import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { getBaseUrl } from '@plone/volto/helpers';
 
+/**
+ * unauthorized function.
+ * @function Unauthorized
+ * @returns {string} Markup of the unauthorized page.
+ */
 const Unauthorized = () => {
   const error_message = useSelector((state) => state.apierror?.message);
   let location = useLocation();
@@ -22,18 +32,7 @@ const Unauthorized = () => {
           defaultMessage="You are trying to access a protected resource, please {login} first."
           values={{
             login: (
-              <Link
-                to={{
-                  pathname: `${getBaseUrl(location.pathname)}/login`,
-                  state: {
-                    // This is needed to cover the use case of being logged in in
-                    // another backend (eg. in development), having a token for
-                    // localhost and try to use it, the login route has to know that
-                    // it's the same as it comes from a logout
-                    isLogout: true,
-                  },
-                }}
-              >
+              <Link to={`${getBaseUrl(location.pathname)}/login`}>
                 <FormattedMessage id="log in" defaultMessage="log in" />
               </Link>
             ),

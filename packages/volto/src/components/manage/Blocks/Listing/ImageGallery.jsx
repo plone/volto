@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import loadable from '@loadable/component';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import { Button } from 'semantic-ui-react';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { Icon } from '@plone/volto/components';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 import galleryLeftSVG from '@plone/volto/icons/left-key.svg';
@@ -19,7 +19,6 @@ const ImageGallery = loadable(() => import('react-image-gallery'));
 const renderLeftNav = (onClick, disabled) => {
   return (
     <Button
-      type="button"
       className="image-gallery-icon image-gallery-left-nav primary basic"
       disabled={disabled}
       onClick={onClick}
@@ -31,7 +30,6 @@ const renderLeftNav = (onClick, disabled) => {
 const renderRightNav = (onClick, disabled) => {
   return (
     <Button
-      type="button"
       className="image-gallery-icon image-gallery-right-nav primary basic"
       disabled={disabled}
       onClick={onClick}

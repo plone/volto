@@ -1,3 +1,2 @@
-declare const _default: React.ForwardRefExoticComponent<React.RefAttributes<any>>;
+declare const _default: any;
 export default _default;
-import React from 'react';

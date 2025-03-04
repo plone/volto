@@ -5,11 +5,11 @@
 
 import React from 'react';
 import { Container, List, Segment } from 'semantic-ui-react';
-import map from 'lodash/map';
+import { map } from 'lodash';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { useSelector, shallowEqual } from 'react-redux';
-import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
-import { flattenToAppURL, addAppURL } from '@plone/volto/helpers/Url/Url';
+import { UniversalLink } from '@plone/volto/components';
+import { flattenToAppURL, addAppURL } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   copyright: {
@@ -42,7 +42,6 @@ const Footer = ({ intl }) => {
       textAlign="center"
       id="footer"
       aria-label="Footer"
-      tabIndex="-1"
     >
       <Container>
         <Segment basic inverted color="grey" className="discreet">

@@ -1,6 +1,6 @@
 import { defineMessages, useIntl } from 'react-intl';
 import { Button } from 'semantic-ui-react';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { Icon } from '@plone/volto/components';
 
 import addSVG from '@plone/volto/icons/add.svg';
 import configSVG from '@plone/volto/icons/configuration.svg';
@@ -25,7 +25,6 @@ const SimpleContainerToolbar = (props) => {
       <Button.Group>
         <Button
           aria-label={intl.formatMessage(messages.addBlock)}
-          type="button"
           icon
           basic
           disabled={data?.blocks_layout?.items?.length >= maxLength}
@@ -37,7 +36,6 @@ const SimpleContainerToolbar = (props) => {
       <Button.Group>
         <Button
           aria-label={intl.formatMessage(messages.blockSettings)}
-          type="button"
           icon
           basic
           onClick={(e) => {

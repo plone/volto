@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
+import { UniversalLink } from '@plone/volto/components';
 
 const TokenWidget = ({ value, children, className }) =>
   value ? (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Input } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { Icon } from '@plone/volto/components';
 import loupeSVG from '@plone/volto/icons/zoom.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -46,7 +46,6 @@ const SearchInput = (props) => {
       <div className="search-input-actions">
         {searchText && (
           <Button
-            type="button"
             basic
             icon
             className="search-input-clear-icon-button"

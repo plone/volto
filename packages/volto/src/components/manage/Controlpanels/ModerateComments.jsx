@@ -8,18 +8,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { getParentUrl } from '@plone/volto/helpers/Url/Url';
-import Helmet from '@plone/volto/helpers/Helmet/Helmet';
-import { createPortal } from 'react-dom';
+import { getParentUrl, Helmet } from '@plone/volto/helpers';
+import { Portal } from 'react-portal';
 import { Container, Button, Table } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { deleteComment } from '@plone/volto/actions/comments/comments';
-import { searchContent } from '@plone/volto/actions/search/search';
-import FormattedRelativeDate from '@plone/volto/components/theme/FormattedDate/FormattedRelativeDate';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
-import { CommentEditModal } from '@plone/volto/components/theme/Comments';
+import { deleteComment, searchContent } from '@plone/volto/actions';
+import {
+  CommentEditModal,
+  FormattedRelativeDate,
+  Icon,
+  Toolbar,
+} from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -267,8 +267,8 @@ class ModerateComments extends Component {
             </section>
           </article>
         </Container>
-        {this.state.isClient &&
-          createPortal(
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -282,9 +282,9 @@ class ModerateComments extends Component {
                   />
                 </Link>
               }
-            />,
-            document.getElementById('toolbar'),
-          )}
+            />
+          </Portal>
+        )}
       </div>
     );
   }

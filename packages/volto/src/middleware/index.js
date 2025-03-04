@@ -11,4 +11,3 @@ export {
   protectLoadEnd,
   loadProtector,
 } from '@plone/volto/middleware/storeProtectLoadUtils';
-export { default as userSessionReset } from './userSessionReset';

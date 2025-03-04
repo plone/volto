@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
@@ -7,12 +7,9 @@ import config from '@plone/volto/registry';
 
 import ManageTranslations from './ManageTranslations';
 
-beforeAll(() => {
-  config.settings.isMultilingual = true;
-  config.settings.supportedLanguages = ['de', 'es'];
-});
-
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
 
 const mockStore = configureStore();
 
@@ -40,7 +37,7 @@ describe('ManageTranslations', () => {
         isMultilingual: true,
       },
     });
-    const { container } = render(
+    const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
           <ManageTranslations
@@ -52,11 +49,10 @@ describe('ManageTranslations', () => {
               },
             }}
           />
-          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-
-    expect(container).toMatchSnapshot();
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
   });
 });

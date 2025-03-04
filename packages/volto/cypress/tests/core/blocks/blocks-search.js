@@ -102,30 +102,28 @@ describe('Search Block Tests', () => {
     cy.get('.block.search .facets > .facet .entries > .entry label')
       .contains('Event')
       .click();
-
-    cy.get('.searchBlock-facets').findByText('My Event').should('not.exist');
+    cy.get('#page-document .listing-item:first-of-type a').should(
+      'have.attr',
+      'href',
+      '/my-event',
+    );
     cy.url().should(
       'contain',
-      '%5B%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Document%22%2C%22Folder%22%5D%7D%5D',
+      '%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Event%22%5D%7D',
     );
     // clear facets
-    cy.get('.checkbox-facet').findByText('Event').click();
+    cy.get('.block.search .filter-list-header .ui.button').click();
     cy.url().should(
-      'contain',
-      '%5B%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Document%22%2C%22Folder%22%2C%22Event%22%5D%7D%5D',
+      'not.contain',
+      '%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Event%22%5D%7D',
     );
 
-    cy.get('.checkbox-facet').findByText('Folder').click();
-    cy.get('.checkbox-facet').findByText('Page').click();
-
-    cy.wait(2000);
-
-    // // navigate to the searched url
-    cy.visit(
+    // navigate to the searched url
+    cy.navigate(
       '/my-search-page?query=%5B%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Event%22%5D%7D%5D',
     );
     cy.reload();
-    cy.wait(2000);
+    cy.wait(500);
     cy.get('.search-details').should('contain', 'Search results: 1');
 
     //navigate to home
@@ -496,176 +494,5 @@ describe('Search Block Tests', () => {
       'contain',
       `Search results: ${results_number}`,
     );
-  });
-
-  it('Search block - test on edit sort on and sort order', () => {
-    cy.visit('/');
-    cy.get('#toolbar-add > .icon').click();
-    cy.get('#toolbar-add-document').click();
-    cy.getSlateTitle().focus().click().type('My Search Page');
-
-    // Add Search listing block
-    cy.addNewBlock('search');
-
-    // Add search query criteria
-    cy.get('#default-query-0-query .react-select__value-container').click();
-    cy.get('#default-query-0-query .react-select__option')
-      .contains('Type')
-      .click();
-
-    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
-    cy.get(
-      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
-    )
-      .contains('Page')
-      .click();
-
-    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
-    cy.get(
-      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
-    )
-      .contains('Folder')
-      .click();
-
-    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
-    cy.get(
-      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
-    )
-      .contains('Event')
-      .click();
-
-    // uncheck showSearchButton
-    cy.get('label[for=field-showSearchButton]').click();
-    cy.get('.search-wrapper .ui.button').should('contain', 'Search');
-    // reverse order
-    cy.get('label[for=field-sort_order_boolean-2-query]').click();
-    //check if the sorting order is working
-    cy.get('.listing-item').first().contains('My Event');
-    cy.get('#select-listingblock-sort-on').click();
-    cy.get('.react-select__menu .react-select__group')
-      .first()
-      .children()
-      .first()
-      .next()
-      .children()
-      .first()
-      .next()
-      .click();
-    cy.wait(5000);
-
-    cy.get('.listing-item').first().contains('My page');
-    //save page
-    cy.get('#toolbar-save > .icon').click();
-    cy.wait(500);
-  });
-  it('Search block - test on select 1 sort on in listing criteria sort on', () => {
-    cy.visit('/');
-    cy.get('#toolbar-add > .icon').click();
-    cy.get('#toolbar-add-document').click();
-    cy.getSlateTitle().focus().click().type('My Search Page');
-
-    // Add Search listing block
-    cy.addNewBlock('search');
-
-    // Add search query criteria
-    cy.get('#default-query-0-query .react-select__value-container').click();
-    cy.get('#default-query-0-query .react-select__option')
-      .contains('Type')
-      .click();
-
-    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
-    cy.get(
-      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
-    )
-      .contains('Page')
-      .click();
-    cy.get(
-      '#select-listingblock-sort-on > .react-select__control > .react-select__value-container',
-    ).click();
-    cy.findByText('Effective date').click();
-    cy.get('.field-wrapper-showSortOn .wrapper .ui label').click();
-    //save page
-    cy.get('#toolbar-save').click();
-
-    // then we are able to see title and value
-    cy.get('span.sorted-label').should('have.text', 'Sorted onEffective date');
-    cy.get('span.sorted-label-value').should('have.text', 'Effective date');
-    // Verify the presence of Ascending button
-    cy.get('button[title="Ascending"]').should('be.visible');
-    // Verify the presence of Descending button
-    cy.get('button[title="Descending"]').should('be.visible');
-  });
-  it('Search block - test on only one sort on option below.', () => {
-    cy.visit('/');
-    cy.get('#toolbar-add > .icon').click();
-    cy.get('#toolbar-add-document').click();
-    cy.getSlateTitle().focus().click().type('My Search Page');
-
-    // Add Search listing block
-    cy.addNewBlock('search');
-    cy.get('.field-wrapper-showSortOn .wrapper .ui label').click();
-    cy.get(
-      '#field-sortOnOptions > .react-select__control > .react-select__value-container ',
-    ).click();
-    cy.findByText('Effective date').click();
-    //save page
-    cy.get('#toolbar-save').click();
-    // then we are able to see label and sort option
-    cy.get('.sort-label').should('have.text', 'Sort on');
-    cy.get('#select-search-sort-on').click();
-    cy.findByText('Effective date').click({ force: true });
-    cy.get(
-      'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
-    ).contains('Effective date');
-    // Verify the presence of Ascending button
-    cy.get('button[title="Ascending"]').should('be.visible');
-    // Verify the presence of Descending button
-    cy.get('button[title="Descending"]').should('be.visible');
-  });
-  it('Search block - test on select both listing sort on and sort on options', () => {
-    cy.visit('/');
-    cy.get('#toolbar-add > .icon').click();
-    cy.get('#toolbar-add-document').click();
-    cy.getSlateTitle().focus().click().type('My Search Page');
-
-    // Add Search listing block
-    cy.addNewBlock('search');
-    // Add search query criteria
-    cy.get('#default-query-0-query .react-select__value-container').click();
-    cy.get('#default-query-0-query .react-select__option')
-      .contains('Type')
-      .click();
-
-    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
-    cy.get(
-      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
-    )
-      .contains('Page')
-      .click();
-    cy.get(
-      '#select-listingblock-sort-on > .react-select__control > .react-select__value-container',
-    ).click();
-    cy.findByText('Order in folder').click();
-    // Add one sort on options below
-    cy.get('.field-wrapper-showSortOn .wrapper .ui label').click();
-    cy.get('#field-sortOnOptions').click();
-    cy.findByText('Effective date').click();
-    // save page
-    cy.get('#toolbar-save').click();
-    // then we are able to see label and sort option
-    cy.get('.sort-label').should('have.text', 'Sort on');
-    cy.get('#select-search-sort-on').click();
-    cy.findByText('Effective date').click({ force: true });
-    cy.get(
-      'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
-    ).contains('Effective date');
-    cy.get('#select-search-sort-on').click();
-    cy.get(
-      'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
-    ).contains('Order in folder');
-    // Verify the presence of Ascending button
-    cy.get('button[title="Ascending"]').should('be.visible');
-    // Verify the presence of Descending button
-    cy.get('button[title="Descending"]').should('be.visible');
   });
 });

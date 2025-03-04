@@ -3,22 +3,19 @@ import useDeepCompareEffect from 'use-deep-compare-effect';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import uniqBy from 'lodash/uniqBy';
+import { uniqBy } from 'lodash';
 import { Checkbox, Message } from 'semantic-ui-react';
-import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
-import Toast from '@plone/volto/components/manage/Toast/Toast';
-import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
+import { messages } from '@plone/volto/helpers';
+import { Toast, UniversalLink } from '@plone/volto/components';
 import {
   createRelations,
   deleteRelations,
   queryRelations,
-} from '@plone/volto/actions/relations/relations';
-import {
   resetSearchContent,
   searchContent,
-} from '@plone/volto/actions/search/search';
+} from '@plone/volto/actions';
 
-const RelationsListing = ({
+const ListingTemplate = ({
   relationtype,
   query_source,
   query_target,
@@ -48,7 +45,7 @@ const RelationsListing = ({
 
   const staticCatalogVocabularyQuery = useSelector(
     (state) =>
-      state.relations?.relations?.data?.[relationtype]
+      state.relations?.relations?.[relationtype]
         ?.staticCatalogVocabularyQuery || {},
   );
 
@@ -480,4 +477,4 @@ const RelationsListing = ({
     </>
   );
 };
-export default RelationsListing;
+export default ListingTemplate;

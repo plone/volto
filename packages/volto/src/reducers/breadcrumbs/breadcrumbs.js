@@ -3,9 +3,12 @@
  * @module reducers/breadcrumbs/breadcrumbs
  */
 
-import map from 'lodash/map';
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
-import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
+import { map } from 'lodash';
+import {
+  flattenToAppURL,
+  getBaseUrl,
+  hasApiExpander,
+} from '@plone/volto/helpers';
 
 import {
   GET_BREADCRUMBS,

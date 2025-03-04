@@ -5,9 +5,7 @@
 
 import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode';
-import compact from 'lodash/compact';
-import flatten from 'lodash/flatten';
-import union from 'lodash/union';
+import { compact, flatten, union } from 'lodash';
 import { matchPath } from 'react-router';
 import qs from 'query-string';
 
@@ -19,13 +17,12 @@ import {
   RESET_APIERROR,
   SET_APIERROR,
 } from '@plone/volto/constants/ActionTypes';
-import { changeLanguage } from '@plone/volto/actions/language/language';
-import { updateUploadedFiles } from '@plone/volto/actions/content/content';
+import { changeLanguage } from '@plone/volto/actions';
 import {
   toGettextLang,
   toReactIntlLang,
-} from '@plone/volto/helpers/Utils/Utils';
-import { getCookieOptions } from '@plone/volto/helpers/Cookies/cookies';
+  getCookieOptions,
+} from '@plone/volto/helpers';
 let socket = null;
 
 /**
@@ -138,7 +135,6 @@ const apiMiddlewareFactory =
     const token = getState().userSession.token;
     const availableLanguages =
       getState().site.data['plone.available_languages'];
-    let uploadedFiles = getState().content.uploadedFiles;
     let isAnonymous = true;
     if (token) {
       const tokenExpiration = jwtDecode(token).exp;
@@ -160,6 +156,7 @@ const apiMiddlewareFactory =
     }
 
     next({ ...rest, type: `${type}_PENDING` });
+
     if (socket) {
       actionPromise = Array.isArray(request)
         ? Promise.all(
@@ -191,12 +188,8 @@ const apiMiddlewareFactory =
                     checkUrl: settings.actions_raising_api_errors.includes(
                       action.type,
                     ),
-                    attach: item.attach,
                   },
                 ).then((reqres) => {
-                  if (action.subrequest === 'batch-upload') {
-                    dispatch(updateUploadedFiles(++uploadedFiles));
-                  }
                   return [...acc, reqres];
                 });
               });
@@ -211,7 +204,6 @@ const apiMiddlewareFactory =
                   checkUrl: settings.actions_raising_api_errors.includes(
                     action.type,
                   ),
-                  attach: item.attach,
                 }),
               ),
             )
@@ -221,17 +213,11 @@ const apiMiddlewareFactory =
             headers: request.headers,
             params: request.params,
             checkUrl: settings.actions_raising_api_errors.includes(action.type),
-            attach: request.attach,
           });
       actionPromise.then(
         (result) => {
-          if (uploadedFiles !== 0) {
-            dispatch(updateUploadedFiles(0));
-          }
-
           const { settings } = config;
-          const state = getState();
-          if (state.apierror.connectionRefused) {
+          if (getState().apierror.connectionRefused) {
             next({
               ...rest,
               type: RESET_APIERROR,
@@ -241,19 +227,18 @@ const apiMiddlewareFactory =
             const lang = result?.language?.token;
             if (
               lang &&
-              state.intl.locale !== toReactIntlLang(lang) &&
+              getState().intl.locale !== toReactIntlLang(lang) &&
               !subrequest &&
               availableLanguages.includes(lang)
             ) {
               const langFileName = toGettextLang(lang);
-              import(
-                /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-              ).then((locale) => {
-                dispatch(changeLanguage(lang, locale.default));
-              });
+              import('@root/../locales/' + langFileName + '.json').then(
+                (locale) => {
+                  dispatch(changeLanguage(lang, locale.default));
+                },
+              );
             }
           }
-
           if (type === LOGIN && settings.websockets) {
             const cookies = new Cookies();
             cookies.set(

@@ -7,7 +7,7 @@ const offline = process.env.OFFLINE_BUNDLE_ANALYZE === 'true' ? true : false;
 
 const defaultOptions = {
   concatenateModules: false,
-  analyzerHost: '127.0.0.1',
+  analyzerHost: '0.0.0.0',
   analyzerMode: offline ? 'static' : 'server',
   generateStatsFile: true,
   statsFilename: 'stats.json',

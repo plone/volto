@@ -45,19 +45,15 @@ const config = {
       files: ['**/*.ts', '**/*.tsx'],
       plugins: ['@typescript-eslint', 'import'],
       extends: [
+        'plugin:react/recommended',
         // 'plugin:@typescript-eslint/eslint-recommended',
         // 'plugin:@typescript-eslint/recommended',
-        'plugin:react/recommended',
         // 'plugin:import/recommended',
         'plugin:import/typescript',
         'plugin:prettier/recommended',
-        // 'plugin:react/jsx-runtime', // We only want this for non-library code (eg. volto add-ons)
+        'plugin:react/jsx-runtime',
         // 'plugin:storybook/recommended',
       ],
-      rules: {
-        '@typescript-eslint/no-explicit-any': 'off',
-        '@typescript-eslint/ban-ts-comment': 0,
-      },
     },
     {
       files: ['**/*.js', '**/*.jsx'],

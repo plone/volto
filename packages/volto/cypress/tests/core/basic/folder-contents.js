@@ -130,23 +130,25 @@ describe('Folder Contents Tests', () => {
   });
 
   it('Move items to top of folder and bottom of folder', () => {
-    cy.intercept('GET', `/**/@search*`).as('search');
-    cy.intercept('PATCH', `/**/my-folder`).as('reorder');
     // creating a Document
-    var genArr = Array.from({ length: 56 }, (v, k) => k + 1);
-    genArr.forEach((item) => {
-      cy.createContent({
-        contentType: 'Document',
-        contentTitle: 'My Child',
-        path: 'my-folder',
-      });
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'child',
+      contentTitle: 'My Child',
+      path: 'my-folder',
     });
+
+    // doing copy paste for dummy data
+    cy.get('svg[class="icon unchecked"]').click();
+    cy.get('svg[class="icon copy"]').click();
+    var genArr = Array.from({ length: 56 }, (v, k) => k + 1);
+    cy.wrap(genArr).each((index) => {
+      cy.get('svg[class="icon paste"]').click({ force: true });
+    });
+    cy.wait(2000); // just for clearing of toast
 
     // after adding 56 page I need to add a final page to move around.
     // when I add a page
-    cy.visit('/my-folder');
-    cy.wait('@content');
-
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
     cy.getSlateTitle()
@@ -157,7 +159,6 @@ describe('Folder Contents Tests', () => {
 
     // then a new page has been created
     cy.get('#toolbar-save').click();
-    cy.wait('@content');
     cy.url().should(
       'eq',
       Cypress.config().baseUrl + '/my-folder/last-and-first-page',
@@ -170,7 +171,7 @@ describe('Folder Contents Tests', () => {
     ).click();
     cy.findByText('Move to top of folder').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-folder/contents');
-    cy.wait('@reorder');
+    cy.wait(1000); // waiting for settling of odering or search return
 
     // Checking if move to top of folder works or not.
     cy.get('table tbody tr:first-child a span').findByText(
@@ -180,7 +181,6 @@ describe('Folder Contents Tests', () => {
       'tr[aria-label="/my-folder/last-and-first-page"] svg[class="icon dropdown-popup-trigger"]',
     ).click();
     cy.findByText('Move to bottom of folder').click();
-    cy.wait('@reorder');
 
     // Checking whether moving to bottom of folder works or not.
     cy.get('.contents-pagination .menu').findByText('2').click();
@@ -195,8 +195,7 @@ describe('Folder Contents Tests', () => {
     cy.get(
       'tr[aria-label="/my-folder/last-and-first-page"] svg[class="icon dropdown-popup-trigger"]',
     ).click();
-    cy.wait('@search');
-
+    // cy.intercept('GET', '/plone/++api++/my-folder/@search').as('getSearch'); // I don't know proper way to wait
     cy.findByText('Move to top of folder').click();
     cy.get('.search.item button').click();
 
@@ -208,8 +207,6 @@ describe('Folder Contents Tests', () => {
       'tr[aria-label="/my-folder/last-and-first-page"] svg[class="icon dropdown-popup-trigger"]',
     ).click();
     cy.findByText('Move to bottom of folder').click();
-    cy.wait('@reorder');
-
     cy.get('.contents-pagination .menu').findByText('2').click();
 
     // Checking whether moving to bottom of folder works or not.

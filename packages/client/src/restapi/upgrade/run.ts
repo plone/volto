@@ -1,11 +1,13 @@
 import { z } from 'zod';
-import { type ApiRequestParams, apiRequest } from '../../API';
+import { ApiRequestParams, apiRequest } from '../../API';
 import {
-  type PloneClientConfig,
+  PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../validation/config';
-import { runUpgradeDataSchema } from '../../validation/upgrade';
-import type { RunUpgradeResponse } from '@plone/types';
+} from '../../interfaces/config';
+import {
+  RunUpgradeResponse,
+  runUpgradeDataSchema,
+} from '../../interfaces/upgrade';
 
 export const runUpgradeArgsSchema = z.object({
   data: runUpgradeDataSchema,

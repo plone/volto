@@ -1,5 +1,5 @@
 export default ImageSidebar;
-declare function ImageSidebar(props: any): import("react/jsx-runtime").JSX.Element;
+declare function ImageSidebar(props: any): JSX.Element;
 declare namespace ImageSidebar {
     namespace propTypes {
         let data: any;

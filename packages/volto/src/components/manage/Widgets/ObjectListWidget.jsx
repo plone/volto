@@ -1,11 +1,8 @@
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Accordion, Button, Segment } from 'semantic-ui-react';
-import DragDropList from '@plone/volto/components/manage/DragDropList/DragDropList';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import { applySchemaDefaults } from '@plone/volto/helpers/Blocks/Blocks';
-import { reorderArray } from '@plone/volto/helpers/Utils/Utils';
+import { DragDropList, FormFieldWrapper, Icon } from '@plone/volto/components';
+import { applySchemaDefaults, reorderArray } from '@plone/volto/helpers';
 import ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
 
 import upSVG from '@plone/volto/icons/up-key.svg';

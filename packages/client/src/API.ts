@@ -1,9 +1,8 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import type { PloneClientConfig } from './validation/config';
+import { PloneClientConfig } from './interfaces/config';
 import qs from 'query-string';
-import debugFactory from 'debug';
 
-const debug = debugFactory('axios');
+const debug = require('debug')('axios');
 
 export type ApiRequestParams = {
   config: PloneClientConfig;

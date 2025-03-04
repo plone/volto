@@ -6,7 +6,7 @@
 }
 
 /* Headers */
-.ui.table thead th {
+.ui.table th {
   padding: @headerVerticalPadding @headerHorizontalPadding;
   border-left: @headerDivider;
   background: @headerBackground;
@@ -33,9 +33,4 @@
 
 .ui.table tr:first-child > th:only-child {
   border-radius: @borderRadius @borderRadius 0em 0em;
-}
-
-/* inline link color*/
-.ui.table.inverted a {
-  color: @lightPrimaryColor;
 }

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import map from 'lodash/map';
+import { map } from 'lodash';
 import { Menu, Dropdown } from 'semantic-ui-react';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Slugger from 'github-slugger';
-import { normalizeString } from '@plone/volto/helpers/Utils/Utils';
+import { normalizeString } from '@plone/volto/helpers';
 
 const RenderMenuItems = ({ items }) => {
   return map(items, (item) => {
@@ -25,6 +26,11 @@ const RenderMenuItems = ({ items }) => {
   });
 };
 
+/**
+ * View toc block class.
+ * @class View
+ * @extends Component
+ */
 const View = ({ data, tocEntries }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   // When the page is resized to prevent items from the TOC from going out of the viewport,
@@ -153,7 +159,18 @@ const View = ({ data, tocEntries }) => {
 
   return (
     <>
-      {data.title && !data.hide_title ? <h2>{data.title}</h2> : ''}
+      {data.title && !data.hide_title ? (
+        <h2>
+          {data.title || (
+            <FormattedMessage
+              id="Table of Contents"
+              defaultMessage="Table of Contents"
+            />
+          )}
+        </h2>
+      ) : (
+        ''
+      )}
       <Menu className="responsive-menu">
         <RenderMenuItems items={tocEntries} />
         <Dropdown
@@ -184,4 +201,4 @@ View.propTypes = {
   properties: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default View;
+export default injectIntl(View);

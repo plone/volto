@@ -1,34 +1,23 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { MemoryRouter } from 'react-router-dom';
 
-import { __test__ as LinksToItem } from './LinksToItem';
+import LinksToItem from './LinksToItem';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
-
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
 jest.mock('../Toolbar/More', () => jest.fn(() => <div className="More" />));
 
 describe('LinksToItem', () => {
   it('renders "links and references" view', () => {
     const store = mockStore({
-      actions: {
-        actions: {
-          document_actions: [],
-          object: [
-            {
-              icon: '',
-              id: 'edit',
-              title: 'Edit',
-            },
-          ],
-        },
-      },
       relations: {
         subrequests: {
           '/page-1': {
@@ -98,15 +87,14 @@ describe('LinksToItem', () => {
         messages: {},
       },
     });
-    const { container } = render(
+    const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
           <LinksToItem location={{ pathname: '/page-1/links-to-item' }} />
-          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-
-    expect(container).toMatchSnapshot();
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
   });
 });

@@ -3,7 +3,7 @@ export const Auth: any;
 declare namespace _default {
     export let title: string;
     export { HeaderComponent as component };
-    export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
+    export let decorators: ((Story: any) => JSX.Element)[];
     export namespace argTypes {
         let token: string;
     }

@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
-import { createPortal } from 'react-dom';
+import { Portal } from 'react-portal';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { compose } from 'redux';
 import { Button, Comment, Container, Icon } from 'semantic-ui-react';
@@ -12,13 +12,14 @@ import {
   deleteComment,
   listComments,
   listMoreComments,
-} from '@plone/volto/actions/comments/comments';
-import Avatar from '@plone/volto/components/theme/Avatar/Avatar';
-import { Form } from '@plone/volto/components/manage/Form';
-import { CommentEditModal } from '@plone/volto/components/theme/Comments';
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
-import { getColor } from '@plone/volto/helpers/Utils/Utils';
-import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
+} from '@plone/volto/actions';
+import { Avatar, CommentEditModal, Form } from '@plone/volto/components';
+import {
+  flattenToAppURL,
+  getBaseUrl,
+  getColor,
+  usePrevious,
+} from '@plone/volto/helpers';
 
 const messages = defineMessages({
   comment: {
@@ -147,7 +148,7 @@ const Comments = (props) => {
   };
 
   const loadMoreComments = () => {
-    dispatch(listMoreComments(flattenToAppURL(next)));
+    dispatch(listMoreComments(next));
   };
 
   const onDelete = (value) => {
@@ -212,7 +213,7 @@ const Comments = (props) => {
   // recursively makes comments with their replies nested
   // each iteration will show replies to the specific comment using allCommentsWithCildren
   const commentElement = (comment) => (
-    <Comment key={comment.comment_id} id={comment.comment_id}>
+    <Comment key={comment.comment_id}>
       <Avatar
         src={flattenToAppURL(comment.author_image)}
         title={comment.author_name || 'Anonymous'}
@@ -344,7 +345,7 @@ const Comments = (props) => {
         </div>
       )}
       {/* all comments  */}
-      <Comment.Group threaded id={'discussion'}>
+      <Comment.Group threaded>
         {allPrimaryComments.map((item) => commentElement(item))}
       </Comment.Group>
 
@@ -355,18 +356,19 @@ const Comments = (props) => {
         </Button>
       )}
 
-      {replyTo &&
-        document &&
-        createPortal(
+      {replyTo && (
+        <Portal
+          node={document && document.getElementById(`reply-place-${replyTo}`)}
+        >
           <Form
             onSubmit={onSubmit}
             onCancel={onEditCancel}
             submitLabel={intl.formatMessage(messages.comment)}
             resetAfterSubmit
             schema={makeFormSchema(intl)}
-          />,
-          document.getElementById(`reply-place-${replyTo}`),
-        )}
+          />
+        </Portal>
+      )}
     </Container>
   );
 };

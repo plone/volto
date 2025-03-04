@@ -4,28 +4,24 @@
  */
 
 import React, { useState } from 'react';
+import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { Input, Button } from 'semantic-ui-react';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import {
-  isInternalURL,
-  flattenToAppURL,
-  URLUtils,
-} from '@plone/volto/helpers/Url/Url';
+import { FormFieldWrapper, Icon } from '@plone/volto/components';
+import { isInternalURL, flattenToAppURL, URLUtils } from '@plone/volto/helpers';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 
 /** Widget to edit urls
  *
- * This is a widget used for getting and setting an internal url. You can also use
+ * This is the default widget used for the `remoteUrl` field. You can also use
  * it by declaring a field like:
  *
  * ```jsx
  * {
  *  title: "URL",
- *  widget: 'internal_url',
+ *  widget: 'url',
  * }
  * ```
  */
@@ -39,20 +35,20 @@ export const InternalUrlWidget = (props) => {
     maxLength,
     placeholder,
     isDisabled,
-    value,
   } = props;
   const inputId = `field-${id}`;
 
+  const [value, setValue] = useState(flattenToAppURL(props.value));
   const [isInvalid, setIsInvalid] = useState(false);
-
   /**
    * Clear handler
    * @method clear
    * @param {Object} value Value
-   * @returns {string} Empty string
+   * @returns {undefined}
    */
   const clear = () => {
-    onChange(id, '');
+    setValue('');
+    onChange(id, undefined);
   };
 
   const onChangeValue = (_value) => {
@@ -67,6 +63,8 @@ export const InternalUrlWidget = (props) => {
       }
     }
 
+    setValue(newValue);
+
     newValue = isInternalURL(newValue) ? flattenToAppURL(newValue) : newValue;
 
     if (!isInternalURL(newValue) && newValue.length > 0) {
@@ -77,7 +75,7 @@ export const InternalUrlWidget = (props) => {
       }
     }
 
-    onChange(id, newValue);
+    onChange(id, newValue === '' ? undefined : newValue);
   };
 
   return (
@@ -91,10 +89,12 @@ export const InternalUrlWidget = (props) => {
           disabled={isDisabled}
           placeholder={placeholder}
           onChange={({ target }) => onChangeValue(target.value)}
-          onBlur={({ target }) => onBlur(id, target.value)}
+          onBlur={({ target }) =>
+            onBlur(id, target.value === '' ? undefined : target.value)
+          }
           onClick={() => onClick()}
-          minLength={minLength}
-          maxLength={maxLength}
+          minLength={minLength || null}
+          maxLength={maxLength || null}
           error={isInvalid}
         />
         {value?.length > 0 ? (
@@ -177,4 +177,4 @@ InternalUrlWidget.defaultProps = {
   maxLength: null,
 };
 
-export default withObjectBrowser(InternalUrlWidget);
+export default compose(withObjectBrowser)(InternalUrlWidget);

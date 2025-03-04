@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
@@ -7,8 +7,12 @@ import ModerateComments from './ModerateComments';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/components/theme/Comments');
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
+jest.mock('../../theme/Comments/CommentEditModal', () =>
+  jest.fn(() => <div id="modal" />),
+);
 
 describe('ModerateComments', () => {
   it('renders a moderate comments component', () => {
@@ -27,13 +31,12 @@ describe('ModerateComments', () => {
         messages: {},
       },
     });
-    const { container } = render(
+    const component = renderer.create(
       <Provider store={store}>
         <ModerateComments location={{ pathname: '/blog' }} />
-        <div id="toolbar"></div>
       </Provider>,
     );
-
-    expect(container).toMatchSnapshot();
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
   });
 });

@@ -4,7 +4,6 @@ import { useInView } from 'react-intersection-observer';
 import { SlateEditor } from '@plone/volto-slate/editor';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import { handleKeyDetached } from './keyboard';
-import config from '@plone/volto/registry';
 
 const DEBUG = false;
 
@@ -30,7 +29,6 @@ export const DetachedTextBlockEditor = (props) => {
   const { value } = data;
 
   const intl = useIntl();
-  const { textblockExtensions } = config.settings.slate;
   const placeholder =
     data.placeholder || formTitle || intl.formatMessage(messages.text);
   let instructions = data?.instructions?.data || data?.instructions;
@@ -43,22 +41,13 @@ export const DetachedTextBlockEditor = (props) => {
     rootMargin: '0px 0px 200px 0px',
   });
 
-  const withBlockProperties = React.useCallback(
-    (editor) => {
-      editor.getBlockProps = () => props;
-      return editor;
-    },
-    [props],
-  );
-
   return (
     <div className="text-slate-editor-inner detached-slate-editor" ref={ref}>
       <SlateEditor
         index={index}
         readOnly={!inView}
         properties={properties}
-        extensions={textblockExtensions}
-        renderExtensions={[withBlockProperties]}
+        renderExtensions={[]}
         value={value}
         block={block /* is this needed? */}
         debug={DEBUG}

@@ -1,29 +1,39 @@
 import { z } from 'zod';
-import { type ApiRequestParams, apiRequest } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
-import { copyMoveDataSchema as moveDataSchema } from '../../validation/copymove';
-import type { CopyMoveResponse as MoveResponse } from '@plone/types';
+import { ApiRequestParams, apiRequest } from '../../API';
+import {
+  PloneClientConfig,
+  PloneClientConfigSchema,
+} from '../../interfaces/config';
+import {
+  copyMoveDataSchema as moveDataSchema,
+  CopyMoveResponse as MoveResponse,
+} from '../../interfaces/copymove';
 
-export type MoveArgs = z.infer<typeof moveDataSchema> & {
-  config: PloneClientConfig;
-};
+export const MoveArgsSchema = z.object({
+  path: z.string(),
+  data: moveDataSchema,
+  config: PloneClientConfigSchema,
+});
+
+export type MoveArgs = z.infer<typeof MoveArgsSchema>;
 
 export const move = async ({
   path,
   data,
   config,
 }: MoveArgs): Promise<MoveResponse> => {
-  const validatedArgs = moveDataSchema.parse({
+  const validatedArgs = MoveArgsSchema.parse({
     path,
     data,
+    config,
   });
 
   const options: ApiRequestParams = {
-    config,
     data: validatedArgs.data,
+    config: validatedArgs.config,
   };
 
-  const movePath = `${validatedArgs.path}/@move`;
+  const movePath = `/${validatedArgs.path}/@move`;
 
   return apiRequest('post', movePath, options);
 };

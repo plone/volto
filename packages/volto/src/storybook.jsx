@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
-import useUndoManager from '@plone/volto/helpers/UndoManager/useUndoManager';
+import { useUndoManager } from '@plone/volto/helpers';
 import configureStore from 'redux-mock-store';
 import configureRealStore from '@plone/volto/store';
 
@@ -1387,16 +1387,11 @@ export default class Wrapper extends Component {
   render() {
     const mockStore = configureStore();
     const store = mockStore(this.customState());
-    const state = store.getState();
 
     return (
       <Provider store={store}>
         <PluggablesProvider>
-          <IntlProvider
-            locale={state.intl.locale}
-            messages={state.intl.messages}
-            defaultLocale={state.intl.defaultLocale ?? 'en'}
-          >
+          <IntlProvider locale="en">
             <StaticRouter location={this.props.location}>
               <div className="volto-storybook-container">
                 {this.props.children}
@@ -1439,16 +1434,11 @@ export class RealStoreWrapper extends Component {
     // If thunk is not included there's a complaint about async actions
     const history = createBrowserHistory();
     const store = configureRealStore(this.customState(), history);
-    const state = store.getState();
 
     return (
       <Provider store={store}>
         <PluggablesProvider>
-          <IntlProvider
-            locale={state.intl.locale}
-            messages={state.intl.messages}
-            defaultLocale={state.intl.defaultLocale ?? 'en'}
-          >
+          <IntlProvider locale="en">
             <StaticRouter location={this.props.location}>
               <div className="volto-storybook-container">
                 {this.props.children}
@@ -1490,7 +1480,6 @@ export const FormUndoWrapper = ({
             onClick={() => doUndo()}
             aria-label="Undo"
             disabled={!canUndo}
-            type="button"
           >
             Undo
           </Button>
@@ -1501,7 +1490,6 @@ export const FormUndoWrapper = ({
             onClick={() => doRedo()}
             aria-label="Redo"
             disabled={!canRedo}
-            type="button"
           >
             Redo
           </Button>

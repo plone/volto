@@ -1,834 +1,1157 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Controlpanels renders a controlpanels component 1`] = `
-<div>
+<div
+  className="view-wrapper"
+>
   <div
-    class="view-wrapper"
+    className="ui container controlpanel"
   >
     <div
-      class="ui container controlpanel"
+      className="ui raised segments"
     >
       <div
-        class="ui raised segments"
+        className="ui segment primary"
+      >
+        Site Setup
+      </div>
+      <div
+        className="ui secondary segment"
+      >
+        General
+      </div>
+      <div
+        className="ui attached segment"
       >
         <div
-          class="ui segment primary"
-        >
-          Site Setup
-        </div>
-        <div
-          class="ui secondary segment"
-        >
-          General
-        </div>
-        <div
-          class="ui attached segment"
+          className="ui doubling six column grid"
         >
           <div
-            class="ui doubling six column grid"
+            className="row"
           >
             <div
-              class="row"
+              className="column"
             >
-              <div
-                class="column"
+              <a
+                href="/controlpanel/addons"
+                onClick={[Function]}
               >
-                <a
-                  href="/controlpanel/addons"
+                <h3
+                  className="ui icon center aligned header"
                 >
-                  <h3
-                    class="ui icon center aligned header"
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
                   >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Add-Ons
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/database"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Database
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/date-and-time"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Date and Time
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/lang"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Language
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/aliases"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      URL Management
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/undo"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Undo
-                    </div>
-                  </h3>
-                </a>
-              </div>
+                    Add-Ons
+                  </div>
+                </h3>
+              </a>
             </div>
-          </div>
-        </div>
-        <div
-          class="ui secondary segment"
-        >
-          Content
-        </div>
-        <div
-          class="ui attached segment"
-        >
-          <div
-            class="ui doubling six column grid"
-          >
             <div
-              class="row"
+              className="column"
             >
-              <div
-                class="column"
+              <a
+                href="/controlpanel/database"
+                onClick={[Function]}
               >
-                <a
-                  href="/controlpanel/rules"
+                <h3
+                  className="ui icon center aligned header"
                 >
-                  <h3
-                    class="ui icon center aligned header"
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
                   >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Content Rules
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/editing"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Editing
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/moderate-comments"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Moderate Comments
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/relations"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Relations
-                    </div>
-                  </h3>
-                </a>
-              </div>
+                    Database
+                  </div>
+                </h3>
+              </a>
             </div>
-          </div>
-        </div>
-        <div
-          class="ui secondary segment"
-        >
-          Security
-        </div>
-        <div
-          class="ui attached segment"
-        >
-          <div
-            class="ui doubling six column grid"
-          >
             <div
-              class="row"
+              className="column"
             >
-              <div
-                class="column"
+              <a
+                href="/controlpanel/date-and-time"
+                onClick={[Function]}
               >
-                <a
-                  href="/controlpanel/security"
+                <h3
+                  className="ui icon center aligned header"
                 >
-                  <h3
-                    class="ui icon center aligned header"
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
                   >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      test
-                    </div>
-                  </h3>
-                </a>
-              </div>
+                    Date and Time
+                  </div>
+                </h3>
+              </a>
             </div>
-          </div>
-        </div>
-        <div
-          class="ui secondary segment"
-        >
-          Users
-        </div>
-        <div
-          class="ui attached segment"
-        >
-          <div
-            class="ui doubling six column grid"
-          >
             <div
-              class="row"
+              className="column"
             >
-              <div
-                class="column"
+              <a
+                href="/controlpanel/lang"
+                onClick={[Function]}
               >
-                <a
-                  href="/controlpanel/groups"
+                <h3
+                  className="ui icon center aligned header"
                 >
-                  <h3
-                    class="ui icon center aligned header"
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
                   >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Groups
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
+                    Language
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/aliases"
+                onClick={[Function]}
               >
-                <a
-                  href="/controlpanel/usergroupmembership"
+                <h3
+                  className="ui icon center aligned header"
                 >
-                  <h3
-                    class="ui icon center aligned header"
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
                   >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      User Group Membership
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
+                    URL Management
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/undo"
+                onClick={[Function]}
               >
-                <a
-                  href="/controlpanel/users"
+                <h3
+                  className="ui icon center aligned header"
                 >
-                  <h3
-                    class="ui icon center aligned header"
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
                   >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Users
-                    </div>
-                  </h3>
-                </a>
-              </div>
+                    Undo
+                  </div>
+                </h3>
+              </a>
             </div>
           </div>
         </div>
       </div>
       <div
-        class="ui raised segments"
+        className="ui secondary segment"
+      >
+        Content
+      </div>
+      <div
+        className="ui attached segment"
       >
         <div
-          class="ui segment primary"
+          className="ui doubling six column grid"
         >
-          Version Overview
+          <div
+            className="row"
+          >
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/rules"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Content Rules
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/editing"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Editing
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/moderate-comments"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Moderate Comments
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/relations"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Relations
+                  </div>
+                </h3>
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
+      <div
+        className="ui secondary segment"
+      >
+        Security
+      </div>
+      <div
+        className="ui attached segment"
+      >
         <div
-          class="ui attached segment"
-        />
+          className="ui doubling six column grid"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/security"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    test
+                  </div>
+                </h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ui secondary segment"
+      >
+        Users
+      </div>
+      <div
+        className="ui attached segment"
+      >
+        <div
+          className="ui doubling six column grid"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/groups"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Groups
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/usergroupmembership"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    User Group Membership
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/users"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Users
+                  </div>
+                </h3>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div
-    id="toolbar"
-  >
     <div
-      id="Portal"
-    />
+      className="ui raised segments"
+    >
+      <div
+        className="ui segment primary"
+      >
+        Version Overview
+      </div>
+      <div
+        className="ui attached segment"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Controlpanels renders an additional control panel 1`] = `
-<div>
+<div
+  className="view-wrapper"
+>
   <div
-    class="view-wrapper"
+    className="ui container controlpanel"
   >
     <div
-      class="ui container controlpanel"
+      className="ui raised segments"
     >
       <div
-        class="ui raised segments"
+        className="ui segment primary"
+      >
+        Site Setup
+      </div>
+      <div
+        className="ui secondary segment"
+      >
+        Security
+      </div>
+      <div
+        className="ui attached segment"
       >
         <div
-          class="ui segment primary"
-        >
-          Site Setup
-        </div>
-        <div
-          class="ui secondary segment"
-        >
-          Security
-        </div>
-        <div
-          class="ui attached segment"
+          className="ui doubling six column grid"
         >
           <div
-            class="ui doubling six column grid"
+            className="row"
           >
             <div
-              class="row"
+              className="column"
             >
-              <div
-                class="column"
+              <a
+                href="/controlpanel/security"
+                onClick={[Function]}
               >
-                <a
-                  href="/controlpanel/security"
+                <h3
+                  className="ui icon center aligned header"
                 >
-                  <h3
-                    class="ui icon center aligned header"
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
                   >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      test
-                    </div>
-                  </h3>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ui secondary segment"
-        >
-          Add-on Configuration
-        </div>
-        <div
-          class="ui attached segment"
-        >
-          <div
-            class="ui doubling six column grid"
-          >
-            <div
-              class="row"
-            >
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/manage-myaddon-foo"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Foo Management
-                    </div>
-                  </h3>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ui secondary segment"
-        >
-          General
-        </div>
-        <div
-          class="ui attached segment"
-        >
-          <div
-            class="ui doubling six column grid"
-          >
-            <div
-              class="row"
-            >
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/addons"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Add-Ons
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/database"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Database
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/aliases"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      URL Management
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/undo"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Undo
-                    </div>
-                  </h3>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ui secondary segment"
-        >
-          Content
-        </div>
-        <div
-          class="ui attached segment"
-        >
-          <div
-            class="ui doubling six column grid"
-          >
-            <div
-              class="row"
-            >
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/rules"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Content Rules
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/moderate-comments"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Moderate Comments
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/relations"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Relations
-                    </div>
-                  </h3>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ui secondary segment"
-        >
-          Users
-        </div>
-        <div
-          class="ui attached segment"
-        >
-          <div
-            class="ui doubling six column grid"
-          >
-            <div
-              class="row"
-            >
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/groups"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Groups
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/usergroupmembership"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      User Group Membership
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/users"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="content"
-                    >
-                      Users
-                    </div>
-                  </h3>
-                </a>
-              </div>
+                    test
+                  </div>
+                </h3>
+              </a>
             </div>
           </div>
         </div>
       </div>
       <div
-        class="ui raised segments"
+        className="ui secondary segment"
+      >
+        Add-on Configuration
+      </div>
+      <div
+        className="ui attached segment"
       >
         <div
-          class="ui segment primary"
+          className="ui doubling six column grid"
         >
-          Version Overview
+          <div
+            className="row"
+          >
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/manage-myaddon-foo"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Foo Management
+                  </div>
+                </h3>
+              </a>
+            </div>
+          </div>
         </div>
-        <div
-          class="ui attached segment"
-        />
       </div>
+      <div
+        className="ui secondary segment"
+      >
+        General
+      </div>
+      <div
+        className="ui attached segment"
+      >
+        <div
+          className="ui doubling six column grid"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/addons"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Add-Ons
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/database"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Database
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/aliases"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    URL Management
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/undo"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Undo
+                  </div>
+                </h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ui secondary segment"
+      >
+        Content
+      </div>
+      <div
+        className="ui attached segment"
+      >
+        <div
+          className="ui doubling six column grid"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/rules"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Content Rules
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/moderate-comments"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Moderate Comments
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/relations"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Relations
+                  </div>
+                </h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ui secondary segment"
+      >
+        Users
+      </div>
+      <div
+        className="ui attached segment"
+      >
+        <div
+          className="ui doubling six column grid"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/groups"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Groups
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/usergroupmembership"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    User Group Membership
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/users"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Users
+                  </div>
+                </h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="ui raised segments"
+    >
+      <div
+        className="ui segment primary"
+      >
+        Version Overview
+      </div>
+      <div
+        className="ui attached segment"
+      />
     </div>
   </div>
   <div
-    id="toolbar"
-  >
-    <div
-      id="Portal"
-    />
-  </div>
+    id="Portal"
+  />
 </div>
 `;

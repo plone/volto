@@ -160,26 +160,3 @@ describe('User Group Membership Control Panel test for MANY users and MANY group
     });
   });
 });
-
-describe('Checkboxes of group "Administrators" are disabled for non-manager users', () => {
-  beforeEach(() => {
-    init();
-    cy.createUser({
-      username: 'siteadmin',
-      fullname: 'Sven Siteadministrator',
-      roles: ['Site Administrator'],
-    });
-    cy.autologin('siteadmin', 'password');
-  });
-  it('Non-manager is not allowed to edit managers', () => {
-    cy.visit('/controlpanel/usergroupmembership');
-    cy.wait('@usergroup');
-
-    // Editing checkboxes for Administrators group are disabled.
-    cy.get('.usergroupmembership').then(() => {
-      cy.get('#source-row-max div.checkbox_Administrators input').should(
-        'be.disabled',
-      );
-    });
-  });
-});

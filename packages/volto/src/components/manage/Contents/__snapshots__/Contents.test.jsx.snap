@@ -1,600 +1,1066 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Contents renders a folder contents view component 1`] = `
-<div>
+<div
+  className="ui container folder-contents"
+  id="page-contents"
+>
   <div
-    aria-live="polite"
-    class="ui container folder-contents"
-    id="page-contents"
+    className="blurring dimmable"
   >
     <div
-      class="blurring dimmable"
+      className="ui inverted dimmer"
+      onClick={[Function]}
     >
       <div
-        class="ui inverted dimmer"
+        className="content"
       >
         <div
-          class="content"
+          className="ui massive indeterminate text loader"
         >
-          <div
-            class="ui massive indeterminate text loader"
-          >
-            Loading
-          </div>
+          Loading
         </div>
       </div>
-      <div
-        class="container"
+    </div>
+    <div
+      className="container"
+    >
+      <article
+        id="content"
       >
-        <article
-          id="content"
+        <div
+          className="UploadModal"
+        />
+        <section
+          id="content-core"
         >
           <div
-            class="UploadModal"
-          />
-          <section
-            id="content-core"
+            className="ui raised segments"
           >
             <div
-              class="ui raised segments"
+              className="ui secondary attached top-menu menu"
             >
               <div
-                class="ui secondary attached top-menu menu"
+                className="menu top-menu-menu"
               >
-                <div
-                  class="menu top-menu-menu"
-                >
-                  <button
-                    aria-label="Upload"
-                    class="ui button icon item upload"
-                  >
-                    <svg
-                      class="icon upload"
-                      style="height: 24px; width: auto; fill: #007eb1;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                  </button>
-                </div>
-                <div
-                  class="menu top-menu-menu"
-                >
-                  <button
-                    aria-label="Rename"
-                    class="ui button disabled icon item"
-                  >
-                    <svg
-                      class="icon rename"
-                      style="height: 24px; width: auto; fill: grey;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                  </button>
-                  <button
-                    aria-label="State"
-                    class="ui button disabled icon item"
-                  >
-                    <svg
-                      class="icon semaphore"
-                      style="height: 24px; width: auto; fill: grey;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                  </button>
-                  <button
-                    aria-label="Tags"
-                    class="ui button disabled icon item"
-                  >
-                    <svg
-                      class="icon tag"
-                      style="height: 24px; width: auto; fill: grey;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                  </button>
-                  <button
-                    aria-label="Properties"
-                    class="ui button disabled icon item"
-                  >
-                    <svg
-                      class="icon properties"
-                      style="height: 24px; width: auto; fill: grey;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                  </button>
-                </div>
-                <div
-                  class="menu top-menu-menu"
-                >
-                  <button
-                    aria-label="Cut"
-                    class="ui button disabled icon item"
-                  >
-                    <svg
-                      class="icon cut"
-                      style="height: 24px; width: auto; fill: grey;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                  </button>
-                  <button
-                    aria-label="Copy"
-                    class="ui button disabled icon item"
-                  >
-                    <svg
-                      class="icon copy"
-                      style="height: 24px; width: auto; fill: grey;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                  </button>
-                  <button
-                    aria-label="Paste"
-                    class="ui button icon item"
-                  >
-                    <svg
-                      class="icon paste"
-                      style="height: 24px; width: auto; fill: grey;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                  </button>
-                  <button
-                    aria-label="Delete"
-                    class="ui button disabled icon item"
-                  >
-                    <svg
-                      class="icon delete"
-                      style="height: 24px; width: auto; fill: grey;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                  </button>
-                </div>
-                <div
-                  class="right menu top-menu-searchbox"
-                >
-                  <div
-                    class="ui right aligned category search item"
-                  >
-                    <div
-                      class="ui small transparent input"
-                    >
-                      <input
-                        placeholder="Filter…"
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                    <svg
-                      class="icon zoom"
-                      style="height: 30px; width: auto; fill: #007eb1; flex-shrink: 0;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <div
-                      class="results"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                class="ui secondary attached segment contents-breadcrumbs"
-              >
-                <div
-                  class="ui breadcrumb"
-                >
-                  <a
-                    class="section"
-                    href="/contents"
-                    title="Home"
-                  >
-                    Home
-                  </a>
-                  <div
-                    class="divider"
-                  >
-                    /
-                  </div>
-                  <div
-                    class="active section"
-                  >
-                    Blog
-                  </div>
-                </div>
-                <div
-                  aria-expanded="false"
-                  class="ui item dropdown right floating selectIndex"
-                  role="listbox"
-                  tabindex="0"
+                <button
+                  aria-label="Upload"
+                  className="ui button icon item upload"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
                 >
                   <svg
-                    class="icon"
-                    style="height: 24px; width: auto; fill: #826a6a;"
+                    className="icon upload"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "#007eb1",
+                        "height": "24px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+              <div
+                className="menu top-menu-menu"
+              >
+                <button
+                  aria-label="Rename"
+                  className="ui button disabled icon item"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  <svg
+                    className="icon rename"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "grey",
+                        "height": "24px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+                <button
+                  aria-label="State"
+                  className="ui button disabled icon item"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  <svg
+                    className="icon semaphore"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "grey",
+                        "height": "24px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+                <button
+                  aria-label="Tags"
+                  className="ui button disabled icon item"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  <svg
+                    className="icon tag"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "grey",
+                        "height": "24px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+                <button
+                  aria-label="Properties"
+                  className="ui button disabled icon item"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  <svg
+                    className="icon properties"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "grey",
+                        "height": "24px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+              <div
+                className="menu top-menu-menu"
+              >
+                <button
+                  aria-label="Cut"
+                  className="ui button disabled icon item"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  <svg
+                    className="icon cut"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "grey",
+                        "height": "24px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+                <button
+                  aria-label="Copy"
+                  className="ui button disabled icon item"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  <svg
+                    className="icon copy"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "grey",
+                        "height": "24px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+                <button
+                  aria-label="Paste"
+                  className="ui button icon item"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  <svg
+                    className="icon paste"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "grey",
+                        "height": "24px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+                <button
+                  aria-label="Delete"
+                  className="ui button disabled icon item"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  <svg
+                    className="icon delete"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "grey",
+                        "height": "24px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+              <div
+                className="right menu top-menu-searchbox"
+              >
+                <div
+                  className="ui right aligned category search item"
+                >
+                  <div
+                    className="ui small transparent input"
+                  >
+                    <input
+                      onChange={[Function]}
+                      placeholder="Filter…"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  
+                  <svg
+                    className="icon zoom"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "#007eb1",
+                        "flexShrink": "0",
+                        "height": "30px",
+                        "width": "auto",
+                      }
+                    }
                     viewBox=""
                     xmlns=""
                   />
                   <div
-                    class="menu transition left"
+                    className="results"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="ui secondary attached segment contents-breadcrumbs"
+            >
+              <div
+                className="ui breadcrumb"
+              >
+                <a
+                  className="section"
+                  href="/contents"
+                  onClick={[Function]}
+                  title="Home"
+                >
+                  Home
+                </a>
+                <div
+                  className="divider"
+                >
+                  /
+                </div>
+                <div
+                  className="active section"
+                  onClick={[Function]}
+                >
+                  Blog
+                </div>
+              </div>
+              <div
+                aria-expanded={false}
+                className="ui item dropdown right floating selectIndex"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                role="listbox"
+                tabIndex={0}
+              >
+                <svg
+                  className="icon"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "fill": "#826a6a",
+                      "height": "24px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+                <div
+                  className="menu transition left"
+                >
+                  <div
+                    className="header"
+                  >
+                    Select columns to show
+                  </div>
+                  <div
+                    className="scrolling menu transition"
                   >
                     <div
-                      class="header"
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
                     >
-                      Select columns to show
+                      <svg
+                        className="icon Review state"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "#007eb1",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Review state
+                      </span>
                     </div>
                     <div
-                      class="scrolling menu transition"
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
                     >
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Review state"
-                          style="height: 24px; width: auto; fill: #007eb1;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Review state
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Last modified"
-                          style="height: 24px; width: auto; fill: #007eb1;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Last modified
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Publication date"
-                          style="height: 24px; width: auto; fill: #007eb1;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Publication date
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon ID"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          ID
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Expiration date"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Expiration date
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Created on"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Created on
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Tags"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Tags
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Type"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Type
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Folder"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Folder
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Excluded from navigation"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Excluded from navigation
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Object Size"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Object Size
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Last comment date"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Last comment date
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Total comments"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Total comments
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon End Date"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          End Date
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Description"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Description
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Creator"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Creator
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Location"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Location
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon UID"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          UID
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Start Date"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Start Date
-                        </span>
-                      </div>
-                      <div
-                        class="item iconAlign"
-                        role="option"
-                      >
-                        <svg
-                          class="icon Type"
-                          style="height: 24px; width: auto; fill: currentColor;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                        <span>
-                           
-                          Type
-                        </span>
-                      </div>
+                      <svg
+                        className="icon Last modified"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "#007eb1",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Last modified
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon Publication date"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "#007eb1",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Publication date
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon ID"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        ID
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon Expiration date"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Expiration date
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon Created on"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Created on
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon Tags"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Tags
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon Type"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Type
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon Folder"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Folder
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon Excluded from navigation"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Excluded from navigation
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon Object Size"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Object Size
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon Last comment date"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Last comment date
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon Total comments"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Total comments
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon End Date"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        End Date
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon Description"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Description
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon Creator"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Creator
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon Location"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Location
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon UID"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        UID
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon Start Date"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Start Date
+                      </span>
+                    </div>
+                    <div
+                      className="item iconAlign"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon Type"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      <span>
+                         
+                        Type
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div
-                class="contents-table-wrapper"
-              >
-                <table
-                  class="ui selectable single line attached compact table"
-                >
-                  <thead
-                    class=""
-                  >
-                    <tr
-                      class=""
-                    >
-                      <th
-                        class=""
-                      >
-                        <svg
-                          class="icon dropdown-popup-trigger configuration-svg"
-                          style="height: 24px; width: auto; fill: #826a6a;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                      </th>
-                      <th
-                        class=""
-                      >
-                        <svg
-                          class="icon dropdown-popup-trigger"
-                          style="height: 24px; width: auto; fill: #826a6a;"
-                          viewBox=""
-                          xmlns=""
-                        />
-                      </th>
-                      <th
-                        class="four wide"
-                      >
-                        Title
-                      </th>
-                      <th
-                        class="right aligned"
-                      >
-                        Actions
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody
-                    class=""
-                  />
-                </table>
-              </div>
-              <div
-                class="contents-pagination"
-              >
-                <div
-                  class="Pagination"
-                />
-              </div>
             </div>
-          </section>
-        </article>
-      </div>
+            <div
+              className="contents-table-wrapper"
+            >
+              <table
+                className="ui selectable single line attached compact table"
+              >
+                <thead
+                  className=""
+                >
+                  <tr
+                    className=""
+                  >
+                    <th
+                      className=""
+                    >
+                      <svg
+                        className="icon dropdown-popup-trigger configuration-svg"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={[Function]}
+                        style={
+                          Object {
+                            "fill": "#826a6a",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                    </th>
+                    <th
+                      className=""
+                    >
+                      <svg
+                        className="icon dropdown-popup-trigger"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={[Function]}
+                        style={
+                          Object {
+                            "fill": "#826a6a",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                    </th>
+                    <th
+                      className="four wide"
+                    >
+                      Title
+                    </th>
+                    <th
+                      className="right aligned"
+                    >
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  className=""
+                />
+              </table>
+            </div>
+            <div
+              className="contents-pagination"
+            >
+              <div
+                className="Pagination"
+              />
+            </div>
+          </div>
+        </section>
+      </article>
     </div>
-  </div>
-  <div
-    id="toolbar"
-  >
     <div
       id="Portal"
     />

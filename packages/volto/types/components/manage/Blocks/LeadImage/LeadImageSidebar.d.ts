@@ -1,4 +1,4 @@
-declare const _default: React.ForwardRefExoticComponent<import("react-intl").Omit<{
+declare const _default: import("react").ForwardRefExoticComponent<import("react-intl").Omit<{
     properties: any;
     data: any;
     block: any;
@@ -8,9 +8,9 @@ declare const _default: React.ForwardRefExoticComponent<import("react-intl").Omi
     onChangeField: any;
     intl: any;
 }, "intl"> & {
-    forwardedRef?: React.Ref<any>;
-} & React.RefAttributes<any>> & {
-    WrappedComponent: React.ComponentType<{
+    forwardedRef?: import("react").Ref<any>;
+} & import("react").RefAttributes<any>> & {
+    WrappedComponent: import("react").ComponentType<{
         properties: any;
         data: any;
         block: any;
@@ -22,4 +22,3 @@ declare const _default: React.ForwardRefExoticComponent<import("react-intl").Omi
     }>;
 };
 export default _default;
-import React from 'react';

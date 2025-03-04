@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import Image from '@plone/volto/components/theme/Image/Image';
 import {
   CheckboxWidget,
+  Icon,
+  Image,
   TextWidget,
-} from '@plone/volto/components/manage/Widgets';
-import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+} from '@plone/volto/components';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 
 import imageSVG from '@plone/volto/icons/image.svg';

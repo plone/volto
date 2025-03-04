@@ -3,7 +3,7 @@
  * portlet. It uses the same API, so the options are similar to
  * INavigationPortlet
  */
-export function ContextNavigationComponent(props: any): "" | import("react/jsx-runtime").JSX.Element;
+export function ContextNavigationComponent(props: any): "" | JSX.Element;
 export namespace ContextNavigationComponent {
     namespace propTypes {
         let navigation: any;

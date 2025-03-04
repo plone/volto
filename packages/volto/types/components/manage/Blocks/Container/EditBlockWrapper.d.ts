@@ -1,2 +1,2 @@
 export default EditBlockWrapper;
-declare function EditBlockWrapper(props: any): import("react/jsx-runtime").JSX.Element;
+declare function EditBlockWrapper(props: any): JSX.Element;

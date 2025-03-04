@@ -3,14 +3,12 @@ import { v4 as uuid } from 'uuid';
 import {
   addBlock,
   changeBlock,
-  insertBlock,
-  blockHasValue,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers/Blocks/Blocks';
+} from '@plone/volto/helpers';
 import { Transforms, Editor, Node, Text, Path } from 'slate';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
-import omit from 'lodash/omit';
+import { omit } from 'lodash';
 import config from '@plone/volto/registry';
 
 function fromEntries(pairs) {
@@ -118,24 +116,13 @@ export function syncCreateSlateBlock(value) {
   return [id, block];
 }
 
-export function createImageBlock(url, index, props, intl) {
+export function createImageBlock(url, index, props) {
   const { properties, onChangeField, onSelectBlock } = props;
   const blocksFieldname = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
 
-  const currBlockId = properties.blocks_layout.items[index];
-  const currBlockHasValue = blockHasValue(properties.blocks[currBlockId]);
-  let id, newFormData;
-
-  if (currBlockHasValue) {
-    [id, newFormData] = addBlock(properties, 'image', index + 1, {}, intl);
-    newFormData = changeBlock(newFormData, id, { '@type': 'image', url });
-  } else {
-    [id, newFormData] = insertBlock(properties, currBlockId, {
-      '@type': 'image',
-      url,
-    });
-  }
+  const [id, formData] = addBlock(properties, 'image', index + 1);
+  const newFormData = changeBlock(formData, id, { '@type': 'image', url });
 
   ReactDOM.unstable_batchedUpdates(() => {
     onChangeField(blocksFieldname, newFormData[blocksFieldname]);
@@ -144,18 +131,12 @@ export function createImageBlock(url, index, props, intl) {
   });
 }
 
-export const createAndSelectNewBlockAfter = (editor, blockValue, intl) => {
+export const createAndSelectNewBlockAfter = (editor, blockValue) => {
   const blockProps = editor.getBlockProps();
 
   const { onSelectBlock, properties, index, onChangeField } = blockProps;
 
-  const [blockId, formData] = addBlock(
-    properties,
-    'slate',
-    index + 1,
-    {},
-    intl,
-  );
+  const [blockId, formData] = addBlock(properties, 'slate', index + 1);
 
   const options = {
     '@type': 'slate',

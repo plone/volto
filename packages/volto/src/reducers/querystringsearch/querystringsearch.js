@@ -1,6 +1,5 @@
-import map from 'lodash/map';
-import omit from 'lodash/omit';
-import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { map, omit } from 'lodash';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 const GET_QUERYSTRING_RESULTS = 'GET_QUERYSTRING_RESULTS';
 const RESET_QUERYSTRING_RESULTS = 'RESET_QUERYSTRING_RESULTS';

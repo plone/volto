@@ -15,7 +15,7 @@ declare function ObjectWidget({ block, schema, value, onChange, errors, id, ...p
     onChange: any;
     errors?: {};
     id: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): JSX.Element;
 declare namespace ObjectWidget {
     namespace propTypes {
         let id: any;

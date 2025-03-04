@@ -2,12 +2,10 @@ import { Node } from 'slate';
 import {
   isCursorAtBlockStart,
   isCursorAtBlockEnd,
-} from '@plone/volto-slate/utils/selection';
-import {
   getNextVoltoBlock,
   getPreviousVoltoBlock,
-} from '@plone/volto-slate/utils/volto-blocks';
-import { createDefaultBlock } from '@plone/volto-slate/utils/blocks';
+  createDefaultBlock,
+} from '@plone/volto-slate/utils';
 
 /**
  * goUp.

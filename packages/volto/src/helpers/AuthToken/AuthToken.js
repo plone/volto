@@ -6,8 +6,8 @@
 import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode';
 
-import { loginRenew } from '@plone/volto/actions/userSession/userSession';
-import { getCookieOptions } from '@plone/volto/helpers/Cookies/cookies';
+import { loginRenew } from '@plone/volto/actions';
+import { getCookieOptions } from '@plone/volto/helpers';
 import { push } from 'connected-react-router';
 
 /**
@@ -102,7 +102,7 @@ export function persistAuthToken(store, req) {
   handleChange(true);
 }
 
-if (module?.hot) {
+if (module.hot) {
   module.hot.dispose((data) => {
     data.reloaded = true;
   });

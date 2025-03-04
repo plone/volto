@@ -1,9 +1,9 @@
-import config from '@plone/volto/registry';
 import React from 'react';
-import { Provider } from 'react-intl-redux';
-import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
+import { Provider } from 'react-intl-redux';
+import { MemoryRouter } from 'react-router-dom';
+import config from '@plone/volto/registry';
 
 import { __test__ as App } from './App';
 
@@ -64,6 +64,5 @@ describe('App', () => {
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
-    component.unmount();
   });
 });

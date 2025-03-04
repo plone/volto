@@ -29,14 +29,12 @@ exports[`Diff renders a diff component 1`] = `
         >
           <button
             class="ui active button"
-            type="button"
             value="split"
           >
             Split
           </button>
           <button
             class="ui button"
-            type="button"
             value="unified"
           >
             Unified
@@ -234,17 +232,16 @@ exports[`Diff renders a diff component 1`] = `
           class="top aligned six wide column"
         >
           <span>
-            My 
+            <span>
+              My 
+            </span>
             <span
               class="deletion"
             >
               old
             </span>
-             
-            <span
-              class="deletion"
-            >
-              title
+            <span>
+               title
             </span>
           </span>
         </div>
@@ -252,26 +249,26 @@ exports[`Diff renders a diff component 1`] = `
           class="top aligned six wide column"
         >
           <span>
-            My 
+            <span>
+              My 
+            </span>
             <span
               class="addition"
             >
               new
             </span>
-             
+            <span>
+               title
+            </span>
             <span
               class="addition"
             >
-              title,
+              ,
             </span>
           </span>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    id="toolbar"
-  >
     <div
       id="Portal"
     />

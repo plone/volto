@@ -3,8 +3,8 @@ declare function useUndoManager(state: any, onUndoRedo: any, { maxUndoLevels, en
     maxUndoLevels: any;
     enableHotKeys?: boolean;
 }): {
-    doUndo: () => void;
-    doRedo: () => void;
-    canUndo: boolean;
-    canRedo: boolean;
+    doUndo: any;
+    doRedo: any;
+    canUndo: any;
+    canRedo: any;
 };

@@ -26,10 +26,10 @@ exports[`renders an object widget component with clicks on each tab in root leve
       class="ui bottom attached segment active tab"
     >
       <div
-        class="Field"
-        id="internal_link-0-my-widget"
+        class="mocked-default-widget"
+        id="mocked-field-internal_link-0-my-widget"
       >
-        Internal link
+        Internal link - No description
       </div>
     </div>
   </div>
@@ -62,10 +62,10 @@ exports[`renders an object widget component with clicks on each tab in root leve
       class="ui bottom attached segment active tab"
     >
       <div
-        class="Field"
-        id="external_link-0-my-widget"
+        class="mocked-default-widget"
+        id="mocked-field-external_link-0-my-widget"
       >
-        External URL (can be relative within this site or absolute if it starts with http:// or https://)
+        External URL (can be relative within this site or absolute if it starts with http:// or https://) - No description
       </div>
     </div>
   </div>
@@ -98,16 +98,16 @@ exports[`renders an object widget component with clicks on each tab in root leve
       class="ui bottom attached segment active tab"
     >
       <div
-        class="Field"
-        id="email_address-0-my-widget"
+        class="mocked-default-widget"
+        id="mocked-field-email_address-0-my-widget"
       >
-        Email address
+        Email address - No description
       </div>
       <div
-        class="Field"
-        id="email_subject-1-my-widget"
+        class="mocked-default-widget"
+        id="mocked-field-email_subject-1-my-widget"
       >
-        Email subject (optional)
+        Email subject (optional) - No description
       </div>
     </div>
   </div>
@@ -142,10 +142,12 @@ exports[`renders an object widget component with invalid field in value 1`] = `
     className="ui bottom attached segment active tab"
   >
     <div
-      className="Field"
-      id="internal_link-0-my-widget"
+      className="mocked-default-widget"
+      id="mocked-field-internal_link-0-my-widget"
     >
       Internal link
+       - 
+      No description
     </div>
   </div>
 </div>

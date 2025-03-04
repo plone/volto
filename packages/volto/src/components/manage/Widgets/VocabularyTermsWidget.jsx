@@ -2,7 +2,7 @@
  * VocabularyTermsWidget
  * @module components/manage/Widgets/VocabularyTermsWidget
  * Widget for plone.schema.JSONField field meant for a SimpleVocabulary source
- *
+ * 
 
 VOCABULARY_SCHEMA = json.dumps(
     {
@@ -68,7 +68,7 @@ def TalkTypesVocabulary(context):
 
  * titles are editable
  * tokens are generated
- *
+ * 
  * Purpose: Use this widget for a controlpanel field
  * that acts as a source of a vocabulary for a zope.schema.Choice field.
  * Vocabulary terms should change over time only in title, not value,
@@ -84,19 +84,19 @@ def TalkTypesVocabulary(context):
 
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import find from 'lodash/find';
-import findIndex from 'lodash/findIndex';
-import remove from 'lodash/remove';
+import { find, findIndex, remove } from 'lodash';
 import { defineMessages, useIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 
 import { Button } from 'semantic-ui-react';
 
-import DragDropList from '@plone/volto/components/manage/DragDropList/DragDropList';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
-import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
+import {
+  DragDropList,
+  FormFieldWrapper,
+  Icon,
+  ObjectWidget,
+} from '@plone/volto/components';
+import { langmap } from '@plone/volto/helpers';
 
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import addSVG from '@plone/volto/icons/add.svg';

@@ -7,8 +7,6 @@ import LinkView from './LinkView';
 
 const mockStore = configureStore();
 
-global.__SERVER__ = false; // eslint-disable-line no-underscore-dangle
-
 const store = mockStore({
   userSession: {
     token: null,

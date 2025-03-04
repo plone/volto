@@ -1,19 +1,24 @@
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
-import { Link, useHistory, useLocation } from 'react-router-dom';
-import { defineMessages, useIntl } from 'react-intl';
-import { createPortal } from 'react-dom';
+/**
+ * Change password component.
+ * @module components/manage/Preferences/ChangePassword
+ */
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Helmet } from '@plone/volto/helpers';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { Link, withRouter } from 'react-router-dom';
+import { Portal } from 'react-portal';
+import { defineMessages, injectIntl } from 'react-intl';
 import { Container } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 
-import Helmet from '@plone/volto/helpers/Helmet/Helmet';
-import { useClient } from '@plone/volto/hooks/client/useClient';
-import { Form } from '@plone/volto/components/manage/Form';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import Toast from '@plone/volto/components/manage/Toast/Toast';
-import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
-import { updatePassword } from '@plone/volto/actions/users/users';
-import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { Form, Icon, Toast, Toolbar } from '@plone/volto/components';
+import { updatePassword } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
+
 import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
@@ -64,100 +69,169 @@ const messages = defineMessages({
   },
 });
 
-const ChangePassword = () => {
-  const intl = useIntl();
-  const dispatch = useDispatch();
-  const isClient = useClient();
+/**
+ * ChangePassword class.
+ * @class ChangePassword
+ * @extends Component
+ */
+class ChangePassword extends Component {
+  /**
+   * Property types.
+   * @property {Object} propTypes Property types.
+   * @static
+   */
+  static propTypes = {
+    userId: PropTypes.string.isRequired,
+    loading: PropTypes.bool.isRequired,
+    updatePassword: PropTypes.func.isRequired,
+    pathname: PropTypes.string.isRequired,
+  };
 
-  const userId = useSelector(
-    (state) =>
-      state.userSession.token ? jwtDecode(state.userSession.token).sub : '',
-    shallowEqual,
-  );
-  const loading = useSelector((state) => state.users.update_password.loading);
-  const { pathname } = useLocation();
-  const history = useHistory();
+  /**
+   * Constructor
+   * @method constructor
+   * @param {Object} props Component properties
+   * @constructs ChangePassword
+   */
+  constructor(props) {
+    super(props);
+    this.onCancel = this.onCancel.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.state = { isClient: false };
+  }
 
-  const onSubmit = (data) => {
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.setState({ isClient: true });
+  }
+
+  /**
+   * Submit handler
+   * @method onSubmit
+   * @param {object} data Form data.
+   * @returns {undefined}
+   */
+  onSubmit(data) {
     if (data.newPassword === data.newPasswordRepeat) {
-      dispatch(updatePassword(userId, data.oldPassword, data.newPassword)).then(
-        () => {
-          toast.success(
-            <Toast
-              success
-              title={intl.formatMessage(messages.success)}
-              content={intl.formatMessage(messages.saved)}
-            />,
-          );
-        },
+      this.props.updatePassword(
+        this.props.userId,
+        data.oldPassword,
+        data.newPassword,
+      );
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.saved)}
+        />,
       );
     }
-  };
+  }
 
-  const onCancel = () => {
-    history.goBack();
-  };
+  /**
+   * Cancel handler
+   * @method onCancel
+   * @returns {undefined}
+   */
+  onCancel() {
+    this.props.history.goBack();
+  }
 
-  return (
-    <Container id="page-change-password">
-      <Helmet title={intl.formatMessage(messages.changePassword)} />
-      <Form
-        schema={{
-          fieldsets: [
-            {
-              id: 'default',
-              title: intl.formatMessage(messages.default),
-              fields: ['oldPassword', 'newPassword', 'newPasswordRepeat'],
+  /**
+   * Render method.
+   * @method render
+   * @returns {string} Markup for the component.
+   */
+  render() {
+    return (
+      <Container id="page-change-password">
+        <Helmet
+          title={this.props.intl.formatMessage(messages.changePassword)}
+        />
+        <Form
+          schema={{
+            fieldsets: [
+              {
+                id: 'default',
+                title: this.props.intl.formatMessage(messages.default),
+                fields: ['oldPassword', 'newPassword', 'newPasswordRepeat'],
+              },
+            ],
+            properties: {
+              oldPassword: {
+                description: this.props.intl.formatMessage(
+                  messages.oldPasswordDescription,
+                ),
+                title: this.props.intl.formatMessage(messages.oldPasswordTitle),
+                type: 'string',
+                widget: 'password',
+              },
+              newPassword: {
+                description: this.props.intl.formatMessage(
+                  messages.newPasswordDescription,
+                ),
+                title: this.props.intl.formatMessage(messages.newPasswordTitle),
+                type: 'string',
+                widget: 'password',
+              },
+              newPasswordRepeat: {
+                description: this.props.intl.formatMessage(
+                  messages.newPasswordRepeatDescription,
+                ),
+                title: this.props.intl.formatMessage(
+                  messages.newPasswordRepeatTitle,
+                ),
+                type: 'string',
+                widget: 'password',
+              },
             },
-          ],
-          properties: {
-            oldPassword: {
-              description: intl.formatMessage(messages.oldPasswordDescription),
-              title: intl.formatMessage(messages.oldPasswordTitle),
-              type: 'string',
-              widget: 'password',
-            },
-            newPassword: {
-              description: intl.formatMessage(messages.newPasswordDescription),
-              title: intl.formatMessage(messages.newPasswordTitle),
-              type: 'string',
-              widget: 'password',
-            },
-            newPasswordRepeat: {
-              description: intl.formatMessage(
-                messages.newPasswordRepeatDescription,
-              ),
-              title: intl.formatMessage(messages.newPasswordRepeatTitle),
-              type: 'string',
-              widget: 'password',
-            },
-          },
-          required: ['oldPassword', 'newPassword', 'newPasswordRepeat'],
-        }}
-        onSubmit={onSubmit}
-        onCancel={onCancel}
-        loading={loading}
-      />
-      {isClient &&
-        createPortal(
-          <Toolbar
-            pathname={pathname}
-            hideDefaultViewButtons
-            inner={
-              <Link to={`${getBaseUrl(pathname)}`} className="item">
-                <Icon
-                  name={backSVG}
-                  className="contents circled"
-                  size="30px"
-                  title={intl.formatMessage(messages.back)}
-                />
-              </Link>
-            }
-          />,
-          document.getElementById('toolbar'),
+            required: ['oldPassword', 'newPassword', 'newPasswordRepeat'],
+          }}
+          onSubmit={this.onSubmit}
+          onCancel={this.onCancel}
+          loading={this.props.loading}
+        />
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <Link
+                  to={`${getBaseUrl(this.props.pathname)}`}
+                  className="item"
+                >
+                  <Icon
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              }
+            />
+          </Portal>
         )}
-    </Container>
-  );
-};
+      </Container>
+    );
+  }
+}
 
-export default ChangePassword;
+export default compose(
+  withRouter,
+  injectIntl,
+  connect(
+    (state, props) => ({
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
+      loading: state.users.update_password.loading,
+      pathname: props.location.pathname,
+    }),
+    { updatePassword },
+  ),
+)(ChangePassword);

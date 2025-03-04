@@ -13,7 +13,7 @@ myst:
 
 The listing block is a special block that can be configured to run a catalog query in the backend and show the results of that search.
 
-Apart from the {ref}`standard variation <extensions-block-variations>` and {ref}`schema enhancing extensions <extensions-schema-enhancers>`, the listing block provides a configurable way to handle the "No results" message.
+Apart from the {ref}`standard variation <extensions-block-variations>` and {ref}`schema enchancing extensions <extensions-schema-enhancers>`, the listing block provides a configurable way to handle the "No results" message.
 
 When the listing block configured search returns no results, Volto presents a default "No results found" message.
 But sometimes you want to change such a message to offer more meaningful messages, or do some other fancy stuff in that case.

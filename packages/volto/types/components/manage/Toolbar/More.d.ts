@@ -1,8 +1,4 @@
-export default More;
-declare function More(props: any): import("react/jsx-runtime").JSX.Element;
-declare namespace More {
-    namespace propTypes {
-        let loadComponent: any;
-        let closeMenu: any;
-    }
-}
+declare const _default: import("react").ForwardRefExoticComponent<Pick<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, string> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
+    WrappedComponent: import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>;
+};
+export default _default;

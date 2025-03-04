@@ -1,6 +1,6 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
-import type { GetTranslationResponse } from '@plone/types';
+import { apiRequest, ApiRequestParams } from '../../API';
+import { PloneClientConfig } from '../../interfaces/config';
+import { GetTranslationResponse } from '../../interfaces/translations';
 import { z } from 'zod';
 
 const getTranslationSchema = z.object({

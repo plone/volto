@@ -8,7 +8,6 @@ import {
   UPDATE_CONTENT,
   LOCK_CONTENT,
   UNLOCK_CONTENT,
-  UPDATE_UPLOADED_FILES,
 } from '@plone/volto/constants/ActionTypes';
 
 const { settings } = config;
@@ -58,7 +57,6 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
-      uploadedFiles: 0,
     });
   });
 
@@ -579,17 +577,6 @@ describe('Content reducer', () => {
         loading: false,
         error: 'failed',
       },
-    });
-  });
-
-  it('should handle UPDATE_UPLOADED_FILES', () => {
-    expect(
-      content(undefined, {
-        type: UPDATE_UPLOADED_FILES,
-        uploadedFiles: 5,
-      }),
-    ).toMatchObject({
-      uploadedFiles: 5,
     });
   });
 });

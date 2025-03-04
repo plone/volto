@@ -11,17 +11,12 @@ function PreviewImage({ item, alt, image_field, showDefault = true, ...rest }) {
   const Image = config.getComponent({ name: 'Image' }).component;
 
   const image = (
-    <Image
-      item={item}
-      image_field={image_field || item.image_field}
-      alt={alt}
-      {...rest}
-    />
+    <Image item={item} image_field={image_field} alt={alt} {...rest} />
   );
 
   if (!image && !showDefault) return null;
 
-  if (image_field || item?.image_field) {
+  if (image) {
     return image;
   } else {
     return (

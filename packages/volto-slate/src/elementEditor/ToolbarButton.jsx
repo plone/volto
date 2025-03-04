@@ -4,11 +4,11 @@
 import React from 'react';
 import { useSlate } from 'slate-react';
 import { useDispatch } from 'react-redux';
-import omit from 'lodash/omit';
+import { omit } from 'lodash';
 
-import ToolbarButton from '@plone/volto-slate/editor/ui/ToolbarButton';
-import { hasRangeSelection } from '@plone/volto-slate/utils/selection';
-import { setPluginOptions } from '@plone/volto-slate/actions/plugins';
+import { ToolbarButton } from '@plone/volto-slate/editor/ui';
+import { hasRangeSelection } from '@plone/volto-slate/utils';
+import { setPluginOptions } from '@plone/volto-slate/actions';
 
 const ElementToolbarButton = (props) => {
   const { isActiveElement, insertElement, pluginId, toolbarButtonIcon } = props;

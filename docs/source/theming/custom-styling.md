@@ -11,9 +11,6 @@ myst:
 
 ## Semantic UI
 
-```{include} ../_inc/_semantic-ui-deprecation.md
-```
-
 For styling our website in Volto we use Semantic UI. It uses LESS as
 the underlying technology. By default Volto uses the Pastanaga theme but any
 theme can be used. A theme has the following folder structure:

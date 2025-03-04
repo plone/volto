@@ -7,20 +7,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
-import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
+import { UniversalLink } from '@plone/volto/components';
+import { asyncConnect } from '@plone/volto/helpers';
 import { FormattedMessage } from 'react-intl';
-import { createPortal } from 'react-dom';
+import { Portal } from 'react-portal';
 import { Container, Pagination, Button, Header } from 'semantic-ui-react';
 import qs from 'query-string';
 import classNames from 'classnames';
 import { defineMessages, injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
-import Helmet from '@plone/volto/helpers/Helmet/Helmet';
-import { searchContent } from '@plone/volto/actions/search/search';
-import SearchTags from '@plone/volto/components/theme/Search/SearchTags';
-import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { Helmet } from '@plone/volto/helpers';
+import { searchContent } from '@plone/volto/actions';
+import { SearchTags, Toolbar, Icon } from '@plone/volto/components';
 
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
@@ -73,7 +71,6 @@ class Search extends Component {
 
   constructor(props) {
     super(props);
-    this.defaultPageSize = config.settings.defaultPageSize;
     this.state = { currentPage: 1, isClient: false, active: 'relevance' };
   }
 
@@ -112,24 +109,19 @@ class Search extends Component {
     const options = qs.parse(this.props.history.location.search);
     this.setState({ currentPage: 1 });
     options['use_site_search_settings'] = 1;
-    this.props.searchContent('', {
-      b_size: this.defaultPageSize,
-      ...options,
-    });
+    this.props.searchContent('', options);
   };
 
   handleQueryPaginationChange = (e, { activePage }) => {
+    const { settings } = config;
     window.scrollTo(0, 0);
     let options = qs.parse(this.props.history.location.search);
     options['use_site_search_settings'] = 1;
 
     this.setState({ currentPage: activePage }, () => {
       this.props.searchContent('', {
-        b_size: this.defaultPageSize,
         ...options,
-        b_start:
-          (this.state.currentPage - 1) *
-          (options.b_size || this.defaultPageSize),
+        b_start: (this.state.currentPage - 1) * settings.defaultPageSize,
       });
     });
   };
@@ -157,8 +149,7 @@ class Search extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const options = qs.parse(this.props.history.location.search);
-
+    const { settings } = config;
     return (
       <Container id="page-search">
         <Helmet title={this.props.intl.formatMessage(messages.Search)} />
@@ -291,8 +282,7 @@ class Search extends Component {
                   <Pagination
                     activePage={this.state.currentPage}
                     totalPages={Math.ceil(
-                      this.props.search.items_total /
-                        (options.b_size || this.defaultPageSize),
+                      this.props.search.items_total / settings.defaultPageSize,
                     )}
                     onPageChange={this.handleQueryPaginationChange}
                     firstItem={null}
@@ -319,15 +309,15 @@ class Search extends Component {
             </section>
           </article>
         </div>
-        {this.state.isClient &&
-          createPortal(
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
               inner={<span />}
-            />,
-            document.getElementById('toolbar'),
-          )}
+            />
+          </Portal>
+        )}
       </Container>
     );
   }

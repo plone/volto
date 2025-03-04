@@ -9,7 +9,7 @@ const mockStore = configureStore();
 const errorMessage =
   "[{'message': 'The specified email is not valid.', 'field': 'contact_email', 'error': 'ValidationError'}";
 
-jest.mock('@plone/volto/components/manage/Form');
+jest.mock('./Field', () => jest.fn(() => <div className="Field" />));
 
 describe('Form', () => {
   it('renders a form component', () => {
@@ -17,13 +17,6 @@ describe('Form', () => {
       intl: {
         locale: 'en',
         messages: {},
-      },
-      content: {
-        data: {},
-        create: {
-          loading: false,
-          loaded: true,
-        },
       },
     });
     const component = renderer.create(

@@ -1,2 +1,2 @@
 export default ToggleFacetFilterListEntry;
-declare function ToggleFacetFilterListEntry(props: any): import("react/jsx-runtime").JSX.Element;
+declare function ToggleFacetFilterListEntry(props: any): JSX.Element;

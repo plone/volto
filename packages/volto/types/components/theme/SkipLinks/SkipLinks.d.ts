@@ -1,2 +1,2 @@
 export default SkipLinks;
-declare function SkipLinks(): import("react/jsx-runtime").JSX.Element;
+declare function SkipLinks(): JSX.Element;

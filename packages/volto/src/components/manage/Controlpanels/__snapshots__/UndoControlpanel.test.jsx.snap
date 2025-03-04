@@ -1,459 +1,452 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UndoControlpanel renders undo controlpanel component 1`] = `
-<div>
+<div
+  className="ui container controlpanel-undo"
+  id="page-undo"
+>
   <div
-    class="ui container controlpanel-undo"
-    id="page-undo"
+    className="ui raised segments"
   >
     <div
-      class="ui raised segments"
+      className="ui segment primary"
+    >
+      Undo Controlpanel
+    </div>
+    <div
+      className="ui segment"
     >
       <div
-        class="ui segment primary"
-      >
-        Undo Controlpanel
-      </div>
+        id="form"
+      />
+    </div>
+    <div
+      className="ui raised segments"
+    >
       <div
-        class="ui segment"
+        className="ui segment primary"
       >
-        <div
-          data-schema="{
-  \\"fieldsets\\": [
-    {
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\",
-      \\"fields\\": [
-        \\"sortingTypes\\"
-      ]
-    }
-  ],
-  \\"properties\\": {
-    \\"sortingTypes\\": {
-      \\"title\\": \\"Sort by\\",
-      \\"description\\": \\"Sort transactions by User-Name, Path or Date\\",
-      \\"type\\": \\"string\\",
-      \\"choices\\": [
-        [
-          \\"User Name\\",
-          \\"User Name\\"
-        ],
-        [
-          \\"Path\\",
-          \\"Path\\"
-        ],
-        [
-          \\"Date\\",
-          \\"Date\\"
-        ]
-      ]
-    },
-    \\"sortByUsername\\": {
-      \\"title\\": \\"Enter Username\\",
-      \\"type\\": \\"string\\"
-    },
-    \\"sortByPath\\": {
-      \\"title\\": \\"Enter Path\\",
-      \\"type\\": \\"string\\"
-    },
-    \\"sortByDate\\": {
-      \\"title\\": \\"Enter Date and Time\\",
-      \\"type\\": \\"date\\"
-    }
-  },
-  \\"required\\": []
-}"
-          id="Form"
-        />
+        Transactions
       </div>
-      <div
-        class="ui raised segments"
+      <table
+        className="ui celled fixed selectable single line attached compact table"
       >
-        <div
-          class="ui segment primary"
+        <thead
+          className=""
         >
-          Transactions
-        </div>
-        <table
-          class="ui celled fixed selectable single line attached compact table"
+          <tr
+            className=""
+          >
+            <th
+              className="one wide"
+            >
+              #
+            </th>
+            <th
+              className="three wide"
+            >
+              What
+            </th>
+            <th
+              className="three wide"
+            >
+              Who
+            </th>
+            <th
+              className="three wide"
+            >
+              When
+            </th>
+            <th
+              className="three wide"
+            >
+              Note
+            </th>
+            <th
+              className=""
+            />
+          </tr>
+        </thead>
+        <tbody
+          className=""
         >
-          <thead
-            class=""
+          <tr
+            className=""
+            id="QStrR0RRc0M5TjA9"
           >
-            <tr
-              class=""
+            <td
+              className="one wide"
             >
-              <th
-                class="one wide"
+              <div
+                className="ui input transactions-checkboxes"
               >
-                #
-              </th>
-              <th
-                class="three wide"
-              >
-                What
-              </th>
-              <th
-                class="three wide"
-              >
-                Who
-              </th>
-              <th
-                class="three wide"
-              >
-                When
-              </th>
-              <th
-                class="three wide"
-              >
-                Note
-              </th>
-              <th
-                class=""
-              />
-            </tr>
-          </thead>
-          <tbody
-            class=""
+                <input
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+              </div>
+            </td>
+            <td
+              className="three wide"
+              title="Added default view for root object"
+            >
+              Added default view for root object
+            </td>
+            <td
+              className="three wide"
+            >
+              Zope
+            </td>
+            <td
+              className="three wide"
+            >
+              2022-06-19T22:15:02
+            </td>
+            <td
+              className="three wide"
+            >
+              
+            </td>
+          </tr>
+          <tr
+            className=""
+            id="QStrR0RRcTVrbFU9"
           >
-            <tr
-              class=""
-              id="QStrR0RRc0M5TjA9"
+            <td
+              className="one wide"
             >
-              <td
-                class="one wide"
+              <div
+                className="ui input transactions-checkboxes"
               >
-                <div
-                  class="ui input transactions-checkboxes"
-                >
-                  <input
-                    type="checkbox"
-                  />
-                </div>
-              </td>
-              <td
-                class="three wide"
-                title="Added default view for root object"
-              >
-                Added default view for root object
-              </td>
-              <td
-                class="three wide"
-              >
-                Zope
-              </td>
-              <td
-                class="three wide"
-              >
-                2022-06-19T22:15:02
-              </td>
-              <td
-                class="three wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRcTVrbFU9"
+                <input
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+              </div>
+            </td>
+            <td
+              className="three wide"
+              title="Added virtual_hosting"
             >
-              <td
-                class="one wide"
-              >
-                <div
-                  class="ui input transactions-checkboxes"
-                >
-                  <input
-                    type="checkbox"
-                  />
-                </div>
-              </td>
-              <td
-                class="three wide"
-                title="Added virtual_hosting"
-              >
-                Added virtual_hosting
-              </td>
-              <td
-                class="three wide"
-              >
-                Zope
-              </td>
-              <td
-                class="three wide"
-              >
-                2022-06-19T22:15:02
-              </td>
-              <td
-                class="three wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRcVh4cGs9"
+              Added virtual_hosting
+            </td>
+            <td
+              className="three wide"
             >
-              <td
-                class="one wide"
-              >
-                <div
-                  class="ui input transactions-checkboxes"
-                >
-                  <input
-                    type="checkbox"
-                  />
-                </div>
-              </td>
-              <td
-                class="three wide"
-                title="Added site error_log at /error_log"
-              >
-                Added site error_log at /error_log
-              </td>
-              <td
-                class="three wide"
-              >
-                Zope
-              </td>
-              <td
-                class="three wide"
-              >
-                2022-06-19T22:15:02
-              </td>
-              <td
-                class="three wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRcDlFaUk9"
+              Zope
+            </td>
+            <td
+              className="three wide"
             >
-              <td
-                class="one wide"
-              >
-                <div
-                  class="ui input transactions-checkboxes"
-                >
-                  <input
-                    type="checkbox"
-                  />
-                </div>
-              </td>
-              <td
-                class="three wide"
-                title="Added session_data_manager"
-              >
-                Added session_data_manager
-              </td>
-              <td
-                class="three wide"
-              >
-                Zope
-              </td>
-              <td
-                class="three wide"
-              >
-                2022-06-19T22:15:02
-              </td>
-              <td
-                class="three wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRcFU2KzQ9"
+              2022-06-19T22:15:02
+            </td>
+            <td
+              className="three wide"
             >
-              <td
-                class="one wide"
-              >
-                <div
-                  class="ui input transactions-checkboxes"
-                >
-                  <input
-                    type="checkbox"
-                  />
-                </div>
-              </td>
-              <td
-                class="three wide"
-                title="Added browser_id_manager"
-              >
-                Added browser_id_manager
-              </td>
-              <td
-                class="three wide"
-              >
-                Zope
-              </td>
-              <td
-                class="three wide"
-              >
-                2022-06-19T22:15:02
-              </td>
-              <td
-                class="three wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRbUkzKzQ9"
-            >
-              <td
-                class="one wide"
-              >
-                <div
-                  class="ui input transactions-checkboxes"
-                >
-                  <input
-                    type="checkbox"
-                  />
-                </div>
-              </td>
-              <td
-                class="three wide"
-                title="Created initial user"
-              >
-                Created initial user
-              </td>
-              <td
-                class="three wide"
-              >
-                Zope
-              </td>
-              <td
-                class="three wide"
-              >
-                2022-06-19T22:15:02
-              </td>
-              <td
-                class="three wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRbEVVa1E9"
-            >
-              <td
-                class="one wide"
-              >
-                <div
-                  class="ui input transactions-checkboxes"
-                >
-                  <input
-                    type="checkbox"
-                  />
-                </div>
-              </td>
-              <td
-                class="three wide"
-                title=""
-              />
-              <td
-                class="three wide"
-              >
-                Zope
-              </td>
-              <td
-                class="three wide"
-              >
-                2022-06-19T22:15:02
-              </td>
-              <td
-                class="three wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0ROWlo5YW89"
-            >
-              <td
-                class="one wide"
-              >
-                <div
-                  class="ui input transactions-checkboxes"
-                >
-                  <input
-                    type="checkbox"
-                  />
-                </div>
-              </td>
-              <td
-                class="three wide"
-                title="initial database creation"
-              >
-                initial database creation
-              </td>
-              <td
-                class="three wide"
-              >
-                Zope
-              </td>
-              <td
-                class="three wide"
-              >
-                2022-06-19T22:14:50
-              </td>
-              <td
-                class="three wide"
-              />
-            </tr>
-          </tbody>
-          <tfoot
-            class=""
+              
+            </td>
+          </tr>
+          <tr
+            className=""
+            id="QStrR0RRcVh4cGs9"
           >
-            <tr
-              class=""
+            <td
+              className="one wide"
             >
-              <th
-                class="center aligned"
-                colspan="6"
+              <div
+                className="ui input transactions-checkboxes"
               >
-                <div
-                  class="ui pagination menu"
+                <input
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+              </div>
+            </td>
+            <td
+              className="three wide"
+              title="Added site error_log at /error_log"
+            >
+              Added site error_log at /error_log
+            </td>
+            <td
+              className="three wide"
+            >
+              Zope
+            </td>
+            <td
+              className="three wide"
+            >
+              2022-06-19T22:15:02
+            </td>
+            <td
+              className="three wide"
+            >
+              
+            </td>
+          </tr>
+          <tr
+            className=""
+            id="QStrR0RRcDlFaUk9"
+          >
+            <td
+              className="one wide"
+            >
+              <div
+                className="ui input transactions-checkboxes"
+              >
+                <input
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+              </div>
+            </td>
+            <td
+              className="three wide"
+              title="Added session_data_manager"
+            >
+              Added session_data_manager
+            </td>
+            <td
+              className="three wide"
+            >
+              Zope
+            </td>
+            <td
+              className="three wide"
+            >
+              2022-06-19T22:15:02
+            </td>
+            <td
+              className="three wide"
+            >
+              
+            </td>
+          </tr>
+          <tr
+            className=""
+            id="QStrR0RRcFU2KzQ9"
+          >
+            <td
+              className="one wide"
+            >
+              <div
+                className="ui input transactions-checkboxes"
+              >
+                <input
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+              </div>
+            </td>
+            <td
+              className="three wide"
+              title="Added browser_id_manager"
+            >
+              Added browser_id_manager
+            </td>
+            <td
+              className="three wide"
+            >
+              Zope
+            </td>
+            <td
+              className="three wide"
+            >
+              2022-06-19T22:15:02
+            </td>
+            <td
+              className="three wide"
+            >
+              
+            </td>
+          </tr>
+          <tr
+            className=""
+            id="QStrR0RRbUkzKzQ9"
+          >
+            <td
+              className="one wide"
+            >
+              <div
+                className="ui input transactions-checkboxes"
+              >
+                <input
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+              </div>
+            </td>
+            <td
+              className="three wide"
+              title="Created initial user"
+            >
+              Created initial user
+            </td>
+            <td
+              className="three wide"
+            >
+              Zope
+            </td>
+            <td
+              className="three wide"
+            >
+              2022-06-19T22:15:02
+            </td>
+            <td
+              className="three wide"
+            >
+              
+            </td>
+          </tr>
+          <tr
+            className=""
+            id="QStrR0RRbEVVa1E9"
+          >
+            <td
+              className="one wide"
+            >
+              <div
+                className="ui input transactions-checkboxes"
+              >
+                <input
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+              </div>
+            </td>
+            <td
+              className="three wide"
+              title=""
+            >
+              
+            </td>
+            <td
+              className="three wide"
+            >
+              Zope
+            </td>
+            <td
+              className="three wide"
+            >
+              2022-06-19T22:15:02
+            </td>
+            <td
+              className="three wide"
+            >
+              
+            </td>
+          </tr>
+          <tr
+            className=""
+            id="QStrR0ROWlo5YW89"
+          >
+            <td
+              className="one wide"
+            >
+              <div
+                className="ui input transactions-checkboxes"
+              >
+                <input
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+              </div>
+            </td>
+            <td
+              className="three wide"
+              title="initial database creation"
+            >
+              initial database creation
+            </td>
+            <td
+              className="three wide"
+            >
+              Zope
+            </td>
+            <td
+              className="three wide"
+            >
+              2022-06-19T22:14:50
+            </td>
+            <td
+              className="three wide"
+            >
+              
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          className=""
+        >
+          <tr
+            className=""
+          >
+            <th
+              className="center aligned"
+              colSpan="6"
+            >
+              <div
+                className="ui pagination menu"
+              >
+                <a
+                  className="icon item"
+                  id="prev-button"
+                  onClick={[Function]}
                 >
-                  <a
-                    class="icon item"
-                    id="prev-button"
-                  >
-                    <div
-                      style="width: 36px;"
-                    />
-                  </a>
-                  <a
-                    class="icon item"
-                  >
-                    <svg
-                      class="icon circled"
-                      id="undo-button"
-                      style="height: 30px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    >
-                      <title>
-                        Undo
-                      </title>
-                      undefined
-                    </svg>
-                  </a>
-                  <a
-                    class="icon item"
-                    id="next-button"
-                  >
-                    <div
-                      style="width: 36px;"
-                    />
-                  </a>
-                </div>
-              </th>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
+                  <div
+                    style={
+                      Object {
+                        "width": "36px",
+                      }
+                    }
+                  />
+                </a>
+                <a
+                  className="icon item"
+                  onClick={[Function]}
+                >
+                  <svg
+                    className="icon circled"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": "<title>Undo</title>undefined",
+                      }
+                    }
+                    id="undo-button"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "30px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </a>
+                <a
+                  className="icon item"
+                  id="next-button"
+                  onClick={[Function]}
+                >
+                  <div
+                    style={
+                      Object {
+                        "width": "36px",
+                      }
+                    }
+                  />
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
     </div>
   </div>
   <div
-    id="toolbar"
-  >
-    <div
-      id="Portal"
-    />
-  </div>
+    id="Portal"
+  />
 </div>
 `;

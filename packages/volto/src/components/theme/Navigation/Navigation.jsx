@@ -5,11 +5,9 @@ import { defineMessages, useIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
 
 import cx from 'classnames';
-import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
-import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
-import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
+import { BodyClass, getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-import { getNavigation } from '@plone/volto/actions/navigation/navigation';
+import { getNavigation } from '@plone/volto/actions';
 import { CSSTransition } from 'react-transition-group';
 import NavItems from '@plone/volto/components/theme/Navigation/NavItems';
 
@@ -50,42 +48,40 @@ const Navigation = (props) => {
     }
     setisMobileMenuOpen(false);
   };
-  return (
-    <nav className="navigation" id="navigation" aria-label="Site" tabIndex="-1">
-      {items?.length ? (
-        <div className="hamburger-wrapper mobile tablet only">
-          <button
-            className={cx('hamburger hamburger--spin', {
-              'is-active': isMobileMenuOpen,
-            })}
-            aria-label={
-              isMobileMenuOpen
-                ? intl.formatMessage(messages.closeMobileMenu, {
-                    type: type,
-                  })
-                : intl.formatMessage(messages.openMobileMenu, {
-                    type: type,
-                  })
-            }
-            title={
-              isMobileMenuOpen
-                ? intl.formatMessage(messages.closeMobileMenu, {
-                    type: type,
-                  })
-                : intl.formatMessage(messages.openMobileMenu, {
-                    type: type,
-                  })
-            }
-            type="button"
-            onClick={toggleMobileMenu}
-          >
-            <span className="hamburger-box">
-              <span className="hamburger-inner" />
-            </span>
-          </button>
-        </div>
-      ) : null}
 
+  return (
+    <nav className="navigation" id="navigation" aria-label="Site">
+      <div className="hamburger-wrapper mobile tablet only">
+        <button
+          className={cx('hamburger hamburger--spin', {
+            'is-active': isMobileMenuOpen,
+          })}
+          aria-label={
+            isMobileMenuOpen
+              ? intl.formatMessage(messages.closeMobileMenu, {
+                  type: type,
+                })
+              : intl.formatMessage(messages.openMobileMenu, {
+                  type: type,
+                })
+          }
+          title={
+            isMobileMenuOpen
+              ? intl.formatMessage(messages.closeMobileMenu, {
+                  type: type,
+                })
+              : intl.formatMessage(messages.openMobileMenu, {
+                  type: type,
+                })
+          }
+          type="button"
+          onClick={toggleMobileMenu}
+        >
+          <span className="hamburger-box">
+            <span className="hamburger-inner" />
+          </span>
+        </button>
+      </div>
       <Menu
         stackable
         pointing

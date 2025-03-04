@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { type ApiRequestParams, apiRequest } from '../../API';
+import { ApiRequestParams, apiRequest } from '../../API';
 import {
-  type PloneClientConfig,
+  PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../validation/config';
-import type { RuleRespose as CreateRuleResponse } from '@plone/types';
+} from '../../interfaces/config';
+import { RuleRespose as CreateRuleResponse } from '../../interfaces/rules';
 
 export const createRuleArgsSchema = z.object({
   ruleId: z.string(),

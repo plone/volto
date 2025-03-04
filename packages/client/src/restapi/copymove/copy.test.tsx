@@ -43,7 +43,7 @@ describe('[POST] Copy', () => {
     });
 
     act(() => {
-      result.current.mutate({ path: '/', data: copyData });
+      result.current.mutate({ data: copyData });
     });
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
@@ -80,7 +80,7 @@ describe('[POST] Copy', () => {
     });
 
     act(() => {
-      result.current.mutate({ path: '/', data: copyMultipleData });
+      result.current.mutate({ data: copyMultipleData });
     });
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));

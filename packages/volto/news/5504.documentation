@@ -1,0 +1,1 @@
+Revert #5500. See #5499 for actual cause of Pygments failure. @stevepiercy

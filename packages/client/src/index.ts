@@ -1,3 +1,3 @@
-import PloneClient from './client';
+import ploneClient from './client';
 
-export default PloneClient;
+export default ploneClient;

@@ -3,10 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
-import { getContent } from '@plone/volto/actions/content/content';
-import { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
-import { usePagination } from '@plone/volto/helpers/Utils/usePagination';
-import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { getContent, getQueryStringResults } from '@plone/volto/actions';
+import { usePagination, getBaseUrl } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
 
@@ -69,19 +67,19 @@ export default function withQuerystringResults(WrappedComponent) {
     const totalPages = showAsFolderListing
       ? Math.ceil(content.items_total / b_size)
       : showAsQueryListing
-        ? Math.ceil(querystringResults[subrequestID].total / b_size)
-        : 0;
+      ? Math.ceil(querystringResults[subrequestID].total / b_size)
+      : 0;
 
     const prevBatch = showAsFolderListing
       ? content.batching?.prev
       : showAsQueryListing
-        ? querystringResults[subrequestID].batching?.prev
-        : null;
+      ? querystringResults[subrequestID].batching?.prev
+      : null;
     const nextBatch = showAsFolderListing
       ? content.batching?.next
       : showAsQueryListing
-        ? querystringResults[subrequestID].batching?.next
-        : null;
+      ? querystringResults[subrequestID].batching?.next
+      : null;
 
     const isImageGallery =
       (!data.variation && data.template === 'imageGallery') ||

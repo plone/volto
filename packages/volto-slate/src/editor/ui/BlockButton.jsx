@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSlate } from 'slate-react';
-import { isBlockActive, toggleBlock } from '@plone/volto-slate/utils/blocks';
+import { isBlockActive, toggleBlock } from '@plone/volto-slate/utils';
 
 import ToolbarButton from './ToolbarButton';
 

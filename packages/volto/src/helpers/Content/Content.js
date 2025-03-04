@@ -3,13 +3,7 @@
  * @module helpers/Content
  */
 
-import omitBy from 'lodash/omitBy';
-import mapKeys from 'lodash/mapKeys';
-import pickBy from 'lodash/pickBy';
-import map from 'lodash/map';
-import keys from 'lodash/keys';
-import endsWith from 'lodash/endsWith';
-import find from 'lodash/find';
+import { omitBy, mapKeys, pickBy, map, keys, endsWith, find } from 'lodash';
 import config from '@plone/volto/registry';
 
 /**

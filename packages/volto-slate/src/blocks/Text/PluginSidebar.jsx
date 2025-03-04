@@ -1,15 +1,16 @@
 import React from 'react';
-import { createPortal } from 'react-dom';
+import { Portal } from 'react-portal';
 
 const PluginSidebar = ({ children, selected }) => {
   return (
     <>
-      {selected &&
-        __CLIENT__ &&
-        createPortal(
-          <>{children}</>,
-          document.getElementById('slate-plugin-sidebar'),
-        )}
+      {selected && (
+        <Portal
+          node={__CLIENT__ && document.getElementById('slate-plugin-sidebar')}
+        >
+          {children}
+        </Portal>
+      )}
     </>
   );
 };

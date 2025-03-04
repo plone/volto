@@ -1,8 +1,0 @@
-# Disallow all user agents from the following directories and files
-User-agent: *
-Disallow: /_sources/
-Disallow: /.doctrees/
-Disallow: /*.txt$
-Disallow: /.buildinfo$
-Disallow: /objects.inv$
-Sitemap: https://plone-registry.readthedocs.io/sitemap.xml

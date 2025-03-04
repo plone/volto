@@ -2,7 +2,7 @@ export const CommentsModal: any;
 declare namespace _default {
     export let title: string;
     export { CommentsComponent as component };
-    export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
+    export let decorators: ((Story: any) => JSX.Element)[];
     export namespace argTypes {
         namespace creation_date {
             let control: string;

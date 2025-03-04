@@ -5,9 +5,9 @@
 
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { Icon } from '@plone/volto/components';
 import PropTypes from 'prop-types';
-import map from 'lodash/map';
+import { map } from 'lodash';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import leftChevron from '@plone/volto/icons/left-key.svg';
 import rightChevron from '@plone/volto/icons/right-key.svg';

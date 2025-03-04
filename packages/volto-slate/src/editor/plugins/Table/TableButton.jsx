@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSlate } from 'slate-react';
 import { Dropdown } from 'semantic-ui-react';
-import ToolbarButton from '@plone/volto-slate/editor/ui/ToolbarButton';
+import { ToolbarButton } from '@plone/volto-slate/editor/ui';
 
 import tableSVG from '@plone/volto/icons/table.svg';
 import TableContainer from './TableContainer';

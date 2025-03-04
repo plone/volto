@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import React from 'react';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { Icon } from '@plone/volto/components';
 import { Button } from 'semantic-ui-react';
 import { useIntl } from 'react-intl';
 

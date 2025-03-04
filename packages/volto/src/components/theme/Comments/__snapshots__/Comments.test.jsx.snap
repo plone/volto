@@ -8,37 +8,96 @@ exports[`Comments renders a comments component 1`] = `
     id="comment-add-id"
   >
     <div
-      data-schema="{
-  \\"fieldsets\\": [
-    {
-      \\"fields\\": [
-        \\"comment\\"
-      ],
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\"
-    }
-  ],
-  \\"properties\\": {
-    \\"comment\\": {
-      \\"title\\": \\"Comment\\",
-      \\"type\\": \\"string\\",
-      \\"widget\\": \\"textarea\\"
-    }
-  },
-  \\"required\\": [
-    \\"comment1\\"
-  ]
-}"
-      id="Form"
-    />
+      className="ui container"
+    >
+      <form
+        className="ui form"
+        method="post"
+        onSubmit={[Function]}
+      >
+        <fieldset
+          className="invisible"
+        >
+          <div
+            className="ui raised segments"
+          >
+            <div
+              className="ui segment"
+            >
+              <div
+                className="mocked-textarea-widget"
+                id="mocked-field-comment"
+              >
+                Comment
+                 - 
+                No description
+              </div>
+            </div>
+            <div
+              className="ui clearing segment actions"
+            >
+              <button
+                aria-label="Comment"
+                className="ui basic primary right floated button"
+                onClick={[Function]}
+                title="Comment"
+                type="submit"
+              >
+                <svg
+                  className="icon circled"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "currentColor",
+                      "height": "30px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+              </button>
+              <button
+                aria-label="Cancel"
+                className="ui basic secondary right floated button"
+                onClick={[Function]}
+                title="Cancel"
+              >
+                <svg
+                  className="icon circled"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "currentColor",
+                      "height": "30px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
   </div>
   <div
     className="ui threaded comments"
-    id="discussion"
   >
     <div
       className="comment"
-      id="1614094601171408"
     >
       <div
         className="avatar circular"

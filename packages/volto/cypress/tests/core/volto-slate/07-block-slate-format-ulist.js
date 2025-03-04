@@ -1,4 +1,4 @@
-import { slateBeforeEach } from '../../../support/helpers';
+import { slateBeforeEach } from '../../../support/commands';
 
 describe('Block Tests: Bulleted lists', () => {
   beforeEach(slateBeforeEach);

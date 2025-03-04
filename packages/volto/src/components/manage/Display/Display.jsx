@@ -1,19 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
-import { getSchema } from '@plone/volto/actions/schema/schema';
-import {
-  updateContent,
-  getContent,
-} from '@plone/volto/actions/content/content';
-import { getLayoutFieldname } from '@plone/volto/helpers/Content/Content';
-import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
-import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { defineMessages, useIntl } from 'react-intl';
+import { getSchema, updateContent, getContent } from '@plone/volto/actions';
+import { getLayoutFieldname } from '@plone/volto/helpers';
+import { FormFieldWrapper, Icon } from '@plone/volto/components';
+import { defineMessages, injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
@@ -101,8 +95,8 @@ const customSelectStyles = {
     color: state.isSelected
       ? '#007bc1'
       : state.isFocused
-        ? '#4a4a4a'
-        : 'inherit',
+      ? '#4a4a4a'
+      : 'inherit',
     ':active': {
       backgroundColor: null,
     },
@@ -115,98 +109,152 @@ const customSelectStyles = {
   }),
 };
 
-const DisplaySelect = (props) => {
-  const { pathname } = props;
-  const intl = useIntl();
-  const dispatch = useDispatch();
-  const loaded = useSelector((state) => state.content.update.loaded);
-  const layouts = useSelector((state) =>
-    state.schema.schema ? state.schema.schema.layouts : [],
-  );
-  const layout = useSelector((state) =>
-    state.content.data
-      ? state.content.data[getLayoutFieldname(state.content.data)]
-      : '',
-  );
-  const layoutMappingId = config.views.layoutViewsNamesMapping?.[layout];
-  const [selectedOption, setselectedOption] = useState({
-    value: layout,
-    label: layoutMappingId
-      ? intl.formatMessage({
-          id: layoutMappingId,
-          defaultMessage: layoutMappingId,
-        })
-      : layout,
-  });
-
-  const type = useSelector((state) =>
-    state.content.data ? state.content.data['@type'] : '',
-  );
-  const prevloaded = usePrevious(loaded);
-  const prevpathname = usePrevious(pathname);
-
-  useEffect(() => {
-    dispatch(getSchema(type));
-  }, [dispatch, type]);
-  useEffect(() => {
-    if (pathname !== prevpathname) {
-      dispatch(getSchema(type));
-    }
-    if (!prevloaded && loaded) {
-      dispatch(getContent(pathname));
-    }
-  }, [dispatch, type, pathname, prevpathname, prevloaded, loaded]);
-
-  const setLayout = (selectedOption) => {
-    dispatch(
-      updateContent(pathname, {
-        layout: selectedOption.value,
-      }),
-    );
-    setselectedOption(selectedOption);
+/**
+ * Display container class.
+ * @class Display
+ * @extends Component
+ */
+class DisplaySelect extends Component {
+  /**
+   * Property types.
+   * @property {Object} propTypes Property types.
+   * @static
+   */
+  static propTypes = {
+    getSchema: PropTypes.func.isRequired,
+    updateContent: PropTypes.func.isRequired,
+    getContent: PropTypes.func.isRequired,
+    loaded: PropTypes.bool.isRequired,
+    pathname: PropTypes.string.isRequired,
+    layouts: PropTypes.arrayOf(PropTypes.string),
+    layout: PropTypes.string,
+    type: PropTypes.string.isRequired,
   };
 
-  const Select = props.reactSelect.default;
-  const layoutsNames = config.views.layoutViewsNamesMapping;
-  const layoutOptions = layouts
-    .filter(
-      (layout) =>
-        Object.keys(config.views.contentTypesViews).includes(layout) ||
-        Object.keys(config.views.layoutViews).includes(layout),
-    )
-    .map((item) => ({
-      value: item,
+  /**
+   * Default properties
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    layouts: [],
+    layout: '',
+  };
+
+  state = {
+    selectedOption: {
+      value: this.props.layout,
       label:
-        intl.formatMessage({
-          id: layoutsNames[item],
-          defaultMessage: layoutsNames[item],
-        }) || item,
-    }));
+        this.props.intl.formatMessage({
+          id: config.views.layoutViewsNamesMapping?.[this.props.layout],
+          defaultMessage:
+            config.views.layoutViewsNamesMapping?.[this.props.layout],
+        }) || this.props.layout,
+    },
+  };
 
-  return layoutOptions?.length > 1 ? (
-    <FormFieldWrapper
-      id="display-select"
-      title={intl.formatMessage(messages.Viewmode)}
-      {...props}
-    >
-      <Select
-        name="display-select"
-        className="react-select-container"
-        classNamePrefix="react-select"
-        options={layoutOptions}
-        styles={customSelectStyles}
-        theme={selectTheme}
-        components={{ DropdownIndicator, Option }}
-        onChange={setLayout}
-        defaultValue={selectedOption}
-        isSearchable={false}
-      />
-    </FormFieldWrapper>
-  ) : null;
-};
+  componentDidMount() {
+    this.props.getSchema(this.props.type);
+  }
 
-DisplaySelect.propTypes = {
-  pathname: PropTypes.string.isRequired,
-};
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.pathname !== this.props.pathname) {
+      this.props.getSchema(nextProps.type);
+    }
+    if (!this.props.loaded && nextProps.loaded) {
+      this.props.getContent(nextProps.pathname);
+    }
+  }
 
-export default compose(injectLazyLibs('reactSelect'))(DisplaySelect);
+  /**
+   * On set layout handler
+   * @method setLayout
+   * @param {Object} event Event object
+   * @returns {undefined}
+   */
+  setLayout = (selectedOption) => {
+    this.props.updateContent(this.props.pathname, {
+      layout: selectedOption.value,
+    });
+    this.setState({ selectedOption });
+  };
+
+  selectValue = (option) => (
+    <Fragment>
+      <span className="Select-value-label">{option.label}</span>
+    </Fragment>
+  );
+
+  optionRenderer = (option) => (
+    <Fragment>
+      <span style={{ marginRight: 'auto' }}>{option.label}</span>
+      <Icon name={checkSVG} size="24px" />
+    </Fragment>
+  );
+
+  render() {
+    const { selectedOption } = this.state;
+    const Select = this.props.reactSelect.default;
+    const layoutsNames = config.views.layoutViewsNamesMapping;
+    const layoutOptions = this.props.layouts
+      .filter(
+        (layout) =>
+          Object.keys(config.views.contentTypesViews).includes(layout) ||
+          Object.keys(config.views.layoutViews).includes(layout),
+      )
+      .map((item) => ({
+        value: item,
+        label:
+          this.props.intl.formatMessage({
+            id: layoutsNames[item],
+            defaultMessage: layoutsNames[item],
+          }) || item,
+      }));
+
+    return layoutOptions?.length > 1 ? (
+      <FormFieldWrapper
+        id="display-select"
+        title={this.props.intl.formatMessage(messages.Viewmode)}
+        {...this.props}
+      >
+        <Select
+          name="display-select"
+          className="react-select-container"
+          classNamePrefix="react-select"
+          options={layoutOptions}
+          styles={customSelectStyles}
+          theme={selectTheme}
+          components={{ DropdownIndicator, Option }}
+          onChange={this.setLayout}
+          defaultValue={selectedOption}
+          isSearchable={false}
+        />
+      </FormFieldWrapper>
+    ) : null;
+  }
+}
+
+export default compose(
+  injectIntl,
+  injectLazyLibs('reactSelect'),
+  connect(
+    (state) => ({
+      loaded: state.content.update.loaded,
+      layouts: state.schema.schema ? state.schema.schema.layouts : [],
+      layout: state.content.data
+        ? state.content.data[getLayoutFieldname(state.content.data)]
+        : '',
+      layout_fieldname: state.content.data
+        ? getLayoutFieldname(state.content.data)
+        : '',
+      type: state.content.data ? state.content.data['@type'] : '',
+    }),
+    { getSchema, updateContent, getContent },
+  ),
+)(DisplaySelect);

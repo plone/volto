@@ -226,7 +226,7 @@ exports[`IdWidget renders an id widget with invalid characters 1`] = `
           <div
             class="ui red basic label form-error-label"
           >
-            Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: &lt;, &gt;, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines.
+            Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
           </div>
         </div>
       </div>

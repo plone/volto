@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'lodash';
 
 import voltoPackageJson from '../../../../package.json';
 import projectPackageJson from '@root/../package.json';

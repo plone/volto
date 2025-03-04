@@ -2,15 +2,16 @@ import React from 'react';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
-import { render } from '@testing-library/react';
+import { waitFor, render, screen } from '@testing-library/react';
 
 import PersonalPreferences from './PersonalPreferences';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
 
-jest.mock('@plone/volto/components/manage/Form');
 jest.mock('@plone/volto/helpers/Loadable/Loadable');
 beforeAll(
   async () =>
@@ -18,7 +19,7 @@ beforeAll(
 );
 
 describe('PersonalPreferences', () => {
-  it('renders a personal preferences component', () => {
+  it('renders a personal preferences component', async () => {
     const store = mockStore({
       intl: {
         locale: 'en',
@@ -28,13 +29,6 @@ describe('PersonalPreferences', () => {
         'plone.app.vocabularies.Keywords': {
           items: [{ title: 'My item', value: 'myitem' }],
           itemsTotal: 1,
-        },
-      },
-      content: {
-        data: {},
-        create: {
-          loading: false,
-          loaded: true,
         },
       },
     });
@@ -48,6 +42,9 @@ describe('PersonalPreferences', () => {
         </MemoryRouter>
       </Provider>,
     );
+    await waitFor(() => {
+      screen.getByTitle('Cancel');
+    });
     expect(container).toMatchSnapshot();
   });
 });

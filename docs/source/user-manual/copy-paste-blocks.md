@@ -27,8 +27,7 @@ This feature can be used by selecting a start block and an end block while holdi
 This will select all the blocks between the start and end blocks, allowing you to copy, cut, or delete multiple blocks at once.
 
 ````{only} not text
-```{video} ../_static/user-manual/blocks/block-copy-cut.mp4
-:alt: Copy or cut a block in Volto
+```{video} /_static/user-manual/blocks/block-copy-cut.mp4
 ```
 ````
 
@@ -44,7 +43,6 @@ You can click the paste option <img alt="Paste icon" src="../_static/paste.svg" 
 Also if you hold the {kbd}`ctrl` key while clicking the paste button, it keeps the clipboard buffer, allowing you to repeatedly paste it.
 
 ````{only} not text
-```{video} ../_static/user-manual/blocks/block-paste.mp4
-:alt: Paste a block in Volto
+```{video} /_static/user-manual/blocks/block-paste.mp4
 ```
 ````

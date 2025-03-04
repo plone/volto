@@ -5,25 +5,11 @@ describe('Accessibility Tests', () => {
   });
 
   it('Front page has not a11y violations', () => {
-    cy.configureAxe({
-      rules: [
-        // Disabled until we fix robotframework to install the volto distribution
-        // with example content
-        {
-          id: 'page-has-heading-one',
-          enabled: false,
-        },
-      ],
-    });
     cy.checkA11y(); // fail for a11y violations
   });
 
   it('Contact form has not a11y violations', () => {
     cy.navigate('/contact-form');
-    cy.get('#field-name').click().type('input');
-    cy.get('#field-from').click().type('something@domain.com');
-    cy.get('#field-subject').click().type('input');
-    cy.get('#field-message').click().type('input');
     cy.checkA11y();
   });
 

@@ -3,11 +3,7 @@
  * @module helpers/Url
  */
 
-import last from 'lodash/last';
-import memoize from 'lodash/memoize';
-import isArray from 'lodash/isArray';
-import isObject from 'lodash/isObject';
-import isString from 'lodash/isString';
+import { last, memoize, isArray, isObject, isString } from 'lodash';
 import { urlRegex, telRegex, mailRegex } from './urlRegex';
 import prependHttp from 'prepend-http';
 import config from '@plone/volto/registry';
@@ -143,10 +139,7 @@ export const isCmsUi = memoize((currentPathname) => {
   // because the regexp test does not take that into account
   // https://github.com/plone/volto/issues/870
   return settings.nonContentRoutes.reduce(
-    (acc, route) =>
-      acc ||
-      (!settings.nonContentRoutesPublic?.includes(route) &&
-        new RegExp(route).test(fullPath)),
+    (acc, route) => acc || new RegExp(route).test(`/${fullPath}`),
     false,
   );
 });
@@ -373,20 +366,19 @@ export const URLUtils = {
  * @returns {object} New object with the flattened scale URLs
  */
 export function flattenScales(path, image) {
-  function removeObjectIdFromURL(basePath, scale) {
-    return scale.replace(`${basePath}/`, '');
+  function removeObjectIdFromURL(path, scale) {
+    return scale.replace(`${path}/`, '');
   }
   if (!image) return;
 
-  const basePath = image.base_path || path;
   const imageInfo = {
     ...image,
-    download: flattenToAppURL(removeObjectIdFromURL(basePath, image.download)),
+    download: flattenToAppURL(removeObjectIdFromURL(path, image.download)),
   };
 
   Object.keys(imageInfo.scales).forEach((key) => {
     imageInfo.scales[key].download = flattenToAppURL(
-      removeObjectIdFromURL(basePath, image.scales[key].download),
+      removeObjectIdFromURL(path, image.scales[key].download),
     );
   });
 

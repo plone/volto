@@ -1,7 +1,7 @@
 import { jsx } from 'slate-hyperscript';
 import { LINK } from '@plone/volto-slate/constants';
 import { deserialize } from '@plone/volto-slate/editor/deserialize';
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'lodash';
 // import { Editor } from 'slate';
 
 /**

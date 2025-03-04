@@ -1,3 +1,4 @@
+import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
@@ -8,22 +9,17 @@ import Tags from './Tags';
 const mockStore = configureStore();
 
 describe('Tags', () => {
-  let store;
-
-  beforeEach(() => {
-    store = mockStore({
+  it('renders without tags', () => {
+    const store = mockStore({
       intl: {
         locale: 'en',
         messages: {},
       },
     });
-  });
-
-  it('renders without tags', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <Tags content={{ subjects: [] }} />
+          <Tags />
         </MemoryRouter>
       </Provider>,
     );
@@ -32,10 +28,16 @@ describe('Tags', () => {
   });
 
   it('renders with tags', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <Tags content={{ subjects: ['Tag 1', 'Tag 2'] }} />
+          <Tags tags={['Tag 1', 'Tag 2']} />
         </MemoryRouter>
       </Provider>,
     );

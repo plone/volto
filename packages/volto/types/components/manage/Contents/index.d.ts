@@ -1,9 +1,0 @@
-export declare const Contents: import("@loadable/component").LoadableClassComponent<any>;
-export declare const ContentsRenameModal: import("@loadable/component").LoadableComponent<any>;
-export declare const ContentsBreadcrumbs: import("@loadable/component").LoadableComponent<any>;
-export declare const ContentsIndexHeader: import("@loadable/component").LoadableClassComponent<any>;
-export declare const ContentsItem: import("@loadable/component").LoadableClassComponent<any>;
-export declare const ContentsUploadModal: import("@loadable/component").LoadableComponent<any>;
-export declare const ContentsPropertiesModal: import("@loadable/component").LoadableComponent<any>;
-export declare const ContentsWorkflowModal: import("@loadable/component").LoadableComponent<any>;
-export declare const ContentsTagsModal: import("@loadable/component").LoadableComponent<any>;

@@ -2,7 +2,7 @@ import React from 'react'; // , useState
 import SlateToolbar from './SlateToolbar';
 import SlateContextToolbar from './SlateContextToolbar';
 import config from '@plone/volto/registry';
-import { hasRangeSelection } from '@plone/volto-slate/utils/selection';
+import { hasRangeSelection } from '@plone/volto-slate/utils';
 import { ReactEditor } from 'slate-react';
 import cx from 'classnames';
 

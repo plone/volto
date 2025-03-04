@@ -1,9 +1,7 @@
-import castArray from 'lodash/castArray';
-import cloneDeep from 'lodash/cloneDeep';
+import { castArray, cloneDeep } from 'lodash';
 import { Editor, Transforms, Range, Node } from 'slate';
 import { ReactEditor } from 'slate-react';
-import { isCursorInList } from '@plone/volto-slate/utils/lists';
-import { makeEditor } from '@plone/volto-slate/utils/editor';
+import { isCursorInList, makeEditor } from '@plone/volto-slate/utils';
 import { LI } from '@plone/volto-slate/constants';
 import config from '@plone/volto/registry';
 

@@ -11,7 +11,6 @@ const TemplateChooser = ({ templates, onSelectTemplate }) => {
           {templates(intl).map((template, index) => (
             <Grid.Column key={template.id}>
               <Button
-                type="button"
                 className="template-chooser-item"
                 onClick={() => onSelectTemplate(index)}
               >

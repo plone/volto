@@ -39,12 +39,11 @@ describe('Upgrade Site Tests', () => {
       body: {
         ...getUpgradeNeedsUpgrade,
       },
-    }).as('getUpgradeNeedsUpgrade');
+    }).as('getSystemNeedsUpdate');
     cy.navigate('controlpanel');
     cy.wait('@getSystemNeedsUpdate');
 
     cy.findByText('Please continue with the upgrade.').click();
-    cy.wait('@getUpgradeNeedsUpgrade');
     cy.get('.content-area').contains(
       'The site configuration is outdated and needs to be upgraded.',
     );

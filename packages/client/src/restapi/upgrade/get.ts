@@ -1,6 +1,6 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
-import type { GetUpgradeResponse } from '@plone/types';
+import { apiRequest, ApiRequestParams } from '../../API';
+import { PloneClientConfig } from '../../interfaces/config';
+import { GetUpgradeResponse } from '../../interfaces/upgrade';
 
 export type GetUpgradeArgs = {
   config: PloneClientConfig;

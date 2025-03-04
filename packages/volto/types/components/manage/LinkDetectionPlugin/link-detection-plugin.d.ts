@@ -5,7 +5,7 @@ export default createLinkDetectionPlugin;
 declare function createLinkDetectionPlugin(): {
     decorators: {
         strategy: (contentBlock: any, callback: any, contentState: any) => void;
-        component: (props: any) => import("react/jsx-runtime").JSX.Element;
+        component: (props: any) => JSX.Element;
     }[];
     onChange: (editorState: any) => any;
 };

@@ -5,8 +5,6 @@ import { Provider } from 'react-intl-redux';
 
 import MapsSidebar from './MapsSidebar';
 
-jest.mock('@plone/volto/components/manage/Form');
-
 const mockStore = configureStore();
 
 test('renders an Image Block Sidebar component', () => {

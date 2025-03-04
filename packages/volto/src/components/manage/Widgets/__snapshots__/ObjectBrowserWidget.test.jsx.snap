@@ -1,60 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a objectBrowser widget component 1`] = `
-<div>
+<div
+  className="inline field text field-wrapper-my-field"
+>
   <div
-    class="inline field text field-wrapper-my-field"
+    className="ui grid"
   >
     <div
-      class="ui grid"
+      className="stretched row"
     >
       <div
-        class="stretched row"
+        className="four wide column"
       >
         <div
-          class="four wide column"
+          className="wrapper"
         >
-          <div
-            class="wrapper"
+          <label
+            htmlFor="field-my-field"
+            id="fieldset-default-field-label-my-field"
           >
-            <label
-              for="field-my-field"
-              id="fieldset-default-field-label-my-field"
-            >
-              My field
-            </label>
-          </div>
+            My field
+          </label>
         </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
         <div
-          class="eight wide column"
+          aria-labelledby="fieldset-default-field-label-my-field"
+          className="objectbrowser-field"
         >
           <div
-            aria-labelledby="fieldset-default-field-label-my-field"
-            class="objectbrowser-field"
+            className="selected-values"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="searchbox"
+            tabIndex={0}
           >
             <div
-              class="selected-values"
-              role="searchbox"
-              tabindex="0"
+              className="placeholder"
             >
-              <div
-                class="placeholder"
-              >
-                No items selected
-              </div>
+              No items selected
             </div>
-            <button
-              aria-label="Open object browser"
-              class="ui button action"
-            >
-              <svg
-                class="icon"
-                style="height: 18px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
-              />
-            </button>
           </div>
+          
+          <button
+            aria-label="Open object browser"
+            className="ui button action"
+            onClick={[Function]}
+          >
+            <svg
+              className="icon"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "18px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+          </button>
         </div>
       </div>
     </div>

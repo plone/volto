@@ -49,7 +49,6 @@ describe('Navigation reducer', () => {
       error: null,
       items: [
         {
-          '@id': 'http://localhost:8080/Plone/front-page',
           title: 'Welcome to Plone!',
           description:
             'Congratulations! You have successfully installed Plone.',
@@ -92,20 +91,17 @@ describe('Navigation reducer', () => {
       error: null,
       items: [
         {
-          '@id': 'http://localhost:8080/Plone/front-page',
           title: 'Welcome to Plone!',
           description:
             'Congratulations! You have successfully installed Plone.',
           url: '/front-page',
         },
         {
-          '@id': 'http://localhost:8080/Plone/folder1',
           title: 'Folder1',
           description: 'Folder description',
           url: '/folder1',
           items: [
             {
-              '@id': 'http://localhost:8080/Plone/folderinfolder1',
               title: 'FolderInFolder1',
               description: 'Sub-folder description',
               url: '/folderinfolder1',
@@ -166,7 +162,6 @@ describe('Navigation reducer (NAVIGATION)GET_CONTENT', () => {
       error: null,
       items: [
         {
-          '@id': 'http://localhost:8080/Plone/front-page',
           title: 'Welcome to Plone!',
           description:
             'Congratulations! You have successfully installed Plone.',
@@ -197,7 +192,6 @@ describe('Navigation reducer (NAVIGATION)GET_CONTENT', () => {
       error: null,
       items: [
         {
-          '@id': 'http://localhost:8080/Plone/front-page',
           title: 'Welcome to Plone!',
           description:
             'Congratulations! You have successfully installed Plone.',

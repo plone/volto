@@ -8,31 +8,28 @@ const fs = require('fs');
 const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
 const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
 const { poToJson } = require('@plone/scripts/i18n.cjs');
-const { createAddonsLoader } = require('@plone/registry/create-addons-loader');
-const {
-  createThemeAddonsLoader,
-} = require('@plone/registry/create-theme-loader');
-const { AddonRegistry } = require('@plone/registry/addon-registry');
+const createAddonsLoader = require('@plone/registry/src/create-addons-loader');
+const createThemeAddonsLoader = require('@plone/registry/src/create-theme-addons-loader');
+const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
-const AfterBuildPlugin = require('@fiverr/afterbuild-webpack-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
 const projectRootPath = path.resolve('.');
-const languages = require('./src/constants/Languages.cjs');
+const languages = require('./src/constants/Languages');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
-const { registry } = AddonRegistry.init(projectRootPath);
+
+const registry = new AddonConfigurationRegistry(projectRootPath);
 
 const defaultModify = ({
   env: { target, dev },
   webpackConfig: config,
   webpackObject: webpack,
   options,
-  paths,
 }) => {
   // Compile language JSON files from po files
   poToJson({ registry, addonMode: false });
@@ -159,66 +156,6 @@ const defaultModify = ({
         placeholders: true,
       }),
     );
-
-    // This copies the publicPath files set in voltoConfigJS with the local `public`
-    // directory at build time
-    config.plugins.push(
-      new AfterBuildPlugin(() => {
-        const mergeDirectories = (sourceDir, targetDir) => {
-          const files = fs.readdirSync(sourceDir);
-          files.forEach((file) => {
-            const sourcePath = path.join(sourceDir, file);
-            const targetPath = path.join(targetDir, file);
-            const isDirectory = fs.statSync(sourcePath).isDirectory();
-            if (isDirectory) {
-              fs.mkdirSync(targetPath, { recursive: true });
-              mergeDirectories(sourcePath, targetPath);
-            } else {
-              fs.copyFileSync(sourcePath, targetPath);
-            }
-          });
-        };
-
-        // If we are in development mode, we copy the public directory to the
-        // public directory of the setup root, so the files are available
-        if (dev && !registry.isVoltoProject && registry.addonNames.length > 0) {
-          const devPublicPath = `${projectRootPath}/../../../public`;
-          if (!fs.existsSync(devPublicPath)) {
-            fs.mkdirSync(devPublicPath);
-          }
-          mergeDirectories(
-            path.join(projectRootPath, 'public'),
-            `${projectRootPath}/../../../public`,
-          );
-        }
-
-        registry.getAddonDependencies().forEach((addonDep) => {
-          // What comes from getAddonDependencies is in the form of `@package/addon:profile`
-          const addon = addonDep.split(':')[0];
-          // Check if the addon is available in the registry, just in case
-          if (registry.packages[addon]) {
-            const p = fs.realpathSync(
-              `${registry.packages[addon].modulePath}/../.`,
-            );
-            if (fs.existsSync(path.join(p, 'public'))) {
-              if (!dev) {
-                mergeDirectories(path.join(p, 'public'), paths.appBuildPublic);
-              }
-              if (
-                dev &&
-                !registry.isVoltoProject &&
-                registry.addonNames.length > 0
-              ) {
-                mergeDirectories(
-                  path.join(p, 'public'),
-                  `${projectRootPath}/../../../public`,
-                );
-              }
-            }
-          }
-        });
-      }),
-    );
   }
 
   if (target === 'node') {
@@ -228,19 +165,6 @@ const defaultModify = ({
         __SERVER__: true,
       }),
     );
-
-    // Make the TerserPlugin accept ESNext features, since we are in 2024
-    // If this is not true, libraries already compiled for using only ESNext features
-    // won't work (eg. using a chaining operator)
-    config.optimization = Object.assign({}, config.optimization, {
-      minimizer: [
-        new TerserPlugin({
-          terserOptions: {
-            parse: { ecma: 'ESNext' },
-          },
-        }),
-      ],
-    });
 
     // Razzle sets some of its basic env vars in the default config injecting them (for
     // the client use, mainly) in a `DefinePlugin` instance. However, this also ends in
@@ -262,10 +186,10 @@ const defaultModify = ({
         newDefs['process.env.RAZZLE_PUBLIC_DIR'] = newDefs[
           'process.env.RAZZLE_PUBLIC_DIR'
         ].replace(projectRootPath, '.');
-        // Handles the PORT, so it takes the real PORT from the runtime environment var,
+        // Handles the PORT, so it takes the real PORT from the runtime enviroment var,
         // but keeps the one from build time, if different from 3000 (by not deleting it)
         // So build time one takes precedence, do not set it in build time if you want
-        // to control it always via runtime (assuming 3000 === not set in build time)
+        // to control it always via runtime (assumming 3000 === not set in build time)
         if (newDefs['process.env.PORT'] === '3000') {
           delete newDefs['process.env.PORT'];
         }
@@ -278,7 +202,7 @@ const defaultModify = ({
   // Don't load SVGs from ./src/icons with file-loader
   const fileLoader = config.module.rules.find(fileLoaderFinder);
   fileLoader.exclude = [
-    /\.(config|variables|overrides|cjs)$/,
+    /\.(config|variables|overrides)$/,
     /icons\/.*\.svg$/,
     ...fileLoader.exclude,
   ];
@@ -291,8 +215,6 @@ const defaultModify = ({
   const addonsLoaderPath = createAddonsLoader(
     registry.getAddonDependencies(),
     registry.getAddons(),
-    // The load of the project config is deprecated and will be removed in Volto 19.
-    { loadProjectConfig: true },
   );
 
   config.resolve.plugins = [
@@ -406,13 +328,19 @@ const defaultModify = ({
               // Add support for addons to include externals (ie. node_modules npm published packages)
               ...addonsAsExternals,
               /^@plone\/volto/,
-              /^@plone\/components/,
-              /^@plone\/client/,
-              /^@plone\/providers/,
             ].filter(Boolean),
           }),
         ]
       : [];
+
+  if (config.devServer) {
+    config.devServer.static.watch.ignored = /node_modules\/(?!@plone\/volto)/;
+    config.snapshot = {
+      managedPaths: [
+        /^(.+?[\\/]node_modules[\\/](?!(@plone[\\/]volto))(@.+?[\\/])?.+?)[\\/]/,
+      ],
+    };
+  }
 
   return config;
 };
@@ -443,14 +371,12 @@ module.exports = {
     webpackConfig,
     webpackObject,
     options,
-    paths,
   }) => {
     const defaultConfig = defaultModify({
       env: { target, dev },
       webpackConfig,
       webpackObject,
       options,
-      paths,
     });
 
     const res = addonExtenders.reduce(

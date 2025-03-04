@@ -3,11 +3,11 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { Pagination, Dimmer, Loader } from 'semantic-ui-react';
 import Slugger from 'github-slugger';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { Icon } from '@plone/volto/components';
 import { renderLinkElement } from '@plone/volto-slate/editor/render';
 import config from '@plone/volto/registry';
 import withQuerystringResults from './withQuerystringResults';
-import { normalizeString } from '@plone/volto/helpers/Utils/Utils';
+import { normalizeString } from '@plone/volto/helpers';
 
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';

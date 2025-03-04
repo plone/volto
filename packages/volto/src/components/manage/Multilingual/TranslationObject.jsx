@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import map from 'lodash/map';
+import { map } from 'lodash';
 import { defineMessages, useIntl } from 'react-intl';
 import { Form as UiForm, Menu, Segment } from 'semantic-ui-react';
 import { Provider } from 'react-intl-redux';
-import { Form, Field } from '@plone/volto/components/manage/Form';
+import { Form, Field } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 import configureStore from '@plone/volto/store';
 import { useSelector } from 'react-redux';
-import Api from '@plone/volto/helpers/Api/Api';
-import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
-import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
 import {
+  Api,
+  flattenToAppURL,
+  langmap,
   toGettextLang,
   toReactIntlLang,
-} from '@plone/volto/helpers/Utils/Utils';
+} from '@plone/volto/helpers';
 import { createBrowserHistory } from 'history';
-
 const messages = defineMessages({
   document: {
     id: 'Document',
@@ -52,9 +51,7 @@ const TranslationObject = ({
       setLoadingLocale(true);
       let lang = availableLanguages[Object.keys(locales).length];
       const langFileName = toGettextLang(lang);
-      import(
-        /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-      ).then((locale) => {
+      import('@root/../locales/' + langFileName + '.json').then((locale) => {
         setLocales({ ...locales, [toReactIntlLang(lang)]: locale.default });
         setLoadingLocale(false);
       });
@@ -131,6 +128,7 @@ const TranslationObject = ({
                     {map(item.fields, (field, index) => (
                       <Field
                         {...schema.properties[field]}
+                        isDisabled={true}
                         id={field}
                         formData={translationObject}
                         focus={false}

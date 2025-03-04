@@ -1,35 +1,39 @@
 import { z } from 'zod';
-import { type ApiRequestParams, apiRequest } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
-import { copyMoveDataSchema as copyDataSchema } from '../../validation/copymove';
-import type { CopyMoveResponse as CopyResponse } from '@plone/types';
+import { ApiRequestParams, apiRequest } from '../../API';
+import {
+  PloneClientConfig,
+  PloneClientConfigSchema,
+} from '../../interfaces/config';
+import {
+  copyMoveDataSchema as copyDataSchema,
+  CopyMoveResponse as CopyResponse,
+} from '../../interfaces/copymove';
 
-export type CopyArgs = z.infer<typeof copyDataSchema> & {
-  config: PloneClientConfig;
-};
+export const copyArgsSchema = z.object({
+  data: copyDataSchema,
+  config: PloneClientConfigSchema,
+});
+
+export type CopyArgs = z.infer<typeof copyArgsSchema>;
 
 export const copy = async ({
-  path,
   data,
   config,
 }: CopyArgs): Promise<CopyResponse> => {
-  const validatedArgs = copyDataSchema.parse({
-    path,
+  const validatedArgs = copyArgsSchema.parse({
     data,
+    config,
   });
 
   const options: ApiRequestParams = {
-    config,
     data: validatedArgs.data,
+    config: validatedArgs.config,
   };
 
-  const copyPath = `${validatedArgs.path}/@copy`;
-
-  return apiRequest('post', copyPath, options);
+  return apiRequest('post', '/@copy', options);
 };
 
 export const copyMutation = ({ config }: { config: PloneClientConfig }) => ({
   mutationKey: ['post', 'copy'],
-  mutationFn: ({ path, data }: Omit<CopyArgs, 'config'>) =>
-    copy({ path, data, config }),
+  mutationFn: ({ data }: Omit<CopyArgs, 'config'>) => copy({ data, config }),
 });

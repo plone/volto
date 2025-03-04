@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { createPortal } from 'react-dom';
+import { Portal } from 'react-portal';
 import {
   Button,
   Container,
@@ -17,18 +17,15 @@ import {
   Table,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import map from 'lodash/map';
+import { map } from 'lodash';
 
-import { getSystemInformation } from '@plone/volto/actions/controlpanels/controlpanels';
 import {
+  getSystemInformation,
   getUpgradeInformation,
   runUpgrade,
-} from '@plone/volto/actions/upgrade/upgrade';
-import Helmet from '@plone/volto/helpers/Helmet/Helmet';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import Toast from '@plone/volto/components/manage/Toast/Toast';
-import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
-import { VersionOverview } from '@plone/volto/components/manage/Controlpanels';
+} from '@plone/volto/actions';
+import { Helmet } from '@plone/volto/helpers';
+import { Icon, Toast, Toolbar, VersionOverview } from '@plone/volto/components';
 import backSVG from '@plone/volto/icons/back.svg';
 import { toast } from 'react-toastify';
 
@@ -253,7 +250,6 @@ class UpgradeControlPanel extends Component {
                 <Container>
                   {map(upgradeSteps, (upgradeGroup) => [
                     <UpgradeStep
-                      key={upgradeGroup[0]}
                       title={upgradeGroup[0]}
                       steps={upgradeGroup[1]}
                     />,
@@ -315,8 +311,8 @@ class UpgradeControlPanel extends Component {
             ) : null}
           </Segment>
         </Segment.Group>
-        {this.state.isClient &&
-          createPortal(
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -333,9 +329,9 @@ class UpgradeControlPanel extends Component {
                   </Link>
                 </>
               }
-            />,
-            document.getElementById('toolbar'),
-          )}
+            />
+          </Portal>
+        )}
       </Container>
     ) : null;
   }

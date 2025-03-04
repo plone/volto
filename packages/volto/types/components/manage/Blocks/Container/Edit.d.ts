@@ -1,5 +1,5 @@
 export default ContainerBlockEdit;
-declare function ContainerBlockEdit(props: any): import("react/jsx-runtime").JSX.Element;
+declare function ContainerBlockEdit(props: any): JSX.Element;
 declare namespace ContainerBlockEdit {
     namespace propTypes {
         let block: any;

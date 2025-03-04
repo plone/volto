@@ -45,16 +45,13 @@ export const _insertElement = (elementType) => (editor, data) => {
           match: (node) => {
             return Node.string(node).length !== 0;
           },
-        },
+        }, //,
       );
     }
 
     const sel = JSON.parse(JSON.stringify(rangeRef.current));
-
-    setTimeout(() => {
-      Transforms.select(editor, sel);
-      editor.setSavedSelection(sel);
-    });
+    Transforms.select(editor, sel);
+    editor.setSavedSelection(sel);
 
     return true;
   }
@@ -72,26 +69,10 @@ export const _insertElement = (elementType) => (editor, data) => {
  * @returns {Object|null} - current node
  */
 export const _unwrapElement = (elementType) => (editor) => {
-  const selection = editor.selection || editor.getSavedSelection();
-  let [link] = Editor.nodes(editor, {
-    at: selection,
+  const [link] = Editor.nodes(editor, {
+    at: editor.selection,
     match: (node) => node?.type === elementType,
   });
-  const isAtStart =
-    selection.anchor.offset === 0 && selection.focus.offset === 0;
-
-  if (!link && !isAtStart) return false;
-
-  if (!link) {
-    try {
-      link = Editor.previous(editor, {
-        at: selection.anchor.path,
-      });
-    } catch (ex) {
-      link = [];
-    }
-  }
-
   const [, path] = link;
   const [start, end] = Editor.edges(editor, path);
   const range = { anchor: start, focus: end };

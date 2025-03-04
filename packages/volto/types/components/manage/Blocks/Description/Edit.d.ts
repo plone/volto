@@ -1,4 +1,4 @@
-export function DescriptionBlockEdit(props: any): import("react/jsx-runtime").JSX.Element;
+export function DescriptionBlockEdit(props: any): JSX.Element;
 export namespace DescriptionBlockEdit {
     namespace propTypes {
         let properties: any;

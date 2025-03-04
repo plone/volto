@@ -1,5 +1,5 @@
 export default ErrorBoundary;
-declare class ErrorBoundary extends React.Component<any, any, any> {
+declare class ErrorBoundary {
     static getDerivedStateFromError(error: any): {
         hasError: boolean;
     };
@@ -10,4 +10,3 @@ declare class ErrorBoundary extends React.Component<any, any, any> {
     componentDidCatch(error: any, errorInfo: any): void;
     render(): any;
 }
-import React from 'react';

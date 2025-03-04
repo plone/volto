@@ -1,2 +1,7 @@
 export default Edit;
-declare function Edit(props: any): import("react/jsx-runtime").JSX.Element;
+declare class Edit extends Component<any, any, any> {
+    constructor(props: any);
+    constructor(props: any, context: any);
+    render(): JSX.Element;
+}
+import { Component } from 'react';

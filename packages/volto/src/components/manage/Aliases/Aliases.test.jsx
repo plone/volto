@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -9,8 +9,9 @@ import Aliases from './Aliases';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
-
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
 jest.mock('../Toolbar/More', () => jest.fn(() => <div className="More" />));
 
 describe('Aliases', () => {
@@ -44,13 +45,12 @@ describe('Aliases', () => {
         messages: {},
       },
     });
-    const { container } = render(
+    const component = renderer.create(
       <Provider store={store}>
         <Aliases location={{ pathname: '/blog/aliases' }} />
-        <div id="toolbar"></div>
       </Provider>,
     );
-
-    expect(container).toMatchSnapshot();
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
   });
 });

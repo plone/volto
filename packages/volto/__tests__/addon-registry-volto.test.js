@@ -1,14 +1,14 @@
-import path from 'path';
-import { AddonRegistry } from '@plone/registry/addon-registry';
+const path = require('path');
+const AddonConfigurationRegistry = require('../../registry/src/addon-registry');
 
-describe('AddonRegistry - Volto', () => {
+describe('AddonConfigurationRegistry - Volto', () => {
   it('works in Volto', () => {
     const base = path.join(__dirname, '..');
-    const { registry } = AddonRegistry.init(base);
-    expect(registry.projectRootPath).toStrictEqual(base);
+    const reg = new AddonConfigurationRegistry(base);
+    expect(reg.projectRootPath).toStrictEqual(base);
     // TODO: rename initPackagesFolder to proper name after the refactor
-    // expect(registry.addonNames).toStrictEqual(['@plone/volto-slate']);
-    expect(registry.packages['@plone/volto-slate'].name).toStrictEqual(
+    // expect(reg.addonNames).toStrictEqual(['@plone/volto-slate']);
+    expect(reg.packages['@plone/volto-slate'].name).toStrictEqual(
       '@plone/volto-slate',
     );
   });

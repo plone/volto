@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createPortal } from 'react-dom';
+import { Portal } from 'react-portal';
 
 /**
  * Portal that wraps Sidebar components
- * @param {React.ReactNode} children Sidebar content
+ * @param {Array} children Sidebar content
  * @param {bool} selected Sidebar needs to know when the related block is selected
  * @param {string} tab Element id where to insert sidebar content, default: sidebar-properties
  * @returns {string} Rendered sidebar
@@ -16,9 +16,8 @@ const SidebarPortal = ({ children, selected, tab = 'sidebar-properties' }) => {
 
   return (
     <>
-      {isClient &&
-        selected &&
-        createPortal(
+      {selected && (
+        <Portal node={isClient && document.getElementById(tab)}>
           <div role="form" style={{ height: '100%' }}>
             <div
               style={{ height: '100%' }}
@@ -32,9 +31,9 @@ const SidebarPortal = ({ children, selected, tab = 'sidebar-properties' }) => {
             >
               {children}
             </div>
-          </div>,
-          document.getElementById(tab),
-        )}
+          </div>
+        </Portal>
+      )}
     </>
   );
 };

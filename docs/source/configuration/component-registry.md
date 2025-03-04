@@ -34,7 +34,7 @@ config.registerComponent({
 
 ## Retrieving a component from the component registry
 
-You can programmatically retrieve a component from the registry using `config.getComponent`:
+You can programatically retrieve a component from the registry using `config.getComponent`:
 
 ```js
 const Toolbar = config.getComponent('Toolbar').component
@@ -89,7 +89,7 @@ config.registerComponent({
   });
 ```
 
-and then retrieve them both, depending on the use case (in the example, given a content type value coming from `content` prop):
+and then retrieve them both, depending on the use case (in the example, given a content type value comming from `content` prop):
 
 ```jsx
 <Component componentName="Toolbar" dependencies={[props.content['@type']]} {...props} />

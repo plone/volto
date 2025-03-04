@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
+import { getAPIResourceWithAuth } from '@plone/volto/helpers';
 
 const HEADERS = [
   'accept-ranges',
@@ -9,7 +9,6 @@ const HEADERS = [
   'content-type',
   'x-sendfile',
   'x-accel-redirect',
-  'x-robots-tag',
 ];
 
 function filesMiddlewareFn(req, res, next) {
@@ -30,10 +29,7 @@ function filesMiddlewareFn(req, res, next) {
 export default function filesMiddleware() {
   const middleware = express.Router();
 
-  middleware.all(
-    ['**/@@download/*', '**/@@display-file/*', '**/ics_view'],
-    filesMiddlewareFn,
-  );
+  middleware.all(['**/@@download/*', '**/@@display-file/*'], filesMiddlewareFn);
   middleware.id = 'filesResourcesProcessor';
   return middleware;
 }

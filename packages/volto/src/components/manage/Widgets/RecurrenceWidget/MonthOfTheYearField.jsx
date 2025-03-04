@@ -5,10 +5,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import map from 'lodash/map';
+import { map } from 'lodash';
 import { Form } from 'semantic-ui-react';
 import SelectInput from './SelectInput';
-import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
+import { toBackendLang } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { useSelector } from 'react-redux';
 

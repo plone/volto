@@ -1,6 +1,6 @@
 import React from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import { render } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import SchemaWidgetFieldsetComponent from './SchemaWidgetFieldset';
 
 jest.mock('@plone/volto/helpers/Loadable/Loadable');
@@ -10,7 +10,7 @@ beforeAll(
 );
 
 test('renders a contents item component', () => {
-  const { container } = render(
+  const component = renderer.create(
     <DragDropContext onDragEnd={(x) => x}>
       <Droppable droppableId="tabs-schema-edit" direction="horizontal">
         {(provided, snapshot) => (
@@ -28,7 +28,7 @@ test('renders a contents item component', () => {
               onShowEditFieldset={(x) => x}
               onShowDeleteFieldset={(x) => x}
               onClick={(x) => x}
-              getItemStyle={(x) => ({})}
+              getItemStyle={(x) => x}
               isDraggable={false}
               isDisabled={false}
             />
@@ -38,6 +38,6 @@ test('renders a contents item component', () => {
       </Droppable>
     </DragDropContext>,
   );
-
-  expect(container).toMatchSnapshot();
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
 });

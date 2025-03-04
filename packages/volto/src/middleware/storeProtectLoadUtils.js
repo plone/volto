@@ -1,4 +1,4 @@
-import { isCmsUi } from '@plone/volto/helpers/Url/Url';
+import { isCmsUi } from '@plone/volto/helpers';
 
 const LOCATION_CHANGE = '@@router/LOCATION_CHANGE';
 const PROTECT_START = '@@loadProtector/START';

@@ -1,6 +1,6 @@
-export const SearchBlockViewComponent: (props: any) => import("react/jsx-runtime").JSX.Element;
+export const SearchBlockViewComponent: any;
 declare const _default: {
-    (props: any): import("react/jsx-runtime").JSX.Element;
+    (props: any): JSX.Element;
     displayName: string;
 };
 export default _default;

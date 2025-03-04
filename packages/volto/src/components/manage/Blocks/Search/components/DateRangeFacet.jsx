@@ -3,7 +3,7 @@ import { Header } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { compose } from 'redux';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { Icon } from '@plone/volto/components';
 import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 import { connect } from 'react-redux';
 

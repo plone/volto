@@ -14,7 +14,7 @@ describe('Aliases action', () => {
       expect(action.type).toEqual(GET_ALIASES);
       expect(action.request.op).toEqual('get');
       expect(action.request.path).toEqual(
-        '/news/@aliases?q=&b_start=0&b_size=99999999999',
+        '/news/@aliases?q=&manual=&datetime=undefined&b_size=99999999999&b_start=0',
       );
     });
   });

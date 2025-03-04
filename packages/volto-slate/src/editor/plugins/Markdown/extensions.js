@@ -1,5 +1,4 @@
-import castArray from 'lodash/castArray';
-import map from 'lodash/map';
+import { castArray, map } from 'lodash';
 import { Editor, Path, Point, Range, Transforms } from 'slate';
 
 /**
@@ -171,8 +170,9 @@ export const autoformatInline = (
 
   // add mark to the text between the markups
   Transforms.select(editor, markupRange);
-  Transforms.wrapNodes(editor, { type, children: [] }, { split: true });
+  editor.addMark(type, true);
   Transforms.collapse(editor, { edge: 'end' });
+  editor.removeMark(type);
 
   // delete start markup
   const startMarkupPointBefore = getPointBefore(editor, selection, {
@@ -200,7 +200,6 @@ export const autoformatBlock = (editor, type, at, { preFormat, format }) => {
     Transforms.setNodes(
       editor,
       { type },
-      { at },
       { match: (n) => Editor.isBlock(editor, n) },
     );
   } else {

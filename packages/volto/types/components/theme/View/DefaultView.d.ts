@@ -1,13 +1,4 @@
-export default DefaultView;
-/**
- * Component to display the default view.
- * @function DefaultView
- * @param {Object} content Content object.
- * @returns {string} Markup of the component.
- */
-declare function DefaultView(props: any): string;
-declare namespace DefaultView {
-    namespace propTypes {
-        let content: any;
-    }
-}
+declare const _default: import("react").FC<import("react-intl").WithIntlProps<any>> & {
+    WrappedComponent: import("react").ComponentType<any>;
+};
+export default _default;

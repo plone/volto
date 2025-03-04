@@ -3,10 +3,10 @@ import { useSlate } from 'slate-react';
 import { Dropdown } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
 import cx from 'classnames';
-import omit from 'lodash/omit';
+import { omit } from 'lodash';
 import { isBlockStyleActive, isInlineStyleActive, toggleStyle } from './utils';
 import config from '@plone/volto/registry';
-import ToolbarButton from '@plone/volto-slate/editor/ui/ToolbarButton';
+import { ToolbarButton } from '@plone/volto-slate/editor/ui';
 import paintSVG from '@plone/volto/icons/paint.svg';
 
 const messages = defineMessages({

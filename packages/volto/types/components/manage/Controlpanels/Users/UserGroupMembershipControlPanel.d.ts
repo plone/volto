@@ -1,2 +1,2 @@
 export default UserGroupMembershipPanel;
-declare function UserGroupMembershipPanel(): import("react/jsx-runtime").JSX.Element;
+declare function UserGroupMembershipPanel(): JSX.Element;

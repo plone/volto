@@ -11,15 +11,25 @@ MAKEFLAGS+=--warn-undefined-variables
 MAKEFLAGS+=--no-builtin-rules
 
 # Project settings
-include variables.mk
+
+INSTANCE_PORT=8080
+DOCKER_IMAGE=plone/server-dev:6.0.8
+DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.8
+KGS=plone.restapi==9.2.0
+NODEBIN = ./node_modules/.bin
+SCRIPTSPACKAGE = ./packages/scripts
+
+# Plone 5 legacy
+DOCKER_IMAGE5=plone/plone-backend:5.2.12
+KGS5=plone.restapi==9.2.0 plone.volto==4.1.0 plone.rest==3.0.1
+TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 
 # Sphinx variables
 # You can set these variables from the command line.
 SPHINXOPTS      ?=
-VALEOPTS        ?=
 # Internal variables.
-SPHINXBUILD     = "$(realpath bin/sphinx-build)"
-SPHINXAUTOBUILD = "$(realpath bin/sphinx-autobuild)"
+SPHINXBUILD     = $(realpath bin/sphinx-build)
+SPHINXAUTOBUILD = $(realpath bin/sphinx-autobuild)
 DOCS_DIR        = ./docs/source/
 BUILDDIR        = ../_build/
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
@@ -27,10 +37,10 @@ VALEFILES       := $(shell find $(DOCS_DIR) -type f -name "*.md" -print)
 
 # Recipe snippets for reuse
 
-CHECKOUT_BASENAME="$(shell basename $(shell realpath ./))"
+CHECKOUT_BASENAME=$(shell basename $(shell realpath ./))
 CHECKOUT_BRANCH=$(shell git branch --show-current)
 CHECKOUT_TMP=../$(CHECKOUT_BASENAME).tmp
-CHECKOUT_TMP_ABS="$(shell realpath $(CHECKOUT_TMP))"
+CHECKOUT_TMP_ABS=$(shell realpath $(CHECKOUT_TMP))
 
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
@@ -43,47 +53,69 @@ YELLOW=`tput setaf 3`
 # Top-level targets
 
 .PHONY: all
-all: help
+all: build
 
 # Add the following 'help' target to your Makefile
-# and add help text after each target name starting with ' ##'
-# to return a pretty list of targets and their descriptions.
+# And add help text after each target name starting with '\#\#'
 .PHONY: help
+help: .SHELLFLAGS:=-eu -o pipefail -O inherit_errexit -c
 help: ## This help message
-	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: start
-start: ## Starts Volto, allowing reloading of the add-on during development
+# Run both the back-end and the front end
+start:
+	$(MAKE) -j 2 start-backend start-frontend
+
+.PHONY: start-frontend
+start-frontend:
 	pnpm start
 
+.PHONY: start-backend
+start-backend: ## Start Plone Backend
+	$(MAKE) -C "./api/" start
+
+# TODO: Review release commands for all packages
+# Use TurboRepo
+.PHONY: release
+release:
+	./node_modules/.bin/release-it
+
 .PHONY: build
-build: ## Build a production bundle for distribution
-	$(MAKE) -C "./packages/volto/" build
+build:
+	make build-backend
+	make build-frontend
+
+.PHONY: build-frontend
+build-frontend:
+	(cd packages/volto && pnpm i && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build)
+
+.PHONY: build-backend
+build-backend:  ## Build Plone 5.2
+	$(MAKE) -C "./api/" build
 
 .PHONY: test
-test: ## Run unit tests
-	$(MAKE) -C "./packages/volto/" test
+test:
+	$(MAKE) -C "./api/" test
 
-.PHONY: clean
-clean: ## Clean development environment
-	rm -rf node_modules
-	find ./packages -name node_modules -not -path "./packages/volto/__tests__/*" -exec rm -rf {} \;
-
-.PHONY: install
-install: ## Set up development environment
-	# Setup ESlint for VSCode
-	pnpm i
-	node packages/scripts/vscodesettings.js
-	make build-deps
-
-##### Documentation
-
-bin/python: ## Create a Python virtual environment with the latest pip, and install documentation requirements
+bin/python:
 	python3 -m venv . || virtualenv --clear --python=python3 .
 	bin/python -m pip install --upgrade pip
 	@echo "Python environment created."
 	bin/pip install -r requirements-docs.txt
 	@echo "Requirements installed."
+
+.PHONY: clean
+clean:
+	$(MAKE) -C "./api/" clean
+	rm -rf node_modules
+
+.PHONY: setup
+setup:
+	# Setup ESlint for VSCode
+	node packages/scripts/vscodesettings.js
+
+##### Documentation
 
 .PHONY: docs-clean
 docs-clean:  ## Clean current and legacy docs build directories, and Python virtual environment
@@ -121,304 +153,238 @@ docs-linkcheckbroken: bin/python docs-news  ## Run linkcheck and show only broke
 .PHONY: docs-vale
 docs-vale: bin/python docs-news  ## Install (once) and run Vale style, grammar, and spell checks
 	bin/vale sync
-	bin/vale --no-wrap $(VALEOPTS) $(VALEFILES)
+	bin/vale --no-wrap $(VALEFILES)
 	@echo
 	@echo "Vale is finished; look for any errors in the above output."
 
-.PHONY: docs-rtd-pr-preview
-docs-rtd-pr-preview: ## Build previews of pull requests that have documentation changes on Read the Docs via CI
+.PHONY: netlify
+netlify:
 	pip install -r requirements-docs.txt
-	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) ${READTHEDOCS_OUTPUT}/html/
+	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) ../$(BUILDDIR)/html
 
 .PHONY: docs-test
 docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then run linkcheckbroken, vale
 
-##### Build
+# TODO: Revisit it
+.PHONY: storybook-build
+storybook-build:
+	pnpm build:registry
+	(cd packages/volto && pnpm build-storybook -o ../../docs/_build/storybook)
+
+.PHONY: patches
+patches:
+	(cd packages/volto && /bin/bash patches/patchit.sh > /dev/null 2>&1 ||true)
 
 .PHONY: cypress-install
-cypress-install: ## Install Cypress for acceptance tests
+cypress-install:
 	$(NODEBIN)/cypress install
-
-packages/registry/dist: $(shell find packages/registry/src -type f)
-	pnpm build:registry
-
-packages/components/dist: $(shell find packages/components/src -type f)
-	pnpm build:components
-
-packages/client/dist: $(shell find packages/client/src -type f)
-	pnpm build:client
-
-packages/providers/dist: $(shell find packages/providers/src -type f)
-	pnpm build:providers
-
-packages/helpers/dist: $(shell find packages/helpers/src -type f)
-	pnpm build:helpers
-
-packages/react-router/dist: $(shell find packages/react-router/src -type f)
-	pnpm build:react-router
-
-.PHONY: build-deps
-build-deps: packages/registry/dist ## Build dependencies
-
-.PHONY: build-all-deps
-build-all-deps: packages/registry/dist packages/components/dist packages/client/dist packages/providers/dist packages/react-router/dist packages/helpers/dist ## Build all dependencies
-
-.PHONY: i18n
-i18n: ## Converts your po files into json to translate volto frontend
-	$(MAKE) -C "./packages/volto/" i18n
-
-## Storybook
-
-.PHONY: storybook-start
-storybook-start: ## Start Storybook server on port 6006
-	$(MAKE) -C "./packages/volto/" storybook-start
-
-.PHONY: storybook-build
-storybook-build: ## Build Storybook
-	$(MAKE) -C "./packages/volto/" storybook-build
 
 ##### Release
 
-.PHONY: release-notes-copy-to-docs
-release-notes-copy-to-docs: ## Copy release notes into documentation
+.PHONY: corepackagebump
+corepackagebump:
+	node $(SCRIPTSPACKAGE)/corepackagebump.js packages/volto-slate $(VERSION)
+
+.PHONY: copyreleasenotestodocs
+copyreleasenotestodocs:
 	cp CHANGELOG.md docs/source/release-notes/index.md
 	git add docs/source/release-notes/index.md
 
 ##### Docker containers
 
-.PHONY: backend-docker-start
-backend-docker-start: ## Starts a Docker-based backend for development
-	$(MAKE) -C "./packages/volto/" backend-docker-start
+.PHONY: start-backend-docker
+start-backend-docker:
+	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
 
-.PHONY: backend-docker-detached-start
-backend-docker-detached-start: ## Starts a Docker-based backend in detached mode (daemon)
-	docker run -d --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
+.PHONY: start-frontend-docker
+start-frontend-docker:
+	docker run -it --rm --name=volto --link backend -p 3000:3000 -e RAZZLE_INTERNAL_API_PATH=http://backend:8080/Plone -e RAZZLE_DEV_PROXY_API_PATH=http://backend:8080/Plone plone/plone-frontend:latest
 
-.PHONY: backend-docker-detached-stop
-backend-docker-detached-stop: ## Stops the Docker-based backend in detached mode (daemon)
-	docker kill backend
+.PHONY: start-backend-docker-guillotina
+start-backend-docker-guillotina:
+	docker-compose -f g-api/docker-compose.yml up -d
 
-.PHONY: backend-docker-start-no-cors
-backend-docker-start-no-cors: ## Starts the Docker-based backend without CORS in detached mode (daemon)
-	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' -e CORS_=true $(DOCKER_IMAGE)
-
-.PHONY: frontend-docker-start
-frontend-docker-start: ## Starts a Docker-based frontend for development
-	$(MAKE) -C "./packages/volto/" frontend-docker-start
+.PHONY: stop-backend-docker-guillotina
+stop-backend-docker-guillotina:
+	docker-compose -f g-api/docker-compose.yml down
 
 ##### Acceptance tests (Cypress)
 ######### Dev mode Acceptance tests
 
-.PHONY: acceptance-frontend-dev-start
-acceptance-frontend-dev-start: ## Start acceptance frontend in development mode
-	$(MAKE) -C "./packages/volto/" acceptance-frontend-dev-start
+.PHONY: start-test-acceptance-frontend-dev
+start-test-acceptance-frontend-dev: ## Start the Core Acceptance Frontend Fixture in dev mode
+	(cd packages/volto && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm start)
 
 ######### Core Acceptance tests
 
-.PHONY: acceptance-backend-start
-acceptance-backend-start: ## Start backend acceptance server
-	$(MAKE) -C "./packages/volto/" acceptance-backend-start
+.PHONY: start-test-acceptance-server test-acceptance-server
+start-test-acceptance-server test-acceptance-server: ## Start Test Acceptance Server Main Fixture (docker container)
+	docker run -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
 
-.PHONY: ci-acceptance-backend-start
-ci-acceptance-backend-start: ## Start backend acceptance server in headless mode for CI
-	$(MAKE) -C "./packages/volto/" ci-acceptance-backend-start
+.PHONY: start-test-acceptance-frontend
+start-test-acceptance-frontend: ## Start the Core Acceptance Frontend Fixture
+	(cd packages/volto && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
 
-.PHONY: acceptance-frontend-prod-start
-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode
-	$(MAKE) -C "./packages/volto/" acceptance-frontend-prod-start
+.PHONY: test-acceptance
+test-acceptance: ## Start Core Cypress Acceptance Tests
+	(cd packages/volto && NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open)
 
-.PHONY: acceptance-test
-acceptance-test: ## Start Cypress in interactive mode
-	$(MAKE) -C "./packages/volto/" acceptance-test
+.PHONY: test-acceptance-headless
+test-acceptance-headless: ## Start Core Cypress Acceptance Tests in headless mode
+	(cd packages/volto && NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/core/**/*.{js,jsx,ts,tsx}')
 
-.PHONY: ci-acceptance-test
-ci-acceptance-test: ## Run cypress tests in headless mode for CI
-	$(MAKE) -C "./packages/volto/" ci-acceptance-test
+.PHONY: full-test-acceptance
+full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend" http://127.0.0.1:3000 "make test-acceptance-headless"
 
-.PHONY: ci-acceptance-test-run-all
-ci-acceptance-test-run-all: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode
-	$(MAKE) -C "./packages/volto/" ci-acceptance-test-run-all
+######### Seamless Core Acceptance tests
 
-######### Deployment Core Acceptance tests
+.PHONY: start-test-acceptance-frontend-seamless
+start-test-acceptance-frontend-seamless: ## Start the Seamless Core Acceptance Frontend Fixture
+	(cd packages/volto && pnpm build && pnpm start:prod)
 
-.PHONY: deployment-acceptance-frontend-prod-start
-deployment-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for deployment
-	$(MAKE) -C "./packages/volto/" deployment-acceptance-frontend-prod-start
+.PHONY: test-acceptance-seamless
+test-acceptance-seamless: ## Start Seamless Cypress Acceptance Tests
+	(cd packages/volto && NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost')
 
-.PHONY: deployment-acceptance-test
-deployment-acceptance-test: ## Start Cypress in interactive mode for tests in deployment
-	$(MAKE) -C "./packages/volto/" deployment-acceptance-test
+.PHONY: start-test-acceptance-webserver-seamless
+start-test-acceptance-webserver-seamless: ## Start the seamless webserver
+	(cd packages/volto && cd cypress/docker && docker-compose -f seamless.yml up)
 
-.PHONY: deployment-acceptance-web-server-start
-deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in port 80 for deployment
-	$(MAKE) -C "./packages/volto/" deployment-acceptance-web-server-start
+.PHONY: full-test-acceptance-seamless
+full-test-acceptance-seamless: ## Runs Seamless Core Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-seamless" http://127.0.0.1:3000 "make test-acceptance-headless"
 
-.PHONY: deployment-ci-acceptance-test-run-all
-deployment-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for deployment tests
-	$(MAKE) -C "./packages/volto/" deployment-ci-acceptance-test-run-all
+######### Project Acceptance tests
 
-######### Cookieplone / (deprecated) Project Acceptance tests
+.PHONY: start-test-acceptance-frontend-project
+start-test-acceptance-frontend-project: ## Start the Project Acceptance Frontend Fixture
+	(cd ../../my-volto-app && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
 
-.PHONY: cookieplone-acceptance-frontend-prod-start
-cookieplone-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for project tests
-	$(MAKE) -C "./packages/volto/" cookieplone-acceptance-frontend-prod-start
+######### CoreSandbox Acceptance tests
 
-.PHONY: project-acceptance-frontend-prod-start
-project-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for project tests
-	$(MAKE) -C "./packages/volto/" project-acceptance-frontend-prod-start
+.PHONY: start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox
+start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox: ## Start CoreSandbox Test Acceptance Server Fixture (docker container)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox $(DOCKER_IMAGE_ACCEPTANCE)
+	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox ./api/bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
-######### Core Sandbox Acceptance tests
+.PHONY: start-test-acceptance-frontend-coresandbox
+start-test-acceptance-frontend-coresandbox: ## Start the CoreSandbox Acceptance Frontend Fixture
+	(cd packages/volto && ADDONS=@plone/volto-coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
 
-.PHONY: coresandbox-acceptance-backend-start
-coresandbox-acceptance-backend-start: ## Start backend acceptance server for core sandbox tests
-	$(MAKE) -C "./packages/volto/" coresandbox-acceptance-backend-start
+.PHONY: start-test-acceptance-frontend-coresandbox-dev
+start-test-acceptance-frontend-coresandbox-dev: ## Start the CoreSandbox Acceptance Frontend Fixture in dev mode
+	(cd packages/volto && ADDONS=@plone/volto-coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm start)
 
-.PHONY: coresandbox-acceptance-frontend-prod-start
-coresandbox-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for core sandbox tests
-	$(MAKE) -C "./packages/volto/" coresandbox-acceptance-frontend-prod-start
+.PHONY: test-acceptance-coresandbox
+test-acceptance-coresandbox: ## Start CoreSandbox Cypress Acceptance Tests
+	(cd packages/volto && NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/coresandbox/**/*.{js,jsx,ts,tsx}')
 
-.PHONY: coresandbox-acceptance-frontend-dev-start
-coresandbox-acceptance-frontend-dev-start: ## Start acceptance frontend in development mode for core sandbox tests
-	$(MAKE) -C "./packages/volto/" coresandbox-acceptance-frontend-dev-start
+.PHONY: test-acceptance-coresandbox-headless
+test-acceptance-coresandbox-headless: ## Start CoreSandbox Cypress Acceptance Tests in headless mode
+	(cd packages/volto && NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/coresandbox/**/*.{js,jsx,ts,tsx}/**/*.{js,jsx,ts,tsx}')
 
-.PHONY: coresandbox-acceptance-test
-coresandbox-acceptance-test: ## Start Cypress in interactive mode for core sandbox tests
-	$(MAKE) -C "./packages/volto/" coresandbox-acceptance-test
-
-.PHONY: coresandbox-ci-acceptance-test
-coresandbox-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for core sandbox tests
-	$(MAKE) -C "./packages/volto/" coresandbox-ci-acceptance-test
-
-.PHONY: coresandbox-ci-acceptance-test-run-all
-coresandbox-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for core sandbox tests
-	$(MAKE) -C "./packages/volto/" coresandbox-ci-acceptance-test-run-all
+.PHONY: full-test-acceptance-coresandbox
+full-test-acceptance-coresandbox: ## Runs CoreSandbox Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make start-test-acceptance-server-coresandbox" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-coresandbox" http://127.0.0.1:3000 "make test-acceptance-coresandbox-headless"
 
 ######### Multilingual Acceptance tests
 
-.PHONY: multilingual-acceptance-backend-start
-multilingual-acceptance-backend-start: ## Start backend acceptance server for multilingual tests
-	$(MAKE) -C "./packages/volto/" multilingual-acceptance-backend-start
+.PHONY: start-test-acceptance-server-multilingual test-acceptance-server-multilingual
+start-test-acceptance-server-multilingual test-acceptance-server-multilingual: ## Start Multilingual Acceptance Server Multilingual Fixture (docker container)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
 
-.PHONY: multilingual-acceptance-frontend-prod-start
-multilingual-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for multilingual tests
-	$(MAKE) -C "./packages/volto/" multilingual-acceptance-frontend-prod-start
+.PHONY: start-test-acceptance-frontend-multilingual
+start-test-acceptance-frontend-multilingual: ## Start the Multilingual Acceptance Frontend Fixture
+	(cd packages/volto && ADDONS=@plone/volto-coresandbox:multilingualFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
 
-.PHONY: multilingual-acceptance-test
-multilingual-acceptance-test: ## Start Cypress in interactive mode for multilingual tests
-	$(MAKE) -C "./packages/volto/" multilingual-acceptance-test
+.PHONY: test-acceptance-multilingual
+test-acceptance-multilingual: ## Start Multilingual Cypress Acceptance Tests
+	(cd packages/volto && NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}')
 
-.PHONY: multilingual-ci-acceptance-test
-multilingual-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for multilingual tests
-	$(MAKE) -C "./packages/volto/" multilingual-ci-acceptance-test
+.PHONY: test-acceptance-multilingual-headless
+test-acceptance-multilingual-headless: ## Start Multilingual Cypress Acceptance Tests in headless mode
+	(cd packages/volto && NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}')
 
-.PHONY: multilingual-ci-acceptance-test-run-all
-multilingual-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests
-	$(MAKE) -C "./packages/volto/" multilingual-ci-acceptance-test-run-all
+.PHONY: full-test-acceptance-multilingual
+full-test-acceptance-multilingual: ## Runs Multilingual Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make start-test-acceptance-server-multilingual" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-multilingual" http://127.0.0.1:3000 "make test-acceptance-multilingual-headless"
 
-######### Deployment Multilingual Acceptance tests
+######### Seamless Multilingual Acceptance tests
 
-.PHONY: deployment-multilingual-acceptance-backend-start
-deployment-multilingual-acceptance-backend-start: ## Start backend acceptance server for multilingual tests for deployment
-	$(MAKE) -C "./packages/volto/" deployment-multilingual-acceptance-backend-start
+.PHONY: start-test-acceptance-server-seamless-multilingual test-acceptance-server-seamless-multilingual
+start-test-acceptance-server-seamless-multilingual test-acceptance-server-seamless-multilingual: ## Start Seamless Multilingual Acceptance Server Multilingual Fixture (docker container)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
 
-.PHONY: deployment-multilingual-acceptance-frontend-prod-start
-deployment-multilingual-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for multilingual tests for deployment
-	$(MAKE) -C "./packages/volto/" deployment-multilingual-acceptance-frontend-prod-start
+.PHONY: start-test-acceptance-frontend-seamless-multilingual
+start-test-acceptance-frontend-seamless-multilingual: ## Start the Seamless Multilingual Acceptance Frontend Fixture
+	(cd packages/volto && ADDONS=@plone/volto-coresandbox:multilingualFixture pnpm build && pnpm start:prod)
 
-.PHONY: deployment-multilingual-acceptance-test
-deployment-multilingual-acceptance-test: ## Start Cypress in interactive mode for multilingual tests for deployment
-	$(MAKE) -C "./packages/volto/" deployment-multilingual-acceptance-test
+.PHONY: test-acceptance-seamless-multilingual
+test-acceptance-seamless-multilingual: ## Start Seamless Multilingual Cypress Acceptance Tests
+	(cd packages/volto && NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost',specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}')
 
-.PHONY: deployment-multilingual-ci-acceptance-test
-deployment-multilingual-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for multilingual tests for deployment
-	$(MAKE) -C "./packages/volto/" deployment-multilingual-ci-acceptance-test
+.PHONY: test-acceptance-seamless-multilingual-headless
+test-acceptance-seamless-multilingual-headless: ## Start Seamless Multilingual Cypress Acceptance Tests in headless mode
+	(cd packages/volto && NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}')
 
-.PHONY: deployment-multilingual-ci-acceptance-test-run-all
-deployment-multilingual-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests for deployment
-	$(MAKE) -C "./packages/volto/" deployment-multilingual-ci-acceptance-test-run-all
+.PHONY: full-test-acceptance-seamless-multilingual
+full-test-acceptance-seamless-multilingual: ## Runs Seamless Multilingual Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make start-test-acceptance-server-seamless-multilingual" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-seamless-multilingual" http://127.0.0.1:3000 "make test-acceptance-multilingual-headless"
 
-######### Working Copy Acceptance tests
+######### WorkingCopy Acceptance tests
 
-.PHONY: working-copy-acceptance-backend-start
-working-copy-acceptance-backend-start: ## Start backend acceptance server for working copy tests
-	$(MAKE) -C "./packages/volto/" working-copy-acceptance-backend-start
+.PHONY: start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy
+start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy : ## Start the WorkingCopy Acceptance Server  Fixture (docker container)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage $(DOCKER_IMAGE_ACCEPTANCE)
+	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.app.iterate,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
-.PHONY: working-copy-acceptance-frontend-prod-start
-working-copy-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for working copy tests
-	$(MAKE) -C "./packages/volto/" working-copy-acceptance-frontend-prod-start
+.PHONY: start-test-acceptance-frontend-workingcopy
+start-test-acceptance-frontend-workingcopy: ## Start the WorkingCopy Acceptance Frontend Fixture
+	(cd packages/volto && ADDONS=@plone/volto-coresandbox:workingCopyFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
 
-.PHONY: working-copy-acceptance-test
-working-copy-acceptance-test: ## Start Cypress in interactive mode for working copy tests
-	$(MAKE) -C "./packages/volto/" working-copy-acceptance-test
+.PHONY: test-acceptance-workingcopy
+test-acceptance-workingcopy: ## Start WorkingCopy Cypress Acceptance Tests
+	(cd packages/volto && NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/workingCopy/**/*.{js,jsx,ts,tsx}')
 
-.PHONY: working-copy-ci-acceptance-test
-working-copy-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for working copy tests
-	$(MAKE) -C "./packages/volto/" working-copy-ci-acceptance-test
+.PHONY: test-acceptance-workingcopy-headless
+test-acceptance-workingcopy-headless: ## Start WorkingCopy Cypress Acceptance Tests in headless mode
+	(cd packages/volto && NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/workingCopy/**/*.{js,jsx,ts,tsx}')
 
-.PHONY: working-copy-ci-acceptance-test-run-all
-working-copy-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for working copy tests
-	$(MAKE) -C "./packages/volto/" working-copy-ci-acceptance-test-run-all
+.PHONY: full-test-acceptance-workingcopy
+full-test-acceptance-workingcopy: ## Runs WorkingCopy Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make start-test-acceptance-server-workingcopy" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-workingcopy" http://127.0.0.1:3000 "make test-acceptance-workingcopy-headless"
 
 ######### Guillotina Acceptance tests
 
-.PHONY: guillotina-acceptance-backend-start
-guillotina-acceptance-backend-start: ## Start backend acceptance server for Guillotina tests
+.PHONY: start-test-acceptance-server-guillotina
+start-test-acceptance-server-guillotina: ## Start Guillotina Test Acceptance Server (docker container)
 	docker-compose -f g-api/docker-compose.yml up > /dev/null
 
-.PHONY: guillotina-acceptance-frontend-prod-start
-guillotina-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-acceptance-frontend-prod-start
+.PHONY: start-test-acceptance-frontend-guillotina
+start-test-acceptance-frontend-guillotina: ## Start the Guillotina Acceptance Frontend Fixture
+	(cd packages/volto && ADDONS=volto-guillotina RAZZLE_API_PATH=http://127.0.0.1:8081/db/web RAZZLE_LEGACY_TRAVERSE=true pnpm build && pnpm start:prod)
 
-.PHONY: guillotina-acceptance-test
-guillotina-acceptance-test: ## Start Cypress in interactive mode for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-acceptance-test
+.PHONY: test-acceptance-guillotina
+test-acceptance-guillotina: ## Start the Guillotina Cypress Acceptance Tests
+	(cd packages/volto && NODE_ENV=production CYPRESS_API=guillotina $(NODEBIN)/cypress open --config specPattern='cypress/tests/guillotina/**/*.{js,jsx,ts,tsx}')
 
-.PHONY: guillotina-ci-acceptance-test
-guillotina-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-ci-acceptance-test
+.PHONY: test-acceptance-guillotina-headless
+test-acceptance-guillotina-headless: ## Start the Guillotina Cypress Acceptance Tests in headless mode
+	(cd packages/volto && NODE_ENV=production CYPRESS_API=guillotina $(NODEBIN)/cypress run --config specPattern='cypress/tests/guillotina/**/*.{js,jsx,ts,tsx}')
 
-.PHONY: guillotina-ci-acceptance-test-run-all
-guillotina-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-ci-acceptance-test-run-all
+.PHONY: full-test-acceptance-guillotina
+full-test-acceptance-guillotina: ## Runs the Guillotina Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make start-test-acceptance-server-guillotina" http-get://127.0.0.1:8081 "make start-test-acceptance-frontend-guillotina" http://127.0.0.1:3000 "make test-acceptance-guillotina-headless"
 
 ######### Plone 5 Acceptance tests
 
-.PHONY: plone5-acceptance-backend-start
-plone5-acceptance-backend-start: ## Start backend acceptance server for Plone 5 tests
-	$(MAKE) -C "./packages/volto/" plone5-acceptance-backend-start
+.PHONY: start-test-acceptance-server-5
+start-test-acceptance-server-5: ## Start Test Acceptance Server Main Fixture Plone 5 (docker container)
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS5) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE5) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
 ######### @plone/client
 
-.PHONY: acceptance-server-detached-start
-acceptance-server-detached-start: ## Starts test acceptance server main fixture in detached mode (daemon)
-	docker run -d --name plone-client-acceptance-server -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default,plone.app.discussion:default $(DOCKER_IMAGE_ACCEPTANCE)
-
-.PHONY: acceptance-server-detached-stop
-acceptance-server-detached-stop: ## Stop test acceptance server main fixture in detached mode (daemon)
-	docker kill plone-client-acceptance-server
-
-######### Seven acceptance tests
-
-.PHONY: seven-acceptance-frontend-dev-start
-seven-acceptance-frontend-dev-start: ## Start acceptance frontend in development mode for Seven
-	$(MAKE) -C "./packages/seven/" acceptance-frontend-dev-start
-
-.PHONY: seven-acceptance-frontend-prod-start
-seven-acceptance-frontend-prod-start:: ## Start acceptance frontend in production mode for Seven
-	$(MAKE) -C "./packages/seven/" acceptance-frontend-prod-start
-
-.PHONY: seven-acceptance-test
-seven-acceptance-test: ## Start Cypress in interactive mode for Seven
-	$(MAKE) -C "./packages/seven/" acceptance-test
-
-.PHONY: seven-ci-acceptance-test
-seven-ci-acceptance-test: ## Run cypress tests in headless mode for CI for Seven
-	$(MAKE) -C "./packages/seven/" ci-acceptance-test
-
-.PHONY: seven-ci-acceptance-test-run-all
-seven-ci-acceptance-test-run-all: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode for Seven
-	$(MAKE) -C "./packages/seven/" ci-acceptance-test-run-all
-
-# include local overrides if present
--include Makefile.local
--include ../../../Makefile.local
+.PHONY: start-test-acceptance-server-detached
+start-test-acceptance-server-detached: ## Start Test Acceptance Server Main Fixture (docker container) in a detached (daemon) mode
+	docker run -d --name plone-client-acceptance-server -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)

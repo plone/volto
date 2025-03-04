@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
@@ -21,7 +21,7 @@ test('renders a schema widget component', () => {
     },
   });
 
-  const { container } = render(
+  const component = renderer.create(
     <Provider store={store}>
       <SchemaWidget
         id="my-field"
@@ -31,6 +31,6 @@ test('renders a schema widget component', () => {
       />
     </Provider>,
   );
-
-  expect(container).toMatchSnapshot();
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
 });

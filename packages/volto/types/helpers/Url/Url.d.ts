@@ -118,21 +118,21 @@ export function flattenScales(path: string, image: object): object;
  * @param {string} url Url to be parsed.
  * @return {string} Base url of content object.
  */
-export const getBaseUrl: ((url: any) => any) & import("lodash").MemoizedFunction;
+export const getBaseUrl: any;
 /**
  * Get parent url.
  * @function getParentUrl
  * @param {string} url Url to be parsed.
  * @return {string} Parent url of content object.
  */
-export const getParentUrl: ((url: any) => any) & import("lodash").MemoizedFunction;
+export const getParentUrl: any;
 /**
  * Returns true if the current view is a cms ui view
  * @method isCmsUi
  * @param {string} currentPathname pathname of the current view
  * @returns {boolean} true if the current view is a cms ui view
  */
-export const isCmsUi: ((currentPathname: any) => boolean) & import("lodash").MemoizedFunction;
+export const isCmsUi: any;
 export function getFieldURL(data: object): string | any;
 export namespace URLUtils {
     export { normalizeTelephone };

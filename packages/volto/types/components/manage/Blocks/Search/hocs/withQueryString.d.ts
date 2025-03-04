@@ -3,6 +3,6 @@
  *
  */
 export default function withQueryString(WrappedComponent: any): {
-    (props: any): import("react/jsx-runtime").JSX.Element;
+    (props: any): JSX.Element;
     displayName: string;
 };

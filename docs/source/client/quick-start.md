@@ -14,17 +14,15 @@ The API request layer allows to build and send arbitrary requests to Plone REST 
 It has the potential to also be able to send requests to other APIs (provided the custom Query options factories/functions).
 
 The Javascript Plone client is conceived to work with TanStack Query, the query or mutation functions can be used to call any Plone REST API endpoint without using it.
-These functions can be used in other use cases like command line helpers, scripts or programmatic tests.
+These functions can be used in other use cases like command line helpers, scripts or programatic tests.
 
 ## Installation​
 
 To install the Javascript Plone client run the following command:
 
 ```shell
-pnpm add @plone/client
+yarn add @plone/client
 ```
-
-or use your package manager of choice.
 
 ## `ploneClient` entry point
 
@@ -39,7 +37,6 @@ import ploneClient from '@plone/client';
 
 const client = ploneClient.initialize({
   apiPath: 'http://localhost:8080/Plone',
-  token: '', // Optional: auth_token to authorize the user
 });
 ```
 
@@ -67,7 +64,6 @@ import { usePathname } from 'next/navigation';
 
 const client = ploneClient.initialize({
   apiPath: 'http://localhost:8080/Plone',
-  token: '', // Optional: auth_token to authorize the user
 });
 
 export default function Title() {

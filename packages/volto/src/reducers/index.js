@@ -20,7 +20,6 @@ import emailNotification from '@plone/volto/reducers/emailNotification/emailNoti
 import emailSend from '@plone/volto/reducers/emailSend/emailSend';
 import form from '@plone/volto/reducers/form/form';
 import history from '@plone/volto/reducers/history/history';
-import linkIntegrity from '@plone/volto/reducers/linkIntegrity/linkIntegrity';
 import groups from '@plone/volto/reducers/groups/groups';
 import messages from '@plone/volto/reducers/messages/messages';
 import navigation from '@plone/volto/reducers/navigation/navigation';
@@ -80,7 +79,6 @@ const reducers = {
   form,
   groups,
   history,
-  linkIntegrity,
   messages,
   navigation,
   querystring,

@@ -1,4 +1,4 @@
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'lodash';
 
 /**
  * Converts the state (extracted from URL) to options for the facet control

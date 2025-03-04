@@ -33,7 +33,7 @@ export function resolveExtension(name: any, extensions: any, data: any): any;
  * - extensions is the blocksConfig extensions object for that block
  * - resolvedExtensions is an object with
  *   `{ variation, <someExtensionA>, <someExtensionB> }` and each of these
- *   fields hold the corresponding definition object from the block's
+ *   fields hold the coresponding definition object from the block's
  *   configuration.
  */
 export function resolveBlockExtensions(data: any, blocksConfig: any): {
@@ -41,4 +41,4 @@ export function resolveBlockExtensions(data: any, blocksConfig: any): {
     resolvedExtensions: any;
 };
 export default withBlockExtensions;
-declare function withBlockExtensions(WrappedComponent: any): (props: any) => import("react/jsx-runtime").JSX.Element;
+declare function withBlockExtensions(WrappedComponent: any): (props: any) => JSX.Element;

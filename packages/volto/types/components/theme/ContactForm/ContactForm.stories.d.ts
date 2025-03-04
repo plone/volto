@@ -2,7 +2,7 @@ export const ContactForm: any;
 declare namespace _default {
     export let title: string;
     export { ContactFormComponent as component };
-    export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
+    export let decorators: ((Story: any) => JSX.Element)[];
     export namespace argTypes {
         namespace error {
             let control: string;

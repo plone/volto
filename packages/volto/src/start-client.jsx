@@ -1,7 +1,7 @@
 import '@plone/volto/config'; // This is the bootstrap for the global config - client side
 import '@root/theme';
 import React from 'react';
-import { hydrateRoot } from 'react-dom/client';
+import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
 import { ConnectedRouter } from 'connected-react-router';
@@ -14,9 +14,7 @@ import routes from '@root/routes';
 import config from '@plone/volto/registry';
 
 import configureStore from '@plone/volto/store';
-import Api from '@plone/volto/helpers/Api/Api';
-import { persistAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
-import ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
+import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
 
 export const history = createBrowserHistory();
 
@@ -60,8 +58,7 @@ export default function client() {
   }
 
   loadableReady(() => {
-    hydrateRoot(
-      document.getElementById('main'),
+    hydrate(
       <CookiesProvider>
         <Provider store={store}>
           <IntlProvider onError={reactIntlErrorHandler}>
@@ -73,6 +70,7 @@ export default function client() {
           </IntlProvider>
         </Provider>
       </CookiesProvider>,
+      document.getElementById('main'),
     );
   });
 }

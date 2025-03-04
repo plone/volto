@@ -12,8 +12,8 @@ import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
-} from '@plone/volto/helpers/Vocabularies/Vocabularies';
-import { getVocabulary } from '@plone/volto/actions/vocabularies/vocabularies';
+} from '@plone/volto/helpers';
+import { getVocabulary } from '@plone/volto/actions';
 
 import {
   Option,
@@ -24,7 +24,7 @@ import {
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
-import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import { FormFieldWrapper } from '@plone/volto/components';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const messages = defineMessages({
@@ -173,7 +173,6 @@ class TokenWidget extends Component {
       <FormFieldWrapper {...this.props}>
         <CreatableSelect
           id={`field-${this.props.id}`}
-          aria-labelledby={`fieldset-${this.props.fieldSet}-field-label-${this.props.id}`}
           key={this.props.id}
           menuShouldScrollIntoView={false}
           isDisabled={this.props.isDisabled}

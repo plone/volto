@@ -1,13 +1,11 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
 import VocabularyTermsWidget from './VocabularyTermsWidget';
 
 jest.mock('@plone/volto/helpers/Loadable/Loadable');
-jest.mock('@plone/volto/components/manage/Form');
-
 beforeAll(
   async () =>
     await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
@@ -57,7 +55,7 @@ test('renders a dictionary widget component', () => {
       },
     ],
   };
-  const { container } = render(
+  const component = renderer.create(
     <Provider store={store}>
       <VocabularyTermsWidget
         id="test-dict"
@@ -70,6 +68,6 @@ test('renders a dictionary widget component', () => {
       />
     </Provider>,
   );
-
-  expect(container).toMatchSnapshot();
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
 });

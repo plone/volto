@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a view table component 1`] = `
+<table
+  className="ui table"
+>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className=""
+      >
+        <h2
+          id="fgm98"
+        >
+          My header
+        </h2>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

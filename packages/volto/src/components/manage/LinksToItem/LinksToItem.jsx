@@ -2,25 +2,22 @@
  * LinksToItem component
  * @module components/manage/LinksToItem/LinksToItem
  */
-import React, { useEffect, useState } from 'react';
-import find from 'lodash/find';
-import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { useEffect } from 'react';
+import { find } from 'lodash';
+import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
-import { createPortal } from 'react-dom';
+import { Portal } from 'react-portal';
 import { Container, Segment, Table } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContent } from '@plone/volto/actions/content/content';
-import { queryRelations } from '@plone/volto/actions/relations/relations';
-import { listActions } from '@plone/volto/actions/actions/actions';
-import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
+import { getContent, queryRelations } from '@plone/volto/actions';
+import {
+  Icon as IconNext,
+  Toolbar,
+  UniversalLink,
+} from '@plone/volto/components';
 
-import IconNext from '@plone/volto/components/theme/Icon/Icon';
-import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
-import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
-import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
-
-import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { getBaseUrl } from '@plone/volto/helpers';
 import backSVG from '@plone/volto/icons/back.svg';
 import settingsSVG from '@plone/volto/icons/settings.svg';
 
@@ -44,8 +41,6 @@ const LinksToItem = (props) => {
   const dispatch = useDispatch();
   const pathname = props.location.pathname;
   const itempath = getBaseUrl(pathname);
-  const objectActions = useSelector((state) => state.actions.actions.object);
-  const editPermission = find(objectActions, { id: 'edit' });
 
   const title = useSelector((state) => state.content.data?.title || '');
   const myrelations = useSelector(
@@ -56,19 +51,13 @@ const LinksToItem = (props) => {
     id: 'plone_setup',
   });
 
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
   useEffect(() => {
     dispatch(queryRelations(null, false, itempath, null, [itempath]));
   }, [dispatch, itempath]);
 
   useEffect(() => {
-    dispatch(getContent(itempath));
-  }, [dispatch, itempath]);
+    if (!title) dispatch(getContent(itempath));
+  }, [dispatch, itempath, title]);
 
   let links = {};
   if (myrelations) {
@@ -88,9 +77,6 @@ const LinksToItem = (props) => {
   });
 
   const relations_found = Object.keys(links_ordered).length > 0;
-  if (!editPermission) {
-    return <Unauthorized />;
-  }
   return (
     <Container id="linkstoitem">
       <Helmet title={intl.formatMessage(messages.linkstoitem)} />
@@ -106,46 +92,41 @@ const LinksToItem = (props) => {
           <Table selectable compact singleLine attached>
             {
               <Table.Body>
-                {Object.keys(links_ordered).map((relationtype, index) => {
-                  // TODO: keys driven by links_ordered[relationtype][index]['@id'])
+                {Object.keys(links_ordered).map((relationtype) => {
                   return [].concat(
                     [
-                      <React.Fragment key={index}>
-                        <Table.Row>
-                          <Table.HeaderCell>
-                            {relationtype === 'isReferencing' ? (
-                              <FormattedMessage
-                                id="Linking this item with hyperlink in text"
-                                defaultMessage="Linking this item with hyperlink in text"
-                              />
-                            ) : relationtype === 'relatedItems' ? (
-                              <FormattedMessage
-                                id="Referencing this item as related item"
-                                defaultMessage="Referencing this item as related item"
-                              />
-                            ) : (
-                              <>
-                                <FormattedMessage
-                                  id="Referencing this item with {relationship}"
-                                  defaultMessage="Referencing this item with {relationship}"
-                                  values={{
-                                    relationship: <q>{relationtype}</q>,
-                                  }}
-                                />
-                              </>
-                            )}
-                          </Table.HeaderCell>
-                          <Table.HeaderCell>
+                      <Table.Row>
+                        <Table.HeaderCell>
+                          {relationtype === 'isReferencing' ? (
                             <FormattedMessage
-                              id="Review state"
-                              defaultMessage="Review state"
+                              id="Linking this item with hyperlink in text"
+                              defaultMessage="Linking this item with hyperlink in text"
                             />
-                          </Table.HeaderCell>
-                          <Table.HeaderCell>
-                            <FormattedMessage id="Type" defaultMessage="Type" />
-                          </Table.HeaderCell>
-                        </Table.Row>
-                      </React.Fragment>,
+                          ) : relationtype === 'relatedItems' ? (
+                            <FormattedMessage
+                              id="Referencing this item as related item"
+                              defaultMessage="Referencing this item as related item"
+                            />
+                          ) : (
+                            <>
+                              <FormattedMessage
+                                id="Referencing this item with {relationship}"
+                                defaultMessage="Referencing this item with {relationship}"
+                                values={{ relationship: <q>{relationtype}</q> }}
+                              />
+                            </>
+                          )}
+                        </Table.HeaderCell>
+                        <Table.HeaderCell>
+                          <FormattedMessage
+                            id="Review state"
+                            defaultMessage="Review state"
+                          />
+                        </Table.HeaderCell>
+                        <Table.HeaderCell>
+                          <FormattedMessage id="Type" defaultMessage="Type" />
+                        </Table.HeaderCell>
+                      </Table.Row>,
                     ],
                     links_ordered[relationtype].map((link) => {
                       return (
@@ -183,8 +164,8 @@ const LinksToItem = (props) => {
           </Segment>
         )}
       </Segment.Group>
-      {isClient &&
-        createPortal(
+      {__CLIENT__ && (
+        <Portal node={document.getElementById('toolbar')}>
           <Toolbar
             pathname={pathname}
             hideDefaultViewButtons
@@ -218,41 +199,11 @@ const LinksToItem = (props) => {
                 </>
               </>
             }
-          />,
-          document.getElementById('toolbar'),
-        )}
+          />
+        </Portal>
+      )}
     </Container>
   );
 };
 
-export const __test__ = LinksToItem;
-
-export default asyncConnect([
-  {
-    key: 'content',
-    // Dispatch async/await to make the operation synchronous, otherwise it returns
-    // before the promise is resolved
-    promise: async ({ location, store: { dispatch } }) => {
-      const pathname = getBaseUrl(location.pathname);
-      return await dispatch(getContent(pathname));
-    },
-  },
-  {
-    key: 'actions',
-    // Dispatch async/await to make the operation synchronous, otherwise it returns
-    // before the promise is resolved
-    promise: async ({ location, store: { dispatch } }) =>
-      await dispatch(listActions(getBaseUrl(location.pathname))),
-  },
-  {
-    key: 'relations',
-    // Dispatch async/await to make the operation synchronous, otherwise it returns
-    // before the promise is resolved
-    promise: async ({ location, store: { dispatch } }) => {
-      const pathname = getBaseUrl(location.pathname);
-      return await dispatch(
-        queryRelations(null, false, pathname, null, [pathname]),
-      );
-    },
-  },
-])(LinksToItem);
+export default LinksToItem;

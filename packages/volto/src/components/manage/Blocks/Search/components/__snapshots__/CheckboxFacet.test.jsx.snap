@@ -25,14 +25,11 @@ exports[`CheckboxFacet renders a facet component with checkboxes 1`] = `
         <input
           checked={false}
           className="hidden"
-          id="first"
           readOnly={true}
           tabIndex={0}
           type="checkbox"
         />
-        <label
-          htmlFor="first"
-        >
+        <label>
           First
         </label>
       </div>
@@ -50,14 +47,11 @@ exports[`CheckboxFacet renders a facet component with checkboxes 1`] = `
         <input
           checked={false}
           className="hidden"
-          id="second"
           readOnly={true}
           tabIndex={0}
           type="checkbox"
         />
-        <label
-          htmlFor="second"
-        >
+        <label>
           Second
         </label>
       </div>

@@ -2,30 +2,24 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
-import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import {
+  messages,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers/Blocks/Blocks';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
+} from '@plone/volto/helpers';
+import { Icon } from '@plone/volto/components';
 import { Plug } from '@plone/volto/components/manage/Pluggable';
 import { v4 as uuid } from 'uuid';
 import { load } from 'redux-localstorage-simple';
-import isEqual from 'lodash/isEqual';
-import omit from 'lodash/omit';
-import without from 'lodash/without';
+import { isEqual, omit, without } from 'lodash';
 
-import {
-  setBlocksClipboard,
-  resetBlocksClipboard,
-} from '@plone/volto/actions/blocksClipboard/blocksClipboard';
+import { setBlocksClipboard, resetBlocksClipboard } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
 
 import copySVG from '@plone/volto/icons/copy.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
 import pasteSVG from '@plone/volto/icons/paste.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
-import { cloneBlocks } from '@plone/volto/helpers/Blocks/cloneBlocks';
 
 export class BlocksToolbarComponent extends React.Component {
   constructor(props) {
@@ -85,9 +79,9 @@ export class BlocksToolbarComponent extends React.Component {
     const { formData } = this.props;
     const blocksFieldname = getBlocksFieldname(formData);
     const blocks = formData[blocksFieldname];
-    const blocksData = this.props.selectedBlocks
-      .map((blockId) => [blockId, blocks[blockId]])
-      .filter(([blockId]) => !!blockId); // Removes null blocks
+    const blocksData = this.props.selectedBlocks.map(
+      (blockId) => blocks[blockId],
+    );
     this.props.setBlocksClipboard({ [actionType]: blocksData });
     this.props.onSetSelectedBlocks([]);
   }
@@ -97,14 +91,14 @@ export class BlocksToolbarComponent extends React.Component {
     const mode = Object.keys(blocksClipboard).includes('cut') ? 'cut' : 'copy';
     const blocksData = blocksClipboard[mode] || [];
     const cloneWithIds = blocksData
-      .filter(([blockId, blockData]) => blockId && !!blockData['@type']) // Removes null blocks
-      .map(([blockId, blockData]) => {
+      .filter((blockData) => !!blockData['@type'])
+      .map((blockData) => {
         const blockConfig = config.blocks.blocksConfig[blockData['@type']];
         return mode === 'copy'
           ? blockConfig.cloneData
             ? blockConfig.cloneData(blockData)
-            : [uuid(), cloneBlocks(blockData)]
-          : [blockId, blockData]; // if cut/pasting blocks, we don't clone
+            : [uuid(), blockData]
+          : [uuid(), blockData]; // if cut/pasting blocks, we don't clone
       })
       .filter((info) => !!info); // some blocks may refuse to be copied
     const blocksFieldname = getBlocksFieldname(formData);

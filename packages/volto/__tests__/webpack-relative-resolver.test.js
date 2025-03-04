@@ -1,10 +1,10 @@
 const path = require('path');
-const { AddonRegistry } = require('@plone/registry/addon-registry');
+const AddonConfigurationRegistry = require('../../registry/src/addon-registry');
 const WebpackRelativeResolver = require('../../volto/webpack-plugins/webpack-relative-resolver');
 
 const base = path.join(__dirname, '..');
 const makeRegistry = () => {
-  const { registry } = AddonRegistry.init(base);
+  const registry = new AddonConfigurationRegistry(base);
   registry.packages = {
     '@plone/volto-addon': {
       modulePath: '/somewhere/volto-addon/src',
@@ -79,10 +79,8 @@ describe('WebpackRelativeResolver', () => {
 
   it('handles "installed Volto" resolve requests', () => {
     const registry = makeRegistry();
-    registry.isVoltoProject = true;
+    registry.voltoPath = '/myvoltoproject/node_modules/@plone/volto';
     const resolver = new WebpackRelativeResolver(registry);
-    resolver.voltoPaths['@plone/volto/'] =
-      '/myvoltoproject/node_modules/@plone/volto/src';
 
     const req = makeInstalledVoltoRequest();
     const resolvePath = resolver.getResolvePath(req);

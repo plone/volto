@@ -1,12 +1,14 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
-import type { Addons } from '@plone/types';
+import { apiRequest, ApiRequestParams } from '../../API';
+import { PloneClientConfig } from '../../interfaces/config';
+import { GetAddonsResponse } from '../../interfaces/addons';
 
 export type AddonsArgs = {
   config: PloneClientConfig;
 };
 
-export const getAddons = async ({ config }: AddonsArgs): Promise<Addons> => {
+export const getAddons = async ({
+  config,
+}: AddonsArgs): Promise<GetAddonsResponse> => {
   const options: ApiRequestParams = {
     config,
     params: {},

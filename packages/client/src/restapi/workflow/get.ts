@@ -1,7 +1,7 @@
+import { apiRequest, ApiRequestParams } from '../../API';
+import { PloneClientConfig } from '../../interfaces/config';
+import { WorkflowResponse } from '../../interfaces/workflow';
 import { z } from 'zod';
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
-import type { WorkflowResponse } from '@plone/types';
 
 const getWorkflowSchema = z.object({
   path: z.string(),

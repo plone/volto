@@ -2,8 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCookies } from 'react-cookie';
-import { changeLanguage } from '@plone/volto/actions/language/language';
-import { toGettextLang } from '@plone/volto/helpers/Utils/Utils';
+import { changeLanguage } from '@plone/volto/actions';
+import { toGettextLang } from '@plone/volto/helpers';
 
 const MultilingualRedirector = (props) => {
   const { pathname, children } = props;
@@ -25,9 +25,7 @@ const MultilingualRedirector = (props) => {
     let mounted = true;
     if (isMultilingual && pathname === '/') {
       const langFileName = toGettextLang(redirectToLanguage);
-      import(
-        /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-      ).then((locale) => {
+      import('@root/../locales/' + langFileName + '.json').then((locale) => {
         if (mounted) {
           dispatch(changeLanguage(redirectToLanguage, locale.default));
         }

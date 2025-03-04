@@ -19,11 +19,8 @@ import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
-} from '@plone/volto/helpers/Vocabularies/Vocabularies';
-import {
-  getVocabulary,
-  getVocabularyTokenTitle,
-} from '@plone/volto/actions/vocabularies/vocabularies';
+} from '@plone/volto/helpers';
+import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
 
 import {
   Option,
@@ -35,7 +32,7 @@ import {
   MenuList,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
-import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import { FormFieldWrapper } from '@plone/volto/components';
 
 const messages = defineMessages({
   select: {
@@ -280,12 +277,12 @@ export default compose(
       return props.items?.choices
         ? { choices: props.items.choices, lang: state.intl.locale }
         : vocabState
-          ? {
-              choices: vocabState,
-              vocabBaseUrl,
-              lang: state.intl.locale,
-            }
-          : { vocabBaseUrl, lang: state.intl.locale };
+        ? {
+            choices: vocabState,
+            vocabBaseUrl,
+            lang: state.intl.locale,
+          }
+        : { vocabBaseUrl, lang: state.intl.locale };
     },
     { getVocabulary, getVocabularyTokenTitle },
   ),

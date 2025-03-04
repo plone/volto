@@ -7,4 +7,4 @@ declare function VersionOverview({ cmf_version, debug_mode, pil_version, plone_v
     plone_restapi_version: any;
     python_version: any;
     zope_version: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): JSX.Element;

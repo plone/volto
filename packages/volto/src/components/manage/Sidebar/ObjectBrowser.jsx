@@ -1,7 +1,7 @@
 import React from 'react';
 import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 import SidebarPopup from '@plone/volto/components/manage/Sidebar/SidebarPopup';
-import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 const withObjectBrowser = (WrappedComponent) =>
   class extends React.Component {
@@ -98,7 +98,7 @@ const withObjectBrowser = (WrappedComponent) =>
               <ObjectBrowserBody
                 {...this.props}
                 data={
-                  this.state.propDataName && this.props[this.state.propDataName]
+                  this.state.propDataName
                     ? this.props[this.state.propDataName]
                     : this.props.data
                 }

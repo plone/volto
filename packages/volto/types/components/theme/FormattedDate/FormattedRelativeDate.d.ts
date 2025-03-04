@@ -8,4 +8,4 @@ declare function FormattedRelativeDate({ date, style, relativeTo, className, loc
     children: any;
     live?: boolean;
     refresh?: number;
-}): import("react/jsx-runtime").JSX.Element;
+}): JSX.Element;

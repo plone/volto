@@ -5,11 +5,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { hasBlocksData } from '@plone/volto/helpers/Blocks/Blocks';
-import { flattenHTMLToAppURL } from '@plone/volto/helpers/Url/Url';
+import { hasBlocksData, flattenHTMLToAppURL } from '@plone/volto/helpers';
 import { Grid } from 'semantic-ui-react';
 import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
-import EventDetails from '@plone/volto/components/theme/EventDetails/EventDetails';
+import { EventDetails } from '@plone/volto/components';
 import { Container as SemanticContainer } from 'semantic-ui-react';
 import config from '@plone/volto/registry';
 

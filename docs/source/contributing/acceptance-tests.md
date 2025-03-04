@@ -7,17 +7,16 @@ myst:
     "keywords": "Volto, Plone, frontend, React, helper command, redux, acceptance, tests, Cypress"
 ---
 
-# Acceptance tests
+# Acceptance testing
 
-Volto uses [Cypress](https://www.cypress.io/) for browser-based acceptance tests.
+Volto uses [Cypress](https://www.cypress.io/) for browser-based acceptance testing.
 
-There are a number of tests available covering all the configuration use cases.
-These tests have both a specific backend and frontend configuration setup and a related set of tests.
-The continuous integration infrastructure runs them all automatically on every push to a branch or a pull request.
+There are a number of fixtures available covering all the configuration use cases.
+These fixtures have both a specific backend and frontend configuration setup and a related set of tests.
+The CI infrastructure runs them all automatically on every push to a branch or PR.
 
 The tests can be run in headless mode (same as the CI does), or within the Cypress user interface.
 The latter is the one that you run under development.
-
 
 ## How to run acceptance tests locally (during development)
 
@@ -25,98 +24,63 @@ When writing new acceptance tests, you usually want to minimize the time it take
 
 Being able to restart individual components also comes in handy.
 It's recommended to start three individual terminal sessions, one each for running the Plone backend, the Volto frontend, and the acceptance tests.
-All sessions should start from the `packages/volto` directory.
 
-1.  In the first session, start the backend server.
-
-    ```shell
-    make acceptance-backend-start
-    ```
-
-1.  In the second session, start the frontend server.
+1.  Run the backend fixture.
 
     ```shell
-    make acceptance-frontend-dev-start
+    make start-test-acceptance-server
     ```
 
-1.  In the third session, start the Cypress tests runner.
+2.  Run the frontend fixture.
 
     ```shell
-    make acceptance-test
+    make start-test-acceptance-frontend-dev
     ```
 
-1.  In the Cypress pop-up test style, choose `E2E Testing`, since Volto's tests are end-to-end tests.
+3.  Run the Cypress tests for that fixture.
 
-1.  In the next section, select the browser you want Cypress to run in.
-    Although the core tests use `headless Electron` by default, you can choose your preferred browser for the tests development.
+    ```shell
+    make test-acceptance
+    ```
 
-1.  In the main Cypress runner section, you will see all of the test specs that Volto developers have written to test Volto and its packages.
+Available fixtures:
 
-1.  To run a test, interact with the file based tree that displays all possible tests to run, and click on the test spec you need to run.
+- Core (`core` or not special naming in the test commands)
+- Multilingual (`multilingual`)
+- Working Copy (`workingCopy`)
+- Core Sandbox (`coresandbox`)
 
-We provide the following major test specs:
+There are convenience commands for each of these fixtures. See `Makefile` for more information.
 
--   Core (`core` used to test the core functionality of Volto)
--   Multilingual (`multilingual` tests the multilingual support of Volto)
--   Working Copy (`workingCopy` tests the working copy feature of Volto)
--   Core Sandbox (`coresandbox` tests Volto using configuration and elements that are not present in vanilla Volto)
+### Writing new acceptance tests
 
-There are convenience commands for each of these specs.
-See `Makefile` at the root of the repository for more information.
-
-
-### Write new acceptance tests
-
-Go to the folder `packages/volto/cypress/tests` to see existing tests.
-There is a directory per spec.
+Go to the `cypress/tests` folder to see existing tests.
+There is a directory per fixture.
 This directory is hot reloaded with your changes as you write the tests.
+For more information on how to write Cypress tests:
 
-```{seealso}
-[Cypress documentation](https://docs.cypress.io/app/get-started/why-cypress)
-```
+    https://docs.cypress.io
 
 
 ## Helper commands
 
-There are some helper commands in {file}`packages/volto/cypress/support/commands.js` written by Volto contributors and made available for the acceptance tests using Cypress.
+There are some artifacts available for the acceptance tests made accessible to Cypress.
 
-Volto core makes heavy use of these helpers in the core tests to avoid verbose duplication, and they can make your life easier.
-The following is an example of commands used in tests:
+### Access History, Redux Store and Settings
 
-```js
-  beforeEach(() => {
-    cy.autologin();
-    cy.createContent({
-      contentType: 'Document',
-      contentId: 'my-page-1',
-      contentTitle: 'My Page-1',
-      allow_discussion: true,
-    });
-    cy.visit('/contents');
-  });
-```
+We expose the History, {term}`Redux` Store and Settings from the app (only for Cypress environments) so we can easily access them and execute actions (like navigate using the router), dispatch Redux actions or change app settings "on the fly".
 
-`cy.autologin` and `cy.createContent` are commands that will auto login, then create the entered content before each test will run.
-This makes it easier to focus on the `act` and `assert` actions of the tests that make use of this test hook.
+#### Navigate using React Router
 
-
-### Access history, Redux store, and settings
-
-We expose the history, {term}`Redux` store, and settings from the app (only for Cypress environments) so we can easily access them and execute actions (like navigate using the router), dispatch Redux actions, or change app settings "on the fly".
-
-
-#### Navigate using React router
-
-You can navigate using the React router without reloading the page with the following command:
+You can navigate using the React Router (ie. not reloading the page) with this command:
 
 ```js
 cy.navigate('/events');
 ```
 
+#### Redux Store
 
-#### Redux store
-
-You can access the Redux store and check for specific states and dispatch actions as shown:
+You can access the Redux store and check for specific states and dispatch actions by:
 
 ```js
 import { updateIntl } from 'react-intl-redux';
@@ -136,14 +100,11 @@ dispatch(
 );
 ```
 
-```{seealso}
-[Testing Redux Store](https://www.cypress.io/blog/testing-redux-store)
-```
-
+More information about this: https://www.cypress.io/blog/2018/11/14/testing-redux-store/
 
 #### Volto settings
 
-You can modify the main Volto settings on the fly.
+You can modify on the fly the main Volto settings like this:
 
 ```js
 cy.settings().then(settings => {

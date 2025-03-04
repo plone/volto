@@ -26,8 +26,7 @@
   }
 }
 
-#main,
-.slate-inline-toolbar.slate-toolbar {
+#main {
   .ui.basic.buttons .button,
   .ui.basic.button {
     -webkit-box-shadow: 0px 0px 0px @basicBorderSize transparent inset !important;

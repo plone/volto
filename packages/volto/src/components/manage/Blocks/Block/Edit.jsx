@@ -9,15 +9,17 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
-import { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
-import { setUIState } from '@plone/volto/actions/form/form';
+import { setSidebarTab } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-import ViewDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultView';
-import EditDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultEdit';
-import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
-import BlockSettingsSidebar from '@plone/volto/components/manage/Blocks/Block/Settings';
-import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
+import { applyBlockDefaults } from '@plone/volto/helpers';
+import { ViewDefaultBlock, EditDefaultBlock } from '@plone/volto/components';
+
+import {
+  SidebarPortal,
+  BlockSettingsSidebar,
+  BlockSettingsSchema,
+} from '@plone/volto/components';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -77,11 +79,7 @@ export class Edit extends Component {
       this.blockNode.current.focus();
     }
     const tab = this.props.manage ? 1 : blocksConfig?.[type]?.sidebarTab || 0;
-    if (
-      this.props.selected &&
-      this.props.editable &&
-      this.props.sidebarTab !== 2
-    ) {
+    if (this.props.selected && this.props.editable) {
       this.props.setSidebarTab(tab);
     }
   }
@@ -107,9 +105,7 @@ export class Edit extends Component {
       const tab = this.props.manage
         ? 1
         : blocksConfig?.[nextProps.type]?.sidebarTab || 0;
-      if (this.props.sidebarTab !== 2) {
-        this.props.setSidebarTab(tab);
-      }
+      this.props.setSidebarTab(tab);
     }
   }
 
@@ -142,27 +138,6 @@ export class Edit extends Component {
         {Block !== null ? (
           <div
             role="presentation"
-            onMouseEnter={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              if (this.props.hovered !== this.props.id) {
-                this.props.setUIState({ hovered: this.props.id });
-              }
-            }}
-            onFocus={(e) => {
-              // TODO: This `onFocus` steals somehow the focus from the slate block
-              // we have to investigate why this is happening
-              // Apparently, I can't see any difference in the behavior
-              // If any, we can fix it in successive iterations
-              // if (this.props.hovered !== this.props.id) {
-              //   this.props.setUIState({ hovered: this.props.id });
-              // }
-            }}
-            onMouseLeave={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              this.props.setUIState({ hovered: null });
-            }}
             onClick={(e) => {
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
               !this.props.selected &&
@@ -186,7 +161,6 @@ export class Edit extends Component {
             className={cx('block', type, this.props.data.variation, {
               selected: this.props.selected || this.props.multiSelected,
               multiSelected: this.props.multiSelected,
-              hovered: this.props.hovered === this.props.id,
             })}
             style={{ outline: 'none' }}
             ref={this.blockNode}
@@ -197,7 +171,7 @@ export class Edit extends Component {
             <Block
               {...this.props}
               blockNode={this.blockNode}
-              data={this.props.data}
+              data={applyBlockDefaults(this.props)}
             />
             {this.props.manage && (
               <SidebarPortal
@@ -211,21 +185,6 @@ export class Edit extends Component {
         ) : (
           <div
             role="presentation"
-            onMouseEnter={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              this.props.setUIState({ hovered: this.props.id });
-            }}
-            onFocus={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              this.props.setUIState({ hovered: this.props.id });
-            }}
-            onMouseLeave={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              this.props.setUIState({ hovered: null });
-            }}
             onClick={() =>
               !this.props.selected && this.props.onSelectBlock(this.props.id)
             }
@@ -259,11 +218,5 @@ export class Edit extends Component {
 export default compose(
   injectIntl,
   withObjectBrowser,
-  connect(
-    (state, props) => ({
-      hovered: state.form?.ui.hovered || null,
-      sidebarTab: state.sidebar?.tab,
-    }),
-    { setSidebarTab, setUIState },
-  ),
+  connect(null, { setSidebarTab }),
 )(Edit);

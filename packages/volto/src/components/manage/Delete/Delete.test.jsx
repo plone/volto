@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
@@ -8,7 +8,9 @@ import Delete from './Delete';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
 
 describe('Delete', () => {
   it('renders an empty delete component', () => {
@@ -25,16 +27,15 @@ describe('Delete', () => {
         messages: {},
       },
     });
-    const { container } = render(
+    const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
           <Delete location={{ pathname: '/blog', search: {} }} />
-          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-
-    expect(container).toMatchSnapshot();
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
   });
 
   it('renders a delete component', () => {
@@ -53,15 +54,14 @@ describe('Delete', () => {
         messages: {},
       },
     });
-    const { container } = render(
+    const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
           <Delete location={{ pathname: '/blog', search: {} }} />
-          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-
-    expect(container).toMatchSnapshot();
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
   });
 });

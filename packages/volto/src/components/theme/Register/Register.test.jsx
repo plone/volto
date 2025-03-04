@@ -6,8 +6,6 @@ import { MemoryRouter } from 'react-router-dom';
 
 import Register from './Register';
 
-jest.mock('@plone/volto/components/manage/Form');
-
 const mockStore = configureStore();
 
 describe('Register', () => {
@@ -23,13 +21,6 @@ describe('Register', () => {
       intl: {
         locale: 'en',
         messages: {},
-      },
-      content: {
-        data: {},
-        create: {
-          loading: false,
-          loaded: true,
-        },
       },
     });
     const component = renderer.create(

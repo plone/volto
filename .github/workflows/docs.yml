@@ -10,9 +10,6 @@ on:
     paths:
       - 'docs/**'
       - 'styles/**'
-      - '.github/workflows/docs.yml'
-      - 'requirements-docs.txt'
-      - '.vale.ini'
 
 jobs:
   docs:
@@ -20,22 +17,23 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.12']
+        python-version: ['3.10']
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           cache: 'pip'
-          cache-dependency-path: 'requirements-docs.txt'
 
       - name: Create Python virtual environment
         run: pip install virtualenv
 
       - name: pip install requirements
-        run: pip install -r requirements-docs.txt
+        run: |
+          pip install -r requirements-docs.txt
+          sudo snap install --edge vale
 
       - name: Check for broken links
         run: make docs-linkcheckbroken
@@ -44,4 +42,7 @@ jobs:
         run: make docs-html
 
       - name: Run vale
-        run: make docs-vale VALEOPTS=--no-exit
+        run: |
+          git clone https://github.com/errata-ai/Microsoft.git
+          cp -r ./Microsoft/Microsoft ./styles
+          vale --no-exit ./docs

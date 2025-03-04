@@ -19,7 +19,7 @@ export function applyConfig(configMethods: any[], config: any): any;
  *
  * @param {} code HTTP return code
  */
-export function withServerErrorCode(code: any): (WrappedComponent: any) => (props: any) => import("react/jsx-runtime").JSX.Element;
+export function withServerErrorCode(code: any): (WrappedComponent: any) => (props: any) => JSX.Element;
 /**
  * Normalize (unicode) string to a normalized plain ascii string
  * @method normalizeString

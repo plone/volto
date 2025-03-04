@@ -8,7 +8,7 @@ declare function UniversalLink({ href, item, openLinkInNewTab, download, childre
     children: any;
     className?: any;
     title?: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): JSX.Element;
 declare namespace UniversalLink {
     namespace propTypes {
         let href: any;

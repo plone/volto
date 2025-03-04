@@ -64,7 +64,6 @@ exports[`renders a token widget component 1`] = `
                 >
                   <input
                     aria-autocomplete="list"
-                    aria-labelledby="fieldset-default-field-label-my-field"
                     autoCapitalize="none"
                     autoComplete="off"
                     autoCorrect="off"
@@ -104,7 +103,9 @@ exports[`renders a token widget component 1`] = `
                         "whiteSpace": "pre",
                       }
                     }
-                  />
+                  >
+                    
+                  </div>
                 </div>
               </div>
             </div>

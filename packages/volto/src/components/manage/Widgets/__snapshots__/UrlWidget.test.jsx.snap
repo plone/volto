@@ -1,61 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders an url widget component 1`] = `
-<div>
+<div
+  className="inline field url wide field-wrapper-test-url"
+>
   <div
-    class="inline field url wide field-wrapper-test-url"
+    className="ui grid"
   >
     <div
-      class="ui grid"
+      className="stretched row"
     >
       <div
-        class="stretched row"
+        className="four wide column"
       >
         <div
-          class="four wide column"
+          className="wrapper"
         >
-          <div
-            class="wrapper"
+          <label
+            htmlFor="field-test-url"
+            id="fieldset-default-field-label-test-url"
           >
-            <label
-              for="field-test-url"
-              id="fieldset-default-field-label-test-url"
-            >
-              My Url
-            </label>
-          </div>
+            My Url
+          </label>
         </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
         <div
-          class="eight wide column"
+          className="wrapper"
         >
           <div
-            class="wrapper"
+            className="ui input"
           >
-            <div
-              class="ui input"
+            <input
+              id="field-test-url"
+              maxLength={null}
+              minLength={null}
+              name="test-url"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              type="url"
+              value=""
+            />
+          </div>
+          <div
+            className="ui buttons"
+          >
+            <button
+              aria-label="openUrlBrowser"
+              className="ui basic icon button"
+              onClick={[Function]}
             >
-              <input
-                id="field-test-url"
-                name="test-url"
-                type="url"
-                value=""
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "24px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
               />
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                aria-label="openUrlBrowser"
-                class="ui basic icon button"
-              >
-                <svg
-                  class="icon"
-                  style="height: 24px; width: auto; fill: currentColor;"
-                  viewBox=""
-                  xmlns=""
-                />
-              </button>
-            </div>
+            </button>
           </div>
         </div>
       </div>

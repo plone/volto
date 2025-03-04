@@ -1,4 +1,4 @@
-import { normalizeExternalData as normalize } from '@plone/volto-slate/utils/blocks';
+import { normalizeExternalData as normalize } from '@plone/volto-slate/utils';
 
 export function normalizeExternalData(editor) {
   editor.normalizeExternalData = (fragment) => {

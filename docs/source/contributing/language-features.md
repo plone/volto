@@ -1,63 +1,73 @@
 ---
 myst:
   html_meta:
-    "description": "Volto uses several tools and follows conventions that provide features and browser support for the JavaScript language."
-    "property=og:description": "Volto uses several tools and follows conventions that provide features and browser support for the JavaScript language."
-    "property=og:title": "JavaScript language features and browser support"
-    "keywords": "Volto, Plone, frontend, React, Babel, JavaScript, transpilation"
+    "description": "Volto is developed using Babel to transpile modern JavaScript to JavaScript that browsers are able to understand and execute."
+    "property=og:description": "Volto is developed using Babel to transpile modern JavaScript to JavaScript that browsers are able to understand and execute."
+    "property=og:title": "Language features and conventions"
+    "keywords": "Volto, Plone, frontend, React, Babel, translations, language, internationalization, i18n, localization, transpilation"
 ---
-% Mixture of conceptual guide and how-to guide
-# JavaScript language features and browser support
 
-Volto uses several tools and follows conventions that provide features and browser support for the JavaScript language.
+# Language features and conventions
 
-
-% Conceptual guide
 ## Babel
 
-Babel transpiles {term}`ECMAScript` code, including React and JSX, into a backwards compatible version of JavaScript in current and older browsers or environments.
+Volto is developed using Babel to transpile modern JavaScript to JavaScript that
+browsers are able to understand and execute.
 
-Babel provides features and syntax that you can use in code when you develop on Volto.
-These features derive from the proposals that the {term}`TC39` produces.
+Ecma International's TC39 (https://tc39.es/) is a group of JavaScript developers,
+implementers, academics, and more, collaborating with the community to maintain and
+evolve the definition of JavaScript. They stablished a process
+(https://tc39.es/process-document/) where the proposals are discussed, developed, and
+eventually approved (or dropped). The process has five stages (0 to 4) where reaching
+the stage 4 means the proposal is accepted and it becomes part of the JavaScript
+specification.
 
-Volto uses `babel-razzle-preset`, which in turns uses `@babel/preset-env`, which together enable the use of all [TC39 finished proposals](https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md#finished-proposals).
+Babel enables a series of features and syntax that the developer can use in code to
+develop Volto on. These features are the proposals the TC39 is working on in the
+different stages of evolution.
 
+Volto uses `babel-razzle-preset` which in turns uses `@babel/preset-env` which enables
+the use of all TC39 proposals currently in TC39's stage 4
+(https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md#finished-proposals).
 
-% How-to guide
-## Browser compatibility
+### Browser compatibility
 
-`@babel/preset-env` uses `browserslist`, which you can use to manage the transformations needed to target specific browser support in your project.
-This reduces the size of bundles, as Babel will apply only the required transforms that your target environment needs.
+Babel preset-env uses `browserlist` which gives the ability to micromanage the
+transformations needed by the current project depending of the browser support you are
+currently targeting.
 
-```{seealso}
-https://babeljs.io/docs/babel-preset-env#browserslist-integration
-```
+By doing this, enables the bundles to be smaller, as the resultant code does not need to
+support old browsers (thus, transform your code to ES5 compatible code) as Babel will
+apply only the required transforms that your target enviroments need. For more
+information: https://babeljs.io/docs/babel-preset-env#browserslist-integration
 
-Volto project generators use `browserslist` queries by default, which is in your local {file}`package.json`.
-You can adjust this file according to the environments you want to target.
+Volto project generators use this browserlist by default (you can find it in your local `package.json`):
 
 ```json
-"browserslist": [
-  ">1%",
-  "last 4 versions",
-  "Firefox ESR",
-  "not dead"
-],
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie 11",
+    "not dead"
+  ],
 ```
 
-```{seealso}
-For usage and syntax, see the `browserslist` documentation of [Queries](https://github.com/browserslist/browserslist#queries).
-```
+which you can adjust depending on the environments you are targeting in your local
+`package.json` file. You can find more information about how the queries in `broserlist`
+works in: https://github.com/browserslist/browserslist#queries
 
-
-% How-to guide
-## Support of deprecated browsers
+### Support to deprecated browsers
 
 ```{warning}
-Volto does not support deprecated browsers, such as Internet Explorer 11.
+Volto does not support deprecated browsers from its vendor (eg. IE11).
 ```
 
-If you still need to support deprecated browsers, you should use `browserslist` in your project to enable the required transforms for the target deprecated environments you must support.
+If you still need to support deprecated browsers, you should use `browserslist` in your
+project to enable the required transforms for the target deprecated environments you
+have to support.
 
-However, Volto or its dependencies might not be compatible with old browsers.
-You might need to create some workarounds to make the build work, and the deprecated browser not crash.
+However, Volto (or its dependencies) might not be compatible with old browsers anyways,
+and you might need to provide some other workarounds to make the build work (and the
+deprecated browser not crash). You can refer to {doc}`this (outdated)
+document <../recipes/ie11compat>` in order to get some hints on how to do it.

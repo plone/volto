@@ -8,8 +8,6 @@ const AppExtras = (props) => {
   const { pathname } = props;
   const active = appExtras
     .map((reg) => {
-      const ignored = matchPath(pathname, reg.ignore);
-      if (ignored) return null;
       const match = matchPath(pathname, reg.match);
       return match ? { reg, match } : null;
     })

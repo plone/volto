@@ -8,26 +8,29 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { getParentUrl, getId } from '@plone/volto/helpers/Url/Url';
-import { createPortal } from 'react-dom';
-import last from 'lodash/last';
+import { getParentUrl } from '@plone/volto/helpers';
+import { Portal } from 'react-portal';
+import { last } from 'lodash';
 import { Confirm, Container, Table, Button, Header } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import Error from '@plone/volto/components/theme/Error/Error';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
-import Toast from '@plone/volto/components/manage/Toast/Toast';
-import ContentTypesActions from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
+import {
+  Error,
+  Icon,
+  ModalForm,
+  Toolbar,
+  Toast,
+  ContentTypesActions,
+} from '@plone/volto/components';
 import {
   getControlpanel,
   postControlpanel,
   deleteControlpanel,
-} from '@plone/volto/actions/controlpanels/controlpanels';
+} from '@plone/volto/actions';
+import { getId } from '@plone/volto/helpers';
 
 import addSVG from '@plone/volto/icons/add-document.svg';
 import backSVG from '@plone/volto/icons/back.svg';
-import { ModalForm } from '@plone/volto/components/manage/Form';
 
 const messages = defineMessages({
   add: {
@@ -454,8 +457,8 @@ class ContentTypes extends Component {
             </section>
           </article>
         </Container>
-        {this.state.isClient &&
-          createPortal(
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -487,9 +490,9 @@ class ContentTypes extends Component {
                   </Button>
                 </>
               }
-            />,
-            document.getElementById('toolbar'),
-          )}
+            />
+          </Portal>
+        )}
       </Container>
     );
   }

@@ -1,2 +1,2 @@
 export default ButtonsWidget;
-declare function ButtonsWidget(props: any): import("react/jsx-runtime").JSX.Element;
+declare function ButtonsWidget(props: any): JSX.Element;

@@ -52,7 +52,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
             className="ui basic secondary right floated button"
             onClick={[Function]}
             title="Cancel"
-            type="button"
           >
             <svg
               className="icon circled"
@@ -132,7 +131,6 @@ exports[`PersonalInformation renders a personal information component embedded i
             className="ui basic secondary right floated button"
             onClick={[Function]}
             title="Cancel"
-            type="button"
           >
             <svg
               className="icon circled"

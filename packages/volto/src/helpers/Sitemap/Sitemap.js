@@ -4,9 +4,9 @@
  */
 
 import superagent from 'superagent';
-import map from 'lodash/map';
+import { map } from 'lodash';
 import zlib from 'zlib';
-import { toPublicURL } from '@plone/volto/helpers/Url/Url';
+import { toPublicURL } from '@plone/volto/helpers';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 
 import config from '@plone/volto/registry';
@@ -61,7 +61,7 @@ export const generateSitemap = (_req, start = 0, size = undefined) =>
  * @param {Object} _req Request object
  * @return {string} Generated sitemap index
  */
-export const generateSitemapIndex = (_req, gzip = false) =>
+export const generateSitemapIndex = (_req) =>
   new Promise((resolve) => {
     const { settings } = config;
     const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
@@ -88,14 +88,7 @@ export const generateSitemapIndex = (_req, gzip = false) =>
         const result = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${items.join('\n')}\n</sitemapindex>`;
-
-        if (gzip) {
-          zlib.gzip(Buffer.from(result, 'utf8'), (_err, buffer) => {
-            resolve(buffer);
-          });
-        } else {
-          resolve(result);
-        }
+        resolve(result);
       }
     });
   });

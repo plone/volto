@@ -4,11 +4,8 @@ import config from '@plone/volto/registry';
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers/Blocks/Blocks';
-import find from 'lodash/find';
-import includes from 'lodash/includes';
-import some from 'lodash/some';
-import first from 'lodash/first';
+} from '@plone/volto/helpers';
+import _ from 'lodash';
 import { makeEditor } from './editor';
 
 // case sensitive; first in an inner array is the default and preffered format
@@ -148,10 +145,10 @@ export const isSingleBlockTypeActive = (editor, format) => {
 };
 
 export const isBlockActive = (editor, format) => {
-  const aliasList = find(formatAliases, (x) => includes(x, format));
+  const aliasList = _.find(formatAliases, (x) => _.includes(x, format));
 
   if (aliasList) {
-    const aliasFound = some(aliasList, (y) => {
+    const aliasFound = _.some(aliasList, (y) => {
       return isSingleBlockTypeActive(editor, y);
     });
 
@@ -166,17 +163,17 @@ export const isBlockActive = (editor, format) => {
 export const getBlockTypeContextData = (editor, format) => {
   let isActive, defaultFormat, matcher;
 
-  const aliasList = find(formatAliases, (x) => includes(x, format));
+  const aliasList = _.find(formatAliases, (x) => _.includes(x, format));
 
   if (aliasList) {
-    const aliasFound = some(aliasList, (y) => {
+    const aliasFound = _.some(aliasList, (y) => {
       return isSingleBlockTypeActive(editor, y);
     });
 
     if (aliasFound) {
       isActive = true;
-      defaultFormat = first(aliasList);
-      matcher = (n) => includes(aliasList, n.type);
+      defaultFormat = _.first(aliasList);
+      matcher = (n) => _.includes(aliasList, n.type);
 
       return { isActive, defaultFormat, matcher };
     }
@@ -267,7 +264,7 @@ export const toggleBlock = (editor, format, allowedChildren) => {
   } else if (!isListItem && !wantsList) {
     toggleFormat(editor, format, allowedChildren);
   } else if (isListItem && wantsList && isActive) {
-    clearList(editor);
+    clearFormatting(editor);
   } else {
     console.warn('toggleBlock case not covered, please examine:', {
       wantsList,
@@ -299,21 +296,6 @@ export const switchListType = (editor, format) => {
   });
   const block = { type: format, children: [] };
   Transforms.wrapNodes(editor, block);
-};
-
-/*
- * Clear list by exploding the block
- */
-export const clearList = (editor) => {
-  const { slate } = config.settings;
-  Transforms.unwrapNodes(editor, {
-    match: (n) => slate.listTypes.includes(n.type),
-    split: true,
-  });
-  Transforms.setNodes(editor, {
-    type: 'p',
-  });
-  Editor.normalize(editor);
 };
 
 export const changeBlockToList = (editor, format) => {

@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { apiRequest, type ApiRequestParams } from '../../API';
+import { apiRequest, ApiRequestParams } from '../../API';
 import {
-  type PloneClientConfig,
+  PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../validation/config';
-import type { CreateWorkingcopyResponse } from '@plone/types';
+} from '../../interfaces/config';
+import { CreateWorkingcopyResponse } from '../../interfaces/workingcopy';
 
 export const createWorkingcopyArgsSchema = z.object({
   path: z.string(),

@@ -3,9 +3,9 @@ import { deserialize } from '@plone/volto-slate/editor/deserialize';
 import {
   createBlock,
   createDefaultBlock,
+  MIMETypeName,
   normalizeExternalData,
-} from '@plone/volto-slate/utils/blocks';
-import { MIMETypeName } from '@plone/volto-slate/utils/mime-types';
+} from '@plone/volto-slate/utils';
 import { isBlockActive } from '../../utils/blocks';
 
 export const insertData = (editor) => {

@@ -3,7 +3,7 @@ import {
   getMaxRange,
   selectAll,
   getSelectionNodesArrayByType,
-} from '@plone/volto-slate/utils/selection';
+} from '@plone/volto-slate/utils';
 import { P, LI, UL, OL } from '@plone/volto-slate/constants';
 
 export function unwrapNodesByType(editor, types, options = {}) {

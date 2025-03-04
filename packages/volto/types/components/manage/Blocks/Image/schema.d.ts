@@ -10,17 +10,15 @@ export function ImageSchema({ formData, intl }: {
     properties: {
         alt: {
             title: any;
-            description: import("react/jsx-runtime").JSX.Element;
+            description: JSX.Element;
         };
         align: {
             title: any;
             widget: string;
-            default: string;
         };
         size: {
             title: any;
             widget: string;
-            default: string;
         };
         href: {
             title: any;

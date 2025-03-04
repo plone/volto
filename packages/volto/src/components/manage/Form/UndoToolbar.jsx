@@ -1,9 +1,9 @@
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Plug } from '@plone/volto/components/manage/Pluggable';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { Icon } from '@plone/volto/components';
 import { Button } from 'semantic-ui-react';
-import useUndoManager from '@plone/volto/helpers/UndoManager/useUndoManager';
+import { useUndoManager } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 import undoSVG from '@plone/volto/icons/undo.svg';
@@ -39,7 +39,6 @@ const UndoToolbar = ({ state, onUndoRedo, maxUndoLevels, enableHotKeys }) => {
         dependencies={[canUndo, canRedo]}
       >
         <Button
-          type="button"
           className="undo"
           onClick={() => doUndo()}
           aria-label={intl.formatMessage(messages.undo)}
@@ -59,7 +58,6 @@ const UndoToolbar = ({ state, onUndoRedo, maxUndoLevels, enableHotKeys }) => {
         dependencies={[canUndo, canRedo]}
       >
         <Button
-          type="button"
           className="redo"
           onClick={() => doRedo()}
           aria-label={intl.formatMessage(messages.redo)}

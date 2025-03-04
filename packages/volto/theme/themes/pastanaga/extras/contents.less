@@ -152,6 +152,13 @@
     background-color: rgb(228, 1, 102);
     color: white;
   }
+
+  @media only screen and (min-width: @largeMonitorBreakpoint) {
+    .ui.table.single.line tbody {
+      white-space: normal;
+      word-break: break-word;
+    }
+  }
 }
 
 .contents-pagination {
@@ -201,57 +208,4 @@
   display: flex;
   align-items: center;
   margin-top: 2rem;
-}
-
-/* Contents Upload Modal */
-.contents-upload-modal {
-  .file-name {
-    width: 75%;
-
-    input {
-      padding: 0.67857143em 1em;
-    }
-  }
-
-  .ui.progress:first-child {
-    margin: 0 0 2.5em;
-  }
-
-  .progress-container {
-    padding: 35px;
-    background: white;
-    box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.43);
-  }
-
-  .progress-bar {
-    width: 300px;
-    height: 15px;
-    border-radius: 0;
-
-    .bar {
-      height: 15px;
-      border-radius: 0;
-      background: #0074a3;
-    }
-
-    .label {
-      position: relative;
-      margin: 0;
-      background: white;
-      color: grey;
-      font-size: small;
-      font-weight: normal;
-      line-height: 18px;
-      text-align: left;
-
-      .uploaded-files {
-        color: #0074a3;
-      }
-    }
-  }
-}
-
-.contents-upload-modal > .content {
-  overflow: auto;
-  max-height: 75vh;
 }

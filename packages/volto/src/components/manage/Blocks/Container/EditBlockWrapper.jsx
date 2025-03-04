@@ -1,10 +1,10 @@
-import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { Icon } from '@plone/volto/components';
 import { Button } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import NewBlockAddButton from './NewBlockAddButton';
 import cx from 'classnames';
-import { isInteractiveElement } from '@plone/volto/helpers/Utils/Utils';
-import { buildStyleObjectFromData } from '@plone/volto/helpers/Blocks/Blocks';
+import { isInteractiveElement } from '@plone/volto/helpers';
+
 import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
@@ -38,18 +38,10 @@ const EditBlockWrapper = (props) => {
     onChangeBlock(block, { '@type': 'empty' });
   }
 
-  const style = buildStyleObjectFromData(data);
-
-  // We need to merge the StyleWrapper styles with the draggable props from b-D&D
-  const styleMergedWithDragProps = {
-    ...draginfo.draggableProps,
-    style: { ...style, ...draginfo.draggableProps.style },
-  };
-
   return (
     <div
       ref={draginfo.innerRef}
-      {...styleMergedWithDragProps}
+      {...draginfo.draggableProps}
       {...draginfo.dragHandleProps}
       className={cx(`block-editor-${data['@type']} contained`, { selected })}
     >
@@ -66,7 +58,6 @@ const EditBlockWrapper = (props) => {
             aria-label={intl.formatMessage(messages.reset, {
               index,
             })}
-            type="button"
             basic
             icon
             onClick={(e) => onResetBlock(block, {})}
@@ -76,7 +67,6 @@ const EditBlockWrapper = (props) => {
           </Button>
         ) : (
           <Button
-            type="button"
             basic
             icon
             className="remove-block-button"

@@ -67,7 +67,6 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   >
                     <input
                       aria-autocomplete="list"
-                      aria-labelledby="fieldset-default-field-label-my-field"
                       autocapitalize="none"
                       autocomplete="off"
                       autocorrect="off"
@@ -223,7 +222,6 @@ exports[`renders a select widget component 1`] = `
                   >
                     <input
                       aria-autocomplete="list"
-                      aria-labelledby="fieldset-default-field-label-my-field"
                       autocapitalize="none"
                       autocomplete="off"
                       autocorrect="off"

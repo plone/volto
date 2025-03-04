@@ -13,13 +13,9 @@ export default function useClipboard(clipboardText = '') {
     }
   };
 
-  const copyAction = useCallback(async () => {
-    try {
-      await copyToClipboard(stringToCopy.current);
-      setCopied(true);
-    } catch (error) {
-      setCopied(false);
-    }
+  const copyAction = useCallback(() => {
+    const copiedString = copyToClipboard(stringToCopy.current);
+    setCopied(copiedString);
   }, [stringToCopy]);
 
   useEffect(() => {

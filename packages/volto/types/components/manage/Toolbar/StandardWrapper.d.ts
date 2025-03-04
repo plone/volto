@@ -1,5 +1,5 @@
 export default StandardWrapper;
-declare function StandardWrapper(props: any): import("react/jsx-runtime").JSX.Element;
+declare function StandardWrapper(props: any): JSX.Element;
 declare namespace StandardWrapper {
     namespace propTypes {
         let componentName: any;

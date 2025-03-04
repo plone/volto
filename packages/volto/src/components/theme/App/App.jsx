@@ -8,8 +8,7 @@ import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
-import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { asyncConnect, Helmet } from '@plone/volto/helpers';
 import { Segment } from 'semantic-ui-react';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
@@ -24,27 +23,34 @@ import { injectIntl } from 'react-intl';
 
 import Error from '@plone/volto/error';
 
-import Breadcrumbs from '@plone/volto/components/theme/Breadcrumbs/Breadcrumbs';
-import Footer from '@plone/volto/components/theme/Footer/Footer';
-import Header from '@plone/volto/components/theme/Header/Header';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import OutdatedBrowser from '@plone/volto/components/theme/OutdatedBrowser/OutdatedBrowser';
-import AppExtras from '@plone/volto/components/theme/AppExtras/AppExtras';
-import SkipLinks from '@plone/volto/components/theme/SkipLinks/SkipLinks';
-import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
-import { getBaseUrl, getView, isCmsUi } from '@plone/volto/helpers/Url/Url';
-import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
-import { getBreadcrumbs } from '@plone/volto/actions/breadcrumbs/breadcrumbs';
-import { getContent } from '@plone/volto/actions/content/content';
-import { getNavigation } from '@plone/volto/actions/navigation/navigation';
-import { getTypes } from '@plone/volto/actions/types/types';
-import { getWorkflow } from '@plone/volto/actions/workflow/workflow';
+import {
+  Breadcrumbs,
+  Footer,
+  Header,
+  Icon,
+  OutdatedBrowser,
+  AppExtras,
+  SkipLinks,
+} from '@plone/volto/components';
+import {
+  BodyClass,
+  getBaseUrl,
+  getView,
+  hasApiExpander,
+  isCmsUi,
+} from '@plone/volto/helpers';
+import {
+  getBreadcrumbs,
+  getContent,
+  getNavigation,
+  getTypes,
+  getWorkflow,
+} from '@plone/volto/actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
 import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
 import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
-import RouteAnnouncer from '@plone/volto/components/theme/RouteAnnouncer/RouteAnnouncer';
 
 /**
  * @export
@@ -134,7 +140,7 @@ export class App extends Component {
         {this.props.content && this.props.content['@type'] && (
           <BodyClass
             className={`contenttype-${this.props.content['@type']
-              .replaceAll(' ', '-')
+              .replace(' ', '-')
               .toLowerCase()}`}
           />
         )}
@@ -145,14 +151,6 @@ export class App extends Component {
             [trim(join(split(this.props.pathname, '/'), ' section-'))]:
               this.props.pathname !== '/',
             siteroot: this.props.pathname === '/',
-            [`is-adding-contenttype-${decodeURIComponent(
-              this.props.location?.search?.startsWith('?type=')
-                ? this.props.location?.search?.replace('?type=', '')
-                : '',
-            )
-              .replaceAll(' ', '-')
-              .toLowerCase()}`]:
-              this.props.location?.search?.startsWith('?type='),
             'is-authenticated': !!this.props.token,
             'is-anonymous': !this.props.token,
             'cms-ui': isCmsUI,
@@ -188,7 +186,6 @@ export class App extends Component {
             </main>
           </Segment>
         </MultilingualRedirector>
-        <RouteAnnouncer />
         <Footer />
         <LockingToastsFactory
           content={this.props.content}
@@ -245,7 +242,6 @@ export const fetchContent = async ({ store, location }) => {
         id,
         data,
         blocksConfig,
-        content,
       });
       if (!p?.length) {
         throw new Error(

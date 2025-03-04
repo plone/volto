@@ -1,27 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContentType renders dexterity content-type component 1`] = `
-<div>
+<div
+  className="ui container"
+  id="page-controlpanel"
+>
   <div
-    class="ui container"
-    id="page-controlpanel"
+    className="ui disabled header"
   >
-    <div
-      class="ui disabled header"
-    >
-      Page Content Type
-    </div>
-    <div
-      data-schema="{}"
-      id="Form"
-    />
+    Page Content Type
   </div>
   <div
-    id="toolbar"
-  >
-    <div
-      id="Portal"
-    />
-  </div>
+    id="form"
+  />
+  <div
+    id="Portal"
+  />
 </div>
 `;

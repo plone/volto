@@ -1,8 +1,8 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
+import { apiRequest, ApiRequestParams } from '../../API';
 import {
-  type PloneClientConfig,
+  PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../validation/config';
+} from '../../interfaces/config';
 import { z } from 'zod';
 
 export const updateLockArgsSchema = z.object({

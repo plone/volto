@@ -29,7 +29,7 @@ const Toast = (props) => {
       <Icon name={getIcon(props)} size="18px" />
       <div className="toast-inner-content">
         {title && <h4>{title}</h4>}
-        <div>{content}</div>
+        <p>{content}</p>
       </div>
     </>
   );
@@ -37,7 +37,7 @@ const Toast = (props) => {
 
 Toast.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  content: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  content: PropTypes.string.isRequired,
   info: PropTypes.bool,
   success: PropTypes.bool,
   error: PropTypes.bool,

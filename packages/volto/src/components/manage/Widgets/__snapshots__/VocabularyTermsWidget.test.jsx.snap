@@ -1,238 +1,385 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a dictionary widget component 1`] = `
-<div>
+<div
+  className="inline field vocabularytermswidget dictwidget field-wrapper-test-dict"
+>
   <div
-    class="inline field vocabularytermswidget dictwidget field-wrapper-test-dict"
+    className="ui grid"
   >
     <div
-      class="ui grid"
+      className="stretched row"
     >
       <div
-        class="stretched row"
+        className="four wide column"
       >
         <div
-          class="four wide column"
+          className="wrapper"
         >
-          <div
-            class="wrapper"
+          <label
+            htmlFor="field-test-dict"
+            id="fieldset-default-field-label-test-dict"
           >
-            <label
-              for="field-test-dict"
-              id="fieldset-default-field-label-test-dict"
-            >
-              My Vocabulary
-            </label>
-          </div>
+            My Vocabulary
+          </label>
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
+        <div
+          className="add-item-button-wrapper"
+        >
+          <button
+            aria-label="Vocabulary term"
+            className="ui button"
+            onClick={[Function]}
+          >
+            <svg
+              className="icon"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "18px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+            Add term
+          </button>
         </div>
         <div
-          class="eight wide column"
+          data-rbd-droppable-context-id="0"
+          data-rbd-droppable-id="id-0"
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
         >
           <div
-            class="add-item-button-wrapper"
+            className="vocabularyterm"
+            data-rbd-draggable-context-id="0"
+            data-rbd-draggable-id="talk"
+            onTransitionEnd={null}
+            style={
+              Object {
+                "transform": null,
+                "transition": null,
+              }
+            }
           >
-            <button
-              aria-label="Vocabulary term"
-              class="ui button"
+            <div
+              style={
+                Object {
+                  "alignItems": "center",
+                  "display": "flex",
+                }
+              }
             >
-              <svg
-                class="icon"
-                style="height: 18px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
-              />
-              Add term
-            </button>
+              <div
+                aria-describedby="rbd-hidden-text-0-hidden-text-0"
+                className="draghandlewrapper"
+                data-rbd-drag-handle-context-id="0"
+                data-rbd-drag-handle-draggable-id="talk"
+                draggable={false}
+                onDragStart={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <svg
+                  className="icon"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "currentColor",
+                      "height": "18px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+              </div>
+              <div
+                className="ui drag block inner"
+              >
+                <div
+                  className="mocked-default-widget"
+                  id="mocked-field-en-0-test-dict-talk"
+                >
+                  English
+                   - 
+                  No description
+                </div>
+                <div
+                  className="mocked-default-widget"
+                  id="mocked-field-de-1-test-dict-talk"
+                >
+                  Deutsch
+                   - 
+                  No description
+                </div>
+                <div
+                  className="mocked-default-widget"
+                  id="mocked-field-it-2-test-dict-talk"
+                >
+                  Italiano
+                   - 
+                  No description
+                </div>
+              </div>
+              <div>
+                <button
+                  aria-label="Remove term #talk"
+                  className="ui basic icon button delete-button"
+                  onClick={[Function]}
+                  title="Remove term"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "#e40166",
+                        "height": "20px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+            </div>
           </div>
           <div
-            data-rbd-droppable-context-id="0"
-            data-rbd-droppable-id="id-0"
-            style="position: relative;"
+            className="vocabularyterm"
+            data-rbd-draggable-context-id="0"
+            data-rbd-draggable-id="keynote"
+            onTransitionEnd={null}
+            style={
+              Object {
+                "transform": null,
+                "transition": null,
+              }
+            }
           >
             <div
-              class="vocabularyterm"
-              data-rbd-draggable-context-id="0"
-              data-rbd-draggable-id="talk"
+              style={
+                Object {
+                  "alignItems": "center",
+                  "display": "flex",
+                }
+              }
             >
               <div
-                style="align-items: center; display: flex;"
+                aria-describedby="rbd-hidden-text-0-hidden-text-0"
+                className="draghandlewrapper"
+                data-rbd-drag-handle-context-id="0"
+                data-rbd-drag-handle-draggable-id="keynote"
+                draggable={false}
+                onDragStart={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <svg
+                  className="icon"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "currentColor",
+                      "height": "18px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+              </div>
+              <div
+                className="ui drag block inner"
               >
                 <div
-                  aria-describedby="rbd-hidden-text-0-hidden-text-0"
-                  class="draghandlewrapper"
-                  data-rbd-drag-handle-context-id="0"
-                  data-rbd-drag-handle-draggable-id="talk"
-                  draggable="false"
-                  role="button"
-                  tabindex="0"
+                  className="mocked-default-widget"
+                  id="mocked-field-en-0-test-dict-keynote"
                 >
-                  <svg
-                    class="icon"
-                    style="height: 18px; width: auto; fill: currentColor;"
-                    viewBox=""
-                    xmlns=""
-                  />
+                  English
+                   - 
+                  No description
                 </div>
                 <div
-                  class="ui drag block inner"
+                  className="mocked-default-widget"
+                  id="mocked-field-de-1-test-dict-keynote"
                 >
-                  <div
-                    class="Field"
-                    id="en-0-test-dict-talk"
-                  >
-                    English
-                  </div>
-                  <div
-                    class="Field"
-                    id="de-1-test-dict-talk"
-                  >
-                    Deutsch
-                  </div>
-                  <div
-                    class="Field"
-                    id="it-2-test-dict-talk"
-                  >
-                    Italiano
-                  </div>
+                  Deutsch
+                   - 
+                  No description
                 </div>
-                <div>
-                  <button
-                    aria-label="Remove term #talk"
-                    class="ui basic icon button delete-button"
-                    title="Remove term"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 20px; width: auto; fill: #e40166;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                  </button>
+                <div
+                  className="mocked-default-widget"
+                  id="mocked-field-it-2-test-dict-keynote"
+                >
+                  Italiano
+                   - 
+                  No description
                 </div>
               </div>
-            </div>
-            <div
-              class="vocabularyterm"
-              data-rbd-draggable-context-id="0"
-              data-rbd-draggable-id="keynote"
-            >
-              <div
-                style="align-items: center; display: flex;"
-              >
-                <div
-                  aria-describedby="rbd-hidden-text-0-hidden-text-0"
-                  class="draghandlewrapper"
-                  data-rbd-drag-handle-context-id="0"
-                  data-rbd-drag-handle-draggable-id="keynote"
-                  draggable="false"
-                  role="button"
-                  tabindex="0"
+              <div>
+                <button
+                  aria-label="Remove term #keynote"
+                  className="ui basic icon button delete-button"
+                  onClick={[Function]}
+                  title="Remove term"
                 >
                   <svg
-                    class="icon"
-                    style="height: 18px; width: auto; fill: currentColor;"
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "#e40166",
+                        "height": "20px",
+                        "width": "auto",
+                      }
+                    }
                     viewBox=""
                     xmlns=""
                   />
-                </div>
-                <div
-                  class="ui drag block inner"
-                >
-                  <div
-                    class="Field"
-                    id="en-0-test-dict-keynote"
-                  >
-                    English
-                  </div>
-                  <div
-                    class="Field"
-                    id="de-1-test-dict-keynote"
-                  >
-                    Deutsch
-                  </div>
-                  <div
-                    class="Field"
-                    id="it-2-test-dict-keynote"
-                  >
-                    Italiano
-                  </div>
-                </div>
-                <div>
-                  <button
-                    aria-label="Remove term #keynote"
-                    class="ui basic icon button delete-button"
-                    title="Remove term"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 20px; width: auto; fill: #e40166;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                  </button>
-                </div>
+                </button>
               </div>
             </div>
+          </div>
+          <div
+            className="vocabularyterm"
+            data-rbd-draggable-context-id="0"
+            data-rbd-draggable-id="lightning-talk"
+            onTransitionEnd={null}
+            style={
+              Object {
+                "transform": null,
+                "transition": null,
+              }
+            }
+          >
             <div
-              class="vocabularyterm"
-              data-rbd-draggable-context-id="0"
-              data-rbd-draggable-id="lightning-talk"
+              style={
+                Object {
+                  "alignItems": "center",
+                  "display": "flex",
+                }
+              }
             >
               <div
-                style="align-items: center; display: flex;"
+                aria-describedby="rbd-hidden-text-0-hidden-text-0"
+                className="draghandlewrapper"
+                data-rbd-drag-handle-context-id="0"
+                data-rbd-drag-handle-draggable-id="lightning-talk"
+                draggable={false}
+                onDragStart={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <svg
+                  className="icon"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "currentColor",
+                      "height": "18px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+              </div>
+              <div
+                className="ui drag block inner"
               >
                 <div
-                  aria-describedby="rbd-hidden-text-0-hidden-text-0"
-                  class="draghandlewrapper"
-                  data-rbd-drag-handle-context-id="0"
-                  data-rbd-drag-handle-draggable-id="lightning-talk"
-                  draggable="false"
-                  role="button"
-                  tabindex="0"
+                  className="mocked-default-widget"
+                  id="mocked-field-en-0-test-dict-lightning-talk"
+                >
+                  English
+                   - 
+                  No description
+                </div>
+                <div
+                  className="mocked-default-widget"
+                  id="mocked-field-de-1-test-dict-lightning-talk"
+                >
+                  Deutsch
+                   - 
+                  No description
+                </div>
+                <div
+                  className="mocked-default-widget"
+                  id="mocked-field-it-2-test-dict-lightning-talk"
+                >
+                  Italiano
+                   - 
+                  No description
+                </div>
+              </div>
+              <div>
+                <button
+                  aria-label="Remove term #lightning-talk"
+                  className="ui basic icon button delete-button"
+                  onClick={[Function]}
+                  title="Remove term"
                 >
                   <svg
-                    class="icon"
-                    style="height: 18px; width: auto; fill: currentColor;"
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "#e40166",
+                        "height": "20px",
+                        "width": "auto",
+                      }
+                    }
                     viewBox=""
                     xmlns=""
                   />
-                </div>
-                <div
-                  class="ui drag block inner"
-                >
-                  <div
-                    class="Field"
-                    id="en-0-test-dict-lightning-talk"
-                  >
-                    English
-                  </div>
-                  <div
-                    class="Field"
-                    id="de-1-test-dict-lightning-talk"
-                  >
-                    Deutsch
-                  </div>
-                  <div
-                    class="Field"
-                    id="it-2-test-dict-lightning-talk"
-                  >
-                    Italiano
-                  </div>
-                </div>
-                <div>
-                  <button
-                    aria-label="Remove term #lightning-talk"
-                    class="ui basic icon button delete-button"
-                    title="Remove term"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 20px; width: auto; fill: #e40166;"
-                      viewBox=""
-                      xmlns=""
-                    />
-                  </button>
-                </div>
+                </button>
               </div>
             </div>
           </div>

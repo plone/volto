@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 const niceBytes = (bytes) => {
   bytes = Number(bytes);

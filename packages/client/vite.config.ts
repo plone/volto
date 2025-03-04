@@ -8,7 +8,10 @@ export default defineConfig({
   plugins: [dts({ rollupTypes: true }), react()],
   build: {
     lib: {
-      entry: [path.resolve(__dirname, 'src/index.ts')],
+      entry: [
+        path.resolve(__dirname, 'src/index.ts'),
+        path.resolve(__dirname, 'src/provider.tsx'),
+      ],
       name: 'PloneRESTAPIClient',
     },
     rollupOptions: {
@@ -20,7 +23,6 @@ export default defineConfig({
           '@tanstack/react-query': 'reactQuery',
           axios: 'axios',
           zod: 'zod',
-          'query-string': 'queryString',
         },
       },
     },

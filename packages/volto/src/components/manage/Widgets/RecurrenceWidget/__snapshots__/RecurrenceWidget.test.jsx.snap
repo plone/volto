@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a recurrence widget component with aligned columns 1`] = `
+exports[`renders a recurrence widget component 1`] = `
 <div
   className="inline field recurrence-widget"
   id="field-my-field"
@@ -9,7 +9,7 @@ exports[`renders a recurrence widget component with aligned columns 1`] = `
     className="ui grid"
   >
     <div
-      className="stretched middle aligned row"
+      className="stretched row"
     >
       <div
         className="four wide column"

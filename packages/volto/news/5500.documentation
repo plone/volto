@@ -1,0 +1,1 @@
+Less comment blocks must have `*` as the first character on the second and subsequent lines, else the Pygments lexer fails. @stevepiercy

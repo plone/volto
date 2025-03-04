@@ -1,11 +1,13 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
+import { apiRequest, ApiRequestParams } from '../../API';
 import { z } from 'zod';
 import {
-  type PloneClientConfig,
+  PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../validation/config';
-import { deleteLockDataSchema } from '../../validation/lock';
-import type { LockInfo as DeleteLockResponse } from '@plone/types';
+} from '../../interfaces/config';
+import {
+  deleteLockDataSchema,
+  LockInfo as DeleteLockResponse,
+} from '../../interfaces/lock';
 
 export const deleteLockArgsSchema = z.object({
   path: z.string(),

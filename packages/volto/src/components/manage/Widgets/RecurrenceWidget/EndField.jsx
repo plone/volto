@@ -81,13 +81,7 @@ const EndField = ({ value, count, until, onChange, intl }) => {
                   id="until"
                   title={intl.formatMessage(messages.recurrenceEndsUntil)}
                   dateOnly={true}
-                  value={
-                    until
-                      ? typeof until === 'string'
-                        ? until
-                        : until?.toISOString()
-                      : ''
-                  }
+                  value={until || ''}
                   resettable={false}
                   onChange={(id, value) => {
                     onChange(id, value === '' ? undefined : value);

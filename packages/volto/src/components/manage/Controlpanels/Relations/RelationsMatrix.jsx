@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import capitalize from 'lodash/capitalize';
-import find from 'lodash/find';
+import { capitalize, find } from 'lodash';
 import { compose } from 'redux';
 import { useSelector, useDispatch } from 'react-redux';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -16,16 +15,15 @@ import {
   Tab,
 } from 'semantic-ui-react';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import Toast from '@plone/volto/components/manage/Toast/Toast';
+import { messages } from '@plone/volto/helpers';
+import { Icon, Toast } from '@plone/volto/components';
 import {
   getRelationStats,
   queryRelations,
-} from '@plone/volto/actions/relations/relations';
-import { rebuildRelations } from '@plone/volto/actions/relations/rebuild';
-import RelationsListing from '@plone/volto/components/manage/Controlpanels/Relations/RelationsListing';
-import BrokenRelations from '@plone/volto/components/manage/Controlpanels/Relations/BrokenRelations';
+  rebuildRelations,
+} from '@plone/volto/actions';
+import RelationsListing from './RelationsListing';
+import BrokenRelations from './BrokenRelations';
 import helpSVG from '@plone/volto/icons/help.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
@@ -416,7 +414,7 @@ const RelationsMatrix = (props) => {
                           <Popup
                             trigger={
                               <a
-                                href="https://6.docs.plone.org/volto/development/widget.html#widget-relation-field-label"
+                                href="https://6.docs.plone.org/volto/recipes/widget.html#restricting-potential-targets"
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >

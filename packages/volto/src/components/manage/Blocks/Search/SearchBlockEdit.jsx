@@ -2,16 +2,15 @@ import React, { useEffect } from 'react';
 import { defineMessages } from 'react-intl';
 import { compose } from 'redux';
 
-import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
-import { BlockDataForm } from '@plone/volto/components/manage/Form';
+import { SidebarPortal, BlockDataForm } from '@plone/volto/components';
 import { addExtensionFieldToSchema } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
-import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { getBaseUrl } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 import { SearchBlockViewComponent } from './SearchBlockView';
 import Schema from './schema';
 import { withSearch, withQueryString } from './hocs';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash';
 
 const messages = defineMessages({
   template: {
@@ -23,7 +22,6 @@ const messages = defineMessages({
 const SearchBlockEdit = (props) => {
   const {
     block,
-    blocksErrors,
     onChangeBlock,
     data,
     selected,
@@ -65,15 +63,9 @@ const SearchBlockEdit = (props) => {
   const { query = {} } = data || {};
   // We don't need deep compare here, as this is just json serializable data.
   const deepQuery = JSON.stringify(query);
-
   useEffect(() => {
-    onTriggerSearch(
-      '',
-      data?.facets,
-      data?.query?.sort_on,
-      data?.query?.sort_order,
-    );
-  }, [deepQuery, onTriggerSearch, data]);
+    onTriggerSearch();
+  }, [deepQuery, onTriggerSearch]);
 
   return (
     <>
@@ -95,7 +87,6 @@ const SearchBlockEdit = (props) => {
           formData={data}
           navRoot={navRoot}
           contentType={contentType}
-          errors={blocksErrors}
         />
       </SidebarPortal>
     </>

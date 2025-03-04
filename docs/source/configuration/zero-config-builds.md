@@ -17,7 +17,7 @@ In the past (before Volto 13), Volto was configured in build time using several
 environment variables, commonly supplied via the command line, such as the following:
 
 ```shell
-PORT=11001 RAZZLE_API_PATH=https://plone.org/api pnpm build`
+PORT=11001 RAZZLE_API_PATH=https://plone.org/api yarn build`
 ```
 
 and since Razzle is an isomorphic application, some of these values passed on build time, were
@@ -68,7 +68,7 @@ server {
 
 ## Configuring PORT on runtime
 
-PORT environment variable is also configurable at runtime, which is specially useful in production since you can inject it in the run command line or in your favorite process manager, per config, without having to rebuild Volto in the process. In PM2 it would be like:
+PORT environment variable is also configurable at runtime, whish is specially useful in production since you can inject it in the run command line or in your favorite process manager, per config, without having to rebuild Volto in the process. In PM2 it would be like:
 
 ```js hl_lines="9"
 module.exports = {

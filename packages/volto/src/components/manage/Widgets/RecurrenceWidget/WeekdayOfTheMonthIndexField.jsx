@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
-import map from 'lodash/map';
+import { map } from 'lodash';
 import { Form } from 'semantic-ui-react';
 import SelectInput from './SelectInput';
 

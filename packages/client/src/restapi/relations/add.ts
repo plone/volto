@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { type ApiRequestParams, apiRequest } from '../../API';
+import { ApiRequestParams, apiRequest } from '../../API';
 import {
-  type PloneClientConfig,
+  PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../validation/config';
-import { createRelationsDataSchema } from '../../validation/relations';
+} from '../../interfaces/config';
+import { createRelationsDataSchema } from '../../interfaces/relations';
 
 export const createRelationsArgsSchema = z.object({
   data: createRelationsDataSchema,

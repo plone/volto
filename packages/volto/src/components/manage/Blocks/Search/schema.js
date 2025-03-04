@@ -1,6 +1,6 @@
 import config from '@plone/volto/registry';
 import { defineMessages } from 'react-intl';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash';
 import { hasNonValueOperation, hasDateOperation } from './utils';
 
 const messages = defineMessages({

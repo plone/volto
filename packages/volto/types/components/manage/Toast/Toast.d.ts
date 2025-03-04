@@ -1,5 +1,5 @@
 export default Toast;
-declare function Toast(props: any): import("react/jsx-runtime").JSX.Element;
+declare function Toast(props: any): JSX.Element;
 declare namespace Toast {
     namespace propTypes {
         let title: any;

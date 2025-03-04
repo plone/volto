@@ -2,11 +2,13 @@ import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { useSelector, shallowEqual } from 'react-redux';
 
-import Anontools from '@plone/volto/components/theme/Anontools/Anontools';
-import LanguageSelector from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';
-import Logo from '@plone/volto/components/theme/Logo/Logo';
-import Navigation from '@plone/volto/components/theme/Navigation/Navigation';
-import SearchWidget from '@plone/volto/components/theme/SearchWidget/SearchWidget';
+import {
+  Anontools,
+  LanguageSelector,
+  Logo,
+  Navigation,
+  SearchWidget,
+} from '@plone/volto/components';
 
 const Header = ({ pathname }) => {
   const token = useSelector((state) => state.userSession.token, shallowEqual);

@@ -1,17 +1,4 @@
-declare const _default: React.ForwardRefExoticComponent<import("react-intl").Omit<{
-    value: any;
-    children: any;
-    className: any;
-    intl: any;
-}, "intl"> & {
-    forwardedRef?: React.Ref<any>;
-} & React.RefAttributes<any>> & {
-    WrappedComponent: React.ComponentType<{
-        value: any;
-        children: any;
-        className: any;
-        intl: any;
-    }>;
+declare const _default: import("react").FC<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>> & {
+    WrappedComponent: import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>;
 };
 export default _default;
-import React from 'react';

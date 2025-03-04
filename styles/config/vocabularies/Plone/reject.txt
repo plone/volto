@@ -1,3 +1,0 @@
-[^.]js
-NodeJS
-[Pp]re-requisite

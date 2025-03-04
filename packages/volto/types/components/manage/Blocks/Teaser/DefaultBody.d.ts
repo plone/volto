@@ -1,5 +1,5 @@
 export default TeaserDefaultTemplate;
-declare function TeaserDefaultTemplate(props: any): import("react/jsx-runtime").JSX.Element;
+declare function TeaserDefaultTemplate(props: any): JSX.Element;
 declare namespace TeaserDefaultTemplate {
     namespace propTypes {
         let data: any;

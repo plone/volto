@@ -8,7 +8,7 @@ import {
   GET_WORKFLOW_MULTIPLE,
   TRANSITION_WORKFLOW,
 } from '@plone/volto/constants/ActionTypes';
-import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
  * Get workflow function.

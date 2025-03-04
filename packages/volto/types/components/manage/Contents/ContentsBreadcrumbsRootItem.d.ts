@@ -1,2 +1,2 @@
 export default ContentsBreadcrumbsRootItem;
-declare function ContentsBreadcrumbsRootItem(): import("react/jsx-runtime").JSX.Element;
+declare function ContentsBreadcrumbsRootItem(): JSX.Element;

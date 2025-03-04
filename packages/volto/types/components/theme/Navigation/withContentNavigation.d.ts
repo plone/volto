@@ -1,5 +1,5 @@
 export function withContentNavigation(WrappedComponent: any): {
-    (props: any): import("react/jsx-runtime").JSX.Element;
+    (props: any): JSX.Element;
     propTypes: {
         /**
          * Location, from router

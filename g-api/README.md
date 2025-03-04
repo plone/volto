@@ -9,3 +9,9 @@ _Disclaimer:_ Guillotina doesn't support the full API/features that Plone provid
 ```shell
 docker-compose -f g-api/docker-compose.yml up -d
 ```
+
+or using the convenience makefile command:
+
+```shell
+make start-backend-docker-guillotina
+```

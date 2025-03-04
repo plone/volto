@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArrayWidget renders a full vocabulary array view widget component 1`] = `
+<span
+  className="metadata array widget"
+>
+  
+  <span>
+    Foo
+  </span>
+  , 
+  <span>
+    Bar
+  </span>
+</span>
+`;
+
+exports[`ArrayWidget renders a full vocabulary array view widget component with children 1`] = `
+<span
+  className="metadata array widget"
+>
+  
+  <span>
+    <strong>
+      Foo
+    </strong>
+  </span>
+  , 
+  <span>
+    <strong>
+      Bar
+    </strong>
+  </span>
+</span>
+`;
+
+exports[`ArrayWidget renders a simple array view widget component 1`] = `
+<span
+  className="metadata array widget"
+>
+  
+  <span>
+    foo
+  </span>
+  , 
+  <span>
+    bar
+  </span>
+</span>
+`;
+
+exports[`ArrayWidget renders a vocabulary array view widget component 1`] = `
+<span
+  className="metadata array widget"
+>
+  
+  <span>
+    Foo
+  </span>
+  , 
+  <span>
+    Bar
+  </span>
+</span>
+`;
+
+exports[`ArrayWidget renders an empty array view widget component 1`] = `""`;

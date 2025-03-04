@@ -21,4 +21,4 @@ exports[`Tags renders with tags 1`] = `
 </div>
 `;
 
-exports[`Tags renders without tags 1`] = `null`;
+exports[`Tags renders without tags 1`] = `<span />`;

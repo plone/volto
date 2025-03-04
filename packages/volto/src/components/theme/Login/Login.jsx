@@ -12,18 +12,12 @@ import {
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
 
-import Helmet from '@plone/volto/helpers/Helmet/Helmet';
-import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
+import { Helmet } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import {
-  login,
-  logout,
-  resetLoginRequest,
-} from '@plone/volto/actions/userSession/userSession';
-import { purgeMessages } from '@plone/volto/actions/messages/messages';
+import { Icon } from '@plone/volto/components';
+import { login, resetLoginRequest } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
-import Toast from '@plone/volto/components/manage/Toast/Toast';
+import { Toast } from '@plone/volto/components';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -81,24 +75,10 @@ const Login = (props) => {
   const loading = useSelector((state) => state.userSession.login.loading);
   const returnUrl =
     qs.parse(props.location?.search ?? location.search).return_url ||
-    location.pathname.replace(/\/[^/]*\/?$/, '') ||
+    location.pathname.replace(/\/login\/?$/, '').replace(/\/logout\/?$/, '') ||
     '/';
-  const previousToken = usePrevious(token);
-
   useEffect(() => {
-    if (location?.state?.isLogout) {
-      // Execute a true Logout action
-      // This is needed to cover the use case of being logged in in
-      // another backend (eg. in development), having a token for
-      // localhost and try to use it, the login route has to know that
-      // it's the same as it comes from a logout
-      // See also Unauthorized.jsx
-      dispatch(logout());
-      dispatch(purgeMessages());
-      // Reset the location state
-      history.push(`${location.pathname}${location.search}`);
-    } else if (token && token !== previousToken) {
-      // We just did a true login action
+    if (token && !props.isLogout) {
       history.push(returnUrl || '/');
       if (toast.isActive('loggedOut')) {
         toast.dismiss('loggedOut');
@@ -128,18 +108,7 @@ const Login = (props) => {
         dispatch(resetLoginRequest());
       }
     };
-  }, [
-    dispatch,
-    token,
-    error,
-    intl,
-    history,
-    returnUrl,
-    location.search,
-    location.pathname,
-    location?.state?.isLogout,
-    previousToken,
-  ]);
+  }, [dispatch, token, error, intl, history, returnUrl, props.isLogout]);
 
   const onLogin = (event) => {
     dispatch(

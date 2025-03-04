@@ -1,24 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Button, Container, Segment, Table } from 'semantic-ui-react';
-import Helmet from '@plone/volto/helpers/Helmet/Helmet';
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
-import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
-import reduce from 'lodash/reduce';
+import { Helmet } from '@plone/volto/helpers';
+import { flattenToAppURL, getBaseUrl, langmap } from '@plone/volto/helpers';
+import { reduce } from 'lodash';
 import { Link, useLocation } from 'react-router-dom';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import Toast from '@plone/volto/components/manage/Toast/Toast';
-import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import { Icon, Toast, Toolbar } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import {
   deleteLinkTranslation,
+  getContent,
   linkTranslation,
-} from '@plone/volto/actions/translations/translations';
-import { getContent } from '@plone/volto/actions/content/content';
+} from '@plone/volto/actions';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
-import { createPortal } from 'react-dom';
+import { Portal } from 'react-portal';
 import { toast } from 'react-toastify';
 
 import addSVG from '@plone/volto/icons/add.svg';
@@ -66,12 +63,6 @@ const ManageTranslations = (props) => {
   const pathname = useLocation().pathname;
   const content = useSelector((state) => state.content.data);
   const dispatch = useDispatch();
-
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   const { isObjectBrowserOpen, openObjectBrowser } = props;
 
@@ -281,8 +272,8 @@ const ManageTranslations = (props) => {
             </Table.Body>
           </Table>
         )}
-        {isClient &&
-          createPortal(
+        {__CLIENT__ && (
+          <Portal node={document.getElementById('toolbar')}>
             <Toolbar
               pathname={pathname}
               hideDefaultViewButtons
@@ -296,9 +287,9 @@ const ManageTranslations = (props) => {
                   />
                 </Link>
               }
-            />,
-            document.getElementById('toolbar'),
-          )}
+            />
+          </Portal>
+        )}
       </Segment.Group>
     </Container>
   );

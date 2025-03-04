@@ -1,7 +1,7 @@
 export default Header;
 declare function Header({ pathname }: {
     pathname: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): JSX.Element;
 declare namespace Header {
     namespace propTypes {
         let token: any;

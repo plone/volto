@@ -37,16 +37,12 @@ const messages = defineMessages({
     id: 'Stripe alternate rows with color',
     defaultMessage: 'Stripe alternate rows with color',
   },
-  table_block: {
-    id: 'Table block',
-    defaultMessage: 'Table block',
-  },
 });
 
 function TableSchema(props) {
   const { intl } = props;
   return {
-    title: intl.formatMessage(messages.table_block),
+    title: 'Table block',
     fieldsets: [
       {
         id: 'default',

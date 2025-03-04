@@ -105,33 +105,6 @@ context('Special fields Acceptance Tests', () => {
         '<p>   hello   world   </p>',
       );
     });
-
-    it('break list on empty li element', () => {
-      cy.intercept('PATCH', '/**/document').as('save');
-      cy.getSlate().click();
-      cy.get('.button .block-add-button').click({ force: true });
-      cy.get('.blocks-chooser .mostUsed .button.testBlock').click();
-      cy.get('#fieldset-default-field-label-html').click();
-      cy.get('.slate_wysiwyg_box [contenteditable=true]')
-        .type('hello welcome to plone')
-        .scrollIntoView();
-
-      cy.setSlateSelection('hello');
-
-      cy.wait(1000); // th
-      cy.get('.slate-inline-toolbar').should('be.visible');
-      cy.clickSlateButton('Bulleted list');
-      cy.get('.slate_wysiwyg_box [contenteditable=true]').should(
-        'have.descendants',
-        'ul li',
-      );
-      cy.setSlateCursor('plone').type('{enter}').type('{enter}');
-
-      cy.get('#toolbar-save').click();
-      cy.wait('@save');
-
-      cy.get('.test-block').should('contain.text', '<p></p>');
-    });
   });
 
   describe('ObjectListWidget', () => {
@@ -189,6 +162,77 @@ context('Special fields Acceptance Tests', () => {
       // Remove Item #3
       cy.findByLabelText('Remove item #3').click();
       cy.findAllByText('Item #3').should('have.length', 0);
+    });
+  });
+
+  describe('Variation field', () => {
+    beforeEach(() => {
+      cy.intercept('GET', `/**/*?expand*`).as('content');
+      cy.intercept('GET', '/**/Document').as('schema');
+      cy.intercept('GET', '/**/Event').as('schemaEvent');
+      // given a logged in editor and a page in edit mode
+      cy.autologin();
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'document',
+        contentTitle: 'Test document',
+      });
+      cy.visit('/');
+      cy.wait('@content');
+
+      cy.navigate('/document');
+      cy.wait('@content');
+
+      cy.navigate('/document/edit');
+      cy.wait('@schema');
+
+      cy.getSlateTitle();
+    });
+
+    it('As editor I can change a variation for a block (that has variations)', function () {
+      cy.getSlate().click();
+      cy.get('.button .block-add-button').click({ force: true });
+      cy.get('.blocks-chooser .mostUsed .button.testBlock').click();
+
+      cy.get('#field-variation').click();
+      cy.findByText('Custom').click();
+      cy.findByText('Custom');
+    });
+
+    it('As editor I can change a variation for a block (that has conditional variations) but not in a Document', function () {
+      cy.getSlate().click();
+      cy.get('.button .block-add-button').click({ force: true });
+      cy.get(
+        '.blocks-chooser .mostUsed .button.testBlockWithConditionalVariations',
+      ).click();
+
+      cy.get('#field-variation').click();
+      cy.findByText('Custom').click();
+      cy.findByText('Custom');
+    });
+
+    it('As editor I can change a variation for a block (that has conditional variations)', function () {
+      cy.createContent({
+        contentType: 'Event',
+        contentId: 'event',
+        contentTitle: 'Test event',
+      });
+      cy.navigate('/event');
+      cy.wait('@content');
+      cy.navigate('/event/edit');
+      cy.wait('@schemaEvent');
+
+      cy.getSlateTitle();
+
+      cy.getSlate().click();
+      cy.get('.button .block-add-button').click({ force: true });
+      cy.get(
+        '.blocks-chooser .mostUsed .button.testBlockWithConditionalVariations',
+      ).click();
+
+      cy.get('#field-variation').click();
+      cy.findByText('Custom modified variation').click();
+      cy.findByText('Custom modified variation');
     });
   });
 

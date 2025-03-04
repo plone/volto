@@ -5,7 +5,6 @@ export let es: string;
 export let eu: string;
 export let fi: string;
 export let fr: string;
-export let hi: string;
 export let it: string;
 export let nl: string;
 export let ro: string;

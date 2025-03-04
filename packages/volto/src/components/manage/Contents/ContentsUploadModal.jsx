@@ -1,29 +1,31 @@
-import { useState, useEffect } from 'react';
+/**
+ * Contents upload modal.
+ * @module components/manage/Contents/ContentsUploadModal
+ */
+
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import {
   Button,
   Dimmer,
   Header,
   Icon,
   Image,
+  Loader,
   Modal,
   Table,
   Segment,
-  Input,
-  Progress,
 } from 'semantic-ui-react';
 import loadable from '@loadable/component';
-import concat from 'lodash/concat';
-import filter from 'lodash/filter';
-import map from 'lodash/map';
+import { concat, filter, map } from 'lodash';
 import filesize from 'filesize';
 import { readAsDataURL } from 'promise-file-reader';
-import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
-import FormattedRelativeDate from '@plone/volto/components/theme/FormattedDate/FormattedRelativeDate';
-import { createContent } from '@plone/volto/actions/content/content';
-import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
-import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import { FormattedRelativeDate } from '@plone/volto/components';
+import { createContent } from '@plone/volto/actions';
+import { validateFileUploadSize } from '@plone/volto/helpers';
 
 const Dropzone = loadable(() => import('react-dropzone'));
 
@@ -37,89 +39,127 @@ const messages = defineMessages({
     defaultMessage:
       '{count, plural, one {Upload {count} file} other {Upload {count} files}}',
   },
-  filesUploaded: {
-    id: 'Files uploaded: {uploadedFiles}',
-    defaultMessage: 'Files uploaded: {uploadedFiles}',
-  },
-  totalFilesToUpload: {
-    id: 'Total files to upload: {totalFiles}',
-    defaultMessage: 'Total files to upload: {totalFiles}',
-  },
 });
 
 const SUBREQUEST = 'batch-upload';
 
-const ContentsUploadModal = (props) => {
-  const intl = useIntl();
-  const dispatch = useDispatch();
-  const request = useSelector(
-    (state) => state.content.subrequests?.[SUBREQUEST] || {},
-    shallowEqual,
-  );
-  const uploadedFiles = useSelector((state) => state.content.uploadedFiles);
+/**
+ * ContentsUploadModal class.
+ * @class ContentsUploadModal
+ * @extends Component
+ */
+class ContentsUploadModal extends Component {
+  /**
+   * Property types.
+   * @property {Object} propTypes Property types.
+   * @static
+   */
+  static propTypes = {
+    createContent: PropTypes.func.isRequired,
+    pathname: PropTypes.string.isRequired,
+    request: PropTypes.shape({
+      loading: PropTypes.bool,
+      loaded: PropTypes.bool,
+    }).isRequired,
+    open: PropTypes.bool.isRequired,
+    onOk: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired,
+  };
 
-  const prevrequestloading = usePrevious(request.loading);
-  const [files, setFiles] = useState([]);
-  const [totalFiles, setTotalFiles] = useState(0);
-  const { onOk } = props;
-  useEffect(() => {
-    if (prevrequestloading && request.loaded) {
-      onOk();
-      setFiles([]);
+  /**
+   * Constructor
+   * @method constructor
+   * @param {Object} props Component properties
+   * @constructs ContentsUploadModal
+   */
+  constructor(props) {
+    super(props);
+    this.onRemoveFile = this.onRemoveFile.bind(this);
+    this.onDrop = this.onDrop.bind(this);
+    this.onCancel = this.onCancel.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.state = {
+      files: [],
+    };
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.request.loading && nextProps.request.loaded) {
+      this.props.onOk();
+      this.setState({
+        files: [],
+      });
     }
-  }, [prevrequestloading, request.loaded, onOk]);
+  }
 
-  const onRemoveFile = (event) => {
-    setFiles(
-      filter(
-        files,
+  /**
+   * Remove file handler
+   * @method onRemoveFile
+   * @param {Object} event Event object
+   * @returns {undefined}
+   */
+  onRemoveFile(event) {
+    this.setState({
+      files: filter(
+        this.state.files,
         (file, index) =>
           index !== parseInt(event.target.getAttribute('value'), 10),
       ),
-    );
-    setTotalFiles(totalFiles - 1);
-  };
+    });
+  }
 
-  const onDrop = async (newFiles) => {
+  /**
+   * Drop handler
+   * @method onDrop
+   * @param {array} files File objects
+   * @returns {undefined}
+   */
+  onDrop = async (files) => {
     const validFiles = [];
-    for (let i = 0; i < newFiles.length; i++) {
-      if (validateFileUploadSize(newFiles[i], intl.formatMessage)) {
-        await readAsDataURL(newFiles[i]).then((data) => {
+    for (let i = 0; i < files.length; i++) {
+      if (validateFileUploadSize(files[i], this.props.intl.formatMessage)) {
+        await readAsDataURL(files[i]).then((data) => {
           const fields = data.match(/^data:(.*);(.*),(.*)$/);
-          newFiles[i].preview = fields[0];
+          files[i].preview = fields[0];
         });
-        validFiles.push(newFiles[i]);
+        validFiles.push(files[i]);
       }
     }
-    setFiles(concat(files, validFiles));
-    setTotalFiles(validFiles.length);
-  };
-
-  const onCancel = () => {
-    props.onCancel();
-    setFiles([]);
-    setTotalFiles(0);
-  };
-
-  const onChangeFileName = (e, index) => {
-    let copyOfFiles = [...files];
-    let originalFile = files[index];
-    let newFile = new File([originalFile], e.target.value, {
-      type: originalFile.type,
+    this.setState({
+      files: concat(this.state.files, validFiles),
     });
-    newFile.preview = originalFile.preview;
-    newFile.path = e.target.value;
-    copyOfFiles[index] = newFile;
-    setFiles(copyOfFiles);
   };
 
-  const onSubmit = () => {
-    Promise.all(map(files, (file) => readAsDataURL(file))).then((dataUrls) => {
-      dispatch(
-        createContent(
-          props.pathname,
-          map(files, (file, index) => {
-            const fields = dataUrls[index].match(/^data:(.*);(.*),(.*)$/);
+  /**
+   * Cancel handler
+   * @method onCancel
+   * @returns {undefined}
+   */
+  onCancel() {
+    this.props.onCancel();
+    this.setState({
+      files: [],
+    });
+  }
+
+  /**
+   * Submit handler
+   * @method onSubmit
+   * @returns {undefined}
+   */
+  onSubmit() {
+    Promise.all(map(this.state.files, (file) => readAsDataURL(file))).then(
+      (files) => {
+        this.props.createContent(
+          this.props.pathname,
+          map(this.state.files, (file, index) => {
+            const fields = files[index].match(/^data:(.*);(.*),(.*)$/);
             const image = fields[1].split('/')[0] === 'image';
             return {
               '@type': image ? 'Image' : 'File',
@@ -133,195 +173,172 @@ const ContentsUploadModal = (props) => {
             };
           }),
           SUBREQUEST,
-        ),
-      );
-    });
-  };
+        );
+      },
+    );
+  }
 
-  const {
-    multiple = true,
-    minSize = null,
-    maxSize = null,
-    accept = null,
-    disabled = false,
-  } = props;
-  const dropzoneOptions = {
-    multiple,
-    minSize,
-    maxSize,
-    accept,
-    disabled,
-  };
-
-  return (
-    props.open && (
-      <Modal className="contents-upload-modal" open={props.open}>
-        <Header>
-          <FormattedMessage id="Upload files" defaultMessage="Upload files" />
-        </Header>
-        <Dimmer active={request.loading}>
-          <div className="progress-container">
-            <Progress
-              className="progress-bar"
-              value={uploadedFiles}
-              total={totalFiles}
+  /**
+   * Render method.
+   * @method render
+   * @returns {string} Markup for the component.
+   */
+  render() {
+    return (
+      this.props.open && (
+        <Modal open={this.props.open}>
+          <Header>
+            <FormattedMessage id="Upload files" defaultMessage="Upload files" />
+          </Header>
+          <Dimmer active={this.props.request.loading}>
+            <Loader>
+              <FormattedMessage
+                id="Uploading files"
+                defaultMessage="Uploading files"
+              />
+            </Loader>
+          </Dimmer>
+          <Modal.Content>
+            <Dropzone
+              onDrop={this.onDrop}
+              className="dropzone"
+              noDragEventsBubbling={true}
+              multiple={true}
             >
-              {intl.formatMessage(messages.filesUploaded, {
-                uploadedFiles,
-              })}
-              <br />
-              {intl.formatMessage(messages.totalFilesToUpload, {
-                totalFiles,
-              })}
-            </Progress>
-          </div>
-        </Dimmer>
-        <Modal.Content>
-          <Dropzone
-            onDrop={onDrop}
-            className="dropzone"
-            noDragEventsBubbling={true}
-            {...dropzoneOptions}
-          >
-            {({ getRootProps, getInputProps }) => (
-              <div {...getRootProps({ className: 'dashed' })}>
-                <Segment>
-                  <Table basic="very">
-                    <Table.Body>
-                      <Table.Row>
-                        <Table.Cell>
-                          <FormattedMessage
-                            id="Drag and drop files from your computer onto this area or click the “Browse” button."
-                            defaultMessage="Drag and drop files from your computer onto this area or click the “Browse” button."
-                          />
-                        </Table.Cell>
-                        <Table.Cell>
-                          <Button className="ui button primary">
+              {({ getRootProps, getInputProps }) => (
+                <div {...getRootProps({ className: 'dashed' })}>
+                  <Segment>
+                    <Table basic="very">
+                      <Table.Body>
+                        <Table.Row>
+                          <Table.Cell>
                             <FormattedMessage
-                              id="Browse"
-                              defaultMessage="Browse"
+                              id="Drag and drop files from your computer onto this area or click the “Browse” button."
+                              defaultMessage="Drag and drop files from your computer onto this area or click the “Browse” button."
                             />
-                          </Button>
-                          <input
-                            {...getInputProps({
-                              type: 'file',
-                              style: { display: 'none' },
-                            })}
-                          />
-                        </Table.Cell>
-                      </Table.Row>
-                    </Table.Body>
-                  </Table>
-                </Segment>
-              </div>
-            )}
-          </Dropzone>
-          {files.length > 0 && (
-            <Table compact singleLine>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell width={8}>
-                    <FormattedMessage id="Filename" defaultMessage="Filename" />
-                  </Table.HeaderCell>
-                  <Table.HeaderCell width={4}>
-                    <FormattedMessage
-                      id="Last modified"
-                      defaultMessage="Last modified"
-                    />
-                  </Table.HeaderCell>
-                  <Table.HeaderCell width={4}>
-                    <FormattedMessage
-                      id="File size"
-                      defaultMessage="File size"
-                    />
-                  </Table.HeaderCell>
-                  <Table.HeaderCell width={4}>
-                    <FormattedMessage id="Preview" defaultMessage="Preview" />
-                  </Table.HeaderCell>
-                  <Table.HeaderCell />
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {map(files, (file, index) => (
-                  <Table.Row className="upload-row" key={index}>
-                    <Table.Cell>
-                      <Input
-                        className="file-name"
-                        value={file.name}
-                        onChange={(e) => onChangeFileName(e, index)}
+                          </Table.Cell>
+                          <Table.Cell>
+                            <Button className="ui button primary">
+                              <FormattedMessage
+                                id="Browse"
+                                defaultMessage="Browse"
+                              />
+                            </Button>
+                            <input
+                              {...getInputProps({
+                                type: 'file',
+                                style: { display: 'none' },
+                              })}
+                            />
+                          </Table.Cell>
+                        </Table.Row>
+                      </Table.Body>
+                    </Table>
+                  </Segment>
+                </div>
+              )}
+            </Dropzone>
+            {this.state.files.length > 0 && (
+              <Table compact singleLine>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell width={8}>
+                      <FormattedMessage
+                        id="Filename"
+                        defaultMessage="Filename"
                       />
-                    </Table.Cell>
-                    <Table.Cell>
-                      {file.lastModifiedDate && (
-                        <FormattedRelativeDate date={file.lastModifiedDate} />
-                      )}
-                    </Table.Cell>
-                    <Table.Cell>{filesize(file.size, { round: 0 })}</Table.Cell>
-                    <Table.Cell>
-                      {file.type.split('/')[0] === 'image' && (
-                        <Image src={file.preview} height={60} />
-                      )}
-                    </Table.Cell>
-                    <Table.Cell>
-                      <Icon
-                        name="close"
-                        value={index}
-                        link
-                        onClick={onRemoveFile}
+                    </Table.HeaderCell>
+                    <Table.HeaderCell width={4}>
+                      <FormattedMessage
+                        id="Last modified"
+                        defaultMessage="Last modified"
                       />
-                    </Table.Cell>
+                    </Table.HeaderCell>
+                    <Table.HeaderCell width={4}>
+                      <FormattedMessage
+                        id="File size"
+                        defaultMessage="File size"
+                      />
+                    </Table.HeaderCell>
+                    <Table.HeaderCell width={4}>
+                      <FormattedMessage id="Preview" defaultMessage="Preview" />
+                    </Table.HeaderCell>
+                    <Table.HeaderCell />
                   </Table.Row>
-                ))}
-              </Table.Body>
-            </Table>
-          )}
-        </Modal.Content>
-        <Modal.Actions>
-          {files.length > 0 && (
+                </Table.Header>
+                <Table.Body>
+                  {map(this.state.files, (file, index) => (
+                    <Table.Row className="upload-row" key={file.name}>
+                      <Table.Cell>{file.name}</Table.Cell>
+                      <Table.Cell>
+                        {file.lastModifiedDate && (
+                          <FormattedRelativeDate date={file.lastModifiedDate} />
+                        )}
+                      </Table.Cell>
+                      <Table.Cell>
+                        {filesize(file.size, { round: 0 })}
+                      </Table.Cell>
+                      <Table.Cell>
+                        {file.type.split('/')[0] === 'image' && (
+                          <Image src={file.preview} height={60} />
+                        )}
+                      </Table.Cell>
+                      <Table.Cell>
+                        <Icon
+                          name="close"
+                          value={index}
+                          link
+                          onClick={this.onRemoveFile}
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                  ))}
+                </Table.Body>
+              </Table>
+            )}
+          </Modal.Content>
+          <Modal.Actions>
+            {this.state.files.length > 0 && (
+              <Button
+                basic
+                circular
+                primary
+                floated="right"
+                icon="arrow right"
+                aria-label={this.props.intl.formatMessage(messages.upload, {
+                  count: this.state.files.length,
+                })}
+                onClick={this.onSubmit}
+                title={this.props.intl.formatMessage(messages.upload, {
+                  count: this.state.files.length,
+                })}
+                size="big"
+              />
+            )}
             <Button
               basic
               circular
-              primary
+              secondary
+              icon="remove"
+              aria-label={this.props.intl.formatMessage(messages.cancel)}
+              title={this.props.intl.formatMessage(messages.cancel)}
               floated="right"
-              icon="arrow right"
-              aria-label={intl.formatMessage(messages.upload, {
-                count: files.length,
-              })}
-              onClick={onSubmit}
-              title={intl.formatMessage(messages.upload, {
-                count: files.length,
-              })}
               size="big"
+              onClick={this.onCancel}
             />
-          )}
-          <Button
-            basic
-            circular
-            secondary
-            icon="remove"
-            aria-label={intl.formatMessage(messages.cancel)}
-            title={intl.formatMessage(messages.cancel)}
-            floated="right"
-            size="big"
-            onClick={onCancel}
-          />
-        </Modal.Actions>
-      </Modal>
-    )
-  );
-};
+          </Modal.Actions>
+        </Modal>
+      )
+    );
+  }
+}
 
-ContentsUploadModal.propTypes = {
-  pathname: PropTypes.string.isRequired,
-  open: PropTypes.bool.isRequired,
-  onOk: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired,
-  multiple: PropTypes.bool,
-  minSize: PropTypes.number,
-  maxSize: PropTypes.number,
-  accept: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
-  ]),
-};
-export default ContentsUploadModal;
+export default compose(
+  injectIntl,
+  connect(
+    (state) => ({
+      request: state.content.subrequests?.[SUBREQUEST] || {},
+    }),
+    { createContent },
+  ),
+)(ContentsUploadModal);

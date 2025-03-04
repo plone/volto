@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
@@ -7,8 +7,10 @@ import UndoControlpanel from './UndoControlpanel';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/components/manage/Form');
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
+jest.mock('../Form/Form', () => jest.fn(() => <div id="form" />));
 
 describe('UndoControlpanel', () => {
   it('renders undo controlpanel component', () => {
@@ -82,13 +84,12 @@ describe('UndoControlpanel', () => {
         messages: {},
       },
     });
-    const { container } = render(
+    const component = renderer.create(
       <Provider store={store}>
         <UndoControlpanel location={{ pathname: '/blog' }} />
-        <div id="toolbar"></div>
       </Provider>,
     );
-
-    expect(container).toMatchSnapshot();
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
   });
 });
