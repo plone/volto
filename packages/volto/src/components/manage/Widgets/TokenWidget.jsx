@@ -199,6 +199,7 @@ class TokenWidget extends Component {
           noOptionsMessage={() =>
             this.props.intl.formatMessage(messages.no_options)
           }
+          aria-label={this.props.title}
         />
       </FormFieldWrapper>
     );
