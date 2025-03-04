@@ -14,6 +14,7 @@ import {
   toReactIntlLang,
 } from '@plone/volto/helpers/Utils/Utils';
 import { createBrowserHistory } from 'history';
+import { useSelector } from 'react-redux';
 
 const messages = defineMessages({
   document: {
@@ -59,11 +60,16 @@ const TranslationObject = ({
 
   const api = new Api();
   const history = createBrowserHistory();
+  const defaultLanguage = useSelector(
+    (state) => state.site.data['plone.default_language'],
+  );
+
   const store = configureStore(
     {
       ...window.__data,
       intl: {
-        defaultLocale: config.settings.defaultLanguage,
+        // TODO: Remove the guard in Volto 19?
+        defaultLocale: defaultLanguage || config.settings.defaultLanguage,
         locale: translationObject.language.token,
         messages: locales[translationObject.language.token],
       },
