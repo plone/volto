@@ -91,5 +91,7 @@
     "jest": true,
     "socket": true,
     "webpackIsomorphicTools": true,
+    "vitest":true,
+    "vi":true
   },
 }

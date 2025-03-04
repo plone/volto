@@ -8,9 +8,11 @@ import ContentTypeLayout from './ContentTypeLayout';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
-jest.mock('../Form/Form', () => jest.fn(() => <div id="form" />));
+vi.mock('../Form/Form', () => ({ default: vi.fn(() => <div id="form" />) }));
 
 describe('ContentTypeLayout', () => {
   it('renders dexterity content-type layout component', () => {
