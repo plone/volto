@@ -15,6 +15,7 @@ Array [
         className="ui basic button"
         onClick={[Function]}
         title="Clear image"
+        type="button"
       >
         <svg
           className="icon"

@@ -106,6 +106,7 @@ const EditBlockWrapper = (props) => {
           {children}
           {selected && !required && editable && (
             <Button
+              type="button"
               icon
               basic
               onClick={() => onDeleteBlock(block, true)}
