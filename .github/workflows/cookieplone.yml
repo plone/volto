@@ -5,10 +5,10 @@ env:
   PYTHON_VERSION: "3.13"
 
 jobs:
-  seven:
+  volto:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
-    name: Seven Cookieplone
+    name: Volto Cookieplone
     timeout-minutes: 45
     strategy:
       fail-fast: false
@@ -25,10 +25,10 @@ jobs:
       - name: Generate Cookieplone-based frontend addon
         run: |
           pipx install cookieplone
-          COOKIEPLONE_REPOSITORY_TAG=seventemplate pipx run --no-cache cookieplone seven_addon --no-input
+          pipx run --no-cache cookieplone frontend_addon --no-input
 
       - name: Install generated package
-        working-directory: seven-add-on
+        working-directory: volto-add-on
         run: |
           pnpm dlx mrs-developer missdev --no-config --fetch-https
           (cd core && git fetch --depth 1 origin ${GITHUB_REF#refs/heads/}:${GITHUB_REF#refs/heads/} && git checkout ${GITHUB_REF#refs/heads/})
@@ -44,23 +44,23 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          working-directory: seven-add-on/core/packages/seven
+          working-directory: packages/volto
           browser: chrome
-          spec: cypress/tests/core/basic/**/*.cy.ts
+          spec: cypress/tests/minimal/**/*.js
           start: |
             make ci-acceptance-backend-start
-            make project-acceptance-frontend-prod-start
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
+            make cookieplone-acceptance-frontend-prod-start
+          wait-on: 'pnpm dlx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
-          path: packages/seven/cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
-          path: packages/seven/cypress/videos
+          path: packages/volto/cypress/videos

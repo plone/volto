@@ -106,6 +106,7 @@ const EditBlockWrapper = (props) => {
           {children}
           {selected && !required && editable && (
             <Button
+              type="button"
               icon
               basic
               onClick={() => onDeleteBlock(block, true)}
@@ -135,6 +136,7 @@ const EditBlockWrapper = (props) => {
                         [id]: value || null,
                       },
                     },
+                    intl,
                   });
                   const newValue = newFormData[blocksFieldname][id];
                   onChangeBlock(id, newValue);

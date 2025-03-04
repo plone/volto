@@ -120,9 +120,10 @@ export function moveBlock(formData, source, destination) {
  * @function deleteBlock
  * @param {Object} formData Form data
  * @param {string} blockId Block uid
+ * @param {Object} intl intl object.
  * @return {Object} New form data
  */
-export function deleteBlock(formData, blockId) {
+export function deleteBlock(formData, blockId, intl) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
 
@@ -135,7 +136,13 @@ export function deleteBlock(formData, blockId) {
   };
 
   if (newFormData[blocksLayoutFieldname].items.length === 0) {
-    newFormData = addBlock(newFormData, config.settings.defaultBlockType, 0);
+    newFormData = addBlock(
+      newFormData,
+      config.settings.defaultBlockType,
+      0,
+      {},
+      intl,
+    );
   }
 
   return newFormData;
@@ -147,9 +154,11 @@ export function deleteBlock(formData, blockId) {
  * @param {Object} formData Form data
  * @param {string} type Block type
  * @param {number} index Destination index
+ * @param {Object} blocksConfig Blocks configuration.
+ * @param {Object} intl intl object.
  * @return {Array} New block id, New form data
  */
-export function addBlock(formData, type, index, blocksConfig) {
+export function addBlock(formData, type, index, blocksConfig, intl) {
   const { settings } = config;
   const id = uuid();
   const idTrailingBlock = uuid();
@@ -192,6 +201,7 @@ export function addBlock(formData, type, index, blocksConfig) {
         },
         selected: id,
       },
+      intl,
     }),
   ];
 }
@@ -208,6 +218,7 @@ export const applyBlockInitialValue = ({
   value,
   blocksConfig,
   formData,
+  intl,
 }) => {
   const type = value['@type'];
   blocksConfig = blocksConfig || config.blocks.blocksConfig;
@@ -217,6 +228,7 @@ export const applyBlockInitialValue = ({
       id,
       value,
       formData,
+      intl,
     });
     const blocksFieldname = getBlocksFieldname(formData);
     formData[blocksFieldname][id] = value;
@@ -231,9 +243,11 @@ export const applyBlockInitialValue = ({
  * @param {Object} formData Form data
  * @param {string} id Block uid to mutate
  * @param {number} value Block's new value
+ * @param {Object} blocksConfig Blocks configuration.
+ * @param {Object} intl intl object.
  * @return {Object} New form data
  */
-export function mutateBlock(formData, id, value, blocksConfig) {
+export function mutateBlock(formData, id, value, blocksConfig, intl) {
   const { settings } = config;
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
@@ -260,6 +274,7 @@ export function mutateBlock(formData, id, value, blocksConfig) {
           [id]: value || null,
         },
       },
+      intl,
     });
     if (!blockHasValue(block)) {
       return newFormData;
@@ -288,6 +303,7 @@ export function mutateBlock(formData, id, value, blocksConfig) {
         ],
       },
     },
+    intl,
   });
   return newFormData;
 }
@@ -298,6 +314,10 @@ export function mutateBlock(formData, id, value, blocksConfig) {
  * @param {Object} formData Form data
  * @param {string} id Insert new block before the block with this id
  * @param {number} value New block's value
+ * @param {Object} current Current block
+ * @param {number} offset offset position
+ * @param {Object} blocksConfig Blocks configuration.
+ * @param {Object} intl intl object.
  * @return {Array} New block id, New form data
  */
 export function insertBlock(
@@ -307,6 +327,7 @@ export function insertBlock(
   current = {},
   offset = 0,
   blocksConfig,
+  intl,
 ) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
@@ -340,6 +361,7 @@ export function insertBlock(
         ],
       },
     },
+    intl,
   });
 
   return [newBlockId, newFormData];

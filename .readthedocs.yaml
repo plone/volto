@@ -26,6 +26,7 @@ build:
     # Install dependencies defined in your ``package.json``
     # - npm ci
     # Install any other extra dependencies to build the docs
+    - npm i -g corepack@latest
     - corepack enable
     - corepack prepare pnpm@* --activate
     - asdf reshim nodejs
