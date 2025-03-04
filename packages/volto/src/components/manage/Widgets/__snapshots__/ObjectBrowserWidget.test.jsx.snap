@@ -18,7 +18,7 @@ exports[`renders a objectBrowser widget component 1`] = `
             class="wrapper"
           >
             <label
-              for="fieldset-default-field-label-my-field"
+              for="field-my-field"
               id="fieldset-default-field-label-my-field"
             >
               My field

@@ -17,7 +17,7 @@ exports[`renders an array widget component 1`] = `
           className="wrapper"
         >
           <label
-            htmlFor="fieldset-default-field-label-my-field"
+            htmlFor="field-my-field"
             id="fieldset-default-field-label-my-field"
           >
             My field

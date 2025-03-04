@@ -18,7 +18,7 @@ exports[`renders a dictionary widget component 1`] = `
             class="wrapper"
           >
             <label
-              for="fieldset-default-field-label-test-dict"
+              for="field-test-dict"
               id="fieldset-default-field-label-test-dict"
             >
               My Vocabulary

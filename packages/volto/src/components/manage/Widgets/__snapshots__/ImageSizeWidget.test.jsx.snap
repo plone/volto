@@ -17,7 +17,7 @@ exports[`renders an image sizes widget component 1`] = `
           className="wrapper"
         >
           <label
-            htmlFor="fieldset-default-field-label-image_size"
+            htmlFor="field-image_size"
             id="fieldset-default-field-label-image_size"
           >
             Image Size

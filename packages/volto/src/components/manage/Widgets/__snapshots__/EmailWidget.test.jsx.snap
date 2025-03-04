@@ -17,7 +17,7 @@ exports[`renders an email widget component 1`] = `
           className="wrapper"
         >
           <label
-            htmlFor="fieldset-default-field-label-test-email"
+            htmlFor="field-test-email"
             id="fieldset-default-field-label-test-email"
           >
             My Email

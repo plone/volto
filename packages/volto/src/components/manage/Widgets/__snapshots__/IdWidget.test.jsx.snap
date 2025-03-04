@@ -18,7 +18,7 @@ exports[`IdWidget renders an empty id widget component 1`] = `
             class="wrapper"
           >
             <label
-              for="fieldset-default-field-label-my-field"
+              for="field-my-field"
               id="fieldset-default-field-label-my-field"
             >
               My field
@@ -63,7 +63,7 @@ exports[`IdWidget renders an id widget with a valid dot character 1`] = `
             class="wrapper"
           >
             <label
-              for="fieldset-default-field-label-my-field.jpg"
+              for="field-my-field.jpg"
               id="fieldset-default-field-label-my-field.jpg"
             >
               My field
@@ -108,7 +108,7 @@ exports[`IdWidget renders an id widget with a valid value 1`] = `
             class="wrapper"
           >
             <label
-              for="fieldset-default-field-label-my-field"
+              for="field-my-field"
               id="fieldset-default-field-label-my-field"
             >
               My field
@@ -153,7 +153,7 @@ exports[`IdWidget renders an id widget with an reserved name 1`] = `
             class="wrapper"
           >
             <label
-              for="fieldset-default-field-label-my-field"
+              for="field-my-field"
               id="fieldset-default-field-label-my-field"
             >
               My field
@@ -203,7 +203,7 @@ exports[`IdWidget renders an id widget with invalid characters 1`] = `
             class="wrapper"
           >
             <label
-              for="fieldset-default-field-label-my-field"
+              for="field-my-field"
               id="fieldset-default-field-label-my-field"
             >
               My field

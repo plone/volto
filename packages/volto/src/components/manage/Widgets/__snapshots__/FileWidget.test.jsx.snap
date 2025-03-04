@@ -18,7 +18,7 @@ exports[`FileWidget renders a file widget component with value 1`] = `
             class="wrapper"
           >
             <label
-              for="fieldset-default-field-label-my-field"
+              for="field-my-field"
               id="fieldset-default-field-label-my-field"
             >
               My field
@@ -101,7 +101,7 @@ exports[`FileWidget renders a file widget component with value in raw data 1`] =
             class="wrapper"
           >
             <label
-              for="fieldset-default-field-label-my-field"
+              for="field-my-field"
               id="fieldset-default-field-label-my-field"
             >
               My field
@@ -183,7 +183,7 @@ exports[`FileWidget renders an empty file widget component 1`] = `
             class="wrapper"
           >
             <label
-              for="fieldset-default-field-label-my-field"
+              for="field-my-field"
               id="fieldset-default-field-label-my-field"
             >
               My field
