@@ -216,7 +216,6 @@ class SlateEditor extends Component {
       id,
       selected,
       placeholder,
-      fieldSet,
       onKeyDown,
       testingEditorRef,
       readOnly,
