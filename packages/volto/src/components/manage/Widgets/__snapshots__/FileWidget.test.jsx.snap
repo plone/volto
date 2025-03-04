@@ -3,7 +3,7 @@
 exports[`FileWidget renders a file widget component with value 1`] = `
 <div>
   <div
-    class="inline field field-wrapper-my-field"
+    class="inline field field-wrapper-file-widget-with-value"
   >
     <div
       class="ui grid"
@@ -18,10 +18,10 @@ exports[`FileWidget renders a file widget component with value 1`] = `
             class="wrapper"
           >
             <label
-              for="field-my-field"
-              id="fieldset-default-field-label-my-field"
+              for="field-file-widget-with-value"
+              id="fieldset-default-field-label-file-widget-with-value"
             >
-              My field
+              File Widget With Value
             </label>
           </div>
         </div>
@@ -34,19 +34,20 @@ exports[`FileWidget renders a file widget component with value 1`] = `
           >
             <img
               class="ui small image image-preview"
-              id="field-my-field-image"
+              id="field-file-widget-with-value-image"
               src="http://myfile?id=0"
             />
             <label
               class="label-file-widget-input"
+              for="field-file-widget-with-value"
             >
               Replace existing file
             </label>
             <input
               autocomplete="off"
-              id="field-my-field"
+              id="field-file-widget-with-value"
               multiple=""
-              name="my-field"
+              name="file-widget-with-value"
               style="display: none;"
               tabindex="-1"
               type="file"
@@ -86,7 +87,7 @@ exports[`FileWidget renders a file widget component with value 1`] = `
 exports[`FileWidget renders a file widget component with value in raw data 1`] = `
 <div>
   <div
-    class="inline field field-wrapper-my-field"
+    class="inline field field-wrapper-file-widget-raw-data"
   >
     <div
       class="ui grid"
@@ -101,10 +102,10 @@ exports[`FileWidget renders a file widget component with value in raw data 1`] =
             class="wrapper"
           >
             <label
-              for="field-my-field"
-              id="fieldset-default-field-label-my-field"
+              for="field-file-widget-raw-data"
+              id="fieldset-default-field-label-file-widget-raw-data"
             >
-              My field
+              File Widget With Raw Data
             </label>
           </div>
         </div>
@@ -117,19 +118,20 @@ exports[`FileWidget renders a file widget component with value in raw data 1`] =
           >
             <img
               class="ui small image image-preview"
-              id="field-my-field-image"
+              id="field-file-widget-raw-data-image"
               src="data:image/png;base64,oiweurtksdgfjaslfqw9523563456"
             />
             <label
               class="label-file-widget-input"
+              for="field-file-widget-raw-data"
             >
               Replace existing file
             </label>
             <input
               autocomplete="off"
-              id="field-my-field"
+              id="field-file-widget-raw-data"
               multiple=""
-              name="my-field"
+              name="file-widget-raw-data"
               style="display: none;"
               tabindex="-1"
               type="file"
@@ -168,7 +170,7 @@ exports[`FileWidget renders a file widget component with value in raw data 1`] =
 exports[`FileWidget renders an empty file widget component 1`] = `
 <div>
   <div
-    class="inline field field-wrapper-my-field"
+    class="inline field field-wrapper-empty-file-widget"
   >
     <div
       class="ui grid"
@@ -183,10 +185,10 @@ exports[`FileWidget renders an empty file widget component 1`] = `
             class="wrapper"
           >
             <label
-              for="field-my-field"
-              id="fieldset-default-field-label-my-field"
+              for="field-empty-file-widget"
+              id="fieldset-default-field-label-empty-file-widget"
             >
-              My field
+              Empty File Widget
             </label>
           </div>
         </div>
@@ -208,14 +210,15 @@ exports[`FileWidget renders an empty file widget component 1`] = `
             </div>
             <label
               class="label-file-widget-input"
+              for="field-empty-file-widget"
             >
               Choose a file
             </label>
             <input
               autocomplete="off"
-              id="field-my-field"
+              id="field-empty-file-widget"
               multiple=""
-              name="my-field"
+              name="empty-file-widget"
               style="display: none;"
               tabindex="-1"
               type="file"
