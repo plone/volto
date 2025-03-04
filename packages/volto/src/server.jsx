@@ -227,6 +227,27 @@ server.get('/*', (req, res) => {
       const defaultLanguage =
         store.getState().site?.data['plone.default_language'] || 'en';
 
+      const supportedLanguages =
+        store.getState().site?.data['plone.available_languages'] || 'en';
+
+      // Load the lang files when they matter
+      // We have to investigate if the L46 block is really necessary then
+      if (
+        supportedLanguages.includes(defaultLanguage) &&
+        defaultLanguage !== 'en'
+      ) {
+        const langFileName = toGettextLang(lang);
+        import('@root/../locales/' + langFileName + '.json').then(
+          (langFile) => {
+            locales = { ...locales, [toReactIntlLang(lang)]: langFile.default };
+            const newLang = toReactIntlLang(
+              new locale.Locales(defaultLanguage).best(supported).toString(),
+            );
+            store.dispatch(changeLanguage(newLang, locales[newLang], req));
+          },
+        );
+      }
+
       const initialLang =
         req.universalCookies.get('I18N_LANGUAGE') ||
         defaultLanguage ||
