@@ -18,7 +18,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
             class="wrapper"
           >
             <label
-              for="field-my-field"
+              for="fieldset-default-field-label-my-field"
               id="fieldset-default-field-label-my-field"
             >
               My field
@@ -183,7 +183,7 @@ exports[`renders a select widget component 1`] = `
             class="wrapper"
           >
             <label
-              for="field-my-field"
+              for="fieldset-default-field-label-my-field"
               id="fieldset-default-field-label-my-field"
             >
               My field

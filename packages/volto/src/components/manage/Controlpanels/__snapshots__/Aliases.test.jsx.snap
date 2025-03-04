@@ -69,7 +69,7 @@ exports[`Aliases renders an aliases control component 1`] = `
                             class="wrapper"
                           >
                             <label
-                              for="field-filterQuery"
+                              for="fieldset-undefined-field-label-filterQuery"
                               id="fieldset-undefined-field-label-filterQuery"
                             >
                               Filter by path
@@ -113,7 +113,7 @@ exports[`Aliases renders an aliases control component 1`] = `
                             class="wrapper"
                           >
                             <label
-                              for="field-filterType"
+                              for="fieldset-undefined-field-label-filterType"
                               id="fieldset-undefined-field-label-filterType"
                             >
                               Manually or automatically added?
