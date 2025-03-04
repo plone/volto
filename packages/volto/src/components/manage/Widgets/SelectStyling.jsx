@@ -1,7 +1,7 @@
 import React from 'react';
 import { Popup } from 'semantic-ui-react';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import DynamicHeightList from '@plone/volto/components/manage/ReactVirtualized/DynamicRowHeightList';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
@@ -150,10 +150,10 @@ export const customSelectStyles = {
     color: state.isSelected
       ? '#007bc1'
       : state.isDisabled
-      ? '#b5b5b5'
-      : state.isFocused
-      ? '#4a4a4a'
-      : 'inherit',
+        ? '#b5b5b5'
+        : state.isFocused
+          ? '#4a4a4a'
+          : 'inherit',
     ':active': {
       backgroundColor: null,
     },

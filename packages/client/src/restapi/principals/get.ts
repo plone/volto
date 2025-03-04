@@ -1,7 +1,7 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
 import { z } from 'zod';
-import { GetPrincipalsResponse } from '../../interfaces/principals';
+import type { GetPrincipalsResponse } from '@plone/types';
 
 const getPrincipalsSchema = z.object({
   search: z.string(),

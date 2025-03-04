@@ -2,15 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Segment, Button } from 'semantic-ui-react';
 import { useIntl, FormattedMessage, defineMessages } from 'react-intl';
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
-import { BlockDataForm, Icon, Image } from '@plone/volto/components';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Image from '@plone/volto/components/theme/Image/Image';
+import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import { ImageSchema } from './schema';
 import imageSVG from '@plone/volto/icons/image.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 
 const ImageSidebar = (props) => {
-  const { blocksConfig, data, block, onChangeBlock, navRoot, contentType } =
-    props;
+  const {
+    blocksConfig,
+    blocksErrors,
+    data,
+    block,
+    onChangeBlock,
+    navRoot,
+    contentType,
+  } = props;
   const intl = useIntl();
   const schema = ImageSchema({ formData: data, intl });
   return (
@@ -22,6 +31,7 @@ const ImageSidebar = (props) => {
         <Button.Group>
           <Button
             title={intl.formatMessage(messages.clear)}
+            type="button"
             basic
             disabled={!data.url}
             onClick={() => {
@@ -61,9 +71,9 @@ const ImageSidebar = (props) => {
                 data.image_scales
                   ? undefined
                   : isInternalURL(data.url)
-                  ? // Backwards compat in the case that the block is storing the full server URL
-                    `${flattenToAppURL(data.url)}/@@images/image/preview`
-                  : data.url
+                    ? // Backwards compat in the case that the block is storing the full server URL
+                      `${flattenToAppURL(data.url)}/@@images/image/preview`
+                    : data.url
               }
               sizes="188px"
               alt={intl.formatMessage(messages.preview)}
@@ -97,6 +107,7 @@ const ImageSidebar = (props) => {
         blocksConfig={blocksConfig}
         navRoot={navRoot}
         contentType={contentType}
+        errors={blocksErrors}
       />
     </>
   );

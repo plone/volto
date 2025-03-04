@@ -1,13 +1,11 @@
 import { z } from 'zod';
-import { ApiRequestParams, apiRequest } from '../../API';
+import { type ApiRequestParams, apiRequest } from '../../API';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import {
-  RevertTransactionsResponse,
-  revertTransactionsDataSchema,
-} from '../../interfaces/transactions';
+} from '../../validation/config';
+import { revertTransactionsDataSchema } from '../../validation/transactions';
+import type { RevertTransactionsResponse } from '@plone/types';
 
 export const revertTransactionsArgsSchema = z.object({
   data: revertTransactionsDataSchema,

@@ -8,8 +8,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { getBaseUrl, getParentUrl, Helmet } from '@plone/volto/helpers';
-import { Portal } from 'react-portal';
+import { getBaseUrl, getParentUrl } from '@plone/volto/helpers/Url/Url';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { createPortal } from 'react-dom';
 import {
   Button,
   Checkbox,
@@ -19,11 +20,16 @@ import {
   Segment,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { Icon, Toolbar, Field } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import { Field } from '@plone/volto/components/manage/Form';
 import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
 
-import { getContentRulesEvents, addNewRule } from '@plone/volto/actions';
+import {
+  getContentRulesEvents,
+  addNewRule,
+} from '@plone/volto/actions/rules/rules';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -331,8 +337,8 @@ class AddRule extends Component {
             </Segment.Group>
           </article>
         </Container>
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -346,9 +352,9 @@ class AddRule extends Component {
                   />
                 </Link>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </div>
     );
   }

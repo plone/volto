@@ -1,13 +1,11 @@
 import { z } from 'zod';
-import { ApiRequestParams, apiRequest } from '../../API';
+import { type ApiRequestParams, apiRequest } from '../../API';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import {
-  CreateTypeFieldResponse,
-  createTypeFieldDataSchema,
-} from '../../interfaces/types';
+} from '../../validation/config';
+import { createTypeFieldDataSchema } from '../../validation/types';
+import type { CreateTypeFieldResponse } from '@plone/types';
 
 export const createTypeFieldArgsSchema = z.object({
   contentPath: z.string(),

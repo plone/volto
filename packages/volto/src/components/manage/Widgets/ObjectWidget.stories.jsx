@@ -1,6 +1,6 @@
 import React from 'react';
 import { searchResults } from './ObjectBrowserWidget.stories';
-import { cloneDeep } from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 import ObjectWidget from './ObjectWidget';
 import WidgetStory from './story';
 

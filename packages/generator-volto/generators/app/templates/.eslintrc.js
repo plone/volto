@@ -1,15 +1,14 @@
 const fs = require('fs');
-const path = require('path');
 const projectRootPath = __dirname;
-const packageJson = require(path.join(projectRootPath, 'package.json'));
+const { AddonRegistry } = require('@plone/registry/addon-registry');
 
 let voltoPath = './node_modules/@plone/volto';
 
 let configFile;
-if (fs.existsSync(`${this.projectRootPath}/tsconfig.json`))
-  configFile = `${this.projectRootPath}/tsconfig.json`;
-else if (fs.existsSync(`${this.projectRootPath}/jsconfig.json`))
-  configFile = `${this.projectRootPath}/jsconfig.json`;
+if (fs.existsSync(`${projectRootPath}/tsconfig.json`))
+  configFile = `${projectRootPath}/tsconfig.json`;
+else if (fs.existsSync(`${projectRootPath}/jsconfig.json`))
+  configFile = `${projectRootPath}/jsconfig.json`;
 
 if (configFile) {
   const jsConfig = require(configFile).compilerOptions;
@@ -18,31 +17,32 @@ if (configFile) {
     voltoPath = `./${jsConfig.baseUrl}/${pathsConfig['@plone/volto'][0]}`;
 }
 
-const AddonConfigurationRegistry = require(
-  `${voltoPath}/packages/registry/addon-registry.js`,
-);
-const reg = new AddonConfigurationRegistry(__dirname);
+const { registry } = AddonRegistry.init(__dirname);
 
 // Extends ESlint configuration for adding the aliases to `src` directories in Volto addons
-const addonAliases = Object.keys(reg.packages).map((o) => [
+const addonAliases = Object.keys(registry.packages).map((o) => [
   o,
-  reg.packages[o].modulePath,
+  registry.packages[o].modulePath,
 ]);
 
-const addonExtenders = reg.getEslintExtenders().map((m) => require(m));
+const addonExtenders = registry.getEslintExtenders().map((m) => require(m));
 
 const defaultConfig = {
   extends: `${voltoPath}/.eslintrc`,
+  ignorePatterns: [
+    // '.storybook/**/*',
+    'src/addons/**/node_modules',
+    'src/addons/**/cypress',
+    'src/addons/**/build',
+    '!src/addons/volto-volto-project',
+  ],
   settings: {
     'import/resolver': {
       alias: {
         map: [
           ['@plone/volto', '@plone/volto/src'],
-          ['@plone/volto-slate', '@plone/volto/packages/volto-slate/src'],
-          ['@plone/registry', '@plone/volto/packages/registry/src'],
-          ['@plone/types', '@plone/volto/packages/types'],
+          ['@plone/volto-slate', '@plone/volto-slate/src'],
           ...addonAliases,
-          ['@package', `${__dirname}/src`],
           ['@root', `${__dirname}/src`],
           ['~', `${__dirname}/src`],
         ],

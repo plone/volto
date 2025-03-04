@@ -1,6 +1,6 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { GetQueryStringResponse } from '../../interfaces/querystring';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
+import type { GetQueryStringResponse } from '@plone/types';
 
 export type QueryStringArgs = {
   config: PloneClientConfig;

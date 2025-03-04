@@ -2,14 +2,15 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { asyncConnect } from '@plone/volto/helpers';
+import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Container as SemanticContainer } from 'semantic-ui-react';
-import { Helmet, toBackendLang } from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 import { Link } from 'react-router-dom';
 import config from '@plone/volto/registry';
 
-import { getNavigation } from '@plone/volto/actions';
+import { getNavigation } from '@plone/volto/actions/navigation/navigation';
 
 const messages = defineMessages({
   Sitemap: {
@@ -33,16 +34,16 @@ export function getSitemapPath(pathname = '', lang) {
 function Sitemap(props) {
   const {
     location: { pathname },
-    language,
+    lang,
     getNavigation,
     isMultilingual,
   } = props;
 
   useEffect(() => {
-    const lang = isMultilingual ? `${toBackendLang(language)}` : null;
-    const path = getSitemapPath(pathname, lang);
+    const language = isMultilingual ? `${toBackendLang(lang)}` : null;
+    const path = getSitemapPath(pathname, language);
     getNavigation(path, 4);
-  }, [pathname, isMultilingual, language, getNavigation]);
+  }, [pathname, lang, isMultilingual, getNavigation]);
 
   const renderItems = (items) => {
     return (

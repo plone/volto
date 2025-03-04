@@ -3,40 +3,53 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "postinstall": "make setup",
-    "watch": "turbo run watch",
-    "build:registry": "turbo run build --filter @plone/registry",
-    "build": "turbo run build --filter @plone/volto",
-    "start": "pnpm build:registry && pnpm --filter @plone/volto start",
-    "start:project": "turbo run start --filter plone",
-    "lint": "eslint --max-warnings=0 'packages/**/*.{js,jsx,ts,tsx}'",
-    "lint:volto": "turbo run lint --filter @plone/volto",
-    "test": "turbo run test:ci --filter @plone/volto",
-    "i18n": "turbo run i18n --filter @plone/volto",
-    "i18n:ci": "turbo run i18n:ci --filter @plone/volto",
+    "watch": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers watch",
+    "build:deps": "pnpm --filter @plone/registry build",
+    "build:all": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers --filter @plone/react-router build",
+    "build:all:force": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers --filter @plone/react-router build:force",
+    "build:registry": "pnpm --filter @plone/registry run build",
+    "build:components": "pnpm --filter @plone/components run build",
+    "build:client": "pnpm --filter @plone/client run build",
+    "build:providers": "pnpm --filter @plone/providers run build",
+    "build:helpers": "pnpm --filter @plone/helpers run build",
+    "build:react-router": "pnpm --filter @plone/react-router run build",
+    "build": "pnpm --filter @plone/volto build",
+    "start": "pnpm --filter @plone/volto start",
+    "start:project": "pnpm --filter plone run start",
+    "lint": "make build-all-deps && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
+    "lint:volto": "pnpm --filter @plone/volto run lint",
+    "test": "pnpm --filter @plone/volto run test",
+    "test:ci": "pnpm --filter @plone/volto run test:ci",
+    "i18n": "pnpm --filter @plone/volto run i18n",
+    "i18n:ci": "pnpm --filter @plone/volto i18n:ci",
     "prettier": "prettier --check '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
+    "prettier:fix": "prettier --write '{apps,packages}/**/*.{js,jsx,ts,tsx}' ",
+    "stylelint": "stylelint '{apps,packages}/**/*.{css,scss,less}'",
+    "stylelint:fix": "stylelint '{apps,packages}/**/*.{css,scss,less}' --fix",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint-staged": "lint-staged",
-    "prepare": "husky install",
-    "husky:uninstall": "husky uninstall"
+    "lockhook": "node packages/scripts/lockhook.js",
+    "prepare": "husky",
+    "husky:uninstall": "husky uninstall",
+    "prereleaser": "node packages/scripts/preleaser.js",
+    "update:browserlist": "pnpm --filter @plone/volto add caniuse-lite && pnpm --filter @plone/volto remove caniuse-lite"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "6.7.0",
-    "@typescript-eslint/parser": "6.7.0",
-    "eslint": "^8.48.0",
-    "eslint-config-prettier": "9.0.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "2.28.1",
-    "eslint-plugin-prettier": "5.0.0",
-    "eslint-plugin-react": "7.33.2",
-    "husky": "^8.0.3",
-    "lint-staged": "15.0.2",
-    "prettier": "3.0.3",
+    "concurrently": "^8.2.2",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "tsconfig": "workspace:*",
-    "turbo": "latest",
-    "typescript": "5.2.2",
-    "vitest": "^0.34.6",
-    "yarnhook": "0.6.1"
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.3"
   },
-  "packageManager": "pnpm@8.9.0"
+  "packageManager": "pnpm@9.1.1",
+  "pnpm": {
+    "overrides": {
+      "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
+      "react-refresh": "0.14.0"
+    },
+    "patchedDependencies": {
+      "jest-resolve@26.6.2": "patches/jest-resolve@26.6.2.patch"
+    }
+  }
 }

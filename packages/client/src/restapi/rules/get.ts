@@ -1,6 +1,6 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { GetRulesResponse } from '../../interfaces/rules';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
+import type { GetRulesResponse } from '@plone/types';
 
 export type GetRulesArgs = {
   config: PloneClientConfig;

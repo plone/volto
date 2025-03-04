@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { ApiRequestParams, apiRequest } from '../../API';
+import { type ApiRequestParams, apiRequest } from '../../API';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { updateGroupDataSchema } from '../../interfaces/groups';
+} from '../../validation/config';
+import { updateGroupDataSchema } from '../../validation/groups';
 
 export const updateGroupArgsSchema = z.object({
   groupId: z.string(),

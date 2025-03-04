@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { apiRequest, ApiRequestParams } from '../../API';
+import { apiRequest, type ApiRequestParams } from '../../API';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { newCommentDataSchema as updateCommentDataSchema } from '../../interfaces/comments';
+} from '../../validation/config';
+import { newCommentDataSchema as updateCommentDataSchema } from '../../validation/comments';
 
 export const updateCommentArgsSchema = z.object({
   path: z.string(),

@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { apiRequest, ApiRequestParams } from '../../API';
+import { apiRequest, type ApiRequestParams } from '../../API';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { updateRegistryDataSchema } from '../../interfaces/registry';
+} from '../../validation/config';
+import { updateRegistryDataSchema } from '../../validation/registry';
 
 export const updateRegistryArgsSchema = z.object({
   data: updateRegistryDataSchema,

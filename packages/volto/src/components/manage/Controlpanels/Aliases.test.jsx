@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-intl-redux';
@@ -10,9 +10,8 @@ import { MemoryRouter } from 'react-router';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('@plone/volto/components/manage/Widgets');
+jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
 
 describe('Aliases', () => {
   it('renders an aliases control component', () => {
@@ -58,15 +57,23 @@ describe('Aliases', () => {
         locale: 'en',
         messages: {},
       },
+      site: {
+        data: {
+          features: {
+            filter_aliases_by_date: true,
+          },
+        },
+      },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter>
           <Aliases location={{ pathname: '/blog' }} />
+          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

@@ -1,13 +1,11 @@
 import { z } from 'zod';
-import { ApiRequestParams, apiRequest } from '../../API';
+import { type ApiRequestParams, apiRequest } from '../../API';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import {
-  createLockDataSchema,
-  CreateLockResponse,
-} from '../../interfaces/lock';
+} from '../../validation/config';
+import { createLockDataSchema } from '../../validation/lock';
+import type { CreateLockResponse } from '@plone/types';
 
 export const createLockArgsSchema = z.object({
   path: z.string(),

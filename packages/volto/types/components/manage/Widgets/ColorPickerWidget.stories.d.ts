@@ -1,8 +1,7 @@
-export const Default: any;
-declare namespace _default {
-    export let title: string;
-    export { Default as component };
-    export let decorators: ((Story: any) => JSX.Element)[];
-    export let argTypes: {};
-}
-export default _default;
+import ColorPickerWidget from './ColorPickerWidget';
+import type { Meta, StoryObj } from '@storybook/react';
+declare const meta: Meta<typeof ColorPickerWidget>;
+export default meta;
+type Story = StoryObj<typeof ColorPickerWidget>;
+export declare const Default: Story;
+export declare const WithEnhancedStyleConfig: Story;

@@ -1,6 +1,6 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { GetContentResponse } from '../../interfaces/content/get';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
+import type { Content } from '@plone/types';
 import { z } from 'zod';
 
 const getContentArgsSchema = z.object({
@@ -22,7 +22,7 @@ export const getContent = async ({
   fullObjects,
   expand,
   config,
-}: ContentArgs): Promise<GetContentResponse> => {
+}: ContentArgs): Promise<Content> => {
   const validatedArgs = getContentArgsSchema.parse({
     path,
     version,

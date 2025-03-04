@@ -8,14 +8,24 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
-import { Helmet } from '@plone/volto/helpers';
-import { Portal } from 'react-portal';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import {
+  tryParseJSON,
+  extractInvariantErrors,
+} from '@plone/volto/helpers/FormValidation/FormValidation';
+import { createPortal } from 'react-dom';
 import { Button, Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
-import { Form, Icon, Toolbar, Toast } from '@plone/volto/components';
-import { updateControlpanel, getControlpanel } from '@plone/volto/actions';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import { Form } from '@plone/volto/components/manage/Form';
+import {
+  updateControlpanel,
+  getControlpanel,
+} from '@plone/volto/actions/controlpanels/controlpanels';
 
 import config from '@plone/volto/registry';
 
@@ -42,6 +52,10 @@ const messages = defineMessages({
   info: {
     id: 'Info',
     defaultMessage: 'Info',
+  },
+  error: {
+    id: 'Error',
+    defaultMessage: 'Error',
   },
 });
 
@@ -92,7 +106,7 @@ class Controlpanel extends Component {
     super(props);
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.state = { isClient: false };
+    this.state = { isClient: false, error: null };
   }
 
   /**
@@ -112,6 +126,36 @@ class Controlpanel extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.updateRequest.loading && nextProps.updateRequest.error) {
+      const message =
+        nextProps.updateRequest.error?.response?.body?.error?.message ||
+        nextProps.updateRequest.error?.response?.body?.message ||
+        nextProps.updateRequest.error?.response?.text ||
+        '';
+
+      const error =
+        new DOMParser().parseFromString(message, 'text/html')?.all?.[0]
+          ?.textContent || message;
+
+      const errorsList = tryParseJSON(error);
+      let invariantErrors = [];
+      if (Array.isArray(errorsList)) {
+        invariantErrors = extractInvariantErrors(errorsList);
+      }
+
+      this.setState({ error: error });
+
+      if (invariantErrors.length > 0) {
+        toast.error(
+          <Toast
+            error
+            title={this.props.intl.formatMessage(messages.error)}
+            content={invariantErrors.join(' - ')}
+          />,
+        );
+      }
+    }
+
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       toast.info(
         <Toast
@@ -161,14 +205,15 @@ class Controlpanel extends Component {
               title={this.props.controlpanel.title}
               schema={filterControlPanelsSchema(this.props.controlpanel)}
               formData={this.props.controlpanel.data}
+              requestError={this.state.error}
               onSubmit={this.onSubmit}
               onCancel={this.onCancel}
               hideActions
               loading={this.props.updateRequest.loading}
             />
           </Container>
-          {this.state.isClient && (
-            <Portal node={document.getElementById('toolbar')}>
+          {this.state.isClient &&
+            createPortal(
               <Toolbar
                 pathname={this.props.pathname}
                 hideDefaultViewButtons
@@ -205,9 +250,9 @@ class Controlpanel extends Component {
                     </Button>
                   </>
                 }
-              />
-            </Portal>
-          )}
+              />,
+              document.getElementById('toolbar'),
+            )}
         </div>
       );
     }

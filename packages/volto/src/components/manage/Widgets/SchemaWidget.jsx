@@ -7,18 +7,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
-import { concat, findIndex, isString, map, omit, slice, without } from 'lodash';
+import concat from 'lodash/concat';
+import findIndex from 'lodash/findIndex';
+import isString from 'lodash/isString';
+import map from 'lodash/map';
+import omit from 'lodash/omit';
+import slice from 'lodash/slice';
+import without from 'lodash/without';
 import move from 'lodash-move';
 import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { slugify } from '@plone/volto/helpers/Utils/Utils';
 
-import {
-  Field,
-  ModalForm,
-  SchemaWidgetFieldset,
-} from '@plone/volto/components';
+import SchemaWidgetFieldset from '@plone/volto/components/manage/Widgets/SchemaWidgetFieldset';
+import { Field, ModalForm } from '@plone/volto/components/manage/Form';
 
 const messages = defineMessages({
   add: {

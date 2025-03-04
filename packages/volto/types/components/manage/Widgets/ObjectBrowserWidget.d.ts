@@ -3,7 +3,7 @@
  * @class ObjectBrowserWidget
  * @extends Component
  */
-export class ObjectBrowserWidgetComponent extends Component<any, any, any> {
+export class ObjectBrowserWidgetComponent extends React.Component<any, any, any> {
     /**
      * Property types.
      * @property {Object} propTypes Property types.
@@ -43,14 +43,15 @@ export class ObjectBrowserWidgetComponent extends Component<any, any, any> {
     state: {
         manualLinkInput: string;
         validURL: boolean;
+        errors: any[];
     };
-    selectedItemsRef: any;
-    placeholderRef: any;
-    renderLabel(item: any): JSX.Element;
+    selectedItemsRef: React.RefObject<any>;
+    placeholderRef: React.RefObject<any>;
+    renderLabel(item: any): import("react/jsx-runtime").JSX.Element;
     removeItem: (item: any) => void;
     onChange: (item: any) => void;
     onManualLinkInput: (e: any) => void;
-    validateManualLink: (url: any) => any;
+    validateManualLink: (url: any) => boolean;
     onSubmitManualLink: () => void;
     onKeyDownManualLink: (e: any) => void;
     showObjectBrowser: (ev: any) => void;
@@ -62,11 +63,11 @@ export class ObjectBrowserWidgetComponent extends Component<any, any, any> {
      */
     render(): string;
 }
-declare const _default: import("react").ForwardRefExoticComponent<Pick<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, string> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
-    WrappedComponent: import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>;
+declare const _default: React.ForwardRefExoticComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & React.RefAttributes<React.ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
+    WrappedComponent: React.ComponentType<import("react-intl").WrappedComponentProps<string>>;
 };
 export default _default;
-import { Component } from 'react';
-export function ObjectBrowserWidgetMode(mode: any): import("react").ForwardRefExoticComponent<Pick<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, string> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
-    WrappedComponent: import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>;
+import React from 'react';
+export function ObjectBrowserWidgetMode(mode: any): React.ForwardRefExoticComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & React.RefAttributes<React.ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
+    WrappedComponent: React.ComponentType<import("react-intl").WrappedComponentProps<string>>;
 };

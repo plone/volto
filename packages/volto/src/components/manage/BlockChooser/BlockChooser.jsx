@@ -1,9 +1,13 @@
 import React from 'react';
+import useUser from '@plone/volto/hooks/user/useUser';
 import PropTypes from 'prop-types';
-import { filter, map, groupBy, isEmpty } from 'lodash';
+import filter from 'lodash/filter';
+import map from 'lodash/map';
+import groupBy from 'lodash/groupBy';
+import isEmpty from 'lodash/isEmpty';
 import { Accordion, Button } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import AnimateHeight from 'react-animate-height';
 import config from '@plone/volto/registry';
 import upSVG from '@plone/volto/icons/up-key.svg';
@@ -31,8 +35,11 @@ const BlockChooser = ({
   blocksConfig = config.blocks.blocksConfig,
   blockChooserRef,
   properties = {},
+  navRoot,
+  contentType,
 }) => {
   const intl = useIntl();
+  const user = useUser();
   const hasAllowedBlocks = !isEmpty(allowedBlocks);
 
   const filteredBlocksConfig = filter(blocksConfig, (item) => {
@@ -55,7 +62,13 @@ const BlockChooser = ({
         // depending on this function, given properties (current present blocks) and the
         // block being evaluated
         return typeof item.restricted === 'function'
-          ? !item.restricted({ properties, block: item })
+          ? !item.restricted({
+              properties,
+              block: item,
+              navRoot,
+              contentType,
+              user,
+            })
           : !item.restricted;
       }
     }
@@ -115,6 +128,7 @@ const BlockChooser = ({
     return (
       <Button.Group key={block.id}>
         <Button
+          type="button"
           icon
           basic
           className={block.id}

@@ -1,6 +1,6 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { GetControlpanelsResponse } from '../../interfaces/controlpanels';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
+import type { GetControlpanelsResponse } from '@plone/types';
 
 export type ControlpanelsArgs = {
   config: PloneClientConfig;

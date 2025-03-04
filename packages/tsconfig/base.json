@@ -5,15 +5,24 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "target": "es2022",
+    "allowJs": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
     "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "moduleResolution": "Bundler",
-    "module": "ESNext",
-    "noEmit": true,
+    "noImplicitOverride": true,
+
     "lib": ["es2022", "dom", "dom.iterable"],
+    "module": "preserve",
+    "noEmit": true,
+
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "paths": {}
   },
-  "exclude": ["node_modules"]
+  "include": ["src"],
+  "exclude": ["node_modules", "build", "public", "coverage"]
 }

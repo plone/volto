@@ -9,9 +9,12 @@ import { Button, Image, Dimmer } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
 import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
-import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import loadable from '@loadable/component';
-import { flattenToAppURL, validateFileUploadSize } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { defineMessages, useIntl } from 'react-intl';
 
 const imageMimetypes = [
@@ -84,8 +87,8 @@ const FileWidget = (props) => {
   const imgsrc = value?.download
     ? `${flattenToAppURL(value?.download)}?id=${Date.now()}`
     : null || value?.data
-    ? `data:${value['content-type']};${value.encoding},${value.data}`
-    : null;
+      ? `data:${value['content-type']};${value.encoding},${value.data}`
+      : null;
 
   /**
    * Drop handler
@@ -112,7 +115,7 @@ const FileWidget = (props) => {
       if (imageMimetypes.includes(fields[1])) {
         setFileType(true);
         let imagePreview = document.getElementById(`field-${id}-image`);
-        imagePreview.src = reader.result;
+        if (imagePreview) imagePreview.src = reader.result;
       } else {
         setFileType(false);
       }
@@ -170,9 +173,14 @@ const FileWidget = (props) => {
         )}
       </Dropzone>
       <div className="field-file-name">
-        {value && value.filename}
+        {value && (
+          <UniversalLink href={value.download} download={true}>
+            {value.filename}
+          </UniversalLink>
+        )}
         {value && (
           <Button
+            type="button"
             icon
             basic
             className="delete-button"

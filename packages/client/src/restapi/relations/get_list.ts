@@ -1,6 +1,6 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { GetRelationsListResponse } from '../../interfaces/relations';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
+import type { GetRelationsListResponse } from '@plone/types';
 
 export type GetRelationsListArgs = {
   config: PloneClientConfig;

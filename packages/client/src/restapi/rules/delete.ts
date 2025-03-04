@@ -1,10 +1,10 @@
-import { apiRequest, ApiRequestParams } from '../../API';
+import { apiRequest, type ApiRequestParams } from '../../API';
 import { z } from 'zod';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { deleteRulesDataSchema } from '../../interfaces/rules';
+} from '../../validation/config';
+import { deleteRulesDataSchema } from '../../validation/rules';
 
 export const deleteRulesArgsSchema = z.object({
   data: deleteRulesDataSchema,

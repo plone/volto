@@ -1,6 +1,6 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { GetTransactionsResponse } from '../../interfaces/transactions';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
+import type { GetTransactionsResponse } from '@plone/types';
 
 export type GetTransactionsArgs = {
   config: PloneClientConfig;

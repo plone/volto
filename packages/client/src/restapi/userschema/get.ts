@@ -1,6 +1,6 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { GetUserschemaResponse } from '../../interfaces/userschema';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
+import type { GetUserschemaResponse } from '@plone/types';
 
 export type GetUserschemaArgs = {
   config: PloneClientConfig;

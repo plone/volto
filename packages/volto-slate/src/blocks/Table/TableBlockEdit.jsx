@@ -5,13 +5,17 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { map, remove } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
+import map from 'lodash/map';
+import remove from 'lodash/remove';
 import { Button, Table } from 'semantic-ui-react';
 import cx from 'classnames';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import Cell from './Cell';
-import { BlockDataForm, Icon, SidebarPortal } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import TableSchema from './schema';
 
 import rowBeforeSVG from '@plone/volto/icons/row-before.svg';
@@ -227,7 +231,7 @@ class Edit extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (!this.props.data.table) {
+    if (!this.props.data.table || isEmpty(this.props.data.table)) {
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
         table: initialTable,
@@ -243,7 +247,7 @@ class Edit extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (!nextProps.data.table) {
+    if (!nextProps.data.table || isEmpty(nextProps.data.table)) {
       this.props.onChangeBlock(nextProps.block, {
         ...nextProps.data,
         table: initialTable,
@@ -528,10 +532,7 @@ class Edit extends Component {
                 icon
                 basic
                 onClick={this.onDeleteRow}
-                disabled={
-                  this.props.data.table &&
-                  this.props.data.table.rows.length === 1
-                }
+                disabled={this.props.data.table?.rows?.length === 1}
                 title={this.props.intl.formatMessage(messages.deleteRow)}
                 aria-label={this.props.intl.formatMessage(messages.deleteRow)}
               >
@@ -569,10 +570,7 @@ class Edit extends Component {
                 icon
                 basic
                 onClick={this.onDeleteCol}
-                disabled={
-                  this.props.data.table &&
-                  this.props.data.table.rows[0].cells.length === 1
-                }
+                disabled={this.props.data.table?.rows?.[0].cells.length === 1}
                 title={this.props.intl.formatMessage(messages.deleteCol)}
                 aria-label={this.props.intl.formatMessage(messages.deleteCol)}
               >

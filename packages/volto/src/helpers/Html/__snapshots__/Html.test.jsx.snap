@@ -8,11 +8,6 @@ exports[`Html renders a html component 1`] = `
     <meta
       charSet="utf-8"
     />
-    
-    
-    
-    
-    
     <script
       dangerouslySetInnerHTML={
         Object {
@@ -49,7 +44,7 @@ exports[`Html renders a html component 1`] = `
     />
     <meta
       content="yes"
-      name="apple-mobile-web-app-capable"
+      name="mobile-web-app-capable"
     />
     <link
       as="script"
@@ -105,11 +100,6 @@ exports[`Html renders a html component with apiPath present 1`] = `
     <meta
       charSet="utf-8"
     />
-    
-    
-    
-    
-    
     <script
       dangerouslySetInnerHTML={
         Object {
@@ -146,7 +136,7 @@ exports[`Html renders a html component with apiPath present 1`] = `
     />
     <meta
       content="yes"
-      name="apple-mobile-web-app-capable"
+      name="mobile-web-app-capable"
     />
     <link
       as="script"

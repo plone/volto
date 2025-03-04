@@ -1,6 +1,6 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { GetAddonResponse } from '../../interfaces/addons';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
+import type { GetAddonResponse } from '@plone/types';
 import { z } from 'zod';
 
 const getAddonSchema = z.object({

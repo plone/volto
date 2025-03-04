@@ -1,7 +1,7 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
 import { z } from 'zod';
-import { GetWorkingcopyResponse } from '../../interfaces/workingcopy';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
+import type { GetWorkingcopyResponse } from '@plone/types';
 
 const getWorkingcopySchema = z.object({
   path: z.string(),

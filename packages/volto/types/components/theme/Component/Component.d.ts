@@ -7,4 +7,4 @@ declare function Component({ componentName, dependencies, ...rest }: {
     [x: string]: any;
     componentName: any;
     dependencies: any;
-}): JSX.Element;
+}): import("react/jsx-runtime").JSX.Element;

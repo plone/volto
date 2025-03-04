@@ -1,1 +1,0 @@
-Changed installation of Vale from manual to automatic via `make docs-vale`. @stevepiercy

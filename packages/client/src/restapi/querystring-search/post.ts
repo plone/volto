@@ -1,13 +1,11 @@
 import { z } from 'zod';
-import { ApiRequestParams, apiRequest } from '../../API';
+import { type ApiRequestParams, apiRequest } from '../../API';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import {
-  QuerystringSearchResponse as PostQuerystringSearchResponse,
-  querystringSearchDataSchema as postQuerystringSearchDataSchema,
-} from '../../interfaces/querystring-search';
+} from '../../validation/config';
+import { querystringSearchDataSchema as postQuerystringSearchDataSchema } from '../../validation/querystring-search';
+import type { QuerystringSearchResponse as PostQuerystringSearchResponse } from '@plone/types';
 
 export const postQuerystringSearchArgsSchema = z.object({
   data: postQuerystringSearchDataSchema,

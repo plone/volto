@@ -1,13 +1,11 @@
 import { z } from 'zod';
-import { ApiRequestParams, apiRequest } from '../../API';
+import { type ApiRequestParams, apiRequest } from '../../API';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import {
-  CreateGroupResponse,
-  createGroupDataSchema,
-} from '../../interfaces/groups';
+} from '../../validation/config';
+import { createGroupDataSchema } from '../../validation/groups';
+import type { CreateGroupResponse } from '@plone/types';
 
 export const createGroupArgsSchema = z.object({
   data: createGroupDataSchema,

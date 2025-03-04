@@ -6,6 +6,10 @@
   margin: 0;
 }
 
+.ui.form .inline.field.overwritten input {
+  background-color: rgb(#edc3c2);
+}
+
 .ui.form .inline.field.help .wrapper {
   border-bottom: none;
 }
@@ -46,6 +50,7 @@
 
   &:focus {
     border-radius: 0;
+    color: @textColor;
   }
 }
 
@@ -119,13 +124,47 @@
   z-index: 1;
   top: 0;
   right: 0;
+  left: auto;
   display: flex;
   height: 60px;
   align-items: center;
   margin-right: 1rem;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
 
   .item {
     cursor: pointer;
+  }
+}
+
+.block.form {
+  [data-rbd-draggable-context-id] {
+    margin-bottom: 0;
+  }
+
+  .ui.menu .item > i.icon {
+    margin-left: -2px;
+  }
+
+  .square.icon {
+    margin-top: -2px;
+  }
+
+  .ui.segments > div {
+    background: white !important;
+  }
+
+  .drag.handle {
+    cursor: grab;
+  }
+
+  .tabular.menu > .item {
+    height: 66px;
+
+    button {
+      border-bottom-width: 5px;
+    }
   }
 }
 
@@ -147,13 +186,13 @@
 .ui.form .inline.field .link-form-container {
   .wrapper {
     display: flex;
-    border-bottom: 1px solid @lightGreyBorderColor;
 
     .ui.input.input-anchorlink-theme {
       vertical-align: unset;
 
       input {
-        height: unset;
+        width: 100%;
+        height: unset; // input is only 40px and form.overrides sets height to 60px
       }
     }
   }

@@ -6,21 +6,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { compact, isArray, isEmpty, remove } from 'lodash';
+import compact from 'lodash/compact';
+import includes from 'lodash/includes';
+import isArray from 'lodash/isArray';
+import isEmpty from 'lodash/isEmpty';
+import remove from 'lodash/remove';
 import { connect } from 'react-redux';
-import { Label, Popup, Button } from 'semantic-ui-react';
+import { Image, Label, Popup, Button } from 'semantic-ui-react';
 import {
   flattenToAppURL,
   isInternalURL,
-  isUrl,
   normalizeUrl,
   removeProtocol,
 } from '@plone/volto/helpers/Url/Url';
+import { urlValidator } from '@plone/volto/helpers/FormValidation/validators';
 import { searchContent } from '@plone/volto/actions/search/search';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { defineMessages, injectIntl } from 'react-intl';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import config from '@plone/volto/registry';
 
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -97,6 +102,7 @@ export class ObjectBrowserWidgetComponent extends Component {
   state = {
     manualLinkInput: '',
     validURL: false,
+    errors: [],
   };
 
   constructor(props) {
@@ -122,7 +128,16 @@ export class ObjectBrowserWidgetComponent extends Component {
         }
         trigger={
           <Label>
-            <div className="item-title">{item.title}</div>
+            <div className="item-title">
+              {includes(config.settings.imageObjects, item['@type']) ? (
+                <Image
+                  size="small"
+                  src={`${item['@id']}/@@images/image/thumb`}
+                />
+              ) : (
+                item.title
+              )}
+            </div>
             <div>
               {this.props.mode === 'multiple' && (
                 <Icon
@@ -216,7 +231,16 @@ export class ObjectBrowserWidgetComponent extends Component {
 
   validateManualLink = (url) => {
     if (this.props.allowExternals) {
-      return isUrl(url);
+      const error = urlValidator({
+        value: url,
+        formatMessage: this.props.intl.formatMessage,
+      });
+      if (error && url !== '') {
+        this.setState({ errors: [error] });
+      } else {
+        this.setState({ errors: [] });
+      }
+      return !Boolean(error);
     } else {
       return isInternalURL(url);
     }
@@ -330,6 +354,8 @@ export class ObjectBrowserWidgetComponent extends Component {
     return (
       <FormFieldWrapper
         {...this.props}
+        // At the moment, OBW handles its own errors and validation
+        error={this.state.errors}
         className={description ? 'help text' : 'text'}
       >
         <div
@@ -358,6 +384,7 @@ export class ObjectBrowserWidgetComponent extends Component {
               items.length === 0 &&
               this.props.mode !== 'multiple' && (
                 <input
+                  onBlur={this.onSubmitManualLink}
                   onKeyDown={this.onKeyDownManualLink}
                   onChange={this.onManualLinkInput}
                   value={this.state.manualLinkInput}

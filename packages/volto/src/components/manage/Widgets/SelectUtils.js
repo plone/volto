@@ -1,5 +1,7 @@
-import { isBoolean, isObject, isString } from 'lodash';
-import { getBoolean } from '@plone/volto/helpers';
+import isBoolean from 'lodash/isBoolean';
+import isObject from 'lodash/isObject';
+import isString from 'lodash/isString';
+import { getBoolean } from '@plone/volto/helpers/Vocabularies/Vocabularies';
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
@@ -28,8 +30,8 @@ export function convertValueToVocabQuery(value) {
           isObject(v)
             ? v.value ?? v.token
             : isString(v) || isBoolean(v)
-            ? v
-            : null,
+              ? v
+              : null,
         )
         .filter((f) => f !== null),
     };

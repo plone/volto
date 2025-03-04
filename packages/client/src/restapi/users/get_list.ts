@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { GetUsersResponse } from '../../interfaces/users';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
+import type { GetUsersResponse } from '@plone/types';
 
 const getUsersSchema = z.object({
   query: z.string().optional(),

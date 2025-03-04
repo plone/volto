@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import config from '@plone/volto/registry';
@@ -15,9 +15,8 @@ beforeAll(() => {
   config.settings.loadables = {};
 });
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+
 jest.mock('../Form/Form', () => jest.fn(() => <div className="Form" />));
 
 describe('Add', () => {
@@ -41,13 +40,12 @@ describe('Add', () => {
         'plone.available_languages': ['de'],
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <Add location={{ pathname: '/blog', search: { type: 'Document' } }} />
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('renders an add component', () => {
@@ -69,13 +67,13 @@ describe('Add', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <Add location={{ pathname: '/blog', search: { type: 'Document' } }} />
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('renders an add component with schema', () => {
@@ -108,12 +106,12 @@ describe('Add', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <Add location={{ pathname: '/blog', search: { type: 'Document' } }} />
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

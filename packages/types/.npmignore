@@ -2,3 +2,6 @@ news
 towncrier.toml
 .changelog.draft
 node_modules/
+.turbo
+.release-it.json
+.eslintrc.js

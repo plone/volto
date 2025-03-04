@@ -1,10 +1,10 @@
-import { apiRequest, ApiRequestParams } from '../../API';
+import { apiRequest, type ApiRequestParams } from '../../API';
 import { z } from 'zod';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { deleteAliasesDataSchema } from '../../interfaces/aliases';
+} from '../../validation/config';
+import { deleteAliasesDataSchema } from '../../validation/aliases';
 
 export const deleteAliasesArgsSchema = z.object({
   path: z.string(),

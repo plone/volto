@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { UniversalLink } from '@plone/volto/components';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import cx from 'classnames';
-import {
-  flattenToAppURL,
-  isInternalURL,
-  withBlockExtensions,
-} from '@plone/volto/helpers';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
+import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
 import config from '@plone/volto/registry';
 
-export const View = ({ className, data, detached, properties }) => {
+export const View = ({ className, data, detached, properties, style }) => {
   const href = data?.href?.[0]?.['@id'] || '';
 
   const Image = config.getComponent({ name: 'Image' }).component;
@@ -25,6 +22,7 @@ export const View = ({ className, data, detached, properties }) => {
         data.align,
         className,
       )}
+      style={style}
     >
       {data.url && (
         <>
@@ -50,21 +48,21 @@ export const View = ({ className, data, detached, properties }) => {
                   data.image_scales
                     ? undefined
                     : isInternalURL(data.url)
-                    ? // Backwards compat in the case that the block is storing the full server URL
-                      (() => {
-                        if (data.size === 'l')
+                      ? // Backwards compat in the case that the block is storing the full server URL
+                        (() => {
+                          if (data.size === 'l')
+                            return `${flattenToAppURL(data.url)}/@@images/image`;
+                          if (data.size === 'm')
+                            return `${flattenToAppURL(
+                              data.url,
+                            )}/@@images/image/preview`;
+                          if (data.size === 's')
+                            return `${flattenToAppURL(
+                              data.url,
+                            )}/@@images/image/mini`;
                           return `${flattenToAppURL(data.url)}/@@images/image`;
-                        if (data.size === 'm')
-                          return `${flattenToAppURL(
-                            data.url,
-                          )}/@@images/image/preview`;
-                        if (data.size === 's')
-                          return `${flattenToAppURL(
-                            data.url,
-                          )}/@@images/image/mini`;
-                        return `${flattenToAppURL(data.url)}/@@images/image`;
-                      })()
-                    : data.url
+                        })()
+                      : data.url
                 }
                 sizes={config.blocks.blocksConfig.image.getSizes(data)}
                 alt={data.alt || ''}

@@ -1,9 +1,9 @@
-import { apiRequest, ApiRequestParams } from '../../API';
+import { apiRequest, type ApiRequestParams } from '../../API';
 import { z } from 'zod';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
+} from '../../validation/config';
 
 export const deleteGroupArgsSchema = z.object({
   groupId: z.string(),

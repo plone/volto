@@ -1,13 +1,11 @@
 import { z } from 'zod';
-import { ApiRequestParams, apiRequest } from '../../API';
+import { type ApiRequestParams, apiRequest } from '../../API';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import {
-  User as CreateUserResponse,
-  createUserDataSchema,
-} from '../../interfaces/users';
+} from '../../validation/config';
+import { createUserDataSchema } from '../../validation/users';
+import type { User as CreateUserResponse } from '@plone/types';
 
 export const createUserArgsSchema = z.object({
   data: createUserDataSchema,

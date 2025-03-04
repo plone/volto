@@ -1,7 +1,7 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
+import { apiRequest, type ApiRequestParams } from '../../API';
+import type { PloneClientConfig } from '../../validation/config';
 import { z } from 'zod';
-import { GetControlpanelResponse } from '../../interfaces/controlpanels';
+import type { GetControlpanelResponse } from '@plone/types';
 
 const getControlpanelSchema = z.object({
   path: z.string(),

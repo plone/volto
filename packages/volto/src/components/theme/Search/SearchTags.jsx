@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getVocabulary } from '@plone/volto/actions';
+import { getVocabulary } from '@plone/volto/actions/vocabularies/vocabularies';
 
 const vocabulary = 'plone.app.vocabularies.Keywords';
 

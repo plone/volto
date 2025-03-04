@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { apiRequest, ApiRequestParams } from '../../API';
+import { apiRequest, type ApiRequestParams } from '../../API';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { revertHistoryDataSchema } from '../../interfaces/history';
+} from '../../validation/config';
+import { revertHistoryDataSchema } from '../../validation/history';
 
 export const revertHistoryArgsSchema = z.object({
   path: z.string(),

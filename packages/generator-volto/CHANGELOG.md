@@ -8,6 +8,152 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.1 (2025-02-08)
+
+### Internal
+
+- Test with Plone 6.1.0rc1. @sneridagh [#6682](https://github.com/plone/volto/issues/6682)
+
+## 9.0.0 (2024-10-31)
+
+### Internal
+
+- Release 9.0.0 @sneridagh 
+
+## 9.0.0-alpha.20 (2024-10-27)
+
+### Breaking
+
+- Dropped support for Node.js 18, since Volto only supports the last two LTS versions. @sneridagh
+  Volto might continue to work on it, but it will be no longer tested in CI. [#6371](https://github.com/plone/volto/issues/6371)
+- Breaking changes in `.eslintrc.js` and `.storybook/main.js` because of #6399. @sneridagh
+  Please see the [Upgrade Guide](https://6.docs.plone.org/volto/upgrade-guide/index.html). [#6399](https://github.com/plone/volto/issues/6399)
+
+## 9.0.0-alpha.19 (2024-10-18)
+
+### Internal
+
+- Update to use jest 26 @sneridagh [#6406](https://github.com/plone/volto/issues/6406)
+
+## 9.0.0-alpha.18 (2024-10-04)
+
+### Breaking
+
+- Updated `razzle.config.js` to accommodate new argument `paths` passed down to `customModifyWebpackConfig`. @sneridagh [#6368](https://github.com/plone/volto/issues/6368)
+
+## 9.0.0-alpha.17 (2024-06-28)
+
+### Bugfix
+
+- Rename test-setup-config.js to test-setup-config.jsx, otherwise jest tests will eventually fail @tomschall [#6133](https://github.com/plone/volto/issues/6133)
+
+## 9.0.0-alpha.16 (2024-05-15)
+
+### Bugfix
+
+- Disable `jsx-a11y/label-has-associated-control` so that we can use `eslint-plugin-jsx-a11y` version 6.8.0 if it's pulled by other dependencies. @ichim-david [#5785](https://github.com/plone/volto/issues/5785)
+
+## 9.0.0-alpha.15 (2024-05-02)
+
+### Internal
+
+- Flexibilize the pins for all ESlint deps, in Volto and generators @sneridagh [#5991](https://github.com/plone/volto/issues/5991)
+
+## 9.0.0-alpha.14 (2024-03-24)
+
+### Internal
+
+- Fix StoryBook for project generator in Volto 18 @sneridagh [#5911](https://github.com/plone/volto/issues/5911)
+- Update project template to use Storybook 8. @sneridagh [#5912](https://github.com/plone/volto/issues/5912)
+
+## 9.0.0-alpha.13 (2024-03-18)
+
+### Bugfix
+
+- Improve the generator by getting the `@plone/types` version from GH @sneridagh [#5889](https://github.com/plone/volto/issues/5889)
+
+## 9.0.0-alpha.12 (2024-03-18)
+
+### Feature
+
+- Copy over the `dependencies` and `devDependencies` from Volto in the generated project given the version provided @sneridagh [#5879](https://github.com/plone/volto/issues/5879)
+
+### Internal
+
+- Bump @plone/scripts and @plone/types to latests @sneridagh [#5888](https://github.com/plone/volto/issues/5888)
+
+## 9.0.0-alpha.11 (2024-03-14)
+
+### Bugfix
+
+- Upgrade all versions in generator templates @sneridagh [#5844](https://github.com/plone/volto/issues/5844)
+- Improve deps in project generator. @sneridagh @wesleybl [#5870](https://github.com/plone/volto/issues/5870)
+
+## 9.0.0-alpha.10 (2024-03-05)
+
+### Bugfix
+
+- Add new forced resolutions to projects too @sneridagh [#5839](https://github.com/plone/volto/issues/5839)
+
+## 9.0.0-alpha.9 (2024-03-05)
+
+### Bugfix
+
+- Ensure hidden files get added to new addon projects in generator-volto @instification [#5719](https://github.com/plone/volto/issues/5719)
+
+## 9.0.0-alpha.8 (2024-03-02)
+
+### Internal
+
+- Update dependencies @sneridagh [#5815](https://github.com/plone/volto/issues/5815)
+
+## 9.0.0-alpha.7 (2024-03-01)
+
+### Bugfix
+
+- Switch peerDependencies to Volto 18 for generator-volto alpha's/latest. [#5780](https://github.com/plone/volto/issues/5780)
+
+## 9.0.0-alpha.6 (2024-02-18)
+
+### Bugfix
+
+- Fix @plone/volto-slate path in moduleNameMapper. @wesleybl [#5743](https://github.com/plone/volto/issues/5743)
+
+## 9.0.0-alpha.5 (2024-02-06)
+
+### Bugfix
+
+- Fix tests in projects that involves TS files @sneridagh [#5738](https://github.com/plone/volto/issues/5738)
+
+### Documentation
+
+- Reorganize `README.md`, merging content into authoritative locations. Add `awesome_bot` to check links in all READMEs. @stevepiercy [#5437](https://github.com/plone/volto/issues/5437)
+
+## 9.0.0-alpha.4 (2024-02-02)
+
+### Bugfix
+
+- Clarify the default value of `--defaultAddonName`. @ichim-david
+  Clarify that the default add-on is always added when a project is generated. @ichim-david
+  Added note about how `--defaultAddonName` affects the always added theme add-on on project generation. @ichim-david [#5439](https://github.com/plone/volto/issues/5439)
+
+## 9.0.0-alpha.3 (2024-01-15)
+
+### Internal
+
+- ESlint general improvements @sneridagh [#5548](https://github.com/plone/volto/issues/5548)
+- Pin mrs.developer to an updated version, never to star. @sneridagh [#5593](https://github.com/plone/volto/issues/5593)
+
+### Documentation
+
+- Fix redirects. @stevepiercy [#5563](https://github.com/plone/volto/issues/5563)
+
+## 9.0.0-alpha.2 (2023-12-14)
+
+### Bugfix
+
+- Fixed the project generator's ESLint configuration, added code quality checks to the CI to ensure a generated project can run these checks, and added documentation for how to reconfigure ESLint in projects. @sneridagh [#5530](https://github.com/plone/volto/issues/5530)
+
 ## 9.0.0-alpha.1 (2023-12-02)
 
 ### Bugfix

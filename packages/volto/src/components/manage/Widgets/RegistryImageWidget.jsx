@@ -3,16 +3,18 @@
  * @module components/manage/Widgets/RegistryImageWidget
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Image, Dimmer } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
 import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
-import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import loadable from '@loadable/component';
 import { defineMessages, useIntl } from 'react-intl';
-import { toPublicURL, validateFileUploadSize } from '@plone/volto/helpers';
+import { toPublicURL } from '@plone/volto/helpers/Url/Url';
+import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 
 const imageMimetypes = [
   'image/png',
@@ -74,12 +76,15 @@ const RegistryImageWidget = (props) => {
   const { id, value, onChange, isDisabled } = props;
   const intl = useIntl();
 
-  const fileName = value?.split(';')[0];
-  const imgsrc = fileName
-    ? `${toPublicURL('/')}@@site-logo/${atob(
-        fileName.replace('filenameb64:', ''),
-      )}`
-    : '';
+  // State to manage the preview image source
+  const [previewSrc, setPreviewSrc] = useState(() => {
+    const fileName = value?.split(';')[0];
+    return fileName
+      ? `${toPublicURL('/')}@@site-logo/${atob(
+          fileName.replace('filenameb64:', ''),
+        )}`
+      : '';
+  });
 
   /**
    * Drop handler
@@ -100,8 +105,7 @@ const RegistryImageWidget = (props) => {
     reader.onload = function () {
       const fields = reader.result.match(/^data:(.*);(.*),(.*)$/);
       if (imageMimetypes.includes(fields[1])) {
-        let imagePreview = document.getElementById(`field-${id}-image`);
-        imagePreview.src = reader.result;
+        setPreviewSrc(reader.result);
       }
     };
     reader.readAsDataURL(files[0]);
@@ -113,12 +117,12 @@ const RegistryImageWidget = (props) => {
         {({ getRootProps, getInputProps, isDragActive }) => (
           <div className="file-widget-dropzone" {...getRootProps()}>
             {isDragActive && <Dimmer active></Dimmer>}
-            {imgsrc ? (
+            {previewSrc ? (
               <Image
                 className="image-preview"
                 id={`field-${id}-image`}
                 size="small"
-                src={imgsrc}
+                src={previewSrc}
               />
             ) : (
               <div className="dropzone-placeholder">
@@ -137,7 +141,6 @@ const RegistryImageWidget = (props) => {
                 )}
               </div>
             )}
-
             <label className="label-file-widget-input">
               {value
                 ? intl.formatMessage(messages.replaceFile)
@@ -166,6 +169,7 @@ const RegistryImageWidget = (props) => {
             disabled={isDisabled}
             onClick={() => {
               onChange(id, '');
+              setPreviewSrc(''); // Clear the preview image
             }}
           >
             <Icon name={deleteSVG} size="20px" />
@@ -187,10 +191,7 @@ RegistryImageWidget.propTypes = {
   description: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
-  value: PropTypes.shape({
-    '@type': PropTypes.string,
-    title: PropTypes.string,
-  }),
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   wrapped: PropTypes.bool,
 };

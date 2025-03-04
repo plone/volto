@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { apiRequest, ApiRequestParams } from '../../API';
+import { apiRequest, type ApiRequestParams } from '../../API';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { createAliasesMultipleDataSchema } from '../../interfaces/aliases';
+} from '../../validation/config';
+import { createAliasesMultipleDataSchema } from '../../validation/aliases';
 
 export const createAliasesMultipleArgsSchema = z.object({
   data: createAliasesMultipleDataSchema,

@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { ApiRequestParams, apiRequest } from '../../API';
+import { type ApiRequestParams, apiRequest } from '../../API';
 import {
-  PloneClientConfig,
+  type PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { unlinkTranslationDataSchema } from '../../interfaces/translations';
+} from '../../validation/config';
+import { unlinkTranslationDataSchema } from '../../validation/translations';
 
 export const unlinkTranslationArgsSchema = z.object({
   path: z.string(),
