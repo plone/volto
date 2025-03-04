@@ -48,7 +48,7 @@ const Schema = {
       type: 'boolean',
     },
   },
-  required: [],
+  required: [], // No fields are required by default
 };
 
 export default Schema;

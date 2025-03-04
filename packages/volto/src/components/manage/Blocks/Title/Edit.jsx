@@ -84,7 +84,7 @@ export const TitleBlockEdit = (props) => {
   }, [prevSelected, selected, editor]);
 
   useEffect(() => {
-    // undo/redo handlerr
+    // undo/redo handler
     const oldText = Node.string(editor);
     if (oldText !== text) {
       Transforms.insertText(editor, text, {
