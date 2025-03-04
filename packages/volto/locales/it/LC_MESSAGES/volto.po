@@ -4833,6 +4833,11 @@ msgstr "Seleziona un'immagine esistente"
 msgid "private"
 msgstr "Privato"
 
+#. Default: "Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates."
+#: components/manage/Widgets/DatetimeWidget
+msgid "publicationDateMessage"
+msgstr "Naviga in avanti per interagire con il calendario e selezionare una data. Premi il tasto del punto interrogativo per ottenere le scorciatoie da tastiera per cambiare le date."
+
 #. Default: "Published"
 #: components/manage/Contents/ContentsItem
 msgid "published"

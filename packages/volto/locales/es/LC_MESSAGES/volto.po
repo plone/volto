@@ -4840,6 +4840,11 @@ msgstr ""
 msgid "private"
 msgstr "Privado"
 
+#. Default: "Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates."
+#: components/manage/Widgets/DatetimeWidget
+msgid "publicationDateMessage"
+msgstr "Navega hacia adelante para interactuar con el calendario y seleccionar una fecha. Presiona la tecla de interrogación para obtener los atajos de teclado para cambiar las fechas."
+
 #. Default: "Published"
 #: components/manage/Contents/ContentsItem
 msgid "published"

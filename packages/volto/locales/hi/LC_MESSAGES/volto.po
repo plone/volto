@@ -4833,6 +4833,11 @@ msgstr ""
 msgid "private"
 msgstr "निजी"
 
+#. Default: "Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates."
+#: components/manage/Widgets/DatetimeWidget
+msgid "publicationDateMessage"
+msgstr "कैलेंडर के साथ इंटरैक्ट करने और तारीख चुनने के लिए आगे बढ़ें। तारीख बदलने के लिए कीबोर्ड शॉर्टकट देखने के लिए प्रश्नवाचक चिह्न कुंजी दबाएं।"
+
 #. Default: "Published"
 #: components/manage/Contents/ContentsItem
 msgid "published"

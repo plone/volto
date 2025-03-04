@@ -27,6 +27,11 @@ const messages = defineMessages({
     id: 'Time',
     defaultMessage: 'Time',
   },
+  publicationDateMessage: {
+    id: 'publicationDateMessage',
+    defaultMessage:
+      'Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.',
+  },
 });
 
 const PrevIcon = () => (
@@ -151,6 +156,10 @@ const DatetimeWidgetComponent = (props) => {
   const datetime = getInternalValue();
   const isDateOnly = getDateOnly();
 
+  const screenReaderInputMessage = intl.formatMessage(
+    messages.publicationDateMessage,
+  );
+
   return (
     <FormFieldWrapper {...props}>
       <div className="date-time-widget-wrapper">
@@ -175,6 +184,8 @@ const DatetimeWidgetComponent = (props) => {
             navNext={<NextIcon />}
             id={`${id}-date`}
             placeholder={intl.formatMessage(messages.date)}
+            ariaLabel={props.title}
+            screenReaderInputMessage={screenReaderInputMessage}
           />
         </div>
         {!isDateOnly && (
