@@ -138,7 +138,7 @@ const BlocksForm = (props) => {
   };
 
   const onMutateBlock = (id, value) => {
-    const newFormData = mutateBlock(properties, id, value);
+    const newFormData = mutateBlock(properties, id, value, {}, intl);
     onChangeFormData(newFormData);
   };
 
@@ -149,6 +149,8 @@ const BlocksForm = (props) => {
       value,
       current,
       config.experimental.addBlockButton.enabled ? 1 : 0,
+      {},
+      intl,
     );
 
     const blocksFieldname = getBlocksFieldname(newFormData);
@@ -166,7 +168,7 @@ const BlocksForm = (props) => {
 
   const onAddBlock = (type, index) => {
     if (editable) {
-      const [id, newFormData] = addBlock(properties, type, index);
+      const [id, newFormData] = addBlock(properties, type, index, {}, intl);
       const blocksFieldname = getBlocksFieldname(newFormData);
       const blockData = newFormData[blocksFieldname][id];
       newFormData[blocksFieldname][id] = applyBlockDefaults({
@@ -188,7 +190,7 @@ const BlocksForm = (props) => {
   const onDeleteBlock = (id, selectPrev) => {
     const previous = previousBlockId(properties, id);
 
-    const newFormData = deleteBlock(properties, id);
+    const newFormData = deleteBlock(properties, id, intl);
     onChangeFormData(newFormData);
 
     onSelectBlock(selectPrev ? previous : null);
@@ -260,7 +262,7 @@ const BlocksForm = (props) => {
 
   for (const [n, v] of blockList) {
     if (!v) {
-      const newFormData = deleteBlock(properties, n);
+      const newFormData = deleteBlock(properties, n, intl);
       onChangeFormData(newFormData);
     }
   }

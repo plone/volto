@@ -1,0 +1,1 @@
+Fixed `AlternateHrefLangs` component, missing `FlattenToAppURL`. @sneridagh

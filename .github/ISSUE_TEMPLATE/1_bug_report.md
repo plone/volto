@@ -1,8 +1,8 @@
 ---
-name: Bug report
-about: Create a report to help us improve Volto
+name: '🐞 Bug report'
+about: 'Create a report to help us improve Volto'
 title: ''
-labels: ['01 type: bug', 'needs: triage']
+labels: ['01 type: bug', '30 needs: triage']
 assignees: ''
 ---
 

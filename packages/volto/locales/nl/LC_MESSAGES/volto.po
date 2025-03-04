@@ -628,7 +628,7 @@ msgstr "Wijzigingen zijn opgeslagen."
 #. Default: "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
 #: components/manage/Blocks/Teaser/schema
 msgid "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
-msgstr "Vink dit vakje aan om titel, beschrijving of afbeelding van een doel inhoudsitem voor dit voorproefje te wijzigen. Laat het uitgevinkt om updates te tonen voor het doel inhoudsitem indien het later bewerkt zou worden."
+msgstr "Vink dit vakje aan om titel, beschrijving of afbeelding van een doel inhoudsitem voor deze teaser te wijzigen. Laat het uitgevinkt om updates te tonen voor het doel inhoudsitem indien het later bewerkt zou worden."
 
 #. Default: "Checkbox"
 #: components/manage/Widgets/SchemaWidget
@@ -923,7 +923,7 @@ msgstr "Huidig wachtwoord"
 #. Default: "Customize teaser content"
 #: components/manage/Blocks/Teaser/schema
 msgid "Customize teaser content"
-msgstr "Wijzig inhoud voorproefje"
+msgstr "Wijzig inhoud teaser"
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
@@ -1649,7 +1649,7 @@ msgstr "Google Maps insluit blok"
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
 msgid "Grid"
-msgstr "Rooster"
+msgstr "Grid"
 
 #. Default: "Group"
 #: components/manage/Sharing/Sharing
@@ -1922,7 +1922,7 @@ msgstr "Ongeldig blok - wordt verwijderd bij opslaan"
 #. Default: "Invalid teaser source"
 #: components/manage/Blocks/Teaser/Data
 msgid "Invalid teaser source"
-msgstr "Ongeldige bron voorproefje"
+msgstr "Ongeldige bron teaser"
 
 #. Default: "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 #: helpers/MessageLabels/MessageLabels
@@ -3020,7 +3020,7 @@ msgstr "Resultaten limiet"
 #. Default: "Results preview"
 #: components/manage/Blocks/Listing/Edit
 msgid "Results preview"
-msgstr "Resultaten voorproefje"
+msgstr "Resultaten voorvertoning"
 
 #. Default: "Results template"
 #: components/manage/Blocks/Search/SearchBlockEdit
@@ -3686,7 +3686,7 @@ msgstr "Doel aantal objecten in geheugen per cache"
 #. Default: "Teaser"
 #: components/manage/Blocks/Teaser/schema
 msgid "Teaser"
-msgstr "Voorproefje"
+msgstr "teaser"
 
 #. Default: "Text"
 #: components/manage/Widgets/SchemaWidget
