@@ -447,6 +447,7 @@ class Edit extends Component {
                     />
                   </Button>
                   <Button
+                    type="button"
                     className="cancel"
                     aria-label={this.props.intl.formatMessage(messages.cancel)}
                     onClick={() => this.onCancel()}

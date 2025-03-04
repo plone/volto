@@ -66,6 +66,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                   aria-label="Left"
                   className="ui basic icon button"
                   onClick={[Function]}
+                  type="button"
                 >
                   <svg
                     className="icon"
@@ -94,6 +95,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                   aria-label="Right"
                   className="ui basic icon button"
                   onClick={[Function]}
+                  type="button"
                 >
                   <svg
                     className="icon"
@@ -122,6 +124,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                   aria-label="Center"
                   className="ui active basic icon button"
                   onClick={[Function]}
+                  type="button"
                 >
                   <svg
                     className="icon"
@@ -150,6 +153,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                   aria-label="Full"
                   className="ui basic icon button"
                   onClick={[Function]}
+                  type="button"
                 >
                   <svg
                     className="icon"

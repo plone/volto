@@ -249,6 +249,7 @@ class Diff extends Component {
                 ],
                 (view) => (
                   <Button
+                    type="button"
                     key={view.id}
                     value={view.id}
                     active={this.props.view === view.id}
