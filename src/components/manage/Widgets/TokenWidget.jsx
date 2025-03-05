@@ -173,6 +173,7 @@ class TokenWidget extends Component {
       <FormFieldWrapper {...this.props}>
         <CreatableSelect
           id={`field-${this.props.id}`}
+          aria-labelledby={`fieldset-${this.props.fieldSet}-field-label-${this.props.id}`}
           key={this.props.id}
           menuShouldScrollIntoView={false}
           isDisabled={this.props.isDisabled}
@@ -198,7 +199,6 @@ class TokenWidget extends Component {
           noOptionsMessage={() =>
             this.props.intl.formatMessage(messages.no_options)
           }
-          aria-label={this.props.title}
         />
       </FormFieldWrapper>
     );
