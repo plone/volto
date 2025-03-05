@@ -3763,9 +3763,9 @@ msgstr "प्रदान किया गया वैकल्पिक य�
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "रजिस्ट्रेशन प्रक्रिया सफल रही है। कृपया अपने ईमेल इनबॉक्स में अपने खाते को सक्रिय करने के लिए जानकारी के लिए जाँच करें।"
 
-#. Default: "The selected default language must be in the list of the field "Available languages""
+#. Default: "The selected default language must be in the list of the field 'Available languages'"
 #: helpers/MessageLabels/MessageLabels
-msgid "The selected default language must be in the list of the field "Available languages""
+msgid "The selected default language must be in the list of the field 'Available languages'"
 msgstr ""
 
 #. Default: "The site configuration is outdated and needs to be upgraded."

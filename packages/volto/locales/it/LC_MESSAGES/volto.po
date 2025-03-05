@@ -3763,9 +3763,9 @@ msgstr "L'url alternativo inserito è già stato utilizzato!"
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "La registrazione è avvenuta correttamente. Per favore controlla la tua casella di posta per informazioni su come attivare il tuo account."
 
-#. Default: "The selected default language must be in the list of the field "Available languages""
+#. Default: "The selected default language must be in the list of the field 'Available languages'"
 #: helpers/MessageLabels/MessageLabels
-msgid "The selected default language must be in the list of the field "Available languages""
+msgid "The selected default language must be in the list of the field 'Available languages'"
 msgstr ""
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
