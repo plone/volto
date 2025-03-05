@@ -403,4 +403,9 @@ export const messages = defineMessages({
     defaultMessage:
       'The number of items must be greater than or equal to {minItems}',
   },
+  defaultLanguage: {
+    id: 'The selected default language must be in the list of the field "Available languages"',
+    defaultMessage:
+      'The selected default language must be in the list of the field "Available languages"',
+  },
 });

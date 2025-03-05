@@ -3768,6 +3768,11 @@ msgstr "Ehdotettu vaihtoehtoinen URL on jo olemassa!"
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "Rekisteröinti onnistui. Tarkista, saitko sähköpostiisi ohjeet käyttäjätunnuksesi aktivoimiseksi."
 
+#. Default: "The selected default language must be in the list of the field "Available languages""
+#: helpers/MessageLabels/MessageLabels
+msgid "The selected default language must be in the list of the field "Available languages""
+msgstr ""
+
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UpgradeControlPanel

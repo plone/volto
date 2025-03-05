@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-12-06T13:45:21.266Z\n"
+"POT-Creation-Date: 2025-03-05T10:53:16.765Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -3763,6 +3763,11 @@ msgstr ""
 #. Default: "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
+msgstr ""
+
+#. Default: "The selected default language must be in the list of the field "Available languages""
+#: helpers/MessageLabels/MessageLabels
+msgid "The selected default language must be in the list of the field "Available languages""
 msgstr ""
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
