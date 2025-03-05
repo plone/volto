@@ -18,6 +18,7 @@ const ImageGallery = loadable(() => import('react-image-gallery'));
 const renderLeftNav = (onClick, disabled) => {
   return (
     <Button
+      type="button"
       className="image-gallery-icon image-gallery-left-nav primary basic"
       disabled={disabled}
       onClick={onClick}
@@ -29,6 +30,7 @@ const renderLeftNav = (onClick, disabled) => {
 const renderRightNav = (onClick, disabled) => {
   return (
     <Button
+      type="button"
       className="image-gallery-icon image-gallery-right-nav primary basic"
       disabled={disabled}
       onClick={onClick}

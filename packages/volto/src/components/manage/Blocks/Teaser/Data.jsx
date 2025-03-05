@@ -117,6 +117,7 @@ const TeaserData = (props) => {
     <Button.Group>
       <Button
         aria-label={intl.formatMessage(messages.resetTeaser)}
+        type="button"
         basic
         disabled={isReseteable}
         onClick={() => reset()}
@@ -130,6 +131,7 @@ const TeaserData = (props) => {
     <Button.Group className="refresh teaser">
       <Button
         aria-label={intl.formatMessage(messages.refreshTeaser)}
+        type="button"
         basic
         onClick={() => refresh()}
         disabled={isEmpty(data.href)}
