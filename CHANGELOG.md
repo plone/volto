@@ -17,6 +17,18 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.21.0 (2025-03-05)
+
+### Feature
+
+- Provide language alternate links @erral [#6616](https://github.com/plone/volto/issues/6616)
+
+### Bugfix
+
+- In `RichTextWidget` and `HtmlSlateWidget`, fix breaking a list by typing Enter. @nileshgulia1 [#6570](https://github.com/plone/volto/issues/6570)
+- Display the appropriately sized image to eliminate blurring from upsizing smaller images in the `srcSet` generation. @giuliaghisini [#6637](https://github.com/plone/volto/issues/6637)
+- a11y - Added id attribute to checkbox widget for proper identification and fixes label functionality for screen readers. @Wagner3UB [#6771](https://github.com/plone/volto/issues/6771)
+
 ## 17.20.4 (2025-01-07)
 
 ### Bugfix
