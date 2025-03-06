@@ -1,1 +1,1 @@
-Fix MyST warnings about bad references, and remove cookiecutter-plone-starter link. @stevepiercy
+Fix MyST warnings about bad references, remove cookiecutter-plone-starter link, and remove `rietveldschroderhuis.nl` due to repeated failures and no response in https://github.com/collective/awesome-volto/pull/27. @stevepiercy
