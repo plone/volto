@@ -17,7 +17,7 @@ exports[`renders an url widget component 1`] = `
           className="wrapper"
         >
           <label
-            htmlFor="field-test-url"
+            htmlFor="fieldset-default-field-label-test-url"
             id="fieldset-default-field-label-test-url"
           >
             My Url
