@@ -1,0 +1,1 @@
+To ensure accessibility, an `aria-labelledby` attribute was added to the editable part of the `Slate` component. @Wagner3UB
