@@ -25,7 +25,10 @@ exports[`CorsError renders a not found component 1`] = `
     There is a configuration problem on the backend
     <br />
     <a
-      href="http://localhost:8080/Plone"
+      className={null}
+      href=""
+      target="_self"
+      title={null}
     >
       http://localhost:8080/Plone
     </a>

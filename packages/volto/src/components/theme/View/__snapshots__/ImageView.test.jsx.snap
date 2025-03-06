@@ -15,7 +15,10 @@ exports[`renders an image view component 1`] = `
     Hi
   </p>
   <a
+    className={null}
     href="file:///preview.jpg"
+    target="_self"
+    title={null}
   >
     <img
       alt="Hello World!"
