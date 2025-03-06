@@ -353,14 +353,14 @@ Used by Volto, you can also use it in other JavaScript frameworks and environmen
 
 ### Volto project generator
 
-`@plone/generator-volto` is a Yeoman generator that helps you set up Volto via command line.
-It generates all the boilerplate needed to start developing a Plone Volto project.
-It is used by [CookieCutter Plone Starter](https://github.com/collective/cookiecutter-plone-starter), the recommended way to set up Plone projects.
-The generator features an `addon` template for scaffolding Volto add-ons in your projects.
-
 ```{deprecated} 18.0.0-alpha.43
 For Volto 18, `@plone/generator-volto` is replaced by [Cookieplone](https://github.com/plone/cookieplone).
 ```
+
+`@plone/generator-volto` is a Yeoman generator that helps you set up Volto via command line.
+It generates all the boilerplate needed to start developing a Plone Volto project.
+It was used by `cookiecutter-plone-starter`, the deprecated way to set up Plone projects.
+The generator features an `addon` template for scaffolding Volto add-ons in your projects.
 
 
 ## Supported frontends
