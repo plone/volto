@@ -46,7 +46,7 @@ exports[`datetime widget converts UTC date and adapt to local datetime 1`] = `
                     >
                       <input
                         aria-describedby="DateInput__screen-reader-message-my-field-date"
-                        aria-label="Date"
+                        aria-label="My field"
                         autocomplete="off"
                         class="DateInput_input DateInput_input_1"
                         id="my-field-date"
@@ -149,7 +149,7 @@ exports[`renders a datetime widget component 1`] = `
                     >
                       <input
                         aria-describedby="DateInput__screen-reader-message-my-field-date"
-                        aria-label="Date"
+                        aria-label="My field"
                         autocomplete="off"
                         class="DateInput_input DateInput_input_1"
                         id="my-field-date"
