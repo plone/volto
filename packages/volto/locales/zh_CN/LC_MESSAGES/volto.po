@@ -4839,6 +4839,11 @@ msgstr ""
 msgid "private"
 msgstr "保密"
 
+#. Default: "Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates."
+#: components/manage/Widgets/DatetimeWidget
+msgid "publicationDateMessage"
+msgstr "向前导航以与日历交互并选择日期。按问号键可获取更改日期的键盘快捷键。向前导航以与日历交互并选择日期。按问号键可获取更改日期的键盘快捷键。"
+
 #. Default: "Published"
 #: components/manage/Contents/ContentsItem
 msgid "published"
