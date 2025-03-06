@@ -1610,7 +1610,10 @@ class SchemaWidget extends Component {
                 <Field
                   {...this.props.value.properties[field]}
                   id={field}
-                  required={this.props.value.required.indexOf(field) !== -1}
+                  required={
+                    this.props.value.required &&
+                    this.props.value.required.indexOf(field) !== -1
+                  }
                   widgets={this.props.widgets}
                   component={this.props.component}
                   onEdit={this.onShowEditField}
