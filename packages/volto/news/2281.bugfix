@@ -1,0 +1,1 @@
+Fixed a crash in QueryWidget when used as the first form widget by checking this.node before calling focus(). @Haiderkhan64

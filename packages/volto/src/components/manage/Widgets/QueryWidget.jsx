@@ -105,7 +105,7 @@ export class QuerystringWidgetComponent extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (this.props.focus) {
+    if (this.props.focus && this.node) {
       this.node.focus();
     }
     this.props.getQuerystring();
