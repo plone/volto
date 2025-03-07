@@ -539,7 +539,7 @@ class Toolbar extends Component {
                     {this.props.content &&
                       ((this.props.content.is_folderish &&
                         this.props.types.length > 0) ||
-                        (config.settings.isMultilingual &&
+                        (this.props.isMultilingual &&
                           this.props.content['@components']?.translations)) && (
                         <button
                           className="add"
@@ -649,6 +649,7 @@ export default compose(
       pathname: props.pathname,
       types: filter(state.types.types, 'addable'),
       unlockRequest: state.content.unlock,
+      isMultilingual: state.addons.isMultilingual,
     }),
     { getTypes, listActions, setExpandedToolbar, unlockContent },
   ),

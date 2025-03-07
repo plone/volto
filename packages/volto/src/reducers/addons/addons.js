@@ -16,6 +16,7 @@ const initialState = {
   upgradableAddons: [],
   loaded: false,
   loading: false,
+  isMultilingual: false,
 };
 
 /**
@@ -69,6 +70,10 @@ export default function addons(state = initialState, action = {}) {
           .sort(addonsSorter),
         loaded: true,
         loading: false,
+        isMultilingual: action.result.items
+          .filter((elem) => elem.is_installed === true)
+          .map((item) => item['id'])
+          .includes('plone.app.multilingual'),
       };
     case `${INSTALL_ADDON}_SUCCESS`:
     case `${UNINSTALL_ADDON}_SUCCESS`:

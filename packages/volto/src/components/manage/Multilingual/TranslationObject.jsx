@@ -6,6 +6,7 @@ import { Provider } from 'react-intl-redux';
 import { Form, Field } from '@plone/volto/components/manage/Form';
 import config from '@plone/volto/registry';
 import configureStore from '@plone/volto/store';
+import { useSelector } from 'react-redux';
 import Api from '@plone/volto/helpers/Api/Api';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
@@ -38,15 +39,17 @@ const TranslationObject = ({
   const handleMenuClick = (e, { name }) => {
     setActiveMenu(name);
   };
+  const availableLanguages = useSelector(
+    (state) => state.site.data['plone.available_languages'],
+  );
 
   useEffect(() => {
     if (
       !loadingLocale &&
-      Object.keys(locales).length < config.settings.supportedLanguages.length
+      Object.keys(locales).length < availableLanguages.length
     ) {
       setLoadingLocale(true);
-      let lang =
-        config.settings.supportedLanguages[Object.keys(locales).length];
+      let lang = availableLanguages[Object.keys(locales).length];
       const langFileName = toGettextLang(lang);
       import(
         /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
@@ -55,7 +58,7 @@ const TranslationObject = ({
         setLoadingLocale(false);
       });
     }
-  }, [loadingLocale, locales]);
+  }, [loadingLocale, locales, availableLanguages]);
 
   const api = new Api();
   const history = createBrowserHistory();

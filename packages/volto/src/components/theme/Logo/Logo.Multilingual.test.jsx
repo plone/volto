@@ -3,13 +3,8 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
-import config from '@plone/volto/registry';
 
 import Logo from './Logo';
-
-beforeAll(() => {
-  config.settings.isMultilingual = true;
-});
 
 const mockStore = configureStore();
 
@@ -31,6 +26,9 @@ describe('Multilingual Logo', () => {
       },
       site: {
         data: { 'plone.site_title': 'Plone Site' },
+      },
+      addons: {
+        isMultilingual: true,
       },
     });
     const component = renderer.create(
@@ -63,6 +61,9 @@ describe('Multilingual Logo', () => {
         data: {
           'plone.site_title': 'Plone Site',
         },
+      },
+      addons: {
+        isMultilingual: true,
       },
     });
     const component = renderer.create(
@@ -98,6 +99,9 @@ describe('Multilingual Logo', () => {
           'plone.site_title': 'Plone Site',
         },
       },
+      addons: {
+        isMultilingual: true,
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
@@ -131,6 +135,9 @@ describe('Multilingual Logo', () => {
             'http://localhost:3000/@@site-logo/logo.cab945d8.svg',
           'plone.site_title': 'Plone Site',
         },
+      },
+      addons: {
+        isMultilingual: true,
       },
     });
     const component = renderer.create(

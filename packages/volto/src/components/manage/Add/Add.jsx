@@ -223,7 +223,7 @@ class Add extends Component {
         ? keys(this.props.schema.definitions)
         : null,
       '@type': this.props.type,
-      ...(config.settings.isMultilingual &&
+      ...(this.props.isMultilingual &&
         this.props.location?.state?.translationOf && {
           translation_of: this.props.location.state.translationOf,
           language: this.props.location.state.language,
@@ -509,6 +509,7 @@ export default compose(
       pathname: props.location.pathname,
       returnUrl: qs.parse(props.location.search).return_url,
       type: qs.parse(props.location.search).type,
+      isMultilingual: state.addons.isMultilingual,
     }),
     { createContent, getSchema, changeLanguage, setFormData },
   ),

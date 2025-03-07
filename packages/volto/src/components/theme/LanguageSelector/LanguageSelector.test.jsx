@@ -7,11 +7,6 @@ import config from '@plone/volto/registry';
 
 import LanguageSelector from './LanguageSelector';
 
-beforeAll(() => {
-  config.settings.isMultilingual = true;
-  config.settings.supportedLanguages = ['de', 'es'];
-});
-
 const mockStore = configureStore();
 
 describe('LanguageSelector', () => {
@@ -29,6 +24,12 @@ describe('LanguageSelector', () => {
             },
           },
         },
+      },
+      site: {
+        'plone.available_languages': ['de', 'es'],
+      },
+      addons: {
+        isMultilingual: true,
       },
     });
     const component = renderer.create(
