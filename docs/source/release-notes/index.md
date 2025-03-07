@@ -17,6 +17,20 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.9.2 (2025-03-07)
+
+### Bugfix
+
+- Does not show empty `class` attribute when rendering `img` tag with `Image` component. @wesleybl [#6788](https://github.com/plone/volto/issues/6788)
+- Fixed button types across several components to allow reuse in more complex forms @pnicolli [#6791](https://github.com/plone/volto/issues/6791)
+- Fixed `AlternateHrefLangs` component, missing `FlattenToAppURL`. @sneridagh [#6799](https://github.com/plone/volto/issues/6799)
+- a11y - Added id attribute to checkbox widget for proper identification and fixes label functionality for screen readers. @Wagner3UB [#6802](https://github.com/plone/volto/issues/6802)
+
+### Documentation
+
+- Improve the wording on theming docs. @erral [#6767](https://github.com/plone/volto/issues/6767)
+- Fix MyST warnings about bad references, remove cookiecutter-plone-starter link, and remove `rietveldschroderhuis.nl` due to repeated failures and no response in https://github.com/collective/awesome-volto/pull/27. @stevepiercy [#6812](https://github.com/plone/volto/issues/6812)
+
 ## 18.9.1 (2025-02-20)
 
 ### Bugfix
