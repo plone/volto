@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { List, Image } from 'semantic-ui-react';
+import { List } from 'semantic-ui-react';
 import { Link as RouterLink } from 'react-router-dom';
 import cx from 'classnames';
 import { compose } from 'redux';
@@ -13,6 +13,7 @@ import UniversalLink from '@plone/volto/components/manage/UniversalLink/Universa
 import { withContentNavigation } from './withContentNavigation';
 
 import leftIcon from '@plone/volto/icons/left-key.svg';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 const messages = defineMessages({
   navigation: {
@@ -38,7 +39,11 @@ function renderNode(node, parentLevel) {
               in_path: node.is_in_path,
             })}
           >
-            {node.thumb ? <Image src={flattenToAppURL(node.thumb)} /> : ''}
+            {node.thumb ? (
+              <Image src={flattenToAppURL(node.thumb)} className="ui image" />
+            ) : (
+              ''
+            )}
             {node.title}
             {node.is_current ? (
               <List.Content className="active-indicator">
