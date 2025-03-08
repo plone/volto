@@ -1,4 +1,5 @@
 describe('Listing Block Tests', () => {
+  let prefixPath;
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     cy.intercept('GET', '/**/Document').as('schema');
@@ -15,6 +16,7 @@ describe('Listing Block Tests', () => {
 
     cy.visit('/');
     cy.wait('@content');
+    prefixPath = Cypress.env('prefixPath') || '';
   });
 
   it('Add Listing block - with no results', () => {
@@ -112,7 +114,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-page-test',
+      `${prefixPath}/my-page/my-page-test`,
     );
   });
 
@@ -292,7 +294,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-page-test',
+      `${prefixPath}/my-page/my-page-test`,
     );
   });
 
@@ -420,7 +422,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/page-two',
+      `${prefixPath}/my-page/page-two`,
     );
   });
 
@@ -474,7 +476,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page',
+      `${prefixPath}/my-page`,
     );
   });
 
@@ -565,7 +567,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-page-test',
+      `${prefixPath}/my-page/my-page-test`,
     );
   });
 
@@ -846,7 +848,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-folder',
+      `${prefixPath}/my-page/my-folder`,
     );
     cy.get('.listing-item').should(($els) => {
       expect($els).to.have.length(2);
@@ -984,7 +986,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-folder',
+      `${prefixPath}/my-page/my-folder`,
     );
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder' });
     cy.get('.listing-item').should(($els) => {
@@ -1100,6 +1102,8 @@ describe('Listing Block Tests', () => {
     cy.get('.logo').first().should('be.visible').click();
     cy.url().should('not.include', '=2');
     cy.url().should('not.include', '=3');
+    //test back button
+    cy.wait(1000);
 
     cy.navigate('/my-page');
     cy.get('.ui.pagination.menu a[value="2"]')
@@ -1182,7 +1186,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-news-item-test',
+      `${prefixPath}/my-page/my-news-item-test`,
     );
   });
 

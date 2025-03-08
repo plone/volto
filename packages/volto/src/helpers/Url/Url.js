@@ -162,11 +162,82 @@ export const isCmsUi = memoize((currentPathname) => {
  */
 export function flattenHTMLToAppURL(html) {
   const { settings } = config;
+  const replacer = config.settings.prefixPath ?? '';
   return settings.internalApiPath
     ? html
-        .replace(new RegExp(settings.internalApiPath, 'g'), '')
-        .replace(new RegExp(settings.apiPath, 'g'), '')
-    : html.replace(new RegExp(settings.apiPath, 'g'), '');
+        .replace(new RegExp(settings.internalApiPath, 'g'), replacer)
+        .replace(new RegExp(settings.apiPath, 'g'), replacer)
+    : html.replace(new RegExp(settings.apiPath, 'g'), replacer);
+}
+
+/**
+ * Adds the prefix to the URL if the prefix is defined and it's an internal.
+ * This function should be used where it is not possible to use the Link and UniversalLink components.
+ * @method addPrefixPath
+ * @param {string} url Some URL
+ * @returns {string} Perfixed URL
+ */
+export function addPrefixPath(url) {
+  const { prefixPath, legacyTraverse } = config.settings;
+  const APISUFIX = legacyTraverse ? '' : '/++api++';
+  const isDevelopment = process.env.NODE_ENV !== 'production';
+
+  if (url === '/') {
+    return prefixPath || url;
+  }
+
+  if (!prefixPath || !isInternalURL(url)) {
+    return url;
+  }
+
+  const isAlreadyPrefixed = (urlToCheck) => {
+    try {
+      const urlObj = new URL(urlToCheck);
+      return urlObj.pathname.startsWith(prefixPath);
+    } catch {
+      return urlToCheck.startsWith(prefixPath);
+    }
+  };
+
+  if (isDevelopment) {
+    const isAbsolute = url.startsWith('http://') || url.startsWith('https://');
+    const isApiCall = APISUFIX ? url.includes(APISUFIX) : false;
+
+    // Do not prefix API URLs in development
+    if (isApiCall) {
+      return url;
+    }
+
+    // Internal absolute URLs (non-API)
+    if (isAbsolute) {
+      try {
+        const parsedUrl = new URL(url);
+        const newPath = `${prefixPath}${parsedUrl.pathname}`.replace(
+          /\/+/g,
+          '/',
+        );
+        return `${parsedUrl.origin}${newPath}`;
+      } catch {
+        return url;
+      }
+    }
+
+    // Relative URLs
+    return isAlreadyPrefixed(url)
+      ? url
+      : `${prefixPath}${url}`.replace(/\/+/g, '/');
+  }
+
+  // Logic for production mode
+  try {
+    const parsedUrl = new URL(url);
+    const newPath = `${prefixPath}${parsedUrl.pathname}`.replace(/\/+/g, '/');
+    return `${parsedUrl.origin}${newPath}`;
+  } catch {
+    return isAlreadyPrefixed(url)
+      ? url
+      : `${prefixPath}${url}`.replace(/\/+/g, '/');
+  }
 }
 
 /**

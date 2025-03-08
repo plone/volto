@@ -8,14 +8,14 @@ import PropTypes from 'prop-types';
 import { Container as SemanticContainer } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import prettybytes from 'pretty-bytes';
-import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import config from '@plone/volto/registry';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 
 /**
- * Image view component class.
+ * Image view component.
  * @function ImageView
  * @params {object} content Content object.
- * @returns {string} Markup of the component.
+ * @returns {JSX.Element} Markup of the component.
  */
 const ImageView = ({ content }) => {
   const Image = config.getComponent({ name: 'Image' }).component;
@@ -32,7 +32,7 @@ const ImageView = ({ content }) => {
         <p className="documentDescription">{content.description}</p>
       )}
       {content?.image?.download && (
-        <a href={flattenToAppURL(content.image.download)}>
+        <UniversalLink href={content.image.download} forceA>
           <Image
             item={content}
             imageField="image"
@@ -51,7 +51,7 @@ const ImageView = ({ content }) => {
               defaultMessage="Click to download full sized image"
             />
           </figcaption>
-        </a>
+        </UniversalLink>
       )}
     </Container>
   );
