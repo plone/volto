@@ -1,0 +1,1 @@
+The Order side panel now renders only when the "Order" tab is active. Previously, the panel would render unnecessarily even when inactive. @Abhishek-17h
