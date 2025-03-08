@@ -26,12 +26,16 @@ jobs:
           filters: |
             seven:
               - 'apps/seven/**'
+            quanta:
+              - 'apps/quanta/**'
             client:
               - 'packages/client/**'
             registry:
               - 'packages/registry/**'
             components:
               - 'packages/components/**'
+            cmsui:
+              - 'packages/cmsui/**'
             helpers:
               - 'packages/providers/**'
             types:
@@ -56,6 +60,22 @@ jobs:
         run: |
           git fetch --no-tags origin 7
           towncrier check --compare-with origin/7 --dir apps/seven
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
+      - name: quanta changelog check
+        if: steps.filter.outputs.quanta == 'true'
+        run: |
+          git fetch --no-tags origin 7
+          towncrier check --compare-with origin/7 --dir apps/quanta
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
+      - name: CMSUI changelog check
+        if: steps.filter.outputs.cmsui == 'true'
+        run: |
+          git fetch --no-tags origin 7
+          towncrier check --compare-with origin/7 --dir packages/cmsui
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 

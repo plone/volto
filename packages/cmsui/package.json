@@ -1,0 +1,77 @@
+{
+  "name": "@plone/cmsui",
+  "description": "Plone CMSUI based in Quanta DS",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "url": "https://plone.org"
+    }
+  ],
+  "funding": "https://github.com/sponsors/plone",
+  "license": "MIT",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plone/volto.git",
+    "directory": "packages/cmsui"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/volto/issues"
+  },
+  "homepage": "https://plone.org",
+  "keywords": [
+    "volto",
+    "plone",
+    "plone6",
+    "react",
+    "helpers"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "test": "vitest",
+    "check-ts": "tsc --project tsconfig.json",
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@plone/blocks": "workspace:*",
+    "@plone/client": "workspace:*",
+    "@plone/components": "workspace:*",
+    "@plone/registry": "workspace:*",
+    "react-router": "catalog:",
+    "tailwindcss": "^4.0.9",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@plone/types": "workspace:*",
+    "@testing-library/jest-dom": "6.4.2",
+    "@testing-library/react": "14.2.1",
+    "@types/jest-axe": "^3.5.7",
+    "@types/node": "^20",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "eslint-plugin-storybook": "^0.11.2",
+    "jest-axe": "^8.0.0",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "release-it": "catalog:",
+    "tsconfig": "workspace:*",
+    "typescript": "catalog:",
+    "vitest": "catalog:",
+    "vitest-axe": "^0.1.0"
+  }
+}
