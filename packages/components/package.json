@@ -45,9 +45,10 @@
   "scripts": {
     "build": "tsup && pnpm build:css",
     "build:force": "tsup && pnpm build:css",
-    "build:css": "pnpm build:basic && pnpm build:quanta",
+    "build:css": "pnpm build:basic && pnpm build:quanta && pnpm build:tailwind",
     "build:basic": "lightningcss --browserslist --bundle --sourcemap src/styles/basic/main.css -o basic.css && mv basic.css* dist/.",
     "build:quanta": "lightningcss --browserslist --bundle --sourcemap src/styles/quanta/main.css -o quanta.css && mv quanta.css* dist/.",
+    "build:tailwind": "mkdir -p dist/tailwind && cp src/styles/tailwind/base.css dist/tailwind/base.css",
     "check:exports": "attw --pack .",
     "check:ts": "tsc --project tsconfig.json",
     "test": "vitest --passWithNoTests",
@@ -80,7 +81,11 @@
     "@react-spectrum/utils": "^3.12.1",
     "@storybook/test": "^8.5.3",
     "clsx": "^2.1.1",
-    "react-aria-components": "catalog:"
+    "react-aria-components": "catalog:",
+    "tailwind-merge": "^3.0.1",
+    "tailwind-variants": "^0.3.1",
+    "tailwindcss": "^4.0.4",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",
@@ -95,6 +100,7 @@
     "@storybook/react": "^8.5.3",
     "@storybook/react-vite": "^8.5.3",
     "@storybook/theming": "^8.5.3",
+    "@tailwindcss/vite": "4.0.7",
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "14.2.1",
     "@types/jest-axe": "^3.5.7",
@@ -108,11 +114,13 @@
     "jsdom": "^22.1.0",
     "lightningcss": "^1.29.0",
     "lightningcss-cli": "^1.29.1",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "release-it": "catalog:",
     "storybook": "^8.5.3",
     "tsup": "^8.3.5",
     "typescript": "catalog:",
     "vite": "catalog:",
+    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "catalog:",
     "vitest-axe": "^0.1.0"
   },
