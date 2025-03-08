@@ -46,6 +46,51 @@ const handleHotKeys = (editor, event, config) => {
   return wasHotkey;
 };
 
+const handleWeirdBehaviour = (editor, event, content, index) => {
+  if (!content) {
+    return false;
+  }
+  // console.log("handleWeirdBehaviour", content, index);
+  const blocksLayout = content['blocks_layout'].items;
+  const blocks = content['blocks'];
+  // backspace key
+  if (
+    blocks[blocksLayout[index]]['@type'] !== 'slate' ||
+    !blocks[blocksLayout[index]].plaintext
+  ) {
+    return false;
+  }
+  const textLen = blocks[blocksLayout[index]].plaintext.length;
+  if (
+    isHotkey('backspace', event) &&
+    editor.selection.anchor.offset === 0 &&
+    textLen !== 0
+  ) {
+    // console.log('Backspace key pressed at the start of non-empty text!');
+    return true;
+  }
+  // delete key
+  if (
+    index + 1 === blocksLayout.length ||
+    blocks[blocksLayout[index + 1]]['@type'] !== 'slate' ||
+    !blocks[blocksLayout[index + 1]].plaintext
+  ) {
+    return false;
+  }
+  const nextTextLen = blocks[blocksLayout[index + 1]].plaintext.length;
+  // console.log("handleWeirdBehaviour", blocksLayout[index], blocks[blocksLayout[index]]);
+  // console.log("handleWeirdBehaviour", textLen, nextTextLen);
+  if (
+    isHotkey('delete', event) &&
+    editor.selection.anchor.offset === textLen &&
+    nextTextLen !== 0
+  ) {
+    // console.log('Delete key pressed at the end of text, where next text is non-empty!');
+    return true;
+  }
+  return false;
+};
+
 // TODO: implement onFocus
 class SlateEditor extends Component {
   constructor(props) {
@@ -338,6 +383,13 @@ class SlateEditor extends Component {
               onKeyDown={(event) => {
                 const handled = handleHotKeys(editor, event, slateSettings);
                 if (handled) return;
+                const handledWeird = handleWeirdBehaviour(
+                  editor,
+                  event,
+                  this.props.content,
+                  this.props.index,
+                );
+                if (handledWeird) return;
                 onKeyDown && onKeyDown({ editor, event });
               }}
               {...editableProps}

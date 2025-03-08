@@ -67,6 +67,7 @@ export const DefaultTextBlockEditor = (props) => {
     formDescription,
     navRoot,
     contentType,
+    content,
   } = props;
 
   const { slate } = config.settings;
@@ -242,6 +243,7 @@ export const DefaultTextBlockEditor = (props) => {
                   placeholder={placeholder}
                   slateSettings={slateSettings}
                   editableProps={{ 'aria-multiline': 'false' }}
+                  content={content}
                 />
                 {DEBUG ? <div>{block}</div> : ''}
               </>
