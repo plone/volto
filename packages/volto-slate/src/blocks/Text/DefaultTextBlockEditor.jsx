@@ -155,8 +155,13 @@ export const DefaultTextBlockEditor = (props) => {
       if (defaultSelection) {
         const selection = parseDefaultSelection(editor, defaultSelection);
         if (selection) {
-          Transforms.select(editor, selection);
-          saveSlateBlockSelection(block, null);
+          try {
+        Transforms.select(editor, selection);
+      } catch (error) {
+        console.warn("Invalid selection path, resetting selection.");
+        Transforms.select(editor, { anchor: { path: [0, 0], offset: 0 }, focus: { path: [0, 0], offset: 0 } });
+      }
+      saveSlateBlockSelection(block, null);
         }
       }
     },
