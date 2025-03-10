@@ -1863,7 +1863,7 @@ importers:
         version: 6.4.2(@jest/globals@29.7.0)(@types/jest@29.5.12)(jest@29.7.0(@types/node@22.10.7))(vitest@2.1.8(@types/node@22.10.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))
       '@testing-library/react':
         specifier: 12.1.5
-        version: 12.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 12.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       axe-core:
         specifier: 4.8.4
         version: 4.8.4
@@ -1876,6 +1876,12 @@ importers:
       cypress-file-upload:
         specifier: 5.0.8
         version: 5.0.8(cypress@13.13.2)
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
     devDependencies:
       release-it:
         specifier: ^17.1.1
@@ -15152,11 +15158,6 @@ packages:
     peerDependencies:
       react: ^18.2.0
 
-  react-dom@19.0.0:
-    resolution: {integrity: sha512-4GV5sHFG0e/0AD4X+ySy6UJd3jVl1iNsNHdpad0qhABJ11twS3TTBnseqsKurKcsNqCEFeGL3uLpVChpIO3QfQ==}
-    peerDependencies:
-      react: ^19.0.0
-
   react-dropzone@11.1.0:
     resolution: {integrity: sha512-gJT6iJadyTbevrigm6KZFaei/yNWfokzs1idumO7fXtRNPiGFDUpsQ+trHWwUO3yWOtJibpbo5tLZggjm+KV5w==}
     engines: {node: '>= 8'}
@@ -15436,10 +15437,6 @@ packages:
 
   react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
-    engines: {node: '>=0.10.0'}
-
-  react@19.0.0:
-    resolution: {integrity: sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ==}
     engines: {node: '>=0.10.0'}
 
   read-cmd-shim@3.0.1:
@@ -15939,9 +15936,6 @@ packages:
 
   scheduler@0.23.0:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
-
-  scheduler@0.25.0:
-    resolution: {integrity: sha512-xFVuu11jh+xcO7JOAGJNOXld8/TcEHK/4CituBUeUb5hqxJLj9YuemAEuvm9gQ/+pgXYfbQuqAkiYu+u7YEsNA==}
 
   schema-utils@2.7.1:
     resolution: {integrity: sha512-SHiNtMOUGWBQJwzISiVYKu82GiV4QYGePp3odlY1tuKO7gPtphAT5R/py0fA6xtbgLL/RvtJZnU9b8s0F1q0Xg==}
@@ -26093,13 +26087,13 @@ snapshots:
       react-dom: 18.2.0(react@18.2.0)
       react-test-renderer: 18.2.0(react@18.2.0)
 
-  '@testing-library/react@12.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@testing-library/react@12.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@babel/runtime': 7.20.6
       '@testing-library/dom': 8.20.1
       '@types/react-dom': 17.0.25
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
 
   '@testing-library/react@13.4.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
@@ -37461,11 +37455,6 @@ snapshots:
       react: 18.2.0
       scheduler: 0.23.0
 
-  react-dom@19.0.0(react@19.0.0):
-    dependencies:
-      react: 19.0.0
-      scheduler: 0.25.0
-
   react-dropzone@11.1.0(react@18.2.0):
     dependencies:
       attr-accept: 2.2.2
@@ -37858,8 +37847,6 @@ snapshots:
   react@18.2.0:
     dependencies:
       loose-envify: 1.4.0
-
-  react@19.0.0: {}
 
   read-cmd-shim@3.0.1: {}
 
@@ -38524,8 +38511,6 @@ snapshots:
   scheduler@0.23.0:
     dependencies:
       loose-envify: 1.4.0
-
-  scheduler@0.25.0: {}
 
   schema-utils@2.7.1:
     dependencies:

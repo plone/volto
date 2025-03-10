@@ -1001,6 +1001,7 @@ class Form extends Component {
                   )}
                   {onCancel && (
                     <Button
+                      type="button"
                       basic
                       secondary
                       aria-label={this.props.intl.formatMessage(
