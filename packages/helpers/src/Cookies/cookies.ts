@@ -1,9 +1,14 @@
-import config from '@plone/volto/registry';
+import config from '@plone/registry';
 
-export const getCookieOptions = (options = {}) => {
-  const { path = '/', secure, ...otherOptions } = options;
+interface CookieOptions {
+  path: string;
+  secure: any;
+  expires: Date;
+}
+export const getCookieOptions = (options?: CookieOptions): CookieOptions => {
+  const { path = '/', secure, expires, ...otherOptions } = options || {};
+
   let secureOption = secure;
-
   try {
     if (secureOption === undefined || secureOption === null) {
       const protocol = window?.location?.protocol ?? 'http';

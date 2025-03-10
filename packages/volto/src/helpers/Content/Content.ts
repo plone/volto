@@ -10,15 +10,56 @@ import map from 'lodash/map';
 import keys from 'lodash/keys';
 import endsWith from 'lodash/endsWith';
 import find from 'lodash/find';
-import config from '@plone/volto/registry';
+import config from '@plone/registry';
+import {
+  Content,
+  BlocksFormData,
+  Image,
+  RelatedItem,
+} from '@plone/types';
 
+interface nestContentProps {
+  '@static_behaviors'?: string[] | undefined;
+  '@type'?: string | undefined;
+  allow_discussion?: boolean | { title: string; token: boolean } | undefined;
+  blocks?: {
+    [k in string]: BlocksFormData;
+  } | undefined;
+  contributors?: string[] | undefined;
+  creators?: string[] | undefined;
+  description?: string | undefined;
+  effective?: string | undefined;
+  exclude_from_nav?: boolean | undefined;
+  expires?: string | undefined;
+  id?: string | undefined;
+  language?: string | undefined;
+  parent?: { '@id': string; '@type': string; description: string } | undefined;
+  preview_caption?: string | undefined;
+  preview_image?: Image | undefined;
+  relatedItems?: RelatedItem[] | undefined;
+  rights?: string | undefined;
+  subjects?: [] | undefined;
+  title?: string | undefined;
+  versioning_enabled?: boolean | undefined;
+}
+
+interface languageProps {
+  properties: {
+    [key: string]: {
+      multilingual_options?: {
+        language_independent?: boolean;
+      };
+    };
+  }
+}
 /**
  * Nest content.
  * @function nestContent
  * @param {Object} props Properties.
  * @return {string} Field name of the block
  */
-export function nestContent(props) {
+
+export function nestContent(props: nestContentProps): nestContentProps {
   if (!props['@static_behaviors']) {
     return props;
   }
@@ -48,7 +89,7 @@ export function nestContent(props) {
  * @param {Object} props Properties.
  * @return {string} Field name of the layout
  */
-export function getLayoutFieldname(props) {
+export function getLayoutFieldname(props: Content): string {
   return (
     find(keys(props), (key) => endsWith(key, 'content_layout')) || 'layout'
   );
@@ -62,7 +103,7 @@ export function getLayoutFieldname(props) {
  * @param {boolean} isFolderish
  * @returns {Object} Icon component
  */
-export function getContentIcon(type, isFolderish) {
+export function getContentIcon(type: string, isFolderish: boolean): Object {
   const { settings } = config;
   const { contentIcons } = settings;
 
@@ -77,7 +118,8 @@ export function getContentIcon(type, isFolderish) {
  * @param {string} schema content type JSON Schema serialization
  * @returns {array} List of language independent fields
  */
-export function getLanguageIndependentFields(schema) {
+
+export function getLanguageIndependentFields(schema: languageProps): any[] {
   const { properties } = schema;
   return Object.keys(properties).filter(
     (field) =>
