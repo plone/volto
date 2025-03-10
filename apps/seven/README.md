@@ -1,16 +1,16 @@
-# Plone 7
+# Seven
 
 > [!WARNING]
 > This package and all the efforts around it are not even in an alpha state and are experimental.
 > The community offers no support whatsoever for it.
 > Breaking changes may occur without notice.
 
-This is the initial (and very early) implementation of Plone 7.
+This is the initial (and very early) implementation of Plone 7 public app.
 After the design and first implementations of all the required pieces (the `@plone/*` libraries) that will compose Plone 7, this package will concentrate all the development during the next years.
 
 It is based on [React Router](https://reactrouter.com/dev/docs) 7, using the `@plone/*` libraries.
 
-The name of this package and its folder name in `packages` may also change since it's undecided yet.
+The name of this package and its folder name in `apps` may also change since it's undecided yet.
 
 ## Releases
 
@@ -23,7 +23,7 @@ To start, from the root of the monorepo, issue the following commands.
 
 ```shell
 pnpm install
-pnpm --filter plone7 run dev
+pnpm --filter seven run dev
 ```
 
 Then start the Plone backend.

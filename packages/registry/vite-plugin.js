@@ -14,7 +14,7 @@ export const PloneRegistryVitePlugin = () => {
     { tempInProject: true },
   );
 
-  createAddonsStyleLoader(registry.getAddonStyles());
+  createAddonsStyleLoader(registry);
 
   const [addonsThemeLoaderVariablesPath, addonsThemeLoaderMainPath] =
     createThemeAddonsLoader(registry.getCustomThemeAddons());
