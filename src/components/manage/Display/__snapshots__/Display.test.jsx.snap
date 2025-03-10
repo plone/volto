@@ -20,7 +20,7 @@ exports[`Display renders a Display component with more than one option 1`] = `
             class="wrapper"
           >
             <label
-              for="field-display-select"
+              for="fieldset-undefined-field-label-display-select"
               id="fieldset-undefined-field-label-display-select"
             >
               View
