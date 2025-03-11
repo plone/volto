@@ -1,0 +1,2 @@
+Updated environment variable for language configuration in backend Docker setup. Changed `LANGUAGE` to `SITE_LANGUAGE` in both Makefile and documentation to align with plone/plone-backend#170 changes. Fixed documentation examples showing correct variable usage for site language configuration.
+ Closes #6747 @boss6825
