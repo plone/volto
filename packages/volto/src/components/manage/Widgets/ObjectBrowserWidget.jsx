@@ -336,10 +336,22 @@ export class ObjectBrowserWidgetComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, description, fieldSet, value, mode, onChange, isDisabled } =
-      this.props;
+    const {
+      id,
+      description,
+      fieldSet,
+      value,
+      mode,
+      onChange,
+      isDisabled,
+      error,
+    } = this.props;
 
     let items = compact(!isArray(value) && value ? [value] : value || []);
+
+    const externalErrors = isArray(error) ? error : [];
+    const internalErrors = isArray(this.state.errors) ? this.state.errors : [];
+    const combinedErrors = [...internalErrors, ...externalErrors];
 
     let icon =
       mode === 'multiple' || items.length === 0 ? navTreeSVG : clearSVG;
@@ -354,8 +366,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     return (
       <FormFieldWrapper
         {...this.props}
-        // At the moment, OBW handles its own errors and validation
-        error={this.state.errors}
+        error={combinedErrors}
         className={description ? 'help text' : 'text'}
       >
         <div
