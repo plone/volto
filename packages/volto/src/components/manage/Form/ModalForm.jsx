@@ -210,10 +210,9 @@ class ModalForm extends Component {
   }
 
   /**
-   * On updates caused by props change
-   * if errors from Backend come, these will be shown to their corresponding Fields
-   * also the first Tab to have any errors will be selected
+   * Component did update lifecycle handler
    * @param {Object} prevProps
+   * @param {Object} prevState
    */
   async componentDidUpdate(prevProps, prevState) {
     if (this.props.onChangeFormData) {

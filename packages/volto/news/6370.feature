@@ -23,3 +23,4 @@ Add option to select the shortname as initial data for a new field in the schema
 Change properties form on the fly in the add field modal when changing the factory. @robgietema
 Fix bug where error messages where not rendered in the form because a string was expected. @robgietema
 Don't show request error multiple times when a form is validated. @robgietema
+Fix a bug where the video block schema was not used for validation. @robgietema
