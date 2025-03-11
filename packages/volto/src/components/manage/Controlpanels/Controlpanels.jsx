@@ -22,15 +22,6 @@ import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';
 
-import {
-  getSystemInformation,
-  listControlpanels,
-} from '@plone/volto/actions/controlpanels/controlpanels';
-import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
-import { compose } from 'redux';
-import { withRouter } from 'react-router';
-import PropTypes from 'prop-types';
-
 import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -113,16 +104,15 @@ const messages = defineMessages({
 /**
  * Controlpanels container class.
  */
-function Controlpanels(props) {
-  let filteredControlPanels = [];
+export default function Controlpanels({ location }) {
   const intl = useIntl();
   const [isClient, setIsClient] = useState(false);
 
+  const { pathname } = location;
   const controlpanels = useSelector(
     (state) => state.controlpanels.controlpanels,
   );
   const controlpanelsRequest = useSelector((state) => state.controlpanels.list);
-  const pathname = props.location.pathname;
   const systemInformation = useSelector(
     (state) => state.controlpanels.systeminformation,
   );
@@ -149,66 +139,64 @@ function Controlpanels(props) {
     : [];
   const { filterControlPanels } = config.settings;
 
-  if (controlpanels?.length) {
-    filteredControlPanels = map(
-      concat(filterControlPanels(controlpanels), customcontrolpanels, [
-        {
-          '@id': '/addons',
-          group: intl.formatMessage(messages.general),
-          title: intl.formatMessage(messages.addons),
-        },
-        {
-          '@id': '/database',
-          group: intl.formatMessage(messages.general),
-          title: intl.formatMessage(messages.database),
-        },
-        {
-          '@id': '/rules',
-          group: intl.formatMessage(messages.content),
-          title: intl.formatMessage(messages.contentRules),
-        },
-        {
-          '@id': '/undo',
-          group: intl.formatMessage(messages.general),
-          title: intl.formatMessage(messages.undo),
-        },
-        {
-          '@id': '/aliases',
-          group: intl.formatMessage(messages.general),
-          title: intl.formatMessage(messages.urlmanagement),
-        },
-        {
-          '@id': '/relations',
-          group: intl.formatMessage(messages.content),
-          title: intl.formatMessage(messages.relations),
-        },
-        {
-          '@id': '/moderate-comments',
-          group: intl.formatMessage(messages.content),
-          title: intl.formatMessage(messages.moderatecomments),
-        },
-        {
-          '@id': '/users',
-          group: intl.formatMessage(messages.usersControlPanelCategory),
-          title: intl.formatMessage(messages.users),
-        },
-        {
-          '@id': '/usergroupmembership',
-          group: intl.formatMessage(messages.usersControlPanelCategory),
-          title: intl.formatMessage(messages.usergroupmemberbership),
-        },
-        {
-          '@id': '/groups',
-          group: intl.formatMessage(messages.usersControlPanelCategory),
-          title: intl.formatMessage(messages.groups),
-        },
-      ]),
-      (controlpanel) => ({
-        ...controlpanel,
-        id: last(controlpanel['@id'].split('/')),
-      }),
-    );
-  }
+  const filteredControlPanels = map(
+    concat(filterControlPanels(controlpanels), customcontrolpanels, [
+      {
+        '@id': '/addons',
+        group: intl.formatMessage(messages.general),
+        title: intl.formatMessage(messages.addons),
+      },
+      {
+        '@id': '/database',
+        group: intl.formatMessage(messages.general),
+        title: intl.formatMessage(messages.database),
+      },
+      {
+        '@id': '/rules',
+        group: intl.formatMessage(messages.content),
+        title: intl.formatMessage(messages.contentRules),
+      },
+      {
+        '@id': '/undo',
+        group: intl.formatMessage(messages.general),
+        title: intl.formatMessage(messages.undo),
+      },
+      {
+        '@id': '/aliases',
+        group: intl.formatMessage(messages.general),
+        title: intl.formatMessage(messages.urlmanagement),
+      },
+      {
+        '@id': '/relations',
+        group: intl.formatMessage(messages.content),
+        title: intl.formatMessage(messages.relations),
+      },
+      {
+        '@id': '/moderate-comments',
+        group: intl.formatMessage(messages.content),
+        title: intl.formatMessage(messages.moderatecomments),
+      },
+      {
+        '@id': '/users',
+        group: intl.formatMessage(messages.usersControlPanelCategory),
+        title: intl.formatMessage(messages.users),
+      },
+      {
+        '@id': '/usergroupmembership',
+        group: intl.formatMessage(messages.usersControlPanelCategory),
+        title: intl.formatMessage(messages.usergroupmemberbership),
+      },
+      {
+        '@id': '/groups',
+        group: intl.formatMessage(messages.usersControlPanelCategory),
+        title: intl.formatMessage(messages.groups),
+      },
+    ]),
+    (controlpanel) => ({
+      ...controlpanel,
+      id: last(controlpanel['@id'].split('/')),
+    }),
+  );
   const groups = map(uniqBy(filteredControlPanels, 'group'), 'group');
   const { controlPanelsIcons: icons } = config.settings;
 
@@ -302,30 +290,3 @@ function Controlpanels(props) {
     </div>
   );
 }
-
-/**
- * Property types.
- * @property {Object} propTypes Property types.
- * @static
- */
-Controlpanels.propTypes = {
-  location: PropTypes.shape({
-    pathname: PropTypes.string,
-  }).isRequired,
-};
-
-export default compose(
-  asyncConnect([
-    {
-      key: 'controlpanels',
-      promise: async ({ location, store: { dispatch } }) =>
-        await dispatch(listControlpanels()),
-    },
-    {
-      key: 'systemInformation',
-      promise: async ({ location, store: { dispatch } }) =>
-        await dispatch(getSystemInformation()),
-    },
-  ]),
-  withRouter,
-)(Controlpanels);
