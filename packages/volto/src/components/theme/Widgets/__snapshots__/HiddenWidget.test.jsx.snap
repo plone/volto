@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`HiddenWidget renders an empty hidden view widget component 1`] = `null`;
+
 exports[`TextWidget renders an empty hidden view widget component 1`] = `null`;
