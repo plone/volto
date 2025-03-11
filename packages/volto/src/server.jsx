@@ -43,6 +43,8 @@ import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
 
 let locales = {};
 
+const prefix = config.settings.prefixPath;
+
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
     const langFileName = toGettextLang(lang);
@@ -68,9 +70,9 @@ const server = express()
   })
   .use(cookiesMiddleware());
 
-if (process.env.RAZZLE_PREFIX_PATH) {
+if (prefix) {
   server.use(
-    process.env.RAZZLE_PREFIX_PATH,
+    process.prefix,
     express.static(
       process.env.BUILD_DIR
         ? path.join(process.env.BUILD_DIR, 'public')
@@ -268,11 +270,7 @@ server.get('/*', (req, res) => {
               <StaticRouter
                 context={context}
                 location={req.url}
-                basename={
-                  config.settings.prefixPath
-                    ? config.settings.prefixPath
-                    : undefined
-                }
+                basename={prefix || undefined}
               >
                 <ReduxAsyncConnect routes={routes} helpers={api} />
               </StaticRouter>
