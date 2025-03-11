@@ -39,6 +39,7 @@ const UndoToolbar = ({ state, onUndoRedo, maxUndoLevels, enableHotKeys }) => {
         dependencies={[canUndo, canRedo]}
       >
         <Button
+          type="button"
           className="undo"
           onClick={() => doUndo()}
           aria-label={intl.formatMessage(messages.undo)}
@@ -58,6 +59,7 @@ const UndoToolbar = ({ state, onUndoRedo, maxUndoLevels, enableHotKeys }) => {
         dependencies={[canUndo, canRedo]}
       >
         <Button
+          type="button"
           className="redo"
           onClick={() => doRedo()}
           aria-label={intl.formatMessage(messages.redo)}
