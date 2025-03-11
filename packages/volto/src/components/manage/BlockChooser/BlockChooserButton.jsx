@@ -29,6 +29,7 @@ export const ButtonComponent = (props) => {
 
   return (
     <Button
+      type="button"
       icon
       basic
       title={intl.formatMessage(messages.addBlock)}
@@ -98,7 +99,9 @@ const BlockChooserButton = (props) => {
       {
         name: 'flip',
         options: {
-          fallbackPlacements: ['right-end', 'top-start'],
+          fallbackPlacements: config.experimental.addBlockButton.enabled
+            ? ['bottom-start', 'bottom-end']
+            : ['right-end', 'top-start'],
         },
       },
     ],

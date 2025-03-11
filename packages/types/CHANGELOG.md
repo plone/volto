@@ -8,6 +8,25 @@
 
 <!-- towncrier release notes start -->
 
+## 1.3.2 (2025-02-08)
+
+### Internal
+
+- Update TS version. @sneridagh [#6641](https://github.com/plone/volto/issues/6641)
+- Remove hard dependencies on react-intl and history in @plone/types @sneridagh [#6728](https://github.com/plone/volto/issues/6728)
+
+## 1.3.1 (2025-01-31)
+
+### Bugfix
+
+- Remove `hasWorkingCopySupport` setting. @davisagli [#6393](https://github.com/plone/volto/issues/6393)
+
+## 1.3.0 (2025-01-24)
+
+### Feature
+
+- Added typings for the route registry. @sneridagh [#6600](https://github.com/plone/volto/issues/6600)
+
 ## 1.2.0 (2024-12-17)
 
 ### Feature

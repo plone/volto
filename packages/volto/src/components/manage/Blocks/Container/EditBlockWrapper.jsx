@@ -40,13 +40,18 @@ const EditBlockWrapper = (props) => {
 
   const style = buildStyleObjectFromData(data);
 
+  // We need to merge the StyleWrapper styles with the draggable props from b-D&D
+  const styleMergedWithDragProps = {
+    ...draginfo.draggableProps,
+    style: { ...style, ...draginfo.draggableProps.style },
+  };
+
   return (
     <div
       ref={draginfo.innerRef}
-      {...draginfo.draggableProps}
+      {...styleMergedWithDragProps}
       {...draginfo.dragHandleProps}
       className={cx(`block-editor-${data['@type']} contained`, { selected })}
-      style={style}
     >
       <div
         role="presentation"
@@ -61,6 +66,7 @@ const EditBlockWrapper = (props) => {
             aria-label={intl.formatMessage(messages.reset, {
               index,
             })}
+            type="button"
             basic
             icon
             onClick={(e) => onResetBlock(block, {})}
@@ -70,6 +76,7 @@ const EditBlockWrapper = (props) => {
           </Button>
         ) : (
           <Button
+            type="button"
             basic
             icon
             className="remove-block-button"

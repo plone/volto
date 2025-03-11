@@ -1,13 +1,14 @@
-# .github/workflows/docs-rtd-pr-preview.yml
+# .github/workflows/docs-rtd-pr-preview-registry.yml
 name: readthedocs/actions
 on:
   pull_request_target:
     types:
       - opened
     # Execute this action only on PRs that touch
-    # documentation files.
+    # documentation files for @plone/registry.
+    branches:
+      - main
     paths:
-      - "docs/source/**"
       - .readthedocs.yaml
       - requirements-docs.txt
       - "packages/registry/docs/**"
@@ -21,5 +22,5 @@ jobs:
     steps:
       - uses: readthedocs/actions/preview@v1
         with:
-          project-slug: "volto"
+          project-slug: "plone-registry"
           single-version: "true"

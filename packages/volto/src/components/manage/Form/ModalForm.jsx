@@ -338,6 +338,7 @@ class ModalForm extends Component {
           </Button>
           {onCancel && (
             <Button
+              type="button"
               basic
               circular
               secondary

@@ -145,6 +145,7 @@ const Facets = (props) => {
           className="toggle-advanced-facets"
         >
           <Button
+            type="button"
             onClick={() => {
               setHidden((prevHidden) => !prevHidden);
             }}

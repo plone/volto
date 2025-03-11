@@ -1066,6 +1066,7 @@ class Form extends Component {
                     (this.props.textButtons ? (
                       <ButtonComponent
                         secondary
+                        type="button"
                         aria-label={
                           this.props.cancelLabel
                             ? this.props.cancelLabel
@@ -1087,6 +1088,7 @@ class Form extends Component {
                       <ButtonComponent
                         basic
                         secondary
+                        type="button"
                         aria-label={
                           this.props.cancelLabel
                             ? this.props.cancelLabel
