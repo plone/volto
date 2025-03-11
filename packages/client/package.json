@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.59.0",
-    "axios": "^1.6.7",
+    "axios": "^1.8.2",
     "debug": "4.3.4",
     "query-string": "^9.0.0",
     "zod": "^3.22.4"
