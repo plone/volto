@@ -279,7 +279,7 @@
     "@babel/plugin-proposal-nullish-coalescing-operator": "7.18.6",
     "@babel/plugin-proposal-throw-expressions": "7.18.6",
     "@babel/plugin-syntax-export-namespace-from": "7.8.3",
-    "@babel/runtime": "7.20.6",
+    "@babel/runtime": "7.26.10",
     "@babel/types": "7.20.5",
     "@dnd-kit/core": "6.0.8",
     "@dnd-kit/sortable": "7.0.2",
