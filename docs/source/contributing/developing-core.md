@@ -21,7 +21,7 @@ Additionally you can build each version of Volto documentation by running `make 
 ```
 
 ```{seealso}
-To create a full Plone project with both frontend and backend, see {doc}`plone:install/create-project` instead.
+To create a full Plone project with both frontend and backend, see {doc}`plone:install/create-project-cookieplone` instead.
 ```
 
 
@@ -370,7 +370,7 @@ Volto is the default frontend, and is React-based.
 Classic UI is the Python-based, server-side rendered frontend.
 
 In Volto's `apps` folder, you'll find a Volto project scaffolding that uses Volto as a library.
-This is the same as that which you'll have when you follow the instructions in {doc}`plone:install/create-project`).
+This is the same as that which you'll have when you follow the instructions in {doc}`plone:install/create-project-cookieplone`).
 
 
 ## Experimental frontends
