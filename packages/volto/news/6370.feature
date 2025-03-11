@@ -11,7 +11,7 @@ Add option to pass custom widget `config` to field component. @robgietema
 Add optional widgets `config` to form component. @robgietema
 Add option to override the form component and the buttons in the form component. @robgietema
 Add option to override cancel label in form. @robgietema
-Add option to choose bewteen icon and text buttons in the form component. @robgietema
+Add option to choose between icon and text buttons in the form component. @robgietema
 Add option to change form data from outside of the form in the modal form. @robgietema
 Move field factory properties per field to a utility so it can be registered from other packages. @robgietema
 Move field factory initial data per field to a utility so it can be registered from other packages. @robgietema
