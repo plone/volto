@@ -72,7 +72,7 @@ const server = express()
 
 if (prefix) {
   server.use(
-    process.prefix,
+    prefix,
     express.static(
       process.env.BUILD_DIR
         ? path.join(process.env.BUILD_DIR, 'public')
