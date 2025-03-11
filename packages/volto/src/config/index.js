@@ -117,6 +117,7 @@ let config = {
     defaultLanguage: 'en',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
+    expressMiddlewareDev: serverConfig.expressMiddlewareDev,
     defaultBlockType: 'slate',
     verticalFormTabs: false,
     useEmailAsLogin: false,
