@@ -175,7 +175,7 @@ Although it's not required, defining the schema enables the block to have its in
 ### `disableEnter`
 
 Normally when a block is selected and you press {kbd}`enter`, a new block is inserted below.
-When you don't want this behavior and want to handle the {kbd}`enter` input yourself inside the block you can set `disableEnter` to `true`.
+When you don't want this behavior and want to handle the {kbd}`enter` input yourself inside the block, set `disableEnter` to `true`.
 
 ## Other block options
 
