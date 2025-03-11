@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { toast } from 'react-toastify';
 import useLinkEditor from '@plone/volto/components/manage/AnchorPlugin/useLinkEditor';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
@@ -20,6 +21,7 @@ import { createContent } from '@plone/volto/actions/content/content';
 import { readAsDataURL } from 'promise-file-reader';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -59,6 +61,15 @@ const messages = defineMessages({
   uploadingImage: {
     id: 'Uploading image',
     defaultMessage: 'Uploading image',
+  },
+  errorTitle: {
+    id: 'errorTitle',
+    defaultMessage: 'Error',
+  },
+  errorMessage: {
+    id: 'errorMessage',
+    defaultMessage:
+      'An error occured while uploading the image, please try again.',
   },
 });
 
@@ -184,7 +195,21 @@ const UnconnectedImageInput = (props) => {
     >
       <Dropzone
         noClick
-        onDrop={handleUpload}
+        accept="image/*"
+        onDrop={(acceptedFiles) => {
+          if (acceptedFiles.length > 0) {
+            handleUpload(acceptedFiles);
+          } else {
+            setDragging(false);
+            toast.error(
+              <Toast
+                error
+                title={intl.formatMessage(messages.errorTitle)}
+                content={intl.formatMessage(messages.errorMessage)}
+              />,
+            );
+          }
+        }}
         onDragEnter={onDragEnter}
         onDragLeave={onDragLeave}
         className="dropzone"
@@ -192,7 +217,7 @@ const UnconnectedImageInput = (props) => {
         {({ getRootProps, getInputProps }) => (
           <div {...getRootProps()}>
             <Message>
-              {dragging && <Dimmer active></Dimmer>}
+              {dragging && <Dimmer active />}
               {uploading && (
                 <Dimmer active>
                   <Loader indeterminate>
@@ -251,6 +276,7 @@ const UnconnectedImageInput = (props) => {
                           ref: imageUploadInputRef,
                           onChange: handleUpload,
                           style: { display: 'none' },
+                          accept: 'image/*',
                         })}
                       />
                     </Button.Group>
