@@ -21,3 +21,4 @@ Add option to allow editing the id of the fields in the schema widget. @robgiete
 Fix bug when multiple fields were added with the same id in the schema widget. @robgietema
 Add option to select the shortname as initial data for a new field in the schema widget. @robgietema
 Change properties form on the fly in the add field modal when changing the factory. @robgietema
+Fix bug where error messages where not rendered in the form because a string was expected. @robgietema
