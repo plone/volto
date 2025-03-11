@@ -8,7 +8,6 @@ exports[`FileWidget renders a file view widget component 1`] = `
   data-size-fmt="0B"
   href="/foo-bar.pdf"
   onClick={[Function]}
-  target={null}
   title="/foo-bar.pdf"
 >
   /foo-bar.pdf
@@ -23,7 +22,6 @@ exports[`FileWidget renders a file view widget component with children 1`] = `
   data-size-fmt="121kB"
   href="/foo-bar.pdf"
   onClick={[Function]}
-  target={null}
   title="application/x-pdf"
 >
   <strong>
@@ -40,7 +38,6 @@ exports[`FileWidget renders a simple file view widget component 1`] = `
   data-size-fmt="0B"
   href="/foo-bar.pdf"
   onClick={[Function]}
-  target={null}
   title="/foo-bar.pdf"
 >
   /foo-bar.pdf

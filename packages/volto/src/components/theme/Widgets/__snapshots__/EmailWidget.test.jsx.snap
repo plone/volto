@@ -5,8 +5,6 @@ exports[`EmailWidget renders an email view widget component 1`] = `
   className="metadata email widget"
   href="mailto:foo@bar.com"
   rel="noopener noreferrer"
-  target={null}
-  title={null}
 >
   foo@bar.com
 </a>
@@ -17,8 +15,6 @@ exports[`EmailWidget renders an email view widget component with children 1`] = 
   className="metadata email widget"
   href="mailto:foo@bar.com"
   rel="noopener noreferrer"
-  target={null}
-  title={null}
 >
   <strong>
     foo@bar.com

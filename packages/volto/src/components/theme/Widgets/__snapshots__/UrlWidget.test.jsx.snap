@@ -6,7 +6,6 @@ exports[`UrlWidget renders an URL view widget component 1`] = `
   href="http://foobar.com"
   rel="noopener noreferrer"
   target="_blank"
-  title={null}
 >
   http://foobar.com
 </a>
@@ -18,7 +17,6 @@ exports[`UrlWidget renders an URL view widget component with children 1`] = `
   href="http://foobar.com"
   rel="noopener noreferrer"
   target="_blank"
-  title={null}
 >
   <strong>
     http://foobar.com
