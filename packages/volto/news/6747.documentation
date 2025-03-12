@@ -1,2 +1,1 @@
-Updated documentation to reflect changes in environment variable usage. Changed `LANGUAGE` to `SITE_LANGUAGE` in documentation examples to align with plone/plone-backend#170 changes. Fixed documentation examples showing correct variable usage.
-Closes #6747 @boss6825
+Updated documentation to reflect changes in environment variable usage. Changed `LANGUAGE` to `SITE_LANGUAGE` in documentation examples to align with plone/plone-backend#170 changes. Fixed documentation examples showing correct variable usage Closes #6747 @boss6825
