@@ -184,6 +184,13 @@ You can also generate builds on your continuous integration, then deploy them an
     ```shell
     VOLTOCONFIG=../../volto.config.js pnpm start
     ```
+
+`SITE_DEFAULT_LANGUAGE`
+    This is a runtime environment variable that setups the `config.settings.defaultLanguage` allowing you to specify the default language of a site.
+
+    ```shell
+    SITE_DEFAULT_LANGUAGE=ca pnpm start
+    ```
 ````
 
 
