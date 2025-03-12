@@ -3769,6 +3769,11 @@ msgstr "A URL alternativa já existe!"
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "O processo de registro foi bem sucedido. Verifique sua caixa de entrada de e-mail para obter informações sobre como ativar sua conta."
 
+#. Default: "The selected default language must be in the list of the field 'Available languages'"
+#: helpers/MessageLabels/MessageLabels
+msgid "The selected default language must be in the list of the field 'Available languages'"
+msgstr ""
+
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UpgradeControlPanel
