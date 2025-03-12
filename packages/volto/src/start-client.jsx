@@ -58,7 +58,7 @@ export default function client() {
   if (window.env.RAZZLE_LEGACY_TRAVERSE) {
     config.settings.legacyTraverse = true;
   }
-  // Suport for setting the default language from a server environment variable
+  // Support for setting the default language from a server environment variable
   if (window.env.defaultLanguage) {
     config.settings.defaultLanguage = window.env.defaultLanguage;
   }

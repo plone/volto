@@ -1,1 +1,1 @@
-Allow setting the default language via a RUNTIME environment variable. @sneridagh
+Allow setting the default language via a runtime environment variable. @sneridagh
