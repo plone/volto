@@ -82,11 +82,10 @@ const validateRequiredFields = (
       }
     }
     if (
-      (schema.properties[requiredField] &&
-        !schema.properties[requiredField].readonly &&
-        isEmpty) ||
-      (schema.properties[requiredField]?.type === 'boolean' &&
-        formData[requiredField] !== true)
+      schema.properties[requiredField] &&
+      schema.properties[requiredField].type !== 'boolean' &&
+      !schema.properties[requiredField].readonly &&
+      isEmpty
     ) {
       errors[requiredField] = [];
       errors[requiredField].push(formatMessage(messages.required));
