@@ -364,7 +364,13 @@ Define a utility of the `type` `styleWrapperStyleObjectEnhancer` as follows.
 The registered method has the following signature.
 
 ```ts
-type blockThemesEnhancerType = ({data, container}: {data: BlocksFormData, container: BlocksFormData}) => Record<`--${string}`, string>
+type blockThemesEnhancerType = ({
+  data,
+  container,
+}: {
+  data: BlocksFormData;
+  container: BlocksFormData;
+}) => Record<`--${string}`, string>;
 ```
 
 `data` is the current block, and `container` is its parent block, if the current block is in a block container.
