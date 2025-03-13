@@ -1,1 +1,1 @@
-Stylewrapper `buildStyleObjectFromData` fixes accounting for container blocks. @sneridagh
+The style wrapper `buildStyleObjectFromData` now accounts for container blocks. @sneridagh
