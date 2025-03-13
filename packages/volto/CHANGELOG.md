@@ -17,6 +17,22 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.10.0 (2025-03-13)
+
+### Feature
+
+- Add validator for `default_language` in language control panel. @sneridagh [#6811](https://github.com/plone/volto/issues/6811)
+- Allow setting the default language via a runtime environment variable. @sneridagh [#6830](https://github.com/plone/volto/issues/6830)
+
+### Bugfix
+
+- For form validation, use the backend validator props passed to fields. @iRohitSingh. [#6816](https://github.com/plone/volto/issues/6816)
+- The style wrapper `buildStyleObjectFromData` now accounts for container blocks. @sneridagh [#6832](https://github.com/plone/volto/issues/6832)
+
+### Documentation
+
+- Use Cookieplone for installation everywhere. @stevepiercy [#6820](https://github.com/plone/volto/issues/6820)
+
 ## 18.9.2 (2025-03-07)
 
 ### Bugfix
