@@ -57,7 +57,7 @@ msgid "Actions"
 msgstr "Aktionen"
 
 #. Default: "Activate and deactivate add-ons in the lists below."
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Activate and deactivate"
 msgstr "Aktivieren und Deaktivieren"
 
@@ -88,8 +88,8 @@ msgid "Add (object list)"
 msgstr "Hinzufügen"
 
 #. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Add Addons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add Add-ons"
 msgstr "Hier werden verfügbare und installierte Backend-Add-ons gezeigt. Informationen wie Weitere hinzugefügt werden können, finden sich hier:"
 
 #. Default: "Add Alternative URL"
@@ -237,13 +237,43 @@ msgstr "Erweiterungen"
 msgid "Add-on Configuration"
 msgstr "Konfiguration von Erweiterungen"
 
+#. Default: "Add-on could not be installed"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be installed"
+msgstr "Erweiterung konnte nicht aktiviert werden"
+
+#. Default: "Add-on could not be uninstalled"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be uninstalled"
+msgstr "Erweiterung konnte nicht deaktiviert werden"
+
+#. Default: "Add-on could not be upgraded"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be upgraded"
+msgstr "Erweiterung konnte nicht aktualisiert werden"
+
+#. Default: "Add-on installed successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on installed succesfuly"
+msgstr "Erweiterungen erfolgreich aktiviert"
+
+#. Default: "Add-on uninstalled successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on uninstalled succesfuly"
+msgstr "Erweiterung erfolgreich deaktiviert"
+
+#. Default: "Add-on upgraded succesfuly"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on upgraded succesfuly"
+msgstr "Erweiterung erfolgreich aktualisiert"
+
 #. Default: "Add-ons"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons"
 msgstr "Erweiterungen"
 
 #. Default: "Add-ons Settings"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons Settings"
 msgstr "Add-ons"
 
@@ -256,36 +286,6 @@ msgstr "Hinzugefügt"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
 msgstr "Zusätzliches Datum"
-
-#. Default: "Addon could not be installed"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Addon could not be installed"
-msgstr "Erweiterung konnte nicht aktiviert werden"
-
-#. Default: "Addon could not be uninstalled"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Addon could not be uninstalled"
-msgstr "Erweiterung konnte nicht deaktiviert werden"
-
-#. Default: "Addon could not be upgraded"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Addon could not be upgraded"
-msgstr "Erweiterung konnte nicht aktualisiert werden"
-
-#. Default: "Addon installed succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Addon installed succesfuly"
-msgstr "Erweiterungen erfolgreich aktiviert"
-
-#. Default: "Addon uninstalled succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
-msgstr "Erweiterung erfolgreich deaktiviert"
-
-#. Default: "Addon upgraded succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
-msgstr "Erweiterung erfolgreich aktualisiert"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
@@ -437,9 +437,14 @@ msgid "Automatically"
 msgstr "automatisch"
 
 #. Default: "Available"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available"
 msgstr "Verfügbar"
+
+#. Default: "Available add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Available add-ons"
+msgstr ""
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -449,7 +454,7 @@ msgstr "Verfügbare Inhaltsregeln:"
 #. Default: "Back"
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -1385,7 +1390,7 @@ msgstr "Einträge"
 
 #. Default: "Error"
 #: components/manage/Add/Add
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UndoControlpanel
@@ -1875,22 +1880,27 @@ msgid "Inspect relations"
 msgstr "Bearbeiten"
 
 #. Default: "Install"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Install"
-msgstr "aktivieren"
+msgstr ""
 
 #. Default: "Installed"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
 msgstr "aktiviert"
 
+#. Default: "Installed add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Installed add-ons"
+msgstr ""
+
 #. Default: "Installed version"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed version"
 msgstr "Aktivierte Version"
 
 #. Default: "Installing a third party add-on"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installing a third party add-on"
 msgstr "Eine Erweiterung aktivieren"
 
@@ -2023,7 +2033,7 @@ msgid "Latest available configuration"
 msgstr "Letzte verfügbare Konfiguration"
 
 #. Default: "Latest version"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Latest version"
 msgstr "Verfügbare Version"
 
@@ -2391,6 +2401,16 @@ msgstr "Nachricht"
 msgid "No"
 msgstr "Nein"
 
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No Addon available"
+msgstr ""
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No Installed available"
+msgstr "Keine installierten Add-ons verfügbar."
+
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2406,15 +2426,20 @@ msgstr "Keine Transaktionen ausgewählt"
 msgid "No Transactions Selected To Do Undo"
 msgstr "Keine Transaktionen zum rückgängig machen ausgewählt"
 
+#. Default: "No upgrades in this corner. You are up to date. High fives."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No Upgrades available"
+msgstr "Keine Upgrades in dieser Ecke. Du bist auf dem neuesten Stand. High Five!"
+
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr "Kein Video ausgewählt"
 
-#. Default: "No addons found"
+#. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
-msgid "No addons found"
-msgstr "Keine Add-ons installiert."
+msgid "No add-ons found"
+msgstr ""
 
 #. Default: "No broken relations found."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -2503,8 +2528,8 @@ msgstr "Keine Ergebnisse gefunden."
 msgid "No selection"
 msgstr "Keine Auswahl"
 
-#. Default: "This addon does not provide an uninstall profile."
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "This add-on does not provide an uninstall profile."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No uninstall profile"
 msgstr "Kein Deaktivierungsprofil"
 
@@ -3593,7 +3618,7 @@ msgstr ""
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -3841,6 +3866,11 @@ msgstr ""
 msgid "Third"
 msgstr "Dritter"
 
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+msgstr "Dieses Add-on wurde aktualisiert. Die aktuell installierte Profilversion ist {installedVersion}. Die neue verfügbare Profilversion ist {newVersion}."
+
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
@@ -4062,7 +4092,7 @@ msgid "Unified"
 msgstr "Vereinigt"
 
 #. Default: "Uninstall"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Uninstall"
 msgstr "deaktivieren"
 
@@ -4089,7 +4119,7 @@ msgid "Unsorted"
 msgstr "Unsortiert"
 
 #. Default: "Update"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Update"
 msgstr "Update"
 
@@ -4098,20 +4128,20 @@ msgstr "Update"
 msgid "Update User"
 msgstr ""
 
-#. Default: "Update installed addons"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Update installed addons"
-msgstr "Aktivierte Erweiterungen aktualisieren"
-
-#. Default: "Update installed addons:"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Update installed addons:"
+#. Default: "Update installed add-ons:"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Update installed add-ons:"
 msgstr "Aktivierte Erweiterungen:"
 
 #. Default: "Updates available"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Updates available"
 msgstr "Verfügbare Erweiterungen"
+
+#. Default: "Upgradable add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Upgradable add-ons"
+msgstr ""
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -5108,11 +5138,6 @@ msgstr "Inhaltsverzeichnis"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr "Toggle"
-
-#. Default: "Update from version {origin} to {destination}"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "upgradeVersions"
-msgstr "Von Version {origin} zu Version {destination} aktualisieren"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget
