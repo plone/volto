@@ -4507,7 +4507,7 @@ msgstr "Visões disponíveis"
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
-msgstr "Erro no campo de blocos {errorField}"
+msgstr "Erro no campo {errorField} do bloco."
 
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login

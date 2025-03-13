@@ -1,0 +1,1 @@
+Improved error handling in the Form component to display the title of the error field in the Toast. This ensures that users see a more descriptive and clear error message when a field is invalid. @alexandreIFB
