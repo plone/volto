@@ -1,1 +1,1 @@
-Fixed Makefile to use `SITE_LANGUAGE` instead of `LANGUAGE` for backend Docker setup. This aligns with plone/plone-backend#170 changes and resolves conflicts with the OS `LANGUAGE` environment variable.  Closes #6747 @boss6825
+Fixed Makefile to use `SITE_DEFAULT_LANGUAGE` instead of `LANGUAGE` for backend Docker setup. This aligns with plone/plone-backend#170 changes and resolves conflicts with the OS `LANGUAGE` environment variable.  Closes #6747 @boss6825
