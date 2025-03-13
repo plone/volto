@@ -136,6 +136,8 @@ const apiMiddlewareFactory =
     const { settings } = config;
 
     const token = getState().userSession.token;
+    const availableLanguages =
+      getState().site.data['plone.available_languages'] || [];
     let uploadedFiles = getState().content.uploadedFiles;
     let isAnonymous = true;
     if (token) {
@@ -241,7 +243,7 @@ const apiMiddlewareFactory =
               lang &&
               state.intl.locale !== toReactIntlLang(lang) &&
               !subrequest &&
-              config.settings.supportedLanguages.includes(lang)
+              availableLanguages.includes(lang)
             ) {
               const langFileName = toGettextLang(lang);
               import(
