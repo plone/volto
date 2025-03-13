@@ -344,3 +344,28 @@ Each block in the Block Engine has a main wrapper with an automatic class name `
 ```
 
 You can use it for further control over the positioning and layout of the block.
+
+## Custom style wrapper build style object enhancer
+
+The style wrapper has a helper method that generates a style object from the block data.
+This generated style object is ready to be injected into the style property.
+
+You can tap into this helper method by applying your own rules programmatically.
+You can achieve this by defining an utility of the `type` `styleWrapperStyleObjectEnhancer`:
+
+```ts
+  config.registerUtility({
+    name: 'blockThemesEnhancer',
+    type: 'styleWrapperStyleObjectEnhancer',
+    method: blockThemesEnhancer,
+  });
+```
+
+The registered method has this signature:
+
+```ts
+type blockThemesEnhancerType = ({data, container}: {data: BlocksFormData, container: BlocksFormData}) => Record<`--${string}`, string>
+```
+
+being `data` the current block, and `container` is the parent block (if the block is in a block container).
+It returns a record of CSS properties.
