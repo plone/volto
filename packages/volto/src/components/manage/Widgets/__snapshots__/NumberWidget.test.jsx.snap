@@ -1,52 +1,49 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders a number widget component 1`] = `
-[
+<div
+  className="inline field field-wrapper-my-field"
+>
   <div
-    className="inline field field-wrapper-my-field"
+    className="ui grid"
   >
     <div
-      className="ui grid"
+      className="stretched row"
     >
       <div
-        className="stretched row"
+        className="four wide column"
       >
         <div
-          className="four wide column"
+          className="wrapper"
         >
-          <div
-            className="wrapper"
+          <label
+            htmlFor="field-my-field"
+            id="fieldset-default-field-label-my-field"
           >
-            <label
-              htmlFor="field-my-field"
-              id="fieldset-default-field-label-my-field"
-            >
-              My field
-            </label>
-          </div>
+            My field
+          </label>
         </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
         <div
-          className="eight wide column"
+          className="ui input"
         >
-          <div
-            className="ui input"
-          >
-            <input
-              id="field-my-field"
-              max={null}
-              min={null}
-              name="my-field"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onClick={[Function]}
-              type="number"
-              value=""
-            />
-          </div>
+          <input
+            id="field-my-field"
+            max={null}
+            min={null}
+            name="my-field"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            type="number"
+            value=""
+          />
         </div>
       </div>
     </div>
-  </div>,
-  ",",
-]
+  </div>
+</div>
 `;
