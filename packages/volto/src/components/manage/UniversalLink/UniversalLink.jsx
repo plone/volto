@@ -3,11 +3,11 @@
  * @module components/UniversalLink
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { HashLink as Link } from 'react-router-hash-link';
 import { useSelector } from 'react-redux';
 import {
+  addPrefixPath,
   flattenToAppURL,
   isInternalURL,
   URLUtils,
@@ -21,6 +21,7 @@ const UniversalLink = ({
   item = null,
   openLinkInNewTab,
   download = false,
+  forceA = false,
   children,
   className = null,
   title = null,
@@ -77,6 +78,23 @@ const UniversalLink = ({
   const checkedURL = URLUtils.checkAndNormalizeUrl(url);
 
   url = checkedURL.url;
+
+  if (forceA) {
+    // Forces the use of a native <a> tag
+    return (
+      <a
+        href={addPrefixPath(flattenToAppURL(url))}
+        target={openLinkInNewTab ? '_blank' : '_self'}
+        rel={openLinkInNewTab ? 'noopener noreferrer' : undefined}
+        title={title}
+        className={className}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  }
+
   let tag = (
     <Link
       to={flattenToAppURL(url)}
@@ -109,7 +127,7 @@ const UniversalLink = ({
   } else if (isDownload) {
     tag = (
       <a
-        href={flattenToAppURL(url)}
+        href={addPrefixPath(flattenToAppURL(url))}
         download
         title={title}
         className={className}
@@ -121,7 +139,7 @@ const UniversalLink = ({
   } else if (isDisplayFile) {
     tag = (
       <a
-        href={flattenToAppURL(url)}
+        href={addPrefixPath(flattenToAppURL(url))}
         title={title}
         target="_blank"
         rel="noopener noreferrer"

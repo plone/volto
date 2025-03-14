@@ -213,6 +213,22 @@ describe('UniversalLink', () => {
     expect(json).toMatchSnapshot();
     expect(global.console.error).toHaveBeenCalled();
   });
+
+  it('renders forced <a> tag with rel attribute when forceA is true', () => {
+    const { getByText } = render(
+      <Provider store={store}>
+        <UniversalLink href="/content" forceA={true} openLinkInNewTab={true}>
+          Forced Link
+        </UniversalLink>
+      </Provider>,
+    );
+    const linkElement = getByText('Forced Link');
+    expect(linkElement.tagName).toBe('A');
+    expect(linkElement).toHaveAttribute('href', '/content');
+    expect(linkElement).toHaveAttribute('target', '_blank');
+    // Verify that the rel property is set correctly for security
+    expect(linkElement).toHaveAttribute('rel', 'noopener noreferrer');
+  });
 });
 
 it('renders a UniversalLink component when url ends with @@display-file', () => {

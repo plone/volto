@@ -7,6 +7,7 @@ import React from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 
 /**
  * Error page.
@@ -46,12 +47,12 @@ const Error = ({ message, stackTrace }) => {
           </button>
         </p>
         <p>
-          <a href="/">
+          <UniversalLink href="/" forceA>
             <FormattedMessage
               id="return to the site root"
               defaultMessage="return to the site root"
             />
-          </a>
+          </UniversalLink>
         </p>
         <p>
           <FormattedMessage
