@@ -1,1 +1,0 @@
-Fix validation allowing relative URLs when `allowExternals` prop is set. @sneridagh

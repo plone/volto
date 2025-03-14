@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.10.1 (2025-03-14)
+
+### Bugfix
+
+- Fix validation allowing relative URLs when `allowExternals` prop is set. @sneridagh [#6840](https://github.com/plone/volto/issues/6840)
+
 ## 18.10.0 (2025-03-13)
 
 ### Feature
