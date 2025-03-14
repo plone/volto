@@ -26,6 +26,11 @@ const TextareaWidget = (props) => {
   const { id, maxLength, value, onChange, placeholder, isDisabled } = props;
   const [lengthError, setlengthError] = useState('');
 
+  const calculateRowCount = (text) => {
+    const lineBreaks = (text.match(/\n/g) || []).length + 1;
+    return Math.max(10, lineBreaks); // Ensure that there are at least 10 rows initially
+  };
+
   const onhandleChange = (id, value) => {
     if (maxLength & value?.length) {
       let remlength = maxLength - value.length;
@@ -46,6 +51,7 @@ const TextareaWidget = (props) => {
         value={value || ''}
         disabled={isDisabled}
         placeholder={placeholder}
+        rows={calculateRowCount(value || '')}
         onChange={({ target }) =>
           onhandleChange(id, target.value === '' ? undefined : target.value)
         }
