@@ -15,8 +15,8 @@ export default defineConfig({
           },
         ],
       },
-    }),
-  ] as any,
+    }) as any,
+  ],
   resolve: {
     alias: {
       '@plone/volto': path.resolve(__dirname, 'src'),

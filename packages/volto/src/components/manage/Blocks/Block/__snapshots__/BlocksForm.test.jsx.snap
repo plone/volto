@@ -2,245 +2,141 @@
 
 exports[`Allow override of blocksConfig 1`] = `
 <div>
-  <div
-    class="blocks-form"
-    role="presentation"
-  >
-    <fieldset
-      class="invisible"
+  <div>
+    <div
+      class="blocks-form"
+      role="presentation"
     >
-      <div
-        data-rbd-droppable-context-id="0"
-        data-rbd-droppable-id="id-0"
-        style="position: relative;"
+      <fieldset
+        class="invisible"
       >
-        <div
-          class="block-editor-custom"
-          data-rbd-draggable-context-id="0"
-          data-rbd-draggable-id="a"
-        >
+        <div>
           <div
             style="position: relative;"
           >
             <div
-              aria-describedby="rbd-hidden-text-0-hidden-text-0"
-              class="drag handle wrapper"
-              data-rbd-drag-handle-context-id="0"
-              data-rbd-drag-handle-draggable-id="a"
-              draggable="false"
-              role="button"
-              style="visibility: visible; display: inline-block;"
-              tabindex="0"
-            >
-              <svg
-                class="icon"
-                style="height: 18px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
-              />
-            </div>
-            <div
-              class="ui drag block inner custom"
+              class="block-editor-custom"
             >
               <div
-                class="block custom selected"
-                role="presentation"
-                style="outline: none;"
-                tabindex="-1"
+                style="position: relative;"
               >
-                <div>
-                  a
-                   - 
-                  a
+                <div
+                  class="drag handle wrapper"
+                  style="visibility: visible; display: inline-block;"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 18px; width: auto; fill: currentColor;"
+                    viewBox="0 0 36 36"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g
+                      fill-rule="evenodd"
+                    >
+                      <path
+                        d="M13 16C11.897 16 11 16.897 11 18 11 19.103 11.897 20 13 20 14.103 20 15 19.103 15 18 15 16.897 14.103 16 13 16M13 22C10.794 22 9 20.206 9 18 9 15.794 10.794 14 13 14 15.206 14 17 15.794 17 18 17 20.206 15.206 22 13 22M23 16C21.897 16 21 16.897 21 18 21 19.103 21.897 20 23 20 24.103 20 25 19.103 25 18 25 16.897 24.103 16 23 16M23 22C20.794 22 19 20.206 19 18 19 15.794 20.794 14 23 14 25.206 14 27 15.794 27 18 27 20.206 25.206 22 23 22M13 26C11.897 26 11 26.897 11 28 11 29.103 11.897 30 13 30 14.103 30 15 29.103 15 28 15 26.897 14.103 26 13 26M13 32C10.794 32 9 30.206 9 28 9 25.794 10.794 24 13 24 15.206 24 17 25.794 17 28 17 30.206 15.206 32 13 32M23 26C21.897 26 21 26.897 21 28 21 29.103 21.897 30 23 30 24.103 30 25 29.103 25 28 25 26.897 24.103 26 23 26M23 32C20.794 32 19 30.206 19 28 19 25.794 20.794 24 23 24 25.206 24 27 25.794 27 28 27 30.206 25.206 32 23 32M13 6C11.897 6 11 6.897 11 8 11 9.103 11.897 10 13 10 14.103 10 15 9.103 15 8 15 6.897 14.103 6 13 6M13 12C10.794 12 9 10.206 9 8 9 5.794 10.794 4 13 4 15.206 4 17 5.794 17 8 17 10.206 15.206 12 13 12M23 6C21.897 6 21 6.897 21 8 21 9.103 21.897 10 23 10 24.103 10 25 9.103 25 8 25 6.897 24.103 6 23 6M23 12C20.794 12 19 10.206 19 8 19 5.794 20.794 4 23 4 25.206 4 27 5.794 27 8 27 10.206 25.206 12 23 12"
+                      />
+                    </g>
+                  </svg>
                 </div>
-              </div>
-              <button
-                aria-label="delete"
-                class="ui basic icon button delete-button"
-                type="button"
-              >
-                <svg
-                  class="icon"
-                  style="height: 18px; width: auto; fill: currentColor;"
-                  viewBox=""
-                  xmlns=""
-                />
-              </button>
-            </div>
-          </div>
-        </div>
-        <div
-          class="block-editor-custom"
-          data-rbd-draggable-context-id="0"
-          data-rbd-draggable-id="b"
-        >
-          <div
-            style="position: relative;"
-          >
-            <div
-              aria-describedby="rbd-hidden-text-0-hidden-text-0"
-              class="drag handle wrapper"
-              data-rbd-drag-handle-context-id="0"
-              data-rbd-drag-handle-draggable-id="b"
-              draggable="false"
-              role="button"
-              style="visibility: hidden; display: inline-block;"
-              tabindex="0"
-            >
-              <svg
-                class="icon"
-                style="height: 18px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
-              />
-            </div>
-            <div
-              class="ui drag block inner custom"
-            >
-              <div
-                class="block custom"
-                role="presentation"
-                style="outline: none;"
-                tabindex="-1"
-              >
-                <div>
-                  b
-                   - 
-                  b
+                <div
+                  class="ui drag block inner custom"
+                >
+                  <div
+                    class="block custom selected"
+                    role="presentation"
+                    style="outline: none;"
+                    tabindex="-1"
+                  >
+                    <div>
+                      a
+                       - 
+                      a
+                    </div>
+                  </div>
+                  <button
+                    aria-label="delete"
+                    class="ui basic icon button delete-button"
+                    type="button"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 18px; width: auto; fill: currentColor;"
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g
+                        fill-rule="evenodd"
+                      >
+                        <path
+                          d="M27,30 C27,30.552 26.551,31 26,31 L12,31 C11.449,31 11,30.552 11,30 L11,9 L27,9 L27,30 Z M19,5 C20.103,5 21,5.897 21,7 L17,7 C17,5.897 17.897,5 19,5 L19,5 Z M31,7 L23,7 C23,4.794 21.206,3 19,3 C16.794,3 15,4.794 15,7 L7,7 L7,9 L9,9 L9,30 C9,31.654 10.346,33 12,33 L26,33 C27.654,33 29,31.654 29,30 L29,9 L31,9 L31,7 Z"
+                        />
+                        <polygon
+                          points="15 28 17 28 17 12 15 12"
+                        />
+                        <polygon
+                          points="21 28 23 28 23 12 21 12"
+                        />
+                      </g>
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
+            <div
+              class="block-editor-custom"
+            >
+              <div
+                style="position: relative;"
+              >
+                <div
+                  class="drag handle wrapper"
+                  style="visibility: hidden; display: inline-block;"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 18px; width: auto; fill: currentColor;"
+                    viewBox="0 0 36 36"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g
+                      fill-rule="evenodd"
+                    >
+                      <path
+                        d="M13 16C11.897 16 11 16.897 11 18 11 19.103 11.897 20 13 20 14.103 20 15 19.103 15 18 15 16.897 14.103 16 13 16M13 22C10.794 22 9 20.206 9 18 9 15.794 10.794 14 13 14 15.206 14 17 15.794 17 18 17 20.206 15.206 22 13 22M23 16C21.897 16 21 16.897 21 18 21 19.103 21.897 20 23 20 24.103 20 25 19.103 25 18 25 16.897 24.103 16 23 16M23 22C20.794 22 19 20.206 19 18 19 15.794 20.794 14 23 14 25.206 14 27 15.794 27 18 27 20.206 25.206 22 23 22M13 26C11.897 26 11 26.897 11 28 11 29.103 11.897 30 13 30 14.103 30 15 29.103 15 28 15 26.897 14.103 26 13 26M13 32C10.794 32 9 30.206 9 28 9 25.794 10.794 24 13 24 15.206 24 17 25.794 17 28 17 30.206 15.206 32 13 32M23 26C21.897 26 21 26.897 21 28 21 29.103 21.897 30 23 30 24.103 30 25 29.103 25 28 25 26.897 24.103 26 23 26M23 32C20.794 32 19 30.206 19 28 19 25.794 20.794 24 23 24 25.206 24 27 25.794 27 28 27 30.206 25.206 32 23 32M13 6C11.897 6 11 6.897 11 8 11 9.103 11.897 10 13 10 14.103 10 15 9.103 15 8 15 6.897 14.103 6 13 6M13 12C10.794 12 9 10.206 9 8 9 5.794 10.794 4 13 4 15.206 4 17 5.794 17 8 17 10.206 15.206 12 13 12M23 6C21.897 6 21 6.897 21 8 21 9.103 21.897 10 23 10 24.103 10 25 9.103 25 8 25 6.897 24.103 6 23 6M23 12C20.794 12 19 10.206 19 8 19 5.794 20.794 4 23 4 25.206 4 27 5.794 27 8 27 10.206 25.206 12 23 12"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div
+                  class="ui drag block inner custom"
+                >
+                  <div
+                    class="block custom"
+                    role="presentation"
+                    style="outline: none;"
+                    tabindex="-1"
+                  >
+                    <div>
+                      b
+                       - 
+                      b
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div />
           </div>
         </div>
-      </div>
-    </fieldset>
-  </div>
-  <div
-    id="sidebar-order"
-  >
-    <div>
-      <li
-        class="tree-item-wrapper"
-        difflib="[object Object]"
-        dndkitcore="[object Object]"
-        moment="[object Object]"
-        prettierparserhtml="[object Object]"
-        prettierstandalone="[object Object]"
-        prismcore="[object Object]"
-        reactbeautifuldnd="[object Object]"
-        reactdates="[object Object]"
-        reactdnd="[object Object]"
-        reactdndhtml5backend="[object Object]"
-        reactselect="[object Object]"
-        reactselectasync="[object Object]"
-        reactselectasynccreateable="[object Object]"
-        reactselectasyncpaginate="[object Object]"
-        reactselectcreateable="[object Object]"
-        reactsortablehoc="[object Object]"
-        reactvirtualized="[object Object]"
-        role="presentation"
-        rrule="[object Module]"
-        style="--spacing: 0px;"
-        toastify="[object Object]"
-      >
-        <div
-          class="tree-item depth-0"
-          style="transition: transform 200ms ease;"
-        >
-          <button
-            aria-describedby="DndDescribedBy-0"
-            aria-disabled="false"
-            aria-roledescription="sortable"
-            class="action drag"
-            data-cypress="draggable-handle"
-            role="button"
-            tabindex="0"
-          >
-            <svg
-              class="icon"
-              style="height: 16px; width: auto; fill: currentColor;"
-              viewBox=""
-              xmlns=""
-            />
-          </button>
-          <span
-            class="text"
-          >
-             
-          </span>
-          <button
-            class="action delete"
-            tabindex="0"
-          >
-            <svg
-              class="icon"
-              style="width: auto; fill: currentColor;"
-              viewBox=""
-              xmlns=""
-            />
-          </button>
-        </div>
-      </li>
-      <li
-        class="tree-item-wrapper"
-        difflib="[object Object]"
-        dndkitcore="[object Object]"
-        moment="[object Object]"
-        prettierparserhtml="[object Object]"
-        prettierstandalone="[object Object]"
-        prismcore="[object Object]"
-        reactbeautifuldnd="[object Object]"
-        reactdates="[object Object]"
-        reactdnd="[object Object]"
-        reactdndhtml5backend="[object Object]"
-        reactselect="[object Object]"
-        reactselectasync="[object Object]"
-        reactselectasynccreateable="[object Object]"
-        reactselectasyncpaginate="[object Object]"
-        reactselectcreateable="[object Object]"
-        reactsortablehoc="[object Object]"
-        reactvirtualized="[object Object]"
-        role="presentation"
-        rrule="[object Module]"
-        style="--spacing: 0px;"
-        toastify="[object Object]"
-      >
-        <div
-          class="tree-item depth-0"
-          style="transition: transform 200ms ease;"
-        >
-          <button
-            aria-describedby="DndDescribedBy-0"
-            aria-disabled="false"
-            aria-roledescription="sortable"
-            class="action drag"
-            data-cypress="draggable-handle"
-            role="button"
-            tabindex="0"
-          >
-            <svg
-              class="icon"
-              style="height: 16px; width: auto; fill: currentColor;"
-              viewBox=""
-              xmlns=""
-            />
-          </button>
-          <span
-            class="text"
-          >
-             
-          </span>
-          <button
-            class="action delete"
-            tabindex="0"
-          >
-            <svg
-              class="icon"
-              style="width: auto; fill: currentColor;"
-              viewBox=""
-              xmlns=""
-            />
-          </button>
+      </fieldset>
+    </div>
+    <div
+      id="sidebar-order"
+    >
+      <div>
+        <div>
+          Order Component
         </div>
       </div>
     </div>

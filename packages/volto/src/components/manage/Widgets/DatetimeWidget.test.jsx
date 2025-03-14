@@ -8,6 +8,7 @@ import { __setLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 const mockStore = configureStore();
 
 vi.mock('@plone/volto/helpers/Loadable/Loadable');
+
 beforeAll(async () => {
   await __setLoadables();
 });
@@ -29,11 +30,13 @@ test('renders a datetime widget component', async () => {
         fieldSet="default"
         onChange={() => {}}
         value={isoDate}
+        showTime={true}
       />
     </Provider>,
   );
 
   await waitFor(() => screen.getByText(/My field/));
+  await waitFor(() => screen.getByPlaceholderText('Time'));
   expect(container).toMatchSnapshot();
 });
 
@@ -53,10 +56,12 @@ test('datetime widget converts UTC date and adapts to local datetime', async () 
         title="My field"
         onChange={() => {}}
         value={date}
+        showTime={true}
       />
     </Provider>,
   );
 
   await waitFor(() => screen.getByText(/My field/));
+  await waitFor(() => screen.getByPlaceholderText('Time'));
   expect(container).toMatchSnapshot();
 });
