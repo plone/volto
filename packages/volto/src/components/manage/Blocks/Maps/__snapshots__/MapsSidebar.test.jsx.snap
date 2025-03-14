@@ -1,35 +1,35 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders an Image Block Sidebar component 1`] = `
 <div
   data-schema="{
-  \\"title\\": \\"Maps\\",
-  \\"block\\": \\"Maps\\",
-  \\"fieldsets\\": [
+  "title": "Maps",
+  "block": "Maps",
+  "fieldsets": [
     {
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\",
-      \\"fields\\": [
-        \\"url\\",
-        \\"title\\",
-        \\"align\\"
+      "id": "default",
+      "title": "Default",
+      "fields": [
+        "url",
+        "title",
+        "align"
       ]
     }
   ],
-  \\"properties\\": {
-    \\"url\\": {
-      \\"title\\": \\"Maps URL\\",
-      \\"widget\\": \\"url\\"
+  "properties": {
+    "url": {
+      "title": "Maps URL",
+      "widget": "url"
     },
-    \\"title\\": {
-      \\"title\\": \\"Alt text\\"
+    "title": {
+      "title": "Alt text"
     },
-    \\"align\\": {
-      \\"title\\": \\"Alignment\\",
-      \\"widget\\": \\"align\\"
+    "align": {
+      "title": "Alignment",
+      "widget": "align"
     }
   },
-  \\"required\\": []
+  "required": []
 }"
   id="BlockDataForm"
 />

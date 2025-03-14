@@ -1,69 +1,69 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`PreviewImage not renders a fallback image if showDefault prop is false 1`] = `
+exports[`PreviewImage > not renders a fallback image if showDefault prop is false 1`] = `
 <img
   alt="Item title"
   className="extra"
   height="300"
-  src="default-image.svg"
+  src="/src/components/manage/Blocks/Listing/default-image.svg"
   width="400"
 />
 `;
 
-exports[`PreviewImage renders a fallback image 1`] = `
+exports[`PreviewImage > renders a fallback image 1`] = `
 <img
   alt="Item title"
   height="300"
-  src="default-image.svg"
+  src="/src/components/manage/Blocks/Listing/default-image.svg"
   width="400"
 />
 `;
 
-exports[`PreviewImage renders a fallback image with alt prop 1`] = `
+exports[`PreviewImage > renders a fallback image with alt prop 1`] = `
 <img
   alt="Alt prop"
   className="extra"
   height="300"
-  src="default-image.svg"
+  src="/src/components/manage/Blocks/Listing/default-image.svg"
   width="400"
 />
 `;
 
-exports[`PreviewImage renders a fallback image with alt prop empty 1`] = `
+exports[`PreviewImage > renders a fallback image with alt prop empty 1`] = `
 <img
   alt=""
   className="extra"
   height="300"
-  src="default-image.svg"
+  src="/src/components/manage/Blocks/Listing/default-image.svg"
   width="400"
 />
 `;
 
-exports[`PreviewImage renders a fallback image with extra props 1`] = `
+exports[`PreviewImage > renders a fallback image with extra props 1`] = `
 <img
   alt="Item title"
   className="extra"
   height="300"
-  src="default-image.svg"
+  src="/src/components/manage/Blocks/Listing/default-image.svg"
   width="400"
 />
 `;
 
-exports[`PreviewImage renders a preview image 1`] = `
+exports[`PreviewImage > renders a preview image 1`] = `
 <img
   alt="Item title"
   image_field="image"
   item={
-    Object {
+    {
       "@id": "http://localhost:3000/something",
       "image_field": "image",
-      "image_scales": Object {
-        "image": Array [
-          Object {
+      "image_scales": {
+        "image": [
+          {
             "download": "@@images/image",
             "height": 400,
-            "scales": Object {
-              "preview": Object {
+            "scales": {
+              "preview": {
                 "download": "@@images/image-400.png",
                 "height": 400,
                 "width": 400,
@@ -79,22 +79,22 @@ exports[`PreviewImage renders a preview image 1`] = `
 />
 `;
 
-exports[`PreviewImage renders a preview image with extra props 1`] = `
+exports[`PreviewImage > renders a preview image with extra props 1`] = `
 <img
   alt="Item title"
   className="extra"
   image_field="image"
   item={
-    Object {
+    {
       "@id": "http://localhost:3000/something",
       "image_field": "image",
-      "image_scales": Object {
-        "image": Array [
-          Object {
+      "image_scales": {
+        "image": [
+          {
             "download": "@@images/image",
             "height": 400,
-            "scales": Object {
-              "preview": Object {
+            "scales": {
+              "preview": {
                 "download": "@@images/image-400.png",
                 "height": 400,
                 "width": 400,

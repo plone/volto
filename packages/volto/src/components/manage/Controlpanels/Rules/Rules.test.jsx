@@ -9,7 +9,9 @@ import Rules from './Rules';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('../../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
 describe('Rules', () => {
   it('renders rules control panel control', () => {
@@ -64,8 +66,10 @@ describe('Rules', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <Rules location={{ pathname: '/controlpanel/rules' }} />
-        <div id="toolbar"></div>
+        <>
+          <Rules location={{ pathname: '/controlpanel/rules' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
 

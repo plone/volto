@@ -1,0 +1,1 @@
+Volto has migrated from "Jest" to "Vitest" as its unit test runner.@Abhishek-17h 
