@@ -1,3 +1,9 @@
 @layer theme, base, components, plone-components, utilities, custom; /* Add custom layer before tailwind defines them */
+@layer custom {
+  .bootstrap-wrapper {
+    @import 'bootstrap/dist/css/bootstrap.min.css';
+  }
+}
+
 @import 'tailwindcss';
 @import '../addons.styles.css';
