@@ -29,6 +29,8 @@ export namespace Route {
   export type HeadersArgs = T.HeadersArgs
   export type HeadersFunction = (args: HeadersArgs) => Headers | HeadersInit
 
+  export type unstable_MiddlewareFunction = T.CreateServerMiddlewareFunction<Info>
+  export type unstable_ClientMiddlewareFunction = T.CreateClientMiddlewareFunction<Info>
   export type LoaderArgs = T.CreateServerLoaderArgs<Info>
   export type ClientLoaderArgs = T.CreateClientLoaderArgs<Info>
   export type ActionArgs = T.CreateServerActionArgs<Info>

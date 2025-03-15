@@ -10,6 +10,7 @@ applyAddonConfiguration(config);
 const routes: RouteConfig = [
   index('content.tsx', { id: 'index' }),
   route('ok', 'okroute.tsx', { id: 'ok' }),
+  route('test', 'test.tsx', { id: 'test' }),
   route('*', 'content.tsx', { id: 'content' }),
   ...getAddonRoutesConfig(config.routes || [], addonsInfo),
 ];
