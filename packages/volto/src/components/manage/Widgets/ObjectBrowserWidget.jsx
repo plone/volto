@@ -355,7 +355,7 @@ export class ObjectBrowserWidgetComponent extends Component {
       <FormFieldWrapper
         {...this.props}
         // At the moment, OBW handles its own errors and validation
-        error={this.state.errors}
+        error={this.state.errors.length > 0 ? this.state.errors[0] : null}
         className={description ? 'help text' : 'text'}
       >
         <div
