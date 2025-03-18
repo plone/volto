@@ -11,36 +11,13 @@ import keys from 'lodash/keys';
 import endsWith from 'lodash/endsWith';
 import find from 'lodash/find';
 import config from '@plone/registry';
-import type {
+import {
   Content,
-  BlocksFormData,
-  Image,
-  RelatedItem,
 } from '@plone/types';
 
-interface nestContentProps {
-  '@static_behaviors'?: string[] | undefined;
-  '@type'?: string | undefined;
-  allow_discussion?: boolean | { title: string; token: boolean } | undefined;
-  blocks?: {
-    [k in string]: BlocksFormData;
-  } | undefined;
-  contributors?: string[] | undefined;
-  creators?: string[] | undefined;
-  description?: string | undefined;
-  effective?: string | undefined;
-  exclude_from_nav?: boolean | undefined;
-  expires?: string | undefined;
-  id?: string | undefined;
-  language?: string | undefined;
-  parent?: { '@id': string; '@type': string; description: string } | undefined;
-  preview_caption?: string | undefined;
-  preview_image?: Image | undefined;
-  relatedItems?: RelatedItem[] | undefined;
-  rights?: string | undefined;
-  subjects?: [] | undefined;
-  title?: string | undefined;
-  versioning_enabled?: boolean | undefined;
+type PartialContentProps = Partial<Content>;
+interface nestContentProps extends PartialContentProps {
+  '@static_behaviors'?: string[];
 }
 
 interface languageProps {
