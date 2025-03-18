@@ -11,7 +11,7 @@ import keys from 'lodash/keys';
 import endsWith from 'lodash/endsWith';
 import find from 'lodash/find';
 import config from '@plone/registry';
-import {
+import type {
   Content,
 } from '@plone/types';
 
@@ -28,7 +28,7 @@ interface languageProps {
       };
     };
   }
-}
+};
 /**
  * Nest content.
  * @function nestContent
