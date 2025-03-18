@@ -18,6 +18,7 @@ import type {
 type PartialContentProps = Partial<Content>;
 interface nestContentProps extends PartialContentProps {
   '@static_behaviors'?: string[];
+  [key: string]: unknown;
 }
 
 interface languageProps {
