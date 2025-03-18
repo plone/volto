@@ -17,6 +17,15 @@ const store = mockStore({
     locale: 'en',
     messages: {},
   },
+  actions: {
+    actions: {
+      object: [
+        {
+          id: 'edit',
+        },
+      ],
+    },
+  },
 });
 
 test('renders a link view component', () => {
@@ -24,7 +33,6 @@ test('renders a link view component', () => {
     <Provider store={store}>
       <MemoryRouter>
         <LinkView
-          token="1234"
           content={{
             title: 'Hello World!',
             description: 'Hi',
