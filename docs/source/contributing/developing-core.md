@@ -67,9 +67,7 @@ The package `volto` is the core code of Volto.
 │  ├─ tsconfig
 │  ├─ types
 │  ├─ volto
-│  ├─ volto-guillotina
-│  ├─ volto-slate
-│  └─ volto-testing
+│  └─ volto-slate
 ├─ ...
 ```
 
