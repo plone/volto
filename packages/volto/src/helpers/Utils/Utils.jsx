@@ -1,6 +1,5 @@
 import cloneDeepWith from 'lodash/cloneDeepWith';
 import flatten from 'lodash/flatten';
-import includes from 'lodash/includes';
 import isEqual from 'lodash/isEqual';
 import isObject from 'lodash/isObject';
 import transform from 'lodash/transform';
@@ -312,8 +311,8 @@ export const slugify = (string, slugs = []) => {
     .replace(/[^\w]+/g, '');
   let i = 1;
 
-  if (includes(slugs, slug)) {
-    while (includes(slugs, `${slug}_${i}`)) {
+  if (slugs.includes(slug)) {
+    while (slugs.includes(`${slug}_${i}`)) {
       i++;
     }
 
