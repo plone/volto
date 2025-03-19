@@ -1,3 +1,3 @@
 export * from './primitives';
-export * from './Content/content';
-export * from './cookies/cookies';
+export * from './Content/Content';
+export * from './Cookies/cookies';

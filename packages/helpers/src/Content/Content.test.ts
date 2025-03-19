@@ -2,7 +2,7 @@ import {
   nestContent,
   getContentIcon,
   getLanguageIndependentFields,
-} from './content';
+} from './Content';
 import contentExistingSVG from '@plone/volto/icons/content-existing.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import calendarSVG from '@plone/volto/icons/calendar.svg';
