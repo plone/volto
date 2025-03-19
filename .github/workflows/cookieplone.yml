@@ -14,6 +14,8 @@ jobs:
       fail-fast: false
       matrix:
         node-version: [22.x]
+    env:
+      project-directory: volto-add-on
     steps:
       - uses: actions/checkout@v4
       - run: echo "Current branch is ${GITHUB_REF#refs/heads/}"
@@ -28,11 +30,27 @@ jobs:
           pipx run --no-cache cookieplone frontend_addon --no-input
 
       - name: Install generated package
-        working-directory: volto-add-on
+        working-directory: ${{env.project-directory}}
         run: |
           pnpm dlx mrs-developer missdev --no-config --fetch-https
           (cd core && git fetch --depth 1 origin ${GITHUB_REF#refs/heads/}:${GITHUB_REF#refs/heads/} && git checkout ${GITHUB_REF#refs/heads/})
           pnpm i
+
+      - name: Running lint works
+        working-directory: ${{env.project-directory}}
+        run: make lint
+
+      - name: Running prettier works
+        working-directory: ${{env.project-directory}}
+        run: make format
+
+      - name: Build Storybook
+        working-directory: ${{env.project-directory}}
+        run: make storybook-build
+
+      - name: Running tests works
+        working-directory: ${{env.project-directory}}
+        run: make test
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
