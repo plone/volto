@@ -251,6 +251,7 @@ class SelectWidget extends Component {
             this.props.placeholder ??
             this.props.intl.formatMessage(messages.select)
           }
+          onBlur={() => this.props.onBlur(id, value)}
           onChange={(selectedOption) => {
             if (isMulti) {
               return onChange(

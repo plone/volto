@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.2.3 (2025-03-07)
+
+### Bugfix
+
+- To ensure accessibility, an `aria-labelledby` attribute was added to the editable part of the `Slate` component. @Wagner3UB [#6803](https://github.com/plone/volto/issues/6803)
+
 ## 18.2.2 (2025-02-08)
 
 ### Bugfix

@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "5.0.0-alpha.0",
+  "version": "5.0.0-alpha.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -47,5 +47,9 @@
   },
   "devDependencies": {
     "release-it": "^17.1.1"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
