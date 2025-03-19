@@ -3,7 +3,7 @@ import config from '@plone/registry';
 interface CookieOptions {
   path: string;
   secure: any;
-  expires: string | Date | null;
+  expires: Date;
 }
 export const getCookieOptions = (options?: CookieOptions): CookieOptions => {
   const { path = '/', secure, expires, ...otherOptions } = options || {};

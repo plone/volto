@@ -11,9 +11,7 @@ import keys from 'lodash/keys';
 import endsWith from 'lodash/endsWith';
 import find from 'lodash/find';
 import config from '@plone/registry';
-import type {
-  Content,
-} from '@plone/types';
+import type { Content } from '@plone/types';
 
 type PartialContentProps = Partial<Content>;
 interface nestContentProps extends PartialContentProps {
@@ -28,8 +26,9 @@ interface languageProps {
         language_independent?: boolean;
       };
     };
-  }
-};
+  };
+}
+
 /**
  * Nest content.
  * @function nestContent
