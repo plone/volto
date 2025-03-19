@@ -6,7 +6,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 import filter from 'lodash/filter';
 import map from 'lodash/map';
 import { injectIntl } from 'react-intl';
@@ -170,41 +169,39 @@ class RadioGroupWidget extends Component {
 
 export const RadioGroupWidgetComponent = injectIntl(RadioGroupWidget);
 
-export default compose(
-  connect(
-    (state, props) => {
-      const vocabBaseUrl = !props.choices
-        ? getVocabFromHint(props) ||
-          getVocabFromField(props) ||
-          getVocabFromItems(props)
-        : '';
+export default connect(
+  (state, props) => {
+    const vocabBaseUrl = !props.choices
+      ? getVocabFromHint(props) ||
+        getVocabFromField(props) ||
+        getVocabFromItems(props)
+      : '';
 
-      const vocabState =
-        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[state.intl.locale];
+    const vocabState =
+      state.vocabularies?.[vocabBaseUrl]?.subrequests?.[state.intl.locale];
 
-      // If the schema already has the choices in it, then do not try to get the vocab,
-      // even if there is one
-      if (props.choices) {
-        return {
-          choices: props.choices,
-          lang: state.intl.locale,
-        };
-      } else if (vocabState) {
-        return {
-          vocabBaseUrl,
-          choices: vocabState?.items ?? [],
-          lang: state.intl.locale,
-        };
-        // There is a moment that vocabState is not there yet, so we need to pass the
-        // vocabBaseUrl to the component.
-      } else if (vocabBaseUrl) {
-        return {
-          vocabBaseUrl,
-          lang: state.intl.locale,
-        };
-      }
-      return { lang: state.intl.locale };
-    },
-    { getVocabulary, getVocabularyTokenTitle },
-  ),
+    // If the schema already has the choices in it, then do not try to get the vocab,
+    // even if there is one
+    if (props.choices) {
+      return {
+        choices: props.choices,
+        lang: state.intl.locale,
+      };
+    } else if (vocabState) {
+      return {
+        vocabBaseUrl,
+        choices: vocabState?.items ?? [],
+        lang: state.intl.locale,
+      };
+      // There is a moment that vocabState is not there yet, so we need to pass the
+      // vocabBaseUrl to the component.
+    } else if (vocabBaseUrl) {
+      return {
+        vocabBaseUrl,
+        lang: state.intl.locale,
+      };
+    }
+    return { lang: state.intl.locale };
+  },
+  { getVocabulary, getVocabularyTokenTitle },
 )(RadioGroupWidgetComponent);
