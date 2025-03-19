@@ -13,7 +13,6 @@ import findIndex from 'lodash/findIndex';
 import isArray from 'lodash/isArray';
 import isString from 'lodash/isString';
 import keys from 'lodash/keys';
-import map from 'lodash/map';
 import omit from 'lodash/omit';
 import slice from 'lodash/slice';
 import without from 'lodash/without';
@@ -190,8 +189,7 @@ config.registerUtility({
   }),
 });
 
-map(
-  ['URL', 'Password', 'label_password_field', 'Email', 'label_email'],
+['URL', 'Password', 'label_password_field', 'Email', 'label_email'].forEach(
   (factory) => {
     config.registerUtility({
       name: factory,
@@ -214,7 +212,7 @@ map(
   },
 );
 
-map(['Integer', 'label_integer_field'], (factory) => {
+['Integer', 'label_integer_field'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryProperties',
@@ -235,24 +233,21 @@ map(['Integer', 'label_integer_field'], (factory) => {
   });
 });
 
-map(
-  [
-    'Floating-point number',
-    'label_float_field',
-    'JSONField',
-    'Relation Choice',
-    'Relation List',
-  ],
-  (factory) => {
-    config.registerUtility({
-      name: factory,
-      type: 'fieldFactoryProperties',
-      method: (intl) => ({}),
-    });
-  },
-);
+[
+  'Floating-point number',
+  'label_float_field',
+  'JSONField',
+  'Relation Choice',
+  'Relation List',
+].forEach((factory) => {
+  config.registerUtility({
+    name: factory,
+    type: 'fieldFactoryProperties',
+    method: (intl) => ({}),
+  });
+});
 
-map(['Yes/No', 'label_boolean_field'], (factory) => {
+['Yes/No', 'label_boolean_field'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryProperties',
@@ -265,7 +260,7 @@ map(['Yes/No', 'label_boolean_field'], (factory) => {
   });
 });
 
-map(['Date/Time', 'label_datetime_field'], (factory) => {
+['Date/Time', 'label_datetime_field'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryProperties',
@@ -279,7 +274,7 @@ map(['Date/Time', 'label_datetime_field'], (factory) => {
   });
 });
 
-map(['Date', 'label_date_field'], (factory) => {
+['Date', 'label_date_field'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryProperties',
@@ -293,7 +288,7 @@ map(['Date', 'label_date_field'], (factory) => {
   });
 });
 
-map(['time'], (factory) => {
+['time'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryProperties',
@@ -307,7 +302,7 @@ map(['time'], (factory) => {
   });
 });
 
-map(['File', 'File Upload', 'Image'], (factory) => {
+['File', 'File Upload', 'Image'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryProperties',
@@ -324,8 +319,7 @@ map(['File', 'File Upload', 'Image'], (factory) => {
   });
 });
 
-map(
-  ['Multiple Choice', 'label_multi_choice_field', 'checkbox_group'],
+['Multiple Choice', 'label_multi_choice_field', 'checkbox_group'].forEach(
   (factory) => {
     config.registerUtility({
       name: factory,
@@ -346,7 +340,7 @@ map(
   },
 );
 
-map(['Choice', 'label_choice_field', 'radio_group'], (factory) => {
+['Choice', 'label_choice_field', 'radio_group'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryProperties',
@@ -424,7 +418,7 @@ config.registerUtility({
 
 // Register field factory initial data utilities
 
-map(['Date/Time', 'label_datetime_field'], (factory) => {
+['Date/Time', 'label_datetime_field'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
@@ -436,7 +430,7 @@ map(['Date/Time', 'label_datetime_field'], (factory) => {
   });
 });
 
-map(['Date', 'label_date_field'], (factory) => {
+['Date', 'label_date_field'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
@@ -458,7 +452,7 @@ config.registerUtility({
   }),
 });
 
-map(['Email', 'label_email'], (factory) => {
+['Email', 'label_email'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
@@ -471,7 +465,7 @@ map(['Email', 'label_email'], (factory) => {
   });
 });
 
-map(['File', 'File Upload'], (factory) => {
+['File', 'File Upload'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
@@ -482,7 +476,7 @@ map(['File', 'File Upload'], (factory) => {
   });
 });
 
-map(['Floating-point number', 'label_float_field'], (factory) => {
+['Floating-point number', 'label_float_field'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
@@ -493,7 +487,7 @@ map(['Floating-point number', 'label_float_field'], (factory) => {
   });
 });
 
-map(['Integer', 'label_integer_field'], (factory) => {
+['Integer', 'label_integer_field'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
@@ -523,7 +517,7 @@ config.registerUtility({
   }),
 });
 
-map(['Multiple Choice', 'label_multi_choice_field'], (factory) => {
+['Multiple Choice', 'label_multi_choice_field'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
@@ -543,7 +537,7 @@ config.registerUtility({
   }),
 });
 
-map(['Choice', 'label_choice_field'], (factory) => {
+['Choice', 'label_choice_field'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
@@ -564,7 +558,7 @@ config.registerUtility({
   }),
 });
 
-map(['Password', 'label_password_field'], (factory) => {
+['Password', 'label_password_field'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
@@ -596,7 +590,7 @@ config.registerUtility({
   }),
 });
 
-map(['Yes/No', 'label_boolean_field'], (factory) => {
+['Yes/No', 'label_boolean_field'].forEach((factory) => {
   config.registerUtility({
     name: factory,
     type: 'fieldFactoryInitialData',
@@ -1184,7 +1178,7 @@ class SchemaWidget extends Component {
         ...slice(fieldsets, 0, currentFieldset),
         {
           ...fieldsets[currentFieldset],
-          fields: map(fieldsets[currentFieldset].fields, (field) =>
+          fields: fieldsets[currentFieldset].fields.map((field) =>
             field === oldfieldId ? newfieldId : field,
           ),
         },
@@ -1226,11 +1220,11 @@ class SchemaWidget extends Component {
     let fieldsets = this.props.value.fieldsets;
 
     if (this.state.editField.id !== formattedValues.id) {
-      this.props.value.fieldsets[this.state.currentFieldset].fields = map(
-        this.props.value.fieldsets[this.state.currentFieldset].fields,
-        (field) =>
-          field === this.state.editField.id ? formattedValues.id : field,
-      );
+      this.props.value.fieldsets[this.state.currentFieldset].fields =
+        this.props.value.fieldsets[this.state.currentFieldset].fields.map(
+          (field) =>
+            field === this.state.editField.id ? formattedValues.id : field,
+        );
       const index = isArray(this.props.value.required)
         ? this.props.value.required.indexOf(formattedValues.id)
         : -1;
@@ -1585,12 +1579,9 @@ class SchemaWidget extends Component {
       : this.props.value.fieldsets[this.state.currentFieldset].fields.length;
     // fields that were not created by the user, but are part of a behavior
     const makeNonUserFields = () =>
-      map(
-        this.props.value.fieldsets[this.state.currentFieldset].fields.slice(
-          0,
-          userCreatedFieldsStartingIndex,
-        ),
-        (field, index) => (
+      this.props.value.fieldsets[this.state.currentFieldset].fields
+        .slice(0, userCreatedFieldsStartingIndex)
+        .map((field, index) => (
           <div
             style={{ background: '#c7d5d859' }}
             key={`${field}-${this.state.currentFieldset}-${index}`}
@@ -1610,16 +1601,12 @@ class SchemaWidget extends Component {
               value={this.props.value.properties[field].default}
             />
           </div>
-        ),
-      );
+        ));
     // fields created by the user
     const makeUserFields = () =>
-      map(
-        this.props.value.fieldsets[this.state.currentFieldset].fields.slice(
-          userCreatedFieldsStartingIndex,
-          lastUserCreatedFieldsIndex,
-        ),
-        (field, index) => (
+      this.props.value.fieldsets[this.state.currentFieldset].fields
+        .slice(userCreatedFieldsStartingIndex, lastUserCreatedFieldsIndex)
+        .map((field, index) => (
           <Draggable
             draggableId={field}
             index={userCreatedFieldsStartingIndex + index}
@@ -1656,8 +1643,7 @@ class SchemaWidget extends Component {
               </div>
             )}
           </Draggable>
-        ),
-      );
+        ));
 
     const canAddFields =
       this.state.currentFieldset === 0 ||
@@ -1681,7 +1667,7 @@ class SchemaWidget extends Component {
           }}
         >
           {error.length > 0 &&
-            map(error, (err, index) => (
+            error.map((err, index) => (
               <Message
                 icon="warning"
                 key={`${err}-${index}`}
@@ -1701,7 +1687,7 @@ class SchemaWidget extends Component {
                   {...provided.draggableProps}
                   style={getTabStyle(snapshot.isDraggingOver)}
                 >
-                  {map(this.props.value.fieldsets, (fieldset, index) => (
+                  {this.props.value.fieldsets.map((fieldset, index) => (
                     <SchemaWidgetFieldset
                       key={`${fieldset.id}-${this.state.currentFieldset}-${index}`}
                       title={fieldset.title}
