@@ -50,9 +50,13 @@ jobs:
         working-directory: ${{env.project-directory}}
         run: make storybook-build
 
+      - name: Run i18n tests
+        working-directory: ${{env.project-directory}}
+        run: make i18n
+
       - name: Running tests works
         working-directory: ${{env.project-directory}}
-        run: make test
+        run: make ci-test
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
