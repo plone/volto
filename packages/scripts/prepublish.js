@@ -32,13 +32,17 @@ class PrePublishReleaseItPlugin extends Plugin {
   async beforeRelease() {
     const context = this.config.getContext();
     const tag = context.isPreRelease ? context.preReleaseId : 'latest';
+    const dryRunArg = this.config.isDryRun ? '--dry-run' : '';
 
     await this.step({
       enabled: true,
       task: () =>
-        this.exec(`pnpm publish${tag ? ` --tag ${tag}` : ''} --no-git-checks`, {
-          options: { write: false },
-        }).then(() => {
+        this.exec(
+          `pnpm publish${tag ? ` --tag ${tag}` : ''}${dryRunArg ? ` ${dryRunArg}` : ''} --no-git-checks`,
+          {
+            options: { write: false },
+          },
+        ).then(() => {
           this.setContext({ isReleased: true });
         }),
       label: 'Publishing to npm...',
