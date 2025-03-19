@@ -58,7 +58,6 @@ The package `volto` is the core code of Volto.
 │  ├─ client
 │  ├─ components
 │  ├─ coresandbox
-│  ├─ generator-volto
 │  ├─ helpers
 │  ├─ providers
 │  ├─ registry
@@ -357,10 +356,10 @@ Used by Volto, you can also use it in other JavaScript frameworks and environmen
 For Volto 18, `@plone/generator-volto` is replaced by [Cookieplone](https://github.com/plone/cookieplone).
 ```
 
-`@plone/generator-volto` is a Yeoman generator that helps you set up Volto via command line.
-It generates all the boilerplate needed to start developing a Plone Volto project.
+`@plone/generator-volto` was a Yeoman generator that helps you set up Volto via command line.
+It generated all the boilerplate needed to start developing a Plone Volto project.
 It was used by `cookiecutter-plone-starter`, the deprecated way to set up Plone projects.
-The generator features an `addon` template for scaffolding Volto add-ons in your projects.
+The generator featured an `addon` template for scaffolding Volto add-ons in your projects.
 
 
 ## Supported frontends

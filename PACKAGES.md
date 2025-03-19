@@ -88,7 +88,6 @@ They contain utilities that are useful for the development of a Volto project.
 Some of them are released:
 
 - `@plone/scripts`
-- `@plone/generator-volto` (deprecated)
 
 Some of them are used by the build, and separated in packages for convenience.
 
