@@ -1,14 +1,14 @@
 import config from '@plone/registry';
 
-interface CookieOptions {
+interface cookieProps {
   path: string;
   secure: any;
-  expires: Date;
+  [key: string]: unknown;
 }
-export const getCookieOptions = (options?: CookieOptions): CookieOptions => {
-  const { path = '/', secure, expires, ...otherOptions } = options || {};
-
+export const getCookieOptions = (options?: cookieProps): cookieProps => {
+  const { path = '/', secure, ...otherOptions } = options || {};
   let secureOption = secure;
+
   try {
     if (secureOption === undefined || secureOption === null) {
       const protocol = window?.location?.protocol ?? 'http';
