@@ -36,6 +36,7 @@ test('renders a radio group widget component', async () => {
         onChange={() => {}}
         onBlur={() => {}}
         onClick={() => {}}
+        items={{ vocabulary: { '@id': 'plone.app.vocabularies.Keywords' } }}
       />
     </Provider>,
   );
