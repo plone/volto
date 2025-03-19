@@ -675,6 +675,8 @@ config.registerUtility({
  * @param {Object} intl
  * @param {*} fieldsets
  * @param {Boolean} allowEditId
+ * @param {Boolean} allowEditQueryParameter
+ * @param {Boolean} allowEditPlaceholder
  * @param {Object} extraFields
  * @return {Object} - schema
  */
@@ -683,6 +685,8 @@ const schemaField = (
   intl,
   fieldsets,
   allowEditId,
+  allowEditQueryParameter,
+  allowEditPlaceholder,
   extraFields = {},
 ) => {
   const utility = config.getUtility({
@@ -705,10 +709,14 @@ const schemaField = (
           type: 'string',
           title: intl.formatMessage(messages.defaultValue),
         },
-        placeholder: {
-          type: 'string',
-          title: intl.formatMessage(messages.placeholder),
-        },
+        ...(allowEditPlaceholder
+          ? {
+              placeholder: {
+                type: 'string',
+                title: intl.formatMessage(messages.placeholder),
+              },
+            }
+          : {}),
       };
 
   return {
@@ -719,7 +727,8 @@ const schemaField = (
         fields: [
           ...keys(extraFields),
           ...(allowEditId ? ['id'] : []),
-          ...['title', 'description', 'parentFieldSet', 'queryParameterName'],
+          ...['title', 'description', 'parentFieldSet'],
+          ...(allowEditQueryParameter ? ['queryParameterName'] : []),
           ...keys(properties),
           ...['required'],
         ],
@@ -749,11 +758,17 @@ const schemaField = (
         title: intl.formatMessage(messages.parentFieldSet),
         choices: makeFieldsetList(fieldsets),
       },
-      queryParameterName: {
-        type: 'string',
-        title: intl.formatMessage(messages.queryParameterName),
-        description: intl.formatMessage(messages.queryParameterNameDescription),
-      },
+      ...(allowEditQueryParameter
+        ? {
+            queryParameterName: {
+              type: 'string',
+              title: intl.formatMessage(messages.queryParameterName),
+              description: intl.formatMessage(
+                messages.queryParameterNameDescription,
+              ),
+            },
+          }
+        : {}),
       required: {
         type: 'boolean',
         title: intl.formatMessage(messages.required),
@@ -907,6 +922,14 @@ class SchemaWidget extends Component {
      */
     allowEditId: PropTypes.bool,
     /**
+     * Allow editing of the query parameter
+     */
+    allowEditQueryParameter: PropTypes.bool,
+    /**
+     * Allow editing of the placeholder
+     */
+    allowEditPlaceholder: PropTypes.bool,
+    /**
      * On change handler
      */
     onChange: PropTypes.func.isRequired,
@@ -928,6 +951,8 @@ class SchemaWidget extends Component {
     filterFactory: null,
     additionalFactory: null,
     allowEditId: false,
+    allowEditQueryParameter: false,
+    allowEditPlaceholder: false,
   };
 
   /**
@@ -1806,6 +1831,8 @@ class SchemaWidget extends Component {
                   fieldset.behavior.includes('generated'),
               ),
               this.props.allowEditId,
+              this.props.allowEditQueryParameter,
+              this.props.allowEditPlaceholder,
               {
                 factory: {
                   type: 'string',
@@ -1850,6 +1877,8 @@ class SchemaWidget extends Component {
                   fieldset.behavior.includes('generated'),
               ),
               this.props.allowEditId,
+              this.props.allowEditQueryParameter,
+              this.props.allowEditPlaceholder,
             )}
           />
         )}
