@@ -51,7 +51,7 @@
 
 ### Internal
 
-- Improve packaging and bring back the export for `src` folder. @sneridagh 
+- Improve packaging and bring back the export for `src` folder. @sneridagh
 
 ## 2.1.0 (2024-11-05)
 
@@ -63,7 +63,7 @@
 
 ### Internal
 
-- Release 2.0.0 @sneridagh 
+- Release 2.0.0 @sneridagh
 
 ## 2.0.0-alpha.16 (2024-10-18)
 
@@ -74,7 +74,8 @@
   Refactored the `Link` component to not use it, since `react-aria-components` uses the React Client Routing facilities that can be injected into the React tree.
 
   Breaking:
-    - Use the new providers in `@plone/providers` instead to make the new `Link` work with them. [#6069](https://github.com/plone/volto/issues/6069)
+
+  - Use the new providers in `@plone/providers` instead to make the new `Link` work with them. [#6069](https://github.com/plone/volto/issues/6069)
 
 ### Internal
 
@@ -293,13 +294,11 @@
 - Color Palette @sneridagh
   Stories cleanup @sneridagh [#6](https://github.com/plone/components/issues/6)
 
-
 ## 1.0.1 (2023-10-20)
 
 ### Bugfix
 
 - Cleanup @sneridagh [#2](https://github.com/plone/components/issues/2)
-
 
 ## 1.0.0 (2023-10-20)
 

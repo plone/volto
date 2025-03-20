@@ -52,7 +52,7 @@ msgid "Actions"
 msgstr "कार्रवाई: "
 
 #. Default: "Activate and deactivate add-ons in the lists below."
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Activate and deactivate"
 msgstr "सक्रिय करें और निष्क्रिय करें"
 
@@ -83,8 +83,8 @@ msgid "Add (object list)"
 msgstr "जोड़े (वस्तु सूची)"
 
 #. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Add Addons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add Add-ons"
 msgstr "नए ऐड-ऑन को यहां दिखाने के लिए, उन्हें अपने कॉन्फ़िगरेशन में जोड़ें, बनाएं और सर्वर प्रक्रिया को पुनरारंभ करें। विस्तृत निर्देशों के लिए देखें"
 
 #. Default: "Add Alternative URL"
@@ -232,13 +232,43 @@ msgstr "एड-ऑन"
 msgid "Add-on Configuration"
 msgstr "एड-ऑन कॉन्फ़िगरेशन"
 
+#. Default: "Add-on could not be installed"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be installed"
+msgstr "अड-ऑन स्थापित नहीं किया जा सका"
+
+#. Default: "Add-on could not be uninstalled"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be uninstalled"
+msgstr "अड-ऑन को अनइंस्टॉल नहीं किया जा सका"
+
+#. Default: "Add-on could not be upgraded"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on could not be upgraded"
+msgstr "एड-ऑन को अपग्रेड नहीं किया जा सका"
+
+#. Default: "Add-on installed successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on installed succesfuly"
+msgstr "एडऑन सफलतापूर्वक स्थापित किया गया"
+
+#. Default: "Add-on uninstalled successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on uninstalled succesfuly"
+msgstr "एडऑन को सफलतापूर्वक अनइंस्टॉल किया गया"
+
+#. Default: "Add-on upgraded succesfuly"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Add-on upgraded succesfuly"
+msgstr "एडऑन को सफलतापूर्वक अपग्रेड किया गया"
+
 #. Default: "Add-ons"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons"
 msgstr "एड-ऑन"
 
 #. Default: "Add-ons Settings"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons Settings"
 msgstr "ऐड-ऑन सेटिंग्स"
 
@@ -251,36 +281,6 @@ msgstr "जोड़ा"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
 msgstr "अतिरिक्त तिथि"
-
-#. Default: "Addon could not be installed"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Addon could not be installed"
-msgstr "अड-ऑन स्थापित नहीं किया जा सका"
-
-#. Default: "Addon could not be uninstalled"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Addon could not be uninstalled"
-msgstr "अड-ऑन को अनइंस्टॉल नहीं किया जा सका"
-
-#. Default: "Addon could not be upgraded"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Addon could not be upgraded"
-msgstr "एड-ऑन को अपग्रेड नहीं किया जा सका"
-
-#. Default: "Addon installed succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Addon installed succesfuly"
-msgstr "एडऑन सफलतापूर्वक स्थापित किया गया"
-
-#. Default: "Addon uninstalled succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
-msgstr "एडऑन को सफलतापूर्वक अनइंस्टॉल किया गया"
-
-#. Default: "Addon upgraded succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
-msgstr "एडऑन को सफलतापूर्वक अपग्रेड किया गया"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
@@ -432,9 +432,14 @@ msgid "Automatically"
 msgstr ""
 
 #. Default: "Available"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available"
 msgstr "उपलब्ध"
+
+#. Default: "Available add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Available add-ons"
+msgstr ""
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -444,7 +449,7 @@ msgstr "उपलब्ध कंटेंट नियम:"
 #. Default: "Back"
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -1380,7 +1385,7 @@ msgstr "एन्ट्रीज़"
 
 #. Default: "Error"
 #: components/manage/Add/Add
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UndoControlpanel
@@ -1870,22 +1875,27 @@ msgid "Inspect relations"
 msgstr "संबंधों का निरीक्षण करें"
 
 #. Default: "Install"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Install"
-msgstr "स्थापित करें"
+msgstr ""
 
 #. Default: "Installed"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
 msgstr "स्थापित किया गया"
 
+#. Default: "Installed add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Installed add-ons"
+msgstr ""
+
 #. Default: "Installed version"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed version"
 msgstr "स्थापित संस्करण"
 
 #. Default: "Installing a third party add-on"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installing a third party add-on"
 msgstr "तिसरे पक्षीय एड-ऑन को स्थापित करना"
 
@@ -2018,7 +2028,7 @@ msgid "Latest available configuration"
 msgstr "नवीनतम उपलब्ध कॉन्फ़िगरेशन"
 
 #. Default: "Latest version"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Latest version"
 msgstr "नवीनतम संस्करण"
 
@@ -2386,6 +2396,16 @@ msgstr "समाचार आइटम देखें"
 msgid "No"
 msgstr "नहीं"
 
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No Addon available"
+msgstr ""
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No Installed available"
+msgstr "कोई इंस्टॉल किया हुआ ऐड-ऑन उपलब्ध नहीं है।"
+
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2401,15 +2421,20 @@ msgstr "कोई लेन-देन चयनित नहीं है"
 msgid "No Transactions Selected To Do Undo"
 msgstr "कोई लेन-देन चयनित नहीं है जिसे वापस किया जा सके"
 
+#. Default: "No upgrades in this corner. You are up to date. High fives."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No Upgrades available"
+msgstr "इस कोने में कोई अपग्रेड नहीं हैं। आप अद्यतित हैं। हाई फाइव्स!"
+
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr "कोई वीडियो चयनित नहीं है"
 
-#. Default: "No addons found"
+#. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
-msgid "No addons found"
-msgstr "कोई ऐड-ऑन नहीं मिला"
+msgid "No add-ons found"
+msgstr ""
 
 #. Default: "No broken relations found."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -2498,8 +2523,8 @@ msgstr "कोई परिणाम नहीं मिले।"
 msgid "No selection"
 msgstr "कोई चयन नहीं"
 
-#. Default: "This addon does not provide an uninstall profile."
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "This add-on does not provide an uninstall profile."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No uninstall profile"
 msgstr "इस ऐड-ऑन में कोई अनइंस्टॉल प्रोफाइल नहीं है।"
 
@@ -3588,7 +3613,7 @@ msgstr ""
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -3836,6 +3861,11 @@ msgstr ""
 msgid "Third"
 msgstr "तीसरा"
 
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+msgstr "यह ऐड-ऑन अपडेट किया गया है। वर्तमान में स्थापित प्रोफ़ाइल संस्करण {installedVersion} है। उपलब्ध नया प्रोफ़ाइल संस्करण {newVersion} है।"
+
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
@@ -4057,7 +4087,7 @@ msgid "Unified"
 msgstr "एकीकृत"
 
 #. Default: "Uninstall"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Uninstall"
 msgstr "अनइंस्टॉल"
 
@@ -4084,7 +4114,7 @@ msgid "Unsorted"
 msgstr "अक्रमण"
 
 #. Default: "Update"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Update"
 msgstr "अपडेट"
 
@@ -4093,20 +4123,20 @@ msgstr "अपडेट"
 msgid "Update User"
 msgstr "उपयोगकर्ता अपडेट करें"
 
-#. Default: "Update installed addons"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Update installed addons"
-msgstr "इंस्टॉल किए गए एडऑन को अपडेट करें"
-
-#. Default: "Update installed addons:"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Update installed addons:"
+#. Default: "Update installed add-ons:"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Update installed add-ons:"
 msgstr "इंस्टॉल किए गए एडऑन को अपडेट करें:"
 
 #. Default: "Updates available"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Updates available"
 msgstr "अपडेट्स उपलब्ध हैं"
+
+#. Default: "Upgradable add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Upgradable add-ons"
+msgstr ""
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -5103,11 +5133,6 @@ msgstr "कंटेंट की तालिका"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr "टॉगल"
-
-#. Default: "Update from version {origin} to {destination}"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "upgradeVersions"
-msgstr "{origin} से {destination} में अपडेट करें"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget
