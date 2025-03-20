@@ -32,13 +32,21 @@ const EditBlockWrapper = (props) => {
     onSelectBlock,
     data,
     index,
+    properties,
   } = blockProps;
 
   function onResetBlock() {
     onChangeBlock(block, { '@type': 'empty' });
   }
 
-  const style = buildStyleObjectFromData(data);
+  const style = buildStyleObjectFromData(
+    data,
+    '',
+    // in a container, we have the parent container data in the properties prop
+    // passing the data of the container too
+    // This is needed in order to calculate properly the styles for the blocks inside the container
+    properties.blocks ? properties : {},
+  );
 
   // We need to merge the StyleWrapper styles with the draggable props from b-D&D
   const styleMergedWithDragProps = {
