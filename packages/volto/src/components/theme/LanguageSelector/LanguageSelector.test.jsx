@@ -30,6 +30,9 @@ describe('LanguageSelector', () => {
           },
         },
       },
+      site: {
+        data: { 'plone.default_language': 'es' },
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
