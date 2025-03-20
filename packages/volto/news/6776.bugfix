@@ -1,0 +1,1 @@
+Added validation for internal blocks within aligned components like Grid and Column, ensuring errors are correctly identified and displayed. @alexandreIFB
