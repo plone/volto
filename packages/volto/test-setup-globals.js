@@ -44,12 +44,3 @@ vi.stubGlobal('sessionStorage', {
   removeItem: vi.fn(),
   clear: vi.fn(),
 });
-
-vi.stubGlobal(
-  'ResizeObserver',
-  class {
-    observe() {}
-    unobserve() {}
-    disconnect() {}
-  },
-);

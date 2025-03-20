@@ -1,5 +1,245 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`ObjectBrowserNav > handles selected as empty object without errors 1`] = `
+<ul
+  className="ui segment object-listing"
+>
+  <li
+    aria-label="Select Welcome to Plone"
+    className=""
+    onClick={[Function]}
+    onDoubleClick={[Function]}
+    role="presentation"
+  >
+    <span
+      title="/front-page (Document)"
+    >
+      <span
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            {
+              "__html": "<g fill-rule="evenodd"><path d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/><polygon points="11 27 25 27 25 25 11 25"/><polygon points="11 23 25 23 25 21 11 21"/><polygon points="11 19 18 19 18 17 11 17"/></g>",
+            }
+          }
+          onClick={null}
+          style={
+            {
+              "fill": "currentColor",
+              "height": "24px",
+              "width": "auto",
+            }
+          }
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+      </span>
+      Welcome to Plone
+    </span>
+  </li>
+  <li
+    aria-label="Select News"
+    className=""
+    onClick={[Function]}
+    onDoubleClick={[Function]}
+    role="presentation"
+  >
+    <span
+      title="/news (Folder)"
+    >
+      <span
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            {
+              "__html": "<path fill-rule="evenodd" d="M3,5.0001 L3,29.0001 L33,29.0001 L33,9.0001 L17.414,9.0001 L13.414,5.0001 L3,5.0001 Z M5,7.0001 L12.586,7.0001 L16.585,11.0001 L31,11.0001 L31,15.0001 L5,15.0001 L5,7.0001 Z M5,27.0001 L31,27.0001 L31,17.0001 L5,17.0001 L5,27.0001 Z"/>",
+            }
+          }
+          onClick={null}
+          style={
+            {
+              "fill": "currentColor",
+              "height": "24px",
+              "width": "auto",
+            }
+          }
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+      </span>
+      News
+    </span>
+    <div
+      className="right-arrow-link-mode"
+      onClick={[Function]}
+      role="presentation"
+    >
+      <div
+        className="ui buttons"
+      >
+        <button
+          aria-label="Browse News"
+          className="ui basic icon button"
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            className="icon right-arrow-icon"
+            dangerouslySetInnerHTML={
+              {
+                "__html": "<polygon fill-rule="evenodd" points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"/>",
+              }
+            }
+            onClick={null}
+            style={
+              {
+                "fill": "currentColor",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          />
+        </button>
+      </div>
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`ObjectBrowserNav > renders a view image component 1`] = `
+<ul
+  className="ui segment object-listing"
+>
+  <li
+    aria-label="Select Welcome to Plone"
+    className=""
+    onClick={[Function]}
+    onDoubleClick={[Function]}
+    role="presentation"
+  >
+    <span
+      title="/front-page (Document)"
+    >
+      <span
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            {
+              "__html": "<g fill-rule="evenodd"><path d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/><polygon points="11 27 25 27 25 25 11 25"/><polygon points="11 23 25 23 25 21 11 21"/><polygon points="11 19 18 19 18 17 11 17"/></g>",
+            }
+          }
+          onClick={null}
+          style={
+            {
+              "fill": "currentColor",
+              "height": "24px",
+              "width": "auto",
+            }
+          }
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+      </span>
+      Welcome to Plone
+    </span>
+  </li>
+  <li
+    aria-label="Select News"
+    className=""
+    onClick={[Function]}
+    onDoubleClick={[Function]}
+    role="presentation"
+  >
+    <span
+      title="/news (Folder)"
+    >
+      <span
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            {
+              "__html": "<path fill-rule="evenodd" d="M3,5.0001 L3,29.0001 L33,29.0001 L33,9.0001 L17.414,9.0001 L13.414,5.0001 L3,5.0001 Z M5,7.0001 L12.586,7.0001 L16.585,11.0001 L31,11.0001 L31,15.0001 L5,15.0001 L5,7.0001 Z M5,27.0001 L31,27.0001 L31,17.0001 L5,17.0001 L5,27.0001 Z"/>",
+            }
+          }
+          onClick={null}
+          style={
+            {
+              "fill": "currentColor",
+              "height": "24px",
+              "width": "auto",
+            }
+          }
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+      </span>
+      News
+    </span>
+    <div
+      className="right-arrow-link-mode"
+      onClick={[Function]}
+      role="presentation"
+    >
+      <div
+        className="ui buttons"
+      >
+        <button
+          aria-label="Browse News"
+          className="ui basic icon button"
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            className="icon right-arrow-icon"
+            dangerouslySetInnerHTML={
+              {
+                "__html": "<polygon fill-rule="evenodd" points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"/>",
+              }
+            }
+            onClick={null}
+            style={
+              {
+                "fill": "currentColor",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          />
+        </button>
+      </div>
+    </div>
+  </li>
+</ul>
+`;
+
 exports[`ObjectBrowserNav handles selected as empty object without errors 1`] = `
 <ul
   className="ui segment object-listing"
