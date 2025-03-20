@@ -7,6 +7,8 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Container } from 'semantic-ui-react';
 import config from '@plone/volto/registry';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
+import { addPrefixPath } from '@plone/volto/helpers/Url/Url';
 
 /**
  * Not found function.
@@ -33,7 +35,9 @@ const CorsError = () => (
             defaultMessage="There is a configuration problem on the backend"
           />
           <br />
-          <a href={config.settings.apiPath}>{config.settings.apiPath}</a>
+          <UniversalLink href={config.settings.apiPath} forceA>
+            {addPrefixPath(config.settings.apiPath)}
+          </UniversalLink>
         </h1>
         <p
           className="description"

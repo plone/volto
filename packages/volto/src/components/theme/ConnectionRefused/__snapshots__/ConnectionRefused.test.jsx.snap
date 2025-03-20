@@ -25,7 +25,10 @@ exports[`ConnectionRefused renders a not found component 1`] = `
     Connection refused
     <br />
     <a
-      href="http://localhost:8080/Plone"
+      className={null}
+      href=""
+      target="_self"
+      title={null}
     >
       http://localhost:8080/Plone
     </a>
