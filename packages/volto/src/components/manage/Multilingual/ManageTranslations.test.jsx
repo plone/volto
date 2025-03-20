@@ -7,11 +7,6 @@ import config from '@plone/volto/registry';
 
 import ManageTranslations from './ManageTranslations';
 
-beforeAll(() => {
-  config.settings.isMultilingual = true;
-  config.settings.supportedLanguages = ['de', 'es'];
-});
-
 jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
 
 const mockStore = configureStore();
@@ -32,6 +27,12 @@ describe('ManageTranslations', () => {
           '@id': 'http://localhost:8080/Plone/my-page',
           language: 'en',
         },
+      },
+      site: {
+        'plone.available_languages': ['de', 'es'],
+      },
+      addons: {
+        isMultilingual: true,
       },
     });
     const { container } = render(

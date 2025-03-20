@@ -12,7 +12,7 @@ import { Form } from '@plone/volto/components/manage/Form';
 import languages from '@plone/volto/constants/Languages.cjs';
 import { changeLanguage } from '@plone/volto/actions/language/language';
 import { toGettextLang } from '@plone/volto/helpers/Utils/Utils';
-import config from '@plone/volto/registry';
+import { useSelector } from 'react-redux';
 
 const messages = defineMessages({
   personalPreferences: {
@@ -49,9 +49,12 @@ const PersonalPreferences = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
   const { closeMenu } = props;
+  const availableLanguages = useSelector(
+    (state) => state.site.data['plone.available_languages'],
+  );
   const onSubmit = (data) => {
     let language = data.language || 'en';
-    if (config.settings.supportedLanguages.includes(language)) {
+    if (availableLanguages.includes(language)) {
       const langFileName = toGettextLang(language);
       import(
         /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'

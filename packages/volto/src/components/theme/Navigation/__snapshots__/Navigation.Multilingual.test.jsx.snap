@@ -31,10 +31,11 @@ exports[`Navigation Multilingual renders a navigation component with an active i
     onClick={[Function]}
   >
     <a
-      aria-current={null}
-      className="item"
+      aria-current="page"
+      className="item active"
       href="/en"
       onClick={[Function]}
+      style={Object {}}
     >
       Home
     </a>
@@ -90,10 +91,11 @@ exports[`Navigation Multilingual renders a navigation component with an active i
     onClick={[Function]}
   >
     <a
-      aria-current={null}
-      className="item"
+      aria-current="page"
+      className="item active"
       href="/en"
       onClick={[Function]}
+      style={Object {}}
     >
       Home
     </a>
@@ -149,10 +151,11 @@ exports[`Navigation Multilingual renders a navigation component with only one ac
     onClick={[Function]}
   >
     <a
-      aria-current={null}
-      className="item"
+      aria-current="page"
+      className="item active"
       href="/en"
       onClick={[Function]}
+      style={Object {}}
     >
       Home
     </a>
@@ -216,10 +219,11 @@ exports[`Navigation Multilingual renders a navigation component without active i
     onClick={[Function]}
   >
     <a
-      aria-current={null}
-      className="item"
+      aria-current="page"
+      className="item active"
       href="/en"
       onClick={[Function]}
+      style={Object {}}
     >
       Home
     </a>
