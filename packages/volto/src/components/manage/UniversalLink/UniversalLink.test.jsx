@@ -372,7 +372,7 @@ describe('UniversalLink', () => {
   test('[NEGATIVE TEST] UniversalLink re-renders all instances when props are inline JSX (React.memo ineffective)', () => {
     // NEGATIVE TEST:
     // This test demonstrates that React.memo does NOT prevent re-renders
-    // when props like `children` are passed as inline JSX.
+    // when props like `item` are passed as inline object.
     // This is expected behavior due to unstable object references.
     // Do NOT use inline props if render optimization is required.
     const renderCounter = jest.fn();
