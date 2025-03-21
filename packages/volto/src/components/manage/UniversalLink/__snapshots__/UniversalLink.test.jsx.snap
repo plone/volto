@@ -22,9 +22,21 @@ exports[`UniversalLink renders a UniversalLink component if no external(href) li
 </a>
 `;
 
+exports[`UniversalLink renders a UniversalLink component when url ends with @@display-file 1`] = `
+<a
+  href="/en/welcome-to-volto/@@display-file"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <h1>
+    Title
+  </h1>
+</a>
+`;
+
 exports[`UniversalLink renders a UniversalLink component with external link 1`] = `
 <a
-  className="external"
+  className="external custom-link"
   href="https://github.com/plone/volto"
   rel="noopener noreferrer"
   target="_blank"
@@ -39,18 +51,6 @@ exports[`UniversalLink renders a UniversalLink component with internal link 1`] 
 <a
   href="/en/welcome-to-volto"
   onClick={[Function]}
->
-  <h1>
-    Title
-  </h1>
-</a>
-`;
-
-exports[`renders a UniversalLink component when url ends with @@display-file 1`] = `
-<a
-  href="/en/welcome-to-volto/@@display-file"
-  rel="noopener noreferrer"
-  target="_blank"
 >
   <h1>
     Title
