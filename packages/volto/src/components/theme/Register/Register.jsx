@@ -85,7 +85,6 @@ const Register = () => {
       createUser({
         fullname: fullname,
         email: email,
-        
       }),
     );
     setError(null);
