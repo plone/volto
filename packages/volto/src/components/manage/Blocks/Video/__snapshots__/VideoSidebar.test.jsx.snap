@@ -1,36 +1,36 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders an Image Block Sidebar component 1`] = `
 <div
   data-schema="{
-  \\"title\\": \\"Video\\",
-  \\"block\\": \\"Video\\",
-  \\"fieldsets\\": [
+  "title": "Video",
+  "block": "Video",
+  "fieldsets": [
     {
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\",
-      \\"fields\\": [
-        \\"url\\",
-        \\"preview_image\\",
-        \\"align\\"
+      "id": "default",
+      "title": "Default",
+      "fields": [
+        "url",
+        "preview_image",
+        "align"
       ]
     }
   ],
-  \\"properties\\": {
-    \\"url\\": {
-      \\"title\\": \\"Video URL\\",
-      \\"widget\\": \\"url\\"
+  "properties": {
+    "url": {
+      "title": "Video URL",
+      "widget": "url"
     },
-    \\"preview_image\\": {
-      \\"title\\": \\"Preview Image URL\\",
-      \\"widget\\": \\"url\\"
+    "preview_image": {
+      "title": "Preview Image URL",
+      "widget": "url"
     },
-    \\"align\\": {
-      \\"title\\": \\"Alignment\\",
-      \\"widget\\": \\"align\\"
+    "align": {
+      "title": "Alignment",
+      "widget": "align"
     }
   },
-  \\"required\\": []
+  "required": []
 }"
   id="BlockDataForm"
 />

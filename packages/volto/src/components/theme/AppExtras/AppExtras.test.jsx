@@ -3,13 +3,15 @@ import renderer from 'react-test-renderer';
 import config from '@plone/volto/registry';
 import AppExtras from './AppExtras';
 
+import { vi } from 'vitest';
+
 beforeAll(() => {
   config.settings.appExtras = [
     {
       match: {
         path: '',
       },
-      component: jest.fn((props) => (
+      component: vi.fn((props) => (
         <div className="everywhere">{props.pathname}</div>
       )),
     },
@@ -17,7 +19,7 @@ beforeAll(() => {
       match: {
         path: '/all-blogs/*',
       },
-      component: jest.fn((props) => (
+      component: vi.fn((props) => (
         <div className="blog-listing" one={props.one} three={props.three} />
       )),
       props: {
@@ -29,27 +31,27 @@ beforeAll(() => {
       match: {
         path: '/blog/edit',
       },
-      component: jest.fn((props) => <div className="blog-edit" />),
+      component: vi.fn((props) => <div className="blog-edit" />),
     },
     {
       match: {
         path: '/blog',
         exact: true,
       },
-      component: jest.fn((props) => (
+      component: vi.fn((props) => (
         <div className="blog-view">{JSON.stringify(props.match)}</div>
       )),
     },
     {
       match: '/something',
-      component: jest.fn((props) => (
+      component: vi.fn((props) => (
         <div className="something">{JSON.stringify(props.match)}</div>
       )),
     },
     {
       match: '/frontpage',
       ignore: '/frontpage/images',
-      component: jest.fn((props) => (
+      component: vi.fn((props) => (
         <div className="frontpage-content">{JSON.stringify(props.match)}</div>
       )),
     },

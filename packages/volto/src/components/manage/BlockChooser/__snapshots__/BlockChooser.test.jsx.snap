@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
+exports[`BlocksChooser > Fallback BlockChooser component onMutateBlock 1`] = `
 <div>
   <div
     class="blocks-chooser"
@@ -42,9 +42,14 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
           <svg
             class="icon"
             style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
-          />
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polygon
+              fill-rule="evenodd"
+              points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
+            />
+          </svg>
         </div>
       </div>
       <div
@@ -114,9 +119,14 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
           <svg
             class="icon"
             style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
-          />
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polygon
+              fill-rule="evenodd"
+              points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
+            />
+          </svg>
         </div>
       </div>
       <div
@@ -158,9 +168,14 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
           <svg
             class="icon"
             style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
-          />
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polygon
+              fill-rule="evenodd"
+              points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
+            />
+          </svg>
         </div>
       </div>
       <div
@@ -230,9 +245,14 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
           <svg
             class="icon"
             style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
-          />
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polygon
+              fill-rule="evenodd"
+              points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
+            />
+          </svg>
         </div>
       </div>
       <div
@@ -338,7 +358,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
 </div>
 `;
 
-exports[`BlocksChooser renders a BlockChooser component 1`] = `
+exports[`BlocksChooser > renders a BlockChooser component 1`] = `
 <div>
   <div
     class="blocks-chooser"
@@ -380,9 +400,14 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
           <svg
             class="icon"
             style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
-          />
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polygon
+              fill-rule="evenodd"
+              points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
+            />
+          </svg>
         </div>
       </div>
       <div
@@ -452,9 +477,14 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
           <svg
             class="icon"
             style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
-          />
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polygon
+              fill-rule="evenodd"
+              points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
+            />
+          </svg>
         </div>
       </div>
       <div
@@ -496,9 +526,14 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
           <svg
             class="icon"
             style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
-          />
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polygon
+              fill-rule="evenodd"
+              points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
+            />
+          </svg>
         </div>
       </div>
       <div
@@ -568,9 +603,14 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
           <svg
             class="icon"
             style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
-          />
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polygon
+              fill-rule="evenodd"
+              points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
+            />
+          </svg>
         </div>
       </div>
       <div

@@ -3,16 +3,15 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { waitFor } from '@testing-library/react';
-
+import { __setLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 import TokenWidget from './TokenWidget';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(async () => {
+  await __setLoadables();
+});
 
 test('renders a token widget component', async () => {
   const store = mockStore({

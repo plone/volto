@@ -8,11 +8,13 @@ import { __test__ as Search } from './Search';
 
 const mockStore = configureStore();
 
-jest.mock('../../manage/Toolbar/Toolbar', () =>
-  jest.fn(() => <div id="Portal" />),
-);
+vi.mock('../../manage/Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
-jest.mock('./SearchTags', () => jest.fn(() => <div id="search-tags" />));
+vi.mock('./SearchTags', () => ({
+  default: vi.fn(() => <div id="search-tags" />),
+}));
 
 describe('Search', () => {
   it('renders an empty search component', () => {
