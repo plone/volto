@@ -1,0 +1,1 @@
+Fixed redirection logic which now checks for edit permission for deciding wether to redirect or render the link view @pnicolli
