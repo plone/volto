@@ -166,13 +166,67 @@ It's even possible to use TailwindCSS for styling the components in this package
 - TextAreaField
 - Select
 
-## Quanta icons
+## Icons
 
-This package provides an implementation of the Quanta Icon set in React components.
+### Quanta icons
+
+This package provide the Quanta icons as raw SVG files.
+
+```tsx
+import addSVG from '@plone/components/icons/add.svg'
+
+const MyComponent = (props) => (
+  <img src={addSVG} alt />
+)
+```
+
+### Vite SVGR plugin
+
+This package provides a Vite plugin that uses and configures `vite-plugin-svgr` to use `@plone/components` `Icon` component under the hood.
+This plugin converts a raw SVG file into a React component, ready to be used.
+It wraps the SVG with the `@plone/components` `Icon` component.
+To use it, you have to add it to your `vite.config.ts` app configuration.
+
+```ts
+import { PloneSVGRVitePlugin } from '@plone/components/vite-plugin-svgr';
+
+export default defineConfig({
+  plugins: [
+    PloneSVGRVitePlugin(),
+    // (...other plugins)
+  ],
+  // (...more Vite config)
+})
+```
+
+Then, you use it in your code like this:
+
+```tsx
+import AddSVG from '@plone/components/icons/add.svg?react'
+
+const MyComponent = (props) => (
+  <AddSVG />
+)
+```
+
+You can pass any prop that the `Icon` component accepts:
+
+```tsx
+import AddSVG from '@plone/components/icons/add.svg?react'
+
+const MyComponent = (props) => (
+  <AddSVG size='XL' color='informative' />
+)
+```
+
+### Quanta icons as React Components
+
+This package provides an implementation of the Quanta Icon set in native React components.
+Unlike the approach above, these are full fledged components, generated via a script iven the Quanta icons and do not need additional config in the bundler.
 They can be used directly in your components as:
 
 ```tsx
-import { ChevronupIcon, ChevrondownIcon, Button } from '@plone/components';
+import { ChevronupIcon, ChevrondownIcon, Button } from '@plone/components/components/Icons';
 
 const MyComponent = (props) => (
   <Button aria-label="Unfold/Collapse">

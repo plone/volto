@@ -9,9 +9,9 @@ import {
 } from 'react-aria-components';
 import { Menu, MenuItem } from '../Menu/Menu';
 
-import { BoldIcon } from '../Icons/BoldIcon';
-import { ItalicIcon } from '../Icons/ItalicIcon';
-import { LinkIcon } from '../Icons/LinkIcon';
+import { BoldIcon } from '../icons/BoldIcon';
+import { ItalicIcon } from '../icons/ItalicIcon';
+import { LinkIcon } from '../icons/LinkIcon';
 
 import type { Meta } from '@storybook/react';
 

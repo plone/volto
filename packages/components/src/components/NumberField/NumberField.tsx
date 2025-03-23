@@ -10,8 +10,8 @@ import {
   type ValidationResult,
 } from 'react-aria-components';
 import { Button } from '../Button/Button';
-import { AddIcon } from '../Icons/AddIcon';
-import { DashIcon } from '../Icons/DashIcon';
+import { AddIcon } from '../icons/AddIcon';
+import { DashIcon } from '../icons/DashIcon';
 
 export interface NumberFieldProps extends RACNumberFieldProps {
   label?: string;
