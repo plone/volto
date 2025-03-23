@@ -4,7 +4,7 @@
 
 # -- Path setup --------------------------------------------------------------
 
-from datetime import datetime
+import json
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -13,10 +13,8 @@ from datetime import datetime
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath("."))
-
 import os
-import json
-
+from datetime import datetime
 
 # -- Project information -----------------------------------------------------
 
@@ -31,7 +29,7 @@ year = str(now.year)
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 with open(
-    os.path.join(os.path.abspath("."), "../../packages/volto/package.json"), "r"
+    os.path.join(os.path.abspath("."), "../apps/seven/package.json"), "r"
 ) as package_json:
     data = package_json.read()
 
@@ -144,8 +142,8 @@ html_theme_options = {
             "attributes": {
                 "target": "_blank",
                 "rel": "noopener me",
-                "class": "nav-link custom-fancy-css"
-            }
+                "class": "nav-link custom-fancy-css",
+            },
         },
         {
             "name": "Mastodon",
@@ -155,8 +153,8 @@ html_theme_options = {
             "attributes": {
                 "target": "_blank",
                 "rel": "noopener me",
-                "class": "nav-link custom-fancy-css"
-            }
+                "class": "nav-link custom-fancy-css",
+            },
         },
         {
             "name": "YouTube",
@@ -166,8 +164,8 @@ html_theme_options = {
             "attributes": {
                 "target": "_blank",
                 "rel": "noopener me",
-                "class": "nav-link custom-fancy-css"
-            }
+                "class": "nav-link custom-fancy-css",
+            },
         },
         {
             "name": "X (formerly Twitter)",
@@ -177,8 +175,8 @@ html_theme_options = {
             "attributes": {
                 "target": "_blank",
                 "rel": "noopener me",
-                "class": "nav-link custom-fancy-css"
-            }
+                "class": "nav-link custom-fancy-css",
+            },
         },
     ],
     "logo": {
