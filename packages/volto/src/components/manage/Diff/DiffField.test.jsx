@@ -2,11 +2,13 @@ import React from 'react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { waitFor, render, screen } from '@testing-library/react';
-import { __setLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 import DiffField from './DiffField';
 
 vi.mock('@plone/volto/helpers/Loadable/Loadable');
 beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
   await __setLoadables();
 });
 

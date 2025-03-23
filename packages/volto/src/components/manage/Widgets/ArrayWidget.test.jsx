@@ -3,7 +3,6 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { waitFor, render, fireEvent } from '@testing-library/react';
-import { __setLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 
 import ArrayWidget from './ArrayWidget';
 
@@ -19,6 +18,9 @@ vi.mock('react-sortable-hoc', () => ({
 }));
 
 beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
   await __setLoadables();
 });
 

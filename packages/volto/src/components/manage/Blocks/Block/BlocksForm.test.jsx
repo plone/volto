@@ -4,12 +4,14 @@ import configureStore from 'redux-mock-store';
 import BlocksForm from './BlocksForm';
 import { render } from '@testing-library/react';
 import config from '@plone/volto/registry';
-import { __setLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 
 config.experimental = { addBlockButton: { enabled: false } };
 
 vi.mock('@plone/volto/helpers/Loadable/Loadable');
 beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
   await __setLoadables();
 });
 

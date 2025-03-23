@@ -4,7 +4,6 @@ import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import EventView from './EventView';
 import config from '@plone/volto/registry';
-import { __setLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 
 const mockStore = configureStore();
 
@@ -17,6 +16,9 @@ const store = mockStore({
 
 vi.mock('@plone/volto/helpers/Loadable/Loadable');
 beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
   await __setLoadables();
 });
 

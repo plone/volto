@@ -15,8 +15,10 @@ vi.mock('../Toolbar/Toolbar', () => ({
 vi.mock('@plone/volto/components/manage/Form');
 vi.mock('@plone/volto/helpers/Loadable/Loadable');
 beforeAll(async () => {
-  const loadable = await import('@plone/volto/helpers/Loadable/Loadable');
-  loadable.__setLoadables();
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
 });
 
 describe('PersonalPreferences', () => {

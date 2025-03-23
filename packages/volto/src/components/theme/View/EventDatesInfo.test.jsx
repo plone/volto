@@ -3,13 +3,16 @@ import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import { When } from './EventDatesInfo';
 import configureStore from 'redux-mock-store';
-import { __setLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 const mockStore = configureStore();
 
 vi.mock('@plone/volto/helpers/Loadable/Loadable');
 beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
   await __setLoadables();
 });
+
 const store = mockStore({
   intl: {
     locale: 'en',

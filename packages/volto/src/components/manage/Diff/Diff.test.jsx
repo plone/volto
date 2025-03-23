@@ -3,7 +3,6 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { waitFor, render, screen } from '@testing-library/react';
-import { __setLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 
 import Diff from './Diff';
 
@@ -17,6 +16,9 @@ vi.mock('../Toolbar/Toolbar', () => ({
 
 vi.mock('@plone/volto/helpers/Loadable/Loadable');
 beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
   await __setLoadables();
 });
 

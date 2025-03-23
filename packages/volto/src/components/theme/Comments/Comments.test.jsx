@@ -3,7 +3,6 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import Comments from './Comments';
-import { __setLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 
 vi.mock('@plone/volto/components/theme/Comments/CommentEditModal', () => ({
   default: vi.fn(({ id, text, ...props }) => (
@@ -24,6 +23,9 @@ vi.mock('@plone/volto/helpers/Loadable/Loadable');
 vi.mock('@plone/volto/components/manage/Form');
 
 beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
   await __setLoadables();
 });
 
