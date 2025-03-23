@@ -1,0 +1,56 @@
+{
+  "name": "quanta",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "dev": "react-router dev",
+    "start": "react-router dev",
+    "build": "pnpm exec init-loaders && react-router build",
+    "start:prod": "react-router-serve ./build/server/index.js",
+    "typecheck": "react-router typegen && tsc",
+    "typegen": "react-router typegen",
+    "release": "release-it"
+  },
+  "dependencies": {
+    "@plone/blocks": "workspace:*",
+    "@plone/client": "workspace:*",
+    "@plone/cmsui": "workspace:*",
+    "@plone/components": "workspace:*",
+    "@plone/providers": "workspace:*",
+    "@plone/react-router": "workspace:*",
+    "@plone/registry": "workspace:*",
+    "@plone/slots": "workspace:*",
+    "@plone/theming": "workspace:*",
+    "@react-router/node": "catalog:",
+    "@react-router/serve": "catalog:",
+    "isbot": "^5.1.17",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-router": "catalog:",
+    "tailwind-merge": "^3.0.2",
+    "tailwind-variants": "^0.3.1",
+    "tailwindcss": "^4.0.9",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@plone/types": "workspace:*",
+    "@react-router/dev": "catalog:",
+    "@tailwindcss/vite": "4.0.9",
+    "@testing-library/cypress": "10.0.2",
+    "@types/node": "^20",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "cypress": "^13.13.2",
+    "cypress-axe": "1.5.0",
+    "cypress-file-upload": "5.0.8",
+    "react-router-devtools": "^1.1.6",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-tsconfig-paths": "^5.1.4",
+    "wait-on": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -11,7 +11,8 @@
   "version": "3.0.2",
   "repository": {
     "type": "git",
-    "url": "http://github.com/plone/volto.git"
+    "url": "http://github.com/plone/volto.git",
+    "directory": "packages/components"
   },
   "bugs": {
     "url": "https://github.com/plone/volto/issues"
@@ -20,17 +21,26 @@
   "files": [
     "dist",
     "src",
-    "README.md"
+    "README.md",
+    "vite-plugin.*"
   ],
   "main": "./dist/index.js",
   "exports": {
     "./package.json": "./package.json",
+    "./icons": {
+      "types": "./src/icons.d.ts"
+    },
+    "./icons/*": "./src/icons/*",
+    "./vite-plugin-svgr": {
+      "import": "./vite-plugin-svgr.js",
+      "types": "./vite-plugin-svgr.d.ts"
+    },
+    "./dist/*.css": "./dist/*.css",
+    "./src/*": "./src/*",
     ".": {
       "import": "./dist/index.js",
       "default": "./dist/index.cjs"
-    },
-    "./dist/*.css": "./dist/*.css",
-    "./src/*": "./src/*"
+    }
   },
   "homepage": "https://plone.org",
   "keywords": [
@@ -40,7 +50,8 @@
     "react",
     "cms",
     "components",
-    "quanta"
+    "quanta",
+    "icons"
   ],
   "scripts": {
     "build": "tsup && pnpm build:css",
@@ -53,7 +64,7 @@
     "check:ts": "tsc --project tsconfig.json",
     "test": "vitest --passWithNoTests",
     "coverage": "vitest run --coverage --no-threads",
-    "lint": "pnpm eslint && pnpm prettier && pnpm stylelint && pnpm check-ts",
+    "lint": "pnpm eslint && pnpm prettier && pnpm stylelint && pnpm check:ts",
     "format": "pnpm eslint:fix && pnpm prettier:fix && pnpm stylelint:fix",
     "eslint": "eslint 'src/**/*.{js,ts,tsx}' --quiet",
     "eslint:fix": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
@@ -100,6 +111,7 @@
     "@storybook/react": "^8.5.3",
     "@storybook/react-vite": "^8.5.3",
     "@storybook/theming": "^8.5.3",
+    "@svgr/plugin-svgo": "^8.1.0",
     "@tailwindcss/vite": "4.0.7",
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "14.2.1",
@@ -120,6 +132,7 @@
     "tsup": "^8.3.5",
     "typescript": "catalog:",
     "vite": "catalog:",
+    "vite-plugin-svgr": "^4.3.0",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "catalog:",
     "vitest-axe": "^0.1.0"

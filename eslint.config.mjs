@@ -17,6 +17,7 @@ const generateFilesArray = (packages) => {
 // '**/packages/blocks/**/*.{ts,tsx}'
 const addonPackages = [
   'apps/seven',
+  'apps/quanta',
   'packages/blocks',
   'packages/contents',
   'packages/cmsui',

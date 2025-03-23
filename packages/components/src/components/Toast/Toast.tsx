@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckboxIcon, InfoIcon, CloseIcon } from '../Icons';
+import { CheckboxIcon, InfoIcon, CloseIcon } from '../icons';
 
 interface Props {
   title?: string | Array<any>;
