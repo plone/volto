@@ -127,6 +127,7 @@ style-guide
 language-features
 linting
 testing
+testing-vitest
 acceptance-tests
 documentation
 react
