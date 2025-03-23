@@ -73,3 +73,7 @@ docs/_build/
 docs/source/news
 
 tsconfig.tsbuildinfo
+
+# @plone/registry generated files
+registry.loader.js
+addons.styles.css
