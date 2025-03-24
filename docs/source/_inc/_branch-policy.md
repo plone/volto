@@ -1,6 +1,6 @@
 The Volto team enforces the following branch policy when developers contribute to its core.
 
-Releases of general packages (`@plone/scripts`, and so on) are cut from the `main` branch.
+Releases of general packages (`@plone/scripts` and other packages) are cut from the `main` branch.
 
 stable and latest
 :   The terms _stable_ and _latest_ mean the same thing in this policy.

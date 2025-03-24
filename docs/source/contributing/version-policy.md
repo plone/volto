@@ -57,7 +57,7 @@ Python 3.8 support was dropped in 6.0.14.
 
 On Plone 6, we recommend using the known good set (KGS) of package versions that are specified in the Plone release.
 
-Volto should work on older Plone versions as well, since Plone REST API supports Plone back to version 4.3 (including Archetypes).
+Volto isn't tested with older Plone versions.
 
 We do not support or test Plone versions that were released before Volto existed.
 

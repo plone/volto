@@ -85,7 +85,7 @@ They must be loadable as any other add-on, and contain an add-on registry compat
 
 These are packages that are not bundled, and they are used in conjunction with Volto core or Volto projects.
 They contain utilities that are useful for the development of a Volto project.
-Some of them are released:
+One is released:
 
 - `@plone/scripts`
 
