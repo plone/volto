@@ -946,7 +946,6 @@ class Form extends Component {
                         ...map(item.fields, (field, index) => (
                           <Field
                             widgets={this.props.widgets}
-                            component={this.props.component}
                             {...schema.properties[field]}
                             id={field}
                             formData={formData}
@@ -1003,7 +1002,6 @@ class Form extends Component {
                   {map(schema.fieldsets[0].fields, (field) => (
                     <Field
                       widgets={this.props.widgets}
-                      component={this.props.component}
                       {...schema.properties[field]}
                       id={field}
                       value={formData?.[field]}
