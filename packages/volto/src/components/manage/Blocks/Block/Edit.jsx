@@ -3,7 +3,7 @@
  * @module components/manage/Blocks/Block/Edit
  */
 
-import React, { Component } from 'react';
+import React, { Component, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -24,6 +24,35 @@ const messages = defineMessages({
     id: 'Unknown Block',
     defaultMessage: 'Unknown Block {block}',
   },
+});
+
+const BlokRenderWithMemo = React.memo((props) => {
+  const { blockNode, data } = props;
+  let Block = props.blockComponent;
+  const prevProps = useRef(props);
+
+  useEffect(() => {
+    console.log('Block Rendered', props.type);
+    Object.keys(props).forEach((key) => {
+      if (prevProps.current[key] !== props[key]) {
+        console.log(`Prop "${key}" changed:`, {
+          from: prevProps.current[key],
+          to: props[key],
+        });
+      }
+    });
+
+    prevProps.current = props; // Update previous props reference
+  }, [props]); // Runs whenever props change
+  return (
+    <Block
+      data={data}
+      blockNode={blockNode}
+      content={props.content.current}
+      properties={props.properties.current}
+      {...props}
+    />
+  );
 });
 
 /**
@@ -123,7 +152,6 @@ export class Edit extends Component {
   render() {
     const { blocksConfig = config.blocks.blocksConfig } = this.props;
     const { editable, type } = this.props;
-
     const disableNewBlocks = this.props.data?.disableNewBlocks;
 
     let Block = blocksConfig?.[type]?.['edit'] || EditDefaultBlock;
@@ -194,10 +222,55 @@ export class Edit extends Component {
             /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
             tabIndex={!blockHasOwnFocusManagement ? -1 : null}
           >
-            <Block
+            {/* <Block
               {...this.props}
               blockNode={this.blockNode}
               data={this.props.data}
+            /> */}
+            <BlokRenderWithMemo
+              // {...this.props}
+              blockComponent={Block}
+              data={this.props.data}
+              blockNode={this.blockNode}
+              block={this.props.block}
+              hovered={null}
+              type={this.props.type}
+              properties={this.props.properties}
+              allowedBlocks={this.props.allowedBlocks}
+              id={this.props.id}
+              index={this.props.index}
+              manage={this.props.manage}
+              pathname={this.props.pathname}
+              onChangeBlock={this.props.onChangeBlock}
+              onMoveBlock={this.props.onMoveBlock}
+              onInsertBlock={this.props.onInsertBlock}
+              onAddBlock={this.props.onAddBlock}
+              onDeleteBlock={this.props.onDeleteBlock}
+              onSelectBlock={this.props.onSelectBlock}
+              handleKeyDown={this.props.handleKeyDown}
+              metadata={this.props.metadata}
+              onMutateBlock={this.props.onMutateBlock}
+              onFocusPreviousBlock={this.props.onFocusPreviousBlock}
+              onFocusNextBlock={this.props.onFocusNextBlock}
+              onChangeFormData={this.props.onChangeFormData}
+              onChangeField={this.props.onChangeField}
+              showRestricted={this.props.showRestricted}
+              formTitle={this.props.formTitle}
+              formDescription={this.props.formDescription}
+              contentType={this.props.contentType}
+              // navRoot={this.props.navRoot}
+              blocksConfig={this.props.blocksConfig}
+              selected={this.props.selected}
+              multiSelected={this.props.multiSelected}
+              editable={this.props.editable}
+              showBlockChooser={this.props.showBlockChooser}
+              detached={this.props.detached}
+              content={this.props.content}
+              history={this.props.history}
+              location={this.props.location}
+              token={this.props.token}
+              errors={this.props.errors}
+              blocksErrors={this.props.blocksErrors}
             />
             {this.props.manage && (
               <SidebarPortal
