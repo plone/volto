@@ -576,6 +576,11 @@ msgstr "Nu se poate edita aspectul pentru tipul de conținut <strong>{type}</str
 msgid "Cancel"
 msgstr "Anulează"
 
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr "Anulează căutarea"
+
 #. Default: "Cell"
 #: config/Blocks
 msgid "Cell"
