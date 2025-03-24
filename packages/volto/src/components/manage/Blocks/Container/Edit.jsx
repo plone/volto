@@ -121,6 +121,8 @@ const ContainerBlockEdit = (props) => {
       )}
 
       <BlocksForm
+        errors={props.errors}
+        blocksErrors={props.blocksErrors}
         metadata={metadata}
         properties={properties}
         direction={direction}
