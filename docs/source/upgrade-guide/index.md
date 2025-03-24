@@ -28,7 +28,25 @@ It is usually better and quicker to move your items into new locations and copy 
 ```
 ````
 
-(volto-upgrade-guide-18.x.x)=
+(volto-upgrade-guide-19.x.x)=
+
+## Upgrading to Volto 19.x.x
+
+(19-removed-support-for-loading-configuration-from-project-label)=
+
+### Removed support for loading configuration from project
+```{versionremoved} Volto 19
+```
+This breaking change fulfills [PLIP 6396](https://github.com/plone/volto/issues/6396).
+
+The old fashioned project structure was deprecated in Volto 18.0.0-alpha.43, in favor of the "add-on driven development" in Plone.
+It now uses a policy add-on package to configure your project, and is provided by [Cookieplone](https://github.com/plone/cookieplone).
+The old fashioned structure was created by the deprecated `@plone/generator-volto` package, and was based on the Razzle setup using a middle-man project artifact.
+There's nothing that limits to move all the config from a project to an add-on package.
+See {ref}`upgrade-18-cookieplone-label` for details.
+
+
+(upgrade-18-label)=
 
 ## Upgrading to Volto 18.x.x
 
