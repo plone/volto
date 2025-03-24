@@ -15,6 +15,7 @@ import {
   getBlocksLayoutFieldname,
   hasBlocksData,
 } from '@plone/volto/helpers/Blocks/Blocks';
+import { applySchemaEnhancer } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
 import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -81,6 +82,8 @@ class Form extends Component {
       definitions: PropTypes.objectOf(PropTypes.any),
       required: PropTypes.arrayOf(PropTypes.string),
     }),
+    widgets: PropTypes.objectOf(PropTypes.any),
+    component: PropTypes.any,
     formData: PropTypes.objectOf(PropTypes.any),
     globalData: PropTypes.objectOf(PropTypes.any),
     metadataFieldsets: PropTypes.arrayOf(PropTypes.string),
@@ -89,6 +92,9 @@ class Form extends Component {
     onSubmit: PropTypes.func,
     onCancel: PropTypes.func,
     submitLabel: PropTypes.string,
+    cancelLabel: PropTypes.string,
+    textButtons: PropTypes.bool,
+    buttonComponent: PropTypes.any,
     resetAfterSubmit: PropTypes.bool,
     resetOnCancel: PropTypes.bool,
     isEditForm: PropTypes.bool,
@@ -119,9 +125,14 @@ class Form extends Component {
    */
   static defaultProps = {
     formData: null,
+    widgets: null,
+    component: null,
     onSubmit: null,
     onCancel: null,
     submitLabel: null,
+    cancelLabel: null,
+    textButtons: false,
+    buttonComponent: null,
     resetAfterSubmit: false,
     resetOnCancel: false,
     isEditForm: false,
@@ -272,22 +283,19 @@ class Form extends Component {
         selected: null,
       });
     }
-    if (requestError) {
+
+    if (requestError && prevProps.requestError !== requestError) {
       errors =
         FormValidation.giveServerErrorsToCorrespondingFields(requestError);
-      if (
-        !isEqual(prevProps.requestError, requestError) ||
-        !isEqual(this.state.errors, errors)
-      ) {
-        activeIndex = FormValidation.showFirstTabWithErrors({
-          errors,
-          schema: this.props.schema,
-        });
-        this.setState({
-          errors,
-          activeIndex,
-        });
-      }
+      activeIndex = FormValidation.showFirstTabWithErrors({
+        errors,
+        schema: this.props.schema,
+      });
+
+      this.setState({
+        errors,
+        activeIndex,
+      });
     }
 
     if (this.props.onChangeFormData) {
@@ -551,6 +559,18 @@ class Form extends Component {
             formData: blocks[block],
           });
         }
+
+        if (config.blocks.blocksConfig[blocks[block]['@type']].blockSchema) {
+          blockSchema = applySchemaEnhancer({
+            schema: blockSchema,
+            formData: blocks[block],
+            intl: this.props.intl,
+            blocksConfig: config.blocks.blocksConfig,
+            navRoot: this.props.navRoot,
+            contentType: this.props.content['@type'],
+          });
+        }
+
         const blockErrors = FormValidation.validateFieldsPerFieldset({
           schema: blockSchema,
           formData: blocks[block],
@@ -564,11 +584,13 @@ class Form extends Component {
         }
       });
     }
+
     if (keys(errors).length > 0 || keys(blocksErrors).length > 0) {
       const activeIndex = FormValidation.showFirstTabWithErrors({
         errors,
         schema: this.props.schema,
       });
+
       this.setState({
         errors: {
           ...errors,
@@ -579,23 +601,14 @@ class Form extends Component {
 
       if (keys(errors).length > 0) {
         // Changes the focus to the metadata tab in the sidebar if error
-        toast.error(
-          <Toast
-            error
-            title={this.props.intl.formatMessage(messages.error)}
-            content={
-              <ul>
-                {Object.keys(errors).map((err, index) => (
-                  <li key={index}>
-                    <strong>
-                      {this.props.schema.properties[err].title || err}:
-                    </strong>{' '}
-                    {errors[err]}
-                  </li>
-                ))}
-              </ul>
-            }
-          />,
+        Object.keys(errors).forEach((err) =>
+          toast.error(
+            <Toast
+              error
+              title={this.props.schema.properties[err].title || err}
+              content={errors[err].join(', ')}
+            />,
+          ),
         );
         this.props.setSidebarTab(0);
       } else if (keys(blocksErrors).length > 0) {
@@ -717,11 +730,16 @@ class Form extends Component {
       navRoot,
       type,
       metadataFieldsets,
+      component,
+      buttonComponent,
     } = this.props;
     const formData = this.state.formData;
     const schema = this.removeBlocksLayoutFields(originalSchema);
     const Container =
       config.getComponent({ name: 'Container' }).component || SemanticContainer;
+    const FormComponent = component || UiForm;
+    const ButtonComponent = buttonComponent || Button;
+
     return this.props.visual ? (
       // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
       // but draftJS don't like it much and the hydration gets messed up
@@ -885,7 +903,7 @@ class Form extends Component {
       )
     ) : (
       <Container>
-        <UiForm
+        <FormComponent
           method="post"
           onSubmit={this.onSubmit}
           error={keys(this.state.errors).length > 0}
@@ -927,6 +945,7 @@ class Form extends Component {
                         ),
                         ...map(item.fields, (field, index) => (
                           <Field
+                            widgets={this.props.widgets}
                             {...schema.properties[field]}
                             id={field}
                             formData={formData}
@@ -982,6 +1001,7 @@ class Form extends Component {
                   )}
                   {map(schema.fieldsets[0].fields, (field) => (
                     <Field
+                      widgets={this.props.widgets}
                       {...schema.properties[field]}
                       id={field}
                       value={formData?.[field]}
@@ -997,47 +1017,97 @@ class Form extends Component {
               )}
               {!this.props.hideActions && (
                 <Segment className="actions" clearing>
-                  {onSubmit && (
-                    <Button
-                      basic
-                      primary
-                      floated="right"
-                      type="submit"
-                      aria-label={
-                        this.props.submitLabel
+                  {onSubmit &&
+                    (this.props.textButtons ? (
+                      <ButtonComponent
+                        primary
+                        floated="right"
+                        type="submit"
+                        aria-label={
+                          this.props.submitLabel
+                            ? this.props.submitLabel
+                            : this.props.intl.formatMessage(messages.save)
+                        }
+                        title={
+                          this.props.submitLabel
+                            ? this.props.submitLabel
+                            : this.props.intl.formatMessage(messages.save)
+                        }
+                        loading={this.props.loading}
+                      >
+                        {this.props.submitLabel
                           ? this.props.submitLabel
-                          : this.props.intl.formatMessage(messages.save)
-                      }
-                      title={
-                        this.props.submitLabel
-                          ? this.props.submitLabel
-                          : this.props.intl.formatMessage(messages.save)
-                      }
-                      loading={this.props.loading}
-                    >
-                      <Icon className="circled" name={aheadSVG} size="30px" />
-                    </Button>
-                  )}
-                  {onCancel && (
-                    <Button
-                      type="button"
-                      basic
-                      secondary
-                      aria-label={this.props.intl.formatMessage(
-                        messages.cancel,
-                      )}
-                      title={this.props.intl.formatMessage(messages.cancel)}
-                      floated="right"
-                      onClick={this.onCancel}
-                    >
-                      <Icon className="circled" name={clearSVG} size="30px" />
-                    </Button>
-                  )}
+                          : this.props.intl.formatMessage(messages.save)}
+                      </ButtonComponent>
+                    ) : (
+                      <ButtonComponent
+                        basic
+                        primary
+                        floated="right"
+                        type="submit"
+                        aria-label={
+                          this.props.submitLabel
+                            ? this.props.submitLabel
+                            : this.props.intl.formatMessage(messages.save)
+                        }
+                        title={
+                          this.props.submitLabel
+                            ? this.props.submitLabel
+                            : this.props.intl.formatMessage(messages.save)
+                        }
+                        loading={this.props.loading}
+                      >
+                        <Icon className="circled" name={aheadSVG} size="30px" />
+                      </ButtonComponent>
+                    ))}
+                  {onCancel &&
+                    (this.props.textButtons ? (
+                      <ButtonComponent
+                        secondary
+                        type="button"
+                        aria-label={
+                          this.props.cancelLabel
+                            ? this.props.cancelLabel
+                            : this.props.intl.formatMessage(messages.cancel)
+                        }
+                        title={
+                          this.props.cancelLabel
+                            ? this.props.cancelLabel
+                            : this.props.intl.formatMessage(messages.cancel)
+                        }
+                        floated="right"
+                        onClick={this.onCancel}
+                      >
+                        {this.props.cancelLabel
+                          ? this.props.cancelLabel
+                          : this.props.intl.formatMessage(messages.cancel)}
+                      </ButtonComponent>
+                    ) : (
+                      <ButtonComponent
+                        basic
+                        secondary
+                        type="button"
+                        aria-label={
+                          this.props.cancelLabel
+                            ? this.props.cancelLabel
+                            : this.props.intl.formatMessage(messages.cancel)
+                        }
+                        title={
+                          this.props.cancelLabel
+                            ? this.props.cancelLabel
+                            : this.props.intl.formatMessage(messages.cancel)
+                        }
+                        floated="right"
+                        onClick={this.onCancel}
+                      >
+                        <Icon className="circled" name={clearSVG} size="30px" />
+                      </ButtonComponent>
+                    ))}
                 </Segment>
               )}
             </Segment.Group>
           </fieldset>
-        </UiForm>
+        </FormComponent>
       </Container>
     );
   }
