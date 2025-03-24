@@ -998,6 +998,11 @@ msgstr "Datum (nieuwste eerst)"
 msgid "Default"
 msgstr "Standaard"
 
+#. Default: "Default value"
+#: components/manage/Widgets/SchemaWidget
+msgid "Default value"
+msgstr ""
+
 #. Default: "Default view"
 #: config/Views
 msgid "Default view"
@@ -1518,6 +1523,11 @@ msgstr "Veld"
 msgid "File"
 msgstr "Bestand"
 
+#. Default: "File is not of the accepted type {accept}"
+#: components/manage/Widgets/FileWidget
+msgid "File is not of the accepted type {accept}"
+msgstr ""
+
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
@@ -1537,6 +1547,11 @@ msgstr "Bestandsnaam"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Opgeladen bestanden: {uploadedFiles}"
+
+#. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+#: components/manage/Widgets/SchemaWidget
+msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+msgstr ""
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
@@ -2679,6 +2694,11 @@ msgstr "Persoonlijke hulpmiddelen"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Personen die verantwoordelijk zijn voor het maken van inhoud voor dit item. De eindverantwoordelijke vermeld je als eerste."
 
+#. Default: "Placeholder"
+#: components/manage/Widgets/SchemaWidget
+msgid "Placeholder"
+msgstr ""
+
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
@@ -2794,6 +2814,11 @@ msgstr "Ingangsdatum"
 #. Default: "Query"
 #: components/manage/Blocks/Listing/schema
 msgid "Query"
+msgstr ""
+
+#. Default: "Query Parameter Name"
+#: components/manage/Widgets/SchemaWidget
+msgid "Query Parameter Name"
 msgstr ""
 
 #. Default: "Re-enter the password. Make sure the passwords are identical."
@@ -3727,6 +3752,11 @@ msgstr "De backend server van jouw website antwoord niet, onze excuses voor het 
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr "De aanwezigheid van de knop schakelt de live-zoekfunctie uit, de bevraging wordt uitgevoerd wanneer je ENTER indrukt"
 
+#. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+#: components/manage/Widgets/FileWidget
+msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+msgstr ""
+
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
 msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
@@ -3882,6 +3912,7 @@ msgstr "Deze regel is toegewezen aan volgende locaties:"
 
 #. Default: "Time"
 #: components/manage/Widgets/DatetimeWidget
+#: components/manage/Widgets/TimeWidget
 msgid "Time"
 msgstr "Tijd"
 
@@ -4477,6 +4508,11 @@ msgstr "Jouw site is up-to-date."
 msgid "Your usernaame is required for reset your password."
 msgstr "Jouw gebruikersnaam is vereist om je wachtwoord opnieuw in te stellen."
 
+#. Default: "File types allowed"
+#: components/manage/Widgets/SchemaWidget
+msgid "accept"
+msgstr ""
+
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -5051,6 +5087,11 @@ msgstr "Selecteer"
 #: components/manage/Blocks/Search/components/ViewSwitcher
 msgid "selectView"
 msgstr "Selecteer weergave"
+
+#. Default: "Maximum size of the file in bytes"
+#: components/manage/Widgets/SchemaWidget
+msgid "size"
+msgstr ""
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks
