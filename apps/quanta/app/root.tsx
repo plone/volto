@@ -11,15 +11,14 @@ import {
   useParams,
   useLoaderData,
 } from 'react-router';
+import { useTranslation } from 'react-i18next';
+import { useChangeLanguage } from 'remix-i18next/react';
+import i18next from '~/i18next.server';
 import type { Route } from './+types/root';
 import contentLoader from './loaders/content';
 
 import { AppRouterProvider } from '@plone/providers';
 import { flattenToAppURL } from './utils';
-import install from './config';
-import installServer from './config.server';
-
-install();
 
 // eslint-disable-next-line import/no-unresolved
 import stylesheet from './app.css?url';
@@ -34,8 +33,8 @@ function useHrefLocal(to: string) {
 }
 
 export const meta: Route.MetaFunction = ({ data }) => [
-  { title: data?.title },
-  { name: 'description', content: data?.description },
+  { title: data.content?.title },
+  { name: 'description', content: data.content?.description },
   { name: 'generator', content: 'Plone 7 - https://plone.org' },
 ];
 
@@ -64,17 +63,36 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
-export async function loader({ params, request }: Route.LoaderArgs) {
-  installServer();
+export async function loader({ params, request, context }: Route.LoaderArgs) {
+  const locale = await i18next.getLocale(request);
 
-  return await contentLoader({ params, request });
+  return {
+    content: await contentLoader({ params, request, context }),
+    locale,
+  };
 }
 
+export const handle = {
+  // In the handle export, we can add a i18n key with namespaces our route
+  // will need to load. This key can be a single string or an array of strings.
+  // TIP: In most cases, you should set this to your defaultNS from your i18n config
+  // or if you did not set one, set it to the i18next default namespace "translation"
+  i18n: 'common',
+};
+
 export function Layout({ children }: { children: React.ReactNode }) {
-  const data = useLoaderData<typeof loader>();
+  const { content, locale } = useLoaderData<typeof loader>();
+
+  const { i18n } = useTranslation();
+
+  // This hook will change the i18n instance language to the current locale
+  // detected by the loader, this way, when we do something to change the
+  // language, this locale will change and i18next will load the correct
+  // translation files
+  useChangeLanguage(locale);
 
   return (
-    <html lang={data?.language?.token || 'en'}>
+    <html lang={content?.language?.token || locale || 'en'} dir={i18n.dir()}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

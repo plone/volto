@@ -6,6 +6,7 @@ import _debug from 'debug';
 import { DepGraph } from 'dependency-graph';
 import { createRequire } from 'node:module';
 import { autoConf, jsLoader, getConfigPath } from 'auto-config-loader';
+import merge from 'deepmerge';
 
 const debugShadowing = _debug('shadowing');
 const debugConfig = _debug('config');
@@ -514,6 +515,32 @@ class AddonRegistry {
     });
 
     return addonsStylesInfo;
+  }
+
+  /**
+   * Returns a list of add-on locales files for the given language
+   * (<addon-path>/locales/<lang>/addon.json) that contain translations
+   */
+  getAddonLocales(language = 'en') {
+    return this.getAddonDependencies().reduce<Record<string, object>>(
+      (acc, addon) => {
+        const normalizedAddonName = addon.split(':')[0] as string;
+
+        const addonLocalesFolder = `${this.packages[normalizedAddonName]?.modulePath}/locales/${language}`;
+        if (fs.existsSync(addonLocalesFolder)) {
+          const files = fs.readdirSync(addonLocalesFolder);
+          const locales = files.reduce<Record<string, object>>((acc, file) => {
+            const filePath = path.join(addonLocalesFolder, file);
+            const content = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+            acc[file] = content;
+            return acc;
+          }, {});
+          return merge(acc, locales);
+        }
+        return acc;
+      },
+      {},
+    );
   }
 
   getCustomThemeAddons() {

@@ -53,6 +53,7 @@
     "@plone/client": "workspace:*",
     "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
+    "react-i18next": "catalog:",
     "react-router": "catalog:",
     "tailwindcss": "^4.0.9",
     "tailwindcss-animate": "^1.0.7"

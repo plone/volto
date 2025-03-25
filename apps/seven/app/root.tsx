@@ -64,10 +64,10 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
-export async function loader({ params, request }: Route.LoaderArgs) {
+export async function loader({ params, request, context }: Route.LoaderArgs) {
   installServer();
 
-  return await contentLoader({ params, request });
+  return await contentLoader({ params, request, context });
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {

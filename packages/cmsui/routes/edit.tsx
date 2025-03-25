@@ -1,4 +1,5 @@
 import type { Route } from './+types/edit';
+import { useTranslation } from 'react-i18next';
 import { useRouteLoaderData } from 'react-router';
 
 import type { Content } from '@plone/types';
@@ -11,8 +12,13 @@ export const meta: Route.MetaFunction = () => {
 export async function loader({ params, request }: Route.LoaderArgs) {}
 
 export default function Edit() {
-  const data = useRouteLoaderData('root') as Content;
+  const { content } = useRouteLoaderData('root') as { content: Content };
+  const { t } = useTranslation();
   // const pathname = useLocation().pathname;
-  return <h1>{data.title}</h1>;
+  return (
+    <h1>
+      {content.title} - {t('edit')}
+    </h1>
+  );
   // return <App content={data} location={{ pathname }} />;
 }

@@ -10,12 +10,18 @@ packages:
   - '!packages/coresandbox'
 
 catalog:
+  i18next: ^24.2.3
+  i18next-browser-languagedetector: ^8.0.4
+  i18next-fs-backend: ^2.6.0
+  i18next-http-backend: ^3.0.2
   react: ^19.0.0
   react-dom: ^19.0.0
   '@types/react': ^19.0.0
   '@types/react-dom': ^19.0.0
   react-aria-components: ^1.7.0
+  react-i18next: ^15.4.1
   react-router: 7.3.0
+  remix-i18next: ^7.1.0
   '@react-router/dev': 7.3.0
   '@react-router/node': 7.3.0
   '@react-router/serve': 7.3.0
