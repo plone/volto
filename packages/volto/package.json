@@ -222,7 +222,6 @@
     "react-beautiful-dnd": "13.0.0",
     "react-cookie": "4.1.1",
     "react-dates": "21.5.1",
-    "react-day-picker": "^9.6.3",
     "react-detect-click-outside": "1.1.1",
     "react-dnd": "5.0.0",
     "react-dnd-html5-backend": "5.0.1",

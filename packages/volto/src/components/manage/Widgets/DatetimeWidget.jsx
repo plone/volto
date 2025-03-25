@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
+import loadable from '@loadable/component';
 import cx from 'classnames';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import { parseDateTime, toBackendLang } from '@plone/volto/helpers/Utils/Utils';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
+import leftKey from '@plone/volto/icons/left-key.svg';
+import rightKey from '@plone/volto/icons/right-key.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
-import 'react-time-picker/dist/TimePicker.css';
-import 'react-day-picker/dist/style.css';
-import { DayPicker } from 'react-day-picker';
-import { TimePicker } from 'react-time-picker';
+import 'rc-time-picker/assets/index.css';
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+
+const TimePicker = loadable(() => import('rc-time-picker'));
 
 const messages = defineMessages({
   date: {
@@ -24,6 +29,38 @@ const messages = defineMessages({
   },
 });
 
+const PrevIcon = () => (
+  <div
+    style={{
+      color: '#000',
+      left: '22px',
+      padding: '5px',
+      position: 'absolute',
+      top: '15px',
+    }}
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+    tabIndex="0"
+  >
+    <Icon name={leftKey} size="30px" />
+  </div>
+);
+
+const NextIcon = () => (
+  <div
+    style={{
+      color: '#000',
+      right: '22px',
+      padding: '5px',
+      position: 'absolute',
+      top: '15px',
+    }}
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+    tabIndex="0"
+  >
+    <Icon name={rightKey} size="30px" />
+  </div>
+);
+
 const defaultTimeDateOnly = {
   hour: 12,
   minute: 0,
@@ -31,72 +68,90 @@ const defaultTimeDateOnly = {
 };
 
 const DatetimeWidgetComponent = (props) => {
-  const { id, resettable, value, onChange, dateOnly, widget, isDisabled } =
-    props;
+  const {
+    id,
+    resettable,
+    reactDates,
+    widgetOptions,
+    value,
+    onChange,
+    dateOnly,
+    widget,
+    noPastDates: propNoPastDates,
+    isDisabled,
+  } = props;
 
   const intl = useIntl();
   const lang = intl.locale;
+  const { SingleDatePicker } = reactDates;
 
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [focused, setFocused] = useState(false);
   const [isDefault, setIsDefault] = useState(false);
 
+  const getInternalValue = () => {
+    return parseDateTime(toBackendLang(lang), value);
+  };
+
   useEffect(() => {
-    const parsed = parseDateTime(toBackendLang(lang), value);
-    setSelectedDate(parsed);
+    const parsedDateTime = parseDateTime(toBackendLang(lang), value);
     const now = new Date().toISOString();
-    setIsDefault(parsed?.toISOString() === now);
+    setIsDefault(parsedDateTime?.toISOString() === now);
   }, [value, lang]);
 
   const getDateOnly = () => dateOnly || widget === 'date';
 
-  const handleDateChange = (date) => {
-    if (!date) return;
-    const isDateOnly = getDateOnly();
-    const base = selectedDate || new Date();
-    const updated = new Date(base);
-    updated.setFullYear(date.getFullYear());
-    updated.setMonth(date.getMonth());
-    updated.setDate(date.getDate());
+  const onDateChange = (momentDate) => {
+    if (momentDate) {
+      const date = momentDate.toDate();
+      const isDateOnly = getDateOnly();
+      const base = getInternalValue() || new Date();
+      const updated = new Date(base);
 
-    if (isDateOnly) {
-      updated.setHours(defaultTimeDateOnly.hour);
-      updated.setMinutes(defaultTimeDateOnly.minute);
-      updated.setSeconds(defaultTimeDateOnly.second);
+      updated.setFullYear(date.getFullYear());
+      updated.setMonth(date.getMonth());
+      updated.setDate(date.getDate());
+
+      if (isDateOnly) {
+        updated.setHours(defaultTimeDateOnly.hour);
+        updated.setMinutes(defaultTimeDateOnly.minute);
+        updated.setSeconds(defaultTimeDateOnly.second);
+      }
+
+      const dateValue = isDateOnly
+        ? updated.toISOString().split('T')[0]
+        : updated.toISOString();
+
+      onChange(id, dateValue);
     }
-
-    const newValue = isDateOnly
-      ? updated.toISOString().split('T')[0]
-      : updated.toISOString();
-
-    setSelectedDate(updated);
-    onChange(id, newValue);
     setIsDefault(false);
   };
 
-  const handleTimeChange = (val) => {
-    if (val) {
-      const [h, m] = val.split(':').map(Number);
-      const updated = new Date(selectedDate || new Date());
-      updated.setHours(h);
-      updated.setMinutes(m);
+  const onTimeChange = (momentTime) => {
+    if (momentTime) {
+      const base = getInternalValue() || new Date();
+      const updated = new Date(base);
+      const date = momentTime.toDate();
+
+      updated.setHours(date.getHours());
+      updated.setMinutes(date.getMinutes());
       updated.setSeconds(0);
-      setSelectedDate(updated);
-      onChange(id, updated.toISOString());
+
+      const dateValue = updated.toISOString();
+      onChange(id, dateValue);
     }
   };
 
   const onResetDates = () => {
-    setSelectedDate(null);
     setIsDefault(false);
     onChange(id, null);
   };
 
+  const onFocusChange = ({ focused }) => setFocused(focused);
+
+  const noPastDates =
+    propNoPastDates || widgetOptions?.pattern_options?.noPastDates;
+  const datetime = getInternalValue();
   const isDateOnly = getDateOnly();
-  const timeValue = selectedDate
-    ? `${String(selectedDate.getHours()).padStart(2, '0')}:${String(
-        selectedDate.getMinutes(),
-      ).padStart(2, '0')}`
-    : '';
 
   return (
     <FormFieldWrapper {...props}>
@@ -104,11 +159,26 @@ const DatetimeWidgetComponent = (props) => {
         <div
           className={cx('ui input date-input', { 'default-date': isDefault })}
         >
-          <DayPicker
-            mode="single"
-            selected={selectedDate}
-            onSelect={handleDateChange}
+          <SingleDatePicker
+            date={datetime ? props.moment.default(datetime) : null}
             disabled={isDisabled}
+            onDateChange={onDateChange}
+            focused={focused}
+            numberOfMonths={1}
+            {...(noPastDates ? {} : { isOutsideRange: () => false })}
+            onFocusChange={onFocusChange}
+            noBorder
+            displayFormat={() =>
+              new Intl.DateTimeFormat(toBackendLang(lang), {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+              }).format(datetime || new Date())
+            }
+            navPrev={<PrevIcon />}
+            navNext={<NextIcon />}
+            id={`${id}-date`}
+            placeholder={intl.formatMessage(messages.date)}
           />
         </div>
 
@@ -118,15 +188,17 @@ const DatetimeWidgetComponent = (props) => {
           >
             <TimePicker
               disabled={isDisabled}
-              value={timeValue}
-              onChange={handleTimeChange}
-              disableClock
-              format="HH:mm"
-              clearIcon={null}
-              clockIcon={null}
-              locale={toBackendLang(lang)}
+              defaultValue={datetime ? props.moment.default(datetime) : null}
+              value={datetime ? props.moment.default(datetime) : null}
+              onChange={onTimeChange}
+              allowEmpty={false}
+              showSecond={false}
+              use12Hours={lang === 'en'}
               id={`${id}-time`}
+              format="HH:mm"
               placeholder={intl.formatMessage(messages.time)}
+              focusOnOpen
+              placement="bottomRight"
             />
           </div>
         )}
@@ -134,7 +206,7 @@ const DatetimeWidgetComponent = (props) => {
         {resettable && (
           <button
             type="button"
-            disabled={isDisabled || !selectedDate}
+            disabled={isDisabled || !datetime}
             onClick={onResetDates}
             className="item ui noborder button"
           >
@@ -153,6 +225,7 @@ DatetimeWidgetComponent.propTypes = {
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
   dateOnly: PropTypes.bool,
+  noPastDates: PropTypes.bool,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   wrapped: PropTypes.bool,
@@ -165,9 +238,12 @@ DatetimeWidgetComponent.defaultProps = {
   required: false,
   error: [],
   dateOnly: false,
+  noPastDates: false,
   value: null,
   resettable: true,
   isDisabled: false,
 };
 
-export default DatetimeWidgetComponent;
+export default injectLazyLibs(['reactDates', 'moment'])(
+  DatetimeWidgetComponent,
+);
