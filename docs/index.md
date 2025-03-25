@@ -1,8 +1,8 @@
 ---
 myst:
   html_meta:
-    "description": "The Volto user interface (UI) is a React-based frontend for the Plone CMS. It is the default user interface starting with the release of Plone 6."
-    "property=og:description": "The Volto user interface (UI) is a React-based frontend for the Plone CMS. It is the default user interface starting with the release of Plone 6."
+    "description": "The Seven user interface (UI) is a React-based frontend for Plone."
+    "property=og:description": "The Seven user interface (UI) is a React-based frontend for Plone."
     "property=og:title": "Seven"
     "keywords": "Seven, Plone, frontend, user interface, React"
 ---
@@ -11,26 +11,28 @@ myst:
 
 # Seven
 
-The Seven user interface (UI) is a React-based frontend for the [Plone content management system](https://plone.org).
+The Seven user interface (UI) is a React-based frontend for [Plone](https://plone.org).
 
 Seven is the codename for the successor of Volto.
 The codename is _temporary_, the final name of the product has to be decided in the future, by the community when the release happens.
 It is being developed [in its own branch](https://github.com/plone/volto/tree/7) along side Volto (in main branch) as it happens during the next months.
 
+
+
 ## Rationale
 
-Plone Volto frontend is (as per 2025) eight years old.
-We architectured and implemented Volto using the libraries, frameworks, resouces and best practices that were available back in the day.
-These have all changed, in the midst of the ever-changing and ever-evolving React ecosystem, therefore, the way of developing React applications nowadays have dramatically changed.
+Volto turned eight years old in 2025.
+The Volto Team architected and implemented Volto using the libraries, frameworks, resources, and best practices that were available at that time.
+Since then the React ecosystem has evolved, and so has the way of developing React applications.
+React 19 is stable now, settling upon a common paradigm for efficient data fetching in both the server and the client.
+Other React frameworks have embraced and leveraged this paradigm, battle testing them in production.
 
-React 19 is stable now, settling (at last) a common paradigm for efficient data fetching in both the server and the client.
-Nowadays React frameworks leverage and are embracing this paradigm, battle testing them in production.
+The Volto Team recognized this evolution, and made the decision to adapt the next version of Volto to these modern practices.
 
-Plone has to embrace also these best practices an patterns, replacing all the legacy libraries and old patterns with the current ones.
 
 ## Get started
 
-The following sections helps you to begin your journey with Volto.
+The following sections guide you to begin your journey with Volto.
 
 
 ### Integrators
