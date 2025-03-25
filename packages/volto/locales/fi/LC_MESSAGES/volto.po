@@ -575,6 +575,11 @@ msgstr "Sisältötyypin <strong>{type}</strong> asettelua ei voi muokata, koska 
 msgid "Cancel"
 msgstr "Peruuta"
 
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr "Peruuta haku"
+
 #. Default: "Cell"
 #: config/Blocks
 msgid "Cell"

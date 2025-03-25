@@ -570,6 +570,11 @@ msgstr ""
 msgid "Cancel"
 msgstr "रद्द करें"
 
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr "खोज रद्द करें"
+
 #. Default: "Cell"
 #: config/Blocks
 msgid "Cell"
