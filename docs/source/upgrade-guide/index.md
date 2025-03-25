@@ -50,7 +50,8 @@ See {ref}`upgrade-18-cookieplone-label` for details.
 ```{versionremoved} Volto 19
 ```
 
-Volto 19 no longer includes automated tests for compatibility with Plone 5. While it may still work with Plone 5 backends in some cases, we recommend upgrading to Plone 6 for full compatibility and support.
+Volto 19 no longer includes automated tests for compatibility with Plone 5.
+While it may still work with Plone 5 backends in some cases, we recommend upgrading to Plone 6 for full compatibility and support.
 
 
 ### Removed packages `@plone/generator-volto`, `@plone/volto-guillotina`, and `@plone/volto-testing`
