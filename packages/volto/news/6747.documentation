@@ -1,0 +1,1 @@
+Changed `LANGUAGE` to `SITE_DEFAULT_LANGUAGE` in documentation examples to align with plone/plone-backend#170 changes. @boss6825
