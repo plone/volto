@@ -29,10 +29,6 @@ function useNavigate() {
   return (to: string) => navigate(to);
 }
 
-function useHrefLocal(to: string) {
-  return useHref(to);
-}
-
 export const meta: Route.MetaFunction = ({ data }) => [
   { title: data?.title },
   { name: 'description', content: data?.description },
@@ -128,7 +124,7 @@ export default function App() {
     <AppRouterProvider
       useLocation={useLocation}
       useParams={useParams}
-      useHref={useHrefLocal}
+      useHref={useHref}
       navigate={navigate}
       flattenToAppURL={flattenToAppURL}
     >
