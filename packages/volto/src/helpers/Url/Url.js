@@ -259,6 +259,36 @@ export function isUrl(url) {
 }
 
 /**
+ * Add prefix path if set in settings
+ * @method addPrefixPath
+ * @param {string} src pathname
+ * @returns {string} prefixed pathname
+ */
+export function addPrefixPath(src) {
+  let url = src;
+  const { prefixPath } = config.settings;
+  if (isInternalURL(src) && prefixPath && !src.startsWith(prefixPath)) {
+    url = prefixPath + src; //add prefixPath to src if it's an internal url and not a static resource.
+  }
+  return url;
+}
+
+/**
+ * strip prefix path particulary from api calls
+ * @method stripPrefixPath
+ * @param {string} src pathname
+ * @returns {string} pathname
+ */
+export function stripPrefixPath(src) {
+  let url = src;
+  const { prefixPath } = config.settings;
+  if (prefixPath && src.match(new RegExp(`^${prefixPath}(/|$)`))) {
+    url = src.slice(prefixPath.length);
+  }
+  return url;
+}
+
+/**
  * Get field url
  * @method getFieldURL
  * @param {object} data
