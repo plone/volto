@@ -59,7 +59,7 @@ To start a new project using Volto, follow the [Plone installation documentation
 
 ## Documentation
 
-You can find the documentation at [https://volto.readthedocs.io/seven](https://volto.readthedocs.io/seven/).
+You can find the documentation at [https://volto.readthedocs.io/seven/](https://volto.readthedocs.io/seven/).
 
 
 ## Supported Plone, Python, and Plone REST API versions
