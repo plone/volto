@@ -576,6 +576,11 @@ msgstr "Não é possível editar layout para o tipo de conteúdo <strong>{type}<
 msgid "Cancel"
 msgstr "Cancelar"
 
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr "Cancelar pesquisa"
+
 #. Default: "Cell"
 #: config/Blocks
 msgid "Cell"

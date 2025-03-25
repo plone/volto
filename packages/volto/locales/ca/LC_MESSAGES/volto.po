@@ -576,6 +576,11 @@ msgstr "No es pot editar el disseny per al tipus de contingut <strong>{type}</st
 msgid "Cancel"
 msgstr "Cancel·lar"
 
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr "Cancel·la la cerca"
+
 #. Default: "Cell"
 #: config/Blocks
 msgid "Cell"
