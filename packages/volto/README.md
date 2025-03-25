@@ -52,9 +52,7 @@ This allows the code to be shared effectively, and unifies tracking of changes a
 | [`@plone/registry`](https://www.npmjs.com/package/@plone/registry) | [`packages/registry`](https://github.com/plone/volto/tree/main/packages/registry#readme) |
 | [`@plone/scripts`](https://www.npmjs.com/package/@plone/scripts) | [`packages/scripts`](https://github.com/plone/volto/tree/main/packages/scripts#readme) |
 | [`@plone/types`](https://www.npmjs.com/package/@plone/types) | [`packages/types`](https://github.com/plone/volto/tree/main/packages/types#readme) |
-| none | [`packages/volto-guillotina`](https://github.com/plone/volto/tree/main/packages/volto-guillotina) |
 | [`@plone/volto-slate`](https://www.npmjs.com/package/@plone/volto-slate) | [`packages/volto-slate`](https://github.com/plone/volto/tree/main/packages/volto-slate#readme) |
-| [`@plone/volto-testing`](https://www.npmjs.com/package/@plone/volto-testing) | [`packages/volto-testing`](https://github.com/plone/volto/tree/main/packages/volto-testing) |
 
 See also [Monorepo structure](https://6.docs.plone.org/volto/contributing/developing-core.html#monorepo-structure).
 
