@@ -46,8 +46,7 @@ describe('createContent Tests', () => {
     cy.navigate('/my-first-page/edit');
     cy.wait(1000);
 
-    cy.findByRole('alert')
-      .get('.toast-inner-content')
+    cy.get('.toast-inner-content')
       .contains('Autosaved content found')
       .get('button.ui.icon.button.save.toast-box')
       .eq(0)
@@ -63,8 +62,7 @@ describe('createContent Tests', () => {
     cy.navigate('/my-second-page/edit');
     cy.wait(1000);
 
-    cy.findByRole('alert')
-      .get('.toast-inner-content')
+    cy.get('.toast-inner-content')
       .contains('Autosaved content found')
       .get('button.ui.icon.button.save.toast-box')
       .eq(0)
@@ -78,8 +76,7 @@ describe('createContent Tests', () => {
     cy.log(
       'test is cancel load data will delete from storage (toast does not show)',
     );
-    cy.findByRole('alert')
-      .get('.toast-inner-content')
+    cy.get('.toast-inner-content')
       .contains('Autosaved content found')
       .get('button.ui.icon.button.save.toast-box')
       .eq(1)
@@ -106,8 +103,7 @@ describe('createContent Tests', () => {
     cy.reload();
 
     cy.log('test if autosaved toast shows retrieved data and click OK to load');
-    cy.findByRole('alert')
-      .get('.toast-inner-content')
+    cy.get('.toast-inner-content')
       .contains('Autosaved content found')
       .get('button.ui.icon.button.save.toast-box')
       .eq(0)
@@ -129,8 +125,7 @@ describe('createContent Tests', () => {
 
     cy.get('#toolbar-add').click().get('#toolbar-add-document').click();
 
-    cy.findByRole('alert')
-      .get('.toast-inner-content')
+    cy.get('.toast-inner-content')
       .contains('Autosaved content found')
       .get('button.ui.icon.button.save.toast-box')
       .eq(0)
@@ -168,8 +163,7 @@ describe('createContent Tests', () => {
 
     cy.log('test if comment is retrieved from local storage');
 
-    cy.findByRole('alert')
-      .get('.toast-inner-content')
+    cy.get('.toast-inner-content')
       .contains('Autosaved content found')
       .get('button.ui.icon.button.save.toast-box')
       .eq(0)
@@ -184,8 +178,7 @@ describe('createContent Tests', () => {
       'test if comment is deleted from local storage after selecting Cancel in the Autosave toast',
     );
 
-    cy.findByRole('alert')
-      .get('.toast-inner-content')
+    cy.get('.toast-inner-content')
       .contains('Autosaved content found')
       .get('button.ui.icon.button.save.toast-box')
       .eq(1)
@@ -203,8 +196,7 @@ describe('createContent Tests', () => {
     cy.wait(1000);
     cy.reload();
 
-    cy.findByRole('alert')
-      .get('.toast-inner-content')
+    cy.get('.toast-inner-content')
       .contains('Autosaved content found')
       .get('button.ui.icon.button.save.toast-box')
       .eq(0)
