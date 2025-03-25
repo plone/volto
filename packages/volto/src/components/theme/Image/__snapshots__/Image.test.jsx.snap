@@ -3,11 +3,10 @@
 exports[`renders an image component from a catalog brain 1`] = `
 <img
   alt="alt text"
-  className=""
   fetchpriority="high"
   height={400}
   src="/image/@@images/image.png"
-  srcSet="/image/@@images/image-400.png 400w"
+  srcSet="/image/@@images/image-400.png 400w, /image/@@images/image.png 400w"
   width={400}
 />
 `;
@@ -15,11 +14,10 @@ exports[`renders an image component from a catalog brain 1`] = `
 exports[`renders an image component from a catalog brain using \`preview_image_link\` 1`] = `
 <img
   alt="alt text"
-  className=""
   fetchpriority="high"
   height={400}
   src="/image.png/@@images/image.png"
-  srcSet="/image.png/@@images/image-400.png 400w"
+  srcSet="/image.png/@@images/image-400.png 400w, /image.png/@@images/image.png 400w"
   width={400}
 />
 `;
@@ -27,7 +25,6 @@ exports[`renders an image component from a catalog brain using \`preview_image_l
 exports[`renders an image component from a string src 1`] = `
 <img
   alt="alt text"
-  className=""
   fetchpriority="high"
   src="http://localhost:3000/image/@@images/image/image.png"
 />
@@ -36,11 +33,10 @@ exports[`renders an image component from a string src 1`] = `
 exports[`renders an image component with fetchpriority high 1`] = `
 <img
   alt="alt text"
-  className=""
   fetchpriority="high"
   height={400}
   src="/image/@@images/image.png"
-  srcSet="/image/@@images/image-400.png 400w"
+  srcSet="/image/@@images/image-400.png 400w, /image/@@images/image.png 400w"
   width={400}
 />
 `;
@@ -48,12 +44,11 @@ exports[`renders an image component with fetchpriority high 1`] = `
 exports[`renders an image component with lazy loading 1`] = `
 <img
   alt="alt text"
-  className=""
   decoding="async"
   height={400}
   loading="lazy"
   src="/image/@@images/image.png"
-  srcSet="/image/@@images/image-400.png 400w"
+  srcSet="/image/@@images/image-400.png 400w, /image/@@images/image.png 400w"
   width={400}
 />
 `;
@@ -65,7 +60,15 @@ exports[`renders an image component with responsive class 1`] = `
   fetchpriority="high"
   height={400}
   src="/image/@@images/image-1200.png"
-  srcSet="/image/@@images/image-400.png 400w"
+  srcSet="/image/@@images/image-400.png 400w, /image/@@images/image-1200.png 400w"
   width={400}
+/>
+`;
+
+exports[`should not render empty class attribute in img tag 1`] = `
+<img
+  alt="no class attribute"
+  fetchpriority="high"
+  src="/image.png"
 />
 `;

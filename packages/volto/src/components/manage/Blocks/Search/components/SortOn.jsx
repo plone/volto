@@ -2,7 +2,7 @@ import { Button } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { compose } from 'redux';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import {
   Option,
   DropdownIndicator,
@@ -113,6 +113,7 @@ const SortOn = (props) => {
       {activeSortOn ? (
         <>
           <Button
+            type="button"
             icon
             basic
             compact
@@ -127,6 +128,7 @@ const SortOn = (props) => {
             <Icon name={downSVG} size="25px" />
           </Button>
           <Button
+            type="button"
             icon
             basic
             compact

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { flattenToAppURL, flattenScales } from '@plone/volto/helpers';
+import { flattenToAppURL, flattenScales } from '@plone/volto/helpers/Url/Url';
 
 /**
  * Image component
@@ -27,10 +27,10 @@ export default function Image({
   // TypeScript hints for editor autocomplete :)
   /** @type {React.ImgHTMLAttributes<HTMLImageElement>} */
   const attrs = {};
+  attrs.className = cx(className, { responsive }) || undefined;
 
   if (!item && src) {
     attrs.src = src;
-    attrs.className = cx(className, { responsive });
   } else {
     const isFromRealObject = !item.image_scales;
     const imageFieldWithDefault = imageField || item.image_field || 'image';
@@ -51,10 +51,16 @@ export default function Image({
     attrs.src = `${flattenToAppURL(basePath)}/${image.download}`;
     attrs.width = image.width;
     attrs.height = image.height;
-    attrs.className = cx(className, { responsive });
 
     if (!isSvg && image.scales && Object.keys(image.scales).length > 0) {
-      const sortedScales = Object.values(image.scales).sort((a, b) => {
+      const sortedScales = Object.values({
+        ...image.scales,
+        original: {
+          download: `${image.download}`,
+          width: image.width,
+          height: image.height,
+        },
+      }).sort((a, b) => {
         if (a.width > b.width) return 1;
         else if (a.width < b.width) return -1;
         else return 0;

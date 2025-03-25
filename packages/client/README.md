@@ -3,7 +3,7 @@
 [![NPM](https://img.shields.io/npm/v/@plone/client.svg)](https://www.npmjs.com/package/@plone/client)
 [![Build Status](https://github.com/plone/plone.restapi-client/actions/workflows/code.yml/badge.svg)](https://github.com/plone/plone.restapi-client/actions)
 [![Build Status](https://github.com/plone/plone.restapi-client/actions/workflows/unit.yml/badge.svg)](https://github.com/plone/plone.restapi-client/actions)
-[![Documentation Status](https://readthedocs.org/projects/plone-client/badge/?version=latest)](https://plone-client.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://app.readthedocs.org/projects/plone-client/badge/?version=latest)](https://plone-client.readthedocs.io/en/latest/?badge=latest)
 
 ## Introduction
 
@@ -37,7 +37,7 @@ The main artifact that the client provides is the `ploneClient` entry point.
 
 Once imported, you should call `initialize` to setup its basic parameters, like `apiPath`, headers or authentication options.
 
-After initialization, you can import all the prorvided query options factories.
+After initialization, you can import all the provided query options factories.
 
 ```ts
 import ploneClient from '@plone/client';

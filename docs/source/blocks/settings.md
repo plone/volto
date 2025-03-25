@@ -48,6 +48,10 @@ const customBlocks = {
       // Required for alternate default block types implementations.
       // See also [Settings reference](/configuration/settings-reference)
     },
+    // The `blockSchema` property can either be a schema by itself
+    // (a JavaScript object describing the schema),
+    // or a function that returns a schema.
+    blockSchema: CustomSchema,
     // A block can have an schema enhancer function with the signature: (schema) => schema
     // It can be either be at block level (it's applied always), at a variation level
     // or both. It's up to the developer to make them work nicely (not conflict) between them
@@ -168,6 +172,10 @@ initialValue({id, value, formData, intl}) => newFormData
 A must-have for modern Volto blocks, `blockSchema` is a function, or directly the schema object, that returns the schema for the block data.
 Although it's not required, defining the schema enables the block to have its initial value based on the default values declared in the schema.
 
+### `disableEnter`
+
+Normally when a block is selected and you press {kbd}`enter`, a new block is inserted below.
+When you don't want this behavior and want to handle the {kbd}`enter` input yourself inside the block, set `disableEnter` to `true`.
 
 ## Other block options
 

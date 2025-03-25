@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
-import { getContent, getQueryStringResults } from '@plone/volto/actions';
-import { usePagination, getBaseUrl } from '@plone/volto/helpers';
+import { getContent } from '@plone/volto/actions/content/content';
+import { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
+import { usePagination } from '@plone/volto/helpers/Utils/usePagination';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 
 import config from '@plone/volto/registry';
 

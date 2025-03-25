@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getQuerystring } from '@plone/volto/actions';
+import { getQuerystring } from '@plone/volto/actions/querystring/querystring';
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';

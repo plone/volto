@@ -116,7 +116,10 @@ docs-linkcheck: bin/python docs-news  ## Run linkcheck
 
 .PHONY: docs-linkcheckbroken
 docs-linkcheckbroken: bin/python docs-news  ## Run linkcheck and show only broken links
-	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' grep -wi "broken\|redirect" --color=always | GREP_COLORS='0;31' grep -vi "https://github.com/plone/volto/issues/" --color=always && if test $$? -eq 0; then exit 1; fi || test $$? -ne 0
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' grep -wi "broken\|redirect" --color=always | GREP_COLORS='0;31' grep -vi "https://github.com/plone/volto/issues/" --color=always && if test $$? = 0; then exit 1; fi || test $$? = 1
+	@echo
+	@echo "Link check complete; look for any errors in the above output " \
+		"or in $(BUILDDIR)/linkcheck/ ."
 
 .PHONY: docs-vale
 docs-vale: bin/python docs-news  ## Install (once) and run Vale style, grammar, and spell checks
@@ -145,8 +148,23 @@ packages/registry/dist: $(shell find packages/registry/src -type f)
 packages/components/dist: $(shell find packages/components/src -type f)
 	pnpm build:components
 
+packages/client/dist: $(shell find packages/client/src -type f)
+	pnpm build:client
+
+packages/providers/dist: $(shell find packages/providers/src -type f)
+	pnpm build:providers
+
+packages/helpers/dist: $(shell find packages/helpers/src -type f)
+	pnpm build:helpers
+
+packages/react-router/dist: $(shell find packages/react-router/src -type f)
+	pnpm build:react-router
+
 .PHONY: build-deps
 build-deps: packages/registry/dist ## Build dependencies
+
+.PHONY: build-all-deps
+build-all-deps: packages/registry/dist packages/components/dist packages/client/dist packages/providers/dist packages/react-router/dist packages/helpers/dist ## Build all dependencies
 
 .PHONY: i18n
 i18n: ## Converts your po files into json to translate volto frontend
@@ -242,7 +260,11 @@ deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in 
 deployment-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for deployment tests
 	$(MAKE) -C "./packages/volto/" deployment-ci-acceptance-test-run-all
 
-######### Project Acceptance tests
+######### Cookieplone / (deprecated) Project Acceptance tests
+
+.PHONY: cookieplone-acceptance-frontend-prod-start
+cookieplone-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for project tests
+	$(MAKE) -C "./packages/volto/" cookieplone-acceptance-frontend-prod-start
 
 .PHONY: project-acceptance-frontend-prod-start
 project-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for project tests
@@ -372,11 +394,33 @@ plone5-acceptance-backend-start: ## Start backend acceptance server for Plone 5 
 
 .PHONY: acceptance-server-detached-start
 acceptance-server-detached-start: ## Starts test acceptance server main fixture in detached mode (daemon)
-	docker run -d --name plone-client-acceptance-server -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -d --name plone-client-acceptance-server -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default,plone.app.discussion:default $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: acceptance-server-detached-stop
 acceptance-server-detached-stop: ## Stop test acceptance server main fixture in detached mode (daemon)
 	docker kill plone-client-acceptance-server
+
+######### Seven acceptance tests
+
+.PHONY: seven-acceptance-frontend-dev-start
+seven-acceptance-frontend-dev-start: ## Start acceptance frontend in development mode for Seven
+	$(MAKE) -C "./packages/seven/" acceptance-frontend-dev-start
+
+.PHONY: seven-acceptance-frontend-prod-start
+seven-acceptance-frontend-prod-start:: ## Start acceptance frontend in production mode for Seven
+	$(MAKE) -C "./packages/seven/" acceptance-frontend-prod-start
+
+.PHONY: seven-acceptance-test
+seven-acceptance-test: ## Start Cypress in interactive mode for Seven
+	$(MAKE) -C "./packages/seven/" acceptance-test
+
+.PHONY: seven-ci-acceptance-test
+seven-ci-acceptance-test: ## Run cypress tests in headless mode for CI for Seven
+	$(MAKE) -C "./packages/seven/" ci-acceptance-test
+
+.PHONY: seven-ci-acceptance-test-run-all
+seven-ci-acceptance-test-run-all: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode for Seven
+	$(MAKE) -C "./packages/seven/" ci-acceptance-test-run-all
 
 # include local overrides if present
 -include Makefile.local

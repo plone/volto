@@ -3,15 +3,21 @@
  * @module helpers/Blocks
  */
 
-import { omit, without, endsWith, find, isObject, keys, merge } from 'lodash';
+import omit from 'lodash/omit';
+import without from 'lodash/without';
+import endsWith from 'lodash/endsWith';
+import find from 'lodash/find';
+import isObject from 'lodash/isObject';
+import keys from 'lodash/keys';
+import merge from 'lodash/merge';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
+import { applySchemaEnhancer } from '@plone/volto/helpers/Extensions';
 import {
-  applySchemaEnhancer,
   insertInArray,
   removeFromArray,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Utils/Utils';
 
 /**
  * Get blocks field.
@@ -114,9 +120,10 @@ export function moveBlock(formData, source, destination) {
  * @function deleteBlock
  * @param {Object} formData Form data
  * @param {string} blockId Block uid
+ * @param {Object} intl intl object.
  * @return {Object} New form data
  */
-export function deleteBlock(formData, blockId) {
+export function deleteBlock(formData, blockId, intl) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
 
@@ -129,7 +136,13 @@ export function deleteBlock(formData, blockId) {
   };
 
   if (newFormData[blocksLayoutFieldname].items.length === 0) {
-    newFormData = addBlock(newFormData, config.settings.defaultBlockType, 0);
+    newFormData = addBlock(
+      newFormData,
+      config.settings.defaultBlockType,
+      0,
+      {},
+      intl,
+    );
   }
 
   return newFormData;
@@ -141,9 +154,11 @@ export function deleteBlock(formData, blockId) {
  * @param {Object} formData Form data
  * @param {string} type Block type
  * @param {number} index Destination index
+ * @param {Object} blocksConfig Blocks configuration.
+ * @param {Object} intl intl object.
  * @return {Array} New block id, New form data
  */
-export function addBlock(formData, type, index, blocksConfig) {
+export function addBlock(formData, type, index, blocksConfig, intl) {
   const { settings } = config;
   const id = uuid();
   const idTrailingBlock = uuid();
@@ -186,6 +201,7 @@ export function addBlock(formData, type, index, blocksConfig) {
         },
         selected: id,
       },
+      intl,
     }),
   ];
 }
@@ -202,6 +218,7 @@ export const applyBlockInitialValue = ({
   value,
   blocksConfig,
   formData,
+  intl,
 }) => {
   const type = value['@type'];
   blocksConfig = blocksConfig || config.blocks.blocksConfig;
@@ -211,6 +228,7 @@ export const applyBlockInitialValue = ({
       id,
       value,
       formData,
+      intl,
     });
     const blocksFieldname = getBlocksFieldname(formData);
     formData[blocksFieldname][id] = value;
@@ -225,9 +243,11 @@ export const applyBlockInitialValue = ({
  * @param {Object} formData Form data
  * @param {string} id Block uid to mutate
  * @param {number} value Block's new value
+ * @param {Object} blocksConfig Blocks configuration.
+ * @param {Object} intl intl object.
  * @return {Object} New form data
  */
-export function mutateBlock(formData, id, value, blocksConfig) {
+export function mutateBlock(formData, id, value, blocksConfig, intl) {
   const { settings } = config;
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
@@ -254,6 +274,7 @@ export function mutateBlock(formData, id, value, blocksConfig) {
           [id]: value || null,
         },
       },
+      intl,
     });
     if (!blockHasValue(block)) {
       return newFormData;
@@ -282,6 +303,7 @@ export function mutateBlock(formData, id, value, blocksConfig) {
         ],
       },
     },
+    intl,
   });
   return newFormData;
 }
@@ -292,6 +314,10 @@ export function mutateBlock(formData, id, value, blocksConfig) {
  * @param {Object} formData Form data
  * @param {string} id Insert new block before the block with this id
  * @param {number} value New block's value
+ * @param {Object} current Current block
+ * @param {number} offset offset position
+ * @param {Object} blocksConfig Blocks configuration.
+ * @param {Object} intl intl object.
  * @return {Array} New block id, New form data
  */
 export function insertBlock(
@@ -301,6 +327,7 @@ export function insertBlock(
   current = {},
   offset = 0,
   blocksConfig,
+  intl,
 ) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
@@ -334,6 +361,7 @@ export function insertBlock(
         ],
       },
     },
+    intl,
   });
 
   return [newBlockId, newFormData];
@@ -633,7 +661,11 @@ export const styleDataToStyleObject = (key, value, prefix = '') => {
  * @param {string} prefix The prefix (could be dragged from a recursive call, initially empty)
  * @return {Object} The style object ready to be passed as prop
  */
-export const buildStyleObjectFromData = (data = {}, prefix = '') => {
+export const buildStyleObjectFromData = (
+  data = {},
+  prefix = '',
+  container = {},
+) => {
   // style wrapper object has the form:
   // const styles = {
   //   color: 'red',
@@ -692,7 +724,7 @@ export const buildStyleObjectFromData = (data = {}, prefix = '') => {
     enhancers.forEach(({ method }) => {
       stylesFromObjectStyleEnhancers = {
         ...stylesFromObjectStyleEnhancers,
-        ...method(data),
+        ...method({ data, container }),
       };
     });
 

@@ -1,4 +1,7 @@
-import { map, keys, intersection, isEmpty } from 'lodash';
+import map from 'lodash/map';
+import keys from 'lodash/keys';
+import intersection from 'lodash/intersection';
+import isEmpty from 'lodash/isEmpty';
 import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import config from '@plone/volto/registry';
 import { toast } from 'react-toastify';
@@ -130,6 +133,7 @@ const validateFieldsPerFieldset = (
 
   Object.entries(schema.properties).forEach(([fieldId, field]) => {
     let fieldData = formData[fieldId];
+    field = { ...field, ...field.widgetOptions?.frontendOptions?.widgetProps };
 
     // Validation per specific validator set (format property)
     const hasSpecificValidator =
