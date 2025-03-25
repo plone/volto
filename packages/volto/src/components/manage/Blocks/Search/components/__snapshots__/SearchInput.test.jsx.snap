@@ -22,6 +22,7 @@ exports[`SearchInput renders a search input component 1`] = `
     <button
       className="ui basic icon button search-input-clear-icon-button"
       onClick={[Function]}
+      type="button"
     >
       <svg
         className="icon"

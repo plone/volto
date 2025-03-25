@@ -10,11 +10,13 @@ Array [
       aria-label="Shrink sidebar"
       className="ui button trigger"
       onClick={[Function]}
+      type="button"
     />
     <button
       aria-label="full-screen-sidenav"
       className="ui button full-size-sidenav-btn"
       onClick={[Function]}
+      type="button"
     >
       <svg
         className="icon full-size-icon"

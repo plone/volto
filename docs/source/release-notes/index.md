@@ -17,6 +17,78 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.10.1 (2025-03-14)
+
+### Bugfix
+
+- Fix validation allowing relative URLs when `allowExternals` prop is set. @sneridagh [#6840](https://github.com/plone/volto/issues/6840)
+
+## 18.10.0 (2025-03-13)
+
+### Feature
+
+- Add validator for `default_language` in language control panel. @sneridagh [#6811](https://github.com/plone/volto/issues/6811)
+- Allow setting the default language via a runtime environment variable. @sneridagh [#6830](https://github.com/plone/volto/issues/6830)
+
+### Bugfix
+
+- For form validation, use the backend validator props passed to fields. @iRohitSingh. [#6816](https://github.com/plone/volto/issues/6816)
+- The style wrapper `buildStyleObjectFromData` now accounts for container blocks. @sneridagh [#6832](https://github.com/plone/volto/issues/6832)
+
+### Documentation
+
+- Use Cookieplone for installation everywhere. @stevepiercy [#6820](https://github.com/plone/volto/issues/6820)
+
+## 18.9.2 (2025-03-07)
+
+### Bugfix
+
+- Does not show empty `class` attribute when rendering `img` tag with `Image` component. @wesleybl [#6788](https://github.com/plone/volto/issues/6788)
+- Fixed button types across several components to allow reuse in more complex forms @pnicolli [#6791](https://github.com/plone/volto/issues/6791)
+- Fixed `AlternateHrefLangs` component, missing `FlattenToAppURL`. @sneridagh [#6799](https://github.com/plone/volto/issues/6799)
+- a11y - Added id attribute to checkbox widget for proper identification and fixes label functionality for screen readers. @Wagner3UB [#6802](https://github.com/plone/volto/issues/6802)
+
+### Documentation
+
+- Improve the wording on theming docs. @erral [#6767](https://github.com/plone/volto/issues/6767)
+- Fix MyST warnings about bad references, remove cookiecutter-plone-starter link, and remove `rietveldschroderhuis.nl` due to repeated failures and no response in https://github.com/collective/awesome-volto/pull/27. @stevepiercy [#6812](https://github.com/plone/volto/issues/6812)
+
+## 18.9.1 (2025-02-20)
+
+### Bugfix
+
+- Fix load more comments link. @sneridagh [#6759](https://github.com/plone/volto/issues/6759)
+
+### Internal
+
+- Move Seven to its own branch. @sneridagh [#6769](https://github.com/plone/volto/issues/6769)
+
+### Documentation
+
+- Fix reference to `link.svg` and include of `_inc/_install-browser-reqs-volto.md`. @stevepiercy [#6760](https://github.com/plone/volto/issues/6760)
+
+## 18.9.0 (2025-02-17)
+
+### Feature
+
+- Add self link in alternate language links @erral [#6602](https://github.com/plone/volto/issues/6602)
+
+### Bugfix
+
+- Serve `sitemap.xml.gz` as an alias for `sitemap-index.xml`. @reebalazs [#6561](https://github.com/plone/volto/issues/6561)
+- Move the block chooser beneath the block, instead of covering the block and preventing making a choice, when `config.experimental.addBlockButton` is enabled. @giuliaghisini [#6751](https://github.com/plone/volto/issues/6751)
+
+### Internal
+
+- Use Plone 6.1.0 final release. @sneridagh [#6731](https://github.com/plone/volto/issues/6731)
+- Add Film Basque Country website to README. @erral [#6741](https://github.com/plone/volto/issues/6741)
+- Sync content from Awesome Volto into README. @stevepiercy [#6745](https://github.com/plone/volto/issues/6745)
+- Fixes intermittent error in cypress "Index Text Block" test. @wesleybl [#6755](https://github.com/plone/volto/issues/6755)
+
+### Documentation
+
+- Document Slate heading as anchor links in Volto blocks user manual. @nileshgulia1 [#5755](https://github.com/plone/volto/issues/5755)
+
 ## 18.8.2 (2025-02-08)
 
 ### Bugfix

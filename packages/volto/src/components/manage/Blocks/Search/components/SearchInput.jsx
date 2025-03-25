@@ -46,6 +46,7 @@ const SearchInput = (props) => {
       <div className="search-input-actions">
         {searchText && (
           <Button
+            type="button"
             basic
             icon
             className="search-input-clear-icon-button"

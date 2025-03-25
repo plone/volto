@@ -59,6 +59,20 @@ Almost all blocks have some configuration options.
 To rearrange blocks, to the right of the block you want to move, click on its drag handle, move the block where you want it in the page, and release the drag handle.
 
 
+(copy-anchor-links-label)=
+
+### Copy headings as anchor links
+
+When you move your mouse over a heading, a link icon <img alt="Link icon" src="../_static/link.svg" class="inline"> appears on the right side.
+Click this icon to copy a direct link to that specific heading on the page onto your clipboard.
+
+Now you can paste the copied link to share a specific section of a page with others.
+
+```{note}
+This feature is enabled by default, and only authenticated users can use this feature.
+```
+
+
 (delete-a-block-label)=
 
 ### Delete a block

@@ -21,7 +21,7 @@
     "@tanstack/react-router": "^1.34.9",
     "@tanstack/start": "^1.34.9",
     "@tanstack/router-vite-plugin": "^1.34.8",
-    "axios": "^1.6.5",
+    "axios": "^1.8.2",
     "get-port": "^7.0.0",
     "react": "^18.2.0",
     "react-aria-components": "^1.5.0",

@@ -26,4 +26,5 @@ export declare const endEventDateRangeValidator: ({ value, field, formData, form
 export declare const patternValidator: ({ value, field, formatMessage, }: Validator) => any;
 export declare const maxItemsValidator: ({ value, field, formatMessage, }: Validator) => any;
 export declare const minItemsValidator: ({ value, field, formatMessage, }: Validator) => any;
+export declare const defaultLanguageControlPanelValidator: ({ value, formData, formatMessage, }: Validator) => any;
 export {};

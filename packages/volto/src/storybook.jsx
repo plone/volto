@@ -1490,6 +1490,7 @@ export const FormUndoWrapper = ({
             onClick={() => doUndo()}
             aria-label="Undo"
             disabled={!canUndo}
+            type="button"
           >
             Undo
           </Button>
@@ -1500,6 +1501,7 @@ export const FormUndoWrapper = ({
             onClick={() => doRedo()}
             aria-label="Redo"
             disabled={!canRedo}
+            type="button"
           >
             Redo
           </Button>

@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 5.0.0-alpha.1 (2025-03-13)
+
+### Bugfix
+
+- Leaking React19 in volto-testing package. @sneridagh [#6813](https://github.com/plone/volto/issues/6813)
+
 ## 5.0.0-alpha.0 (2024-03-06)
 
 ### Internal

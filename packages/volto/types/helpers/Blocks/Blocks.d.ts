@@ -187,7 +187,7 @@ export function styleToClassName(key: any, value: any, prefix?: string): any;
 export function buildStyleClassNamesFromData(obj?: {}, prefix?: string): any;
 export function buildStyleClassNamesExtenders({ block, content, data, classNames, }: any): any[];
 export function styleDataToStyleObject(key: any, value: any, prefix?: string): any[];
-export function buildStyleObjectFromData(data?: any, prefix?: string): any;
+export function buildStyleObjectFromData(data?: any, prefix?: string, container?: {}): any;
 export function getPreviousNextBlock({ content, block }: any): any[];
 export function getBlocksHierarchy(properties: any): any;
 export function findContainer(formData: object, { containerId }: {

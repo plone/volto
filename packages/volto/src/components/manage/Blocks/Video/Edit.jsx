@@ -96,6 +96,7 @@ const Edit = (props) => {
               {url && (
                 <Button.Group>
                   <Button
+                    type="button"
                     basic
                     className="cancel"
                     onClick={(e) => {
@@ -109,6 +110,7 @@ const Edit = (props) => {
               )}
               <Button.Group>
                 <Button
+                  type="button"
                   basic
                   primary
                   onClick={(e) => {

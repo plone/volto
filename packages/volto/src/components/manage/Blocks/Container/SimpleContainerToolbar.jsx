@@ -25,6 +25,7 @@ const SimpleContainerToolbar = (props) => {
       <Button.Group>
         <Button
           aria-label={intl.formatMessage(messages.addBlock)}
+          type="button"
           icon
           basic
           disabled={data?.blocks_layout?.items?.length >= maxLength}
@@ -36,6 +37,7 @@ const SimpleContainerToolbar = (props) => {
       <Button.Group>
         <Button
           aria-label={intl.formatMessage(messages.blockSettings)}
+          type="button"
           icon
           basic
           onClick={(e) => {

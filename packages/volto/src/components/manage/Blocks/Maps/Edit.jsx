@@ -135,6 +135,7 @@ const Edit = React.memo((props) => {
               {url && (
                 <Button.Group>
                   <Button
+                    type="button"
                     basic
                     className="cancel"
                     onClick={(e) => {
@@ -148,6 +149,7 @@ const Edit = React.memo((props) => {
               )}
               <Button.Group>
                 <Button
+                  type="button"
                   basic
                   primary
                   onClick={(e) => {

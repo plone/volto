@@ -1,5 +1,6 @@
 import config from '@plone/volto/registry';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { flattenToAppURL, toPublicURL } from '@plone/volto/helpers/Url/Url';
 
 const AlternateHrefLangs = (props) => {
   const { content } = props;
@@ -16,7 +17,7 @@ const AlternateHrefLangs = (props) => {
               key={key}
               rel="alternate"
               hrefLang={item.language}
-              href={item['@id']}
+              href={toPublicURL(flattenToAppURL(item['@id']))}
             />
           );
         })}

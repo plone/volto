@@ -183,7 +183,7 @@ hasWorkingCopySupport
     ```
 
     For Plone sites using a Volto version prior to 18.8.0, this setting enables working copy support.
-    
+
     ```{seealso}
     See {doc}`workingcopy` for configuration.
     ```
@@ -489,6 +489,10 @@ showRelatedItems
 
 showTags
     If true, the `Tags` component will show tags from the `subjects` field. Default: true.
+
+
+defaultLanguage
+    Defines the default language of the site.
 ```
 
 ## Views settings

@@ -26,7 +26,7 @@ const messages = defineMessages({
 });
 
 const RenderBlocks = (props) => {
-  const { content, location, metadata, blockWrapperTag } = props;
+  const { blockWrapperTag, content, location, isContainer, metadata } = props;
   const intl = useIntl();
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
@@ -72,6 +72,7 @@ const RenderBlocks = (props) => {
                 id={block}
                 block={block}
                 data={blockData}
+                isContainer={isContainer}
               >
                 <Block
                   id={block}

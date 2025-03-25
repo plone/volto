@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Container, Message, Icon } from 'semantic-ui-react';
+import { Container, Message } from 'semantic-ui-react';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { defineMessages, useIntl } from 'react-intl';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -14,6 +15,8 @@ import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
 import { useClient } from '@plone/volto/hooks/client/useClient';
+
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   send: {
@@ -161,9 +164,9 @@ const ContactFormComponent = () => {
               inner={
                 <Link to={`${getBaseUrl(pathname)}`} className="item">
                   <Icon
-                    name="arrow left"
-                    size="big"
-                    color="blue"
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
                     title={intl.formatMessage(messages.back)}
                   />
                 </Link>

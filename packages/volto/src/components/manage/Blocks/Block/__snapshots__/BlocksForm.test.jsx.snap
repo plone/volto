@@ -57,6 +57,7 @@ exports[`Allow override of blocksConfig 1`] = `
               <button
                 aria-label="delete"
                 class="ui basic icon button delete-button"
+                type="button"
               >
                 <svg
                   class="icon"

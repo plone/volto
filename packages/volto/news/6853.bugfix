@@ -1,0 +1,1 @@
+Check if the destination (build public directory) exists before trying to create it in AfterBuildPlugin when consolidating `public` folders from add-ons. @sneridagh

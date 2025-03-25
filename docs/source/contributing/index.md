@@ -67,7 +67,7 @@ For developing Volto, follow {doc}`developing-core`.
 ## Translations
 
 All text that can be shown in a browser must be translatable.
-Please mark all such strings as translatable as defined in the [i18n guide](../development/i18n.md).
+Please mark all such strings as translatable as defined in {doc}`../development/i18n`.
 
 
 (contributing-branch-policy-for-translations-label)=
@@ -96,7 +96,7 @@ For details see {ref}`contributing-change-log-label`.
 
 ## Document breaking changes
 
-If the feature includes a breaking change, you must include instructions for how to upgrade in the [upgrade guide](../upgrade-guide/index.md).
+If the feature includes a breaking change, you must include instructions for how to upgrade in the {doc}`../upgrade-guide/index`.
 
 
 (contributing-code-quality-label)=

@@ -47,11 +47,24 @@ export const sitemapIndex = function (req, res, next) {
   });
 };
 
+export const sitemapIndexCompatibility = function (req, res, next) {
+  generateSitemapIndex(req, true).then((sitemapIndex) => {
+    res.set('Content-Type', 'application/x-gzip');
+    res.set('Content-Disposition', 'attachment; filename="sitemap.xml.gz"');
+    res.send(sitemapIndex);
+  });
+};
+
 export default function sitemapMiddleware() {
   const middleware = express.Router();
 
-  middleware.all('**/sitemap.xml.gz', sitemap);
+  // For backwards compatibility, and allow a graceful transition for
+  // sites that are already set up on the Google Search Console, we continue delivering
+  // the new batched sitemap under the old sitemap.xml.gz name.
+  middleware.all('**/sitemap.xml.gz', sitemapIndexCompatibility);
   middleware.all('**/sitemap:batch.xml.gz', sitemap);
+  // For new setups, `sitemap-index.xml` should be added to the
+  // Google Search Console.
   middleware.all('**/sitemap-index.xml', sitemapIndex);
   middleware.id = 'sitemap.xml.gz';
   return middleware;

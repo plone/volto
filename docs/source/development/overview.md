@@ -37,7 +37,7 @@ As is the case with similar modern JavaScript-based applications, you should be 
 
 ## Basic Volto development
 
-Once you've {doc}`bootstrapped your Volto project <plone:install/create-project>`, you can immediately start hacking.
+Once you've {doc}`bootstrapped your Volto project <plone:install/create-project-cookieplone>`, you can immediately start hacking.
 The following is a list of some the things you can do at this stage.
 
 -   {ref}`Configure your text editor for JavaScript and Volto development <linting-editor-integration-label>`

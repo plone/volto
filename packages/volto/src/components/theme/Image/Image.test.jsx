@@ -155,3 +155,11 @@ test('renders an image component from a string src', () => {
   const json = component.toJSON();
   expect(json).toMatchSnapshot();
 });
+
+test('should not render empty class attribute in img tag', () => {
+  const component = renderer.create(
+    <Image src="/image.png" alt="no class attribute" />,
+  );
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
+});

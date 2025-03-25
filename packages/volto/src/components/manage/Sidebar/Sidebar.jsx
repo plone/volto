@@ -119,6 +119,7 @@ const Sidebar = (props) => {
         style={size > 0 ? { width: size } : null}
       >
         <Button
+          type="button"
           aria-label={
             expanded
               ? intl.formatMessage(messages.shrinkSidebar)
@@ -132,6 +133,7 @@ const Sidebar = (props) => {
           onClick={onToggleExpanded}
         />
         <Button
+          type="button"
           className="full-size-sidenav-btn"
           onClick={onToggleFullSize}
           aria-label="full-screen-sidenav"

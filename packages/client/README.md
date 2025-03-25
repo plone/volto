@@ -3,7 +3,7 @@
 [![NPM](https://img.shields.io/npm/v/@plone/client.svg)](https://www.npmjs.com/package/@plone/client)
 [![Build Status](https://github.com/plone/plone.restapi-client/actions/workflows/code.yml/badge.svg)](https://github.com/plone/plone.restapi-client/actions)
 [![Build Status](https://github.com/plone/plone.restapi-client/actions/workflows/unit.yml/badge.svg)](https://github.com/plone/plone.restapi-client/actions)
-[![Documentation Status](https://readthedocs.org/projects/plone-client/badge/?version=latest)](https://plone-client.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://app.readthedocs.org/projects/plone-client/badge/?version=latest)](https://plone-client.readthedocs.io/en/latest/?badge=latest)
 
 ## Introduction
 
