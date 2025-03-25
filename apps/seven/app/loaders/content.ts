@@ -13,24 +13,21 @@ const expand = ['navroot', 'breadcrumbs', 'navigation'];
  */
 function flattenToAppURL(data: Content, request: Request) {
   const currentUrl = new URL(request.url);
-  let baseUrl = `${currentUrl.protocol}//${currentUrl.host}`;
-  if (request.headers.get('x-forwarded-host')) {
-    baseUrl = `${request.headers.get('x-forwarded-proto')}://${request.headers.get(
-      'x-forwarded-host',
-    )}`;
-  }
-  console.log('currentUrl', currentUrl);
-  console.log('baseUrl', baseUrl);
-  console.log('request', request);
+  // let baseUrl = `${currentUrl.protocol}//${currentUrl.host}`;
+  // if (request.headers.get('x-forwarded-host')) {
+  //   baseUrl = `${request.headers.get('x-forwarded-proto')}://${request.headers.get(
+  //     'x-forwarded-host',
+  //   )}`;
+  // }
+  // console.log('currentUrl', currentUrl);
+  // console.log('baseUrl', baseUrl);
+  // console.log('request', request);
 
   // Convert data to string to perform replacements
   let stringData = JSON.stringify(data);
 
   // Replace all occurrences of backend URLs
-  stringData = stringData.replace(
-    new RegExp(config.settings.apiPath, 'g'),
-    baseUrl,
-  );
+  stringData = stringData.replace(new RegExp(config.settings.apiPath, 'g'), '');
 
   // Parse back to object
   return JSON.parse(stringData);

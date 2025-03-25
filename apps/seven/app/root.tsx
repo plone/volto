@@ -26,11 +26,11 @@ import stylesheet from '../addons.styles.css?url';
 
 function useNavigate() {
   const navigate = useRRNavigate();
-  return (to: string) => navigate(to || '');
+  return (to: string) => navigate(to || '/');
 }
 
 function useHrefLocal(to: string) {
-  return useHref(to || '');
+  return useHref(to);
 }
 
 export const meta: Route.MetaFunction = ({ data }) => [
