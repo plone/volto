@@ -16,6 +16,7 @@ function flattenToAppURL(data: Content, request: Request) {
   const baseUrl = `${currentUrl.protocol}//${currentUrl.host}`;
   console.log('currentUrl', currentUrl);
   console.log('baseUrl', baseUrl);
+  console.log('request', request);
 
   // Convert data to string to perform replacements
   let stringData = JSON.stringify(data);
@@ -54,11 +55,6 @@ export default async function loader({ params, request }: Route.LoaderArgs) {
     )
   ) {
     try {
-      console.log(
-        'flatten',
-        flattenToAppURL(await getContent({ path, expand }), request),
-      );
-      console.log(await getContent({ path, expand }));
       return flattenToAppURL(await getContent({ path, expand }), request);
     } catch (error) {
       console.log(error);
