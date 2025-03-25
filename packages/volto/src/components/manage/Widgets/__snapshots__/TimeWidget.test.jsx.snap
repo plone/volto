@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a time widget component 1`] = `
+<div>
+  <div
+    class="inline field field-wrapper-my-field"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-my-field"
+              id="fieldset-default-field-label-my-field"
+            >
+              My field
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="date-time-widget-wrapper"
+          >
+            <div
+              class="ui input time-input"
+            >
+              <span
+                class="rc-time-picker"
+              >
+                <input
+                  class="rc-time-picker-input"
+                  id="my-field"
+                  placeholder="Time"
+                  type="text"
+                  value="12:00 PM"
+                />
+                <span
+                  class="rc-time-picker-icon"
+                />
+              </span>
+            </div>
+            <button
+              class="item ui noborder button"
+              type="button"
+            >
+              <svg
+                class="icon close"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

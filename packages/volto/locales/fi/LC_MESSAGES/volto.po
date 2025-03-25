@@ -580,6 +580,11 @@ msgstr "Sisältötyypin <strong>{type}</strong> asettelua ei voi muokata, koska 
 msgid "Cancel"
 msgstr "Peruuta"
 
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr "Peruuta haku"
+
 #. Default: "Cell"
 #: config/Blocks
 msgid "Cell"
@@ -1003,6 +1008,11 @@ msgstr "Päivä (uusin ensin)"
 #: components/theme/Register/Register
 msgid "Default"
 msgstr "Oletus"
+
+#. Default: "Default value"
+#: components/manage/Widgets/SchemaWidget
+msgid "Default value"
+msgstr ""
 
 #. Default: "Default view"
 #: config/Views
@@ -1529,6 +1539,11 @@ msgstr "Kenttä"
 msgid "File"
 msgstr "Tiedosto"
 
+#. Default: "File is not of the accepted type {accept}"
+#: components/manage/Widgets/FileWidget
+msgid "File is not of the accepted type {accept}"
+msgstr ""
+
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
@@ -1548,6 +1563,11 @@ msgstr "Tiedostonimi"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Lähetetyt tiedostot: {uploadedFiles} "
+
+#. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+#: components/manage/Widgets/SchemaWidget
+msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+msgstr ""
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
@@ -2690,6 +2710,11 @@ msgstr "Omat työkalut"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Tämän sisällön tuottamiseen osallistuneet käyttäjät. Syötä Yksi käyttäjätunus per rivi. Syötä ensisijainen tekijä ensimmäisenä."
 
+#. Default: "Placeholder"
+#: components/manage/Widgets/SchemaWidget
+msgid "Placeholder"
+msgstr ""
+
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
@@ -2806,6 +2831,11 @@ msgstr "Voimaantulo"
 #: components/manage/Blocks/Listing/schema
 msgid "Query"
 msgstr "Kysely"
+
+#. Default: "Query Parameter Name"
+#: components/manage/Widgets/SchemaWidget
+msgid "Query Parameter Name"
+msgstr ""
 
 #. Default: "Re-enter the password. Make sure the passwords are identical."
 #: components/manage/Preferences/ChangePassword
@@ -3738,6 +3768,11 @@ msgstr ""
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr "Napin näyttäminen poistaa live-haun käytöstä. Haku käynnistetään kun painat ENTER"
 
+#. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+#: components/manage/Widgets/FileWidget
+msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+msgstr ""
+
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
 msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
@@ -3898,6 +3933,7 @@ msgstr "Tämä sääntö on kohdistettu seuraaviin sijainteihin:"
 
 #. Default: "Time"
 #: components/manage/Widgets/DatetimeWidget
+#: components/manage/Widgets/TimeWidget
 msgid "Time"
 msgstr "Aika"
 
@@ -4493,6 +4529,11 @@ msgstr "Sivustosi on ajan tasalla."
 msgid "Your usernaame is required for reset your password."
 msgstr "Käyttäjätunnuksesi tarvitaan salasanan palautusta varten."
 
+#. Default: "File types allowed"
+#: components/manage/Widgets/SchemaWidget
+msgid "accept"
+msgstr ""
+
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -5067,6 +5108,11 @@ msgstr "Valitse"
 #: components/manage/Blocks/Search/components/ViewSwitcher
 msgid "selectView"
 msgstr "Valitse näkymä"
+
+#. Default: "Maximum size of the file in bytes"
+#: components/manage/Widgets/SchemaWidget
+msgid "size"
+msgstr ""
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks
