@@ -437,6 +437,11 @@ msgstr "Atribuições"
 msgid "Automatically"
 msgstr "Automaticamente"
 
+#. Default: "Autosaved content found"
+#: helpers/Utils/withSaveAsDraft
+msgid "Autosaved content found"
+msgstr ""
+
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
@@ -1159,6 +1164,11 @@ msgstr "Você realmente quer excluir o usuário {username}?"
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
 msgstr "Você realmente quer excluir este item?"
+
+#. Default: "Do you want to restore the autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Do you want to restore the autosaved content?"
+msgstr ""
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
@@ -3784,6 +3794,11 @@ msgstr "A configuração do site está desatualizada e precisa ser atualizada."
 #: helpers/MessageLabels/MessageLabels
 msgid "The value does not match the pattern {pattern}"
 msgstr "O valor não corresponde ao padrão {pattern}"
+
+#. Default: "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
+#: helpers/Utils/withSaveAsDraft
+msgid "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
+msgstr ""
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More

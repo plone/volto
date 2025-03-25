@@ -431,6 +431,11 @@ msgstr "असाइनमेंट"
 msgid "Automatically"
 msgstr ""
 
+#. Default: "Autosaved content found"
+#: helpers/Utils/withSaveAsDraft
+msgid "Autosaved content found"
+msgstr ""
+
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
@@ -1153,6 +1158,11 @@ msgstr "क्या आप सच में उपयोगकर्ता {use
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
 msgstr "क्या आप वाकई इस आइटम को हटाना चाहते हैं?"
+
+#. Default: "Do you want to restore the autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Do you want to restore the autosaved content?"
+msgstr ""
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
@@ -3777,6 +3787,11 @@ msgstr "साइट कॉन्फ़िगरेशन पुरानी ह
 #. Default: "The value does not match the pattern {pattern}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The value does not match the pattern {pattern}"
+msgstr ""
+
+#. Default: "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
+#: helpers/Utils/withSaveAsDraft
+msgid "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
 msgstr ""
 
 #. Default: "The working copy was discarded"
