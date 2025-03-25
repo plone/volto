@@ -13,7 +13,12 @@ const expand = ['navroot', 'breadcrumbs', 'navigation'];
  */
 function flattenToAppURL(data: Content, request: Request) {
   const currentUrl = new URL(request.url);
-  const baseUrl = `${currentUrl.protocol}//${currentUrl.host}`;
+  let baseUrl = `${currentUrl.protocol}//${currentUrl.host}`;
+  if (request.headers.get('x-forwarded-host')) {
+    baseUrl = `${request.headers.get('x-forwarded-proto')}://${request.headers.get(
+      'x-forwarded-host',
+    )}`;
+  }
   console.log('currentUrl', currentUrl);
   console.log('baseUrl', baseUrl);
   console.log('request', request);
