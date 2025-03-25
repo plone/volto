@@ -1,1 +1,1 @@
-Removed SemanticUI CSS declaration `overflow-x: hidden` in BODY tag. @sneridagh
+Removed Semantic UI CSS declaration `overflow-x: hidden` from the `body` tag. @sneridagh
