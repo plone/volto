@@ -1,0 +1,1315 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block." name="description" />
+<meta content="The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block." property="og:description" />
+<meta content="Blocks - Edit components" property="og:title" />
+<meta content="Volto, Plone, frontend, React, Blocks, Edit, components" name="keywords" />
+<meta property="og:title" content="Blocks - Edit components" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://6.docs.plone.org/blocks/editcomponent.html" />
+<meta property="og:site_name" content="Plone Documentation" />
+<meta property="og:description" content="The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block. This UX can be very complex depending on the kind ..." />
+<meta property="og:image" content="https://6.docs.plone.org/_static/Plone_logo_square.png" />
+<meta property="og:image:alt" content="Plone Documentation" />
+<meta property="og:locale" content="en_US" />
+
+    <title>Blocks - Edit components &#8212; Volto Documentation v0.0.1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/plone-sphinx-theme.css?v=88f4e24d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-examples.css?v=e236af4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=734b19f4" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=3611b776"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/plone-sphinx-theme.js?v=ce3a8c55"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blocks/editcomponent';</script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Volto Documentation v0.0.1"
+          href="../_static/opensearch.xml"/>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Block style wrapper" href="block-style-wrapper.html" />
+    <link rel="prev" title="Blocks settings" href="settings.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/logo.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">Volto Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+            
+          
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/plone/volto" title="GitHub" class="nav-link custom-fancy-css" rel="noopener me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+            
+          
+            
+          
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://plone.social/@plone" title="Mastodon" class="nav-link custom-fancy-css" rel="noopener me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Mastodon</span></a>
+        </li>
+        <li class="nav-item">
+            
+          
+            
+          
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/@PloneCMS" title="YouTube" class="nav-link custom-fancy-css" rel="noopener me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-youtube fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+        <li class="nav-item">
+            
+          
+            
+          
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://x.com/plone" title="X (formerly Twitter)" class="nav-link custom-fancy-css" rel="noopener me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X (formerly Twitter)</span></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../development/index.html">Development</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/creating-project.html">Create a Volto project without a backend</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../development/add-ons/index.html">Develop Volto add-ons</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/install-an-add-on.html">Install an add-on in Volto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/install-an-add-on-dev-18.html">Install an add-on in development mode in Volto 18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/install-an-add-on-dev-17.html">Install an add-on in development mode in Volto 17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/load-add-on-configuration.html">Load configuration from add-ons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/create-an-add-on-18.html">Create an add-on for Volto 18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/create-an-add-on-17.html">Create an add-on for Volto 17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/test-add-ons-18.html">Test add-ons in Volto 18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/test-add-ons-17.html">Test add-ons in Volto 17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/extend-webpack-add-on.html">Extend webpack setup from an add-on</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/extend-eslint-add-on.html">Extend ESLint configuration from an add-on</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/troubleshoot-transpilation.html">Troubleshoot untranspiled add-on dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/i18n.html">Add-on internationalization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/best-practices.html">Best practices for add-ons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/theme.html">Create a Volto theme add-on</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/public-folder.html">Add static files from your add-on to your build</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/folder-structure.html">Folder structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/environment-variables.html">How to use environment variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/customizing-components.html">Customizing Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/customizing-views.html">Customizing Volto Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/creating-views.html">Creating Volto Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/images.html">Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/i18n.html">Internationalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/express.html">Custom Express middleware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/lazyload.html">Lazy loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/appextras.html">AppExtras component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/contextnavigation.html">Context navigation component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/pluggables.html">Pluggables framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/widget.html">Forms and widgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/how-to-restrict-blocks.html">How to restrict blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/color-picker-widget.html">Color picker widget</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../configuration/index.html">Configuration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/how-to.html">The configuration registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/settings-reference.html">Settings reference guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/experimental.html">Experimental features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/zero-config-builds.html">Zero configuration builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/component-registry.html">Component registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/internalproxy.html">Internal proxy to content backend API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/backend.html">Backend configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/volto-config-js.html">Programmatically define the active add-ons and theme</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../configuration/volto-slate/index.html"><code class="docutils literal notranslate"><span class="pre">volto-slate</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/volto-slate/api.html"><code class="docutils literal notranslate"><span class="pre">volto-slate</span></code> API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/volto-slate/configuration-settings.html">Editor Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/volto-slate/writing-plugins.html">How to write a Slate editor plugin</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/multilingual.html">Multilingual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/workingcopy.html">Working copy support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/environmentvariables.html">Environment variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/expanders.html">API expanders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/locking.html">Locking support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/slots.html">Slots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/validation.html">Client side form field validation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../theming/index.html">Theming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../theming/about-semantic.html">About Semantic UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/semanticui-theming.html">Semantic UI Theming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/theming-engine.html">How does the theming engine work?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/theming-strategy.html">Theming Strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/custom-styling.html">Custom Styling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/using-third-party-themes.html">Using third party libraries and themes other than <code class="docutils literal notranslate"><span class="pre">semantic-ui</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/theming-a-base-theme.html">Customize a base theme</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Blocks</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Blocks Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anatomy.html">Blocks anatomy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Blocks settings</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Blocks - Edit components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="block-style-wrapper.html">Block style wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensions.html">Block extensions mechanism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssr.html">Server-side rendering for async blocks</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="core/index.html">Core Blocks developer notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="core/listing.html">Listing block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="core/teaser.html">Teaser Block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="core/grid.html">Grid block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="core/container.html">Container</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="examples/index.html">Volto block examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/custom-schema-and-view.html">Block with a custom schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/custom-schema-view-and-edit.html">Block with a custom schema and edit components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/custom-view-and-variations.html">Block with a custom schema and variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/custom-view-variations-and-schema-enhancer.html">Block with a custom schema, variations, and a schema enhancer in a variation</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../backend/index.html">Integration with the backend</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../deploying/index.html">Deploying</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deploying/simple.html">Simple deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deploying/pm2.html">Deployment using a Node.js process manager (PM2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deploying/seamless-mode.html">Seamless mode</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../deploying/apache.html">Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deploying/sentry.html">Integration with Sentry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deploying/performance.html">critical.css (above the fold) optimizations</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrade-guide/index.html">Upgrade Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../client/index.html">Plone REST API JavaScript client</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../client/quick-start.html">Quick Start</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../client/actions/index.html">Endpoint actions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/actions.html">Actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/addons.html">Add-ons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/aliases.html">Aliases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/breadcrumbs.html">Breadcrumbs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/comments.html">Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/content.html">Content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/contextnavigation.html">Context Navigation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/controlpanels.html">Control Panels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/copymove.html">Copy and Move</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/database.html">Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/email-notification.html">Email Notification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/email-send.html">Email Send</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/groups.html">Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/history.html">History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/linkintegrity.html">Link Integrity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/lock.html">Locking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/login.html">Login</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/navigation.html">Navigation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/navroot.html">Navigation root</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/principals.html">Principals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/querysources.html">Querysources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/querystring.html">Querystring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/querystringsearch.html">Querystring Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/registry.html">Registry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/relations.html">Relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/rules.html">Rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/search.html">Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/site.html">Site</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/sources.html">Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/system.html">System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/transactions.html">Transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/translations.html">Translations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/upgrade.html">Upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/userschema.html">User schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/vocabularies.html">Vocabularies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/workflow.html">Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/workingcopy.html">Working Copy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../client/misc.html">Miscellaneous considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client/future-improvements.html">Future improvements</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user-manual/index.html">User Manual</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user-manual/blocks.html">Edit content using blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-manual/copy-paste-blocks.html">Copy, Cut, and Paste blocks in Volto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-manual/links-to-item.html">Finding links and references to the current page</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Learning resources</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../contributing/index.html">Contributing to Volto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/developing-core.html">Develop Volto core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/design-principles.html">Design principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/language-features.html">JavaScript language features and browser support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/linting.html">Linting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/acceptance-tests.html">Acceptance tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/documentation.html">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/react.html">React</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/redux.html">Redux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/routing.html">Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/icons.html">Icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/accessibility-guidelines.html">Accessibility guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/bundle-size-optimization.html">Bundle size optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/typescript.html">TypeScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/volto-core-addons.html">Volto core add-ons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/version-policy.html">Version policy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes/index.html">Volto Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-management-notes/index.html">Release management notes</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../conceptual-guides/index.html">Conceptual guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../conceptual-guides/add-ons.html">Volto add-on concepts</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/plone/volto" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/plone/volto/edit/main/docs/blocks/editcomponent.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/plone/volto/issues/new?title=Issue%20on%20page%20%2Fblocks/editcomponent.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/blocks/editcomponent.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Blocks - Edit components</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sidebar">Sidebar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-driven-automated-block-settings-forms">Schema driven automated block settings forms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-browser">Object Browser</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openobjectbrowser-handler-api">openObjectBrowser handler API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objectbrowserwidget">ObjectBrowserWidget</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#return-prop"><code class="docutils literal notranslate"><span class="pre">return</span></code> prop</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#propdataname-vs-dataname">PropDataName vs dataName</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-in-blocks-schema">Usage in blocks schema</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#selecteditemattrs">selectedItemAttrs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#allowexternals">allowExternals</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#objectbrowserwidgetmode">ObjectBrowserWidgetMode()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#selectable-types">Selectable types</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#maximumselectionsize"><code class="docutils literal notranslate"><span class="pre">maximumSelectionSize</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reusing-the-blocks-engine-in-your-components">Reusing the blocks engine in your components</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="blocks-edit-components">
+<h1>Blocks - Edit components<a class="headerlink" href="#blocks-edit-components" title="Link to this heading">#</a></h1>
+<p>The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block.
+This UX can be very complex depending on the kind of block and the feature that it is trying to provide.
+The project requirements will tell how far you should go with the UX story of each block, and how complex it will become.
+You can use all the props that the edit component is receiving to model the UX for the block and how it will render.</p>
+<p>See the complete list of <a class="reference internal" href="anatomy.html#block-edit-component-props-label"><span class="std std-ref">Block edit component props</span></a>.</p>
+<p>We have several UI/UX artifacts in order to model our block edit component UX.
+The sidebar and the object browser are the main ones.</p>
+<section id="sidebar">
+<h2>Sidebar<a class="headerlink" href="#sidebar" title="Link to this heading">#</a></h2>
+<p>We can use the new sidebar when building our block's edit components.
+The sidebar is a new UI asset that is available in Volto 4.
+You need to instantiate it this way:</p>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">SidebarPortal</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@plone/volto/components&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">Edit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">props</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">selected</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">props</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+
+<span class="w">    </span><span class="p">[...]</span>
+
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">SidebarPortal</span><span class="w"> </span><span class="na">selected</span><span class="o">=</span><span class="p">{</span><span class="nx">selected</span><span class="p">}&gt;</span>
+<span class="w">      </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">SidebarPortal</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Everything that's inside the <code class="docutils literal notranslate"><span class="pre">SidebarPortal</span></code> component will be rendered in the sidebar. If you need an extra layer of configuration within <code class="docutils literal notranslate"><span class="pre">SidebarPortal</span></code>, you can use <code class="docutils literal notranslate"><span class="pre">SidebarPopup</span></code>.</p>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">SidebarPopup</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@plone/volto/components&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">Edit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">props</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">sidebarOpen</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">props</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">[...]</span>
+
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">SidebarPopup</span><span class="w"> </span><span class="na">open</span><span class="o">=</span><span class="p">{</span><span class="nx">sidebarOpen</span><span class="p">}&gt;</span>
+<span class="w">      </span><span class="p">...</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">SidebarPopup</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="schema-driven-automated-block-settings-forms">
+<h2>Schema driven automated block settings forms<a class="headerlink" href="#schema-driven-automated-block-settings-forms" title="Link to this heading">#</a></h2>
+<p>A helper component is available in core in order to simplify the task of defining and rendering the settings for a block: the <code class="docutils literal notranslate"><span class="pre">BlockDataForm</span></code> component.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">BlockDataForm</span></code> is a convenience component around the already available in core <code class="docutils literal notranslate"><span class="pre">InlineForm</span></code> that takes care of some aspects exclusively for Volto Blocks, like Variants and schemaExtenders. You can still use <code class="docutils literal notranslate"><span class="pre">InlineForm</span></code> across Volto, but using <code class="docutils literal notranslate"><span class="pre">BlockDataForm</span></code> is recommended for the blocks settings use case.</p>
+</div>
+<p>The edit block settings component needs to be described by a schema that matches the format used to serialize the content type definitions. The widgets that will be used in rendering the form follow the same algorithm that is used for the regular metadata fields for the content types. As an example of schema, it could look like this:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">IframeSchema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Embed external content&#39;</span><span class="p">,</span>
+
+<span class="w">  </span><span class="nx">fieldsets</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;default&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Default&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">fields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s1">&#39;url&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">&#39;align&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">&#39;privacy_statement&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">&#39;privacy_cookie_key&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">&#39;enabled&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">],</span>
+
+<span class="w">  </span><span class="nx">properties</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Embed URL&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">privacy_statement</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Privacy statement&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Short notification text&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">widget</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;text&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">privacy_cookie_key</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Privacy cookie key&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Identifies similar external content&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">enabled</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Use privacy screen?&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Enable/disable the privacy protection&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;boolean&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="nx">required</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">],</span>
+<span class="p">};</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">IframeSchema</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>To render this form and make it available to the edit component:</p>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nx">schema</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./schema&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">BlockDataForm</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@plone/volto/components/manage/Form/BlockDataForm&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Icon</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@plone/volto/components&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">Edit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">props</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">selected</span><span class="p">,</span><span class="w"> </span><span class="nx">block</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">onChangeBlock</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">props</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">SidebarPortal</span><span class="w"> </span><span class="na">selected</span><span class="o">=</span><span class="p">{</span><span class="nx">selected</span><span class="p">}&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">BlockDataForm</span>
+<span class="w">        </span><span class="na">icon</span><span class="o">=</span><span class="p">{&lt;</span><span class="nt">Icon</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="s">&quot;24px&quot;</span><span class="w"> </span><span class="na">name</span><span class="o">=</span><span class="p">{</span><span class="nx">nameSVG</span><span class="p">}</span><span class="w"> </span><span class="p">/&gt;}</span>
+<span class="w">        </span><span class="na">schema</span><span class="o">=</span><span class="p">{</span><span class="nx">schema</span><span class="p">}</span>
+<span class="w">        </span><span class="na">title</span><span class="o">=</span><span class="p">{</span><span class="nx">schema</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span>
+<span class="w">        </span><span class="na">headerActions</span><span class="o">=</span><span class="p">{&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{}}&gt;</span><span class="nx">Action</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;}</span>
+<span class="w">        </span><span class="na">footer</span><span class="o">=</span><span class="p">{&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="nx">I</span><span class="w"> </span><span class="nx">am</span><span class="w"> </span><span class="nx">footer</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;}</span>
+<span class="w">        </span><span class="na">onChangeField</span><span class="o">=</span><span class="p">{(</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">onChangeBlock</span><span class="p">(</span><span class="nx">block</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">...</span><span class="nx">data</span><span class="p">,</span>
+<span class="w">            </span><span class="p">[</span><span class="nx">id</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span>
+<span class="w">          </span><span class="p">});</span>
+<span class="w">        </span><span class="p">}}</span>
+<span class="w">        </span><span class="na">onChangeBlock</span><span class="o">=</span><span class="p">{</span><span class="nx">onChangeBlock</span><span class="p">}</span>
+<span class="w">        </span><span class="na">formData</span><span class="o">=</span><span class="p">{</span><span class="nx">data</span><span class="p">}</span>
+<span class="w">        </span><span class="na">block</span><span class="o">=</span><span class="p">{</span><span class="nx">block</span><span class="p">}</span>
+<span class="w">      </span><span class="p">/&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">SidebarPortal</span><span class="p">&gt;;</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="object-browser">
+<h2>Object Browser<a class="headerlink" href="#object-browser" title="Link to this heading">#</a></h2>
+<p>Volto 4 has a new object browser component that allows you to select an existing content object from the site.
+It has the form of an HOC (High Order Component), so you have to wrap the component you want to be able to call the object browser from with it, like this:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nx">withObjectBrowser</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@plone/volto/components/manage/Sidebar/ObjectBrowser&#39;</span><span class="p">;</span>
+
+<span class="p">[...]</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">withObjectBrowser</span><span class="p">(</span><span class="nx">MyComponent</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The HOC component <code class="docutils literal notranslate"><span class="pre">withObjectBrowser</span></code> wraps your component by making available this props:</p>
+<ul class="simple">
+<li><p>isObjectBrowserOpen - (Bool) tells if the browser is currently open</p></li>
+<li><p>openObjectBrowser - handler for opening the browser</p></li>
+<li><p>closeObjectBrowser - handler for closing the browser</p></li>
+</ul>
+<p>By default, it's enabled for all the component tree under the Blocks Editor, so it's available already for all the blocks in edit mode.
+However, if you need to instantiate it somewhere else, you can do it anyways by wrapping your component with it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The default image block in Volto features both the Sidebar and the object browser, take a look at its source code in case you need more context on how they work.</p>
+</div>
+<section id="openobjectbrowser-handler-api">
+<span id="openobjectbrowser-handler-api-label"></span><h3>openObjectBrowser handler API<a class="headerlink" href="#openobjectbrowser-handler-api" title="Link to this heading">#</a></h3>
+<p>If you want to open an <code class="docutils literal notranslate"><span class="pre">ObjectBrowser</span></code> from your Block, you need to call the <code class="docutils literal notranslate"><span class="pre">openObjectBrowser</span></code> function you'll find in the props of your block component.
+This function has this signature:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@param {Object} object ObjectBrowser configuration.
+@param {string} object.mode Quick mode, defaults to `image`.
+@param {string} object.dataName Name of the block data property to write the selected item.
+@param {string} object.onSelectItem Function that will be called on item selection.
+</pre></div>
+</div>
+<p>These are some examples on how to use it:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Opens the browser in the `image` mode by default if no config object specified, so it saves the selection in the `url` data property.</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">openObjectBrowser</span><span class="p">();</span>
+
+<span class="c1">// Opens the browser in the `link` mode, so it saves the selection in the `href` data property.</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">openObjectBrowser</span><span class="p">({</span><span class="w"> </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;link&#39;</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// Opens the browser defining which data property should save the selection using `dataName`</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">openObjectBrowser</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">dataName</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;myfancydatafield&#39;</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="c1">// Opens the browser defining the function that should be used to save the selection using `onSelectItem`</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">openObjectBrowser</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">onSelectItem</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">url</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onChangeBlock</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">block</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">myfancydatafield</span><span class="o">:</span><span class="w"> </span><span class="nx">url</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="objectbrowserwidget">
+<h3>ObjectBrowserWidget<a class="headerlink" href="#objectbrowserwidget" title="Link to this heading">#</a></h3>
+<p>This widget shows an objectBrowser to find content/contents on site.</p>
+<p>It is the default widget for vocabulary fields that uses <code class="docutils literal notranslate"><span class="pre">plone.app.vocabularies.Catalog</span></code>.</p>
+<p>It works in 3 different mode:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: The field value is an object.
+The path of selected item is saved in <code class="docutils literal notranslate"><span class="pre">url</span></code> property of value object. (<code class="docutils literal notranslate"><span class="pre">fieldName:</span> <span class="pre">{url:''}</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">link</span></code>: The field value is an object.
+The path of selected item is saved in <code class="docutils literal notranslate"><span class="pre">href</span></code> property of value object. (<code class="docutils literal notranslate"><span class="pre">fieldName:</span> <span class="pre">{href:''}</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multiple</span></code>: The field value is an array of objects.</p></li>
+</ul>
+<section id="return-prop">
+<h4><code class="docutils literal notranslate"><span class="pre">return</span></code> prop<a class="headerlink" href="#return-prop" title="Link to this heading">#</a></h4>
+<p>The object widget returns always an array, even if it's meant to have only one object in return. In order to fix that situation and do not issue a breaking change, a <code class="docutils literal notranslate"><span class="pre">return</span></code> prop is being introduced, so if its value is <code class="docutils literal notranslate"><span class="pre">single</span></code>, then it returns a single value:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">Image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">ObjectBrowserWidget</span><span class="w"> </span><span class="nx">mode</span><span class="o">=</span><span class="s2">&quot;image&quot;</span><span class="w"> </span><span class="k">return</span><span class="o">=</span><span class="s2">&quot;single&quot;</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This situation will be fixed in subsequent Volto releases.</p>
+</div>
+</section>
+<section id="propdataname-vs-dataname">
+<h4>PropDataName vs dataName<a class="headerlink" href="#propdataname-vs-dataname" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dataName</span></code> is the prop inside <code class="docutils literal notranslate"><span class="pre">data</span></code> object, used for <code class="docutils literal notranslate"><span class="pre">link</span></code> and <code class="docutils literal notranslate"><span class="pre">image</span></code> mode.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PropDataName</span></code> is the name of field which value is <code class="docutils literal notranslate"><span class="pre">data</span></code>. It's used for <code class="docutils literal notranslate"><span class="pre">multiple</span></code> mode.</p></li>
+</ul>
+<p>For example:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">content</span><span class="o">:</span><span class="p">{</span><span class="w"> </span><span class="s1">&#39;@id&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;page-1&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">related_pages</span><span class="o">:</span><span class="p">[],</span><span class="w"> </span><span class="nx">image</span><span class="o">:</span><span class="p">{</span><span class="nx">url</span><span class="o">:</span><span class="s2">&quot;&quot;</span><span class="p">},</span><span class="w"> </span><span class="nx">link</span><span class="o">:</span><span class="p">{</span><span class="nx">href</span><span class="o">:</span><span class="s2">&quot;&quot;</span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>if we use object browser widget for fields:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">related_pages</span></code>: propDataName is <code class="docutils literal notranslate"><span class="pre">related_pages</span></code> and <code class="docutils literal notranslate"><span class="pre">dataName</span></code> is <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: dataName is <code class="docutils literal notranslate"><span class="pre">url</span></code> and <code class="docutils literal notranslate"><span class="pre">propDataName</span></code> is <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">link</span></code>: dataName is <code class="docutils literal notranslate"><span class="pre">href</span></code> and <code class="docutils literal notranslate"><span class="pre">propDataName</span></code> is <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p></li>
+</ul>
+</section>
+<section id="usage-in-blocks-schema">
+<h4>Usage in blocks schema<a class="headerlink" href="#usage-in-blocks-schema" title="Link to this heading">#</a></h4>
+<p>Used in along with <code class="docutils literal notranslate"><span class="pre">InlineForm</span></code>, one can instantiate and configure it using the widget props like this:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Item&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">fieldsets</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;default&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Default&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">fields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">],</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nx">properties</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">href</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;title&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">widget</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;object_browser&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;link&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">selectedItemAttrs</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Description&#39;</span><span class="p">],</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="selecteditemattrs">
+<h4>selectedItemAttrs<a class="headerlink" href="#selecteditemattrs" title="Link to this heading">#</a></h4>
+<p>You can select the attributes from the object (coming from the metadata brain from
+&#64;search endpoint used in the browser) using the <code class="docutils literal notranslate"><span class="pre">selectedItemAttrs</span></code> prop as shown in the
+last example.</p>
+</section>
+<section id="allowexternals">
+<h4>allowExternals<a class="headerlink" href="#allowexternals" title="Link to this heading">#</a></h4>
+<p>You can allow users to type manually an URL (internal or external). Once validated, it
+will tokenize the value. As a feature, you can paste an internal URL (eg. the user copy
+the URL from the browser, and paste it in the widget) and will be converted to a
+tokenized value, as if it was selected via the Object Browser widget.</p>
+</section>
+<section id="objectbrowserwidgetmode">
+<h4>ObjectBrowserWidgetMode()<a class="headerlink" href="#objectbrowserwidgetmode" title="Link to this heading">#</a></h4>
+<p>Returns the component widget with <code class="docutils literal notranslate"><span class="pre">mode</span></code> passed as argument.</p>
+<p>The default mode for ObjectBrowserWidget is multiple. If you would like to use this widget with link or image mode as widget field for a specific field id (for example), you could specify in in config.js as:</p>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">widgets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">widgetMapping</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span><span class="nx">widgetMapping</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="p">...</span><span class="nx">widgetMapping</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">my_image_field</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectBrowserWidgetMode</span><span class="p">(</span><span class="s1">&#39;image&#39;</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">my_link_field</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectBrowserWidgetMode</span><span class="p">(</span><span class="s1">&#39;link&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="nx">defaultWidget</span><span class="p">,</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="selectable-types">
+<h4>Selectable types<a class="headerlink" href="#selectable-types" title="Link to this heading">#</a></h4>
+<p>If <code class="docutils literal notranslate"><span class="pre">selectableTypes</span></code> is set in <code class="docutils literal notranslate"><span class="pre">widgetOptions.pattern_options</span></code>, then only items whose content type has a name that is defined in <code class="docutils literal notranslate"><span class="pre">widgetOptions.pattern_options.selectableTypes</span></code> will be selectable.</p>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ObjectBrowserWidget</span><span class="w"> </span><span class="na">...</span><span class="w"> </span><span class="na">widgetOptions</span><span class="o">=</span><span class="p">{{</span><span class="nx">pattern_options</span><span class="o">:</span><span class="p">{</span><span class="nx">selectableTypes</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;News Item&#39;</span><span class="p">,</span><span class="s1">&#39;Event&#39;</span><span class="p">]}}}&gt;</span>
+</pre></div>
+</div>
+<p>You can also set the <code class="docutils literal notranslate"><span class="pre">selectableTypes</span></code> from <code class="docutils literal notranslate"><span class="pre">plone</span></code> when declaring a field for <code class="docutils literal notranslate"><span class="pre">contenttype</span></code>:</p>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="nx">form</span><span class="p">.</span><span class="nx">widget</span><span class="p">(</span>
+<span class="w">  </span><span class="s1">&#39;a_cura_di&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RelatedItemsFieldWidget</span><span class="p">,</span>
+<span class="w">  </span><span class="p">(</span><span class="nx">vocabulary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;plone.app.vocabularies.Catalog&#39;</span><span class="p">),</span>
+<span class="w">  </span><span class="p">(</span><span class="nx">pattern_options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">maximumSelectionSize</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">selectableTypes</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;News Item&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Event&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="maximumselectionsize">
+<h4><code class="docutils literal notranslate"><span class="pre">maximumSelectionSize</span></code><a class="headerlink" href="#maximumselectionsize" title="Link to this heading">#</a></h4>
+<p>If <code class="docutils literal notranslate"><span class="pre">maximumSelectionSize</span></code> is set in <code class="docutils literal notranslate"><span class="pre">widgetOptions.pattern_options</span></code>, the widget allows to select at most the <code class="docutils literal notranslate"><span class="pre">maximumSelectionSize</span></code> number of items defined in <code class="docutils literal notranslate"><span class="pre">widgetOptions.pattern_options.maximumSelectionSize</span></code>.</p>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ObjectBrowserWidget</span><span class="w"> </span><span class="na">...</span><span class="w"> </span><span class="na">widgetOptions</span><span class="o">=</span><span class="p">{{</span><span class="nx">pattern_options</span><span class="o">:</span><span class="p">{</span><span class="nx">maximumSelectionSize</span><span class="o">:</span><span class="mf">2</span><span class="p">}}}&gt;</span>
+</pre></div>
+</div>
+<p>You can also set the <code class="docutils literal notranslate"><span class="pre">maximumSelectionSize</span></code> from <code class="docutils literal notranslate"><span class="pre">plone</span></code> when declaring a field for <code class="docutils literal notranslate"><span class="pre">contenttype</span></code>:</p>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="nx">form</span><span class="p">.</span><span class="nx">widget</span><span class="p">(</span>
+<span class="w">  </span><span class="s1">&#39;a_cura_di&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RelatedItemsFieldWidget</span><span class="p">,</span>
+<span class="w">  </span><span class="p">(</span><span class="nx">vocabulary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;plone.app.vocabularies.Catalog&#39;</span><span class="p">),</span>
+<span class="w">  </span><span class="p">(</span><span class="nx">pattern_options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">maximumSelectionSize</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">selectableTypes</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;Event&#39;</span><span class="p">]</span><span class="w"> </span><span class="p">}),</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="nx">form</span><span class="p">.</span><span class="nx">widget</span><span class="p">(</span>
+<span class="w">  </span><span class="s1">&#39;notizie_correlate&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RelatedItemsFieldWidget</span><span class="p">,</span>
+<span class="w">  </span><span class="p">(</span><span class="nx">vocabulary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;plone.app.vocabularies.Catalog&#39;</span><span class="p">),</span>
+<span class="w">  </span><span class="p">(</span><span class="nx">pattern_options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">maximumSelectionSize</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">selectableTypes</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;News Item&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="reusing-the-blocks-engine-in-your-components">
+<h2>Reusing the blocks engine in your components<a class="headerlink" href="#reusing-the-blocks-engine-in-your-components" title="Link to this heading">#</a></h2>
+<p>You can render a blocks engine form with the <code class="docutils literal notranslate"><span class="pre">BlocksForm</span></code> component.</p>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">isEmpty</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;lodash&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">BlocksForm</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@plone/volto/components/manage/Blocks/BlocksForm&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">emptyBlocksForm</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@plone/volto/helpers/Blocks/Blocks&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@plone/volto/registry&#39;</span><span class="p">;</span>
+
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">Example</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">selectedBlock</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">formData</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">blocksState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">render</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">block</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">data</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">onChangeBlock</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">pathname</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">selected</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">manage</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">formData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">formData</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">metadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">metadata</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">properties</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">blocksConfig</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">blocks</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">titleBlock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">blocksConfig</span><span class="p">.</span><span class="nx">title</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">BlocksForm</span>
+<span class="w">        </span><span class="na">title</span><span class="o">=</span><span class="s">&quot;A form with blocks&quot;</span>
+<span class="w">        </span><span class="na">description</span><span class="o">=</span><span class="p">{</span><span class="nx">data</span><span class="o">?</span><span class="p">.</span><span class="nx">instructions</span><span class="o">?</span><span class="p">.</span><span class="nx">data</span><span class="p">}</span>
+<span class="w">        </span><span class="na">manage</span><span class="o">=</span><span class="p">{</span><span class="nx">manage</span><span class="p">}</span>
+<span class="w">        </span><span class="na">allowedBlocks</span><span class="o">=</span><span class="p">{</span><span class="nx">data</span><span class="o">?</span><span class="p">.</span><span class="nx">allowedBlocks</span><span class="p">}</span>
+<span class="w">        </span><span class="na">metadata</span><span class="o">=</span><span class="p">{</span><span class="nx">metadata</span><span class="p">}</span>
+<span class="w">        </span><span class="na">properties</span><span class="o">=</span><span class="p">{</span><span class="nx">isEmpty</span><span class="p">(</span><span class="nx">formData</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">emptyBlocksForm</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">formData</span><span class="p">}</span>
+<span class="w">        </span><span class="na">selectedBlock</span><span class="o">=</span><span class="p">{</span>
+<span class="w">          </span><span class="nx">selected</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">selectedBlock</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="na">onSelectBlock</span><span class="o">=</span><span class="p">{(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="w"> </span><span class="nx">selectedBlock</span><span class="o">:</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="na">onChangeFormData</span><span class="o">=</span><span class="p">{(</span><span class="nx">newFormData</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">onChangeBlock</span><span class="p">(</span><span class="nx">block</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">...</span><span class="nx">data</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="p">...</span><span class="nx">formData</span><span class="p">,</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">          </span><span class="p">});</span>
+<span class="w">        </span><span class="p">}}</span>
+<span class="w">        </span><span class="na">blocksConfig</span><span class="o">=</span><span class="p">{{</span>
+<span class="w">          </span><span class="p">...</span><span class="nx">blocksConfig</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">...</span><span class="nx">titleBlock</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">edit</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">props</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="nx">Title</span><span class="w"> </span><span class="nx">editing</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">not</span><span class="w"> </span><span class="nx">allowed</span><span class="w"> </span><span class="p">(</span><span class="kr">as</span><span class="w"> </span><span class="nx">example</span><span class="p">)&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}}</span>
+<span class="w">        </span><span class="na">onChangeField</span><span class="o">=</span><span class="p">{(</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">([</span><span class="s1">&#39;blocks&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;blocks_layout&#39;</span><span class="p">].</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">blockState</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">            </span><span class="nx">onChangeBlock</span><span class="p">(</span><span class="nx">block</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="p">...</span><span class="nx">data</span><span class="p">,</span>
+<span class="w">              </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="p">...</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span>
+<span class="w">                </span><span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">blockState</span><span class="p">,</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">            </span><span class="p">});</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}}</span>
+<span class="w">        </span><span class="na">pathname</span><span class="o">=</span><span class="p">{</span><span class="nx">pathname</span><span class="p">}</span>
+<span class="w">      </span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;/</span><span class="nt">BlocksForm</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The current block engine is available as the separate <code class="docutils literal notranslate"><span class="pre">BlocksForm</span></code> component,
+used to be a part of the <code class="docutils literal notranslate"><span class="pre">Form.jsx</span></code> component. It has been previously exposed
+as the <a class="reference external" href="https://github.com/eea/volto-blocks-form"><code class="docutils literal notranslate"><span class="pre">&#64;eeacms/volto-blocks-form</span></code></a>
+addon and reused in several other addons, so you can find integration examples
+in addons such as
+<a class="reference external" href="https://github.com/eea/volto-columns-block"><code class="docutils literal notranslate"><span class="pre">volto-columns-block</span></code></a>,
+<a class="reference external" href="https://github.com/rohberg/volto-accordion-block"><code class="docutils literal notranslate"><span class="pre">volto-accordion-block</span></code></a>,
+<a class="reference external" href="https://github.com/eea/volto-accordion-block"><code class="docutils literal notranslate"><span class="pre">&#64;eeacms/volto-accordion-block</span></code></a>,
+<a class="reference external" href="https://github.com/eea/volto-accordion-block"><code class="docutils literal notranslate"><span class="pre">&#64;eeacms/volto-grid-block</span></code></a>, but
+probably the simplest implementation to follow is in the
+<a class="reference external" href="https://github.com/eea/volto-group-block"><code class="docutils literal notranslate"><span class="pre">&#64;eeacms/volto-group-block</span></code></a></p>
+<p>Notice that the <code class="docutils literal notranslate"><span class="pre">BlocksForm</span></code> component allows overriding the edit block
+wrapper and allows passing a custom <code class="docutils literal notranslate"><span class="pre">blocksConfig</span></code> configuration object, for
+example to filter or add new blocks.</p>
+<p>You can also reuse the DragDropList component as a separate component:</p>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="p">&lt;</span><span class="nt">DragDropList</span>
+<span class="w">    </span><span class="na">childList</span><span class="o">=</span><span class="p">{</span><span class="nx">childList</span><span class="p">}</span>
+<span class="w">    </span><span class="na">as</span><span class="o">=</span><span class="s">&quot;tbody&quot;</span>
+<span class="w">    </span><span class="na">onMoveItem</span><span class="o">=</span><span class="p">{(</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">result</span><span class="p">;</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">ns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">state</span><span class="p">));</span>
+<span class="w">      </span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">ns</span><span class="p">.</span><span class="nx">order</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">lang</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ns</span><span class="p">.</span><span class="nx">order</span><span class="p">[</span><span class="nx">lang</span><span class="p">][</span><span class="nx">source</span><span class="p">.</span><span class="nx">index</span><span class="p">];</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ns</span><span class="p">.</span><span class="nx">order</span><span class="p">[</span><span class="nx">lang</span><span class="p">][</span><span class="nx">destination</span><span class="p">.</span><span class="nx">index</span><span class="p">];</span>
+<span class="w">        </span><span class="nx">ns</span><span class="p">.</span><span class="nx">order</span><span class="p">[</span><span class="nx">lang</span><span class="p">][</span><span class="nx">destination</span><span class="p">.</span><span class="nx">index</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">ns</span><span class="p">.</span><span class="nx">order</span><span class="p">[</span><span class="nx">lang</span><span class="p">][</span><span class="nx">source</span><span class="p">.</span><span class="nx">index</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">      </span><span class="nx">setState</span><span class="p">(</span><span class="nx">ns</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}}</span>
+<span class="w">  </span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">{({</span><span class="w"> </span><span class="nx">index</span><span class="p">,</span><span class="w"> </span><span class="nx">draginfo</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="p">&lt;</span><span class="nt">Ref</span><span class="w"> </span><span class="na">innerRef</span><span class="o">=</span><span class="p">{</span><span class="nx">draginfo</span><span class="p">.</span><span class="nx">innerRef</span><span class="p">}</span><span class="w"> </span><span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">index</span><span class="p">}&gt;</span>
+<span class="w">          </span><span class="p">&lt;</span><span class="nt">Table</span><span class="p">.</span><span class="na">Row</span><span class="w"> </span><span class="p">{</span><span class="na">...draginfo.draggableProps</span><span class="p">}&gt;</span>
+<span class="w">            </span><span class="p">&lt;</span><span class="nt">Table</span><span class="p">.</span><span class="na">Cell</span><span class="p">&gt;</span>
+<span class="w">              </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="p">{</span><span class="na">...draginfo.dragHandleProps</span><span class="p">}&gt;</span>
+<span class="w">                </span><span class="p">&lt;</span><span class="nt">Icon</span><span class="w"> </span><span class="na">name</span><span class="o">=</span><span class="p">{</span><span class="nx">dragSVG</span><span class="p">}</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="s">&quot;18px&quot;</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">              </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="w">            </span><span class="p">&lt;/</span><span class="nt">Table</span><span class="p">.</span><span class="na">Cell</span><span class="p">&gt;</span>
+<span class="w">            </span><span class="p">{</span><span class="nx">langs</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">lang</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="kd">const</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">order</span><span class="p">[</span><span class="nx">lang</span><span class="p">][</span><span class="nx">index</span><span class="p">];</span>
+<span class="w">              </span><span class="kd">const</span><span class="w"> </span><span class="nx">entry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">lang</span><span class="p">][</span><span class="nx">i</span><span class="p">];</span>
+<span class="w">              </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">                </span><span class="p">&lt;</span><span class="nt">Table</span><span class="p">.</span><span class="na">Cell</span><span class="w"> </span><span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">lang</span><span class="p">}&gt;</span>
+<span class="w">                  </span><span class="p">&lt;</span><span class="nt">TermInput</span>
+<span class="w">                    </span><span class="na">entry</span><span class="o">=</span><span class="p">{</span><span class="nx">entry</span><span class="p">}</span>
+<span class="w">                    </span><span class="na">onChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                      </span><span class="kd">const</span><span class="w"> </span><span class="nx">newState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="nx">state</span><span class="w"> </span><span class="p">};</span>
+<span class="w">                      </span><span class="nx">newState</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">lang</span><span class="p">][</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="p">...</span><span class="nx">newState</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">lang</span><span class="p">][</span><span class="nx">i</span><span class="p">],</span>
+<span class="w">                        </span><span class="p">[</span><span class="nx">id</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span>
+<span class="w">                      </span><span class="p">};</span>
+
+<span class="w">                      </span><span class="nx">setState</span><span class="p">(</span><span class="nx">newState</span><span class="p">);</span>
+<span class="w">                    </span><span class="p">}}</span>
+<span class="w">                  </span><span class="p">/&gt;</span>
+<span class="w">                </span><span class="p">&lt;/</span><span class="nt">Table</span><span class="p">.</span><span class="na">Cell</span><span class="p">&gt;</span>
+<span class="w">              </span><span class="p">);</span>
+<span class="w">            </span><span class="p">})}</span>
+<span class="w">            </span><span class="p">&lt;</span><span class="nt">Table</span><span class="p">.</span><span class="na">Cell</span><span class="p">&gt;</span>
+<span class="w">              </span><span class="p">&lt;</span><span class="nt">Button</span><span class="w"> </span><span class="na">basic</span><span class="w"> </span><span class="na">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{}}&gt;</span>
+<span class="w">                </span><span class="p">&lt;</span><span class="nt">Icon</span>
+<span class="w">                  </span><span class="na">className</span><span class="o">=</span><span class="s">&quot;circled&quot;</span>
+<span class="w">                  </span><span class="na">name</span><span class="o">=</span><span class="p">{</span><span class="nx">deleteSVG</span><span class="p">}</span>
+<span class="w">                  </span><span class="na">size</span><span class="o">=</span><span class="s">&quot;12px&quot;</span>
+<span class="w">                </span><span class="p">/&gt;</span>
+<span class="w">              </span><span class="p">&lt;/</span><span class="nt">Button</span><span class="p">&gt;</span>
+<span class="w">            </span><span class="p">&lt;/</span><span class="nt">Table</span><span class="p">.</span><span class="na">Cell</span><span class="p">&gt;</span>
+<span class="w">          </span><span class="p">&lt;/</span><span class="nt">Table</span><span class="p">.</span><span class="na">Row</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">&lt;/</span><span class="nt">Ref</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}}</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">DragDropList</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Check the source code of <code class="docutils literal notranslate"><span class="pre">volto-columns-block</span></code> and
+<a class="reference external" href="https://github.com/eea/volto-taxonomy/"><code class="docutils literal notranslate"><span class="pre">volto-taxonomy</span></code></a> for details on
+how to reuse this component.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="settings.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Blocks settings</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="block-style-wrapper.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Block style wrapper</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sidebar">Sidebar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-driven-automated-block-settings-forms">Schema driven automated block settings forms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-browser">Object Browser</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openobjectbrowser-handler-api">openObjectBrowser handler API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objectbrowserwidget">ObjectBrowserWidget</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#return-prop"><code class="docutils literal notranslate"><span class="pre">return</span></code> prop</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#propdataname-vs-dataname">PropDataName vs dataName</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-in-blocks-schema">Usage in blocks schema</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#selecteditemattrs">selectedItemAttrs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#allowexternals">allowExternals</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#objectbrowserwidgetmode">ObjectBrowserWidgetMode()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#selectable-types">Selectable types</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#maximumselectionsize"><code class="docutils literal notranslate"><span class="pre">maximumSelectionSize</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reusing-the-blocks-engine-in-your-components">Reusing the blocks engine in your components</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Plone Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Volto Foundation.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>The text and illustrations in this website are licensed by the Plone Foundation under a Creative Commons Attribution 4.0 International license. Plone and the Plone® logo are registered trademarks of the Plone Foundation, registered in the United States and other countries. For guidelines on the permitted uses of the Plone trademarks, see <a href="https://plone.org/foundation/logo">https://plone.org/foundation/logo</a>. All other trademarks are owned by their respective owners.</p>
+<p>Pull request previews by <a href="https://readthedocs.org/" target="_blank">Read the Docs</a>.</p>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">0.0.1</div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

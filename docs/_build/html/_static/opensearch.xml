@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Volto Documentation</ShortName>
+  <Description>Search Volto Documentation v0.0.1</Description>
+  <InputEncoding>utf-8</InputEncoding>
+  <Url type="text/html" method="get"
+       template="https://6.docs.plone.org/search.html?q={searchTerms}"/>
+  <LongName>Volto Documentation v0.0.1</LongName>
+  <Image height="16" width="16" type="image/x-icon">https://6.docs.plone.org/_static/favicon.ico</Image>
+  
+</OpenSearchDescription>

@@ -1,0 +1,1246 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="User manual for how to edit blocks in Volto, the Plone 6 frontend." name="description" />
+<meta content="User manual for how to edit blocks in Volto, the Plone 6 frontend." property="og:description" />
+<meta content="How to edit content using Volto blocks" property="og:title" />
+<meta content="Volto, Plone, frontend, React, User manual, edit blocks" name="keywords" />
+<meta property="og:title" content="Edit content using blocks" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://6.docs.plone.org/user-manual/blocks.html" />
+<meta property="og:site_name" content="Plone Documentation" />
+<meta property="og:description" content="Volto features the Pastanaga UI, allowing you to visually compose a page using blocks. The blocks editor allows you to add, modify, reorder, and delete blocks given your requirements. Blocks provid..." />
+<meta property="og:image" content="https://6.docs.plone.org/_static/Plone_logo_square.png" />
+<meta property="og:image:alt" content="Plone Documentation" />
+<meta property="og:locale" content="en_US" />
+
+    <title>Edit content using blocks &#8212; Volto Documentation v0.0.1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/plone-sphinx-theme.css?v=88f4e24d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-examples.css?v=e236af4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=734b19f4" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=3611b776"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/plone-sphinx-theme.js?v=ce3a8c55"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user-manual/blocks';</script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Volto Documentation v0.0.1"
+          href="../_static/opensearch.xml"/>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Copy, Cut, and Paste blocks in Volto" href="copy-paste-blocks.html" />
+    <link rel="prev" title="User Manual" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/logo.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">Volto Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+            
+          
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/plone/volto" title="GitHub" class="nav-link custom-fancy-css" rel="noopener me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+            
+          
+            
+          
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://plone.social/@plone" title="Mastodon" class="nav-link custom-fancy-css" rel="noopener me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Mastodon</span></a>
+        </li>
+        <li class="nav-item">
+            
+          
+            
+          
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/@PloneCMS" title="YouTube" class="nav-link custom-fancy-css" rel="noopener me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-youtube fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+        <li class="nav-item">
+            
+          
+            
+          
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://x.com/plone" title="X (formerly Twitter)" class="nav-link custom-fancy-css" rel="noopener me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X (formerly Twitter)</span></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../development/index.html">Development</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/creating-project.html">Create a Volto project without a backend</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../development/add-ons/index.html">Develop Volto add-ons</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/install-an-add-on.html">Install an add-on in Volto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/install-an-add-on-dev-18.html">Install an add-on in development mode in Volto 18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/install-an-add-on-dev-17.html">Install an add-on in development mode in Volto 17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/load-add-on-configuration.html">Load configuration from add-ons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/create-an-add-on-18.html">Create an add-on for Volto 18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/create-an-add-on-17.html">Create an add-on for Volto 17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/test-add-ons-18.html">Test add-ons in Volto 18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/test-add-ons-17.html">Test add-ons in Volto 17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/extend-webpack-add-on.html">Extend webpack setup from an add-on</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/extend-eslint-add-on.html">Extend ESLint configuration from an add-on</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/troubleshoot-transpilation.html">Troubleshoot untranspiled add-on dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/i18n.html">Add-on internationalization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/best-practices.html">Best practices for add-ons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/theme.html">Create a Volto theme add-on</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/public-folder.html">Add static files from your add-on to your build</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/folder-structure.html">Folder structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/environment-variables.html">How to use environment variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/customizing-components.html">Customizing Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/customizing-views.html">Customizing Volto Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/creating-views.html">Creating Volto Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/images.html">Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/i18n.html">Internationalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/express.html">Custom Express middleware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/lazyload.html">Lazy loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/appextras.html">AppExtras component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/contextnavigation.html">Context navigation component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/pluggables.html">Pluggables framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/widget.html">Forms and widgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/how-to-restrict-blocks.html">How to restrict blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/color-picker-widget.html">Color picker widget</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../configuration/index.html">Configuration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/how-to.html">The configuration registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/settings-reference.html">Settings reference guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/experimental.html">Experimental features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/zero-config-builds.html">Zero configuration builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/component-registry.html">Component registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/internalproxy.html">Internal proxy to content backend API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/backend.html">Backend configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/volto-config-js.html">Programmatically define the active add-ons and theme</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../configuration/volto-slate/index.html"><code class="docutils literal notranslate"><span class="pre">volto-slate</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/volto-slate/api.html"><code class="docutils literal notranslate"><span class="pre">volto-slate</span></code> API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/volto-slate/configuration-settings.html">Editor Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/volto-slate/writing-plugins.html">How to write a Slate editor plugin</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/multilingual.html">Multilingual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/workingcopy.html">Working copy support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/environmentvariables.html">Environment variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/expanders.html">API expanders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/locking.html">Locking support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/slots.html">Slots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/validation.html">Client side form field validation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../theming/index.html">Theming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../theming/about-semantic.html">About Semantic UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/semanticui-theming.html">Semantic UI Theming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/theming-engine.html">How does the theming engine work?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/theming-strategy.html">Theming Strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/custom-styling.html">Custom Styling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/using-third-party-themes.html">Using third party libraries and themes other than <code class="docutils literal notranslate"><span class="pre">semantic-ui</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/theming-a-base-theme.html">Customize a base theme</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../blocks/index.html">Blocks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../blocks/introduction.html">Blocks Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blocks/anatomy.html">Blocks anatomy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blocks/settings.html">Blocks settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blocks/editcomponent.html">Blocks - Edit components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blocks/block-style-wrapper.html">Block style wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blocks/extensions.html">Block extensions mechanism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blocks/ssr.html">Server-side rendering for async blocks</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../blocks/core/index.html">Core Blocks developer notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../blocks/core/listing.html">Listing block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../blocks/core/teaser.html">Teaser Block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../blocks/core/grid.html">Grid block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../blocks/core/container.html">Container</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../blocks/examples/index.html">Volto block examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../blocks/examples/custom-schema-and-view.html">Block with a custom schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../blocks/examples/custom-schema-view-and-edit.html">Block with a custom schema and edit components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../blocks/examples/custom-view-and-variations.html">Block with a custom schema and variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../blocks/examples/custom-view-variations-and-schema-enhancer.html">Block with a custom schema, variations, and a schema enhancer in a variation</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../backend/index.html">Integration with the backend</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../deploying/index.html">Deploying</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deploying/simple.html">Simple deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deploying/pm2.html">Deployment using a Node.js process manager (PM2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deploying/seamless-mode.html">Seamless mode</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../deploying/apache.html">Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deploying/sentry.html">Integration with Sentry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deploying/performance.html">critical.css (above the fold) optimizations</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrade-guide/index.html">Upgrade Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../client/index.html">Plone REST API JavaScript client</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../client/quick-start.html">Quick Start</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../client/actions/index.html">Endpoint actions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/actions.html">Actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/addons.html">Add-ons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/aliases.html">Aliases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/breadcrumbs.html">Breadcrumbs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/comments.html">Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/content.html">Content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/contextnavigation.html">Context Navigation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/controlpanels.html">Control Panels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/copymove.html">Copy and Move</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/database.html">Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/email-notification.html">Email Notification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/email-send.html">Email Send</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/groups.html">Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/history.html">History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/linkintegrity.html">Link Integrity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/lock.html">Locking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/login.html">Login</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/navigation.html">Navigation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/navroot.html">Navigation root</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/principals.html">Principals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/querysources.html">Querysources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/querystring.html">Querystring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/querystringsearch.html">Querystring Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/registry.html">Registry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/relations.html">Relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/rules.html">Rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/search.html">Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/site.html">Site</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/sources.html">Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/system.html">System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/transactions.html">Transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/translations.html">Translations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/upgrade.html">Upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/userschema.html">User schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/vocabularies.html">Vocabularies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/workflow.html">Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/workingcopy.html">Working Copy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../client/misc.html">Miscellaneous considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client/future-improvements.html">Future improvements</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">User Manual</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Edit content using blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="copy-paste-blocks.html">Copy, Cut, and Paste blocks in Volto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="links-to-item.html">Finding links and references to the current page</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Learning resources</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../contributing/index.html">Contributing to Volto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/developing-core.html">Develop Volto core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/design-principles.html">Design principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/language-features.html">JavaScript language features and browser support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/linting.html">Linting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/acceptance-tests.html">Acceptance tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/documentation.html">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/react.html">React</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/redux.html">Redux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/routing.html">Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/icons.html">Icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/accessibility-guidelines.html">Accessibility guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/bundle-size-optimization.html">Bundle size optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/typescript.html">TypeScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/volto-core-addons.html">Volto core add-ons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/version-policy.html">Version policy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes/index.html">Volto Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-management-notes/index.html">Release management notes</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../conceptual-guides/index.html">Conceptual guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../conceptual-guides/add-ons.html">Volto add-on concepts</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/plone/volto" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/plone/volto/edit/main/docs/user-manual/blocks.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/plone/volto/issues/new?title=Issue%20on%20page%20%2Fuser-manual/blocks.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/user-manual/blocks.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Edit content using blocks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manage-blocks">Manage blocks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-block">Create a block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-a-block">Configure a block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rearrange-blocks">Rearrange blocks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-headings-as-anchor-links">Copy headings as anchor links</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delete-a-block">Delete a block</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#default-block-types">Default block types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description-block">Description block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid-block">Grid block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#html-block">HTML block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-block">Image block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-block">Listing block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maps-block">Maps block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-block">Search block</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-options">Basic options</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#base-search-query-options">Base search query options</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#facets">Facets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#controls">Controls</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#views">Views</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#table-block">Table block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents-block">Table of contents block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teaser-block">Teaser block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-block">Text block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#video-block">Video block</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="edit-content-using-blocks">
+<span id="edit-content-using-blocks-label"></span><h1>Edit content using blocks<a class="headerlink" href="#edit-content-using-blocks" title="Link to this heading">#</a></h1>
+<p>Volto features the <a class="reference external" href="https://github.com/plone/pastanaga">Pastanaga UI</a>, allowing you to visually compose a page using blocks.
+The blocks editor allows you to add, modify, reorder, and delete blocks given your requirements.
+Blocks provide the user the ability to display content in a specific way, although they can also define behavior and have specific features.</p>
+<section id="manage-blocks">
+<span id="manage-blocks-label"></span><h2>Manage blocks<a class="headerlink" href="#manage-blocks" title="Link to this heading">#</a></h2>
+<p>In Volto, &quot;blocks&quot; are individual pieces of content that can be added to a page or other content area.
+These blocks can be used to add different types of content—such as text, images, or multimedia—and can be arranged and customized to create a wide range of different layouts.</p>
+<p>Blocks are a key feature of Volto, and are designed to make it easy for users to add and manage content on their website.
+They are created using React components, which are modular pieces of code that can be easily reused and customized.</p>
+<section id="create-a-block">
+<span id="create-a-block-label"></span><h3>Create a block<a class="headerlink" href="#create-a-block" title="Link to this heading">#</a></h3>
+<p>To create or add an empty block after an existing block, click in the block, then hit the <kbd class="kbd docutils literal notranslate">Enter</kbd> key.
+A new empty block appears.</p>
+<img alt="Add new block" src="../_images/add-new-block.gif" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is a new experimental feature that places a <code class="docutils literal notranslate"><span class="pre">+</span></code> below a block when it is active or moused over, and when clicked inserts an empty block below the current block.</p>
+<p>See <a class="github reference external" href="https://github.com/plone/volto/pull/3815">plone/volto#3815</a> for details of the feature and how to enable it.</p>
+</div>
+</section>
+<section id="configure-a-block">
+<span id="configure-a-block-label"></span><h3>Configure a block<a class="headerlink" href="#configure-a-block" title="Link to this heading">#</a></h3>
+<p>When you select a block, its block editor appears in the right margin of the page.
+Almost all blocks have some configuration options.</p>
+</section>
+<section id="rearrange-blocks">
+<span id="rearrange-blocks-label"></span><h3>Rearrange blocks<a class="headerlink" href="#rearrange-blocks" title="Link to this heading">#</a></h3>
+<p>To rearrange blocks, to the right of the block you want to move, click on its drag handle, move the block where you want it in the page, and release the drag handle.</p>
+</section>
+<section id="copy-headings-as-anchor-links">
+<span id="copy-anchor-links-label"></span><h3>Copy headings as anchor links<a class="headerlink" href="#copy-headings-as-anchor-links" title="Link to this heading">#</a></h3>
+<p>When you move your mouse over a heading, a link icon <img alt="Link icon" class="inline" src="../_images/link.svg" /> appears on the right side.
+Click this icon to copy a direct link to that specific heading on the page onto your clipboard.</p>
+<p>Now you can paste the copied link to share a specific section of a page with others.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This feature is enabled by default, and only authenticated users can use this feature.</p>
+</div>
+</section>
+<section id="delete-a-block">
+<span id="delete-a-block-label"></span><h3>Delete a block<a class="headerlink" href="#delete-a-block" title="Link to this heading">#</a></h3>
+<p>To delete a block, to the right of the block, click its delete button, a trash can icon.</p>
+</section>
+</section>
+<section id="default-block-types">
+<span id="default-block-types-label"></span><h2>Default block types<a class="headerlink" href="#default-block-types" title="Link to this heading">#</a></h2>
+<p>Volto offers several default block types out of the box.
+You can access and choose a block type to add to your content type when you have an empty block in it.</p>
+<p>Now with your empty block available, you can select its type in one of two ways.</p>
+<ol class="arabic">
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">+</span></code> button to the left of the empty block.</p>
+<img alt="Add block button" src="../_images/block-left-add-icon.png" />
+</li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">/</span></code> inside the empty block to open the block types menu.
+You can type a few letters to filter available block types.
+You can use the up and down arrow keys to navigate within the list of block types.
+To select the block type, you can click or tap on it, or use the <kbd class="kbd docutils literal notranslate">Enter</kbd> key.</p>
+<img alt="Block types menu" src="../_images/block-types-menu.png" />
+</li>
+</ol>
+<section id="description-block">
+<span id="user-manual-description-block-label"></span><h3>Description block<a class="headerlink" href="#description-block" title="Link to this heading">#</a></h3>
+<p>A description block accepts plain text.
+When displayed, it appears as the description in the page, and for search engine optimization in HTML meta tags as <code class="docutils literal notranslate"><span class="pre">&lt;meta</span> <span class="pre">name=&quot;description&quot;</span> <span class="pre">content=&quot;DESCRIPTION_TEXT&quot;</span> <span class="pre">data-react-helmet=&quot;true&quot;&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;meta</span> <span class="pre">property=&quot;og:description&quot;</span> <span class="pre">content=&quot;DESCRIPTION_TEXT&quot;</span> <span class="pre">data-react-helmet=&quot;true&quot;&gt;</span></code>.</p>
+</section>
+<section id="grid-block">
+<span id="user-manual-grid-block-label"></span><h3>Grid block<a class="headerlink" href="#grid-block" title="Link to this heading">#</a></h3>
+<p>A grid block creates a single row of columns in a grid, which can be used to display content in a structured, organized way.
+You can select the number of columns to insert.</p>
+<img alt="Choose the number of columns to insert in a grid block." src="../_images/grid-block-number-of-columns.png" />
+<p>After choosing the number of columns to insert in a grid block, you can manage the columns.</p>
+<img alt="Add a specific block type into a grid block's column" src="../_images/grid-block-manage-blocks.png" />
+<ul class="simple">
+<li><p>Specify the block type in a column by clicking its <code class="docutils literal notranslate"><span class="pre">+</span></code> button.</p></li>
+<li><p>Rearrange the order of columns in the grid block by dragging and dropping them.</p></li>
+<li><p>Add a column to the grid block by clicking the <code class="docutils literal notranslate"><span class="pre">+</span></code> button above and to the left of it.</p></li>
+<li><p>Remove a column from a grid block by clicking its <code class="docutils literal notranslate"><span class="pre">×</span></code> button.</p></li>
+</ul>
+</section>
+<section id="html-block">
+<span id="user-manual-html-block-label"></span><h3>HTML block<a class="headerlink" href="#html-block" title="Link to this heading">#</a></h3>
+<p>An HTML block allows users to add custom HTML code to a page.
+This can be useful for adding custom functionality or styling to a page, or for integrating with external services or applications.
+For example, you can insert an HTML snippet or widget from a third party service to embed a calendar, payment or donation button, or social media into a page.</p>
+<img alt="HTML block" src="../_images/html-block.png" />
+<p>To use an HTML block, you need to have some knowledge of how to write HTML, unless you are provided an HTML code snippet from a third party that you can copy and paste into the block.</p>
+</section>
+<section id="image-block">
+<span id="user-manual-image-block-label"></span><h3>Image block<a class="headerlink" href="#image-block" title="Link to this heading">#</a></h3>
+<p>An image block lets a user insert an image into a page and configure its attributes.</p>
+<img alt="Image block" src="../_images/image-block.png" />
+<p>After inserting an image block, an image must be specified by any of the following methods.</p>
+<ul class="simple">
+<li><p>Choose an existing image in the site by clicking the block's list icon.</p></li>
+<li><p>Upload a new image by either clicking the block's upload icon or drag and drop.</p></li>
+<li><p>Enter a remote image's URL in the block's text area.
+Click the arrow icon to save the URL.</p></li>
+</ul>
+<p>Once you have specified an image, its configurable options become available.</p>
+<img alt="Image block configuration options" src="../_images/image-block-configuration-options.png" />
+<dl class="simple myst">
+<dt>Source</dt><dd><p>The path or URL to the image.</p>
+</dd>
+<dt>Alt text</dt><dd><p>Alternative text (alt text) is used by screen readers and search engines to describe the image.
+Alt text should not be used for decorative images, as it adds noise to the screen reader.</p>
+</dd>
+<dt>Alignment</dt><dd><p>Options for alignment include left, right, center, and full width.</p>
+</dd>
+<dt>Image size</dt><dd><p>The image size determines its relative display width, either small, medium, or large.</p>
+</dd>
+<dt>Link to</dt><dd><p>You can enter a URL in the text field, or click the list icon and choose a page in your website, as the target for a link.
+You can optionally have the link open in a new tab when the user clicks it by checking the checkbox <span class="guilabel">Open in a new tab</span>.</p>
+</dd>
+</dl>
+</section>
+<section id="listing-block">
+<span id="user-manual-listing-block-label"></span><h3>Listing block<a class="headerlink" href="#listing-block" title="Link to this heading">#</a></h3>
+<p>A listing block allows users to display a list of content items in your Plone site on a page.
+A site editor can configure the criteria to use for retrieving content items, including text, title, dates, and creator.
+The retrieved results can be configured with a sort order, limit of results, and whether to batch the results with pagination.</p>
+<img alt="Listing block" src="../_images/listing-block.png" />
+<p>The listing block has several configuration options.</p>
+<img alt="Listing block configuration" src="../_images/listing-block-configuration.png" />
+<dl class="simple myst">
+<dt>Variation</dt><dd><p>Options for variation include <span class="guilabel">Default</span>, <span class="guilabel">Image gallery</span>, and <span class="guilabel">Summary</span>.</p>
+</dd>
+<dt>Headline</dt><dd><p>Optionally add a headline to the listing block.</p>
+</dd>
+<dt>Headline level</dt><dd><p>Headline level sets the level of the headline to either <span class="guilabel">H2</span> or <span class="guilabel">H3</span>.</p>
+</dd>
+<dt>Criteria</dt><dd><p>Add criteria for the search.
+Options include searching metadata, dates, and text.
+Each criterion has its own options.
+For example, you can configure a search for content that was created between two dates, or for its location within a path of your Plone site.</p>
+</dd>
+<dt>Sort on</dt><dd><p>Sort the retrieved results by a given option.
+Options include metadata, dates, and text.</p>
+</dd>
+<dt>Results limit</dt><dd><p>Limit the number of results returned.</p>
+</dd>
+<dt>Item batch size</dt><dd><p>Batch the search result items into a specified batch size.</p>
+</dd>
+</dl>
+</section>
+<section id="maps-block">
+<span id="user-manual-maps-block-label"></span><h3>Maps block<a class="headerlink" href="#maps-block" title="Link to this heading">#</a></h3>
+<p>A map block allows a user to add a map to a page.
+It is typically used to display a geographic location or region, or provide travel directions.</p>
+<img alt="Maps block" src="../_images/maps-block.png" />
+<p>To use a map block, the third party map service must provide a snippet of HTML code that you can copy and paste into the map block.
+Usually the snippet includes an <code class="docutils literal notranslate"><span class="pre">&lt;iframe&gt;</span></code> HTML tag.
+After you paste the snippet into the map block's configuration, you will see additional options.</p>
+<img alt="Maps block configuration" src="../_images/map-blocks-configuration.png" />
+<dl class="simple myst">
+<dt>Maps URL</dt><dd><p>The URL of the map.</p>
+</dd>
+<dt>Alt text</dt><dd><p>Alternative text to display in search engine results and to screen readers.</p>
+</dd>
+<dt>Alignment</dt><dd><p>Options for alignment include left, right, center, and full width.</p>
+</dd>
+</dl>
+</section>
+<section id="search-block">
+<span id="user-manual-search-block-label"></span><h3>Search block<a class="headerlink" href="#search-block" title="Link to this heading">#</a></h3>
+<p>A search block provides a search interface for visitors to find content in a Plone site.
+A site editor can configure its search criteria and facets across numerous parameters, including text, status, dates, and creator.
+Search results can be configured with a sort order, limit of results, and whether to batch the results with pagination.
+A site editor can choose which search controls to offer to the visitor, including sort order and total results.</p>
+<img alt="Search block" src="../_images/search-block.png" />
+<p>You can configure the search block by modifying its options in the block editor.</p>
+<img alt="Search block configuration" src="../_images/search-block-configuration.png" />
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Add omitted configuration options.</p>
+</div>
+<section id="basic-options">
+<h4>Basic options<a class="headerlink" href="#basic-options" title="Link to this heading">#</a></h4>
+<dl class="simple myst">
+<dt>Variation</dt><dd><p>Options for variation include <span class="guilabel">Facets on right side</span>, <span class="guilabel">Facets on right side</span>, and <span class="guilabel">Facets on top</span>.</p>
+</dd>
+<dt>Results template</dt><dd><p>Options for results template include <span class="guilabel">Default</span>, <span class="guilabel">Image gallery</span>, and <span class="guilabel">Summary</span>.</p>
+</dd>
+<dt>Headline</dt><dd><p>The value to display above the search box as a heading.</p>
+</dd>
+</dl>
+</section>
+<section id="base-search-query-options">
+<h4>Base search query options<a class="headerlink" href="#base-search-query-options" title="Link to this heading">#</a></h4>
+<dl class="simple myst">
+<dt>Criteria</dt><dd><p>Add criteria for the search.
+Options include searching metadata, dates, and text.
+Each criterion has its own options.
+For example, you can configure a search for content that was created between two dates, or for its location within a path of your Plone site.</p>
+</dd>
+<dt>Sort on</dt><dd><p>Sort the search results according to the selected option.
+Optionally sort results in reverse order by checking the checkbox <span class="guilabel">Reversed order</span>.</p>
+</dd>
+<dt>Results limit</dt><dd><p>Limit the number of results returned.</p>
+</dd>
+<dt>Item batch size</dt><dd><p>Batch the search result items into a specified batch size.</p>
+</dd>
+</dl>
+</section>
+<section id="facets">
+<h4>Facets<a class="headerlink" href="#facets" title="Link to this heading">#</a></h4>
+<dl class="simple myst">
+<dt>Section title</dt><dd><div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>This needs content.</p>
+</div>
+</dd>
+<dt>Facets</dt><dd><p>Click the button <span class="guilabel">Add Facet</span> to add a facet to the search.
+The first facet appears as &quot;FACET #1&quot;.
+You can add many facets, reorder them by drag and drop, and delete them.</p>
+</dd>
+<dt>Label</dt><dd><div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>This needs content.</p>
+</div>
+</dd>
+<dt>Field</dt><dd><div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>This needs content.</p>
+</div>
+</dd>
+<dt>Facet widget</dt><dd><div class="admonition-todo admonition" id="id5">
+<p class="admonition-title">Todo</p>
+<p>This needs content.</p>
+</div>
+</dd>
+<dt>Multiple choices?</dt><dd><div class="admonition-todo admonition" id="id6">
+<p class="admonition-title">Todo</p>
+<p>This needs content.</p>
+</div>
+</dd>
+<dt>Hide facet?</dt><dd><p>Toggle to show or hide the facet.
+Hidden facets will still filter the results if proper parameters are passed in URLs</p>
+</dd>
+<dt>Advanced facet?</dt><dd><p>Select to set the facet as advanced.
+Advanced facets are initially hidden and displayed on demand.</p>
+</dd>
+</dl>
+</section>
+<section id="controls">
+<h4>Controls<a class="headerlink" href="#controls" title="Link to this heading">#</a></h4>
+<p>You can configure which search controls to offer to the site visitor.</p>
+<dl class="simple myst">
+<dt>Show sorting?</dt><dd><p>Toggle to show or hide the sorting control.</p>
+</dd>
+<dt>Show search input?</dt><dd><p>Toggle to show or hide the search input field.</p>
+</dd>
+<dt>Show search button?</dt><dd><p>Toggle to show or hide the search button.
+When the button is present, the auto-complete search feature is disabled, and the query is issued when the visitor types the <kbd class="kbd docutils literal notranslate">Enter</kbd> key.</p>
+</dd>
+<dt>Show total results?</dt><dd><p>Toggle to show or hide the search results total count.</p>
+</dd>
+</dl>
+</section>
+<section id="views">
+<h4>Views<a class="headerlink" href="#views" title="Link to this heading">#</a></h4>
+<dl class="simple myst">
+<dt>Available views</dt><dd><p>Options include <span class="guilabel">Default</span>, <span class="guilabel">Image gallery</span>, and <span class="guilabel">Summary</span>.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="table-block">
+<span id="user-manual-table-block-label"></span><h3>Table block<a class="headerlink" href="#table-block" title="Link to this heading">#</a></h3>
+<p>A table block inserts a table with two rows and two columns of cells to hold data, with the first row as the header row.
+It is typically used to display structured data in a clear and organized way.
+It can be configured to display the data in different styles and layouts.</p>
+<img alt="Table block" src="../_images/table-block.png" />
+<p>You can use the editor at the top of table to add rows and columns to the table, and to delete rows and columns.</p>
+<p>To enter data, click in a cell, and type.
+You can optionally format data.</p>
+<p>The table block has several configuration options.</p>
+<img alt="Table block configuration" src="../_images/table-block-configuration.png" />
+<dl class="simple myst">
+<dt>Hide headers</dt><dd><p>Toggle to show or hide the table header row.</p>
+</dd>
+<dt>Make the table sortable</dt><dd><p>Toggle to enable or disable sorting the table by the values in its columns.
+When enabled, a visitor may click a column's header to sort by that column.</p>
+</dd>
+<dt>Fixed width table cells</dt><dd><p>When enabled, the columns are fixed to an equal percentage width of the table.
+For example, a table with four columns would have each of its columns fixed at 25% of the table width.</p>
+</dd>
+<dt>Divide each row into separate cells</dt><dd><p>When enabled, the cells in a row are separated by a vertical border.</p>
+</dd>
+<dt>Stripe alternate rows with color</dt><dd><p>When enabled, the rows in the table body are striped with alternating colors.</p>
+</dd>
+<dt>Make the table compact</dt><dd><p>When enabled, padding of cells is reduced, giving a more compact appearance.</p>
+</dd>
+<dt>Reduce complexity</dt><dd><p>When enabled, the top, left, and right table borders are removed.</p>
+</dd>
+<dt>Table color inverted</dt><dd><p>When enabled, the table color is inverted.</p>
+</dd>
+</dl>
+</section>
+<section id="table-of-contents-block">
+<span id="user-manual-table-of-contents-block-label"></span><h3>Table of contents block<a class="headerlink" href="#table-of-contents-block" title="Link to this heading">#</a></h3>
+<p>A table of contents (TOC) block creates a list of links to the titles and subtitles of text blocks in a page.
+A TOC block makes it easier for a visitor to navigate to a section of a long or complex page.
+It can be configured to display the links in different styles and layouts.</p>
+<p>To use a TOC block, you must first have text blocks with titles or subtitles in your page.
+When you add a TOC block to the page, a table of contents is automatically populated with the titles and subtitles in a bulleted list, with subtitles indented.</p>
+<img alt="Table of contents block" src="../_images/table-of-contents-block.png" />
+<p>The TOC block has several configuration options.</p>
+<img alt="Table of contents block configuration" src="../_images/table-of-contents-block-configuration.png" />
+<dl class="simple myst">
+<dt>Variation</dt><dd><p>Toggles the display of the TOC to be a listing (default) or horizontal as tabs.
+The horizontal variation also adds a dropdown button, if necessary, so the items that won't fit would be displayed in the dropdown list.</p>
+<div  class="sphinx-contrib-video-container align-left"><video controls="True" preload="auto"><source src="../_images/table-of-contents-block-with-dropdown.mp4" type="video/mp4">Table of contents block with dropdown menu.</video></div></dd>
+<dt>Block title</dt><dd><p>Optionally add a title above the table of contents.</p>
+</dd>
+<dt>Hide title</dt><dd><p>When enabled, it hides the title.</p>
+</dd>
+<dt>Ordered</dt><dd><p>When enabled, it changes the listing to a numbered (ordered) list.</p>
+</dd>
+<dt>Entries</dt><dd><p>Selects which heading levels to display.
+Currently only heading levels <code class="docutils literal notranslate"><span class="pre">H2</span></code> (titles) and <code class="docutils literal notranslate"><span class="pre">H3</span></code> (subtitles) are supported.</p>
+</dd>
+</dl>
+</section>
+<section id="teaser-block">
+<span id="user-manual-teaser-block-label"></span><h3>Teaser block<a class="headerlink" href="#teaser-block" title="Link to this heading">#</a></h3>
+<p>A teaser block displays a summary or teaser of a target content item—such as an article or blog post—on a website, and links to the full content item.
+When the visitor clicks or taps on the teaser block, they will visit the full targeted content item.
+A teaser block typically includes a title, an excerpt or summary of the content, and a thumbnail image or other visual element.</p>
+<p>You can customize the presentation of the target content item in a teaser block.
+For example, you might want to shorten the title to fit the available width, or edit the description or image to emphasize a different aspect of the item in multiple teaser block locations.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<img alt="Teaser block" src="../_images/teaser-block.png" />
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text"><em>Teaser block</em></p>
+</div>
+</div>
+<p>The teaser block has several configuration options.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<img alt="Teaser block configuration" src="../_images/teaser-block-configuration.png" />
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text"><em>Teaser block configuration</em></p>
+</div>
+</div>
+<dl class="simple myst">
+<dt>Target</dt><dd><p>The target is either an existing content item in your Plone site that can be selected by clicking the list icon, or an external URL that can be typed into the text field and saved by clicking the right arrow when it appears after you start typing.</p>
+</dd>
+<dt>Customize teaser content</dt><dd><p>Check this box to customize the title, description, or image of the target content item for this teaser.
+Leave it unchecked to show updates to the target content item if it is edited later.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.0.0-alpha.36.</span></p>
+</div>
+</dd>
+<dt>Title</dt><dd><p>The title is the title of the content item.</p>
+</dd>
+<dt>Head title</dt><dd><p>The head title is a heading that appears above the title.</p>
+</dd>
+<dt>Description</dt><dd><p>The description is plain text that summarizes or describes the content item.</p>
+</dd>
+<dt>Image override</dt><dd><p>The image override is either an existing image in your Plone site that can be selected by clicking the list icon, or an external URL of an image that can be typed into the text field and saved by clicking the right arrow when it appears after you start typing.</p>
+</dd>
+<dt>Alignment</dt><dd><p>The alignment of the teaser image can be set to left (default), right, or top.</p>
+</dd>
+</dl>
+</section>
+<section id="text-block">
+<span id="user-manual-text-grid-block-label"></span><h3>Text block<a class="headerlink" href="#text-block" title="Link to this heading">#</a></h3>
+<div class="admonition-todo admonition" id="id7">
+<p class="admonition-title">Todo</p>
+<p>Needs content.</p>
+</div>
+</section>
+<section id="video-block">
+<span id="user-manual-video-block-label"></span><h3>Video block<a class="headerlink" href="#video-block" title="Link to this heading">#</a></h3>
+<p>A video block allows an editor to insert a video in to a page.
+Enter the URL of a video hosted by a third party, and click the right arrow to save it.
+A preview of the video displays.</p>
+<img alt="Video block" src="../_images/video-block.png" />
+<p>The video block has several configuration options.</p>
+<img alt="Video block configuration" src="../_images/video-block-configuration.png" />
+<dl class="simple myst">
+<dt>Video URL</dt><dd><p>The URL of the video.</p>
+</dd>
+<dt>Preview Image URL</dt><dd><p>Optionally set a preview image.
+You can enter a URL of an image in the text field, or click the list icon and choose an image in your website.</p>
+</dd>
+<dt>Alignment</dt><dd><p>Options for alignment include left, right, center, and full width.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">User Manual</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="copy-paste-blocks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Copy, Cut, and Paste blocks in Volto</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manage-blocks">Manage blocks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-block">Create a block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-a-block">Configure a block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rearrange-blocks">Rearrange blocks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-headings-as-anchor-links">Copy headings as anchor links</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delete-a-block">Delete a block</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#default-block-types">Default block types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description-block">Description block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid-block">Grid block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#html-block">HTML block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-block">Image block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-block">Listing block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maps-block">Maps block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-block">Search block</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-options">Basic options</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#base-search-query-options">Base search query options</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#facets">Facets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#controls">Controls</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#views">Views</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#table-block">Table block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents-block">Table of contents block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teaser-block">Teaser block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-block">Text block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#video-block">Video block</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Plone Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Volto Foundation.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>The text and illustrations in this website are licensed by the Plone Foundation under a Creative Commons Attribution 4.0 International license. Plone and the Plone® logo are registered trademarks of the Plone Foundation, registered in the United States and other countries. For guidelines on the permitted uses of the Plone trademarks, see <a href="https://plone.org/foundation/logo">https://plone.org/foundation/logo</a>. All other trademarks are owned by their respective owners.</p>
+<p>Pull request previews by <a href="https://readthedocs.org/" target="_blank">Read the Docs</a>.</p>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">0.0.1</div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

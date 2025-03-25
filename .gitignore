@@ -67,9 +67,9 @@ public/critical.css
 packages/volto/data
 
 # Sphinx and MyST
-docs/_build/
+/_build
 /.python-version
 /.tool-versions
-docs/source/news
+docs/news
 
 tsconfig.tsbuildinfo

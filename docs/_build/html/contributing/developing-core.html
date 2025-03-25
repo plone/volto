@@ -1,0 +1,1309 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Learn how to set up an environment to develop Volto core and the basics of the Volto monorepo." name="description" />
+<meta content="Learn how to set up an environment to develop Volto core and the basics of the Volto monorepo." property="og:description" />
+<meta content="Develop Volto core" property="og:title" />
+<meta content="pnpm, monorepo, develop, core, Volto, Plone, frontend, typescript" name="keywords" />
+<meta property="og:title" content="Develop Volto core" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://6.docs.plone.org/contributing/developing-core.html" />
+<meta property="og:site_name" content="Plone Documentation" />
+<meta property="og:description" content="This chapter describes how to develop the latest version of Volto core and its libraries, packages, and apps as open source software contributions. Monorepo structure: The Volto core repository has..." />
+<meta property="og:image" content="https://6.docs.plone.org/_static/Plone_logo_square.png" />
+<meta property="og:image:alt" content="Plone Documentation" />
+<meta property="og:locale" content="en_US" />
+
+    <title>Develop Volto core &#8212; Volto Documentation v0.0.1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/plone-sphinx-theme.css?v=88f4e24d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-examples.css?v=e236af4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=734b19f4" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=3611b776"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/plone-sphinx-theme.js?v=ce3a8c55"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contributing/developing-core';</script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Volto Documentation v0.0.1"
+          href="../_static/opensearch.xml"/>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Design principles" href="design-principles.html" />
+    <link rel="prev" title="Contributing to Volto" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/logo.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">Volto Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+            
+          
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/plone/volto" title="GitHub" class="nav-link custom-fancy-css" rel="noopener me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+            
+          
+            
+          
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://plone.social/@plone" title="Mastodon" class="nav-link custom-fancy-css" rel="noopener me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Mastodon</span></a>
+        </li>
+        <li class="nav-item">
+            
+          
+            
+          
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/@PloneCMS" title="YouTube" class="nav-link custom-fancy-css" rel="noopener me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-youtube fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+        <li class="nav-item">
+            
+          
+            
+          
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://x.com/plone" title="X (formerly Twitter)" class="nav-link custom-fancy-css" rel="noopener me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X (formerly Twitter)</span></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../development/index.html">Development</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/creating-project.html">Create a Volto project without a backend</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../development/add-ons/index.html">Develop Volto add-ons</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/install-an-add-on.html">Install an add-on in Volto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/install-an-add-on-dev-18.html">Install an add-on in development mode in Volto 18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/install-an-add-on-dev-17.html">Install an add-on in development mode in Volto 17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/load-add-on-configuration.html">Load configuration from add-ons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/create-an-add-on-18.html">Create an add-on for Volto 18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/create-an-add-on-17.html">Create an add-on for Volto 17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/test-add-ons-18.html">Test add-ons in Volto 18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/test-add-ons-17.html">Test add-ons in Volto 17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/extend-webpack-add-on.html">Extend webpack setup from an add-on</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/extend-eslint-add-on.html">Extend ESLint configuration from an add-on</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/troubleshoot-transpilation.html">Troubleshoot untranspiled add-on dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/i18n.html">Add-on internationalization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/best-practices.html">Best practices for add-ons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/theme.html">Create a Volto theme add-on</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/add-ons/public-folder.html">Add static files from your add-on to your build</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/folder-structure.html">Folder structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/environment-variables.html">How to use environment variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/customizing-components.html">Customizing Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/customizing-views.html">Customizing Volto Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/creating-views.html">Creating Volto Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/images.html">Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/i18n.html">Internationalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/express.html">Custom Express middleware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/lazyload.html">Lazy loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/appextras.html">AppExtras component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/contextnavigation.html">Context navigation component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/pluggables.html">Pluggables framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/widget.html">Forms and widgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/how-to-restrict-blocks.html">How to restrict blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/color-picker-widget.html">Color picker widget</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../configuration/index.html">Configuration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/how-to.html">The configuration registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/settings-reference.html">Settings reference guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/experimental.html">Experimental features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/zero-config-builds.html">Zero configuration builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/component-registry.html">Component registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/internalproxy.html">Internal proxy to content backend API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/backend.html">Backend configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/volto-config-js.html">Programmatically define the active add-ons and theme</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../configuration/volto-slate/index.html"><code class="docutils literal notranslate"><span class="pre">volto-slate</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/volto-slate/api.html"><code class="docutils literal notranslate"><span class="pre">volto-slate</span></code> API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/volto-slate/configuration-settings.html">Editor Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/volto-slate/writing-plugins.html">How to write a Slate editor plugin</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/multilingual.html">Multilingual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/workingcopy.html">Working copy support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/environmentvariables.html">Environment variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/expanders.html">API expanders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/locking.html">Locking support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/slots.html">Slots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/validation.html">Client side form field validation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../theming/index.html">Theming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../theming/about-semantic.html">About Semantic UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/semanticui-theming.html">Semantic UI Theming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/theming-engine.html">How does the theming engine work?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/theming-strategy.html">Theming Strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/custom-styling.html">Custom Styling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/using-third-party-themes.html">Using third party libraries and themes other than <code class="docutils literal notranslate"><span class="pre">semantic-ui</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/theming-a-base-theme.html">Customize a base theme</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../blocks/index.html">Blocks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../blocks/introduction.html">Blocks Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blocks/anatomy.html">Blocks anatomy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blocks/settings.html">Blocks settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blocks/editcomponent.html">Blocks - Edit components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blocks/block-style-wrapper.html">Block style wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blocks/extensions.html">Block extensions mechanism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blocks/ssr.html">Server-side rendering for async blocks</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../blocks/core/index.html">Core Blocks developer notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../blocks/core/listing.html">Listing block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../blocks/core/teaser.html">Teaser Block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../blocks/core/grid.html">Grid block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../blocks/core/container.html">Container</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../blocks/examples/index.html">Volto block examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../blocks/examples/custom-schema-and-view.html">Block with a custom schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../blocks/examples/custom-schema-view-and-edit.html">Block with a custom schema and edit components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../blocks/examples/custom-view-and-variations.html">Block with a custom schema and variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../blocks/examples/custom-view-variations-and-schema-enhancer.html">Block with a custom schema, variations, and a schema enhancer in a variation</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../backend/index.html">Integration with the backend</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../deploying/index.html">Deploying</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deploying/simple.html">Simple deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deploying/pm2.html">Deployment using a Node.js process manager (PM2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deploying/seamless-mode.html">Seamless mode</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../deploying/apache.html">Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deploying/sentry.html">Integration with Sentry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deploying/performance.html">critical.css (above the fold) optimizations</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrade-guide/index.html">Upgrade Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../client/index.html">Plone REST API JavaScript client</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../client/quick-start.html">Quick Start</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../client/actions/index.html">Endpoint actions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/actions.html">Actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/addons.html">Add-ons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/aliases.html">Aliases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/breadcrumbs.html">Breadcrumbs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/comments.html">Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/content.html">Content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/contextnavigation.html">Context Navigation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/controlpanels.html">Control Panels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/copymove.html">Copy and Move</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/database.html">Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/email-notification.html">Email Notification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/email-send.html">Email Send</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/groups.html">Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/history.html">History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/linkintegrity.html">Link Integrity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/lock.html">Locking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/login.html">Login</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/navigation.html">Navigation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/navroot.html">Navigation root</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/principals.html">Principals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/querysources.html">Querysources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/querystring.html">Querystring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/querystringsearch.html">Querystring Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/registry.html">Registry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/relations.html">Relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/rules.html">Rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/search.html">Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/site.html">Site</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/sources.html">Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/system.html">System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/transactions.html">Transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/translations.html">Translations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/upgrade.html">Upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/userschema.html">User schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/vocabularies.html">Vocabularies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/workflow.html">Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client/actions/workingcopy.html">Working Copy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../client/misc.html">Miscellaneous considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client/future-improvements.html">Future improvements</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user-manual/index.html">User Manual</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user-manual/blocks.html">Edit content using blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-manual/copy-paste-blocks.html">Copy, Cut, and Paste blocks in Volto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-manual/links-to-item.html">Finding links and references to the current page</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Learning resources</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Contributing to Volto</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Develop Volto core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design-principles.html">Design principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language-features.html">JavaScript language features and browser support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linting.html">Linting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acceptance-tests.html">Acceptance tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="react.html">React</a></li>
+<li class="toctree-l2"><a class="reference internal" href="redux.html">Redux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing.html">Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icons.html">Icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accessibility-guidelines.html">Accessibility guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bundle-size-optimization.html">Bundle size optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typescript.html">TypeScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="volto-core-addons.html">Volto core add-ons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version-policy.html">Version policy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes/index.html">Volto Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-management-notes/index.html">Release management notes</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../conceptual-guides/index.html">Conceptual guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../conceptual-guides/add-ons.html">Volto add-on concepts</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/plone/volto" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/plone/volto/edit/main/docs/contributing/developing-core.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/plone/volto/issues/new?title=Issue%20on%20page%20%2Fcontributing/developing-core.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/contributing/developing-core.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Develop Volto core</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monorepo-structure">Monorepo structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#folder-layout">Folder layout</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development-prerequisites">Development prerequisites</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nvm">nvm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#node-js">Node.js</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pnpm">pnpm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make">Make</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git">Git</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-environment">Set up the environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-plone">Start Plone</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start-the-backend">Start the backend</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-backend-language">Configure backend language</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-the-frontend">Start the frontend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-commands-for-pnpm-workspaces">Run commands for pnpm workspaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developing-volto">Developing Volto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#develop-other-libraries-in-a-workspace">Develop other libraries in a workspace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typescript">TypeScript</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-libraries">Core libraries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#registry">Registry</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts">Scripts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types">Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slate-support-for-volto">Slate support for Volto</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volto-project-generator">Volto project generator</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-frontends">Supported frontends</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-frontends">Experimental frontends</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#next-js">Next.js</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remix">Remix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#react-router-7">React Router 7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vite-build-client-only">Vite build (client only)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vite-ssr-build">Vite SSR build</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-libraries">Support libraries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volto-coresandbox"><code class="docutils literal notranslate"><span class="pre">volto-coresandbox</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volto-testing-package">Volto testing package</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volto-guillotina">Volto Guillotina</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="develop-volto-core">
+<h1>Develop Volto core<a class="headerlink" href="#develop-volto-core" title="Link to this heading">#</a></h1>
+<p>This chapter describes how to develop the latest version of Volto core and its libraries, packages, and apps as open source software contributions.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For previous versions of Volto core, you should follow the guide in the relevant version branch to build and run the backend.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/plone/volto/blob/17.x.x/api/README.rst">Volto 17</a></p></li>
+<li><p><a class="reference external" href="https://github.com/plone/volto/blob/16.x.x/api/README.rst">Volto 16</a></p></li>
+</ul>
+<p>Additionally you can build each version of Volto documentation by running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">docs-html</span></code> from the root of the repository, and reading the relevant developer and contributing documentation.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>To create a full Plone project with both frontend and backend, see <span class="xref std std-doc">plone:install/create-project</span> instead.</p>
+</div>
+<section id="monorepo-structure">
+<span id="developing-core-monorepo-structure-label"></span><h2>Monorepo structure<a class="headerlink" href="#monorepo-structure" title="Link to this heading">#</a></h2>
+<p>The Volto core repository has the shape of a monorepo, where &quot;mono&quot; means &quot;single&quot; and &quot;repo&quot; is short for &quot;repository&quot;.
+This means that several apps and libraries related to each other are stored in the same repository.
+They are managed together but released individually.
+This allows the code to be shared effectively, and unifies tracking of changes across all of the apps and libraries.</p>
+<p>This monorepo uses pnpm as a package manager, extensively using its <a class="reference external" href="https://6.docs.plone.org/glossary.html#term-workspace" title="(in Plone Documentation v6)"><span class="xref std std-term">workspace</span></a> feature.
+It's organized in two folders, depending on whether it's a library (package) or an app.
+The workspaces are located in the <code class="docutils literal notranslate"><span class="pre">packages</span></code> or <code class="docutils literal notranslate"><span class="pre">apps</span></code> folder.</p>
+<section id="folder-layout">
+<h3>Folder layout<a class="headerlink" href="#folder-layout" title="Link to this heading">#</a></h3>
+<p>Volto has the following folder structure.
+The package <code class="docutils literal notranslate"><span class="pre">volto</span></code> is the core code of Volto.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/
+├─ apps/
+│  ├─ nextjs
+│  ├─ remix
+│  ├─ rr7
+│  ├─ vite
+│  └─ vite-ssr
+├─ ...
+├─ packages/
+│  ├─ blocks
+│  ├─ client
+│  ├─ components
+│  ├─ coresandbox
+│  ├─ generator-volto
+│  ├─ helpers
+│  ├─ providers
+│  ├─ registry
+│  ├─ scripts
+│  ├─ slots
+│  ├─ theming
+│  ├─ tsconfig
+│  ├─ types
+│  ├─ volto
+│  ├─ volto-guillotina
+│  ├─ volto-slate
+│  └─ volto-testing
+├─ ...
+</pre></div>
+</div>
+</section>
+</section>
+<section id="development-prerequisites">
+<h2>Development prerequisites<a class="headerlink" href="#development-prerequisites" title="Link to this heading">#</a></h2>
+<p>To set up a Volto core development environment, your system must satisfy the following prerequisites.</p>
+<ul>
+<li><p>An operating system that runs all the requirements mentioned.
+Most UNIX-based operating systems are supported, including many Linux distributions, macOS, or <a class="reference external" href="https://6.docs.plone.org/glossary.html#term-Windows-Subsystem-for-Linux" title="(in Plone Documentation v6)"><span class="xref std std-term">Windows Subsystem for Linux</span></a> (WSL) on Windows.
+A UNIX-based operating system is recommended.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Windows alone is not recommended because it does not support <a class="reference external" href="https://6.docs.plone.org/glossary.html#term-GNU-make" title="(in Plone Documentation v6)"><span class="xref std std-term">GNU make</span></a>.
+If you get Plone to run on Windows alone, please feel free to document and share your process.</p>
+</div>
+</li>
+</ul>
+<ul class="simple">
+<li><p><a class="reference external" href="https://6.docs.plone.org/glossary.html#term-nvm" title="(in Plone Documentation v6)"><span class="xref std std-term">nvm</span></a></p></li>
+<li><p><a class="reference external" href="https://6.docs.plone.org/glossary.html#term-Node.js" title="(in Plone Documentation v6)"><span class="xref std std-term">Node.js</span></a> LTS 22.x</p></li>
+<li><p><a class="reference external" href="https://6.docs.plone.org/glossary.html#term-pnpm" title="(in Plone Documentation v6)"><span class="xref std std-term">pnpm</span></a></p></li>
+<li><p><a class="reference external" href="https://6.docs.plone.org/glossary.html#term-GNU-make" title="(in Plone Documentation v6)"><span class="xref std std-term">GNU make</span></a></p></li>
+<li><p><a class="reference external" href="https://6.docs.plone.org/glossary.html#term-Docker" title="(in Plone Documentation v6)"><span class="xref std std-term">Docker</span></a></p></li>
+<li><p><a class="reference external" href="https://6.docs.plone.org/glossary.html#term-Git" title="(in Plone Documentation v6)"><span class="xref std std-term">Git</span></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When developing Volto core, pnpm is required.
+When developing a project using Plone, Yarn or other package managers may be used.</p>
+</div>
+<section id="nvm">
+<h3>nvm<a class="headerlink" href="#nvm" title="Link to this heading">#</a></h3>
+<p>The following terminal session commands use <code class="docutils literal notranslate"><span class="pre">bash</span></code> for the shell.
+Adapt them for your flavor of shell.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>See the <a class="reference external" href="https://github.com/nvm-sh/nvm#install--update-script"><code class="docutils literal notranslate"><span class="pre">nvm</span></code> install and update script documentation</a>.
+For the <code class="docutils literal notranslate"><span class="pre">fish</span></code> shell, see <a class="reference external" href="https://github.com/jorgebucaran/nvm.fish"><code class="docutils literal notranslate"><span class="pre">nvm.fish</span></code></a>.</p>
+</div>
+<ol class="arabic">
+<li><p>Create your shell profile, if it does not exist.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>touch<span class="w"> </span>~/.bash_profile
+</pre></div>
+</div>
+</li>
+<li><p>Download and run the <code class="docutils literal notranslate"><span class="pre">nvm</span></code> install and update script, and pipe it into <code class="docutils literal notranslate"><span class="pre">bash</span></code>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o-<span class="w"> </span>https://raw.githubusercontent.com/creationix/nvm/v0.39.5/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</pre></div>
+</div>
+</li>
+<li><p>Source your profile.
+Alternatively close the session and open a new one.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/.bash_profile
+</pre></div>
+</div>
+</li>
+<li><p>Verify that the <code class="docutils literal notranslate"><span class="pre">nvm</span></code> version is that which you just installed or updated:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>nvm<span class="w"> </span>--version
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="node-js">
+<h3>Node.js<a class="headerlink" href="#node-js" title="Link to this heading">#</a></h3>
+<p>We recommend that you install Node.js using nvm.
+Alternatively you can install Node.js using Homebrew or other package installer.</p>
+<ol class="arabic">
+<li><p>Install or update the supported LTS versions of Node.js, then activate the version supported in Volto.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>nvm<span class="w"> </span>install<span class="w"> </span>--lts
+nvm<span class="w"> </span>use<span class="w"> </span>--lts
+</pre></div>
+</div>
+</li>
+<li><p>Verify that the supported version of Node.js is activated.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>node<span class="w"> </span>-v
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="pnpm">
+<h3>pnpm<a class="headerlink" href="#pnpm" title="Link to this heading">#</a></h3>
+<p>Using corepack:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>corepack<span class="w"> </span>prepare<span class="w"> </span>pnpm@latest<span class="w"> </span>--activate
+</pre></div>
+</div>
+<p>or using <code class="docutils literal notranslate"><span class="pre">npm</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>pnpm@latest
+</pre></div>
+</div>
+<p>Verify the latest version.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pnpm<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>Compare the output to the <a class="reference external" href="https://www.npmjs.com/package/pnpm">latest pnpm release number</a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://pnpm.io/installation">pnpm installation</a>.</p>
+</div>
+</section>
+<section id="make">
+<h3>Make<a class="headerlink" href="#make" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://6.docs.plone.org/glossary.html#term-Make" title="(in Plone Documentation v6)"><span class="xref std std-term">Make</span></a> comes installed on most Linux distributions.
+On macOS, you must first <a class="reference external" href="https://developer.apple.com/xcode/resources/">install Xcode</a>, then install its command line tools.
+On Windows, it is strongly recommended to <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/install">Install Linux on Windows with WSL</a>, which will include <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
+<p>Finally, it is a good idea to update your system's version of <code class="docutils literal notranslate"><span class="pre">make</span></code>, because some distributions, especially macOS, have an outdated version.
+Use your favorite search engine or trusted online resource for how to update <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
+</section>
+<section id="docker">
+<h3>Docker<a class="headerlink" href="#docker" title="Link to this heading">#</a></h3>
+<p>Install <a class="reference external" href="https://docs.docker.com/get-started/get-docker/">Docker Desktop</a> for your operating system.
+Docker Desktop includes all Docker tools.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For some Linux distributions, you might need to create a group <code class="docutils literal notranslate"><span class="pre">docker</span></code> and add your user to this group.
+See <a class="reference external" href="https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user">Linux post-installation steps for Docker Engine</a> for details.</p>
+</div>
+</section>
+<section id="git">
+<h3>Git<a class="headerlink" href="#git" title="Link to this heading">#</a></h3>
+<p>Install <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a> for your operating system.</p>
+</section>
+</section>
+<section id="set-up-the-environment">
+<h2>Set up the environment<a class="headerlink" href="#set-up-the-environment" title="Link to this heading">#</a></h2>
+<p>You need to perform the steps in this section only once to set up your environment.</p>
+<p>Clone the Volto repo, and change your working directory to the cloned repository:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/plone/volto.git
+<span class="nb">cd</span><span class="w"> </span>volto
+</pre></div>
+</div>
+<p>Install the frontend dependencies.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>install
+</pre></div>
+</div>
+</section>
+<section id="start-plone">
+<span id="develop-volto-start-plone-label"></span><h2>Start Plone<a class="headerlink" href="#start-plone" title="Link to this heading">#</a></h2>
+<p>Every time you want to run Volto for core development, you will need to create two terminal sessions, one for the <a class="reference internal" href="#develop-volto-start-the-backend-label"><span class="std std-ref">backend</span></a> and one for the <a class="reference internal" href="#develop-volto-start-the-frontend-label"><span class="std std-ref">frontend</span></a>.
+For both sessions, change your working directory to the root of your Volto clone.</p>
+<p>To stop either the backend or frontend, use <kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">c</kbd>.</p>
+<section id="start-the-backend">
+<span id="develop-volto-start-the-backend-label"></span><h3>Start the backend<a class="headerlink" href="#start-the-backend" title="Link to this heading">#</a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.0.0-alpha.42: </span>Persist backend data across Docker sessions.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not use this method of persistence in a production environment.
+It is intended only for development.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../deploying/index.html"><span class="doc">Deploying</span></a></p>
+</div>
+</div>
+</div>
+<p>In the first session, start the backend.
+You can browse to the backend running at <a class="reference external" href="http://localhost:8080">http://localhost:8080</a>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>backend-docker-start
+</pre></div>
+</div>
+<p>When you run this command for the first time, it will download Docker images, configure the backend, create a Docker volume to persist the data named <code class="docutils literal notranslate"><span class="pre">volto-backend-data</span></code>, and start the backend.</p>
+<p>Subsequently, when you run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">backend-docker-start</span></code>, it will only start the backend using the existing configuration and Docker image and volume.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you would like to start the backend with a clean data volume, you can run the following command.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>volume<span class="w"> </span>rm<span class="w"> </span>volto-backend-data
+</pre></div>
+</div>
+<p>Then run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">backend-docker-start</span></code> again to start the backend with a clean data volume.</p>
+</div>
+<section id="configure-backend-language">
+<span id="develop-volto-configure-backend-language-label"></span><h4>Configure backend language<a class="headerlink" href="#configure-backend-language" title="Link to this heading">#</a></h4>
+<p>If you use the Docker image <a class="reference external" href="https://github.com/plone/plone-backend"><code class="docutils literal notranslate"><span class="pre">plone-backend</span></code></a>, you can set its <code class="docutils literal notranslate"><span class="pre">LANGUAGE</span></code> environment variable, overriding the default of <code class="docutils literal notranslate"><span class="pre">en</span></code>, when you start it.</p>
+<p>This variable is applied only when the Plone site is created.
+If you persist data through restarts, you only need to do this once.
+Conversely, if you create a Plone site in the wrong language, you can delete the data volume, and recreate it with the correct language.</p>
+<p>You can either pass an environment variable into the make command to start the backend, or export an environment variable in your shell session and start the backend.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># pass method</span>
+<span class="nv">LANGUAGE</span><span class="o">=</span>pt-br<span class="w"> </span>make<span class="w"> </span>backend-docker-start
+
+<span class="c1"># export method</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LANGUAGE</span><span class="o">=</span>pt-br
+make<span class="w"> </span>backend-docker-start
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="start-the-frontend">
+<span id="develop-volto-start-the-frontend-label"></span><h2>Start the frontend<a class="headerlink" href="#start-the-frontend" title="Link to this heading">#</a></h2>
+<p>In the second session, start the frontend, Volto.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pnpm<span class="w"> </span>start
+</pre></div>
+</div>
+<p>Browse to the frontend running at <a class="reference external" href="http://localhost:3000">http://localhost:3000</a>.</p>
+</section>
+<section id="run-commands-for-pnpm-workspaces">
+<span id="developing-core-run-commands-for-pnpm-workspaces-label"></span><h2>Run commands for pnpm workspaces<a class="headerlink" href="#run-commands-for-pnpm-workspaces" title="Link to this heading">#</a></h2>
+<p>As mentioned in <a class="reference internal" href="#developing-core-monorepo-structure-label"><span class="std std-ref">Monorepo structure</span></a>, pnpm has the concept of <a class="reference external" href="https://6.docs.plone.org/glossary.html#term-workspace" title="(in Plone Documentation v6)"><span class="xref std std-term">workspace</span></a>.
+Every package or app located in the <code class="docutils literal notranslate"><span class="pre">packages</span></code> or <code class="docutils literal notranslate"><span class="pre">apps</span></code> folders is declared as a pnpm workspace.</p>
+<p>When developing Volto, you can run pnpm commands from either the repository root or inside the package's or app's workspace in <code class="docutils literal notranslate"><span class="pre">packages/&lt;package_name&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">apps/&lt;app_name&gt;</span></code>.</p>
+<p>pnpm commands will apply in the context from which they are run.
+That means when you run a pnpm command from the repository root, it will apply to all workspaces.
+It also means when you run a pnpm command from inside a workspace, it will apply only to that workspace.</p>
+<p>You can also use the pnpm <code class="docutils literal notranslate"><span class="pre">--filter</span></code> feature from the repository root to apply to only the specified workspaces, as shown in the following examples.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pnpm<span class="w"> </span>--filter<span class="w"> </span>@plone/volto<span class="w"> </span>start
+</pre></div>
+</div>
+<p>The above command when run from the repository root will start Volto.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pnpm<span class="w"> </span>--filter<span class="w"> </span>@plone/registry<span class="w"> </span>build
+</pre></div>
+</div>
+<p>The above command when run from the repository root will build the Volto registry.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more information about pnpm workspaces, read the <a class="reference external" href="https://pnpm.io/workspaces">documentation of pnpm workspaces</a>.</p>
+</div>
+</section>
+<section id="developing-volto">
+<h2>Developing Volto<a class="headerlink" href="#developing-volto" title="Link to this heading">#</a></h2>
+<p>The Volto core code is located in the <code class="docutils literal notranslate"><span class="pre">packages/volto</span></code> folder.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 18.x.x: </span>Since December 2023, the Volto repository is now a monorepo.
+Volto is located now in the <code class="docutils literal notranslate"><span class="pre">packages/volto</span></code> folder.
+You can run all the usual commands from inside that folder, but replacing <code class="docutils literal notranslate"><span class="pre">yarn</span></code> with <code class="docutils literal notranslate"><span class="pre">pnpm</span></code>, since they have similar commands and features.
+For example, to start Volto:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pnpm<span class="w"> </span>start
+</pre></div>
+</div>
+</div>
+<p>You can also run commands for a specific workspace using the <code class="docutils literal notranslate"><span class="pre">--filter</span></code> feature as shown in the previous section, <a class="reference internal" href="#developing-core-run-commands-for-pnpm-workspaces-label"><span class="std std-ref">Run commands for pnpm workspaces</span></a>.</p>
+</section>
+<section id="develop-other-libraries-in-a-workspace">
+<h2>Develop other libraries in a workspace<a class="headerlink" href="#develop-other-libraries-in-a-workspace" title="Link to this heading">#</a></h2>
+<p>If a package is a dependency of another package in the monorepo, and it's declared as a workspace, they can be declared as usual in the <code class="file docutils literal notranslate"><span class="pre">package.json</span></code> as follows:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;@plone/types&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;workspace:*&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://pnpm.io/workspaces">Documentation of pnpm workspaces</a>.</p>
+</div>
+</section>
+<section id="typescript">
+<h2>TypeScript<a class="headerlink" href="#typescript" title="Link to this heading">#</a></h2>
+<p>By default, the use of TypeScript is required in Plone frontend libraries, Volto itself being an exception.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="typescript.html#typescript-policy-in-core-label"><span class="std std-ref">TypeScript policy in core</span></a>.</p>
+</div>
+</section>
+<section id="core-libraries">
+<h2>Core libraries<a class="headerlink" href="#core-libraries" title="Link to this heading">#</a></h2>
+<p>The monorepository consists of several core libraries.</p>
+<section id="registry">
+<h3>Registry<a class="headerlink" href="#registry" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;plone/registry</span></code> provides support for building an add-on registry and infrastructure for JavaScript and TypeScript-based apps.
+Used by Volto, you can also use it in other JavaScript frameworks and environments to help create an add-on driven extensiblility story.</p>
+</section>
+<section id="scripts">
+<h3>Scripts<a class="headerlink" href="#scripts" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;plone/scripts</span></code> is the placeholder of tools used by Volto and its add-ons, such as the <code class="docutils literal notranslate"><span class="pre">i18n</span></code> internationalization scripts.</p>
+</section>
+<section id="types">
+<h3>Types<a class="headerlink" href="#types" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;plone/types</span></code> is the package that contains the TypeScript types in used in Plone.</p>
+</section>
+<section id="slate-support-for-volto">
+<h3>Slate support for Volto<a class="headerlink" href="#slate-support-for-volto" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;plone/volto-slate</span></code> is the glue package that provides support for the Slate library in Volto.</p>
+</section>
+<section id="volto-project-generator">
+<h3>Volto project generator<a class="headerlink" href="#volto-project-generator" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;plone/generator-volto</span></code> is a Yeoman generator that helps you set up Volto via command line.
+It generates all the boilerplate needed to start developing a Plone Volto project.
+It is used by <a class="reference external" href="https://github.com/collective/cookiecutter-plone-starter">CookieCutter Plone Starter</a>, the recommended way to set up Plone projects.
+The generator features an <code class="docutils literal notranslate"><span class="pre">addon</span></code> template for scaffolding Volto add-ons in your projects.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 18.0.0-alpha.43: </span>For Volto 18, <code class="docutils literal notranslate"><span class="pre">&#64;plone/generator-volto</span></code> is replaced by <a class="reference external" href="https://github.com/plone/cookieplone">Cookieplone</a>.</p>
+</div>
+</section>
+</section>
+<section id="supported-frontends">
+<h2>Supported frontends<a class="headerlink" href="#supported-frontends" title="Link to this heading">#</a></h2>
+<p>Plone 6 comes with two frontend <a class="reference external" href="https://6.docs.plone.org/glossary.html#term-reference-implementation" title="(in Plone Documentation v6)"><span class="xref std std-term">reference implementation</span></a>s.
+Volto is the default frontend, and is React-based.
+Classic UI is the Python-based, server-side rendered frontend.</p>
+<p>In Volto's <code class="docutils literal notranslate"><span class="pre">apps</span></code> folder, you'll find a Volto project scaffolding that uses Volto as a library.
+This is the same as that which you'll have when you follow the instructions in <span class="xref std std-doc">plone:install/create-project</span>).</p>
+</section>
+<section id="experimental-frontends">
+<h2>Experimental frontends<a class="headerlink" href="#experimental-frontends" title="Link to this heading">#</a></h2>
+<p>Other frontends are currently under heavy development.
+They are marked as experimental and, for now, they are a proof of concept demonstrating that other frontends are possible.
+Although they do work now in an acceptable way, the implementation might change in the future.
+These implementations only show how to access the public Plone content in the current site, dealing with data fetching and routing.
+All implementations are located in the <code class="docutils literal notranslate"><span class="pre">apps</span></code> directory in a subdirectory according to their implementation name.
+They use the Plone frontend strategic packages, including <code class="docutils literal notranslate"><span class="pre">&#64;plone/registry</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;plone/client</span></code>, and <code class="docutils literal notranslate"><span class="pre">&#64;plone/components</span></code>.</p>
+<section id="next-js">
+<h3>Next.js<a class="headerlink" href="#next-js" title="Link to this heading">#</a></h3>
+<p>This frontend is a proof of concept using Next.js with Plone.</p>
+<p>You can try it out using the following command.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pnpm<span class="w"> </span>--filter<span class="w"> </span>plone-nextjs<span class="w"> </span>dev
+</pre></div>
+</div>
+</section>
+<section id="remix">
+<h3>Remix<a class="headerlink" href="#remix" title="Link to this heading">#</a></h3>
+<p>This frontend is a proof of concept using Remix with Plone.</p>
+<p>You can try it out using the following command.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pnpm<span class="w"> </span>--filter<span class="w"> </span>plone-remix<span class="w"> </span>dev
+</pre></div>
+</div>
+</section>
+<section id="react-router-7">
+<h3>React Router 7<a class="headerlink" href="#react-router-7" title="Link to this heading">#</a></h3>
+<p>This frontend is a proof of concept using React Router 7 with Plone.</p>
+<p>You can try it out using the following command.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pnpm<span class="w"> </span>--filter<span class="w"> </span>plone-rr7<span class="w"> </span>dev
+</pre></div>
+</div>
+</section>
+<section id="vite-build-client-only">
+<h3>Vite build (client only)<a class="headerlink" href="#vite-build-client-only" title="Link to this heading">#</a></h3>
+<p>This frontend is a proof of concept using a custom client build based in Vite with Plone.
+It uses <code class="docutils literal notranslate"><span class="pre">&#64;tanstack/router</span></code> in combination with <code class="docutils literal notranslate"><span class="pre">&#64;plone/client</span></code>, which in turns uses <code class="docutils literal notranslate"><span class="pre">&#64;tanstack/query</span></code>.
+This build is suitable for applications that do not need server side generation, and it's client only.</p>
+<p>You can try it out using the following command.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pnpm<span class="w"> </span>--filter<span class="w"> </span>plone-vite<span class="w"> </span>dev
+</pre></div>
+</div>
+</section>
+<section id="vite-ssr-build">
+<h3>Vite SSR build<a class="headerlink" href="#vite-ssr-build" title="Link to this heading">#</a></h3>
+<p>This frontend is a proof of concept using a custom build, based in Vite with SSR with Plone.
+It uses <code class="docutils literal notranslate"><span class="pre">&#64;tanstack/router</span></code> in combination with <code class="docutils literal notranslate"><span class="pre">&#64;plone/client</span></code> (which in turns uses <code class="docutils literal notranslate"><span class="pre">&#64;tanstack/query</span></code>).</p>
+<p>You can try it out using the following command.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pnpm<span class="w"> </span>--filter<span class="w"> </span>plone-vite-ssr<span class="w"> </span>dev
+</pre></div>
+</div>
+</section>
+</section>
+<section id="support-libraries">
+<h2>Support libraries<a class="headerlink" href="#support-libraries" title="Link to this heading">#</a></h2>
+<p>Volto uses several libraries to support development.</p>
+<section id="volto-coresandbox">
+<h3><code class="docutils literal notranslate"><span class="pre">volto-coresandbox</span></code><a class="headerlink" href="#volto-coresandbox" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;plone/volto-coresandbox</span></code> is a support library used mainly for testing purposes.
+It provides fixtures to bootstrap projects with configurations different than the default one.
+It is used by the acceptance tests to set up different test fixtures, such as <code class="docutils literal notranslate"><span class="pre">multilingual</span></code> or <code class="docutils literal notranslate"><span class="pre">workingcopy</span></code>.</p>
+</section>
+<section id="volto-testing-package">
+<h3>Volto testing package<a class="headerlink" href="#volto-testing-package" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">&#64;plone/testing</span></code> stub library helps set up the testing libraries used by Volto without having to install the whole Volto package.
+It is mainly used in CI to reduce installation times.</p>
+</section>
+<section id="volto-guillotina">
+<h3>Volto Guillotina<a class="headerlink" href="#volto-guillotina" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;plone/volto-guillotina</span></code> is the support library used to interact with Guillotina as the Plone backend.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Contributing to Volto</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="design-principles.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Design principles</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monorepo-structure">Monorepo structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#folder-layout">Folder layout</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development-prerequisites">Development prerequisites</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nvm">nvm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#node-js">Node.js</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pnpm">pnpm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make">Make</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git">Git</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-environment">Set up the environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-plone">Start Plone</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start-the-backend">Start the backend</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-backend-language">Configure backend language</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-the-frontend">Start the frontend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-commands-for-pnpm-workspaces">Run commands for pnpm workspaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developing-volto">Developing Volto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#develop-other-libraries-in-a-workspace">Develop other libraries in a workspace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typescript">TypeScript</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-libraries">Core libraries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#registry">Registry</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts">Scripts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types">Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slate-support-for-volto">Slate support for Volto</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volto-project-generator">Volto project generator</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-frontends">Supported frontends</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-frontends">Experimental frontends</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#next-js">Next.js</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remix">Remix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#react-router-7">React Router 7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vite-build-client-only">Vite build (client only)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vite-ssr-build">Vite SSR build</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-libraries">Support libraries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volto-coresandbox"><code class="docutils literal notranslate"><span class="pre">volto-coresandbox</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volto-testing-package">Volto testing package</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volto-guillotina">Volto Guillotina</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Plone Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Volto Foundation.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>The text and illustrations in this website are licensed by the Plone Foundation under a Creative Commons Attribution 4.0 International license. Plone and the Plone® logo are registered trademarks of the Plone Foundation, registered in the United States and other countries. For guidelines on the permitted uses of the Plone trademarks, see <a href="https://plone.org/foundation/logo">https://plone.org/foundation/logo</a>. All other trademarks are owned by their respective owners.</p>
+<p>Pull request previews by <a href="https://readthedocs.org/" target="_blank">Read the Docs</a>.</p>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">0.0.1</div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
