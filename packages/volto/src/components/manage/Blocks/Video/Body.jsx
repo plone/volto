@@ -104,6 +104,7 @@ const Body = ({ data, isEditMode }) => {
   };
 
   if (
+    data.url &&
     peertubeInstances instanceof Array &&
     data.url.match(new RegExp(peertubeInstances.join('|'), 'gi'))
   ) {

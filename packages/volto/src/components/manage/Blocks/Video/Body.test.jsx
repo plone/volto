@@ -20,6 +20,12 @@ config.blocks.blocksConfig = {
       addPermission: [],
       view: [],
     },
+    allowedPeertubeInstances: [
+      'freediverse.com', // About: https://freediverse.com/about/instance
+      'fair.tube', // About: https://fair.tube/about/instance
+      'tube.reseau-canope.fr', // About: https://tube.reseau-canope.fr/about/instance
+      'peertube.eus', // About: https://peertube.eus/about/instance
+    ],
   },
 };
 
@@ -113,6 +119,50 @@ test('renders a youtube video body component', () => {
         data={{
           '@type': 'video',
           url: 'https://www.youtube.com/watch?v=KwRSRRyuk-Q&list=PLGN9BI-OAQkQmEqf6O8jeyoFY1b2hD1uL&index=1',
+        }}
+      />
+    </Provider>,
+  );
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
+});
+
+test('renders a peertube video body component', () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+
+  const component = renderer.create(
+    <Provider store={store}>
+      <Body
+        data={{
+          '@type': 'video',
+          url: 'https://peertube.eus/w/qjubDnZ79UmmjhAUqvX2zu',
+        }}
+      />
+    </Provider>,
+  );
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
+});
+
+test('renders a incorrect peertube video body component', () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+
+  const component = renderer.create(
+    <Provider store={store}>
+      <Body
+        data={{
+          '@type': 'video',
+          url: 'https://other.peertubes.eus/w/qjubDnZ79UmmjhAUqvX2zu',
         }}
       />
     </Provider>,
