@@ -442,12 +442,3 @@ Volto uses several libraries to support development.
 `@plone/volto-coresandbox` is a support library used mainly for testing purposes.
 It provides fixtures to bootstrap projects with configurations different than the default one.
 It is used by the acceptance tests to set up different test fixtures, such as `multilingual` or `workingcopy`.
-
-### Volto testing package
-
-The `@plone/testing` stub library helps set up the testing libraries used by Volto without having to install the whole Volto package.
-It is mainly used in CI to reduce installation times.
-
-### Volto Guillotina
-
-`@plone/volto-guillotina` is the support library used to interact with Guillotina as the Plone backend.
