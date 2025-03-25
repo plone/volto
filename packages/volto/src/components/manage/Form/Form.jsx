@@ -599,27 +599,14 @@ class Form extends Component {
         );
         this.props.setSidebarTab(0);
       } else if (keys(blocksErrors).length > 0) {
-        const blocks = this.state.formData[getBlocksFieldname(formData)];
-
-        const blockId = Object.keys(blocksErrors)[0];
-
-        let blockSchema =
-          config.blocks.blocksConfig[blocks[blockId]['@type']].blockSchema;
-        if (typeof blockSchema === 'function') {
-          blockSchema = blockSchema({
-            intl: this.props.intl,
-            formData: blocks[blockId],
-          });
-        }
-
         const errorField = Object.entries(
           Object.entries(blocksErrors)[0][1],
         )[0][0];
-        const errorFieldTitle =
-          blockSchema?.properties?.[errorField]?.title || errorField;
         const errorMessage = Object.entries(
           Object.entries(blocksErrors)[0][1],
         )[0][1];
+        const errorFieldTitle = errorMessage.title || errorField;
+
         toast.error(
           <Toast
             error
