@@ -49,7 +49,6 @@ The versions of Python that are supported in Volto depend on the version of Plon
 | ----- | ------------ | ---------------- |
 | 6.1   | 3.10-3.13    | 18.0.0           |
 | 6.0   | 3.9-3.13     | 16.0.0 or 17.0.0 |
-| 5.2   | 2.7, 3.8     | 15.0.0           |
 
 For Plone 6.0.x, Python 3.12 is officially supported since Plone 6.0.10.
 Python 3.13 is officially supported since 6.0.14.
