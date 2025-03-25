@@ -21,7 +21,7 @@ Additionally you can build each version of Volto documentation by running `make 
 ```
 
 ```{seealso}
-To create a full Plone project with both frontend and backend, see {doc}`plone:install/create-project` instead.
+To create a full Plone project with both frontend and backend, see {doc}`plone:install/create-project-cookieplone` instead.
 ```
 
 
@@ -226,7 +226,7 @@ Then run `make backend-docker-start` again to start the backend with a clean dat
 
 #### Configure backend language
 
-If you use the Docker image [`plone-backend`](https://github.com/plone/plone-backend), you can set its `LANGUAGE` environment variable, overriding the default of `en`, when you start it.
+If you use the Docker image [`plone-backend`](https://github.com/plone/plone-backend), you can set its `SITE_DEFAULT_LANGUAGE` environment variable, overriding the default of `en`, when you start it.
 
 This variable is applied only when the Plone site is created.
 If you persist data through restarts, you only need to do this once.
@@ -236,10 +236,10 @@ You can either pass an environment variable into the make command to start the b
 
 ```shell
 # pass method
-LANGUAGE=pt-br make backend-docker-start
+SITE_DEFAULT_LANGUAGE=pt-br make backend-docker-start
 
 # export method
-export LANGUAGE=pt-br
+export SITE_DEFAULT_LANGUAGE=pt-br
 make backend-docker-start
 ```
 
@@ -353,14 +353,14 @@ Used by Volto, you can also use it in other JavaScript frameworks and environmen
 
 ### Volto project generator
 
-`@plone/generator-volto` is a Yeoman generator that helps you set up Volto via command line.
-It generates all the boilerplate needed to start developing a Plone Volto project.
-It is used by [CookieCutter Plone Starter](https://github.com/collective/cookiecutter-plone-starter), the recommended way to set up Plone projects.
-The generator features an `addon` template for scaffolding Volto add-ons in your projects.
-
 ```{deprecated} 18.0.0-alpha.43
 For Volto 18, `@plone/generator-volto` is replaced by [Cookieplone](https://github.com/plone/cookieplone).
 ```
+
+`@plone/generator-volto` is a Yeoman generator that helps you set up Volto via command line.
+It generates all the boilerplate needed to start developing a Plone Volto project.
+It was used by `cookiecutter-plone-starter`, the deprecated way to set up Plone projects.
+The generator features an `addon` template for scaffolding Volto add-ons in your projects.
 
 
 ## Supported frontends
@@ -370,7 +370,7 @@ Volto is the default frontend, and is React-based.
 Classic UI is the Python-based, server-side rendered frontend.
 
 In Volto's `apps` folder, you'll find a Volto project scaffolding that uses Volto as a library.
-This is the same as that which you'll have when you follow the instructions in {doc}`plone:install/create-project`).
+This is the same as that which you'll have when you follow the instructions in {doc}`plone:install/create-project-cookieplone`).
 
 
 ## Experimental frontends
