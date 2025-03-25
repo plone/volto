@@ -15,7 +15,7 @@ The Seven user interface (UI) is a React-based frontend for [Plone](https://plon
 
 Seven is the codename for the successor of Volto.
 The codename is _temporary_, the final name of the product has to be decided in the future, by the community when the release happens.
-It is being developed [in its own branch](https://github.com/plone/volto/tree/7) along side Volto (in main branch) as it happens during the next months.
+It is under active development [in its own branch `seven`](https://github.com/plone/volto/tree/seven) in parallel with Volto in the `main` branch and current stable branch `18.x.x`.
 
 
 
