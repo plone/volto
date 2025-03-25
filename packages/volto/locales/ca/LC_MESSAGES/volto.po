@@ -3991,10 +3991,10 @@ msgstr ""
 msgid "Type"
 msgstr "Tipus"
 
-#. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
+#. Default: "Type a valid URL"
 #: components/manage/Blocks/Video/Edit
-msgid "Type a Video (YouTube, Vimeo or mp4) URL"
-msgstr "Escriviu un URL de vídeo (YouTube, Vimeo o mp4)."
+msgid "Type a valid URL"
+msgstr ""
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete
@@ -4457,6 +4457,11 @@ msgstr ""
 #. Default: "You have not the required permission for this control panel."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "You have not the required permission for this control panel."
+msgstr ""
+
+#. Default: "YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed"
 msgstr ""
 
 #. Default: "Your email is required for reset your password."

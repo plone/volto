@@ -3991,10 +3991,10 @@ msgstr "Eroare la declanșarea câmpului evenimentului. Selectați o valoare"
 msgid "Type"
 msgstr "Tip"
 
-#. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
+#. Default: "Type a valid URL"
 #: components/manage/Blocks/Video/Edit
-msgid "Type a Video (YouTube, Vimeo or mp4) URL"
-msgstr "Introduceți un URL video (YouTube, Vimeo sau mp4)"
+msgid "Type a valid URL"
+msgstr ""
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete
@@ -4458,6 +4458,11 @@ msgstr "Ați fost deconectat de pe site."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "You have not the required permission for this control panel."
 msgstr "Nu aveți permisiunea necesară pentru acest panou de control."
+
+#. Default: "YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed"
+msgstr ""
 
 #. Default: "Your email is required for reset your password."
 #: components/theme/PasswordReset/RequestPasswordReset

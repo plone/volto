@@ -3985,10 +3985,10 @@ msgstr "त्रिगर करने वाली आयोजन फ़ी�
 msgid "Type"
 msgstr "प्रकार"
 
-#. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
+#. Default: "Type a valid URL"
 #: components/manage/Blocks/Video/Edit
-msgid "Type a Video (YouTube, Vimeo or mp4) URL"
-msgstr "एक वीडियो (YouTube, Vimeo या mp4) URL टाइप करें"
+msgid "Type a valid URL"
+msgstr ""
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete
@@ -4452,6 +4452,11 @@ msgstr "आपको साइट से लॉगआउट किया गय�
 #: components/manage/Controlpanels/Relations/Relations
 msgid "You have not the required permission for this control panel."
 msgstr "आपके पास इस नियंत्रण पटल के लिए आवश्यक अनुमति नहीं है।"
+
+#. Default: "YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed"
+msgstr ""
 
 #. Default: "Your email is required for reset your password."
 #: components/theme/PasswordReset/RequestPasswordReset

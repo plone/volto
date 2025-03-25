@@ -3991,10 +3991,10 @@ msgstr "触发了事件字段错误。请选择一个值"
 msgid "Type"
 msgstr ""
 
-#. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
+#. Default: "Type a valid URL"
 #: components/manage/Blocks/Video/Edit
-msgid "Type a Video (YouTube, Vimeo or mp4) URL"
-msgstr "输入一个视频(YouTube, Vimeo or mp4)的URL"
+msgid "Type a valid URL"
+msgstr ""
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete
@@ -4457,6 +4457,11 @@ msgstr "您已被此站点注销。"
 #. Default: "You have not the required permission for this control panel."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "You have not the required permission for this control panel."
+msgstr ""
+
+#. Default: "YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed"
 msgstr ""
 
 #. Default: "Your email is required for reset your password."

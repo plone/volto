@@ -3990,10 +3990,10 @@ msgstr "Fehler im auslösenden Ereignis. Bitte geben Sie einen Wert ein"
 msgid "Type"
 msgstr "Typ"
 
-#. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
+#. Default: "Type a valid URL"
 #: components/manage/Blocks/Video/Edit
-msgid "Type a Video (YouTube, Vimeo or mp4) URL"
-msgstr "Geben Sie eine Video-URL (YouTube, Video oder MP4) ein"
+msgid "Type a valid URL"
+msgstr ""
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete
@@ -4457,6 +4457,11 @@ msgstr "Sie wurden von der Website abgemeldet."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "You have not the required permission for this control panel."
 msgstr "Sie haben nicht die notwendige Berechtigung für dieses Control-Panel."
+
+#. Default: "YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed"
+msgstr ""
 
 #. Default: "Your email is required for reset your password."
 #: components/theme/PasswordReset/RequestPasswordReset
