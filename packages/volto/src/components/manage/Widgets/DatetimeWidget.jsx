@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
 import loadable from '@loadable/component';
@@ -12,11 +12,10 @@ import leftKey from '@plone/volto/icons/left-key.svg';
 import rightKey from '@plone/volto/icons/right-key.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
-import 'rc-time-picker/assets/index.css';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
-const TimePicker = loadable(() => import('rc-time-picker'));
+const TimePicker = loadable(() => import('react-time-picker'));
 
 const messages = defineMessages({
   date: {
@@ -73,7 +72,6 @@ const DatetimeWidgetComponent = (props) => {
     resettable,
     reactDates,
     widgetOptions,
-    moment,
     value,
     onChange,
     dateOnly,
@@ -91,19 +89,14 @@ const DatetimeWidgetComponent = (props) => {
   const { SingleDatePicker } = reactDates;
 
   useEffect(() => {
-    const parsedDateTime = parseDateTime(
-      toBackendLang(lang),
-      value,
-      undefined,
-      moment.default,
-    );
-    setIsDefault(
-      parsedDateTime?.toISOString() === moment.default().utc().toISOString(),
-    );
-  }, [value, lang, moment]);
+    const parsedDateTime = parseDateTime(toBackendLang(lang), value);
+    const nowUTC = new Date().toISOString();
+
+    setIsDefault(parsedDateTime?.toISOString() === nowUTC);
+  }, [value, lang]);
 
   const getInternalValue = () => {
-    return parseDateTime(toBackendLang(lang), value, undefined, moment.default);
+    return parseDateTime(toBackendLang(lang), value, undefined);
   };
 
   const getDateOnly = () => {
@@ -113,15 +106,23 @@ const DatetimeWidgetComponent = (props) => {
   const onDateChange = (date) => {
     if (date) {
       const isDateOnly = getDateOnly();
-      const base = (getInternalValue() || moment.default()).set({
-        year: date.year(),
-        month: date.month(),
-        date: date.date(),
-        ...(isDateOnly ? defaultTimeDateOnly : {}),
-      });
+      const current = getInternalValue() || new Date();
+
+      const updated = new Date(current);
+      updated.setFullYear(date.year());
+      updated.setMonth(date.month());
+      updated.setDate(date.date());
+
+      if (isDateOnly) {
+        updated.setHours(defaultTimeDateOnly.hour);
+        updated.setMinutes(defaultTimeDateOnly.minute);
+        updated.setSeconds(defaultTimeDateOnly.second);
+      }
+
       const dateValue = isDateOnly
-        ? base.format('YYYY-MM-DD')
-        : base.toISOString();
+        ? updated.toISOString().split('T')[0] // YYYY-MM-DD
+        : updated.toISOString();
+
       onChange(id, dateValue);
     }
     setIsDefault(false);
@@ -129,12 +130,14 @@ const DatetimeWidgetComponent = (props) => {
 
   const onTimeChange = (time) => {
     if (time) {
-      const base = (getInternalValue() || moment.default()).set({
-        hours: time?.hours() ?? 0,
-        minutes: time?.minutes() ?? 0,
-        seconds: 0,
-      });
-      const dateValue = base.toISOString();
+      const current = getInternalValue() || new Date();
+      const updated = new Date(current);
+
+      updated.setHours(time?.hours() ?? 0);
+      updated.setMinutes(time?.minutes() ?? 0);
+      updated.setSeconds(0);
+
+      const dateValue = updated.toISOString();
       onChange(id, dateValue);
     }
   };
@@ -168,9 +171,13 @@ const DatetimeWidgetComponent = (props) => {
             {...(noPastDates ? {} : { isOutsideRange: () => false })}
             onFocusChange={onFocusChange}
             noBorder
-            displayFormat={moment.default
-              .localeData(toBackendLang(lang))
-              .longDateFormat('L')}
+            displayFormat={(date) =>
+              date?.toLocaleDateString(toBackendLang(lang), {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+              })
+            }
             navPrev={<PrevIcon />}
             navNext={<NextIcon />}
             id={`${id}-date`}
@@ -192,9 +199,13 @@ const DatetimeWidgetComponent = (props) => {
               showSecond={false}
               use12Hours={lang === 'en'}
               id={`${id}-time`}
-              format={moment.default
-                .localeData(toBackendLang(lang))
-                .longDateFormat('LT')}
+              format={(date) =>
+                date?.toLocaleTimeString(toBackendLang(lang), {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  hour12: lang === 'en',
+                })
+              }
               placeholder={intl.formatMessage(messages.time)}
               focusOnOpen
               placement="bottomRight"
@@ -240,6 +251,4 @@ DatetimeWidgetComponent.defaultProps = {
   resettable: true,
 };
 
-export default injectLazyLibs(['reactDates', 'moment'])(
-  DatetimeWidgetComponent,
-);
+export default injectLazyLibs(['reactDates'])(DatetimeWidgetComponent);

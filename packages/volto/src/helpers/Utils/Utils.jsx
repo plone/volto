@@ -156,25 +156,30 @@ export const getColor = (name) => {
  * @param {string} format Date format of choice
  * @returns {Object|string} Moment object or string if format is set
  */
-export const parseDateTime = (locale, value, format, moment) => {
-  //  Used to set a server timezone or UTC as default
-  moment.updateLocale(locale, moment.localeData(locale)._config); // copy locale to moment-timezone
-  let datetime = null;
+export const parseDateTime = (locale, value, format) => {
+  if (!value) return null;
 
-  if (value) {
-    // check if datetime has timezone, otherwise assumes it's UTC
-    datetime =
-      !value.match(/T/) || value.match(/T(.)*(-|\+|Z)/g)
-        ? // Since we assume UTC everywhere, then transform to local (momentjs default)
-          moment(value)
-        : // This might happen in old Plone versions dates
-          moment(`${value}Z`);
+  let dateValue = value;
+
+  // If the value does NOT have a timezone, assume it's UTC and append "Z"
+  const hasTimezone =
+    value.includes('T') && /(-|\+|Z)/.test(value.split('T')[1]);
+  if (!hasTimezone) {
+    dateValue = `${value}Z`;
   }
 
-  if (format && datetime) {
-    return datetime.format(format);
+  const date = new Date(dateValue);
+
+  if (isNaN(date.getTime())) {
+    return null; // invalid date
   }
-  return datetime;
+
+  if (format) {
+    // Example: { year: 'numeric', month: '2-digit', day: '2-digit' }
+    return new Intl.DateTimeFormat(locale, format).format(date);
+  }
+
+  return date;
 };
 
 /**
