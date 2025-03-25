@@ -12,17 +12,12 @@ const expand = ['navroot', 'breadcrumbs', 'navigation'];
  * This could be a potential use case for the upcoming RR7 middleware
  */
 function flattenToAppURL(data: Content, request: Request) {
-  const currentUrl = new URL(request.url);
-  const baseUrl = `${currentUrl.protocol}//${currentUrl.host}`;
-
   // Convert data to string to perform replacements
   let stringData = JSON.stringify(data);
 
   // Replace all occurrences of backend URLs
-  stringData = stringData.replace(
-    new RegExp(config.settings.apiPath, 'g'),
-    baseUrl,
-  );
+  stringData = stringData.replaceAll(`${config.settings.apiPath}/`, '/');
+  stringData = stringData.replaceAll(config.settings.apiPath, '/');
 
   // Parse back to object
   return JSON.parse(stringData);
