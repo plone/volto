@@ -1,8 +1,8 @@
 # Seven
 
-[![Unit Tests](https://github.com/plone/volto/actions/workflows/unit.yml/badge.svg?branch=7)](https://github.com/plone/volto/actions/workflows/unit.yml)
-[![Acceptance Tests](https://github.com/plone/volto/actions/workflows/acceptance.yml/badge.svg?branch=7)](https://github.com/plone/volto/actions/workflows/acceptance.yml)
-[![Build Status Docs](https://github.com/plone/volto/actions/workflows/docs.yml/badge.svg?branch=7)](https://github.com/plone/volto/actions)
+[![Unit Tests](https://github.com/plone/volto/actions/workflows/unit.yml/badge.svg?branch=seven)](https://github.com/plone/volto/actions/workflows/unit.yml)
+[![Acceptance Tests](https://github.com/plone/volto/actions/workflows/acceptance.yml/badge.svg?branch=seven)](https://github.com/plone/volto/actions/workflows/acceptance.yml)
+[![Build Status Docs](https://github.com/plone/volto/actions/workflows/docs.yml/badge.svg?branch=seven)](https://github.com/plone/volto/actions)
 
 
 ## Introduction
@@ -59,29 +59,29 @@ To start a new project using Volto, follow the [Plone installation documentation
 
 ## Documentation
 
-You can find the documentation at [https://volto.readthedocs.io/7](https://volto.readthedocs.io/7/).
+You can find the documentation at [https://volto.readthedocs.io/seven](https://volto.readthedocs.io/seven/).
 
 
 ## Supported Plone, Python, and Plone REST API versions
 
-See [Plone, Python, and Plone REST API compatibility](https://volto.readthedocs.io/7/contributing/version-policy.html#version-policy-plone-python-and-plone-rest-api-compatibility)
+See [Plone, Python, and Plone REST API compatibility](https://volto.readthedocs.io/seven/contributing/version-policy.html#version-policy-plone-python-and-plone-rest-api-compatibility)
 
 See the [Plone Release Schedule](https://plone.org/download/release-schedule) for details of maintenance and support.
 
 
 ## Supported Node.js versions
 
-See [Node.js version policy](https://volto.readthedocs.io/7/contributing/version-policy.html#version-policy-plone-python-and-plone-rest-api-compatibility).
+See [Node.js version policy](https://volto.readthedocs.io/seven/contributing/version-policy.html#version-policy-plone-python-and-plone-rest-api-compatibility).
 
 
 ## Supported browsers
 
-See [Supported browsers](https://volto.readthedocs.io/7/contributing/version-policy.html#version-policy-supported-browsers).
+See [Supported browsers](https://volto.readthedocs.io/seven/contributing/version-policy.html#version-policy-supported-browsers).
 
 
 ## Contributing
 
-To contribute to the Volto project by writing code, documentation, translations, and so on, please read [Contributing to Plone](https://6.docs.plone.org/contributing/index.html) and [Contributing to Volto](https://volto.readthedocs.io/7/contributing/index.html).
+To contribute to the Volto project by writing code, documentation, translations, and so on, please read [Contributing to Plone](https://6.docs.plone.org/contributing/index.html) and [Contributing to Volto](https://volto.readthedocs.io/seven/contributing/index.html).
 
 For newcomers to Volto, Plone, or open source software, you must read and follow [First-time contributors](https://6.docs.plone.org/contributing/first-time.html).
 
