@@ -1,3 +1,6 @@
-Add Auto-Save option. It will save a copy of the form, even comments even for adding a new content item. It detects if local data is less recent than server data.
-Saving the form will delete the local data for the specific form.
-User can choose to not restore the local data and this will also delete the local data. @tiberiuichim @rexalex @stevepiercy @dobri1408
+Add autosave option.
+It will save a copy of content of the block being edited in local storage.
+If the editor cancels their edits or closes the browser window, then returns to the block, they will be presented with the option to restore or delete their autosaved content.
+It also detects whether the autosaved content is older than the server content, and if so, presents the editor with the option to restore or delete their autosaved content.
+Finally, saving the block will delete its local storage data.
+@tiberiuichim @rexalex @stevepiercy @dobri1408
