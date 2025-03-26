@@ -44,7 +44,7 @@ exports[`renders a token widget component 1`] = `
             onTouchEnd={[Function]}
           >
             <div
-              className="react-select__value-container react-select__value-container--is-multi css-1dvrfad"
+              className="react-select__value-container react-select__value-container--is-multi css-1a9cv00-ValueContainer"
             >
               <div
                 className="react-select__placeholder css-1wa3eu0-placeholder"
@@ -52,7 +52,7 @@ exports[`renders a token widget component 1`] = `
                 Select…
               </div>
               <div
-                className="css-1g6gooi"
+                className="css-b8ldur-Input"
               >
                 <div
                   className="react-select__input"
@@ -109,14 +109,14 @@ exports[`renders a token widget component 1`] = `
               </div>
             </div>
             <div
-              className="react-select__indicators css-1wy0on6"
+              className="react-select__indicators css-1hb7zxy-IndicatorsContainer"
             >
               <span
                 className="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
               />
               <div
                 aria-hidden="true"
-                className="react-select__indicator react-select__dropdown-indicator css-9t8fgp"
+                className="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
                 onMouseDown={[Function]}
                 onTouchEnd={[Function]}
               >
