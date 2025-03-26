@@ -1,0 +1,4 @@
+Removed support for loading config from project. @sneridagh
+
+Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html)
+for more information.

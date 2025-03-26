@@ -114,7 +114,7 @@ let config = {
     defaultPageSize: 25,
     isMultilingual: false,
     supportedLanguages: ['en'],
-    defaultLanguage: 'en',
+    defaultLanguage: process.env.SITE_DEFAULT_LANGUAGE || 'en',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
     expressMiddlewareDev: serverConfig.expressMiddlewareDev,
@@ -233,6 +233,16 @@ Object.entries(slots).forEach(([slotName, components]) => {
     });
   });
 });
+
+// Make sure that process.env.SITE_DEFAULT_LANGUAGE is set in availableLanguages
+if (
+  process.env.SITE_DEFAULT_LANGUAGE &&
+  !config.settings.supportedLanguages.includes(
+    process.env.SITE_DEFAULT_LANGUAGE,
+  )
+) {
+  config.settings.supportedLanguages.push(process.env.SITE_DEFAULT_LANGUAGE);
+}
 
 registerValidators(ConfigRegistry);
 installDefaultComponents(ConfigRegistry);

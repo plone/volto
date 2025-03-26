@@ -257,7 +257,7 @@ describe('FormValidation', () => {
       });
     });
 
-    it('string - min lenght', () => {
+    it('string - min length', () => {
       let newSchema = {
         properties: {
           ...schema.properties,
@@ -283,7 +283,7 @@ describe('FormValidation', () => {
       });
     });
 
-    it('string - max lenght', () => {
+    it('string - max length', () => {
       let newSchema = {
         properties: {
           ...schema.properties,
@@ -570,7 +570,7 @@ describe('FormValidation', () => {
       });
     });
 
-    it('password - min lenght', () => {
+    it('password - min length', () => {
       let newSchema = {
         ...schema,
         properties: {
@@ -595,7 +595,41 @@ describe('FormValidation', () => {
       });
     });
 
-    it('password - max lenght', () => {
+    it('description - min length from server side', () => {
+      let newSchema = {
+        ...schema,
+        properties: {
+          ...schema.properties,
+          description: {
+            title: 'description',
+            type: 'string',
+            description: '',
+            widgetOptions: {
+              frontendOptions: {
+                widgetProps: {
+                  minLength: 8,
+                },
+              },
+            },
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            description: 'asd',
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        description: [messages.minLength.defaultMessage],
+      });
+    });
+
+    it('password - max length', () => {
       let newSchema = {
         ...schema,
         properties: {
@@ -617,6 +651,40 @@ describe('FormValidation', () => {
         }),
       ).toEqual({
         password: [messages.maxLength.defaultMessage],
+      });
+    });
+
+    it('description - max length from server side', () => {
+      let newSchema = {
+        ...schema,
+        properties: {
+          ...schema.properties,
+          description: {
+            title: 'description',
+            type: 'string',
+            description: '',
+            widgetOptions: {
+              frontendOptions: {
+                widgetProps: {
+                  maxLength: 8,
+                },
+              },
+            },
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            description: 'asdasdasdasdasd',
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        description: [messages.maxLength.defaultMessage],
       });
     });
 

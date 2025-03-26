@@ -231,7 +231,7 @@ export class ObjectBrowserWidgetComponent extends Component {
   };
 
   validateManualLink = (url) => {
-    if (this.props.allowExternals) {
+    if (this.props.allowExternals && !url.startsWith('/')) {
       const error = urlValidator({
         value: url,
         formatMessage: this.props.intl.formatMessage,

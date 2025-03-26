@@ -116,7 +116,10 @@ docs-linkcheck: bin/python docs-news  ## Run linkcheck
 
 .PHONY: docs-linkcheckbroken
 docs-linkcheckbroken: bin/python docs-news  ## Run linkcheck and show only broken links
-	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' grep -wi "broken\|redirect" --color=always | GREP_COLORS='0;31' grep -vi "https://github.com/plone/volto/issues/" --color=always && if test $$? -eq 0; then exit 1; fi || test $$? -ne 0
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' grep -wi "broken\|redirect" --color=always | GREP_COLORS='0;31' grep -vi "https://github.com/plone/volto/issues/" --color=always && if test $$? = 0; then exit 1; fi || test $$? = 1
+	@echo
+	@echo "Link check complete; look for any errors in the above output " \
+		"or in $(BUILDDIR)/linkcheck/ ."
 
 .PHONY: docs-vale
 docs-vale: bin/python docs-news  ## Install (once) and run Vale style, grammar, and spell checks
@@ -394,34 +397,6 @@ working-copy-ci-acceptance-test: ## Run Cypress tests in headless mode for CI fo
 .PHONY: working-copy-ci-acceptance-test-run-all
 working-copy-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for working copy tests
 	$(MAKE) -C "./packages/volto/" working-copy-ci-acceptance-test-run-all
-
-######### Guillotina Acceptance tests
-
-.PHONY: guillotina-acceptance-backend-start
-guillotina-acceptance-backend-start: ## Start backend acceptance server for Guillotina tests
-	docker-compose -f g-api/docker-compose.yml up > /dev/null
-
-.PHONY: guillotina-acceptance-frontend-prod-start
-guillotina-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-acceptance-frontend-prod-start
-
-.PHONY: guillotina-acceptance-test
-guillotina-acceptance-test: ## Start Cypress in interactive mode for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-acceptance-test
-
-.PHONY: guillotina-ci-acceptance-test
-guillotina-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-ci-acceptance-test
-
-.PHONY: guillotina-ci-acceptance-test-run-all
-guillotina-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-ci-acceptance-test-run-all
-
-######### Plone 5 Acceptance tests
-
-.PHONY: plone5-acceptance-backend-start
-plone5-acceptance-backend-start: ## Start backend acceptance server for Plone 5 tests
-	$(MAKE) -C "./packages/volto/" plone5-acceptance-backend-start
 
 ######### @plone/client
 
