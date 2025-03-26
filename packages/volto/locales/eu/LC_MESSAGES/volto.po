@@ -387,6 +387,11 @@ msgstr "Ordezko helbidearen bidea / karakterearekin hasi behar da"
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "Ordezko helbidearen bidea → helburu helbidearen bidea (sorrera data eta ordua, eskuz sortu den bai/ez)"
 
+#. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+msgstr ""
+
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
@@ -1176,9 +1181,9 @@ msgstr "{username} erabiltzailea ezabatu egin nahi duzu?"
 msgid "Do you really want to delete this item?"
 msgstr "Elementu hau ezabatu egin nahi duzu?"
 
-#. Default: "Do you want to restore the autosaved content?"
+#. Default: "Do you want to restore your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
-msgid "Do you want to restore the autosaved content?"
+msgid "Do you want to restore your autosaved content?"
 msgstr ""
 
 #. Default: "Document"
@@ -3829,11 +3834,6 @@ msgstr "Atariaren konfigurazioa zaharkituta dago eta eguneratu egin behar da."
 #. Default: "The value does not match the pattern {pattern}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The value does not match the pattern {pattern}"
-msgstr ""
-
-#. Default: "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
-#: helpers/Utils/withSaveAsDraft
-msgid "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
 msgstr ""
 
 #. Default: "The working copy was discarded"

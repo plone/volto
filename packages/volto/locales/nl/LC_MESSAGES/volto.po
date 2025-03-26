@@ -384,6 +384,11 @@ msgstr "Alternatief URL-pad moet beginnen met een slash."
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "Alternatief URL-pad → doel URL-pad (datum en tijd van aanmaak, manueel aangemaakt ja/nee)"
 
+#. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+msgstr ""
+
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
@@ -1173,9 +1178,9 @@ msgstr "Wil je de gebruiker {username} echt verwijderen?"
 msgid "Do you really want to delete this item?"
 msgstr "Weet je zeker dat je dit item wilt verwijderen?"
 
-#. Default: "Do you want to restore the autosaved content?"
+#. Default: "Do you want to restore your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
-msgid "Do you want to restore the autosaved content?"
+msgid "Do you want to restore your autosaved content?"
 msgstr ""
 
 #. Default: "Document"
@@ -3827,11 +3832,6 @@ msgstr "De site configuratie is verlopen en moet een upgrade krijgen."
 #: helpers/MessageLabels/MessageLabels
 msgid "The value does not match the pattern {pattern}"
 msgstr "De waarde komt niet overeen met het patroon {pattern}"
-
-#. Default: "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
-#: helpers/Utils/withSaveAsDraft
-msgid "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
-msgstr ""
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More

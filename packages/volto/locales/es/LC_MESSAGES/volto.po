@@ -387,6 +387,11 @@ msgstr "La url alternativa debe comenzar con un carácter especial '/'."
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "Url alternativa → url destino (fecha y hora de creación, creado de forma manual si/no)"
 
+#. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+msgstr ""
+
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
@@ -1176,9 +1181,9 @@ msgstr "¿Esta seguro que quiere eliminar el usuario {username}?"
 msgid "Do you really want to delete this item?"
 msgstr "¿Usted realmente quiere eliminar este elemento?"
 
-#. Default: "Do you want to restore the autosaved content?"
+#. Default: "Do you want to restore your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
-msgid "Do you want to restore the autosaved content?"
+msgid "Do you want to restore your autosaved content?"
 msgstr ""
 
 #. Default: "Document"
@@ -3829,11 +3834,6 @@ msgstr "La configuración del sitio está anticuada y debe ser actualizada."
 #. Default: "The value does not match the pattern {pattern}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The value does not match the pattern {pattern}"
-msgstr ""
-
-#. Default: "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
-#: helpers/Utils/withSaveAsDraft
-msgid "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
 msgstr ""
 
 #. Default: "The working copy was discarded"

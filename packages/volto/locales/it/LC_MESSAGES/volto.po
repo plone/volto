@@ -380,6 +380,11 @@ msgstr "Il percorso url alternativo comincia con uno slash "
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "Percorso url alternativo → percorso url di destinazione (data e ora di creazione, creata manualmente sì/no)"
 
+#. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+msgstr ""
+
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
@@ -1169,9 +1174,9 @@ msgstr "Vuoi veramente eliminare l'utente {username}?"
 msgid "Do you really want to delete this item?"
 msgstr "Vuoi veramente eliminare questo elemento?"
 
-#. Default: "Do you want to restore the autosaved content?"
+#. Default: "Do you want to restore your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
-msgid "Do you want to restore the autosaved content?"
+msgid "Do you want to restore your autosaved content?"
 msgstr ""
 
 #. Default: "Document"
@@ -3823,11 +3828,6 @@ msgstr "La configurazione del sito è obsoleta e deve essere aggiornata."
 #: helpers/MessageLabels/MessageLabels
 msgid "The value does not match the pattern {pattern}"
 msgstr "I valori non corrispondono al pattern {pattern}"
-
-#. Default: "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
-#: helpers/Utils/withSaveAsDraft
-msgid "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
-msgstr ""
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More

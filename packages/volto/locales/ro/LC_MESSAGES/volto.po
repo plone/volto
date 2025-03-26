@@ -386,6 +386,11 @@ msgstr "URL-ul alternativ trebuie să înceapă cu un slash."
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "Cale URL alternativ → URL-ul către care se face redirect (data și timpul de creare, creat manual da/nu)"
 
+#. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+msgstr ""
+
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
@@ -1175,9 +1180,9 @@ msgstr "Doriți cu adevărat să ștergeți utilizatorul {username}?"
 msgid "Do you really want to delete this item?"
 msgstr "Doriți cu adevărat să ștergeți acest articol?"
 
-#. Default: "Do you want to restore the autosaved content?"
+#. Default: "Do you want to restore your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
-msgid "Do you want to restore the autosaved content?"
+msgid "Do you want to restore your autosaved content?"
 msgstr ""
 
 #. Default: "Document"
@@ -3829,11 +3834,6 @@ msgstr "Configurația site-ului este veche și trebuie actualizată."
 #: helpers/MessageLabels/MessageLabels
 msgid "The value does not match the pattern {pattern}"
 msgstr "Valoarea nu se potrivește cu modelul {pattern}"
-
-#. Default: "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
-#: helpers/Utils/withSaveAsDraft
-msgid "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
-msgstr ""
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More
