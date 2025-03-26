@@ -518,29 +518,56 @@ class AddonRegistry {
   }
 
   /**
-   * Returns a list of add-on locales files for the given language
-   * (<addon-path>/locales/<lang>/addon.json) that contain translations
+   * Returning locales in the format:
+   * {
+   *   "en": {
+   *     "common.json": {
+   *       ...translations
+   *     },
+   *   },
+   *   "it": {
+   *     "common.json": {
+   *       ...translations
+   *     },
+   *   }
+   *   ...other languages
+   * }
    */
-  getAddonLocales(language = 'en') {
-    return this.getAddonDependencies().reduce<Record<string, object>>(
-      (acc, addon) => {
-        const normalizedAddonName = addon.split(':')[0] as string;
+  getAddonsLocales() {
+    return this.getAddonDependencies().reduce<{
+      [lang: string]: { [namespace: string]: object };
+    }>((acc, addon) => {
+      const normalizedAddonName = addon.split(':')[0] as string;
 
-        const addonLocalesFolder = `${this.packages[normalizedAddonName]?.modulePath}/locales/${language}`;
-        if (fs.existsSync(addonLocalesFolder)) {
-          const files = fs.readdirSync(addonLocalesFolder);
-          const locales = files.reduce<Record<string, object>>((acc, file) => {
-            const filePath = path.join(addonLocalesFolder, file);
-            const content = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-            acc[file] = content;
-            return acc;
-          }, {});
-          return merge(acc, locales);
-        }
+      const localesFolder = path.resolve(
+        this.packages[normalizedAddonName]?.modulePath,
+        'locales',
+      );
+      // If the add-on has no locales folder, we skip it
+      if (!fs.existsSync(localesFolder)) {
         return acc;
-      },
-      {},
-    );
+      }
+
+      const languages = fs.readdirSync(localesFolder);
+      const addonLocales = languages.reduce<{
+        [lang: string]: { [namespace: string]: object };
+      }>((acc, language) => {
+        const addonLocaleFolder = path.join(localesFolder, language);
+        // Read all namespace files
+        const namespaces = fs.readdirSync(addonLocaleFolder);
+        const locale = namespaces.reduce<{ [namespace: string]: object }>(
+          (acc, namespace) => {
+            const filePath = path.join(addonLocaleFolder, namespace);
+            acc[namespace] = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+            return acc;
+          },
+          {},
+        );
+        acc[language] = locale;
+        return acc;
+      }, {});
+      return merge(acc, addonLocales);
+    }, {});
   }
 
   getCustomThemeAddons() {

@@ -3,14 +3,10 @@ import path from 'path';
 import type { AddonRegistry } from './addon-registry';
 
 export function createAddonsLocalesLoader(registry: AddonRegistry) {
-  const localesFolders = fs.readdirSync(
-    path.join(registry.projectRootPath, 'locales'),
-  );
+  const addonsLocalesInfo = registry.getAddonsLocales();
 
-  localesFolders.forEach((locale) => {
-    const addonsLocalesInfo = registry.getAddonLocales(locale);
-
-    Object.keys(addonsLocalesInfo).forEach((namespace) => {
+  Object.entries(addonsLocalesInfo).forEach(([language, languageInfo]) => {
+    Object.entries(languageInfo).forEach(([namespace, translations]) => {
       if (namespace !== 'common.json') {
         console.warn(
           'Only the "common" locales namespace is supported for now, skipping ',
@@ -18,16 +14,16 @@ export function createAddonsLocalesLoader(registry: AddonRegistry) {
         );
         return;
       }
-      const file = path.join(
+      const localesDir = path.join(
         registry.projectRootPath,
         'locales',
-        locale,
-        namespace,
+        language,
       );
-      fs.writeFileSync(
-        file,
-        JSON.stringify(addonsLocalesInfo[namespace], null, 2),
-      );
+      if (!fs.existsSync(localesDir)) {
+        fs.mkdirSync(localesDir, { recursive: true });
+      }
+      const file = path.join(localesDir, namespace);
+      fs.writeFileSync(file, JSON.stringify(translations, null, 2));
     });
   });
 }

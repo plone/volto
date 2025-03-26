@@ -17,7 +17,7 @@ export default function Edit() {
   // const pathname = useLocation().pathname;
   return (
     <h1>
-      {content.title} - {t('edit')}
+      {content.title} - {t('cmsui.edit')}
     </h1>
   );
   // return <App content={data} location={{ pathname }} />;
