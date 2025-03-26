@@ -54,6 +54,10 @@
   }
 }
 
+.ui.form .ui.checkbox {
+  margin: @8px 0;
+}
+
 .ui.form .fields.error .field textarea,
 .ui.form .fields.error .field select,
 .ui.form .fields.error .field input:not([type]),
