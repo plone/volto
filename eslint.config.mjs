@@ -105,7 +105,6 @@ export default tseslint.config(
       '**/.storybook/*',
       'packages/volto/*',
       'packages/coresandbox/*',
-      'packages/volto-guillotina',
       'packages/volto-slate',
       '!**/.*',
       '**/dist',
@@ -113,7 +112,9 @@ export default tseslint.config(
       '**/*.config.js',
       'packages/registry/lib',
       'packages/registry/docs',
+      '**/.react-router/*',
       '**/+types/*',
+      '**/registry.loader.js',
     ],
   },
 );
