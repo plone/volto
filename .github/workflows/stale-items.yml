@@ -27,4 +27,4 @@ jobs:
           days-before-close: -1 # never close issues and prs
           stale-issue-label: '30.1 needs: confirmation'
           stale-pr-label: '30.1 needs: confirmation'
-          operations-per-run: 1000
+          operations-per-run: 50
