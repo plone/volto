@@ -73,6 +73,7 @@ const RenderBlocks = (props) => {
                 block={block}
                 data={blockData}
                 isContainer={isContainer}
+                blocksConfig={blocksConfig}
               >
                 <Block
                   id={block}

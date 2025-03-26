@@ -182,6 +182,9 @@ let config = {
     addBlockButton: {
       enabled: true,
     },
+    sevenBlockModel: {
+      enabled: true,
+    },
   },
   widgets: {},
   views: {},

@@ -1,15 +1,36 @@
 import React from 'react';
 import cx from 'classnames';
+import MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
 import {
   buildStyleClassNamesFromData,
   buildStyleClassNamesExtenders,
   buildStyleObjectFromData,
 } from '@plone/volto/helpers/Blocks/Blocks';
+import config from '@plone/volto/registry';
+
+const SevenStyleWrapper = (props) => {
+  const { children, data = {}, classNames, blocksConfig, style } = props;
+  const category = blocksConfig?.[data['@type']]?.category;
+  return (
+    <div
+      className={cx(
+        'block',
+        data['@type'],
+        { [`category-${category}`]: category },
+        classNames,
+      )}
+      style={style}
+    >
+      <div className="block-inner-container">{children}</div>
+    </div>
+  );
+};
 
 const StyleWrapper = (props) => {
   let classNames,
     style = [];
   const { block, children, content, data = {}, isContainer } = props;
+  const sevenBlockModel = config.experimental.sevenBlockModel.enabled;
   classNames = buildStyleClassNamesFromData(data.styles);
 
   classNames = buildStyleClassNamesExtenders({
@@ -39,7 +60,11 @@ const StyleWrapper = (props) => {
     return child;
   });
 
-  return rewrittenChildren;
+  return (
+    <MaybeWrap {...props} condition={sevenBlockModel} as={SevenStyleWrapper}>
+      {rewrittenChildren}
+    </MaybeWrap>
+  );
 };
 
 export default StyleWrapper;
