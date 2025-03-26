@@ -178,6 +178,7 @@ class Form extends Component {
     );
 
     this.props.onCancelDraft();
+
     if (!props.isEditForm) {
       // It's a normal (add form), get defaults from schema
       formData = {

@@ -16,13 +16,13 @@ const messages = defineMessages({
     defaultMessage: 'Autosaved content found',
   },
   loadData: {
-    id: 'Do you want to restore the autosaved content?',
-    defaultMessage: 'Do you want to restore the autosaved content?',
+    id: 'Do you want to restore your autosaved content?',
+    defaultMessage: 'Do you want to restore your autosaved content?',
   },
   loadExpiredData: {
-    id: 'The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)',
+    id: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?",
     defaultMessage:
-      'The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)',
+      "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?",
   },
 });
 
@@ -133,7 +133,7 @@ const draftApi = (id, schema, timer, timerForDeletion, intl) => ({
     if (!schema) return;
     const saved = localStorage.getItem(id);
 
-    if (saved) {
+    if (saved && Object.keys(JSON.parse(saved)).length > 1) {
       const formData = mapSchemaToData(schema, state);
       // includes autoSaveDate
       const foundSavedData = JSON.parse(saved);
