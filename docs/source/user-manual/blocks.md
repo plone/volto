@@ -587,7 +587,6 @@ If another user edits and saves the same page while you're still working on it, 
 
 In this case, when you return to the editor, Volto displays a message informing you that the page content has changed, but a previously autosaved version still exists.
 
-`````{note}
 You will be prompted to choose whether you want to restore your autosaved version or continue with the newer version from the server.
 After making your choice, you can also undo that action.
 
