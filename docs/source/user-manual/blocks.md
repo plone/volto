@@ -583,7 +583,7 @@ Watch the video below for a quick demonstration.
 
 ### Autosave and edit conflicts
 
-If another user edits and saves the same page while you're still working on it, Volto detects the conflict between your **autosaved version** and the **newer version saved on the server**.
+If another user edits and saves the same page while you're still working on it, Volto detects the conflict between your autosaved version and the newer version saved on the server.
 
 In this case, when you return to the editor, Volto displays a message informing you that the page content has changed, but a previously autosaved version still exists.
 
