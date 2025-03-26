@@ -25,6 +25,26 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 180
           days-before-close: -1 # never close issues and prs
-          stale-issue-label: '30.1 needs: confirmation'
-          stale-pr-label: '30.1 needs: confirmation'
           operations-per-run: 50
+          stale-issue-label: '27 status: stale'
+          stale-pr-label: '27 status: stale'
+          stale-issue-message: |
+            Hi There! 👋
+
+            We haven't seen any activity on this issue in a while :sleeping:, and we want to make sure that it's still relevant.
+
+            If updating to the latest version of Volto doesn't help, please let us know by:
+
+            - adding a comment about what needs to be done next 💬
+            - updating its status and other labels 🏷️
+
+            Otherwise close this issue. 🧹
+          stale-pr-message: |
+            Hi There! 👋
+
+            We haven't seen any activity on this pull request in a while :sleeping:, and we want to make sure that it's still relevant. Please let us know by:
+
+            - adding a comment about what needs to be done next 💬
+            - updating its status and other labels 🏷️
+
+            Otherwise close this pull request. 🧹
