@@ -245,6 +245,7 @@
     "react-simple-code-editor": "0.7.1",
     "react-sortable-hoc": "2.0.0",
     "react-test-renderer": "18.2.0",
+    "react-time-picker": "^7.0.0",
     "react-toastify": "5.5.0",
     "react-transition-group": "4.4.5",
     "react-virtualized": "9.22.3",
