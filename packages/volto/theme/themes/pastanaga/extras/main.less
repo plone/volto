@@ -17,6 +17,9 @@
 
 body {
   display: flex;
+  // react-aria-components popovers have problems with the default declaration
+  // in Semantic UI that forces `overflow-x: hidden` on the body.
+  overflow-x: initial;
 
   @media only screen and (max-width: @largestMobileScreen) {
     flex-direction: column;
