@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "User manual for how to edit blocks in Volto, the Plone 6 frontend."
-    "property=og:description": "User manual for how to edit blocks in Volto, the Plone 6 frontend."
-    "property=og:title": "How to edit content using Volto blocks"
-    "keywords": "Volto, Plone, frontend, React, User manual, edit blocks"
+    'description': 'User manual for how to edit blocks in Volto, the Plone 6 frontend.'
+    'property=og:description': 'User manual for how to edit blocks in Volto, the Plone 6 frontend.'
+    'property=og:title': 'How to edit content using Volto blocks'
+    'keywords': 'Volto, Plone, frontend, React, User manual, edit blocks'
 ---
 
 (edit-content-using-blocks-label)=
@@ -15,7 +15,6 @@ Volto features the [Pastanaga UI](https://github.com/plone/pastanaga), allowing 
 The blocks editor allows you to add, modify, reorder, and delete blocks given your requirements.
 Blocks provide the user the ability to display content in a specific way, although they can also define behavior and have specific features.
 
-
 (manage-blocks-label)=
 
 ## Manage blocks
@@ -25,7 +24,6 @@ These blocks can be used to add different types of content—such as text, image
 
 Blocks are a key feature of Volto, and are designed to make it easy for users to add and manage content on their website.
 They are created using React components, which are modular pieces of code that can be easily reused and customized.
-
 
 (create-a-block-label)=
 
@@ -51,13 +49,11 @@ See https://github.com/plone/volto/pull/3815 for details of the feature and how 
 When you select a block, its block editor appears in the right margin of the page.
 Almost all blocks have some configuration options.
 
-
 (rearrange-blocks-label)=
 
 ### Rearrange blocks
 
 To rearrange blocks, to the right of the block you want to move, click on its drag handle, move the block where you want it in the page, and release the drag handle.
-
 
 (copy-anchor-links-label)=
 
@@ -72,13 +68,11 @@ Now you can paste the copied link to share a specific section of a page with oth
 This feature is enabled by default, and only authenticated users can use this feature.
 ```
 
-
 (delete-a-block-label)=
 
 ### Delete a block
 
 To delete a block, to the right of the block, click its delete button, a trash can icon.
-
 
 (default-block-types-label)=
 
@@ -95,15 +89,14 @@ Now with your empty block available, you can select its type in one of two ways.
     :alt: Add block button
     ```
 
-2. Type `/` inside the empty block to open the block types menu.
-   You can type a few letters to filter available block types.
-   You can use the up and down arrow keys to navigate within the list of block types.
-   To select the block type, you can click or tap on it, or use the {kbd}`Enter` key.
+2.  Type `/` inside the empty block to open the block types menu.
+    You can type a few letters to filter available block types.
+    You can use the up and down arrow keys to navigate within the list of block types.
+    To select the block type, you can click or tap on it, or use the {kbd}`Enter` key.
 
     ```{image} ../_static/user-manual/blocks/block-types-menu.png
     :alt: Block types menu
     ```
-
 
 (user-manual-description-block-label)=
 
@@ -111,7 +104,6 @@ Now with your empty block available, you can select its type in one of two ways.
 
 A description block accepts plain text.
 When displayed, it appears as the description in the page, and for search engine optimization in HTML meta tags as `<meta name="description" content="DESCRIPTION_TEXT" data-react-helmet="true">` and `<meta property="og:description" content="DESCRIPTION_TEXT" data-react-helmet="true">`.
-
 
 (user-manual-grid-block-label)=
 
@@ -130,11 +122,10 @@ After choosing the number of columns to insert in a grid block, you can manage t
 :alt: Add a specific block type into a grid block's column
 ```
 
--   Specify the block type in a column by clicking its `+` button.
--   Rearrange the order of columns in the grid block by dragging and dropping them.
--   Add a column to the grid block by clicking the `+` button above and to the left of it.
--   Remove a column from a grid block by clicking its `×` button.
-
+- Specify the block type in a column by clicking its `+` button.
+- Rearrange the order of columns in the grid block by dragging and dropping them.
+- Add a column to the grid block by clicking the `+` button above and to the left of it.
+- Remove a column from a grid block by clicking its `×` button.
 
 (user-manual-html-block-label)=
 
@@ -150,7 +141,6 @@ For example, you can insert an HTML snippet or widget from a third party service
 
 To use an HTML block, you need to have some knowledge of how to write HTML, unless you are provided an HTML code snippet from a third party that you can copy and paste into the block.
 
-
 (user-manual-image-block-label)=
 
 ### Image block
@@ -162,12 +152,14 @@ An image block lets a user insert an image into a page and configure its attribu
 ```
 
 After inserting an image block, an image must be specified by any of the following methods.
--   Choose an existing image in the site by clicking the block's list icon.
--   Upload a new image by either clicking the block's upload icon or drag and drop.
--   Enter a remote image's URL in the block's text area.
-    Click the arrow icon to save the URL.
+
+- Choose an existing image in the site by clicking the block's list icon.
+- Upload a new image by either clicking the block's upload icon or drag and drop.
+- Enter a remote image's URL in the block's text area.
+  Click the arrow icon to save the URL.
 
 Once you have specified an image, its configurable options become available.
+
 ```{image} ../_static/user-manual/blocks/image-block-configuration-options.png
 :alt: Image block configuration options
 ```
@@ -177,7 +169,7 @@ Source
 
 Alt text
 : Alternative text (alt text) is used by screen readers and search engines to describe the image.
-  Alt text should not be used for decorative images, as it adds noise to the screen reader.
+Alt text should not be used for decorative images, as it adds noise to the screen reader.
 
 Alignment
 : Options for alignment include left, right, center, and full width.
@@ -187,8 +179,7 @@ Image size
 
 Link to
 : You can enter a URL in the text field, or click the list icon and choose a page in your website, as the target for a link.
-  You can optionally have the link open in a new tab when the user clicks it by checking the checkbox {guilabel}`Open in a new tab`.
-
+You can optionally have the link open in a new tab when the user clicks it by checking the checkbox {guilabel}`Open in a new tab`.
 
 (user-manual-listing-block-label)=
 
@@ -219,20 +210,19 @@ Headline level
 
 Criteria
 : Add criteria for the search.
-  Options include searching metadata, dates, and text.
-  Each criterion has its own options.
-  For example, you can configure a search for content that was created between two dates, or for its location within a path of your Plone site.
+Options include searching metadata, dates, and text.
+Each criterion has its own options.
+For example, you can configure a search for content that was created between two dates, or for its location within a path of your Plone site.
 
 Sort on
 : Sort the retrieved results by a given option.
-  Options include metadata, dates, and text.
+Options include metadata, dates, and text.
 
 Results limit
 : Limit the number of results returned.
 
 Item batch size
 : Batch the search result items into a specified batch size.
-
 
 (user-manual-maps-block-label)=
 
@@ -262,7 +252,6 @@ Alt text
 Alignment
 : Options for alignment include left, right, center, and full width.
 
-
 (user-manual-search-block-label)=
 
 ### Search block
@@ -286,7 +275,6 @@ You can configure the search block by modifying its options in the block editor.
 Add omitted configuration options.
 ```
 
-
 #### Basic options
 
 Variation
@@ -298,18 +286,17 @@ Results template
 Headline
 : The value to display above the search box as a heading.
 
-
 #### Base search query options
 
 Criteria
 : Add criteria for the search.
-  Options include searching metadata, dates, and text.
-  Each criterion has its own options.
-  For example, you can configure a search for content that was created between two dates, or for its location within a path of your Plone site.
+Options include searching metadata, dates, and text.
+Each criterion has its own options.
+For example, you can configure a search for content that was created between two dates, or for its location within a path of your Plone site.
 
 Sort on
 : Sort the search results according to the selected option.
-  Optionally sort results in reverse order by checking the checkbox {guilabel}`Reversed order`.
+Optionally sort results in reverse order by checking the checkbox {guilabel}`Reversed order`.
 
 Results limit
 : Limit the number of results returned.
@@ -317,46 +304,48 @@ Results limit
 Item batch size
 : Batch the search result items into a specified batch size.
 
-
 #### Facets
 
 Section title
 : ```{todo}
-  This needs content.
-  ```
+This needs content.
+
+````
 
 Facets
 : Click the button {guilabel}`Add Facet` to add a facet to the search.
-  The first facet appears as "FACET #1".
-  You can add many facets, reorder them by drag and drop, and delete them.
+The first facet appears as "FACET #1".
+You can add many facets, reorder them by drag and drop, and delete them.
 
 Label
 : ```{todo}
-  This needs content.
-  ```
+This needs content.
+````
 
 Field
 : ```{todo}
-  This needs content.
-  ```
+This needs content.
+
+````
 
 Facet widget
 : ```{todo}
-  This needs content.
-  ```
+This needs content.
+````
 
 Multiple choices?
 : ```{todo}
-  This needs content.
-  ```
+This needs content.
+
+````
 
 Hide facet?
 : Toggle to show or hide the facet.
-  Hidden facets will still filter the results if proper parameters are passed in URLs
+Hidden facets will still filter the results if proper parameters are passed in URLs
 
 Advanced facet?
 : Select to set the facet as advanced.
-  Advanced facets are initially hidden and displayed on demand.
+Advanced facets are initially hidden and displayed on demand.
 
 #### Controls
 
@@ -370,7 +359,7 @@ Show search input?
 
 Show search button?
 : Toggle to show or hide the search button.
-  When the button is present, the auto-complete search feature is disabled, and the query is issued when the visitor types the {kbd}`Enter` key.
+When the button is present, the auto-complete search feature is disabled, and the query is issued when the visitor types the {kbd}`Enter` key.
 
 Show total results?
 : Toggle to show or hide the search results total count.
@@ -392,7 +381,7 @@ It can be configured to display the data in different styles and layouts.
 
 ```{image} ../_static/user-manual/blocks/table-block.png
 :alt: Table block
-```
+````
 
 You can use the editor at the top of table to add rows and columns to the table, and to delete rows and columns.
 
@@ -410,11 +399,11 @@ Hide headers
 
 Make the table sortable
 : Toggle to enable or disable sorting the table by the values in its columns.
-  When enabled, a visitor may click a column's header to sort by that column.
+When enabled, a visitor may click a column's header to sort by that column.
 
 Fixed width table cells
 : When enabled, the columns are fixed to an equal percentage width of the table.
-  For example, a table with four columns would have each of its columns fixed at 25% of the table width.
+For example, a table with four columns would have each of its columns fixed at 25% of the table width.
 
 Divide each row into separate cells
 : When enabled, the cells in a row are separated by a vertical border.
@@ -430,7 +419,6 @@ Reduce complexity
 
 Table color inverted
 : When enabled, the table color is inverted.
-
 
 (user-manual-table-of-contents-block-label)=
 
@@ -455,10 +443,11 @@ The TOC block has several configuration options.
 
 Variation
 : Toggles the display of the TOC to be a listing (default) or horizontal as tabs.
-  The horizontal variation also adds a dropdown button, if necessary, so the items that won't fit would be displayed in the dropdown list.
-  ```{video} ../_static/user-manual/blocks/table-of-contents-block-with-dropdown.mp4
-  :alt: Table of contents block with dropdown menu.
-  ```
+The horizontal variation also adds a dropdown button, if necessary, so the items that won't fit would be displayed in the dropdown list.
+
+```{video} ../_static/user-manual/blocks/table-of-contents-block-with-dropdown.mp4
+:alt: Table of contents block with dropdown menu.
+```
 
 Block title
 : Optionally add a title above the table of contents.
@@ -471,8 +460,7 @@ Ordered
 
 Entries
 : Selects which heading levels to display.
-  Currently only heading levels `H2` (titles) and `H3` (subtitles) are supported.
-
+Currently only heading levels `H2` (titles) and `H3` (subtitles) are supported.
 
 (user-manual-teaser-block-label)=
 
@@ -506,12 +494,13 @@ _Teaser block configuration_
 Target
 : The target is either an existing content item in your Plone site that can be selected by clicking the list icon, or an external URL that can be typed into the text field and saved by clicking the right arrow when it appears after you start typing.
 
-
 Customize teaser content
 : Check this box to customize the title, description, or image of the target content item for this teaser.
-  Leave it unchecked to show updates to the target content item if it is edited later.
-  ```{versionadded} 18.0.0-alpha.36
-  ```
+Leave it unchecked to show updates to the target content item if it is edited later.
+
+```{versionadded} 18.0.0-alpha.36
+
+```
 
 Title
 : The title is the title of the content item.
@@ -528,7 +517,6 @@ Image override
 Alignment
 : The alignment of the teaser image can be set to left (default), right, or top.
 
-
 (user-manual-text-grid-block-label)=
 
 ### Text block
@@ -536,7 +524,6 @@ Alignment
 ```{todo}
 Needs content.
 ```
-
 
 (user-manual-video-block-label)=
 
@@ -561,7 +548,37 @@ Video URL
 
 Preview Image URL
 : Optionally set a preview image.
-  You can enter a URL of an image in the text field, or click the list icon and choose an image in your website.
+You can enter a URL of an image in the text field, or click the list icon and choose an image in your website.
 
 Alignment
 : Options for alignment include left, right, center, and full width.
+
+## Autosave
+
+Volto provides an **autosave** mechanism that automatically captures your ongoing edits as you work on a page or content item.
+
+Changes made in the blocks editor are periodically saved in the background to prevent data loss, even if the user navigates away or the browser unexpectedly closes.
+
+`````{note}
+Autosave stores changes locally in your browser using `localStorage`. These changes remain available until you explicitly click the **Save** button, at which point they are persisted to the server and the local storage is cleared.
+
+Watch the video below for a quick demonstration.
+
+````{only} not text
+```{video} ../_static/user-manual/blocks/autosave-local.mp4
+:alt: Autosave
+`````
+
+### Autosave and edit conflicts
+
+If another user edits and saves the same page while you're still working on it, Volto detects the conflict between your **autosaved version** and the **newer version saved on the server**.
+
+In this case, when you return to the editor, Volto displays a message informing you that the page content has changed, but a previously autosaved version still exists.
+
+`````{note}
+You will be prompted to choose whether you want to **restore your autosaved version** or continue with the newer version from the server, you can also undo.
+
+````{only} not text
+```{video} ../_static/user-manual/blocks/autosave-remote.mp4
+:alt: Autosave conflicts
+`````
