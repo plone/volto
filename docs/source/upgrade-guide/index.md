@@ -46,6 +46,25 @@ There's nothing that limits to move all the config from a project to an add-on p
 See {ref}`upgrade-18-cookieplone-label` for details.
 
 
+### Plone 5 is no longer tested
+```{versionremoved} Volto 19
+```
+
+Volto 19 no longer includes automated tests for compatibility with Plone 5.
+While it may still work with Plone 5 backends in some cases, we recommend upgrading to Plone 6 for full compatibility and support.
+
+
+### Removed packages `@plone/generator-volto`, `@plone/volto-guillotina`, and `@plone/volto-testing`
+```{versionremoved} Volto 19
+```
+
+These packages have been removed from the Volto repository as they are no longer maintained:
+
+- `@plone/generator-volto`: Deprecated in favor of [Cookieplone](https://github.com/plone/cookieplone)
+- `@plone/volto-guillotina`: No longer actively maintained
+- `@plone/volto-testing`: Testing functionality is now integrated directly in Volto core
+
+
 (upgrade-18-label)=
 
 ## Upgrading to Volto 18.x.x

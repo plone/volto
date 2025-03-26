@@ -36,8 +36,6 @@ jobs:
               - 'packages/types/**'
             providers:
               - 'packages/providers/**'
-            generator:
-              - 'packages/generator-volto/**'
             scripts:
               - 'packages/scripts/**'
             voltoSlate:
@@ -99,14 +97,6 @@ jobs:
         run: |
           git fetch --no-tags origin main
           towncrier check --compare-with origin/main --dir packages/providers
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: Generator changelog check
-        if: steps.filter.outputs.generator == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/generator-volto
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
