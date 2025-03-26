@@ -13,7 +13,7 @@ import {
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useChangeLanguage } from 'remix-i18next/react';
-import i18next from '~/i18next.server';
+import i18next from './i18next.server';
 import type { Route } from './+types/root';
 import contentLoader from './loaders/content';
 
