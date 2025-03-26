@@ -1,0 +1,1 @@
+Fixed horizontal drag and drop placeholder. Now it appears behind the next element and if it is the last it highlights the whole draggable area. Vertical placeholder remained untouched
