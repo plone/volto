@@ -568,7 +568,7 @@ Alignment
 
 ## Autosave
 
-Volto provides an **autosave** mechanism that automatically captures your ongoing edits as you work on a page or content item.
+Volto provides an autosave mechanism that automatically captures your ongoing edits as you work on a page or content item.
 
 Changes made in the blocks editor are periodically saved in the background to prevent data loss, even if the user navigates away or the browser unexpectedly closes.
 
