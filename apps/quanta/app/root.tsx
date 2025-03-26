@@ -26,11 +26,7 @@ import stylesheet from './app.css?url';
 
 function useNavigate() {
   const navigate = useRRNavigate();
-  return (to: string) => navigate(flattenToAppURL(to) || '');
-}
-
-function useHrefLocal(to: string) {
-  return useHref(flattenToAppURL(to) || '');
+  return (to: string) => navigate(to);
 }
 
 export const meta: Route.MetaFunction = ({ data }) => [
@@ -128,7 +124,7 @@ export default function App() {
     <AppRouterProvider
       useLocation={useLocation}
       useParams={useParams}
-      useHref={useHrefLocal}
+      useHref={useHref}
       navigate={navigate}
       flattenToAppURL={flattenToAppURL}
     >
