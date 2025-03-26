@@ -1,6 +1,5 @@
-// import { Check, Minus } from 'lucide-react';
-import { CheckboxIcon, DashIcon } from '../../components/Icons';
 import React, { type ReactNode } from 'react';
+import { CheckboxIcon, DashIcon } from '../../components/icons';
 import {
   Checkbox as AriaCheckbox,
   CheckboxGroup as AriaCheckboxGroup,

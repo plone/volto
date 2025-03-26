@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Button } from './Button';
-import { BinIcon } from '../../components/Icons/BinIcon';
-
-// import '../../styles/tailwind/base.css';
+import { BinIcon } from '../../components/icons/BinIcon';
 
 export default {
   title: 'Tailwind/Button',
