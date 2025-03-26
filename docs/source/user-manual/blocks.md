@@ -28,9 +28,11 @@ These changes remain available until you explicitly click the {guilabel}`Save` b
 
 Watch the video below for a quick demonstration.
 
+````{only} not text
 ```{video} ../_static/user-manual/blocks/autosave-local.mp4
 :alt: Autosave
 ```
+````
 
 ### Autosave and edit conflicts
 
