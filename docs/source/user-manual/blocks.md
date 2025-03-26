@@ -43,7 +43,10 @@ In this case, when you return to the editor, Volto displays a message informing 
 You will be prompted to choose whether you want to restore your autosaved version or continue with the newer version from the server.
 After making your choice, you can also undo that action.
 
+````{only} not text
 ```{video} ../_static/user-manual/blocks/autosave-remote.mp4
+```
+````
 :alt: Autosave conflicts
 ```
 
