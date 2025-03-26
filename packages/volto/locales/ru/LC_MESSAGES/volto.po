@@ -1,14 +1,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-05T13:04:20.470Z\n"
+"PO-Revision-Date: \n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"Language: ru\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
-"Language: ru\n"
 "Language-Code: ru\n"
 "Language-Name: Русский\n"
 "Preferred-Encodings: utf-8\n"
@@ -573,6 +575,11 @@ msgstr "Невозможно редактировать макет для тип
 msgid "Cancel"
 msgstr "Отмена"
 
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr ""
+
 #. Default: "Cell"
 #: config/Blocks
 msgid "Cell"
@@ -996,6 +1003,11 @@ msgstr "Дата (сначала новые)"
 #: components/theme/Register/Register
 msgid "Default"
 msgstr "По умолчанию"
+
+#. Default: "Default value"
+#: components/manage/Widgets/SchemaWidget
+msgid "Default value"
+msgstr ""
 
 #. Default: "Default view"
 #: config/Views
@@ -1517,6 +1529,11 @@ msgstr "Поле"
 msgid "File"
 msgstr "Файл"
 
+#. Default: "File is not of the accepted type {accept}"
+#: components/manage/Widgets/FileWidget
+msgid "File is not of the accepted type {accept}"
+msgstr ""
+
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
@@ -1536,6 +1553,11 @@ msgstr "Имя файла"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Файлы загружены: {uploadedFiles}"
+
+#. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+#: components/manage/Widgets/SchemaWidget
+msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+msgstr ""
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
@@ -2630,10 +2652,16 @@ msgstr "Сброс пароля"
 msgid "Passwords do not match."
 msgstr "Пароли не совпадают."
 
-#. Default: "Pending"
-#: components/manage/Contents/ContentsItem
-msgid "Pending"
-msgstr "Ожидание"
+#. Default: "Paste"
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+msgid "Paste"
+msgstr ""
+
+#. Default: "Paste blocks"
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr ""
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -2671,6 +2699,11 @@ msgstr "Мои инструменты"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Лица, ответственные за создание контента этого элемента. Пожалуйста, введите список имен пользователей, по одному на строку. Основной создатель должен быть первым."
+
+#. Default: "Placeholder"
+#: components/manage/Widgets/SchemaWidget
+msgid "Placeholder"
+msgstr ""
 
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
@@ -2788,6 +2821,11 @@ msgstr "Дата публикации"
 #: components/manage/Blocks/Listing/schema
 msgid "Query"
 msgstr "Запрос"
+
+#. Default: "Query Parameter Name"
+#: components/manage/Widgets/SchemaWidget
+msgid "Query Parameter Name"
+msgstr ""
 
 #. Default: "Re-enter the password. Make sure the passwords are identical."
 #: components/manage/Preferences/ChangePassword
@@ -3720,6 +3758,11 @@ msgstr "Сервер вашего сайта не отвечает, принос
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr "Наличие кнопки отключает посимвольный поиск, запрос выполняется при нажатии ENTER"
 
+#. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+#: components/manage/Widgets/FileWidget
+msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+msgstr ""
+
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
 msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
@@ -3875,6 +3918,7 @@ msgstr "Это правило назначено для:"
 
 #. Default: "Time"
 #: components/manage/Widgets/DatetimeWidget
+#: components/manage/Widgets/TimeWidget
 msgid "Time"
 msgstr "Время"
 
@@ -4470,6 +4514,11 @@ msgstr "Ваш сайт обновлен."
 msgid "Your usernaame is required for reset your password."
 msgstr "Введите имя пользователя для сброса пароля."
 
+#. Default: "File types allowed"
+#: components/manage/Widgets/SchemaWidget
+msgid "accept"
+msgstr ""
+
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -5044,6 +5093,11 @@ msgstr "Выбрать"
 #: components/manage/Blocks/Search/components/ViewSwitcher
 msgid "selectView"
 msgstr "Выбрать вид"
+
+#. Default: "Maximum size of the file in bytes"
+#: components/manage/Widgets/SchemaWidget
+msgid "size"
+msgstr ""
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks
