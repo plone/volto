@@ -19,6 +19,7 @@ import contentLoader from './loaders/content';
 
 import { AppRouterProvider } from '@plone/providers';
 import { flattenToAppURL } from './utils';
+import installServer from './config.server';
 
 // eslint-disable-next-line import/no-unresolved
 import stylesheet from './app.css?url';
@@ -60,6 +61,7 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export async function loader({ params, request, context }: Route.LoaderArgs) {
+  installServer();
   const locale = await i18next.getLocale(request);
 
   return {

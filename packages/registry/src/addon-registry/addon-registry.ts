@@ -553,17 +553,16 @@ class AddonRegistry {
         [lang: string]: { [namespace: string]: object };
       }>((acc, language) => {
         const addonLocaleFolder = path.join(localesFolder, language);
-        // Read all namespace files
-        const namespaces = fs.readdirSync(addonLocaleFolder);
-        const locale = namespaces.reduce<{ [namespace: string]: object }>(
-          (acc, namespace) => {
-            const filePath = path.join(addonLocaleFolder, namespace);
-            acc[namespace] = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-            return acc;
-          },
-          {},
-        );
-        acc[language] = locale;
+        // Only read the common.json namespace file since we don't support
+        // multiple namespaces at this time
+        const namespace = 'common.json';
+        const filePath = path.join(addonLocaleFolder, namespace);
+        if (fs.existsSync(filePath)) {
+          if (!acc[language]) acc[language] = {};
+          acc[language][namespace] = JSON.parse(
+            fs.readFileSync(filePath, 'utf-8'),
+          );
+        }
         return acc;
       }, {});
       return merge(acc, addonLocales);
