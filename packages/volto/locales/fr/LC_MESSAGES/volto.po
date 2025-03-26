@@ -3992,10 +3992,10 @@ msgstr "Erreur avec le champ événement déclencheur. Veuillez choisir une vale
 msgid "Type"
 msgstr "Type"
 
-#. Default: "Type a valid URL"
+#. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
 #: components/manage/Blocks/Video/Edit
-msgid "Type a valid URL"
-msgstr ""
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr "Saisissez une URL de vidéo (YouTube, Vimeo ou mp4)"
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete

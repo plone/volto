@@ -3991,10 +3991,10 @@ msgstr "触发了事件字段错误。请选择一个值"
 msgid "Type"
 msgstr ""
 
-#. Default: "Type a valid URL"
+#. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
 #: components/manage/Blocks/Video/Edit
-msgid "Type a valid URL"
-msgstr ""
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr "输入一个视频(YouTube, Vimeo or mp4)的URL"
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete

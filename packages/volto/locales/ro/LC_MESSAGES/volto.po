@@ -3991,10 +3991,10 @@ msgstr "Eroare la declanșarea câmpului evenimentului. Selectați o valoare"
 msgid "Type"
 msgstr "Tip"
 
-#. Default: "Type a valid URL"
+#. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
 #: components/manage/Blocks/Video/Edit
-msgid "Type a valid URL"
-msgstr ""
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr "Introduceți un URL video (YouTube, Vimeo sau mp4)"
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete

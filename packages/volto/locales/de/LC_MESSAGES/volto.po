@@ -3990,10 +3990,10 @@ msgstr "Fehler im auslösenden Ereignis. Bitte geben Sie einen Wert ein"
 msgid "Type"
 msgstr "Typ"
 
-#. Default: "Type a valid URL"
+#. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
 #: components/manage/Blocks/Video/Edit
-msgid "Type a valid URL"
-msgstr ""
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr "Geben Sie eine Video-URL (YouTube, Video oder MP4) ein"
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete

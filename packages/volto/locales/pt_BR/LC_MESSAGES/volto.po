@@ -3991,10 +3991,10 @@ msgstr "Erro no campo de gatilho. Selecione um valor"
 msgid "Type"
 msgstr "Tipo"
 
-#. Default: "Type a valid URL"
+#. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
 #: components/manage/Blocks/Video/Edit
-msgid "Type a valid URL"
-msgstr ""
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr "Digite uma URL de vídeo (YouTube, Vimeo ou mp4)"
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete

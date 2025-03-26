@@ -20,8 +20,8 @@ const messages = defineMessages({
     defaultMessage: 'Specify a youtube video or playlist url',
   },
   VideoBlockInputPlaceholder: {
-    id: 'Type a valid URL',
-    defaultMessage: 'Type a valid URL',
+    id: 'Type a Video (YouTube, Vimeo or mp4) URL',
+    defaultMessage: 'Type a Video (YouTube, Vimeo or mp4) URL',
   },
   allowedURLs: {
     id: 'YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed',

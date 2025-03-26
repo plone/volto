@@ -3992,10 +3992,10 @@ msgstr "Akzioaren eremuan errorea. Aukeratu balio bat"
 msgid "Type"
 msgstr "Elementu mota"
 
-#. Default: "Type a valid URL"
+#. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
 #: components/manage/Blocks/Video/Edit
-msgid "Type a valid URL"
-msgstr ""
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr "Idatzi baliozko URL bat"
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete

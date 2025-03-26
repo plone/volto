@@ -3992,10 +3992,10 @@ msgstr "Error de campo de evento desencadenante. Por favor seleccione un valor"
 msgid "Type"
 msgstr "Tipo"
 
-#. Default: "Type a valid URL"
+#. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
 #: components/manage/Blocks/Video/Edit
-msgid "Type a valid URL"
-msgstr ""
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr "Escriba una URL válida"
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete

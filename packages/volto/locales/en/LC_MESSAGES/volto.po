@@ -3985,10 +3985,10 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#. Default: "Type a valid URL"
+#. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
 #: components/manage/Blocks/Video/Edit
-msgid "Type a valid URL"
-msgstr ""
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr "Type a valid URL"
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete
