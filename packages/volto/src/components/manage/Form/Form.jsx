@@ -177,7 +177,7 @@ class Form extends Component {
       schema?.fieldsets ? schema.fieldsets.map((fieldset) => fieldset.id) : [],
     );
 
-    this.props.onCancelDraft();
+    //this.props.onCancelDraft();
 
     if (!props.isEditForm) {
       // It's a normal (add form), get defaults from schema
@@ -683,6 +683,7 @@ class Form extends Component {
           this.props.setFormData(this.props.formData);
         }
       }
+      this.props.onCancelDraft();
     }
   }
 
