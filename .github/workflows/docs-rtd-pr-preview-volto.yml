@@ -7,7 +7,7 @@ on:
     # Execute this action only on PRs that touch
     # documentation files for Volto.
     branches:
-      - main
+      - 18.x.x
     paths:
       - "docs/source/**"
       - "packages/volto/.storybook/**"
