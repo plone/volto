@@ -3,7 +3,12 @@ import isEmpty from 'lodash/isEmpty';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { v4 as uuid } from 'uuid';
 
-const getPlaceholder = (draggedDOM, sourceIndex, destinationIndex, uid) => {
+const getVerticalPlaceholder = (
+  draggedDOM,
+  sourceIndex,
+  destinationIndex,
+  parentDOM,
+) => {
   // Because of the margin rendering rules, there is no easy
   // way to calculate the offset of the placeholder.
   //
@@ -13,10 +18,6 @@ const getPlaceholder = (draggedDOM, sourceIndex, destinationIndex, uid) => {
   //
   // To get a placeholder that looks good in all cases, we
   // fill up the space between the previous and the next element.
-  const queryAttr = 'data-rbd-droppable-id';
-  const domQuery = `[${queryAttr}='${uid}']`;
-  const parentDOM = document.querySelector(domQuery);
-
   const childrenArray = [...parentDOM.children];
   // Remove the source element
   childrenArray.splice(sourceIndex, 1);
@@ -49,6 +50,33 @@ const getPlaceholder = (draggedDOM, sourceIndex, destinationIndex, uid) => {
   };
 };
 
+const getHorizontalPlaceholder = (draggedDOM, destinationIndex, parentDOM) => {
+  // The next element will be the one with a gray placeholder behind it.
+  //
+  // If the element is the last (doesn't have a next element), the whole draggable
+  // area will be highlighted
+
+  const parentRect = parentDOM.getBoundingClientRect();
+  let height;
+
+  height = parentRect.bottom - parentRect.top;
+
+  let clientWidth = draggedDOM.clientWidth;
+
+  let innerDroppablePlaceholderMarginLeft =
+    parentDOM.children[destinationIndex].getBoundingClientRect().x;
+  if (parentDOM.children.length - 1 === destinationIndex) {
+    innerDroppablePlaceholderMarginLeft = parentRect.x;
+    clientWidth = parentDOM.getBoundingClientRect().width;
+  }
+  return {
+    clientY: 0,
+    clientHeight: height,
+    clientX: parseFloat(innerDroppablePlaceholderMarginLeft - parentRect.x),
+    clientWidth: clientWidth,
+  };
+};
+
 const DragDropList = (props) => {
   const {
     childList,
@@ -65,7 +93,7 @@ const DragDropList = (props) => {
   const [uid] = React.useState(uuid());
   // queueing timed action
   const timer = useRef(null);
-
+  const parentRef = useRef(null);
   const onDragStart = React.useCallback(
     (event) => {
       clearTimeout(timer.current);
@@ -77,10 +105,17 @@ const DragDropList = (props) => {
       }
       const sourceIndex = event.source.index;
       setPlaceholderProps(
-        getPlaceholder(draggedDOM, sourceIndex, sourceIndex, uid),
+        direction === 'horizontal'
+          ? getHorizontalPlaceholder(draggedDOM, sourceIndex, parentRef.current)
+          : getVerticalPlaceholder(
+              draggedDOM,
+              sourceIndex,
+              sourceIndex,
+              parentRef.current,
+            ),
       );
     },
-    [uid],
+    [direction],
   );
 
   const onDragEnd = React.useCallback(
@@ -109,15 +144,24 @@ const DragDropList = (props) => {
       const sourceIndex = update.source.index;
       const destinationIndex = update.destination.index;
       // Wait until the animations have finished, to make it look good.
-      timer.current = setTimeout(
-        () =>
-          setPlaceholderProps(
-            getPlaceholder(draggedDOM, sourceIndex, destinationIndex, uid),
-          ),
-        250,
-      );
+      timer.current = setTimeout(() => {
+        setPlaceholderProps(
+          direction === 'horizontal'
+            ? getHorizontalPlaceholder(
+                draggedDOM,
+                destinationIndex,
+                parentRef.current,
+              )
+            : getVerticalPlaceholder(
+                draggedDOM,
+                sourceIndex,
+                destinationIndex,
+                parentRef.current,
+              ),
+        );
+      }, 250);
     },
-    [uid],
+    [direction],
   );
 
   const AsDomComponent = as;
@@ -142,7 +186,10 @@ const DragDropList = (props) => {
       >
         {(provided, snapshot) => (
           <AsDomComponent
-            ref={provided.innerRef}
+            ref={(el) => {
+              provided.innerRef(el);
+              parentRef.current = el;
+            }}
             {...provided.droppableProps}
             style={{ ...style, position: 'relative' }}
             aria-labelledby={forwardedAriaLabelledBy}
@@ -162,22 +209,20 @@ const DragDropList = (props) => {
                 </Draggable>
               ))}
             {provided.placeholder}
-            {/* TODO: Fix the ghost problem if horizontal dnd is present */}
-            {direction !== 'horizontal' &&
-              !isEmpty(placeholderProps) &&
-              snapshot.isDraggingOver && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: placeholderProps.clientY,
-                    left: placeholderProps.clientX,
-                    height: placeholderProps.clientHeight,
-                    background: '#eee',
-                    width: placeholderProps.clientWidth,
-                    borderRadius: '3px',
-                  }}
-                />
-              )}
+            {!isEmpty(placeholderProps) && snapshot.isDraggingOver && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: placeholderProps.clientY,
+                  left: placeholderProps.clientX,
+                  height: placeholderProps.clientHeight,
+                  background: '#eee',
+                  width: placeholderProps.clientWidth,
+                  borderRadius: '3px',
+                  ...(direction === 'horizontal' && { zIndex: -1 }),
+                }}
+              />
+            )}
           </AsDomComponent>
         )}
       </Droppable>
