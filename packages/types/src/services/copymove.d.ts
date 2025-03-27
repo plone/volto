@@ -1,6 +1,6 @@
-interface CopyMoveObject {
+interface CopyMoveContentObject {
   source: string;
   target: string;
 }
 
-export interface CopyMoveResponse extends Array<CopyMoveObject> {}
+export interface CopyMoveContentResponse extends Array<CopyMoveContentObject> {}

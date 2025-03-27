@@ -1,23 +1,15 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import type { GetSiteResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
-export type SiteArgs = {
-  config: PloneClientConfig;
-};
-
-export const getSite = async ({
-  config,
-}: SiteArgs): Promise<GetSiteResponse> => {
+export async function getSite(
+  this: PloneClient,
+): Promise<RequestResponse<GetSiteResponse>> {
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
 
   return apiRequest('get', '/@site', options);
-};
-
-export const getSiteQuery = ({ config }: SiteArgs) => ({
-  queryKey: ['get', 'site'],
-  queryFn: () => getSite({ config }),
-});
+}
