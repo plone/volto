@@ -12,7 +12,6 @@ import { I18nextProvider, initReactI18next } from 'react-i18next';
 import Backend from 'i18next-fs-backend/cjs';
 import i18n from './i18n'; // your i18n configuration file
 import { resolve } from 'node:path';
-import installServer from './config.server';
 
 export const streamTimeout = 5_000;
 
@@ -25,7 +24,13 @@ export default async function handleRequest(
   // If you have middleware enabled:
   // loadContext: unstable_RouterContextProvider
 ) {
-  installServer();
+  // Ensure requests from bots and SPA Mode renders wait for all content to load before responding
+  // https://react.dev/reference/react-dom/server/renderToPipeableStream#waiting-for-all-content-to-load-for-crawlers-and-static-generation
+  const userAgent = request.headers.get('user-agent');
+  const readyOption: keyof RenderToPipeableStreamOptions =
+    (userAgent && isbot(userAgent)) || routerContext.isSpaMode
+      ? 'onAllReady'
+      : 'onShellReady';
 
   const instance = createInstance();
   const lng = await i18next.getLocale(request);
@@ -38,19 +43,11 @@ export default async function handleRequest(
       ...i18n, // spread the configuration
       lng, // The locale we detected above
       ns, // The namespaces the routes about to render wants to use
-      backend: { loadPath: resolve('../locales/{{lng}}/{{ns}}.json') },
+      backend: { loadPath: resolve('./locales/{{lng}}/{{ns}}.json') },
     });
 
   return new Promise((resolve, reject) => {
     let shellRendered = false;
-    const userAgent = request.headers.get('user-agent');
-
-    // Ensure requests from bots and SPA Mode renders wait for all content to load before responding
-    // https://react.dev/reference/react-dom/server/renderToPipeableStream#waiting-for-all-content-to-load-for-crawlers-and-static-generation
-    const readyOption: keyof RenderToPipeableStreamOptions =
-      (userAgent && isbot(userAgent)) || routerContext.isSpaMode
-        ? 'onAllReady'
-        : 'onShellReady';
 
     const { pipe, abort } = renderToPipeableStream(
       <I18nextProvider i18n={instance}>
