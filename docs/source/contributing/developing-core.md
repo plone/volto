@@ -46,7 +46,6 @@ The package `volto` is the core code of Volto.
 /
 ├─ apps/
 │  ├─ nextjs
-│  ├─ remix
 │  └─ rr7
 ├─ ...
 ├─ packages/
