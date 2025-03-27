@@ -449,9 +449,6 @@ importers:
 
   packages/client:
     dependencies:
-      '@tanstack/react-query':
-        specifier: ^5.59.0
-        version: 5.59.15(react@18.2.0)
       axios:
         specifier: ^1.8.2
         version: 1.8.2(debug@4.3.4)
