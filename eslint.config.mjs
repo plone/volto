@@ -24,6 +24,7 @@ const addonPackages = [
   'packages/coresandbox',
   'packages/slots',
   'packages/theming',
+  'packages/publicui',
   // Add more packages as needed
 ];
 

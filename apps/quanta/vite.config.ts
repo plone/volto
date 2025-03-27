@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import { reactRouter } from '@react-router/dev/vite';
+import { reactRouterDevTools } from 'react-router-devtools';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import tailwindcss from '@tailwindcss/vite';
 import { PloneRegistryVitePlugin } from '@plone/registry/vite-plugin';
@@ -13,6 +14,7 @@ export default defineConfig({
   plugins: [
     PloneRegistryVitePlugin(),
     tailwindcss(),
+    reactRouterDevTools(),
     reactRouter(),
     tsconfigPaths(),
   ],

@@ -1,23 +1,16 @@
-import type { Route } from './+types/edit';
+import type { RootLoader } from 'quanta/app/root';
 import { useTranslation } from 'react-i18next';
 import { useRouteLoaderData } from 'react-router';
 
-import type { Content } from '@plone/types';
-
-export const meta: Route.MetaFunction = () => {
-  return [];
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export async function loader({ params, request }: Route.LoaderArgs) {}
-
 export default function Edit() {
-  const { content } = useRouteLoaderData('root') as { content: Content };
+  const data = useRouteLoaderData<RootLoader>('root');
   const { t } = useTranslation();
-  // const pathname = useLocation().pathname;
+  if (!data) return null;
+  const { content } = data;
+
   return (
     <h1>
-      {content.title} - {t('cmsui.edit')}
+      {content.title} - {t('edit')}
     </h1>
   );
   // return <App content={data} location={{ pathname }} />;
