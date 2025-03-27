@@ -7,5 +7,9 @@ import applyAddonConfiguration from '../registry.loader';
 
 export default function install() {
   applyAddonConfiguration(config);
+
+  config.settings.defaultLanguage = 'en';
+  config.settings.supportedLanguages = ['en'];
+
   return config;
 }
