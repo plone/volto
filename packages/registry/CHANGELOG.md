@@ -8,6 +8,19 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.0 (2025-03-27)
+
+### Breaking
+
+- Removed support for loading config from project. @sneridagh
+
+  Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html)
+  for more information. [#6842](https://github.com/plone/volto/issues/6842)
+
+### Internal
+
+- Fix typings for Vite Plugin. @sneridagh [#6733](https://github.com/plone/volto/issues/6733)
+
 ## 2.4.1 (2025-02-08)
 
 ### Internal
