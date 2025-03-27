@@ -3,6 +3,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig, PluginOption } from 'vite';
 import { PloneRegistryVitePlugin } from '@plone/registry/vite-plugin';
 import { PloneSVGRVitePlugin } from '@plone/components/vite-plugin-svgr';
+import tailwindcss from '@tailwindcss/vite';
 
 const prodServerName =
   process.env.PLONE_API_PATH && process.env.PLONE_API_PATH.startsWith('https')
@@ -13,6 +14,7 @@ export default defineConfig({
   plugins: [
     PloneSVGRVitePlugin() as PluginOption[],
     PloneRegistryVitePlugin(),
+    tailwindcss(),
     reactRouter(),
     tsconfigPaths(),
   ],

@@ -121,8 +121,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       tailwind-variants:
-        specifier: ^0.3.1
-        version: 0.3.1(tailwindcss@4.0.15)
+        specifier: ^1.0.0
+        version: 1.0.0(tailwindcss@4.0.15)
       tailwindcss:
         specifier: ^4.0.9
         version: 4.0.15
@@ -227,6 +227,9 @@ importers:
       '@react-router/dev':
         specifier: 'catalog:'
         version: 7.3.0(@react-router/serve@7.3.0(react-router@7.3.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.7.3))(@types/node@20.12.7)(babel-plugin-macros@3.1.0)(jiti@2.4.2)(less@3.11.1)(lightningcss@1.29.1)(react-router@7.3.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(sass@1.75.0)(terser@5.30.3)(tsx@4.19.3)(typescript@5.7.3)(vite@5.4.14(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))
+      '@tailwindcss/vite':
+        specifier: 4.0.9
+        version: 4.0.9(vite@5.4.14(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))
       '@testing-library/cypress':
         specifier: 10.0.2
         version: 10.0.2(cypress@13.13.2)
@@ -902,6 +905,9 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
+      tailwindcss:
+        specifier: ^4.0.9
+        version: 4.0.15
     devDependencies:
       '@plone/types':
         specifier: workspace:*
@@ -999,6 +1005,18 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
+      tailwind-merge:
+        specifier: ^3.0.2
+        version: 3.0.2
+      tailwind-variants:
+        specifier: ^1.0.0
+        version: 1.0.0(tailwindcss@4.0.15)
+      tailwindcss:
+        specifier: ^4.0.9
+        version: 4.0.15
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@4.0.15)
     devDependencies:
       '@plone/types':
         specifier: workspace:*
@@ -10070,6 +10088,12 @@ packages:
 
   tailwind-variants@0.3.1:
     resolution: {integrity: sha512-krn67M3FpPwElg4FsZrOQd0U26o7UDH/QOkK8RNaiCCrr052f6YJPBUfNKnPo/s/xRzNPtv1Mldlxsg8Tb46BQ==}
+    engines: {node: '>=16.x', pnpm: '>=7.x'}
+    peerDependencies:
+      tailwindcss: '*'
+
+  tailwind-variants@1.0.0:
+    resolution: {integrity: sha512-2WSbv4ulEEyuBKomOunut65D8UZwxrHoRfYnxGcQNnHqlSCp2+B7Yz2W+yrNDrxRodOXtGD/1oCcKGNBnUqMqA==}
     engines: {node: '>=16.x', pnpm: '>=7.x'}
     peerDependencies:
       tailwindcss: '*'
@@ -22203,15 +22227,15 @@ snapshots:
 
   tailwind-merge@3.0.2: {}
 
-  tailwind-variants@0.3.1(tailwindcss@4.0.15):
-    dependencies:
-      tailwind-merge: 2.5.4
-      tailwindcss: 4.0.15
-
   tailwind-variants@0.3.1(tailwindcss@4.0.8):
     dependencies:
       tailwind-merge: 2.5.4
       tailwindcss: 4.0.8
+
+  tailwind-variants@1.0.0(tailwindcss@4.0.15):
+    dependencies:
+      tailwind-merge: 3.0.2
+      tailwindcss: 4.0.15
 
   tailwindcss-animate@1.0.7(tailwindcss@4.0.15):
     dependencies:

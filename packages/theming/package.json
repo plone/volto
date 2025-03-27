@@ -51,7 +51,11 @@
     "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
     "lightningcss": "1.28.1",
-    "lightningcss-cli": "1.28.1"
+    "lightningcss-cli": "1.28.1",
+    "tailwind-merge": "^3.0.2",
+    "tailwind-variants": "^1.0.0",
+    "tailwindcss": "^4.0.9",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
