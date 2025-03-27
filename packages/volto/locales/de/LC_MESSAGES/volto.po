@@ -5,12 +5,11 @@ msgstr ""
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
 "PO-Revision-Date: 2016-10-22 16:41-0500\n"
 "Last-Translator: German <https://github.com/plone/volto/issues>\n"
-"Language: de\n"
+"Language: \n"
 "Language-Team: German <https://github.com/plone/volto/issues>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"MIME-Version: 1.0\n"
 "Language-Code: de\n"
 "Language-Name: Deutsch\n"
 "Preferred-Encodings: utf-8 latin1\n"
@@ -939,7 +938,7 @@ msgstr "Aktuelles Passwort"
 #. Default: "Customize teaser content"
 #: components/manage/Blocks/Teaser/schema
 msgid "Customize teaser content"
-msgstr "Den Inhalt des Teasers anpassen"
+msgstr "Passen Sie den Inhalt des Teasers an"
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
@@ -1097,7 +1096,7 @@ msgstr "Gelöscht"
 #. Default: "Deleting this item breaks {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item breaks {brokenReferences} {variation}."
-msgstr "Das Löschen dieses Elements macht {brokenReferences} {variation} ungültig."
+msgstr "Das Löschen dieses Elements macht folgende Referenz ungültig: {brokenReferences} {variation}."
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
@@ -3507,7 +3506,7 @@ msgstr "Einige Elemente sind Ordner. Beim Löschen entfernen Sie auch {contained
 #. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-msgstr "Einige Elemente werden durch andere Inhalte referenziert. Das Löschen macht {brokenReferences} {variation} ungültig."
+msgstr "Einige Elemente werden durch andere Inhalte referenziert. Durch das Löschen werden die Referenzierungen zu {brokenReferences} {variation} ungültig."
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3803,7 +3802,7 @@ msgstr "Die Linkadresse lautet:"
 #. Default: "The number of items must be greater than or equal to {minItems}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The number of items must be greater than or equal to {minItems}"
-msgstr "Die Anzahl der Elemente muss größer oder gleich {minItems} sein."
+msgstr "Die Anzahl der Elemente muss größer oder gleich {minItems} sein"
 
 #. Default: "The number of items must be less than or equal to {maxItems}"
 #: helpers/MessageLabels/MessageLabels
@@ -3886,7 +3885,7 @@ msgstr "Es sind Fehler aufgetreten."
 #. Default: "These items will have broken links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "These items will have broken links"
-msgstr "Folgende Verweise würden beim Löschen ungültig"
+msgstr "Diese Elemente haben ungültige Links"
 
 #. Default: "Third"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -4792,6 +4791,11 @@ msgstr "Mein Nutzername lautet"
 msgid "leadimage"
 msgstr "Lead-Bild"
 
+#. Default: "Delete"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "link-integrity: Delete"
+msgstr "Linkintegrität: Löschen"
+
 #. Default: "Delete item and break links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: Delete item and break links"
@@ -4929,17 +4933,17 @@ msgstr "Relationen neu indizieren"
 #. Default: "reference"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "reference"
-msgstr "Verweis"
+msgstr "Referenz"
 
 #. Default: "references"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "references"
-msgstr "Verweise"
+msgstr "Referenzen"
 
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
-msgstr "verweist auf"
+msgstr "referenziert auf"
 
 #. Default: "results"
 #: components/theme/Search/Search
