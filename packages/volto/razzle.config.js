@@ -201,7 +201,10 @@ const defaultModify = ({
               `${registry.packages[addon].modulePath}/../.`,
             );
             if (fs.existsSync(path.join(p, 'public'))) {
-              if (!dev) {
+              if (
+                !dev &&
+                fs.existsSync(path.join(paths.appBuildPublic, 'public'))
+              ) {
                 mergeDirectories(path.join(p, 'public'), paths.appBuildPublic);
               }
               if (
