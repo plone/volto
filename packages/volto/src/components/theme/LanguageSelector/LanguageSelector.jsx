@@ -34,6 +34,9 @@ const LanguageSelector = (props) => {
   const translations = useSelector(
     (state) => state.content.data?.['@components']?.translations?.items,
   );
+  const defaultLanguage = useSelector(
+    (state) => state.site.data['plone.default_language'],
+  );
 
   const { settings } = config;
 
@@ -61,7 +64,7 @@ const LanguageSelector = (props) => {
     </div>
   ) : (
     <Helmet>
-      <html lang={toReactIntlLang(settings.defaultLanguage)} />
+      <html lang={toReactIntlLang(defaultLanguage)} />
     </Helmet>
   );
 };

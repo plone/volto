@@ -62,6 +62,7 @@ config.set('settings', {
   styleClassNameExtenders,
   blockSettingsTabFieldsetsInitialStateOpen: true,
   containerBlockTypes: [],
+  errorHandlers: [],
 });
 config.set('blocks', {
   blocksConfig: {
