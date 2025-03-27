@@ -1,6 +1,7 @@
 import ploneClient from '../../client';
+import { setup, teardown } from '../../utils/test';
 import { v4 as uuid } from 'uuid';
-import { describe, expect, test } from 'vitest';
+import { afterEach, beforeEach, describe, expect, test } from 'vitest';
 import type { RequestError } from '../types';
 
 const cli = ploneClient.initialize({
@@ -8,6 +9,14 @@ const cli = ploneClient.initialize({
 });
 
 await cli.login({ username: 'admin', password: 'secret' });
+
+beforeEach(async () => {
+  await setup();
+});
+
+afterEach(async () => {
+  await teardown();
+});
 
 describe('Get Group', () => {
   test('Successful', async () => {

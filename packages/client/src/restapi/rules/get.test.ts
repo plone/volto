@@ -1,5 +1,6 @@
 import ploneClient from '../../client';
-import { describe, expect, test } from 'vitest';
+import { setup, teardown } from '../../utils/test';
+import { afterEach, beforeEach, describe, expect, test } from 'vitest';
 import { v4 as uuid } from 'uuid';
 
 const cli = ploneClient.initialize({
@@ -7,6 +8,14 @@ const cli = ploneClient.initialize({
 });
 
 await cli.login({ username: 'admin', password: 'secret' });
+
+beforeEach(async () => {
+  await setup();
+});
+
+afterEach(async () => {
+  await teardown();
+});
 
 describe('Get Rules', () => {
   test.skip('Successful', async () => {

@@ -1,4 +1,5 @@
-import { describe, expect, test } from 'vitest';
+import { afterEach, beforeEach, describe, expect, test } from 'vitest';
+import { setup, teardown } from '../../utils/test';
 import ploneClient from '../../client';
 
 const cli = ploneClient.initialize({
@@ -6,6 +7,14 @@ const cli = ploneClient.initialize({
 });
 
 await cli.login({ username: 'admin', password: 'secret' });
+
+beforeEach(async () => {
+  await setup();
+});
+
+afterEach(async () => {
+  await teardown();
+});
 
 describe('Get RelationsList', () => {
   test('Successful', async () => {

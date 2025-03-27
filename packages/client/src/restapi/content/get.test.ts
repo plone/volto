@@ -1,9 +1,18 @@
 import ploneClient from '../../client';
-import { describe, test, expect } from 'vitest';
+import { setup, teardown } from '../../utils/test';
+import { afterEach, beforeEach, describe, test, expect } from 'vitest';
 import type { RequestError } from '../types';
 
 const cli = ploneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
+});
+
+beforeEach(async () => {
+  await setup();
+});
+
+afterEach(async () => {
+  await teardown();
 });
 
 describe('getContent', () => {
