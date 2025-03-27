@@ -1,34 +1,28 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { z } from 'zod';
 import type { User as GetUserResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 const getUserSchema = z.object({
   userId: z.string(),
 });
 
-export type UserArgs = z.infer<typeof getUserSchema> & {
-  config: PloneClientConfig;
-};
+export type UserArgs = z.infer<typeof getUserSchema>;
 
-export const getUser = async ({
-  userId,
-  config,
-}: UserArgs): Promise<GetUserResponse> => {
+export async function getUser(
+  this: PloneClient,
+  { userId }: UserArgs,
+): Promise<RequestResponse<GetUserResponse>> {
   const validatedArgs = getUserSchema.parse({
     userId,
   });
 
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
   const userName = `@users/${validatedArgs.userId}`;
 
   return apiRequest('get', userName, options);
-};
-
-export const getUserQuery = ({ userId, config }: UserArgs) => ({
-  queryKey: [userId, 'get', 'users'],
-  queryFn: () => getUser({ userId, config }),
-});
+}

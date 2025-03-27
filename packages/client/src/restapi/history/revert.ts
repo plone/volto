@@ -1,46 +1,31 @@
 import { z } from 'zod';
-import { apiRequest, type ApiRequestParams } from '../../API';
-import {
-  type PloneClientConfig,
-  PloneClientConfigSchema,
-} from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { revertHistoryDataSchema } from '../../validation/history';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 export const revertHistoryArgsSchema = z.object({
   path: z.string(),
   data: revertHistoryDataSchema,
-  config: PloneClientConfigSchema,
 });
 
 export type ReverHistoryArgs = z.infer<typeof revertHistoryArgsSchema>;
 
-export const revertHistory = async ({
-  path,
-  data,
-  config,
-}: ReverHistoryArgs): Promise<undefined> => {
+export async function revertHistory(
+  this: PloneClient,
+  { path, data }: ReverHistoryArgs,
+): Promise<RequestResponse<undefined>> {
   const validatedArgs = revertHistoryArgsSchema.parse({
     path,
     data,
-    config,
   });
 
   const options: ApiRequestParams = {
     data: validatedArgs.data,
-    config: validatedArgs.config,
+    config: this.config,
   };
 
   const historyPath = `${validatedArgs.path}/@history`;
 
   return apiRequest('patch', historyPath, options);
-};
-
-export const revertHistoryMutation = ({
-  config,
-}: {
-  config: PloneClientConfig;
-}) => ({
-  mutationKey: ['patch', 'history'],
-  mutationFn: ({ path, data }: Omit<ReverHistoryArgs, 'config'>) =>
-    revertHistory({ path, data, config }),
-});
+}

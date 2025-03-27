@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { type AxiosRequestConfig, type AxiosResponse } from 'axios';
 import type { PloneClientConfig } from './validation/config';
 import qs from 'query-string';
 import debugFactory from 'debug';
@@ -15,36 +15,25 @@ export type ApiRequestParams = {
   raw?: boolean;
 };
 
-export function getBackendURL(apiPath: string, path: string) {
+export function getBackendURL(
+  apiPath: string,
+  apiSuffix: string | undefined,
+  path: string,
+) {
   const APISUFIX = '/++api++';
 
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
 
-  return `${apiPath}${APISUFIX}${adjustedPath}`;
+  return `${apiPath}${apiSuffix ?? APISUFIX}${adjustedPath}`;
 }
 
-/*
-Previous implementation
-
-export async function handleRequest(
-  method: string,
-  path: string,
-  options: ApiRequestParams,
-): Promise<any> {
-  const fetcher = api;
-  const response = await fetcher[method](path, options);
-
-  return response;
-}
-*/
-
-const _handleResponse = ({ data }: AxiosResponse) => data;
+const _handleResponse = (response: AxiosResponse) => response;
 
 const _handleError = (error: any) => {
   debug(error);
-  return Promise.reject(error);
+  return Promise.reject({ status: error.status, data: error.response.data });
 };
 
 export function axiosConfigAdapter(
@@ -62,7 +51,7 @@ export function axiosConfigAdapter(
   }: ApiRequestParams = options;
   const axiosConfig: AxiosRequestConfig = {
     method,
-    url: getBackendURL(config.apiPath, path),
+    url: getBackendURL(config.apiPath, config.apiSuffix, path),
     params,
     headers: {
       Accept: 'application/json',
@@ -90,7 +79,7 @@ export async function apiRequest(
   method: string,
   path: string,
   options: ApiRequestParams,
-): Promise<any> {
+) {
   const instance = axios.create();
 
   if (options.raw) {
@@ -99,7 +88,5 @@ export async function apiRequest(
     instance.interceptors.response.use(_handleResponse, _handleError);
   }
 
-  // console.log({ method, path, options });
-  // console.log(instance.request(axiosConfigAdapter(method, path, options)));
   return instance.request(axiosConfigAdapter(method, path, options));
 }

@@ -1,9 +1,7 @@
 import { z } from 'zod';
-import { apiRequest, type ApiRequestParams } from '../../API';
-import {
-  type PloneClientConfig,
-  PloneClientConfigSchema,
-} from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 const emailSendDataSchema = z.object({
   name: z.string(),
@@ -15,34 +13,22 @@ const emailSendDataSchema = z.object({
 
 export const emailSendArgsSchema = z.object({
   data: emailSendDataSchema,
-  config: PloneClientConfigSchema,
 });
 
 export type EmailSendArgs = z.infer<typeof emailSendArgsSchema>;
 
-export const emailSend = async ({
-  data,
-  config,
-}: EmailSendArgs): Promise<undefined> => {
+export async function emailSend(
+  this: PloneClient,
+  { data }: EmailSendArgs,
+): Promise<RequestResponse<undefined>> {
   const validatedArgs = emailSendArgsSchema.parse({
     data,
-    config,
   });
 
   const options: ApiRequestParams = {
     data: validatedArgs.data,
-    config: validatedArgs.config,
+    config: this.config,
   };
 
   return apiRequest('post', '/@email-send', options);
-};
-
-export const emailSendMutation = ({
-  config,
-}: {
-  config: PloneClientConfig;
-}) => ({
-  mutationKey: ['post', 'email-send'],
-  mutationFn: ({ data }: Omit<EmailSendArgs, 'config'>) =>
-    emailSend({ data, config }),
-});
+}
