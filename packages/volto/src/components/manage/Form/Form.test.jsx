@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-
+import { MemoryRouter } from 'react-router-dom';
 import Form from './Form';
 
 const mockStore = configureStore();
@@ -26,26 +26,30 @@ describe('Form', () => {
         },
       },
     });
+    const route = '/some-route';
     const component = renderer.create(
       <Provider store={store}>
-        <Form
-          schema={{
-            fieldsets: [
-              {
-                id: 'default',
-                title: 'Default',
-                fields: ['title'],
+        <MemoryRouter initialEntries={[route]}>
+          <Form
+            schema={{
+              fieldsets: [
+                {
+                  id: 'default',
+                  title: 'Default',
+                  fields: ['title'],
+                },
+              ],
+              properties: {
+                title: {},
               },
-            ],
-            properties: {
-              title: {},
-            },
-            required: [],
-          }}
-          requestError={errorMessage}
-          onSubmit={() => {}}
-          onCancel={() => {}}
-        />
+              required: [],
+            }}
+            requestError={errorMessage}
+            onSubmit={() => {}}
+            onCancel={() => {}}
+          />
+        </MemoryRouter>
+        ,
       </Provider>,
     );
     const json = component.toJSON();

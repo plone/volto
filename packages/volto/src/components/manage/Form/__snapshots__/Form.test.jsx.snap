@@ -1,86 +1,89 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Form renders a form component 1`] = `
-<div
-  className="ui container"
->
-  <form
-    className="ui form"
-    method="post"
-    onSubmit={[Function]}
+Array [
+  <div
+    className="ui container"
   >
-    <fieldset
-      className="invisible"
+    <form
+      className="ui form"
+      method="post"
+      onSubmit={[Function]}
     >
-      <div
-        className="ui raised segments"
+      <fieldset
+        className="invisible"
       >
         <div
-          className="ui segment"
+          className="ui raised segments"
         >
           <div
-            className="Field"
-            id="title"
-          />
-        </div>
-        <div
-          className="ui clearing segment actions"
-        >
-          <button
-            aria-label="Save"
-            className="ui basic primary right floated button"
-            onClick={[Function]}
-            title="Save"
-            type="submit"
+            className="ui segment"
           >
-            <svg
-              className="icon circled"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": undefined,
-                }
-              }
-              onClick={null}
-              style={
-                Object {
-                  "fill": "currentColor",
-                  "height": "30px",
-                  "width": "auto",
-                }
-              }
-              viewBox=""
-              xmlns=""
+            <div
+              className="Field"
+              id="title"
             />
-          </button>
-          <button
-            aria-label="Cancel"
-            className="ui basic secondary right floated button"
-            onClick={[Function]}
-            title="Cancel"
-            type="button"
+          </div>
+          <div
+            className="ui clearing segment actions"
           >
-            <svg
-              className="icon circled"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": undefined,
+            <button
+              aria-label="Save"
+              className="ui basic primary right floated button"
+              onClick={[Function]}
+              title="Save"
+              type="submit"
+            >
+              <svg
+                className="icon circled"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
                 }
-              }
-              onClick={null}
-              style={
-                Object {
-                  "fill": "currentColor",
-                  "height": "30px",
-                  "width": "auto",
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "30px",
+                    "width": "auto",
+                  }
                 }
-              }
-              viewBox=""
-              xmlns=""
-            />
-          </button>
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+            <button
+              aria-label="Cancel"
+              className="ui basic secondary right floated button"
+              onClick={[Function]}
+              title="Cancel"
+              type="button"
+            >
+              <svg
+                className="icon circled"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "30px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+          </div>
         </div>
-      </div>
-    </fieldset>
-  </form>
-</div>
+      </fieldset>
+    </form>
+  </div>,
+  ",",
+]
 `;
