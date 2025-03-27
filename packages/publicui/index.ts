@@ -23,8 +23,5 @@ export default function install(config: ConfigType) {
     ],
   });
 
-  config.settings.supportedLanguages = ['en'];
-  config.settings.defaultLanguage = 'en';
-
   return config;
 }

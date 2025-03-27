@@ -7,3 +7,4 @@ node_modules
 registry.loader.js
 addons.styles.css
 /locales/
+/packages/

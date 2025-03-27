@@ -10,7 +10,7 @@ export default function Edit() {
 
   return (
     <h1>
-      {content.title} - {t('edit')}
+      {content.title} - {t('cmsui.edit')}
     </h1>
   );
   // return <App content={data} location={{ pathname }} />;
