@@ -85,6 +85,7 @@
       "@plone/volto/babel": "<rootDir>/babel.js",
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
       "@plone/volto-slate/(.*)$": "<rootDir>/../volto-slate/src/$1",
+      "@plone/components/(.*)$": "<rootDir>/../components/src/components",
       "@plone/registry/addon-registry$": "<rootDir>/node_modules/@plone/registry/dist/addon-registry/addon-registry.js",
       "@plone/registry/create-addons-loader$": "<rootDir>/node_modules/@plone/registry/dist/addon-registry/create-addons-loader.js",
       "@plone/registry": "<rootDir>/../registry/src",
@@ -177,8 +178,10 @@
     "node": "^20 || ^22"
   },
   "dependencies": {
+    "@internationalized/date": "^3.7.0",
     "@loadable/component": "5.14.1",
     "@loadable/server": "5.14.0",
+    "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
     "@plone/scripts": "workspace:*",
     "@plone/volto-slate": "workspace:*",
@@ -219,6 +222,7 @@
     "react": "18.2.0",
     "react-anchor-link-smooth-scroll": "1.0.12",
     "react-animate-height": "2.0.17",
+    "react-aria-components": "^1.6.0",
     "react-beautiful-dnd": "13.0.0",
     "react-cookie": "4.1.1",
     "react-dates": "21.5.1",
