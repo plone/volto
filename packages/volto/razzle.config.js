@@ -203,7 +203,7 @@ const defaultModify = ({
             if (fs.existsSync(path.join(p, 'public'))) {
               if (
                 !dev &&
-                fs.existsSync(path.join(paths.appBuildPublic, 'public'))
+                fs.existsSync(paths.appBuildPublic)
               ) {
                 mergeDirectories(path.join(p, 'public'), paths.appBuildPublic);
               }
