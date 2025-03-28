@@ -939,7 +939,7 @@ msgstr "Aktuelles Passwort"
 #. Default: "Customize teaser content"
 #: components/manage/Blocks/Teaser/schema
 msgid "Customize teaser content"
-msgstr "Passen Sie den Inhalt des Teasers an"
+msgstr "Den Inhalt des Teasers anpassen"
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
@@ -1097,7 +1097,7 @@ msgstr "Gelöscht"
 #. Default: "Deleting this item breaks {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item breaks {brokenReferences} {variation}."
-msgstr "Das Löschen dieses Elements macht folgende Referenz ungültig: {brokenReferences} {variation}."
+msgstr "Das Löschen dieses Elements macht {brokenReferences} {variation} ungültig."
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
@@ -3507,7 +3507,7 @@ msgstr "Einige Elemente sind Ordner. Beim Löschen entfernen Sie auch {contained
 #. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-msgstr "Einige Elemente werden durch andere Inhalte referenziert. Durch das Löschen werden die Referenzierungen zu {brokenReferences} {variation} ungültig."
+msgstr "Einige Elemente werden durch andere Inhalte referenziert. Das Löschen macht {brokenReferences} {variation} ungültig."
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3803,7 +3803,7 @@ msgstr "Die Linkadresse lautet:"
 #. Default: "The number of items must be greater than or equal to {minItems}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The number of items must be greater than or equal to {minItems}"
-msgstr "Die Anzahl der Elemente muss größer oder gleich {minItems} sein"
+msgstr "Die Anzahl der Elemente muss größer oder gleich {minItems} sein."
 
 #. Default: "The number of items must be less than or equal to {maxItems}"
 #: helpers/MessageLabels/MessageLabels
@@ -3886,7 +3886,7 @@ msgstr "Es sind Fehler aufgetreten."
 #. Default: "These items will have broken links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "These items will have broken links"
-msgstr "Diese Elemente haben ungültige Links"
+msgstr "Folgende Verweise würden beim Löschen ungültig"
 
 #. Default: "Third"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -4934,17 +4934,17 @@ msgstr "Relationen neu indizieren"
 #. Default: "reference"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "reference"
-msgstr "Referenz"
+msgstr "Verweis"
 
 #. Default: "references"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "references"
-msgstr "Referenzen"
+msgstr "Verweise"
 
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
-msgstr "referenziert auf"
+msgstr "verweist auf"
 
 #. Default: "results"
 #: components/theme/Search/Search
