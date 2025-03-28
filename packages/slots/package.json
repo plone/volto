@@ -54,7 +54,8 @@
     "@plone/client": "workspace:*",
     "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
-    "react-aria-components": "catalog:"
+    "react-aria-components": "catalog:",
+    "tailwindcss": "catalog:"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
