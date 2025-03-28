@@ -233,6 +233,10 @@ const validateFieldsPerFieldset = (
         ...blockTypeFieldErrors,
       ];
     }
+
+    if (errors[fieldId]) {
+      errors[fieldId].title = field.title;
+    }
   });
 
   return errors;
