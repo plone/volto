@@ -1,5 +1,4 @@
 import {
-  isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
@@ -10,11 +9,7 @@ import {
   type MetaFunction,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import type { RootLoader } from 'quanta/app/root';
-import type { Route } from 'quanta/.react-router/types/app/+types/root';
-
-// eslint-disable-next-line import/no-unresolved
-// import stylesheet from './app.css?url';
+import type { RootLoader } from 'seven/app/root';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -43,7 +38,6 @@ export const links: LinksFunction = () => [
     href: '/icon.svg',
     type: 'image/svg+xml',
   },
-  // { rel: 'stylesheet', href: stylesheet },
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
   {
     rel: 'preconnect',
@@ -84,33 +78,5 @@ export default function Index() {
         <Scripts />
       </body>
     </html>
-  );
-}
-
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = 'Oops!';
-  let details = 'An unexpected error occurred.';
-  let stack: string | undefined;
-  if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error';
-    details =
-      error.status === 404
-        ? 'The requested page could not be found.'
-        : error.statusText || details;
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
-  }
-
-  return (
-    <main className="container mx-auto p-4 pt-16">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full overflow-x-auto p-4">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
   );
 }

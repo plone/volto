@@ -1,4 +1,4 @@
-import type { RootLoader } from 'quanta/app/root';
+import type { RootLoader } from 'seven/app/root';
 import { useTranslation } from 'react-i18next';
 import { useRouteLoaderData } from 'react-router';
 

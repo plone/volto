@@ -7,8 +7,6 @@ import PloneClient from '@plone/client';
 import applyAddonConfiguration from '../registry.loader';
 
 export default function install() {
-  applyAddonConfiguration(config);
-
   config.settings.apiPath =
     process.env.PLONE_API_PATH || 'http://localhost:8080/Plone';
 
@@ -21,6 +19,11 @@ export default function install() {
     type: 'client',
     method: () => cli,
   });
+
+  config.settings.defaultLanguage = 'en';
+  config.settings.supportedLanguages = ['en'];
+
+  applyAddonConfiguration(config);
 
   console.log('API_PATH is:', config.settings.apiPath);
 
