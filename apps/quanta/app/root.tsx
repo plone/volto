@@ -1,4 +1,4 @@
-import { data, useLoaderData } from 'react-router';
+import { data, isRouteErrorResponse } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import i18next from './i18next.server';
 import type { Route } from './+types/root';
@@ -6,6 +6,7 @@ import { flattenToAppURL } from './utils';
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 import installServer from './config.server';
+import { PropsWithChildren } from 'react';
 
 const otherResources: Route.unstable_MiddlewareFunction = async (
   { request, params, context },
@@ -34,7 +35,7 @@ const otherResources: Route.unstable_MiddlewareFunction = async (
 
 export const unstable_middleware = [otherResources];
 
-export async function loader({ params, request, context }: Route.LoaderArgs) {
+export async function loader({ params, request }: Route.LoaderArgs) {
   installServer();
   const locale = await i18next.getLocale(request);
 
@@ -54,10 +55,10 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
       content: flattenToAppURL((await cli.getContent({ path, expand })).data),
       locale,
     };
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
-    throw data('Content Not Found', { status: 404 });
+  } catch (error: any) {
+    throw data('Content Not Found', {
+      status: typeof error.status === 'number' ? error.status : 500,
+    });
   }
 }
 
@@ -71,8 +72,12 @@ export const handle = {
   i18n: 'common',
 };
 
-export function Layout({ children }: { children: React.ReactNode }) {
-  const { locale } = useLoaderData<typeof loader>();
+export function Layout({
+  children,
+  loaderData,
+}: PropsWithChildren<Route.ComponentProps>) {
+  // loaderData can be undefined in case of an error
+  const locale = loaderData?.locale || 'en';
 
   // This hook will change the i18n instance language to the current locale
   // detected by the loader, this way, when we do something to change the
@@ -81,4 +86,41 @@ export function Layout({ children }: { children: React.ReactNode }) {
   useChangeLanguage(locale);
 
   return children;
+}
+
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  let message = 'Oops!';
+  let details = 'An unexpected error occurred.';
+  let stack: string | undefined;
+  if (isRouteErrorResponse(error)) {
+    message = error.status === 404 ? '404' : 'Error';
+    details =
+      error.status === 404
+        ? 'The requested page could not be found.'
+        : error.statusText || details;
+  } else if (import.meta.env.DEV && error && error instanceof Error) {
+    details = error.message;
+    stack = error.stack;
+  }
+
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="mobile-web-app-capable" content="yes" />
+      </head>
+      <body>
+        <main className="container mx-auto p-4 pt-16">
+          <h1>{message}</h1>
+          <p>{details}</p>
+          {stack && (
+            <pre className="w-full overflow-x-auto p-4">
+              <code>{stack}</code>
+            </pre>
+          )}
+        </main>
+      </body>
+    </html>
+  );
 }
