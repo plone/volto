@@ -7,7 +7,7 @@ on:
     # Execute this action only on PRs that touch
     # documentation files for @plone/registry.
     branches:
-      - main
+      - 18.x.x
     paths:
       - .readthedocs.yaml
       - requirements-docs.txt
