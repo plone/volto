@@ -1,23 +1,15 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import type { GetGroupsResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
-export type GroupsArgs = {
-  config: PloneClientConfig;
-};
-
-export const getGroups = async ({
-  config,
-}: GroupsArgs): Promise<GetGroupsResponse> => {
+export async function getGroups(
+  this: PloneClient,
+): Promise<RequestResponse<GetGroupsResponse>> {
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
 
   return apiRequest('get', '/@groups', options);
-};
-
-export const getGroupsQuery = ({ config }: GroupsArgs) => ({
-  queryKey: ['get', 'groups'],
-  queryFn: () => getGroups({ config }),
-});
+}

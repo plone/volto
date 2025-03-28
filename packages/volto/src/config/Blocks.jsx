@@ -527,7 +527,7 @@ blocksConfig.gridBlock.blocksConfig.teaser.schemaEnhancer =
 blocksConfig.gridBlock.blocksConfig.image.schemaEnhancer =
   gridImageDisableSizeAndPositionHandlersSchema;
 
-const requiredBlocks = ['title'];
+const requiredBlocks = [];
 
 const initialBlocks = {};
 const initialBlocksFocus = {}; //{Document:'title'}

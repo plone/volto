@@ -1,0 +1,1 @@
+Update types to match plone client rewrite. @robgietema

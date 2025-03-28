@@ -20,7 +20,7 @@ interface RegistryItem {
   value: any;
 }
 
-export interface GetRegistriesResponse {
+export interface GetRegistryResponse {
   '@id': string;
   batching: Batching;
   items: RegistryItem[];
