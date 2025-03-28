@@ -24,7 +24,7 @@ function flattenToAppURL(data: Content, request: Request) {
 }
 
 export default async function loader({ params, request }: Route.LoaderArgs) {
-  const ploneClient = config
+  const cli = config
     .getUtility({
       name: 'ploneClient',
       type: 'client',
@@ -45,7 +45,7 @@ export default async function loader({ params, request }: Route.LoaderArgs) {
     )
   ) {
     try {
-      const { data } = await ploneClient.getContent({ path, expand });
+      const { data } = await cli.getContent({ path, expand });
       return flattenToAppURL(data, request);
     } catch (error) {
       console.log(error);

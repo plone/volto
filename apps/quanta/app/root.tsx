@@ -39,20 +39,18 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
 
   const expand = ['navroot', 'breadcrumbs', 'navigation'];
 
-  const ploneClient = config
+  const cli = config
     .getUtility({
       name: 'ploneClient',
       type: 'client',
     })
-    .method();
-
-  const { getContent } = ploneClient as PloneClient;
+    .method() as PloneClient;
 
   const path = `/${params['*'] || ''}`;
 
   try {
     return {
-      content: flattenToAppURL(await getContent({ path, expand })),
+      content: flattenToAppURL((await cli.getContent({ path, expand })).data),
       locale,
     };
   } catch (error) {
