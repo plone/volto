@@ -67,6 +67,52 @@
   --layout-container-width: 1440px;
   --default-container-width: 940px;
   --narrow-container-width: 620px;
+
+  --color-quanta-air: #fff;
+  --color-quanta-space: #000;
+  --color-quanta-denim: #021322;
+
+  --color-quanta-snow: #f3f5f7;
+  --color-quanta-smoke: #e4e8ec;
+  --color-quanta-silver: #c3cdd5;
+  --color-quanta-dolphin: #8296a6;
+  --color-quanta-pigeon: #617789;
+  --color-quanta-iron: #4a5b68;
+
+  --color-quanta-arctic: #e2f1fd;
+  --color-quanta-sky: #c5e3fc;
+  --color-quanta-azure: #7cc0f8;
+  --color-quanta-cobalt: #2597f4;
+  --color-quanta-sapphire: #0b78d0;
+  --color-quanta-royal: #085696;
+
+  --color-quanta-ballet: #fee9e7;
+  --color-quanta-flamingo: #fcd0ca;
+  --color-quanta-poppy: #f9a094;
+  --color-quanta-rose: #f54e38;
+  --color-quanta-candy: #d0220b;
+  --color-quanta-wine: #a91c09;
+
+  --color-quanta-cream: #fcf3cf;
+  --color-quanta-banana: #faeaad;
+  --color-quanta-lemmon: #f6d355;
+  --color-quanta-gold: #b48f09;
+  --color-quanta-dijon: #917308;
+  --color-quanta-bronze: #6b5506;
+
+  --color-quanta-daiquiri: #e2f7de;
+  --color-quanta-mint: #c5efbe;
+  --color-quanta-celery: #8bde7c;
+  --color-quanta-neon: #3da72a;
+  --color-quanta-emerald: #318722;
+  --color-quanta-turtle: #256619;
+
+  --color-quanta-aqua: #d6f5f2;
+  --color-quanta-spa: #baeee9;
+  --color-quanta-tiffany: #74dcd4;
+  --color-quanta-turquoise: #29a399;
+  --color-quanta-peacock: #207e77;
+  --color-quanta-puya: #175e58;
 }
 
 @theme inline {
@@ -98,8 +144,6 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-
-  --color-quanta-sapphire: #0b78d0;
 }
 
 @layer base {

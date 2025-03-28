@@ -60,7 +60,7 @@
     "@plone/theming": "workspace:*",
     "react-i18next": "catalog:",
     "react-router": "catalog:",
-    "tailwindcss": "^4.0.9",
+    "tailwindcss": "catalog:",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
