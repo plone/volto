@@ -9,11 +9,6 @@ export default function install(config: ConfigType) {
   });
 
   config.registerRoute({
-    type: 'index',
-    file: '@plone/cmsui/routes/index.tsx',
-  });
-
-  config.registerRoute({
     type: 'route',
     path: '/login',
     file: '@plone/cmsui/routes/auth/login.tsx',
