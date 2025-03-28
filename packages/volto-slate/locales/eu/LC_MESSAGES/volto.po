@@ -1,0 +1,148 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#: editor/plugins/Link/index
+msgid "Add link"
+msgstr "Gehitu esteka"
+
+#: widgets/HtmlSlateWidget
+msgid "An error has occurred while editing \"{name}\" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
+msgstr "Errore bat gertatu da \"{name}\" eremua aldatzerakoan. Jakinarazpena jaso dugu eta begira ari gara. Mesedez gorde egindako lana eta saiatu berriro. Arazoak jarraitzen badu mesedez jarri administratzailearekin harremanetan."
+
+#: widgets/RichTextWidgetView
+msgid "An error has occurred while rendering \"{name}\" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
+msgstr "Errore bat gertatu da \"{name}\" eremua erakusterakoan. Jakinarazpena jaso dugu eta begira ari gara. Mesedez gorde egindako lana eta saiatu berriro. Arazoak jarraitzen badu mesedez jarri administratzailearekin harremanetan."
+
+#: blocks/Table/TableBlockEdit
+msgid "Bottom"
+msgstr "Behean"
+
+#: blocks/Table/TableBlockEdit
+msgid "Center"
+msgstr "Erdian"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Delete col"
+msgstr "Ezabatu zutabea"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Delete row"
+msgstr "Ezabatu lerroa"
+
+#: editor/plugins/Table/index
+msgid "Delete table"
+msgstr "Ezabatu taula"
+
+#: blocks/Table/TableBlockEdit
+msgid "Divide each row into separate cells"
+msgstr "Banatu lerro bakoitza gelaxka desberdinetan"
+
+#: elementEditor/messages
+msgid "Edit element"
+msgstr "Aldatu elementua"
+
+#: editor/plugins/AdvancedLink/index
+#: editor/plugins/Link/index
+msgid "Edit link"
+msgstr "Aldatu esteka"
+
+#: blocks/Table/TableBlockEdit
+msgid "Fixed width table cells"
+msgstr "Zabalera finkoko gelaxkak"
+
+#: blocks/Table/TableBlockEdit
+msgid "Hide headers"
+msgstr "Ezkutatu goiburukoak"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert col after"
+msgstr "Txertatu zutabea ostean"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert col before"
+msgstr "Txertatu zutabea aurretik"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert row after"
+msgstr "Txertatu lerroa ondoren"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert row before"
+msgstr "Txertatu lerroa ondoren"
+
+#: blocks/Table/TableBlockEdit
+msgid "Left"
+msgstr "Ezkerrean"
+
+#: blocks/Table/TableBlockEdit
+msgid "Make the table compact"
+msgstr "Taula trinkotu"
+
+#: blocks/Table/TableBlockEdit
+msgid "Make the table sortable"
+msgstr "Taula ordenagarri egin"
+
+#: blocks/Table/TableBlockEdit
+msgid "Middle"
+msgstr "Erdian"
+
+#: blocks/Text/SlashMenu
+msgid "No matching blocks"
+msgstr "Ez dator bat bloke batekin"
+
+#: blocks/Table/TableBlockEdit
+msgid "Reduce complexity"
+msgstr "Kendu konplexutasuna"
+
+#: elementEditor/messages
+msgid "Remove element"
+msgstr "Ezabatu elementua"
+
+#: editor/plugins/AdvancedLink/index
+msgid "Remove link"
+msgstr "Ezabatu esteka"
+
+#: blocks/Table/TableBlockEdit
+msgid "Right"
+msgstr "Eskuma"
+
+#: blocks/Table/TableBlockEdit
+msgid "Stripe alternate rows with color"
+msgstr "Txandakatu lerroak kolorearekin"
+
+#: blocks/Table/TableBlockEdit
+msgid "Table"
+msgstr "Taula"
+
+#: blocks/Table/TableBlockEdit
+msgid "Table color inverted"
+msgstr "Taularen kolorea alderantzizkatu"
+
+#: blocks/Table/TableBlockEdit
+msgid "Top"
+msgstr "Goian"
+
+#: blocks/Text/DefaultTextBlockEditor
+#: blocks/Text/DetachedTextBlockEditor
+msgid "Type text…"
+msgstr "Idatzi testua…"
+
+#: blocks/Table/TableBlockEdit
+msgid "Visible only in view mode"
+msgstr "Ikusgai soilik ikusteko moduan"
