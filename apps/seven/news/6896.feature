@@ -1,0 +1,1 @@
+Unify `@plone/client` usage with quanta code @pnicolli
