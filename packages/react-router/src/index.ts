@@ -22,52 +22,39 @@ export function getAddonRoutesConfig(
       }
     }
     switch (routeConfig.type) {
-      case 'route':
-        if (routeConfig.options) {
-          resultRoutesConfig.push(
-            route(routeConfig.path, routeConfig.file, routeConfig.options),
-          );
-        } else if (routeConfig.children) {
-          resultRoutesConfig.push(
-            route(
-              routeConfig.path,
-              routeConfig.file,
-              routeConfig.options || {},
-              getAddonRoutesConfig(
-                routeConfig.children,
-                addonsInfo,
-              ) as Array<RouteConfigEntry>,
-            ),
-          );
-        } else {
-          resultRoutesConfig.push(route(routeConfig.path, routeConfig.file));
-        }
+      case 'route': {
+        const children = routeConfig.children
+          ? (getAddonRoutesConfig(
+              routeConfig.children,
+              addonsInfo,
+            ) as Array<RouteConfigEntry>)
+          : undefined;
+        resultRoutesConfig.push(
+          route(
+            routeConfig.path,
+            routeConfig.file,
+            routeConfig.options || {},
+            children,
+          ),
+        );
         break;
-
+      }
       case 'index':
         resultRoutesConfig.push(index(routeConfig.file, routeConfig.options));
         break;
 
-      case 'layout':
-        if (routeConfig.options) {
-          resultRoutesConfig.push(
-            layout(routeConfig.file, routeConfig.options),
-          );
-        }
-        if (routeConfig.children) {
-          resultRoutesConfig.push(
-            layout(
-              routeConfig.file,
-              routeConfig.options || {},
-              getAddonRoutesConfig(
-                routeConfig.children,
-                addonsInfo,
-              ) as Array<RouteConfigEntry>,
-            ),
-          );
-        }
+      case 'layout': {
+        const children = routeConfig.children
+          ? (getAddonRoutesConfig(
+              routeConfig.children,
+              addonsInfo,
+            ) as Array<RouteConfigEntry>)
+          : undefined;
+        resultRoutesConfig.push(
+          layout(routeConfig.file, routeConfig.options || {}, children),
+        );
         break;
-
+      }
       case 'prefix':
         resultRoutesConfig.push(
           ...prefix(
