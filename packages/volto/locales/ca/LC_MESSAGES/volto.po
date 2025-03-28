@@ -665,6 +665,7 @@ msgstr "Trieu un fitxer"
 
 #. Default: "Clear"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+#: components/manage/AnchorPlugin/components/LinkButton/LinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Clar"
@@ -2664,6 +2665,11 @@ msgstr "Enganxar"
 msgid "Paste blocks"
 msgstr "Enganxa blocs"
 
+#. Default: "Paste or search for link"
+#: components/manage/AnchorPlugin/components/LinkButton/LinkForm
+msgid "Paste or search for link"
+msgstr ""
+
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Perform the following actions:"
@@ -3617,6 +3623,7 @@ msgstr "Assumpte"
 
 #. Default: "Submit"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+#: components/manage/AnchorPlugin/components/LinkButton/LinkForm
 msgid "Submit"
 msgstr ""
 
