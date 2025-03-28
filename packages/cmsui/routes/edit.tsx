@@ -7,6 +7,8 @@ import { ajvResolver } from '@hookform/resolvers/ajv';
 import type { Content } from '@plone/types';
 import type { ReactNode } from 'react';
 
+import '@plone/components/dist/basic.css';
+
 export const meta: Route.MetaFunction = () => {
   return [];
 };
@@ -14,9 +16,9 @@ export const meta: Route.MetaFunction = () => {
 const dummySchema = {
   type: 'object',
   properties: {
-    title: { type: 'string' },
-    foo: { type: 'integer' },
-    bar: { type: 'string' },
+    title: { type: 'string', title: 'Title' },
+    foo: { type: 'integer', title: 'Foo' },
+    bar: { type: 'string', title: 'Bar' },
   },
   required: ['foo'],
   additionalProperties: false,
@@ -51,6 +53,7 @@ function Field(props: any) {
 
   return (
     <FieldComponent
+      {...props}
       label={label}
       description={description}
       errorMessage={errorMessage}
@@ -67,12 +70,16 @@ function Fieldset({ id, title, fields, properties, form }) {
           key={fieldId}
           name={fieldId}
           control={form.control}
-          render={({ field }) => (
-            <Field
-              {...properties[fieldId]}
-              errorMessage={form.formState.errors[fieldId]}
-            />
-          )}
+          render={({ field }) => {
+            console.log({ field });
+            return (
+              <Field
+                {...properties[fieldId]}
+                {...field}
+                errorMessage={form.formState.errors[fieldId]}
+              />
+            );
+          }}
         />
       ))}
     </div>
