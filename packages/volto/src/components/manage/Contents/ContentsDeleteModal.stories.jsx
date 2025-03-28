@@ -33,7 +33,7 @@ function StoryComponent(args) {
 
 export const Default = StoryComponent.bind({});
 Default.args = {
-  locale: 'de',
+  locale: 'en',
   open: true,
   items: [
     { '@id': '/news', UID: '123', title: 'News' },
