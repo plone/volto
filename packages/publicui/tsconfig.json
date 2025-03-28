@@ -12,7 +12,7 @@
   ],
   "compilerOptions": {
     "paths": {
-      "quanta/*": ["../../apps/quanta/*"]
+      "seven/*": ["../../apps/seven/*"]
     }
   }
 }
