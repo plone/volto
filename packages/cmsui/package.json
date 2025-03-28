@@ -54,6 +54,7 @@
     "@plone/client": "workspace:*",
     "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
+    "ajv": "^8.17.1",
     "ajv-errors": "^3.0.0",
     "react-hook-form": "^7.54.2",
     "react-router": "catalog:",

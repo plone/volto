@@ -421,6 +421,9 @@ importers:
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
+      ajv:
+        specifier: ^8.17.1
+        version: 8.17.1
       ajv-errors:
         specifier: ^3.0.0
         version: 3.0.0(ajv@8.17.1)

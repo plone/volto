@@ -5,18 +5,27 @@ import { useForm, Controller, type FieldValues } from 'react-hook-form';
 import { ajvResolver } from '@hookform/resolvers/ajv';
 
 import type { Content } from '@plone/types';
-import type { ReactNode } from 'react';
+
+// import type { JSONSchemaType } from 'ajv';
+// import type { ReactNode } from 'react';
 
 import '@plone/components/dist/basic.css';
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export async function loader({ params, request }: Route.LoaderArgs) {}
 
 export const meta: Route.MetaFunction = () => {
   return [];
 };
 
-const dummySchema = {
+const schema = {
   type: 'object',
   properties: {
-    title: { type: 'string', title: 'Title' },
+    title: {
+      type: 'string',
+      title: 'Title',
+      description: <strong>React description</strong>,
+    },
     foo: { type: 'integer', title: 'Foo' },
     bar: { type: 'string', title: 'Bar' },
   },
@@ -36,14 +45,11 @@ const fieldByType = {
   string: TextField,
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export async function loader({ params, request }: Route.LoaderArgs) {}
-
-type FieldComponentImpl = {
-  label: string | ReactNode;
-  description: string | ReactNode;
-  errorMessage: string | ReactNode | undefined;
-};
+// type FieldComponentImpl = {
+//   label: string | ReactNode;
+//   description: string | ReactNode;
+//   errorMessage: string | ReactNode | undefined;
+// };
 
 type FieldTypes = 'integer' | 'string';
 
@@ -61,7 +67,23 @@ function Field(props: any) {
   );
 }
 
-function Fieldset({ id, title, fields, properties, form }) {
+type FieldsetProps = {
+  id: string;
+  title: string;
+  required: string[];
+  fields: string[]; // JSONSchemaType<any>[];
+  form: any;
+  properties: any;
+};
+
+function Fieldset({
+  id,
+  title,
+  fields,
+  properties,
+  form,
+  required,
+}: FieldsetProps) {
   return (
     <div id={`fieldset-${id}`}>
       <h3>{title}</h3>
@@ -71,11 +93,13 @@ function Fieldset({ id, title, fields, properties, form }) {
           name={fieldId}
           control={form.control}
           render={({ field }) => {
+            // eslint-disable-next-line no-console
             console.log({ field });
             return (
               <Field
                 {...properties[fieldId]}
                 {...field}
+                required={required}
                 errorMessage={form.formState.errors[fieldId]}
               />
             );
@@ -89,10 +113,11 @@ function Fieldset({ id, title, fields, properties, form }) {
 export default function Edit() {
   const data = useRouteLoaderData('root') as Content;
   const form = useForm({
-    resolver: ajvResolver(dummySchema),
+    resolver: ajvResolver(schema),
   });
 
   const onSubmit = (data: FieldValues) => {
+    // eslint-disable-next-line no-console
     console.log({ data });
   };
   const { handleSubmit } = form;
@@ -100,14 +125,15 @@ export default function Edit() {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <h1>{data.title}</h1>
-      {dummySchema.fieldsets.map((fieldset) => (
+      {schema.fieldsets.map((fieldset) => (
         <Fieldset
           form={form}
           key={fieldset.id}
           id={fieldset.id}
-          properties={dummySchema.properties}
+          properties={schema.properties}
           fields={fieldset.fields}
           title={fieldset.title}
+          required={schema.required}
         />
       ))}
     </Form>
