@@ -820,7 +820,7 @@ msgstr "Inhaltsregeln von übergeordneten Seiten"
 #. Default: "Content that links to or references {title}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
-msgstr "Zu {title} verlinkende oder referenzierende Inhalte"
+msgstr "Zu {title} verlinkende oder verweisende Inhalte"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -929,7 +929,7 @@ msgstr "Aktuelles Passwort"
 #. Default: "Customize teaser content"
 #: components/manage/Blocks/Teaser/schema
 msgid "Customize teaser content"
-msgstr "Passen Sie den Inhalt des Teasers an"
+msgstr "Den Inhalt des Teasers anpassen"
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
@@ -1086,7 +1086,7 @@ msgstr "Gelöscht"
 #. Default: "Deleting this item breaks {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item breaks {brokenReferences} {variation}."
-msgstr "Das Löschen dieses Elements macht folgende Referenz ungültig: {brokenReferences} {variation}."
+msgstr "Das Löschen dieses Elements macht {brokenReferences} {variation} ungültig."
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
@@ -1167,7 +1167,7 @@ msgstr "Möchten Sie den Nutzer {username} wirklich löschen?"
 #. Default: "Do you really want to delete this item?"
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
-msgstr "Möchten Sie den Artikel wirklich löschen?"
+msgstr "Möchten Sie diesen Artikel wirklich löschen?"
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
@@ -2120,7 +2120,7 @@ msgstr "Inhalte, die im Text auf diesen Inhalt verlinken"
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Toolbar/More
 msgid "Links and references"
-msgstr "Links und Referenzen"
+msgstr "Links und Verweise"
 
 #. Default: "List View"
 #: components/manage/Sidebar/ObjectBrowserBody
@@ -2382,7 +2382,7 @@ msgstr "Zurück navigieren"
 #. Default: "Navigate to this item"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Navigate to this item"
-msgstr "Navigieren Sie zu diesem Artikel"
+msgstr "Navigieren Sie zu diesem Element"
 
 #. Default: "Navigation"
 #: components/theme/Navigation/ContextNavigation
@@ -3485,12 +3485,12 @@ msgstr "Klein"
 #. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-msgstr "Einige Elemente sind auch ein Ordner. Beim Löschen entfernen Sie auch {containedItemsToDelete} {variation} in den Ordnern."
+msgstr "Einige Elemente sind Ordner. Beim Löschen entfernen Sie auch {containedItemsToDelete} {variation} in den Ordnern."
 
 #. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-msgstr "Einige Elemente werden durch andere Inhalte referenziert. Durch das Löschen werden die Referzierungen zu {brokenReferences} {variation} ungültig."
+msgstr "Einige Elemente werden durch andere Inhalte referenziert. Das Löschen macht {brokenReferences} {variation} ungültig."
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3786,7 +3786,7 @@ msgstr "Die Linkadresse lautet:"
 #. Default: "The number of items must be greater than or equal to {minItems}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The number of items must be greater than or equal to {minItems}"
-msgstr "Die Anzahl der Elemente muss größer oder gleich {minItems} sein"
+msgstr "Die Anzahl der Elemente muss größer oder gleich {minItems} sein."
 
 #. Default: "The number of items must be less than or equal to {maxItems}"
 #: helpers/MessageLabels/MessageLabels
@@ -3869,7 +3869,7 @@ msgstr "Es sind Fehler aufgetreten."
 #. Default: "These items will have broken links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "These items will have broken links"
-msgstr "Diese Elemente haben ungültige Links"
+msgstr "Folgende Verweise würden beim Löschen ungültig"
 
 #. Default: "Third"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -3894,7 +3894,7 @@ msgstr "Das ist eine Arbeitskopie von {title}"
 #. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-msgstr "Dieser Artikel ist auch ein Ordner. Beim Löschen entfernen Sie auch {containedItemsToDelete} {variation} im Ordner."
+msgstr "Dieses Element ist auch ein Ordner. Beim Löschen entfernen Sie auch {containedItemsToDelete} {variation} im Ordner."
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -4738,12 +4738,12 @@ msgstr "Intranet"
 #. Default: "item"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "item"
-msgstr "Artikel"
+msgstr "Element"
 
 #. Default: "items"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "items"
-msgstr "Artikel"
+msgstr "Elemente"
 
 #. Default: "My email is"
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -4773,7 +4773,7 @@ msgstr "Link-Integrität: Element löschen und Links brechen"
 #. Default: "Checking references..."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: loading references"
-msgstr "Link-Integrität: Ladereferenzen"
+msgstr "Link-Integrität: Verweise werden geprüft…"
 
 #. Default: "Enter a URL to an image"
 #: components/manage/Widgets/ImageWidget
@@ -4902,17 +4902,17 @@ msgstr "Relationen neu indizieren"
 #. Default: "reference"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "reference"
-msgstr "Referenz"
+msgstr "Verweis"
 
 #. Default: "references"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "references"
-msgstr "Referenzen"
+msgstr "Verweise"
 
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
-msgstr "referenziert auf"
+msgstr "verweist auf"
 
 #. Default: "results"
 #: components/theme/Search/Search
