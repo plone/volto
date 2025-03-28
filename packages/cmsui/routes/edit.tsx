@@ -1,6 +1,6 @@
 import type { Route } from './+types/edit';
 import { useRouteLoaderData } from 'react-router';
-import { Form, NumberField, TextField } from '@plone/components';
+import { Button, Form, NumberField, TextField } from '@plone/components';
 import { useForm, Controller, type FieldValues } from 'react-hook-form';
 import { ajvResolver } from '@hookform/resolvers/ajv';
 
@@ -8,8 +8,6 @@ import type { Content } from '@plone/types';
 
 // import type { JSONSchemaType } from 'ajv';
 // import type { ReactNode } from 'react';
-
-import '@plone/components/dist/basic.css';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function loader({ params, request }: Route.LoaderArgs) {}
@@ -24,7 +22,7 @@ const schema = {
     title: {
       type: 'string',
       title: 'Title',
-      description: <strong>React description</strong>,
+      description: 'title description',
     },
     foo: { type: 'integer', title: 'Foo' },
     bar: { type: 'string', title: 'Bar' },
@@ -113,7 +111,15 @@ function Fieldset({
 export default function Edit() {
   const data = useRouteLoaderData('root') as Content;
   const form = useForm({
-    resolver: ajvResolver(schema),
+    resolver: ajvResolver(
+      { validateSchema: false, allErrors: true },
+      Object.assign(
+        {},
+        ...Object.keys(schema)
+          .filter((k) => k !== 'fieldsets')
+          .map((k) => ({ [k]: schema[k] })),
+      ),
+    ),
   });
 
   const onSubmit = (data: FieldValues) => {
@@ -124,7 +130,7 @@ export default function Edit() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <h1>{data.title}</h1>
+      <h1>Content title: {data.title}</h1>
       {schema.fieldsets.map((fieldset) => (
         <Fieldset
           form={form}
@@ -136,6 +142,7 @@ export default function Edit() {
           required={schema.required}
         />
       ))}
+      <Button type="submit">Submit</Button>
     </Form>
   );
 
