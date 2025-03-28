@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    'description': 'Learn how to set up an environment to develop Volto core and the basics of the Volto monorepo.'
-    'property=og:description': 'Learn how to set up an environment to develop Volto core and the basics of the Volto monorepo.'
-    'property=og:title': 'Develop Volto core'
-    'keywords': 'pnpm, monorepo, develop, core, Volto, Plone, frontend, typescript'
+    "description": "Learn how to set up an environment to develop Volto core and the basics of the Volto monorepo."
+    "property=og:description": "Learn how to set up an environment to develop Volto core and the basics of the Volto monorepo."
+    "property=og:title": "Develop Volto core"
+    "keywords": "pnpm, monorepo, develop, core, Volto, Plone, frontend, typescript"
 ---
 
 # Develop Volto core
@@ -24,6 +24,7 @@ Additionally you can build each version of Volto documentation by running `make 
 To create a full Plone project with both frontend and backend, see {doc}`plone:install/create-project-cookieplone` instead.
 ```
 
+
 (developing-core-monorepo-structure-label)=
 
 ## Monorepo structure
@@ -36,6 +37,7 @@ This allows the code to be shared effectively, and unifies tracking of changes a
 This monorepo uses pnpm as a package manager, extensively using its {term}`workspace` feature.
 It's organized in two folders, depending on whether it's a library (package) or an app.
 The workspaces are located in the `packages` or `apps` folder.
+
 
 ### Folder layout
 
@@ -66,31 +68,32 @@ The package `volto` is the core code of Volto.
 ├─ ...
 ```
 
+
 ## Development prerequisites
 
 To set up a Volto core development environment, your system must satisfy the following prerequisites.
 
 ```{include} ../_inc/_install-operating-system.md
-
 ```
 
-- {term}`nvm`
-- {term}`Node.js` LTS 22.x
-- {term}`pnpm`
-- {term}`GNU make`
-- {term}`Docker`
-- {term}`Git`
+-   {term}`nvm`
+-   {term}`Node.js` LTS 22.x
+-   {term}`pnpm`
+-   {term}`GNU make`
+-   {term}`Docker`
+-   {term}`Git`
 
 ```{note}
 When developing Volto core, pnpm is required.
 When developing a project using Plone, Yarn or other package managers may be used.
 ```
 
+
 ### nvm
 
 ```{include} ../_inc/_install-nvm.md
-
 ```
+
 
 ### Node.js
 
@@ -98,8 +101,8 @@ We recommend that you install Node.js using nvm.
 Alternatively you can install Node.js using Homebrew or other package installer.
 
 ```{include} ../_inc/_install-nodejs.md
-
 ```
+
 
 ### pnpm
 
@@ -127,23 +130,24 @@ Compare the output to the [latest pnpm release number](https://www.npmjs.com/pac
 [pnpm installation](https://pnpm.io/installation).
 ```
 
+
 ### Make
 
 ```{include} ../_inc/_install-make.md
-
 ```
+
 
 ### Docker
 
 ```{include} ../_inc/_install-docker.md
-
 ```
+
 
 ### Git
 
 ```{include} ../_inc/_install-git.md
-
 ```
+
 
 ## Set up the environment
 
@@ -162,6 +166,7 @@ Install the frontend dependencies.
 make install
 ```
 
+
 (develop-volto-start-plone-label)=
 
 ## Start Plone
@@ -170,6 +175,7 @@ Every time you want to run Volto for core development, you will need to create t
 For both sessions, change your working directory to the root of your Volto clone.
 
 To stop either the backend or frontend, use {kbd}`ctrl-c`.
+
 
 (develop-volto-start-the-backend-label)=
 
@@ -209,6 +215,7 @@ docker volume rm volto-backend-data
 Then run `make backend-docker-start` again to start the backend with a clean data volume.
 ````
 
+
 (develop-volto-configure-backend-language-label)=
 
 #### Configure backend language
@@ -230,6 +237,7 @@ export SITE_DEFAULT_LANGUAGE=pt-br
 make backend-docker-start
 ```
 
+
 (develop-volto-start-the-frontend-label)=
 
 ## Start the frontend
@@ -241,6 +249,7 @@ pnpm start
 ```
 
 Browse to the frontend running at http://localhost:3000.
+
 
 (developing-core-run-commands-for-pnpm-workspaces-label)=
 
@@ -273,6 +282,7 @@ The above command when run from the repository root will build the Volto registr
 For more information about pnpm workspaces, read the [documentation of pnpm workspaces](https://pnpm.io/workspaces).
 ```
 
+
 ## Developing Volto
 
 The Volto core code is located in the `packages/volto` folder.
@@ -290,6 +300,7 @@ pnpm start
 
 You can also run commands for a specific workspace using the `--filter` feature as shown in the previous section, {ref}`developing-core-run-commands-for-pnpm-workspaces-label`.
 
+
 ## Develop other libraries in a workspace
 
 If a package is a dependency of another package in the monorepo, and it's declared as a workspace, they can be declared as usual in the {file}`package.json` as follows:
@@ -303,6 +314,7 @@ If a package is a dependency of another package in the monorepo, and it's declar
 ```{seealso}
 [Documentation of pnpm workspaces](https://pnpm.io/workspaces).
 ```
+
 
 ## TypeScript
 
@@ -344,6 +356,7 @@ It generated all the boilerplate needed to start developing a Plone Volto projec
 It was used by `cookiecutter-plone-starter`, the deprecated way to set up Plone projects.
 The generator featured an `addon` template for scaffolding Volto add-ons in your projects.
 
+
 ## Supported frontends
 
 Plone 6 comes with two frontend {term}`reference implementation`s.
@@ -353,6 +366,7 @@ Classic UI is the Python-based, server-side rendered frontend.
 In Volto's `apps` folder, you'll find a Volto project scaffolding that uses Volto as a library.
 This is the same as that which you'll have when you follow the instructions in {doc}`plone:install/create-project-cookieplone`).
 
+
 ## Experimental frontends
 
 Other frontends are currently under heavy development.
@@ -361,6 +375,7 @@ Although they do work now in an acceptable way, the implementation might change 
 These implementations only show how to access the public Plone content in the current site, dealing with data fetching and routing.
 All implementations are located in the `apps` directory in a subdirectory according to their implementation name.
 They use the Plone frontend strategic packages, including `@plone/registry`, `@plone/client`, and `@plone/components`.
+
 
 ### Next.js
 
@@ -382,6 +397,7 @@ You can try it out using the following command.
 pnpm --filter plone-remix dev
 ```
 
+
 ### React Router 7
 
 This frontend is a proof of concept using React Router 7 with Plone.
@@ -391,6 +407,7 @@ You can try it out using the following command.
 ```shell
 pnpm --filter plone-rr7 dev
 ```
+
 
 ## Support libraries
 
