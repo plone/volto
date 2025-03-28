@@ -29,9 +29,7 @@ export default async function loader({ params, request }: Route.LoaderArgs) {
       name: 'ploneClient',
       type: 'client',
     })
-    .method();
-
-  const { getContent } = ploneClient as PloneClient;
+    .method() as PloneClient;
 
   const path = `/${params['*'] || ''}`;
 
@@ -47,7 +45,8 @@ export default async function loader({ params, request }: Route.LoaderArgs) {
     )
   ) {
     try {
-      return flattenToAppURL(await getContent({ path, expand }), request);
+      const { data } = await ploneClient.getContent({ path, expand });
+      return flattenToAppURL(data, request);
     } catch (error) {
       console.log(error);
       throw data('Content Not Found', { status: 404 });

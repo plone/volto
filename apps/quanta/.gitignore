@@ -6,3 +6,4 @@ node_modules
 .react-router
 registry.loader.js
 addons.styles.css
+/locales/

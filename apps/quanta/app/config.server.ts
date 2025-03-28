@@ -24,5 +24,8 @@ export default function install() {
 
   console.log('API_PATH is:', config.settings.apiPath);
 
+  config.settings.defaultLanguage = 'en';
+  config.settings.supportedLanguages = ['en'];
+
   return config;
 }
