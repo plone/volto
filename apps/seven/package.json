@@ -31,6 +31,7 @@
   "devDependencies": {
     "@plone/types": "workspace:*",
     "@react-router/dev": "catalog:",
+    "@tailwindcss/vite": "4.0.9",
     "@testing-library/cypress": "10.0.2",
     "@types/node": "^20",
     "@types/react": "catalog:",
