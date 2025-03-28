@@ -22,6 +22,7 @@ const otherResources: Route.unstable_MiddlewareFunction = async (
     /^\/assets/.test(path) ||
     /\.(css|css\.map)$/.test(path)
   ) {
+    // eslint-disable-next-line no-console
     console.log('matched path not fetched', path);
     throw data('Content Not Found', { status: 404 });
   }
@@ -54,6 +55,7 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
       locale,
     };
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log(error);
     throw data('Content Not Found', { status: 404 });
   }
