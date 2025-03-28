@@ -1,5 +1,5 @@
 /**
- * Link Form Updated.
+ * Link Form.
  * @module components/manage/AnchorPlugin/components/LinkButton/LinkForm
  */
 
@@ -269,7 +269,6 @@ const LinkForm = ({
     onClear();
   };
 
-  // const onClose = () => onOverrideContent(undefined);
   const onClose = useCallback(
     () => onOverrideContent(undefined),
     [onOverrideContent],
