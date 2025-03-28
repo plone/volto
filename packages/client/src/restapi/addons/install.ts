@@ -1,38 +1,27 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { z } from 'zod';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 const installAddonSchema = z.object({
   addonId: z.string(),
 });
 
-export type InstallAddonArgs = z.infer<typeof installAddonSchema> & {
-  config: PloneClientConfig;
-};
+export type InstallAddonArgs = z.infer<typeof installAddonSchema>;
 
-export const installAddon = async ({
-  addonId,
-  config,
-}: InstallAddonArgs): Promise<undefined> => {
+export async function installAddon(
+  this: PloneClient,
+  { addonId }: InstallAddonArgs,
+): Promise<RequestResponse<undefined>> {
   const validatedArgs = installAddonSchema.parse({
     addonId,
   });
 
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
   const addonName = `@addons/${validatedArgs.addonId}/install`;
 
   return apiRequest('post', addonName, options);
-};
-
-export const installAddonMutation = ({
-  config,
-}: {
-  config: PloneClientConfig;
-}) => ({
-  mutationKey: ['post', 'addons'],
-  mutationFn: ({ addonId }: Omit<InstallAddonArgs, 'config'>) =>
-    installAddon({ addonId, config }),
-});
+}
