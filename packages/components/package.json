@@ -60,10 +60,9 @@
   "scripts": {
     "build": "tsup && pnpm build:css",
     "build:force": "tsup && pnpm build:css",
-    "build:css": "pnpm build:basic && pnpm build:quanta && pnpm build:tailwind",
+    "build:css": "pnpm build:basic && pnpm build:quanta",
     "build:basic": "lightningcss --browserslist --bundle --sourcemap src/styles/basic/main.css -o basic.css && mv basic.css* dist/.",
     "build:quanta": "lightningcss --browserslist --bundle --sourcemap src/styles/quanta/main.css -o quanta.css && mv quanta.css* dist/.",
-    "build:tailwind": "mkdir -p dist/tailwind && cp src/styles/tailwind/base.css dist/tailwind/base.css",
     "check:exports": "attw --pack .",
     "check:ts": "tsc --project tsconfig.json",
     "test": "vitest --passWithNoTests",
@@ -98,8 +97,8 @@
     "clsx": "^2.1.1",
     "react-aria-components": "catalog:",
     "tailwind-merge": "^3.0.1",
-    "tailwind-variants": "^0.3.1",
-    "tailwindcss": "^4.0.4",
+    "tailwind-variants": "^1.0.0",
+    "tailwindcss": "catalog:",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
