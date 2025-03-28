@@ -1,46 +1,31 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { z } from 'zod';
-import {
-  type PloneClientConfig,
-  PloneClientConfigSchema,
-} from '../../validation/config';
 import { deleteAliasesDataSchema } from '../../validation/aliases';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 export const deleteAliasesArgsSchema = z.object({
   path: z.string(),
   data: deleteAliasesDataSchema,
-  config: PloneClientConfigSchema,
 });
 
 type DeleteAliasesArgs = z.infer<typeof deleteAliasesArgsSchema>;
 
-export const deleteAliases = async ({
-  path,
-  data,
-  config,
-}: DeleteAliasesArgs): Promise<undefined> => {
+export async function deleteAliases(
+  this: PloneClient,
+  { path, data }: DeleteAliasesArgs,
+): Promise<RequestResponse<undefined>> {
   const validatedArgs = deleteAliasesArgsSchema.parse({
     path,
     data,
-    config,
   });
 
   const options: ApiRequestParams = {
     data: validatedArgs.data,
-    config: validatedArgs.config,
+    config: this.config,
   };
 
   const aliasesPath = `${validatedArgs.path}/@aliases`;
 
   return apiRequest('delete', aliasesPath, options);
-};
-
-export const deleteAliasesMutation = ({
-  config,
-}: {
-  config: PloneClientConfig;
-}) => ({
-  mutationKey: ['delete', 'aliases'],
-  mutationFn: ({ path, data }: Omit<DeleteAliasesArgs, 'config'>) =>
-    deleteAliases({ path, data, config }),
-});
+}

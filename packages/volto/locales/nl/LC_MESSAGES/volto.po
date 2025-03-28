@@ -574,6 +574,11 @@ msgstr "Kan lay-out niet bewerken voor het <strong>{type}</strong>-contenttype o
 msgid "Cancel"
 msgstr "Annuleren"
 
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr ""
+
 #. Default: "Cell"
 #: config/Blocks
 msgid "Cell"

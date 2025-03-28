@@ -576,6 +576,11 @@ msgstr "Não é possível editar layout para o tipo de conteúdo <strong>{type}<
 msgid "Cancel"
 msgstr "Cancelar"
 
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr "Cancelar pesquisa"
+
 #. Default: "Cell"
 #: config/Blocks
 msgid "Cell"
@@ -4543,7 +4548,7 @@ msgstr "Visões disponíveis"
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
-msgstr "Erro no campo de blocos {errorField}"
+msgstr "Erro no campo {errorField} do bloco."
 
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login

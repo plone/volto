@@ -48,17 +48,13 @@ The package `volto` is the core code of Volto.
 /
 ├─ apps/
 │  ├─ nextjs
-│  ├─ remix
-│  ├─ rr7
-│  ├─ vite
-│  └─ vite-ssr
+│  └─ rr7
 ├─ ...
 ├─ packages/
 │  ├─ blocks
 │  ├─ client
 │  ├─ components
 │  ├─ coresandbox
-│  ├─ generator-volto
 │  ├─ helpers
 │  ├─ providers
 │  ├─ registry
@@ -68,9 +64,7 @@ The package `volto` is the core code of Volto.
 │  ├─ tsconfig
 │  ├─ types
 │  ├─ volto
-│  ├─ volto-guillotina
-│  ├─ volto-slate
-│  └─ volto-testing
+│  └─ volto-slate
 ├─ ...
 ```
 
@@ -357,10 +351,10 @@ Used by Volto, you can also use it in other JavaScript frameworks and environmen
 For Volto 18, `@plone/generator-volto` is replaced by [Cookieplone](https://github.com/plone/cookieplone).
 ```
 
-`@plone/generator-volto` is a Yeoman generator that helps you set up Volto via command line.
-It generates all the boilerplate needed to start developing a Plone Volto project.
+`@plone/generator-volto` was a Yeoman generator that helps you set up Volto via command line.
+It generated all the boilerplate needed to start developing a Plone Volto project.
 It was used by `cookiecutter-plone-starter`, the deprecated way to set up Plone projects.
-The generator features an `addon` template for scaffolding Volto add-ons in your projects.
+The generator featured an `addon` template for scaffolding Volto add-ons in your projects.
 
 
 ## Supported frontends
@@ -403,6 +397,7 @@ You can try it out using the following command.
 pnpm --filter plone-remix dev
 ```
 
+
 ### React Router 7
 
 This frontend is a proof of concept using React Router 7 with Plone.
@@ -413,28 +408,6 @@ You can try it out using the following command.
 pnpm --filter plone-rr7 dev
 ```
 
-### Vite build (client only)
-
-This frontend is a proof of concept using a custom client build based in Vite with Plone.
-It uses `@tanstack/router` in combination with `@plone/client`, which in turns uses `@tanstack/query`.
-This build is suitable for applications that do not need server side generation, and it's client only.
-
-You can try it out using the following command.
-
-```shell
-pnpm --filter plone-vite dev
-```
-
-### Vite SSR build
-
-This frontend is a proof of concept using a custom build, based in Vite with SSR with Plone.
-It uses `@tanstack/router` in combination with `@plone/client` (which in turns uses `@tanstack/query`).
-
-You can try it out using the following command.
-
-```shell
-pnpm --filter plone-vite-ssr dev
-```
 
 ## Support libraries
 
@@ -445,12 +418,3 @@ Volto uses several libraries to support development.
 `@plone/volto-coresandbox` is a support library used mainly for testing purposes.
 It provides fixtures to bootstrap projects with configurations different than the default one.
 It is used by the acceptance tests to set up different test fixtures, such as `multilingual` or `workingcopy`.
-
-### Volto testing package
-
-The `@plone/testing` stub library helps set up the testing libraries used by Volto without having to install the whole Volto package.
-It is mainly used in CI to reduce installation times.
-
-### Volto Guillotina
-
-`@plone/volto-guillotina` is the support library used to interact with Guillotina as the Plone backend.

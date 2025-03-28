@@ -577,6 +577,11 @@ msgstr "Ezin da <strong>{type}</strong> elementu-motaren itxura aldatu, <strong>
 msgid "Cancel"
 msgstr "Utzi"
 
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr "Bilaketa bertan behera utzi"
+
 #. Default: "Cell"
 #: config/Blocks
 msgid "Cell"

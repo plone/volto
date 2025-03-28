@@ -577,6 +577,11 @@ msgstr "No se puede editar la plantilla de <strong>{type}</strong> porque el sop
 msgid "Cancel"
 msgstr "Cancelar"
 
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr "Cancelar búsqueda"
+
 #. Default: "Cell"
 #: config/Blocks
 msgid "Cell"

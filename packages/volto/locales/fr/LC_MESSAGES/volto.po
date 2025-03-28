@@ -577,6 +577,11 @@ msgstr "Impossible de modifier la mise en page pour le type de contenu <strong>{
 msgid "Cancel"
 msgstr "Annuler"
 
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr "Annuler la recherche"
+
 #. Default: "Cell"
 #: config/Blocks
 msgid "Cell"

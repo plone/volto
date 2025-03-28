@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0-alpha.0 (2025-03-27)
+
+### Breaking
+
+- Remove old, deprecated `addon` scripts helpers. @sneridagh [#6848](https://github.com/plone/volto/issues/6848)
+- Remove ancient `changelogupdater` script. @sneridagh [#6848](https://github.com/plone/volto/issues/6848)
+- Remove `volto-update-deps` script. @sneridagh [#6848](https://github.com/plone/volto/issues/6848)
+
+### Feature
+
+- Add `--dry-run` to prepublish script. @sneridagh [#6847](https://github.com/plone/volto/issues/6847)
+
 ## 3.8.2 (2025-02-08)
 
 ### Internal

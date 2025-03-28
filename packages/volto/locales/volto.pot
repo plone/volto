@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2025-03-05T13:04:20.470Z\n"
+"POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -570,6 +570,11 @@ msgstr ""
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
+msgstr ""
+
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
 msgstr ""
 
 #. Default: "Cell"

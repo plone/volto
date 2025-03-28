@@ -575,6 +575,11 @@ msgstr "Layout für <strong>{type}</strong> kann nicht verändert werden, da das
 msgid "Cancel"
 msgstr "Abbrechen"
 
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr "Suche abbrechen"
+
 #. Default: "Cell"
 #: config/Blocks
 msgid "Cell"
