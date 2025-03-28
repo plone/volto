@@ -5,6 +5,7 @@ import i18next from './i18next.server';
 import type { Route } from './+types/root';
 import { flattenToAppURL } from './utils';
 import type PloneClient from '@plone/client';
+import { getAuthFromRequest } from '@plone/react-router';
 import config from '@plone/registry';
 import installServer from './config.server';
 
@@ -21,8 +22,6 @@ const otherResources: Route.unstable_MiddlewareFunction = async (
     /^https?:\/\//.test(path) ||
     /^favicon.ico\/\//.test(path) ||
     /expand/.test(path) ||
-    /\/@@images\//.test(path) ||
-    /\/@@download\//.test(path) ||
     /^\/assets/.test(path) ||
     /\.(css|css\.map)$/.test(path)
   ) {
@@ -36,7 +35,35 @@ const otherResources: Route.unstable_MiddlewareFunction = async (
   return await next();
 };
 
-export const unstable_middleware = [otherResources];
+const getAPIResourceWithAuth: Route.unstable_MiddlewareFunction = async (
+  { request, params },
+  next,
+) => {
+  installServer();
+  const path = `/${params['*'] || ''}`;
+
+  if (
+    /\/@@images\//.test(path) ||
+    /\/@@download\//.test(path) ||
+    /\/@@site-logo\//.test(path) ||
+    /\/@portrait\//.test(path)
+  ) {
+    const token = await getAuthFromRequest(request);
+    throw await fetch(`${config.settings.apiPath}${path}`, {
+      method: 'GET',
+      headers: {
+        ...request.headers,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
+
+  // This is needed in v7.4.0 even if it should not be mandatory
+  // Relevant issue: https://github.com/remix-run/react-router/issues/13274
+  return await next();
+};
+
+export const unstable_middleware = [otherResources, getAPIResourceWithAuth];
 
 export async function loader({ params, request }: Route.LoaderArgs) {
   installServer();

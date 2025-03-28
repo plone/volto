@@ -1,9 +1,9 @@
 const addons = [
+  '@plone/theming',
+  '@plone/blocks',
+  '@plone/slots',
   '@plone/publicui',
   '@plone/cmsui',
-  // '@plone/theming',
-  // '@plone/blocks',
-  // '@plone/slots',
 ];
 const theme = '';
 
