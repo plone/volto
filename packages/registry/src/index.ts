@@ -280,17 +280,18 @@ class Config {
       throw new Error('No component provided');
     }
     if (!predicates) {
-      // Test if there's already one registered, we only support one
       const hasRegisteredNoPredicatesComponent = this._data.slots?.[
         slot
       ]?.data?.[name]?.find(({ predicates }) => !predicates);
+      // If we have one already registered with the same name, and the component
+      // is different, we override it.
+      // During HMR operations when replacing the slot component
+      // errored trying to register it again.
       if (
         hasRegisteredNoPredicatesComponent &&
         component !== hasRegisteredNoPredicatesComponent.component
       ) {
-        throw new Error(
-          `There is already registered a component ${name} for the slot ${slot}. You can only register one slot component with no predicates per slot.`,
-        );
+        hasRegisteredNoPredicatesComponent.component = component;
       }
     }
 
