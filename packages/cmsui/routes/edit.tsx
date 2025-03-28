@@ -1,17 +1,84 @@
-import type { RootLoader } from 'seven/app/root';
 import { useTranslation } from 'react-i18next';
-import { useRouteLoaderData } from 'react-router';
+import {
+  redirect,
+  useLoaderData,
+  type ActionFunctionArgs,
+  type LoaderFunctionArgs,
+} from 'react-router';
+import type PloneClient from '@plone/client';
+import config from '@plone/registry';
+import { requireAuthCookie } from './auth/auth';
+
+export async function loader({ params, request }: LoaderFunctionArgs) {
+  const token = await requireAuthCookie(request);
+
+  const cli = config
+    .getUtility({
+      name: 'ploneClient',
+      type: 'client',
+    })
+    .method() as PloneClient;
+
+  cli.config.token = token;
+
+  const path = `/${params['*'] || ''}`;
+
+  const { data: content } = await cli.getContent({ path });
+  const { data: schema } = await cli.getType({ contentType: content['@type'] });
+
+  return { content, schema };
+}
+
+export async function action({ params, request }: ActionFunctionArgs) {
+  const token = await requireAuthCookie(request);
+
+  const cli = config
+    .getUtility({
+      name: 'ploneClient',
+      type: 'client',
+    })
+    .method() as PloneClient;
+
+  cli.config.token = token;
+
+  const path = `/${params['*'] || ''}`;
+
+  const formData = await request.formData();
+
+  await cli.updateContent({
+    path,
+    data: Object.fromEntries(formData),
+  });
+
+  return redirect(path);
+}
 
 export default function Edit() {
-  const data = useRouteLoaderData<RootLoader>('root');
+  const { content, schema } = useLoaderData<typeof loader>();
   const { t } = useTranslation();
-  if (!data) return null;
-  const { content } = data;
 
   return (
-    <h1>
-      {content.title} - {t('cmsui.edit')}
-    </h1>
+    <main>
+      <h1>
+        {content.title} - {t('cmsui.edit')}
+      </h1>
+      <form method="post">
+        {Object.entries(schema.properties).map(([key, value]) => {
+          if (key !== 'title') return null;
+          return (
+            <div key={key}>
+              <label htmlFor={key}>{value.title}</label>
+              <input
+                type={value.type}
+                id={key}
+                name={key}
+                defaultValue={content[key]}
+              />
+            </div>
+          );
+        })}
+        <button type="submit">{t('cmsui.save')}</button>
+      </form>
+    </main>
   );
-  // return <App content={data} location={{ pathname }} />;
 }

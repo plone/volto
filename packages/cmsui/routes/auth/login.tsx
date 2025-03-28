@@ -1,10 +1,15 @@
-import type { Route } from './+types/login';
-import { data, Form, useActionData, redirect } from 'react-router';
+import {
+  data,
+  Form,
+  useActionData,
+  redirect,
+  type ActionFunctionArgs,
+} from 'react-router';
 
 import { redirectIfLoggedInLoader, setAuthOnResponse } from './auth';
 import { Button, TextField } from '@plone/components';
 
-import PloneClient from '@plone/client';
+import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 
 export const loader = redirectIfLoggedInLoader;
@@ -13,30 +18,28 @@ export const meta = () => {
   return [{ title: 'Plone Login' }];
 };
 
-export async function action({ request }: Route.ActionArgs) {
+export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const username = String(formData.get('username') || '');
   const password = String(formData.get('password') || '');
 
-  const ploneClient = config
+  const cli = config
     .getUtility({
       name: 'ploneClient',
       type: 'client',
     })
-    .method();
+    .method() as PloneClient;
 
-  const { login } = ploneClient as PloneClient;
-
-  const token = await login({ username, password });
-  if (!token) {
+  const { data: loginData } = await cli.login({ username, password });
+  if (!loginData.token) {
     return data(
       { ok: false, errors: { password: 'Invalid credentials' } },
       400,
     );
   }
 
-  const response = redirect('/');
-  return setAuthOnResponse(response, token);
+  const response = redirect('/edit');
+  return setAuthOnResponse(response, loginData.token);
 }
 
 export default function Login() {
