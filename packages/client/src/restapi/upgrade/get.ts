@@ -1,23 +1,15 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import type { GetUpgradeResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
-export type GetUpgradeArgs = {
-  config: PloneClientConfig;
-};
-
-export const getUpgrade = async ({
-  config,
-}: GetUpgradeArgs): Promise<GetUpgradeResponse> => {
+export async function getUpgrade(
+  this: PloneClient,
+): Promise<RequestResponse<GetUpgradeResponse>> {
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
 
   return apiRequest('get', '/@upgrade', options);
-};
-
-export const getUpgradeQuery = ({ config }: GetUpgradeArgs) => ({
-  queryKey: ['get', 'upgrade'],
-  queryFn: () => getUpgrade({ config }),
-});
+}

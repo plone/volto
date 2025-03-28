@@ -8,6 +8,7 @@ import { z } from 'zod';
 */
 export const PloneClientConfigSchema = z.object({
   apiPath: z.string(),
+  apiSuffix: z.string().optional(),
   token: z.string().optional(),
 });
 
