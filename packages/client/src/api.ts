@@ -1,4 +1,8 @@
-import axios, { type AxiosRequestConfig, type AxiosResponse } from 'axios';
+import axios, {
+  type AxiosError,
+  type AxiosRequestConfig,
+  type AxiosResponse,
+} from 'axios';
 import type { PloneClientConfig } from './validation/config';
 import qs from 'query-string';
 import debugFactory from 'debug';
@@ -20,20 +24,23 @@ export function getBackendURL(
   apiSuffix: string | undefined,
   path: string,
 ) {
-  const APISUFIX = '/++api++';
+  const APISUFFIX = '/++api++';
 
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
 
-  return `${apiPath}${apiSuffix ?? APISUFIX}${adjustedPath}`;
+  return `${apiPath}${apiSuffix ?? APISUFFIX}${adjustedPath}`;
 }
 
 const _handleResponse = (response: AxiosResponse) => response;
 
-const _handleError = (error: any) => {
+const _handleError = (error: AxiosError) => {
   debug(error);
-  return Promise.reject({ status: error.status, data: error.response.data });
+  return Promise.reject({
+    status: error.status ?? error.code,
+    data: error.response?.data,
+  });
 };
 
 export function axiosConfigAdapter(
