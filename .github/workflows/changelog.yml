@@ -26,8 +26,6 @@ jobs:
           filters: |
             seven:
               - 'apps/seven/**'
-            quanta:
-              - 'apps/quanta/**'
             client:
               - 'packages/client/**'
             registry:
@@ -42,6 +40,8 @@ jobs:
               - 'packages/types/**'
             providers:
               - 'packages/providers/**'
+            publicui:
+              - 'packages/publicui/**'
             reactrouter:
               - 'packages/react-router/**'
             scripts:
@@ -60,14 +60,6 @@ jobs:
         run: |
           git fetch --no-tags origin seven
           towncrier check --compare-with origin/seven --dir apps/seven
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: quanta changelog check
-        if: steps.filter.outputs.quanta == 'true'
-        run: |
-          git fetch --no-tags origin seven
-          towncrier check --compare-with origin/seven --dir apps/quanta
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
@@ -124,6 +116,14 @@ jobs:
         run: |
           git fetch --no-tags origin seven
           towncrier check --compare-with origin/seven --dir packages/providers
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
+      - name: Public UI changelog check
+        if: steps.filter.outputs.publicui == 'true'
+        run: |
+          git fetch --no-tags origin seven
+          towncrier check --compare-with origin/seven --dir packages/publicui
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 

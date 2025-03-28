@@ -8,6 +8,7 @@ import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 import installServer from './config.server';
 
+// eslint-disable-next-line import/no-unresolved
 import stylesheet from '../addons.styles.css?url';
 
 const otherResources: Route.unstable_MiddlewareFunction = async (
