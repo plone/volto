@@ -7,7 +7,7 @@ import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 import installServer from './config.server';
 
-const otherResources: Route.unstable_MiddlewareFunction = (
+const otherResources: Route.unstable_MiddlewareFunction = async (
   { request, params, context },
   next,
 ) => {
@@ -25,6 +25,10 @@ const otherResources: Route.unstable_MiddlewareFunction = (
     console.log('matched path not fetched', path);
     throw data('Content Not Found', { status: 404 });
   }
+
+  // This is needed in v7.4.0 even if it should not be mandatory
+  // Relevant issue: https://github.com/remix-run/react-router/issues/13274
+  return await next();
 };
 
 export const unstable_middleware = [otherResources];
