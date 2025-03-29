@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "react-router dev",
     "dev:cmsui": "REGISTRYCONFIG=registry-cmsui.config.ts react-router dev",
+    "test": "pnpm exec init-loaders && vitest --coverage",
     "start": "react-router dev",
     "build": "pnpm exec init-loaders && react-router build",
     "build:cmsui": "pnpm exec init-loaders && REGISTRYCONFIG=registry-cmsui.config.ts react-router build",
@@ -43,9 +44,12 @@
     "@react-router/dev": "catalog:",
     "@tailwindcss/vite": "4.0.9",
     "@testing-library/cypress": "10.0.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
     "@types/node": "^20",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
     "cypress": "^13.13.2",
     "cypress-axe": "1.5.0",
     "cypress-file-upload": "5.0.8",
@@ -53,6 +57,7 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-tsconfig-paths": "^5.0.1",
+    "vitest": "catalog:",
     "wait-on": "^8.0.0"
   },
   "engines": {
