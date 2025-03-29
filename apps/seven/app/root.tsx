@@ -5,73 +5,15 @@ import i18next from './i18next.server';
 import type { Route } from './+types/root';
 import { flattenToAppURL } from './utils';
 import type PloneClient from '@plone/client';
-import { getAuthFromRequest } from '@plone/react-router';
 import config from '@plone/registry';
-import installServer from './config.server';
+import {
+  getAPIResourceWithAuth,
+  installServerMiddleware,
+  otherResources,
+} from './middleware.server';
 
 // eslint-disable-next-line import/no-unresolved
 import stylesheet from '../addons.styles.css?url';
-
-export const installServerMiddleware: Route.unstable_MiddlewareFunction =
-  async ({ request, context }, next) => {
-    installServer();
-    // const locale = await i18next.getLocale(request);
-    // context.setData({ locale });
-
-    // This is needed in v7.4.0 even if it should not be mandatory
-    // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-    return await next();
-  };
-
-export const otherResources: Route.unstable_MiddlewareFunction = async (
-  { request, params, context },
-  next,
-) => {
-  const path = `/${params['*'] || ''}`;
-
-  if (
-    /^https?:\/\//.test(path) ||
-    /^favicon.ico\/\//.test(path) ||
-    /expand/.test(path) ||
-    /^\/assets/.test(path) ||
-    /\.(css|css\.map)$/.test(path)
-  ) {
-    // eslint-disable-next-line no-console
-    console.log('matched path not fetched', path);
-    throw data('Content Not Found', { status: 404 });
-  }
-
-  // This is needed in v7.4.0 even if it should not be mandatory
-  // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-  return await next();
-};
-
-export const getAPIResourceWithAuth: Route.unstable_MiddlewareFunction = async (
-  { request, params },
-  next,
-) => {
-  const path = `/${params['*'] || ''}`;
-
-  if (
-    /\/@@images\//.test(path) ||
-    /\/@@download\//.test(path) ||
-    /\/@@site-logo\//.test(path) ||
-    /\/@portrait\//.test(path)
-  ) {
-    const token = await getAuthFromRequest(request);
-    throw await fetch(`${config.settings.apiPath}${path}`, {
-      method: 'GET',
-      headers: {
-        ...request.headers,
-        Authorization: `Bearer ${token}`,
-      },
-    });
-  }
-
-  // This is needed in v7.4.0 even if it should not be mandatory
-  // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-  return await next();
-};
 
 export const unstable_middleware = [
   installServerMiddleware,
