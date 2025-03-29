@@ -17,12 +17,14 @@ const generateFilesArray = (packages) => {
 // '**/packages/blocks/**/*.{ts,tsx}'
 const addonPackages = [
   'apps/seven',
+  'apps/quanta',
   'packages/blocks',
   'packages/contents',
   'packages/cmsui',
   'packages/coresandbox',
   'packages/slots',
   'packages/theming',
+  'packages/publicui',
   // Add more packages as needed
 ];
 
@@ -104,7 +106,6 @@ export default tseslint.config(
       '**/.storybook/*',
       'packages/volto/*',
       'packages/coresandbox/*',
-      'packages/volto-guillotina',
       'packages/volto-slate',
       '!**/.*',
       '**/dist',
@@ -112,7 +113,9 @@ export default tseslint.config(
       '**/*.config.js',
       'packages/registry/lib',
       'packages/registry/docs',
+      '**/.react-router/*',
       '**/+types/*',
+      '**/registry.loader.js',
     ],
   },
 );

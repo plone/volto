@@ -1,23 +1,15 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
-import type { GetVocabulariesListResponse } from '@plone/types';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type { GetVocabulariesResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
-export type VocabulariesListArgs = {
-  config: PloneClientConfig;
-};
-
-export const getVocabulariesList = async ({
-  config,
-}: VocabulariesListArgs): Promise<GetVocabulariesListResponse> => {
+export async function getVocabularies(
+  this: PloneClient,
+): Promise<RequestResponse<GetVocabulariesResponse>> {
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
 
   return apiRequest('get', '/@vocabularies', options);
-};
-
-export const getVocabulariesListQuery = ({ config }: VocabulariesListArgs) => ({
-  queryKey: ['get', 'vocabulariesList'],
-  queryFn: () => getVocabulariesList({ config }),
-});
+}

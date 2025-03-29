@@ -1,7 +1,8 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { z } from 'zod';
 import type { GetRelationsResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 export const getRelationsSchema = z
   .object({
@@ -13,16 +14,12 @@ export const getRelationsSchema = z
     return data.source !== undefined || data.relation !== undefined;
   });
 
-export type RelationsArgs = z.infer<typeof getRelationsSchema> & {
-  config: PloneClientConfig;
-};
+export type RelationsArgs = z.infer<typeof getRelationsSchema>;
 
-export const getRelations = async ({
-  source,
-  relation,
-  onlyBroken,
-  config,
-}: RelationsArgs): Promise<GetRelationsResponse> => {
+export async function getRelations(
+  this: PloneClient,
+  { source, relation, onlyBroken }: RelationsArgs,
+): Promise<RequestResponse<GetRelationsResponse>> {
   const validatedArgs = getRelationsSchema.parse({
     source,
     relation,
@@ -30,7 +27,7 @@ export const getRelations = async ({
   });
 
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {
       ...(validatedArgs.source && { source: validatedArgs.source }),
       ...(validatedArgs.relation && { relation: validatedArgs.relation }),
@@ -39,14 +36,4 @@ export const getRelations = async ({
   };
 
   return apiRequest('get', '/@relations', options);
-};
-
-export const getRelationsQuery = ({
-  source,
-  relation,
-  onlyBroken,
-  config,
-}: RelationsArgs) => ({
-  queryKey: [source, relation, onlyBroken, 'get', 'relations'],
-  queryFn: () => getRelations({ source, relation, onlyBroken, config }),
-});
+}

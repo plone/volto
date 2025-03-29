@@ -8,3 +8,4 @@ packages/volto
 packages/registry/docs/*
 packages/registry/lib
 storybook-static
++types/

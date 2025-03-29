@@ -1,41 +1,27 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { z } from 'zod';
-import {
-  type PloneClientConfig,
-  PloneClientConfigSchema,
-} from '../../validation/config';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 export const deleteGroupArgsSchema = z.object({
   groupId: z.string(),
-  config: PloneClientConfigSchema,
 });
 
 type DeleteGroupArgs = z.infer<typeof deleteGroupArgsSchema>;
 
-export const deleteGroup = async ({
-  groupId,
-  config,
-}: DeleteGroupArgs): Promise<undefined> => {
+export async function deleteGroup(
+  this: PloneClient,
+  { groupId }: DeleteGroupArgs,
+): Promise<RequestResponse<undefined>> {
   const validatedArgs = deleteGroupArgsSchema.parse({
     groupId,
-    config,
   });
 
   const options: ApiRequestParams = {
-    config: validatedArgs.config,
+    config: this.config,
   };
 
   const groupName = `/@groups/${validatedArgs.groupId}`;
 
   return apiRequest('delete', groupName, options);
-};
-
-export const deleteGroupMutation = ({
-  config,
-}: {
-  config: PloneClientConfig;
-}) => ({
-  mutationKey: ['delete', 'groups'],
-  mutationFn: ({ groupId }: Omit<DeleteGroupArgs, 'config'>) =>
-    deleteGroup({ groupId, config }),
-});
+}

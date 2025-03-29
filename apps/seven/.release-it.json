@@ -14,13 +14,13 @@
     "changelog": "pipx run towncrier build --draft --yes --version 0.0.0",
     "requireUpstream": false,
     "requireCleanWorkingDir": false,
-    "commitMessage": "Release Plone7 ${version}",
-    "tagName": "plone7-${version}",
-    "tagAnnotation": "Release Plone7 ${version}"
+    "commitMessage": "Release Seven ${version}",
+    "tagName": "Seven-${version}",
+    "tagAnnotation": "Release Seven ${version}"
   },
   "github": {
     "release": true,
-    "releaseName": "Plone7 ${version}",
+    "releaseName": "Seven ${version}",
     "releaseNotes": "cat .changelog.draft"
   }
 }

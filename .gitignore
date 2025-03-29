@@ -73,3 +73,7 @@ packages/volto/data
 docs/news
 
 tsconfig.tsbuildinfo
+
+# @plone/registry generated files
+registry.loader.js
+addons.styles.css

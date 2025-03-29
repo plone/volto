@@ -1,0 +1,1 @@
+Updated root loader usage and removed the index route since it is now in the `@plone/publicui` add-on @pnicolli

@@ -60,6 +60,10 @@
       "import": "./dist/addon-registry/create-addons-styles-loader.js",
       "default": "./dist/addon-registry/create-addons-styles-loader.cjs"
     },
+    "./create-addons-locales-loader": {
+      "import": "./dist/addon-registry/create-addons-locales-loader.js",
+      "default": "./dist/addon-registry/create-addons-locales-loader.cjs"
+    },
     "./vite-plugin": {
       "import": "./vite-plugin.js",
       "types": "./vite-plugin.d.ts"
@@ -97,6 +101,7 @@
     "auto-config-loader": "^1.7.7",
     "crypto-random-string": "3.2.0",
     "debug": "4.3.2",
+    "deepmerge": "^4.3.1",
     "dependency-graph": "0.10.0",
     "glob": "^10.4.5",
     "tmp": "0.2.1"

@@ -13,7 +13,7 @@ function initPloneRegistryLoaders() {
     { tempInProject: true },
   );
 
-  createAddonsStyleLoader(registry.getAddonStyles());
+  createAddonsStyleLoader(registry);
 
   return { registry, shadowAliases, addonsLoaderPath };
 }

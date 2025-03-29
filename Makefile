@@ -53,12 +53,20 @@ help: ## This help message
 	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
 
 .PHONY: start
-start: ## Starts Volto, allowing reloading of the add-on during development
+start: ## Starts Seven in development mode
 	pnpm start
+
+.PHONY: start-publicui
+start-publicui: ## Starts Seven in development mode (Public UI only)
+	pnpm start:publicui
 
 .PHONY: build
 build: ## Build a production bundle for distribution
-	$(MAKE) -C "./packages/volto/" build
+	pnpm build
+
+.PHONY: build-publicui
+build-publicui: ## Build a production bundle for distribution (Public UI only)
+	pnpm build:publicui
 
 .PHONY: test
 test: ## Run unit tests

@@ -1,3 +1,4 @@
+import { createCookie } from 'react-router';
 import { route, index, layout, prefix } from '@react-router/dev/routes';
 import type { RouteConfig, RouteConfigEntry } from '@react-router/dev/routes';
 import type { ReactRouterRouteEntry } from '@plone/types';
@@ -22,52 +23,39 @@ export function getAddonRoutesConfig(
       }
     }
     switch (routeConfig.type) {
-      case 'route':
-        if (routeConfig.options) {
-          resultRoutesConfig.push(
-            route(routeConfig.path, routeConfig.file, routeConfig.options),
-          );
-        } else if (routeConfig.children) {
-          resultRoutesConfig.push(
-            route(
-              routeConfig.path,
-              routeConfig.file,
-              routeConfig.options || {},
-              getAddonRoutesConfig(
-                routeConfig.children,
-                addonsInfo,
-              ) as Array<RouteConfigEntry>,
-            ),
-          );
-        } else {
-          resultRoutesConfig.push(route(routeConfig.path, routeConfig.file));
-        }
+      case 'route': {
+        const children = routeConfig.children
+          ? (getAddonRoutesConfig(
+              routeConfig.children,
+              addonsInfo,
+            ) as Array<RouteConfigEntry>)
+          : undefined;
+        resultRoutesConfig.push(
+          route(
+            routeConfig.path,
+            routeConfig.file,
+            routeConfig.options || {},
+            children,
+          ),
+        );
         break;
-
+      }
       case 'index':
         resultRoutesConfig.push(index(routeConfig.file, routeConfig.options));
         break;
 
-      case 'layout':
-        if (routeConfig.options) {
-          resultRoutesConfig.push(
-            layout(routeConfig.file, routeConfig.options),
-          );
-        }
-        if (routeConfig.children) {
-          resultRoutesConfig.push(
-            layout(
-              routeConfig.file,
-              routeConfig.options || {},
-              getAddonRoutesConfig(
-                routeConfig.children,
-                addonsInfo,
-              ) as Array<RouteConfigEntry>,
-            ),
-          );
-        }
+      case 'layout': {
+        const children = routeConfig.children
+          ? (getAddonRoutesConfig(
+              routeConfig.children,
+              addonsInfo,
+            ) as Array<RouteConfigEntry>)
+          : undefined;
+        resultRoutesConfig.push(
+          layout(routeConfig.file, routeConfig.options || {}, children),
+        );
         break;
-
+      }
       case 'prefix':
         resultRoutesConfig.push(
           ...prefix(
@@ -81,4 +69,27 @@ export function getAddonRoutesConfig(
     }
   }
   return resultRoutesConfig;
+}
+
+const secret = process.env.COOKIE_SECRET || 'default';
+
+export const cookie = createCookie('auth_seven', {
+  secrets: [secret],
+  // 30 days
+  maxAge: 30 * 24 * 60 * 60,
+  httpOnly: true,
+  secure: process.env.NODE_ENV === 'production',
+  sameSite: 'lax',
+});
+
+export async function getAuthFromRequest(
+  request: Request,
+): Promise<string | undefined> {
+  let token;
+  try {
+    token = await cookie.parse(request.headers.get('Cookie'));
+  } catch (error) {
+    // asd
+  }
+  return token ?? undefined;
 }

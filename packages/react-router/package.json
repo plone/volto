@@ -60,7 +60,9 @@
       "optional": true
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "react-router": "catalog:"
+  },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",
     "@plone/types": "workspace:*",
