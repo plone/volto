@@ -20,6 +20,7 @@ export const otherResources: Route.unstable_MiddlewareFunction = async (
   next,
 ) => {
   const path = `/${params['*'] || ''}`;
+  console.log(path);
 
   if (
     /^https?:\/\//.test(path) ||
