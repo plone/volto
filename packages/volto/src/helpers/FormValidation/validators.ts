@@ -74,7 +74,10 @@ export const urlValidator = ({ value, formatMessage }: Validator) => {
   return !isValid ? formatMessage(messages.isValidURL) : null;
 };
 
-export const emailValidator = ({ value, formatMessage }: Validator): string => {
+export const emailValidator = ({
+  value,
+  formatMessage,
+}: Validator): string | null => {
   // Email Regex taken from from WHATWG living standard:
   // https://html.spec.whatwg.org/multipage/input.html#e-mail-state-(type=email)
   const emailRegex =

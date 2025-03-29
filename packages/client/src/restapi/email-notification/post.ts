@@ -1,9 +1,7 @@
 import { z } from 'zod';
-import { apiRequest, type ApiRequestParams } from '../../API';
-import {
-  type PloneClientConfig,
-  PloneClientConfigSchema,
-} from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 const emailNotificationDataSchema = z.object({
   name: z.string(),
@@ -15,25 +13,22 @@ const emailNotificationDataSchema = z.object({
 export const emailNotificationArgsSchema = z.object({
   user: z.string().optional(),
   data: emailNotificationDataSchema,
-  config: PloneClientConfigSchema,
 });
 
 export type EmailNotificationArgs = z.infer<typeof emailNotificationArgsSchema>;
 
-export const emailNotification = async ({
-  user,
-  data,
-  config,
-}: EmailNotificationArgs): Promise<undefined> => {
+export async function emailNotification(
+  this: PloneClient,
+  { user, data }: EmailNotificationArgs,
+): Promise<RequestResponse<undefined>> {
   const validatedArgs = emailNotificationArgsSchema.parse({
     user,
     data,
-    config,
   });
 
   const options: ApiRequestParams = {
     data: validatedArgs.data,
-    config: validatedArgs.config,
+    config: this.config,
   };
 
   const emailNotificationPath = user
@@ -41,14 +36,4 @@ export const emailNotification = async ({
     : '/@email-notification';
 
   return apiRequest('post', emailNotificationPath, options);
-};
-
-export const emailNotificationMutation = ({
-  config,
-}: {
-  config: PloneClientConfig;
-}) => ({
-  mutationKey: ['post', 'email-notification'],
-  mutationFn: ({ user, data }: Omit<EmailNotificationArgs, 'config'>) =>
-    emailNotification({ user, data, config }),
-});
+}

@@ -142,6 +142,25 @@ describe('Slots registry', () => {
     );
   });
 
+  it('registers two slot component with no predicate and the same name, the latter wins', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with no predicate',
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component:
+        'this is a toolbar component with no predicate overriding the above one',
+    });
+
+    expect(config.getSlot('toolbar', {})![0].component).toEqual(
+      'this is a toolbar component with no predicate overriding the above one',
+    );
+  });
+
   it('registers two slot components with predicates - registered components order is respected', () => {
     config.registerSlotComponent({
       slot: 'toolbar',

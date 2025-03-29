@@ -362,34 +362,6 @@ working-copy-ci-acceptance-test: ## Run Cypress tests in headless mode for CI fo
 working-copy-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for working copy tests
 	$(MAKE) -C "./packages/volto/" working-copy-ci-acceptance-test-run-all
 
-######### Guillotina Acceptance tests
-
-.PHONY: guillotina-acceptance-backend-start
-guillotina-acceptance-backend-start: ## Start backend acceptance server for Guillotina tests
-	docker-compose -f g-api/docker-compose.yml up > /dev/null
-
-.PHONY: guillotina-acceptance-frontend-prod-start
-guillotina-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-acceptance-frontend-prod-start
-
-.PHONY: guillotina-acceptance-test
-guillotina-acceptance-test: ## Start Cypress in interactive mode for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-acceptance-test
-
-.PHONY: guillotina-ci-acceptance-test
-guillotina-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-ci-acceptance-test
-
-.PHONY: guillotina-ci-acceptance-test-run-all
-guillotina-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-ci-acceptance-test-run-all
-
-######### Plone 5 Acceptance tests
-
-.PHONY: plone5-acceptance-backend-start
-plone5-acceptance-backend-start: ## Start backend acceptance server for Plone 5 tests
-	$(MAKE) -C "./packages/volto/" plone5-acceptance-backend-start
-
 ######### @plone/client
 
 .PHONY: acceptance-server-detached-start
