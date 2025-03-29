@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Logo renders a logo component with a custom logo 1`] = `
+exports[`Logo > renders a logo component with a custom logo 1`] = `
 <a
   aria-label="Home"
   href="/"
@@ -14,7 +14,7 @@ exports[`Logo renders a logo component with a custom logo 1`] = `
 </a>
 `;
 
-exports[`Logo renders a logo component with a custom logo in a non-root url 1`] = `
+exports[`Logo > renders a logo component with a custom logo in a non-root url 1`] = `
 <a
   aria-label="Home"
   href="/"
@@ -28,7 +28,7 @@ exports[`Logo renders a logo component with a custom logo in a non-root url 1`] 
 </a>
 `;
 
-exports[`Logo renders a logo component with default config 1`] = `
+exports[`Logo > renders a logo component with default config 1`] = `
 <a
   aria-label="Home"
   href="/"
@@ -37,12 +37,12 @@ exports[`Logo renders a logo component with default config 1`] = `
   <img
     alt="Logo of Plone Site"
     className="ui image"
-    src="Logo.svg"
+    src="/src/components/theme/Logo/Logo.svg"
   />
 </a>
 `;
 
-exports[`Logo renders a logo component with default config in a non-root url 1`] = `
+exports[`Logo > renders a logo component with default config in a non-root url 1`] = `
 <a
   aria-label="Home"
   href="/"

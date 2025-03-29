@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`EmailWidget renders an email view widget component 1`] = `
+exports[`EmailWidget > renders an email view widget component 1`] = `
 <a
   className="metadata email widget"
   href="mailto:foo@bar.com"
@@ -12,7 +12,7 @@ exports[`EmailWidget renders an email view widget component 1`] = `
 </a>
 `;
 
-exports[`EmailWidget renders an email view widget component with children 1`] = `
+exports[`EmailWidget > renders an email view widget component with children 1`] = `
 <a
   className="metadata email widget"
   href="mailto:foo@bar.com"
@@ -26,4 +26,4 @@ exports[`EmailWidget renders an email view widget component with children 1`] = 
 </a>
 `;
 
-exports[`EmailWidget renders an empty email view widget component 1`] = `null`;
+exports[`EmailWidget > renders an empty email view widget component 1`] = `null`;

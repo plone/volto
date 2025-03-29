@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ContentsUploadModal renders a contents upload modal component 1`] = `null`;
+exports[`ContentsUploadModal > renders a contents upload modal component 1`] = `null`;
 
-exports[`ContentsUploadModal renders a contents upload modal component that only allows 1 file 1`] = `null`;
+exports[`ContentsUploadModal > renders a contents upload modal component that only allows 1 file 1`] = `null`;
 
-exports[`ContentsUploadModal renders a contents upload modal component that only allows 10MB files 1`] = `null`;
+exports[`ContentsUploadModal > renders a contents upload modal component that only allows 10MB files 1`] = `null`;
 
-exports[`ContentsUploadModal renders a contents upload modal component that only allows images 1`] = `null`;
+exports[`ContentsUploadModal > renders a contents upload modal component that only allows images 1`] = `null`;

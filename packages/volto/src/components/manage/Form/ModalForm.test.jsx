@@ -8,7 +8,7 @@ import ModalForm from './ModalForm';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/components/manage/Form');
+vi.mock('@plone/volto/components/manage/Form');
 
 describe('ModalForm', () => {
   it('renders a modal form component', () => {
