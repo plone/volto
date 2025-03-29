@@ -12,7 +12,18 @@ import installServer from './config.server';
 // eslint-disable-next-line import/no-unresolved
 import stylesheet from '../addons.styles.css?url';
 
-const otherResources: Route.unstable_MiddlewareFunction = async (
+export const installServerMiddleware: Route.unstable_MiddlewareFunction =
+  async ({ request, context }, next) => {
+    installServer();
+    // const locale = await i18next.getLocale(request);
+    // context.setData({ locale });
+
+    // This is needed in v7.4.0 even if it should not be mandatory
+    // Relevant issue: https://github.com/remix-run/react-router/issues/13274
+    return await next();
+  };
+
+export const otherResources: Route.unstable_MiddlewareFunction = async (
   { request, params, context },
   next,
 ) => {
@@ -35,11 +46,10 @@ const otherResources: Route.unstable_MiddlewareFunction = async (
   return await next();
 };
 
-const getAPIResourceWithAuth: Route.unstable_MiddlewareFunction = async (
+export const getAPIResourceWithAuth: Route.unstable_MiddlewareFunction = async (
   { request, params },
   next,
 ) => {
-  installServer();
   const path = `/${params['*'] || ''}`;
 
   if (
@@ -63,10 +73,13 @@ const getAPIResourceWithAuth: Route.unstable_MiddlewareFunction = async (
   return await next();
 };
 
-export const unstable_middleware = [otherResources, getAPIResourceWithAuth];
+export const unstable_middleware = [
+  installServerMiddleware,
+  otherResources,
+  getAPIResourceWithAuth,
+];
 
 export async function loader({ params, request }: Route.LoaderArgs) {
-  installServer();
   const locale = await i18next.getLocale(request);
 
   const expand = ['navroot', 'breadcrumbs', 'navigation'];
