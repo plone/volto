@@ -3,19 +3,20 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-15T08:53:14.294Z\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"PO-Revision-Date: 2025-03-29 09:01+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"Language-Team: Basque <https://hosted.weblate.org/projects/plone/volto-18/eu/"
+">\n"
 "Language: eu\n"
-"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"MIME-Version: 1.0\n"
+"X-Generator: Weblate 5.11-dev\n"
 "Language-Code: eu\n"
 "Language-Name: Basque\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
-"X-Generator: Poedit 2.3\n"
 "X-Poedit-Bookmarks: -1,38,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. Default: "<p>Add some HTML here</p>"
@@ -97,7 +98,7 @@ msgstr "Gehitu gehigarriak"
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
 msgid "Add Alternative URL"
-msgstr ""
+msgstr "Gehitu ordezko URLa"
 
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
@@ -147,7 +148,7 @@ msgstr "Gehitu blokea"
 #. Default: "Add block in position {index}"
 #: components/manage/Blocks/Container/NewBlockAddButton
 msgid "Add block in position {index}"
-msgstr ""
+msgstr "Gehitu blokea {index} posizioan"
 
 #. Default: "Add block…"
 #: helpers/MessageLabels/MessageLabels
@@ -177,7 +178,7 @@ msgstr "Gehitu data"
 #. Default: "Add element to container"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 msgid "Add element to container"
-msgstr ""
+msgstr "Gehitu elementua edukiontzira"
 
 #. Default: "Add field"
 #: components/manage/Widgets/SchemaWidget
@@ -292,12 +293,13 @@ msgstr "Produktu gehigarria ondo eguneratu da"
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
 msgid "Advanced facet?"
-msgstr ""
+msgstr "Fazeta aurreratua?"
 
 #. Default: "Advanced facets are initially hidden and displayed on demand"
 #: components/manage/Blocks/Search/schema
 msgid "Advanced facets are initially hidden and displayed on demand"
 msgstr ""
+"Fazeta aurreratuak hasieran ezkutatuta daude eta eskatu ahala erakusten dira"
 
 #. Default: "Album view"
 #: config/Views
@@ -318,12 +320,12 @@ msgstr "Aliasa ondo gehitu da"
 #. Default: "Aliases have been removed."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been removed."
-msgstr ""
+msgstr "Aliasak ezabatu dira."
 
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been uploaded."
-msgstr ""
+msgstr "Aliasak kargatu dira."
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
@@ -426,7 +428,7 @@ msgstr "Goraka"
 #. Default: "Assign the {role} role to {entry}"
 #: components/manage/Sharing/Sharing
 msgid "Assign the {role} role to {entry}"
-msgstr ""
+msgstr "Esleitu {role} rola {entry}-ri"
 
 #. Default: "Assignments"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -436,7 +438,7 @@ msgstr "Esleipenak"
 #. Default: "Automatically"
 #: components/manage/Controlpanels/Aliases
 msgid "Automatically"
-msgstr ""
+msgstr "Automatikoki"
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -500,7 +502,7 @@ msgstr "Blokea"
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
-msgstr ""
+msgstr "Biak"
 
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
@@ -515,7 +517,7 @@ msgstr "Nabigazio arrastoa"
 #. Default: "Broken relations"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "Broken relations"
-msgstr ""
+msgstr "Apurtutako erlazioak"
 
 #. Default: "Browse"
 #: components/manage/Contents/ContentsUploadModal
@@ -531,7 +533,7 @@ msgstr "Atarian bilatu, irudi bat hona arrastatu edo URL bat idatzi"
 #. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
-msgstr ""
+msgstr "Kargatu CSV fitxategia"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
@@ -541,7 +543,7 @@ msgstr "Defektuz, elementu hau barnean duen karpetaren baimenak heredatu egiten 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
 msgid "CSVFile"
-msgstr ""
+msgstr "CSV fitxategia"
 
 #. Default: "Cache Name"
 #: components/manage/Controlpanels/DatabaseInformation
