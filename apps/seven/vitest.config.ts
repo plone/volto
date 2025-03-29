@@ -18,6 +18,6 @@ export default defineConfig({
         '*.config.ts',
         'registry.loader.js',
       ],
-    }
+    },
   },
 });

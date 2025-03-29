@@ -180,4 +180,6 @@ jobs:
 
       - run: pnpm i
 
+      - run: make build-deps
+
       - run: pnpm --filter seven test
