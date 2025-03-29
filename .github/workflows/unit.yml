@@ -115,7 +115,6 @@ jobs:
 
       - run: make acceptance-server-detached-stop
 
-
   helpers:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: '@plone/helpers'
@@ -151,3 +150,34 @@ jobs:
 
       - name: Run unit tests @plone/helpers
         run: pnpm --filter @plone/helpers test
+
+  seven:
+    name: 'seven'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.node-version }}
+
+      - name: Enable corepack
+        run: npm i -g corepack@latest && corepack enable
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - run: pnpm i
+
+      - run: pnpm --filter seven test
