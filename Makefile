@@ -56,17 +56,17 @@ help: ## This help message
 start: ## Starts Seven in development mode
 	pnpm start
 
-.PHONY: start-cmsui
-start-cmsui: ## Starts Seven with CMSUI in development mode
-	pnpm start:cmsui
+.PHONY: start-publicui
+start-publicui: ## Starts Seven in development mode (Public UI only)
+	pnpm start:publicui
 
 .PHONY: build
 build: ## Build a production bundle for distribution
 	pnpm build
 
-.PHONY: build-cmsui
-build-cmsui: ## Build a production bundle for distribution with CMSUI
-	pnpm build:cmsui
+.PHONY: build-publicui
+build-publicui: ## Build a production bundle for distribution (Public UI only)
+	pnpm build:publicui
 
 .PHONY: test
 test: ## Run unit tests
