@@ -7,5 +7,3 @@ node_modules
 packages/volto/types/*
 packages/registry/docs/*
 storybook-static
-apps/vite-ssr/src/routeTree.gen.ts
-apps/vite/src/routeTree.gen.ts
