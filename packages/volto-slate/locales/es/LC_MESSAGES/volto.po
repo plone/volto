@@ -2,13 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
 "POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-03-30 04:10+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/plone/"
+"volto-slate-18/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.11-dev\n"
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8\n"
@@ -17,12 +20,16 @@ msgstr ""
 # defaultMessage: Add link
 #: editor/plugins/Link/index
 msgid "Add link"
-msgstr ""
+msgstr "Gehitu esteka"
 
 # defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
 #: widgets/HtmlSlateWidget
 msgid "An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
 msgstr ""
+"Ha ocurrido un error editando el campo \"{name}\". Se ha enviado la "
+"notificación oportuna y lo estamos revisando. Guarde su trabajo y "
+"reinténtelo por favor. Si el error continúa, póngase en contacto con el "
+"administrador del sitio."
 
 # defaultMessage: An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.
 #: widgets/RichTextWidgetView
@@ -32,29 +39,29 @@ msgstr ""
 # defaultMessage: Bottom
 #: blocks/Table/TableBlockEdit
 msgid "Bottom"
-msgstr ""
+msgstr "Debajo"
 
 # defaultMessage: Center
 #: blocks/Table/TableBlockEdit
 msgid "Center"
-msgstr ""
+msgstr "Centrar"
 
 # defaultMessage: Delete col
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Delete col"
-msgstr ""
+msgstr "Eliminar columna"
 
 # defaultMessage: Delete row
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Delete row"
-msgstr ""
+msgstr "Eliminar fila"
 
 # defaultMessage: Delete table
 #: editor/plugins/Table/index
 msgid "Delete table"
-msgstr ""
+msgstr "Eliminar tabla"
 
 # defaultMessage: Divide each row into separate cells
 #: blocks/Table/TableBlockEdit
