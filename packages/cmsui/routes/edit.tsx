@@ -8,6 +8,7 @@ import {
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 import { requireAuthCookie } from './auth/auth';
+import { Button } from '@plone/components/tailwind';
 
 export async function loader({ params, request }: LoaderFunctionArgs) {
   const token = await requireAuthCookie(request);
@@ -77,7 +78,7 @@ export default function Edit() {
             </div>
           );
         })}
-        <button type="submit">{t('cmsui.save')}</button>
+        <Button type="submit">{t('cmsui.save')}</Button>
       </form>
     </main>
   );

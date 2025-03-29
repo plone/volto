@@ -21,23 +21,23 @@ export default function install(config: ConfigType) {
             path: '*',
             file: '@plone/cmsui/routes/auth/login.tsx',
           },
+        ],
+      },
+      {
+        type: 'prefix',
+        path: 'edit',
+        children: [
           {
-            type: 'prefix',
-            path: 'edit',
-            children: [
-              {
-                type: 'index',
-                file: '@plone/cmsui/routes/edit.tsx',
-                options: {
-                  id: 'index-edit',
-                },
-              },
-              {
-                type: 'route',
-                path: '*',
-                file: '@plone/cmsui/routes/edit.tsx',
-              },
-            ],
+            type: 'index',
+            file: '@plone/cmsui/routes/edit.tsx',
+            options: {
+              id: 'index-edit',
+            },
+          },
+          {
+            type: 'route',
+            path: '*',
+            file: '@plone/cmsui/routes/edit.tsx',
           },
         ],
       },
