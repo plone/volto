@@ -68,7 +68,6 @@ packages/volto/data
 
 # Sphinx and MyST
 /_build
-/docs/_build
 /.python-version
 /.tool-versions
 docs/news
