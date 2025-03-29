@@ -1,30 +1,38 @@
 ---
 myst:
   html_meta:
-    "description": "The Volto user interface (UI) is a React-based frontend for the Plone CMS. It is the default user interface starting with the release of Plone 6."
-    "property=og:description": "The Volto user interface (UI) is a React-based frontend for the Plone CMS. It is the default user interface starting with the release of Plone 6."
-    "property=og:title": "Volto UI"
-    "keywords": "Volto, Plone, frontend, user interface, React"
+    "description": "The Seven user interface (UI) is a React-based frontend for Plone."
+    "property=og:description": "The Seven user interface (UI) is a React-based frontend for Plone."
+    "property=og:title": "Seven"
+    "keywords": "Seven, Plone, frontend, user interface, React"
 ---
 
 (volto-index-label)=
 
-# Volto UI
+# Seven
 
-The Volto user interface (UI) is a React-based frontend for the [Plone content management system](https://plone.org).
-It is the default user interface starting with the release of Plone 6.
+The Seven user interface (UI) is a fast, elegant, and intuitive React-based frontend for [Plone](https://plone.org).
 
-Volto provides an attractive proposition: integration with the modern frontend development world, access to the huge ecosystem of React libraries and add-ons, combined with the ability to use the mature Plone CMS backend as a development platform.
+Seven is the codename for the successor of Volto.
+The codename is _temporary_; the final name of the product will be chosen when the release happens.
+It is under active development [in its own branch `seven`](https://github.com/plone/volto/tree/seven) in parallel with both Volto 19 in the branch `main` and the current stable version Volto 18 in the branch `18.x.x`.
 
-Thanks to the use of the Plone REST API, it is fully compatible with Plone's content type framework.
-But its power comes from the innovative Pastanaga editor, which provides a flexible WYSIWYG editing interface based on "blocks".
 
-Thanks to their simplicity and easy access to advanced frontend integration, Volto blocks can provide a fast development experience that reduces developer frustration and improves end-user experience.
+
+## Rationale
+
+Volto turned eight years old in 2025.
+The Volto Team architected and implemented Volto using the libraries, frameworks, resources, and best practices that were available at that time.
+Since then the React ecosystem has evolved, and so has the way of developing React applications.
+React 19 is stable now, settling upon a common paradigm for efficient data fetching in both the server and the client.
+Other React frameworks have embraced and leveraged this paradigm, battle testing them in production.
+
+The Volto Team recognized this evolution, and made the decision to adapt the next version of Volto to these modern practices.
 
 
 ## Get started
 
-Choose from the following sections to begin your journey with Volto.
+The following sections guide you to begin your journey with Volto.
 
 
 ### Integrators
