@@ -1,34 +1,45 @@
 import type { ConfigType } from '@plone/registry';
 
 export default function install(config: ConfigType) {
-  // Translation factory
-  config.registerUtility({
-    name: 'translation',
-    type: 'factory',
-    method: (id: string) => id,
-  });
-
   config.registerRoute({
-    type: 'route',
-    path: '/login',
-    file: '@plone/cmsui/routes/auth/login.tsx',
-  });
-
-  config.registerRoute({
-    type: 'prefix',
-    path: 'edit',
+    type: 'layout',
+    file: '@plone/cmsui/routes/layout.tsx',
     children: [
       {
-        type: 'index',
-        file: '@plone/cmsui/routes/edit.tsx',
-        options: {
-          id: 'index-edit',
-        },
+        type: 'prefix',
+        path: 'login',
+        children: [
+          {
+            type: 'index',
+            file: '@plone/cmsui/routes/auth/login.tsx',
+            options: {
+              id: 'index-login',
+            },
+          },
+          {
+            type: 'route',
+            path: '*',
+            file: '@plone/cmsui/routes/auth/login.tsx',
+          },
+        ],
       },
       {
-        type: 'route',
-        path: '*',
-        file: '@plone/cmsui/routes/edit.tsx',
+        type: 'prefix',
+        path: 'edit',
+        children: [
+          {
+            type: 'index',
+            file: '@plone/cmsui/routes/edit.tsx',
+            options: {
+              id: 'index-edit',
+            },
+          },
+          {
+            type: 'route',
+            path: '*',
+            file: '@plone/cmsui/routes/edit.tsx',
+          },
+        ],
       },
     ],
   });

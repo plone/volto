@@ -7,7 +7,8 @@ import {
 } from 'react-router';
 
 import { redirectIfLoggedInLoader, setAuthOnResponse } from './auth';
-import { Button, TextField } from '@plone/components';
+import { Button } from '@plone/components/tailwind';
+import { TextField } from '@plone/components';
 
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
@@ -38,7 +39,7 @@ export async function action({ request }: ActionFunctionArgs) {
     );
   }
 
-  const response = redirect('/edit');
+  const response = redirect('/');
   return setAuthOnResponse(response, loginData.token);
 }
 
@@ -82,12 +83,13 @@ export default function Login() {
             </div>
 
             <div>
-              <Button type="submit">Sign in</Button>
+              <Button variant="primary" type="submit">
+                Sign in
+              </Button>
             </div>
           </Form>
         </div>
       </div>
-      <div className="bg-amber-600">HELLO</div>
     </div>
   );
 }

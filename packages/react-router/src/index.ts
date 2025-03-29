@@ -1,3 +1,4 @@
+import { createCookie } from 'react-router';
 import { route, index, layout, prefix } from '@react-router/dev/routes';
 import type { RouteConfig, RouteConfigEntry } from '@react-router/dev/routes';
 import type { ReactRouterRouteEntry } from '@plone/types';
@@ -68,4 +69,27 @@ export function getAddonRoutesConfig(
     }
   }
   return resultRoutesConfig;
+}
+
+const secret = process.env.COOKIE_SECRET || 'default';
+
+export const cookie = createCookie('auth_seven', {
+  secrets: [secret],
+  // 30 days
+  maxAge: 30 * 24 * 60 * 60,
+  httpOnly: true,
+  secure: process.env.NODE_ENV === 'production',
+  sameSite: 'lax',
+});
+
+export async function getAuthFromRequest(
+  request: Request,
+): Promise<string | undefined> {
+  let token;
+  try {
+    token = await cookie.parse(request.headers.get('Cookie'));
+  } catch (error) {
+    // asd
+  }
+  return token ?? undefined;
 }
