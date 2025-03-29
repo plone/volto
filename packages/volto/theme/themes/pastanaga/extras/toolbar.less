@@ -129,7 +129,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
     }
 
     .toolbar-handler {
-      button {
+      .toolbar-handler-button {
         opacity: 0.3;
       }
 
@@ -243,7 +243,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       width: 100%;
       justify-content: center;
 
-      button {
+      .toolbar-handler-button {
         width: @toolbarWidth;
         height: 20px;
         padding: 0;
@@ -283,16 +283,28 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
 
   .toolbar-content,
   .toolbar {
-    button {
+    button,
+    a {
       // Default reset for button
       padding: 0;
       border: 0;
       background: transparent;
+      box-shadow: unset !important; // Some buttons have double outlines due to default styles. Safely disable those styles here.
       cursor: pointer;
       text-align: initial;
 
+      svg {
+        display: block; // SVGs are inline by default, causing the spacing to be odd
+        margin: 0; // Some SVGs have margin set by default styles.
+      }
+
       &:focus-visible {
-        outline: 1px auto;
+        outline: 2px solid black;
+        outline-offset: 2px;
+
+        &:has(.circled) {
+          border-radius: 50%;
+        }
       }
     }
   }
@@ -428,7 +440,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
         flex-direction: column;
         justify-content: center;
 
-        button {
+        .toolbar-handler-button {
           width: @toolbarWidthMin;
           height: @toolbarWidth;
 
@@ -752,3 +764,10 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
   }
 }
 // End Orphaned CSS
+
+// Toolbar handler color in homepage
+.contenttype-plone-site {
+  #toolbar .toolbar-handler .toolbar-handler-button:before {
+    background: @teal-blue;
+  }
+}

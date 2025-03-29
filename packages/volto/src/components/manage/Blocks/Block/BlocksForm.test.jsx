@@ -30,6 +30,9 @@ test('Allow override of blocksConfig', () => {
       locale: 'en',
       messages: {},
     },
+    form: {
+      ui: {},
+    },
   });
 
   const data = {
@@ -68,6 +71,7 @@ test('Allow override of blocksConfig', () => {
   const { container } = render(
     <Provider store={store}>
       <BlocksForm {...data} />
+      <div id="sidebar-order"></div>
     </Provider>,
   );
   expect(container).toMatchSnapshot();
@@ -78,6 +82,9 @@ test('Removes invalid blocks on saving', () => {
     intl: {
       locale: 'en',
       messages: {},
+    },
+    form: {
+      ui: {},
     },
   });
 
@@ -120,6 +127,7 @@ test('Removes invalid blocks on saving', () => {
   render(
     <Provider store={store}>
       <BlocksForm {...data} />
+      <div id="sidebar-order"></div>
     </Provider>,
   );
   expect(onChangeFormData).toBeCalledWith({

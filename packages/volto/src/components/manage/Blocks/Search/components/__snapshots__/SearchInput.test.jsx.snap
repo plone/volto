@@ -20,8 +20,10 @@ exports[`SearchInput renders a search input component 1`] = `
     className="search-input-actions"
   >
     <button
+      aria-label="Cancel search"
       className="ui basic icon button search-input-clear-icon-button"
       onClick={[Function]}
+      type="button"
     >
       <svg
         className="icon"

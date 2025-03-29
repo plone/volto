@@ -3,7 +3,8 @@ import { Button, Segment, Popup } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
 import cx from 'classnames';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { flattenToAppURL, getContentIcon } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { getContentIcon } from '@plone/volto/helpers/Content/Content';
 import config from '@plone/volto/registry';
 
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
@@ -33,7 +34,7 @@ const ObjectBrowserNav = ({
   const intl = useIntl();
   const isSelected = (item) => {
     let ret = false;
-    if (selected) {
+    if (selected && Array.isArray(selected)) {
       selected
         .filter((item) => item != null)
         .forEach((_item) => {
@@ -51,6 +52,7 @@ const ObjectBrowserNav = ({
         currentSearchResults.items.map((item) =>
           view === 'icons' ? (
             <li
+              key={item['@id']}
               className="image-wrapper"
               title={`${item['@id']} (${item['@type']})`}
             >
@@ -60,9 +62,11 @@ const ObjectBrowserNav = ({
                 onClick={(e) => handleClickOnItem(item)}
                 onDoubleClick={() => handleDoubleClickOnItem(item)}
                 className="image-preview"
-                aria-label={`${intl.formatMessage(messages.select)} ${
-                  item.title
-                }`}
+                aria-label={
+                  item.is_folderish && mode === 'image'
+                    ? `${intl.formatMessage(messages.browse)} ${item.title}`
+                    : `${intl.formatMessage(messages.select)} ${item.title}`
+                }
               >
                 {item['@type'] === 'Image' ? (
                   <img
@@ -160,6 +164,7 @@ const ObjectBrowserNav = ({
                   >
                     <Button.Group>
                       <Button
+                        type="button"
                         basic
                         icon
                         aria-label={`${intl.formatMessage(messages.browse)} ${

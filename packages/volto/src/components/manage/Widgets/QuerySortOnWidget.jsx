@@ -1,6 +1,8 @@
 import React from 'react';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import { toPairs, groupBy, map } from 'lodash';
+import toPairs from 'lodash/toPairs';
+import groupBy from 'lodash/groupBy';
+import map from 'lodash/map';
 import { defineMessages, useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 

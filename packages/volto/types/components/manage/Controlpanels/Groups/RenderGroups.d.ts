@@ -1,5 +1,10 @@
-declare const _default: React.FC<import("react-intl").WithIntlProps<any>> & {
-    WrappedComponent: React.ComponentType<any>;
-};
-export default _default;
-import React from 'react';
+export default RenderGroups;
+declare function RenderGroups(props: any): import("react/jsx-runtime").JSX.Element;
+declare namespace RenderGroups {
+    namespace propTypes {
+        let group: any;
+        let roles: any;
+        let inheritedRole: any;
+        let onDelete: any;
+    }
+}

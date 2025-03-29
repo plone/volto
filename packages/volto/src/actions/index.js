@@ -157,7 +157,7 @@ export {
   resetMetadataFocus,
   setSidebarTab,
 } from '@plone/volto/actions/sidebar/sidebar';
-export { setFormData } from '@plone/volto/actions/form/form';
+export { setFormData, setUIState } from '@plone/volto/actions/form/form';
 export {
   deleteLinkTranslation,
   getTranslationLocator,

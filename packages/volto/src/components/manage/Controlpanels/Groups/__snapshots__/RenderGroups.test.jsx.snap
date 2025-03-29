@@ -26,7 +26,7 @@ exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component 1`]
         readOnly={true}
         tabIndex={0}
         type="checkbox"
-        value="Administrators&role=Member"
+        value="Administrators.Member"
       />
       <label />
     </div>
@@ -48,7 +48,7 @@ exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component 1`]
         readOnly={true}
         tabIndex={0}
         type="checkbox"
-        value="Administrators&role=Reader"
+        value="Administrators.Reader"
       />
       <label />
     </div>
@@ -70,7 +70,7 @@ exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component 1`]
         readOnly={true}
         tabIndex={0}
         type="checkbox"
-        value="Administrators&role=Manager"
+        value="Administrators.Manager"
       />
       <label />
     </div>
@@ -155,7 +155,7 @@ exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component wit
         readOnly={true}
         tabIndex={0}
         type="checkbox"
-        value="Administrators&role=Member"
+        value="Administrators.Member"
       />
       <label />
     </div>
@@ -177,7 +177,7 @@ exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component wit
         readOnly={true}
         tabIndex={0}
         type="checkbox"
-        value="Administrators&role=Reader"
+        value="Administrators.Reader"
       />
       <label />
     </div>
@@ -199,7 +199,7 @@ exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component wit
         readOnly={true}
         tabIndex={-1}
         type="checkbox"
-        value="Administrators&role=Manager"
+        value="Administrators.Manager"
       />
       <label />
     </div>

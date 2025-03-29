@@ -3,8 +3,15 @@ import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import type { BlockEditProps } from '@plone/types';
 
 const TestBlockData = (props: BlockEditProps) => {
-  const { block, blocksConfig, contentType, data, navRoot, onChangeBlock } =
-    props;
+  const {
+    block,
+    blocksConfig,
+    contentType,
+    data,
+    navRoot,
+    onChangeBlock,
+    blocksErrors,
+  } = props;
   const intl = useIntl();
   const schema = blocksConfig[data['@type']].blockSchema({ intl, props });
 
@@ -24,6 +31,7 @@ const TestBlockData = (props: BlockEditProps) => {
       blocksConfig={blocksConfig}
       navRoot={navRoot}
       contentType={contentType}
+      errors={blocksErrors}
     />
   );
 };

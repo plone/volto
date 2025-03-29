@@ -2,7 +2,7 @@
  * User helper.
  * @module helpers/AuthToken
  */
-import { intersection } from 'lodash';
+import intersection from 'lodash/intersection';
 
 /**
  * Checks if the user has one or more given roles.
@@ -23,7 +23,7 @@ export function isManager(user) {
 }
 
 /**
- * Checks if the user can assing group.
+ * Checks if the user can assign group.
  * @method canAssignGroup
  * @returns {boolean}
  */

@@ -9,7 +9,7 @@ myst:
 
 (volto-config-js)=
 
-# Programatically define the active add-ons and theme
+# Programmatically define the active add-ons and theme
 
 Volto allows you to define the active `add-ons` and `theme` via a file in the root of your project called `volto.config.js`.
 
@@ -70,11 +70,11 @@ This environment variable allows you to specify a custom location for {file}`vol
 It can be relative to the current project or absolute.
 
 ```shell
-VOLTOCONFIG=../../volto.config.js yarn start
+VOLTOCONFIG=../../volto.config.js pnpm start
 ```
 
 ```shell
-VOLTOCONFIG=$(pwd)/volto.config.js yarn start
+VOLTOCONFIG=$(pwd)/volto.config.js pnpm start
 ```
 
 You can also set it from the root of the monorepo:

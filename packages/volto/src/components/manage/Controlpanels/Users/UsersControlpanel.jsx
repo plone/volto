@@ -5,37 +5,34 @@
 import {
   createUser,
   deleteUser,
-  listRoles,
-  listGroups,
   listUsers,
-  getControlpanel,
   updateUser,
-  updateGroup,
-  getUserSchema,
   getUser,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/users/users';
+import { listRoles } from '@plone/volto/actions/roles/roles';
+import { listGroups, updateGroup } from '@plone/volto/actions/groups/groups';
+import { getControlpanel } from '@plone/volto/actions/controlpanels/controlpanels';
+import { getUserSchema } from '@plone/volto/actions/userschema/userschema';
 import jwtDecode from 'jwt-decode';
-import {
-  Icon,
-  Toast,
-  Toolbar,
-  Pagination,
-  Error,
-} from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Pagination from '@plone/volto/components/theme/Pagination/Pagination';
+import Error from '@plone/volto/components/theme/Error/Error';
 import { ModalForm } from '@plone/volto/components/manage/Form';
 import RenderUsers from '@plone/volto/components/manage/Controlpanels/Users/RenderUsers';
 import { Link } from 'react-router-dom';
-import {
-  Helmet,
-  messages,
-  isManager,
-  canAssignGroup,
-} from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import { isManager, canAssignGroup } from '@plone/volto/helpers/User/User';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
 import ploneSVG from '@plone/volto/icons/plone.svg';
-import { find, map, pull, difference } from 'lodash';
+import find from 'lodash/find';
+import map from 'lodash/map';
+import pull from 'lodash/pull';
+import difference from 'lodash/difference';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -49,8 +46,10 @@ import {
   Form,
   Input,
   Button,
+  Dimmer,
   Segment,
   Table,
+  Loader,
 } from 'semantic-ui-react';
 
 /**
@@ -177,6 +176,9 @@ class UsersControlpanel extends Component {
         search: this.state.search,
       });
     }
+    if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
+      this.onDeleteUserSuccess();
+    }
     if (this.props.createRequest.loading && nextProps.createRequest.loaded) {
       this.onAddUserSuccess();
     }
@@ -256,10 +258,6 @@ class UsersControlpanel extends Component {
   onDeleteOk() {
     if (this.state.userToDelete) {
       this.props.deleteUser(this.state.userToDelete.id);
-      this.setState({
-        showDelete: false,
-        userToDelete: undefined,
-      });
     }
   }
 
@@ -272,6 +270,7 @@ class UsersControlpanel extends Component {
     this.setState({
       showDelete: false,
       itemsToDelete: [],
+      userToDelete: undefined,
     });
   }
 
@@ -344,6 +343,24 @@ class UsersControlpanel extends Component {
     );
   }
 
+  /**
+   * Handle Success after deleteUser()
+   *
+   * @returns {undefined}
+   */
+  onDeleteUserSuccess() {
+    this.setState({
+      userToDelete: undefined,
+      showDelete: false,
+    });
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.userDeleted)}
+      />,
+    );
+  }
   /**
    *
    *
@@ -533,6 +550,12 @@ class UsersControlpanel extends Component {
             )}
             content={
               <div className="content">
+                <Dimmer active={this.props?.deleteRequest?.loading}>
+                  <Loader>
+                    <FormattedMessage id="Loading" defaultMessage="Loading." />
+                  </Loader>
+                </Dimmer>
+
                 <ul className="content">
                   <FormattedMessage
                     id="Do you really want to delete the user {username}?"

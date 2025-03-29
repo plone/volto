@@ -15,6 +15,7 @@ Array [
         className="ui basic button"
         onClick={[Function]}
         title="Clear image"
+        type="button"
       >
         <svg
           className="icon"
@@ -84,11 +85,13 @@ Array [
     },
     \\"align\\": {
       \\"title\\": \\"Alignment\\",
-      \\"widget\\": \\"align\\"
+      \\"widget\\": \\"align\\",
+      \\"default\\": \\"center\\"
     },
     \\"size\\": {
       \\"title\\": \\"Image size\\",
-      \\"widget\\": \\"image_size\\"
+      \\"widget\\": \\"image_size\\",
+      \\"default\\": \\"l\\"
     },
     \\"href\\": {
       \\"title\\": \\"Link to\\",

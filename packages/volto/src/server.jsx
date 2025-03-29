@@ -8,7 +8,7 @@ import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { parse as parseUrl } from 'url';
-import { keys } from 'lodash';
+import keys from 'lodash/keys';
 import locale from 'locale';
 import { detect } from 'detect-browser';
 import path from 'path';
@@ -21,22 +21,22 @@ import debug from 'debug';
 import routes from '@root/routes';
 import config from '@plone/volto/registry';
 
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import Html from '@plone/volto/helpers/Html/Html';
+import Api from '@plone/volto/helpers/Api/Api';
+import { persistAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
 import {
-  flattenToAppURL,
-  Html,
-  Api,
-  persistAuthToken,
   toBackendLang,
   toGettextLang,
   toReactIntlLang,
-} from '@plone/volto/helpers';
-import { changeLanguage } from '@plone/volto/actions';
+} from '@plone/volto/helpers/Utils/Utils';
+import { changeLanguage } from '@plone/volto/actions/language/language';
 
 import userSession from '@plone/volto/reducers/userSession/userSession';
 
 import ErrorPage from '@plone/volto/error';
 
-import languages from '@plone/volto/constants/Languages';
+import languages from '@plone/volto/constants/Languages.cjs';
 
 import configureStore from '@plone/volto/store';
 import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
@@ -46,7 +46,9 @@ let locales = {};
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
     const langFileName = toGettextLang(lang);
-    import('@root/../locales/' + langFileName + '.json').then((locale) => {
+    import(
+      /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
+    ).then((locale) => {
       locales = { ...locales, [toReactIntlLang(lang)]: locale.default };
     });
   });
