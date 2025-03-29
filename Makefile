@@ -20,7 +20,7 @@ VALEOPTS        ?=
 # Internal variables.
 SPHINXBUILD     = "$(realpath bin/sphinx-build)"
 SPHINXAUTOBUILD = "$(realpath bin/sphinx-autobuild)"
-DOCS_DIR        = ./docs/source/
+DOCS_DIR        = ./docs/
 BUILDDIR        = ../_build/
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
 VALEFILES       := $(shell find $(DOCS_DIR) -type f -name "*.md" -print)
@@ -56,17 +56,17 @@ help: ## This help message
 start: ## Starts Seven in development mode
 	pnpm start
 
-.PHONY: start-cmsui
-start-cmsui: ## Starts Seven with CMSUI in development mode
-	pnpm start:cmsui
+.PHONY: start-publicui
+start-publicui: ## Starts Seven in development mode (Public UI only)
+	pnpm start:publicui
 
 .PHONY: build
 build: ## Build a production bundle for distribution
 	pnpm build
 
-.PHONY: build-cmsui
-build-cmsui: ## Build a production bundle for distribution with CMSUI
-	pnpm build:cmsui
+.PHONY: build-publicui
+build-publicui: ## Build a production bundle for distribution (Public UI only)
+	pnpm build:publicui
 
 .PHONY: test
 test: ## Run unit tests
@@ -101,7 +101,7 @@ docs-clean:  ## Clean current and legacy docs build directories, and Python virt
 
 .PHONY: docs-news
 docs-news:  ## Create or update the symlink from docs to volto package
-	ln -snf ../../packages/volto/news docs/source/news && echo "Symlink to Volto news created or updated.";
+	ln -snf ../../packages/volto/news docs/news && echo "Symlink to Volto news created or updated.";
 
 .PHONY: docs-html
 docs-html: bin/python docs-news  ## Build html
@@ -186,8 +186,8 @@ storybook-build: ## Build Storybook
 
 .PHONY: release-notes-copy-to-docs
 release-notes-copy-to-docs: ## Copy release notes into documentation
-	cp CHANGELOG.md docs/source/release-notes/index.md
-	git add docs/source/release-notes/index.md
+	cp CHANGELOG.md docs/release-notes/index.md
+	git add docs/release-notes/index.md
 
 ##### Docker containers
 

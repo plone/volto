@@ -1,15 +1,16 @@
 {
   "name": "seven",
+  "version": "0.0.1",
   "private": true,
   "sideEffects": false,
   "type": "module",
   "scripts": {
     "dev": "react-router dev",
-    "dev:cmsui": "REGISTRYCONFIG=registry-cmsui.config.ts react-router dev",
+    "dev:publicui": "REGISTRYCONFIG=registry-publicui.config.ts react-router dev",
     "test": "pnpm exec init-loaders && vitest --coverage",
     "start": "react-router dev",
     "build": "pnpm exec init-loaders && react-router build",
-    "build:cmsui": "pnpm exec init-loaders && REGISTRYCONFIG=registry-cmsui.config.ts react-router build",
+    "build:publicui": "pnpm exec init-loaders && REGISTRYCONFIG=registry-publicui.config.ts react-router build",
     "start:prod": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "typegen": "react-router typegen",
