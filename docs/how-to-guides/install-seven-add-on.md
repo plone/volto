@@ -7,7 +7,7 @@ myst:
     "keywords": "Plone, Plone 6, Volto, create, project, install, Cookieplone"
 ---
 
-(install-cookieplone-label)=
+(install-seven-cookieplone-label)=
 
 # Install Seven with Cookieplone
 
@@ -44,7 +44,7 @@ Plone has both hardware requirements and software prerequisites.
 
 ### Prerequisites for installation
 
-```{include} ../volto/_inc/_install-operating-system.md
+```{include} /volto/_inc/_install-operating-system.md
 ```
 
 -   {term}`uv`
@@ -62,7 +62,7 @@ Plone has both hardware requirements and software prerequisites.
 
 #### nvm
 
-```{include} ../volto/_inc/_install-nvm.md
+```{include} ../_inc/_install-nvm.md
 ```
 
 
@@ -70,19 +70,19 @@ Plone has both hardware requirements and software prerequisites.
 
 #### Node.js
 
-```{include} ../volto/_inc/_install-nodejs.md
+```{include} ../_inc/_install-nodejs.md
 ```
 
 
 #### Make
 
-```{include} ../volto/_inc/_install-make.md
+```{include} ../_inc/_install-make.md
 ```
 
 
 #### Git
 
-```{include} ../volto/_inc/_install-git.md
+```{include} ../_inc/_install-git.md
 ```
 
 

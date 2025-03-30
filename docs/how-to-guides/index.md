@@ -9,7 +9,7 @@ myst:
 
 (how-to-guides-label)=
 
-# How to guides
+# How-to guides
 
 This part of the documentation describes how to perform tasks with Seven.
 
