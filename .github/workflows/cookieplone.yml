@@ -39,18 +39,15 @@ jobs:
           (cd core && git fetch --depth 1 origin ${GITHUB_REF#refs/heads/}:${GITHUB_REF#refs/heads/} && git checkout ${GITHUB_REF#refs/heads/})
           fi
           pnpm i
+          make build-deps
 
-      - name: Run ESlint in the generated package
+      - name: Run linters in the generated package
         working-directory: seven-add-on
-        run: pnpm lint
+        run: make lint
 
-      - name: Run Prettier in the generated package
+      - name: Run formatters in the generated package
         working-directory: seven-add-on
-        run: pnpm prettier
-
-      - name: Run Stylelint in the generated package
-        working-directory: seven-add-on
-        run: pnpm stylelint
+        run: make format
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6

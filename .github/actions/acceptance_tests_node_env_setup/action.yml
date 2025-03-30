@@ -32,7 +32,7 @@ runs:
         path: ~/.cache/Cypress
         key: binary-${{ inputs.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
-    - name: Install Volto dependencies
+    - name: Install dependencies
       shell: bash
       run: make install
 
