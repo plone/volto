@@ -60,7 +60,7 @@ This prerequisite is optional when working only with backend add-ons.
 ```
 
 
-(seven-prerequisites-for-installation-nodejs-label)=
+(seven-prerequisites-nodejs-label)=
 
 ### Node.js
 
