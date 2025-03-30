@@ -1054,9 +1054,6 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.7.3
-      vitest:
-        specifier: 'catalog:'
-        version: 3.0.9(@types/debug@4.1.12)(@types/node@22.10.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)
 
   packages/tooling:
     dependencies:

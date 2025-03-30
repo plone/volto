@@ -30,7 +30,6 @@
   },
   "main": "index.ts",
   "scripts": {
-    "test": "vitest",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
@@ -61,7 +60,6 @@
     "@types/react-dom": "catalog:",
     "release-it": "catalog:",
     "tsconfig": "workspace:*",
-    "typescript": "catalog:",
-    "vitest": "catalog:"
+    "typescript": "catalog:"
   }
 }

@@ -1,0 +1,1 @@
+Added vitest config to not fail if no test is present. @sneridagh
