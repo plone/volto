@@ -56,7 +56,7 @@ Plone has both hardware requirements and software prerequisites.
 
 #### uv
 
-```{include} /_inc/_install-uv.md
+```{include} ../_inc/_install-uv.md
 ```
 
 
