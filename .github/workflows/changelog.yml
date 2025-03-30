@@ -35,7 +35,7 @@ jobs:
             cmsui:
               - 'packages/cmsui/**'
             helpers:
-              - 'packages/providers/**'
+              - 'packages/helpers/**'
             types:
               - 'packages/types/**'
             providers:
