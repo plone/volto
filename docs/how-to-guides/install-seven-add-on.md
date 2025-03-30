@@ -7,7 +7,6 @@ myst:
     "keywords": "Plone, Plone 6, Volto, create, project, install, Cookieplone"
 ---
 
-
 (install-cookieplone-label)=
 
 # Install Seven with Cookieplone
@@ -38,9 +37,6 @@ Plone has both hardware requirements and software prerequisites.
 ### Supported web browsers
 
 ```{include} /volto/_inc/_install-browser-reqs-volto.md
-```
-
-```{include} /_inc/_install-browser-reqs-classic-ui.md
 ```
 
 
