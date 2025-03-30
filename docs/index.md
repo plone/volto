@@ -65,7 +65,7 @@ A contributor is someone who writes code or documentation for the Volto core pac
 ```{toctree}
 :maxdepth: 1
 
-how-to-guides/index
+get-started/index
 development/index
 configuration/index
 theming/index
