@@ -67,26 +67,26 @@ clean: ## Clean development environment
 cypress-install: ## Install Cypress for acceptance tests
 	$(NODEBIN)/cypress install
 
-../registry/dist: $(shell find ../registry/src -type f)
+../../packages/registry/dist: $(shell find ../../packages/registry/src -type f)
 	(cd ../../ && pnpm build:registry)
 
-../components/dist: $(shell find ../components/src -type f)
+../../packages/components/dist: $(shell find .../../packages/components/src -type f)
 	(cd ../../ && pnpm build:components)
 
-../client/dist: $(shell find ../client/src -type f)
+../../packages/client/dist: $(shell find ../../packages/client/src -type f)
 	(cd ../../ && pnpm build:client)
 
-../providers/dist: $(shell find ../providers/src -type f)
+../../packages/providers/dist: $(shell find ../../packages/providers/src -type f)
 	(cd ../../ && pnpm build:providers)
 
-../helpers/dist: $(shell find ../helpers/src -type f)
+../../packages/helpers/dist: $(shell find ../../packages/helpers/src -type f)
 	(cd ../../ && pnpm build:helpers)
 
-../react-router/dist: $(shell find ../react-router/src -type f)
+../../packages/react-router/dist: $(shell find .../../packages/react-router/src -type f)
 	(cd ../../ && pnpm build:react-router)
 
 .PHONY: build-deps
-build-deps: ../registry/dist ../components/dist ../client/dist ../providers/dist ../react-router/dist ../helpers/dist ## Build dependencies
+build-deps: ../../packages/registry/dist ../../packages/components/dist ../../packages/client/dist ../../packages/providers/dist ../../packages/react-router/dist ../../packages/helpers/dist ## Build dependencies
 
 .PHONY: i18n
 i18n: ## Extract and compile translations
