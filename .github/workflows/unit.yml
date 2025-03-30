@@ -40,13 +40,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: pnpm i
-
       - uses: JarvusInnovations/background-action@v1
         name: Start Servers
         with:
           run: |
-            make acceptance-backend-start
+            make ci-acceptance-backend-start &
 
           wait-on: |
             http-get://localhost:55001/plone
