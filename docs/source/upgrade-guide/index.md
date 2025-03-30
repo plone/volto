@@ -65,7 +65,7 @@ These packages have been removed from the Volto repository as they are no longer
 - `@plone/volto-testing`: Testing functionality is now integrated directly in Volto core
 
 
-(upgrade-18-label)=
+(upgrading-to-volto-18-x-x)=
 
 ## Upgrading to Volto 18.x.x
 
