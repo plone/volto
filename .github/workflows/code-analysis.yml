@@ -10,29 +10,10 @@ jobs:
     name: Prettier
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ env.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/acceptance_tests_node_env_setup
         with:
           node-version: ${{ env.node-version }}
-
-      - name: Enable corepack
-        run: npm i -g corepack@latest && corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
 
       - run: pnpm i
 
@@ -44,29 +25,10 @@ jobs:
     name: ESlint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ env.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/acceptance_tests_node_env_setup
         with:
           node-version: ${{ env.node-version }}
-
-      - name: Enable corepack
-        run: npm i -g corepack@latest && corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
 
       - run: pnpm i
 
@@ -75,37 +37,19 @@ jobs:
 
   stylelint:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    name: Stylelint
+    name: Stylelint ${{ matrix.name }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        name: ["@plone/components", "@plone/theming", "@plone/slots"]
     steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ env.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/acceptance_tests_node_env_setup
         with:
           node-version: ${{ env.node-version }}
 
-      - name: Enable corepack
-        run: npm i -g corepack@latest && corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
       - run: pnpm i
 
-      - name: Volto Stylelint check
-        run: pnpm --filter @plone/volto stylelint
-
-      - name: Components Stylelint check
-        run: pnpm --filter @plone/components stylelint
+      - name: Stylelint check ${{ matrix.name }}
+        run: pnpm --filter ${{ matrix.name }} stylelint
