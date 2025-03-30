@@ -60,11 +60,12 @@ A contributor is someone who writes code or documentation for the Volto core pac
 -   {doc}`contributing/index` is for people who want to contribute to Volto.
 
 
-## Table of Contents
+## Table of contents
 
 ```{toctree}
 :maxdepth: 1
 
+how-to-guides/index
 development/index
 configuration/index
 theming/index
