@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "How to install a Seven frontend add-on with Cookieplone"
-    "property=og:description": "How to install a Seven frontend add-on with Cookieplone"
-    "property=og:title": "Install Seven with Cookieplone"
-    "keywords": "Plone, Plone 6, Volto, create, project, install, Cookieplone"
+    "description": "System requirements and prerequisites for Plone"
+    "property=og:description": "System requirements and prerequisites for Plone"
+    "property=og:title": "System requirements and prerequisites for Plone"
+    "keywords": "Plone, Seven, system, requirements, prerequisites, uv, nvm, Node.js, GNU make, git, Cookieplone"
 ---
 
 (install-seven-cookieplone-label)=
@@ -82,3 +82,8 @@ This prerequisite is optional when working only with backend add-ons.
 
 ```{include} ../_inc/_install-git.md
 ```
+
+
+## Next steps
+
+From here, you're ready to {doc}`create a package with only a frontend add-on <create-package>` using {term}`Cookieplone`.

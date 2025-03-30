@@ -1,21 +1,21 @@
 ---
 myst:
   html_meta:
-    "description": "How to guides for Seven"
-    "property=og:description": "How to guides for Seven"
-    "property=og:title": "How to guides for Seven"
-    "keywords": "Seven, Plone, frontend, user interface, React"
+    "description": "How to get started with Plone"
+    "property=og:description": "How to get started with Plone"
+    "property=og:title": "How to get started with Plone"
+    "keywords": "Plone, Seven, frontend, user interface, React"
 ---
 
-(how-to-guides-label)=
+(get-started-label)=
 
-# How-to guides
+# Get started
 
-This part of the documentation describes how to perform tasks with Seven.
+This part of the documentation describes how to get started with Plone.
 
 ```{toctree}
 :maxdepth: 1
 
 system-requirements
-install-seven-add-on
+create-package
 ```

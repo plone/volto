@@ -1,13 +1,13 @@
 ---
 myst:
   html_meta:
-    "description": "How to install a Seven frontend add-on with Cookieplone"
-    "property=og:description": "How to install a Seven frontend add-on with Cookieplone"
-    "property=og:title": "Install Seven with Cookieplone"
-    "keywords": "Plone, Plone 6, Volto, create, project, install, Cookieplone"
+    "description": "How to create a package with only a frontend add-on using Cookieplone"
+    "property=og:description": "How to create a package with only a frontend add-on using Cookieplone"
+    "property=og:title": "How to create a package with only a frontend add-on using Cookieplone"
+    "keywords": "Plone, Plone 6, Seven, create, project, install, Cookieplone"
 ---
 
-(create-a-plone-site-label)=
+(create-package-label)=
 
 # Create a package: frontend add-on only
 
