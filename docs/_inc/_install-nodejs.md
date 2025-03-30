@@ -1,4 +1,4 @@
-1.  Install or update the supported LTS versions of Node.js, then activate the version supported in Volto.
+1.  Install or update the supported LTS versions of Node.js, then activate the version supported in Seven.
 
     ```shell
     nvm install --lts

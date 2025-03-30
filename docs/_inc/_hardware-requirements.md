@@ -3,7 +3,7 @@ The hardware requirements below give a rough estimate of the minimum hardware se
 A single Plone installation is able to run many Plone sites.
 
 -   Installation of the Plone backend and Classic UI frontend requires a minimum of 256 MB of RAM and 2GB of disk swap space.
--   Installation of the Volto frontend requires a minimum of 2GB of RAM.
+-   Installation of the Seven frontend requires a minimum of 2GB of RAM.
 -   After installation, running Plone requires a minimum of 256 MB RAM and 512 MB of disk swap space per Plone site.
     2 GB or more RAM per Plone site is recommended.
 -   Minimum 512 MB hard disk space is required.
