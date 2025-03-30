@@ -60,11 +60,6 @@ Plone has both hardware requirements and software prerequisites.
 ```
 
 
-#### Python
-
-{term}`uv` will download and install the required Python version for your project.
-
-
 #### nvm
 
 ```{include} ../volto/_inc/_install-nvm.md
