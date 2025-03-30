@@ -16,5 +16,6 @@ This part of the documentation describes how to perform tasks with Seven.
 ```{toctree}
 :maxdepth: 1
 
+system-requirements
 install-seven-add-on
 ```
