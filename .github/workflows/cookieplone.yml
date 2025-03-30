@@ -2,7 +2,7 @@ name: Cookieplone
 on: [push, pull_request]
 
 env:
-  PYTHON_VERSION: "3.13"
+  python-version: "3.13"
 
 jobs:
   seven:
@@ -21,10 +21,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: ${{ env.python-version }}
+          enable-cache: false
+
       - name: Generate Cookieplone-based frontend addon
         run: |
-          pipx install cookieplone
-          COOKIEPLONE_REPOSITORY_TAG=seventemplate uvx cookieplone@0.9.5 seven_addon --no-input
+          COOKIEPLONE_REPOSITORY_TAG=seventemplate uvx cookieplone seven_addon --no-input
 
       - name: Install generated package
         working-directory: seven-add-on
