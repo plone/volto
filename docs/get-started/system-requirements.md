@@ -20,7 +20,7 @@ Plone has both hardware requirements and software prerequisites.
 
 ## Hardware requirements
 
-```{include} /_inc/_hardware-requirements.md
+```{include} /volto/_inc/_hardware-requirements.md
 ```
 
 
