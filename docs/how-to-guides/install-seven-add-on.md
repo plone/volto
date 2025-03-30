@@ -12,20 +12,27 @@ myst:
 
 # Install Seven with Cookieplone
 
-This chapter describes how you can create a web application using the {term}`Cookieplone` template.
-
-This template is the recommended way to start a new add-on using the Seven frontend.
+This chapter describes how you can create a web application using {term}`Cookieplone`.
+Cookieplone is the recommended way to create a Plone project as an add-on using the Seven frontend.
 It also includes tools for development and deployment.
 
 ```{seealso}
 For other installation options, see {ref}`get-started-install-label`.
 ```
 
-(create-project-cookieplone-system-requirements)=
+(seven-create-project-cookieplone-system-requirements)=
 
 ## System requirements
 
-Plone and Seven have both hardware requirements and software prerequisites.
+Plone has both hardware requirements and software prerequisites.
+
+
+(seven-create-project-cookieplone-hardware-requirements-label)=
+
+### Hardware requirements
+
+```{include} /_inc/_hardware-requirements.md
+```
 
 
 ### Supported web browsers
@@ -37,15 +44,7 @@ Plone and Seven have both hardware requirements and software prerequisites.
 ```
 
 
-(create-project-cookieplone-hardware-requirements-label)=
-
-### Hardware requirements
-
-```{include} /_inc/_hardware-requirements.md
-```
-
-
-(create-project-cookieplone-prerequisites-for-installation-label)=
+(seven-create-project-cookieplone-prerequisites-for-installation-label)=
 
 ### Prerequisites for installation
 
@@ -76,16 +75,12 @@ Plone and Seven have both hardware requirements and software prerequisites.
 ```
 
 
+(seven-prerequisites-for-installation-nodejs-label)=
+
 #### Node.js
 
 ```{include} ../volto/_inc/_install-nodejs.md
 ```
-
-3.  Enable {term}`corepack` so that Node.js will install {term}`pnpm` as a package manager.
-
-    ```shell
-    npm i -g corepack@latest && corepack enable
-    ```
 
 
 #### Make
@@ -100,20 +95,20 @@ Plone and Seven have both hardware requirements and software prerequisites.
 ```
 
 
-(create-project-cookieplone-generate-the-project-label)=
+(seven-create-project-cookieplone-generate-the-project-label)=
 
 ## Generate the add-on project
 
-After satisfying the prerequisites and having activated an LTS version of Node,
-generate the add-on project.
+After satisfying the prerequisites and having {ref}`activated an LTS version of Node.js <seven-prerequisites-for-installation-nodejs-label>`, generate the add-on project.
 
 ```shell
 COOKIEPLONE_REPOSITORY_TAG=seventemplate uvx cookieplone seven_addon --no-input
 ```
 
+
 ## Install the add-on project
 
-Cookieplone creates a folder with the name of the add-on, in this example, `seven-add-on`.
+Cookieplone creates a folder with the name of the add-on, in this example, {file}`seven-add-on`.
 
 Change your current working directory to {file}`seven-add-on`.
 
@@ -121,7 +116,7 @@ Change your current working directory to {file}`seven-add-on`.
 cd seven-add-on
 ```
 
-To install the add-on setup, use the following command.
+To install the add-on, use the following command.
 
 ```shell
 make install
