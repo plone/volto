@@ -2,7 +2,7 @@ name: Cookieplone
 on: [push, pull_request]
 
 env:
-  PYTHON_VERSION: "3.13"
+  python-version: "3.13"
 
 jobs:
   seven:
@@ -16,16 +16,20 @@ jobs:
         node-version: [22.x]
     steps:
       - uses: actions/checkout@v4
-      - run: echo "Current branch is ${GITHUB_REF#refs/heads/}"
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: ${{ env.python-version }}
+          enable-cache: false
+
       - name: Generate Cookieplone-based frontend addon
         run: |
-          pipx install cookieplone
-          COOKIEPLONE_REPOSITORY_TAG=seventemplate pipx run --no-cache cookieplone seven_addon --no-input
+          COOKIEPLONE_REPOSITORY_TAG=seventemplate uvx cookieplone seven_addon --no-input
 
       - name: Install generated package
         working-directory: seven-add-on
@@ -35,18 +39,15 @@ jobs:
           (cd core && git fetch --depth 1 origin ${GITHUB_REF#refs/heads/}:${GITHUB_REF#refs/heads/} && git checkout ${GITHUB_REF#refs/heads/})
           fi
           pnpm i
+          make build-deps
 
-      - name: Run ESlint in the generated package
+      - name: Run linters in the generated package
         working-directory: seven-add-on
-        run: pnpm lint
+        run: make lint
 
-      - name: Run Prettier in the generated package
+      - name: Run formatters in the generated package
         working-directory: seven-add-on
-        run: pnpm prettier
-
-      - name: Run Stylelint in the generated package
-        working-directory: seven-add-on
-        run: pnpm stylelint
+        run: make format
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6

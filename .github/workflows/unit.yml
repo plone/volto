@@ -5,9 +5,29 @@ env:
   node-version: 22.x
 
 jobs:
-  registry:
+  unitTests:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    name: '@plone/registry'
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        name: ["@plone/registry", "@plone/components", "@plone/helpers"]
+        node-version: [22.x]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/acceptance_tests_node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - run: pnpm i
+
+      - name: Run unit tests ${{ matrix.name }}
+        run: pnpm --filter ${{ matrix.name }} test
+
+  client:
+    name: '@plone/client'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -15,168 +35,45 @@ jobs:
         node-version: [22.x]
     steps:
       - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/acceptance_tests_node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Enable corepack
-        run: npm i -g corepack@latest && corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
+      - uses: JarvusInnovations/background-action@v1
+        name: Start Servers
         with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          run: |
+            make ci-acceptance-backend-start &
 
-      - run: pnpm i
+          wait-on: |
+            http-get://localhost:55001/plone
 
-      - name: Run unit tests @plone/registry
-        run: pnpm --filter @plone/registry test
+          tail: true
 
-  components:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    name: '@plone/components'
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-    steps:
-      - uses: actions/checkout@v4
+          log-output-resume: stderr
 
-      # node setup
-      - name: Use Node.js ${{ env.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.node-version }}
+          wait-for: 10m
 
-      - name: Enable corepack
-        run: npm i -g corepack@latest && corepack enable
+          log-output: stderr,stdout
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+          log-output-if: failure
 
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - run: pnpm i
-
-      - name: Run unit tests @plone/components
-        run: pnpm --filter @plone/components test
-
-  client:
-    name: '@plone/client'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Use Node.js ${{ env.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.node-version }}
-
-      - name: Enable corepack
-        run: npm i -g corepack@latest && corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - run: pnpm i
-
-      - run: make acceptance-server-detached-start
-
-      - run: npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone && pnpm --filter @plone/client test
-        working-directory: packages/client
-
-      - run: make acceptance-server-detached-stop
-
-  helpers:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    name: '@plone/helpers'
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-    steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ env.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.node-version }}
-
-      - name: Enable corepack
-        run: npm i -g corepack@latest && corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - run: pnpm i
-
-      - name: Run unit tests @plone/helpers
-        run: pnpm --filter @plone/helpers test
+      - run: pnpm --filter @plone/client test
 
   seven:
-    name: 'seven'
+    name: 'Seven'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [22.x]
     steps:
       - uses: actions/checkout@v4
-
-      - name: Use Node.js ${{ env.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/acceptance_tests_node_env_setup
         with:
-          node-version: ${{ env.node-version }}
-
-      - name: Enable corepack
-        run: npm i -g corepack@latest && corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node-version: ${{ matrix.node-version }}
 
       - run: pnpm i
 
