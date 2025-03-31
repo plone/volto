@@ -22,4 +22,12 @@ describe('Title Block Tests', () => {
       .click()
       .should('have.css', 'outline', 'rgba(0, 0, 0, 0.87) none 0px');
   });
+
+  it('Title block has focus when editing the page a second time', () => {
+    cy.get('.ui.button.cancel').click();
+    cy.get('.toolbar-actions .edit').click();
+    cy.get('.block-editor-title [role=textbox]').should('be.focused');
+    cy.get('.block-editor-title [role=textbox]').type('{enter}');
+    cy.get('.block-editor-title [role=textbox]').should('not.be.focused');
+  });
 });
