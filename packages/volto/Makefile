@@ -14,7 +14,7 @@ MAKEFLAGS+=--no-builtin-rules
 include ../../variables.mk
 
 # Allow setting the language for backend-docker-start. Default is `en`.
-LANGUAGE ?=en
+SITE_DEFAULT_LANGUAGE ?=en
 
 # Recipe snippets for reuse
 
@@ -107,7 +107,7 @@ release-notes-copy-to-docs: ## Copy release notes into documentation
 
 .PHONY: backend-docker-start
 backend-docker-start: ## Starts a Docker-based backend for development
-	docker run -it --rm --name=backend -p 8080:8080 -v volto-backend-data:/data -e SITE=Plone -e ADDONS='$(KGS)' -e LANGUAGE='$(LANGUAGE)' $(DOCKER_IMAGE)
+	docker run -it --rm --name=backend -p 8080:8080 -v volto-backend-data:/data -e SITE=Plone -e ADDONS='$(KGS)' -e SITE_DEFAULT_LANGUAGE='$(SITE_DEFAULT_LANGUAGE)' $(DOCKER_IMAGE)
 
 .PHONY: frontend-docker-start
 frontend-docker-start: ## Starts a Docker-based frontend for development
