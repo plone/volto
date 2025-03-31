@@ -29,7 +29,7 @@ const messages = defineMessages({
     defaultMessage: 'Activate and deactivate add-ons in the lists below.',
   },
   addAddons: {
-    id: 'Add Add-ons',
+    id: 'Add Addons',
     defaultMessage:
       'To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see',
   },
@@ -87,7 +87,7 @@ const messages = defineMessages({
     defaultMessage: 'No installed add-ons.',
   },
   updateInstalledAddons: {
-    id: 'Update installed add-ons:',
+    id: 'Update installed addons:',
     defaultMessage: 'Update installed add-ons:',
   },
   uninstall: {
@@ -111,27 +111,27 @@ const messages = defineMessages({
     defaultMessage: 'Error',
   },
   addonUpgraded: {
-    id: 'Add-on upgraded succesfuly',
+    id: 'Addon upgraded succesfuly',
     defaultMessage: 'Add-on upgraded succesfuly',
   },
   addonNotUpgraded: {
-    id: 'Add-on could not be upgraded',
+    id: 'Addon could not be upgraded',
     defaultMessage: 'Add-on could not be upgraded',
   },
   addonInstalled: {
-    id: 'Add-on installed succesfuly',
+    id: 'Addon installed succesfuly',
     defaultMessage: 'Add-on installed successfully',
   },
   addonNotInstalled: {
-    id: 'Add-on could not be installed',
+    id: 'Addon could not be installed',
     defaultMessage: 'Add-on could not be installed',
   },
   addonUninstalled: {
-    id: 'Add-on uninstalled succesfuly',
+    id: 'Addon uninstalled succesfuly',
     defaultMessage: 'Add-on uninstalled successfully',
   },
   addonNotUninstalled: {
-    id: 'Add-on could not be uninstalled',
+    id: 'Addon could not be uninstalled',
     defaultMessage: 'Add-on could not be uninstalled',
   },
   upgradableAddons: {
@@ -290,7 +290,7 @@ const AddonsControlpanel = (props: Props) => {
                 />
               </h2>
               <FormattedMessage
-                id="Add Add-ons"
+                id="Add Addons"
                 defaultMessage="To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
               />
               &nbsp;

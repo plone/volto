@@ -239,36 +239,6 @@ msgstr "Complementos"
 msgid "Add-on Configuration"
 msgstr "Configuración de Complementos"
 
-#. Default: "Add-on could not be installed"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on could not be installed"
-msgstr "No se pudo instalar el complemento"
-
-#. Default: "Add-on could not be uninstalled"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on could not be uninstalled"
-msgstr "No se pudo desinstalar el complemento"
-
-#. Default: "Add-on could not be upgraded"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on could not be upgraded"
-msgstr "No se pudo actualizar el complemento"
-
-#. Default: "Add-on installed successfully"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on installed succesfuly"
-msgstr "Complemento instalado correctamente"
-
-#. Default: "Add-on uninstalled successfully"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on uninstalled succesfuly"
-msgstr "Complemento desinstalado con éxito"
-
-#. Default: "Add-on upgraded succesfuly"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on upgraded succesfuly"
-msgstr "Complemento actualizado con éxito"
-
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons"
@@ -288,6 +258,36 @@ msgstr "Añadido"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
 msgstr "Fecha adicional"
+
+#. Default: "Add-on could not be installed"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon could not be installed"
+msgstr ""
+
+#. Default: "Add-on could not be uninstalled"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon could not be uninstalled"
+msgstr ""
+
+#. Default: "Add-on could not be upgraded"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon could not be upgraded"
+msgstr ""
+
+#. Default: "Add-on installed successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon installed succesfuly"
+msgstr ""
+
+#. Default: "Add-on uninstalled successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon uninstalled succesfuly"
+msgstr ""
+
+#. Default: "Add-on upgraded succesfuly"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon upgraded succesfuly"
+msgstr ""
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
@@ -4168,8 +4168,8 @@ msgstr "Actualizar Usuario"
 
 #. Default: "Update installed add-ons:"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Update installed add-ons:"
-msgstr "Actualizar complementos instalados:"
+msgid "Update installed addons:"
+msgstr ""
 
 #. Default: "Updates available"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel

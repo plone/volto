@@ -15,7 +15,7 @@ import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   no_addons: {
-    id: 'No add-ons found',
+    id: 'No addons found',
     defaultMessage: 'No add-ons found',
   },
 });

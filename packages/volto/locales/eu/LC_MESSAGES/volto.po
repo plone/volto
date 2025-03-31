@@ -239,36 +239,6 @@ msgstr "Produktuak"
 msgid "Add-on Configuration"
 msgstr "Produktuen konfigurazioa"
 
-#. Default: "Add-on could not be installed"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on could not be installed"
-msgstr "Produktu gehigarria ezin izan da instalatu"
-
-#. Default: "Add-on could not be uninstalled"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on could not be uninstalled"
-msgstr "Produktu gehigarria ezin izan da kendu"
-
-#. Default: "Add-on could not be upgraded"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on could not be upgraded"
-msgstr "Produktu gehigarria ezin izan da eguneratu"
-
-#. Default: "Add-on installed successfully"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on installed succesfuly"
-msgstr "Produktu gehigarria ondo instalatu da"
-
-#. Default: "Add-on uninstalled successfully"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on uninstalled succesfuly"
-msgstr "Produktu gehigarria ondo kendu da"
-
-#. Default: "Add-on upgraded succesfuly"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on upgraded succesfuly"
-msgstr "Produktu gehigarria ondo eguneratu da"
-
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons"
@@ -288,6 +258,36 @@ msgstr "Ondo gehitu da"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
 msgstr "Data gehigarria"
+
+#. Default: "Add-on could not be installed"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon could not be installed"
+msgstr ""
+
+#. Default: "Add-on could not be uninstalled"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon could not be uninstalled"
+msgstr ""
+
+#. Default: "Add-on could not be upgraded"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon could not be upgraded"
+msgstr ""
+
+#. Default: "Add-on installed successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon installed succesfuly"
+msgstr ""
+
+#. Default: "Add-on uninstalled successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon uninstalled succesfuly"
+msgstr ""
+
+#. Default: "Add-on upgraded succesfuly"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon upgraded succesfuly"
+msgstr ""
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
@@ -4168,8 +4168,8 @@ msgstr ""
 
 #. Default: "Update installed add-ons:"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Update installed add-ons:"
-msgstr "Eguneratu instalatutako gehigarriak"
+msgid "Update installed addons:"
+msgstr ""
 
 #. Default: "Updates available"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel

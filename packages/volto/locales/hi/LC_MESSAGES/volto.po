@@ -232,36 +232,6 @@ msgstr "एड-ऑन"
 msgid "Add-on Configuration"
 msgstr "एड-ऑन कॉन्फ़िगरेशन"
 
-#. Default: "Add-on could not be installed"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on could not be installed"
-msgstr "अड-ऑन स्थापित नहीं किया जा सका"
-
-#. Default: "Add-on could not be uninstalled"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on could not be uninstalled"
-msgstr "अड-ऑन को अनइंस्टॉल नहीं किया जा सका"
-
-#. Default: "Add-on could not be upgraded"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on could not be upgraded"
-msgstr "एड-ऑन को अपग्रेड नहीं किया जा सका"
-
-#. Default: "Add-on installed successfully"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on installed succesfuly"
-msgstr "एडऑन सफलतापूर्वक स्थापित किया गया"
-
-#. Default: "Add-on uninstalled successfully"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on uninstalled succesfuly"
-msgstr "एडऑन को सफलतापूर्वक अनइंस्टॉल किया गया"
-
-#. Default: "Add-on upgraded succesfuly"
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add-on upgraded succesfuly"
-msgstr "एडऑन को सफलतापूर्वक अपग्रेड किया गया"
-
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons"
@@ -281,6 +251,36 @@ msgstr "जोड़ा"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
 msgstr "अतिरिक्त तिथि"
+
+#. Default: "Add-on could not be installed"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon could not be installed"
+msgstr ""
+
+#. Default: "Add-on could not be uninstalled"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon could not be uninstalled"
+msgstr ""
+
+#. Default: "Add-on could not be upgraded"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon could not be upgraded"
+msgstr ""
+
+#. Default: "Add-on installed successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon installed succesfuly"
+msgstr ""
+
+#. Default: "Add-on uninstalled successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon uninstalled succesfuly"
+msgstr ""
+
+#. Default: "Add-on upgraded succesfuly"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon upgraded succesfuly"
+msgstr ""
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
@@ -4161,8 +4161,8 @@ msgstr "उपयोगकर्ता अपडेट करें"
 
 #. Default: "Update installed add-ons:"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Update installed add-ons:"
-msgstr "इंस्टॉल किए गए एडऑन को अपडेट करें:"
+msgid "Update installed addons:"
+msgstr ""
 
 #. Default: "Updates available"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
