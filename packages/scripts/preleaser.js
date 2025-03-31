@@ -13,7 +13,7 @@ function main() {
   const packagesToRelease = [];
   map(
     glob.sync('**/news/*.*(breaking|feature|bugfix|documentation|internal)', {
-      ignore: ['**/node_modules/**'],
+      ignore: ['**/node_modules/**', 'docs/**'],
     }),
     (filename) => {
       const packageDir = filename.split('/').splice(0, 2).join('/');
