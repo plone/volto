@@ -155,26 +155,9 @@ Both configurations are merged in a way that the keys of the configuration provi
 For more background on testing add-ons in Volto 18, see {doc}`../../contributing/testing`, since the developer experience has been unified for both add-ons and Volto core.
 ```
 
-### Acceptance tests
 
-Use {term}`Cypress` to run acceptance tests.
+## Acceptance tests
 
-To start the backend server, run the following command.
-This will start a Docker container with a vanilla Plone backend.
-
-```shell
-make acceptance-backend-start
-```
-
-To start the frontend acceptance server in development mode, run the following command.
-
-```shell
-make acceptance-frontend-dev-start
-```
-
-You can run the frontend in development mode, so you can develop while writing tests.
-Run the following command to run Cypress tests afterward.
-
-```shell
-make acceptance-test
+```{seealso}
+See the chapter {doc}`../../contributing/acceptance-tests`.
 ```
