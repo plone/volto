@@ -6,30 +6,42 @@ myst:
     "property=og:title": "Test add-ons in Volto 18"
     "keywords": "Volto, Plone, testing, test, CI, add-ons"
 ---
-# Test add-ons in Volto 18 
+
+# Test add-ons in Volto 18
 
 ```{warning}
 This guide assumes that you've used {term}`Cookieplone` to create your add-on boilerplate.
 ```
 
-# Using Vitest in your Volto add-on
+This chapter describes how to migrate your tests from Jest to [Vitest](https://vitest.dev/guide/).
+Although Volto core now uses Vitest as its unit test runner, projects generated through {term}`Cookieplone` use Jest.
+Cookieplone will have a support for Vitest in the near future.
 
-Volto core now uses [Vitest](https://vitest.dev/guide/) as it's unit test runner.
-If you want to migrate your add-on tests to Vitest, follow these guidelines.
+```{versionadded} Volto 18.TBD.TBD, current release at 18.10.1
+Volto core now uses Vitest for its unit tests.
+```
 
-## Install vitest to your add-on
+```{deprecated} Volto 18.TBD.TBD, current release at 18.10.1
+Volto core has migrated from Jest to Vitest for unit tests.
+Jest is now deprecated.
+```
 
-Run the following command to add Vitest and required dependencies.
 
-```console
+## Install Vitest
+
+Run the following command to add Vitest and required dependencies to your development environment.
+
+```shell
 pnpm add -D vitest @testing-library/react jsdom
 ```
 
-## Configuring Your Addon to Use Vitest
 
-Create a {file}`vitest.config.{js/ts}` file inside your addon to configure Vitest.
-Here is boilerplate config file for vitest.
+## Configure your add-on to use Vitest
 
+Create a {file}`vitest.config.js` or {file}`vitest.config.ts` file inside your add-on to configure Vitest.
+The following code is configuration boilerplate for Vitest.
+
+{emphasize-lines="8-9" lineno-start=1}
 ```javascript
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
@@ -38,12 +50,12 @@ import path from 'path';
 export default defineConfig({
   resolve: {
     alias: {
-      //'@plone/volto': path.resolve(__dirname, 'src'), //Add paths accordingly
-      //'promise-file-reader': require.resolve('promise-file-reader')  //Add to identify dependency from package
+      // '@plone/volto': path.resolve(__dirname, 'src'), // Add paths accordingly
+      // 'promise-file-reader': require.resolve('promise-file-reader') // Add to identify dependency from package
     },
   },
   test: {
-    globals: true, // Use global test functions like `describe`, `it`, and `expect`
+    globals: true, // Use global test functions such as `describe`, `it`, and `expect`
     environment: 'jsdom', // Browser-like environment for React testing
     setupFiles: './setupTests.js', // Runs setup before tests
     coverage: {
@@ -61,16 +73,23 @@ export default defineConfig({
     css: true,
   },
 });
-
 ```
 
-If your addon previously relied on Jest’s configuration via RAZZLE_JEST_CONFIG, you can remove that, as Vitest does not use it.
+If you uncomment the emphasized lines 8 and 9 above, then you'll need to add two aliases.
+The first alias resolves the paths of your files that you want to test.
+The second alias resolves the `promise-file-reader` dependency.
+
+```{tip}
+If your add-on previously relied on Jest's configuration via the `RAZZLE_JEST_CONFIG` environment variable, you can now remove it, as Vitest does not use it.
+```
+
 
 ## Create setup file for Vitest
 
-Create a {file}`setupTests.js` file for Vitest and you can use the following boilerplate. 
+Create a test setup {file}`setupTests.js` file for Vitest.
+The following code is boilerplate setup for Vitest.
 
-```javascript 
+```javascript
 import '@testing-library/jest-dom';
 import { expect, describe, it, vi } from 'vitest';
 
@@ -81,7 +100,7 @@ global.expect = expect;
 global.vi = vi;
 
 // Stub the global fetch API to prevent actual network requests in tests
-vi.stubGlobal('fetch', vi.fn(() => 
+vi.stubGlobal('fetch', vi.fn(() =>
   Promise.resolve({
     json: () => Promise.resolve({}),
     text: () => Promise.resolve(''),
@@ -91,7 +110,8 @@ vi.stubGlobal('fetch', vi.fn(() =>
 // Add additional configurations as needed
 ```
 
-## Update package.json to use Vitest
+
+## Update {file}`package.json` to use Vitest
 
 To switch your project from Jest to Vitest, update the {file}`package.json` file.
 
@@ -102,14 +122,31 @@ To switch your project from Jest to Vitest, update the {file}`package.json` file
   "test:coverage": "vitest --coverage"
 }
 ```
-## Migrating tests to use Vitest
 
-For more background on testing add-ons using vitest and to migrate tests to vitest, see {doc}`../../contributing/testing`.
 
-## Using Jiti in add-on testing
+## Run tests in Vitest
 
-[Jiti](https://www.npmjs.com/package/jiti) is module loader for JavaScript and TypeScript that allows you to import and execute TypeScript files or ESM modules without requiring a build step. 
+After completing the foregoing steps, you can use Vitest.
+To run your tests, execute the following command.
+
+```shell
+make test
+```
+
+
+## Additional Vitest information
+
+```{seealso}
+For a general guide for how to use Vitest and migrate tests from Jest to Vitest, see {doc}`../../contributing/testing`.
+```
+
+
+## `jiti` for add-on testing
+
+[`jiti`](https://www.npmjs.com/package/jiti) is a module loader for JavaScript and TypeScript that allows you to import and execute TypeScript files or ESM modules without requiring a build step.
 It is particularly useful in Volto for dynamically loading add-ons and their configurations.
+
+To use `jiti`, see the following code example.
 
 ```javascript
 import jiti from 'jiti';
@@ -117,36 +154,30 @@ import jiti from 'jiti';
 const _import = jiti(import.meta.url, { esmResolve: true });
 ```
 
-In Vitest, `require()` is not supported, and `import()` may sometimes fail. In such cases, Jiti provides a reliable alternative for module resolution and execution.
-In Volto, Jiti is used in the test file {file}`packages/volto/__tests__/create-addons-loader.test.js` to handle dynamic imports for add-ons efficiently.
+In Vitest, `require()` is not supported, and `import()` may sometimes fail.
+In such cases, `jiti` provides a reliable alternative for module resolution and execution.
+In Volto, `jiti` is used in the test file {file}`packages/volto/__tests__/create-addons-loader.test.js` to handle dynamic imports for add-ons efficiently.
 
 
-# Using Jest in your Volto add-on 
+## Jest for Volto add-ons
 
-Volto previously used {term}`Jest` as its unit testing framework. If your add-on is still using Jest, Volto have ensured backward compatibility.
+Volto previously used {term}`Jest` as its unit testing framework.
+If your add-on still uses Jest, Volto provides backward compatibility.
 
-While Volto Core has migrated to Vitest, we have retained the Jest configuration, allowing you to continue running your existing Jest tests without issues. This means:
+While Volto core has migrated to Vitest, it retained its Jest configuration, allowing you to continue running your existing Jest tests in your add-on without issues.
 
-You can still use Jest for testing your add-ons.
+This support lets you migrate your tests from Jest to Vitest at your convenience.
 
-Volto Core runs on Vitest, but Jest support remains available.
 
-You have the option to migrate your tests to Vitest at your convenience.
-
-Run the following command.
-
-```shell
-make test
-```
-
-## Override Jest configuration
+### Override Jest configuration
 
 In {term}`CI` or for testing add-ons, it's useful to modify Jest's {file}`package.json` configuration file.
 You can use the file {file}`jest.config.js` provided by the boilerplate.
 The test command will load it and apply it.
 
 ```{warning}
-Do not modify the existing keys in there if you don't know what you are doing, since some of them are required for the tests to run properly in the Volto context.
+Do not modify the existing keys in there if you don't know what you're doing.
+Some of them are required for the tests to run properly in the Volto context.
 ```
 
 Both configurations are merged in a way that the keys of the configuration provided override the initial {file}`package.json` configuration, either in Volto or in your projects.

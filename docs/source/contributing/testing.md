@@ -20,7 +20,7 @@ The popular `@testing-library/react` is also available for writing your tests.
 For every feature or component, a unit test is mandatory in Volto core.
 
 ```{versionadded} Volto 18.TBD.TBD, current release at 18.10.1
-Volto core unit tests now use Vitest.
+Volto core now uses Vitest for its unit tests.
 ```
 
 ```{deprecated} Volto 18.TBD.TBD, current release at 18.10.1
@@ -50,7 +50,8 @@ Vitest tests must pass locally before you push commits to the remote Volto repos
 Vitest has several modes to run unit tests locally.
 You can run Vitest in watch mode, run only failed tests, or run specific tests only.
 
-By default, Vitest runs in watch mode when you execute the following command. 
+By default, Vitest runs in watch mode when you execute the following command.
+
 This makes it faster and easier to test code changes.
 
 ```shell
@@ -89,7 +90,7 @@ The following guidelines for writing tests using Vitest will help you migrate yo
 Vitest shares a similar syntax with Jest, as both use Mocha/Chai, but there are notable differences in handling mocks and other features.
 
 Similar to Jest, Vitest provides functions such as `it`, `expect`, `describe`, `test`, and `vi`.
-These properties are globally declared in the {file}`test-setup-globals.js` file, making them available throughout the Volto core without requiring explicit imports in individual test files. 
+These properties are globally declared in the {file}`test-setup-globals.js` file, making them available throughout the Volto core without requiring explicit imports in individual test files.
 
 
 ### Differences in mocks
