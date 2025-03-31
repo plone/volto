@@ -57,6 +57,9 @@ describe('FormValidation', () => {
     });
 
     it('required - validates missing', () => {
+      const validationErrorMessages = [messages.required.defaultMessage];
+      validationErrorMessages.title = 'Username';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema,
@@ -64,7 +67,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        username: [messages.required.defaultMessage],
+        username: validationErrorMessages,
       });
     });
 
@@ -82,6 +85,10 @@ describe('FormValidation', () => {
         },
         required: ['age'],
       };
+
+      const validationErrorMessages = [messages.required.defaultMessage];
+      validationErrorMessages.title = 'age';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -89,7 +96,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        age: [messages.required.defaultMessage],
+        age: validationErrorMessages,
       });
       expect(
         FormValidation.validateFieldsPerFieldset({
@@ -101,6 +108,9 @@ describe('FormValidation', () => {
     });
 
     it('email - validates incorrect', () => {
+      const validationErrorMessages = [messages.isValidEmail.defaultMessage];
+      validationErrorMessages.title = 'Email';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema,
@@ -108,7 +118,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        email: [messages.isValidEmail.defaultMessage],
+        email: validationErrorMessages,
       });
     });
 
@@ -124,14 +134,18 @@ describe('FormValidation', () => {
     });
 
     it('url - validates incorrect url', () => {
-      formData.url = 'foo';
+      const validationErrorMessages = [messages.isValidURL.defaultMessage];
+      validationErrorMessages.title = 'url';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema,
-          formData,
+          formData: { url: 'foo', username: 'test username' },
           formatMessage,
         }),
-      ).toEqual({ url: [messages.isValidURL.defaultMessage] });
+      ).toEqual({
+        url: validationErrorMessages,
+      });
     });
 
     it('url - validates', () => {
@@ -180,6 +194,9 @@ describe('FormValidation', () => {
         required: [],
       };
 
+      const validationErrorMessages = [messages.isValidURL.defaultMessage];
+      validationErrorMessages.title = 'Default field';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -190,7 +207,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.isValidURL.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -213,6 +230,13 @@ describe('FormValidation', () => {
         dependencies: { fieldType: 'customfieldtype' },
         method: () => 'Fails',
       });
+
+      const validationErrorMessages = [
+        'Fails',
+        messages.isValidURL.defaultMessage,
+      ];
+      validationErrorMessages.title = 'Default field';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -223,7 +247,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: ['Fails', messages.isValidURL.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -243,6 +267,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.isValidURL.defaultMessage];
+      validationErrorMessages.title = 'Default field';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -253,7 +281,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.isValidURL.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -269,6 +297,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.minLength.defaultMessage];
+      validationErrorMessages.title = 'password';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -279,7 +311,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.minLength.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -295,6 +327,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.maxLength.defaultMessage];
+      validationErrorMessages.title = 'password';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -305,7 +341,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.maxLength.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -321,6 +357,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.pattern.defaultMessage];
+      validationErrorMessages.title = 'password';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -331,7 +371,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.pattern.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -371,6 +411,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.isNumber.defaultMessage];
+      validationErrorMessages.title = 'Number field';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -382,7 +426,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.isNumber.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -449,6 +493,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.minimum.defaultMessage];
+      validationErrorMessages.title = 'Number field';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -459,7 +507,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.minimum.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -476,6 +524,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.maximum.defaultMessage];
+      validationErrorMessages.title = 'Number field';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -486,7 +538,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.maximum.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -502,6 +554,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.isInteger.defaultMessage];
+      validationErrorMessages.title = 'Integer field';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -512,7 +568,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.isInteger.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -529,6 +585,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.minimum.defaultMessage];
+      validationErrorMessages.title = 'Integer field';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -539,7 +599,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.minimum.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -556,6 +616,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.maximum.defaultMessage];
+      validationErrorMessages.title = 'Integer field';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -566,7 +630,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.maximum.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -584,6 +648,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.minLength.defaultMessage];
+      validationErrorMessages.title = 'password';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -591,7 +659,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        password: [messages.minLength.defaultMessage],
+        password: validationErrorMessages,
       });
     });
 
@@ -615,6 +683,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.minLength.defaultMessage];
+      validationErrorMessages.title = 'description';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -625,7 +697,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        description: [messages.minLength.defaultMessage],
+        description: validationErrorMessages,
       });
     });
 
@@ -643,6 +715,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.maxLength.defaultMessage];
+      validationErrorMessages.title = 'password';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -650,7 +726,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        password: [messages.maxLength.defaultMessage],
+        password: validationErrorMessages,
       });
     });
 
@@ -674,6 +750,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.maxLength.defaultMessage];
+      validationErrorMessages.title = 'description';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -684,7 +764,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        description: [messages.maxLength.defaultMessage],
+        description: validationErrorMessages,
       });
     });
 
@@ -701,6 +781,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.maxItems.defaultMessage];
+      validationErrorMessages.title = 'Array field';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -711,7 +795,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.maxItems.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -728,6 +812,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.minItems.defaultMessage];
+      validationErrorMessages.title = 'Array field';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -738,7 +826,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.minItems.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -755,6 +843,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.uniqueItems.defaultMessage];
+      validationErrorMessages.title = 'Array field';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -765,7 +857,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.uniqueItems.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -822,6 +914,10 @@ describe('FormValidation', () => {
         dependencies: { format: 'url' },
         method: urlValidator,
       });
+
+      const validationErrorMessages = [messages.isValidURL.defaultMessage];
+      validationErrorMessages.title = 'Default field';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -832,7 +928,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.isValidURL.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -888,6 +984,10 @@ describe('FormValidation', () => {
         dependencies: { format: 'url' },
         method: urlValidator,
       });
+
+      const validationErrorMessages = [messages.isValidURL.defaultMessage];
+      validationErrorMessages.title = 'Default field';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -898,7 +998,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.isValidURL.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -958,6 +1058,10 @@ describe('FormValidation', () => {
         },
         method: urlValidator,
       });
+
+      const validationErrorMessages = [messages.isValidURL.defaultMessage];
+      validationErrorMessages.title = 'Default field';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -968,7 +1072,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.isValidURL.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
 
@@ -985,6 +1089,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.startEventRange.defaultMessage];
+      validationErrorMessages.title = 'Start date';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: contentTypeSchema,
@@ -995,7 +1103,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        start: [messages.startEventRange.defaultMessage],
+        start: validationErrorMessages,
       });
     });
 
@@ -1012,6 +1120,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
+
+      const validationErrorMessages = [messages.endEventRange.defaultMessage];
+      validationErrorMessages.title = 'End date';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: contentTypeSchema,
@@ -1022,7 +1134,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        end: [messages.endEventRange.defaultMessage],
+        end: validationErrorMessages,
       });
     });
 
@@ -1042,6 +1154,10 @@ describe('FormValidation', () => {
         dependencies: { blockType: 'slider', fieldName: 'customField' },
         method: urlValidator,
       });
+
+      const validationErrorMessages = [messages.isValidURL.defaultMessage];
+      validationErrorMessages.title = 'Default field';
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -1053,7 +1169,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        customField: [messages.isValidURL.defaultMessage],
+        customField: validationErrorMessages,
       });
     });
   });

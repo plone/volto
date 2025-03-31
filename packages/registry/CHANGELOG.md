@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 2.5.0 (2025-03-31)
+
+### Feature
+
+- Allow to override slots with no predicate with the same name. @sneridagh [#6887](https://github.com/plone/volto/issues/6887)
+
+### Internal
+
+- Fix typings for Vite Plugin. @sneridagh [#6733](https://github.com/plone/volto/issues/6733)
+
 ## 2.4.1 (2025-02-08)
 
 ### Internal

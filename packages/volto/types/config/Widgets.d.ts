@@ -13,6 +13,7 @@ export namespace widgetMapping {
         export { TextareaWidget as textarea };
         export { DatetimeWidget as datetime };
         export { DatetimeWidget as date };
+        export { TimeWidget as time };
         export { PasswordWidget as password };
         export { FileWidget as file };
         export { ImageWidget as image };
@@ -36,6 +37,10 @@ export namespace widgetMapping {
         export { ColorPickerWidget as color_picker };
         export { SelectWidget as select };
         export { SchemaWidget as schema };
+        export { StaticTextWidget as static_text };
+        export { HiddenWidget as hidden };
+        export { RadioGroupWidget as radio_group };
+        export { CheckboxGroupWidget as checkbox_group };
     }
     export let vocabulary: {
         'plone.app.vocabularies.Catalog': import("@loadable/component").LoadableComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>>;
@@ -86,6 +91,8 @@ export namespace widgetMapping {
             export { TitleViewWidget as title };
             export { UrlViewWidget as url };
             export { InternalUrlWidget as internal_url };
+            export { StaticTextViewWidget as static_text };
+            export { HiddenViewWidget as hidden };
             export function object(): string;
         }
         export { widget_1 as widget };
@@ -109,6 +116,7 @@ import { RegistryImageWidget } from '@plone/volto/components/manage/Widgets';
 import { TextWidget } from '@plone/volto/components/manage/Widgets';
 import { TextareaWidget } from '@plone/volto/components/manage/Widgets';
 import { DatetimeWidget } from '@plone/volto/components/manage/Widgets';
+import { TimeWidget } from '@plone/volto/components/manage/Widgets';
 import { PasswordWidget } from '@plone/volto/components/manage/Widgets';
 import { FileWidget } from '@plone/volto/components/manage/Widgets';
 import ImageWidget from '@plone/volto/components/manage/Widgets/ImageWidget';
@@ -129,6 +137,10 @@ import { SelectAutoComplete } from '@plone/volto/components/manage/Widgets';
 import { ColorPickerWidget } from '@plone/volto/components/manage/Widgets';
 import { SelectWidget } from '@plone/volto/components/manage/Widgets';
 import { SchemaWidget } from '@plone/volto/components/manage/Widgets';
+import { StaticTextWidget } from '@plone/volto/components/manage/Widgets';
+import { HiddenWidget } from '@plone/volto/components/manage/Widgets';
+import { RadioGroupWidget } from '@plone/volto/components/manage/Widgets';
+import { CheckboxGroupWidget } from '@plone/volto/components/manage/Widgets';
 import { CheckboxWidget } from '@plone/volto/components/manage/Widgets';
 import { NumberWidget } from '@plone/volto/components/manage/Widgets';
 import { getWidgetView } from '@plone/volto/helpers/Widget/widget';
@@ -149,3 +161,5 @@ import RelationViewWidget from '@plone/volto/components/theme/Widgets/RelationWi
 import RichTextViewWidget from '@plone/volto/components/theme/Widgets/RichTextWidget';
 import TitleViewWidget from '@plone/volto/components/theme/Widgets/TitleWidget';
 import UrlViewWidget from '@plone/volto/components/theme/Widgets/UrlWidget';
+import StaticTextViewWidget from '@plone/volto/components/manage/Widgets/StaticTextWidget';
+import HiddenViewWidget from '@plone/volto/components/manage/Widgets/HiddenWidget';
