@@ -255,32 +255,32 @@ msgstr "Data aggiuntiva"
 #. Default: "Add-on could not be installed"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be installed"
-msgstr ""
+msgstr "Non è stato possibile installare l'add-on."
 
 #. Default: "Add-on could not be uninstalled"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be uninstalled"
-msgstr ""
+msgstr "Non è stato possibile disinstallare l'add-on."
 
 #. Default: "Add-on could not be upgraded"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be upgraded"
-msgstr ""
+msgstr "Non è stato possibile aggiornare l'add-on."
 
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
-msgstr ""
+msgstr "Add-on installato con successo"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
-msgstr ""
+msgstr "Add-on rimosso con successo"
 
 #. Default: "Add-on upgraded succesfuly"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
-msgstr ""
+msgstr "Add-on aggiornato con successo"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
@@ -2454,7 +2454,7 @@ msgstr "Nessun video selezionato"
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
 msgid "No addons found"
-msgstr ""
+msgstr "Nessun add-on trovato."
 
 #. Default: "No broken relations found."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -4162,7 +4162,7 @@ msgstr "Aggiorna Utente"
 #. Default: "Update installed add-ons:"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Update installed addons:"
-msgstr ""
+msgstr "Aggiorna gli add-on installati:"
 
 #. Default: "Updates available"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
