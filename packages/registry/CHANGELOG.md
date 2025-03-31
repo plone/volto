@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.1 (2025-03-31)
+
+### Feature
+
+- Allow to override slots with no predicate with the same name. @sneridagh [#6887](https://github.com/plone/volto/issues/6887)
+
 ## 3.0.0-alpha.0 (2025-03-27)
 
 ### Breaking
