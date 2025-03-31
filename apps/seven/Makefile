@@ -177,7 +177,7 @@ deployment-ci-acceptance-test-run-all: ## With a single command, run the backend
 
 .PHONY: cookieplone-acceptance-frontend-prod-start
 cookieplone-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for cookieplone tests
-	(cd ../../seven-add-on && PLONE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
+	(cd ../../.. && pnpm build && PLONE_API_PATH=http://127.0.0.1:55001/plone pnpm start:prod)
 
 ######### Core Sandbox Acceptance tests
 
