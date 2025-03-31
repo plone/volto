@@ -1,1 +1,0 @@
-Refactor plone client. @robgietema
