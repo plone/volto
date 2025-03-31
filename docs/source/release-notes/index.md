@@ -17,6 +17,59 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.11.0 (2025-03-31)
+
+### Feature
+
+- Add hidden widget. @robgietema
+  Add static text widget. @robgietema
+  Add time widget. @robgietema
+  Add radio group widget. @robgietema
+  Add checkbox group widget. @robgietema
+  Add taken slugs to slugify helper. @robgietema
+  Add filter choices, additional choices and sort to select widget. @robgietema
+  Add max size and accept type checks to file widget. @robgietema
+  Fix bug with pressing enter in blocks form that events gets bubbled from modal to blocks area. @robgietema
+  Add option to pass custom widget `config` to field component. @robgietema
+  Add optional widgets `config` to form component. @robgietema
+  Add option to override the form component and the buttons in the form component. @robgietema
+  Add option to override cancel label in form. @robgietema
+  Add option to choose between icon and text buttons in the form component. @robgietema
+  Add option to change form data from outside of the form in the modal form. @robgietema
+  Move field factory properties per field to a utility so it can be registered from other packages. @robgietema
+  Move field factory initial data per field to a utility so it can be registered from other packages. @robgietema
+  Add filter factory option to schema widget. @robgietema
+  Add additional factory option to schema widget. @robgietema
+  Add option to allow editing the id of the fields in the schema widget. @robgietema
+  Fix bug when multiple fields were added with the same id in the schema widget. @robgietema
+  Add option to select the shortname as initial data for a new field in the schema widget. @robgietema
+  Change properties form on the fly in the add field modal when changing the factory. @robgietema
+  Fix bug where error messages where not rendered in the form because a string was expected. @robgietema
+  Don't show request error multiple times when a form is validated. @robgietema
+  Fix a bug where the video block schema was not used for validation. @robgietema [#6370](https://github.com/plone/volto/issues/6370)
+- Add Russian translation in Volto. @toropok [#6874](https://github.com/plone/volto/issues/6874)
+- Use Plone 6.1.1 final. @sneridagh 
+
+### Bugfix
+
+- Fixed horizontal drag and drop placeholder. Now it appears behind the next element, and if it is the last element, it highlights the whole draggable area. Vertical placeholder remained untouched. @Narcis2005 [#4405](https://github.com/plone/volto/issues/4405)
+- Fixed Makefile to use `SITE_DEFAULT_LANGUAGE` instead of `LANGUAGE` for backend Docker setup. This aligns with plone/plone-backend#170 changes and resolves conflicts with the OS `LANGUAGE` environment variable. @boss6825 [#6747](https://github.com/plone/volto/issues/6747)
+- Improved error handling in the Form component to display the title of the error field in the Toast. This ensures that users see a more descriptive and clear error message when a field is invalid. @alexandreIFB [#6833](https://github.com/plone/volto/issues/6833)
+- Fix error when saving content with ObjectBrowserNav open. @wesleybl [#6845](https://github.com/plone/volto/issues/6845)
+- Fix the toolbar icon for the back navigation in the contact form. @kittauri [#6852](https://github.com/plone/volto/issues/6852)
+- Check if the destination (build public directory) exists before trying to create it in AfterBuildPlugin when consolidating `public` folders from add-ons. @sneridagh [#6853](https://github.com/plone/volto/issues/6853)
+- Add `aria-label` for search and cancel buttons for the input on search block. @Wagner3UB [#6862](https://github.com/plone/volto/issues/6862)
+- Prevent submit form from ImageWidget. @giuliaghisini [#6879](https://github.com/plone/volto/issues/6879)
+- Fixed merge public folder from addons regression. @reebalazs @sneridagh [#6919](https://github.com/plone/volto/issues/6919)
+
+### Internal
+
+- Enable documentation builds and update README.md links on branch `18.x.x`. @stevepiercy, @sneridagh [#6876](https://github.com/plone/volto/issues/6876)
+
+### Documentation
+
+- Changed `LANGUAGE` to `SITE_DEFAULT_LANGUAGE` in documentation examples to align with plone/plone-backend#170 changes. @boss6825 [#6747](https://github.com/plone/volto/issues/6747)
+
 ## 18.10.1 (2025-03-14)
 
 ### Bugfix
