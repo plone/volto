@@ -89,7 +89,7 @@ msgstr "Hinzufügen"
 
 #. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Add Add-ons"
+msgid "Add Addons"
 msgstr "Hier werden verfügbare und installierte Backend-Add-ons gezeigt. Informationen wie Weitere hinzugefügt werden können, finden sich hier:"
 
 #. Default: "Add Alternative URL"
@@ -2458,7 +2458,7 @@ msgstr "Kein Video ausgewählt"
 
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
-msgid "No add-ons found"
+msgid "No addons found"
 msgstr ""
 
 #. Default: "No broken relations found."
