@@ -8,6 +8,50 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.1 (2025-03-31)
+
+### Feature
+
+- Allow to override slots with no predicate with the same name. @sneridagh [#6887](https://github.com/plone/volto/issues/6887)
+
+## 3.0.0-alpha.0 (2025-03-27)
+
+### Breaking
+
+- Removed support for loading config from project. @sneridagh
+
+  Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html)
+  for more information. [#6842](https://github.com/plone/volto/issues/6842)
+
+### Internal
+
+- Fix typings for Vite Plugin. @sneridagh [#6733](https://github.com/plone/volto/issues/6733)
+
+## 2.4.1 (2025-02-08)
+
+### Internal
+
+- Update Vite version. @sneridagh [#6640](https://github.com/plone/volto/issues/6640)
+- Update internal `peerDependencies` to include React 19.
+  Update TS version. @sneridagh [#6641](https://github.com/plone/volto/issues/6641)
+- Remove `react` as a hard dependency, use `peerDependencies` instead.  @sneridagh [#6728](https://github.com/plone/volto/issues/6728)
+
+## 2.4.0 (2025-01-31)
+
+### Feature
+
+- Added add-ons styles loader. @sneridagh [#6630](https://github.com/plone/volto/issues/6630)
+
+## 2.3.0 (2025-01-24)
+
+### Feature
+
+- Added route registry. @sneridagh [#6600](https://github.com/plone/volto/issues/6600)
+
+### Documentation
+
+- Document the route API. @sneridagh [#6604](https://github.com/plone/volto/issues/6604)
+
 ## 2.2.0 (2024-12-12)
 
 ### Feature

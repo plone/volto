@@ -4,8 +4,8 @@ import type {
   BlockExtension,
   BlocksConfigData,
 } from '../config/Blocks';
-import type { IntlShape } from 'react-intl';
-import type { Location, History } from 'history';
+import type { IntlShape } from '../i18n';
+import type { Location, History } from '../router';
 
 export interface BlocksFormData {
   '@type': AvailableBlocks;

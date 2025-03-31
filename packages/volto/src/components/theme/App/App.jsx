@@ -146,10 +146,13 @@ export class App extends Component {
               this.props.pathname !== '/',
             siteroot: this.props.pathname === '/',
             [`is-adding-contenttype-${decodeURIComponent(
-              this.props.location?.search?.replace('?type=', ''),
+              this.props.location?.search?.startsWith('?type=')
+                ? this.props.location?.search?.replace('?type=', '')
+                : '',
             )
               .replaceAll(' ', '-')
-              .toLowerCase()}`]: this.props.location?.search,
+              .toLowerCase()}`]:
+              this.props.location?.search?.startsWith('?type='),
             'is-authenticated': !!this.props.token,
             'is-anonymous': !this.props.token,
             'cms-ui': isCmsUI,

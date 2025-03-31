@@ -15,6 +15,7 @@ exports[`Renders a button 1`] = `
   <button
     class="ui basic icon button block-add-button"
     title="Add block"
+    type="button"
   >
     <svg
       class="icon block-add-button"

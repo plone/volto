@@ -90,6 +90,7 @@ linkcheck_ignore = [
     # Ignore github.com pages with anchors
     r"https://github.com/.*#.*",
     # Ignore other specific anchors
+    r"https://browsersl.ist/#",
     r"https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue",
     r"https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0",
 ]
@@ -148,9 +149,9 @@ html_theme_options = {
             }
         },
         {
-            "name": "Twitter",
-            "url": "https://twitter.com/plone",
-            "icon": "fa-brands fa-square-twitter",
+            "name": "Mastodon",
+            "url": "https://plone.social/@plone",
+            "icon": "fa-brands fa-mastodon",
             "type": "fontawesome",
             "attributes": {
                 "target": "_blank",
@@ -159,9 +160,20 @@ html_theme_options = {
             }
         },
         {
-            "name": "Mastodon",
-            "url": "https://plone.social/@plone",
-            "icon": "fa-brands fa-mastodon",
+            "name": "YouTube",
+            "url": "https://www.youtube.com/@PloneCMS",
+            "icon": "fa-brands fa-youtube",
+            "type": "fontawesome",
+            "attributes": {
+                "target": "_blank",
+                "rel": "noopener me",
+                "class": "nav-link custom-fancy-css"
+            }
+        },
+        {
+            "name": "X (formerly Twitter)",
+            "url": "https://x.com/plone",
+            "icon": "fa-brands fa-square-x-twitter",
             "type": "fontawesome",
             "attributes": {
                 "target": "_blank",

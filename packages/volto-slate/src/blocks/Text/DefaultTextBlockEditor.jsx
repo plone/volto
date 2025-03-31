@@ -142,10 +142,10 @@ export const DefaultTextBlockEditor = (props) => {
       const url = flattenToAppURL(imageId);
       setNewImageId(imageId);
 
-      createImageBlock(url, index, props);
+      createImageBlock(url, index, props, intl);
     }
     prevReq.current = loaded;
-  }, [props, loaded, loading, prevLoaded, imageId, newImageId, index]);
+  }, [props, loaded, loading, prevLoaded, imageId, newImageId, index, intl]);
 
   const handleUpdate = React.useCallback(
     (editor) => {

@@ -17,7 +17,7 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  * @param {string} path Path (or URL) to be formatted.
  * @returns {string} Formatted path.
  */
-function formatUrl(path) {
+export function formatUrl(path) {
   const { settings } = config;
   const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
 

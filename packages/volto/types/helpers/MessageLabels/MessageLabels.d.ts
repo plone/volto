@@ -585,4 +585,10 @@ export namespace messages {
         let defaultMessage_97: string;
         export { defaultMessage_97 as defaultMessage };
     }
+    namespace defaultLanguage {
+        let id_98: string;
+        export { id_98 as id };
+        let defaultMessage_98: string;
+        export { defaultMessage_98 as defaultMessage };
+    }
 }

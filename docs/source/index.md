@@ -31,7 +31,7 @@ Choose from the following sections to begin your journey with Volto.
 
 An integrator is someone who uses Volto to build a project.
 
--   {doc}`plone:install/create-project` is a guide to bootstrap a new Volto project and start hacking.
+-   {doc}`plone:install/create-project-cookieplone` is a guide to bootstrap a new Volto project and start hacking.
 -   {doc}`development/overview` is intended for integrators to assess their knowledge and determine what gaps they would like to fill through available resources.
 -   {doc}`tutorials/index` lists several tutorials and references for further research and learning.
 

@@ -180,12 +180,6 @@ export const multilingualFixture = (config: ConfigType) => {
   return config;
 };
 
-export const workingCopyFixture = (config: ConfigType) => {
-  config.settings.hasWorkingCopySupport = true;
-
-  return config;
-};
-
 // We extend the block types with the custom ones
 declare module '@plone/types' {
   export interface BlocksConfigData {
@@ -233,6 +227,16 @@ const applyConfig = (config: ConfigType) => {
     name: 'testSlotComponent',
     component: SlotComponentTest,
     predicates: [ContentTypeCondition(['Document']), RouteCondition('/hello')],
+  });
+
+  config.registerRoute({
+    type: 'route',
+    path: '/hello',
+    file: 'src/components/Views/NewsAndEvents/asd.tsx',
+    options: {
+      id: 'hello',
+      index: true,
+    },
   });
 
   return config;

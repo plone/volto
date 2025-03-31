@@ -1,6 +1,6 @@
 import type { Content } from '../content';
 import type { BlockViewProps, BlockEditProps } from '../blocks';
-import type { IntlShape } from 'react-intl';
+import type { IntlShape } from '../i18n';
 import { User } from '../services';
 import { StyleDefinition } from '../blocks';
 
