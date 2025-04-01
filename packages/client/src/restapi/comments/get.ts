@@ -1,34 +1,28 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { z } from 'zod';
 import type { GetCommentsResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 const getCommentsSchema = z.object({
   path: z.string(),
 });
 
-export type CommentsArgs = z.infer<typeof getCommentsSchema> & {
-  config: PloneClientConfig;
-};
+export type CommentsArgs = z.infer<typeof getCommentsSchema>;
 
-export const getComments = async ({
-  path,
-  config,
-}: CommentsArgs): Promise<GetCommentsResponse> => {
+export async function getComments(
+  this: PloneClient,
+  { path }: CommentsArgs,
+): Promise<RequestResponse<GetCommentsResponse>> {
   const validatedArgs = getCommentsSchema.parse({
     path,
   });
 
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
   const commentsPath = `/${validatedArgs.path}/@comments`;
 
   return apiRequest('get', commentsPath, options);
-};
-
-export const getCommentsQuery = ({ path, config }: CommentsArgs) => ({
-  queryKey: [path, 'get', 'comments'],
-  queryFn: () => getComments({ path, config }),
-});
+}

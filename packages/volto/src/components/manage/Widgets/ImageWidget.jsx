@@ -252,6 +252,7 @@ const UnconnectedImageInput = (props) => {
                             currentPath: contextUrl,
                           });
                         }}
+                        type="button"
                       >
                         <Icon name={navTreeSVG} size="24px" />
                       </Button>
@@ -267,6 +268,7 @@ const UnconnectedImageInput = (props) => {
                         onClick={() => {
                           imageUploadInputRef.current.click();
                         }}
+                        type="button"
                       >
                         <Icon name={uploadSVG} size="24px" />
                       </Button>
@@ -292,6 +294,7 @@ const UnconnectedImageInput = (props) => {
                           !props.selected && onFocus && onFocus();
                           linkEditor.show();
                         }}
+                        type="button"
                       >
                         <Icon name={linkSVG} circled size="24px" />
                       </Button>
