@@ -7,7 +7,7 @@ import { Meta } from '@storybook/blocks';
 
 `@plone/components` is a core package of Plone's modular frontend packages story.
 The purpose of this package is to provide an agnostic set of baseline components to build Plone sites upon.
-It has both a set of components that are agnostic to any framework and a set of components that are designed to work with the Tailwind CSS framework.
+It has both a set of components that are agnostic to any framework and a set of components that are designed to work with the [Tailwind](https://tailwindcss.com/) CSS framework.
 
 This section primarily focuses on the Tailwind components part of the package.
 
@@ -63,7 +63,7 @@ To enable Tailwind CSS IntelliSense in VSCode, you need to add the following con
   ],
 ```
 
-For Tailwind 4, you need to point the `configFile` to a Tailwind CSS file in your reference package.
+For Tailwind 4, you need to point the `configFile` key to a Tailwind CSS file in your reference package.
 This file should contain the Tailwind CSS configuration for your project.
 
 ```json
@@ -79,4 +79,4 @@ This file should contain the Tailwind CSS configuration for your project.
   },
 ```
 
-If you are developing in this monorepo, by running `make install` in the root directory, the necessary configuration will be automatically generated for you in your `.vscode/settings.json` file.
+If you develop in this monorepo by running `make install` in the root directory, the necessary configuration will be automatically generated for you in your {file}`.vscode/settings.json` file.
