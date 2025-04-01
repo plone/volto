@@ -13,6 +13,24 @@ export type AddonRoutesConfig = {
   component: React.ComponentType;
 }[];
 
+export type AddonRoutesEntry = {
+  path: string;
+  exact: boolean;
+  component: React.ComponentType;
+};
+
+export type ReactRouterRouteEntry = {
+  type: 'route' | 'index' | 'layout' | 'prefix';
+  path: string;
+  file: string;
+  options?: {
+    id?: string;
+    index?: boolean;
+    caseSensitive?: boolean;
+  };
+  children?: ReactRouterRouteEntry[];
+};
+
 export type ComponentsConfig = Record<
   string,
   { component: React.ComponentType }

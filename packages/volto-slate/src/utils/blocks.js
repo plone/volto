@@ -4,8 +4,11 @@ import config from '@plone/volto/registry';
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
-import _ from 'lodash';
+} from '@plone/volto/helpers/Blocks/Blocks';
+import find from 'lodash/find';
+import includes from 'lodash/includes';
+import some from 'lodash/some';
+import first from 'lodash/first';
 import { makeEditor } from './editor';
 
 // case sensitive; first in an inner array is the default and preffered format
@@ -145,10 +148,10 @@ export const isSingleBlockTypeActive = (editor, format) => {
 };
 
 export const isBlockActive = (editor, format) => {
-  const aliasList = _.find(formatAliases, (x) => _.includes(x, format));
+  const aliasList = find(formatAliases, (x) => includes(x, format));
 
   if (aliasList) {
-    const aliasFound = _.some(aliasList, (y) => {
+    const aliasFound = some(aliasList, (y) => {
       return isSingleBlockTypeActive(editor, y);
     });
 
@@ -163,17 +166,17 @@ export const isBlockActive = (editor, format) => {
 export const getBlockTypeContextData = (editor, format) => {
   let isActive, defaultFormat, matcher;
 
-  const aliasList = _.find(formatAliases, (x) => _.includes(x, format));
+  const aliasList = find(formatAliases, (x) => includes(x, format));
 
   if (aliasList) {
-    const aliasFound = _.some(aliasList, (y) => {
+    const aliasFound = some(aliasList, (y) => {
       return isSingleBlockTypeActive(editor, y);
     });
 
     if (aliasFound) {
       isActive = true;
-      defaultFormat = _.first(aliasList);
-      matcher = (n) => _.includes(aliasList, n.type);
+      defaultFormat = first(aliasList);
+      matcher = (n) => includes(aliasList, n.type);
 
       return { isActive, defaultFormat, matcher };
     }

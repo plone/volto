@@ -1,5 +1,5 @@
 import { Content } from '../content';
-import { BlocksConfigData } from './Blocks';
+import { BlocksFormData } from '../blocks/index';
 
 type apiExpandersType =
   | { match: string; GET_CONTENT: string[] }
@@ -19,7 +19,7 @@ type styleClassNameExtendersType = ({
 }: {
   block: string;
   content: Content;
-  data: BlocksConfigData;
+  data: BlocksFormData;
   classNames: string[];
 }) => string[];
 
@@ -76,6 +76,7 @@ export interface SettingsConfig {
   serverConfig: unknown;
   storeExtenders: unknown[];
   showTags: boolean;
+  showRelatedItems: boolean;
   controlpanels: unknown[];
   controlPanelsIcons: Record<string, React.ComponentType>;
   filterControlPanels: unknown;
@@ -86,7 +87,6 @@ export interface SettingsConfig {
 
   showSelfRegistration: boolean;
   contentMetadataTagsImageField: string;
-  hasWorkingCopySupport: boolean;
   maxUndoLevels: number;
   addonsInfo: unknown;
   workflowMapping: unknown;
@@ -101,4 +101,5 @@ export interface SettingsConfig {
     includeSiteTitle: boolean;
     titleAndSiteTitleSeparator: string;
   };
+  cssLayers: string[];
 }

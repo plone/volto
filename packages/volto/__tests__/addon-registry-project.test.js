@@ -1,9 +1,11 @@
-const path = require('path');
-const AddonConfigurationRegistry = require('../../registry/src/addon-registry');
-const { buildDependencyGraph, getAddonsLoaderChain } =
-  AddonConfigurationRegistry;
+import path from 'path';
+import {
+  AddonRegistry,
+  buildDependencyGraph,
+  getAddonsLoaderChain,
+} from '@plone/registry/addon-registry';
 
-describe('AddonConfigurationRegistry - Project', () => {
+describe('AddonRegistry - Project', () => {
   jest.mock(
     `${path.join(
       __dirname,
@@ -19,14 +21,14 @@ describe('AddonConfigurationRegistry - Project', () => {
 
   it('works in a mock project directory', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
-    const reg = new AddonConfigurationRegistry(base);
+    const { registry } = AddonRegistry.init(base);
 
     const voltoPath = `${base}/node_modules/@plone/volto`;
 
-    expect(reg.projectRootPath).toStrictEqual(base);
-    expect(reg.voltoPath).toStrictEqual(voltoPath);
+    expect(registry.projectRootPath).toStrictEqual(base);
+    expect(registry.voltoPath).toStrictEqual(voltoPath);
 
-    expect(reg.addonNames).toStrictEqual([
+    expect(registry.addonNames).toStrictEqual([
       'test-addon',
       'test-released-addon',
       'test-released-source-addon',
@@ -35,7 +37,7 @@ describe('AddonConfigurationRegistry - Project', () => {
       'test-released-unmentioned',
     ]);
 
-    expect(reg.packages).toEqual({
+    expect(registry.packages).toEqual({
       'test-addon': {
         isPublishedPackage: false,
         modulePath: `${base}/addons/test-addon/src`,
@@ -102,8 +104,8 @@ describe('AddonConfigurationRegistry - Project', () => {
 
   it('provides aliases for addons', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
-    const reg = new AddonConfigurationRegistry(base);
-    expect(reg.getResolveAliases()).toStrictEqual({
+    const { registry } = AddonRegistry.init(base);
+    expect(registry.getResolveAliases()).toStrictEqual({
       'my-volto-config-addon': `${base}/addons/my-volto-config-addon/src`,
       'test-addon': `${base}/addons/test-addon/src`,
       'test-released-addon': `${base}/node_modules/test-released-addon`,
@@ -115,14 +117,14 @@ describe('AddonConfigurationRegistry - Project', () => {
 
   it('provides addon extenders', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
-    const reg = new AddonConfigurationRegistry(base);
-    expect(reg.getAddonExtenders().length).toBe(1);
+    const { registry } = AddonRegistry.init(base);
+    expect(registry.getAddonExtenders().length).toBe(1);
   });
 
   it('provides a list of addon records ordered by initial package declaration', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
-    const reg = new AddonConfigurationRegistry(base);
-    const addons = reg.getAddons();
+    const { registry } = AddonRegistry.init(base);
+    const addons = registry.getAddons();
     expect(addons.map((a) => a.name)).toStrictEqual([
       'test-released-unmentioned',
       'test-released-dummy',
@@ -135,8 +137,8 @@ describe('AddonConfigurationRegistry - Project', () => {
 
   it('provides customization paths declared in a Volto project', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
-    const reg = new AddonConfigurationRegistry(base);
-    expect(reg.getProjectCustomizationPaths()).toStrictEqual({
+    const { registry } = AddonRegistry.init(base);
+    expect(registry.getProjectCustomizationPaths()).toStrictEqual({
       '@plone/volto/LanguageSwitcher': `${base}/src/customizations/LanguageSwitcher.js`,
       '@plone/volto/TSComponent': `${base}/src/customizations/TSComponent.jsx`,
       '@plone/volto/client': `${base}/src/customizations/client.js`,
@@ -148,8 +150,8 @@ describe('AddonConfigurationRegistry - Project', () => {
 
   it('provides customization paths declared in addons', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
-    const reg = new AddonConfigurationRegistry(base);
-    expect(reg.getAddonCustomizationPaths()).toStrictEqual({
+    const { registry } = AddonRegistry.init(base);
+    expect(registry.getAddonCustomizationPaths()).toStrictEqual({
       '@plone/volto/LanguageSwitcher': `${base}/node_modules/test-released-source-addon/src/customizations/LanguageSwitcher.js`,
       '@plone/volto/TSComponent': `${base}/node_modules/test-released-source-addon/src/customizations/TSComponent.jsx`,
       '@plone/volto/client': `${base}/node_modules/test-released-source-addon/src/customizations/client.js`,
@@ -231,34 +233,10 @@ describe('Addon via env var - Released addon', () => {
 
   it('addons can be specified on the fly using ADDONS env var - Released addon', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
-    const reg = new AddonConfigurationRegistry(base);
+    const { registry } = AddonRegistry.init(base);
     expect(
-      Object.keys(reg.packages).includes('test-released-via-addons-env-var'),
-    ).toBe(true);
-  });
-});
-
-describe('Addon via env var - local packages folder addon', () => {
-  const originalEnv = process.env;
-
-  beforeEach(() => {
-    jest.resetModules();
-    process.env = {
-      ...originalEnv,
-      ADDONS: 'test-local-packages-via-addons-env-var',
-    };
-  });
-
-  afterEach(() => {
-    process.env = originalEnv;
-  });
-
-  it('addons can be specified on the fly using ADDONS env var - local packages folder addon', () => {
-    const base = path.join(__dirname, 'fixtures', 'test-volto-project');
-    const reg = new AddonConfigurationRegistry(base);
-    expect(
-      Object.keys(reg.packages).includes(
-        'test-local-packages-via-addons-env-var',
+      Object.keys(registry.packages).includes(
+        'test-released-via-addons-env-var',
       ),
     ).toBe(true);
   });

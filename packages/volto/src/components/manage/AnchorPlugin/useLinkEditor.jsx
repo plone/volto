@@ -13,7 +13,7 @@
  */
 
 import React from 'react';
-import { PositionedToolbar } from '@plone/volto-slate/editor/ui';
+import PositionedToolbar from '@plone/volto-slate/editor/ui/PositionedToolbar';
 import AddLinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/AddLinkForm';
 
 function getPositionStyle(position) {

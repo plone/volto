@@ -1,5 +1,5 @@
 import { defineMessages } from 'react-intl';
-import { blocksFormGenerator } from '@plone/volto/helpers';
+import { blocksFormGenerator } from '@plone/volto/helpers/Blocks/Blocks';
 
 import gridTemplate1 from './grid-1.svg';
 import gridTemplate2 from './grid-2.svg';

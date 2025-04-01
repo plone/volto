@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ColorSwatch as RACColorSwatch,
-  ColorSwatchProps,
+  type ColorSwatchProps,
 } from 'react-aria-components';
 
 export function ColorSwatch(props: ColorSwatchProps) {

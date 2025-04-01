@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Segment, Button } from 'semantic-ui-react';
 import { useIntl, FormattedMessage, defineMessages } from 'react-intl';
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
-import { Icon, Image } from '@plone/volto/components';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Image from '@plone/volto/components/theme/Image/Image';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import { ImageSchema } from './schema';
 import imageSVG from '@plone/volto/icons/image.svg';
@@ -30,6 +31,7 @@ const ImageSidebar = (props) => {
         <Button.Group>
           <Button
             title={intl.formatMessage(messages.clear)}
+            type="button"
             basic
             disabled={!data.url}
             onClick={() => {

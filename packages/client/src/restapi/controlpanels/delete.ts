@@ -1,47 +1,32 @@
 import { z } from 'zod';
-import { ApiRequestParams, apiRequest } from '../../API';
-import {
-  PloneClientConfig,
-  PloneClientConfigSchema,
-} from '../../validation/config';
+import { type ApiRequestParams, apiRequest } from '../../api';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 export const deleteControlpanelArgsSchema = z.object({
   path: z.string(),
   data: z.any(),
-  config: PloneClientConfigSchema,
 });
 
 export type DeleteControlpanelArgs = z.infer<
   typeof deleteControlpanelArgsSchema
 >;
 
-export const deleteControlpanel = async ({
-  path,
-  data,
-  config,
-}: DeleteControlpanelArgs): Promise<any> => {
+export async function deleteControlpanel(
+  this: PloneClient,
+  { path, data }: DeleteControlpanelArgs,
+): Promise<RequestResponse<any>> {
   const validatedArgs = deleteControlpanelArgsSchema.parse({
     path,
     data,
-    config,
   });
 
   const options: ApiRequestParams = {
     data: validatedArgs.data,
-    config: validatedArgs.config,
+    config: this.config,
   };
 
   const deleteControlpanelPath = `@controlpanels/${validatedArgs.path}`;
 
   return apiRequest('delete', deleteControlpanelPath, options);
-};
-
-export const deleteControlpanelMutation = ({
-  config,
-}: {
-  config: PloneClientConfig;
-}) => ({
-  mutationKey: ['delete', 'controlpanels'],
-  mutationFn: ({ path, data }: Omit<DeleteControlpanelArgs, 'config'>) =>
-    deleteControlpanel({ path, data, config }),
-});
+}

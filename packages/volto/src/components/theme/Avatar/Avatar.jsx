@@ -4,7 +4,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getInitials } from '@plone/volto/helpers';
+import { getInitials } from '@plone/volto/helpers/Utils/Utils';
 
 const defaultSize = 30;
 const defaultColor = 'Teal';

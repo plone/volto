@@ -11,7 +11,9 @@
     "preserveSymlinks": true,
     "downlevelIteration": true,
     "paths": {
-      "@plone/volto/*": ["./src/*"]
+      "@plone/volto/*": ["./src/*"],
+      "react": ["./node_modules/@types/react"],
+      "react-dom": ["./node_modules/@types/react-dom"]
     }
   },
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.tsx"]

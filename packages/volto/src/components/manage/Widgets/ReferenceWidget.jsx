@@ -2,12 +2,20 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Label, Dropdown, Popup, Icon } from 'semantic-ui-react';
-import { compact, concat, fromPairs, map, values, uniqBy } from 'lodash';
+import compact from 'lodash/compact';
+import concat from 'lodash/concat';
+import fromPairs from 'lodash/fromPairs';
+import map from 'lodash/map';
+import values from 'lodash/values';
+import uniqBy from 'lodash/uniqBy';
 import { defineMessages, useIntl } from 'react-intl';
 
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import { resetSearchContent, searchContent } from '@plone/volto/actions';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import {
+  resetSearchContent,
+  searchContent,
+} from '@plone/volto/actions/search/search';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 const messages = defineMessages({
   no_results_found: {

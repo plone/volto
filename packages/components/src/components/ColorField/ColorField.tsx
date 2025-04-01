@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
   ColorField as RACColorField,
-  ColorFieldProps as RACColorFieldProps,
+  type ColorFieldProps as RACColorFieldProps,
   FieldError,
   Input,
   Label,
   Text,
-  ValidationResult,
+  type ValidationResult,
 } from 'react-aria-components';
 
 export interface ColorFieldProps extends RACColorFieldProps {

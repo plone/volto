@@ -1,38 +1,27 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { z } from 'zod';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 const upgradeAddonSchema = z.object({
   addonId: z.string(),
 });
 
-export type UpgradeAddonArgs = z.infer<typeof upgradeAddonSchema> & {
-  config: PloneClientConfig;
-};
+export type UpgradeAddonArgs = z.infer<typeof upgradeAddonSchema>;
 
-export const upgradeAddon = async ({
-  addonId,
-  config,
-}: UpgradeAddonArgs): Promise<undefined> => {
+export async function upgradeAddon(
+  this: PloneClient,
+  { addonId }: UpgradeAddonArgs,
+): Promise<RequestResponse<undefined>> {
   const validatedArgs = upgradeAddonSchema.parse({
     addonId,
   });
 
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
   const addonName = `@addons/${validatedArgs.addonId}/upgrade`;
 
   return apiRequest('post', addonName, options);
-};
-
-export const upgradeAddonMutation = ({
-  config,
-}: {
-  config: PloneClientConfig;
-}) => ({
-  mutationKey: ['post', 'addons'],
-  mutationFn: ({ addonId }: Omit<UpgradeAddonArgs, 'config'>) =>
-    upgradeAddon({ addonId, config }),
-});
+}

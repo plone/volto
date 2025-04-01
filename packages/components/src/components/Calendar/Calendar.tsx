@@ -4,8 +4,8 @@ import {
   Calendar as RACCalendar,
   CalendarCell,
   CalendarGrid,
-  CalendarProps as RACCalendarProps,
-  DateValue,
+  type CalendarProps as RACCalendarProps,
+  type DateValue,
   Heading,
   Text,
 } from 'react-aria-components';
