@@ -4632,6 +4632,16 @@ msgstr "Borrador"
 msgid "email"
 msgstr "El valor introducido debe ser un correo electrónico válido (algo@dominio.com)"
 
+#. Default: "An error occured while uploading the image, please try again."
+#: components/manage/Widgets/ImageWidget
+msgid "errorMessage"
+msgstr ""
+
+#. Default: "Error"
+#: components/manage/Widgets/ImageWidget
+msgid "errorTitle"
+msgstr ""
+
 #. Default: "All dates"
 #: components/theme/EventDetails/EventDetails
 msgid "event_alldates"

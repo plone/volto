@@ -4631,6 +4631,16 @@ msgstr "proiect"
 msgid "email"
 msgstr "email"
 
+#. Default: "An error occured while uploading the image, please try again."
+#: components/manage/Widgets/ImageWidget
+msgid "errorMessage"
+msgstr ""
+
+#. Default: "Error"
+#: components/manage/Widgets/ImageWidget
+msgid "errorTitle"
+msgstr ""
+
 #. Default: "All dates"
 #: components/theme/EventDetails/EventDetails
 msgid "event_alldates"
