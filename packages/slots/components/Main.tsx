@@ -1,6 +1,6 @@
 import type { GetSlotArgs } from '@plone/types';
 import SlotRenderer from '../SlotRenderer';
-import { Container } from '@plone/components';
+import { Container } from '@plone/components/tailwind';
 
 type MainProps = {
   content: GetSlotArgs['content'];

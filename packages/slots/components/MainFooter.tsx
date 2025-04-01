@@ -1,5 +1,7 @@
 import type { SlotComponentProps } from '../SlotRenderer';
-import { Container, Link } from '@plone/components';
+import { Link } from '@plone/components';
+import { Container } from '@plone/components/tailwind';
+
 import Logo from './Logo';
 
 const Footer = (props: SlotComponentProps) => {
@@ -7,7 +9,7 @@ const Footer = (props: SlotComponentProps) => {
   const siteActions = content?.['@components']?.actions?.site_actions || [];
 
   return (
-    <Container layout className="footer">
+    <Container width="layout" className="footer">
       {/* TODO: i18n properly */}
       <div className="footer-message">
         The Plone® Open Source CMS/WCM is © 2000-2024 by the Plone Foundation
