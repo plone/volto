@@ -4630,16 +4630,6 @@ msgstr "Entwurf"
 msgid "email"
 msgstr "E-Mail"
 
-#. Default: "An error occured while uploading the image, please try again."
-#: components/manage/Widgets/ImageWidget
-msgid "errorMessage"
-msgstr "Beim Hochladen des Bildes ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
-
-#. Default: "Error"
-#: components/manage/Widgets/ImageWidget
-msgid "errorTitle"
-msgstr "Fehler"
-
 #. Default: "All dates"
 #: components/theme/EventDetails/EventDetails
 msgid "event_alldates"
@@ -4724,6 +4714,16 @@ msgstr "HTML"
 #: config/Blocks
 msgid "image"
 msgstr "Bild"
+
+#. Default: "An error occured while uploading the image, please try again."
+#: components/manage/Widgets/ImageWidget
+msgid "imageUploadErrorMessage"
+msgstr ""
+
+#. Default: "Error"
+#: components/manage/Widgets/ImageWidget
+msgid "imageUploadeErrorTitle"
+msgstr ""
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar

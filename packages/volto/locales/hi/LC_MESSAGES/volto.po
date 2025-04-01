@@ -4625,16 +4625,6 @@ msgstr "ड्राफ़्ट"
 msgid "email"
 msgstr "ईमेल"
 
-#. Default: "An error occured while uploading the image, please try again."
-#: components/manage/Widgets/ImageWidget
-msgid "errorMessage"
-msgstr ""
-
-#. Default: "Error"
-#: components/manage/Widgets/ImageWidget
-msgid "errorTitle"
-msgstr ""
-
 #. Default: "All dates"
 #: components/theme/EventDetails/EventDetails
 msgid "event_alldates"
@@ -4719,6 +4709,16 @@ msgstr "एचटीएमएल"
 #: config/Blocks
 msgid "image"
 msgstr "छवि"
+
+#. Default: "An error occured while uploading the image, please try again."
+#: components/manage/Widgets/ImageWidget
+msgid "imageUploadErrorMessage"
+msgstr ""
+
+#. Default: "Error"
+#: components/manage/Widgets/ImageWidget
+msgid "imageUploadeErrorTitle"
+msgstr ""
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar

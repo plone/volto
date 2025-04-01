@@ -62,12 +62,12 @@ const messages = defineMessages({
     id: 'Uploading image',
     defaultMessage: 'Uploading image',
   },
-  errorTitle: {
-    id: 'errorTitle',
+  imageUploadeErrorTitle: {
+    id: 'imageUploadeErrorTitle',
     defaultMessage: 'Error',
   },
-  errorMessage: {
-    id: 'errorMessage',
+  imageUploadErrorMessage: {
+    id: 'imageUploadErrorMessage',
     defaultMessage:
       'An error occured while uploading the image, please try again.',
   },
