@@ -10,14 +10,16 @@ const defaultSize = 30;
 const defaultColor = 'Teal';
 const defaultClassName = 'avatar circular';
 
-const Avatar = ({ src, title, text, size, color, className }) => {
-  const radius = Math.round(size / 2);
+const Avatar = ({ src, title = 'User', text, size = defaultSize, color = defaultColor, className = defaultClassName }) => {
+  const validSize = size > 0 ? size : defaultSize;
+  const radius = Math.round(validSize / 2);
+
   return (
-    <div className={className} title={title}>
+    <div className={className} title={title} role="img">
       {src ? (
-        <img src={src} alt={title}></img>
+        <img src={src} alt={title} width={validSize} height={validSize} />
       ) : (
-        <svg width={size} height={size}>
+        <svg width={validSize} height={validSize}>
           <circle cx={radius} cy={radius} r={radius} fill={color} />
           <text
             x="50%"
@@ -43,15 +45,6 @@ Avatar.propTypes = {
   size: PropTypes.number,
   color: PropTypes.string,
   className: PropTypes.string,
-};
-
-Avatar.defaultProps = {
-  src: null,
-  title: null,
-  text: null,
-  size: defaultSize,
-  color: defaultColor,
-  className: defaultClassName,
 };
 
 export default Avatar;
