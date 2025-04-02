@@ -144,6 +144,7 @@ let config = {
     showRelatedItems: false,
     controlpanels: [],
     controlPanelsIcons,
+    contextualVocabularies: [],
     filterControlPanels,
     filterControlPanelsSchema,
     unwantedControlPanelsFields,
