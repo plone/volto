@@ -552,6 +552,9 @@ importers:
       debug:
         specifier: 4.3.2
         version: 4.3.2
+      deepmerge:
+        specifier: ^4.3.1
+        version: 4.3.1
       dependency-graph:
         specifier: 0.10.0
         version: 0.10.0
