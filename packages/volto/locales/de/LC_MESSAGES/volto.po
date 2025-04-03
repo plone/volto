@@ -1402,6 +1402,7 @@ msgstr "Einträge"
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
+#: components/manage/Widgets/ImageWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -4719,11 +4720,6 @@ msgstr "Bild"
 #: components/manage/Widgets/ImageWidget
 msgid "imageUploadErrorMessage"
 msgstr "Beim Hochladen des Bildes ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
-
-#. Default: "Error"
-#: components/manage/Widgets/ImageWidget
-msgid "imageUploadErrorTitle"
-msgstr "Error"
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar

@@ -1402,6 +1402,7 @@ msgstr ""
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
+#: components/manage/Widgets/ImageWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -4718,11 +4719,6 @@ msgstr "imagem"
 #. Default: "An error occured while uploading the image, please try again."
 #: components/manage/Widgets/ImageWidget
 msgid "imageUploadErrorMessage"
-msgstr ""
-
-#. Default: "Error"
-#: components/manage/Widgets/ImageWidget
-msgid "imageUploadErrorTitle"
 msgstr ""
 
 #. Default: "Clear image"
