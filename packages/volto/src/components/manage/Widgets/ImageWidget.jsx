@@ -62,8 +62,8 @@ const messages = defineMessages({
     id: 'Uploading image',
     defaultMessage: 'Uploading image',
   },
-  imageUploadeErrorTitle: {
-    id: 'imageUploadeErrorTitle',
+  imageUploadErrorTitle: {
+    id: 'imageUploadErrorTitle',
     defaultMessage: 'Error',
   },
   imageUploadErrorMessage: {
@@ -204,8 +204,8 @@ const UnconnectedImageInput = (props) => {
             toast.error(
               <Toast
                 error
-                title={intl.formatMessage(messages.errorTitle)}
-                content={intl.formatMessage(messages.errorMessage)}
+                title={intl.formatMessage(messages.imageUploadErrorTitle)}
+                content={intl.formatMessage(messages.imageUploadErrorMessage)}
               />,
             );
           }
