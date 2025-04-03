@@ -4717,7 +4717,7 @@ msgstr "HTML"
 msgid "image"
 msgstr "Imatge"
 
-#. Default: "An error occured while uploading the image, please try again."
+#. Default: "Please upload an image instead."
 #: components/manage/Widgets/ImageWidget
 msgid "imageUploadErrorMessage"
 msgstr ""
