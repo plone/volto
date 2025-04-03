@@ -5,9 +5,11 @@ import { Meta } from '@storybook/blocks';
 
 # Tailwind components
 
-This package contains ReactJS components for Plone 7 and it's a core package of Plone's modular frontend packages story.
-
+`@plone/components` is a core package of Plone's modular frontend packages story.
 The purpose of this package is to provide an agnostic set of baseline components to build Plone sites upon.
+It has both a set of components that are agnostic to any framework and a set of components that are designed to work with the [Tailwind](https://tailwindcss.com/) CSS framework.
+
+This section primarily focuses on the Tailwind components part of the package.
 
 ## Usage
 
@@ -59,8 +61,22 @@ To enable Tailwind CSS IntelliSense in VSCode, you need to add the following con
   "tailwindCSS.experimental.classRegex": [
     ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ],
-  "tailwindCSS.experimental.configFile": "packages/components/src/styles/tailwind/base.css",
 ```
 
-For Tailwind 4, you need to point the `configFile` to a Tailwind CSS file in your reference package.
-In this case, we set it up to use the `base.css` file in the components package.
+For Tailwind 4, you need to point the `configFile` key to a Tailwind CSS file in your reference package.
+This file should contain the Tailwind CSS configuration for your project.
+
+```json
+  "tailwindCSS.experimental.configFile": {
+    "apps/seven/addons.styles.css": [
+      "apps/seven/app/**/*",
+      "packages/theming/**/*",
+      "packages/cmsui/**/*",
+      "packages/publicui/**/*",
+      "packages/slots/**/*",
+      "packages/components/**/*"
+    ]
+  },
+```
+
+If you develop in this monorepo by running `make install` in the root directory, the necessary configuration will be automatically generated for you in your {file}`.vscode/settings.json` file.

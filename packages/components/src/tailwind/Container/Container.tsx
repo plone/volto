@@ -13,48 +13,34 @@ type ContainerProps<T extends React.ElementType> = {
   as?: T;
   /** Additional classes. */
   className?: string;
-  /** Layout size */
-  layout?: boolean;
-  /** Narrow size. */
-  narrow?: boolean;
+  /** Container width */
+  width?: 'layout' | 'default' | 'narrow' | 'full';
 } & React.ComponentPropsWithoutRef<React.ElementType extends T ? 'div' : T>;
 
 export const Container = <T extends React.ElementType = 'div'>(
   props: ContainerProps<T>,
 ) => {
-  const { as: Component = 'div', children, layout, narrow, ...rest } = props;
+  const { as: Component = 'div', children, width, ...rest } = props;
 
   const container = tv({
     base: '@container mx-auto',
     variants: {
-      layout: {
-        true: 'max-w-(--layout-container-width)',
-      },
-      default: {
-        true: 'max-w-(--default-container-width)',
-      },
-      narrow: {
-        true: 'max-w-(--narrow-container-width)',
+      width: {
+        layout: 'max-w-(--layout-container-width)',
+        default: 'max-w-(--default-container-width)',
+        narrow: 'max-w-(--narrow-container-width)',
+        full: 'w-full',
       },
     },
     defaultVariants: {
-      default: true,
-      layout: false,
-      narrow: false,
+      width: 'full',
     },
   });
 
   return (
     <Component
       {...rest}
-      className={twMerge(
-        props.className,
-        container({
-          layout,
-          narrow,
-          default: !layout && !narrow,
-        }),
-      )}
+      className={twMerge(props.className, container({ width }))}
     >
       {children}
     </Component>

@@ -67,30 +67,26 @@ clean: ## Clean development environment
 cypress-install: ## Install Cypress for acceptance tests
 	$(NODEBIN)/cypress install
 
-../registry/dist: $(shell find ../registry/src -type f)
+../../packages/registry/dist: $(shell find ../../packages/registry/src -type f)
 	(cd ../../ && pnpm build:registry)
 
-../components/dist: $(shell find ../components/src -type f)
+../../packages/components/dist: $(shell find .../../packages/components/src -type f)
 	(cd ../../ && pnpm build:components)
 
-../client/dist: $(shell find ../client/src -type f)
+../../packages/client/dist: $(shell find ../../packages/client/src -type f)
 	(cd ../../ && pnpm build:client)
 
-../providers/dist: $(shell find ../providers/src -type f)
+../../packages/providers/dist: $(shell find ../../packages/providers/src -type f)
 	(cd ../../ && pnpm build:providers)
 
-../helpers/dist: $(shell find ../helpers/src -type f)
+../../packages/helpers/dist: $(shell find ../../packages/helpers/src -type f)
 	(cd ../../ && pnpm build:helpers)
 
-../react-router/dist: $(shell find ../react-router/src -type f)
+../../packages/react-router/dist: $(shell find .../../packages/react-router/src -type f)
 	(cd ../../ && pnpm build:react-router)
 
 .PHONY: build-deps
-build-deps: ../registry/dist ../components/dist ../client/dist ../providers/dist ../react-router/dist ../helpers/dist ## Build dependencies
-
-.PHONY: i18n
-i18n: ## Extract and compile translations
-	pnpm i18n
+build-deps: ../../packages/registry/dist ../../packages/components/dist ../../packages/client/dist ../../packages/providers/dist ../../packages/react-router/dist ../../packages/helpers/dist ## Build dependencies
 
 ## Storybook
 
@@ -118,7 +114,7 @@ backend-docker-start: ## Starts a Docker-based backend for development
 
 .PHONY: frontend-docker-start
 frontend-docker-start: ## Starts a Docker-based frontend for development
-	docker run -it --rm --name=volto --link backend -p 3000:3000 -e RAZZLE_INTERNAL_API_PATH=http://backend:8080/Plone -e RAZZLE_DEV_PROXY_API_PATH=http://backend:8080/Plone plone/plone-frontend:latest
+	echo "Starts a Docker-based frontend for demo purposes..."
 
 ##### Acceptance tests (Cypress)
 ######### Dev mode Acceptance tests
@@ -177,10 +173,10 @@ deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in 
 deployment-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for deployment tests
 	$(NODEBIN)/start-test "make acceptance-backend-start" http-get://127.0.0.1:55001/plone "make deployment-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make ci-acceptance-test"
 
-######### Project Acceptance tests
+######### Cookieplone Acceptance tests
 
-.PHONY: project-acceptance-frontend-prod-start
-project-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for project tests
+.PHONY: cookieplone-acceptance-frontend-prod-start
+cookieplone-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for cookieplone tests
 	(cd ../../.. && pnpm build && PLONE_API_PATH=http://127.0.0.1:55001/plone pnpm start:prod)
 
 ######### Core Sandbox Acceptance tests
@@ -209,68 +205,3 @@ coresandbox-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for
 coresandbox-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for core sandbox tests
 	$(NODEBIN)/start-test "make coresandbox-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make coresandbox-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make coresandbox-ci-acceptance-test"
 
-######### Multilingual Acceptance tests
-
-.PHONY: multilingual-acceptance-backend-start
-multilingual-acceptance-backend-start: ## Start backend acceptance server for multilingual tests
-	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
-
-.PHONY: multilingual-acceptance-frontend-prod-start
-multilingual-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for multilingual tests
-	ADDONS=@plone/volto-coresandbox:multilingualFixture PLONE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
-
-.PHONY: multilingual-acceptance-test
-multilingual-acceptance-test: ## Start Cypress in interactive mode for multilingual tests
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
-
-.PHONY: multilingual-ci-acceptance-test
-multilingual-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for multilingual tests
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
-
-.PHONY: multilingual-ci-acceptance-test-run-all
-multilingual-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests
-	$(NODEBIN)/start-test "make multilingual-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make multilingual-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make multilingual-ci-acceptance-test"
-
-######### Deployment Multilingual Acceptance tests
-
-.PHONY: deployment-multilingual-acceptance-backend-start
-deployment-multilingual-acceptance-backend-start: ## Start backend acceptance server for multilingual tests for deployment
-	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
-
-.PHONY: deployment-multilingual-acceptance-frontend-prod-start
-deployment-multilingual-acceptance-frontend-prod-start: build-deps ##Start acceptance frontend in production mode for multilingual tests for deployment
-	ADDONS=@plone/volto-coresandbox:multilingualFixture pnpm build && pnpm start:prod
-
-.PHONY: deployment-multilingual-acceptance-test
-deployment-multilingual-acceptance-test: ## Start Cypress in interactive mode for multilingual tests for deployment
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost',specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
-
-.PHONY: deployment-multilingual-ci-acceptance-test
-deployment-multilingual-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for multilingual tests for deployment
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
-
-.PHONY: deployment-multilingual-ci-acceptance-test-run-all
-deployment-multilingual-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests for deployment
-	$(NODEBIN)/start-test "make deployment-multilingual-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make deployment-multilingual-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make deployment-multilingual-ci-acceptance-test"
-
-######### Working Copy Acceptance tests
-
-.PHONY: working-copy-acceptance-backend-start
-working-copy-acceptance-backend-start: ## Start backend acceptance server for working copy tests
-	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default $(DOCKER_IMAGE_ACCEPTANCE)
-
-.PHONY: working-copy-acceptance-frontend-prod-start
-working-copy-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for working copy tests
-	PLONE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
-
-.PHONY: working-copy-acceptance-test
-working-copy-acceptance-test: ## Start Cypress in interactive mode for working copy tests
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/workingCopy/**/*.{js,jsx,ts,tsx}'
-
-.PHONY: working-copy-ci-acceptance-test
-working-copy-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for working copy tests
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/workingCopy/**/*.{js,jsx,ts,tsx}'
-
-.PHONY: working-copy-ci-acceptance-test-run-all
-working-copy-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for working copy tests
-	$(NODEBIN)/start-test "make working-copy-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make working-copy-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make working-copy-ci-acceptance-test"
