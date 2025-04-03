@@ -4722,8 +4722,8 @@ msgstr "Beim Hochladen des Bildes ist ein Fehler aufgetreten. Bitte versuchen Si
 
 #. Default: "Error"
 #: components/manage/Widgets/ImageWidget
-msgid "imageUploadeErrorTitle"
-msgstr "Fehler"
+msgid "imageUploadErrorTitle"
+msgstr "Error"
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar

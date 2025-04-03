@@ -4722,7 +4722,7 @@ msgstr ""
 
 #. Default: "Error"
 #: components/manage/Widgets/ImageWidget
-msgid "imageUploadeErrorTitle"
+msgid "imageUploadErrorTitle"
 msgstr ""
 
 #. Default: "Clear image"
