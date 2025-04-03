@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import cloneDeep from 'lodash/cloneDeep';
 import map from 'lodash/map';
-import EditBlock from './Edit';
+import EditBlock from '@plone/volto/components/manage/Blocks/Block/Edit';
 import DragDropList from '@plone/volto/components/manage/DragDropList/DragDropList';
 import {
   getBlocks,
@@ -22,14 +22,14 @@ import {
 } from '@plone/volto/helpers/Blocks/Blocks';
 import { useDetectClickOutside } from '@plone/volto/helpers/Utils/useDetectClickOutside';
 import { useEvent } from '@plone/volto/helpers/Utils/useEvent';
-import EditBlockWrapper from './EditBlockWrapper';
+import EditBlockWrapper from '@plone/volto/components/manage/Blocks/Block/EditBlockWrapper';
 import { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
 import { setUIState } from '@plone/volto/actions/form/form';
 import { useDispatch } from 'react-redux';
 import config from '@plone/volto/registry';
 import { createPortal } from 'react-dom';
 
-import Order from './Order/Order';
+import Order from '@plone/volto/components/manage/Blocks/Block/Order/Order';
 
 const BlocksForm = (props) => {
   const {
@@ -64,6 +64,8 @@ const BlocksForm = (props) => {
   } = props;
 
   const [isClient, setIsClient] = useState(false);
+  const intl = useIntl();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setIsClient(true);
@@ -71,8 +73,16 @@ const BlocksForm = (props) => {
 
   const blockList = getBlocks(properties);
 
-  const dispatch = useDispatch();
-  const intl = useIntl();
+  useEffect(() => {
+    for (const [n, v] of blockList) {
+      if (!v) {
+        const newFormData = deleteBlock(properties, n, intl);
+        onChangeFormData(newFormData);
+      }
+    }
+  }, [blockList, intl, onChangeFormData, properties]);
+
+  const blocksWithData = blockList.filter((block) => !!block[1]);
 
   const ClickOutsideListener = () => {
     onSelectBlock(null);
@@ -264,13 +274,6 @@ const BlocksForm = (props) => {
   // to be removed when the user saves the page next. Otherwise the invalid
   // blocks would linger for ever.
 
-  for (const [n, v] of blockList) {
-    if (!v) {
-      const newFormData = deleteBlock(properties, n, intl);
-      onChangeFormData(newFormData);
-    }
-  }
-
   useEvent('voltoClickBelowContent', () => {
     if (!config.experimental.addBlockButton.enabled || !isMainForm) return;
     onSelectBlock(
@@ -307,7 +310,7 @@ const BlocksForm = (props) => {
       >
         <fieldset className="invisible" disabled={!editable}>
           <DragDropList
-            childList={blockList}
+            childList={blocksWithData}
             onMoveItem={(result) => {
               const { source, destination } = result;
               if (!destination) {

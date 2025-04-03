@@ -1,0 +1,1 @@
+Fixed rendering recursion error when rendering content in edit mode with blocks but no blocks layout. @JeffersonBledsoe
