@@ -24,7 +24,7 @@ build:
         exit 183;
       fi
     # Install any other extra dependencies to build the docs
-    # - npm i -g corepack@latest
+    - npm i -g corepack@latest
     - corepack enable
     - corepack prepare pnpm@* --activate
     - asdf reshim nodejs
