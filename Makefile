@@ -11,6 +11,9 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 include variables.mk
 
+# Allow setting the language for backend-docker-start. Default is `en`.
+SITE_DEFAULT_LANGUAGE ?=en
+
 # Sphinx variables
 # You can set these variables from the command line.
 SPHINXOPTS      ?=
