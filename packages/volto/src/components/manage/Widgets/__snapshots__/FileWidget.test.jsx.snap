@@ -33,7 +33,9 @@ exports[`FileWidget renders a file widget component with value 1`] = `
             tabindex="0"
           >
             <img
-              class="ui small image image-preview"
+              alt=""
+              class="image-preview small ui image"
+              fetchpriority="high"
               id="field-my-field-image"
               src="http://myfile?id=0"
             />
@@ -116,7 +118,9 @@ exports[`FileWidget renders a file widget component with value in raw data 1`] =
             tabindex="0"
           >
             <img
-              class="ui small image image-preview"
+              alt=""
+              class="image-preview small ui image"
+              fetchpriority="high"
               id="field-my-field-image"
               src="data:image/png;base64,oiweurtksdgfjaslfqw9523563456"
             />
