@@ -18,7 +18,7 @@ import { CookiesProvider } from 'react-cookie';
 import cookiesMiddleware from 'universal-cookie-express';
 import debug from 'debug';
 
-import routes from '@root/routes';
+import routes from '@plone/volto/routes';
 import config from '@plone/volto/registry';
 
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
@@ -39,7 +39,10 @@ import ErrorPage from '@plone/volto/error';
 import languages from '@plone/volto/constants/Languages.cjs';
 
 import configureStore from '@plone/volto/store';
-import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
+import {
+  ReduxAsyncConnect,
+  loadOnServer,
+} from '@plone/volto/helpers/AsyncConnect';
 
 let locales = {};
 
@@ -68,10 +71,26 @@ const server = express()
   })
   .use(cookiesMiddleware());
 
+if (process.env.RAZZLE_PREFIX_PATH) {
+  server.use(
+    process.env.RAZZLE_PREFIX_PATH,
+    express.static(
+      process.env.BUILD_DIR
+        ? path.join(process.env.BUILD_DIR, 'public')
+        : process.env.RAZZLE_PUBLIC_DIR,
+      {
+        redirect: false, // Avoid /my-prefix from being redirected to /my-prefix/
+      },
+    ),
+  );
+}
+
 const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
 
 server.all('*', setupServer);
-if (middleware.length) server.use('/', middleware);
+if (middleware.length) {
+  server.use('/', middleware);
+}
 
 server.use(function (err, req, res, next) {
   if (err) {
@@ -254,7 +273,11 @@ server.get('/*', (req, res) => {
         <ChunkExtractorManager extractor={extractor}>
           <CookiesProvider cookies={req.universalCookies}>
             <Provider store={store} onError={reactIntlErrorHandler}>
-              <StaticRouter context={context} location={req.url}>
+              <StaticRouter
+                context={context}
+                location={req.url}
+                basename={process.env.RAZZLE_PREFIX_PATH}
+              >
                 <ReduxAsyncConnect routes={routes} helpers={api} />
               </StaticRouter>
             </Provider>
