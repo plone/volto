@@ -16,6 +16,33 @@ exports[`renders a error message for invalid video URL in edit mode 1`] = `
 </div>
 `;
 
+exports[`renders a incorrect peertube video body component 1`] = `
+<div
+  className="video-inner"
+>
+  <div
+    className="invalidVideoFormat"
+  />
+</div>
+`;
+
+exports[`renders a peertube video body component 1`] = `
+<div
+  className="video-inner"
+>
+  <iframe
+    src="https://peertube.eus/videos/embed/qjubDnZ79UmmjhAUqvX2zu"
+    style={
+      Object {
+        "aspectRatio": "16/9",
+        "width": "100%",
+      }
+    }
+    title="Peertube video iframe"
+  />
+</div>
+`;
+
 exports[`renders a youtube video body component 1`] = `
 <div
   className="video-inner"
