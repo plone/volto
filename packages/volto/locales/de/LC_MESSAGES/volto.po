@@ -4719,7 +4719,7 @@ msgstr "Bild"
 #. Default: "Please upload an image instead."
 #: components/manage/Widgets/ImageWidget
 msgid "imageUploadErrorMessage"
-msgstr "Beim Hochladen des Bildes ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+msgstr "Bitte laden Sie ein Bild hoch."
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
