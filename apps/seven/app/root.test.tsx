@@ -2,25 +2,43 @@ import { expect, describe, it, vi, afterEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { createRoutesStub, unstable_RouterContextProvider } from 'react-router';
 import config from '@plone/registry';
-import { Layout, loader } from './root';
+import { Layout, ErrorBoundary, loader, links } from './root';
+import { renderWithI18n } from '../tests/testHelpers';
 
-// function renderStub() {
-//   const Stub = createRoutesStub([
-//     {
-//       path: '/',
-//       Component: Layout,
-//       loader() {
-//         return {
-//           content: {},
-//           locale: 'en',
-//         };
-//       },
-//     },
-//   ]);
+async function renderStub() {
+  const Stub = createRoutesStub([
+    {
+      path: '/',
+      Component: () => (
+        <Layout
+          params={{}}
+          loaderData={{ locale: 'en', content: {} as any }}
+          matches={[{} as any]}
+        >
+          <p>Root Layout</p>
+        </Layout>
+      ),
+      // a fallback is needed
+      HydrateFallback: () => <></>,
+      loader() {
+        return {
+          content: {},
+          locale: 'en',
+        };
+      },
+    },
+  ]);
 
-//   // render the app stub at "/login"
-//   render(<Stub initialEntries={['/login']} />);
-// }
+  await renderWithI18n(<Stub initialEntries={['/']} />);
+}
+
+describe('links', () => {
+  it('should return the stylesheet', () => {
+    const result = links();
+    // @ts-expect-error ts complains because rel can be undefined, we don't care here
+    expect(result.find((r) => r.rel === 'stylesheet')).toBeDefined();
+  });
+});
 
 describe('loader', () => {
   afterEach(() => {
@@ -103,5 +121,20 @@ describe('loader', () => {
     } catch (err: any) {
       expect(err.init.status).toEqual(500);
     }
+  });
+});
+
+describe('Layout', () => {
+  it('should render the root Layout', async () => {
+    await renderStub();
+    expect(await screen.findByText('Root Layout')).toBeInTheDocument();
+  });
+});
+
+describe('ErrorBoundary', () => {
+  it('should render the error message', async () => {
+    const error = new Error('Test error');
+    render(<ErrorBoundary error={error} params={{}} />);
+    expect(screen.getByText('Test error')).toBeInTheDocument();
   });
 });
