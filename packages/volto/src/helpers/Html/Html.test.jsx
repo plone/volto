@@ -3,36 +3,40 @@ import renderer from 'react-test-renderer';
 import config from '@plone/volto/registry';
 import Html from './Html';
 
-jest.mock('../Helmet/Helmet', () => ({
-  rewind: () => ({
-    base: {
-      toComponent: () => '',
-    },
-    title: {
-      toComponent: () => '',
-    },
-    meta: {
-      toComponent: () => '',
-    },
-    link: {
-      toComponent: () => '',
-    },
-    script: {
-      toComponent: () => '',
-    },
-    style: {
-      toComponent: () => '',
-    },
-    htmlAttributes: {
-      toComponent: () => ({
-        lang: 'en',
-      }),
-    },
-  }),
+vi.mock('../Helmet/Helmet', () => ({
+  default: {
+    rewind: () => ({
+      base: {
+        toComponent: () => '',
+      },
+      title: {
+        toComponent: () => '',
+      },
+      meta: {
+        toComponent: () => '',
+      },
+      link: {
+        toComponent: () => '',
+      },
+      script: {
+        toComponent: () => '',
+      },
+      style: {
+        toComponent: () => '',
+      },
+      htmlAttributes: {
+        toComponent: () => ({
+          lang: 'en',
+        }),
+      },
+    }),
+  },
 }));
 
-jest.mock('../BodyClass/BodyClass', () => ({
-  rewind: () => ['class1', 'class2'],
+vi.mock('../BodyClass/BodyClass', () => ({
+  default: {
+    rewind: () => ['class1', 'class2'],
+  },
 }));
 
 config.settings = {};

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders an image view component 1`] = `
 <div
@@ -21,13 +21,13 @@ exports[`renders an image view component 1`] = `
       alt="Hello World!"
       imageField="image"
       item={
-        Object {
+        {
           "description": "Hi",
-          "image": Object {
+          "image": {
             "download": "file:///preview.jpg",
             "height": 400,
-            "scales": Object {
-              "preview": Object {
+            "scales": {
+              "preview": {
                 "download": "file:///preview.jpg",
                 "height": 400,
                 "width": 400,

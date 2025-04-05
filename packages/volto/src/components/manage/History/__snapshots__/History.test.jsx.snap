@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`History redirects if unassigned 1`] = `
+exports[`History > redirects if unassigned 1`] = `
 <div>
   <div
     class="ui container view-wrapper"
@@ -20,7 +20,7 @@ exports[`History redirects if unassigned 1`] = `
 </div>
 `;
 
-exports[`History redirects if unassigned, no token gives unauthorized 1`] = `
+exports[`History > redirects if unassigned, no token gives unauthorized 1`] = `
 <div>
   <div
     class="ui container view-wrapper"
@@ -59,7 +59,7 @@ exports[`History redirects if unassigned, no token gives unauthorized 1`] = `
 </div>
 `;
 
-exports[`History renders a history component 1`] = `
+exports[`History > renders a history component 1`] = `
 <div>
   <div
     class="ui container"
