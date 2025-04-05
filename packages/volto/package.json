@@ -298,7 +298,7 @@
     "@storybook/addon-docs": "^8.0.4",
     "@storybook/addon-essentials": "^8.0.4",
     "@storybook/addon-links": "^8.0.4",
-    "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
+    "@storybook/addon-webpack5-compiler-babel": "3.0.3",
     "@storybook/react": "^8.0.4",
     "@storybook/react-webpack5": "^8.0.4",
     "@storybook/theming": "^8.0.4",

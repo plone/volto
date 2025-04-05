@@ -13,7 +13,7 @@ The purpose of this package is to provide an agnostic set of baseline components
 
 You can find the self-documented Storybook in:
 
-https://plone-components.netlify.app/
+https://plone-components.readthedocs.io/
 
 `@plone/components` is based on [React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html), the documentation there applies also to all the components in this package.
 
