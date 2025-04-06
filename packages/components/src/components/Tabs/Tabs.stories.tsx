@@ -32,4 +32,7 @@ export const Default: Story = {
       <TabPanel id="Emp">Alea jacta est.</TabPanel>
     </Tabs>
   ),
+  args: {
+    defaultSelectedKey: 'FoR',
+  },
 };
