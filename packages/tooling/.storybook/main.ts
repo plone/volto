@@ -21,14 +21,10 @@ const config: StorybookConfig = {
       url: 'https://plone-components.readthedocs.io/latest/',
       expanded: true, // Optional, true by default,
     },
-    // componentsTailwind: {
-    //   title: '@plone/components Tailwind',
-    //   url: 'http://localhost:6002',
-    // },
-    // slots: {
-    //   title: '@plone/slots',
-    //   url: 'http://localhost:6003',
-    // },
+    slots: {
+      title: '@plone/slots',
+      url: 'https://plone-slots.readthedocs.io/latest/',
+    },
     // publicui: {
     //   title: '@plone/publicui',
     //   url: 'http://localhost:6004',
