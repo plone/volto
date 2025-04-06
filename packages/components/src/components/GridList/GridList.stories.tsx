@@ -6,6 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/GridList.css';
 
 const meta = {
+  title: 'Basic/GridList',
   component: GridList,
   parameters: {
     layout: 'centered',

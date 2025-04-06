@@ -16,6 +16,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/Menu.css';
 
 const meta = {
+  title: 'Basic/Menu',
   component: Menu,
   parameters: {
     layout: 'centered',

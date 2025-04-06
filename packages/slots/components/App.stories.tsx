@@ -6,9 +6,6 @@ import { storyData } from '../stories';
 const meta = {
   title: 'App',
   component: App,
-  parameters: {
-    layout: 'centered',
-  },
 } satisfies Meta<typeof App>;
 
 export default meta;
@@ -46,7 +43,6 @@ export const Default: Story = {
           ],
         },
         navroot: {
-          // @ts-expect-error This is a test object, missing all content properties
           navroot: {
             '@id': 'http://localhost:3000/Plone',
             title: 'Plone site',

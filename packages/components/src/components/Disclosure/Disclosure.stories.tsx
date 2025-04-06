@@ -10,6 +10,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/Disclosure.css';
 
 const meta = {
+  title: 'Basic/Disclosure',
   component: Disclosure,
   parameters: {
     layout: 'centered',

@@ -7,7 +7,7 @@ import '../../styles/basic/icons.css';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta = {
-  title: 'Components/Icon',
+  title: 'Basic/Icon',
   component: Icon,
   tags: ['autodocs'],
   decorators: [

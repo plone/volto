@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/TextField.css';
 
 const meta: Meta<typeof TextAreaField> = {
-  title: 'Forms/TextAreaField',
+  title: 'Basic/Forms/TextAreaField',
   component: TextAreaField,
   parameters: {
     layout: 'centered',

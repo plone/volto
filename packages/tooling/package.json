@@ -6,6 +6,15 @@
   "publishConfig": {
     "access": "public"
   },
+  "scripts": {
+    "storybook:components": "storybook dev -p 6001 -c ../components/.storybook",
+    "storybook:blocks": "storybook dev -p 6002 -c ../blocks/.storybook",
+    "storybook:cmsui": "storybook dev -p 6003 -c ../cmsui/.storybook",
+    "storybook:publicui": "storybook dev -p 6004 -c ../publicui/.storybook",
+    "storybook:slots": "storybook dev -p 6005 -c ../slots/.storybook",
+    "storybook:main": "storybook dev -p 6060 -c .storybook",
+    "build-storybook": "storybook build"
+  },
   "dependencies": {
     "@eslint/js": "^9.20.0",
     "eslint": "^9.20.1",
@@ -22,5 +31,20 @@
     "stylelint-config-idiomatic-order": "10.0.0",
     "stylelint-prettier": "5.0.3",
     "typescript-eslint": "^8.24.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.12",
+    "@storybook/addon-interactions": "^8.6.12",
+    "@storybook/addon-links": "^8.6.12",
+    "@storybook/blocks": "^8.6.12",
+    "@storybook/manager-api": "^8.6.12",
+    "@storybook/react": "^8.6.12",
+    "@storybook/react-vite": "^8.6.12",
+    "@storybook/theming": "^8.6.12",
+    "@types/react": "catalog:",
+    "eslint-plugin-storybook": "^0.11.2",
+    "storybook": "^8.6.12",
+    "vite": "catalog:",
+    "vite-tsconfig-paths": "^5.1.4"
   }
 }

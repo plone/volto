@@ -5,6 +5,17 @@ export const parameters = {
   backgrounds: {
     default: 'light',
   },
+  options: {
+    storySort: {
+      order: [
+        'Introduction',
+        'Styleguide',
+        'Tailwind',
+        'Basic',
+        ['Forms', 'Quanta', '*'],
+      ],
+    },
+  },
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {

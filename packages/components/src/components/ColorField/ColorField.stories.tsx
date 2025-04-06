@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/ColorField.css';
 
 const meta = {
-  title: 'Widgets/ColorField',
+  title: 'Basic/Forms/ColorField',
   component: ColorField,
   parameters: {
     layout: 'centered',

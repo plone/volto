@@ -12,7 +12,7 @@ export interface SelectItemObject {
 }
 
 const meta: Meta<typeof QuantaSelect> = {
-  title: 'Quanta/Select',
+  title: 'Basic/Quanta/Select',
   component: QuantaSelect,
   parameters: {
     layout: 'centered',

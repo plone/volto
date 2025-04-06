@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/ProgressBar.css';
 
 const meta: Meta<typeof ProgressBar> = {
-  title: 'Widgets/ProgressBar',
+  title: 'Basic/Forms/ProgressBar',
   component: ProgressBar,
   parameters: {
     layout: 'centered',
