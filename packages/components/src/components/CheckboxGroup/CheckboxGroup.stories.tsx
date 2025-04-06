@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/CheckboxGroup.css';
 
 const meta = {
-  title: 'Widgets/CheckboxGroup',
+  title: 'Basic/Forms/CheckboxGroup',
   component: CheckboxGroup,
   parameters: {
     layout: 'centered',

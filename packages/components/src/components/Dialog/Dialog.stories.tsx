@@ -15,6 +15,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/Dialog.css';
 
 const meta = {
+  title: 'Basic/Dialog',
   component: Dialog,
   parameters: {
     layout: 'centered',

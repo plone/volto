@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/SearchField.css';
 
 const meta: Meta<typeof SearchField> = {
-  title: 'Forms/SearchField',
+  title: 'Basic/Forms/SearchField',
   component: SearchField,
   parameters: {
     layout: 'centered',

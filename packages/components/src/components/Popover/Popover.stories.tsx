@@ -9,6 +9,7 @@ import '../../styles/basic/Popover.css';
 import { InfoIcon } from '../icons/InfoIcon';
 
 const meta = {
+  title: 'Basic/Popover',
   component: Popover,
   parameters: {
     layout: 'centered',

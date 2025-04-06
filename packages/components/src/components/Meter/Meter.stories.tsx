@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/Meter.css';
 
 const meta: Meta<typeof Meter> = {
-  title: 'Forms/Meter',
+  title: 'Basic/Forms/Meter',
   component: Meter,
   parameters: {
     layout: 'centered',

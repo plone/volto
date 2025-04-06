@@ -10,7 +10,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/Table.css';
 
 const meta: Meta<typeof Table> = {
-  title: 'Components/Table',
+  title: 'Basic/Table',
   component: Table,
   parameters: {
     layout: 'centered',

@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/ComboBox.css';
 
 const meta = {
-  title: 'Widgets/ComboBox',
+  title: 'Basic/Forms/ComboBox',
   component: ComboBox,
   parameters: {
     layout: 'centered',

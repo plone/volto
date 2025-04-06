@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/RangeCalendar.css';
 
 const meta: Meta<typeof RangeCalendar> = {
-  title: 'Widgets/RangeCalendar',
+  title: 'Basic/Forms/RangeCalendar',
   component: RangeCalendar,
   parameters: {
     layout: 'centered',

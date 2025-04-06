@@ -7,6 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/Tabs.css';
 
 const meta: Meta<typeof Tabs> = {
+  title: 'Basic/Tabs',
   component: Tabs,
   parameters: {
     layout: 'centered',

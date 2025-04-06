@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/TimeField.css';
 
 const meta: Meta<typeof TimeField> = {
-  title: 'Forms/TimeField',
+  title: 'Basic/Forms/TimeField',
   component: TimeField,
   parameters: {
     layout: 'centered',

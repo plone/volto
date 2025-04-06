@@ -7,7 +7,7 @@ import '../../styles/basic/Breadcrumbs.css';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta = {
-  title: 'Viewlets/Breadcrumbs',
+  title: 'Basic/Breadcrumbs',
   component: BreadcrumbsComponent,
   tags: ['autodocs'],
   parameters: {

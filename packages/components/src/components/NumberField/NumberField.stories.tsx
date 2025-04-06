@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/NumberField.css';
 
 const meta = {
-  title: 'Forms/NumberField',
+  title: 'Basic/Forms/NumberField',
   component: NumberField,
   parameters: {
     layout: 'centered',
