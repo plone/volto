@@ -11,6 +11,9 @@ myst:
 
 # Volto UI
 
+```{note}
+This documentation is checked using [Vale](https://vale.sh/) for consistent style and grammar.
+
 The Volto user interface (UI) is a React-based frontend for the [Plone content management system](https://plone.org).
 It is the default user interface starting with the release of Plone 6.
 
