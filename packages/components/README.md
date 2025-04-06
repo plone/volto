@@ -3,7 +3,7 @@
 [![NPM](https://img.shields.io/npm/v/@plone/components.svg)](https://www.npmjs.com/package/@plone/components)
 [![Build Status](https://github.com/plone/components/actions/workflows/code.yml/badge.svg)](https://github.com/plone/components/actions)
 [![Build Status](https://github.com/plone/components/actions/workflows/unit.yml/badge.svg)](https://github.com/plone/components/actions)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ff1f19ce-9b19-48f9-94a8-d533b53d4a9a/deploy-status)](https://app.netlify.com/sites/plone-components/deploys)
+[![Build Status](https://app.readthedocs.org/projects/plone-components/badge/?version=latest)](https://plone-components.readthedocs.io/latest/)
 
 This package contains ReactJS components for using Plone as a headless CMS.
 
@@ -13,7 +13,7 @@ The purpose of this package is to provide an agnostic set of baseline components
 
 You can find the self-documented Storybook in:
 
-https://plone-components.readthedocs.io/
+https://plone-components.readthedocs.io/latest/
 
 `@plone/components` is based on [React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html), the documentation there applies also to all the components in this package.
 
