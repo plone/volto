@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.11.1 (2025-04-07)
+
+### Bugfix
+
+- Fixed regression on brown bag minor version of `@storybook/addon-webpack5-compiler-babel`. @sneridagh [#6930](https://github.com/plone/volto/issues/6930)
+
 ## 18.11.0 (2025-03-31)
 
 ### Feature
