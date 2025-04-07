@@ -11,30 +11,10 @@ myst:
 
 This part of the documentation describes how to develop projects using Volto.
 
-See {doc}`overview` for a reference of technologies used within the Volto stack, and for suggested topics for further learning and research.
-
-Or jump in to any topic listed below.
-
 ```{toctree}
-:caption: Table of Contents
+:caption: Table of contents
 :maxdepth: 1
 
-overview
-creating-project
-add-ons/index
-folder-structure
-environment-variables
-customizing-components
-customizing-views
-creating-views
 images
 i18n
-express
-lazyload
-appextras
-contextnavigation
-pluggables
-widget
-how-to-restrict-blocks
-color-picker-widget
 ```

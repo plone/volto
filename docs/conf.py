@@ -307,8 +307,8 @@ latex_logo = "_static/logo_2x.png"
 # source_replacements = {
 # }
 
-
 def setup(app):
     # app.add_config_value("source_replacements", {}, True)
     # app.connect("source-read", source_replace)
     app.add_config_value("context", "volto", "env")
+    app.tags.add("volto")

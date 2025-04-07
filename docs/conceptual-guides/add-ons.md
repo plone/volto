@@ -153,10 +153,6 @@ export { loadOptionalBlocks, overrideSomeDefaultBlock };
 export default applyConfig;
 ```
 
-```{seealso}
-{doc}`../development/add-ons/load-add-on-configuration`
-```
-
 
 % TODO: Should this section be moved to a how-to guide?
 ### Define your add-ons programmatically
@@ -198,7 +194,7 @@ In Plone terminology, it is like including a Python egg in the `zcml` section of
 ```
 
 ```{seealso}
-{doc}`../configuration/volto-config-js`
+{doc}`../configuration/index`
 ```
 
 
