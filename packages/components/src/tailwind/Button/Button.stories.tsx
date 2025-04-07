@@ -45,9 +45,6 @@ export const Icon = {
       <BinIcon />
     </Button>
   ),
-  args: {
-    variant: 'icon',
-  },
 };
 
 export const WithClassName = {

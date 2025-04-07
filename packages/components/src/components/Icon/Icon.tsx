@@ -50,7 +50,7 @@ export function Icon(props: IconProps) {
   const iconSize = size ? size : 'M';
   const color = props.color?.startsWith('--')
     ? `var(${props.color})`
-    : props.color;
+    : props.color || 'currentColor';
 
   return React.cloneElement(children, {
     ...filterDOMProps(otherProps),
