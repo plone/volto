@@ -106,7 +106,7 @@ docs-clean:  ## Clean docs build directory
 
 .PHONY: docs-news
 docs-news:  ## Create or update the symlink from docs to volto package
-	rm docs/news
+	if [ -f /tmp/foo.txt ]; then rm docs/news; fi
 	ln -snf ../packages/volto/news docs/news
 	@echo "Symlink to Seven news created or updated.";
 
