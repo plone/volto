@@ -1,6 +1,6 @@
 The Volto team enforces the following branch policy when developers contribute to its core.
 
-Releases of general packages (`@plone/generator-volto`, `@plone/scripts`, and so on) are cut from the `main` branch.
+Releases of general packages (`@plone/registry`, `@plone/scripts`, and so on) are cut from the `main` branch.
 
 stable and latest
 :   The terms _stable_ and _latest_ mean the same thing in this policy.
@@ -19,6 +19,12 @@ legacy
     You should update to minor Plone releases as soon as possible.
     Legacy versions won't receive any new features.
     They might receive occasional bug fixes or security updates, subject to approval from the Volto Team.
+
+`seven`
+:   This is the branch for the successor of Volto.
+    It is under active development, and it will be released when it is ready.
+    It is not a stable version, and it should not be used in production.
+    The Plone's modular architecture packages are released from this branch.
 
 `main`
 :   This is the bleeding edge branch in git.

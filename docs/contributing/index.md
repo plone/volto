@@ -9,7 +9,7 @@ myst:
 
 (contributing-to-volto-label)=
 
-# Contributing to Volto
+# Contributing to Seven
 
 ```{important}
 The Volto Team has suspended its review of new pull requests from first-time contributors until the [release of Plone 7](https://plone.org/download/release-schedule), which is preliminarily scheduled for the second quarter of 2026.
