@@ -7,9 +7,10 @@ on:
     # Execute this action only on PRs that touch
     # documentation files for Volto.
     branches:
-      - main
+      - seven
     paths:
       - "docs/source/**"
+      - "packages/components/.storybook/**"
       - "packages/volto/.storybook/**"
       - .readthedocs.yaml
       - requirements-docs.txt
