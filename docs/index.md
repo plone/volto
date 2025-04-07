@@ -40,15 +40,14 @@ The following sections guide you to begin your journey with Volto.
 An integrator is someone who uses Volto to build a project.
 
 -   {doc}`plone:install/create-project-cookieplone` is a guide to bootstrap a new Volto project and start hacking.
--   {doc}`development/overview` is intended for integrators to assess their knowledge and determine what gaps they would like to fill through available resources.
--   {doc}`tutorials/index` lists several tutorials and references for further research and learning.
+-   {doc}`development/index` is intended for integrators to assess their knowledge and determine what gaps they would like to fill through available resources.
 
 
 ### Users
 
 A user of Volto is someone who edits content in a Plone content management system with Volto as the user interface.
 
--   {doc}`user-manual/index` provides information about how to manage content in a Plone site.
+-   {doc}`training:content-editing/index` provides information about how to manage content in a Plone site.
 
 
 ### Contributors
@@ -68,19 +67,11 @@ A contributor is someone who writes code or documentation for the Volto core pac
 get-started/index
 development/index
 configuration/index
-theming/index
-blocks/index
-addons/index
-backend/index
-deploying/index
-upgrade-guide/index
-client/index
-user-manual/index
-tutorials/index
-contributing/index
-release-notes/index
-release-management-notes/index
 conceptual-guides/index
+upgrade-guide/index
+contributing/index
+release-management-notes/index
+release-notes/index
 ```
 
 % Only check change log entries in Volto documentation—not when it is included in the main Plone documentation—to ensure links work and do not redirect.

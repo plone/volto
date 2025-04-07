@@ -109,7 +109,6 @@ These checks are enforced automatically on every pull request, so you might as w
 Specifically:
 
 -   {doc}`./linting`
--   {doc}`./testing`
 -   {doc}`./acceptance-tests`
 -   {doc}`./documentation`
 
@@ -119,25 +118,14 @@ Specifically:
 ## Developer guidelines
 
 ```{toctree}
-:maxdepth: 1
+:maxdepth: 2
 
-developing-core
-design-principles
-style-guide
-language-features
-linting
-testing
 acceptance-tests
+developing-core
 documentation
-react
-redux
-routing
-icons
-accessibility-guidelines
-bundle-size-optimization
-typescript
-volto-core-addons
+linting
 version-policy
+language-features
 ```
 
 
