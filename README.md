@@ -52,15 +52,15 @@ This allows the code to be shared effectively, and unifies tracking of changes a
 See also [Monorepo structure](https://6.docs.plone.org/volto/contributing/developing-core.html#monorepo-structure).
 
 
-## Plone's frontend modular architecture Storybook
+## Storybook for the frontend's modular architecture
 
-The Plone frontend modular architecture is documented in Storybook.
-You can find it at [https://plone-storybook.readthedocs.io/latest](https://plone-storybook.readthedocs.io/latest).
+The frontend's modular architecture in Plone is documented with Storybook.
+You can find it at https://plone-storybook.readthedocs.io/latest/.
 
 
 ## Create a Seven frontend-only project
 
-To start a new package frontend-only project using Seven, follow the [Plone installation documentation](https://volto.readthedocs.io/seven/get-started/create-package.html).
+To create a project with a frontend-only scaffold using Seven, follow the [Plone installation documentation](https://volto.readthedocs.io/seven/get-started/create-package.html).
 
 
 ## Documentation
