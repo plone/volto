@@ -8,7 +8,7 @@ import { tv } from 'tailwind-variants';
 import { focusRing } from '../utils';
 
 export interface ButtonProps extends RACButtonProps {
-  variant?: 'primary' | 'secondary' | 'destructive' | 'icon';
+  variant?: 'primary' | 'secondary' | 'destructive';
 }
 
 const button = tv({
