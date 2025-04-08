@@ -37,7 +37,7 @@ As is the case with similar modern JavaScript-based applications, you should be 
 
 ## Basic Volto development
 
-Once you've {doc}`bootstrapped your Volto project <plone:install/create-project>`, you can immediately start hacking.
+Once you've {doc}`bootstrapped your Volto project <plone:install/create-project-cookieplone>`, you can immediately start hacking.
 The following is a list of some the things you can do at this stage.
 
 -   {ref}`Configure your text editor for JavaScript and Volto development <linting-editor-integration-label>`
@@ -98,5 +98,5 @@ Add your code and customizations to this add-on, and Volto will load them on sta
 This add-on is configured as a theme add-on, so you are able to customize the look and feel of your site as well.
 
 ```{seealso}
-For more information about how to develop a Volto project as an add-on, see {doc}`training:voltoaddons/index`.
+For more information about how to develop a Volto project as an add-on, see {doc}`training-2024:voltoaddons/index`.
 ```

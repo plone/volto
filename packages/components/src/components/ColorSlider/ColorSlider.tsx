@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ColorSlider as RACColorSlider,
-  ColorSliderProps as RACColorSliderProps,
+  type ColorSliderProps as RACColorSliderProps,
   ColorThumb,
   Label,
   SliderOutput,

@@ -1,4 +1,4 @@
-import { Location } from 'history';
+import { Location } from '../router';
 import type { Content } from '../content';
 
 export type SlotPredicate = (args: any) => boolean;

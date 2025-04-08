@@ -1,40 +1,29 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
-import { ContextNavigationResponse } from '@plone/types';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type { ContextNavigationResponse } from '@plone/types';
 import { z } from 'zod';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 const getContextNavigationSchema = z.object({
   path: z.string(),
 });
 
-export type ContextNavigationArgs = z.infer<
-  typeof getContextNavigationSchema
-> & {
-  config: PloneClientConfig;
-};
+export type ContextNavigationArgs = z.infer<typeof getContextNavigationSchema>;
 
-export const getContextNavigation = async ({
-  path,
-  config,
-}: ContextNavigationArgs): Promise<ContextNavigationResponse> => {
+export async function getContextNavigation(
+  this: PloneClient,
+  { path }: ContextNavigationArgs,
+): Promise<RequestResponse<ContextNavigationResponse>> {
   const validatedArgs = getContextNavigationSchema.parse({
     path,
   });
 
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
 
   const contextnavigationPath = `${validatedArgs.path}/@contextnavigation`;
 
   return apiRequest('get', contextnavigationPath, options);
-};
-
-export const getContextNavigationQuery = ({
-  path,
-  config,
-}: ContextNavigationArgs) => ({
-  queryKey: [path, 'get', 'contextnavigation'],
-  queryFn: () => getContextNavigation({ path, config }),
-});
+}

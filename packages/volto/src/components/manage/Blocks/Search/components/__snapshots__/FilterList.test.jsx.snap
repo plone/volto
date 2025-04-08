@@ -36,6 +36,7 @@ exports[`FilterList renders filters listing component for search block 1`] = `
     <button
       className="ui small basic compact icon button"
       onClick={[Function]}
+      type="button"
     >
       <i
         aria-hidden="true"

@@ -1,9 +1,9 @@
 import React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { omit } from 'lodash';
+import omit from 'lodash/omit';
 
-import { loadLazyLibrary } from '@plone/volto/actions';
+import { loadLazyLibrary } from '@plone/volto/actions/lazyLibraries/lazyLibraries';
 import config from '@plone/volto/registry';
 
 const validateLibs = (maybeLibs) => {

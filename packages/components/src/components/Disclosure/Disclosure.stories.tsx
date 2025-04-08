@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Disclosure } from './Disclosure';
 import {
   Button,
-  UNSTABLE_DisclosurePanel as DisclosurePanel,
+  DisclosurePanel as DisclosurePanel,
 } from 'react-aria-components';
 
 import type { Meta, StoryObj } from '@storybook/react';

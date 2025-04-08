@@ -70,11 +70,11 @@ This environment variable allows you to specify a custom location for {file}`vol
 It can be relative to the current project or absolute.
 
 ```shell
-VOLTOCONFIG=../../volto.config.js yarn start
+VOLTOCONFIG=../../volto.config.js pnpm start
 ```
 
 ```shell
-VOLTOCONFIG=$(pwd)/volto.config.js yarn start
+VOLTOCONFIG=$(pwd)/volto.config.js pnpm start
 ```
 
 You can also set it from the root of the monorepo:

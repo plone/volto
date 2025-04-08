@@ -3,8 +3,8 @@ import config from '@plone/volto/registry';
 import {
   isCursorInList,
   isCursorAtListBlockStart,
-  deconstructToVoltoBlocks,
-} from '@plone/volto-slate/utils';
+} from '@plone/volto-slate/utils/lists';
+import { deconstructToVoltoBlocks } from '@plone/volto-slate/utils/volto-blocks';
 
 /**
  * Handle the new Volto blocks created by `deconstructToVoltoBlocks`.

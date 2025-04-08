@@ -4,7 +4,7 @@ import type { Content } from '@plone/types';
 
 /*
 Usage:
-<SlotRenderer name="aboveContent" content={content} route={} />
+<SlotRenderer name="aboveContent" content={content} />
 */
 
 const SlotRenderer = ({

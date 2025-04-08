@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import serialize from 'serialize-javascript';
-import { join } from 'lodash';
+import join from 'lodash/join';
 import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 import { runtimeConfig } from '@plone/volto/runtime_config';
 import config from '@plone/volto/registry';
@@ -103,6 +103,13 @@ class Html extends Component {
           {head.link.toComponent()}
           {head.script.toComponent()}
 
+          {config.settings.cssLayers && (
+            // Load the CSS layers from config, if any
+            <style>{`@layer ${config.settings.cssLayers.join(', ')};`}</style>
+          )}
+
+          {head.style.toComponent()}
+
           <script
             dangerouslySetInnerHTML={{
               __html: `window.env = ${serialize({
@@ -114,6 +121,9 @@ class Html extends Component {
                 }),
                 ...(publicURL && {
                   publicURL,
+                }),
+                ...(process.env.SITE_DEFAULT_LANGUAGE && {
+                  defaultLanguage: process.env.SITE_DEFAULT_LANGUAGE,
                 }),
               })};`,
             }}
@@ -129,7 +139,7 @@ class Html extends Component {
           <link rel="manifest" href="/site.webmanifest" />
           <meta name="generator" content="Plone 6 - https://plone.org" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="mobile-web-app-capable" content="yes" />
           {process.env.NODE_ENV === 'production' && criticalCss && (
             <style
               dangerouslySetInnerHTML={{ __html: this.props.criticalCss }}
@@ -158,6 +168,7 @@ class Html extends Component {
                   }}
                 ></script>
                 {extractor.getStyleElements().map((elem) => (
+                  // eslint-disable-next-line react/jsx-key
                   <noscript>
                     {React.cloneElement(elem, {
                       rel: 'stylesheet',

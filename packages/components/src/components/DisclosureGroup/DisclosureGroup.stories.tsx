@@ -2,8 +2,8 @@ import * as React from 'react';
 import { DisclosureGroup } from './DisclosureGroup';
 import {
   Button,
-  UNSTABLE_Disclosure as Disclosure,
-  UNSTABLE_DisclosurePanel as DisclosurePanel,
+  Disclosure as Disclosure,
+  DisclosurePanel as DisclosurePanel,
 } from 'react-aria-components';
 
 import type { Meta, StoryObj } from '@storybook/react';

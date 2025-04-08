@@ -5,7 +5,9 @@
 
 import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode';
-import { compact, flatten, union } from 'lodash';
+import compact from 'lodash/compact';
+import flatten from 'lodash/flatten';
+import union from 'lodash/union';
 import { matchPath } from 'react-router';
 import qs from 'query-string';
 
@@ -17,12 +19,13 @@ import {
   RESET_APIERROR,
   SET_APIERROR,
 } from '@plone/volto/constants/ActionTypes';
-import { changeLanguage, updateUploadedFiles } from '@plone/volto/actions';
+import { changeLanguage } from '@plone/volto/actions/language/language';
+import { updateUploadedFiles } from '@plone/volto/actions/content/content';
 import {
   toGettextLang,
   toReactIntlLang,
-  getCookieOptions,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Utils/Utils';
+import { getCookieOptions } from '@plone/volto/helpers/Cookies/cookies';
 let socket = null;
 
 /**
@@ -186,6 +189,7 @@ const apiMiddlewareFactory =
                     checkUrl: settings.actions_raising_api_errors.includes(
                       action.type,
                     ),
+                    attach: item.attach,
                   },
                 ).then((reqres) => {
                   if (action.subrequest === 'batch-upload') {
@@ -205,6 +209,7 @@ const apiMiddlewareFactory =
                   checkUrl: settings.actions_raising_api_errors.includes(
                     action.type,
                   ),
+                  attach: item.attach,
                 }),
               ),
             )
@@ -214,6 +219,7 @@ const apiMiddlewareFactory =
             headers: request.headers,
             params: request.params,
             checkUrl: settings.actions_raising_api_errors.includes(action.type),
+            attach: request.attach,
           });
       actionPromise.then(
         (result) => {

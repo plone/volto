@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, isEmpty } from 'lodash';
+import filter from 'lodash/filter';
+import isEmpty from 'lodash/isEmpty';
 import { Menu } from 'semantic-ui-react';
 import { useIntl, FormattedMessage } from 'react-intl';
-import { Icon } from '@plone/volto/components';
-import { useUser } from '@plone/volto/hooks';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import useUser from '@plone/volto/hooks/user/useUser';
 
 const emptySlateBlock = () => ({
   value: [

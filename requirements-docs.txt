@@ -6,5 +6,6 @@ sphinx-autobuild
 sphinx-copybutton
 sphinx-examples
 sphinxcontrib-video
+sphinxcontrib-youtube
 sphinxext-opengraph
 vale

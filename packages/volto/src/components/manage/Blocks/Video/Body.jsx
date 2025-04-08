@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
-import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
-import { VideoEmbed } from '@plone/volto/components';
+import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { VideoEmbed } from '@plone/volto/components/theme/VideoEmbed/VideoEmbed';
 
 //Extracting videoID, listID and thumbnailURL from the video URL
 const getVideoIDAndPlaceholder = (url) => {

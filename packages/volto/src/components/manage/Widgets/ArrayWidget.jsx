@@ -9,14 +9,15 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import { find, isObject } from 'lodash';
+import find from 'lodash/find';
+import isObject from 'lodash/isObject';
 
 import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
-} from '@plone/volto/helpers';
-import { getVocabulary } from '@plone/volto/actions';
+} from '@plone/volto/helpers/Vocabularies/Vocabularies';
+import { getVocabulary } from '@plone/volto/actions/vocabularies/vocabularies';
 
 import {
   Option,

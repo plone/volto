@@ -6,16 +6,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { compact, includes, isArray, isEmpty, remove } from 'lodash';
+import compact from 'lodash/compact';
+import includes from 'lodash/includes';
+import isArray from 'lodash/isArray';
+import isEmpty from 'lodash/isEmpty';
+import remove from 'lodash/remove';
 import { connect } from 'react-redux';
 import { Image, Label, Popup, Button } from 'semantic-ui-react';
 import {
   flattenToAppURL,
   isInternalURL,
-  isUrl,
   normalizeUrl,
   removeProtocol,
 } from '@plone/volto/helpers/Url/Url';
+import { urlValidator } from '@plone/volto/helpers/FormValidation/validators';
 import { searchContent } from '@plone/volto/actions/search/search';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -98,6 +102,7 @@ export class ObjectBrowserWidgetComponent extends Component {
   state = {
     manualLinkInput: '',
     validURL: false,
+    errors: [],
   };
 
   constructor(props) {
@@ -225,8 +230,17 @@ export class ObjectBrowserWidgetComponent extends Component {
   };
 
   validateManualLink = (url) => {
-    if (this.props.allowExternals) {
-      return isUrl(url);
+    if (this.props.allowExternals && !url.startsWith('/')) {
+      const error = urlValidator({
+        value: url,
+        formatMessage: this.props.intl.formatMessage,
+      });
+      if (error && url !== '') {
+        this.setState({ errors: [error] });
+      } else {
+        this.setState({ errors: [] });
+      }
+      return !Boolean(error);
     } else {
       return isInternalURL(url);
     }
@@ -340,6 +354,8 @@ export class ObjectBrowserWidgetComponent extends Component {
     return (
       <FormFieldWrapper
         {...this.props}
+        // At the moment, OBW handles its own errors and validation
+        error={this.state.errors}
         className={description ? 'help text' : 'text'}
       >
         <div
@@ -368,6 +384,7 @@ export class ObjectBrowserWidgetComponent extends Component {
               items.length === 0 &&
               this.props.mode !== 'multiple' && (
                 <input
+                  onBlur={this.onSubmitManualLink}
                   onKeyDown={this.onKeyDownManualLink}
                   onChange={this.onManualLinkInput}
                   value={this.state.manualLinkInput}

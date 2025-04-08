@@ -99,23 +99,44 @@ const currentSearchResults = {
   ],
 };
 
-test('renders a view image component', () => {
+describe('ObjectBrowserNav', () => {
   const store = mockStore({
     intl: {
       locale: 'en',
       messages: {},
     },
   });
-  const component = renderer.create(
-    <Provider store={store}>
-      <ObjectBrowserNav
-        currentSearchResults={currentSearchResults}
-        isSelectable={() => {
-          return true;
-        }}
-      />
-    </Provider>,
-  );
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+
+  const baseProps = {
+    currentSearchResults,
+    isSelectable: () => true,
+    handleClickOnItem: jest.fn(),
+    handleDoubleClickOnItem: jest.fn(),
+    mode: 'link',
+    view: 'list',
+    navigateTo: jest.fn(),
+  };
+
+  it('renders a view image component', () => {
+    const component = renderer.create(
+      <Provider store={store}>
+        <ObjectBrowserNav {...baseProps} />
+      </Provider>,
+    );
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('handles selected as empty object without errors', () => {
+    const component = renderer.create(
+      <Provider store={store}>
+        <ObjectBrowserNav
+          {...baseProps}
+          selected={{}} // Empty object being tested
+        />
+      </Provider>,
+    );
+
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });

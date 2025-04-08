@@ -7,10 +7,10 @@ import {
   blockHasValue,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
 import { Transforms, Editor, Node, Text, Path } from 'slate';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
-import { omit } from 'lodash';
+import omit from 'lodash/omit';
 import config from '@plone/volto/registry';
 
 function fromEntries(pairs) {
@@ -118,7 +118,7 @@ export function syncCreateSlateBlock(value) {
   return [id, block];
 }
 
-export function createImageBlock(url, index, props) {
+export function createImageBlock(url, index, props, intl) {
   const { properties, onChangeField, onSelectBlock } = props;
   const blocksFieldname = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
@@ -128,7 +128,7 @@ export function createImageBlock(url, index, props) {
   let id, newFormData;
 
   if (currBlockHasValue) {
-    [id, newFormData] = addBlock(properties, 'image', index + 1);
+    [id, newFormData] = addBlock(properties, 'image', index + 1, {}, intl);
     newFormData = changeBlock(newFormData, id, { '@type': 'image', url });
   } else {
     [id, newFormData] = insertBlock(properties, currBlockId, {
@@ -144,12 +144,18 @@ export function createImageBlock(url, index, props) {
   });
 }
 
-export const createAndSelectNewBlockAfter = (editor, blockValue) => {
+export const createAndSelectNewBlockAfter = (editor, blockValue, intl) => {
   const blockProps = editor.getBlockProps();
 
   const { onSelectBlock, properties, index, onChangeField } = blockProps;
 
-  const [blockId, formData] = addBlock(properties, 'slate', index + 1);
+  const [blockId, formData] = addBlock(
+    properties,
+    'slate',
+    index + 1,
+    {},
+    intl,
+  );
 
   const options = {
     '@type': 'slate',

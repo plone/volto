@@ -72,6 +72,4 @@ docs/_build/
 /.tool-versions
 docs/source/news
 
-.turbo
-.parcel-cache/
 tsconfig.tsbuildinfo

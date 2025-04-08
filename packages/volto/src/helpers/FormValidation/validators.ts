@@ -74,7 +74,10 @@ export const urlValidator = ({ value, formatMessage }: Validator) => {
   return !isValid ? formatMessage(messages.isValidURL) : null;
 };
 
-export const emailValidator = ({ value, formatMessage }: Validator): string => {
+export const emailValidator = ({
+  value,
+  formatMessage,
+}: Validator): string | null => {
   // Email Regex taken from from WHATWG living standard:
   // https://html.spec.whatwg.org/multipage/input.html#e-mail-state-(type=email)
   const emailRegex =
@@ -171,7 +174,9 @@ export const patternValidator = ({
   }
   const regex = new RegExp(field.pattern);
   const isValid = regex.test(value);
-  return !isValid ? formatMessage(messages.pattern) : null;
+  return !isValid
+    ? formatMessage(messages.pattern, { pattern: field.pattern })
+    : null;
 };
 
 export const maxItemsValidator = ({
@@ -200,4 +205,18 @@ export const minItemsValidator = ({
   return !isValid
     ? formatMessage(messages.minItems, { minItems: field.minItems })
     : null;
+};
+
+export const defaultLanguageControlPanelValidator = ({
+  value,
+  formData,
+  formatMessage,
+}: Validator) => {
+  const isValid =
+    value &&
+    (formData.available_languages.find(
+      (lang: { token: string }) => lang.token === value,
+    ) ||
+      formData.available_languages.includes(value));
+  return !isValid ? formatMessage(messages.defaultLanguage) : null;
 };

@@ -5,9 +5,9 @@ import {
   Input,
   Label,
   SearchField as RACSearchField,
-  SearchFieldProps as RACSearchFieldProps,
+  type SearchFieldProps as RACSearchFieldProps,
   Text,
-  ValidationResult,
+  type ValidationResult,
 } from 'react-aria-components';
 
 export interface SearchFieldProps extends RACSearchFieldProps {

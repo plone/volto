@@ -12,19 +12,16 @@ import { createPortal } from 'react-dom';
 import { injectIntl } from 'react-intl';
 import qs from 'query-string';
 
-import {
-  ContentMetadataTags,
-  Comments,
-  Toolbar,
-} from '@plone/volto/components';
-import { listActions, getContent } from '@plone/volto/actions';
-import {
-  BodyClass,
-  getBaseUrl,
-  flattenToAppURL,
-  getLayoutFieldname,
-  hasApiExpander,
-} from '@plone/volto/helpers';
+import ContentMetadataTags from '@plone/volto/components/theme/ContentMetadataTags/ContentMetadataTags';
+import Comments from '@plone/volto/components/theme/Comments/Comments';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import { listActions } from '@plone/volto/actions/actions/actions';
+import { getContent } from '@plone/volto/actions/content/content';
+import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
+import { getBaseUrl, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { getLayoutFieldname } from '@plone/volto/helpers/Content/Content';
+import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
+import { AlternateHrefLangs } from '@plone/volto/components/theme/AlternateHrefLangs/AlternateHrefLangs';
 
 import config from '@plone/volto/registry';
 import SlotRenderer from '../SlotRenderer/SlotRenderer';
@@ -238,6 +235,7 @@ class View extends Component {
     return (
       <div id="view" tabIndex="-1">
         <ContentMetadataTags content={this.props.content} />
+        <AlternateHrefLangs content={this.props.content} />
         {/* Body class if displayName in component is set */}
         <BodyClass
           className={

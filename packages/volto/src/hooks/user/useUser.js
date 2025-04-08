@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
-import { getUser } from '@plone/volto/actions';
+import { getUser } from '@plone/volto/actions/users/users';
 
 const useUser = () => {
   const users = useSelector((state) => state.users);

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ColorArea as RACColorArea,
-  ColorAreaProps,
+  type ColorAreaProps,
   ColorThumb,
 } from 'react-aria-components';
 
