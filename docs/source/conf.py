@@ -208,10 +208,6 @@ html_css_files = ["custom.css", ("print.css", {"media": "print"})]
 # If false, no index is generated.
 html_use_index = True
 
-# The name for this set of Sphinx documents.  If None, it defaults to
-# "<project> v<release> documentation".
-html_title = "%(project)s v%(release)s" % {"project": project, "release": release}
-
 html_extra_path = [
     "robots.txt",
 ]
