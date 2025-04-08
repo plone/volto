@@ -32,6 +32,7 @@ export async function action({ request }: ActionFunctionArgs) {
     .method() as PloneClient;
 
   const { data: loginData } = await cli.login({ username, password });
+
   if (!loginData.token) {
     return data(
       { ok: false, errors: { password: 'Invalid credentials' } },
@@ -60,33 +61,26 @@ export default function Login() {
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
         <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
           <Form className="space-y-6" method="post">
-            <div>
-              <TextField
-                id="username"
-                name="username"
-                aria-describedby={
-                  actionResult?.errors?.email ? 'email-error' : 'login-header'
-                }
-                isRequired
-              />
-            </div>
+            <TextField
+              label="username"
+              name="username"
+              aria-describedby={
+                actionResult?.errors?.email ? 'email-error' : 'login-header'
+              }
+              isRequired
+            />
+            <TextField
+              label="password"
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              aria-describedby="password-error"
+              isRequired
+            />
 
-            <div>
-              <TextField
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                aria-describedby="password-error"
-                isRequired
-              />
-            </div>
-
-            <div>
-              <Button variant="primary" type="submit">
-                Sign in
-              </Button>
-            </div>
+            <Button variant="primary" type="submit" aria-label="Sign in">
+              Sign in
+            </Button>
           </Form>
         </div>
       </div>
