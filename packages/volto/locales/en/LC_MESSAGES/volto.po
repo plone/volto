@@ -1397,6 +1397,7 @@ msgstr ""
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
+#: components/manage/Widgets/ImageWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -4708,6 +4709,11 @@ msgstr ""
 #. Default: "Image"
 #: config/Blocks
 msgid "image"
+msgstr ""
+
+#. Default: "Please upload an image instead."
+#: components/manage/Widgets/ImageWidget
+msgid "imageUploadErrorMessage"
 msgstr ""
 
 #. Default: "Clear image"

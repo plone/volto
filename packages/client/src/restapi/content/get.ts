@@ -1,7 +1,8 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import type { Content } from '@plone/types';
+import type PloneClient from '../../client';
 import { z } from 'zod';
+import type { RequestResponse } from '../types';
 
 const getContentArgsSchema = z.object({
   path: z.string(),
@@ -11,18 +12,12 @@ const getContentArgsSchema = z.object({
   expand: z.string().array().optional(),
 });
 
-export type ContentArgs = z.infer<typeof getContentArgsSchema> & {
-  config: PloneClientConfig;
-};
+type GetContentArgs = z.infer<typeof getContentArgsSchema>;
 
-export const getContent = async ({
-  path,
-  version,
-  page,
-  fullObjects,
-  expand,
-  config,
-}: ContentArgs): Promise<Content> => {
+export async function getContent(
+  this: PloneClient,
+  { path, version, page, fullObjects, expand }: GetContentArgs,
+): Promise<RequestResponse<Content>> {
   const validatedArgs = getContentArgsSchema.parse({
     path,
     version,
@@ -32,7 +27,7 @@ export const getContent = async ({
   });
 
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {
       ...(validatedArgs.page && { page: validatedArgs.page }),
       ...(validatedArgs.version && { version: validatedArgs.version }),
@@ -55,17 +50,4 @@ export const getContent = async ({
     };
   }
   return apiRequest('get', path, options);
-};
-
-export const getContentQuery = ({
-  path,
-  version,
-  page,
-  fullObjects,
-  expand,
-  config,
-}: ContentArgs) => ({
-  queryKey: [path, 'get', 'content'],
-  queryFn: () =>
-    getContent({ path, expand, version, page, fullObjects, config }),
-});
+}

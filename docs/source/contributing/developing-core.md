@@ -48,10 +48,7 @@ The package `volto` is the core code of Volto.
 /
 ├─ apps/
 │  ├─ nextjs
-│  ├─ remix
-│  ├─ rr7
-│  ├─ vite
-│  └─ vite-ssr
+│  └─ rr7
 ├─ ...
 ├─ packages/
 │  ├─ blocks
@@ -99,9 +96,6 @@ When developing a project using Plone, Yarn or other package managers may be use
 
 
 ### Node.js
-
-We recommend that you install Node.js using nvm.
-Alternatively you can install Node.js using Homebrew or other package installer.
 
 ```{include} ../_inc/_install-nodejs.md
 ```
@@ -400,6 +394,7 @@ You can try it out using the following command.
 pnpm --filter plone-remix dev
 ```
 
+
 ### React Router 7
 
 This frontend is a proof of concept using React Router 7 with Plone.
@@ -410,28 +405,6 @@ You can try it out using the following command.
 pnpm --filter plone-rr7 dev
 ```
 
-### Vite build (client only)
-
-This frontend is a proof of concept using a custom client build based in Vite with Plone.
-It uses `@tanstack/router` in combination with `@plone/client`, which in turns uses `@tanstack/query`.
-This build is suitable for applications that do not need server side generation, and it's client only.
-
-You can try it out using the following command.
-
-```shell
-pnpm --filter plone-vite dev
-```
-
-### Vite SSR build
-
-This frontend is a proof of concept using a custom build, based in Vite with SSR with Plone.
-It uses `@tanstack/router` in combination with `@plone/client` (which in turns uses `@tanstack/query`).
-
-You can try it out using the following command.
-
-```shell
-pnpm --filter plone-vite-ssr dev
-```
 
 ## Support libraries
 
