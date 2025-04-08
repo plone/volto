@@ -7,34 +7,14 @@ import { toast } from 'react-toastify';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
-import { Form } from '@plone/volto/components/manage/Form';
+import Form from '@plone/volto/components/manage/Form/Form';
 import { createUser } from '@plone/volto/actions/users/users';
+import { getUserSchema } from '@plone/volto/actions/userschema/userschema';
 
 const messages = defineMessages({
   title: {
     id: 'Registration form',
     defaultMessage: 'Registration form',
-  },
-  default: {
-    id: 'Default',
-    defaultMessage: 'Default',
-  },
-  fullnameTitle: {
-    id: 'Full Name',
-    defaultMessage: 'Full Name',
-  },
-  fullnameDescription: {
-    id: 'Enter full name, e.g. John Smith.',
-    defaultMessage: 'Enter full name, e.g. John Smith.',
-  },
-  emailTitle: {
-    id: 'E-mail',
-    defaultMessage: 'E-mail',
-  },
-  emailDescription: {
-    id: 'Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.',
-    defaultMessage:
-      'Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.',
   },
   successRegisterCompletedTitle: {
     id: 'Account Registration Completed',
@@ -65,6 +45,13 @@ const Register = () => {
   const { loaded, loading, error } = useUsers();
 
   const prevloading = usePrevious(loading);
+  const userschema = useSelector((state) => state.userschema);
+
+  useEffect(() => {
+    if (!userschema.loading && !userschema.loaded) {
+      dispatch(getUserSchema());
+    }
+  }, [userschema, dispatch]);
 
   useEffect(() => {
     if (prevloading && loaded) {
@@ -80,15 +67,14 @@ const Register = () => {
   }, [intl, history, loaded, prevloading]);
 
   const onSubmit = (data) => {
-    const { fullname, email } = data;
-    dispatch(
-      createUser({
-        fullname: fullname,
-        email: email,
-        sendPasswordReset: true,
-      }),
-    );
+    dispatch(createUser(data));
     setError(null);
+  };
+
+  const emptySchema = {
+    fieldsets: [],
+    properties: {},
+    required: [],
   };
 
   return (
@@ -100,28 +86,7 @@ const Register = () => {
         error={errors || error}
         loading={loading}
         submitLabel={intl.formatMessage(messages.register)}
-        schema={{
-          fieldsets: [
-            {
-              id: 'default',
-              title: intl.formatMessage(messages.default),
-              fields: ['fullname', 'email'],
-            },
-          ],
-          properties: {
-            fullname: {
-              type: 'string',
-              title: intl.formatMessage(messages.fullnameTitle),
-              description: intl.formatMessage(messages.fullnameDescription),
-            },
-            email: {
-              type: 'string',
-              title: intl.formatMessage(messages.emailTitle),
-              description: intl.formatMessage(messages.emailDescription),
-            },
-          },
-          required: ['fullname', 'email'],
-        }}
+        schema={userschema.loaded ? userschema.userschema : emptySchema}
       />
     </div>
   );
