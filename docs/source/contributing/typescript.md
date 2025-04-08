@@ -42,8 +42,7 @@ The internal policy for TypeScript support in Volto core will be as follows.
 
 ## TypeScript in projects and add-ons
 
-You can enable TypeScript support when developing your project in Volto.
-If you use the Volto generator, TypeScript is enabled by default, and you can already start using TypeScript in it.
+TypeScript is enabled by default in both projects and add-ons, and you can already start using TypeScript in it.
 
 ### Enable it in your Volto 17 project
 

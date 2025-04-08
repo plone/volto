@@ -1,23 +1,15 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
-import type { GetQueryStringResponse } from '@plone/types';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type { GetQuerystringResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
-export type QueryStringArgs = {
-  config: PloneClientConfig;
-};
-
-export const getQueryString = async ({
-  config,
-}: QueryStringArgs): Promise<GetQueryStringResponse> => {
+export async function getQuerystring(
+  this: PloneClient,
+): Promise<RequestResponse<GetQuerystringResponse>> {
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
 
   return apiRequest('get', '/@querystring', options);
-};
-
-export const getQueryStringQuery = ({ config }: QueryStringArgs) => ({
-  queryKey: ['get', 'querystring'],
-  queryFn: () => getQueryString({ config }),
-});
+}

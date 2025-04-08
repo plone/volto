@@ -1,23 +1,15 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import type { GetControlpanelsResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
-export type ControlpanelsArgs = {
-  config: PloneClientConfig;
-};
-
-export const getControlpanels = async ({
-  config,
-}: ControlpanelsArgs): Promise<GetControlpanelsResponse> => {
+export async function getControlpanels(
+  this: PloneClient,
+): Promise<RequestResponse<GetControlpanelsResponse>> {
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
 
   return apiRequest('get', '/@controlpanels', options);
-};
-
-export const getControlpanelsQuery = ({ config }: ControlpanelsArgs) => ({
-  queryKey: ['get', 'controlpanels'],
-  queryFn: () => getControlpanels({ config }),
-});
+}

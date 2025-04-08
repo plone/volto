@@ -1,6 +1,6 @@
 The Volto team enforces the following branch policy when developers contribute to its core.
 
-Releases of general packages (`@plone/generator-volto`, `@plone/scripts`, and so on) are cut from the `main` branch.
+Releases of general packages (`@plone/scripts` and other packages) are cut from the `main` branch.
 
 stable and latest
 :   The terms _stable_ and _latest_ mean the same thing in this policy.
@@ -47,7 +47,7 @@ legacy
 :   `17.x.x` is no longer supported and became _legacy_ (see above definition) when Volto 18 was released.
     You should upgrade to the latest released version of Volto 18.
     You can use Cookieplone to generate a new Volto 18 project, then copy-paste over the relevant parts from your existing project into the new one.
-    See {ref}`volto-upgrade-guide-18.x.x`.
+    See {ref}`upgrading-to-volto-18-x-x`.
     If you need a bug fix, please create an issue to discuss with the Volto Team.
     For security issues, please contact the Plone Security Team by sending email to security@plone.org.
 

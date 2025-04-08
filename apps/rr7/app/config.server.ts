@@ -2,7 +2,7 @@
  * This is the server side config entry point
  */
 import config from '@plone/registry';
-import ploneClient from '@plone/client';
+import PloneClient from '@plone/client';
 import applyAddonConfiguration from '@plone/registry/addons-loader';
 
 export default function install() {
@@ -13,7 +13,7 @@ export default function install() {
   config.settings.internalApiPath =
     process.env.PLONE_INTERNAL_API_PATH || undefined;
 
-  const cli = ploneClient.initialize({
+  const cli = PloneClient.initialize({
     apiPath: config.settings.internalApiPath || config.settings.apiPath,
   });
 

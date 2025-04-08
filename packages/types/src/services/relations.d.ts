@@ -1,4 +1,4 @@
-export interface GetRelationsListResponse {
+export interface GetAllRelationsResponse {
   '@id': string;
   broken: unknown;
   stats: {
