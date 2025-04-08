@@ -1,0 +1,1 @@
+Makes the cypress `getSlateEditorAndType` and `getSlateEditorSelectorAndType` commands more robust. @wesleybl
