@@ -32,7 +32,7 @@ The `@plone/registry` Vite plugin generates this file, so the framework can load
   const projectRootPath = path.resolve('.');
   const { registry, shadowAliases } = AddonRegistry.init(projectRootPath);
 
-  createAddonsStyleLoader(registry.getAddonStyles());
+  createAddonsStyleLoader(registry);
 ```
 
 This will create {file}`addons.styles.css` in the root of your app.

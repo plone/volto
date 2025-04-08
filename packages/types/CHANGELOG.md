@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.0 (2025-03-31)
+
+### Breaking
+
+- Update types to match plone client rewrite. @robgietema [#6889](https://github.com/plone/volto/issues/6889)
+
 ## 1.3.2 (2025-02-08)
 
 ### Internal

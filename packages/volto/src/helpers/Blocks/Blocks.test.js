@@ -1151,7 +1151,7 @@ describe('Blocks', () => {
 
   describe('buildStyleObjectFromData', () => {
     beforeEach(() => {
-      function blockThemesEnhancer(data) {
+      function blockThemesEnhancer({ data }) {
         const blockConfig = config.blocks.blocksConfig[data['@type']];
         const blockStyleDefinitions =
           // We look up for the blockThemes in the block's data, then in the global config

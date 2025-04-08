@@ -90,6 +90,7 @@ linkcheck_ignore = [
     # Ignore github.com pages with anchors
     r"https://github.com/.*#.*",
     # Ignore other specific anchors
+    r"https://browsersl.ist/#",
     r"https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue",
     r"https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0",
 ]
@@ -206,10 +207,6 @@ html_css_files = ["custom.css", ("print.css", {"media": "print"})]
 
 # If false, no index is generated.
 html_use_index = True
-
-# The name for this set of Sphinx documents.  If None, it defaults to
-# "<project> v<release> documentation".
-html_title = "%(project)s v%(release)s" % {"project": project, "release": release}
 
 html_extra_path = [
     "robots.txt",

@@ -34,7 +34,7 @@ const ObjectBrowserNav = ({
   const intl = useIntl();
   const isSelected = (item) => {
     let ret = false;
-    if (selected) {
+    if (selected && Array.isArray(selected)) {
       selected
         .filter((item) => item != null)
         .forEach((_item) => {

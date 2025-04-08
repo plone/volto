@@ -1,47 +1,32 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { z } from 'zod';
-import {
-  type PloneClientConfig,
-  PloneClientConfigSchema,
-} from '../../validation/config';
 import { deleteLockDataSchema } from '../../validation/lock';
 import type { LockInfo as DeleteLockResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 export const deleteLockArgsSchema = z.object({
   path: z.string(),
   data: deleteLockDataSchema.optional(),
-  config: PloneClientConfigSchema,
 });
 
 type DeleteLockArgs = z.infer<typeof deleteLockArgsSchema>;
 
-export const deleteLock = async ({
-  path,
-  data,
-  config,
-}: DeleteLockArgs): Promise<DeleteLockResponse> => {
+export async function deleteLock(
+  this: PloneClient,
+  { path, data }: DeleteLockArgs,
+): Promise<RequestResponse<DeleteLockResponse>> {
   const validatedArgs = deleteLockArgsSchema.parse({
     path,
     data,
-    config,
   });
 
   const options: ApiRequestParams = {
     data: validatedArgs.data,
-    config: validatedArgs.config,
+    config: this.config,
   };
 
   const deleteLockPath = `/${validatedArgs.path}/@lock`;
 
   return apiRequest('delete', deleteLockPath, options);
-};
-
-export const deleteLockMutation = ({
-  config,
-}: {
-  config: PloneClientConfig;
-}) => ({
-  mutationKey: ['delete', 'lock'],
-  mutationFn: ({ path, data }: Omit<DeleteLockArgs, 'config'>) =>
-    deleteLock({ path, data, config }),
-});
+}

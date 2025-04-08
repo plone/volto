@@ -15,14 +15,12 @@ const expand = ['navroot', 'breadcrumbs', 'navigation'];
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function loader({ params, request }: Route.LoaderArgs) {
-  const ploneClient = config
+  const cli = config
     .getUtility({
       name: 'ploneClient',
       type: 'client',
     })
-    .method();
-
-  const { getContent } = ploneClient as PloneClient;
+    .method() as PloneClient;
 
   const path = new URL(request.url).pathname;
 
@@ -39,7 +37,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
   ) {
     console.log('prefetching', path);
     try {
-      return await getContent({ path, expand });
+      return await cli.getContent({ path, expand });
     } catch (error) {
       throw data('Content Not Found', { status: 404 });
     }
@@ -50,7 +48,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 }
 
 export default function Content() {
-  const data = useLoaderData<typeof loader>();
+  const { data } = useLoaderData<typeof loader>();
   const pathname = useLocation().pathname;
 
   return <App content={data} location={{ pathname }} />;

@@ -22,6 +22,7 @@ exports[`CheckboxWidget renders a checkbox widget component 1`] = `
             >
               <input
                 class="hidden"
+                id="field-my-field"
                 name="field-my-field"
                 readonly=""
                 tabindex="0"
@@ -65,6 +66,7 @@ exports[`CheckboxWidget renders a checkbox widget component checked 1`] = `
               <input
                 checked=""
                 class="hidden"
+                id="field-my-field"
                 name="field-my-field"
                 readonly=""
                 tabindex="0"
