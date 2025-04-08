@@ -1,1 +1,1 @@
-Makes the cypress `getSlateEditorAndType` and `getSlateEditorSelectorAndType` commands more robust. @wesleybl
+Make the Cypress `getSlateEditorAndType` and `getSlateEditorSelectorAndType` commands more robust, avoiding timeouts. @wesleybl
