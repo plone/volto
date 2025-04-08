@@ -1,0 +1,1 @@
+Added Basque translations. @ionlizarazu
