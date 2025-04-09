@@ -1,0 +1,1 @@
+Pass "null" instead of "{}" to blocksConfig for consistent execution of initialValue.@Abhishek-17h
