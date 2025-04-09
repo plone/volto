@@ -142,7 +142,7 @@ const BlocksForm = (props) => {
   };
 
   const onMutateBlock = (id, value) => {
-    const newFormData = mutateBlock(properties, id, value, {}, intl);
+    const newFormData = mutateBlock(properties, id, value, null, intl);
     onChangeFormData(newFormData);
   };
 
@@ -153,7 +153,7 @@ const BlocksForm = (props) => {
       value,
       current,
       config.experimental.addBlockButton.enabled ? 1 : 0,
-      {},
+      null,
       intl,
     );
 
@@ -172,7 +172,7 @@ const BlocksForm = (props) => {
 
   const onAddBlock = (type, index) => {
     if (editable) {
-      const [id, newFormData] = addBlock(properties, type, index, {}, intl);
+      const [id, newFormData] = addBlock(properties, type, index, null, intl);
       const blocksFieldname = getBlocksFieldname(newFormData);
       const blockData = newFormData[blocksFieldname][id];
       newFormData[blocksFieldname][id] = applyBlockDefaults({

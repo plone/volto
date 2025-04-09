@@ -33,9 +33,7 @@ Jest is now deprecated.
 
 ## Vitest configuration
 
-Vitest is configured in {file}`package.json` under the `vitest` key.
 The configuration file {file}`vitest.config.ts` for Volto core is set up at the root of `packages/volto`.
-
 
 (run-vitest-tests-on-volto-core-label)=
 
@@ -64,6 +62,12 @@ This will execute all tests once without entering watch mode.
 ```shell
 pnpm test -- --watch=false
 ```
+or 
+
+```shell
+CI=1 pnpm test
+```
+
 
 Then you can follow the Vitest prompts for keys that you can enter to trigger test execution.
 
@@ -151,56 +155,6 @@ For complete details on migrating from Jest to Vitest, refer to the official [Vi
 Volto core has migrated from Jest to Vitest for unit tests.
 Jest is now deprecated.
 ```
-
-
-### Jest configuration
-
-Jest is configured in {file}`package.json` under the `jest` key.
-
-
-(run-jest-tests-on-volto-core-label)=
-
-### Run Jest tests on Volto core
-
-```{note}
-All commands in this documentation run from inside the `packages/volto` directory.
-See {ref}`developing-core-run-commands-for-pnpm-workspaces-label` for other options to run tests.
-```
-
-Jest tests must pass locally before you push commits to the remote Volto repository.
-Jest has several modes to run unit tests locally.
-You can run Jest in watch mode, run only failed tests, or run specific tests only.
-
-To get to the test runner modes choices, run the following command.
-
-```shell
-pnpm test
-```
-
-Then you can follow the Jest prompts for keys that you can enter to trigger test execution.
-
-```console
-No tests found related to files changed since last commit.
-Press `a` to run all tests, or run Jest with `--watchAll`.
-
-Watch Usage
- › Press a to run all tests.
- › Press f to run only failed tests.
- › Press p to filter by a filename regex pattern.
- › Press t to filter by a test name regex pattern.
- › Press q to quit watch mode.
- › Press Enter to trigger a test run.
-```
-
-You can also run only specific tests using the following command.
-
-```shell
-# will run only the Image components tests
-pnpm test src/components/theme/Image
-```
-
-If a certain test fails, you can run that test only in watch mode.
-This makes it faster and easier to test code changes.
 
 
 ### Jest configuration override
