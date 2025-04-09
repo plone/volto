@@ -39,7 +39,7 @@ exports[`renders a token widget component 1`] = `
             className="css-1f43avz-a11yText-A11yText"
           />
           <div
-            className="react-select__control css-1ard45z-control"
+            className="react-select__control css-j8u6so-control"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >
