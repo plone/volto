@@ -4763,7 +4763,7 @@ msgstr "Immagine di testata"
 
 #. Default: "Delete"
 #: components/manage/Contents/ContentsDeleteModal
-msgid "link-integrity: Delete"
+msgid "Delete"
 msgstr "Elimina"
 
 #. Default: "Delete item and break links"

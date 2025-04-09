@@ -4763,7 +4763,7 @@ msgstr "प्रमुख छवि फ़ील्ड"
 
 #. Default: "Delete"
 #: components/manage/Contents/ContentsDeleteModal
-msgid "link-integrity: Delete"
+msgid "Delete"
 msgstr ""
 
 #. Default: "Delete item and break links"

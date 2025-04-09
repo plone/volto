@@ -4770,7 +4770,7 @@ msgstr "image de garde"
 
 #. Default: "Delete"
 #: components/manage/Contents/ContentsDeleteModal
-msgid "link-integrity: Delete"
+msgid "Delete"
 msgstr ""
 
 #. Default: "Delete item and break links"
