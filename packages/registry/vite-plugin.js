@@ -3,6 +3,7 @@ import { AddonRegistry } from '@plone/registry/addon-registry';
 import { createAddonsLoader } from '@plone/registry/create-addons-loader';
 import { createThemeAddonsLoader } from '@plone/registry/create-theme-loader';
 import { createAddonsStyleLoader } from '@plone/registry/create-addons-styles-loader';
+import { createAddonsLocalesLoader } from '@plone/registry/create-addons-locales-loader';
 
 export const PloneRegistryVitePlugin = () => {
   const projectRootPath = path.resolve('.');
@@ -14,7 +15,8 @@ export const PloneRegistryVitePlugin = () => {
     { tempInProject: true },
   );
 
-  createAddonsStyleLoader(registry.getAddonStyles());
+  createAddonsStyleLoader(registry);
+  createAddonsLocalesLoader(registry);
 
   const [addonsThemeLoaderVariablesPath, addonsThemeLoaderMainPath] =
     createThemeAddonsLoader(registry.getCustomThemeAddons());

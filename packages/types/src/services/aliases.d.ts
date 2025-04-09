@@ -6,7 +6,7 @@ export interface GetAliasesResponse {
   items_total: number;
 }
 
-export interface GetAliasesListResponse {
+export interface GetAllAliasesResponse {
   '@id': string;
   items: Array<{
     datetime: string;

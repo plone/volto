@@ -122,6 +122,9 @@ class Html extends Component {
                 ...(publicURL && {
                   publicURL,
                 }),
+                ...(process.env.SITE_DEFAULT_LANGUAGE && {
+                  defaultLanguage: process.env.SITE_DEFAULT_LANGUAGE,
+                }),
               })};`,
             }}
           />

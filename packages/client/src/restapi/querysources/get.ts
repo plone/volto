@@ -1,32 +1,29 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { z } from 'zod';
-import type { GetQuerysourceResponse } from '@plone/types';
+import type { GetQuerysourcesResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
-const getQuerysourceSchema = z.object({
+const getQuerysourcesSchema = z.object({
   path: z.string(),
   field: z.string(),
   query: z.string(),
 });
 
-export type QuerysourceArgs = z.infer<typeof getQuerysourceSchema> & {
-  config: PloneClientConfig;
-};
+export type QuerysourcesArgs = z.infer<typeof getQuerysourcesSchema>;
 
-export const getQuerysource = async ({
-  path,
-  field,
-  query,
-  config,
-}: QuerysourceArgs): Promise<GetQuerysourceResponse> => {
-  const validatedArgs = getQuerysourceSchema.parse({
+export async function getQuerysources(
+  this: PloneClient,
+  { path, field, query }: QuerysourcesArgs,
+): Promise<RequestResponse<GetQuerysourcesResponse>> {
+  const validatedArgs = getQuerysourcesSchema.parse({
     path,
     field,
     query,
   });
 
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {
       ...(validatedArgs.query && { query: validatedArgs.query }),
     },
@@ -35,14 +32,4 @@ export const getQuerysource = async ({
   const querysourcePath = `/${validatedArgs.path}/@querysources/${field}`;
 
   return apiRequest('get', querysourcePath, options);
-};
-
-export const getQuerysourceQuery = ({
-  path,
-  field,
-  query,
-  config,
-}: QuerysourceArgs) => ({
-  queryKey: [path, field, query, 'get', 'querysources'],
-  queryFn: () => getQuerysource({ path, field, query, config }),
-});
+}

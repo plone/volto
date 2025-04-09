@@ -661,7 +661,11 @@ export const styleDataToStyleObject = (key, value, prefix = '') => {
  * @param {string} prefix The prefix (could be dragged from a recursive call, initially empty)
  * @return {Object} The style object ready to be passed as prop
  */
-export const buildStyleObjectFromData = (data = {}, prefix = '') => {
+export const buildStyleObjectFromData = (
+  data = {},
+  prefix = '',
+  container = {},
+) => {
   // style wrapper object has the form:
   // const styles = {
   //   color: 'red',
@@ -720,7 +724,7 @@ export const buildStyleObjectFromData = (data = {}, prefix = '') => {
     enhancers.forEach(({ method }) => {
       stylesFromObjectStyleEnhancers = {
         ...stylesFromObjectStyleEnhancers,
-        ...method(data),
+        ...method({ data, container }),
       };
     });
 

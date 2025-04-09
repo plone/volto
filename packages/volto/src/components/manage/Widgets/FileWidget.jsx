@@ -10,12 +10,14 @@ import { readAsDataURL } from 'promise-file-reader';
 import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import loadable from '@loadable/component';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { defineMessages, useIntl } from 'react-intl';
+import { toast } from 'react-toastify';
 
 const imageMimetypes = [
   'image/png',
@@ -47,6 +49,15 @@ const messages = defineMessages({
   addNewFile: {
     id: 'Choose a file',
     defaultMessage: 'Choose a file',
+  },
+  maxSizeError: {
+    id: 'The file you uploaded exceeded the maximum allowed size of {size} bytes',
+    defaultMessage:
+      'The file you uploaded exceeded the maximum allowed size of {size} bytes',
+  },
+  acceptError: {
+    id: 'File is not of the accepted type {accept}',
+    defaultMessage: 'File is not of the accepted type {accept}',
   },
 });
 
@@ -96,7 +107,33 @@ const FileWidget = (props) => {
    * @param {array} files File objects
    * @returns {undefined}
    */
-  const onDrop = (files) => {
+  const onDrop = (files, rejectedFiles) => {
+    rejectedFiles.forEach((file) => {
+      file.errors.forEach((err) => {
+        if (err.code === 'file-too-large') {
+          toast.error(
+            <Toast
+              error
+              title={intl.formatMessage(messages.maxSizeError, {
+                size: props.size,
+              })}
+            />,
+          );
+        }
+
+        if (err.code === 'file-invalid-type') {
+          toast.error(
+            <Toast
+              error
+              title={intl.formatMessage(messages.acceptError, {
+                accept: props.accept,
+              })}
+            />,
+          );
+        }
+      });
+    });
+    if (files.length < 1) return;
     const file = files[0];
     if (!validateFileUploadSize(file, intl.formatMessage)) return;
     readAsDataURL(file).then((data) => {
@@ -125,7 +162,11 @@ const FileWidget = (props) => {
 
   return (
     <FormFieldWrapper {...props}>
-      <Dropzone onDrop={onDrop}>
+      <Dropzone
+        onDrop={onDrop}
+        {...(props.size ? { maxSize: props.size } : {})}
+        {...(props.accept ? { accept: props.accept } : {})}
+      >
         {({ getRootProps, getInputProps, isDragActive }) => (
           <div className="file-widget-dropzone" {...getRootProps()}>
             {isDragActive && <Dimmer active></Dimmer>}

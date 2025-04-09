@@ -49,7 +49,6 @@ The versions of Python that are supported in Volto depend on the version of Plon
 | ----- | ------------ | ---------------- |
 | 6.1   | 3.10-3.13    | 18.0.0           |
 | 6.0   | 3.9-3.13     | 16.0.0 or 17.0.0 |
-| 5.2   | 2.7, 3.8     | 15.0.0           |
 
 For Plone 6.0.x, Python 3.12 is officially supported since Plone 6.0.10.
 Python 3.13 is officially supported since 6.0.14.
@@ -57,15 +56,7 @@ Python 3.8 support was dropped in 6.0.14.
 
 On Plone 6, we recommend using the known good set (KGS) of package versions that are specified in the Plone release.
 
-On Plone 5, Volto is currently tested with the following packages pinned to specific versions, and we recommend using the same versions, which are:
-
--   `plone.restapi` 9.2.0
--   `plone.rest` 3.0.1
--   `plone.volto` 4.1.0
-
-For the Plone 5 series, the [latest released version of Plone 5](https://plone.org/download/releases) is recommended.
-
-Volto should work on older Plone versions as well, since Plone REST API supports Plone back to version 4.3 (including Archetypes).
+Volto isn't tested with older Plone versions.
 
 We do not support or test Plone versions that were released before Volto existed.
 

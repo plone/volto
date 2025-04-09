@@ -64,6 +64,10 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
           \\"Română\\"
         ],
         [
+          \\"ru\\",
+          \\"Русский\\"
+        ],
+        [
           \\"ja\\",
           \\"日本語\\"
         ],
