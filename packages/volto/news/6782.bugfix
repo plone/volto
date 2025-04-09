@@ -1,1 +1,1 @@
-changed register.jsx to fix Self registration failure for a user @boss6825
+Fix user self registration. @boss6825
