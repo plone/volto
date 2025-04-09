@@ -1,0 +1,1 @@
+Improve german translation. @ksuess
