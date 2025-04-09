@@ -1016,6 +1016,7 @@ msgstr ""
 
 #. Default: "Delete"
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/Groups/RenderGroups
@@ -4764,11 +4765,6 @@ msgstr "Meu nome de usuário é"
 #. Default: "Lead Image Field"
 #: config/Blocks
 msgid "leadimage"
-msgstr ""
-
-#. Default: "Delete"
-#: components/manage/Contents/ContentsDeleteModal
-msgid "Delete"
 msgstr ""
 
 #. Default: "Delete item and break links"

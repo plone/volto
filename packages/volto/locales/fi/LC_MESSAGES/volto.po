@@ -1016,6 +1016,7 @@ msgstr "Oletusnäkymä"
 
 #. Default: "Delete"
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/Groups/RenderGroups
@@ -4765,11 +4766,6 @@ msgstr "Käyttäjätunnukseni"
 #: config/Blocks
 msgid "leadimage"
 msgstr "nostokuva"
-
-#. Default: "Delete"
-#: components/manage/Contents/ContentsDeleteModal
-msgid "Delete"
-msgstr ""
 
 #. Default: "Delete item and break links"
 #: components/manage/Contents/ContentsDeleteModal

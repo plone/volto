@@ -1018,6 +1018,7 @@ msgstr "Vue par défaut"
 
 #. Default: "Delete"
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/Groups/RenderGroups
@@ -4767,11 +4768,6 @@ msgstr "Mon nom d'utilisateur est"
 #: config/Blocks
 msgid "leadimage"
 msgstr "image de garde"
-
-#. Default: "Delete"
-#: components/manage/Contents/ContentsDeleteModal
-msgid "Delete"
-msgstr ""
 
 #. Default: "Delete item and break links"
 #: components/manage/Contents/ContentsDeleteModal
