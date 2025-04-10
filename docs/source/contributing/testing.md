@@ -10,11 +10,7 @@ myst:
 # Testing
 
 This chapter describes how to write and run unit tests in Volto.
-It covers the following topics:
-
--   How to use [Vitest](https://vitest.dev/guide/), the current unit test tool for Volto core.
--   How to migrate your tests from Jest, which is now deprecated.
--   How to use Jest until you can migrate your tests to Vitest.
+It covers how to use [Vitest](https://vitest.dev/guide/), the current unit test tool for Volto core.
 
 The popular `@testing-library/react` is also available for writing your tests.
 For every feature or component, a unit test is mandatory in Volto core.
