@@ -123,6 +123,61 @@ To switch your project from Jest to Vitest, update the {file}`package.json` file
 }
 ```
 
+## Migrate from Jest to Vitest
+
+The following guidelines for writing tests using Vitest will help you migrate your tests from Jest.
+Vitest shares a similar syntax with Jest, as both use Mocha/Chai, but there are notable differences in handling mocks and other features.
+
+Similar to Jest, Vitest provides functions such as `it`, `expect`, `describe`, `test`, and `vi`.
+These properties are globally declared in the {file}`test-setup-globals.js` file, making them available throughout the Volto core without requiring explicit imports in individual test files.
+
+
+### Differences in mocks
+
+```javascript
+jest.mock('../../manage/Workflow/Workflow', () =>
+  jest.fn(() => <div id="state-select" />),
+);
+```
+
+The Vitest equivalent mock to the above Jest mock is the following.
+
+```javascript
+vi.mock('../../manage/Workflow/Workflow', () => ({
+  default: vi.fn(() => <div id="state-select" />),
+}));
+```
+
+Vitest's `vi.mock()` does not automatically assume a default export like Jest does.
+Instead, it treats the module as an object, so the mocked function must be explicitly assigned to the `default` property.
+For more details, refer to the [Vitest Mocking Guide](https://vitest.dev/guide/mocking.html).
+
+
+### Testing with lazy loaded libraries
+
+In Jest, you would test lazy loaded libraries as shown.
+
+```javascript
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+```
+
+In Vitest the equivalent is the following example.
+
+```javascript
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(async () => {
+  const { __setLoadables } = await import('@plone/volto/helpers/Loadable/Loadable');
+  await __setLoadables();
+});
+```
+
+`require()` is not supported in Vitest.
+Instead, use `import()`.
+
 
 ## Run tests in Vitest
 
@@ -131,13 +186,6 @@ To run your tests, execute the following command.
 
 ```shell
 make test
-```
-
-
-## Additional Vitest information
-
-```{seealso}
-For a general guide for how to use Vitest and migrate tests from Jest to Vitest, see {doc}`../../contributing/testing`.
 ```
 
 
@@ -157,6 +205,14 @@ const _import = jiti(import.meta.url, { esmResolve: true });
 In Vitest, `require()` is not supported, and `import()` may sometimes fail.
 In such cases, `jiti` provides a reliable alternative for module resolution and execution.
 In Volto, `jiti` is used in the test file {file}`packages/volto/__tests__/create-addons-loader.test.js` to handle dynamic imports for add-ons efficiently.
+
+
+## Additional Vitest information
+
+```{seealso}
+For a general guide for Vitest, see {doc}`../../contributing/testing`.
+```
+For complete details on migrating from Jest to Vitest, refer to the official [Vitest Migration Guide](https://vitest.dev/guide/migration.html#jest).
 
 
 ## Jest for Volto add-ons
@@ -211,8 +267,5 @@ Some of them are required for the tests to run properly in the Volto context.
 
 Both configurations are merged in a way that the keys of the configuration provided override the initial {file}`package.json` configuration, either in Volto or in your projects.
 
-```{note}
-For more background on testing add-ons in Volto 18, see {doc}`../../contributing/testing`, since the developer experience has been unified for both add-ons and Volto core.
-```
 
 

@@ -83,66 +83,9 @@ You can also run only specific tests using the following command.
 pnpm test src/components/theme/Image
 ```
 
-
-## Migrate from Jest to Vitest
-
-The following guidelines for writing tests using Vitest will help you migrate your tests from Jest.
-Vitest shares a similar syntax with Jest, as both use Mocha/Chai, but there are notable differences in handling mocks and other features.
-
-Similar to Jest, Vitest provides functions such as `it`, `expect`, `describe`, `test`, and `vi`.
-These properties are globally declared in the {file}`test-setup-globals.js` file, making them available throughout the Volto core without requiring explicit imports in individual test files.
-
-
-### Differences in mocks
-
-```javascript
-jest.mock('../../manage/Workflow/Workflow', () =>
-  jest.fn(() => <div id="state-select" />),
-);
-```
-
-The Vitest equivalent mock to the above Jest mock is the following.
-
-```javascript
-vi.mock('../../manage/Workflow/Workflow', () => ({
-  default: vi.fn(() => <div id="state-select" />),
-}));
-```
-
-Vitest's `vi.mock()` does not automatically assume a default export like Jest does.
-Instead, it treats the module as an object, so the mocked function must be explicitly assigned to the `default` property.
-For more details, refer to the [Vitest Mocking Guide](https://vitest.dev/guide/mocking.html).
-
-
-### Testing with lazy loaded libraries
-
-In Jest, you would test lazy loaded libraries as shown.
-
-```javascript
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
-```
-
-In Vitest the equivalent is the following example.
-
-```javascript
-vi.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(async () => {
-  const { __setLoadables } = await import('@plone/volto/helpers/Loadable/Loadable');
-  await __setLoadables();
-});
-```
-
-`require()` is not supported in Vitest.
-Instead, use `import()`.
-
-
 ### Complete migration guide from Jest to Vitest
-You can refer {doc}`../development/add-ons/test-add-ons-18` for more migration information.
-For complete details on migrating from Jest to Vitest, refer to the official [Vitest Migration Guide](https://vitest.dev/guide/migration.html#jest).
+
+You can refer {doc}`../development/add-ons/test-add-ons-18` for complete migration guide from Jest to Vitest.
 
 
 ## Jest usage
