@@ -1,0 +1,39 @@
+@utility icon-xxs {
+  block-size: calc(var(--quanta-icon-size) * 3);
+  inline-size: calc(var(--quanta-icon-size) * 3);
+}
+
+@utility icon-xs {
+  block-size: calc(var(--quanta-icon-size) * 4);
+  inline-size: calc(var(--quanta-icon-size) * 4);
+}
+
+@utility icon-sm {
+  block-size: calc(var(--quanta-icon-size) * 5);
+  inline-size: calc(var(--quanta-icon-size) * 5);
+}
+
+@utility icon-base {
+  block-size: calc(var(--quanta-icon-size) * 6);
+  inline-size: calc(var(--quanta-icon-size) * 6);
+}
+
+@utility icon-lg {
+  block-size: calc(var(--quanta-icon-size) * 7);
+  inline-size: calc(var(--quanta-icon-size) * 7);
+}
+
+@utility icon-xl {
+  block-size: calc(var(--quanta-icon-size) * 8);
+  inline-size: calc(var(--quanta-icon-size) * 8);
+}
+
+@utility icon-2xl {
+  block-size: calc(var(--quanta-icon-size) * 9);
+  inline-size: calc(var(--quanta-icon-size) * 9);
+}
+
+@utility icon-3xl {
+  block-size: calc(var(--quanta-icon-size) * 10);
+  inline-size: calc(var(--quanta-icon-size) * 10);
+}

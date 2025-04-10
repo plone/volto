@@ -64,6 +64,6 @@ export function Icon(props: IconProps) {
       children.props.className,
       props.className,
     ),
-    style: { color, ...otherProps.style },
+    style: { fill: color, ...otherProps.style },
   });
 }

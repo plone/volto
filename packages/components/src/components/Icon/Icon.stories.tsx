@@ -10,13 +10,9 @@ const meta = {
   title: 'Basic/Icon',
   component: Icon,
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <div style={{ width: '400px' }}>
-        <Story />
-      </div>
-    ),
-  ],
+  parameters: {
+    layout: 'centered',
+  },
   argTypes: {
     size: {
       options: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
