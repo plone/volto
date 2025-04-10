@@ -145,7 +145,7 @@ Instead, use `import()`.
 
 
 ### Complete migration guide from Jest to Vitest
-
+You can refer {doc}`../development/add-ons/test-add-ons-18` for more migration information.
 For complete details on migrating from Jest to Vitest, refer to the official [Vitest Migration Guide](https://vitest.dev/guide/migration.html#jest).
 
 
@@ -156,31 +156,8 @@ Volto core has migrated from Jest to Vitest for unit tests.
 Jest is now deprecated.
 ```
 
+## Acceptance tests
 
-### Jest configuration override
-
-If you use Jest for your add-on testing, you may need to customize the configuration, especially in GitHub workflows or local development.
-Volto provides a way to do this by either using a {file}`jest.config.js` file, or specifying a custom configuration file through the `RAZZLE_JEST_CONFIG` environment variable.
-
-```shell
-RAZZLE_JEST_CONFIG=my-custom-jest-config.js pnpm test
+```{seealso}
+See the chapter {doc}`../../contributing/acceptance-tests`.
 ```
-
-```{note}
-Both configurations are merged in a way that the keys of the configuration provided override the initial {file}`package.json` default configuration, either in Volto or in your projects.
-```
-
-This is especially useful in GitHub workflows while developing add-ons.
-You can pass a specific configuration file that properly deals with the add-on configuration.
-
-
-### Add add-ons via environment variable for testing purposes
-
-Sometimes you need to enable different configurations and enable optional components, for example, testing purposes.
-You can use the `ADDONS` environment variable to define them.
-
-```bash
-ADDONS=test-addon,test-addon2 pnpm start
-```
-
-See {doc}`../configuration/environmentvariables` for more information.
