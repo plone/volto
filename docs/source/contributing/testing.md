@@ -15,11 +15,11 @@ It covers how to use [Vitest](https://vitest.dev/guide/), the current unit test 
 The popular `@testing-library/react` is also available for writing your tests.
 For every feature or component, a unit test is mandatory in Volto core.
 
-```{versionadded} Volto 18.TBD.TBD, current release at 18.10.1
+```{versionadded} Volto 18.TBD.TBD, current release at 18.12.0
 Volto core now uses Vitest for its unit tests.
 ```
 
-```{deprecated} Volto 18.TBD.TBD, current release at 18.10.1
+```{deprecated} Volto 18.TBD.TBD, current release at 18.12.0
 Volto core has migrated from Jest to Vitest for unit tests.
 Jest is now deprecated.
 ```
@@ -90,7 +90,7 @@ You can refer {doc}`../development/add-ons/test-add-ons-18` for complete migrati
 
 ## Jest usage
 
-```{deprecated} Volto 18.TBD.TBD, current release at 18.10.1
+```{deprecated} Volto 18.TBD.TBD, current release at 18.12.0
 Volto core has migrated from Jest to Vitest for unit tests.
 Jest is now deprecated.
 ```

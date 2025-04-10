@@ -17,11 +17,11 @@ This chapter describes how to migrate your tests from Jest to [Vitest](https://v
 Although Volto core now uses Vitest as its unit test runner, projects generated through {term}`Cookieplone` use Jest.
 Cookieplone will have a support for Vitest in the near future.
 
-```{versionadded} Volto 18.TBD.TBD, current release at 18.10.1
+```{versionadded} Volto 18.TBD.TBD, current release at 18.12.0
 Volto core now uses Vitest for its unit tests.
 ```
 
-```{deprecated} Volto 18.TBD.TBD, current release at 18.10.1
+```{deprecated} Volto 18.TBD.TBD, current release at 18.12.0
 Volto core has migrated from Jest to Vitest for unit tests.
 Jest is now deprecated.
 ```
