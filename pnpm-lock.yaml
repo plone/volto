@@ -354,6 +354,9 @@ importers:
       '@plone/components':
         specifier: workspace:*
         version: link:../components
+      '@plone/react-router':
+        specifier: workspace:*
+        version: link:../react-router
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
