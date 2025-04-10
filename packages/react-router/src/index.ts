@@ -72,6 +72,11 @@ export function getAddonRoutesConfig(
 }
 
 const secret = process.env.COOKIE_SECRET || 'default';
+if (secret === 'default' && process.env.NODE_ENV === 'production') {
+  console.warn(
+    '🚨 No COOKIE_SECRET environment variable set, using default. The app is insecure in production.',
+  );
+}
 
 export const cookie = createCookie('auth_seven', {
   secrets: [secret],
