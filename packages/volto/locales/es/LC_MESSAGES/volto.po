@@ -1,17 +1,21 @@
+# Gettext Message File for Plone
+# Translators:
+# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2019, 2022, 2023, 2025.
+# Mikel Larreategi <mlarreategi@codesyntax.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2023-09-20 00:35-0400\n"
+"PO-Revision-Date: 2025-04-10 15:45+0200\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
-"Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"MIME-Version: 1.0\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.5\n"
 "Language-Code: es\n"
 "Language-Name: Español\n"
 "Preferred-Encodings: utf-8\n"
@@ -82,7 +86,7 @@ msgstr "Reglas de contenido activas en esta página"
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
 msgid "Add"
-msgstr "Agregar"
+msgstr "Añadir"
 
 #. Default: "Add"
 #: components/manage/Widgets/ObjectListWidget
@@ -102,7 +106,7 @@ msgstr ""
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
 msgid "Add Content"
-msgstr "Agregar contenido"
+msgstr "Añadir contenido"
 
 #. Default: "Add Content Rule"
 #: components/manage/Controlpanels/Rules/AddRule
@@ -122,12 +126,12 @@ msgstr "Añadir traducción..."
 #. Default: "Add User"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add User"
-msgstr "Agregar Usuario"
+msgstr "Añadir Usuario"
 
 #. Default: "Add a description…"
 #: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
-msgstr "Agregar una descripción..."
+msgstr "Añadir una descripción..."
 
 #. Default: "Add a new alternative url"
 #: components/manage/Aliases/Aliases
@@ -152,7 +156,7 @@ msgstr "Añadir bloque en posición {index}"
 #. Default: "Add block…"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
-msgstr "Agregar bloque..."
+msgstr "Añadir bloque..."
 
 #. Default: "Condition added"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -182,17 +186,17 @@ msgstr "Añadir elemento al contenedor"
 #. Default: "Add field"
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
-msgstr "Agregar campo"
+msgstr "Añadir campo"
 
 #. Default: "Add fieldset"
 #: components/manage/Widgets/SchemaWidget
 msgid "Add fieldset"
-msgstr "Agregar un nuevo conjunto de campos"
+msgstr "Añadir un nuevo conjunto de campos"
 
 #. Default: "Add group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add group"
-msgstr "Agregar grupo"
+msgstr "Añadir grupo"
 
 #. Default: "Add new content type"
 #: components/manage/Controlpanels/ContentTypes
@@ -202,17 +206,17 @@ msgstr "Añadir un nuevo tipo de contenido"
 #. Default: "Add new group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add new group"
-msgstr "Agregar nuevo grupo"
+msgstr "Añadir nuevo grupo"
 
 #. Default: "Add new user"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add new user"
-msgstr "Agregar nuevo usuario"
+msgstr "Añadir nuevo usuario"
 
 #. Default: "Add to Groups"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
-msgstr "Agregar a Grupos"
+msgstr "Añadir a Grupos"
 
 #. Default: "Add users to group"
 #: helpers/MessageLabels/MessageLabels
@@ -227,7 +231,7 @@ msgstr "Añadir término del vocabulario"
 #. Default: "Add {type}"
 #: components/manage/Add/Add
 msgid "Add {type}"
-msgstr "Agregar {type}"
+msgstr "Añadir {type}"
 
 #. Default: "Add-Ons"
 #: components/manage/Controlpanels/Controlpanels
@@ -2588,7 +2592,7 @@ msgstr "Ok"
 
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
-msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr ""
 
 #. Default: "Open in a new tab"
@@ -2627,7 +2631,7 @@ msgstr "Origen"
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Overview of relations of all content items"
-msgstr "Descripción general de las relaciones de todos los elementos de contenido."
+msgstr "Descripción general de las relaciones de todos los elementos de contenido"
 
 #. Default: "Page"
 #: components/manage/Toolbar/Toolbar
@@ -2717,7 +2721,7 @@ msgstr "Elija un contenido existente como origen para este elemento"
 #. Default: "Please continue with the upgrade."
 #: components/manage/Controlpanels/Controlpanels
 msgid "Please continue with the upgrade."
-msgstr "Continúe con la actualización"
+msgstr "Continúe con la actualización."
 
 #. Default: "Please ensure you have a backup of your site before performing the upgrade."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -2727,7 +2731,7 @@ msgstr "Por favor, asegúrese de que tiene una copia de seguridad de su sitio an
 #. Default: "Please enter a valid URL by deleting the block and adding a new video block."
 #: components/manage/Blocks/Video/Body
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr "Por favor, introduzca una URL válida eliminando el bloque y agregando un nuevo bloque de vídeo."
+msgstr "Por favor, introduzca una URL válida eliminando el bloque y añadiendo un nuevo bloque de vídeo."
 
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit
@@ -3125,7 +3129,7 @@ msgstr "Reglas"
 #. Default: "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
-msgstr "Las reglas se ejecutan cuando ocurre un evento desencadenante. Las acciones de la regla solo se invocarán si se cumplen todas las condiciones de la regla. Puede agregar nuevas acciones y condiciones usando los botones a continuación."
+msgstr "Las reglas se ejecutan cuando ocurre un evento desencadenante. Las acciones de la regla solo se invocarán si se cumplen todas las condiciones de la regla. Puede añadir nuevas acciones y condiciones usando los botones a continuación."
 
 #. Default: "Save"
 #: components/manage/Add/Add
@@ -3689,7 +3693,7 @@ msgstr "Categoría"
 #. Default: "Tags to add"
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags to add"
-msgstr "Categoría a agregar"
+msgstr "Categoría a añadir"
 
 #. Default: "Tags to remove"
 #: components/manage/Contents/ContentsTagsModal
@@ -3836,7 +3840,7 @@ msgstr "El {plonecms} es {copyright} 2000-{current_year} por la {plonefoundation
 #. Default: "There are no groups with the searched criteria"
 #: helpers/MessageLabels/MessageLabels
 msgid "There are no groups with the searched criteria"
-msgstr "No hay grupos con los criterios buscados."
+msgstr "No hay grupos con los criterios buscados"
 
 #. Default: "There are no users with the searched criteria"
 #: helpers/MessageLabels/MessageLabels
@@ -3857,7 +3861,7 @@ msgstr "Hay un error de configuración en el servidor"
 #. Default: "There was an error with the upgrade."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "There was an error with the upgrade."
-msgstr "Ha ocurrido un error con la actualización"
+msgstr "Ha ocurrido un error con la actualización."
 
 #. Default: "There were some errors"
 #: components/manage/Form/InlineForm
@@ -4461,7 +4465,7 @@ msgstr "Está utilizando un navegador anticuado"
 #. Default: "You can add a comment by filling out the form below. Plain text formatting."
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
-msgstr "Usted puede agregar un comentario completando el formulario a continuación. Utilice formato de texto sin formato."
+msgstr "Usted puede añadir un comentario completando el formulario a continuación. Utilice formato de texto sin formato."
 
 #. Default: "You can control who can view and edit your item using the list below."
 #: components/manage/Sharing/Sharing
@@ -4541,7 +4545,7 @@ msgstr "Introduzca su nueva contraseña. Mínimo 8 caracteres."
 #. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr "Introduzca el nombre de usuario que desee utilizar. Generalmente algo como "jperez" o "jose_perez". No están permitidos caracteres especiales o espacios en el nombre de usuario. Los nombres de usuario y las contraseñas son sensibles a mayúsculas y minúsculas, asegúrese que la tecla de bloqueo de mayúsculas no está activada ('caps lock'). Este es el nombre que utilizará para identificarse."
+msgstr "Introduzca el nombre de usuario que desee utilizar. Generalmente algo como 'jperez' o 'jose_perez'. No están permitidos caracteres especiales o espacios en el nombre de usuario. Los nombres de usuario y las contraseñas son sensibles a mayúsculas y minúsculas, asegúrese que la tecla de bloqueo de mayúsculas no está activada ('caps lock'). Este es el nombre que utilizará para identificarse."
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
