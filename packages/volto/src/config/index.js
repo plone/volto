@@ -23,6 +23,7 @@ import { installDefaultViews } from './Views';
 import { installDefaultBlocks } from './Blocks';
 
 import { getSiteAsyncPropExtender } from '@plone/volto/helpers/Site';
+import { getMultilingualInstalledAsyncPropExtender } from '@plone/volto/helpers/Multilingual';
 import { registerValidators } from './validation';
 
 const host = process.env.HOST || 'localhost';
@@ -121,7 +122,10 @@ let config = {
     useEmailAsLogin: false,
     persistentReducers: ['blocksClipboard'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
-    asyncPropsExtenders: [getSiteAsyncPropExtender], // per route asyncConnect customizers
+    asyncPropsExtenders: [
+      getSiteAsyncPropExtender,
+      getMultilingualInstalledAsyncPropExtender,
+    ], // per route asyncConnect customizers
     contentIcons: contentIcons,
     loadables,
     lazyBundles: {
@@ -198,7 +202,14 @@ config.settings.apiExpanders = [
   ...config.settings.apiExpanders,
   {
     match: '',
-    GET_CONTENT: ['breadcrumbs', 'actions', 'types', 'navroot'],
+    GET_CONTENT: [
+      'breadcrumbs',
+      'actions',
+      'types',
+      'navroot',
+      // How to do this?
+      config.settings.isMultilingual && 'translations',
+    ],
   },
   {
     match: '',

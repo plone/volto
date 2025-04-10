@@ -34,12 +34,16 @@ const LanguageSelector = (props) => {
   const translations = useSelector(
     (state) => state.content.data?.['@components']?.translations?.items,
   );
+  const availableLanguages = useSelector(
+    (state) => state.site.data['plone.available_languages'],
+  );
+  const isMultilingual = useSelector((state) => state.addons.isMultilingual);
 
   const { settings } = config;
 
-  return settings.isMultilingual ? (
+  return isMultilingual ? (
     <div className="language-selector">
-      {map(settings.supportedLanguages, (lang) => {
+      {map(availableLanguages, (lang) => {
         const translation = find(translations, { language: lang });
         return (
           <Link
