@@ -1017,6 +1017,7 @@ msgstr "默认视图"
 
 #. Default: "Delete"
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/Groups/RenderGroups
@@ -4765,11 +4766,6 @@ msgstr "我的用户名是"
 #. Default: "Lead Image Field"
 #: config/Blocks
 msgid "leadimage"
-msgstr ""
-
-#. Default: "Delete"
-#: components/manage/Contents/ContentsDeleteModal
-msgid "link-integrity: Delete"
 msgstr ""
 
 #. Default: "Delete item and break links"
