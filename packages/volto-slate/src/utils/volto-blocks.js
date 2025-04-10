@@ -128,7 +128,7 @@ export function createImageBlock(url, index, props, intl) {
   let id, newFormData;
 
   if (currBlockHasValue) {
-    [id, newFormData] = addBlock(properties, 'image', index + 1, {}, intl);
+    [id, newFormData] = addBlock(properties, 'image', index + 1, null, intl);
     newFormData = changeBlock(newFormData, id, { '@type': 'image', url });
   } else {
     [id, newFormData] = insertBlock(properties, currBlockId, {
@@ -153,7 +153,7 @@ export const createAndSelectNewBlockAfter = (editor, blockValue, intl) => {
     properties,
     'slate',
     index + 1,
-    {},
+    null,
     intl,
   );
 
