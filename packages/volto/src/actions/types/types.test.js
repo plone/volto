@@ -10,7 +10,7 @@ describe('Types action', () => {
         },
       });
       const url = '/blog';
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
       getTypes(url)(dispatch, getState);
 

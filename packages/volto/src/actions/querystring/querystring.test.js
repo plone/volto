@@ -5,7 +5,7 @@ describe('Querystring action', () => {
   describe('getQuerystring', () => {
     it('should create an action to get the querystring config', () => {
       const getState = () => ({});
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
       getQuerystring()(dispatch, getState);
       expect(dispatch).toHaveBeenCalledWith({
         type: GET_QUERYSTRING,
@@ -21,7 +21,7 @@ describe('Querystring action', () => {
           data: { '@id': 'http://localhost:3000/some/content' },
         },
       });
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
       getQuerystring()(dispatch, getState);
       expect(dispatch).toHaveBeenCalledWith({
         type: GET_QUERYSTRING,

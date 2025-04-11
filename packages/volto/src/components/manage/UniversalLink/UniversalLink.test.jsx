@@ -18,7 +18,7 @@ const store = mockStore({
   },
 });
 
-global.console.error = jest.fn();
+global.console.error = vi.fn();
 
 describe('UniversalLink', () => {
   it('renders a UniversalLink component with internal link', () => {

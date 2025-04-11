@@ -18,7 +18,7 @@
     "start:project": "pnpm --filter plone run start",
     "lint": "make build-all-deps && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
     "lint:volto": "pnpm --filter @plone/volto run lint",
-    "test": "pnpm --filter @plone/volto run test",
+    "test": "pnpm --filter @plone/volto run vitest",
     "test:ci": "pnpm --filter @plone/volto run test:ci",
     "i18n": "pnpm --filter @plone/volto run i18n",
     "i18n:ci": "pnpm --filter @plone/volto i18n:ci",
@@ -35,6 +35,7 @@
     "update:browserlist": "pnpm --filter @plone/volto add caniuse-lite && pnpm --filter @plone/volto remove caniuse-lite"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
     "concurrently": "^8.2.2",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",

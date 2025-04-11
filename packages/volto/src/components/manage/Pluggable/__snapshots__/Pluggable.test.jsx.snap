@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<Pluggable /> Pluggables are zero when Plug is present 1`] = `
+exports[`<Pluggable /> > Pluggables are zero when Plug is present 1`] = `
 <div>
   <header>
     <h2>
@@ -17,11 +17,11 @@ exports[`<Pluggable /> Pluggables are zero when Plug is present 1`] = `
 </div>
 `;
 
-exports[`<Pluggable /> Pluggables are zero when no Plug or empty 1`] = `<div />`;
+exports[`<Pluggable /> > Pluggables are zero when no Plug or empty 1`] = `<div />`;
 
-exports[`<Pluggable /> Works with an empty Plug 1`] = `<div />`;
+exports[`<Pluggable /> > Works with an empty Plug 1`] = `<div />`;
 
-exports[`<Pluggable /> passes params 1`] = `
+exports[`<Pluggable /> > passes params 1`] = `
 <div>
   <div
     id="plug"
