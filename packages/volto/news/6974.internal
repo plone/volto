@@ -1,0 +1,1 @@
+Add eslint rule to avoid importing `Image` from `semantic-ui-react`. @wesleybl
