@@ -16,10 +16,18 @@ module.exports = {
       'pnpm prettier --single-quote --write',
     ];
   },
-  'packages/volto/**/*.{js,jsx,ts,tsx}': [
-    'pnpm --filter @plone/volto lint:husky',
-    'pnpm --filter @plone/volto prettier:husky',
-  ],
+  'packages/volto/**/*.{js,jsx,ts,tsx}': async (files) => {
+    const filteredFiles = files.filter((file) => !file.endsWith('.d.ts'));
+
+    if (filteredFiles.length === 0) {
+      return [];
+    }
+
+    return [
+      `pnpm --filter @plone/volto lint:husky ${filteredFiles.join(' ')}`,
+      `pnpm --filter @plone/volto prettier:husky ${filteredFiles.join(' ')}`,
+    ];
+  },
   'packages/volto/src/**/*.{jsx, tsx}': ['pnpm --filter @plone/volto i18n'],
   'packages/!(volto)/**/*.{css,less,scss}': ['pnpm stylelint --fix'],
   'packages/volto/**/*.{css,less,scss}': [

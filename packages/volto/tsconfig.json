@@ -21,7 +21,7 @@
       "@root/*": ["./src/*"]
     }
   },
-  "include": ["src", "packages"],
+  "include": ["src", "packages", "types"],
   "exclude": [
     "node_modules",
     "build",
