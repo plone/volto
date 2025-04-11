@@ -186,7 +186,7 @@ Do not use this method of persistence in a production environment.
 It is intended only for development.
 
 ```{seealso}
-{doc}`../deploying/index`
+{doc}`training:plone-deployment/index`
 ```
 ````
 `````

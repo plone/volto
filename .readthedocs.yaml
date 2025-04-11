@@ -19,7 +19,8 @@ build:
     # If there are no changes (git diff exits with 0) we force the command to return with 183.
     # This is a special exit code on Read the Docs that will cancel the build immediately.
     - |
-      if [ "$READTHEDOCS_VERSION_TYPE" = "external" ] && git diff --quiet origin/main -- docs/ .readthedocs.yaml requirements-docs.txt;
+      if [ "$READTHEDOCS_VERSION_TYPE" = "external" ] && git diff --quiet origin/seven -- docs/ .readthedocs.yaml requirements-docs.txt \
+          packages/components/.storybook/ packages/volto/.storybook/;
       then
         exit 183;
       fi

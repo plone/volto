@@ -22,7 +22,7 @@ VALEOPTS        ?=
 SPHINXBUILD     = "$(realpath bin/sphinx-build)"
 SPHINXAUTOBUILD = "$(realpath bin/sphinx-autobuild)"
 DOCS_DIR        = ./docs/
-BUILDDIR        = ../_build/
+BUILDDIR        = ../_build
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
 VALEFILES       := $(shell find $(DOCS_DIR) -type f -name "*.md" -print)
 
@@ -94,15 +94,21 @@ bin/python: ## Create a Python virtual environment with the latest pip, and inst
 	bin/pip install -r requirements-docs.txt
 	@echo "Requirements installed."
 
-.PHONY: docs-clean
-docs-clean:  ## Clean current and legacy docs build directories, and Python virtual environment
+.PHONY: docs-distclean
+docs-distclean:  ## Clean Python virtual environment
 	rm -rf bin include lib
-	rm -rf docs/_build
+	@echo "Cleaned Python virtual environment."
+
+.PHONY: docs-clean
+docs-clean:  ## Clean docs build directory
 	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
+	@echo "Cleaned docs build directory."
 
 .PHONY: docs-news
 docs-news:  ## Create or update the symlink from docs to volto package
-	ln -snf ../../packages/volto/news docs/news && echo "Symlink to Volto news created or updated.";
+	if [ -f /tmp/foo.txt ]; then rm docs/news; fi
+	ln -snf ../packages/volto/news docs/news
+	@echo "Symlink to Seven news created or updated.";
 
 .PHONY: docs-html
 docs-html: bin/python docs-news  ## Build html

@@ -11,7 +11,12 @@ myst:
 
 # Upgrade Guides
 
+```{todo}
+When Seven is about to be released, we'll transfer this file from the `main` branch here.
+```
+
 These upgrade guides lists all breaking changes in the Plone's modular architecture packages ecosystem and explains the steps that are necessary to upgrade to the latest versions.
+For more information see {doc}`../contributing/version-policy`.
 
 ```{toctree}
 :maxdepth: 1
