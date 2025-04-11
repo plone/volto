@@ -87,7 +87,6 @@ export const CustomSize: Story = {
   args: {
     className: 'icon-[70px]',
     color: '--color-quanta-rose',
-    // size: '2xs',
     children: svgIcon,
   },
 };
