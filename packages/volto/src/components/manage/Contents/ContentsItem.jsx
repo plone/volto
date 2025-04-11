@@ -4,7 +4,13 @@
  */
 
 import React from 'react';
-import { Button, Table, Menu, Divider } from 'semantic-ui-react';
+import {
+  Button,
+  Table,
+  Menu,
+  Divider,
+  Popup as SemanticUiPopup,
+} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import map from 'lodash/map';
@@ -75,11 +81,45 @@ function getColor(string) {
   }
 }
 
+// PreviewImage Component
+const PreviewImage = ({ item }) => {
+  const previewImageUrl = `${item['@id']}/${item.image_scales?.image?.[0]?.scales?.teaser?.download}`;
+  const previewIconUrl = `${item['@id']}/${item.image_scales?.image?.[0]?.scales?.thumb?.download}`;
+
+  return (
+    <SemanticUiPopup
+      trigger={
+        <div className="preview-image-container">
+          <img
+            className="popup-image-icon"
+            src={previewIconUrl}
+            alt=""
+            loading="lazy"
+          />{' '}
+          <span title={item.title}> {item.title}</span>
+        </div>
+      }
+    >
+      <SemanticUiPopup.Content>
+        <div>
+          <img
+            className="popup-preview-image"
+            src={previewImageUrl}
+            alt=""
+            loading="lazy"
+          />
+        </div>
+      </SemanticUiPopup.Content>
+    </SemanticUiPopup>
+  );
+};
+
 /**
  * Contents item component class.
  * @function ContentsItemComponent
  * @returns {string} Markup of the component.
  */
+
 export const ContentsItemComponent = ({
   item,
   selected,
@@ -156,14 +196,20 @@ export const ContentsItemComponent = ({
             to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
           >
             <div className="expire-align">
-              <Icon
-                name={getContentIcon(item['@type'], item.is_folderish)}
-                size="20px"
-                className="icon-margin"
-                color="#878f93"
-                title={item['Type'] || item['@type']}
-              />{' '}
-              <span title={item.title}> {item.title}</span>
+              {item['@type'] === 'Image' ? (
+                <PreviewImage item={item} />
+              ) : (
+                <div className="preview-image-container">
+                  <Icon
+                    name={getContentIcon(item['@type'], item.is_folderish)}
+                    size="20px"
+                    className="icon-margin"
+                    color="#878f93"
+                    title={item['Type'] || item['@type']}
+                  />
+                  <span title={item.title}> {item.title}</span>
+                </div>
+              )}
             </div>
             {item.ExpirationDate !== 'None' &&
               new Date(item.ExpirationDate).getTime() <

@@ -1,0 +1,1 @@
+Show preview image in folder contents view on hover @iRohitSingh
