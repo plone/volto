@@ -3,22 +3,14 @@ import { Icon } from './Icon';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/icons.css';
-
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta = {
-  title: 'Basic/Icon',
+  title: 'Tailwind/Icon',
   component: Icon,
-  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },
-  argTypes: {
-    size: {
-      options: ['2xs', 'xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl'],
-      control: { type: 'radio' },
-    },
-  },
+  tags: ['autodocs'],
 } satisfies Meta<typeof Icon>;
 
 export default meta;
@@ -41,25 +33,60 @@ const svgIcon = (
   </svg>
 );
 
-export const Default: Story = {
+export const Base: Story = {
   args: {
-    size: 'lg',
     children: svgIcon,
   },
 };
 
-export const WithCSSCustomPropertyColor: Story = {
+export const Icon2Xs: Story = {
   args: {
-    size: '2xl',
-    color: '--quanta-sapphire',
+    color: '--color-quanta-wine',
+    size: '2xs',
     children: svgIcon,
   },
 };
 
-export const WithHEXColor: Story = {
+export const IconXs: Story = {
   args: {
-    size: '3xl',
-    color: '#aaa',
+    className: 'text-quanta-sapphire icon-xs',
+    children: svgIcon,
+  },
+};
+
+export const IconSm: Story = {
+  args: {
+    className: 'text-quanta-sapphire icon-sm',
+    children: svgIcon,
+  },
+};
+
+export const IconXL: Story = {
+  args: {
+    className: 'text-quanta-celery icon-xl',
+    children: svgIcon,
+  },
+};
+
+export const Icon2XL: Story = {
+  args: {
+    className: 'text-quanta-candy icon-2xl',
+    children: svgIcon,
+  },
+};
+
+export const Icon3XL: Story = {
+  args: {
+    className: 'icon-3xl',
+    color: '--color-quanta-sapphire',
+    children: svgIcon,
+  },
+};
+
+export const CustomSize: Story = {
+  args: {
+    className: 'icon-[70px]',
+    color: '--color-quanta-rose',
     children: svgIcon,
   },
 };

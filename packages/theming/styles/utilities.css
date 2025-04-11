@@ -1,0 +1,46 @@
+@utility icon-2xs {
+  width: calc(var(--quanta-icon-size) * 3);
+  height: calc(var(--quanta-icon-size) * 3);
+}
+
+@utility icon-xs {
+  width: calc(var(--quanta-icon-size) * 4);
+  height: calc(var(--quanta-icon-size) * 4);
+}
+
+@utility icon-sm {
+  width: calc(var(--quanta-icon-size) * 5);
+  height: calc(var(--quanta-icon-size) * 5);
+}
+
+@utility icon-base {
+  width: calc(var(--quanta-icon-size) * 6);
+  height: calc(var(--quanta-icon-size) * 6);
+}
+
+@utility icon-lg {
+  width: calc(var(--quanta-icon-size) * 7);
+  height: calc(var(--quanta-icon-size) * 7);
+}
+
+@utility icon-xl {
+  width: calc(var(--quanta-icon-size) * 8);
+  height: calc(var(--quanta-icon-size) * 8);
+}
+
+@utility icon-2xl {
+  width: calc(var(--quanta-icon-size) * 9);
+  height: calc(var(--quanta-icon-size) * 9);
+}
+
+@utility icon-3xl {
+  width: calc(var(--quanta-icon-size) * 10);
+  height: calc(var(--quanta-icon-size) * 10);
+}
+
+@utility icon-* {
+  width: calc(var(--quanta-icon-size) * --value(integer));
+  width: --value([ *]);
+  height: calc(var(--quanta-icon-size) * --value(integer));
+  height: --value([ *]);
+}

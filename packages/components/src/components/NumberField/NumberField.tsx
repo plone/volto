@@ -30,11 +30,11 @@ export function NumberField({
       <Label>{label}</Label>
       <Group>
         <Button slot="decrement">
-          <DashIcon size="XS" />
+          <DashIcon size="sm" />
         </Button>
         <Input />
         <Button slot="increment">
-          <AddIcon size="XS" />
+          <AddIcon size="sm" />
         </Button>
       </Group>
       {description && <Text slot="description">{description}</Text>}

@@ -2,7 +2,8 @@ import React, { type ReactElement } from 'react';
 import type { AriaLabelingProps, DOMProps } from '@react-types/shared';
 import { useSlotProps } from '@react-spectrum/utils';
 import { filterDOMProps } from '@react-aria/utils';
-import _clsx from 'clsx';
+import clsx from 'clsx';
+import { tv } from 'tailwind-variants';
 
 export interface IconProps extends DOMProps, AriaLabelingProps {
   /**
@@ -16,7 +17,7 @@ export interface IconProps extends DOMProps, AriaLabelingProps {
   /**
    * Size of Icon (changes based on scale).
    */
-  size?: 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL';
+  size?: '2xs' | 'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl';
   /**
    * A slot to place the icon in.
    * @default 'icon'
@@ -39,6 +40,22 @@ export interface IconProps extends DOMProps, AriaLabelingProps {
 
 export type IconPropsWithoutChildren = Omit<IconProps, 'children'>;
 
+const icon = tv({
+  base: 'q icon',
+  variants: {
+    size: {
+      '2xs': 'icon-2xs',
+      xs: 'icon-xs',
+      sm: 'icon-sm',
+      base: 'icon-base',
+      lg: 'icon-lg',
+      xl: 'icon-xl',
+      '2xl': 'icon-2xl',
+      '3xl': 'icon-3xl',
+    },
+  },
+});
+
 export function Icon(props: IconProps) {
   props = useSlotProps(props, 'icon');
   const { children, size, 'aria-label': ariaLabel, ...otherProps } = props;
@@ -47,10 +64,9 @@ export function Icon(props: IconProps) {
     ariaHidden = undefined;
   }
 
-  const iconSize = size ? size : 'M';
   const color = props.color?.startsWith('--')
     ? `var(${props.color})`
-    : props.color;
+    : props.color || 'currentColor';
 
   return React.cloneElement(children, {
     ...filterDOMProps(otherProps),
@@ -58,12 +74,10 @@ export function Icon(props: IconProps) {
     'aria-label': ariaLabel,
     'aria-hidden': ariaLabel ? ariaHidden || undefined : true,
     role: 'img',
-    className: _clsx(
-      'q icon',
-      `icon--size${iconSize}`,
-      children.props.className,
-      props.className,
-    ),
-    style: { color, ...otherProps.style },
+    className: icon({
+      size: props.size,
+      className: clsx(children.props.className, props.className),
+    }),
+    style: { fill: color, ...otherProps.style },
   });
 }

@@ -47,7 +47,7 @@ export function Breadcrumbs({
         {(item) => (
           <RACBreadcrumb id={item['@id']}>
             <Link href={item['@id']}>
-              {item['@id'] === (root || '/') && <HomeIcon size="S" />}
+              {item['@id'] === (root || '/') && <HomeIcon size="sm" />}
               {item.title}
             </Link>
           </RACBreadcrumb>
