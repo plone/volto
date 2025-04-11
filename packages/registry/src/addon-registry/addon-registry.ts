@@ -6,6 +6,7 @@ import _debug from 'debug';
 import { DepGraph } from 'dependency-graph';
 import { createRequire } from 'node:module';
 import { autoConf, jsLoader, getConfigPath } from 'auto-config-loader';
+import merge from 'deepmerge';
 
 const debugShadowing = _debug('shadowing');
 const debugConfig = _debug('config');
@@ -514,6 +515,58 @@ class AddonRegistry {
     });
 
     return addonsStylesInfo;
+  }
+
+  /**
+   * Returning locales in the format:
+   * {
+   *   "en": {
+   *     "common.json": {
+   *       ...translations
+   *     },
+   *   },
+   *   "it": {
+   *     "common.json": {
+   *       ...translations
+   *     },
+   *   }
+   *   ...other languages
+   * }
+   */
+  getAddonsLocales() {
+    return this.getAddonDependencies().reduce<{
+      [lang: string]: { [namespace: string]: object };
+    }>((acc, addon) => {
+      const normalizedAddonName = addon.split(':')[0] as string;
+
+      const localesFolder = path.resolve(
+        this.packages[normalizedAddonName]?.modulePath,
+        'locales',
+      );
+      // If the add-on has no locales folder, we skip it
+      if (!fs.existsSync(localesFolder)) {
+        return acc;
+      }
+
+      const languages = fs.readdirSync(localesFolder);
+      const addonLocales = languages.reduce<{
+        [lang: string]: { [namespace: string]: object };
+      }>((acc, language) => {
+        const addonLocaleFolder = path.join(localesFolder, language);
+        // Only read the common.json namespace file since we don't support
+        // multiple namespaces at this time
+        const namespace = 'common.json';
+        const filePath = path.join(addonLocaleFolder, namespace);
+        if (fs.existsSync(filePath)) {
+          if (!acc[language]) acc[language] = {};
+          acc[language][namespace] = JSON.parse(
+            fs.readFileSync(filePath, 'utf-8'),
+          );
+        }
+        return acc;
+      }, {});
+      return merge(acc, addonLocales);
+    }, {});
   }
 
   getCustomThemeAddons() {
