@@ -15,7 +15,7 @@ const meta = {
   },
   argTypes: {
     size: {
-      options: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+      options: ['2xs', 'xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl'],
       control: { type: 'radio' },
     },
     color: {

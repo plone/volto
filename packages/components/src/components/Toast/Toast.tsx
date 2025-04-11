@@ -31,7 +31,7 @@ export function Toast(props: Props) {
 
   return (
     <>
-      <Icon size="S" />
+      <Icon size="sm" />
       <div className="toast-inner-content">
         {title && <h4>{title}</h4>}
         <p>{content}</p>
