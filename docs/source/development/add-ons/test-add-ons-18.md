@@ -30,7 +30,12 @@ Jest is now deprecated.
 ```
 
 
-## Install Vitest
+## Set up Vitest
+
+The following steps will guide you through setting up your development environment to migrate your tests from Jest to Vitest.
+
+
+### Install Vitest
 
 Run the following command to add Vitest and required dependencies to your development environment.
 
@@ -39,7 +44,7 @@ pnpm add -D vitest @testing-library/react jsdom
 ```
 
 
-## Configure your add-on to use Vitest
+### Configure your add-on to use Vitest
 
 Create a file {file}`vitest.config.js` or {file}`vitest.config.ts` inside your add-on to configure Vitest.
 The following code is configuration boilerplate for Vitest.
@@ -87,7 +92,7 @@ If your add-on previously relied on Jest's configuration via the `RAZZLE_JEST_CO
 ```
 
 
-## Create setup file for Vitest
+### Create setup file for Vitest
 
 Create a test setup file {file}`setupTests.js` for Vitest.
 The following code is boilerplate setup for Vitest.
@@ -114,7 +119,7 @@ vi.stubGlobal('fetch', vi.fn(() =>
 ```
 
 
-## Update {file}`package.json` to use Vitest
+### Update {file}`package.json` to use Vitest
 
 To switch your project from Jest to Vitest, update the file {file}`package.json`.
 
@@ -126,9 +131,11 @@ To switch your project from Jest to Vitest, update the file {file}`package.json`
 }
 ```
 
-## Migrate from Jest to Vitest
 
-The following guidelines for writing tests using Vitest will help you migrate your tests from Jest.
+##  Convert Jest tests to Vitest
+
+The following guidelines will help you convert your tests from Jest to Vitest.
+
 Vitest shares a similar syntax with Jest, as both use {term}`Mocha` and {term}`Chai`, but there are notable differences in handling mocks and other features.
 
 Similar to Jest, Vitest provides functions such as `it`, `expect`, `describe`, `test`, and `vi`.
