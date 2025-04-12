@@ -1,1 +1,0 @@
-Call `initialValue` consistently by passing `null` instead of `{}` to `blocksConfig`. @Abhishek-17h
