@@ -25,7 +25,7 @@ jobs:
       - run: pnpm --filter @plone/volto i18n
 
       - name: Run unit tests Volto
-        run: pnpm --filter @plone/volto test
+        run: pnpm --filter @plone/volto vitest
 
       # Bundlewatch
       # - run: yarn build
