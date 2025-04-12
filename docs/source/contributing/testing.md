@@ -4,7 +4,7 @@ myst:
     "description": "We use Vitest for unit testing in Volto. The popular @testing-library/react is also available for writing your tests. For every feature or component, a unit test is mandatory in Volto core."
     "property=og:description": "We use Vitest for unit testing in Volto. The popular @testing-library/react is also available for writing your tests. For every feature or component, a unit test is mandatory in Volto core."
     "property=og:title": "Testing Volto with Vitest"
-    "keywords": "Volto, Plone, frontend, React, testing, Vitest, Jest"
+    "keywords": "Volto, Plone, frontend, React, testing, Vitest"
 ---
 
 # Testing
