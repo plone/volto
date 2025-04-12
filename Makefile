@@ -246,6 +246,9 @@ ci-acceptance-test-run-all: ## With a single command, start both the acceptance 
 cmsui-acceptance-test: ## Start Cypress in interactive mode for @plone/cmsui tests
 	pnpm --filter @plone/tooling exec cypress open --config-file $(CURRENT_DIR)/packages/tooling/cypress.config.js --config specPattern=$(CURRENT_DIR)'/packages/cmsui/cypress/tests/**/*.cy.{js,jsx,ts,tsx}'
 
+cmsui-ci-acceptance-test: ## Start Cypress in interactive mode for @plone/cmsui tests
+	pnpm --filter @plone/tooling exec cypress run --config-file $(CURRENT_DIR)/packages/tooling/cypress.config.js --config specPattern=$(CURRENT_DIR)'/packages/cmsui/cypress/tests/**/*.cy.{js,jsx,ts,tsx}'
+
 
 ### Revisit this section when more code is in place ###
 ######### Deployment Core Acceptance tests
