@@ -78,7 +78,7 @@ jobs:
           install: false
           browser: chrome
           working-directory: packages/tooling
-          spec: ../cmsui/cypress/tests/**/*.cy.{js,jsx,ts,tsx}
+          spec: packages/cmsui/cypress/tests/**/*.cy.{js,jsx,ts,tsx}
           start: |
             make ci-acceptance-backend-start
             make acceptance-frontend-prod-start
