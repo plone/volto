@@ -51,15 +51,11 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vitest/coverage-v8": "catalog:",
-    "cypress": "^14.3.0",
-    "cypress-axe": "^1.6.0",
-    "cypress-file-upload": "5.0.8",
     "react-router-devtools": "^1.1.6",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-tsconfig-paths": "^5.0.1",
-    "vitest": "catalog:",
-    "wait-on": "^8.0.0"
+    "vitest": "catalog:"
   },
   "engines": {
     "node": ">=20.0.0"

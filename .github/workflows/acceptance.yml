@@ -28,9 +28,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          working-directory: apps/seven
           browser: chrome
-          spec: cypress/tests/core/basic/**/*.cy.ts
+          command: make ci-acceptance-test
           start: |
             make ci-acceptance-backend-start
             make acceptance-frontend-prod-start

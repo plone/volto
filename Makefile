@@ -231,11 +231,11 @@ acceptance-frontend-prod-start: ## Start acceptance frontend in production mode
 
 .PHONY: acceptance-test
 acceptance-test: ## Start Cypress in interactive mode
-	$(MAKE) -C "./apps/seven/" acceptance-test
+	pnpm --filter @plone/tooling exec cypress open --config-file $(CURRENT_DIR)/packages/tooling/cypress.config.js --config specPattern=$(CURRENT_DIR)'/apps/seven/cypress/tests/**/*.cy.{js,jsx,ts,tsx}'
 
 .PHONY: ci-acceptance-test
 ci-acceptance-test: ## Run cypress tests in headless mode for CI
-	$(MAKE) -C "./apps/seven/" ci-acceptance-test
+	pnpm --filter @plone/tooling exec cypress run --config-file $(CURRENT_DIR)/packages/tooling/cypress.config.js --config specPattern=$(CURRENT_DIR)'/apps/seven/cypress/tests/**/*.cy.{js,jsx,ts,tsx}'
 
 .PHONY: ci-acceptance-test-run-all
 ci-acceptance-test-run-all: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode
