@@ -9,7 +9,7 @@ myst:
 
 (contributing-to-volto-label)=
 
-# Contributing to Volto
+# Contributing to Seven
 
 ```{important}
 The Volto Team has suspended its review of new pull requests from first-time contributors until the [release of Plone 7](https://plone.org/download/release-schedule), which is preliminarily scheduled for the second quarter of 2026.
@@ -109,7 +109,6 @@ These checks are enforced automatically on every pull request, so you might as w
 Specifically:
 
 -   {doc}`./linting`
--   {doc}`./testing`
 -   {doc}`./acceptance-tests`
 -   {doc}`./documentation`
 
@@ -119,25 +118,14 @@ Specifically:
 ## Developer guidelines
 
 ```{toctree}
-:maxdepth: 1
+:maxdepth: 2
 
-developing-core
-design-principles
-style-guide
-language-features
-linting
-testing
 acceptance-tests
+developing-core
 documentation
-react
-redux
-routing
-icons
-accessibility-guidelines
-bundle-size-optimization
-typescript
-volto-core-addons
+linting
 version-policy
+language-features
 ```
 
 

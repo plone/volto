@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { Button } from './Button';
 import { BinIcon } from '../../components/icons/BinIcon';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta = {
   title: 'Tailwind/Button',
   component: Button,
   parameters: {
     layout: 'centered',
+    backgrounds: { disable: true },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -19,45 +21,62 @@ export default {
     isDisabled: false,
     children: 'Button',
   },
-};
+} satisfies Meta<typeof Button>;
 
-export const Primary = {
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {
   args: {
     variant: 'primary',
   },
 };
 
-export const Secondary = {
+export const Secondary: Story = {
   args: {
     variant: 'secondary',
   },
 };
 
-export const Destructive = {
+export const Destructive: Story = {
   args: {
     variant: 'destructive',
   },
 };
 
-export const Icon = {
+export const Disabled: Story = {
+  args: {
+    isDisabled: true,
+  },
+};
+
+export const Icon: Story = {
+  render: (args) => (
+    <Button {...args}>
+      <BinIcon />
+    </Button>
+  ),
+};
+
+export const SmallIcon: Story = {
   render: (args) => (
     <Button {...args}>
       <BinIcon />
     </Button>
   ),
   args: {
-    variant: 'icon',
+    size: 'S',
   },
 };
 
-export const WithClassName = {
+export const WithClassName: Story = {
   args: {
     className: 'my-custom-classname',
     variant: 'destructive',
   },
 };
 
-export const WithTWClassName = {
+export const WithTWClassName: Story = {
   args: {
     className: 'border-5 border-amber-300',
     variant: 'destructive',

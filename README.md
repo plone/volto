@@ -52,9 +52,15 @@ This allows the code to be shared effectively, and unifies tracking of changes a
 See also [Monorepo structure](https://6.docs.plone.org/volto/contributing/developing-core.html#monorepo-structure).
 
 
-## Create a Volto project
+## Storybook for the frontend's modular architecture
 
-To start a new project using Volto, follow the [Plone installation documentation](https://6.docs.plone.org/install/create-project.html).
+The frontend's modular architecture in Plone is documented with Storybook.
+You can find it at https://plone-storybook.readthedocs.io/latest/.
+
+
+## Create a Seven frontend-only project
+
+To create a project with a frontend-only scaffold using Seven, follow the [Plone installation documentation](https://volto.readthedocs.io/seven/get-started/create-package.html).
 
 
 ## Documentation
