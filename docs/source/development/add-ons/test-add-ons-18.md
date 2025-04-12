@@ -13,15 +13,18 @@ myst:
 This guide assumes that you've used {term}`Cookieplone` to create your add-on boilerplate.
 ```
 
-This chapter describes how to migrate your tests from Jest to [Vitest](https://vitest.dev/guide/).
-Although Volto core now uses Vitest as its unit test runner, projects generated through {term}`Cookieplone` use Jest.
-Cookieplone will have a support for Vitest in the near future.
+This chapter describes how to set up your testing environment and to write tests using [Vitest](https://vitest.dev/guide/), and how to migrate your tests from Jest to Vitest.
 
-```{versionadded} Volto 18.TBD.TBD, current release at 18.12.0
+Although Volto core now uses Vitest as its unit test runner, projects generated through {term}`Cookieplone` currently use Jest.
+Cookieplone will have a support for Vitest in the near future.
+Watch the issue [Use Vitest as main test runner in `frontend_addon` and project](https://github.com/plone/cookieplone-templates/issues/207) for its current status.
+
+
+```{versionadded} Volto 18.12.0
 Volto core now uses Vitest for its unit tests.
 ```
 
-```{deprecated} Volto 18.TBD.TBD, current release at 18.12.0
+```{deprecated} Volto 18.12.0
 Volto core has migrated from Jest to Vitest for unit tests.
 Jest is now deprecated.
 ```
@@ -38,7 +41,7 @@ pnpm add -D vitest @testing-library/react jsdom
 
 ## Configure your add-on to use Vitest
 
-Create a {file}`vitest.config.js` or {file}`vitest.config.ts` file inside your add-on to configure Vitest.
+Create a file {file}`vitest.config.js` or {file}`vitest.config.ts` inside your add-on to configure Vitest.
 The following code is configuration boilerplate for Vitest.
 
 {emphasize-lines="8-9" lineno-start=1}
@@ -86,7 +89,7 @@ If your add-on previously relied on Jest's configuration via the `RAZZLE_JEST_CO
 
 ## Create setup file for Vitest
 
-Create a test setup {file}`setupTests.js` file for Vitest.
+Create a test setup file {file}`setupTests.js` for Vitest.
 The following code is boilerplate setup for Vitest.
 
 ```javascript
@@ -113,7 +116,7 @@ vi.stubGlobal('fetch', vi.fn(() =>
 
 ## Update {file}`package.json` to use Vitest
 
-To switch your project from Jest to Vitest, update the {file}`package.json` file.
+To switch your project from Jest to Vitest, update the file {file}`package.json`.
 
 ```json
 "scripts": {
@@ -126,7 +129,7 @@ To switch your project from Jest to Vitest, update the {file}`package.json` file
 ## Migrate from Jest to Vitest
 
 The following guidelines for writing tests using Vitest will help you migrate your tests from Jest.
-Vitest shares a similar syntax with Jest, as both use Mocha/Chai, but there are notable differences in handling mocks and other features.
+Vitest shares a similar syntax with Jest, as both use {term}`Mocha` and {term}`Chai`, but there are notable differences in handling mocks and other features.
 
 Similar to Jest, Vitest provides functions such as `it`, `expect`, `describe`, `test`, and `vi`.
 These properties are globally declared in the {file}`test-setup-globals.js` file, making them available throughout the Volto core without requiring explicit imports in individual test files.
@@ -134,13 +137,15 @@ These properties are globally declared in the {file}`test-setup-globals.js` file
 
 ### Differences in mocks
 
+In Jest, you would write a mock as shown.
+
 ```javascript
 jest.mock('../../manage/Workflow/Workflow', () =>
   jest.fn(() => <div id="state-select" />),
 );
 ```
 
-The Vitest equivalent mock to the above Jest mock is the following.
+The Vitest equivalent is the following example.
 
 ```javascript
 vi.mock('../../manage/Workflow/Workflow', () => ({
@@ -150,7 +155,7 @@ vi.mock('../../manage/Workflow/Workflow', () => ({
 
 Vitest's `vi.mock()` does not automatically assume a default export like Jest does.
 Instead, it treats the module as an object, so the mocked function must be explicitly assigned to the `default` property.
-For more details, refer to the [Vitest Mocking Guide](https://vitest.dev/guide/mocking.html).
+For more details, refer to the [Mocking](https://vitest.dev/guide/mocking.html) guide in the Vitest documentation.
 
 
 ### Testing with lazy loaded libraries
@@ -209,10 +214,9 @@ In Volto, `jiti` is used in the test file {file}`packages/volto/__tests__/create
 
 ## Additional Vitest information
 
-```{seealso}
-For a general guide for Vitest, see {doc}`../../contributing/testing`.
-```
 For complete details on migrating from Jest to Vitest, refer to the official [Vitest Migration Guide](https://vitest.dev/guide/migration.html#jest).
+
+For using Vitest when contributing to Volto, see {doc}`../../contributing/testing`.
 
 
 ## Jest for Volto add-ons
@@ -228,7 +232,7 @@ This support lets you migrate your tests from Jest to Vitest at your convenience
 ### Jest configuration override
 
 If you use Jest for your add-on testing, you may need to customize the configuration, especially in GitHub workflows or local development.
-Volto provides a way to do this by either using a {file}`jest.config.js` file, or specifying a custom configuration file through the `RAZZLE_JEST_CONFIG` environment variable.
+Volto provides a way to do this by either using a {file}`jest.config.js` file, or specifying a custom configuration file through the {envvar}`RAZZLE_JEST_CONFIG` environment variable.
 
 ```shell
 RAZZLE_JEST_CONFIG=my-custom-jest-config.js pnpm test
@@ -242,10 +246,10 @@ This is especially useful in GitHub workflows while developing add-ons.
 You can pass a specific configuration file that properly deals with the add-on configuration.
 
 
-### Add add-ons via environment variable for testing purposes
+### Add add-ons via environment variable
 
-Sometimes you need to enable different configurations and enable optional components, for example, testing purposes.
-You can use the `ADDONS` environment variable to define them.
+Sometimes you need to enable different configurations and enable optional components, such as for testing purposes.
+You can use the {envvar}`ADDONS` environment variable to define them.
 
 ```bash
 ADDONS=test-addon,test-addon2 pnpm start
@@ -265,7 +269,5 @@ Do not modify the existing keys in there if you don't know what you're doing.
 Some of them are required for the tests to run properly in the Volto context.
 ```
 
-Both configurations are merged in a way that the keys of the configuration provided override the initial {file}`package.json` configuration, either in Volto or in your projects.
-
-
+Both configurations are merged in such a way that the keys of the provided configuration override the initial {file}`package.json` configuration, in either Volto or your projects.
 
