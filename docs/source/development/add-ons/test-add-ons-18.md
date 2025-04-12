@@ -132,7 +132,7 @@ The following guidelines for writing tests using Vitest will help you migrate yo
 Vitest shares a similar syntax with Jest, as both use {term}`Mocha` and {term}`Chai`, but there are notable differences in handling mocks and other features.
 
 Similar to Jest, Vitest provides functions such as `it`, `expect`, `describe`, `test`, and `vi`.
-These properties are globally declared in the {file}`test-setup-globals.js` file, making them available throughout the Volto core without requiring explicit imports in individual test files.
+These properties are globally declared in the {file}`test-setup-globals.js` file, making them available throughout your project without requiring explicit imports in individual test files.
 
 
 ### Differences in mocks
