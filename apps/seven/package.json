@@ -44,7 +44,7 @@
     "@plone/types": "workspace:*",
     "@react-router/dev": "catalog:",
     "@tailwindcss/vite": "4.0.9",
-    "@testing-library/cypress": "10.0.2",
+    "@testing-library/cypress": "10.0.3",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@types/node": "^20",

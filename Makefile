@@ -8,6 +8,8 @@ SHELL:=bash
 MAKEFLAGS+=--warn-undefined-variables
 MAKEFLAGS+=--no-builtin-rules
 
+CURRENT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+
 # Project settings
 include variables.mk
 
@@ -213,7 +215,7 @@ frontend-docker-start: ## Starts a Docker-based frontend for development
 acceptance-frontend-dev-start: ## Start acceptance frontend in development mode
 	$(MAKE) -C "./apps/seven/" acceptance-frontend-dev-start
 
-######### Core Acceptance tests
+######### Seven Acceptance tests
 
 .PHONY: acceptance-backend-start
 acceptance-backend-start: ## Start backend acceptance server
@@ -239,6 +241,13 @@ ci-acceptance-test: ## Run cypress tests in headless mode for CI
 ci-acceptance-test-run-all: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode
 	$(MAKE) -C "./apps/seven/" ci-acceptance-test-run-all
 
+######### @plone/cmsui Acceptance tests
+
+cmsui-acceptance-test: ## Start Cypress in interactive mode for @plone/cmsui tests
+	pnpm --filter @plone/tooling exec cypress open --config-file $(CURRENT_DIR)/packages/tooling/cypress.config.js --config specPattern=$(CURRENT_DIR)'/packages/cmsui/cypress/tests/**/*.cy.{js,jsx,ts,tsx}'
+
+
+### Revisit this section when more code is in place ###
 ######### Deployment Core Acceptance tests
 
 .PHONY: deployment-acceptance-frontend-prod-start

@@ -1,4 +1,4 @@
-import { ploneAuth } from '../../../support/constants';
+import { ploneAuth } from '../../../tooling/cypress/support/constants';
 
 describe('Login Route Tests', () => {
   beforeEach(() => {
