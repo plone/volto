@@ -1,1 +1,1 @@
-Cypress tests using centralized config in `@plone/tooling`. @sneridagh
+Modify Cypress tests to use a centralized configuration in `@plone/tooling`. @sneridagh
