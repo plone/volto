@@ -6,7 +6,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import Register from './Register';
 
-jest.mock('@plone/volto/components/manage/Form');
+vi.mock('@plone/volto/components/manage/Form');
 
 const mockStore = configureStore();
 
