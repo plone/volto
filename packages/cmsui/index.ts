@@ -25,6 +25,24 @@ export default function install(config: ConfigType) {
       },
       {
         type: 'prefix',
+        path: 'logout',
+        children: [
+          {
+            type: 'index',
+            file: '@plone/cmsui/routes/auth/logout.tsx',
+            options: {
+              id: 'index-logout',
+            },
+          },
+          {
+            type: 'route',
+            path: '*',
+            file: '@plone/cmsui/routes/auth/logout.tsx',
+          },
+        ],
+      },
+      {
+        type: 'prefix',
         path: 'edit',
         children: [
           {

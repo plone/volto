@@ -39,7 +39,7 @@ runs:
     - name: Install Cypress if not in cache
       if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
       shell: bash
-      working-directory: apps/seven
+      working-directory: packages/tooling
       run: make cypress-install
 
 inputs:

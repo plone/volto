@@ -72,7 +72,6 @@
     "@types/uuid": "^9.0.2",
     "@vitejs/plugin-react": "^4.1.0",
     "@vitest/coverage-v8": "catalog:",
-    "glob": "7.1.6",
     "jsdom": "^21.1.1",
     "release-it": "17.1.1",
     "tsup": "^8.3.5",
