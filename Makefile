@@ -213,7 +213,7 @@ frontend-docker-start: ## Starts a Docker-based frontend for development
 
 .PHONY: acceptance-frontend-dev-start
 acceptance-frontend-dev-start: ## Start acceptance frontend in development mode
-	$(MAKE) -C "./apps/seven/" acceptance-frontend-dev-start
+	PLONE_API_PATH=http://127.0.0.1:55001/plone pnpm --filter seven start
 
 ######### Seven Acceptance tests
 
@@ -227,7 +227,7 @@ ci-acceptance-backend-start: ## Start backend acceptance server in headless mode
 
 .PHONY: acceptance-frontend-prod-start
 acceptance-frontend-prod-start: ## Start acceptance frontend in production mode
-	$(MAKE) -C "./apps/seven/" acceptance-frontend-prod-start
+	pnpm --filter seven build && PLONE_API_PATH=http://127.0.0.1:55001/plone pnpm --filter seven start:prod
 
 .PHONY: acceptance-test
 acceptance-test: ## Start Cypress in interactive mode
@@ -239,7 +239,7 @@ ci-acceptance-test: ## Run cypress tests in headless mode for CI
 
 .PHONY: ci-acceptance-test-run-all
 ci-acceptance-test-run-all: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode
-	$(MAKE) -C "./apps/seven/" ci-acceptance-test-run-all
+	$(NODEBIN)/start-test "make ci-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make acceptance-frontend-prod-start" http://127.0.0.1:3000 "make ci-acceptance-test"
 
 ######### @plone/cmsui Acceptance tests
 
@@ -248,58 +248,6 @@ cmsui-acceptance-test: ## Start Cypress in interactive mode for @plone/cmsui tes
 
 cmsui-ci-acceptance-test: ## Start Cypress in interactive mode for @plone/cmsui tests
 	pnpm --filter @plone/tooling exec cypress run --config-file $(CURRENT_DIR)/packages/tooling/cypress.config.js --config specPattern=$(CURRENT_DIR)'/packages/cmsui/cypress/tests/**/*.cy.{js,jsx,ts,tsx}'
-
-
-### Revisit this section when more code is in place ###
-######### Deployment Core Acceptance tests
-
-.PHONY: deployment-acceptance-frontend-prod-start
-deployment-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for deployment
-	$(MAKE) -C "./apps/seven/" deployment-acceptance-frontend-prod-start
-
-.PHONY: deployment-acceptance-test
-deployment-acceptance-test: ## Start Cypress in interactive mode for tests in deployment
-	$(MAKE) -C "./apps/seven/" deployment-acceptance-test
-
-.PHONY: deployment-acceptance-web-server-start
-deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in port 80 for deployment
-	$(MAKE) -C "./apps/seven/" deployment-acceptance-web-server-start
-
-.PHONY: deployment-ci-acceptance-test-run-all
-deployment-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for deployment tests
-	$(MAKE) -C "./apps/seven/" deployment-ci-acceptance-test-run-all
-
-######### Cookieplone Acceptance tests
-
-.PHONY: cookieplone-acceptance-frontend-prod-start
-cookieplone-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for project tests
-	$(MAKE) -C "./apps/seven/" cookieplone-acceptance-frontend-prod-start
-
-######### Core Sandbox Acceptance tests
-
-.PHONY: coresandbox-acceptance-backend-start
-coresandbox-acceptance-backend-start: ## Start backend acceptance server for core sandbox tests
-	$(MAKE) -C "./packages/volto/" coresandbox-acceptance-backend-start
-
-.PHONY: coresandbox-acceptance-frontend-prod-start
-coresandbox-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for core sandbox tests
-	$(MAKE) -C "./packages/volto/" coresandbox-acceptance-frontend-prod-start
-
-.PHONY: coresandbox-acceptance-frontend-dev-start
-coresandbox-acceptance-frontend-dev-start: ## Start acceptance frontend in development mode for core sandbox tests
-	$(MAKE) -C "./packages/volto/" coresandbox-acceptance-frontend-dev-start
-
-.PHONY: coresandbox-acceptance-test
-coresandbox-acceptance-test: ## Start Cypress in interactive mode for core sandbox tests
-	$(MAKE) -C "./packages/volto/" coresandbox-acceptance-test
-
-.PHONY: coresandbox-ci-acceptance-test
-coresandbox-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for core sandbox tests
-	$(MAKE) -C "./packages/volto/" coresandbox-ci-acceptance-test
-
-.PHONY: coresandbox-ci-acceptance-test-run-all
-coresandbox-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for core sandbox tests
-	$(MAKE) -C "./packages/volto/" coresandbox-ci-acceptance-test-run-all
 
 # include local overrides if present
 -include Makefile.local
