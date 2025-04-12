@@ -1,19 +1,18 @@
 ---
 myst:
   html_meta:
-    "description": "This upgrade guide lists all breaking changes in Seven and explains the steps that are necessary to upgrade to the latest version."
-    "property=og:description": "This upgrade guide lists all breaking changes in Seven and explains the steps that are necessary to upgrade to the latest version."
-    "property=og:title": "Upgrade Guide"
-    "keywords": "Seven, Plone, frontend, React, Upgrade, Guide"
+    "description": "This upgrade guide lists all breaking changes in Seven, and explains the necessary steps to upgrade your add-on for the latest version."
+    "property=og:description": "This upgrade guide lists all breaking changes in Seven, and explains the necessary steps to upgrade your add-on for the latest version."
+    "property=og:title": "Seven upgrade guide"
+    "keywords": "Seven, Plone, frontend, React, upgrade, guide"
 ---
 
 (seven-upgrade-guide)=
 
-# Upgrade Guide
+# Upgrade guide
 
-This upgrade guide lists all breaking changes in Seven and explains the steps that are necessary to upgrade to the latest version.
-Seven uses Semantic Versioning.
-For more information see {doc}`../contributing/version-policy`.
+This upgrade guide lists all breaking changes in Seven, and explains the necessary steps to upgrade your add-on for the latest version.
+Seven uses Semantic Versioning, as described in {doc}`../contributing/version-policy`.
 
 ````{note}
 [Cookieplone](https://github.com/plone/cookieplone) is the official project generator for Plone.

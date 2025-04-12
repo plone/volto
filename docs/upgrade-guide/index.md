@@ -1,21 +1,21 @@
 ---
 myst:
   html_meta:
-    "description": "This upgrade guides lists all breaking changes in the Plone's modular architecture packages ecosystem and explains the steps that are necessary to upgrade to the latest versions."
-    "property=og:description": "This upgrade guides lists all breaking changes in the Plone's modular architecture packages ecosystem and explains the steps that are necessary to upgrade to the latest versions."
-    "property=og:title": "Upgrade Guides"
-    "keywords": "Seven, @plone/components, Plone, frontend, React, Upgrade, Guide"
+    "description": "These upgrade guides lists all breaking changes in the Plone package ecosystem, and explain the necessary steps to upgrade your add-on for each package's latest version."
+    "property=og:description": "These upgrade guides lists all breaking changes in the Plone package ecosystem, and explain the necessary steps to upgrade your add-on for each package's latest version."
+    "property=og:title": "Upgrade guides"
+    "keywords": "Seven, @plone/components, Plone, components, frontend, React, upgrade, guide"
 ---
 
 (upgrade-guides)=
 
-# Upgrade Guides
+# Upgrade guides
 
 ```{todo}
 When Seven is about to be released, we'll transfer this file from the `main` branch here.
 ```
 
-These upgrade guides lists all breaking changes in the Plone's modular architecture packages ecosystem and explains the steps that are necessary to upgrade to the latest versions.
+These upgrade guides lists all breaking changes in the Plone package ecosystem, and explain the necessary steps to upgrade your add-on for each package's latest version.
 For more information see {doc}`../contributing/version-policy`.
 
 ```{toctree}

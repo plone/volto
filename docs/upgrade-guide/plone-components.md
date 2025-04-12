@@ -1,17 +1,18 @@
 ---
 myst:
   html_meta:
-    "description": "This upgrade guide lists all breaking changes in @plone/components and explains the steps that are necessary to upgrade to the latest version."
-    "property=og:description": "This upgrade guide lists all breaking changes in @plone/components and explains the steps that are necessary to upgrade to the latest version."
-    "property=og:title": "@plone/components Upgrade Guide"
-    "keywords": "@plone/components, Plone, components, frontend, React, Upgrade, Guide"
+    "description": "This upgrade guide lists all breaking changes in @plone/components, and explains the necessary steps to upgrade your add-on to use the latest version."
+    "property=og:description": "This upgrade guide lists all breaking changes in @plone/components, and explains the necessary steps to upgrade your add-on to use the latest version."
+    "property=og:title": "@plone/components upgrade guide"
+    "keywords": "@plone/components, Plone, components, frontend, React, upgrade, guide"
 ---
 
 (plone-components-upgrade-guide)=
 
-# `@plone/components` Upgrade Guide
+# `@plone/components` upgrade guide
 
-This is the upgrade guide for `@plone/components`. It lists all breaking changes in the package and explains the steps that are necessary to upgrade to the latest version.
+This is the upgrade guide for `@plone/components`.
+It lists all breaking changes in the package, and explains the necessary steps to upgrade your add-on to use the latest version.
 
 ## 4.0.0
 
@@ -39,7 +40,7 @@ The following sizes have been added:
 - `2xl`
 - `3xl`
 
-The size is determined now by the calculation of using the CSS custom property `--quanta-icon-size` which is mapped to the `--spacing` CSS custom property by default.
+The size is determined now by the calculation of using the CSS custom property `--quanta-icon-size`, which is mapped to the `--spacing` CSS custom property by default.
 By default in Tailwind, `--spacing` is set to `0.25rem` (4px), so the icon sizes are calculated as follows:
 - `2xs`: `0.75rem` (12px)
 - `xs`: `1rem` (16px)
@@ -50,4 +51,5 @@ By default in Tailwind, `--spacing` is set to `0.25rem` (4px), so the icon sizes
 - `2xl`: `2.25rem` (36px)
 - `3xl`: `2.5rem` (40px)
 
-The default value is `base`, which is `24px`. The size can be changed by setting the `--quanta-icon-size` CSS custom property to a different value.
+The default value is `base`, which is `24px`.
+The size can be changed by setting the `--quanta-icon-size` CSS custom property to a different value.
