@@ -13,7 +13,7 @@ myst:
 This guide assumes that you've used {term}`Cookieplone` to create your add-on boilerplate.
 ```
 
-This chapter describes how to set up your testing environment and to write tests using [Vitest](https://vitest.dev/guide/) for your add-on, and how to migrate your add-on's tests from Jest to Vitest.
+This chapter describes how to set up your testing environment and to write tests using [Vitest](https://vitest.dev/guide/) for your add-on, and how to migrate your add-on's tests from Jest to Vitest, in Volto 18.
 
 Although Volto core now uses Vitest as its unit test runner, projects generated through {term}`Cookieplone` currently use Jest.
 Cookieplone will have a support for Vitest in the near future.
