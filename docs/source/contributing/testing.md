@@ -15,13 +15,14 @@ It covers how to use [Vitest](https://vitest.dev/guide/), the current unit test 
 The popular `@testing-library/react` is also available for writing your tests.
 For every feature or component, a unit test is mandatory in Volto core.
 
-```{versionadded} Volto 18.TBD.TBD, current release at 18.12.0
+```{versionadded} Volto 18.12.0
 Volto core now uses Vitest for its unit tests.
 ```
 
-```{deprecated} Volto 18.TBD.TBD, current release at 18.12.0
+```{deprecated} Volto 18.12.0
 Volto core has migrated from Jest to Vitest for unit tests.
 Jest is now deprecated.
+Refer to {doc}`../development/add-ons/test-add-ons-18` for a complete migration guide from Jest to Vitest for your add-ons.
 ```
 
 
@@ -42,10 +43,9 @@ See {ref}`developing-core-run-commands-for-pnpm-workspaces-label` for other opti
 
 Vitest tests must pass locally before you push commits to the remote Volto repository.
 Vitest has several modes to run unit tests locally.
-You can run Vitest in watch mode, run only failed tests, or run specific tests only.
+You can run Vitest in watch mode, run only failed tests, or run only specific tests.
 
 By default, Vitest runs in watch mode when you execute the following command.
-
 This makes it faster and easier to test code changes.
 
 ```shell
@@ -83,17 +83,10 @@ You can also run only specific tests using the following command.
 pnpm test src/components/theme/Image
 ```
 
-### Complete migration guide from Jest to Vitest
-
-You can refer {doc}`../development/add-ons/test-add-ons-18` for complete migration guide from Jest to Vitest.
 
 
-## Jest usage
 
-```{deprecated} Volto 18.TBD.TBD, current release at 18.12.0
-Volto core has migrated from Jest to Vitest for unit tests.
-Jest is now deprecated.
-```
+
 
 ## Acceptance tests
 
