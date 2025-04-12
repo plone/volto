@@ -10,16 +10,12 @@ const meta = {
   title: 'Basic/IconSVGR',
   component: IconSGVR,
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <div style={{ width: '400px' }}>
-        <Story />
-      </div>
-    ),
-  ],
+  parameters: {
+    layout: 'centered',
+  },
   argTypes: {
     size: {
-      options: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+      options: ['2xs', 'xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl'],
       control: { type: 'radio' },
     },
     color: {

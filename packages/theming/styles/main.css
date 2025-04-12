@@ -33,7 +33,8 @@
   --chart-3: hsl(197 37% 24%);
   --chart-4: hsl(43 74% 66%);
   --chart-5: hsl(27 87% 67%);
-  --radius: 0.6rem;
+  /* Removed custom radius from shadcn */
+  /* --radius: 0.6rem; */
 }
 
 .dark {
@@ -140,10 +141,14 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
+
+  --quanta-icon-size: var(--spacing);
+
+  /* Removed custom radius from shadcn */
+  /* --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 4px); */
 }
 
 @layer base {
@@ -154,3 +159,5 @@
     @apply bg-background text-foreground;
   }
 }
+
+@import './utilities.css';
