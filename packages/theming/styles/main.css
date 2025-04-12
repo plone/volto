@@ -160,4 +160,10 @@
   }
 }
 
+@layer components {
+  /* label:has(+ input:focus) {
+    @apply text-quanta-sapphire;
+  } */
+}
+
 @import './utilities.css';

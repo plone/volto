@@ -360,6 +360,9 @@ importers:
       react:
         specifier: ^19.0.0
         version: 19.0.0
+      react-aria-components:
+        specifier: 'catalog:'
+        version: 1.7.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
@@ -369,6 +372,12 @@ importers:
       react-router:
         specifier: 'catalog:'
         version: 7.4.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      tailwind-merge:
+        specifier: ^3.0.1
+        version: 3.0.2
+      tailwind-variants:
+        specifier: ^1.0.0
+        version: 1.0.0(tailwindcss@4.0.17)
       tailwindcss:
         specifier: 'catalog:'
         version: 4.0.17
@@ -379,6 +388,36 @@ importers:
       '@plone/types':
         specifier: workspace:*
         version: link:../types
+      '@storybook/addon-essentials':
+        specifier: ^8.6.12
+        version: 8.6.12(@types/react@19.0.10)(storybook@8.6.12(prettier@3.5.2))(webpack-sources@3.2.3)
+      '@storybook/addon-interactions':
+        specifier: ^8.6.12
+        version: 8.6.12(storybook@8.6.12(prettier@3.5.2))
+      '@storybook/addon-links':
+        specifier: ^8.6.12
+        version: 8.6.12(react@19.0.0)(storybook@8.6.12(prettier@3.5.2))
+      '@storybook/addon-mdx-gfm':
+        specifier: ^8.6.12
+        version: 8.6.12(storybook@8.6.12(prettier@3.5.2))
+      '@storybook/blocks':
+        specifier: ^8.6.12
+        version: 8.6.12(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.12(prettier@3.5.2))
+      '@storybook/manager-api':
+        specifier: ^8.6.12
+        version: 8.6.12(storybook@8.6.12(prettier@3.5.2))
+      '@storybook/react':
+        specifier: ^8.6.12
+        version: 8.6.12(@storybook/test@8.6.12(storybook@8.6.12(prettier@3.5.2)))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.12(prettier@3.5.2))(typescript@5.7.3)
+      '@storybook/react-vite':
+        specifier: ^8.6.12
+        version: 8.6.12(@storybook/test@8.6.12(storybook@8.6.12(prettier@3.5.2)))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(rollup@4.34.8)(storybook@8.6.12(prettier@3.5.2))(typescript@5.7.3)(vite@5.4.15(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))(webpack-sources@3.2.3)
+      '@storybook/theming':
+        specifier: ^8.6.12
+        version: 8.6.12(storybook@8.6.12(prettier@3.5.2))
+      '@tailwindcss/vite':
+        specifier: 4.0.7
+        version: 4.0.7(vite@5.4.15(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))
       '@testing-library/jest-dom':
         specifier: 6.4.2
         version: 6.4.2(@jest/globals@29.7.0)(@types/jest@29.5.12)(jest@29.7.0(@types/node@20.12.7)(babel-plugin-macros@3.1.0)(node-notifier@8.0.2))(vitest@3.0.9(@types/debug@4.1.12)(@types/node@20.12.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))
@@ -397,6 +436,9 @@ importers:
       '@types/react-dom':
         specifier: 'catalog:'
         version: 19.0.4(@types/react@19.0.10)
+      '@vitejs/plugin-react':
+        specifier: ^4.1.0
+        version: 4.2.1(vite@5.4.15(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))
       eslint-plugin-storybook:
         specifier: ^0.11.2
         version: 0.11.2(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
@@ -409,12 +451,21 @@ importers:
       release-it:
         specifier: 'catalog:'
         version: 18.1.2(@types/node@20.12.7)(typescript@5.7.3)
+      storybook:
+        specifier: ^8.6.12
+        version: 8.6.12(prettier@3.5.2)
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
       typescript:
         specifier: 'catalog:'
         version: 5.7.3
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.15(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)
+      vite-tsconfig-paths:
+        specifier: ^5.1.4
+        version: 5.1.4(typescript@5.7.3)(vite@5.4.15(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))
       vitest:
         specifier: 'catalog:'
         version: 3.0.9(@types/debug@4.1.12)(@types/node@20.12.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)
@@ -15947,6 +15998,14 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.0.9
       '@tailwindcss/oxide-win32-x64-msvc': 4.0.9
 
+  '@tailwindcss/vite@4.0.7(vite@5.4.15(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))':
+    dependencies:
+      '@tailwindcss/node': 4.0.7
+      '@tailwindcss/oxide': 4.0.7
+      lightningcss: 1.29.1
+      tailwindcss: 4.0.7
+      vite: 5.4.15(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)
+
   '@tailwindcss/vite@4.0.7(vite@5.4.15(@types/node@22.10.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))':
     dependencies:
       '@tailwindcss/node': 4.0.7
@@ -16371,6 +16430,17 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 8.24.1
       eslint-visitor-keys: 4.2.0
+
+  '@vitejs/plugin-react@4.2.1(vite@5.4.15(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))':
+    dependencies:
+      '@babel/core': 7.26.7
+      '@babel/plugin-transform-react-jsx-self': 7.24.1(@babel/core@7.26.7)
+      '@babel/plugin-transform-react-jsx-source': 7.24.1(@babel/core@7.26.7)
+      '@types/babel__core': 7.20.5
+      react-refresh: 0.14.0
+      vite: 5.4.15(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)
+    transitivePeerDependencies:
+      - supports-color
 
   '@vitejs/plugin-react@4.2.1(vite@5.4.15(@types/node@22.10.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))':
     dependencies:
@@ -23490,6 +23560,17 @@ snapshots:
       - typescript
 
   vite-tsconfig-paths@5.1.0(typescript@5.7.3)(vite@5.4.15(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)):
+    dependencies:
+      debug: 4.3.4(supports-color@8.1.1)
+      globrex: 0.1.2
+      tsconfck: 3.0.3(typescript@5.7.3)
+    optionalDependencies:
+      vite: 5.4.15(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+
+  vite-tsconfig-paths@5.1.4(typescript@5.7.3)(vite@5.4.15(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)):
     dependencies:
       debug: 4.3.4(supports-color@8.1.1)
       globrex: 0.1.2
