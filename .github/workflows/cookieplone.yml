@@ -54,8 +54,8 @@ jobs:
         name: Start Servers and wait for them to start
         with:
           run: |
-            make ci-acceptance-backend-start
-            make acceptance-frontend-prod-start
+            make ci-acceptance-backend-start &
+            make acceptance-frontend-prod-start &
           wait-on: |
             http-get://localhost:55001/plone
             http://localhost:3000
