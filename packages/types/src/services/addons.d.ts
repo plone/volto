@@ -1,17 +1,25 @@
+interface AddonUpgradeInfo {
+  available: boolean;
+  hasProfile: boolean;
+  installedVersion: string;
+  newVersion: string;
+  requires: boolean;
+}
+
 interface Addon {
   description: string;
   profile_type: string;
-  upgrade_profiles: Record<string, unknown>;
+  upgrade_profiles?: Record<string, unknown>;
   uninstall_profile_id: string;
-  other_profiles: any[];
-  is_installed: string;
+  other_profiles?: any[];
+  is_installed: boolean;
   id: string;
-  install_profile: InstallProfile;
+  install_profile?: InstallProfile;
   title: string;
-  uninstall_profile: UninstallProfile;
+  uninstall_profile?: UninstallProfile;
   install_profile_id: string;
   version: string;
-  upgrade_info: Record<string, unknown>;
+  upgrade_info: Partial<AddonUpgradeInfo>;
 }
 
 interface InstallProfile {
