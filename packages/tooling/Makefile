@@ -10,24 +10,6 @@ MAKEFLAGS+=--no-builtin-rules
 
 CURRENT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
-# Project settings
-include variables.mk
-
-# Allow setting the language for backend-docker-start. Default is `en`.
-SITE_DEFAULT_LANGUAGE ?=en
-
-# Sphinx variables
-# You can set these variables from the command line.
-SPHINXOPTS      ?=
-VALEOPTS        ?=
-# Internal variables.
-SPHINXBUILD     = "$(realpath bin/sphinx-build)"
-SPHINXAUTOBUILD = "$(realpath bin/sphinx-autobuild)"
-DOCS_DIR        = ./docs/
-BUILDDIR        = ../_build
-ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
-VALEFILES       := $(shell find $(DOCS_DIR) -type f -name "*.md" -print)
-
 # Recipe snippets for reuse
 
 CHECKOUT_BASENAME="$(shell basename $(shell realpath ./))"
