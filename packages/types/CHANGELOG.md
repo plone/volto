@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.1 (2025-04-12)
+
+### Feature
+
+- Improve typings in `getAddonRoutesConfig` for `@plone/react-router`. @sneridagh [#6796](https://github.com/plone/volto/issues/6796)
+
 ## 2.0.0-alpha.0 (2025-03-31)
 
 ### Breaking
