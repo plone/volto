@@ -13,7 +13,7 @@ myst:
 This guide assumes that you've used {term}`Cookieplone` to create your add-on boilerplate.
 ```
 
-This chapter describes how to set up your testing environment and to write tests using [Vitest](https://vitest.dev/guide/), and how to migrate your tests from Jest to Vitest.
+This chapter describes how to set up your testing environment and to write tests using [Vitest](https://vitest.dev/guide/) for your add-on, and how to migrate your add-on's tests from Jest to Vitest.
 
 Although Volto core now uses Vitest as its unit test runner, projects generated through {term}`Cookieplone` currently use Jest.
 Cookieplone will have a support for Vitest in the near future.
@@ -183,6 +183,10 @@ beforeAll(async () => {
 `require()` is not supported in Vitest.
 Instead, use `import()`.
 
+### Additional Jest to Vitest migration information
+
+For complete details on migrating from Jest to Vitest, refer to the official [Vitest Migration Guide](https://vitest.dev/guide/migration.html#jest).
+
 
 ## Run tests in Vitest
 
@@ -213,8 +217,6 @@ In Volto, `jiti` is used in the test file {file}`packages/volto/__tests__/create
 
 
 ## Additional Vitest information
-
-For complete details on migrating from Jest to Vitest, refer to the official [Vitest Migration Guide](https://vitest.dev/guide/migration.html#jest).
 
 For using Vitest when contributing to Volto, see {doc}`../../contributing/testing`.
 
