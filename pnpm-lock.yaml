@@ -866,8 +866,8 @@ importers:
         specifier: ^3.3.0
         version: 3.3.0(redux@4.2.1)
       classnames:
-        specifier: 2.2.6
-        version: 2.2.6
+        specifier: 2.5.1
+        version: 2.5.1
       connected-react-router:
         specifier: 6.8.0
         version: 6.8.0(history@4.10.1)(immutable@3.8.2)(react-redux@8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1))(react-router@5.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1)(seamless-immutable@7.1.4)
@@ -7584,6 +7584,9 @@ packages:
   classnames@2.2.6:
     resolution: {integrity: sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==}
 
+  classnames@2.5.1:
+    resolution: {integrity: sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==}
+
   clean-css@5.3.3:
     resolution: {integrity: sha512-D5J+kHaVb/wKSFcyyV75uCn8fiY4sV38XJoe4CUyGQ+mOU/fMVYUdH1hJC+CJQ5uY3EnW27SbJYS4X8BiLrAFg==}
     engines: {node: '>= 10.0'}
@@ -12929,7 +12932,6 @@ packages:
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
     deprecated: |-
       You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
-
       (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
 
   qs@6.11.0:
@@ -17860,7 +17862,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.24.4
       '@babel/helper-plugin-utils': 7.25.7
-      '@babel/helper-validator-option': 7.25.7
+      '@babel/helper-validator-option': 7.25.9
       '@babel/plugin-syntax-jsx': 7.25.7(@babel/core@7.24.4)
       '@babel/plugin-transform-modules-commonjs': 7.24.1(@babel/core@7.24.4)
       '@babel/plugin-transform-typescript': 7.24.4(@babel/core@7.24.4)
@@ -17869,7 +17871,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.25.8
       '@babel/helper-plugin-utils': 7.25.7
-      '@babel/helper-validator-option': 7.25.7
+      '@babel/helper-validator-option': 7.25.9
       '@babel/plugin-syntax-jsx': 7.25.7(@babel/core@7.25.8)
       '@babel/plugin-transform-modules-commonjs': 7.24.1(@babel/core@7.25.8)
       '@babel/plugin-transform-typescript': 7.24.4(@babel/core@7.25.8)
@@ -17878,7 +17880,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.26.10
       '@babel/helper-plugin-utils': 7.25.7
-      '@babel/helper-validator-option': 7.25.7
+      '@babel/helper-validator-option': 7.25.9
       '@babel/plugin-syntax-jsx': 7.25.7(@babel/core@7.26.10)
       '@babel/plugin-transform-modules-commonjs': 7.24.1(@babel/core@7.26.10)
       '@babel/plugin-transform-typescript': 7.24.4(@babel/core@7.26.10)
@@ -17887,7 +17889,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.26.7
       '@babel/helper-plugin-utils': 7.25.7
-      '@babel/helper-validator-option': 7.25.7
+      '@babel/helper-validator-option': 7.25.9
       '@babel/plugin-syntax-jsx': 7.25.7(@babel/core@7.26.7)
       '@babel/plugin-transform-modules-commonjs': 7.24.1(@babel/core@7.26.7)
       '@babel/plugin-transform-typescript': 7.24.4(@babel/core@7.26.7)
@@ -25210,6 +25212,8 @@ snapshots:
 
   classnames@2.2.6: {}
 
+  classnames@2.5.1: {}
+
   clean-css@5.3.3:
     dependencies:
       source-map: 0.6.1
@@ -27298,7 +27302,7 @@ snapshots:
       '@nodelib/fs.walk': 1.2.8
       glob-parent: 5.1.2
       merge2: 1.4.1
-      micromatch: 4.0.5
+      micromatch: 4.0.8
 
   fast-json-parse@1.0.3: {}
 
@@ -28463,7 +28467,6 @@ snapshots:
   is-core-module@2.16.1:
     dependencies:
       hasown: 2.0.2
-    optional: true
 
   is-data-descriptor@1.0.1:
     dependencies:
@@ -31006,7 +31009,7 @@ snapshots:
   normalize-package-data@5.0.0:
     dependencies:
       hosted-git-info: 6.1.1
-      is-core-module: 2.13.1
+      is-core-module: 2.16.1
       semver: 7.6.3
       validate-npm-package-license: 3.0.4
 
@@ -32204,7 +32207,7 @@ snapshots:
   rc-animate@2.11.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       babel-runtime: 6.26.0
-      classnames: 2.2.6
+      classnames: 2.5.1
       css-animation: 1.6.1
       prop-types: 15.7.2
       raf: 3.4.1
@@ -32215,7 +32218,7 @@ snapshots:
 
   rc-time-picker@3.7.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      classnames: 2.2.6
+      classnames: 2.5.1
       moment: 2.29.4
       prop-types: 15.7.2
       raf: 3.4.1
@@ -32228,7 +32231,7 @@ snapshots:
   rc-trigger@2.6.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       babel-runtime: 6.26.0
-      classnames: 2.2.6
+      classnames: 2.5.1
       prop-types: 15.7.2
       rc-align: 2.4.5
       rc-animate: 2.11.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -32257,7 +32260,7 @@ snapshots:
 
   react-animate-height@2.0.17(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      classnames: 2.2.6
+      classnames: 2.5.1
       prop-types: 15.7.2
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -32890,7 +32893,7 @@ snapshots:
   react-toastify@5.5.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       '@babel/runtime': 7.20.6
-      classnames: 2.2.6
+      classnames: 2.5.1
       prop-types: 15.7.2
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -33316,7 +33319,7 @@ snapshots:
 
   resolve@1.19.0:
     dependencies:
-      is-core-module: 2.13.1
+      is-core-module: 2.16.1
       path-parse: 1.0.7
 
   resolve@1.22.10:
@@ -33334,7 +33337,7 @@ snapshots:
 
   resolve@2.0.0-next.5:
     dependencies:
-      is-core-module: 2.13.1
+      is-core-module: 2.16.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 

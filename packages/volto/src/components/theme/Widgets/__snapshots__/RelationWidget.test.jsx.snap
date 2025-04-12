@@ -5,7 +5,6 @@ exports[`RelationWidget renders a full relation view widget component 1`] = `
   className="metadata relation widget"
   href="/a-page"
   onClick={[Function]}
-  target={null}
   title=""
 >
   <svg
@@ -35,7 +34,6 @@ exports[`RelationWidget renders a full relation view widget component with child
   className="metadata relation widget Document private"
   href="/a-page"
   onClick={[Function]}
-  target={null}
   title="Bar Foo"
 >
   <svg
@@ -67,7 +65,6 @@ exports[`RelationWidget renders a relation view widget component 1`] = `
   className="metadata relation widget"
   href="/"
   onClick={[Function]}
-  target={null}
   title=""
 >
   <svg
