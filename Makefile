@@ -249,6 +249,6 @@ cmsui-acceptance-test: ## Start Cypress in interactive mode for @plone/cmsui tes
 cmsui-ci-acceptance-test: ## Start Cypress in interactive mode for @plone/cmsui tests
 	pnpm --filter @plone/tooling exec cypress run --config-file $(CURRENT_DIR)/packages/tooling/cypress.config.js --config specPattern=$(CURRENT_DIR)'/packages/cmsui/cypress/tests/**/*.cy.{js,jsx,ts,tsx}'
 
-# include local overrides if present
+# include local overrides if present 2
 -include Makefile.local
 -include ../../../Makefile.local
