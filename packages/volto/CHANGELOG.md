@@ -17,6 +17,27 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.12.0 (2025-04-12)
+
+### Feature
+
+- Volto core has migrated from Jest to Vitest as its unit test runner. @Abhishek-17h [#6326](https://github.com/plone/volto/issues/6326)
+
+### Bugfix
+
+- Call `initialValue` consistently by passing `null` instead of `{}` to `blocksConfig`. @Abhishek-17h [#6952](https://github.com/plone/volto/issues/6952)
+
+### Internal
+
+- Make the Cypress `getSlateEditorAndType` and `getSlateEditorSelectorAndType` commands more robust, avoiding timeouts. @wesleybl [#6962](https://github.com/plone/volto/issues/6962)
+- Use `Image` from `@plone/volto/components/theme/Image/Image` instead of `semantic-ui-react`. @wesleybl [#6963](https://github.com/plone/volto/issues/6963)
+- Fixes Cypress "Index Text Block" test. @wesleybl [#6968](https://github.com/plone/volto/issues/6968)
+- Fix Cypress "Test Yearly recurrence" test. @wesleybl [#6971](https://github.com/plone/volto/issues/6971)
+
+### Documentation
+
+- Backport of #6953 to Volto 18. @wesleybl [#6966](https://github.com/plone/volto/issues/6966)
+
 ## 18.11.1 (2025-04-07)
 
 ### Bugfix
