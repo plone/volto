@@ -1,6 +1,6 @@
-# `@plone/cmsui`
+# `@plone/plate`
 
-This package is an add-on providing the Plone 7 CMSUI.
+This package is an add-on providing the Seven plate.js integration.
 
 > [!WARNING]
 > This package or app is experimental.

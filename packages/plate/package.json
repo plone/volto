@@ -1,6 +1,6 @@
 {
   "name": "@plone/plate",
-  "description": "Plone CMSUI based in Quanta DS",
+  "description": "Plone Plate.js integration.",
   "maintainers": [
     {
       "name": "Plone Foundation",
@@ -37,9 +37,7 @@
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
-    "release-alpha": "release-it --preRelease=alpha",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "release-alpha": "release-it --preRelease=alpha"
   },
   "peerDependencies": {
     "react": "^18.2.0 || ^19.0.0",
@@ -157,15 +155,6 @@
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
-    "@storybook/addon-essentials": "^8.6.12",
-    "@storybook/addon-interactions": "^8.6.12",
-    "@storybook/addon-links": "^8.6.12",
-    "@storybook/addon-mdx-gfm": "^8.6.12",
-    "@storybook/blocks": "^8.6.12",
-    "@storybook/manager-api": "^8.6.12",
-    "@storybook/react": "^8.6.12",
-    "@storybook/react-vite": "^8.6.12",
-    "@storybook/theming": "^8.6.12",
     "@tailwindcss/vite": "4.0.7",
     "@testing-library/cypress": "^10.0.3",
     "@testing-library/jest-dom": "6.4.2",
@@ -174,16 +163,12 @@
     "@types/node": "^20",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@vitejs/plugin-react": "^4.1.0",
     "eslint-plugin-storybook": "^0.11.2",
     "jest-axe": "^8.0.0",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "release-it": "catalog:",
-    "storybook": "^8.6.12",
     "tsconfig": "workspace:*",
     "typescript": "catalog:",
-    "vite": "catalog:",
-    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "catalog:",
     "vitest-axe": "^0.1.0"
   }
