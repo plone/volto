@@ -816,9 +816,6 @@ importers:
       '@udecode/plate-markdown':
         specifier: ^47.0.6
         version: 47.0.6(@udecode/plate@46.0.10(@types/react@19.0.10)(immer@10.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(slate-dom@0.112.2(slate@0.112.0))(slate@0.112.0)(use-sync-external-store@1.4.0(react@19.0.0)))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@udecode/plate-math':
-        specifier: ^44.0.0
-        version: 44.0.0(@udecode/plate@46.0.10(@types/react@19.0.10)(immer@10.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(slate-dom@0.112.2(slate@0.112.0))(slate@0.112.0)(use-sync-external-store@1.4.0(react@19.0.0)))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@udecode/plate-media':
         specifier: ^44.0.6
         version: 44.0.6(@udecode/plate@46.0.10(@types/react@19.0.10)(immer@10.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(slate-dom@0.112.2(slate@0.112.0))(slate@0.112.0)(use-sync-external-store@1.4.0(react@19.0.0)))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -5888,13 +5885,6 @@ packages:
     resolution: {integrity: sha512-pBr5ze1kyz1lcYwJUzZNhDNd/KA5BCI1KJwLlXUYhnaFRH8Tg0sy2nF9oJIyLQ/4J3MixW/te33WICxCDZioww==}
     peerDependencies:
       '@udecode/plate': '>=46.0.10'
-      react: ^19.0.0
-      react-dom: ^19.0.0
-
-  '@udecode/plate-math@44.0.0':
-    resolution: {integrity: sha512-stSslQbjZiU8er2/i6v9rpLnmxTuYFozpIQEAOnpXfx7A5sMlqCtvayN4wJWx/mw2/iTO6VPH0dijseyPndzfw==}
-    peerDependencies:
-      '@udecode/plate': '>=44.0.0'
       react: ^19.0.0
       react-dom: ^19.0.0
 
@@ -17709,13 +17699,6 @@ snapshots:
       zeed-dom: 0.15.1
     transitivePeerDependencies:
       - supports-color
-
-  '@udecode/plate-math@44.0.0(@udecode/plate@46.0.10(@types/react@19.0.10)(immer@10.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(slate-dom@0.112.2(slate@0.112.0))(slate@0.112.0)(use-sync-external-store@1.4.0(react@19.0.0)))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
-    dependencies:
-      '@udecode/plate': 46.0.10(@types/react@19.0.10)(immer@10.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(slate-dom@0.112.2(slate@0.112.0))(slate@0.112.0)(use-sync-external-store@1.4.0(react@19.0.0))
-      katex: 0.16.21
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
 
   '@udecode/plate-media@44.0.6(@udecode/plate@46.0.10(@types/react@19.0.10)(immer@10.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(slate-dom@0.112.2(slate@0.112.0))(slate@0.112.0)(use-sync-external-store@1.4.0(react@19.0.0)))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:

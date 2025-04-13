@@ -9,10 +9,6 @@ import { CodeBlockPlugin } from '@udecode/plate-code-block/react';
 import { HEADING_KEYS } from '@udecode/plate-heading';
 import { TocPlugin } from '@udecode/plate-heading/react';
 import { INDENT_LIST_KEYS, ListStyleType } from '@udecode/plate-indent-list';
-import {
-  EquationPlugin,
-  InlineEquationPlugin,
-} from '@udecode/plate-math/react';
 import { TablePlugin } from '@udecode/plate-table/react';
 import { TogglePlugin } from '@udecode/plate-toggle/react';
 import { type PlateEditor, ParagraphPlugin } from '@udecode/plate/react';
@@ -171,12 +167,6 @@ const groups: Group[] = [
         label: '3 columns',
         value: 'action_three_columns',
       },
-      {
-        focusEditor: false,
-        icon: <RadicalIcon />,
-        label: 'Equation',
-        value: EquationPlugin.key,
-      },
     ].map((item) => ({
       ...item,
       onSelect: (editor, value) => {
@@ -184,22 +174,17 @@ const groups: Group[] = [
       },
     })),
   },
-  {
-    group: 'Inline',
-    items: [
-      {
-        focusEditor: false,
-        icon: <RadicalIcon />,
-        label: 'Inline Equation',
-        value: InlineEquationPlugin.key,
-      },
-    ].map((item) => ({
-      ...item,
-      onSelect: (editor, value) => {
-        insertInlineElement(editor, value);
-      },
-    })),
-  },
+  // {
+  //   group: 'Inline',
+  //   items: [
+  //     // More inline elements
+  //   ].map((item) => ({
+  //     ...item,
+  //     onSelect: (editor, value) => {
+  //       insertInlineElement(editor, value);
+  //     },
+  //   })),
+  // },
 ];
 
 export const SlashInputElement = withRef<typeof PlateElement>(

@@ -49,10 +49,6 @@ import { BaseLineHeightPlugin } from '@udecode/plate-line-height';
 import { BaseLinkPlugin } from '@udecode/plate-link';
 import { MarkdownPlugin } from '@udecode/plate-markdown';
 import {
-  BaseEquationPlugin,
-  BaseInlineEquationPlugin,
-} from '@udecode/plate-math';
-import {
   BaseAudioPlugin,
   BaseFilePlugin,
   BaseImagePlugin,
@@ -116,8 +112,6 @@ import {
   useOpenState,
 } from './dropdown-menu';
 import { EditorStatic } from './editor-static';
-import { EquationElementStatic } from './equation-element-static';
-import { InlineEquationElementStatic } from './inline-equation-element-static';
 import { ToolbarButton } from './toolbar';
 
 const siteUrl = 'https://platejs.org';
@@ -207,12 +201,10 @@ export function ExportToolbarButton({ children, ...props }: DropdownMenuProps) {
       [BaseColumnItemPlugin.key]: ColumnElementStatic,
       [BaseColumnPlugin.key]: ColumnGroupElementStatic,
       [BaseCommentsPlugin.key]: CommentLeafStatic,
-      [BaseEquationPlugin.key]: EquationElementStatic,
       [BaseFilePlugin.key]: MediaFileElementStatic,
       [BaseHighlightPlugin.key]: HighlightLeafStatic,
       [BaseHorizontalRulePlugin.key]: HrElementStatic,
       [BaseImagePlugin.key]: ImageElementStatic,
-      [BaseInlineEquationPlugin.key]: InlineEquationElementStatic,
       [BaseItalicPlugin.key]: withProps(SlateLeaf, { as: 'em' }),
       [BaseKbdPlugin.key]: KbdLeafStatic,
       [BaseLinkPlugin.key]: LinkElementStatic,
@@ -256,8 +248,6 @@ export function ExportToolbarButton({ children, ...props }: DropdownMenuProps) {
         BaseSuperscriptPlugin,
         BaseUnderlinePlugin,
         BaseBlockquotePlugin,
-        BaseEquationPlugin,
-        BaseInlineEquationPlugin,
         BaseCodeBlockPlugin.configure({
           options: {
             lowlight,

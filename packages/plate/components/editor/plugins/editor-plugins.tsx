@@ -33,7 +33,6 @@ import { commentsPlugin } from './comments-plugin';
 import { cursorOverlayPlugin } from './cursor-overlay-plugin';
 import { deletePlugins } from './delete-plugins';
 import { dndPlugins } from './dnd-plugins';
-import { equationPlugins } from './equation-plugins';
 import { exitBreakPlugin } from './exit-break-plugin';
 import { indentListPlugins } from './indent-list-plugins';
 import { lineHeightPlugin } from './line-height-plugin';
@@ -57,7 +56,6 @@ export const viewPlugins = [
   TogglePlugin,
   tocPlugin,
   ...mediaPlugins,
-  ...equationPlugins,
   CalloutPlugin,
   ColumnPlugin,
 

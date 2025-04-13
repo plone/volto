@@ -16,7 +16,6 @@ import { getCommentKey, getDraftCommentKey } from '@udecode/plate-comments';
 import { CommentsPlugin, useCommentId } from '@udecode/plate-comments/react';
 import { EmojiInputPlugin } from '@udecode/plate-emoji/react';
 import { LinkPlugin } from '@udecode/plate-link/react';
-import { InlineEquationPlugin } from '@udecode/plate-math/react';
 import {
   MentionInputPlugin,
   MentionPlugin,
@@ -44,7 +43,6 @@ import {
 import { Button } from './button';
 import { Editor, EditorContainer } from './editor';
 import { EmojiInputElement } from './emoji-input-element';
-import { InlineEquationElement } from './inline-equation-element';
 import { LinkElement } from './link-element';
 import { MentionElement } from './mention-element';
 import { MentionInputElement } from './mention-input-element';
@@ -61,7 +59,6 @@ export const useCommentEditor = (
           [AIPlugin.key]: AILeaf,
           [BoldPlugin.key]: withProps(PlateLeaf, { as: 'strong' }),
           [EmojiInputPlugin.key]: EmojiInputElement,
-          [InlineEquationPlugin.key]: InlineEquationElement,
           [ItalicPlugin.key]: withProps(PlateLeaf, { as: 'em' }),
           [LinkPlugin.key]: LinkElement,
           [MentionInputPlugin.key]: MentionInputElement,
