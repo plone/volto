@@ -17,7 +17,7 @@ export const ColorInput = withRef<'input'>(
 
           return React.cloneElement(
             child as React.ReactElement<any>,
-            childProps
+            childProps,
           );
         })}
         <input
@@ -29,5 +29,5 @@ export const ColorInput = withRef<'input'>(
         />
       </div>
     );
-  }
+  },
 );

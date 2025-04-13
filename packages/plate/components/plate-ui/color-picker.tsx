@@ -34,7 +34,7 @@ export const ColorPickerContent = withRef<
       updateCustomColor,
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <div ref={ref} className={cn('flex flex-col', className)} {...props}>
@@ -66,7 +66,7 @@ export const ColorPickerContent = withRef<
         )}
       </div>
     );
-  }
+  },
 );
 
 export const ColorPicker = React.memo(
@@ -74,5 +74,5 @@ export const ColorPicker = React.memo(
   (prev, next) =>
     prev.color === next.color &&
     prev.colors === next.colors &&
-    prev.customColors === next.customColors
+    prev.customColors === next.customColors,
 );

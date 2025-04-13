@@ -20,7 +20,7 @@ const headingItemVariants = cva(
         3: 'pl-[50px]',
       },
     },
-  }
+  },
 );
 
 export const TocElement = withRef<typeof PlateElement>(
@@ -40,7 +40,7 @@ export const TocElement = withRef<typeof PlateElement>(
                 key={item.id}
                 variant="ghost"
                 className={cn(
-                  headingItemVariants({ depth: item.depth as any })
+                  headingItemVariants({ depth: item.depth as any }),
                 )}
                 onClick={(e) => btnProps.onClick(e, item, 'smooth')}
                 aria-current
@@ -57,5 +57,5 @@ export const TocElement = withRef<typeof PlateElement>(
         {children}
       </PlateElement>
     );
-  }
+  },
 );

@@ -162,7 +162,7 @@ export const discussionStore = createZustandStore<TDiscussionStore>(
     devtools: { enabled: true }, // Redux DevTools with options
     mutative: true, // shorthand for { enabled: true }
     name: 'discussion',
-  }
+  },
 );
 
 export const useFakeCurrentUserId = () => 'user3';
@@ -261,7 +261,7 @@ const BlockCommentsContent = ({
   const noneActive = !activeSuggestion && !activeDiscussion;
 
   const sortedMergedData = [...resolvedDiscussions, ...resolvedSuggestion].sort(
-    (a, b) => a.createdAt.getTime() - b.createdAt.getTime()
+    (a, b) => a.createdAt.getTime() - b.createdAt.getTime(),
   );
 
   const selected =
@@ -287,7 +287,7 @@ const BlockCommentsContent = ({
         ([node]) =>
           TextApi.isText(node) &&
           editor.getApi(SuggestionPlugin).suggestion.nodeId(node) ===
-            activeSuggestion.suggestionId
+            activeSuggestion.suggestionId,
       );
     }
 
@@ -298,7 +298,7 @@ const BlockCommentsContent = ({
         activeNode = commentNodes.find(
           ([node]) =>
             editor.getApi(CommentsPlugin).comment.nodeId(node) ===
-            activeCommentId
+            activeCommentId,
         );
       }
     }
@@ -370,7 +370,7 @@ const BlockCommentsContent = ({
                       discussion={item}
                       isLast={index === sortedMergedData.length - 1}
                     />
-                  )
+                  ),
                 )
               ) : (
                 <React.Fragment>
@@ -397,7 +397,7 @@ const BlockCommentsContent = ({
             <PopoverTrigger asChild>
               <Button
                 variant="ghost"
-                className="mt-1 ml-1 flex h-6 gap-1 px-1.5 py-0 text-muted-foreground/80 hover:text-muted-foreground/80 data-[active=true]:bg-muted"
+                className="text-muted-foreground/80 hover:text-muted-foreground/80 data-[active=true]:bg-muted mt-1 ml-1 flex h-6 gap-1 px-1.5 py-0"
                 data-active={open}
                 contentEditable={false}
               >
@@ -450,14 +450,14 @@ export const BlockComment = ({
         <CommentCreateForm discussionId={discussion.id} />
       </div>
 
-      {!isLast && <div className="h-px w-full bg-muted" />}
+      {!isLast && <div className="bg-muted h-px w-full" />}
     </React.Fragment>
   );
 };
 
 export const useResolvedDiscussion = (
   commentNodes: NodeEntry<TCommentText>[],
-  blockPath: Path
+  blockPath: Path,
 ) => {
   const { api, getOption, setOption } = useEditorPlugin(commentsPlugin);
 
@@ -487,7 +487,7 @@ export const useResolvedDiscussion = (
   });
 
   const commentsIds = new Set(
-    commentNodes.map(([node]) => api.comment.nodeId(node)).filter(Boolean)
+    commentNodes.map(([node]) => api.comment.nodeId(node)).filter(Boolean),
   );
 
   const resolvedDiscussions = discussions

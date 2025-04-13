@@ -26,5 +26,5 @@ export const AIToolbarButton = withRef<typeof ToolbarButton>(
         {children}
       </ToolbarButton>
     );
-  }
+  },
 );

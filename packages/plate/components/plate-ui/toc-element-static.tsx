@@ -24,7 +24,7 @@ const headingItemVariants = cva(
         3: 'pl-[50px]',
       },
     },
-  }
+  },
 );
 
 export function TocElementStatic({

@@ -28,11 +28,11 @@ export const CodeBlockElementStatic = ({
         '**:[.hljs-section]:font-bold **:[.hljs-section]:text-[#005cc5]',
         '**:[.hljs-bullet]:text-[#735c0f]',
         '**:[.hljs-addition]:bg-[#f0fff4] **:[.hljs-addition]:text-[#22863a]',
-        '**:[.hljs-deletion]:bg-[#ffeef0] **:[.hljs-deletion]:text-[#b31d28]'
+        '**:[.hljs-deletion]:bg-[#ffeef0] **:[.hljs-deletion]:text-[#b31d28]',
       )}
       {...props}
     >
-      <div className="relative rounded-md bg-muted/50">
+      <div className="bg-muted/50 relative rounded-md">
         <pre className="overflow-x-auto p-8 pr-4 font-mono text-sm leading-[normal] [tab-size:2] print:break-inside-avoid">
           <code>{children}</code>
         </pre>

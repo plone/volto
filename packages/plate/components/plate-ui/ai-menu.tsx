@@ -38,7 +38,7 @@ export function AIMenu() {
 
   const { input, isLoading, messages, setInput } = chat;
   const [anchorElement, setAnchorElement] = React.useState<HTMLElement | null>(
-    null
+    null,
   );
 
   const content = useLastAssistantMessage()?.content;
@@ -88,7 +88,7 @@ export function AIMenu() {
     () => {
       api.aiChat.show();
     },
-    { enableOnContentEditable: true, enableOnFormTags: true }
+    { enableOnContentEditable: true, enableOnFormTags: true },
   );
 
   return (
@@ -123,14 +123,14 @@ export function AIMenu() {
           )}
 
           {isLoading ? (
-            <div className="flex grow items-center gap-2 p-2 text-sm text-muted-foreground select-none">
+            <div className="text-muted-foreground flex grow items-center gap-2 p-2 text-sm select-none">
               <Loader2Icon className="size-4 animate-spin" />
               {messages.length > 1 ? 'Editing...' : 'Thinking...'}
             </div>
           ) : (
             <InputCommand
               variant="ghost"
-              className="rounded-none border-b border-solid border-border [&_svg]:hidden"
+              className="border-border rounded-none border-b border-solid [&_svg]:hidden"
               value={input}
               onKeyDown={(e) => {
                 if (isHotkey('backspace')(e) && input.length === 0) {

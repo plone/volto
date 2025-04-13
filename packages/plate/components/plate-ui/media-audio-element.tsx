@@ -36,6 +36,6 @@ export const MediaAudioElement = withHOC(
           {children}
         </PlateElement>
       );
-    }
-  )
+    },
+  ),
 );

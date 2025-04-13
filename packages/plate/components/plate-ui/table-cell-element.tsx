@@ -43,7 +43,7 @@ export const TableCellElement = withRef<
   const isSelectingRow = useBlockSelected(rowId);
   const isSelectionAreaVisible = usePluginOption(
     BlockSelectionPlugin,
-    'isSelectionAreaVisible'
+    'isSelectionAreaVisible',
   );
 
   const { borders, colIndex, colSpan, minHeight, rowIndex, selected, width } =
@@ -62,16 +62,16 @@ export const TableCellElement = withRef<
       as={isHeader ? 'th' : 'td'}
       className={cn(
         className,
-        'h-full overflow-visible border-none bg-background p-0',
+        'bg-background h-full overflow-visible border-none p-0',
         element.background ? 'bg-(--cellBackground)' : 'bg-background',
         isHeader && 'text-left *:m-0',
         'before:size-full',
-        selected && 'before:z-10 before:bg-brand/5',
+        selected && 'before:bg-brand/5 before:z-10',
         "before:absolute before:box-border before:content-[''] before:select-none",
-        borders.bottom?.size && `before:border-b before:border-b-border`,
-        borders.right?.size && `before:border-r before:border-r-border`,
-        borders.left?.size && `before:border-l before:border-l-border`,
-        borders.top?.size && `before:border-t before:border-t-border`
+        borders.bottom?.size && `before:border-b-border before:border-b`,
+        borders.right?.size && `before:border-r-border before:border-r`,
+        borders.left?.size && `before:border-l-border before:border-l`,
+        borders.top?.size && `before:border-t-border before:border-t`,
       )}
       style={
         {
@@ -118,17 +118,17 @@ export const TableCellElement = withRef<
 
               <div
                 className={cn(
-                  'absolute top-0 z-30 hidden h-full w-1 bg-ring',
+                  'bg-ring absolute top-0 z-30 hidden h-full w-1',
                   'right-[-1.5px]',
-                  columnResizeVariants({ colIndex: colIndex as any })
+                  columnResizeVariants({ colIndex: colIndex as any }),
                 )}
               />
               {colIndex === 0 && (
                 <div
                   className={cn(
-                    'absolute top-0 z-30 h-full w-1 bg-ring',
+                    'bg-ring absolute top-0 z-30 h-full w-1',
                     'left-[-1.5px]',
-                    'fade-in hidden animate-in group-has-[[data-resizer-left]:hover]/table:block group-has-[[data-resizer-left][data-resizing="true"]]/table:block'
+                    'fade-in animate-in hidden group-has-[[data-resizer-left]:hover]/table:block group-has-[[data-resizer-left][data-resizing="true"]]/table:block',
                   )}
                 />
               )}

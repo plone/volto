@@ -17,5 +17,5 @@ export const BlockquoteElement = withRef<typeof PlateElement>(
         {children}
       </PlateElement>
     );
-  }
+  },
 );

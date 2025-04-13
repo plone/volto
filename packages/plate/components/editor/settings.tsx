@@ -61,7 +61,7 @@ export const models: Model[] = [
 ];
 
 const SettingsContext = createContext<SettingsContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
@@ -134,10 +134,10 @@ export function SettingsDialog() {
     <div className="group relative">
       <div className="flex items-center justify-between">
         <label
-          className="absolute top-1/2 block -translate-y-1/2 cursor-text px-1 text-sm text-muted-foreground/70 transition-all group-focus-within:pointer-events-none group-focus-within:top-0 group-focus-within:cursor-default group-focus-within:text-xs group-focus-within:font-medium group-focus-within:text-foreground has-[+input:not(:placeholder-shown)]:pointer-events-none has-[+input:not(:placeholder-shown)]:top-0 has-[+input:not(:placeholder-shown)]:cursor-default has-[+input:not(:placeholder-shown)]:text-xs has-[+input:not(:placeholder-shown)]:font-medium has-[+input:not(:placeholder-shown)]:text-foreground"
+          className="text-muted-foreground/70 group-focus-within:text-foreground has-[+input:not(:placeholder-shown)]:text-foreground absolute top-1/2 block -translate-y-1/2 cursor-text px-1 text-sm transition-all group-focus-within:pointer-events-none group-focus-within:top-0 group-focus-within:cursor-default group-focus-within:text-xs group-focus-within:font-medium has-[+input:not(:placeholder-shown)]:pointer-events-none has-[+input:not(:placeholder-shown)]:top-0 has-[+input:not(:placeholder-shown)]:cursor-default has-[+input:not(:placeholder-shown)]:text-xs has-[+input:not(:placeholder-shown)]:font-medium"
           htmlFor={label}
         >
-          <span className="inline-flex bg-background px-2">{label}</span>
+          <span className="bg-background inline-flex px-2">{label}</span>
         </label>
         <Button
           asChild
@@ -200,7 +200,7 @@ export function SettingsDialog() {
           className={cn(
             'group fixed right-4 bottom-4 z-50 size-10 overflow-hidden',
             'rounded-full shadow-md hover:shadow-lg',
-            'transition-all duration-300 ease-in-out hover:w-[106px]'
+            'transition-all duration-300 ease-in-out hover:w-[106px]',
           )}
           data-block-hide
         >
@@ -210,7 +210,7 @@ export function SettingsDialog() {
               className={cn(
                 'whitespace-nowrap opacity-0 transition-all duration-300 ease-in-out',
                 'group-hover:translate-x-0 group-hover:opacity-100',
-                '-translate-x-2'
+                '-translate-x-2',
               )}
             >
               Settings
@@ -241,7 +241,7 @@ export function SettingsDialog() {
 
               <div className="group relative">
                 <label
-                  className="absolute start-1 top-0 z-10 block -translate-y-1/2 bg-background px-2 text-xs font-medium text-foreground group-has-disabled:opacity-50"
+                  className="bg-background text-foreground absolute start-1 top-0 z-10 block -translate-y-1/2 px-2 text-xs font-medium group-has-disabled:opacity-50"
                   htmlFor="select-model"
                 >
                   Model
@@ -279,7 +279,7 @@ export function SettingsDialog() {
                                   'mr-2 size-4',
                                   model.value === m.value
                                     ? 'opacity-100'
-                                    : 'opacity-0'
+                                    : 'opacity-0',
                                 )}
                               />
                               <code>{m.label}</code>
@@ -313,7 +313,7 @@ export function SettingsDialog() {
           </Button>
         </form>
 
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Not stored anywhere. Used only for current session requests.
         </p>
       </DialogContent>

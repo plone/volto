@@ -35,5 +35,5 @@ export const HeadingElement = withRef<typeof HeadingElementVariants>(
         {children}
       </HeadingElementVariants>
     );
-  }
+  },
 );

@@ -16,5 +16,5 @@ export const ParagraphElement = withRef<typeof PlateElement>(
         {children}
       </PlateElement>
     );
-  }
+  },
 );

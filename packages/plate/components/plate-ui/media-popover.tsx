@@ -38,7 +38,7 @@ export function MediaPopover({ children, plugin }: MediaPopoverProps) {
 
   const selectionCollapsed = useEditorSelector(
     (editor) => !editor.api.isExpanded(),
-    []
+    [],
   );
   const isImagePreviewOpen = useImagePreviewValue('isOpen', editor.id);
   const isOpen =
@@ -68,7 +68,7 @@ export function MediaPopover({ children, plugin }: MediaPopoverProps) {
         {isEditing ? (
           <div className="flex w-[330px] flex-col">
             <div className="flex items-center">
-              <div className="flex items-center pr-1 pl-2 text-muted-foreground">
+              <div className="text-muted-foreground flex items-center pr-1 pl-2">
                 <Link className="size-4" />
               </div>
 

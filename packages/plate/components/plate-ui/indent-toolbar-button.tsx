@@ -17,5 +17,5 @@ export const IndentToolbarButton = withRef<typeof ToolbarButton>(
         <Indent />
       </ToolbarButton>
     );
-  }
+  },
 );

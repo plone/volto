@@ -30,7 +30,7 @@ export const DropdownMenuGroup = React.forwardRef<
       <DropdownMenuSeparator
         className={cn(
           'hidden',
-          'mb-0 shrink-0 peer-has-[[role=menuitem]]/menu-group:block peer-has-[[role=menuitemcheckbox]]/menu-group:block peer-has-[[role=option]]/menu-group:block'
+          'mb-0 shrink-0 peer-has-[[role=menuitem]]/menu-group:block peer-has-[[role=menuitemcheckbox]]/menu-group:block peer-has-[[role=option]]/menu-group:block',
         )}
       />
 
@@ -40,7 +40,7 @@ export const DropdownMenuGroup = React.forwardRef<
         className={cn(
           'hidden',
           'peer/menu-group group/menu-group my-1.5 has-[[role=menuitem]]:block has-[[role=menuitemcheckbox]]:block has-[[role=option]]:block',
-          props.className
+          props.className,
         )}
       >
         {label && <DropdownMenuLabel>{label}</DropdownMenuLabel>}
@@ -65,7 +65,7 @@ export const DropdownMenuRadioGroup = React.forwardRef<
       <DropdownMenuSeparator
         className={cn(
           'hidden',
-          'mb-0 shrink-0 peer-has-[[role=menuitemradio]]/menu-group:block peer-has-[[role=option]]/menu-group:block'
+          'mb-0 shrink-0 peer-has-[[role=menuitemradio]]/menu-group:block peer-has-[[role=option]]/menu-group:block',
         )}
       />
 
@@ -75,7 +75,7 @@ export const DropdownMenuRadioGroup = React.forwardRef<
         className={cn(
           'hidden',
           'peer/menu-group group/menu-group my-1.5 has-[[role=menuitemradio]]:block has-[[role=option]]:block',
-          props.className
+          props.className,
         )}
       >
         {label && <DropdownMenuLabel>{label}</DropdownMenuLabel>}
@@ -94,9 +94,9 @@ export const DropdownMenuSubTrigger = withRef<
   <DropdownMenuPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      'mx-1 flex cursor-default items-center gap-2 rounded-sm px-2 py-1 text-sm outline-none select-none focus:bg-accent data-disabled:pointer-events-none data-disabled:opacity-50 data-[state=open]:bg-accent [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+      'focus:bg-accent data-[state=open]:bg-accent mx-1 flex cursor-default items-center gap-2 rounded-sm px-2 py-1 text-sm outline-none select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
       inset && 'pl-8',
-      className
+      className,
     )}
     {...props}
   >
@@ -107,12 +107,12 @@ export const DropdownMenuSubTrigger = withRef<
 
 export const DropdownMenuSubContent = withCn(
   DropdownMenuPrimitive.SubContent,
-  'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-32 overflow-hidden rounded-md border bg-popover py-1 text-popover-foreground shadow-lg data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95'
+  'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-32 overflow-hidden rounded-md border bg-popover py-1 text-popover-foreground shadow-lg data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
 );
 
 const DropdownMenuContentVariants = withProps(DropdownMenuPrimitive.Content, {
   className: cn(
-    'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-32 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95'
+    'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-32 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
   ),
   sideOffset: 4,
 });
@@ -139,13 +139,13 @@ const menuItemVariants = cva(
         true: 'pl-8',
       },
     },
-  }
+  },
 );
 
 export const DropdownMenuItem = withVariants(
   DropdownMenuPrimitive.Item,
   menuItemVariants,
-  ['inset']
+  ['inset'],
 );
 
 export const DropdownMenuCheckboxItem = withRef<
@@ -154,9 +154,9 @@ export const DropdownMenuCheckboxItem = withRef<
   <DropdownMenuPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      'relative mx-1 flex items-center gap-2 rounded-sm py-1 pr-2 pl-8 text-sm transition-colors outline-none select-none focus:bg-accent focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0',
+      'focus:bg-accent focus:text-accent-foreground relative mx-1 flex items-center gap-2 rounded-sm py-1 pr-2 pl-8 text-sm transition-colors outline-none select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0',
       'cursor-pointer',
-      className
+      className,
     )}
     {...props}
   >
@@ -178,8 +178,8 @@ export const DropdownMenuRadioItem = withRef<
   <DropdownMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
-      'relative mx-1 flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1 text-sm transition-colors outline-none select-none focus:bg-accent focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50 data-[state=checked]:text-accent-foreground [&_svg]:size-4',
-      className
+      'focus:bg-accent focus:text-accent-foreground data-[state=checked]:text-accent-foreground relative mx-1 flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1 text-sm transition-colors outline-none select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:size-4',
+      className,
     )}
     {...props}
   >
@@ -196,7 +196,7 @@ export const DropdownMenuRadioItem = withRef<
 
 const dropdownMenuLabelVariants = cva(
   cn(
-    'mx-1 px-2 pt-1.5 pb-2 text-xs font-semibold text-muted-foreground select-none'
+    'mx-1 px-2 pt-1.5 pb-2 text-xs font-semibold text-muted-foreground select-none',
   ),
   {
     variants: {
@@ -204,23 +204,23 @@ const dropdownMenuLabelVariants = cva(
         true: 'pl-8',
       },
     },
-  }
+  },
 );
 
 export const DropdownMenuLabel = withVariants(
   DropdownMenuPrimitive.Label,
   dropdownMenuLabelVariants,
-  ['inset']
+  ['inset'],
 );
 
 export const DropdownMenuSeparator = withCn(
   DropdownMenuPrimitive.Separator,
-  '-mx-1 my-1 h-px bg-muted'
+  '-mx-1 my-1 h-px bg-muted',
 );
 
 export const DropdownMenuShortcut = withCn(
   createPrimitiveElement('span'),
-  'ml-auto text-xs tracking-widest opacity-60'
+  'ml-auto text-xs tracking-widest opacity-60',
 );
 
 export const useOpenState = () => {
@@ -230,7 +230,7 @@ export const useOpenState = () => {
     (_value = !open) => {
       setOpen(_value);
     },
-    [open]
+    [open],
   );
 
   return {

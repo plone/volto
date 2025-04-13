@@ -86,5 +86,5 @@ export const suggestionPlugin = toTPlatePlugin<SuggestionConfig>(
         return <BlockSuggestion element={element} />;
       },
     },
-  }
+  },
 );

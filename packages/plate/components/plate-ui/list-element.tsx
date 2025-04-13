@@ -26,5 +26,5 @@ export const ListElement = withRef<typeof ListElementVariants>(
         {children}
       </ListElementVariants>
     );
-  }
+  },
 );

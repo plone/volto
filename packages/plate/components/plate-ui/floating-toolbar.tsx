@@ -69,8 +69,8 @@ export const FloatingToolbar = withRef<
       <Toolbar
         ref={ref}
         className={cn(
-          'absolute z-50 scrollbar-hide overflow-x-auto rounded-md border bg-popover p-1 whitespace-nowrap opacity-100 shadow-md print:hidden',
-          'max-w-[80vw]'
+          'scrollbar-hide bg-popover absolute z-50 overflow-x-auto rounded-md border p-1 whitespace-nowrap opacity-100 shadow-md print:hidden',
+          'max-w-[80vw]',
         )}
         {...rootProps}
         {...props}

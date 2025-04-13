@@ -4,7 +4,7 @@ import type { SlateRenderElementProps } from '@udecode/plate';
 import type { TIndentElement } from '@udecode/plate-indent';
 
 export const FireMarker = (
-  props: Omit<SlateRenderElementProps, 'children'>
+  props: Omit<SlateRenderElementProps, 'children'>,
 ) => {
   const { element } = props;
 

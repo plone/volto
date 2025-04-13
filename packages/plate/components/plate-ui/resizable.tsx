@@ -14,7 +14,7 @@ import { cva } from 'class-variance-authority';
 export const mediaResizeHandleVariants = cva(
   cn(
     'top-0 flex w-6 flex-col justify-center select-none',
-    "after:flex after:h-16 after:w-[3px] after:rounded-[6px] after:bg-ring after:opacity-0 after:content-['_'] group-hover:after:opacity-100"
+    "after:flex after:h-16 after:w-[3px] after:rounded-[6px] after:bg-ring after:opacity-0 after:content-['_'] group-hover:after:opacity-100",
   ),
   {
     variants: {
@@ -23,7 +23,7 @@ export const mediaResizeHandleVariants = cva(
         right: '-right-3 -mr-3 items-end pr-3',
       },
     },
-  }
+  },
 );
 
 const resizeHandleVariants = cva(cn('absolute z-40'), {
@@ -40,7 +40,7 @@ const resizeHandleVariants = cva(cn('absolute z-40'), {
 const ResizeHandleVariants = withVariants(
   createPrimitiveElement('div'),
   resizeHandleVariants,
-  ['direction']
+  ['direction'],
 );
 
 export const ResizeHandle = withRef<typeof ResizeHandlePrimitive>(
@@ -59,7 +59,7 @@ export const ResizeHandle = withRef<typeof ResizeHandlePrimitive>(
         {...props}
       />
     );
-  }
+  },
 );
 
 const resizableVariants = cva('', {

@@ -41,7 +41,7 @@ import { cva } from 'class-variance-authority';
 
 type FilterFn = (
   item: { value: string; group?: string; keywords?: string[]; label?: string },
-  search: string
+  search: string,
 ) => boolean;
 
 interface InlineComboboxContextValue {
@@ -55,19 +55,19 @@ interface InlineComboboxContextValue {
 }
 
 const InlineComboboxContext = createContext<InlineComboboxContextValue>(
-  null as any
+  null as any,
 );
 
 export const defaultFilter: FilterFn = (
   { group, keywords = [], label, value },
-  search
+  search,
 ) => {
   const uniqueTerms = new Set(
-    [value, ...keywords, group, label].filter(Boolean)
+    [value, ...keywords, group, label].filter(Boolean),
   );
 
   return Array.from(uniqueTerms).some((keyword) =>
-    filterWords(keyword!, search)
+    filterWords(keyword!, search),
   );
 };
 
@@ -108,7 +108,7 @@ const InlineCombobox = ({
         setValueState(newValue);
       }
     },
-    [setValueProp, hasValueProp]
+    [setValueProp, hasValueProp],
   );
 
   /**
@@ -173,7 +173,7 @@ const InlineCombobox = ({
       inputProps,
       removeInput,
       setHasEmpty,
-    ]
+    ],
   );
 
   const store = useComboboxStore({
@@ -249,7 +249,7 @@ const InlineComboboxInput = forwardRef<
           ref={ref}
           className={cn(
             'absolute top-0 left-0 size-full bg-transparent outline-none',
-            className
+            className,
           )}
           value={value}
           autoSelect
@@ -272,8 +272,8 @@ const InlineComboboxContent: typeof ComboboxPopover = ({
     <Portal>
       <ComboboxPopover
         className={cn(
-          'z-500 max-h-[288px] w-[300px] overflow-y-auto rounded-md bg-popover shadow-md',
-          className
+          'bg-popover z-500 max-h-[288px] w-[300px] overflow-y-auto rounded-md shadow-md',
+          className,
         )}
         {...props}
       />
@@ -293,7 +293,7 @@ const comboboxItemVariants = cva(
         true: 'cursor-pointer transition-colors hover:bg-accent hover:text-accent-foreground data-[active-item=true]:bg-accent data-[active-item=true]:text-accent-foreground',
       },
     },
-  }
+  },
 );
 
 export type InlineComboboxItemProps = {
@@ -325,7 +325,7 @@ const InlineComboboxItem = ({
   const visible = useMemo(
     () =>
       !filter || filter({ group, keywords, label, value }, search as string),
-    [filter, group, keywords, label, value, search]
+    [filter, group, keywords, label, value, search],
   );
 
   if (!visible) return null;
@@ -373,12 +373,12 @@ const InlineComboboxRow = ComboboxRow;
 
 const InlineComboboxGroup = withCn(
   ComboboxGroup,
-  'hidden py-1.5 not-last:border-b [&:has([role=option])]:block'
+  'hidden py-1.5 not-last:border-b [&:has([role=option])]:block',
 );
 
 const InlineComboboxGroupLabel = withCn(
   ComboboxGroupLabel,
-  'mt-1.5 mb-2 px-3 text-xs font-medium text-muted-foreground'
+  'mt-1.5 mb-2 px-3 text-xs font-medium text-muted-foreground',
 );
 
 export {

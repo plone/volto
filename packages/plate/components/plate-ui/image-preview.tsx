@@ -49,7 +49,7 @@ export const ImagePreview = () => {
     <div
       className={cn(
         'fixed top-0 left-0 z-50 h-screen w-screen select-none',
-        !isOpen && 'hidden'
+        !isOpen && 'hidden',
       )}
       onContextMenu={(e) => e.stopPropagation()}
       {...maskLayerProps}
@@ -60,7 +60,7 @@ export const ImagePreview = () => {
         <div className="relative flex max-h-screen w-full items-center">
           <PreviewImage
             className={cn(
-              'mx-auto block max-h-[calc(100vh-4rem)] w-auto object-contain transition-transform'
+              'mx-auto block max-h-[calc(100vh-4rem)] w-auto object-contain transition-transform',
             )}
           />
           <div
@@ -73,7 +73,7 @@ export const ImagePreview = () => {
                 className={cn(
                   toolButtonVariants({
                     variant: prevDisabled ? 'disabled' : 'default',
-                  })
+                  }),
                 )}
                 type="button"
               >
@@ -85,7 +85,7 @@ export const ImagePreview = () => {
                 className={cn(
                   toolButtonVariants({
                     variant: nextDisabled ? 'disabled' : 'default',
-                  })
+                  }),
                 )}
                 type="button"
               >
@@ -97,7 +97,7 @@ export const ImagePreview = () => {
                 className={cn(
                   toolButtonVariants({
                     variant: zoomOutDisabled ? 'disabled' : 'default',
-                  })
+                  }),
                 )}
                 {...zommOutProps}
                 type="button"
@@ -118,7 +118,7 @@ export const ImagePreview = () => {
                 className={cn(
                   toolButtonVariants({
                     variant: zoomInDisabled ? 'disabled' : 'default',
-                  })
+                  }),
                 )}
                 {...zoomInProps}
                 type="button"

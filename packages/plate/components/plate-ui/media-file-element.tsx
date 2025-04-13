@@ -25,7 +25,7 @@ export const MediaFileElement = withHOC(
           {...props}
         >
           <a
-            className="group relative m-0 flex cursor-pointer items-center rounded px-0.5 py-[3px] hover:bg-muted"
+            className="group hover:bg-muted relative m-0 flex cursor-pointer items-center rounded px-0.5 py-[3px]"
             contentEditable={false}
             download={name}
             href={unsafeUrl}
@@ -53,6 +53,6 @@ export const MediaFileElement = withHOC(
           {children}
         </PlateElement>
       );
-    }
-  )
+    },
+  ),
 );

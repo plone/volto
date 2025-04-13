@@ -245,7 +245,7 @@ export const autoformatPlugin = AutoformatPlugin.configure({
           !editor.api.some({
             match: { type: editor.getType(CodeBlockPlugin) },
           }),
-      })
+      }),
     ),
   },
 });

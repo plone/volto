@@ -915,9 +915,6 @@ importers:
       react-textarea-autosize:
         specifier: ^8.5.9
         version: 8.5.9(@types/react@19.0.10)(react@19.0.0)
-      react-tweet:
-        specifier: ^3.2.2
-        version: 3.2.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       remark-gfm:
         specifier: ^4.0.1
         version: 4.0.1
@@ -10741,12 +10738,6 @@ packages:
         optional: true
       react-native:
         optional: true
-
-  react-tweet@3.2.2:
-    resolution: {integrity: sha512-hIkxAVPpN2RqWoDEbo3TTnN/pDcp9/Jb6pTgiA4EbXa9S+m2vHIvvZKHR+eS0PDIsYqe+zTmANRa5k6+/iwGog==}
-    peerDependencies:
-      react: ^19.0.0
-      react-dom: ^19.0.0
 
   react@19.0.0:
     resolution: {integrity: sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ==}
@@ -23778,14 +23769,6 @@ snapshots:
       use-context-selector: 1.4.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)
     optionalDependencies:
       react-dom: 19.0.0(react@19.0.0)
-
-  react-tweet@3.2.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
-    dependencies:
-      '@swc/helpers': 0.5.10
-      clsx: 2.1.1
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
-      swr: 2.3.3(react@19.0.0)
 
   react@19.0.0: {}
 

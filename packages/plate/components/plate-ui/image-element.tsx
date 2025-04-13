@@ -52,8 +52,8 @@ export const ImageElement = withHOC(
                   className={cn(
                     'block w-full max-w-full cursor-pointer object-cover px-0',
                     'rounded-sm',
-                    focused && selected && 'ring-2 ring-ring ring-offset-2',
-                    isDragging && 'opacity-50'
+                    focused && selected && 'ring-ring ring-2 ring-offset-2',
+                    isDragging && 'opacity-50',
                   )}
                   alt=""
                   {...nodeProps}
@@ -81,6 +81,6 @@ export const ImageElement = withHOC(
           </PlateElement>
         </MediaPopover>
       );
-    }
-  )
+    },
+  ),
 );

@@ -79,8 +79,8 @@ export const commentsPlugin = toTPlatePlugin<CommentsConfig>(
         },
         {
           enableOnContentEditable: true,
-        }
+        },
       );
     },
-  }
+  },
 );

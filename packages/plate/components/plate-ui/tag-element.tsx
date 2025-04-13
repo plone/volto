@@ -20,9 +20,9 @@ export const TagElement = withRef<typeof PlateElement>(
       <div
         className={cn(
           'shrink-0 rounded-full border px-2.5 align-middle text-sm font-semibold break-normal transition-colors focus:outline-none',
-          'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60',
-          selected && focused && 'ring-2 ring-ring ring-offset-0',
-          'flex items-center gap-1.5'
+          'bg-secondary text-secondary-foreground hover:bg-secondary/60 border-transparent',
+          selected && focused && 'ring-ring ring-2 ring-offset-0',
+          'flex items-center gap-1.5',
         )}
       >
         {element.value as string}
@@ -41,7 +41,7 @@ export const TagElement = withRef<typeof PlateElement>(
         ref={ref}
         className={cn(
           className,
-          'm-0.5 inline-flex cursor-pointer select-none'
+          'm-0.5 inline-flex cursor-pointer select-none',
         )}
         draggable
         {...props}
@@ -50,5 +50,5 @@ export const TagElement = withRef<typeof PlateElement>(
         {children}
       </PlateElement>
     );
-  }
+  },
 );

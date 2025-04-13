@@ -11,8 +11,8 @@ export const Checkbox = withRef<typeof CheckboxPrimitive.Root>(
     <CheckboxPrimitive.Root
       ref={ref}
       className={cn(
-        'peer size-4 shrink-0 rounded-sm border border-primary bg-background ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground',
-        className
+        'peer border-primary bg-background ring-offset-background focus-visible:ring-ring data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground size-4 shrink-0 rounded-sm border focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+        className,
       )}
       {...props}
     >
@@ -22,5 +22,5 @@ export const Checkbox = withRef<typeof CheckboxPrimitive.Root>(
         <Check className="size-4" />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
-  )
+  ),
 );

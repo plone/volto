@@ -20,7 +20,7 @@ export const blockSelectionVariants = cva(
         true: 'opacity-100',
       },
     },
-  }
+  },
 );
 
 export function BlockSelection({
@@ -39,7 +39,7 @@ export function BlockSelection({
         blockSelectionVariants({
           active: isBlockSelected && !isDragging,
         }),
-        className
+        className,
       )}
       data-slot="block-selection"
       {...props}

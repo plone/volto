@@ -15,5 +15,5 @@ export const HighlightLeaf = withRef<typeof PlateLeaf>(
     >
       {children}
     </PlateLeaf>
-  )
+  ),
 );

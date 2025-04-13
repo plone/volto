@@ -32,7 +32,7 @@ export const TodoListElement = withRef<typeof PlateElement>(
         <span
           className={cn(
             'flex-1 focus:outline-none',
-            state.checked && 'text-muted-foreground line-through'
+            state.checked && 'text-muted-foreground line-through',
           )}
           contentEditable={!state.readOnly}
           suppressContentEditableWarning
@@ -41,5 +41,5 @@ export const TodoListElement = withRef<typeof PlateElement>(
         </span>
       </PlateElement>
     );
-  }
+  },
 );

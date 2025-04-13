@@ -27,7 +27,7 @@ type FormFieldContextValue<
 };
 
 const FormFieldContext = React.createContext<FormFieldContextValue>(
-  {} as FormFieldContextValue
+  {} as FormFieldContextValue,
 );
 
 const FormField = <
@@ -71,7 +71,7 @@ type FormItemContextValue = {
 };
 
 const FormItemContext = React.createContext<FormItemContextValue>(
-  {} as FormItemContextValue
+  {} as FormItemContextValue,
 );
 
 const FormItem = React.forwardRef<
@@ -136,7 +136,7 @@ const FormDescription = React.forwardRef<
     <p
       id={formDescriptionId}
       ref={ref}
-      className={cn('text-sm text-muted-foreground', className)}
+      className={cn('text-muted-foreground text-sm', className)}
       {...props}
     />
   );
@@ -158,7 +158,7 @@ const FormMessage = React.forwardRef<
     <p
       id={formMessageId}
       ref={ref}
-      className={cn('text-sm font-medium text-destructive', className)}
+      className={cn('text-destructive text-sm font-medium', className)}
       {...props}
     >
       {body}

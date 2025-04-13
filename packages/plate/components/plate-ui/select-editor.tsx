@@ -99,7 +99,7 @@ export function SelectEditorContent({
       plugins: [MultiSelectPlugin.withComponent(TagElement)],
       value: createEditorValue(value),
     },
-    []
+    [],
   );
 
   React.useEffect(() => {
@@ -199,7 +199,7 @@ export function SelectEditorCombobox() {
               >
                 {item.isNew ? (
                   <div className="flex items-center gap-1">
-                    <PlusIcon className="size-4 text-foreground" />
+                    <PlusIcon className="text-foreground size-4" />
                     Create new label:
                     <span className="text-gray-600">"{item.value}"</span>
                   </div>

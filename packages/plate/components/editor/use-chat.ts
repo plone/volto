@@ -77,7 +77,7 @@ const fakeStreamText = ({
             controller.enqueue(encoder.encode(chunk.texts));
           } else {
             controller.enqueue(
-              encoder.encode(`0:${JSON.stringify(chunk.texts)}\n`)
+              encoder.encode(`0:${JSON.stringify(chunk.texts)}\n`),
             );
           }
         }
@@ -96,8 +96,8 @@ const fakeStreamText = ({
         controller.enqueue(
           `d:{"finishReason":"stop","usage":{"promptTokens":0,"completionTokens":${blocks.reduce(
             (sum, block) => sum + block.length,
-            0
-          )}}}\n`
+            0,
+          )}}}\n`,
         );
       }
 

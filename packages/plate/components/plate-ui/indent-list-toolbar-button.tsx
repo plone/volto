@@ -37,7 +37,7 @@ export function NumberedIndentListToolbarButton() {
         ListStyleType.LowerRoman,
         ListStyleType.UpperRoman,
       ]),
-    []
+    [],
   );
 
   return (
@@ -125,7 +125,7 @@ export function BulletedIndentListToolbarButton() {
         ListStyleType.Circle,
         ListStyleType.Square,
       ]),
-    []
+    [],
   );
 
   return (

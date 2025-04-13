@@ -26,5 +26,5 @@ export const ExcalidrawElement = withRef<typeof PlateElement>(
         {children}
       </PlateElement>
     );
-  }
+  },
 );

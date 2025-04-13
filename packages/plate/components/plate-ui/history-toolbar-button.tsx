@@ -9,7 +9,7 @@ export const RedoToolbarButton = withRef<typeof ToolbarButton>((props, ref) => {
   const editor = useEditorRef();
   const disabled = useEditorSelector(
     (editor) => editor.history.redos.length === 0,
-    []
+    [],
   );
 
   return (
@@ -30,7 +30,7 @@ export const UndoToolbarButton = withRef<typeof ToolbarButton>((props, ref) => {
   const editor = useEditorRef();
   const disabled = useEditorSelector(
     (editor) => editor.history.undos.length === 0,
-    []
+    [],
   );
 
   return (

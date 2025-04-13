@@ -14,5 +14,5 @@ export const CodeSyntaxLeaf = withRef<typeof PlateLeaf>(
         {children}
       </PlateLeaf>
     );
-  }
+  },
 );
