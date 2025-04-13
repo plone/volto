@@ -6,7 +6,6 @@ import type { DropdownMenuProps } from '@radix-ui/react-dropdown-menu';
 
 import { BlockquotePlugin } from '@udecode/plate-block-quote/react';
 import { CodeBlockPlugin } from '@udecode/plate-code-block/react';
-import { DatePlugin } from '@udecode/plate-date/react';
 import { ExcalidrawPlugin } from '@udecode/plate-excalidraw/react';
 import { HEADING_KEYS } from '@udecode/plate-heading';
 import { TocPlugin } from '@udecode/plate-heading/react';
@@ -216,12 +215,6 @@ const groups: Group[] = [
         icon: <Link2Icon />,
         label: 'Link',
         value: LinkPlugin.key,
-      },
-      {
-        focusEditor: true,
-        icon: <CalendarIcon />,
-        label: 'Date',
-        value: DatePlugin.key,
       },
       {
         focusEditor: false,

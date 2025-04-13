@@ -3,7 +3,6 @@
 import emojiMartData from '@emoji-mart/data';
 import { CalloutPlugin } from '@udecode/plate-callout/react';
 import { CodeBlockPlugin } from '@udecode/plate-code-block/react';
-import { DatePlugin } from '@udecode/plate-date/react';
 import { DocxPlugin } from '@udecode/plate-docx';
 import { EmojiPlugin } from '@udecode/plate-emoji/react';
 import {
@@ -53,7 +52,6 @@ export const viewPlugins = [
   ...basicNodesPlugins,
   HorizontalRulePlugin,
   linkPlugin,
-  DatePlugin,
   mentionPlugin,
   tablePlugin,
   TogglePlugin,

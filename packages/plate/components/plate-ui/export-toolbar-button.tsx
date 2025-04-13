@@ -28,7 +28,6 @@ import {
   BaseCodeSyntaxPlugin,
 } from '@udecode/plate-code-block';
 import { BaseCommentsPlugin } from '@udecode/plate-comments';
-import { BaseDatePlugin } from '@udecode/plate-date';
 import {
   BaseFontBackgroundColorPlugin,
   BaseFontColorPlugin,
@@ -80,7 +79,6 @@ import { CodeSyntaxLeafStatic } from '@/components/plate-ui/code-syntax-leaf-sta
 import { ColumnElementStatic } from '@/components/plate-ui/column-element-static';
 import { ColumnGroupElementStatic } from '@/components/plate-ui/column-group-element-static';
 import { CommentLeafStatic } from '@/components/plate-ui/comment-leaf-static';
-import { DateElementStatic } from '@/components/plate-ui/date-element-static';
 import { HeadingElementStatic } from '@/components/plate-ui/heading-element-static';
 import { HighlightLeafStatic } from '@/components/plate-ui/highlight-leaf-static';
 import { HrElementStatic } from '@/components/plate-ui/hr-element-static';
@@ -138,14 +136,14 @@ export function ExportToolbarButton({ children, ...props }: DropdownMenuProps) {
     const canvas = await html2canvas(editor.api.toDOMNode(editor)!, {
       onclone: (document: Document) => {
         const editorElement = document.querySelector(
-          '[contenteditable="true"]'
+          '[contenteditable="true"]',
         );
         if (editorElement) {
           Array.from(editorElement.querySelectorAll('*')).forEach((element) => {
             const existingStyle = element.getAttribute('style') || '';
             element.setAttribute(
               'style',
-              `${existingStyle}; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important`
+              `${existingStyle}; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important`,
             );
           });
         }
@@ -209,7 +207,6 @@ export function ExportToolbarButton({ children, ...props }: DropdownMenuProps) {
       [BaseColumnItemPlugin.key]: ColumnElementStatic,
       [BaseColumnPlugin.key]: ColumnGroupElementStatic,
       [BaseCommentsPlugin.key]: CommentLeafStatic,
-      [BaseDatePlugin.key]: DateElementStatic,
       [BaseEquationPlugin.key]: EquationElementStatic,
       [BaseFilePlugin.key]: MediaFileElementStatic,
       [BaseHighlightPlugin.key]: HighlightLeafStatic,
@@ -259,7 +256,6 @@ export function ExportToolbarButton({ children, ...props }: DropdownMenuProps) {
         BaseSuperscriptPlugin,
         BaseUnderlinePlugin,
         BaseBlockquotePlugin,
-        BaseDatePlugin,
         BaseEquationPlugin,
         BaseInlineEquationPlugin,
         BaseCodeBlockPlugin.configure({

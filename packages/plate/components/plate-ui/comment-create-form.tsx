@@ -14,7 +14,6 @@ import {
 } from '@udecode/plate-basic-marks/react';
 import { getCommentKey, getDraftCommentKey } from '@udecode/plate-comments';
 import { CommentsPlugin, useCommentId } from '@udecode/plate-comments/react';
-import { DatePlugin } from '@udecode/plate-date/react';
 import { EmojiInputPlugin } from '@udecode/plate-emoji/react';
 import { LinkPlugin } from '@udecode/plate-link/react';
 import { InlineEquationPlugin } from '@udecode/plate-math/react';
@@ -43,7 +42,6 @@ import {
   useFakeUserInfo,
 } from './block-discussion';
 import { Button } from './button';
-import { DateElement } from './date-element';
 import { Editor, EditorContainer } from './editor';
 import { EmojiInputElement } from './emoji-input-element';
 import { InlineEquationElement } from './inline-equation-element';
@@ -53,7 +51,7 @@ import { MentionInputElement } from './mention-input-element';
 
 export const useCommentEditor = (
   options: Omit<CreatePlateEditorOptions, 'plugins'> = {},
-  deps: any[] = []
+  deps: any[] = [],
 ) => {
   const commentEditor = useCreateEditor(
     {
@@ -62,7 +60,6 @@ export const useCommentEditor = (
         components: {
           [AIPlugin.key]: AILeaf,
           [BoldPlugin.key]: withProps(PlateLeaf, { as: 'strong' }),
-          [DatePlugin.key]: DateElement,
           [EmojiInputPlugin.key]: EmojiInputElement,
           [InlineEquationPlugin.key]: InlineEquationElement,
           [ItalicPlugin.key]: withProps(PlateLeaf, { as: 'em' }),
@@ -78,7 +75,7 @@ export const useCommentEditor = (
       value: [],
       ...options,
     },
-    deps
+    deps,
   );
 
   return commentEditor;
@@ -99,7 +96,7 @@ export function CommentCreateForm({
 }) {
   const discussions = useStoreSelect(
     discussionStore,
-    (state) => state.discussions
+    (state) => state.discussions,
   );
 
   const editor = useEditorRef();
@@ -114,7 +111,7 @@ export function CommentCreateForm({
       commentValue
         ? NodeApi.string({ children: commentValue as any, type: 'p' })
         : '',
-    [commentValue]
+    [commentValue],
   );
   const commentEditor = useCommentEditor({}, [resetKey]);
 
@@ -200,7 +197,7 @@ export function CommentCreateForm({
         {
           [getCommentKey(id)]: true,
         },
-        { at: path, split: true }
+        { at: path, split: true },
       );
       editor.tf.unsetNodes([getDraftCommentKey()], { at: path });
     });

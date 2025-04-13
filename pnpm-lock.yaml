@@ -762,9 +762,6 @@ importers:
       '@udecode/plate-comments':
         specifier: ^45.0.0
         version: 45.0.0(@udecode/plate@46.0.10(@types/react@19.0.10)(immer@10.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(slate-dom@0.112.2(slate@0.112.0))(slate@0.112.0)(use-sync-external-store@1.4.0(react@19.0.0)))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@udecode/plate-date':
-        specifier: ^44.0.0
-        version: 44.0.0(@udecode/plate@46.0.10(@types/react@19.0.10)(immer@10.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(slate-dom@0.112.2(slate@0.112.0))(slate@0.112.0)(use-sync-external-store@1.4.0(react@19.0.0)))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@udecode/plate-dnd':
         specifier: ^46.0.6
         version: 46.0.6(@udecode/plate@46.0.10(@types/react@19.0.10)(immer@10.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(slate-dom@0.112.2(slate@0.112.0))(slate@0.112.0)(use-sync-external-store@1.4.0(react@19.0.0)))(react-dnd-html5-backend@16.0.1)(react-dnd@16.0.1(@types/node@20.12.7)(@types/react@19.0.10)(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -870,9 +867,6 @@ importers:
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
-      date-fns:
-        specifier: ^4.1.0
-        version: 4.1.0
       fzf:
         specifier: 0.5.2
         version: 0.5.2
@@ -894,9 +888,6 @@ importers:
       react-aria-components:
         specifier: 'catalog:'
         version: 1.7.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      react-day-picker:
-        specifier: 8.10.1
-        version: 8.10.1(date-fns@4.1.0)(react@19.0.0)
       react-dnd:
         specifier: ^16.0.1
         version: 16.0.1(@types/node@20.12.7)(@types/react@19.0.10)(react@19.0.0)
@@ -5764,13 +5755,6 @@ packages:
       react: ^19.0.0
       react-dom: ^19.0.0
 
-  '@udecode/plate-date@44.0.0':
-    resolution: {integrity: sha512-WndNVdlOdr0nIXbegAy2LQhJPgX/od34hDPSQey0K1Rf0MQr8XTlK6Wy7TS+k6Rr0nfZgUxlEl8Kfo4gp2eWRw==}
-    peerDependencies:
-      '@udecode/plate': '>=44.0.0'
-      react: ^19.0.0
-      react-dom: ^19.0.0
-
   '@udecode/plate-diff@44.0.2':
     resolution: {integrity: sha512-o0HhFXFYE4iqvYw4XrLbL0ue2Y7sCfrhM8LZLE9TsZe5MI//Q3xBvhWzGEh/HxB5KwTI6w7s23nQ5iJTqlPg/A==}
     peerDependencies:
@@ -10606,12 +10590,6 @@ packages:
     peerDependencies:
       react: ^19.0.0
       react-dom: ^19.0.0
-
-  react-day-picker@8.10.1:
-    resolution: {integrity: sha512-TMx7fNbhLk15eqcMt+7Z7S2KF7mfTId/XJDjKE8f+IUcFn0l08/kI4FiYTL/0yuOLmEcbR4Fwe3GJf/NiiMnPA==}
-    peerDependencies:
-      date-fns: ^2.28.0 || ^3.0.0
-      react: ^19.0.0
 
   react-diff-viewer-continued@4.0.5:
     resolution: {integrity: sha512-L43gIPdhHgu1MYdip4vNqAt5s2JLICKe2/RyGUr2ohAxfhYaH1+QZ6vBO0qgo4xGBhE3jmvbOA/swq4/gdS/0g==}
@@ -17583,12 +17561,6 @@ snapshots:
       - slate-dom
       - use-sync-external-store
 
-  '@udecode/plate-date@44.0.0(@udecode/plate@46.0.10(@types/react@19.0.10)(immer@10.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(slate-dom@0.112.2(slate@0.112.0))(slate@0.112.0)(use-sync-external-store@1.4.0(react@19.0.0)))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
-    dependencies:
-      '@udecode/plate': 46.0.10(@types/react@19.0.10)(immer@10.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(slate-dom@0.112.2(slate@0.112.0))(slate@0.112.0)(use-sync-external-store@1.4.0(react@19.0.0))
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
-
   '@udecode/plate-diff@44.0.2(@udecode/plate@46.0.10(@types/react@19.0.10)(immer@10.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(slate-dom@0.112.2(slate@0.112.0))(slate@0.112.0)(use-sync-external-store@1.4.0(react@19.0.0)))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@udecode/plate': 46.0.10(@types/react@19.0.10)(immer@10.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(slate-dom@0.112.2(slate@0.112.0))(slate@0.112.0)(use-sync-external-store@1.4.0(react@19.0.0))
@@ -23634,11 +23606,6 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
       uuid: 8.3.2
-
-  react-day-picker@8.10.1(date-fns@4.1.0)(react@19.0.0):
-    dependencies:
-      date-fns: 4.1.0
-      react: 19.0.0
 
   react-diff-viewer-continued@4.0.5(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:

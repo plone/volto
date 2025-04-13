@@ -12,8 +12,6 @@ import { insertCallout } from '@udecode/plate-callout';
 import { CalloutPlugin } from '@udecode/plate-callout/react';
 import { insertCodeBlock } from '@udecode/plate-code-block';
 import { CodeBlockPlugin } from '@udecode/plate-code-block/react';
-import { insertDate } from '@udecode/plate-date';
-import { DatePlugin } from '@udecode/plate-date/react';
 import { insertToc } from '@udecode/plate-heading';
 import { TocPlugin } from '@udecode/plate-heading/react';
 import { INDENT_LIST_KEYS, ListStyleType } from '@udecode/plate-indent-list';
@@ -62,7 +60,7 @@ const insertList = (editor: PlateEditor, type: string) => {
       indent: 1,
       listStyleType: type,
     }),
-    { select: true }
+    { select: true },
   );
 };
 
@@ -102,7 +100,6 @@ const insertInlineMap: Record<
   string,
   (editor: PlateEditor, type: string) => void
 > = {
-  [DatePlugin.key]: (editor) => insertDate(editor, { select: true }),
   [InlineEquationPlugin.key]: (editor) =>
     insertInlineEquation(editor, '', { select: true }),
   [LinkPlugin.key]: (editor) => triggerFloatingLink(editor, { focused: true }),
@@ -138,7 +135,7 @@ export const insertInlineElement = (editor: PlateEditor, type: string) => {
 const setList = (
   editor: PlateEditor,
   type: string,
-  entry: NodeEntry<TElement>
+  entry: NodeEntry<TElement>,
 ) => {
   editor.tf.setNodes(
     editor.api.create.block({
@@ -147,7 +144,7 @@ const setList = (
     }),
     {
       at: entry[1],
-    }
+    },
   );
 };
 
@@ -164,7 +161,7 @@ const setBlockMap: Record<
 export const setBlockType = (
   editor: PlateEditor,
   type: string,
-  { at }: { at?: Path } = {}
+  { at }: { at?: Path } = {},
 ) => {
   editor.tf.withoutNormalizing(() => {
     const setEntry = (entry: NodeEntry<TElement>) => {

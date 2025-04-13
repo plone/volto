@@ -6,7 +6,6 @@ import { withRef } from '@udecode/cn';
 import { AIChatPlugin } from '@udecode/plate-ai/react';
 import { BlockquotePlugin } from '@udecode/plate-block-quote/react';
 import { CodeBlockPlugin } from '@udecode/plate-code-block/react';
-import { DatePlugin } from '@udecode/plate-date/react';
 import { HEADING_KEYS } from '@udecode/plate-heading';
 import { TocPlugin } from '@udecode/plate-heading/react';
 import { INDENT_LIST_KEYS, ListStyleType } from '@udecode/plate-indent-list';
@@ -189,13 +188,6 @@ const groups: Group[] = [
     group: 'Inline',
     items: [
       {
-        focusEditor: true,
-        icon: <CalendarIcon />,
-        keywords: ['time'],
-        label: 'Date',
-        value: DatePlugin.key,
-      },
-      {
         focusEditor: false,
         icon: <RadicalIcon />,
         label: 'Inline Equation',
@@ -243,10 +235,10 @@ export const SlashInputElement = withRef<typeof PlateElement>(
                       group={group}
                       keywords={keywords}
                     >
-                      <div className="mr-2 text-muted-foreground">{icon}</div>
+                      <div className="text-muted-foreground mr-2">{icon}</div>
                       {label ?? value}
                     </InlineComboboxItem>
-                  )
+                  ),
                 )}
               </InlineComboboxGroup>
             ))}
@@ -256,5 +248,5 @@ export const SlashInputElement = withRef<typeof PlateElement>(
         {children}
       </PlateElement>
     );
-  }
+  },
 );
