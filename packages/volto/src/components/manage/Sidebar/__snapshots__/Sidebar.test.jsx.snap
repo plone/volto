@@ -89,29 +89,6 @@ exports[`renders a sidebar component 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         />
       </div>
-      <div
-        className="ui bottom attached segment tab tab-wrapper"
-        id="sidebar-order"
-      >
-        <svg
-          className="icon tab-forbidden"
-          dangerouslySetInnerHTML={
-            {
-              "__html": "<path fill-rule="evenodd" d="M18,31 C14.775,31 11.827,29.813 9.553,27.861 L27.861,9.553 C29.813,11.827 31,14.775 31,18 C31,25.168 25.168,31 18,31 M18,5 C21.225,5 24.173,6.187 26.447,8.139 L8.139,26.447 C6.187,24.173 5,21.225 5,18 C5,10.832 10.832,5 18,5 M18,3 C9.729,3 3,9.729 3,18 C3,26.271 9.729,33 18,33 C26.271,33 33,26.271 33,18 C33,9.729 26.271,3 18,3"/>",
-            }
-          }
-          onClick={null}
-          style={
-            {
-              "fill": "currentColor",
-              "height": "48px",
-              "width": "auto",
-            }
-          }
-          viewBox="0 0 36 36"
-          xmlns="http://www.w3.org/2000/svg"
-        />
-      </div>
     </div>
   </div>,
   <div
