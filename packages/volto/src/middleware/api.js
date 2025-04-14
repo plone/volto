@@ -236,7 +236,7 @@ const apiMiddlewareFactory =
             });
           }
           if (type === GET_CONTENT) {
-            const lang = result?.language?.token;
+            const lang = result?.language?.token ?? config.settings.defaultLanguage;
             if (
               lang &&
               state.intl.locale !== toReactIntlLang(lang) &&
