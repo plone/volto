@@ -1,6 +1,6 @@
 # `@plone/plate`
 
-This package is an add-on providing the Seven plate.js integration.
+This package is an add-on providing the Seven [Plate](https://platejs.org/) integration.
 
 > [!WARNING]
 > This package or app is experimental.
