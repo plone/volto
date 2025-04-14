@@ -51,6 +51,9 @@ describe('App', () => {
         locale: 'en',
         messages: {},
       },
+      site: {
+        data: { 'plone.default_language': 'en' },
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
