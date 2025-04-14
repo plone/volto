@@ -60,21 +60,17 @@ describe('Object Browser Tests', () => {
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
-    cy.get('.toolbar-inner button.ui.basic.icon.button').click();
+    cy.findByLabelText('Pick an existing image').click();
     cy.findByLabelText('Search SVG').click();
     cy.window()
       .its('env.apiPath')
       .then((apiPath) => {
         cy.get('.ui.input.search').type(`${apiPath}`);
       });
-    cy.get('ul')
-      .get('li')
-      .first()
-      .get('span')
-      .get('span')
-      .get('img')
+    cy.findByLabelText('List View').click();
+    cy.get('.sidebar-image-icon')
       .should('have.attr', 'src')
-      .and('eq', '/static/media/Logo.16e25cdf.svg');
+      .and('contains', '/my-searchable-image/@@images/image');
   });
 
   it('As editor I can add the full url in search box in sidebar', () => {
