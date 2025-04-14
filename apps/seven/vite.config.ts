@@ -20,6 +20,9 @@ export default defineConfig({
     reactRouter(),
     tsconfigPaths(),
   ],
+  ssr: {
+    noExternal: ['katex', '@udecode/plate-math', 'react-tweet'],
+  },
   server: {
     port: 3000,
     fs: {
