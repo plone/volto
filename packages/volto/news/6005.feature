@@ -1,1 +1,0 @@
-Complete missing german translations. @ksuess
