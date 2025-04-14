@@ -3,7 +3,7 @@ import { ploneAuth } from '../../../tooling/cypress/support/constants';
 describe('Login Route Tests', () => {
   beforeEach(() => {
     cy.visit('/login');
-    cy.contains('Log in');
+    cy.contains('Sign in');
   });
 
   it('As registered user I can login', function () {

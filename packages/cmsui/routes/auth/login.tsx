@@ -8,7 +8,9 @@ import {
 
 import { redirectIfLoggedInLoader, setAuthOnResponse } from './auth';
 import { Button } from '@plone/components/tailwind';
-import { TextField } from '@plone/components';
+import { TextField } from '../../components/TextField/TextField';
+import ploneSvg from '../../static/plone-white.svg';
+import ArrowRightSVG from '@plone/components/icons/arrow-right.svg?react';
 
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
@@ -31,55 +33,57 @@ export async function action({ request }: ActionFunctionArgs) {
     })
     .method() as PloneClient;
 
-  const { data: loginData } = await cli.login({ username, password });
-
-  if (!loginData.token) {
-    return data(
-      { ok: false, errors: { password: 'Invalid credentials' } },
-      400,
-    );
+  try {
+    const { data } = await cli.login({ username, password });
+    const response = redirect('/');
+    return setAuthOnResponse(response, data.token);
+  } catch (error) {
+    return error;
   }
-
-  const response = redirect('/');
-  return setAuthOnResponse(response, loginData.token);
 }
 
 export default function Login() {
   const actionResult = useActionData<typeof action>();
 
   return (
-    <div className="mt-20 flex min-h-full flex-1 flex-col sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
+    <div className="mx-4 flex h-screen flex-1 flex-col justify-center">
+      <div className="flex flex-col items-center sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-quanta-sapphire flex h-32 w-32 flex-col items-center rounded-full p-8">
+          <img src={ploneSvg} alt="" />
+        </div>
         <h2
           id="login-header"
-          className="mt-6 text-center text-2xl leading-9 font-bold tracking-tight text-gray-900"
+          className="mt-6 text-center text-2xl leading-8 font-bold tracking-wide text-gray-900"
         >
-          Log in
+          Sign in
         </h2>
       </div>
 
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
-        <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
+      <div className="mx-auto mt-11 w-full max-w-[360px]">
+        <div className="bg-quanta-air">
           <Form className="space-y-6" method="post">
-            <TextField
-              label="username"
-              name="username"
-              aria-describedby={
-                actionResult?.errors?.email ? 'email-error' : 'login-header'
-              }
-              isRequired
-            />
+            <TextField label="username" name="username" isRequired />
             <TextField
               label="password"
               name="password"
               type="password"
               autoComplete="current-password"
-              aria-describedby="password-error"
               isRequired
+              isInvalid={actionResult?.status === 401}
+              errorMessage={
+                actionResult?.status === 401
+                  ? actionResult?.data?.error.message
+                  : undefined
+              }
             />
 
-            <Button variant="primary" type="submit" aria-label="Sign in">
-              Sign in
+            <Button
+              className="float-end"
+              variant="primary"
+              type="submit"
+              aria-label="Sign in"
+            >
+              <ArrowRightSVG />
             </Button>
           </Form>
         </div>
