@@ -41,6 +41,8 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import expandSVG from '@plone/volto/icons/left-key.svg';
 
+import Image from '@plone/volto/components/theme/Image/Image';
+
 const messages = defineMessages({
   placeholder: {
     id: 'Paste or search for link',
@@ -107,7 +109,8 @@ const LinkForm = ({
   data,
   reactSelect,
   isObjectBrowserOpen,
-  objectBrowserPickerType = 'link',
+  // TODO: find out if suggestions should be filtered by type before showing
+  // objectBrowserPickerType = 'link',
   placeholder,
   onChangeValue,
   onOverrideContent,
@@ -192,49 +195,32 @@ const LinkForm = ({
     return label.includes(searchInput);
   };
 
+  // TODO: Suggestions will require a type mapping of icons if it goes without a type filter
   const filteredSuggestions = useMemo(() => {
     const suggestions =
-      content
-        .filter(
-          (item) =>
-            item['@type'].toLowerCase() ===
-            objectBrowserPickerType.toLowerCase(),
-        )
-        .map((item) => {
-          return {
-            label: item.title,
-            value: item['@id'],
-            src: `${item['@id']}/@@images/image/preview`,
-            path: item.getPath
-              .split('/')
-              .filter(Boolean)
-              .slice(1, -1)
-              .join('/'),
-          };
-        }) || [];
+      content.map((item) => {
+        return {
+          label: item.title,
+          value: item['@id'],
+          src: `${item['@id']}/@@images/image/preview`,
+          path: item.getPath.split('/').filter(Boolean).slice(1, -1).join('/'),
+        };
+      }) || [];
 
     return (
       suggestions
         ?.filter((option) => link === '' || filterOption(option, link))
         ?.slice(0, 5) || []
     );
-  }, [link, content, objectBrowserPickerType]);
+  }, [link, content]);
 
   const formatOptionLabel = ({ label, path, src }) => (
     <div className="link-suggestion-container">
-      {src && (
-        <img
-          className="link-suggestion-image"
-          src={src}
-          alt={label}
-          style={{
-            width: 50,
-            height: 50,
-          }}
-        />
-      )}
+      <div className="link-suggestion-image">
+        <Image className="link-suggestion-image-src" src={src} alt={label} />
+      </div>
       <div className="link-suggestion-content">
-        <div className="link-suggestion-label">{label} </div>
+        <div className="link-suggestion-label">{label}</div>
         <div className="link-suggestion-path">{path}</div>
       </div>
     </div>
