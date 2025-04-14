@@ -83,6 +83,7 @@ const Register = () => {
     const { fullname, email } = data;
     dispatch(
       createUser({
+        username: email,
         fullname: fullname,
         email: email,
         sendPasswordReset: true,
