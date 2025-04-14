@@ -1,18 +1,18 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Settings renders block settings form without schema enhancers 1`] = `
+exports[`Settings > renders block settings form without schema enhancers 1`] = `
 <div>
   <div
     data-schema="{
-  \\"fieldsets\\": [
+  "fieldsets": [
     {
-      \\"title\\": \\"Default\\",
-      \\"id\\": \\"default\\",
-      \\"fields\\": []
+      "title": "Default",
+      "id": "default",
+      "fields": []
     }
   ],
-  \\"properties\\": {},
-  \\"required\\": []
+  "properties": {},
+  "required": []
 }"
     id="BlockDataForm"
   />

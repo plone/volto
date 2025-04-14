@@ -1,5 +1,0 @@
-The `getVocabulary` and `getQuerystring` actions now fetch vocabularies in
-the context of the current content item, using the vocabulary URLs provided
-by the backend.
-Previously they were always fetched at the Plone site root.
-@davisagli

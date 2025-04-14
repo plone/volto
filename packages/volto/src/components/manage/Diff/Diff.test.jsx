@@ -6,15 +6,21 @@ import { waitFor, render, screen } from '@testing-library/react';
 
 import Diff from './Diff';
 
+import { vi, beforeAll } from 'vitest';
+
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
 
 describe('Diff', () => {
   it('renders a diff component', async () => {
