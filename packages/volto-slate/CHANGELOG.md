@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 18.3.0 (2025-04-12)
+
+### Feature
+
+- Added Basque translations. @ionlizarazu [#6884](https://github.com/plone/volto/issues/6884)
+
+### Bugfix
+
+- Call `initialValue` consistently by passing `null` instead of `{}` to `blocksConfig`. @Abhishek-17h [#6952](https://github.com/plone/volto/issues/6952)
+
 ## 18.2.3 (2025-03-07)
 
 ### Bugfix
