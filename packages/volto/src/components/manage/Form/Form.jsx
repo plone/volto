@@ -57,6 +57,39 @@ import { setFormData, setUIState } from '@plone/volto/actions/form/form';
 import { compose } from 'redux';
 import config from '@plone/volto/registry';
 import SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRenderer';
+import { atom, useAtom } from 'jotai';
+
+const formAtom = atom({});
+
+/**
+ * Form wrapper component.
+ * This is a Higher-Order Component (HOC) that wraps the Form component in order to
+ * be able to use a Jotai atom for global form data management.
+ * @param {Object} WrappedComponent Component to be wrapped.
+ * @returns {Function} Component.
+ */
+const FormWrapper = (WrappedComponent) => {
+  /**
+   * Render method.
+   * @returns {JSX} Markup for the component.
+   */
+
+  return (props) => {
+    // You can add additional functionality here
+    // For example: state management, data fetching, etc.
+    // Return the wrapped component with all props passed through
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [formData, setFormData] = useAtom(formAtom);
+    return (
+      <WrappedComponent
+        {...props}
+        setFormData={setFormData}
+        formData2={formData}
+      />
+    );
+  };
+};
 
 /**
  * Form container class.
@@ -724,6 +757,11 @@ class Form extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    console.log(
+      'Global form Jotai Atom data',
+      this.props.formData2.blocks?.['09bd0162-397d-4141-983d-8f03ac2c481c']
+        ?.plaintext,
+    );
     const { settings } = config;
     const {
       schema: originalSchema,
@@ -1118,6 +1156,7 @@ class Form extends Component {
 const FormIntl = injectIntl(Form, { forwardRef: true });
 
 export default compose(
+  FormWrapper,
   connect(
     (state, props) => ({
       content: state.content.data,
@@ -1129,7 +1168,7 @@ export default compose(
     {
       setMetadataFieldsets,
       setSidebarTab,
-      setFormData,
+      // setFormData,
       setUIState,
       resetMetadataFocus,
     },
