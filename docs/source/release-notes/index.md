@@ -17,6 +17,17 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.12.1 (2025-04-15)
+
+### Bugfix
+
+- Fixed broken tests in add-ons in Volto 18.12.0. @Abhishek-17h [#6989](https://github.com/plone/volto/issues/6989)
+
+### Internal
+
+- Removes make commands in root of repository whose packages no longer exist. @wesleybl [#6975](https://github.com/plone/volto/issues/6975)
+- Use `Image` from `@plone/volto/components/theme/Image/Image` instead of `semantic-ui-react` in `ContentsUploadModal`. @wesleybl [#6982](https://github.com/plone/volto/issues/6982)
+
 ## 18.12.0 (2025-04-12)
 
 ### Feature
