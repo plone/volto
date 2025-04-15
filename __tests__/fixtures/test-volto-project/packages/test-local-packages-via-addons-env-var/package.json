@@ -1,4 +1,0 @@
-{
-  "name": "test-local-packages-via-addons-env-var",
-  "main": "src/index.js"
-}
