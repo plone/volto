@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.3.3 (2025-04-15)
+
+### Bugfix
+
+- Fix boolean in blocks edit config BlockEditProps in key selected type. @sneridagh [#6994](https://github.com/plone/volto/issues/6994)
+
 ## 1.3.2 (2025-02-08)
 
 ### Internal
