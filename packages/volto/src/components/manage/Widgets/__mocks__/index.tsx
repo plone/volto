@@ -1,5 +1,3 @@
-import { vi } from 'vitest';
-
 export const AlignWidget = vi.fn(() => <div id="AlignWidget" />);
 export const ButtonsWidget = vi.fn(() => <div id="ButtonsWidget" />);
 export const ArrayWidget = vi.fn(() => <div id="ArrayWidget" />);
