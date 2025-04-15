@@ -14,6 +14,9 @@ import { withRouter } from 'react-router';
 import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch, shallowEqual, connect } from 'react-redux';
 import { compose } from 'redux';
+import linkSVG from '@plone/volto/icons/link.svg';
+import fileSVG from '@plone/volto/icons/file.svg';
+import imageSVG from '@plone/volto/icons/image.svg';
 
 import { useIntl, defineMessages, injectIntl } from 'react-intl';
 
@@ -40,8 +43,6 @@ import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import expandSVG from '@plone/volto/icons/left-key.svg';
-
-import Image from '@plone/volto/components/theme/Image/Image';
 
 const messages = defineMessages({
   placeholder: {
@@ -108,10 +109,8 @@ const styles = {
 const LinkForm = ({
   data,
   reactSelect,
-  isObjectBrowserOpen,
-  // TODO: find out if suggestions should be filtered by type before showing
-  // objectBrowserPickerType = 'link',
   placeholder,
+  filterSuggestionByType,
   onChangeValue,
   onOverrideContent,
   onClear,
@@ -195,29 +194,48 @@ const LinkForm = ({
     return label.includes(searchInput);
   };
 
-  // TODO: Suggestions will require a type mapping of icons if it goes without a type filter
+  /**
+   * Map suggestion icons by suggestion type
+   * @param {string} iconType
+   * @returns iconSVG
+   */
+  const formatIconByType = (iconType) => {
+    if (iconType === 'Document') {
+      return fileSVG;
+    }
+
+    if (iconType === 'Image') {
+      return imageSVG;
+    }
+
+    return linkSVG;
+  };
+
   const filteredSuggestions = useMemo(() => {
-    const suggestions =
-      content.map((item) => {
-        return {
-          label: item.title,
-          value: item['@id'],
-          src: `${item['@id']}/@@images/image/preview`,
-          path: item.getPath.split('/').filter(Boolean).slice(1, -1).join('/'),
-        };
-      }) || [];
+    const suggestions = content
+      .filter((item) => {
+        if (filterSuggestionByType) {
+          return item['@type'] === filterSuggestionByType;
+        }
+        return item;
+      })
+      .map((item) => ({
+        label: item.title,
+        value: item['@id'],
+        src: `${item['@id']}/@@images/image/preview`,
+        path: item.getPath.split('/').filter(Boolean).slice(1, -1).join('/'),
+        icon: formatIconByType(item['@type']),
+      }));
 
-    return (
-      suggestions
-        ?.filter((option) => link === '' || filterOption(option, link))
-        ?.slice(0, 5) || []
-    );
-  }, [link, content]);
+    return suggestions
+      ?.filter((option) => link === '' || filterOption(option, link))
+      ?.slice(0, 5);
+  }, [filterSuggestionByType, link, content]);
 
-  const formatOptionLabel = ({ label, path, src }) => (
+  const formatOptionLabel = ({ label, path, src, icon }) => (
     <div className="link-suggestion-container">
-      <div className="link-suggestion-image">
-        <Image className="link-suggestion-image-src" src={src} alt={label} />
+      <div className="link-suggestion-preview">
+        <Icon name={icon} size="24px" />
       </div>
       <div className="link-suggestion-content">
         <div className="link-suggestion-label">{label}</div>
@@ -280,7 +298,7 @@ const LinkForm = ({
         return;
       }
 
-      if (linkFormContainer.current && isObjectBrowserOpen) {
+      if (linkFormContainer.current && filterSuggestionByType) {
         return;
       }
 
@@ -290,7 +308,7 @@ const LinkForm = ({
     document.addEventListener('mousedown', handleClickOutside);
 
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [onOverrideContent, isObjectBrowserOpen, onClose]);
+  }, [onOverrideContent, filterSuggestionByType, onClose]);
 
   return (
     <div
