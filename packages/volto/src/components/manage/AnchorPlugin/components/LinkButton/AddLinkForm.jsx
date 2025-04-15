@@ -1,4 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { compose } from 'redux';
 import { withRouter } from 'react-router';
@@ -60,38 +66,47 @@ function AddLinkForm({
     },
   });
 
-  const onClose = () => onOverrideContent(undefined);
+  const onClose = useCallback(
+    () => onOverrideContent(undefined),
+    [onOverrideContent],
+  );
 
-  const onChange = (value, clear) => {
-    let preprocessedValue = value;
+  const onChange = useCallback(
+    (value, clear) => {
+      let preprocessedValue = value;
 
-    if (!clear) {
-      if (isInvalid && URLUtils.isUrl(URLUtils.normalizeUrl(value))) {
-        setIsInvalid(false);
+      if (!clear) {
+        if (isInvalid && URLUtils.isUrl(URLUtils.normalizeUrl(value))) {
+          setIsInvalid(false);
+        }
+
+        if (isInternalURL(value)) {
+          setVal(flattenToAppURL(value));
+        }
       }
 
-      if (isInternalURL(value)) {
-        setVal(flattenToAppURL(value));
-      }
-    }
+      setVal(preprocessedValue);
 
-    setVal(preprocessedValue);
+      if (clear) onClear();
+    },
+    [isInvalid, onClear],
+  );
 
-    if (clear) onClear();
-  };
+  const handleClickOutside = useCallback(
+    (e) => {
+      if (
+        linkFormContainer.current &&
+        doesNodeContainClick(linkFormContainer.current, e)
+      )
+        return;
+      if (linkFormContainer.current && isObjectBrowserOpen) return;
 
-  const handleClickOutside = (e) => {
-    if (
-      linkFormContainer.current &&
-      doesNodeContainClick(linkFormContainer.current, e)
-    )
-      return;
-    if (linkFormContainer.current && isObjectBrowserOpen) return;
+      onClose();
+    },
+    [isObjectBrowserOpen, onClose],
+  );
 
-    onClose();
-  };
-
-  const onSubmit = () => {
+  const onSubmit = useCallback(() => {
     let url = val;
 
     const checkedURL = URLUtils.checkAndNormalizeUrl(url);
@@ -105,23 +120,26 @@ function AddLinkForm({
 
     onChangeValue(editorStateUrl);
     onClose();
-  };
+  }, [onChangeValue, onClose, val]);
 
-  const onKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      e.stopPropagation();
-      onSubmit();
-    } else if (e.key === 'Escape') {
-      e.preventDefault();
-      onClose();
-    }
-  };
+  const onKeyDown = useCallback(
+    (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        e.stopPropagation();
+        onSubmit();
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        onClose();
+      }
+    },
+    [onSubmit, onClose],
+  );
 
-  const clear = () => {
+  const clear = useCallback(() => {
     setVal('');
     onClear();
-  };
+  }, [setVal, onClear]);
 
   const className = useMemo(
     () =>
@@ -136,13 +154,13 @@ function AddLinkForm({
   );
 
   useEffect(() => {
-    setTimeout(() => inputRef.current.focus(), 50);
+    setTimeout(() => inputRef?.current?.focus(), 50);
     document.addEventListener('mousedown', handleClickOutside, false);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside, false);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isObjectBrowserOpen]);
 
   useEffect(() => {
     setVal(
