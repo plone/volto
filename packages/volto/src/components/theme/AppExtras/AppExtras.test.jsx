@@ -3,8 +3,6 @@ import renderer from 'react-test-renderer';
 import config from '@plone/volto/registry';
 import AppExtras from './AppExtras';
 
-import { vi } from 'vitest';
-
 beforeAll(() => {
   config.settings.appExtras = [
     {
