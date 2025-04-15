@@ -1,6 +1,5 @@
 import React from 'react';
 import config from '@plone/volto/registry';
-import { vi } from 'vitest';
 const loadables = config.settings.loadables;
 
 let mockAllLoadables = Object.create(null);

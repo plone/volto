@@ -6,8 +6,6 @@ import { waitFor, render, screen } from '@testing-library/react';
 
 import Diff from './Diff';
 
-import { vi, beforeAll } from 'vitest';
-
 const mockStore = configureStore();
 
 vi.mock('../Toolbar/Toolbar', () => ({
