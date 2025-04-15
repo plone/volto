@@ -1,4 +1,28 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`StaticTextWidget > renders a static text view widget component 1`] = `
+<p
+  className="metadata statictext widget"
+  dangerouslySetInnerHTML={
+    {
+      "__html": "<b>Foo bar</b>",
+    }
+  }
+/>
+`;
+
+exports[`StaticTextWidget > renders a static text view widget component with children 1`] = `
+<p
+  className="metadata statictext widget"
+  dangerouslySetInnerHTML={
+    {
+      "__html": "<b>Foo bar</b>",
+    }
+  }
+/>
+`;
+
+exports[`StaticTextWidget > renders an empty static text view widget component 1`] = `null`;
 
 exports[`StaticTextWidget renders a static text view widget component 1`] = `
 <p

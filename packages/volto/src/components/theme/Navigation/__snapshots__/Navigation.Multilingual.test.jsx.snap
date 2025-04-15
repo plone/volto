@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Navigation Multilingual renders a navigation component with an active item 1`] = `
+exports[`Navigation Multilingual > renders a navigation component with an active item 1`] = `
 <nav
   aria-label="Site"
   className="navigation"
@@ -43,7 +43,7 @@ exports[`Navigation Multilingual renders a navigation component with an active i
       className="item active"
       href="/en/blog"
       onClick={[Function]}
-      style={Object {}}
+      style={{}}
     >
       Blog
     </a>
@@ -59,7 +59,7 @@ exports[`Navigation Multilingual renders a navigation component with an active i
 </nav>
 `;
 
-exports[`Navigation Multilingual renders a navigation component with an active item when its subchildren are accessed 1`] = `
+exports[`Navigation Multilingual > renders a navigation component with an active item when its subchildren are accessed 1`] = `
 <nav
   aria-label="Site"
   className="navigation"
@@ -102,7 +102,7 @@ exports[`Navigation Multilingual renders a navigation component with an active i
       className="item active"
       href="/en/blog"
       onClick={[Function]}
-      style={Object {}}
+      style={{}}
     >
       Blog
     </a>
@@ -118,7 +118,7 @@ exports[`Navigation Multilingual renders a navigation component with an active i
 </nav>
 `;
 
-exports[`Navigation Multilingual renders a navigation component with only one active item even if there are similar item names 1`] = `
+exports[`Navigation Multilingual > renders a navigation component with only one active item even if there are similar item names 1`] = `
 <nav
   aria-label="Site"
   className="navigation"
@@ -161,7 +161,7 @@ exports[`Navigation Multilingual renders a navigation component with only one ac
       className="item active"
       href="/en/blog"
       onClick={[Function]}
-      style={Object {}}
+      style={{}}
     >
       Blog
     </a>
@@ -185,7 +185,7 @@ exports[`Navigation Multilingual renders a navigation component with only one ac
 </nav>
 `;
 
-exports[`Navigation Multilingual renders a navigation component without active items 1`] = `
+exports[`Navigation Multilingual > renders a navigation component without active items 1`] = `
 <nav
   aria-label="Site"
   className="navigation"

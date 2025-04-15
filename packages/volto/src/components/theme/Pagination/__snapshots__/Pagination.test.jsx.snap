@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Pagination renders no pagination when only 1 page 1`] = `
+exports[`Pagination > renders no pagination when only 1 page 1`] = `
 <div
   className="ui secondary attached menu"
 >
@@ -15,20 +15,20 @@ exports[`Pagination renders no pagination when only 1 page 1`] = `
       <svg
         className="icon"
         dangerouslySetInnerHTML={
-          Object {
-            "__html": undefined,
+          {
+            "__html": "<polygon fill-rule="evenodd" points="21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18"/>",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "currentColor",
             "height": "23px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
     </a>
     <a
@@ -42,7 +42,7 @@ exports[`Pagination renders no pagination when only 1 page 1`] = `
 </div>
 `;
 
-exports[`Pagination renders page size options when specified 1`] = `
+exports[`Pagination > renders page size options when specified 1`] = `
 <div
   className="ui secondary attached menu"
 >
@@ -57,20 +57,20 @@ exports[`Pagination renders page size options when specified 1`] = `
       <svg
         className="icon"
         dangerouslySetInnerHTML={
-          Object {
-            "__html": undefined,
+          {
+            "__html": "<polygon fill-rule="evenodd" points="21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18"/>",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "currentColor",
             "height": "23px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
     </a>
     <a
@@ -116,7 +116,7 @@ exports[`Pagination renders page size options when specified 1`] = `
 </div>
 `;
 
-exports[`Pagination renders pagination when multiple pages are specified 1`] = `
+exports[`Pagination > renders pagination when multiple pages are specified 1`] = `
 <div
   className="ui secondary attached menu"
 >
@@ -131,20 +131,20 @@ exports[`Pagination renders pagination when multiple pages are specified 1`] = `
       <svg
         className="icon"
         dangerouslySetInnerHTML={
-          Object {
-            "__html": undefined,
+          {
+            "__html": "<polygon fill-rule="evenodd" points="21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18"/>",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "currentColor",
             "height": "23px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
     </a>
     <a
@@ -216,20 +216,20 @@ exports[`Pagination renders pagination when multiple pages are specified 1`] = `
       <svg
         className="icon"
         dangerouslySetInnerHTML={
-          Object {
-            "__html": undefined,
+          {
+            "__html": "<polygon fill-rule="evenodd" points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"/>",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "currentColor",
             "height": "23px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
     </a>
   </div>

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ContextNavigation renders a navigation component with an active item 1`] = `
+exports[`ContextNavigation > renders a navigation component with an active item 1`] = `
 <div>
   <nav
     class="context-navigation"
@@ -47,9 +47,14 @@ exports[`ContextNavigation renders a navigation component with an active item 1`
               <svg
                 class="icon"
                 style="height: 30px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
-              />
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polygon
+                  fill-rule="evenodd"
+                  points="21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18"
+                />
+              </svg>
             </div>
           </a>
         </div>
@@ -74,7 +79,7 @@ exports[`ContextNavigation renders a navigation component with an active item 1`
 </div>
 `;
 
-exports[`ContextNavigation renders a navigation component with an active item when its subchildren are accessed 1`] = `
+exports[`ContextNavigation > renders a navigation component with an active item when its subchildren are accessed 1`] = `
 <div>
   <nav
     class="context-navigation"
@@ -139,9 +144,14 @@ exports[`ContextNavigation renders a navigation component with an active item wh
               <svg
                 class="icon"
                 style="height: 30px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
-              />
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polygon
+                  fill-rule="evenodd"
+                  points="21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18"
+                />
+              </svg>
             </div>
           </a>
         </div>
@@ -151,9 +161,9 @@ exports[`ContextNavigation renders a navigation component with an active item wh
 </div>
 `;
 
-exports[`ContextNavigation renders a navigation component with only one active item even if there are similar item names 1`] = `<div />`;
+exports[`ContextNavigation > renders a navigation component with only one active item even if there are similar item names 1`] = `<div />`;
 
-exports[`ContextNavigation renders a navigation slot component without active items 1`] = `
+exports[`ContextNavigation > renders a navigation slot component without active items 1`] = `
 <div>
   <nav
     class="context-navigation"
