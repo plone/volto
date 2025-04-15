@@ -9,6 +9,7 @@ import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { Form } from '@plone/volto/components/manage/Form';
 import { createUser } from '@plone/volto/actions/users/users';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   title: {
@@ -26,6 +27,14 @@ const messages = defineMessages({
   fullnameDescription: {
     id: 'Enter full name, e.g. John Smith.',
     defaultMessage: 'Enter full name, e.g. John Smith.',
+  },
+  usernameTitle: {
+    id: 'Username',
+    defaultMessage: 'Username',
+  },
+  usernameDescription: {
+    id: 'Enter your username.',
+    defaultMessage: 'Enter your username.',
   },
   emailTitle: {
     id: 'E-mail',
@@ -63,6 +72,7 @@ const Register = () => {
   const history = useHistory();
   const [errors, setError] = useState(null);
   const { loaded, loading, error } = useUsers();
+  const useEmailAsLogin = config.settings.use_email_as_login; // Default to true if not specified
 
   const prevloading = usePrevious(loading);
 
@@ -80,10 +90,10 @@ const Register = () => {
   }, [intl, history, loaded, prevloading]);
 
   const onSubmit = (data) => {
-    const { fullname, email } = data;
+    const { fullname, email, username = '' } = data;
     dispatch(
       createUser({
-        username: email,
+        username: useEmailAsLogin ? email : username,
         fullname: fullname,
         email: email,
         sendPasswordReset: true,
@@ -91,6 +101,12 @@ const Register = () => {
     );
     setError(null);
   };
+
+  // Determine which fields should be included in the form
+  const formFields = useEmailAsLogin
+    ? ['fullname', 'email']
+    : ['fullname', 'username', 'email'];
+  const requiredFields = [...formFields]; // All fields are required
 
   return (
     <div id="page-register">
@@ -106,7 +122,7 @@ const Register = () => {
             {
               id: 'default',
               title: intl.formatMessage(messages.default),
-              fields: ['fullname', 'email'],
+              fields: formFields,
             },
           ],
           properties: {
@@ -115,13 +131,18 @@ const Register = () => {
               title: intl.formatMessage(messages.fullnameTitle),
               description: intl.formatMessage(messages.fullnameDescription),
             },
+            username: {
+              type: 'string',
+              title: intl.formatMessage(messages.usernameTitle),
+              description: intl.formatMessage(messages.usernameDescription),
+            },
             email: {
               type: 'string',
               title: intl.formatMessage(messages.emailTitle),
               description: intl.formatMessage(messages.emailDescription),
             },
           },
-          required: ['fullname', 'email'],
+          required: requiredFields,
         }}
       />
     </div>
