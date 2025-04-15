@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Forbidden > renders a not found component 1`] = `
+<div
+  className="ui container view-wrapper"
+>
+  <h1>
+    Forbidden
+  </h1>
+  <p
+    className="description"
+  >
+    We apologize for the inconvenience, but you don't have permissions on this resource.
+  </p>
+</div>
+`;

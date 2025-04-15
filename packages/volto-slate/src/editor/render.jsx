@@ -3,11 +3,15 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useIntl } from 'react-intl';
+import { useSelector } from 'react-redux';
 import { Node, Text } from 'slate';
 import cx from 'classnames';
-import { isEmpty, omit } from 'lodash';
-import { UniversalLink, Toast } from '@plone/volto/components';
-import { messages, addAppURL } from '@plone/volto/helpers';
+import isEmpty from 'lodash/isEmpty';
+import omit from 'lodash/omit';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import { addAppURL } from '@plone/volto/helpers/Url/Url';
 import useClipboard from '@plone/volto/hooks/clipboard/useClipboard';
 import config from '@plone/volto/registry';
 import linkSVG from '@plone/volto/icons/link.svg';
@@ -168,19 +172,19 @@ export const renderLinkElement = (tagName) => {
     const Tag = tagName;
     const slug = attributes.id || '';
     const location = useLocation();
+    const token = useSelector((state) => state.userSession.token);
     const appPathname = addAppURL(location.pathname);
     // eslint-disable-next-line no-unused-vars
     const [copied, copy, setCopied] = useClipboard(
       appPathname.concat(`#${slug}`),
     );
     const intl = useIntl();
-
-    return slate.useLinkedHeadings === false ? (
-      <Tag {...attributes} className={className}>
+    return !token || slate.useLinkedHeadings === false ? (
+      <Tag {...attributes} className={className} tabIndex={0}>
         {children}
       </Tag>
     ) : (
-      <Tag {...attributes} className={className}>
+      <Tag {...attributes} className={className} tabIndex={0}>
         {children}
         {mode === 'view' && slug && (
           <UniversalLink
@@ -189,6 +193,14 @@ export const renderLinkElement = (tagName) => {
             tabIndex={-1}
             href={`#${slug}`}
           >
+            <style>
+              {/* Prettify the unstyled flash of the link icon on development */}
+              {`
+              a.anchor svg {
+                height: var(--anchor-svg-height, 24px);
+              }
+              `}
+            </style>
             <svg
               {...linkSVG.attributes}
               dangerouslySetInnerHTML={{ __html: linkSVG.content }}

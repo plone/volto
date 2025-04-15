@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`RichTextWidget > renders a rich text view widget component 1`] = `
+<p
+  className="metadata richtext widget"
+  dangerouslySetInnerHTML={
+    {
+      "__html": "<b>Foo bar</b>",
+    }
+  }
+/>
+`;
+
+exports[`RichTextWidget > renders a rich text view widget component with children 1`] = `
+<p
+  className="metadata richtext widget"
+  dangerouslySetInnerHTML={
+    {
+      "__html": "<b>Foo bar</b>",
+    }
+  }
+/>
+`;
+
+exports[`RichTextWidget > renders an empty rich text view widget component 1`] = `null`;

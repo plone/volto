@@ -11,13 +11,20 @@ myst:
 
 # Contributing to Volto
 
+```{important}
+The Volto Team has suspended its review of new pull requests from first-time contributors until the [release of Plone 7](https://plone.org/download/release-schedule), which is preliminarily scheduled for the second quarter of 2026.
+This will allow the Volto Team to focus its efforts on delivering the next generation of Plone in a timely manner.
+
+The Plone community welcomes contributions to {doc}`Plone 6 Documentation <plone:contributing/documentation/index>` or other {doc}`Plone <plone:contributing/index>` packages.
+```
+
 First read {doc}`plone:contributing/index`.
 Volto follows those guidelines with a few specific variations, as described in this chapter.
 
 
 (contributing-reporting-an-issue-or-making-a-feature-request-label)=
 
-## Reporting an issue or making a feature request
+## Report an issue or make a feature request
 
 If you know the issue or feature request is for Volto, first search for an existing item in the [Volto issue tracker](https://github.com/plone/volto/issues).
 
@@ -44,8 +51,15 @@ The Volto Team reviews pull requests only from people with a GitHub account who 
 
 ## Branch policy
 
-```{include} ./branch-policy.md
+```{include} ../_inc/_branch-policy.md
 ```
+
+
+(contributing-install-volto-for-development-label)=
+
+## Install Volto for development
+
+For developing Volto, follow {doc}`developing-core`.
 
 
 (contributing-translations-label)=
@@ -53,7 +67,17 @@ The Volto Team reviews pull requests only from people with a GitHub account who 
 ## Translations
 
 All text that can be shown in a browser must be translatable.
-Please mark all such strings as translatable as defined in the [i18n guide](../recipes/i18n.md).
+Please mark all such strings as translatable as defined in {doc}`../development/i18n`.
+
+
+(contributing-branch-policy-for-translations-label)=
+
+### Branch policy for translations
+
+Due to the nature of `main` and numbered released branches, some developments that may land in `main` may not be backported to these branches.
+This means that many translations that may come with those developments will be useless in the released branches, thus backporting them makes no sense.
+
+When contributing translations, please create a branch from the numbered released branch, and point your pull request to that branch, instead of `main`.
 
 
 (contributing-change-log-entry-label)=
@@ -70,9 +94,9 @@ For details see {ref}`contributing-change-log-label`.
 
 (contributing-documenting-your-changes-label)=
 
-## Documenting your changes
+## Document breaking changes
 
-If the feature includes a breaking change, you must include instructions for how to upgrade in the [upgrade guide](../upgrade-guide/index.md).
+If the feature includes a breaking change, you must include instructions for how to upgrade in the {doc}`../upgrade-guide/index`.
 
 
 (contributing-code-quality-label)=
@@ -87,37 +111,33 @@ Specifically:
 -   {doc}`./linting`
 -   {doc}`./testing`
 -   {doc}`./acceptance-tests`
+-   {doc}`./documentation`
 
 
 (contributing-developer-guidelines-label)=
 
 ## Developer guidelines
 
-Development and configuration of Volto is managed through your {ref}`choice of Plone installation method <install-index-choose-installation-method-label>`.
-You may choose to install Plone via {ref}`containers <install-containers-label>` or from its {ref}`packages <install-packages-1-label>`.
-
-```{todo}
-When referring to installation and configuration of Plone's backend, this part of the Volto documentation may have obsolete content.
-The most current information for installing and configuring Plone is in {ref}`install-index-label`.
-Please report any issues in the [Volto issue tracker](https://github.com/plone/volto/issues/).
-```
-
 ```{toctree}
 :maxdepth: 1
 
+developing-core
 design-principles
 style-guide
 language-features
 linting
+testing
+acceptance-tests
+documentation
 react
 redux
 routing
 icons
-testing
-acceptance-tests
 accessibility-guidelines
+bundle-size-optimization
 typescript
 volto-core-addons
+version-policy
 ```
 
 

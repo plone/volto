@@ -31,7 +31,7 @@ Volto has to be 100% approachable by someone with zero Plone or Python knowledge
 is the main Volto principle.
 
 That means this someone has to be able to run, test and use Volto (and thus Plone), and
-ultimatelly customize a simple project without any problem and without having to touch
+ultimately customize a simple project without any problem and without having to touch
 Plone by any means or write a single line of Python nor implement a single Plone add-on
 product. This person has to be able of using only JavaScript to parameterize it.
 
@@ -93,7 +93,7 @@ cases where you do something in the backend or in the frontend.
 
 ## Frontend and backend are meant to be decoupled
 
-So let's them keep them decoupled.
+So let's keep them decoupled.
 
 In the future, while developing Volto and in our Volto projects, we will face a lot of
 decisions and answer questions like:
@@ -110,8 +110,3 @@ Volto is a frontend UI implementation of a CMS backend. We need to focus on this
 of focusing on the relationship with the backend(s). JS world advances quick, and we
 have to keep pace with it. React's own async (Suspense) mode it's on its way, and that
 will change enough things in React world and we have to keep up with these changes.
-
-## Semantic versioning
-
-Volto follows semantic versioning policy. So everybody can easily tell if a released
-version contains a breaking change, a feature or a minor fix.
