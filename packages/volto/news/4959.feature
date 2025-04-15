@@ -1,1 +1,0 @@
-Refactor Blocks/LeadImage/Edit component from class to functional component. @Tishasoumya-02

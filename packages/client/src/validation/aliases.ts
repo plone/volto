@@ -4,7 +4,7 @@ const itemSchema = z.object({
   path: z.string(),
 });
 
-export const createAliasesDataSchema = z.object({
+export const createAliasDataSchema = z.object({
   items: z.array(itemSchema),
 });
 
@@ -18,6 +18,6 @@ const rootItemSchema = z.object({
   'redirect-to': z.string(),
 });
 
-export const createAliasesMultipleDataSchema = z.object({
+export const createAliasesDataSchema = z.object({
   items: z.array(rootItemSchema),
 });

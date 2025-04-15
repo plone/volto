@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { SidebarPortal } from '@plone/volto/components';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import Data from './Data';
 import type { BlockEditProps } from '@plone/types';
 import { Input, Button } from 'semantic-ui-react';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 
 const InputBlockEdit = (props: BlockEditProps) => {

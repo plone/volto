@@ -1,1 +1,0 @@
-Refactor AlbumView from class to functional component. @Tishasoumya-02

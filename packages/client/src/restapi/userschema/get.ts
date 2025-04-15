@@ -1,23 +1,15 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
-import { GetUserschemaResponse } from '@plone/types';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type { GetUserschemaResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
-export type GetUserschemaArgs = {
-  config: PloneClientConfig;
-};
-
-export const getUserschema = async ({
-  config,
-}: GetUserschemaArgs): Promise<GetUserschemaResponse> => {
+export async function getUserschema(
+  this: PloneClient,
+): Promise<RequestResponse<GetUserschemaResponse>> {
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
 
   return apiRequest('get', '/@userschema', options);
-};
-
-export const getUserschemaQuery = ({ config }: GetUserschemaArgs) => ({
-  queryKey: ['get', 'userschema'],
-  queryFn: () => getUserschema({ config }),
-});
+}

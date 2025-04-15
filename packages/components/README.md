@@ -3,7 +3,7 @@
 [![NPM](https://img.shields.io/npm/v/@plone/components.svg)](https://www.npmjs.com/package/@plone/components)
 [![Build Status](https://github.com/plone/components/actions/workflows/code.yml/badge.svg)](https://github.com/plone/components/actions)
 [![Build Status](https://github.com/plone/components/actions/workflows/unit.yml/badge.svg)](https://github.com/plone/components/actions)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ff1f19ce-9b19-48f9-94a8-d533b53d4a9a/deploy-status)](https://app.netlify.com/sites/plone-components/deploys)
+[![Read the Docs documentation status](https://app.readthedocs.org/projects/plone-components/badge/)](https://plone-components.readthedocs.io/latest/)
 
 This package contains ReactJS components for using Plone as a headless CMS.
 
@@ -13,7 +13,7 @@ The purpose of this package is to provide an agnostic set of baseline components
 
 You can find the self-documented Storybook in:
 
-https://plone-components.netlify.app/
+https://plone-components.readthedocs.io/latest/
 
 `@plone/components` is based on [React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html), the documentation there applies also to all the components in this package.
 
@@ -62,11 +62,19 @@ Using them as a baseline will allow you to quickly build your theme around them.
 `@plone/components` basic styles provide a simple, yet powerful, set of tokenized custom CSS properties that will help you customize your own styles on the top of the basic styling.
 You can override them in your classes while maintaining them for others.
 
+### CSS layers
+
+This package uses CSS layers to style the components in a more flexible way.
+It uses the `plone-components` layer name to scope all the CSS declarations in the package.
+The basic styling uses the nested `plone-components.base` named layer.
+You can use the `plone-components` layer to override the basic styling, or use the `plone-components.base` layer to override the basic styling in a more specific way.
+
 ### Quanta
 
 This package also features the Quanta components.
-The Quanta theme is an example of it.
-These components use the basic styling as a baseline, not only in styling, but also in the component side, reusing the CSS and custom CSS properties in it.
+These components use the basic styling as a baseline, extending them to achieve the Quanta look and feel.
+They also extend the basic React components in a composable way.
+The Quanta styling is scoped in the `plone-components.quanta` named layer.
 
 Quanta is built upon the basic styles in an additive way.
 The use of the Quanta CSS implies using it upon basic styling.

@@ -21,8 +21,10 @@ These functions can be used in other use cases like command line helpers, script
 To install the Javascript Plone client run the following command:
 
 ```shell
-yarn add @plone/client
+pnpm add @plone/client
 ```
+
+or use your package manager of choice.
 
 ## `ploneClient` entry point
 

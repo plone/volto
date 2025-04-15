@@ -1,1 +1,0 @@
-Refactor Preference/PersonalInformation from Class to Functional component. @Tishasoumya-02

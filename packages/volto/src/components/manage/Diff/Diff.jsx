@@ -5,29 +5,31 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { filter, isEqual, map } from 'lodash';
+import filter from 'lodash/filter';
+import isEqual from 'lodash/isEqual';
+import map from 'lodash/map';
 import { Container, Button, Dropdown, Grid, Table } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 
-import { getDiff, getSchema, getHistory } from '@plone/volto/actions';
+import { getDiff } from '@plone/volto/actions/diff/diff';
+import { getSchema } from '@plone/volto/actions/schema/schema';
+import { getHistory } from '@plone/volto/actions/history/history';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import {
-  getBaseUrl,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
-} from '@plone/volto/helpers';
-import {
-  FormattedDate,
-  Icon,
-  Toolbar,
-  Unauthorized,
-} from '@plone/volto/components';
+} from '@plone/volto/helpers/Blocks/Blocks';
+import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 import DiffField from '@plone/volto/components/manage/Diff/DiffField';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -247,6 +249,7 @@ class Diff extends Component {
                 ],
                 (view) => (
                   <Button
+                    type="button"
                     key={view.id}
                     value={view.id}
                     active={this.props.view === view.id}

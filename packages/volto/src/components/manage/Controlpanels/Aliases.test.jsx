@@ -10,8 +10,10 @@ import { MemoryRouter } from 'react-router';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('@plone/volto/components/manage/Widgets');
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('@plone/volto/components/manage/Widgets');
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
 describe('Aliases', () => {
   it('renders an aliases control component', () => {
@@ -55,9 +57,41 @@ describe('Aliases', () => {
       },
       intl: {
         locale: 'en',
-        messages: {},
+        messages: {
+          Both: 'Both',
+          Automatically: 'Automatically',
+          Manually: 'Manually',
+        },
+      },
+      site: {
+        data: {
+          features: {
+            filter_aliases_by_date: true,
+          },
+        },
+      },
+      actions: {
+        actions: {},
+      },
+      userSession: {
+        token: null,
+      },
+      content: {
+        data: {},
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
+      types: {
+        types: [],
+        get: {
+          loading: false,
+          loaded: true,
+        },
       },
     });
+    store.dispatch = vi.fn(() => Promise.resolve());
     const { container } = render(
       <Provider store={store}>
         <MemoryRouter>

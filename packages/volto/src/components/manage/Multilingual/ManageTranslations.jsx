@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Container, Segment, Table } from 'semantic-ui-react';
-import { Helmet } from '@plone/volto/helpers';
-import { flattenToAppURL, getBaseUrl, langmap } from '@plone/volto/helpers';
-import { reduce } from 'lodash';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
+import reduce from 'lodash/reduce';
 import { Link, useLocation } from 'react-router-dom';
-import { Icon, Toast, Toolbar } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import config from '@plone/volto/registry';
 
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import {
   deleteLinkTranslation,
-  getContent,
   linkTranslation,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/translations/translations';
+import { getContent } from '@plone/volto/actions/content/content';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { createPortal } from 'react-dom';

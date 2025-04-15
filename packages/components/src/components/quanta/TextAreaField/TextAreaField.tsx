@@ -2,7 +2,7 @@ import React from 'react';
 import { TextFieldContext } from 'react-aria-components';
 import {
   TextAreaField,
-  TextAreaFieldProps,
+  type TextAreaFieldProps,
 } from '../../TextAreaField/TextAreaField';
 
 export function QuantaTextAreaField(props: TextAreaFieldProps) {

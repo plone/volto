@@ -1,1 +1,0 @@
-Refactor Toolbar/More component from class to functional component. @Tishasoumya-02

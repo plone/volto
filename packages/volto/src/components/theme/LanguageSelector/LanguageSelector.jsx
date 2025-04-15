@@ -9,14 +9,13 @@ import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 import cx from 'classnames';
-import { find, map } from 'lodash';
+import find from 'lodash/find';
+import map from 'lodash/map';
 
-import {
-  Helmet,
-  langmap,
-  flattenToAppURL,
-  toReactIntlLang,
-} from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { toReactIntlLang } from '@plone/volto/helpers/Utils/Utils';
 
 import config from '@plone/volto/registry';
 

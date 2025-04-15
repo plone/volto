@@ -72,7 +72,7 @@ There is a directory per spec.
 This directory is hot reloaded with your changes as you write the tests.
 
 ```{seealso}
-[Cypress documentation](https://docs.cypress.io/guides/overview/why-cypress)
+[Cypress documentation](https://docs.cypress.io/app/get-started/why-cypress)
 ```
 
 
