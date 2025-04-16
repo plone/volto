@@ -30,6 +30,10 @@ import {
 
 import cx from 'classnames';
 
+/**
+ * Add link form class.
+ * @component
+ */
 function AddLinkForm({
   placeholder = 'Enter URL or select an item',
   data,
