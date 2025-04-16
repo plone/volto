@@ -30,6 +30,25 @@ import {
 
 import cx from 'classnames';
 
+const messages = defineMessages({
+  placeholder: {
+    id: 'Enter URL or select an item',
+    defaultMessage: 'Enter URL or select an item',
+  },
+  clear: {
+    id: 'Clear',
+    defaultMessage: 'Clear',
+  },
+  openObjectBrowser: {
+    id: 'Open object browser',
+    defaultMessage: 'Open object browser',
+  },
+  submit: {
+    id: 'Submit',
+    defaultMessage: 'Submit',
+  },
+});
+
 /**
  * Add link form class.
  * @component
@@ -50,25 +69,6 @@ function AddLinkForm({
   const [val, setVal] = useState({});
   const inputRef = useRef();
   const linkFormContainer = useRef();
-
-  const messages = defineMessages({
-    placeholder: {
-      id: 'Enter URL or select an item',
-      defaultMessage: 'Enter URL or select an item',
-    },
-    clear: {
-      id: 'Clear',
-      defaultMessage: 'Clear',
-    },
-    openObjectBrowser: {
-      id: 'Open object browser',
-      defaultMessage: 'Open object browser',
-    },
-    submit: {
-      id: 'Submit',
-      defaultMessage: 'Submit',
-    },
-  });
 
   const onClose = useCallback(
     () => onOverrideContent(undefined),
