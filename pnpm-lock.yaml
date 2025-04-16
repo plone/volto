@@ -445,6 +445,9 @@ importers:
       jest-axe:
         specifier: ^8.0.0
         version: 8.0.0
+      optics-ts:
+        specifier: ^2.4.1
+        version: 2.4.1
       prettier-plugin-tailwindcss:
         specifier: ^0.6.11
         version: 0.6.11(prettier@3.5.2)

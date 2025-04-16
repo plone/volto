@@ -10,20 +10,26 @@ import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 import { requireAuthCookie } from './auth/auth';
 import { Button } from '@plone/components/tailwind';
-import { mergeForm, useForm, useTransform } from '@tanstack/react-form';
+import { mergeForm, useTransform } from '@tanstack/react-form';
+import type { DeepKeys } from '@tanstack/react-form';
+
 import {
   ServerValidateError,
   createServerValidate,
   formOptions,
   initialFormState,
 } from '@tanstack/react-form/remix';
-import { TextField } from '../components/TextField/TextField';
 import { atom, useAtom, useSetAtom } from 'jotai';
 import { focusAtom } from 'jotai-optics';
 import { useHydrateAtoms } from 'jotai/utils';
-import { useMemo } from 'react';
-import type { WritableAtom } from 'jotai';
+import { useCallback, useMemo } from 'react';
+import type { PrimitiveAtom, WritableAtom } from 'jotai';
 import type { ReactNode } from 'react';
+import type { Content } from '@plone/types';
+import type { OpticFor } from 'optics-ts';
+
+// import Field from '../components/Form/Field';
+import { useAppForm } from '../components/Form/Form';
 
 export async function loader({ params, request }: LoaderFunctionArgs) {
   const token = await requireAuthCookie(request);
@@ -69,7 +75,7 @@ export async function action({ params, request }: ActionFunctionArgs) {
   return redirect(path);
 }
 
-const formAtom = atom({});
+const formAtom = atom<Content>({} as Content);
 
 const HydrateAtoms = ({
   atomValues,
@@ -86,8 +92,15 @@ const HydrateAtoms = ({
   return children;
 };
 
-const ConsoleLog = ({ focusAtom }) => {
-  const [title] = useAtom(focusAtom);
+const useTitleAtom = ({ formAtom, field }) => {
+  return useMemo(() => {
+    return focusAtom(formAtom, (optic) => optic.prop(field));
+  }, [formAtom, field]);
+};
+
+const ConsoleLog = () => {
+  const titleAtom = useTitleAtom({ formAtom, field: 'title' });
+  const title = useSetAtom(titleAtom);
   const [formData, setFormData] = useAtom(formAtom);
 
   return (
@@ -103,24 +116,29 @@ const ConsoleLog = ({ focusAtom }) => {
   );
 };
 
+export function useFocusAtom<T>({
+  anAtom,
+  field,
+}: {
+  anAtom: PrimitiveAtom<T>;
+  field: DeepKeys<T>;
+}) {
+  return useSetAtom(
+    focusAtom(
+      anAtom,
+      // @ts-ignore
+      useCallback((optic: OpticFor<T>) => optic.prop(field), [field]),
+    ),
+  );
+}
+
 export default function Edit() {
   const { content, schema } = useLoaderData<typeof loader>();
   const { t } = useTranslation();
-  console.log(schema);
-  const form = useForm({
+
+  const form = useAppForm({
     defaultValues: content,
   });
-
-  const useTitleAtom = ({ formAtom, field }) => {
-    return useMemo(() => {
-      return focusAtom(formAtom, (optic) => optic.prop(field));
-    }, [formAtom, field]);
-  };
-
-  const titleAtom = useTitleAtom({ formAtom, field: 'title' });
-  const setTitle = useSetAtom(titleAtom);
-
-  // console.log('jotai title', setTitle);
 
   return (
     <HydrateAtoms atomValues={[[formAtom, content]]}>
@@ -130,7 +148,27 @@ export default function Edit() {
             {content.title} - {t('cmsui.edit')}
           </h1>
           <Form method="post" onSubmit={form.handleSubmit}>
-            <form.Field name="title">
+            {(schema.fieldsets[0].fields as DeepKeys<Content>[]).map(
+              (schemaField, index) => (
+                <form.AppField
+                  name={schemaField}
+                  key={index}
+                  // eslint-disable-next-line react/no-children-prop
+                  children={(field) => (
+                    <field.Quanta
+                      {...schema.properties[schemaField]}
+                      label={schema.properties[field.name].title}
+                      name={field.name}
+                      defaultValue={field.state.value}
+                      required={schema.required.indexOf(schemaField) !== -1}
+                      error={field.state.meta.errors}
+                      formAtom={formAtom}
+                    />
+                  )}
+                />
+              ),
+            )}
+            {/* <form.Field name="title">
               {(field) => {
                 return (
                   <div className="mb-8">
@@ -169,13 +207,13 @@ export default function Edit() {
                   </div>
                 );
               }}
-            </form.Field>
+            </form.Field> */}
             <div className="mt-4">
               <Button type="submit">{t('cmsui.save')}</Button>
             </div>
           </Form>
         </div>
-        <ConsoleLog focusAtom={titleAtom} />
+        <ConsoleLog />
       </main>
     </HydrateAtoms>
   );

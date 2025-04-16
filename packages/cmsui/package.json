@@ -89,6 +89,7 @@
     "@vitejs/plugin-react": "^4.1.0",
     "eslint-plugin-storybook": "^0.11.2",
     "jest-axe": "^8.0.0",
+    "optics-ts": "^2.4.1",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "release-it": "catalog:",
     "storybook": "^8.6.12",

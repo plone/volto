@@ -5,21 +5,33 @@ import type {
   WidgetsConfigByType,
   WidgetsConfigByVocabulary,
   WidgetsConfigByWidget,
+  Content,
 } from '@plone/types';
+import { useFocusAtom } from '../../routes/edit';
+import { useFieldContext } from './Form';
+import type { PrimitiveAtom } from 'jotai';
+import type { DeepKeys } from '@tanstack/react-form';
 
 type FieldProps = {
-  id: keyof WidgetsConfigById;
-  widget: keyof WidgetsConfigByWidget;
-  vocabulary: { '@id': keyof WidgetsConfigByVocabulary };
-  choices: string;
-  type: keyof WidgetsConfigByType;
-  focus: boolean;
-  mode: string;
-  widgetOptions: any;
-  factory: keyof WidgetsConfigByFactory;
-  onChange: (id: string, value: any) => void;
-  placeholder: string;
-  title: string;
+  id?: keyof WidgetsConfigById;
+  label: string;
+  name: DeepKeys<Content>;
+  defaultValue?: unknown;
+  required?: boolean;
+  error?: Array<undefined>;
+  formAtom: PrimitiveAtom<Content>;
+  widget?: keyof WidgetsConfigByWidget;
+  vocabulary?: { '@id': keyof WidgetsConfigByVocabulary };
+  choices?: Array<[string, string]>;
+  type?: keyof WidgetsConfigByType;
+  mode?: string;
+  widgetOptions?: {
+    [key: string]: any;
+  };
+  factory?: keyof WidgetsConfigByFactory;
+  onChange?: (value: any) => void;
+  placeholder?: string;
+  title?: string /* To remove? */;
 };
 
 const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not rendered
@@ -27,21 +39,24 @@ const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not ren
 /**
  * Get default widget
  */
-const getWidgetDefault = (): React.ComponentType<any> => config.widgets.default;
+const getWidgetDefault = (): React.ComponentType<any> =>
+  config.widgets?.default;
 
 /**
  * Get widget by field's `id` attribute
  */
 const getWidgetByFieldId = (
   id: FieldProps['id'],
-): React.ComponentType<any> | null => config.widgets.id[id] || null;
+): React.ComponentType<any> | null =>
+  typeof id === 'string' ? config.widgets?.id?.[id] || null : null;
 
 /**
  * Get widget by factory attribute
  */
 const getWidgetByFactory = (
   factory: FieldProps['factory'],
-): React.ComponentType<any> | null => config.widgets.factory?.[factory] || null;
+): React.ComponentType<any> | null =>
+  factory ? config.widgets?.factory?.[factory] || null : null;
 
 /**
  * Get widget by field's `widget` attribute
@@ -50,7 +65,7 @@ const getWidgetByName = (
   widget: FieldProps['widget'],
 ): React.ComponentType<any> | null =>
   typeof widget === 'string'
-    ? config.widgets.widget[widget] || getWidgetDefault()
+    ? config.widgets?.widget?.[widget] || getWidgetDefault()
     : null;
 
 /**
@@ -65,11 +80,11 @@ directives.widget(
     })
 
  */
-const getWidgetFromTaggedValues = (widgetOptions: {
-  frontendOptions: { widget: FieldProps['widget']; widgetProps: any };
+const getWidgetFromTaggedValues = (widgetOptions?: {
+  frontendOptions?: { widget: FieldProps['widget']; widgetProps: any };
 }): React.ComponentType<any> | null =>
   typeof widgetOptions?.frontendOptions?.widget === 'string'
-    ? config.widgets.widget[widgetOptions.frontendOptions.widget]
+    ? config.widgets?.widget?.[widgetOptions.frontendOptions.widget]
     : null;
 
 /**
@@ -84,8 +99,8 @@ directives.widget(
     })
 
  */
-const getWidgetPropsFromTaggedValues = (widgetOptions: {
-  frontendOptions: { widget: string; widgetProps: any };
+const getWidgetPropsFromTaggedValues = (widgetOptions?: {
+  frontendOptions?: { widget: string; widgetProps: any };
 }): React.ComponentType<any> | null =>
   typeof widgetOptions?.frontendOptions?.widgetProps === 'object'
     ? widgetOptions.frontendOptions.widgetProps
@@ -98,7 +113,7 @@ const getWidgetByVocabulary = (
   vocabulary: FieldProps['vocabulary'],
 ): React.ComponentType<any> | null =>
   vocabulary && vocabulary['@id']
-    ? config.widgets.vocabulary[
+    ? config.widgets?.vocabulary?.[
         vocabulary['@id'].replace(
           /^.*\/@vocabularies\//,
           '',
@@ -113,7 +128,7 @@ const getWidgetByVocabularyFromHint = (
   props: FieldProps,
 ): React.ComponentType<any> | null =>
   props.widgetOptions && props.widgetOptions.vocabulary
-    ? config.widgets.vocabulary[
+    ? config.widgets?.vocabulary[
         props.widgetOptions.vocabulary['@id'].replace(
           /^.*\/@vocabularies\//,
           '',
@@ -128,14 +143,14 @@ const getWidgetByChoices = (
   props: FieldProps,
 ): React.ComponentType<any> | null => {
   if (props.choices) {
-    return config.widgets.choices;
+    return config.widgets?.choices;
   }
 
   if (props.vocabulary) {
     // If vocabulary exists, then it means it's a choice field in disguise with
     // no widget specified that probably contains a string then we force it
     // to be a select widget instead
-    return config.widgets.choices;
+    return config.widgets?.choices;
   }
 
   return null;
@@ -144,8 +159,10 @@ const getWidgetByChoices = (
 /**
  * Get widget by field's `type` attribute
  */
-const getWidgetByType = (type: FieldProps['type']): React.ComponentType<any> =>
-  config.widgets.type[type] || null;
+const getWidgetByType = (
+  type: FieldProps['type'],
+): React.ComponentType<any> | null =>
+  type ? config.widgets?.type?.[type] || null : null;
 
 const Field = (props: FieldProps) => {
   const Widget =
@@ -159,27 +176,30 @@ const Field = (props: FieldProps) => {
     getWidgetByType(props.type) ||
     getWidgetDefault();
 
-  if (props.mode === MODE_HIDDEN) {
-    return null;
-  }
-
   // Adding the widget props from tagged values (if any)
   const widgetProps = {
     ...props,
     label: props.title,
     placeholder: props.placeholder || 'Type something...',
-    // Temporary translator from the old widget signature (id, value) to the new one (value)
-    onChange: (arg1: string, arg2: string | undefined) => {
-      if (!arg2 === undefined) {
-        props.onChange(props.id, arg1);
-      } else {
-        props.onChange(props.id, arg2);
-      }
-    },
     ...getWidgetPropsFromTaggedValues(props.widgetOptions),
   };
 
-  return <Widget {...widgetProps} />;
+  const field = useFieldContext<string>();
+
+  const globalFormSetter = useFocusAtom<Content>({
+    anAtom: props.formAtom,
+    field: props.name,
+  });
+
+  return props.mode !== MODE_HIDDEN ? (
+    <Widget
+      {...widgetProps}
+      onChange={(value: any) => {
+        globalFormSetter(value);
+        return field.handleChange(value);
+      }}
+    />
+  ) : null;
 };
 
 export default Field;
