@@ -1,6 +1,5 @@
 import type { JSONSchema } from '@plone/types';
 import type { Ref } from 'react';
-import { vi } from 'vitest';
 import { forwardRef } from 'react';
 
 const cleanupSchema = (schema: JSONSchema | null): JSONSchema | null => {
