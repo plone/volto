@@ -62,6 +62,24 @@ export default function install(config: ConfigType) {
           },
         ],
       },
+      {
+        type: 'prefix',
+        path: 'test-layout',
+        children: [
+          {
+            type: 'index',
+            file: '@plone/cmsui/routes/test.tsx',
+            options: {
+              id: 'index-test',
+            },
+          },
+          {
+            type: 'route',
+            path: '*',
+            file: '@plone/cmsui/routes/test.tsx',
+          },
+        ],
+      },
     ],
   });
 

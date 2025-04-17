@@ -32,6 +32,12 @@ import Checkbox from '@plone/components/icons/checkbox.svg?react';
 
 // import Field from '../components/Form/Field';
 import { useAppForm } from '../components/Form/Form';
+import {
+  DisclosureGroup,
+  Disclosure,
+  DisclosurePanel,
+  DisclosureTrigger,
+} from '../components/Accordion/Accordion';
 
 export async function loader({ params, request }: LoaderFunctionArgs) {
   const token = await requireAuthCookie(request);
@@ -102,7 +108,7 @@ const useTitleAtom = ({ formAtom, field }) => {
 
 const ConsoleLog = () => {
   const titleAtom = useTitleAtom({ formAtom, field: 'title' });
-  const title = useSetAtom(titleAtom);
+  const [title] = useAtom(titleAtom);
   const [formData, setFormData] = useAtom(formAtom);
 
   return (
@@ -152,36 +158,48 @@ export default function Edit() {
             {content.title} - {t('cmsui.edit')}
           </h1>
           <Form method="post" onSubmit={form.handleSubmit} ref={formRef}>
-            {(schema.fieldsets[0].fields as DeepKeys<Content>[]).map(
-              (schemaField, index) => (
-                <form.AppField
-                  name={schemaField}
-                  key={index}
-                  // eslint-disable-next-line react/no-children-prop
-                  children={(field) => (
-                    <field.Quanta
-                      {...schema.properties[schemaField]}
-                      label={schema.properties[field.name].title}
-                      name={field.name}
-                      defaultValue={field.state.value}
-                      required={schema.required.indexOf(schemaField) !== -1}
-                      error={field.state.meta.errors}
-                      formAtom={formAtom}
-                    />
-                  )}
-                />
-              ),
-            )}
+            {schema.fieldsets.map((fieldset) => (
+              <DisclosureGroup
+                defaultExpandedKeys={['default']}
+                key={fieldset.id}
+              >
+                <Disclosure id={fieldset.id} key={fieldset.id}>
+                  <DisclosureTrigger>{fieldset.title}</DisclosureTrigger>
+                  <DisclosurePanel>
+                    {(fieldset.fields as DeepKeys<Content>[]).map(
+                      (schemaField, index) => (
+                        <form.AppField
+                          name={schemaField}
+                          key={index}
+                          // eslint-disable-next-line react/no-children-prop
+                          children={(field) => (
+                            <field.Quanta
+                              {...schema.properties[schemaField]}
+                              label={schema.properties[field.name].title}
+                              name={field.name}
+                              defaultValue={field.state.value}
+                              required={
+                                schema.required.indexOf(schemaField) !== -1
+                              }
+                              error={field.state.meta.errors}
+                              formAtom={formAtom}
+                            />
+                          )}
+                        />
+                      ),
+                    )}
+                  </DisclosurePanel>
+                </Disclosure>
+              </DisclosureGroup>
+            ))}
             <Plug pluggable="toolbar" id="edit-save-button">
-              <div className="mt-4">
-                <Button
-                  aria-label={t('cmsui.save')}
-                  type="submit"
-                  onPress={() => formRef.current?.submit()}
-                >
-                  <Checkbox />
-                </Button>
-              </div>
+              <Button
+                aria-label={t('cmsui.save')}
+                type="submit"
+                onPress={() => formRef.current?.submit()}
+              >
+                <Checkbox />
+              </Button>
             </Plug>
           </Form>
           <div className="mt-4">

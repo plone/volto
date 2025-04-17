@@ -128,7 +128,7 @@ const getWidgetByVocabularyFromHint = (
   props: FieldProps,
 ): React.ComponentType<any> | null =>
   props.widgetOptions && props.widgetOptions.vocabulary
-    ? config.widgets?.vocabulary[
+    ? config.widgets?.vocabulary?.[
         props.widgetOptions.vocabulary['@id'].replace(
           /^.*\/@vocabularies\//,
           '',
