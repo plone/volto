@@ -72,7 +72,7 @@ const Register = () => {
   const history = useHistory();
   const [errors, setError] = useState(null);
   const { loaded, loading, error } = useUsers();
-  const useEmailAsLogin = config.settings.use_email_as_login; // Default to true if not specified
+  const useEmailAsLogin = config.settings.useEmailAsLogin; // Default to true if not specified
 
   const prevloading = usePrevious(loading);
 
