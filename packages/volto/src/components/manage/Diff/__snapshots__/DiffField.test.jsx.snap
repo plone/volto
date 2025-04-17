@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`DiffField renders a boolean field 1`] = `
+exports[`DiffField > renders a boolean field 1`] = `
 <div>
   <div
     class="ui grid"
@@ -39,7 +39,7 @@ exports[`DiffField renders a boolean field 1`] = `
 </div>
 `;
 
-exports[`DiffField renders a boolean field with inverse values 1`] = `
+exports[`DiffField > renders a boolean field with inverse values 1`] = `
 <div>
   <div
     class="ui grid"
@@ -78,7 +78,7 @@ exports[`DiffField renders a boolean field with inverse values 1`] = `
 </div>
 `;
 
-exports[`DiffField renders a datetime field 1`] = `
+exports[`DiffField > renders a datetime field 1`] = `
 <div>
   <div
     class="ui grid"
@@ -129,7 +129,7 @@ exports[`DiffField renders a datetime field 1`] = `
 </div>
 `;
 
-exports[`DiffField renders a diff field in split mode 1`] = `
+exports[`DiffField > renders a diff field in split mode 1`] = `
 <div>
   <div
     class="ui grid"
@@ -178,7 +178,7 @@ exports[`DiffField renders a diff field in split mode 1`] = `
 </div>
 `;
 
-exports[`DiffField renders a diff field in unified mode 1`] = `
+exports[`DiffField > renders a diff field in unified mode 1`] = `
 <div>
   <div
     class="ui grid"
@@ -219,7 +219,7 @@ exports[`DiffField renders a diff field in unified mode 1`] = `
 </div>
 `;
 
-exports[`DiffField renders a richtext field 1`] = `
+exports[`DiffField > renders a richtext field 1`] = `
 <div>
   <div
     class="ui grid"
@@ -260,7 +260,7 @@ exports[`DiffField renders a richtext field 1`] = `
 </div>
 `;
 
-exports[`DiffField renders a textarea field 1`] = `
+exports[`DiffField > renders a textarea field 1`] = `
 <div>
   <div
     class="ui grid"
@@ -301,7 +301,7 @@ exports[`DiffField renders a textarea field 1`] = `
 </div>
 `;
 
-exports[`DiffField renders an array field 1`] = `
+exports[`DiffField > renders an array field 1`] = `
 <div>
   <div
     class="ui grid"
@@ -341,7 +341,7 @@ exports[`DiffField renders an array field 1`] = `
 </div>
 `;
 
-exports[`DiffField renders an array of objects field 1`] = `
+exports[`DiffField > renders an array of objects field 1`] = `
 <div>
   <div
     class="ui grid"

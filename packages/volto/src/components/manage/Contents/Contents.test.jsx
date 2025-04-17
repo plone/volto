@@ -8,20 +8,24 @@ import { __test__ as Contents } from './Contents';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
-jest.mock('../../theme/Pagination/Pagination', () =>
-  jest.fn(() => <div className="Pagination" />),
-);
-jest.mock('./ContentsUploadModal', () =>
-  jest.fn(() => <div className="UploadModal" />),
-);
+vi.mock('../../theme/Pagination/Pagination', () => ({
+  default: vi.fn(() => <div className="Pagination" />),
+}));
+vi.mock('./ContentsUploadModal', () => ({
+  default: vi.fn(() => <div className="UploadModal" />),
+}));
 
 describe('Contents', () => {
   it('renders a folder contents view component', () => {
@@ -87,7 +91,14 @@ describe('Contents', () => {
       },
       intl: {
         locale: 'en',
-        messages: {},
+        messages: {
+          ID: 'ID',
+          Title: 'Title',
+          'Publication date': 'Publication date',
+          'Created on': 'Created on',
+          'Last modified': 'Last modified',
+          Type: 'Type',
+        },
       },
     });
     const { container } = render(

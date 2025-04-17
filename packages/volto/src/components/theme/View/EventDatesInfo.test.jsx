@@ -5,11 +5,13 @@ import { When } from './EventDatesInfo';
 import configureStore from 'redux-mock-store';
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
 
 const store = mockStore({
   intl: {

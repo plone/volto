@@ -1,1 +1,0 @@
-Fix translations default of ContentsDeleteModal: 'linkintegrity: delete' -> 'delete' if no link to break. @ksuess
