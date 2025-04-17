@@ -1,8 +1,7 @@
 import type { JSONSchema } from '@plone/types';
 import type { Ref } from 'react';
-const { forwardRef } = jest.requireActual('react') as typeof import('react');
+import { forwardRef } from 'react';
 
-// Field descriptions can contain react elements and those are not JSON stringifiable
 const cleanupSchema = (schema: JSONSchema | null): JSONSchema | null => {
   if (!schema || !schema.properties) return schema;
   return {
@@ -23,38 +22,38 @@ const cleanupSchema = (schema: JSONSchema | null): JSONSchema | null => {
   };
 };
 
-export const Field = jest.fn((props: { id: string; title: string }) => (
+export const Field = vi.fn((props) => (
   <div className="Field" id={props.id}>
     {props.title}
   </div>
 ));
 
-export const InlineForm = jest.fn((props: { schema: JSONSchema | null }) => (
+export const InlineForm = vi.fn((props) => (
   <div
     id="InlineForm"
     data-schema={JSON.stringify(cleanupSchema(props.schema), null, 2)}
   />
 ));
 
-export const ModalForm = jest.fn((props: { schema: JSONSchema | null }) => (
+export const ModalForm = vi.fn((props) => (
   <div
     id="ModalForm"
     data-schema={JSON.stringify(cleanupSchema(props.schema), null, 2)}
   />
 ));
 
-export const UndoToolbar = jest.fn(() => <div id="UndoToolbar" />);
+export const UndoToolbar = vi.fn(() => <div id="UndoToolbar" />);
 
-export const BlocksToolbar = jest.fn(() => <div id="BlocksToolbar" />);
+export const BlocksToolbar = vi.fn(() => <div id="BlocksToolbar" />);
 
-export const BlockDataForm = jest.fn((props: { schema: JSONSchema | null }) => (
+export const BlockDataForm = vi.fn((props) => (
   <div
     id="BlockDataForm"
     data-schema={JSON.stringify(cleanupSchema(props.schema), null, 2)}
   />
 ));
 
-export const BlocksForm = jest.fn((props: { schema: JSONSchema | null }) => (
+export const BlocksForm = vi.fn((props) => (
   <div
     id="BlocksForm"
     data-schema={JSON.stringify(cleanupSchema(props.schema), null, 2)}
@@ -71,8 +70,4 @@ const MockForm = forwardRef(
   ),
 );
 
-export const Form = jest.fn(
-  (props: { schema: JSONSchema | null }, ref: Ref<any>) => (
-    <MockForm {...props} ref={ref} />
-  ),
-);
+export const Form = vi.fn((props) => <MockForm {...props} />);
