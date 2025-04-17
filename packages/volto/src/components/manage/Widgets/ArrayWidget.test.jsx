@@ -8,7 +8,11 @@ import ArrayWidget from './ArrayWidget';
 
 const mockStore = configureStore();
 
-vi.mock('@plone/volto/helpers/Loadable/Loadable');
+vi.mock('@plone/volto/helpers/Loadable/Loadable', async () => {
+  return await import(
+    '@plone/volto/helpers/Loadable/__mocks__/Loadable.vitest.jsx'
+  );
+});
 
 // Mock react-sortable-hoc to prevent the container error
 vi.mock('react-sortable-hoc', () => ({

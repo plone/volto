@@ -1,5 +1,5 @@
-export const Contents = vi.fn(() => <div className="Contents" />);
+export const Contents = jest.fn(() => <div className="Contents" />);
 
-export const ContentsRenameModal = vi.fn(() => (
+export const ContentsRenameModal = jest.fn(() => (
   <div className="ContentsRenameModal" />
 ));
