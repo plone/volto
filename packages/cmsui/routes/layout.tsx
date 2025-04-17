@@ -10,6 +10,12 @@ import {
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import type { RootLoader } from 'seven/app/root';
+import {
+  Pluggable,
+  Plug,
+  PluggablesProvider,
+  createPluggableAndPlug,
+} from '../components/Pluggable';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -69,11 +75,15 @@ export default function Index() {
         <Links />
       </head>
       <body>
-        <div role="navigation" aria-label="Toolbar" id="toolbar" />
-        <div id="main">
-          <Outlet />
-        </div>
-        <div role="complementary" aria-label="Sidebar" id="sidebar" />
+        <PluggablesProvider>
+          <div role="navigation" aria-label="Toolbar" id="toolbar">
+            <Pluggable name="toolbar" />
+          </div>
+          <div id="main">
+            <Outlet />
+          </div>
+          <div role="complementary" aria-label="Sidebar" id="sidebar" />
+        </PluggablesProvider>
         <ScrollRestoration />
         <Scripts />
       </body>

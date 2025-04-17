@@ -59,6 +59,7 @@
     "@tanstack/react-form": "^1.3.3",
     "jotai": "^2.12.3",
     "jotai-optics": "^0.4.0",
+    "lodash.sortby": "^4.7.0",
     "react-aria-components": "catalog:",
     "react-i18next": "catalog:",
     "react-router": "catalog:",

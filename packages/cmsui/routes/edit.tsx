@@ -22,11 +22,13 @@ import {
 import { atom, useAtom, useSetAtom } from 'jotai';
 import { focusAtom } from 'jotai-optics';
 import { useHydrateAtoms } from 'jotai/utils';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 import type { PrimitiveAtom, WritableAtom } from 'jotai';
 import type { ReactNode } from 'react';
 import type { Content } from '@plone/types';
 import type { OpticFor } from 'optics-ts';
+import { Plug } from '../components/Pluggable';
+import Checkbox from '@plone/components/icons/checkbox.svg?react';
 
 // import Field from '../components/Form/Field';
 import { useAppForm } from '../components/Form/Form';
@@ -140,6 +142,8 @@ export default function Edit() {
     defaultValues: content,
   });
 
+  const formRef = useRef<HTMLFormElement>(null);
+
   return (
     <HydrateAtoms atomValues={[[formAtom, content]]}>
       <main className="mx-4 flex h-screen flex-1 flex-col justify-center">
@@ -147,7 +151,7 @@ export default function Edit() {
           <h1 className="mb-4 text-2xl font-bold">
             {content.title} - {t('cmsui.edit')}
           </h1>
-          <Form method="post" onSubmit={form.handleSubmit}>
+          <Form method="post" onSubmit={form.handleSubmit} ref={formRef}>
             {(schema.fieldsets[0].fields as DeepKeys<Content>[]).map(
               (schemaField, index) => (
                 <form.AppField
@@ -168,52 +172,22 @@ export default function Edit() {
                 />
               ),
             )}
-            {/* <form.Field name="title">
-              {(field) => {
-                return (
-                  <div className="mb-8">
-                    <TextField
-                      label={schema.properties[field.name].title}
-                      name={field.name}
-                      defaultValue={field.state.value}
-                      onChange={(value) => {
-                        setTitle(value);
-                        return field.handleChange(value);
-                      }}
-                    />
-                    {field.state.meta.errors.map((error) => (
-                      <p key={error as string}>{error}</p>
-                    ))}
-                  </div>
-                );
-              }}
-            </form.Field>
-            <form.Field name="description">
-              {(field) => {
-                return (
-                  <div>
-                    <TextField
-                      label={schema.properties[field.name].title}
-                      name={field.name}
-                      defaultValue={field.state.value}
-                      onChange={(value) => {
-                        setTitle(value);
-                        return field.handleChange(value);
-                      }}
-                    />
-                    {field.state.meta.errors.map((error) => (
-                      <p key={error as string}>{error}</p>
-                    ))}
-                  </div>
-                );
-              }}
-            </form.Field> */}
-            <div className="mt-4">
-              <Button type="submit">{t('cmsui.save')}</Button>
-            </div>
+            <Plug pluggable="toolbar" id="edit-save-button">
+              <div className="mt-4">
+                <Button
+                  aria-label={t('cmsui.save')}
+                  type="submit"
+                  onPress={() => formRef.current?.submit()}
+                >
+                  <Checkbox />
+                </Button>
+              </div>
+            </Plug>
           </Form>
+          <div className="mt-4">
+            <ConsoleLog />
+          </div>
         </div>
-        <ConsoleLog />
       </main>
     </HydrateAtoms>
   );
