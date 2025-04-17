@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import {
+  Form,
   redirect,
   useLoaderData,
   type ActionFunctionArgs,
@@ -9,6 +10,34 @@ import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 import { requireAuthCookie } from './auth/auth';
 import { Button } from '@plone/components/tailwind';
+import { mergeForm, useTransform } from '@tanstack/react-form';
+import type { DeepKeys } from '@tanstack/react-form';
+
+import {
+  ServerValidateError,
+  createServerValidate,
+  formOptions,
+  initialFormState,
+} from '@tanstack/react-form/remix';
+import { atom, useAtom, useSetAtom } from 'jotai';
+import { focusAtom } from 'jotai-optics';
+import { useHydrateAtoms } from 'jotai/utils';
+import { useCallback, useMemo, useRef } from 'react';
+import type { PrimitiveAtom, WritableAtom } from 'jotai';
+import type { ReactNode } from 'react';
+import type { Content } from '@plone/types';
+import type { OpticFor } from 'optics-ts';
+import { Plug } from '../components/Pluggable';
+import Checkbox from '@plone/components/icons/checkbox.svg?react';
+
+// import Field from '../components/Form/Field';
+import { useAppForm } from '../components/Form/Form';
+import {
+  DisclosureGroup,
+  Disclosure,
+  DisclosurePanel,
+  DisclosureTrigger,
+} from '../components/Accordion/Accordion';
 
 export async function loader({ params, request }: LoaderFunctionArgs) {
   const token = await requireAuthCookie(request);
@@ -54,32 +83,130 @@ export async function action({ params, request }: ActionFunctionArgs) {
   return redirect(path);
 }
 
+const formAtom = atom<Content>({} as Content);
+
+const HydrateAtoms = ({
+  atomValues,
+  children,
+}: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  atomValues: Iterable<
+    readonly [WritableAtom<unknown, [any], unknown>, unknown]
+  >;
+  children: ReactNode;
+}) => {
+  // initialising on state with prop on render here
+  useHydrateAtoms(new Map(atomValues));
+  return children;
+};
+
+const useTitleAtom = ({ formAtom, field }) => {
+  return useMemo(() => {
+    return focusAtom(formAtom, (optic) => optic.prop(field));
+  }, [formAtom, field]);
+};
+
+const ConsoleLog = () => {
+  const titleAtom = useTitleAtom({ formAtom, field: 'title' });
+  const [title] = useAtom(titleAtom);
+  const [formData, setFormData] = useAtom(formAtom);
+
+  return (
+    <div className="mt-4">
+      <pre>
+        Global form data main JOTAI atom{' '}
+        {JSON.stringify(formData.title, null, 2)}
+      </pre>
+      <pre>
+        Focused atom GETTER on title key {JSON.stringify(title, null, 2)}
+      </pre>
+    </div>
+  );
+};
+
+export function useFocusAtom<T>({
+  anAtom,
+  field,
+}: {
+  anAtom: PrimitiveAtom<T>;
+  field: DeepKeys<T>;
+}) {
+  return useSetAtom(
+    focusAtom(
+      anAtom,
+      // @ts-ignore
+      useCallback((optic: OpticFor<T>) => optic.prop(field), [field]),
+    ),
+  );
+}
+
 export default function Edit() {
   const { content, schema } = useLoaderData<typeof loader>();
   const { t } = useTranslation();
 
+  const form = useAppForm({
+    defaultValues: content,
+  });
+
+  const formRef = useRef<HTMLFormElement>(null);
+
   return (
-    <main>
-      <h1>
-        {content.title} - {t('cmsui.edit')}
-      </h1>
-      <form method="post">
-        {Object.entries(schema.properties).map(([key, value]) => {
-          if (key !== 'title') return null;
-          return (
-            <div key={key}>
-              <label htmlFor={key}>{value.title}</label>
-              <input
-                type={value.type}
-                id={key}
-                name={key}
-                defaultValue={content[key]}
-              />
-            </div>
-          );
-        })}
-        <Button type="submit">{t('cmsui.save')}</Button>
-      </form>
-    </main>
+    <HydrateAtoms atomValues={[[formAtom, content]]}>
+      <main className="mx-4 flex h-screen flex-1 flex-col justify-center">
+        <div className="flex flex-col sm:mx-auto sm:w-full sm:max-w-lg">
+          <h1 className="mb-4 text-2xl font-bold">
+            {content.title} - {t('cmsui.edit')}
+          </h1>
+          <Form method="post" onSubmit={form.handleSubmit} ref={formRef}>
+            {schema.fieldsets.map((fieldset) => (
+              <DisclosureGroup
+                defaultExpandedKeys={['default']}
+                key={fieldset.id}
+              >
+                <Disclosure id={fieldset.id} key={fieldset.id}>
+                  <DisclosureTrigger>{fieldset.title}</DisclosureTrigger>
+                  <DisclosurePanel>
+                    {(fieldset.fields as DeepKeys<Content>[]).map(
+                      (schemaField, index) => (
+                        <form.AppField
+                          name={schemaField}
+                          key={index}
+                          // eslint-disable-next-line react/no-children-prop
+                          children={(field) => (
+                            <field.Quanta
+                              {...schema.properties[schemaField]}
+                              label={schema.properties[field.name].title}
+                              name={field.name}
+                              defaultValue={field.state.value}
+                              required={
+                                schema.required.indexOf(schemaField) !== -1
+                              }
+                              error={field.state.meta.errors}
+                              formAtom={formAtom}
+                            />
+                          )}
+                        />
+                      ),
+                    )}
+                  </DisclosurePanel>
+                </Disclosure>
+              </DisclosureGroup>
+            ))}
+            <Plug pluggable="toolbar" id="edit-save-button">
+              <Button
+                aria-label={t('cmsui.save')}
+                type="submit"
+                onPress={() => formRef.current?.submit()}
+              >
+                <Checkbox />
+              </Button>
+            </Plug>
+          </Form>
+          <div className="mt-4">
+            <ConsoleLog />
+          </div>
+        </div>
+      </main>
+    </HydrateAtoms>
   );
 }
