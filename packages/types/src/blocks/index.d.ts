@@ -104,7 +104,7 @@ export interface BlockEditProps {
   }) => void;
   pathname: string;
   properties: Content;
-  selected: Boolean;
+  selected: boolean;
   setSidebarTab: boolean | 0 | 1;
   showBlockChooser: boolean;
   showRestricted: boolean;
