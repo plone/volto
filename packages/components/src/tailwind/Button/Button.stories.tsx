@@ -14,27 +14,61 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'destructive'],
+      options: ['neutral', 'primary', 'destructive'],
     },
   },
   args: {
     isDisabled: false,
     children: 'Button',
+    accent: false,
   },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Neutral: Story = {
+  render: (args) => (
+    <div className="flex gap-8">
+      <Button {...args}>Neutral</Button>
+      <Button {...args}>
+        <BinIcon />
+      </Button>
+    </div>
+  ),
+  args: {},
+};
+
+export const Accent: Story = {
+  render: Neutral.render,
   args: {
-    variant: 'primary',
+    accent: true,
   },
 };
 
-export const Secondary: Story = {
+export const AccentPrimary: Story = {
+  render: Neutral.render,
   args: {
-    variant: 'secondary',
+    variant: 'primary',
+    accent: true,
+  },
+};
+
+export const AccentPrimarySmall: Story = {
+  render: Neutral.render,
+  args: {
+    variant: 'primary',
+    accent: true,
+    size: 'S',
+  },
+};
+
+export const AccentPrimaryLarge: Story = {
+  render: Neutral.render,
+  args: {
+    variant: 'primary',
+    accent: true,
+    size: 'L',
   },
 };
 
@@ -58,20 +92,48 @@ export const Icon: Story = {
   ),
 };
 
-export const SmallIcon: Story = {
+export const IconAccentPrimarySmall: Story = {
   render: (args) => (
     <Button {...args}>
       <BinIcon />
     </Button>
   ),
   args: {
+    variant: 'primary',
+    accent: true,
     size: 'S',
+  },
+};
+
+export const IconAccentPrimary: Story = {
+  render: (args) => (
+    <Button {...args}>
+      <BinIcon />
+    </Button>
+  ),
+  args: {
+    variant: 'primary',
+    accent: true,
+  },
+};
+
+export const IconAccentPrimaryLarge: Story = {
+  render: (args) => (
+    <Button {...args}>
+      <BinIcon />
+    </Button>
+  ),
+  args: {
+    variant: 'primary',
+    accent: true,
+    size: 'L',
   },
 };
 
 export const WithClassName: Story = {
   args: {
     className: 'my-custom-classname',
+    accent: true,
     variant: 'destructive',
   },
 };
@@ -80,5 +142,6 @@ export const WithTWClassName: Story = {
   args: {
     className: 'border-5 border-amber-300',
     variant: 'destructive',
+    accent: true,
   },
 };
