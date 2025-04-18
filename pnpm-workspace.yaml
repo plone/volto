@@ -14,7 +14,7 @@ catalog:
   react-dom: ^19.0.0
   '@types/react': ^19.0.0
   '@types/react-dom': ^19.0.0
-  react-aria-components: ^1.7.0
+  react-aria-components: ^1.8.0
   react-i18next: ^15.4.1
   react-router: 7.4.0
   '@react-router/dev': 7.4.0
