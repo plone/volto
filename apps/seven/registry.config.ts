@@ -4,6 +4,7 @@ const addons = [
   '@plone/slots',
   '@plone/cmsui',
   '@plone/publicui',
+  '@plone/plate',
 ];
 const theme = '';
 
