@@ -9,7 +9,6 @@ import {
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 import { requireAuthCookie } from './auth/auth';
-import { Button } from '@plone/components/tailwind';
 import { mergeForm, useTransform } from '@tanstack/react-form';
 import type { DeepKeys } from '@tanstack/react-form';
 
@@ -30,14 +29,14 @@ import type { OpticFor } from 'optics-ts';
 import { Plug } from '../components/Pluggable';
 import Checkbox from '@plone/components/icons/checkbox.svg?react';
 
-// import Field from '../components/Form/Field';
 import { useAppForm } from '../components/Form/Form';
 import {
-  DisclosureGroup,
-  Disclosure,
-  DisclosurePanel,
-  DisclosureTrigger,
-} from '../components/Accordion/Accordion';
+  Accordion,
+  AccordionItem,
+  AccordionPanel,
+  AccordionItemTrigger,
+  Button,
+} from '@plone/components/tailwind';
 
 export async function loader({ params, request }: LoaderFunctionArgs) {
   const token = await requireAuthCookie(request);
@@ -152,20 +151,17 @@ export default function Edit() {
 
   return (
     <HydrateAtoms atomValues={[[formAtom, content]]}>
-      <main className="mx-4 flex h-screen flex-1 flex-col justify-center">
+      <main className="mx-4 mt-8 flex h-screen flex-1 flex-col">
         <div className="flex flex-col sm:mx-auto sm:w-full sm:max-w-lg">
           <h1 className="mb-4 text-2xl font-bold">
             {content.title} - {t('cmsui.edit')}
           </h1>
           <Form method="post" onSubmit={form.handleSubmit} ref={formRef}>
             {schema.fieldsets.map((fieldset) => (
-              <DisclosureGroup
-                defaultExpandedKeys={['default']}
-                key={fieldset.id}
-              >
-                <Disclosure id={fieldset.id} key={fieldset.id}>
-                  <DisclosureTrigger>{fieldset.title}</DisclosureTrigger>
-                  <DisclosurePanel>
+              <Accordion defaultExpandedKeys={['default']} key={fieldset.id}>
+                <AccordionItem id={fieldset.id} key={fieldset.id}>
+                  <AccordionItemTrigger>{fieldset.title}</AccordionItemTrigger>
+                  <AccordionPanel>
                     {(fieldset.fields as DeepKeys<Content>[]).map(
                       (schemaField, index) => (
                         <form.AppField
@@ -175,6 +171,7 @@ export default function Edit() {
                           children={(field) => (
                             <field.Quanta
                               {...schema.properties[schemaField]}
+                              className="mb-4"
                               label={schema.properties[field.name].title}
                               name={field.name}
                               defaultValue={field.state.value}
@@ -188,15 +185,18 @@ export default function Edit() {
                         />
                       ),
                     )}
-                  </DisclosurePanel>
-                </Disclosure>
-              </DisclosureGroup>
+                  </AccordionPanel>
+                </AccordionItem>
+              </Accordion>
             ))}
             <Plug pluggable="toolbar" id="edit-save-button">
               <Button
                 aria-label={t('cmsui.save')}
                 type="submit"
                 onPress={() => formRef.current?.submit()}
+                variant="primary"
+                accent
+                size="L"
               >
                 <Checkbox />
               </Button>

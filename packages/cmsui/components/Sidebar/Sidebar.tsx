@@ -23,7 +23,7 @@ const Sidebar = () => {
       id="sidebar"
       className={sidebar({ collapsed })}
     >
-      Algo a dins
+      <h2 className="mt-4 text-center text-2xl">This is the sidebar</h2>
     </div>
   );
 };

@@ -14,6 +14,7 @@ import type { DeepKeys } from '@tanstack/react-form';
 
 type FieldProps = {
   id?: keyof WidgetsConfigById;
+  className?: string;
   label: string;
   name: DeepKeys<Content>;
   defaultValue?: unknown;

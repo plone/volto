@@ -19,7 +19,8 @@ const Toolbar = () => {
         <Pluggable name="toolbar-bottom" />
         <Plug pluggable="toolbar-bottom" id="button-settings">
           <Button
-            variant="secondary"
+            aria-label="Settings"
+            size="L"
             onPress={() => setCollapsed((state) => !state)}
           >
             <Settings />
