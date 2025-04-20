@@ -77,11 +77,7 @@ export class Edit extends Component {
       this.blockNode.current.focus();
     }
     const tab = this.props.manage ? 1 : blocksConfig?.[type]?.sidebarTab || 0;
-    if (
-      this.props.selected &&
-      this.props.editable &&
-      this.props.sidebarTab !== 2
-    ) {
+    if (this.props.selected && this.props.editable) {
       this.props.setSidebarTab(tab);
     }
   }
@@ -107,9 +103,7 @@ export class Edit extends Component {
       const tab = this.props.manage
         ? 1
         : blocksConfig?.[nextProps.type]?.sidebarTab || 0;
-      if (this.props.sidebarTab !== 2) {
-        this.props.setSidebarTab(tab);
-      }
+      this.props.setSidebarTab(tab);
     }
   }
 
