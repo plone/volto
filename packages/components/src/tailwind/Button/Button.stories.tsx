@@ -1,65 +1,147 @@
 import * as React from 'react';
 import { Button } from './Button';
 import { BinIcon } from '../../components/icons/BinIcon';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta = {
   title: 'Tailwind/Button',
   component: Button,
   parameters: {
     layout: 'centered',
+    backgrounds: { disable: true },
   },
   tags: ['autodocs'],
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'destructive'],
+      options: ['neutral', 'primary', 'destructive'],
     },
   },
   args: {
     isDisabled: false,
     children: 'Button',
+    accent: false,
+  },
+} satisfies Meta<typeof Button>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Neutral: Story = {
+  render: (args) => (
+    <div className="flex gap-8">
+      <Button {...args}>Neutral</Button>
+      <Button {...args}>
+        <BinIcon />
+      </Button>
+    </div>
+  ),
+  args: {},
+};
+
+export const Accent: Story = {
+  render: Neutral.render,
+  args: {
+    accent: true,
   },
 };
 
-export const Primary = {
+export const AccentPrimary: Story = {
+  render: Neutral.render,
   args: {
     variant: 'primary',
+    accent: true,
   },
 };
 
-export const Secondary = {
+export const AccentPrimarySmall: Story = {
+  render: Neutral.render,
   args: {
-    variant: 'secondary',
+    variant: 'primary',
+    accent: true,
+    size: 'S',
   },
 };
 
-export const Destructive = {
+export const AccentPrimaryLarge: Story = {
+  render: Neutral.render,
+  args: {
+    variant: 'primary',
+    accent: true,
+    size: 'L',
+  },
+};
+
+export const Destructive: Story = {
   args: {
     variant: 'destructive',
   },
 };
 
-export const Icon = {
+export const Disabled: Story = {
+  args: {
+    isDisabled: true,
+  },
+};
+
+export const Icon: Story = {
+  render: (args) => (
+    <Button {...args}>
+      <BinIcon />
+    </Button>
+  ),
+};
+
+export const IconAccentPrimarySmall: Story = {
   render: (args) => (
     <Button {...args}>
       <BinIcon />
     </Button>
   ),
   args: {
-    variant: 'icon',
+    variant: 'primary',
+    accent: true,
+    size: 'S',
   },
 };
 
-export const WithClassName = {
+export const IconAccentPrimary: Story = {
+  render: (args) => (
+    <Button {...args}>
+      <BinIcon />
+    </Button>
+  ),
+  args: {
+    variant: 'primary',
+    accent: true,
+  },
+};
+
+export const IconAccentPrimaryLarge: Story = {
+  render: (args) => (
+    <Button {...args}>
+      <BinIcon />
+    </Button>
+  ),
+  args: {
+    variant: 'primary',
+    accent: true,
+    size: 'L',
+  },
+};
+
+export const WithClassName: Story = {
   args: {
     className: 'my-custom-classname',
+    accent: true,
     variant: 'destructive',
   },
 };
 
-export const WithTWClassName = {
+export const WithTWClassName: Story = {
   args: {
     className: 'border-5 border-amber-300',
     variant: 'destructive',
+    accent: true,
   },
 };

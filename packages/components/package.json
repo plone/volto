@@ -31,6 +31,10 @@
       "types": "./src/icons.d.ts"
     },
     "./icons/*": "./src/icons/*",
+    "./Icons": {
+      "import": "./dist/components/Icons/index.js",
+      "default": "./dist/components/Icons/index.cjs"
+    },
     "./vite-plugin-svgr": {
       "import": "./vite-plugin-svgr.js",
       "types": "./vite-plugin-svgr.d.ts"

@@ -1,20 +1,26 @@
 ---
 myst:
   html_meta:
-    "description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
-    "property=og:description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
-    "property=og:title": "Upgrade Guide"
-    "keywords": "Volto, Plone, frontend, React, Upgrade, Guide"
+    "description": "These upgrade guides lists all breaking changes in the Plone package ecosystem, and explain the necessary steps to upgrade your add-on for each package's latest version."
+    "property=og:description": "These upgrade guides lists all breaking changes in the Plone package ecosystem, and explain the necessary steps to upgrade your add-on for each package's latest version."
+    "property=og:title": "Upgrade guides"
+    "keywords": "Seven, @plone/components, Plone, components, frontend, React, upgrade, guide"
 ---
 
-(volto-upgrade-guide)=
+(upgrade-guides)=
 
-# Upgrade guide
+# Upgrade guides
 
 ```{todo}
 When Seven is about to be released, we'll transfer this file from the `main` branch here.
 ```
 
-This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version.
-Volto uses Semantic Versioning.
+These upgrade guides lists all breaking changes in the Plone package ecosystem, and explain the necessary steps to upgrade your add-on for each package's latest version.
 For more information see {doc}`../contributing/version-policy`.
+
+```{toctree}
+:maxdepth: 1
+:caption: Upgrade Guides
+seven
+plone-components
+```

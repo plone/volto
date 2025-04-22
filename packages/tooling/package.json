@@ -42,9 +42,13 @@
     "@storybook/react-vite": "^8.6.12",
     "@storybook/theming": "^8.6.12",
     "@types/react": "catalog:",
+    "cypress": "^14.3.0",
+    "cypress-axe": "1.6.0",
+    "cypress-file-upload": "5.0.8",
     "eslint-plugin-storybook": "^0.11.2",
     "storybook": "^8.6.12",
     "vite": "catalog:",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "wait-on": "^8.0.0"
   }
 }
