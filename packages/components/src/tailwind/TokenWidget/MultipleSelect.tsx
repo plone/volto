@@ -14,39 +14,49 @@ import {
   Tag,
 } from 'react-aria-components';
 import { useListData } from 'react-stately';
+import type { ListData } from 'react-stately';
 import { useFilter } from 'react-aria';
 
-import Close from '../../icons/close.svg?react';
+import { CloseIcon as Close } from '../../components/icons/CloseIcon';
+import { ChevrondownIcon } from '../../components/icons/ChevrondownIcon';
 
 export type Option = {
   id: string;
   name: string;
 };
 
+interface MultipleSelectProps<T extends object> {
+  items: Array<T>;
+  selectedItems: ListData<T>;
+  className?: string;
+  placeholder?: string;
+  label?: string;
+  description?: string;
+  onItemInserted?: (key: Key) => void;
+  onItemCleared?: (key: Key) => void;
+  renderEmptyState?: (inputValue: string) => React.ReactNode;
+}
+
 export function MultipleSelect({
   label,
   placeholder = 'Select items...',
   items,
-  defaultSelectedKeys = [],
   className = '',
-  disabled = false,
   description,
   onItemCleared,
   onItemInserted,
   renderEmptyState,
-  errorMessage,
   selectedItems,
   ...props
-}: any) {
+}: MultipleSelectProps<Option>) {
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const tagGroupIdentifier = useId();
-  const triggerButtonRef = useRef<HTMLButtonElement | null>(null);
-  const selectedKeys = selectedItems?.items.map((i: any) => i.id);
+  const selectedKeys = selectedItems?.items.map((i: Option) => i.id);
   const [width, setWidth] = useState(0);
   const { contains } = useFilter({ sensitivity: 'base' });
 
   const filter = useCallback(
-    (item: any, filterText: string) => {
+    (item: Option, filterText: string) => {
       return !selectedKeys.includes(item.id) && contains(item.name, filterText);
     },
     [contains, selectedKeys],
@@ -67,7 +77,6 @@ export function MultipleSelect({
 
   const onRemove = useCallback(
     (keys: Set<Key>) => {
-      console.log('onRemove', keys);
       const key = keys.values().next().value;
       if (key) {
         selectedItems.remove(key);
@@ -129,7 +138,6 @@ export function MultipleSelect({
   }, []);
 
   const onCreateTag = useCallback(() => {
-    console.log('this is input', fieldState.inputValue);
     const inputValue = fieldState.inputValue.trim();
     const id = inputValue.toLocaleLowerCase();
 
@@ -172,7 +180,6 @@ export function MultipleSelect({
 
   const onKeyDownCapture = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
-      console.log('onKeyDownCapture', e);
       if (e.key === 'Backspace' && fieldState.inputValue === '') {
         popLast();
       }
@@ -202,12 +209,11 @@ export function MultipleSelect({
               items={selectedItems.items}
               className="flex items-center gap-1"
             >
-              {(item) => (
+              {(item: Option) => (
                 <Tag
                   className="inline-flex items-center gap-x-1.5 rounded-md bg-blue-100 px-2 py-0.5 text-sm text-blue-800"
                   textValue={item.name}
                   id={item.id}
-                  tabIndex={0}
                 >
                   {item.name}
                   <Button
@@ -215,7 +221,7 @@ export function MultipleSelect({
                     className="grid cursor-pointer place-content-center"
                     type="button"
                   >
-                    <Close className="icon--sizeXXS" />
+                    <Close size="xs" />
                   </Button>
                 </Tag>
               )}
@@ -248,10 +254,8 @@ export function MultipleSelect({
             <Button
               className="absolute top-1/2 right-2 -translate-y-1/2 p-1 text-gray-400"
               type="button"
-              ref={triggerButtonRef}
-              slot="remove"
             >
-              show
+              <ChevrondownIcon />
             </Button>
 
             <Popover
@@ -267,7 +271,7 @@ export function MultipleSelect({
                 disallowEmptySelection={false}
                 renderEmptyState={
                   renderEmptyState
-                    ? renderEmptyState()
+                    ? () => renderEmptyState(fieldState.inputValue)
                     : () => (
                         <div
                           className="block cursor-pointer p-3 hover:bg-blue-500 focus:bg-blue-500"
@@ -295,7 +299,7 @@ export function MultipleSelect({
                       )
                 }
               >
-                {(item: any) => (
+                {(item: Option) => (
                   <ListBoxItem
                     key={item.id}
                     id={item.id}
