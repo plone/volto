@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useRef, useState, useEffect, useCallback, useId } from 'react';
 import {
   Button,
   ComboBox,
@@ -6,13 +6,17 @@ import {
   Label,
   ListBox,
   Popover,
+  Text,
   type Key,
   ListBoxItem,
+  TagGroup,
+  TagList,
+  Tag,
 } from 'react-aria-components';
 import { useListData } from 'react-stately';
 import { useFilter } from 'react-aria';
-// import downSVG from '@plone/volto/icons/down-key.svg';
-// import Icon from '@plone/volto/components/theme/Icon/Icon';
+
+import Close from '../../icons/close.svg?react';
 
 export type Option = {
   id: string;
@@ -26,16 +30,16 @@ export function MultipleSelect({
   defaultSelectedKeys = [],
   className = '',
   disabled = false,
-  children,
+  description,
   onItemCleared,
   onItemInserted,
-  name,
   renderEmptyState,
   errorMessage,
   selectedItems,
   ...props
 }: any) {
   const triggerRef = useRef<HTMLDivElement | null>(null);
+  const tagGroupIdentifier = useId();
   const triggerButtonRef = useRef<HTMLButtonElement | null>(null);
   const selectedKeys = selectedItems?.items.map((i: any) => i.id);
   const [width, setWidth] = useState(0);
@@ -63,6 +67,7 @@ export function MultipleSelect({
 
   const onRemove = useCallback(
     (keys: Set<Key>) => {
+      console.log('onRemove', keys);
       const key = keys.values().next().value;
       if (key) {
         selectedItems.remove(key);
@@ -123,8 +128,8 @@ export function MultipleSelect({
     };
   }, []);
 
-  const onCreateTag = () => {
-    console.log('this si inuput', fieldState.inputValue);
+  const onCreateTag = useCallback(() => {
+    console.log('this is input', fieldState.inputValue);
     const inputValue = fieldState.inputValue.trim();
     const id = inputValue.toLocaleLowerCase();
 
@@ -136,15 +141,48 @@ export function MultipleSelect({
         name: inputValue,
       };
 
-      setFieldState({
+      setFieldState((prev) => ({
+        ...prev,
         inputValue: '',
         selectedKey: id,
-      });
+      }));
 
       accessibleList.append(item);
       selectedItems.append(item);
     }
-  };
+  }, [fieldState.inputValue, accessibleList, selectedItems, setFieldState]);
+
+  const popLast = useCallback(() => {
+    if (selectedItems.items.length === 0) {
+      return;
+    }
+
+    const endKey = selectedItems.items[selectedItems.items.length - 1];
+
+    if (endKey) {
+      selectedItems.remove(endKey.id);
+      onItemCleared?.(endKey.id);
+    }
+
+    setFieldState({
+      inputValue: '',
+      selectedKey: null,
+    });
+  }, [selectedItems, onItemCleared]);
+
+  const onKeyDownCapture = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      console.log('onKeyDownCapture', e);
+      if (e.key === 'Backspace' && fieldState.inputValue === '') {
+        popLast();
+      }
+
+      if (e.key === 'Enter' && fieldState.inputValue) {
+        onCreateTag();
+      }
+    },
+    [popLast, fieldState.inputValue, onCreateTag],
+  );
 
   return (
     <div className={`w-full ${className}`}>
@@ -153,29 +191,36 @@ export function MultipleSelect({
           {label}
         </Label>
       )}
-
       <div ref={triggerRef} className="relative">
         <div className="relative flex min-h-10 w-full flex-wrap items-center gap-1 rounded-md border border-gray-300 px-3 py-1.5 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500">
-          {selectedItems.items.map((item) => (
-            <div
-              key={item.id}
-              className="flex items-center gap-1 rounded-md bg-blue-100 px-2 py-0.5 text-sm text-blue-800"
+          <TagGroup
+            id={tagGroupIdentifier}
+            aria-label="Selected items"
+            onRemove={onRemove}
+          >
+            <TagList
+              items={selectedItems.items}
+              className="flex items-center gap-1"
             >
-              <span>{item.name}</span>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onRemove(new Set([item.id]));
-                }}
-                className="rounded-full p-0.5 text-blue-600 hover:bg-blue-200 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                type="button"
-              >
-                clear
-                <span className="sr-only">Remove {item.name}</span>
-              </button>
-            </div>
-          ))}
-
+              {(item) => (
+                <Tag
+                  className="inline-flex items-center gap-x-1.5 rounded-md bg-blue-100 px-2 py-0.5 text-sm text-blue-800"
+                  textValue={item.name}
+                  id={item.id}
+                  tabIndex={0}
+                >
+                  {item.name}
+                  <Button
+                    slot="remove"
+                    className="grid cursor-pointer place-content-center"
+                    type="button"
+                  >
+                    <Close className="icon--sizeXXS" />
+                  </Button>
+                </Tag>
+              )}
+            </TagList>
+          </TagGroup>
           <ComboBox
             {...props}
             allowsEmptyCollection
@@ -189,6 +234,7 @@ export function MultipleSelect({
           >
             <Input
               className="outline:none ml-1 flex-1 px-0.5 py-1 shadow-none ring-0 focus:ring-0 focus:outline-none"
+              placeholder={placeholder}
               onBlur={() => {
                 setFieldState({
                   inputValue: '',
@@ -196,6 +242,7 @@ export function MultipleSelect({
                 });
                 accessibleList.setFilterText('');
               }}
+              onKeyDownCapture={onKeyDownCapture}
             />
 
             <Button
@@ -218,37 +265,35 @@ export function MultipleSelect({
                 selectionMode="multiple"
                 className="rounded-md border border-red-200 bg-white p-1 shadow-lg"
                 disallowEmptySelection={false}
-                renderEmptyState={() => (
-                  <div
-                    className="block cursor-pointer p-3"
-                    role="button"
-                    onMouseDown={(e) => {
-                      e.stopPropagation();
+                renderEmptyState={
+                  renderEmptyState
+                    ? renderEmptyState()
+                    : () => (
+                        <div
+                          className="block cursor-pointer p-3 hover:bg-blue-500 focus:bg-blue-500"
+                          role="button"
+                          onMouseDown={(e) => {
+                            e.stopPropagation();
 
-                      if (fieldState.inputValue) {
-                        onCreateTag();
-                      }
-                    }}
-                    onKeyDown={(e) => {
-                      e.stopPropagation();
-                      if (e.key === 'Enter' && fieldState.inputValue) {
-                        onCreateTag();
-                      }
-                    }}
-                    tabIndex={0}
-                  >
-                    {fieldState.inputValue ? (
-                      <>
-                        Create:{' '}
-                        <strong className="text-fg font-medium">
-                          {fieldState.inputValue}
-                        </strong>
-                      </>
-                    ) : (
-                      'No options'
-                    )}
-                  </div>
-                )}
+                            if (fieldState.inputValue) {
+                              onCreateTag();
+                            }
+                          }}
+                          tabIndex={0}
+                        >
+                          {fieldState.inputValue ? (
+                            <>
+                              Create:{' '}
+                              <strong className="text-fg font-medium hover:bg-blue-500 focus:bg-blue-500">
+                                {fieldState.inputValue}
+                              </strong>
+                            </>
+                          ) : (
+                            'No options'
+                          )}
+                        </div>
+                      )
+                }
               >
                 {(item: any) => (
                   <ListBoxItem
@@ -265,6 +310,11 @@ export function MultipleSelect({
           </ComboBox>
         </div>
       </div>
+      {description && (
+        <Text slot="description" className={`mt-1 text-sm text-red-500`}>
+          {description}
+        </Text>
+      )}
     </div>
   );
 }

@@ -27,7 +27,9 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     label: { control: 'text' },
+    placeholder: { control: 'text' },
     defaultSelectedKeys: { control: 'object' },
+    description: { control: 'text' },
   },
 };
 
