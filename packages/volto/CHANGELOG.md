@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.13.0 (2025-04-22)
+
+### Feature
+
+- Allow `object_list` widget to receive a `schemaName` prop, mapped to an utility. @sneridagh [#7007](https://github.com/plone/volto/issues/7007)
+
 ## 18.12.1 (2025-04-15)
 
 ### Bugfix
