@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.4.0 (2025-04-22)
+
+### Feature
+
+- Better Site extender and endpoint typings, add it to the default extenders typings. @sneridagh [#7007](https://github.com/plone/volto/issues/7007)
+
 ## 1.3.3 (2025-04-15)
 
 ### Bugfix
