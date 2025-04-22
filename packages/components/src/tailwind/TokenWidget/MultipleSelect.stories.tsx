@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { MultipleSelect, type Option } from './MultipleSelect';
-import { ListBoxItem } from 'react-aria-components';
+import {
+  MultipleSelect,
+  type Option,
+  type MultipleSelectProps,
+} from './MultipleSelect';
 import { useListData } from 'react-stately';
+import { type Key } from 'react-aria-components';
 
 const items: Option[] = [
   { id: 'apple', name: 'Apple' },
@@ -28,23 +32,25 @@ export default {
   argTypes: {
     label: { control: 'text' },
     placeholder: { control: 'text' },
-    defaultSelectedKeys: { control: 'object' },
     description: { control: 'text' },
   },
 };
 
-export const Default = (args) => {
+export const Default = (args: MultipleSelectProps<Option>) => {
   const selectedItems = useListData({
     initialItems: [items[0], items[2]],
   });
 
   return (
-    <MultipleSelect
-      {...args}
-      items={items}
-      selectedItems={selectedItems}
-      defaultSelectedKeys={['apple', 'orange']}
-    />
+    <div className="w-full max-w-[400px]">
+      <MultipleSelect
+        {...args}
+        items={items}
+        selectedItems={selectedItems}
+        onItemInserted={(id: Key) => console.log('Item inserted:', id)}
+        onItemCleared={(id: Key) => console.log('Item removed:', id)}
+      />
+    </div>
   );
 };
 

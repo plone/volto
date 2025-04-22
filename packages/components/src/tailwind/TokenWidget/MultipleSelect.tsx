@@ -21,11 +21,11 @@ import { CloseIcon as Close } from '../../components/icons/CloseIcon';
 import { ChevrondownIcon } from '../../components/icons/ChevrondownIcon';
 
 export type Option = {
-  id: string;
+  id: Key;
   name: string;
 };
 
-interface MultipleSelectProps<T extends object> {
+export interface MultipleSelectProps<T extends object> {
   items: Array<T>;
   selectedItems: ListData<T>;
   className?: string;
@@ -199,7 +199,7 @@ export function MultipleSelect({
         </Label>
       )}
       <div ref={triggerRef} className="relative">
-        <div className="relative flex min-h-10 w-full flex-wrap items-center gap-1 rounded-md border border-gray-300 px-3 py-1.5 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500">
+        <div className="relative flex min-h-10 w-full flex-wrap items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-1.5 shadow-sm focus-within:border-gray-500 focus-within:ring-2 focus-within:ring-gray-400">
           <TagGroup
             id={tagGroupIdentifier}
             aria-label="Selected items"
@@ -207,18 +207,18 @@ export function MultipleSelect({
           >
             <TagList
               items={selectedItems.items}
-              className="flex items-center gap-1"
+              className="flex flex-wrap items-center gap-1"
             >
               {(item: Option) => (
                 <Tag
-                  className="inline-flex items-center gap-x-1.5 rounded-md bg-blue-100 px-2 py-0.5 text-sm text-blue-800"
+                  className="inline-flex items-center gap-x-1.5 rounded-md bg-gray-200 px-2 py-0.5 text-sm text-gray-800"
                   textValue={item.name}
                   id={item.id}
                 >
                   {item.name}
                   <Button
                     slot="remove"
-                    className="grid cursor-pointer place-content-center"
+                    className="grid cursor-pointer place-content-center text-gray-500 hover:bg-gray-600 hover:text-gray-300 focus:bg-gray-600 focus:outline-none"
                     type="button"
                   >
                     <Close size="xs" />
@@ -236,10 +236,10 @@ export function MultipleSelect({
             inputValue={fieldState.inputValue}
             onSelectionChange={onSelectionChange}
             onInputChange={onInputChange}
-            className="flex flex-1"
+            className="relative flex flex-1"
           >
             <Input
-              className="outline:none ml-1 flex-1 px-0.5 py-1 shadow-none ring-0 focus:ring-0 focus:outline-none"
+              className="ml-1 flex-1 border-none bg-transparent px-0.5 py-1 text-gray-800 placeholder-gray-400 ring-0 outline-none focus:ring-0"
               placeholder={placeholder}
               onBlur={() => {
                 setFieldState({
@@ -252,7 +252,7 @@ export function MultipleSelect({
             />
 
             <Button
-              className="absolute top-1/2 right-2 -translate-y-1/2 p-1 text-gray-400"
+              className="absolute top-1/2 right-2 -translate-y-1/2 p-1 text-gray-400 hover:text-gray-600 focus:outline-none"
               type="button"
             >
               <ChevrondownIcon />
@@ -267,18 +267,17 @@ export function MultipleSelect({
             >
               <ListBox
                 selectionMode="multiple"
-                className="rounded-md border border-red-200 bg-white p-1 shadow-lg"
+                className="rounded-md border border-gray-200 bg-white p-1 shadow-lg"
                 disallowEmptySelection={false}
                 renderEmptyState={
                   renderEmptyState
                     ? () => renderEmptyState(fieldState.inputValue)
                     : () => (
                         <div
-                          className="block cursor-pointer p-3 hover:bg-blue-500 focus:bg-blue-500"
+                          className="block cursor-pointer rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
                           role="button"
                           onMouseDown={(e) => {
                             e.stopPropagation();
-
                             if (fieldState.inputValue) {
                               onCreateTag();
                             }
@@ -288,7 +287,7 @@ export function MultipleSelect({
                           {fieldState.inputValue ? (
                             <>
                               Create:{' '}
-                              <strong className="text-fg font-medium hover:bg-blue-500 focus:bg-blue-500">
+                              <strong className="font-medium text-gray-900">
                                 {fieldState.inputValue}
                               </strong>
                             </>
@@ -304,7 +303,7 @@ export function MultipleSelect({
                     key={item.id}
                     id={item.id}
                     textValue={item.name}
-                    className="cursor-pointer px-3 py-2 hover:bg-blue-500 focus:bg-blue-500 focus:outline-none data-[focused]:bg-blue-500"
+                    className="cursor-pointer rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none data-[focused]:bg-gray-100"
                   >
                     {item.name}
                   </ListBoxItem>
@@ -315,7 +314,7 @@ export function MultipleSelect({
         </div>
       </div>
       {description && (
-        <Text slot="description" className={`mt-1 text-sm text-red-500`}>
+        <Text slot="description" className="mt-1 text-sm text-gray-500">
           {description}
         </Text>
       )}
