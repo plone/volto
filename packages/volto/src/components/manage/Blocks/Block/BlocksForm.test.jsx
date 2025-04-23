@@ -44,7 +44,6 @@ vi.mock('react-beautiful-dnd', () => ({
 }));
 
 vi.mock('./Order/Order', () => ({
-  __esModule: true,
   default: () => <div>Order Component</div>,
 }));
 
