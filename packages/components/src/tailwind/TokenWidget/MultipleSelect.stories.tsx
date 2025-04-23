@@ -56,4 +56,12 @@ export const Default = (args: MultipleSelectProps<Option>) => {
 
 Default.args = {
   label: 'Fruits',
+} as Partial<MultipleSelectProps<Option>>;
+
+export const NonCreatable = Default.bind({});
+
+NonCreatable.args = {
+  ...Default.args,
+  creatable: false,
+  label: 'Non-Creatable Fruits',
 };

@@ -32,6 +32,7 @@ export interface MultipleSelectProps<T extends object> {
   placeholder?: string;
   label?: string;
   description?: string;
+  creatable?: boolean;
   onItemInserted?: (key: Key) => void;
   onItemCleared?: (key: Key) => void;
   renderEmptyState?: (inputValue: string) => React.ReactNode;
@@ -47,6 +48,7 @@ export function MultipleSelect({
   onItemInserted,
   renderEmptyState,
   selectedItems,
+  creatable = true,
   ...props
 }: MultipleSelectProps<Option>) {
   const triggerRef = useRef<HTMLDivElement | null>(null);
@@ -184,11 +186,11 @@ export function MultipleSelect({
         popLast();
       }
 
-      if (e.key === 'Enter' && fieldState.inputValue) {
+      if (e.key === 'Enter' && fieldState.inputValue && creatable) {
         onCreateTag();
       }
     },
-    [popLast, fieldState.inputValue, onCreateTag],
+    [popLast, fieldState.inputValue, onCreateTag, creatable],
   );
 
   return (
@@ -278,7 +280,7 @@ export function MultipleSelect({
                           role="button"
                           onMouseDown={(e) => {
                             e.stopPropagation();
-                            if (fieldState.inputValue) {
+                            if (fieldState.inputValue && creatable) {
                               onCreateTag();
                             }
                           }}
@@ -286,7 +288,7 @@ export function MultipleSelect({
                         >
                           {fieldState.inputValue ? (
                             <>
-                              Create:{' '}
+                              {creatable ? 'Create:' : 'No results found for:'}{' '}
                               <strong className="font-medium text-gray-900">
                                 {fieldState.inputValue}
                               </strong>
