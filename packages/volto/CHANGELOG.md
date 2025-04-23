@@ -67,7 +67,7 @@ myst:
 - Add Russian translation in Volto. @toropok [#6874](https://github.com/plone/volto/issues/6874)
 - Enhance the `ImageInput` component to only accept image files. [@jnptk] [#6926](https://github.com/plone/volto/issues/6926)
 - Fix translations default of ContentsDeleteModal: 'linkintegrity: delete' -> 'delete' if no link to break. @ksuess [#6964](https://github.com/plone/volto/issues/6964)
-- Use Plone 6.1.1 final. @sneridagh 
+- Use Plone 6.1.1 final. @sneridagh
 
 ### Bugfix
 
@@ -1946,7 +1946,7 @@ myst:
 - (FIX): put padding so the text is not clipped #5305 @dobri1408 [#5305](https://github.com/plone/volto/issues/5305)
 - Fix compare translations view @sneridagh [#5327](https://github.com/plone/volto/issues/5327)
 - Fix DatetimeWidget on FF, the button default if no type is set is sending the form. @sneridagh
-  See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#formmethod [#5343](https://github.com/plone/volto/issues/5343)
+  See https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#formmethod [#5343](https://github.com/plone/volto/issues/5343)
 
 ### Internal
 
