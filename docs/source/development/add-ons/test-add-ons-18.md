@@ -264,7 +264,7 @@ You can use the {envvar}`ADDONS` environment variable to define them.
 ADDONS=test-addon,test-addon2 pnpm start
 ```
 
-See {doc}`../configuration/environmentvariables` for more information.
+See {doc}`../../configuration/environmentvariables` for more information.
 
 
 ### Override Jest configuration
