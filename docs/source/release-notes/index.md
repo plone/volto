@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.14.0 (2025-04-23)
+
+### Feature
+
+- Added current evaluated `querystring` as a parameter in expander's `querystring` key when it's a function. @sneridagh [#7012](https://github.com/plone/volto/issues/7012)
+
 ## 18.13.0 (2025-04-22)
 
 ### Feature
