@@ -14,6 +14,7 @@ import deleteSVG from '@plone/volto/icons/delete.svg';
 import addSVG from '@plone/volto/icons/add.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import { v4 as uuid } from 'uuid';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   labelRemoveItem: {
@@ -71,11 +72,20 @@ const ObjectListWidget = (props) => {
     block,
     fieldSet,
     id,
-    schema,
     value = [],
     onChange,
     schemaExtender,
+    schemaName,
   } = props;
+
+  // This allows to use a `schemaName` prop defined as source of the schema
+  // if not present, it will use the schema defined in the schema prop
+  const schema =
+    config.getUtility({
+      type: 'schema',
+      name: schemaName,
+    }).method || props.schema;
+
   const [localActiveObject, setLocalActiveObject] = React.useState(
     props.activeObject ?? value.length - 1,
   );
