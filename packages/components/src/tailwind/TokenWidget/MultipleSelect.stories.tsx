@@ -30,9 +30,39 @@ export default {
   },
   tags: ['autodocs'],
   argTypes: {
-    label: { control: 'text' },
-    placeholder: { control: 'text' },
-    description: { control: 'text' },
+    items: {
+      control: false,
+      description:
+        'The list of available options to display in the dropdown. Each item should have an `id` and a `name`.',
+    },
+    selectedItems: {
+      control: 'false',
+      description:
+        'A list manager initialized using `useListData({ initialItems })`. Used to control selected items statefully.',
+    },
+    label: { control: 'text', description: 'The label of the tag field' },
+    placeholder: {
+      control: 'text',
+      description: 'Placeholder text displayed when no items are selected.',
+    },
+    description: {
+      control: 'text',
+      description: 'Additional helper text displayed below the field.',
+    },
+    onItemInserted: {
+      action: 'item-inserted',
+      description:
+        'Callback fired when an item is selected. Receives the item `id` as a `Key`.',
+    },
+    onItemCleared: {
+      action: 'item-cleared',
+      description:
+        'Callback fired when an item is removed. Receives the item `id` as a `Key`.',
+    },
+    creatable: {
+      control: 'boolean',
+      description: 'Whether the user can create new options not in the list.',
+    },
   },
 };
 
@@ -43,19 +73,16 @@ export const Default = (args: MultipleSelectProps<Option>) => {
 
   return (
     <div className="w-full max-w-[400px]">
-      <MultipleSelect
-        {...args}
-        items={items}
-        selectedItems={selectedItems}
-        onItemInserted={(id: Key) => console.log('Item inserted:', id)}
-        onItemCleared={(id: Key) => console.log('Item removed:', id)}
-      />
+      <MultipleSelect {...args} selectedItems={selectedItems} />
     </div>
   );
 };
 
 Default.args = {
   label: 'Fruits',
+  items: items,
+  onItemInserted: (id: Key) => console.log('Item inserted:', id),
+  onItemCleared: (id: Key) => console.log('Item removed:', id),
 } as Partial<MultipleSelectProps<Option>>;
 
 export const NonCreatable = Default.bind({});
