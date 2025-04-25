@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.14.1 (2025-04-25)
+
+### Bugfix
+
+- Add support for both Vitest and Jest in `__mocks__` folders of Volto core. Add-on tests using Jest relies on them. @Abhishek-17h [#7000](https://github.com/plone/volto/issues/7000)
+
 ## 18.14.0 (2025-04-23)
 
 ### Feature
