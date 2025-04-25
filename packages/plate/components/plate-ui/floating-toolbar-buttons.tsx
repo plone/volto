@@ -35,16 +35,14 @@ export function FloatingToolbarButtons() {
     <>
       {!readOnly && (
         <>
-          <ToolbarGroup>
+          {/* <ToolbarGroup>
             <AIToolbarButton tooltip="AI commands">
               <WandSparklesIcon />
               Ask AI
             </AIToolbarButton>
-          </ToolbarGroup>
+          </ToolbarGroup> */}
 
           <ToolbarGroup>
-            <TurnIntoDropdownMenu />
-
             <MarkToolbarButton nodeType={BoldPlugin.key} tooltip="Bold (⌘+B)">
               <BoldIcon />
             </MarkToolbarButton>
@@ -56,12 +54,12 @@ export function FloatingToolbarButtons() {
               <ItalicIcon />
             </MarkToolbarButton>
 
-            <MarkToolbarButton
+            {/* <MarkToolbarButton
               nodeType={UnderlinePlugin.key}
               tooltip="Underline (⌘+U)"
             >
               <UnderlineIcon />
-            </MarkToolbarButton>
+            </MarkToolbarButton> */}
 
             <MarkToolbarButton
               nodeType={StrikethroughPlugin.key}
@@ -70,18 +68,20 @@ export function FloatingToolbarButtons() {
               <StrikethroughIcon />
             </MarkToolbarButton>
 
+            <LinkToolbarButton />
+
             <MarkToolbarButton nodeType={CodePlugin.key} tooltip="Code (⌘+E)">
               <Code2Icon />
             </MarkToolbarButton>
 
-            <LinkToolbarButton />
+            <TurnIntoDropdownMenu />
           </ToolbarGroup>
         </>
       )}
 
       <ToolbarGroup>
-        <CommentToolbarButton />
-        <SuggestionToolbarButton />
+        {/* <CommentToolbarButton />
+        <SuggestionToolbarButton /> */}
 
         {!readOnly && <MoreDropdownMenu />}
       </ToolbarGroup>

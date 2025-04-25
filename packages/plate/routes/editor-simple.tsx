@@ -1,12 +1,14 @@
 import { Toaster } from 'sonner';
 import type { Value } from '@udecode/plate';
 
-import { PlateEditor } from '@/components/editor/plate-editor';
+import { SimplePlateEditor } from '@/components/editor/plate-editor';
 import { SettingsProvider } from '@/components/editor/settings';
 import { useRouteLoaderData } from 'react-router';
 import type { BlocksData } from '@plone/types';
 import { atom, useAtom } from 'jotai';
 import { HydrateAtoms } from '@plone/helpers';
+import { Provider } from 'jotai';
+import { createStore } from 'jotai';
 
 function blocksToPlate({
   blocks,
@@ -41,7 +43,7 @@ function blocksToPlate({
 }
 
 const ConsoleLog = () => {
-  const [editorState] = useAtom(editorAtom);
+  const [editorState] = useAtom(editorAtomSimple);
 
   return (
     <div className="mt-4">
@@ -50,24 +52,37 @@ const ConsoleLog = () => {
   );
 };
 
-export const editorAtom = atom({} as Value);
+export const editorAtomSimple = atom({} as Value);
+const customStore = createStore();
 
 export default function Page() {
   const { content } = useRouteLoaderData('root');
-  const initialValue = blocksToPlate({
-    blocks: content.blocks,
-    blocks_layout: content.blocks_layout,
-  });
 
   return (
-    <HydrateAtoms atomValues={[[editorAtom, initialValue]]}>
-      <div className="h-[90%] w-full" data-registry="plate">
-        <SettingsProvider>
-          <PlateEditor value={initialValue} />
-        </SettingsProvider>
-        <ConsoleLog />
-        <Toaster />
-      </div>
-    </HydrateAtoms>
+    <Provider store={customStore}>
+      <HydrateAtoms
+        atomValues={[
+          [
+            editorAtomSimple,
+            blocksToPlate({
+              blocks: content.blocks,
+              blocks_layout: content.blocks_layout,
+            }),
+          ],
+        ]}
+      >
+        <div className="h-[90%] w-full" data-registry="plate">
+          <SimplePlateEditor
+            value={blocksToPlate({
+              blocks: content.blocks,
+              blocks_layout: content.blocks_layout,
+            })}
+          />
+
+          <ConsoleLog />
+          <Toaster />
+        </div>
+      </HydrateAtoms>
+    </Provider>
   );
 }

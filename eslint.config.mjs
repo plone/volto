@@ -56,6 +56,7 @@ export default tseslint.config(
       ],
       'no-alert': 'warn',
       'no-debugger': 'warn',
+      'react/no-children-prop': 'off',
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'off',

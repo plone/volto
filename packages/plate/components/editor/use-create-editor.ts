@@ -52,6 +52,7 @@ import {
 import { TogglePlugin } from '@udecode/plate-toggle/react';
 import {
   type CreatePlateEditorOptions,
+  createPlatePlugin,
   ParagraphPlugin,
   PlateLeaf,
   usePlateEditor,
@@ -98,8 +99,16 @@ import { TableRowElement } from '@/components/plate-ui/table-row-element';
 import { TocElement } from '@/components/plate-ui/toc-element';
 import { ToggleElement } from '@/components/plate-ui/toggle-element';
 
+const TitlePlugin = createPlatePlugin({
+  key: 'title',
+  node: {
+    isElement: true,
+    type: 'title',
+  },
+});
+
 export const viewComponents = {
-  // title: withProps(HeadingElement, { variant: 'h1' }),
+  title: withProps(HeadingElement, { as: 'h1', className: 'text-3xl' }),
   [AudioPlugin.key]: MediaAudioElement,
   [BlockquotePlugin.key]: BlockquoteElement,
   [BoldPlugin.key]: withProps(PlateLeaf, { as: 'strong' }),
@@ -175,6 +184,7 @@ export const useCreateEditor = (
       plugins: [
         ...copilotPlugins,
         ...editorPlugins,
+        TitlePlugin,
         FixedToolbarPlugin,
         FloatingToolbarPlugin,
       ],
