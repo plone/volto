@@ -1,0 +1,6 @@
+dist
+/bin
+/lib
+/include
+
+docs/_build/

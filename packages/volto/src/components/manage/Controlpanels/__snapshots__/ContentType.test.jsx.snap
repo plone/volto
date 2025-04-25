@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ContentType > renders dexterity content-type component 1`] = `
+<div>
+  <div
+    class="ui container"
+    id="page-controlpanel"
+  >
+    <div
+      class="ui disabled header"
+    >
+      Page Content Type
+    </div>
+    <div
+      data-schema="{}"
+      id="Form"
+    />
+  </div>
+  <div
+    id="toolbar"
+  />
+</div>
+`;

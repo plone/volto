@@ -1,0 +1,47 @@
+:root {
+  --quanta-air: #fff;
+  --quanta-space: #000;
+  --quanta-denim: #021322;
+
+  --quanta-snow: #f3f5f7;
+  --quanta-smoke: #e4e8ec;
+  --quanta-silver: #c3cdd5;
+  --quanta-dolphin: #8296a6;
+  --quanta-pigeon: #617789;
+  --quanta-iron: #4a5b68;
+
+  --quanta-arctic: #e2f1fd;
+  --quanta-sky: #c5e3fc;
+  --quanta-azure: #7cc0f8;
+  --quanta-cobalt: #2597f4;
+  --quanta-sapphire: #0b78d0;
+  --quanta-royal: #085696;
+
+  --quanta-ballet: #fee9e7;
+  --quanta-flamingo: #fcd0ca;
+  --quanta-poppy: #f9a094;
+  --quanta-rose: #f54e38;
+  --quanta-candy: #d0220b;
+  --quanta-wine: #a91c09;
+
+  --quanta-cream: #fcf3cf;
+  --quanta-banana: #faeaad;
+  --quanta-lemmon: #f6d355;
+  --quanta-gold: #b48f09;
+  --quanta-dijon: #917308;
+  --quanta-bronze: #6b5506;
+
+  --quanta-daiquiri: #e2f7de;
+  --quanta-mint: #c5efbe;
+  --quanta-celery: #8bde7c;
+  --quanta-neon: #3da72a;
+  --quanta-emerald: #318722;
+  --quanta-turtle: #256619;
+
+  --quanta-aqua: #d6f5f2;
+  --quanta-spa: #baeee9;
+  --quanta-tiffany: #74dcd4;
+  --quanta-turquoise: #29a399;
+  --quanta-peacock: #207e77;
+  --quanta-puya: #175e58;
+}
