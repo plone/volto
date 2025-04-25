@@ -440,7 +440,8 @@ class Config {
       throw new Error(`No slot component ${name} in slot ${slot} found`);
     }
     const result = currentSlotComponents.slice();
-    currentSlot.data[name] = result.splice(position, 1);
+    result.splice(position, 1);
+    currentSlot.data[name] = result;
   }
 
   registerUtility(options: {
