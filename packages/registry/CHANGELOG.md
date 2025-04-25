@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.5.2 (2025-04-25)
+
+### Bugfix
+
+- Fixed `unRegisterSlotComponent` method. @sneridagh [#7016](https://github.com/plone/volto/issues/7016)
+
 ## 2.5.1 (2025-04-22)
 
 ### Bugfix
