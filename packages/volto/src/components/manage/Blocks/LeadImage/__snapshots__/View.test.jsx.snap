@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renders a view image component 1`] = `
+<p
+  className="block image align center"
+>
+  <img
+    alt=""
+    className=""
+    imageField="image"
+    item={
+      {
+        "image": {
+          "download": "http://localhost:3000/image.png",
+          "height": 400,
+          "scales": {
+            "preview": {
+              "download": "http://localhost:3000/image.png/@@images/image/image-400.png",
+              "height": 400,
+              "width": 400,
+            },
+          },
+          "width": 400,
+        },
+      }
+    }
+    responsive={true}
+  />
+</p>
+`;

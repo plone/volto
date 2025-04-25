@@ -1,0 +1,36 @@
+@import './ColorSlider.css';
+
+@layer plone-components.base {
+  .react-aria-ColorArea {
+    width: 192px;
+    height: 192px;
+    flex-shrink: 0;
+    border-radius: 4px;
+  }
+
+  .react-aria-ColorThumb {
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+    border: 2px solid white;
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 1px black,
+      inset 0 0 0 1px black;
+
+    &[data-focus-visible] {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .react-aria-ColorArea {
+    &[data-disabled] {
+      background: gray !important;
+
+      .react-aria-ColorThumb {
+        background: gray !important;
+      }
+    }
+  }
+}
