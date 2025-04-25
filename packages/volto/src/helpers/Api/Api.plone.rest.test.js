@@ -1,6 +1,5 @@
 import config from '@plone/volto/registry';
 import Api from './Api';
-import { vi } from 'vitest';
 
 vi.mock('superagent', () => ({
   default: {

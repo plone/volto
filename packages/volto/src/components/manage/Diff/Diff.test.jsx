@@ -6,15 +6,18 @@ import { waitFor, render, screen } from '@testing-library/react';
 
 import Diff from './Diff';
 
-import { vi, beforeAll } from 'vitest';
-
 const mockStore = configureStore();
 
 vi.mock('../Toolbar/Toolbar', () => ({
   default: vi.fn(() => <div id="Portal" />),
 }));
 
-vi.mock('@plone/volto/helpers/Loadable/Loadable');
+vi.mock('@plone/volto/helpers/Loadable/Loadable', async () => {
+  return await import(
+    '@plone/volto/helpers/Loadable/__mocks__/Loadable.vitest.jsx'
+  );
+});
+
 beforeAll(async () => {
   const { __setLoadables } = await import(
     '@plone/volto/helpers/Loadable/Loadable'
