@@ -1,5 +1,4 @@
 import { injectIntl } from 'react-intl';
-import React from 'react';
 import MapsSidebarComponent from './MapsSidebar';
 import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
 
@@ -31,12 +30,11 @@ function StoryComponent(args) {
 export const MapsSidebar = StoryComponent.bind({});
 MapsSidebar.args = {
   title: 'New Delhi Map',
-  url:
-    'https://www.google.com/maps/d/u/0/viewer?mid=1IEVwjHNKZcYI5LKHZfRSFXEKyzg&hl=en_US&ll=28.536795394594428%2C77.15845149999998&z=11',
+  url: 'https://www.google.com/maps/d/u/0/viewer?mid=1IEVwjHNKZcYI5LKHZfRSFXEKyzg&hl=en_US&ll=28.536795394594428%2C77.15845149999998&z=11',
 };
 
 export default {
-  title: 'Public components/Maps/MapsSidebar',
+  title: 'Internal Components/Maps/MapsSidebar',
   component: MapsSidebar,
   decorators: [
     (Story) => (
@@ -47,9 +45,11 @@ export default {
   ],
   argTypes: {
     title: {
+      control: 'text',
       description: 'Alt text of Map',
     },
     url: {
+      control: 'text',
       description: 'Url of the Map',
     },
   },
