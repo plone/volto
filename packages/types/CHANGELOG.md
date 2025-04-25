@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.4.1 (2025-04-25)
+
+### Bugfix
+
+- Better typing for `apiExpandersType` introduced in #7012. @sneridagh [#7016](https://github.com/plone/volto/issues/7016)
+
 ## 1.4.0 (2025-04-22)
 
 ### Feature
