@@ -1,0 +1,126 @@
+.objectbrowser-field {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid @borderColor;
+
+  .selected-values {
+    display: flex;
+
+    overflow: hidden;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    align-items: center;
+
+    padding: 0.5em 0;
+    margin-right: 1.5em;
+
+    .ui.label {
+      display: flex;
+      overflow: hidden;
+      margin: 0.3em;
+
+      .item-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .action.button {
+    padding: 0;
+    background: none;
+    color: @textColor;
+  }
+
+  .placeholder {
+    color: #878f93;
+  }
+
+  input {
+    border: none !important;
+  }
+}
+
+.object-browser {
+  .mode-switch {
+    margin-right: 8px;
+    cursor: pointer;
+    float: right;
+  }
+
+  header h2 {
+    margin: 2px 0 !important;
+  }
+
+  .searchResults {
+    margin-left: 20px;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+  }
+
+  ul.object-listing {
+    padding: 0;
+  }
+
+  .image-wrapper {
+    display: block;
+    margin: 16px;
+    float: left;
+
+    img,
+    .icon-wrapper {
+      background-color: #edf1f2;
+      cursor: pointer;
+      outline: 0;
+    }
+
+    .selected {
+      outline: solid 3px #517776 !important;
+    }
+
+    img:hover,
+    .icon-wrapper:hover {
+      outline: solid 3px rgb(187, 198, 200);
+    }
+
+    .image-preview,
+    .image-preview:hover {
+      display: flex;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+
+      img {
+        width: 200px;
+        height: 200px;
+        object-fit: contain;
+      }
+    }
+
+    .image-preview,
+    .image-title {
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .image-title {
+      margin-top: 5px;
+    }
+
+    .image-title-content {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .icon-wrapper {
+      display: flex;
+      padding: 46px;
+    }
+  }
+}

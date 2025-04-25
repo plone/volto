@@ -1,0 +1,35 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renders a TemplateChooser component 1`] = `
+<div
+  className="template-chooser"
+>
+  <div
+    className="ui message"
+  >
+    <div
+      className="ui one column grid"
+    >
+      <div
+        className="column"
+      >
+        <button
+          className="ui button template-chooser-item"
+          onClick={[Function]}
+          type="button"
+        >
+          <img
+            alt=""
+            src="/src/components/manage/TemplateChooser/template.svg"
+          />
+          <div
+            className="template-chooser-title"
+          >
+            Template default translation
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

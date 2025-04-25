@@ -15,10 +15,9 @@ import strikethroughIcon from '@plone/volto/icons/strikethrough.svg';
 import subindexIcon from '@plone/volto/icons/subindex.svg';
 import superindexIcon from '@plone/volto/icons/superindex.svg';
 
-import { createEmptyParagraph } from '@plone/volto-slate/utils';
+import { createEmptyParagraph } from '@plone/volto-slate/utils/blocks';
 
 import {
-  MarkButton,
   MarkElementButton,
   BlockButton,
   ClearFormattingButton,
@@ -96,7 +95,7 @@ export const buttons = {
     />
   ),
   code: (props) => (
-    <MarkButton title="Code" format="code" icon={codeIcon} {...props} />
+    <MarkElementButton title="Code" format="code" icon={codeIcon} {...props} />
   ),
   'heading-two': (props) => (
     <BlockButton

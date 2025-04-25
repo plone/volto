@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renders an edit image block component 1`] = `
+<div
+  className="block image align center"
+>
+  <img
+    alt=""
+    className=""
+    loading="lazy"
+    responsive={true}
+    src="image"
+  />
+</div>
+`;

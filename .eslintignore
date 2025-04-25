@@ -1,3 +1,9 @@
-webpack/*
-karma.conf.js
-tests.webpack.js
+node_modules
+build
+packages/volto
+packages/volto-guillotina
+!.*
+dist
+packages/registry/lib
+packages/registry/docs
+apps/rr7/.react-router
