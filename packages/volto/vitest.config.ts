@@ -36,7 +36,7 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: [
-      './test-setup-globals.js',
+      './test-setup-globals-vitest.js',
       './test-setup-config.jsx',
       './jest-setup-afterenv.js',
       './jest-addons-loader.js',
