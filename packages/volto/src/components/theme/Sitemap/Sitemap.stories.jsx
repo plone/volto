@@ -1,11 +1,17 @@
 import { injectIntl } from 'react-intl';
-import React from 'react';
 import SitemapComponent from './Sitemap';
 import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
 
 const IntlSitemapComponent = injectIntl(SitemapComponent);
 
 function StoryComponent(args) {
+  // Add mock location object
+  const mockLocation = {
+    pathname: '/sitemap',
+    search: '',
+    hash: '',
+    state: null,
+  };
   return (
     <Wrapper
       customStore={{
@@ -20,7 +26,12 @@ function StoryComponent(args) {
       }}
     >
       <div id="toolbar" style={{ display: 'none' }} />
-      <IntlSitemapComponent />
+      <IntlSitemapComponent
+        location={mockLocation}
+        getNavigation={() => {}}
+        lang="en"
+        items={args.items}
+      />
     </Wrapper>
   );
 }
