@@ -1,12 +1,6 @@
 // import superagent from 'superagent';
 import config from '@plone/volto/registry';
 import Api from './Api';
-import { vi } from 'vitest';
-
-// jest.mock('react-cookie', () => ({
-//   load: jest.fn(() => 'token'),
-// }));
-//
 
 vi.mock('superagent', () => ({
   default: {
