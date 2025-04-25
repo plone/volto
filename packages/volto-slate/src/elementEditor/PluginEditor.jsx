@@ -1,11 +1,11 @@
 /* eslint no-console: ["error", { allow: ["error"] }] */
-import { isEqual } from 'lodash';
+import isEqual from 'lodash/isEqual';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { ReactEditor } from 'slate-react';
-import { Icon as VoltoIcon } from '@plone/volto/components';
+import VoltoIcon from '@plone/volto/components/theme/Icon/Icon';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
-import { setPluginOptions } from '@plone/volto-slate/actions';
+import { setPluginOptions } from '@plone/volto-slate/actions/plugins';
 import BaseSchemaProvider from './SchemaProvider';
 
 import briefcaseSVG from '@plone/volto/icons/briefcase.svg';

@@ -1,3 +1,4 @@
+export function installDefaultViews(config: any): any;
 export namespace layoutViews {
     export { DefaultView as document_view };
     export { SummaryView as summary_view };

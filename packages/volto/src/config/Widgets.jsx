@@ -5,6 +5,7 @@ import {
   CheckboxWidget,
   FileWidget,
   IdWidget,
+  HiddenWidget,
   PasswordWidget,
   QueryWidget,
   QuerySortOnWidget,
@@ -27,9 +28,13 @@ import {
   VocabularyTermsWidget,
   SelectMetadataWidget,
   SelectAutoComplete,
+  StaticTextWidget,
   ColorPickerWidget,
   DatetimeWidget,
+  TimeWidget,
   RecurrenceWidget,
+  RadioGroupWidget,
+  CheckboxGroupWidget,
 } from '@plone/volto/components/manage/Widgets';
 
 import ArrayViewWidget from '@plone/volto/components/theme/Widgets/ArrayWidget';
@@ -51,6 +56,8 @@ import TitleViewWidget from '@plone/volto/components/theme/Widgets/TitleWidget';
 import TokenViewWidget from '@plone/volto/components/theme/Widgets/TokenWidget';
 import UrlViewWidget from '@plone/volto/components/theme/Widgets/UrlWidget';
 import ImageWidget from '@plone/volto/components/manage/Widgets/ImageWidget';
+import HiddenViewWidget from '@plone/volto/components/manage/Widgets/HiddenWidget';
+import StaticTextViewWidget from '@plone/volto/components/manage/Widgets/StaticTextWidget';
 
 // Widgets mapping
 export const widgetMapping = {
@@ -61,11 +68,13 @@ export const widgetMapping = {
     remoteUrl: UrlWidget,
     id: IdWidget,
     site_logo: RegistryImageWidget,
+    frontend_domain: TextWidget,
   },
   widget: {
     textarea: TextareaWidget,
     datetime: DatetimeWidget,
     date: DatetimeWidget,
+    time: TimeWidget,
     password: PasswordWidget,
     file: FileWidget,
     image: ImageWidget,
@@ -89,6 +98,10 @@ export const widgetMapping = {
     color_picker: ColorPickerWidget,
     select: SelectWidget,
     schema: SchemaWidget,
+    static_text: StaticTextWidget,
+    hidden: HiddenWidget,
+    radio_group: RadioGroupWidget,
+    checkbox_group: CheckboxGroupWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
@@ -138,6 +151,8 @@ export const widgetMapping = {
       title: TitleViewWidget,
       url: UrlViewWidget,
       internal_url: InternalUrlWidget,
+      static_text: StaticTextViewWidget,
+      hidden: HiddenViewWidget,
       object: () => '', // TODO: Not implemented yet: Object View widget
     },
     vocabulary: {},
@@ -151,3 +166,8 @@ export const widgetMapping = {
 
 // Default Widget
 export const defaultWidget = TextWidget;
+
+export function installDefaultWidgets(config) {
+  config.widgets = widgetMapping;
+  config.widgets.default = defaultWidget;
+}

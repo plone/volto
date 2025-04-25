@@ -8,7 +8,15 @@
 @import './Label.css';
 @import './Checkbox.css';
 @import './CheckboxGroup.css';
+@import './ColorArea.css';
+@import './ColorField.css';
+@import './ColorPicker.css';
+@import './ColorSlider.css';
+@import './ColorSwatch.css';
+@import './ColorSwatchPicker.css';
 @import './ComboBox.css';
+@import './Disclosure.css';
+@import './DisclosureGroup.css';
 @import './NumberField.css';
 @import './RadioGroup.css';
 @import './Switch.css';

@@ -15,7 +15,7 @@ import strikethroughIcon from '@plone/volto/icons/strikethrough.svg';
 import subindexIcon from '@plone/volto/icons/subindex.svg';
 import superindexIcon from '@plone/volto/icons/superindex.svg';
 
-import { createEmptyParagraph } from '@plone/volto-slate/utils';
+import { createEmptyParagraph } from '@plone/volto-slate/utils/blocks';
 
 import {
   MarkElementButton,

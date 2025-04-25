@@ -1,10 +1,11 @@
 # requirements.txt
 linkify-it-py
 myst-parser
-plone-sphinx-theme
+plone-sphinx-theme<2
 sphinx-autobuild
 sphinx-copybutton
 sphinx-examples
 sphinxcontrib-video
+sphinxcontrib-youtube
 sphinxext-opengraph
-vale==2.30.0
+vale

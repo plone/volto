@@ -14,7 +14,9 @@ import routes from '@root/routes';
 import config from '@plone/volto/registry';
 
 import configureStore from '@plone/volto/store';
-import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
+import Api from '@plone/volto/helpers/Api/Api';
+import { persistAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
+import ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 
 export const history = createBrowserHistory();
 
@@ -55,6 +57,10 @@ export default function client() {
   // TODO: To be removed when the use of the legacy traverse is deprecated.
   if (window.env.RAZZLE_LEGACY_TRAVERSE) {
     config.settings.legacyTraverse = true;
+  }
+  // Support for setting the default language from a server environment variable
+  if (window.env.defaultLanguage) {
+    config.settings.defaultLanguage = window.env.defaultLanguage;
   }
 
   loadableReady(() => {

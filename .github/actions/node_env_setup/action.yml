@@ -12,7 +12,7 @@ runs:
 
     - name: Enable corepack
       shell: bash
-      run: corepack enable
+      run: npm i -g corepack@latest && corepack enable
 
     - name: Get pnpm store directory
       shell: bash

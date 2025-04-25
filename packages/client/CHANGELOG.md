@@ -8,6 +8,54 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.23 (2025-02-08)
+
+### Internal
+
+- Update Vite version. @sneridagh [#6640](https://github.com/plone/volto/pull/6640)
+- Update internal `peerDependencies` to include React 19.
+  Update TS version. @sneridagh [#6641](https://github.com/plone/volto/pull/6641)
+- Test with Plone 6.1.0rc1. @sneridagh [#6682](https://github.com/plone/volto/pull/6682)
+- Remove hard dependencies on `react`, use `peerDependencies` instead. @sneridagh [#6728](https://github.com/plone/volto/pull/6728)
+
+## 1.0.0-alpha.22 (2025-01-24)
+
+### Documentation
+
+- Fix typo in README. @sneridagh [#6599](https://github.com/plone/volto/pull/6599)
+
+## 1.0.0-alpha.21 (2025-01-15)
+
+### Feature
+
+- Import `getContent` bare fetcher. @sneridagh [#6594](https://github.com/plone/volto/pull/6594)
+
+## 1.0.0-alpha.20 (2024-11-05)
+
+### Internal
+
+- Bump local `typescript` version. @sneridagh [#6461](https://github.com/plone/volto/pull/6461)
+- Replace `parcel` with `tsup`. @sneridagh [#6466](https://github.com/plone/volto/pull/6466)
+
+## 1.0.0-alpha.19 (2024-10-18)
+
+### Feature
+
+- Add support for the `depth` parameter on `getNavigationQuery`. @ebrehault [#6400](https://github.com/plone/volto/pull/6400)
+
+### Internal
+
+- Upgrade `@tanstack/react-query`. @sneridagh [#6069](https://github.com/plone/volto/pull/6069)
+- Update Vite and vitest versions @sneridagh [#6373](https://github.com/plone/volto/pull/6373)
+- Added watch script to package.json @pnicolli @deodorhunter [#6382](https://github.com/plone/volto/pull/6382)
+- Update typescript and vitest everywhere @sneridagh [#6407](https://github.com/plone/volto/pull/6407)
+
+## 1.0.0-alpha.18 (2024-10-03)
+
+### Bugfix
+
+- Fixed client copy mutation, cleanup up move mutation for consistency @pnicolli [#6349](https://github.com/plone/volto/pull/6349)
+
 ## 1.0.0-alpha.17 (2024-09-13)
 
 ### Documentation

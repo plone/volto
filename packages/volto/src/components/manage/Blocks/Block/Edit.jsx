@@ -9,17 +9,15 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
-import { setSidebarTab, setUIState } from '@plone/volto/actions';
+import { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
+import { setUIState } from '@plone/volto/actions/form/form';
 import config from '@plone/volto/registry';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-import { applyBlockDefaults } from '@plone/volto/helpers';
-import { ViewDefaultBlock, EditDefaultBlock } from '@plone/volto/components';
-
-import {
-  SidebarPortal,
-  BlockSettingsSidebar,
-  BlockSettingsSchema,
-} from '@plone/volto/components';
+import ViewDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultView';
+import EditDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultEdit';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+import BlockSettingsSidebar from '@plone/volto/components/manage/Blocks/Block/Settings';
+import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -199,7 +197,7 @@ export class Edit extends Component {
             <Block
               {...this.props}
               blockNode={this.blockNode}
-              data={applyBlockDefaults(this.props)}
+              data={this.props.data}
             />
             {this.props.manage && (
               <SidebarPortal

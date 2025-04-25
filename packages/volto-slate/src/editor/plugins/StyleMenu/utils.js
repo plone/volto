@@ -1,6 +1,6 @@
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 import { Editor, Transforms } from 'slate';
-import { isBlockActive } from '@plone/volto-slate/utils';
+import { isBlockActive } from '@plone/volto-slate/utils/blocks';
 import config from '@plone/volto/registry';
 
 /**

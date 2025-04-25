@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { Accordion, Segment, Message } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import AnimateHeight from 'react-animate-height';
-import { keys, map, isEqual } from 'lodash';
+import keys from 'lodash/keys';
+import map from 'lodash/map';
+import isEqual from 'lodash/isEqual';
 import { useAtom } from 'jotai';
 import { inlineFormFieldsetsState } from './InlineFormState';
 import {
@@ -11,9 +13,9 @@ import {
   removeFromArray,
   arrayRange,
 } from '@plone/volto/helpers/Utils/Utils';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Field } from '@plone/volto/components/manage/Form';
-import { applySchemaDefaults } from '@plone/volto/helpers';
+import { applySchemaDefaults } from '@plone/volto/helpers/Blocks/Blocks';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';

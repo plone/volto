@@ -5,11 +5,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Plug, Pluggable } from '@plone/volto/components/manage/Pluggable';
-import { Helmet } from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
-import { find, isEqual, map } from 'lodash';
+import find from 'lodash/find';
+import isEqual from 'lodash/isEqual';
+import map from 'lodash/map';
 import { createPortal } from 'react-dom';
 import {
   Button,
@@ -24,9 +26,14 @@ import {
 import jwtDecode from 'jwt-decode';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { updateSharing, getSharing } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
-import { Icon, Toolbar, Toast } from '@plone/volto/components';
+import {
+  updateSharing,
+  getSharing,
+} from '@plone/volto/actions/sharing/sharing';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { toast } from 'react-toastify';
 import config from '@plone/volto/registry';
 

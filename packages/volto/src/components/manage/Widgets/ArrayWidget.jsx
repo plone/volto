@@ -9,14 +9,15 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import { find, isObject } from 'lodash';
+import find from 'lodash/find';
+import isObject from 'lodash/isObject';
 
 import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
-} from '@plone/volto/helpers';
-import { getVocabulary } from '@plone/volto/actions';
+} from '@plone/volto/helpers/Vocabularies/Vocabularies';
+import { getVocabulary } from '@plone/volto/actions/vocabularies/vocabularies';
 
 import {
   Option,
@@ -314,6 +315,7 @@ class ArrayWidget extends Component {
           // small fix for https://github.com/clauderic/react-sortable-hoc/pull/352:
           getHelperDimensions={({ node }) => node.getBoundingClientRect()}
           id={`field-${this.props.id}`}
+          aria-labelledby={`fieldset-${this.props.fieldSet}-field-label-${this.props.id}`}
           key={this.props.id}
           isDisabled={this.props.disabled || this.props.isDisabled}
           className="react-select-container"
