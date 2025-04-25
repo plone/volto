@@ -1,5 +1,4 @@
 import { injectIntl } from 'react-intl';
-import React from 'react';
 import WorkflowComponent from './Workflow';
 import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
 
