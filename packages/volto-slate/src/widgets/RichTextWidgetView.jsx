@@ -7,8 +7,7 @@ import './style.css';
 
 const messages = defineMessages({
   error: {
-    id:
-      'An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.',
+    id: 'An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.',
     defaultMessage:
       'An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.',
   },

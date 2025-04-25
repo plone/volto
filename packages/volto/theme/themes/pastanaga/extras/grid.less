@@ -1,0 +1,427 @@
+// Row block
+@blueArctic: #e2f1fd;
+@greySnow: #f3f5f7;
+@greySmoke: #e4e8ec;
+@grid-images-aspect-ratio: var(--grid-images-aspect-ratio, 16/9);
+@grid-images-object-position: var(--grid-images-object-position, top left);
+
+.block-editor-gridBlock {
+  position: relative;
+  // Removed because it broke the z-index of the blockChooser, making it fall behind
+  // z-index: 10;
+
+  .block {
+    height: 100%;
+
+    .image {
+      & > div {
+        height: 100%;
+      }
+
+      & > div > div {
+        height: 100%;
+      }
+    }
+  }
+}
+
+[class^='block-editor-'].contained {
+  .block {
+    height: 100%;
+  }
+
+  .block-editor-image.contained {
+    .image {
+      & > div {
+        height: 100%;
+      }
+
+      & > div > div {
+        height: 100%;
+      }
+    }
+  }
+
+  .ui.message {
+    height: 100%;
+    border-radius: 6px;
+    margin: 0;
+  }
+}
+
+// Override handler TODO: do it better (when using QuantaToolbar, only for grids)
+body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
+  // TODO: review
+  margin-top: 5px;
+  margin-left: 0px !important;
+}
+
+// Inner Remove block button
+.ui.basic.button.remove-block-button {
+  position: absolute;
+  z-index: 3;
+  top: 6px;
+  right: 2px;
+  display: none;
+
+  .icon {
+    height: 18px !important;
+  }
+
+  .circled {
+    padding: 8px;
+    border: 1px solid @greySmoke;
+    background: @greySnow;
+
+    &:hover {
+      background-color: @greySmoke;
+    }
+  }
+
+  &:hover {
+    background-color: transparent !important;
+  }
+}
+
+.block.gridBlock {
+  [class^='block-editor-'].selected .ui.basic.button.remove-block-button,
+  [class^='block-editor-']:hover .ui.basic.button.remove-block-button {
+    display: block;
+  }
+}
+
+// The Empty block cell (yet to be added)
+.gridBlock-empty-placeholder {
+  position: relative;
+  display: flex;
+  height: 100%;
+  min-height: 200px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: @blueArctic;
+
+  &.selected::before {
+    position: absolute;
+    // otherwise, this layer is above the object, then it does not allow clicking inside
+    z-index: -1;
+    top: -5px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    border: 1px solid rgba(120, 192, 215, 0.5);
+    border-radius: 3px;
+    content: '';
+  }
+
+  .ui.basic.button.add-block-button {
+    box-shadow: 0px 0px 0px @2px transparent inset !important;
+
+    .icon {
+      height: 32px !important;
+    }
+
+    .circled {
+      padding: 10px;
+      border: none;
+      background: @greySnow;
+
+      &:hover {
+        background-color: @greySmoke;
+      }
+    }
+
+    &:hover {
+      background-color: transparent !important;
+    }
+  }
+
+  .blocks-chooser {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
+
+// Required to overcome the droppable from b-d&d at the bottom
+// !! Required for ALL blocks that have b-d&d and a grid
+.block.gridBlock {
+  .ui.grid {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .column {
+    // Removed because it broke the z-index of the blockChooser, making it fall behind
+    // z-index: 2;
+  }
+}
+
+// Toolbar position
+.block-editor-gridBlock .block .toolbar {
+  top: -50px;
+  left: -10px;
+  border-radius: 6px;
+  box-shadow:
+    0px 9px 18px rgba(2, 19, 34, 0.18),
+    0px 6px 12px rgba(2, 19, 34, 0.06);
+  transform: initial;
+}
+
+.block.gridBlock {
+  h2,
+  h3 {
+    &:not(.headline) {
+      margin: 0 !important;
+    }
+  }
+
+  .grid-teaser-item {
+    h2,
+    h3 {
+      margin-bottom: 1rem !important;
+    }
+
+    .content {
+      h2 {
+        padding-bottom: 7px;
+        margin-bottom: 0px !important;
+        font-size: 14px;
+        font-weight: 300;
+      }
+    }
+  }
+
+  .grid-image-wrapper {
+    display: flex;
+    // This one is because Safari has a bug with flexed items, the default is
+    // align-items `stretched`, so it's required to reset it.
+    align-items: flex-start;
+  }
+
+  .grid-image-wrapper::before {
+    padding-top: 60%;
+    content: '';
+    float: left;
+  }
+
+  .grid-image-wrapper::after {
+    display: block;
+    clear: both;
+    content: '';
+  }
+
+  .grid-image-wrapper {
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .ui.message {
+    height: 100%;
+    border-radius: 6px;
+    margin: 0;
+  }
+}
+
+.grid-teaser-item {
+  display: flex;
+  flex-direction: column;
+
+  a,
+  a:hover {
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  p {
+    // Defaults are always standard, on theme with customizations
+    margin-bottom: 0;
+    text-align: left;
+  }
+
+  &.default {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      max-width: 300px;
+      align-self: center;
+    }
+  }
+
+  &.top .grid-image-wrapper {
+    margin-bottom: 25px;
+  }
+
+  &.top a {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// Template chooser
+.ui.button.template-chooser-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 20px 0 20px;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+
+  .template-chooser-title {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+}
+
+// Agnostic flexbox behavior for the Blocks Editor
+// Reasoning: SemanticUI Grid does not support detached (as non consecutive)
+// Grid > Grid.Columns support, so we have to build our own because of the
+// Blocks Editor wrappers
+.block.gridBlock .grid-items [data-rbd-droppable-id] {
+  display: flex;
+}
+
+// general spacing in the Row block wrapper
+.block.gridBlock [class^='block-editor-'],
+[class^='block-editor-'].contained {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.block.gridBlock .one.grid-items [class^='block-editor-'] {
+  width: 100%;
+}
+
+.block.gridBlock .two.grid-items [class^='block-editor-'] {
+  width: 50%;
+}
+
+.block.gridBlock .three.grid-items [class^='block-editor-'] {
+  width: 33.33333333%;
+}
+
+.block.gridBlock .four.grid-items [class^='block-editor-'] {
+  width: 25%;
+}
+
+// Outter cell item flexbox behavior so all have the same height
+.block.gridBlock [class^='block-editor-'],
+[class^='block-editor-'].contained {
+  display: inline-flex !important;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+// (Inner) cell wrapper flexbox behavior so all have the same height
+.cell-wrapper {
+  position: relative;
+  flex-grow: 1;
+}
+
+// Add our own block selected marker different than the normal one so we can full control over it
+.block.gridBlock {
+  [class^='block-editor-'].selected .cell-wrapper::before {
+    position: absolute;
+    // otherwise, this layer is above the object, then it does not allow clicking inside
+    z-index: -1;
+    top: -5px;
+    left: -5px;
+    display: block;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    border: 1px solid rgba(120, 192, 215, 0.5);
+    border-radius: 3px;
+    content: '';
+  }
+}
+
+// Remove default bottom image block margin
+.block.gridBlock [class^='block-editor-'] .block.image,
+[class^='block-editor-'].contained .block.image {
+  margin: 0;
+}
+
+// Remove the text block "add block" button TODO: remove when we move to Quanta Toolbar
+.block.gridBlock [class^='block-editor-'] .block-add-button {
+  display: none;
+}
+
+// Remove completely the default inner selection marker, so we are using our own
+.block.gridBlock {
+  [class^='block-editor-'] .block.selected::before {
+    content: unset;
+  }
+}
+
+// Disable hover blue border on inner blocks
+.block.gridBlock [class^='block-editor-'] {
+  .block:not(.inner):not(.selected)::before {
+    content: unset;
+  }
+}
+
+// Remove block selection blue outline on hover for view only
+.block.gridBlock {
+  :not([class^='block-editor-']) .block:hover::before {
+    border: none;
+  }
+}
+
+.block.gridBlock {
+  .block.inner.slate {
+    cursor: text;
+  }
+
+  body.cms-ui .ui.basic.segment.content-area & {
+    cursor: grab;
+  }
+}
+
+// Aspect ratio on all images
+.grid-image-wrapper img,
+.gridBlock .block.image img:not(.placeholder),
+.block-editor-gridBlock .block-editor-image img:not(.placeholder),
+.block-editor-image.contained img:not(.placeholder) {
+  width: 100%;
+  aspect-ratio: @grid-images-aspect-ratio;
+  object-fit: cover;
+  object-position: @grid-images-object-position;
+}
+
+// Prevents the above styling to leak to the unset image wrapper
+.block-editor-gridBlock .block-editor-image .no-image-wrapper img,
+.block-editor-image.contained .no-image-wrapper img {
+  width: unset;
+}
+
+.block.gridBlock .teaser-item,
+.block-editor-teaser.contained .teaser-item {
+  flex-direction: column;
+
+  &.default .image-wrapper {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 25px;
+  }
+}
+
+.container-chooser-wrapper {
+  z-index: 10;
+}

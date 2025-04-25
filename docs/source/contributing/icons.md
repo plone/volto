@@ -10,11 +10,11 @@ myst:
 # Icons
 
 Volto has a pre-defined set of SVG icons from the Pastanaga UI icon system.
-They are available under [Volto icons](https://github.com/plone/volto/tree/main/src/icons).
+They are available under [Volto icons](https://github.com/plone/volto/tree/main/packages/volto/src/icons).
 
 The following example shows how to display one of these icons.
 
-```js
+```jsx
 import addUserSVG from '@plone/volto/icons/add-user.svg';
 import { Icon } from '@plone/volto/components';
 

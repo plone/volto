@@ -1,11 +1,11 @@
 import { Editor, Path, Transforms } from 'slate';
 import {
   isCursorInList,
-  deconstructToVoltoBlocks,
   getCurrentListItem,
   mergeWithNextList,
   mergeWithPreviousList,
-} from '@plone/volto-slate/utils';
+} from '@plone/volto-slate/utils/lists';
+import { deconstructToVoltoBlocks } from '@plone/volto-slate/utils/volto-blocks';
 import config from '@plone/volto/registry';
 
 /**
@@ -55,8 +55,8 @@ export function indentListItems({ editor, event }) {
         ? decreaseMultipleItemsDepth(editor, event)
         : decreaseItemDepth(editor, event)
       : event.ctrlKey
-      ? increaseMultipleItemDepth(editor, event)
-      : increaseItemDepth(editor, event);
+        ? increaseMultipleItemDepth(editor, event)
+        : increaseItemDepth(editor, event);
   }
 }
 

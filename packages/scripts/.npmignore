@@ -2,6 +2,8 @@ news
 towncrier.toml
 .changelog.draft
 node_modules/
+.release-it.json
+.eslintrc.cjs
 
 # yarn 3
 .pnp.*

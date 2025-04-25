@@ -1,21 +1,24 @@
 import ReactDOM from 'react-dom';
+import cloneDeep from 'lodash/cloneDeep';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import { Editor } from 'slate';
 import {
   getPreviousVoltoBlock,
   getNextVoltoBlock,
-  isCursorAtBlockStart,
-  isCursorAtBlockEnd,
   mergeSlateWithBlockBackward,
   mergeSlateWithBlockForward,
-} from '@plone/volto-slate/utils';
+} from '@plone/volto-slate/utils/volto-blocks';
+import {
+  isCursorAtBlockStart,
+  isCursorAtBlockEnd,
+} from '@plone/volto-slate/utils/selection';
+import { makeEditor } from '@plone/volto-slate/utils/editor';
 import {
   changeBlock,
   deleteBlock,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
-
+} from '@plone/volto/helpers/Blocks/Blocks';
 /**
  * Joins the current block (which has an active Slate Editor)
  * with the previous block, to make a single block.
@@ -23,7 +26,7 @@ import {
  * @param {Editor} editor
  * @param {KeyboardEvent} event
  */
-export function joinWithPreviousBlock({ editor, event }) {
+export function joinWithPreviousBlock({ editor, event }, intl) {
   if (!isCursorAtBlockStart(editor)) return;
 
   const blockProps = editor.getBlockProps();
@@ -57,7 +60,7 @@ export function joinWithPreviousBlock({ editor, event }) {
   const text = Editor.string(editor, []);
   if (!text) {
     const cursor = getBlockEndAsRange(otherBlock);
-    const newFormData = deleteBlock(properties, block);
+    const newFormData = deleteBlock(properties, block, intl);
 
     ReactDOM.unstable_batchedUpdates(() => {
       saveSlateBlockSelection(otherBlockId, cursor);
@@ -86,7 +89,7 @@ export function joinWithPreviousBlock({ editor, event }) {
     value: combined,
     plaintext: serializeNodesToText(combined || []),
   });
-  const newFormData = deleteBlock(formData, block);
+  const newFormData = deleteBlock(formData, block, intl);
 
   ReactDOM.unstable_batchedUpdates(() => {
     saveSlateBlockSelection(otherBlockId, cursor);
@@ -104,7 +107,7 @@ export function joinWithPreviousBlock({ editor, event }) {
  * @param {Editor} editor
  * @param {KeyboardEvent} event
  */
-export function joinWithNextBlock({ editor, event }) {
+export function joinWithNextBlock({ editor, event }, intl) {
   if (!isCursorAtBlockEnd(editor)) return;
 
   const blockProps = editor.getBlockProps();
@@ -143,7 +146,7 @@ export function joinWithNextBlock({ editor, event }) {
     value: combined,
     plaintext: serializeNodesToText(combined || []),
   });
-  const newFormData = deleteBlock(formData, block);
+  const newFormData = deleteBlock(formData, block, intl);
 
   ReactDOM.unstable_batchedUpdates(() => {
     // saveSlateBlockSelection(otherBlockId, cursor);
@@ -164,9 +167,11 @@ function getBlockEndAsRange(block) {
   const { value } = block;
   const location = [value.length - 1]; // adress of root node
   const editor = { children: value };
-  const path = Editor.last(editor, location)[1]; // last Node in the block
+  const newEditor = makeEditor();
+  newEditor.children = cloneDeep(editor.children);
+  const path = Editor.last(newEditor, location)[1]; // last Node in the block
   // The last Text node (leaf node) entry inside the path computed just above.
-  const [leaf, leafpath] = Editor.leaf(editor, path);
+  const [leaf, leafpath] = Editor.leaf(newEditor, path);
   // The offset of the Points in the collapsed Range computed below:
   const offset = (leaf.text || '').length;
 

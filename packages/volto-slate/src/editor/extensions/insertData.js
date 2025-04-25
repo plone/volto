@@ -3,9 +3,9 @@ import { deserialize } from '@plone/volto-slate/editor/deserialize';
 import {
   createBlock,
   createDefaultBlock,
-  MIMETypeName,
   normalizeExternalData,
-} from '@plone/volto-slate/utils';
+} from '@plone/volto-slate/utils/blocks';
+import { MIMETypeName } from '@plone/volto-slate/utils/mime-types';
 import { isBlockActive } from '../../utils/blocks';
 
 export const insertData = (editor) => {
@@ -98,7 +98,9 @@ export const insertData = (editor) => {
       if (Editor.string(editor, [])) {
         if (
           Array.isArray(fragment) &&
-          fragment.findIndex((b) => Editor.isInline(b) || Text.isText(b)) > -1
+          fragment.findIndex(
+            (b) => Editor.isInline(editor, b) || Text.isText(b),
+          ) > -1
         ) {
           // console.log('insert fragment', fragment);
           // TODO: we want normalization also when dealing with fragments

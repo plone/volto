@@ -1,0 +1,31 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renders an gallery view component 1`] = `
+<div
+  className="ui container view-wrapper"
+>
+  <article
+    id="content"
+  >
+    <header>
+      <h1
+        className="documentFirstHeading"
+      >
+        Hello World!
+      </h1>
+      <p
+        className="documentDescription"
+      >
+        Hi
+      </p>
+    </header>
+    <section
+      id="content-core"
+    >
+      <div
+        className="ui doubling stackable four column grid"
+      />
+    </section>
+  </article>
+</div>
+`;
