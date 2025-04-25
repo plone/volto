@@ -1,0 +1,1 @@
+Add support for both Vitest and Jest in `__mocks__` folders of Volto core. Add-on tests using Jest relies on them. @Abhishek-17h

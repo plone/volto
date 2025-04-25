@@ -44,13 +44,15 @@ The release process calls `towncrier`.
 It is a Python library that uses the Python utility `pipx`.
 This utility allows you to call and execute Python modules without installing them as a prerequisite in your system.
 It works similar to the NodeJS `npx` utility.
-On macOS, you can install `pipx` into your system:
+
+Install {term}`pipx` for your active Python, and ensure it is on your `$PATH`.
+Carefully read the console output for further instructions, if needed.
 
 ```shell
-brew install pipx
+python3 -m pip install pipx
+pipx ensurepath
 ```
 
-Or follow detailed instructions in the `pipx` documentation for [Installation](https://pypa.github.io/pipx/installation/).
 
 ## Running the release process
 

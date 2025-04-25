@@ -11,7 +11,7 @@ myst:
 
 The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block.
 This UX can be very complex depending on the kind of block and the feature that it is trying to provide.
-The project requirements will tell how far you should go with the UX story of each tile, and how complex it will become.
+The project requirements will tell how far you should go with the UX story of each block, and how complex it will become.
 You can use all the props that the edit component is receiving to model the UX for the block and how it will render.
 
 See the complete list of {ref}`block-edit-component-props-label`.
@@ -28,22 +28,36 @@ You need to instantiate it this way:
 ```jsx
 import { SidebarPortal } from '@plone/volto/components';
 
-[...]
+const Edit = (props) => {
+  const { selected } = props;
+  return (
 
-<SidebarPortal selected={this.props.selected}>
-  // ...
-</SidebarPortal>
+    [...]
+
+    <SidebarPortal selected={selected}>
+      // ...
+    </SidebarPortal>
+  )
+
+}
 ```
 
 Everything that's inside the `SidebarPortal` component will be rendered in the sidebar. If you need an extra layer of configuration within `SidebarPortal`, you can use `SidebarPopup`.
 
 ```jsx
-
 import { SidebarPopup } from '@plone/volto/components';
 
-<SidebarPopup open={this.props.sidebarOpen}>
-  ...
-</SidebarPopup>
+const Edit = (props) => {
+  const { sidebarOpen } = props;
+
+  return (
+    [...]
+
+    <SidebarPopup open={sidebarOpen}>
+      ...
+    </SidebarPopup>
+  )
+}
 ```
 
 ## Schema driven automated block settings forms
@@ -51,7 +65,7 @@ import { SidebarPopup } from '@plone/volto/components';
 A helper component is available in core in order to simplify the task of defining and rendering the settings for a block: the `BlockDataForm` component.
 
 ```{note}
-`BlockDataForm` is a convenience component around the already available in core `InlineForm` that takes care of some aspects exclusively for Volto Blocks, like Variants and schemaExtenders. You can still use `InlineForm` across Volto, but using `BlockDataForm` is recommeneded for the blocks settings use case.
+`BlockDataForm` is a convenience component around the already available in core `InlineForm` that takes care of some aspects exclusively for Volto Blocks, like Variants and schemaExtenders. You can still use `InlineForm` across Volto, but using `BlockDataForm` is recommended for the blocks settings use case.
 ```
 
 The edit block settings component needs to be described by a schema that matches the format used to serialize the content type definitions. The widgets that will be used in rendering the form follow the same algorithm that is used for the regular metadata fields for the content types. As an example of schema, it could look like this:
@@ -107,24 +121,30 @@ import schema from './schema';
 import BlockDataForm from '@plone/volto/components/manage/Form/BlockDataForm';
 import { Icon } from '@plone/volto/components';
 
-<SidebarPortal selected={this.props.selected}>
-  <BlockDataForm
-    icon={<Icon size="24px" name={nameSVG} />}
-    schema={schema}
-    title={schema.title}
-    headerActions={<button onClick={() => {}}>Action</button>}
-    footer={<div>I am footer</div>}
-    onChangeField={(id, value) => {
-      this.props.onChangeBlock(this.props.block, {
-        ...this.props.data,
-        [id]: value,
-      });
-    }}
-    onChangeBlock={onChangeBlock}
-    formData={this.props.data}
-    block={block}
-  />
-</SidebarPortal>;
+const Edit = (props) => {
+  const {selected, block, data, onChangeBlock} = props;
+
+  return (
+    <SidebarPortal selected={selected}>
+      <BlockDataForm
+        icon={<Icon size="24px" name={nameSVG} />}
+        schema={schema}
+        title={schema.title}
+        headerActions={<button onClick={() => {}}>Action</button>}
+        footer={<div>I am footer</div>}
+        onChangeField={(id, value) => {
+          onChangeBlock(block, {
+            ...data,
+            [id]: value,
+          });
+        }}
+        onChangeBlock={onChangeBlock}
+        formData={data}
+        block={block}
+      />
+    </SidebarPortal>;
+  )
+}
 ```
 
 ## Object Browser
@@ -220,7 +240,7 @@ This situation will be fixed in subsequent Volto releases.
 #### PropDataName vs dataName
 
 - `dataName` is the prop inside `data` object, used for `link` and `image` mode.
-- `PropDataName` is the name of field wich value is `data`. It's used for `multiple` mode.
+- `PropDataName` is the name of field which value is `data`. It's used for `multiple` mode.
 
 For example:
 

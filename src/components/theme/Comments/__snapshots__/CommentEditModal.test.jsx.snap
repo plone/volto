@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`CommentEditModal renders a comment edit modal component 1`] = `
-<div
-  id="modalform"
-/>
-`;
