@@ -440,7 +440,8 @@ class Config {
       throw new Error(`No slot component ${name} in slot ${slot} found`);
     }
     const result = currentSlotComponents.slice();
-    currentSlot.data[name] = result.splice(position, 1);
+    result.splice(position, 1);
+    currentSlot.data[name] = result;
   }
 
   registerUtility(options: {
@@ -473,8 +474,11 @@ class Config {
     name: string;
     type: string;
     dependencies?: Record<string, string>;
-  }): GetUtilityResult {
+  }): GetUtilityResult | Record<string, never> {
     const { name, type, dependencies = {} } = options;
+
+    if (!name || !type) return {};
+
     let depsString: string = '';
     depsString = Object.keys(dependencies)
       .map((key) => `${key}:${dependencies[key]}`)
@@ -488,8 +492,11 @@ class Config {
   getUtilities(options: {
     type: string;
     dependencies?: Record<string, string>;
-  }): Array<GetUtilityResult> {
+  }): Array<GetUtilityResult> | [] {
     const { type, dependencies = {} } = options;
+
+    if (!type) return [];
+
     let depsString: string = '';
     depsString = Object.keys(dependencies)
       .map((key) => `${key}:${dependencies[key]}`)
