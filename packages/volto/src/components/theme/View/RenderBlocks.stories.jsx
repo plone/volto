@@ -89,7 +89,7 @@ InvalidBlocks.args = {
   },
 };
 export default {
-  title: 'Public components/View/RenderBlocks',
+  title: 'Internal components/View/RenderBlocks',
   component: RenderBlocksComponent,
   decorators: [
     (Story) => (
