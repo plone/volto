@@ -878,6 +878,21 @@ describe('Slots registry', () => {
     ]);
   });
 
+  it('unRegisterSlotComponent - remove one registered slot', () => {
+    config.registerSlotComponent({
+      name: 'Colophon',
+      slot: 'postFooter',
+      component: 'The colophon component',
+    });
+
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(1);
+    expect(
+      config.getSlotComponent('postFooter', 'Colophon')[0].component,
+    ).toEqual('The colophon component');
+    config.unRegisterSlotComponent('postFooter', 'Colophon', 0);
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(0);
+  });
+
   it('unRegisterSlotComponent - registers 2 + 2 slot components with predicates', () => {
     config.registerSlotComponent({
       slot: 'toolbar',
@@ -912,12 +927,18 @@ describe('Slots registry', () => {
         ContentTypeConditionTrue(['News Item']),
       ],
     });
+
     expect(config.getSlotComponent('toolbar', 'save').length).toEqual(2);
     expect(config.getSlotComponent('toolbar', 'save')[0].component).toEqual(
       'this is a toolbar save component with a true predicate',
     );
+
     config.unRegisterSlotComponent('toolbar', 'save', 1);
+
     expect(config.getSlotComponent('toolbar', 'save').length).toEqual(1);
+    expect(config.getSlotComponent('toolbar', 'save')[0].component).toEqual(
+      'this is a toolbar save component with a true predicate',
+    );
   });
 
   // The next one fixes the issue when HMR kicks in and tries to register the same component again
