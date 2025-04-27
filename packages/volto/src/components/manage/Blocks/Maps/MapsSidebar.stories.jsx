@@ -50,7 +50,7 @@ export default {
     },
     url: {
       control: 'text',
-      description: 'Url of the Map',
+      description: 'URL of the map block',
     },
   },
 };
