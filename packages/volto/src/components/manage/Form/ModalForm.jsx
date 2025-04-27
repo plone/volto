@@ -109,15 +109,6 @@ const ModalForm = (props) => {
       onClick: onClickInput,
     };
   });
-  // const fields = map(currentFieldset.fields, (field) => ({
-  //   ...schema.properties[field],
-  //   id: field,
-  //   value: formData[field],
-  //   required: schema.required.indexOf(field) !== -1,
-  //   onChange: onChangeField,
-  //   onBlur: onBlurField,
-  //   onClick: onClickInput,
-  // }));
 
   const state_errors = keys(errors).length > 0;
   return (
