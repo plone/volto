@@ -1,23 +1,23 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { Container, Segment, Table, Menu, Input } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Form from '@plone/volto/components/manage/Form/Form';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
-import useClient from '@plone/volto/hooks/client/useClient';
+import { useClient } from '@plone/volto/hooks';
 import backSVG from '@plone/volto/icons/back.svg';
 import map from 'lodash/map';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import nextIcon from '@plone/volto/icons/right-key.svg';
-import usePrevious from '@plone/volto/helpers/Utils/usePrevious';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
 import prevIcon from '@plone/volto/icons/left-key.svg';
 import undoSVG from '@plone/volto/icons/undo.svg';
-import getTransactions from '@plone/volto/actions/transactions/transactions';
-import revertTransactions from '@plone/volto/actions/transactions/transactions';
+import { getTransactions } from '@plone/volto/actions/transactions/transactions';
+import { revertTransactions } from '@plone/volto/actions/transactions/transactions';
 import { toast } from 'react-toastify';
 
 const messages = defineMessages({
@@ -521,8 +521,8 @@ const UndoControlpanel = (props) => {
           )}
         </Segment.Group>
       </Segment.Group>
-      {isClient && (
-        <Portal node={document.getElementById('toolbar')}>
+      {isClient &&
+        createPortal(
           <Toolbar
             pathname={pathname}
             hideDefaultViewButtons
@@ -539,9 +539,8 @@ const UndoControlpanel = (props) => {
                 </Link>
               </>
             }
-          />
-        </Portal>
-      )}
+          />,
+        )}
     </Container>
   );
 };
