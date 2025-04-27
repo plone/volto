@@ -6,8 +6,8 @@ import jwtDecode from 'jwt-decode';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { withCookies } from 'react-cookie';
-import { find } from 'lodash/find';
-import { filter } from 'lodash/filter';
+import find from 'lodash/find';
+import filter from 'lodash/filter';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 
