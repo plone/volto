@@ -3,6 +3,7 @@ import type { NavigationResponse } from '../services/navigation';
 import type { ActionsResponse } from '../services/actions';
 import type { GetTypesResponse } from '../services/types';
 import type { GetNavrootResponse } from '../services/navroot';
+import type { GetSiteResponse } from '../services/site';
 import type { GetAliasesResponse } from '../services/aliases';
 import type { ContextNavigationResponse } from '../services/contextnavigation';
 import type { WorkflowResponse } from '../services/workflow';
@@ -15,6 +16,7 @@ export interface Expanders {
   contextnavigation: ContextNavigationResponse;
   navigation: NavigationResponse;
   navroot: GetNavrootResponse;
+  site: GetSiteResponse;
   types: GetTypesResponse;
   workflow: WorkflowResponse;
 }
@@ -23,8 +25,8 @@ export interface ContainedItem {
   '@id': string;
   '@type': string;
   description: string;
-  image_field: null;
-  image_scales: null;
+  image_field: string;
+  image_scales: Record<string, Image> | null;
   review_state: string;
   title: string;
 }

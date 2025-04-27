@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Switch as RACSwitch,
-  SwitchProps as RACSwitchProps,
+  type SwitchProps as RACSwitchProps,
 } from 'react-aria-components';
 
 export interface SwitchProps extends Omit<RACSwitchProps, 'children'> {

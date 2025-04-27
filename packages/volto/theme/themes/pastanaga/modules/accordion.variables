@@ -34,14 +34,14 @@
 
 /* Styled Title */
 @styledTitleFontWeight: @normal;
-@styledTitleColor: @teal;
+@styledTitleColor: @textColor;
 @styledTitleBorder: none;
 
 /* Styled Title States */
 @styledTitleHoverBackground: @darkWhite;
-@styledTitleHoverColor: @teal;
+@styledTitleHoverColor: @textColor;
 @styledActiveTitleBackground: @darkWhite;
-@styledActiveTitleColor: @teal;
+@styledActiveTitleColor: @textColor;
 
 /* Styled Child Title States */
 

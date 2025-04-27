@@ -2,8 +2,8 @@ import React from 'react';
 import {
   ListBox as RACListBox,
   ListBoxItem as RACListBoxItem,
-  ListBoxItemProps,
-  ListBoxProps,
+  type ListBoxItemProps,
+  type ListBoxProps,
 } from 'react-aria-components';
 
 export function ListBox<T extends object>({

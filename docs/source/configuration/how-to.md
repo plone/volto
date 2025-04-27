@@ -20,7 +20,7 @@ then access any of its internal configuration to retrieve the configuration you 
 like:
 
 ```js
-const absoluteUrl = `${config.settings.apiPath}/${content.url}`
+const absoluteUrl = `${config.settings.apiPath}/${content.url}`;
 ```
 
 Both the main project and individual add-ons can extend Volto's configuration registry.
@@ -35,7 +35,8 @@ Both use the same method, using a function as the default export. This function 
 add-ons, it must be provided in the main `index.js` module of the add-on. For project's
 it must be provided in the `src/config.js` module of the project.
 
-See the {doc}`../addons/index` section for extended information on how to work with add-ons.
+See the {doc}`../conceptual-guides/add-ons` and {doc}`../development/add-ons/index` sections for extended information on how to work with add-ons.
+
 
 ## Extending configuration in a project
 
@@ -150,3 +151,31 @@ export default function applyConfig(config) {
 
   return config;
 }
+```
+
+## `nonContentRoutes` and `nonContentRoutesPublic`
+
+`nonContentRoutes` is a list of routes reserved in Volto for its functionality as a content management system.
+These functions include user authentication and registration, changing settings through control panels, generating a site map, and other functions.
+Examples of these routes include `/login`, `/register`, and `/\/controlpanel\/.*$/`.
+Editors can't use them for content.
+The HTML attribute class value `cms-ui` is applied to members of `nonContentRoutes`.
+You can configure `nonContentRoutes` with either a regular expression or a string representing the end of the URI.
+
+`nonContentRoutesPublic` is a subset of `nonContentRoutes`.
+These routes are used for public sections of a Volto site that do not require authentication.
+This subset includes `/login`, `/search`, and `/sitemap`.
+
+The following example shows how to configure settings for `nonContentRoutes` and `nonContentRoutesPublic`.
+
+```js
+export default function applyConfig(config) {
+  config.settings = {
+    ...config.settings,
+    nonContentRoutes:[....],
+    nonContentRoutesPublic: [....]
+  };
+
+  return config;
+}
+```

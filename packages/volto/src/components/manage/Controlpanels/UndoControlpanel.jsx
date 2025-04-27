@@ -10,15 +10,20 @@ import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { Container, Segment, Table, Menu, Input } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { Icon, Toolbar, Toast } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { Form } from '@plone/volto/components/manage/Form';
 import backSVG from '@plone/volto/icons/back.svg';
-import { map } from 'lodash';
-import { Helmet } from '@plone/volto/helpers';
+import map from 'lodash/map';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import nextIcon from '@plone/volto/icons/right-key.svg';
 import prevIcon from '@plone/volto/icons/left-key.svg';
 import undoSVG from '@plone/volto/icons/undo.svg';
-import { getTransactions, revertTransactions } from '@plone/volto/actions';
+import {
+  getTransactions,
+  revertTransactions,
+} from '@plone/volto/actions/transactions/transactions';
 import { toast } from 'react-toastify';
 
 const messages = defineMessages({

@@ -8,6 +8,7 @@ import {
   GET_VOCABULARY_TOKEN_TITLE,
 } from '@plone/volto/constants/ActionTypes';
 import { getVocabName } from '@plone/volto/helpers/Vocabularies/Vocabularies';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import qs from 'query-string';
 
 /**
@@ -27,7 +28,9 @@ export function getVocabulary({
   size,
   subrequest,
 }) {
-  const vocabulary = getVocabName(vocabNameOrURL);
+  const vocabPath = vocabNameOrURL.includes('/')
+    ? flattenToAppURL(vocabNameOrURL)
+    : `/@vocabularies/${vocabNameOrURL}`;
 
   let queryString = `b_start=${start}${size ? '&b_size=' + size : ''}`;
 
@@ -40,7 +43,7 @@ export function getVocabulary({
     start,
     request: {
       op: 'get',
-      path: `/@vocabularies/${vocabulary}?${queryString}`,
+      path: `${vocabPath}?${queryString}`,
     },
     subrequest,
   };

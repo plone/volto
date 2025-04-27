@@ -1,91 +1,95 @@
 ---
 myst:
   html_meta:
-    "description": "We use Jest for unit testing in Volto. The popular @testing-library/react is also available for writing your tests. For every feature or component, a unit test is mandatory in Volto core."
-    "property=og:description": "We use Jest for unit testing in Volto. The popular @testing-library/react is also available for writing your tests. For every feature or component, a unit test is mandatory in Volto core."
-    "property=og:title": "Testing Volto"
-    "keywords": "Volto, Plone, frontend, React, testing, Jest"
+    "description": "We use Vitest for unit testing in Volto. The popular @testing-library/react is also available for writing your tests. For every feature or component, a unit test is mandatory in Volto core."
+    "property=og:description": "We use Vitest for unit testing in Volto. The popular @testing-library/react is also available for writing your tests. For every feature or component, a unit test is mandatory in Volto core."
+    "property=og:title": "Testing Volto with Vitest"
+    "keywords": "Volto, Plone, frontend, React, testing, Vitest"
 ---
 
 # Testing
 
-We use {term}`Jest` for unit testing in Volto.
+This chapter describes how to write and run unit tests in Volto.
+It covers how to use [Vitest](https://vitest.dev/guide/), the current unit test tool for Volto core.
+
 The popular `@testing-library/react` is also available for writing your tests.
 For every feature or component, a unit test is mandatory in Volto core.
 
-## Jest configuration
+```{versionadded} Volto 18.12.0
+Volto core now uses Vitest for its unit tests.
+```
 
-Jest is configured in `package.json` under the `jest` key.
+```{deprecated} Volto 18.12.0
+Volto core has migrated from Jest to Vitest for unit tests.
+Jest is now deprecated.
+Refer to {doc}`../development/add-ons/test-add-ons-18` for a complete migration guide from Jest to Vitest for your add-ons.
+```
 
 
-(run-jest-tests-on-volto-core-label)=
+(testing-vitest-configuration-label)=
 
-## Run Jest tests on Volto core
+## Vitest configuration
+
+The configuration file {file}`vitest.config.ts` for Volto core is set up at the root of `packages/volto`.
+
+(run-vitest-tests-on-volto-core-label)=
+
+## Run Vitest tests on Volto core
 
 ```{note}
 All commands in this documentation run from inside the `packages/volto` directory.
 See {ref}`developing-core-run-commands-for-pnpm-workspaces-label` for other options to run tests.
 ```
 
-Jest tests must pass locally before you push commits to the remote Volto repository.
-Jest has several modes to run unit tests locally.
-You can run Jest in watch mode, run only failed tests, or run specific tests only.
+Vitest tests must pass locally before you push commits to the remote Volto repository.
+Vitest has several modes to run unit tests locally.
+You can run Vitest in watch mode, run only failed tests, or run only specific tests.
 
-To get to the test runner modes choices, run the following command.
+By default, Vitest runs in watch mode when you execute the following command.
+This makes it faster and easier to test code changes.
 
 ```shell
 pnpm test
 ```
 
-Then you can follow the Jest prompts for keys that you can enter to trigger test execution.
+If you don't want to run tests in watch mode, you can use the following command.
+This will execute all tests once without entering watch mode.
+
+```shell
+pnpm test -- --watch=false
+```
+or 
+
+```shell
+CI=1 pnpm test
+```
+
+
+Then you can follow the Vitest prompts for keys that you can enter to trigger test execution.
 
 ```console
-No tests found related to files changed since last commit.
-Press `a` to run all tests, or run Jest with `--watchAll`.
-
-Watch Usage
  › Press a to run all tests.
  › Press f to run only failed tests.
  › Press p to filter by a filename regex pattern.
  › Press t to filter by a test name regex pattern.
- › Press q to quit watch mode.
- › Press Enter to trigger a test run.
+ › Press q to quit.
+ › Press Enter to run all tests.
 ```
 
-You can also run only specific tests using the following commands.
+You can also run only specific tests using the following command.
 
 ```shell
-pnpm test src/components/theme/Image
 # will run only the Image components tests
+pnpm test src/components/theme/Image
 ```
 
-If a certain test fails, you can run that test only in watch mode.
-This makes it faster and easier to test code changes.
 
-## Jest configuration override
 
-In GitHub workflows or for testing add-ons, it's useful to use an alternate Jest configuration.
-Volto provides a way to do so using a file {file}`jest.config.js`, or pointing the test runner to a file of your choice, using the `RAZZLE_JEST_CONFIG` environment variable.
-Because the Volto add-ons and Volto add-ons projects still use `yarn`, you must run the test command using `yarn` instead of `pnpm`.
 
-```shell
-RAZZLE_JEST_CONFIG=my-custom-jest-config.js yarn test
+
+
+## Acceptance tests
+
+```{seealso}
+See the chapter {doc}`acceptance-tests`.
 ```
-
-```{note}
-Both configurations are merged in a way that the keys of the config provided override  the initial (`package.json`) default config, either in Volto or in your projects.
-```
-
-This is especially useful in GitHub workflows while developing add-ons.
-You can pass a specific configuration file that properly deals with the add-on configuration.
-
-## Add add-ons via environment variable for testing purposes
-
-Sometimes you need to enable different configurations and enable optional components, for example, testing purposes.
-You can use the `ADDONS` environment variable to define them.
-
-```bash
-ADDONS=test-addon,test-addon2 yarn start
-```
-
-See {doc}`../configuration/environmentvariables` for more information.

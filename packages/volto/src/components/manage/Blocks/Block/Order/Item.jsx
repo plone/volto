@@ -1,10 +1,10 @@
 import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
-import { includes } from 'lodash';
+import includes from 'lodash/includes';
 import cx from 'classnames';
-import { Icon } from '@plone/volto/components';
-import { setUIState } from '@plone/volto/actions';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { setUIState } from '@plone/volto/actions/form/form';
 import config from '@plone/volto/registry';
 
 import deleteSVG from '@plone/volto/icons/delete.svg';
@@ -98,7 +98,9 @@ export const Item = forwardRef(
             <Icon name={dragSVG} size="16px" />
           </button>
           <span
-            className={cx('text', { errored: Object.keys(errors).length > 0 })}
+            className={cx('text', {
+              errored: errors && Object.keys(errors).length > 0,
+            })}
           >
             {config.blocks.blocksConfig[data?.['@type']]?.icon && (
               <Icon

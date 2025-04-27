@@ -18,7 +18,9 @@ const userSchema = {
   loading: false,
 };
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
 describe('PersonalInformation', () => {
   it('renders a personal information component', async () => {

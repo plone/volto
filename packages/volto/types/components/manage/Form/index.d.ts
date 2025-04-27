@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export declare const Field: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
 export declare const InlineForm: import("@loadable/component").LoadableComponent<Omit<import("react-intl").WithIntlProps<any>, "ref"> & import("react").RefAttributes<any>>;
 export declare const ModalForm: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;

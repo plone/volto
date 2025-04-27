@@ -3,8 +3,8 @@ import {
   Button,
   GridList as RACGridList,
   GridListItem as RACGridListItem,
-  GridListItemProps,
-  GridListProps,
+  type GridListItemProps,
+  type GridListProps,
 } from 'react-aria-components';
 
 import { Checkbox } from '../Checkbox/Checkbox';

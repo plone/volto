@@ -1,1 +1,0 @@
-Refactor ControlPanel/Users/Aliases component , replacing class component lifecycle methods with functional hooks. @Tishasoumya-02

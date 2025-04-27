@@ -1,7 +1,8 @@
 import { z } from 'zod';
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
-import { GetUsersResponse } from '@plone/types';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type { GetUsersResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 const getUsersSchema = z.object({
   query: z.string().optional(),
@@ -10,17 +11,12 @@ const getUsersSchema = z.object({
   limit: z.number().optional(),
 });
 
-export type GetUsersArgs = z.infer<typeof getUsersSchema> & {
-  config: PloneClientConfig;
-};
+export type GetUsersArgs = z.infer<typeof getUsersSchema>;
 
-export const getUsers = async ({
-  query,
-  groupsFilter,
-  search,
-  limit,
-  config,
-}: GetUsersArgs): Promise<GetUsersResponse> => {
+export async function getUsers(
+  this: PloneClient,
+  { query, groupsFilter, search, limit }: GetUsersArgs,
+): Promise<RequestResponse<GetUsersResponse>> {
   const validatedArgs = getUsersSchema.parse({
     query,
     groupsFilter,
@@ -29,7 +25,7 @@ export const getUsers = async ({
   });
 
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {
       ...(validatedArgs.query && { query: validatedArgs.query }),
       ...(validatedArgs.groupsFilter && {
@@ -41,15 +37,4 @@ export const getUsers = async ({
   };
 
   return apiRequest('get', '/@users', options);
-};
-
-export const getUsersQuery = ({
-  query,
-  groupsFilter,
-  search,
-  limit,
-  config,
-}: GetUsersArgs) => ({
-  queryKey: [query, groupsFilter, search, limit, 'get', 'users'],
-  queryFn: () => getUsers({ query, groupsFilter, search, limit, config }),
-});
+}
