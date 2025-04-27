@@ -540,6 +540,7 @@ const UndoControlpanel = (props) => {
               </>
             }
           />,
+          document.getElementById('toolbar'),
         )}
     </Container>
   );
