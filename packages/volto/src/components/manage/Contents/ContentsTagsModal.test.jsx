@@ -7,7 +7,11 @@ import ContentsTagsModal from './ContentsTagsModal';
 
 const mockStore = configureStore();
 
-vi.mock('@plone/volto/components/manage/Form');
+vi.mock('@plone/volto/components/manage/Form', async () => {
+  return await import(
+    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
+  );
+});
 
 describe('ContentsTagsModal', () => {
   it('renders a contents tags modal component', () => {
