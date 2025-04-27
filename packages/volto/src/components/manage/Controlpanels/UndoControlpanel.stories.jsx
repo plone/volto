@@ -1,5 +1,4 @@
 import { injectIntl } from 'react-intl';
-import React from 'react';
 import UndoControlpanelComponent from './UndoControlpanel';
 import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
 
@@ -12,9 +11,11 @@ function StoryComponent(args) {
         transactions: {
           transactions_recieved: [
             {
+              description: 'Added default view for root object',
               id: 'QStrR0RRc0M5TjA9',
               size: 2216,
-              ...args,
+              time: '2022-06-19T22:15:02',
+              username: 'admin',
             },
             {
               description: 'Added virtual_hosting',
@@ -87,11 +88,7 @@ function StoryComponent(args) {
 }
 
 export const UndoControlpanel = StoryComponent.bind({});
-UndoControlpanel.args = {
-  description: 'Added default view for root object',
-  time: '2022-06-19T22:15:02',
-  username: 'admin',
-};
+
 export default {
   title: 'Public components/UndoControlpanel',
   component: UndoControlpanel,
@@ -102,9 +99,5 @@ export default {
       </div>
     ),
   ],
-  argTypes: {
-    time: {
-      control: 'date',
-    },
-  },
+  argTypes: {},
 };
