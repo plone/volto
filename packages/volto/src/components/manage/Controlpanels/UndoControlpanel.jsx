@@ -156,29 +156,30 @@ const UndoControlpanel = (props) => {
     ) {
       return;
     }
-    let sorttype = (data !== null && data.sortingTypes) || 'no value';
+    let sortingType = (data !== null && data.sortingTypes) || 'no value';
 
-    if (sorttype.toLowerCase() !== 'no value') {
+    if (sortingType.toLowerCase() !== 'no value') {
       setisSortingTypeSelected(true);
-      sorttype.toLowerCase() === 'user name' && setsortType('user name');
-      sorttype.toLowerCase() === 'date' && setsortType('date');
-      sorttype.toLowerCase() === 'path' && setsortType('path');
+      sortingType.toLowerCase() === 'user name' && setsortType('user name');
+      sortingType.toLowerCase() === 'date' && setsortType('date');
+      sortingType.toLowerCase() === 'path' && setsortType('path');
     } else {
       onCancel();
     }
   };
 
   const onSort = (data) => {
-    let sortType = data.sortingTypes || 'no value';
+    let sortingType = data.sortingTypes || 'no value';
     let value;
-    (sortType.toLowerCase() === 'user name' && (value = data.sortByUsername)) ||
-      (sortType.toLowerCase() === 'path' && (value = data.sortByPath)) ||
-      (sortType.toLowerCase() === 'date' && (value = data.sortByDate)) ||
+    (sortingType.toLowerCase() === 'user name' &&
+      (value = data.sortByUsername)) ||
+      (sortingType.toLowerCase() === 'path' && (value = data.sortByPath)) ||
+      (sortingType.toLowerCase() === 'date' && (value = data.sortByDate)) ||
       (value = undefined);
 
-    if (sortType.toLowerCase() !== 'no value' && value !== undefined) {
+    if (sortingType.toLowerCase() !== 'no value' && value !== undefined) {
       let sortedTransactions = [];
-      if (sortType.toLowerCase() === 'user name') {
+      if (sortingType.toLowerCase() === 'user name') {
         transactions.forEach((element) => {
           if (value.trim().toLowerCase() === 'zope' && !element.username) {
             sortedTransactions.push(element);
@@ -192,7 +193,7 @@ const UndoControlpanel = (props) => {
           }
         });
         SortedTransactions(sortedTransactions);
-      } else if (sortType.toLowerCase() === 'path') {
+      } else if (sortingType.toLowerCase() === 'path') {
         transactions.forEach((element) => {
           if (
             element.id.trim().toLowerCase().includes(value.trim().toLowerCase())
