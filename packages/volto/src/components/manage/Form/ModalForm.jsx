@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
-import { keys } from 'lodash/keys';
-import { map } from 'lodash/map';
+import keys from 'lodash/keys';
+import map from 'lodash/map';
 import {
   Button,
   Form as UiForm,
@@ -47,7 +46,7 @@ const ModalForm = (props) => {
   const [currentTab, setcurrentTab] = useState(0);
   const [errors, seterrors] = useState({});
   const [isFormPristine, setisFormPristine] = useState(true);
-  const [formData, setformData] = useState(props.formData);
+  const [formData, setformData] = useState(props.formData || {});
 
   const onChangeField = (id, value) => {
     setformData({
@@ -98,15 +97,27 @@ const ModalForm = (props) => {
   const { schema, onCancel } = props;
   const currentFieldset = schema.fieldsets[currentTab];
 
-  const fields = map(currentFieldset.fields, (field) => ({
-    ...schema.properties[field],
-    id: field,
-    value: formData[field],
-    required: schema.required.indexOf(field) !== -1,
-    onChange: onChangeField,
-    onBlur: onBlurField,
-    onClick: onClickInput,
-  }));
+  const fields = map(currentFieldset.fields, (field) => {
+    const fieldProperties = schema.properties[field] || {};
+    return {
+      ...fieldProperties,
+      id: field,
+      value: formData?.[field] ?? '',
+      required: schema.required?.indexOf(field) !== -1,
+      onChange: onChangeField,
+      onBlur: onBlurField,
+      onClick: onClickInput,
+    };
+  });
+  // const fields = map(currentFieldset.fields, (field) => ({
+  //   ...schema.properties[field],
+  //   id: field,
+  //   value: formData[field],
+  //   required: schema.required.indexOf(field) !== -1,
+  //   onChange: onChangeField,
+  //   onBlur: onBlurField,
+  //   onClick: onClickInput,
+  // }));
 
   const state_errors = keys(errors).length > 0;
   return (
@@ -199,42 +210,6 @@ const ModalForm = (props) => {
       </Modal.Actions>
     </Modal>
   );
-};
-
-ModalForm.propTypes = {
-  schema: PropTypes.shape({
-    fieldsets: PropTypes.arrayOf(
-      PropTypes.shape({
-        fields: PropTypes.arrayOf(PropTypes.string),
-        id: PropTypes.string,
-        title: PropTypes.string,
-      }),
-    ),
-    properties: PropTypes.objectOf(PropTypes.any),
-    required: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
-  title: PropTypes.string.isRequired,
-  formData: PropTypes.objectOf(PropTypes.any),
-  submitError: PropTypes.string,
-  onSubmit: PropTypes.func.isRequired,
-  onCancel: PropTypes.func,
-  open: PropTypes.bool,
-  submitLabel: PropTypes.string,
-  loading: PropTypes.bool,
-  loadingMessage: PropTypes.string,
-  className: PropTypes.string,
-};
-
-ModalForm.defaultProps = {
-  submitLabel: null,
-  onCancel: null,
-  formData: {},
-  open: true,
-  loading: null,
-  loadingMessage: null,
-  submitError: null,
-  className: null,
-  dimmer: null,
 };
 
 export default ModalForm;
