@@ -46,7 +46,7 @@ export default {
   argTypes: {
     title: {
       control: 'text',
-      description: 'Alt text of Map',
+      description: 'Alternative text of the map block',
     },
     url: {
       control: 'text',
