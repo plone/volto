@@ -17,6 +17,35 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.14.1 (2025-04-25)
+
+### Bugfix
+
+- Add support for both Vitest and Jest in `__mocks__` folders of Volto core. Add-on tests using Jest relies on them. @Abhishek-17h [#7000](https://github.com/plone/volto/issues/7000)
+
+## 18.14.0 (2025-04-23)
+
+### Feature
+
+- Added current evaluated `querystring` as a parameter in expander's `querystring` key when it's a function. @sneridagh [#7012](https://github.com/plone/volto/issues/7012)
+
+## 18.13.0 (2025-04-22)
+
+### Feature
+
+- Allow `object_list` widget to receive a `schemaName` prop, mapped to an utility. @sneridagh [#7007](https://github.com/plone/volto/issues/7007)
+
+## 18.12.1 (2025-04-15)
+
+### Bugfix
+
+- Fixed broken tests in add-ons in Volto 18.12.0. @Abhishek-17h [#6989](https://github.com/plone/volto/issues/6989)
+
+### Internal
+
+- Removes make commands in root of repository whose packages no longer exist. @wesleybl [#6975](https://github.com/plone/volto/issues/6975)
+- Use `Image` from `@plone/volto/components/theme/Image/Image` instead of `semantic-ui-react` in `ContentsUploadModal`. @wesleybl [#6982](https://github.com/plone/volto/issues/6982)
+
 ## 18.12.0 (2025-04-12)
 
 ### Feature
@@ -1940,7 +1969,7 @@ myst:
 - (FIX): put padding so the text is not clipped #5305 @dobri1408 [#5305](https://github.com/plone/volto/issues/5305)
 - Fix compare translations view @sneridagh [#5327](https://github.com/plone/volto/issues/5327)
 - Fix DatetimeWidget on FF, the button default if no type is set is sending the form. @sneridagh
-  See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#formmethod [#5343](https://github.com/plone/volto/issues/5343)
+  See https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#formmethod [#5343](https://github.com/plone/volto/issues/5343)
 
 ### Internal
 

@@ -75,7 +75,7 @@ export function addExpandersToPath(path, type, isAnonymous) {
       // The querystring accepts being a function to be able to take other
       // config parameters
       if (typeof querystring === 'function') {
-        querystring = querystring(config);
+        querystring = querystring(config, acc);
       }
       return { ...acc, ...querystring };
     }, {});

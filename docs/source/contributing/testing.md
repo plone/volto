@@ -91,5 +91,5 @@ pnpm test src/components/theme/Image
 ## Acceptance tests
 
 ```{seealso}
-See the chapter {doc}`../../contributing/acceptance-tests`.
+See the chapter {doc}`acceptance-tests`.
 ```

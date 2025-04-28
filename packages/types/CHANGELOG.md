@@ -8,6 +8,24 @@
 
 <!-- towncrier release notes start -->
 
+## 1.4.1 (2025-04-25)
+
+### Bugfix
+
+- Better typing for `apiExpandersType` introduced in #7012. @sneridagh [#7016](https://github.com/plone/volto/issues/7016)
+
+## 1.4.0 (2025-04-22)
+
+### Feature
+
+- Better Site extender and endpoint typings, add it to the default extenders typings. @sneridagh [#7007](https://github.com/plone/volto/issues/7007)
+
+## 1.3.3 (2025-04-15)
+
+### Bugfix
+
+- Fix boolean in blocks edit config BlockEditProps in key selected type. @sneridagh [#6994](https://github.com/plone/volto/issues/6994)
+
 ## 1.3.2 (2025-02-08)
 
 ### Internal
