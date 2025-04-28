@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "How to access global state in Volto using Redux"
-    "property=og:description": "How to access global state in Volto using Redux"
-    "property=og:title": "Redux"
-    "keywords": "Volto, Plone, frontend, React, Redux, global state"
+    'description': 'How to access global state in Volto using Redux'
+    'property=og:description': 'How to access global state in Volto using Redux'
+    'property=og:title': 'Redux'
+    'keywords': 'Volto, Plone, frontend, React, Redux, global state'
 ---
 
 # Redux
@@ -14,14 +14,15 @@ This documentation is a work in progress. Any help is welcome to fill in the
 gaps!
 ```
 
-As with any other complex React project, the way global state is handled
-across all components has a big impact on the overall architecture. Basic
-knowledge of {term}`Redux` is needed to understand this part, but Volto's use of Redux
-is "typical" and you can find plenty examples in Volto's code base.
+As with any other complex React project, the way global state is handled across
+all components has a big impact on the overall architecture. Basic knowledge of
+{term}`Redux` is needed to understand this part, but Volto's use of Redux is
+"typical" and you can find plenty of examples in Volto's code base.
 
-To access the global state, a component needs to be connected with `connect`.
-A simple example of such component is the
-`src/theme/ContactForm/ContactForm.jsx`, which is exported connected as:
+To access the global state, a component needs to be connected with `connect`. A
+simple example of such component is the
+`src/components/theme/ContactForm/ContactForm.jsx`, which is exported connected
+as:
 
 ```jsx
 export default compose(
@@ -42,28 +43,33 @@ export default compose(
 If multiple Higher Order Components need to be used, like in the above example,
 the `compose` can be used to combine all of them in a final component.
 
-If you're writing Function Components, you can use the `useSelector` {term}`hook`. See
-`src/components/theme/OutdatedBrowser/OutdatedBrowser.jsx` for an example.
+If you're writing Function Components, you can use the `useSelector`
+{term}`hook`. See `src/components/theme/OutdatedBrowser/OutdatedBrowser.jsx` for
+an example.
 
 When using the `connect` function, you can `select` parts from the global store
 and either pass them directly as component props, or tweak them combine them,
 etc.
 
 You can view the content of the global Redux store by using a browser [Redux
-developer extension](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
+developer extension for
+Chromium/Chrome](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
+or [for Firefox](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/).
+
 The code that is used to populate this store is in the `src/reducers` folder.
 
 In some parts of Volto you'll see `asyncConnect` being used, which is needed to
-enable proper {term}`server-side rendering` of components. Using it makes sure that the
-component will be constructed with the proper data already fetched from the
-backend and available as props.
+enable proper {term}`server-side rendering` of components. Using it makes sure
+that the component will be constructed with the proper data already fetched from
+the backend and available as props.
 
 ```{note}
 Beware! The `asyncConnect` is available only to components that are
 attached directly to the router or its children. There are some components
 that decide their "rendering path" at render time, so this prohibits the
 use of asyncConnect in that component tree. The biggest example of this is
-`src/theme/View/View.jsx` which decides on the render component based
+`src/components/theme/View/View.jsx` which decides on the render component based
+on
 inspecting the content, so it is not possible to use asyncConnect in any
 view/layout component!
 ```
