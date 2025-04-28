@@ -16,6 +16,7 @@ import {
 import { useListData } from 'react-stately';
 import type { ListData } from 'react-stately';
 import { useFilter } from 'react-aria';
+import { twMerge } from 'tailwind-merge';
 
 import { CloseIcon as Close } from '../../components/icons/CloseIcon';
 import { ChevrondownIcon } from '../../components/icons/ChevrondownIcon';
@@ -186,15 +187,20 @@ export function MultipleSelect({
         popLast();
       }
 
-      if (e.key === 'Enter' && fieldState.inputValue && creatable) {
+      if (
+        e.key === 'Enter' &&
+        fieldState.inputValue &&
+        creatable &&
+        accessibleList.items.length === 0
+      ) {
         onCreateTag();
       }
     },
-    [popLast, fieldState.inputValue, onCreateTag, creatable],
+    [popLast, fieldState.inputValue, onCreateTag, creatable, accessibleList],
   );
 
   return (
-    <div className={`w-full ${className}`}>
+    <div className={twMerge('w-full', className)}>
       {label && (
         <Label className="mb-1 block text-sm font-medium text-gray-700">
           {label}
