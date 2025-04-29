@@ -36,15 +36,14 @@ export default compose(
 )(ContactForm);
 ```
 
-If multiple Higher Order Components need to be used, like in the above example, the `compose` can be used to combine all of them in a final component.
+If multiple Higher Order Components need to be used, like in the above example, `compose` can be used to combine all of them in a final component.
 
 If you're writing Function Components, you can use the `useSelector` {term}`hook`.
 See {file}`src/components/theme/OutdatedBrowser/OutdatedBrowser.jsx` for an example.
 
 When using the `connect` function, you can `select` parts from the global store and either pass them directly as component props, tweak them, or combine them.
 
-You can view the content of the global Redux store by using a browser [Redux
-developer extension for Chromium/Chrome](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) or [for Firefox](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/).
+You can view the content of the global Redux store by using a browser [Redux developer extension for Chromium/Chrome](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) or [for Firefox](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/).
 The code that is used to populate this store is in the {file}`src/reducers` folder.
 
 In some parts of Volto you'll see `asyncConnect` being used, which is needed to enable proper {term}`server-side rendering` of components.
