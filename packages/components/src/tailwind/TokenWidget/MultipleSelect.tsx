@@ -2,17 +2,15 @@ import React, { useRef, useState, useEffect, useCallback, useId } from 'react';
 import {
   Button,
   ComboBox,
-  Input,
-  Label,
   ListBox,
   Popover,
-  Text,
   type Key,
   ListBoxItem,
   TagGroup,
   TagList,
   Tag,
 } from 'react-aria-components';
+import { Description, Label, Input } from '../Field/Field';
 import { useListData } from 'react-stately';
 import type { ListData } from 'react-stately';
 import { useFilter } from 'react-aria';
@@ -201,11 +199,7 @@ export function MultipleSelect({
 
   return (
     <div className={twMerge('w-full', className)}>
-      {label && (
-        <Label className="mb-1 block text-sm font-medium text-gray-700">
-          {label}
-        </Label>
-      )}
+      {label && <Label>{label}</Label>}
       <div ref={triggerRef} className="relative">
         <div className="relative flex min-h-10 w-full flex-wrap items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-1.5 shadow-sm focus-within:border-gray-500 focus-within:ring-2 focus-within:ring-gray-400">
           <TagGroup
@@ -247,7 +241,6 @@ export function MultipleSelect({
             className="relative flex flex-1"
           >
             <Input
-              className="ml-1 flex-1 border-none bg-transparent px-0.5 py-1 text-gray-800 placeholder-gray-400 ring-0 outline-none focus:ring-0"
               placeholder={placeholder}
               onBlur={() => {
                 setFieldState({
@@ -321,11 +314,7 @@ export function MultipleSelect({
           </ComboBox>
         </div>
       </div>
-      {description && (
-        <Text slot="description" className="mt-1 text-sm text-gray-500">
-          {description}
-        </Text>
-      )}
+      {description && <Description>{description}</Description>}
     </div>
   );
 }
