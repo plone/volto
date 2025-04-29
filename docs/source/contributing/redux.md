@@ -68,7 +68,7 @@ Beware! The `asyncConnect` is available only to components that are
 attached directly to the router or its children. There are some components
 that decide their "rendering path" at render time, so this prohibits the
 use of asyncConnect in that component tree. The biggest example of this is
-`src/components/theme/View/View.jsx` which decides on the render component based
+{file}`src/components/theme/View/View.jsx` which decides on the render component based
 on
 inspecting the content, so it is not possible to use asyncConnect in any
 view/layout component!
