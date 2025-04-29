@@ -46,7 +46,7 @@ When using the `connect` function, you can `select` parts from the global store 
 You can view the content of the global Redux store by using a browser [Redux
 developer extension for
 Chromium/Chrome](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) or [for Firefox](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/).
-The code that is used to populate this store is in the `src/reducers` folder.
+The code that is used to populate this store is in the {file}`src/reducers` folder.
 
 In some parts of Volto you'll see `asyncConnect` being used, which is needed to enable proper {term}`server-side rendering` of components.
 Using it makes sure that the component will be constructed with the proper data already fetched from the backend and available as props.
@@ -64,21 +64,21 @@ You can't properly trigger an action unless you access it as a prop, for example
 For Function Components you can use the `useDispatch` hook.
 
 Global state update fetches are typically triggered by components in the mount lifecycle stage.
-See for example `src/components/theme/Search/Search.jsx` for a component that needs to interact with the backend to show its content.
+See for example {file}`src/components/theme/Search/Search.jsx` for a component that needs to interact with the backend to show its content.
 In the Redux flow of information, actions trigger the asynchronous processes and when that content arrives to the global app, it is pushed as props through the `connect` mechanism.
 So components only deal indirectly with async information: they trigger getting that information and it will arrive as a property once it is ready.
 
 ## Backend network fetching
 
 Backend network fetches are automatically triggered by creating a Redux action with a `request` key.
-For a simple example, see `src/actions/navigation/navigation.js`.
+For a simple example, see {file}`src/actions/navigation/navigation.js`.
 In the `request` key you can set the HTTP method type (using the `op` field) and the `path` to the backend.
 Any non-absolute URLs are using the `settings.apiPath` prefix, but you can query any other backend server by using a URL that starts with `http://` or `https://`.
 When writing the reducer counterpart, you'll get the backend response available as `action.result`.
 
 It's also possible to make multiple backend requests at once, for example to batch create content.
 In that case, set the `action.request` to be a list of objects (requests) and consequently, in the reducer, the `action.result` will be a list of responses corresponding to each request.
-See the `src/reducers/content` for an example.
+See the {file}`src/reducers/content` for an example.
 
 In order to make them more generic and allow more reuse, some actions can accept a `subrequest` parameter, basically a string that can identify the response and "namespace" it in the global state.
 See for example the `content` reducer.
@@ -86,7 +86,7 @@ Using subrequest is specially important when using the `getContent` action, as, 
 
 Creating a "request action" potentially triggers some additional access.
 For example, even if we only declare the `GET_CONTENT` type of action, we can see that `GET_CONTENT_SUCCESS`, `GET_CONTENT_PENDING` and `GET_CONTENT_FAIL` are also used in the `content` reducer.
-They are automatically created by the special API middleware, available in `src/middleware/api.js`.
+They are automatically created by the special API middleware, available in {file}`src/middleware/api.js`.
 
 ## Customizing the Redux middleware
 
