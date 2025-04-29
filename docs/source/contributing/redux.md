@@ -84,7 +84,7 @@ possible to use asyncConnect in any view/layout component!
 Notice the `emailNotification` action being passed to `connect` in the above
 example.
 
-All action (which trigger global state updates) need to be passed as props by
+All actions (which trigger global state updates) need to be passed as props by
 `connect`.
 
 You can't properly trigger an action unless you access it as a prop, for example
@@ -111,10 +111,10 @@ Backend network fetches are automatically triggered by creating a Redux action
 with a `request` key.
 
 For a simple example, see `src/actions/navigation/navigation.js`. In the
-`request` key you can set the HTTP method type (using the `op` field) and the `path`
-to the backend.
+`request` key you can set the HTTP method type (using the `op` field) and the
+`path` to the backend.
 
-Any non-absolute URLs are use the `settings.apiPath` prefix, but you can query
+Any non-absolute URLs are using the `settings.apiPath` prefix, but you can query
 any other backend server by using a URL that starts with `http://` or
 `https://`.
 
