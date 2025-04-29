@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    'description': 'How to access global state in Volto using Redux'
-    'property=og:description': 'How to access global state in Volto using Redux'
-    'property=og:title': 'Redux'
-    'keywords': 'Volto, Plone, frontend, React, Redux, global state'
+    "description": "How to access global state in Volto using Redux"
+    "property=og:description": "How to access global state in Volto using Redux"
+    "property=og:title": "Redux"
+    "keywords": "Volto, Plone, frontend, React, Redux, global state"
 ---
 
 # Redux

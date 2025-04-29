@@ -1,3 +1,1 @@
-Corrected file references in Redux-related docs, improved word wrapping to
-column 80 in source code of Redux-related docs and added link to Redux
-development addon for Firefox. @silviubogan
+Corrected Redux-related docs. Improved word wrapping to column 80 in source code of Redux-related docs and added link to Redux development addon for Firefox. @silviubogan
