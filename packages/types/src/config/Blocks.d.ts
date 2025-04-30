@@ -58,7 +58,7 @@ export interface BlockConfigBase {
   /**
    * The model of the block
    */
-  blockModel: number;
+  blockModel?: number;
   /**
    * The view mode component
    */
