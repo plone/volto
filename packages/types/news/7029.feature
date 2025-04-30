@@ -1,0 +1,1 @@
+Fixed `groupBlocksOrder` typing. @sneridagh
