@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.4.3 (2025-04-30)
+
+### Bugfix
+
+- `blockModel` should be optional. @sneridagh [#7033](https://github.com/plone/volto/issues/7033)
+
 ## 1.4.2 (2025-04-30)
 
 ### Bugfix
