@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.4.2 (2025-04-30)
+
+### Bugfix
+
+- Fixed `groupBlocksOrder` typing. @sneridagh [#7029](https://github.com/plone/volto/issues/7029)
+
 ## 1.4.1 (2025-04-25)
 
 ### Bugfix
