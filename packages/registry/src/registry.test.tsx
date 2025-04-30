@@ -891,6 +891,36 @@ describe('Slots registry', () => {
     ).toEqual('The colophon component');
     config.unRegisterSlotComponent('postFooter', 'Colophon', 0);
     expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(0);
+
+    expect(config.getSlotComponents('postFooter')).toEqual([]);
+  });
+
+  it('unRegisterSlotComponent - remove one registered slot, then re-register it', () => {
+    config.registerSlotComponent({
+      name: 'Colophon',
+      slot: 'postFooter',
+      component: 'The colophon component',
+    });
+
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(1);
+    expect(
+      config.getSlotComponent('postFooter', 'Colophon')[0].component,
+    ).toEqual('The colophon component');
+    config.unRegisterSlotComponent('postFooter', 'Colophon', 0);
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(0);
+
+    expect(config.getSlotComponents('postFooter')).toEqual([]);
+
+    config.registerSlotComponent({
+      name: 'Colophon',
+      slot: 'postFooter',
+      component: 'The colophon component',
+    });
+
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(1);
+    expect(
+      config.getSlotComponent('postFooter', 'Colophon')[0].component,
+    ).toEqual('The colophon component');
   });
 
   it('unRegisterSlotComponent - registers 2 + 2 slot components with predicates', () => {
