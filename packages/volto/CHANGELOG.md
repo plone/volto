@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.15.1 (2025-04-30)
+
+### Internal
+
+- Rereleasing due to a new patch release (`1.4.3`) in `@plone/types`. @sneridagh 
+
 ## 18.15.0 (2025-04-30)
 
 ### Feature
