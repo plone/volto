@@ -1047,7 +1047,6 @@ You can consider removing it if you were shadowing it in your project.
 ### Grid block migration from `@kitconcept/volto-blocks-grid`
 
 ```{versionadded} Volto 17.0.0-alpha.16
-See {ref}`grid-block-migration-from-kitconcept-volto-blocks-grid-label`.
 ```
 
 ```{seealso}
