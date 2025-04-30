@@ -1047,15 +1047,8 @@ You can consider removing it if you were shadowing it in your project.
 ### Grid block migration from `@kitconcept/volto-blocks-grid`
 
 ```{versionadded} Volto 17.0.0-alpha.16
-See {ref}`grid-block-migration-from-kitconcept-volto-blocks-grid-label`.
+  It is based on the @kitconcept/volto-blocks-grid add-on version 7.x.x..
 ```
-
-```{seealso}
-{doc}`../blocks/core/grid`
-```
-
-The grid block was added to Volto in version 17.0.0-alpha.16.
-It is based on the `@kitconcept/volto-blocks-grid` add-on version 7.x.x.
 
 If you previously used `@kitconcept/volto-blocks-grid` in your project based on a Volto version before 17.0.0-alpha.16, then your site will show two available block types both named `Grid`.
 You need to disable one of them based on the following information.
@@ -1081,6 +1074,9 @@ config.blocks.blocksConfig.gridBlock.restricted = true;
 As long as you keep the add-on in place, your existing blocks will work as expected, even if you restrict the block.
 We recommend that you disable the `@kitconcept/volto-blocks-grid` block and use the new Volto core grid block for new content.
 
+```{seealso}
+{doc}`../blocks/core/grid`
+```
 
 (volto-upgrade-guide-16.x.x)=
 
