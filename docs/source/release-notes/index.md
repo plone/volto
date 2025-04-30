@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.15.0 (2025-04-30)
+
+### Feature
+
+- Move `MaybeWrap` to TypeScript. @sneridagh [#7029](https://github.com/plone/volto/issues/7029)
+
 ## 18.14.1 (2025-04-25)
 
 ### Bugfix
@@ -105,6 +111,9 @@ myst:
   Fix a bug where the video block schema was not used for validation. @robgietema [#6370](https://github.com/plone/volto/issues/6370)
 - Add Russian translation in Volto. @toropok [#6874](https://github.com/plone/volto/issues/6874)
 - Use Plone 6.1.1 final. @sneridagh 
+- Enhance the `ImageInput` component to only accept image files. [@jnptk] [#6926](https://github.com/plone/volto/issues/6926)
+- Fix translations default of ContentsDeleteModal: 'linkintegrity: delete' -> 'delete' if no link to break. @ksuess [#6964](https://github.com/plone/volto/issues/6964)
+- Use Plone 6.1.1 final. @sneridagh
 
 ### Bugfix
 

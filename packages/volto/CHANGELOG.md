@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.15.0 (2025-04-30)
+
+### Feature
+
+- Move `MaybeWrap` to TypeScript. @sneridagh [#7029](https://github.com/plone/volto/issues/7029)
+
 ## 18.14.1 (2025-04-25)
 
 ### Bugfix
