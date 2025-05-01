@@ -52,7 +52,7 @@ export function svgLoader(options = {}) {
 
       const match = content.match(/<svg([^>]+)+>([\s\S]+)<\/svg>/i);
       let attrs = {};
-      // console.log(content);
+
       if (match) {
         attrs = match[1];
         if (attrs) {
