@@ -17,6 +17,17 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.16.0 (2025-05-01)
+
+### Feature
+
+- Rename `vitest.config.ts` to `vitest.config.mjs` for allowing it to be loaded from add-ons. @sneridagh [#7035](https://github.com/plone/volto/issues/7035)
+
+### Bugfix
+
+- Added missing dependency for `sgvo`. Fixed `svgo` library loading in `./vite-plugins/svg.js`. @sneridagh [#7035](https://github.com/plone/volto/issues/7035)
+- Rename `./vite-plugins/svg.js` to proper extension `vite-plugins/svg.mjs`. @sneridagh [#7035](https://github.com/plone/volto/issues/7035)
+
 ## 18.15.1 (2025-04-30)
 
 ### Internal
