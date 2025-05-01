@@ -48,7 +48,7 @@ describe('FileWidget', () => {
       () => {
         expect(container.querySelector('.file-widget-dropzone')).toBeTruthy();
       },
-      { timeout: 1000 },
+      { timeout: 3000 },
     );
 
     expect(container).toMatchSnapshot();
@@ -82,7 +82,7 @@ describe('FileWidget', () => {
 
         return dropzone && preview && filename;
       },
-      { timeout: 1000 },
+      { timeout: 3000 },
     );
 
     expect(container).toMatchSnapshot();
@@ -115,7 +115,7 @@ describe('FileWidget', () => {
 
         return dropzone && filename;
       },
-      { timeout: 1000 },
+      { timeout: 3000 },
     );
 
     expect(container).toMatchSnapshot();

@@ -2,6 +2,15 @@ import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import { svgLoader } from './vite-plugins/svg.js';
+import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const projectRoot = path.resolve(__dirname);
 
 export default defineConfig({
   plugins: [
@@ -10,12 +19,19 @@ export default defineConfig({
       svgoConfig: {
         plugins: [
           {
-            name: 'removeViewBox',
-            active: false,
+            name: 'preset-default',
+            params: {
+              overrides: {
+                convertPathData: false,
+                removeViewBox: false,
+              },
+            },
           },
+          'removeTitle',
+          'removeUselessStrokeAndFill',
         ],
       },
-    }) as any,
+    }),
   ],
   resolve: {
     alias: {

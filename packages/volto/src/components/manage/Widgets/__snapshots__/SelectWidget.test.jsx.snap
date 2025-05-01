@@ -97,9 +97,9 @@ exports[`No 'No value' option when default value is 0 1`] = `
                     viewBox="0 0 36 36"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <polygon
+                    <path
+                      d="M27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18z"
                       fill-rule="evenodd"
-                      points="27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18"
                     />
                   </svg>
                 </div>
@@ -116,9 +116,9 @@ exports[`No 'No value' option when default value is 0 1`] = `
                     viewBox="0 0 36 36"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <polygon
+                    <path
+                      d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
                       fill-rule="evenodd"
-                      points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
                     />
                   </svg>
                 </div>
@@ -147,11 +147,11 @@ exports[`No 'No value' option when default value is 0 1`] = `
                     <g
                       fill-rule="evenodd"
                     >
-                      <polygon
-                        points="29 8 13.561 23.439 7.121 17 5 19.12 13.561 27.681 31.12 10.12"
+                      <path
+                        d="M29 8 13.561 23.439 7.121 17 5 19.12 13.561 27.681 31.12 10.12z"
                       />
-                      <polygon
-                        points="29 8 13.561 23.439 7.121 17 5 19.12 13.561 27.681 31.12 10.12"
+                      <path
+                        d="M29 8 13.561 23.439 7.121 17 5 19.12 13.561 27.681 31.12 10.12z"
                       />
                     </g>
                   </svg>
@@ -171,14 +171,15 @@ exports[`No 'No value' option when default value is 0 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <g
+                      fill="none"
                       fill-opacity="0"
                       fill-rule="evenodd"
                     >
-                      <polygon
-                        points="29 8 13.561 23.439 7.121 17 5 19.12 13.561 27.681 31.12 10.12"
+                      <path
+                        d="M29 8 13.561 23.439 7.121 17 5 19.12 13.561 27.681 31.12 10.12z"
                       />
-                      <polygon
-                        points="29 8 13.561 23.439 7.121 17 5 19.12 13.561 27.681 31.12 10.12"
+                      <path
+                        d="M29 8 13.561 23.439 7.121 17 5 19.12 13.561 27.681 31.12 10.12z"
                       />
                     </g>
                   </svg>
@@ -289,9 +290,9 @@ exports[`renders a select widget component 1`] = `
                     viewBox="0 0 36 36"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <polygon
+                    <path
+                      d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
                       fill-rule="evenodd"
-                      points="9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414"
                     />
                   </svg>
                 </div>
