@@ -44,12 +44,9 @@ describe('FileWidget', () => {
       </Provider>,
     );
 
-    await waitFor(
-      () => {
-        expect(container.querySelector('.file-widget-dropzone')).toBeTruthy();
-      },
-      { timeout: 3000 },
-    );
+    await waitFor(() => {
+      expect(container.querySelector('.file-widget-dropzone')).toBeTruthy();
+    });
 
     expect(container).toMatchSnapshot();
   });
@@ -74,16 +71,13 @@ describe('FileWidget', () => {
       </Provider>,
     );
 
-    await waitFor(
-      () => {
-        const dropzone = container.querySelector('.file-widget-dropzone');
-        const preview = container.querySelector('.image-preview');
-        const filename = container.querySelector('.field-file-name');
+    await waitFor(() => {
+      const dropzone = container.querySelector('.file-widget-dropzone');
+      const preview = container.querySelector('.image-preview');
+      const filename = container.querySelector('.field-file-name');
 
-        return dropzone && preview && filename;
-      },
-      { timeout: 3000 },
-    );
+      return dropzone && preview && filename;
+    });
 
     expect(container).toMatchSnapshot();
   });
@@ -108,15 +102,12 @@ describe('FileWidget', () => {
       </Provider>,
     );
 
-    await waitFor(
-      () => {
-        const dropzone = container.querySelector('.file-widget-dropzone');
-        const filename = container.querySelector('.field-file-name');
+    await waitFor(() => {
+      const dropzone = container.querySelector('.file-widget-dropzone');
+      const filename = container.querySelector('.field-file-name');
 
-        return dropzone && filename;
-      },
-      { timeout: 3000 },
-    );
+      return dropzone && filename;
+    });
 
     expect(container).toMatchSnapshot();
   });
