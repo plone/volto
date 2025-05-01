@@ -50,9 +50,9 @@ exports[`ContextNavigation > renders a navigation component with an active item 
                 viewBox="0 0 36 36"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <polygon
+                <path
+                  d="M21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18z"
                   fill-rule="evenodd"
-                  points="21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18"
                 />
               </svg>
             </div>
@@ -147,9 +147,9 @@ exports[`ContextNavigation > renders a navigation component with an active item 
                 viewBox="0 0 36 36"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <polygon
+                <path
+                  d="M21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18z"
                   fill-rule="evenodd"
-                  points="21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18"
                 />
               </svg>
             </div>
