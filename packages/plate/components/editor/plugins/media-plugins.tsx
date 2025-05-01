@@ -1,5 +1,3 @@
-'use client';
-
 import { CaptionPlugin } from '@udecode/plate-caption/react';
 import {
   AudioPlugin,
@@ -17,6 +15,13 @@ export const mediaPlugins = [
   ImagePlugin.extend({
     options: { disableUploadInsert: true },
     render: { afterEditable: ImagePreview },
+    handlers: {
+      onClick: ({ editor }) => {
+        console.log(editor.api.block({ highest: true }));
+        editor.emblaApi.scrollTo(1);
+        console.log('ImagePlugin: onClick');
+      },
+    },
   }),
   MediaEmbedPlugin,
   VideoPlugin,

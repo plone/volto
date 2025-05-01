@@ -105,6 +105,12 @@ const TitlePlugin = createPlatePlugin({
     isElement: true,
     type: 'title',
   },
+  handlers: {
+    onKeyDown: ({ editor }) => {
+      // Prevent default behavior for title
+      console.log('TitlePlugin: onKeyDown');
+    },
+  },
 });
 
 export const viewComponents = {
@@ -185,7 +191,7 @@ export const useCreateEditor = (
         ...copilotPlugins,
         ...editorPlugins,
         TitlePlugin,
-        FixedToolbarPlugin,
+        // FixedToolbarPlugin,
         FloatingToolbarPlugin,
       ],
       value: [

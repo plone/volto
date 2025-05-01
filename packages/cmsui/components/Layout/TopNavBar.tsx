@@ -1,5 +1,12 @@
+import { Button } from '@plone/components/tailwind';
+import { Pluggable } from '../Pluggable';
+
 const TopNavBar = () => {
-  return <div className="h-12 w-full bg-amber-300"></div>;
+  return (
+    <div className="flex h-12 w-full items-center justify-center bg-amber-300">
+      <Pluggable name="navtoolbar-buttons" />
+    </div>
+  );
 };
 
 export default TopNavBar;

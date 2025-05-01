@@ -33,6 +33,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "vitest",
+    "test:debug": "vitest --inspect-brk --watch",
     "check-ts": "tsc --project tsconfig.json",
     "dry-release": "release-it --dry-run",
     "release": "release-it",

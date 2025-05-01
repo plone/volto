@@ -18,19 +18,6 @@ export default function install(config: ConfigType) {
           },
         ],
       },
-      {
-        type: 'prefix',
-        path: 'editor-simple',
-        children: [
-          {
-            type: 'index',
-            file: '@plone/plate/routes/editor-simple.tsx',
-            options: {
-              id: 'index-editor-simple',
-            },
-          },
-        ],
-      },
     ],
   });
 

@@ -17,7 +17,7 @@ export const exitBreakPlugin = ExitBreakPlugin.configure({
         hotkey: 'enter',
         level: 1,
         query: {
-          allow: HEADING_LEVELS,
+          allow: [...HEADING_LEVELS, 'title'],
           end: true,
           start: true,
         },
