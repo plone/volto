@@ -98,6 +98,7 @@ import { TableElement } from '@/components/plate-ui/table-element';
 import { TableRowElement } from '@/components/plate-ui/table-row-element';
 import { TocElement } from '@/components/plate-ui/toc-element';
 import { ToggleElement } from '@/components/plate-ui/toggle-element';
+import UnknownElement from '@/components/plate-ui/unknown-element';
 
 const TitlePlugin = createPlatePlugin({
   key: 'title',
@@ -105,11 +106,21 @@ const TitlePlugin = createPlatePlugin({
     isElement: true,
     type: 'title',
   },
-  handlers: {
-    onKeyDown: ({ editor }) => {
-      // Prevent default behavior for title
-      console.log('TitlePlugin: onKeyDown');
-    },
+  // handlers: {
+  //   onKeyDown: ({ editor }) => {
+  //     // Prevent default behavior for title
+  //     console.log('TitlePlugin: onKeyDown');
+  //   },
+  // },
+});
+
+const UnknownElementPlugin = createPlatePlugin({
+  key: 'unknown',
+  node: {
+    isElement: true,
+    isVoid: true,
+    type: 'unknown',
+    component: UnknownElement,
   },
 });
 
@@ -191,6 +202,7 @@ export const useCreateEditor = (
         ...copilotPlugins,
         ...editorPlugins,
         TitlePlugin,
+        UnknownElementPlugin,
         // FixedToolbarPlugin,
         FloatingToolbarPlugin,
       ],

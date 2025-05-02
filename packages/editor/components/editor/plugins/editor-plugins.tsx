@@ -18,7 +18,7 @@ import { ColumnPlugin } from '@udecode/plate-layout/react';
 import { SlashPlugin } from '@udecode/plate-slash-command/react';
 import { TogglePlugin } from '@udecode/plate-toggle/react';
 import { TrailingBlockPlugin } from '@udecode/plate-trailing-block';
-
+import { TrailingBlockPlugin as TrailingBlockP } from './trailing-debug';
 import { FixedToolbarPlugin } from '@/components/editor/plugins/fixed-toolbar-plugin';
 import { FloatingToolbarPlugin } from '@/components/editor/plugins/floating-toolbar-plugin';
 import { BlockDiscussion } from '@/components/plate-ui/block-discussion';
@@ -107,7 +107,8 @@ export const editorPlugins = [
   resetBlockTypePlugin,
   ...deletePlugins,
   softBreakPlugin,
-  TrailingBlockPlugin,
+  TrailingBlockP,
+  // TrailingBlockPlugin,
 
   // Deserialization
   DocxPlugin,

@@ -1,5 +1,5 @@
 import type { BlocksData, Content } from '@plone/types';
-import type { TElement, TText } from '@udecode/plate';
+import { nanoid, type TElement, type TText } from '@udecode/plate';
 
 type SlateNode = TElement;
 type ExtendedSlateNode = SlateNode & {
@@ -16,11 +16,11 @@ export function blocksToPlate(content: Content) {
       const block = blocks[blockId];
 
       if (block['@type'] === 'slate') {
+        const { '@type': blockType, value, plaintext, ...blockValue } = block;
         return {
-          type: 'p',
-          children: [block.value[0]],
+          ...value[0],
           id: blockId,
-          ...block,
+          ...blockValue,
         };
       } else if (block['@type'] === 'title') {
         return {
@@ -36,7 +36,7 @@ export function blocksToPlate(content: Content) {
       }
 
       return {
-        type: block['@type'],
+        type: 'unknown',
         // We need not to render anything
         children: [{ text: '' }],
         id: blockId,
@@ -45,39 +45,28 @@ export function blocksToPlate(content: Content) {
     },
   );
 
-  // Add a default paragraph block at the end
-  plateData.push({
-    type: 'p',
-    '@type': 'slate',
-    children: [
-      {
-        text: '',
-      },
-    ],
-  });
   return plateData.filter((block) => block !== undefined);
 }
 
 export function plateToBlocks(plateData: Array<ExtendedSlateNode>) {
   const blocks: BlocksData['blocks'] = {};
   const blocks_layout: BlocksData['blocks_layout'] = { items: [] };
-
-  const VOID_BLOCKS = ['image'];
-
+  // console.log('plateData', plateData);
   plateData.forEach((node) => {
-    if (VOID_BLOCKS.includes(node.type as string)) {
-      blocks[node.id] = {
-        '@type': node.type,
-        ...node,
+    const id = node.id || nanoid(10);
+    if (node['@type']) {
+      const { id, type, children, ...nodeValue } = node;
+      blocks[id] = {
+        ...nodeValue,
       };
     } else {
-      blocks[node.id] = {
+      const { id, ...nodeValue } = node;
+      blocks[id] = {
         '@type': 'slate',
-        value: node.children,
-        ...node,
+        value: [nodeValue],
       };
     }
-    blocks_layout.items.push(node.id);
+    blocks_layout.items.push(id);
   });
 
   return { blocks, blocks_layout };

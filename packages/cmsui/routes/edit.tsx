@@ -39,8 +39,8 @@ import {
 } from '@plone/components/tailwind';
 import useEmblaCarousel from 'embla-carousel-react';
 import Fade from 'embla-carousel-fade';
-import { PlateEditor } from '@plone/plate/components/editor/plate-editor';
-import { blocksToPlate as blocksToPlateNew } from '@plone/plate/helpers/conversions';
+import { PlateEditor } from '@plone/editor/components/editor/plate-editor';
+import { blocksToPlate as blocksToPlateNew } from '@plone/editor/helpers/conversions';
 
 export async function loader({ params, request }: LoaderFunctionArgs) {
   const token = await requireAuthCookie(request);
@@ -115,7 +115,7 @@ const ConsoleLog = ({ atom }: { atom: PrimitiveAtom<Content> }) => {
   const [formData, setFormData] = useAtom(atom);
 
   return (
-    <div className="mt-4">
+    <div className="mt-4 w-[900px]">
       <pre>
         Global form data main JOTAI atom{' '}
         {JSON.stringify(formData.title, null, 2)}
@@ -143,38 +143,6 @@ export function useFocusAtom<T>({
   );
 }
 
-function blocksToPlate({
-  blocks,
-  blocks_layout,
-}: {
-  blocks: BlocksData['blocks'];
-  blocks_layout: BlocksData['blocks_layout'];
-}) {
-  const plateChildren = blocks_layout.items.map((blockId) => {
-    const block = blocks[blockId];
-
-    if (block['@type'] === 'slate') {
-      return {
-        type: 'p',
-        children: [block.value[0]],
-        ...block,
-      };
-    } else if (block['@type'] === 'title') {
-      return {
-        type: 'title',
-        children: [
-          {
-            text: 'The title',
-          },
-        ],
-        ...block,
-      };
-    }
-  });
-
-  return plateChildren.filter((block) => block !== undefined);
-}
-
 export default function Edit() {
   const { content, schema } = useLoaderData<typeof loader>();
   const { t } = useTranslation();
@@ -197,15 +165,7 @@ export default function Edit() {
   const [emblaRef2, emblaApi2] = useEmblaCarousel({ watchDrag: false }, [
     Fade(),
   ]);
-  console.log(
-    'blocksToPlateOriginal',
-    blocksToPlate({
-      blocks: content.blocks,
-      blocks_layout: content.blocks_layout,
-      content,
-    }),
-  );
-  console.log('blocksToPlateNew', blocksToPlateNew(content));
+  const initialValue = blocksToPlateNew(content);
 
   return (
     <HydrateAtoms atomValues={[[formAtom, content]]}>
@@ -267,6 +227,8 @@ export default function Edit() {
                         </AccordionItem>
                       </Accordion>
                     ))}
+                    {/* <PlateEditor value={initialValue} /> */}
+
                     <Plug pluggable="toolbar" id="edit-save-button">
                       <Button
                         aria-label={t('cmsui.save')}
@@ -324,7 +286,9 @@ export default function Edit() {
                           emblaApi={emblaApi2}
                         />
                       </div>
-                      <pre>{JSON.stringify(field.state.value, null, 2)}</pre>
+                      <div className="mt-4 w-[900px]">
+                        <pre>{JSON.stringify(field.state.value, null, 2)}</pre>
+                      </div>
                     </>
                   )}
                 />

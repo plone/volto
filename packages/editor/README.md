@@ -1,6 +1,6 @@
-# `@plone/plate`
+# `@plone/editor`
 
-This package is an add-on providing the Seven plate.js integration.
+This package is an add-on providing the block editor UI based in plate.js integration.
 
 > [!WARNING]
 > This package or app is experimental.

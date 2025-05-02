@@ -25,7 +25,7 @@ const addonPackages = [
   'packages/slots',
   'packages/theming',
   'packages/publicui',
-  'packages/plate',
+  'packages/editor',
   // Add more packages as needed
 ];
 

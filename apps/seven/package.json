@@ -22,7 +22,7 @@
     "@plone/cmsui": "workspace:*",
     "@plone/components": "workspace:*",
     "@plone/providers": "workspace:*",
-    "@plone/plate": "workspace:*",
+    "@plone/editor": "workspace:*",
     "@plone/publicui": "workspace:*",
     "@plone/react-router": "workspace:*",
     "@plone/registry": "workspace:*",

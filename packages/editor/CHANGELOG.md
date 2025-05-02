@@ -1,4 +1,4 @@
-# @plone/plate Release Notes
+# @plone/editor Release Notes
 
 <!-- Do *NOT* add new change log entries to this file.
      Instead create a file in the news directory.

@@ -16,11 +16,11 @@ export const mediaPlugins = [
     options: { disableUploadInsert: true },
     render: { afterEditable: ImagePreview },
     handlers: {
-      onClick: ({ editor }) => {
-        console.log(editor.api.block({ highest: true }));
-        editor.emblaApi.scrollTo(1);
-        console.log('ImagePlugin: onClick');
-      },
+      // onClick: ({ editor }) => {
+      //   console.log(editor.api.block({ highest: true }));
+      //   editor.emblaApi.scrollTo(1);
+      //   console.log('ImagePlugin: onClick');
+      // },
     },
   }),
   MediaEmbedPlugin,

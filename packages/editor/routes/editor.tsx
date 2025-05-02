@@ -7,6 +7,7 @@ import { useRouteLoaderData } from 'react-router';
 import type { BlocksData } from '@plone/types';
 import { atom, useAtom } from 'jotai';
 import { HydrateAtoms } from '@plone/helpers';
+import { blocksToPlate as blocksToPlateNew } from '../helpers/conversions';
 
 function blocksToPlate({
   blocks,
@@ -54,10 +55,7 @@ export const editorAtom = atom({} as Value);
 
 export default function Page() {
   const { content } = useRouteLoaderData('root');
-  const initialValue = blocksToPlate({
-    blocks: content.blocks,
-    blocks_layout: content.blocks_layout,
-  });
+  const initialValue = blocksToPlateNew(content);
 
   return (
     <HydrateAtoms atomValues={[[editorAtom, initialValue]]}>
