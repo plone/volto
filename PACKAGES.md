@@ -67,6 +67,7 @@ This bundle must work on both CommonJS and ESM environments.
 -   `@plone/blocks`
 -   `@plone/slots`
 -   `@plone/theming`
+-   `@plone/publicui`
 -   `@plone/cmsui`
 -   `@plone/contents`
 
@@ -88,10 +89,10 @@ They contain utilities that are useful for the development of a Volto project.
 Some of them are released:
 
 - `@plone/scripts`
-- `@plone/generator-volto` (deprecated)
 
-Some of them are used by the build, and separated in packages for convenience.
+Some of them are used by the project tooling, and separated in packages for convenience.
 
+- `tooling`
 - `tsconfig`
 
 

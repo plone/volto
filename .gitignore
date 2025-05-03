@@ -66,10 +66,12 @@ cypress/screenshots
 public/critical.css
 packages/volto/data
 
-# Sphinx and MyST
-docs/_build/
-/.python-version
-/.tool-versions
-docs/source/news
+# Documentation
+_build/
+docs/news
 
 tsconfig.tsbuildinfo
+
+# @plone/registry generated files
+registry.loader.js
+addons.styles.css

@@ -1,12 +1,13 @@
 import React from 'react';
 import { ToggleButton } from './ToggleButton';
-import { BoldIcon } from '../Icons/BoldIcon';
+import { BoldIcon } from '../icons';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 import '../../styles/basic/ToggleButton.css';
 
 const meta = {
+  title: 'Basic/ToggleButton',
   component: ToggleButton,
   parameters: {
     layout: 'centered',

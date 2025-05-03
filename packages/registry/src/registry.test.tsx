@@ -1,3 +1,4 @@
+import React from 'react';
 import config from './index';
 import { describe, expect, it, afterEach, beforeEach } from 'vitest';
 
@@ -121,13 +122,9 @@ describe('Slots registry', () => {
   });
 
   // type Predicate = (predicateValues: unknown) = (predicateValues, args) => boolean
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const RouteConditionTrue = (route: string) => () => true;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const RouteConditionFalse = (route: string) => () => false;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const ContentTypeConditionTrue = (contentType: string[]) => () => true;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const ContentTypeConditionFalse = (contentType: string[]) => () => false;
 
   it('registers a single slot component with no predicate', () => {
@@ -139,6 +136,25 @@ describe('Slots registry', () => {
 
     expect(config.getSlot('toolbar', {})![0].component).toEqual(
       'this is a toolbar component with no predicate',
+    );
+  });
+
+  it('registers two slot component with no predicate and the same name, the latter wins', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with no predicate',
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component:
+        'this is a toolbar component with no predicate overriding the above one',
+    });
+
+    expect(config.getSlot('toolbar', {})![0].component).toEqual(
+      'this is a toolbar component with no predicate overriding the above one',
     );
   });
 

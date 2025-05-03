@@ -1,0 +1,156 @@
+# Volto development
+
+### Defensive settings for make:
+#     https://tech.davis-hansson.com/p/make/
+SHELL:=bash
+.ONESHELL:
+.SHELLFLAGS:=-eu -o pipefail -c
+.SILENT:
+.DELETE_ON_ERROR:
+MAKEFLAGS+=--warn-undefined-variables
+MAKEFLAGS+=--no-builtin-rules
+
+# Project settings (read from repo root)
+include ../../variables.mk
+
+# Allow setting the language for backend-docker-start. Default is `en`.
+LANGUAGE ?=en
+
+# Recipe snippets for reuse
+
+CHECKOUT_BASENAME="$(shell basename $(shell realpath ./))"
+CHECKOUT_BRANCH=$(shell git branch --show-current)
+CHECKOUT_TMP=../$(CHECKOUT_BASENAME).tmp
+CHECKOUT_TMP_ABS="$(shell realpath $(CHECKOUT_TMP))"
+
+CURRENT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+
+# We like colors
+# From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
+RED=`tput setaf 1`
+GREEN=`tput setaf 2`
+RESET=`tput sgr0`
+YELLOW=`tput setaf 3`
+
+
+# Top-level targets
+
+.PHONY: all
+all: help
+
+# Add the following 'help' target to your Makefile
+# and add help text after each target name starting with ' ##'
+# to return a pretty list of targets and their descriptions.
+.PHONY: help
+help: ## This help message
+	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
+
+.PHONY: start
+start: ## Starts Plone 7 in development mode
+	pnpm start
+
+.PHONY: build
+build: ## Build a production bundle for distribution
+	pnpm build
+
+.PHONY: test
+test: ## Run unit tests
+	pnpm test
+
+.PHONY: clean
+clean: ## Clean development environment
+	rm -rf node_modules
+
+##### Build
+
+.PHONY: cypress-install
+cypress-install: ## Install Cypress for acceptance tests
+	$(NODEBIN)/cypress install
+
+../../packages/registry/dist: $(shell find ../../packages/registry/src -type f)
+	(cd ../../ && pnpm build:registry)
+
+../../packages/components/dist: $(shell find .../../packages/components/src -type f)
+	(cd ../../ && pnpm build:components)
+
+../../packages/client/dist: $(shell find ../../packages/client/src -type f)
+	(cd ../../ && pnpm build:client)
+
+../../packages/providers/dist: $(shell find ../../packages/providers/src -type f)
+	(cd ../../ && pnpm build:providers)
+
+../../packages/helpers/dist: $(shell find ../../packages/helpers/src -type f)
+	(cd ../../ && pnpm build:helpers)
+
+../../packages/react-router/dist: $(shell find .../../packages/react-router/src -type f)
+	(cd ../../ && pnpm build:react-router)
+
+.PHONY: build-deps
+build-deps: ../../packages/registry/dist ../../packages/components/dist ../../packages/client/dist ../../packages/providers/dist ../../packages/react-router/dist ../../packages/helpers/dist ## Build dependencies
+
+## Storybook
+
+.PHONY: storybook-start
+storybook-start: ## Start Storybook server on port 6006
+	@echo "$(GREEN)==> Start Storybook$(RESET)"
+	pnpm run storybook
+
+.PHONY: storybook-build
+storybook-build: build-deps ## Build Storybook
+	pnpm build-storybook -o ../../docs/_build/html/storybook
+
+##### Release (it runs the one inside)
+
+.PHONY: release-notes-copy-to-docs
+release-notes-copy-to-docs: ## Copy release notes into documentation
+	cp CHANGELOG.md ../../docs/source/release-notes/index.md
+	git add ../../docs/source/release-notes/index.md
+
+##### Docker containers
+
+.PHONY: backend-docker-start
+backend-docker-start: ## Starts a Docker-based backend for development
+	docker run -it --rm --name=backend -p 8080:8080 -v volto-backend-data:/data -e SITE=Plone -e ADDONS='$(KGS)' -e LANGUAGE='$(LANGUAGE)' $(DOCKER_IMAGE)
+
+.PHONY: frontend-docker-start
+frontend-docker-start: ## Starts a Docker-based frontend for development
+	echo "Starts a Docker-based frontend for demo purposes..."
+
+##### Acceptance tests (Cypress)
+######### Dev mode Acceptance tests
+
+.PHONY: acceptance-frontend-dev-start
+acceptance-frontend-dev-start: ## Start acceptance frontend in development mode
+	PLONE_API_PATH=http://127.0.0.1:55001/plone pnpm start
+
+######### Core Acceptance tests
+
+.PHONY: acceptance-backend-start
+acceptance-backend-start: ## Start backend acceptance server
+	# docker run -it --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -it --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default $(DOCKER_IMAGE_ACCEPTANCE)
+	# Uncomment next line and comment line above to use a custom image with the acceptance server (in case you need to use an specific backend add-on or version)
+	# docker run -it --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
+
+.PHONY: ci-acceptance-backend-start
+ci-acceptance-backend-start: ## Start backend acceptance server in headless mode for CI
+	# docker run -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default $(DOCKER_IMAGE_ACCEPTANCE)
+	# Uncomment next line and comment line above to use a custom image with the acceptance server (in case you need to use an specific backend add-on or version)
+	# docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
+
+.PHONY: acceptance-frontend-prod-start
+acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode
+	pnpm build && PLONE_API_PATH=http://127.0.0.1:55001/plone pnpm start:prod
+
+.PHONY: acceptance-test
+acceptance-test: ## Start Cypress in interactive mode
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open
+
+.PHONY: ci-acceptance-test
+ci-acceptance-test: ## Run cypress tests in headless mode for CI
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/core/**/*.{ts,tsx}'
+
+.PHONY: ci-acceptance-test-run-all
+ci-acceptance-test-run-all: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode
+	$(NODEBIN)/start-test "make ci-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make acceptance-frontend-prod-start" http://127.0.0.1:3000 "make ci-acceptance-test"

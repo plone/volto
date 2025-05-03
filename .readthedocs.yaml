@@ -19,18 +19,19 @@ build:
     # If there are no changes (git diff exits with 0) we force the command to return with 183.
     # This is a special exit code on Read the Docs that will cancel the build immediately.
     - |
-      if [ "$READTHEDOCS_VERSION_TYPE" = "external" ] && git diff --quiet origin/main -- docs/ .readthedocs.yaml requirements-docs.txt packages/volto/.storybook;
+      if [ "$READTHEDOCS_VERSION_TYPE" = "external" ] && git diff --quiet origin/seven -- docs/ .readthedocs.yaml requirements-docs.txt \
+          packages/components/.storybook/ packages/volto/.storybook/;
       then
         exit 183;
       fi
     # Install dependencies defined in your ``package.json``
     # - npm ci
     # Install any other extra dependencies to build the docs
-    - npm i -g corepack@latest
-    - corepack enable
-    - corepack prepare pnpm@* --activate
-    - asdf reshim nodejs
-    - pnpm install
-    - pnpm build:registry
-    - (cd packages/volto && pnpm build-storybook -o ${READTHEDOCS_OUTPUT}/html/storybook)
+    # - npm i -g corepack@latest
+    # - corepack enable
+    # - corepack prepare pnpm@* --activate
+    # - asdf reshim nodejs
+    # - pnpm install
+    # - pnpm build:registry
+    # - (cd packages/volto && pnpm build-storybook -o ${READTHEDOCS_OUTPUT}/html/storybook)
     - make docs-rtd-pr-preview

@@ -7,6 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/Tabs.css';
 
 const meta: Meta<typeof Tabs> = {
+  title: 'Basic/Tabs',
   component: Tabs,
   parameters: {
     layout: 'centered',
@@ -32,4 +33,7 @@ export const Default: Story = {
       <TabPanel id="Emp">Alea jacta est.</TabPanel>
     </Tabs>
   ),
+  args: {
+    defaultSelectedKey: 'FoR',
+  },
 };

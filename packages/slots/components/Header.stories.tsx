@@ -5,9 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta = {
   title: 'Header',
   component: Header,
-  parameters: {
-    layout: 'centered',
-  },
+
   tags: ['autodocs'],
 } satisfies Meta<typeof Header>;
 
@@ -40,7 +38,6 @@ export const Default: Story = {
           ],
         },
         navroot: {
-          // @ts-expect-error This is a test object, missing all content properties
           navroot: {
             '@id': 'http://localhost:3000/Plone',
             title: 'Plone site',

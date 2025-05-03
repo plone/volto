@@ -13,7 +13,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../../styles/basic/Form.css';
 
 const meta = {
-  title: 'Forms/Form',
+  title: 'Basic/Forms/Form',
   component: Form,
   parameters: {
     layout: 'centered',

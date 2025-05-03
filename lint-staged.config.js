@@ -11,21 +11,14 @@ const removeIgnoredFiles = async (files) => {
 module.exports = {
   'packages/!(volto)/**/*.{js,jsx,ts,tsx}': async (files) => {
     const filesToLint = await removeIgnoredFiles(files);
-    return [
-      `eslint --max-warnings=0 ${filesToLint}`,
-      'pnpm prettier --single-quote --write',
-    ];
+    if (!filesToLint) {
+      return ['pnpm prettier --single-quote --write'];
+    } else {
+      return [
+        `eslint --max-warnings=0 ${filesToLint}`,
+        'pnpm prettier --single-quote --write',
+      ];
+    }
   },
-  'packages/volto/**/*.{js,jsx,ts,tsx}': [
-    'pnpm --filter @plone/volto lint:husky',
-    'pnpm --filter @plone/volto prettier:husky',
-  ],
-  'packages/volto/src/**/*.{jsx, tsx}': ['pnpm --filter @plone/volto i18n'],
-  'packages/!(volto)/**/*.{css,less,scss}': ['pnpm stylelint --fix'],
-  'packages/volto/**/*.{css,less,scss}': [
-    'pnpm --filter @plone/volto stylelint --fix',
-  ],
-  'packages/volto/**/*.overrides': [
-    'pnpm --filter @plone/volto stylelint --fix',
-  ],
+  '**/*.{css,less,scss}': ['pnpm stylelint --fix'],
 };

@@ -75,6 +75,7 @@ export const renderSlate = (
       topLevelTargetElements.includes(node.type!) || override_toc;
 
     if (!elements[node.type]) {
+      // eslint-disable-next-line no-console
       console.warn(`Unknown slate element type ${node.type}`);
     }
 

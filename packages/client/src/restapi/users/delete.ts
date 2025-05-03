@@ -1,41 +1,27 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { z } from 'zod';
-import {
-  type PloneClientConfig,
-  PloneClientConfigSchema,
-} from '../../validation/config';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 export const deleteUserArgsSchema = z.object({
   userId: z.string(),
-  config: PloneClientConfigSchema,
 });
 
 type DeleteUserArgs = z.infer<typeof deleteUserArgsSchema>;
 
-export const deleteUser = async ({
-  userId,
-  config,
-}: DeleteUserArgs): Promise<undefined> => {
+export async function deleteUser(
+  this: PloneClient,
+  { userId }: DeleteUserArgs,
+): Promise<RequestResponse<undefined>> {
   const validatedArgs = deleteUserArgsSchema.parse({
     userId,
-    config,
   });
 
   const options: ApiRequestParams = {
-    config: validatedArgs.config,
+    config: this.config,
   };
 
   const userName = `/@users/${validatedArgs.userId}`;
 
   return apiRequest('delete', userName, options);
-};
-
-export const deleteUserMutation = ({
-  config,
-}: {
-  config: PloneClientConfig;
-}) => ({
-  mutationKey: ['delete', 'users'],
-  mutationFn: ({ userId }: Omit<DeleteUserArgs, 'config'>) =>
-    deleteUser({ userId, config }),
-});
+}

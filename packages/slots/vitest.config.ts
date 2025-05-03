@@ -10,5 +10,6 @@ export default defineConfig({
     // since parsing CSS is slow
     css: true,
     exclude: ['**/node_modules/**', '**/lib/**'],
+    passWithNoTests: true,
   },
 });

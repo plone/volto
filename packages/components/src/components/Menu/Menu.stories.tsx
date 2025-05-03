@@ -1,20 +1,22 @@
+/* eslint-disable no-alert */
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import { Menu, MenuItem } from './Menu';
 import {
   Header,
   Keyboard,
   Section,
-  Selection,
+  type Selection,
   Separator,
   Text,
 } from 'react-aria-components';
-import { SettingsIcon } from '../Icons/SettingsIcon';
-import type {} from 'react-aria-components';
+import { SettingsIcon } from '../icons/SettingsIcon';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import '../../styles/basic/Menu.css';
 
 const meta = {
+  title: 'Basic/Menu',
   component: Menu,
   parameters: {
     layout: 'centered',
@@ -172,7 +174,7 @@ export const AsLinks: Story = {
 
 export const SingleSelection: Story = {
   render: (args: any) => {
-    let [selected, setSelected] = React.useState<Selection>(
+    const [selected, setSelected] = React.useState<Selection>(
       new Set(['center']),
     );
 
@@ -201,7 +203,7 @@ export const SingleSelection: Story = {
 
 export const MultipleSelection: Story = {
   render: (args: any) => {
-    let [selected, setSelected] = React.useState<Selection>(
+    const [selected, setSelected] = React.useState<Selection>(
       new Set(['sidebar', 'console']),
     );
 
@@ -231,7 +233,7 @@ export const MultipleSelection: Story = {
 
 export const ControlledState: Story = {
   render: (args: any) => {
-    let [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
     return (
       <Menu
         {...args}

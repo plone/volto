@@ -1,3 +1,4 @@
+import { createCookie } from 'react-router';
 import { route, index, layout, prefix } from '@react-router/dev/routes';
 import type { RouteConfig, RouteConfigEntry } from '@react-router/dev/routes';
 import type { ReactRouterRouteEntry } from '@plone/types';
@@ -7,71 +8,93 @@ export function getAddonRoutesConfig(
   routesConfig: Array<ReactRouterRouteEntry>,
   addonsInfo: Array<any>,
 ): Array<RouteConfigEntry> {
-  let resultRoutesConfig: RouteConfig = [];
+  const resultRoutesConfig: RouteConfig = [];
 
   for (const routeConfig of routesConfig) {
-    const containsAddonModule = addonsInfo.find((addon) =>
-      routeConfig.file.includes(addon.name),
-    );
-    if (containsAddonModule) {
-      routeConfig.file = path.join(
-        containsAddonModule.modulePath,
-        routeConfig.file.replace(containsAddonModule.name, ''),
+    if (routeConfig.type !== 'prefix') {
+      const containsAddonModule = addonsInfo.find((addon) =>
+        routeConfig.file.includes(addon.name),
       );
+      if (containsAddonModule) {
+        routeConfig.file = path.join(
+          containsAddonModule.modulePath,
+          routeConfig.file.replace(containsAddonModule.name, ''),
+        );
+      }
     }
     switch (routeConfig.type) {
-      case 'route':
-        if (routeConfig.options) {
-          resultRoutesConfig.push(
-            route(routeConfig.path, routeConfig.file, routeConfig.options),
-          );
-        } else if (routeConfig.children) {
-          resultRoutesConfig.push(
-            route(
-              routeConfig.path,
-              routeConfig.file,
-              routeConfig.options || {},
-              getAddonRoutesConfig(
-                routeConfig.children,
-                addonsInfo,
-              ) as Array<RouteConfigEntry>,
-            ),
-          );
-        } else {
-          resultRoutesConfig.push(route(routeConfig.path, routeConfig.file));
-        }
+      case 'route': {
+        const children = routeConfig.children
+          ? (getAddonRoutesConfig(
+              routeConfig.children,
+              addonsInfo,
+            ) as Array<RouteConfigEntry>)
+          : undefined;
+        resultRoutesConfig.push(
+          route(
+            routeConfig.path,
+            routeConfig.file,
+            routeConfig.options || {},
+            children,
+          ),
+        );
         break;
-
+      }
       case 'index':
         resultRoutesConfig.push(index(routeConfig.file, routeConfig.options));
         break;
 
-      case 'layout':
-        if (routeConfig.options) {
-          resultRoutesConfig.push(
-            layout(routeConfig.file, routeConfig.options),
-          );
-        }
-        if (routeConfig.children) {
-          resultRoutesConfig.push(
-            layout(
-              routeConfig.file,
-              routeConfig.options || {},
-              getAddonRoutesConfig(
-                routeConfig.children,
-                addonsInfo,
-              ) as Array<RouteConfigEntry>,
-            ),
-          );
-        }
+      case 'layout': {
+        const children = routeConfig.children
+          ? (getAddonRoutesConfig(
+              routeConfig.children,
+              addonsInfo,
+            ) as Array<RouteConfigEntry>)
+          : undefined;
+        resultRoutesConfig.push(
+          layout(routeConfig.file, routeConfig.options || {}, children),
+        );
         break;
-
+      }
       case 'prefix':
-        console.log('prefix not implemented yet');
+        resultRoutesConfig.push(
+          ...prefix(
+            routeConfig.path,
+            getAddonRoutesConfig(routeConfig.children, addonsInfo),
+          ),
+        );
         break;
       default:
         break;
     }
   }
   return resultRoutesConfig;
+}
+
+const secret = process.env.COOKIE_SECRET || 'default';
+if (secret === 'default' && process.env.NODE_ENV === 'production') {
+  console.warn(
+    '🚨 No COOKIE_SECRET environment variable set, using default. The app is insecure in production.',
+  );
+}
+
+export const cookie = createCookie('auth_seven', {
+  secrets: [secret],
+  // 30 days
+  maxAge: 30 * 24 * 60 * 60,
+  httpOnly: true,
+  secure: process.env.NODE_ENV === 'production',
+  sameSite: 'lax',
+});
+
+export async function getAuthFromRequest(
+  request: Request,
+): Promise<string | undefined> {
+  let token;
+  try {
+    token = await cookie.parse(request.headers.get('Cookie'));
+  } catch (error) {
+    // asd
+  }
+  return token ?? undefined;
 }

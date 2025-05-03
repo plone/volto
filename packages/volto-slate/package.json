@@ -42,7 +42,7 @@
   "devDependencies": {
     "@testing-library/react": "9.5.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "release-it": "^17.0.0"
+    "release-it": "catalog:"
   },
   "peerDependencies": {
     "react": "^18.2.0",

@@ -1,3 +1,0 @@
-# Disallow all user agents from indexing pages and links in the site on Netlify only.
-User-agent: *
-Disallow: /

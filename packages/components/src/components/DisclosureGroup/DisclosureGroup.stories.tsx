@@ -9,6 +9,7 @@ import {
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
+  title: 'Basic/DisclosureGroup',
   component: DisclosureGroup,
   parameters: {
     layout: 'centered',
