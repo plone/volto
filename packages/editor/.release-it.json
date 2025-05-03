@@ -1,0 +1,29 @@
+{
+  "plugins": {
+    "../scripts/prepublish.js": {}
+  },
+  "hooks": {
+    "after:bump": [
+      "pipx run towncrier build --draft --yes --version ${version} > .changelog.draft",
+      "pipx run towncrier build --yes --version ${version}"
+    ],
+    "after:release": "rm .changelog.draft"
+  },
+  "npm": {
+    "publish": false
+  },
+  "git": {
+    "commitArgs": ["--no-verify"],
+    "changelog": "pipx run towncrier build --draft --yes --version 0.0.0",
+    "requireUpstream": false,
+    "requireCleanWorkingDir": false,
+    "commitMessage": "Release @plone/cmsui ${version}",
+    "tagName": "plone-cmsui-${version}",
+    "tagAnnotation": "Release @plone/cmsui ${version}"
+  },
+  "github": {
+    "release": true,
+    "releaseName": "@plone/cmsui ${version}",
+    "releaseNotes": "cat .changelog.draft"
+  }
+}

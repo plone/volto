@@ -1,5 +1,6 @@
 import { atom, useAtom } from 'jotai';
 import { tv } from 'tailwind-variants';
+import { Pluggable } from '../Pluggable';
 
 export const sidebarAtom = atom(true);
 
@@ -23,7 +24,8 @@ const Sidebar = () => {
       id="sidebar"
       className={sidebar({ collapsed })}
     >
-      Algo a dins
+      <h2 className="mt-4 text-center text-2xl">This is the sidebar</h2>
+      <Pluggable name="sidebar" />
     </div>
   );
 };

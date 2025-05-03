@@ -80,6 +80,8 @@ export default function Login() {
             <Button
               className="float-end"
               variant="primary"
+              accent
+              size="L"
               type="submit"
               aria-label="Sign in"
             >
