@@ -1,6 +1,6 @@
 {
   "extends": "tsconfig/react-library.json",
-  "include": ["**/*.ts", "**/*.tsx", "index.ts", "types.d.ts"],
+  "include": ["**/*.ts", "**/*.tsx", "../components/src/icons.d.ts"],
   "exclude": [
     "node_modules",
     "build",
@@ -9,5 +9,10 @@
     "src/**/*.test.{js,jsx,ts,tsx}",
     "src/**/*.spec.{js,jsx,ts,tsx}",
     "src/**/*.stories.{js,jsx,ts,tsx}"
-  ]
+  ],
+  "compilerOptions": {
+    "paths": {
+      "seven/*": ["../../apps/seven/*"]
+    }
+  }
 }

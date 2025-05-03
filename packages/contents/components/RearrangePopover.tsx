@@ -1,11 +1,8 @@
 import React from 'react';
 import { Menu, MenuItem, SubmenuTrigger } from 'react-aria-components';
-import {
-  ChevronrightIcon,
-  Popover,
-  type PopoverProps,
-} from '@plone/components';
-import { useContentsContext } from '../providers/contents';
+import { Popover, type PopoverProps } from '@plone/components';
+import ChevronrightIcon from '@plone/components/icons/chevron-right.svg?react';
+import { useTranslation } from 'react-i18next';
 
 interface Props extends Omit<PopoverProps, 'children'> {
   indexes: {
@@ -38,19 +35,19 @@ export function RearrangePopover({
   sortItems,
   ...popoverProps
 }: Props) {
-  const { intl } = useContentsContext();
+  const { t } = useTranslation();
 
   const menuItems: MenuItem[] = sortIndexes.map((index) => ({
     id: index,
-    name: intl.formatMessage({ id: indexes[index].label }),
+    name: t(indexes[index].label),
     children: [
       {
         id: `${indexes[index].sort_on}|ascending`,
-        name: intl.formatMessage({ id: 'Ascending' }),
+        name: t('Ascending'),
       },
       {
         id: `${indexes[index].sort_on}|descending`,
-        name: intl.formatMessage({ id: 'Descending' }),
+        name: t('Descending'),
       },
     ],
   }));
@@ -62,7 +59,7 @@ export function RearrangePopover({
       dialogAriaLabelledby="rearrange-popover-label"
     >
       <p className="label" id="rearrange-popover-label">
-        {intl.formatMessage({ id: 'Rearrange items by…' })}
+        {t('Rearrange items by…')}
       </p>
       <Menu items={menuItems}>
         {function renderSubmenu(item) {
@@ -86,12 +83,15 @@ export function RearrangePopover({
                   )}
                 </MenuItem>
                 <Popover
-                  dialogAriaLabel={intl.formatMessage(
-                    { id: 'contentsNextPickSortOrder' },
-                    {
-                      index: item.name,
-                    },
-                  )}
+                  // dialogAriaLabel={intl.formatMessage(
+                  //   { id: 'contentsNextPickSortOrder' },
+                  //   {
+                  //     index: item.name,
+                  //   },
+                  // )}
+                  dialogAriaLabel={t('contentsNextPickSortOrder', {
+                    index: item.name,
+                  })}
                 >
                   <Menu
                     items={item.children}

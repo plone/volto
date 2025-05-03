@@ -1,7 +1,8 @@
 import React, { type ComponentProps, useRef, useState } from 'react';
 import { useDateFormatter } from 'react-aria';
 import type { Brain } from '../../types';
-import { Button, Link, MoreoptionsIcon } from '@plone/components';
+import { Button, Link } from '@plone/components';
+import MoreOptionsSVG from '@plone/components/icons/more-options.svg?react';
 import { ItemActionsPopover } from './ItemActionsPopover';
 import { useContentsContext } from '../providers/contents';
 
@@ -57,7 +58,7 @@ export function ContentsCell({
           item.is_folderish ? '/contents' : ''
         }`}
       >
-        <Icon size="S" title={item['Type'] || item['@type']} />
+        {/* <Icon size="S" title={item['Type'] || item['@type']} /> */}
         {item.title}
         {item.ExpirationDate !== 'None' &&
           new Date(item.ExpirationDate).getTime() < new Date().getTime() && (
@@ -82,7 +83,7 @@ export function ContentsCell({
           onPress={() => setIsMoreOptionsOpen(true)}
           ref={triggerRef}
         >
-          <MoreoptionsIcon />
+          <MoreOptionsSVG />
         </Button>
         <ItemActionsPopover
           triggerRef={triggerRef}

@@ -8,7 +8,7 @@ import {
   Button,
 } from 'react-aria-components';
 import { Checkbox } from '../Checkbox/Checkbox';
-import { DraggableIcon } from '../icons/DraggableIcon';
+import { DraggableIcon } from '../Icons/DraggableIcon';
 
 export function Row<T extends object>({
   id,

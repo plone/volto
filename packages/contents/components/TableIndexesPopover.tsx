@@ -1,6 +1,6 @@
 import React from 'react';
 import { Popover, Checkbox } from '@plone/components';
-import { useContentsContext } from '../providers/contents';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   indexes: {
@@ -18,7 +18,7 @@ interface Props {
 }
 
 export const TableIndexesPopover = ({ indexes, onSelectIndex }: Props) => {
-  const { intl } = useContentsContext();
+  const { t } = useTranslation();
 
   return (
     <Popover className="react-aria-Popover table-indexes-popover scroll">
@@ -33,7 +33,7 @@ export const TableIndexesPopover = ({ indexes, onSelectIndex }: Props) => {
                 onChange={() => {
                   onSelectIndex(index);
                 }}
-                label={intl.formatMessage({ id: indexes.values[index].label })}
+                label={t(indexes.values[index].label)}
                 slot={null}
               />
             </li>

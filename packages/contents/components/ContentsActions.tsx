@@ -1,18 +1,16 @@
 import React from 'react';
 import { TooltipTrigger, type Selection } from 'react-aria-components';
-import {
-  BinIcon,
-  Button,
-  CopyIcon,
-  CutIcon,
-  PasteIcon,
-  PropertiesIcon,
-  RenameIcon,
-  StateIcon,
-  TagIcon,
-  Tooltip,
-  UploadIcon,
-} from '@plone/components';
+import { Button, Tooltip } from '@plone/components';
+import StateSVG from '@plone/components/icons/state.svg?react';
+import BinSVG from '@plone/components/icons/bin.svg?react';
+import UploadSVG from '@plone/components/icons/upload.svg?react';
+import PropertiesSVG from '@plone/components/icons/properties.svg?react';
+import RenameSVG from '@plone/components/icons/rename.svg?react';
+import TagSVG from '@plone/components/icons/tag.svg?react';
+import CutSVG from '@plone/components/icons/cut.svg?react';
+import CopySVG from '@plone/components/icons/copy.svg?react';
+import PasteSVG from '@plone/components/icons/paste.svg?react';
+
 import { useContentsContext } from '../providers/contents';
 
 type Props = {
@@ -52,7 +50,7 @@ export function ContentsActions({
           onPress={upload}
           aria-label={intl.formatMessage({ id: 'Upload' })}
         >
-          <UploadIcon />
+          <UploadSVG />
         </Button>
         <Tooltip placement="bottom">
           {intl.formatMessage({ id: 'Upload' })}
@@ -65,7 +63,7 @@ export function ContentsActions({
           aria-label={intl.formatMessage({ id: 'Rename' })}
           isDisabled={selected !== 'all' && selected.size === 0}
         >
-          <RenameIcon />
+          <RenameSVG />
         </Button>
         <Tooltip placement="bottom">
           {intl.formatMessage({ id: 'Rename' })}
@@ -78,7 +76,7 @@ export function ContentsActions({
           aria-label={intl.formatMessage({ id: 'State' })}
           isDisabled={selected !== 'all' && selected.size === 0}
         >
-          <StateIcon />
+          <StateSVG />
         </Button>
         <Tooltip placement="bottom">
           {intl.formatMessage({ id: 'State' })}
@@ -91,7 +89,7 @@ export function ContentsActions({
           aria-label={intl.formatMessage({ id: 'Tags' })}
           isDisabled={selected !== 'all' && selected.size === 0}
         >
-          <TagIcon />
+          <TagSVG />
         </Button>
         <Tooltip placement="bottom">
           {intl.formatMessage({ id: 'Tags' })}
@@ -104,7 +102,7 @@ export function ContentsActions({
           aria-label={intl.formatMessage({ id: 'Properties' })}
           isDisabled={selected !== 'all' && selected.size === 0}
         >
-          <PropertiesIcon />
+          <PropertiesSVG />
         </Button>
         <Tooltip placement="bottom">
           {intl.formatMessage({ id: 'Properties' })}
@@ -117,7 +115,7 @@ export function ContentsActions({
           aria-label={intl.formatMessage({ id: 'Cut' })}
           isDisabled={selected !== 'all' && selected.size === 0}
         >
-          <CutIcon />
+          <CutSVG />
         </Button>
         <Tooltip placement="bottom">
           {intl.formatMessage({ id: 'Cut' })}
@@ -130,7 +128,7 @@ export function ContentsActions({
           aria-label={intl.formatMessage({ id: 'Copy' })}
           isDisabled={selected !== 'all' && selected.size === 0}
         >
-          <CopyIcon />
+          <CopySVG />
         </Button>
         <Tooltip placement="bottom">
           {intl.formatMessage({ id: 'Copy' })}
@@ -143,7 +141,7 @@ export function ContentsActions({
           aria-label={intl.formatMessage({ id: 'Paste' })}
           isDisabled={!canPaste}
         >
-          <PasteIcon />
+          <PasteSVG />
         </Button>
         <Tooltip placement="bottom">
           {intl.formatMessage({ id: 'Paste' })}
@@ -156,7 +154,7 @@ export function ContentsActions({
           aria-label={intl.formatMessage({ id: 'Delete' })}
           isDisabled={selected !== 'all' && selected.size === 0}
         >
-          <BinIcon />
+          <BinSVG />
         </Button>
         <Tooltip placement="bottom">
           {intl.formatMessage({ id: 'Delete' })}

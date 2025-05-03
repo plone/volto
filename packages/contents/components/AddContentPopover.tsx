@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, ChevronrightIcon, Popover } from '@plone/components';
+import { Link, Popover } from '@plone/components';
+import ChevronrightSVG from '@plone/components/icons/chevron-right.svg?react';
 
 interface Props {
   path: string;
@@ -20,7 +21,7 @@ export const AddContentPopover = ({ path, addableTypes }: Props) => {
           <li key={type.id} className="add-content-list-item">
             <Link href={`${path}/add?type=${encodeURIComponent(type.id)}`}>
               {type.title}
-              <ChevronrightIcon />
+              <ChevronrightSVG />
             </Link>
           </li>
         ))}

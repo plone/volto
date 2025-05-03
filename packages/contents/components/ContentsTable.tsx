@@ -1,5 +1,5 @@
 import React, { type ComponentProps } from 'react';
-import './Contents.css';
+// import './Contents.css';
 // import type { ActionsResponse } from '@plone/types';
 import { VisuallyHidden } from 'react-aria';
 import {
@@ -11,31 +11,31 @@ import {
   Heading,
 } from 'react-aria-components';
 import { useMediaQuery } from 'usehooks-ts';
-import { useQuery } from '@tanstack/react-query';
 import {
   // AddIcon,
   Breadcrumbs,
-  CollectionIcon,
-  Container,
-  MoreoptionsIcon,
-  PasteIcon,
-  QuantaTextField,
   Tooltip,
   Button,
   Table,
-  Toast,
   ProgressBar,
   Modal,
   Dialog,
 } from '@plone/components';
-import { usePloneClient } from '@plone/providers';
+import { Container } from '@plone/components/tailwind';
+import { TextField } from '@plone/cmsui/components/TextField/TextField';
+import CollectionSVG from '@plone/components/icons/collection.svg?react';
+import MoreOptionsSVG from '@plone/components/icons/more-options.svg?react';
+import PasteSVG from '@plone/components/icons/paste.svg?react';
+
 import type { ArrayElement, Brain } from '@plone/types';
 import { ContentsCell } from './ContentsCell';
 import { TableIndexesPopover } from './TableIndexesPopover';
 import { RearrangePopover } from './RearrangePopover';
 import { ContentsActions } from './ContentsActions';
 // import { AddContentPopover } from './AddContentPopover';
-import { useContentsContext } from '../providers/contents';
+import { useLoaderData } from 'react-router';
+import type { ContentsLoaderType } from '../routes/contents';
+import { useTranslation } from 'react-i18next';
 
 interface ContentsTableProps {
   pathname: string;
@@ -108,48 +108,35 @@ export function ContentsTable({
   moveToTop,
   moveToBottom, // addableTypes,
 }: ContentsTableProps) {
-  const { intl, toast, flattenToAppURL } = useContentsContext();
-  const { getContentQuery, getSearchQuery, getBreadcrumbsQuery } =
-    usePloneClient();
   const isMobileScreenSize = useMediaQuery('(max-width: 992px)');
+  const { t } = useTranslation();
 
-  const { data: contentData, isLoading: contentIsLoading } = useQuery(
-    getContentQuery({
-      path: pathname,
-    }),
-  );
+  // const { data: searchData, isLoading: searchIsLoading } = useQuery(
+  //   getSearchQuery({
+  //     query: {
+  //       path: {
+  //         query: pathname,
+  //         depth: 1,
+  //       },
+  //       sort_on: 'getObjPositionInParent',
+  //       sort_order: 'ascending',
+  //       metadata_fields: '_all',
+  //       show_inactive: true,
+  //       b_size: 100000000,
+  //       ...(textFilter && { SearchableText: `${textFilter}*` }),
+  //     },
+  //   }),
+  // );
 
-  const { data: bcData, isLoading: bcIsLoading } = useQuery(
-    getBreadcrumbsQuery({
-      path: pathname,
-    }),
-  );
+  // const isLoading = contentIsLoading || searchIsLoading || bcIsLoading;
+  const { breadcrumbs, content, search } = useLoaderData<ContentsLoaderType>();
 
-  const { data: searchData, isLoading: searchIsLoading } = useQuery(
-    getSearchQuery({
-      query: {
-        path: {
-          query: pathname,
-          depth: 1,
-        },
-        sort_on: 'getObjPositionInParent',
-        sort_order: 'ascending',
-        metadata_fields: '_all',
-        show_inactive: true,
-        b_size: 100000000,
-        ...(textFilter && { SearchableText: `${textFilter}*` }),
-      },
-    }),
-  );
-
-  const isLoading = contentIsLoading || searchIsLoading || bcIsLoading;
-
-  const { title = '' } = contentData ?? {};
-  const { items = [] } = searchData ?? {};
-  const breadcrumbs = (bcData?.items ?? []).map((item) => ({
-    '@id': `${flattenToAppURL(item['@id'])}/contents`,
-    title: item.title,
-  }));
+  const { title = '' } = content ?? {};
+  const { items = [] } = search ?? {};
+  // const breadcrumbs = (bcData?.items ?? []).map((item) => ({
+  //   '@id': `${flattenToAppURL(item['@id'])}/contents`,
+  //   title: item.title,
+  // }));
 
   // const folderContentsActions = objectActions.find(
   //   (action) => action.id === 'folderContents',
@@ -174,7 +161,8 @@ export function ContentsTable({
   const columns = [
     {
       id: 'title',
-      name: intl.formatMessage({ id: 'Title' }),
+      // TODO: use translation
+      name: 'Title',
       isRowHeader: true,
     },
     ...(!isMobileScreenSize
@@ -182,7 +170,8 @@ export function ContentsTable({
           .filter((index) => indexes.values[index].selected)
           .map((index) => ({
             id: index,
-            name: intl.formatMessage({ id: indexes.values[index].label }),
+            // TODO: use translation
+            name: indexes.values[index].label,
           }))
       : []),
     {
@@ -191,12 +180,10 @@ export function ContentsTable({
         <DialogTrigger>
           <TooltipTrigger>
             <Button className="react-aria-Button actions-cell-header">
-              <MoreoptionsIcon />
+              <MoreOptionsSVG />
             </Button>
             <Tooltip className="react-aria-Tooltip tooltip" placement="bottom">
-              {intl.formatMessage({
-                id: 'contentsNextSelectColumnsToDisplay',
-              })}
+              {t('contentsNextSelectColumnsToDisplay')}
             </Tooltip>
           </TooltipTrigger>
           <TableIndexesPopover
@@ -209,14 +196,12 @@ export function ContentsTable({
           <Button
             className="react-aria-Button contents-action-trigger paste"
             onPress={paste}
-            aria-label={intl.formatMessage({ id: 'Paste' })}
+            aria-label={t('Paste')}
             isDisabled={!canPaste}
           >
-            <PasteIcon />
+            <PasteSVG />
           </Button>
-          <Tooltip placement="bottom">
-            {intl.formatMessage({ id: 'Paste' })}
-          </Tooltip>
+          <Tooltip placement="bottom">{t('Paste')}</Tooltip>
         </TooltipTrigger>
       ) : null,
     },
@@ -256,15 +241,14 @@ export function ContentsTable({
       })),
     onReorder(e) {
       if (e.keys.size !== 1) {
-        toast.error(
-          <Toast
-            error
-            title={intl.formatMessage({ id: 'Error' })}
-            content={intl.formatMessage({
-              id: 'contentsMultipleItemsMovedError',
-            })}
-          />,
-        );
+        console.log('raise toast error');
+        // toast.error(
+        //   <Toast
+        //     error
+        //     title={t('Error')}
+        //     content={t('contentsMultipleItemsMovedError')}
+        //   />,
+        // );
         return;
       }
       const target = [...e.keys][0];
@@ -288,29 +272,21 @@ export function ContentsTable({
     },
   });
 
-  if (isLoading)
+  if (false)
     return (
       <Modal isOpen={true}>
         <Dialog>
-          <Heading slot="title">
-            {intl.formatMessage({ id: 'loading' })}
-          </Heading>
-          <ProgressBar
-            aria-label={intl.formatMessage({ id: 'loading' })}
-            isIndeterminate
-          />
+          <Heading slot="title">{t('loading')}</Heading>
+          <ProgressBar aria-label={t('loading')} isIndeterminate />
         </Dialog>
       </Modal>
     );
 
   return (
     <Container
-      as="div"
-      // id="page-contents"
+      width="layout"
       className="folder-contents"
       // aria-live="polite"
-      layout={false}
-      narrow={false}
     >
       <article id="content">
         <section className="topbar">
@@ -318,7 +294,7 @@ export function ContentsTable({
             <Breadcrumbs
               includeRoot={true}
               root="/contents"
-              items={breadcrumbs}
+              items={breadcrumbs.items}
             />
             <h1>{title}</h1>
           </div>
@@ -337,19 +313,15 @@ export function ContentsTable({
               selected={selected}
             />
           )}
-          <QuantaTextField
+          <TextField
             name="sortable_title"
-            placeholder={intl.formatMessage({ id: 'Filter…' })}
-            className="search-input"
+            placeholder={t('Filter…')}
             value={textFilter}
             onChange={onChangeTextFilter}
           />
           <VisuallyHidden>
             <span aria-live="polite">
-              {intl.formatMessage(
-                { id: 'contentsNextNumberOfItems' },
-                { count: items.length },
-              )}
+              {t('contentsNextNumberOfItems', { count: items.length })}
             </span>
           </VisuallyHidden>
           {/* <TooltipTrigger>
@@ -366,10 +338,7 @@ export function ContentsTable({
         </section>
         <section className="contents-table">
           <Table
-            aria-label={intl.formatMessage(
-              { id: 'contentsNextContentsOf' },
-              { title },
-            )}
+            aria-label={t('contentsNextContentsOf', { title })}
             columns={[...columns]}
             rows={rows}
             selectionMode={!isMobileScreenSize ? 'multiple' : undefined}
@@ -380,13 +349,13 @@ export function ContentsTable({
               <MenuTrigger>
                 <TooltipTrigger>
                   <Button className="react-aria-Button drag-cell-header">
-                    <CollectionIcon />
+                    <CollectionSVG />
                   </Button>
                   <Tooltip
                     className="react-aria-Tooltip tooltip"
                     placement="bottom"
                   >
-                    {intl.formatMessage({ id: 'Rearrange items by…' })}
+                    {t('Rearrange items by…')}
                   </Tooltip>
                 </TooltipTrigger>
                 <RearrangePopover
