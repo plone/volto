@@ -54,7 +54,7 @@ export default {
       options: ['private', 'published'],
       control: { type: 'radio' },
       description:
-        'workflow of the page for example purpose only private , published shown',
+        'Workflow of the page. For this example, show only `private` and `published` values.',
     },
     review_state: {
       options: ['private', 'published'],
