@@ -48,7 +48,7 @@ export default {
       options: ['private', 'published'],
       control: { type: 'radio' },
       description:
-        'workflow id of the page for example purpose only private , published shown',
+        'Workflow ID of the page. For this example, show only `private` and `published` values.',
     },
     title: {
       options: ['private', 'published'],
