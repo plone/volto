@@ -100,7 +100,7 @@ export default {
   ],
   argTypes: {
     view: {
-      description: 'Patter in which block content will be placed',
+      description: 'Pattern in which to place block content',
     },
     blocks: {
       description: 'blocks in the page',
