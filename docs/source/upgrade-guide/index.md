@@ -1046,6 +1046,13 @@ You can consider removing it if you were shadowing it in your project.
 
 ### Grid block migration from `@kitconcept/volto-blocks-grid`
 
+```{versionadded} Volto 17.0.0-alpha.16
+```
+
+```{seealso}
+{doc}`../blocks/core/grid`
+```
+
 The grid block was added to Volto in version 17.0.0-alpha.16.
 It is based on the `@kitconcept/volto-blocks-grid` add-on version 7.x.x.
 
