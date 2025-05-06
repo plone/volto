@@ -60,7 +60,7 @@ export default {
       options: ['private', 'published'],
       control: { type: 'radio' },
       description:
-        'review state of the page for example purpose only private , published shown',
+        'Review state of the page. For this example, show only `private` and `published` values',
     },
   },
 };
