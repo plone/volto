@@ -183,7 +183,7 @@ exports[`Toolbar > renders the Toolbar component 1`] = `
     >
       <button
         aria-label="Shrink toolbar"
-        className=""
+        className="toolbar-handler-button"
         onClick={[Function]}
       />
     </div>
@@ -377,7 +377,7 @@ exports[`Toolbar > renders the Toolbar component with lock 1`] = `
     >
       <button
         aria-label="Shrink toolbar"
-        className=""
+        className="toolbar-handler-button"
         onClick={[Function]}
       />
     </div>

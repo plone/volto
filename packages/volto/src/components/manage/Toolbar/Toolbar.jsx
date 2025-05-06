@@ -479,7 +479,7 @@ const Toolbar = (props) => {
           <div className="toolbar-handler">
             <button
               aria-label={intl.formatMessage(messages.shrinkToolbar)}
-              className={cx({
+              className={cx('toolbar-handler-button', {
                 [content?.review_state]: content?.review_state,
               })}
               onClick={handleShrink}
