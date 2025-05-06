@@ -45,9 +45,9 @@ exports[`BlocksChooser > Fallback BlockChooser component onMutateBlock 1`] = `
             viewBox="0 0 36 36"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <polygon
+            <path
+              d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
               fill-rule="evenodd"
-              points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
             />
           </svg>
         </div>
@@ -122,9 +122,9 @@ exports[`BlocksChooser > Fallback BlockChooser component onMutateBlock 1`] = `
             viewBox="0 0 36 36"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <polygon
+            <path
+              d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
               fill-rule="evenodd"
-              points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
             />
           </svg>
         </div>
@@ -171,9 +171,9 @@ exports[`BlocksChooser > Fallback BlockChooser component onMutateBlock 1`] = `
             viewBox="0 0 36 36"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <polygon
+            <path
+              d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
               fill-rule="evenodd"
-              points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
             />
           </svg>
         </div>
@@ -248,9 +248,9 @@ exports[`BlocksChooser > Fallback BlockChooser component onMutateBlock 1`] = `
             viewBox="0 0 36 36"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <polygon
+            <path
+              d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
               fill-rule="evenodd"
-              points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
             />
           </svg>
         </div>
@@ -403,9 +403,9 @@ exports[`BlocksChooser > renders a BlockChooser component 1`] = `
             viewBox="0 0 36 36"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <polygon
+            <path
+              d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
               fill-rule="evenodd"
-              points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
             />
           </svg>
         </div>
@@ -480,9 +480,9 @@ exports[`BlocksChooser > renders a BlockChooser component 1`] = `
             viewBox="0 0 36 36"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <polygon
+            <path
+              d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
               fill-rule="evenodd"
-              points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
             />
           </svg>
         </div>
@@ -529,9 +529,9 @@ exports[`BlocksChooser > renders a BlockChooser component 1`] = `
             viewBox="0 0 36 36"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <polygon
+            <path
+              d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
               fill-rule="evenodd"
-              points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
             />
           </svg>
         </div>
@@ -606,9 +606,9 @@ exports[`BlocksChooser > renders a BlockChooser component 1`] = `
             viewBox="0 0 36 36"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <polygon
+            <path
+              d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
               fill-rule="evenodd"
-              points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"
             />
           </svg>
         </div>
