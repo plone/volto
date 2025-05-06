@@ -65,7 +65,7 @@ export default {
       description: 'Description of the page',
     },
     items: {
-      description: 'Content in the page ',
+      description: 'Content in the page',
     },
   },
 };
