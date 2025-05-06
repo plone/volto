@@ -30,7 +30,7 @@ Default.args = {
   title: 'Hello World!',
   description: 'Hi',
   text: {
-    data: '<p>Hello World!',
+    data: '<p>Hello World!</p>',
   },
 };
 
