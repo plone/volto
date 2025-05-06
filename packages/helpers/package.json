@@ -59,7 +59,9 @@
       "optional": true
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "@plone/registry": "workspace:*"
+  },
   "devDependencies": {
     "@plone/types": "workspace:*",
     "@types/react": "catalog:",

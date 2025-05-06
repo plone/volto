@@ -635,12 +635,18 @@ importers:
       '@plone/components':
         specifier: workspace:*
         version: link:../components
+      '@plone/helpers':
+        specifier: workspace:*
+        version: link:../helpers
       '@plone/providers':
         specifier: workspace:*
         version: link:../providers
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
+      '@plone/slots':
+        specifier: workspace:*
+        version: link:../slots
       '@tanstack/react-query':
         specifier: ^5.59.0
         version: 5.59.15(react@19.0.0)
@@ -711,6 +717,9 @@ importers:
 
   packages/helpers:
     dependencies:
+      '@plone/registry':
+        specifier: workspace:*
+        version: link:../registry
       react:
         specifier: ^19.0.0
         version: 19.0.0

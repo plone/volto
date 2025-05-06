@@ -5,6 +5,7 @@ import { requireAuthCookie } from '@plone/cmsui/routes/auth/auth';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
 import { useLocation, type LoaderFunctionArgs } from 'react-router';
+import { flattenToAppURL } from '@plone/helpers';
 
 // This is needed because to prevent circular import loops
 export type ContentsLoaderType = typeof loader;
@@ -24,21 +25,27 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 
   const path = `/${params['*'] || ''}`;
 
-  const { data: content } = await cli.getContent({ path });
-  const { data: breadcrumbs } = await cli.getBreadcrumbs({ path });
-  const { data: search } = await cli.search({
-    query: {
-      path: {
-        query: path,
-        depth: 1,
-      },
-      sort_on: 'getObjPositionInParent',
-      sort_order: 'ascending',
-      metadata_fields: '_all',
-      show_inactive: true,
-      b_size: 100000000,
-    },
-  });
+  const content = flattenToAppURL((await cli.getContent({ path })).data);
+  const breadcrumbs = flattenToAppURL(
+    (await cli.getBreadcrumbs({ path })).data,
+  );
+  const search = flattenToAppURL(
+    (
+      await cli.search({
+        query: {
+          path: {
+            query: path,
+            depth: 1,
+          },
+          sort_on: 'getObjPositionInParent',
+          sort_order: 'ascending',
+          metadata_fields: '_all',
+          show_inactive: true,
+          b_size: 100000000,
+        },
+      })
+    ).data,
+  );
 
   return { content, search, breadcrumbs };
 }

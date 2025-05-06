@@ -54,9 +54,7 @@ export function ContentsCell({
     return (
       <Link
         className="react-aria-Link title-link"
-        href={`${flattenToAppURL(item['@id'])}${
-          item.is_folderish ? '/contents' : ''
-        }`}
+        href={`${item.is_folderish ? '/contents' : ''}${item['@id']}`}
       >
         {/* <Icon size="S" title={item['Type'] || item['@type']} /> */}
         {item.title}

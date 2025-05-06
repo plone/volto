@@ -13,7 +13,6 @@ import {
 import { useMediaQuery } from 'usehooks-ts';
 import {
   // AddIcon,
-  Breadcrumbs,
   Tooltip,
   Button,
   Table,
@@ -22,6 +21,7 @@ import {
   Dialog,
 } from '@plone/components';
 import { Container } from '@plone/components/tailwind';
+import Breadcrumbs from '@plone/slots/components/Breadcrumbs';
 import { TextField } from '@plone/cmsui/components/TextField/TextField';
 import CollectionSVG from '@plone/components/icons/collection.svg?react';
 import MoreOptionsSVG from '@plone/components/icons/more-options.svg?react';
@@ -293,10 +293,10 @@ export function ContentsTable({
           <div className="title-block">
             <Breadcrumbs
               includeRoot={true}
-              root="/contents"
+              root={breadcrumbs.root}
               items={breadcrumbs.items}
             />
-            <h1>{title}</h1>
+            <h1 className="text-2xl font-bold">{title}</h1>
           </div>
           {!isMobileScreenSize && (
             <ContentsActions
