@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.17.0 (2025-05-06)
+
+### Feature
+
+- Added `contained` class if `isContainer` prop is passed (from containers). @sneridagh [#7043](https://github.com/plone/volto/issues/7043)
+
 ## 18.16.0 (2025-05-01)
 
 ### Feature
