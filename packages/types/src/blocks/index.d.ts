@@ -132,3 +132,5 @@ export type StyleDefinition =
       label: string;
       style: undefined;
     };
+
+export * from './objectBrowser';
