@@ -113,98 +113,106 @@ export function getUrl(
   return url;
 }
 
-const UniversalLink = React.memo(function UniversalLink(
-  props: UniversalLinkProps,
-) {
-  const {
-    openLinkInNewTab,
-    download,
-    children,
-    className,
-    title,
-    smooth,
-    onClick,
-    onKeyDown,
-    item,
-    ...rest
-  } = props;
-  __test.renderCounter();
+const UniversalLink = React.memo(
+  React.forwardRef<HTMLAnchorElement | HTMLDivElement, UniversalLinkProps>(
+    function UniversalLink(props, ref) {
+      const {
+        openLinkInNewTab,
+        download,
+        children,
+        className,
+        title,
+        smooth,
+        onClick,
+        onKeyDown,
+        item,
+        ...rest
+      } = props;
+      __test.renderCounter();
 
-  const token = useSelector<AppState, string | null>(
-    (state) => state.userSession?.token,
-  );
+      const token = useSelector<AppState, string | null>(
+        (state) => state.userSession?.token,
+      );
 
-  let url = getUrl(props, token, item, children);
+      let url = getUrl(props, token, item, children);
 
-  const isExternal = !isInternalURL(url);
+      const isExternal = !isInternalURL(url);
 
-  const isDownload = (!isExternal && url.includes('@@download')) || download;
-  const isDisplayFile =
-    (!isExternal && url.includes('@@display-file')) || false;
+      const isDownload =
+        (!isExternal && url.includes('@@download')) || download;
+      const isDisplayFile =
+        (!isExternal && url.includes('@@display-file')) || false;
 
-  const checkedURL = URLUtils.checkAndNormalizeUrl(url);
+      const checkedURL = URLUtils.checkAndNormalizeUrl(url);
 
-  url = checkedURL.url;
-  let tag = (
-    <Link
-      to={flattenToAppURL(url)}
-      target={openLinkInNewTab ?? false ? '_blank' : undefined}
-      title={title}
-      className={className}
-      smooth={smooth ?? config.settings.hashLinkSmoothScroll}
-      {...rest}
-    >
-      {children}
-    </Link>
-  );
+      url = checkedURL.url;
+      let tag = (
+        <Link
+          to={flattenToAppURL(url)}
+          target={openLinkInNewTab ?? false ? '_blank' : undefined}
+          title={title}
+          className={className}
+          smooth={smooth ?? config.settings.hashLinkSmoothScroll}
+          // @ts-ignore
+          ref={ref}
+          {...rest}
+        >
+          {children}
+        </Link>
+      );
 
-  if (isExternal) {
-    const isTelephoneOrMail = checkedURL.isMail || checkedURL.isTelephone;
-    const getClassName = cx({ external: !isTelephoneOrMail }, className);
+      if (isExternal) {
+        const isTelephoneOrMail = checkedURL.isMail || checkedURL.isTelephone;
+        const getClassName = cx({ external: !isTelephoneOrMail }, className);
 
-    tag = (
-      <a
-        href={url}
-        title={title}
-        target={
-          !isTelephoneOrMail && !(openLinkInNewTab === false)
-            ? '_blank'
-            : undefined
-        }
-        rel="noopener noreferrer"
-        {...rest}
-        className={getClassName}
-      >
-        {children}
-      </a>
-    );
-  } else if (isDownload) {
-    tag = (
-      <a
-        href={flattenToAppURL(url)}
-        download
-        title={title}
-        {...rest}
-        className={className}
-      >
-        {children}
-      </a>
-    );
-  } else if (isDisplayFile) {
-    tag = (
-      <a
-        title={title}
-        target="_blank"
-        rel="noopener noreferrer"
-        {...rest}
-        href={flattenToAppURL(url)}
-        className={className}
-      >
-        {children}
-      </a>
-    );
-  }
-  return tag;
-});
+        tag = (
+          <a
+            href={url}
+            title={title}
+            target={
+              !isTelephoneOrMail && !(openLinkInNewTab === false)
+                ? '_blank'
+                : undefined
+            }
+            rel="noopener noreferrer"
+            {...rest}
+            className={getClassName}
+            ref={ref as React.Ref<HTMLAnchorElement>}
+          >
+            {children}
+          </a>
+        );
+      } else if (isDownload) {
+        tag = (
+          <a
+            href={flattenToAppURL(url)}
+            download
+            title={title}
+            {...rest}
+            className={className}
+            ref={ref as React.Ref<HTMLAnchorElement>}
+          >
+            {children}
+          </a>
+        );
+      } else if (isDisplayFile) {
+        tag = (
+          <a
+            title={title}
+            target="_blank"
+            rel="noopener noreferrer"
+            {...rest}
+            href={flattenToAppURL(url)}
+            className={className}
+            ref={ref as React.Ref<HTMLAnchorElement>}
+          >
+            {children}
+          </a>
+        );
+      }
+      return tag;
+    },
+  ),
+);
 
 export default UniversalLink;
