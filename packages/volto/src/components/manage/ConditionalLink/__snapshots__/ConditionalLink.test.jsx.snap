@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ConditionalLink renders a component if no external(href) link passed 1`] = `
+exports[`ConditionalLink > renders a component if no external(href) link passed 1`] = `
 <a
   href="/en/welcome-to-volto"
   onClick={[Function]}
@@ -11,4 +11,4 @@ exports[`ConditionalLink renders a component if no external(href) link passed 1`
 </a>
 `;
 
-exports[`ConditionalLink renders a span when condition is false 1`] = `"Link Text"`;
+exports[`ConditionalLink > renders a span when condition is false 1`] = `"Link Text"`;
