@@ -57,13 +57,61 @@ export interface AppState {
     locale: string;
   };
   userSession: {
-    token: string;
+    token: string | null;
   };
 }
 
 export const __test = {
   renderCounter: () => {},
 };
+
+export function getUrl(
+  props: UniversalLinkProps,
+  token: string | null,
+  item: UniversalLinkProps['item'],
+  children: React.ReactNode,
+): string {
+  if ('href' in props && typeof props.href === 'string') {
+    return props.href;
+  }
+
+  if (!item || item['@id'] === '') return config.settings.publicURL;
+  if (!item['@id']) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Invalid item passed to UniversalLink',
+      item,
+      props,
+      children,
+    );
+    return '#';
+  }
+
+  let url = flattenToAppURL(item['@id']);
+  const remoteUrl = item.remoteUrl || item.getRemoteUrl;
+
+  if (!token && remoteUrl) {
+    url = remoteUrl;
+  }
+
+  if (
+    !token &&
+    item['@type'] &&
+    config.settings.downloadableObjects.includes(item['@type'])
+  ) {
+    url = `${url}/@@download/file`;
+  }
+
+  if (
+    !token &&
+    item['@type'] &&
+    config.settings.viewableInBrowserObjects.includes(item['@type'])
+  ) {
+    url = `${url}/@@display-file/file`;
+  }
+
+  return url;
+}
 
 const UniversalLink = React.memo(function UniversalLink(
   props: UniversalLinkProps,
@@ -82,54 +130,11 @@ const UniversalLink = React.memo(function UniversalLink(
   } = props;
   __test.renderCounter();
 
-  const token = useSelector<AppState, string>(
+  const token = useSelector<AppState, string | null>(
     (state) => state.userSession?.token,
   );
 
-  function getUrl(props: UniversalLinkProps, token: string): string {
-    if ('href' in props && typeof props.href === 'string') {
-      return props.href;
-    }
-
-    if (!item || item['@id'] === '') return config.settings.publicURL;
-    if (!item['@id']) {
-      // eslint-disable-next-line no-console
-      console.error(
-        'Invalid item passed to UniversalLink',
-        item,
-        props,
-        children,
-      );
-      return '#';
-    }
-
-    let url = flattenToAppURL(item['@id']);
-    const remoteUrl = item.remoteUrl || item.getRemoteUrl;
-
-    if (!token && remoteUrl) {
-      url = remoteUrl;
-    }
-
-    if (
-      !token &&
-      item['@type'] &&
-      config.settings.downloadableObjects.includes(item['@type'])
-    ) {
-      url = `${url}/@@download/file`;
-    }
-
-    if (
-      !token &&
-      item['@type'] &&
-      config.settings.viewableInBrowserObjects.includes(item['@type'])
-    ) {
-      url = `${url}/@@display-file/file`;
-    }
-
-    return url;
-  }
-
-  let url = getUrl(props, token);
+  let url = getUrl(props, token, item, children);
 
   const isExternal = !isInternalURL(url);
 
