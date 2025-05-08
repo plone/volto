@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.4.4 (2025-05-08)
+
+### Bugfix
+
+- Improve typings of brains and objectBrowser references. @sneridagh [#7047](https://github.com/plone/volto/issues/7047)
+
 ## 1.4.3 (2025-04-30)
 
 ### Bugfix
