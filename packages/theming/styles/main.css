@@ -3,7 +3,7 @@
 
 @import 'tailwindcss';
 @source '../node_modules/@plone/components/dist';
-
+@plugin 'tailwindcss-react-aria-components';
 @plugin 'tailwindcss-animate';
 
 @custom-variant dark (&:is(.dark *));

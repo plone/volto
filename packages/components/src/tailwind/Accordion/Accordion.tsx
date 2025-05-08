@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ChevronLeft from '@plone/components/icons/chevron-left.svg?react';
+import { ChevronleftIcon } from '../../components/icons/ChevronleftIcon';
 import type {
   DisclosureGroupProps,
   ButtonProps,
@@ -81,7 +81,7 @@ const AccordionItemTrigger = ({
             {typeof props.children === 'function'
               ? props.children(values)
               : props.children}
-            <ChevronLeft
+            <ChevronleftIcon
               data-slot="disclosure-chevron"
               className="internal-chevron ml-auto size-4 shrink-0 transition duration-300"
             />
