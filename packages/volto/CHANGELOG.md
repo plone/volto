@@ -17,6 +17,16 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.18.0 (2025-05-08)
+
+### Feature
+
+- Enhance the `ImageInput` component to only accept image files. [@jnptk] [#6926](https://github.com/plone/volto/issues/6926)
+
+### Bugfix
+
+- Fixed stuck states in the Image Upload Widget by resetting uploading after failed size validation and dragging after image deletion or drag events, ensuring proper functionality and user feedback. [#7045](https://github.com/plone/volto/issues/7045)
+
 ## 18.17.0 (2025-05-06)
 
 ### Feature
