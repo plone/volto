@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ImageWidget renders an empty image view widget component 1`] = `null`;
+exports[`ImageWidget > renders an empty image view widget component 1`] = `null`;
 
-exports[`ImageWidget renders an image view widget component 1`] = `
+exports[`ImageWidget > renders an image view widget component 1`] = `
 <span
   className="metadata image widget"
 >
@@ -16,7 +16,7 @@ exports[`ImageWidget renders an image view widget component 1`] = `
 </span>
 `;
 
-exports[`ImageWidget renders an image view widget component with children 1`] = `
+exports[`ImageWidget > renders an image view widget component with children 1`] = `
 <span
   className="metadata image widget"
 >

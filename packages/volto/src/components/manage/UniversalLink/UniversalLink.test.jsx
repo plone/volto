@@ -18,7 +18,7 @@ const store = mockStore({
   },
 });
 
-global.console.error = jest.fn();
+global.console.error = vi.fn();
 
 describe('UniversalLink', () => {
   it('renders a UniversalLink component with internal link', () => {
@@ -232,7 +232,7 @@ describe('UniversalLink', () => {
   });
 
   test('only one UniversalLink re-renders when prop changes (stable references)', () => {
-    const renderCounter = jest.fn();
+    const renderCounter = vi.fn();
     __test.renderCounter = renderCounter;
 
     const itemA = { '@id': '/en/a' };
@@ -272,7 +272,7 @@ describe('UniversalLink', () => {
   });
 
   test('only one UniversalLink re-renders when prop changes (with children - stable references)', () => {
-    const renderCounter = jest.fn();
+    const renderCounter = vi.fn();
     __test.renderCounter = renderCounter;
 
     const itemA = { '@id': '/en/a' };
@@ -318,7 +318,7 @@ describe('UniversalLink', () => {
     // when props like `children` are passed as inline JSX.
     // This is expected behavior due to unstable object references.
     // Do NOT use inline props if render optimization is required.
-    const renderCounter = jest.fn();
+    const renderCounter = vi.fn();
     __test.renderCounter = renderCounter;
 
     const itemA = { '@id': '/en/a' };
@@ -375,7 +375,7 @@ describe('UniversalLink', () => {
     // when props like `item` are passed as inline object.
     // This is expected behavior due to unstable object references.
     // Do NOT use inline props if render optimization is required.
-    const renderCounter = jest.fn();
+    const renderCounter = vi.fn();
     __test.renderCounter = renderCounter;
 
     const title = 'Title';

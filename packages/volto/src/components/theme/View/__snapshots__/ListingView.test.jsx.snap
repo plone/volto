@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ListingView renders a listing_view component 1`] = `
+exports[`ListingView > renders a listing_view component 1`] = `
 <div
   className="ui container"
   id="page-home"
@@ -16,8 +16,10 @@ exports[`ListingView renders a listing_view component 1`] = `
       >
         <h2>
           <a
-            href="/"
-            onClick={[Function]}
+            className="external"
+            href="http://item1"
+            rel="noopener noreferrer"
+            target="_blank"
             title="Document"
           >
             My item
@@ -36,8 +38,10 @@ exports[`ListingView renders a listing_view component 1`] = `
       >
         <h2>
           <a
-            href="/"
-            onClick={[Function]}
+            className="external"
+            href="http://item2"
+            rel="noopener noreferrer"
+            target="_blank"
             title="Document"
           >
             Second item

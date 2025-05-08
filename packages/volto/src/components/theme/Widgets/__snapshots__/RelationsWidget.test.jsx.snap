@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`RelationsWidget renders a full vocabulary array view widget component 1`] = `
+exports[`RelationsWidget > renders a full vocabulary array view widget component 1`] = `
 <ul
   className="metadata relations widget"
 >
@@ -14,20 +14,20 @@ exports[`RelationsWidget renders a full vocabulary array view widget component 1
       <svg
         className="icon icon-margin"
         dangerouslySetInnerHTML={
-          Object {
-            "__html": undefined,
+          {
+            "__html": "<path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
       Foo
     </a>
@@ -42,20 +42,20 @@ exports[`RelationsWidget renders a full vocabulary array view widget component 1
       <svg
         className="icon icon-margin"
         dangerouslySetInnerHTML={
-          Object {
-            "__html": undefined,
+          {
+            "__html": "<path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
       Bar
     </a>
@@ -63,7 +63,7 @@ exports[`RelationsWidget renders a full vocabulary array view widget component 1
 </ul>
 `;
 
-exports[`RelationsWidget renders a full vocabulary relations view widget component with children 1`] = `
+exports[`RelationsWidget > renders a full vocabulary relations view widget component with children 1`] = `
 <ul
   className="metadata relations widget"
 >
@@ -77,20 +77,20 @@ exports[`RelationsWidget renders a full vocabulary relations view widget compone
       <svg
         className="icon icon-margin"
         dangerouslySetInnerHTML={
-          Object {
-            "__html": "<title>Foo</title>undefined",
+          {
+            "__html": "<title>Foo</title><path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
       <strong>
         Foo
@@ -107,20 +107,20 @@ exports[`RelationsWidget renders a full vocabulary relations view widget compone
       <svg
         className="icon icon-margin"
         dangerouslySetInnerHTML={
-          Object {
-            "__html": "<title>Bar</title>undefined",
+          {
+            "__html": "<title>Bar</title><path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
       <strong>
         Bar
@@ -130,7 +130,7 @@ exports[`RelationsWidget renders a full vocabulary relations view widget compone
 </ul>
 `;
 
-exports[`RelationsWidget renders a simple relations view widget component 1`] = `
+exports[`RelationsWidget > renders a simple relations view widget component 1`] = `
 <ul
   className="metadata relations widget"
 >
@@ -144,20 +144,20 @@ exports[`RelationsWidget renders a simple relations view widget component 1`] = 
       <svg
         className="icon icon-margin"
         dangerouslySetInnerHTML={
-          Object {
-            "__html": undefined,
+          {
+            "__html": "<path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
       foo
     </a>
@@ -172,20 +172,20 @@ exports[`RelationsWidget renders a simple relations view widget component 1`] = 
       <svg
         className="icon icon-margin"
         dangerouslySetInnerHTML={
-          Object {
-            "__html": undefined,
+          {
+            "__html": "<path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
       bar
     </a>
@@ -193,7 +193,7 @@ exports[`RelationsWidget renders a simple relations view widget component 1`] = 
 </ul>
 `;
 
-exports[`RelationsWidget renders a vocabulary relations view widget component 1`] = `
+exports[`RelationsWidget > renders a vocabulary relations view widget component 1`] = `
 <ul
   className="metadata relations widget"
 >
@@ -207,20 +207,20 @@ exports[`RelationsWidget renders a vocabulary relations view widget component 1`
       <svg
         className="icon icon-margin"
         dangerouslySetInnerHTML={
-          Object {
-            "__html": undefined,
+          {
+            "__html": "<path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
       Foo
     </a>
@@ -235,20 +235,20 @@ exports[`RelationsWidget renders a vocabulary relations view widget component 1`
       <svg
         className="icon icon-margin"
         dangerouslySetInnerHTML={
-          Object {
-            "__html": undefined,
+          {
+            "__html": "<path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
           }
         }
         onClick={null}
         style={
-          Object {
+          {
             "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
         }
-        viewBox=""
-        xmlns=""
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
       />
       Bar
     </a>
@@ -256,4 +256,4 @@ exports[`RelationsWidget renders a vocabulary relations view widget component 1`
 </ul>
 `;
 
-exports[`RelationsWidget renders an empty relations view widget component 1`] = `null`;
+exports[`RelationsWidget > renders an empty relations view widget component 1`] = `null`;

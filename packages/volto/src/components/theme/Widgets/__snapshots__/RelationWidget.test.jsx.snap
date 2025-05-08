@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`RelationWidget renders a full relation view widget component 1`] = `
+exports[`RelationWidget > renders a full relation view widget component 1`] = `
 <a
   className="metadata relation widget"
   href="/a-page"
@@ -10,26 +10,26 @@ exports[`RelationWidget renders a full relation view widget component 1`] = `
   <svg
     className="icon icon-margin"
     dangerouslySetInnerHTML={
-      Object {
-        "__html": undefined,
+      {
+        "__html": "<path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
       }
     }
     onClick={null}
     style={
-      Object {
+      {
         "fill": "#878f93",
         "height": "20px",
         "width": "auto",
       }
     }
-    viewBox=""
-    xmlns=""
+    viewBox="0 0 36 36"
+    xmlns="http://www.w3.org/2000/svg"
   />
   Foo Bar
 </a>
 `;
 
-exports[`RelationWidget renders a full relation view widget component with children 1`] = `
+exports[`RelationWidget > renders a full relation view widget component with children 1`] = `
 <a
   className="metadata relation widget Document private"
   href="/a-page"
@@ -39,20 +39,20 @@ exports[`RelationWidget renders a full relation view widget component with child
   <svg
     className="icon icon-margin"
     dangerouslySetInnerHTML={
-      Object {
-        "__html": "<title>Document</title>undefined",
+      {
+        "__html": "<title>Document</title><g fill-rule="evenodd"><path d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/><path d="M11 27 25 27 25 25 11 25zM11 23 25 23 25 21 11 21zM11 19 18 19 18 17 11 17z"/></g>",
       }
     }
     onClick={null}
     style={
-      Object {
+      {
         "fill": "#878f93",
         "height": "20px",
         "width": "auto",
       }
     }
-    viewBox=""
-    xmlns=""
+    viewBox="0 0 36 36"
+    xmlns="http://www.w3.org/2000/svg"
   />
   <strong>
     Foo Bar
@@ -60,7 +60,7 @@ exports[`RelationWidget renders a full relation view widget component with child
 </a>
 `;
 
-exports[`RelationWidget renders a relation view widget component 1`] = `
+exports[`RelationWidget > renders a relation view widget component 1`] = `
 <a
   className="metadata relation widget"
   href="/"
@@ -70,23 +70,23 @@ exports[`RelationWidget renders a relation view widget component 1`] = `
   <svg
     className="icon icon-margin"
     dangerouslySetInnerHTML={
-      Object {
-        "__html": undefined,
+      {
+        "__html": "<path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
       }
     }
     onClick={null}
     style={
-      Object {
+      {
         "fill": "#878f93",
         "height": "20px",
         "width": "auto",
       }
     }
-    viewBox=""
-    xmlns=""
+    viewBox="0 0 36 36"
+    xmlns="http://www.w3.org/2000/svg"
   />
   Foo Bar
 </a>
 `;
 
-exports[`RelationWidget renders an empty relation view widget component 1`] = `null`;
+exports[`RelationWidget > renders an empty relation view widget component 1`] = `null`;
