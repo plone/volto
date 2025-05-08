@@ -98,7 +98,6 @@
     "@react-aria/utils": "^3.27.0",
     "@react-spectrum/utils": "^3.12.1",
     "@storybook/test": "^8.6.12",
-    "aria": "^0.2.1",
     "clsx": "^2.1.1",
     "react-aria": "^3.39.0",
     "react-aria-components": "catalog:",
