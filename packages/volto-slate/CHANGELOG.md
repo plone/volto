@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.3.1 (2025-05-08)
+
+### Internal
+
+- Use `classnames` 2.5.1 @sneridagh [#6826](https://github.com/plone/volto/issues/6826)
+
 ## 18.3.0 (2025-04-12)
 
 ### Feature
