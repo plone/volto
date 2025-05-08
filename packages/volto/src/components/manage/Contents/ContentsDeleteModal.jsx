@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -54,6 +54,16 @@ const ContentsDeleteModal = (props) => {
 
   const [linksAndReferencesViewLink, setLinkAndReferencesViewLink] =
     useState(null);
+
+  const titlesToDelete = useMemo(
+    () =>
+      itemsToDelete.reduce((acc, id) => {
+        const item = items.find((item) => item['@id'] === id);
+        acc[id] = item ? item.Title : null;
+        return acc;
+      }, {}),
+    [itemsToDelete, items],
+  );
 
   useEffect(() => {
     const getFieldById = (id, field) => {
@@ -136,6 +146,22 @@ const ContentsDeleteModal = (props) => {
                 {intl.formatMessage(messages.loading)}
               </Loader>
             </Dimmer>
+
+            <ul>
+              {itemsToDelete.map((id) => {
+                return (
+                  <li key={id}>
+                    <Link
+                      to={flattenToAppURL(id)}
+                      title={intl.formatMessage(messages.navigate_to_this_item)}
+                      target="_blank"
+                    >
+                      {titlesToDelete[id] || id}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
 
             {itemsToDelete.length > 1 ? (
               containedItemsToDelete > 0 ? (
