@@ -8,6 +8,7 @@ import {
 } from '@plone/volto/helpers/Url/Url';
 import config from '@plone/volto/registry';
 import cx from 'classnames';
+import type { ObjectBrowserItem } from '@plone/types';
 
 type BaseProps = {
   openLinkInNewTab?: boolean;
@@ -27,12 +28,7 @@ type HrefOnly = {
 
 type ItemOnly = {
   href?: never;
-  item: {
-    '@id': string;
-    remoteUrl?: string;
-    getRemoteUrl?: string;
-    '@type'?: string;
-  };
+  item: Partial<ObjectBrowserItem> & { remoteUrl?: string };
 } & BaseProps;
 
 export type UniversalLinkProps = HrefOnly | ItemOnly;
