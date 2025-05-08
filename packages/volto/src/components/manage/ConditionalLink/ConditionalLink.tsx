@@ -14,6 +14,7 @@ const ConditionalLink = React.forwardRef<
   if (condition) {
     if (!props.item && to) {
       return (
+        // @ts-ignore If not here, the build:types fails
         <UniversalLink {...props} href={to} ref={ref}>
           {props.children}
         </UniversalLink>
