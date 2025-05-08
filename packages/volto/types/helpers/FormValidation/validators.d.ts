@@ -15,7 +15,7 @@ export declare const isMinPropertyValid: ({ value, fieldSpec, criterion, formatM
 export declare const minLengthValidator: ({ value, field, formatMessage, }: Validator) => any;
 export declare const maxLengthValidator: ({ value, field, formatMessage, }: Validator) => any;
 export declare const urlValidator: ({ value, formatMessage }: Validator) => any;
-export declare const emailValidator: ({ value, formatMessage }: Validator) => string;
+export declare const emailValidator: ({ value, formatMessage, }: Validator) => string | null;
 export declare const isNumberValidator: ({ value, formatMessage }: Validator) => any;
 export declare const minimumValidator: ({ value, field, formatMessage }: Validator) => any;
 export declare const maximumValidator: ({ value, field, formatMessage }: Validator) => any;

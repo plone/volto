@@ -4,20 +4,30 @@ import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import ObjectListWidget from './ObjectListWidget';
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-jest.mock('@plone/volto/components/manage/Form');
+vi.mock('@plone/volto/helpers/Loadable/Loadable', async () => {
+  return await import(
+    '@plone/volto/helpers/Loadable/__mocks__/Loadable.vitest.jsx'
+  );
+});
+vi.mock('@plone/volto/components/manage/Form', async () => {
+  return await import(
+    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
+  );
+});
 
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
 
 let mockSerial = 0;
 const mockStore = configureStore();
 
-jest.mock('uuid', () => {
+vi.mock('uuid', () => {
   return {
-    v4: jest.fn().mockImplementation(() => `id-${mockSerial++}`),
+    v4: vi.fn().mockImplementation(() => `id-${mockSerial++}`),
   };
 });
 

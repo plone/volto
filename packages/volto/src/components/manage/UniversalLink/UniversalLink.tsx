@@ -57,7 +57,7 @@ export interface AppState {
     locale: string;
   };
   userSession: {
-    token: string;
+    token: string | null;
   };
 }
 
@@ -65,141 +65,154 @@ export const __test = {
   renderCounter: () => {},
 };
 
-const UniversalLink = React.memo(function UniversalLink(
+export function getUrl(
   props: UniversalLinkProps,
-) {
-  const {
-    openLinkInNewTab,
-    download,
-    children,
-    className,
-    title,
-    smooth,
-    onClick,
-    onKeyDown,
-    item,
-    ...rest
-  } = props;
-  __test.renderCounter();
+  token: string | null,
+  item: UniversalLinkProps['item'],
+  children: React.ReactNode,
+): string {
+  if ('href' in props && typeof props.href === 'string') {
+    return props.href;
+  }
 
-  const token = useSelector<AppState, string>(
-    (state) => state.userSession?.token,
-  );
+  if (!item || item['@id'] === '') return config.settings.publicURL;
+  if (!item['@id']) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Invalid item passed to UniversalLink',
+      item,
+      props,
+      children,
+    );
+    return '#';
+  }
 
-  function getUrl(props: UniversalLinkProps, token: string): string {
-    if ('href' in props && typeof props.href === 'string') {
-      return props.href;
-    }
+  let url = flattenToAppURL(item['@id']);
+  const remoteUrl = item.remoteUrl || item.getRemoteUrl;
 
-    if (!item || item['@id'] === '') return config.settings.publicURL;
-    if (!item['@id']) {
-      // eslint-disable-next-line no-console
-      console.error(
-        'Invalid item passed to UniversalLink',
-        item,
-        props,
+  if (!token && remoteUrl) {
+    url = remoteUrl;
+  }
+
+  if (
+    !token &&
+    item['@type'] &&
+    config.settings.downloadableObjects.includes(item['@type'])
+  ) {
+    url = `${url}/@@download/file`;
+  }
+
+  if (
+    !token &&
+    item['@type'] &&
+    config.settings.viewableInBrowserObjects.includes(item['@type'])
+  ) {
+    url = `${url}/@@display-file/file`;
+  }
+
+  return url;
+}
+
+const UniversalLink = React.memo(
+  React.forwardRef<HTMLAnchorElement | HTMLDivElement, UniversalLinkProps>(
+    function UniversalLink(props, ref) {
+      const {
+        openLinkInNewTab,
+        download,
         children,
+        className,
+        title,
+        smooth,
+        onClick,
+        onKeyDown,
+        item,
+        ...rest
+      } = props;
+      __test.renderCounter();
+
+      const token = useSelector<AppState, string | null>(
+        (state) => state.userSession?.token,
       );
-      return '#';
-    }
 
-    let url = flattenToAppURL(item['@id']);
-    const remoteUrl = item.remoteUrl || item.getRemoteUrl;
+      let url = getUrl(props, token, item, children);
 
-    if (!token && remoteUrl) {
-      url = remoteUrl;
-    }
+      const isExternal = !isInternalURL(url);
 
-    if (
-      !token &&
-      item['@type'] &&
-      config.settings.downloadableObjects.includes(item['@type'])
-    ) {
-      url = `${url}/@@download/file`;
-    }
+      const isDownload =
+        (!isExternal && url.includes('@@download')) || download;
+      const isDisplayFile =
+        (!isExternal && url.includes('@@display-file')) || false;
 
-    if (
-      !token &&
-      item['@type'] &&
-      config.settings.viewableInBrowserObjects.includes(item['@type'])
-    ) {
-      url = `${url}/@@display-file/file`;
-    }
+      const checkedURL = URLUtils.checkAndNormalizeUrl(url);
 
-    return url;
-  }
+      url = checkedURL.url;
+      let tag = (
+        <Link
+          to={flattenToAppURL(url)}
+          target={openLinkInNewTab ?? false ? '_blank' : undefined}
+          title={title}
+          className={className}
+          smooth={smooth ?? config.settings.hashLinkSmoothScroll}
+          // @ts-ignore
+          ref={ref}
+          {...rest}
+        >
+          {children}
+        </Link>
+      );
 
-  let url = getUrl(props, token);
+      if (isExternal) {
+        const isTelephoneOrMail = checkedURL.isMail || checkedURL.isTelephone;
+        const getClassName = cx({ external: !isTelephoneOrMail }, className);
 
-  const isExternal = !isInternalURL(url);
-
-  const isDownload = (!isExternal && url.includes('@@download')) || download;
-  const isDisplayFile =
-    (!isExternal && url.includes('@@display-file')) || false;
-
-  const checkedURL = URLUtils.checkAndNormalizeUrl(url);
-
-  url = checkedURL.url;
-  let tag = (
-    <Link
-      to={flattenToAppURL(url)}
-      target={openLinkInNewTab ?? false ? '_blank' : undefined}
-      title={title}
-      className={className}
-      smooth={smooth ?? config.settings.hashLinkSmoothScroll}
-      {...rest}
-    >
-      {children}
-    </Link>
-  );
-
-  if (isExternal) {
-    const isTelephoneOrMail = checkedURL.isMail || checkedURL.isTelephone;
-    const getClassName = cx({ external: !isTelephoneOrMail }, className);
-
-    tag = (
-      <a
-        href={url}
-        title={title}
-        target={
-          !isTelephoneOrMail && !(openLinkInNewTab === false)
-            ? '_blank'
-            : undefined
-        }
-        rel="noopener noreferrer"
-        {...rest}
-        className={getClassName}
-      >
-        {children}
-      </a>
-    );
-  } else if (isDownload) {
-    tag = (
-      <a
-        href={flattenToAppURL(url)}
-        download
-        title={title}
-        {...rest}
-        className={className}
-      >
-        {children}
-      </a>
-    );
-  } else if (isDisplayFile) {
-    tag = (
-      <a
-        title={title}
-        target="_blank"
-        rel="noopener noreferrer"
-        {...rest}
-        href={flattenToAppURL(url)}
-        className={className}
-      >
-        {children}
-      </a>
-    );
-  }
-  return tag;
-});
+        tag = (
+          <a
+            href={url}
+            title={title}
+            target={
+              !isTelephoneOrMail && !(openLinkInNewTab === false)
+                ? '_blank'
+                : undefined
+            }
+            rel="noopener noreferrer"
+            {...rest}
+            className={getClassName}
+            ref={ref as React.Ref<HTMLAnchorElement>}
+          >
+            {children}
+          </a>
+        );
+      } else if (isDownload) {
+        tag = (
+          <a
+            href={flattenToAppURL(url)}
+            download
+            title={title}
+            {...rest}
+            className={className}
+            ref={ref as React.Ref<HTMLAnchorElement>}
+          >
+            {children}
+          </a>
+        );
+      } else if (isDisplayFile) {
+        tag = (
+          <a
+            title={title}
+            target="_blank"
+            rel="noopener noreferrer"
+            {...rest}
+            href={flattenToAppURL(url)}
+            className={className}
+            ref={ref as React.Ref<HTMLAnchorElement>}
+          >
+            {children}
+          </a>
+        );
+      }
+      return tag;
+    },
+  ),
+);
 
 export default UniversalLink;

@@ -5,7 +5,11 @@ import { Provider } from 'react-intl-redux';
 import { render, fireEvent } from '@testing-library/react';
 import ObjectWidget from './ObjectWidget';
 
-jest.mock('@plone/volto/components/manage/Form');
+vi.mock('@plone/volto/components/manage/Form', async () => {
+  return await import(
+    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
+  );
+});
 
 const mockStore = configureStore();
 

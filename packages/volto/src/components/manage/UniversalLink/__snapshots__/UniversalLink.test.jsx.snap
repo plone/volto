@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`UniversalLink check UniversalLink does not break with error in item 1`] = `
+exports[`UniversalLink > check UniversalLink does not break with error in item 1`] = `
 <a
   href="/"
   onClick={[Function]}
@@ -11,7 +11,7 @@ exports[`UniversalLink check UniversalLink does not break with error in item 1`]
 </a>
 `;
 
-exports[`UniversalLink renders a UniversalLink component if no external(href) link passed 1`] = `
+exports[`UniversalLink > renders a UniversalLink component if no external(href) link passed 1`] = `
 <a
   href="/en/welcome-to-volto"
   onClick={[Function]}
@@ -22,7 +22,7 @@ exports[`UniversalLink renders a UniversalLink component if no external(href) li
 </a>
 `;
 
-exports[`UniversalLink renders a UniversalLink component when url ends with @@display-file 1`] = `
+exports[`UniversalLink > renders a UniversalLink component when url ends with @@display-file 1`] = `
 <a
   href="/en/welcome-to-volto/@@display-file"
   rel="noopener noreferrer"
@@ -34,7 +34,7 @@ exports[`UniversalLink renders a UniversalLink component when url ends with @@di
 </a>
 `;
 
-exports[`UniversalLink renders a UniversalLink component with external link 1`] = `
+exports[`UniversalLink > renders a UniversalLink component with external link 1`] = `
 <a
   className="external custom-link"
   href="https://github.com/plone/volto"
@@ -47,7 +47,7 @@ exports[`UniversalLink renders a UniversalLink component with external link 1`] 
 </a>
 `;
 
-exports[`UniversalLink renders a UniversalLink component with internal link 1`] = `
+exports[`UniversalLink > renders a UniversalLink component with internal link 1`] = `
 <a
   href="/en/welcome-to-volto"
   onClick={[Function]}

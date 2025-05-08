@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Contact form renders a contact form 1`] = `
+exports[`Contact form > renders a contact form 1`] = `
 <div>
   <div
     id="contact-form"
@@ -28,40 +28,40 @@ exports[`Contact form renders a contact form 1`] = `
       </div>
       <div
         data-schema="{
-  \\"fieldsets\\": [
+  "fieldsets": [
     {
-      \\"fields\\": [
-        \\"name\\",
-        \\"from\\",
-        \\"subject\\",
-        \\"message\\"
+      "fields": [
+        "name",
+        "from",
+        "subject",
+        "message"
       ],
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\"
+      "id": "default",
+      "title": "Default"
     }
   ],
-  \\"properties\\": {
-    \\"name\\": {
-      \\"title\\": \\"Name\\",
-      \\"type\\": \\"string\\"
+  "properties": {
+    "name": {
+      "title": "Name",
+      "type": "string"
     },
-    \\"from\\": {
-      \\"title\\": \\"From\\",
-      \\"type\\": \\"email\\"
+    "from": {
+      "title": "From",
+      "type": "email"
     },
-    \\"subject\\": {
-      \\"title\\": \\"Subject\\",
-      \\"type\\": \\"string\\"
+    "subject": {
+      "title": "Subject",
+      "type": "string"
     },
-    \\"message\\": {
-      \\"title\\": \\"Message\\",
-      \\"type\\": \\"string\\",
-      \\"widget\\": \\"textarea\\"
+    "message": {
+      "title": "Message",
+      "type": "string",
+      "widget": "textarea"
     }
   },
-  \\"required\\": [
-    \\"from\\",
-    \\"message\\"
+  "required": [
+    "from",
+    "message"
   ]
 }"
         id="Form"
@@ -78,7 +78,7 @@ exports[`Contact form renders a contact form 1`] = `
 </div>
 `;
 
-exports[`Contact form renders a contact form with error message 1`] = `
+exports[`Contact form > renders a contact form with error message 1`] = `
 <div>
   <div
     id="contact-form"
@@ -109,40 +109,40 @@ exports[`Contact form renders a contact form with error message 1`] = `
       </div>
       <div
         data-schema="{
-  \\"fieldsets\\": [
+  "fieldsets": [
     {
-      \\"fields\\": [
-        \\"name\\",
-        \\"from\\",
-        \\"subject\\",
-        \\"message\\"
+      "fields": [
+        "name",
+        "from",
+        "subject",
+        "message"
       ],
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\"
+      "id": "default",
+      "title": "Default"
     }
   ],
-  \\"properties\\": {
-    \\"name\\": {
-      \\"title\\": \\"Name\\",
-      \\"type\\": \\"string\\"
+  "properties": {
+    "name": {
+      "title": "Name",
+      "type": "string"
     },
-    \\"from\\": {
-      \\"title\\": \\"From\\",
-      \\"type\\": \\"email\\"
+    "from": {
+      "title": "From",
+      "type": "email"
     },
-    \\"subject\\": {
-      \\"title\\": \\"Subject\\",
-      \\"type\\": \\"string\\"
+    "subject": {
+      "title": "Subject",
+      "type": "string"
     },
-    \\"message\\": {
-      \\"title\\": \\"Message\\",
-      \\"type\\": \\"string\\",
-      \\"widget\\": \\"textarea\\"
+    "message": {
+      "title": "Message",
+      "type": "string",
+      "widget": "textarea"
     }
   },
-  \\"required\\": [
-    \\"from\\",
-    \\"message\\"
+  "required": [
+    "from",
+    "message"
   ]
 }"
         id="Form"
