@@ -1,1 +1,1 @@
-Added a comment to `init-loader` bin script, it's not used anywhere now. @sneridagh
+Added a comment to `init-loader` bin script, it's only used on init unit tests. @sneridagh
