@@ -51,6 +51,8 @@ const messages = defineMessages({
  * Add link form class.
  * @class AddLinkForm
  * @extends Component
+ *
+ * @deprecated use LinkForm instead
  */
 class AddLinkForm extends Component {
   static propTypes = {

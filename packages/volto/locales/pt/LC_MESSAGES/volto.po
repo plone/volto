@@ -664,6 +664,7 @@ msgstr ""
 
 #. Default: "Clear"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+#: components/manage/AnchorPlugin/components/LinkButton/LinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr ""
@@ -2665,6 +2666,11 @@ msgstr "Colar"
 msgid "Paste blocks"
 msgstr ""
 
+#. Default: "Paste or search for link"
+#: components/manage/AnchorPlugin/components/LinkButton/LinkForm
+msgid "Paste or search for link"
+msgstr ""
+
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Perform the following actions:"
@@ -3618,6 +3624,7 @@ msgstr "Assunto"
 
 #. Default: "Submit"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+#: components/manage/AnchorPlugin/components/LinkButton/LinkForm
 msgid "Submit"
 msgstr ""
 
