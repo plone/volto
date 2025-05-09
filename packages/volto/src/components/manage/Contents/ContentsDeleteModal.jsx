@@ -42,7 +42,14 @@ const messages = defineMessages({
 });
 
 const ContentsDeleteModal = (props) => {
-  const { itemsToDelete = [], open, onCancel, onOk, items } = props;
+  const {
+    itemsToDelete = [],
+    open,
+    onCancel,
+    onOk,
+    items,
+    hasMultiplePages,
+  } = props;
   const intl = useIntl();
   const dispatch = useDispatch();
   const linkintegrityInfo = useSelector((state) => state.linkIntegrity?.result);
@@ -147,21 +154,38 @@ const ContentsDeleteModal = (props) => {
               </Loader>
             </Dimmer>
 
-            <ul>
-              {itemsToDelete.map((id) => {
-                return (
-                  <li key={id}>
-                    <Link
-                      to={flattenToAppURL(id)}
-                      title={intl.formatMessage(messages.navigate_to_this_item)}
-                      target="_blank"
-                    >
-                      {titlesToDelete[id] || id}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+            {itemsToDelete.length > 1 &&
+            items.length === itemsToDelete.length ? (
+              hasMultiplePages ? (
+                <FormattedMessage
+                  id="You are about to delete all items in the current pagination of this folder."
+                  defaultMessage="You are about to delete all items in the current pagination of this folder."
+                />
+              ) : (
+                <FormattedMessage
+                  id="You are about to delete all items in this folder."
+                  defaultMessage="You are about to delete all items in this folder."
+                />
+              )
+            ) : (
+              <ul>
+                {itemsToDelete.map((id) => {
+                  return (
+                    <li key={id}>
+                      <Link
+                        to={flattenToAppURL(id)}
+                        title={intl.formatMessage(
+                          messages.navigate_to_this_item,
+                        )}
+                        target="_blank"
+                      >
+                        {titlesToDelete[id] || id}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
 
             {itemsToDelete.length > 1 ? (
               containedItemsToDelete > 0 ? (

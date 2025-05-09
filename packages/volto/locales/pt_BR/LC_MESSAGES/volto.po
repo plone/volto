@@ -4447,6 +4447,16 @@ msgstr "Anualmente"
 msgid "Yes"
 msgstr "Sim"
 
+#. Default: "You are about to delete all items in the current pagination of this folder."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items in the current pagination of this folder."
+msgstr "Você está prestes a excluir todos os itens na paginação atual desta pasta."
+
+#. Default: "You are about to delete all items in this folder."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items in this folder."
+msgstr "Você está prestes a excluir todos os itens desta pasta."
+
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
