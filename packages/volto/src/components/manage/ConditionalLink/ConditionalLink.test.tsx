@@ -1,8 +1,9 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
+import '@testing-library/jest-dom';
 
 import ConditionalLink from './ConditionalLink';
 
@@ -19,7 +20,7 @@ const store = mockStore({
 
 describe('ConditionalLink', () => {
   it('renders a link when condition is true', () => {
-    const component = renderer.create(
+    render(
       <Provider store={store}>
         <MemoryRouter>
           <ConditionalLink to="/test" condition={true}>
@@ -28,14 +29,30 @@ describe('ConditionalLink', () => {
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json.type).toBe('a');
-    expect(json.props.href).toBe('/test');
-    expect(json.children[0]).toBe('Link Text');
+
+    const link = screen.getByText('Link Text');
+    expect(link.tagName).toBe('A');
+    expect(link).toHaveAttribute('href', '/test');
+  });
+
+  it('renders a link when condition is true', () => {
+    render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <ConditionalLink href="/test" condition={true}>
+            Link Text
+          </ConditionalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    const link = screen.getByText('Link Text');
+    expect(link.tagName).toBe('A');
+    expect(link).toHaveAttribute('href', '/test');
   });
 
   it('renders a span when condition is false', () => {
-    const component = renderer.create(
+    render(
       <Provider store={store}>
         <MemoryRouter>
           <ConditionalLink to="/test" condition={false}>
@@ -44,12 +61,13 @@ describe('ConditionalLink', () => {
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    const span = screen.getByText('Link Text');
+    expect(span.tagName).toBe('DIV');
   });
 
   it('passes additional props when rendering a link', () => {
-    const component = renderer.create(
+    render(
       <Provider store={store}>
         <MemoryRouter>
           <ConditionalLink
@@ -63,13 +81,14 @@ describe('ConditionalLink', () => {
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json.props.className).toBe('custom-class');
-    expect(json.props['data-test']).toBe('test-id');
+
+    const link = screen.getByText('Link Text');
+    expect(link).toHaveClass('custom-class');
+    expect(link).toHaveAttribute('data-test', 'test-id');
   });
 
-  it('renders a component if no external(href) link passed', () => {
-    const component = renderer.create(
+  it('renders a component if no external (href) link is passed', () => {
+    render(
       <Provider store={store}>
         <MemoryRouter>
           <ConditionalLink
@@ -83,7 +102,8 @@ describe('ConditionalLink', () => {
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    const title = screen.getByText('Title');
+    expect(title.tagName).toBe('H1');
   });
 });
