@@ -2,11 +2,8 @@
 
 exports[`UniversalLink > check UniversalLink does not break with error in item 1`] = `
 <a
-  className={null}
   href="/"
   onClick={[Function]}
-  target={null}
-  title={null}
 >
   <h1>
     Title
@@ -16,11 +13,20 @@ exports[`UniversalLink > check UniversalLink does not break with error in item 1
 
 exports[`UniversalLink > renders a UniversalLink component if no external(href) link passed 1`] = `
 <a
-  className={null}
   href="/en/welcome-to-volto"
   onClick={[Function]}
-  target={null}
-  title={null}
+>
+  <h1>
+    Title
+  </h1>
+</a>
+`;
+
+exports[`UniversalLink > renders a UniversalLink component when url ends with @@display-file 1`] = `
+<a
+  href="/en/welcome-to-volto/@@display-file"
+  rel="noopener noreferrer"
+  target="_blank"
 >
   <h1>
     Title
@@ -30,11 +36,10 @@ exports[`UniversalLink > renders a UniversalLink component if no external(href) 
 
 exports[`UniversalLink > renders a UniversalLink component with external link 1`] = `
 <a
-  className="external"
+  className="external custom-link"
   href="https://github.com/plone/volto"
   rel="noopener noreferrer"
   target="_blank"
-  title={null}
 >
   <h1>
     Title
@@ -44,25 +49,8 @@ exports[`UniversalLink > renders a UniversalLink component with external link 1`
 
 exports[`UniversalLink > renders a UniversalLink component with internal link 1`] = `
 <a
-  className={null}
   href="/en/welcome-to-volto"
   onClick={[Function]}
-  target={null}
-  title={null}
->
-  <h1>
-    Title
-  </h1>
-</a>
-`;
-
-exports[`renders a UniversalLink component when url ends with @@display-file 1`] = `
-<a
-  className={null}
-  href="/en/welcome-to-volto/@@display-file"
-  rel="noopener noreferrer"
-  target="_blank"
-  title={null}
 >
   <h1>
     Title

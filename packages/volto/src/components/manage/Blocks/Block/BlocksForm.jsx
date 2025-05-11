@@ -360,6 +360,8 @@ const BlocksForm = (props) => {
                 editable,
                 showBlockChooser: selectedBlock === childId,
                 detached: isContainer,
+                isContainer,
+                // Properties to pass to the BlocksForm to match the View ones
                 content: properties,
                 history,
                 location,

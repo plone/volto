@@ -6,7 +6,11 @@ import { MemoryRouter } from 'react-router-dom';
 
 import RequestPasswordReset from './RequestPasswordReset';
 
-vi.mock('@plone/volto/components/manage/Form');
+vi.mock('@plone/volto/components/manage/Form', async () => {
+  return await import(
+    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
+  );
+});
 
 const mockStore = configureStore();
 
