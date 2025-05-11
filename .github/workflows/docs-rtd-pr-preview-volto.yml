@@ -9,7 +9,7 @@ on:
     branches:
       - seven
     paths:
-      - "docs/source/**"
+      - "docs/**"
       - "packages/components/.storybook/**"
       - "packages/volto/.storybook/**"
       - .readthedocs.yaml
