@@ -27,7 +27,7 @@ To shadow components, you must follow a project structure pattern.
 
 Assume the component you want to shadow is located at `node_modules/@plone/slots/components/Logo/Logo.svg`.
 
-You'll need to replicate this structure under {file}`src/customizations` as shown.
+You'll need to replicate this structure under {file}`customizations` as shown.
 
 ```
 customizations/
@@ -60,8 +60,7 @@ Failure to adapt your shadowed code to the new version may break your applicatio
 
 ## Clarification: only registered add-ons can be shadowed
 
-Shadowing only works with **registered add-ons** that are explicitly declared as such and included in the Vite aliasing configuration.
-In Seven, only add-ons that are properly registered via the `add-ons` mechanism, specifically the `configureAddons()` API, will be available for component shadowing.
+Shadowing only works with **registered add-ons** that are explicitly declared as such (using `registry.config.ts`).
 
 If you attempt to shadow a module from a package that is not registered as an add-on, the override will **not be resolved**, and your changes will be silently ignored.
 
