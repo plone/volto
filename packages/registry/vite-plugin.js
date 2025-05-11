@@ -1,5 +1,4 @@
 import path from 'path';
-import fs from 'fs';
 import { AddonRegistry } from '@plone/registry/addon-registry';
 import { createAddonsLoader } from '@plone/registry/create-addons-loader';
 import { createThemeAddonsLoader } from '@plone/registry/create-theme-loader';
