@@ -9,7 +9,7 @@ myst:
 
 # How-to guides
 
-This section of the documentation contains How-to guides for various aspects of Seven.
+This section of the documentation contains how-to guides for developing with Seven.
 
 ```{toctree}
 :hidden:

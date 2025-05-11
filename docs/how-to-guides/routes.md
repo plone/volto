@@ -1,29 +1,28 @@
 ---
 myst:
   html_meta:
-    "description": "How to create routes"
-    "property=og:description": "How to create routes"
-    "property=og:title": "How to create routes"
+    "description": "How to create a route in Seven"
+    "property=og:description": "How to create a route in Seven"
+    "property=og:title": "How to create a route in Seven"
     "keywords": "Seven, frontend, Plone, routes"
 ---
 
 
-# How to create a route in Seven
+# Create a route in Seven
 
 Seven is built on top of React and React Router 7.
 One of its core principles is **declarative configuration**: all core functionality is configured through the centralized configuration registry provided by the [`@plone/registry`](https://plone-registry.readthedocs.io/) package.
 
 ```{important}
-If you’re used to defining routes in JSX or manually assembling route trees, this approach will feel different. In Seven, routes are registered — not hardcoded.
+If you're used to defining routes either in JSX or manually assembling route trees, then this approach will feel different.
+In Seven, you register routes, not hard code them.
 ```
 
-## Configuration through the Registry
+## Configuration through the registry
 
-In Seven, all behavior — from content type views, to blocks, to application routes — is registered declaratively using the `@plone/registry` system.
-This design makes Seven **modular**, **extensible**, and **pluggable**. Add-ons can register routes and other behaviors without touching any central code.
-
-Routing is no exception.
-Instead of defining routes in code (like `routes.tsx`), you register them dynamically under the `route` type using `config.registerRoute`.
+Declarative configuration makes Seven modular, extensible, and pluggable.
+Add-ons can register routes and other behaviors without touching any central code.
+Instead of defining routes in code, such as in {file}`routes.tsx`, you register them dynamically under the `route` type using the `config.registerRoute()` API.
 
 
 ## Types of routes in Seven
@@ -33,13 +32,13 @@ Routes are registered using the `config.registerRoute()` API from `@plone/regist
 
 ### Conventions
 
-To promote clarity and modularity, it is recommended that **all route components in add-ons be placed in a `routes/` directory** in your add-on.
+To promote clarity and modularity, it is recommended that **all route components in add-ons be placed in a {file}`routes/` directory** in your add-on.
 
-The `file` property in each route must be a **fully qualified module path** (e.g., `@my-addon/routes/MyView.tsx`), so that the application can resolve and load the component correctly at runtime.
+The `file` property in each route must be a **fully qualified module path**—for example, `@my-addon/routes/MyView.tsx`—so that the application can resolve and load the component correctly at runtime.
 
-### `route` – Standard route
+### `route` – standard route
 
-Used to define a route for a specific path.
+Use the type `route` to define a route for a specific path.
 
 ```ts
 config.registerRoute({
@@ -53,9 +52,9 @@ config.registerRoute({
 });
 ```
 
-### `layout` – Layout with children
+### `layout` – layout with children
 
-Useful for defining shared page layouts for a set of routes.
+Use the type `layout` to define shared page layouts for a set of routes.
 
 ```ts
 config.registerRoute({
@@ -76,7 +75,7 @@ config.registerRoute({
 });
 ```
 
-### `index` – Default route in a context
+### `index` – default route in a context
 
 Rendered when no sub-route is matched. Must be placed inside a `layout` or `prefix`.
 
@@ -87,9 +86,9 @@ config.registerRoute({
 });
 ```
 
-### `prefix` – Structural grouping without layout
+### `prefix` – structural grouping without layout
 
-Groups routes under a common path prefix without introducing a layout component.
+Use the type `prefix` to group routes under a common path prefix without introducing a layout component.
 
 ```ts
 config.registerRoute({
@@ -110,11 +109,11 @@ config.registerRoute({
 });
 ```
 
-## Example: Defining a real Seven core add-on route
+## Define a Seven core add-on route
 
-Let’s look at a real-world example from the `@plone/cmsui` add-on.
-The following route registration defines the `/edit` interface in Seven.
-This example demonstrates how to nest a `prefix` route under a `layout`, and use both `index` and wildcard routes within the same branch.
+The following example comes from the `@plone/cmsui` add-on.
+Its route registration defines the `/edit` interface in Seven.
+It demonstrates how to nest a `prefix` route under a `layout`, and use both `index` and wildcard routes within the same branch.
 
 ```ts
 config.registerRoute({
@@ -143,22 +142,23 @@ config.registerRoute({
 });
 ```
 
-### What this defines:
+The above code defines the following.
 
-- A top-level layout component from `@plone/cmsui/routes/layout.tsx`.
-- A `prefix` path `edit` that groups all `/edit/*` routes.
-- An `index` route for `/edit`.
-- A wildcard route for any `/edit/*` subpath.
+-   a top-level layout component from {file}`@plone/cmsui/routes/layout.tsx`
+-   a `prefix` path `edit` that groups all `/edit/*` routes
+-   an `index` route for `/edit`
+-   a wildcard route for any `/edit/*` subpath
 
 ```{note}
 Even though both the `index` and `*` routes use the same file, you could conditionally render different content based on `useParams()` or other context inside the component.
 ```
 
----
 
-### File structure for `@plone/cmsui` edit route
+### File structure of `@plone/cmsui` edit route
 
-```
+The following diagram illustrates the file structure of the `@plone/cmsui` edit route.
+
+```text
 @plone/cmsui/
 ├── routes/
 │   ├── layout.tsx       ← Shared layout used as base for CMS UI views
@@ -166,7 +166,6 @@ Even though both the `index` and `*` routes use the same file, you could conditi
 └── index.ts             ← Entry point where `config.registerRoute()` is called
 ```
 
----
 
 ## Route registration API reference
 
