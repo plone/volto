@@ -67,6 +67,7 @@ get-started/index
 development/index
 configuration/index
 conceptual-guides/index
+how-to-guides/index
 upgrade-guide/index
 contributing/index
 release-management-notes/index
