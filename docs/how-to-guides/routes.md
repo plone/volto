@@ -11,7 +11,7 @@ myst:
 # Create a route in Seven
 
 Seven is built on top of React and React Router 7.
-One of its core principles is **declarative configuration**: all core functionality is configured through the centralized configuration registry provided by the [`@plone/registry`](https://plone-registry.readthedocs.io/) package.
+You declare new routes in Seven in add-ons, using the [add-ons configuration loader](https://plone-registry.readthedocs.io/conceptual-guides/add-on-loader.html#add-ons-configuration-loader).
 
 ```{important}
 If you're used to defining routes either in JSX or manually assembling route trees, then this approach will feel different.
