@@ -1,15 +1,15 @@
 ---
 myst:
   html_meta:
-    "description": "Seven conceptual guides"
-    "property=og:description": "Seven conceptual guides"
-    "property=og:title": "Conceptual guides"
-    "keywords": "Seven, user interface, frontend, Plone, conceptual guides"
+    "description": "Seven how-to guides"
+    "property=og:description": "Seven how-to guides"
+    "property=og:title": "How-to guides guides"
+    "keywords": "Seven, frontend, Plone, how-to guides"
 ---
 
-# Conceptual guides
+# How-to guides
 
-This section of the documentation contains conceptual guides for various aspects of Seven.
+This section of the documentation contains How-to guides for various aspects of Seven.
 
 ```{toctree}
 :hidden:
