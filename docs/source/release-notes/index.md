@@ -17,6 +17,16 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.20.0 (2025-05-12)
+
+### Feature
+
+- Fix translations default of ContentsDeleteModal: 'linkintegrity: delete' -> 'delete' if no link to break. @ksuess [#6964](https://github.com/plone/volto/issues/6964)
+
+### Bugfix
+
+- Improve typings in ConditionalLink component, add TS tests to catch the bad typings. @sneridagh [#7057](https://github.com/plone/volto/issues/7057)
+
 ## 18.19.0 (2025-05-08)
 
 ### Feature
