@@ -11,7 +11,7 @@ myst:
 # Create a route in Seven
 
 Seven is built on top of React and React Router 7.
-You declare new routes in Seven in add-ons, using the [add-ons configuration loader](https://plone-registry.readthedocs.io/conceptual-guides/add-on-loader.html#add-ons-configuration-loader).
+You declare new routes in your add-ons for Seven using the [add-ons configuration loader from `@plone/registry`](https://plone-registry.readthedocs.io/conceptual-guides/add-on-loader.html#add-ons-configuration-loader).
 
 ```{important}
 If you're used to defining routes either in JSX or manually assembling route trees, then this approach will feel different.
@@ -161,10 +161,16 @@ The following diagram illustrates the file structure of the `@plone/cmsui` edit 
 ```text
 @plone/cmsui/
 ├── routes/
-│   ├── layout.tsx       ← Shared layout used as base for CMS UI views
-│   └── edit.tsx         ← Component used for /edit and all subpaths
-└── index.ts             ← Entry point where `config.registerRoute()` is called
+│   ├── layout.tsx
+│   └── edit.tsx
+└── index.ts
 ```
+
+In `@plone/cmsui/`, each of the files shown in the above diagram performs a specific function.
+
+-   {file}`routes/layout.tsx` serves as a shared layout used as a base for CMS UI views.
+-   {file}`routes/edit.tsx` is the component used for `/edit` and all its subpaths.
+-   {file}`index.ts` is the entry point that calls `config.registerRoute()`.
 
 
 ## Route registration API reference
