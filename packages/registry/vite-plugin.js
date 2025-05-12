@@ -5,7 +5,7 @@ import { createThemeAddonsLoader } from '@plone/registry/create-theme-loader';
 import { createAddonsStyleLoader } from '@plone/registry/create-addons-styles-loader';
 import { createAddonsLocalesLoader } from '@plone/registry/create-addons-locales-loader';
 
-export default function relativeToAbsoluteImportPlugin(options) {
+export function relativeToAbsoluteImportPlugin(options) {
   const { packages } = options;
 
   const entries = Object.entries(packages);
@@ -26,7 +26,7 @@ export default function relativeToAbsoluteImportPlugin(options) {
       const [, pkgInfo] = match;
 
       const transformedCode = code.replace(
-        /from\s+['"]((?:\.\.?)\/[^'"]+)['"]/g,
+        /from\s+['"]((?:\.\.?)\/?[^'"]*)['"]/g,
         (full, relImport) => {
           const absImportPath = path.resolve(
             path.dirname(normalizedId),
