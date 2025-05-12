@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.10.1 (2025-05-12)
+
+### Bugfix
+
+- Fixed prepublish name. @sneridagh 
+
 ## 3.10.0 (2025-05-12)
 
 ### Feature
