@@ -24,7 +24,7 @@ class PrePublishReleaseItPlugin extends Plugin {
   }
 
   getName() {
-    return 'plonePrePublish';
+    return this.config.getContext().npm.name;
   }
 
   getPackageUrl() {
