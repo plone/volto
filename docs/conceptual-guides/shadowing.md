@@ -60,10 +60,8 @@ Failure to adapt your shadowed code to the new version may break your applicatio
 
 ## Clarification: only registered add-ons can be shadowed
 
-Shadowing only works with **registered add-ons** that are explicitly declared as such (using `registry.config.ts`).
-
+Shadowing only works with **registered add-ons** that are explicitly declared as such in {file}`registry.config.ts`.
 If you attempt to shadow a module from a package that is not registered as an add-on, the override will **not be resolved**, and your changes will be silently ignored.
-
 Always ensure the package you want to shadow is installed and registered in your application configuration.
 
 ## Summary
