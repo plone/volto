@@ -348,7 +348,7 @@ class Add extends Component {
         <div id="page-add">
           <Helmet
             title={this.props.intl.formatMessage(messages.add, {
-              type: this.props.type,
+              type: this.props?.schema?.title || this.props.type,
             })}
           />
           <Form
