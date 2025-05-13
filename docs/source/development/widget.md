@@ -118,7 +118,7 @@ Register your vocabulary in {file}`configure.zcml`:
       />
 ```
 
-You'll need to define a new KeywordsIndex in `portal_catalog`, in a {file}`catalog.xml` GenericSetup file.
+You'll need to define a new `KeywordsIndex` in `portal_catalog`, in a {file}`catalog.xml` GenericSetup file.
 
 ```xml
 <?xml version="1.0"?>
