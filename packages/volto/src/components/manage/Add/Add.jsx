@@ -344,14 +344,6 @@ class Add extends Component {
         return data;
       };
 
-      const initialFormData = {
-        ...this.props.location?.state?.initialFormData,
-        ...lifData(),
-        parent: {
-          '@id': this.props.content?.['@id'] || '',
-        },
-      };
-
       const pageAdd = (
         <div id="page-add">
           <Helmet
@@ -368,7 +360,7 @@ class Add extends Component {
             schema={this.props.schema}
             type={this.props.type}
             formData={
-              initialFormData || {
+              this.props.location?.state?.initialFormData || {
                 ...(blocksFieldname && {
                   [blocksFieldname]:
                     initialBlocks ||
