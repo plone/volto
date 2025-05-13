@@ -253,86 +253,86 @@ See [Storybook](https://6.docs.plone.org/storybook) with available widgets.
 A custom widget is often used in Volto forms.
 To configure a new Volto widget follow these steps.
 
-1. Add this import in the first line of {file}`index.js` file of the addon to import the component that is the actual widget.
+1.  Add this import in the first line of {file}`index.js` file of the add-on to import the component that is the actual widget.
 
-```tsx
-import { ToggleWidget } from './ToggleWidget';
-```
+    ```jsx
+    import { ToggleWidget } from './ToggleWidget';
+    ```
 
-2. Add this line before returning from `applyConfig` function inside the {file}`index.js` of the addon to register the addon component (widget).
+1.  Add this line before returning from `applyConfig` function inside the {file}`index.js` of the add-on to register the add-on component (widget).
 
-```tsx
-config.widgets.widget.toggle_widget = ToggleWidget;
-```
+    ```jsx
+    config.widgets.widget.toggle_widget = ToggleWidget;
+    ```
 
-3. Next, create the widget component file {file}`ToggleWidget.jsx` with these contents:
+1.  Next, create the widget component file {file}`ToggleWidget.jsx` with these contents:
 
-```jsx
-import { Button } from 'semantic-ui-react';
+    ```jsx
+    import { Button } from 'semantic-ui-react';
 
-export function ToggleWidget({ id, value, onChange }) {
-  return (
-    <Button
-      onClick={(e) => {
-        e.preventDefault();
-        onChange(id, value === 'On' ? 'Off' : 'On');
-      }}
-    >
-      Toggle me: {value}
-    </Button>
-  );
-}
+    export function ToggleWidget({ id, value, onChange }) {
+        return (
+            <Button
+                onClick={(e) => {
+                    e.preventDefault();
+                    onChange(id, value === 'On' ? 'Off' : 'On');
+                }}
+            >
+                Toggle me: {value}
+            </Button>
+        );
+    }
 
-export default ToggleWidget;
-```
+    export default ToggleWidget;
+    ```
 
-You need to install `semantic-ui-react` as a dependency of your addon before it will work.
-You only need to `npm i semantic-ui-react`.
+    You need to install `semantic-ui-react` as a dependency of your add-on before it will work.
+    You only need to `npm i semantic-ui-react`.
 
-4. Using the component shadowing tehnique, inside a new directory of your addon: {file}`src/customizations/components/manage/Sidebar/` create a file {file}`Sidebar.jsx` that shadows the Sidebar component inside the core Volto corresponding file.
+1.  Using the component shadowing tehnique, inside a new directory of your add-on: {file}`src/customizations/components/manage/Sidebar/` create a file {file}`Sidebar.jsx` that shadows the Sidebar component inside the core Volto corresponding file.
 Copy all the file contents of original {file}`Sidebar.jsx` to the new {file}`Sidebar.jsx`.
 
-5. Inside the new {file}`Sidebar.jsx`, add this import at the top:
+1.  Inside the new {file}`Sidebar.jsx`, add this import at the top:
 
-```jsx
-import { Form } from '@plone/volto/components/manage/Form';
-```
+    ```jsx
+    import { Form } from '@plone/volto/components/manage/Form';
+    ```
 
-Below the imports, write this example custom form which has one field of type `toggle_widget` (our widget):
+1.  Below the imports, write this example custom form which has one field of type `toggle_widget` (our widget):
 
-```jsx
-const MyForm = () => {
-  return (
-    <Form
-      schema={{
-        fieldsets: [
-          {
-            id: 'default',
-            title: 'Title',
-            fields: ['toggle'],
-          },
-        ],
-        properties: {
-          toggle: {
-            title: 'My toggle',
-            widget: 'toggle_widget',
-            default: 'On',
-          },
-        },
-        required: [],
-      }}
-    />
-  );
-};
-```
+    ```jsx
+    const MyForm = () => {
+        return (
+            <Form
+                schema={{
+                    fieldsets: [
+                        {
+                            id: 'default',
+                            title: 'Title',
+                            fields: ['toggle'],
+                        },
+                    ],
+                    properties: {
+                        toggle: {
+                            title: 'My toggle',
+                            widget: 'toggle_widget',
+                            default: 'On',
+                        },
+                    },
+                    required: [],
+                }}
+            />
+        );
+    };
+    ```
 
-To see the widget inside the `Sidebar` on the right of Volto UI, add this line:
+1.  To see the widget inside the `Sidebar` on the right of Volto UI, add this line:
 
-```jsx
-<MyForm />
-```
+    ```jsx
+    <MyForm />
+    ```
 
-inside the `(React.)Fragment` tag that is rendered.
+    inside the `(React.)Fragment` tag that is rendered.
 
 Now, after restarting Volto, you can see the button the widget renders, click on it, and its text changes on each click.
 You can position the `MyForm` component anywhere where it is visible and the user can interact with it.
