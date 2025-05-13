@@ -10,25 +10,7 @@ myst:
 
 # Create a route in Seven
 
-Seven is built on top of React and React Router 7.
-You declare new routes in your add-ons for Seven using the [add-ons configuration loader from `@plone/registry`](https://plone-registry.readthedocs.io/conceptual-guides/add-on-loader.html#add-ons-configuration-loader).
-
-```{important}
-If you're used to defining routes either in JSX or manually assembling route trees, then this approach will feel different.
-In Seven, you register routes, not hard code them.
-```
-
-## Configuration through the registry
-
-Declarative configuration makes Seven modular, extensible, and pluggable.
-Add-ons can register routes and other behaviors without touching any central code.
-Instead of defining routes in code, such as in {file}`routes.tsx`, you register them dynamically under the `route` type using the `config.registerRoute()` API.
-
-
-## Types of routes in Seven
-
-Seven supports four types of routes, aligned with [React Router 7’s data route definitions](https://reactrouter.com/start/data/routing).
-Routes are registered using the `config.registerRoute()` API from `@plone/registry`.
+In Seven, routes are registered in the configuration registry via the add-ons.
 
 ### Conventions
 
@@ -36,9 +18,37 @@ To promote clarity and modularity, it is recommended that **all route components
 
 The `file` property in each route must be a **fully qualified module path**—for example, `@my-addon/routes/MyView.tsx`—so that the application can resolve and load the component correctly at runtime.
 
+### Route definition
+
+See the {ref}`route-registration-api-reference` for the complete API reference.
+
+```{glossary}
+`type`
+    The type of route to create. It can be one of `route`, `index`, `layout`, or `prefix`.
+
+`path`
+    The path for the route. It is a string that defines the URL pattern for the route.
+
+`file`
+    The fully qualified path to the component file that will be rendered for this route.
+    It is a string that specifies the location of the component file.
+    It must be a valid module path that can be resolved at runtime.
+
+`options`
+    An optional object that can contain additional properties for the route.
+    It can include properties like `id`, `index`, and `caseSensitive`.
+
+`children`
+    An optional array of child routes.
+    It is an array of route definitions that can be nested within the parent route.
+```
+
 ### `route` – standard route
 
 Use the type `route` to define a route for a specific path.
+This will create a `/login` route that renders the component from `@plone/cmsui/routes/login.tsx`.
+We are specifying an `id` for the route, which is used to identify the route in the application.
+Normally, React Router will assign an `id` based on the path, but you can override it with this option.
 
 ```ts
 config.registerRoute({
@@ -47,7 +57,6 @@ config.registerRoute({
   file: '@plone/cmsui/routes/login.tsx',
   options: {
     id: 'login',
-    index: true,
   },
 });
 ```
@@ -55,6 +64,8 @@ config.registerRoute({
 ### `layout` – layout with children
 
 Use the type `layout` to define shared page layouts for a set of routes.
+This will create two routes: `/home` and `/settings`, both of which will be rendered inside the layout component from `@my-addon/routes/layouts/DashboardLayout.tsx`.
+They do not add a new segment to the URL.
 
 ```ts
 config.registerRoute({
@@ -77,12 +88,30 @@ config.registerRoute({
 
 ### `index` – default route in a context
 
-Rendered when no sub-route is matched. Must be placed inside a `layout` or `prefix`.
+Rendered when no sub-route is matched. Must be placed in a `layout` or `prefix`.
+This will create a default route for the `/blog` path, rendering the component from `@my-addon/routes/BlogHomePage.tsx`.
+It will be the default route when the user accesses `/blog` without specifying a subpath.
 
 ```ts
 config.registerRoute({
-  type: 'index',
-  file: '@my-addon/routes/HomePage.tsx',
+  type: 'prefix',
+  path: '/blog',
+  children: [
+    {
+      type: 'index',
+      file: '@my-addon/routes/BlogHomePage.tsx',
+    },
+    {
+      type: 'route',
+      path: ':id',
+      file: '@my-addon/routes/BlogPost.tsx',
+    },
+    {
+      type: 'route',
+      path: 'archive',
+      file: '@my-addon/routes/BlogArchive.tsx',
+    },
+  ],
 });
 ```
 
@@ -150,9 +179,8 @@ The above code defines the following.
 -   a wildcard route for any `/edit/*` subpath
 
 ```{note}
-Even though both the `index` and `*` routes use the same file, you could conditionally render different content based on `useParams()` or other context inside the component.
+In this example, both the `index` and `*` routes use the same file, because we want be reused in both scenarios, but this doesn't have to be the case always.
 ```
-
 
 ### File structure of `@plone/cmsui` edit route
 
@@ -170,8 +198,9 @@ In `@plone/cmsui/`, each of the files shown in the above diagram performs a spec
 
 -   {file}`routes/layout.tsx` serves as a shared layout used as a base for CMS UI views.
 -   {file}`routes/edit.tsx` is the component used for `/edit` and all its subpaths.
--   {file}`index.ts` is the entry point that calls `config.registerRoute()`.
+-   {file}`index.ts` is where the default configuration loader of the add-on calls `config.registerRoute()`.
 
+(route-registration-api-reference)=
 
 ## Route registration API reference
 
