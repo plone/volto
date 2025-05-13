@@ -17,4 +17,5 @@ This section of the documentation contains conceptual guides for various aspects
 
 add-ons
 routing
+shadowing
 ```

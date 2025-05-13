@@ -8,4 +8,5 @@ sphinx-examples
 sphinxcontrib-video
 sphinxcontrib-youtube
 sphinxext-opengraph
+sphinx-reredirects
 vale

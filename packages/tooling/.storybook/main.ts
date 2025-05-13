@@ -29,10 +29,10 @@ const config: StorybookConfig = {
     //   title: '@plone/publicui',
     //   url: 'http://localhost:6004',
     // },
-    // cmsui: {
-    //   title: '@plone/cmsui',
-    //   url: 'http://localhost:6005',
-    // },
+    cmsui: {
+      title: '@plone/cmsui',
+      url: 'https://plone-cmsui.readthedocs.io/latest/',
+    },
   },
   docs: {},
   typescript: {
