@@ -2,7 +2,9 @@ import React from 'react';
 import { defineMessages } from 'react-intl'; // , defineMessages
 import { ReactEditor, useSlate } from 'slate-react';
 import { useSelector, useDispatch } from 'react-redux';
+// TODO: Rename <LinkForm/> to <AddLinkForm/>
 import AddLinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/AddLinkForm';
+import LinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/LinkForm';
 import {
   _insertElement,
   _unwrapElement,
@@ -63,7 +65,7 @@ const LinkEditor = (props) => {
 
   return showEditor ? (
     <PositionedToolbar className="add-link" position={savedPosition.current}>
-      <AddLinkForm
+      <LinkForm
         block="draft-js"
         placeholder={'Add link'}
         data={{ url: node?.data?.url || '' }}
