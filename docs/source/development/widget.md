@@ -301,7 +301,7 @@ To configure a new Volto widget follow these steps.
     import { Form } from '@plone/volto/components/manage/Form';
     ```
 
-1.  Below the imports, write this example custom form which has one field of type `toggle_widget` (our widget):
+1.  Below the imports, write the following example custom form, which has one field of type `toggle_widget` to serve as our widget.
 
     ```jsx
     const MyForm = () => {
