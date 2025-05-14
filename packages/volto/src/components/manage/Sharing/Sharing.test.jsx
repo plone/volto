@@ -10,7 +10,9 @@ import Sharing from './Sharing';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
 describe('Sharing', () => {
   it('renders a sharing component', () => {

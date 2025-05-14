@@ -1,31 +1,31 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ContentsRenameModal renders a contents rename modal component 1`] = `
+exports[`ContentsRenameModal > renders a contents rename modal component 1`] = `
 <div
   data-schema="{
-  \\"fieldsets\\": [
+  "fieldsets": [
     {
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\",
-      \\"fields\\": [
-        \\"0_title\\",
-        \\"0_id\\"
+      "id": "default",
+      "title": "Default",
+      "fields": [
+        "0_title",
+        "0_id"
       ]
     }
   ],
-  \\"properties\\": {
-    \\"0_title\\": {
-      \\"title\\": \\"Title\\",
-      \\"type\\": \\"string\\",
-      \\"description\\": \\"\\"
+  "properties": {
+    "0_title": {
+      "title": "Title",
+      "type": "string",
+      "description": ""
     },
-    \\"0_id\\": {
-      \\"title\\": \\"Short name\\",
-      \\"type\\": \\"id\\",
-      \\"description\\": \\"This name will be displayed in the URL.\\"
+    "0_id": {
+      "title": "Short name",
+      "type": "id",
+      "description": "This name will be displayed in the URL."
     }
   },
-  \\"required\\": []
+  "required": []
 }"
   id="ModalForm"
 />

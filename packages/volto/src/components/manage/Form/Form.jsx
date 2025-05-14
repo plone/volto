@@ -650,12 +650,14 @@ class Form extends Component {
         const errorMessage = Object.entries(
           Object.entries(blocksErrors)[0][1],
         )[0][1];
+        const errorFieldTitle = errorMessage.title || errorField;
+
         toast.error(
           <Toast
             error
             title={this.props.intl.formatMessage(
               messages.blocksFieldsErrorTitle,
-              { errorField },
+              { errorField: errorFieldTitle },
             )}
             content={errorMessage}
           />,

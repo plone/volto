@@ -8,6 +8,42 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.3 (2025-05-13)
+
+### Bugfix
+
+- Return properly in `getUtility` and `getUtilities` in case `type` or `name` is not set. @sneridagh [#7007](https://github.com/plone/volto/issues/7007)
+- Fixed `unRegisterSlotComponent` method. @sneridagh [#7016](https://github.com/plone/volto/issues/7016)
+- Remove the slot registration from the array if it is the last in `unRegisterSlotComponent`. @sneridagh [#7031](https://github.com/plone/volto/issues/7031)
+
+## 3.0.0-alpha.2 (2025-04-12)
+
+### Feature
+
+- New binary `init-loaders` initializes the `@plone/registry` loaders via the command line.
+  This fixes the upgrade to 7.2.0 problem introduced in https://github.com/remix-run/react-router/issues/13078. @sneridagh [#6780](https://github.com/plone/volto/issues/6780)
+- Support for Tailwind add-ons detection in Vite plugin. @sneridagh [#6797](https://github.com/plone/volto/issues/6797)
+- Added i18n support for projects and add-ons (i18next) for Seven. @pnicolli [#6866](https://github.com/plone/volto/issues/6866)
+
+## 3.0.0-alpha.1 (2025-03-31)
+
+### Feature
+
+- Allow to override slots with no predicate with the same name. @sneridagh [#6887](https://github.com/plone/volto/issues/6887)
+
+## 3.0.0-alpha.0 (2025-03-27)
+
+### Breaking
+
+- Removed support for loading config from project. @sneridagh
+
+  Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html)
+  for more information. [#6842](https://github.com/plone/volto/issues/6842)
+
+### Internal
+
+- Fix typings for Vite Plugin. @sneridagh [#6733](https://github.com/plone/volto/issues/6733)
+
 ## 2.4.1 (2025-02-08)
 
 ### Internal

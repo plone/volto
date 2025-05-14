@@ -9,9 +9,12 @@ import Rules from './Rules';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
-
-jest.mock('../Toolbar/More', () => jest.fn(() => <div className="More" />));
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
+vi.mock('../Toolbar/More', () => ({
+  default: vi.fn(() => <div className="More" />),
+}));
 
 describe('Rules', () => {
   it('renders rules object control', () => {

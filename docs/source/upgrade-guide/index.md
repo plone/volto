@@ -65,7 +65,7 @@ These packages have been removed from the Volto repository as they are no longer
 - `@plone/volto-testing`: Testing functionality is now integrated directly in Volto core
 
 
-(upgrade-18-label)=
+(upgrading-to-volto-18-x-x)=
 
 ## Upgrading to Volto 18.x.x
 
@@ -1045,6 +1045,13 @@ You can consider removing it if you were shadowing it in your project.
 (grid-block-migration-from-kitconcept-volto-blocks-grid-label)=
 
 ### Grid block migration from `@kitconcept/volto-blocks-grid`
+
+```{versionadded} Volto 17.0.0-alpha.16
+```
+
+```{seealso}
+{doc}`../blocks/core/grid`
+```
 
 The grid block was added to Volto in version 17.0.0-alpha.16.
 It is based on the `@kitconcept/volto-blocks-grid` add-on version 7.x.x.
