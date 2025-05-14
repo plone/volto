@@ -9,14 +9,14 @@ export type AddonReducersConfig = Record<string, Function>;
 
 export type AddonRoutesConfig = {
   path: string;
-  exact: boolean;
   component: React.ComponentType;
+  exact?: boolean;
 }[];
 
 export type AddonRoutesEntry = {
   path: string;
-  exact: boolean;
   component: React.ComponentType;
+  exact?: boolean;
 };
 
 export type ReactRouterRouteEntry =
