@@ -29,7 +29,7 @@ exports[`SearchInput > renders a search input component 1`] = `
         className="icon"
         dangerouslySetInnerHTML={
           {
-            "__html": "<polygon fill-rule="evenodd" points="27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18"/>",
+            "__html": "<path fill-rule="evenodd" d="M27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18z"/>",
           }
         }
         onClick={null}

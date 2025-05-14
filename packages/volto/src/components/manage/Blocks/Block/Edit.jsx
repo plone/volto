@@ -122,7 +122,7 @@ export class Edit extends Component {
    */
   render() {
     const { blocksConfig = config.blocks.blocksConfig } = this.props;
-    const { editable, type } = this.props;
+    const { editable, type, isContainer: parentIsContainer } = this.props;
 
     const disableNewBlocks = this.props.data?.disableNewBlocks;
 
@@ -198,6 +198,7 @@ export class Edit extends Component {
               {...this.props}
               blockNode={this.blockNode}
               data={this.props.data}
+              className={cx({ contained: parentIsContainer })}
             />
             {this.props.manage && (
               <SidebarPortal
