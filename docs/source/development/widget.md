@@ -329,7 +329,7 @@ To configure a new Volto widget follow these steps.
     };
     ```
 
-1.  To see the widget inside the `Sidebar` on the right of Volto UI, add this line:
+1.  To see the widget inside the `Sidebar` component on the right side of the Volto UI, add the following line inside the `(React.)Fragment` tag that is rendered.
 
     ```jsx
     <MyForm />
