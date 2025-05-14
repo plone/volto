@@ -1,1 +1,1 @@
-Refactor Toolbar component from class component to functional. @Tishasoumya-02
+Refactor Toolbar component from class component to functional @Tishasoumya-02
