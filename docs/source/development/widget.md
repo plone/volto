@@ -265,7 +265,7 @@ To configure a new Volto widget follow these steps.
     config.widgets.widget.toggle_widget = ToggleWidget;
     ```
 
-1.  Next, create the widget component file {file}`ToggleWidget.jsx` with these contents:
+1.  Next, create the widget component file {file}`ToggleWidget.jsx` with the following content.
 
     ```jsx
     import { Button } from 'semantic-ui-react';
