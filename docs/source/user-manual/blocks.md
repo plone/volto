@@ -15,6 +15,41 @@ Volto features the [Pastanaga UI](https://github.com/plone/pastanaga), allowing 
 The blocks editor allows you to add, modify, reorder, and delete blocks given your requirements.
 Blocks provide the user the ability to display content in a specific way, although they can also define behavior and have specific features.
 
+(autosave-label)=
+
+## Autosave
+
+Volto provides an autosave mechanism that automatically captures your ongoing edits as you work on a page or content item.
+
+Changes made in the blocks editor are periodically saved in the background to prevent data loss, even if the user navigates away or the browser unexpectedly closes.
+
+Autosave stores changes locally in your browser using [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage).
+These changes remain available until you explicitly click the {guilabel}`Save` button <img alt="Save icon" src="../_static/user-manual/blocks/save.svg" class="inline">, at which point they are persisted to the server and the local storage is cleared.
+
+Watch the video below for a quick demonstration.
+
+````{only} not text
+```{video} ../_static/user-manual/blocks/autosave-local.mp4
+:alt: Autosave
+```
+````
+
+### Autosave and edit conflicts
+
+If another user edits and saves the same page while you're still working on it, Volto detects the conflict between your autosaved version and the newer version saved on the server.
+
+In this case, when you return to the editor, Volto displays a message informing you that the page content has changed, but a previously autosaved version still exists.
+
+You will be prompted to choose whether you want to restore your autosaved version or continue with the newer version from the server.
+After making your choice, you can also undo that action.
+
+````{only} not text
+```{video} ../_static/user-manual/blocks/autosave-remote.mp4
+```
+````
+:alt: Autosave conflicts
+```
+
 
 (manage-blocks-label)=
 
