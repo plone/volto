@@ -253,7 +253,7 @@ See [Storybook](https://6.docs.plone.org/storybook) with available widgets.
 A custom widget is often used in Volto forms.
 To configure a new Volto widget follow these steps.
 
-1.  Add this import in the first line of {file}`index.js` file of the add-on to import the component that is the actual widget.
+1.  Add the following import as the first line in the file {file}`index.js` in the add-on to import the component of the actual widget.
 
     ```jsx
     import { ToggleWidget } from './ToggleWidget';
