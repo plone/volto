@@ -10,11 +10,11 @@ myst:
 
 # Create a route in Seven
 
-In Seven, routes are registered in the configuration registry via the add-ons.
+In Seven, you register routes in the configuration registry via your add-on.
 
 ### Conventions
 
-To promote clarity and modularity, it is recommended that **all route components in add-ons be placed in a {file}`routes/` directory** in your add-on.
+To promote clarity and modularity, **place all route components for your add-on in a {file}`routes` directory** at the root of your add-on.
 
 The `file` property in each route must be a **fully qualified module path**—for example, `@my-addon/routes/MyView.tsx`—so that the application can resolve and load the component correctly at runtime.
 
@@ -22,32 +22,33 @@ The `file` property in each route must be a **fully qualified module path**—fo
 
 See the {ref}`route-registration-api-reference` for the complete API reference.
 
-```{glossary}
 `type`
-    The type of route to create. It can be one of `route`, `index`, `layout`, or `prefix`.
+:   The type of route to create.
+    It can be one of `route`, `index`, `layout`, or `prefix`.
 
 `path`
-    The path for the route. It is a string that defines the URL pattern for the route.
+:   The path for the route.
+    It is a string that defines the URL pattern for the route.
 
 `file`
-    The fully qualified path to the component file that will be rendered for this route.
+:   The fully qualified path to the component file that will be rendered for this route.
     It is a string that specifies the location of the component file.
     It must be a valid module path that can be resolved at runtime.
 
 `options`
-    An optional object that can contain additional properties for the route.
+:   An optional object that can contain additional properties for the route.
     It can include properties like `id`, `index`, and `caseSensitive`.
 
 `children`
-    An optional array of child routes.
+:   An optional array of child routes.
     It is an array of route definitions that can be nested within the parent route.
 ```
 
 ### `route` – standard route
 
-Use the type `route` to define a route for a specific path.
-This will create a `/login` route that renders the component from `@plone/cmsui/routes/login.tsx`.
-We are specifying an `id` for the route, which is used to identify the route in the application.
+Use the route type `route` to define a route for a specific path.
+The following code example will create a `/login` route that renders the component from `@plone/cmsui/routes/login.tsx`.
+Specify an `id` for the route, which identifies the route in the application.
 Normally, React Router will assign an `id` based on the path, but you can override it with this option.
 
 ```ts
@@ -63,8 +64,8 @@ config.registerRoute({
 
 ### `layout` – layout with children
 
-Use the type `layout` to define shared page layouts for a set of routes.
-This will create two routes: `/home` and `/settings`, both of which will be rendered inside the layout component from `@my-addon/routes/layouts/DashboardLayout.tsx`.
+Use the route type `layout` to define shared page layouts for a set of routes.
+The following code example will create two routes—`/home` and `/settings`—both of which will be rendered inside the layout component from `@my-addon/routes/layouts/DashboardLayout.tsx`.
 They do not add a new segment to the URL.
 
 ```ts
@@ -88,7 +89,8 @@ config.registerRoute({
 
 ### `index` – default route in a context
 
-Rendered when no sub-route is matched. Must be placed in a `layout` or `prefix`.
+The `index` route type is rendered when no sub-route is matched.
+It must be nested as a child inside a parent route type of `layout` or `prefix`.
 This will create a default route for the `/blog` path, rendering the component from `@my-addon/routes/BlogHomePage.tsx`.
 It will be the default route when the user accesses `/blog` without specifying a subpath.
 
@@ -179,7 +181,8 @@ The above code defines the following.
 -   a wildcard route for any `/edit/*` subpath
 
 ```{note}
-In this example, both the `index` and `*` routes use the same file, because we want be reused in both scenarios, but this doesn't have to be the case always.
+In the above example, both the `index` and `route` route types use the same file.
+It's a convenient pattern, but one that might not always be useful.
 ```
 
 ### File structure of `@plone/cmsui` edit route
