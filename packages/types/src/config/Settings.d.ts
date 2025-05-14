@@ -41,7 +41,7 @@ export interface SettingsConfig {
   websockets: string | false;
   legacyTraverse: string | false;
   cookieExpires: number;
-  nonContentRoutes: string[];
+  nonContentRoutes: Array<string | RegExp>;
   richtextEditorSettings: unknown;
   richtextViewSettings: unknown;
   imageObjects: string[];
