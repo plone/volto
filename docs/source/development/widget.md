@@ -337,7 +337,8 @@ To configure a new Volto widget follow these steps.
 
     inside the `(React.)Fragment` tag that is rendered.
 
-Now, after restarting Volto, you can see the button the widget renders, click on it, and its text changes on each click.
+Now you can see the button that the widget renders.
+Click the button to toggle the text.
 You can position the `MyForm` component anywhere where it is visible and the user can interact with it.
 You can check other widgets included in Volto core under the widgets directory for more inspiration and possibilities of enhancing your widgets.
 
