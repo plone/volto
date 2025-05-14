@@ -359,21 +359,22 @@ import { useDispatch } from 'react-redux';
 import { setSidebarTab, setMetadataFocus } from '@plone/volto/actions';
 
 const MyComponent = (/* ... */) => {
-    // ...
-    const dispatch = useDispatch();
-    // ...
+  // ...
+  const dispatch = useDispatch();
+  // ...
 
-    return (
-        // ...
-        <button
-            onClick={() => {
-                dispatch(setSidebarTab(0));
-                dispatch(setMetadataFocus('ownership', 'allow_discussion'));
-            }}
-        >
-            This button will change the sidebar to the content form and focus ownership fieldset and the allow_discussion field
-        </button>
-        // ...
-    );
+  return (
+    // ...
+    <button
+      onClick={() => {
+        dispatch(setSidebarTab(0));
+        dispatch(setMetadataFocus("ownership", "allow_discussion"));
+      }}
+    >
+      This button will change the sidebar to the content form and focus
+      ownership fieldset and the allow_discussion field
+    </button>
+    // ...
+  );
 };
 ```
