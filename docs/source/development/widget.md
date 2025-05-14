@@ -305,27 +305,27 @@ To configure a new Volto widget follow these steps.
 
     ```jsx
     const MyForm = () => {
-        return (
-            <Form
-                schema={{
-                    fieldsets: [
-                        {
-                            id: 'default',
-                            title: 'Title',
-                            fields: ['toggle'],
-                        },
-                    ],
-                    properties: {
-                        toggle: {
-                            title: 'My toggle',
-                            widget: 'toggle_widget',
-                            default: 'On',
-                        },
-                    },
-                    required: [],
-                }}
-            />
-        );
+      return (
+        <Form
+          schema={{
+            fieldsets: [
+              {
+                id: "default",
+                title: "Title",
+                fields: ["toggle"],
+              },
+            ],
+            properties: {
+              toggle: {
+                title: "My toggle",
+                widget: "toggle_widget",
+                default: "On",
+              },
+            },
+            required: [],
+          }}
+        />
+      );
     };
     ```
 
