@@ -335,7 +335,11 @@ To configure a new Volto widget follow these steps.
     <MyForm />
     ```
 
-    inside the `(React.)Fragment` tag that is rendered.
+1.  Finally, restart Volto by pressing Ctrl-C inside the shell instance which runs it, then restart it with the following command.
+
+    ```shell
+    make frontend-start
+    ```
 
 Now you can see the button that the widget renders.
 Click the button to toggle the text.
