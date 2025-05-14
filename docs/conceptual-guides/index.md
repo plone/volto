@@ -12,9 +12,9 @@ myst:
 This section of the documentation contains conceptual guides for various aspects of Volto.
 
 ```{toctree}
-:hidden:
 :maxdepth: 2
 
 add-ons
+routing
 shadowing
 ```
