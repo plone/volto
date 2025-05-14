@@ -268,19 +268,18 @@ To configure a new Volto widget follow these steps.
 1.  Next, create the widget component file {file}`ToggleWidget.jsx` with the following content.
 
     ```jsx
-    import { Button } from 'semantic-ui-react';
-
+    import { Button } from "semantic-ui-react";
     export function ToggleWidget({ id, value, onChange }) {
-        return (
-            <Button
-                onClick={(e) => {
-                    e.preventDefault();
-                    onChange(id, value === 'On' ? 'Off' : 'On');
-                }}
-            >
-                Toggle me: {value}
-            </Button>
-        );
+      return (
+        <Button
+          onClick={(e) => {
+            e.preventDefault();
+            onChange(id, value === "On" ? "Off" : "On");
+          }}
+        >
+          Toggle me: {value}
+        </Button>
+      );
     }
 
     export default ToggleWidget;
