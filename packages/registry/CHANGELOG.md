@@ -8,6 +8,14 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.3 (2025-05-13)
+
+### Bugfix
+
+- Return properly in `getUtility` and `getUtilities` in case `type` or `name` is not set. @sneridagh [#7007](https://github.com/plone/volto/issues/7007)
+- Fixed `unRegisterSlotComponent` method. @sneridagh [#7016](https://github.com/plone/volto/issues/7016)
+- Remove the slot registration from the array if it is the last in `unRegisterSlotComponent`. @sneridagh [#7031](https://github.com/plone/volto/issues/7031)
+
 ## 3.0.0-alpha.2 (2025-04-12)
 
 ### Feature

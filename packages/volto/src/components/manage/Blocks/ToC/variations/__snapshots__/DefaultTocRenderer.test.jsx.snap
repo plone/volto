@@ -11,11 +11,8 @@ exports[`renders a default toc renderer component 1`] = `
     role="listitem"
   >
     <a
-      className={null}
       href="/#hello-this-is-a-sample-page"
       onClick={[Function]}
-      target={null}
-      title={null}
     >
       Hello this is a sample page
     </a>
@@ -29,11 +26,8 @@ exports[`renders a default toc renderer component 1`] = `
         role="listitem"
       >
         <a
-          className={null}
           href="/#test-level-3"
           onClick={[Function]}
-          target={null}
-          title={null}
         >
           Test level 3
         </a>
