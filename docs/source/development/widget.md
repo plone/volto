@@ -259,7 +259,7 @@ To configure a new Volto widget follow these steps.
     import { ToggleWidget } from './ToggleWidget';
     ```
 
-1.  Add this line before returning from `applyConfig` function inside the {file}`index.js` of the add-on to register the add-on component (widget).
+1.  Add the following line before returning from the `applyConfig` function inside the file {file}`index.js` in the add-on to register the widget add-on component.
 
     ```jsx
     config.widgets.widget.toggle_widget = ToggleWidget;
