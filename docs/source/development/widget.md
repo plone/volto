@@ -285,8 +285,11 @@ To configure a new Volto widget follow these steps.
     export default ToggleWidget;
     ```
 
-    You need to install `semantic-ui-react` as a dependency of your add-on before it will work.
-    You only need to `npm i semantic-ui-react`.
+1.  Install `semantic-ui-react` as a dependency of your add-on to make it work.
+
+    ```shell
+    npm i semantic-ui-react
+    ```
 
 1.  Using the component shadowing tehnique, inside a new directory of your add-on: {file}`src/customizations/components/manage/Sidebar/` create a file {file}`Sidebar.jsx` that shadows the Sidebar component inside the core Volto corresponding file.
 Copy all the file contents of original {file}`Sidebar.jsx` to the new {file}`Sidebar.jsx`.
