@@ -295,7 +295,7 @@ To configure a new Volto widget follow these steps.
      Copy the file in Volto core {file}`components/manage/Sidebar/Sidebar.jsx` to the directory you just created.
      This file shadows the `Sidebar` component inside the corresponding core Volto file.
 
-1.  Inside the new {file}`Sidebar.jsx`, add this import at the top:
+1.  Inside the new {file}`src/customizations/components/manage/Sidebar/Sidebar.jsx`, insert the following import at the top.
 
     ```jsx
     import { Form } from '@plone/volto/components/manage/Form';
