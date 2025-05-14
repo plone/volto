@@ -175,10 +175,10 @@ config.registerRoute({
 
 The above code defines the following.
 
--   a top-level layout component from {file}`@plone/cmsui/routes/layout.tsx`
--   a `prefix` path `edit` that groups all `/edit/*` routes
--   an `index` route for `/edit`
--   a wildcard route for any `/edit/*` subpath
+-   a top-level `layout` route type using the component from {file}`@plone/cmsui/routes/layout.tsx`
+-   a `prefix` route type whose path is `edit`; is a child of the `layout` route type; and is a parent, grouping all `/edit/*` paths, of two children route types
+-   an `index` route type as a child of `/edit`
+-   a `route` route type as a child of `/edit`, where, by virtue of its wildcard path (`*`), resolves all non-index subpaths of `/edit/*`
 
 ```{note}
 In the above example, both the `index` and `route` route types use the same file.
