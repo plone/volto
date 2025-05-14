@@ -291,7 +291,9 @@ To configure a new Volto widget follow these steps.
     npm i semantic-ui-react
     ```
 
-1.  Using the component shadowing tehnique, inside a new directory of your add-on: {file}`src/customizations/components/manage/Sidebar/` create a file {file}`Sidebar.jsx` that shadows the Sidebar component inside the core Volto corresponding file.
+1.  Using the component shadowing technique, create a directory in your add-on {file}`src/customizations/components/manage/Sidebar/`.
+     Copy the file in Volto core {file}`components/manage/Sidebar/Sidebar.jsx` to the directory you just created.
+     This file shadows the `Sidebar` component inside the corresponding core Volto file.
 Copy all the file contents of original {file}`Sidebar.jsx` to the new {file}`Sidebar.jsx`.
 
 1.  Inside the new {file}`Sidebar.jsx`, add this import at the top:
