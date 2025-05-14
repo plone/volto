@@ -177,8 +177,6 @@ class Form extends Component {
       schema?.fieldsets ? schema.fieldsets.map((fieldset) => fieldset.id) : [],
     );
 
-    //this.props.onCancelDraft();
-
     if (!props.isEditForm) {
       // It's a normal (add form), get defaults from schema
       formData = {

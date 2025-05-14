@@ -207,11 +207,11 @@ export default function withSaveAsDraft(options) {
       const intl = useIntl();
       const location = useLocation();
       const id = getFormId(props, location);
-      const ref = React.useRef();
-      const ref2 = React.useRef();
+      const timmeRef = React.useRef();
+      const timmerForDeletionRef = React.useRef();
       const api = React.useMemo(
-        () => draftApi(id, schema, ref, ref2, intl),
-        [id, schema, ref, ref2, intl],
+        () => draftApi(id, schema, timmeRef, timmerForDeletionRef, intl),
+        [id, schema, timmeRef, timmerForDeletionRef, intl],
       );
 
       return (
