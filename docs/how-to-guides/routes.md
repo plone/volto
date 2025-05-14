@@ -12,37 +12,40 @@ myst:
 
 In Seven, you register routes in the configuration registry via your add-on.
 
-### Conventions
+## Conventions
 
 To promote clarity and modularity, **place all route components for your add-on in a {file}`routes` directory** at the root of your add-on.
 
 The `file` property in each route must be a **fully qualified module path**—for example, `@my-addon/routes/MyView.tsx`—so that the application can resolve and load the component correctly at runtime.
 
-### Route definition
+## Route definition
 
+This section describes the parts that comprise and define a route.
 See the {ref}`route-registration-api-reference` for the complete API reference.
 
 `type`
 :   The type of route to create.
     It can be one of `route`, `index`, `layout`, or `prefix`.
+    It is required.
 
 `path`
 :   The path for the route.
     It is a string that defines the URL pattern for the route.
+    Either `path` or `file`, or both, is required.
 
 `file`
 :   The fully qualified path to the component file that will be rendered for this route.
     It is a string that specifies the location of the component file.
     It must be a valid module path that can be resolved at runtime.
+    Either `path` or `file`, or both, is required.
 
 `options`
 :   An optional object that can contain additional properties for the route.
-    It can include properties like `id`, `index`, and `caseSensitive`.
+    It can have properties, such as `id`, `index`, or `caseSensitive`.
 
 `children`
 :   An optional array of child routes.
     It is an array of route definitions that can be nested within the parent route.
-```
 
 ### `route` – standard route
 
@@ -206,6 +209,8 @@ In `@plone/cmsui/`, each of the files shown in the above diagram performs a spec
 (route-registration-api-reference)=
 
 ## Route registration API reference
+
+The following type describes the API of route registration.
 
 ```ts
 export type ReactRouterRouteEntry =

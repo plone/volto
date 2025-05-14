@@ -12,7 +12,6 @@ myst:
 This section of the documentation contains how-to guides for developing with Seven.
 
 ```{toctree}
-:hidden:
 :maxdepth: 2
 
 routes
