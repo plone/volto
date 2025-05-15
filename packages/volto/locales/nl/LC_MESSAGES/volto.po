@@ -82,7 +82,7 @@ msgid "Add"
 msgstr "Toevoegen"
 
 #. Default: "Add"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Add (object list)"
 msgstr "Toevoegen"
 
@@ -698,7 +698,7 @@ msgid "Code"
 msgstr "Code"
 
 #. Default: "Collapse item"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Collapse item"
 msgstr "Item inklappen"
 
@@ -1292,7 +1292,7 @@ msgid "Embed code error, please follow the instructions and try again."
 msgstr "Insluitcode fout, volg de instructies en probeer opnieuw aub."
 
 #. Default: "Empty object list"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Empty object list"
 msgstr "Lege objectenlijst"
 
@@ -2946,7 +2946,7 @@ msgid "Remove element {index}"
 msgstr "Verwijder element {index}"
 
 #. Default: "Remove item"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Remove item"
 msgstr "Verwijder item"
 
@@ -3406,7 +3406,7 @@ msgid "Show groups of users below"
 msgstr "Gebruikersgroepen hieronder tonen"
 
 #. Default: "Show item"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Show item"
 msgstr "Item tonen"
 
