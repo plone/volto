@@ -292,8 +292,8 @@ To configure a new Volto widget follow these steps.
     ```
 
 1.  Using the component shadowing technique, create a directory in your add-on {file}`src/customizations/components/manage/Sidebar/`.
-     Copy the file in Volto core {file}`components/manage/Sidebar/Sidebar.jsx` to the directory you just created.
-     This file shadows the `Sidebar` component inside the corresponding core Volto file.
+    Copy the file in Volto core {file}`components/manage/Sidebar/Sidebar.jsx` to the directory you just created.
+    This file shadows the `Sidebar` component inside the corresponding core Volto file.
 
 1.  Inside the new {file}`src/customizations/components/manage/Sidebar/Sidebar.jsx`, insert the following import at the top.
 
@@ -335,7 +335,7 @@ To configure a new Volto widget follow these steps.
     <MyForm />
     ```
 
-1.  Finally, restart Volto by pressing Ctrl-C inside the shell instance which runs it, then restart it with the following command.
+1.  Finally, restart Volto by pressing {kbd}`Ctrl-C` inside the active frontend shell session, then restart it with the following command.
 
     ```shell
     make frontend-start
@@ -344,7 +344,8 @@ To configure a new Volto widget follow these steps.
 Now you can see the button that the widget renders.
 Click the button to toggle the text.
 You can position the `MyForm` component anywhere where it is visible and the user can interact with it.
-You can check other widgets included in Volto core under the widgets directory for more inspiration and possibilities of enhancing your widgets.
+
+You can experiment with other widgets included in Volto core under the {file}`Widgets` directory for more inspiration and possibilities of enhancing your widgets.
 
 ## Sidebar
 
