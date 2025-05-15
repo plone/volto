@@ -131,7 +131,10 @@ const UnconnectedImageInput = (props) => {
       const file = eventOrFile.target
         ? eventOrFile.target.files[0]
         : eventOrFile[0];
-      if (!validateFileUploadSize(file, intl.formatMessage)) return;
+      if (!validateFileUploadSize(file, intl.formatMessage)) {
+        setUploading(false);
+        return;
+      }
       readAsDataURL(file).then((fileData) => {
         const fields = fileData.match(/^data:(.*);(.*),(.*)$/);
         dispatch(
@@ -196,10 +199,10 @@ const UnconnectedImageInput = (props) => {
         noClick
         accept="image/*"
         onDrop={(acceptedFiles) => {
+          setDragging(false);
           if (acceptedFiles.length > 0) {
             handleUpload(acceptedFiles);
           } else {
-            setDragging(false);
             toast.error(
               <Toast
                 error

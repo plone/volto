@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.0 (2025-04-12)
+
+### Bugfix
+
+- Call `initialValue` consistently by passing `null` instead of `{}` to `blocksConfig`. @Abhishek-17h [#6952](https://github.com/plone/volto/issues/6952)
+
 ## 18.2.3 (2025-03-07)
 
 ### Bugfix
