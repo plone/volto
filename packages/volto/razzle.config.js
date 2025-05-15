@@ -422,11 +422,9 @@ const defaultModify = ({
         config.devServer.devMiddleware.publicPath = prefixPath;
       else config.devServer.publicPath += `${prefixPath.slice(1)}/`;
     }
-    const pp = config.output.publicPath;
-
-    //check if publicPath already has the prefixPath
-    if (pp.indexOf(prefixPath) === -1)
-      config.output.publicPath = `${pp}${prefixPath.slice(1)}/`;
+    const publicPath = config.output.publicPath;
+    if (publicPath.indexOf(prefixPath) === -1)
+      config.output.publicPath = `${publicPath}${prefixPath.slice(1)}/`;
   }
   return config;
 };
