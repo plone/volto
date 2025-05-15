@@ -58,6 +58,7 @@ import UrlViewWidget from '@plone/volto/components/theme/Widgets/UrlWidget';
 import ImageWidget from '@plone/volto/components/manage/Widgets/ImageWidget';
 import HiddenViewWidget from '@plone/volto/components/manage/Widgets/HiddenWidget';
 import StaticTextViewWidget from '@plone/volto/components/manage/Widgets/StaticTextWidget';
+import objectListValidator from '@plone/volto/components/manage/Widgets/ObjectListWidget/objectListValidator';
 
 // Widgets mapping
 export const widgetMapping = {
@@ -164,10 +165,29 @@ export const widgetMapping = {
   },
 };
 
+export const widgetValidators = {
+  object_list: {
+    method: objectListValidator,
+    name: 'object_list_validator_iternal_items',
+  },
+};
+
 // Default Widget
 export const defaultWidget = TextWidget;
 
 export function installDefaultWidgets(config) {
   config.widgets = widgetMapping;
   config.widgets.default = defaultWidget;
+
+  // Register custom validators widgets
+  Object.entries(widgetValidators).forEach(([key, { method, name }]) => {
+    config.registerUtility({
+      name: name,
+      type: 'custom-validator-widget',
+      dependencies: {
+        widget: key,
+      },
+      method,
+    });
+  });
 }
