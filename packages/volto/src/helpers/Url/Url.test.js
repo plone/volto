@@ -19,6 +19,8 @@ import {
   normaliseMail,
   normalizeTelephone,
   flattenScales,
+  addPrefixPath,
+  stripPrefixPath,
 } from './Url';
 
 beforeEach(() => {
@@ -530,6 +532,66 @@ describe('Url', () => {
         },
         size: 319364,
         width: 1182,
+      });
+    });
+  });
+
+  describe('Prefix tests', () => {
+    beforeEach(() => {
+      settings.prefixPath = '/site';
+    });
+    describe('addPrefixPath', () => {
+      it('adds prefix path to internal URLs', () => {
+        expect(addPrefixPath('/some-page')).toBe('/site/some-page');
+        expect(addPrefixPath('/news/article')).toBe('/site/news/article');
+      });
+
+      it('does not add prefix path to URLs that already have it', () => {
+        expect(addPrefixPath('/site/some-page')).toBe('/site/some-page');
+      });
+
+      it('does not add prefix path to external URLs', () => {
+        expect(addPrefixPath('https://example.com/page')).toBe(
+          'https://example.com/page',
+        );
+      });
+
+      it('handles empty prefix path', () => {
+        settings.prefixPath = '';
+        expect(addPrefixPath('/some-page')).toBe('/some-page');
+      });
+
+      it('handles undefined prefix path', () => {
+        settings.prefixPath = undefined;
+        expect(addPrefixPath('/some-page')).toBe('/some-page');
+      });
+    });
+
+    describe('stripPrefixPath', () => {
+      beforeEach(() => {
+        settings.prefixPath = '/site';
+      });
+      it('removes prefix path from URLs that have it', () => {
+        expect(stripPrefixPath('/site/some-page')).toBe('/some-page');
+        expect(stripPrefixPath('/site/news/article')).toBe('/news/article');
+      });
+
+      it('leaves URLs unchanged if they do not have the prefix', () => {
+        expect(stripPrefixPath('/other/some-page')).toBe('/other/some-page');
+      });
+
+      it('handles the case where URL is exactly the prefix path', () => {
+        expect(stripPrefixPath('/site')).toBe('');
+      });
+
+      it('handles empty prefix path', () => {
+        settings.prefixPath = '';
+        expect(stripPrefixPath('/some-page')).toBe('/some-page');
+      });
+
+      it('handles undefined prefix path', () => {
+        settings.prefixPath = undefined;
+        expect(stripPrefixPath('/some-page')).toBe('/some-page');
       });
     });
   });

@@ -157,14 +157,11 @@ packages/providers/dist: $(shell find packages/providers/src -type f)
 packages/helpers/dist: $(shell find packages/helpers/src -type f)
 	pnpm build:helpers
 
-packages/react-router/dist: $(shell find packages/react-router/src -type f)
-	pnpm build:react-router
-
 .PHONY: build-deps
 build-deps: packages/registry/dist ## Build dependencies
 
 .PHONY: build-all-deps
-build-all-deps: packages/registry/dist packages/components/dist packages/client/dist packages/providers/dist packages/react-router/dist packages/helpers/dist ## Build all dependencies
+build-all-deps: packages/registry/dist packages/components/dist packages/client/dist packages/providers/dist packages/helpers/dist ## Build all dependencies
 
 .PHONY: i18n
 i18n: ## Converts your po files into json to translate volto frontend
@@ -413,28 +410,6 @@ acceptance-server-detached-start: ## Starts test acceptance server main fixture 
 .PHONY: acceptance-server-detached-stop
 acceptance-server-detached-stop: ## Stop test acceptance server main fixture in detached mode (daemon)
 	docker kill plone-client-acceptance-server
-
-######### Seven acceptance tests
-
-.PHONY: seven-acceptance-frontend-dev-start
-seven-acceptance-frontend-dev-start: ## Start acceptance frontend in development mode for Seven
-	$(MAKE) -C "./packages/seven/" acceptance-frontend-dev-start
-
-.PHONY: seven-acceptance-frontend-prod-start
-seven-acceptance-frontend-prod-start:: ## Start acceptance frontend in production mode for Seven
-	$(MAKE) -C "./packages/seven/" acceptance-frontend-prod-start
-
-.PHONY: seven-acceptance-test
-seven-acceptance-test: ## Start Cypress in interactive mode for Seven
-	$(MAKE) -C "./packages/seven/" acceptance-test
-
-.PHONY: seven-ci-acceptance-test
-seven-ci-acceptance-test: ## Run cypress tests in headless mode for CI for Seven
-	$(MAKE) -C "./packages/seven/" ci-acceptance-test
-
-.PHONY: seven-ci-acceptance-test-run-all
-seven-ci-acceptance-test-run-all: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode for Seven
-	$(MAKE) -C "./packages/seven/" ci-acceptance-test-run-all
 
 # include local overrides if present
 -include Makefile.local

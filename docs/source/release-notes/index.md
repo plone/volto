@@ -17,6 +17,92 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.0 (2025-04-12)
+
+### Breaking
+
+- The `getVocabulary` and `getQuerystring` actions now fetch vocabularies in
+  the context of the current content item, using the vocabulary URLs provided
+  by the backend.
+  Previously they were always fetched at the Plone site root.
+  @davisagli [#3216](https://github.com/plone/volto/issues/3216)
+- Removed Semantic UI CSS declaration `overflow-x: hidden` from the `body` tag. @sneridagh [#6513](https://github.com/plone/volto/issues/6513)
+- Make the title block non required. @narcis2005 [#6792](https://github.com/plone/volto/issues/6792)
+- Removed support for loading config from project. @sneridagh
+
+  Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html)
+  for more information. [#6842](https://github.com/plone/volto/issues/6842)
+- Fixed redirection logic which now checks for edit permission for deciding wether to redirect or render the link view @pnicolli [#6843](https://github.com/plone/volto/issues/6843)
+- Removed `@plone/volto-testing`, `@plone/volto-guillotina`, `@plone/generator-volto` from the monorepo. @sneridagh [#6848](https://github.com/plone/volto/issues/6848)
+
+### Feature
+
+- Complete missing german translations. @ksuess [#6005](https://github.com/plone/volto/issues/6005)
+- Add hidden widget. @robgietema
+  Add static text widget. @robgietema
+  Add time widget. @robgietema
+  Add radio group widget. @robgietema
+  Add checkbox group widget. @robgietema
+  Add taken slugs to slugify helper. @robgietema
+  Add filter choices, additional choices and sort to select widget. @robgietema
+  Add max size and accept type checks to file widget. @robgietema
+  Fix bug with pressing enter in blocks form that events gets bubbled from modal to blocks area. @robgietema
+  Add option to pass custom widget `config` to field component. @robgietema
+  Add optional widgets `config` to form component. @robgietema
+  Add option to override the form component and the buttons in the form component. @robgietema
+  Add option to override cancel label in form. @robgietema
+  Add option to choose between icon and text buttons in the form component. @robgietema
+  Add option to change form data from outside of the form in the modal form. @robgietema
+  Move field factory properties per field to a utility so it can be registered from other packages. @robgietema
+  Move field factory initial data per field to a utility so it can be registered from other packages. @robgietema
+  Add filter factory option to schema widget. @robgietema
+  Add additional factory option to schema widget. @robgietema
+  Add option to allow editing the id of the fields in the schema widget. @robgietema
+  Fix bug when multiple fields were added with the same id in the schema widget. @robgietema
+  Add option to select the shortname as initial data for a new field in the schema widget. @robgietema
+  Change properties form on the fly in the add field modal when changing the factory. @robgietema
+  Fix bug where error messages where not rendered in the form because a string was expected. @robgietema
+  Don't show request error multiple times when a form is validated. @robgietema
+  Fix a bug where the video block schema was not used for validation. @robgietema [#6370](https://github.com/plone/volto/issues/6370)
+- Add Russian translation in Volto. @toropok [#6874](https://github.com/plone/volto/issues/6874)
+- Enhance the `ImageInput` component to only accept image files. [@jnptk] [#6926](https://github.com/plone/volto/issues/6926)
+- Fix translations default of ContentsDeleteModal: 'linkintegrity: delete' -> 'delete' if no link to break. @ksuess [#6964](https://github.com/plone/volto/issues/6964)
+- Use Plone 6.1.1 final. @sneridagh 
+
+### Bugfix
+
+- Fixed horizontal drag and drop placeholder. Now it appears behind the next element, and if it is the last element, it highlights the whole draggable area. Vertical placeholder remained untouched. @Narcis2005 [#4405](https://github.com/plone/volto/issues/4405)
+- Fixed Makefile to use `SITE_DEFAULT_LANGUAGE` instead of `LANGUAGE` for backend Docker setup. This aligns with plone/plone-backend#170 changes and resolves conflicts with the OS `LANGUAGE` environment variable. @boss6825 [#6747](https://github.com/plone/volto/issues/6747)
+- Improved error handling in the Form component to display the title of the error field in the Toast. This ensures that users see a more descriptive and clear error message when a field is invalid. @alexandreIFB [#6833](https://github.com/plone/volto/issues/6833)
+- Fix error when saving content with ObjectBrowserNav open. @wesleybl [#6845](https://github.com/plone/volto/issues/6845)
+- Fix the toolbar icon for the back navigation in the contact form. @kittauri [#6852](https://github.com/plone/volto/issues/6852)
+- Check if the destination (build public directory) exists before trying to create it in AfterBuildPlugin when consolidating `public` folders from add-ons. @sneridagh [#6853](https://github.com/plone/volto/issues/6853)
+- A11y: Add aria-label for search and cancel buttons for the input in the search block. @Wagner3UB [#6859](https://github.com/plone/volto/issues/6859)
+- Prevent submit form from ImageWidget. @giuliaghisini [#6879](https://github.com/plone/volto/issues/6879)
+- Fixed merge public folder from addons regression. @reebalazs @sneridagh [#6919](https://github.com/plone/volto/issues/6919)
+- Fixed regression on brown bag minor version of `@storybook/addon-webpack5-compiler-babel`. @sneridagh [#6930](https://github.com/plone/volto/issues/6930)
+- Call `initialValue` consistently by passing `null` instead of `{}` to `blocksConfig`. @Abhishek-17h [#6952](https://github.com/plone/volto/issues/6952)
+
+### Internal
+
+- Use `Image` from `@plone/volto/components/theme/Image/Image` instead of `semantic-ui-react`. @wesleybl [#6754](https://github.com/plone/volto/issues/6754)
+- Added a CI action to mark stale issues and PRs. @pnicolli [#6875](https://github.com/plone/volto/issues/6875)
+- Make the Cypress `getSlateEditorAndType` and `getSlateEditorSelectorAndType` commands more robust, avoiding timeouts. @wesleybl [#6957](https://github.com/plone/volto/issues/6957)
+- Fixes Cypress "Index Text Block" test. @wesleybl [#6965](https://github.com/plone/volto/issues/6965)
+- Fix Cypress "Test Yearly recurrence" test. @wesleybl [#6971](https://github.com/plone/volto/issues/6971)
+- Add eslint rule to avoid importing `Image` from `semantic-ui-react`. @wesleybl [#6974](https://github.com/plone/volto/issues/6974)
+- Removes make commands in root of repository whose packages no longer exist. @wesleybl [#6975](https://github.com/plone/volto/issues/6975)
+
+### Documentation
+
+- Fix typo in Appextras documentation. @fredvd [#6083](https://github.com/plone/volto/issues/6083)
+- Changed `LANGUAGE` to `SITE_DEFAULT_LANGUAGE` in documentation examples to align with plone/plone-backend#170 changes. @boss6825 [#6747](https://github.com/plone/volto/issues/6747)
+- Add documentation to configure editor settings to not reformat MyST `.md` files. @stevepiercy. [#6893](https://github.com/plone/volto/issues/6893)
+- Revert reformatting of MyST. @stevepiercy [#6894](https://github.com/plone/volto/issues/6894)
+- Move includes from `plone/documentation` to `plone/volto`. @stevepiercy [#6917](https://github.com/plone/volto/issues/6917)
+- Move _hardware-requirements.md from `plone/documentation` to `plone/volto`. @stevepiercy [#6918](https://github.com/plone/volto/issues/6918)
+- Remove duplicate configuration item `html_title`. @stevepiercy [#6933](https://github.com/plone/volto/issues/6933)
+
 ## 18.10.1 (2025-03-14)
 
 ### Bugfix
@@ -1860,7 +1946,7 @@ myst:
 - (FIX): put padding so the text is not clipped #5305 @dobri1408 [#5305](https://github.com/plone/volto/issues/5305)
 - Fix compare translations view @sneridagh [#5327](https://github.com/plone/volto/issues/5327)
 - Fix DatetimeWidget on FF, the button default if no type is set is sending the form. @sneridagh
-  See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#formmethod [#5343](https://github.com/plone/volto/issues/5343)
+  See https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#formmethod [#5343](https://github.com/plone/volto/issues/5343)
 
 ### Internal
 

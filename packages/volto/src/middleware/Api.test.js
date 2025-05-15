@@ -282,4 +282,51 @@ describe('api middleware helpers', () => {
       '/de/mypage?expand=navigation&expand.navigation.coolness=1&expand.navigation.depth=3&someotherquery=1&someotherquery=2',
     );
   });
+
+  it('addExpandersToPath - inherit expander merged using querystring as a function', () => {
+    config.settings.apiExpanders = [
+      {
+        match: '/',
+        GET_CONTENT: ['navigation'],
+        querystring: {
+          'expand.navigation.depth': 3,
+          'expand.navigation.coolness': 1,
+        },
+      },
+      {
+        match: '/',
+        GET_CONTENT: ['inherit'],
+        querystring: {
+          'expand.inherit.behaviors':
+            'voltolighttheme.header,voltolighttheme.theme,voltolighttheme.footer',
+        },
+      },
+      {
+        match: '/',
+        GET_CONTENT: ['inherit'],
+        querystring: (config, querystring) => {
+          if (querystring['expand.inherit.behaviors']) {
+            return {
+              'expand.inherit.behaviors': querystring[
+                'expand.inherit.behaviors'
+              ].concat(',', 'plonegovbr.socialmedia.settings'),
+            };
+          } else {
+            return {
+              'expand.inherit.behaviors': 'plonegovbr.socialmedia.settings',
+            };
+          }
+        },
+      },
+    ];
+
+    const result = addExpandersToPath(
+      '/de/mypage?someotherquery=1&someotherquery=2',
+      GET_CONTENT,
+    );
+
+    expect(result).toEqual(
+      '/de/mypage?expand=navigation,inherit&expand.inherit.behaviors=voltolighttheme.header,voltolighttheme.theme,voltolighttheme.footer,plonegovbr.socialmedia.settings&expand.navigation.coolness=1&expand.navigation.depth=3&someotherquery=1&someotherquery=2',
+    );
+  });
 });
