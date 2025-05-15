@@ -414,6 +414,18 @@ const defaultModify = ({
         ]
       : [];
 
+  //prefix-path
+  const prefixPath = process.env.RAZZLE_PREFIX_PATH || '';
+  if (prefixPath) {
+    if (target === 'web' && dev) {
+      if (config.devServer.devMiddleware)
+        config.devServer.devMiddleware.publicPath = prefixPath;
+      else config.devServer.publicPath += `${prefixPath.slice(1)}/`;
+    }
+    const publicPath = config.output.publicPath;
+    if (publicPath.indexOf(prefixPath) === -1)
+      config.output.publicPath = `${publicPath}${prefixPath.slice(1)}/`;
+  }
   return config;
 };
 
