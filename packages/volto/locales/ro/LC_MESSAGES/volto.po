@@ -84,7 +84,7 @@ msgid "Add"
 msgstr "Adăugare"
 
 #. Default: "Add"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Add (object list)"
 msgstr "Adăugare (listă de obiecte)"
 
@@ -700,7 +700,7 @@ msgid "Code"
 msgstr "Cod"
 
 #. Default: "Collapse item"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Collapse item"
 msgstr "Restrângeți elementul"
 
@@ -1294,7 +1294,7 @@ msgid "Embed code error, please follow the instructions and try again."
 msgstr "Eroare de cod integrat, urmați instrucțiunile și încercați din nou."
 
 #. Default: "Empty object list"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Empty object list"
 msgstr "Goliți lista de obiecte"
 
@@ -2948,7 +2948,7 @@ msgid "Remove element {index}"
 msgstr "Șterge elementul {index}"
 
 #. Default: "Remove item"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Remove item"
 msgstr "Eliminați elementul"
 
@@ -3408,7 +3408,7 @@ msgid "Show groups of users below"
 msgstr "Afișează grupurile de utilizatori de mai jos"
 
 #. Default: "Show item"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Show item"
 msgstr "Afișează elementul"
 

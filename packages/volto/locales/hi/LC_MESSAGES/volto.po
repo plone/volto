@@ -78,7 +78,7 @@ msgid "Add"
 msgstr "जोड़े"
 
 #. Default: "Add"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Add (object list)"
 msgstr "जोड़े (वस्तु सूची)"
 
@@ -694,7 +694,7 @@ msgid "Code"
 msgstr "कोड"
 
 #. Default: "Collapse item"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Collapse item"
 msgstr "आइटम को संकुचित करें"
 
@@ -1288,7 +1288,7 @@ msgid "Embed code error, please follow the instructions and try again."
 msgstr "एम्बेड कोड त्रुटि, कृपया निर्देशों का पालन करें और पुनः प्रयास करें।"
 
 #. Default: "Empty object list"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Empty object list"
 msgstr "खाली ऑब्जेक्ट सूची"
 
@@ -2942,7 +2942,7 @@ msgid "Remove element {index}"
 msgstr "आइटम हटाएं {index}"
 
 #. Default: "Remove item"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Remove item"
 msgstr "आइटम हटाएं"
 
@@ -3402,7 +3402,7 @@ msgid "Show groups of users below"
 msgstr "नीचे उपयोगकर्ताओं के समूह दिखाएं"
 
 #. Default: "Show item"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Show item"
 msgstr "आइटम दिखाएं"
 

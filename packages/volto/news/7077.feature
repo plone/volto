@@ -1,0 +1,1 @@
+Added support for `custom-validator-widget` registration, enabling more flexible validation structures for complex widgets. @alexandreIFB

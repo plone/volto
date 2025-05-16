@@ -84,7 +84,7 @@ msgid "Add"
 msgstr "添加"
 
 #. Default: "Add"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Add (object list)"
 msgstr "添加（对象列表）"
 
@@ -700,7 +700,7 @@ msgid "Code"
 msgstr "代码"
 
 #. Default: "Collapse item"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Collapse item"
 msgstr "崩溃的项目"
 
@@ -1294,7 +1294,7 @@ msgid "Embed code error, please follow the instructions and try again."
 msgstr "嵌入代码错误，请按照说明重试"
 
 #. Default: "Empty object list"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Empty object list"
 msgstr "空的对象列表"
 
@@ -2948,7 +2948,7 @@ msgid "Remove element {index}"
 msgstr ""
 
 #. Default: "Remove item"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Remove item"
 msgstr "删除条目"
 
@@ -3408,7 +3408,7 @@ msgid "Show groups of users below"
 msgstr "显示用户的组"
 
 #. Default: "Show item"
-#: components/manage/Widgets/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
 msgid "Show item"
 msgstr "显示条目"
 

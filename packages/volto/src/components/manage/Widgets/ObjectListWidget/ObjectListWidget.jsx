@@ -76,6 +76,7 @@ const ObjectListWidget = (props) => {
     onChange,
     schemaExtender,
     schemaName,
+    error,
   } = props;
 
   // This allows to use a `schemaName` prop defined as source of the schema
@@ -241,6 +242,7 @@ const ObjectListWidget = (props) => {
                       id={`${id}-${index}`}
                       key={`ow-${id}-${index}`}
                       block={block}
+                      errors={error?.internalErrors?.[0]?.[childId]}
                       schema={
                         schemaExtender
                           ? schemaExtender(schema, child, intl)
