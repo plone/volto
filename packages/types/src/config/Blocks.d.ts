@@ -54,7 +54,7 @@ export interface BlockConfigBase {
   /**
    * The category of the block
    */
-  category: string;
+  category?: string;
   /**
    * The model of the block
    */
