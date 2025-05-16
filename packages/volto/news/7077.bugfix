@@ -1,1 +1,1 @@
-fixed validation in `ObjectListWidget` to correctly validate nested object schemas in forms. @alexandreIFB
+Fixed validation in `ObjectListWidget` to correctly validate nested object schemas in forms. @alexandreIFB
