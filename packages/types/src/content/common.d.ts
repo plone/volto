@@ -53,7 +53,8 @@ export type Image = {
   download: string;
   filename: string;
   height: number;
-  scales: {
+  scales: Partial<{
+    [key: string]: ImageScale;
     great: ImageScale;
     huge: ImageScale;
     icon: ImageScale;
@@ -64,7 +65,7 @@ export type Image = {
     teaser: ImageScale;
     thumb: ImageScale;
     title: ImageScale;
-  };
+  }>;
   size: number;
   width: number;
 };
