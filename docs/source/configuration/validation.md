@@ -287,9 +287,10 @@ You can override a validator in your add-on in the same way as any other compone
 You can redefine them using the same `dependencies` and provide your own validator.
 
 
-### Custom Widget validators
+### Custom widget validators
 
-Custom widget validators provide more advanced validation capabilities, especially useful for complex widgets that contain nested data structures. These validators use the `custom-validator-widget` type and can return structured validation information.
+Custom widget validators provide more advanced validation capabilities, especially useful for complex widgets that contain nested data structures.
+These validators use the `custom-validator-widget` type and can return structured validation information.
 
 ```ts
 config.registerUtility({
@@ -300,9 +301,12 @@ config.registerUtility({
 })
 ```
 
-A custom widget validator can return `null` when there are no validation errors, or any data structure when errors are found. The returned error data is stored in the `internalErrors` property of the field's error object. The structure of this data is flexible and can be designed according to the specific needs of the widget - the widget must be prepared to handle the format that the validator returns.
+A custom widget validator can return `null` when there are no validation errors, or any data structure when errors are found.
+The returned error data is stored in the `internalErrors` property of the field's error object.
+The structure of this data is flexible and can be designed according to the specific needs of the widget.
+The widget must be prepared to handle the format that the validator returns.
 
-Example of a custom widget validator for validating lists of objects:
+The following code is an example of a custom widget validator for validating lists of objects.
 
 ```ts
 export const objectListValidator = ({ value, field, formatMessage }) => {
@@ -333,7 +337,8 @@ export const objectListValidator = ({ value, field, formatMessage }) => {
 };
 ```
 
-When the FormValidation system encounters errors from a custom widget validator, it stores them in the `internalErrors` property of the field's error object, allowing the widget to handle them appropriately. The widget implementation must be specifically designed to read and process these `internalErrors`, as they may have a different structure than standard field validation errors.
+When the `FormValidation` helper encounters errors from a custom widget validator, it stores them in the `internalErrors` property of the field's error object, allowing the widget to handle them appropriately.
+The widget implementation must be specifically designed to read and process these `internalErrors`, as they may have a different structure than standard field validation errors.
 
 
 ## Signature of a validator
