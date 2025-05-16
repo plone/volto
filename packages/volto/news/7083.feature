@@ -1,1 +1,1 @@
-add isClearable prop to `SelectWidget`, allowing configuration of whether the select input can be cleared by the user. @alexandreIFB
+Add isClearable prop to `SelectWidget`, allowing configuration of whether the select input can be cleared by the user. @alexandreIFB
