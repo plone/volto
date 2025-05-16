@@ -1,5 +1,5 @@
 import type { Content } from '../content';
-import type { BlockViewProps, BlockEditProps } from '../blocks';
+import type { BlockViewProps, BlockEditProps, BlocksFormData } from '../blocks';
 import type { IntlShape } from '../i18n';
 import { User } from '../services';
 import { StyleDefinition } from '../blocks';
@@ -78,6 +78,19 @@ export interface BlockConfigBase {
     props: unknown;
     intl: IntlShape;
   }) => Record<string, unknown>;
+  dataAdapter?: ({
+    block,
+    data,
+    id,
+    onChangeBlock,
+    value,
+  }: {
+    block: string;
+    data: BlocksFormData;
+    id: string;
+    onChangeBlock: (id: string, newData: any) => void;
+    value: any;
+  }) => void;
   /**
    * If the block is restricted, it won't show in the chooser.
    * The function signature is `({properties, block, navRoot, contentType})` where
