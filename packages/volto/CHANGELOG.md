@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.21.0 (2025-05-16)
+
+### Feature
+
+- The `Add` component can now optionally receive `initialFormData` from the `CreateTranslation` component. This makes it possible for a custom `CreateTranslation` implementation to fully control the initial translation. @Tishasoumya-02 [#7073](https://github.com/plone/volto/issues/7073)
+
 ## 18.20.0 (2025-05-12)
 
 ### Feature
