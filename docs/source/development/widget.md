@@ -109,7 +109,7 @@ class KeywordsVocabulary(BKV):
 CategoryVocabularyFactory = KeywordsVocabulary("category")
 ```
 
-Register your vocabulary in `configure.zcml`:
+Register your vocabulary in {file}`configure.zcml`:
 
 ```xml
   <utility
@@ -118,8 +118,7 @@ Register your vocabulary in `configure.zcml`:
       />
 ```
 
-You'll need to define a new KeywordsIndex in `portal_catalog`, in
-a `catalog.xml` GenericSetup file.
+You'll need to define a new `KeywordsIndex` in `portal_catalog`, in a {file}`catalog.xml` GenericSetup file.
 
 ```xml
 <?xml version="1.0"?>
@@ -130,8 +129,8 @@ a `catalog.xml` GenericSetup file.
 </object>
 ```
 
-For Volto 13, you need to register the Volto widget for this field. This may
-change in the future:
+For Volto 13, you need to register the Volto widget for this field.
+This may change in the future:
 
 ```js
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
@@ -251,9 +250,214 @@ See [Storybook](https://6.docs.plone.org/storybook) with available widgets.
 
 ## Write a new widget
 
+The main reasons you would want to create a custom widget for a form field:
+
+- To provide a specialized user interface for data input (for example, a color picker or a map location selector)
+- To handle complex data structures that aren't well-served by standard input types
+- To implement validation or data formatting
+- To enhance user experience with custom interactions or real-time feedback
+
+To create and register a new Volto widget follow these steps:
+
+- Write a widget component
+- Register it 
+  - for a field
+  - or under a name, to be used in arbitrary fields
+
+The standard widget for a boolean field is a checkbox.
+The following example creates a toggle widget and registers it for boolean fields.
+
+![Toggle Widget for a boolean field](custom_widget.png)
+
+1. Create the widget component in file {file}`ToggleWidget.jsx`.
+   The component uses the prop `onChange` function to change the value of the field with id `id`.
+   The layout is a toggle which is already implemented in the UI components library 'semantic-ui-react'.
+
+    ```jsx
+    import { Checkbox } from 'semantic-ui-react';
+    import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+
+    export function ToggleWidget(props) {
+        const { id, value, onChange } = props;
+        return (
+            <FormFieldWrapper {...props} className="boolean toggle">
+                <Checkbox
+                    toggle
+                    id={id}
+                    checked={value}
+                    onChange={(e, { checked }) => onChange(id, checked)}
+                    label={value ? 'On' : 'Off'}
+                />
+            </FormFieldWrapper>
+        );
+    }
+
+    export default ToggleWidget;
+    ```
+
+2.  Register your widget component in your add-on configuration.
+    Usually this is in file {file}`index.js`.
+
+    We register the widget for boolean fields.
+
+    ```{code-block} jsx
+    :emphasize-lines: 5
+    import { ToggleWidget } from './ToggleWidget';
+
+    const applyConfig = (config) => {
+        // …
+        config.widgets.type.boolean = ToggleWidget;
+        // …
+        return config;
+    };
+    export default applyConfig;
+    ```
+
 ```{note}
-Please contribute to this section!
+We use a `semantic-ui-react` component for our example.
+This is optional.
+`semantic-ui-react` is already installed in a standard Volto project.
+If it's not in your project, you may want to use alternatives or just don't have the need of a UI components library.
 ```
+
+After a restart of Volto, your widget is now applied to all boolean widgets.
+You can see an example form with a boolean field in the following example.
+
+```{code-block} jsx
+:emphasize-lines: 27
+<Form
+    schema={{
+        fieldsets: [
+            {
+                id: 'default',
+                title: 'Default',
+                fields: [
+                    'fullname',
+                    'from',
+                    'subscribe_to_newsletter',
+                ],
+            },
+        ],
+        properties: {
+            fullname: {
+                title: intl.formatMessage(messages.fullnameTitle),
+                placeholder: intl.formatMessage(messages.fullnameTitle),
+            },
+            from: {
+                title: intl.formatMessage(messages.emailTitle),
+                placeholder: intl.formatMessage(messages.emailTitle),
+                type: 'email',
+                widget: 'email',
+            },
+            subscribe_to_newsletter: {
+                title: 'Subscribe to newsletter',
+                type: 'boolean',
+                default: false,
+            },
+        },
+        required: ['fullname', 'from',],
+    }}
+    onSubmit={onSubmit}
+    resetOnCancel={true}
+/>
+```
+
+
+
+### If you want to register the widget for arbitrary fields instead or additionally:
+
+```{code-block} jsx
+:emphasize-lines: 5
+import { ToggleWidget } from './ToggleWidget';
+
+const applyConfig = (config) => {
+    // …
+    config.widgets.widget.toggle_widget = ToggleWidget;
+    // …
+    return config;
+};
+export default applyConfig;
+```
+
+This widget named 'toggle_widget' can now be used as follows:
+
+
+```{code-block} jsx
+:emphasize-lines: 27-28
+<Form
+    schema={{
+        fieldsets: [
+            {
+                id: 'default',
+                title: 'Default',
+                fields: [
+                    'fullname',
+                    'from',
+                    'subscribe_to_newsletter',
+                ],
+            },
+        ],
+        properties: {
+            fullname: {
+                title: intl.formatMessage(messages.fullnameTitle),
+                placeholder: intl.formatMessage(messages.fullnameTitle),
+            },
+            from: {
+                title: intl.formatMessage(messages.emailTitle),
+                placeholder: intl.formatMessage(messages.emailTitle),
+                type: 'email',
+                widget: 'email',
+            },
+            subscribe_to_newsletter: {
+                title: 'Subscribe to newsletter',
+                type: 'pipapo',
+                widget: toggle_widget
+                default: false,
+            },
+        },
+        required: ['fullname', 'from',],
+    }}
+    onSubmit={onSubmit}
+    resetOnCancel={true}
+/>
+```
+
+### Pass additional props
+
+```jsx
+subscribe_to_newsletter: {
+    title: 'Subscribe to newsletter',
+    type: 'boolean',
+    default: false,
+    labels: ['yes', 'no'],
+},
+```
+
+```{code-block} jsx
+:emphasize-lines: 5,13
+import { Checkbox } from 'semantic-ui-react';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+
+export function ToggleWidget(props) {
+  const { id, value, onChange, labels = ['On', 'Off'] } = props;
+  return (
+    <FormFieldWrapper {...props} className="boolean toggle">
+      <Checkbox
+        toggle
+        id={id}
+        checked={value}
+        onChange={(e, { checked }) => onChange(id, checked)}
+        label={value ? labels[0] : labels[1]}
+      />
+    </FormFieldWrapper>
+  );
+}
+
+export default ToggleWidget;
+```
+
+You can experiment with other widgets included in Volto core under the {file}`/components/manage/Widgets/VocabularyTermsWidget.jsx` directory for more inspiration and possibilities of enhancing your widgets.
+
 
 ## Sidebar
 
@@ -272,18 +476,23 @@ You can use the `setMetadataFocus` action to set the current field by specifying
 import { useDispatch } from 'react-redux';
 import { setSidebarTab, setMetadataFocus } from '@plone/volto/actions';
 
-const dispatch = useDispatch()
+const MyComponent = (/* ... */) => {
+  // ...
+  const dispatch = useDispatch();
+  // ...
 
-return (
-// ...
-<button
-    onClick={() => {
+  return (
+    // ...
+    <button
+      onClick={() => {
         dispatch(setSidebarTab(0));
-        dispatch(setMetadataFocus('ownership', 'allow_discussion'));
-    }}
->
-    This button will change the sidebar to the content form and focus ownership fieldset and the allow_discussion field
-</button>
-// ...
-)
+        dispatch(setMetadataFocus("ownership", "allow_discussion"));
+      }}
+    >
+      This button will change the sidebar to the content form and focus
+      ownership fieldset and the allow_discussion field
+    </button>
+    // ...
+  );
+};
 ```
