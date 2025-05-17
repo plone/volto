@@ -337,9 +337,18 @@ To configure a new Volto widget follow these steps.
 
 1.  Finally, restart Volto by pressing {kbd}`Ctrl-C` inside the active frontend shell session, then restart it with the following command.
 
-    ```shell
-    make frontend-start
-    ```
+    ````{tab-set}
+      ```{tab-item} Frontend add-on Cookieplone project
+        ```shell
+        make start
+        ```
+      ```
+      ```{tab-item} Fullstack Cookieplone project
+        ```shell
+        make frontend-start
+        ```
+      ```
+    ````
 
 Now you can see the button that the widget renders.
 Click the button to toggle the text.
