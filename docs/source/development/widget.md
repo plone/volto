@@ -250,111 +250,214 @@ See [Storybook](https://6.docs.plone.org/storybook) with available widgets.
 
 ## Write a new widget
 
-A custom widget is often used in Volto forms.
-To configure a new Volto widget follow these steps.
+The main reasons you would want to create a custom widget for a form field:
 
-1.  Add the following import as the first line in the file {file}`index.js` in the add-on to import the component of the actual widget.
+- To provide a specialized user interface for data input (for example, a color picker or a map location selector)
+- To handle complex data structures that aren't well-served by standard input types
+- To implement validation or data formatting
+- To enhance user experience with custom interactions or real-time feedback
+
+To create and register a new Volto widget follow these steps:
+
+- Write a widget component
+- Register it 
+  - for a field
+  - or under a name, to be used in arbitrary fields
+
+The standard widget for a boolean field is a checkbox.
+The following example creates a toggle widget and registers it for boolean fields.
+
+![Toggle Widget for a boolean field](custom_widget.png)
+
+1. Create the widget component in file {file}`ToggleWidget.jsx`.
+   The component uses the prop `onChange` function to change the value of the field with id `id`.
+   The layout is a toggle which is already implemented in the UI components library 'semantic-ui-react'.
 
     ```jsx
-    import { ToggleWidget } from './ToggleWidget';
-    ```
+    import { Checkbox } from 'semantic-ui-react';
+    import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 
-1.  Add the following line before returning from the `applyConfig` function inside the file {file}`index.js` in the add-on to register the widget add-on component.
-
-    ```jsx
-    config.widgets.widget.toggle_widget = ToggleWidget;
-    ```
-
-1.  Next, create the widget component file {file}`ToggleWidget.jsx` with the following content.
-
-    ```jsx
-    import { Button } from "semantic-ui-react";
-    export function ToggleWidget({ id, value, onChange }) {
-      return (
-        <Button
-          onClick={(e) => {
-            e.preventDefault();
-            onChange(id, value === "On" ? "Off" : "On");
-          }}
-        >
-          Toggle me: {value}
-        </Button>
-      );
+    export function ToggleWidget(props) {
+        const { id, value, onChange } = props;
+        return (
+            <FormFieldWrapper {...props} className="boolean toggle">
+                <Checkbox
+                    toggle
+                    id={id}
+                    checked={value}
+                    onChange={(e, { checked }) => onChange(id, checked)}
+                    label={value ? 'On' : 'Off'}
+                />
+            </FormFieldWrapper>
+        );
     }
 
     export default ToggleWidget;
     ```
 
-1.  Install `semantic-ui-react` as a dependency of your add-on to make it work.
+2.  Register your widget component in your add-on configuration.
+    Usually this is in file {file}`index.js`.
 
-    ```shell
-    npm i semantic-ui-react
-    ```
+    We register the widget for boolean fields.
 
-1.  Using the component shadowing technique, create a directory in your add-on {file}`src/customizations/components/manage/Sidebar/`.
-    Copy the file in Volto core {file}`components/manage/Sidebar/Sidebar.jsx` to the directory you just created.
-    This file shadows the `Sidebar` component inside the corresponding core Volto file.
+    ```{code-block} jsx
+    :emphasize-lines: 5
+    import { ToggleWidget } from './ToggleWidget';
 
-1.  Inside the new {file}`src/customizations/components/manage/Sidebar/Sidebar.jsx`, insert the following import at the top.
-
-    ```jsx
-    import { Form } from '@plone/volto/components/manage/Form';
-    ```
-
-1.  Below the imports, write the following example custom form, which has one field of type `toggle_widget` to serve as our widget.
-
-    ```jsx
-    const MyForm = () => {
-      return (
-        <Form
-          schema={{
-            fieldsets: [
-              {
-                id: "default",
-                title: "Title",
-                fields: ["toggle"],
-              },
-            ],
-            properties: {
-              toggle: {
-                title: "My toggle",
-                widget: "toggle_widget",
-                default: "On",
-              },
-            },
-            required: [],
-          }}
-        />
-      );
+    const applyConfig = (config) => {
+        // …
+        config.widgets.type.boolean = ToggleWidget;
+        // …
+        return config;
     };
+    export default applyConfig;
     ```
 
-1.  To see the widget inside the `Sidebar` component on the right side of the Volto UI, add the following line inside the `(React.)Fragment` tag that is rendered.
+```{note}
+We use a `semantic-ui-react` component for our example.
+This is optional.
+`semantic-ui-react` is already installed in a standard Volto project.
+If it's not in your project, you may want to use alternatives or just don't have the need of a UI components library.
+```
 
-    ```jsx
-    <MyForm />
-    ```
+After a restart of Volto, your widget is now applied to all boolean widgets.
+You can see an example form with a boolean field in the following example.
 
-1.  Finally, restart Volto by pressing {kbd}`Ctrl-C` inside the active frontend shell session, then restart it with the following command.
+```{code-block} jsx
+:emphasize-lines: 27
+<Form
+    schema={{
+        fieldsets: [
+            {
+                id: 'default',
+                title: 'Default',
+                fields: [
+                    'fullname',
+                    'from',
+                    'subscribe_to_newsletter',
+                ],
+            },
+        ],
+        properties: {
+            fullname: {
+                title: intl.formatMessage(messages.fullnameTitle),
+                placeholder: intl.formatMessage(messages.fullnameTitle),
+            },
+            from: {
+                title: intl.formatMessage(messages.emailTitle),
+                placeholder: intl.formatMessage(messages.emailTitle),
+                type: 'email',
+                widget: 'email',
+            },
+            subscribe_to_newsletter: {
+                title: 'Subscribe to newsletter',
+                type: 'boolean',
+                default: false,
+            },
+        },
+        required: ['fullname', 'from',],
+    }}
+    onSubmit={onSubmit}
+    resetOnCancel={true}
+/>
+```
 
-    ````{tab-set}
-      ```{tab-item} Frontend add-on Cookieplone project
-        ```shell
-        make start
-        ```
-      ```
-      ```{tab-item} Fullstack Cookieplone project
-        ```shell
-        make frontend-start
-        ```
-      ```
-    ````
 
-Now you can see the button that the widget renders.
-Click the button to toggle the text.
-You can position the `MyForm` component anywhere where it is visible and the user can interact with it.
 
-You can experiment with other widgets included in Volto core under the {file}`Widgets` directory for more inspiration and possibilities of enhancing your widgets.
+### If you want to register the widget for arbitrary fields instead or additionally:
+
+```{code-block} jsx
+:emphasize-lines: 5
+import { ToggleWidget } from './ToggleWidget';
+
+const applyConfig = (config) => {
+    // …
+    config.widgets.widget.toggle_widget = ToggleWidget;
+    // …
+    return config;
+};
+export default applyConfig;
+```
+
+This widget named 'toggle_widget' can now be used as follows:
+
+
+```{code-block} jsx
+:emphasize-lines: 27-28
+<Form
+    schema={{
+        fieldsets: [
+            {
+                id: 'default',
+                title: 'Default',
+                fields: [
+                    'fullname',
+                    'from',
+                    'subscribe_to_newsletter',
+                ],
+            },
+        ],
+        properties: {
+            fullname: {
+                title: intl.formatMessage(messages.fullnameTitle),
+                placeholder: intl.formatMessage(messages.fullnameTitle),
+            },
+            from: {
+                title: intl.formatMessage(messages.emailTitle),
+                placeholder: intl.formatMessage(messages.emailTitle),
+                type: 'email',
+                widget: 'email',
+            },
+            subscribe_to_newsletter: {
+                title: 'Subscribe to newsletter',
+                type: 'pipapo',
+                widget: toggle_widget
+                default: false,
+            },
+        },
+        required: ['fullname', 'from',],
+    }}
+    onSubmit={onSubmit}
+    resetOnCancel={true}
+/>
+```
+
+### Pass additional props
+
+```jsx
+subscribe_to_newsletter: {
+    title: 'Subscribe to newsletter',
+    type: 'boolean',
+    default: false,
+    labels: ['yes', 'no'],
+},
+```
+
+```{code-block} jsx
+:emphasize-lines: 5,13
+import { Checkbox } from 'semantic-ui-react';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+
+export function ToggleWidget(props) {
+  const { id, value, onChange, labels = ['On', 'Off'] } = props;
+  return (
+    <FormFieldWrapper {...props} className="boolean toggle">
+      <Checkbox
+        toggle
+        id={id}
+        checked={value}
+        onChange={(e, { checked }) => onChange(id, checked)}
+        label={value ? labels[0] : labels[1]}
+      />
+    </FormFieldWrapper>
+  );
+}
+
+export default ToggleWidget;
+```
+
+You can experiment with other widgets included in Volto core under the {file}`/components/manage/Widgets/VocabularyTermsWidget.jsx` directory for more inspiration and possibilities of enhancing your widgets.
+
 
 ## Sidebar
 
