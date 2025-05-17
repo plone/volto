@@ -109,7 +109,7 @@ class KeywordsVocabulary(BKV):
 CategoryVocabularyFactory = KeywordsVocabulary("category")
 ```
 
-Register your vocabulary in `configure.zcml`:
+Register your vocabulary in {file}`configure.zcml`:
 
 ```xml
   <utility
@@ -118,8 +118,7 @@ Register your vocabulary in `configure.zcml`:
       />
 ```
 
-You'll need to define a new KeywordsIndex in `portal_catalog`, in
-a `catalog.xml` GenericSetup file.
+You'll need to define a new `KeywordsIndex` in `portal_catalog`, in a {file}`catalog.xml` GenericSetup file.
 
 ```xml
 <?xml version="1.0"?>
@@ -130,8 +129,8 @@ a `catalog.xml` GenericSetup file.
 </object>
 ```
 
-For Volto 13, you need to register the Volto widget for this field. This may
-change in the future:
+For Volto 13, you need to register the Volto widget for this field.
+This may change in the future:
 
 ```js
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
@@ -251,9 +250,111 @@ See [Storybook](https://6.docs.plone.org/storybook) with available widgets.
 
 ## Write a new widget
 
-```{note}
-Please contribute to this section!
-```
+A custom widget is often used in Volto forms.
+To configure a new Volto widget follow these steps.
+
+1.  Add the following import as the first line in the file {file}`index.js` in the add-on to import the component of the actual widget.
+
+    ```jsx
+    import { ToggleWidget } from './ToggleWidget';
+    ```
+
+1.  Add the following line before returning from the `applyConfig` function inside the file {file}`index.js` in the add-on to register the widget add-on component.
+
+    ```jsx
+    config.widgets.widget.toggle_widget = ToggleWidget;
+    ```
+
+1.  Next, create the widget component file {file}`ToggleWidget.jsx` with the following content.
+
+    ```jsx
+    import { Button } from "semantic-ui-react";
+    export function ToggleWidget({ id, value, onChange }) {
+      return (
+        <Button
+          onClick={(e) => {
+            e.preventDefault();
+            onChange(id, value === "On" ? "Off" : "On");
+          }}
+        >
+          Toggle me: {value}
+        </Button>
+      );
+    }
+
+    export default ToggleWidget;
+    ```
+
+1.  Install `semantic-ui-react` as a dependency of your add-on to make it work.
+
+    ```shell
+    npm i semantic-ui-react
+    ```
+
+1.  Using the component shadowing technique, create a directory in your add-on {file}`src/customizations/components/manage/Sidebar/`.
+    Copy the file in Volto core {file}`components/manage/Sidebar/Sidebar.jsx` to the directory you just created.
+    This file shadows the `Sidebar` component inside the corresponding core Volto file.
+
+1.  Inside the new {file}`src/customizations/components/manage/Sidebar/Sidebar.jsx`, insert the following import at the top.
+
+    ```jsx
+    import { Form } from '@plone/volto/components/manage/Form';
+    ```
+
+1.  Below the imports, write the following example custom form, which has one field of type `toggle_widget` to serve as our widget.
+
+    ```jsx
+    const MyForm = () => {
+      return (
+        <Form
+          schema={{
+            fieldsets: [
+              {
+                id: "default",
+                title: "Title",
+                fields: ["toggle"],
+              },
+            ],
+            properties: {
+              toggle: {
+                title: "My toggle",
+                widget: "toggle_widget",
+                default: "On",
+              },
+            },
+            required: [],
+          }}
+        />
+      );
+    };
+    ```
+
+1.  To see the widget inside the `Sidebar` component on the right side of the Volto UI, add the following line inside the `(React.)Fragment` tag that is rendered.
+
+    ```jsx
+    <MyForm />
+    ```
+
+1.  Finally, restart Volto by pressing {kbd}`Ctrl-C` inside the active frontend shell session, then restart it with the following command.
+
+    ````{tab-set}
+      ```{tab-item} Frontend add-on Cookieplone project
+        ```shell
+        make start
+        ```
+      ```
+      ```{tab-item} Fullstack Cookieplone project
+        ```shell
+        make frontend-start
+        ```
+      ```
+    ````
+
+Now you can see the button that the widget renders.
+Click the button to toggle the text.
+You can position the `MyForm` component anywhere where it is visible and the user can interact with it.
+
+You can experiment with other widgets included in Volto core under the {file}`Widgets` directory for more inspiration and possibilities of enhancing your widgets.
 
 ## Sidebar
 
@@ -272,18 +373,23 @@ You can use the `setMetadataFocus` action to set the current field by specifying
 import { useDispatch } from 'react-redux';
 import { setSidebarTab, setMetadataFocus } from '@plone/volto/actions';
 
-const dispatch = useDispatch()
+const MyComponent = (/* ... */) => {
+  // ...
+  const dispatch = useDispatch();
+  // ...
 
-return (
-// ...
-<button
-    onClick={() => {
+  return (
+    // ...
+    <button
+      onClick={() => {
         dispatch(setSidebarTab(0));
-        dispatch(setMetadataFocus('ownership', 'allow_discussion'));
-    }}
->
-    This button will change the sidebar to the content form and focus ownership fieldset and the allow_discussion field
-</button>
-// ...
-)
+        dispatch(setMetadataFocus("ownership", "allow_discussion"));
+      }}
+    >
+      This button will change the sidebar to the content form and focus
+      ownership fieldset and the allow_discussion field
+    </button>
+    // ...
+  );
+};
 ```
