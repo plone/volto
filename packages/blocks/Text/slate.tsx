@@ -130,6 +130,7 @@ export const LinkElement = ({
     <Link
       {...attributes}
       href={href}
+      title={data?.title}
       target={target}
       rel={target === '_blank' ? 'noopener noreferrer' : undefined}
     >
