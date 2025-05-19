@@ -8,6 +8,14 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.3 (2025-05-16)
+
+### Bugfix
+
+- Fix image scales typings.
+  Added `dataAdapter` key in `BlockConfigBase`.
+  `category` as optional in `BlockConfigBase`. @sneridagh [#7079](https://github.com/plone/volto/issues/7079)
+
 ## 2.0.0-alpha.2 (2025-05-13)
 
 ### Feature
