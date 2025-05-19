@@ -58,8 +58,10 @@
     "@plone/registry": "workspace:*",
     "@plone/slots": "workspace:*",
     "@plone/theming": "workspace:*",
+    "react-aria-components": "catalog:",
     "react-i18next": "catalog:",
     "react-router": "catalog:",
+    "react-router-dom": "catalog:",
     "tailwindcss": "catalog:",
     "tailwindcss-animate": "^1.0.7"
   },

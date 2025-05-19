@@ -5,11 +5,22 @@ import {
   Scripts,
   ScrollRestoration,
   useRouteLoaderData,
+  BrowserRouter,
+  useHref,
+  useNavigate,
   type LinksFunction,
   type MetaFunction,
+  type NavigateOptions,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { RouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
+
+declare module 'react-aria-components' {
+  interface RouterConfig {
+    routerOptions: NavigateOptions;
+  }
+}
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -53,6 +64,7 @@ export const links: LinksFunction = () => [
 export default function Index() {
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
 
   if (!rootData) {
     return null;
@@ -71,7 +83,9 @@ export default function Index() {
       <body>
         <div role="navigation" aria-label="Toolbar" id="toolbar" />
         <div id="main">
-          <Outlet />
+          <RouterProvider navigate={navigate} useHref={useHref}>
+            <Outlet />
+          </RouterProvider>
         </div>
         <div role="complementary" aria-label="Sidebar" id="sidebar" />
         <ScrollRestoration />

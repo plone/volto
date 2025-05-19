@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { Link } from '@plone/components/tailwind';
 import type { Content } from '@plone/types';
 
 export type SlateElementData = {
@@ -126,14 +127,13 @@ export const LinkElement = ({
     : external_link || internal_link || data?.url;
 
   return (
-    <a
+    <Link
       {...attributes}
       href={href}
-      title={data?.title}
       target={target}
       rel={target === '_blank' ? 'noopener noreferrer' : undefined}
     >
       {children}
-    </a>
+    </Link>
   );
 };
