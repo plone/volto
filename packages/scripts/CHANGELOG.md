@@ -8,6 +8,24 @@
 
 <!-- towncrier release notes start -->
 
+## 3.10.1 (2025-05-12)
+
+### Bugfix
+
+- Fixed prepublish name. @sneridagh 
+
+## 3.10.0 (2025-05-12)
+
+### Feature
+
+- Support not publishing a package on NPM if `plonePrePublish.publish` is set to false. @ericof [#7068](https://github.com/plone/volto/issues/7068)
+
+## 3.9.0 (2025-03-31)
+
+### Feature
+
+- Add `--dry-run` to prepublish script. @sneridagh [#6847](https://github.com/plone/volto/issues/6847)
+
 ## 3.8.2 (2025-02-08)
 
 ### Internal

@@ -19,6 +19,10 @@ class PrePublishReleaseItPlugin extends Plugin {
     });
   }
 
+  disablePlugin() {
+    return 'npm';
+  }
+
   getName() {
     return this.config.getContext().npm.name;
   }
@@ -33,26 +37,32 @@ class PrePublishReleaseItPlugin extends Plugin {
     const context = this.config.getContext();
     const tag = context.isPreRelease ? context.preReleaseId : 'latest';
     const dryRunArg = this.config.isDryRun ? '--dry-run' : '';
-
-    await this.step({
-      enabled: true,
-      task: () =>
-        this.exec(
-          `pnpm publish${tag ? ` --tag ${tag}` : ''}${dryRunArg ? ` ${dryRunArg}` : ''} --no-git-checks`,
-          {
-            options: { write: false },
-          },
-        ).then(() => {
-          this.setContext({ isReleased: true });
-        }),
-      label: 'Publishing to npm...',
-      prompt: 'prePublishPrompt',
-    });
+    // This value could be set either on .release-it.json or passed via
+    // command line with --no-plonePrePublish.publish
+    const pluginOptions = this.config.options?.plonePrePublish;
+    const publish = pluginOptions ? pluginOptions.publish ?? true : true;
+    if (publish) {
+      await this.step({
+        enabled: true,
+        task: () =>
+          this.exec(
+            `pnpm publish${tag ? ` --tag ${tag}` : ''}${dryRunArg ? ` ${dryRunArg}` : ''} --no-git-checks`,
+            {
+              options: { write: false },
+            },
+          ).then(() => {
+            this.setContext({ isReleased: true });
+          }),
+        label: 'Publishing to npm...',
+        prompt: 'prePublishPrompt',
+      });
+    } else {
+      this.setContext({ isReleased: true });
+    }
   }
 
   afterRelease() {
     const { isReleased } = this.getContext();
-    console.log();
     if (isReleased) {
       this.log.log(`🔗 ${this.getPackageUrl()}`);
     }

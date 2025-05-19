@@ -6,76 +6,81 @@ import {
 import * as Url from '../helpers/Url/Url';
 
 const tick = async () => new Promise((resolve) => setTimeout(resolve, 0));
+Object.defineProperty(Url, 'isCmsUi', {
+  value: vi.fn((path) => locationMap[path]),
+  writable: true,
+});
+let locationMap;
 
 describe('storeProtectLoadUtils', () => {
   describe('protectLoadStart middleware', () => {
     test('idle', () => {
-      const dispatch = jest.fn();
-      const getState = jest.fn(() => ({
+      const dispatch = vi.fn();
+      const getState = vi.fn(() => ({
         router: {
           location: {
             pathname: '/PATH',
           },
         },
       }));
-      const next = jest.fn(() => 'NEXT');
+      const next = vi.fn(() => 'NEXT');
       const action = { type: 'ANY' };
       const result = protectLoadStart({ dispatch, getState })(next)(action);
-      expect(dispatch).toBeCalledTimes(0);
-      expect(next).toBeCalledWith(action);
+      expect(dispatch).toHaveBeenCalledTimes(0);
+      expect(next).toHaveBeenCalledWith(action);
       expect(result).toBe('NEXT');
     });
 
     const testLocationChange =
       ({ locationMap, resetBeforeFetch }) =>
       () => {
-        const dispatch = jest.fn();
-        const getState = jest.fn(() => ({
+        const dispatch = vi.fn();
+        const getState = vi.fn(() => ({
           router: {
             location: {
               pathname: '/PATH',
             },
           },
         }));
-        const next = jest.fn(() => 'NEXT');
+        const next = vi.fn(() => 'NEXT');
         const action = {
           type: '@@router/LOCATION_CHANGE',
           payload: { location: { pathname: '/NEW-PATH' } },
         };
-        Url.isCmsUi = jest.fn((path) => locationMap[path]);
+        Url.isCmsUi = vi.fn((path) => locationMap[path]);
         const result = protectLoadStart({ dispatch, getState })(next)(action);
-        expect(dispatch).toBeCalledWith({
+        expect(dispatch).toHaveBeenCalledWith({
           type: '@@loadProtector/START',
           location: { pathname: '/NEW-PATH' },
           resetBeforeFetch,
         });
-        expect(next).toBeCalledWith(action);
+        expect(next).toHaveBeenCalledWith(action);
         expect(result).toBe('NEXT');
       };
 
     const testLocationSkipped =
       ({ locationMap }) =>
       () => {
-        const dispatch = jest.fn();
-        const getState = jest.fn(() => ({
+        const dispatch = vi.fn();
+        const getState = vi.fn(() => ({
           router: {
             location: {
               pathname: '/PATH',
             },
           },
         }));
-        const next = jest.fn(() => 'NEXT');
+        const next = vi.fn(() => 'NEXT');
         const action = {
           type: '@@router/LOCATION_CHANGE',
           payload: { location: { pathname: '/NEW-PATH' } },
         };
-        Url.isCmsUi = jest.fn((path) => locationMap[path]);
+        Url.isCmsUi = vi.fn((path) => locationMap[path]);
         const result = protectLoadStart({ dispatch, getState })(next)(action);
-        expect(dispatch).toBeCalledWith({
+        expect(dispatch).toHaveBeenCalledWith({
           type: '@@loadProtector/SKIPPED',
           location: { pathname: '/NEW-PATH' },
         });
-        expect(next).toBeCalledWith(action);
+        expect(next).toHaveBeenCalledWith(action);
         expect(result).toBe('NEXT');
       };
 
@@ -109,182 +114,182 @@ describe('storeProtectLoadUtils', () => {
     });
 
     test('skips functional actions', () => {
-      const dispatch = jest.fn();
-      const getState = jest.fn(() => ({
+      const dispatch = vi.fn();
+      const getState = vi.fn(() => ({
         router: {
           location: {
             pathname: '/PATH',
           },
         },
       }));
-      const next = jest.fn(() => 'NEXT');
+      const next = vi.fn(() => 'NEXT');
       const action = () => {};
       const result = protectLoadStart({ dispatch, getState })(next)(action);
-      expect(dispatch).toBeCalledTimes(0);
-      expect(next).toBeCalledWith(action);
+      expect(dispatch).toHaveBeenCalledTimes(0);
+      expect(next).toHaveBeenCalledWith(action);
       expect(result).toBe('NEXT');
     });
   });
 
   describe('protectLoadEnd middleware', () => {
     test('idle', async () => {
-      const dispatch = jest.fn();
-      const getState = jest.fn(() => ({
+      const dispatch = vi.fn();
+      const getState = vi.fn(() => ({
         loadProtector: {
           isCounting: false,
         },
       }));
-      const next = jest.fn(() => 'NEXT');
+      const next = vi.fn(() => 'NEXT');
       const action = { type: 'ANY' };
       const result = protectLoadEnd({ dispatch, getState })(next)(action);
-      expect(dispatch).toBeCalledTimes(0);
-      expect(next).toBeCalledWith(action);
+      expect(dispatch).toHaveBeenCalledTimes(0);
+      expect(next).toHaveBeenCalledWith(action);
       expect(result).toBe('NEXT');
       await tick();
-      expect(dispatch).toBeCalledTimes(0);
+      expect(dispatch).toHaveBeenCalledTimes(0);
     });
 
     test('not dispatching', async () => {
-      const dispatch = jest.fn();
-      const getState = jest.fn(() => ({
+      const dispatch = vi.fn();
+      const getState = vi.fn(() => ({
         loadProtector: {
           isCounting: true,
         },
       }));
-      const next = jest.fn(() => 'NEXT');
+      const next = vi.fn(() => 'NEXT');
       const action = { type: 'ANY' };
       const result = protectLoadEnd({ dispatch, getState })(next)(action);
-      expect(dispatch).toBeCalledTimes(0);
-      expect(next).toBeCalledWith(action);
+      expect(dispatch).toHaveBeenCalledTimes(0);
+      expect(next).toHaveBeenCalledWith(action);
       expect(result).toBe('NEXT');
       await tick();
-      expect(dispatch).toBeCalledTimes(0);
+      expect(dispatch).toHaveBeenCalledTimes(0);
     });
 
     test('skip functional actions', async () => {
-      const dispatch = jest.fn();
-      const getState = jest.fn(() => ({
+      const dispatch = vi.fn();
+      const getState = vi.fn(() => ({
         loadProtector: {
           isCounting: true,
         },
       }));
-      const next = jest.fn(() => 'NEXT');
+      const next = vi.fn(() => 'NEXT');
       const action = () => {};
       const result = protectLoadEnd({ dispatch, getState })(next)(action);
-      expect(dispatch).toBeCalledTimes(0);
-      expect(next).toBeCalledWith(action);
+      expect(dispatch).toHaveBeenCalledTimes(0);
+      expect(next).toHaveBeenCalledWith(action);
       expect(result).toBe('NEXT');
       await tick();
-      expect(dispatch).toBeCalledTimes(0);
+      expect(dispatch).toHaveBeenCalledTimes(0);
     });
 
     test('resetting', async () => {
-      const dispatch = jest.fn();
-      const getState = jest.fn(() => ({
+      const dispatch = vi.fn();
+      const getState = vi.fn(() => ({
         loadProtector: {
           resetBeforeFetch: true,
         },
       }));
-      const next = jest.fn(() => 'NEXT');
+      const next = vi.fn(() => 'NEXT');
       const action = { type: 'GET_CONTENT_PENDING' };
       const result = protectLoadEnd({ dispatch, getState })(next)(action);
-      expect(dispatch).toBeCalledWith({ type: 'RESET_CONTENT' });
-      expect(next).toBeCalledWith(action);
+      expect(dispatch).toHaveBeenCalledWith({ type: 'RESET_CONTENT' });
+      expect(next).toHaveBeenCalledWith(action);
       expect(result).toBe('NEXT');
       await tick();
-      expect(dispatch).toBeCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledTimes(1);
     });
 
     test('not resetting on content-content transition ', async () => {
-      const dispatch = jest.fn();
-      const getState = jest.fn(() => ({
+      const dispatch = vi.fn();
+      const getState = vi.fn(() => ({
         loadProtector: {
           isCounting: true,
           resetBeforeFetch: false,
         },
       }));
-      const next = jest.fn(() => 'NEXT');
+      const next = vi.fn(() => 'NEXT');
       const action = { type: 'GET_CONTENT_PENDING' };
       const result = protectLoadEnd({ dispatch, getState })(next)(action);
-      expect(dispatch).toBeCalledTimes(0);
-      expect(next).toBeCalledWith(action);
+      expect(dispatch).toHaveBeenCalledTimes(0);
+      expect(next).toHaveBeenCalledWith(action);
       expect(result).toBe('NEXT');
       await tick();
-      expect(dispatch).toBeCalledTimes(0);
+      expect(dispatch).toHaveBeenCalledTimes(0);
     });
 
     test('counting down when success', async () => {
-      const dispatch = jest.fn();
-      const getState = jest.fn(() => ({
+      const dispatch = vi.fn();
+      const getState = vi.fn(() => ({
         loadProtector: {
           isCounting: true,
           requestCount: 2,
         },
       }));
-      const next = jest.fn(() => 'NEXT');
+      const next = vi.fn(() => 'NEXT');
       const action = { type: 'ANY_SUCCESS' };
       const result = protectLoadEnd({ dispatch, getState })(next)(action);
-      expect(dispatch).toBeCalledTimes(0);
-      expect(next).toBeCalledWith(action);
+      expect(dispatch).toHaveBeenCalledTimes(0);
+      expect(next).toHaveBeenCalledWith(action);
       expect(result).toBe('NEXT');
       await tick();
-      expect(dispatch).toBeCalledTimes(0);
+      expect(dispatch).toHaveBeenCalledTimes(0);
     });
 
     test('counting down when failure', async () => {
-      const dispatch = jest.fn();
-      const getState = jest.fn(() => ({
+      const dispatch = vi.fn();
+      const getState = vi.fn(() => ({
         loadProtector: {
           isCounting: true,
           requestCount: 2,
         },
       }));
-      const next = jest.fn(() => 'NEXT');
+      const next = vi.fn(() => 'NEXT');
       const action = { type: 'ANY_FAIL' };
       const result = protectLoadEnd({ dispatch, getState })(next)(action);
-      expect(dispatch).toBeCalledTimes(0);
-      expect(next).toBeCalledWith(action);
+      expect(dispatch).toHaveBeenCalledTimes(0);
+      expect(next).toHaveBeenCalledWith(action);
       expect(result).toBe('NEXT');
       await tick();
-      expect(dispatch).toBeCalledTimes(0);
+      expect(dispatch).toHaveBeenCalledTimes(0);
     });
 
     test('ending protect when success', async () => {
-      const dispatch = jest.fn();
-      const getState = jest.fn(() => ({
+      const dispatch = vi.fn();
+      const getState = vi.fn(() => ({
         loadProtector: {
           isCounting: true,
           requestCount: 1,
         },
       }));
-      const next = jest.fn(() => 'NEXT');
+      const next = vi.fn(() => 'NEXT');
       const action = { type: 'ANY_SUCCESS' };
       const result = protectLoadEnd({ dispatch, getState })(next)(action);
-      expect(dispatch).toBeCalledTimes(0);
-      expect(next).toBeCalledWith(action);
+      expect(dispatch).toHaveBeenCalledTimes(0);
+      expect(next).toHaveBeenCalledWith(action);
       expect(result).toBe('NEXT');
       await tick();
-      expect(dispatch).toBeCalledTimes(1);
-      expect(dispatch).toBeCalledWith({ type: '@@loadProtector/END' });
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith({ type: '@@loadProtector/END' });
     });
 
     test('ending protect when failure', async () => {
-      const dispatch = jest.fn();
-      const getState = jest.fn(() => ({
+      const dispatch = vi.fn();
+      const getState = vi.fn(() => ({
         loadProtector: {
           isCounting: true,
           requestCount: 1,
         },
       }));
-      const next = jest.fn(() => 'NEXT');
+      const next = vi.fn(() => 'NEXT');
       const action = { type: 'ANY_FAIL' };
       const result = protectLoadEnd({ dispatch, getState })(next)(action);
-      expect(dispatch).toBeCalledTimes(0);
-      expect(next).toBeCalledWith(action);
+      expect(dispatch).toHaveBeenCalledTimes(0);
+      expect(next).toHaveBeenCalledWith(action);
       expect(result).toBe('NEXT');
       await tick();
-      expect(dispatch).toBeCalledTimes(1);
-      expect(dispatch).toBeCalledWith({ type: '@@loadProtector/END' });
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith({ type: '@@loadProtector/END' });
     });
   });
 
@@ -302,6 +307,7 @@ describe('storeProtectLoadUtils', () => {
         isCounting: true,
       });
     });
+
     test('PROTECT_END', () => {
       const state = {
         foo: 'BAR',
@@ -318,6 +324,7 @@ describe('storeProtectLoadUtils', () => {
         resetBeforeFetch: false,
       });
     });
+
     test('PROTECT_SKIPPED', () => {
       const state = {
         foo: 'BAR',
@@ -339,6 +346,7 @@ describe('storeProtectLoadUtils', () => {
         location: { pathname: '/NEW-PATH' },
       });
     });
+
     test('GET_CONTENT_SUCCESS pass when not counting', () => {
       const state = {
         foo: 'BAR',
@@ -353,6 +361,7 @@ describe('storeProtectLoadUtils', () => {
         isCounting: false,
       });
     });
+
     test('GET_CONTENT_FAIL pass when not counting', () => {
       const state = {
         foo: 'BAR',
@@ -367,6 +376,7 @@ describe('storeProtectLoadUtils', () => {
         isCounting: false,
       });
     });
+
     test('GET_CONTENT_SUCCESS when counting', () => {
       const state = {
         foo: 'BAR',
@@ -386,6 +396,7 @@ describe('storeProtectLoadUtils', () => {
         location: { pathname: '/NEW-PATH' },
       });
     });
+
     test('GET_CONTENT_FAIL when counting', () => {
       const state = {
         foo: 'BAR',
@@ -405,6 +416,7 @@ describe('storeProtectLoadUtils', () => {
         location: { pathname: '/NEW-PATH' },
       });
     });
+
     test('RESET_CONTENT will remove the reset condition', () => {
       const state = {
         foo: 'BAR',

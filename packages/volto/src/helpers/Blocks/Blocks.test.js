@@ -572,7 +572,7 @@ describe('Blocks', () => {
     it('initialValue with intl', () => {
       // Mock intl with formatMessage function
       const intl = {
-        formatMessage: jest.fn(({ id }) => id),
+        formatMessage: vi.fn(({ id }) => id),
       };
 
       const messages = {

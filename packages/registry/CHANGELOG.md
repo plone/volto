@@ -8,6 +8,34 @@
 
 <!-- towncrier release notes start -->
 
+## 2.5.3 (2025-04-30)
+
+### Bugfix
+
+- Remove the slot registration from the array if it is the last in `unRegisterSlotComponent`. @sneridagh [#7031](https://github.com/plone/volto/issues/7031)
+
+## 2.5.2 (2025-04-25)
+
+### Bugfix
+
+- Fixed `unRegisterSlotComponent` method. @sneridagh [#7016](https://github.com/plone/volto/issues/7016)
+
+## 2.5.1 (2025-04-22)
+
+### Bugfix
+
+- Return properly in `getUtility` and `getUtilities` in case `type` or `name` is not set. @sneridagh [#7007](https://github.com/plone/volto/issues/7007)
+
+## 2.5.0 (2025-03-31)
+
+### Feature
+
+- Allow to override slots with no predicate with the same name. @sneridagh [#6887](https://github.com/plone/volto/issues/6887)
+
+### Internal
+
+- Fix typings for Vite Plugin. @sneridagh [#6733](https://github.com/plone/volto/issues/6733)
+
 ## 2.4.1 (2025-02-08)
 
 ### Internal
