@@ -1,5 +1,5 @@
 import React from 'react';
-import { BlockButton } from '@plone/volto-slate/editor/ui';
+import BlockButton from '@plone/volto-slate/editor/ui/BlockButton';
 import quoteIcon from '@plone/volto/icons/quote.svg';
 
 // TODO: this needs to use constants for el type

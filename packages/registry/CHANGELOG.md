@@ -8,6 +8,139 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.3 (2025-05-13)
+
+### Bugfix
+
+- Return properly in `getUtility` and `getUtilities` in case `type` or `name` is not set. @sneridagh [#7007](https://github.com/plone/volto/issues/7007)
+- Fixed `unRegisterSlotComponent` method. @sneridagh [#7016](https://github.com/plone/volto/issues/7016)
+- Remove the slot registration from the array if it is the last in `unRegisterSlotComponent`. @sneridagh [#7031](https://github.com/plone/volto/issues/7031)
+
+## 3.0.0-alpha.2 (2025-04-12)
+
+### Feature
+
+- New binary `init-loaders` initializes the `@plone/registry` loaders via the command line.
+  This fixes the upgrade to 7.2.0 problem introduced in https://github.com/remix-run/react-router/issues/13078. @sneridagh [#6780](https://github.com/plone/volto/issues/6780)
+- Support for Tailwind add-ons detection in Vite plugin. @sneridagh [#6797](https://github.com/plone/volto/issues/6797)
+- Added i18n support for projects and add-ons (i18next) for Seven. @pnicolli [#6866](https://github.com/plone/volto/issues/6866)
+
+## 3.0.0-alpha.1 (2025-03-31)
+
+### Feature
+
+- Allow to override slots with no predicate with the same name. @sneridagh [#6887](https://github.com/plone/volto/issues/6887)
+
+## 3.0.0-alpha.0 (2025-03-27)
+
+### Breaking
+
+- Removed support for loading config from project. @sneridagh
+
+  Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html)
+  for more information. [#6842](https://github.com/plone/volto/issues/6842)
+
+### Internal
+
+- Fix typings for Vite Plugin. @sneridagh [#6733](https://github.com/plone/volto/issues/6733)
+
+## 2.4.1 (2025-02-08)
+
+### Internal
+
+- Update Vite version. @sneridagh [#6640](https://github.com/plone/volto/issues/6640)
+- Update internal `peerDependencies` to include React 19.
+  Update TS version. @sneridagh [#6641](https://github.com/plone/volto/issues/6641)
+- Remove `react` as a hard dependency, use `peerDependencies` instead.  @sneridagh [#6728](https://github.com/plone/volto/issues/6728)
+
+## 2.4.0 (2025-01-31)
+
+### Feature
+
+- Added add-ons styles loader. @sneridagh [#6630](https://github.com/plone/volto/issues/6630)
+
+## 2.3.0 (2025-01-24)
+
+### Feature
+
+- Added route registry. @sneridagh [#6600](https://github.com/plone/volto/issues/6600)
+
+### Documentation
+
+- Document the route API. @sneridagh [#6604](https://github.com/plone/volto/issues/6604)
+
+## 2.2.0 (2024-12-12)
+
+### Feature
+
+- Added an experimental Vite plugin for the registry. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+
+### Documentation
+
+- `html_use_opensearch` value must not have a trailing slash. Clean up comments. @stevepiercy [#6502](https://github.com/plone/volto/issues/6502)
+
+## 2.1.2 (2024-11-05)
+
+### Bugfix
+
+- Fix weird typings issue happening in docker build but not locally. @sneridagh [#6471](https://github.com/plone/volto/issues/6471)
+
+### Internal
+
+- Improve packaging. @sneridagh 
+
+## 2.1.1 (2024-11-05)
+
+### Internal
+
+- Repackage registry, the previous build was including the docs. @sneridagh 
+
+## 2.1.0 (2024-11-05)
+
+### Feature
+
+- Allow any type `js`, `cjs`, `mjs`, `ts` as configuration for the add-on registry. @sneridagh [#6458](https://github.com/plone/volto/issues/6458)
+
+### Bugfix
+
+- Fix ERR_REQUIRE from ESM module requiring CJS module. @sneridagh [#6458](https://github.com/plone/volto/issues/6458)
+- Fix types for add-on's TypeScript. Fix `.tsconfig` for Node.js side. @sneridagh [#6461](https://github.com/plone/volto/issues/6461)
+
+### Internal
+
+- Replace `parcel` with `tsup` for build. @sneridagh [#6461](https://github.com/plone/volto/issues/6461)
+
+## 2.0.0 (2024-10-31)
+
+### Internal
+
+- Release 2.0.0 @sneridagh 
+
+## 2.0.0-alpha.0 (2024-10-27)
+
+### Breaking
+
+- Moved the package to ESM and refactored the add-on registry scripts to TypeScript. @sneridagh
+  Breaking:
+  - For maximum compatibility with CommonJS builds, the default exports have been moved to named exports.
+  - The modules affected are now built, and the import paths have changed, too.
+  - These changes force the modification in imports in a couple of files.
+  Please see the [Upgrade Guide](https://6.docs.plone.org/volto/upgrade-guide/index.html). [#6399](https://github.com/plone/volto/issues/6399)
+
+### Feature
+
+- Added an experimental Vite plugin. @sneridagh [#6399](https://github.com/plone/volto/issues/6399)
+
+### Bugfix
+
+- Return empty array when `getUtilities` does not match anything. @sneridagh [#6422](https://github.com/plone/volto/issues/6422)
+
+### Internal
+
+- Update typescript @sneridagh [#6371](https://github.com/plone/volto/issues/6371)
+- Update Vite and vitest versions @sneridagh [#6373](https://github.com/plone/volto/issues/6373)
+- Update typescript and vitest everywhere @sneridagh [#6407](https://github.com/plone/volto/issues/6407)
+
 ## 1.8.0 (2024-07-30)
 
 ### Feature

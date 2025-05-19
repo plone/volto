@@ -1,37 +1,28 @@
 import { z } from 'zod';
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfigSchema } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 const getLinkintegriyArgsSchema = z.object({
   uids: z.string(),
-  config: PloneClientConfigSchema,
 });
 
 export type GetLinkintegrityArgs = z.infer<typeof getLinkintegriyArgsSchema>;
 
-export const getLinkintegrity = async ({
-  uids,
-  config,
-}: GetLinkintegrityArgs): Promise<any> => {
+export async function getLinkintegrity(
+  this: PloneClient,
+  { uids }: GetLinkintegrityArgs,
+): Promise<RequestResponse<any>> {
   const validatedArgs = getLinkintegriyArgsSchema.parse({
     uids,
-    config,
   });
 
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {
       ...(validatedArgs && { uids: validatedArgs.uids }),
     },
   };
 
   return apiRequest('get', '/@linkintegrity', options);
-};
-
-export const getLinkintegrityQuery = ({
-  uids,
-  config,
-}: GetLinkintegrityArgs) => ({
-  queryKey: ['get', 'linkintegrity'],
-  queryFn: () => getLinkintegrity({ uids, config }),
-});
+}

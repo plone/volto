@@ -63,6 +63,7 @@ extensions = [
     "sphinx_copybutton",
     "sphinx_examples",
     "sphinxcontrib.video",
+    "sphinxcontrib.youtube",
     "sphinxext.opengraph",
 ]
 
@@ -89,11 +90,9 @@ linkcheck_ignore = [
     # Ignore github.com pages with anchors
     r"https://github.com/.*#.*",
     # Ignore other specific anchors
-    # r"https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi",  # TODO retest with latest Sphinx when upgrading theme. chromewebstore recently changed its URL and has "too many redirects".
-    # r"https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd",  # TODO retest with latest Sphinx when upgrading theme. chromewebstore recently changed its URL and has "too many redirects".
+    r"https://browsersl.ist/#",
     r"https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue",
     r"https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0",
-    # r"https://stackoverflow.com",  # volto and documentation  # TODO retest with latest Sphinx.
 ]
 linkcheck_anchors = True
 linkcheck_timeout = 5
@@ -117,7 +116,7 @@ master_doc = "index"
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = [
     "spelling_wordlist.txt",
-    "contributing/branch-policy.md",
+    "_inc/*",
 ]
 
 suppress_warnings = [
@@ -150,9 +149,9 @@ html_theme_options = {
             }
         },
         {
-            "name": "Twitter",
-            "url": "https://twitter.com/plone",
-            "icon": "fa-brands fa-square-twitter",
+            "name": "Mastodon",
+            "url": "https://plone.social/@plone",
+            "icon": "fa-brands fa-mastodon",
             "type": "fontawesome",
             "attributes": {
                 "target": "_blank",
@@ -161,9 +160,20 @@ html_theme_options = {
             }
         },
         {
-            "name": "Mastodon",
-            "url": "https://plone.social/@plone",
-            "icon": "fa-brands fa-mastodon",
+            "name": "YouTube",
+            "url": "https://www.youtube.com/@PloneCMS",
+            "icon": "fa-brands fa-youtube",
+            "type": "fontawesome",
+            "attributes": {
+                "target": "_blank",
+                "rel": "noopener me",
+                "class": "nav-link custom-fancy-css"
+            }
+        },
+        {
+            "name": "X (formerly Twitter)",
+            "url": "https://x.com/plone",
+            "icon": "fa-brands fa-square-x-twitter",
             "type": "fontawesome",
             "attributes": {
                 "target": "_blank",
@@ -179,7 +189,7 @@ html_theme_options = {
     "path_to_docs": "docs",
     "repository_branch": "main",
     "repository_url": "https://github.com/plone/volto",
-    "search_bar_text": "Search",  # TODO: Confirm usage of search_bar_text in plone-sphinx-theme
+    "search_bar_text": "Search",
     "use_edit_page_button": True,
     "use_issues_button": True,
     "use_repository_button": True,
@@ -187,7 +197,7 @@ html_theme_options = {
 
 # Announce that we have an opensearch plugin
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_use_opensearch
-html_use_opensearch = "https://6.docs.plone.org"  # TODO: Confirm usage of opensearch in theme
+html_use_opensearch = "https://6.docs.plone.org"
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -197,10 +207,6 @@ html_css_files = ["custom.css", ("print.css", {"media": "print"})]
 
 # If false, no index is generated.
 html_use_index = True
-
-# The name for this set of Sphinx documents.  If None, it defaults to
-# "<project> v<release> documentation".
-html_title = "%(project)s v%(release)s" % {"project": project, "release": release}
 
 html_extra_path = [
     "robots.txt",
@@ -216,12 +222,14 @@ html_static_path = [
 # For more information see:
 # https://myst-parser.readthedocs.io/en/latest/syntax/optional.html
 myst_enable_extensions = [
-    "deflist",  # Support definition lists.
-    # https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#definition-lists
-    "linkify",  # Identify "bare" web URLs and add hyperlinks.
-    "colon_fence",  # You can also use ::: delimiters to denote code fences,\
-    #  instead of ```.
+    "attrs_block", # Support parsing of block attributes.
+    "attrs_inline", # Support parsing of inline attributes.
+    "colon_fence",  # You can also use ::: delimiters to denote code fences, instead of ```.
+    "deflist",  # Support definition lists. https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#definition-lists
     "html_image",  # For inline images. See https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#html-images
+    "linkify",  # Identify "bare" web URLs and add hyperlinks.
+    "strikethrough",  # See https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#syntax-strikethrough
+    "substitution",  # Use Jinja2 for substitutions. https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#substitutions-with-jinja2
 ]
 
 
@@ -241,6 +249,8 @@ intersphinx_mapping = {
     "plone": ("https://6.docs.plone.org/", None),
     "python": ("https://docs.python.org/3/", None),
     "training": ("https://training.plone.org/", None),
+    "training-2024": ("https://2024.training.plone.org/", None),
+    "training-2022": ("https://2022.training.plone.org/", None),
 }
 
 
@@ -289,20 +299,19 @@ latex_logo = "_static/logo_2x.png"
 # An extension that allows replacements for code blocks that
 # are not supported in `rst_epilog` or other substitutions.
 # https://stackoverflow.com/a/56328457/2214933
-def source_replace(app, docname, source):
-    result = source[0]
-    for key in app.config.source_replacements:
-        result = result.replace(key, app.config.source_replacements[key])
-    source[0] = result
+# def source_replace(app, docname, source):
+#     result = source[0]
+#     for key in app.config.source_replacements:
+#         result = result.replace(key, app.config.source_replacements[key])
+#     source[0] = result
 
 
 # Dict of replacements.
-source_replacements = {
-    "{NVM_VERSION}": "0.39.5",
-}
+# source_replacements = {
+# }
 
 
 def setup(app):
-    app.add_config_value("source_replacements", {}, True)
-    app.connect("source-read", source_replace)
+    # app.add_config_value("source_replacements", {}, True)
+    # app.connect("source-read", source_replace)
     app.add_config_value("context", "volto", "env")

@@ -74,7 +74,6 @@ msgstr ""
 
 #. Default: "Add"
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Rules/Rules
@@ -93,6 +92,11 @@ msgstr ""
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add Addons"
 msgstr "Afegeix complements"
+
+#. Default: "Add Alternative URL"
+#: components/manage/Controlpanels/Aliases
+msgid "Add Alternative URL"
+msgstr ""
 
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
@@ -310,6 +314,16 @@ msgstr ""
 msgid "Alias has been added"
 msgstr ""
 
+#. Default: "Aliases have been removed."
+#: components/manage/Controlpanels/Aliases
+msgid "Aliases have been removed."
+msgstr ""
+
+#. Default: "Aliases have been uploaded."
+#: components/manage/Controlpanels/Aliases
+msgid "Aliases have been uploaded."
+msgstr ""
+
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -329,7 +343,7 @@ msgstr "Tots"
 msgid "All content"
 msgstr "Tot el contingut"
 
-#. Default: "All existing alternative urls for this site"
+#. Default: "Existing alternative URLs for this site"
 #: components/manage/Controlpanels/Aliases
 msgid "All existing alternative urls for this site"
 msgstr ""
@@ -356,7 +370,7 @@ msgstr "Deixeu el camp buit si la imatge és purament decorativa"
 msgid "Alt text hint link text"
 msgstr "Descriu el propòsit de la imatge"
 
-#. Default: "Alternative url path (Required)"
+#. Default: "Alternative URL path (Required)"
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path (Required)"
 msgstr ""
@@ -367,7 +381,7 @@ msgstr ""
 msgid "Alternative url path must start with a slash."
 msgstr ""
 
-#. Default: "Alternative url path → target url path (date and time of creation, manually created yes/no)"
+#. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr ""
@@ -416,6 +430,11 @@ msgstr ""
 #. Default: "Assignments"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Assignments"
+msgstr ""
+
+#. Default: "Automatically"
+#: components/manage/Controlpanels/Aliases
+msgid "Automatically"
 msgstr ""
 
 #. Default: "Available"
@@ -477,6 +496,11 @@ msgstr "Base de cerca"
 msgid "Block"
 msgstr "Bloc"
 
+#. Default: "Both"
+#: components/manage/Controlpanels/Aliases
+msgid "Both"
+msgstr ""
+
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -503,10 +527,20 @@ msgstr "Navegui"
 msgid "Browse the site, drop an image, or type a URL"
 msgstr "Navegueu pel lloc, deixeu anar una imatge o escriviu un URL"
 
+#. Default: "Bulk upload CSV"
+#: components/manage/Controlpanels/Aliases
+msgid "BulkUploadAltUrls"
+msgstr ""
+
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Per defecte, els permisos del contenidor d'aquest element són heretats. Si es desactiva, només seran vàlids els permisos de compartició definits explícitament. A la vista general, el símbol ${inherited} indica un valor heretat. De la mateixa manera, el símbol ${global} indica un rol global, que és gestionat per l'administrador del lloc."
+
+#. Default: "CSV file"
+#: components/manage/Controlpanels/Aliases
+msgid "CSVFile"
+msgstr ""
 
 #. Default: "Cache Name"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -525,6 +559,7 @@ msgstr "No es pot editar el disseny per al tipus de contingut <strong>{type}</st
 
 #. Default: "Cancel"
 #: components/manage/Add/Add
+#: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -540,6 +575,11 @@ msgstr "No es pot editar el disseny per al tipus de contingut <strong>{type}</st
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
 msgstr "Cancel·lar"
+
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr "Cancel·la la cerca"
 
 #. Default: "Cell"
 #: config/Blocks
@@ -836,6 +876,16 @@ msgstr ""
 msgid "Create working copy"
 msgstr "Crea una còpia de treball"
 
+#. Default: "Created after"
+#: components/manage/Controlpanels/Aliases
+msgid "Created after"
+msgstr ""
+
+#. Default: "Created before"
+#: components/manage/Controlpanels/Aliases
+msgid "Created before"
+msgstr ""
+
 #. Default: "Created by {creator} on {date}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "Created by {creator} on {date}"
@@ -955,6 +1005,11 @@ msgstr "Data (el més nou primer)"
 msgid "Default"
 msgstr "Per defecte"
 
+#. Default: "Default value"
+#: components/manage/Widgets/SchemaWidget
+msgid "Default value"
+msgstr ""
+
 #. Default: "Default view"
 #: config/Views
 msgid "Default view"
@@ -962,6 +1017,7 @@ msgstr "Per defecte"
 
 #. Default: "Delete"
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/Groups/RenderGroups
@@ -1015,12 +1071,12 @@ msgid "Delete row"
 msgstr "Suprimeix la fila"
 
 #. Default: "Delete selected items?"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Delete selected items?"
 msgstr ""
 
 #. Default: "Delete this item?"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Delete this item?"
 msgstr ""
 
@@ -1030,7 +1086,7 @@ msgid "Deleted"
 msgstr ""
 
 #. Default: "Deleting this item breaks {brokenReferences} {variation}."
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item breaks {brokenReferences} {variation}."
 msgstr ""
 
@@ -1182,6 +1238,11 @@ msgstr "Les adreces de correu electrònic no coincideixen."
 msgid "Edit"
 msgstr "Edita"
 
+#. Default: "Edit Alternative URL"
+#: components/manage/Controlpanels/Aliases
+msgid "Edit Alternative URL"
+msgstr ""
+
 #. Default: "Edit Rule"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Edit Rule"
@@ -1293,14 +1354,18 @@ msgstr "Introduïu el nom complet, per exemple John Smith."
 msgid "Enter map Embed Code"
 msgstr "Introduïu el codi d'inserció del mapa"
 
-#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
 #: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
 msgstr ""
 
+#. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+#: components/manage/Controlpanels/Aliases
+msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+msgstr ""
+
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 msgstr ""
 
@@ -1339,17 +1404,13 @@ msgstr ""
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
+#: components/manage/Widgets/ImageWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Error"
 msgstr "Error"
-
-#. Default: "Error"
-#: components/manage/Controlpanels/Aliases
-msgid "ErrorHeader"
-msgstr ""
 
 #. Default: "Event"
 #: components/manage/Controlpanels/Rules/Rules
@@ -1375,6 +1436,11 @@ msgstr ""
 #: config/Views
 msgid "Event view"
 msgstr "Esdeveniment"
+
+#. Default: "Example"
+#: components/manage/Controlpanels/Aliases
+msgid "Example"
+msgstr ""
 
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1466,6 +1532,11 @@ msgstr "Camp"
 msgid "File"
 msgstr "Dossier"
 
+#. Default: "File is not of the accepted type {accept}"
+#: components/manage/Widgets/FileWidget
+msgid "File is not of the accepted type {accept}"
+msgstr ""
+
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
@@ -1486,7 +1557,13 @@ msgstr "Nom de l'arxiu"
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Fitxers pujats: {uploadedFiles}"
 
+#. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+#: components/manage/Widgets/SchemaWidget
+msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+msgstr ""
+
 #. Default: "Filter"
+#: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
 msgstr ""
@@ -1496,7 +1573,7 @@ msgstr ""
 msgid "Filter Rules:"
 msgstr ""
 
-#. Default: "Filter by prefix"
+#. Default: "Filter by path"
 #: components/manage/Controlpanels/Aliases
 msgid "Filter by prefix"
 msgstr ""
@@ -2147,6 +2224,11 @@ msgstr "Gestiona les traduccions per a {title}"
 msgid "Manual"
 msgstr ""
 
+#. Default: "Manually"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually"
+msgstr ""
+
 #. Default: "Manually or automatically added?"
 #: components/manage/Controlpanels/Aliases
 msgid "Manually or automatically added?"
@@ -2299,6 +2381,11 @@ msgstr ""
 #: error
 msgid "Navigate back"
 msgstr "Navega enrere"
+
+#. Default: "Navigate to this item"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "Navigate to this item"
+msgstr ""
 
 #. Default: "Navigation"
 #: components/theme/Navigation/ContextNavigation
@@ -2616,6 +2703,11 @@ msgstr "Eines personals"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Responsables de la creació del contingut d'aquest article. Introduïu una llista de noms d'usuari, un per línia. El creador principal hauria de ser primer."
 
+#. Default: "Placeholder"
+#: components/manage/Widgets/SchemaWidget
+msgid "Placeholder"
+msgstr ""
+
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
@@ -2733,6 +2825,11 @@ msgstr "Data de publicació"
 msgid "Query"
 msgstr "Consulta"
 
+#. Default: "Query Parameter Name"
+#: components/manage/Widgets/SchemaWidget
+msgid "Query Parameter Name"
+msgstr ""
+
 #. Default: "Re-enter the password. Make sure the passwords are identical."
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -2806,6 +2903,11 @@ msgstr "Registrar-se"
 #: components/theme/Register/Register
 msgid "Registration form"
 msgstr "Formulari d'inscripció"
+
+#. Default: "Related Items"
+#: components/theme/RelatedItems/RelatedItems
+msgid "Related Items"
+msgstr ""
 
 #. Default: "Relation"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -3182,6 +3284,11 @@ msgstr "Seleccioneu les columnes per mostrar"
 msgid "Select relation"
 msgstr ""
 
+#. Default: "Select rule"
+#: components/manage/Rules/Rules
+msgid "Select rule"
+msgstr ""
+
 #. Default: "Select the transition to be used for modifying the items state."
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
@@ -3379,12 +3486,12 @@ msgid "Small"
 msgstr ""
 
 #. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
 msgstr ""
 
 #. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
 msgstr ""
 
@@ -3563,8 +3670,7 @@ msgid "Table"
 msgstr "Taula"
 
 #. Default: "Table of Contents"
-#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
-#: components/manage/Blocks/ToC/variations/HorizontalMenu
+#: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
 msgstr "Taula de continguts"
 
@@ -3591,7 +3697,6 @@ msgstr "Etiquetes per eliminar"
 
 #. Default: "Target"
 #: components/manage/Blocks/Teaser/schema
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Target"
@@ -3656,6 +3761,11 @@ msgstr "El servidor backend del vostre lloc web no respon, demanem disculpes per
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr "La presència del botó desactiva la cerca en directe, la consulta s'emet quan premeu INTRO"
 
+#. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+#: components/manage/Widgets/FileWidget
+msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+msgstr ""
+
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
 msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
@@ -3695,6 +3805,11 @@ msgstr ""
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "El procés de registre ha estat satisfactori. Si us plau, comproveu la vostra bústia d'entrada de correu electrònic per obtenir informació sobre com activar el vostre compte."
+
+#. Default: "The selected default language must be in the list of the field 'Available languages'"
+#: helpers/MessageLabels/MessageLabels
+msgid "The selected default language must be in the list of the field 'Available languages'"
+msgstr ""
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
@@ -3754,6 +3869,11 @@ msgstr "Hi va haver alguns errors"
 msgid "There were some errors."
 msgstr "Hi va haver alguns errors."
 
+#. Default: "These items will have broken links"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "These items will have broken links"
+msgstr ""
+
 #. Default: "Third"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
@@ -3775,7 +3895,7 @@ msgid "This is a working copy of {title}"
 msgstr "Aquesta és una còpia de treball de {title}"
 
 #. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
 msgstr ""
 
@@ -3801,6 +3921,7 @@ msgstr ""
 
 #. Default: "Time"
 #: components/manage/Widgets/DatetimeWidget
+#: components/manage/Widgets/TimeWidget
 msgid "Time"
 msgstr "Hora"
 
@@ -4184,7 +4305,7 @@ msgid "View changes"
 msgstr "Veure els canvis"
 
 #. Default: "View links and references to this item"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "View links and references to this item"
 msgstr ""
 
@@ -4396,6 +4517,11 @@ msgstr ""
 msgid "Your usernaame is required for reset your password."
 msgstr ""
 
+#. Default: "File types allowed"
+#: components/manage/Widgets/SchemaWidget
+msgid "accept"
+msgstr ""
+
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -4431,6 +4557,11 @@ msgstr ""
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
 msgstr "Has oblidat la teva contrasenya?"
+
+#. Default: "Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
+#: components/manage/Controlpanels/Aliases
+msgid "bulkUploadUrlsHelp"
+msgstr ""
 
 #. Default: "Checkbox"
 #: config/Blocks
@@ -4542,6 +4673,11 @@ msgstr "quan"
 msgid "event_where"
 msgstr "On?"
 
+#. Default: "/example"
+#: components/manage/Controlpanels/Aliases
+msgid "examplePath"
+msgstr ""
+
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
@@ -4582,6 +4718,11 @@ msgstr "HTML"
 msgid "image"
 msgstr "Imatge"
 
+#. Default: "Please upload an image instead."
+#: components/manage/Widgets/ImageWidget
+msgid "imageUploadErrorMessage"
+msgstr ""
+
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "image_block_clear"
@@ -4603,12 +4744,12 @@ msgid "intranet"
 msgstr "Intranet"
 
 #. Default: "item"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "item"
 msgstr ""
 
 #. Default: "items"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "items"
 msgstr ""
 
@@ -4626,6 +4767,16 @@ msgstr "El meu nom d'usuari és"
 #: config/Blocks
 msgid "leadimage"
 msgstr "Camp d'imatge principal"
+
+#. Default: "Delete item and break links"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "link-integrity: Delete item and break links"
+msgstr ""
+
+#. Default: "Checking references..."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "link-integrity: loading references"
+msgstr ""
 
 #. Default: "Enter a URL to an image"
 #: components/manage/Widgets/ImageWidget
@@ -4752,13 +4903,18 @@ msgid "rebuild relations"
 msgstr ""
 
 #. Default: "reference"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "reference"
 msgstr ""
 
 #. Default: "references"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "references"
+msgstr ""
+
+#. Default: "refers to"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "refers to"
 msgstr ""
 
 #. Default: "results"
@@ -4939,6 +5095,11 @@ msgstr ""
 #. Default: "Select view"
 #: components/manage/Blocks/Search/components/ViewSwitcher
 msgid "selectView"
+msgstr ""
+
+#. Default: "Maximum size of the file in bytes"
+#: components/manage/Widgets/SchemaWidget
+msgid "size"
 msgstr ""
 
 #. Default: "Skip to footer"

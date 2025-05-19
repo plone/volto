@@ -1,4 +1,4 @@
-# @plone/volto-types Release Notes
+# @plone/types Release Notes
 
 <!-- Do *NOT* add new change log entries to this file.
      Instead create a file in the news directory.
@@ -7,6 +7,99 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 2.0.0-alpha.3 (2025-05-16)
+
+### Bugfix
+
+- Fix image scales typings.
+  Added `dataAdapter` key in `BlockConfigBase`.
+  `category` as optional in `BlockConfigBase`. @sneridagh [#7079](https://github.com/plone/volto/issues/7079)
+
+## 2.0.0-alpha.2 (2025-05-13)
+
+### Feature
+
+- Better Site extender and endpoint typings, add it to the default extenders typings. @sneridagh [#7007](https://github.com/plone/volto/issues/7007)
+- Fixed `groupBlocksOrder` typing. @sneridagh [#7029](https://github.com/plone/volto/issues/7029)
+
+### Bugfix
+
+- Fix boolean in blocks edit config BlockEditProps in key selected type. @sneridagh [#6994](https://github.com/plone/volto/issues/6994)
+- Better typing for `apiExpandersType` introduced in #7012. @sneridagh [#7016](https://github.com/plone/volto/issues/7016)
+- `blockModel` should be optional. @sneridagh [#7033](https://github.com/plone/volto/issues/7033)
+- Improve typings of brains and objectBrowser references. @sneridagh [#7047](https://github.com/plone/volto/issues/7047)
+
+## 2.0.0-alpha.1 (2025-04-12)
+
+### Feature
+
+- Improve typings in `getAddonRoutesConfig` for `@plone/react-router`. @sneridagh [#6796](https://github.com/plone/volto/issues/6796)
+
+## 2.0.0-alpha.0 (2025-03-31)
+
+### Breaking
+
+- Update types to match plone client rewrite. @robgietema [#6889](https://github.com/plone/volto/issues/6889)
+
+## 1.3.2 (2025-02-08)
+
+### Internal
+
+- Update TS version. @sneridagh [#6641](https://github.com/plone/volto/issues/6641)
+- Remove hard dependencies on react-intl and history in @plone/types @sneridagh [#6728](https://github.com/plone/volto/issues/6728)
+
+## 1.3.1 (2025-01-31)
+
+### Bugfix
+
+- Remove `hasWorkingCopySupport` setting. @davisagli [#6393](https://github.com/plone/volto/issues/6393)
+
+## 1.3.0 (2025-01-24)
+
+### Feature
+
+- Added typings for the route registry. @sneridagh [#6600](https://github.com/plone/volto/issues/6600)
+
+## 1.2.0 (2024-12-17)
+
+### Feature
+
+- Added the typing for the new `cssLayers` configuration object setting. @sneridagh [#6539](https://github.com/plone/volto/issues/6539)
+
+## 1.1.0 (2024-12-12)
+
+### Feature
+
+- Added block category type. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+
+## 1.0.0 (2024-10-31)
+
+### Internal
+
+- Release 1.0.0 @sneridagh
+
+## 1.0.0-alpha.22 (2024-10-30)
+
+### Feature
+
+- `StyleDefinitions` in types. @sneridagh [#6445](https://github.com/plone/volto/issues/6445)
+
+## 1.0.0-alpha.21 (2024-10-18)
+
+### Bugfix
+
+- Some improvements and fixes in blocks and settings types. @sneridagh [#6412](https://github.com/plone/volto/issues/6412)
+
+### Internal
+
+- Update typescript and vitest everywhere @sneridagh [#6407](https://github.com/plone/volto/issues/6407)
+
+## 1.0.0-alpha.20 (2024-10-08)
+
+### Bugfix
+
+- Fixed types for image fields and BlocksFormData @pnicolli @deodorhunter [#6382](https://github.com/plone/volto/issues/6382)
 
 ## 1.0.0-alpha.19 (2024-07-30)
 

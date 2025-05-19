@@ -2,16 +2,16 @@ import React, { useEffect } from 'react';
 import { defineMessages } from 'react-intl';
 import { compose } from 'redux';
 
-import { SidebarPortal } from '@plone/volto/components';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import { addExtensionFieldToSchema } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import config from '@plone/volto/registry';
 
 import { SearchBlockViewComponent } from './SearchBlockView';
 import Schema from './schema';
 import { withSearch, withQueryString } from './hocs';
-import { cloneDeep } from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 
 const messages = defineMessages({
   template: {

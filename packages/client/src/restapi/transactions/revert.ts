@@ -1,44 +1,30 @@
 import { z } from 'zod';
-import { ApiRequestParams, apiRequest } from '../../API';
-import {
-  PloneClientConfig,
-  PloneClientConfigSchema,
-} from '../../validation/config';
+import { type ApiRequestParams, apiRequest } from '../../api';
 import { revertTransactionsDataSchema } from '../../validation/transactions';
-import { RevertTransactionsResponse } from '@plone/types';
+import type { RevertTransactionsResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 export const revertTransactionsArgsSchema = z.object({
   data: revertTransactionsDataSchema,
-  config: PloneClientConfigSchema,
 });
 
 export type RevertTransactionsArgs = z.infer<
   typeof revertTransactionsArgsSchema
 >;
 
-export const revertTransactions = async ({
-  data,
-  config,
-}: RevertTransactionsArgs): Promise<RevertTransactionsResponse> => {
+export async function revertTransactions(
+  this: PloneClient,
+  { data }: RevertTransactionsArgs,
+): Promise<RequestResponse<RevertTransactionsResponse>> {
   const validatedArgs = revertTransactionsArgsSchema.parse({
     data,
-    config,
   });
 
   const options: ApiRequestParams = {
     data: validatedArgs.data,
-    config: validatedArgs.config,
+    config: this.config,
   };
 
   return apiRequest('patch', '/@transactions', options);
-};
-
-export const revertTransactionsMutation = ({
-  config,
-}: {
-  config: PloneClientConfig;
-}) => ({
-  mutationKey: ['patch', 'transactions'],
-  mutationFn: ({ data }: Omit<RevertTransactionsArgs, 'config'>) =>
-    revertTransactions({ data, config }),
-});
+}

@@ -8,20 +8,22 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { getParentUrl } from '@plone/volto/helpers';
+import { getParentUrl, getId } from '@plone/volto/helpers/Url/Url';
 import { createPortal } from 'react-dom';
-import { last } from 'lodash';
+import last from 'lodash/last';
 import { Confirm, Container, Table, Button, Header } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { Error, Icon, Toolbar, Toast } from '@plone/volto/components';
+import Error from '@plone/volto/components/theme/Error/Error';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import ContentTypesActions from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
 import {
   getControlpanel,
   postControlpanel,
   deleteControlpanel,
-} from '@plone/volto/actions';
-import { getId } from '@plone/volto/helpers';
+} from '@plone/volto/actions/controlpanels/controlpanels';
 
 import addSVG from '@plone/volto/icons/add-document.svg';
 import backSVG from '@plone/volto/icons/back.svg';

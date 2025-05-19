@@ -1,21 +1,15 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
-import { Addons } from '@plone/types';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type { Addons } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
-export type AddonsArgs = {
-  config: PloneClientConfig;
-};
-
-export const getAddons = async ({ config }: AddonsArgs): Promise<Addons> => {
+export async function getAddons(
+  this: PloneClient,
+): Promise<RequestResponse<Addons>> {
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
 
   return apiRequest('get', '/@addons', options);
-};
-
-export const getAddonsQuery = ({ config }: AddonsArgs) => ({
-  queryKey: ['get', 'addons'],
-  queryFn: () => getAddons({ config }),
-});
+}

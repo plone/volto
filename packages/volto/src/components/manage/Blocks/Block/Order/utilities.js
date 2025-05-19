@@ -1,6 +1,6 @@
-import { isArray } from 'lodash';
+import isArray from 'lodash/isArray';
 
-import { getBlocksLayoutFieldname } from '@plone/volto/helpers';
+import { getBlocksLayoutFieldname } from '@plone/volto/helpers/Blocks/Blocks';
 
 function getDragDepth(offset, indentationWidth) {
   return Math.round(offset / indentationWidth);

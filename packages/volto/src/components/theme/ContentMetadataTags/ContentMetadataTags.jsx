@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
-import {
-  toPublicURL,
-  Helmet,
-  hasApiExpander,
-  getBaseUrl,
-} from '@plone/volto/helpers';
-import { getNavroot } from '@plone/volto/actions';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { toPublicURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
+import { getNavroot } from '@plone/volto/actions/navroot/navroot';
 import config from '@plone/volto/registry';
 import { useDispatch, useSelector } from 'react-redux';
 

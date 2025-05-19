@@ -5,9 +5,9 @@ import {
   CalendarGrid,
   DateInput,
   DateRangePicker as RACDateRangePicker,
-  DateRangePickerProps as RACDateRangePickerProps,
+  type DateRangePickerProps as RACDateRangePickerProps,
   DateSegment,
-  DateValue,
+  type DateValue,
   Dialog,
   FieldError,
   Group,
@@ -16,7 +16,7 @@ import {
   Popover,
   RangeCalendar,
   Text,
-  ValidationResult,
+  type ValidationResult,
 } from 'react-aria-components';
 
 export interface DateRangePickerProps<T extends DateValue>

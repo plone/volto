@@ -1,0 +1,259 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`RelationsWidget > renders a full vocabulary array view widget component 1`] = `
+<ul
+  className="metadata relations widget"
+>
+  <li>
+    <a
+      className="metadata relation widget"
+      href="/"
+      onClick={[Function]}
+      title=""
+    >
+      <svg
+        className="icon icon-margin"
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
+          }
+        }
+        onClick={null}
+        style={
+          {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+      Foo
+    </a>
+  </li>
+  <li>
+    <a
+      className="metadata relation widget"
+      href="/"
+      onClick={[Function]}
+      title=""
+    >
+      <svg
+        className="icon icon-margin"
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
+          }
+        }
+        onClick={null}
+        style={
+          {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+      Bar
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`RelationsWidget > renders a full vocabulary relations view widget component with children 1`] = `
+<ul
+  className="metadata relations widget"
+>
+  <li>
+    <a
+      className="metadata relation widget Foo private"
+      href="/foo-page"
+      onClick={[Function]}
+      title="A Foo"
+    >
+      <svg
+        className="icon icon-margin"
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<title>Foo</title><path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
+          }
+        }
+        onClick={null}
+        style={
+          {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+      <strong>
+        Foo
+      </strong>
+    </a>
+  </li>
+  <li>
+    <a
+      className="metadata relation widget Bar published"
+      href="/bar-page"
+      onClick={[Function]}
+      title="A Bar"
+    >
+      <svg
+        className="icon icon-margin"
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<title>Bar</title><path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
+          }
+        }
+        onClick={null}
+        style={
+          {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+      <strong>
+        Bar
+      </strong>
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`RelationsWidget > renders a simple relations view widget component 1`] = `
+<ul
+  className="metadata relations widget"
+>
+  <li>
+    <a
+      className="metadata relation widget"
+      href="/"
+      onClick={[Function]}
+      title=""
+    >
+      <svg
+        className="icon icon-margin"
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
+          }
+        }
+        onClick={null}
+        style={
+          {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+      foo
+    </a>
+  </li>
+  <li>
+    <a
+      className="metadata relation widget"
+      href="/"
+      onClick={[Function]}
+      title=""
+    >
+      <svg
+        className="icon icon-margin"
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
+          }
+        }
+        onClick={null}
+        style={
+          {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+      bar
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`RelationsWidget > renders a vocabulary relations view widget component 1`] = `
+<ul
+  className="metadata relations widget"
+>
+  <li>
+    <a
+      className="metadata relation widget"
+      href="/"
+      onClick={[Function]}
+      title=""
+    >
+      <svg
+        className="icon icon-margin"
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
+          }
+        }
+        onClick={null}
+        style={
+          {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+      Foo
+    </a>
+  </li>
+  <li>
+    <a
+      className="metadata relation widget"
+      href="/"
+      onClick={[Function]}
+      title=""
+    >
+      <svg
+        className="icon icon-margin"
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<path fill-rule="evenodd" d="M6.9996,3.0003 L6.9996,33.0003 L29.0006,33.0003 L29.0006,11.5863 L20.4136,3.0003 L6.9996,3.0003 Z M9.0006,5.0003 L19.0006,5.0003 L19.0006,13.0003 L27.0006,13.0003 L27.0006,31.0003 L9.0006,31.0003 L9.0006,5.0003 Z M20.9996,6.4143 L25.5856,11.0003 L20.9996,11.0003 L20.9996,6.4143 Z"/>",
+          }
+        }
+        onClick={null}
+        style={
+          {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+      Bar
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`RelationsWidget > renders an empty relations view widget component 1`] = `null`;
