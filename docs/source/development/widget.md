@@ -411,7 +411,7 @@ This widget named 'toggle_widget' can now be used as follows:
             subscribe_to_newsletter: {
                 title: 'Subscribe to newsletter',
                 type: 'pipapo',
-                widget: toggle_widget
+                widget: toggle_widget,
                 default: false,
             },
         },
@@ -456,7 +456,7 @@ export function ToggleWidget(props) {
 export default ToggleWidget;
 ```
 
-You can experiment with other widgets included in Volto core under the {file}`/components/manage/Widgets/VocabularyTermsWidget.jsx` directory for more inspiration and possibilities of enhancing your widgets.
+You can experiment with other widgets included in Volto core under the {file}`/components/manage/Widgets/` directory for more inspiration and possibilities of enhancing your widgets.
 
 
 ## Sidebar
