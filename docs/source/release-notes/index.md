@@ -17,6 +17,16 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.22.0 (2025-05-20)
+
+### Feature
+
+- Use table sorting icons from pastanaga `icons.woff` instead of assuming we have Font Awesome icons. Improve accessibility for sortable table headers in table block. @ichim-david @kreafox [#7091](https://github.com/plone/volto/issues/7091)
+
+### Bugfix
+
+- Added an `aria-label` to `CreatableSelect` inside `TokenWidget` to improve the component’s accessibility. @Wagner3UB [#6786](https://github.com/plone/volto/issues/6786)
+
 ## 17.21.0 (2025-03-05)
 
 ### Feature
