@@ -1,6 +1,6 @@
 {
   "name": "@plone/volto-slate",
-  "version": "19.0.0-alpha.0",
+  "version": "19.0.0-alpha.1",
   "description": "Slate.js integration with Volto",
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
@@ -18,7 +18,7 @@
     "access": "public"
   },
   "dependencies": {
-    "classnames": "2.2.6",
+    "classnames": "2.5.1",
     "github-slugger": "1.4.0",
     "image-extensions": "1.1.0",
     "is-hotkey": "0.2.0",

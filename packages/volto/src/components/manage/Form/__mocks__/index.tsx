@@ -1,7 +1,25 @@
+/* TODO: When the Volto Team removes Jest configuration support from Volto core, update this file with the Vitest version of the mock.
+Then, in the tests, we need to replace:
+
+vi.mock('@plone/volto/components/manage/Form', async () => {
+  return await import(
+    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
+  );
+});
+
+
+with the following:
+
+vi.mock('@plone/volto/components/manage/Form');
+
+Finally, remove this comment.
+*/
+
 import type { JSONSchema } from '@plone/types';
 import type { Ref } from 'react';
-import { forwardRef } from 'react';
+const { forwardRef } = jest.requireActual('react');
 
+// Field descriptions can contain react elements and those are not JSON stringifiable
 const cleanupSchema = (schema: JSONSchema | null): JSONSchema | null => {
   if (!schema || !schema.properties) return schema;
   return {
@@ -22,38 +40,38 @@ const cleanupSchema = (schema: JSONSchema | null): JSONSchema | null => {
   };
 };
 
-export const Field = vi.fn((props) => (
+export const Field = jest.fn((props) => (
   <div className="Field" id={props.id}>
     {props.title}
   </div>
 ));
 
-export const InlineForm = vi.fn((props) => (
+export const InlineForm = jest.fn((props) => (
   <div
     id="InlineForm"
     data-schema={JSON.stringify(cleanupSchema(props.schema), null, 2)}
   />
 ));
 
-export const ModalForm = vi.fn((props) => (
+export const ModalForm = jest.fn((props) => (
   <div
     id="ModalForm"
     data-schema={JSON.stringify(cleanupSchema(props.schema), null, 2)}
   />
 ));
 
-export const UndoToolbar = vi.fn(() => <div id="UndoToolbar" />);
+export const UndoToolbar = jest.fn(() => <div id="UndoToolbar" />);
 
-export const BlocksToolbar = vi.fn(() => <div id="BlocksToolbar" />);
+export const BlocksToolbar = jest.fn(() => <div id="BlocksToolbar" />);
 
-export const BlockDataForm = vi.fn((props) => (
+export const BlockDataForm = jest.fn((props) => (
   <div
     id="BlockDataForm"
     data-schema={JSON.stringify(cleanupSchema(props.schema), null, 2)}
   />
 ));
 
-export const BlocksForm = vi.fn((props) => (
+export const BlocksForm = jest.fn((props) => (
   <div
     id="BlocksForm"
     data-schema={JSON.stringify(cleanupSchema(props.schema), null, 2)}
@@ -70,4 +88,4 @@ const MockForm = forwardRef(
   ),
 );
 
-export const Form = vi.fn((props) => <MockForm {...props} />);
+export const Form = jest.fn((props) => <MockForm {...props} />);

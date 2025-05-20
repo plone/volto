@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "19.0.0-alpha.0",
+  "version": "19.0.0-alpha.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -184,7 +184,7 @@
     "@plone/scripts": "workspace:*",
     "@plone/volto-slate": "workspace:*",
     "@redux-devtools/extension": "^3.3.0",
-    "classnames": "2.2.6",
+    "classnames": "2.5.1",
     "connected-react-router": "6.8.0",
     "debug": "4.3.2",
     "decorate-component-with-props": "1.2.1",
@@ -382,6 +382,7 @@
     "stylelint-config-idiomatic-order": "10.0.0",
     "stylelint-prettier": "5.0.0",
     "svg-loader": "0.0.2",
+    "svgo": "^3.0.0",
     "svgo-loader": "3.0.3",
     "terser-webpack-plugin": "5.3.6",
     "tmp": "0.2.1",
