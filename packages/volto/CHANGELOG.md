@@ -17,6 +17,23 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.2 (2025-05-20)
+
+### Feature
+
+- Add autosave option.
+  It will save a copy of content of the block being edited in local storage.
+  If the editor cancels their edits or closes the browser window, then returns to the block, they will be presented with the option to restore or delete their autosaved content.
+  It also detects whether the autosaved content is older than the server content, and if so, presents the editor with the option to restore or delete their autosaved content.
+  Finally, saving the block will delete its local storage data.
+  @tiberiuichim @rexalex @stevepiercy @dobri1408 [#6864](https://github.com/plone/volto/issues/6864)
+- Add `isClearable` prop to `SelectWidget`, allowing configuration of whether the select input can be cleared by the user. @alexandreIFB [#7083](https://github.com/plone/volto/issues/7083)
+
+### Bugfix
+
+- Use table sorting icons from pastanaga `icons.woff` instead of assuming we have Font Awesome icons. @ichim-david [#6359](https://github.com/plone/volto/issues/6359)
+- The title block should be focused all the subsequent times you edit a content. @ana-oprea [#6880](https://github.com/plone/volto/issues/6880)
+
 ## 19.0.0-alpha.1 (2025-05-16)
 
 ### Feature
