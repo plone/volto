@@ -17,6 +17,17 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.22.0 (2025-05-20)
+
+### Feature
+
+- Add `isClearable` prop to `SelectWidget`, allowing configuration of whether the select input can be cleared by the user. @alexandreIFB [#7083](https://github.com/plone/volto/issues/7083)
+
+### Bugfix
+
+- The title block should be focused all the subsequent times you edit a content. @ana-oprea [#6880](https://github.com/plone/volto/issues/6880)
+- Use table sorting icons from pastanaga `icons.woff` instead of assuming we have Font Awesome icons. @ichim-david [#7090](https://github.com/plone/volto/issues/7090)
+
 ## 18.21.0 (2025-05-16)
 
 ### Feature
