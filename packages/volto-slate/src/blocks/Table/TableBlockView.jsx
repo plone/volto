@@ -115,8 +115,7 @@ const View = ({ data }) => {
                         e.preventDefault();
                         handleSort(index);
                       }
-                    }
-                    }
+                    }}
                     aria-sort={
                       state.column === index ? state.direction : 'none'
                     }
