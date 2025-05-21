@@ -7,13 +7,13 @@ import isObject from 'lodash/isObject';
 import FormValidation from '@plone/volto/helpers/FormValidation/FormValidation';
 
 /**
- * Validador para o widget object_list
- * Valida recursivamente cada item na lista de objetos
+ * Validator for the object_list widget
+ * Recursively validates each item in the list of objects
  */
 export const objectListValidator = ({ value, field, formatMessage }) => {
   if (!Array.isArray(value) || !field.schema) return null;
 
-  // Agrupa erros por campo, igual ao FormValidation
+  // Group errors by field, same as FormValidation
   const errors = [];
 
   value.forEach((item) => {
