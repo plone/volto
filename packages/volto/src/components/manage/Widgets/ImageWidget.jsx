@@ -28,6 +28,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
+import Image from '../../theme/Image/Image';
 
 const Dropzone = loadable(() => import('react-dropzone'));
 
@@ -109,16 +110,34 @@ const UnconnectedImageInput = (props) => {
   const imageId = content?.['@id'];
   const image = content?.image;
   let loading = false;
+  const isRelationChoice = props.factory === 'Relation Choice';
 
   useEffect(() => {
     if (uploading && loading && loaded) {
       setUploading(false);
-      onChange(id, imageId, {
-        image_field: 'image',
-        image_scales: { image: [image] },
-      });
+      if (isRelationChoice) {
+        onChange(id, content, {
+          image_field: 'image',
+          image_scales: { image: [image] },
+        });
+      } else {
+        onChange(id, imageId, {
+          image_field: 'image',
+          image_scales: { image: [image] },
+        });
+      }
     }
-  }, [loading, loaded, uploading, imageId, image, id, onChange]); // Explicitly list all dependencies
+  }, [
+    loading,
+    loaded,
+    uploading,
+    imageId,
+    image,
+    id,
+    content,
+    isRelationChoice,
+    onChange,
+  ]);
 
   loading = usePrevious(props.request?.loading);
 
@@ -178,15 +197,25 @@ const UnconnectedImageInput = (props) => {
       role="toolbar"
     >
       {selected && <ImageToolbar {...props} />}
-      <img
-        className={props.className}
-        src={
-          isInternalURL(imageValue)
-            ? `${flattenToAppURL(imageValue)}/@@images/image/${imageSize}`
-            : imageValue
-        }
-        alt=""
-      />
+      {/* If it's relation choice (preview_image_link) */}
+      {isRelationChoice ? (
+        <Image
+          item={imageValue}
+          width="fit-content"
+          height="auto"
+          loading="lazy"
+        />
+      ) : (
+        <img
+          className={props.className}
+          src={
+            isInternalURL(imageValue)
+              ? `${flattenToAppURL(imageValue)}/@@images/image/${imageSize}`
+              : imageValue
+          }
+          alt=""
+        />
+      )}
     </div>
   ) : (
     <div
@@ -242,15 +271,24 @@ const UnconnectedImageInput = (props) => {
                           e.preventDefault();
                           openObjectBrowser({
                             mode: objectBrowserPickerType,
-                            onSelectItem: onSelectItem
-                              ? onSelectItem
-                              : (url, { title, image_field, image_scales }) => {
-                                  onChange(props.id, flattenToAppURL(url), {
-                                    title,
-                                    image_field,
-                                    image_scales,
-                                  });
-                                },
+                            onSelectItem: isRelationChoice
+                              ? (url, item) => {
+                                  // we save the whole item if it's a relation choice
+                                  onChange(props.id, item);
+                                }
+                              : onSelectItem
+                                ? onSelectItem
+                                : // else we save the url along with the image field and scales
+                                  (
+                                    url,
+                                    { title, image_field, image_scales },
+                                  ) => {
+                                    onChange(props.id, flattenToAppURL(url), {
+                                      title,
+                                      image_field,
+                                      image_scales,
+                                    });
+                                  },
                             currentPath: contextUrl,
                           });
                         }}
@@ -331,6 +369,8 @@ const UnconnectedImageInput = (props) => {
 };
 
 export const ImageInput = compose(
+  // This HOC goes first because it injects block in case that it's not present (not a block, but a DX field)
+  withObjectBrowser,
   connect(
     (state, ownProps) => {
       const requestId = `image-upload-${ownProps.id}`;
@@ -341,7 +381,7 @@ export const ImageInput = compose(
     },
     { createContent },
   ),
-)(withObjectBrowser(UnconnectedImageInput));
+)(UnconnectedImageInput);
 
 const ImageUploadWidget = (props) => {
   const { fieldSet, id, title } = props;
