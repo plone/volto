@@ -287,60 +287,6 @@ You can override a validator in your add-on in the same way as any other compone
 You can redefine them using the same `dependencies` and provide your own validator.
 
 
-### Custom widget validators
-
-Custom widget validators provide more advanced validation capabilities, especially useful for complex widgets that contain nested data structures.
-These validators use the `custom-validator-widget` type and can return structured validation information.
-
-```ts
-config.registerUtility({
-  type: 'custom-validator-widget',
-  name: 'objectListValidator',
-  dependencies: { widget: 'object_list' },
-  method: objectListValidator,
-})
-```
-
-A custom widget validator can return `null` when there are no validation errors, or any data structure when errors are found.
-The returned error data is stored in the `internalErrors` property of the field's error object.
-The structure of this data is flexible and can be designed according to the specific needs of the widget.
-The widget must be prepared to handle the format that the validator returns.
-
-The following code is an example of a custom widget validator for validating lists of objects.
-
-```ts
-export const objectListValidator = ({ value, field, formatMessage }) => {
-  if (!Array.isArray(value) || !field.schema) return null;
-
-  // Group errors by field, similar to FormValidation
-  const errors = [];
-
-  value.forEach((item, index) => {
-    const fieldId = item['@id'];
-    
-    // Validation logic for each item in the list
-    // ...
-
-    if (hasErrors && fieldId) {
-      errors.push({
-        id: fieldId,
-        field: 'fieldName',
-        message: 'Error message',
-        // You can add any additional data that your widget needs
-        // The structure is flexible and depends on your widget implementation
-      });
-    }
-  });
-
-  // Return null if no errors found
-  return errors.length > 0 ? errors : null;
-};
-```
-
-When the `FormValidation` helper encounters errors from a custom widget validator, it stores them in the `internalErrors` property of the field's error object, allowing the widget to handle them appropriately.
-The widget implementation must be specifically designed to read and process these `internalErrors`, as they may have a different structure than standard field validation errors.
-
-
 ## Signature of a validator
 
 A validator has the following signature:

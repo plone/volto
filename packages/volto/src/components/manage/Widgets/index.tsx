@@ -206,7 +206,7 @@ export const ObjectWidget = loadable(
 export const ObjectListWidget = loadable(
   () =>
     import(
-      /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/ObjectListWidget/ObjectListWidget'
+      /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/ObjectListWidget'
     ),
 );
 

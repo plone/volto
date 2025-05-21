@@ -83,7 +83,7 @@ msgid "Add"
 msgstr "Lisää"
 
 #. Default: "Add"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Add (object list)"
 msgstr "Lisää (objektilista)"
 
@@ -699,7 +699,7 @@ msgid "Code"
 msgstr "Koodi"
 
 #. Default: "Collapse item"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Collapse item"
 msgstr "Sulje kohde"
 
@@ -1293,7 +1293,7 @@ msgid "Embed code error, please follow the instructions and try again."
 msgstr "Virhe upotuskoodissa. Seuraa ohjeita ja yritä uudelleen."
 
 #. Default: "Empty object list"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
 msgstr "Tyhjä kohdelista"
 
@@ -2947,7 +2947,7 @@ msgid "Remove element {index}"
 msgstr ""
 
 #. Default: "Remove item"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
 msgstr "Poista kohde"
 
@@ -3407,7 +3407,7 @@ msgid "Show groups of users below"
 msgstr "Näytä käyttäjäryhmät alapuolella"
 
 #. Default: "Show item"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Show item"
 msgstr "Näytä kohde"
 

@@ -215,20 +215,6 @@ const validateFieldsPerFieldset = (
       );
     }
 
-    let widgetInternalErrors = [];
-    if (widgetName) {
-      const widgetNameValidationCriteria = config.getUtilities({
-        type: 'custom-validator-widget',
-        dependencies: { widget: widgetName },
-      });
-
-      widgetInternalErrors = checkFieldErrors(
-        widgetNameValidationCriteria,
-        field,
-        fieldData,
-      );
-    }
-
     const mergedErrors = [
       ...specificFieldErrors,
       ...fieldErrors,
@@ -250,14 +236,6 @@ const validateFieldsPerFieldset = (
 
     if (errors[fieldId]) {
       errors[fieldId].title = field.title;
-    }
-
-    if (widgetInternalErrors.length > 0 && widgetName) {
-      if (!errors[fieldId]) {
-        errors[fieldId] = [];
-      }
-
-      errors[fieldId].internalErrors = widgetInternalErrors;
     }
   });
 

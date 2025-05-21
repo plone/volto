@@ -1,7 +1,7 @@
 import ObjectListWidgetDefault from './ObjectListWidget';
 import { RealStoreWrapper, FormUndoWrapper } from '@plone/volto/storybook';
 import React from 'react';
-import { searchResults } from '../ObjectBrowserWidget.stories';
+import { searchResults } from './ObjectBrowserWidget.stories';
 
 import cloneDeep from 'lodash/cloneDeep';
 

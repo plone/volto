@@ -84,7 +84,7 @@ msgid "Add"
 msgstr "Afegeix"
 
 #. Default: "Add"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Add (object list)"
 msgstr ""
 
@@ -700,7 +700,7 @@ msgid "Code"
 msgstr "Codi"
 
 #. Default: "Collapse item"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Collapse item"
 msgstr "Replega l'element"
 
@@ -1294,7 +1294,7 @@ msgid "Embed code error, please follow the instructions and try again."
 msgstr "Error d'inserció del codi, seguiu les instruccions i torneu-ho a provar."
 
 #. Default: "Empty object list"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
 msgstr "Llista d'objectes buida"
 
@@ -2948,7 +2948,7 @@ msgid "Remove element {index}"
 msgstr ""
 
 #. Default: "Remove item"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
 msgstr "Elimina l'element"
 
@@ -3408,7 +3408,7 @@ msgid "Show groups of users below"
 msgstr ""
 
 #. Default: "Show item"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Show item"
 msgstr "Mostra l'element"
 

@@ -17,6 +17,7 @@ import {
   patternValidator,
   defaultLanguageControlPanelValidator,
 } from '@plone/volto/helpers/FormValidation/validators';
+import objectListValidator from '@plone/volto/components/manage/Widgets/ObjectListWidget/objectListValidator';
 
 const registerValidators = (config: ConfigType) => {
   config.registerUtility({
@@ -157,6 +158,13 @@ const registerValidators = (config: ConfigType) => {
     type: 'validator',
     dependencies: { format: 'default_language' },
     method: defaultLanguageControlPanelValidator,
+  });
+
+  config.registerUtility({
+    name: 'object_list_validator_iternal_items',
+    type: 'validator',
+    dependencies: { widget: 'object_list' },
+    method: objectListValidator,
   });
 };
 

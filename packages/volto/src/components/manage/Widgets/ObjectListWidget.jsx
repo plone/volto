@@ -242,7 +242,7 @@ const ObjectListWidget = (props) => {
                       id={`${id}-${index}`}
                       key={`ow-${id}-${index}`}
                       block={block}
-                      errors={error?.internalErrors?.[0]?.[childId]}
+                      errors={error?.[0]?.['internalErros']?.[childId]}
                       schema={
                         schemaExtender
                           ? schemaExtender(schema, child, intl)

@@ -85,7 +85,7 @@ msgid "Add"
 msgstr "Gehitu"
 
 #. Default: "Add"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Add (object list)"
 msgstr "Gehitu"
 
@@ -701,7 +701,7 @@ msgid "Code"
 msgstr "Kodea"
 
 #. Default: "Collapse item"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Collapse item"
 msgstr "Batu elementua"
 
@@ -1295,7 +1295,7 @@ msgid "Embed code error, please follow the instructions and try again."
 msgstr "Itsatsitako kodearen errorea, jarraitu argibideak eta saiatu berriz."
 
 #. Default: "Empty object list"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
 msgstr "Objektu zerrenda hutsa"
 
@@ -2949,7 +2949,7 @@ msgid "Remove element {index}"
 msgstr ""
 
 #. Default: "Remove item"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
 msgstr "Ezabatu elementua"
 
@@ -3409,7 +3409,7 @@ msgid "Show groups of users below"
 msgstr "Erakutsi erabiltzaile-taldeak azpian"
 
 #. Default: "Show item"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Show item"
 msgstr "Erakutsi elementua"
 

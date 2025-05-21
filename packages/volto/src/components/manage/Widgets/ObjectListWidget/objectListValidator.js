@@ -38,7 +38,10 @@ export const objectListValidator = ({ value, field, formatMessage }) => {
     }
   });
 
-  return Object.keys(errors).length > 0 ? errors : null;
+  const customErrors = [];
+  customErrors.internalErros = errors;
+
+  return Object.keys(errors).length > 0 ? customErrors : null;
 };
 
 export default objectListValidator;

@@ -83,7 +83,7 @@ msgid "Add"
 msgstr "Hinzufügen"
 
 #. Default: "Add"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Add (object list)"
 msgstr "Hinzufügen"
 
@@ -699,7 +699,7 @@ msgid "Code"
 msgstr "Code"
 
 #. Default: "Collapse item"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Collapse item"
 msgstr "Element einklappen"
 
@@ -1293,7 +1293,7 @@ msgid "Embed code error, please follow the instructions and try again."
 msgstr "Fehler beim Einbinden des Google Maps Codes. Bitte lesen Sie die Anweisungen und stellen Sie sicher dass Sie den korrekten Code verwenden."
 
 #. Default: "Empty object list"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
 msgstr "Leere Liste von Elementen"
 
@@ -2947,7 +2947,7 @@ msgid "Remove element {index}"
 msgstr "Element {index} entfernen"
 
 #. Default: "Remove item"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
 msgstr "Element entfernen"
 
@@ -3407,7 +3407,7 @@ msgid "Show groups of users below"
 msgstr "Zeige die Gruppenmitgliedschaften der unten gezeigten Benutzer"
 
 #. Default: "Show item"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Show item"
 msgstr "Elemente anzeigen"
 

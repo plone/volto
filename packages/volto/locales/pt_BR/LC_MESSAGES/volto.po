@@ -84,7 +84,7 @@ msgid "Add"
 msgstr "Adicionar"
 
 #. Default: "Add"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Add (object list)"
 msgstr "Adicionar"
 
@@ -700,7 +700,7 @@ msgid "Code"
 msgstr "Código"
 
 #. Default: "Collapse item"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Collapse item"
 msgstr "Colapsar item"
 
@@ -1294,7 +1294,7 @@ msgid "Embed code error, please follow the instructions and try again."
 msgstr "Erro de código Embed, siga as instruções e tente novamente."
 
 #. Default: "Empty object list"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
 msgstr "Lista de objetos vazia"
 
@@ -2948,7 +2948,7 @@ msgid "Remove element {index}"
 msgstr "Remover elemento {index}"
 
 #. Default: "Remove item"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
 msgstr "Remover Item"
 
@@ -3408,7 +3408,7 @@ msgid "Show groups of users below"
 msgstr "Mostrar grupos de usuários abaixo"
 
 #. Default: "Show item"
-#: components/manage/Widgets/ObjectListWidget/ObjectListWidget
+#: components/manage/Widgets/ObjectListWidget
 msgid "Show item"
 msgstr "Mostrar item"
 
