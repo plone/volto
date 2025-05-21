@@ -1,26 +1,20 @@
+/**
+ * layout of @plone/publicui
+ */
 import {
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-  useRouteLoaderData,
-  BrowserRouter,
-  useHref,
   useNavigate,
+  useRouteLoaderData,
   type LinksFunction,
   type MetaFunction,
-  type NavigateOptions,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { RouterProvider } from 'react-aria-components';
+import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
-
-declare module 'react-aria-components' {
-  interface RouterConfig {
-    routerOptions: NavigateOptions;
-  }
-}
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -83,9 +77,9 @@ export default function Index() {
       <body>
         <div role="navigation" aria-label="Toolbar" id="toolbar" />
         <div id="main">
-          <RouterProvider navigate={navigate} useHref={useHref}>
+          <RACRouterProvider navigate={navigate}>
             <Outlet />
-          </RouterProvider>
+          </RACRouterProvider>
         </div>
         <div role="complementary" aria-label="Sidebar" id="sidebar" />
         <ScrollRestoration />
