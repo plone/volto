@@ -1,1 +1,0 @@
-`ConditionalLink` in TypeScript. @sneridagh
