@@ -35,7 +35,7 @@
     "update:browserlist": "pnpm --filter @plone/volto add caniuse-lite && pnpm --filter @plone/volto remove caniuse-lite"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.4",
+    "@vitejs/plugin-react": "^4.4.1",
     "concurrently": "^8.2.2",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",

@@ -386,6 +386,11 @@ msgstr "Caminho da URL alternativa deve iniciar com uma barra."
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "Caminho da URL alternativa → caminho da URL de destino (data e hora da criação, criado manualmente sim/não)"
 
+#. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+msgstr ""
+
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
@@ -436,6 +441,11 @@ msgstr "Atribuições"
 #: components/manage/Controlpanels/Aliases
 msgid "Automatically"
 msgstr "Automaticamente"
+
+#. Default: "Autosaved content found"
+#: helpers/Utils/withSaveAsDraft
+msgid "Autosaved content found"
+msgstr ""
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1171,6 +1181,11 @@ msgstr "Você realmente quer excluir o usuário {username}?"
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
 msgstr "Você realmente quer excluir este item?"
+
+#. Default: "Do you want to restore your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Do you want to restore your autosaved content?"
+msgstr ""
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject

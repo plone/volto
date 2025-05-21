@@ -385,6 +385,11 @@ msgstr "Альтернативный путь URL должен начинать�
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "Альтернативный путь URL → целевой путь URL (дата и время создания, создано вручную да/нет)"
 
+#. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+msgstr ""
+
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
@@ -435,6 +440,11 @@ msgstr "Назначения"
 #: components/manage/Controlpanels/Aliases
 msgid "Automatically"
 msgstr "Автоматически"
+
+#. Default: "Autosaved content found"
+#: helpers/Utils/withSaveAsDraft
+msgid "Autosaved content found"
+msgstr ""
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1170,6 +1180,11 @@ msgstr "Вы действительно хотите удалить пользо
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
 msgstr "Вы действительно хотите удалить этот элемент?"
+
+#. Default: "Do you want to restore your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Do you want to restore your autosaved content?"
+msgstr ""
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject

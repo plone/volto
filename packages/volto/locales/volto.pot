@@ -382,6 +382,11 @@ msgstr ""
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr ""
 
+#. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+msgstr ""
+
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
@@ -431,6 +436,11 @@ msgstr ""
 #. Default: "Automatically"
 #: components/manage/Controlpanels/Aliases
 msgid "Automatically"
+msgstr ""
+
+#. Default: "Autosaved content found"
+#: helpers/Utils/withSaveAsDraft
+msgid "Autosaved content found"
 msgstr ""
 
 #. Default: "Available"
@@ -1166,6 +1176,11 @@ msgstr ""
 #. Default: "Do you really want to delete this item?"
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
+msgstr ""
+
+#. Default: "Do you want to restore your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Do you want to restore your autosaved content?"
 msgstr ""
 
 #. Default: "Document"

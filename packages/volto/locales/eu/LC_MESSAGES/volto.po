@@ -387,6 +387,11 @@ msgstr "Ordezko helbidearen bidea / karakterearekin hasi behar da"
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "Ordezko helbidearen bidea → helburu helbidearen bidea (sorrera data eta ordua, eskuz sortu den bai/ez)"
 
+#. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+msgstr ""
+
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
@@ -436,6 +441,11 @@ msgstr "Esleipenak"
 #. Default: "Automatically"
 #: components/manage/Controlpanels/Aliases
 msgid "Automatically"
+msgstr ""
+
+#. Default: "Autosaved content found"
+#: helpers/Utils/withSaveAsDraft
+msgid "Autosaved content found"
 msgstr ""
 
 #. Default: "Available"
@@ -1172,6 +1182,11 @@ msgstr "{username} erabiltzailea ezabatu egin nahi duzu?"
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
 msgstr "Elementu hau ezabatu egin nahi duzu?"
+
+#. Default: "Do you want to restore your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Do you want to restore your autosaved content?"
+msgstr ""
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
