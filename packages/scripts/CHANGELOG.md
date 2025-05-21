@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0-alpha.1 (2025-05-16)
+
+### Feature
+
+- Support not publishing a package on NPM if `plonePrePublish.publish` is set to false. @ericof [#7068](https://github.com/plone/volto/issues/7068)
+
 ## 4.0.0-alpha.0 (2025-03-27)
 
 ### Breaking
