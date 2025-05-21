@@ -1,2 +1,3 @@
-Improved widgets typings. @sneridagh
-Export missing intl typings helpers. @sneridagh
+Improved widgets typings.
+Exported missing intl typings helpers.
+Added BlockSchemaProps typings. @sneridagh
