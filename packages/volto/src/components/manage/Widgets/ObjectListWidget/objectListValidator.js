@@ -16,7 +16,7 @@ export const objectListValidator = ({ value, field, formatMessage }) => {
   // Agrupa erros por campo, igual ao FormValidation
   const errors = [];
 
-  value.forEach((item, index) => {
+  value.forEach((item) => {
     const fieldId = item['@id'];
 
     if (!isObject(item)) return;
@@ -38,7 +38,7 @@ export const objectListValidator = ({ value, field, formatMessage }) => {
     }
   });
 
-  return errors.length > 0 ? errors : null;
+  return Object.keys(errors).length > 0 ? errors : null;
 };
 
 export default objectListValidator;
