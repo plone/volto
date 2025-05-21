@@ -1,1 +1,1 @@
-Make Slate text block links RAC links with '@plone/components/tailwind' @ksuess
+Prepare publicui layout route for react aria (link) components @ksuess
