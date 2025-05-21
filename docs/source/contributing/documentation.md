@@ -110,7 +110,7 @@ Open `/docs/_build/linkcheck/output.txt` for a list of broken links.
 
 #### `docs-vale`
 
-`docs-vale` checks for American English spelling, grammar, syntax, and the Microsoft Developer Style Guide.
+`docs-vale` checks for American English spelling, grammar, and syntax, and follows the Microsoft Writing Style Guide.
 
 ```shell
 make docs-vale
@@ -152,8 +152,10 @@ make storybook-build
 
 To hyperlink to Storybook entries from the narrative documentation, you can use one of two syntaxes.
 
-Use HTML syntax to enable hyperlinking in development, within Netlify preview builds, and when the main Plone documenation is updated.
+Use HTML syntax to enable hyperlinking in development, within Netlify preview builds, and when the main Plone documentation is updated.
 Hyperlinking in development requires that you run both `make docs-html` and `make storybook-build` commands once, then whenever you update either the narrative documentation or the Storybook.
+
+% sphinx-examples does not render HTML
 
 ```html
 <a href="/storybook/index.html?path=/story/edit-widgets-colorpicker--default">color picker widget</a>
@@ -163,8 +165,6 @@ Hyperlinking in development requires that you run both `make docs-html` and `mak
 
 Use CommonMark syntax to point only to the main production Plone documentation.
 
-```md
+```{example}
 [color picker widget](https://6.docs.plone.org/storybook/index.html?path=/story/edit-widgets-colorpicker--default)
 ```
-
-[color picker widget](https://6.docs.plone.org/storybook/index.html?path=/story/edit-widgets-colorpicker--default)

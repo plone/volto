@@ -2,22 +2,36 @@ import React from 'react';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
-import { waitFor, render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import PersonalPreferences from './PersonalPreferences';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/components/manage/Form', async () => {
+  return await import(
+    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
+  );
+});
+vi.mock('@plone/volto/helpers/Loadable/Loadable', async () => {
+  return await import(
+    '@plone/volto/helpers/Loadable/__mocks__/Loadable.vitest.jsx'
+  );
+});
+
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
 
 describe('PersonalPreferences', () => {
-  it('renders a personal preferences component', async () => {
+  it('renders a personal preferences component', () => {
     const store = mockStore({
       intl: {
         locale: 'en',
@@ -47,9 +61,6 @@ describe('PersonalPreferences', () => {
         </MemoryRouter>
       </Provider>,
     );
-    await waitFor(() => {
-      screen.getByTitle('Cancel');
-    });
     expect(container).toMatchSnapshot();
   });
 });

@@ -1,20 +1,15 @@
-export namespace loadables {
-    let prettierStandalone: any;
-    let prettierParserHtml: any;
-    let prismCore: any;
-    let toastify: any;
-    let reactSelect: any;
-    let reactVirtualized: any;
-    let reactSortableHOC: any;
-    let reactSelectAsyncPaginate: any;
-    let reactSelectAsync: any;
-    let reactSelectCreateable: any;
-    let reactSelectAsyncCreateable: any;
-    let diffLib: any;
-    let moment: any;
-    let reactDates: any;
-    let reactDnd: any;
-    let reactDndHtml5Backend: any;
-    let reactBeautifulDnd: any;
-    let rrule: any;
-}
+/**
+ * @typedef {Object} LoadableLib
+ * @property {() => Promise<any>} import
+ * @property {Object} [options]
+ */
+/**
+ * @type {{ [key: string]: LoadableLib }}
+ */
+export const loadables: {
+    [key: string]: LoadableLib;
+};
+export type LoadableLib = {
+    import: () => Promise<any>;
+    options?: any;
+};

@@ -1,21 +1,23 @@
 import config from './index';
-import { describe, expect, it, afterEach } from 'vitest';
+import { describe, expect, it, afterEach, beforeEach } from 'vitest';
 
-config.set('components', {
-  Toolbar: { component: 'this is the Toolbar component' },
-  'Toolbar.Types': { component: 'this is the Types component' },
-  'Teaser|News Item': { component: 'This is the News Item Teaser component' },
+beforeEach(() => {
+  config.set('components', {
+    Toolbar: { component: 'this is the Toolbar component' },
+    'Toolbar.Types': { component: 'this is the Types component' },
+    'Teaser|News Item': { component: 'This is the News Item Teaser component' },
+  });
+  config.set('slots', {});
+  config.set('utilities', {});
 });
 
-config.set('slots', {});
-
 describe('Component registry', () => {
-  it('get components', () => {
+  it('get a component', () => {
     expect(config.getComponent('Toolbar').component).toEqual(
       'this is the Toolbar component',
     );
   });
-  it('get components with context', () => {
+  it('get a component with context', () => {
     expect(
       config.getComponent({ name: 'Teaser', dependencies: 'News Item' })
         .component,
@@ -137,6 +139,25 @@ describe('Slots registry', () => {
 
     expect(config.getSlot('toolbar', {})![0].component).toEqual(
       'this is a toolbar component with no predicate',
+    );
+  });
+
+  it('registers two slot component with no predicate and the same name, the latter wins', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with no predicate',
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component:
+        'this is a toolbar component with no predicate overriding the above one',
+    });
+
+    expect(config.getSlot('toolbar', {})![0].component).toEqual(
+      'this is a toolbar component with no predicate overriding the above one',
     );
   });
 
@@ -860,6 +881,51 @@ describe('Slots registry', () => {
     ]);
   });
 
+  it('unRegisterSlotComponent - remove one registered slot', () => {
+    config.registerSlotComponent({
+      name: 'Colophon',
+      slot: 'postFooter',
+      component: 'The colophon component',
+    });
+
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(1);
+    expect(
+      config.getSlotComponent('postFooter', 'Colophon')[0].component,
+    ).toEqual('The colophon component');
+    config.unRegisterSlotComponent('postFooter', 'Colophon', 0);
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(0);
+
+    expect(config.getSlotComponents('postFooter')).toEqual([]);
+  });
+
+  it('unRegisterSlotComponent - remove one registered slot, then re-register it', () => {
+    config.registerSlotComponent({
+      name: 'Colophon',
+      slot: 'postFooter',
+      component: 'The colophon component',
+    });
+
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(1);
+    expect(
+      config.getSlotComponent('postFooter', 'Colophon')[0].component,
+    ).toEqual('The colophon component');
+    config.unRegisterSlotComponent('postFooter', 'Colophon', 0);
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(0);
+
+    expect(config.getSlotComponents('postFooter')).toEqual([]);
+
+    config.registerSlotComponent({
+      name: 'Colophon',
+      slot: 'postFooter',
+      component: 'The colophon component',
+    });
+
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(1);
+    expect(
+      config.getSlotComponent('postFooter', 'Colophon')[0].component,
+    ).toEqual('The colophon component');
+  });
+
   it('unRegisterSlotComponent - registers 2 + 2 slot components with predicates', () => {
     config.registerSlotComponent({
       slot: 'toolbar',
@@ -894,12 +960,18 @@ describe('Slots registry', () => {
         ContentTypeConditionTrue(['News Item']),
       ],
     });
+
     expect(config.getSlotComponent('toolbar', 'save').length).toEqual(2);
     expect(config.getSlotComponent('toolbar', 'save')[0].component).toEqual(
       'this is a toolbar save component with a true predicate',
     );
+
     config.unRegisterSlotComponent('toolbar', 'save', 1);
+
     expect(config.getSlotComponent('toolbar', 'save').length).toEqual(1);
+    expect(config.getSlotComponent('toolbar', 'save')[0].component).toEqual(
+      'this is a toolbar save component with a true predicate',
+    );
   });
 
   // The next one fixes the issue when HMR kicks in and tries to register the same component again
@@ -917,5 +989,265 @@ describe('Slots registry', () => {
       name: 'save',
       component: TestComponent,
     });
+  });
+});
+
+describe('Utilities registry', () => {
+  afterEach(() => {
+    config.set('utilities', {});
+  });
+
+  it('registers a simple utility', () => {
+    config.registerUtility({
+      name: 'url',
+      type: 'validator',
+      method: () => 'this is a simple validator utility',
+    });
+
+    expect(
+      config.getUtility({ name: 'url', type: 'validator' }).method(),
+    ).toEqual('this is a simple validator utility');
+  });
+
+  it('trying to get a non-existent utility returns undefined', () => {
+    expect(config.getUtility({ name: undefined, type: 'schema' })).toEqual({});
+    expect(
+      config.getUtility({ name: undefined, type: 'schema' }).method,
+    ).toEqual(undefined);
+  });
+
+  it('registers a utility with dependencies', () => {
+    config.registerUtility({
+      name: 'email',
+      type: 'validator',
+      dependencies: { fieldType: 'email' },
+      method: () => 'this is a validator utility with dependencies',
+    });
+
+    expect(
+      config
+        .getUtility({
+          name: 'email',
+          dependencies: { fieldType: 'email' },
+          type: 'validator',
+        })
+        .method(),
+    ).toEqual('this is a validator utility with dependencies');
+  });
+
+  it('registers utilities, one with and one without dependencies', () => {
+    config.registerUtility({
+      name: 'email',
+      type: 'validator',
+      method: () => 'this is a simple validator utility',
+    });
+
+    config.registerUtility({
+      name: 'email',
+      type: 'validator',
+      dependencies: { fieldType: 'email' },
+      method: () => 'this is a validator utility with dependencies',
+    });
+
+    expect(
+      config.getUtility({ name: 'email', type: 'validator' }).method(),
+    ).toEqual('this is a simple validator utility');
+
+    expect(
+      config
+        .getUtility({
+          name: 'email',
+          dependencies: { fieldType: 'email' },
+          type: 'validator',
+        })
+        .method(),
+    ).toEqual('this is a validator utility with dependencies');
+  });
+
+  it('registers utilities with the same name, but different dependencies', () => {
+    config.registerUtility({
+      name: 'email',
+      type: 'validator',
+      dependencies: { fieldType: 'email' },
+      method: () => 'this is a validator utility with dependencies for email',
+    });
+
+    config.registerUtility({
+      name: 'email',
+      type: 'validator',
+      dependencies: { fieldType: 'string' },
+      method: () => 'this is a validator utility with dependencies for string',
+    });
+
+    expect(
+      config
+        .getUtility({
+          name: 'email',
+          dependencies: { fieldType: 'string' },
+          type: 'validator',
+        })
+        .method(),
+    ).toEqual('this is a validator utility with dependencies for string');
+
+    expect(
+      config
+        .getUtility({
+          name: 'email',
+          dependencies: { fieldType: 'email' },
+          type: 'validator',
+        })
+        .method(),
+    ).toEqual('this is a validator utility with dependencies for email');
+  });
+
+  it('trying to use getUtilities with no type returns an empty array', () => {
+    expect(config.getUtilities({ type: undefined }).length).toEqual(0);
+  });
+
+  it('getUtilities - registers two utilities with the same dependencies and different names', () => {
+    config.registerUtility({
+      name: 'minLength',
+      type: 'validator',
+      dependencies: { fieldType: 'string' },
+      method: () => 'this is a validator for minLength',
+    });
+
+    config.registerUtility({
+      name: 'maxLength',
+      type: 'validator',
+      dependencies: { fieldType: 'string' },
+      method: () => 'this is a validator for maxLength',
+    });
+
+    expect(
+      config.getUtilities({
+        dependencies: { fieldType: 'string' },
+        type: 'validator',
+      }).length,
+    ).toEqual(2);
+
+    expect(
+      config
+        .getUtilities({
+          dependencies: { fieldType: 'string' },
+          type: 'validator',
+        })[0]
+        .method(),
+    ).toEqual('this is a validator for minLength');
+
+    expect(
+      config
+        .getUtilities({
+          dependencies: { fieldType: 'string' },
+          type: 'validator',
+        })[1]
+        .method(),
+    ).toEqual('this is a validator for maxLength');
+  });
+
+  it('getUtilities - registers two utilities with the same dependencies and different names', () => {
+    expect(
+      config.getUtilities({
+        dependencies: { fieldType: 'string' },
+        type: 'validator',
+      }),
+    ).toEqual([]);
+  });
+});
+
+describe('Routes registry', () => {
+  afterEach(() => {
+    config.set('routes', []);
+  });
+
+  it('registers a simple route', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+      },
+    ]);
+  });
+
+  it('registers a simple route with options', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+      options: { id: 'login', caseSensitive: true },
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+        options: { id: 'login', caseSensitive: true },
+      },
+    ]);
+  });
+
+  it('registers a nested route', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+      children: [
+        {
+          type: 'route',
+          path: '/login/ok',
+          file: 'ok.tsx',
+        },
+      ],
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+        children: [
+          {
+            type: 'route',
+            path: '/login/ok',
+            file: 'ok.tsx',
+          },
+        ],
+      },
+    ]);
+  });
+
+  it('registers a couple of routes', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+    });
+
+    config.registerRoute({
+      type: 'route',
+      path: '/logout',
+      file: 'logout.tsx',
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+      },
+      {
+        type: 'route',
+        path: '/logout',
+        file: 'logout.tsx',
+      },
+    ]);
   });
 });

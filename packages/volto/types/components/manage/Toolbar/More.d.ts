@@ -1,5 +1,8 @@
-declare const _default: React.ForwardRefExoticComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & React.RefAttributes<React.ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
-    WrappedComponent: React.ComponentType<import("react-intl").WrappedComponentProps<string>>;
-};
-export default _default;
-import React from 'react';
+export default More;
+declare function More(props: any): import("react/jsx-runtime").JSX.Element;
+declare namespace More {
+    namespace propTypes {
+        let loadComponent: any;
+        let closeMenu: any;
+    }
+}

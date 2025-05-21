@@ -12,14 +12,13 @@ import {
   deleteComment,
   listComments,
   listMoreComments,
-} from '@plone/volto/actions';
-import { Avatar, CommentEditModal, Form } from '@plone/volto/components';
-import {
-  flattenToAppURL,
-  getBaseUrl,
-  getColor,
-  usePrevious,
-} from '@plone/volto/helpers';
+} from '@plone/volto/actions/comments/comments';
+import Avatar from '@plone/volto/components/theme/Avatar/Avatar';
+import { Form } from '@plone/volto/components/manage/Form';
+import { CommentEditModal } from '@plone/volto/components/theme/Comments';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { getColor } from '@plone/volto/helpers/Utils/Utils';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
 
 const messages = defineMessages({
   comment: {
@@ -148,7 +147,7 @@ const Comments = (props) => {
   };
 
   const loadMoreComments = () => {
-    dispatch(listMoreComments(next));
+    dispatch(listMoreComments(flattenToAppURL(next)));
   };
 
   const onDelete = (value) => {

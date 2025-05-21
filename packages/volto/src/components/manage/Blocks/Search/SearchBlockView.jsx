@@ -1,14 +1,15 @@
 import React from 'react';
 
 import ListingBody from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
-import { withBlockExtensions } from '@plone/volto/helpers';
+import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
 
 import config from '@plone/volto/registry';
 
 import { withSearch, withQueryString } from './hocs';
 import { compose } from 'redux';
 import { useSelector } from 'react-redux';
-import { isEqual, isFunction } from 'lodash';
+import isEqual from 'lodash/isEqual';
+import isFunction from 'lodash/isFunction';
 import cx from 'classnames';
 
 const getListingBodyVariation = (data) => {
@@ -49,10 +50,26 @@ const applyDefaults = (data, root) => {
       v: root || '/',
     },
   ];
+
+  const searchBySearchableText = data.query.filter(
+    (item) => item['i'] === 'SearchableText',
+  ).length;
+
+  const sort_on = data?.sort_on
+    ? { sort_on: data.sort_on }
+    : searchBySearchableText === 0
+      ? { sort_on: 'effective' }
+      : {};
+  const sort_order = data?.sort_order
+    ? { sort_order: data.sort_order }
+    : searchBySearchableText === 0
+      ? { sort_order: 'descending' }
+      : {};
+
   return {
     ...data,
-    sort_on: data?.sort_on || 'effective',
-    sort_order: data?.sort_order || 'descending',
+    ...sort_on,
+    ...sort_order,
     query: data?.query?.length ? data.query : defaultQuery,
   };
 };

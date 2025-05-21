@@ -4,11 +4,13 @@ import type {
   BlockExtension,
   BlocksConfigData,
 } from '../config/Blocks';
-import type { IntlShape } from 'react-intl';
-import type { Location, History } from 'history';
+import type { IntlShape } from '../i18n';
+import type { Location, History } from '../router';
 
 export interface BlocksFormData {
   '@type': AvailableBlocks;
+  variation?: string;
+  [x: string]: unknown;
 }
 
 export interface BlockViewProps {
@@ -102,7 +104,7 @@ export interface BlockEditProps {
   }) => void;
   pathname: string;
   properties: Content;
-  selected: Boolean;
+  selected: boolean;
   setSidebarTab: boolean | 0 | 1;
   showBlockChooser: boolean;
   showRestricted: boolean;
@@ -115,4 +117,20 @@ export interface BlockEditProps {
   history: History;
   location: Location;
   token: string;
+  errors: Record<string, Array<string>>;
+  blocksErrors: Record<string, Record<string, Array<string>>>;
 }
+
+export type StyleDefinition =
+  | {
+      name: string;
+      label: string;
+      style: Record<`--${string}`, string>;
+    }
+  | {
+      name: string;
+      label: string;
+      style: undefined;
+    };
+
+export * from './objectBrowser';

@@ -1,3 +1,7 @@
+import { Content } from '../content';
+import { BlocksFormData } from '../blocks/index';
+import { ConfigData } from '.';
+
 type apiExpandersType =
   | { match: string; GET_CONTENT: string[] }
   | {
@@ -5,8 +9,23 @@ type apiExpandersType =
       GET_CONTENT: string[];
       querystring:
         | { [key: string]: string }
-        | (() => { [key: string]: string });
+        | ((
+            config,
+            querystring: { config: ConfigData; querystring: object },
+          ) => { [key: string]: string });
     };
+
+type styleClassNameExtendersType = ({
+  block,
+  content,
+  data,
+  classNames,
+}: {
+  block: string;
+  content: Content;
+  data: BlocksFormData;
+  classNames: string[];
+}) => string[];
 
 export interface SettingsConfig {
   [key: string]: unknown;
@@ -22,7 +41,7 @@ export interface SettingsConfig {
   websockets: string | false;
   legacyTraverse: string | false;
   cookieExpires: number;
-  nonContentRoutes: string[];
+  nonContentRoutes: Array<string | RegExp>;
   richtextEditorSettings: unknown;
   richtextViewSettings: unknown;
   imageObjects: string[];
@@ -61,6 +80,7 @@ export interface SettingsConfig {
   serverConfig: unknown;
   storeExtenders: unknown[];
   showTags: boolean;
+  showRelatedItems: boolean;
   controlpanels: unknown[];
   controlPanelsIcons: Record<string, React.ComponentType>;
   filterControlPanels: unknown;
@@ -71,20 +91,19 @@ export interface SettingsConfig {
 
   showSelfRegistration: boolean;
   contentMetadataTagsImageField: string;
-  hasWorkingCopySupport: boolean;
   maxUndoLevels: number;
   addonsInfo: unknown;
   workflowMapping: unknown;
   errorHandlers: unknown[];
   styleClassNameConverters: unknown;
   hashLinkSmoothScroll: boolean;
-  styleClassNameExtenders: unknown;
+  styleClassNameExtenders: styleClassNameExtendersType[];
   querystringSearchGet: boolean;
   blockSettingsTabFieldsetsInitialStateOpen: boolean;
   excludeLinksAndReferencesMenuItem: boolean;
-  containerBlockTypes: string[];
   siteTitleFormat: {
     includeSiteTitle: boolean;
     titleAndSiteTitleSeparator: string;
   };
+  cssLayers: string[];
 }

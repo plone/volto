@@ -10,11 +10,11 @@ type Color = {
 export type ColorPickerWidgetProps = {
     id: string;
     title: string;
-    value: string;
-    default: string;
-    required: boolean;
-    missing_value: unknown;
-    className: string;
+    value?: string;
+    default?: string | object;
+    required?: boolean;
+    missing_value?: unknown;
+    className?: string;
     onChange: (id: string, value: any) => void;
     colors: Color[];
 };

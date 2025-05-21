@@ -6,6 +6,12 @@ import { MemoryRouter } from 'react-router-dom';
 
 import Register from './Register';
 
+vi.mock('@plone/volto/components/manage/Form', async () => {
+  return await import(
+    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
+  );
+});
+
 const mockStore = configureStore();
 
 describe('Register', () => {

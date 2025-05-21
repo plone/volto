@@ -1,7 +1,9 @@
 import type { Content } from '@plone/types';
-export declare function RouteCondition(path: string, exact?: boolean): ({ pathname }: {
-    pathname: string;
+import type { Location } from 'history';
+export declare function RouteCondition(path: string, exact?: boolean): ({ location }: {
+    location: Location;
 }) => boolean;
-export declare function ContentTypeCondition(contentType: string[]): ({ content }: {
+export declare function ContentTypeCondition(contentType: string[]): ({ content, location }: {
     content: Content;
+    location: Location;
 }) => boolean;

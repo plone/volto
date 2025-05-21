@@ -3,7 +3,7 @@ import { z } from 'zod';
 const query = z.object({
   i: z.string(),
   o: z.string(),
-  v: z.array(z.string()),
+  v: z.union([z.string(), z.array(z.string())]),
 });
 
 export const querystringSearchDataSchema = z.object({
@@ -14,4 +14,5 @@ export const querystringSearchDataSchema = z.object({
   sort_order: z.string().optional(),
   fullobjects: z.boolean().optional(),
   query: z.array(query),
+  post: z.boolean().optional(),
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
-import BlockDataForm from '@plone/volto/components/manage/Form/BlockDataForm';
+import { BlockDataForm } from '@plone/volto/components/manage/Form';
 
 const Settings = ({
   data,

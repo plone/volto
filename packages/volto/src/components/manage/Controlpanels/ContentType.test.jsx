@@ -8,8 +8,14 @@ import ContentType from './ContentType';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
-jest.mock('../Form/Form', () => jest.fn(() => <div id="form" />));
+vi.mock('@plone/volto/components/manage/Form', async () => {
+  return await import(
+    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
+  );
+});
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
 describe('ContentType', () => {
   it('renders dexterity content-type component', () => {
@@ -32,8 +38,28 @@ describe('ContentType', () => {
         locale: 'en',
         messages: {},
       },
+      actions: {
+        actions: {},
+      },
+      userSession: {
+        token: null,
+      },
+      content: {
+        data: {},
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
+      types: {
+        types: [],
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
     });
-
+    store.dispatch = vi.fn(() => Promise.resolve());
     const { container } = render(
       <Provider store={store}>
         <MemoryRouter

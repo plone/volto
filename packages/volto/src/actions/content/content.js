@@ -14,9 +14,23 @@ import {
   LOCK_CONTENT,
   UNLOCK_CONTENT,
   LINK_INTEGRITY_CHECK,
+  UPDATE_UPLOADED_FILES,
 } from '@plone/volto/constants/ActionTypes';
-import { nestContent } from '@plone/volto/helpers';
+import { nestContent } from '@plone/volto/helpers/Content/Content';
 import config from '@plone/volto/registry';
+
+/**
+ * update uploaded files count function
+ * @function updateUploadedFiles
+ * @param {number} number of files uploaded
+ * @returns {Object} update uploaded files action
+ */
+export function updateUploadedFiles(uploadedFiles) {
+  return {
+    type: UPDATE_UPLOADED_FILES,
+    uploadedFiles: uploadedFiles,
+  };
+}
 
 /**
  * Create content function.

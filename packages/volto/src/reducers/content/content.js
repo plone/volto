@@ -3,9 +3,11 @@
  * @module reducers/content/content
  */
 
-import { map, mapKeys, omit } from 'lodash';
+import map from 'lodash/map';
+import mapKeys from 'lodash/mapKeys';
+import omit from 'lodash/omit';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 import {
   CREATE_CONTENT,
@@ -17,7 +19,10 @@ import {
   RESET_CONTENT,
   UPDATE_CONTENT,
   UPDATECOLUMNS_CONTENT,
+  UPDATE_UPLOADED_FILES,
 } from '@plone/volto/constants/ActionTypes';
+
+import config from '@plone/volto/registry';
 
 const initialState = {
   create: {
@@ -62,6 +67,7 @@ const initialState = {
   },
   data: null,
   subrequests: {},
+  uploadedFiles: 0,
 };
 
 /**
@@ -190,6 +196,16 @@ export default function content(state = initialState, action = {}) {
           };
         });
       }
+
+      const transforms = config.getUtilities({
+        type: 'transform',
+        dependencies: { reducer: 'content' },
+      });
+
+      transforms.forEach(({ method }) => {
+        method(result);
+      });
+
       return action.subrequest
         ? {
             ...state,
@@ -350,6 +366,11 @@ export default function content(state = initialState, action = {}) {
             },
             data: null,
           };
+    case UPDATE_UPLOADED_FILES:
+      return {
+        ...state,
+        uploadedFiles: action.uploadedFiles,
+      };
     default:
       return state;
   }

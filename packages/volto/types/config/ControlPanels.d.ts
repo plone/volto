@@ -21,5 +21,13 @@ export const controlPanelsIcons: {
     aliases: string;
     relations: string;
 };
-export function filterControlPanels(controlpanels: any): any;
+export function filterControlPanels(controlpanels?: any[]): any[];
+export namespace unwantedControlPanelsFields {
+    let language: string[];
+    let search: string[];
+    let site: string[];
+    let editing: string[];
+    let imaging: string[];
+    let navigation: string[];
+}
 export function filterControlPanelsSchema(controlpanel: any): any;

@@ -9,37 +9,41 @@ import Controlpanels from './Controlpanels';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
-jest.mock('./VersionOverview', () =>
-  jest.fn(() => <div className="VersionOverview" />),
-);
+vi.mock('@plone/volto/components/manage/Controlpanels', () => ({
+  VersionOverview: vi.fn(() => <div className="VersionOverview" />),
+}));
 
 describe('Controlpanels', () => {
   it('renders a controlpanels component', () => {
     const store = mockStore({
-      controlpanels: [
-        {
-          '@id': 'http://localhost:8080/Plone/@controlpanels/date-and-time',
-          group: 'General',
-          title: 'Date and Time',
-        },
-        {
-          '@id': 'http://localhost:8080/Plone/@controlpanels/lang',
-          group: 'General',
-          title: 'Language',
-        },
-        {
-          '@id': 'http://localhost:8080/Plone/@controlpanels/editing',
-          group: 'Content',
-          title: 'Editing',
-        },
-        {
-          '@id': 'http://localhost:8080/Plone/@controlpanels/security',
-          group: 'Security',
-          title: 'test',
-        },
-      ],
+      controlpanels: {
+        controlpanels: [
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/date-and-time',
+            group: 'General',
+            title: 'Date and Time',
+          },
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/lang',
+            group: 'General',
+            title: 'Language',
+          },
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/editing',
+            group: 'Content',
+            title: 'Editing',
+          },
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/security',
+            group: 'Security',
+            title: 'test',
+          },
+        ],
+      },
       reduxAsyncConnect: {
         // Mocked in redux async connect as it isn't fetch client-side.
         controlpanels: [
@@ -70,7 +74,28 @@ describe('Controlpanels', () => {
         locale: 'en',
         messages: {},
       },
+      actions: {
+        actions: {},
+      },
+      userSession: {
+        token: null,
+      },
+      content: {
+        data: {},
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
+      types: {
+        types: [],
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
     });
+    store.dispatch = vi.fn(() => Promise.resolve());
     const { container } = render(
       <Provider store={store}>
         <MemoryRouter>
@@ -85,13 +110,15 @@ describe('Controlpanels', () => {
 
   it('renders an additional control panel', () => {
     const store = mockStore({
-      controlpanels: [
-        {
-          '@id': 'http://localhost:8080/Plone/@controlpanels/security',
-          group: 'Security',
-          title: 'test',
-        },
-      ],
+      controlpanels: {
+        controlpanels: [
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/security',
+            group: 'Security',
+            title: 'test',
+          },
+        ],
+      },
       reduxAsyncConnect: {
         // Mocked in redux async connect as it isn't fetch client-side.
         controlpanels: [
@@ -106,6 +133,26 @@ describe('Controlpanels', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      actions: {
+        actions: {},
+      },
+      userSession: {
+        token: null,
+      },
+      content: {
+        data: {},
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
+      types: {
+        types: [],
+        get: {
+          loading: false,
+          loaded: true,
+        },
       },
     });
 
@@ -126,6 +173,7 @@ describe('Controlpanels', () => {
         component: FooComponent,
       },
     ];
+    store.dispatch = vi.fn(() => Promise.resolve());
     const { container } = render(
       <Provider store={store}>
         <MemoryRouter>

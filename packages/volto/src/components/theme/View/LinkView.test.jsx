@@ -7,6 +7,8 @@ import LinkView from './LinkView';
 
 const mockStore = configureStore();
 
+global.__SERVER__ = false; // eslint-disable-line no-underscore-dangle
+
 const store = mockStore({
   userSession: {
     token: null,
@@ -15,6 +17,15 @@ const store = mockStore({
     locale: 'en',
     messages: {},
   },
+  actions: {
+    actions: {
+      object: [
+        {
+          id: 'edit',
+        },
+      ],
+    },
+  },
 });
 
 test('renders a link view component', () => {
@@ -22,7 +33,6 @@ test('renders a link view component', () => {
     <Provider store={store}>
       <MemoryRouter>
         <LinkView
-          token="1234"
           content={{
             title: 'Hello World!',
             description: 'Hi',

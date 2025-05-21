@@ -1,1 +1,0 @@
-Changed relative path to absolute in `DefaultView.jsx` for the `RenderBlocks` component to make it easier to customize. @agan-k

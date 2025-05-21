@@ -1,5 +1,8 @@
 import React from 'react';
-import { Table, TableHeader, Row, Column } from './Table';
+import { Table } from './Table';
+import { TableHeader } from './TableHeader';
+import { Column } from './Column';
+import { Row } from './Row';
 import { Cell, TableBody } from 'react-aria-components';
 
 import type { Meta, StoryObj } from '@storybook/react';
@@ -46,7 +49,7 @@ export const Default: Story = {
     </Table>
   ),
   args: {
-    onRowAction: null,
+    onRowAction: undefined,
     // selectionMode: "multiple",
   },
 };

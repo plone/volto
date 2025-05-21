@@ -1,5 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
-const { mergeConfig } = require('vite');
+import { mergeConfig } from 'vite';
 
 const config: StorybookConfig = {
   // For some reason the property does not allow negation
@@ -14,9 +14,7 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
-  },
+  docs: {},
   typescript: {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {

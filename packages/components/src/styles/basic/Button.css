@@ -1,6 +1,6 @@
 @import './theme.css';
 
-@layer components {
+@layer plone-components.base {
   .react-aria-Button {
     padding: 8px 8px;
     border: 1px solid var(--border-color);

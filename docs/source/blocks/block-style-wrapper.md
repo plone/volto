@@ -221,7 +221,7 @@ Finally, assuming that you select the default value for the {guilabel}`Aspect Ra
 As you can see, the custom CSS declaration applies only in the `div` where you inject the property.
 
 ```{seealso}
-[CSS custom properties basics](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+[CSS custom properties basics](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties)
 ```
 
 If you want to use it in your custom components, you need to apply it in the root of your block's view component as follows:
@@ -344,3 +344,34 @@ Each block in the Block Engine has a main wrapper with an automatic class name `
 ```
 
 You can use it for further control over the positioning and layout of the block.
+
+## Style object builder enhancer
+
+The style wrapper has a helper method that generates a style object from the block data.
+This generated style object is available to inject into the style property.
+
+You can tap into this helper method by applying your own rules programmatically.
+Define a utility of the `type` `styleWrapperStyleObjectEnhancer` as follows.
+
+```ts
+  config.registerUtility({
+    name: 'blockThemesEnhancer',
+    type: 'styleWrapperStyleObjectEnhancer',
+    method: blockThemesEnhancer,
+  });
+```
+
+The registered method has the following signature.
+
+```ts
+type blockThemesEnhancerType = ({
+  data,
+  container,
+}: {
+  data: BlocksFormData;
+  container: BlocksFormData;
+}) => Record<`--${string}`, string>;
+```
+
+`data` is the current block, and `container` is its parent block, if the current block is in a block container.
+It returns a record of CSS properties.
