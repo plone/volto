@@ -82,9 +82,9 @@ export default {
   ],
   argTypes: {
     locale: {
+      options: ['en', 'fr', 'de', 'it', 'eu'],
       control: {
-        type: 'select',
-        options: ['en', 'de', 'us'],
+        type: 'radio',
       },
     },
   },
