@@ -4797,11 +4797,6 @@ msgstr "Mein Nutzername lautet"
 msgid "leadimage"
 msgstr "Lead-Bild"
 
-#. Default: "Delete"
-#: components/manage/Contents/ContentsDeleteModal
-msgid "link-integrity: Delete"
-msgstr "Linkintegrität: Löschen"
-
 #. Default: "Delete item and break links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: Delete item and break links"
