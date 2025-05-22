@@ -4565,6 +4565,11 @@ msgstr "Voer een nieuw wahtwoord in. Minimum 8 karakters."
 msgid "addUserFormUsernameDescription"
 msgstr "Voer een gebruikersnaam in, doorgaans iets zoals 'jsmit'. Geen spaties of speciale tekens. Gebruikersnamen en wachtwoorden zijn hoofdlettergevoelig, zorg dat de hoofdletterknop uit staat. Dit is de naam die je gebruikt om aan te melden."
 
+#. Default: "and {count} more…"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "and {count} more…"
+msgstr ""
+
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"

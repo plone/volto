@@ -4561,6 +4561,11 @@ msgstr ""
 msgid "addUserFormUsernameDescription"
 msgstr ""
 
+#. Default: "and {count} more…"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "and {count} more…"
+msgstr ""
+
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"

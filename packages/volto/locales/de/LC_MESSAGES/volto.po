@@ -4566,6 +4566,11 @@ msgstr "Geben Sie Ihr neues Passwort ein. Das Passwort muss aus mindestens 8 Zei
 msgid "addUserFormUsernameDescription"
 msgstr "Geben Sie einen Nutzernamen ein, beispielsweise etwas wie "m.muster". Benutzen Sie keine Leer- oder Sonderzeichen. Bitte beachten Sie Groß- und Kleinschreibung und stellen Sie sicher, dass die Feststelltaste nicht aktiviert ist. Dieser Name wird zum Anmelden genutzt."
 
+#. Default: "and {count} more…"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "and {count} more…"
+msgstr "und {count} mehr"
+
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
