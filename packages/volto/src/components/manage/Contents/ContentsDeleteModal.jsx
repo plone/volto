@@ -30,7 +30,7 @@ const messages = defineMessages({
     defaultMessage: 'Checking references...',
   },
   delete: {
-    id: 'link-integrity: Delete',
+    id: 'Delete',
     defaultMessage: 'Delete',
   },
   delete_and_broken_links: {

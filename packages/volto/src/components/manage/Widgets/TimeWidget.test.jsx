@@ -6,11 +6,18 @@ import { waitFor, render, screen } from '@testing-library/react';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/helpers/Loadable/Loadable', async () => {
+  return await import(
+    '@plone/volto/helpers/Loadable/__mocks__/Loadable.vitest.jsx'
+  );
+});
+
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
 
 test('renders a time widget component', async () => {
   const store = mockStore({
@@ -31,5 +38,6 @@ test('renders a time widget component', async () => {
     </Provider>,
   );
   await waitFor(() => screen.getByText(/My field/));
+  await waitFor(() => screen.getByPlaceholderText('Time'));
   expect(container).toMatchSnapshot();
 });

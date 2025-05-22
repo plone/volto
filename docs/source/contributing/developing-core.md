@@ -97,9 +97,6 @@ When developing a project using Plone, Yarn or other package managers may be use
 
 ### Node.js
 
-We recommend that you install Node.js using nvm.
-Alternatively you can install Node.js using Homebrew or other package installer.
-
 ```{include} ../_inc/_install-nodejs.md
 ```
 

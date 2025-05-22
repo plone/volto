@@ -359,27 +359,29 @@ class Add extends Component {
             }
             schema={this.props.schema}
             type={this.props.type}
-            formData={{
-              ...(blocksFieldname && {
-                [blocksFieldname]:
-                  initialBlocks ||
-                  this.props.schema.properties[blocksFieldname]?.default,
-              }),
-              ...(blocksLayoutFieldname && {
-                [blocksLayoutFieldname]: {
-                  items:
-                    initialBlocksLayout ||
-                    this.props.schema.properties[blocksLayoutFieldname]?.default
-                      ?.items,
+            formData={
+              this.props.location?.state?.initialFormData || {
+                ...(blocksFieldname && {
+                  [blocksFieldname]:
+                    initialBlocks ||
+                    this.props.schema.properties[blocksFieldname]?.default,
+                }),
+                ...(blocksLayoutFieldname && {
+                  [blocksLayoutFieldname]: {
+                    items:
+                      initialBlocksLayout ||
+                      this.props.schema.properties[blocksLayoutFieldname]
+                        ?.default?.items,
+                  },
+                }),
+                // Copy the Language Independent Fields values from the to-be translated content
+                // into the default values of the translated content Add form.
+                ...lifData(),
+                parent: {
+                  '@id': this.props.content?.['@id'] || '',
                 },
-              }),
-              // Copy the Language Independent Fields values from the to-be translated content
-              // into the default values of the translated content Add form.
-              ...lifData(),
-              parent: {
-                '@id': this.props.content?.['@id'] || '',
-              },
-            }}
+              }
+            }
             requestError={this.state.error}
             onSubmit={this.onSubmit}
             hideActions

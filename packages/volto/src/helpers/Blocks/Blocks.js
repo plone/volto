@@ -140,7 +140,7 @@ export function deleteBlock(formData, blockId, intl) {
       newFormData,
       config.settings.defaultBlockType,
       0,
-      {},
+      null,
       intl,
     );
   }
