@@ -4456,6 +4456,16 @@ msgstr "सालाना"
 msgid "Yes"
 msgstr "हां"
 
+#. Default: "You are about to delete all items in the current pagination of this folder."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items in the current pagination of this folder."
+msgstr ""
+
+#. Default: "You are about to delete all items in this folder."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items in this folder."
+msgstr ""
+
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."

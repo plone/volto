@@ -1,3 +1,10 @@
+Cypress.Commands.add('selectAllContents', () => {
+  cy.get(
+    '.contents-table-wrapper > table > thead > tr > th:nth-child(2)',
+  ).click();
+  cy.get('.dropdown-popup > div > div ').contains('All').click();
+});
+
 describe('Modal View for different content types', () => {
   const simpleSlateLink = (target) => {
     return {
@@ -402,5 +409,118 @@ describe('Test if different forms of Linking content appear in Delete Modal View
     cy.get('[aria-label="Delete"]').click();
     cy.get('.medium > .header').should('be.visible');
     cy.get('li > [href="/document-linked"]');
+  });
+});
+describe('Contents Delete Modal - selected items info and confirmation messages', () => {
+  beforeEach(() => {
+    cy.autologin();
+    cy.visit('/');
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: `Test Delete Modal`,
+      contentId: `teste-delete-modal`,
+    });
+  });
+
+  it('Select all items on current page with more than one page (over 50 items), should show pagination message', () => {
+    // Create 55 documents to ensure more than one page
+    for (let i = 0; i < 55; i++) {
+      cy.createContent({
+        contentType: 'Document',
+        contentTitle: `Doc ${i + 1}`,
+        contentId: `doc-${i + 1}`,
+        path: '/teste-delete-modal',
+      });
+    }
+    cy.visit('/teste-delete-modal/contents');
+    cy.selectAllContents();
+    cy.get('[aria-label="Delete"]').click();
+    cy.get('.medium > .header').should('be.visible');
+    cy.contains(
+      'You are about to delete all items in the current pagination of this folder.',
+    ).should('be.visible');
+  });
+
+  it('Select all items when there is less than one page, should show folder message', () => {
+    // Create 5 documents
+    for (let i = 0; i < 5; i++) {
+      cy.createContent({
+        contentType: 'Document',
+        contentTitle: `Doc ${i + 1}`,
+        contentId: `doc2-${i + 1}`,
+        path: '/teste-delete-modal',
+      });
+    }
+    cy.visit('/teste-delete-modal/contents');
+    cy.selectAllContents();
+    cy.get('[aria-label="Delete"]').click();
+    cy.get('.medium > .header').should('be.visible');
+    cy.contains('You are about to delete all items in this folder.').should(
+      'be.visible',
+    );
+  });
+
+  it('Select all items using ALL pagination, should show folder message', () => {
+    // Create 60 documents
+    for (let i = 0; i < 60; i++) {
+      cy.createContent({
+        contentType: 'Document',
+        contentTitle: `Doc ${i + 1}`,
+        contentId: `doc3-${i + 1}`,
+        path: '/teste-delete-modal',
+      });
+    }
+    cy.visit('/teste-delete-modal/contents');
+    cy.get('.contents-pagination .right.menu a.item').contains('All').click();
+    cy.selectAllContents();
+    cy.get('[aria-label="Delete"]').click();
+    cy.get('.medium > .header').should('be.visible');
+    cy.contains('You are about to delete all items in this folder.').should(
+      'be.visible',
+    );
+  });
+
+  it('Select one item to delete, should show the item in the list with link', () => {
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'Single Doc',
+      contentId: 'single-doc',
+      path: '/teste-delete-modal',
+    });
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'Second Doc',
+      contentId: 'second-doc',
+      path: '/teste-delete-modal',
+    });
+    cy.visit('/teste-delete-modal/contents');
+    cy.get(
+      '[aria-label="/teste-delete-modal/single-doc"] > :nth-child(2)',
+    ).click();
+    cy.get('[aria-label="Delete"]').click();
+    cy.get('.medium > .header').should('be.visible');
+    cy.get('li > [href="/teste-delete-modal/single-doc"]').should('be.visible');
+  });
+
+  it('Select 3 items to delete (with more than 3 in total), should show the selected items in the list with links', () => {
+    // Create 6 documents
+    for (let i = 0; i < 6; i++) {
+      cy.createContent({
+        contentType: 'Document',
+        contentTitle: `Doc ${i + 1}`,
+        contentId: `doc5-${i + 1}`,
+        path: '/teste-delete-modal',
+      });
+    }
+    cy.visit('/teste-delete-modal/contents');
+    // Select 3 items
+    cy.get(`[aria-label="/teste-delete-modal/doc5-1"] > :nth-child(2)`).click();
+    cy.get(`[aria-label="/teste-delete-modal/doc5-2"] > :nth-child(2)`).click();
+    cy.get(`[aria-label="/teste-delete-modal/doc5-3"] > :nth-child(2)`).click();
+    cy.get('[aria-label="Delete"]').click();
+    cy.get('.medium > .header').should('be.visible');
+    cy.get('li > [href="/teste-delete-modal/doc5-1"]').should('be.visible');
+    cy.get('li > [href="/teste-delete-modal/doc5-2"]').should('be.visible');
+    cy.get('li > [href="/teste-delete-modal/doc5-3"]').should('be.visible');
   });
 });

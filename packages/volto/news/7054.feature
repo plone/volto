@@ -1,0 +1,1 @@
+Improved the component `ContentsDeleteModal` by displaying a detailed list of selected items with clickable links for better clarity and usability. @alexandreIFB
