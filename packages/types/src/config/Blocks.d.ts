@@ -6,7 +6,7 @@ import { StyleDefinition } from '../blocks';
 
 export interface BlocksConfig {
   blocksConfig: BlocksConfigData;
-  groupBlocksOrder: { id: string; title: string };
+  groupBlocksOrder: Array<{ id: string; title: string }>;
   requiredBlocks: string[];
   initialBlocks: Record<string, string[]> | Record<string, object[]>;
   initialBlocksFocus: Record<string, string>;
@@ -55,6 +55,10 @@ export interface BlockConfigBase {
    * The category of the block
    */
   category: string;
+  /**
+   * The model of the block
+   */
+  blockModel?: number;
   /**
    * The view mode component
    */
