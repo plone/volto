@@ -235,7 +235,9 @@ export const fetchContent = async ({ store, location }) => {
 
   const visitor = ([id, data]) => {
     const blockType = data['@type'];
-    const { getAsyncData } = blocksConfig[blockType];
+    const block = blocksConfig[blockType];
+    if (!block) return;
+    const { getAsyncData } = block;
     if (getAsyncData) {
       const p = getAsyncData({
         store,

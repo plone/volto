@@ -1,0 +1,1 @@
+fix(fetchContent): correctly handle undefined blocksType in async fetchContent @nileshgulia1
