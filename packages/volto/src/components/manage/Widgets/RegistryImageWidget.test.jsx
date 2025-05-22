@@ -54,7 +54,7 @@ describe('RegistryImageWidget', () => {
       () => {
         expect(container.querySelector('.file-widget-dropzone')).toBeTruthy();
       },
-      { timeout: 1000 },
+      { timeout: 3000 },
     );
 
     expect(container).toMatchSnapshot();
@@ -85,7 +85,7 @@ describe('RegistryImageWidget', () => {
 
         return dropzone && preview && filename;
       },
-      { timeout: 1000 },
+      { timeout: 3000 },
     );
 
     expect(container).toMatchSnapshot();

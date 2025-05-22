@@ -4694,6 +4694,11 @@ msgstr "Dónde"
 msgid "examplePath"
 msgstr ""
 
+#. Default: "External URLs are not allowed in this field."
+#: components/manage/Widgets/ImageWidget
+msgid "externalURLsNotAllowed"
+msgstr ""
+
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
