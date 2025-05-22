@@ -4556,6 +4556,11 @@ msgstr "Введите новый пароль. Минимум 8 знаков."
 msgid "addUserFormUsernameDescription"
 msgstr "Введите имя пользователя, обычно что-то вроде 'iivanov' без пробелов и специальных символов. Имена пользователей и пароли чувствительны к регистру, убедитесь, что клавиша Caps Lock не включена. Это имя используется для входа в систему."
 
+#. Default: "and {count} more…"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "and {count} more…"
+msgstr ""
+
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"

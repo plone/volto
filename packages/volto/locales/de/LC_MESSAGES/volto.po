@@ -145,7 +145,7 @@ msgstr "Block hinzufügen"
 #. Default: "Add block in position {index}"
 #: components/manage/Blocks/Container/NewBlockAddButton
 msgid "Add block in position {index}"
-msgstr "Block an Position {index} hinzufügen"
+msgstr "Block an Position {index} hinzufügenBlock an Position {index} hinzufügen"
 
 #. Default: "Add block…"
 #: helpers/MessageLabels/MessageLabels
@@ -4555,6 +4555,11 @@ msgstr "Geben Sie Ihr neues Passwort ein. Das Passwort muss aus mindestens 8 Zei
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "Geben Sie einen Nutzernamen ein, beispielsweise etwas wie "m.muster". Benutzen Sie keine Leer- oder Sonderzeichen. Bitte beachten Sie Groß- und Kleinschreibung und stellen Sie sicher, dass die Feststelltaste nicht aktiviert ist. Dieser Name wird zum Anmelden genutzt."
+
+#. Default: "and {count} more…"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "and {count} more…"
+msgstr "und {count} mehr"
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema

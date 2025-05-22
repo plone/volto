@@ -10,6 +10,8 @@ import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 import { Confirm, Dimmer, Loader, Table } from 'semantic-ui-react';
 
+const MAX_BREACHES_TO_SHOW = 2;
+
 const messages = defineMessages({
   deleteConfirmSingleItem: {
     id: 'Delete this item?',
@@ -186,6 +188,7 @@ const ContentsDeleteModal = (props) => {
                           ),
                         }}
                       />
+                      <BrokenLinksList intl={intl} breaches={breaches} />
                     </>
                   )}
                 </>
@@ -215,6 +218,7 @@ const ContentsDeleteModal = (props) => {
                           ),
                         }}
                       />
+                      <BrokenLinksList intl={intl} breaches={breaches} />
                     </>
                   )}
                 </>
@@ -323,7 +327,7 @@ const BrokenLinksList = ({ intl, breaches, linksAndReferencesViewLink }) => {
       :
       <Table compact>
         <Table.Body>
-          {breaches.map((breach) => (
+          {breaches.slice(0, MAX_BREACHES_TO_SHOW).map((breach) => (
             <Table.Row key={breach.source['@id']} verticalAlign="top">
               <Table.Cell>
                 <Link
@@ -354,6 +358,19 @@ const BrokenLinksList = ({ intl, breaches, linksAndReferencesViewLink }) => {
               </Table.Cell>
             </Table.Row>
           ))}
+          {breaches.length > MAX_BREACHES_TO_SHOW && (
+            <Table.Row>
+              <Table.Cell colSpan="3">
+                <FormattedMessage
+                  id="and {count} more…"
+                  defaultMessage="and {count} more…"
+                  values={{
+                    count: breaches.length - MAX_BREACHES_TO_SHOW,
+                  }}
+                />
+              </Table.Cell>
+            </Table.Row>
+          )}
         </Table.Body>
       </Table>
       {linksAndReferencesViewLink && (
