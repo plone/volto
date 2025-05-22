@@ -14,6 +14,8 @@ import {
   flattenToAppURL,
   getBaseUrl,
   isInternalURL,
+  normalizeUrl,
+  removeProtocol,
 } from '@plone/volto/helpers/Url/Url';
 import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
@@ -29,6 +31,8 @@ import navTreeSVG from '@plone/volto/icons/nav.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
 import Image from '../../theme/Image/Image';
+import { urlValidator } from '@plone/volto/helpers/FormValidation/validators';
+import { searchContent } from '@plone/volto/actions/search/search';
 
 const Dropzone = loadable(() => import('react-dropzone'));
 
@@ -70,6 +74,10 @@ const messages = defineMessages({
   imageUploadErrorMessage: {
     id: 'imageUploadErrorMessage',
     defaultMessage: 'Please upload an image instead.',
+  },
+  externalURLsNotAllowed: {
+    id: 'externalURLsNotAllowed',
+    defaultMessage: 'External URLs are not allowed in this field.',
   },
 });
 
@@ -188,6 +196,87 @@ const UnconnectedImageInput = (props) => {
     if (restrictFileUpload === false) setDragging(true);
   }, [restrictFileUpload]);
   const onDragLeave = React.useCallback(() => setDragging(false), []);
+
+  const validateManualLink = React.useCallback(
+    (url) => {
+      if (props.allowExternals && !url.startsWith('/')) {
+        const error = urlValidator({
+          value: url,
+          formatMessage: intl.formatMessage,
+        });
+        // if (error && url !== '') {
+        //   this.setState({ errors: [error] });
+        // } else {
+        //   this.setState({ errors: [] });
+        // }
+        return !Boolean(error);
+      } else {
+        return isInternalURL(url);
+      }
+    },
+    [props.allowExternals, intl.formatMessage],
+  );
+
+  const onSubmitURL = React.useCallback(
+    (url) => {
+      if (validateManualLink(url)) {
+        if (isInternalURL(url)) {
+          // convert it into an internal on if possible
+          props
+            .searchContent(
+              '/',
+              {
+                'path.query': flattenToAppURL(url),
+                'path.depth': '0',
+                sort_on: 'getObjPositionInParent',
+                metadata_fields: '_all',
+                b_size: 1000,
+              },
+              `${props.block}-${props.mode}`,
+            )
+            .then((resp) => {
+              if (resp.items?.length > 0) {
+                onChange(props.id, resp.items[0], {});
+              } else {
+                onChange(props.id, [
+                  {
+                    '@id': flattenToAppURL(url),
+                    title: removeProtocol(url),
+                  },
+                ]);
+              }
+            });
+        } else {
+          if (!props.allowExternals || isRelationChoice) {
+            toast.error(
+              <Toast
+                error
+                title={intl.formatMessage(messages.Error)}
+                content={intl.formatMessage(messages.imageUploadErrorMessage)}
+              />,
+            );
+          } else {
+            // if it's an external link, we save it as is
+            onChange(props.id, [
+              {
+                '@id': normalizeUrl(url),
+                title: removeProtocol(url),
+              },
+            ]);
+          }
+        }
+      } else if (!props.allowExternals) {
+        toast.error(
+          <Toast
+            error
+            title={intl.formatMessage(messages.Error)}
+            content={intl.formatMessage(messages.externalURLsNotAllowed)}
+          />,
+        );
+      }
+    },
+    [validateManualLink, props, intl, isRelationChoice, onChange],
+  );
 
   return imageValue ? (
     <div
@@ -349,13 +438,14 @@ const UnconnectedImageInput = (props) => {
                       intl.formatMessage(messages.linkAnImage)
                     }
                     objectBrowserPickerType={objectBrowserPickerType}
-                    onChange={(_, e) =>
-                      onChange(
-                        props.id,
-                        isInternalURL(e) ? flattenToAppURL(e) : e,
-                        {},
-                      )
-                    }
+                    onChange={(_, e) => {
+                      onSubmitURL(e);
+                      // onChange(
+                      //   props.id,
+                      //   isInternalURL(e) ? flattenToAppURL(e) : e,
+                      //   {},
+                      // );
+                    }}
                     id={id}
                   />
                 )}
@@ -379,7 +469,7 @@ export const ImageInput = compose(
         content: state.content.subrequests[ownProps.block || requestId]?.data,
       };
     },
-    { createContent },
+    { createContent, searchContent },
   ),
 )(UnconnectedImageInput);
 
