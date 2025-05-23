@@ -750,6 +750,9 @@ importers:
       react:
         specifier: ^19.0.0
         version: 19.0.0
+      react-aria-components:
+        specifier: 'catalog:'
+        version: 1.8.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
@@ -2418,9 +2421,6 @@ packages:
       '@types/node':
         optional: true
 
-  '@internationalized/date@3.7.0':
-    resolution: {integrity: sha512-VJ5WS3fcVx0bejE/YHfbDKR/yawZgKqn/if+oEeLqNwBtPzVB06olkfcnojTmEMX+gTpH+FlQ69SHNitJ8/erQ==}
-
   '@internationalized/date@3.8.0':
     resolution: {integrity: sha512-J51AJ0fEL68hE4CwGPa6E0PO6JDaVLd8aln48xFCSy7CZkZc96dGEGmLs2OEEbBxcsVZtfrqkXJwI2/MSG8yKw==}
 
@@ -2435,9 +2435,6 @@ packages:
 
   '@internationalized/number@3.6.1':
     resolution: {integrity: sha512-UVsb4bCwbL944E0SX50CHFtWEeZ2uB5VozZ5yDXJdq6iPZsZO5p+bjVMZh2GxHf4Bs/7xtDCcPwEa2NU9DaG/g==}
-
-  '@internationalized/string@3.2.5':
-    resolution: {integrity: sha512-rKs71Zvl2OKOHM+mzAFMIyqR5hI1d1O6BBkMK2/lkfg3fkmVh9Eeg0awcA8W2WqYqDOv6a86DIOlFpggwLtbuw==}
 
   '@internationalized/string@3.2.6':
     resolution: {integrity: sha512-LR2lnM4urJta5/wYJVV7m8qk5DrMZmLRTuFhbQO5b9/sKLHgty6unQy1Li4+Su2DWydmB4aZdS5uxBRXIq2aAw==}
@@ -11829,10 +11826,6 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.10.7
 
-  '@internationalized/date@3.7.0':
-    dependencies:
-      '@swc/helpers': 0.5.10
-
   '@internationalized/date@3.8.0':
     dependencies:
       '@swc/helpers': 0.5.10
@@ -11852,10 +11845,6 @@ snapshots:
       '@swc/helpers': 0.5.10
 
   '@internationalized/number@3.6.1':
-    dependencies:
-      '@swc/helpers': 0.5.10
-
-  '@internationalized/string@3.2.5':
     dependencies:
       '@swc/helpers': 0.5.10
 
@@ -12894,11 +12883,11 @@ snapshots:
 
   '@react-aria/i18n@3.12.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
-      '@internationalized/date': 3.7.0
+      '@internationalized/date': 3.8.0
       '@internationalized/message': 3.1.6
       '@internationalized/number': 3.6.0
-      '@internationalized/string': 3.2.5
-      '@react-aria/ssr': 3.9.7(react@19.0.0)
+      '@internationalized/string': 3.2.6
+      '@react-aria/ssr': 3.9.8(react@19.0.0)
       '@react-aria/utils': 3.28.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@react-types/shared': 3.29.0(react@19.0.0)
       '@swc/helpers': 0.5.10
