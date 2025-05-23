@@ -3,6 +3,7 @@ import { data, isRouteErrorResponse } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import i18next from './i18next.server';
 import type { Route } from './+types/root';
+import { ClientProviderPlus } from './providers/ClientProviderPlus';
 import { flattenToAppURL } from './utils';
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
@@ -41,6 +42,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
       locale,
     };
   } catch (error: any) {
+    console.debug('no content found', error);
     throw data('Content Not Found', {
       status: typeof error.status === 'number' ? error.status : 500,
     });
@@ -67,6 +69,7 @@ export function Layout({
 }: PropsWithChildren<Route.ComponentProps>) {
   // loaderData can be undefined in case of an error
   const locale = loaderData?.locale || 'en';
+  console.debug('** Layout', locale);
 
   // This hook will change the i18n instance language to the current locale
   // detected by the loader, this way, when we do something to change the
@@ -74,7 +77,7 @@ export function Layout({
   // translation files
   useChangeLanguage(locale);
 
-  return children;
+  return <ClientProviderPlus>{children}</ClientProviderPlus>;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
