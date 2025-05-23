@@ -5,6 +5,7 @@ import { reactRouterDevTools } from 'react-router-devtools';
 import { PloneRegistryVitePlugin } from '@plone/registry/vite-plugin';
 import { PloneSVGRVitePlugin } from '@plone/components/vite-plugin-svgr';
 import tailwindcss from '@tailwindcss/vite';
+import devtoolsJson from 'vite-plugin-devtools-json';
 
 const prodServerName =
   process.env.PLONE_API_PATH && process.env.PLONE_API_PATH.startsWith('https')
@@ -19,6 +20,7 @@ export default defineConfig({
     reactRouterDevTools(),
     reactRouter(),
     tsconfigPaths(),
+    devtoolsJson(),
   ],
   server: {
     port: 3000,
