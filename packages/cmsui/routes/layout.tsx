@@ -12,10 +12,9 @@ import { useTranslation } from 'react-i18next';
 import type { RootLoader } from 'seven/app/root';
 import { PluggablesProvider } from '../components/Pluggable';
 import Toolbar from '../components/Toolbar/Toolbar';
-import Sidebar from '../components/Sidebar/Sidebar';
+import Sidebar, { sidebarAtom } from '../components/Sidebar/Sidebar';
 import TopNavBar from '../components/Layout/TopNavBar';
 import { useAtom } from 'jotai';
-import { sidebarAtom } from '../components/Sidebar/Sidebar';
 import { clsx } from 'clsx';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
