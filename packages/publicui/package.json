@@ -58,6 +58,7 @@
     "@plone/registry": "workspace:*",
     "@plone/slots": "workspace:*",
     "@plone/theming": "workspace:*",
+    "react-aria-components": "catalog:",
     "react-i18next": "catalog:",
     "react-router": "catalog:",
     "tailwindcss": "catalog:",
