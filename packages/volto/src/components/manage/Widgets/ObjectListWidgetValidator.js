@@ -13,19 +13,16 @@ import FormValidation from '@plone/volto/helpers/FormValidation/FormValidation';
 export const objectListValidator = ({ value, field, formatMessage }) => {
   if (!Array.isArray(value) || !field.schema) return null;
 
-  // Group errors by field, same as FormValidation
-  const errors = [];
-
-  value.forEach((item) => {
+  const errors = value.reduce((acc, item) => {
     const fieldId = item['@id'];
 
-    if (!isObject(item)) return;
+    if (!isObject(item)) return acc;
 
     let itemSchema = field.schema;
     if (typeof field.schemaExtender === 'function') {
       itemSchema = field.schemaExtender(field.schema, item, formatMessage);
     }
-    if (!itemSchema?.properties) return;
+    if (!itemSchema?.properties) return acc;
 
     const fieldErrors = FormValidation.validateFieldsPerFieldset({
       schema: itemSchema,
@@ -34,14 +31,15 @@ export const objectListValidator = ({ value, field, formatMessage }) => {
     });
 
     if (Object.keys(fieldErrors).length > 0 && fieldId) {
-      errors[fieldId] = fieldErrors;
+      acc[fieldId] = fieldErrors;
     }
-  });
+    return acc;
+  }, {});
 
   const customErrors = [];
   customErrors.internalErros = errors;
 
-  return Object.keys(errors).length > 0 ? customErrors : null;
+  return Object.keys(errors).length ? customErrors : null;
 };
 
 export default objectListValidator;
