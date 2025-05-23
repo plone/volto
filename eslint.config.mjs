@@ -25,6 +25,7 @@ const addonPackages = [
   'packages/slots',
   'packages/theming',
   'packages/publicui',
+  'packages/editor',
   // Add more packages as needed
 ];
 
@@ -55,6 +56,7 @@ export default tseslint.config(
       ],
       'no-alert': 'warn',
       'no-debugger': 'warn',
+      'react/no-children-prop': 'off',
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'off',
