@@ -2,7 +2,7 @@
 // We've renamed Slot => Pluggable, not to clash with Volto slots
 
 import React from 'react';
-import sortBy from 'lodash.sortBy';
+import sortBy from 'lodash.sortby';
 
 export const context = React.createContext();
 
