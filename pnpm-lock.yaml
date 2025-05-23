@@ -341,6 +341,9 @@ importers:
       '@plone/components':
         specifier: workspace:*
         version: link:../components
+      '@plone/helpers':
+        specifier: workspace:*
+        version: link:../helpers
       '@plone/react-router':
         specifier: workspace:*
         version: link:../react-router
@@ -646,6 +649,9 @@ importers:
 
   packages/helpers:
     dependencies:
+      jotai:
+        specifier: ^2.12.3
+        version: 2.12.3(@types/react@19.0.10)(react@19.0.0)
       react:
         specifier: ^19.0.0
         version: 19.0.0

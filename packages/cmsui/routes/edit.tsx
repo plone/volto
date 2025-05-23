@@ -9,23 +9,11 @@ import {
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 import { requireAuthCookie } from './auth/auth';
-import { mergeForm, useTransform } from '@tanstack/react-form';
 import type { DeepKeys } from '@tanstack/react-form';
-
-import {
-  ServerValidateError,
-  createServerValidate,
-  formOptions,
-  initialFormState,
-} from '@tanstack/react-form/remix';
-import { atom, useAtom, useSetAtom } from 'jotai';
-import { focusAtom } from 'jotai-optics';
-import { useHydrateAtoms } from 'jotai/utils';
-import { useCallback, useMemo, useRef } from 'react';
-import type { PrimitiveAtom, WritableAtom } from 'jotai';
-import type { ReactNode } from 'react';
+import { InitAtoms } from '@plone/helpers';
+import { atom } from 'jotai';
+import { useRef } from 'react';
 import type { Content } from '@plone/types';
-import type { OpticFor } from 'optics-ts';
 import { Plug } from '../components/Pluggable';
 import Checkbox from '@plone/components/icons/checkbox.svg?react';
 
@@ -37,6 +25,8 @@ import {
   AccordionItemTrigger,
   Button,
 } from '@plone/components/tailwind';
+
+import { ConsoleLog } from '../helpers/debug';
 
 export async function loader({ params, request }: LoaderFunctionArgs) {
   const token = await requireAuthCookie(request);
@@ -76,68 +66,15 @@ export async function action({ params, request }: ActionFunctionArgs) {
 
   await cli.updateContent({
     path,
-    data: Object.fromEntries(formData),
+    // data: Object.fromEntries(formData),
+    // Only saves the title for now
+    data: { title: formData.get('title') },
   });
 
   return redirect(path);
 }
 
 const formAtom = atom<Content>({} as Content);
-
-const HydrateAtoms = ({
-  atomValues,
-  children,
-}: {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  atomValues: Iterable<
-    readonly [WritableAtom<unknown, [any], unknown>, unknown]
-  >;
-  children: ReactNode;
-}) => {
-  // initialising on state with prop on render here
-  useHydrateAtoms(new Map(atomValues));
-  return children;
-};
-
-const useTitleAtom = ({ formAtom, field }) => {
-  return useMemo(() => {
-    return focusAtom(formAtom, (optic) => optic.prop(field));
-  }, [formAtom, field]);
-};
-
-const ConsoleLog = () => {
-  const titleAtom = useTitleAtom({ formAtom, field: 'title' });
-  const [title] = useAtom(titleAtom);
-  const [formData, setFormData] = useAtom(formAtom);
-
-  return (
-    <div className="mt-4">
-      <pre>
-        Global form data main JOTAI atom{' '}
-        {JSON.stringify(formData.title, null, 2)}
-      </pre>
-      <pre>
-        Focused atom GETTER on title key {JSON.stringify(title, null, 2)}
-      </pre>
-    </div>
-  );
-};
-
-export function useFocusAtom<T>({
-  anAtom,
-  field,
-}: {
-  anAtom: PrimitiveAtom<T>;
-  field: DeepKeys<T>;
-}) {
-  return useSetAtom(
-    focusAtom(
-      anAtom,
-      // @ts-ignore
-      useCallback((optic: OpticFor<T>) => optic.prop(field), [field]),
-    ),
-  );
-}
 
 export default function Edit() {
   const { content, schema } = useLoaderData<typeof loader>();
@@ -150,7 +87,7 @@ export default function Edit() {
   const formRef = useRef<HTMLFormElement>(null);
 
   return (
-    <HydrateAtoms atomValues={[[formAtom, content]]}>
+    <InitAtoms atomValues={[[formAtom, content]]}>
       <main className="mx-4 mt-8 flex h-screen flex-1 flex-col">
         <div className="flex flex-col sm:mx-auto sm:w-full sm:max-w-lg">
           <h1 className="mb-4 text-2xl font-bold">
@@ -203,10 +140,10 @@ export default function Edit() {
             </Plug>
           </Form>
           <div className="mt-4">
-            <ConsoleLog />
+            <ConsoleLog supressHydrationWarnings formAtom={formAtom} />
           </div>
         </div>
       </main>
-    </HydrateAtoms>
+    </InitAtoms>
   );
 }

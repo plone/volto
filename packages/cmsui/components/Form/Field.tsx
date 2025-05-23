@@ -7,7 +7,7 @@ import type {
   WidgetsConfigByWidget,
   Content,
 } from '@plone/types';
-import { useFocusAtom } from '../../routes/edit';
+import { useSetFieldFocusAtom } from '../../helpers/atoms';
 import { useFieldContext } from './Form';
 import type { PrimitiveAtom } from 'jotai';
 import type { DeepKeys } from '@tanstack/react-form';
@@ -187,7 +187,7 @@ const Field = (props: FieldProps) => {
 
   const field = useFieldContext<string>();
 
-  const globalFormSetter = useFocusAtom<Content>({
+  const globalFormSetter = useSetFieldFocusAtom<Content>({
     anAtom: props.formAtom,
     field: props.name,
   });
