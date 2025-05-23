@@ -92,9 +92,6 @@ importers:
       '@plone/components':
         specifier: workspace:*
         version: link:../../packages/components
-      '@plone/providers':
-        specifier: workspace:*
-        version: link:../../packages/providers
       '@plone/publicui':
         specifier: workspace:*
         version: link:../../packages/publicui
