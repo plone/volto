@@ -1,6 +1,9 @@
 import type { ConfigType } from '@plone/registry';
+import installWidgets from './config/widgets';
 
 export default function install(config: ConfigType) {
+  installWidgets(config);
+
   config.registerRoute({
     type: 'layout',
     file: '@plone/cmsui/routes/layout.tsx',
@@ -56,6 +59,24 @@ export default function install(config: ConfigType) {
             type: 'route',
             path: '*',
             file: '@plone/cmsui/routes/edit.tsx',
+          },
+        ],
+      },
+      {
+        type: 'prefix',
+        path: 'test-layout',
+        children: [
+          {
+            type: 'index',
+            file: '@plone/cmsui/routes/test.tsx',
+            options: {
+              id: 'index-test',
+            },
+          },
+          {
+            type: 'route',
+            path: '*',
+            file: '@plone/cmsui/routes/test.tsx',
           },
         ],
       },

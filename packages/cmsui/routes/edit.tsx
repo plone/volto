@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import {
+  Form,
   redirect,
   useLoaderData,
   type ActionFunctionArgs,
@@ -8,7 +9,24 @@ import {
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 import { requireAuthCookie } from './auth/auth';
-import { Button } from '@plone/components/tailwind';
+import type { DeepKeys } from '@tanstack/react-form';
+import { InitAtoms } from '@plone/helpers';
+import { atom } from 'jotai';
+import { useRef } from 'react';
+import type { Content } from '@plone/types';
+import { Plug } from '../components/Pluggable';
+import Checkbox from '@plone/components/icons/checkbox.svg?react';
+
+import { useAppForm } from '../components/Form/Form';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionPanel,
+  AccordionItemTrigger,
+  Button,
+} from '@plone/components/tailwind';
+
+import { ConsoleLog } from '../helpers/debug';
 
 export async function loader({ params, request }: LoaderFunctionArgs) {
   const token = await requireAuthCookie(request);
@@ -48,38 +66,84 @@ export async function action({ params, request }: ActionFunctionArgs) {
 
   await cli.updateContent({
     path,
-    data: Object.fromEntries(formData),
+    // data: Object.fromEntries(formData),
+    // Only saves the title for now
+    data: { title: formData.get('title') },
   });
 
   return redirect(path);
 }
 
+const formAtom = atom<Content>({} as Content);
+
 export default function Edit() {
   const { content, schema } = useLoaderData<typeof loader>();
   const { t } = useTranslation();
 
+  const form = useAppForm({
+    defaultValues: content,
+  });
+
+  const formRef = useRef<HTMLFormElement>(null);
+
   return (
-    <main>
-      <h1>
-        {content.title} - {t('cmsui.edit')}
-      </h1>
-      <form method="post">
-        {Object.entries(schema.properties).map(([key, value]) => {
-          if (key !== 'title') return null;
-          return (
-            <div key={key}>
-              <label htmlFor={key}>{value.title}</label>
-              <input
-                type={value.type}
-                id={key}
-                name={key}
-                defaultValue={content[key]}
-              />
-            </div>
-          );
-        })}
-        <Button type="submit">{t('cmsui.save')}</Button>
-      </form>
-    </main>
+    <InitAtoms atomValues={[[formAtom, content]]}>
+      <main className="mx-4 mt-8 flex h-screen flex-1 flex-col">
+        <div className="flex flex-col sm:mx-auto sm:w-full sm:max-w-lg">
+          <h1 className="mb-4 text-2xl font-bold">
+            {content.title} - {t('cmsui.edit')}
+          </h1>
+          <Form method="post" onSubmit={form.handleSubmit} ref={formRef}>
+            {schema.fieldsets.map((fieldset) => (
+              <Accordion defaultExpandedKeys={['default']} key={fieldset.id}>
+                <AccordionItem id={fieldset.id} key={fieldset.id}>
+                  <AccordionItemTrigger>{fieldset.title}</AccordionItemTrigger>
+                  <AccordionPanel>
+                    {(fieldset.fields as DeepKeys<Content>[]).map(
+                      (schemaField, index) => (
+                        <form.AppField
+                          name={schemaField}
+                          key={index}
+                          // eslint-disable-next-line react/no-children-prop
+                          children={(field) => (
+                            <field.Quanta
+                              {...schema.properties[schemaField]}
+                              className="mb-4"
+                              label={schema.properties[field.name].title}
+                              name={field.name}
+                              defaultValue={field.state.value}
+                              required={
+                                schema.required.indexOf(schemaField) !== -1
+                              }
+                              error={field.state.meta.errors}
+                              formAtom={formAtom}
+                            />
+                          )}
+                        />
+                      ),
+                    )}
+                  </AccordionPanel>
+                </AccordionItem>
+              </Accordion>
+            ))}
+            <Plug pluggable="toolbar" id="edit-save-button">
+              <Button
+                aria-label={t('cmsui.save')}
+                type="submit"
+                onPress={() => formRef.current?.submit()}
+                variant="primary"
+                accent
+                size="L"
+              >
+                <Checkbox />
+              </Button>
+            </Plug>
+          </Form>
+          <div className="mt-4">
+            <ConsoleLog supressHydrationWarnings formAtom={formAtom} />
+          </div>
+        </div>
+      </main>
+    </InitAtoms>
   );
 }

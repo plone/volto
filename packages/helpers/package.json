@@ -59,7 +59,9 @@
       "optional": true
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "jotai": "^2.12.3"
+  },
   "devDependencies": {
     "@plone/types": "workspace:*",
     "@types/react": "catalog:",
