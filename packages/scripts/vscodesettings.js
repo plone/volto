@@ -28,11 +28,35 @@ if (!vscodeSettingsJSON['tailwindCSS.experimental.configFile']) {
     'apps/seven/addons.styles.css';
 }
 
-if (!vscodeSettingsJSON['tailwindCSS.experimental.classRegex']) {
-  vscodeSettingsJSON['tailwindCSS.experimental.classRegex'] = [
-    ['(["\'`][^"\'`]*.*?["\'`])', '["\'`]([^"\'`]*).*?["\'`]'],
+if (!vscodeSettingsJSON['tailwindCSS.classFunctions']) {
+  vscodeSettingsJSON['tailwindCSS.classFunctions'] = [
+    'tv',
+    'twMerge',
+    'tw',
+    'clsx',
   ];
 }
+
+// Defaults plus md(x)
+if (!vscodeSettingsJSON['tailwindCSS.files.exclude']) {
+  vscodeSettingsJSON['tailwindCSS.files.exclude'] = [
+    '**/.git/**',
+    '**/node_modules/**',
+    '**/coverage/**',
+    '**/.next/**',
+    '**/.storybook/**',
+    '**/*.md',
+    '**/*.mdx',
+  ];
+}
+
+// Taken from tailwind-variants but it's too greedy
+// We need a more specific one
+// if (!vscodeSettingsJSON['tailwindCSS.experimental.classRegex']) {
+//   vscodeSettingsJSON['tailwindCSS.experimental.classRegex'] = [
+//     ['(["\'`][^"\'`]*.*?["\'`])', '["\'`]([^"\'`]*).*?["\'`]'],
+//   ];
+// }
 
 fs.writeFileSync(
   '.vscode/settings.json',
