@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.0 (2025-05-24)
+
+### Internal
+
+- Use ESlint 9, fix code. @sneridagh [#6775](https://github.com/plone/volto/issues/6775)
+
 ## 1.0.2 (2025-02-08)
 
 ### Internal
