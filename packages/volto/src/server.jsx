@@ -173,6 +173,20 @@ function setupServer(req, res, next) {
 
   next();
 }
+// Disable ETag only for HTML responses
+server.use((req, res, next) => {
+  const acceptsHTML = req.headers.accept?.includes('text/html');
+  const originalSetHeader = res.setHeader;
+
+  res.setHeader = function (name, value) {
+    if (acceptsHTML && name.toLowerCase() === 'etag') {
+      return;
+    }
+    return originalSetHeader.call(this, name, value);
+  };
+
+  next();
+});
 
 server.get('/*', (req, res) => {
   const { errorHandler } = res.locals;
