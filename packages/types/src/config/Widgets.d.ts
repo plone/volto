@@ -6,6 +6,7 @@ export interface WidgetsConfigById {
   remoteUrl: React.ComponentType;
   id: React.ComponentType;
   site_logo: React.ComponentType;
+  preview_image_link: React.ComponentType;
 }
 
 export interface WidgetsConfigByWidget {
@@ -14,6 +15,7 @@ export interface WidgetsConfigByWidget {
   date: React.ComponentType;
   password: React.ComponentType;
   file: React.ComponentType;
+  image: React.ComponentType;
   align: React.ComponentType;
   buttons: React.ComponentType;
   url: React.ComponentType;
@@ -33,6 +35,11 @@ export interface WidgetsConfigByWidget {
   autocomplete: React.ComponentType;
   color_picker: React.ComponentType;
   select: React.ComponentType;
+  schema: React.ComponentType;
+  static_text: React.ComponentType;
+  hidden: React.ComponentType;
+  radio_group: React.ComponentType;
+  checkbox_group: React.ComponentType;
 }
 
 export interface WidgetsConfigByVocabulary {
