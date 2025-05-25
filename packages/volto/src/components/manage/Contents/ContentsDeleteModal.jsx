@@ -157,15 +157,21 @@ const ContentsDeleteModal = (props) => {
             {itemsToDelete.length > 1 &&
             items.length === itemsToDelete.length ? (
               hasMultiplePages ? (
-                <FormattedMessage
-                  id="You are about to delete all items in the current pagination of this folder."
-                  defaultMessage="You are about to delete all items in the current pagination of this folder."
-                />
+                <>
+                  <FormattedMessage
+                    id="You are about to delete all items in the current pagination of this folder."
+                    defaultMessage="You are about to delete all items in the current pagination of this folder."
+                  />
+                  <br />
+                </>
               ) : (
-                <FormattedMessage
-                  id="You are about to delete all items in this folder."
-                  defaultMessage="You are about to delete all items in this folder."
-                />
+                <>
+                  <FormattedMessage
+                    id="You are about to delete all items in this folder."
+                    defaultMessage="You are about to delete all items in this folder."
+                  />
+                  <br />
+                </>
               )
             ) : (
               <ul>
