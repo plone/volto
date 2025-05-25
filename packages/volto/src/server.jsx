@@ -224,9 +224,33 @@ server.get('/*', (req, res) => {
 
   loadOnServer({ store, location, routes, api })
     .then(() => {
+      const defaultLanguage =
+        store.getState().site?.data['plone.default_language'] || 'en';
+
+      const supportedLanguages =
+        store.getState().site?.data['plone.available_languages'] || 'en';
+
+      // Load the lang files when they matter
+      // We have to investigate if the L46 block is really necessary then
+      if (
+        supportedLanguages.includes(defaultLanguage) &&
+        defaultLanguage !== 'en'
+      ) {
+        const langFileName = toGettextLang(lang);
+        import('@root/../locales/' + langFileName + '.json').then(
+          (langFile) => {
+            locales = { ...locales, [toReactIntlLang(lang)]: langFile.default };
+            const newLang = toReactIntlLang(
+              new locale.Locales(defaultLanguage).best(supported).toString(),
+            );
+            store.dispatch(changeLanguage(newLang, locales[newLang], req));
+          },
+        );
+      }
+
       const initialLang =
         req.universalCookies.get('I18N_LANGUAGE') ||
-        config.settings.defaultLanguage ||
+        defaultLanguage ||
         req.headers['accept-language'];
 
       // The content info is in the store at this point thanks to the asynconnect
@@ -236,11 +260,14 @@ server.get('/*', (req, res) => {
       // TODO: there is a bug here with content that, for any reason, doesn't
       // present the language token field, for some reason. In this case, we
       // should follow the cookie rather then switching the language
+      // If the site is not multilingual, the language is a string, then it does not
+      // have a token field, so we should keep the configured site language
       const contentLang = store.getState().content.get?.error
         ? initialLang
-        : store.getState().content.data?.language?.token ||
-          config.settings.defaultLanguage;
+        : store.getState().content.data?.language?.token || defaultLanguage;
 
+      // If initialLang is different from the contentLang, we should force the
+      // language in the store
       if (toBackendLang(initialLang) !== contentLang && url !== '/') {
         const newLang = toReactIntlLang(
           new locale.Locales(contentLang).best(supported).toString(),
