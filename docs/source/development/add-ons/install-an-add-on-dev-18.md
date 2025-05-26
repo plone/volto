@@ -39,17 +39,30 @@ See {doc}`../../configuration/volto-config-js`.
 ## Configure `mrs-developer`
 
 {file}`mrs.developer.json` is the configuration file that instructs `mrs-developer` from where it should pull the packages.
-Cookieplone includes an empty one for you.
-Edit {file}`mrs.developer.json` and add the following code.
+Cookieplone, in its full-stack template, includes this one for you:
 
 ```json
 {
-  "acme-volto-foo-addon": {
-    "output": "packages",
-    "package": "@acme/volto-foo-addon",
-    "url": "git@github.com:acme/my-volto-addon.git",
-    "path": "src"
+  "core": {
+    "output": "./",
+    "package": "@plone/volto",
+    "url": "git@github.com:plone/volto.git",
+    "https": "https://github.com/plone/volto.git",
+    "tag": "18.14.0"
   }
+}
+```
+
+where `18.14.0` can be replaced with any released Volto version tag.
+
+Edit {file}`mrs.developer.json` and add the following code next to the `core` key:
+
+```json
+"acme-volto-foo-addon": {
+  "output": "packages",
+  "package": "@acme/volto-foo-addon",
+  "url": "git@github.com:acme/my-volto-addon.git",
+  "path": "src"
 }
 ```
 
