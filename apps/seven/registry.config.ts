@@ -1,7 +1,7 @@
 const addons = [
   '@plone/theming',
   '@plone/blocks',
-  '@plone/slots',
+  '@plone/layout',
   '@plone/cmsui',
   '@plone/publicui',
 ];

@@ -22,7 +22,7 @@ const addonPackages = [
   'packages/contents',
   'packages/cmsui',
   'packages/coresandbox',
-  'packages/slots',
+  'packages/layout',
   'packages/theming',
   'packages/publicui',
   // Add more packages as needed

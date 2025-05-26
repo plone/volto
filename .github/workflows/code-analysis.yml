@@ -44,7 +44,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        name: ["@plone/components", "@plone/theming", "@plone/slots"]
+        name: ["@plone/components", "@plone/theming", "@plone/layout"]
     steps:
       - uses: actions/checkout@v4
       - name: Set up Node.js environment

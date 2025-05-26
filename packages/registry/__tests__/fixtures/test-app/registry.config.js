@@ -1,3 +1,3 @@
-const addons = ['@plone/slots', 'my-addon'];
+const addons = ['@plone/layout', 'my-addon'];
 
 export { addons };

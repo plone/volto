@@ -34,7 +34,7 @@
   "addons": [
     "@plone/theming",
     "@plone/blocks",
-    "@plone/slots"
+    "@plone/layout"
   ],
   "scripts": {
     "test": "vitest",
@@ -56,7 +56,7 @@
   "dependencies": {
     "@plone/blocks": "workspace:*",
     "@plone/registry": "workspace:*",
-    "@plone/slots": "workspace:*",
+    "@plone/layout": "workspace:*",
     "@plone/theming": "workspace:*",
     "react-aria-components": "catalog:",
     "react-i18next": "catalog:",
