@@ -105,7 +105,7 @@ We recommend using the current LTS version.
 ### Semantic Versioning
 
 Volto uses [Semantic Versioning](https://semver.org/) to communicate bugfixes, new features, and breaking changes in a release.
-We use a three-digit dotted version scheme that follows the [Breaking-Feature-Bugfix](
+We use a three-number dotted version scheme that follows the [Breaking-Feature-Bugfix](
 https://medium.com/sapioit/why-having-3-numbers-in-the-version-name-is-bad-92fc1f6bc73c) naming convention.
 
 The following sections show examples of the terms and changes in version numbering used to indicate each type of release.
