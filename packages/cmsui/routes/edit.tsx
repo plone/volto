@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import {
-  Form,
   redirect,
+  useFetcher,
   useLoaderData,
   type ActionFunctionArgs,
   type LoaderFunctionArgs,
@@ -12,7 +12,6 @@ import { requireAuthCookie } from './auth/auth';
 import type { DeepKeys } from '@tanstack/react-form';
 import { InitAtoms } from '@plone/helpers';
 import { atom } from 'jotai';
-import { useRef } from 'react';
 import type { Content } from '@plone/types';
 import { Plug } from '../components/Pluggable';
 import Checkbox from '@plone/components/icons/checkbox.svg?react';
@@ -26,7 +25,7 @@ import {
   Button,
 } from '@plone/components/tailwind';
 
-import { ConsoleLog } from '../helpers/debug';
+// import { ConsoleLog } from '../helpers/debug';
 
 export async function loader({ params, request }: LoaderFunctionArgs) {
   const token = await requireAuthCookie(request);
@@ -62,13 +61,11 @@ export async function action({ params, request }: ActionFunctionArgs) {
 
   const path = `/${params['*'] || ''}`;
 
-  const formData = await request.formData();
+  const formData = await request.json();
 
   await cli.updateContent({
     path,
-    // data: Object.fromEntries(formData),
-    // Only saves the title for now
-    data: { title: formData.get('title') },
+    data: formData,
   });
 
   return redirect(path);
@@ -79,12 +76,21 @@ const formAtom = atom<Content>({} as Content);
 export default function Edit() {
   const { content, schema } = useLoaderData<typeof loader>();
   const { t } = useTranslation();
+  const fetcher = useFetcher();
 
   const form = useAppForm({
     defaultValues: content,
-  });
+    onSubmit: async ({ value }) => {
+      // @ts-expect-error: For some reason, the type of value is not inferred correctly
+      // as `useLoaderData` turns every "unknown" type into `undefined`
+      fetcher.submit(value, {
+        method: 'post',
+        encType: 'application/json',
+      });
 
-  const formRef = useRef<HTMLFormElement>(null);
+      return redirect(`/${content['@id']}`);
+    },
+  });
 
   return (
     <InitAtoms atomValues={[[formAtom, content]]}>
@@ -93,7 +99,7 @@ export default function Edit() {
           <h1 className="mb-4 text-2xl font-bold">
             {content.title} - {t('cmsui.edit')}
           </h1>
-          <Form method="post" onSubmit={form.handleSubmit} ref={formRef}>
+          <form>
             {schema.fieldsets.map((fieldset) => (
               <Accordion defaultExpandedKeys={['default']} key={fieldset.id}>
                 <AccordionItem id={fieldset.id} key={fieldset.id}>
@@ -130,7 +136,8 @@ export default function Edit() {
               <Button
                 aria-label={t('cmsui.save')}
                 type="submit"
-                onPress={() => formRef.current?.submit()}
+                // Trigger the TS form submission
+                onPress={() => form.handleSubmit()}
                 variant="primary"
                 accent
                 size="L"
@@ -138,10 +145,10 @@ export default function Edit() {
                 <Checkbox />
               </Button>
             </Plug>
-          </Form>
-          <div className="mt-4">
+          </form>
+          {/* <div className="mt-4">
             <ConsoleLog supressHydrationWarnings formAtom={formAtom} />
-          </div>
+          </div> */}
         </div>
       </main>
     </InitAtoms>
