@@ -92,7 +92,8 @@ From time to time, you might perform the following tasks.
 
 Developing for Plone's frontend means to add code to a Volto project.
 The frontend files of the project are created in the `frontend` folder.
-The generator also creates a default add-on in the `frontend/src/addons` folder.
+The generator also created a default add-on in the `frontend/src/addons` folder.
+Now, using Cookieplone which is the new recommendation, in its full-stack project template you have the default add-on inside the `frontend/packages` folder.
 The project is already configured to use this add-on.
 Add your code and customizations to this add-on, and Volto will load them on start up or a restart.
 This add-on is configured as a theme add-on, so you are able to customize the look and feel of your site as well.
