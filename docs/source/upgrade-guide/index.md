@@ -2686,7 +2686,8 @@ Add this key to the `jest.moduleNameMapper`:
   }
 ```
 
-because the new version of Jest is a bit more picky when importing externals. Attention, this mapping needs to be the first, it needs to come before the ``@plone/volto/(.*)$`` key.
+because the new version of Jest is a bit more picky when importing externals.
+Attention, this mapping needs to be the first, it needs to come before the ``@plone/volto/(.*)$`` key.
 
 ### Prettier
 
