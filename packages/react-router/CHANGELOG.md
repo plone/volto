@@ -8,6 +8,23 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.0 (2025-05-24)
+
+### Feature
+
+- Support for prefix routes in `getAddonRoutesConfig`. @sneridagh [#6796](https://github.com/plone/volto/issues/6796)
+- Added console warning when cookie secret is not set in production mode. @pnicolli [#6972](https://github.com/plone/volto/issues/6972)
+
+### Bugfix
+
+- Fixed routes generation @pnicolli [#6907](https://github.com/plone/volto/issues/6907)
+- Fixed route generation. @pnicolli [#6908](https://github.com/plone/volto/issues/6908)
+
+### Internal
+
+- Use ESlint 9, fix code. @sneridagh [#6775](https://github.com/plone/volto/issues/6775)
+- Update react-router version to match the catalog one. @sneridagh [#6777](https://github.com/plone/volto/issues/6777)
+
 ## 1.0.1 (2025-02-08)
 
 ### Internal

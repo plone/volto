@@ -878,6 +878,51 @@ describe('Slots registry', () => {
     ]);
   });
 
+  it('unRegisterSlotComponent - remove one registered slot', () => {
+    config.registerSlotComponent({
+      name: 'Colophon',
+      slot: 'postFooter',
+      component: 'The colophon component',
+    });
+
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(1);
+    expect(
+      config.getSlotComponent('postFooter', 'Colophon')[0].component,
+    ).toEqual('The colophon component');
+    config.unRegisterSlotComponent('postFooter', 'Colophon', 0);
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(0);
+
+    expect(config.getSlotComponents('postFooter')).toEqual([]);
+  });
+
+  it('unRegisterSlotComponent - remove one registered slot, then re-register it', () => {
+    config.registerSlotComponent({
+      name: 'Colophon',
+      slot: 'postFooter',
+      component: 'The colophon component',
+    });
+
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(1);
+    expect(
+      config.getSlotComponent('postFooter', 'Colophon')[0].component,
+    ).toEqual('The colophon component');
+    config.unRegisterSlotComponent('postFooter', 'Colophon', 0);
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(0);
+
+    expect(config.getSlotComponents('postFooter')).toEqual([]);
+
+    config.registerSlotComponent({
+      name: 'Colophon',
+      slot: 'postFooter',
+      component: 'The colophon component',
+    });
+
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(1);
+    expect(
+      config.getSlotComponent('postFooter', 'Colophon')[0].component,
+    ).toEqual('The colophon component');
+  });
+
   it('unRegisterSlotComponent - registers 2 + 2 slot components with predicates', () => {
     config.registerSlotComponent({
       slot: 'toolbar',
@@ -912,12 +957,18 @@ describe('Slots registry', () => {
         ContentTypeConditionTrue(['News Item']),
       ],
     });
+
     expect(config.getSlotComponent('toolbar', 'save').length).toEqual(2);
     expect(config.getSlotComponent('toolbar', 'save')[0].component).toEqual(
       'this is a toolbar save component with a true predicate',
     );
+
     config.unRegisterSlotComponent('toolbar', 'save', 1);
+
     expect(config.getSlotComponent('toolbar', 'save').length).toEqual(1);
+    expect(config.getSlotComponent('toolbar', 'save')[0].component).toEqual(
+      'this is a toolbar save component with a true predicate',
+    );
   });
 
   // The next one fixes the issue when HMR kicks in and tries to register the same component again
@@ -953,6 +1004,13 @@ describe('Utilities registry', () => {
     expect(
       config.getUtility({ name: 'url', type: 'validator' }).method(),
     ).toEqual('this is a simple validator utility');
+  });
+
+  it('trying to get a non-existent utility returns undefined', () => {
+    expect(config.getUtility({ name: undefined, type: 'schema' })).toEqual({});
+    expect(
+      config.getUtility({ name: undefined, type: 'schema' }).method,
+    ).toEqual(undefined);
   });
 
   it('registers a utility with dependencies', () => {
@@ -1037,6 +1095,10 @@ describe('Utilities registry', () => {
         })
         .method(),
     ).toEqual('this is a validator utility with dependencies for email');
+  });
+
+  it('trying to use getUtilities with no type returns an empty array', () => {
+    expect(config.getUtilities({ type: undefined }).length).toEqual(0);
   });
 
   it('getUtilities - registers two utilities with the same dependencies and different names', () => {

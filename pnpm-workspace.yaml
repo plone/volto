@@ -2,28 +2,11 @@ packages:
   # all packages in direct subdirs of packages/
   - 'packages/*'
   - 'apps/seven'
-  - 'apps/quanta'
   # exclude packages that are inside test directories
   - '!**/test/**'
   # exclude Volto packages, leaving them as reference
   - '!packages/volto*'
   - '!packages/coresandbox'
 
-catalog:
-  react: ^19.0.0
-  react-dom: ^19.0.0
-  '@types/react': ^19.0.0
-  '@types/react-dom': ^19.0.0
-  react-aria-components: ^1.8.0
-  react-i18next: ^15.4.1
-  react-router: 7.4.0
-  '@react-router/dev': 7.4.0
-  '@react-router/node': 7.4.0
-  '@react-router/serve': 7.4.0
-  '@tanstack/react-query': ^5.59.0
-  tailwindcss: ^4.0.17
-  release-it: ^18.1.2
-  typescript: ^5.7.3
-  vitest: ^3.0.9
-  '@vitest/coverage-v8': ^3.0.9
-  vite: ^5.4.9
+# The default pnpm catalog is loaded from `catalog.json` using `.pnpmfile.cjs`.
+# If you want to customize the versions of the catalog, do it in there.

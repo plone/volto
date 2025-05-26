@@ -132,3 +132,10 @@ export type StyleDefinition =
       label: string;
       style: undefined;
     };
+
+export interface BlockSchemaProps {
+  props: BlockEditProps;
+  intl: IntlShape;
+}
+
+export * from './objectBrowser';
