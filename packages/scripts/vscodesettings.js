@@ -24,16 +24,8 @@ if (!vscodeSettingsJSON['[markdown]']) {
 }
 
 if (!vscodeSettingsJSON['tailwindCSS.experimental.configFile']) {
-  vscodeSettingsJSON['tailwindCSS.experimental.configFile'] = {
-    'apps/seven/addons.styles.css': [
-      'apps/seven/app/**/*',
-      'packages/theming/**/*',
-      'packages/cmsui/**/*',
-      'packages/publicui/**/*',
-      'packages/slots/**/*',
-      'packages/components/**/*',
-    ],
-  };
+  vscodeSettingsJSON['tailwindCSS.experimental.configFile'] =
+    'apps/seven/addons.styles.css';
 }
 
 if (!vscodeSettingsJSON['tailwindCSS.experimental.classRegex']) {
