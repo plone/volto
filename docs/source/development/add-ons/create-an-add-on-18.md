@@ -114,7 +114,22 @@ Is it okay to delete and re-download it? [y/n] (y):
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
 
-Cookieplone creates a folder with the name of the add-on, in this example, `volto-addon`.
+You can also use:
+
+```shell
+uvx cookieplone
+```
+
+It will show a prompt in the terminal for you to choose one between 4 templates:
+
+1. A Plone Project - Create a new Plone project with backend and frontend components
+2. Backend Add-on for Plone - Create a new Python package to be used with Plone
+3. Frontend Add-on for Plone - Create a new Node package to be used with Volto
+4. Documentation scaffold for Plone projects - Create a new documentation scaffold for Plone projects
+
+For Volto-only (frontend-only development) the option `3` is all you need.
+
+After the exit of the Cookieplone process, we have a new folder with the name of the add-on, in this example, `volto-addon`.
 
 Change your current working directory to {file}`volto-addon`.
 
@@ -131,11 +146,22 @@ make install
 
 ## Start Plone backend Docker container
 
+For offering the full information about what Cookieplone produces in different useful templates, we included both the `make` commands from full-stack template and from frontend add-on template below.
+
 In the currently open shell session, issue the following command.
 
+`````{tab-set}
+````{tab-item} Cookieplone full-stack template
+```shell
+make backend-start
+```
+````
+````{tab-item} Cookieplone frontend add-on template
 ```shell
 make backend-docker-start
 ```
+````
+`````
 
 ```console
 ❯ make backend-docker-start
@@ -168,9 +194,18 @@ Create a second shell session in a new window.
 Change your current working directory to {file}`volto-addon`.
 Start the Plone development frontend with the following command.
 
+`````{tab-set}
+````{tab-item} Cookieplone full-stack template
+```shell
+make frontend-start
+```
+````
+````{tab-item} Cookieplone frontend add-on template
 ```shell
 make start
 ```
+````
+`````
 
 ```console
 webpack 5.90.1 compiled successfully in 11004 ms
