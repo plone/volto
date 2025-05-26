@@ -8,6 +8,24 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.2 (2025-05-24)
+
+### Feature
+
+- 'Improved `Container` Tailwind component, added `width` variant. @sneridagh [#6927](https://github.com/plone/volto/issues/6927)
+- Temporal convenience links in tools. @sneridagh [#7040](https://github.com/plone/volto/issues/7040)
+- Make login/logout/edit convenince links RAC links with '@plone/components/tailwind' @ksuess [#7087](https://github.com/plone/volto/issues/7087)
+
+### Internal
+
+- Use ESlint 9, fix code. @sneridagh [#6775](https://github.com/plone/volto/issues/6775)
+- Use `Container` Tailwind component in Header. @sneridagh [#6899](https://github.com/plone/volto/issues/6899)
+- Added vitest config to not fail if no test is present. @sneridagh [#6916](https://github.com/plone/volto/issues/6916)
+
+### Documentation
+
+- Update Storybook. @sneridagh [#6940](https://github.com/plone/volto/issues/6940)
+
 ## 1.0.0-alpha.1 (2025-02-08)
 
 ### Breaking

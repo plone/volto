@@ -1,14 +1,19 @@
+/**
+ * layout of @plone/publicui
+ */
 import {
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useNavigate,
   useRouteLoaderData,
   type LinksFunction,
   type MetaFunction,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
@@ -53,6 +58,7 @@ export const links: LinksFunction = () => [
 export default function Index() {
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
 
   if (!rootData) {
     return null;
@@ -71,7 +77,9 @@ export default function Index() {
       <body>
         <div role="navigation" aria-label="Toolbar" id="toolbar" />
         <div id="main">
-          <Outlet />
+          <RACRouterProvider navigate={navigate}>
+            <Outlet />
+          </RACRouterProvider>
         </div>
         <div role="complementary" aria-label="Sidebar" id="sidebar" />
         <ScrollRestoration />
