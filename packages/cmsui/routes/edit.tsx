@@ -12,7 +12,6 @@ import { requireAuthCookie } from './auth/auth';
 import type { DeepKeys } from '@tanstack/react-form';
 import { InitAtoms } from '@plone/helpers';
 import { atom } from 'jotai';
-import { useRef } from 'react';
 import type { Content } from '@plone/types';
 import { Plug } from '../components/Pluggable';
 import Checkbox from '@plone/components/icons/checkbox.svg?react';
@@ -26,7 +25,7 @@ import {
   Button,
 } from '@plone/components/tailwind';
 
-import { ConsoleLog } from '../helpers/debug';
+// import { ConsoleLog } from '../helpers/debug';
 
 export async function loader({ params, request }: LoaderFunctionArgs) {
   const token = await requireAuthCookie(request);
@@ -82,8 +81,6 @@ export default function Edit() {
   const form = useAppForm({
     defaultValues: content,
     onSubmit: async ({ value }) => {
-      // eslint-disable-next-line no-console
-      console.log('submit', value);
       // @ts-expect-error: For some reason, the type of value is not inferred correctly
       // as `useLoaderData` turns every "unknown" type into `undefined`
       fetcher.submit(value, {
@@ -149,9 +146,9 @@ export default function Edit() {
               </Button>
             </Plug>
           </form>
-          <div className="mt-4">
+          {/* <div className="mt-4">
             <ConsoleLog supressHydrationWarnings formAtom={formAtom} />
-          </div>
+          </div> */}
         </div>
       </main>
     </InitAtoms>
