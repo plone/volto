@@ -33,6 +33,11 @@ describe('ManageTranslations', () => {
           language: 'en',
         },
       },
+      site: {
+        data: {
+          'plone.available_languages': ['en'],
+        },
+      },
     });
     const { container } = render(
       <Provider store={store}>

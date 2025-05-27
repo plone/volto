@@ -11,6 +11,9 @@ const mockStore = configureStore();
 describe('MultilingualRedirector', () => {
   it('renders a MultilingualRedirector component', () => {
     const store = mockStore({
+      site: {
+        data: {},
+      },
       intl: {
         locale: 'en',
         messages: {},

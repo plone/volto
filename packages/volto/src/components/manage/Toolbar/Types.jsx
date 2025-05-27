@@ -14,9 +14,9 @@ import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 
 const Types = ({ types, pathname, content, currentLanguage }) => {
   const availableLanguages = useSelector(
-    (state) => state.site.data['plone.available_languages'],
+    (state) => state.site?.data?.['plone.available_languages'] || [],
   );
-  return types.length > 0 || content['@components'].translations ? (
+  return types.length > 0 || content?.['@components']?.translations ? (
     <div className="menu-more pastanaga-menu">
       {types.length > 0 && (
         <>

@@ -19,6 +19,14 @@ describe('ContentsBreadcrumbs Multilingual', () => {
         locale: 'en',
         messages: {},
       },
+      navroot: {
+        data: {
+          navroot: {
+            '@type': 'LRF',
+            '@id': '/en',
+          },
+        },
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
@@ -43,6 +51,14 @@ describe('ContentsBreadcrumbs Multilingual', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      navroot: {
+        data: {
+          navroot: {
+            '@type': 'LRF',
+            '@id': '/en',
+          },
+        },
       },
     });
     const component = renderer.create(

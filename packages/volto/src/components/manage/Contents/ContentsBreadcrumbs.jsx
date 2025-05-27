@@ -1,13 +1,10 @@
 import React from 'react';
 import { Breadcrumb } from 'semantic-ui-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
-import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
 import ContentsBreadcrumbsRootItem from '@plone/volto/components/manage/Contents/ContentsBreadcrumbsRootItem';
 import ContentsBreadcrumbsHomeItem from '@plone/volto/components/manage/Contents/ContentsBreadcrumbsHomeItem';
-
-import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   home: {
@@ -21,13 +18,10 @@ const messages = defineMessages({
 });
 
 const ContentsBreadcrumbs = (props) => {
-  const { settings } = config;
   const { items } = props;
   const intl = useIntl();
-  const pathname = useLocation().pathname;
   const navroot = useSelector((state) => state.navroot.data.navroot);
-  const navrootIsPortal = navroot['@type'] === 'Plone Site';
-  const lang = pathname.split('/')[1];
+  const navrootIsPortal = navroot?.['@type'] === 'Plone Site';
 
   return (
     <Breadcrumb>
