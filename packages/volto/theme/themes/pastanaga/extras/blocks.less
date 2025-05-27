@@ -726,8 +726,10 @@ div.image-upload-widget-image {
 }
 
 .link-form-container {
+  width: 300px !important;
+
   .inline.field .wrapper {
-    width: 270px; // needed to ensure placeholder shows and buttons are aligned to the right
+    width: 300px; // needed to ensure placeholder shows and buttons are aligned to the right
     min-height: initial; // overrides .input.field .wrapper
     justify-content: space-between;
     border-bottom: none;
@@ -737,6 +739,10 @@ div.image-upload-widget-image {
     width: 100% !important; // overrides form.less width: auto
     max-width: 81%; // needed so buttons don't shift to the right when value is present
     margin-left: 0 !important; // overrides .block .toolbar-inner .ui.input
+  }
+
+  .nav-button {
+    flex: 0 0 auto !important;
   }
 
   .ui.buttons {
@@ -828,8 +834,9 @@ div.image-upload-widget-image {
 .react-select-container .react-select__menu {
   z-index: 2;
   top: auto;
-  left: -31px;
-  width: 300px;
+  left: -38px;
+  width: 310px;
+
   border-bottom: 1px solid #c7d5d8;
   margin-top: 0;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);

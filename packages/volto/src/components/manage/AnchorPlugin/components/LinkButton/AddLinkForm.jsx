@@ -22,7 +22,6 @@ import uniqBy from 'lodash/uniqBy';
 
 import jwtDecode from 'jwt-decode';
 import { Button } from 'semantic-ui-react';
-
 import PropTypes from 'prop-types';
 
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
@@ -40,12 +39,16 @@ import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
-import expandSVG from '@plone/volto/icons/left-key.svg';
+import navTreeSVG from '@plone/volto/icons/nav.svg';
 
 const messages = defineMessages({
   placeholder: {
     id: 'Paste or search for link',
     defaultMessage: 'Paste or search for link',
+  },
+  openObjectBrowser: {
+    id: 'Open object browser',
+    defaultMessage: 'Open object browser',
   },
   clear: {
     id: 'Clear',
@@ -65,6 +68,7 @@ const LinkForm = ({
   onChangeValue,
   onOverrideContent,
   objectBrowserPickerType,
+  openObjectBrowser,
   onClear,
 }) => {
   const location = useLocation();
@@ -267,7 +271,27 @@ const LinkForm = ({
       className="link-form-container link-searchable-form-container"
       ref={linkFormContainer}
     >
-      <Icon name={expandSVG} color="#222" size="26px" />
+      <Button
+        type="button"
+        basic
+        icon
+        className="nav-button"
+        aria-label={intl.formatMessage(messages.openObjectBrowser)}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openObjectBrowser({
+            mode: objectBrowserPickerType,
+            overlay: true,
+            onSelectItem: (url) => {
+              onChange(url);
+              onSubmit();
+            },
+          });
+        }}
+      >
+        <Icon name={navTreeSVG} size="24px" />
+      </Button>
       <div className="wrapper">
         <Select
           className="react-select-container"
