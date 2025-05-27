@@ -1344,11 +1344,6 @@ msgstr ""
 msgid "End Date"
 msgstr "Data de finalització"
 
-#. Default: "Enter URL or select an item"
-#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
-msgid "Enter URL or select an item"
-msgstr "Introduïu l'URL o seleccioneu un element"
-
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
@@ -2618,7 +2613,6 @@ msgid "Open menu"
 msgstr "Obre el menú"
 
 #. Default: "Open object browser"
-#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
 msgstr "Obre el navegador d'objectes"
@@ -2680,6 +2674,11 @@ msgstr "Enganxar"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
 msgstr "Enganxa blocs"
+
+#. Default: "Paste or search for link"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Paste or search for link"
+msgstr ""
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
