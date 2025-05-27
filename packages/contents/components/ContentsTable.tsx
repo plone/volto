@@ -345,36 +345,42 @@ export function ContentsTable({
           </TooltipTrigger> */}
         </section>
         <section className="contents-table">
-          <Table
-            aria-label={t('contentsNextContentsOf', { title })}
-            columns={[...columns]}
-            rows={rows}
-            selectionMode={!isMobileScreenSize ? 'multiple' : undefined}
-            selectedKeys={selected}
-            onSelectionChange={setSelected}
-            dragAndDropHooks={dragAndDropHooks}
-            dragColumnHeader={
-              <MenuTrigger>
-                <TooltipTrigger>
-                  <Button className="react-aria-Button drag-cell-header">
-                    <CollectionSVG />
-                  </Button>
-                  <Tooltip
-                    className="react-aria-Tooltip tooltip"
-                    placement="bottom"
-                  >
-                    {t('Rearrange items by…')}
-                  </Tooltip>
-                </TooltipTrigger>
-                <RearrangePopover
-                  indexes={indexes.values}
-                  sortItems={sortItems}
-                />
-              </MenuTrigger>
-            }
-            // onRowSelection={onRowSelection}
-            // resizableColumns={true}
-          />
+          {rows?.length<0> ? (
+            <Table
+              aria-label={t('contentsNextContentsOf', { title })}
+              columns={[...columns]}
+              rows={rows}
+              selectionMode={!isMobileScreenSize ? 'multiple' : undefined}
+              selectedKeys={selected}
+              onSelectionChange={setSelected}
+              dragAndDropHooks={dragAndDropHooks}
+              dragColumnHeader={
+                <MenuTrigger>
+                  <TooltipTrigger>
+                    <Button className="react-aria-Button drag-cell-header">
+                      <CollectionSVG />
+                    </Button>
+                    <Tooltip
+                      className="react-aria-Tooltip tooltip"
+                      placement="bottom"
+                    >
+                      {t('Rearrange items by…')}
+                    </Tooltip>
+                  </TooltipTrigger>
+                  <RearrangePopover
+                    indexes={indexes.values}
+                    sortItems={sortItems}
+                  />
+                </MenuTrigger>
+              }
+              // onRowSelection={onRowSelection}
+              // resizableColumns={true}
+            />
+          ) : (
+            <div className="empty-state">
+              <div className="text-1xl text-center">{t('No items found')}</div>
+            </div>
+          )}
         </section>
       </article>
     </Container>

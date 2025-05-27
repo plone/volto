@@ -18,10 +18,6 @@
     gap: 1rem;
   }
 
-  .topbar input {
-    color: var(--quanta-sapphire);
-  }
-
   .react-aria-Breadcrumbs .react-aria-Link {
     font-size: 0.89rem;
   }
