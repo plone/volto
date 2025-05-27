@@ -27,9 +27,11 @@ describe('Blocks Tests', () => {
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
     cy.get('.toolbar-inner .buttons').first().next().next().click();
-    cy.get('.ui.input.editor-link.input-anchorlink-theme input').type(
-      `https://github.com/plone/volto/raw/main/logos/volto-colorful.png{enter}`,
-    );
+    cy.get('.link-form-container .react-select-container')
+      .click()
+      .type(
+        `https://github.com/plone/volto/raw/main/logos/volto-colorful.png{enter}`,
+      );
     cy.get('#toolbar-save').click();
     cy.wait('@content');
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
