@@ -21,7 +21,7 @@ import {
   Dialog,
 } from '@plone/components';
 import { Container } from '@plone/components/tailwind';
-import Breadcrumbs from '@plone/slots/components/Breadcrumbs';
+import Breadcrumbs from '@plone/layout/components/Breadcrumbs';
 import { TextField } from '@plone/cmsui/components/TextField/TextField';
 import CollectionSVG from '@plone/components/icons/collection.svg?react';
 import MoreOptionsSVG from '@plone/components/icons/more-options.svg?react';

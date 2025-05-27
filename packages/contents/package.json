@@ -54,7 +54,7 @@
     "@plone/helpers": "workspace:*",
     "@plone/providers": "workspace:*",
     "@plone/registry": "workspace:*",
-    "@plone/slots": "workspace:*",
+    "@plone/layout": "workspace:*",
     "@tanstack/react-query": "^5.59.0",
     "react-aria": "^3.37.0",
     "react-aria-components": "catalog:",

@@ -19,7 +19,7 @@ build:
     # If there are no changes (git diff exits with 0) we force the command to return with 183.
     # This is a special exit code on Read the Docs that will cancel the build immediately.
     - |
-      if [ "$READTHEDOCS_VERSION_TYPE" = "external" ] && git diff --quiet origin/seven -- packages/slots;
+      if [ "$READTHEDOCS_VERSION_TYPE" = "external" ] && git diff --quiet origin/seven -- packages/layout;
       then
         exit 183;
       fi
@@ -29,4 +29,4 @@ build:
     - corepack prepare pnpm@* --activate
     - asdf reshim nodejs
     - make install
-    - (cd packages/slots && pnpm build-storybook -o ${READTHEDOCS_OUTPUT}/html)
+    - (cd packages/layout && pnpm build-storybook -o ${READTHEDOCS_OUTPUT}/html)

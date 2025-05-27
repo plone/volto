@@ -65,7 +65,7 @@ This bundle must work on both CommonJS and ESM environments.
 ## Add-on packages
 
 -   `@plone/blocks`
--   `@plone/slots`
+-   `@plone/layout`
 -   `@plone/theming`
 -   `@plone/publicui`
 -   `@plone/cmsui`

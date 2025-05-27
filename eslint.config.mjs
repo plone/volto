@@ -22,7 +22,7 @@ const addonPackages = [
   'packages/contents',
   'packages/cmsui',
   'packages/coresandbox',
-  'packages/slots',
+  'packages/layout',
   'packages/theming',
   'packages/publicui',
   'packages/contents',
@@ -56,6 +56,7 @@ export default tseslint.config(
       ],
       'no-alert': 'warn',
       'no-debugger': 'warn',
+      'react/no-children-prop': 'off',
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'off',

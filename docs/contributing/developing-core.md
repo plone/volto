@@ -59,7 +59,7 @@ The package `volto` is the core code of Volto.
 │  ├─ providers
 │  ├─ registry
 │  ├─ scripts
-│  ├─ slots
+│  ├─ layout
 │  ├─ theming
 │  ├─ tsconfig
 │  ├─ types

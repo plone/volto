@@ -1,6 +1,6 @@
 {
-  "name": "@plone/slots",
-  "description": "Plone core slots like Header, Footer, etc",
+  "name": "@plone/layout",
+  "description": "Plone core layout elements like Header, Breadcrumbs, etc",
   "maintainers": [
     {
       "name": "Plone Foundation",
@@ -12,7 +12,8 @@
   "version": "1.0.0-alpha.2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/plone/volto.git"
+    "url": "https://github.com/plone/volto.git",
+    "directory": "packages/layout"
   },
   "bugs": {
     "url": "https://github.com/plone/volto/issues"
@@ -23,7 +24,8 @@
     "plone",
     "plone6",
     "react",
-    "helpers"
+    "layout",
+    "slots"
   ],
   "publishConfig": {
     "access": "public"

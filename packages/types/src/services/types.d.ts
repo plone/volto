@@ -1,3 +1,11 @@
+import type {
+  WidgetsConfigById,
+  WidgetsConfigByFactory,
+  WidgetsConfigByType,
+  WidgetsConfigByVocabulary,
+  WidgetsConfigByWidget,
+} from '../config/Widgets';
+
 export interface Type {
   '@id': string;
   addable: boolean;
@@ -24,12 +32,12 @@ export interface GetTypeResponse {
       behavior: string;
       default?: any;
       description: string;
-      factory: string;
+      factory: keyof WidgetsConfigByFactory;
       title: string;
-      type: string;
-      widget?: string;
+      type: keyof WidgetsConfigByType;
+      widget?: keyof WidgetsConfigByWidget;
       vocabulary?: {
-        '@id': string;
+        '@id': keyof WidgetsConfigByVocabulary;
       };
       choices?: [string, string][];
       enum?: string[];
