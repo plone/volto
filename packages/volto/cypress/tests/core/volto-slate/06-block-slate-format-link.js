@@ -13,6 +13,7 @@ describe('Block Tests: Links', () => {
 
     cy.get('.slate-toolbar .link-form-container input').type(
       'https://google.com{enter}',
+      { force: true },
     );
     cy.getSlate().should('have.descendants', 'a.slate-editor-link');
     cy.toolbarSave();
@@ -44,6 +45,7 @@ describe('Block Tests: Links', () => {
     cy.clickSlateButton('Add link');
     cy.get('.slate-toolbar .link-form-container input').type(
       'https://google.com{enter}',
+      { force: true },
     );
 
     cy.log('Save');
@@ -71,6 +73,7 @@ describe('Block Tests: Links', () => {
 
     cy.get('.slate-toolbar .link-form-container input').type(
       'https://google.com{enter}',
+      { force: true },
     );
 
     cy.log('Removing link');
@@ -84,6 +87,7 @@ describe('Block Tests: Links', () => {
 
     cy.get('.slate-toolbar .link-form-container input').type(
       'https://google.com{enter}',
+      { force: true },
     );
 
     cy.log('Save');
@@ -109,6 +113,7 @@ describe('Block Tests: Links', () => {
 
     cy.get('.slate-toolbar .link-form-container input').type(
       'https://google.com{enter}',
+      { force: true },
     );
     cy.getSlate().should('have.descendants', 'a.slate-editor-link');
     cy.getSlateEditorAndType('{rightarrow}').type('{enter}');
