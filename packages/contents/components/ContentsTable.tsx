@@ -1,5 +1,6 @@
 import React, { type ComponentProps } from 'react';
-// import './Contents.css';
+import '@plone/components/dist/quanta.css';
+import './Contents.css';
 // import type { ActionsResponse } from '@plone/types';
 import { VisuallyHidden } from 'react-aria';
 import {
@@ -129,14 +130,20 @@ export function ContentsTable({
   // );
 
   // const isLoading = contentIsLoading || searchIsLoading || bcIsLoading;
-  const { breadcrumbs, content, search } = useLoaderData<ContentsLoaderType>();
+  const {
+    breadcrumbs: brdcData,
+    content,
+    search,
+  } = useLoaderData<ContentsLoaderType>();
 
   const { title = '' } = content ?? {};
   const { items = [] } = search ?? {};
-  // const breadcrumbs = (bcData?.items ?? []).map((item) => ({
-  //   '@id': `${flattenToAppURL(item['@id'])}/contents`,
-  //   title: item.title,
-  // }));
+  const breadcrumbs = { ...brdcData };
+  breadcrumbs.items = (brdcData?.items ?? []).map((item) => ({
+    '@id': `/contents${item['@id']}`,
+    title: item.title,
+  }));
+  breadcrumbs.root = `/contents${breadcrumbs.root}`;
 
   // const folderContentsActions = objectActions.find(
   //   (action) => action.id === 'folderContents',

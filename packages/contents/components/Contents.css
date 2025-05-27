@@ -93,6 +93,7 @@
 
   .contents-actions {
     margin-inline-start: auto;
+    flex: 1 0 auto;
   }
 
   .contents-action-trigger {
