@@ -51,7 +51,7 @@ If your use case is generic enough, [file a feature request](https://github.com/
 
 At least create a README with a brief description and a screenshot or video of what your add-on does.
 
-Ideally, the README should include requirements or compatability with various versions of Volto and Plone, and installation and configuration instructions.
+Ideally, the README should include requirements or compatibility with various versions of Volto and Plone, and installation and configuration instructions.
 
 
 ## Test the add-on
