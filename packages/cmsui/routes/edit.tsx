@@ -77,6 +77,7 @@ export default function Edit() {
   const { content, schema } = useLoaderData<typeof loader>();
   const { t } = useTranslation();
   const fetcher = useFetcher();
+  console.log(schema);
 
   const form = useAppForm({
     defaultValues: content,
