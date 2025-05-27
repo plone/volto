@@ -1,45 +1,55 @@
 /**
- * Add link form.
+ * AddLink Form.
  * @module components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { compose } from 'redux';
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useMemo,
+  useCallback,
+} from 'react';
 import { withRouter } from 'react-router';
-import cx from 'classnames';
+import { useLocation } from 'react-router-dom';
+import { useSelector, useDispatch, shallowEqual, connect } from 'react-redux';
+import { compose } from 'redux';
+import { getContentIcon } from '@plone/volto/helpers/Content/Content';
 
+import { useIntl, defineMessages, injectIntl } from 'react-intl';
+
+import uniqBy from 'lodash/uniqBy';
+
+import jwtDecode from 'jwt-decode';
+import { Button } from 'semantic-ui-react';
+
+import PropTypes from 'prop-types';
+
+import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Image from '@plone/volto/components/theme/Image/Image';
+import { searchContent } from '@plone/volto/actions/search/search';
 import {
   addAppURL,
   isInternalURL,
   flattenToAppURL,
   URLUtils,
+  getBaseUrl,
 } from '@plone/volto/helpers/Url/Url';
-
-import doesNodeContainClick from 'semantic-ui-react/dist/commonjs/lib/doesNodeContainClick';
-import { Input, Form, Button } from 'semantic-ui-react';
-import { defineMessages, injectIntl } from 'react-intl';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
-import navTreeSVG from '@plone/volto/icons/nav.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
-import linkSVG from '@plone/volto/icons/link.svg';
-
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+import expandSVG from '@plone/volto/icons/left-key.svg';
 
 const messages = defineMessages({
   placeholder: {
-    id: 'Enter URL or select an item',
-    defaultMessage: 'Enter URL or select an item',
+    id: 'Paste or search for link',
+    defaultMessage: 'Paste or search for link',
   },
   clear: {
     id: 'Clear',
     defaultMessage: 'Clear',
-  },
-  openObjectBrowser: {
-    id: 'Open object browser',
-    defaultMessage: 'Open object browser',
   },
   submit: {
     id: 'Submit',
@@ -47,278 +57,294 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Add link form class.
- * @class AddLinkForm
- * @extends Component
- */
-class AddLinkForm extends Component {
-  static propTypes = {
-    onChangeValue: PropTypes.func.isRequired,
-    onClear: PropTypes.func.isRequired,
-    onOverrideContent: PropTypes.func.isRequired,
-    theme: PropTypes.objectOf(PropTypes.any).isRequired,
-    openObjectBrowser: PropTypes.func.isRequired,
-  };
+const LinkForm = ({
+  data,
+  reactSelect,
+  placeholder,
+  filterSuggestionByType,
+  onChangeValue,
+  onOverrideContent,
+  objectBrowserPickerType,
+  onClear,
+}) => {
+  const location = useLocation();
+  const contextUrl = getBaseUrl(location.pathname);
 
-  static defaultProps = {
-    objectBrowserPickerType: 'link',
-    placeholder: 'Enter URL or select an item',
-  };
+  const intl = useIntl();
+  const dispatch = useDispatch();
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs AddLinkForm
-   */
-  constructor(props) {
-    super(props);
+  const linkFormContainer = useRef(null);
 
-    this.state = {
-      value: isInternalURL(props.data.url)
-        ? flattenToAppURL(props.data.url)
-        : props.data.url || '',
-      isInvalid: false,
-    };
-    this.onRef = this.onRef.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+  const [link, setLink] = useState(
+    isInternalURL(data.url) ? flattenToAppURL(data.url) : data.url || '',
+  );
+  const [searchTerm, setSearchTerm] = useState('');
 
-  /**
-   * Component did mount
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    setTimeout(() => this.input.focus(), 50);
-    document.addEventListener('mousedown', this.handleClickOutside, false);
-  }
+  const subrequests = useSelector((state) => state.search.subrequests);
+  const token = useSelector((state) => state.userSession.token, shallowEqual);
+  const userId = token ? jwtDecode(token).sub : '';
 
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClickOutside, false);
-  }
+  const Select = reactSelect.default;
 
-  handleClickOutside = (e) => {
-    if (
-      this.linkFormContainer.current &&
-      doesNodeContainClick(this.linkFormContainer.current, e)
-    )
-      return;
-    if (this.linkFormContainer.current && this.props.isObjectBrowserOpen)
-      return;
-    this.onClose();
-  };
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      const searchParams = searchTerm
+        ? { SearchableText: `${searchTerm}*` }
+        : {};
 
-  /**
-   * Ref handler
-   * @method onRef
-   * @param {Object} node Node
-   * @returns {undefined}
-   */
-  onRef(node) {
-    this.input = node;
-  }
+      dispatch(
+        searchContent(
+          '/',
+          {
+            ...searchParams,
+            Creator: userId,
+            sort_on: 'modified',
+            sort_order: 'descending',
+            metadata_fields: '_all',
+            b_size: searchTerm ? 10 : 5,
+            ...(objectBrowserPickerType ? { portal_type: ['Image'] } : {}),
+          },
+          'latestContent',
+        ),
+      );
 
-  linkFormContainer = React.createRef();
+      dispatch(
+        searchContent(
+          contextUrl,
+          {
+            ...searchParams,
+            'path.depth': 1,
+            sort_on: 'getObjPositionInParent',
+            metadata_fields: '_all',
+            b_size: searchTerm ? 10 : 5,
+            ...(objectBrowserPickerType ? { portal_type: ['Image'] } : {}),
+          },
+          'crtFolderContent',
+        ),
+      );
 
-  /**
-   * Change handler
-   * @method onChange
-   * @param {Object} value Value
-   * @returns {undefined}
-   */
-  onChange(value, clear) {
-    let nextState = { value };
-    if (!clear) {
-      if (
-        this.state.isInvalid &&
-        URLUtils.isUrl(URLUtils.normalizeUrl(value))
-      ) {
-        nextState.isInvalid = false;
-      }
+      dispatch(
+        searchContent(
+          '/',
+          {
+            ...searchParams,
+            sort_on: 'getObjPositionInParent',
+            metadata_fields: '_all',
+            b_size: searchTerm ? 10 : 5,
+            ...(objectBrowserPickerType ? { portal_type: ['Image'] } : {}),
+          },
+          'allFoldersContent',
+        ),
+      );
+    }, 500);
 
-      if (isInternalURL(value)) {
-        nextState = { value: flattenToAppURL(value) };
-      }
+    return () => clearTimeout(delayDebounceFn);
+  }, [dispatch, contextUrl, userId, searchTerm, objectBrowserPickerType]);
+
+  const content = useMemo(() => {
+    const latestContent = subrequests?.['latestContent']?.items || [];
+    const crtFolderContent = subrequests?.['crtFolderContent']?.items || [];
+    const allFoldersContent = subrequests?.['allFoldersContent']?.items || [];
+
+    const contentOptions = [
+      ...latestContent,
+      ...crtFolderContent,
+      ...allFoldersContent,
+    ];
+
+    return uniqBy(contentOptions, '@id');
+  }, [subrequests]);
+
+  const filteredSuggestions = useMemo(() => {
+    const suggestions = content
+      .filter((item) => {
+        if (filterSuggestionByType) {
+          return item['@type'] === filterSuggestionByType;
+        }
+        return item;
+      })
+      .map((item) => ({
+        label: item.title,
+        value: item['@id'],
+        src: `${item['@id']}/@@images/image/preview`,
+        path: getBaseUrl(item['@id']),
+        icon: getContentIcon(item['@type'], item.is_folderish),
+        type: item['@type'],
+      }));
+
+    return suggestions.slice(0, 5); // Limitam tot la 5 pentru afișare
+  }, [filterSuggestionByType, content]);
+
+  const formatOptionLabel = ({ label, path, src, icon, type }) => (
+    <div className="link-suggestion-container">
+      <div className="link-suggestion-preview">
+        {type === 'Image' ? (
+          <Image src={src} alt={label} />
+        ) : (
+          <div className="icon-wrapper">
+            <Icon name={icon} size="20px" />
+          </div>
+        )}
+      </div>
+      <div className="link-suggestion-content">
+        <div className="link-suggestion-label">{label}</div>
+        <div className="link-suggestion-path">{path}</div>
+      </div>
+    </div>
+  );
+
+  const onInputChange = (inputValue, { action }) => {
+    if (action === 'input-change') {
+      setLink(inputValue);
+      setSearchTerm(inputValue); // Actualizează searchTerm pentru a declanșa căutarea backend
     }
-    this.setState(nextState);
-
-    if (clear) this.props.onClear();
-  }
-
-  /**
-   * Select item handler
-   * @method onSelectItem
-   * @param {string} e event
-   * @param {string} url Url
-   * @returns {undefined}
-   */
-  onSelectItem = (e, url) => {
-    e.preventDefault();
-    this.setState({
-      value: url,
-      isInvalid: false,
-    });
-    this.props.onChangeValue(addAppURL(url));
   };
 
-  /**
-   * Clear handler
-   * @method clear
-   * @param {Object} value Value
-   * @returns {undefined}
-   */
-  clear() {
-    const nextState = { value: '' };
-    this.setState(nextState);
+  const onChange = (url) => {
+    setLink(url.value);
+    onChangeValue(addAppURL(url.value));
+    setSearchTerm(''); // Golește searchTerm după selecție
+  };
 
-    this.props.onClear();
-  }
+  const onSubmit = () => {
+    const normalizedUrl = URLUtils.checkAndNormalizeUrl(link);
 
-  /**
-   * Close handler
-   * @method onClose
-   * @returns {undefined}
-   */
-  onClose = () => this.props.onOverrideContent(undefined);
+    if (!normalizedUrl.isValid) {
+      return;
+    }
 
-  /**
-   * Keydown handler
-   * @method onKeyDown
-   * @param {Object} e Event object
-   * @returns {undefined}
-   */
-  onKeyDown(e) {
+    const editorStateUrl = isInternalURL(link) ? addAppURL(link) : link;
+
+    onChangeValue(editorStateUrl);
+    onClose();
+  };
+
+  const clear = () => {
+    setLink('');
+    setSearchTerm(''); // Golește searchTerm la ștergere
+    onClear();
+  };
+
+  const onClose = useCallback(
+    () => onOverrideContent(undefined),
+    [onOverrideContent],
+  );
+
+  const onKeyDown = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       e.stopPropagation();
-      this.onSubmit();
+      onSubmit();
     } else if (e.key === 'Escape') {
       e.preventDefault();
-      this.onClose();
+      onClose();
     }
-  }
+  };
 
-  /**
-   * Submit handler
-   * @method onSubmit
-   * @returns {undefined}
-   */
-  onSubmit() {
-    let { value: url } = this.state;
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        linkFormContainer.current &&
+        linkFormContainer.current.contains(e.target)
+      ) {
+        return;
+      }
 
-    const checkedURL = URLUtils.checkAndNormalizeUrl(url);
-    url = checkedURL.url;
-    if (!checkedURL.isValid) {
-      this.setState({ isInvalid: true });
-      return;
-    }
+      if (linkFormContainer.current && filterSuggestionByType) {
+        return;
+      }
 
-    const editorStateUrl = isInternalURL(url) ? addAppURL(url) : url;
+      onClose();
+    };
 
-    this.props.onChangeValue(editorStateUrl);
-    this.onClose();
-  }
+    document.addEventListener('mousedown', handleClickOutside);
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    const { value, isInvalid } = this.state;
-    const className = isInvalid
-      ? cx(
-          'ui input editor-link',
-          'input-anchorlink-theme',
-          'input-anchorlink-theme-Invalid',
-        )
-      : cx('ui input editor-link', 'input-anchorlink-theme');
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [onOverrideContent, filterSuggestionByType, onClose]);
 
-    return (
-      <div className="link-form-container" ref={this.linkFormContainer}>
-        <Icon name={linkSVG} color="#B8B2C8" size="20px" />
-        <Form.Field inline>
-          <div className="wrapper">
-            <Input
-              className={className}
-              name="link"
-              value={value || ''}
-              onChange={({ target }) => this.onChange(target.value)}
-              placeholder={
-                this.props.placeholder ||
-                this.props.intl.formatMessage(messages.placeholder)
-              }
-              onKeyDown={this.onKeyDown}
-              ref={this.onRef}
-            />
-            {value.length > 0 ? (
-              <Button.Group>
-                <Button
-                  type="button"
-                  basic
-                  className="cancel"
-                  aria-label={this.props.intl.formatMessage(messages.clear)}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    this.clear();
-                    this.input.focus();
-                  }}
-                >
-                  <Icon name={clearSVG} size="24px" />
-                </Button>
-              </Button.Group>
-            ) : this.props.objectBrowserPickerType === 'link' ? (
-              <Button.Group>
-                <Button
-                  type="button"
-                  basic
-                  icon
-                  aria-label={this.props.intl.formatMessage(
-                    messages.openObjectBrowser,
-                  )}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    this.props.openObjectBrowser({
-                      mode: this.props.objectBrowserPickerType,
-                      overlay: true,
-                      onSelectItem: (url) => {
-                        this.onChange(url);
-                        this.onSubmit();
-                      },
-                    });
-                  }}
-                >
-                  <Icon name={navTreeSVG} size="24px" />
-                </Button>
-              </Button.Group>
-            ) : null}
-
-            <Button.Group>
-              <Button
-                basic
-                primary
-                disabled={!value.length > 0}
-                aria-label={this.props.intl.formatMessage(messages.submit)}
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  this.onSubmit();
-                }}
-              >
-                <Icon name={aheadSVG} size="24px" />
-              </Button>
-            </Button.Group>
-          </div>
-        </Form.Field>
+  return (
+    <div
+      className="link-form-container link-searchable-form-container"
+      ref={linkFormContainer}
+    >
+      <Icon name={expandSVG} color="#222" size="26px" />
+      <div className="wrapper">
+        <Select
+          className="react-select-container"
+          classNamePrefix="react-select"
+          inputValue={link}
+          options={filteredSuggestions}
+          formatOptionLabel={formatOptionLabel}
+          isSearchable
+          placeholder={placeholder || intl.formatMessage(messages.placeholder)}
+          noOptionsMessage={() => 'No options'}
+          components={{
+            DropdownIndicator: () => null,
+            IndicatorSeparator: () => null,
+          }}
+          onChange={onChange}
+          onInputChange={onInputChange}
+          onKeyDown={onKeyDown}
+        />
+        {link.length > 0 && (
+          <Button
+            type="button"
+            basic
+            className="cancel"
+            aria-label={intl.formatMessage(messages.clear)}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              clear();
+            }}
+          >
+            <Icon name={clearSVG} size="24px" />
+          </Button>
+        )}
+        <Button
+          basic
+          primary
+          disabled={!link.length > 0}
+          aria-label={intl.formatMessage(messages.submit)}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onSubmit();
+          }}
+        >
+          <Icon name={aheadSVG} size="24px" />
+        </Button>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-export default compose(injectIntl, withRouter, withObjectBrowser)(AddLinkForm);
+LinkForm.propTypes = {
+  onChangeValue: PropTypes.func.isRequired,
+  onClear: PropTypes.func.isRequired,
+  onOverrideContent: PropTypes.func.isRequired,
+  reactSelect: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
+  placeholder: PropTypes.string,
+  filterSuggestionByType: PropTypes.string,
+  objectBrowserPickerType: PropTypes.string,
+};
+
+LinkForm.defaultProps = {
+  placeholder: null,
+  filterSuggestionByType: null,
+  objectBrowserPickerType: null,
+};
+
+export default compose(
+  injectIntl,
+  withRouter,
+  connect(
+    (state) => ({
+      searchSubrequests: state.search.subrequests,
+    }),
+    { searchContent },
+  ),
+  injectLazyLibs('reactSelect'),
+  withObjectBrowser,
+)(LinkForm);
