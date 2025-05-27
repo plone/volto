@@ -28,5 +28,6 @@ export const Default: Story = {
   ),
   args: {
     label: 'Ice cream flavor',
+    children: null,
   },
 };
