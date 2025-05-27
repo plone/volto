@@ -811,20 +811,12 @@ div.image-upload-widget-image {
     }
   }
 }
-/* Stilizare pentru containerele principale */
-.link-form-container.link-searchable-form-container {
-  /* Această clasă este deja pe div-ul principal */
-  /* Poți adăuga aici stiluri specifice containerului general al formularului */
-}
 
-/* Stilizare pentru wrapper-ul interior (unde sunt Select, Button-uri) */
 .link-form-container .wrapper {
-  display: flex; /* Exemplu: pentru a alinia elementele orizontal */
-  align-items: center; /* Aliniază pe verticală */
-  /* Alte stiluri pentru wrapper */
+  display: flex;
+  align-items: center;
 }
 
-/* Stiluri pentru componenta React-Select */
 .react-select-container .react-select__control {
   width: 220px;
   border: none;
@@ -835,7 +827,7 @@ div.image-upload-widget-image {
 
 .react-select-container .react-select__menu {
   z-index: 2;
-  top: auto; /* Anulează stilul inline */
+  top: auto;
   left: -31px;
   width: 300px;
   border-bottom: 1px solid #c7d5d8;
@@ -844,7 +836,7 @@ div.image-upload-widget-image {
 }
 
 .react-select-container .react-select__menu-list {
-  max-height: unset; /* Anulează stilul inline */
+  max-height: unset;
   padding-block: 0;
 }
 
@@ -859,7 +851,7 @@ div.image-upload-widget-image {
   align-items: center;
   padding: 6px 10px;
   padding-left: 15px;
-  background-color: null; /* Poți lăsa pe `initial` sau `unset` dacă e necesar */
+  background-color: null;
   color: #4a4a4a;
   font-size: 14px;
 }
@@ -872,41 +864,30 @@ div.image-upload-widget-image {
   font-size: 14px;
 }
 
-/* Stiluri pentru elementele de sugestie (formatOptionLabel) */
 .link-suggestion-container {
   display: flex;
   align-items: center;
 }
 
 .link-suggestion-preview {
-  display: flex; /* Asigură alinierea corectă a iconiței */
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 10px; /* Spațiu între iconiță și text */
+  margin-right: 10px;
 }
 
 .link-suggestion-content {
-  flex-grow: 1; /* Permite conținutului să ocupe spațiul rămas */
+  flex-grow: 1;
 }
 
 .link-suggestion-label {
-  color: #333; /* O culoare mai închisă pentru titlu */
-  font-weight: bold; /* Faci titlul mai vizibil */
+  color: #333;
+  font-weight: bold;
 }
 
 .link-suggestion-path {
-  color: #888; /* O culoare mai deschisă pentru cale */
+  color: #888;
   font-size: 0.85em;
-}
-
-/* Stiluri pentru butonul de "Clear" */
-.link-form-container .cancel.button {
-  /* Stiluri specifice pentru butonul de anulare dacă ai nevoie */
-}
-
-/* Stiluri pentru butonul de "Submit" (aheadSVG) */
-.link-form-container .button.primary {
-  /* Stiluri specifice pentru butonul de submit dacă ai nevoie */
 }
 
 .blocks-chooser {
