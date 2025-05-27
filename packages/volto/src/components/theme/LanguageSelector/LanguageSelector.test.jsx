@@ -8,7 +8,6 @@ import config from '@plone/volto/registry';
 import LanguageSelector from './LanguageSelector';
 
 beforeAll(() => {
-  config.settings.isMultilingual = true;
   config.settings.supportedLanguages = ['de', 'es'];
 });
 

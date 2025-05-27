@@ -46,9 +46,7 @@ You must provide a function as default export in your `src/config.js`:
 export default function applyConfig(config) {
   config.settings = {
     ...config.settings,
-    isMultilingual: true,
     supportedLanguages: ['en', 'de'],
-    defaultLanguage: 'de',
     navDepth: 3,
   };
 

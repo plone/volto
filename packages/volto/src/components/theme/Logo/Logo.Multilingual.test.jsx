@@ -7,10 +7,6 @@ import config from '@plone/volto/registry';
 
 import Logo from './Logo';
 
-beforeAll(() => {
-  config.settings.isMultilingual = true;
-});
-
 const mockStore = configureStore();
 
 describe('Multilingual Logo', () => {

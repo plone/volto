@@ -491,9 +491,6 @@ showRelatedItems
 showTags
     If true, the `Tags` component will show tags from the `subjects` field. Default: true.
 
-
-defaultLanguage
-    Defines the default language of the site.
 ```
 
 ## Views settings

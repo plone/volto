@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import cx from 'classnames';
 import find from 'lodash/find';
-import map from 'lodash/map';
 
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
@@ -37,10 +36,14 @@ const LanguageSelector = (props) => {
 
   const { settings } = config;
 
-  return settings.isMultilingual ? (
+  const orderedTranslations = settings.supportedLanguages
+    .map((lang) => find(translations, { language: lang }))
+    .filter((value) => value);
+
+  return orderedTranslations.length ? (
     <div className="language-selector">
-      {map(settings.supportedLanguages, (lang) => {
-        const translation = find(translations, { language: lang });
+      {orderedTranslations.map((translation) => {
+        const lang = translation.language;
         return (
           <Link
             aria-label={`${intl.formatMessage(
@@ -61,7 +64,7 @@ const LanguageSelector = (props) => {
     </div>
   ) : (
     <Helmet>
-      <html lang={toReactIntlLang(settings.defaultLanguage)} />
+      <html lang={toReactIntlLang(currentLang)} />
     </Helmet>
   );
 };

@@ -460,7 +460,7 @@ class Edit extends Component {
                     />
                   </Button>
 
-                  {config.settings.isMultilingual && (
+                  {this.props.isMultilingual && (
                     <CompareLanguages
                       content={this.props.content}
                       visual={this.state.visual}
@@ -545,6 +545,7 @@ export default compose(
       updateRequest: state.content.update,
       pathname: props.location.pathname,
       returnUrl: qs.parse(props.location.search).return_url,
+      isMultilingual: state.site.data.features?.multilingual,
     }),
     {
       updateContent,

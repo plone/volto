@@ -8,7 +8,6 @@ import config from '@plone/volto/registry';
 import ManageTranslations from './ManageTranslations';
 
 beforeAll(() => {
-  config.settings.isMultilingual = true;
   config.settings.supportedLanguages = ['de', 'es'];
 });
 vi.mock('../Toolbar/Toolbar', () => ({

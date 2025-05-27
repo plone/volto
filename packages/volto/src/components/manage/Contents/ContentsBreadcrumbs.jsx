@@ -2,6 +2,7 @@ import React from 'react';
 import { Breadcrumb } from 'semantic-ui-react';
 import { Link, useLocation } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
+import { useSelector } from 'react-redux';
 import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
 import ContentsBreadcrumbsRootItem from '@plone/volto/components/manage/Contents/ContentsBreadcrumbsRootItem';
 import ContentsBreadcrumbsHomeItem from '@plone/volto/components/manage/Contents/ContentsBreadcrumbsHomeItem';
@@ -24,11 +25,21 @@ const ContentsBreadcrumbs = (props) => {
   const { items } = props;
   const intl = useIntl();
   const pathname = useLocation().pathname;
+  const navroot = useSelector((state) => state.navroot.data.navroot);
+  const navrootIsPortal = navroot['@type'] === 'Plone Site';
   const lang = pathname.split('/')[1];
 
   return (
     <Breadcrumb>
-      {settings.isMultilingual && (
+      {navrootIsPortal ? (
+        <Link
+          to="/contents"
+          className="section"
+          title={intl.formatMessage(messages.home)}
+        >
+          <ContentsBreadcrumbsHomeItem />
+        </Link>
+      ) : (
         <>
           <Link
             to="/contents"
@@ -38,25 +49,12 @@ const ContentsBreadcrumbs = (props) => {
             <ContentsBreadcrumbsRootItem />
           </Link>
           <Breadcrumb.Divider />
+          <Link
+            to={`${navroot['@id']}/contents`}
+            className="section"
+            title={navroot.title}
+          />
         </>
-      )}
-      {settings.isMultilingual && pathname?.split('/')?.length > 2 && (
-        <Link
-          to={`/${lang}/contents`}
-          className="section"
-          title={intl.formatMessage(messages.home)}
-        >
-          {langmap?.[lang]?.nativeName ?? lang}
-        </Link>
-      )}
-      {!settings.isMultilingual && (
-        <Link
-          to="/contents"
-          className="section"
-          title={intl.formatMessage(messages.home)}
-        >
-          <ContentsBreadcrumbsHomeItem />
-        </Link>
       )}
       {items.map((breadcrumb, index, breadcrumbs) => [
         <Breadcrumb.Divider key={`divider-${breadcrumb.url}`} />,

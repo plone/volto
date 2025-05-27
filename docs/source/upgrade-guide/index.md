@@ -2101,7 +2101,6 @@ import config from '@plone/volto/registry'
 ...
 
 console.log(config.settings.apiPath)
-config.settings.isMultilingual = true
 ...
 ```
 
@@ -2218,9 +2217,7 @@ Let's show it in an example. Let's say you have this config in your project's `s
 ```js
 export const settings = {
   ...defaultSettings,
-  isMultilingual: true,
   supportedLanguages: ['en', 'de'],
-  defaultLanguage: 'de',
   navDepth: 3,
 };
 ```
@@ -2231,9 +2228,7 @@ then you'll add the `applyConfig()` function as default export and copy that set
 export default function applyConfig(config) {
   config.settings = {
     ...config.settings,
-    isMultilingual: true,
     supportedLanguages: ['en', 'de'],
-    defaultLanguage: 'de',
     navDepth: 3,
   };
   return config;
@@ -2325,9 +2320,7 @@ showing in the diff the default ones, you should have your configuration inside 
 ```js
 export const settings = {
   ...defaultSettings,
-  isMultilingual: true,
   supportedLanguages: ['en', 'de'],
-  defaultLanguage: 'de',
   navDepth: 3,
 };
 ```
@@ -2363,9 +2356,7 @@ the end of `src/config.js`:
 +function applyConfig(config) {
 +  config.settings = {
 +    ...config.settings,
-+    isMultilingual: true,
 +    supportedLanguages: ['en', 'de'],
-+    defaultLanguage: 'de',
 +    navDepth: 3,
 +  };
 ```

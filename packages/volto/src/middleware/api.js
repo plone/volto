@@ -35,7 +35,7 @@ let socket = null;
  *
  * - It should add the expanders set in the config settings
  * - It should preserve any query if present
- * - It should preserve (and add) any expand parameter (if present) e.g. translations
+ * - It should preserve (and add) any expand parameter (if present)
  * - It should take use the correct codification for arrays in querystring (repeated parameter for each member of the array)
  *
  * @function addExpandersToPath
@@ -43,7 +43,7 @@ let socket = null;
  * @param {*} type The action type
  * @returns {string} The url/path with the configured expanders added to the query string
  */
-export function addExpandersToPath(path, type, isAnonymous) {
+export function addExpandersToPath(path, type, isAnonymous, isMultilingual) {
   const { settings } = config;
   const { apiExpanders = [] } = settings;
 
@@ -58,7 +58,14 @@ export function addExpandersToPath(path, type, isAnonymous) {
 
   const expandMerge = compact(
     union([expand, ...flatten(expandersFromConfig)]),
-  ).filter((item) => !(item === 'types' && isAnonymous)); // Remove types expander if isAnonymous
+  ).filter(
+    // Remove types for anonymous, translations unless multilingual
+    (item) =>
+      !(
+        (item === 'types' && isAnonymous) ||
+        (item === 'translations' && !isMultilingual)
+      ),
+  );
 
   const stringifiedExpand = qs.stringify(
     { expand: expandMerge },
@@ -135,8 +142,10 @@ const apiMiddlewareFactory =
   (action) => {
     const { settings } = config;
 
-    const token = getState().userSession.token;
-    let uploadedFiles = getState().content.uploadedFiles;
+    const state = getState();
+    const token = state.userSession.token;
+    let uploadedFiles = state.content.uploadedFiles;
+    const isMultilingual = state.site.data.features?.multilingual;
     let isAnonymous = true;
     if (token) {
       const tokenExpiration = jwtDecode(token).exp;
@@ -164,14 +173,24 @@ const apiMiddlewareFactory =
             request.map((item) =>
               sendOnSocket({
                 ...item,
-                path: addExpandersToPath(item.path, type, isAnonymous),
+                path: addExpandersToPath(
+                  item.path,
+                  type,
+                  isAnonymous,
+                  isMultilingual,
+                ),
                 id: type,
               }),
             ),
           )
         : sendOnSocket({
             ...request,
-            path: addExpandersToPath(request.path, type, isAnonymous),
+            path: addExpandersToPath(
+              request.path,
+              type,
+              isAnonymous,
+              isMultilingual,
+            ),
             id: type,
           });
     } else {
@@ -180,7 +199,12 @@ const apiMiddlewareFactory =
           ? request.reduce((prevPromise, item) => {
               return prevPromise.then((acc) => {
                 return api[item.op](
-                  addExpandersToPath(item.path, type, isAnonymous),
+                  addExpandersToPath(
+                    item.path,
+                    type,
+                    isAnonymous,
+                    isMultilingual,
+                  ),
                   {
                     data: item.data,
                     type: item.type,
@@ -201,26 +225,39 @@ const apiMiddlewareFactory =
             }, Promise.resolve([]))
           : Promise.all(
               request.map((item) =>
-                api[item.op](addExpandersToPath(item.path, type, isAnonymous), {
-                  data: item.data,
-                  type: item.type,
-                  headers: item.headers,
-                  params: request.params,
-                  checkUrl: settings.actions_raising_api_errors.includes(
-                    action.type,
+                api[item.op](
+                  addExpandersToPath(
+                    item.path,
+                    type,
+                    isAnonymous,
+                    isMultilingual,
                   ),
-                  attach: item.attach,
-                }),
+                  {
+                    data: item.data,
+                    type: item.type,
+                    headers: item.headers,
+                    params: request.params,
+                    checkUrl: settings.actions_raising_api_errors.includes(
+                      action.type,
+                    ),
+                    attach: item.attach,
+                  },
+                ),
               ),
             )
-        : api[request.op](addExpandersToPath(request.path, type, isAnonymous), {
-            data: request.data,
-            type: request.type,
-            headers: request.headers,
-            params: request.params,
-            checkUrl: settings.actions_raising_api_errors.includes(action.type),
-            attach: request.attach,
-          });
+        : api[request.op](
+            addExpandersToPath(request.path, type, isAnonymous, isMultilingual),
+            {
+              data: request.data,
+              type: request.type,
+              headers: request.headers,
+              params: request.params,
+              checkUrl: settings.actions_raising_api_errors.includes(
+                action.type,
+              ),
+              attach: request.attach,
+            },
+          );
       actionPromise.then(
         (result) => {
           if (uploadedFiles !== 0) {
