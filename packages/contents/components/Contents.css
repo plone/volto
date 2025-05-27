@@ -61,6 +61,7 @@
   .review-state {
     display: flex;
     align-items: center;
+    min-width: 8rem;
 
     &::before {
       width: 9px;
@@ -68,7 +69,7 @@
       border-radius: 50%;
       background-color: var(--quanta-dolphin);
       content: '';
-      margin-inline-end: 0.5rem;
+      margin-inline-end: 1rem;
     }
 
     &.private::before {
@@ -198,8 +199,7 @@
   }
 }
 
-/* 
-
+.rearrange-popover {
   .react-aria-MenuItem {
     font-size: 1rem;
   }
@@ -220,7 +220,8 @@
       background-color: var(--highlight-background);
       color: var(--highlight-foreground);
     }
-  } */
+  }
+}
 
 @media (min-width: 992px) {
   .folder-contents {

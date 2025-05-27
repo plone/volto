@@ -21,8 +21,11 @@ export const TableIndexesPopover = ({ indexes, onSelectIndex }: Props) => {
   const { t } = useTranslation();
 
   return (
-    <Popover className="react-aria-Popover table-indexes-popover">
-      <div className="popover-label">
+    <Popover
+      className="react-aria-Popover table-indexes-popover"
+      dialogAriaLabelledby="table-indexes-label"
+    >
+      <div id="table-indexes-label" className="popover-label">
         {t('contents.indexes.select_columns')}
       </div>
       <ul className="popover-list">

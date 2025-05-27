@@ -58,9 +58,9 @@ export function RearrangePopover({
       className="react-aria-Popover rearrange-popover"
       dialogAriaLabelledby="rearrange-popover-label"
     >
-      <p className="label" id="rearrange-popover-label">
+      <div className="popover-label" id="rearrange-popover-label">
         {t('contents.rearrange.by')}
-      </p>
+      </div>
       <Menu items={menuItems}>
         {function renderSubmenu(item) {
           if (item.children) {
