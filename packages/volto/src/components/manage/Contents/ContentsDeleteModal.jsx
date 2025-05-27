@@ -176,10 +176,7 @@ const ContentsDeleteModal = (props) => {
                 {itemsToDelete.map((id) => {
                   return (
                     <li key={id}>
-                      <Link
-                        to={flattenToAppURL(id)}
-                        target="_blank"
-                      >
+                      <Link to={flattenToAppURL(id)} target="_blank">
                         {titlesToDelete[id] || id}
                       </Link>
                     </li>
