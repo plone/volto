@@ -43,11 +43,11 @@ export function RearrangePopover({
     children: [
       {
         id: `${indexes[index].sort_on}|ascending`,
-        name: t('Ascending'),
+        name: t('contents.rearrange.asc'),
       },
       {
         id: `${indexes[index].sort_on}|descending`,
-        name: t('Descending'),
+        name: t('contents.rearrange.desc'),
       },
     ],
   }));
@@ -59,7 +59,7 @@ export function RearrangePopover({
       dialogAriaLabelledby="rearrange-popover-label"
     >
       <p className="label" id="rearrange-popover-label">
-        {t('Rearrange items by…')}
+        {t('contents.rearrange.by')}
       </p>
       <Menu items={menuItems}>
         {function renderSubmenu(item) {
@@ -83,13 +83,7 @@ export function RearrangePopover({
                   )}
                 </MenuItem>
                 <Popover
-                  // dialogAriaLabel={intl.formatMessage(
-                  //   { id: 'contentsNextPickSortOrder' },
-                  //   {
-                  //     index: item.name,
-                  //   },
-                  // )}
-                  dialogAriaLabel={t('contentsNextPickSortOrder', {
+                  dialogAriaLabel={t('contents.rearrange.pickOrder', {
                     index: item.name,
                   })}
                 >

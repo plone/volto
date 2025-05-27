@@ -4,7 +4,7 @@ import React, {
   useContext,
   useMemo,
 } from 'react';
-import type { IntlShape, Toast } from '../types';
+import type { Toast } from '../types';
 
 interface ContentsContext {
   flattenToAppURL: (path?: string) => string | undefined;
@@ -14,7 +14,6 @@ interface ContentsContext {
     isFolderish?: boolean,
     useQuantaIcons?: boolean,
   ) => JSX.ElementType;
-  intl: IntlShape;
   toast: Toast;
 }
 
@@ -22,24 +21,23 @@ const ContentsContext = createContext<ContentsContext>({
   flattenToAppURL: (path) => path,
   // getBaseUrl: (url) => url,
   getContentIcon: () => undefined,
-  intl: { locale: 'en-US', formatMessage: () => '' },
   toast: { error: () => '' },
 });
 
 type ContentsProviderProps = PropsWithChildren<ContentsContext>;
 
 export function ContentsProvider(props: ContentsProviderProps) {
-  let { children, flattenToAppURL, getContentIcon, intl, toast } = props;
+  let { children, flattenToAppURL, getContentIcon, toast } = props;
 
   let ctx = useMemo(
     () => ({
       flattenToAppURL,
       // getBaseUrl,
       getContentIcon,
-      intl,
+
       toast,
     }),
-    [flattenToAppURL, getContentIcon, intl, toast],
+    [flattenToAppURL, getContentIcon, toast],
   );
 
   return (

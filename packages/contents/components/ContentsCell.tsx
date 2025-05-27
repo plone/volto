@@ -1,4 +1,5 @@
 import React, { type ComponentProps, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDateFormatter } from 'react-aria';
 import type { Brain } from '../../types';
 import { Button, Link } from '@plone/components';
@@ -37,7 +38,8 @@ export function ContentsCell({
   onCopy,
   onDelete,
 }: Props) {
-  const { getContentIcon, intl, flattenToAppURL } = useContentsContext();
+  const { t } = useTranslation();
+  const { getContentIcon, flattenToAppURL } = useContentsContext();
   const [isMoreOptionsOpen, setIsMoreOptionsOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const longFormatter = useDateFormatter({
@@ -60,15 +62,11 @@ export function ContentsCell({
         {item.title}
         {item.ExpirationDate !== 'None' &&
           new Date(item.ExpirationDate).getTime() < new Date().getTime() && (
-            <span className="expired">
-              {intl.formatMessage({ id: 'Expired' })}
-            </span>
+            <span className="expired">{t('contents.item.expired')}</span>
           )}
         {item.EffectiveDate !== 'None' &&
           new Date(item.EffectiveDate).getTime() > new Date().getTime() && (
-            <span className="future">
-              {intl.formatMessage({ id: 'Scheduled' })}
-            </span>
+            <span className="future">{t('contents.item.scheduled')}</span>
           )}
       </Link>
     );
@@ -77,7 +75,7 @@ export function ContentsCell({
       <>
         <Button
           className="react-aria-Button item-actions-trigger"
-          aria-label={intl.formatMessage({ id: 'contentsNextMoreOptions' })}
+          aria-label={t('contents.item.more_options')}
           onPress={() => setIsMoreOptionsOpen(true)}
           ref={triggerRef}
         >
@@ -122,8 +120,8 @@ export function ContentsCell({
       return (
         <>
           {item[column]
-            ? intl.formatMessage({ id: 'Yes' })
-            : intl.formatMessage({ id: 'No' })}
+            ? t('contents.indexes.boolean.yes')
+            : t('contents.indexes.boolean.no')}
         </>
       );
     } else if (indexes.values[column].type === 'string') {
@@ -132,7 +130,10 @@ export function ContentsCell({
       } else {
         return (
           <div className={`review-state ${item[column]}`}>
-            {intl.formatMessage({ id: item[column] || 'no workflow state' })}
+            {t(
+              'contents.indexes.review_state.' +
+                (item[column] ?? 'no_workflow_state'),
+            )}
           </div>
         );
       }
@@ -147,7 +148,7 @@ export function ContentsCell({
           </time>
         );
       } else {
-        return <>{intl.formatMessage({ id: 'None' })}</>;
+        return <>{t('contents.indexes.date.none')}</>;
       }
     } else if (indexes.values[column].type === 'array') {
       const value = item[column];

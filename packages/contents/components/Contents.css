@@ -1,6 +1,5 @@
 .folder-contents {
   #content {
-    max-width: 90rem;
     padding: 0.5rem 1rem;
     margin: 0 auto;
   }
@@ -18,8 +17,16 @@
     gap: 1rem;
   }
 
-  .react-aria-Breadcrumbs .react-aria-Link {
-    font-size: 0.89rem;
+  .react-aria-Breadcrumbs {
+    .react-aria-Link {
+      font-size: 0.89rem;
+    }
+  }
+  .contents-breadcrumbs {
+    color: var(--quanta-sapphire);
+    li .text-gray-700 {
+      color: var(--quanta-sapphire);
+    }
   }
 
   .contents-table {
@@ -107,45 +114,68 @@
   }
 }
 
-body.view-contentsview {
-  .header-wrapper,
-  .breadcrumbs,
-  #footer {
-    display: none;
-  }
-
-  h1 {
-    margin-top: 0.4em;
-    font-size: 1.5rem;
-  }
-
-  .tooltip {
-    padding: 0.1875rem 0.375rem;
-    border-radius: 3px;
-    margin-top: 0.25rem;
-    background-color: var(--quanta-denim);
-    color: var(--quanta-air);
-    line-height: 1.5;
-  }
-
-  .react-aria-Popover .label {
+.react-aria-Popover {
+  .popover-label {
     color: var(--quanta-pigeon);
-    font-size: 0.85em;
+    font-size: 0.8rem;
     font-weight: 500;
   }
 
-  .table-indexes-list,
-  .item-actions-list,
-  .add-content-list {
+  .popover-list {
     padding: 0;
     margin: 0;
     list-style: none;
   }
 
-  .table-indexes-list-item,
-  .add-content-list-item {
-    padding: 12px;
+  .popover-list .react-aria-Checkbox,
+  .popover-list-item {
+    font-size: 1rem;
+  }
 
+  .popover-list-item {
+    padding: 0.5rem 0;
+  }
+
+  .react-aria-Dialog {
+    padding: 0.75rem;
+  }
+}
+
+.item-actions-popover {
+  .popover-list-item {
+    --link-color: var(--quanta-denim);
+    &.view,
+    &.move-to-bottom {
+      border-bottom: 1px solid var(--quanta-smoke);
+      margin-bottom: 0.5rem;
+    }
+
+    &.delete {
+      --link-color: var(--quanta-candy);
+    }
+
+    .icon {
+      margin-inline-end: 1rem;
+      color: var(--quanta-pigeon);
+      width: 18px;
+      height: 18px;
+    }
+
+    .react-aria-Link {
+      display: inline-flex;
+      align-items: center;
+      padding: 0;
+      border: 0;
+      background: 0 none;
+      text-align: left;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+  }
+}
+
+.add-content-popover {
+  .popover-list-item {
     & + li {
       border-top: 1px solid var(--quanta-smoke);
     }
@@ -166,41 +196,9 @@ body.view-contentsview {
       margin-inline-start: auto;
     }
   }
+}
 
-  .item-actions-list-item {
-    padding: 12px 0;
-    font-size: 1rem;
-
-    &.view,
-    &.move-to-bottom {
-      border-bottom: 1px solid var(--quanta-smoke);
-    }
-
-    &.delete {
-      --link-color: var(--quanta-candy);
-    }
-
-    .icon {
-      margin-inline-end: 1rem;
-    }
-
-    .react-aria-Link {
-      display: inline-flex;
-      align-items: center;
-      padding: 0;
-      border: 0;
-      background: 0 none;
-      text-align: left;
-    }
-  }
-
-  .react-aria-Dialog {
-    padding: 0.75rem;
-
-    .react-aria-Checkbox {
-      font-size: 1rem;
-    }
-  }
+/* 
 
   .react-aria-MenuItem {
     font-size: 1rem;
@@ -222,8 +220,7 @@ body.view-contentsview {
       background-color: var(--highlight-background);
       color: var(--highlight-foreground);
     }
-  }
-}
+  } */
 
 @media (min-width: 992px) {
   .folder-contents {

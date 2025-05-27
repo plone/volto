@@ -191,7 +191,7 @@ export function ContentsTable({
               <MoreOptionsSVG />
             </Button>
             <Tooltip className="react-aria-Tooltip tooltip" placement="bottom">
-              {t('contentsNextSelectColumnsToDisplay')}
+              {t('Select columns to show')}
             </Tooltip>
           </TooltipTrigger>
           <TableIndexesPopover
@@ -204,12 +204,12 @@ export function ContentsTable({
           <Button
             className="react-aria-Button contents-action-trigger paste"
             onPress={paste}
-            aria-label={t('Paste')}
+            aria-label={t('contents.actions.paste')}
             isDisabled={!canPaste}
           >
             <PasteSVG />
           </Button>
-          <Tooltip placement="bottom">{t('Paste')}</Tooltip>
+          <Tooltip placement="bottom">{t('contents.actions.paste')}</Tooltip>
         </TooltipTrigger>
       ) : null,
     },
@@ -253,8 +253,8 @@ export function ContentsTable({
         // toast.error(
         //   <Toast
         //     error
-        //     title={t('Error')}
-        //     content={t('contentsMultipleItemsMovedError')}
+        //     title={t('contents.error')}
+        //     content={t('contents.rearrange.error')}
         //   />,
         // );
         return;
@@ -284,8 +284,8 @@ export function ContentsTable({
     return (
       <Modal isOpen={true}>
         <Dialog>
-          <Heading slot="title">{t('loading')}</Heading>
-          <ProgressBar aria-label={t('loading')} isIndeterminate />
+          <Heading slot="title">{t('contents.loading')}</Heading>
+          <ProgressBar aria-label={t('contents.loading')} isIndeterminate />
         </Dialog>
       </Modal>
     );
@@ -303,6 +303,7 @@ export function ContentsTable({
               includeRoot={true}
               root={breadcrumbs.root}
               items={breadcrumbs.items}
+              className="contents-breadcrumbs"
             />
             <h1 className="text-2xl font-bold">{title}</h1>
           </div>
@@ -323,13 +324,13 @@ export function ContentsTable({
           )}
           <TextField
             name="sortable_title"
-            placeholder={t('Filter…')}
+            placeholder={t('contents.actions.filter')}
             value={textFilter}
             onChange={onChangeTextFilter}
           />
           <VisuallyHidden>
             <span aria-live="polite">
-              {t('contentsNextNumberOfItems', { count: items.length })}
+              {t('contents.results', { count: items.length })}
             </span>
           </VisuallyHidden>
           {/* <TooltipTrigger>
@@ -347,7 +348,7 @@ export function ContentsTable({
         <section className="contents-table">
           {rows?.length<0> ? (
             <Table
-              aria-label={t('contentsNextContentsOf', { title })}
+              aria-label={t('contents.results.contents_of', { title })}
               columns={[...columns]}
               rows={rows}
               selectionMode={!isMobileScreenSize ? 'multiple' : undefined}
@@ -364,7 +365,7 @@ export function ContentsTable({
                       className="react-aria-Tooltip tooltip"
                       placement="bottom"
                     >
-                      {t('Rearrange items by…')}
+                      {t('contents.rearrange.by')}
                     </Tooltip>
                   </TooltipTrigger>
                   <RearrangePopover
@@ -378,7 +379,9 @@ export function ContentsTable({
             />
           ) : (
             <div className="empty-state">
-              <div className="text-1xl text-center">{t('No items found')}</div>
+              <div className="text-1xl text-center">
+                {t('contents.results.no_results')}
+              </div>
             </div>
           )}
         </section>

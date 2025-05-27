@@ -1,0 +1,57 @@
+{
+  "contents": {
+    "loading": "Caricamento...",
+    "results": {
+      "number": "{count} elementi",
+      "contents_of": "Contenuti di {title}",
+      "no_results": "Nessun elemento trovato"
+    },
+    "actions": {
+      "actions": "Azioni",
+      "upload": "Carica",
+      "rename": "Rinomina",
+      "state": "Cambia stato",
+      "tags": "Etichette",
+      "properties": "Proprietà",
+      "cut": "Taglia",
+      "copy": "Copia",
+      "paste": "Incolla",
+      "delete": "Elimina",
+      "filter": "Filtra…",
+      "edit": "Modifica",
+      "view": "Vedi",
+      "move_to_top_folder": "Sposta in cima alla cartella",
+      "move_to_bottom_folder": "Sposta in fondo alla cartella"
+    },
+    "item": {
+      "expired": "Scaduto",
+      "scheduled": "Pianificato",
+      "more_options": "Altre opzioni"
+    },
+    "indexes": {
+      "select_columns": "Seleziona le colonne da visualizzare",
+      "boolean": {
+        "yes": "Sì",
+        "no": "No"
+      },
+      "review_state": {
+        "published": "Pubblicato",
+        "private": "Privato",
+        "pending": "In attesa di revisione",
+        "intranet": "Intranet",
+        "draft": "In bozza",
+        "none": "Nessuno",
+        "no_workflow_state": "Nessun stato di workflow"
+      },
+      "date": { "none": "" }
+    },
+    "error": "Error",
+    "rearrange": {
+      "error": "Errore durante la riposizione degli elementi",
+      "by": "Riordina gli elementi per…",
+      "asc": "Crescente",
+      "desc": "Decrescente",
+      "pickOrder": "Riposiziona {index}"
+    }
+  }
+}

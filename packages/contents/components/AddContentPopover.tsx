@@ -15,10 +15,10 @@ export const AddContentPopover = ({ path, addableTypes }: Props) => {
   // const page = addableTypes.find((type) => type.id === 'Document');
 
   return (
-    <Popover className="react-aria-Popover add-content-popover scroll">
-      <ul className="add-content-list">
+    <Popover className="react-aria-Popover add-content-popover">
+      <ul className="popover-list">
         {addableTypes.map((type) => (
-          <li key={type.id} className="add-content-list-item">
+          <li key={type.id} className="popover-list-item">
             <Link href={`${path}/add?type=${encodeURIComponent(type.id)}`}>
               {type.title}
               <ChevronrightSVG />

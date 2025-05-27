@@ -21,12 +21,15 @@ export const TableIndexesPopover = ({ indexes, onSelectIndex }: Props) => {
   const { t } = useTranslation();
 
   return (
-    <Popover className="react-aria-Popover table-indexes-popover scroll">
-      <ul className="table-indexes-list">
+    <Popover className="react-aria-Popover table-indexes-popover">
+      <div className="popover-label">
+        {t('contents.indexes.select_columns')}
+      </div>
+      <ul className="popover-list">
         {indexes.order.map((index) => {
           if (index === 'sortable_title') return null;
           return (
-            <li key={index} className="table-indexes-list-item">
+            <li key={index} className="popover-list-item">
               <Checkbox
                 value={index}
                 isSelected={indexes.values[index].selected}

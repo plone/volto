@@ -2,7 +2,8 @@
 @import './theme.css';
 
 /* Components */
-@import './TextField.css';
+@import './Popover.css';
 @import './Select.css';
 @import './Table.css';
-@import './Popover.css';
+@import './TextField.css';
+@import './Tooltip.css';

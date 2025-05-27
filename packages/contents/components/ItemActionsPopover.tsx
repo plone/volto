@@ -35,49 +35,49 @@ export function ItemActionsPopover({
     <Popover
       {...popoverProps}
       className="react-aria-Popover item-actions-popover"
-      dialogAriaLabel={t('Actions')}
+      dialogAriaLabel={t('contents.actions.actions')}
     >
-      <ul className="item-actions-list">
-        <li className="item-actions-list-item edit">
+      <ul className="popover-list">
+        <li className="popover-list-item edit">
           <Link href={editLink}>
             <EditIcon />
-            {t('Edit')}
+            {t('contents.actions.edit')}
           </Link>
         </li>
-        <li className="item-actions-list-item view">
+        <li className="popover-list-item view">
           <Link href={viewLink}>
             <EyeIcon />
-            {t('View')}
+            {t('contents.actions.view')}
           </Link>
         </li>
-        <li className="item-actions-list-item move-to-top">
+        <li className="popover-list-item move-to-top">
           <Button onPress={onMoveToTop} className="react-aria-Link">
             <RowbeforeIcon />
-            {t('Move to top of folder')}
+            {t('contents.actions.move_to_top_folder')}
           </Button>
         </li>
-        <li className="item-actions-list-item move-to-bottom">
+        <li className="popover-list-item move-to-bottom">
           <Button onPress={onMoveToBottom} className="react-aria-Link">
             <RowafterIcon />
-            {t('Move to bottom of folder')}
+            {t('contents.actions.move_to_bottom_folder')}
           </Button>
         </li>
-        <li className="item-actions-list-item cut">
+        <li className="popover-list-item cut">
           <Button onPress={onCut} className="react-aria-Link">
             <CutIcon />
-            {t('Cut')}
+            {t('contents.actions.cut')}
           </Button>
         </li>
-        <li className="item-actions-list-item copy">
+        <li className="popover-list-item copy">
           <Button onPress={onCopy} className="react-aria-Link">
             <CopyIcon />
-            {t('Copy')}
+            {t('contents.actions.copy')}
           </Button>
         </li>
-        <li className="item-actions-list-item delete">
+        <li className="popover-list-item delete">
           <Button onPress={onDelete} className="react-aria-Link">
             <BinIcon />
-            {t('Delete')}
+            {t('contents.actions.delete')}
           </Button>
         </li>
       </ul>
