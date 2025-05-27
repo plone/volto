@@ -34,7 +34,7 @@ export function ItemActionsPopover({
   return (
     <Popover
       {...popoverProps}
-      className="react-aria-Popover item-actions-popover scroll"
+      className="react-aria-Popover item-actions-popover"
       dialogAriaLabel={t('Actions')}
     >
       <ul className="item-actions-list">

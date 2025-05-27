@@ -1,4 +1,5 @@
 import React, { type ComponentProps } from 'react';
+import '@plone/components/dist/basic.css';
 import '@plone/components/dist/quanta.css';
 import './Contents.css';
 // import type { ActionsResponse } from '@plone/types';

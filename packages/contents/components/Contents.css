@@ -18,6 +18,10 @@
     gap: 1rem;
   }
 
+  .topbar input {
+    color: var(--quanta-sapphire);
+  }
+
   .react-aria-Breadcrumbs .react-aria-Link {
     font-size: 0.89rem;
   }
@@ -93,7 +97,6 @@
 
   .contents-actions {
     margin-inline-start: auto;
-    flex: 1 0 auto;
   }
 
   .contents-action-trigger {
@@ -127,10 +130,6 @@ body.view-contentsview {
     background-color: var(--quanta-denim);
     color: var(--quanta-air);
     line-height: 1.5;
-  }
-
-  .react-aria-Popover.scroll {
-    overflow: auto;
   }
 
   .react-aria-Popover .label {
