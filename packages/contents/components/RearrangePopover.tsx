@@ -78,7 +78,7 @@ export function RearrangePopover({
                   {({ hasSubmenu }) => (
                     <>
                       {item.name}
-                      {hasSubmenu && <ChevronrightIcon />}
+                      {hasSubmenu && <ChevronrightIcon size="xs" />}
                     </>
                   )}
                 </MenuItem>
@@ -86,6 +86,7 @@ export function RearrangePopover({
                   dialogAriaLabel={t('contents.rearrange.pickOrder', {
                     index: item.name,
                   })}
+                  className="react-aria-Popover rearrange-popover"
                 >
                   <Menu
                     items={item.children}

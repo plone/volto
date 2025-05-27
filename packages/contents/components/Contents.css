@@ -202,6 +202,7 @@
 .rearrange-popover {
   .react-aria-MenuItem {
     font-size: 1rem;
+    border-radius: 0;
   }
 
   .rearrange-menu-item {
@@ -212,13 +213,14 @@
       flex-shrink: 0;
     }
 
-    &.open {
+    /* &.open {
       background-color: var(--highlight-pressed);
-    }
+    } */
 
-    &.focused {
-      background-color: var(--highlight-background);
-      color: var(--highlight-foreground);
+    &.focused,
+    &.open {
+      background-color: var(--quanta-smoke);
+      color: var(--text-color);
     }
   }
 }
