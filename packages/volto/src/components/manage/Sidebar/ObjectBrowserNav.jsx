@@ -138,12 +138,14 @@ const ObjectBrowserNav = ({
                   trigger={
                     <span>
                       {item['@type'] === 'Image' ||
-                      item.hasPreviewImage === true ||
+                      item.hasPreviewImage ||
                       item?.image_scales?.image?.length > 0 ? (
                         <Image
                           item={item}
                           imageField="image"
                           className="sidebar-image-icon"
+                          sizes="24px"
+                          alt=""
                         />
                       ) : (
                         <Icon
