@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Image } from './Image';
 import type { ImageProps } from './Image';
 
-const meta: Meta<typeof Image> = {
+const meta: Meta = {
   title: 'Basic/Image',
   component: Image,
   parameters: {
@@ -43,7 +43,7 @@ const meta: Meta<typeof Image> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj;
 
 // Basic image with src prop
 export const BasicImage: Story = {
@@ -75,33 +75,39 @@ export const ResponsiveImage: Story = {
 
 // Mock item data for Plone content
 const mockPloneItem = {
-  '@id': '/content/sample-page',
-  image_field: 'image',
-  image: {
-    download: 'image.jpg',
-    width: 800,
-    height: 600,
-    'content-type': 'image/jpeg',
-    scales: {
-      large: {
-        download: 'image-large.jpg',
-        width: 768,
-        height: 576,
-      },
-      medium: {
-        download: 'image-medium.jpg',
-        width: 400,
-        height: 300,
-      },
-      small: {
-        download: 'image-small.jpg',
-        width: 200,
-        height: 150,
-      },
-    },
-  },
-};
+  '@id': 'https://picsum.photos',
+  image_field: 'image', // The default image field in Plone content types
+  image_scales: {
+    image: [
+      {
+        // This is the primary "download" URL for the image, often a larger scale
+        download: 'https://picsum.photos/128/85', // Main image: 600x400 pixels
+        width: 600,
+        height: 400,
+        'content-type': 'image/jpeg',
+        scales: {
+          // Nested scales, like a thumbnail
 
+          // You can add more scales here, e.g., 'preview', 'mini'
+          preview: {
+            download: '400/300', // Preview: 400x300 pixels
+            width: 400,
+            height: 300,
+          },
+          thumb: {
+            download: '128/85', // Thumbnail: 128x85 pixels
+            width: 128,
+            height: 85,
+          },
+        },
+      },
+    ],
+  },
+  // Add other properties a real Plone item might have
+  title: 'Plone Image from Picsum',
+  description:
+    'An example image for Storybook using Lorem Picsum placeholders.',
+};
 // Image with Plone item
 export const PloneImage: Story = {
   args: {
@@ -120,17 +126,38 @@ export const PloneImage: Story = {
 // Image with custom image field
 export const CustomImageField: Story = {
   args: {
-    item: {
-      '@id': '/content/custom-page',
-      hero_image: {
-        download: 'hero.jpg',
-        width: 1200,
-        height: 400,
-        'content-type': 'image/jpeg',
-      },
+    '@id': 'https://picsum.photos',
+    image_field: 'image', // The default image field in Plone content types
+    image_scales: {
+      image: [
+        {
+          // This is the primary "download" URL for the image, often a larger scale
+          download: 'https://picsum.photos/128/85', // Main image: 600x400 pixels
+          width: 600,
+          height: 400,
+          'content-type': 'image/jpeg',
+          scales: {
+            // Nested scales, like a thumbnail
+
+            // You can add more scales here, e.g., 'preview', 'mini'
+            preview: {
+              download: '400/300', // Preview: 400x300 pixels
+              width: 400,
+              height: 300,
+            },
+            thumb: {
+              download: '128/85', // Thumbnail: 128x85 pixels
+              width: 128,
+              height: 85,
+            },
+          },
+        },
+      ],
     },
-    imageField: 'hero_image',
-    alt: 'Hero image from custom field',
+    // Add other properties a real Plone item might have
+    title: 'Plone Image from Picsum',
+    description:
+      'An example image for Storybook using Lorem Picsum placeholders.',
   },
 };
 
@@ -138,18 +165,18 @@ export const CustomImageField: Story = {
 export const BrainImage: Story = {
   args: {
     item: {
-      '@id': '/content/brain-page',
+      '@id': 'https://picsum.photos',
       image_field: 'preview_image',
       image_scales: {
         preview_image: [
           {
-            download: 'preview.jpg',
+            download: '300/200',
             width: 600,
             height: 400,
             'content-type': 'image/jpeg',
             scales: {
               thumb: {
-                download: 'preview-thumb.jpg',
+                download: '300/200',
                 width: 128,
                 height: 85,
               },
@@ -165,16 +192,8 @@ export const BrainImage: Story = {
 // SVG image
 export const SvgImage: Story = {
   args: {
-    item: {
-      '@id': '/content/svg-page',
-      image: {
-        download: 'icon.svg',
-        width: 100,
-        height: 100,
-        'content-type': 'image/svg+xml',
-      },
-    },
     alt: 'SVG icon',
+    src: 'https://github.com/plone/volto/raw/main/logos/volto-colorful.svg',
   },
 };
 
@@ -211,7 +230,8 @@ export const NoImage: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'When neither item nor src is provided, the component returns null.',
+        story:
+          'When neither item nor src is provided, the component returns null.',
       },
     },
   },
