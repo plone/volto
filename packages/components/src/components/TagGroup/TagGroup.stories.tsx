@@ -31,3 +31,21 @@ export const Default: Story = {
     selectionMode: 'single',
   },
 };
+
+const items = [
+  { id: 'Chocolate', name: 'Chocolate' },
+  { id: 'Mint', name: 'Mint' },
+  { id: 'Strawberry', name: 'Strawberry' },
+  { id: 'Vanilla', name: 'Vanilla' },
+];
+export const ItemsAsList: Story = {
+  render: (args: any) => (
+    <TagGroup {...args} items={items}>
+      {(item: (typeof items)[number]) => <Tag key={item.id}>{item.name}</Tag>}
+    </TagGroup>
+  ),
+  args: {
+    label: 'Ice cream flavor',
+    selectionMode: 'single',
+  },
+};
