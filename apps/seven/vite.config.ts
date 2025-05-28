@@ -4,6 +4,7 @@ import { defineConfig, PluginOption } from 'vite';
 import { reactRouterDevTools } from 'react-router-devtools';
 import { PloneRegistryVitePlugin } from '@plone/registry/vite-plugin';
 import { PloneSVGRVitePlugin } from '@plone/components/vite-plugin-svgr';
+import babel from 'vite-plugin-babel';
 import tailwindcss from '@tailwindcss/vite';
 
 const prodServerName =
@@ -18,6 +19,13 @@ export default defineConfig({
     tailwindcss(),
     reactRouterDevTools(),
     reactRouter(),
+    babel({
+      filter: /app\/.*\.tsx?$/,
+      babelConfig: {
+        presets: ['@babel/preset-typescript'],
+        plugins: ['babel-plugin-react-compiler'],
+      },
+    }),
     tsconfigPaths(),
   ],
   ssr: {

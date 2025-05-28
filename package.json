@@ -3,8 +3,8 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "build:deps": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers --filter @plone/react-router build",
-    "build:all": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers --filter @plone/react-router build",
+    "build:deps": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers --filter @plone/react-router --filter @plone/helpers build",
+    "build:all": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers --filter @plone/react-router --filter @plone/helpers build",
     "build:registry": "pnpm --filter @plone/registry run build",
     "build:components": "pnpm --filter @plone/components run build",
     "build:client": "pnpm --filter @plone/client run build",
@@ -42,9 +42,9 @@
   "packageManager": "pnpm@10.10.0",
   "pnpm": {
     "overrides": {
-      "react": "^19.0.0",
-      "react-dom": "^19.0.0",
-      "jotai": "^2.12.3"
+      "jotai": "^2.12.5",
+      "react": "^19.1.0",
+      "react-dom": "^19.1.0"
     },
     "onlyBuiltDependencies": [
       "@swc/core",

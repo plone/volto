@@ -21,9 +21,9 @@ const config: StorybookConfig = {
       url: 'https://plone-components.readthedocs.io/latest/',
       expanded: true, // Optional, true by default,
     },
-    slots: {
-      title: '@plone/slots',
-      url: 'https://plone-slots.readthedocs.io/latest/',
+    layout: {
+      title: '@plone/layout',
+      url: 'https://plone-layout.readthedocs.io/latest/',
     },
     // publicui: {
     //   title: '@plone/publicui',

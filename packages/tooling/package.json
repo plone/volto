@@ -11,7 +11,7 @@
     "storybook:blocks": "storybook dev -p 6002 -c ../blocks/.storybook",
     "storybook:cmsui": "storybook dev -p 6003 -c ../cmsui/.storybook",
     "storybook:publicui": "storybook dev -p 6004 -c ../publicui/.storybook",
-    "storybook:slots": "storybook dev -p 6005 -c ../slots/.storybook",
+    "storybook:layout": "storybook dev -p 6005 -c ../layout/.storybook",
     "storybook:main": "storybook dev -p 6060 -c .storybook",
     "build-storybook": "storybook build"
   },

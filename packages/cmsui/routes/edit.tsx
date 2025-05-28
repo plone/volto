@@ -9,23 +9,10 @@ import {
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 import { requireAuthCookie } from './auth/auth';
-import { mergeForm, useTransform } from '@tanstack/react-form';
 import type { DeepKeys } from '@tanstack/react-form';
-
-import {
-  ServerValidateError,
-  createServerValidate,
-  formOptions,
-  initialFormState,
-} from '@tanstack/react-form/remix';
-import { atom, useAtom, useSetAtom } from 'jotai';
-import { focusAtom } from 'jotai-optics';
-import { useHydrateAtoms } from 'jotai/utils';
-import { useCallback, useMemo, useRef } from 'react';
-import type { PrimitiveAtom, WritableAtom } from 'jotai';
-import type { ReactNode } from 'react';
+import { InitAtoms } from '@plone/helpers';
+import { atom } from 'jotai';
 import type { Content } from '@plone/types';
-import type { OpticFor } from 'optics-ts';
 import { Plug } from '../components/Pluggable';
 import Checkbox from '@plone/components/icons/checkbox.svg?react';
 
@@ -86,62 +73,7 @@ export async function action({ params, request }: ActionFunctionArgs) {
   return redirect(path);
 }
 
-const formAtom = atom<Content>();
-
-const HydrateAtoms = ({
-  atomValues,
-  children,
-}: {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  atomValues: Iterable<
-    readonly [WritableAtom<unknown, [any], unknown>, unknown]
-  >;
-  children: ReactNode;
-}) => {
-  // initialising on state with prop on render here
-  useHydrateAtoms(new Map(atomValues));
-  return children;
-};
-
-const useTitleAtom = ({ formAtom, field }) => {
-  return useMemo(() => {
-    return focusAtom(formAtom, (optic) => optic.prop(field));
-  }, [formAtom, field]);
-};
-
-const ConsoleLog = ({ atom }: { atom: PrimitiveAtom<Content> }) => {
-  const titleAtom = useTitleAtom({ formAtom: atom, field: 'title' });
-  const [title] = useAtom(titleAtom);
-  const [formData, setFormData] = useAtom(atom);
-
-  return (
-    <div className="mt-4 w-[900px]">
-      <pre>
-        Global form data main JOTAI atom{' '}
-        {JSON.stringify(formData.title, null, 2)}
-      </pre>
-      <pre>
-        Focused atom GETTER on title key {JSON.stringify(title, null, 2)}
-      </pre>
-    </div>
-  );
-};
-
-export function useFocusAtom<T>({
-  anAtom,
-  field,
-}: {
-  anAtom: PrimitiveAtom<T>;
-  field: DeepKeys<T>;
-}) {
-  return useSetAtom(
-    focusAtom(
-      anAtom,
-      // @ts-ignore
-      useCallback((optic: OpticFor<T>) => optic.prop(field), [field]),
-    ),
-  );
-}
+const formAtom = atom<Content>({} as Content);
 
 export default function Edit() {
   const { content, schema } = useLoaderData<typeof loader>();
@@ -151,13 +83,14 @@ export default function Edit() {
   const form = useAppForm({
     defaultValues: content,
     onSubmit: async ({ value }) => {
-      console.log('submit', value);
-      // fetcher.submit(value, {
-      //   method: 'post',
-      //   encType: 'application/json',
-      // });
+      // @ts-expect-error: For some reason, the type of value is not inferred correctly
+      // as `useLoaderData` turns every "unknown" type into `undefined`
+      fetcher.submit(value, {
+        method: 'post',
+        encType: 'application/json',
+      });
 
-      // return redirect(`/${content['@id']}`);
+      return redirect(`/${content['@id']}`);
     },
   });
 
@@ -168,7 +101,7 @@ export default function Edit() {
   const initialValue = blocksToPlateNew(content);
 
   return (
-    <HydrateAtoms atomValues={[[formAtom, content]]}>
+    <InitAtoms atomValues={[[formAtom, content]]}>
       <main className="mx-4 mt-8 flex h-screen flex-1 flex-col">
         <div className="embla">
           <div className="embla__viewport" ref={emblaRef}>
@@ -178,15 +111,7 @@ export default function Edit() {
                   <h1 className="mb-4 text-2xl font-bold">
                     {content.title} - {t('cmsui.edit')}
                   </h1>
-                  <form
-                  // onSubmit={(e) => {
-                  //   debugger;
-                  //   e.preventDefault();
-                  //   e.stopPropagation();
-                  //   form.handleSubmit();
-                  // }}
-                  // ref={formRef}
-                  >
+                  <form>
                     {schema.fieldsets.map((fieldset) => (
                       <Accordion
                         defaultExpandedKeys={['default']}
@@ -262,9 +187,9 @@ export default function Edit() {
                       </Button>
                     </div>
                   </Plug>
-                  <div className="mt-4">
+                  {/* <div className="mt-4">
                     <ConsoleLog atom={formAtom} />
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="embla__slide">
@@ -318,6 +243,6 @@ export default function Edit() {
           </div>
         </Plug>
       </main>
-    </HydrateAtoms>
+    </InitAtoms>
   );
 }

@@ -6,15 +6,15 @@ describe('relativeToAbsoluteImportPlugin', () => {
   let plugin: any;
 
   const packages = {
-    '@plone/slots': {
-      name: '@plone/slots',
+    '@plone/layout': {
+      name: '@plone/layout',
       version: '1.0.0-alpha.1',
       isPublishedPackage: true,
       isRegisteredAddon: true,
-      modulePath: '/Development/plone/seven-add-on/core/packages/slots',
+      modulePath: '/Development/plone/seven-add-on/core/packages/layout',
       packageJson:
-        '/Development/plone/seven-add-on/core/packages/slots/package.json',
-      basePath: '/Development/plone/seven-add-on/core/packages/slots',
+        '/Development/plone/seven-add-on/core/packages/layout/package.json',
+      basePath: '/Development/plone/seven-add-on/core/packages/layout',
       addons: [],
     },
   };
@@ -27,11 +27,11 @@ describe('relativeToAbsoluteImportPlugin', () => {
   it('should handle: `./`', async () => {
     plugin = relativeToAbsoluteImportPlugin({ packages });
     const code = `import something from './module';`;
-    const id = '/Development/plone/seven-add-on/core/packages/slots/index.ts';
+    const id = '/Development/plone/seven-add-on/core/packages/layout/index.ts';
     const result = await plugin.transform(code, id);
 
     expect(result.code).toContain(
-      `import something from '@plone/slots/module';`,
+      `import something from '@plone/layout/module';`,
     );
   });
 
@@ -39,11 +39,11 @@ describe('relativeToAbsoluteImportPlugin', () => {
     plugin = relativeToAbsoluteImportPlugin({ packages });
     const code = `import something from '../config';`;
     const id =
-      '/Development/plone/seven-add-on/core/packages/slots/components/App.tsx';
+      '/Development/plone/seven-add-on/core/packages/layout/components/App.tsx';
     const result = await plugin.transform(code, id);
 
     expect(result.code).toContain(
-      `import something from '@plone/slots/config';`,
+      `import something from '@plone/layout/config';`,
     );
   });
 
@@ -51,11 +51,11 @@ describe('relativeToAbsoluteImportPlugin', () => {
     plugin = relativeToAbsoluteImportPlugin({ packages });
     const code = `import something from '.';`;
     const id =
-      '/Development/plone/seven-add-on/core/packages/slots/components/App.tsx';
+      '/Development/plone/seven-add-on/core/packages/layout/components/App.tsx';
     const result = await plugin.transform(code, id);
 
     expect(result.code).toContain(
-      `import something from '@plone/slots/components';`,
+      `import something from '@plone/layout/components';`,
     );
   });
 
@@ -63,15 +63,15 @@ describe('relativeToAbsoluteImportPlugin', () => {
     plugin = relativeToAbsoluteImportPlugin({ packages });
     const code = `import something from '..';`;
     const id =
-      '/Development/plone/seven-add-on/core/packages/slots/components/App.tsx';
+      '/Development/plone/seven-add-on/core/packages/layout/components/App.tsx';
     const result = await plugin.transform(code, id);
 
-    expect(result.code).toContain(`import something from '@plone/slots/';`);
+    expect(result.code).toContain(`import something from '@plone/layout/';`);
   });
 
   it('should not transform absolute imports', () => {
     const code = `import something from '@plone/types';`;
-    const id = '/Development/plone/seven-add-on/core/packages/slots/index.ts';
+    const id = '/Development/plone/seven-add-on/core/packages/layout/index.ts';
     const result = plugin.transform(code, id);
 
     expect(result.code).toBeUndefined();

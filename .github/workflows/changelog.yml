@@ -48,8 +48,8 @@ jobs:
               - 'packages/scripts/**'
             blocks:
               - 'packages/blocks/**'
-            slots:
-              - 'packages/slots/**'
+            layout:
+              - 'packages/layout/**'
             theming:
               - 'packages/theming/**'
             wrongNews:
@@ -151,11 +151,11 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
-      - name: Slots changelog check
-        if: steps.filter.outputs.slots == 'true'
+      - name: Layout changelog check
+        if: steps.filter.outputs.layout == 'true'
         run: |
           git fetch --no-tags origin seven
-          towncrier check --compare-with origin/seven --dir packages/slots
+          towncrier check --compare-with origin/seven --dir packages/layout
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 

@@ -25,14 +25,14 @@ To shadow a component, perform the following tasks.
 
 To shadow components, you must follow a project structure pattern.
 
-Assume the component you want to shadow is located at `node_modules/@plone/slots/components/Logo/Logo.svg`.
+Assume the component you want to shadow is located at `node_modules/@plone/layout/components/Logo/Logo.svg`.
 
 You'll need to replicate this structure under {file}`customizations` as shown.
 
 ```
 customizations/
 └── @plone/
-    └── slots/
+    └── layout/
         └── components/
             └── Logo/
                 └── Logo.svg

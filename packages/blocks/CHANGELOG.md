@@ -8,6 +8,23 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.4 (2025-05-24)
+
+### Feature
+
+- Make Slate text block links RAC links with '@plone/components/tailwind' @ksuess [#7087](https://github.com/plone/volto/pull/7087)
+
+### Bugfix
+
+- Fix image block so it goes through the ++api++ routing. @sneridagh [#6773](https://github.com/plone/volto/pull/6773)
+- Fix image URL generation. @sneridagh [#6865](https://github.com/plone/volto/pull/6865)
+- Adapt the images and teaser URL to the new images middleware. @sneridagh [#6908](https://github.com/plone/volto/pull/6908)
+
+### Internal
+
+- Use ESlint 9, fix code. @sneridagh [#6775](https://github.com/plone/volto/pull/6775)
+- Added vitest config to not fail if no test is present. @sneridagh [#6916](https://github.com/plone/volto/pull/6916)
+
 ## 1.0.0-alpha.3 (2025-02-08)
 
 ### Internal

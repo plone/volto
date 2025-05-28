@@ -6,7 +6,7 @@ import { SettingsProvider } from '@/components/editor/settings';
 import { useRouteLoaderData } from 'react-router';
 import type { BlocksData } from '@plone/types';
 import { atom, useAtom } from 'jotai';
-import { HydrateAtoms } from '@plone/helpers';
+import { InitAtoms } from '@plone/helpers';
 import { blocksToPlate as blocksToPlateNew } from '../helpers/conversions';
 
 function blocksToPlate({
@@ -58,7 +58,7 @@ export default function Page() {
   const initialValue = blocksToPlateNew(content);
 
   return (
-    <HydrateAtoms atomValues={[[editorAtom, initialValue]]}>
+    <InitAtoms atomValues={[[editorAtom, initialValue]]}>
       <div className="h-[90%] w-full" data-registry="plate">
         <SettingsProvider>
           <PlateEditor value={initialValue} />
@@ -66,6 +66,6 @@ export default function Page() {
         <ConsoleLog />
         <Toaster />
       </div>
-    </HydrateAtoms>
+    </InitAtoms>
   );
 }

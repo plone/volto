@@ -77,8 +77,8 @@ test: ## Run Seven unit tests
 
 .PHONY: clean
 clean: ## Clean development environment
-	rm -rf node_modules
-	find ./packages -name node_modules -not -path "./packages/volto/__tests__/*" -exec rm -rf {} \;
+	find . -name "node_modules" -type d -prune -not -path "./packages/**/__tests__/*" -exec rm -rf {} \;
+
 
 .PHONY: install
 install: ## Set up development environment
