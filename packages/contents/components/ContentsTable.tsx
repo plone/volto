@@ -273,11 +273,13 @@ export function ContentsTable({
     () =>
       debounce((text: string) => {
         navigate(`${pathname}?SearchableText=${text}`);
-      }, 300),
+      }, 500),
     [navigate, pathname],
   );
   useEffect(() => {
-    debouncedSearchableText(searchInput);
+    if ((searchableText ?? '') != searchInput) {
+      debouncedSearchableText(searchInput);
+    }
   }, [searchInput]);
 
   if (false)

@@ -34,21 +34,25 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
     new URLSearchParams(new URL(request.url).search).get('SearchableText') ||
     null;
 
+  let searchQuery = {
+    path: {
+      query: path,
+      depth: 1,
+    },
+    sort_on: 'getObjPositionInParent',
+    sort_order: 'ascending',
+    metadata_fields: '_all',
+    show_inactive: true,
+    b_size: 10,
+  };
+  if (searchableText?.length > 0) {
+    searchQuery.SearchableText = searchableText + '**';
+  }
+
   const search = flattenToAppURL(
     (
       await cli.search({
-        query: {
-          path: {
-            query: path,
-            depth: 1,
-          },
-          SearchableText: searchableText ? searchableText + '**' : undefined,
-          sort_on: 'getObjPositionInParent',
-          sort_order: 'ascending',
-          metadata_fields: '_all',
-          show_inactive: true,
-          b_size: 100000000,
-        },
+        query: searchQuery,
       })
     ).data,
   );
