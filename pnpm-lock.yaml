@@ -95,6 +95,9 @@ importers:
       '@plone/contents':
         specifier: workspace:*
         version: link:../../packages/contents
+      '@plone/helpers':
+        specifier: workspace:*
+        version: link:../../packages/helpers
       '@plone/layout':
         specifier: workspace:*
         version: link:../../packages/layout
