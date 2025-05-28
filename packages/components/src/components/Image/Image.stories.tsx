@@ -129,7 +129,7 @@ export const CustomImageField: Story = {
     '@id': 'https://picsum.photos',
     image_field: 'image', // The default image field in Plone content types
     image_scales: {
-      image: [
+      hero: [
         {
           // This is the primary "download" URL for the image, often a larger scale
           download: 'https://picsum.photos/128/85', // Main image: 600x400 pixels
@@ -156,6 +156,7 @@ export const CustomImageField: Story = {
     },
     // Add other properties a real Plone item might have
     title: 'Plone Image from Picsum',
+    imageField: 'hero',
     description:
       'An example image for Storybook using Lorem Picsum placeholders.',
   },
