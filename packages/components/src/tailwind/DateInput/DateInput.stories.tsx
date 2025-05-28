@@ -180,6 +180,13 @@ const StatesExample = () => {
         <Description>This field is required</Description>
       </DateField>
 
+      {/* Invalid Field */}
+      <DateField isInvalid>
+        <Label>Invalid Date</Label>
+        <DateInput />
+        <Description>This field is invalid</Description>
+      </DateField>
+
       {/* Disabled Field */}
       <DateField isDisabled defaultValue={new CalendarDate(2024, 5, 17)}>
         <Label>Disabled Date</Label>
@@ -206,6 +213,12 @@ const StatesExample = () => {
         <Description>Only future dates are allowed</Description>
         {error && <FieldError>{error}</FieldError>}
       </DateField>
+
+      {value && !error && (
+        <div className="text-sm text-green-600">
+          Selected date: {value.toString()} ✓
+        </div>
+      )}
     </div>
   );
 };
@@ -220,7 +233,7 @@ const FormExample = () => {
     <Form>
       <DateField name="birth-date" isRequired className="flex flex-col gap-4">
         <Label>Birth Date</Label>
-        <DateInput className="rounded-lg border-2 p-2" />
+        <DateInput />
         <Description>Enter your date of birth</Description>
         <FieldError />
       </DateField>

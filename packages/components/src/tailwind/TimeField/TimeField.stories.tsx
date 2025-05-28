@@ -81,3 +81,88 @@ export const Controlled: Story = {
     description: 'Value managed by parent component',
   },
 };
+
+// States Example
+const StatesExample = () => {
+  const [value, setValue] = useState<Time | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleChange = (newValue: Time | null) => {
+    setValue(newValue);
+
+    // Custom validation - only allow business hours (9 AM to 5 PM)
+    if (newValue) {
+      const totalMinutes = newValue.hour * 60 + newValue.minute;
+      const businessStart = 9 * 60; // 9:00 AM
+      const businessEnd = 17 * 60; // 5:00 PM
+
+      if (totalMinutes < businessStart || totalMinutes >= businessEnd) {
+        setError('Please select a time during business hours (9 AM - 5 PM)');
+      } else {
+        setError(null);
+      }
+    } else {
+      setError(null);
+    }
+  };
+
+  return (
+    <div className="flex flex-col gap-6">
+      {/* Invalid Field */}
+      <TimeField
+        name="invalid-time"
+        label="Invalid Time"
+        description="This field is invalid"
+        isInvalid
+      />
+
+      {/* Required Field */}
+      <TimeField
+        name="required-time"
+        label="Required Time"
+        description="This field is required"
+        isRequired
+      />
+
+      {/* Disabled Field */}
+      <TimeField
+        name="disabled-time"
+        label="Disabled Time"
+        description="This field is disabled"
+        defaultValue={new Time(14, 30)}
+        isDisabled
+      />
+
+      {/* Read-only Field */}
+      <TimeField
+        name="readonly-time"
+        label="Read-only Time"
+        description="This field is read-only"
+        defaultValue={new Time(10, 15)}
+        isReadOnly
+      />
+
+      {/* Invalid Field with Custom Validation */}
+      <TimeField
+        name="business-hours"
+        label="Business Hours Only"
+        description="Only business hours (9 AM - 5 PM) are allowed"
+        value={value}
+        onChange={handleChange}
+        errorMessage={error || undefined}
+        isInvalid={!!error}
+        isRequired
+      />
+
+      {value && !error && (
+        <div className="text-sm text-green-600">
+          Selected time: {value.toString()} ✓
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const States: Story = {
+  render: StatesExample,
+};

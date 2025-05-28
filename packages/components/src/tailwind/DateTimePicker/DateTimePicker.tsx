@@ -31,7 +31,6 @@ function isDateOnly(granularity: Granularity) {
   return granularity === 'day';
 }
 
-// Utility functions for UTC <-> Local timezone conversion
 function utcStringToLocalDateValue(
   utcString: string | null,
   isDateOnly: boolean,
@@ -76,7 +75,6 @@ export function DateTimePicker({
   granularity = 'minute',
   ...props
 }: DateTimePickerProps) {
-  // Convert UTC string values to local DateValue for internal use
   const [internalValue, setInternalValue] = useState<DateValue | null>(() => {
     const initialValue = value ?? defaultValue ?? null;
     return utcStringToLocalDateValue(initialValue, isDateOnly(granularity));
@@ -160,7 +158,7 @@ export function DateTimePicker({
         {label && <Label>{label}</Label>}
         <div className="flex items-center gap-2">
           <FieldGroup className="w-auto min-w-[208px]">
-            <DateInput className="min-w-[150px] flex-1 px-2 py-1.5 text-sm" />
+            <DateInput className="min-w-[150px] flex-1 border-0 px-2 py-1.5 text-sm" />
             <Button
               variant="icon"
               className="mr-1 w-7 rounded-xs outline-offset-0"

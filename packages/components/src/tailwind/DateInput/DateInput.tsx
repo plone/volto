@@ -2,6 +2,7 @@ import React from 'react';
 import {
   DateInput as AriaDateInput,
   type DateInputProps as AriaDateInputProps,
+  composeRenderProps,
   DateSegment,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
@@ -21,17 +22,14 @@ const segmentStyles = tv({
     },
   },
 });
-
+// Review styles
 export function DateInput(props: Omit<AriaDateInputProps, 'children'>) {
   return (
     <AriaDateInput
-      className={(renderProps) =>
-        fieldGroupStyles({
-          ...renderProps,
-          class: 'block border-none px-2 py-1.5 text-sm',
-        })
-      }
       {...props}
+      className={composeRenderProps(props.className, (className, renderProps) =>
+        fieldGroupStyles({ ...renderProps, className }),
+      )}
     >
       {(segment) => <DateSegment segment={segment} className={segmentStyles} />}
     </AriaDateInput>
