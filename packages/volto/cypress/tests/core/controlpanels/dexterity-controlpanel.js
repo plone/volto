@@ -16,7 +16,9 @@ describe('Folder Contents Tests', () => {
     cy.get('textarea[id="field-description"]').type(
       'This is Page Content Type{enter}',
     );
-    cy.get('#field-filter_content_types').click().type('all{enter}');
+    cy.get('#field-filter_content_types input')
+      .first()
+      .type('all{enter}', { force: true });
     cy.get('button[id="toolbar-save"]').click();
     cy.visit('/controlpanel/dexterity-types');
 
