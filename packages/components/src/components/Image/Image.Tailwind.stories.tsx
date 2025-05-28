@@ -249,7 +249,7 @@ export const PloneImageStyled: Story = {
 // Dark mode image
 export const DarkModeImage: Story = {
   args: {
-    src: 'https://picsum.photos/400/300',
+    src: 'https://picsum.photos/1200/800',
     alt: 'Dark mode image',
     className:
       'w-full h-64 object-cover rounded-lg border border-gray-700 shadow-lg',
