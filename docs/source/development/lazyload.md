@@ -29,7 +29,7 @@ export const DatetimeWidget = loadable(() =>
 Then use `DatetimeWidget` as you'll do normally using a standard `import` statement.
 
 ```{tip}
-You can find the complete `@loadable/component` documentation here: https://loadable-components.com
+You can find the complete `@loadable/component` documentation here: https://loadable-components.com.
 ```
 
 ## Code splitting bundle analyzer
@@ -45,6 +45,7 @@ A browser will open with the bundle inspector.
 ## Lazy-loading libraries
 
 Lazy-loading libraries is not as straight-forward as with the React components.
+
 The API offered by `@loadable/component` is not very ergonomic and importing a library as lazy library introduces a lot of pain points in your code: you have to always check if the library is loaded, depending on multiple lazy libraries further complicates the code, etc.
 To alleviate this and to promote the use of lazy libraries everywhere, we have the `injectLazyLibs` HOC wrapper that can automatically inject lazy-loaded libraries as props to your components.
 To use it:
@@ -121,7 +122,7 @@ export default preloadLazyLibs('cms')(SomeComponent);
 Sometimes you'll find that it's difficult to get the lazy loaded libraries properly loaded in your Vitest tests.
 In that case, add this to the top of your test:
 
-```jsx
+```js
 vi.mock('@plone/volto/helpers/Loadable/Loadable');
 beforeAll(async () => {
   const { __setLoadables } = await import('@plone/volto/helpers/Loadable/Loadable');
