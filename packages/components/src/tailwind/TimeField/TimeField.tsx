@@ -5,7 +5,7 @@ import {
   type TimeValue,
   type ValidationResult,
 } from 'react-aria-components';
-import { DateInput } from '../DateField/DateField';
+import { DateInput } from '../DateInput/DateInput';
 import { Description, FieldError, Label } from '../Field/Field';
 
 export interface TimeFieldProps<T extends TimeValue>
@@ -24,7 +24,7 @@ export function TimeField<T extends TimeValue>({
   return (
     <AriaTimeField {...props}>
       <Label>{label}</Label>
-      <DateInput />
+      <DateInput className="flex-1 px-2 py-1.5 text-sm" />
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
     </AriaTimeField>
