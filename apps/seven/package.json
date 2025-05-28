@@ -21,6 +21,7 @@
     "@plone/client": "workspace:*",
     "@plone/cmsui": "workspace:*",
     "@plone/components": "workspace:*",
+    "@plone/editor": "workspace:*",
     "@plone/publicui": "workspace:*",
     "@plone/react-router": "workspace:*",
     "@plone/registry": "workspace:*",

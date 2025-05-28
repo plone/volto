@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { atom, useAtom } from 'jotai';
 import { tv } from 'tailwind-variants';
+import { Pluggable } from '../Pluggable';
 
 export const sidebarAtom = atom(true);
 
@@ -27,6 +28,7 @@ const Sidebar = () => {
       {!collapsed && (
         <Fragment>
           <h2 className="mt-4 text-center text-2xl">This is the sidebar</h2>
+          <Pluggable name="sidebar" />
         </Fragment>
       )}
     </div>

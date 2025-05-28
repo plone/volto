@@ -25,6 +25,7 @@ const addonPackages = [
   'packages/layout',
   'packages/theming',
   'packages/publicui',
+  'packages/editor',
   // Add more packages as needed
 ];
 
