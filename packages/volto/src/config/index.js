@@ -199,6 +199,7 @@ config.settings.apiExpanders = [
   {
     match: '',
     GET_CONTENT: ['breadcrumbs', 'actions', 'types', 'navroot', 'translations'],
+    // Note: translations is removed in the API middleware if the site is not multilingual.
   },
   {
     match: '',
