@@ -20,5 +20,11 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     title: 'Add an image',
+    mode: 'multiple',
+    root: '/',
+    items: [
+      { '@id': '/folder', title: 'Folder' },
+      { '@id': '/folder/page', title: 'Page' },
+    ],
   },
 };

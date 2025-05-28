@@ -20,7 +20,7 @@ export type ConfigData = {
   settings: SettingsConfig | Record<string, never>;
   blocks: BlocksConfig | Record<string, never>;
   views: ViewsConfig | Record<string, never>;
-  widgets: WidgetsConfig | Record<string, never>;
+  widgets: WidgetsConfig | {};
   addonReducers?: AddonReducersConfig;
   addonRoutes?: AddonRoutesConfig;
   routes?: Array<ReactRouterRouteEntry>;
@@ -525,6 +525,19 @@ class Config {
     const route = this._data.routes || [];
     route.push(options);
     this._data.routes = route;
+  }
+  registerWidget<K extends keyof WidgetsConfig>(options: {
+    key: K;
+    widget: WidgetsConfig[K];
+  }) {
+    const { key, widget } = options;
+    const widgets = {
+      ...(this.widgets ?? {}),
+      [key]: widget,
+    };
+    console.log(widgets);
+    // TODO: find a better way to type this maybe
+    this._data.widgets = widgets;
   }
 }
 

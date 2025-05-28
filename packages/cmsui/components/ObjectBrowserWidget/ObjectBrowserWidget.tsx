@@ -5,9 +5,12 @@ import { Button } from '@plone/components/tailwind';
 import { sidebarAtom } from '../Sidebar/Sidebar';
 import { useSetAtom } from 'jotai';
 
-import { ObjectBrowserWidgetBody } from './ObjectBrowserWidgetBody';
+import {
+  ObjectBrowserWidgetBody,
+  type ObjectBrowserWidgetBodyProps,
+} from './ObjectBrowserWidgetBody';
 
-interface ObjectBrowserWidgetProps {
+interface ObjectBrowserWidgetProps extends ObjectBrowserWidgetBodyProps {
   title: string;
   context?: (string & {}) | '/';
 }
@@ -15,6 +18,7 @@ interface ObjectBrowserWidgetProps {
 export function ObjectBrowserWidget({
   title,
   context,
+  ...bodyProps
 }: ObjectBrowserWidgetProps) {
   const setCollapsed = useSetAtom(sidebarAtom);
   return (
@@ -35,8 +39,11 @@ export function ObjectBrowserWidget({
           </svg>
         </Icon>
       </Button>
-      <ModalOverlay className="data-[entering]:animate-blur-in data-[exiting]:animate-blur-out bg-quanta-space/25 fixed inset-0 backdrop-blur-sm">
-        <Modal className="data-[entering]:animate-slide-in data-[exiting]:animate-slide-out border-quanta-azure bg-quanta-air fixed top-0 right-0 bottom-0 w-[400px] border-l p-8 text-black shadow-[rgba(0,0,0,0.1)_-8px_0px_20px] outline-none">
+      <ModalOverlay className="data-[entering]:animate-blur-in data-[exiting]:animate-blur-out fixed inset-0">
+        <Modal
+          isDismissable
+          className="data-[entering]:animate-slide-in data-[exiting]:animate-slide-out border-quanta-azure bg-quanta-air fixed top-0 right-0 bottom-0 w-[400px] border-l p-8 text-black shadow-[rgba(0,0,0,0.1)_-8px_0px_20px] outline-none"
+        >
           <Dialog>
             <Heading slot="title" className="flex items-center justify-between">
               <h2>{title}</h2>
@@ -62,7 +69,7 @@ export function ObjectBrowserWidget({
                 </Button>
               </div>
             </Heading>
-            <ObjectBrowserWidgetBody />
+            <ObjectBrowserWidgetBody {...bodyProps} />
           </Dialog>
         </Modal>
       </ModalOverlay>
