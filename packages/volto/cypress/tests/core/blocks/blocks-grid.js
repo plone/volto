@@ -103,7 +103,9 @@ context('Blocks Acceptance Tests', () => {
       cy.get(
         '.slate-inline-toolbar .ui.buttons .button-wrapper a[title="Add link"]',
       ).click();
-      cy.get('.link-form-container input').type('https://google.com{enter}');
+      cy.get('.link-form-container input')
+        .click({ force: true })
+        .type('https://google.com{enter}', { force: true });
 
       cy.get('#toolbar-save').click();
 

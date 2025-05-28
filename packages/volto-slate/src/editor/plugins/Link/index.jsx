@@ -68,6 +68,7 @@ const LinkEditor = (props) => {
         placeholder={'Add link'}
         data={{ url: node?.data?.url || '' }}
         theme={{}}
+        openObjectBrowserPicker={props.openObjectBrowserPicker}
         onChangeValue={(url) => {
           if (!active) {
             if (!editor.selection) editor.selection = editor.savedSelection;

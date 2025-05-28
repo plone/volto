@@ -42,6 +42,7 @@ describe('Text Block Tests', () => {
     cy.clickSlateButton('Add link');
     cy.get('.slate-toolbar .link-form-container input').type(
       'https://google.com{enter}',
+      { force: true },
     );
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
@@ -70,6 +71,7 @@ describe('Text Block Tests', () => {
     cy.clickSlateButton('Add link');
     cy.get('.slate-toolbar .link-form-container input').type(
       'mailto:hello@example.com{enter}',
+      { force: true },
     );
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');

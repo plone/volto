@@ -36,9 +36,11 @@ describe('Blocks Tests', () => {
       .focus()
       .should('have.css', 'outline', 'rgb(16, 16, 16) auto 1px');
     cy.findByLabelText('Enter a URL to an image').click();
-    cy.get('.ui.input.editor-link.input-anchorlink-theme input').type(
-      `https://github.com/plone/volto/raw/main/logos/volto-colorful.png{enter}`,
-    );
+    cy.get('.link-form-container .react-select-container')
+      .click()
+      .type(
+        `https://github.com/plone/volto/raw/main/logos/volto-colorful.png{enter}`,
+      );
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 

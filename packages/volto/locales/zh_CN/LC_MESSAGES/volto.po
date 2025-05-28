@@ -1344,11 +1344,6 @@ msgstr "启用？"
 msgid "End Date"
 msgstr "结束日期"
 
-#. Default: "Enter URL or select an item"
-#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
-msgid "Enter URL or select an item"
-msgstr "输入 URL 或选择一个项目"
-
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
@@ -2680,6 +2675,11 @@ msgstr "粘贴"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
 msgstr "粘贴块"
+
+#. Default: "Paste or search for link"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Paste or search for link"
+msgstr ""
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule

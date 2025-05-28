@@ -1338,11 +1338,6 @@ msgstr "सक्षम?"
 msgid "End Date"
 msgstr "अंतिम तिथि"
 
-#. Default: "Enter URL or select an item"
-#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
-msgid "Enter URL or select an item"
-msgstr "URL दर्ज करें या आइटम का चयन करें"
-
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
@@ -2674,6 +2669,11 @@ msgstr "चिपकाएं"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
 msgstr "ब्लॉक चिपकाएं"
+
+#. Default: "Paste or search for link"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Paste or search for link"
+msgstr ""
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
