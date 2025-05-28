@@ -1,0 +1,1 @@
+Allow previewing images in lists when selecting them with the file picker
