@@ -9,10 +9,18 @@ import { flattenToAppURL, getContentIcon } from '@plone/helpers';
 
 interface ContentsContext {
   toast: Toast;
+
+  selected: Set<string>;
+  setSelected: (
+    selected: Set<string> | ((prev: Set<string>) => Set<string>),
+  ) => void;
 }
 
 const ContentsContext = createContext<ContentsContext>({
   toast: { error: () => '' },
+
+  selected: new Set(),
+  setSelected: () => {},
 });
 
 type ContentsProviderProps = PropsWithChildren<ContentsContext>;
@@ -20,6 +28,14 @@ type ContentsProviderProps = PropsWithChildren<ContentsContext>;
 export function ContentsProvider(props: ContentsProviderProps) {
   let { toast, children } = props;
 
+  const [selected, setSelected] = React.useState<Set<string>>(new Set());
+  // const setSelected = (s) => {
+  //   if (s === 'all') {
+  //     onSelectAll();
+  //   } else {
+  //     _setSelected(s);
+  //   }
+  // };
   let ctx = useMemo(
     () => ({
       flattenToAppURL,
@@ -27,8 +43,11 @@ export function ContentsProvider(props: ContentsProviderProps) {
       getContentIcon,
       toast,
       children,
+
+      selected,
+      setSelected,
     }),
-    [toast, children],
+    [toast, children, selected],
   );
 
   return (

@@ -30,6 +30,10 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
   const breadcrumbs = flattenToAppURL(
     (await cli.getBreadcrumbs({ path })).data,
   );
+  const searchableText =
+    new URLSearchParams(new URL(request.url).search).get('SearchableText') ||
+    null;
+  console.log('searchableText', searchableText);
   const search = flattenToAppURL(
     (
       await cli.search({
@@ -48,7 +52,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
     ).data,
   );
 
-  return { content, search, breadcrumbs };
+  return { content, search, breadcrumbs, searchableText };
 }
 
 export default function Contents(props) {
@@ -63,9 +67,7 @@ export default function Contents(props) {
   const deleteItem = () => {};
   const onSelectIndex = () => {};
   const onSelectAll = () => {};
-  const onChangeFilter = () => {};
   const onSortItems = () => {};
-  const getContentIcon = () => {};
 
   const indexes = {
     order: Object.keys(Indexes),
@@ -87,10 +89,6 @@ export default function Contents(props) {
         pathname={location.pathname}
         objectActions={props.objectActions}
         // loading={loading}
-        textFilter={state.filter}
-        onChangeTextFilter={(value) => {
-          onChangeFilter(undefined, { value });
-        }}
         selected={new Set(state.selected)}
         setSelected={(selected) => {
           if (selected === 'all') {

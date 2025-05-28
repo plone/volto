@@ -42,7 +42,7 @@
         "intranet": "Intranet",
         "draft": "Draft",
         "none": "None",
-        "no_workflow_state": "No workflow state"
+        "no_workflow_state": "—"
       },
       "date": { "none": "" }
     },

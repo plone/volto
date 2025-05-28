@@ -35,9 +35,10 @@ import { TableIndexesPopover } from './TableIndexesPopover';
 import { RearrangePopover } from './RearrangePopover';
 import { ContentsActions } from './ContentsActions';
 // import { AddContentPopover } from './AddContentPopover';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 import type { ContentsLoaderType } from '../routes/contents';
 import { useTranslation } from 'react-i18next';
+import { useContentsContext } from '../providers/contents';
 
 interface ContentsTableProps {
   pathname: string;
@@ -45,9 +46,8 @@ interface ContentsTableProps {
   title: string;
   // loading: boolean;
   canPaste: boolean;
-  textFilter: string;
-  onChangeTextFilter: (value: string) => void;
   // items: Brain[];
+
   selected: Selection;
   setSelected: (value: Selection) => void;
   indexes: {
@@ -89,8 +89,6 @@ export function ContentsTable({
   pathname,
   // objectActions,
   canPaste,
-  textFilter,
-  onChangeTextFilter,
   // items,
   selected,
   setSelected,
@@ -113,28 +111,14 @@ export function ContentsTable({
   const isMobileScreenSize = useMediaQuery('(max-width: 992px)');
   const { t } = useTranslation();
 
-  // const { data: searchData, isLoading: searchIsLoading } = useQuery(
-  //   getSearchQuery({
-  //     query: {
-  //       path: {
-  //         query: pathname,
-  //         depth: 1,
-  //       },
-  //       sort_on: 'getObjPositionInParent',
-  //       sort_order: 'ascending',
-  //       metadata_fields: '_all',
-  //       show_inactive: true,
-  //       b_size: 100000000,
-  //       ...(textFilter && { SearchableText: `${textFilter}*` }),
-  //     },
-  //   }),
-  // );
+  const navigate = useNavigate();
 
   // const isLoading = contentIsLoading || searchIsLoading || bcIsLoading;
   const {
     breadcrumbs: brdcData,
     content,
     search,
+    searchableText,
   } = useLoaderData<ContentsLoaderType>();
 
   const { title = '' } = content ?? {};
@@ -190,9 +174,7 @@ export function ContentsTable({
             <Button className="react-aria-Button actions-cell-header">
               <MoreOptionsSVG />
             </Button>
-            <Tooltip className="react-aria-Tooltip tooltip" placement="bottom">
-              {t('Select columns to show')}
-            </Tooltip>
+            <Tooltip placement="bottom">{t('Select columns to show')}</Tooltip>
           </TooltipTrigger>
           <TableIndexesPopover
             indexes={indexes}
@@ -209,7 +191,7 @@ export function ContentsTable({
           >
             <PasteSVG />
           </Button>
-          <Tooltip placement="bottom">{t('contents.actions.paste')}</Tooltip>
+          <Tooltip>{t('contents.actions.paste')}</Tooltip>
         </TooltipTrigger>
       ) : null,
     },
@@ -307,46 +289,52 @@ export function ContentsTable({
             />
             <h1 className="text-2xl font-bold">{title}</h1>
           </div>
-          {!isMobileScreenSize && (
-            <ContentsActions
-              upload={upload}
-              rename={rename}
-              workflow={workflow}
-              tags={tags}
-              properties={properties}
-              cut={cut}
-              copy={copy}
-              paste={paste}
-              deleteItem={deleteItem}
-              canPaste={canPaste}
-              selected={selected}
+          <div className="group flex end-block">
+            {!isMobileScreenSize && (
+              <ContentsActions
+                upload={upload}
+                rename={rename}
+                workflow={workflow}
+                tags={tags}
+                properties={properties}
+                cut={cut}
+                copy={copy}
+                paste={paste}
+                deleteItem={deleteItem}
+                canPaste={canPaste}
+                selected={selected}
+              />
+            )}
+            <TextField
+              name="sortable_title"
+              placeholder={t('contents.actions.filter')}
+              value={searchableText ?? ''}
+              onChange={(v) => {
+                //to do : debounce
+                navigate(`${pathname}?SearchableText=${v}`);
+              }}
             />
-          )}
-          <TextField
-            name="sortable_title"
-            placeholder={t('contents.actions.filter')}
-            value={textFilter}
-            onChange={onChangeTextFilter}
-          />
-          <VisuallyHidden>
-            <span aria-live="polite">
-              {t('contents.results', { count: items.length })}
-            </span>
-          </VisuallyHidden>
-          {/* <TooltipTrigger>
+
+            {/* <TooltipTrigger>
             <DialogTrigger>
               <Button className="react-aria-Button add">
                 <AddIcon />
               </Button>
               <AddContentPopover path={path} addableTypes={addableTypes} />
             </DialogTrigger>
-            <Tooltip className="react-aria-Tooltip tooltip" placement="bottom">
+            <Tooltip placement="bottom">
               Add content
             </Tooltip>
           </TooltipTrigger> */}
+          </div>
         </section>
         <section className="contents-table">
-          {rows?.length<0> ? (
+          <VisuallyHidden>
+            <span aria-live="polite">
+              {t('contents.results', { count: items.length })}
+            </span>
+          </VisuallyHidden>
+          {rows?.length > 0 ? (
             <Table
               className="react-aria-Table hoverable"
               aria-label={t('contents.results.contents_of', { title })}
