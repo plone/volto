@@ -1343,11 +1343,6 @@ msgstr ""
 msgid "End Date"
 msgstr "終了日付"
 
-#. Default: "Enter URL or select an item"
-#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
-msgid "Enter URL or select an item"
-msgstr ""
-
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
@@ -2679,6 +2674,11 @@ msgstr "ペースト"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
 msgstr "ブロックを貼り付け"
+
+#. Default: "Paste or search for link"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Paste or search for link"
+msgstr ""
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule

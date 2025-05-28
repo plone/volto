@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2025-05-28T09:32:26.153Z\n"
+"POT-Creation-Date: 2025-05-28T09:34:35.353Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1340,11 +1340,6 @@ msgstr ""
 msgid "End Date"
 msgstr ""
 
-#. Default: "Enter URL or select an item"
-#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
-msgid "Enter URL or select an item"
-msgstr ""
-
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
@@ -2675,6 +2670,11 @@ msgstr ""
 #. Default: "Paste blocks"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
+msgstr ""
+
+#. Default: "Paste or search for link"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Paste or search for link"
 msgstr ""
 
 #. Default: "Perform the following actions:"
