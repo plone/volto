@@ -64,6 +64,7 @@
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
+    "@plone/registry": "workspace:*",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "release-it": "catalog:",
