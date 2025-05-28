@@ -5,11 +5,10 @@ import React, {
   useMemo,
 } from 'react';
 import type { Toast } from '../types';
-import { flattenToAppURL, getContentIcon } from '@plone/helpers';
+import { getContentIcon } from '@plone/helpers';
 
 interface ContentsContext {
   toast: Toast;
-
   selected: Set<string>;
   setSelected: (
     selected: Set<string> | ((prev: Set<string>) => Set<string>),
@@ -18,7 +17,6 @@ interface ContentsContext {
 
 const ContentsContext = createContext<ContentsContext>({
   toast: { error: () => '' },
-
   selected: new Set(),
   setSelected: () => {},
 });
@@ -38,12 +36,10 @@ export function ContentsProvider(props: ContentsProviderProps) {
   // };
   let ctx = useMemo(
     () => ({
-      flattenToAppURL,
       // getBaseUrl,
       getContentIcon,
       toast,
       children,
-
       selected,
       setSelected,
     }),

@@ -17,10 +17,10 @@
     gap: 1rem;
 
     .end-block {
-      align-self: flex-end;
       align-items: center;
-      margin-inline-start: auto;
+      align-self: flex-end;
       gap: 1rem;
+      margin-inline-start: auto;
     }
   }
 
@@ -60,16 +60,16 @@
     align-items: center;
 
     .icon {
-      color: var(--quanta-pigeon);
       flex-shrink: 0;
+      color: var(--quanta-pigeon);
       margin-inline-end: 1rem;
     }
   }
 
   .review-state {
     display: flex;
-    align-items: center;
     min-width: 8rem;
+    align-items: center;
 
     &::before {
       width: 9px;
@@ -171,10 +171,10 @@
     }
 
     .icon {
-      margin-inline-end: 1rem;
-      color: var(--quanta-pigeon);
       width: 18px;
       height: 18px;
+      color: var(--quanta-pigeon);
+      margin-inline-end: 1rem;
     }
 
     .react-aria-Link {
@@ -183,8 +183,8 @@
       padding: 0;
       border: 0;
       background: 0 none;
-      text-align: left;
       font-size: 1rem;
+      text-align: left;
       text-decoration: none;
     }
   }
@@ -216,8 +216,8 @@
 
 .rearrange-popover {
   .react-aria-MenuItem {
-    font-size: 1rem;
     border-radius: 0;
+    font-size: 1rem;
   }
 
   .rearrange-menu-item {
