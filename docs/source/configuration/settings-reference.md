@@ -494,18 +494,26 @@ isMultilingual
     If `true`, features for translating content to multiple languages are available.
     Default: `false`.
 
-    ```{versionremoved} Volto 19
+    ````{versionremoved} Volto 19
     This setting was removed in Volto 19.
     Instead, Volto checks whether the backend has multilingual features enabled.
+    
+    ```{seealso}
+    See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-label>`.
     ```
+    ````
 
 defaultLanguage
     Sets the default language of the site.
 
-    ```{deprecated} Volto 19
+    ````{versionremoved} Volto 19
     This setting was removed in Volto 19.
     Instead, the default language is loaded from the backend.
+
+    ```{seealso}
+    See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-label>`.
     ```
+    ````
 
 supportedLanguages
     A list of locales which are included in the bundled code.
