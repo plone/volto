@@ -24,10 +24,12 @@ export const Default: Story = {
   render: (args: any) => (
     <TooltipTrigger>
       <ToggleButton {...args}>
-        <BoldIcon size="S" />
+        <BoldIcon size="sm" />
       </ToggleButton>
       <Tooltip {...args}>Bold</Tooltip>
     </TooltipTrigger>
   ),
-  args: {},
+  args: {
+    children: null,
+  },
 };
