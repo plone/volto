@@ -126,39 +126,49 @@ export const PloneImage: Story = {
 // Image with custom image field
 export const CustomImageField: Story = {
   args: {
-    '@id': 'https://picsum.photos',
-    image_field: 'image', // The default image field in Plone content types
-    image_scales: {
-      hero: [
-        {
-          // This is the primary "download" URL for the image, often a larger scale
-          download: 'https://picsum.photos/128/85', // Main image: 600x400 pixels
-          width: 600,
-          height: 400,
-          'content-type': 'image/jpeg',
-          scales: {
-            // Nested scales, like a thumbnail
+    item: {
+      '@id': 'https://picsum.photos',
+      image_field: 'image', // The default image field in Plone content types
+      image_scales: {
+        hero: [
+          {
+            // This is the primary "download" URL for the image, often a larger scale
+            download: 'https://picsum.photos/128/85', // Main image: 600x400 pixels
+            width: 600,
+            height: 400,
+            'content-type': 'image/jpeg',
+            scales: {
+              // Nested scales, like a thumbnail
 
-            // You can add more scales here, e.g., 'preview', 'mini'
-            preview: {
-              download: '400/300', // Preview: 400x300 pixels
-              width: 400,
-              height: 300,
-            },
-            thumb: {
-              download: '128/85', // Thumbnail: 128x85 pixels
-              width: 128,
-              height: 85,
+              // You can add more scales here, e.g., 'preview', 'mini'
+              hero: {
+                download: '400/300', // Preview: 400x300 pixels
+                width: 400,
+                height: 300,
+              },
+              thumb: {
+                download: '128/85', // Thumbnail: 128x85 pixels
+                width: 128,
+                height: 85,
+              },
             },
           },
-        },
-      ],
+        ],
+      },
+      // Add other properties a real Plone item might have
+      title: 'Plone Image from Picsum',
+      description:
+        'An example image for Storybook using Lorem Picsum placeholders.',
     },
-    // Add other properties a real Plone item might have
-    title: 'Plone Image from Picsum',
     imageField: 'hero',
-    description:
-      'An example image for Storybook using Lorem Picsum placeholders.',
+    alt: 'Image from Plone content',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Image component using a Plone content item with image scales.',
+      },
+    },
   },
 };
 
@@ -201,10 +211,6 @@ export const SvgImage: Story = {
 // Image with fallback src
 export const ImageWithFallback: Story = {
   args: {
-    item: {
-      '@id': '/content/broken-page',
-      // No image field, should fall back to src
-    },
     src: 'https://picsum.photos/300/200',
     alt: 'Fallback image when item has no image',
   },
