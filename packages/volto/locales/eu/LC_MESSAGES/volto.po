@@ -4810,11 +4810,6 @@ msgstr "Nire erabiltzaile izena da"
 msgid "leadimage"
 msgstr "Irudi nagusiaren eremua"
 
-#. Default: "Delete"
-#: components/manage/Contents/ContentsDeleteModal
-msgid "link-integrity: Delete"
-msgstr "Ezabatu"
-
 #. Default: "Delete item and break links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: Delete item and break links"
