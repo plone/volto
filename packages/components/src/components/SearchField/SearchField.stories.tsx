@@ -21,5 +21,6 @@ export const Default: Story = {
   render: (args: any) => <SearchField {...args} />,
   args: {
     label: 'Search',
+    placeholder: 'Type to search...',
   },
 };
