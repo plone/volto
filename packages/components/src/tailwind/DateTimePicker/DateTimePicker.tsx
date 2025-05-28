@@ -162,7 +162,6 @@ export function DateTimePicker({
             <Button
               variant="icon"
               className="mr-1 w-7 rounded-xs outline-offset-0"
-              slot="trigger"
             >
               <CalendarIcon aria-hidden className="h-4 w-4" />
             </Button>
