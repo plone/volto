@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Form } from 'react-aria-components';
-import {
-  CalendarDate,
-  CalendarDateTime,
-  type DateValue,
-  parseDate,
-  parseDateTime,
-  today,
-  now,
-  getLocalTimeZone,
-  isWeekend,
-} from '@internationalized/date';
+import { now, getLocalTimeZone } from '@internationalized/date';
 import { Button } from '../Button/Button';
 import { DateTimePicker } from './DateTimePicker';
+
+function getCurrentUtcString(): string {
+  return now(getLocalTimeZone()).toAbsoluteString();
+}
 
 // DateTimePicker Stories
 const meta = {
@@ -53,33 +47,99 @@ export const DateOnly: Story = {
   },
 };
 
+export const DateOnlyWithDefaultValue: Story = {
+  render: (args) => <DateTimePicker {...args} />,
+  args: {
+    name: 'date-only',
+    label: 'Date only',
+    description: 'Date picker without time selection',
+    granularity: 'day',
+    defaultValue: '2025-05-17',
+  },
+};
+
 export const WithDefaultValue: Story = {
   render: (args) => <DateTimePicker {...args} />,
   args: {
     name: 'datetime-default',
     label: 'With default value',
-    description: 'Uncontrolled component with default value',
-    defaultValue: new CalendarDateTime(2024, 12, 25, 14, 30),
+    description: 'Uncontrolled component with default UTC value',
+    defaultValue: '2025-05-17T22:23:00+00:00', // UTC time
+    granularity: 'minute',
+  },
+};
+
+// UTC/Local Timezone Demo
+const TimezoneExample = (args: any) => {
+  const [value, setValue] = useState<string | null>('2024-01-15T15:00:00'); // 3 PM UTC
+
+  return (
+    <div className="flex max-w-2xl flex-col gap-4">
+      <DateTimePicker {...args} value={value} onChange={setValue} />
+      <div className="space-y-2 text-sm">
+        <div className="rounded bg-blue-50 p-3">
+          <strong>UTC Value (what the component receives/returns):</strong>
+          <div className="font-mono">{value || 'null'}</div>
+        </div>
+        <div className="rounded bg-green-50 p-3">
+          <strong>Your Local Timezone:</strong>
+          <div>{getLocalTimeZone()}</div>
+        </div>
+        <div className="text-gray-600">
+          <p>
+            <strong>How it works:</strong> The component receives UTC time but
+            displays it converted to your local timezone. When you change the
+            time, it converts back to UTC for the onChange callback.
+          </p>
+        </div>
+      </div>
+      <div className="flex gap-2">
+        <Button
+          variant="neutral"
+          onPress={() => setValue('2024-01-15T12:00:00+00:00')} // Noon UTC
+        >
+          Set to Noon UTC
+        </Button>
+        <Button
+          variant="neutral"
+          onPress={() => setValue('2024-01-15T00:00:00+00:00')} // Midnight UTC
+        >
+          Set to Midnight UTC
+        </Button>
+        <Button variant="neutral" onPress={() => setValue(null)}>
+          Clear
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export const TimezoneConversion: Story = {
+  render: TimezoneExample,
+  args: {
+    name: 'timezone-demo',
+    label: 'UTC ↔ Local Timezone Demo',
+    description: 'Shows how UTC values are converted to/from local timezone',
     granularity: 'minute',
   },
 };
 
 // Controlled vs Uncontrolled
 const ControlledExample = (args: any) => {
-  const [value, setValue] = useState<DateValue | null>(
-    new CalendarDateTime(2024, 1, 15, 10, 0),
+  const [value, setValue] = useState<string | null>(
+    '2024-01-15T10:00:00+00:00',
   );
 
   return (
     <div className="flex flex-col gap-4">
       <DateTimePicker {...args} value={value} onChange={setValue} />
       <div className="text-sm text-gray-600">
-        Current value: {value ? value.toString() : 'null'}
+        Current UTC value: {value || 'null'}
       </div>
       <div className="flex gap-2">
         <Button
           variant="neutral"
-          onPress={() => setValue(now(getLocalTimeZone()))}
+          onPress={() => setValue(getCurrentUtcString())}
         >
           Set to now
         </Button>
@@ -96,7 +156,7 @@ export const Controlled: Story = {
   args: {
     name: 'datetime-controlled',
     label: 'Controlled component',
-    description: 'Value managed by parent component',
+    description: 'Value managed by parent component (UTC format)',
     granularity: 'minute',
   },
 };
@@ -149,7 +209,7 @@ export const Disabled: Story = {
   args: {
     name: 'disabled-datetime',
     label: 'Disabled picker',
-    defaultValue: now(getLocalTimeZone()),
+    defaultValue: getCurrentUtcString(),
     isDisabled: true,
     granularity: 'minute',
   },
@@ -160,7 +220,7 @@ export const ReadOnly: Story = {
   args: {
     name: 'readonly-datetime',
     label: 'Read-only picker',
-    defaultValue: now(getLocalTimeZone()),
+    defaultValue: getCurrentUtcString(),
     isReadOnly: true,
     granularity: 'minute',
   },
@@ -175,7 +235,7 @@ export const WithError: Story = {
     errorMessage: 'Please select a valid date and time',
     isInvalid: true,
     isRequired: true,
-    defaultValue: new CalendarDateTime(2024, 1, 15, 10, 30),
+    defaultValue: '2024-01-15T10:30:00',
     granularity: 'minute',
   },
 };
@@ -186,77 +246,35 @@ export const NotResettable: Story = {
     name: 'not-resettable',
     label: 'Non-resettable',
     description: 'No clear button available',
-    defaultValue: now(getLocalTimeZone()),
+    defaultValue: getCurrentUtcString(),
     resettable: false,
     granularity: 'minute',
   },
 };
 
-// Validation Examples
-const MinMaxExample = () => {
-  const [value, setValue] = useState<DateValue | null>(null);
-  const minValue = today(getLocalTimeZone());
-  const maxValue = today(getLocalTimeZone()).add({ days: 30 });
-
-  return (
-    <div className="flex flex-col gap-4">
-      <DateTimePicker
-        name="min-max"
-        label="Date range validation"
-        description={`Select between ${minValue.toString()} and ${maxValue.toString()}`}
-        value={value}
-        onChange={setValue}
-        minValue={minValue}
-        maxValue={maxValue}
-        granularity="day"
-      />
-      {value && (
-        <div className="text-sm text-gray-600">
-          Selected: {value.toString()}
-        </div>
-      )}
-    </div>
-  );
-};
-
-export const MinMaxValidation: Story = {
-  render: MinMaxExample,
-};
-
-const UnavailableDatesExample = () => {
-  const [value, setValue] = useState<DateValue | null>(null);
-
-  return (
-    <div className="flex flex-col gap-4">
-      <DateTimePicker
-        name="unavailable-dates"
-        label="Unavailable weekends"
-        description="Weekends are disabled"
-        value={value}
-        onChange={setValue}
-        isDateUnavailable={(date) => isWeekend(date, 'en-US')}
-        granularity="day"
-      />
-      {value && (
-        <div className="text-sm text-gray-600">
-          Selected: {value.toString()}
-        </div>
-      )}
-    </div>
-  );
-};
-
-export const UnavailableDates: Story = {
-  render: UnavailableDatesExample,
-};
-
 const CustomValidationExample = () => {
-  const [value, setValue] = useState<DateValue | null>(null);
+  const [value, setValue] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const validate = (date: DateValue | null) => {
-    if (!date) return 'Date is required';
-    if (date.day === 13) return 'Friday the 13th is not allowed!';
-    return null;
+  const handleChange = (newValue: string | null) => {
+    setValue(newValue);
+
+    // Custom validation logic for string values
+    if (!newValue) {
+      setError('Date is required');
+      return;
+    }
+
+    try {
+      const date = new Date(newValue);
+      if (date.getDate() === 13) {
+        setError('Friday the 13th is not allowed!');
+        return;
+      }
+      setError(null);
+    } catch {
+      setError('Invalid date format');
+    }
   };
 
   return (
@@ -266,15 +284,12 @@ const CustomValidationExample = () => {
         label="Custom validation"
         description="Try selecting the 13th of any month"
         value={value}
-        onChange={setValue}
-        validate={validate}
+        onChange={handleChange}
+        errorMessage={error || undefined}
+        isInvalid={!!error}
         granularity="day"
       />
-      {value && (
-        <div className="text-sm text-gray-600">
-          Selected: {value.toString()}
-        </div>
-      )}
+      {value && <div className="text-sm text-gray-600">Selected: {value}</div>}
     </div>
   );
 };
@@ -285,7 +300,7 @@ export const CustomValidation: Story = {
 
 // Auto Current Time Feature
 const AutoCurrentTimeExample = () => {
-  const [value, setValue] = useState<DateValue | null>(null);
+  const [value, setValue] = useState<string | null>(null);
 
   return (
     <div className="flex max-w-2xl flex-col gap-6 p-4">
@@ -296,14 +311,14 @@ const AutoCurrentTimeExample = () => {
         <DateTimePicker
           name="auto-current-time"
           label="Select a date"
-          description="When no value exists and you select a date, current time is automatically set"
+          description="When no value exists and you select a date, current local time is automatically set and converted to UTC"
           value={value}
           onChange={setValue}
           granularity="minute"
         />
         {value && (
           <div className="mt-2 text-sm text-gray-600">
-            Current value: {value.toString()}
+            Current UTC value: {value}
           </div>
         )}
       </div>
@@ -314,17 +329,17 @@ const AutoCurrentTimeExample = () => {
         </Button>
         <Button
           variant="neutral"
-          onPress={() => setValue(new CalendarDate(2024, 12, 25))}
+          onPress={() => setValue('2024-12-25T00:00:00+00:00')}
         >
-          Set Date Only
+          Set Date Only (UTC)
         </Button>
       </div>
 
       <div className="text-sm text-gray-600">
         <p>
           <strong>Test:</strong> Clear the value, then select a date from the
-          calendar. Notice it automatically sets the current time instead of
-          00:00.
+          calendar. Notice it automatically sets the current local time and
+          converts it to UTC.
         </p>
       </div>
     </div>
@@ -341,7 +356,7 @@ const FormExample = () => (
     <DateTimePicker
       name="event-datetime"
       label="Event date and time"
-      description="Select when your event will take place"
+      description="Select when your event will take place (stored as UTC)"
       isRequired
       granularity="minute"
     />
@@ -353,16 +368,4 @@ const FormExample = () => (
 
 export const FormIntegration: Story = {
   render: FormExample,
-};
-
-// Styling Example
-export const CustomStyling: Story = {
-  render: (args) => <DateTimePicker {...args} />,
-  args: {
-    name: 'custom-datetime',
-    className: 'my-custom-datetime-picker',
-    label: 'Custom styled picker',
-    defaultValue: now(getLocalTimeZone()),
-    granularity: 'minute',
-  },
 };

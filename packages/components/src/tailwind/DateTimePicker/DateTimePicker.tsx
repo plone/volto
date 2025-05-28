@@ -8,7 +8,14 @@ import {
   type DateValue,
   type ValidationResult,
 } from 'react-aria-components';
-import { now, getLocalTimeZone } from '@internationalized/date';
+import {
+  now,
+  getLocalTimeZone,
+  parseDate,
+  toZoned,
+  parseAbsolute,
+  ZonedDateTime,
+} from '@internationalized/date';
 
 import { Button } from '../Button/Button';
 import { Description, FieldError, FieldGroup, Label } from '../Field/Field';
@@ -19,20 +26,45 @@ import { Dialog } from '../Dialog/Dialog';
 import { Calendar } from '../Calendar/Calendar';
 import { DateInput } from '../DateInput/DateInput';
 
-/*
-Fer un component d'ordre superior per poder fer el time  i el date separats
-Analitzar com poder configurar tb un altre component d'ordre superior que puguis triar el time zone
-El nostre component sempre rebrà la data amb UTC i l'ha de guardar amb UTC
-*/
-export interface DateTimePickerProps<T extends DateValue>
-  extends AriaDatePickerProps<T> {
+type Granularity = 'day' | 'hour' | 'minute' | 'second';
+function isDateOnly(granularity: Granularity) {
+  return granularity === 'day';
+}
+
+// Utility functions for UTC <-> Local timezone conversion
+function utcStringToLocalDateValue(
+  utcString: string | null,
+  isDateOnly: boolean,
+): DateValue | null {
+  if (!utcString) return null;
+
+  if (isDateOnly) {
+    return parseDate(utcString);
+  }
+  try {
+    const localTimeZone = getLocalTimeZone();
+    return parseAbsolute(utcString, localTimeZone);
+  } catch (error) {
+    console.warn('Failed to parse UTC string:', utcString, error);
+    return null;
+  }
+}
+
+export interface DateTimePickerProps
+  extends Omit<
+    AriaDatePickerProps<DateValue>,
+    'value' | 'defaultValue' | 'onChange'
+  > {
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   resettable?: boolean;
+  value?: string | null;
+  defaultValue?: string | null;
+  onChange?: (value: string | null) => void;
 }
 
-export function DateTimePicker<T extends DateValue>({
+export function DateTimePicker({
   label,
   description,
   errorMessage,
@@ -43,21 +75,20 @@ export function DateTimePicker<T extends DateValue>({
   isDisabled,
   granularity = 'minute',
   ...props
-}: DateTimePickerProps<T>) {
-  const [internalValue, setInternalValue] = useState<DateValue | null>(
-    value ?? defaultValue ?? null,
-  );
+}: DateTimePickerProps) {
+  // Convert UTC string values to local DateValue for internal use
+  const [internalValue, setInternalValue] = useState<DateValue | null>(() => {
+    const initialValue = value ?? defaultValue ?? null;
+    return utcStringToLocalDateValue(initialValue, isDateOnly(granularity));
+  });
 
   useEffect(() => {
     if (value !== undefined) {
-      setInternalValue(value);
+      setInternalValue(
+        utcStringToLocalDateValue(value, isDateOnly(granularity)),
+      );
     }
-  }, [value]);
-
-  const includesTime =
-    granularity === 'minute' ||
-    granularity === 'second' ||
-    granularity === 'hour';
+  }, [value, granularity]);
 
   const handleReset = useCallback(() => {
     setInternalValue(null);
@@ -68,34 +99,56 @@ export function DateTimePicker<T extends DateValue>({
 
   const handleDateChange = useCallback(
     (newValue: DateValue | null) => {
-      if (includesTime && !internalValue && newValue) {
+      if (!isDateOnly(granularity) && !internalValue && newValue) {
         const currentTime = now(getLocalTimeZone());
-        const dateTimeValue = newValue.set({
+        const localZoned = toZoned(
+          newValue as ZonedDateTime,
+          getLocalTimeZone(),
+        );
+        // When no previous value exists and user selects a date, set current local time
+        const dateTimeValue = localZoned.set({
           hour: currentTime.hour,
           minute: currentTime.minute,
           second: currentTime.second,
         });
+
         setInternalValue(dateTimeValue);
+        console.log(
+          'output values',
+          (dateTimeValue as ZonedDateTime)?.toAbsoluteString() ?? null,
+        );
         if (onChange) {
-          (onChange as any)(dateTimeValue);
+          onChange(dateTimeValue.toAbsoluteString());
         }
         return;
       }
 
       setInternalValue(newValue);
-      if (onChange) {
-        (onChange as any)(newValue);
+
+      if (onChange && newValue) {
+        if (newValue instanceof ZonedDateTime) {
+          onChange(newValue.toAbsoluteString());
+        } else {
+          onChange(newValue.toString());
+        }
       }
     },
-    [onChange, includesTime, internalValue],
+    [onChange, internalValue, granularity],
   );
 
   return (
     <div className="flex items-center">
       <AriaDatePicker
         {...props}
-        value={value !== undefined ? value : (internalValue as T)}
-        defaultValue={value === undefined ? defaultValue : undefined}
+        value={value !== undefined ? internalValue : internalValue}
+        defaultValue={
+          value === undefined
+            ? utcStringToLocalDateValue(
+                defaultValue ?? null,
+                isDateOnly(granularity),
+              )
+            : undefined
+        }
         onChange={handleDateChange}
         granularity={granularity}
         isDisabled={isDisabled}

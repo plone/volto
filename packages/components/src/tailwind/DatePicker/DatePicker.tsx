@@ -1,40 +1,31 @@
 import React from 'react';
+import { type ValidationResult } from 'react-aria-components';
+
 import {
-  DateField as AriaDateField,
-  type DateFieldProps as AriaDateFieldProps,
-  type DateValue,
-  type ValidationResult,
-} from 'react-aria-components';
+  DateTimePicker,
+  type DateTimePickerProps,
+} from '../DateTimePicker/DateTimePicker';
 
-import { Description, FieldError, Label } from '../Field/Field';
-import { composeTailwindRenderProps } from '../utils';
-import { DateInput } from '../DateInput/DateInput';
-
-export interface DateFieldProps<T extends DateValue>
-  extends AriaDateFieldProps<T> {
+export interface DatePickerProps
+  extends Omit<DateTimePickerProps, 'granularity'> {
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
 }
 
-export function DateField<T extends DateValue>({
+export function DatePicker({
   label,
   description,
   errorMessage,
   ...props
-}: DateFieldProps<T>) {
+}: DatePickerProps) {
   return (
-    <AriaDateField
+    <DateTimePicker
       {...props}
-      className={composeTailwindRenderProps(
-        props.className,
-        'flex flex-col gap-1',
-      )}
-    >
-      {label && <Label>{label}</Label>}
-      <DateInput />
-      {description && <Description>{description}</Description>}
-      <FieldError>{errorMessage}</FieldError>
-    </AriaDateField>
+      label={label}
+      description={description}
+      errorMessage={errorMessage}
+      granularity="day"
+    />
   );
 }
