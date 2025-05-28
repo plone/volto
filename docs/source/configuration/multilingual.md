@@ -16,7 +16,13 @@ You can enable it through the {guilabel}`Add-ons` control panel in the administr
 
 ## Volto configuration
 
-You need to enable multilingual in Volto's configuration object.
+### In Volto 19 and later
+
+Volto 19+ will automatically load the current settings for default language and available languages from the Plone site. A site admin can edit these settings in the Languages control panel in Site Setup, or a developer can configure them using GenericSetup.
+
+### In Volto 18 and earlier
+
+In Volto 18 and earlier, it is necessary to enable multilingual in Volto's configuration settings.
 
 ```js
 import config from '@plone/volto/registry'

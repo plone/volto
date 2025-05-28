@@ -186,6 +186,10 @@ You can also generate builds on your continuous integration, then deploy them an
     ```
 
 `SITE_DEFAULT_LANGUAGE`
+    ```{deprecated} Volto 19
+    This environment variable was removed in Volto 19. Instead, Volto uses the default language configured in the backend.
+    ```
+
     This is a runtime environment variable that sets the `config.settings.defaultLanguage`, allowing you to specify the default language of a site. It needs to match the default language that is configured in the backend's Language control panel.
 
     ```shell

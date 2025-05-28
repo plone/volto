@@ -487,9 +487,25 @@ showRelatedItems
     ```{versionadded} 18.5.0
     ```
 
-
 showTags
     If true, the `Tags` component will show tags from the `subjects` field. Default: true.
+
+isMultilingual
+    If true, features for translating content to multiple languages are available. Default: false.
+
+    ```{deprecated} Volto 19
+    This setting was removed in Volto 19. Instead, Volto checks whether the backend has multilingual features enabled.
+    ```
+
+defaultLanguage
+    Sets the default language of the site.
+
+    ```{deprecated} Volto 19
+    This setting was removed in Volto 19. Instead, the default language is loaded from the backend.
+    ```
+
+supportedLanguages
+    A list of locales which are included in the bundled code.
 
 ```
 
