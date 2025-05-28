@@ -79,10 +79,7 @@ describe('Folder Contents Tests', () => {
     });
     cy.get('svg[class="icon unchecked"]').click();
     cy.get('svg[class="icon semaphore"]').click();
-    cy.get('#field-state input')
-      .first()
-      .click({ force: true })
-      .type('Publish{enter}', { force: true });
+    cy.get('#field-state').click().type('Publish{enter}');
     cy.get('.checkbox').click();
     cy.get('button[title="Save"]').click();
 
