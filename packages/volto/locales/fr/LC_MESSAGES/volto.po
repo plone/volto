@@ -1345,6 +1345,11 @@ msgstr "Activé ?"
 msgid "End Date"
 msgstr "Date de fin"
 
+#. Default: "Enter URL or select an item"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Enter URL or select an item"
+msgstr ""
+
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
@@ -2676,11 +2681,6 @@ msgstr "Coller"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
 msgstr "Coller les blocs"
-
-#. Default: "Paste or search for link"
-#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
-msgid "Paste or search for link"
-msgstr ""
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
