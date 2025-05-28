@@ -318,7 +318,11 @@ You can edit the {file}`mrs.developer.json` file so that inside the object at th
 "filterBlobs": true
 ```
 
-and remove the key `tag` and run `make install` but it will be only a one-time fetch of the `main` branch, because of `mrs-developer` not supporting refetching the same branch for different tips during time, in some occasions.
+and remove the key `tag` and run `make install`.
+
+In some situations, produced by different configurations of Volto, in the unstable commits, which are breaking changes, `make install` won't be enough.
+Then you should run, eventually after `git pull` in the core directory if you don't run `make install` before, `pnpm i` and then `pnpm build:all`.
+This is known to work.
 
 ## Develop other libraries in a workspace
 
