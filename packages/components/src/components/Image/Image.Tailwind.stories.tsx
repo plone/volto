@@ -200,31 +200,38 @@ export const ProfileWithStatus: Story = {
 
 // Mock Plone item with Tailwind styling
 const mockPloneItem = {
-  '@id': '/content/sample-page',
-  image_field: 'image',
-  image: {
-    download: 'image.jpg',
-    width: 800,
-    height: 600,
-    'content-type': 'image/jpeg',
-    scales: {
-      large: {
-        download: 'image-large.jpg',
-        width: 768,
-        height: 576,
+  '@id': 'https://picsum.photos',
+  image_field: 'image', // The default image field in Plone content types
+  image_scales: {
+    image: [
+      {
+        // This is the primary "download" URL for the image, often a larger scale
+        download: 'https://picsum.photos/128/85', // Main image: 600x400 pixels
+        width: 600,
+        height: 400,
+        'content-type': 'image/jpeg',
+        scales: {
+          // Nested scales, like a thumbnail
+
+          // You can add more scales here, e.g., 'preview', 'mini'
+          preview: {
+            download: '400/300', // Preview: 400x300 pixels
+            width: 400,
+            height: 300,
+          },
+          thumb: {
+            download: '128/85', // Thumbnail: 128x85 pixels
+            width: 128,
+            height: 85,
+          },
+        },
       },
-      medium: {
-        download: 'image-medium.jpg',
-        width: 400,
-        height: 300,
-      },
-      small: {
-        download: 'image-small.jpg',
-        width: 200,
-        height: 150,
-      },
-    },
+    ],
   },
+  // Add other properties a real Plone item might have
+  title: 'Plone Image from Picsum',
+  description:
+    'An example image for Storybook using Lorem Picsum placeholders.',
 };
 
 // Plone image with Tailwind styling
