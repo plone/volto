@@ -39,7 +39,7 @@ export function ContentsCell({
   onDelete,
 }: Props) {
   const { t } = useTranslation();
-  const { getContentIcon, flattenToAppURL } = useContentsContext();
+  const { getContentIcon } = useContentsContext();
   const [isMoreOptionsOpen, setIsMoreOptionsOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const longFormatter = useDateFormatter({
@@ -50,7 +50,7 @@ export function ContentsCell({
     dateStyle: 'short',
     timeStyle: 'short',
   });
-  const Icon = getContentIcon(item['@type'], item.is_folderish, true);
+  const Icon = getContentIcon(item['@type'], item.is_folderish);
 
   if (column === 'title') {
     return (
@@ -58,7 +58,7 @@ export function ContentsCell({
         className="react-aria-Link title-link"
         href={`${item.is_folderish ? '/contents' : ''}${item['@id']}`}
       >
-        {/* <Icon size="S" title={item['Type'] || item['@type']} /> */}
+        <Icon size="S" title={item['Type'] || item['@type']} />
         {item.title}
         {item.ExpirationDate !== 'None' &&
           new Date(item.ExpirationDate).getTime() < new Date().getTime() && (

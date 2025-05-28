@@ -53,8 +53,9 @@
     align-items: center;
 
     .icon {
+      color: var(--quanta-pigeon);
       flex-shrink: 0;
-      margin-inline-end: 0.5rem;
+      margin-inline-end: 1rem;
     }
   }
 
@@ -97,6 +98,11 @@
     --border-color-pressed: transparent;
     --border-color-disabled: transparent;
     padding: 0;
+    color: var(--quanta-pigeon);
+  }
+
+  .drag-cell {
+    color: var(--quanta-dolphin);
   }
 
   .contents-actions {
@@ -116,6 +122,9 @@
 }
 
 .react-aria-Popover {
+  --border-color: var(--quanta-smoke);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
   .popover-label {
     color: var(--quanta-pigeon);
     font-size: 0.8rem;

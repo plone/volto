@@ -6,6 +6,7 @@ import config from '@plone/registry';
 import type PloneClient from '@plone/client';
 import { useLocation, type LoaderFunctionArgs } from 'react-router';
 import { flattenToAppURL } from '@plone/helpers';
+import { ContentsProvider } from '../providers/contents';
 
 // This is needed because to prevent circular import loops
 export type ContentsLoaderType = typeof loader;
@@ -64,6 +65,7 @@ export default function Contents(props) {
   const onSelectAll = () => {};
   const onChangeFilter = () => {};
   const onSortItems = () => {};
+  const getContentIcon = () => {};
 
   const indexes = {
     order: Object.keys(Indexes),
@@ -80,34 +82,36 @@ export default function Contents(props) {
   };
 
   return (
-    <ContentsTable
-      pathname={location.pathname}
-      objectActions={props.objectActions}
-      // loading={loading}
-      textFilter={state.filter}
-      onChangeTextFilter={(value) => {
-        onChangeFilter(undefined, { value });
-      }}
-      selected={new Set(state.selected)}
-      setSelected={(selected) => {
-        if (selected === 'all') {
-          onSelectAll();
-        } else {
-          setState({ selected: [...selected] });
-        }
-      }}
-      indexes={indexes}
-      onSelectIndex={(index) => {
-        onSelectIndex(undefined, { value: index });
-      }}
-      sortItems={(id) => onSortItems(undefined, { value: id })}
-      upload={upload}
-      rename={rename}
-      workflow={workflow}
-      tags={tags}
-      properties={properties}
-      deleteItem={(id) => Promise.resolve(delete (undefined, { value: id }))}
-      // addableTypes={props.addableTypes}
-    />
+    <ContentsProvider toast={{ error: () => 'error' }}>
+      <ContentsTable
+        pathname={location.pathname}
+        objectActions={props.objectActions}
+        // loading={loading}
+        textFilter={state.filter}
+        onChangeTextFilter={(value) => {
+          onChangeFilter(undefined, { value });
+        }}
+        selected={new Set(state.selected)}
+        setSelected={(selected) => {
+          if (selected === 'all') {
+            onSelectAll();
+          } else {
+            setState({ selected: [...selected] });
+          }
+        }}
+        indexes={indexes}
+        onSelectIndex={(index) => {
+          onSelectIndex(undefined, { value: index });
+        }}
+        sortItems={(id) => onSortItems(undefined, { value: id })}
+        upload={upload}
+        rename={rename}
+        workflow={workflow}
+        tags={tags}
+        properties={properties}
+        deleteItem={(id) => Promise.resolve(delete (undefined, { value: id }))}
+        // addableTypes={props.addableTypes}
+      />
+    </ContentsProvider>
   );
 }

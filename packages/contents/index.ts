@@ -1,6 +1,7 @@
 import type { ConfigType } from '@plone/registry';
-
+import { contentIcons } from './config/ContentIcons';
 export default function install(config: ConfigType) {
+  config.settings.contentIcons = contentIcons;
   config.registerRoute({
     type: 'layout',
     file: '@plone/contents/routes/layout.tsx',

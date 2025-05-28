@@ -348,6 +348,7 @@ export function ContentsTable({
         <section className="contents-table">
           {rows?.length<0> ? (
             <Table
+              className="react-aria-Table hoverable"
               aria-label={t('contents.results.contents_of', { title })}
               columns={[...columns]}
               rows={rows}
