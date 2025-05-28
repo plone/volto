@@ -1,0 +1,3 @@
+The default language and list of available languages are now loaded from the backend API.
+The `supportedLanguages` setting remains but is only used to limit which locales are included in the build.
+@davisagli
