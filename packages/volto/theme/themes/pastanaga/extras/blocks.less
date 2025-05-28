@@ -762,6 +762,80 @@ div.image-upload-widget-image {
       outline: none;
     }
   }
+
+  .react-select-container .react-select__control {
+    width: 220px;
+    border: none;
+    box-shadow: none;
+    cursor: text;
+    font-size: 14px;
+  }
+
+  .react-select-container .react-select__menu {
+    z-index: 2;
+    top: auto;
+    left: -38px;
+    width: 310px;
+
+    border-bottom: 1px solid #c7d5d8;
+    margin-top: 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .react-select-container .react-select__menu-list {
+    max-height: unset;
+    padding-block: 0;
+  }
+
+  .react-select-container .react-select__placeholder {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .react-select-container .react-select__option {
+    display: flex;
+    min-height: 30px;
+    align-items: center;
+    padding: 6px 10px;
+    padding-left: 15px;
+    background-color: null;
+    color: #4a4a4a;
+    font-size: 14px;
+  }
+
+  .react-select-container .react-select__option:hover {
+    background-color: #f4f5f7;
+  }
+
+  .react-select-container .react-select__no-options-message {
+    font-size: 14px;
+  }
+
+  .link-suggestion-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .link-suggestion-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+  }
+
+  .link-suggestion-content {
+    flex-grow: 1;
+  }
+
+  .link-suggestion-label {
+    color: #333;
+    font-weight: bold;
+  }
+
+  .link-suggestion-path {
+    color: #888;
+    font-size: 0.85em;
+  }
 }
 
 .link-searchable-form-container {
@@ -821,80 +895,6 @@ div.image-upload-widget-image {
 .link-form-container .wrapper {
   display: flex;
   align-items: center;
-}
-
-.react-select-container .react-select__control {
-  width: 220px;
-  border: none;
-  box-shadow: none;
-  cursor: text;
-  font-size: 14px;
-}
-
-.react-select-container .react-select__menu {
-  z-index: 2;
-  top: auto;
-  left: -38px;
-  width: 310px;
-
-  border-bottom: 1px solid #c7d5d8;
-  margin-top: 0;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.react-select-container .react-select__menu-list {
-  max-height: unset;
-  padding-block: 0;
-}
-
-.react-select-container .react-select__placeholder {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.react-select-container .react-select__option {
-  display: flex;
-  min-height: 30px;
-  align-items: center;
-  padding: 6px 10px;
-  padding-left: 15px;
-  background-color: null;
-  color: #4a4a4a;
-  font-size: 14px;
-}
-
-.react-select-container .react-select__option:hover {
-  background-color: #f4f5f7;
-}
-
-.react-select-container .react-select__no-options-message {
-  font-size: 14px;
-}
-
-.link-suggestion-container {
-  display: flex;
-  align-items: center;
-}
-
-.link-suggestion-preview {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 10px;
-}
-
-.link-suggestion-content {
-  flex-grow: 1;
-}
-
-.link-suggestion-label {
-  color: #333;
-  font-weight: bold;
-}
-
-.link-suggestion-path {
-  color: #888;
-  font-size: 0.85em;
 }
 
 .blocks-chooser {
@@ -1092,7 +1092,6 @@ div.image-upload-widget-image {
 }
 
 .link-form-container {
-  z-index: 20;
   // ToDo: Improve CSS in anchor link component (previously from CSS module to normal theme)
   .input-anchorlink-theme {
     width: 240px;

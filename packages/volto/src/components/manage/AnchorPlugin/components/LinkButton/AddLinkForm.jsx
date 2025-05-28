@@ -186,7 +186,7 @@ const LinkForm = ({
         label: item.title,
         value: item['@id'],
         src: `${item['@id']}/@@images/image/preview`,
-        path: getBaseUrl(item['@id']),
+        path: flattenToAppURL(item['@id']),
         icon: getContentIcon(item['@type'], item.is_folderish),
         type: item['@type'],
       }));
