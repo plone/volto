@@ -1,34 +1,28 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { z } from 'zod';
 import type { GetHistoryResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 const getHistorySchema = z.object({
   path: z.string(),
 });
 
-export type HistoryArgs = z.infer<typeof getHistorySchema> & {
-  config: PloneClientConfig;
-};
+export type HistoryArgs = z.infer<typeof getHistorySchema> & {};
 
-export const getHistory = async ({
-  path,
-  config,
-}: HistoryArgs): Promise<GetHistoryResponse> => {
+export async function getHistory(
+  this: PloneClient,
+  { path }: HistoryArgs,
+): Promise<RequestResponse<GetHistoryResponse>> {
   const validatedArgs = getHistorySchema.parse({
     path,
   });
 
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
   const historyPath = `/${validatedArgs.path}/@history`;
 
   return apiRequest('get', historyPath, options);
-};
-
-export const getHistoryQuery = ({ path, config }: HistoryArgs) => ({
-  queryKey: [path, 'get', 'history'],
-  queryFn: () => getHistory({ path, config }),
-});
+}

@@ -3,17 +3,27 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { render } from '@testing-library/react';
 import config from '@plone/volto/registry';
-
 import Workflow from './Workflow';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/components/manage/Widgets');
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/components/manage/Widgets', async () => {
+  return await import(
+    '@plone/volto/components/manage/Widgets/__mocks__/index.vitest.tsx'
+  );
+});
+vi.mock('@plone/volto/helpers/Loadable/Loadable', async () => {
+  return await import(
+    '@plone/volto/helpers/Loadable/__mocks__/Loadable.vitest.jsx'
+  );
+});
+
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
 
 beforeEach(() => {
   config.settings.workflowMapping = {

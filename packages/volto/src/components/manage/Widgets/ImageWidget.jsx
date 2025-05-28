@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { toast } from 'react-toastify';
 import useLinkEditor from '@plone/volto/components/manage/AnchorPlugin/useLinkEditor';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
@@ -20,6 +21,7 @@ import { createContent } from '@plone/volto/actions/content/content';
 import { readAsDataURL } from 'promise-file-reader';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -59,6 +61,14 @@ const messages = defineMessages({
   uploadingImage: {
     id: 'Uploading image',
     defaultMessage: 'Uploading image',
+  },
+  Error: {
+    id: 'Error',
+    defaultMessage: 'Error',
+  },
+  imageUploadErrorMessage: {
+    id: 'imageUploadErrorMessage',
+    defaultMessage: 'Please upload an image instead.',
   },
 });
 
@@ -121,7 +131,10 @@ const UnconnectedImageInput = (props) => {
       const file = eventOrFile.target
         ? eventOrFile.target.files[0]
         : eventOrFile[0];
-      if (!validateFileUploadSize(file, intl.formatMessage)) return;
+      if (!validateFileUploadSize(file, intl.formatMessage)) {
+        setUploading(false);
+        return;
+      }
       readAsDataURL(file).then((fileData) => {
         const fields = fileData.match(/^data:(.*);(.*),(.*)$/);
         dispatch(
@@ -184,7 +197,21 @@ const UnconnectedImageInput = (props) => {
     >
       <Dropzone
         noClick
-        onDrop={handleUpload}
+        accept="image/*"
+        onDrop={(acceptedFiles) => {
+          setDragging(false);
+          if (acceptedFiles.length > 0) {
+            handleUpload(acceptedFiles);
+          } else {
+            toast.error(
+              <Toast
+                error
+                title={intl.formatMessage(messages.Error)}
+                content={intl.formatMessage(messages.imageUploadErrorMessage)}
+              />,
+            );
+          }
+        }}
         onDragEnter={onDragEnter}
         onDragLeave={onDragLeave}
         className="dropzone"
@@ -192,7 +219,7 @@ const UnconnectedImageInput = (props) => {
         {({ getRootProps, getInputProps }) => (
           <div {...getRootProps()}>
             <Message>
-              {dragging && <Dimmer active></Dimmer>}
+              {dragging && <Dimmer active />}
               {uploading && (
                 <Dimmer active>
                   <Loader indeterminate>
@@ -227,6 +254,7 @@ const UnconnectedImageInput = (props) => {
                             currentPath: contextUrl,
                           });
                         }}
+                        type="button"
                       >
                         <Icon name={navTreeSVG} size="24px" />
                       </Button>
@@ -242,6 +270,7 @@ const UnconnectedImageInput = (props) => {
                         onClick={() => {
                           imageUploadInputRef.current.click();
                         }}
+                        type="button"
                       >
                         <Icon name={uploadSVG} size="24px" />
                       </Button>
@@ -251,6 +280,7 @@ const UnconnectedImageInput = (props) => {
                           ref: imageUploadInputRef,
                           onChange: handleUpload,
                           style: { display: 'none' },
+                          accept: 'image/*',
                         })}
                       />
                     </Button.Group>
@@ -266,6 +296,7 @@ const UnconnectedImageInput = (props) => {
                           !props.selected && onFocus && onFocus();
                           linkEditor.show();
                         }}
+                        type="button"
                       >
                         <Icon name={linkSVG} circled size="24px" />
                       </Button>

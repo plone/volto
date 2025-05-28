@@ -2,16 +2,22 @@ import React from 'react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { waitFor, render, screen } from '@testing-library/react';
-
 import SelectAutoComplete from './SelectAutoComplete';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/helpers/Loadable/Loadable', async () => {
+  return await import(
+    '@plone/volto/helpers/Loadable/__mocks__/Loadable.vitest.jsx'
+  );
+});
+
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
 
 test('renders a select widget component', async () => {
   const store = mockStore({
