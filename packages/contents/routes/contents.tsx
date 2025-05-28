@@ -33,7 +33,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
   const searchableText =
     new URLSearchParams(new URL(request.url).search).get('SearchableText') ||
     null;
-  console.log('searchableText', searchableText);
+
   const search = flattenToAppURL(
     (
       await cli.search({
@@ -42,6 +42,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
             query: path,
             depth: 1,
           },
+          SearchableText: searchableText ? searchableText + '**' : undefined,
           sort_on: 'getObjPositionInParent',
           sort_order: 'ascending',
           metadata_fields: '_all',

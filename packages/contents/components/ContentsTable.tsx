@@ -2,6 +2,7 @@ import React, { type ComponentProps } from 'react';
 import '@plone/components/dist/basic.css';
 import '@plone/components/dist/quanta.css';
 import './Contents.css';
+
 // import type { ActionsResponse } from '@plone/types';
 import { VisuallyHidden } from 'react-aria';
 import {
@@ -153,8 +154,7 @@ export function ContentsTable({
   const columns = [
     {
       id: 'title',
-      // TODO: use translation
-      name: 'Title',
+      name: t('contents.indexes.title'),
       isRowHeader: true,
     },
     ...(!isMobileScreenSize
@@ -310,7 +310,7 @@ export function ContentsTable({
               placeholder={t('contents.actions.filter')}
               value={searchableText ?? ''}
               onChange={(v) => {
-                //to do : debounce
+                //TODO : debounce
                 navigate(`${pathname}?SearchableText=${v}`);
               }}
             />

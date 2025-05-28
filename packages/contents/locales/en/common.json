@@ -30,6 +30,7 @@
       "more_options": "More options"
     },
     "indexes": {
+      "title": "Title",
       "select_columns": "Select columns to show",
       "boolean": {
         "yes": "Yes",

@@ -685,6 +685,12 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.59.0
         version: 5.59.15(react@19.1.0)
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      jotai:
+        specifier: ^2.12.3
+        version: 2.12.3(@types/react@19.1.5)(react@19.1.0)
       react:
         specifier: ^19.1.0
         version: 19.1.0
