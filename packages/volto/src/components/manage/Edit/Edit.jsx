@@ -44,8 +44,6 @@ import { tryParseJSON } from '@plone/volto/helpers/FormValidation/FormValidation
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
-import config from '@plone/volto/registry';
-
 const messages = defineMessages({
   edit: {
     id: 'Edit {title}',
