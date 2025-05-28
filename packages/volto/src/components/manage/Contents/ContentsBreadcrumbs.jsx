@@ -47,7 +47,9 @@ const ContentsBreadcrumbs = (props) => {
             to={`${navroot['@id']}/contents`}
             className="section"
             title={navroot.title}
-          />
+          >
+            {navroot.title}
+          </Link>
         </>
       )}
       {items.map((breadcrumb, index, breadcrumbs) => [

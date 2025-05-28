@@ -35,7 +35,7 @@ describe('ManageTranslations', () => {
       },
       site: {
         data: {
-          'plone.available_languages': ['en'],
+          'plone.available_languages': ['de', 'es'],
         },
       },
     });

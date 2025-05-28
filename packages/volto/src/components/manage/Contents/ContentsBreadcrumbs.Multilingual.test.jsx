@@ -24,6 +24,7 @@ describe('ContentsBreadcrumbs Multilingual', () => {
           navroot: {
             '@type': 'LRF',
             '@id': '/en',
+            title: 'English',
           },
         },
       },
@@ -57,6 +58,7 @@ describe('ContentsBreadcrumbs Multilingual', () => {
           navroot: {
             '@type': 'LRF',
             '@id': '/en',
+            title: 'English',
           },
         },
       },
