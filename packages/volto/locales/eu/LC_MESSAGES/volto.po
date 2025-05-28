@@ -5,13 +5,12 @@ msgstr ""
 "POT-Creation-Date: 2020-09-15T08:53:14.294Z\n"
 "PO-Revision-Date: 2025-04-01 03:47+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
-"Language-Team: Basque <https://hosted.weblate.org/projects/plone/volto-18/eu/"
-">\n"
 "Language: eu\n"
-"MIME-Version: 1.0\n"
+"Language-Team: Basque <https://hosted.weblate.org/projects/plone/volto-18/eu/>\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
 "X-Generator: Weblate 5.11-dev\n"
 "Language-Code: eu\n"
 "Language-Name: Basque\n"
@@ -298,8 +297,7 @@ msgstr "Fazeta aurreratua?"
 #. Default: "Advanced facets are initially hidden and displayed on demand"
 #: components/manage/Blocks/Search/schema
 msgid "Advanced facets are initially hidden and displayed on demand"
-msgstr ""
-"Fazeta aurreratuak hasieran ezkutatuta daude eta eskatu ahala erakusten dira"
+msgstr "Fazeta aurreratuak hasieran ezkutatuta daude eta eskatu ahala erakusten dira"
 
 #. Default: "Album view"
 #: config/Views
@@ -638,10 +636,7 @@ msgstr "Aldaketak ondo gorde dira."
 #. Default: "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
 #: components/manage/Blocks/Teaser/schema
 msgid "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
-msgstr ""
-"Aukeratu kutxa hau helburu elementuaren izenburua, deskribapena edo irudia "
-"elementu honetan pertsonalizatu nahi badituzu. Utzi aukeratu gabe, helburu "
-"dokumentuko informazioa bere horretan erakusteko."
+msgstr "Aukeratu kutxa hau helburu elementuaren izenburua, deskribapena edo irudia elementu honetan pertsonalizatu nahi badituzu. Utzi aukeratu gabe, helburu dokumentuko informazioa bere horretan erakusteko."
 
 #. Default: "Checkbox"
 #: components/manage/Widgets/SchemaWidget
@@ -1368,10 +1363,7 @@ msgstr "Idatzi helburuaren bide absolutua. Helburua existitu egin behar da edo o
 #. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
-msgstr ""
-"Idatzi ordezko helbidearen bide absolutua. Bidea '/' karakterearekin hasi "
-"behar da. Orrialde bat aurkitzen ez denean sortzen den 404 errorea ematen "
-"duten helbideekin bakarrik gertatuko dira berbideraketak."
+msgstr "Idatzi ordezko helbidearen bide absolutua. Bidea '/' karakterearekin hasi behar da. Orrialde bat aurkitzen ez denean sortzen den 404 errorea ematen duten helbideekin bakarrik gertatuko dira berbideraketak."
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
@@ -1429,9 +1421,7 @@ msgstr "Hitzordua"
 #. Default: "Event end date must be on or after {startDateValueOrStartFieldName}"
 #: helpers/MessageLabels/MessageLabels
 msgid "Event end date must be on or after {startDateValueOrStartFieldName}"
-msgstr ""
-"Hitzorduaren bukaera data {startDateValueOrStartFieldName} edo beranduago "
-"izan behar da"
+msgstr "Hitzorduaren bukaera data {startDateValueOrStartFieldName} edo beranduago izan behar da"
 
 #. Default: "Event listing"
 #: config/Views
@@ -1441,9 +1431,7 @@ msgstr "Hitzorduen zerrenda"
 #. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
 #: helpers/MessageLabels/MessageLabels
 msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
-msgstr ""
-"Hitzorduaren hasiera data {startDateValueOrStartFieldName} edo lehenago izan "
-"behar da"
+msgstr "Hitzorduaren hasiera data {startDateValueOrStartFieldName} edo lehenago izan behar da"
 
 #. Default: "Event view"
 #: config/Views
@@ -1573,9 +1561,7 @@ msgstr "Igotako fitxategiak: {uploadedFiles}"
 #. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
 #: components/manage/Widgets/SchemaWidget
 msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
-msgstr ""
-"Formularioko eremuaren balioa adierazitako parametroak egungo URLan duen "
-"balioarekin betetzen du."
+msgstr "Formularioko eremuaren balioa adierazitako parametroak egungo URLan duen balioarekin betetzen du."
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
@@ -1966,9 +1952,7 @@ msgstr "Elementu destakatuaren iturburua ez da zuzena"
 #. Default: "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 #: helpers/MessageLabels/MessageLabels
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
-msgstr ""
-"Ezin duzu pasahitza ezarri eta aldi berean pasahitza berrezartzeko mezua "
-"bidaltzea eskatu. Bietako bat bakarrik aukeratu dezakezu."
+msgstr "Ezin duzu pasahitza ezarri eta aldi berean pasahitza berrezartzeko mezua bidaltzea eskatu. Bietako bat bakarrik aukeratu dezakezu."
 
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
@@ -2035,9 +2019,7 @@ msgstr "Hizkuntzarekiko Independentea den eremua."
 #. Default: "This is a language independent field. Any value you enter here will overwrite the corresponding field of all members of the translation group when you save this form."
 #: components/manage/Widgets/FormFieldWrapper
 msgid "Language independent icon title"
-msgstr ""
-"Hau hizkuntzarekiko independentea den eremu bat da. Hemen sartzen duzun "
-"balioa itzulpen guztietan ezarriko da formularioa gordetzean."
+msgstr "Hau hizkuntzarekiko independentea den eremu bat da. Hemen sartzen duzun balioa itzulpen guztietan ezarriko da formularioa gordetzean."
 
 #. Default: "Large"
 #: components/manage/Widgets/ImageSizeWidget
@@ -3434,16 +3416,12 @@ msgstr "Erakutsi elementua"
 #. Default: "Show potential sources. Not only objects that are source of some relation."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Show potential sources. Not only objects that are source of some relation."
-msgstr ""
-"Erakutsi ustezko jatorriak. Ez erlazio baten jatorri diren elementuak "
-"bakarrik."
+msgstr "Erakutsi ustezko jatorriak. Ez erlazio baten jatorri diren elementuak bakarrik."
 
 #. Default: "Show potential targets. Not only objects that are target of some relation."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Show potential targets. Not only objects that are target of some relation."
-msgstr ""
-"Erakutsi ustezko helburu-elementuak. Ez erlazioren baten helburu diren "
-"elementuak bakarrik."
+msgstr "Erakutsi ustezko helburu-elementuak. Ez erlazioren baten helburu diren elementuak bakarrik."
 
 #. Default: "Show search button?"
 #: components/manage/Blocks/Search/schema
@@ -3511,16 +3489,12 @@ msgstr "Txikia"
 #. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-msgstr ""
-"Elementu batzuk karpetak ere badira. Ezabatzen badituzu karpeten barruan "
-"dauden {containedItemsToDelete} {variation} ezabatuko dituzu."
+msgstr "Elementu batzuk karpetak ere badira. Ezabatzen badituzu karpeten barruan dauden {containedItemsToDelete} {variation} ezabatuko dituzu."
 
 #. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-msgstr ""
-"Elementu batzuei beste batzuek egiten diete erreferentzia. Ezabatzen "
-"badituzu {brokenReferences} {variation} apurtuta geldituko dira."
+msgstr "Elementu batzuei beste batzuek egiten diete erreferentzia. Ezabatzen badituzu {brokenReferences} {variation} apurtuta geldituko dira."
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3836,9 +3810,7 @@ msgstr "Izen-emate prozesua ondo egin duzu. Begiratu zure eposta, kontua aktibat
 #. Default: "The selected default language must be in the list of the field 'Available languages'"
 #: helpers/MessageLabels/MessageLabels
 msgid "The selected default language must be in the list of the field 'Available languages'"
-msgstr ""
-"Aukeratutako defektuzko hizkuntza 'Dauden hizkuntzak' zerrendako bat izan "
-"behar da"
+msgstr "Aukeratutako defektuzko hizkuntza 'Dauden hizkuntzak' zerrendako bat izan behar da"
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
@@ -3926,9 +3898,7 @@ msgstr "Hau {title} elementuaren lan-bertsioa da"
 #. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-msgstr ""
-"Elementu hau karpeta bat ere bada. Ezabatzen baduzu karpeta barruko "
-"{containedItemsToDelete} {variation} ere ezabatuko dituzu."
+msgstr "Elementu hau karpeta bat ere bada. Ezabatzen baduzu karpeta barruko {containedItemsToDelete} {variation} ere ezabatuko dituzu."
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -4592,13 +4562,7 @@ msgstr "Pasahitza ahaztuta?"
 #. Default: "Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
 #: components/manage/Controlpanels/Aliases
 msgid "bulkUploadUrlsHelp"
-msgstr ""
-"Gehitu ordezko URLak CSV fitxategi bat kargatuz. Lehenengo zutabean patha "
-"egon behar da; bigarrenean helburuko patha. Biak Plone atariarekiko "
-"erlatiboak izan behar dira eta / karakterearekin hasi. Hirugarren zutabe bat "
-"ere gehitu dezakezu data eta orduarekin. Laugarren zutabe bat ere gehitu "
-"dezakezu, berbideraketa hau eskuzkoa den ala ez adierazteko (defektuz hala "
-"izango da)."
+msgstr "Gehitu ordezko URLak CSV fitxategi bat kargatuz. Lehenengo zutabean patha egon behar da; bigarrenean helburuko patha. Biak Plone atariarekiko erlatiboak izan behar dira eta / karakterearekin hasi. Hirugarren zutabe bat ere gehitu dezakezu data eta orduarekin. Laugarren zutabe bat ere gehitu dezakezu, berbideraketa hau eskuzkoa den ala ez adierazteko (defektuz hala izango da)."
 
 #. Default: "Checkbox"
 #: config/Blocks
@@ -4628,9 +4592,7 @@ msgstr "Konparatu hizkuntza honekin"
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "countBrokenRelations"
-msgstr ""
-"{countofrelation} apurtuta {typeofrelation} motako {countofrelation, plural, "
-"one {relation} other {relations}}"
+msgstr "{countofrelation} apurtuta {typeofrelation} motako {countofrelation, plural, one {relation} other {relations}}"
 
 #. Default: "Date Range"
 #: config/Blocks
@@ -4730,11 +4692,7 @@ msgstr "Hustu IntIDak eta berreraiki erlazioak"
 #. Default: "<ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>"
 #: helpers/MessageLabels/MessageLabels
 msgid "flushAndRebuildRelationsHints"
-msgstr ""
-"<ul><li>Intideak berriz sortu (erlazioen katalogoan erabiltzen diren "
-"tokenak)</li><li>Berreraiki erlazioak</li></ul><p>Begiratu erroren "
-"erregistroa xehetasunak ikusteko!</p><p><b>Kontuz</b>: IntIdeak erabiltzen "
-"dituzten produktu gehigarriak badituzu, ez zenituzke ezabatu behar.</p>"
+msgstr "<ul><li>Intideak berriz sortu (erlazioen katalogoan erabiltzen diren tokenak)</li><li>Berreraiki erlazioak</li></ul><p>Begiratu erroren erregistroa xehetasunak ikusteko!</p><p><b>Kontuz</b>: IntIdeak erabiltzen dituzten produktu gehigarriak badituzu, ez zenituzke ezabatu behar.</p>"
 
 #. Default: "Head title"
 #: components/manage/Blocks/Teaser/schema
@@ -4880,8 +4838,7 @@ msgstr "Gehien erabilia"
 #. Default: "Found {sources} sources and {targets} targets. Narrow down to {max}!"
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "narrowDownRelations"
-msgstr ""
-"{sources} jatorri eta {targets} helburu aurkitu dira. Murriztu {max}era!"
+msgstr "{sources} jatorri eta {targets} helburu aurkitu dira. Murriztu {max}era!"
 
 #. Default: "No"
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
