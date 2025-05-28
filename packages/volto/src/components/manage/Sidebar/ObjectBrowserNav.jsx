@@ -5,6 +5,8 @@ import cx from 'classnames';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { getContentIcon } from '@plone/volto/helpers/Content/Content';
+import Image from '@plone/volto/components/theme/Image/Image';
+
 import config from '@plone/volto/registry';
 
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
@@ -135,10 +137,23 @@ const ObjectBrowserNav = ({
                   }
                   trigger={
                     <span>
-                      <Icon
-                        name={getContentIcon(item['@type'], item.is_folderish)}
-                        size="24px"
-                      />
+                      {item['@type'] === 'Image' ||
+                      item.hasPreviewImage === true ||
+                      item?.image_scales?.image?.length > 0 ? (
+                        <Image
+                          item={item}
+                          imageField="image"
+                          className="sidebar-image-icon"
+                        />
+                      ) : (
+                        <Icon
+                          name={getContentIcon(
+                            item['@type'],
+                            item.is_folderish,
+                          )}
+                          size="24px"
+                        />
+                      )}
                     </span>
                   }
                 />
