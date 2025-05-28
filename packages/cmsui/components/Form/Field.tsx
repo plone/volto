@@ -191,7 +191,6 @@ const Field = (props: FieldProps) => {
     anAtom: props.formAtom,
     field: props.name,
   });
-
   return props.mode !== MODE_HIDDEN ? (
     <Widget
       {...widgetProps}

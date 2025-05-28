@@ -1,111 +1,153 @@
-export interface WidgetsConfigById<P = any> {
-  schema: React.ComponentType<P>;
-  subjects: React.ComponentType<P>;
-  query: React.ComponentType<P>;
-  recurrence: React.ComponentType<P>;
-  remoteUrl: React.ComponentType<P>;
-  id: React.ComponentType<P>;
-  site_logo: React.ComponentType<P>;
-  preview_image_link: React.ComponentType<P>;
-}
+export type WidgetIdsTypes =
+  | (string & {})
+  | 'schema'
+  | 'subjects'
+  | 'query'
+  | 'recurrence'
+  | 'remoteUrl'
+  | 'id'
+  | 'site_logo'
+  | 'preview_image_link';
 
-export interface WidgetsConfigByWidget<P = any> {
-  textarea: React.ComponentType<P>;
-  datetime: React.ComponentType<P>;
-  date: React.ComponentType<P>;
-  password: React.ComponentType<P>;
-  file: React.ComponentType<P>;
-  image: React.ComponentType<P>;
-  align: React.ComponentType<P>;
-  buttons: React.ComponentType<P>;
-  url: React.ComponentType<P>;
-  internal_url: React.ComponentType<P>;
-  email: React.ComponentType<P>;
-  array: React.ComponentType<P>;
-  token: React.ComponentType<P>;
-  query: React.ComponentType<P>;
-  query_sort_on: React.ComponentType<P>;
-  querystring: React.ComponentType<P>;
-  object_browser: React.ComponentType<P>;
-  object: React.ComponentType<P>;
-  object_list: React.ComponentType<P>;
-  vocabularyterms: React.ComponentType<P>;
-  image_size: React.ComponentType<P>;
-  select_querystring_field: React.ComponentType<P>;
-  autocomplete: React.ComponentType<P>;
-  color_picker: React.ComponentType<P>;
-  select: React.ComponentType<P>;
-  schema: React.ComponentType<P>;
-  static_text: React.ComponentType<P>;
-  hidden: React.ComponentType<P>;
-  radio_group: React.ComponentType<P>;
-  checkbox_group: React.ComponentType<P>;
-}
+export type WidgetsConfigById<
+  K extends WidgetIdsTypes = WidgetIdsTypes,
+  P = any,
+> = Partial<{
+  [id in K]: React.ComponentType<P>;
+}>;
 
-export interface WidgetsConfigByVocabulary<P = any> {
-  'plone.app.vocabularies.Catalog': React.ComponentType<P>;
-}
-export type WidgetFactories =
+export type WidgetByWidgetTypes =
+  | (string & {})
+  | 'textarea'
+  | 'datetime'
+  | 'date'
+  | 'password'
+  | 'file'
+  | 'image'
+  | 'align'
+  | 'buttons'
+  | 'url'
+  | 'internal_url'
+  | 'email'
+  | 'array'
+  | 'token'
+  | 'query'
+  | 'query_sort_on'
+  | 'querystring'
+  | 'object_browser'
+  | 'object'
+  | 'object_list'
+  | 'vocabularyterms'
+  | 'image_size'
+  | 'select_querystring_field'
+  | 'autocomplete'
+  | 'color_picker'
+  | 'select'
+  | 'schema'
+  | 'static_text'
+  | 'hidden'
+  | 'radio_group'
+  | 'checkbox_group';
+
+export type WidgetsConfigByWidget<
+  K extends WidgetByWidgetTypes = WidgetByWidgetTypes,
+  P = any,
+> = {
+  [widgetType in K]: React.ComponentType<P>;
+};
+
+export type WidgetVocabularyTypes =
+  | (string & {})
+  | 'plone.app.vocabularies.Catalog';
+
+export type WidgetsConfigByVocabulary<
+  K extends WidgetVocabularyTypes = WidgetVocabularyTypes,
+  P = any,
+> = Partial<{
+  [vocabularyName in K]: React.ComponentType<P>;
+}>;
+
+export type WidgetFactortTypes =
   | (string & {})
   | 'Relation List'
   | 'Relation Choice';
 
 export type WidgetsConfigByFactory<
-  K extends WidgetFactories = string & {},
+  K extends WidgetFactortTypes = WidgetFactortTypes,
   P = any,
-> = {
+> = Partial<{
   [factoryName in K]: React.ComponentType<P>;
-} & {
-  'Relation List': React.ComponentType<P>;
-  // BBB: remove optionality when implementing related widget
-  'Relation Choice'?: React.ComponentType<P>;
-};
+}>;
 
-export interface WidgetsConfigByType<P = any> {
-  boolean: React.ComponentType<P>;
-  array: React.ComponentType<P>;
-  object: React.ComponentType<P>;
-  datetime: React.ComponentType<P>;
-  date: React.ComponentType<P>;
-  password: React.ComponentType<P>;
-  number: React.ComponentType<P>;
-  integer: React.ComponentType<P>;
-  id: React.ComponentType<P>;
-}
+export type WidgetByTypeTypes =
+  | (string & {})
+  | 'boolean'
+  | 'array'
+  | 'object'
+  | 'date'
+  | 'datetime'
+  | 'password'
+  | 'number'
+  | 'integer'
+  | 'id';
 
-export interface WidgetsConfigViewById<P = any> {
-  file: React.ComponentType<P>;
-  image: React.ComponentType<P>;
-  relatedItems: React.ComponentType<P>;
-  subjects: React.ComponentType<P>;
-}
+export type WidgetsConfigByType<
+  K extends WidgetByTypeTypes = WidgetByTypeTypes,
+  P = any,
+> = Partial<{
+  [widgetType in K]: React.ComponentType<P>;
+}>;
+export type WidgetViewsIdTypes =
+  | (string & {})
+  | 'file'
+  | 'image'
+  | 'relatedItems'
+  | 'subjects';
 
-export interface WidgetsConfigViewByWidget<P = any> {
-  array: React.ComponentType<P>;
-  boolean: React.ComponentType<P>;
-  choices: React.ComponentType<P>;
-  date: React.ComponentType<P>;
-  datetime: React.ComponentType<P>;
-  description: React.ComponentType<P>;
-  email: React.ComponentType<P>;
-  file: React.ComponentType<P>;
-  image: React.ComponentType<P>;
-  password: React.ComponentType<P>;
-  relation: React.ComponentType<P>;
-  richtext: React.ComponentType<P>;
-  string: React.ComponentType<P>;
-  tags: React.ComponentType<P>;
-  textarea: React.ComponentType<P>;
-  title: React.ComponentType<P>;
-  url: React.ComponentType<P>;
-  internal_url: React.ComponentType<P>;
-  object: React.ComponentType<P>;
-}
+export type WidgetsConfigViewById<
+  K extends WidgetViewsIdTypes = WidgetViewsIdTypes,
+  P = any,
+> = Partial<{
+  [viewId in K]: React.ComponentType<P>;
+}>;
+export type WidgetByViewTypes =
+  | (string & {})
+  | 'array'
+  | 'boolean'
+  | 'choices'
+  | 'date'
+  | 'datetime'
+  | 'password'
+  | 'description'
+  | 'email'
+  | 'file'
+  | 'image'
+  | 'password'
+  | 'relation'
+  | 'richtext'
+  | 'string'
+  | 'tags'
+  | 'textarea'
+  | 'title'
+  | 'url'
+  | 'internal_url'
+  | 'object';
 
-export interface WidgetsConfigViewByType<P = any> {
-  array: React.ComponentType<P>;
-  boolean: React.ComponentType<P>;
-}
+export type WidgetsConfigViewByWidget<
+  K extends WidgetByViewTypes = WidgetByViewTypes,
+  P = any,
+> = Partial<{
+  [widgetTypeByView in K]: React.ComponentType<P>;
+}>;
+
+export type WidgetViewByTypeTypes = (string & {}) | 'array' | 'boolean';
+
+export type WidgetsConfigViewByType<
+  K extends WidgetViewByTypeTypes = WidgetViewByTypeTypes,
+  P = any,
+> = Partial<{
+  [viewByType in K]: React.ComponentType<P>;
+}>;
 
 export interface WidgetsConfigViews<P = any> {
   getWidget: React.ComponentType<P>;
@@ -123,7 +165,7 @@ export interface WidgetsConfig {
   widget: WidgetsConfigByWidget;
   vocabulary: WidgetsConfigByVocabulary;
   factory: WidgetsConfigByFactory;
-  choices: React.ComponentType;
+  choices: React.ComponentType<any>;
   type: WidgetsConfigByType;
   views: WidgetsConfigViews;
 }

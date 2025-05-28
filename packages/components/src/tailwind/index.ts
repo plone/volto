@@ -7,3 +7,4 @@ export { Link } from './Link/Link';
 export * from './Breadcrumbs/Breadcrumbs';
 export * from './Accordion/Accordion';
 export * from './Field/Field';
+export * from './GridList/GridList';

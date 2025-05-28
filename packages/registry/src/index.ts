@@ -20,7 +20,7 @@ export type ConfigData = {
   settings: SettingsConfig | Record<string, never>;
   blocks: BlocksConfig | Record<string, never>;
   views: ViewsConfig | Record<string, never>;
-  widgets: WidgetsConfig | {};
+  widgets: WidgetsConfig;
   addonReducers?: AddonReducersConfig;
   addonRoutes?: AddonRoutesConfig;
   routes?: Array<ReactRouterRouteEntry>;
@@ -50,7 +50,7 @@ class Config {
         settings: {},
         blocks: {},
         views: {},
-        widgets: {},
+        widgets: {} as WidgetsConfig,
         slots: {},
         components: {},
         utilities: {},
@@ -526,17 +526,24 @@ class Config {
     route.push(options);
     this._data.routes = route;
   }
+  /**
+   * Registers a widget configuration into the registry.
+   *
+   * @template K - A key from the WidgetsConfig interface.
+   * @param options - An object containing the widget key and its corresponding implementation.
+   * @param options.key - The name of the widget configuration key (e.g., 'default', 'factory').
+   * @param options.definition - The actual widget configuration, which must match the expected structure of WidgetsConfig[K].
+   *
+   */
   registerWidget<K extends keyof WidgetsConfig>(options: {
     key: K;
-    widget: WidgetsConfig[K];
+    definition: WidgetsConfig[K];
   }) {
-    const { key, widget } = options;
+    const { key, definition } = options;
     const widgets = {
       ...(this.widgets ?? {}),
-      [key]: widget,
+      [key]: definition,
     };
-    console.log(widgets);
-    // TODO: find a better way to type this maybe
     this._data.widgets = widgets;
   }
 }

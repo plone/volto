@@ -27,7 +27,7 @@ export const Default: Story = {
     </GridList>
   ),
   args: {
-    onAction: null,
+    onAction: () => {},
     selectionMode: 'multiple',
   },
 };
