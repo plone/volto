@@ -52,10 +52,13 @@
     "@plone/cmsui": "workspace:*",
     "@plone/components": "workspace:*",
     "@plone/helpers": "workspace:*",
+    "@plone/layout": "workspace:*",
     "@plone/providers": "workspace:*",
     "@plone/registry": "workspace:*",
-    "@plone/layout": "workspace:*",
     "@tanstack/react-query": "^5.59.0",
+    "clsx": "^2.1.1",
+    "jotai": "^2.12.3",
+    "lodash.debounce": "^4.0.8",
     "react-aria": "^3.37.0",
     "react-aria-components": "catalog:",
     "react-i18next": "catalog:",
@@ -64,9 +67,7 @@
     "tailwind-variants": "^1.0.0",
     "tailwindcss": "catalog:",
     "tailwindcss-animate": "^1.0.7",
-    "usehooks-ts": "^3.1.0",
-    "clsx": "^2.1.1",
-    "jotai": "^2.12.3"
+    "usehooks-ts": "^3.1.0"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",

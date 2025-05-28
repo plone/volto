@@ -552,7 +552,7 @@ importers:
         version: link:../types
       '@react-types/shared':
         specifier: ^3.29.0
-        version: 3.29.0(react@19.1.0)
+        version: 3.29.1(react@19.1.0)
       '@storybook/addon-essentials':
         specifier: ^8.6.12
         version: 8.6.12(@types/react@19.1.5)(storybook@8.6.12(prettier@3.5.2))(webpack-sources@3.2.3)
@@ -691,6 +691,9 @@ importers:
       jotai:
         specifier: ^2.12.3
         version: 2.12.3(@types/react@19.1.5)(react@19.1.0)
+      lodash.debounce:
+        specifier: ^4.0.8
+        version: 4.0.8
       react:
         specifier: ^19.1.0
         version: 19.1.0
@@ -3783,11 +3786,6 @@ packages:
 
   '@react-types/select@3.9.12':
     resolution: {integrity: sha512-qo+9JS1kfMxuibmSmMp0faGKbeVftYnSk1f7Rh5PKi4tzMe3C0A9IAr27hUOfWeJMBOdetaoTpYmoXW6+CgW3g==}
-    peerDependencies:
-      react: ^19.1.0
-
-  '@react-types/shared@3.29.0':
-    resolution: {integrity: sha512-IDQYu/AHgZimObzCFdNl1LpZvQW/xcfLt3v20sorl5qRucDVj4S9os98sVTZ4IRIBjmS+MkjqpR5E70xan7ooA==}
     peerDependencies:
       react: ^19.1.0
 
@@ -13963,10 +13961,6 @@ snapshots:
   '@react-types/select@3.9.12(react@19.1.0)':
     dependencies:
       '@react-types/shared': 3.29.1(react@19.1.0)
-      react: 19.1.0
-
-  '@react-types/shared@3.29.0(react@19.1.0)':
-    dependencies:
       react: 19.1.0
 
   '@react-types/shared@3.29.1(react@19.1.0)':

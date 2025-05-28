@@ -1,8 +1,13 @@
-import React, { type ComponentProps } from 'react';
+import React, {
+  type ComponentProps,
+  useEffect,
+  useState,
+  useMemo,
+} from 'react';
 import '@plone/components/dist/basic.css';
 import '@plone/components/dist/quanta.css';
 import './Contents.css';
-
+import debounce from 'lodash.debounce';
 // import type { ActionsResponse } from '@plone/types';
 import { VisuallyHidden } from 'react-aria';
 import {
@@ -262,6 +267,19 @@ export function ContentsTable({
     },
   });
 
+  //debounce search input
+  const [searchInput, setSearchInput] = useState(searchableText ?? '');
+  const debouncedSearchableText = useMemo(
+    () =>
+      debounce((text: string) => {
+        navigate(`${pathname}?SearchableText=${text}`);
+      }, 300),
+    [navigate, pathname],
+  );
+  useEffect(() => {
+    debouncedSearchableText(searchInput);
+  }, [searchInput]);
+
   if (false)
     return (
       <Modal isOpen={true}>
@@ -308,10 +326,9 @@ export function ContentsTable({
             <TextField
               name="sortable_title"
               placeholder={t('contents.actions.filter')}
-              value={searchableText ?? ''}
+              value={searchInput ?? ''}
               onChange={(v) => {
-                //TODO : debounce
-                navigate(`${pathname}?SearchableText=${v}`);
+                setSearchInput(v);
               }}
             />
 
