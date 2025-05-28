@@ -167,6 +167,18 @@ export function DateTimePicker({
               <CalendarIcon aria-hidden className="h-4 w-4" />
             </Button>
           </FieldGroup>
+          {resettable && (
+            <Button
+              variant="icon"
+              className="h-7 w-7 flex-shrink-0 p-1"
+              onPress={handleReset}
+              isDisabled={isDisabled || !internalValue || props.isReadOnly}
+              aria-label="Clear date and time"
+              slot={null}
+            >
+              <CloseIcon className="h-4 w-4" />
+            </Button>
+          )}
         </div>
 
         {description && <Description>{description}</Description>}
@@ -177,18 +189,6 @@ export function DateTimePicker({
           </Dialog>
         </Popover>
       </AriaDatePicker>
-      {resettable && (
-        <Button
-          variant="icon"
-          className="h-7 w-7 flex-shrink-0 p-1"
-          onPress={handleReset}
-          isDisabled={isDisabled || !internalValue || props.isReadOnly}
-          aria-label="Clear date and time"
-          slot="clear"
-        >
-          <CloseIcon className="h-4 w-4" />
-        </Button>
-      )}
     </div>
   );
 }
