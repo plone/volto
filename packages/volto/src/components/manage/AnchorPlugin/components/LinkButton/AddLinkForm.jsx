@@ -269,6 +269,10 @@ const LinkForm = ({
 
   const handleSelectKeyDown = (e) => {
     // If the menu is open, stop propagation for arrow keys and Enter
+    if (e.key === 'Enter' && filteredSuggestions.length === 0) {
+      onSubmit();
+      e.stopPropagation();
+    }
     if (
       isMenuOpen &&
       (e.key === 'ArrowUp' ||
