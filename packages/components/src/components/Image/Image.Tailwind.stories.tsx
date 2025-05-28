@@ -206,7 +206,7 @@ const mockPloneItem = {
     image: [
       {
         // This is the primary "download" URL for the image, often a larger scale
-        download: 'https://picsum.photos/128/85', // Main image: 600x400 pixels
+        download: 'https://picsum.photos/600/400', // Main image: 600x400 pixels
         width: 600,
         height: 400,
         'content-type': 'image/jpeg',
