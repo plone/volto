@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.4.0 (2025-05-20)
+
+### Feature
+
+- Improve accessibility for sortable table headers in table block. @kreafox [#7090](https://github.com/plone/volto/issues/7090)
+
 ## 18.3.1 (2025-05-08)
 
 ### Internal
