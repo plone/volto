@@ -1,8 +1,3 @@
-/**
- * AddLink Form.
- * @module components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
- */
-
 import React, {
   useState,
   useRef,
@@ -78,17 +73,37 @@ const LinkForm = ({
   const dispatch = useDispatch();
 
   const linkFormContainer = useRef(null);
+  const selectRef = useRef(null);
 
   const [link, setLink] = useState(
     isInternalURL(data.url) ? flattenToAppURL(data.url) : data.url || '',
   );
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedValue, setSelectedValue] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const subrequests = useSelector((state) => state.search.subrequests);
   const token = useSelector((state) => state.userSession.token, shallowEqual);
   const userId = token ? jwtDecode(token).sub : '';
 
   const Select = reactSelect.default;
+
+  // Effect to set the initial selected value when data.url changes
+  useEffect(() => {
+    if (data.url) {
+      const initialUrl = isInternalURL(data.url)
+        ? flattenToAppURL(data.url)
+        : data.url;
+
+      setSelectedValue({ label: initialUrl, value: initialUrl });
+      setSearchTerm(initialUrl);
+      setLink(initialUrl);
+    } else {
+      setSelectedValue(null);
+      setSearchTerm('');
+      setLink('');
+    }
+  }, [data.url]);
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -176,7 +191,7 @@ const LinkForm = ({
         type: item['@type'],
       }));
 
-    return suggestions.slice(0, 5); // Limitam tot la 5 pentru afișare
+    return suggestions.slice(0, 5); // Limit to 5 for display
   }, [filterSuggestionByType, content]);
 
   const formatOptionLabel = ({ label, path, src, icon, type }) => (
@@ -200,14 +215,29 @@ const LinkForm = ({
   const onInputChange = (inputValue, { action }) => {
     if (action === 'input-change') {
       setLink(inputValue);
-      setSearchTerm(inputValue); // Actualizează searchTerm pentru a declanșa căutarea backend
+      setSearchTerm(inputValue);
+      setSelectedValue(null);
+      // Open menu if typing and there are any suggestions (even if filteredSuggestions is empty for a moment,
+      // the backend call will update 'content' and thus 'filteredSuggestions' shortly after)
+      setIsMenuOpen(true); // Always open menu when typing
     }
   };
 
-  const onChange = (url) => {
-    setLink(url.value);
-    onChangeValue(addAppURL(url.value));
-    setSearchTerm(''); // Golește searchTerm după selecție
+  const onChange = (urlOption) => {
+    if (urlOption) {
+      setLink(urlOption.value);
+      onChangeValue(addAppURL(urlOption.value));
+      setSelectedValue(urlOption);
+      setSearchTerm(urlOption.label);
+      setIsMenuOpen(false);
+    } else {
+      setLink('');
+      onChangeValue('');
+      setSelectedValue(null);
+      setSearchTerm('');
+      setIsMenuOpen(false);
+    }
+    selectRef.current?.focus();
   };
 
   const onSubmit = () => {
@@ -225,8 +255,11 @@ const LinkForm = ({
 
   const clear = () => {
     setLink('');
-    setSearchTerm(''); // Golește searchTerm la ștergere
+    setSearchTerm('');
+    setSelectedValue(null);
     onClear();
+    setIsMenuOpen(false);
+    selectRef.current?.focus();
   };
 
   const onClose = useCallback(
@@ -234,15 +267,37 @@ const LinkForm = ({
     [onOverrideContent],
   );
 
-  const onKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
+  const handleSelectKeyDown = (e) => {
+    // If the menu is open, stop propagation for arrow keys and Enter
+    if (
+      isMenuOpen &&
+      (e.key === 'ArrowUp' ||
+        e.key === 'ArrowDown' ||
+        e.key === 'Enter' ||
+        e.key === 'Tab')
+    ) {
       e.stopPropagation();
-      onSubmit();
-    } else if (e.key === 'Escape') {
+    }
+    if (e.key === 'Escape') {
       e.preventDefault();
       onClose();
     }
+  };
+
+  const onFocus = () => {
+    // Open menu if there are any filtered suggestions.
+    // This makes sure initial suggestions are shown on focus.
+    if (filteredSuggestions.length > 0) {
+      setIsMenuOpen(true);
+    }
+  };
+
+  const onBlur = () => {
+    // Close menu when focus leaves, unless an item is being clicked in the menu.
+    // react-select handles this internally fairly well.
+    // This is a common pattern to ensure the menu closes when appropriate.
+    // A small timeout can sometimes be useful if menu items are buttons.
+    setIsMenuOpen(false);
   };
 
   useEffect(() => {
@@ -266,6 +321,13 @@ const LinkForm = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [onOverrideContent, filterSuggestionByType, onClose]);
 
+  // Focus the select input when the component mounts or becomes visible
+  useEffect(() => {
+    if (selectRef.current) {
+      selectRef.current.focus();
+    }
+  }, [selectRef]);
+
   return (
     <div
       className="link-form-container link-searchable-form-container"
@@ -284,7 +346,7 @@ const LinkForm = ({
             mode: objectBrowserPickerType,
             overlay: true,
             onSelectItem: (url) => {
-              onChange(url);
+              onChange({ value: url, label: url });
               onSubmit();
             },
           });
@@ -294,9 +356,11 @@ const LinkForm = ({
       </Button>
       <div className="wrapper">
         <Select
+          ref={selectRef}
           className="react-select-container"
           classNamePrefix="react-select"
-          inputValue={link}
+          inputValue={searchTerm}
+          value={selectedValue}
           options={filteredSuggestions}
           formatOptionLabel={formatOptionLabel}
           isSearchable
@@ -308,7 +372,11 @@ const LinkForm = ({
           }}
           onChange={onChange}
           onInputChange={onInputChange}
-          onKeyDown={onKeyDown}
+          onKeyDown={handleSelectKeyDown}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          menuIsOpen={isMenuOpen}
+          isClearable
         />
         {link.length > 0 && (
           <Button

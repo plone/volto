@@ -2607,6 +2607,7 @@ msgid "Open menu"
 msgstr "Apri menu"
 
 #. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
 msgstr "Apri object browser"
