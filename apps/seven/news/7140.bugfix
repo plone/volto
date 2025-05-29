@@ -1,0 +1,1 @@
+Fixed flattenToAppURL not baing able to read from the config registry. @pnicolli
