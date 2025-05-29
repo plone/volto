@@ -8,3 +8,4 @@ export { Tabs } from './Tabs/Tabs';
 export * from './Breadcrumbs/Breadcrumbs';
 export * from './Accordion/Accordion';
 export * from './Field/Field';
+export * from './RadioGroup/RadioGroup';
