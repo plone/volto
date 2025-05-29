@@ -1,16 +1,16 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { MoreoptionsIcon, SettingsIcon } from '../../components/icons';
-
+/* eslint-disable no-alert */
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 import {
-  MenuTrigger,
-  SubmenuTrigger,
-  Keyboard,
-  Text,
-  Separator,
-  MenuItem,
-  MenuSection,
-} from 'react-aria-components';
+  BackgroundIcon,
+  BlindIcon,
+  DashIcon,
+  LinkIcon,
+  PropertiesIcon,
+  SettingsIcon,
+} from '../../components/icons';
+import { type Selection } from 'react-aria-components';
 import { Menu } from './Menu';
 
 const meta: Meta<typeof Menu> = {
@@ -91,8 +91,7 @@ export const DisabledItems: Story = {
   render: (args: any) => (
     <Menu
       {...args}
-      button={<SettingsIcon />}
-      disabledKeys={['paste']}
+      button={<BlindIcon />}
       menuItems={[
         { id: 'cut', label: 'Cut' },
         { id: 'copy', label: 'Copy' },
@@ -107,7 +106,7 @@ export const WithSeparators: Story = {
   render: (args: any) => (
     <Menu
       {...args}
-      button={<SettingsIcon />}
+      button={<DashIcon />}
       menuItems={[
         { id: 'cut', label: 'Cut' },
         { id: 'copy', label: 'Copy' },
@@ -124,7 +123,7 @@ export const WithSections: Story = {
   render: (args: any) => (
     <Menu
       {...args}
-      button={<SettingsIcon />}
+      button={<BackgroundIcon />}
       menuItems={[
         {
           section: true,
@@ -153,7 +152,7 @@ export const AsLinks: Story = {
   render: (args: any) => (
     <Menu
       {...args}
-      button={<SettingsIcon />}
+      button={<LinkIcon />}
       menuItems={[
         {
           id: 'adobe',
@@ -180,20 +179,87 @@ export const AsLinks: Story = {
           target: '_blank',
         },
       ]}
-    >
-      <MenuItem href="https://adobe.com/" target="_blank">
-        Adobe
-      </MenuItem>
-      <MenuItem href="https://apple.com/" target="_blank">
-        Apple
-      </MenuItem>
-      <MenuItem href="https://google.com/" target="_blank">
-        Google
-      </MenuItem>
-      <MenuItem href="https://microsoft.com/" target="_blank">
-        Microsoft
-      </MenuItem>
-    </Menu>
+    ></Menu>
   ),
   args: {},
+};
+
+export const SingleSelection: Story = {
+  render: (args: any) => {
+    const [selected, setSelected] = React.useState<Selection>(
+      new Set(['center']),
+    );
+
+    return (
+      <>
+        <Menu
+          {...args}
+          button={<PropertiesIcon />}
+          selectionMode="single"
+          selectedKeys={selected}
+          onSelectionChange={setSelected}
+          menuItems={[
+            { id: 'left', label: 'Left' },
+            { id: 'center', label: 'Center' },
+            { id: 'right', label: 'Right' },
+          ]}
+        ></Menu>
+        <p>
+          Current selection (controlled):{' '}
+          {selected === 'all' ? 'all' : [...selected].join(', ')}
+        </p>
+      </>
+    );
+  },
+  args: {},
+};
+
+export const MultipleSelection: Story = {
+  render: (args: any) => {
+    const [selected, setSelected] = React.useState<Selection>(
+      new Set(['sidebar', 'console']),
+    );
+
+    return (
+      <>
+        <Menu
+          {...args}
+          button={<PropertiesIcon />}
+          selectionMode="multiple"
+          selectedKeys={selected}
+          onSelectionChange={setSelected}
+          menuItems={[
+            { id: 'sidebar', label: 'Sidebar' },
+            { id: 'searchbar', label: 'Searchbar' },
+            { id: 'tools', label: 'Tools' },
+            { id: 'console', label: 'Console' },
+          ]}
+        ></Menu>
+        <p>
+          Current selection (controlled):{' '}
+          {selected === 'all' ? 'all' : [...selected].join(', ')}
+        </p>
+      </>
+    );
+  },
+  args: {},
+};
+
+export const LongPress: Story = {
+  render: (args: any) => (
+    <Menu
+      {...args}
+      button="Long press"
+      menuItems={[
+        { id: 'cut', label: 'Cut' },
+        { id: 'copy', label: 'Copy' },
+        { id: 'paste', label: 'Paste' },
+      ]}
+    ></Menu>
+  ),
+  args: {
+    trigger: 'longPress',
+    onPress: () => alert('crop'),
+    onAction: (id: any) => alert(id),
+  },
 };

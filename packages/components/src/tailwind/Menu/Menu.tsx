@@ -3,24 +3,23 @@ import React, { Fragment, type ReactNode } from 'react';
 import {
   Menu as RACMenu,
   MenuItem as RACMenuItem,
-  MenuSection as RACMenuSection,
   composeRenderProps,
   MenuTrigger,
   Keyboard,
   Section,
   Text,
   Header,
-  type MenuSectionProps as RACMenuSectionProps,
   type MenuItemProps as RACMenuItemProps,
   type SeparatorProps,
   type MenuProps as RACMenuProps,
+  type MenuTriggerProps,
+  type PressEvent,
 } from 'react-aria-components';
 import { Popover, type PopoverProps } from '../Popover/Popover';
 import { CheckboxIcon, ChevronrightIcon } from '../../components/icons';
 import { Button } from '../Button/Button';
 import { Separator } from '../Separator/Separator';
 import { tv } from 'tailwind-variants';
-import { focusRing } from '../utils';
 
 export interface itemProps {
   id: string;
@@ -47,17 +46,25 @@ export const dropdownItemStyles = tv({
     isFocused: {
       true: 'bg-blue-600 text-white forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]',
     },
-    hasKeyboard: {
+    selectionMode: {
+      single: 'flex',
+      multiple: 'flex',
+    },
+    hasDescription: {
       false: '',
       true: '',
     },
-    hasDescription: {
+    hasKeyboard: {
       false: '',
       true: '',
     },
     hasIcon: {
       false: '',
       true: '',
+    },
+    hasHref: {
+      false: '',
+      true: 'block',
     },
   },
   compoundVariants: [
@@ -76,9 +83,19 @@ export const dropdownItemStyles = tv({
   ],
 });
 export interface MenuItemProps extends RACMenuItemProps {
-  hasDescription: boolean;
-  hasKeyboard: boolean;
-  hasIcon: boolean;
+  selectionMode: 'single' | 'multiple' | undefined;
+  item: itemProps;
+}
+
+export interface MenuButtonProps<T>
+  extends RACMenuProps<T>,
+    Omit<MenuTriggerProps, 'children'> {
+  button?: React.ReactNode;
+  onPress?: (e: PressEvent) => void;
+
+  placement?: PopoverProps['placement'];
+  selectionMode?: 'single' | 'multiple';
+  menuItems: itemProps[];
 }
 
 export function MenuItem(props: MenuItemProps) {
@@ -89,75 +106,53 @@ export function MenuItem(props: MenuItemProps) {
     <RACMenuItem
       textValue={textValue}
       {...props}
+      id={props.item?.id}
       className={composeRenderProps(props.className, (className, renderProps) =>
         dropdownItemStyles({
           ...renderProps,
-          hasDescription: props.hasDescription,
-          hasKeyboard: props.hasKeyboard,
-          hasIcon: props.hasIcon,
+          hasDescription: !!props.item.description,
+          hasIcon: !!props.item?.icon,
+          hasKeyboard: !!props.item?.keyboard,
+          isDisabled: props.item?.disabled,
+          selectionMode: props?.selectionMode,
+          hasHref: !!props.item?.href,
           className,
         }),
       )}
-    ></RACMenuItem>
-  );
-}
-
-const menu = tv({
-  extend: focusRing,
-  base: '',
-  variants: {},
-});
-
-export interface MenuButtonProps<T>
-  extends MenuProps<T>,
-    Omit<MenuTriggerProps, 'children'> {
-  button?: React.ReactNode;
-  onPress?: (e: PressEvent) => void;
-
-  placement?: PopoverProps['placement'];
-  menuItems: itemProps[];
-}
-
-interface MenuItemContentProps {
-  selectionMode: string;
-  isSelected: boolean;
-  hasSubmenu: boolean;
-  item: itemProps;
-}
-
-function MenuItemContent({
-  item,
-  selectionMode,
-  isSelected,
-  hasSubmenu,
-}: MenuItemContentProps) {
-  return (
-    <>
-      {selectionMode && (
-        <span className="flex w-4 items-center">
-          {isSelected && <CheckboxIcon aria-hidden className="h-4 w-4" />}
-        </span>
+    >
+      {composeRenderProps(
+        props.children,
+        (children, { selectionMode, isSelected, hasSubmenu }) => (
+          <>
+            {selectionMode !== 'none' && (
+              <span className="flex w-4 items-center">
+                {isSelected && <CheckboxIcon aria-hidden className="h-4 w-4" />}
+              </span>
+            )}
+            {props.item.icon && <props.item.icon className="col-start-1" />}
+            <Text slot="label" className="col-start-2 text-lg">
+              {children}
+            </Text>
+            {props.item.description && (
+              <Text slot="description" className="col-start-2 text-sm">
+                {props.item.description}
+              </Text>
+            )}
+            {props.item.keyboard && (
+              <Keyboard className="col-start-3 row-span-2 text-lg">
+                {props.item.keyboard}
+              </Keyboard>
+            )}
+            {hasSubmenu && (
+              <ChevronrightIcon
+                aria-hidden
+                className="absolute right-2 h-4 w-4"
+              />
+            )}
+          </>
+        ),
       )}
-      {item.icon && <item.icon className="col-start-1" />}
-      {item.label && (
-        <Text slot="label" className="col-start-2 text-lg">
-          {item.label}
-        </Text>
-      )}
-      {item.description && (
-        <Text slot="label" className="col-start-2 text-sm">
-          {item.description}
-        </Text>
-      )}
-      {item.keyboard && (
-        <Keyboard className="col-start-3 row-span-2 text-lg">
-          {item.keyboard}
-        </Keyboard>
-      )}
-      {hasSubmenu && (
-        <ChevronrightIcon aria-hidden className="absolute right-2 h-4 w-4" />
-      )}
-    </>
+    </RACMenuItem>
   );
 }
 
@@ -182,19 +177,11 @@ export function Menu<T extends object>({
                 {!item.separator && !item.section && (
                   <MenuItem
                     key={item.id}
-                    hasDescription={!!item.description}
-                    hasKeyboard={!!item.keyboard}
-                    hasIcon={!!item.icon}
+                    item={item}
                     isDisabled={item.disabled}
-                    href={item.href}
-                    target={item.target}
+                    selectionMode={props.selectionMode}
                   >
-                    <MenuItemContent
-                      item={item}
-                      selectionMode={props.selectionMode}
-                      isSelected={props.isSelected}
-                      hasSubmenu={props.hasSubmenu}
-                    />
+                    {item.label}
                   </MenuItem>
                 )}
                 {!item.separator && item.section && (
@@ -205,18 +192,11 @@ export function Menu<T extends object>({
                     {item.children.map((child) => (
                       <MenuItem
                         key={child.id}
-                        hasDescription={!!child.description}
-                        hasKeyboard={!!child.keyboard}
-                        hasIcon={!!child.icon}
+                        item={child}
                         isDisabled={child.disabled}
-                        href={item.href}
+                        selectionMode={props.selectionMode}
                       >
-                        <MenuItemContent
-                          item={child}
-                          selectionMode={props.selectionMode}
-                          isSelected={props.isSelected}
-                          hasSubmenu={props.hasSubmenu}
-                        />
+                        {child.label}
                       </MenuItem>
                     ))}
                   </Section>
