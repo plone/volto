@@ -112,7 +112,6 @@ const customActionsInfo = {
   ...defaultActionsInfo,
   custom: [AligncenterIcon, 'Custom Alignment'] as [
     React.ComponentType<any>,
-
     string,
   ],
 };
