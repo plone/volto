@@ -5,7 +5,6 @@
  */
 export function flattenToAppURL<T>(data: T, apiPath: string) {
   // Convert data to string to perform replacements
-  console.log('Flattening data to app URL', apiPath);
   let stringData = JSON.stringify(data);
 
   // Replace all occurrences of backend URLs
