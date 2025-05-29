@@ -1,7 +1,7 @@
 import { useAppRouter } from '@plone/providers';
 import { ContentsTable } from '../components/ContentsTable';
 import Indexes, { defaultIndexes } from '../components/Indexes';
-import { requireAuthCookie } from '@plone/cmsui/routes/auth/auth';
+import { requireAuthCookie } from '@plone/react-router';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
 import { useLocation, type LoaderFunctionArgs } from 'react-router';
@@ -40,7 +40,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
     new URLSearchParams(new URL(request.url).search).get('SearchableText') ||
     null;
 
-  let searchQuery = {
+  const searchQuery = {
     path: {
       query: path,
       depth: 1,

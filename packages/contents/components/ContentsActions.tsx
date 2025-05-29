@@ -11,6 +11,7 @@ import TagSVG from '@plone/components/icons/tag.svg?react';
 import CutSVG from '@plone/components/icons/cut.svg?react';
 import CopySVG from '@plone/components/icons/copy.svg?react';
 import PasteSVG from '@plone/components/icons/paste.svg?react';
+import '../styles/ContentsActions.css';
 
 type Props = {
   upload: () => Promise<void>;
@@ -97,6 +98,7 @@ export function ContentsActions({
         </Button>
         <Tooltip placement="bottom">{t('contents.actions.properties')}</Tooltip>
       </TooltipTrigger>
+      <span className="separator"></span>
       <TooltipTrigger>
         <Button
           className="react-aria-Button contents-action-trigger cut"

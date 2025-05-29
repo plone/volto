@@ -1,0 +1,17 @@
+.contents-actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  .separator {
+    border: 0.5px solid var(--quanta-silver);
+    margin: 0 0.25rem;
+  }
+  .react-aria-Button {
+    padding: 4.5px;
+  }
+  .contents-action-trigger {
+    &.delete {
+      --text-color: var(--quanta-candy);
+    }
+  }
+}

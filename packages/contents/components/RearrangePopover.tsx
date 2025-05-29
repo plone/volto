@@ -3,6 +3,7 @@ import { Menu, MenuItem, SubmenuTrigger } from 'react-aria-components';
 import { Popover, type PopoverProps } from '@plone/components';
 import ChevronrightIcon from '@plone/components/icons/chevron-right.svg?react';
 import { useTranslation } from 'react-i18next';
+import '../styles/RearrangePopover.css';
 
 interface Props extends Omit<PopoverProps, 'children'> {
   indexes: {

@@ -42,6 +42,7 @@ import { useLoaderData, useNavigate } from 'react-router';
 import type { ContentsLoaderType } from '../routes/contents';
 import { useTranslation } from 'react-i18next';
 import { useContentsContext } from '../providers/contents';
+import '../styles/ContentsTable.css';
 
 interface ContentsTableProps {
   pathname: string;
@@ -298,7 +299,7 @@ export function ContentsTable({
               includeRoot={true}
               root={breadcrumbs.root}
               items={breadcrumbs.items}
-              className="contents-breadcrumbs"
+              className="react-aria-Breadcrumbs contents-breadcrumbs"
             />
             <h1 className="text-2xl font-bold">{title}</h1>
           </div>

@@ -16,6 +16,7 @@
         tr:hover,
         tr:focus-within {
           background-color: var(--plone-table-cell-hover-background);
+          --button-background: var(--plone-table-cell-hover-background);
         }
       }
     }
