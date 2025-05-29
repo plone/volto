@@ -1,23 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: Plone\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-15T08:53:14.294Z\n"
-"PO-Revision-Date: 2025-04-01 03:47+0000\n"
-"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
-"Language-Team: Basque <https://hosted.weblate.org/projects/plone/volto-18/eu/"
-">\n"
-"Language: eu\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.11-dev\n"
-"Language-Code: eu\n"
-"Language-Name: Basque\n"
-"Preferred-Encodings: utf-8\n"
-"Domain: volto\n"
-"X-Poedit-Bookmarks: -1,38,-1,-1,-1,-1,-1,-1,-1,-1\n"
+msgstr "Project-Id-Version: Plone\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2020-09-15T08:53:14.294Z\nPO-Revision-Date: 2025-05-29 14:48+0000\nLast-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\nLanguage-Team: Basque <https://hosted.weblate.org/projects/plone/volto-18/eu/>\nLanguage: eu\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.12-dev\nLanguage-Code: eu\nLanguage-Name: Basque\nPreferred-Encodings: utf-8\nDomain: volto\nX-Poedit-Bookmarks: -1,38,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -4764,7 +4746,7 @@ msgstr "Irudia"
 #. Default: "Please upload an image instead."
 #: components/manage/Widgets/ImageWidget
 msgid "imageUploadErrorMessage"
-msgstr ""
+msgstr "Kargatu irudi bat mesedez."
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
