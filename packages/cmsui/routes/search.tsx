@@ -18,24 +18,25 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 
   const path = `/${params['*'] || ''}`;
   const query = Object.fromEntries(new URL(request.url).searchParams.entries());
+  const pathQuery = {
+    query: query['path.query'] || path,
+    depth: Number(query['path.depth']) || undefined,
+  };
 
-  const results = flattenToAppURL(
-    (
-      await cli.search({
-        query: {
-          path: {
-            query: path,
-            // TODO get depth from query
-            // depth: query.path?.depth,
-          },
-          ...query,
-        },
-      })
-    ).data,
-    config.settings.apiPath,
-  );
+  delete query['path.depth'];
+  delete query['path.query'];
 
-  return data(results, {
+  const { data: results } = await cli.search({
+    query: {
+      path: pathQuery,
+      ...query,
+      SearchableText: query.SearchableText
+        ? `${query.SearchableText}*`
+        : undefined,
+    },
+  });
+
+  return data(flattenToAppURL(results, config.settings.apiPath), {
     headers: {
       'Content-Type': 'application/json',
     },
