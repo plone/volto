@@ -2,7 +2,7 @@
   "contents": {
     "loading": "Caricamento...",
     "results": {
-      "number": "{count} elementi",
+      "number": "{{count}} elementi",
       "contents_of": "Contenuti di {title}",
       "no_results": "Nessun elemento trovato"
     },
@@ -53,7 +53,16 @@
       "by": "Riordina gli elementi per…",
       "asc": "Crescente",
       "desc": "Decrescente",
-      "pickOrder": "Riposiziona {index}"
+      "pickOrder": "Riposiziona {{index}}"
     }
+  },
+  "modal": {
+    "close": "Annulla"
+  },
+  "modal_delete": {
+    "single": { "title": "Vuoi eliminare \"{{item}}\"?" },
+    "multi": { "title": "Vuoi eliminare {{n}} elementi?" },
+    "description": "Questa azione non può essere annullata.",
+    "confirm": "Procedi con l'eliminazione"
   }
 }

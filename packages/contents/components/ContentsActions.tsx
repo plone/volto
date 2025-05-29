@@ -12,6 +12,7 @@ import CutSVG from '@plone/components/icons/cut.svg?react';
 import CopySVG from '@plone/components/icons/copy.svg?react';
 import PasteSVG from '@plone/components/icons/paste.svg?react';
 import '../styles/ContentsActions.css';
+import type { Content } from '@plone/types';
 
 type Props = {
   upload: () => Promise<void>;
@@ -22,9 +23,9 @@ type Props = {
   cut: (value?: string) => Promise<void>;
   copy: (value?: string) => Promise<void>;
   paste: () => Promise<void>;
-  deleteItem: (value?: string) => Promise<void>;
+  deleteItem: (item?: Content | null | undefined) => void;
   canPaste: boolean;
-  selected: Selection;
+  selected: Set<Content>;
 };
 
 export function ContentsActions({
@@ -59,7 +60,7 @@ export function ContentsActions({
           className="react-aria-Button contents-action-trigger rename"
           onPress={rename}
           aria-label={t('contents.actions.rename')}
-          isDisabled={selected !== 'all' && selected.size === 0}
+          isDisabled={selected.length === 0}
         >
           <RenameSVG />
         </Button>
@@ -70,7 +71,7 @@ export function ContentsActions({
           className="react-aria-Button contents-action-trigger state"
           onPress={workflow}
           aria-label={t('contents.actions.state')}
-          isDisabled={selected !== 'all' && selected.size === 0}
+          isDisabled={selected.length === 0}
         >
           <StateSVG />
         </Button>
@@ -81,7 +82,7 @@ export function ContentsActions({
           className="react-aria-Button contents-action-trigger tags"
           onPress={tags}
           aria-label={t('contents.actions.tags')}
-          isDisabled={selected !== 'all' && selected.size === 0}
+          isDisabled={selected.length === 0}
         >
           <TagSVG />
         </Button>
@@ -92,7 +93,7 @@ export function ContentsActions({
           className="react-aria-Button contents-action-trigger properties"
           onPress={properties}
           aria-label={t('contents.actions.properties')}
-          isDisabled={selected !== 'all' && selected.size === 0}
+          isDisabled={selected.length === 0}
         >
           <PropertiesSVG />
         </Button>
@@ -104,7 +105,7 @@ export function ContentsActions({
           className="react-aria-Button contents-action-trigger cut"
           onPress={() => cut()}
           aria-label={t('contents.actions.cut')}
-          isDisabled={selected !== 'all' && selected.size === 0}
+          isDisabled={selected.length === 0}
         >
           <CutSVG />
         </Button>
@@ -115,7 +116,7 @@ export function ContentsActions({
           className="react-aria-Button contents-action-trigger copy"
           onPress={() => copy()}
           aria-label={t('contents.actions.copy')}
-          isDisabled={selected !== 'all' && selected.size === 0}
+          isDisabled={selected.length === 0}
         >
           <CopySVG />
         </Button>
@@ -137,7 +138,7 @@ export function ContentsActions({
           className="react-aria-Button contents-action-trigger delete"
           onPress={() => deleteItem()}
           aria-label={t('contents.actions.delete')}
-          isDisabled={selected !== 'all' && selected.size === 0}
+          isDisabled={selected.length === 0}
         >
           <BinSVG />
         </Button>

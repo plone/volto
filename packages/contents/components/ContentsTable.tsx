@@ -10,10 +10,8 @@ import { VisuallyHidden } from 'react-aria';
 import {
   TooltipTrigger,
   useDragAndDrop,
-  type Selection,
   DialogTrigger,
   MenuTrigger,
-  Heading,
 } from 'react-aria-components';
 import { useMediaQuery } from 'usehooks-ts';
 import {
@@ -21,9 +19,6 @@ import {
   Tooltip,
   Button,
   Table,
-  ProgressBar,
-  Modal,
-  Dialog,
 } from '@plone/components';
 import { Container } from '@plone/components/tailwind';
 import Breadcrumbs from '@plone/layout/components/Breadcrumbs';
@@ -32,7 +27,7 @@ import CollectionSVG from '@plone/components/icons/collection.svg?react';
 import MoreOptionsSVG from '@plone/components/icons/more-options.svg?react';
 import PasteSVG from '@plone/components/icons/paste.svg?react';
 
-import type { ArrayElement, Brain } from '@plone/types';
+import type { ArrayElement, Brain, Content } from '@plone/types';
 import { ContentsCell } from './ContentsCell';
 import { TableIndexesPopover } from './TableIndexesPopover';
 import { RearrangePopover } from './RearrangePopover';
@@ -42,6 +37,7 @@ import { useLoaderData, useNavigate } from 'react-router';
 import type { ContentsLoaderType } from '../routes/contents';
 import { useTranslation } from 'react-i18next';
 import { useContentsContext } from '../providers/contents';
+
 import '../styles/ContentsTable.css';
 
 interface ContentsTableProps {
@@ -73,7 +69,6 @@ interface ContentsTableProps {
   cut: (value?: string) => Promise<void>;
   copy: (value?: string) => Promise<void>;
   paste: () => Promise<void>;
-  deleteItem: (value?: string) => Promise<void>;
   orderItem: (id: string, delta: number) => Promise<void>;
   moveToTop: (index: number) => Promise<void>;
   moveToBottom: (index: number) => Promise<void>;
@@ -102,7 +97,6 @@ export function ContentsTable({
   cut,
   copy,
   paste,
-  deleteItem,
   orderItem,
   moveToTop,
   moveToBottom, // addableTypes,
@@ -110,7 +104,14 @@ export function ContentsTable({
   const isMobileScreenSize = useMediaQuery('(max-width: 992px)');
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { selected, setSelected } = useContentsContext();
+  const {
+    selected,
+    setSelected,
+    showDelete,
+    setShowDelete,
+    itemsToDelete,
+    setItemsToDelete,
+  } = useContentsContext();
 
   // const isLoading = contentIsLoading || searchIsLoading || bcIsLoading;
   const {
@@ -147,6 +148,11 @@ export function ContentsTable({
     values: Object.fromEntries(
       Object.entries(baseIndexes.values).filter(([key]) => key !== 'id'),
     ),
+  };
+
+  const deleteItem = (item?: Content | null) => {
+    setShowDelete(true);
+    setItemsToDelete(item ? new Set([item]) : selected);
   };
 
   const columns = [
@@ -208,7 +214,7 @@ export function ContentsTable({
             onMoveToTop={() => moveToTop(itemIndex)}
             onCut={() => cut(item['@id'])}
             onCopy={() => copy(item['@id'])}
-            onDelete={() => deleteItem(item['@id'])}
+            onDelete={async () => deleteItem(item)}
           />
         ),
       }),
@@ -222,7 +228,7 @@ export function ContentsTable({
   );
 
   const { dragAndDropHooks } = useDragAndDrop({
-    isDisabled: isMobileScreenSize || selected === 'all' || selected.size > 1,
+    isDisabled: isMobileScreenSize || selected.size > 1,
     getItems: (keys) =>
       [...keys].map((key) => ({
         'text/plain': key.toString(),
@@ -260,7 +266,7 @@ export function ContentsTable({
     },
   });
 
-  //debounce search input
+  //search input and debounce it
   const [searchInput, setSearchInput] = useState(searchableText ?? '');
   const debouncedSearchableText = useMemo(
     () =>
@@ -275,16 +281,6 @@ export function ContentsTable({
       debouncedSearchableText(searchInput);
     }
   }, [searchInput]);
-
-  if (false)
-    return (
-      <Modal isOpen={true}>
-        <Dialog>
-          <Heading slot="title">{t('contents.loading')}</Heading>
-          <ProgressBar aria-label={t('contents.loading')} isIndeterminate />
-        </Dialog>
-      </Modal>
-    );
 
   return (
     <Container
@@ -301,7 +297,7 @@ export function ContentsTable({
               items={breadcrumbs.items}
               className="react-aria-Breadcrumbs contents-breadcrumbs"
             />
-            <h1 className="text-2xl font-bold">{title}</h1>
+            <h1>{title}</h1>
           </div>
           <div className="group flex end-block">
             {!isMobileScreenSize && (
@@ -354,7 +350,7 @@ export function ContentsTable({
               columns={[...columns]}
               rows={rows}
               selectionMode={!isMobileScreenSize ? 'multiple' : undefined}
-              selectedKeys={selected}
+              selectedKeys={[...selected].map((s) => s['@id'])}
               onSelectionChange={setSelected}
               dragAndDropHooks={dragAndDropHooks}
               dragColumnHeader={

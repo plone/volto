@@ -1,15 +1,24 @@
+import {
+  useLocation,
+  redirect,
+  type LoaderFunctionArgs,
+  type ActionFunctionArgs,
+} from 'react-router';
 import { useAppRouter } from '@plone/providers';
-import { ContentsTable } from '../components/ContentsTable';
-import Indexes, { defaultIndexes } from '../components/Indexes';
 import { requireAuthCookie } from '@plone/react-router';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
-import { useLocation, type LoaderFunctionArgs } from 'react-router';
 import { flattenToAppURL } from '@plone/helpers';
+import { ContentsTable } from '../components/ContentsTable';
+import Indexes, { defaultIndexes } from '../components/Indexes';
 import { ContentsProvider } from '../providers/contents';
-import '@plone/components/dist/basic.css';
+import DeleteModal from '../components/DeleteModal';
+//styles
+//import '@plone/components/dist/basic.css'; //commentato perchè è gia incluso in @plone/theming/styles/simple/main.css
+import '@plone/theming/styles/simple/main.css';
 import '@plone/components/dist/quanta.css';
-import '../styles/Contents.css';
+import '../styles/main.css';
+
 // This is needed because to prevent circular import loops
 export type ContentsLoaderType = typeof loader;
 
@@ -67,6 +76,33 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
   return { content, search, breadcrumbs, searchableText };
 }
 
+export async function action({
+  params,
+  request,
+  ...others
+}: ActionFunctionArgs) {
+  const token = await requireAuthCookie(request);
+  const cli = config
+    .getUtility({
+      name: 'ploneClient',
+      type: 'client',
+    })
+    .method() as PloneClient;
+
+  cli.config.token = token;
+  const path = `/${params['*'] || ''}`;
+  console.log(params, request, others);
+  //qui deve fare la delete
+  //await cli.deleteContent();
+  // await cli.updateContent({
+  //   path,
+  //   data: formData,
+  // });
+
+  //deve ritornare alla vista corrente
+  //return redirect(path);
+}
+
 export default function Contents(props) {
   const location = useLocation();
 
@@ -76,7 +112,7 @@ export default function Contents(props) {
   const workflow = () => {};
   const tags = () => {};
   const rename = () => {};
-  const deleteItem = () => {};
+
   const onSelectIndex = () => {};
   const onSelectAll = () => {};
   const onSortItems = () => {};
@@ -97,6 +133,7 @@ export default function Contents(props) {
 
   return (
     <ContentsProvider toast={{ error: () => 'error' }}>
+      <DeleteModal />
       <ContentsTable
         pathname={location.pathname}
         objectActions={props.objectActions}
@@ -111,7 +148,7 @@ export default function Contents(props) {
         workflow={workflow}
         tags={tags}
         properties={properties}
-        deleteItem={(id) => Promise.resolve(delete (undefined, { value: id }))}
+
         // addableTypes={props.addableTypes}
       />
     </ContentsProvider>

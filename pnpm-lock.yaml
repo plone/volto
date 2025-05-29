@@ -685,6 +685,9 @@ importers:
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
+      '@plone/theming':
+        specifier: workspace:*
+        version: link:../theming
       '@react-types/shared':
         specifier: ^3.29.1
         version: 3.29.1(react@19.1.0)

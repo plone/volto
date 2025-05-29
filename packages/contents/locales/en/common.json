@@ -3,8 +3,8 @@
     "loading": "Loading...",
 
     "results": {
-      "number": "{count} items",
-      "contents_of": "Contents of {title}",
+      "number": "{{count}} items",
+      "contents_of": "Contents of {{title}}",
       "no_results": "No items found"
     },
     "actions": {
@@ -53,7 +53,16 @@
       "by": "Rearrange items by…",
       "asc": "Ascending",
       "desc": "Descending",
-      "pickOrder": "Pick order for {index}"
+      "pickOrder": "Pick order for {{index}}"
+    },
+    "modal": {
+      "close": "Close"
+    },
+    "modal_delete": {
+      "single": { "title": "Delete \"{{item}}\"?" },
+      "multi": { "title": "Delete {{n}} items?" },
+      "description": "This action cannot be undone.",
+      "confirm": "Delete"
     }
   }
 }
