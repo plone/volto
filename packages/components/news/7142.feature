@@ -1,1 +1,1 @@
-Add react-aria-components RadioGroup and Radio component. @sabrina-bongiovanni
+Added react-aria-components RadioGroup and Radio component. @sabrina-bongiovanni
