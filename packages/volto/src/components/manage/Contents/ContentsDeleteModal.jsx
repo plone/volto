@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -42,7 +42,14 @@ const messages = defineMessages({
 });
 
 const ContentsDeleteModal = (props) => {
-  const { itemsToDelete = [], open, onCancel, onOk, items } = props;
+  const {
+    itemsToDelete = [],
+    open,
+    onCancel,
+    onOk,
+    items,
+    hasMultiplePages,
+  } = props;
   const intl = useIntl();
   const dispatch = useDispatch();
   const linkintegrityInfo = useSelector((state) => state.linkIntegrity?.result);
@@ -54,6 +61,16 @@ const ContentsDeleteModal = (props) => {
 
   const [linksAndReferencesViewLink, setLinkAndReferencesViewLink] =
     useState(null);
+
+  const titlesToDelete = useMemo(
+    () =>
+      itemsToDelete.reduce((acc, id) => {
+        const item = items.find((item) => item['@id'] === id);
+        acc[id] = item ? item.Title : null;
+        return acc;
+      }, {}),
+    [itemsToDelete, items],
+  );
 
   useEffect(() => {
     const getFieldById = (id, field) => {
@@ -136,6 +153,37 @@ const ContentsDeleteModal = (props) => {
                 {intl.formatMessage(messages.loading)}
               </Loader>
             </Dimmer>
+
+            {itemsToDelete.length > 1 &&
+            items.length === itemsToDelete.length ? (
+              hasMultiplePages ? (
+                <p>
+                  <FormattedMessage
+                    id="You are about to delete all items in the current pagination of this folder."
+                    defaultMessage="You are about to delete all items in the current pagination of this folder."
+                  />
+                </p>
+              ) : (
+                <p>
+                  <FormattedMessage
+                    id="You are about to delete all items in this folder."
+                    defaultMessage="You are about to delete all items in this folder."
+                  />
+                </p>
+              )
+            ) : (
+              <ul>
+                {itemsToDelete.map((id) => {
+                  return (
+                    <li key={id}>
+                      <Link to={flattenToAppURL(id)} target="_blank">
+                        {titlesToDelete[id] || id}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
 
             {itemsToDelete.length > 1 ? (
               containedItemsToDelete > 0 ? (
