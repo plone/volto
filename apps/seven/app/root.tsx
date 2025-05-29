@@ -3,7 +3,7 @@ import { data, isRouteErrorResponse } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import i18next from './i18next.server';
 import type { Route } from './+types/root';
-import { flattenToAppURL } from './utils';
+import { flattenToAppURL } from '@plone/helpers';
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 import {
@@ -37,7 +37,10 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 
   try {
     return {
-      content: flattenToAppURL((await cli.getContent({ path, expand })).data),
+      content: flattenToAppURL(
+        (await cli.getContent({ path, expand })).data,
+        config.settings.apiPath,
+      ),
       locale,
     };
   } catch (error: any) {
