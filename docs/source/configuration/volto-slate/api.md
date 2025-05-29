@@ -18,7 +18,7 @@ The `volto-slate` API provides methods to integrate the Slate editor into projec
 
 ## Extensions
 
-An extension in `volto-slate` is a function which takes Slate's [`Editor` object](https://docs.slatejs.org/concepts/07-editor) and returns its extended version
+An extension in `volto-slate` is a function which takes Slate's [`Editor` object](https://docs.slatejs.org/concepts/07-editor) and returns its extended version.
 This allows a developer to modify and add several functionalities to a Slate `Editor`.
 For example, to define link elements as inline nodes, we override `isInline` from the `Editor` object.
 
@@ -59,7 +59,7 @@ For example, the following snippet creates a rich text `SlateEditor` component:
   <div
     className="slate_wysiwyg_box"
     role="textbox"
-    tabIndex="-1"
+    tabIndex={-1}
     onClick={() => {}}
     onKeyDown={() => {}}
   >
