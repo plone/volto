@@ -12,7 +12,9 @@ export { Tabs } from './Tabs/Tabs';
 export * from './Breadcrumbs/Breadcrumbs';
 export * from './Accordion/Accordion';
 export * from './Field/Field';
+
 export * from './DateTimePicker/DateTimePicker';
 export * from './DatePicker/DatePicker';
 export * from './TimeField/TimeField';
 export * from './DateInput/DateInput';
+export * from './RadioGroup/RadioGroup';
