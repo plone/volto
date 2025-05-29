@@ -26,9 +26,7 @@ export const Default: Story = {
     description: 'Choose how to align your image',
     actions: ['left', 'right', 'center', 'full'],
     actionsInfoMap: defaultActionsInfo,
-    defaultAction: 'center',
     name: 'alignment',
-    defaultValue: 'center',
   },
 };
 
@@ -38,9 +36,7 @@ export const AllOptions: Story = {
     description: 'Complete set of alignment options',
     actions: ['left', 'right', 'center', 'narrow', 'wide', 'full'],
     actionsInfoMap: defaultActionsInfo,
-    defaultAction: 'center',
     name: 'all-alignment',
-    defaultValue: 'center',
   },
 };
 
@@ -50,9 +46,7 @@ export const LeftRightOnly: Story = {
     description: 'Simple left or right alignment',
     actions: ['left', 'right'],
     actionsInfoMap: defaultActionsInfo,
-    defaultAction: 'left',
     name: 'left-right',
-    defaultValue: 'left',
   },
 };
 
@@ -60,12 +54,16 @@ export const WithoutLabel: Story = {
   args: {
     actions: ['left', 'center', 'right', 'full'],
     actionsInfoMap: defaultActionsInfo,
-    defaultAction: 'center',
     name: 'no-label',
-    defaultValue: 'center',
   },
 };
 
+export const WithDefault: Story = {
+  args: {
+    name: 'with-default',
+    defaultValue: 'center',
+  },
+};
 const ControlledExample = () => {
   const [value, setValue] = React.useState('center');
 
@@ -122,9 +120,7 @@ export const CustomActions: Story = {
     description: 'Example with custom actions and info mapping',
     actions: ['left', 'center', 'custom', 'full'],
     actionsInfoMap: customActionsInfo,
-    defaultAction: 'custom',
     name: 'custom-alignment',
-    defaultValue: 'custom',
   },
 };
 

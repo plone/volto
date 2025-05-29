@@ -23,7 +23,6 @@ export const Default: Story = {
   args: {
     label: 'Content Size',
     description: 'Choose the size of your content',
-    defaultAction: 'm',
     name: 'size',
   },
 };
@@ -32,7 +31,6 @@ export const AllOptions: Story = {
   args: {
     label: 'All Size Options',
     description: 'Complete set of size options',
-    defaultAction: 'm',
     name: 'all-size',
   },
 };
@@ -42,7 +40,6 @@ export const FilteredActions: Story = {
     label: 'Filtered Size Options',
     description: 'Only small and large size options',
     actions: ['s', 'l'],
-    defaultAction: 's',
     name: 'filtered-size',
   },
 };
@@ -50,8 +47,14 @@ export const FilteredActions: Story = {
 export const WithoutLabel: Story = {
   args: {
     actions: ['s', 'm', 'l'],
-    defaultAction: 'm',
     name: 'no-label',
+  },
+};
+
+export const WithDefault: Story = {
+  args: {
+    name: 'with-default',
+    defaultValue: 'm',
   },
 };
 
@@ -106,7 +109,6 @@ export const CustomActions: Story = {
     description: 'Example with custom actions and info mapping',
     actions: ['xs', 's', 'm', 'l', 'xl'],
     actionsInfoMap: customActionsInfo,
-    defaultAction: 'm',
     name: 'custom-size',
   },
 };
@@ -142,7 +144,6 @@ export const Disabled: Story = {
   args: {
     label: 'Content Size',
     description: 'This widget is disabled',
-    defaultAction: 'm',
     name: 'disabled-size',
     isDisabled: true,
   },

@@ -10,7 +10,6 @@ interface SizeWidgetProps extends Omit<RadioGroupProps, 'children'> {
   id?: string;
   actions?: string[];
   actionsInfoMap?: Record<string, [string, string]>;
-  defaultAction?: string;
 }
 
 export const defaultSizeActionsInfo: Record<string, [string, string]> = {
@@ -25,8 +24,6 @@ export function SizeWidget(props: SizeWidgetProps) {
     onChange,
     actions = ['s', 'm', 'l'],
     actionsInfoMap,
-    defaultAction = 'm',
-
     ...radioGroupProps
   } = props;
 

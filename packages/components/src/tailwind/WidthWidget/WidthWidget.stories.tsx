@@ -24,7 +24,6 @@ export const Default: Story = {
   args: {
     label: 'Block Width',
     description: 'Choose the width of your content block',
-    defaultAction: 'default',
     name: 'width',
   },
 };
@@ -33,7 +32,6 @@ export const AllOptions: Story = {
   args: {
     label: 'All Width Options',
     description: 'Complete set of width options',
-    defaultAction: 'default',
     name: 'all-width',
   },
 };
@@ -42,15 +40,19 @@ export const FilteredActions: Story = {
   args: {
     label: 'Filtered Width Options',
     description: 'Only narrow and full width options',
-    defaultAction: 'narrow',
     name: 'filtered-width',
   },
 };
 
 export const WithoutLabel: Story = {
   args: {
-    defaultAction: 'default',
     name: 'no-label',
+  },
+};
+export const WithDefault: Story = {
+  args: {
+    name: 'with-default',
+    defaultValue: 'default',
   },
 };
 
@@ -106,7 +108,6 @@ export const CustomActions: Story = {
     label: 'Custom Width Options',
     description: 'Example with custom actions and info mapping',
     actionsInfoMap: customActionsInfo,
-    defaultAction: 'custom',
     name: 'custom-width',
   },
 };

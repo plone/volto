@@ -15,7 +15,6 @@ interface AlignWidgetProps extends Omit<RadioGroupProps, 'children'> {
   id?: string;
   actions?: string[];
   actionsInfoMap?: Record<string, [React.ComponentType<any>, string]>;
-  defaultAction?: string;
 }
 
 export const defaultActionsInfo: Record<
@@ -36,7 +35,6 @@ export function AlignWidget(props: AlignWidgetProps) {
     onChange,
     actions = ['left', 'right', 'center', 'full'],
     actionsInfoMap,
-    defaultAction = 'center',
     ...radioGroupProps
   } = props;
 

@@ -13,7 +13,6 @@ interface WidthWidgetProps extends Omit<RadioGroupProps, 'children'> {
   id?: string;
   actions?: string[];
   actionsInfoMap?: Record<string, [React.ComponentType<any>, string]>;
-  defaultAction?: string;
 }
 
 export const defaultActionsInfo: Record<
@@ -32,7 +31,6 @@ export function WidthWidget(props: WidthWidgetProps) {
     onChange,
     actions = ['narrow', 'default', 'layout', 'full'],
     actionsInfoMap,
-    defaultAction = 'default',
     ...radioGroupProps
   } = props;
 
