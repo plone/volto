@@ -1,15 +1,15 @@
+import React from 'react';
 import {
-  OverlayArrow,
-  Popover as RACPopover,
+  Popover as AriaPopover,
+  type PopoverProps as AriaPopoverProps,
   composeRenderProps,
+  OverlayArrow,
   PopoverContext,
   useSlottedContext,
-  type PopoverProps as RACPopoverProps,
 } from 'react-aria-components';
-import React from 'react';
 import { tv } from 'tailwind-variants';
 
-export interface PopoverProps extends Omit<RACPopoverProps, 'children'> {
+export interface PopoverProps extends Omit<AriaPopoverProps, 'children'> {
   showArrow?: boolean;
   children: React.ReactNode;
 }
@@ -37,7 +37,7 @@ export function Popover({
   let offset = showArrow ? 12 : 8;
   offset = isSubmenu ? offset - 6 : offset;
   return (
-    <RACPopover
+    <AriaPopover
       offset={offset}
       {...props}
       className={composeRenderProps(className, (className, renderProps) =>
@@ -57,6 +57,6 @@ export function Popover({
         </OverlayArrow>
       )}
       {children}
-    </RACPopover>
+    </AriaPopover>
   );
 }

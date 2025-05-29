@@ -1,11 +1,8 @@
 import React from 'react';
-import {
-  Dialog as RACDialog,
-  type DialogProps as RACDialogProps,
-} from 'react-aria-components';
+import { Dialog as RACDialog, type DialogProps } from 'react-aria-components';
 import { twMerge } from 'tailwind-merge';
 
-export function Dialog(props: RACDialogProps) {
+export function Dialog(props: DialogProps) {
   return (
     <RACDialog
       {...props}
