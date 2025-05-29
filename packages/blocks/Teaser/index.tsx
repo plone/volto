@@ -9,7 +9,7 @@ const TeaserBlockView = (props: BlockViewProps) => {
   // for @@images and @@download
   const url =
     data.preview_image?.[0]?.['@id'] ||
-    `${data.href?.[0]?.image_scales?.[data.href?.[0].image_field][0].base_path}/${data.href?.[0]?.image_scales?.[data.href?.[0].image_field]?.[0].scales?.larger?.download}`;
+    `${data.href[0]?.image_scales[data.href[0].image_field][0].base_path}/${data.href[0]?.image_scales[data.href[0].image_field][0].scales.larger.download}`;
 
   return (
     <div>
