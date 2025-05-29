@@ -36,7 +36,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
     },
   });
 
-  return data(flattenToAppURL(results, config.settings.apiPath), {
+  return data(flattenToAppURL(results), {
     headers: {
       'Content-Type': 'application/json',
     },
