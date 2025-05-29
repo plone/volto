@@ -1,7 +1,7 @@
 const langmap = new Proxy(
   {
-    aa: { native: 'магIарул мацI', name: 'Afar', flag: 'countryflag/dj' },
-    ab: { native: 'бызшәа', name: 'Abkhazian', flag: 'countryflag/ge' },
+    aa: { native: 'магIарул мацI', name: 'Afar' },
+    ab: { native: 'бызшәа', name: 'Abkhazian' },
     ach: {
       nativeName: 'Lwo',
       englishName: 'Acholi',
@@ -72,7 +72,7 @@ const langmap = new Proxy(
       nativeName: 'Български',
       englishName: 'Bulgarian',
     },
-    be: { native: 'Беларускі', name: 'Belarussian', flag: 'countryflag/by' },
+    be: { native: 'Беларускі', name: 'Belarussian' },
     bh: { native: 'Bihari', name: 'Bihari' },
     bi: { native: 'Bislama', name: 'Bislama' },
     bm: { native: 'bamanankan', name: 'Bambara' },
@@ -318,8 +318,8 @@ const langmap = new Proxy(
       nativeName: 'Suomi',
       englishName: 'Finnish',
     },
-    fj: { native: 'Fiji', name: 'Fiji', flag: 'countryflag/fj' },
-    fo: { native: 'Føroyska', name: 'Faroese', flag: 'countryflag/fo' },
+    fj: { native: 'Fiji', name: 'Fiji' },
+    fo: { native: 'Føroyska', name: 'Faroese' },
     'fo-FO': {
       nativeName: 'Føroyskt',
       englishName: 'Faroese',
@@ -429,7 +429,7 @@ const langmap = new Proxy(
       nativeName: 'Magyar',
       englishName: 'Hungarian',
     },
-    hy: { native: 'Հայերէն', name: 'Armenian', flag: 'countryflag/am' },
+    hy: { native: 'Հայերէն', name: 'Armenian' },
     'hy-AM': {
       nativeName: 'Հայերեն',
       englishName: 'Armenian',
@@ -479,7 +479,7 @@ const langmap = new Proxy(
       nativeName: 'Basa Jawa',
       englishName: 'Javanese',
     },
-    ka: { native: 'ქართული', name: 'Georgian', flag: 'countryflag/ge' },
+    ka: { native: 'ქართული', name: 'Georgian' },
     'ka-GE': {
       nativeName: 'ქართული',
       englishName: 'Georgian',
@@ -491,12 +491,12 @@ const langmap = new Proxy(
     kg: { native: 'KiKongo', name: 'Kongo' },
     ki: { native: 'Gĩkũyũ', name: 'Kikuyu' },
     kj: { native: 'Kuanyama', name: 'Kwanyama' },
-    kk: { native: 'ﻗﺎﺯﺍﻗﺸﺎ', name: 'Kazakh', flag: 'countryflag/kz' },
+    kk: { native: 'ﻗﺎﺯﺍﻗﺸﺎ', name: 'Kazakh' },
     'kk-KZ': {
       nativeName: 'Қазақша',
       englishName: 'Kazakh',
     },
-    kl: { native: 'Greenlandic', name: 'Greenlandic', flag: 'countryflag/gl' },
+    kl: { native: 'Greenlandic', name: 'Greenlandic' },
     km: {
       nativeName: 'ភាសាខ្មែរ',
       englishName: 'Khmer',
@@ -522,7 +522,7 @@ const langmap = new Proxy(
       englishName: 'Korean (Korea)',
     },
     kr: { native: 'Kanuri', name: 'Kanuri' },
-    ks: { native: 'काऽशुर', name: 'Kashmiri', flag: 'countryflag/in' },
+    ks: { native: 'काऽशुर', name: 'Kashmiri' },
     ku: { native: 'Kurdí', name: 'Kurdish' },
     'ku-TR': {
       nativeName: 'Kurdî',
@@ -553,7 +553,7 @@ const langmap = new Proxy(
       englishName: 'Limburgish',
     },
     ln: { native: 'Lingala', name: 'Lingala' },
-    lo: { native: 'ພາສາລາວ', name: 'Laotian', flag: 'countryflag/la' },
+    lo: { native: 'ພາສາລາວ', name: 'Laotian' },
     lt: {
       nativeName: 'Lietuvių',
       englishName: 'Lithuanian',
@@ -575,7 +575,7 @@ const langmap = new Proxy(
       nativeName: 'मैथिली, মৈথিলী',
       englishName: 'Maithili',
     },
-    mg: { native: 'Malagasy', name: 'Madagascarian', flag: 'countryflag/mg' },
+    mg: { native: 'Malagasy', name: 'Madagascarian' },
     'mg-MG': {
       nativeName: 'Malagasy',
       englishName: 'Malagasy',
@@ -598,12 +598,12 @@ const langmap = new Proxy(
       nativeName: 'മലയാളം',
       englishName: 'Malayalam',
     },
-    mn: { native: 'Монгол', name: 'Mongolian', flag: 'countryflag/mn' },
+    mn: { native: 'Монгол', name: 'Mongolian' },
     'mn-MN': {
       nativeName: 'Монгол',
       englishName: 'Mongolian',
     },
-    mo: { native: 'Moldavian', name: 'Moldavian', flag: 'countryflag/md' },
+    mo: { native: 'Moldavian', name: 'Moldavian' },
     mr: {
       nativeName: 'मराठी',
       englishName: 'Marathi',
@@ -632,7 +632,7 @@ const langmap = new Proxy(
       nativeName: 'ဗမာစကာ',
       englishName: 'Burmese',
     },
-    na: { native: 'Nauru', name: 'Nauruan', flag: 'countryflag/nr' },
+    na: { native: 'Nauru', name: 'Nauruan' },
     nb: {
       nativeName: 'Norsk (bokmål)',
       englishName: 'Norwegian (bokmal)',
@@ -664,7 +664,7 @@ const langmap = new Proxy(
       nativeName: 'Nederlands (Nederland)',
       englishName: 'Dutch (Netherlands)',
     },
-    nn: { native: 'Nynorsk', name: 'Nynorsk', flag: 'countryflag/no' },
+    nn: { native: 'Nynorsk', name: 'Nynorsk' },
     'nn-NO': {
       nativeName: 'Norsk (nynorsk)',
       englishName: 'Norwegian (nynorsk)',
@@ -756,13 +756,13 @@ const langmap = new Proxy(
       englishName: 'Sanskrit',
     },
     sc: { native: 'sardu', name: 'Sardinian' },
-    sd: { native: 'سنڌي', name: 'Sindhi', flag: 'countryflag/pk' },
+    sd: { native: 'سنڌي', name: 'Sindhi' },
     se: { native: 'Northern Sámi', name: 'Northern Sámi' },
     'se-NO': {
       nativeName: 'Davvisámegiella',
       englishName: 'Northern Sámi',
     },
-    sg: { native: 'Sangho', name: 'Sangho', flag: 'countryflag/cf' },
+    sg: { native: 'Sangho', name: 'Sangho' },
     sh: {
       nativeName: 'српскохрватски',
       englishName: 'Serbo-Croatian',
@@ -794,7 +794,7 @@ const langmap = new Proxy(
       nativeName: 'Soomaaliga',
       englishName: 'Somali',
     },
-    so: { native: 'Somali', name: 'Somali', flag: 'countryflag/so' },
+    so: { native: 'Somali', name: 'Somali' },
     sq: {
       nativeName: 'Shqip',
       englishName: 'Albanian',
@@ -866,7 +866,7 @@ const langmap = new Proxy(
       englishName: 'Thai (Thailand)',
     },
     ti: { native: 'ትግርኛ', name: 'Tigrinya' },
-    tk: { native: 'түркmенче', name: 'Turkmen', flag: 'countryflag/tm' },
+    tk: { native: 'түркmенче', name: 'Turkmen' },
     tl: {
       nativeName: 'Filipino',
       englishName: 'Filipino',
@@ -879,7 +879,7 @@ const langmap = new Proxy(
       nativeName: 'tlhIngan-Hol',
       englishName: 'Klingon',
     },
-    tn: { native: 'Setswana', name: 'Tswana', flag: 'countryflag/bw' },
+    tn: { native: 'Setswana', name: 'Tswana' },
     to: { native: 'Tonga', name: 'Tonga' },
     tr: {
       nativeName: 'Türkçe',
@@ -978,7 +978,7 @@ const langmap = new Proxy(
       nativeName: '中文（台灣）',
       englishName: 'Chinese Traditional (Taiwan)',
     },
-    zu: { native: 'IsiZulu', name: 'Zulu', flag: 'countryflag/za' },
+    zu: { native: 'IsiZulu', name: 'Zulu' },
     'zu-ZA': {
       nativeName: 'isiZulu',
       englishName: 'Zulu',
