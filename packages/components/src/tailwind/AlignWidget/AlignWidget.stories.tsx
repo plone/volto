@@ -129,7 +129,6 @@ export const CustomActions: Story = {
   },
 };
 
-// Form Integration - following DateTimePicker pattern
 const FormExample = () => {
   const [selectedValue, setSelectedValue] = React.useState('');
 
