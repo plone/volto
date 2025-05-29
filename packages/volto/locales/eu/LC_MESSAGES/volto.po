@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Plone\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2020-09-15T08:53:14.294Z\nPO-Revision-Date: 2025-05-29 14:48+0000\nLast-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\nLanguage-Team: Basque <https://hosted.weblate.org/projects/plone/volto-18/eu/>\nLanguage: eu\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.12-dev\nLanguage-Code: eu\nLanguage-Name: Basque\nPreferred-Encodings: utf-8\nDomain: volto\nX-Poedit-Bookmarks: -1,38,-1,-1,-1,-1,-1,-1,-1,-1\n"
+msgstr "Project-Id-Version: Plone\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2020-09-15T08:53:14.294Z\nPO-Revision-Date: 2025-05-29 15:01+0000\nLast-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\nLanguage-Team: Basque <https://hosted.weblate.org/projects/plone/volto-18/eu/>\nLanguage: eu\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.12-dev\nLanguage-Code: eu\nLanguage-Name: Basque\nPreferred-Encodings: utf-8\nDomain: volto\nX-Poedit-Bookmarks: -1,38,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -280,8 +280,7 @@ msgstr "Fazeta aurreratua?"
 #. Default: "Advanced facets are initially hidden and displayed on demand"
 #: components/manage/Blocks/Search/schema
 msgid "Advanced facets are initially hidden and displayed on demand"
-msgstr ""
-"Fazeta aurreratuak hasieran ezkutatuta daude eta eskatu ahala erakusten dira"
+msgstr "Fazeta aurreratuak hasieran ezkutatuta daude eta eskatu ahala erakusten dira."
 
 #. Default: "Album view"
 #: config/Views
