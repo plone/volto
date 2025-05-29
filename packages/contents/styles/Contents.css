@@ -58,6 +58,7 @@
   .title-link {
     display: inline-flex;
     align-items: center;
+    text-decoration: none;
 
     .icon {
       flex-shrink: 0;
@@ -121,6 +122,12 @@
   .drag-column-header,
   .drag-cell {
     display: none;
+  }
+}
+
+.react-aria-Table {
+  .react-aria-Link {
+    font-size: var(--plone-table-row-font-size);
   }
 }
 

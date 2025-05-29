@@ -8,6 +8,7 @@ import config from '@plone/registry';
 export function flattenToAppURL<T>(data: T) {
   // Convert data to string to perform replacements
   let stringData = JSON.stringify(data);
+  console.log('apipath', config.settings.apiPath);
 
   // Replace all occurrences of backend URLs
   stringData = stringData.replaceAll(`${config.settings.apiPath}/`, '/');

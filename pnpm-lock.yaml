@@ -682,6 +682,9 @@ importers:
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
+      '@react-types/shared':
+        specifier: ^3.29.1
+        version: 3.29.1(react@19.1.0)
       '@tanstack/react-query':
         specifier: ^5.59.0
         version: 5.59.15(react@19.1.0)

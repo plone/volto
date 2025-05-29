@@ -4,15 +4,18 @@ import React, {
   useContext,
   useMemo,
 } from 'react';
-import type { Toast } from '../types';
 import { getContentIcon } from '@plone/helpers';
+import { useLoaderData } from 'react-router';
+import type { Key } from '@react-types/shared';
+import type { ContentsLoaderType } from '../routes/contents';
+import type { Toast } from '../types';
+
+type SetSelectedType = 'all' | 'none' | Set<Key>;
 
 interface ContentsContext {
   toast: Toast;
   selected: Set<string>;
-  setSelected: (
-    selected: Set<string> | ((prev: Set<string>) => Set<string>),
-  ) => void;
+  setSelected: (selected: SetSelectedType) => void;
 }
 
 const ContentsContext = createContext<ContentsContext>({
@@ -26,14 +29,20 @@ type ContentsProviderProps = PropsWithChildren<ContentsContext>;
 export function ContentsProvider(props: ContentsProviderProps) {
   let { toast, children } = props;
 
-  const [selected, setSelected] = React.useState<Set<string>>(new Set());
-  // const setSelected = (s) => {
-  //   if (s === 'all') {
-  //     onSelectAll();
-  //   } else {
-  //     _setSelected(s);
-  //   }
-  // };
+  const { search } = useLoaderData<ContentsLoaderType>();
+  const { items = [] } = search ?? {};
+  const [selected, _setSelected] = React.useState<Set<string>>(new Set());
+
+  const setSelected = (s: SetSelectedType) => {
+    if (s === 'all') {
+      _setSelected(new Set(items.map((item) => item['@id'])));
+    } else if (s === 'none') {
+      _setSelected(new Set());
+    } else {
+      _setSelected(s);
+    }
+  };
+
   let ctx = useMemo(
     () => ({
       // getBaseUrl,

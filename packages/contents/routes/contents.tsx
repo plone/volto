@@ -7,7 +7,9 @@ import type PloneClient from '@plone/client';
 import { useLocation, type LoaderFunctionArgs } from 'react-router';
 import { flattenToAppURL } from '@plone/helpers';
 import { ContentsProvider } from '../providers/contents';
-
+import '@plone/components/dist/basic.css';
+import '@plone/components/dist/quanta.css';
+import '../styles/Contents.css';
 // This is needed because to prevent circular import loops
 export type ContentsLoaderType = typeof loader;
 
@@ -94,14 +96,6 @@ export default function Contents(props) {
         pathname={location.pathname}
         objectActions={props.objectActions}
         // loading={loading}
-        selected={new Set(state.selected)}
-        setSelected={(selected) => {
-          if (selected === 'all') {
-            onSelectAll();
-          } else {
-            setState({ selected: [...selected] });
-          }
-        }}
         indexes={indexes}
         onSelectIndex={(index) => {
           onSelectIndex(undefined, { value: index });

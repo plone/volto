@@ -8,6 +8,8 @@
     --plone-table-header-border-bottom: 1px solid var(--quanta-silver);
     --plone-table-cell-border-bottom: 1px solid var(--quanta-smoke);
     --plone-table-cell-hover-background: var(--quanta-snow);
+    --plone-table-row-selected-background: var(--quanta-arctic);
+    --plone-table-row-selected-foreground: var(--text-color);
 
     &.hoverable {
       tbody {
@@ -17,5 +19,9 @@
         }
       }
     }
+  }
+
+  .react-aria-Row[data-selected] {
+    --link-color: var(--quanta-sapphire);
   }
 }

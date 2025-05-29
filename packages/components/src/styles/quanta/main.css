@@ -1,6 +1,9 @@
 @import './colors.css';
 @import './theme.css';
 
+/*Typography*/
+@import '../typography.css';
+
 /* Components */
 @import './Popover.css';
 @import './Select.css';

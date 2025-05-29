@@ -4,9 +4,6 @@ import React, {
   useState,
   useMemo,
 } from 'react';
-import '@plone/components/dist/basic.css';
-import '@plone/components/dist/quanta.css';
-import './Contents.css';
 import debounce from 'lodash.debounce';
 // import type { ActionsResponse } from '@plone/types';
 import { VisuallyHidden } from 'react-aria';
@@ -53,9 +50,6 @@ interface ContentsTableProps {
   // loading: boolean;
   canPaste: boolean;
   // items: Brain[];
-
-  selected: Selection;
-  setSelected: (value: Selection) => void;
   indexes: {
     order: (keyof Brain)[];
     values: {
@@ -96,8 +90,6 @@ export function ContentsTable({
   // objectActions,
   canPaste,
   // items,
-  selected,
-  setSelected,
   indexes: baseIndexes,
   onSelectIndex,
   sortItems,
@@ -116,8 +108,8 @@ export function ContentsTable({
 }: ContentsTableProps) {
   const isMobileScreenSize = useMediaQuery('(max-width: 992px)');
   const { t } = useTranslation();
-
   const navigate = useNavigate();
+  const { selected, setSelected } = useContentsContext();
 
   // const isLoading = contentIsLoading || searchIsLoading || bcIsLoading;
   const {
@@ -272,6 +264,7 @@ export function ContentsTable({
   const debouncedSearchableText = useMemo(
     () =>
       debounce((text: string) => {
+        setSelected('none');
         navigate(`${pathname}?SearchableText=${text}`);
       }, 500),
     [navigate, pathname],
