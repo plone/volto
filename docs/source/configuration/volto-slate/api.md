@@ -92,12 +92,15 @@ It consists of various modules:
 `makeInlineElementPlugin`
 :   Used to build and install a custom schema based plugin from `volto-slate` API.
     It expects a set of options passed as a property to your plugin.
+    It should be called from the `index.js` of your Volto add-on.
 
 `PluginEditor`
 :   Editor component for your Plugin.
+    It is shown in the sidebar when the plugin-based Slate node is focused.
 
 `ToolbarButton`
 :   Custom plugin `ToolbarButton`.
+    Is used for showing toolbar buttons inside the SlateEditor toolbar, not the toolbar in the right sidebar.
 
 ```{note}
 You will get to know more about `elementEditor` in {ref}`writing-plugins-label`.
