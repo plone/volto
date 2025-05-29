@@ -1,1 +1,1 @@
-Fixed missing languages in packages/volto/src/helpers/LanguageMap/LanguageMap.js  @JeffersonBledsoe
+Added missing languages in `packages/volto/src/helpers/LanguageMap/LanguageMap.js`. @JeffersonBledsoe
