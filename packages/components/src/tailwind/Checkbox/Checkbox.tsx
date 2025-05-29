@@ -1,4 +1,4 @@
-import React, { type ReactNode } from 'react';
+import React, { useContext, type ReactNode } from 'react';
 import { CheckboxIcon, DashIcon } from '../../components/icons';
 import {
   Checkbox as AriaCheckbox,
@@ -11,6 +11,9 @@ import {
 import { tv } from 'tailwind-variants';
 import { Description, FieldError, Label } from '../Field/Field';
 import { composeTailwindRenderProps, focusRing } from '../utils';
+import { SevenContext } from '../SevenContext/SevenContext';
+import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export interface CheckboxGroupProps
   extends Omit<AriaCheckboxGroupProps, 'children'> {
@@ -69,11 +72,28 @@ const iconStyles =
   'w-4 h-4 text-white group-disabled:text-gray-400 dark:text-slate-900 dark:group-disabled:text-slate-600 forced-colors:text-[HighlightText]';
 
 export function Checkbox(props: CheckboxProps) {
+  const tvvalues = useContext(SevenContext);
+
   return (
     <AriaCheckbox
       {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        checkboxStyles({ ...renderProps, className }),
+      className={composeRenderProps(
+        props.className,
+        (className, renderProps) => {
+          const result = twMerge(
+            className,
+            checkboxStyles({
+              ...renderProps,
+            }),
+            tvvalues.checkbox
+              ? tv(tvvalues.checkbox)({
+                  ...renderProps,
+                })
+              : '',
+          );
+
+          return result;
+        },
       )}
     >
       {({ isSelected, isIndeterminate, ...renderProps }) => (
