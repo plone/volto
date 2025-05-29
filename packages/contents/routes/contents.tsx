@@ -28,9 +28,13 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 
   const path = `/${params['*'] || ''}`;
 
-  const content = flattenToAppURL((await cli.getContent({ path })).data);
+  const content = flattenToAppURL(
+    (await cli.getContent({ path })).data,
+    config.settings.apiPath,
+  );
   const breadcrumbs = flattenToAppURL(
     (await cli.getBreadcrumbs({ path })).data,
+    config.settings.apiPath,
   );
   const searchableText =
     new URLSearchParams(new URL(request.url).search).get('SearchableText') ||
@@ -57,6 +61,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
         query: searchQuery,
       })
     ).data,
+    config.settings.apiPath,
   );
 
   return { content, search, breadcrumbs, searchableText };
