@@ -53,6 +53,7 @@ contentIcons
       contentIcons: {
         ...config.settings.contentIcons,
         Course: courseSVG,
+      }
     };
     ```
 
@@ -153,7 +154,7 @@ externalRoutes
     ```
 
 contentMetadataTagsImageField
-    The OpenGraph image that will represent this content item, will be used in the metadata HEAD tag as `og:image` for SEO purposes.
+    The OpenGraph image key inside the content items' objects that will represent them, will be used in the metadata HEAD tag as `og:image` for SEO purposes.
     Defaults to image.
     See the OpenGraph Protocol for more details.
 
