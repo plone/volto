@@ -47,8 +47,9 @@ const getWidgetDefault = (): React.ComponentType<any> =>
  * Get widget by field's `id` attribute
  */
 const getWidgetByFieldId = (
-  id: FieldProps['id'],
+  id: FieldProps['name'],
 ): React.ComponentType<any> | null =>
+  // @ts-ignore
   typeof id === 'string' ? config.widgets?.id?.[id] || null : null;
 
 /**
@@ -167,7 +168,7 @@ const getWidgetByType = (
 
 const Field = (props: FieldProps) => {
   const Widget =
-    getWidgetByFieldId(props.id) ||
+    getWidgetByFieldId(props.name) ||
     getWidgetFromTaggedValues(props.widgetOptions) ||
     getWidgetByName(props.widget) ||
     getWidgetByChoices(props) ||

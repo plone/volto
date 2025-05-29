@@ -1,6 +1,26 @@
 {
   "cmsui": {
     "edit": "Edit",
-    "save": "Save"
+    "save": "Save",
+    "recurrence": {
+      "editRecurrence": "Edit recurrence",
+      "repeat": "Repeat",
+      "options": {
+        "daily": "Daily",
+        "mondayfriday": "Monday - Friday",
+        "weekly": "Weekly",
+        "weekdays": "Weekdays",
+        "monthly": "Monthly",
+        "yearly": "Yearly"
+      },
+      "interval_label": "Repeat every",
+      "intervals": {
+        "interval_daily": "day(s)",
+        "interval_weekly": "week(s)",
+        "interval_monthly": "month(s)",
+        "interval_yearly": "year(s)"
+      },
+      "repeaton_label": "Repeat on"
+    }
   }
 }

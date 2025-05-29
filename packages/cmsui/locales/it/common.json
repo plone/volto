@@ -1,6 +1,26 @@
 {
   "cmsui": {
     "edit": "Modifica",
-    "save": "Salva"
+    "save": "Salva",
+    "recurrence": {
+      "editRecurrence": "Cambia la ricorrenza",
+      "repeat": "Ricorrenza",
+      "options": {
+        "daily": "Giornaliera",
+        "mondayfriday": "Lunedi - Venerdi",
+        "weekly": "Settimanale",
+        "weekdays": "Giorni feriali",
+        "monthly": "Mensile",
+        "yearly": "Annuale"
+      },
+      "interval_label": "Ripeti ogni",
+      "intervals": {
+        "interval_daily": "giorni",
+        "interval_weekly": "settimana/e",
+        "interval_monthly": "mese/i",
+        "interval_yearly": "anno/i"
+      },
+      "repeaton_label": "Ripeti ogni"
+    }
   }
 }
