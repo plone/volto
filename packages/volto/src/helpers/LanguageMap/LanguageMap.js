@@ -1,5 +1,7 @@
 const langmap = new Proxy(
   {
+    aa: { native: 'магIарул мацI', name: 'Afar', flag: 'countryflag/dj' },
+    ab: { native: 'бызшәа', name: 'Abkhazian', flag: 'countryflag/ge' },
     ach: {
       nativeName: 'Lwo',
       englishName: 'Acholi',
@@ -8,6 +10,7 @@ const langmap = new Proxy(
       nativeName: 'Адыгэбзэ',
       englishName: 'Adyghe',
     },
+    ae: { native: 'avesta', name: 'Avestan' },
     af: {
       nativeName: 'Afrikaans',
       englishName: 'Afrikaans',
@@ -24,6 +27,8 @@ const langmap = new Proxy(
       nativeName: 'Tɕɥi',
       englishName: 'Akan',
     },
+    am: { native: 'አማርኛ', name: 'Amharic' },
+    an: { native: 'aragonés', name: 'Aragonese' },
     ar: {
       nativeName: 'العربية',
       englishName: 'Arabic',
@@ -40,6 +45,8 @@ const langmap = new Proxy(
       nativeName: 'العربية (السعودية)',
       englishName: 'Arabic (Saudi Arabia)',
     },
+    as: { native: 'অসমিয়া', name: 'Assamese' },
+    ay: { native: 'Aymara', name: 'Aymara' },
     'ay-BO': {
       nativeName: 'Aymar aru',
       englishName: 'Aymara',
@@ -52,6 +59,7 @@ const langmap = new Proxy(
       nativeName: 'Azərbaycan dili',
       englishName: 'Azerbaijani',
     },
+    ba: { native: 'Bashkir', name: 'Bashkir' },
     'be-BY': {
       nativeName: 'Беларуская',
       englishName: 'Belarusian',
@@ -64,6 +72,10 @@ const langmap = new Proxy(
       nativeName: 'Български',
       englishName: 'Bulgarian',
     },
+    be: { native: 'Беларускі', name: 'Belarussian', flag: 'countryflag/by' },
+    bh: { native: 'Bihari', name: 'Bihari' },
+    bi: { native: 'Bislama', name: 'Bislama' },
+    bm: { native: 'bamanankan', name: 'Bambara' },
     bn: {
       nativeName: 'বাংলা',
       englishName: 'Bengali',
@@ -76,6 +88,7 @@ const langmap = new Proxy(
       nativeName: 'বাংলা(বাংলাদেশ)',
       englishName: 'Bengali (Bangladesh)',
     },
+    bo: { native: 'བོད་སྐད་', name: 'Tibetan' },
     br: {
       nativeName: 'Brezhoneg',
       englishName: 'Breton',
@@ -104,6 +117,10 @@ const langmap = new Proxy(
       nativeName: 'ᏣᎳᎩ (tsalagi)',
       englishName: 'Cherokee',
     },
+    ce: { native: 'нохчийн мотт', name: 'Chechen' },
+    ch: { native: 'Chamoru', name: 'Chamorro' },
+    co: { native: 'Corsu', name: 'Corsican' },
+    cr: { native: 'ᓀᐦᐃᔭᐍᐏᐣ', name: 'Cree' },
     cs: {
       nativeName: 'Čeština',
       englishName: 'Czech',
@@ -112,6 +129,8 @@ const langmap = new Proxy(
       nativeName: 'Čeština',
       englishName: 'Czech',
     },
+    cu: { native: 'ѩзыкъ словѣньскъ', name: 'Old Church Slavonic' },
+    cv: { native: 'чӑваш чӗлхи', name: 'Chuvash' },
     cy: {
       nativeName: 'Cymraeg',
       englishName: 'Welsh',
@@ -148,6 +167,7 @@ const langmap = new Proxy(
       nativeName: 'Dolnoserbšćina',
       englishName: 'Lower Sorbian',
     },
+    dv: { native: 'Divehi', name: 'Maldivian' },
     el: {
       nativeName: 'Ελληνικά',
       englishName: 'Greek',
