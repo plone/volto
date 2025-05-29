@@ -27,7 +27,7 @@ export const Default: Story = {
     </ListBox>
   ),
   args: {
-    onAction: null,
+    onAction: () => {},
     selectionMode: 'single',
   },
 };
