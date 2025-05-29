@@ -1,5 +1,5 @@
 import { Group } from 'react-aria-components';
-import { Input, Label } from '../Field/Field';
+import { Input, Label } from '../../Field/Field';
 import type { FieldApi, Updater } from '@tanstack/react-form';
 
 interface IntervalFieldProps {

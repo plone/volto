@@ -5,6 +5,7 @@
     "recurrence": {
       "editRecurrence": "Edit recurrence",
       "repeat": "Repeat",
+      "interval_label": "Every",
       "options": {
         "daily": "Daily",
         "mondayfriday": "Monday - Friday",
@@ -13,14 +14,17 @@
         "monthly": "Monthly",
         "yearly": "Yearly"
       },
-      "interval_label": "Repeat every",
       "intervals": {
         "interval_daily": "day(s)",
         "interval_weekly": "week(s)",
         "interval_monthly": "month(s)",
         "interval_yearly": "year(s)"
       },
-      "repeaton_label": "Repeat on"
+      "repeaton_label": "Repeat every",
+      "bymonthday": "By month day",
+      "bymonthday_description": "es. Day 22 of the month",
+      "byweekday": "By weekday",
+      "byweekday_description": "es. The third tuseday of the month"
     }
   }
 }

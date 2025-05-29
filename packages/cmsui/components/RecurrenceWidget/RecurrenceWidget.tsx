@@ -19,12 +19,20 @@ import { Form, Modal, Button, Dialog, SelectItem } from '@plone/components';
 import { FREQUENCES, OPTIONS } from './utils';
 import { useAppForm } from '../Form/Form';
 import { useStore } from '@tanstack/react-form';
-import IntervalField from './IntervalField';
-import ByDayField from './ByDayField';
-import ByMonthField from './ByMonthField';
+import IntervalField from './Components/IntervalField';
+import ByDayField from './Components/ByDayField';
+import ByMonthField from './Components/ByMonthField';
 
 interface RecurrenceWidgetProps {
   label?: string;
+}
+
+export interface FormDefaultValues {
+  repeat: string;
+  interval: number;
+  byweekday: string[];
+  monthly: string;
+  bymonthday: number;
 }
 
 export function RecurrenceWidget({ label, ...props }: RecurrenceWidgetProps) {
@@ -37,12 +45,8 @@ export function RecurrenceWidget({ label, ...props }: RecurrenceWidgetProps) {
         interval: 0,
         byweekday: [],
         monthly: '',
-      }) as {
-        repeat: string;
-        interval: number;
-        byweekday: string[];
-        monthly: string;
-      },
+        bymonthday: 0,
+      }) as FormDefaultValues,
     [],
   );
 
@@ -122,7 +126,7 @@ export function RecurrenceWidget({ label, ...props }: RecurrenceWidgetProps) {
                         labelAfter={t(
                           `cmsui.recurrence.intervals.interval_${formValues.repeat}`,
                         )}
-                        label={t('cms.recurrence.interval_label')}
+                        label={t('cmsui.recurrence.interval_label')}
                         onChange={field.handleChange}
                       />
                     )}
@@ -138,7 +142,7 @@ export function RecurrenceWidget({ label, ...props }: RecurrenceWidgetProps) {
                     children={(field) => (
                       <ByDayField
                         onChange={field.handleChange}
-                        label={t('cms.recurrence.repeaton_label')}
+                        label={t('cmsui.recurrence.repeaton_label')}
                       />
                     )}
                   />
@@ -150,7 +154,9 @@ export function RecurrenceWidget({ label, ...props }: RecurrenceWidgetProps) {
                     children={(field) => (
                       <ByMonthField
                         onChange={field.handleChange}
-                        label={t('cms.recurrence.repeaton_label')}
+                        label={t('cmsui.recurrence.repeaton_label')}
+                        defaultValues={defaultValues}
+                        form={form}
                       />
                     )}
                   />
