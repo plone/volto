@@ -9,6 +9,14 @@ myst:
 
 # The configuration registry
 
+```{warning}
+Since Volto 18+ the project does not have component shadowing directly in the project.
+It has component shadowing in add-ons, but this is irrelevant.
+The project does not even have a `src/` directory in which to put `src/config.js`.
+You have to use a basic add-on to customize Volto.
+In the add-on, use `index.js` instead of `src/config.js`.
+```
+
 Volto has a centralized {term}`configuration registry` used to parameterize Volto.
 It has the form of a singleton that can be called and queried from anywhere in your code like this:
 
@@ -22,23 +30,22 @@ then access any of its internal configuration to retrieve the configuration you 
 const absoluteUrl = `${config.settings.apiPath}/${content.url}`;
 ```
 
-Both the main project and individual add-ons can extend Volto's configuration registry.
-First the add-ons configuration is applied, in the order they are defined in `package.json`, then finally the project configuration is applied.
-Visualized like a pipe would be:
+Individual add-ons can extend Volto's configuration registry.
+The add-ons configuration is applied in the order they are defined in `package.json`.
+Visualized like a pipe it would be:
 
-> Default Volto configuration -> Add-on 1 -> Add-on 2 -> ... -> Add-on n -> Project
+> Default Volto configuration -> Add-on 1 -> Add-on 2 -> ... -> Add-on n
 
-Both use the same method, using a function as the default export.
+The method is using a function as the default export.
 This function takes a `config` and should return the `config` once you've ended your modifications.
-For add-ons, it must be provided in the main `index.js` module of the add-on.
-For projects, it must be provided in the `src/config.js` module of the project.
+It must be provided in the main `index.js` module of the add-on.
 
 See the {doc}`../conceptual-guides/add-ons` and {doc}`../development/add-ons/index` sections for extended information on how to work with add-ons.
 
 
 ## Extending configuration in a project
 
-You must provide a function as default export in your add-on's `index.js` or project's `src/config.js`:
+You must provide a function as default export in your add-on's `index.js`:
 
 ```js
 export default function applyConfig(config) {
@@ -62,7 +69,7 @@ This allows Volto to work the same way in either standalone version (when develo
 
 ## `settings`
 
-The `settings` object of the configruration registry is a big registry of miscellaneous settings.
+The `settings` object of the configuration registry is a big registry of miscellaneous settings.
 See {doc}`settings-reference` for details.
 
 ## `widgets`

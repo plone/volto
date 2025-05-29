@@ -32,9 +32,9 @@ The main configuration function should be exported as the default.
 An add-on's default configuration method will always be loaded.
 ```
 
-```{note}
-The behavior below using the {file}`config.js` module is not tested with Volto 19 and Cookieplone.
-Neither with the add-on template, nor with the full-stack template.
+```{warning}
+The behavior below using the {file}`config.js` module is not supported with Volto 18+.
+Neither with the Cookieplone add-on template, nor with the Cookieplone full-stack template.
 
 If for some reason you want to manually load the add-on, you can edit your project's {file}`config.js` module:
 
