@@ -1,2 +1,59 @@
 /* asdasd */
 @source '../node_modules/';
+
+.my-overlay {
+  position: fixed;
+  backdrop-filter: blur(10px);
+  background: rgba(45 0 0 / 0.3);
+  inset: 0;
+
+  &[data-entering] {
+    animation: mymodal-blur 300ms;
+  }
+
+  &[data-exiting] {
+    animation: mymodal-blur 300ms reverse ease-in;
+  }
+}
+
+.my-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  border-left: 1px solid var(--border-color);
+  background: var(--overlay-background);
+  box-shadow: -8px 0 20px rgba(0 0 0 / 0.1);
+  outline: none;
+
+  &[data-entering] {
+    animation: mymodal-slide 300ms;
+  }
+
+  &[data-exiting] {
+    animation: mymodal-slide 300ms reverse ease-in;
+  }
+}
+
+@keyframes mymodal-blur {
+  from {
+    backdrop-filter: blur(0);
+    background: rgba(45 0 0 / 0);
+  }
+
+  to {
+    backdrop-filter: blur(10px);
+    background: rgba(45 0 0 / 0.3);
+  }
+}
+
+@keyframes mymodal-slide {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}

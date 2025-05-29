@@ -33,6 +33,13 @@ export function blocksToPlate(content: Content) {
           id: blockId,
           ...block,
         };
+      } else if (block['@type'] === 'teaser') {
+        return {
+          type: 'teaser',
+          children: [{ text: '' }],
+          id: blockId,
+          ...block,
+        };
       }
 
       return {

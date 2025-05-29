@@ -49,9 +49,14 @@
   },
   "dependencies": {
     "@plone/components": "workspace:*",
-    "@plone/registry": "workspace:*",
     "@plone/providers": "workspace:*",
-    "clsx": "^2.1.1"
+    "@plone/registry": "workspace:*",
+    "clsx": "^2.1.1",
+    "react-aria-components": "catalog:",
+    "tailwind-animate": "^0.2.10",
+    "tailwind-merge": "^3.3.0",
+    "tailwind-variants": "^1.0.0",
+    "tailwindcss": "catalog:"
   },
   "devDependencies": {
     "@plone/registry": "workspace:*",

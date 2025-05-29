@@ -2,6 +2,7 @@ import TitleBlockView from '../Title/View';
 import TextBlockView from '../Text/View';
 import ImageBlockView from '../Image';
 import TeaserBlockView from '../Teaser';
+import TeaserBlockEdit from '../Teaser/Edit';
 
 export * from './slate';
 
@@ -28,5 +29,6 @@ export const blocksConfig = {
     id: 'teaser',
     title: 'Teaser',
     view: TeaserBlockView,
+    edit: TeaserBlockEdit,
   },
 };

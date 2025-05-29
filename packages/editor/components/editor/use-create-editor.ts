@@ -58,6 +58,8 @@ import {
   usePlateEditor,
 } from '@udecode/plate/react';
 
+import config from '@plone/registry';
+
 import { copilotPlugins } from '@/components/editor/plugins/copilot-plugins';
 import { editorPlugins } from '@/components/editor/plugins/editor-plugins';
 import { FixedToolbarPlugin } from '@/components/editor/plugins/fixed-toolbar-plugin';
@@ -205,6 +207,15 @@ export const useCreateEditor = (
         UnknownElementPlugin,
         // FixedToolbarPlugin,
         FloatingToolbarPlugin,
+        createPlatePlugin({
+          key: 'teaser',
+          node: {
+            isElement: true,
+            isVoid: true,
+            type: 'teaser',
+            component: config.blocks.blocksConfig.teaser.edit as any,
+          },
+        }),
       ],
       value: [
         {
