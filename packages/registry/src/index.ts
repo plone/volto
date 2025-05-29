@@ -14,6 +14,12 @@ import type {
   ViewsConfig,
   WidgetsConfig,
   ReactRouterRouteEntry,
+  WidgetsConfigByFactory,
+  WidgetsConfigById,
+  WidgetsConfigByType,
+  WidgetsConfigByVocabulary,
+  WidgetsConfigByWidget,
+  WidgetKey,
 } from '@plone/types';
 
 export type ConfigData = {
@@ -545,6 +551,23 @@ class Config {
       [key]: definition,
     };
     this._data.widgets = widgets;
+  }
+  /**
+   * Gets a widget configuration from the registry.
+   *
+   * @param key - A key from the WidgetsConfig interface.
+   */
+  getWidget(key: string): React.ComponentType<any> | undefined {
+    const widgets = this.widgets;
+
+    for (const category of Object.keys(widgets) as WidgetKey[]) {
+      const group = widgets[category];
+      if (typeof group === 'object' && key in group) {
+        return (group as Record<string, React.ComponentType<any>>)[key];
+      }
+    }
+
+    return undefined;
   }
 }
 

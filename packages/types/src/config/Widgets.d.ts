@@ -14,7 +14,9 @@ export type WidgetsConfigById<
   P = any,
 > = Partial<{
   [id in K]: React.ComponentType<P>;
-}>;
+}> & {
+  [custom: string]: React.ComponentType<P>;
+};
 
 export type WidgetByWidgetTypes =
   | (string & {})
@@ -52,9 +54,9 @@ export type WidgetByWidgetTypes =
 export type WidgetsConfigByWidget<
   K extends WidgetByWidgetTypes = WidgetByWidgetTypes,
   P = any,
-> = {
+> = Partial<{
   [widgetType in K]: React.ComponentType<P>;
-};
+}>;
 
 export type WidgetVocabularyTypes =
   | (string & {})
@@ -110,6 +112,10 @@ export type WidgetsConfigViewById<
 > = Partial<{
   [viewId in K]: React.ComponentType<P>;
 }>;
+<<<<<<< HEAD
+=======
+
+>>>>>>> seven-widget-registry
 export type WidgetByViewTypes =
   | (string & {})
   | 'array'
@@ -169,3 +175,11 @@ export interface WidgetsConfig {
   type: WidgetsConfigByType;
   views: WidgetsConfigViews;
 }
+
+export type NestedKeys<T> = {
+  [K in keyof T]: T[K] extends Record<string, React.ComponentType<any>>
+    ? K
+    : never;
+}[keyof T];
+
+export type WidgetKey = NestedKeys<WidgetsConfig>;

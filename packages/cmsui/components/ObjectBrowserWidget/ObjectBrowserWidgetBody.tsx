@@ -11,6 +11,7 @@ import {
   ChevronrightIcon,
   ListIcon,
 } from '../../../components/src/components/icons';
+import { useFetcher } from 'react-router';
 
 export interface ObjectBrowserWidgetBodyProps
   extends Pick<React.ComponentProps<typeof Breadcrumbs>, 'root' | 'items'> {
@@ -36,7 +37,9 @@ export function ObjectBrowserWidgetBody({
   root = '/',
   items = mock,
 }: ObjectBrowserWidgetBodyProps) {
-  const [context, setContext] = useState(root);
+  // const [context, setContext] = useState(root);
+  const fetcher = useFetcher();
+  console.log(fetcher.data);
   return (
     <div className="items-between flex flex-col justify-center py-4">
       <div className="flex items-center justify-between space-y-1">
@@ -54,7 +57,7 @@ export function ObjectBrowserWidgetBody({
                   'Ill need to request search items for ',
                   e.target.id,
                 );
-                setContext(e.target.id);
+                // setContext(e.target.id);
               }}
             >
               {item.title}
@@ -71,7 +74,8 @@ export function ObjectBrowserWidgetBody({
         items={mockList}
         className="rounded-none border-0 py-4"
         onAction={(key) =>
-          alert(`Will call search and change context to ${key}...`)
+          // alert(`Will call search and change context to ${key}...`)
+          fetcher.load('/@search')
         }
       >
         {(item) => (

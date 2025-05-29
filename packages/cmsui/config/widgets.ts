@@ -13,7 +13,6 @@ export default function install(config: ConfigType) {
       'Relation List': ObjectBrowserWidget,
     },
   });
-  console.log(config);
 
   return config;
 }

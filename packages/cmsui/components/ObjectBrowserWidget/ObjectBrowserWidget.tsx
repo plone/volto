@@ -17,6 +17,7 @@ import {
 } from '../Field/Field';
 import { tv } from 'tailwind-variants';
 import { composeTailwindRenderProps, focusRing } from '../utils';
+import { useFetcher } from 'react-router';
 
 export const obwAtom = atom(false);
 const widgetStyles = tv({
@@ -38,6 +39,7 @@ interface ObjectBrowserWidgetProps
 export function ObjectBrowserWidget(props: ObjectBrowserWidgetProps) {
   const { context, mode, label, errorMessage, description, ...bodyProps } =
     props;
+
   console.log('I am props', props);
   const setCollapsed = useSetAtom(obwAtom);
   return (
