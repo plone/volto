@@ -100,6 +100,12 @@ export default function Edit() {
   ]);
   const initialValue = blocksToPlateNew(content);
 
+  const editorCallbacks = {
+    openSideBar: (id: string) => {
+      console.log('editorCallbacks.openSideBar called with id:', id);
+    },
+  };
+
   return (
     <InitAtoms atomValues={[[formAtom, content]]}>
       <main className="mx-4 mt-8 flex h-screen flex-1 flex-col">
@@ -209,6 +215,7 @@ export default function Edit() {
                             field.handleChange(newValue);
                           }}
                           emblaApi={emblaApi2}
+                          editorCallbacks={editorCallbacks}
                         />
                       </div>
                       <div className="mt-4 w-[900px]">

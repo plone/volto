@@ -99,6 +99,7 @@ import { TableRowElement } from '@/components/plate-ui/table-row-element';
 import { TocElement } from '@/components/plate-ui/toc-element';
 import { ToggleElement } from '@/components/plate-ui/toggle-element';
 import UnknownElement from '@/components/plate-ui/unknown-element';
+import { getSevenBlockIdFromHandler } from '@/components/editor/get-seven-block-id-from-handler';
 
 const TitlePlugin = createPlatePlugin({
   key: 'title',
@@ -106,12 +107,14 @@ const TitlePlugin = createPlatePlugin({
     isElement: true,
     type: 'title',
   },
-  // handlers: {
-  //   onKeyDown: ({ editor }) => {
-  //     // Prevent default behavior for title
-  //     console.log('TitlePlugin: onKeyDown');
-  //   },
-  // },
+  handlers: {
+    onClick: ({ editor, api }) => {
+      editor.editorCallbacks?.openSideBar?.(getSevenBlockIdFromHandler(api));
+    },
+    onKeyDown: ({ editor, api }) => {
+      editor.editorCallbacks?.openSideBar?.(getSevenBlockIdFromHandler(api));
+    },
+  },
 });
 
 const UnknownElementPlugin = createPlatePlugin({

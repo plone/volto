@@ -13,10 +13,14 @@ import { useSetAtom } from 'jotai';
 export function PlateEditor(props: {
   value?: Value;
   onChange?: (value: Value) => void;
+  editorCallbacks?: Record<string, any>;
 }) {
-  const editor = useCreateEditor({ value: props.value });
+  const editor = useCreateEditor({
+    value: props.value,
+  });
   const setEditorState = useSetAtom(editorAtom);
   editor.emblaApi = props.emblaApi;
+  editor.editorCallbacks = props.editorCallbacks;
 
   return (
     <>
