@@ -86,7 +86,7 @@ export function Checkbox(props: CheckboxProps) {
               ...renderProps,
             }),
             tvvalues.checkbox
-              ? tv(tvvalues.checkbox)({
+              ? tv(tvvalues.checkbox as any)({
                   ...renderProps,
                 })
               : '',

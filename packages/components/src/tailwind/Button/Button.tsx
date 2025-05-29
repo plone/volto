@@ -12,7 +12,6 @@ export interface ButtonProps extends RACButtonProps {
   variant?: 'neutral' | 'primary' | 'destructive';
   size?: 'S' | 'L';
   accent?: boolean;
-  customize?: (renderProps: object) => string;
 }
 
 const button = tv({
@@ -85,8 +84,9 @@ export function Button(props: ButtonProps) {
               accent: props.accent,
             }),
             tvvalues.button
-              ? tv(tvvalues.button)({
+              ? tv(tvvalues.button as any)({
                   ...renderProps,
+                  // @ts-ignore
                   variant: props.variant,
                   size: props.size,
                   accent: props.accent,
