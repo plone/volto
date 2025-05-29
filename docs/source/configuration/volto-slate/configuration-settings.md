@@ -30,19 +30,19 @@ Add a menu applying CSS classes to text passages or entire paragraphs.
 
 ```js
 slate.styleMenu.inlineStyles = [
-    {
-      cssClass: 'cool-inline-text',
-      label: 'Cool Inline Text',
-      icon: (props) => <Icon name={iconSVG} size="24px" />,
-    },
-  ];
-  slate.styleMenu.blockStyles = [
-    {
-      cssClass: 'underline-block-text',
-      label: 'Cool Block Text',
-      icon: (props) => <Icon name={iconSVG} size="24px" />,
-    },
-  ];
+  {
+    cssClass: 'cool-inline-text',
+    label: 'Cool Inline Text',
+    icon: (props) => <Icon name={iconSVG} size="24px" />,
+  },
+];
+slate.styleMenu.blockStyles = [
+  {
+    cssClass: 'underline-block-text',
+    label: 'Cool Block Text',
+    icon: (props) => <Icon name={iconSVG} size="24px" />,
+  },
+];
 ```
 
 ## `defaultBlockType`
@@ -62,12 +62,12 @@ This setting contains the default enabled Slate `inlineToolbar` buttons.
 
 ```js
 config.settings.slate.toolbarButtons = [
-    'bold',
-    'italic',
-    'strikethrough',
-    'link',
-...
-  ];
+  'bold',
+  'italic',
+  'strikethrough',
+  'link',
+   ...
+];
 ```
 
 
@@ -79,9 +79,9 @@ The Slate toolbar button components.
 
 ```jsx
 settings.slate.buttons = [
-    ...settings.slate.buttons,
-    'block-quote': <BlockButton ... />
-  ];
+  ...settings.slate.buttons,
+  'block-quote': <BlockButton ... />
+];
 ```
 
 
@@ -269,7 +269,7 @@ blocks.initialBlocksFocus === {
 };
 ```
 
-Disable selection of any block and prevent scrolling to a block:
+Disable autofocus of any block type on page load and prevent scrolling to a block on page load:
 
 ```js
 blocks.initialBlocksFocus === null;
