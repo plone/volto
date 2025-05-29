@@ -24,6 +24,7 @@
     "@plone/publicui": "workspace:*",
     "@plone/react-router": "workspace:*",
     "@plone/registry": "workspace:*",
+    "@plone/helpers": "workspace:*",
     "@plone/layout": "workspace:*",
     "@plone/theming": "workspace:*",
     "@react-router/node": "catalog:",

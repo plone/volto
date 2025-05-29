@@ -1,8 +1,10 @@
 import { type LoaderFunctionArgs } from 'react-router';
 import type PloneClient from '@plone/client';
-import { getAuthFromRequest } from '@plone/react-router';
+import {
+  getAuthFromRequest,
+  redirectWithClearedCookie,
+} from '@plone/react-router';
 import config from '@plone/registry';
-import { redirectWithClearedCookie } from './auth';
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const token = await getAuthFromRequest(request);
