@@ -1,17 +1,10 @@
 import { describe, it, expect, afterEach } from 'vitest';
-import config from '@plone/registry';
 import { flattenToAppURL } from './flattenToAppURL';
 
-const API_PATH = 'http://example.com/api';
+const API_PATH = 'http://localhost:8080/Plone';
 
 describe('flattenToAppURL', () => {
-  afterEach(() => {
-    config.settings = {};
-  });
-
   it('should flatten URLs correctly', () => {
-    config.settings.apiPath = API_PATH;
-
     const input = {
       '@id': `${API_PATH}/path/to/resource`,
       anotherField: `${API_PATH}/another/path`,
@@ -60,7 +53,7 @@ describe('flattenToAppURL', () => {
       undefinedField: undefined,
     };
 
-    const result = flattenToAppURL(input as any);
+    const result = flattenToAppURL(input as any, API_PATH);
     expect(result).toEqual(expectedOutput);
   });
 });
