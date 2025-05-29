@@ -31,18 +31,17 @@ import { SidebarPortal } from '@plone/volto/components';
 const Edit = (props) => {
   const { selected } = props;
   return (
-
-    [...]
-
+    {/* [....] */}
     <SidebarPortal selected={selected}>
-      // ...
+      {/* [....] */}
     </SidebarPortal>
+    {/* [....] */}
   )
-
-}
+};
 ```
 
-Everything that's inside the `SidebarPortal` component will be rendered in the sidebar. If you need an extra layer of configuration within `SidebarPortal`, you can use `SidebarPopup`.
+Everything that's inside the `SidebarPortal` component will be rendered in the sidebar.
+If you need an extra layer of configuration within `SidebarPortal`, you can use `SidebarPopup`.
 
 ```jsx
 import { SidebarPopup } from '@plone/volto/components';
@@ -51,13 +50,13 @@ const Edit = (props) => {
   const { sidebarOpen } = props;
 
   return (
-    [...]
-
+    {/* [....] */}
     <SidebarPopup open={sidebarOpen}>
-      ...
+      {/* [....] */}
     </SidebarPopup>
+    {/* [....] */}
   )
-}
+};
 ```
 
 ## Schema driven automated block settings forms
@@ -65,10 +64,13 @@ const Edit = (props) => {
 A helper component is available in core in order to simplify the task of defining and rendering the settings for a block: the `BlockDataForm` component.
 
 ```{note}
-`BlockDataForm` is a convenience component around the already available in core `InlineForm` that takes care of some aspects exclusively for Volto Blocks, like Variants and schemaExtenders. You can still use `InlineForm` across Volto, but using `BlockDataForm` is recommended for the blocks settings use case.
+`BlockDataForm` is a convenience component around the already available in core `InlineForm` that takes care of some aspects exclusively for Volto Blocks, like Variants and schemaExtenders.
+You can still use `InlineForm` across Volto, but using `BlockDataForm` is recommended for the blocks settings use case.
 ```
 
-The edit block settings component needs to be described by a schema that matches the format used to serialize the content type definitions. The widgets that will be used in rendering the form follow the same algorithm that is used for the regular metadata fields for the content types. As an example of schema, it could look like this:
+The edit block settings component needs to be described by a schema that matches the format used to serialize the content type definitions.
+The widgets that will be used in rendering the form follow the same algorithm that is used for the regular metadata fields for the content types.
+As an example of schema, it could look like this:
 
 ```js
 const IframeSchema = {
@@ -155,9 +157,9 @@ It has the form of an HOC (High Order Component), so you have to wrap the compon
 ```js
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
-[...]
+// ...
 
-export default withObjectBrowser(MyComponent)
+export default withObjectBrowser(MyComponent);
 ```
 
 The HOC component `withObjectBrowser` wraps your component by making available this props:
@@ -175,7 +177,7 @@ The default image block in Volto features both the Sidebar and the object browse
 
 (openobjectbrowser-handler-api-label)=
 
-### openObjectBrowser handler API
+### `openObjectBrowser` handler API
 
 If you want to open an `ObjectBrowser` from your Block, you need to call the `openObjectBrowser` function you'll find in the props of your block component.
 This function has this signature:
@@ -196,12 +198,12 @@ this.props.openObjectBrowser();
 // Opens the browser in the `link` mode, so it saves the selection in the `href` data property.
 this.props.openObjectBrowser({ mode: 'link' });
 
-// Opens the browser defining which data property should save the selection using `dataName`
+// Opens the browser defining which data property should save the selection using `dataName`.
 this.props.openObjectBrowser({
   dataName: 'myfancydatafield',
 });
 
-// Opens the browser defining the function that should be used to save the selection using `onSelectItem`
+// Opens the browser defining the function that should be used to save the selection using `onSelectItem`.
 this.props.openObjectBrowser({
   onSelectItem: (url) =>
     this.props.onChangeBlock(this.props.block, {
@@ -211,13 +213,13 @@ this.props.openObjectBrowser({
 });
 ```
 
-### ObjectBrowserWidget
+### `ObjectBrowserWidget`
 
-This widget shows an objectBrowser to find content/contents on site.
+This widget shows an `objectBrowser` to find content/contents on site.
 
 It is the default widget for vocabulary fields that uses `plone.app.vocabularies.Catalog`.
 
-It works in 3 different mode:
+It works in 3 different modes:
 
 - `image`: The field value is an object.
   The path of selected item is saved in `url` property of value object. (`fieldName: {url:''}`)
@@ -227,7 +229,8 @@ It works in 3 different mode:
 
 #### `return` prop
 
-The object widget returns always an array, even if it's meant to have only one object in return. In order to fix that situation and do not issue a breaking change, a `return` prop is being introduced, so if its value is `single`, then it returns a single value:
+The object widget returns always an array, even if it's meant to have only one object in return.
+In order to fix that situation and do not issue a breaking change, a `return` prop is being introduced, so if its value is `single`, then it returns a single value:
 
 ```js
 export const Image = () => <ObjectBrowserWidget mode="image" return="single" />;
@@ -237,22 +240,23 @@ export const Image = () => <ObjectBrowserWidget mode="image" return="single" />;
 This situation will be fixed in subsequent Volto releases.
 ```
 
-#### PropDataName vs dataName
+#### `propDataName` vs `dataName`
 
 - `dataName` is the prop inside `data` object, used for `link` and `image` mode.
-- `PropDataName` is the name of field which value is `data`. It's used for `multiple` mode.
+- `propDataName` is the name of field which value is `data`.
+  It's used for `multiple` mode.
 
 For example:
 
 ```js
-content:{ '@id': 'page-1', related_pages:[], image:{url:""}, link:{href:""} }
+content: { '@id': 'page-1', related_pages: [], image: { url: "" }, link: { href: "" } }
 ```
 
 if we use object browser widget for fields:
 
-- `related_pages`: propDataName is `related_pages` and `dataName` is `null`.
-- `image`: dataName is `url` and `propDataName` is `null`.
-- `link`: dataName is `href` and `propDataName` is `null`.
+- `related_pages`: `propDataName` is `related_pages` and `dataName` is `null`.
+- `image`: `dataName` is `url` and `propDataName` is `null`.
+- `link`: `dataName` is `href` and `propDataName` is `null`.
 
 #### Usage in blocks schema
 
@@ -275,27 +279,26 @@ Used in along with `InlineForm`, one can instantiate and configure it using the 
       mode: 'link',
       selectedItemAttrs: ['Title', 'Description'],
     },
+  },
 }
 ```
 
-#### selectedItemAttrs
+#### `selectedItemAttrs`
 
-You can select the attributes from the object (coming from the metadata brain from
-@search endpoint used in the browser) using the `selectedItemAttrs` prop as shown in the
-last example.
+You can select the attributes from the object (coming from the metadata brain from @search endpoint used in the browser) using the `selectedItemAttrs` prop as shown in the last example.
 
-#### allowExternals
+#### `allowExternals`
 
-You can allow users to type manually an URL (internal or external). Once validated, it
-will tokenize the value. As a feature, you can paste an internal URL (eg. the user copy
-the URL from the browser, and paste it in the widget) and will be converted to a
-tokenized value, as if it was selected via the Object Browser widget.
+You can allow users to type manually an URL (internal or external).
+Once validated, it will tokenize the value.
+As a feature, you can paste an internal URL (eg. the user copy the URL from the browser, and paste it in the widget) and will be converted to a tokenized value, as if it was selected via the Object Browser widget.
 
-#### ObjectBrowserWidgetMode()
+#### `ObjectBrowserWidgetMode()`
 
 Returns the component widget with `mode` passed as argument.
 
-The default mode for ObjectBrowserWidget is multiple. If you would like to use this widget with link or image mode as widget field for a specific field id (for example), you could specify in in config.js as:
+The default mode for ObjectBrowserWidget is multiple.
+If you would like to use this widget with link or image mode as widget field for a specific field ID (for example), you could specify in in `index.js` as:
 
 ```jsx
 export const widgets = {
@@ -316,7 +319,11 @@ export const widgets = {
 If `selectableTypes` is set in `widgetOptions.pattern_options`, then only items whose content type has a name that is defined in `widgetOptions.pattern_options.selectableTypes` will be selectable.
 
 ```jsx
-<ObjectBrowserWidget ... widgetOptions={{pattern_options:{selectableTypes:['News Item','Event']}}}>
+<ObjectBrowserWidget {/*...*/} widgetOptions={{
+  pattern_options: {
+    selectableTypes: ['News Item', 'Event']
+  }
+}}/>
 ```
 
 You can also set the `selectableTypes` from `plone` when declaring a field for `contenttype`:
@@ -338,7 +345,11 @@ form.widget(
 If `maximumSelectionSize` is set in `widgetOptions.pattern_options`, the widget allows to select at most the `maximumSelectionSize` number of items defined in `widgetOptions.pattern_options.maximumSelectionSize`.
 
 ```jsx
-<ObjectBrowserWidget ... widgetOptions={{pattern_options:{maximumSelectionSize:2}}}>
+<ObjectBrowserWidget {/*...*/} widgetOptions={{
+  pattern_options: {
+    maximumSelectionSize: 2
+  }
+}}/>
 ```
 
 You can also set the `maximumSelectionSize` from `plone` when declaring a field for `contenttype`:
@@ -447,86 +458,73 @@ class Example extends Component {
 }
 ```
 
-The current block engine is available as the separate `BlocksForm` component,
-used to be a part of the `Form.jsx` component. It has been previously exposed
-as the [`@eeacms/volto-blocks-form`](https://github.com/eea/volto-blocks-form)
-addon and reused in several other addons, so you can find integration examples
-in addons such as
-[`volto-columns-block`](https://github.com/eea/volto-columns-block),
-[`volto-accordion-block`](https://github.com/rohberg/volto-accordion-block),
-[`@eeacms/volto-accordion-block`](https://github.com/eea/volto-accordion-block),
-[`@eeacms/volto-grid-block`](https://github.com/eea/volto-accordion-block), but
-probably the simplest implementation to follow is in the
-[`@eeacms/volto-group-block`](https://github.com/eea/volto-group-block)
+The current block engine is available as the separate `BlocksForm` component, used to be a part of the `Form.jsx` component.
+It has been previously exposed as the [`@eeacms/volto-blocks-form`](https://github.com/eea/volto-blocks-form) addon and reused in several other addons, so you can find integration examples in addons such as [`volto-columns-block`](https://github.com/eea/volto-columns-block), [`volto-accordion-block`](https://github.com/rohberg/volto-accordion-block), [`@eeacms/volto-accordion-block`](https://github.com/eea/volto-accordion-block), [`@eeacms/volto-grid-block`](https://github.com/eea/volto-accordion-block), but probably the simplest implementation to follow is in the [`@eeacms/volto-group-block`](https://github.com/eea/volto-group-block).
 
-Notice that the `BlocksForm` component allows overriding the edit block
-wrapper and allows passing a custom `blocksConfig` configuration object, for
-example to filter or add new blocks.
+Notice that the `BlocksForm` component allows overriding the edit block wrapper and allows passing a custom `blocksConfig` configuration object, for example to filter or add new blocks.
 
 You can also reuse the DragDropList component as a separate component:
 
 ```jsx
-  <DragDropList
-    childList={childList}
-    as="tbody"
-    onMoveItem={(result) => {
-      const { source, destination } = result;
-      const ns = JSON.parse(JSON.stringify(state));
-      Object.keys(ns.order).forEach((lang) => {
-        const x = ns.order[lang][source.index];
-        const y = ns.order[lang][destination.index];
-        ns.order[lang][destination.index] = x;
-        ns.order[lang][source.index] = y;
-      });
-      setState(ns);
-      return true;
-    }}
-  >
-    {({ index, draginfo }) => {
-      return (
-        <Ref innerRef={draginfo.innerRef} key={index}>
-          <Table.Row {...draginfo.draggableProps}>
-            <Table.Cell>
-              <div {...draginfo.dragHandleProps}>
-                <Icon name={dragSVG} size="18px" />
-              </div>
-            </Table.Cell>
-            {langs.map((lang) => {
-              const i = state.order[lang][index];
-              const entry = state.data[lang][i];
-              return (
-                <Table.Cell key={lang}>
-                  <TermInput
-                    entry={entry}
-                    onChange={(id, value) => {
-                      const newState = { ...state };
-                      newState.data[lang][i] = {
-                        ...newState.data[lang][i],
-                        [id]: value,
-                      };
+<DragDropList
+  childList={childList}
+  as="tbody"
+  onMoveItem={(result) => {
+    const { source, destination } = result;
+    const ns = JSON.parse(JSON.stringify(state));
+    Object.keys(ns.order).forEach((lang) => {
+      const x = ns.order[lang][source.index];
+      const y = ns.order[lang][destination.index];
+      ns.order[lang][destination.index] = x;
+      ns.order[lang][source.index] = y;
+    });
+    setState(ns);
+    return true;
+  }}
+>
+  {({ index, draginfo }) => {
+    return (
+      <Ref innerRef={draginfo.innerRef} key={index}>
+        <Table.Row {...draginfo.draggableProps}>
+          <Table.Cell>
+            <div {...draginfo.dragHandleProps}>
+              <Icon name={dragSVG} size="18px" />
+            </div>
+          </Table.Cell>
+          {langs.map((lang) => {
+            const i = state.order[lang][index];
+            const entry = state.data[lang][i];
+            return (
+              <Table.Cell key={lang}>
+                <TermInput
+                  entry={entry}
+                  onChange={(id, value) => {
+                    const newState = { ...state };
+                    newState.data[lang][i] = {
+                      ...newState.data[lang][i],
+                      [id]: value,
+                    };
 
-                      setState(newState);
-                    }}
-                  />
-                </Table.Cell>
-              );
-            })}
-            <Table.Cell>
-              <Button basic onClick={() => {}}>
-                <Icon
-                  className="circled"
-                  name={deleteSVG}
-                  size="12px"
+                    setState(newState);
+                  }}
                 />
-              </Button>
-            </Table.Cell>
-          </Table.Row>
-        </Ref>
-      );
-    }}
-  </DragDropList>
+              </Table.Cell>
+            );
+          })}
+          <Table.Cell>
+            <Button basic onClick={() => {}}>
+              <Icon
+                className="circled"
+                name={deleteSVG}
+                size="12px"
+              />
+            </Button>
+          </Table.Cell>
+        </Table.Row>
+      </Ref>
+    );
+  }}
+</DragDropList>
 ```
 
-Check the source code of `volto-columns-block` and
-[`volto-taxonomy`](https://github.com/eea/volto-taxonomy/) for details on
-how to reuse this component.
+Check the source code of `volto-columns-block` and [`volto-taxonomy`](https://github.com/eea/volto-taxonomy/) for details on how to reuse this component.
