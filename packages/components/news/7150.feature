@@ -1,0 +1,1 @@
+Added SizeWidget, AlignWidget, and WidthWidget to the components library. @rboixaderg
