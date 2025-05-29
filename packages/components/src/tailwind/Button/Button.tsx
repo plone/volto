@@ -8,7 +8,7 @@ import { tv } from 'tailwind-variants';
 import { focusRing } from '../utils';
 
 export interface ButtonProps extends RACButtonProps {
-  variant?: 'neutral' | 'primary' | 'destructive';
+  variant?: 'neutral' | 'primary' | 'destructive' | 'icon';
   size?: 'S' | 'L';
   accent?: boolean;
 }
@@ -24,6 +24,7 @@ const button = tv({
         'pressed:bg-quanta-cobalt bg-quanta-air hover:bg-quanta-arctic hover:text-quanta-royal active:bg-quanta-sky active:text-quanta-royal focus:bg-quanta-artic focus:text-quanta-royal text-quanta-sapphire',
       destructive:
         'pressed:bg-quanta-rose active:bg-quanta-flamingo bg-quanta-air hover:bg-quanta-ballet hover:text-quanta-wine active:text-quanta-wine focus:bg-quanta-ballet focus:text-quanta-wine text-quanta-candy',
+      icon: 'pressed:bg-quanta-cobalt pressed:[&_svg]:text-white bg-quanta-air hover:bg-quanta-snow active:bg-quanta-silver focus:bg-quanta-artic text-quanta-iron has-[svg]:text-quanta-iron flex items-center justify-center border-0 p-1',
     },
     accent: {
       true: '',
@@ -48,6 +49,12 @@ const button = tv({
       accent: true,
       class:
         'text-quanta-air pressed:bg-quanta-cobalt bg-quanta-sapphire hover:bg-quanta-royal hover:text-quanta-air active:text-quanta-air focus:text-quanta-air active:bg-quanta-cobalt focus:bg-quanta-royal',
+    },
+    {
+      variant: 'icon',
+      accent: true,
+      class:
+        'pressed:bg-quanta-cobalt pressed:[&_svg]:text-white bg-quanta-air hover:bg-quanta-snow active:bg-quanta-silver focus:bg-quanta-artic text-quanta-iron has-[svg]:text-quanta-iron flex items-center justify-center border-0 p-1',
     },
     {
       variant: 'destructive',

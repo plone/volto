@@ -37,10 +37,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 
   try {
     return {
-      content: flattenToAppURL(
-        (await cli.getContent({ path, expand })).data,
-        config.settings.apiPath,
-      ),
+      content: flattenToAppURL((await cli.getContent({ path, expand })).data),
       locale,
     };
   } catch (error: any) {
