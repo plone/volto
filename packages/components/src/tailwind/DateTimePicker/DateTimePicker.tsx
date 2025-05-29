@@ -111,10 +111,6 @@ export function DateTimePicker({
         });
 
         setInternalValue(dateTimeValue);
-        console.log(
-          'output values',
-          (dateTimeValue as ZonedDateTime)?.toAbsoluteString() ?? null,
-        );
         if (onChange) {
           onChange(dateTimeValue.toAbsoluteString());
         }
