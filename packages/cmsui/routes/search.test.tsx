@@ -45,4 +45,36 @@ describe('loader', () => {
       },
     });
   });
+
+  it('should not add SearchableText=* if not set', async () => {
+    const searchMock = vi.fn().mockResolvedValue({
+      data: {
+        '@id': 'http://example.com/++api++/@search',
+        items: [],
+        items_total: 0,
+      },
+    });
+    config.settings.apiPath = 'http://example.com';
+    config.registerUtility({
+      name: 'ploneClient',
+      type: 'client',
+      method: () => ({
+        search: searchMock,
+        config: {
+          token: undefined,
+        },
+      }),
+    });
+    const request = new Request('http://example.com/@search');
+
+    await loader({ request, params: {}, context: {} });
+
+    expect(searchMock).toHaveBeenCalledWith({
+      query: {
+        path: {
+          query: '/',
+        },
+      },
+    });
+  });
 });
