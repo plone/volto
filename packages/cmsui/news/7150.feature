@@ -1,0 +1,1 @@
+Added SizeWidget to widget configuration. @rboixaderg
