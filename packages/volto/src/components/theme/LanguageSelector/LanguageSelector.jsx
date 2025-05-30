@@ -17,8 +17,6 @@ import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { toReactIntlLang } from '@plone/volto/helpers/Utils/Utils';
 
-import config from '@plone/volto/registry';
-
 import { defineMessages, useIntl } from 'react-intl';
 
 const messages = defineMessages({
@@ -34,12 +32,16 @@ const LanguageSelector = (props) => {
   const translations = useSelector(
     (state) => state.content.data?.['@components']?.translations?.items,
   );
+  const isMultilingual = useSelector(
+    (state) => state.site.data.features?.multilingual,
+  );
+  const availableLanguages = useSelector(
+    (state) => state.site.data?.['plone.available_languages'],
+  );
 
-  const { settings } = config;
-
-  return settings.isMultilingual ? (
+  return isMultilingual ? (
     <div className="language-selector">
-      {map(settings.supportedLanguages, (lang) => {
+      {map(availableLanguages, (lang) => {
         const translation = find(translations, { language: lang });
         return (
           <Link
@@ -61,7 +63,7 @@ const LanguageSelector = (props) => {
     </div>
   ) : (
     <Helmet>
-      <html lang={toReactIntlLang(settings.defaultLanguage)} />
+      <html lang={toReactIntlLang(currentLang)} />
     </Helmet>
   );
 };

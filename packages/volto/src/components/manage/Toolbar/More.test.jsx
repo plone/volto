@@ -135,6 +135,9 @@ const store = mockStore({
       is_folderish: true,
     },
   },
+  site: {
+    data: {},
+  },
   workflow: { history: [], transition: { loaded: true } },
 });
 
