@@ -28,17 +28,17 @@ import MoreOptionsSVG from '@plone/components/icons/more-options.svg?react';
 import PasteSVG from '@plone/components/icons/paste.svg?react';
 
 import type { ArrayElement, Brain, Content } from '@plone/types';
-import { ContentsCell } from './ContentsCell';
-import { TableIndexesPopover } from './TableIndexesPopover';
-import { RearrangePopover } from './RearrangePopover';
-import { ContentsActions } from './ContentsActions';
-// import { AddContentPopover } from './AddContentPopover';
+import { ContentsCell } from '../ContentsCell/ContentsCell';
+import { TableIndexesPopover } from '../TableIndexesPopover/TableIndexesPopover';
+import { RearrangePopover } from '../RearrangePopover/RearrangePopover';
+import { ContentsActions } from '../ContentsActions/ContentsActions';
+// import { AddContentPopover } from './AddContentPopover/AddContentPopover';
 import { useLoaderData, useNavigate } from 'react-router';
-import type { ContentsLoaderType } from '../routes/contents';
+import type { ContentsLoaderType } from '../../routes/contents';
 import { useTranslation } from 'react-i18next';
-import { useContentsContext } from '../providers/contents';
+import { useContentsContext } from '../../providers/contents';
 
-import '../styles/ContentsTable.css';
+import './ContentsTable.css';
 
 interface ContentsTableProps {
   pathname: string;

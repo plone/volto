@@ -9,7 +9,7 @@ import {
   type MetaFunction,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import type { RootLoader } from 'seven/app/root';
+import { type RootLoader } from 'seven/app/root';
 import { PluggablesProvider } from '@plone/cmsui/components/Pluggable';
 import Toolbar from '@plone/cmsui/components/Toolbar/Toolbar';
 import Sidebar, { sidebarAtom } from '@plone/cmsui/components/Sidebar/Sidebar';

@@ -1,11 +1,11 @@
 import React, { type ComponentProps, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDateFormatter } from 'react-aria';
-import type { Brain } from '../../types';
+import type { Brain } from '@plone/types';
 import { Button, Link } from '@plone/components';
 import MoreOptionsSVG from '@plone/components/icons/more-options.svg?react';
-import { ItemActionsPopover } from './ItemActionsPopover';
-import { useContentsContext } from '../providers/contents';
+import { ItemActionsPopover } from '../ItemActionsPopover/ItemActionsPopover';
+import { useContentsContext } from '../../providers/contents';
 
 interface Props {
   item: Brain;

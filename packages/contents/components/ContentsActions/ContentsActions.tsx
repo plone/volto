@@ -11,8 +11,8 @@ import TagSVG from '@plone/components/icons/tag.svg?react';
 import CutSVG from '@plone/components/icons/cut.svg?react';
 import CopySVG from '@plone/components/icons/copy.svg?react';
 import PasteSVG from '@plone/components/icons/paste.svg?react';
-import '../styles/ContentsActions.css';
 import type { Brain } from '@plone/types';
+import './ContentsActions.css';
 
 type Props = {
   upload: () => Promise<void>;

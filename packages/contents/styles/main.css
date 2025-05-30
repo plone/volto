@@ -1,3 +1,5 @@
+@import '@plone/components/dist/basic.css';
+@import '@plone/components/dist/quanta.css';
 @import './base/reset.css';
 @import './base/reactAriaPopover.css';
 @import './base/reactAriaModal.css';

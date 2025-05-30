@@ -7,15 +7,9 @@ import { Modal, Dialog } from '@plone/components';
 import { Button } from '@plone/components/tailwind';
 import CloseSVG from '@plone/components/icons/close.svg?react';
 import BinSVG from '@plone/components/icons/bin.svg?react';
-import { useContentsContext } from '../providers/contents';
+import { useContentsContext } from '../../providers/contents';
 
-interface DeleteModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onDelete: () => void;
-  title?: string;
-  message?: string;
-}
+interface DeleteModalProps {}
 
 const DeleteModal: React.FC<DeleteModalProps> = ({}) => {
   const { t } = useTranslation();
@@ -23,7 +17,7 @@ const DeleteModal: React.FC<DeleteModalProps> = ({}) => {
   const fetcher = useFetcher();
   const { showDelete, setShowDelete, itemsToDelete, setItemsToDelete } =
     useContentsContext();
-  console.log('itemsToDelete', itemsToDelete, itemsToDelete.size);
+
   if (!showDelete) return null;
 
   const close = () => {
@@ -40,6 +34,7 @@ const DeleteModal: React.FC<DeleteModalProps> = ({}) => {
         action: '/@@contents/@@delete',
       },
     );
+    setShowDelete(false);
   };
 
   //TODO: check linkintegrity

@@ -8,14 +8,15 @@ import React, {
 import { getContentIcon } from '@plone/helpers';
 import { useLoaderData } from 'react-router';
 import type { ContentsLoaderType } from '../routes/contents';
-import type { Toast } from '../types';
+import { UNSTABLE_ToastQueue as ToastQueue } from 'react-aria-components';
+import type { ToastContent as MyToastContent } from '../types';
 import type { Brain } from '@plone/types';
 import type { Key } from '@react-types/shared';
 
 type SetSelectedType = 'all' | 'none' | Set<Key>;
 
 interface ContentsContext {
-  toast: Toast;
+  toast: ToastQueue<MyToastContent>;
   selected: Set<Brain>;
   setSelected: (selected: SetSelectedType) => void;
   showDelete: boolean;
@@ -25,19 +26,19 @@ interface ContentsContext {
 }
 
 const ContentsContext = createContext<ContentsContext>({
-  toast: { error: () => '' },
   selected: new Set(),
   setSelected: () => {},
   showDelete: false,
   setShowDelete: () => {},
   itemsToDelete: new Set(),
   setItemsToDelete: () => {},
+  toast: new ToastQueue(),
 });
 
 type ContentsProviderProps = PropsWithChildren<ContentsContext>;
 
 export function ContentsProvider(props: ContentsProviderProps) {
-  let { toast, children } = props;
+  const { children, toast } = props;
 
   const { search } = useLoaderData<ContentsLoaderType>();
   const { items = [] } = search ?? {};
@@ -46,11 +47,11 @@ export function ContentsProvider(props: ContentsProviderProps) {
 
   const setSelected = (s: SetSelectedType) => {
     if (s === 'all') {
-      _setSelected(items.map((item) => item));
+      _setSelected(new Set(items));
     } else if (s === 'none') {
       _setSelected(new Set());
     } else {
-      _setSelected(items.filter((i) => s.has(i['@id'])));
+      _setSelected(new Set(items.filter((i) => s.has(i['@id']))));
     }
   };
 
@@ -62,7 +63,6 @@ export function ContentsProvider(props: ContentsProviderProps) {
     () => ({
       // getBaseUrl,
       getContentIcon,
-      toast,
       children,
       selected,
       setSelected,
@@ -70,8 +70,9 @@ export function ContentsProvider(props: ContentsProviderProps) {
       setItemsToDelete,
       showDelete,
       setShowDelete,
+      toast,
     }),
-    [toast, children, selected, showDelete, itemsToDelete],
+    [children, selected, showDelete, itemsToDelete, toast],
   );
 
   return (

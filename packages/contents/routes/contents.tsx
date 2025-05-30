@@ -1,6 +1,7 @@
 import {
   useLocation,
   redirect,
+  useRouteError,
   type LoaderFunctionArgs,
   type ActionFunctionArgs,
 } from 'react-router';
@@ -9,18 +10,26 @@ import { requireAuthCookie } from '@plone/react-router';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
 import { flattenToAppURL } from '@plone/helpers';
-import { ContentsTable } from '../components/ContentsTable';
+import { ContentsTable } from '../components/ContentsTable/ContentsTable';
 import Indexes, { defaultIndexes } from '../components/Indexes';
 import { ContentsProvider } from '../providers/contents';
-import DeleteModal from '../components/DeleteModal';
-//styles
-//import '@plone/components/dist/basic.css'; //commentato perchè è gia incluso in @plone/theming/styles/simple/main.css
-import '@plone/theming/styles/simple/main.css';
-import '@plone/components/dist/quanta.css';
-import '../styles/main.css';
+import DeleteModal from '../components/DeleteModal/DeleteModal';
+import ErrorToast from '../components/ErrorToast/ErrorToast';
+
+import {
+  Text,
+  Button,
+  UNSTABLE_Toast as Toast,
+  UNSTABLE_ToastContent as ToastContent,
+  UNSTABLE_ToastQueue as ToastQueue,
+  UNSTABLE_ToastRegion as ToastRegion,
+} from 'react-aria-components';
+import type { ToastContent as MyToastContent } from '../types';
 
 // This is needed because to prevent circular import loops
 export type ContentsLoaderType = typeof loader;
+// Create a global ToastQueue.
+export const queue = new ToastQueue<MyToastContent>();
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function loader({ params, request }: LoaderFunctionArgs) {
@@ -100,7 +109,7 @@ export default function Contents(props) {
   };
 
   return (
-    <ContentsProvider toast={{ error: () => 'error' }}>
+    <ContentsProvider toast={queue}>
       <DeleteModal />
       <ContentsTable
         pathname={location.pathname}
@@ -119,6 +128,24 @@ export default function Contents(props) {
 
         // addableTypes={props.addableTypes}
       />
+
+      <ToastRegion queue={queue}>
+        {({ toast }) => (
+          <Toast toast={toast}>
+            <ToastContent>
+              <Text slot="title">{toast.content.title}</Text>
+              <Text slot="description">{toast.content.description}</Text>
+            </ToastContent>
+            <Button slot="close">x</Button>
+          </Toast>
+        )}
+      </ToastRegion>
     </ContentsProvider>
   );
+}
+
+//todo: fix handling errors with toast
+export function ErrorBoundary(queue) {
+  console.log('handle errors');
+  return ErrorToast(queue);
 }

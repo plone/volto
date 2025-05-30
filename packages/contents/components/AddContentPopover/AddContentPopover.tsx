@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Popover } from '@plone/components';
 import ChevronrightSVG from '@plone/components/icons/chevron-right.svg?react';
-import '../styles/AddContentPopover.css';
+import './AddContentPopover.css';
 
 interface Props {
   path: string;

@@ -8,7 +8,7 @@ import CutIcon from '@plone/components/icons/cut.svg?react';
 import CopyIcon from '@plone/components/icons/copy.svg?react';
 import BinIcon from '@plone/components/icons/bin.svg?react';
 import { useTranslation } from 'react-i18next';
-import '../styles/ItemActionsPopover.css';
+import './ItemActionsPopover.css';
 
 interface Props extends Omit<PopoverProps, 'children'> {
   editLink: string;

@@ -14,6 +14,7 @@ export async function action({
   ...others
 }: ActionFunctionArgs) {
   const token = await requireAuthCookie(request);
+
   const cli = config
     .getUtility({
       name: 'ploneClient',
@@ -25,13 +26,25 @@ export async function action({
   const path = `/${params['*'] || ''}`;
 
   const data = await request.json();
+  const errors = [];
 
   try {
-    data.items.forEach(async (i) => {
-      await cli.deleteContent({ path: i });
+    data.items.forEach(async (i: string) => {
+      const res = await cli.deleteContent({ path: i });
+      //todo: handle erorrs
+      if (res.status >= 400) {
+        throw new Response('Error', { status: 400 }); //this may will intercepted from ErrorBoundary in contents.tsx route
+        // errors.push({
+        //   message: 'Error on deleting ' + i + ': ' + res.status,
+        // });
+      }
     });
   } catch (e) {
+    // eslint-disable-next-line no-console
+    console.error('Error', e);
+    // errors.push({ message: 'Error on delete' });
     //ToDO: display error. Do redirect with querystring to display toast error.
+    //return redirect('/@@contents' + path + '?error=');
   }
 
   return redirect('/@@contents' + path);
