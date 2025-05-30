@@ -83,5 +83,17 @@ export default function install(config: ConfigType) {
     ],
   });
 
+  config.registerRoute({
+    type: 'prefix',
+    path: '@search',
+    children: [
+      {
+        type: 'route',
+        path: '*',
+        file: '@plone/cmsui/routes/search.tsx',
+      },
+    ],
+  });
+
   return config;
 }
