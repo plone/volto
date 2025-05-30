@@ -5,14 +5,17 @@ import { Link } from '../Link/Link';
 
 interface SitemapItem {
   '@id': string;
-  title: string;
   description: string;
   items?: SitemapItem[];
+  review_state: string | null;
+  title: string;
+  // use_view_action_in_listings?: boolean;
+  // Additional properties can be added as needed
+  [key: string]: any;
 }
 
 interface SitemapProps {
   items?: SitemapItem[];
-  page_title?: string;
 }
 
 const renderItems = (items: SitemapItem[]) => {
@@ -31,15 +34,6 @@ const renderItems = (items: SitemapItem[]) => {
   );
 };
 
-export function Sitemap({
-  items,
-  page_title = 'default title of Sitemap',
-}: SitemapProps) {
-  return (
-    <div id="sitemap">
-      {/* TODO translate title sitemap */}
-      <h1>{page_title}</h1>
-      {items && renderItems(items)}
-    </div>
-  );
+export function Sitemap({ items }: SitemapProps) {
+  return <div id="sitemap">{items && renderItems(items)}</div>;
 }

@@ -1,21 +1,13 @@
 import { useTranslation } from 'react-i18next';
-import {
-  data,
-  useLocation,
-  useRouteLoaderData,
-  type LoaderFunction,
-  type LoaderFunctionArgs,
-} from 'react-router';
+import { data, type LoaderFunctionArgs } from 'react-router';
 import type PloneClient from '@plone/client';
 import { Sitemap } from '@plone/components';
 import type { NavigationResponse } from '@plone/types';
-import SlotRenderer from '@plone/layout';
 import { flattenToAppURL } from '@plone/helpers';
 
-import type { RootLoader } from 'seven/app/root';
 import config from '@plone/registry';
 
-export async function loader({ params, request }: LoaderFunctionArgs) {
+export async function loader({ params }: LoaderFunctionArgs) {
   const cli = config
     .getUtility({
       name: 'ploneClient',
@@ -25,7 +17,6 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 
   // TODO path for getNavigation
   const path = `/${params['*'] || ''}`;
-  // const path = '/';
   const depth = 3; // TODO: make this configurable
 
   try {
@@ -52,27 +43,13 @@ interface SitemapRouteProps {
 }
 
 export default function SitemapRoute({ loaderData }: SitemapRouteProps) {
-  const location = useLocation();
   const { t } = useTranslation();
-  const contentData = useRouteLoaderData<RootLoader>('root');
-  if (!contentData) return null;
-  const { content, locale } = contentData;
   const { sitemapnavigation } = loaderData;
 
-  const kwargs = {
-    page_title: t('publicui.sitemap'),
-  };
-  // TODO header and footer for sitemap
-
   return (
-    <div className="app-slot">
-      {/* <header className="header-slot">
-        <SlotRenderer name="header" content={content} location={location} />
-      </header> */}
-      <Sitemap items={sitemapnavigation.items} {...kwargs} />
-      {/* <footer id="footer">
-        <SlotRenderer name="footer" content={content} location={location} />
-      </footer> */}
+    <div className="route-sitemap">
+      <h1 className="documentFirstHeading">{t('publicui.sitemap')}</h1>
+      <Sitemap items={sitemapnavigation.items} />
     </div>
   );
 }
