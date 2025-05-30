@@ -94,7 +94,8 @@ If your add-on previously relied on Jest's configuration via the `RAZZLE_JEST_CO
 
 ### Create setup file for Vitest
 
-Create a test setup file {file}`setupTests.js` for Vitest.
+You can, but only if you want, create a test setup file {file}`setupTests.js` for Vitest.
+The tests in Volto work well without this file.
 The following code is boilerplate setup for Vitest.
 
 ```javascript
