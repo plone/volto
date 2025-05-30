@@ -96,3 +96,25 @@ export function byYearOptions(t: any) {
     },
   ];
 }
+
+export function recurrenceEndOptions(t: any) {
+  return [
+    {
+      id: 'count',
+      title: t('cmsui.recurrence.count'),
+      description: t('cmsui.recurrence.count_description'),
+    },
+    {
+      id: 'until',
+      title: t('cmsui.recurrence.until'),
+      description: t('cmsui.recurrence.until_description'),
+    },
+  ];
+}
+
+export const widgetTailwindClasses = {
+  selectButton: '',
+  fieldComponent: 'flex items-center',
+  fieldGroupComponent: 'flex items-center border-0',
+  labelComponent: 'basis-1/5 text-[1rem]',
+};

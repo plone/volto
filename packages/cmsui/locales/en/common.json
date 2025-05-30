@@ -22,11 +22,11 @@
       },
       "repeaton_label": "Repeat every",
       "bymonthday": "By month day",
-      "bymonthday_description": "es. Day 22 of the month",
+      "bymonthday_description": "ex. Day 22 of the month",
       "byweekday": "By week day",
-      "byweekday_description": "es. On the third tuesday of the month",
+      "byweekday_description": "ex. On the third tuesday of the month",
       "byday": "By week day of a specific month",
-      "byday_description": "es. On the first monday of february",
+      "byday_description": "ex. On the first monday of february",
       "on_the_label": "The",
       "day_label": "Day",
       "first_label": "First",
@@ -35,7 +35,14 @@
       "fourth_label": "Fourth",
       "last_label": "Last",
       "ofmonth_label": "of month",
-      "monthdayError": "Please select a valid day of the month"
+      "monthdayError": "Please select a valid day of the month",
+      "ends_label": "Ends",
+      "count": "After a set number of occurrences",
+      "count_description": "ex. After 5 occurrences",
+      "until": "On a set date",
+      "until_description": "on June 15th, 2050",
+      "count_after": "After",
+      "count_occurrences": "occurrence(s)"
     }
   }
 }

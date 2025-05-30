@@ -11,8 +11,8 @@ interface ByMonthDayFieldProps {
 const ByMonthDayField = ({ onChange }: ByMonthDayFieldProps) => {
   const { t } = useTranslation();
   return (
-    <div>
-      <div>
+    <div className="">
+      <div className="flex items-center gap-4">
         {t('cmsui.recurrence.day_label')}
         <TextField
           inputMode="numeric"
@@ -29,7 +29,6 @@ const ByMonthDayField = ({ onChange }: ByMonthDayFieldProps) => {
         </TextField>
         {t('cmsui.recurrence.ofmonth_label')}
       </div>
-      <FieldError />
     </div>
   );
 };

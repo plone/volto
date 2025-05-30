@@ -35,7 +35,14 @@
       "fourth_label": "Quarto",
       "last_label": "Ultimo",
       "ofmonth_label": "del mese",
-      "monthdayError": "Selezionare un giorno del mese valido"
+      "monthdayError": "Selezionare un giorno del mese valido",
+      "ends_label": "Termina",
+      "count": "Dopo un numero di occorrenze",
+      "count_description": "es. Dopo 5 occorrenze",
+      "until": "In una data precisa",
+      "until_description": "il 15 giugno 2050",
+      "count_after": "Dopo",
+      "count_occurrences": "occorrenza/e"
     }
   }
 }
