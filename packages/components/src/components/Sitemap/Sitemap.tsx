@@ -15,7 +15,7 @@ interface SitemapProps {
   page_title?: string;
 }
 
-const renderItems = (items: SitemapItem[]): JSX.Element => {
+const renderItems = (items: SitemapItem[]) => {
   return (
     <ul>
       {items.map((item) => (
