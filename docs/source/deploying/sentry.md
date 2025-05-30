@@ -150,7 +150,7 @@ The configuration for setting up Sentry on runtime is very similar to how we set
 :   Same as `RAZZLE_SENTRY_FRONTEND_CONFIG`, but we configure the messages from the backend.
 
 `RAZZLE_SENTRY_RELEASE`
-    The release number, which should be the same as `SENTRY_RELEASE`.
+:   The release number, which should be the same as `SENTRY_RELEASE`.
 
 In the entrypoint of our Docker image, we have to add the script `./create-sentry-release.sh`.
 When the container is started, this script will check in Sentry if the specified release already exists, and if not, it will create it and upload the source code and the source maps.
@@ -240,18 +240,16 @@ Example of configuration.
 
 ```json
 {
-  "tags":
-  {
-      "site":"www.test.com",
-      "app":"test_app"
+  "tags": {
+    "site": "www.test.com",
+    "app": "test_app"
   },
-  "extras":
-  {
-      "logger":"javascript-frontend"
+  "extras": {
+    "logger": "javascript-frontend"
   },
   "environment": "development",
   "serverName": "server #1",
-  "maxBreadcrumbs": 50
+  "maxBreadcrumbs": 50,
 }
 ```
 
@@ -265,7 +263,7 @@ SENTRY_PROJECT=new_project
 SENTRY_RELEASE=2.0.0
 SENTRY_DSN=https://boo@sentry.com/1
 SENTRY_FRONTEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-frontend", "release":"1.4.1"}}'
-SENTRY_BACKEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"} pnpm build
+SENTRY_BACKEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"}, "extras":{"logger":"javascript-backend", "server":"server#1"}} pnpm build
 node build/server.js
 ```
 
@@ -287,7 +285,7 @@ services:
       - SENTRY_RELEASE=2.0.0
       - RAZZLE_SENTRY_DSN=https://boo@sentry.com/1
       - RAZZLE_SENTRY_RELEASE=2.0.0
-      - RAZZLE_SENTRY_FRONTEND_CONFIG={"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-frontend"}}
+      - RAZZLE_SENTRY_FRONTEND_CONFIG={"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-frontend", "release":"1.4.1"}}
       - RAZZLE_SENTRY_BACKEND_CONFIG={"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-backend", "server":"server#1"}}
 ```
 
