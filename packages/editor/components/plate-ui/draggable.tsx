@@ -35,7 +35,7 @@ import {
 import { useReadOnly, useSelected } from '@udecode/plate/react';
 import { GripVertical } from 'lucide-react';
 
-import { STRUCTURAL_TYPES } from '@/components/editor/transforms';
+import { STRUCTURAL_TYPES } from '../editor/transforms';
 
 import { TooltipButton } from './tooltip';
 
@@ -84,7 +84,11 @@ export const DraggableAboveNodes: RenderNodeWrapper = (props) => {
 
   if (!enabled) return;
 
-  return (props) => <Draggable {...props} />;
+  const DraggableWrapper = (props: PlateRenderElementProps) => (
+    <Draggable {...props} />
+  );
+  DraggableWrapper.displayName = 'DraggableWrapper';
+  return DraggableWrapper;
 };
 
 export const Draggable = withRef<'div', PlateRenderElementProps>(
@@ -100,6 +104,9 @@ export const Draggable = withRef<'div', PlateRenderElementProps>(
         if (blockSelectionApi && id) {
           blockSelectionApi.set(id);
         }
+      },
+      preview: {
+        disable: typeof window !== 'undefined',
       },
     });
 
@@ -222,7 +229,7 @@ const DragHandle = React.memo(() => {
   return (
     <TooltipButton
       variant="ghost"
-      className="h-6 w-4.5 p-0"
+      className="flex h-6 w-4.5 p-0"
       onClick={() => {
         editor
           .getApi(BlockSelectionPlugin)
@@ -236,27 +243,28 @@ const DragHandle = React.memo(() => {
   );
 });
 
-const DropLine = React.memo(
-  React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-    ({ className, ...props }, ref) => {
-      const { dropLine } = useDropLine();
+const DropLine = withRef<'div'>(({ className, ...props }, ref) => {
+  const { dropLine } = useDropLine();
 
-      if (!dropLine) return null;
+  if (!dropLine) return null;
 
-      return (
-        <div
-          ref={ref}
-          {...props}
-          className={cn(
-            'slate-dropLine',
-            'absolute inset-x-0 h-0.5 opacity-100 transition-opacity',
-            'bg-brand/50',
-            dropLine === 'top' && '-top-px',
-            dropLine === 'bottom' && '-bottom-px',
-            className,
-          )}
-        />
-      );
-    },
-  ),
-);
+  return (
+    <div
+      ref={ref}
+      {...props}
+      className={cn(
+        'slate-dropLine',
+        'absolute inset-x-0 h-0.5 opacity-100 transition-opacity',
+        'bg-quanta-cobalt',
+        'w-4/5',
+        dropLine === 'top' && '-top-px',
+        dropLine === 'bottom' && '-bottom-px',
+        className,
+      )}
+    />
+  );
+});
+
+Gutter.displayName = 'Gutter';
+DragHandle.displayName = 'DragHandle';
+DropLine.displayName = 'DropLine';
