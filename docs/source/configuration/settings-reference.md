@@ -464,7 +464,7 @@ cssLayers
     ```
 
 showRelatedItems
-    If true, the `RelatedItems` component will show items from the `relatedItems` field.
+    If `true`, the `RelatedItems` component will show items from the `relatedItems` field.
     Default: false.
 
     ```{versionadded} 18.5.0
