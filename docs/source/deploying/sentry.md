@@ -113,8 +113,8 @@ const settings = {
       key: 'value',
     },
     integrations: [
-        ...defaultSettings.sentryOptions.integrations,
-        // new MyAwesomeIntegration()
+      ...defaultSettings.sentryOptions.integrations,
+      // new MyAwesomeIntegration()
     ]
   }
 };
@@ -150,7 +150,7 @@ The configuration for setting up Sentry on runtime is very similar to how we set
 :   Same as `RAZZLE_SENTRY_FRONTEND_CONFIG`, but we configure the messages from the backend.
 
 `RAZZLE_SENTRY_RELEASE`
-    The release number, which should be the same as `SENTRY_RELEASE`.
+:   The release number, which should be the same as `SENTRY_RELEASE`.
 
 In the entrypoint of our Docker image, we have to add the script `./create-sentry-release.sh`.
 When the container is started, this script will check in Sentry if the specified release already exists, and if not, it will create it and upload the source code and the source maps.
@@ -240,14 +240,12 @@ Example of configuration.
 
 ```json
 {
-  "tags":
-  {
-      "site":"www.test.com",
-      "app":"test_app"
+  "tags": {
+    "site":"www.test.com",
+    "app":"test_app"
   },
-  "extras":
-  {
-      "logger":"javascript-frontend"
+  "extras": {
+    "logger":"javascript-frontend"
   },
   "environment": "development",
   "serverName": "server #1",
