@@ -11,10 +11,12 @@ import {
   installServerMiddleware,
   otherResources,
 } from './middleware.server';
-
+import Forbidden from '@plone/cmsui/routes/forbidden';
+import Unauthorized from '@plone/cmsui/routes/unauthorized';
+import NotFound from '@plone/cmsui/routes/notfound';
+import ConnectionRefused from '@plone/cmsui/routes/connection-refused';
 // eslint-disable-next-line import/no-unresolved
 import stylesheet from '../addons.styles.css?url';
-
 export const unstable_middleware = [
   installServerMiddleware,
   otherResources,
@@ -81,12 +83,23 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = 'Oops!';
   let details = 'An unexpected error occurred.';
   let stack: string | undefined;
+  let ErrorContent: React.ReactNode;
+
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error';
-    details =
-      error.status === 404
-        ? 'The requested page could not be found.'
-        : error.statusText || details;
+    switch (error.status) {
+      case 403:
+        ErrorContent = <Forbidden />;
+        break;
+      case 404:
+        ErrorContent = <NotFound />;
+        break;
+      case 500:
+        ErrorContent = <ConnectionRefused />;
+        break;
+      default:
+        ErrorContent = <h1>404 error</h1>;
+        break;
+    }
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;
@@ -99,17 +112,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
-      <body>
-        <main className="container mx-auto p-4 pt-16">
-          <h1>{message}</h1>
-          <p>{details}</p>
-          {stack && (
-            <pre className="w-full overflow-x-auto p-4">
-              <code>{stack}</code>
-            </pre>
-          )}
-        </main>
-      </body>
+      <body>{ErrorContent}</body>
     </html>
   );
 }
