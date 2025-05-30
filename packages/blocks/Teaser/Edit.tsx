@@ -1,29 +1,29 @@
-import { DialogTrigger, ModalOverlay, Heading } from 'react-aria-components';
-import { Dialog, Modal } from '@plone/components';
-import { Button } from '@plone/components/tailwind';
+import type { BlockEditProps } from '@plone/types';
+import { Link } from '@plone/components';
 
-export default function TeaserEdit() {
+export default function TeaserBlockEdit(props: BlockEditProps) {
+  const { data } = props;
+  const href = Array.isArray(data.href) ? data.href?.[0]?.['@id'] : data.href;
+  const image = data.preview_image?.[0];
+  // TODO: Improve the images download path including the ++api++ to avoid having to setup a redirect
+  // for @@images and @@download
+  const url =
+    data.preview_image?.[0]?.['@id'] ||
+    `${data.href[0]?.image_scales[data.href[0].image_field][0].base_path}/${data.href[0]?.image_scales[data.href[0].image_field][0].scales.larger.download}`;
+
   return (
-    <div className="teaser-edit" contentEditable="false">
-      <DialogTrigger>
-        <Button>Edit block</Button>
-        <ModalOverlay className="my-overlay">
-          <Modal className="my-modal">
-            <Dialog>
-              <Heading slot="title">Notice</Heading>
-              <p>This is a modal with a custom modal overlay.</p>
-              <Button slot="close">Close</Button>
-            </Dialog>
-          </Modal>
-        </ModalOverlay>
-      </DialogTrigger>
-      <p>
-        This is a teaser block. You can edit the content in the block settings.
-      </p>
-      <p>
-        To add a teaser, select a content item from the list or paste a link to
-        an item.
-      </p>
+    <div>
+      <Link href={href}>
+        <div className="teaser-item">
+          <div className="teaser-image-wrapper">
+            <img src={url} alt="" />
+          </div>
+          <div className="teaser-content">
+            <h2>{data.title}</h2>
+            <p>{data?.description}</p>
+          </div>
+        </div>
+      </Link>
     </div>
   );
 }
