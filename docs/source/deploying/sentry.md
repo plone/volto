@@ -113,8 +113,8 @@ const settings = {
       key: 'value',
     },
     integrations: [
-        ...defaultSettings.sentryOptions.integrations,
-        // new MyAwesomeIntegration()
+      ...defaultSettings.sentryOptions.integrations,
+      // new MyAwesomeIntegration()
     ]
   }
 };
