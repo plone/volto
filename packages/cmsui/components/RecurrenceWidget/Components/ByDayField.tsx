@@ -5,8 +5,9 @@ import {
   RadioGroup,
 } from 'react-aria-components';
 import { Label } from '../../Field/Field';
-import { Days, getLocalizedWeekdayShort } from '../utils';
+import { Days, getLocalizedWeekday } from '../utils';
 import type { Updater } from '@tanstack/react-form';
+import { useTranslation } from 'react-i18next';
 
 interface ByDayFieldProps {
   onChange: (updater: Updater<string[]>) => void;
@@ -14,6 +15,8 @@ interface ByDayFieldProps {
 }
 
 const ByDayField = ({ label, onChange }: ByDayFieldProps) => {
+  const { i18n } = useTranslation();
+  const currentLocale = i18n.language;
   return (
     <CheckboxGroup className="flex" onChange={(value) => onChange(value)}>
       <Label>{label}</Label>
@@ -26,7 +29,7 @@ const ByDayField = ({ label, onChange }: ByDayFieldProps) => {
               'data-selected:bg-muted-background flex h-[50px] w-[50px] items-center justify-center hover:cursor-pointer'
             }
           >
-            {getLocalizedWeekdayShort(Days[d].weekday)}
+            {getLocalizedWeekday(Days[d].weekday, currentLocale, 'short')}
           </Checkbox>
         );
       })}

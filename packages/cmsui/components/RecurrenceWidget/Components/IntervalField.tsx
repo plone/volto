@@ -1,6 +1,7 @@
 import { Group } from 'react-aria-components';
 import { Input, Label } from '../../Field/Field';
 import type { FieldApi, Updater } from '@tanstack/react-form';
+import { TextField } from '../../TextField/TextField';
 
 interface IntervalFieldProps {
   labelAfter?: string;
@@ -13,11 +14,17 @@ const IntervalField = ({ labelAfter, label, onChange }: IntervalFieldProps) => {
     <div>
       <Label>{label}</Label>
       <Group>
-        <Input
+        <TextField
           type="number"
-          onChange={(e) => onChange(e.target.valueAsNumber)}
-        />
-        {labelAfter && <div>{labelAfter}</div>}
+          inputMode="numeric"
+          onChange={(e) => {
+            const inputValue = Number(e);
+            onChange(inputValue);
+          }}
+        >
+          <Input />
+          {labelAfter && <div>{labelAfter}</div>}
+        </TextField>
       </Group>
     </div>
   );

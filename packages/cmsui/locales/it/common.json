@@ -24,7 +24,18 @@
       "bymonthday": "Per giorno del mese",
       "bymonthday_description": "es. Giorno 22 del mese",
       "byweekday": "Per giorno della settimana",
-      "byweekday_description": "es. Il terzo martedì del mese"
+      "byweekday_description": "es. Il terzo martedì del mese",
+      "byday": "Per giorno della settimana di un mese preciso",
+      "byday_description": "es. Il primo lunedì del mese di febbraio",
+      "on_the_label": "Il",
+      "day_label": "Giorno",
+      "first_label": "Primo",
+      "second_label": "Second",
+      "third_label": "Terzo",
+      "fourth_label": "Quarto",
+      "last_label": "Ultimo",
+      "ofmonth_label": "del mese",
+      "monthdayError": "Selezionare un giorno del mese valido"
     }
   }
 }

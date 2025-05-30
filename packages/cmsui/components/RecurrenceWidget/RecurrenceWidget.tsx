@@ -16,12 +16,17 @@ import { Label } from '../Field/Field';
 import EditIcon from '@plone/components/icons/edit.svg?react';
 import { useTranslation } from 'react-i18next';
 import { Form, Modal, Button, Dialog, SelectItem } from '@plone/components';
-import { FREQUENCES, OPTIONS } from './utils';
+import { byMonthOptions, byYearOptions, FREQUENCES, OPTIONS } from './utils';
 import { useAppForm } from '../Form/Form';
 import { useStore } from '@tanstack/react-form';
 import IntervalField from './Components/IntervalField';
 import ByDayField from './Components/ByDayField';
-import ByMonthField from './Components/ByMonthField';
+import ByMonthDayField from './Components/ByMonthDayField';
+import { FieldGroup } from '@plone/components/tailwind';
+import ByWeekdayOfTheMonth from './Components/ByWeekdayOfTheMonth';
+import ByWeekdayOfTheMonthIndex from './Components/ByWeekdayOfTheMonthIndex';
+import RadioOptionsField from './Components/RadioOptionsField';
+import MonthOfTheYearField from './Components/MonthOfTheYearField';
 
 interface RecurrenceWidgetProps {
   label?: string;
@@ -33,6 +38,10 @@ export interface FormDefaultValues {
   byweekday: string[];
   monthly: string;
   bymonthday: number;
+  weekdayOfTheMonth: number;
+  weekdayOfTheMonthIndex: number;
+  yearly: string;
+  monthOfTheYear: number;
 }
 
 export function RecurrenceWidget({ label, ...props }: RecurrenceWidgetProps) {
@@ -46,6 +55,10 @@ export function RecurrenceWidget({ label, ...props }: RecurrenceWidgetProps) {
         byweekday: [],
         monthly: '',
         bymonthday: 0,
+        weekdayOfTheMonth: -1,
+        weekdayOfTheMonthIndex: 0,
+        yearly: '',
+        monthOfTheYear: 1,
       }) as FormDefaultValues,
     [],
   );
@@ -55,8 +68,8 @@ export function RecurrenceWidget({ label, ...props }: RecurrenceWidgetProps) {
   });
 
   const formValues = useStore(form.store, (state) => state.values);
-  console.log(formValues);
-  console.log(OPTIONS.frequences[formValues.repeat]);
+  // console.log(formValues);
+  // console.log(OPTIONS.frequences[formValues.repeat]);
 
   return (
     <Group className="group mb-4 flex flex-col gap-1">
@@ -152,15 +165,132 @@ export function RecurrenceWidget({ label, ...props }: RecurrenceWidgetProps) {
                   <form.AppField
                     name="monthly"
                     children={(field) => (
-                      <ByMonthField
+                      <RadioOptionsField
                         onChange={field.handleChange}
-                        label={t('cmsui.recurrence.repeaton_label')}
-                        defaultValues={defaultValues}
-                        form={form}
+                        options={byMonthOptions(t)}
+                        checkboxValue={formValues['monthly']}
                       />
                     )}
                   />
                 )}
+
+                <form.Subscribe
+                  selector={(store) => store.values}
+                  children={(values) => {
+                    if (
+                      values.repeat === 'monthly' &&
+                      values.monthly === 'bymonthday'
+                    ) {
+                      return (
+                        <form.AppField
+                          name="bymonthday"
+                          children={(field) => (
+                            <ByMonthDayField onChange={field.handleChange} />
+                          )}
+                        />
+                      );
+                    } else if (
+                      values.repeat === 'monthly' &&
+                      values.monthly === 'byweekday'
+                    )
+                      return (
+                        <FieldGroup>
+                          <div>The</div>
+                          <form.AppField
+                            name="weekdayOfTheMonthIndex"
+                            children={(field) => (
+                              <ByWeekdayOfTheMonthIndex
+                                onChange={field.handleChange}
+                              />
+                            )}
+                          />
+                          <form.AppField
+                            name="weekdayOfTheMonth"
+                            children={(field) => (
+                              <ByWeekdayOfTheMonth
+                                onChange={field.handleChange}
+                              />
+                            )}
+                          />
+                        </FieldGroup>
+                      );
+                  }}
+                />
+
+                {OPTIONS.frequences[formValues.repeat]?.byyear && (
+                  <form.AppField
+                    name="yearly"
+                    children={(field) => (
+                      <RadioOptionsField
+                        onChange={field.handleChange}
+                        options={byYearOptions(t)}
+                        checkboxValue={formValues['yearly']}
+                      />
+                    )}
+                  />
+                )}
+
+                <form.Subscribe
+                  selector={(store) => store.values}
+                  children={(values) => {
+                    if (
+                      values.repeat === 'yearly' &&
+                      values.yearly === 'bymonthday'
+                    ) {
+                      return (
+                        <FieldGroup>
+                          <form.AppField
+                            name="bymonthday"
+                            children={(field) => (
+                              <ByMonthDayField onChange={field.handleChange} />
+                            )}
+                          />
+                          <form.AppField
+                            name="monthOfTheYear"
+                            children={(field) => (
+                              <MonthOfTheYearField
+                                onChange={field.handleChange}
+                              />
+                            )}
+                          />
+                        </FieldGroup>
+                      );
+                    } else if (
+                      values.repeat === 'yearly' &&
+                      values.yearly === 'byday'
+                    )
+                      return (
+                        <FieldGroup>
+                          <div>{t('cmsui.recurrence.on_the_label')}</div>
+                          <form.AppField
+                            name="weekdayOfTheMonthIndex"
+                            children={(field) => (
+                              <ByWeekdayOfTheMonthIndex
+                                onChange={field.handleChange}
+                              />
+                            )}
+                          />
+                          <form.AppField
+                            name="weekdayOfTheMonth"
+                            children={(field) => (
+                              <ByWeekdayOfTheMonth
+                                onChange={field.handleChange}
+                              />
+                            )}
+                          />
+                          {t('cmsui.recurrence.ofmonth_label')}
+                          <form.AppField
+                            name="monthOfTheYear"
+                            children={(field) => (
+                              <MonthOfTheYearField
+                                onChange={field.handleChange}
+                              />
+                            )}
+                          />
+                        </FieldGroup>
+                      );
+                  }}
+                />
               </form>
             </Dialog>
           </Modal>
