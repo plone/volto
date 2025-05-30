@@ -7,8 +7,9 @@ import {
   SelectValue,
 } from 'react-aria-components';
 import { useTranslation } from 'react-i18next';
-import { getLocalizedMonth, months } from '../utils';
+import { getLocalizedMonth, months, widgetTailwindClasses } from '../utils';
 import { Button } from '@plone/components/tailwind';
+import ChevronDown from '@plone/components/icons/chevron-down.svg?react';
 
 interface MonthOfTheYearFieldProps {
   onChange: (updater: Updater<number>) => void;
@@ -23,13 +24,18 @@ const MonthOfTheYearField = ({ onChange }: MonthOfTheYearFieldProps) => {
         value && typeof value === 'number' && onChange(value)
       }
     >
-      <Button>
-        <SelectValue />
+      <Button className={widgetTailwindClasses.selectButton}>
+        <SelectValue className="text-[1rem]" />
+        <ChevronDown />
       </Button>
-      <Popover>
+      <Popover className={widgetTailwindClasses.selectPopover}>
         <ListBox>
           {months.map((m) => (
-            <ListBoxItem key={m} id={m}>
+            <ListBoxItem
+              key={m}
+              id={m}
+              className={widgetTailwindClasses.listBoxItem}
+            >
               {getLocalizedMonth(m, currentLocale, 'long')}
             </ListBoxItem>
           ))}

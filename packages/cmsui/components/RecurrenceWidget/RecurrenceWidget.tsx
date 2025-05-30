@@ -1,6 +1,5 @@
 import {
   DialogTrigger,
-  FormValidationContext,
   Group,
   Heading,
   ListBox,
@@ -106,7 +105,11 @@ export function RecurrenceWidget({ label, ...props }: RecurrenceWidgetProps) {
             style={{ fill: 'bg-quanta-cobalt' }}
           />
         </Button>
-        <ModalOverlay className={'fixed top-0 flex w-full justify-center'}>
+        <ModalOverlay
+          className={
+            'bg-muted-background/80 fixed top-0 flex h-screen w-full items-center justify-center'
+          }
+        >
           <Modal
             isDismissable
             className={'bg-background relative w-[95%] md:w-[88%] lg:w-[850px]'}
@@ -138,11 +141,13 @@ export function RecurrenceWidget({ label, ...props }: RecurrenceWidgetProps) {
                         <Label className={widgetTailwindClasses.labelComponent}>
                           {t('cmsui.recurrence.repeat')}
                         </Label>
-                        <Button className="flex w-fit">
-                          <SelectValue />
+                        <Button className={widgetTailwindClasses.selectButton}>
+                          <SelectValue className="text-[1rem]" />
                           <ChevronDown />
                         </Button>
-                        <Popover className="bg-background">
+                        <Popover
+                          className={widgetTailwindClasses.selectPopover}
+                        >
                           <ListBox>
                             {Object.keys(OPTIONS.frequences).map(
                               (el, index) => (
@@ -150,6 +155,7 @@ export function RecurrenceWidget({ label, ...props }: RecurrenceWidgetProps) {
                                   key={el}
                                   value={OPTIONS.frequences[el]}
                                   id={el}
+                                  className={widgetTailwindClasses.listBoxItem}
                                 >
                                   {t(`cmsui.recurrence.options.${el}`)}
                                 </ListBoxItem>

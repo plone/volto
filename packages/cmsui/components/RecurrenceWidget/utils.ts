@@ -113,8 +113,11 @@ export function recurrenceEndOptions(t: any) {
 }
 
 export const widgetTailwindClasses = {
-  selectButton: '',
   fieldComponent: 'flex items-center',
-  fieldGroupComponent: 'flex items-center border-0',
+  fieldGroupComponent: 'flex items-center border-0 h-auto gap-2',
   labelComponent: 'basis-1/5 text-[1rem]',
+  selectButton:
+    'pressed:bg-transparent flex items-center rounded-[4px]! border-[1px] focus:bg-transparent hover:cursor-pointer',
+  selectPopover: 'bg-background min-w-[var(--trigger-width)] border-[1px]',
+  listBoxItem: 'hover:bg-muted-background px-3 py-2 hover:cursor-pointer',
 };

@@ -6,9 +6,10 @@ import {
   Select,
   SelectValue,
 } from 'react-aria-components';
-import { getLocalizedWeekday, Days } from '../utils';
+import { getLocalizedWeekday, Days, widgetTailwindClasses } from '../utils';
 import { useTranslation } from 'react-i18next';
 import type { Updater } from '@tanstack/react-form';
+import ChevronDown from '@plone/components/icons/chevron-down.svg?react';
 
 interface ByWeekdayOfTheMonth {
   onChange: (updater: Updater<number>) => void;
@@ -23,14 +24,19 @@ const ByWeekdayOfTheMonth = ({ onChange }: ByWeekdayOfTheMonth) => {
         value && typeof value === 'number' && onChange(value)
       }
     >
-      <Button>
-        <SelectValue />
+      <Button className={widgetTailwindClasses.selectButton}>
+        <SelectValue className="text-[1rem]" />
+        <ChevronDown />
       </Button>
-      <Popover>
+      <Popover className={widgetTailwindClasses.selectPopover}>
         <ListBox>
           {(Object.keys(Days) as Array<keyof typeof Days>).map((d) => {
             return (
-              <ListBoxItem key={d} id={Days[d].weekday}>
+              <ListBoxItem
+                key={d}
+                id={Days[d].weekday}
+                className={widgetTailwindClasses.listBoxItem}
+              >
                 {getLocalizedWeekday(Days[d].weekday, currentLocale, 'long')}
               </ListBoxItem>
             );
