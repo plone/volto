@@ -66,7 +66,7 @@ describe('loader', () => {
 
     expect(getContentMock).toHaveBeenCalledWith({
       path: '/',
-      expand: ['navroot', 'breadcrumbs', 'navigation'],
+      expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
     });
     expect(data.locale).toBe('en');
   });
@@ -94,7 +94,7 @@ describe('loader', () => {
 
     expect(getContentMock).toHaveBeenCalledWith({
       path: '/test-content',
-      expand: ['navroot', 'breadcrumbs', 'navigation'],
+      expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
     });
     expect(data.locale).toBe('en');
   });
