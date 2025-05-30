@@ -161,6 +161,7 @@
     "@types/node": "^20",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "embla-carousel": "^8.6.0",
     "eslint-plugin-storybook": "^0.11.2",
     "jest-axe": "^8.0.0",
     "jotai-devtools": "^0.11.0",
