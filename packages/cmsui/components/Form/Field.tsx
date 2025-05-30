@@ -36,7 +36,6 @@ type FieldProps = {
 };
 
 const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not rendered
-
 /**
  * Get default widget
  */
@@ -49,8 +48,7 @@ const getWidgetDefault = (): React.ComponentType<any> =>
 const getWidgetByFieldId = (
   id: FieldProps['name'],
 ): React.ComponentType<any> | null =>
-  // @ts-ignore
-  typeof id === 'string' ? config.widgets?.id?.[id] || null : null;
+  typeof id === 'string' ? (config.getWidget(id) ?? null) : null;
 
 /**
  * Get widget by factory attribute
@@ -58,7 +56,7 @@ const getWidgetByFieldId = (
 const getWidgetByFactory = (
   factory: FieldProps['factory'],
 ): React.ComponentType<any> | null =>
-  factory ? config.widgets?.factory?.[factory] || null : null;
+  factory ? (config.getWidget(factory) ?? null) : null;
 
 /**
  * Get widget by field's `widget` attribute
@@ -67,7 +65,7 @@ const getWidgetByName = (
   widget: FieldProps['widget'],
 ): React.ComponentType<any> | null =>
   typeof widget === 'string'
-    ? config.widgets?.widget?.[widget] || getWidgetDefault()
+    ? (config.getWidget(widget) ?? getWidgetDefault())
     : null;
 
 /**
@@ -86,7 +84,7 @@ const getWidgetFromTaggedValues = (widgetOptions?: {
   frontendOptions?: { widget: FieldProps['widget']; widgetProps: any };
 }): React.ComponentType<any> | null =>
   typeof widgetOptions?.frontendOptions?.widget === 'string'
-    ? config.widgets?.widget?.[widgetOptions.frontendOptions.widget]
+    ? (config.getWidget(widgetOptions.frontendOptions.widget) ?? null)
     : null;
 
 /**
@@ -103,7 +101,7 @@ directives.widget(
  */
 const getWidgetPropsFromTaggedValues = (widgetOptions?: {
   frontendOptions?: { widget: string; widgetProps: any };
-}): React.ComponentType<any> | null =>
+}): Record<string, any> | null =>
   typeof widgetOptions?.frontendOptions?.widgetProps === 'object'
     ? widgetOptions.frontendOptions.widgetProps
     : null;
@@ -113,50 +111,34 @@ const getWidgetPropsFromTaggedValues = (widgetOptions?: {
  */
 const getWidgetByVocabulary = (
   vocabulary: FieldProps['vocabulary'],
-): React.ComponentType<any> | null =>
-  vocabulary && vocabulary['@id']
-    ? config.widgets?.vocabulary?.[
-        vocabulary['@id'].replace(
-          /^.*\/@vocabularies\//,
-          '',
-        ) as keyof WidgetsConfigByVocabulary
-      ]
-    : null;
+): React.ComponentType<any> | null => {
+  const vocabId = vocabulary?.['@id'];
+  if (!vocabId) return null;
+
+  const key = vocabId.replace(/^.*\/@vocabularies\//, '');
+  return config.getWidget(key) ?? null;
+};
 
 /**
  * Get widget by field's hints `vocabulary` attribute in widgetOptions
  */
 const getWidgetByVocabularyFromHint = (
   props: FieldProps,
-): React.ComponentType<any> | null =>
-  props.widgetOptions && props.widgetOptions.vocabulary
-    ? config.widgets?.vocabulary?.[
-        props.widgetOptions.vocabulary['@id'].replace(
-          /^.*\/@vocabularies\//,
-          '',
-        ) as keyof WidgetsConfigByVocabulary
-      ]
-    : null;
+): React.ComponentType<any> | null => {
+  const vocabId = props.widgetOptions?.vocabulary?.['@id'];
+  if (!vocabId) return null;
+
+  const key = vocabId.replace(/^.*\/@vocabularies\//, '');
+  return config.getWidget(key) ?? null;
+};
 
 /**
  * Get widget by field's `choices` attribute
  */
 const getWidgetByChoices = (
   props: FieldProps,
-): React.ComponentType<any> | null => {
-  if (props.choices) {
-    return config.widgets?.choices;
-  }
-
-  if (props.vocabulary) {
-    // If vocabulary exists, then it means it's a choice field in disguise with
-    // no widget specified that probably contains a string then we force it
-    // to be a select widget instead
-    return config.widgets?.choices;
-  }
-
-  return null;
-};
+): React.ComponentType<any> | null =>
+  props.choices || props.vocabulary ? (config.widgets?.choices ?? null) : null;
 
 /**
  * Get widget by field's `type` attribute
@@ -164,7 +146,7 @@ const getWidgetByChoices = (
 const getWidgetByType = (
   type: FieldProps['type'],
 ): React.ComponentType<any> | null =>
-  type ? config.widgets?.type?.[type] || null : null;
+  type ? (config.getWidget(type) ?? null) : null;
 
 const Field = (props: FieldProps) => {
   const Widget =

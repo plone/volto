@@ -1,0 +1,1 @@
+Add DateTimePicker and DateField to widget configuration. @rboixaderg
