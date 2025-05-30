@@ -7,6 +7,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
   useNavigate,
   useRouteLoaderData,
   type LinksFunction,
@@ -15,6 +16,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
+import SlotRenderer from '@plone/layout/SlotRenderer';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -56,6 +58,7 @@ export const links: LinksFunction = () => [
 ];
 
 export default function Index() {
+  const location = useLocation();
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
   const navigate = useNavigate();
@@ -78,7 +81,21 @@ export default function Index() {
         <div role="navigation" aria-label="Toolbar" id="toolbar" />
         <div id="main">
           <RACRouterProvider navigate={navigate}>
+            <header className="header-slot">
+              <SlotRenderer
+                name="header"
+                content={content}
+                location={location}
+              />
+            </header>
             <Outlet />
+            <footer id="footer">
+              <SlotRenderer
+                name="footer"
+                content={content}
+                location={location}
+              />
+            </footer>
           </RACRouterProvider>
         </div>
         <div role="complementary" aria-label="Sidebar" id="sidebar" />

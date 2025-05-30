@@ -14,19 +14,19 @@ export default function install(config: ConfigType) {
       },
       {
         type: 'route',
-        path: 'sitemap',
-        file: '@plone/publicui/routes/sitemap.tsx',
-        // options: {
-        //   id: 'tuesday',
-        // },
-      },
-      {
-        type: 'route',
         path: '*',
         file: '@plone/publicui/routes/content.tsx',
         options: {
           id: 'content',
         },
+      },
+      {
+        type: 'route',
+        path: 'sitemap',
+        file: '@plone/publicui/routes/sitemap.tsx',
+        // options: {
+        //   id: 'tuesday',
+        // },
       },
     ],
   });
