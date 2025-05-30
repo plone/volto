@@ -33,7 +33,11 @@ addBlockButton
     The button to add a block is now shown below any selected block.
     A text block can also be added by clicking in the empty area at the bottom of the content area.
 
-    ```{note}
-    This feature is enabled by default since Volto 18 or earlier.
+    ```{versionadded} Volto 16.0.0
+    Added an experimental setting to move the button for adding a new block to show below any selected block, instead of only on the left of empty text blocks.
+    ```
+
+    ```{versionchanged} Volto 18.0.0
+    The `addBlockButton` feature is enabled by default, making it no longer experimental, since Volto 18.0.0.
     ```
 ```

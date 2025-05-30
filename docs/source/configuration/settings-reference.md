@@ -39,8 +39,9 @@ sentryOptions
 
 contentIcons
     With this property you can configure Content Types icons.
-    Those are visible in Contents view (ex "Folder contents").
-    The default ones are in [config/ContentIcons.jsx](https://github.com/plone/volto/blob/main/packages/volto/src/config/ContentIcons.jsx) and you can extend them in your project's config for custom content types using `settings.contentIcons`.
+    Those are visible in the contents view, such as "Folder contents".
+    The default ones are in [`config/ContentIcons.jsx`](https://github.com/plone/volto/blob/main/packages/volto/src/config/ContentIcons.jsx).
+    You can extend them in your project's configuration for custom content types using `settings.contentIcons`.
 
     In Volto projects, you can configure this for custom content types like:
 
@@ -58,29 +59,32 @@ contentIcons
     ```
 
 bbb_getContentFetchesFullobjects
-    Before Volto 10, the main content-grabbing request, triggered as a result of `getContent` action, always used the `fullobjects` flag, which fully serialized the immediate children of the context request.
+    Before Volto 10, the main content-grabbing request triggered as a result of the `getContent` action, which always used the `fullobjects` flag, which in turn fully serialized the immediate children of the context request.
     If your code depends on this behavior, set this flag to `true` in the `settings` object.
 
     ```{note}
     You should probably refactor your code to avoid depending on this behavior.
-    It can cause performance issues when you have large children (for example content with lots of text) and you need to batch requests anyway, if you want to be sure to display all the children.
+    It can cause performance issues when you have large children, such as content with lots of text.
+    You need to batch requests anyway, if you want to be sure to display all the children.
     ```
 
 persistentReducers
     A list of reducer names that should use the browser's localstorage to persist their data.
 
 maxResponseSize
-    The library that we use to get files and images from the backend (superagent) has a response size limit of 200MB, so if you want to get a file bigger than 200MB from Plone, the {term}`SSR` will throw an error.
+    The library that we use to get files and images from the backend (superagent) has a response size limit of 200MB.
+    If you want to get a file bigger than 200MB from Plone, the {term}`SSR` will throw an error.
 
-    You can edit this limit in the `settings` object setting a new value in bytes (for example, to set 500MB you need to write approximately 5000000000).
+    You can edit this limit in the `settings` object, setting a new value in bytes.
+    For example, to set a size of 500MB, you need to write approximately `500000000`.
 
 maxFileUploadSize
     The maximum allowed size of file uploads (in bytes).
     Default: `null` (no limit enforced by Volto).
 
 initialReducersBlacklist
-    The initial state passed from server to browser needs to be minimal in order to optimize the resultant HTML generated.
-    This state gets stored in `window.__data` and received in client.
+    The initial state passed from server to browser needs to be minimal to optimize the resultant HTML.
+    This state gets stored in `window.__data` and received in the client.
 
     You can blacklist a few reducers that you don't want to be part of `window.__data`, thus decreasing the initial HTML size for performance gains.
 
@@ -98,21 +102,23 @@ initialReducersBlacklist
 
 loadables
     A mapping of loadable libraries that can be injected into components using the `injectLazyLibs` HOC wrapper.
-    See the [Lazy loading](../development/lazyload) page for more details.
+    See the {doc}`../development/lazyload` chapter for more details.
 
 lazyBundles
-    A mapping of bundles to list of lazy library names.
-    Create new bundles, change the already provided `cms` bundle to be able to preload multiple lazy libraries (with `preloadLazyLibs`) or quickly load them with `injectLazyLibs`.
+    A mapping of bundles to a list of lazy library names.
+    Create new bundles, change the already provided `cms` bundle to preload multiple lazy libraries with `preloadLazyLibs`, or quickly load them with `injectLazyLibs`.
 
 storeExtenders
     A list of callables with signature `(middlewaresList) => middlewaresList`.
-    These callables receive the whole stack of middlewares used in Volto and they can add new middleware or tweak this list.
+    These callables receive the whole stack of middlewares used in Volto, and they can add new middleware or tweak this list.
 
 asyncPropsExtenders
     Per-route customizable `asyncConnect` action dispatcher.
     These enable proper {term}`server-side rendering` of content that depends on additional async props coming from backend calls.
-    It is a list of route-like configuration objects (they are matched using [matchRoutes](https://github.com/remix-run/react-router/blob/ea44618e68f6a112e48404b2ea0da3e207daf4f0/packages/react-router-config/modules/matchRoutes.js)).
-    Instead of the `component` key you should provide an `extend` method with signature `asyncItems => asyncItems`, so it receives a list of asyncConnect "prop" objects and returns a similar list.
+    It is a list of route-like configuration objects.
+    They are matched using [matchRoutes](https://github.com/remix-run/react-router/blob/ea44618e68f6a112e48404b2ea0da3e207daf4f0/packages/react-router-config/modules/matchRoutes.js).
+    Instead of the `component` key, you should provide an `extend` method with signature `asyncItems => asyncItems`.
+    Thus it receives a list of asyncConnect "prop" objects and returns a similar list.
     You can add new asyncConnected props as well as removing them, so you could, for example, have something like this to exclude the breadcrumbs from being requested:
 
     ```js
@@ -127,7 +133,8 @@ asyncPropsExtenders
 
 externalRoutes
     If another application is published under the same top domain as Volto, you could have a route like `/abc` which should be not rendered by Volto.
-    This can be achieved by a rule in the reverse proxy (Apache or nginx for example) but, when navigating client side, you may have references to that route so Volto is handling that as an internal URL and fetching the content will break.
+    This can be achieved by a rule in the reverse proxy (Apache or nginx, for example) but, when navigating client side, you may have references to that route.
+    Thus Volto handles that as an internal URL, and fetching the content will break.
     You can disable that path in `config.settings.externalRoutes` so it will be handled as an external link.
 
     ```js
@@ -154,7 +161,7 @@ externalRoutes
     ```
 
 contentMetadataTagsImageField
-    The OpenGraph image key inside the content items' objects that will represent them, will be used in the metadata HEAD tag as `og:image` for SEO purposes.
+    The OpenGraph image key inside the content items' objects that will represent them, and will be used in the metadata `head` tag as `og:image` for SEO purposes.
     Defaults to image.
     See the OpenGraph Protocol for more details.
 
@@ -230,12 +237,13 @@ workflowMapping
 
 styleClassNameConverters
     An object with functions used by the style wrapper helpers to convert style data to actual class names.
-    You can customize the generated classname by registering fieldnames with names such as `<fieldname>:<converterName>`, where the converter is registered here.
+    You can customize the generated class name by registering field names with names such as `<fieldname>:<converterName>`, where the converter is registered here.
 
 styleClassNameExtenders
     An array containing functions that extends how the StyleWrapper builds a list of styles.
     These functions have the signature `({ block, content, data, classNames }) => classNames`.
-    Here are some examples of useful ones, for simplicity, they are compacted in one extender:
+    The following are some examples of useful ones.
+    For simplicity, they are compacted into one extender.
 
     ```js
     import { getPreviousNextBlock } from '@plone/volto/helpers';
@@ -407,7 +415,8 @@ additionalToolbarComponents
 
 blockSettingsTabFieldsetsInitialStateOpen
     A Boolean, `true` by default.
-    The fieldsets in the blocks settings tab start by default as non-collapsed (opened), you can decide to have them collapsed (closed) by default by setting this to `false`.
+    The fieldsets in the blocks settings tab start by default as non-collapsed (opened).
+    You can set them to collapsed (closed) by default by setting this to `false`.
 
 excludeLinksAndReferencesMenuItem
     A Boolean, `false` by default.
@@ -465,7 +474,7 @@ cssLayers
 
 showRelatedItems
     If `true`, the `RelatedItems` component will show items from the `relatedItems` field.
-    Default: false.
+    Default: `false`.
 
     ```{versionadded} 18.5.0
     ```
@@ -473,7 +482,7 @@ showRelatedItems
 
 showTags
     If `true`, the `Tags` component will show tags from the `subjects` field.
-    Default: true.
+    Default: `true`.
 
 
 defaultLanguage
@@ -489,7 +498,7 @@ They are exposed in `config.views`:
 
 layoutViewsNamesMapping
     Plone's layout views are identified by a simple string.
-    This object maps this string with a nice literal (in English as default).
+    This object maps this string with a nice literal in English as default.
     These view names are exposed in the `Display` component in the toolbar's {guilabel}`more` menu.
     The keys are the name of the Plone layout, and the values are the i18n string `id`:
 
@@ -536,10 +545,11 @@ Settings that are relevant to the Express-powered Volto {term}`SSR` server are s
 
 expressMiddleware
     A list of Express.js middleware that can extend the built-in functionality of Volto's server.
-    See the [Express](../development/express) section for more details.
+    See the {doc}`../development/express` chapter for more details.
 
 criticalCssPath
     A path relative to the project root that points to an optional CSS file.
-    If this file exists it is loaded and its content is embedded inline into the generated HTML.
-    By default this path is `public/critical.css`. See the {doc}`../deploying/performance` section for more details.
+    If this file exists, then it is loaded and its content is embedded inline into the generated HTML.
+    By default, this path is `public/critical.css`.
+    See the {doc}`../deploying/performance` chapter for more details.
 ```

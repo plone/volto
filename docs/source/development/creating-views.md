@@ -11,9 +11,9 @@ myst:
 
 ## Full View
 
-In this chapter we are going to create a new type of view for displaying contents in a folder.
-We will call this view `full view`.
-In Plone there is a view called `All content` with the view id `full_view` that we will reuse.
+In this chapter, you'll create a new type of view for displaying contents in a folder.
+Call this view `full view`.
+In Plone there is a view called `All content` with the view id `full_view` that you'll reuse.
 We start by creating a file called: `components/FullView/FullView.jsx`.
 
 ```jsx
@@ -126,7 +126,7 @@ export default FullView;
 ```
 
 Next we will add the view to the app components.
-We can do this by adding the following lines to `components/index.js`.
+We can do this by adding the following lines to {file}`components/index.js`.
 
 ```jsx
 import FullView from './FullView/FullView';
@@ -136,17 +136,17 @@ export { FullView };
 
 ## Registering The View
 
-To register the view we will edit the `config.js` file.
-The `views` configuration options contains all the views.
+To register the view, edit the {file}`config.js` file.
+The `views` configuration options contain all the views.
 This object contains an object called `layoutViews` which registers all the layout views.
-We will add the `full_view` to this object.
+Add the `full_view` to this object.
 
 ```js
 import { FullView } from './components';
 
 export default function applyConfig(config) {
   const defaultViews = config.views;
-  // Add here your project's configuration here by modifying `config` accordingly.
+  // Add your project's configuration here by modifying `config` accordingly.
   config.views = {
     ...defaultViews,
     layoutViews: {
@@ -314,7 +314,7 @@ import { AlbumView, FullView } from './components';
 
 export default function applyConfig(config) {
   const defaultViews = config.views;
-  // Add here your project's configuration here by modifying `config` accordingly.
+  // Add your project's configuration here by modifying `config` accordingly.
   config.views = {
     ...defaultViews,
     layoutViews: {

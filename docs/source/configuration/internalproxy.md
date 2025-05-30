@@ -11,7 +11,7 @@ myst:
 
 The server side Volto {term}`SSR` process, which is based on Razzle, has an internal proxy to the backend API enabled by default.
 
-It provides a better developer experience out of the box, so the developer doesn't has to deal with [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) and can focus on develop/test drive/demo Volto.
+It provides a better experience out of the box, so the developer doesn't have to deal with [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS), allowing them to focus on development or demoing Volto.
 
 To understand the need for the internal proxy, there are three processes running in a Volto website:
 
@@ -32,10 +32,9 @@ What happens in the default development configuration/setup:
 
 ```{tip}
 You could also use the internal proxy for production setups.
-For convenience and for testing/demoing using the stock build, it is also enabled in production mode since Volto 14.
+For convenience and for testing or demoing using the stock build, it is also enabled in production mode since Volto 14.
 But it is bad for performance because the server side running Node.js process is also responsible for generating the SSR HTML.
-With nginx, Apache or another 'reverse proxy' you can also create an internal API mount which is more suited for
-that.
+With nginx, Apache, or other reverse proxy, you can also create an internal API mount which is more suited for that.
 For more deployment information see {doc}`../deploying/seamless-mode`.
 ```
 

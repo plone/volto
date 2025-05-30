@@ -18,34 +18,34 @@ In the add-on, use `index.js` instead of `src/config.js`.
 ```
 
 Volto has a centralized {term}`configuration registry` used to parameterize Volto.
-It has the form of a singleton that can be called and queried from anywhere in your code like this:
+It has the form of a singleton that can be called and queried from anywhere in your code as shown.
 
 ```js
 import config from '@plone/volto/registry';
 ```
 
-then access any of its internal configuration to retrieve the configuration you require like:
+Then you can access any of its internal configuration to retrieve the configuration you require as follows.
 
 ```js
 const absoluteUrl = `${config.settings.apiPath}/${content.url}`;
 ```
 
 Individual add-ons can extend Volto's configuration registry.
-The add-ons configuration is applied in the order they are defined in `package.json`.
+The add-ons configuration is applied in the order they are defined in {file}`package.json`.
 Visualized like a pipe it would be:
 
 > Default Volto configuration -> Add-on 1 -> Add-on 2 -> ... -> Add-on n
 
-The method is using a function as the default export.
-This function takes a `config` and should return the `config` once you've ended your modifications.
-It must be provided in the main `index.js` module of the add-on.
+The method uses a function as the default export.
+This function takes a `config`, and should return the `config`, once you've ended your modifications.
+It must be provided in the main {file}`index.js` module of the add-on.
 
 See the {doc}`../conceptual-guides/add-ons` and {doc}`../development/add-ons/index` sections for extended information on how to work with add-ons.
 
 
 ## Extending configuration in a project
 
-You must provide a function as default export in your add-on's `index.js`:
+You must provide a function as the default export in your add-on's {file}`index.js`:
 
 ```js
 export default function applyConfig(config) {
@@ -61,11 +61,11 @@ export default function applyConfig(config) {
 }
 ```
 
-you have all Volto's default configuration and the already applied from your project's add-ons configuration in `config` argument.
-Next, perform all the required modifications to the config and finally, return the config object.
+You have all Volto's default configuration and that which was already applied from your project's add-ons configuration in the `config` argument.
+Next, perform all the required modifications to the config, and finally return the config object.
 
-By reading Volto's [src/config/index.js](https://github.com/plone/volto/blob/main/packages/volto/src/config/index.js), you'll get to see that Volto provides some default configuration objects (`blocks`, `widgets`, `settings`, etc), passes them through the `applyAddonConfiguration()` function, which allows any installed addons to modify this configuration, then spreads and exports its configuration objects.
-This allows Volto to work the same way in either standalone version (when developing Volto itself), but also when used as a library, referenced from a Volto project.
+By reading Volto's [`src/config/index.js`](https://github.com/plone/volto/blob/main/packages/volto/src/config/index.js), you'll see that Volto provides some default configuration objects (`blocks`, `widgets`, `settings`, etc), passes them through the `applyAddonConfiguration()` function, which allows any installed add-ons to modify this configuration, then spreads and exports its configuration objects.
+This allows Volto to work the same way in a standalone version when developing Volto itself, but also when used as a library referenced from a Volto project.
 
 ## `settings`
 
@@ -82,18 +82,18 @@ See {doc}`../development/widget` for more information.
 ## `views`
 
 The `views` registry allows configuration of the components that will be used to render the content.
-There are 4 types of views:
+There are four types of views:
 
 - layout views, which are used based on the `layout` field of the incoming content.
   See {doc}`./settings-reference` for more information.
 - content type views, registered view components per Plone content type
 - the default view, which can render the composite page Volto blocks
-- and the error views, to be used for regular error pages (Forbidden, Not Found, etc).
+- and the error views, to be used for regular error pages, such as Forbidden, Not Found, and other errors
 
 ## `blocks`
 
 The `blocks` registry holds the information of all the registered blocks in Volto.
-There are 4 configurations available:
+There are four configurations available:
 
 - blocksConfig
 - requiredBlocks
@@ -104,12 +104,12 @@ See {doc}`../blocks/settings` for more information.
 
 ## `addonReducers`
 
-In the `addonReducers` you can register and potentially override (by name) any registered reducer from Volto or other loaded Volto addons.
+In the `addonReducers` you can register and potentially override (by name) any registered reducer from Volto or other loaded Volto add-ons.
 
 ## `addonRoutes`
 
 The `addonRoutes` is a list of routes declaration, to be used as child sub-routes for the App component.
-A route declaration looks like this (an example):
+The following code is an example of a route declaration.
 
 ```js
   {
@@ -118,9 +118,9 @@ A route declaration looks like this (an example):
   }
 ```
 
-The `addonRoutes` have a higher priority compared to the default routes, so you can use them to override the existing routes, as well.
-See `src/routes.js` for more details.
-In its configuration, an addon would push additional routes to this data structure:
+The `addonRoutes` have a higher priority compared to the default routes, so you can use them to override the existing routes as well.
+See the file {file}`src/routes.js` for more details.
+In its configuration, an add-on would push additional routes to the following data structure.
 
 ```js
 config.addonRoutes.push({ path: '/**/chat', component: Chat });

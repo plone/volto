@@ -9,7 +9,7 @@ myst:
 
 # Blocks anatomy
 
-Every block is composed of an edit (`Edit.jsx`) and a view (`View.jsx`) components.
+Every block is composed of an edit (`Edit.jsx`) and a view (`View.jsx`) component.
 
 These components can be as simple as a dummy component, no boilerplate is required.
 This is an example of the `Edit.jsx`:
@@ -76,8 +76,9 @@ You can use all these props to render your edit block and model its behavior.
 ## Default block edit and view components
 
 Volto later then 16.0.0 ships with a set of default Edit and View components.
-The view component is mostly a placeholder, with an auto-generated listing of the block fields, while the default Edit component is the most interesting, as it can use the `blockSchema` that you can specify in the block configuration to automatically render a form for the Block settings, in the Volto Sidebar.
-In the main editing area, it will render the view component, so for many blocks you can just develop a schema and the View component.
+The View component is mostly a placeholder, with an auto-generated listing of the block fields.
+The default Edit component is the most interesting, as it can use the `blockSchema` that you can specify in the block configuration to automatically render a form for the block's settings in the Volto sidebar.
+In the main editing area, it will render the View component, so for many blocks you can just develop a schema and the View component.
 
 To use the default Edit and/or View component, just don't set any value in the
 block configuration:

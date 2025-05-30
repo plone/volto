@@ -230,7 +230,8 @@ It works in 3 different modes:
 #### `return` prop
 
 The object widget returns always an array, even if it's meant to have only one object in return.
-In order to fix that situation and do not issue a breaking change, a `return` prop is being introduced, so if its value is `single`, then it returns a single value:
+To fix that situation and not issue a breaking change, a `return` prop is introduced.
+If its value is `single`, then it returns a single value:
 
 ```js
 export const Image = () => <ObjectBrowserWidget mode="image" return="single" />;
@@ -240,10 +241,10 @@ export const Image = () => <ObjectBrowserWidget mode="image" return="single" />;
 This situation will be fixed in subsequent Volto releases.
 ```
 
-#### `propDataName` vs `dataName`
+#### `propDataName` vs. `dataName`
 
 - `dataName` is the prop inside `data` object, used for `link` and `image` mode.
-- `propDataName` is the name of field which value is `data`.
+- `propDataName` is the name of field whose value is `data`.
   It's used for `multiple` mode.
 
 For example:
@@ -252,7 +253,7 @@ For example:
 content: { '@id': 'page-1', related_pages: [], image: { url: "" }, link: { href: "" } }
 ```
 
-if we use object browser widget for fields:
+If we use the object browser widget for fields, then the following conditions are true.
 
 - `related_pages`: `propDataName` is `related_pages` and `dataName` is `null`.
 - `image`: `dataName` is `url` and `propDataName` is `null`.
@@ -285,19 +286,19 @@ Used in along with `InlineForm`, one can instantiate and configure it using the 
 
 #### `selectedItemAttrs`
 
-You can select the attributes from the object (coming from the metadata brain from @search endpoint used in the browser) using the `selectedItemAttrs` prop as shown in the last example.
+You can select the attributes from the object, which comes from the metadata brain from the `@search` endpoint used in the browser, using the `selectedItemAttrs` prop as shown in the previous example.
 
 #### `allowExternals`
 
-You can allow users to type manually an URL (internal or external).
+You can allow users to manually type either an internal or external URL.
 Once validated, it will tokenize the value.
-As a feature, you can paste an internal URL (eg. the user copy the URL from the browser, and paste it in the widget) and will be converted to a tokenized value, as if it was selected via the Object Browser widget.
+As a feature, you can paste an internal URL—for example, the user copies the URL from the browser, and pastes it into the widget—and it will be converted to a tokenized value, as if it was selected via the object browser widget.
 
 #### `ObjectBrowserWidgetMode()`
 
 Returns the component widget with `mode` passed as argument.
 
-The default mode for ObjectBrowserWidget is multiple.
+The default mode for `ObjectBrowserWidget` is multiple.
 If you would like to use this widget with link or image mode as widget field for a specific field ID (for example), you could specify it in `index.js` as:
 
 ```jsx
@@ -459,9 +460,10 @@ class Example extends Component {
 ```
 
 The current block engine is available as the separate `BlocksForm` component, used to be a part of the `Form.jsx` component.
-It has been previously exposed as the [`@eeacms/volto-blocks-form`](https://github.com/eea/volto-blocks-form) addon and reused in several other addons, so you can find integration examples in addons such as [`volto-columns-block`](https://github.com/eea/volto-columns-block), [`volto-accordion-block`](https://github.com/rohberg/volto-accordion-block), [`@eeacms/volto-accordion-block`](https://github.com/eea/volto-accordion-block), [`@eeacms/volto-grid-block`](https://github.com/eea/volto-accordion-block), but probably the simplest implementation to follow is in the [`@eeacms/volto-group-block`](https://github.com/eea/volto-group-block).
+It has been previously exposed as the [`@eeacms/volto-blocks-form`](https://github.com/eea/volto-blocks-form) add-on and reused in several other add-ons.
+You can find integration examples in add-ons such as [`volto-columns-block`](https://github.com/eea/volto-columns-block), [`volto-accordion-block`](https://github.com/rohberg/volto-accordion-block), [`@eeacms/volto-accordion-block`](https://github.com/eea/volto-accordion-block), [`@eeacms/volto-grid-block`](https://github.com/eea/volto-accordion-block), but probably the simplest implementation to follow is in the [`@eeacms/volto-group-block`](https://github.com/eea/volto-group-block).
 
-Notice that the `BlocksForm` component allows overriding the edit block wrapper and allows passing a custom `blocksConfig` configuration object, for example to filter or add new blocks.
+Notice that the `BlocksForm` component allows overriding the edit block wrapper and allows passing a custom `blocksConfig` configuration object, for example, to filter or add new blocks.
 
 You can also reuse the DragDropList component as a separate component:
 
