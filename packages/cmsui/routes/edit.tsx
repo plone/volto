@@ -8,7 +8,7 @@ import {
 } from 'react-router';
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
-import { requireAuthCookie } from './auth/auth';
+import { requireAuthCookie } from '@plone/react-router';
 import type { DeepKeys } from '@tanstack/react-form';
 import { InitAtoms } from '@plone/helpers';
 import { atom } from 'jotai';

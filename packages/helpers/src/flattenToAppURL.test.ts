@@ -1,6 +1,6 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import config from '@plone/registry';
-import { flattenToAppURL } from './utils';
+import { flattenToAppURL } from './flattenToAppURL';
 
 const API_PATH = 'http://example.com/api';
 
