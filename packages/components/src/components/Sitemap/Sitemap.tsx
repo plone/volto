@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /**
  * Sitemap displays a hirarchy of links to all the pages in the site.
  */
@@ -12,13 +11,20 @@ export function getSitemapPath(pathname = '', lang) {
   return path;
 }
 
-const renderItems = (items) => {
+interface SitemapItem {
+  '@id': string;
+  title: string;
+  description: string;
+  items?: SitemapItem[];
+}
+
+const renderItems = (items: SitemapItem[]): JSX.Element => {
   return (
     <ul>
       {items.map((item) => (
         <li
           key={item['@id']}
-          className={item.items?.length > 0 ? 'with-children' : ''}
+          className={(item.items?.length ?? 0) > 0 ? 'with-children' : ''}
         >
           <Link href={item['@id']}>{item.title}</Link>
           {item.items && renderItems(item.items)}
@@ -33,8 +39,15 @@ const renderItems = (items) => {
  * { getNavigation, location, intl, lang, items }
  * TODO translations
  */
-export function Sitemap({ items, page_title = 'default title of Sitemap' }) {
-  console.debug('Sitemap items:', items);
+interface SitemapProps {
+  items?: any[];
+  page_title?: string;
+}
+
+export function Sitemap({
+  items,
+  page_title = 'default title of Sitemap',
+}: SitemapProps) {
   return (
     <div id="sitemap">
       {/* TODO translate title sitemap */}
