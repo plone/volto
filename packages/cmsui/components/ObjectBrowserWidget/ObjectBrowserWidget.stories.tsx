@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Form } from 'react-aria-components';
 import { Button } from '@plone/components/tailwind';
 import { TextField } from '../TextField/TextField';
-import { ObjectBrowserWidget } from './ObjectBrowserWidget';
+import { ObjectBrowserWidget } from './ObjectBrowserWidgetModal';
 
 const meta = {
   component: ObjectBrowserWidget,

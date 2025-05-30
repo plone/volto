@@ -1,8 +1,8 @@
-import React from 'react';
-import { DialogTrigger, Heading } from 'react-aria-components';
+import React, { useEffect, useMemo, useState } from 'react';
+import { DialogTrigger, Heading, type Key } from 'react-aria-components';
 import { Dialog, Icon, Modal } from '@plone/components';
 import { Button } from '@plone/components/tailwind';
-import { atom, useSetAtom } from 'jotai';
+import { atom } from 'jotai';
 import {
   ObjectBrowserWidgetBody,
   type ObjectBrowserWidgetBodyProps,
@@ -16,8 +16,15 @@ import {
   Label,
 } from '../Field/Field';
 import { tv } from 'tailwind-variants';
-import { composeTailwindRenderProps, focusRing } from '../utils';
-import { useFetcher } from 'react-router';
+import { focusRing } from '../utils';
+import { useFetcher, useLoaderData } from 'react-router';
+import type { loader } from '../../routes/search';
+import type { loader as editLoader } from '../../routes/edit';
+import type { loader as breadcrumbsLoader } from '../../routes/breadcrumbs';
+import {
+  ObjectBrowserNavigationProvider,
+  useObjectBrowserNavigation,
+} from './ObjectBrowserNavigationContext';
 
 export const obwAtom = atom(false);
 const widgetStyles = tv({
@@ -29,31 +36,87 @@ const widgetStyles = tv({
     isDisabled: fieldBorderStyles.variants.isDisabled,
   },
 });
+
 interface ObjectBrowserWidgetProps
   extends ObjectBrowserWidgetBodyProps,
     BaseFormFieldProps {
   title: string;
-  context?: (string & {}) | '/';
 }
+const METADATA_FIELDS = '?path.depth=1&metadata_fields:list=is_folderish';
 
-export function ObjectBrowserWidget(props: ObjectBrowserWidgetProps) {
-  const { context, mode, label, errorMessage, description, ...bodyProps } =
-    props;
+export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
+  const {
+    mode,
+    label,
+    errorMessage,
+    description,
+    defaultValue,
+    onChange,
+    ...bodyProps
+  } = props;
+  const [isOpen, setIsOpen] = useState(false);
+  const fetcher = useFetcher<typeof loader>();
+  const fetcherBC = useFetcher<typeof breadcrumbsLoader>();
+  const { content } = useLoaderData<typeof editLoader>();
+  console.log('location', content);
+  console.log('search data', fetcher.data);
+  const { currentPath, navigateTo } = useObjectBrowserNavigation();
+  const [selectedKeys, setSelectedKeys] = useState<Set<Key>>(() => {
+    if (defaultValue && defaultValue !== 'all') {
+      return new Set(
+        // @ts-ignore
+        defaultValue.map((item: any) =>
+          typeof item === 'string' ? item : item['@id'],
+        ),
+      );
+    }
+    return new Set();
+  });
 
-  console.log('I am props', props);
-  const setCollapsed = useSetAtom(obwAtom);
+  const selectionBehavior = useMemo(
+    () => (isImageMode(mode) ? 'replace' : 'toggle'),
+    [],
+  );
+  const selectionMode = useMemo(
+    () => (isImageMode(mode) ? 'single' : 'multiple'),
+    [],
+  );
+  const handleSelectionChange = (keys: Set<Key>) => {
+    setSelectedKeys(keys);
+
+    // TODO: move it in useeffect maybe?
+    const normalizedValues = Array.from(keys).map((id) => ({
+      '@id': id,
+    }));
+
+    onChange(normalizedValues);
+  };
+
+  console.log('I am props', mode);
+
+  useEffect(() => {
+    if (currentPath && isOpen) {
+      fetcher.load(`/@search${currentPath}${METADATA_FIELDS}`);
+      fetcherBC.load(`/@breadcrumbs${currentPath}`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPath, isOpen]);
+
+  useEffect(() => {
+    if (content['@id']) navigateTo(content['@id']);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [content]);
   return (
     <div
     // className={composeTailwindRenderProps('group flex flex-col gap-1')}
     >
       {label && <Label>{label}</Label>}
       <div className={widgetStyles()}>
-        <DialogTrigger>
-          <Button
-            aria-label="Settings"
-            size="L"
-            onPress={() => setCollapsed((state) => !state)}
-          >
+        <DialogTrigger
+          isOpen={isOpen}
+          onOpenChange={(isOpen) => setIsOpen(isOpen)}
+        >
+          <Button aria-label="Settings" size="L">
             <Icon size="sm">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +159,17 @@ export function ObjectBrowserWidget(props: ObjectBrowserWidgetProps) {
                   </Button>
                 </div>
               </div>
-              <ObjectBrowserWidgetBody {...bodyProps} mode={mode} />
+              <ObjectBrowserWidgetBody
+                {...bodyProps}
+                mode={mode}
+                loading={fetcher.state === 'loading'}
+                items={fetcher.data?.items ?? []}
+                breadcrumbs={fetcherBC.data?.items ?? []}
+                selectedItems={selectedKeys}
+                selectionBehavior={selectionBehavior}
+                selectionMode={selectionMode}
+                onChange={handleSelectionChange}
+              />
             </Dialog>
           </Modal>
         </DialogTrigger>
@@ -104,5 +177,13 @@ export function ObjectBrowserWidget(props: ObjectBrowserWidgetProps) {
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
     </div>
+  );
+}
+
+export function ObjectBrowserWidget(props: ObjectBrowserWidgetProps) {
+  return (
+    <ObjectBrowserNavigationProvider>
+      <ObjectBrowserWidgetComponent {...props} />
+    </ObjectBrowserNavigationProvider>
   );
 }

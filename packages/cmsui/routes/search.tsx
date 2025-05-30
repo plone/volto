@@ -25,7 +25,6 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 
   delete query['path.depth'];
   delete query['path.query'];
-
   const { data: results } = await cli.search({
     query: {
       path: pathQuery,

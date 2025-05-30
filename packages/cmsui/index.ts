@@ -94,6 +94,17 @@ export default function install(config: ConfigType) {
       },
     ],
   });
+  config.registerRoute({
+    type: 'prefix',
+    path: '@breadcrumbs',
+    children: [
+      {
+        type: 'route',
+        path: '*',
+        file: '@plone/cmsui/routes/breadcrumbs.tsx',
+      },
+    ],
+  });
 
   return config;
 }

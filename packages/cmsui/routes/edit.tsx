@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import {
+  data,
   redirect,
   useFetcher,
   useLoaderData,
@@ -10,7 +11,7 @@ import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 import { requireAuthCookie } from '@plone/react-router';
 import type { DeepKeys } from '@tanstack/react-form';
-import { InitAtoms } from '@plone/helpers';
+import { flattenToAppURL, InitAtoms } from '@plone/helpers';
 import { atom } from 'jotai';
 import type { Content } from '@plone/types';
 import { Plug } from '../components/Pluggable';
@@ -44,7 +45,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
   const { data: content } = await cli.getContent({ path });
   const { data: schema } = await cli.getType({ contentType: content['@type'] });
 
-  return { content, schema };
+  return data(flattenToAppURL({ content, schema }, config.settings.apiPath));
 }
 
 export async function action({ params, request }: ActionFunctionArgs) {
@@ -77,7 +78,6 @@ export default function Edit() {
   const { content, schema } = useLoaderData<typeof loader>();
   const { t } = useTranslation();
   const fetcher = useFetcher();
-  console.log('I am the schema', schema);
 
   const form = useAppForm({
     defaultValues: content,

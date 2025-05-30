@@ -78,17 +78,25 @@ interface BreadcrumbsProps<T extends Breadcrumb = Breadcrumb>
   /**
    * Icon component to be used for the root item
    */
-  homeIcon?: React.ReactNode;
+  homeIcon?: React.ReactNode | boolean | null | undefined;
 }
 
 export function Breadcrumbs<T extends Breadcrumb>(props: BreadcrumbsProps<T>) {
   const { root, includeRoot, homeIcon, items } = props;
   let itemsWithRoot: typeof items;
+
   if (includeRoot) {
+    let icon: React.ReactNode = null;
+
+    if (homeIcon === true || homeIcon === undefined) {
+      icon = <HomeIcon size="sm" />;
+    } else if (homeIcon && typeof homeIcon !== 'boolean') {
+      icon = homeIcon; // JSX node
+    }
     const rootItem = {
       '@id': root || '/',
       title: 'Home',
-      icon: homeIcon || <HomeIcon size="sm" />,
+      icon: icon,
     } as T;
     itemsWithRoot = [rootItem, ...items!];
   }
