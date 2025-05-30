@@ -472,7 +472,7 @@ showRelatedItems
 
 
 showTags
-    If true, the `Tags` component will show tags from the `subjects` field.
+    If `true`, the `Tags` component will show tags from the `subjects` field.
     Default: true.
 
 
