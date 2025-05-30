@@ -9,19 +9,19 @@ import { getContentIcon } from '@plone/helpers';
 import { useLoaderData } from 'react-router';
 import type { ContentsLoaderType } from '../routes/contents';
 import type { Toast } from '../types';
-import type { Content } from '@plone/types';
+import type { Brain } from '@plone/types';
 import type { Key } from '@react-types/shared';
 
 type SetSelectedType = 'all' | 'none' | Set<Key>;
 
 interface ContentsContext {
   toast: Toast;
-  selected: Set<Content>;
+  selected: Set<Brain>;
   setSelected: (selected: SetSelectedType) => void;
   showDelete: boolean;
   setShowDelete: (s: boolean) => void;
-  itemsToDelete: Set<Content>;
-  setItemsToDelete: (s: Set<Content>) => void;
+  itemsToDelete: Set<Brain>;
+  setItemsToDelete: (s: Set<Brain>) => void;
 }
 
 const ContentsContext = createContext<ContentsContext>({
@@ -42,7 +42,7 @@ export function ContentsProvider(props: ContentsProviderProps) {
   const { search } = useLoaderData<ContentsLoaderType>();
   const { items = [] } = search ?? {};
   //selected
-  const [selected, _setSelected] = useState<Set<Content>>(new Set());
+  const [selected, _setSelected] = useState<Set<Brain>>(new Set());
 
   const setSelected = (s: SetSelectedType) => {
     if (s === 'all') {
@@ -55,7 +55,7 @@ export function ContentsProvider(props: ContentsProviderProps) {
   };
 
   //delete
-  const [itemsToDelete, setItemsToDelete] = useState<Set<Content>>(new Set());
+  const [itemsToDelete, setItemsToDelete] = useState<Set<Brain>>(new Set());
   const [showDelete, setShowDelete] = useState(false);
 
   let ctx = useMemo(

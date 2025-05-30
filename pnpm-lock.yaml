@@ -786,9 +786,6 @@ importers:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
     devDependencies:
-      '@plone/registry':
-        specifier: workspace:*
-        version: link:../registry
       '@plone/types':
         specifier: workspace:*
         version: link:../types

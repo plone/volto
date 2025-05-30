@@ -37,17 +37,13 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 
   const path = `/${params['*'] || ''}`;
 
-  const content = flattenToAppURL(
-    (await cli.getContent({ path })).data,
-    config.settings.apiPath,
-  );
+  const content = flattenToAppURL((await cli.getContent({ path })).data);
   const breadcrumbs = flattenToAppURL(
     (await cli.getBreadcrumbs({ path })).data,
-    config.settings.apiPath,
   );
   const searchableText =
     new URLSearchParams(new URL(request.url).search).get('SearchableText') ||
-    null;
+    '';
 
   const searchQuery = {
     path: {
@@ -60,7 +56,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
     show_inactive: true,
     b_size: 10,
   };
-  if (searchableText?.length > 0) {
+  if (searchableText.length > 0) {
     searchQuery.SearchableText = searchableText + '**';
   }
 
@@ -70,37 +66,9 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
         query: searchQuery,
       })
     ).data,
-    config.settings.apiPath,
   );
 
   return { content, search, breadcrumbs, searchableText };
-}
-
-export async function action({
-  params,
-  request,
-  ...others
-}: ActionFunctionArgs) {
-  const token = await requireAuthCookie(request);
-  const cli = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method() as PloneClient;
-
-  cli.config.token = token;
-  const path = `/${params['*'] || ''}`;
-  console.log(params, request, others);
-  //qui deve fare la delete
-  //await cli.deleteContent();
-  // await cli.updateContent({
-  //   path,
-  //   data: formData,
-  // });
-
-  //deve ritornare alla vista corrente
-  //return redirect(path);
 }
 
 export default function Contents(props) {

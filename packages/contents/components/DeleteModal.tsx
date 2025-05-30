@@ -1,5 +1,6 @@
 import React from 'react';
-import { useFetcher } from 'react-router';
+import { useFetcher, useLocation } from 'react-router';
+
 import { Heading } from 'react-aria-components';
 import { useTranslation } from 'react-i18next';
 import { Modal, Dialog } from '@plone/components';
@@ -18,10 +19,11 @@ interface DeleteModalProps {
 
 const DeleteModal: React.FC<DeleteModalProps> = ({}) => {
   const { t } = useTranslation();
+  const location = useLocation();
   const fetcher = useFetcher();
   const { showDelete, setShowDelete, itemsToDelete, setItemsToDelete } =
     useContentsContext();
-  console.log('itemsToDelete', itemsToDelete, itemsToDelete.length);
+  console.log('itemsToDelete', itemsToDelete, itemsToDelete.size);
   if (!showDelete) return null;
 
   const close = () => {
@@ -30,10 +32,14 @@ const DeleteModal: React.FC<DeleteModalProps> = ({}) => {
   };
 
   const submitDelete = () => {
-    fetcher.submit(itemsToDelete, {
-      method: 'post',
-      encType: 'application/json',
-    });
+    fetcher.submit(
+      { items: [...itemsToDelete].map((i) => i['@id']) },
+      {
+        method: 'DELETE',
+        encType: 'application/json',
+        action: '/@@contents/@@delete',
+      },
+    );
   };
 
   //TODO: check linkintegrity
@@ -41,9 +47,9 @@ const DeleteModal: React.FC<DeleteModalProps> = ({}) => {
     <Modal isDismissable isOpen={showDelete} onOpenChange={setShowDelete}>
       <Dialog>
         <Heading slot="title" className="react-aria-Heading text-center">
-          {itemsToDelete.length > 1
+          {itemsToDelete.size > 1
             ? t('contents.modal_delete.multi.title', {
-                n: itemsToDelete.length,
+                n: itemsToDelete.size,
               })
             : t('contents.modal_delete.single.title', {
                 item: [...itemsToDelete][0].title,

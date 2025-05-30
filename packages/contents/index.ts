@@ -8,14 +8,12 @@ export default function install(config: ConfigType) {
     children: [
       {
         type: 'prefix',
-        path: 'contents',
+        path: '@@contents',
         children: [
           {
-            type: 'index',
-            file: '@plone/contents/routes/contents.tsx',
-            options: {
-              id: 'index-contents',
-            },
+            path: '@@delete',
+            type: 'route',
+            file: '@plone/contents/routes/delete.tsx',
           },
           {
             type: 'route',
