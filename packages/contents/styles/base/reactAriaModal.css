@@ -1,0 +1,15 @@
+.react-aria-Modal {
+  .react-aria-Heading {
+    margin-bottom: 1rem;
+  }
+
+  .button-group-bottom {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.75rem;
+
+    .react-aria-Button {
+      --border-color: transparent;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.add-content-popover {
+  .popover-list-item {
+    & + li {
+      border-top: 1px solid var(--quanta-smoke);
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      color: var(--quanta-sapphire);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--quanta-royal);
+        text-decoration: underline;
+      }
+    }
+
+    .icon {
+      margin-inline-start: auto;
+    }
+  }
+}

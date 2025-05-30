@@ -65,7 +65,7 @@ export const BreadcrumbPrimitive = /*#__PURE__*/ createLeafComponent(
   },
 );
 
-interface BreadcrumbsProps<T extends Breadcrumb = Breadcrumb>
+export interface BreadcrumbsProps<T extends Breadcrumb = Breadcrumb>
   extends RACBreadcrumbsProps<T> {
   /**
    * Current navigation root URL (flattened)

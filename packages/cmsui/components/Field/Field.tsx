@@ -91,7 +91,7 @@ export function Input(props: InputProps) {
       {...props}
       className={composeTailwindRenderProps(
         props.className,
-        'text-quanta-space bg-quanta-snow hover:bg-quanta-smoke disabled:text-quanta-silver read-only:hover:bg-quanta-air read-only:bg-quanta-air focus:bg-quanta-air active:bg-quanta-air min-w-0 flex-1 p-3 text-sm outline read-only:border-1 read-only:border-dashed disabled:cursor-not-allowed',
+        'text-quanta-space bg-quanta-snow placeholder-quanta-sapphire hover:bg-quanta-smoke disabled:text-quanta-silver read-only:hover:bg-quanta-air read-only:bg-quanta-air focus:bg-quanta-air active:bg-quanta-air min-w-0 flex-1 p-3 text-sm outline read-only:border-1 read-only:border-dashed disabled:cursor-not-allowed',
       )}
     />
   );

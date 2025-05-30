@@ -66,7 +66,7 @@
     "build:force": "tsup && pnpm build:css",
     "build:css": "pnpm build:basic && pnpm build:quanta",
     "build:basic": "lightningcss --browserslist --bundle --sourcemap src/styles/basic/main.css -o basic.css && mv basic.css* dist/.",
-    "build:quanta": "lightningcss --browserslist --bundle --sourcemap src/styles/quanta/main.css -o quanta.css && mv quanta.css* dist/.",
+    "build:quanta": "lightningcss --browserslist --bundle --sourcemap src/styles/quanta/main.css -o quanta.css && mv quanta.css* dist/. && cp -r src/styles/fonts dist/.",
     "check:exports": "attw --pack .",
     "check:ts": "tsc --project tsconfig.json",
     "test": "vitest --passWithNoTests",
