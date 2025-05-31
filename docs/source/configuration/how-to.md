@@ -58,8 +58,8 @@ export default function applyConfig(config) {
 }
 ```
 
-You have all Volto's default configuration and that which was already applied from your project's add-ons configuration in the `config` argument.
-Next, perform all the required modifications to the config, and finally return the config object.
+You have all Volto's default configuration and that which was already applied from your project's add-ons' configuration in the `config` argument.
+Next, perform all the required modifications to the configuration, and finally return the config object.
 
 By reading Volto's [`src/config/index.js`](https://github.com/plone/volto/blob/main/packages/volto/src/config/index.js), you'll see that Volto provides some default configuration objects (`blocks`, `widgets`, `settings`, etc), passes them through the `applyAddonConfiguration()` function, which allows any installed add-ons to modify this configuration, then spreads and exports its configuration objects.
 This allows Volto to work the same way in a standalone version when developing Volto itself, but also when used as a library referenced from a Volto project.
