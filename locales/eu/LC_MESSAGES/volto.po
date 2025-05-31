@@ -4708,6 +4708,11 @@ msgstr ""
 msgid "private"
 msgstr "Pribatua"
 
+#. Default: "Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates."
+#: components/manage/Widgets/DatetimeWidget
+msgid "publicationDateMessage"
+msgstr "Aurrera nabigatu egutegiarekin elkarreragiteko eta data bat hautatzeko. Sakatu galdera ikurra data aldatzeko teklatuko lasterbideak lortzeko"
+
 #. Default: "Published"
 #: components/manage/Contents/ContentsItem
 msgid "published"
