@@ -92,10 +92,10 @@ There are four types of views:
 The `blocks` registry holds the information of all the registered blocks in Volto.
 There are four configurations available:
 
-- blocksConfig
-- requiredBlocks
-- groupBlocksOrder
-- initialBlocks
+-   `blocksConfig`
+-   `requiredBlocks`
+-   `groupBlocksOrder`
+-   `initialBlocks`
 
 See {doc}`../blocks/settings` for more information.
 
