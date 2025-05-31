@@ -51,9 +51,6 @@ You must provide a function as the default export in your add-on's {file}`index.
 export default function applyConfig(config) {
   config.settings = {
     ...config.settings,
-    isMultilingual: true,
-    supportedLanguages: ['en', 'de'],
-    defaultLanguage: 'de',
     navDepth: 3,
   };
 
