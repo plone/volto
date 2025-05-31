@@ -12,9 +12,9 @@ myst:
 ```{warning}
 Since Volto 18+ the project does not have component shadowing directly in the project.
 It has component shadowing in add-ons, but this is irrelevant.
-The project does not even have a `src/` directory in which to put `src/config.js`.
+The project does not even have a {file}`src/` directory in which to put {file}`src/config.js`.
 You have to use a basic add-on to customize Volto.
-In the add-on, use `index.js` instead of `src/config.js`.
+In the add-on, use {file}`index.js` instead of {file}`src/config.js`.
 ```
 
 Volto has a centralized {term}`configuration registry` used to parameterize Volto.
