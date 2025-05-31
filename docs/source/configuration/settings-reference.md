@@ -547,7 +547,7 @@ layoutViewsNamesMapping
     ```
 
     You can customize this object to add or modify the existing entries.
-    They are i18n aware, so you can add the corresponding i18n message in your project's `src/config.js` or your add-on's `src/index.js`:
+    They are i18n aware, so you can add the corresponding i18n message in your project's {file}`src/config.js` or your add-on's {file}`src/index.js`:
 
     ```js
     import { defineMessages } from 'react-intl';
