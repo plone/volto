@@ -81,11 +81,11 @@ See {doc}`../development/widget` for more information.
 The `views` registry allows configuration of the components that will be used to render the content.
 There are four types of views:
 
-- layout views, which are used based on the `layout` field of the incoming content.
-  See {doc}`settings-reference` for more information.
-- content type views, registered view components per Plone content type
-- the default view, which can render the composite page Volto blocks
-- and the error views, to be used for regular error pages, such as Forbidden, Not Found, and other errors
+-   Layout views, which are used based on the `layout` field of the incoming content.
+    See {doc}`settings-reference` for more information.
+-   Content type views, registered view components per Plone content type.
+-   The default view, which can render the composite page Volto blocks.
+-   The error views, to be used for regular error pages, such as Forbidden, Not Found, and other errors.
 
 ## `blocks`
 
