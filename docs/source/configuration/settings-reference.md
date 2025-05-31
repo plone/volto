@@ -76,7 +76,7 @@ maxResponseSize
     If you want to get a file bigger than 200MB from Plone, the {term}`SSR` will throw an error.
 
     You can edit this limit in the `settings` object, setting a new value in bytes.
-    For example, to set a size of 500MB, you need to write approximately `500000000`.
+    For example, to set a size of 500MB, you'd use `500000000`.
 
 maxFileUploadSize
     The maximum allowed size of file uploads (in bytes).
