@@ -31,6 +31,7 @@ lighthouse-report.html
 *~
 /.settings/
 .*project
+.turbo
 
 # Python
 /bin/
