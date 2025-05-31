@@ -299,7 +299,7 @@ As a feature, you can paste an internal URL—for example, the user copies the U
 Returns the component widget with `mode` passed as argument.
 
 The default mode for `ObjectBrowserWidget` is multiple.
-If you would like to use this widget with link or image mode as widget field for a specific field ID (for example), you could specify it in `index.js` as:
+If you would like to use this widget with either link or image mode as a widget field for a specific field ID, you could specify it in {file}`index.js` as follows.
 
 ```jsx
 export const widgets = {
