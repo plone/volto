@@ -14,7 +14,7 @@ Since Volto have its own set of default blocks, you should extend them by adding
 
 ## Configuring a new block
 
-So we add these lines to the `src/index.js`:
+Add the following lines to the file {file}`src/index.js`.
 
 ```js
 import MainSliderViewBlock from '@root/components/Blocks/MainSlider/View';
