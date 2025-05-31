@@ -24,7 +24,7 @@ It has the form of a singleton that can be called and queried from anywhere in y
 import config from '@plone/volto/registry';
 ```
 
-Then you can access any of its internal configuration to retrieve the configuration you require as follows.
+Then you can access any of its internal configuration to retrieve that which you require as follows.
 
 ```js
 const absoluteUrl = `${config.settings.apiPath}/${content.url}`;
