@@ -64,13 +64,13 @@ export default function install(config: ConfigType) {
       },
       {
         type: 'prefix',
-        path: 'controlpanels',
+        path: 'controlpanel',
         children: [
           {
             type: 'index',
             file: '@plone/cmsui/routes/controlpanels.tsx',
             options: {
-              id: 'index-controlpanels',
+              id: 'index-controlpanel',
             },
           },
           {
