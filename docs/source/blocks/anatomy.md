@@ -9,10 +9,10 @@ myst:
 
 # Blocks anatomy
 
-Every block is composed of an edit (`Edit.jsx`) and a view (`View.jsx`) component.
+Every block is composed of an edit ({file}`Edit.jsx`) and a view ({file}`View.jsx`) component.
 
 These components can be as simple as a dummy component, no boilerplate is required.
-This is an example of the `Edit.jsx`:
+The following code is an example of an {file}`Edit.jsx` file.
 
 ```jsx
 import React from 'react';
@@ -24,7 +24,7 @@ const Edit = props => {
 export default Edit;
 ```
 
-and the `View.jsx`.
+The following code is an example of a {file}`View.jsx` file.
 
 ```jsx
 import React from 'react';
@@ -75,20 +75,20 @@ You can use all these props to render your edit block and model its behavior.
 
 ## Default block edit and view components
 
-Volto later then 16.0.0 ships with a set of default Edit and View components.
-The View component is mostly a placeholder, with an auto-generated listing of the block fields.
-The default Edit component is the most interesting, as it can use the `blockSchema` that you can specify in the block configuration to automatically render a form for the block's settings in the Volto sidebar.
-In the main editing area, it will render the View component, so for many blocks you can just develop a schema and the View component.
+Volto later than 16.0.0 ships with a set of default edit and view components.
+The view component is mostly a placeholder, with an auto-generated listing of the block fields.
+The default edit component is the most interesting, as it can use the `blockSchema` that you can specify in the block configuration to automatically render a form for the block's settings in the Volto sidebar.
+In the main editing area, it will render the view component, so for many blocks you can just develop a schema and the view component.
 
-To use the default Edit and/or View component, just don't set any value in the
-block configuration:
+To use the default edit or view component, don't set any value in the
+block configuration.
 
 ```js
 config.blocks.blocksConfig.myBlock = {
   id: 'myBlock',
   title: "My block",
-  edit: null,   // or simply omit it
-  view: null,   // or simply omit it
+  edit: null,   // or omit it
+  view: null,   // or omit it
   // ... the rest of the settings
 };
 ```
