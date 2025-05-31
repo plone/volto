@@ -112,10 +112,7 @@ export type WidgetsConfigViewById<
 > = Partial<{
   [viewId in K]: React.ComponentType<P>;
 }>;
-<<<<<<< HEAD
-=======
 
->>>>>>> seven-widget-registry
 export type WidgetByViewTypes =
   | (string & {})
   | 'array'
