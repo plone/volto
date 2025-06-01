@@ -122,25 +122,26 @@ If your add-on needs to bring in additional JavaScript package dependencies, you
 
 You need to configure your add-ons using a `pnpm` workspace.
 You can configure them using the file {file}`pnpm-workspace.yaml` and declare all your development add-ons in there.
-The default contents of this file are:
+The default content of this file is shown below.
 
 ```yaml
 packages:
   # all packages in direct subdirs of packages/
   - 'core/packages/*'
   - 'packages/*'
-  - 'packages/*/packages/*
+  - 'packages/*/packages/*'
 ```
 
-Note the nesting of `packages` since a {term}`Cookieplone` generated add-on will have a `packages` folder in itself.
-You can explicitly declare the add-ons, too.
+Note the nesting of `packages`.
+Since Cookieplone generated add-on will have a `packages` folder in itself.
+You can explicitly declare the add-ons to load them in a defined order.
 
 ```yaml
 packages:
-  - 'core/packages'
+  - 'core/packages/*'
   - 'packages/my-policy-addon'
   - 'packages/my-development-mode-addon/packages/my-development-mode-addon'
-  - 'packages/**/packages/*'
+  - 'packages/*/packages/*'
 ```
 
 ```{important}
