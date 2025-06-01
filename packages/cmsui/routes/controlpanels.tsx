@@ -27,15 +27,8 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
   cli.config.token = token;
 
   const { data: controlpanels } = await cli.getControlpanels();
-  const controlpanels_plusflattenedurl = controlpanels.map((panel) => {
-    // console.debug('Control panel:', panel.title, panel);
-    return {
-      ...panel,
-      href: flattenToAppURL(panel['@id']),
-    };
-  });
   const { data: systemInformation } = await cli.getSystem();
-  return { controlpanels: controlpanels_plusflattenedurl, systemInformation };
+  return { controlpanels, systemInformation };
 }
 
 export default function ControlPanels() {

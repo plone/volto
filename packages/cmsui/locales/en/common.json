@@ -2,6 +2,27 @@
   "cmsui": {
     "edit": "Edit",
     "save": "Save",
-    "controlpanel": "Control Panel"
+    "controlpanel": "Control Panel",
+    "panelgroups": {
+      "general": "General",
+      "content": "Content",
+      "security": "Security",
+      "users": "Users",
+      "site": "Site Setup",
+      "addons": "Add-ons",
+      "maintenance": "Maintenance"
+    },
+    "paneltitles": {
+      "addons": "Add-ons",
+      "database": "Database",
+      "contentRules": "Content Rules",
+      "undo": "Undo",
+      "urlmanagement": "URL Management",
+      "relations": "Relations",
+      "moderatecomments": "Moderate Comments",
+      "users": "Users",
+      "groupMembership": "Group Membership",
+      "groups": "Groups"
+    }
   }
 }
