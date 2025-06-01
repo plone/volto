@@ -126,40 +126,15 @@ You need to configure your add-ons using a `pnpm` workspace.
 You can configure them using the file {file}`pnpm-workspace.yaml` and declare all your development add-ons in there.
 The default contents of this file are:
 
-
-`````{tab-set}
-````{tab-item} Cookieplone add-on template
-```yaml
-packages:
-  - 'core/packages/*'
-  - 'packages/*'
-  - 'packages/*/packages/*'
-```
-````
-````{tab-item} Cookieplone full-stack template
 ```yaml
 packages:
   # all packages in direct subdirs of packages/
+  - 'core/packages/*'
   - 'packages/*'
-  # all packages in subdirs of components/
-  - 'apps/*'
-  # exclude packages that are inside test directories
-  - '!**/test/**'
-  - '!packages/volto-guillotina'
-```
-````
-`````
-
-If the add-on you are developing was created using {term}`Cookieplone`, then you have to add the following to {file}`pnpm-workspace.yaml` to detect them.
-
-```yaml
-packages:
-  - 'core/packages'
-  - 'packages/my-policy-addon'
-  - 'packages/**/packages/*'
+  - 'packages/*/packages/*
 ```
 
-Note the nesting of `packages` since a {term}`Cookieplone` generated add-on (based on the add-on template) will have a `packages` folder in itself.
+Note the nesting of `packages` since a {term}`Cookieplone` generated add-on will have a `packages` folder in itself.
 You can explicitly declare the add-ons, too.
 
 ```yaml

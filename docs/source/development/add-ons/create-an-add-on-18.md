@@ -31,111 +31,96 @@ The following output assumes the former scenario.
 pipx run cookieplone frontend_addon
 ```
 
-You can also run `pipx run cookieplone` without a specific template.
-It will show a prompt in the terminal for you to choose one between 4 templates:
-
-1. A Plone Project - Create a new Plone project with backend and frontend components
-2. Backend Add-on for Plone - Create a new Python package to be used with Plone
-3. Frontend Add-on for Plone - Create a new Node package to be used with Volto
-4. Documentation scaffold for Plone projects - Create a new documentation scaffold for Plone projects
-
-For Volto-only (frontend-only development) the option `3` is all you need.
-
-Then the output is:
-
 ```console
-╭───────────────────────────────────── cookieplone ─────────────────────────────────────╮
-│                                                                                       │
-│                                   .xxxxxxxxxxxxxx.                                    │
-│                               ;xxxxxxxxxxxxxxxxxxxxxx;                                │
-│                            ;xxxxxxxxxxxxxxxxxxxxxxxxxxxx;                             │
-│                          xxxxxxxxxx              xxxxxxxxxx                           │
-│                        xxxxxxxx.                    .xxxxxxxx                         │
-│                       xxxxxxx      xxxxxxx:            xxxxxxx                        │
-│                     :xxxxxx       xxxxxxxxxx             xxxxxx:                      │
-│                    :xxxxx+       xxxxxxxxxxx              +xxxxx:                     │
-│                   .xxxxx.        :xxxxxxxxxx               .xxxxx.                    │
-│                   xxxxx+          ;xxxxxxxx                 +xxxxx                    │
-│                   xxxxx              +xx.                    xxxxx.                   │
-│                  xxxxx:                      .xxxxxxxx       :xxxxx                   │
-│                  xxxxx                      .xxxxxxxxxx       xxxxx                   │
-│                  xxxxx                      xxxxxxxxxxx       xxxxx                   │
-│                  xxxxx                      .xxxxxxxxxx       xxxxx                   │
-│                  xxxxx:                      .xxxxxxxx       :xxxxx                   │
-│                  .xxxxx              ;xx.       ...          xxxxx.                   │
-│                   xxxxx+          :xxxxxxxx                 +xxxxx                    │
-│                   .xxxxx.        :xxxxxxxxxx               .xxxxx.                    │
-│                    :xxxxx+       xxxxxxxxxxx              ;xxxxx:                     │
-│                     :xxxxxx       xxxxxxxxxx             xxxxxx:                      │
-│                       xxxxxxx      xxxxxxx;            xxxxxxx                        │
-│                        xxxxxxxx.                    .xxxxxxxx                         │
-│                          xxxxxxxxxx              xxxxxxxxxx                           │
-│                            ;xxxxxxxxxxxxxxxxxxxxxxxxxxxx+                             │
-│                               ;xxxxxxxxxxxxxxxxxxxxxx;                                │
-│                                   .xxxxxxxxxxxxxx.                                    │
-│                                                                                       │
-╰───────────────────────────────────────────────────────────────────────────────────────╯
-You've downloaded /home/silviub/.cookiecutters/cookieplone-templates before. Is it okay
-to delete and re-download it? [y/n] (y):
-╭──────────────────────────────── Volto Addon Generator ────────────────────────────────╮
-│                                                                                       │
-│ Creating a new Volto Addon                                                            │
-│                                                                                       │
-│ Sanity check results:                                                                 │
-│                                                                                       │
-│                                                                                       │
-│   - Node: ✓                                                                           │
-│   - git: ✓                                                                            │
-│                                                                                       │
-╰───────────────────────────────────────────────────────────────────────────────────────╯
-  [1/10] Add-on Title (Volto Add-on):
-  [2/10] Add-on (Short name of the addon) (volto-add-on):
-  [3/10] A short description of your addon (A new add-on for Volto):
-  [4/10] Author (Plone Community):
-  [5/10] Author E-mail (collective@plone.org):
-  [6/10] GitHub Username or Organization (collective):
-  [7/10] Package name on NPM (volto-add-on):
-  [8/10] Should we use prerelease versions? (No):
-  [9/10] Volto version (18.22.0):
-  [10/10] Would you like to add a documentation scaffold to your project?
-    1 - Yes
-    2 - No
-    Choose from [1/2] (1):
-╭─────────────────────────────── Volto Add-on generation ───────────────────────────────╮
-│                                                                                       │
-│ Summary:                                                                              │
-│                                                                                       │
-│   - Volto version: 18.22.0                                                            │
-│   - Output folder: /home/silviub/Desktop/Pro/volto-add-on                             │
-│                                                                                       │
-│                                                                                       │
-╰───────────────────────────────────────────────────────────────────────────────────────╯
- -> Setup Documentation Scaffold
-╭──────────────────────────── 🎉 New addon was generated 🎉 ────────────────────────────╮
-│                                                                                       │
-│ volto-add-on                                                                          │
-│                                                                                       │
-│ Now, enter the generated directory and finish the install:                            │
-│                                                                                       │
-│ cd volto-add-on                                                                       │
-│ make install                                                                          │
-│                                                                                       │
-│ start coding, and push to your organization.                                          │
-│                                                                                       │
-│ Sorry for the convenience,                                                            │
-│ The Plone Community.                                                                  │
-│                                                                                       │
-│ https://plone.org/                                                                    │
-╰───────────────────────────────────────────────────────────────────────────────────────╯
+❯ pipx run cookieplone frontend_addon
+⚠️  cookieplone is already on your PATH and installed at
+    /Users/<username>/.local/bin/cookieplone. Downloading and running anyway.
+╭──────────────────────────────── cookieplone ─────────────────────────────────╮
+│                                                                              │
+│                               .xxxxxxxxxxxxxx.                               │
+│                           ;xxxxxxxxxxxxxxxxxxxxxx;                           │
+│                        ;xxxxxxxxxxxxxxxxxxxxxxxxxxxx;                        │
+│                      xxxxxxxxxx              xxxxxxxxxx                      │
+│                    xxxxxxxx.                    .xxxxxxxx                    │
+│                   xxxxxxx      xxxxxxx:            xxxxxxx                   │
+│                 :xxxxxx       xxxxxxxxxx             xxxxxx:                 │
+│                :xxxxx+       xxxxxxxxxxx              +xxxxx:                │
+│               .xxxxx.        :xxxxxxxxxx               .xxxxx.               │
+│               xxxxx+          ;xxxxxxxx                 +xxxxx               │
+│               xxxxx              +xx.                    xxxxx.              │
+│              xxxxx:                      .xxxxxxxx       :xxxxx              │
+│              xxxxx                      .xxxxxxxxxx       xxxxx              │
+│              xxxxx                      xxxxxxxxxxx       xxxxx              │
+│              xxxxx                      .xxxxxxxxxx       xxxxx              │
+│              xxxxx:                      .xxxxxxxx       :xxxxx              │
+│              .xxxxx              ;xx.       ...          xxxxx.              │
+│               xxxxx+          :xxxxxxxx                 +xxxxx               │
+│               .xxxxx.        :xxxxxxxxxx               .xxxxx.               │
+│                :xxxxx+       xxxxxxxxxxx              ;xxxxx:                │
+│                 :xxxxxx       xxxxxxxxxx             xxxxxx:                 │
+│                   xxxxxxx      xxxxxxx;            xxxxxxx                   │
+│                    xxxxxxxx.                    .xxxxxxxx                    │
+│                      xxxxxxxxxx              xxxxxxxxxx                      │
+│                        ;xxxxxxxxxxxxxxxxxxxxxxxxxxxx+                        │
+│                           ;xxxxxxxxxxxxxxxxxxxxxx;                           │
+│                               .xxxxxxxxxxxxxx.                               │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+You've downloaded /Users/<username>/.cookiecutters/cookieplone-templates before.
+Is it okay to delete and re-download it? [y/n] (y):
+╭─────────────────────────── Volto Addon Generator ────────────────────────────╮
+│                                                                              │
+│ Creating a new Volto Addon                                                   │
+│                                                                              │
+│ Sanity check results:                                                        │
+│                                                                              │
+│                                                                              │
+│   - Node: ✓                                                                  │
+│   - git: ✓                                                                   │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+  [1/8] Add-on Title (Volto Add-on):
+  [2/8] Add-on (Short name of the addon) (volto-addon):
+  [3/8] A short description of your addon (A new add-on for Volto):
+  [4/8] Author (Plone Community):
+  [5/8] Author E-mail (collective@plone.org):
+  [6/8] GitHub Username or Organization (collective):
+  [7/8] Package name on NPM (volto-addon):
+  [8/8] Volto version (18.0.0-alpha.46):
+╭────────────────────────── Volto Add-on generation ───────────────────────────╮
+│                                                                              │
+│ Summary:                                                                     │
+│                                                                              │
+│   - Volto version: 18.0.0-alpha.46                                           │
+│   - Output folder: /Users/<username>/Development/plone/volto-addon           │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─────────────────────── 🎉 New addon was generated 🎉 ────────────────────────╮
+│                                                                              │
+│ volto-addon                                                                  │
+│                                                                              │
+│ Now, enter the generated directory and finish the install:                   │
+│                                                                              │
+│ cd volto-addon                                                               │
+│ make install                                                                 │
+│                                                                              │
+│ start coding, and push to your organization.                                 │
+│                                                                              │
+│ Sorry for the convenience,                                                   │
+│ The Plone Community.                                                         │
+│                                                                              │
+│ https://plone.org/                                                           │
+╰──────────────────────────────────────────────────────────────────────────────╯
 ```
 
-You can also use uvx:
+You can also use `uvx`:
 
 ```shell
-uvx cookieplone
+uvx cookieplone frontend_addon
 ```
 
-After the exit of the Cookieplone process, we have a new folder with the name of the add-on, in this example, `volto-addon`.
+Cookieplone creates a folder with the name of the add-on, in this example, `volto-addon`.
 
 Change your current working directory to {file}`volto-addon`.
 
@@ -152,22 +137,11 @@ make install
 
 ## Start Plone backend Docker container
 
-For offering the full information about what Cookieplone produces in different useful templates, we included both the `make` commands from full-stack template and from frontend add-on template below.
-
 In the currently open shell session, issue the following command.
 
-`````{tab-set}
-````{tab-item} Cookieplone full-stack template
-```shell
-make backend-start
-```
-````
-````{tab-item} Cookieplone frontend add-on template
 ```shell
 make backend-docker-start
 ```
-````
-`````
 
 ```console
 ❯ make backend-docker-start
@@ -200,18 +174,9 @@ Create a second shell session in a new window.
 Change your current working directory to {file}`volto-addon`.
 Start the Plone development frontend with the following command.
 
-`````{tab-set}
-````{tab-item} Cookieplone full-stack template
-```shell
-make frontend-start
-```
-````
-````{tab-item} Cookieplone frontend add-on template
 ```shell
 make start
 ```
-````
-`````
 
 ```console
 webpack 5.90.1 compiled successfully in 11004 ms

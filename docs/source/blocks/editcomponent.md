@@ -31,12 +31,12 @@ import { SidebarPortal } from '@plone/volto/components';
 const Edit = (props) => {
   const { selected } = props;
   return (
-    {/* [....] */}
-    <SidebarPortal selected={selected}>
+    <>
       {/* [....] */}
-    </SidebarPortal>
-    {/* [....] */}
-  )
+      <SidebarPortal selected={selected}>{/* [....] */}</SidebarPortal>
+      {/* [....] */}
+    </>
+  );
 };
 ```
 
@@ -45,17 +45,18 @@ If you need an extra layer of configuration within `SidebarPortal`, you can use 
 
 ```jsx
 import { SidebarPopup } from '@plone/volto/components';
+import { SidebarPopup } from '@plone/volto/components';
 
 const Edit = (props) => {
   const { sidebarOpen } = props;
 
   return (
-    {/* [....] */}
-    <SidebarPopup open={sidebarOpen}>
+    <>
       {/* [....] */}
-    </SidebarPopup>
-    {/* [....] */}
-  )
+      <SidebarPopup open={sidebarOpen}>{/* [....] */}</SidebarPopup>
+      {/* [....] */}
+    </>
+  );
 };
 ```
 
@@ -320,11 +321,14 @@ export const widgets = {
 If `selectableTypes` is set in `widgetOptions.pattern_options`, then only items whose content type has a name that is defined in `widgetOptions.pattern_options.selectableTypes` will be selectable.
 
 ```jsx
-<ObjectBrowserWidget {/*...*/} widgetOptions={{
-  pattern_options: {
-    selectableTypes: ['News Item', 'Event']
-  }
-}}/>
+<ObjectBrowserWidget
+  {...otherProps}
+  widgetOptions={{
+    pattern_options: {
+      selectableTypes: ['News Item', 'Event'],
+    },
+  }}
+/>;
 ```
 
 You can also set the `selectableTypes` from `plone` when declaring a field for `contenttype`:
@@ -346,11 +350,14 @@ form.widget(
 If `maximumSelectionSize` is set in `widgetOptions.pattern_options`, the widget allows to select at most the `maximumSelectionSize` number of items defined in `widgetOptions.pattern_options.maximumSelectionSize`.
 
 ```jsx
-<ObjectBrowserWidget {/*...*/} widgetOptions={{
-  pattern_options: {
-    maximumSelectionSize: 2
-  }
-}}/>
+<ObjectBrowserWidget
+  {...otherProps}
+  widgetOptions={{
+    pattern_options: {
+      maximumSelectionSize: 2,
+    },
+  }}
+/>;
 ```
 
 You can also set the `maximumSelectionSize` from `plone` when declaring a field for `contenttype`:

@@ -71,7 +71,7 @@ The container component has particular properties:
             isDefault: true,
             title: 'Default',
             template: DefaultBody,
-          },
+               },
           {
             id: 'variation2',
             title: 'variation #2',

@@ -50,7 +50,7 @@ export blocks = {
 }
 ```
 
-Volto requires add-ons to have a default export from their {file}`index.js`, a helper method `applyConfig`.
+Volto requires add-ons to have a default function exported from their {file}`index.js`, called `applyConfig`.
 
 ```js
 const applyConfig = (config) => {
