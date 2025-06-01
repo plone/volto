@@ -1,8 +1,8 @@
 ---
 myst:
   html_meta:
-    "description": "Use a pattern called component shadowing to customize volto components."
-    "property=og:description": "Use a pattern called component shadowing to customize volto components."
+    "description": "Use a pattern called component shadowing to customize Volto components."
+    "property=og:description": "Use a pattern called component shadowing to customize Volto components."
     "property=og:title": "Customizing Components"
     "keywords": "Volto, Plone, frontend, React, customizing component"
 ---
@@ -26,12 +26,12 @@ You can inspect the app and find the name of the component (the name of the tag)
 
 To override the component, use the same folder structure that the original component has in the Volto source code, and place it inside the {file}`customizations` folder.
 
-## Customizing the Logo resource
+## Customizing the `Logo` resource
 
-So, for example, if we want to replace the Logo which is located in Volto at {file}`components/theme/Logo/Logo.svg`, then the folder structure needs to match the folder structure of Volto in the {file}`customizations` folder.
+So, for example, if you want to replace the logo which is located in Volto at {file}`components/theme/Logo/Logo.svg`, then the folder structure needs to match the folder structure of Volto in the {file}`customizations` folder.
 The final path of the new overridden component will be {file}`<my-volto-addon-or-package/>src/customizations/components/theme/Logo/Logo.svg`.
 
-## Change The Tags Component
+## Change the `Tags` component
 
 When overriding components, we follow the same approach.
 Copy over the original component from the Volto source code, then amend the imports (if any are required) to match the current folder structure.
@@ -107,7 +107,7 @@ The final path of the overridden component will be {file}`customizations/compone
 
 ## Advanced customization scenarios
 
-Once you've started developing your Volto project, you'll find that you also want to integrate other third-party Volto add-ons, and potentially customize files from those add-ons.
+Once you've started developing your Volto project, you might find that you also want to integrate other third-party Volto add-ons, and potentially customize files from those add-ons.
 You may even want to write an add-on that customizes Volto or other add-ons on its own.
 
 To customize an add-on, you can follow the pattern described above, but place the add-on customization files in a folder named after the add-on, inside the {file}`src/customizations` folder.
@@ -116,7 +116,7 @@ So, for example, to customize the {file}`volto-venue/src/components/OSMMap/OSMMa
 If you start customizing add-ons, to keep a clean folder structure inside {file}`src/customizations`, you can move the Volto customizations file in a {file}`src/customizations/volto` subfolder.
 
 Add-ons can also customize Volto and other add-ons using the same logic.
-The default customization path inside an add-on is `src/customizations`, but the add-on can specify its own customization path with the `customizationPaths` key in {file}`package.json`.
+The default customization path inside an add-on is {file}`src/customizations`, but the add-on can specify its own customization path with the `customizationPaths` key in {file}`package.json`.
 The `customizationPaths` is a list that takes strings with paths relative to the {file}`package.json` file.
 All these paths are scanned for customization files.
 
@@ -124,7 +124,7 @@ All these paths are scanned for customization files.
 The `customizationPaths` key is also available in the project, not just the add-ons.
 ```
 
-In case of conflicts where multiple add-ons customize the same file, the order of add-on declaration matters.
+In case of conflicts where multiple add-ons customize the same file, the order in which add-ons are declared matters.
 The last add-on declared in the `addons` key in the project's {file}`package.json` wins.
 Furthermore, the project's customizations are applied last, so they "win" in the conflict resolution.
 
