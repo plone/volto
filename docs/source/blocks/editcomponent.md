@@ -45,7 +45,6 @@ If you need an extra layer of configuration within `SidebarPortal`, you can use 
 
 ```jsx
 import { SidebarPopup } from '@plone/volto/components';
-import { SidebarPopup } from '@plone/volto/components';
 
 const Edit = (props) => {
   const { sidebarOpen } = props;
