@@ -1,4 +1,12 @@
-/* asdasd */
+h1.documentFirstHeading {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+h2.group-title {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
 .controlpanels-container {
   display: flex;
   flex-direction: column;
