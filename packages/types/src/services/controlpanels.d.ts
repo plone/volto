@@ -12,7 +12,7 @@ export interface ControlPanelSchema {
 
 export interface Controlpanel {
   '@id': string;
-  group?: string;
+  group: string;
   title: string;
   schema?: ControlPanelSchema;
   data?: Record<string, any>;

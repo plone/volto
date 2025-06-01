@@ -8,7 +8,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import type PloneClient from '@plone/client';
 import { requireAuthCookie } from '@plone/react-router';
-import ControlPanelsList from '../components/ControlPanelsList/ControlPanelsList';
+import ControlPanelsList from '../components/ControlPanel/ControlPanelsList';
 import VersionOverview from '../components/VersionOverview/VersionOverview';
 import { flattenToAppURL } from '@plone/helpers';
 import Back from '@plone/components/icons/arrow-left.svg?react';

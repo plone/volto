@@ -50,6 +50,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 }
 
 export async function action({ params, request }: ActionFunctionArgs) {
+  // console.debug('action', params, request);
   const token = await requireAuthCookie(request);
 
   const cli = config
@@ -110,13 +111,27 @@ export default function SingleControlPanel() {
           <Back />
         </Button>
       </Plug>
+      <Plug pluggable="toolbar-top" id="edit-save-button">
+        <Button
+          aria-label={t('cmsui.save')}
+          type="submit"
+          // Trigger the TS form submission
+          onPress={() => form.handleSubmit()}
+          variant="primary"
+          accent
+          size="L"
+        >
+          <Checkbox />
+        </Button>
+      </Plug>
       <h1 className="documentFirstHeading">
         {controlpanel.title || 'a control panel'}
       </h1>
 
       <form>
-        {/* TODO: fields with objects
-         TODO: save button */}
+        {/* 
+          TODO: fields with objects
+          TODO: save button */}
         {schema.fieldsets.map((fieldset: ControlPanelFieldset) => (
           <Accordion defaultExpandedKeys={['default']} key={fieldset.id}>
             <AccordionItem id={fieldset.id} key={fieldset.id}>
@@ -147,19 +162,6 @@ export default function SingleControlPanel() {
             </AccordionItem>
           </Accordion>
         ))}
-        <Plug pluggable="toolbar" id="edit-save-button">
-          <Button
-            aria-label={t('cmsui.save')}
-            type="submit"
-            // Trigger the TS form submission
-            onPress={() => form.handleSubmit()}
-            variant="primary"
-            accent
-            size="L"
-          >
-            <Checkbox />
-          </Button>
-        </Plug>
       </form>
     </InitAtoms>
   );
