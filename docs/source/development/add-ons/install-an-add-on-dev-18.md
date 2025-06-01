@@ -22,13 +22,13 @@ By doing this, you can develop both the project and the add-on product as if the
 
 Add the add-on to the `addons` key of your Plone project's {file}`package.json`.
 You might need to add the key.
-The following example declares the add-on `name-of-add-on` for your Plone project.
+The following example declares the add-on `acme-volto-foo-addon` for your Plone project.
 
 ```json
 {
   "name": "my-volto-project",
   "addons": [
-    "name-of-add-on"
+    "acme-volto-foo-addon"
   ]
 }
 ```
@@ -37,6 +37,7 @@ The following example declares the add-on `name-of-add-on` for your Plone projec
 Alternatively, you can use {file}`volto.config.js` to declare add-ons in your Plone project.
 See {doc}`../../configuration/volto-config-js`.
 ```
+
 
 ## Configure `mrs-developer`
 
