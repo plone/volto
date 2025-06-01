@@ -9,18 +9,20 @@ myst:
 
 # Install an add-on in development mode in Volto 18
 
+This chapter describes how to install an add-on for the frontend only in development mode using Volto 18 or later.
+
 Use [`mrs-developer`](https://www.npmjs.com/package/mrs-developer) to manage the development cycle of Volto add-ons.
 This tool pulls the remote code and configures the current project, making the add-on available for the build.
 By doing this, you can develop both the project and the add-on product as if they were both part of the current codebase.
 
 `mrs-developer` is included and installed by default when you generate a project with Cookieplone.
-Use the following command to install the configuration of `mrs.developer.json` in your project.
 
-```shell
-make install
-```
 
-Next, you need to add the add-on to the `addons` key of your Plone project's {file}`package.json`.
+## Declare an add-on
+
+Add the add-on to the `addons` key of your Plone project's {file}`package.json`.
+You might need to add the key.
+The following example declares the add-on `name-of-add-on` for your Plone project.
 
 ```json
 {
