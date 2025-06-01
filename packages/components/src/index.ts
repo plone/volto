@@ -14,7 +14,6 @@ export { CheckboxField } from './components/CheckboxField/CheckboxField';
 export { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 export { ComboBox, ComboBoxItem } from './components/ComboBox/ComboBox';
 export { Container } from './components/Container/Container';
-export { ControlPanelsList } from './components/ControlPanelsList/ControlPanelsList';
 export { DateField } from './components/DateField/DateField';
 export { DatePicker } from './components/DatePicker/DatePicker';
 export { DateRangePicker } from './components/DateRangePicker/DateRangePicker';

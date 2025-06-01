@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from '../Link/Link';
-
+import { Link } from '@plone/components';
 type ControlPanel = {
   '@id': string;
   href: string;
@@ -8,7 +7,7 @@ type ControlPanel = {
   group: string;
 };
 
-export const ControlPanelsList = ({
+const ControlPanelsList = ({
   controlpanels,
 }: {
   controlpanels: ControlPanel[];
