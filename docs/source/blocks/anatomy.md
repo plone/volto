@@ -87,8 +87,8 @@ block configuration.
 config.blocks.blocksConfig.myBlock = {
   id: 'myBlock',
   title: 'My block',
-  edit: null, // or simply omit it
-  view: null, // or simply omit it
+  edit: null, // or omit it
+  view: null, // or omit it
   // ... the rest of the settings
 };
 ```
