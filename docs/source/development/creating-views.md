@@ -3,13 +3,15 @@ myst:
   html_meta:
     "description": "Creating Volto views"
     "property=og:description": "Creating Volto views"
-    "property=og:title": "Creating Volto Views"
+    "property=og:title": "Creating Volto views"
     "keywords": "Volto, Plone, frontend, React, views"
 ---
 
-# Creating Volto Views
+# Creating Volto views
 
-## Full View
+This chapter describes how to create views in Volto.
+
+## Full view
 
 In this chapter, you'll create a new type of view for displaying contents in a folder.
 Call this view `full view`.
@@ -134,7 +136,7 @@ import FullView from './FullView/FullView';
 export { FullView };
 ```
 
-## Registering The View
+## Register the view
 
 To register the view, edit the {file}`config.js` file.
 The `views` configuration options contain all the views.
@@ -158,7 +160,7 @@ export default function applyConfig(config) {
 }
 ```
 
-## Registering a new view called Album View
+## Register a new view called Album View
 
 Create the `Album View` that shows the images in a grid.
 You can use the `Card` class from `semantic-ui`, `components/AlbumView/AlbumView.jsx`:
