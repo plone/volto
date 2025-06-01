@@ -45,7 +45,7 @@ A browser will open with the bundle inspector.
 
 ## Lazy-loading libraries
 
-Lazy-loading libraries is not as straight-forward as with the React components.
+Lazy-loading libraries are not as straight-forward as in the React components.
 The API offered by `@loadable/component` is not very ergonomic, and importing a library as a lazy library introduces a lot of pain points in your code.
 You have to always check if the library is loaded, depends on multiple lazy libraries, whether it further complicates the code, and other annoyances.
 To alleviate this and to promote the use of lazy libraries everywhere, we have the `injectLazyLibs` HOC wrapper that can automatically inject lazy-loaded libraries as props to your components.
