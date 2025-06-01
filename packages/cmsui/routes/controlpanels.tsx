@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import type PloneClient from '@plone/client';
 import { requireAuthCookie } from '@plone/react-router';
 import ControlPanelsList from '../components/ControlPanelsList/ControlPanelsList';
+import VersionOverview from '../components/VersionOverview/VersionOverview';
 import { flattenToAppURL } from '@plone/helpers';
 import Back from '@plone/components/icons/arrow-left.svg?react';
 import config from '@plone/registry';
@@ -27,16 +28,18 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 
   const { data: controlpanels } = await cli.getControlpanels();
   const controlpanels_plusflattenedurl = controlpanels.map((panel) => {
+    // console.debug('Control panel:', panel.title, panel);
     return {
       ...panel,
       href: flattenToAppURL(panel['@id']),
     };
   });
-  return { controlpanels: controlpanels_plusflattenedurl };
+  const { data: systemInformation } = await cli.getSystem();
+  return { controlpanels: controlpanels_plusflattenedurl, systemInformation };
 }
 
 export default function ControlPanels() {
-  const { controlpanels } = useLoaderData<typeof loader>();
+  const { controlpanels, systemInformation } = useLoaderData<typeof loader>();
   const navigate = useNavigate();
   const { t } = useTranslation();
   return (
@@ -48,6 +51,7 @@ export default function ControlPanels() {
       </Plug>
       <h1 className="documentFirstHeading">{t('cmsui.controlpanel')}</h1>
       <ControlPanelsList controlpanels={controlpanels ?? []} />
+      <VersionOverview {...systemInformation} />
     </>
   );
 }

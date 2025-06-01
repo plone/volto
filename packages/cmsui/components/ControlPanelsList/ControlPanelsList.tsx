@@ -26,20 +26,22 @@ const ControlPanelsList = ({
 
   return (
     <div className="controlpanels-container">
-      {Object.entries(groupedPanels).map(([group, panels]) => (
-        <div key={group} className="controlpanels-group">
-          <h2 className="group-title">{group}</h2>
-          <ul className="controlpanels-list">
-            {panels.map((panel) => (
-              <li key={panel['@id']} className="controlpanel-item">
-                <Link href={panel.href} className="controlpanel-link">
-                  {panel.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      <div className="controlpanels">
+        {Object.entries(groupedPanels).map(([group, panels]) => (
+          <div key={group} className="controlpanels-group">
+            <h2 className="group-title">{group}</h2>
+            <ul className="controlpanels-list">
+              {panels.map((panel) => (
+                <li key={panel['@id']} className="controlpanel-item">
+                  <Link href={panel.href} className="controlpanel-link">
+                    {panel.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
