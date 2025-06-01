@@ -16,7 +16,7 @@ This chapter describes how to create views in Volto.
 In this chapter, you'll create a new type of view for displaying contents in a folder.
 Call this view `full view`.
 In Plone there is a view called `All content` with the view id `full_view` that you'll reuse.
-We start by creating a file called: `components/FullView/FullView.jsx`.
+Start by creating a file called: `components/FullView/FullView.jsx`.
 
 ```jsx
 /**
@@ -127,8 +127,7 @@ FullView.propTypes = {
 export default FullView;
 ```
 
-Next we will add the view to the app components.
-We can do this by adding the following lines to {file}`components/index.js`.
+Next, add the view to the app components by adding the following lines to {file}`components/index.js`.
 
 ```jsx
 import FullView from './FullView/FullView';
@@ -163,7 +162,7 @@ export default function applyConfig(config) {
 ## Register a new view called Album View
 
 Create the `Album View` that shows the images in a grid.
-You can use the `Card` class from `semantic-ui`, `components/AlbumView/AlbumView.jsx`:
+Use the `Card` class from `semantic-ui`, `components/AlbumView/AlbumView.jsx`:
 
 ```jsx
 /**
