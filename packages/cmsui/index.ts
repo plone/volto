@@ -75,8 +75,8 @@ export default function install(config: ConfigType) {
           },
           {
             type: 'route',
-            path: '*',
-            file: '@plone/cmsui/routes/controlpanels.tsx',
+            path: ':id',
+            file: '@plone/cmsui/routes/controlpanel.tsx',
           },
         ],
       },
