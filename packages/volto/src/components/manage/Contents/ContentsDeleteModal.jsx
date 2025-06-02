@@ -41,7 +41,145 @@ const messages = defineMessages({
     id: 'Cancel',
     defaultMessage: 'Cancel',
   },
+  item: {
+    id: 'item',
+    defaultMessage: 'item',
+  },
+  items: {
+    id: 'items',
+    defaultMessage: 'items',
+  },
+  reference: {
+    id: 'reference',
+    defaultMessage: 'reference',
+  },
+  references: {
+    id: 'references',
+    defaultMessage: 'references',
+  },
+  folderDeletionSingle: {
+    id: 'This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder.',
+    defaultMessage:
+      'This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder.',
+  },
+  folderDeletionMultiple: {
+    id: 'Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders.',
+    defaultMessage:
+      'Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders.',
+  },
+  deleteAllItemsPaginated: {
+    id: 'You are about to delete all items in the current pagination of this folder.',
+    defaultMessage:
+      'You are about to delete all items in the current pagination of this folder.',
+  },
+  deleteAllItems: {
+    id: 'You are about to delete all items in this folder.',
+    defaultMessage: 'You are about to delete all items in this folder.',
+  },
+  brokenReferencesMultiple: {
+    id: 'Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken.',
+    defaultMessage:
+      'Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken.',
+  },
+  brokenReferencesSingle: {
+    id: 'Deleting this item breaks {brokenReferences} {variation}.',
+    defaultMessage: 'Deleting this item breaks {brokenReferences} {variation}.',
+  },
 });
+
+const DeleteItemsList = ({ itemsToDelete, titlesToDelete }) => (
+  <ul>
+    {itemsToDelete.map((id) => (
+      <li key={id}>
+        <Link to={flattenToAppURL(id)} target="_blank">
+          {titlesToDelete[id] || id}
+        </Link>
+      </li>
+    ))}
+  </ul>
+);
+
+const VariationMessage = ({ count, singularId, pluralId }) => (
+  <span>
+    {count === 1 ? (
+      <FormattedMessage {...messages[singularId]} />
+    ) : (
+      <FormattedMessage {...messages[pluralId]} />
+    )}
+  </span>
+);
+
+const DeleteAllMessage = ({ hasMultiplePages }) => (
+  <p>
+    <FormattedMessage
+      {...messages[
+        hasMultiplePages ? 'deleteAllItemsPaginated' : 'deleteAllItems'
+      ]}
+    />
+  </p>
+);
+
+const DeleteMessage = ({
+  isMultiple,
+  containedItemsToDelete,
+  brokenReferences,
+  breaches,
+  linksAndReferencesViewLink,
+}) => {
+  const intl = useIntl();
+  const showFolderMessage = containedItemsToDelete > 0;
+  const showBreachesMessage = brokenReferences > 0;
+
+  return (
+    <>
+      {showFolderMessage && (
+        <p>
+          <FormattedMessage
+            {...messages[
+              isMultiple ? 'folderDeletionMultiple' : 'folderDeletionSingle'
+            ]}
+            values={{
+              containedItemsToDelete: <span>{containedItemsToDelete}</span>,
+              variation: (
+                <VariationMessage
+                  count={containedItemsToDelete}
+                  singularId="item"
+                  pluralId="items"
+                />
+              ),
+            }}
+          />
+        </p>
+      )}
+      {showBreachesMessage && (
+        <>
+          <FormattedMessage
+            {...messages[
+              isMultiple ? 'brokenReferencesMultiple' : 'brokenReferencesSingle'
+            ]}
+            values={{
+              brokenReferences: <span>{brokenReferences}</span>,
+              variation: (
+                <VariationMessage
+                  count={brokenReferences}
+                  singularId="reference"
+                  pluralId="references"
+                />
+              ),
+            }}
+          />
+          <BrokenLinksList
+            intl={intl}
+            breaches={breaches}
+            linksAndReferencesViewLink={
+              !isMultiple && linksAndReferencesViewLink
+            }
+          />
+        </>
+      )}
+    </>
+  );
+};
 
 const ContentsDeleteModal = (props) => {
   const {
@@ -158,203 +296,21 @@ const ContentsDeleteModal = (props) => {
 
             {itemsToDelete.length > 1 &&
             items.length === itemsToDelete.length ? (
-              hasMultiplePages ? (
-                <p>
-                  <FormattedMessage
-                    id="You are about to delete all items in the current pagination of this folder."
-                    defaultMessage="You are about to delete all items in the current pagination of this folder."
-                  />
-                </p>
-              ) : (
-                <p>
-                  <FormattedMessage
-                    id="You are about to delete all items in this folder."
-                    defaultMessage="You are about to delete all items in this folder."
-                  />
-                </p>
-              )
+              <DeleteAllMessage hasMultiplePages={hasMultiplePages} />
             ) : (
-              <ul>
-                {itemsToDelete.map((id) => {
-                  return (
-                    <li key={id}>
-                      <Link to={flattenToAppURL(id)} target="_blank">
-                        {titlesToDelete[id] || id}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
+              <DeleteItemsList
+                itemsToDelete={itemsToDelete}
+                titlesToDelete={titlesToDelete}
+              />
             )}
 
-            {itemsToDelete.length > 1 ? (
-              containedItemsToDelete > 0 ? (
-                <>
-                  <FormattedMessage
-                    id="Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-                    defaultMessage="Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-                    values={{
-                      containedItemsToDelete: (
-                        <span>{containedItemsToDelete}</span>
-                      ),
-                      variation: (
-                        <span>
-                          {containedItemsToDelete === 1 ? (
-                            <FormattedMessage id="item" defaultMessage="item" />
-                          ) : (
-                            <FormattedMessage
-                              id="items"
-                              defaultMessage="items"
-                            />
-                          )}
-                        </span>
-                      ),
-                    }}
-                  />
-                  {brokenReferences > 0 && (
-                    <>
-                      <br />
-                      <FormattedMessage
-                        id="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-                        defaultMessage="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-                        values={{
-                          brokenReferences: <span>{brokenReferences}</span>,
-                          variation: (
-                            <span>
-                              {brokenReferences === 1 ? (
-                                <FormattedMessage
-                                  id="reference"
-                                  defaultMessage="reference"
-                                />
-                              ) : (
-                                <FormattedMessage
-                                  id="references"
-                                  defaultMessage="references"
-                                />
-                              )}
-                            </span>
-                          ),
-                        }}
-                      />
-                      <BrokenLinksList intl={intl} breaches={breaches} />
-                    </>
-                  )}
-                </>
-              ) : (
-                <>
-                  {brokenReferences > 0 && (
-                    <>
-                      <FormattedMessage
-                        id="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-                        defaultMessage="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-                        values={{
-                          brokenReferences: <span>{brokenReferences}</span>,
-                          variation: (
-                            <span>
-                              {brokenReferences === 1 ? (
-                                <FormattedMessage
-                                  id="reference"
-                                  defaultMessage="reference"
-                                />
-                              ) : (
-                                <FormattedMessage
-                                  id="references"
-                                  defaultMessage="references"
-                                />
-                              )}
-                            </span>
-                          ),
-                        }}
-                      />
-                      <BrokenLinksList intl={intl} breaches={breaches} />
-                    </>
-                  )}
-                </>
-              )
-            ) : containedItemsToDelete > 0 ? (
-              <>
-                <FormattedMessage
-                  id="This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-                  defaultMessage="This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-                  values={{
-                    containedItemsToDelete: (
-                      <span>{containedItemsToDelete}</span>
-                    ),
-                    variation: (
-                      <span>
-                        {containedItemsToDelete === 1 ? (
-                          <FormattedMessage id="item" defaultMessage="item" />
-                        ) : (
-                          <FormattedMessage id="items" defaultMessage="items" />
-                        )}
-                      </span>
-                    ),
-                  }}
-                />
-                {brokenReferences > 0 && (
-                  <>
-                    <br />
-                    <FormattedMessage
-                      id="Deleting this item breaks {brokenReferences} {variation}."
-                      defaultMessage="Deleting this item breaks {brokenReferences} {variation}."
-                      values={{
-                        brokenReferences: <span>{brokenReferences}</span>,
-                        variation: (
-                          <span>
-                            {brokenReferences === 1 ? (
-                              <FormattedMessage
-                                id="reference"
-                                defaultMessage="reference"
-                              />
-                            ) : (
-                              <FormattedMessage
-                                id="references"
-                                defaultMessage="references"
-                              />
-                            )}
-                          </span>
-                        ),
-                      }}
-                    />
-                    <BrokenLinksList
-                      intl={intl}
-                      breaches={breaches}
-                      linksAndReferencesViewLink={linksAndReferencesViewLink}
-                    />
-                  </>
-                )}
-              </>
-            ) : brokenReferences > 0 ? (
-              <>
-                <FormattedMessage
-                  id="Deleting this item breaks {brokenReferences} {variation}."
-                  defaultMessage="Deleting this item breaks {brokenReferences} {variation}."
-                  values={{
-                    brokenReferences: <span>{brokenReferences}</span>,
-                    variation: (
-                      <span>
-                        {brokenReferences === 1 ? (
-                          <FormattedMessage
-                            id="reference"
-                            defaultMessage="reference"
-                          />
-                        ) : (
-                          <FormattedMessage
-                            id="references"
-                            defaultMessage="references"
-                          />
-                        )}
-                      </span>
-                    ),
-                  }}
-                />
-                <BrokenLinksList
-                  intl={intl}
-                  breaches={breaches}
-                  linksAndReferencesViewLink={linksAndReferencesViewLink}
-                />
-              </>
-            ) : null}
+            <DeleteMessage
+              isMultiple={itemsToDelete.length > 1}
+              containedItemsToDelete={containedItemsToDelete}
+              brokenReferences={brokenReferences}
+              breaches={breaches}
+              linksAndReferencesViewLink={linksAndReferencesViewLink}
+            />
           </div>
         }
         onCancel={onCancel}
