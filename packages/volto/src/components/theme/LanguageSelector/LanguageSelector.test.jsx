@@ -3,14 +3,8 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
-import config from '@plone/volto/registry';
 
 import LanguageSelector from './LanguageSelector';
-
-beforeAll(() => {
-  config.settings.isMultilingual = true;
-  config.settings.supportedLanguages = ['de', 'es'];
-});
 
 const mockStore = configureStore();
 
@@ -28,6 +22,12 @@ describe('LanguageSelector', () => {
               items: [{ language: 'es', '@id': '/es' }],
             },
           },
+        },
+      },
+      site: {
+        data: {
+          features: { multilingual: true },
+          'plone.available_languages': ['es'],
         },
       },
     });
