@@ -87,11 +87,16 @@ const messages = defineMessages({
   },
 });
 
+const safeUrl = (url) => {
+  if (!url) return '#';
+  return typeof url === 'string' ? flattenToAppURL(url) : '#';
+};
+
 const DeleteItemsList = ({ itemsToDelete, titlesToDelete }) => (
   <ul>
     {itemsToDelete.map((id) => (
       <li key={id}>
-        <Link to={flattenToAppURL(id)} target="_blank">
+        <Link to={safeUrl(id)} target="_blank">
           {titlesToDelete[id] || id}
         </Link>
       </li>
