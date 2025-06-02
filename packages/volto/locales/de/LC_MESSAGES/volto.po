@@ -145,7 +145,7 @@ msgstr "Block hinzufügen"
 #. Default: "Add block in position {index}"
 #: components/manage/Blocks/Container/NewBlockAddButton
 msgid "Add block in position {index}"
-msgstr "Block an Position {index} hinzufügenBlock an Position {index} hinzufügen"
+msgstr "Block an Position {index} hinzufügen"
 
 #. Default: "Add block…"
 #: helpers/MessageLabels/MessageLabels
