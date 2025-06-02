@@ -10,7 +10,7 @@ import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 import { Confirm, Dimmer, Loader, Table } from 'semantic-ui-react';
 
-const MAX_BREACHES_TO_SHOW = 2;
+const MAX_BREACHES_TO_SHOW = 5;
 
 const messages = defineMessages({
   deleteConfirmSingleItem: {
@@ -124,6 +124,7 @@ const DeleteMessage = ({
   containedItemsToDelete,
   brokenReferences,
   breaches,
+  itemsToDelete,
   linksAndReferencesViewLink,
 }) => {
   const intl = useIntl();
@@ -152,30 +153,14 @@ const DeleteMessage = ({
         </p>
       )}
       {showBreachesMessage && (
-        <>
-          <FormattedMessage
-            {...messages[
-              isMultiple ? 'brokenReferencesMultiple' : 'brokenReferencesSingle'
-            ]}
-            values={{
-              brokenReferences: <span>{brokenReferences}</span>,
-              variation: (
-                <VariationMessage
-                  count={brokenReferences}
-                  singularId="reference"
-                  pluralId="references"
-                />
-              ),
-            }}
-          />
-          <BrokenLinksList
-            intl={intl}
-            breaches={breaches}
-            linksAndReferencesViewLink={
-              !isMultiple && linksAndReferencesViewLink
-            }
-          />
-        </>
+        <BrokenLinksList
+          intl={intl}
+          breaches={breaches}
+          brokenReferences={brokenReferences}
+          isMultiple={isMultiple}
+          itemsToDelete={itemsToDelete}
+          linksAndReferencesViewLink={!isMultiple && linksAndReferencesViewLink}
+        />
       )}
     </>
   );
@@ -238,11 +223,24 @@ const ContentsDeleteModal = (props) => {
           target: result,
         })),
       );
-      const source_by_uid = breaches.reduce(
+      // Filter out breaches where breach.source is to be deleted
+      const filteredBreaches = breaches.filter(
+        (breach) =>
+          !itemsToDelete.some((item) => breach.source['@id'].endsWith(item)),
+      );
+      // If no breaches are found, return early
+      if (filteredBreaches.length === 0) {
+        setContainedItemsToDelete([]);
+        setBrokenReferences(0);
+        setLinkAndReferencesViewLink(null);
+        setBreaches([]);
+        return;
+      }
+      const source_by_uid = filteredBreaches.reduce(
         (acc, value) => acc.set(value.source.uid, value.source),
         new Map(),
       );
-      const by_source = breaches.reduce((acc, value) => {
+      const by_source = filteredBreaches.reduce((acc, value) => {
         if (acc.get(value.source.uid) === undefined) {
           acc.set(value.source.uid, new Set());
         }
@@ -269,7 +267,7 @@ const ContentsDeleteModal = (props) => {
       setLinkAndReferencesViewLink(null);
       setBreaches([]);
     }
-  }, [linkintegrityInfo]);
+  }, [itemsToDelete, linkintegrityInfo]);
 
   return (
     open && (
@@ -309,6 +307,7 @@ const ContentsDeleteModal = (props) => {
               containedItemsToDelete={containedItemsToDelete}
               brokenReferences={brokenReferences}
               breaches={breaches}
+              itemsToDelete={itemsToDelete}
               linksAndReferencesViewLink={linksAndReferencesViewLink}
             />
           </div>
@@ -321,14 +320,36 @@ const ContentsDeleteModal = (props) => {
   );
 };
 
-const BrokenLinksList = ({ intl, breaches, linksAndReferencesViewLink }) => {
+const BrokenLinksList = ({
+  intl,
+  breaches,
+  brokenReferences,
+  isMultiple,
+  itemsToDelete,
+  linksAndReferencesViewLink,
+}) => {
   return (
     <div className="broken-links-list">
+      <FormattedMessage
+        {...messages[
+          isMultiple ? 'brokenReferencesMultiple' : 'brokenReferencesSingle'
+        ]}
+        values={{
+          brokenReferences: <span>{brokenReferences}</span>,
+          variation: (
+            <VariationMessage
+              count={brokenReferences}
+              singularId="reference"
+              pluralId="references"
+            />
+          ),
+        }}
+      />
+      <br />
       <FormattedMessage
         id="These items will have broken links"
         defaultMessage="These items will have broken links"
       />
-      :
       <Table compact>
         <Table.Body>
           {breaches.slice(0, MAX_BREACHES_TO_SHOW).map((breach) => (
