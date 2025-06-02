@@ -127,7 +127,7 @@ export function getExternalRoutes() {
 export const defaultRoutes = [
   // redirect to external links if path is in blacklist
   ...getExternalRoutes(),
-  ...((config.settings?.isMultilingual && multilingualRoutes) || []),
+  ...(config.settings?.isMultilingual !== false ? multilingualRoutes : []),
   {
     path: '/',
     component: View,
