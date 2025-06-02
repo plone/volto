@@ -14,8 +14,8 @@ const Toolbar = () => {
       id="toolbar"
       className="bg-quanta-smoke flex h-full w-[80px] justify-center transition-[left,right,width] duration-200 ease-linear"
     >
-      <div className="fixed inset-y-0 z-10 my-4 flex flex-col items-center justify-between">
-        <Pluggable name="toolbar" />
+      <div className="fixed inset-y-0 z-10 my-4 flex flex-col items-center gap-4">
+        <Pluggable name="toolbar-top" />
         <Pluggable name="toolbar-bottom" />
         <Plug pluggable="toolbar-bottom" id="button-settings">
           <Button
