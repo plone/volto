@@ -1,6 +1,7 @@
 import { Content } from '../content';
 import { BlocksFormData } from '../blocks/index';
 import { ConfigData } from '.';
+import { Controlpanel, ControlPanelSchema } from '..';
 
 type apiExpandersType =
   | { match: string; GET_CONTENT: string[] }
@@ -81,10 +82,10 @@ export interface SettingsConfig {
   storeExtenders: unknown[];
   showTags: boolean;
   showRelatedItems: boolean;
-  controlpanels: unknown[];
+  controlpanels: Controlpanel[];
   controlPanelsIcons: Record<string, React.ComponentType>;
   filterControlPanels: unknown;
-  filterControlPanelsSchema: unknown;
+  filterControlPanelsSchema: (schema: Controlpanel) => ControlPanelSchema;
   externalRoutes: {
     match?: string | { path: string; exact: boolean; strict: boolean };
   }[];

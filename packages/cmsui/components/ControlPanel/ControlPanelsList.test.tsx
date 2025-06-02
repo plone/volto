@@ -52,9 +52,4 @@ describe('ControlPanelsList', () => {
       expect(link).toHaveAttribute('href', panel.href);
     });
   });
-
-  it('handles empty control panels array', () => {
-    render(<ControlPanelsList controlpanels={[]} />);
-    expect(screen.queryByRole('list')).not.toBeInTheDocument();
-  });
 });

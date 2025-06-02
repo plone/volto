@@ -16,7 +16,8 @@ export const ControlPanelsList = ({
   controlpanels: ControlPanel[];
 }) => {
   const { t } = useTranslation();
-  const addonsControlPanels = config.settings.controlpanels || [];
+  const addonsControlPanels: ControlPanel[] =
+    config.settings.controlpanels || [];
 
   const sevenControlPanels = [
     {

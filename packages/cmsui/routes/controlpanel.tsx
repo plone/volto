@@ -50,7 +50,6 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 }
 
 export async function action({ params, request }: ActionFunctionArgs) {
-  // console.debug('action', params, request);
   const token = await requireAuthCookie(request);
 
   const cli = config
@@ -66,12 +65,18 @@ export async function action({ params, request }: ActionFunctionArgs) {
 
   const formData = await request.json();
 
-  await cli.updateContent({
-    path,
-    data: formData,
-  });
+  // TODO: Activate update of control panel data
+  // eslint-disable-next-line no-console
+  console.warn('Updating control panel data not yet implemented');
+  // console.log('formData', formData);
+  // await cli.updateContent({
+  //   path,
+  //   data: formData,
+  // });
 
-  return redirect(path);
+  return redirect(`/controlpanel/${params.id}`);
+
+  // return { ok: true };
 }
 
 const formAtom = atom<Controlpanel>({} as Controlpanel);
@@ -79,27 +84,28 @@ const formAtom = atom<Controlpanel>({} as Controlpanel);
 export default function SingleControlPanel() {
   const loaderData = useLoaderData<typeof loader>();
   const controlpanel = loaderData.controlpanel;
-  const schema = controlpanel.schema;
+  const { filterControlPanelsSchema } = config.settings;
+  const schema = filterControlPanelsSchema(controlpanel);
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { filterControlPanelsSchema } = config.settings;
 
   const fetcher = useFetcher();
 
   const form = useAppForm({
     defaultValues: controlpanel.data,
     onSubmit: async ({ value }) => {
-      // Bugfix: @ts-expect-error: For some reason, the type of value is not inferred correctly
+      // bug fix: @ts-expect-error: For some reason, the type of value is not inferred correctly
       // as `useLoaderData` turns every "unknown" type into `undefined`
       fetcher.submit(value, {
         method: 'post',
         encType: 'application/json',
       });
 
-      return redirect('/controlpanel');
+      // return redirect(`/${content['@id']}`);
     },
   });
 
+  // TODO: filter fields with filterControlPanelsSchema from config.settings
   return (
     <InitAtoms atomValues={[[formAtom, controlpanel.data]]}>
       <Plug pluggable="toolbar-top" id="button-back">
@@ -111,33 +117,16 @@ export default function SingleControlPanel() {
           <Back />
         </Button>
       </Plug>
-      <Plug pluggable="toolbar-top" id="edit-save-button">
-        <Button
-          aria-label={t('cmsui.save')}
-          type="submit"
-          // Trigger the TS form submission
-          onPress={() => form.handleSubmit()}
-          variant="primary"
-          accent
-          size="L"
-        >
-          <Checkbox />
-        </Button>
-      </Plug>
       <h1 className="documentFirstHeading">
         {controlpanel.title || 'a control panel'}
       </h1>
-
       <form>
-        {/* 
-          TODO: fields with objects
-          TODO: save button */}
         {schema.fieldsets.map((fieldset: ControlPanelFieldset) => (
           <Accordion defaultExpandedKeys={['default']} key={fieldset.id}>
             <AccordionItem id={fieldset.id} key={fieldset.id}>
               <AccordionItemTrigger>{fieldset.title}</AccordionItemTrigger>
               <AccordionPanel>
-                {(fieldset.fields as DeepKeys<Controlpanel>[]).map(
+                {(fieldset.fields as DeepKeys<ControlPanelSchema>[]).map(
                   (schemaField, index) => (
                     <form.AppField
                       name={schemaField}
@@ -162,6 +151,19 @@ export default function SingleControlPanel() {
             </AccordionItem>
           </Accordion>
         ))}
+        <Plug pluggable="toolbar-top" id="edit-save-button">
+          <Button
+            aria-label={t('cmsui.save')}
+            type="submit"
+            // Trigger the TS form submission
+            onPress={() => form.handleSubmit()}
+            variant="primary"
+            accent
+            size="L"
+          >
+            <Checkbox />
+          </Button>
+        </Plug>
       </form>
     </InitAtoms>
   );

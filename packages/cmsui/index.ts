@@ -1,8 +1,10 @@
 import type { ConfigType } from '@plone/registry';
 import installWidgets from './config/widgets';
+import installControlpanels from './config/controlpanels';
 
 export default function install(config: ConfigType) {
   installWidgets(config);
+  installControlpanels(config);
 
   config.registerRoute({
     type: 'layout',
