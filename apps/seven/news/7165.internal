@@ -1,1 +1,1 @@
-Remove ' ' useless character in a script in package.json. Update year range in LICENSE.md. @silviubogan
+Remove trailing ` ` space character in a script in `package.json`. @silviubogan
