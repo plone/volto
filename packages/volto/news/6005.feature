@@ -1,1 +1,1 @@
-Complete missing german translations. @ksuess
+Complete missing German translations. @ksuess
