@@ -154,7 +154,8 @@ Then it's at your discretion how you define the CSS class names in your theme.
 
 ## Error class for blocks
 
-When a block has a validation error (for example, via `blocksErrors`), the block wrapper automatically receives the `error` class in edit mode. This allows you to easily customize the appearance of blocks with errors via CSS, for example:
+When a user submits data in a form, and the block has a validation error (for example, via `blocksErrors`), then the block wrapper automatically receives the `error` class.
+This allows you to customize the appearance of blocks with errors via CSS, as in the following example.
 
 ```css
 .block.error {
@@ -163,7 +164,7 @@ When a block has a validation error (for example, via `blocksErrors`), the block
 }
 ```
 
-The class is automatically added by the `Edit.jsx` component and can be used in any theme or style customization to highlight blocks with errors.
+The class is automatically added by the `Edit.jsx` component, and can be used in any theme or style customization to highlight blocks with errors.
 
 ## Customize the injected class names
 
