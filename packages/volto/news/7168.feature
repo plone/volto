@@ -1,0 +1,1 @@
+Add support for custom item placeholder and fixed (non-add/removable) lists in ObjectListWidget. @alexandreIFB
