@@ -10,7 +10,7 @@ import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 import { Confirm, Dimmer, Loader, Table } from 'semantic-ui-react';
 
-const MAX_BREACHES_TO_SHOW = 5;
+const MAX_LINK_INTEGRITY_BREACHES_TO_SHOW = 5;
 
 const messages = defineMessages({
   deleteConfirmSingleItem: {
@@ -357,45 +357,49 @@ const BrokenLinksList = ({
       />
       <Table compact>
         <Table.Body>
-          {breaches.slice(0, MAX_BREACHES_TO_SHOW).map((breach) => (
-            <Table.Row key={breach.source['@id']} verticalAlign="top">
-              <Table.Cell>
-                <Link
-                  to={flattenToAppURL(breach.source['@id'])}
-                  title={intl.formatMessage(messages.navigate_to_this_item)}
-                >
-                  {breach.source.title}
-                </Link>
-              </Table.Cell>
-              <Table.Cell style={{ minWidth: '140px' }}>
-                <FormattedMessage id="refers to" defaultMessage="refers to" />:
-              </Table.Cell>
-              <Table.Cell>
-                <ul style={{ margin: 0 }}>
-                  {breach.targets.map((target) => (
-                    <li key={target['@id']}>
-                      <Link
-                        to={flattenToAppURL(target['@id'])}
-                        title={intl.formatMessage(
-                          messages.navigate_to_this_item,
-                        )}
-                      >
-                        {target.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </Table.Cell>
-            </Table.Row>
-          ))}
-          {breaches.length > MAX_BREACHES_TO_SHOW && (
+          {breaches
+            .slice(0, MAX_LINK_INTEGRITY_BREACHES_TO_SHOW)
+            .map((breach) => (
+              <Table.Row key={breach.source['@id']} verticalAlign="top">
+                <Table.Cell>
+                  <Link
+                    to={flattenToAppURL(breach.source['@id'])}
+                    title={intl.formatMessage(messages.navigate_to_this_item)}
+                  >
+                    {breach.source.title}
+                  </Link>
+                </Table.Cell>
+                <Table.Cell style={{ minWidth: '140px' }}>
+                  <FormattedMessage id="refers to" defaultMessage="refers to" />
+                  :
+                </Table.Cell>
+                <Table.Cell>
+                  <ul style={{ margin: 0 }}>
+                    {breach.targets.map((target) => (
+                      <li key={target['@id']}>
+                        <Link
+                          to={flattenToAppURL(target['@id'])}
+                          title={intl.formatMessage(
+                            messages.navigate_to_this_item,
+                          )}
+                        >
+                          {target.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          {breaches.length > MAX_LINK_INTEGRITY_BREACHES_TO_SHOW && (
             <Table.Row>
               <Table.Cell colSpan="3">
                 <FormattedMessage
                   id="and {count} more…"
                   defaultMessage="and {count} more…"
                   values={{
-                    count: breaches.length - MAX_BREACHES_TO_SHOW,
+                    count:
+                      breaches.length - MAX_LINK_INTEGRITY_BREACHES_TO_SHOW,
                   }}
                 />
               </Table.Cell>
