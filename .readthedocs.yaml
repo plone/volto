@@ -20,9 +20,9 @@ build:
     # This is a special exit code on Read the Docs that will cancel the build immediately.
     - |
       if [ "$READTHEDOCS_VERSION_TYPE" = "external" ] && git diff --quiet origin/main -- docs/ .readthedocs.yaml requirements-docs.txt packages/volto/.storybook "packages/volto/src/**/*.stories.jsx";
-        then
-          exit 183;
-        fi
+      then
+        exit 183;
+      fi
     # Install dependencies defined in your ``package.json``
     # - npm ci
     # Install any other extra dependencies to build the docs
