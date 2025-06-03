@@ -128,7 +128,25 @@ export default {
   ],
   argTypes: {
     locale: {
-      options: ['en', 'fr', 'de', 'it', 'eu'],
+      options: [
+        'ca',
+        'de',
+        'en',
+        'es',
+        'eu',
+        'fi',
+        'fr',
+        'hi',
+        'it',
+        'ja',
+        'nl',
+        'pt',
+        'pt-BR',
+        'ro',
+        'ru',
+        'sv',
+        'zh-CN',
+      ],
       control: {
         type: 'radio',
       },
