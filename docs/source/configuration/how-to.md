@@ -28,7 +28,8 @@ const absoluteUrl = `${config.settings.apiPath}/${content.url}`;
 ```
 
 Individual add-ons can extend Volto's configuration registry.
-The configurations of all add-ons are applied in the order they are defined in {file}`package.json`.
+The configurations of all add-ons are applied in the order they are defined in {file}`volto.config.js`.
+Alternatively, they may be defined in {file}`package.json`.
 Visualized as a pipeline, it would appear as shown. 
 
 > Default Volto configuration -> Add-on 1 -> Add-on 2 -> ... -> Add-on n
