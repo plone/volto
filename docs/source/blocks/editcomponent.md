@@ -317,15 +317,15 @@ export const widgets = {
 
 #### Selectable types
 
-If `selectableTypes` is set in `widgetOptions.pattern_options`, then only items whose content type has a name that is defined in `widgetOptions.pattern_options.selectableTypes` will be selectable.
+If `selectableTypes` is set in `widgetOptions.frontendOptions`, then only items whose content type has a name that is defined in `widgetOptions.frontendOptions.selectableTypes` will be selectable.
 
 ```jsx
 <ObjectBrowserWidget
   {...otherProps}
   widgetOptions={{
-    pattern_options: {
-      selectableTypes: ['News Item', 'Event'],
-    },
+    frontendOptions: {
+      selectableTypes: ['News Item', 'Event']
+    }
   }}
 />;
 ```
@@ -337,7 +337,7 @@ form.widget(
   'a_cura_di',
   RelatedItemsFieldWidget,
   (vocabulary = 'plone.app.vocabularies.Catalog'),
-  (pattern_options = {
+  (frontendOptions = {
     maximumSelectionSize: 1,
     selectableTypes: ['News Item', 'Event'],
   }),
@@ -346,15 +346,15 @@ form.widget(
 
 #### `maximumSelectionSize`
 
-If `maximumSelectionSize` is set in `widgetOptions.pattern_options`, the widget allows to select at most the `maximumSelectionSize` number of items defined in `widgetOptions.pattern_options.maximumSelectionSize`.
+If `maximumSelectionSize` is set in `widgetOptions.frontendOptions`, the widget allows to select at most the `maximumSelectionSize` number of items defined in `widgetOptions.frontendOptions.maximumSelectionSize`.
 
 ```jsx
 <ObjectBrowserWidget
   {...otherProps}
   widgetOptions={{
-    pattern_options: {
-      maximumSelectionSize: 2,
-    },
+    frontendOptions: {
+      maximumSelectionSize: 2
+    }
   }}
 />;
 ```
@@ -366,7 +366,7 @@ form.widget(
   'a_cura_di',
   RelatedItemsFieldWidget,
   (vocabulary = 'plone.app.vocabularies.Catalog'),
-  (pattern_options = { maximumSelectionSize: 1, selectableTypes: ['Event'] }),
+  (frontendOptions = { maximumSelectionSize: 1, selectableTypes: ['Event'] }),
 );
 ```
 
@@ -375,7 +375,7 @@ form.widget(
   'notizie_correlate',
   RelatedItemsFieldWidget,
   (vocabulary = 'plone.app.vocabularies.Catalog'),
-  (pattern_options = {
+  (frontendOptions = {
     maximumSelectionSize: 10,
     selectableTypes: ['News Item'],
   }),

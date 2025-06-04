@@ -97,7 +97,7 @@ config.registerUtility({
   name: 'url',
   dependencies: { format: 'url' },
   method: urlValidator,
-});
+})
 ```
 
 
@@ -183,7 +183,7 @@ config.registerUtility({
     fieldType: 'integer',
   },
   method: maximumValidator,
-});
+})
 ```
 
 
@@ -217,7 +217,7 @@ config.registerUtility({
     widget: 'phoneNumber',
   },
   method: phoneValidator,
-});
+})
 ```
 
 The following example shows how to specify the `widget` in the content type definition in the schema hints in the backend using `frontendOptions`.
@@ -277,7 +277,7 @@ config.registerUtility({
     fieldName: 'url'
   },
   method: urlValidator,
-});
+})
 ```
 
 

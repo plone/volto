@@ -249,7 +249,7 @@ Example of configuration.
   },
   "environment": "development",
   "serverName": "server #1",
-  "maxBreadcrumbs": 50,
+  "maxBreadcrumbs": 50
 }
 ```
 

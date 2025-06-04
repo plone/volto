@@ -59,7 +59,7 @@ For example, the following snippet creates a rich text `SlateEditor` component:
   <div
     className="slate_wysiwyg_box"
     role="textbox"
-    tabIndex={-1}
+    tabIndex="-1"
     onClick={() => {}}
     onKeyDown={() => {}}
   >

@@ -66,7 +66,7 @@ config.settings.slate.toolbarButtons = [
   'italic',
   'strikethrough',
   'link',
-   ...
+   // ...
 ];
 ```
 
