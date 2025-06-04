@@ -32,10 +32,6 @@ The main configuration function should be exported as the default.
 An add-on's default configuration method will always be loaded.
 ```
 
-```{warning}
-The behavior below using the {file}`config.js` module is not supported in Volto 18.0.0 or later.
-```
-
 If for some reason you want to manually load the add-on, you can edit your project's {file}`config.js` module:
 
 ```js
