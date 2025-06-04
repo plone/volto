@@ -12,7 +12,7 @@ myst:
 Every block is composed of a view ({file}`View.{tsx,jsx}`) component and optionally an edit ({file}`Edit.{tsx,jsx}`) component.
 
 These components can be as simple as a dummy component, no boilerplate is required.
-The following code is an example of an {file}`Edit.jsx` file.
+The following code is an example of an edit component.
 
 ```jsx
 import React from 'react';
@@ -24,7 +24,7 @@ const Edit = props => {
 export default Edit;
 ```
 
-The following code is an example of a {file}`View.jsx` file.
+The following code is an example of a view component.
 
 ```jsx
 import React from 'react';
