@@ -1,1 +1,1 @@
-Add support for custom item placeholder and fixed (non-add/removable) lists in ObjectListWidget. @alexandreIFB
+Add support for both custom item placeholder and fixed lists in `ObjectListWidget`, where in the latter, the "Add" and "Remove" buttons are disabled. @alexandreIFB
