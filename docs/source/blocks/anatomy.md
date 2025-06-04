@@ -9,7 +9,7 @@ myst:
 
 # Blocks anatomy
 
-Every block is composed of a view ({file}`View.jsx`) component and optionally an edit ({file}`Edit.jsx`) component.
+Every block is composed of a view ({file}`View.{tsx,jsx}`) component and optionally an edit ({file}`Edit.{tsx,jsx}`) component.
 
 These components can be as simple as a dummy component, no boilerplate is required.
 The following code is an example of an {file}`Edit.jsx` file.
