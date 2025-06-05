@@ -13,10 +13,6 @@ You're able to customize the existing Volto components using a pattern called {t
 You have to identify and locate the component that you want to customize, let's say the Logo component in [Volto source
 code](https://github.com/plone/volto/tree/main/packages/volto/src).
 
-```{tip}
-Those familiar with Plone's JBOT customizing add-on will recognize this pattern since it works the same way, except that here you have to create exactly the same folder structure hierarchy of the original component, instead of using the dotted notation used in JBOT overrides.
-```
-
 You can override any component that lives inside Volto's {file}`src` folder and adapt it to your needs, without touching the original (source) counterparts.
 Components are named in a semantic and approachable way.
 
