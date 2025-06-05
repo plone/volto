@@ -33,35 +33,29 @@ When overriding components, we follow the same approach.
 Copy over the original component from the Volto source code, then amend the imports (if any are required) to match the current folder structure.
 Point Volto source code to use the `@plone/volto` module, instead of relative paths, and make other required amendments.
 
-Locate the `Tags.jsx` file and override this file so that there is a label in front of the tags with: `Tags:`.
+Locate the `Tags.jsx` file and override this file so that there is a label in front of the tags with `Tags:`.
 
 ```{code-block} jsx
-:emphasize-lines: 26
+:emphasize-lines: 20
 /**
  * Tags component.
  * @module components/theme/Tags/Tags
  */
 
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { UniversalLink } from '@plone/volto/components';
 import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
-import config from '@plone/registry';
 
 /**
- * Tags component.
+ * Tags component class.
  * @function Tags
- * @param {Object} props Component properties.
- * @param {Object} props.content Content object that may contain subjects.
- * @param {Array} [props.content.subjects] Optional array of tags (subjects).
- * @returns {JSX.Element|null} Markup of the component or null if no tags are available.
+ * @param {array} tags Array of tags.
+ * @returns {string} Markup of the component.
  */
-const Tags = ({ content }) => {
-  const tags = content?.subjects || [];
-
-  if (!config.settings.showTags || !tags.length) return null;
-
-  return (
-    <Container className="tags">
+const Tags = ({ tags }) =>
+  tags && tags.length > 0 ? (
+    <Container>
       Tags:
       {tags.map((tag) => (
         <UniversalLink
@@ -73,8 +67,9 @@ const Tags = ({ content }) => {
         </UniversalLink>
       ))}
     </Container>
+  ) : (
+    <span />
   );
-};
 
 /**
  * Property types.
@@ -82,9 +77,7 @@ const Tags = ({ content }) => {
  * @static
  */
 Tags.propTypes = {
-  content: PropTypes.shape({
-    subjects: PropTypes.arrayOf(PropTypes.string),
-  }),
+  tags: PropTypes.arrayOf(PropTypes.string),
 };
 
 /**
@@ -93,9 +86,7 @@ Tags.propTypes = {
  * @static
  */
 Tags.defaultProps = {
-  content: {
-    subjects: [],
-  },
+  tags: null,
 };
 
 export default Tags;
