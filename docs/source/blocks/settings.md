@@ -181,13 +181,13 @@ When you don't want this behavior and want to handle the {kbd}`enter` input your
 
 The configuration object also exposes these options
 
-### requiredBlocks - the required (mandatory, cannot be removed) blocks
+### `requiredBlocks` - the required (mandatory, cannot be removed) blocks
 
 This option is used to make the titles not removable.
 By default, the title block is not removable.
 You can't delete it because the remove handler is not present.
 
-### groupBlocksOrder - The blocks chooser group order
+### `groupBlocksOrder` - The blocks chooser group order
 
 This option is used to define the order of the groups in the blocks chooser.
 By default:
@@ -203,7 +203,7 @@ const groupBlocksOrder = [
 
 You can change it (and add your own group) in your project configuration object.
 
-### initialBlocks - Initial Blocks per content type
+### `initialBlocks` - initial blocks per content type
 
 By default, the default blocks for all content types are a title block and a text block.
 You can override this and provide your own blocks by modifying the configuration object:
