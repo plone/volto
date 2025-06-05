@@ -64,9 +64,13 @@ const Tags = ({ content }) => {
     <Container className="tags">
       Tags:
       {tags.map((tag) => (
-        <Link className="ui label" to={`/search?Subject=${tag}`} key={tag}>
+        <UniversalLink
+          className="ui label"
+          href={`/search?Subject=${tag}`}
+          key={tag}
+        >
           {tag}
-        </Link>
+        </UniversalLink>
       ))}
     </Container>
   );
