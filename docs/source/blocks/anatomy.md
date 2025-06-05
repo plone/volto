@@ -90,5 +90,5 @@ config.blocks.blocksConfig.myBlock = {
   edit: null, // or omit it
   view: null, // or omit it
   // ... the rest of the settings
-};
+}
 ```

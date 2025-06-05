@@ -263,7 +263,7 @@ SENTRY_PROJECT=new_project
 SENTRY_RELEASE=2.0.0
 SENTRY_DSN=https://boo@sentry.com/1
 SENTRY_FRONTEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-frontend", "release":"1.4.1"}}'
-SENTRY_BACKEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"}, "extras":{"logger":"javascript-backend", "server":"server#1"}} pnpm build
+SENTRY_BACKEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"} pnpm build
 node build/server.js
 ```
 
@@ -285,7 +285,7 @@ services:
       - SENTRY_RELEASE=2.0.0
       - RAZZLE_SENTRY_DSN=https://boo@sentry.com/1
       - RAZZLE_SENTRY_RELEASE=2.0.0
-      - RAZZLE_SENTRY_FRONTEND_CONFIG={"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-frontend", "release":"1.4.1"}}
+      - RAZZLE_SENTRY_FRONTEND_CONFIG={"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-frontend"}}
       - RAZZLE_SENTRY_BACKEND_CONFIG={"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-backend", "server":"server#1"}}
 ```
 

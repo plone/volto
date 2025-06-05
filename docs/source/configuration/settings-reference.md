@@ -182,7 +182,7 @@ controlpanels
 
     Example configuration in `config.js` of your project or add-on:
 
-    ```jsx
+    ```js
     config.settings.controlpanels = [
       ...config.settings.controlpanels,
       {

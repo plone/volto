@@ -314,7 +314,7 @@ import '@plone/volto/config';
 import { AlbumView, FullView } from './components';
 
 export default function applyConfig(config) {
-  const defaultViews = config.views;
+  const defaultViews = config.views
   // Add your project's configuration here by modifying `config` accordingly.
   config.views = {
     ...defaultViews,

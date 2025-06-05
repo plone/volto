@@ -58,7 +58,7 @@ Edit {file}`mrs.developer.json` by adding the following emphasized code as a sib
   "acme-volto-foo-addon": {
     "output": "packages",
     "package": "@acme/volto-foo-addon",
-    "url": "git@github.com:acme/my-volto-add-on.git",
+    "url": "git@github.com:acme/my-volto-addon.git",
     "path": "src"
   }
 }

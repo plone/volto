@@ -31,13 +31,15 @@ import { SidebarPortal } from '@plone/volto/components';
 const Edit = (props) => {
   const { selected } = props;
   return (
-    <>
-      {/* [....] */}
-      <SidebarPortal selected={selected}>{/* [....] */}</SidebarPortal>
-      {/* [....] */}
-    </>
-  );
-};
+
+    [...]
+
+    <SidebarPortal selected={selected}>
+      // ...
+    </SidebarPortal>
+  )
+
+}
 ```
 
 Everything that's inside the `SidebarPortal` component will be rendered in the sidebar.
@@ -50,13 +52,13 @@ const Edit = (props) => {
   const { sidebarOpen } = props;
 
   return (
-    <>
-      {/* [....] */}
-      <SidebarPopup open={sidebarOpen}>{/* [....] */}</SidebarPopup>
-      {/* [....] */}
-    </>
-  );
-};
+    [...]
+
+    <SidebarPopup open={sidebarOpen}>
+      ...
+    </SidebarPopup>
+  )
+}
 ```
 
 ## Schema driven automated block settings forms
@@ -159,7 +161,7 @@ import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrow
 
 // ...
 
-export default withObjectBrowser(MyComponent);
+export default withObjectBrowser(MyComponent)
 ```
 
 The HOC component `withObjectBrowser` wraps your component by making available this props:
@@ -271,16 +273,16 @@ Used in along with `InlineForm`, one can instantiate and configure it using the 
       id: 'default',
       title: 'Default',
       fields: ['href'],
-    },
+    }
   ],
   properties: {
     href: {
       title: 'title',
       widget: 'object_browser',
       mode: 'link',
-      selectedItemAttrs: ['Title', 'Description'],
-    },
-  },
+      selectedItemAttrs: ['Title', 'Description']
+    }
+  }
 }
 ```
 

@@ -258,7 +258,7 @@ config.registerUtility({
     fieldName: 'start'
   },
   method: startEventDateRangeValidator,
-});
+})
 ```
 
 

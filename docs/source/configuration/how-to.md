@@ -158,7 +158,7 @@ export default function applyConfig(config) {
   config.settings = {
     ...config.settings,
     nonContentRoutes: [....],
-    nonContentRoutesPublic: [....],
+    nonContentRoutesPublic: [....]
   };
 
   return config;
