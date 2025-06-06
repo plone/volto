@@ -17,7 +17,6 @@ You can load them by overloading the add-on name in the `addons` {file}`package.
 
 ```{code-block} json
 :emphasize-lines: 4
-
 {
   "name": "my-nice-volto-project",
   "addons": [
@@ -46,20 +45,14 @@ export blocks = {
 }
 ```
 
-Volto provides a helper method `applyConfig` to do the same.
+Volto requires add-ons to have a default function exported from their {file}`index.js`, called `applyConfig`.
 
 ```js
-import { applyConfig } from '@plone/volto/helpers';
-import * as voltoConfig from '@plone/volto/config';
+const applyConfig = (config) => {
+  return enableOptionalBlocks(loadExampleAddon(config));
+};
 
-const config = applyConfig([
-    enableOptionalBlocks,
-    loadExampleAddon
-], voltoConfig);
-
-export blocks = {
-  ...config.blocks,
-}
+export default applyConfig;
 ```
 
 The `applyConfig` helper ensures that each configuration method returns the configuration object, avoiding errors when developing add-ons.

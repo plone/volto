@@ -21,7 +21,7 @@ Some examples of the kind of strong integration we have in mind:
 -   Pasting complex documents inside a `volto-slate` text block will create multiple Volto blocks.
     Images will be converted to Volto image blocks, tables will be converted to Volto table blocks, and so on.
 -   The text block accepts drag-and-drop images, and it will upload them as Volto image blocks.
--   `volto-slate` has a {guilabel}`Table` button with the familiar {guilabel}`size` input, but it creates a table block.
+-   `volto-slate` has a {guilabel}`Table` button, disabled by default, with the familiar {guilabel}`size` input, but it creates a table block.
 
 The `volto-slate` API has stabilized, and we have already started several add-ons based on it, including [`volto-slate-metadata-mentions`](https://github.com/eea/volto-slate-metadata-mentions/) and [`volto-slate-zotero`](https://github.com/eea/volto-slate-zotero).
 

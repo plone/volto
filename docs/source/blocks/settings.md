@@ -14,7 +14,7 @@ Since Volto have its own set of default blocks, you should extend them by adding
 
 ## Configuring a new block
 
-So we add these lines to the `src/config.js`:
+Add the following lines to the file {file}`src/index.js`.
 
 ```js
 import MainSliderViewBlock from '@root/components/Blocks/MainSlider/View';
@@ -181,13 +181,16 @@ When you don't want this behavior and want to handle the {kbd}`enter` input your
 
 The configuration object also exposes these options
 
-### requiredBlocks - The required (mandatory, cannot be removed) blocks
+### `requiredBlocks` - the required (mandatory, cannot be removed) blocks
 
-This option is used to make the tiles not removable. By default, the Title block is not removable (you won't be able to delete it as the remove handler is not present).
+This option is used to make the titles not removable.
+By default, the title block is not removable.
+You can't delete it because the remove handler is not present.
 
-### groupBlocksOrder - The blocks chooser group order
+### `groupBlocksOrder` - The blocks chooser group order
 
-This option is used to define the order of the groups in the blocks chooser. By default:
+This option is used to define the order of the groups in the blocks chooser.
+By default:
 
 ```js
 const groupBlocksOrder = [
@@ -200,19 +203,20 @@ const groupBlocksOrder = [
 
 You can change it (and add your own group) in your project configuration object.
 
-### initialBlocks - Initial Blocks per content type
+### `initialBlocks` - initial blocks per content type
 
-By default, the default blocks for all content types are a title block and a text block. You can override this and provide your own by modifying the configuration object:
+By default, the default blocks for all content types are a title block and a text block.
+You can override this and provide your own blocks by modifying the configuration object:
 
 ```js
 const initialBlocks = {};
 ```
 
-and provide your own per content type, e.g:
+Then provide your own initial blocks per content type as shown in the following example.
 
 ```js
 const initialBlocks = {
-    Document: ['leadimage', 'title', 'text', 'listing' ]
+  Document: ['leadimage', 'title', 'text', 'listing' ]
 };
 ```
 
@@ -231,7 +235,8 @@ const initialBlocks = {
 ## Listing block configuration
 
 `allowed_headline_tags`
-: Allows you to customize the choices of the "Headline Tag" types shown in the block settings by default. It has the following syntax (a list of lists, where a list item consists of `['token', 'display_name']`):
+: Allows you to customize the choices of the "Headline Tag" types shown in the block settings by default.
+  It has the following syntax (a list of lists, where a list item consists of `['token', 'display_name']`):
 
   ```js
   allowed_headline_tags: [['h2', 'h2'], ['h3', 'h3']]
@@ -251,23 +256,17 @@ The search block uses the variations to provide alternate layout.
 
 ### FacetWidgets rewriteOptions extension
 
-Sometimes the labels provided by a field are not directly usable in UI. You can
-override the `rewriteOptions` function. Don't be alarmed by the facet that's
-already filled in to handle `review_state`. You can save a reference to the
-current function and define a new function that handles another field, that
-also calls the old saved function.
+Sometimes the labels provided by a field are not directly usable in the UI.
+You can override the `rewriteOptions` function.
+Don't be alarmed by the facet that's already filled in to handle `review_state`.
+You can save a reference to the current function, and define a new function that handles another field that also calls the old saved function.
 
 ### FacetWidgets types
 
-This allows definition of new facet filtering widgets. In addition to the
-`view` field, which defines the component to be used to render the facet
-widget, you need to also set:
+This allows definition of new facet filtering widgets.
+In addition to the `view` field, which defines the component to be used to render the facet widget, you need to also set:
 
-- `schemaEnhancer`: a schema extender for the object list widget that's used to
-  edit each facet setting
-- `stateToValue`: a function to convert the state (extracted from URL) to
-  a value that can be used in the facet widget
-- `valueToQuery`: a function that converts the value of the widget to state,
-  something that can be used to compose the querystring query
-- `filterListComponent`: component to be used in the filter list display of
-  that facet.
+- `schemaEnhancer`: a schema extender for the object list widget that's used to edit each facet setting
+- `stateToValue`: a function to convert the state (extracted from the URL) to a value that can be used in the facet widget
+- `valueToQuery`: a function that converts the value of the widget to state, something that can be used to compose the querystring query
+- `filterListComponent`: component to be used in the filter list display of that facet

@@ -273,7 +273,7 @@ config.registerUtility({
   type: 'validator',
   name: 'url',
   dependencies: {
-    blockType: 'slider',
+    blockType: 'embeddedLink',
     fieldName: 'url'
   },
   method: urlValidator,

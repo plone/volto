@@ -45,11 +45,9 @@ After making your choice, you can also undo that action.
 
 ````{only} not text
 ```{video} ../_static/user-manual/blocks/autosave-remote.mp4
-```
-````
 :alt: Autosave conflicts
 ```
-
+````
 
 (manage-blocks-label)=
 
@@ -325,7 +323,7 @@ Add omitted configuration options.
 #### Basic options
 
 Variation
-: Options for variation include {guilabel}`Facets on right side`, {guilabel}`Facets on right side`, and {guilabel}`Facets on top`.
+: Options for variation include {guilabel}`Facets on right side`, {guilabel}`Facets on left side`, and {guilabel}`Facets on top`.
 
 Results template
 : Options for results template include {guilabel}`Default`, {guilabel}`Image gallery`, and {guilabel}`Summary`.
