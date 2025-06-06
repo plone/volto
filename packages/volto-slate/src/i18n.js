@@ -142,13 +142,13 @@ function syncPoByPot() {
       filename,
       `${formatHeader(po.comments, po.headers)}
 ${map(pot.items, (item) => {
-        const poItem = find(po.items, { msgid: item.msgid });
-        return [
-          `${map(item.references, (ref) => `#: ${ref}`).join('\n')}`,
-          `msgid "${item.msgid}"`,
-          `msgstr "${poItem ? poItem.msgstr : ''}"`,
-        ].join('\n');
-      }).join('\n\n')}\n`,
+  const poItem = find(po.items, { msgid: item.msgid });
+  return [
+    `${map(item.references, (ref) => `#: ${ref}`).join('\n')}`,
+    `msgid "${item.msgid}"`,
+    `msgstr "${poItem ? poItem.msgstr : ''}"`,
+  ].join('\n');
+}).join('\n\n')}\n`,
     );
   });
 }
