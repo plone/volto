@@ -4,7 +4,7 @@
  * @module scripts/i18n
  */
 
-const { find, keys, map, concat, reduce } = require('lodash');
+const { find, keys, map, reduce, each } = require('lodash');
 const glob = require('glob').sync;
 const fs = require('fs');
 const Pofile = require('pofile');
@@ -16,7 +16,7 @@ const babel = require('@babel/core');
  * @return {undefined}
  */
 function extractMessages() {
-  map(glob('src/**/*.js?(x)'), (filename) => {
+  each(glob('src/**/*.js?(x)'), (filename) => {
     babel.transformFileSync(filename, {}, (err) => {
       if (err) {
         console.log(err);
@@ -32,21 +32,18 @@ function extractMessages() {
  */
 function getMessages() {
   return reduce(
-    concat(
-      {},
-      ...map(
-        // We ignore the existing customized shadowed components ones, since most
-        // probably we won't be overriding them
-        // If so, we should do it in the config object or somewhere else
-        glob('build/messages/src/**/*.json', {
-          ignore: 'build/messages/src/customizations/**',
-        }),
-        (filename) =>
-          map(JSON.parse(fs.readFileSync(filename, 'utf8')), (message) => ({
-            ...message,
-            filename: filename.match(/build\/messages\/src\/(.*).json$/)[1],
-          })),
-      ),
+    ...map(
+      // We ignore the existing customized shadowed components ones, since most
+      // probably we won't be overriding them
+      // If so, we should do it in the config object or somewhere else
+      glob('build/messages/src/**/*.json', {
+        ignore: 'build/messages/src/customizations/**',
+      }),
+      (filename) =>
+        map(JSON.parse(fs.readFileSync(filename, 'utf8')), (message) => ({
+          ...message,
+          filename: filename.match(/build\/messages\/src\/(.*).json$/)[1],
+        })),
     ),
     (current, value) => {
       let result = current;
@@ -145,13 +142,13 @@ function syncPoByPot() {
       filename,
       `${formatHeader(po.comments, po.headers)}
 ${map(pot.items, (item) => {
-  const poItem = find(po.items, { msgid: item.msgid });
-  return [
-    `${map(item.references, (ref) => `#: ${ref}`).join('\n')}`,
-    `msgid "${item.msgid}"`,
-    `msgstr "${poItem ? poItem.msgstr : ''}"`,
-  ].join('\n');
-}).join('\n\n')}\n`,
+        const poItem = find(po.items, { msgid: item.msgid });
+        return [
+          `${map(item.references, (ref) => `#: ${ref}`).join('\n')}`,
+          `msgid "${item.msgid}"`,
+          `msgstr "${poItem ? poItem.msgstr : ''}"`,
+        ].join('\n');
+      }).join('\n\n')}\n`,
     );
   });
 }
@@ -177,4 +174,4 @@ if (newPot !== oldPot) {
 }
 console.log('Synchronizing messages to po files...');
 syncPoByPot();
-console.log('done!');
+console.log('Done!');
