@@ -9,7 +9,6 @@
     "build:dist": "Description for `npm run build:dist` command",
     "test": "Description for `npm run test` command",
     "test:ci": "Description for `npm run test:ci` command",
-    "test:husky": "Description for `npm run test:husky` command",
     "test:debug": "Description for `npm run test:debug` command",
     "start:prod": "Description for `npm run start:prod` command",
     "start:dist": "Description for `npm run start:dist` command",
