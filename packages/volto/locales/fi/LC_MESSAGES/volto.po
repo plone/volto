@@ -4455,6 +4455,11 @@ msgstr "Työnkulkuja päivitetään"
 msgid "Workflow updated."
 msgstr "Sisällön tila on päivitetty."
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "Työkopio"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"

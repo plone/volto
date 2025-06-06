@@ -4455,6 +4455,11 @@ msgstr "Обновление состояний..."
 msgid "Workflow updated."
 msgstr "Состояние обновлено."
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "рабочую копию"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
