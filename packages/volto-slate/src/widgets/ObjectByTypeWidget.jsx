@@ -7,12 +7,11 @@ export const ObjectByTypeWidget = (props) => {
   const { schemas, value = {}, onChange, errors = {}, id } = props;
   const objectId = id;
 
-  const schemaIds = useMemo(() =>
-    schemas.map(({ id }) => id),
-    [schemas]);
-  const defaultActiveTab = useMemo(() =>
-    schemaIds.indexOf(Object.keys(value)[0]),
-    [schemaIds, value]);
+  const schemaIds = useMemo(() => schemas.map(({ id }) => id), [schemas]);
+  const defaultActiveTab = useMemo(
+    () => schemaIds.indexOf(Object.keys(value)[0]),
+    [schemaIds, value],
+  );
 
   const [activeTab, setActiveTab] = useState(
     defaultActiveTab > -1 ? defaultActiveTab : 0,
