@@ -10,4 +10,4 @@ For projects using either the Volto 16.x.x or 17.x.x series, it is _not_ require
 From Volto 18.0.0 onwards (including alphas), it is a released package as a stand-alone add-on in Volto.
 It is declared as part of its `dependencies`.
 
-See [`volto-slate`](https://6.docs.plone.org/volto/configuration/volto-slate/) for more information about Volto Slate and how to use it.
+See the documentation for [`volto-slate`](https://6.docs.plone.org/volto/configuration/volto-slate/) for more information.
