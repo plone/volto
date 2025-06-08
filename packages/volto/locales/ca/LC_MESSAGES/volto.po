@@ -1060,6 +1060,16 @@ msgstr "Suprimeix l'usuari"
 msgid "Delete action"
 msgstr "Elimina l'acció"
 
+#. Default: "Delete blocks"
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr "Elimina blocs"
+
+#. Default: "Delete col"
+#: config/Blocks
+msgid "Delete col"
+msgstr "Elimina columna"
+
 #. Default: "Condition deleted"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Delete condition"
@@ -1197,7 +1207,7 @@ msgstr "Descarrega l'esdeveniment"
 msgid "Download file"
 msgstr "Descarrega el fitxer"
 
-#. Default: "Drag and drop files from your computer onto this area or click the "Browse" button."
+#. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the "Browse" button."
 msgstr "Arrossegueu i deixeu anar fitxers des del vostre ordinador a aquesta àrea o feu clic al botó 'Examinar'."
@@ -1364,12 +1374,12 @@ msgstr "Introduïu el nom complet, per exemple John Smith."
 msgid "Enter map Embed Code"
 msgstr "Introduïu el codi d'inserció del mapa"
 
-#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
 #: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
 msgstr "Introdueix la ruta absoluta del destí. El destí ha d'existir o ser una url alternativa d'un altre destí."
 
-#. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+#. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
 msgstr "Introdueix la ruta absoluta on ha d'existir la url alternativa. La ruta ha de començar amb '/'. Només les urls que resultin en una pàgina 404 no trobada provocaran una redirecció."
@@ -1378,7 +1388,6 @@ msgstr "Introdueix la ruta absoluta on ha d'existir la url alternativa. La ruta 
 #: components/manage/Aliases/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 msgstr "Introduïu la ruta de la url alternativa. La ruta ha de començar amb '/'. Només les urls que resultin en una pàgina 404 no trobada provocaran una redirecció."
-
 
 #. Default: "Enter your current password."
 #: components/manage/Preferences/ChangePassword
@@ -2455,7 +2464,7 @@ msgstr "No s'han trobat complements"
 msgid "No broken relations found."
 msgstr "No s'han trobat relacions trencades."
 
-#. Default: "No connection to the server"
+#. Default: "There is no connection to the server, due to a timeout o no network connection."
 #: components/theme/RequestTimeout/RequestTimeout
 msgid "No connection to the server"
 msgstr "No hi ha connexió amb el servidor, per temps d'espera excedit o manca de connexió de xarxa."
@@ -2599,7 +2608,7 @@ msgstr "D'acord"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
-msgstr "Només es permeten caràcters de 7 bits. No pot contenir majúscules, caràcters especials: <, >, &, #, /, ?, o altres que són il·legals en URLs. No pot començar amb: _, aq_, @@, ++. No pot acabar amb __. No pot ser: request,contributors, ., .., \"\". No pot contenir salts de línia."
+msgstr "Només es permeten caràcters de 7 bits. No pot contenir majúscules, caràcters especials: <, >, &, #, /, ?, o altres que són il·legals en URLs. No pot començar amb: _, aq_, @@, ++. No pot acabar amb __. No pot ser: request,contributors, ., .., "". No pot contenir salts de línia."
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -4533,7 +4542,7 @@ msgstr "El teu idioma preferit"
 msgid "Your site is up to date."
 msgstr "El teu lloc està actualitzat."
 
-#. Default: "Your usernaame is required for reset your password."
+#. Default: "Your username is required for reset your password."
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your usernaame is required for reset your password."
 msgstr "El teu nom d'usuari és necessari per restablir la contrasenya."
