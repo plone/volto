@@ -8,9 +8,14 @@ export const ObjectByTypeWidget = (props) => {
   const objectId = id;
 
   const schemaIds = useMemo(() => schemas.map(({ id }) => id), [schemas]);
+
+  const k = useMemo(() => {
+    return Object.keys(value);
+  }, [value]);
+
   const defaultActiveTab = useMemo(
-    () => schemaIds.indexOf(Object.keys(value)[0]),
-    [schemaIds, value],
+    () => k.length > 0 ? schemaIds.indexOf(k[0]) : null,
+    [schemaIds, k],
   );
 
   const [activeTab, setActiveTab] = useState(
