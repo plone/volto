@@ -186,7 +186,7 @@
     "@redux-devtools/extension": "^3.3.0",
     "classnames": "2.5.1",
     "connected-react-router": "6.8.0",
-    "debug": "4.3.2",
+    "debug": "4.3.4",
     "decorate-component-with-props": "1.2.1",
     "dependency-graph": "0.10.0",
     "detect-browser": "5.1.0",
