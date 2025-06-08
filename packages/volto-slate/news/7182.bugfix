@@ -1,1 +1,5 @@
-Solved a bug, make better formatting, clarification, in volto-slate package. @silviubogan
+Improved volto-slate package:
+- Solved: the condition for making an initial empty paragraph was wrong.
+- Solved: the outer `<div>` of the Slate editor inside the RichTextWidget had a string as tabIndex instead of the integer `-1`.
+- Better code formatting.
+@silviubogan
