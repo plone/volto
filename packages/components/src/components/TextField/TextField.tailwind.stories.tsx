@@ -1,10 +1,11 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Form } from 'react-aria-components';
-import { Button } from '@plone/components/tailwind';
-import { TextField } from './TextField';
+import { Button } from '../Button/Button.tailwind';
+import { TextField } from '../TextField/TextField.tailwind';
 
 const meta = {
+  title: 'Tailwind/TextField',
   component: TextField,
   parameters: {
     layout: 'centered',
@@ -80,7 +81,7 @@ export const Example = (args: any) => <TextField {...args} />;
 export const Validation = (args: any) => (
   <Form className="flex flex-col items-start gap-2">
     <TextField {...args} />
-    <Button type="submit" variant="primary">
+    <Button type="submit" variant="primary" accent>
       Submit
     </Button>
   </Form>
