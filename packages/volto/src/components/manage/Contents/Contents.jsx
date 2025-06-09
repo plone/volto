@@ -1161,6 +1161,9 @@ class Contents extends Component {
                     onOk={this.onDeleteOk}
                     items={this.state.items}
                     itemsToDelete={this.state.itemsToDelete}
+                    hasMultiplePages={
+                      Math.ceil(this.props.total / this.state.pageSize) > 1
+                    }
                   />
                   <ContentsUploadModal
                     open={this.state.showUpload}
