@@ -12,6 +12,7 @@ import { Transforms, Editor, Node, Text, Path } from 'slate';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import omit from 'lodash/omit';
 import config from '@plone/volto/registry';
+import { LI } from '../constants';
 
 function fromEntries(pairs) {
   const res = {};
@@ -42,38 +43,57 @@ export function mergeSlateWithBlockBackward(editor, prevBlock, event) {
       at: Editor.start(editor, []),
     });
 
+    console.log('children', editor.children);
+
     // the contents that should be moved into the `ul`, as the last `li`
     rangeRef = Editor.rangeRef(editor, {
       anchor: Editor.start(editor, [1]),
       focus: Editor.end(editor, [1]),
     });
 
-    const source = rangeRef.current;
+    let source = rangeRef.current;
 
+    console.log('source', source);
+
+    // end of the first of two parts
     end = Editor.end(editor, [0]);
 
-    let endPoint;
+    console.log('end 1', end);
 
+    // insert new empty text between Slate blocks' content for consistency when both [0] and [1] are blocks (e.g. lists)
     Transforms.insertNodes(editor, { text: '' }, { at: end });
 
     end = Editor.end(editor, [0]);
+
+    console.log('end 2', end);
 
     Transforms.splitNodes(editor, {
       at: end,
       always: true,
       height: 1,
       mode: 'highest',
-      match: (n) => n.type === 'li' || Text.isText(n),
+      match: (n) => n.type === LI || Text.isText(n), // list item or Text, both work, split
     });
 
-    endPoint = Editor.end(editor, [0]);
+    console.log('children 2', editor.children);
+
+    end = Editor.end(editor, [0]);
+
+    console.log('end 3', end);
+
+    source = rangeRef.current;
+
+    console.log('source', source);
 
     Transforms.moveNodes(editor, {
       at: source,
-      to: endPoint.path,
+      to: end.path,
       mode: 'all',
       match: (n, p) => p.length === 2,
     });
+
+    console.log('children 3', editor.children);
+    // console.log(source, end.path, );
   });
 
   const [n] = Editor.node(editor, [1]);

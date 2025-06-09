@@ -19,67 +19,72 @@ const Toolbar = ({
   const editor = useSlate();
 
   useEffect(() => {
-    const domNode = ref.current;
-    let rect = { width: 1, top: 0, left: 0 };
+    if (!editor.isNormalizing()) {
+      const domNode = ref.current;
+      let rect = { width: 1, top: 0, left: 0 };
 
-    if ((children || []).length === 0) {
-      domNode.removeAttribute('style');
-      return;
-    }
-
-    if (!show) {
-      domNode.removeAttribute('style');
-      return;
-    }
-
-    const { selection } = editor;
-    // const savedSelection = editor.getSavedSelection();
-    if (!selection) {
-      domNode.removeAttribute('style');
-      return;
-    }
-
-    if (editor.isSidebarOpen) {
-      domNode.removeAttribute('style');
-      return;
-    }
-
-    if (elementType) {
-      const [element] = Editor.nodes(editor, {
-        at: editor.selection || editor.getSavedSelection(),
-        match: (n) => n.type === elementType,
-      });
-
-      if (!element) {
+      if ((children || []).length === 0) {
         domNode.removeAttribute('style');
         return;
       }
 
-      const [node] = element;
-      const domEl = ReactEditor.toDOMNode(editor, node);
-
-      rect = domEl.getBoundingClientRect();
-    } else {
-      // TODO: should we fallback to editor.getSelection()?
-      // TODO: test with third party plugins
-      const slateNode = Node.get(editor, selection.anchor.path);
-      try {
-        const domEl = ReactEditor.toDOMNode(editor, slateNode);
-        rect = domEl.getBoundingClientRect();
-      } catch {
-        // ignoring error here is safe, editor is out of sync and the selection
-        // is actually none, so no toolbar should be shown
+      if (!show) {
+        domNode.removeAttribute('style');
+        return;
       }
-    }
 
-    domNode.style.opacity = 1;
-    domNode.style.top = `${
-      rect.top + window.pageYOffset - domNode.offsetHeight - 6
-    }px`;
-    domNode.style.left = `${Math.max(
-      rect.left + window.pageXOffset - domNode.offsetWidth / 2 + rect.width / 2,
-      0, // if the left edge of the toolbar should be otherwise offscreen
-    )}px`;
+      const { selection } = editor;
+      // const savedSelection = editor.getSavedSelection();
+      if (!selection) {
+        domNode.removeAttribute('style');
+        return;
+      }
+
+      if (editor.isSidebarOpen) {
+        domNode.removeAttribute('style');
+        return;
+      }
+
+      if (elementType) {
+        // console.log('editor children', editor.children);
+        // console.log('editor selection', editor.selection);
+        // console.log('editor saved selection', editor.getSavedSelection());
+
+        const [element] = Editor.nodes(editor, {
+          at: editor.selection || editor.getSavedSelection(),
+          match: (n) => n.type === elementType,
+        });
+
+        if (!element) {
+          domNode.removeAttribute('style');
+          return;
+        }
+
+        const [node] = element;
+        const domEl = ReactEditor.toDOMNode(editor, node);
+
+        rect = domEl.getBoundingClientRect();
+      } else {
+        // TODO: should we fallback to editor.getSelection()?
+        // TODO: test with third party plugins
+        const slateNode = Node.get(editor, selection.anchor.path);
+        try {
+          const domEl = ReactEditor.toDOMNode(editor, slateNode);
+          rect = domEl.getBoundingClientRect();
+        } catch {
+          // ignoring error here is safe, editor is out of sync and the selection
+          // is actually none, so no toolbar should be shown
+        }
+      }
+
+      domNode.style.opacity = 1;
+      domNode.style.top = `${rect.top + window.pageYOffset - domNode.offsetHeight - 6
+        }px`;
+      domNode.style.left = `${Math.max(
+        rect.left + window.pageXOffset - domNode.offsetWidth / 2 + rect.width / 2,
+        0, // if the left edge of the toolbar should be otherwise offscreen
+      )}px`;
+    }
   });
 
   return createPortal(

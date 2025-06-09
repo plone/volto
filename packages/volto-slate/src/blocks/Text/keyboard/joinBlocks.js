@@ -78,7 +78,7 @@ export function joinWithPreviousBlock({ editor, event }, intl) {
   // `editor` with the block before, `otherBlock`.
   const cursor = mergeSlateWithBlockBackward(editor, otherBlock);
 
-  const combined = JSON.parse(JSON.stringify(editor.children));
+  const combined = cloneDeep(editor.children);
 
   // // TODO: don't remove undo history, etc Should probably save both undo
   // // histories, so that the blocks are split, the undos can be restored??
@@ -95,7 +95,7 @@ export function joinWithPreviousBlock({ editor, event }, intl) {
     saveSlateBlockSelection(otherBlockId, cursor);
     onChangeField(blocksFieldname, newFormData[blocksFieldname]);
     onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
-    onSelectBlock(otherBlockId);
+    // onSelectBlock(otherBlockId);
   });
 
   return true;

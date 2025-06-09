@@ -140,6 +140,10 @@ export function createParagraph(text) {
 }
 
 export const isSingleBlockTypeActive = (editor, format) => {
+  if (editor.isNormalizing()) {
+    return false;
+  }
+
   const [match] = Editor.nodes(editor, {
     match: (n) => n.type === format,
   });
