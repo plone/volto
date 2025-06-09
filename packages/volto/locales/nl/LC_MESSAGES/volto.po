@@ -3,14 +3,15 @@ msgstr ""
 "Project-Id-Version: PlonenPOT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-02-28 08:52+0100\n"
-"Last-Translator: Dutch <plone-i18n@lists.sf.net>\n"
+"PO-Revision-Date: 2025-04-01 11:24+0000\n"
+"Last-Translator: Ingo Van den Broeck <in.vandenbroeck@vmm.be>\n"
 "Language: nl\n"
-"Language-Team: Dutch <plone-i18n@lists.sf.net>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/plone/volto-18/nl/>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
+"X-Generator: Weblate 5.11-dev\n"
 "Language-Code: nl\n"
 "Language-Name: Nederlands\n"
 "Preferred-Encodings: utf-8\n"
@@ -577,7 +578,7 @@ msgstr "Annuleren"
 #. Default: "Cancel search"
 #: components/manage/Blocks/Search/components/SearchInput
 msgid "Cancel search"
-msgstr ""
+msgstr "Annuleer zoeken"
 
 #. Default: "Cell"
 #: config/Blocks
@@ -1006,7 +1007,7 @@ msgstr "Standaard"
 #. Default: "Default value"
 #: components/manage/Widgets/SchemaWidget
 msgid "Default value"
-msgstr ""
+msgstr "Standaard waarde"
 
 #. Default: "Default view"
 #: config/Views
@@ -1533,7 +1534,7 @@ msgstr "Bestand"
 #. Default: "File is not of the accepted type {accept}"
 #: components/manage/Widgets/FileWidget
 msgid "File is not of the accepted type {accept}"
-msgstr ""
+msgstr "Bestand is niet van het geaccepteerde type {accept}"
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
@@ -1558,7 +1559,7 @@ msgstr "Opgeladen bestanden: {uploadedFiles}"
 #. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
 #: components/manage/Widgets/SchemaWidget
 msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
-msgstr ""
+msgstr "Vult de waarde van het formulierveld in met de waarde die is meegegeven door de parameter in de URL met de opgegeven naam."
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
@@ -2383,7 +2384,7 @@ msgstr "Navigeer terug"
 #. Default: "Navigate to this item"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Navigate to this item"
-msgstr ""
+msgstr "Navigeer naar dit item"
 
 #. Default: "Navigation"
 #: components/theme/Navigation/ContextNavigation
@@ -2905,7 +2906,7 @@ msgstr "Registratie formulier"
 #. Default: "Related Items"
 #: components/theme/RelatedItems/RelatedItems
 msgid "Related Items"
-msgstr ""
+msgstr "Gerelateerde items"
 
 #. Default: "Relation"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -3762,7 +3763,7 @@ msgstr "De aanwezigheid van de knop schakelt de live-zoekfunctie uit, de bevragi
 #. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
 #: components/manage/Widgets/FileWidget
 msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
-msgstr ""
+msgstr "Het bestand is groter dan de toegalaten maximale grootte van {size} bytes"
 
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
@@ -3807,7 +3808,7 @@ msgstr "Het registratieproces was succesvol. Controleer jouw e-mails voor inform
 #. Default: "The selected default language must be in the list of the field 'Available languages'"
 #: helpers/MessageLabels/MessageLabels
 msgid "The selected default language must be in the list of the field 'Available languages'"
-msgstr ""
+msgstr "De geselecteerde standaardtaal moet in de lijst staan van het veld 'Beschikbare talen'"
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
@@ -3870,7 +3871,7 @@ msgstr "Er zijn fouten opgetreden."
 #. Default: "These items will have broken links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "These items will have broken links"
-msgstr ""
+msgstr "Deze items zullen gebroken linken krijgen"
 
 #. Default: "Third"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -4923,7 +4924,7 @@ msgstr "referenties"
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
-msgstr ""
+msgstr "verwijst naar"
 
 #. Default: "results"
 #: components/theme/Search/Search
@@ -5108,7 +5109,7 @@ msgstr "Selecteer weergave"
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
-msgstr ""
+msgstr "grootte"
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks
