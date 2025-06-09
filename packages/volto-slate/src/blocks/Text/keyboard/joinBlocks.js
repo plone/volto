@@ -114,7 +114,7 @@ export function joinWithNextBlock({ editor, event }, intl) {
   const {
     block,
     index,
-    // saveSlateBlockSelection,
+    saveSlateBlockSelection,
     onSelectBlock,
     data,
   } = blockProps;
@@ -129,7 +129,7 @@ export function joinWithNextBlock({ editor, event }, intl) {
   event.stopPropagation();
   event.preventDefault();
 
-  mergeSlateWithBlockForward(editor, otherBlock);
+  const cursor = mergeSlateWithBlockForward(editor, otherBlock);
 
   // const cursor = JSON.parse(JSON.stringify(editor.selection));
   const combined = JSON.parse(JSON.stringify(editor.children));
@@ -149,10 +149,10 @@ export function joinWithNextBlock({ editor, event }, intl) {
   const newFormData = deleteBlock(formData, block, intl);
 
   ReactDOM.unstable_batchedUpdates(() => {
-    // saveSlateBlockSelection(otherBlockId, cursor);
+    saveSlateBlockSelection(otherBlockId, cursor);
     onChangeField(blocksFieldname, newFormData[blocksFieldname]);
     onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
-    onSelectBlock(otherBlockId);
+    // onSelectBlock(otherBlockId);
   });
   return true;
 }

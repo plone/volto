@@ -126,6 +126,8 @@ export function mergeSlateWithBlockForward(editor, nextBlock, event) {
   });
 
   Editor.deleteForward(editor, { unit: 'character' });
+
+  return editor.selection;
 }
 
 export function syncCreateSlateBlock(value) {
