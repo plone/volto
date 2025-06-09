@@ -5,13 +5,12 @@ msgstr ""
 "POT-Creation-Date: \n"
 "PO-Revision-Date: 2025-04-01 11:24+0000\n"
 "Last-Translator: Ingo Van den Broeck <in.vandenbroeck@vmm.be>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/plone/volto-18/nl/>"
-"\n"
 "Language: nl\n"
-"MIME-Version: 1.0\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/plone/volto-18/nl/>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
 "X-Generator: Weblate 5.11-dev\n"
 "Language-Code: nl\n"
 "Language-Name: Nederlands\n"
@@ -1560,9 +1559,7 @@ msgstr "Opgeladen bestanden: {uploadedFiles}"
 #. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
 #: components/manage/Widgets/SchemaWidget
 msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
-msgstr ""
-"Vult de waarde van het formulierveld in met de waarde die is meegegeven door "
-"de parameter in de URL met de opgegeven naam."
+msgstr "Vult de waarde van het formulierveld in met de waarde die is meegegeven door de parameter in de URL met de opgegeven naam."
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
@@ -3766,8 +3763,7 @@ msgstr "De aanwezigheid van de knop schakelt de live-zoekfunctie uit, de bevragi
 #. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
 #: components/manage/Widgets/FileWidget
 msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
-msgstr ""
-"Het bestand is groter dan de toegalaten maximale grootte van {size} bytes"
+msgstr "Het bestand is groter dan de toegalaten maximale grootte van {size} bytes"
 
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
@@ -3812,9 +3808,7 @@ msgstr "Het registratieproces was succesvol. Controleer jouw e-mails voor inform
 #. Default: "The selected default language must be in the list of the field 'Available languages'"
 #: helpers/MessageLabels/MessageLabels
 msgid "The selected default language must be in the list of the field 'Available languages'"
-msgstr ""
-"De geselecteerde standaardtaal moet in de lijst staan van het veld "
-"'Beschikbare talen'"
+msgstr "De geselecteerde standaardtaal moet in de lijst staan van het veld 'Beschikbare talen'"
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
