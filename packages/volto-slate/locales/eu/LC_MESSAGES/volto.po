@@ -1,183 +1,148 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: eu\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
-"Preferred-Encodings: utf-8\n"
-"Domain: volto\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
-# defaultMessage: Add link
 #: editor/plugins/Link/index
 msgid "Add link"
-msgstr ""
+msgstr "Gehitu esteka"
 
-# defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
 #: widgets/HtmlSlateWidget
-msgid "An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
-msgstr ""
+msgid "An error has occurred while editing \"{name}\" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
+msgstr "Errore bat gertatu da \"{name}\" eremua aldatzerakoan. Jakinarazpena jaso dugu eta begira ari gara. Mesedez gorde egindako lana eta saiatu berriro. Arazoak jarraitzen badu mesedez jarri administratzailearekin harremanetan."
 
-# defaultMessage: An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.
 #: widgets/RichTextWidgetView
-msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
-msgstr ""
+msgid "An error has occurred while rendering \"{name}\" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
+msgstr "Errore bat gertatu da \"{name}\" eremua erakusterakoan. Jakinarazpena jaso dugu eta begira ari gara. Mesedez gorde egindako lana eta saiatu berriro. Arazoak jarraitzen badu mesedez jarri administratzailearekin harremanetan."
 
-# defaultMessage: Bottom
 #: blocks/Table/TableBlockEdit
 msgid "Bottom"
-msgstr ""
+msgstr "Behean"
 
-# defaultMessage: Center
 #: blocks/Table/TableBlockEdit
 msgid "Center"
-msgstr ""
+msgstr "Erdian"
 
-# defaultMessage: Delete col
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Delete col"
-msgstr ""
+msgstr "Ezabatu zutabea"
 
-# defaultMessage: Delete row
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Delete row"
-msgstr ""
+msgstr "Ezabatu lerroa"
 
-# defaultMessage: Delete table
 #: editor/plugins/Table/index
 msgid "Delete table"
-msgstr ""
+msgstr "Ezabatu taula"
 
-# defaultMessage: Divide each row into separate cells
 #: blocks/Table/TableBlockEdit
 msgid "Divide each row into separate cells"
-msgstr ""
+msgstr "Banatu lerro bakoitza gelaxka desberdinetan"
 
-# defaultMessage: Edit element
 #: elementEditor/messages
 msgid "Edit element"
-msgstr ""
+msgstr "Aldatu elementua"
 
-# defaultMessage: Edit link
 #: editor/plugins/AdvancedLink/index
 #: editor/plugins/Link/index
 msgid "Edit link"
-msgstr ""
+msgstr "Aldatu esteka"
 
-# defaultMessage: Fixed width table cells
 #: blocks/Table/TableBlockEdit
 msgid "Fixed width table cells"
-msgstr ""
+msgstr "Zabalera finkoko gelaxkak"
 
-# defaultMessage: Hide headers
 #: blocks/Table/TableBlockEdit
 msgid "Hide headers"
-msgstr ""
+msgstr "Ezkutatu goiburukoak"
 
-# defaultMessage: Insert col after
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert col after"
-msgstr ""
+msgstr "Txertatu zutabea ostean"
 
-# defaultMessage: Insert col before
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert col before"
-msgstr ""
+msgstr "Txertatu zutabea aurretik"
 
-# defaultMessage: Insert row after
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row after"
-msgstr ""
+msgstr "Txertatu lerroa ondoren"
 
-# defaultMessage: Insert row before
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row before"
-msgstr ""
+msgstr "Txertatu lerroa ondoren"
 
-# defaultMessage: Left
 #: blocks/Table/TableBlockEdit
 msgid "Left"
-msgstr ""
+msgstr "Ezkerrean"
 
-# defaultMessage: Make the table compact
 #: blocks/Table/TableBlockEdit
 msgid "Make the table compact"
-msgstr ""
+msgstr "Taula trinkotu"
 
-# defaultMessage: Make the table sortable
 #: blocks/Table/TableBlockEdit
 msgid "Make the table sortable"
-msgstr ""
+msgstr "Taula ordenagarri egin"
 
-# defaultMessage: Middle
 #: blocks/Table/TableBlockEdit
 msgid "Middle"
-msgstr ""
+msgstr "Erdian"
 
-# defaultMessage: No matching blocks
 #: blocks/Text/SlashMenu
 msgid "No matching blocks"
-msgstr ""
+msgstr "Ez dator bat bloke batekin"
 
-# defaultMessage: Reduce complexity
 #: blocks/Table/TableBlockEdit
 msgid "Reduce complexity"
-msgstr ""
+msgstr "Kendu konplexutasuna"
 
-# defaultMessage: Remove element
 #: elementEditor/messages
 msgid "Remove element"
-msgstr ""
+msgstr "Ezabatu elementua"
 
-# defaultMessage: Remove link
 #: editor/plugins/AdvancedLink/index
 msgid "Remove link"
-msgstr ""
+msgstr "Ezabatu esteka"
 
-# defaultMessage: Right
 #: blocks/Table/TableBlockEdit
 msgid "Right"
-msgstr ""
+msgstr "Eskuma"
 
-# defaultMessage: Stripe alternate rows with color
 #: blocks/Table/TableBlockEdit
 msgid "Stripe alternate rows with color"
-msgstr ""
+msgstr "Txandakatu lerroak kolorearekin"
 
-# defaultMessage: Table
 #: blocks/Table/TableBlockEdit
 msgid "Table"
-msgstr ""
+msgstr "Taula"
 
-# defaultMessage: Table color inverted
 #: blocks/Table/TableBlockEdit
 msgid "Table color inverted"
-msgstr ""
+msgstr "Taularen kolorea alderantzizkatu"
 
-# defaultMessage: Top
 #: blocks/Table/TableBlockEdit
 msgid "Top"
-msgstr ""
+msgstr "Goian"
 
-# defaultMessage: Type text…
 #: blocks/Text/DefaultTextBlockEditor
 #: blocks/Text/DetachedTextBlockEditor
 msgid "Type text…"
-msgstr ""
+msgstr "Idatzi testua…"
 
-# defaultMessage: Visible only in view mode
 #: blocks/Table/TableBlockEdit
 msgid "Visible only in view mode"
-msgstr ""
+msgstr "Ikusgai soilik ikusteko moduan"

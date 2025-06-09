@@ -226,12 +226,14 @@ html_static_path = [
 # For more information see:
 # https://myst-parser.readthedocs.io/en/latest/syntax/optional.html
 myst_enable_extensions = [
-    "deflist",  # Support definition lists.
-    # https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#definition-lists
-    "linkify",  # Identify "bare" web URLs and add hyperlinks.
-    "colon_fence",  # You can also use ::: delimiters to denote code fences,\
-    #  instead of ```.
+    "attrs_block", # Support parsing of block attributes.
+    "attrs_inline", # Support parsing of inline attributes.
+    "colon_fence",  # You can also use ::: delimiters to denote code fences, instead of ```.
+    "deflist",  # Support definition lists. https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#definition-lists
     "html_image",  # For inline images. See https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#html-images
+    "linkify",  # Identify "bare" web URLs and add hyperlinks.
+    "strikethrough",  # See https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#syntax-strikethrough
+    "substitution",  # Use Jinja2 for substitutions. https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#substitutions-with-jinja2
 ]
 
 
@@ -251,6 +253,8 @@ intersphinx_mapping = {
     "plone": ("https://6.docs.plone.org/", None),
     "python": ("https://docs.python.org/3/", None),
     "training": ("https://training.plone.org/", None),
+    "training-2024": ("https://2024.training.plone.org/", None),
+    "training-2022": ("https://2022.training.plone.org/", None),
 }
 
 

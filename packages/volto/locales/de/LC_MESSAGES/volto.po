@@ -3,14 +3,15 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2016-10-22 16:41-0500\n"
-"Last-Translator: German <https://github.com/plone/volto/issues>\n"
+"PO-Revision-Date: 2025-05-06 06:51+0000\n"
+"Last-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\n"
 "Language: de\n"
-"Language-Team: German <https://github.com/plone/volto/issues>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/plone/volto-18/de/>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
+"X-Generator: Weblate 5.12-dev\n"
 "Language-Code: de\n"
 "Language-Name: Deutsch\n"
 "Preferred-Encodings: utf-8 latin1\n"
@@ -145,7 +146,7 @@ msgstr "Block hinzufügen"
 #. Default: "Add block in position {index}"
 #: components/manage/Blocks/Container/NewBlockAddButton
 msgid "Add block in position {index}"
-msgstr ""
+msgstr "Block in Position hinzufügen {index}"
 
 #. Default: "Add block…"
 #: helpers/MessageLabels/MessageLabels
@@ -1016,6 +1017,7 @@ msgstr "Standard"
 
 #. Default: "Delete"
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/Groups/RenderGroups
@@ -1402,6 +1404,7 @@ msgstr "Einträge"
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
+#: components/manage/Widgets/ImageWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -1892,7 +1895,7 @@ msgstr "Zeile davor einfügen"
 #. Default: "Inspect relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "Inspect relations"
-msgstr "Bearbeiten"
+msgstr "Untersuche Relationen"
 
 #. Default: "Install"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -4444,6 +4447,16 @@ msgstr "jährlich"
 msgid "Yes"
 msgstr "Ja"
 
+#. Default: "You are about to delete all items in the current pagination of this folder."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items in the current pagination of this folder."
+msgstr ""
+
+#. Default: "You are about to delete all items in this folder."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items in this folder."
+msgstr ""
+
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
@@ -4715,6 +4728,11 @@ msgstr "HTML"
 msgid "image"
 msgstr "Bild"
 
+#. Default: "Please upload an image instead."
+#: components/manage/Widgets/ImageWidget
+msgid "imageUploadErrorMessage"
+msgstr "Bitte laden Sie ein Bild hoch."
+
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "image_block_clear"
@@ -4759,11 +4777,6 @@ msgstr "Mein Nutzername lautet"
 #: config/Blocks
 msgid "leadimage"
 msgstr "Lead-Bild"
-
-#. Default: "Delete"
-#: components/manage/Contents/ContentsDeleteModal
-msgid "link-integrity: Delete"
-msgstr ""
 
 #. Default: "Delete item and break links"
 #: components/manage/Contents/ContentsDeleteModal

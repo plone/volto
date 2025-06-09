@@ -8,7 +8,11 @@ import Actions from './Actions';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/components/manage/Contents');
+vi.mock('@plone/volto/components/manage/Contents', async () => {
+  return await import(
+    '@plone/volto/components/manage/Contents/__mocks__/index.vitest.tsx'
+  );
+});
 
 describe('Actions', () => {
   it('renders an actions component', () => {

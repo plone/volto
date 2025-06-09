@@ -17,6 +17,140 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.22.0 (2025-05-20)
+
+### Feature
+
+- Add `isClearable` prop to `SelectWidget`, allowing configuration of whether the select input can be cleared by the user. @alexandreIFB [#7083](https://github.com/plone/volto/issues/7083)
+
+### Bugfix
+
+- The title block should be focused all the subsequent times you edit a content. @ana-oprea [#6880](https://github.com/plone/volto/issues/6880)
+- Use table sorting icons from pastanaga `icons.woff` instead of assuming we have Font Awesome icons. @ichim-david [#7090](https://github.com/plone/volto/issues/7090)
+
+## 18.21.0 (2025-05-16)
+
+### Feature
+
+- The `Add` component can now optionally receive `initialFormData` from the `CreateTranslation` component. This makes it possible for a custom `CreateTranslation` implementation to fully control the initial translation. @Tishasoumya-02 [#7073](https://github.com/plone/volto/issues/7073)
+
+## 18.20.0 (2025-05-12)
+
+### Feature
+
+- Fix translations default of ContentsDeleteModal: 'linkintegrity: delete' -> 'delete' if no link to break. @ksuess [#6964](https://github.com/plone/volto/issues/6964)
+
+### Bugfix
+
+- Improve typings in ConditionalLink component, add TS tests to catch the bad typings. @sneridagh [#7057](https://github.com/plone/volto/issues/7057)
+
+## 18.19.0 (2025-05-08)
+
+### Feature
+
+- Refactor the UniversalLink component using typescript.
+  Use union types for deciding between href or item.
+  Modify tsconfig, include types located in `types` folder, otherwise d.ts files will noch be recognized in .tsx files, e.g. inside components. I need this for the `react-router-hash-link` package, that we use in the UniversalLink component. The specific file is `/types/react-router-hash-link.d.ts`.
+  Modify lint-staged.config.js to exclude d.ts files.
+  Use newest version of classnames (with types).
+  Create tests and negative tests for optimization with React.memo (add render counter for testing this behavior)
+
+  @tomschall [#6826](https://github.com/plone/volto/issues/6826)
+- `ConditionalLink` in TypeScript. @sneridagh [#6959](https://github.com/plone/volto/issues/6959)
+
+### Internal
+
+- Fixed types of #6826 in build:types. @sneridagh 
+
+## 18.18.0 (2025-05-08)
+
+### Feature
+
+- Enhance the `ImageInput` component to only accept image files. [@jnptk] [#6926](https://github.com/plone/volto/issues/6926)
+
+### Bugfix
+
+- Fixed stuck states in the Image Upload Widget by resetting uploading after failed size validation and dragging after image deletion or drag events, ensuring proper functionality and user feedback. [#7045](https://github.com/plone/volto/issues/7045)
+
+## 18.17.0 (2025-05-06)
+
+### Feature
+
+- Added `contained` class if `isContainer` prop is passed (from containers). @sneridagh [#7043](https://github.com/plone/volto/issues/7043)
+
+## 18.16.0 (2025-05-01)
+
+### Feature
+
+- Rename `vitest.config.ts` to `vitest.config.mjs` for allowing it to be loaded from add-ons. @sneridagh [#7035](https://github.com/plone/volto/issues/7035)
+
+### Bugfix
+
+- Added missing dependency for `sgvo`. Fixed `svgo` library loading in `./vite-plugins/svg.js`. @sneridagh [#7035](https://github.com/plone/volto/issues/7035)
+- Rename `./vite-plugins/svg.js` to proper extension `vite-plugins/svg.mjs`. @sneridagh [#7035](https://github.com/plone/volto/issues/7035)
+
+## 18.15.1 (2025-04-30)
+
+### Internal
+
+- Rereleasing due to a new patch release (`1.4.3`) in `@plone/types`. @sneridagh 
+
+## 18.15.0 (2025-04-30)
+
+### Feature
+
+- Move `MaybeWrap` to TypeScript. @sneridagh [#7029](https://github.com/plone/volto/issues/7029)
+
+## 18.14.1 (2025-04-25)
+
+### Bugfix
+
+- Add support for both Vitest and Jest in `__mocks__` folders of Volto core. Add-on tests using Jest relies on them. @Abhishek-17h [#7000](https://github.com/plone/volto/issues/7000)
+
+## 18.14.0 (2025-04-23)
+
+### Feature
+
+- Added current evaluated `querystring` as a parameter in expander's `querystring` key when it's a function. @sneridagh [#7012](https://github.com/plone/volto/issues/7012)
+
+## 18.13.0 (2025-04-22)
+
+### Feature
+
+- Allow `object_list` widget to receive a `schemaName` prop, mapped to an utility. @sneridagh [#7007](https://github.com/plone/volto/issues/7007)
+
+## 18.12.1 (2025-04-15)
+
+### Bugfix
+
+- Fixed broken tests in add-ons in Volto 18.12.0. @Abhishek-17h [#6989](https://github.com/plone/volto/issues/6989)
+
+### Internal
+
+- Removes make commands in root of repository whose packages no longer exist. @wesleybl [#6975](https://github.com/plone/volto/issues/6975)
+- Use `Image` from `@plone/volto/components/theme/Image/Image` instead of `semantic-ui-react` in `ContentsUploadModal`. @wesleybl [#6982](https://github.com/plone/volto/issues/6982)
+
+## 18.12.0 (2025-04-12)
+
+### Feature
+
+- Volto core has migrated from Jest to Vitest as its unit test runner. @Abhishek-17h [#6326](https://github.com/plone/volto/issues/6326)
+
+### Bugfix
+
+- Call `initialValue` consistently by passing `null` instead of `{}` to `blocksConfig`. @Abhishek-17h [#6952](https://github.com/plone/volto/issues/6952)
+
+### Internal
+
+- Make the Cypress `getSlateEditorAndType` and `getSlateEditorSelectorAndType` commands more robust, avoiding timeouts. @wesleybl [#6962](https://github.com/plone/volto/issues/6962)
+- Use `Image` from `@plone/volto/components/theme/Image/Image` instead of `semantic-ui-react`. @wesleybl [#6963](https://github.com/plone/volto/issues/6963)
+- Fixes Cypress "Index Text Block" test. @wesleybl [#6968](https://github.com/plone/volto/issues/6968)
+- Fix Cypress "Test Yearly recurrence" test. @wesleybl [#6971](https://github.com/plone/volto/issues/6971)
+
+### Documentation
+
+- Backport of #6953 to Volto 18. @wesleybl [#6966](https://github.com/plone/volto/issues/6966)
+
 ## 18.11.1 (2025-04-07)
 
 ### Bugfix
@@ -55,6 +189,9 @@ myst:
   Fix a bug where the video block schema was not used for validation. @robgietema [#6370](https://github.com/plone/volto/issues/6370)
 - Add Russian translation in Volto. @toropok [#6874](https://github.com/plone/volto/issues/6874)
 - Use Plone 6.1.1 final. @sneridagh 
+- Enhance the `ImageInput` component to only accept image files. [@jnptk] [#6926](https://github.com/plone/volto/issues/6926)
+- Fix translations default of ContentsDeleteModal: 'linkintegrity: delete' -> 'delete' if no link to break. @ksuess [#6964](https://github.com/plone/volto/issues/6964)
+- Use Plone 6.1.1 final. @sneridagh
 
 ### Bugfix
 
@@ -1919,7 +2056,7 @@ myst:
 - (FIX): put padding so the text is not clipped #5305 @dobri1408 [#5305](https://github.com/plone/volto/issues/5305)
 - Fix compare translations view @sneridagh [#5327](https://github.com/plone/volto/issues/5327)
 - Fix DatetimeWidget on FF, the button default if no type is set is sending the form. @sneridagh
-  See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#formmethod [#5343](https://github.com/plone/volto/issues/5343)
+  See https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#formmethod [#5343](https://github.com/plone/volto/issues/5343)
 
 ### Internal
 

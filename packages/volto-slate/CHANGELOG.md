@@ -8,6 +8,28 @@
 
 <!-- towncrier release notes start -->
 
+## 18.4.0 (2025-05-20)
+
+### Feature
+
+- Improve accessibility for sortable table headers in table block. @kreafox [#7090](https://github.com/plone/volto/issues/7090)
+
+## 18.3.1 (2025-05-08)
+
+### Internal
+
+- Use `classnames` 2.5.1 @sneridagh [#6826](https://github.com/plone/volto/issues/6826)
+
+## 18.3.0 (2025-04-12)
+
+### Feature
+
+- Added Basque translations. @ionlizarazu [#6884](https://github.com/plone/volto/issues/6884)
+
+### Bugfix
+
+- Call `initialValue` consistently by passing `null` instead of `{}` to `blocksConfig`. @Abhishek-17h [#6952](https://github.com/plone/volto/issues/6952)
+
 ## 18.2.3 (2025-03-07)
 
 ### Bugfix
