@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button } from './Button';
 import { BinIcon } from '../../components/icons/BinIcon';
 import type { Meta, StoryObj } from '@storybook/react';
+import { SevenContext } from '../SevenContext/SevenContext';
 
 const meta = {
   title: 'Tailwind/Button',
@@ -142,6 +143,47 @@ export const WithTWClassName: Story = {
   args: {
     className: 'border-5 border-amber-300',
     variant: 'destructive',
+    accent: true,
+  },
+};
+
+import { tv } from 'tailwind-variants';
+
+export const buttonStyles = tv({
+  base: '',
+  variants: {
+    variant: {
+      primary: 'bg-red-600 text-white',
+    },
+  },
+});
+
+export const Custom: Story = {
+  render: (args) => (
+    <div className="flex gap-8">
+      <SevenContext.Provider
+        value={{
+          button: {
+            base: '',
+            variants: {
+              variant: {
+                primary: 'bg-red-600 text-white',
+              },
+            },
+          },
+        }}
+      >
+        <Button {...args}>Custom</Button>
+      </SevenContext.Provider>
+      <Button variant="neutral">Neutral</Button>
+      <Button variant="primary" accent={true}>
+        Pimary
+      </Button>
+    </div>
+  ),
+  args: {
+    customize: buttonStyles,
+    variant: 'primary',
     accent: true,
   },
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   composeRenderProps,
   Button as RACButton,
@@ -6,7 +6,8 @@ import {
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
 import { focusRing } from '../utils';
-
+import { SevenContext } from '../SevenContext/SevenContext';
+import { twMerge } from 'tailwind-merge';
 export interface ButtonProps extends RACButtonProps {
   variant?: 'neutral' | 'primary' | 'destructive' | 'icon';
   size?: 'S' | 'L';
@@ -74,17 +75,33 @@ const button = tv({
 });
 
 export function Button(props: ButtonProps) {
+  const tvvalues = useContext(SevenContext);
   return (
     <RACButton
       {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        button({
-          ...renderProps,
-          variant: props.variant,
-          size: props.size,
-          accent: props.accent,
-          className,
-        }),
+      className={composeRenderProps(
+        props.className,
+        (className, renderProps) => {
+          const result = twMerge(
+            className,
+            button({
+              ...renderProps,
+              variant: props.variant,
+              size: props.size,
+              accent: props.accent,
+            }),
+            tvvalues.button
+              ? tv(tvvalues.button as any)({
+                  ...renderProps,
+                  // @ts-ignore
+                  variant: props.variant,
+                  size: props.size,
+                  accent: props.accent,
+                })
+              : '',
+          );
+          return result;
+        },
       )}
     />
   );
