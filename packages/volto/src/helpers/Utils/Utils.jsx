@@ -202,7 +202,7 @@ export const normalizeLanguageName = toGettextLang;
  * @param {string} language Language to be converted
  * @returns {string} Language converted
  */
-export const toReactIntlLang = (language) => {
+export const toReactIntlLang = (language = '') => {
   if (language.includes('_') || language.includes('-')) {
     let langCode = language.split(/[-_]/);
     langCode = `${langCode[0]}-${langCode[1].toUpperCase()}`;
