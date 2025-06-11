@@ -118,7 +118,7 @@ const HtmlSlateWidget = (props) => {
       <div
         className="slate_wysiwyg_box"
         role="textbox"
-        tabIndex="-1"
+        tabIndex={-1}
         style={{ boxSizing: 'initial' }}
         onClick={handleClick}
         onKeyDown={() => {}}
