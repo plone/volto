@@ -3802,6 +3802,11 @@ msgstr "Zerrenda honek exekutatuko diren eguneraketa pausoak erakusten ditu. Egu
 msgid "The item could not be deleted."
 msgstr "Elementua ezin izan da ezabatu."
 
+#. Default: "The kicker is a line of text shown above the title."
+#: components/manage/Blocks/Teaser/schema
+msgid "The kicker is a line of text shown above the title."
+msgstr ""
+
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
 msgid "The link address is:"
@@ -4724,7 +4729,7 @@ msgstr ""
 msgid "flushAndRebuildRelationsHints"
 msgstr ""
 
-#. Default: "Head title"
+#. Default: "Kicker"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
 msgstr ""
