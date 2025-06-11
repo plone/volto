@@ -1,6 +1,5 @@
 In the `volto-slate` package:
 - A condition for making an initial empty paragraph inside a `RichTextWidget` has been fixed. Previously, either the value of the widget had to be undefined or its `data` property had to be not undefined, the latter of which was incorrect. Now the condition requires either the value of the widget to be undefined (this is unchanged) or has a `data` property that is undefined (this has changed).
 - In the outer `<div>` of the Slate editor inside the `RichTextWidget`, changed the `tabIndex` value from a string to an integer `-1`.
-- ```
 - Better code formatting.
 @silviubogan
