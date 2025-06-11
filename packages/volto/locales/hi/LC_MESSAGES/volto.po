@@ -3795,6 +3795,11 @@ msgstr "निम्नलिखित सूची दिखाती है �
 msgid "The item could not be deleted."
 msgstr "आइटम को हटाया नहीं जा सका।"
 
+#. Default: "The kicker is a line of text shown above the title."
+#: components/manage/Blocks/Teaser/schema
+msgid "The kicker is a line of text shown above the title."
+msgstr ""
+
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
 msgid "The link address is:"
@@ -4717,7 +4722,7 @@ msgstr "intIds और संबंध पुनः निर्माण कर�
 msgid "flushAndRebuildRelationsHints"
 msgstr "<ul><li>intIds पुनः उत्पन्न करें (संबंध निर्माण में संबंध के टोकन)</li><li>संबंध पुनः निर्माण करें</li></ul><p>विवरण के लिए लॉग की जाँच करें!</p><p><b>चेतावनी</b>: यदि आप ऐड-ऑन्स intIds पर आश्रित हैं, तो आपको उन्हें फ्लश नहीं करना चाहिए।</p>"
 
-#. Default: "Head title"
+#. Default: "Kicker"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
 msgstr "हेड शीर्षक"

@@ -3801,6 +3801,11 @@ msgstr "Următoarea listă prezintă care dintre pașii de upgrade vor fi execut
 msgid "The item could not be deleted."
 msgstr "Elementul nu a putut fi șters."
 
+#. Default: "The kicker is a line of text shown above the title."
+#: components/manage/Blocks/Teaser/schema
+msgid "The kicker is a line of text shown above the title."
+msgstr ""
+
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
 msgid "The link address is:"
@@ -4723,7 +4728,7 @@ msgstr "ștergeți intIds și reconstruiește relațiile"
 msgid "flushAndRebuildRelationsHints"
 msgstr "<ul><li>Regenerează intIds (simboluri de relaţii în catalog de relaţii)</li><li>Reconstruiește relațiile</li></ul><p>Verificați registrul pentru detalii!</p><p><b>Atenție</b>: Dacă aveți module care depind de intIds, nu trebuie să ștergeți acestea.</p>"
 
-#. Default: "Head title"
+#. Default: "Kicker"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
 msgstr "Titlu"
