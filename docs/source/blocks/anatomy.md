@@ -9,10 +9,10 @@ myst:
 
 # Blocks anatomy
 
-Every block is composed of an edit (`Edit.jsx`) and a view (`View.jsx`) component.
+Every block is composed of a view ({file}`View.{tsx,jsx}`) component and optionally an edit ({file}`Edit.{tsx,jsx}`) component.
 
 These components can be as simple as a dummy component, no boilerplate is required.
-This is an example of the `Edit.jsx`:
+The following code is an example of an edit component.
 
 ```jsx
 import React from 'react';
@@ -24,7 +24,7 @@ const Edit = props => {
 export default Edit;
 ```
 
-and the `View.jsx`.
+The following code is an example of a view component.
 
 ```jsx
 import React from 'react';
@@ -43,9 +43,7 @@ The view component of a block receives these props from the Blocks Engine:
 - `id` - the unique ID for the current block
 - `properties` - the current content
 - `data` - the data of the block (stored in the block itself)
-- `blocksConfig` - a (potentially customized) copy of the
-  `config.blocks.blocksConfig` configuration object, useful for blocks that
-  need to render other blocks
+- `blocksConfig` - a (potentially customized) copy of the `config.blocks.blocksConfig` configuration object, useful for blocks that need to render other blocks
 
 You can use them to render the view component.
 
@@ -71,31 +69,26 @@ The edit component of a block receives these props from the Blocks Engine:
 - `onFocusNextBlock` - handler for focusing the next block in the block list
 - `handleKeyDown` - handler for managing press keys while the block is selected
 - `onMoveBlock` - handler for moving blocks
-- `blocksConfig` - a (potentially customized) copy of the
-  `config.blocks.blocksConfig` configuration object, useful for blocks that
-  need to render other blocks
+- `blocksConfig` - a (potentially customized) copy of the `config.blocks.blocksConfig` configuration object, useful for blocks that need to render other blocks
 
 You can use all these props to render your edit block and model its behavior.
 
 ## Default block edit and view components
 
-Volto later then 16.0.0 ships with a set of default Edit and View components.
-The view component is mostly a placeholder, with an auto-generated listing of
-the block fields, while the default Edit component is the most interesting, as
-it can use the `blockSchema` that you can specify in the block configuration to
-automatically render a form for the Block settings, in the Volto Sidebar. In
-the main editing area, it will render the view component, so for many blocks
-you can just develop a schema and the View component.
+Volto later than 16.0.0 ships with a set of default edit and view components.
+The view component is mostly a placeholder, with an auto-generated listing of the block fields.
+The default edit component is the most interesting, as it can use the `blockSchema` that you can specify in the block configuration to automatically render a form for the block's settings in the Volto sidebar.
+In the main editing area, it will render the view component, so for many blocks you can just develop a schema and the view component.
 
-To use the default Edit and/or View component, just don't set any value in the
-block configuration:
+To use the default edit or view component, don't set any value in the
+block configuration.
 
 ```js
 config.blocks.blocksConfig.myBlock = {
   id: 'myBlock',
-  title: "My block",
-  edit: null,   // or simply omit it
-  view: null,   // or simply omit it
+  title: 'My block',
+  edit: null, // or omit it
+  view: null, // or omit it
   // ... the rest of the settings
 }
 ```

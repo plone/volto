@@ -42,7 +42,7 @@ Otherwise, it's best to avoid shipping generic add-ons with Volto core customiza
 
 If you customize core Volto files, you should warn consumers of your add-on in its description.
 
-If your use case is generic enough, [file a feature request](https://github.com/plone/volto/issues/new?assignees=&labels=04+type%3A+enhancement&projects=&template=feature_request.md&title=) to discuss with the Volto Team whether your customization should be included directly in core.
+If your use case is generic enough, [file a feature request](https://github.com/plone/volto/issues/new?template=2_feature_request.md) to discuss with the Volto Team whether your customization should be included directly in core.
 
 
 ## Documentation
@@ -51,7 +51,7 @@ If your use case is generic enough, [file a feature request](https://github.com/
 
 At least create a README with a brief description and a screenshot or video of what your add-on does.
 
-Ideally, the README should include requirements or compatability with various versions of Volto and Plone, and installation and configuration instructions.
+Ideally, the README should include requirements or compatibility with various versions of Volto and Plone, and installation and configuration instructions.
 
 
 ## Test the add-on

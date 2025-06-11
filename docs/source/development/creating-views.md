@@ -3,18 +3,20 @@ myst:
   html_meta:
     "description": "Creating Volto views"
     "property=og:description": "Creating Volto views"
-    "property=og:title": "Creating Volto Views"
+    "property=og:title": "Creating Volto views"
     "keywords": "Volto, Plone, frontend, React, views"
 ---
 
-# Creating Volto Views
+# Creating Volto views
 
-## Full View
+This chapter describes how to create views in Volto.
 
-In this chapter we are going to create a new type of view for displaying
-contents in a folder. We will call this view `full view`. In Plone there is a
-view called `All content` with the view id `full_view` that we will reuse.
-We start by creating a file called: `components/FullView/FullView.jsx`.
+## Full view
+
+In this chapter, you'll create a new type of view for displaying contents in a folder.
+Call this view `full view`.
+In Plone there is a view called `All content` with the view id `full_view` that you'll reuse.
+Start by creating a file called: `components/FullView/FullView.jsx`.
 
 ```jsx
 /**
@@ -125,7 +127,7 @@ FullView.propTypes = {
 export default FullView;
 ```
 
-Next we will add the view to the app components. We can do this by adding the following lines to `components/index.js`.
+Next, add the view to the app components by adding the following lines to {file}`components/index.js`.
 
 ```jsx
 import FullView from './FullView/FullView';
@@ -133,22 +135,23 @@ import FullView from './FullView/FullView';
 export { FullView };
 ```
 
-## Registering The View
+## Register the view
 
-To register the view we will edit the `config.js` file. The `views`
-configuration options contains all the views. This object contains an object
-called `layoutViews` which registers all the layout views. We will add the `full_view` to this object.
+To register the view, edit the {file}`config.js` file.
+The `views` configuration options contain all the views.
+This object contains an object called `layoutViews` which registers all the layout views.
+Add the `full_view` to this object.
 
 ```js
 import { FullView } from './components';
 
 export default function applyConfig(config) {
-  const defaultViews = config.views
-  // Add here your project's configuration here by modifying `config` accordingly
+  const defaultViews = config.views;
+  // Add your project's configuration here by modifying `config` accordingly.
   config.views = {
     ...defaultViews,
     layoutViews: {
-      ...defaultViewslayoutViews,
+      ...defaultViews.layoutViews,
       full_view: FullView,
     },
   };
@@ -156,10 +159,10 @@ export default function applyConfig(config) {
 }
 ```
 
-## Registering a new view called Album View
+## Register a new view called Album View
 
-Create the `Album View` that shows the images in a grid. You can use the `Card`
-class from `semantic-ui`, `components/AlbumView/AlbumView.jsx`:
+Create the `Album View` that shows the images in a grid.
+Use the `Card` class from `semantic-ui`, `components/AlbumView/AlbumView.jsx`:
 
 ```jsx
 /**
@@ -312,7 +315,7 @@ import { AlbumView, FullView } from './components';
 
 export default function applyConfig(config) {
   const defaultViews = config.views
-  // Add here your project's configuration here by modifying `config` accordingly
+  // Add your project's configuration here by modifying `config` accordingly.
   config.views = {
     ...defaultViews,
     layoutViews: {
@@ -323,5 +326,4 @@ export default function applyConfig(config) {
   };
   return config;
 }
-
 ```

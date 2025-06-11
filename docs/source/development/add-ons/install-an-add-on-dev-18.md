@@ -9,24 +9,26 @@ myst:
 
 # Install an add-on in development mode in Volto 18
 
+This chapter describes how to install an add-on for the frontend only in development mode using Volto 18 or later.
+
 Use [`mrs-developer`](https://www.npmjs.com/package/mrs-developer) to manage the development cycle of Volto add-ons.
 This tool pulls the remote code and configures the current project, making the add-on available for the build.
 By doing this, you can develop both the project and the add-on product as if they were both part of the current codebase.
 
 `mrs-developer` is included and installed by default when you generate a project with Cookieplone.
-Use the following command to install the configuration of `mrs.developer.json` in your project.
 
-```shell
-make install
-```
 
-Next, you need to add the add-on to the `addons` key of your Plone project's {file}`package.json`.
+## Declare an add-on
+
+Add the add-on to the `addons` key of your Plone project's {file}`package.json`.
+You might need to add the key.
+The following example declares the add-on `acme-volto-foo-addon` for your Plone project.
 
 ```json
 {
   "name": "my-volto-project",
   "addons": [
-    "name-of-add-on"
+    "acme-volto-foo-addon"
   ]
 }
 ```
@@ -36,14 +38,23 @@ Alternatively, you can use {file}`volto.config.js` to declare add-ons in your Pl
 See {doc}`../../configuration/volto-config-js`.
 ```
 
+
 ## Configure `mrs-developer`
 
-{file}`mrs.developer.json` is the configuration file that instructs `mrs-developer` from where it should pull the packages.
-Cookieplone includes an empty one for you.
-Edit {file}`mrs.developer.json` and add the following code.
+{file}`mrs.developer.json` is the configuration file that instructs `mrs-developer` from where it should pull the packages. 
+Edit {file}`mrs.developer.json` by adding the following emphasized code as a sibling to the `core` key, and ensuring you have valid JSON.
 
-```json
+```{code-block} json
+:emphasize-lines: 9-14
 {
+  "core": {
+    "output": "./",
+    "package": "@plone/volto",
+    "url": "git@github.com:plone/volto.git",
+    "https": "https://github.com/plone/volto.git",
+    "tag": "18.22.0",
+    "filterBlobs": true
+  },
   "acme-volto-foo-addon": {
     "output": "packages",
     "package": "@acme/volto-foo-addon",
@@ -53,7 +64,7 @@ Edit {file}`mrs.developer.json` and add the following code.
 }
 ```
 
-Then run:
+Next, install the add-on with the following command.
 
 ```bash
 make install
@@ -111,31 +122,26 @@ If your add-on needs to bring in additional JavaScript package dependencies, you
 
 You need to configure your add-ons using a `pnpm` workspace.
 You can configure them using the file {file}`pnpm-workspace.yaml` and declare all your development add-ons in there.
+The default content of this file is shown below.
+
+```yaml
+packages:
+  # all packages in direct subdirs of packages/
+  - 'core/packages/*'
+  - 'packages/*'
+  - 'packages/*/packages/*'
+```
+
+Note the nesting of `packages`.
+Since Cookieplone generated add-on will have a `packages` folder in itself.
+You can explicitly declare the add-ons to load them in a defined order.
 
 ```yaml
 packages:
   - 'core/packages/*'
-  - 'packages/*'
-```
-
-If the add-on you are developing was created using {term}`Cookieplone`, then you have to add the following to {file}`pnpm-workspace.yaml` detect them.
-
-```yaml
-packages:
-  - 'core/packages'
-  - 'packages/my-policy-addon'
-  - 'packages/**/packages/*'
-```
-
-Note the nesting of `packages` since a {term}`Cookieplone` generated add-on will have a `packages` folder in itself.
-You can explicitly declare the add-ons, too.
-
-```yaml
-packages:
-  - 'core/packages'
   - 'packages/my-policy-addon'
   - 'packages/my-development-mode-addon/packages/my-development-mode-addon'
-  - 'packages/**/packages/*'
+  - 'packages/*/packages/*'
 ```
 
 ```{important}

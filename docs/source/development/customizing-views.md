@@ -9,11 +9,11 @@ myst:
 
 # Customizing Volto Views
 
-Overriding existing views works exactly the same as components. Override the
-summary view so that the `Read more...` text is gone and is replaced by the
-rich text content.
+Overriding existing views works exactly the same as components.
+Override the summary view so that the `Read more...` text is gone and is replaced by the rich text content.
 
-```jsx hl_lines="44 45 46"
+```{code-block} jsx
+:emphasize-lines: 53-55
 /**
  * Summary view component.
  * @module components/theme/View/SummaryView
@@ -21,9 +21,10 @@ rich text content.
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { UniversalLink } from '@plone/volto/components';
-import { Container, Image } from 'semantic-ui-react';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
+import { Container as SemanticContainer } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
+import config from '@plone/volto/registry';
 
 /**
  * Summary view component class.
@@ -31,41 +32,52 @@ import { FormattedMessage } from 'react-intl';
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-const SummaryView = ({ content }) => (
-  <Container className="view-wrapper">
-    <article id="content">
-      <header>
-        <h1 className="documentFirstHeading">{content.title}</h1>
-        {content.description && (
-          <p className="documentDescription">{content.description}</p>
-        )}
-      </header>
-      <section id="content-core">
-        {content.items.map((item) => (
-          <article key={item.url}>
-            <h2>
-              <UniversalLink item={ite} title={item['@type']}>
-                {item.title}
-              </UniversalLink>
-            </h2>
-            {item.image && (
-              <Image
-                clearing
-                floated="right"
-                alt={item.image_caption ? item.image_caption : item.title}
-                src={item.image.scales.thumb.download}
-              />
-            )}
-            {item.description && <p>{item.description}</p>}
-            {item.text && item.text.data && (
-              <p dangerouslySetInnerHTML={{ __html: item.text.data }} />
-            )}
-          </article>
-        ))}
-      </section>
-    </article>
-  </Container>
-);
+const SummaryView = ({ content }) => {
+  const Container =
+    config.getComponent({ name: 'Container' }).component || SemanticContainer;
+  const PreviewImage = config.getComponent({ name: 'PreviewImage' }).component;
+
+  return (
+    <Container className="view-wrapper summary-view">
+      <article id="content">
+        <header>
+          <h1 className="documentFirstHeading">{content.title}</h1>
+          {content.description && (
+            <p className="documentDescription">{content.description}</p>
+          )}
+        </header>
+        <section id="content-core">
+          {content.items.map((item) => (
+            <article key={item.url}>
+              <h2>
+                <UniversalLink item={item} title={item['@type']}>
+                  {item.title}
+                </UniversalLink>
+              </h2>
+              {item.image_field && (
+                <PreviewImage
+                  item={item}
+                  alt={item.image_caption}
+                  className="ui image floated right clear"
+                  responsive={true}
+                  loading="lazy"
+                />
+              )}
+              {item.description && <p>{item.description}</p>}
+              <p>
+                <UniversalLink item={item}>
+                  {item.text && item.text.data && (
+                    <p dangerouslySetInnerHTML={{ __html: item.text.data }} />
+                  )}
+                </UniversalLink>
+              </p>
+            </article>
+          ))}
+        </section>
+      </article>
+    </Container>
+  );
+};
 
 /**
  * Property types.
