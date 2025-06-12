@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Plone\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2019-12-03 03:20-0400\nPO-Revision-Date: 2025-06-09 15:39+0000\nLast-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\nLanguage-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.12-dev\nLanguage-Code: es\nLanguage-Name: Español\nPreferred-Encodings: utf-8\nDomain: volto\nX-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
+msgstr "Project-Id-Version: Plone\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2019-12-03 03:20-0400\nPO-Revision-Date: 2025-06-13 10:01+0000\nLast-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\nLanguage-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.12-dev\nLanguage-Code: es\nLanguage-Name: Español\nPreferred-Encodings: utf-8\nDomain: volto\nX-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -1174,7 +1174,7 @@ msgstr "Descargar evento"
 #. Default: "Download file"
 #: components/theme/View/FileView
 msgid "Download file"
-msgstr ""
+msgstr "Descargar archivo"
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
