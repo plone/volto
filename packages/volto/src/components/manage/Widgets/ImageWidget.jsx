@@ -103,7 +103,7 @@ const UnconnectedImageInput = (props) => {
     placeholderLinkInput = '',
     onSelectItem,
   } = props;
-  const imageValue = value?.[0]?.['@id'] || value;
+  const imageValue = value?.[0]?.['@id'] || value?.['@id'] || value;
 
   const intl = useIntl();
   const linkEditor = useLinkEditor();
@@ -266,10 +266,12 @@ const UnconnectedImageInput = (props) => {
             );
           } else {
             // if it's an external link, we save it as is
-            onChange(props.id, {
-              '@id': normalizeUrl(url),
-              title: removeProtocol(url),
-            });
+            onChange(props.id, [
+              {
+                '@id': normalizeUrl(url),
+                title: removeProtocol(url),
+              },
+            ]);
           }
         }
       }
