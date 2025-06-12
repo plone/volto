@@ -1187,6 +1187,11 @@ msgstr "Visão do Documento"
 msgid "Download Event"
 msgstr "Baixar evento"
 
+#. Default: "Download file"
+#: components/theme/View/FileView
+msgid "Download file"
+msgstr ""
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
