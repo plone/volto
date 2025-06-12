@@ -19,3 +19,8 @@ The Volto Team has suspended its review of new pull requests from first-time con
 If your pull request closes an open issue, include the exact text below, immediately followed by the issue number. When your pull request gets merged, then that issue will close automatically.
 
 Closes #
+
+-----
+
+If your pull request includes changes to the documentation—either in narrative documentation, Storybook, or configuration—then a pull request preview will be generated and a link will populate in the description of your pull request below.
+By clicking that link, you can use the visual diff menu in the upper right corner to navigate to pages that have changes, then display the diff by checking the `Show diff` checkbox.

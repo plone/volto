@@ -133,4 +133,9 @@ export type StyleDefinition =
       style: undefined;
     };
 
+export interface BlockSchemaProps {
+  props: BlockEditProps;
+  intl: IntlShape;
+}
+
 export * from './objectBrowser';
