@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 18.5.0 (2025-06-12)
+
+### Feature
+
+- Translations from weblate @Ricky-Tigg @erral [#6910](https://github.com/plone/volto/issues/6910)
+
+### Bugfix
+
+- Correct `README.md`. Set the correct value of the constant `TFOOT` to `tfoot`, instead of `tbody`. Serve `tabIndex` prop with a number instead of a string. @silviubogan [#7179](https://github.com/plone/volto/issues/7179)
+
 ## 18.4.0 (2025-05-20)
 
 ### Feature
