@@ -9,6 +9,7 @@ import { compose } from 'redux';
 import { toast } from 'react-toastify';
 import useLinkEditor from '@plone/volto/components/manage/AnchorPlugin/useLinkEditor';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+import config from '@plone/volto/registry';
 
 import {
   flattenToAppURL,
@@ -78,6 +79,10 @@ const messages = defineMessages({
   externalURLsNotAllowed: {
     id: 'externalURLsNotAllowed',
     defaultMessage: 'External URLs are not allowed in this field.',
+  },
+  internalImageNotFoundErrorMessage: {
+    id: 'internalImageNotFoundErrorMessage',
+    defaultMessage: 'No image was found in the internal path you provided.',
   },
 });
 
@@ -199,7 +204,7 @@ const UnconnectedImageInput = (props) => {
 
   const validateManualLink = React.useCallback(
     (url) => {
-      if (props.allowExternals && !url.startsWith('/')) {
+      if (!url.startsWith('/')) {
         const error = urlValidator({
           value: url,
           formatMessage: intl.formatMessage,
@@ -214,7 +219,7 @@ const UnconnectedImageInput = (props) => {
         return isInternalURL(url);
       }
     },
-    [props.allowExternals, intl.formatMessage],
+    [intl.formatMessage],
   );
 
   const onSubmitURL = React.useCallback(
@@ -226,6 +231,7 @@ const UnconnectedImageInput = (props) => {
             .searchContent(
               '/',
               {
+                portal_type: config.settings.imageObjects,
                 'path.query': flattenToAppURL(url),
                 'path.depth': '0',
                 sort_on: 'getObjPositionInParent',
@@ -238,16 +244,19 @@ const UnconnectedImageInput = (props) => {
               if (resp.items?.length > 0) {
                 onChange(props.id, resp.items[0], {});
               } else {
-                onChange(props.id, [
-                  {
-                    '@id': flattenToAppURL(url),
-                    title: removeProtocol(url),
-                  },
-                ]);
+                toast.error(
+                  <Toast
+                    error
+                    title={intl.formatMessage(messages.Error)}
+                    content={intl.formatMessage(
+                      messages.internalImageNotFoundErrorMessage,
+                    )}
+                  />,
+                );
               }
             });
         } else {
-          if (!props.allowExternals || isRelationChoice) {
+          if (isRelationChoice) {
             toast.error(
               <Toast
                 error
@@ -257,22 +266,12 @@ const UnconnectedImageInput = (props) => {
             );
           } else {
             // if it's an external link, we save it as is
-            onChange(props.id, [
-              {
-                '@id': normalizeUrl(url),
-                title: removeProtocol(url),
-              },
-            ]);
+            onChange(props.id, {
+              '@id': normalizeUrl(url),
+              title: removeProtocol(url),
+            });
           }
         }
-      } else if (!props.allowExternals) {
-        toast.error(
-          <Toast
-            error
-            title={intl.formatMessage(messages.Error)}
-            content={intl.formatMessage(messages.externalURLsNotAllowed)}
-          />,
-        );
       }
     },
     [validateManualLink, props, intl, isRelationChoice, onChange],
