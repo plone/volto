@@ -17,6 +17,22 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.23.0 (2025-06-12)
+
+### Feature
+
+- Use translated schema title in Helmet for `Add` component page. @alexandreIFB [#7048](https://github.com/plone/volto/issues/7048)
+- Improved the component `ContentsDeleteModal` by displaying a detailed list of selected items with clickable links for better clarity and usability. @alexandreIFB [#7054](https://github.com/plone/volto/issues/7054)
+- Translations from weblate @yurj, @ingovdb, @erral, @MrTango [#7135](https://github.com/plone/volto/issues/7135)
+- Added the `.error` class to blocks with errors, highlighting them with a red border in edit mode. @alexandreIFB [#7138](https://github.com/plone/volto/issues/7138)
+
+### Bugfix
+
+- fix(fetchContent): correctly handle undefined blocksType in async fetchContent @nileshgulia1 [#7114](https://github.com/plone/volto/issues/7114)
+- Make sure the server-side rendered content is still shown if there is an error while hydrating a page that did not have a server-side error. @davisagli [#7132](https://github.com/plone/volto/issues/7132)
+- Added missing languages in `packages/volto/src/helpers/LanguageMap/LanguageMap.js`. @JeffersonBledsoe [#7146](https://github.com/plone/volto/issues/7146)
+- Add default if no filename is supplied in FileView @kittauri [#7174](https://github.com/plone/volto/issues/7174)
+
 ## 18.22.0 (2025-05-20)
 
 ### Feature
