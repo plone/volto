@@ -1,0 +1,1 @@
+Added custom drag layer for enhanced drag-and-drop experience in editor @rboixaderg
