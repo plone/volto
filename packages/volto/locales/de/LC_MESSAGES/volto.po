@@ -4777,6 +4777,11 @@ msgstr "Bildvorschau"
 msgid "integer"
 msgstr "Ganzzahl"
 
+#. Default: "No image was found in the internal path you provided."
+#: components/manage/Widgets/ImageWidget
+msgid "internalImageNotFoundErrorMessage"
+msgstr ""
+
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
 msgid "intranet"

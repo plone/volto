@@ -4779,6 +4779,11 @@ msgstr "Vista previa de la imagen"
 msgid "integer"
 msgstr "El valor introducido debe ser un número entero"
 
+#. Default: "No image was found in the internal path you provided."
+#: components/manage/Widgets/ImageWidget
+msgid "internalImageNotFoundErrorMessage"
+msgstr ""
+
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
 msgid "intranet"
