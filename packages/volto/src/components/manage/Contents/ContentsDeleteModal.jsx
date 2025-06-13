@@ -219,7 +219,8 @@ const ContentsDeleteModal = (props) => {
 
   useEffect(() => {
     if (linkintegrityInfo) {
-      const containedItems = linkintegrityInfo
+      // total number of contained items in the items to be deleted
+      const totalContainedItems = linkintegrityInfo
         .map((result) => result.items_total ?? 0)
         .reduce((acc, value) => acc + value, 0);
       const breaches = linkintegrityInfo.flatMap((result) =>
@@ -235,7 +236,7 @@ const ContentsDeleteModal = (props) => {
       );
       // If no breaches are found, return early
       if (filteredBreaches.length === 0) {
-        setContainedItemsToDelete([]);
+        setContainedItemsToDelete(0);
         setBrokenReferences(0);
         setLinkAndReferencesViewLink(null);
         setBreaches([]);
@@ -253,7 +254,7 @@ const ContentsDeleteModal = (props) => {
         return acc;
       }, new Map());
 
-      setContainedItemsToDelete(containedItems);
+      setContainedItemsToDelete(totalContainedItems);
       setBrokenReferences(by_source.size);
       setLinkAndReferencesViewLink(
         linkintegrityInfo.length
@@ -267,7 +268,7 @@ const ContentsDeleteModal = (props) => {
         })),
       );
     } else {
-      setContainedItemsToDelete([]);
+      setContainedItemsToDelete(0);
       setBrokenReferences(0);
       setLinkAndReferencesViewLink(null);
       setBreaches([]);
