@@ -1,0 +1,1 @@
+- Unify `Breadcrumbs` component implementations, remove custom BreadcrumbsPrimitive, since it's no longer needed. @sneridagh
