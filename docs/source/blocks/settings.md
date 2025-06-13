@@ -10,39 +10,43 @@ myst:
 # Blocks settings
 
 Volto has a set of default blocks.
-You can extend it by adding your custom blocks in your project's configuration object.
+You can extend it by adding your custom blocks in your project's policy add-on configuration object.
 
 ## Configuring a new block
 
-To extend the default set of blocks, you add the following lines to the `src/config.js`:
+To extend the default set of blocks, you add the following lines to a file like `frontend/packages/volto-project-title/src/index.js`.
+`frontend/packages/volto-project-title` is your policy package where you configure your project and make customizations.
+Adapt the name `volto-project-title` according to your needs.
 
 ```js
-import MainSliderViewBlock from '@root/components/Blocks/MainSlider/View';
-import MainSliderEditBlock from '@root/components/Blocks/MainSlider/Edit';
+import MainSliderViewBlock from './components/Blocks/MainSlider/View';
+import MainSliderEditBlock from './components/Blocks/MainSlider/Edit';
 import sliderSVG from '@plone/volto/icons/slider.svg';
 
-import SimpleTeaserView from '@root/components/Blocks/SimpleTeaserView';
-import CardTeaserView from '@root/components/Blocks/CardTeaserView';
-import DefaultColumnRenderer from '@root/components/Blocks/DefaultColumnRenderer';
-import NumberColumnRenderer from '@root/components/Blocks/NumberColumnRenderer';
-import ColoredColumnRenderer from '@root/components/Blocks/ColoredColumnRenderer';
+import SimpleTeaserView from './components/Blocks/SimpleTeaserView';
+import CardTeaserView from './components/Blocks/CardTeaserView';
+import DefaultColumnRenderer from './components/Blocks/DefaultColumnRenderer';
+import NumberColumnRenderer from './components/Blocks/NumberColumnRenderer';
+import ColoredColumnRenderer from './components/Blocks/ColoredColumnRenderer';
 
-import CustomSchemaEnhancer from '@root/components/Blocks/CustomSchemaEnhancer';
+import CustomSchemaEnhancer from './components/Blocks/CustomSchemaEnhancer';
 
-[...]
 
-const customBlocks = {
-  mainslider: {
+const applyConfig = (config) => {
+  [...]
+
+  // Register new block for homepage teaser
+  config.blocks.blocksConfig.mainslider = {
     id: 'mainslider', // The name (id) of the block
     title: 'Main Slider', // The display name of the block
     icon: sliderSVG, // The icon used in the block chooser
-    group: 'common', // The group (blocks can be grouped, displayed in the chooser)
+    group: 'common', // The group (blocks can be grouped, displayed in the chooser) ['common', 'text', 'teasers', 'media']
     view: MainSliderViewBlock, // The view mode component
     edit: MainSliderEditBlock, // The edit mode component
     restricted: false, // {Boolean|function} If the block is restricted, it won't show in the chooser. The function signature is `({properties, block, navRoot, contentType})` where `properties` is the current object data and `block` is the block being evaluated in `BlockChooser`. `navRoot` is the nearest navigation root object and `contentType` is the current content type.
     mostUsed: true, // A meta group `most used`, appearing at the top of the chooser
     blockHasOwnFocusManagement: false, // Set this to true if the block manages its own focus
-    sidebarTab: 0, // The sidebar tab you want to be selected when selecting the block
+    sidebarTab: 1, // The sidebar tab you want to be selected when selecting the block
     blockHasValue: (data) => {
       // Returns true if the provided block data represents a value for the current block.
       // Required for alternate default block types implementations.
@@ -106,21 +110,17 @@ const customBlocks = {
         ]
       }
     }
-  },
+  };
+
+  [...]
+
+  return config;
 };
 
-export const blocks = {
-  ...defaultBlocks,
-  blocksConfig: { ...defaultBlocks.blocksConfig, ...customBlocks },
-};
+export default applyConfig;
 ```
 
 We start by importing both view and edit components of our recently created custom block.
-
-```{note}
-Notice the `@root` alias.
-You can use it when importing modules/components from your own project.
-```
 
 Then you define the block, using the object described in the example.
 
