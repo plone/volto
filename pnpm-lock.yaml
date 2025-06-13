@@ -504,9 +504,6 @@ importers:
       '@internationalized/date':
         specifier: ^3.8.1
         version: 3.8.1
-      '@react-aria/collections':
-        specifier: 3.0.0-rc.1
-        version: 3.0.0-rc.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@react-aria/utils':
         specifier: ^3.29.0
         version: 3.29.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
