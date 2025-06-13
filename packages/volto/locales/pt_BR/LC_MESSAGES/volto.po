@@ -4580,7 +4580,7 @@ msgstr "Informe o nome do usuário que você deseja, geralmente algo como 'jsilv
 #. Default: "and {count} more…"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "and {count} more…"
-msgstr ""
+msgstr "e mais {count}…"
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
