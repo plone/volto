@@ -152,6 +152,20 @@ The resultant HTML would be the following:
 ```
 Then it's at your discretion how you define the CSS class names in your theme.
 
+## Error class for blocks
+
+When a user submits data in a form, and the block has a validation error (for example, via `blocksErrors`), then the block wrapper automatically receives the `error` class.
+This allows you to customize the appearance of blocks with errors via CSS, as in the following example.
+
+```css
+.block.error {
+  border: 1px solid red;
+  background: #fff0f0;
+}
+```
+
+The class is automatically added by the `Edit.jsx` component, and can be used in any theme or style customization to highlight blocks with errors.
+
 ## Customize the injected class names
 
 If you need other style of classnames generated, you can use the classname

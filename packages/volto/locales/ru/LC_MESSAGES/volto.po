@@ -1201,6 +1201,11 @@ msgstr "Вид документа"
 msgid "Download Event"
 msgstr "Скачать событие"
 
+#. Default: "Download file"
+#: components/theme/View/FileView
+msgid "Download file"
+msgstr ""
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -3795,6 +3800,11 @@ msgstr "Следующий список показывает, какие шаг�
 msgid "The item could not be deleted."
 msgstr "Элемент не может быть удален."
 
+#. Default: "The kicker is a line of text shown above the title."
+#: components/manage/Blocks/Teaser/schema
+msgid "The kicker is a line of text shown above the title."
+msgstr ""
+
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
 msgid "The link address is:"
@@ -4461,6 +4471,16 @@ msgstr "Ежегодно"
 msgid "Yes"
 msgstr "Да"
 
+#. Default: "You are about to delete all items in the current pagination of this folder."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items in the current pagination of this folder."
+msgstr ""
+
+#. Default: "You are about to delete all items in this folder."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items in this folder."
+msgstr ""
+
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
@@ -4707,7 +4727,7 @@ msgstr "сбросить intIds и пересоздать связи"
 msgid "flushAndRebuildRelationsHints"
 msgstr "<ul><li>Пересоздать intIds (токены в каталоге связей объектов)</li><li>Перестроить связи</li></ul><p>Проверьте журнал для подробностей!</p><p><b>Предупреждение</b>: Если у вас есть дополнения, зависящие от intIds, вы не должны их сбрасывать.</p>"
 
-#. Default: "Head title"
+#. Default: "Kicker"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
 msgstr "Заголовок"

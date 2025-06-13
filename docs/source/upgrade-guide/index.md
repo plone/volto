@@ -64,6 +64,21 @@ These packages have been removed from the Volto repository as they are no longer
 - `@plone/volto-guillotina`: No longer actively maintained
 - `@plone/volto-testing`: Testing functionality is now integrated directly in Volto core
 
+### Removed language settings
+```{versionremoved} Volto 19
+```
+
+The `defaultLanguage` and `isMultilingual` settings have been removed.
+Instead, these values are fetched from the backend API.
+The `supportedLanguages` setting now only controls which locales are included in the build.
+
+
+### Renamed literal "Head title" to "Kicker" in Teaser block
+```{versionadded} Volto 19.0.0-alpha.3
+```
+
+The default (English) literal "Head title" in the `teaser` block has been renamed to "Kicker" for accuracy and clarity.
+The `head_title` property and the translation id (`head_title`) in the `teaser` block settings has been kept for backwards compatibility.
 
 (upgrading-to-volto-18-x-x)=
 
@@ -2101,7 +2116,6 @@ import config from '@plone/volto/registry'
 ...
 
 console.log(config.settings.apiPath)
-config.settings.isMultilingual = true
 ...
 ```
 
@@ -2218,9 +2232,6 @@ Let's show it in an example. Let's say you have this config in your project's `s
 ```js
 export const settings = {
   ...defaultSettings,
-  isMultilingual: true,
-  supportedLanguages: ['en', 'de'],
-  defaultLanguage: 'de',
   navDepth: 3,
 };
 ```
@@ -2231,9 +2242,6 @@ then you'll add the `applyConfig()` function as default export and copy that set
 export default function applyConfig(config) {
   config.settings = {
     ...config.settings,
-    isMultilingual: true,
-    supportedLanguages: ['en', 'de'],
-    defaultLanguage: 'de',
     navDepth: 3,
   };
   return config;
@@ -2325,9 +2333,6 @@ showing in the diff the default ones, you should have your configuration inside 
 ```js
 export const settings = {
   ...defaultSettings,
-  isMultilingual: true,
-  supportedLanguages: ['en', 'de'],
-  defaultLanguage: 'de',
   navDepth: 3,
 };
 ```
@@ -2363,9 +2368,6 @@ the end of `src/config.js`:
 +function applyConfig(config) {
 +  config.settings = {
 +    ...config.settings,
-+    isMultilingual: true,
-+    supportedLanguages: ['en', 'de'],
-+    defaultLanguage: 'de',
 +    navDepth: 3,
 +  };
 ```

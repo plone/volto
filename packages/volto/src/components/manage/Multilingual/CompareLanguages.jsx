@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
-import config from '@plone/volto/registry';
 import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
 import { useDetectClickOutside } from '@plone/volto/helpers/Utils/useDetectClickOutside';
 
@@ -106,16 +105,14 @@ const CompareLanguages = React.forwardRef((props, ref) => {
 
   const intl = useIntl();
   const [viewMenu, setViewMenu] = useState(false);
-  const translations = config.settings.isMultilingual
-    ? content?.['@components']?.translations?.items || []
-    : [];
+  const translations = content?.['@components']?.translations?.items || [];
 
   const translationsObject = {};
   translations.forEach((t) => {
     translationsObject[t.language] = t['@id'];
   });
 
-  if (config.settings.isMultilingual && translations.length > 0) {
+  if (translations.length > 0) {
     return (
       <div className="toolbar-compare-translations-wrapper">
         <div className="toolbar-button-spacer" />
