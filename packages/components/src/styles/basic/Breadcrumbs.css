@@ -10,13 +10,17 @@
     font-size: 18px;
     list-style: none;
 
-    svg.home-icon {
+    svg {
       margin-top: -5px;
       margin-right: 5px;
       vertical-align: middle;
     }
 
-    .react-aria-Breadcrumb:not(:last-child)::after {
+    .react-aria-Breadcrumb svg {
+      display: inline;
+    }
+
+    .react-aria-Breadcrumb:not(:last-child):not(:has(a + svg))::after {
       padding: 0 5px;
       alt: ' ';
       content: '›';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Breadcrumb, Breadcrumbs } from './Breadcrumbs';
-import { FolderIcon, PageIcon } from '../../components/icons';
+import { FolderIcon, HomeIcon, PageIcon } from '../../components/icons';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -18,9 +18,12 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args) => (
     <Breadcrumbs {...args}>
-      <Breadcrumb href="/">Home</Breadcrumb>
-      <Breadcrumb href="/react-aria">React Aria</Breadcrumb>
-      <Breadcrumb>Breadcrumbs</Breadcrumb>
+      <Breadcrumb href="/">
+        <HomeIcon size="sm" />
+        Home
+      </Breadcrumb>
+      <Breadcrumb href="/folder">Folder</Breadcrumb>
+      <Breadcrumb href="/folder/page">Page</Breadcrumb>
     </Breadcrumbs>
   ),
 };
@@ -54,8 +57,7 @@ export const SlotWithRoot: Story = {
     </Breadcrumbs>
   ),
   args: {
-    root: '/',
-    includeRoot: true,
+    root: { '@id': '/', title: 'Home' },
     items: [
       { '@id': '/folder', title: 'Folder' },
       { '@id': '/folder/page', title: 'Page' },
@@ -74,9 +76,7 @@ export const SlotWithRootCustomHomeIcon: Story = {
     </Breadcrumbs>
   ),
   args: {
-    root: '/',
-    includeRoot: true,
-    homeIcon: <FolderIcon size="sm" />,
+    root: { '@id': '/', title: 'Home', icon: <FolderIcon size="sm" /> },
     items: [
       { '@id': '/folder', title: 'Folder' },
       { '@id': '/folder/page', title: 'Page' },
@@ -95,8 +95,7 @@ export const SlotWithRootWithIcons: Story = {
     </Breadcrumbs>
   ),
   args: {
-    root: '/',
-    includeRoot: true,
+    root: { '@id': '/', title: 'Home' },
     items: [
       { '@id': '/folder', title: 'Folder', icon: <FolderIcon size="sm" /> },
       { '@id': '/folder/page', title: 'Page', icon: <PageIcon size="sm" /> },
@@ -107,8 +106,6 @@ export const SlotWithRootWithIcons: Story = {
 export const NoRoot: Story = {
   render: Slot.render,
   args: {
-    root: '/',
-    includeRoot: false,
     items: [
       { '@id': '/folder', title: 'Folder' },
       { '@id': '/folder/page', title: 'Page' },
