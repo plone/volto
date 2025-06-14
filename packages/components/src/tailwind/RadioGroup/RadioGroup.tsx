@@ -1,5 +1,6 @@
 import React, { type ReactNode } from 'react';
 import {
+  composeRenderProps,
   Radio as RACRadio,
   RadioGroup as RACRadioGroup,
   type RadioGroupProps as RACRadioGroupProps,
@@ -69,6 +70,42 @@ export function Radio(props: RadioProps) {
           {props.children}
         </>
       )}
+    </RACRadio>
+  );
+}
+
+const customRadioButton = tv({
+  extend: focusRing,
+  base: 'text-quanta-iron flex h-10 w-10 cursor-pointer items-center justify-center rounded-md font-medium transition hover:shadow-sm focus:shadow-sm active:shadow-md',
+  variants: {
+    isSelected: {
+      false:
+        'bg-quanta-air hover:bg-quanta-snow active:bg-quanta-silver focus:bg-quanta-snow',
+      true: 'pressed:bg-quanta-cobalt bg-quanta-air hover:bg-quanta-snow active:bg-quanta-silver focus:bg-quanta-snow border border-gray-200 shadow-sm',
+    },
+    isPressed: {
+      true: 'pressed:bg-quanta-cobalt',
+    },
+    isInvalid: {
+      true: 'border border-red-700 text-red-700 dark:border-red-600 dark:text-red-600',
+    },
+    isDisabled: {
+      true: 'text-quanta-smoke',
+    },
+  },
+});
+export function CustomRadio(props: RadioProps) {
+  return (
+    <RACRadio
+      {...props}
+      className={composeRenderProps(props.className, (className, renderProps) =>
+        customRadioButton({
+          ...renderProps,
+          className,
+        }),
+      )}
+    >
+      {props.children}
     </RACRadio>
   );
 }
