@@ -380,6 +380,11 @@ msgstr "वैकल्पिक URL पथ को स्लैश के सा
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "वैकल्पिक URL पथ → लक्ष्य URL पथ (निर्माण की तारीख और समय, मैन्युअल रूप से बनाया गया है/नहीं)"
 
+#. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+msgstr ""
+
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
@@ -429,6 +434,11 @@ msgstr "असाइनमेंट"
 #. Default: "Automatically"
 #: components/manage/Controlpanels/Aliases
 msgid "Automatically"
+msgstr ""
+
+#. Default: "Autosaved content found"
+#: helpers/Utils/withSaveAsDraft
+msgid "Autosaved content found"
 msgstr ""
 
 #. Default: "Available"
@@ -1165,6 +1175,11 @@ msgstr "क्या आप सच में उपयोगकर्ता {use
 msgid "Do you really want to delete this item?"
 msgstr "क्या आप वाकई इस आइटम को हटाना चाहते हैं?"
 
+#. Default: "Do you want to restore your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Do you want to restore your autosaved content?"
+msgstr ""
+
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
@@ -1180,6 +1195,11 @@ msgstr "दस्तावेज़ दृश्य"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
 msgstr "आयोजन डाउनलोड करें"
+
+#. Default: "Download file"
+#: components/theme/View/FileView
+msgid "Download file"
+msgstr ""
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -3775,6 +3795,11 @@ msgstr "निम्नलिखित सूची दिखाती है �
 msgid "The item could not be deleted."
 msgstr "आइटम को हटाया नहीं जा सका।"
 
+#. Default: "The kicker is a line of text shown above the title."
+#: components/manage/Blocks/Teaser/schema
+msgid "The kicker is a line of text shown above the title."
+msgstr ""
+
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
 msgid "The link address is:"
@@ -4441,6 +4466,16 @@ msgstr "सालाना"
 msgid "Yes"
 msgstr "हां"
 
+#. Default: "You are about to delete all items in the current pagination of this folder."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items in the current pagination of this folder."
+msgstr ""
+
+#. Default: "You are about to delete all items in this folder."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items in this folder."
+msgstr ""
+
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
@@ -4687,7 +4722,7 @@ msgstr "intIds और संबंध पुनः निर्माण कर�
 msgid "flushAndRebuildRelationsHints"
 msgstr "<ul><li>intIds पुनः उत्पन्न करें (संबंध निर्माण में संबंध के टोकन)</li><li>संबंध पुनः निर्माण करें</li></ul><p>विवरण के लिए लॉग की जाँच करें!</p><p><b>चेतावनी</b>: यदि आप ऐड-ऑन्स intIds पर आश्रित हैं, तो आपको उन्हें फ्लश नहीं करना चाहिए।</p>"
 
-#. Default: "Head title"
+#. Default: "Kicker"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
 msgstr "हेड शीर्षक"

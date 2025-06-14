@@ -128,6 +128,7 @@ class SelectWidget extends Component {
     isMulti: PropTypes.bool,
     placeholder: PropTypes.string,
     sort: PropTypes.bool,
+    isClearable: PropTypes.bool,
   };
 
   /**
@@ -156,6 +157,7 @@ class SelectWidget extends Component {
     noValueOption: true,
     customOptionStyling: null,
     sort: false,
+    isClearable: true,
   };
 
   /**
@@ -302,7 +304,7 @@ class SelectWidget extends Component {
                 : undefined,
             );
           }}
-          isClearable
+          isClearable={this.props.isClearable}
         />
       </FormFieldWrapper>
     );

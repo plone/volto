@@ -3,13 +3,8 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
-import config from '@plone/volto/registry';
 
 import Navigation from './Navigation';
-
-beforeAll(() => {
-  config.settings.isMultilingual = true;
-});
 
 const mockStore = configureStore();
 
