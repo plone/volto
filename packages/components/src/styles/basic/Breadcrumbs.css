@@ -27,6 +27,13 @@
       content: '›' / '';
     }
 
+    .react-aria-Breadcrumb button {
+      padding: 1px 4px;
+      svg {
+        margin: 0;
+      }
+    }
+
     .react-aria-Link {
       position: relative;
       color: var(--link-color-secondary);
