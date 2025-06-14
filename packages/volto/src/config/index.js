@@ -25,6 +25,8 @@ import { installDefaultBlocks } from './Blocks';
 import { getSiteAsyncPropExtender } from '@plone/volto/helpers/Site';
 import { registerValidators } from './validation';
 
+import languages from '@plone/volto/constants/Languages.cjs';
+
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
 
@@ -112,9 +114,7 @@ let config = {
     openExternalLinkInNewTab: false,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
-    isMultilingual: false,
-    supportedLanguages: ['en'],
-    defaultLanguage: process.env.SITE_DEFAULT_LANGUAGE || 'en',
+    supportedLanguages: Object.keys(languages),
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'slate',
@@ -199,7 +199,8 @@ config.settings.apiExpanders = [
   ...config.settings.apiExpanders,
   {
     match: '',
-    GET_CONTENT: ['breadcrumbs', 'actions', 'types', 'navroot'],
+    GET_CONTENT: ['breadcrumbs', 'actions', 'types', 'navroot', 'translations'],
+    // Note: translations is removed in the API middleware if the site is not multilingual.
   },
   {
     match: '',
@@ -232,16 +233,6 @@ Object.entries(slots).forEach(([slotName, components]) => {
     });
   });
 });
-
-// Make sure that process.env.SITE_DEFAULT_LANGUAGE is set in availableLanguages
-if (
-  process.env.SITE_DEFAULT_LANGUAGE &&
-  !config.settings.supportedLanguages.includes(
-    process.env.SITE_DEFAULT_LANGUAGE,
-  )
-) {
-  config.settings.supportedLanguages.push(process.env.SITE_DEFAULT_LANGUAGE);
-}
 
 registerValidators(ConfigRegistry);
 installDefaultComponents(ConfigRegistry);

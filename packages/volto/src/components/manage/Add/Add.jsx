@@ -223,11 +223,10 @@ class Add extends Component {
         ? keys(this.props.schema.definitions)
         : null,
       '@type': this.props.type,
-      ...(config.settings.isMultilingual &&
-        this.props.location?.state?.translationOf && {
-          translation_of: this.props.location.state.translationOf,
-          language: this.props.location.state.language,
-        }),
+      ...(this.props.location?.state?.translationOf && {
+        translation_of: this.props.location.state.translationOf,
+        language: this.props.location.state.language,
+      }),
     });
   }
 

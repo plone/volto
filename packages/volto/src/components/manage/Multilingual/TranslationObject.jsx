@@ -63,7 +63,7 @@ const TranslationObject = ({
     {
       ...window.__data,
       intl: {
-        defaultLocale: config.settings.defaultLanguage,
+        defaultLocale: translationObject.language.token,
         locale: translationObject.language.token,
         messages: locales[translationObject.language.token],
       },

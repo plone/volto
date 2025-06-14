@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import filter from 'lodash/filter';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
@@ -10,12 +11,12 @@ import { FormattedMessage } from 'react-intl';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
 import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
-import config from '@plone/volto/registry';
 
 const Types = ({ types, pathname, content, currentLanguage }) => {
-  const { settings } = config;
-  return types.length > 0 ||
-    (settings.isMultilingual && content['@components'].translations) ? (
+  const availableLanguages = useSelector(
+    (state) => state.site?.data?.['plone.available_languages'] || [],
+  );
+  return types.length > 0 || content?.['@components']?.translations ? (
     <div className="menu-more pastanaga-menu">
       {types.length > 0 && (
         <>
@@ -53,11 +54,10 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
           </div>
         </>
       )}
-      {settings.isMultilingual &&
-        content['@components'].translations &&
+      {content['@components'].translations &&
         (() => {
           const translationsLeft = filter(
-            settings.supportedLanguages,
+            availableLanguages,
             (lang) =>
               !Boolean(
                 content['@components'].translations &&
