@@ -4461,6 +4461,11 @@ msgstr "S'estan actualitzant els estats del flux de treball..."
 msgid "Workflow updated."
 msgstr "Flux de treball actualitzat."
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "Còpia de treball"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"

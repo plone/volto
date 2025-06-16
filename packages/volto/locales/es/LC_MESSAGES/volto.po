@@ -4462,6 +4462,11 @@ msgstr "Mensaje de cargar un cambio del flujo de trabajo"
 msgid "Workflow updated."
 msgstr "Flujo de trabajo actualizado."
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "Copia de trabajo"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"

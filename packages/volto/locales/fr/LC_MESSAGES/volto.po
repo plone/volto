@@ -4462,6 +4462,11 @@ msgstr "Mise à jour des états du workflow..."
 msgid "Workflow updated."
 msgstr "Workflow mis à jour."
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "Copie de travail"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"

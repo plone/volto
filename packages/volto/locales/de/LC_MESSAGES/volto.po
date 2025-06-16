@@ -4460,6 +4460,11 @@ msgstr "Statuswechsel wird geladen"
 msgid "Workflow updated."
 msgstr "Arbeitsablauf aktualisiert."
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "Arbeitskopie"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"

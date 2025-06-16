@@ -4461,6 +4461,11 @@ msgstr "工作流变更加载信息"
 msgid "Workflow updated."
 msgstr "工作流已更新"
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "工作副本"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"

@@ -4461,6 +4461,11 @@ msgstr "Mesaj de încărcare pentru modificarea fluxului de lucru"
 msgid "Workflow updated."
 msgstr "Fluxul de lucru a fost actualizat."
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "Copie de lucru"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"

@@ -4462,6 +4462,11 @@ msgstr "Lan-fluxuaren egoera aldatzen..."
 msgid "Workflow updated."
 msgstr "Workflowa eguneratu egin da"
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "Lan-bertsioa"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"

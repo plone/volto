@@ -4459,6 +4459,11 @@ msgstr "Statussen werkstroom bijwerken..."
 msgid "Workflow updated."
 msgstr "Werkstroom bijgewerkt."
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "Werkkopie"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"

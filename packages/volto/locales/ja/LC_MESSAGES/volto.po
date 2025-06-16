@@ -4460,6 +4460,11 @@ msgstr "ワークフローを変更しています..."
 msgid "Workflow updated."
 msgstr "ワークフローがアップデートされました"
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr ""
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"

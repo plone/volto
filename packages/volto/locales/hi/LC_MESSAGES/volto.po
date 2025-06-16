@@ -4455,6 +4455,11 @@ msgstr "वर्कफ़्लो स्थितियों को अपड
 msgid "Workflow updated."
 msgstr "वर्कफ़्लो अपडेट किया गया है।"
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "काम की प्रतिलिपि"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
