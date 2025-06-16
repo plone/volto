@@ -58,14 +58,14 @@ const messages = defineMessages({
     defaultMessage: 'references',
   },
   folderDeletionSingle: {
-    id: 'This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder.',
+    id: 'This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside.',
     defaultMessage:
-      'This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder.',
+      'This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside.',
   },
   folderDeletionMultiple: {
-    id: 'Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders.',
+    id: 'Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside.',
     defaultMessage:
-      'Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders.',
+      'Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside.',
   },
   deleteAllItemsPaginated: {
     id: 'You are about to delete all items in the current pagination of this folder.',
@@ -73,17 +73,18 @@ const messages = defineMessages({
       'You are about to delete all items in the current pagination of this folder.',
   },
   deleteAllItems: {
-    id: 'You are about to delete all items in this folder.',
-    defaultMessage: 'You are about to delete all items in this folder.',
+    id: 'You are about to delete this item and all its subitems.',
+    defaultMessage: 'You are about to delete this item and all its subitems.',
   },
   brokenReferencesMultiple: {
-    id: 'Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken.',
+    id: 'Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}.',
     defaultMessage:
-      'Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken.',
+      'Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}.',
   },
   brokenReferencesSingle: {
-    id: 'Deleting this item breaks {brokenReferences} {variation}.',
-    defaultMessage: 'Deleting this item breaks {brokenReferences} {variation}.',
+    id: 'Deleting this item will break {brokenReferences} {variation}.',
+    defaultMessage:
+      'Deleting this item will break {brokenReferences} {variation}.',
   },
 });
 
