@@ -5,16 +5,16 @@ import { NavLink } from 'react-router';
 const NotFound = () => {
   const { t } = useTranslation();
   return (
-    <Container>
-      <div>
-        <h1>{t('cmsui.notFound')}</h1>
-        <p>{t('cmsui.notFoundDescription')}</p>
-        <p>
-          {t('cmsui.SiteAdminstration')}
-          <NavLink to="/contact-form">{t('cmsui.siteAdminstration')}</NavLink>
-        </p>
-        <p>{t('cmsui.thankyou')}</p>
-      </div>
+    <Container className="mt-10 flex min-h-screen flex-col items-center font-sans text-xl">
+      <h1 className="mb-4 text-2xl font-bold">{t('cmsui.notFound')}</h1>
+      <p className="mb-3 text-lg">{t('cmsui.notFoundDescription')}</p>
+      <p className="mb-3 text-lg">
+        {t('cmsui.SiteAdminstration')}
+        <NavLink to="/contact-form" className="text-blue-600 hover:underline">
+          {t('cmsui.siteAdminstration')}
+        </NavLink>
+      </p>
+      <p className="text-lg">{t('cmsui.thankyou')}</p>
     </Container>
   );
 };

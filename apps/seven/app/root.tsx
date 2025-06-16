@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { data, isRouteErrorResponse } from 'react-router';
+import { data, isRouteErrorResponse, Links, Meta } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import i18next from './i18next.server';
 import type { Route } from './+types/root';
@@ -96,13 +96,34 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       case 500:
         ErrorContent = <ConnectionRefused />;
         break;
+      case 401:
+        ErrorContent = <Unauthorized />;
+        break;
       default:
-        ErrorContent = <h1>404 error</h1>;
+        ErrorContent = (
+          <div>
+            <h3>
+              {message}
+              {details}
+            </h3>
+          </div>
+        );
         break;
     }
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;
+    ErrorContent = (
+      <main className="container mx-auto p-4 pt-16">
+        <h1>{message}</h1>
+        <p>{details}</p>
+        {stack && (
+          <pre className="w-full overflow-x-auto p-4">
+            <code>{stack}</code>
+          </pre>
+        )}
+      </main>
+    );
   }
 
   return (
@@ -111,6 +132,8 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="mobile-web-app-capable" content="yes" />
+        <Meta />
+        <Links />
       </head>
       <body>{ErrorContent}</body>
     </html>

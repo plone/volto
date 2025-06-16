@@ -5,17 +5,21 @@ const Unauthorized = () => {
   const { t } = useTranslation();
 
   return (
-    <Container className="flex min-h-screen flex-col items-center justify-center font-sans text-xl">
-      <h1 className="text-green-900">{t('cmsui.unauthorized')}</h1>
-      <p>
+    <Container className="mt-10 flex min-h-screen flex-col items-center font-sans text-xl">
+      <h1 className="mb-4 text-2xl font-bold">{t('cmsui.unauthorized')}</h1>
+      <p className="mb-3 text-lg">
         {t('cmsui.loginRequired')}
-        <NavLink to="/login">{t('login')}</NavLink>
+        <NavLink to="/login" className="text-blue-600 hover:underline">
+          {t('login')}
+        </NavLink>
       </p>
-      <p>
+      <p className="mb-3 text-lg">
         {t('cmsui.SiteAdminstration')}
-        <NavLink to="/contact-form">{t('cmsui.siteAdminstration')}</NavLink>
+        <NavLink to="/contact-form" className="text-blue-600 hover:underline">
+          {t('cmsui.siteAdminstration')}
+        </NavLink>
       </p>
-      <p>{t('cmsui.thankyou')}</p>
+      <p className="text-lg">{t('cmsui.thankyou')}</p>
     </Container>
   );
 };

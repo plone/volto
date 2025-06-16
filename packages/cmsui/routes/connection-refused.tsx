@@ -6,7 +6,7 @@ const ConnectionRefused = () => {
   const { t } = useTranslation();
 
   return (
-    <Container className="flex min-h-screen flex-col items-center justify-center font-sans text-xl">
+    <Container className="mt-10 flex min-h-screen flex-col items-center font-sans text-xl">
       <h1 className="mb-6 text-center leading-10">
         {t('cmsui.connectionRefused')}
         {process.env.NODE_ENV === 'development' && (
