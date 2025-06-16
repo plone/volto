@@ -8,10 +8,12 @@ import React, {
   useRef,
 } from 'react';
 
+type NavigateMode = 'push' | 'replace';
+
 type ObjectBrowserNavigationContextType = {
   currentPath: string | undefined;
   setCurrentPath: React.Dispatch<React.SetStateAction<string | undefined>>;
-  navigateTo: (path: string) => void;
+  navigateTo: (path: string, mode?: NavigateMode) => void;
   goBack: () => void;
   reset: (toPath?: string) => void;
   canGoBack: boolean;
@@ -33,9 +35,14 @@ export function ObjectBrowserNavigationProvider({
   const [canGoBack, setCanGoBack] = useState(false);
 
   const navigateTo = useCallback(
-    (nextPath: string) => {
-      if (currentPath && nextPath !== currentPath) {
+    (nextPath: string, mode: NavigateMode = 'push') => {
+      if (currentPath && nextPath === currentPath) return;
+      if (currentPath && mode === 'push') {
         historyRef.current.push(currentPath);
+      } else if (mode === 'replace') {
+        // For replace mode, do NOT add currentPath to history.
+        // Clear history here, you want to reset navigation stack on replace
+        historyRef.current = [];
       }
       setCurrentPath(nextPath);
       setCanGoBack(historyRef.current.length > 0);

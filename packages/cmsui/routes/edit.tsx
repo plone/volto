@@ -45,7 +45,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
   const { data: content } = await cli.getContent({ path });
   const { data: schema } = await cli.getType({ contentType: content['@type'] });
 
-  return data(flattenToAppURL({ content, schema }, config.settings.apiPath));
+  return data(flattenToAppURL({ content, schema }));
 }
 
 export async function action({ params, request }: ActionFunctionArgs) {

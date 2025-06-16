@@ -7,7 +7,7 @@ import {
   ObjectBrowserWidgetBody,
   type ObjectBrowserWidgetBodyProps,
 } from './ObjectBrowserWidgetBody';
-import { isImageMode } from './utils';
+import { isImageMode, useStableFetcherData } from './utils';
 import type { BaseFormFieldProps } from '../TextField/TextField';
 import {
   Description,
@@ -18,9 +18,8 @@ import {
 import { tv } from 'tailwind-variants';
 import { focusRing } from '../utils';
 import { useFetcher, useLoaderData } from 'react-router';
-import type { loader } from '../../routes/search';
+import type { loader } from '../../routes/objectBrowserWidget';
 import type { loader as editLoader } from '../../routes/edit';
-import type { loader as breadcrumbsLoader } from '../../routes/breadcrumbs';
 import {
   ObjectBrowserNavigationProvider,
   useObjectBrowserNavigation,
@@ -54,12 +53,10 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
     onChange,
     ...bodyProps
   } = props;
-  const [isOpen, setIsOpen] = useState(false);
-  const fetcher = useFetcher<typeof loader>();
-  const fetcherBC = useFetcher<typeof breadcrumbsLoader>();
   const { content } = useLoaderData<typeof editLoader>();
-  console.log('location', content);
-  console.log('search data', fetcher.data);
+
+  const fetcher = useFetcher<typeof loader>();
+  const stableData = useStableFetcherData(fetcher);
   const { currentPath, navigateTo } = useObjectBrowserNavigation();
   const [selectedKeys, setSelectedKeys] = useState<Set<Key>>(() => {
     if (defaultValue && defaultValue !== 'all') {
@@ -75,10 +72,12 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
 
   const selectionBehavior = useMemo(
     () => (isImageMode(mode) ? 'replace' : 'toggle'),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
   const selectionMode = useMemo(
     () => (isImageMode(mode) ? 'single' : 'multiple'),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
   const handleSelectionChange = (keys: Set<Key>) => {
@@ -92,31 +91,23 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
     onChange(normalizedValues);
   };
 
-  console.log('I am props', mode);
-
   useEffect(() => {
-    if (currentPath && isOpen) {
-      fetcher.load(`/@search${currentPath}${METADATA_FIELDS}`);
-      fetcherBC.load(`/@breadcrumbs${currentPath}`);
+    if (currentPath) {
+      fetcher.load(`/@objectBrowserWidget${currentPath}${METADATA_FIELDS}`);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPath, isOpen]);
+  }, [currentPath]);
 
-  useEffect(() => {
-    if (content['@id']) navigateTo(content['@id']);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [content]);
   return (
-    <div
-    // className={composeTailwindRenderProps('group flex flex-col gap-1')}
-    >
+    <div>
       {label && <Label>{label}</Label>}
       <div className={widgetStyles()}>
+        {/* TODO: implement visible selection list with TagGroup */}
         <DialogTrigger
-          isOpen={isOpen}
-          onOpenChange={(isOpen) => setIsOpen(isOpen)}
+          isOpen={Boolean(currentPath)}
+          onOpenChange={() => navigateTo(content['@id'])}
         >
-          <Button aria-label="Settings" size="L">
+          <Button aria-label="Settings" size="L" type="button">
             <Icon size="sm">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +131,9 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
                 <div className="flex items-center gap-0.5">
                   <Button
                     variant="neutral"
+                    // eslint-disable-next-line no-console
                     onPress={() => console.log('I will search')}
+                    type="button"
                   >
                     <Icon size="sm" className="text-quanta-azure">
                       <svg
@@ -154,7 +147,7 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
                     </Icon>
                   </Button>
 
-                  <Button slot="close" variant="neutral">
+                  <Button slot="close" variant="neutral" type="button">
                     X
                   </Button>
                 </div>
@@ -163,8 +156,8 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
                 {...bodyProps}
                 mode={mode}
                 loading={fetcher.state === 'loading'}
-                items={fetcher.data?.items ?? []}
-                breadcrumbs={fetcherBC.data?.items ?? []}
+                items={stableData?.results?.items}
+                breadcrumbs={stableData?.breadcrumbs?.items}
                 selectedItems={selectedKeys}
                 selectionBehavior={selectionBehavior}
                 selectionMode={selectionMode}

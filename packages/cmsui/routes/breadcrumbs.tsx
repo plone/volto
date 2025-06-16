@@ -23,7 +23,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
     path,
   });
 
-  return data(flattenToAppURL(breadcrumbs, config.settings.apiPath), {
+  return data(flattenToAppURL(breadcrumbs), {
     headers: {
       'Content-Type': 'application/json',
     },
