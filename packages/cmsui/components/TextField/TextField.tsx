@@ -23,13 +23,15 @@ const inputStyles = tv({
     isDisabled: fieldBorderStyles.variants.isDisabled,
   },
 });
-
-export interface TextFieldProps extends AriaTextFieldProps {
+export interface BaseFormFieldProps {
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   placeholder?: string;
 }
+export interface TextFieldProps
+  extends AriaTextFieldProps,
+    BaseFormFieldProps {}
 
 export function TextField({
   label,
