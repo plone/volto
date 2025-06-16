@@ -722,6 +722,9 @@ importers:
       react-dom:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
+      react-router:
+        specifier: 'catalog:'
+        version: 7.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       tailwindcss:
         specifier: 'catalog:'
         version: 4.0.17

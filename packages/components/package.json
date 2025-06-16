@@ -32,8 +32,8 @@
     },
     "./icons/*": "./src/icons/*",
     "./Icons": {
-      "import": "./dist/components/Icons/index.js",
-      "default": "./dist/components/Icons/index.cjs"
+      "import": "./dist/components/icons/index.js",
+      "default": "./dist/components/icons/index.cjs"
     },
     "./vite-plugin-svgr": {
       "import": "./vite-plugin-svgr.js",

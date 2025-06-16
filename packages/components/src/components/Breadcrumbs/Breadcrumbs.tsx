@@ -79,11 +79,8 @@ export function BreadcrumbsSlot<T extends Breadcrumb>(
     <nav aria-label="breadcrumbs" role="navigation">
       <Breadcrumbs items={itemsWithRoot || items}>
         {(item) => (
-          <Breadcrumb id={item['@id']}>
-            <Link href={item['@id']}>
-              {item['@id'] === (root || '/') && <HomeIcon size="sm" />}
-              {item.title}
-            </Link>
+          <Breadcrumb id={item['@id']} href={item['@id']}>
+            {item.title}
           </Breadcrumb>
         )}
       </Breadcrumbs>
