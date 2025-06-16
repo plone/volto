@@ -40,7 +40,7 @@ export const Disabled: Story = {
 export const Icon: Story = {
   render: (args: any) => (
     <ToggleButton {...args}>
-      <BoldIcon size="S" />
+      <BoldIcon size="sm" />
     </ToggleButton>
   ),
   args: {

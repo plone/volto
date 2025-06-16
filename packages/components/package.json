@@ -63,6 +63,7 @@
   ],
   "scripts": {
     "build": "tsup && pnpm build:css",
+    "build:watch": "tsup --watch && pnpm build:css",
     "build:force": "tsup && pnpm build:css",
     "build:css": "pnpm build:basic && pnpm build:quanta",
     "build:basic": "lightningcss --browserslist --bundle --sourcemap src/styles/basic/main.css -o basic.css && mv basic.css* dist/.",
@@ -106,7 +107,8 @@
     "tailwind-merge": "^3.0.1",
     "tailwind-variants": "^1.0.0",
     "tailwindcss": "catalog:",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "@internationalized/date": "^3.8.1"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",

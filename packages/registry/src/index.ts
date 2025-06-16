@@ -14,13 +14,19 @@ import type {
   ViewsConfig,
   WidgetsConfig,
   ReactRouterRouteEntry,
+  WidgetsConfigByFactory,
+  WidgetsConfigById,
+  WidgetsConfigByType,
+  WidgetsConfigByVocabulary,
+  WidgetsConfigByWidget,
+  WidgetKey,
 } from '@plone/types';
 
 export type ConfigData = {
   settings: SettingsConfig | Record<string, never>;
   blocks: BlocksConfig | Record<string, never>;
   views: ViewsConfig | Record<string, never>;
-  widgets: WidgetsConfig | Record<string, never>;
+  widgets: WidgetsConfig;
   addonReducers?: AddonReducersConfig;
   addonRoutes?: AddonRoutesConfig;
   routes?: Array<ReactRouterRouteEntry>;
@@ -50,7 +56,7 @@ class Config {
         settings: {},
         blocks: {},
         views: {},
-        widgets: {},
+        widgets: {} as WidgetsConfig,
         slots: {},
         components: {},
         utilities: {},
@@ -525,6 +531,43 @@ class Config {
     const route = this._data.routes || [];
     route.push(options);
     this._data.routes = route;
+  }
+  /**
+   * Registers a widget configuration into the registry.
+   *
+   * @template K - A key from the WidgetsConfig interface.
+   * @param options - An object containing the widget key and its corresponding implementation.
+   * @param options.key - The name of the widget configuration key (e.g., 'default', 'factory').
+   * @param options.definition - The actual widget configuration, which must match the expected structure of WidgetsConfig[K].
+   *
+   */
+  registerWidget<K extends keyof WidgetsConfig>(options: {
+    key: K;
+    definition: WidgetsConfig[K];
+  }) {
+    const { key, definition } = options;
+    const widgets = {
+      ...(this.widgets ?? {}),
+      [key]: definition,
+    };
+    this._data.widgets = widgets;
+  }
+  /**
+   * Gets a widget configuration from the registry.
+   *
+   * @param key - A key from the WidgetsConfig interface.
+   */
+  getWidget(key: string): React.ComponentType<any> | undefined {
+    const widgets = this.widgets;
+
+    for (const category of Object.keys(widgets) as WidgetKey[]) {
+      const group = widgets[category];
+      if (typeof group === 'object' && key in group) {
+        return (group as Record<string, React.ComponentType<any>>)[key];
+      }
+    }
+
+    return undefined;
   }
 }
 

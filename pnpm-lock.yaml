@@ -92,6 +92,9 @@ importers:
       '@plone/components':
         specifier: workspace:*
         version: link:../../packages/components
+      '@plone/helpers':
+        specifier: workspace:*
+        version: link:../../packages/helpers
       '@plone/layout':
         specifier: workspace:*
         version: link:../../packages/layout
@@ -456,6 +459,9 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.1.0
         version: 4.2.1(vite@5.4.15(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))
+      '@vitest/coverage-v8':
+        specifier: 'catalog:'
+        version: 3.0.9(vitest@3.0.9(@types/debug@4.1.12)(@types/node@20.12.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))
       eslint-plugin-storybook:
         specifier: ^0.11.2
         version: 0.11.2(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
@@ -495,6 +501,9 @@ importers:
 
   packages/components:
     dependencies:
+      '@internationalized/date':
+        specifier: ^3.8.1
+        version: 3.8.1
       '@react-aria/collections':
         specifier: 3.0.0-rc.1
         version: 3.0.0-rc.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -546,7 +555,7 @@ importers:
         version: link:../types
       '@react-types/shared':
         specifier: ^3.29.0
-        version: 3.29.0(react@19.1.0)
+        version: 3.29.1(react@19.1.0)
       '@storybook/addon-essentials':
         specifier: ^8.6.12
         version: 8.6.12(@types/react@19.1.5)(storybook@8.6.12(prettier@3.5.2))(webpack-sources@3.2.3)
@@ -665,6 +674,9 @@ importers:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
     devDependencies:
+      '@plone/registry':
+        specifier: workspace:*
+        version: link:../registry
       '@plone/types':
         specifier: workspace:*
         version: link:../types
@@ -3677,11 +3689,6 @@ packages:
 
   '@react-types/select@3.9.12':
     resolution: {integrity: sha512-qo+9JS1kfMxuibmSmMp0faGKbeVftYnSk1f7Rh5PKi4tzMe3C0A9IAr27hUOfWeJMBOdetaoTpYmoXW6+CgW3g==}
-    peerDependencies:
-      react: ^19.1.0
-
-  '@react-types/shared@3.29.0':
-    resolution: {integrity: sha512-IDQYu/AHgZimObzCFdNl1LpZvQW/xcfLt3v20sorl5qRucDVj4S9os98sVTZ4IRIBjmS+MkjqpR5E70xan7ooA==}
     peerDependencies:
       react: ^19.1.0
 
@@ -10852,7 +10859,7 @@ snapshots:
   '@babel/helper-module-imports@7.25.9':
     dependencies:
       '@babel/traverse': 7.26.9
-      '@babel/types': 7.26.9
+      '@babel/types': 7.27.1
     transitivePeerDependencies:
       - supports-color
 
@@ -10934,7 +10941,7 @@ snapshots:
   '@babel/helpers@7.26.9':
     dependencies:
       '@babel/template': 7.26.9
-      '@babel/types': 7.26.9
+      '@babel/types': 7.27.1
 
   '@babel/parser@7.26.9':
     dependencies:
@@ -13850,10 +13857,6 @@ snapshots:
       '@react-types/shared': 3.29.1(react@19.1.0)
       react: 19.1.0
 
-  '@react-types/shared@3.29.0(react@19.1.0)':
-    dependencies:
-      react: 19.1.0
-
   '@react-types/shared@3.29.1(react@19.1.0)':
     dependencies:
       react: 19.1.0
@@ -15250,7 +15253,7 @@ snapshots:
 
   '@vue/compiler-core@3.4.23':
     dependencies:
-      '@babel/parser': 7.26.9
+      '@babel/parser': 7.27.2
       '@vue/shared': 3.4.23
       entities: 4.5.0
       estree-walker: 2.0.2

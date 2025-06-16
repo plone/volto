@@ -3,7 +3,7 @@ import { data, isRouteErrorResponse, Links, Meta } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import i18next from './i18next.server';
 import type { Route } from './+types/root';
-import { flattenToAppURL } from './utils';
+import { flattenToAppURL } from '@plone/helpers';
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 import {

@@ -80,7 +80,7 @@ export const Example = (args: any) => <TextField {...args} />;
 export const Validation = (args: any) => (
   <Form className="flex flex-col items-start gap-2">
     <TextField {...args} />
-    <Button type="submit" variant="secondary">
+    <Button type="submit" variant="primary">
       Submit
     </Button>
   </Form>
