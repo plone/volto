@@ -1,16 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-04-01 03:47+0000\n"
-"Last-Translator: Yuri <yuri.carrer@unipd.it>\n"
-"Language: it\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/plone/volto-18/it/>\n"
-"Content-Type: \n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11-dev\n"
+msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: \nPOT-Creation-Date: \nPO-Revision-Date: 2025-06-17 07:02+0000\nLast-Translator: Yuri <yuri.carrer@unipd.it>\nLanguage-Team: Italian <https://hosted.weblate.org/projects/plone/volto-18/it/>\nLanguage: it\nContent-Type: \nContent-Transfer-Encoding: \nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.12.1\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -1185,7 +1174,7 @@ msgstr "Scarica l'evento"
 #. Default: "Download file"
 #: components/theme/View/FileView
 msgid "Download file"
-msgstr ""
+msgstr "Scarica il file"
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -2710,7 +2699,7 @@ msgstr "Persone responsabili della creazione del contenuto di questo elemento. I
 #. Default: "Placeholder"
 #: components/manage/Widgets/SchemaWidget
 msgid "Placeholder"
-msgstr ""
+msgstr "Segnaposto"
 
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
