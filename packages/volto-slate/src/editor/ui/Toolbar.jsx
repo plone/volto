@@ -3,9 +3,10 @@ import React, { useRef, useEffect } from 'react';
 import { useSlate } from 'slate-react';
 import Separator from './Separator';
 import BasicToolbar from './BasicToolbar';
-import { Editor, Node } from 'slate';
+import { Node } from 'slate';
 import { ReactEditor } from 'slate-react';
 import { createPortal } from 'react-dom';
+import { safeEditorNodes } from '../../utils/safe-nodes.js';
 
 const Toolbar = ({
   elementType,
@@ -45,7 +46,7 @@ const Toolbar = ({
     }
 
     if (elementType) {
-      const [element] = Editor.nodes(editor, {
+      const [element] = safeEditorNodes(editor, {
         at: editor.selection || editor.getSavedSelection(),
         match: (n) => n.type === elementType,
       });
