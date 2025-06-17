@@ -455,9 +455,9 @@ describe('Contents Delete Modal - selected items info and confirmation messages'
     cy.selectAllContents();
     cy.get('[aria-label="Delete"]').click();
     cy.get('.medium > .header').should('be.visible');
-    cy.contains('You are about to delete all items in this folder.').should(
-      'be.visible',
-    );
+    cy.contains(
+      'You are about to delete all items and all its subitems.',
+    ).should('be.visible');
   });
 
   it('Select all items using ALL pagination, should show folder message', () => {
@@ -475,9 +475,9 @@ describe('Contents Delete Modal - selected items info and confirmation messages'
     cy.selectAllContents();
     cy.get('[aria-label="Delete"]').click();
     cy.get('.medium > .header').should('be.visible');
-    cy.contains('You are about to delete all items in this folder.').should(
-      'be.visible',
-    );
+    cy.contains(
+      'You are about to delete all items and all its subitems.',
+    ).should('be.visible');
   });
 
   it('Select one item to delete, should show the item in the list with link', () => {

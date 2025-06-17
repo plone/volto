@@ -4476,15 +4476,15 @@ msgstr "jährlich"
 msgid "Yes"
 msgstr "Ja"
 
+#. Default: "You are about to delete all items and all its subitems."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items and all its subitems."
+msgstr "Sie sind dabei, alle Objekte und alle ihre Unterobjekte zu löschen."
+
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr "Sie sind dabei alle Objekte in der aktuellen Paginierung dieses Ordners zu löschen."
-
-#. Default: "You are about to delete this item and all its subitems."
-#: components/manage/Contents/ContentsDeleteModal
-msgid "You are about to delete this item and all its subitems."
-msgstr "Sie sind dabei, dieses Element und alle seine Unterelemente zu löschen."
 
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized

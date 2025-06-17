@@ -73,8 +73,8 @@ const messages = defineMessages({
       'You are about to delete all items in the current pagination of this folder.',
   },
   deleteAllItems: {
-    id: 'You are about to delete this item and all its subitems.',
-    defaultMessage: 'You are about to delete this item and all its subitems.',
+    id: 'You are about to delete all items and all its subitems.',
+    defaultMessage: 'You are about to delete all items and all its subitems.',
   },
   brokenReferencesMultiple: {
     id: 'Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}.',
