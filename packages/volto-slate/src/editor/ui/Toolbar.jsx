@@ -6,7 +6,7 @@ import BasicToolbar from './BasicToolbar';
 import { Node } from 'slate';
 import { ReactEditor } from 'slate-react';
 import { createPortal } from 'react-dom';
-import { safeEditorNodes } from '../../utils/safe-nodes.js';
+import { safeEditorNodes } from '../../utils/safe.js';
 
 const Toolbar = ({
   elementType,

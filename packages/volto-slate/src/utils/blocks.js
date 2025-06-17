@@ -10,7 +10,7 @@ import includes from 'lodash/includes';
 import some from 'lodash/some';
 import first from 'lodash/first';
 import { makeEditor } from './editor';
-import { safeEditorNodes } from './safe-nodes.js';
+import { safeEditorNodes } from './safe.js';
 
 // case sensitive; first in an inner array is the default and preffered format
 // in that array of formats

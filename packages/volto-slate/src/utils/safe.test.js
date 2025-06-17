@@ -1,4 +1,4 @@
-import { safeEditorNodes } from './safe-nodes.js';
+import { safeEditorNodes } from './safe.js';
 import { Editor } from 'slate';
 import { describe, it, expect, vi } from 'vitest';
 
