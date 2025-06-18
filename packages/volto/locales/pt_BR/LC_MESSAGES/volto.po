@@ -389,7 +389,7 @@ msgstr "Caminho da URL alternativa → caminho da URL de destino (data e hora da
 #. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
 msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
-msgstr ""
+msgstr "Outra pessoa editou este conteúdo e ele está sendo exibido atualmente. Você deseja substituir pelo seu conteúdo salvo automaticamente?"
 
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
@@ -445,7 +445,7 @@ msgstr "Automaticamente"
 #. Default: "Autosaved content found"
 #: helpers/Utils/withSaveAsDraft
 msgid "Autosaved content found"
-msgstr ""
+msgstr "Conteúdo salvo automaticamente encontrado"
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1018,7 +1018,7 @@ msgstr "Padrão"
 #. Default: "Default value"
 #: components/manage/Widgets/SchemaWidget
 msgid "Default value"
-msgstr ""
+msgstr "Valor padrão"
 
 #. Default: "Default view"
 #: config/Views
@@ -1098,7 +1098,7 @@ msgstr "Removida"
 #. Default: "Deleting this item will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item will break {brokenReferences} {variation}."
-msgstr ""
+msgstr "Excluir este item irá quebrar {brokenReferences} {variation}."
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
@@ -1184,7 +1184,7 @@ msgstr "Você realmente quer excluir este item?"
 #. Default: "Do you want to restore your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
 msgid "Do you want to restore your autosaved content?"
-msgstr ""
+msgstr "Você deseja restaurar seu conteúdo salvo automaticamente?"
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
@@ -1205,7 +1205,7 @@ msgstr "Baixar evento"
 #. Default: "Download file"
 #: components/theme/View/FileView
 msgid "Download file"
-msgstr ""
+msgstr "Baixar arquivo"
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -1555,7 +1555,7 @@ msgstr "Arquivo"
 #. Default: "File is not of the accepted type {accept}"
 #: components/manage/Widgets/FileWidget
 msgid "File is not of the accepted type {accept}"
-msgstr ""
+msgstr "O arquivo não é do tipo aceito {accept}"
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
@@ -1580,7 +1580,7 @@ msgstr "Arquivos carregados: {uploadedFiles}"
 #. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
 #: components/manage/Widgets/SchemaWidget
 msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
-msgstr ""
+msgstr "Preenche o valor do campo do formulário com o valor fornecido por um parâmetro de consulta na URL com o nome fornecido."
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
@@ -3508,12 +3508,12 @@ msgstr "Pequeno"
 #. Default: "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
-msgstr ""
+msgstr "Alguns itens são referenciados por outros conteúdos. Excluí-los irá quebrar {brokenReferences} {variation}."
 
 #. Default: "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
-msgstr ""
+msgstr "Alguns itens contêm subitens. Excluí-los também irá excluir seus {containedItemsToDelete} {variation} internos."
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3922,7 +3922,7 @@ msgstr "Esta é uma cópia de trabalho de {title}"
 #. Default: "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
-msgstr ""
+msgstr "Este item contém subitens. Excluí-lo também irá excluir seus {containedItemsToDelete} {variation} internos."
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -4480,7 +4480,7 @@ msgstr "Sim"
 #. Default: "You are about to delete all items and all its subitems."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items and all its subitems."
-msgstr ""
+msgstr "Você está prestes a excluir todos os itens e todos os seus subitens."
 
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
