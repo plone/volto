@@ -187,7 +187,7 @@ const ContentsDeleteModal = (props) => {
   const loading = useSelector((state) => state.linkIntegrity?.loading);
 
   const [brokenReferences, setBrokenReferences] = useState(0);
-  const [containedItemsToDelete, setContainedItemsToDelete] = useState([]);
+  const [containedItemsToDelete, setContainedItemsToDelete] = useState(0);
   const [breaches, setBreaches] = useState([]);
 
   const [linksAndReferencesViewLink, setLinkAndReferencesViewLink] =
@@ -220,10 +220,11 @@ const ContentsDeleteModal = (props) => {
 
   useEffect(() => {
     if (linkintegrityInfo) {
-      // total number of contained items in the items to be deleted
+      // Always set the total number of contained items, regardless of breaches
       const totalContainedItems = linkintegrityInfo
         .map((result) => result.items_total ?? 0)
         .reduce((acc, value) => acc + value, 0);
+      setContainedItemsToDelete(totalContainedItems); // <-- always set
       const breaches = linkintegrityInfo.flatMap((result) =>
         result.breaches.map((source) => ({
           source: source,
@@ -237,7 +238,6 @@ const ContentsDeleteModal = (props) => {
       );
       // If no breaches are found, return early
       if (filteredBreaches.length === 0) {
-        setContainedItemsToDelete(0);
         setBrokenReferences(0);
         setLinkAndReferencesViewLink(null);
         setBreaches([]);
@@ -255,7 +255,6 @@ const ContentsDeleteModal = (props) => {
         return acc;
       }, new Map());
 
-      setContainedItemsToDelete(totalContainedItems);
       setBrokenReferences(by_source.size);
       setLinkAndReferencesViewLink(
         linkintegrityInfo.length
