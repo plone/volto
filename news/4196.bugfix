@@ -1,0 +1,1 @@
+fix Slate editor "ctrl+s" hotkey causes conflicts with it's default behaviour. @MAX-786
