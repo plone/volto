@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { data, isRouteErrorResponse, Links, Meta } from 'react-router';
+import { data, isRouteErrorResponse, Links } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import i18next from './i18next.server';
 import type { Route } from './+types/root';
