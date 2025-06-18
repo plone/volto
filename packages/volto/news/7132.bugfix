@@ -1,0 +1,1 @@
+Make sure the server-side rendered content is still shown if there is an error while hydrating a page that did not have a server-side error. @davisagli

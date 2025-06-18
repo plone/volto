@@ -1,23 +1,15 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import type { GetRolesResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
-export type GetRolesArgs = {
-  config: PloneClientConfig;
-};
-
-export const getRoles = async ({
-  config,
-}: GetRolesArgs): Promise<GetRolesResponse> => {
+export async function getRoles(
+  this: PloneClient,
+): Promise<RequestResponse<GetRolesResponse>> {
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
 
   return apiRequest('get', '/@roles', options);
-};
-
-export const getRolesQuery = ({ config }: GetRolesArgs) => ({
-  queryKey: ['get', 'roles'],
-  queryFn: () => getRoles({ config }),
-});
+}

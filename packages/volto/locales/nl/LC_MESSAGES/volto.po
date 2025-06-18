@@ -384,6 +384,11 @@ msgstr "Alternatief URL-pad moet beginnen met een slash."
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "Alternatief URL-pad → doel URL-pad (datum en tijd van aanmaak, manueel aangemaakt ja/nee)"
 
+#. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+msgstr ""
+
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
@@ -434,6 +439,11 @@ msgstr "Toewijzingen"
 #: components/manage/Controlpanels/Aliases
 msgid "Automatically"
 msgstr "Automatisch"
+
+#. Default: "Autosaved content found"
+#: helpers/Utils/withSaveAsDraft
+msgid "Autosaved content found"
+msgstr ""
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -573,6 +583,11 @@ msgstr "Kan lay-out niet bewerken voor het <strong>{type}</strong>-contenttype o
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
 msgstr "Annuleren"
+
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr ""
 
 #. Default: "Cell"
 #: config/Blocks
@@ -998,6 +1013,11 @@ msgstr "Datum (nieuwste eerst)"
 msgid "Default"
 msgstr "Standaard"
 
+#. Default: "Default value"
+#: components/manage/Widgets/SchemaWidget
+msgid "Default value"
+msgstr ""
+
 #. Default: "Default view"
 #: config/Views
 msgid "Default view"
@@ -1005,6 +1025,7 @@ msgstr "Standaard weergave"
 
 #. Default: "Delete"
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/Groups/RenderGroups
@@ -1158,6 +1179,11 @@ msgstr "Wil je de gebruiker {username} echt verwijderen?"
 msgid "Do you really want to delete this item?"
 msgstr "Weet je zeker dat je dit item wilt verwijderen?"
 
+#. Default: "Do you want to restore your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Do you want to restore your autosaved content?"
+msgstr ""
+
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
@@ -1173,6 +1199,11 @@ msgstr "Document weergave"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
 msgstr "Evenement downloaden"
+
+#. Default: "Download file"
+#: components/theme/View/FileView
+msgid "Download file"
+msgstr ""
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -1391,6 +1422,7 @@ msgstr "Vermeldingen"
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
+#: components/manage/Widgets/ImageWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -1518,6 +1550,11 @@ msgstr "Veld"
 msgid "File"
 msgstr "Bestand"
 
+#. Default: "File is not of the accepted type {accept}"
+#: components/manage/Widgets/FileWidget
+msgid "File is not of the accepted type {accept}"
+msgstr ""
+
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
@@ -1537,6 +1574,11 @@ msgstr "Bestandsnaam"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Opgeladen bestanden: {uploadedFiles}"
+
+#. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+#: components/manage/Widgets/SchemaWidget
+msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+msgstr ""
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
@@ -2679,6 +2721,11 @@ msgstr "Persoonlijke hulpmiddelen"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Personen die verantwoordelijk zijn voor het maken van inhoud voor dit item. De eindverantwoordelijke vermeld je als eerste."
 
+#. Default: "Placeholder"
+#: components/manage/Widgets/SchemaWidget
+msgid "Placeholder"
+msgstr ""
+
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
@@ -2794,6 +2841,11 @@ msgstr "Ingangsdatum"
 #. Default: "Query"
 #: components/manage/Blocks/Listing/schema
 msgid "Query"
+msgstr ""
+
+#. Default: "Query Parameter Name"
+#: components/manage/Widgets/SchemaWidget
+msgid "Query Parameter Name"
 msgstr ""
 
 #. Default: "Re-enter the password. Make sure the passwords are identical."
@@ -3727,6 +3779,11 @@ msgstr "De backend server van jouw website antwoord niet, onze excuses voor het 
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr "De aanwezigheid van de knop schakelt de live-zoekfunctie uit, de bevraging wordt uitgevoerd wanneer je ENTER indrukt"
 
+#. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+#: components/manage/Widgets/FileWidget
+msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+msgstr ""
+
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
 msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
@@ -3741,6 +3798,11 @@ msgstr "De volgende lijst toont welke upgrade stappen zullen uitgevoerd worden. 
 #: components/manage/Contents/Contents
 msgid "The item could not be deleted."
 msgstr "Het item kon niet verwijderd worden."
+
+#. Default: "The kicker is a line of text shown above the title."
+#: components/manage/Blocks/Teaser/schema
+msgid "The kicker is a line of text shown above the title."
+msgstr ""
 
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
@@ -3766,6 +3828,11 @@ msgstr "De ingevoerde alternatieve URL bestaat reeds!"
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "Het registratieproces was succesvol. Controleer jouw e-mails voor informatie over hoe jouw account te activeren."
+
+#. Default: "The selected default language must be in the list of the field 'Available languages'"
+#: helpers/MessageLabels/MessageLabels
+msgid "The selected default language must be in the list of the field 'Available languages'"
+msgstr ""
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
@@ -3877,6 +3944,7 @@ msgstr "Deze regel is toegewezen aan volgende locaties:"
 
 #. Default: "Time"
 #: components/manage/Widgets/DatetimeWidget
+#: components/manage/Widgets/TimeWidget
 msgid "Time"
 msgstr "Tijd"
 
@@ -4391,6 +4459,11 @@ msgstr "Statussen werkstroom bijwerken..."
 msgid "Workflow updated."
 msgstr "Werkstroom bijgewerkt."
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "Werkkopie"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
@@ -4401,6 +4474,16 @@ msgstr "Jaarlijks"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Yes"
 msgstr "Ja"
+
+#. Default: "You are about to delete all items in the current pagination of this folder."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items in the current pagination of this folder."
+msgstr ""
+
+#. Default: "You are about to delete all items in this folder."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items in this folder."
+msgstr ""
 
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
@@ -4471,6 +4554,11 @@ msgstr "Jouw site is up-to-date."
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your usernaame is required for reset your password."
 msgstr "Jouw gebruikersnaam is vereist om je wachtwoord opnieuw in te stellen."
+
+#. Default: "File types allowed"
+#: components/manage/Widgets/SchemaWidget
+msgid "accept"
+msgstr ""
 
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
@@ -4643,7 +4731,7 @@ msgstr "werp intIds weg en herbouw relaties"
 msgid "flushAndRebuildRelationsHints"
 msgstr "<ul><li>Regenereer intIds (tokens van relaties in de relatiecatalogus)</li><li>Herbouw relaties</li></ul><p>Controleer de log voor details!</p><p><b>Opgelet</b>: Als je modules hebt die vertrouwen op intIds, gooi je ze beter niet weg.</p>"
 
-#. Default: "Head title"
+#. Default: "Kicker"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
 msgstr "Hoofdtitel"
@@ -4667,6 +4755,11 @@ msgstr "HTML"
 #: config/Blocks
 msgid "image"
 msgstr "Afbeelding"
+
+#. Default: "Please upload an image instead."
+#: components/manage/Widgets/ImageWidget
+msgid "imageUploadErrorMessage"
+msgstr ""
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
@@ -4712,11 +4805,6 @@ msgstr "Mijn gebruikersnaam is"
 #: config/Blocks
 msgid "leadimage"
 msgstr "Veld leidende afbeelding"
-
-#. Default: "Delete"
-#: components/manage/Contents/ContentsDeleteModal
-msgid "link-integrity: Delete"
-msgstr ""
 
 #. Default: "Delete item and break links"
 #: components/manage/Contents/ContentsDeleteModal
@@ -5046,6 +5134,11 @@ msgstr "Selecteer"
 #: components/manage/Blocks/Search/components/ViewSwitcher
 msgid "selectView"
 msgstr "Selecteer weergave"
+
+#. Default: "Maximum size of the file in bytes"
+#: components/manage/Widgets/SchemaWidget
+msgid "size"
+msgstr ""
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks

@@ -822,12 +822,29 @@ Cypress.Commands.add(
   },
 );
 
+// Helper function to check if it is normal text or special command
+function shouldVerifyContent(type) {
+  return !type.includes('{');
+}
+
 Cypress.Commands.add('getSlateEditorAndType', (type) => {
-  cy.getSlate().focus().click().type(type);
+  const el = cy.getSlate().focus().click().type(type);
+
+  if (shouldVerifyContent(type)) {
+    return el.should('contain', type, { timeout: 5000 });
+  }
+
+  return el;
 });
 
 Cypress.Commands.add('getSlateEditorSelectorAndType', (selector, type) => {
-  cy.getSlateSelector(selector).focus().click().type(type);
+  const el = cy.getSlateSelector(selector).focus().click().type(type);
+
+  if (shouldVerifyContent(type)) {
+    return el.should('contain', type, { timeout: 5000 });
+  }
+
+  return el;
 });
 
 Cypress.Commands.add('setSlateCursor', (subject, query, endQuery) => {
