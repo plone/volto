@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { data, isRouteErrorResponse, Links, Meta } from 'react-router';
+import { data, isRouteErrorResponse, Links } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import i18next from './i18next.server';
 import type { Route } from './+types/root';
@@ -83,7 +83,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   const message = 'Oops!';
   let details = 'An unexpected error occurred.';
   let stack: string | undefined;
-  let ErrorContent: React.ReactNode;
+  let ErrorContent: React.ReactElement;
 
   if (isRouteErrorResponse(error)) {
     switch (error.status) {
