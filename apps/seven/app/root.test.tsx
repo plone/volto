@@ -134,7 +134,13 @@ describe('Layout', () => {
 describe('ErrorBoundary', () => {
   it('should render the error message', async () => {
     const error = new Error('Test error');
-    render(<ErrorBoundary error={error} params={{}} />);
+    const Stub = createRoutesStub([
+      {
+        path: '/',
+        Component: () => <ErrorBoundary error={error} params={{}} />,
+      },
+    ]);
+    render(<Stub />);
     expect(screen.getByText('Test error')).toBeInTheDocument();
   });
 });

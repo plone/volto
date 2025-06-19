@@ -75,7 +75,9 @@ const formAtom = atom<Content>({} as Content);
 
 export default function Edit() {
   const { content, schema } = useLoaderData<typeof loader>();
+
   const { t } = useTranslation();
+
   const fetcher = useFetcher();
 
   const form = useAppForm({
