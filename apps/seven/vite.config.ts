@@ -28,6 +28,9 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  ssr: {
+    noExternal: ['rrule'],
+  },
   server: {
     port: 3000,
     fs: {
