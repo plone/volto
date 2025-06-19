@@ -20,6 +20,14 @@ export default function install(config: ConfigType) {
           id: 'content',
         },
       },
+      {
+        type: 'route',
+        path: 'sitemap',
+        file: '@plone/publicui/routes/sitemap.tsx',
+        // options: {
+        //   id: 'tuesday',
+        // },
+      },
     ],
   });
 

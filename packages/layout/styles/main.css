@@ -82,3 +82,11 @@ footer {
     place-self: center;
   }
 }
+
+#sitemap {
+  ul ul {
+    padding-left: 1rem;
+    margin-left: 0;
+    list-style: none;
+  }
+}
