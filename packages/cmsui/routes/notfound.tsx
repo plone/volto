@@ -9,7 +9,7 @@ const NotFound = () => {
       <h1 className="mb-4 text-2xl font-bold">{t('cmsui.notFound')}</h1>
       <p className="mb-3 text-lg">{t('cmsui.notFoundDescription')}</p>
       <p className="mb-3 text-lg">
-        {t('cmsui.SiteAdminstration')}
+        {t('cmsui.contact')}
         <NavLink to="/contact-form" className="text-blue-600 hover:underline">
           {t('cmsui.siteAdminstration')}
         </NavLink>
