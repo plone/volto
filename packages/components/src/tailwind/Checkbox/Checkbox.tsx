@@ -66,7 +66,7 @@ const boxStyles = tv({
 });
 
 const iconStyles =
-  'w-4 h-4 text-white group-disabled:text-gray-400 dark:text-slate-900 dark:group-disabled:text-slate-600 forced-colors:text-[HighlightText]';
+  'w-4 h-4 group-disabled:text-gray-400 forced-colors:text-[HighlightText]';
 
 export function Checkbox(props: CheckboxProps) {
   return (
