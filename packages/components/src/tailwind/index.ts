@@ -8,6 +8,9 @@ export { DatePicker } from './DatePicker/DatePicker';
 export { TimeField } from './TimeField/TimeField';
 export { DateInput } from './DateInput/DateInput';
 export { Tabs } from './Tabs/Tabs';
+export { SizeWidget } from './SizeWidget/SizeWidget';
+export { AlignWidget } from './AlignWidget/AlignWidget';
+export { WidthWidget } from './WidthWidget/WidthWidget';
 
 export * from './Breadcrumbs/Breadcrumbs';
 export * from './Accordion/Accordion';
