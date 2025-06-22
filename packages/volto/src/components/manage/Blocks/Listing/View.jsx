@@ -10,7 +10,11 @@ const View = (props) => {
 
   return (
     <div
-      className={cx('block listing', data.variation || 'default', className)}
+      className={cx(
+        'block listing',
+        data.variation || props.variation?.id || 'default',
+        className,
+      )}
       style={style}
     >
       <ListingBody {...props} path={path ?? pathname} />
