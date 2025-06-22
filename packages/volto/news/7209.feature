@@ -1,0 +1,1 @@
+Complete missing catalan translations @rboixaderg
