@@ -1089,10 +1089,10 @@ msgstr "क्या आप इस आइटम को हटाना चाह
 msgid "Deleted"
 msgstr "हटा दिया गया"
 
-#. Default: "Deleting this item breaks {brokenReferences} {variation}."
+#. Default: "Deleting this item will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Deleting this item breaks {brokenReferences} {variation}."
-msgstr "इस आइटम को हटाने से {brokenReferences} {variation} टूट जाता है।"
+msgid "Deleting this item will break {brokenReferences} {variation}."
+msgstr ""
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
@@ -3499,15 +3499,15 @@ msgstr "साइज: {size}"
 msgid "Small"
 msgstr "छोटा"
 
-#. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+#. Default: "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-msgstr "कुछ आइटम एक फ़ोल्डर भी हो सकते हैं। उन्हें हटा कर आप {containedItemsToDelete} {variation} फ़ोल्डर के अंदर में हटा देंगे।"
+msgid "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
+msgstr ""
 
-#. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+#. Default: "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-msgstr "कुछ आइटम अन्य सामग्रियों द्वारा संदर्भित होते हैं। उन्हें हटा कर आप {brokenReferences} {variation} टूट जाएगा।"
+msgid "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
+msgstr ""
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3795,6 +3795,11 @@ msgstr "निम्नलिखित सूची दिखाती है �
 msgid "The item could not be deleted."
 msgstr "आइटम को हटाया नहीं जा सका।"
 
+#. Default: "The kicker is a line of text shown above the title."
+#: components/manage/Blocks/Teaser/schema
+msgid "The kicker is a line of text shown above the title."
+msgstr ""
+
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
 msgid "The link address is:"
@@ -3908,10 +3913,10 @@ msgstr "यह एक आरक्षित नाम है और इसका
 msgid "This is a working copy of {title}"
 msgstr "यह {title} की काम की प्रतिलिपि है"
 
-#. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+#. Default: "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-msgstr "यह आइटम एक फ़ोल्डर भी है। इसे हटाकर आप {containedItemsToDelete} {variation} फ़ोल्डर के अंदर हटा देंगे।"
+msgid "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
+msgstr ""
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -4450,6 +4455,11 @@ msgstr "वर्कफ़्लो स्थितियों को अपड
 msgid "Workflow updated."
 msgstr "वर्कफ़्लो अपडेट किया गया है।"
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "काम की प्रतिलिपि"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
@@ -4461,14 +4471,14 @@ msgstr "सालाना"
 msgid "Yes"
 msgstr "हां"
 
+#. Default: "You are about to delete all items and all its subitems."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items and all its subitems."
+msgstr ""
+
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
-msgstr ""
-
-#. Default: "You are about to delete all items in this folder."
-#: components/manage/Contents/ContentsDeleteModal
-msgid "You are about to delete all items in this folder."
 msgstr ""
 
 #. Default: "You are trying to access a protected resource, please {login} first."
@@ -4565,6 +4575,11 @@ msgstr "अपना नया पासवर्ड दर्ज करें�
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "एक उपयोगकर्ता नाम दर्ज करें, सामान्यत: "jsmith" कुछ ऐसा। कोई रिक्त स्थान या विशेष वर्ण नहीं। उपयोगकर्ता नाम और पासवर्ड मामूली हैं, सुनिश्चित करें कि कैप्स लॉक कुंजी सक्षम नहीं है। यह लॉगिन के लिए उपयोग किया जाने वाला नाम है।"
+
+#. Default: "and {count} more…"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "and {count} more…"
+msgstr ""
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -4717,7 +4732,7 @@ msgstr "intIds और संबंध पुनः निर्माण कर�
 msgid "flushAndRebuildRelationsHints"
 msgstr "<ul><li>intIds पुनः उत्पन्न करें (संबंध निर्माण में संबंध के टोकन)</li><li>संबंध पुनः निर्माण करें</li></ul><p>विवरण के लिए लॉग की जाँच करें!</p><p><b>चेतावनी</b>: यदि आप ऐड-ऑन्स intIds पर आश्रित हैं, तो आपको उन्हें फ्लश नहीं करना चाहिए।</p>"
 
-#. Default: "Head title"
+#. Default: "Kicker"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
 msgstr "हेड शीर्षक"

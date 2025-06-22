@@ -1095,9 +1095,9 @@ msgstr "Voleu eliminar aquest element?"
 msgid "Deleted"
 msgstr "Eliminat"
 
-#. Default: "Deleting this item breaks {brokenReferences} {variation}."
+#. Default: "Deleting this item will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Deleting this item breaks {brokenReferences} {variation}."
+msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr "Eliminar aquest element trenca {brokenReferences} {variation}."
 
 #. Default: "Depth"
@@ -3505,15 +3505,15 @@ msgstr "Mida: {size}"
 msgid "Small"
 msgstr "Petita"
 
-#. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+#. Default: "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-msgstr "Alguns elements també són una carpeta. En eliminar-los, eliminaràs {containedItemsToDelete} {variation} dins les carpetes."
-
-#. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-#: components/manage/Contents/ContentsDeleteModal
-msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+msgid "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
 msgstr "Alguns elements són referenciats per altres continguts. En eliminar-los, es trencaran {brokenReferences} {variation}."
+
+#. Default: "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
+msgstr "Alguns elements contenen subelements. En eliminar-los, es suprimiran {containedItemsToDelete} {variation} dins d'ells."
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3801,6 +3801,11 @@ msgstr "La llista següent mostra quins passos d'actualització s'executaran. L'
 msgid "The item could not be deleted."
 msgstr "No s'ha pogut suprimir l'element."
 
+#. Default: "The kicker is a line of text shown above the title."
+#: components/manage/Blocks/Teaser/schema
+msgid "The kicker is a line of text shown above the title."
+msgstr ""
+
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
 msgid "The link address is:"
@@ -3914,10 +3919,10 @@ msgstr "Aquest és un nom reservat i no es pot utilitzar"
 msgid "This is a working copy of {title}"
 msgstr "Aquesta és una còpia de treball de {title}"
 
-#. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+#. Default: "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-msgstr "Aquest element també és una carpeta. En eliminar-lo, eliminaràs {containedItemsToDelete} {variation} dins la carpeta."
+msgid "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
+msgstr "Aquest element conté subelements. En eliminar-lo, es suprimiran {containedItemsToDelete} {variation} dins d'ell."
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -4456,6 +4461,11 @@ msgstr "S'estan actualitzant els estats del flux de treball..."
 msgid "Workflow updated."
 msgstr "Flux de treball actualitzat."
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "Còpia de treball"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
@@ -4467,15 +4477,15 @@ msgstr "Anualment"
 msgid "Yes"
 msgstr "Sí"
 
+#. Default: "You are about to delete all items and all its subitems."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items and all its subitems."
+msgstr ""
+
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr "Estàs a punt d'eliminar tots els elements de la paginació actual d'aquesta carpeta."
-
-#. Default: "You are about to delete all items in this folder."
-#: components/manage/Contents/ContentsDeleteModal
-msgid "You are about to delete all items in this folder."
-msgstr "Estàs a punt d'eliminar tots els elements d'aquesta carpeta."
 
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
@@ -4571,6 +4581,11 @@ msgstr "Introdueix la nova contrasenya. Mínim 8 caràcters."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "Introdueix un nom d'usuari, normalment alguna cosa com 'jgarcia'. Sense espais ni caràcters especials. Els noms d'usuari i contrasenya són sensibles a majúscules i minúscules, assegura't que el bloqueig de majúscules no estigui activat. Aquest és el nom per iniciar sessió."
+
+#. Default: "and {count} more…"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "and {count} more…"
+msgstr ""
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -4723,7 +4738,7 @@ msgstr "neteja intIds i reconstrueix relacions"
 msgid "flushAndRebuildRelationsHints"
 msgstr "<ul><li>Regenera intIds (tokens de relacions al catàleg de relacions)</li><li>Reconstrueix relacions</li></ul><p>Consulta el registre per a més detalls!</p><p><b>Avís</b>: Si tens complements que depenen d'intIds, no els netegis.</p>"
 
-#. Default: "Head title"
+#. Default: "Kicker"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
 msgstr "Títol principal"

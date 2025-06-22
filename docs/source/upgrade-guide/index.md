@@ -72,6 +72,14 @@ The `defaultLanguage` and `isMultilingual` settings have been removed.
 Instead, these values are fetched from the backend API.
 The `supportedLanguages` setting now only controls which locales are included in the build.
 
+
+### Renamed literal "Head title" to "Kicker" in Teaser block
+```{versionadded} Volto 19.0.0-alpha.3
+```
+
+The default (English) literal "Head title" in the `teaser` block has been renamed to "Kicker" for accuracy and clarity.
+The `head_title` property and the translation id (`head_title`) in the `teaser` block settings has been kept for backwards compatibility.
+
 (upgrading-to-volto-18-x-x)=
 
 ## Upgrading to Volto 18.x.x
