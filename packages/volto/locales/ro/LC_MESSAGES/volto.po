@@ -1095,10 +1095,10 @@ msgstr "Ștergeți acest element?"
 msgid "Deleted"
 msgstr "Șters"
 
-#. Default: "Deleting this item breaks {brokenReferences} {variation}."
+#. Default: "Deleting this item will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Deleting this item breaks {brokenReferences} {variation}."
-msgstr "Ștergerea acestui element întrerupe {brokenReferences} {variation}."
+msgid "Deleting this item will break {brokenReferences} {variation}."
+msgstr ""
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
@@ -1201,6 +1201,11 @@ msgstr "Vizualizare document"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
 msgstr "Descărcați evenimentul"
+
+#. Default: "Download file"
+#: components/theme/View/FileView
+msgid "Download file"
+msgstr ""
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -3500,15 +3505,15 @@ msgstr "Dimansiune: {size}"
 msgid "Small"
 msgstr "Mic"
 
-#. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+#. Default: "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-msgstr "Unele elemente sunt de asemenea un dosar. Prin eliminarea lor veți elimina {containedItemsToDelete} {variation} înauntru acelor dosare."
+msgid "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
+msgstr ""
 
-#. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+#. Default: "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-msgstr "Unele elemente sunt referite de alte elemente. Prin eliminarea lor {brokenReferences} {variation} vor fi rupte."
+msgid "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
+msgstr ""
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3796,6 +3801,11 @@ msgstr "Următoarea listă prezintă care dintre pașii de upgrade vor fi execut
 msgid "The item could not be deleted."
 msgstr "Elementul nu a putut fi șters."
 
+#. Default: "The kicker is a line of text shown above the title."
+#: components/manage/Blocks/Teaser/schema
+msgid "The kicker is a line of text shown above the title."
+msgstr ""
+
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
 msgid "The link address is:"
@@ -3909,10 +3919,10 @@ msgstr "Acesta este un nume rezervat și nu poate fi folosit"
 msgid "This is a working copy of {title}"
 msgstr "Aceasta este o copie de lucru a {title}"
 
-#. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+#. Default: "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-msgstr "Acest articol este, de asemenea, un director. Prin eliminarea lui veți șterge {containedItemsToDelete} {variation} în interiorul directorului."
+msgid "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
+msgstr ""
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -4451,6 +4461,11 @@ msgstr "Mesaj de încărcare pentru modificarea fluxului de lucru"
 msgid "Workflow updated."
 msgstr "Fluxul de lucru a fost actualizat."
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "Copie de lucru"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
@@ -4462,14 +4477,14 @@ msgstr "Anual"
 msgid "Yes"
 msgstr "Da"
 
+#. Default: "You are about to delete all items and all its subitems."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items and all its subitems."
+msgstr ""
+
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
-msgstr ""
-
-#. Default: "You are about to delete all items in this folder."
-#: components/manage/Contents/ContentsDeleteModal
-msgid "You are about to delete all items in this folder."
 msgstr ""
 
 #. Default: "You are trying to access a protected resource, please {login} first."
@@ -4566,6 +4581,11 @@ msgstr "Introduceți noua dvs. parolă. Minim 8 caractere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "Introduceți un nume de utilizator, de obicei ceva de genul vpopescu. Fără spații sau caractere speciale. Nume de utilizator și parole sunt sensibile la majuscule, asigurați-vă că tasta Caps Lock nu este activată. Acesta este numele folosit pentru a vă autentifica."
+
+#. Default: "and {count} more…"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "and {count} more…"
+msgstr ""
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -4718,7 +4738,7 @@ msgstr "ștergeți intIds și reconstruiește relațiile"
 msgid "flushAndRebuildRelationsHints"
 msgstr "<ul><li>Regenerează intIds (simboluri de relaţii în catalog de relaţii)</li><li>Reconstruiește relațiile</li></ul><p>Verificați registrul pentru detalii!</p><p><b>Atenție</b>: Dacă aveți module care depind de intIds, nu trebuie să ștergeți acestea.</p>"
 
-#. Default: "Head title"
+#. Default: "Kicker"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
 msgstr "Titlu"
