@@ -424,7 +424,7 @@ const defaultPlugins = [
   { object: require('./webpack-plugins/webpack-svg-plugin') },
   { object: require('./webpack-plugins/webpack-bundle-analyze-plugin') },
   { object: require('./jest-extender-plugin') },
-  'scss',
+  { object: require('./webpack-plugins/webpack-scss-plugin') },
 ];
 
 const plugins = addonExtenders.reduce(
