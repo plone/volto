@@ -31,11 +31,9 @@ defaultBlockType
     If you change this to a different type of block, make sure the block configuration includes the {ref}`blockHasValue` function.
 
 sentryOptions
-    In Volto 16.0.0.alpha.45, Sentry integration was moved from core to the add-on [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
-
-    ```{seealso}
-    See {doc}`../deploying/sentry`.
+    ```{versionremoved} Volto 16.0.0.alpha.45
     ```
+    In Volto 16.0.0.alpha.45, Sentry integration was moved from core to the add-on [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
 
 contentIcons
     With this property you can configure Content Types icons.
