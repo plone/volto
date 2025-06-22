@@ -3,7 +3,7 @@
  * @module actions/users/users
  */
 
-import queryString from 'query-string';
+import qs from 'query-string';
 
 import {
   CREATE_USER,
@@ -92,7 +92,7 @@ export function listUsers(options = {}) {
 
   let filterarg =
     groups_filter.length > 0
-      ? queryString.stringify(
+      ? qs.stringify(
           { 'groups-filter': groups_filter },
           { arrayFormat: 'colon-list-separator' },
         )
