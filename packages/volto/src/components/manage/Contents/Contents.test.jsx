@@ -105,6 +105,13 @@ describe('Contents', () => {
           Type: 'Type',
         },
       },
+      navroot: {
+        data: {
+          navroot: {
+            '@type': 'Plone Site',
+          },
+        },
+      },
     });
     const { container } = render(
       <Provider store={store}>

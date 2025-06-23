@@ -494,7 +494,7 @@ class Config {
 
     const utilityName = `${depsString ? `|${depsString}` : ''}${name}`;
 
-    return this._data.utilities[type][utilityName] || {};
+    return this._data.utilities[type]?.[utilityName] || {};
   }
 
   getUtilities(options: {

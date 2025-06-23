@@ -1009,7 +1009,16 @@ describe('Utilities registry', () => {
     ).toEqual('this is a simple validator utility');
   });
 
-  it('trying to get a non-existent utility returns undefined', () => {
+  it('trying to get an unregistered utility type returns undefined', () => {
+    expect(config.getUtility({ name: 'Something', type: 'schema' })).toEqual(
+      {},
+    );
+    expect(
+      config.getUtility({ name: 'Something', type: 'schema' }).method,
+    ).toEqual(undefined);
+  });
+
+  it('trying to get an undefined utility name returns undefined', () => {
     expect(config.getUtility({ name: undefined, type: 'schema' })).toEqual({});
     expect(
       config.getUtility({ name: undefined, type: 'schema' }).method,
@@ -1102,6 +1111,10 @@ describe('Utilities registry', () => {
 
   it('trying to use getUtilities with no type returns an empty array', () => {
     expect(config.getUtilities({ type: undefined }).length).toEqual(0);
+  });
+
+  it('trying to use getUtilities with an unregistered type returns an empty array', () => {
+    expect(config.getUtilities({ type: 'Something' }).length).toEqual(0);
   });
 
   it('getUtilities - registers two utilities with the same dependencies and different names', () => {
