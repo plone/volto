@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Link } from '@plone/components/tailwind';
+import { Link } from '@plone/components/quanta';
 import type { Content } from '@plone/types';
 
 export type SlateElementData = {

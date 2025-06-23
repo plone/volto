@@ -3,7 +3,7 @@ import {
   Breadcrumbs as PCBreadcrumbs,
   Breadcrumb as PCBreadcrumb,
   Container,
-} from '@plone/components/tailwind';
+} from '@plone/components/quanta';
 import { HomeIcon } from '@plone/components/Icons';
 
 const Breadcrumbs = (props: SlotComponentProps) => {

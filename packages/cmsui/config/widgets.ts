@@ -1,6 +1,6 @@
 import type { ConfigType } from '@plone/registry';
 import { TextField } from '../components/TextField/TextField';
-import { DateTimePicker } from '@plone/components/tailwind';
+import { DateTimePicker } from '@plone/components/quanta';
 import { DateField } from '@plone/components';
 
 export default function install(config: ConfigType) {

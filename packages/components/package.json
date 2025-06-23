@@ -41,9 +41,9 @@
     },
     "./dist/*.css": "./dist/*.css",
     "./src/*": "./src/*",
-    "./tailwind": {
-      "import": "./dist/tailwind/index.js",
-      "default": "./dist/tailwind/index.cjs"
+    "./quanta": {
+      "import": "./dist/quanta/index.js",
+      "default": "./dist/quanta/index.cjs"
     },
     ".": {
       "import": "./dist/index.js",

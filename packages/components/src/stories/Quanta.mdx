@@ -8,7 +8,7 @@ import { Meta } from '@storybook/blocks';
 `@plone/components` is a core package of Plone's modular frontend packages story.
 The purpose of this package is to provide an agnostic set of baseline components to build Plone sites upon.
 It has both a set of components that are agnostic to any framework and a specific implementation using the Quanta design system.
-The Quanta components are designed to work with the [Tailwind](https://tailwindcss.com/) CSS framework.
+The Quanta components implementation use the [Tailwind](https://tailwindcss.com/) CSS framework.
 
 This section primarily focuses on the Tailwind components part of the package.
 
@@ -24,7 +24,7 @@ pnpm add @plone/components
 Whenever you want to use the components, all are exported as named exports:
 
 ```ts
-import { TextField } from '@plone/components/tailwind';
+import { TextField } from '@plone/components/quanta';
 
 const MyComponent = (props) => {
   return (

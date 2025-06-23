@@ -23,7 +23,7 @@ import {
   AccordionPanel,
   AccordionItemTrigger,
   Button,
-} from '@plone/components/tailwind';
+} from '@plone/components/quanta';
 
 // import { ConsoleLog } from '../helpers/debug';
 
