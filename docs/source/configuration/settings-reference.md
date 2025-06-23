@@ -482,9 +482,13 @@ cssLayers
     ```
 
 showRelatedItems
-    If true, the `RelatedItems` component will show items from the `relatedItems` field. Default: false.
+    If true, the `RelatedItems` component will show items from the `relatedItems` field. Default: true.
 
     ```{versionadded} 18.5.0
+    ```
+
+    ```{versionchanged} 19
+    In Volto 19, the default was changed to `true`.
     ```
 
 showTags
