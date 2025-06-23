@@ -10,12 +10,13 @@ The purpose of this package is to provide an agnostic set of baseline components
 It has both a set of components that are agnostic to any framework and a specific implementation using the Quanta design system.
 The Quanta components implementation use the [Tailwind](https://tailwindcss.com/) CSS framework.
 
-This section primarily focuses on the Tailwind components part of the package.
+This section primarily focuses on Quanta components part of the package and how to use them.
 
 ## Usage
 
 You can use your choice of package manager (npm, yarn, or pnpm) to install the package in your app.
-If you add the components to Seven or Volto add-ons, use pnpm, as shown.
+If you add the components to Seven add-ons, use pnpm, as shown.
+You cannot use the components in Volto add-ons, as the Volto build cannot handle Tailwind.
 
 ```shell
 pnpm add @plone/components
@@ -39,7 +40,7 @@ export default MyComponent;
 
 ## Styling
 
-The Tailwind components are styled using the Tailwind CSS utility-first framework.
+The Quanta components are styled using the Tailwind CSS utility-first framework.
 This means that the components are styled using utility classes, which are applied directly to the components.
 
 ### CSS layers
