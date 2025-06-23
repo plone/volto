@@ -9,7 +9,7 @@ import {
   redirectIfLoggedInLoader,
   setAuthOnResponse,
 } from '@plone/react-router';
-import { Button } from '@plone/components/tailwind';
+import { Button } from '@plone/components/quanta';
 import { TextField } from '../../components/TextField/TextField';
 import ploneSvg from '../../static/plone-white.svg';
 import ArrowRightSVG from '@plone/components/icons/arrow-right.svg?react';
