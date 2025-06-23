@@ -881,7 +881,7 @@ describe('Slots registry', () => {
     ]);
   });
 
-  it('unRegisterSlotComponent - remove one registered slot', () => {
+  it('unregisterSlotComponent - remove one registered slot', () => {
     config.registerSlotComponent({
       name: 'Colophon',
       slot: 'postFooter',
@@ -892,13 +892,13 @@ describe('Slots registry', () => {
     expect(
       config.getSlotComponent('postFooter', 'Colophon')[0].component,
     ).toEqual('The colophon component');
-    config.unRegisterSlotComponent('postFooter', 'Colophon', 0);
+    config.unregisterSlotComponent('postFooter', 'Colophon', 0);
     expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(0);
 
     expect(config.getSlotComponents('postFooter')).toEqual([]);
   });
 
-  it('unRegisterSlotComponent - remove one registered slot, then re-register it', () => {
+  it('unregisterSlotComponent - remove one registered slot, then re-register it', () => {
     config.registerSlotComponent({
       name: 'Colophon',
       slot: 'postFooter',
@@ -909,7 +909,7 @@ describe('Slots registry', () => {
     expect(
       config.getSlotComponent('postFooter', 'Colophon')[0].component,
     ).toEqual('The colophon component');
-    config.unRegisterSlotComponent('postFooter', 'Colophon', 0);
+    config.unregisterSlotComponent('postFooter', 'Colophon', 0);
     expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(0);
 
     expect(config.getSlotComponents('postFooter')).toEqual([]);
@@ -926,7 +926,7 @@ describe('Slots registry', () => {
     ).toEqual('The colophon component');
   });
 
-  it('unRegisterSlotComponent - registers 2 + 2 slot components with predicates', () => {
+  it('unregisterSlotComponent - registers 2 + 2 slot components with predicates', () => {
     config.registerSlotComponent({
       slot: 'toolbar',
       name: 'save',
@@ -966,7 +966,7 @@ describe('Slots registry', () => {
       'this is a toolbar save component with a true predicate',
     );
 
-    config.unRegisterSlotComponent('toolbar', 'save', 1);
+    config.unregisterSlotComponent('toolbar', 'save', 1);
 
     expect(config.getSlotComponent('toolbar', 'save').length).toEqual(1);
     expect(config.getSlotComponent('toolbar', 'save')[0].component).toEqual(
