@@ -1,34 +1,45 @@
 import React from 'react';
+import { ChevronrightIcon, HomeIcon } from '../../components/icons';
 import {
   Breadcrumbs as RACBreadcrumbs,
   Breadcrumb as RACBreadcrumb,
-  type BreadcrumbProps as RACBreadcrumbProps,
+  type BreadcrumbProps,
   type BreadcrumbsProps as RACBreadcrumbsProps,
   type LinkProps,
 } from 'react-aria-components';
-import { Link } from '../Link/Link';
-import { HomeIcon } from '../../components/icons';
+import { twMerge } from 'tailwind-merge';
+import { Link } from '../Link/Link.quanta';
+import { composeTailwindRenderProps } from '../utils';
 
-export type Breadcrumb = {
+export interface Breadcrumb {
   '@id': string;
   title: string;
   icon?: React.ReactNode;
-};
+}
 
 export function Breadcrumb(
-  props: RACBreadcrumbProps &
+  props: BreadcrumbProps &
     Omit<LinkProps, 'className'> & {
       separator?: React.ReactNode;
       value?: Breadcrumb;
     },
 ) {
   return (
-    <RACBreadcrumb {...props}>
+    <RACBreadcrumb
+      {...props}
+      className={composeTailwindRenderProps(
+        props.className,
+        'flex items-center gap-1 [&_a>svg]:mx-1 [&_a>svg]:inline [&_a>svg]:align-text-top',
+      )}
+    >
       {({ isCurrent }) => (
         <>
           {props.value?.icon && props.value?.icon}
-          <Link {...props} />
-          {!isCurrent && props.separator && props.separator}
+          <Link variant="secondary" {...props} />
+          {!isCurrent &&
+            (props.separator ?? (
+              <ChevronrightIcon className="h-3 w-3 text-gray-600" />
+            ))}
         </>
       )}
     </RACBreadcrumb>
@@ -43,9 +54,6 @@ interface BreadcrumbsProps<T extends Breadcrumb = Breadcrumb>
   root?: Breadcrumb;
 }
 
-/**
- * Breadcrumbs display a hierarchy of links to the current page or resource in an application.
- */
 export function Breadcrumbs<T extends Breadcrumb>(props: BreadcrumbsProps<T>) {
   const { root, items } = props;
   let itemsWithRoot: typeof items;
@@ -58,32 +66,11 @@ export function Breadcrumbs<T extends Breadcrumb>(props: BreadcrumbsProps<T>) {
     itemsWithRoot = [rootItem, ...items!];
   }
 
-  return <RACBreadcrumbs {...props} items={itemsWithRoot || items} />;
-}
-
-export function BreadcrumbsSlot<T extends Breadcrumb>(
-  props: BreadcrumbsProps<T>,
-) {
-  const { root, items } = props;
-  let itemsWithRoot: typeof items;
-  if (root && items) {
-    const rootItem = {
-      '@id': root['@id'] || '/',
-      title: 'Home',
-      icon: root.icon || <HomeIcon size="sm" />,
-    } as T;
-    itemsWithRoot = [rootItem, ...items!];
-  }
-
   return (
-    <nav aria-label="breadcrumbs" role="navigation">
-      <Breadcrumbs items={itemsWithRoot || items}>
-        {(item) => (
-          <Breadcrumb id={item['@id']} href={item['@id']}>
-            {item.title}
-          </Breadcrumb>
-        )}
-      </Breadcrumbs>
-    </nav>
+    <RACBreadcrumbs
+      {...props}
+      items={itemsWithRoot || items}
+      className={twMerge('flex gap-1', props.className)}
+    />
   );
 }

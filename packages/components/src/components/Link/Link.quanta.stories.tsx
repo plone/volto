@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Link } from './Link.tailwind';
+import { Link } from './Link.quanta';
 
 const meta = {
   component: Link,

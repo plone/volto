@@ -106,4 +106,5 @@ export interface SettingsConfig {
     titleAndSiteTitleSeparator: string;
   };
   cssLayers: string[];
+  hideBreadcrumbs: string[]; // Content types for which to hide breadcrumbs
 }
