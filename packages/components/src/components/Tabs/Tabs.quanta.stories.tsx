@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Tabs } from './Tabs.tailwind';
+import { Tabs } from './Tabs.quanta';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-  title: 'Tailwind/Tabs',
+  title: 'Quanta/Tabs',
   component: Tabs,
   parameters: {
     layout: 'centered',

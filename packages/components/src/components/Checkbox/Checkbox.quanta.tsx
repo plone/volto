@@ -9,7 +9,7 @@ import {
   composeRenderProps,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
-import { Description, FieldError, Label } from '../Field/Field.tailwind';
+import { Description, FieldError, Label } from '../Field/Field.quanta';
 import { composeTailwindRenderProps, focusRing } from '../utils';
 
 export interface CheckboxGroupProps

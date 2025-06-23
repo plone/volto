@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Form } from 'react-aria-components';
-import { Button } from '../Button/Button.tailwind';
-import { DatePicker } from './DatePicker.tailwind';
+import { Button } from '../Button/Button.quanta';
+import { DatePicker } from './DatePicker.quanta';
 
 // DatePicker Stories
 const meta = {
-  title: 'Tailwind/DatePicker',
+  title: 'Quanta/DatePicker',
   component: DatePicker,
   parameters: {
     layout: 'centered',

@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, useCallback, useId } from 'react';
 import {
   Button,
   ComboBox,
+  Input,
   ListBox,
   Popover,
   type Key,
@@ -10,7 +11,7 @@ import {
   TagList,
   Tag,
 } from 'react-aria-components';
-import { Description, Label, Input } from '../Field/Field.tailwind';
+import { Description, Label } from '../Field/Field.quanta';
 import { useListData } from 'react-stately';
 import type { ListData } from 'react-stately';
 import { useFilter } from 'react-aria';
@@ -250,6 +251,7 @@ export function MultiSelect({
                 accessibleList.setFilterText('');
               }}
               onKeyDownCapture={onKeyDownCapture}
+              className="min-w-0 flex-1 bg-white px-2 py-1.5 text-sm text-gray-800 outline-0 disabled:text-gray-200"
             />
 
             <Button

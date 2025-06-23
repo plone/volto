@@ -3,7 +3,7 @@ import {
   MultiSelect,
   type Option,
   type MultiSelectProps,
-} from './MultiSelect.tailwind';
+} from './MultiSelect.quanta';
 import { useListData } from 'react-stately';
 import { type Key } from 'react-aria-components';
 
@@ -23,7 +23,7 @@ const items: Option[] = [
 ];
 
 export default {
-  title: 'Tailwind/MultiSelect',
+  title: 'Quanta/MultiSelect',
   component: MultiSelect,
   parameters: {
     layout: 'centered',

@@ -8,7 +8,7 @@ import {
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
 import { composeTailwindRenderProps, focusRing } from '../utils';
-import { Description, FieldError, Label } from '../Field/Field.tailwind';
+import { Description, FieldError, Label } from '../Field/Field.quanta';
 
 export interface RadioGroupProps extends Omit<RACRadioGroupProps, 'children'> {
   label?: string;

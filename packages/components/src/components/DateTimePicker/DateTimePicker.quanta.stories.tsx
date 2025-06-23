@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Form } from 'react-aria-components';
 import { now, getLocalTimeZone } from '@internationalized/date';
-import { Button } from '../Button/Button.tailwind';
-import { DateTimePicker } from './DateTimePicker.tailwind';
+import { Button } from '../Button/Button.quanta';
+import { DateTimePicker } from './DateTimePicker.quanta';
 
 function getCurrentUtcString(): string {
   return now(getLocalTimeZone()).toAbsoluteString();
@@ -11,7 +11,7 @@ function getCurrentUtcString(): string {
 
 // DateTimePicker Stories
 const meta = {
-  title: 'Tailwind/DateTimePicker',
+  title: 'Quanta/DateTimePicker',
   component: DateTimePicker,
   parameters: {
     layout: 'centered',

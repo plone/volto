@@ -1,10 +1,10 @@
 import React from 'react';
-import { RadioGroup, Radio } from './RadioGroup.tailwind';
+import { RadioGroup, Radio } from './RadioGroup.quanta';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-  title: 'Tailwind/RadioGroup',
+  title: 'Quanta/RadioGroup',
   component: RadioGroup,
   parameters: {
     layout: 'centered',

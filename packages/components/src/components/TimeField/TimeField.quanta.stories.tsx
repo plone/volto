@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Form } from 'react-aria-components';
 import { Time } from '@internationalized/date';
-import { Button } from '../Button/Button.tailwind';
-import { TimeField } from './TimeField.tailwind';
+import { Button } from '../Button/Button.quanta';
+import { TimeField } from './TimeField.quanta';
 
 // TimeField Stories
 const meta = {
-  title: 'Tailwind/TimeField',
+  title: 'Quanta/TimeField',
   component: TimeField,
   parameters: {
     layout: 'centered',

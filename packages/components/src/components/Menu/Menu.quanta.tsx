@@ -15,9 +15,9 @@ import {
   type MenuTriggerProps,
   type PressEvent,
 } from 'react-aria-components';
-import { Popover, type PopoverProps } from '../Popover/Popover';
+import { Popover, type PopoverProps } from '../Popover/Popover.quanta';
 import { CheckboxIcon, ChevronrightIcon } from '../../components/icons';
-import { Button } from '../Button/Button';
+import { Button } from '../Button/Button.quanta';
 import { Separator } from '../Separator/Separator.quanta';
 import { tv } from 'tailwind-variants';
 

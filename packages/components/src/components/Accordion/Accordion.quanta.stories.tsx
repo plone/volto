@@ -4,12 +4,12 @@ import {
   AccordionItem,
   AccordionPanel,
   AccordionItemTrigger,
-} from './Accordion.tailwind';
+} from './Accordion.quanta';
 import type { Meta, StoryObj } from '@storybook/react';
-import ChevronRight from '@plone/components/icons/chevron-right.svg?react';
+import { ChevronrightIcon } from '../../components/icons';
 
 const meta = {
-  title: 'Tailwind/Accordion',
+  title: 'Quanta/Accordion',
   component: Accordion,
   parameters: {
     layout: 'centered',
@@ -156,7 +156,7 @@ export const Nested: Story = {
                 <AccordionItem key={childIndex} id={childIndex}>
                   <AccordionItemTrigger className="group">
                     <span>
-                      <ChevronRight className="size-5 duration-300 group-aria-expanded:rotate-90" />
+                      <ChevronrightIcon className="size-5 duration-300 group-aria-expanded:rotate-90" />
                       {child.title}
                     </span>
                   </AccordionItemTrigger>

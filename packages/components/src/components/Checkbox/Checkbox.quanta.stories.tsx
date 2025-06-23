@@ -1,7 +1,7 @@
-import { Checkbox } from './Checkbox.tailwind';
+import { Checkbox } from './Checkbox.quanta';
 
 export default {
-  title: 'Tailwind/Checkbox',
+  title: 'Quanta/Checkbox',
   component: Checkbox,
   parameters: {
     layout: 'centered',

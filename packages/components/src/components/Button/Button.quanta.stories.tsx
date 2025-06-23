@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Button } from './Button.tailwind';
+import { Button } from './Button.quanta';
 import { BinIcon } from '../../components/icons/BinIcon';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-  title: 'Tailwind/Button',
+  title: 'Quanta/Button',
   component: Button,
   parameters: {
     layout: 'centered',

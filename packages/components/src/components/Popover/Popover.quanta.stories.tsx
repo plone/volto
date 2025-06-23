@@ -1,10 +1,13 @@
 import React from 'react';
 import type { Meta } from '@storybook/react';
 import { DialogTrigger, Heading } from 'react-aria-components';
-import { Button, Dialog, Popover } from '@plone/components';
+import { Button } from '../Button/Button.quanta';
+import { Dialog } from '../Dialog/Dialog.quanta';
+import { Popover } from '../Popover/Popover.quanta';
 import { InfoIcon } from '../../components/icons';
 
 const meta: Meta<typeof Popover> = {
+  title: 'Quanta/Popover',
   component: Popover,
   parameters: {
     layout: 'centered',

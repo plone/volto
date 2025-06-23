@@ -1,11 +1,11 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Form } from 'react-aria-components';
-import { Button } from '../Button/Button.tailwind';
-import { TextField } from '../TextField/TextField.tailwind';
+import { Button } from '../Button/Button.quanta';
+import { TextField } from '../TextField/TextField.quanta';
 
 const meta = {
-  title: 'Tailwind/TextField',
+  title: 'Quanta/TextField',
   component: TextField,
   parameters: {
     layout: 'centered',

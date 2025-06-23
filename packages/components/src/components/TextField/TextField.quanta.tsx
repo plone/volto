@@ -11,7 +11,7 @@ import {
   Input,
   Label,
   fieldBorderStyles,
-} from '../Field/Field.tailwind';
+} from '../Field/Field.quanta';
 import { composeTailwindRenderProps, focusRing } from '../utils';
 
 const inputStyles = tv({

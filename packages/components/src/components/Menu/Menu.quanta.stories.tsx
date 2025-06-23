@@ -11,9 +11,10 @@ import {
   SettingsIcon,
 } from '../../components/icons';
 import { type Selection } from 'react-aria-components';
-import { Menu } from './Menu';
+import { Menu } from './Menu.quanta';
 
 const meta: Meta<typeof Menu> = {
+  title: 'Quanta/Menu',
   component: Menu,
   parameters: {
     layout: 'centered',

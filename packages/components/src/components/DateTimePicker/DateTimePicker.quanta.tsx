@@ -17,19 +17,19 @@ import {
   ZonedDateTime,
 } from '@internationalized/date';
 
-import { Button } from '../Button/Button.tailwind';
+import { Button } from '../Button/Button.quanta';
 import {
   Description,
   FieldError,
   FieldGroup,
   Label,
-} from '../Field/Field.tailwind';
+} from '../Field/Field.quanta';
 
 import { composeTailwindRenderProps } from '../utils';
-import { Popover } from '../Popover/Popover.tailwind';
-import { Dialog } from '../Dialog/Dialog.tailwind';
-import { Calendar } from '../Calendar/Calendar.tailwind';
-import { DateInput } from '../DateInput/DateInput.tailwind';
+import { Popover } from '../Popover/Popover.quanta';
+import { Dialog } from '../Dialog/Dialog.quanta';
+import { Calendar } from '../Calendar/Calendar.quanta';
+import { DateInput } from '../DateInput/DateInput.quanta';
 
 type Granularity = 'day' | 'hour' | 'minute' | 'second';
 function isDateOnly(granularity: Granularity) {

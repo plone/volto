@@ -4,7 +4,7 @@ import { type ValidationResult } from 'react-aria-components';
 import {
   DateTimePicker,
   type DateTimePickerProps,
-} from '../DateTimePicker/DateTimePicker.tailwind';
+} from '../DateTimePicker/DateTimePicker.quanta';
 
 export interface DatePickerProps
   extends Omit<DateTimePickerProps, 'granularity'> {

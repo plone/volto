@@ -6,7 +6,7 @@ import {
   DateSegment,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
-import { fieldGroupStyles } from '../Field/Field.tailwind';
+import { fieldGroupStyles } from '../Field/Field.quanta';
 
 const segmentStyles = tv({
   base: 'type-literal:px-0 inline rounded-xs p-0.5 text-gray-800 caret-transparent outline outline-0 forced-color-adjust-none dark:text-zinc-200 forced-colors:text-[ButtonText]',

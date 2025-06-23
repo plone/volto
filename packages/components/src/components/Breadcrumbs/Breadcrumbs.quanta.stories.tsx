@@ -1,6 +1,6 @@
 import React from 'react';
 import { Breadcrumb, Breadcrumbs } from './Breadcrumbs.quanta';
-import { Menu, MenuItem } from '../Menu/Menu';
+import { Menu, MenuItem } from '../Menu/Menu.quanta';
 import {
   FolderIcon,
   HomeIcon,
@@ -11,7 +11,7 @@ import {
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-  title: 'Tailwind/Breadcrumbs',
+  title: 'Quanta/Breadcrumbs',
   component: Breadcrumbs,
   parameters: {
     layout: 'centered',

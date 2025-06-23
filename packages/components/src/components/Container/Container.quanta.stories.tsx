@@ -1,10 +1,10 @@
 import React from 'react';
-import { Container } from './Container.tailwind';
+import { Container } from './Container.quanta';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-  title: 'Tailwind/Container',
+  title: 'Quanta/Container',
   component: Container,
   tags: ['autodocs'],
 } satisfies Meta<typeof Container>;
@@ -13,6 +13,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Narrow: Story = {
+  render: (args: any) => <Container {...args}></Container>,
   args: {
     className: 'bg-gray-300 p-4',
     children: (

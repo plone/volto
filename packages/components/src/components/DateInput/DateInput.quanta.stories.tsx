@@ -7,13 +7,13 @@ import {
   today,
   getLocalTimeZone,
 } from '@internationalized/date';
-import { Button } from '../Button/Button.tailwind';
-import { Label, Description, FieldError } from '../Field/Field.tailwind';
-import { DateInput } from './DateInput.tailwind';
+import { Button } from '../Button/Button.quanta';
+import { Label, Description, FieldError } from '../Field/Field.quanta';
+import { DateInput } from './DateInput.quanta';
 
 // DateInput Stories
 const meta = {
-  title: 'Tailwind/DateInput',
+  title: 'Quanta/DateInput',
   component: DateInput,
   parameters: {
     layout: 'centered',
