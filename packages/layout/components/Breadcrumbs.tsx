@@ -1,19 +1,34 @@
+import type { SlotComponentProps } from '../SlotRenderer';
 import {
   Breadcrumbs as PCBreadcrumbs,
-  Breadcrumb,
-} from '@plone/components/tailwind';
+  Breadcrumb as PCBreadcrumb,
+  Container,
+} from '@plone/components/quanta';
+import { HomeIcon } from '@plone/components/Icons';
 
-import type { BreadcrumbsProps } from '@plone/components/tailwind';
+const Breadcrumbs = (props: SlotComponentProps) => {
+  const { content } = props;
+  const items = content?.['@components']?.breadcrumbs.items;
+  const root = content?.['@components']?.breadcrumbs.root;
 
-const Breadcrumbs = (props: BreadcrumbsProps) => {
+  const rootItem = {
+    '@id': root || '/',
+    title: 'Home',
+    icon: <HomeIcon size="sm" />,
+  };
+
+  const breacrumbs = [rootItem, ...(items || [])];
+
   return (
-    <PCBreadcrumbs {...props}>
-      {(item) => (
-        <Breadcrumb id={item['@id']} href={item['@id']}>
-          {item.title}
-        </Breadcrumb>
-      )}
-    </PCBreadcrumbs>
+    <Container as="nav" width="default" className="py-4">
+      <PCBreadcrumbs items={breacrumbs}>
+        {(item) => (
+          <PCBreadcrumb id={item['@id']} href={item['@id']}>
+            {item.title}
+          </PCBreadcrumb>
+        )}
+      </PCBreadcrumbs>
+    </Container>
   );
 };
 

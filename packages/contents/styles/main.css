@@ -24,21 +24,21 @@
     gap: 1rem;
 
     .end-block {
+      flex: 1 0 0;
+      flex-wrap: wrap-reverse;
       align-items: center;
       align-self: flex-end;
+      justify-content: flex-end;
       gap: 1rem;
       margin-inline-start: auto;
-      flex-wrap: wrap-reverse;
-      justify-content: flex-end;
-      flex: 1 0 0;
     }
   }
 
   /* Breadcrumbs */
   .react-aria-Breadcrumbs.contents-breadcrumbs {
+    align-items: start;
     color: var(--quanta-sapphire);
     font-size: 0.89rem;
-    align-items: start;
 
     .react-aria-Link {
       font-size: 0.89rem;

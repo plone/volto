@@ -57,6 +57,7 @@
     "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
     "react-aria-components": "catalog:",
+    "react-router": "catalog:",
     "tailwindcss": "catalog:"
   },
   "devDependencies": {

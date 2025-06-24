@@ -56,16 +56,14 @@ export default MyComponent;
 
 ## Styling
 
-This package provides two type of components.
-One uses Tailwind CSS, and the other uses pure CSS.
-The Tailwind CSS components are built using the Tailwind CSS utility classes.
+This package provides two flavors of components: Basic and Quanta.
+Basic uses pure CSS, while Quanta uses [Tailwind](https://tailwindcss.com/).
 The pure CSS components are built using the CSS rules provided in the package.
+The Quanta components are built using the Tailwind CSS utility classes.
 
-## Tailwind
+## Quanta components
 
-This package provides a set of components that use Tailwind CSS utility classes.
-
-[See this page](?path=/docs/tailwind-introduction--docs) for more information about the Tailwind components.
+[See this page](?path=/docs/quanta-introduction--docs) for more information about the Quanta components.
 
 ## Styling using pure CSS
 
@@ -103,9 +101,9 @@ It uses the `plone-components` layer name to scope all the CSS declarations in t
 The basic styling uses the nested `plone-components.base` named layer.
 You can use the `plone-components` layer to override the basic styling, or use the `plone-components.base` layer to override the basic styling in a more specific way.
 
-### Quanta
+### Quanta (pure CSS)
 
-This package also features the Quanta components.
+This package also features the implementation of some Quanta components in pure CSS.
 These components use the basic styling as a baseline, extending them to achieve the Quanta look and feel.
 They also extend the basic React components in a composable way.
 The Quanta styling is scoped in the `plone-components.quanta` named layer.

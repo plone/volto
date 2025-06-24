@@ -32,8 +32,8 @@
     },
     "./icons/*": "./src/icons/*",
     "./Icons": {
-      "import": "./dist/components/Icons/index.js",
-      "default": "./dist/components/Icons/index.cjs"
+      "import": "./dist/components/icons/index.js",
+      "default": "./dist/components/icons/index.cjs"
     },
     "./vite-plugin-svgr": {
       "import": "./vite-plugin-svgr.js",
@@ -42,9 +42,9 @@
     "./dist/*.css": "./dist/*.css",
     "./dist/fonts/*": "./dist/fonts/*",
     "./src/*": "./src/*",
-    "./tailwind": {
-      "import": "./dist/tailwind/index.js",
-      "default": "./dist/tailwind/index.cjs"
+    "./quanta": {
+      "import": "./dist/quanta/index.js",
+      "default": "./dist/quanta/index.cjs"
     },
     ".": {
       "import": "./dist/index.js",
@@ -64,6 +64,7 @@
   ],
   "scripts": {
     "build": "tsup && pnpm build:css",
+    "build:watch": "tsup --watch && pnpm build:css",
     "build:force": "tsup && pnpm build:css",
     "build:css": "pnpm build:basic && pnpm build:quanta",
     "build:basic": "lightningcss --browserslist --bundle --sourcemap src/styles/basic/main.css -o basic.css && mv basic.css* dist/.",
@@ -96,8 +97,7 @@
     "not dead"
   ],
   "dependencies": {
-    "@internationalized/date": "^3.8.1",
-    "@react-aria/collections": "3.0.0-rc.1",
+    "@internationalized/date": "^3.8.2",
     "@react-aria/utils": "^3.29.0",
     "@react-spectrum/utils": "^3.12.5",
     "@storybook/test": "^8.6.12",

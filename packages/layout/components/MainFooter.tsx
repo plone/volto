@@ -1,6 +1,6 @@
 import type { SlotComponentProps } from '../SlotRenderer';
 import { Link } from '@plone/components';
-import { Container } from '@plone/components/tailwind';
+import { Container } from '@plone/components/quanta';
 
 import Logo from './Logo';
 
