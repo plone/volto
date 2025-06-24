@@ -106,7 +106,7 @@ export function Input(props: InputProps) {
 }
 
 type FieldWrapperProps = {
-  wrapped: boolean;
+  wrapped?: boolean;
   children: React.ReactNode;
   className?: string;
   isRequired?: boolean;
@@ -125,10 +125,15 @@ type FieldWrapperProps = {
 
 export const Field = React.forwardRef<HTMLDivElement, FieldWrapperProps>(
   (props: FieldWrapperProps, ref) => {
-    const [labelRef, label] = useSlot(
+    // TODO: Determine if the use case of handling the case where both 'aria-label'
+    // and 'aria-labelledby' are provided, like the TextField component does.
+    // Probably not needed here, but worth considering for consistency.
+    const [labelRef] = useSlot(
       !props['aria-label'] && !props['aria-labelledby'],
     );
 
+    // TODO: FieldProps is not used in the current implementation, but it can be
+    // useful in the future to pass down additional props to the wrapped field.
     const { labelProps, fieldProps, descriptionProps, errorMessageProps } =
       useField({
         ...props,
@@ -186,7 +191,7 @@ export const Field = React.forwardRef<HTMLDivElement, FieldWrapperProps>(
                 validationErrors: props.errorMessage
                   ? [props.errorMessage]
                   : [],
-                // @ts-expect-error
+                // @ts-expect-error We won't use validationDetails in this context
                 validationDetails: null,
               },
             ],

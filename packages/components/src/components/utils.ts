@@ -139,7 +139,7 @@ export function useSlot(
 
   // A callback ref which will run when the slotted element mounts.
   // This should happen before the useLayoutEffect below.
-  const ref = useCallback((el) => {
+  const ref = useCallback((el: any) => {
     hasRun.current = true;
     setHasSlot(!!el);
   }, []);
