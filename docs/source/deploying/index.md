@@ -16,6 +16,5 @@ simple
 pm2
 seamless-mode
 apache
-sentry
 performance
 ```

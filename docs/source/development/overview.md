@@ -68,7 +68,7 @@ While developing a project using Volto, you might perform the following routine 
 -   Integrate an add-on's LESS statements with Volto's theme variables
 -   Use schema-based forms to write block components
 -   Write new form widgets
--   {doc}`Write tests in Jest <../contributing/testing>`
+-   {doc}`Write tests in Vitest <../contributing/testing>`
 -   {doc}`Write integration tests in Cypress <../contributing/acceptance-tests>`
 -   Split your code and lazy-load libraries to improve performance
 -   Use more advanced React concepts, including hooks, context providers, and other topics
@@ -91,8 +91,8 @@ From time to time, you might perform the following tasks.
 ## Add-on first approach
 
 Developing for Plone's frontend means to add code to a Volto project.
-The frontend files of the project are created in the `frontend` folder.
-The generator also creates a default add-on in the `frontend/src/addons` folder.
+In a project created with Cookieplone, the frontend files of the project are created in the {file}`frontend` folder.
+Cookieplone creates a default add-on in the {file}`frontend/packages` folder.
 The project is already configured to use this add-on.
 Add your code and customizations to this add-on, and Volto will load them on start up or a restart.
 This add-on is configured as a theme add-on, so you are able to customize the look and feel of your site as well.

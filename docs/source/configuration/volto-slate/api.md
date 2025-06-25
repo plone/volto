@@ -18,7 +18,7 @@ The `volto-slate` API provides methods to integrate the Slate editor into projec
 
 ## Extensions
 
-An extension in `volto-slate` is a function which takes Slate's [`Editor` object](https://docs.slatejs.org/concepts/07-editor) and returns its extended version
+An extension in `volto-slate` is a function which takes Slate's [`Editor` object](https://docs.slatejs.org/concepts/07-editor) and returns its extended version.
 This allows a developer to modify and add several functionalities to a Slate `Editor`.
 For example, to define link elements as inline nodes, we override `isInline` from the `Editor` object.
 
@@ -92,12 +92,15 @@ It consists of various modules:
 `makeInlineElementPlugin`
 :   Used to build and install a custom schema based plugin from `volto-slate` API.
     It expects a set of options passed as a property to your plugin.
+    It should be called from the {file}`index.js` file of your Volto add-on.
 
 `PluginEditor`
 :   Editor component for your Plugin.
+    It's shown in the sidebar when the plugin-based Slate node is focused.
 
 `ToolbarButton`
 :   Custom plugin `ToolbarButton`.
+    It's used for showing toolbar buttons inside the SlateEditor toolbar, not the toolbar in the right sidebar.
 
 ```{note}
 You will get to know more about `elementEditor` in {ref}`writing-plugins-label`.
