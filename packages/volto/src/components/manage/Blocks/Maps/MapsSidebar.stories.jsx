@@ -34,7 +34,7 @@ MapsSidebar.args = {
 };
 
 export default {
-  title: 'Internal Components/Maps/MapsSidebar',
+  title: 'Blocks/Maps/MapsSidebar',
   component: MapsSidebar,
   decorators: [
     (Story) => (

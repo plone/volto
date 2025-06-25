@@ -42,7 +42,7 @@ Video.args = {
 };
 
 export default {
-  title: 'Public components/Video/Video',
+  title: 'Blocks/Video/Video',
   component: Video,
   decorators: [
     (Story) => (
