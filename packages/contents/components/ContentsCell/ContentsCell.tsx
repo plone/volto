@@ -1,11 +1,11 @@
-import React, { type ComponentProps, useRef, useState } from 'react';
+import { type ComponentProps, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDateFormatter } from 'react-aria';
+import { getContentIcon } from '@plone/helpers';
 import type { Brain } from '@plone/types';
 import { Button, Link } from '@plone/components';
 import MoreOptionsSVG from '@plone/components/icons/more-options.svg?react';
 import { ItemActionsPopover } from '../ItemActionsPopover/ItemActionsPopover';
-import { useContentsContext } from '../../providers/contents';
 
 interface Props {
   item: Brain;
@@ -39,7 +39,6 @@ export function ContentsCell({
   onDelete,
 }: Props) {
   const { t } = useTranslation();
-  const { getContentIcon } = useContentsContext();
   const [isMoreOptionsOpen, setIsMoreOptionsOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const longFormatter = useDateFormatter({
@@ -56,7 +55,7 @@ export function ContentsCell({
     return (
       <Link
         className="react-aria-Link title-link"
-        href={`${item.is_folderish ? '/contents' : ''}${item['@id']}`}
+        href={`${item.is_folderish ? '/@@contents' : ''}${item['@id']}`}
       >
         <Icon size="S" title={item['Type'] || item['@type']} />
         {item.title}
@@ -85,7 +84,7 @@ export function ContentsCell({
           triggerRef={triggerRef}
           isOpen={isMoreOptionsOpen}
           onOpenChange={setIsMoreOptionsOpen}
-          editLink={`${item['@id']}/edit`}
+          editLink={`/@@edit${item['@id']}`}
           viewLink={item['@id']}
           onMoveToBottom={async () => {
             const res = await onMoveToBottom();

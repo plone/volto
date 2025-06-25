@@ -1,11 +1,4 @@
-import React, {
-  type ComponentProps,
-  useEffect,
-  useState,
-  useMemo,
-} from 'react';
-import debounce from 'lodash.debounce';
-// import type { ActionsResponse } from '@plone/types';
+import { type ComponentProps, useEffect, useState } from 'react';
 import { VisuallyHidden } from 'react-aria';
 import {
   TooltipTrigger,
@@ -13,21 +6,18 @@ import {
   DialogTrigger,
   MenuTrigger,
 } from 'react-aria-components';
-import { useMediaQuery } from 'usehooks-ts';
+import { useDebounceCallback, useMediaQuery } from 'usehooks-ts';
+import { Tooltip, Button, Table } from '@plone/components';
+import { Container, Breadcrumbs, Breadcrumb } from '@plone/components/quanta';
 import {
-  // AddIcon,
-  Tooltip,
-  Button,
-  Table,
-} from '@plone/components';
-import { Container } from '@plone/components/tailwind';
-import Breadcrumbs from '@plone/layout/components/Breadcrumbs';
+  HomeIcon,
+  CollectionIcon,
+  MoreoptionsIcon,
+  PasteIcon,
+} from '@plone/components/Icons';
 import { TextField } from '@plone/cmsui/components/TextField/TextField';
-import CollectionSVG from '@plone/components/icons/collection.svg?react';
-import MoreOptionsSVG from '@plone/components/icons/more-options.svg?react';
-import PasteSVG from '@plone/components/icons/paste.svg?react';
 
-import type { ArrayElement, Brain, Content } from '@plone/types';
+import type { ArrayElement, Brain } from '@plone/types';
 import { ContentsCell } from '../ContentsCell/ContentsCell';
 import { TableIndexesPopover } from '../TableIndexesPopover/TableIndexesPopover';
 import { RearrangePopover } from '../RearrangePopover/RearrangePopover';
@@ -104,31 +94,29 @@ export function ContentsTable({
   const isMobileScreenSize = useMediaQuery('(max-width: 992px)');
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const {
-    selected,
-    setSelected,
-    showDelete,
-    setShowDelete,
-    itemsToDelete,
-    setItemsToDelete,
-  } = useContentsContext();
+  const { selected, setSelected, setShowDelete, setItemsToDelete } =
+    useContentsContext();
 
-  // const isLoading = contentIsLoading || searchIsLoading || bcIsLoading;
-  const {
-    breadcrumbs: brdcData,
-    content,
-    search,
-    searchableText,
-  } = useLoaderData<ContentsLoaderType>();
+  const { content, search, searchableText } =
+    useLoaderData<ContentsLoaderType>();
 
   const { title = '' } = content ?? {};
   const { items = [] } = search ?? {};
-  const breadcrumbs = { ...brdcData };
-  breadcrumbs.items = (brdcData?.items ?? []).map((item) => ({
-    '@id': `/contents${item['@id']}`,
+
+  const breadcrumbsItems = (
+    content?.['@components']?.breadcrumbs.items ?? []
+  ).map((item) => ({
+    '@id': `/@@contents${item['@id']}`,
     title: item.title,
   }));
-  breadcrumbs.root = `/contents${breadcrumbs.root}`;
+  const breadcrumbsRoot = content?.['@components']?.breadcrumbs.root ?? '';
+  const breadcrumbsRootItem = {
+    '@id': `/@@contents${breadcrumbsRoot}`,
+    title: 'Home',
+    icon: <HomeIcon size="sm" />,
+  };
+
+  const breadcrumbs = [breadcrumbsRootItem, ...breadcrumbsItems];
 
   // const folderContentsActions = objectActions.find(
   //   (action) => action.id === 'folderContents',
@@ -150,7 +138,7 @@ export function ContentsTable({
     ),
   };
 
-  const deleteItem = (item?: Content | null) => {
+  const deleteItem = (item?: ArrayElement<typeof items> | null) => {
     setShowDelete(true);
     setItemsToDelete(item ? new Set([item]) : selected);
   };
@@ -176,7 +164,7 @@ export function ContentsTable({
         <DialogTrigger>
           <TooltipTrigger>
             <Button className="react-aria-Button actions-cell-header">
-              <MoreOptionsSVG />
+              <MoreoptionsIcon />
             </Button>
             <Tooltip placement="bottom">{t('Select columns to show')}</Tooltip>
           </TooltipTrigger>
@@ -193,7 +181,7 @@ export function ContentsTable({
             aria-label={t('contents.actions.paste')}
             isDisabled={!canPaste}
           >
-            <PasteSVG />
+            <PasteIcon />
           </Button>
           <Tooltip>{t('contents.actions.paste')}</Tooltip>
         </TooltipTrigger>
@@ -268,19 +256,17 @@ export function ContentsTable({
 
   //search input and debounce it
   const [searchInput, setSearchInput] = useState(searchableText ?? '');
-  const debouncedSearchableText = useMemo(
-    () =>
-      debounce((text: string) => {
-        setSelected('none');
-        navigate(`${pathname}?SearchableText=${text}`);
-      }, 500),
-    [navigate, pathname],
-  );
+
+  const debouncedSearchableText = useDebounceCallback((text: string) => {
+    setSelected('none');
+    navigate(`${pathname}?SearchableText=${text}`);
+  }, 500);
+
   useEffect(() => {
-    if ((searchableText ?? '') != searchInput) {
+    if ((searchableText ?? '') !== searchInput) {
       debouncedSearchableText(searchInput);
     }
-  }, [searchInput]);
+  }, [debouncedSearchableText, searchInput, searchableText]);
 
   return (
     <Container
@@ -291,12 +277,13 @@ export function ContentsTable({
       <article id="content">
         <section className="topbar">
           <div className="title-block">
-            <Breadcrumbs
-              includeRoot={true}
-              root={breadcrumbs.root}
-              items={breadcrumbs.items}
-              className="react-aria-Breadcrumbs contents-breadcrumbs"
-            />
+            <Breadcrumbs items={breadcrumbs}>
+              {(item) => (
+                <Breadcrumb id={item['@id']} href={item['@id']}>
+                  {item.title}
+                </Breadcrumb>
+              )}
+            </Breadcrumbs>
             <h1>{title}</h1>
           </div>
           <div className="group flex end-block">
@@ -357,7 +344,7 @@ export function ContentsTable({
                 <MenuTrigger>
                   <TooltipTrigger>
                     <Button className="react-aria-Button drag-cell-header">
-                      <CollectionSVG />
+                      <CollectionIcon />
                     </Button>
                     <Tooltip
                       className="react-aria-Tooltip tooltip"

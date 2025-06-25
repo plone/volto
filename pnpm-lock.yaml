@@ -676,36 +676,15 @@ importers:
       '@plone/helpers':
         specifier: workspace:*
         version: link:../helpers
-      '@plone/layout':
-        specifier: workspace:*
-        version: link:../layout
-      '@plone/providers':
-        specifier: workspace:*
-        version: link:../providers
       '@plone/react-router':
         specifier: workspace:*
         version: link:../react-router
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
-      '@plone/theming':
-        specifier: workspace:*
-        version: link:../theming
       '@react-types/shared':
         specifier: ^3.29.1
         version: 3.29.1(react@19.1.0)
-      '@tanstack/react-query':
-        specifier: ^5.59.0
-        version: 5.59.15(react@19.1.0)
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
-      jotai:
-        specifier: ^2.12.3
-        version: 2.12.3(@types/react@19.1.5)(react@19.1.0)
-      lodash.debounce:
-        specifier: ^4.0.8
-        version: 4.0.8
       react:
         specifier: ^19.1.0
         version: 19.1.0

@@ -1,32 +1,33 @@
-import React from 'react';
-import { useFetcher, useLocation } from 'react-router';
-
+import { useFetcher } from 'react-router';
 import { Heading } from 'react-aria-components';
 import { useTranslation } from 'react-i18next';
 import { Modal, Dialog } from '@plone/components';
-import { Button } from '@plone/components/tailwind';
+import { Button } from '@plone/components/quanta';
 import CloseSVG from '@plone/components/icons/close.svg?react';
 import BinSVG from '@plone/components/icons/bin.svg?react';
 import { useContentsContext } from '../../providers/contents';
 
-interface DeleteModalProps {}
-
-const DeleteModal: React.FC<DeleteModalProps> = ({}) => {
+export default function DeleteModal() {
   const { t } = useTranslation();
-  const location = useLocation();
   const fetcher = useFetcher();
-  const { showDelete, setShowDelete, itemsToDelete, setItemsToDelete } =
-    useContentsContext();
+  const {
+    showDelete,
+    setShowDelete,
+    itemsToDelete,
+    setItemsToDelete,
+    setSelected,
+  } = useContentsContext();
 
   if (!showDelete) return null;
 
   const close = () => {
     setItemsToDelete(new Set());
+    setSelected('none');
     setShowDelete(false);
   };
 
-  const submitDelete = () => {
-    fetcher.submit(
+  const submitDelete = async () => {
+    await fetcher.submit(
       { items: [...itemsToDelete].map((i) => i['@id']) },
       {
         method: 'DELETE',
@@ -34,7 +35,7 @@ const DeleteModal: React.FC<DeleteModalProps> = ({}) => {
         action: '/@@contents/@@delete',
       },
     );
-    setShowDelete(false);
+    close();
   };
 
   //TODO: check linkintegrity
@@ -78,6 +79,4 @@ const DeleteModal: React.FC<DeleteModalProps> = ({}) => {
       </Dialog>
     </Modal>
   );
-};
-
-export default DeleteModal;
+}

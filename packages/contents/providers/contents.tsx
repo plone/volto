@@ -1,28 +1,31 @@
-import React, {
+import {
   createContext,
   type PropsWithChildren,
+  useCallback,
   useContext,
-  useMemo,
   useState,
 } from 'react';
-import { getContentIcon } from '@plone/helpers';
 import { useLoaderData } from 'react-router';
 import type { ContentsLoaderType } from '../routes/contents';
 import { UNSTABLE_ToastQueue as ToastQueue } from 'react-aria-components';
 import type { ToastContent as MyToastContent } from '../types';
-import type { Brain } from '@plone/types';
 import type { Key } from '@react-types/shared';
+import type { ArrayElement } from '@plone/types';
 
 type SetSelectedType = 'all' | 'none' | Set<Key>;
 
+type Item = ArrayElement<
+  Awaited<ReturnType<ContentsLoaderType>>['search']['items']
+>;
+
 interface ContentsContext {
   toast: ToastQueue<MyToastContent>;
-  selected: Set<Brain>;
+  selected: Set<Item>;
   setSelected: (selected: SetSelectedType) => void;
   showDelete: boolean;
   setShowDelete: (s: boolean) => void;
-  itemsToDelete: Set<Brain>;
-  setItemsToDelete: (s: Set<Brain>) => void;
+  itemsToDelete: Set<Item>;
+  setItemsToDelete: (s: Set<Item>) => void;
 }
 
 const ContentsContext = createContext<ContentsContext>({
@@ -35,7 +38,7 @@ const ContentsContext = createContext<ContentsContext>({
   toast: new ToastQueue(),
 });
 
-type ContentsProviderProps = PropsWithChildren<ContentsContext>;
+type ContentsProviderProps = PropsWithChildren<Pick<ContentsContext, 'toast'>>;
 
 export function ContentsProvider(props: ContentsProviderProps) {
   const { children, toast } = props;
@@ -43,37 +46,34 @@ export function ContentsProvider(props: ContentsProviderProps) {
   const { search } = useLoaderData<ContentsLoaderType>();
   const { items = [] } = search ?? {};
   //selected
-  const [selected, _setSelected] = useState<Set<Brain>>(new Set());
+  const [selected, _setSelected] = useState<Set<Item>>(new Set());
 
-  const setSelected = (s: SetSelectedType) => {
-    if (s === 'all') {
-      _setSelected(new Set(items));
-    } else if (s === 'none') {
-      _setSelected(new Set());
-    } else {
-      _setSelected(new Set(items.filter((i) => s.has(i['@id']))));
-    }
-  };
+  const setSelected = useCallback(
+    (s: SetSelectedType) => {
+      if (s === 'all') {
+        _setSelected(new Set(items));
+      } else if (s === 'none') {
+        _setSelected(new Set());
+      } else {
+        _setSelected(new Set(items.filter((i) => s.has(i['@id']))));
+      }
+    },
+    [items],
+  );
 
   //delete
-  const [itemsToDelete, setItemsToDelete] = useState<Set<Brain>>(new Set());
+  const [itemsToDelete, setItemsToDelete] = useState<Set<Item>>(new Set());
   const [showDelete, setShowDelete] = useState(false);
 
-  let ctx = useMemo(
-    () => ({
-      // getBaseUrl,
-      getContentIcon,
-      children,
-      selected,
-      setSelected,
-      itemsToDelete,
-      setItemsToDelete,
-      showDelete,
-      setShowDelete,
-      toast,
-    }),
-    [children, selected, showDelete, itemsToDelete, toast],
-  );
+  const ctx = {
+    selected,
+    setSelected,
+    itemsToDelete,
+    setItemsToDelete,
+    showDelete,
+    setShowDelete,
+    toast,
+  };
 
   return (
     <ContentsContext.Provider value={ctx}>{children}</ContentsContext.Provider>

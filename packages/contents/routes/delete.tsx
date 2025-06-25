@@ -1,18 +1,9 @@
-import {
-  useLocation,
-  redirect,
-  type LoaderFunctionArgs,
-  type ActionFunctionArgs,
-} from 'react-router';
+import { data, type ActionFunctionArgs } from 'react-router';
 import { requireAuthCookie } from '@plone/react-router';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
 
-export async function action({
-  params,
-  request,
-  ...others
-}: ActionFunctionArgs) {
+export async function action({ params, request }: ActionFunctionArgs) {
   const token = await requireAuthCookie(request);
 
   const cli = config
@@ -25,20 +16,16 @@ export async function action({
   cli.config.token = token;
   const path = `/${params['*'] || ''}`;
 
-  const data = await request.json();
+  const payload = await request.json();
   const errors = [];
 
   try {
-    data.items.forEach(async (i: string) => {
-      const res = await cli.deleteContent({ path: i });
-      //todo: handle erorrs
-      if (res.status >= 400) {
-        throw new Response('Error', { status: 400 }); //this may will intercepted from ErrorBoundary in contents.tsx route
-        // errors.push({
-        //   message: 'Error on deleting ' + i + ': ' + res.status,
-        // });
-      }
-    });
+    //todo: handle errors
+    await Promise.all(
+      payload.items.map(async (i: string) => {
+        await cli.deleteContent({ path: i });
+      }),
+    );
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error('Error', e);
@@ -47,5 +34,5 @@ export async function action({
     //return redirect('/@@contents' + path + '?error=');
   }
 
-  return redirect('/@@contents' + path);
+  return data(null, 204);
 }

@@ -12,10 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { type RootLoader } from 'seven/app/root';
 import { PluggablesProvider } from '@plone/cmsui/components/Pluggable';
 import Toolbar from '@plone/cmsui/components/Toolbar/Toolbar';
-import Sidebar, { sidebarAtom } from '@plone/cmsui/components/Sidebar/Sidebar';
 // import TopNavBar from '@plone/cmsui/components/Layout/TopNavBar';
-import { useAtom } from 'jotai';
-import { clsx } from 'clsx';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -59,7 +56,6 @@ export const links: LinksFunction = () => [
 export default function Index() {
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
-  const [collapsible] = useAtom(sidebarAtom);
 
   if (!rootData) {
     return null;
@@ -77,21 +73,12 @@ export default function Index() {
       </head>
       <body>
         <PluggablesProvider>
-          <div
-            className={clsx(
-              'grid transition-[grid-template-columns] duration-200 ease-linear',
-              {
-                'grid-cols-[80px_1fr_300px]': collapsible,
-                'grid-cols-[80px_1fr_0px]': !collapsible,
-              },
-            )}
-          >
+          <div className="grid transition-[grid-template-columns] duration-200 ease-linear grid-cols-[80px_1fr]">
             <Toolbar />
             <div id="main">
               {/* <TopNavBar /> */}
               <Outlet />
             </div>
-            <Sidebar />
           </div>
         </PluggablesProvider>
         <ScrollRestoration />

@@ -3,9 +3,7 @@ import {
   redirect,
   useRouteError,
   type LoaderFunctionArgs,
-  type ActionFunctionArgs,
 } from 'react-router';
-import { useAppRouter } from '@plone/providers';
 import { requireAuthCookie } from '@plone/react-router';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
@@ -46,15 +44,14 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 
   const path = `/${params['*'] || ''}`;
 
-  const content = flattenToAppURL((await cli.getContent({ path })).data);
-  const breadcrumbs = flattenToAppURL(
-    (await cli.getBreadcrumbs({ path })).data,
+  const content = flattenToAppURL(
+    (await cli.getContent({ path, expand: ['breadcrumbs'] })).data,
   );
   const searchableText =
     new URLSearchParams(new URL(request.url).search).get('SearchableText') ||
     '';
 
-  const searchQuery = {
+  const searchQuery: Parameters<typeof cli.search>[0]['query'] = {
     path: {
       query: path,
       depth: 1,
@@ -77,13 +74,12 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
     ).data,
   );
 
-  return { content, search, breadcrumbs, searchableText };
+  return { content, search, searchableText };
 }
 
-export default function Contents(props) {
+export default function Contents() {
   const location = useLocation();
 
-  const state = {};
   const upload = () => {};
   const properties = () => {};
   const workflow = () => {};
@@ -113,7 +109,8 @@ export default function Contents(props) {
       <DeleteModal />
       <ContentsTable
         pathname={location.pathname}
-        objectActions={props.objectActions}
+        // objectActions={props.objectActions}
+        objectActions={[]}
         // loading={loading}
         indexes={indexes}
         onSelectIndex={(index) => {
