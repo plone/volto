@@ -1,28 +1,13 @@
-import { injectIntl } from 'react-intl';
 import MapsSidebarComponent from './MapsSidebar';
 import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
-
-const IntlMapsSidebarComponent = injectIntl(MapsSidebarComponent);
+import BlockWrapper from '@plone/volto/stories/BlockWrapper';
 
 function StoryComponent(args) {
   return (
-    <Wrapper
-      customStore={{
-        intl: {
-          locale: 'en',
-          messages: {},
-        },
-      }}
-    >
-      <div id="toolbar" style={{ display: 'none' }} />
-      <IntlMapsSidebarComponent
-        data={{ ...args }}
-        block="1234"
-        pathname="/news"
-        onChangeBlock={() => {}}
-        openObjectBrowser={() => {}}
-        resetSubmitUrl={() => {}}
-      />
+    <Wrapper>
+      <BlockWrapper data={{ ...args }}>
+        <MapsSidebarComponent data={{ ...args }} />
+      </BlockWrapper>
     </Wrapper>
   );
 }
@@ -38,7 +23,7 @@ export default {
   component: MapsSidebar,
   decorators: [
     (Story) => (
-      <div className="ui segment form attached" style={{ width: '400px' }}>
+      <div className="ui segment form attached" style={{ width: '800px' }}>
         <Story />
       </div>
     ),
