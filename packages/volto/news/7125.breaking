@@ -1,4 +1,0 @@
-The default language and list of available languages are now loaded from the backend API.
-The default language can no longer be set using the `SITE_DEFAULT_LANGUAGE` environment variable.
-The `supportedLanguages` setting remains but is only used to limit which locales are included in the build.
-@davisagli
