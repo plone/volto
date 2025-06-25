@@ -58,7 +58,6 @@ describe('Sitemap', () => {
 
 describe('Sitemap in a multilingual site', () => {
   beforeEach(() => {
-    config.settings.isMultilingual = true;
     config.settings.supportedLanguages = ['en', 'es'];
   });
   it('renders a sitemap component', () => {

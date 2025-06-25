@@ -13,6 +13,9 @@ const mockStore = configureStore();
 describe('NotFound', () => {
   it('renders a not found component', () => {
     const store = mockStore({
+      site: {
+        data: {},
+      },
       intl: {
         locale: 'en',
         messages: {},

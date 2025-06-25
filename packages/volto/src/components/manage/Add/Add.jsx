@@ -223,11 +223,10 @@ class Add extends Component {
         ? keys(this.props.schema.definitions)
         : null,
       '@type': this.props.type,
-      ...(config.settings.isMultilingual &&
-        this.props.location?.state?.translationOf && {
-          translation_of: this.props.location.state.translationOf,
-          language: this.props.location.state.language,
-        }),
+      ...(this.props.location?.state?.translationOf && {
+        translation_of: this.props.location.state.translationOf,
+        language: this.props.location.state.language,
+      }),
     });
   }
 
@@ -348,7 +347,7 @@ class Add extends Component {
         <div id="page-add">
           <Helmet
             title={this.props.intl.formatMessage(messages.add, {
-              type: this.props.type,
+              type: this.props?.schema?.title || this.props.type,
             })}
           />
           <Form

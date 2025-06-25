@@ -25,6 +25,8 @@ describe('api middleware helpers', () => {
     const result = addExpandersToPath(
       '/de/mypage?expand=translations',
       GET_CONTENT,
+      false,
+      true,
     );
     expect(result).toEqual('/de/mypage?expand=translations,mycustomexpander');
   });
@@ -183,6 +185,8 @@ describe('api middleware helpers', () => {
     const result = addExpandersToPath(
       '/de/mypage/@navigation?expand=translations&expand.navigation.depth=3&someotherquery=1&someotherquery=2',
       GET_CONTENT,
+      false,
+      true,
     );
     // No need to stringify
     expect(result).toEqual(
