@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link } from '../Link/Link';
+import { Link } from '@plone/components/tailwind';
 
 // TODO translations
 
@@ -34,6 +33,6 @@ const renderItems = (items: SitemapItem[]) => {
   );
 };
 
-export function Sitemap({ items }: SitemapProps) {
+export default function Sitemap({ items }: SitemapProps) {
   return <div id="sitemap">{items && renderItems(items)}</div>;
 }

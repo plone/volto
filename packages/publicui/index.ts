@@ -6,11 +6,9 @@ export default function install(config: ConfigType) {
     file: '@plone/publicui/routes/index.tsx',
     children: [
       {
-        type: 'index',
-        file: '@plone/publicui/routes/content.tsx',
-        options: {
-          id: 'content-index',
-        },
+        type: 'route',
+        path: 'sitemap',
+        file: '@plone/publicui/routes/sitemap.tsx',
       },
       {
         type: 'route',
@@ -19,14 +17,6 @@ export default function install(config: ConfigType) {
         options: {
           id: 'content',
         },
-      },
-      {
-        type: 'route',
-        path: 'sitemap',
-        file: '@plone/publicui/routes/sitemap.tsx',
-        // options: {
-        //   id: 'tuesday',
-        // },
       },
     ],
   });

@@ -877,6 +877,9 @@ importers:
       '@plone/theming':
         specifier: workspace:*
         version: link:../theming
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       react:
         specifier: ^19.1.0
         version: 19.1.0

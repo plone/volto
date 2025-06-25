@@ -1,7 +1,6 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { Sitemap } from './Sitemap';
+import Sitemap from './Sitemap';
 
 expect.extend(toHaveNoViolations);
 

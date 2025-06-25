@@ -1,11 +1,16 @@
 import { useTranslation } from 'react-i18next';
 import { data, type LoaderFunctionArgs } from 'react-router';
 import type PloneClient from '@plone/client';
-import { Sitemap } from '@plone/components';
+import Sitemap from '@plone/layout/components/Sitemap/Sitemap';
 import type { NavigationResponse } from '@plone/types';
 import { flattenToAppURL } from '@plone/helpers';
 
 import config from '@plone/registry';
+import { Container } from '@plone/components/tailwind';
+
+export const handle = {
+  bodyClass: 'sitemap-route',
+};
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const cli = config
@@ -47,9 +52,9 @@ export default function SitemapRoute({ loaderData }: SitemapRouteProps) {
   const { sitemapnavigation } = loaderData;
 
   return (
-    <div className="route-sitemap">
+    <Container width="default" className="route-sitemap">
       <h1 className="documentFirstHeading">{t('publicui.sitemap')}</h1>
       <Sitemap items={sitemapnavigation.items} />
-    </div>
+    </Container>
   );
 }
