@@ -1,1 +1,1 @@
-Add Storybook for maps block @Tishasoumya-02
+Add Storybook for maps block. @Tishasoumya-02
