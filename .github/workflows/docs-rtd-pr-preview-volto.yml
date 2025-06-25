@@ -1,5 +1,5 @@
 # .github/workflows/docs-rtd-pr-preview-volto.yml
-name: readthedocs/storybook/actions
+name: readthedocs/actions
 on:
   pull_request_target:
     types:
@@ -9,15 +9,11 @@ on:
     branches:
       - seven
     paths:
+      - "docs/**"
       - "packages/components/.storybook/**"
-      - "packages/components/**/*.stories.*"
-      - "packages/registry/.storybook/**"
-      - "packages/registry/**/*.stories.*"
-      - "packages/layout/.storybook/**"
-      - "packages/layout/**/*.stories.*"
-      - "packages/cmsui/.storybook/**"
-      - "packages/cmsui/**/*.stories.*"
-      - "packages/components/.readthedocs.yaml"
+      - "packages/volto/.storybook/**"
+      - .readthedocs.yaml
+      - requirements-docs.txt
 
 permissions:
   pull-requests: write
@@ -26,16 +22,7 @@ jobs:
   documentation-links:
     runs-on: ubuntu-latest
     steps:
-      - uses: dorny/paths-filter@v3
-        id: filter
+      - uses: readthedocs/actions/preview@v1
         with:
-          filters: |
-            components:
-              - 'packages/components/**/*.stories.*'
-
-      - name: plone/components changelog check
-        if: steps.filter.outputs.components == 'true'
-        uses: readthedocs/actions/preview@v1
-        with:
-          project-slug: "plone-components"
+          project-slug: "volto"
           single-version: "true"
