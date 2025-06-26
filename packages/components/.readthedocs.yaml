@@ -29,4 +29,4 @@ build:
     - corepack prepare pnpm@* --activate
     - asdf reshim nodejs
     - make install
-    - (cd packages/layout && pnpm build-storybook -o ${READTHEDOCS_OUTPUT}/html)
+    - (cd packages/components && pnpm build-storybook -o ${READTHEDOCS_OUTPUT}/html)
