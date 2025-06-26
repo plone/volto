@@ -938,6 +938,9 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.7.3
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.15(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)
       vitest:
         specifier: 'catalog:'
         version: 3.0.9(@types/debug@4.1.12)(@types/node@20.12.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)

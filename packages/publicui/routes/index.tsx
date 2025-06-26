@@ -16,6 +16,9 @@ import { useTranslation } from 'react-i18next';
 import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
 
+// eslint-disable-next-line import/no-unresolved
+import stylesheet from 'seven/public.css?url';
+
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
 }) => {
@@ -32,6 +35,7 @@ export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
 };
 
 export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: stylesheet },
   {
     rel: 'icon',
     href: '/favicon.ico',
@@ -71,6 +75,10 @@ export default function Index() {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="mobile-web-app-capable" content="yes" />
+        {/* We pre-define here the @layer before tailwind does, adding our own layers */}
+        <style>
+          @layer theme, base, components, plone-components, utilities, custom;
+        </style>
         <Meta />
         <Links />
       </head>
