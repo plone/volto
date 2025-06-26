@@ -1,6 +1,5 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { TooltipTrigger, type Selection } from 'react-aria-components';
+import { TooltipTrigger } from 'react-aria-components';
 import { Button, Tooltip } from '@plone/components';
 import StateSVG from '@plone/components/icons/state.svg?react';
 import BinSVG from '@plone/components/icons/bin.svg?react';
@@ -13,6 +12,7 @@ import CopySVG from '@plone/components/icons/copy.svg?react';
 import PasteSVG from '@plone/components/icons/paste.svg?react';
 import type { Brain } from '@plone/types';
 import './ContentsActions.css';
+import { useContentsContext } from '../../providers/contents';
 
 type Props = {
   upload: () => Promise<void>;
@@ -20,12 +20,12 @@ type Props = {
   workflow: () => Promise<void>;
   tags: () => Promise<void>;
   properties: () => Promise<void>;
-  cut: (value?: string) => Promise<void>;
-  copy: (value?: string) => Promise<void>;
+  cut: (value?: string) => void;
+  copy: (value?: string) => void;
   paste: () => Promise<void>;
   deleteItem: (item?: Brain | null | undefined) => void;
   canPaste: boolean;
-  selected: Set<Brain>;
+  // selected: Set<Brain>;
 };
 
 export function ContentsActions({
@@ -39,9 +39,10 @@ export function ContentsActions({
   paste,
   deleteItem,
   canPaste,
-  selected,
+  // selected,
 }: Props) {
   const { t } = useTranslation();
+  const { selected } = useContentsContext();
 
   return (
     <div className="contents-actions">

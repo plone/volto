@@ -3,7 +3,7 @@ import { requireAuthCookie } from '@plone/react-router';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
 
-export async function action({ request }: ActionFunctionArgs) {
+export async function action({ params, request }: ActionFunctionArgs) {
   const token = await requireAuthCookie(request);
 
   const cli = config
@@ -15,16 +15,24 @@ export async function action({ request }: ActionFunctionArgs) {
 
   cli.config.token = token;
 
+  const path = `/${params['*'] || ''}`;
+
   const payload = await request.json();
   const errors = [];
 
   try {
     //todo: handle errors
-    await Promise.all(
-      payload.items.map(async (i: string) => {
-        await cli.deleteContent({ path: i });
-      }),
-    );
+    const options = {
+      path,
+      data: {
+        source: payload.source,
+      },
+    };
+    if (payload.action === 'copy') {
+      await cli.copyContent(options);
+    } else if (payload.action === 'cut') {
+      await cli.moveContent(options);
+    }
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error('Error', e);

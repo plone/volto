@@ -4,11 +4,13 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useNavigate,
   useRouteLoaderData,
   type LinksFunction,
   type MetaFunction,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import { type RootLoader } from 'seven/app/root';
 import { PluggablesProvider } from '@plone/cmsui/components/Pluggable';
 import Toolbar from '@plone/cmsui/components/Toolbar/Toolbar';
@@ -56,6 +58,7 @@ export const links: LinksFunction = () => [
 export default function Index() {
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
 
   if (!rootData) {
     return null;
@@ -73,13 +76,15 @@ export default function Index() {
       </head>
       <body>
         <PluggablesProvider>
-          <div className="grid transition-[grid-template-columns] duration-200 ease-linear grid-cols-[80px_1fr]">
-            <Toolbar />
-            <div id="main">
-              {/* <TopNavBar /> */}
-              <Outlet />
+          <RACRouterProvider navigate={navigate}>
+            <div className="grid transition-[grid-template-columns] duration-200 ease-linear grid-cols-[80px_1fr] min-h-[100dvh]">
+              <Toolbar />
+              <main id="main">
+                {/* <TopNavBar /> */}
+                <Outlet />
+              </main>
             </div>
-          </div>
+          </RACRouterProvider>
         </PluggablesProvider>
         <ScrollRestoration />
         <Scripts />

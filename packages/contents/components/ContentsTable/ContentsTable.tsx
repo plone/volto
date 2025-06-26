@@ -23,10 +23,11 @@ import { TableIndexesPopover } from '../TableIndexesPopover/TableIndexesPopover'
 import { RearrangePopover } from '../RearrangePopover/RearrangePopover';
 import { ContentsActions } from '../ContentsActions/ContentsActions';
 // import { AddContentPopover } from './AddContentPopover/AddContentPopover';
-import { useLoaderData, useNavigate } from 'react-router';
+import { useFetcher, useLoaderData, useNavigate } from 'react-router';
 import type { ContentsLoaderType } from '../../routes/contents';
 import { useTranslation } from 'react-i18next';
 import { useContentsContext } from '../../providers/contents';
+import { clipboardKey } from '../../config/constants';
 
 import './ContentsTable.css';
 
@@ -35,7 +36,7 @@ interface ContentsTableProps {
   // objectActions: ActionsResponse['object'];
   title: string;
   // loading: boolean;
-  canPaste: boolean;
+  // canPaste: boolean;
   // items: Brain[];
   indexes: {
     order: (keyof Brain)[];
@@ -56,12 +57,12 @@ interface ContentsTableProps {
   workflow: () => Promise<void>;
   tags: () => Promise<void>;
   properties: () => Promise<void>;
-  cut: (value?: string) => Promise<void>;
-  copy: (value?: string) => Promise<void>;
-  paste: () => Promise<void>;
-  orderItem: (id: string, delta: number) => Promise<void>;
-  moveToTop: (index: number) => Promise<void>;
-  moveToBottom: (index: number) => Promise<void>;
+  // cut: (value?: string) => Promise<void>;
+  // copy: (value?: string) => Promise<void>;
+  // paste: () => Promise<void>;
+  // orderItem: (id: string, delta: number) => Promise<void>;
+  // moveToTop: (index: number) => Promise<void>;
+  // moveToBottom: (index: number) => Promise<void>;
   // addableTypes: ComponentProps<typeof AddContentPopover>['addableTypes'];
 }
 
@@ -74,7 +75,7 @@ interface ContentsTableProps {
 export function ContentsTable({
   pathname,
   // objectActions,
-  canPaste,
+  // canPaste,
   // items,
   indexes: baseIndexes,
   onSelectIndex,
@@ -84,24 +85,26 @@ export function ContentsTable({
   workflow,
   tags,
   properties,
-  cut,
-  copy,
-  paste,
-  orderItem,
-  moveToTop,
-  moveToBottom, // addableTypes,
+  // cut,
+  // copy,
+  // paste,
+  // orderItem,
+  // moveToTop,
+  // moveToBottom,
+  // addableTypes,
 }: ContentsTableProps) {
   const isMobileScreenSize = useMediaQuery('(max-width: 992px)');
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { selected, setSelected, setShowDelete, setItemsToDelete } =
     useContentsContext();
-
+  const fetcher = useFetcher();
   const { content, search, searchableText } =
     useLoaderData<ContentsLoaderType>();
 
   const { title = '' } = content ?? {};
   const { items = [] } = search ?? {};
+  type Item = ArrayElement<typeof items>;
 
   const breadcrumbsItems = (
     content?.['@components']?.breadcrumbs.items ?? []
@@ -138,9 +141,103 @@ export function ContentsTable({
     ),
   };
 
-  const deleteItem = (item?: ArrayElement<typeof items> | null) => {
+  const deleteItem = (item?: Item | null) => {
     setShowDelete(true);
     setItemsToDelete(item ? new Set([item]) : selected);
+  };
+
+  const orderItem = async (id: string, delta: number | 'bottom' | 'top') => {
+    await fetcher.submit(
+      {
+        path: pathname,
+        obj_id: id,
+        delta,
+      },
+      {
+        method: 'PATCH',
+        encType: 'application/json',
+        action: `/@@contents/@@order`,
+      },
+    );
+    // TODO handle loading state, show something like a dimmer while operation is in progress
+  };
+
+  const moveToBottom = (item: Item) => orderItem(item.id, 'bottom');
+  const moveToTop = (item: Item) => orderItem(item.id, 'top');
+
+  const [clipboard, _setClipboard] = useState<{
+    action: 'cut' | 'copy' | null;
+    source: string[];
+    expiration: number;
+  }>({ action: null, source: [], expiration: 0 });
+
+  useEffect(() => {
+    try {
+      const storedClipboard = localStorage.getItem(clipboardKey);
+      if (storedClipboard) {
+        const parsedClipboard = JSON.parse(storedClipboard);
+        if (parsedClipboard.expiration < Date.now()) {
+          localStorage.removeItem(clipboardKey);
+        } else if (
+          parsedClipboard &&
+          typeof parsedClipboard === 'object' &&
+          'action' in parsedClipboard &&
+          Array.isArray(parsedClipboard.source)
+        ) {
+          _setClipboard(parsedClipboard);
+        } else {
+          localStorage.removeItem(clipboardKey);
+        }
+      }
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('Error reading clipboard from localStorage:', error);
+      localStorage.removeItem(clipboardKey);
+    }
+  }, []);
+
+  const setClipboard: typeof _setClipboard = (value) => {
+    _setClipboard(value);
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem(clipboardKey, JSON.stringify(value));
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Error saving clipboard to localStorage:', error);
+        localStorage.removeItem(clipboardKey);
+      }
+    }
+    // TODO when do we clean the clipboard?
+  };
+
+  const cut = (path?: string) => {
+    setClipboard({
+      action: 'cut',
+      source: path ? [path] : [...selected].map((i) => i['@id']),
+      expiration: Date.now() + 24 * 60 * 60 * 1000, // 24 hours expiration
+    });
+    setSelected('none');
+  };
+
+  const copy = (path?: string) => {
+    setClipboard({
+      action: 'copy',
+      source: path ? [path] : [...selected].map((i) => i['@id']),
+      expiration: Date.now() + 24 * 60 * 60 * 1000, // 24 hours expiration
+    });
+    setSelected('none');
+  };
+
+  const canPaste = clipboard.action !== null && clipboard.source.length > 0;
+
+  const paste = async () => {
+    await fetcher.submit(clipboard, {
+      method: 'POST',
+      encType: 'application/json',
+      action: `/@@contents/@@paste${pathname}`,
+    });
+    // TODO handle loading state, show something like a dimmer while operation is in progress
+    // TODO when do we clean the clipboard?
   };
 
   const columns = [
@@ -179,7 +276,7 @@ export function ContentsTable({
             className="react-aria-Button contents-action-trigger paste"
             onPress={paste}
             aria-label={t('contents.actions.paste')}
-            isDisabled={!canPaste}
+            // isDisabled={!canPaste}
           >
             <PasteIcon />
           </Button>
@@ -198,8 +295,8 @@ export function ContentsTable({
             item={item}
             column={column.id}
             indexes={indexes}
-            onMoveToBottom={() => moveToBottom(itemIndex)}
-            onMoveToTop={() => moveToTop(itemIndex)}
+            onMoveToBottom={() => moveToBottom(item)}
+            onMoveToTop={() => moveToTop(item)}
             onCut={() => cut(item['@id'])}
             onCopy={() => copy(item['@id'])}
             onDelete={async () => deleteItem(item)}
@@ -259,7 +356,7 @@ export function ContentsTable({
 
   const debouncedSearchableText = useDebounceCallback((text: string) => {
     setSelected('none');
-    navigate(`${pathname}?SearchableText=${text}`);
+    navigate(`/@@contents${pathname}?SearchableText=${text}`);
   }, 500);
 
   useEffect(() => {
@@ -299,7 +396,7 @@ export function ContentsTable({
                 paste={paste}
                 deleteItem={deleteItem}
                 canPaste={canPaste}
-                selected={selected}
+                // selected={selected}
               />
             )}
             <TextField

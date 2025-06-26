@@ -1,9 +1,4 @@
-import {
-  useLocation,
-  redirect,
-  useRouteError,
-  type LoaderFunctionArgs,
-} from 'react-router';
+import { type LoaderFunctionArgs, useLoaderData } from 'react-router';
 import { requireAuthCookie } from '@plone/react-router';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
@@ -78,7 +73,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 }
 
 export default function Contents() {
-  const location = useLocation();
+  const { content } = useLoaderData<typeof loader>();
 
   const upload = () => {};
   const properties = () => {};
@@ -87,7 +82,6 @@ export default function Contents() {
   const rename = () => {};
 
   const onSelectIndex = () => {};
-  const onSelectAll = () => {};
   const onSortItems = () => {};
 
   const indexes = {
@@ -108,7 +102,7 @@ export default function Contents() {
     <ContentsProvider toast={queue}>
       <DeleteModal />
       <ContentsTable
-        pathname={location.pathname}
+        pathname={content['@id']}
         // objectActions={props.objectActions}
         objectActions={[]}
         // loading={loading}

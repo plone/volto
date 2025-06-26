@@ -55,7 +55,7 @@
     "@plone/registry": "workspace:*",
     "@plone/react-router": "workspace:*",
     "@react-types/shared": "^3.29.1",
-    "react-aria": "^3.37.0",
+    "react-aria": "catalog:",
     "react-aria-components": "catalog:",
     "react-i18next": "catalog:",
     "react-router": "catalog:",

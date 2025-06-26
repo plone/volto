@@ -15,8 +15,8 @@ interface Props extends Omit<PopoverProps, 'children'> {
   viewLink: string;
   onMoveToTop: () => Promise<void>;
   onMoveToBottom: () => Promise<void>;
-  onCut: () => Promise<void>;
-  onCopy: () => Promise<void>;
+  onCut: () => void;
+  onCopy: () => void;
   onDelete: () => Promise<void>;
 }
 

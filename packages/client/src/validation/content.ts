@@ -91,6 +91,13 @@ export const updateContentDataSchema = z.object({
   exclude_from_nav: z.boolean().optional(),
   expires: z.string().nullable().optional(),
   id: z.string().nullable().optional(),
+  ordering: z
+    .object({
+      obj_id: z.string(),
+      delta: z.union([z.number(), z.literal('bottom'), z.literal('top')]),
+      subset_ids: z.array(z.string()).optional(),
+    })
+    .optional(),
   preview_caption: z.string().optional(),
   preview_image: z
     .object({

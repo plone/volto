@@ -20,11 +20,16 @@ export async function action({ request }: ActionFunctionArgs) {
 
   try {
     //todo: handle errors
-    await Promise.all(
-      payload.items.map(async (i: string) => {
-        await cli.deleteContent({ path: i });
-      }),
-    );
+    await cli.updateContent({
+      path: payload.path,
+      data: {
+        ordering: {
+          obj_id: payload.obj_id,
+          delta: payload.delta,
+          subset_ids: payload.subset_ids,
+        },
+      },
+    });
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error('Error', e);
