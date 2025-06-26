@@ -3,8 +3,6 @@ import { DatePicker } from './DatePicker';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/DatePicker.css';
-
 const meta: Meta<typeof DatePicker> = {
   title: 'Basic/Forms/DatePicker',
   component: DatePicker,

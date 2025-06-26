@@ -3,8 +3,6 @@ import { DateField } from './DateField';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/DateField.css';
-
 const meta: Meta<typeof DateField> = {
   title: 'Basic/Forms/DateField',
   component: DateField,

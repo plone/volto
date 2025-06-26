@@ -7,8 +7,6 @@ import { Cell, TableBody } from 'react-aria-components';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/Table.css';
-
 const meta: Meta<typeof Table> = {
   title: 'Basic/Table',
   component: Table,

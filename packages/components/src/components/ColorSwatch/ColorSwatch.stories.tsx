@@ -3,8 +3,6 @@ import { ColorSwatch } from './ColorSwatch';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/ColorSwatch.css';
-
 const meta = {
   title: 'Basic/Forms/ColorSwatch',
   component: ColorSwatch,

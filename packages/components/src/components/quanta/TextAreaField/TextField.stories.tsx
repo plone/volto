@@ -3,9 +3,6 @@ import { QuantaTextAreaField } from './TextAreaField';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../../styles/basic/TextField.css';
-import '../../../styles/quanta/TextField.css';
-
 const meta: Meta<typeof QuantaTextAreaField> = {
   title: 'Basic/Quanta/TextAreaField',
   component: QuantaTextAreaField,

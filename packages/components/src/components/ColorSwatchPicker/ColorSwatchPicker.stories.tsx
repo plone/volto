@@ -3,8 +3,6 @@ import { ColorSwatchPicker, ColorSwatchPickerItem } from './ColorSwatchPicker';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/ColorSwatchPicker.css';
-
 const meta = {
   title: 'Basic/Forms/ColorSwatchPicker',
   component: ColorSwatchPicker,

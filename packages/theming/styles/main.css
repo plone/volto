@@ -2,7 +2,9 @@
 @layer theme, base, components, plone-components, utilities, custom;
 
 @import 'tailwindcss';
+@import '@plone/components/src/styles/basic/main.css';
 @source '../node_modules/@plone/components/dist';
+
 @plugin 'tailwindcss-react-aria-components';
 @plugin 'tailwindcss-animate';
 
