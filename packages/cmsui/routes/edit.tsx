@@ -13,7 +13,7 @@ import type { DeepKeys } from '@tanstack/react-form';
 import { InitAtoms } from '@plone/helpers';
 import { atom } from 'jotai';
 import type { Content } from '@plone/types';
-import { Plug } from '../components/Pluggable';
+import { Plug } from '@plone/layout/components/Pluggable';
 import Checkbox from '@plone/components/icons/checkbox.svg?react';
 
 import { useAppForm } from '../components/Form/Form';
@@ -24,6 +24,7 @@ import {
   AccordionItemTrigger,
   Button,
 } from '@plone/components/quanta';
+import BlockEditor from '../components/BlockEditor/BlockEditor';
 
 // import { ConsoleLog } from '../helpers/debug';
 
@@ -94,8 +95,11 @@ export default function Edit() {
 
   return (
     <InitAtoms atomValues={[[formAtom, content]]}>
-      <main className="mx-4 mt-8 flex h-screen flex-1 flex-col">
-        <div className="flex flex-col sm:mx-auto sm:w-full sm:max-w-lg">
+      <main className="mx-4 mt-8 flex h-screen flex-auto">
+        <div className="w-[50%]">
+          <BlockEditor formAtom={formAtom}></BlockEditor>
+        </div>
+        <div className="flex w-[50%] flex-col">
           <h1 className="mb-4 text-2xl font-bold">
             {content.title} - {t('cmsui.edit')}
           </h1>

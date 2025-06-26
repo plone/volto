@@ -21,3 +21,16 @@ export function useSetFieldFocusAtom<T>({
     ),
   );
 }
+
+// Returns the Readable/Writeable focused atom of a field
+// given a formAtom and a field name
+export function useFieldFocusAtom<T>(
+  anAtom: PrimitiveAtom<T>,
+  field: DeepKeys<T>,
+) {
+  return focusAtom(
+    anAtom,
+    // @ts-ignore
+    useCallback((optic: OpticFor<T>) => optic.prop(field), [field]),
+  );
+}

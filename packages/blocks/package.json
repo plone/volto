@@ -50,7 +50,7 @@
   "dependencies": {
     "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
-    "@plone/providers": "workspace:*",
+    "@plone/layout": "workspace:*",
     "clsx": "^2.1.1"
   },
   "devDependencies": {
