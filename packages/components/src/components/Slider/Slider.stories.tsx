@@ -3,8 +3,6 @@ import { Slider } from './Slider';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/Slider.css';
-
 const meta: Meta<typeof Slider> = {
   title: 'Basic/Slider',
   component: Slider,

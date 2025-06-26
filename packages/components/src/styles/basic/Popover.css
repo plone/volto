@@ -1,8 +1,8 @@
+/* depends on:
 @import './Button.css';
 @import './Dialog.css';
 @import './Switch.css';
-@import './theme.css';
-
+*/
 @layer plone-components.base {
   .react-aria-Popover {
     --background-color: var(--overlay-background);
