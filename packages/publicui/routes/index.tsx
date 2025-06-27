@@ -7,6 +7,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
   useNavigate,
   useRouteLoaderData,
   type LinksFunction,
@@ -15,6 +16,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
+import config from '@plone/registry';
 
 // eslint-disable-next-line import/no-unresolved
 import stylesheet from 'seven/publicui.css?url';
@@ -59,7 +61,12 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export async function loader() {
+  return { cssLayers: config.settings.cssLayers };
+}
+
 export default function Index() {
+  const { cssLayers } = useLoaderData<typeof loader>();
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
   const navigate = useNavigate();
@@ -76,9 +83,7 @@ export default function Index() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="mobile-web-app-capable" content="yes" />
         {/* We pre-define here the @layer before tailwind does, adding our own layers */}
-        <style>
-          @layer theme, base, components, plone-components, utilities, custom;
-        </style>
+        <style>{`@layer ${cssLayers.join(', ')};`}</style>
         <Meta />
         <Links />
       </head>

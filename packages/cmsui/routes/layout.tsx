@@ -4,6 +4,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
   useRouteLoaderData,
   type LinksFunction,
   type MetaFunction,
@@ -16,7 +17,10 @@ import Sidebar, { sidebarAtom } from '../components/Sidebar/Sidebar';
 import TopNavBar from '../components/Layout/TopNavBar';
 import { useAtom } from 'jotai';
 import { clsx } from 'clsx';
+import config from '@plone/registry';
 
+// eslint-disable-next-line import/no-unresolved
+import publicStylesheet from 'seven/publicui.css?url';
 // eslint-disable-next-line import/no-unresolved
 import stylesheet from 'seven/cmsui.css?url';
 
@@ -36,6 +40,7 @@ export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
 };
 
 export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: publicStylesheet },
   { rel: 'stylesheet', href: stylesheet },
   {
     rel: 'icon',
@@ -60,7 +65,12 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export async function loader() {
+  return { cssLayers: config.settings.cssLayers };
+}
+
 export default function Index() {
+  const { cssLayers } = useLoaderData<typeof loader>();
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
   const [collapsed] = useAtom(sidebarAtom);
@@ -76,10 +86,12 @@ export default function Index() {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="mobile-web-app-capable" content="yes" />
+        {/* We pre-define here the @layer before tailwind does, adding our own layers */}
+        <style>{`@layer ${cssLayers.join(', ')};`}</style>
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="cmsui">
         <PluggablesProvider>
           <div
             className={clsx(

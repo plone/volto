@@ -401,9 +401,6 @@ importers:
       tailwindcss:
         specifier: 'catalog:'
         version: 4.0.17
-      tailwindcss-animate:
-        specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@4.0.17)
     devDependencies:
       '@plone/types':
         specifier: workspace:*
@@ -483,6 +480,12 @@ importers:
       storybook:
         specifier: ^8.6.12
         version: 8.6.12(prettier@3.5.2)
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@4.0.17)
+      tailwindcss-react-aria-components:
+        specifier: ^2.0.0
+        version: 2.0.0(tailwindcss@4.0.17)
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -716,6 +719,9 @@ importers:
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       react:
         specifier: ^19.1.0
         version: 19.1.0
