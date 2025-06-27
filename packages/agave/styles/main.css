@@ -29,10 +29,8 @@
 
   /* Navigation styles */
   .navigation {
-    @apply pb-12;
-
     a.react-aria-Link {
-      @apply relative text-lg font-semibold leading-6 pb-4 no-underline;
+      @apply relative text-lg font-thin leading-6 pb-4 no-underline;
       color: var(--foreground);
       font-family: 'Funnel', sans-serif;
     }
@@ -63,6 +61,30 @@
       transition: none; /* Instant appearance */
     }
   }
+  /* Breadcrumbs */
+  nav {
+    font-family: 'Funnel', sans-serif;
+    li > span,
+    li > a {
+      @apply text-base leading-6;
+    } 
+  }
+  /* Header tools */
+  .header-tools {
+    @apply flex items-center gap-4;
+
+    a.react-aria-Link {
+      @apply text-base leading-6;
+      font-family: 'Funnel', sans-serif;
+      color: var(--foreground);
+      text-decoration: none;
+    }
+
+    a.react-aria-Link:hover,
+    a.react-aria-Link:focus {
+      color: var(--accent-color);
+    }
+  }
   /* Footer styles */
   #footer {
     @apply pt-12;
@@ -78,6 +100,7 @@
 
   /* Header */
   header {
+    @apply pb-12;
     background: radial-gradient(
       ellipse 200% 105% at 50% 0%,
       var(--secondary-color) 0%,
