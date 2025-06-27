@@ -2,8 +2,6 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Tree, TreeItem } from './Tree';
 
-import '../../styles/basic/Tree.css';
-
 const meta = {
   title: 'Basic/Tree',
   component: Tree,

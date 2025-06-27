@@ -3,8 +3,6 @@ import { SearchField } from './SearchField';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/SearchField.css';
-
 const meta: Meta<typeof SearchField> = {
   title: 'Basic/Forms/SearchField',
   component: SearchField,
