@@ -15,9 +15,9 @@
       .block-inner-container {
         display: grid;
         max-width: var(--block-width, var(--default-container-width));
-        margin-left: auto;
-        margin-right: auto;
         padding-bottom: var(--block-bottom-spacing, calc(var(--spacing) * 3));
+        margin-right: auto;
+        margin-left: auto;
       }
     }
 

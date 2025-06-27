@@ -1,3 +1,5 @@
+@import '@plone/theming/styles/tailwind.css';
+
 @theme {
   --background: #ffffff;
   --foreground: #000000;
@@ -15,14 +17,14 @@
       font-family: 'Funnel Display', serif;
 
       &::after {
-        content: '';
-        @apply absolute bottom-0 left-0 w-20 h-[4px];
         background: linear-gradient(
           to right,
           var(--accent-color) 0%,
           var(--accent-color) 50%,
           transparent 100%
         );
+        content: '';
+        @apply absolute bottom-0 left-0 w-20 h-[4px];
       }
     }
   }
@@ -36,18 +38,18 @@
     }
 
     a.react-aria-Link::after {
-      content: '';
       position: absolute;
-      width: 0;
-      height: 4px;
       bottom: 0;
       left: 0;
+      width: 0;
+      height: 4px;
       background: linear-gradient(
         to right,
         var(--accent-color) 0%,
         var(--accent-color) 50%,
         transparent 100%
       );
+      content: '';
       transition: width 0.3s ease;
     }
 
@@ -67,7 +69,7 @@
     li > span,
     li > a {
       @apply text-base leading-6;
-    } 
+    }
   }
   /* Header tools */
   .header-tools {
@@ -75,8 +77,8 @@
 
     a.react-aria-Link {
       @apply text-base leading-6;
-      font-family: 'Funnel', sans-serif;
       color: var(--foreground);
+      font-family: 'Funnel', sans-serif;
       text-decoration: none;
     }
 

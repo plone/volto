@@ -55,6 +55,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@plone/theming": "workspace:*",
     "@plone/types": "workspace:*",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",

@@ -83,6 +83,9 @@ importers:
 
   apps/seven:
     dependencies:
+      '@plone/agave':
+        specifier: workspace:*
+        version: link:../../packages/agave
       '@plone/blocks':
         specifier: workspace:*
         version: link:../../packages/blocks
@@ -204,6 +207,58 @@ importers:
       vitest:
         specifier: 'catalog:'
         version: 3.0.9(@types/debug@4.1.12)(@types/node@20.12.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)
+
+  packages/agave:
+    dependencies:
+      '@plone/components':
+        specifier: workspace:*
+        version: link:../components
+      '@plone/registry':
+        specifier: workspace:*
+        version: link:../registry
+      react:
+        specifier: ^19.1.0
+        version: 19.1.0
+      react-dom:
+        specifier: ^19.1.0
+        version: 19.1.0(react@19.1.0)
+      tailwind-merge:
+        specifier: ^3.0.2
+        version: 3.0.2
+      tailwind-variants:
+        specifier: ^1.0.0
+        version: 1.0.0(tailwindcss@4.0.17)
+      tailwindcss:
+        specifier: 'catalog:'
+        version: 4.0.17
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@4.0.17)
+    devDependencies:
+      '@plone/theming':
+        specifier: workspace:*
+        version: link:../theming
+      '@plone/types':
+        specifier: workspace:*
+        version: link:../types
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.1.5
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.1.5(@types/react@19.1.5)
+      release-it:
+        specifier: 'catalog:'
+        version: 18.1.2(@types/node@22.10.7)(typescript@5.7.3)
+      tailwindcss-react-aria-components:
+        specifier: ^2.0.0
+        version: 2.0.0(tailwindcss@4.0.17)
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
+      typescript:
+        specifier: 'catalog:'
+        version: 5.7.3
 
   packages/blocks:
     dependencies:
