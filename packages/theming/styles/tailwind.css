@@ -1,6 +1,6 @@
 @import 'tailwindcss';
-@import '@plone/components/src/styles/basic/main.css';
-@source '../node_modules/@plone/components/dist';
+
+@source '../node_modules/@plone/components/dist/quanta';
 
 @plugin 'tailwindcss-react-aria-components';
 @plugin 'tailwindcss-animate';

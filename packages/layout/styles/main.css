@@ -1,11 +1,17 @@
-main {
-  grid-area: 'content';
-}
+@layer custom {
+  main {
+    grid-area: 'content';
+  }
 
-figure img {
-  width: 100%;
-}
+  figure img {
+    width: 100%;
+  }
 
-footer {
-  margin-top: 100px;
+  footer {
+    margin-top: 100px;
+  }
+
+  .breadcrumbs {
+    padding-bottom: 1em;
+  }
 }

@@ -58,8 +58,7 @@
     "@plone/registry": "workspace:*",
     "clsx": "^2.1.1",
     "react-aria-components": "catalog:",
-    "react-router": "catalog:",
-    "tailwindcss": "catalog:"
+    "react-router": "catalog:"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
@@ -72,7 +71,6 @@
     "@storybook/react": "^8.6.12",
     "@storybook/react-vite": "^8.6.12",
     "@storybook/theming": "^8.6.12",
-    "@tailwindcss/vite": "4.0.7",
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "14.2.1",
     "@types/jest-axe": "^3.5.7",
