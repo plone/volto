@@ -1,0 +1,104 @@
+@theme {
+  --background: #ffffff;
+  --foreground: #000000;
+  --accent-color: #2a635e;
+  --secondary-color: #c7dcda;
+  --text-base: 1.125rem;
+}
+
+@layer custom {
+  /* Title block styles */
+  .block.block-title {
+    h1.documentFirstHeading {
+      @apply text-5xl font-normal leading-[56px] text-foreground inline-block relative pb-4;
+
+      font-family: 'Funnel Display', serif;
+
+      &::after {
+        content: '';
+        @apply absolute bottom-0 left-0 w-20 h-[4px];
+        background: linear-gradient(
+          to right,
+          var(--accent-color) 0%,
+          var(--accent-color) 50%,
+          transparent 100%
+        );
+      }
+    }
+  }
+
+  /* Navigation styles */
+  .navigation {
+    @apply pb-12;
+
+    a.react-aria-Link {
+      @apply relative text-lg font-semibold leading-6 pb-4 no-underline;
+      color: var(--foreground);
+      font-family: 'Funnel', sans-serif;
+    }
+
+    a.react-aria-Link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 4px;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(
+        to right,
+        var(--accent-color) 0%,
+        var(--accent-color) 50%,
+        transparent 100%
+      );
+      transition: width 0.3s ease;
+    }
+
+    a.react-aria-Link:hover::after {
+      width: 100%;
+    }
+
+    a.react-aria-Link:focus::after,
+    a.react-aria-Link:active::after {
+      width: 100%;
+      transition: none; /* Instant appearance */
+    }
+  }
+  /* Footer styles */
+  #footer {
+    @apply pt-12;
+
+    background: radial-gradient(
+      ellipse 100% 100% at 50% 100%,
+      var(--secondary-color) 0%,
+      var(--secondary-color) 20%,
+      color-mix(in srgb, var(--secondary-color) 10%, var(--background)) 80%,
+      var(--background) 100%
+    );
+  }
+
+  /* Header */
+  header {
+    background: radial-gradient(
+      ellipse 200% 105% at 50% 0%,
+      var(--secondary-color) 0%,
+      var(--secondary-color) 20%,
+      color-mix(in srgb, var(--secondary-color) 10%, var(--background)) 80%,
+      var(--background) 100%
+    );
+  }
+
+  /* Typography */
+  @font-face {
+    font-family: 'Funnel Display';
+    src: url('./fonts/FunnelDisplay[wght].woff2') format('woff2-variations');
+  }
+  @font-face {
+    font-family: 'Funnel';
+    src: url('./fonts/FunnelSans[wght].woff2') format('woff2-variations');
+  }
+
+  .content-area * {
+    @apply text-base leading-6;
+    font-family: 'Funnel', sans-serif;
+  }
+}

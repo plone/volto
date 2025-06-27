@@ -3,6 +3,48 @@
     grid-area: 'content';
   }
 
+  .content-area {
+    /* Blocks spatial relationships */
+    & > .block {
+      max-width: 100%;
+      margin-right: auto;
+      margin-left: auto;
+      background: var(--background);
+      color: var(--foreground);
+
+      .block-inner-container {
+        display: grid;
+        max-width: var(--block-width, var(--default-container-width));
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: var(--block-bottom-spacing, calc(var(--spacing) * 3));
+      }
+    }
+
+    /* Category text */
+    .category-text {
+      --block-width: var(--narrow-container-width);
+    }
+
+    /* Category separator */
+    .category-separator {
+      --block-bottom-spacing: 0;
+    }
+    .block:has(+ .category-separator) {
+      --block-bottom-spacing: 0;
+    }
+
+    /* Category heading */
+    .category-heading {
+      --block-bottom-spacing: calc(var(--spacing) * 14);
+    }
+
+    /* Category action */
+    .category-action {
+      --block-bottom-spacing: calc(var(--spacing) * 8);
+    }
+  }
+
   figure img {
     width: 100%;
   }
