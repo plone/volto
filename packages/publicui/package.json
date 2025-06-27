@@ -55,8 +55,8 @@
   },
   "dependencies": {
     "@plone/blocks": "workspace:*",
-    "@plone/registry": "workspace:*",
     "@plone/layout": "workspace:*",
+    "@plone/registry": "workspace:*",
     "@plone/theming": "workspace:*",
     "react-aria-components": "catalog:",
     "react-i18next": "catalog:",
