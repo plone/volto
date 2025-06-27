@@ -17,6 +17,9 @@ import TopNavBar from '../components/Layout/TopNavBar';
 import { useAtom } from 'jotai';
 import { clsx } from 'clsx';
 
+// eslint-disable-next-line import/no-unresolved
+import stylesheet from 'seven/cmsui.css?url';
+
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
 }) => {
@@ -33,6 +36,7 @@ export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
 };
 
 export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: stylesheet },
   {
     rel: 'icon',
     href: '/favicon.ico',

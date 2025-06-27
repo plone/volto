@@ -17,7 +17,7 @@ import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
 
 // eslint-disable-next-line import/no-unresolved
-import stylesheet from 'seven/public.css?url';
+import stylesheet from 'seven/publicui.css?url';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
