@@ -22,7 +22,7 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  */
 export function formatUrl(path) {
   const { settings } = config;
-  const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+  const apiSuffix = settings.legacyTraverse ? '' : '/++api++';
 
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
@@ -33,10 +33,8 @@ export function formatUrl(path) {
     apiPath = settings.apiPath;
   }
 
-  let adjustedPath = path[0] !== '/' ? `/${path}` : path;
-  adjustedPath = stripPrefixPath(adjustedPath);
-
-  return `${apiPath}${APISUFIX}${adjustedPath}`;
+  const contentPath = stripPrefixPath(path[0] !== '/' ? `/${path}` : path);
+  return `${apiPath}${apiSuffix}${contentPath}`;
 }
 
 /**

@@ -17,7 +17,7 @@ import { stripPrefixPath } from '@plone/volto/helpers/Url/Url';
 export const getAPIResourceWithAuth = (req) =>
   new Promise((resolve, reject) => {
     const { settings } = config;
-    const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+    const apiSuffix = settings.legacyTraverse ? '' : '/++api++';
     let apiPath = '';
 
     if (settings.internalApiPath && __SERVER__) {
@@ -28,12 +28,11 @@ export const getAPIResourceWithAuth = (req) =>
       apiPath = settings.apiPath;
     }
 
-    let path = req.path;
     //strip prefix if any
-    path = stripPrefixPath(path);
+    const contentPath = stripPrefixPath(req.path);
 
     const request = superagent
-      .get(`${apiPath}${__DEVELOPMENT__ ? '' : APISUFIX}${path}`)
+      .get(`${apiPath}${__DEVELOPMENT__ ? '' : apiSuffix}${contentPath}`)
       .maxResponseSize(settings.maxResponseSize)
       .responseType('blob');
     const authToken = req.universalCookies.get('auth_token');

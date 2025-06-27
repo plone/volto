@@ -193,7 +193,7 @@ export function addAppURL(url) {
  */
 export function expandToBackendURL(path) {
   const { settings } = config;
-  const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+  const apiSuffix = settings.legacyTraverse ? '' : '/++api++';
   let adjustedPath;
   if (path.startsWith('http://') || path.startsWith('https://')) {
     // flattenToAppURL first if we get a full URL
@@ -210,7 +210,7 @@ export function expandToBackendURL(path) {
     apiPath = settings.apiPath;
   }
 
-  return `${apiPath}${APISUFIX}${adjustedPath}`;
+  return `${apiPath}${apiSuffix}${adjustedPath}`;
 }
 
 /**

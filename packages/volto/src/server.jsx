@@ -179,8 +179,10 @@ function setupServer(req, res, next) {
     res.locals.detectedHost = `${
       req.headers['x-forwarded-proto'] || req.protocol
     }://${req.headers.host}`;
-    config.settings.apiPath = res.locals.detectedHost;
-    config.settings.publicURL = res.locals.detectedHost;
+    config.settings.apiPath =
+      res.locals.detectedHost + config.settings.prefixPath;
+    config.settings.publicURL =
+      res.locals.detectedHost + config.settings.prefixPath;
   }
 
   res.locals = {
@@ -313,8 +315,8 @@ server.get('/*', (req, res) => {
             markup={markup}
             store={store}
             criticalCss={readCriticalCss(req)}
-            apiPath={res.locals.detectedHost || config.settings.apiPath}
-            publicURL={res.locals.detectedHost || config.settings.publicURL}
+            apiPath={config.settings.apiPath}
+            publicURL={config.settings.publicURL}
           />,
         )}
       `,
@@ -357,6 +359,8 @@ export const defaultReadCriticalCss = () => {
 
 // Exposed for the console bootstrap info messages
 server.apiPath = config.settings.apiPath;
+server.internalApiPath = config.settings.internalApiPath;
+server.prefixPath = config.settings.prefixPath;
 server.devProxyToApiPath = config.settings.devProxyToApiPath;
 server.proxyRewriteTarget = config.settings.proxyRewriteTarget;
 server.publicURL = config.settings.publicURL;
