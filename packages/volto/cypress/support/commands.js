@@ -99,6 +99,7 @@ Cypress.Commands.add(
     transition = '',
     bodyModifier = (body) => body,
     image = false,
+    preview_image_link = null,
   }) => {
     let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
@@ -127,6 +128,10 @@ Cypress.Commands.add(
         allow_discussion: allow_discussion,
       },
     };
+
+    if (preview_image_link) {
+      defaultParams.body.preview_image_link = preview_image_link;
+    }
 
     if (contentType === 'File') {
       const params = {
