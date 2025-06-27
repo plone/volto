@@ -1094,10 +1094,10 @@ msgstr "Удалить этот элемент?"
 msgid "Deleted"
 msgstr "Удалено"
 
-#. Default: "Deleting this item breaks {brokenReferences} {variation}."
+#. Default: "Deleting this item will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Deleting this item breaks {brokenReferences} {variation}."
-msgstr "Удаление этого элемента нарушает {brokenReferences} {variation}."
+msgid "Deleting this item will break {brokenReferences} {variation}."
+msgstr ""
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
@@ -3504,15 +3504,15 @@ msgstr "Размер: {size}"
 msgid "Small"
 msgstr "Маленький"
 
-#. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+#. Default: "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-msgstr "Некоторые элементы также являются папками. При их удалении вы удалите {containedItemsToDelete} {variation} внутри папок."
+msgid "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
+msgstr ""
 
-#. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+#. Default: "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-msgstr "Некоторые элементы ссылаются на другие материалы. При их удалении {brokenReferences} {variation} будут нарушены."
+msgid "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
+msgstr ""
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3918,10 +3918,10 @@ msgstr "Это зарезервированное имя и не может бы
 msgid "This is a working copy of {title}"
 msgstr "Это рабочая копия {title}"
 
-#. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+#. Default: "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-msgstr "Этот элемент также является контейнером. При его удалении вы удалите {containedItemsToDelete} {variation} внутри папки."
+msgid "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
+msgstr ""
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -4460,6 +4460,11 @@ msgstr "Обновление состояний..."
 msgid "Workflow updated."
 msgstr "Состояние обновлено."
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "рабочую копию"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
@@ -4471,14 +4476,14 @@ msgstr "Ежегодно"
 msgid "Yes"
 msgstr "Да"
 
+#. Default: "You are about to delete all items and all its subitems."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items and all its subitems."
+msgstr ""
+
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
-msgstr ""
-
-#. Default: "You are about to delete all items in this folder."
-#: components/manage/Contents/ContentsDeleteModal
-msgid "You are about to delete all items in this folder."
 msgstr ""
 
 #. Default: "You are trying to access a protected resource, please {login} first."
@@ -4575,6 +4580,11 @@ msgstr "Введите новый пароль. Минимум 8 знаков."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "Введите имя пользователя, обычно что-то вроде 'iivanov' без пробелов и специальных символов. Имена пользователей и пароли чувствительны к регистру, убедитесь, что клавиша Caps Lock не включена. Это имя используется для входа в систему."
+
+#. Default: "and {count} more…"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "and {count} more…"
+msgstr ""
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema

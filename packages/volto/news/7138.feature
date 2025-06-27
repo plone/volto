@@ -1,1 +1,0 @@
-Added the `.error` class to blocks with errors, highlighting them with a red border in edit mode. @alexandreIFB
