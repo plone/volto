@@ -13,7 +13,10 @@ const filter = function (pathname, req) {
   // Check if pathname is defined, there are some corner cases that pathname is null
   if (pathname) {
     // This is the proxy to the API in case the accept header is 'application/json'
-    return config.settings.devProxyToApiPath && pathname.startsWith('/++api++');
+    return (
+      config.settings.devProxyToApiPath &&
+      pathname.startsWith(`${config.settings.prefixPath}/++api++`)
+    );
   } else {
     return false;
   }
@@ -82,13 +85,13 @@ export default function devProxyMiddleware() {
         config.settings.proxyRewriteTarget ||
         `/VirtualHostBase/${apiPathURL.protocol.slice(0, -1)}/${
           apiPathURL.hostname
-        }:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot`;
+        }:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot${config.settings.prefixPath ? '/_vh_' + config.settings.prefixPath.slice(1) : ''}`;
 
-      return `${target}${path.replace('/++api++', '')}`;
+      return `${target}${path.replace(`${config.settings.prefixPath}/++api++`, '')}`;
     },
+    changeOrigin: true,
     logLevel: process.env.DEBUG_HPM ? 'debug' : 'silent',
     ...(process.env.RAZZLE_DEV_PROXY_INSECURE && {
-      changeOrigin: true,
       secure: false,
     }),
   });
