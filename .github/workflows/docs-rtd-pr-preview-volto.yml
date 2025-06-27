@@ -11,6 +11,13 @@ on:
     paths:
       - "docs/**"
       - "packages/components/.storybook/**"
+      - "packages/components/**/*.stories.*"
+      - "packages/registry/.storybook/**"
+      - "packages/registry/**/*.stories.*"
+      - "packages/layout/.storybook/**"
+      - "packages/layout/**/*.stories.*"
+      - "packages/cmsui/.storybook/**"
+      - "packages/cmsui/**/*.stories.*"
       - "packages/volto/.storybook/**"
       - .readthedocs.yaml
       - requirements-docs.txt
