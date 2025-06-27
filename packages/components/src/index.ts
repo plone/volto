@@ -36,7 +36,6 @@ export { RangeCalendar } from './components/RangeCalendar/RangeCalendar';
 export { SearchField } from './components/SearchField/SearchField';
 export { Select, SelectItem } from './components/Select/Select';
 export { Slider } from './components/Slider/Slider';
-export { Sitemap } from './components/Sitemap/Sitemap';
 export { Switch } from './components/Switch/Switch';
 export { Table } from './components/Table/Table';
 export { TableHeader } from './components/Table/TableHeader';

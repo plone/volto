@@ -1,12 +1,9 @@
-import React from 'react';
-import { Sitemap as SitemapComponent } from './Sitemap';
+import SitemapComponent from './Sitemap';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/Sitemap.css';
-
 const meta = {
-  title: 'Basic/Sitemap',
+  title: 'Sitemap',
   component: SitemapComponent,
   tags: ['autodocs'],
   parameters: {
@@ -24,7 +21,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// More on writing stories with args: https://storybook.js.org/docs/7.0/react/writing-stories/args
 export const Default: Story = {
   args: {
     items: [
