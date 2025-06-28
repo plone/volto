@@ -10,17 +10,17 @@ myst:
 # Add-ons styles loader
 
 Add-ons that are compatible with the `@plone/registry` may declare styles that should be loaded by the app.
-Currently, the loader is able to load styles for the public UI, which is the user-facing part of the app, and the content management system user interface part of the app (CMS UI).
+Currently the loader loads styles for both the end user interface (public UI) part, which displays content to both authenticated and anonymous users, and the content management system user interface (CMS UI) part of the app.
 
 ## Public UI Styles
 
-To do so, create a file {file}`styles/main.css` at the root of your add-on package which serves as the entry point.
-This file is a `.css` file containing the styles that you want your app to load for the publicUI.
+To load public UI styles, create a file {file}`styles/main.css` at the root of your add-on package to serve as the entry point.
+This file is a `.css` file containing the styles that you want your app to load for the public UI.
 
 ## CMS UI Styles
 
-Similarly, you can create a file {file}`styles/cmsui.css` at the root of your add-on package which serves as the entry point for the CMS UI styles.
-This file is also a `.css` file containing the styles that you want your app to load for the CMS UI.
+Similar to the public UI, you can create a file {file}`styles/cmsui.css` at the root of your add-on package to serve as the entry point for the CMS UI styles.
+This file is also a CSS file containing the styles that you want your app to load for the CMS UI.
 
 `@plone/registry` has a helper utility `createAddonsStyleLoader` which generates an add-ons loader file.
 That file contains the aggregated files from all the registered add-ons, keeping the order in which they were defined.
