@@ -414,17 +414,21 @@ const defaultModify = ({
         ]
       : [];
 
-  //prefix-path
+  // If Volto is served under a prefix path,
+  // we have to adjust where Webpack assets are served too.
   const prefixPath = process.env.RAZZLE_PREFIX_PATH || '';
   if (prefixPath) {
     if (target === 'web' && dev) {
-      if (config.devServer.devMiddleware)
+      if (config.devServer.devMiddleware) {
         config.devServer.devMiddleware.publicPath = prefixPath;
-      else config.devServer.publicPath += `${prefixPath.slice(1)}/`;
+      } else {
+        config.devServer.publicPath += `${prefixPath.slice(1)}/`;
+      }
     }
     const publicPath = config.output.publicPath;
-    if (publicPath.indexOf(prefixPath) === -1)
+    if (publicPath.indexOf(prefixPath) === -1) {
       config.output.publicPath = `${publicPath}${prefixPath.slice(1)}/`;
+    }
   }
   return config;
 };
