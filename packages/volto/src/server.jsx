@@ -72,9 +72,12 @@ const server = express()
   })
   .use(cookiesMiddleware());
 
-if (process.env.RAZZLE_PREFIX_PATH) {
+// If Volto is being served under a prefix,
+// make sure the static files are available there too.
+// (The static middleware loads too early to access the config.)
+if (config.settings.prefixPath) {
   server.use(
-    process.env.RAZZLE_PREFIX_PATH,
+    config.settings.prefixPath,
     express.static(
       process.env.BUILD_DIR
         ? path.join(process.env.BUILD_DIR, 'public')
@@ -277,7 +280,7 @@ server.get('/*', (req, res) => {
               <StaticRouter
                 context={context}
                 location={req.url}
-                basename={process.env.RAZZLE_PREFIX_PATH}
+                basename={config.settings.prefixPath}
               >
                 <ReduxAsyncConnect routes={routes} helpers={api} />
               </StaticRouter>
