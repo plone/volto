@@ -1,22 +1,42 @@
 @import '@plone/theming/styles/tailwind.css';
 
 @theme {
-  --background: #ffffff;
-  --foreground: #000000;
   --accent-color: #2a635e;
   --secondary-color: #c7dcda;
   --text-base: 1.125rem;
+  --default-font-family: 'Funnel', sans-serif;
+  --heading-font-family: 'Funnel Display', serif;
+  --header-background: linear-gradient(
+    -4deg,
+    #ffffff 0%,
+    #feffff 20%,
+    #fcfdfd 40%,
+    #d9e9e9 60%,
+    #bdd8d5 80%,
+    #b2cdcc 100%
+  );
+}
+/* Typography */
+@font-face {
+  font-family: 'Funnel Display';
+  src: url('./fonts/FunnelDisplay[wght].woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'Funnel';
+  src: url('./fonts/FunnelSans[wght].woff2') format('woff2-variations');
 }
 
 @layer custom {
   /* Title block styles */
   .block.block-title {
     h1.documentFirstHeading {
-      @apply text-5xl font-normal leading-[56px] text-foreground inline-block relative pb-4;
+      @apply text-5xl font-normal leading-[56px] inline-block relative pb-4;
 
-      font-family: 'Funnel Display', serif;
+      font-family: var(--heading-font-family);
 
       &::after {
+        @apply absolute bottom-0 left-0 w-20 h-[4px];
+
         background: linear-gradient(
           to right,
           var(--accent-color) 0%,
@@ -24,69 +44,10 @@
           transparent 100%
         );
         content: '';
-        @apply absolute bottom-0 left-0 w-20 h-[4px];
       }
     }
   }
 
-  /* Navigation styles */
-  .navigation {
-    a.react-aria-Link {
-      @apply relative text-lg font-thin leading-6 pb-4 no-underline;
-      color: var(--foreground);
-      font-family: 'Funnel', sans-serif;
-    }
-
-    a.react-aria-Link::after {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 4px;
-      background: linear-gradient(
-        to right,
-        var(--accent-color) 0%,
-        var(--accent-color) 50%,
-        transparent 100%
-      );
-      content: '';
-      transition: width 0.3s ease;
-    }
-
-    a.react-aria-Link:hover::after {
-      width: 100%;
-    }
-
-    a.react-aria-Link:focus::after,
-    a.react-aria-Link:active::after {
-      width: 100%;
-      transition: none; /* Instant appearance */
-    }
-  }
-  /* Breadcrumbs */
-  nav {
-    font-family: 'Funnel', sans-serif;
-    li > span,
-    li > a {
-      @apply text-base leading-6;
-    }
-  }
-  /* Header tools */
-  .header-tools {
-    @apply flex items-center gap-4;
-
-    a.react-aria-Link {
-      @apply text-base leading-6;
-      color: var(--foreground);
-      font-family: 'Funnel', sans-serif;
-      text-decoration: none;
-    }
-
-    a.react-aria-Link:hover,
-    a.react-aria-Link:focus {
-      color: var(--accent-color);
-    }
-  }
   /* Footer styles */
   #footer {
     @apply pt-12;
@@ -102,28 +63,95 @@
 
   /* Header */
   header {
-    @apply pb-12;
-    background: radial-gradient(
-      ellipse 200% 105% at 50% 0%,
-      var(--secondary-color) 0%,
-      var(--secondary-color) 20%,
-      color-mix(in srgb, var(--secondary-color) 10%, var(--background)) 80%,
-      var(--background) 100%
-    );
-  }
+    @apply pb-[72px];
 
-  /* Typography */
-  @font-face {
-    font-family: 'Funnel Display';
-    src: url('./fonts/FunnelDisplay[wght].woff2') format('woff2-variations');
-  }
-  @font-face {
-    font-family: 'Funnel';
-    src: url('./fonts/FunnelSans[wght].woff2') format('woff2-variations');
+    &:has(.breadcrumbs) {
+      @apply pb-6;
+    }
+
+    /* Breadcrumbs */
+    nav.breadcrumbs {
+      @apply mx-auto pb-6 w-[98%];
+
+      max-width: unset;
+      box-shadow: 0 10px 24px -20px rgba(6, 16, 16, 0.5);
+      font-family: var(--default-font-family);
+
+      li:not(:last-child) {
+        &:after {
+          margin-left: 9px;
+          content: '⟩';
+          font-size: 0.75rem;
+        }
+      }
+      li {
+        @apply text-base leading-6;
+
+        & > a {
+          &[data-hovered='true'],
+          &[data-focused='true'] {
+            color: var(--accent-color);
+          }
+        }
+      }
+    }
+
+    background: var(--header-background);
+
+    /* Header tools */
+    .header-tools {
+      @apply flex items-center gap-4;
+
+      a.react-aria-Link {
+        @apply text-base leading-6;
+        color: var(--foreground);
+        font-family: var(--default-font-family);
+        text-decoration: none;
+      }
+
+      a.react-aria-Link[data-hovered='true'],
+      a.react-aria-Link[data-focused='true'] {
+        color: var(--accent-color);
+      }
+    }
+
+    /* Navigation styles */
+    .navigation {
+      a.react-aria-Link {
+        @apply relative text-lg font-thin leading-6 pb-4 no-underline;
+        font-family: var(--heading-font-family);
+      }
+
+      a.react-aria-Link::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 4px;
+        background: linear-gradient(
+          to right,
+          var(--accent-color) 0%,
+          var(--accent-color) 50%,
+          transparent 100%
+        );
+        content: '';
+        transition: width 0.3s ease;
+      }
+
+      a.react-aria-Link:hover::after {
+        width: 100%;
+      }
+
+      a.react-aria-Link:focus::after,
+      a.react-aria-Link:active::after {
+        width: 100%;
+        transition: none;
+      }
+    }
   }
 
   .content-area * {
     @apply text-base leading-6;
-    font-family: 'Funnel', sans-serif;
+    font-family: var(--default-font-family);
   }
 }

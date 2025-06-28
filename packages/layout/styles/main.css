@@ -55,5 +55,26 @@
 
   .breadcrumbs {
     padding-bottom: 1em;
+    margin-right: auto;
+    margin-left: auto;
+
+    .react-aria-Breadcrumbs {
+      display: flex;
+      max-width: var(--default-container-width);
+      margin-right: auto;
+      margin-left: auto;
+
+      li {
+        margin-right: 0.5em;
+        &:has(.icon) {
+          display: flex;
+          align-items: center;
+
+          .icon {
+            margin-right: 0.5em;
+          }
+        }
+      }
+    }
   }
 }
