@@ -1,7 +1,7 @@
 @import '@plone/theming/styles/tailwind.css';
 
 @theme {
-  --accent-color: #2a635e;
+  --accent-color: #395c57;
   --secondary-color: #c7dcda;
   --text-base: 1.125rem;
   --default-font-family: 'Funnel', sans-serif;
