@@ -20,7 +20,7 @@ This file is a `.css` file containing the styles that you want your app to load 
 ## CMS UI Styles
 
 Similar to the public UI, you can create a file {file}`styles/cmsui.css` at the root of your add-on package to serve as the entry point for the CMS UI styles.
-This file is also a `.css` file containing the styles that you want your app to load for the CMS UI.
+This file is also a CSS file containing the styles that you want your app to load for the CMS UI.
 
 `@plone/registry` has a helper utility `createAddonsStyleLoader` which generates an add-ons loader file.
 That file contains the aggregated files from all the registered add-ons, keeping the order in which they were defined.
