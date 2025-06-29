@@ -95,6 +95,9 @@ importers:
       '@plone/components':
         specifier: workspace:*
         version: link:../../packages/components
+      '@plone/contents':
+        specifier: workspace:*
+        version: link:../../packages/contents
       '@plone/helpers':
         specifier: workspace:*
         version: link:../../packages/helpers
@@ -662,8 +665,99 @@ importers:
         specifier: ^0.1.0
         version: 0.1.0(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.10.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))
 
+  packages/contents:
+    dependencies:
+      '@plone/client':
+        specifier: workspace:*
+        version: link:../client
+      '@plone/cmsui':
+        specifier: workspace:*
+        version: link:../cmsui
+      '@plone/components':
+        specifier: workspace:*
+        version: link:../components
+      '@plone/helpers':
+        specifier: workspace:*
+        version: link:../helpers
+      '@plone/react-router':
+        specifier: workspace:*
+        version: link:../react-router
+      '@plone/registry':
+        specifier: workspace:*
+        version: link:../registry
+      '@react-types/shared':
+        specifier: ^3.29.1
+        version: 3.30.0(react@19.1.0)
+      react:
+        specifier: ^19.1.0
+        version: 19.1.0
+      react-aria:
+        specifier: 'catalog:'
+        version: 3.41.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react-aria-components:
+        specifier: 'catalog:'
+        version: 1.10.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react-dom:
+        specifier: ^19.1.0
+        version: 19.1.0(react@19.1.0)
+      react-i18next:
+        specifier: 'catalog:'
+        version: 15.4.1(i18next@24.2.3(typescript@5.7.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react-router:
+        specifier: 'catalog:'
+        version: 7.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      tailwind-merge:
+        specifier: ^3.0.1
+        version: 3.0.2
+      tailwind-variants:
+        specifier: ^1.0.0
+        version: 1.0.0(tailwindcss@4.0.17)
+      tailwindcss:
+        specifier: 'catalog:'
+        version: 4.0.17
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@4.0.17)
+      usehooks-ts:
+        specifier: ^3.1.0
+        version: 3.1.1(react@19.1.0)
+    devDependencies:
+      '@plone/types':
+        specifier: workspace:*
+        version: link:../types
+      '@testing-library/jest-dom':
+        specifier: 6.4.2
+        version: 6.4.2(@jest/globals@29.7.0)(@types/jest@29.5.12)(jest@29.7.0(@types/node@22.10.7)(babel-plugin-macros@3.1.0)(node-notifier@8.0.2))(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.10.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))
+      '@types/jest-axe':
+        specifier: ^3.5.7
+        version: 3.5.9
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.1.5
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.1.5(@types/react@19.1.5)
+      jest-axe:
+        specifier: ^8.0.0
+        version: 8.0.0
+      release-it:
+        specifier: 17.1.1
+        version: 17.1.1(typescript@5.7.3)
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
+      typescript:
+        specifier: 'catalog:'
+        version: 5.7.3
+      vitest:
+        specifier: 'catalog:'
+        version: 3.0.9(@types/debug@4.1.12)(@types/node@22.10.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)
+
   packages/helpers:
     dependencies:
+      '@plone/registry':
+        specifier: workspace:*
+        version: link:../registry
       jotai:
         specifier: ^2.12.3
         version: 2.12.3(@types/react@19.1.5)(react@19.1.0)
@@ -674,9 +768,6 @@ importers:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
     devDependencies:
-      '@plone/registry':
-        specifier: workspace:*
-        version: link:../registry
       '@plone/types':
         specifier: workspace:*
         version: link:../types
@@ -8011,6 +8102,9 @@ packages:
   lodash.capitalize@4.2.1:
     resolution: {integrity: sha512-kZzYOKspf8XVX5AvmQF94gQW0lejFVgb80G85bU4ZWzoJ6C03PQg3coYAUpSTpQWelrZELd3XWgHzw4Ck5kaIw==}
 
+  lodash.debounce@4.0.8:
+    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+
   lodash.escaperegexp@4.1.2:
     resolution: {integrity: sha512-TM9YBvyC84ZxE3rgfefxUWiQKLilstD6k7PTGt6wfbtXF8ixIJLOL3VYyV/z+ZiPLsVxAsKAFVwWlWeb2Y8Yyw==}
 
@@ -10283,6 +10377,12 @@ packages:
 
   use-sync-external-store@1.4.0:
     resolution: {integrity: sha512-9WXSPC5fMv61vaupRkCKCxsPxBocVnwakBEkMIHHpkTTg6icbJtg6jzgtLDm4bl3cSHAca52rYWih0k4K3PfHw==}
+    peerDependencies:
+      react: ^19.1.0
+
+  usehooks-ts@3.1.1:
+    resolution: {integrity: sha512-I4diPp9Cq6ieSUH2wu+fDAVQO43xwtulo+fKEidHUwZPnYImbtkTjzIJYcDcJqxgmX31GVqNFURodvcgHcW0pA==}
+    engines: {node: '>=16.15.0'}
     peerDependencies:
       react: ^19.1.0
 
@@ -19164,6 +19264,8 @@ snapshots:
 
   lodash.capitalize@4.2.1: {}
 
+  lodash.debounce@4.0.8: {}
+
   lodash.escaperegexp@4.1.2: {}
 
   lodash.get@4.4.2: {}
@@ -21977,6 +22079,11 @@ snapshots:
 
   use-sync-external-store@1.4.0(react@19.1.0):
     dependencies:
+      react: 19.1.0
+
+  usehooks-ts@3.1.1(react@19.1.0):
+    dependencies:
+      lodash.debounce: 4.0.8
       react: 19.1.0
 
   util-deprecate@1.0.2: {}

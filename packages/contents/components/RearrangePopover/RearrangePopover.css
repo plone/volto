@@ -1,0 +1,25 @@
+.rearrange-popover {
+  .react-aria-MenuItem {
+    border-radius: 0;
+    font-size: 1rem;
+  }
+
+  .rearrange-menu-item {
+    display: flex;
+    justify-content: space-between;
+
+    .icon {
+      flex-shrink: 0;
+    }
+
+    /* &.open {
+      background-color: var(--highlight-pressed);
+    } */
+
+    &.focused,
+    &.open {
+      background-color: var(--quanta-smoke);
+      color: var(--text-color);
+    }
+  }
+}

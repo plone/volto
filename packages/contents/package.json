@@ -1,6 +1,6 @@
 {
-  "name": "@plone/helpers",
-  "description": "Generic Plone helpers",
+  "name": "@plone/contents",
+  "description": "Plone core contents",
   "maintainers": [
     {
       "name": "Plone Foundation",
@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "2.0.0-alpha.0",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
@@ -23,35 +23,22 @@
     "plone",
     "plone6",
     "react",
-    "helpers"
+    "contents"
   ],
   "publishConfig": {
     "access": "public"
   },
+  "main": "index.ts",
   "type": "module",
-  "files": [
-    "dist",
-    "README.md"
-  ],
-  "main": "src/index.ts",
-  "exports": {
-    "./package.json": "./package.json",
-    ".": {
-      "import": "./dist/index.js",
-      "default": "./dist/index.cjs"
-    }
-  },
   "scripts": {
-    "watch": "tsup",
-    "build": "tsup",
     "test": "vitest",
+    "check-ts": "tsc --project tsconfig.json",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
     "release-alpha": "release-it --preRelease=alpha"
   },
   "peerDependencies": {
-    "@plone/registry": "workspace:*",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
@@ -61,17 +48,32 @@
     }
   },
   "dependencies": {
+    "@plone/client": "workspace:*",
+    "@plone/cmsui": "workspace:*",
+    "@plone/components": "workspace:*",
+    "@plone/helpers": "workspace:*",
     "@plone/registry": "workspace:*",
-    "jotai": "^2.12.3"
+    "@plone/react-router": "workspace:*",
+    "@react-types/shared": "^3.29.1",
+    "react-aria": "catalog:",
+    "react-aria-components": "catalog:",
+    "react-i18next": "catalog:",
+    "react-router": "catalog:",
+    "tailwind-merge": "^3.0.1",
+    "tailwind-variants": "^1.0.0",
+    "tailwindcss": "catalog:",
+    "tailwindcss-animate": "^1.0.7",
+    "usehooks-ts": "^3.1.0"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
-    "@plone/registry": "workspace:*",
+    "@testing-library/jest-dom": "6.4.2",
+    "@types/jest-axe": "^3.5.7",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "release-it": "catalog:",
+    "jest-axe": "^8.0.0",
+    "release-it": "17.1.1",
     "tsconfig": "workspace:*",
-    "tsup": "^8.3.5",
     "typescript": "catalog:",
     "vitest": "catalog:"
   }
