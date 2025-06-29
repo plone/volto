@@ -11,13 +11,7 @@ const App = (props: AppProps) => {
 
   return (
     <div className="app-slot">
-      <header className="header-slot">
-        <SlotRenderer name="header" content={content} location={location} />
-      </header>
       <SlotRenderer name="main" content={content} location={location} />
-      <footer id="footer">
-        <SlotRenderer name="footer" content={content} location={location} />
-      </footer>
     </div>
   );
 };

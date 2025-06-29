@@ -1,0 +1,3 @@
+.documentFirstHeading {
+  @apply text-4xl font-bold mb-4;
+}
