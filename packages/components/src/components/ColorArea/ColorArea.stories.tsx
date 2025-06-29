@@ -3,8 +3,6 @@ import { ColorArea } from './ColorArea';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/ColorArea.css';
-
 const meta = {
   title: 'Basic/Forms/ColorArea',
   component: ColorArea,

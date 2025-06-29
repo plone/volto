@@ -25,7 +25,7 @@ if (!vscodeSettingsJSON['[markdown]']) {
 
 if (!vscodeSettingsJSON['tailwindCSS.experimental.configFile']) {
   vscodeSettingsJSON['tailwindCSS.experimental.configFile'] =
-    'apps/seven/addons.styles.css';
+    'apps/seven/publicui.css';
 }
 
 if (!vscodeSettingsJSON['tailwindCSS.classFunctions']) {

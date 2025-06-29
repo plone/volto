@@ -11,8 +11,6 @@ import { Menu, MenuItem } from '../Menu/Menu';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/Breadcrumbs.css';
-
 const meta = {
   title: 'Basic/Breadcrumbs',
   component: Breadcrumbs,
