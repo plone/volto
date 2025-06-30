@@ -8,19 +8,8 @@
     font-weight: 500;
   }
 
-  .popover-list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  .popover-list .react-aria-Checkbox,
-  .popover-list-item {
+  .popover-list .react-aria-Checkbox {
     font-size: 1rem;
-  }
-
-  .popover-list-item {
-    padding: 0.5rem 0;
   }
 
   .react-aria-Dialog {

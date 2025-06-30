@@ -688,6 +688,9 @@ importers:
       '@react-types/shared':
         specifier: ^3.29.1
         version: 3.30.0(react@19.1.0)
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       react:
         specifier: ^19.1.0
         version: 19.1.0
@@ -740,6 +743,9 @@ importers:
       jest-axe:
         specifier: ^8.0.0
         version: 8.0.0
+      prettier-plugin-tailwindcss:
+        specifier: ^0.6.11
+        version: 0.6.11(prettier@3.5.2)
       release-it:
         specifier: 17.1.1
         version: 17.1.1(typescript@5.7.3)

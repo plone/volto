@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, Button, type PopoverProps, Popover } from '@plone/components';
 import EditIcon from '@plone/components/icons/edit.svg?react';
 import EyeIcon from '@plone/components/icons/eye.svg?react';

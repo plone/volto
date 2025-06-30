@@ -1,4 +1,4 @@
-import { type LoaderFunctionArgs, useLoaderData } from 'react-router';
+import { type LoaderFunctionArgs, useRouteLoaderData } from 'react-router';
 import { requireAuthCookie } from '@plone/react-router';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
@@ -17,6 +17,7 @@ import {
   UNSTABLE_ToastQueue as ToastQueue,
   UNSTABLE_ToastRegion as ToastRegion,
 } from 'react-aria-components';
+import type { RootLoader } from 'seven/app/root';
 import type { ToastContent as MyToastContent } from '../types';
 
 // This is needed because to prevent circular import loops
@@ -39,9 +40,6 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 
   const path = `/${params['*'] || ''}`;
 
-  const content = flattenToAppURL(
-    (await cli.getContent({ path, expand: ['breadcrumbs'] })).data,
-  );
   const searchableText =
     new URLSearchParams(new URL(request.url).search).get('SearchableText') ||
     '';
@@ -69,11 +67,20 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
     ).data,
   );
 
-  return { content, search, searchableText };
+  const types = await cli.getTypes();
+  const addableTypes = types.data.filter((type) => type.addable);
+
+  return { addableTypes, search, searchableText };
 }
 
 export default function Contents() {
-  const { content } = useLoaderData<typeof loader>();
+  const rootData = useRouteLoaderData<RootLoader>('root');
+
+  if (!rootData) {
+    return null;
+  }
+
+  const { content } = rootData;
 
   const upload = () => {};
   const properties = () => {};

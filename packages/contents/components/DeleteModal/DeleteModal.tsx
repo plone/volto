@@ -52,7 +52,7 @@ export default function DeleteModal() {
               })}
         </Heading>
 
-        <p className="help text-center">
+        <p className="text-center text-[0.8rem] font-light">
           {t('contents.modal_delete.description')}
         </p>
         <div className="button-group-bottom justify-center">

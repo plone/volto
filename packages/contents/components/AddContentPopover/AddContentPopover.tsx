@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link, Popover } from '@plone/components';
+import { Popover } from '@plone/components';
+import { Link } from '@plone/components/quanta';
 import ChevronrightSVG from '@plone/components/icons/chevron-right.svg?react';
-import './AddContentPopover.css';
+import PopoverListItem from '../PopoverListItem';
 
 interface Props {
   path: string;
@@ -19,12 +19,18 @@ export const AddContentPopover = ({ path, addableTypes }: Props) => {
     <Popover className="react-aria-Popover add-content-popover">
       <ul className="popover-list">
         {addableTypes.map((type) => (
-          <li key={type.id} className="popover-list-item">
-            <Link href={`${path}/add?type=${encodeURIComponent(type.id)}`}>
+          <PopoverListItem
+            key={type.id}
+            className="border-quanta-smoke [&+li]:border-t"
+          >
+            <Link
+              href={`/@@add${path}?type=${encodeURIComponent(type.id)}`}
+              className="text-quanta-sapphire hover:text-quanta-royal flex items-center decoration-transparent"
+            >
               {type.title}
-              <ChevronrightSVG />
+              <ChevronrightSVG className="ms-auto" />
             </Link>
-          </li>
+          </PopoverListItem>
         ))}
       </ul>
     </Popover>

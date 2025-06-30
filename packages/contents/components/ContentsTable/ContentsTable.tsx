@@ -6,28 +6,42 @@ import {
   DialogTrigger,
   MenuTrigger,
 } from 'react-aria-components';
-import { useDebounceCallback, useMediaQuery } from 'usehooks-ts';
-import { Tooltip, Button, Table } from '@plone/components';
-import { Container, Breadcrumbs, Breadcrumb } from '@plone/components/quanta';
 import {
+  useFetcher,
+  useLoaderData,
+  useNavigate,
+  useRouteLoaderData,
+} from 'react-router';
+import { useDebounceCallback, useMediaQuery } from 'usehooks-ts';
+import { Tooltip, Table } from '@plone/components';
+import {
+  Button,
+  Container,
+  Breadcrumbs,
+  Breadcrumb,
+} from '@plone/components/quanta';
+import {
+  AddIcon,
   HomeIcon,
   CollectionIcon,
   MoreoptionsIcon,
   PasteIcon,
 } from '@plone/components/Icons';
 import { TextField } from '@plone/cmsui/components/TextField/TextField';
-
+import type { RootLoader } from 'seven/app/root';
 import type { ArrayElement, Brain } from '@plone/types';
+
+import Topbar from '../Topbar';
 import { ContentsCell } from '../ContentsCell/ContentsCell';
 import { TableIndexesPopover } from '../TableIndexesPopover/TableIndexesPopover';
 import { RearrangePopover } from '../RearrangePopover/RearrangePopover';
 import { ContentsActions } from '../ContentsActions/ContentsActions';
-// import { AddContentPopover } from './AddContentPopover/AddContentPopover';
-import { useFetcher, useLoaderData, useNavigate } from 'react-router';
+import { AddContentPopover } from '../AddContentPopover/AddContentPopover';
 import type { ContentsLoaderType } from '../../routes/contents';
 import { useTranslation } from 'react-i18next';
 import { useContentsContext } from '../../providers/contents';
 import { clipboardKey } from '../../config/constants';
+import IconButton from '../IconButton';
 
 import './ContentsTable.css';
 
@@ -99,9 +113,11 @@ export function ContentsTable({
   const { selected, setSelected, setShowDelete, setItemsToDelete } =
     useContentsContext();
   const fetcher = useFetcher();
-  const { content, search, searchableText } =
+  const { addableTypes, search, searchableText } =
     useLoaderData<ContentsLoaderType>();
+  const rootData = useRouteLoaderData<RootLoader>('root');
 
+  const { content } = rootData ?? {};
   const { title = '' } = content ?? {};
   const { items = [] } = search ?? {};
   type Item = ArrayElement<typeof items>;
@@ -165,6 +181,7 @@ export function ContentsTable({
   const moveToBottom = (item: Item) => orderItem(item.id, 'bottom');
   const moveToTop = (item: Item) => orderItem(item.id, 'top');
 
+  // TODO try making a custom hook for the clipboard
   const [clipboard, _setClipboard] = useState<{
     action: 'cut' | 'copy' | null;
     source: string[];
@@ -260,9 +277,9 @@ export function ContentsTable({
       name: !isMobileScreenSize ? (
         <DialogTrigger>
           <TooltipTrigger>
-            <Button className="react-aria-Button actions-cell-header">
+            <IconButton className="actions-cell-header">
               <MoreoptionsIcon />
-            </Button>
+            </IconButton>
             <Tooltip placement="bottom">{t('Select columns to show')}</Tooltip>
           </TooltipTrigger>
           <TableIndexesPopover
@@ -371,19 +388,26 @@ export function ContentsTable({
       className="folder-contents"
       // aria-live="polite"
     >
-      <article id="content">
-        <section className="topbar">
+      <article id="content" className="mx-auto px-4 py-2 lg:px-8">
+        <Topbar>
           <div className="title-block">
-            <Breadcrumbs items={breadcrumbs}>
+            <Breadcrumbs
+              items={breadcrumbs}
+              className="text-quanta-sapphire contents-breadcrumbs"
+            >
               {(item) => (
-                <Breadcrumb id={item['@id']} href={item['@id']}>
+                <Breadcrumb
+                  id={item['@id']}
+                  href={item['@id']}
+                  className="text-quanta-sapphire decoration-quanta-sapphire/50 hover:decoration-quanta-sapphire"
+                >
                   {item.title}
                 </Breadcrumb>
               )}
             </Breadcrumbs>
-            <h1>{title}</h1>
+            <h1 className="text-2xl font-bold">{title}</h1>
           </div>
-          <div className="group flex end-block">
+          <div className="group ms-auto flex flex-shrink-0 flex-grow basis-0 flex-wrap-reverse items-center justify-end gap-4 self-end">
             {!isMobileScreenSize && (
               <ContentsActions
                 upload={upload}
@@ -408,19 +432,23 @@ export function ContentsTable({
               }}
             />
 
-            {/* <TooltipTrigger>
-            <DialogTrigger>
-              <Button className="react-aria-Button add">
-                <AddIcon />
-              </Button>
-              <AddContentPopover path={path} addableTypes={addableTypes} />
-            </DialogTrigger>
-            <Tooltip placement="bottom">
-              Add content
-            </Tooltip>
-          </TooltipTrigger> */}
+            <TooltipTrigger>
+              <DialogTrigger>
+                <Button
+                  variant="primary"
+                  className="bg-quanta-sapphire hover:bg-quanta-royal text-quanta-air hover:text-quanta-air active:text-quanta-air focus:text-quanta-air h-10 w-10 cursor-pointer rounded-full border-0 p-1.5 outline-offset-2"
+                >
+                  <AddIcon />
+                </Button>
+                <AddContentPopover
+                  path={pathname}
+                  addableTypes={addableTypes}
+                />
+              </DialogTrigger>
+              <Tooltip placement="bottom">Add content</Tooltip>
+            </TooltipTrigger>
           </div>
-        </section>
+        </Topbar>
         <section className="contents-table">
           <VisuallyHidden>
             <span aria-live="polite">
@@ -440,9 +468,9 @@ export function ContentsTable({
               dragColumnHeader={
                 <MenuTrigger>
                   <TooltipTrigger>
-                    <Button className="react-aria-Button drag-cell-header">
+                    <IconButton className="drag-cell-header">
                       <CollectionIcon />
-                    </Button>
+                    </IconButton>
                     <Tooltip
                       className="react-aria-Tooltip tooltip"
                       placement="bottom"
@@ -461,7 +489,7 @@ export function ContentsTable({
             />
           ) : (
             <div className="empty-state">
-              <div className="text-1xl text-center">
+              <div className="text-center text-xl">
                 {t('contents.results.no_results')}
               </div>
             </div>

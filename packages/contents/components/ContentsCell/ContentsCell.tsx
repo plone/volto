@@ -3,9 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { useDateFormatter } from 'react-aria';
 import { getContentIcon } from '@plone/helpers';
 import type { Brain } from '@plone/types';
-import { Button, Link } from '@plone/components';
+import { Link } from '@plone/components/quanta';
 import MoreOptionsSVG from '@plone/components/icons/more-options.svg?react';
 import { ItemActionsPopover } from '../ItemActionsPopover/ItemActionsPopover';
+import IconButton from '../IconButton';
+import ReviewState from '../ReviewState';
 
 interface Props {
   item: Brain;
@@ -54,7 +56,7 @@ export function ContentsCell({
   if (column === 'title') {
     return (
       <Link
-        className="react-aria-Link title-link"
+        className="title-link"
         href={`${item.is_folderish ? '/@@contents' : ''}${item['@id']}`}
       >
         <Icon size="S" title={item['Type'] || item['@type']} />
@@ -72,14 +74,14 @@ export function ContentsCell({
   } else if (column === '_actions') {
     return (
       <>
-        <Button
-          className="react-aria-Button item-actions-trigger"
+        <IconButton
+          className="item-actions-trigger"
           aria-label={t('contents.item.more_options')}
           onPress={() => setIsMoreOptionsOpen(true)}
           ref={triggerRef}
         >
           <MoreOptionsSVG />
-        </Button>
+        </IconButton>
         <ItemActionsPopover
           triggerRef={triggerRef}
           isOpen={isMoreOptionsOpen}
@@ -128,12 +130,12 @@ export function ContentsCell({
         return <>{item[column]}</>;
       } else {
         return (
-          <div className={`review-state ${item[column]}`}>
+          <ReviewState state={item[column]}>
             {t(
               'contents.indexes.review_state.' +
                 (item[column] ?? 'no_workflow_state'),
             )}
-          </div>
+          </ReviewState>
         );
       }
     } else if (indexes.values[column].type === 'date') {

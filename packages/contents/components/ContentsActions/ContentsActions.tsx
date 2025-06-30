@@ -11,8 +11,9 @@ import CutSVG from '@plone/components/icons/cut.svg?react';
 import CopySVG from '@plone/components/icons/copy.svg?react';
 import PasteSVG from '@plone/components/icons/paste.svg?react';
 import type { Brain } from '@plone/types';
-import './ContentsActions.css';
+import IconButton from '../IconButton';
 import { useContentsContext } from '../../providers/contents';
+import './ContentsActions.css';
 
 type Props = {
   upload: () => Promise<void>;
@@ -47,102 +48,102 @@ export function ContentsActions({
   return (
     <div className="contents-actions">
       <TooltipTrigger>
-        <Button
-          className="react-aria-Button contents-action-trigger upload"
+        <IconButton
+          className="contents-action-trigger upload"
           onPress={upload}
           aria-label={t('contents.actions.upload')}
         >
           <UploadSVG />
-        </Button>
+        </IconButton>
         <Tooltip placement="bottom">{t('contents.actions.upload')}</Tooltip>
       </TooltipTrigger>
       <TooltipTrigger>
-        <Button
-          className="react-aria-Button contents-action-trigger rename"
+        <IconButton
+          className="contents-action-trigger rename"
           onPress={rename}
           aria-label={t('contents.actions.rename')}
           isDisabled={selected.size === 0}
         >
           <RenameSVG />
-        </Button>
+        </IconButton>
         <Tooltip placement="bottom">{t('contents.actions.rename')}</Tooltip>
       </TooltipTrigger>
       <TooltipTrigger>
-        <Button
-          className="react-aria-Button contents-action-trigger state"
+        <IconButton
+          className="contents-action-trigger state"
           onPress={workflow}
           aria-label={t('contents.actions.state')}
           isDisabled={selected.size === 0}
         >
           <StateSVG />
-        </Button>
+        </IconButton>
         <Tooltip placement="bottom">{t('contents.actions.state')}</Tooltip>
       </TooltipTrigger>
       <TooltipTrigger>
-        <Button
-          className="react-aria-Button contents-action-trigger tags"
+        <IconButton
+          className="contents-action-trigger tags"
           onPress={tags}
           aria-label={t('contents.actions.tags')}
           isDisabled={selected.size === 0}
         >
           <TagSVG />
-        </Button>
+        </IconButton>
         <Tooltip placement="bottom">{t('contents.actions.tags')}</Tooltip>
       </TooltipTrigger>
       <TooltipTrigger>
-        <Button
-          className="react-aria-Button contents-action-trigger properties"
+        <IconButton
+          className="contents-action-trigger properties"
           onPress={properties}
           aria-label={t('contents.actions.properties')}
           isDisabled={selected.size === 0}
         >
           <PropertiesSVG />
-        </Button>
+        </IconButton>
         <Tooltip placement="bottom">{t('contents.actions.properties')}</Tooltip>
       </TooltipTrigger>
       <span className="separator"></span>
       <TooltipTrigger>
-        <Button
-          className="react-aria-Button contents-action-trigger cut"
+        <IconButton
+          className="contents-action-trigger cut"
           onPress={() => cut()}
           aria-label={t('contents.actions.cut')}
           isDisabled={selected.size === 0}
         >
           <CutSVG />
-        </Button>
+        </IconButton>
         <Tooltip placement="bottom">{t('contents.actions.cut')}</Tooltip>
       </TooltipTrigger>
       <TooltipTrigger>
-        <Button
-          className="react-aria-Button contents-action-trigger copy"
+        <IconButton
+          className="contents-action-trigger copy"
           onPress={() => copy()}
           aria-label={t('contents.actions.copy')}
           isDisabled={selected.size === 0}
         >
           <CopySVG />
-        </Button>
+        </IconButton>
         <Tooltip placement="bottom">{t('contents.actions.copy')}</Tooltip>
       </TooltipTrigger>
       <TooltipTrigger>
-        <Button
-          className="react-aria-Button contents-action-trigger paste"
+        <IconButton
+          className="contents-action-trigger paste"
           onPress={paste}
           aria-label={t('contents.actions.paste')}
           isDisabled={!canPaste}
         >
           <PasteSVG />
-        </Button>
+        </IconButton>
         <Tooltip placement="bottom">{t('contents.actions.paste')}</Tooltip>
       </TooltipTrigger>
       <TooltipTrigger>
-        <Button
-          className="react-aria-Button contents-action-trigger delete"
+        <IconButton
+          className="contents-action-trigger delete"
           onPress={() => deleteItem()}
           aria-label={t('contents.actions.delete')}
           isDisabled={selected.size === 0}
         >
           <BinSVG />
-        </Button>
+        </IconButton>
         <Tooltip placement="bottom">{t('contents.actions.delete')}</Tooltip>
       </TooltipTrigger>
     </div>
