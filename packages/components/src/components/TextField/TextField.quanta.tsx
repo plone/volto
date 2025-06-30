@@ -42,7 +42,7 @@ export function TextField({
       {...props}
       className={composeTailwindRenderProps(
         props.className,
-        'flex flex-col gap-1',
+        'group flex flex-col gap-1',
       )}
     >
       {label && <Label>{label}</Label>}
