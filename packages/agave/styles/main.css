@@ -63,7 +63,7 @@
 
   /* Header */
   header {
-    @apply pb-[72px];
+    @apply pb-[72px] pt-8;
 
     &:has(.breadcrumbs) {
       @apply pb-6;
