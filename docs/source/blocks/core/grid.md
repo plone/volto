@@ -76,30 +76,13 @@ The grid block has the following configuration settings.
     You could add different variations, `schemaEnhancers`, and so on.
     You could remove them as well, but only for blocks inside the grid block.
 
-    **Adding custom blocks to the grid:**
-    
-    When adding a custom block (like `countUpBlock`) to the grid, you need **both** configurations:
-
     ```js
-    // 1. Add the block to allowedBlocks
-    config.blocks.blocksConfig.gridBlock.allowedBlocks.push('countUpBlock');
-    
-    // 2. Add the block configuration to grid's blocksConfig
-    config.blocks.blocksConfig.gridBlock.blocksConfig = {
-      ...config.blocks.blocksConfig.gridBlock.blocksConfig,
-      countUpBlock: config.blocks.blocksConfig.countUpBlock,
-    };
-    ```
-
-    **Customizing existing blocks in the grid:**
-
-    ```js
-    config.blocks.blocksConfig.gridBlock.allowedBlocks = ['teaser', 'image', 'slate'];
-    config.blocks.blocksConfig.gridBlock.blocksConfig = {
+    config.blocks.blocksConfig.gridBlock.gridAllowedBlocks: ['teaser', 'image', 'slate'];
+    config.blocks.blocksConfig.gridBlock.blocksConfig: {
       // You can customize the blocks inside the grid like this:
-      ...config.blocks.blocksConfig.gridBlock.blocksConfig,
+      ...config.blocks.blocksConfig,
       teaser: {
-        ...config.blocks.blocksConfig.gridBlock.blocksConfig.teaser,
+        ...config.blocks.blocksConfig.teaser,
         variations: [
           {
             id: 'default',
@@ -117,9 +100,60 @@ The grid block has the following configuration settings.
     };
     ```
 
-    ```{note}
-    Simply adding a block to `allowedBlocks` is not sufficient. The grid block uses its own `blocksConfig` to render inner blocks, so both configurations are required for blocks to function properly within the grid layout.
-    ```
+### Add custom blocks to a grid block
+
+When working with the grid block, you need to configure both the allowed blocks and their configurations.
+Simply adding a block to the allowed blocks list is not sufficient.
+The grid block maintains its own blocks configuration to properly render inner blocks.
+
+**Adding custom blocks to the grid:**
+
+When adding a custom block (like `countUpBlock`) to the grid, you need both configurations:
+
+```js
+// 1. Add the block to allowedBlocks
+config.blocks.blocksConfig.gridBlock.allowedBlocks.push('countUpBlock');
+
+// 2. Add the block configuration to grid's blocksConfig
+config.blocks.blocksConfig.gridBlock.blocksConfig = {
+  ...config.blocks.blocksConfig.gridBlock.blocksConfig,
+  countUpBlock: config.blocks.blocksConfig.countUpBlock,
+};
+```
+
+**Customizing existing blocks in the grid:**
+
+You can also customize how existing blocks behave within the grid:
+
+```js
+config.blocks.blocksConfig.gridBlock.allowedBlocks = ['teaser', 'image', 'slate'];
+config.blocks.blocksConfig.gridBlock.blocksConfig = {
+  // You can customize the blocks inside the grid like this:
+  ...config.blocks.blocksConfig.gridBlock.blocksConfig,
+  teaser: {
+    ...config.blocks.blocksConfig.gridBlock.blocksConfig.teaser,
+    variations: [
+      {
+        id: 'default',
+        isDefault: true,
+        title: 'Default',
+        template: DefaultBody,
+      },
+      {
+        id: 'variation2',
+        title: 'variation #2',
+        template: DefaultBody2,
+      },
+    ],
+  },
+};
+```
+
+```{note}
+Only adding a block to allowedBlocks is not enough.
+The grid block uses its own blocksConfig to render inner blocks.
+So both configuration settings are required for blocks to function properly within the grid layout.
+```
 
 ## Block image styling customization
 
