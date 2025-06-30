@@ -359,6 +359,48 @@ working-copy-ci-acceptance-test: ## Run Cypress tests in headless mode for CI fo
 working-copy-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for working copy tests
 	$(MAKE) -C "./packages/volto/" working-copy-ci-acceptance-test-run-all
 
+######### Prefixed Core Acceptance tests
+
+.PHONY: prefixed-acceptance-frontend-prod-start
+prefixed-acceptance-frontend-prod-start: ## Start the prefixed Core Acceptance Frontend Fixture
+	$(MAKE) -C "./packages/volto/" prefixed-acceptance-frontend-prod-start
+
+.PHONY: prefixed-acceptance-frontend-dev-start
+prefixed-acceptance-frontend-dev-start: ## Start Prefixed acceptance frontend in development mode
+	$(MAKE) -C "./packages/volto/" prefixed-acceptance-frontend-dev-start
+
+.PHONY: prefixed-ci-acceptance-test-run-all
+prefixed-ci-acceptance-test-run-all: ## Runs prefixed Core Full Acceptance Testing in headless mode
+	$(MAKE) -C "./packages/volto/" prefixed-ci-acceptance-test-run-all
+
+.PHONY: prefixed-acceptance-test
+prefixed-acceptance-test: ## Start Prefixed Cypress Acceptance Tests
+	$(MAKE) -C "./packages/volto/" prefixed-acceptance-test
+
+.PHONY: deployment-prefixed-acceptance-web-server-start
+deployment-prefixed-acceptance-web-server-start: ## Start the prefixed webserver
+	$(MAKE) -C "./packages/volto/" deployment-prefixed-acceptance-web-server-start
+
+######### Prefixed Multilingual Acceptance tests
+
+.PHONY: prefixed-multilingual-acceptance-frontend-prod-start
+prefixed-multilingual-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for prefixed multilingual tests
+	$(MAKE) -C "./packages/volto/" prefixed-multilingual-acceptance-frontend-prod-start
+
+.PHONY: prefixed-multilingual-acceptance-test
+prefixed-multilingual-acceptance-test: ## Start Cypress in interactive mode for prefixed multilingual tests
+	$(MAKE) -C "./packages/volto/" prefixed-multilingual-acceptance-test
+
+######### Prefixed Working Copy Acceptance tests
+
+.PHONY: prefixed-working-copy-acceptance-frontend-prod-start
+prefixed-working-copy-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for prefixed working copy tests
+	$(MAKE) -C "./packages/volto/" prefixed-working-copy-acceptance-frontend-prod-start
+
+.PHONY: prefixed-working-copy-acceptance-test
+prefixed-working-copy-acceptance-test: ## Start Cypress in interactive mode for prefixed working copy tests
+	$(MAKE) -C "./packages/volto/" prefixed-working-copy-acceptance-test
+
 ######### @plone/client
 
 .PHONY: acceptance-server-detached-start
