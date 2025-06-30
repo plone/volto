@@ -1,6 +1,7 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useSetAtom } from 'jotai';
 import { focusAtom } from 'jotai-optics';
+import type { OpticFor } from 'optics-ts';
 import type { PrimitiveAtom, WritableAtom } from 'jotai';
 import type { DeepKeys } from '@tanstack/react-form';
 
@@ -16,7 +17,7 @@ export function useSetFieldFocusAtom<T>({
   return useSetAtom(
     focusAtom(
       anAtom,
-      // @ts-ignore
+      // @ts-expect-error https://github.com/jotaijs/jotai-optics/issues/6
       useCallback((optic: OpticFor<T>) => optic.prop(field), [field]),
     ),
   );
@@ -30,7 +31,7 @@ export function useFieldFocusAtom<T>(
 ) {
   return focusAtom(
     anAtom,
-    // @ts-ignore
+    // @ts-expect-error https://github.com/jotaijs/jotai-optics/issues/6
     useCallback((optic: OpticFor<T>) => optic.prop(field), [field]),
   );
 }

@@ -1,37 +1,39 @@
-import { useAtom, type PrimitiveAtom } from 'jotai';
-import type { Content } from '@plone/types';
+import { useEffect } from 'react';
+import { atom, useAtom, useSetAtom, type PrimitiveAtom } from 'jotai';
 import { useFieldFocusAtom } from '../../helpers/atoms';
-import BlockWrapper from '@plone/blocks/RenderBlocks/BlockWrapper';
-import config from '@plone/registry';
-import { Plug } from '@plone/layout/components/Pluggable';
+import EditBlockWrapper from './EditBlockWrapper';
+import type { Content } from '@plone/types';
 
 type BlockEditorProps = {
   formAtom: PrimitiveAtom<Content>;
 };
 
+export const selectedBlockAtom = atom<string | null>(null);
+
 const BlockEditor = (props: BlockEditorProps) => {
-  const blocksAtom = useFieldFocusAtom(props.formAtom, 'blocks');
+  // const blocksAtom = useFieldFocusAtom(props.formAtom, 'blocks');
   const blocksLayoutAtom = useFieldFocusAtom(props.formAtom, 'blocks_layout');
-  const [blocks] = useAtom(blocksAtom);
-  const [blocksLayout] = useAtom(blocksLayoutAtom);
+
+  // TODO: The inferred type for blocks and blocks_layout are not working
+  // properly, so we cast them to the expected types.
+  // We need to figure out why this is happening (see helpers/atoms.ts)
+  // const [blocks] = useAtom(blocksAtom) as unknown as [Content['blocks']];
+  const [blocksLayout] = useAtom(blocksLayoutAtom) as unknown as [
+    Content['blocks_layout'],
+  ];
+
+  const onSelectBlock = useSetAtom(selectedBlockAtom);
+
+  useEffect(() => {
+    onSelectBlock(blocksLayout.items?.[0] || null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
       {blocksLayout.items.map((blockId) => {
         return (
-          <>
-            <BlockWrapper
-              key={blockId}
-              data={blocks[blockId]}
-              block={blocks[blockId]}
-              blocksConfig={config.blocks.blocksConfig}
-            >
-              {blocks[blockId]['@type']}
-            </BlockWrapper>
-            <Plug pluggable="block-helpers" id="button-settings">
-              <div className="helpers">Helpers</div>
-            </Plug>
-          </>
+          <EditBlockWrapper key={blockId} block={blockId}></EditBlockWrapper>
         );
       })}
     </div>

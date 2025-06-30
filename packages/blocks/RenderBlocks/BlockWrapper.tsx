@@ -1,13 +1,14 @@
 import type { ReactNode } from 'react';
 import cx from 'clsx';
 import type { RenderBlocksProps } from './RenderBlocks';
-import Pluggable from '@plone/layout/components/Pluggable';
+import { Pluggable } from '@plone/layout/components/Pluggable';
+import type { BlocksFormData } from '@plone/types';
 
-type BlockWrapperProps = RenderBlocksProps & {
-  block: string;
+type BlockWrapperProps = Partial<RenderBlocksProps> & {
   children: ReactNode;
-  data: Record<string, any>;
+  data: BlocksFormData;
 };
+
 const BlockWrapper = (props: BlockWrapperProps) => {
   const { blocksConfig, children, data } = props;
   const category = blocksConfig?.[data['@type']]?.category;
