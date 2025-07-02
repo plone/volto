@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Plone\nPOT-Creation-Date: 2022-07-20T12:45:09.681Z\nPO-Revision-Date: 2025-06-09 15:39+0000\nLast-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\nLanguage-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-slate-18/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.12-dev\nLanguage-Code: en\nLanguage-Name: English\nPreferred-Encodings: utf-8\nDomain: volto\n"
+msgstr "Project-Id-Version: Plone\nPOT-Creation-Date: 2022-07-20T12:45:09.681Z\nPO-Revision-Date: 2025-07-03 09:32+0000\nLast-Translator: \"Leonardo J. Caballero G.\" <leonardocaballero@gmail.com>\nLanguage-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-slate-18/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.13-dev\nLanguage-Code: en\nLanguage-Name: English\nPreferred-Encodings: utf-8\nDomain: volto\n"
 
 # defaultMessage: Add link
 #: editor/plugins/Link/index
@@ -50,7 +50,7 @@ msgstr "Eliminar tabla"
 # defaultMessage: Divide each row into separate cells
 #: blocks/Table/TableBlockEdit
 msgid "Divide each row into separate cells"
-msgstr "Dividir cada fila en celdas separadas"
+msgstr "Divide cada fila en celdas separadas"
 
 # defaultMessage: Edit element
 #: elementEditor/messages
@@ -95,7 +95,7 @@ msgstr "Insertar fila después"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row before"
-msgstr "Inserta fila antes"
+msgstr "Insertar fila antes"
 
 # defaultMessage: Left
 #: blocks/Table/TableBlockEdit
@@ -125,7 +125,7 @@ msgstr "No hay bloques"
 # defaultMessage: Reduce complexity
 #: blocks/Table/TableBlockEdit
 msgid "Reduce complexity"
-msgstr "Reducir la complejidad"
+msgstr "Reducir complejidad"
 
 # defaultMessage: Remove element
 #: elementEditor/messages
