@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 
 const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not rendered
 const MODE_DISPLAY = 'display'; //display mode. If mode is display, field is only viewable, not editable
