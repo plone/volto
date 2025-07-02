@@ -1,0 +1,1 @@
+Handle "mode=display" for fields in form. @giuliaghisini
