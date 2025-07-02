@@ -1,19 +1,34 @@
 @import '@plone/theming/styles/tailwind.css';
 
 @theme {
-  --accent-color: #395c57;
-  --secondary-color: #c7dcda;
-  --text-base: 1.125rem;
+  --accent-color: #3b5759;
+  --secondary-color: #afcac8;
+  --text-base: 1.15rem;
   --default-font-family: 'Funnel', sans-serif;
   --heading-font-family: 'Funnel Display', serif;
   --header-background: linear-gradient(
-    -4deg,
-    #ffffff 0%,
-    #feffff 20%,
-    #fcfdfd 40%,
-    #d9e9e9 60%,
-    #bdd8d5 80%,
-    #b2cdcc 100%
+    -3deg,
+    var(--background, #fff) 0%,
+    color-mix(in oklab, var(--secondary-color) 1%, var(--background, #fff)) 20%,
+    color-mix(in oklab, var(--secondary-color) 3%, var(--background, #fff)) 35%,
+    color-mix(in oklab, var(--secondary-color) 10%, var(--background, #fff)) 50%,
+    color-mix(in oklab, var(--secondary-color) 30%, var(--background, #fff)) 65%,
+    color-mix(in oklab, var(--secondary-color) 65%, var(--background, #fff)) 80%,
+    color-mix(in oklab, var(--secondary-color) 90%, var(--background, #fff)) 92%,
+    var(--secondary-color) 100%
+  );
+  --footer-background: radial-gradient(
+    ellipse 100% 100% at 50% 100%,
+    var(--secondary-color) 0%,
+    var(--secondary-color) 20%,
+    color-mix(in oklab, var(--secondary-color) 85%, var(--background, #fff)) 30%,
+    color-mix(in oklab, var(--secondary-color) 65%, var(--background, #fff)) 40%,
+    color-mix(in oklab, var(--secondary-color) 45%, var(--background, #fff)) 50%,
+    color-mix(in oklab, var(--secondary-color) 30%, var(--background, #fff)) 60%,
+    color-mix(in oklab, var(--secondary-color) 18%, var(--background, #fff)) 70%,
+    color-mix(in oklab, var(--secondary-color) 10%, var(--background, #fff)) 80%,
+    color-mix(in oklab, var(--secondary-color) 4%, var(--background, #fff)) 90%,
+    var(--background, #fff) 100%
   );
 }
 /* Typography */
@@ -27,59 +42,64 @@
 }
 
 @layer custom {
-  /* Title block styles */
-  .block.block-title {
-    h1.documentFirstHeading {
-      @apply text-5xl font-normal leading-[56px] inline-block relative pb-4;
+  .content-area {
+    @apply text-base leading-6 font-thin;
+    /* Title block */
+    .block.block-title {
+      h1.documentFirstHeading {
+        @apply text-5xl font-normal leading-[56px] inline-block relative pb-4 pt-6;
 
-      font-family: var(--heading-font-family);
+        font-family: var(--heading-font-family);
 
-      &::after {
-        @apply absolute bottom-0 left-0 w-20 h-[4px];
+        &::after {
+          @apply absolute bottom-0 left-0 w-20 h-[4px];
 
-        background: linear-gradient(
-          to right,
-          var(--accent-color) 0%,
-          var(--accent-color) 50%,
-          transparent 100%
-        );
-        content: '';
+          background: linear-gradient(
+            to right,
+            var(--accent-color) 0%,
+            var(--accent-color) 50%,
+            transparent 100%
+          );
+          content: '';
+        }
       }
     }
   }
 
-  /* Footer styles */
+  /* Footer */
   #footer {
     @apply pt-12;
 
-    background: radial-gradient(
-      ellipse 100% 100% at 50% 100%,
-      var(--secondary-color) 0%,
-      var(--secondary-color) 20%,
-      color-mix(in srgb, var(--secondary-color) 10%, var(--background)) 80%,
-      var(--background) 100%
-    );
+    background: var(--footer-background, --background);
+    color: var(--footer-foreground, --foreground);
   }
 
   /* Header */
   header {
     @apply pb-[72px] pt-8;
+    background: var(--header-background, --background);
+
+    color: var(--header-foreground, --foreground);
 
     &:has(.breadcrumbs) {
       @apply pb-6;
     }
 
+    .container {
+      max-width: var(--layout-container-width);
+    }
+
     /* Breadcrumbs */
     nav.breadcrumbs {
-      @apply mx-auto pb-6 w-[98%];
+      @apply mx-auto pb-6;
 
-      max-width: unset;
-      box-shadow: 0 10px 24px -20px rgba(6, 16, 16, 0.5);
-      font-family: var(--default-font-family);
+      max-width: calc(var(--layout-container-width) - 1rem);
+      box-shadow: 0 10px 24px -20px
+        color-mix(in oklab, var(--foreground) 35%, var(--background, #fff));
 
       li:not(:last-child) {
         &:after {
-          margin-left: 9px;
+          margin-left: 0.75em;
           content: '⟩';
           font-size: 0.75rem;
         }
@@ -96,17 +116,18 @@
       }
     }
 
-    background: var(--header-background);
+    .header-logo-nav-tools-wrapper {
+      @apply px-6 pb-6;
+
+      #navigation {
+        @apply items-end justify-center self-end;
+      }
+    }
 
     /* Header tools */
     .header-tools {
-      @apply flex items-center gap-4;
-
       a.react-aria-Link {
         @apply text-base leading-6;
-        color: var(--foreground);
-        font-family: var(--default-font-family);
-        text-decoration: none;
       }
 
       a.react-aria-Link[data-hovered='true'],
@@ -119,6 +140,7 @@
     .navigation {
       a.react-aria-Link {
         @apply relative text-lg font-thin leading-6 pb-4 no-underline;
+
         font-family: var(--heading-font-family);
       }
 
@@ -148,10 +170,5 @@
         transition: none;
       }
     }
-  }
-
-  .content-area * {
-    @apply text-base leading-6;
-    font-family: var(--default-font-family);
   }
 }
