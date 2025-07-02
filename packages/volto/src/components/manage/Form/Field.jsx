@@ -8,8 +8,10 @@ import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { FormFieldWrapper } from '@plone/volto/components';
 
 const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not rendered
+const MODE_DISPLAY = 'display'; //display mode. If mode is display, field is only viewable, not editable
 /**
  * Get default widget
  * @method getViewDefault
@@ -170,6 +172,19 @@ const UnconnectedField = (props, { intl }) => {
 
   if (props.mode === MODE_HIDDEN) {
     return null;
+  }
+
+  if (props.mode === MODE_DISPLAY) {
+    let field = {
+      ...props,
+      //widget: getWidget(f, contentSchema?.properties[f]), //import { getWidget } from '@plone/volto/helpers/Widget/utils';
+    };
+    const DisplayWidget = config.widgets?.views?.getWidget(field);
+    Widget = (_props) => (
+      <FormFieldWrapper {..._props}>
+        <DisplayWidget {..._props} />
+      </FormFieldWrapper>
+    );
   }
 
   // Adding the widget props from tagged values (if any)
