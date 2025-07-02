@@ -190,12 +190,12 @@ msgstr "Añadir nuevo grupo"
 #. Default: "Add new user"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add new user"
-msgstr "Añadir\n nuevo usuario"
+msgstr "Añadir nuevo usuario"
 
 #. Default: "Add to Groups"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
-msgstr "Agregar a Grupos"
+msgstr "Añadir a Grupos"
 
 #. Default: "Add users to group"
 #: helpers/MessageLabels/MessageLabels
@@ -210,7 +210,7 @@ msgstr "Añadir término del vocabulario"
 #. Default: "Add {type}"
 #: components/manage/Add/Add
 msgid "Add {type}"
-msgstr "Agregar {type}"
+msgstr "Añadir {type}"
 
 #. Default: "Add-Ons"
 #: components/manage/Controlpanels/Controlpanels
@@ -1662,7 +1662,7 @@ msgstr "Bloque embebido de Google Maps"
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
 msgid "Grid"
-msgstr "Grid"
+msgstr "Rejilla"
 
 #. Default: "Group"
 #: components/manage/Sharing/Sharing
@@ -2719,7 +2719,7 @@ msgstr "Por favor, asegúrese de que tiene una copia de seguridad de su sitio an
 #. Default: "Please enter a valid URL by deleting the block and adding a new video block."
 #: components/manage/Blocks/Video/Body
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr "Por favor, introduzca una URL válida eliminando el bloque y agregando un nuevo bloque de vídeo."
+msgstr "Por favor, introduzca una URL válida eliminando el bloque y añadiendo un nuevo bloque de vídeo."
 
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit
@@ -3117,7 +3117,7 @@ msgstr "Reglas"
 #. Default: "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
-msgstr "Las reglas se ejecutan cuando ocurre un evento desencadenante. Las acciones de la regla solo se invocarán si se cumplen todas las condiciones de la regla. Puede agregar nuevas acciones y condiciones usando los botones a continuación."
+msgstr "Las reglas se ejecutan cuando ocurre un evento desencadenante. Las acciones de la regla solo se invocarán si se cumplen todas las condiciones de la regla. Puede añadir nuevas acciones y condiciones usando los botones a continuación."
 
 #. Default: "Save"
 #: components/manage/Add/Add
@@ -3681,7 +3681,7 @@ msgstr "Categoría"
 #. Default: "Tags to add"
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags to add"
-msgstr "Categoría a agregar"
+msgstr "Categoría a añadir"
 
 #. Default: "Tags to remove"
 #: components/manage/Contents/ContentsTagsModal
@@ -4463,7 +4463,7 @@ msgstr "Está utilizando un navegador anticuado"
 #. Default: "You can add a comment by filling out the form below. Plain text formatting."
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
-msgstr "Usted puede agregar un comentario completando el formulario a continuación. Utilice formato de texto sin formato."
+msgstr "Usted puede añadir un comentario completando el formulario a continuación. Utilice formato de texto sin formato."
 
 #. Default: "You can control who can view and edit your item using the list below."
 #: components/manage/Sharing/Sharing
