@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Plone\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2019-12-03 03:20-0400\nPO-Revision-Date: 2025-07-02 16:59+0000\nLast-Translator: \"Leonardo J. Caballero G.\" <leonardocaballero@gmail.com>\nLanguage-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.13-dev\nLanguage-Code: es\nLanguage-Name: Español\nPreferred-Encodings: utf-8\nDomain: volto\nX-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
+msgstr "Project-Id-Version: Plone\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2019-12-03 03:20-0400\nPO-Revision-Date: 2025-07-03 09:32+0000\nLast-Translator: \"Leonardo J. Caballero G.\" <leonardocaballero@gmail.com>\nLanguage-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.13-dev\nLanguage-Code: es\nLanguage-Name: Español\nPreferred-Encodings: utf-8\nDomain: volto\nX-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -65,7 +65,7 @@ msgstr "Reglas de contenido activas en esta página"
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
 msgid "Add"
-msgstr "Agregar"
+msgstr "Añadir"
 
 #. Default: "Add"
 #: components/manage/Widgets/ObjectListWidget
@@ -85,7 +85,7 @@ msgstr "Añadir URL alternativa"
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
 msgid "Add Content"
-msgstr "Agregar contenido"
+msgstr "Añadir contenido"
 
 #. Default: "Add Content Rule"
 #: components/manage/Controlpanels/Rules/AddRule
@@ -105,12 +105,12 @@ msgstr "Añadir traducción..."
 #. Default: "Add User"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add User"
-msgstr "Agregar Usuario"
+msgstr "Añadir Usuario"
 
 #. Default: "Add a description…"
 #: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
-msgstr "Agregar una descripción..."
+msgstr "Añadir una descripción…"
 
 #. Default: "Add a new alternative url"
 #: components/manage/Aliases/Aliases
@@ -135,7 +135,7 @@ msgstr "Añadir bloque en posición {index}"
 #. Default: "Add block…"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
-msgstr "Agregar bloque..."
+msgstr "Añadir bloque…"
 
 #. Default: "Condition added"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -165,17 +165,17 @@ msgstr "Añadir elemento al contenedor"
 #. Default: "Add field"
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
-msgstr "Agregar campo"
+msgstr "Añadir campo"
 
 #. Default: "Add fieldset"
 #: components/manage/Widgets/SchemaWidget
 msgid "Add fieldset"
-msgstr "Agregar un nuevo conjunto de campos"
+msgstr "Añadir un nuevo conjunto de campos"
 
 #. Default: "Add group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add group"
-msgstr "Agregar grupo"
+msgstr "Añadir grupo"
 
 #. Default: "Add new content type"
 #: components/manage/Controlpanels/ContentTypes
@@ -185,12 +185,12 @@ msgstr "Añadir un nuevo tipo de contenido"
 #. Default: "Add new group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add new group"
-msgstr "Agregar nuevo grupo"
+msgstr "Añadir nuevo grupo"
 
 #. Default: "Add new user"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add new user"
-msgstr "Agregar nuevo usuario"
+msgstr "Añadir\n nuevo usuario"
 
 #. Default: "Add to Groups"
 #: helpers/MessageLabels/MessageLabels
