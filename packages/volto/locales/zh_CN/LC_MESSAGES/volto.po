@@ -2556,8 +2556,12 @@ msgstr "没有工作流"
 
 #. Default: "None"
 #: components/manage/Contents/Contents
-#: components/manage/Contents/ContentsItem
 msgid "None"
+msgstr ""
+
+#. Default: "None"
+#: components/manage/Contents/ContentsItem
+msgid "Not available"
 msgstr ""
 
 #. Default: "Note"

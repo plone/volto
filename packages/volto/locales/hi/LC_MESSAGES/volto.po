@@ -2550,8 +2550,12 @@ msgstr "कोई वर्कफ़्लो नहीं"
 
 #. Default: "None"
 #: components/manage/Contents/Contents
-#: components/manage/Contents/ContentsItem
 msgid "None"
+msgstr "कोई नहीं"
+
+#. Default: "None"
+#: components/manage/Contents/ContentsItem
+msgid "Not available"
 msgstr "कोई नहीं"
 
 #. Default: "Note"

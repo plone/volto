@@ -2555,8 +2555,12 @@ msgstr "ワークフローなし"
 
 #. Default: "None"
 #: components/manage/Contents/Contents
-#: components/manage/Contents/ContentsItem
 msgid "None"
+msgstr "None"
+
+#. Default: "None"
+#: components/manage/Contents/ContentsItem
+msgid "Not available"
 msgstr "None"
 
 #. Default: "Note"
