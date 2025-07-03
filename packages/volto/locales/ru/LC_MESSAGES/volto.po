@@ -2555,8 +2555,12 @@ msgstr "Отсутствует процесс"
 
 #. Default: "None"
 #: components/manage/Contents/Contents
-#: components/manage/Contents/ContentsItem
 msgid "None"
+msgstr "Нет"
+
+#. Default: "None"
+#: components/manage/Contents/ContentsItem
+msgid "Not available"
 msgstr "Нет"
 
 #. Default: "Note"

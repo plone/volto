@@ -2555,8 +2555,12 @@ msgstr "Sem fluxo de trabalho"
 
 #. Default: "None"
 #: components/manage/Contents/Contents
-#: components/manage/Contents/ContentsItem
 msgid "None"
+msgstr "Nenhum"
+
+#. Default: "None"
+#: components/manage/Contents/ContentsItem
+msgid "Not available"
 msgstr "Nenhum"
 
 #. Default: "Note"

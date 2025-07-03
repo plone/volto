@@ -2550,8 +2550,12 @@ msgstr "Ez du workflowrik"
 
 #. Default: "None"
 #: components/manage/Contents/Contents
-#: components/manage/Contents/ContentsItem
 msgid "None"
+msgstr "Bat ere ez"
+
+#. Default: "None"
+#: components/manage/Contents/ContentsItem
+msgid "Not available"
 msgstr "Bat ere ez"
 
 #. Default: "Note"
