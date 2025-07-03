@@ -2571,8 +2571,12 @@ msgstr "Sense flux de treball"
 
 #. Default: "None"
 #: components/manage/Contents/Contents
-#: components/manage/Contents/ContentsItem
 msgid "None"
+msgstr "Cap"
+
+#. Default: "None"
+#: components/manage/Contents/ContentsItem
+msgid "Not available"
 msgstr "Cap"
 
 #. Default: "Note"

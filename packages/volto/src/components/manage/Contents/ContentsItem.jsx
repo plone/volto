@@ -55,7 +55,7 @@ const messages = defineMessages({
     defaultMessage: 'No workflow state',
   },
   none: {
-    id: 'None',
+    id: 'Not available',
     defaultMessage: 'None',
   },
 });

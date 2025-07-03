@@ -2569,8 +2569,12 @@ msgstr "Geen werkstroom"
 
 #. Default: "None"
 #: components/manage/Contents/Contents
-#: components/manage/Contents/ContentsItem
 msgid "None"
+msgstr "Geen"
+
+#. Default: "None"
+#: components/manage/Contents/ContentsItem
+msgid "Not available"
 msgstr "Geen"
 
 #. Default: "Note"
