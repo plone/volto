@@ -1,4 +1,4 @@
-import { Button } from '@plone/components/tailwind';
+import { Button } from '@plone/components/quanta';
 import { Plug } from '../components/Pluggable';
 import {
   useLoaderData,

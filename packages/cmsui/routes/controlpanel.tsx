@@ -20,7 +20,7 @@ import {
   AccordionPanel,
   AccordionItemTrigger,
   Button,
-} from '@plone/components/tailwind';
+} from '@plone/components/quanta';
 import { InitAtoms } from '@plone/helpers';
 import { atom } from 'jotai';
 import type {
