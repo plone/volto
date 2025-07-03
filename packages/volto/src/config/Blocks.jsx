@@ -520,6 +520,21 @@ const blocksConfig = {
 // This is required in order to initialize the inner blocksConfig
 // for the grid block, since we need to modify how the inner teaser
 // block behave in it (= no schemaEnhancer fields for teasers inside a grid)
+// 
+// IMPORTANT: When adding custom blocks to the grid block in add-ons,
+// you need BOTH configurations:
+//
+// 1. Add the block to allowedBlocks:
+//    config.blocks.blocksConfig.gridBlock.allowedBlocks.push('countUpBlock');
+//
+// 2. Add the block configuration to grid's blocksConfig:
+//    config.blocks.blocksConfig.gridBlock.blocksConfig = {
+//      ...config.blocks.blocksConfig.gridBlock.blocksConfig,
+//      countUpBlock: config.blocks.blocksConfig.countUpBlock,
+//    };
+//
+// The second step is required because the grid block uses its own blocksConfig
+// to render inner blocks, and simply adding to allowedBlocks is not sufficient.
 // Afterwards, it can be further customized in add-ons using the same technique.
 blocksConfig.gridBlock.blocksConfig = cloneDeep(blocksConfig);
 blocksConfig.gridBlock.blocksConfig.teaser.schemaEnhancer =
