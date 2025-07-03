@@ -1,6 +1,7 @@
 {
   "cmsui": {
     "edit": "Modifica",
-    "save": "Salva"
+    "save": "Salva",
+    "controlpanel": "Control Panel"
   }
 }
