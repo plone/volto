@@ -2571,8 +2571,12 @@ msgstr "Fără flux de lucru"
 
 #. Default: "None"
 #: components/manage/Contents/Contents
-#: components/manage/Contents/ContentsItem
 msgid "None"
+msgstr "Niciuna"
+
+#. Default: "None"
+#: components/manage/Contents/ContentsItem
+msgid "Not available"
 msgstr "Niciuna"
 
 #. Default: "Note"
