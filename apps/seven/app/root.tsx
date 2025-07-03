@@ -13,7 +13,7 @@ import {
 } from './middleware.server';
 
 // eslint-disable-next-line import/no-unresolved
-import stylesheet from '../addons.styles.css?url';
+import stylesheet from '../publicui.css?url';
 
 export const unstable_middleware = [
   installServerMiddleware,

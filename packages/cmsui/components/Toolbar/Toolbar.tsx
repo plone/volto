@@ -1,4 +1,4 @@
-import { Button } from '@plone/components/tailwind';
+import { Button } from '@plone/components/quanta';
 import { Plug, Pluggable } from '../Pluggable';
 import Settings from '@plone/components/icons/settings.svg?react';
 import { sidebarAtom } from '../Sidebar/Sidebar';

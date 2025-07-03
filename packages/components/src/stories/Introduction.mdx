@@ -56,27 +56,43 @@ export default MyComponent;
 
 ## Styling
 
-This package provides two type of components.
-One uses Tailwind CSS, and the other uses pure CSS.
-The Tailwind CSS components are built using the Tailwind CSS utility classes.
-The pure CSS components are built using the CSS rules provided in the package.
+This package provides two types of components.
+A basic white-label set of components that can be used as a baseline.
+A set of components styled using the Quanta design system.
+The basic components are styled using pure CSS, while the Quanta components use [Tailwind](https://tailwindcss.com/).
 
-## Tailwind
+## Quanta components
 
-This package provides a set of components that use Tailwind CSS utility classes.
+[See this page](?path=/docs/quanta-introduction--docs) for more information about the Quanta components.
 
-[See this page](?path=/docs/tailwind-introduction--docs) for more information about the Tailwind components.
+## Basic components
 
-## Styling using pure CSS
+The `@plone/components` package provides a basic, styled set of white-label UI components.
+These components are designed to be flexible and unopinionated, allowing you to integrate them into a wide variety of projects.
 
-This package provides a basic set of components that use pure CSS for styling.
-These components are built using the CSS rules provided in this package.
-You should add them to your project build to make the components properly styled.
+### Default Styling
 
-You can bring your own styles, but the CSS you provide should replace what the basic stylying does and style the bare components from scratch.
+The components are styled using a lightweight CSS layer included with the package.
+To ensure proper rendering, you must include this CSS in your project build.
 
-You can use the CSS bundled for all components in a single file, or use the specific files for your components.
-They are distributed along with the components code in the `dist` folder of the library.
+You have two options for including styles:
+
+- **Full bundle**: A single CSS file containing styles for all components.
+- **Per-component files**: Individual CSS files distributed in the `src` folder with the name of each component.
+
+**Note:** Some components might rely on others. Make sure to include any necessary CSS files for this component (refer to the top of each file for details).
+
+### Custom Styling
+
+You are free to replace the default styling entirely.
+The components are designed with minimal assumptions and will render as bare HTML elements unless styled.
+
+If you choose to bring your own styles:
+
+- Your CSS should fully override the default styles.
+- You can build your design system from scratch using the bare components.
+
+This approach offers maximum flexibility, letting you decide whether to use the provided styles or apply your own.
 
 ```js
 import '@plone/components/dist/basic.css';
@@ -103,9 +119,9 @@ It uses the `plone-components` layer name to scope all the CSS declarations in t
 The basic styling uses the nested `plone-components.base` named layer.
 You can use the `plone-components` layer to override the basic styling, or use the `plone-components.base` layer to override the basic styling in a more specific way.
 
-### Quanta
+### Quanta (pure CSS)
 
-This package also features the Quanta components.
+This package also features the implementation of some Quanta components in pure CSS.
 These components use the basic styling as a baseline, extending them to achieve the Quanta look and feel.
 They also extend the basic React components in a composable way.
 The Quanta styling is scoped in the `plone-components.quanta` named layer.
