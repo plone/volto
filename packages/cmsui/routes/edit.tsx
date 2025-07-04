@@ -5,6 +5,7 @@ import {
   useLoaderData,
   type ActionFunctionArgs,
   type LoaderFunctionArgs,
+  type SubmitTarget,
 } from 'react-router';
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
@@ -80,11 +81,8 @@ export default function Edit() {
 
   const form = useAppForm({
     defaultValues: content,
-    onSubmit: async ({ value }) => {
-      // @ts-expect-error: For some reason, the type of value is not inferred correctly
-      // as `useLoaderData` turns every "unknown" type into `undefined`
-      // Also, sending what's in the Jotai atom.
-      fetcher.submit(store.get(formAtom), {
+    onSubmit: async () => {
+      fetcher.submit(store.get(formAtom) as unknown as SubmitTarget, {
         method: 'post',
         encType: 'application/json',
       });

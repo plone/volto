@@ -1,8 +1,8 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import { useSetAtom } from 'jotai';
 import { focusAtom } from 'jotai-optics';
 import type { OpticFor } from 'optics-ts';
-import type { PrimitiveAtom, WritableAtom } from 'jotai';
+import type { PrimitiveAtom } from 'jotai';
 import type { DeepKeys } from '@tanstack/react-form';
 
 // Sets a field in a focused (only mutating that specific leaf of the atom)

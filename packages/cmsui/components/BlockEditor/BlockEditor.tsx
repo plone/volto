@@ -32,9 +32,7 @@ const BlockEditor = (props: BlockEditorProps) => {
   return (
     <div>
       {blocksLayout.items.map((blockId) => {
-        return (
-          <EditBlockWrapper key={blockId} block={blockId}></EditBlockWrapper>
-        );
+        return <EditBlockWrapper key={blockId} block={blockId} />;
       })}
     </div>
   );
