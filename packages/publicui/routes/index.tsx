@@ -15,7 +15,6 @@ import {
 import { useTranslation } from 'react-i18next';
 import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
-import { PluggablesProvider } from '@plone/layout/components/Pluggable';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -76,15 +75,13 @@ export default function Index() {
         <Links />
       </head>
       <body>
-        <PluggablesProvider>
-          <div role="navigation" aria-label="Toolbar" id="toolbar" />
-          <div id="main">
-            <RACRouterProvider navigate={navigate}>
-              <Outlet />
-            </RACRouterProvider>
-          </div>
-          <div role="complementary" aria-label="Sidebar" id="sidebar" />
-        </PluggablesProvider>
+        <div role="navigation" aria-label="Toolbar" id="toolbar" />
+        <div id="main">
+          <RACRouterProvider navigate={navigate}>
+            <Outlet />
+          </RACRouterProvider>
+        </div>
+        <div role="complementary" aria-label="Sidebar" id="sidebar" />
         <ScrollRestoration />
         <Scripts />
       </body>

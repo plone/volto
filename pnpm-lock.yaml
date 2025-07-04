@@ -210,9 +210,6 @@ importers:
       '@plone/components':
         specifier: workspace:*
         version: link:../components
-      '@plone/layout':
-        specifier: workspace:*
-        version: link:../layout
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry

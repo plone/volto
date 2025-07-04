@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import cx from 'clsx';
 import type { RenderBlocksProps } from './RenderBlocks';
-import { Pluggable } from '@plone/layout/components/Pluggable';
 import type { BlocksFormData } from '@plone/types';
 
 type BlockWrapperProps = Partial<RenderBlocksProps> & {
@@ -26,7 +25,6 @@ const BlockWrapper = (props: BlockWrapperProps) => {
       style={style}
     >
       <div className="block-inner-container">{children}</div>
-      <Pluggable name="block-helpers" />
     </div>
   );
 };

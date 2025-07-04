@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { createPortal } from 'react-dom';
 import BlockSettingsForm from './BlockSettingsForm';
 import BlockWrapper from '@plone/blocks/RenderBlocks/BlockWrapper';
-import { Plug } from '@plone/layout/components/Pluggable';
+import { Plug, Pluggable } from '@plone/layout/components/Pluggable';
 import { blockAtomFamily } from '../../routes/atoms';
 import config from '@plone/registry';
 
@@ -51,6 +51,8 @@ const EditBlockWrapper = (props: EditBlockWrapperProps) => {
           />,
           document.getElementById('sidebar') as HTMLElement,
         )}
+      {/* TODO: Re-evaluate if this has any sense */}
+      <Pluggable name="block-helpers" />
       <Plug pluggable="block-helpers" id="button-settings">
         <div className="helpers">Helpers</div>
       </Plug>
