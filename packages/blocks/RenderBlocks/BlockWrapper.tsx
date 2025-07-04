@@ -1,14 +1,15 @@
 import type { ReactNode } from 'react';
 import cx from 'clsx';
 import type { RenderBlocksProps } from './RenderBlocks';
+import type { BlocksFormData } from '@plone/types';
 
-type BlockWrapperProps = RenderBlocksProps & {
-  block: string;
+type BlockWrapperProps = Partial<RenderBlocksProps> & {
   children: ReactNode;
+  data: BlocksFormData;
 };
+
 const BlockWrapper = (props: BlockWrapperProps) => {
-  const { block, blocksConfig, children, content } = props;
-  const data = content.blocks?.[block];
+  const { blocksConfig, children, data } = props;
   const category = blocksConfig?.[data['@type']]?.category;
   // TODO: Bring in the StyleWrapper helpers for calculating styles and classes
   const classNames = undefined;
@@ -17,13 +18,13 @@ const BlockWrapper = (props: BlockWrapperProps) => {
   return (
     <div
       className={cx(
-        `block-${data['@type']}`,
+        `block block-${data['@type']}`,
         { [`category-${category}`]: category },
         classNames,
       )}
       style={style}
     >
-      {children}
+      <div className="block-inner-container">{children}</div>
     </div>
   );
 };

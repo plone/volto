@@ -1,5 +1,5 @@
 import { Button } from '@plone/components/quanta';
-import { Plug, Pluggable } from '../Pluggable';
+import { Plug, Pluggable } from '@plone/layout/components/Pluggable';
 import Settings from '@plone/components/icons/settings.svg?react';
 import { sidebarAtom } from '../Sidebar/Sidebar';
 import { useSetAtom } from 'jotai';
