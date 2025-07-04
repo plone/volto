@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Plone\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2019-12-03 03:20-0400\nPO-Revision-Date: 2025-07-03 09:32+0000\nLast-Translator: \"Leonardo J. Caballero G.\" <leonardocaballero@gmail.com>\nLanguage-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.13-dev\nLanguage-Code: es\nLanguage-Name: Español\nPreferred-Encodings: utf-8\nDomain: volto\nX-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
+msgstr "Project-Id-Version: Plone\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2019-12-03 03:20-0400\nPO-Revision-Date: 2025-07-05 01:04+0000\nLast-Translator: \"Leonardo J. Caballero G.\" <leonardocaballero@gmail.com>\nLanguage-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.13-dev\nLanguage-Code: es\nLanguage-Name: Español\nPreferred-Encodings: utf-8\nDomain: volto\nX-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -2581,7 +2581,7 @@ msgstr "Ok"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
-msgstr "Solo se permiten caracteres de bytes de 7 bits. No puede contener letras mayúsculas, caracteres especiales: <, >, &, #, /, ?, u otros que sean ilegales en las URL. No puede comenzar con: _, aq_, @@, ++. No puede terminar con __. No puede ser: solicitud, contribuyentes, ., .., \"\". No puede contener nuevas líneas."
+msgstr "Solo se permiten caracteres de bytes de 7 bits. No puede contener letras mayúsculas, caracteres especiales: <, >, &, #, /, ?, u otros que sean ilegales en las URL. No puede comenzar con: _, aq_, @@, ++. No puede terminar con __. No puede ser: request,contributors, ., .., \"\". No puede contener nuevas líneas."
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
