@@ -1,5 +1,5 @@
 /* We pre-define here the @layer before tailwind does, adding our own layers */
-@layer theme, base, components, plone-components, utilities, custom;
+@layer theme, base, components, utilities, plone-components, custom;
 
 @import 'tailwindcss';
 @import '@plone/components/src/styles/basic/main.css';
