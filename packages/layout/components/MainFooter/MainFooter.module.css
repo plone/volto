@@ -1,0 +1,13 @@
+@layer custom {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+    text-align: center;
+
+    :global(.logo) {
+      margin: 20px 0;
+      place-self: center;
+    }
+  }
+}

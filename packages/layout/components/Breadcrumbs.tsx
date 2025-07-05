@@ -3,7 +3,7 @@ import {
   Breadcrumbs as PCBreadcrumbs,
   Breadcrumb as PCBreadcrumb,
   Container,
-} from '@plone/components/quanta';
+} from '@plone/components';
 import { HomeIcon } from '@plone/components/Icons';
 
 const Breadcrumbs = (props: SlotComponentProps) => {
@@ -20,7 +20,7 @@ const Breadcrumbs = (props: SlotComponentProps) => {
   const breacrumbs = [rootItem, ...(items || [])];
 
   return (
-    <Container as="nav" width="default" className="py-4">
+    <Container as="nav" layout className="breadcrumbs">
       <PCBreadcrumbs items={breacrumbs}>
         {(item) => (
           <PCBreadcrumb id={item['@id']} href={item['@id']}>
