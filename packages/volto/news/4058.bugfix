@@ -1,0 +1,1 @@
+Fix the size of Select Menu in SelectWidget to prevent users from having to scroll both the main modal and dropdown menu to view the field choices by adding a menuPortalTarget prop. @victorchrollo14
