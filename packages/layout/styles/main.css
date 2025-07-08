@@ -14,4 +14,32 @@
   .breadcrumbs {
     padding-bottom: 1em;
   }
+
+  .layout-container {
+    container-type: inline-size;
+
+    & .inner-container {
+      max-width: var(--block-width);
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    & .inner-container.layout {
+      max-width: var(--layout-container-width);
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    & .inner-container.default {
+      max-width: var(--default-container-width);
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    & .inner-container.narrow {
+      max-width: var(--narrow-container-width);
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
 }

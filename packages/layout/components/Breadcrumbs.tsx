@@ -2,9 +2,9 @@ import type { SlotComponentProps } from '../SlotRenderer';
 import {
   Breadcrumbs as PCBreadcrumbs,
   Breadcrumb as PCBreadcrumb,
-  Container,
 } from '@plone/components';
 import { HomeIcon } from '@plone/components/Icons';
+import Container from './Container/Container';
 
 const Breadcrumbs = (props: SlotComponentProps) => {
   const { content } = props;
@@ -20,7 +20,7 @@ const Breadcrumbs = (props: SlotComponentProps) => {
   const breacrumbs = [rootItem, ...(items || [])];
 
   return (
-    <Container as="nav" layout className="breadcrumbs">
+    <Container as="nav" className="breadcrumbs">
       <PCBreadcrumbs items={breacrumbs}>
         {(item) => (
           <PCBreadcrumb id={item['@id']} href={item['@id']}>

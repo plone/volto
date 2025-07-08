@@ -1,6 +1,6 @@
 import type { GetSlotArgs } from '@plone/types';
 import SlotRenderer from '../../SlotRenderer';
-import { Container } from '@plone/components';
+import Container from '../Container/Container';
 import clsx from 'clsx';
 
 import styles from './Header.module.css';
@@ -15,7 +15,6 @@ const Header = (props: HeaderProps) => {
 
   return (
     <Container
-      layout
       className={clsx(
         styles['header-wrapper'],
         'header-logo-nav-tools-wrapper',

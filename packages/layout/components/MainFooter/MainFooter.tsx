@@ -1,5 +1,6 @@
 import type { SlotComponentProps } from '../../SlotRenderer';
 import { Link } from '@plone/components';
+import Container from '../Container/Container';
 import clsx from 'clsx';
 
 import styles from './MainFooter.module.css';
@@ -10,7 +11,7 @@ const Footer = (props: SlotComponentProps) => {
   const siteActions = content?.['@components']?.actions?.site_actions || [];
 
   return (
-    <div className={clsx(styles.footer, 'main-footer')}>
+    <Container className={clsx(styles.footer, 'main-footer')}>
       {/* TODO: i18n properly */}
       <div className="footer-message">
         The Plone® Open Source CMS/WCM is © 2000-2024 by the Plone Foundation
@@ -34,7 +35,7 @@ const Footer = (props: SlotComponentProps) => {
       <a className="item powered-by" href="https://plone.org">
         Powered by Plone & Python
       </a>
-    </div>
+    </Container>
   );
 };
 
