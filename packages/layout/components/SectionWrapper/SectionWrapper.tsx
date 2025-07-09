@@ -2,10 +2,10 @@ import React from 'react';
 import cx from 'clsx';
 
 /**
- * Props Types for the Container component.
+ * Props Types for the SectionWrapper component.
  * They are able to infer the props of the element type passed to the `as` prop.
  */
-type ContainerProps<T extends React.ElementType> = {
+type SectionWrapperProps<T extends React.ElementType> = {
   /** Primary content. */
   children: React.ReactNode;
   /** An element type to render as (string or function). */
@@ -14,12 +14,12 @@ type ContainerProps<T extends React.ElementType> = {
   section?: string;
   /** Additional CSS classes. */
   className?: string;
-  /** Container width */
+  /** SectionWrapper width */
   width?: 'layout' | 'default' | 'narrow' | 'full';
 } & React.ComponentPropsWithoutRef<React.ElementType extends T ? 'div' : T>;
 
-const Container = <T extends React.ElementType = 'div'>(
-  props: ContainerProps<T>,
+const SectionWrapper = <T extends React.ElementType = 'div'>(
+  props: SectionWrapperProps<T>,
 ) => {
   const {
     as: Component = 'div',
@@ -30,15 +30,15 @@ const Container = <T extends React.ElementType = 'div'>(
     ...rest
   } = props;
   const baseClass = section ? `${section}-block` : 'block';
-  const containerClasses = cx(baseClass, className, {
+  const sectionClasses = cx(baseClass, className, {
     [width || '']: true,
   });
 
   return (
-    <Component {...rest} className={containerClasses}>
+    <Component {...rest} className={sectionClasses}>
       <div className="block-inner-container">{children}</div>
     </Component>
   );
 };
 
-export default Container;
+export default SectionWrapper;

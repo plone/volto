@@ -1,24 +1,24 @@
 import React from 'react';
-import Container from './Container';
+import SectionWrapper from './SectionWrapper';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-  title: 'Basic/Container',
-  component: Container,
+  title: 'Basic/SectionWrapper',
+  component: SectionWrapper,
   tags: ['autodocs'],
-} satisfies Meta<typeof Container>;
+} satisfies Meta<typeof SectionWrapper>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Narrow: Story = {
-  render: (args: any) => <Container {...args}></Container>,
+  render: (args: any) => <SectionWrapper {...args}></SectionWrapper>,
   args: {
     className: 'bg-gray-300 p-4',
     children: (
       <>
-        Container with <strong>narrow</strong> width
+        SectionWrapper with <strong>narrow</strong> width
       </>
     ),
     width: 'narrow',
@@ -30,7 +30,7 @@ export const Default: Story = {
     className: 'bg-gray-300 p-4',
     children: (
       <>
-        Container with <strong>default</strong> width
+        SectionWrapper with <strong>default</strong> width
       </>
     ),
     width: 'default',
@@ -42,7 +42,7 @@ export const Layout: Story = {
     className: 'bg-gray-300 p-4',
     children: (
       <>
-        Container with <strong>layout</strong> width
+        SectionWrapper with <strong>layout</strong> width
       </>
     ),
     width: 'layout',
@@ -50,12 +50,12 @@ export const Layout: Story = {
 };
 
 export const FullWidth: Story = {
-  render: (args: any) => <Container {...args}></Container>,
+  render: (args: any) => <SectionWrapper {...args}></SectionWrapper>,
   args: {
     className: 'bg-gray-300 p-4',
     children: (
       <>
-        Container with <strong>full</strong> width
+        SectionWrapper with <strong>full</strong> width
       </>
     ),
   },

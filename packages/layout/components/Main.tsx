@@ -1,6 +1,5 @@
 import type { GetSlotArgs } from '@plone/types';
 import SlotRenderer from '../SlotRenderer';
-import Container from './Container/Container';
 
 type MainProps = {
   content: GetSlotArgs['content'];
