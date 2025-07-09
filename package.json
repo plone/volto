@@ -49,6 +49,19 @@
     },
     "patchedDependencies": {
       "jest-resolve@26.6.2": "patches/jest-resolve@26.6.2.patch"
-    }
+    },
+    "ignoredBuiltDependencies": [
+      "@swc/core",
+      "core-js",
+      "core-js-pure",
+      "cypress",
+      "es5-ext",
+      "esbuild",
+      "full-icu",
+      "why"
+    ],
+    "onlyBuiltDependencies": [
+      "lightningcss-cli"
+    ]
   }
 }
