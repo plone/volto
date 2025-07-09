@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import cx from 'clsx';
 import type { RenderBlocksProps } from './RenderBlocks';
+import Container from '../../layout/components/Container/Container'; //TODO: import from '@plone/components';
 
 type BlockWrapperProps = RenderBlocksProps & {
   block: string;
@@ -15,7 +16,8 @@ const BlockWrapper = (props: BlockWrapperProps) => {
   const style = undefined;
 
   return (
-    <div
+    <Container
+      as="div"
       className={cx(
         `block-${data['@type']}`,
         { [`category-${category}`]: category },
@@ -24,7 +26,7 @@ const BlockWrapper = (props: BlockWrapperProps) => {
       style={style}
     >
       {children}
-    </div>
+    </Container>
   );
 };
 

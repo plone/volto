@@ -10,6 +10,8 @@ type ContainerProps<T extends React.ElementType> = {
   children: React.ReactNode;
   /** An element type to render as (string or function). */
   as?: T;
+  /** A layout section the container belongs to outside the content area (e.g. header or footer). */
+  section?: string;
   /** Additional CSS classes. */
   className?: string;
   /** Container width */
@@ -19,8 +21,16 @@ type ContainerProps<T extends React.ElementType> = {
 const Container = <T extends React.ElementType = 'div'>(
   props: ContainerProps<T>,
 ) => {
-  const { as: Component = 'div', children, className, width, ...rest } = props;
-  const containerClasses = cx('block', className, {
+  const {
+    as: Component = 'div',
+    children,
+    className,
+    section,
+    width,
+    ...rest
+  } = props;
+  const baseClass = section ? `${section}-block` : 'block';
+  const containerClasses = cx(baseClass, className, {
     [width || '']: true,
   });
 

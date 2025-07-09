@@ -15,6 +15,8 @@ const Header = (props: HeaderProps) => {
 
   return (
     <Container
+      section="header"
+      width="layout"
       className={clsx(
         styles['header-wrapper'],
         'header-logo-nav-tools-wrapper',

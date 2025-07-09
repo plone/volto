@@ -20,7 +20,7 @@ const Breadcrumbs = (props: SlotComponentProps) => {
   const breacrumbs = [rootItem, ...(items || [])];
 
   return (
-    <Container as="nav" className="breadcrumbs">
+    <Container section="header" as="nav" width="layout" className="breadcrumbs">
       <PCBreadcrumbs items={breacrumbs}>
         {(item) => (
           <PCBreadcrumb id={item['@id']} href={item['@id']}>

@@ -11,7 +11,7 @@ const Footer = (props: SlotComponentProps) => {
   const siteActions = content?.['@components']?.actions?.site_actions || [];
 
   return (
-    <Container className={clsx(styles.footer, 'main-footer')}>
+    <Container section="footer" className={clsx(styles.footer, 'main-footer')}>
       {/* TODO: i18n properly */}
       <div className="footer-message">
         The Plone® Open Source CMS/WCM is © 2000-2024 by the Plone Foundation
