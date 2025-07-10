@@ -56,6 +56,16 @@ test('extracts video details from a youtube video with ".be/" in its url', () =>
   });
 });
 
+test('extracts video details from a youtube video with a "youtube.com/embed" style URL', () => {
+  const url = 'https://www.youtube.com/embed/P9j-xYdWT28';
+  const videoDetails = getVideoIDAndPlaceholder(url);
+  expect(videoDetails).toEqual({
+    videoID: 'P9j-xYdWT28',
+    listID: null,
+    thumbnailURL: 'https://img.youtube.com/vi/P9j-xYdWT28/sddefault.jpg',
+  });
+});
+
 test('extracts video details from a youtube video with "?v=" in its url', () => {
   const url = 'https://www.youtube.com/watch?v=KUd6e105u_I';
   const videoDetails = getVideoIDAndPlaceholder(url);
