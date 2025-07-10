@@ -28,6 +28,8 @@ const getVideoIDAndPlaceholder = (url) => {
           'https://img.youtube.com/vi/' + thumbnailID + '/sddefault.jpg';
       } else if (url.match('live')) {
         videoID = url.match(/^.*\/live\/(.*)/)[1];
+      } else if (url.match('youtube.com/embed')) {
+        videoID = url.match('youtube.com/embed/(.*)')[1];
       } else if (url.match(/\.be\//)) {
         videoID = url.match(/^.*\.be\/(.*)/)[1];
       } else if (url.match(/\?v=/)) {
