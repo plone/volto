@@ -35,7 +35,32 @@
 
   /* Blocks & Inner containers */
   #header,
-  #footer,
+  #footer {
+    [class*='section'] {
+      & .section-inner-container {
+        display: grid;
+        width: 100%;
+        max-width: var(--block-width, 100%);
+        align-items: var(--align-items, center);
+        margin: 0 auto;
+        grid-auto-flow: var(--grid-auto-flow, row);
+        justify-items: var(--justify-items, start);
+      }
+
+      &.layout {
+        --block-width: var(--layout-container-width);
+      }
+
+      &.default {
+        --block-width: var(--default-container-width);
+      }
+
+      &.narrow {
+        --block-width: var(--narrow-container-width);
+      }
+    }
+  }
+
   .content-area {
     [class*='block'] {
       & .block-inner-container {
@@ -62,7 +87,7 @@
     }
   }
 
-  .header-block {
+  .section-header {
     &.header-logo-nav-tools-wrapper {
       --grid-auto-flow: column;
       .block-inner-container {
@@ -85,7 +110,7 @@
     }
   }
 
-  .footer-block {
+  .section-footer {
     &.main-footer {
       --justify-items: center;
       .block-inner-container {

@@ -23,7 +23,7 @@ const BlockWrapper = (props: BlockWrapperProps) => {
       )}
       style={style}
     >
-      {children}
+      <div className="block-inner-container">{children}</div>
     </div>
   );
 };
