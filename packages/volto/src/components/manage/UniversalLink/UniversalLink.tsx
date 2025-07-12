@@ -148,6 +148,7 @@ const UniversalLink = React.memo(
           target={openLinkInNewTab ?? false ? '_blank' : undefined}
           title={title}
           className={className}
+          onClick={onClick}
           smooth={smooth ?? config.settings.hashLinkSmoothScroll}
           // @ts-ignore
           ref={ref}
