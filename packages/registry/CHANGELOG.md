@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.4 (2025-06-25)
+
+### Bugfix
+
+- `getUtility` returns an empty object if called with a utility type that has not been registered. @davisagli [#7108](https://github.com/plone/volto/issues/7108)
+
 ## 3.0.0-alpha.3 (2025-05-13)
 
 ### Bugfix

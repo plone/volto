@@ -455,9 +455,9 @@ describe('Contents Delete Modal - selected items info and confirmation messages'
     cy.selectAllContents();
     cy.get('[aria-label="Delete"]').click();
     cy.get('.medium > .header').should('be.visible');
-    cy.contains('You are about to delete all items in this folder.').should(
-      'be.visible',
-    );
+    cy.contains(
+      'You are about to delete all items and all its subitems.',
+    ).should('be.visible');
   });
 
   it('Select all items using ALL pagination, should show folder message', () => {
@@ -475,9 +475,9 @@ describe('Contents Delete Modal - selected items info and confirmation messages'
     cy.selectAllContents();
     cy.get('[aria-label="Delete"]').click();
     cy.get('.medium > .header').should('be.visible');
-    cy.contains('You are about to delete all items in this folder.').should(
-      'be.visible',
-    );
+    cy.contains(
+      'You are about to delete all items and all its subitems.',
+    ).should('be.visible');
   });
 
   it('Select one item to delete, should show the item in the list with link', () => {
@@ -522,5 +522,127 @@ describe('Contents Delete Modal - selected items info and confirmation messages'
     cy.get('li > [href="/teste-delete-modal/doc5-1"]').should('be.visible');
     cy.get('li > [href="/teste-delete-modal/doc5-2"]').should('be.visible');
     cy.get('li > [href="/teste-delete-modal/doc5-3"]').should('be.visible');
+  });
+});
+
+describe('Contents Delete Modal - link integrity info', () => {
+  const simpleSlateLink = (target) => {
+    return {
+      '@type': 'slate',
+      plaintext: ' My Link ',
+      value: [
+        {
+          children: [
+            {
+              text: '',
+            },
+            {
+              children: [
+                {
+                  text: 'My Link',
+                },
+              ],
+              data: {
+                url: target,
+              },
+              type: 'link',
+            },
+            {
+              text: '',
+            },
+          ],
+          type: 'p',
+        },
+      ],
+    };
+  };
+  beforeEach(() => {
+    cy.autologin();
+    cy.visit('/');
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: `Test Delete Modal`,
+      contentId: `teste-delete-modal`,
+    });
+  });
+
+  it('Show link integrity check results', () => {
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'First Doc',
+      contentId: 'first-doc',
+      path: '/teste-delete-modal',
+    });
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'Second Doc',
+      contentId: 'second-doc',
+      path: '/teste-delete-modal',
+      bodyModifier(body) {
+        body.blocks['abc'] = simpleSlateLink('/teste-delete-modal/first-doc');
+        body.blocks_layout.items.push('abc');
+        return body;
+      },
+    });
+    cy.visit('/teste-delete-modal/second-doc');
+    cy.visit('/teste-delete-modal/contents');
+    cy.get(
+      '[aria-label="/teste-delete-modal/first-doc"] > :nth-child(2)',
+    ).click();
+    cy.get('[aria-label="Delete"]').click();
+    cy.get('.medium > .header').should('be.visible');
+    cy.contains(/Second Doc.*refers to:.*First Doc/).should('be.visible');
+  });
+
+  it('Show message that subitems will be deleted (delete one item)', () => {
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'First Doc',
+      contentId: 'first-doc',
+      path: '/teste-delete-modal',
+    });
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'Second Doc',
+      contentId: 'second-doc',
+      path: '/teste-delete-modal/first-doc',
+    });
+    cy.visit('/teste-delete-modal/contents');
+    cy.get(
+      '[aria-label="/teste-delete-modal/first-doc"] > :nth-child(2)',
+    ).click();
+    cy.get('[aria-label="Delete"]').click();
+    cy.get('.medium > .header').should('be.visible');
+    cy.contains(
+      'This item contains subitems. Deleting it will also delete its 1 item inside.',
+    ).should('be.visible');
+  });
+
+  it('Show message that subitems will be deleted (delete multiple items)', () => {
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'First Doc',
+      contentId: 'first-doc',
+      path: '/teste-delete-modal',
+    });
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'Second Doc',
+      contentId: 'second-doc',
+      path: '/teste-delete-modal/first-doc',
+    });
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'Third Doc',
+      contentId: 'third-doc',
+      path: '/teste-delete-modal',
+    });
+    cy.visit('/teste-delete-modal/contents');
+    cy.selectAllContents();
+    cy.get('[aria-label="Delete"]').click();
+    cy.get('.medium > .header').should('be.visible');
+    cy.contains(
+      'Some items contain subitems. Deleting them will also delete their 1 item inside.',
+    ).should('be.visible');
   });
 });

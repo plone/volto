@@ -8,6 +8,15 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.4 (2025-06-25)
+
+### Bugfix
+
+- Removed the `isMultilingual` and `defaultLanguage` settings. @davisagli [#7125](https://github.com/plone/volto/issues/7125)
+- Improved widgets typings.
+  Exported missing intl typings helpers.
+  Added BlockSchemaProps typings. @sneridagh 
+
 ## 2.0.0-alpha.3 (2025-05-16)
 
 ### Bugfix

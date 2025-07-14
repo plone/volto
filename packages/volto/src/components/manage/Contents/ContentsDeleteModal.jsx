@@ -10,6 +10,8 @@ import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 import { Confirm, Dimmer, Loader, Table } from 'semantic-ui-react';
 
+const MAX_LINK_INTEGRITY_BREACHES_TO_SHOW = 5;
+
 const messages = defineMessages({
   deleteConfirmSingleItem: {
     id: 'Delete this item?',
@@ -39,7 +41,136 @@ const messages = defineMessages({
     id: 'Cancel',
     defaultMessage: 'Cancel',
   },
+  item: {
+    id: 'item',
+    defaultMessage: 'item',
+  },
+  items: {
+    id: 'items',
+    defaultMessage: 'items',
+  },
+  reference: {
+    id: 'reference',
+    defaultMessage: 'reference',
+  },
+  references: {
+    id: 'references',
+    defaultMessage: 'references',
+  },
+  folderDeletionSingle: {
+    id: 'This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside.',
+    defaultMessage:
+      'This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside.',
+  },
+  folderDeletionMultiple: {
+    id: 'Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside.',
+    defaultMessage:
+      'Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside.',
+  },
+  deleteAllItemsPaginated: {
+    id: 'You are about to delete all items in the current pagination of this folder.',
+    defaultMessage:
+      'You are about to delete all items in the current pagination of this folder.',
+  },
+  deleteAllItems: {
+    id: 'You are about to delete all items and all its subitems.',
+    defaultMessage: 'You are about to delete all items and all its subitems.',
+  },
+  brokenReferencesMultiple: {
+    id: 'Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}.',
+    defaultMessage:
+      'Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}.',
+  },
+  brokenReferencesSingle: {
+    id: 'Deleting this item will break {brokenReferences} {variation}.',
+    defaultMessage:
+      'Deleting this item will break {brokenReferences} {variation}.',
+  },
 });
+
+const safeUrl = (url) => {
+  if (!url) return '#';
+  return typeof url === 'string' ? flattenToAppURL(url) : '#';
+};
+
+const DeleteItemsList = ({ itemsToDelete, titlesToDelete }) => (
+  <ul>
+    {itemsToDelete.map((id) => (
+      <li key={id}>
+        <Link to={safeUrl(id)} target="_blank">
+          {titlesToDelete[id] || id}
+        </Link>
+      </li>
+    ))}
+  </ul>
+);
+
+const VariationMessage = ({ count, singularId, pluralId }) => (
+  <span>
+    {count === 1 ? (
+      <FormattedMessage {...messages[singularId]} />
+    ) : (
+      <FormattedMessage {...messages[pluralId]} />
+    )}
+  </span>
+);
+
+const DeleteAllMessage = ({ hasMultiplePages }) => (
+  <p>
+    <FormattedMessage
+      {...messages[
+        hasMultiplePages ? 'deleteAllItemsPaginated' : 'deleteAllItems'
+      ]}
+    />
+  </p>
+);
+
+const DeleteMessage = ({
+  isMultiple,
+  containedItemsToDelete,
+  brokenReferences,
+  breaches,
+  itemsToDelete,
+  linksAndReferencesViewLink,
+}) => {
+  const intl = useIntl();
+  const showFolderMessage = containedItemsToDelete > 0;
+  const showBreachesMessage = brokenReferences > 0;
+
+  return (
+    <>
+      {showFolderMessage && (
+        <p>
+          <FormattedMessage
+            {...messages[
+              isMultiple ? 'folderDeletionMultiple' : 'folderDeletionSingle'
+            ]}
+            values={{
+              containedItemsToDelete: <span>{containedItemsToDelete}</span>,
+              variation: (
+                <VariationMessage
+                  count={containedItemsToDelete}
+                  singularId="item"
+                  pluralId="items"
+                />
+              ),
+            }}
+          />
+        </p>
+      )}
+      {showBreachesMessage && (
+        <BrokenLinksList
+          intl={intl}
+          breaches={breaches}
+          brokenReferences={brokenReferences}
+          isMultiple={isMultiple}
+          itemsToDelete={itemsToDelete}
+          linksAndReferencesViewLink={!isMultiple && linksAndReferencesViewLink}
+        />
+      )}
+    </>
+  );
+};
 
 const ContentsDeleteModal = (props) => {
   const {
@@ -56,7 +187,7 @@ const ContentsDeleteModal = (props) => {
   const loading = useSelector((state) => state.linkIntegrity?.loading);
 
   const [brokenReferences, setBrokenReferences] = useState(0);
-  const [containedItemsToDelete, setContainedItemsToDelete] = useState([]);
+  const [containedItemsToDelete, setContainedItemsToDelete] = useState(0);
   const [breaches, setBreaches] = useState([]);
 
   const [linksAndReferencesViewLink, setLinkAndReferencesViewLink] =
@@ -89,20 +220,34 @@ const ContentsDeleteModal = (props) => {
 
   useEffect(() => {
     if (linkintegrityInfo) {
-      const containedItems = linkintegrityInfo
+      // Always set the total number of contained items, regardless of breaches
+      const totalContainedItems = linkintegrityInfo
         .map((result) => result.items_total ?? 0)
         .reduce((acc, value) => acc + value, 0);
+      setContainedItemsToDelete(totalContainedItems); // <-- always set
       const breaches = linkintegrityInfo.flatMap((result) =>
         result.breaches.map((source) => ({
           source: source,
           target: result,
         })),
       );
-      const source_by_uid = breaches.reduce(
+      // Filter out breaches where breach.source is to be deleted
+      const filteredBreaches = breaches.filter(
+        (breach) =>
+          !itemsToDelete.some((item) => breach.source['@id'].endsWith(item)),
+      );
+      // If no breaches are found, return early
+      if (filteredBreaches.length === 0) {
+        setBrokenReferences(0);
+        setLinkAndReferencesViewLink(null);
+        setBreaches([]);
+        return;
+      }
+      const source_by_uid = filteredBreaches.reduce(
         (acc, value) => acc.set(value.source.uid, value.source),
         new Map(),
       );
-      const by_source = breaches.reduce((acc, value) => {
+      const by_source = filteredBreaches.reduce((acc, value) => {
         if (acc.get(value.source.uid) === undefined) {
           acc.set(value.source.uid, new Set());
         }
@@ -110,7 +255,6 @@ const ContentsDeleteModal = (props) => {
         return acc;
       }, new Map());
 
-      setContainedItemsToDelete(containedItems);
       setBrokenReferences(by_source.size);
       setLinkAndReferencesViewLink(
         linkintegrityInfo.length
@@ -124,12 +268,12 @@ const ContentsDeleteModal = (props) => {
         })),
       );
     } else {
-      setContainedItemsToDelete([]);
+      setContainedItemsToDelete(0);
       setBrokenReferences(0);
       setLinkAndReferencesViewLink(null);
       setBreaches([]);
     }
-  }, [linkintegrityInfo]);
+  }, [itemsToDelete, linkintegrityInfo]);
 
   return (
     open && (
@@ -156,201 +300,22 @@ const ContentsDeleteModal = (props) => {
 
             {itemsToDelete.length > 1 &&
             items.length === itemsToDelete.length ? (
-              hasMultiplePages ? (
-                <p>
-                  <FormattedMessage
-                    id="You are about to delete all items in the current pagination of this folder."
-                    defaultMessage="You are about to delete all items in the current pagination of this folder."
-                  />
-                </p>
-              ) : (
-                <p>
-                  <FormattedMessage
-                    id="You are about to delete all items in this folder."
-                    defaultMessage="You are about to delete all items in this folder."
-                  />
-                </p>
-              )
+              <DeleteAllMessage hasMultiplePages={hasMultiplePages} />
             ) : (
-              <ul>
-                {itemsToDelete.map((id) => {
-                  return (
-                    <li key={id}>
-                      <Link to={flattenToAppURL(id)} target="_blank">
-                        {titlesToDelete[id] || id}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
+              <DeleteItemsList
+                itemsToDelete={itemsToDelete}
+                titlesToDelete={titlesToDelete}
+              />
             )}
 
-            {itemsToDelete.length > 1 ? (
-              containedItemsToDelete > 0 ? (
-                <>
-                  <FormattedMessage
-                    id="Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-                    defaultMessage="Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-                    values={{
-                      containedItemsToDelete: (
-                        <span>{containedItemsToDelete}</span>
-                      ),
-                      variation: (
-                        <span>
-                          {containedItemsToDelete === 1 ? (
-                            <FormattedMessage id="item" defaultMessage="item" />
-                          ) : (
-                            <FormattedMessage
-                              id="items"
-                              defaultMessage="items"
-                            />
-                          )}
-                        </span>
-                      ),
-                    }}
-                  />
-                  {brokenReferences > 0 && (
-                    <>
-                      <br />
-                      <FormattedMessage
-                        id="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-                        defaultMessage="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-                        values={{
-                          brokenReferences: <span>{brokenReferences}</span>,
-                          variation: (
-                            <span>
-                              {brokenReferences === 1 ? (
-                                <FormattedMessage
-                                  id="reference"
-                                  defaultMessage="reference"
-                                />
-                              ) : (
-                                <FormattedMessage
-                                  id="references"
-                                  defaultMessage="references"
-                                />
-                              )}
-                            </span>
-                          ),
-                        }}
-                      />
-                    </>
-                  )}
-                </>
-              ) : (
-                <>
-                  {brokenReferences > 0 && (
-                    <>
-                      <FormattedMessage
-                        id="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-                        defaultMessage="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-                        values={{
-                          brokenReferences: <span>{brokenReferences}</span>,
-                          variation: (
-                            <span>
-                              {brokenReferences === 1 ? (
-                                <FormattedMessage
-                                  id="reference"
-                                  defaultMessage="reference"
-                                />
-                              ) : (
-                                <FormattedMessage
-                                  id="references"
-                                  defaultMessage="references"
-                                />
-                              )}
-                            </span>
-                          ),
-                        }}
-                      />
-                    </>
-                  )}
-                </>
-              )
-            ) : containedItemsToDelete > 0 ? (
-              <>
-                <FormattedMessage
-                  id="This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-                  defaultMessage="This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-                  values={{
-                    containedItemsToDelete: (
-                      <span>{containedItemsToDelete}</span>
-                    ),
-                    variation: (
-                      <span>
-                        {containedItemsToDelete === 1 ? (
-                          <FormattedMessage id="item" defaultMessage="item" />
-                        ) : (
-                          <FormattedMessage id="items" defaultMessage="items" />
-                        )}
-                      </span>
-                    ),
-                  }}
-                />
-                {brokenReferences > 0 && (
-                  <>
-                    <br />
-                    <FormattedMessage
-                      id="Deleting this item breaks {brokenReferences} {variation}."
-                      defaultMessage="Deleting this item breaks {brokenReferences} {variation}."
-                      values={{
-                        brokenReferences: <span>{brokenReferences}</span>,
-                        variation: (
-                          <span>
-                            {brokenReferences === 1 ? (
-                              <FormattedMessage
-                                id="reference"
-                                defaultMessage="reference"
-                              />
-                            ) : (
-                              <FormattedMessage
-                                id="references"
-                                defaultMessage="references"
-                              />
-                            )}
-                          </span>
-                        ),
-                      }}
-                    />
-                    <BrokenLinksList
-                      intl={intl}
-                      breaches={breaches}
-                      linksAndReferencesViewLink={linksAndReferencesViewLink}
-                    />
-                  </>
-                )}
-              </>
-            ) : brokenReferences > 0 ? (
-              <>
-                <FormattedMessage
-                  id="Deleting this item breaks {brokenReferences} {variation}."
-                  defaultMessage="Deleting this item breaks {brokenReferences} {variation}."
-                  values={{
-                    brokenReferences: <span>{brokenReferences}</span>,
-                    variation: (
-                      <span>
-                        {brokenReferences === 1 ? (
-                          <FormattedMessage
-                            id="reference"
-                            defaultMessage="reference"
-                          />
-                        ) : (
-                          <FormattedMessage
-                            id="references"
-                            defaultMessage="references"
-                          />
-                        )}
-                      </span>
-                    ),
-                  }}
-                />
-                <BrokenLinksList
-                  intl={intl}
-                  breaches={breaches}
-                  linksAndReferencesViewLink={linksAndReferencesViewLink}
-                />
-              </>
-            ) : null}
+            <DeleteMessage
+              isMultiple={itemsToDelete.length > 1}
+              containedItemsToDelete={containedItemsToDelete}
+              brokenReferences={brokenReferences}
+              breaches={breaches}
+              itemsToDelete={itemsToDelete}
+              linksAndReferencesViewLink={linksAndReferencesViewLink}
+            />
           </div>
         }
         onCancel={onCancel}
@@ -361,47 +326,86 @@ const ContentsDeleteModal = (props) => {
   );
 };
 
-const BrokenLinksList = ({ intl, breaches, linksAndReferencesViewLink }) => {
+const BrokenLinksList = ({
+  intl,
+  breaches,
+  brokenReferences,
+  isMultiple,
+  itemsToDelete,
+  linksAndReferencesViewLink,
+}) => {
   return (
     <div className="broken-links-list">
+      <FormattedMessage
+        {...messages[
+          isMultiple ? 'brokenReferencesMultiple' : 'brokenReferencesSingle'
+        ]}
+        values={{
+          brokenReferences: <span>{brokenReferences}</span>,
+          variation: (
+            <VariationMessage
+              count={brokenReferences}
+              singularId="reference"
+              pluralId="references"
+            />
+          ),
+        }}
+      />
+      <br />
       <FormattedMessage
         id="These items will have broken links"
         defaultMessage="These items will have broken links"
       />
-      :
       <Table compact>
         <Table.Body>
-          {breaches.map((breach) => (
-            <Table.Row key={breach.source['@id']} verticalAlign="top">
-              <Table.Cell>
-                <Link
-                  to={flattenToAppURL(breach.source['@id'])}
-                  title={intl.formatMessage(messages.navigate_to_this_item)}
-                >
-                  {breach.source.title}
-                </Link>
-              </Table.Cell>
-              <Table.Cell style={{ minWidth: '140px' }}>
-                <FormattedMessage id="refers to" defaultMessage="refers to" />:
-              </Table.Cell>
-              <Table.Cell>
-                <ul style={{ margin: 0 }}>
-                  {breach.targets.map((target) => (
-                    <li key={target['@id']}>
-                      <Link
-                        to={flattenToAppURL(target['@id'])}
-                        title={intl.formatMessage(
-                          messages.navigate_to_this_item,
-                        )}
-                      >
-                        {target.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+          {breaches
+            .slice(0, MAX_LINK_INTEGRITY_BREACHES_TO_SHOW)
+            .map((breach) => (
+              <Table.Row key={breach.source['@id']} verticalAlign="top">
+                <Table.Cell>
+                  <Link
+                    to={flattenToAppURL(breach.source['@id'])}
+                    title={intl.formatMessage(messages.navigate_to_this_item)}
+                  >
+                    {breach.source.title}
+                  </Link>
+                </Table.Cell>
+                <Table.Cell style={{ minWidth: '140px' }}>
+                  <FormattedMessage id="refers to" defaultMessage="refers to" />
+                  :
+                </Table.Cell>
+                <Table.Cell>
+                  <ul style={{ margin: 0 }}>
+                    {breach.targets.map((target) => (
+                      <li key={target['@id']}>
+                        <Link
+                          to={flattenToAppURL(target['@id'])}
+                          title={intl.formatMessage(
+                            messages.navigate_to_this_item,
+                          )}
+                        >
+                          {target.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          {breaches.length > MAX_LINK_INTEGRITY_BREACHES_TO_SHOW && (
+            <Table.Row>
+              <Table.Cell colSpan="3">
+                <FormattedMessage
+                  id="and {count} more…"
+                  defaultMessage="and {count} more…"
+                  values={{
+                    count:
+                      breaches.length - MAX_LINK_INTEGRITY_BREACHES_TO_SHOW,
+                  }}
+                />
               </Table.Cell>
             </Table.Row>
-          ))}
+          )}
         </Table.Body>
       </Table>
       {linksAndReferencesViewLink && (
