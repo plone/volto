@@ -62,7 +62,7 @@
   }
 
   .content-area {
-    [class*='block'] {
+    .block {
       & .block-inner-container {
         display: grid;
         width: 100%;
