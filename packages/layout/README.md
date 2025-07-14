@@ -18,34 +18,35 @@ main {
 }
 ```
 
-### 2. Blocks (Structure + Background)
+### 2. Blocks and Sections (Structure + Background)
 
-Blocks create sections within containers and can optionally have backgrounds.
+Blocks and Sections create sections within containers and can optionally have backgrounds.
 
 ```css
-/* Header blocks */
-.header-block.breadcrumbs {
+/* Header sections */
+.section-header .section {
   background: var(--secondary-color);
 }
 
-/* Footer blocks */
-.footer-block.main-footer {
+/* Footer section */
+.section-footer .section {
   background: var(--secondary-color);
 }
 
 /* Content blocks */
-.block {
+.content-area .block {
   background: var(--background);
 }
 ```
 
 ### 3. Inner container (Constraints + Layout)
 
-Inner container elements handle spacing constraints and block-specific layouts.
+Inner container elements handle spacing constraints and block or section-specific layouts.
 
 ```css
 /* Shared constraints */
-.block-inner-container {
+.block-inner-container,
+.section-inner-container {
   display: grid;
   grid-auto-flow: var(--grid-auto-flow, row);
   align-items: var(--align-items, center);
@@ -56,7 +57,7 @@ Inner container elements handle spacing constraints and block-specific layouts.
 }
 
 /* Section-specific layouts */
-.footer-block.main-footer .block-inner-container {
+.section-footer.main-footer .section-inner-container {
 --justify-items: center;
   grid-auto-flow: row;
   text-align: center;
