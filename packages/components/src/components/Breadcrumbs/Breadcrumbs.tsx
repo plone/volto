@@ -61,6 +61,7 @@ export function Breadcrumbs<T extends Breadcrumb>(props: BreadcrumbsProps<T>) {
   return <RACBreadcrumbs {...props} items={itemsWithRoot || items} />;
 }
 
+// TODO: Unused? It's not exported
 export function BreadcrumbsSlot<T extends Breadcrumb>(
   props: BreadcrumbsProps<T>,
 ) {

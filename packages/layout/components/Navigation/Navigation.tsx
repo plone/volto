@@ -1,5 +1,7 @@
-import type { SlotComponentProps } from '../SlotRenderer';
+import type { SlotComponentProps } from '../../SlotRenderer';
 import { Link } from '@plone/components';
+import styles from './Navigation.module.css';
+import clsx from 'clsx';
 
 type NavItem = {
   '@id': string;
@@ -11,7 +13,11 @@ const Navigation = (props: SlotComponentProps) => {
   const navItems = content['@components'].navigation?.items || [];
 
   return (
-    <nav id="navigation" aria-label="navigation" className="navigation">
+    <nav
+      id="navigation"
+      aria-label="navigation"
+      className={clsx(styles.navigation, 'navigation')}
+    >
       <ul>
         {navItems.map((item: NavItem) => (
           <li key={item['@id']}>

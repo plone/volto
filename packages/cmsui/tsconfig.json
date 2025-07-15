@@ -11,6 +11,7 @@
     "src/**/*.stories.{js,jsx,ts,tsx}"
   ],
   "compilerOptions": {
+    "types": ["vite/client"],
     "paths": {
       "seven/*": ["../../apps/seven/*"]
     }
