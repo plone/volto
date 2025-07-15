@@ -25,7 +25,7 @@ const MapsSidebar = (props) => {
 
   return (
     <>
-      {!data.url ? (
+      {!data?.url ? (
         <Segment className="sidebar-metadata-container" secondary>
           {props.intl.formatMessage(messages.NoMaps)}
           <Icon name={globeSVG} size="100px" color="#b8c6c8" />
