@@ -1,14 +1,12 @@
 @layer custom {
-  .header-wrapper {
+  /* .header-wrapper {
     display: flex;
     flex-direction: row;
     align-items: baseline;
     justify-content: space-between;
     padding-top: 25px;
     padding-bottom: 35px;
-    margin-right: auto;
-    margin-left: auto;
-  }
+  } */
 
   .header-tools {
     display: flex;

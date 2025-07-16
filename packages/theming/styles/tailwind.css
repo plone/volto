@@ -1,6 +1,3 @@
-/* We pre-define here the @layer before tailwind does, adding our own layers */
-@layer theme, base, components, utilities, plone-components, custom;
-
 @import 'tailwindcss';
 
 @source '../node_modules/@plone/components/dist/quanta';

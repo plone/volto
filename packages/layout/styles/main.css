@@ -1,4 +1,11 @@
 @layer custom {
+  :root {
+    @property --block-width {
+      initial-value: 100%;
+      syntax: '<length>';
+    }
+  }
+
   main {
     grid-area: 'content';
   }
@@ -49,30 +56,111 @@
     width: 100%;
   }
 
-  footer {
-    margin-top: 100px;
+  /* Container Query Contexts */
+  #header,
+  #footer,
+  .content-area {
+    container-type: inline-size;
   }
 
-  .breadcrumbs {
-    padding-bottom: 1em;
-    margin-right: auto;
-    margin-left: auto;
+  #header {
+    container-name: header;
+  }
 
-    .react-aria-Breadcrumbs {
-      display: flex;
-      max-width: var(--default-container-width);
-      margin-right: auto;
-      margin-left: auto;
+  #footer {
+    container-name: footer;
+  }
 
-      li {
-        margin-right: 0.5em;
-        &:has(.icon) {
+  .content-area {
+    container-name: content;
+  }
+
+  /* Blocks & Inner containers */
+  #header,
+  #footer {
+    [class*='section'] {
+      & .section-inner-container {
+        display: grid;
+        width: 100%;
+        max-width: var(--block-width, 100%);
+        align-items: var(--align-items, center);
+        margin: 0 auto;
+        grid-auto-flow: var(--grid-auto-flow, row);
+        justify-items: var(--justify-items, start);
+      }
+
+      &.layout {
+        --block-width: var(--layout-container-width);
+      }
+
+      &.default {
+        --block-width: var(--default-container-width);
+      }
+
+      &.narrow {
+        --block-width: var(--narrow-container-width);
+      }
+    }
+  }
+
+  .content-area {
+    .block {
+      & .block-inner-container {
+        display: grid;
+        width: 100%;
+        max-width: var(--block-width, 100%);
+        align-items: var(--align-items, center);
+        margin: 0 auto;
+        grid-auto-flow: var(--grid-auto-flow, row);
+        justify-items: var(--justify-items, start);
+      }
+
+      &.layout {
+        --block-width: var(--layout-container-width);
+      }
+
+      &.default {
+        --block-width: var(--default-container-width);
+      }
+
+      &.narrow {
+        --block-width: var(--narrow-container-width);
+      }
+    }
+  }
+
+  .section-header {
+    &.header-logo-nav-tools-wrapper {
+      --grid-auto-flow: column;
+      .block-inner-container {
+        justify-content: space-between;
+      }
+    }
+
+    &.breadcrumbs {
+      ol {
+        display: grid;
+        gap: 0.5rem;
+        grid-auto-flow: column;
+        list-style-type: none;
+
+        li {
           display: flex;
-          align-items: center;
+          align-items: end;
+        }
+      }
+    }
+  }
 
-          .icon {
-            margin-right: 0.5em;
-          }
+  .section-footer {
+    &.main-footer {
+      --justify-items: center;
+      .block-inner-container {
+        grid-auto-flow: row;
+        text-align: center;
+
+        .powered-by {
+          place-self: center;
         }
       }
     }
