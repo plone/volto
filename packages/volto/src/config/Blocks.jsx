@@ -520,7 +520,7 @@ const blocksConfig = {
 // This is required in order to initialize the inner blocksConfig
 // for the grid block, since we need to modify how the inner teaser
 // block behave in it (= no schemaEnhancer fields for teasers inside a grid)
-// 
+//
 // IMPORTANT: When adding custom blocks to the grid block in add-ons,
 // you need BOTH configurations:
 //
@@ -542,7 +542,7 @@ blocksConfig.gridBlock.blocksConfig.teaser.schemaEnhancer =
 blocksConfig.gridBlock.blocksConfig.image.schemaEnhancer =
   gridImageDisableSizeAndPositionHandlersSchema;
 
-const requiredBlocks = [];
+const requiredBlocks = ['title'];
 
 const initialBlocks = {};
 const initialBlocksFocus = {}; //{Document:'title'}
