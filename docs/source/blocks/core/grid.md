@@ -123,9 +123,9 @@ config.blocks.blocksConfig.gridBlock.blocksConfig = {
 };
 ```
 
-**Customizing existing blocks in the grid:**
+### Customize existing blocks in a grid block
 
-You can also customize how existing blocks behave within the grid:
+The following example shows how to customize the behavior of existing blocks within the grid.
 
 ```js
 config.blocks.blocksConfig.gridBlock.allowedBlocks = ['teaser', 'image', 'slate'];
