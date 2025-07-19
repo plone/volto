@@ -6,6 +6,13 @@
     }
   }
 
+  :root {
+    @property --block-width {
+      initial-value: 100%;
+      syntax: '<length>';
+    }
+  }
+
   main {
     grid-area: 'content';
   }
@@ -43,6 +50,7 @@
 
     /* Category heading */
     .category-heading {
+      --block-width: var(--default-container-width);
       --block-bottom-spacing: calc(var(--spacing) * 14);
     }
 

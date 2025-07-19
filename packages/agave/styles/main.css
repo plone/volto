@@ -42,133 +42,184 @@
 }
 
 @layer custom {
-  .content-area {
-    @apply text-base leading-6 font-thin;
-    /* Title block */
-    .block.block-title {
-      h1.documentFirstHeading {
-        @apply text-5xl font-normal leading-[56px] inline-block relative pb-4 pt-6;
+  /* Layout */
+  .section,
+  .block {
+    & > [class*='-inner-container'] {
+      transition: padding 300ms ease-in-out;
+    }
 
-        font-family: var(--heading-font-family);
+    &.layout {
+      @container (max-width: calc(1440px + 2rem)) {
+        & > [class*='-inner-container'] {
+          padding-inline: calc(var(--spacing) * 6) !important;
+        }
+      }
+    }
 
-        &::after {
-          @apply absolute bottom-0 left-0 w-20 h-[4px];
+    &.default {
+      @container (max-width: calc(940px + 2rem)) {
+        & > [class*='-inner-container'] {
+          padding-inline: calc(var(--spacing) * 6) !important;
+        }
+      }
+    }
 
-          background: linear-gradient(
-            to right,
-            var(--accent-color) 0%,
-            var(--accent-color) 50%,
-            transparent 100%
-          );
-          content: '';
+    &.narrow {
+      @container (max-width: calc(620px + 2rem)) {
+        & > [class*='-inner-container'] {
+          padding-inline: calc(var(--spacing) * 6) !important;
         }
       }
     }
   }
 
-  /* Footer */
-  #footer {
-    @apply pt-12;
+  /* Blocks */
+  .content-area {
+    @apply text-base leading-6 font-thin;
+    .block {
+      /* Title block */
+      &.block-title {
+        .block-inner-container {
+          h1.documentFirstHeading {
+            @apply text-5xl font-normal relative pb-4 pt-6;
 
-    background: var(--footer-background, --background);
-    color: var(--footer-foreground, --foreground);
+            font-family: var(--heading-font-family);
+
+            &::after {
+              @apply absolute bottom-0 left-0 w-20 h-[4px];
+
+              background: linear-gradient(
+                to right,
+                var(--accent-color) 0%,
+                var(--accent-color) 50%,
+                transparent 100%
+              );
+              content: '';
+            }
+          }
+        }
+      }
+
+      h2 {
+        @apply text-3xl font-normal pb-4 pt-6;
+        font-family: var(--heading-font-family);
+      }
+      h3 {
+        @apply text-2xl font-normal py-4;
+        font-family: var(--heading-font-family);
+      }
+    }
   }
 
   /* Header */
-  header {
-    @apply pb-[72px] pt-8;
-    background: var(--header-background, --background);
+  #header {
+    @apply pb-18 pt-8;
 
+    background: var(--header-background, --background);
     color: var(--header-foreground, --foreground);
 
     &:has(.breadcrumbs) {
       @apply pb-6;
     }
 
-    .container {
-      max-width: var(--layout-container-width);
-    }
+    /* Header sections */
+    .section-header {
+      /* Breadcrumbs section */
+      &.breadcrumbs {
+        .section-inner-container {
+          @apply pb-6;
 
-    /* Breadcrumbs */
-    nav.breadcrumbs {
-      @apply mx-auto pb-6;
+          box-shadow: 0 10px 24px -20px
+            color-mix(in oklab, var(--foreground) 30%, var(--background, #fff));
 
-      max-width: calc(var(--layout-container-width) - 1rem);
-      box-shadow: 0 10px 24px -20px
-        color-mix(in oklab, var(--foreground) 35%, var(--background, #fff));
+          li:not(:last-child) {
+            &:after {
+              margin-left: 0.75em;
+              content: '⟩';
+              font-size: 0.75rem;
+            }
+          }
+          li {
+            @apply text-base leading-6;
 
-      li:not(:last-child) {
-        &:after {
-          margin-left: 0.75em;
-          content: '⟩';
-          font-size: 0.75rem;
+            .icon {
+              @apply self-center mr-1;
+            }
+
+            & > a {
+              &[data-hovered='true'],
+              &[data-focused='true'] {
+                color: var(--accent-color);
+              }
+            }
+          }
         }
       }
-      li {
-        @apply text-base leading-6;
+      /* Logo, Main Navigation & Tools section */
+      &.header-logo-nav-tools-wrapper {
+        .section-inner-container {
+          @apply px-0 pb-14 pt-6;
+          grid-template-columns: auto 1fr auto;
+        }
 
-        & > a {
-          &[data-hovered='true'],
-          &[data-focused='true'] {
-            color: var(--accent-color);
+        /* Main Navigation */
+        .navigation {
+          @apply items-end justify-center self-end justify-self-center;
+
+          a.react-aria-Link {
+            @apply relative text-lg font-thin leading-6 pb-4 no-underline;
+
+            font-family: var(--heading-font-family);
+          }
+
+          a.react-aria-Link::after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(
+              to right,
+              var(--accent-color) 0%,
+              var(--accent-color) 50%,
+              transparent 100%
+            );
+            content: '';
+            transition: width 0.3s ease;
+          }
+
+          a.react-aria-Link[data-hovered='true']::after {
+            width: 100%;
+          }
+
+          a.react-aria-Link[data-focused='true']::after,
+          a.react-aria-Link[data-active='true']::after {
+            width: 100%;
+            transition: none;
+          }
+        }
+
+        /* Header tools */
+        .header-tools {
+          @apply self-baseline;
+          a.react-aria-Link {
+            @apply text-base leading-6;
+
+            &[data-hovered='true'],
+            &[data-focused='true'] {
+              color: var(--accent-color);
+            }
           }
         }
       }
     }
+  }
+  /* Footer */
+  #footer {
+    @apply py-12;
 
-    .header-logo-nav-tools-wrapper {
-      @apply px-6 pb-6;
-
-      #navigation {
-        @apply items-end justify-center self-end;
-      }
-    }
-
-    /* Header tools */
-    .header-tools {
-      a.react-aria-Link {
-        @apply text-base leading-6;
-      }
-
-      a.react-aria-Link[data-hovered='true'],
-      a.react-aria-Link[data-focused='true'] {
-        color: var(--accent-color);
-      }
-    }
-
-    /* Navigation styles */
-    .navigation {
-      a.react-aria-Link {
-        @apply relative text-lg font-thin leading-6 pb-4 no-underline;
-
-        font-family: var(--heading-font-family);
-      }
-
-      a.react-aria-Link::after {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 4px;
-        background: linear-gradient(
-          to right,
-          var(--accent-color) 0%,
-          var(--accent-color) 50%,
-          transparent 100%
-        );
-        content: '';
-        transition: width 0.3s ease;
-      }
-
-      a.react-aria-Link:hover::after {
-        width: 100%;
-      }
-
-      a.react-aria-Link:focus::after,
-      a.react-aria-Link:active::after {
-        width: 100%;
-        transition: none;
-      }
-    }
+    background: var(--footer-background, --background);
+    color: var(--footer-foreground, --foreground);
   }
 }
