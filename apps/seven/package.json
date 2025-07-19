@@ -27,6 +27,7 @@
     "@plone/helpers": "workspace:*",
     "@plone/layout": "workspace:*",
     "@plone/theming": "workspace:*",
+    "@plone/agave": "workspace:*",
     "@react-router/node": "catalog:",
     "@react-router/serve": "catalog:",
     "i18next": "^24.2.3",

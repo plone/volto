@@ -1,7 +1,7 @@
 import App from './App';
 
 import type { Meta, StoryObj } from '@storybook/react';
-import { storyData } from '../stories';
+import { storyData } from '../../stories';
 
 const meta = {
   title: 'App',

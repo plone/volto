@@ -10,23 +10,27 @@ export const blocksConfig = {
     id: 'title',
     title: 'Title',
     view: TitleBlockView,
+    category: 'heading',
   },
 
   slate: {
     id: 'slate',
     title: 'Rich text',
     view: TextBlockView,
+    category: 'text',
   },
 
   image: {
     id: 'image',
     title: 'Image',
     view: ImageBlockView,
+    category: 'media',
   },
 
   teaser: {
     id: 'teaser',
     title: 'Teaser',
     view: TeaserBlockView,
+    category: 'card',
   },
 };
