@@ -13,7 +13,7 @@ import { NotContentTypeCondition } from '../helpers';
 
 export default function install(config: ConfigType) {
   // Main App Slot
-  config.registerSlotComponent({ name: 'App', slot: 'App', component: App });
+  // config.registerSlotComponent({ name: 'App', slot: 'App', component: App });
 
   // Header Slot
   config.registerSlotComponent({

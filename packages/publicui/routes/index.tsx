@@ -20,8 +20,10 @@ import { useTranslation } from 'react-i18next';
 import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
 import SlotRenderer from '@plone/layout/SlotRenderer';
-import clxs from 'clsx';
+import clsx from 'clsx';
 import config from '@plone/registry';
+
+import styles from '@plone/layout/components/App/App.module.css';
 
 // eslint-disable-next-line import/no-unresolved
 import stylesheet from 'seven/publicui.css?url';
@@ -97,25 +99,27 @@ export default function Index() {
         <Meta />
         <Links />
       </head>
-      <body className={clxs(routesBodyClasses)}>
+      <body className={clsx(routesBodyClasses)}>
         <div role="navigation" aria-label="Toolbar" id="toolbar" />
         <div id="main">
           <RACRouterProvider navigate={navigate}>
-            <header className="header-slot">
-              <SlotRenderer
-                name="header"
-                content={content}
-                location={location}
-              />
-            </header>
-            <Outlet />
-            <footer id="footer">
-              <SlotRenderer
-                name="footer"
-                content={content}
-                location={location}
-              />
-            </footer>
+            <div className={clsx(styles.app, 'app-slot')}>
+              <header id="header" className="header-slot">
+                <SlotRenderer
+                  name="header"
+                  content={content}
+                  location={location}
+                />
+              </header>
+              <Outlet />
+              <footer id="footer">
+                <SlotRenderer
+                  name="footer"
+                  content={content}
+                  location={location}
+                />
+              </footer>
+            </div>
           </RACRouterProvider>
         </div>
         <div role="complementary" aria-label="Sidebar" id="sidebar" />
