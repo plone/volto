@@ -13,8 +13,6 @@ import {
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/Modal.css';
-
 const meta = {
   title: 'Basic/Modal',
   component: Modal,

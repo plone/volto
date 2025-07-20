@@ -1,8 +1,8 @@
-@import './theme.css';
+/* depends on:
 @import './Button.css';
 @import './ToggleButton.css';
 @import './Checkbox.css';
-
+*/
 .react-aria-Tree {
   display: flex;
   overflow: auto;

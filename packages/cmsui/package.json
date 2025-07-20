@@ -67,8 +67,7 @@
     "react-router": "catalog:",
     "tailwind-merge": "^3.0.1",
     "tailwind-variants": "^1.0.0",
-    "tailwindcss": "catalog:",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss": "catalog:"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
@@ -97,6 +96,8 @@
     "prettier-plugin-tailwindcss": "^0.6.11",
     "release-it": "catalog:",
     "storybook": "^8.6.12",
+    "tailwindcss-animate": "^1.0.7",
+    "tailwindcss-react-aria-components": "^2.0.0",
     "tsconfig": "workspace:*",
     "typescript": "catalog:",
     "vite": "catalog:",

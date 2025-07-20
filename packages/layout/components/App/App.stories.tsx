@@ -1,7 +1,7 @@
 import App from './App';
 
 import type { Meta, StoryObj } from '@storybook/react';
-import { storyData } from '../stories';
+import { storyData } from '../../stories';
 
 const meta = {
   title: 'App',
@@ -14,6 +14,13 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args: any) => <App {...args} />,
   args: {
+    location: {
+      search: '',
+      pathname: '/',
+      hash: '',
+      state: null,
+      key: 'default',
+    },
     content: {
       '@id': 'http://localhost:3000/Plone',
       title: 'Plone site',
@@ -26,6 +33,16 @@ export const Default: Story = {
         ...storyData.blocks_layout,
       },
       '@components': {
+        breadcrumbs: {
+          '@id': 'http://localhost:3000/Plone',
+          root: 'http://localhost:3000/Plone',
+          items: [
+            {
+              '@id': 'http://localhost:3000/Plone',
+              title: 'Home',
+            },
+          ],
+        },
         navigation: {
           items: [
             {

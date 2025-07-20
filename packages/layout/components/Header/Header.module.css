@@ -1,0 +1,16 @@
+@layer custom {
+  /* .header-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-top: 25px;
+    padding-bottom: 35px;
+  } */
+
+  .header-tools {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: row-reverse;
+  }
+}

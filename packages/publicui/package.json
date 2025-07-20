@@ -55,14 +55,12 @@
   },
   "dependencies": {
     "@plone/blocks": "workspace:*",
-    "@plone/registry": "workspace:*",
     "@plone/layout": "workspace:*",
+    "@plone/registry": "workspace:*",
     "@plone/theming": "workspace:*",
     "react-aria-components": "catalog:",
     "react-i18next": "catalog:",
-    "react-router": "catalog:",
-    "tailwindcss": "catalog:",
-    "tailwindcss-animate": "^1.0.7"
+    "react-router": "catalog:"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
@@ -74,10 +72,10 @@
     "@types/react-dom": "catalog:",
     "eslint-plugin-storybook": "^0.11.2",
     "jest-axe": "^8.0.0",
-    "prettier-plugin-tailwindcss": "^0.6.11",
     "release-it": "catalog:",
     "tsconfig": "workspace:*",
     "typescript": "catalog:",
+    "vite": "catalog:",
     "vitest": "catalog:",
     "vitest-axe": "^0.1.0"
   }

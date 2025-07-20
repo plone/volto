@@ -1,8 +1,7 @@
-/* We pre-define here the @layer before tailwind does, adding our own layers */
-@layer theme, base, components, plone-components, utilities, custom;
-
 @import 'tailwindcss';
-@source '../node_modules/@plone/components/dist';
+
+@source '../node_modules/@plone/components/dist/quanta';
+
 @plugin 'tailwindcss-react-aria-components';
 @plugin 'tailwindcss-animate';
 

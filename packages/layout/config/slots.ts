@@ -1,13 +1,13 @@
 import type { ConfigType } from '@plone/registry';
-import App from '../components/App';
-import Header from '../components/Header';
+import App from '../components/App/App';
+import Header from '../components/Header/Header';
 import Main from '../components/Main';
 import Footer from '../components/Footer';
-import Logo from '../components/Logo';
-import Navigation from '../components/Navigation';
+import Logo from '../components/Logo/Logo';
+import Navigation from '../components/Navigation/Navigation';
 import HeaderTools from '../components/Tools';
 import ContentArea from '../components/ContentArea';
-import MainFooter from '../components/MainFooter';
+import MainFooter from '../components/MainFooter/MainFooter';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { NotContentTypeCondition } from '../helpers';
 
