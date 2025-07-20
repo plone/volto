@@ -111,7 +111,9 @@ export default function Index() {
                   location={location}
                 />
               </header>
-              <Outlet />
+              <div className="content-area">
+                <Outlet />
+              </div>
               <footer id="footer">
                 <SlotRenderer
                   name="footer"
