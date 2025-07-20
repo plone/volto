@@ -56,6 +56,7 @@
     "@plone/client": "workspace:*",
     "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
+    "lodash.sortby": "^4.7.0",
     "clsx": "^2.1.1",
     "react-aria-components": "catalog:",
     "react-router": "catalog:"

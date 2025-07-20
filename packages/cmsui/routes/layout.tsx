@@ -11,7 +11,7 @@ import {
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import type { RootLoader } from 'seven/app/root';
-import { PluggablesProvider } from '../components/Pluggable';
+import { PluggablesProvider } from '@plone/layout/components/Pluggable';
 import Toolbar from '../components/Toolbar/Toolbar';
 import Sidebar, { sidebarAtom } from '../components/Sidebar/Sidebar';
 import TopNavBar from '../components/Layout/TopNavBar';
