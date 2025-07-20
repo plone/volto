@@ -21,7 +21,7 @@ export const unstable_middleware = [
 export async function loader({ params, request }: Route.LoaderArgs) {
   const locale = await i18next.getLocale(request);
 
-  const expand = ['navroot', 'breadcrumbs', 'navigation'];
+  const expand = ['navroot', 'breadcrumbs', 'navigation', 'actions'];
 
   const cli = config
     .getUtility({

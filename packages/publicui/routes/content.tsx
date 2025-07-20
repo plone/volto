@@ -11,11 +11,5 @@ export default function Content() {
   }
   const { content } = contentData;
 
-  return (
-    <SlotRenderer
-      name="App"
-      content={content}
-      location={location}
-    ></SlotRenderer>
-  );
+  return <SlotRenderer name="main" content={content} location={location} />;
 }

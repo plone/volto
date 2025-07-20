@@ -926,6 +926,15 @@ importers:
       '@plone/blocks':
         specifier: workspace:*
         version: link:../blocks
+      '@plone/client':
+        specifier: workspace:*
+        version: link:../client
+      '@plone/components':
+        specifier: workspace:*
+        version: link:../components
+      '@plone/helpers':
+        specifier: workspace:*
+        version: link:../helpers
       '@plone/layout':
         specifier: workspace:*
         version: link:../layout
@@ -935,6 +944,9 @@ importers:
       '@plone/theming':
         specifier: workspace:*
         version: link:../theming
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       react:
         specifier: ^19.1.0
         version: 19.1.0
