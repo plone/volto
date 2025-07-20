@@ -83,6 +83,9 @@ importers:
 
   apps/seven:
     dependencies:
+      '@plone/agave':
+        specifier: workspace:*
+        version: link:../../packages/agave
       '@plone/blocks':
         specifier: workspace:*
         version: link:../../packages/blocks
@@ -204,6 +207,58 @@ importers:
       vitest:
         specifier: 'catalog:'
         version: 3.0.9(@types/debug@4.1.12)(@types/node@20.12.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)
+
+  packages/agave:
+    dependencies:
+      '@plone/components':
+        specifier: workspace:*
+        version: link:../components
+      '@plone/registry':
+        specifier: workspace:*
+        version: link:../registry
+      react:
+        specifier: ^19.1.0
+        version: 19.1.0
+      react-dom:
+        specifier: ^19.1.0
+        version: 19.1.0(react@19.1.0)
+      tailwind-merge:
+        specifier: ^3.0.2
+        version: 3.0.2
+      tailwind-variants:
+        specifier: ^1.0.0
+        version: 1.0.0(tailwindcss@4.0.17)
+      tailwindcss:
+        specifier: 'catalog:'
+        version: 4.0.17
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@4.0.17)
+    devDependencies:
+      '@plone/theming':
+        specifier: workspace:*
+        version: link:../theming
+      '@plone/types':
+        specifier: workspace:*
+        version: link:../types
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.1.5
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.1.5(@types/react@19.1.5)
+      release-it:
+        specifier: 'catalog:'
+        version: 18.1.2(@types/node@22.10.7)(typescript@5.7.3)
+      tailwindcss-react-aria-components:
+        specifier: ^2.0.0
+        version: 2.0.0(tailwindcss@4.0.17)
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
+      typescript:
+        specifier: 'catalog:'
+        version: 5.7.3
 
   packages/blocks:
     dependencies:
@@ -401,9 +456,6 @@ importers:
       tailwindcss:
         specifier: 'catalog:'
         version: 4.0.17
-      tailwindcss-animate:
-        specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@4.0.17)
     devDependencies:
       '@plone/types':
         specifier: workspace:*
@@ -480,6 +532,12 @@ importers:
       storybook:
         specifier: ^8.6.12
         version: 8.6.12(prettier@3.5.2)
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@4.0.17)
+      tailwindcss-react-aria-components:
+        specifier: ^2.0.0
+        version: 2.0.0(tailwindcss@4.0.17)
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -713,6 +771,9 @@ importers:
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       lodash.sortby:
         specifier: ^4.7.0
         version: 4.7.0
@@ -728,9 +789,6 @@ importers:
       react-router:
         specifier: 'catalog:'
         version: 7.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      tailwindcss:
-        specifier: 'catalog:'
-        version: 4.0.17
     devDependencies:
       '@plone/types':
         specifier: workspace:*
@@ -762,9 +820,6 @@ importers:
       '@storybook/theming':
         specifier: ^8.6.12
         version: 8.6.12(storybook@8.6.12(prettier@3.5.2))
-      '@tailwindcss/vite':
-        specifier: 4.0.7
-        version: 4.0.7(vite@5.4.15(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))
       '@testing-library/jest-dom':
         specifier: 6.4.2
         version: 6.4.2(@jest/globals@29.7.0)(@types/jest@29.5.12)(jest@29.7.0(@types/node@20.12.7)(babel-plugin-macros@3.1.0)(node-notifier@8.0.2))(vitest@3.0.9(@types/debug@4.1.12)(@types/node@20.12.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3))
@@ -895,12 +950,6 @@ importers:
       react-router:
         specifier: 'catalog:'
         version: 7.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      tailwindcss:
-        specifier: 'catalog:'
-        version: 4.0.17
-      tailwindcss-animate:
-        specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@4.0.17)
     devDependencies:
       '@plone/types':
         specifier: workspace:*
@@ -929,9 +978,6 @@ importers:
       jest-axe:
         specifier: ^8.0.0
         version: 8.0.0
-      prettier-plugin-tailwindcss:
-        specifier: ^0.6.11
-        version: 0.6.11(prettier@3.5.2)
       release-it:
         specifier: 'catalog:'
         version: 18.1.2(@types/node@20.12.7)(typescript@5.7.3)
@@ -941,6 +987,9 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.7.3
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.15(@types/node@20.12.7)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)
       vitest:
         specifier: 'catalog:'
         version: 3.0.9(@types/debug@4.1.12)(@types/node@20.12.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.29.1)(sass@1.75.0)(terser@5.30.3)
@@ -14321,7 +14370,7 @@ snapshots:
       jsdoc-type-pratt-parser: 4.1.0
       process: 0.11.10
       recast: 0.23.6
-      semver: 7.6.3
+      semver: 7.7.1
       util: 0.12.5
       ws: 8.16.0
     optionalDependencies:
@@ -21932,7 +21981,7 @@ snapshots:
       is-npm: 6.0.0
       latest-version: 7.0.0
       pupa: 3.1.0
-      semver: 7.6.3
+      semver: 7.7.1
       semver-diff: 4.0.0
       xdg-basedir: 5.1.0
 
@@ -22349,7 +22398,7 @@ snapshots:
     dependencies:
       '@volar/typescript': 1.11.1
       '@vue/language-core': 1.8.27(typescript@5.7.3)
-      semver: 7.6.3
+      semver: 7.7.1
       typescript: 5.7.3
 
   w3c-xmlserializer@4.0.0:
