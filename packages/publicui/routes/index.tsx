@@ -9,6 +9,7 @@ import {
   ScrollRestoration,
   useLocation,
   useMatches,
+  useLoaderData,
   useNavigate,
   useRouteLoaderData,
   type UIMatch,
@@ -20,6 +21,10 @@ import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
 import SlotRenderer from '@plone/layout/SlotRenderer';
 import clxs from 'clsx';
+import config from '@plone/registry';
+
+// eslint-disable-next-line import/no-unresolved
+import stylesheet from 'seven/publicui.css?url';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -37,6 +42,7 @@ export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
 };
 
 export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: stylesheet },
   {
     rel: 'icon',
     href: '/favicon.ico',
@@ -60,8 +66,13 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export async function loader() {
+  return { cssLayers: config.settings.cssLayers };
+}
+
 export default function Index() {
   const location = useLocation();
+  const { cssLayers } = useLoaderData<typeof loader>();
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
   const navigate = useNavigate();
@@ -81,6 +92,8 @@ export default function Index() {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="mobile-web-app-capable" content="yes" />
+        {/* We pre-define here the @layer before tailwind does, adding our own layers */}
+        <style>{`@layer ${cssLayers.join(', ')};`}</style>
         <Meta />
         <Links />
       </head>

@@ -1,5 +1,5 @@
 import './storybook-base.css';
-import '@plone/components/dist/basic.css';
+import '../../theming/styles/main.css';
 import '../styles/main.css';
 
 import config from '@plone/registry';

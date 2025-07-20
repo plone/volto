@@ -1,0 +1,1 @@
+Added Breadcrumbs slot. @sneridagh

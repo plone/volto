@@ -3,8 +3,6 @@ import { ColorSlider } from './ColorSlider';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/ColorSlider.css';
-
 const meta = {
   title: 'Basic/Forms/ColorSlider',
   component: ColorSlider,
