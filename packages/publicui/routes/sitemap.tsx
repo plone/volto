@@ -6,7 +6,7 @@ import type { NavigationResponse } from '@plone/types';
 import { flattenToAppURL } from '@plone/helpers';
 
 import config from '@plone/registry';
-import { Container } from '@plone/components/tailwind';
+import { Container } from '@plone/components/quanta';
 
 export const handle = {
   bodyClass: 'sitemap-route',

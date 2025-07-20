@@ -1,4 +1,4 @@
-import { Link } from '@plone/components/tailwind';
+import { Link } from '@plone/components/quanta';
 
 // TODO translations
 
