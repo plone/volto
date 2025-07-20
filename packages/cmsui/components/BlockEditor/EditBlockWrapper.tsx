@@ -28,7 +28,8 @@ const EditBlockWrapper = (props: EditBlockWrapperProps) => {
 
   const type = blockData['@type'];
   const blocksconfig =
-    config.blocks.blocksConfig[type].blocksConfig || config.blocks.blocksConfig;
+    config.blocks.blocksConfig?.[type]?.blocksConfig ||
+    config.blocks.blocksConfig;
   const schema = blocksconfig[type]?.blockSchema;
 
   return (

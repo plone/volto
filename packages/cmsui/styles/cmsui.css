@@ -1,6 +1,8 @@
 @plugin 'tailwindcss-react-aria-components';
 @plugin 'tailwindcss-animate';
 
+@source '../node_modules/@plone/components/dist/quanta';
+
 @layer cmsui {
   @import 'tailwindcss/theme.css';
   @import 'tailwindcss/preflight.css';
