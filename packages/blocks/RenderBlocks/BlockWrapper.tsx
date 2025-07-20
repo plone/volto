@@ -17,13 +17,13 @@ const BlockWrapper = (props: BlockWrapperProps) => {
   return (
     <div
       className={cx(
-        `block-${data['@type']}`,
+        `block block-${data['@type']}`,
         { [`category-${category}`]: category },
         classNames,
       )}
       style={style}
     >
-      {children}
+      <div className="block-inner-container">{children}</div>
     </div>
   );
 };

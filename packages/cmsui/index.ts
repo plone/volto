@@ -2,6 +2,8 @@ import type { ConfigType } from '@plone/registry';
 import installWidgets from './config/widgets';
 
 export default function install(config: ConfigType) {
+  config.settings.cssLayers = [...(config.settings.cssLayers || []), 'cmsui'];
+
   installWidgets(config);
 
   config.registerRoute({
