@@ -3,8 +3,6 @@ import { Checkbox } from './Checkbox';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/Checkbox.css';
-
 const meta = {
   title: 'Basic/Checkbox',
   component: Checkbox,

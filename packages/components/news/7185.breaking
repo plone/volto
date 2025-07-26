@@ -1,0 +1,5 @@
+Rearrangement of the package structure. @sneridagh
+
+BREAKING:
+- Renaming imports path from `tailwind` to `quanta`.
+- Rename all the Quanta components to have the `quanta` suffix.

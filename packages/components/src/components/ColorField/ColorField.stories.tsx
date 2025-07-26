@@ -3,8 +3,6 @@ import { ColorField } from './ColorField';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/ColorField.css';
-
 const meta = {
   title: 'Basic/Forms/ColorField',
   component: ColorField,

@@ -3,8 +3,6 @@ import { Calendar } from './Calendar';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/Calendar.css';
-
 const meta: Meta<typeof Calendar> = {
   title: 'Basic/Forms/Calendar',
   component: Calendar,
