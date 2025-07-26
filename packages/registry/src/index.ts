@@ -532,6 +532,7 @@ class Config {
     route.push(options);
     this._data.routes = route;
   }
+
   /**
    * Registers a widget configuration into the registry.
    *
@@ -546,12 +547,30 @@ class Config {
     definition: WidgetsConfig[K];
   }) {
     const { key, definition } = options;
-    const widgets = {
-      ...(this.widgets ?? {}),
-      [key]: definition,
-    };
-    this._data.widgets = widgets;
+    const definitionIsObject = Object.keys(definition).length;
+    if (!definitionIsObject) {
+      this._data.widgets[key] = definition;
+    } else {
+      Object.keys(definition).forEach((widgetKey) => {
+        if (this._data.widgets[key] === undefined) {
+          this._data.widgets[key] = {} as WidgetsConfig[K];
+        }
+        if ((this._data.widgets[key] as Record<string, any>)?.[widgetKey]) {
+          // If the widget already exists, we merge the definitions
+          (this._data.widgets[key] as Record<string, any>)[widgetKey] = {
+            ...(this._data.widgets[key] as Record<string, any>)[widgetKey],
+            ...(definition as Record<string, any>)[widgetKey],
+          };
+        } else {
+          // Otherwise, we just set it
+          (this._data.widgets[key] as Record<string, any>)[widgetKey] = (
+            definition as Record<string, any>
+          )[widgetKey];
+        }
+      });
+    }
   }
+
   /**
    * Gets a widget configuration from the registry.
    *

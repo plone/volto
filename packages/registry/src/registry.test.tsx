@@ -1368,6 +1368,35 @@ describe('Widgets registry: registerWidget', () => {
     expect(config.widgets?.widget?.special).toBe(DummyWidget);
   });
 
+  it('registers two widgets in the "widget" group', () => {
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: DummyWidget,
+      },
+    });
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        another: DummyWidget,
+      },
+    });
+    expect(config.widgets?.widget?.special).toBe(DummyWidget);
+    expect(config.widgets?.widget?.another).toBe(DummyWidget);
+  });
+
+  it('registers several widgets in the "widget" group at once', () => {
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: DummyWidget,
+        another: DummyWidget,
+      },
+    });
+    expect(config.widgets?.widget?.special).toBe(DummyWidget);
+    expect(config.widgets?.widget?.another).toBe(DummyWidget);
+  });
+
   it('registers a widget in the "factory" group', () => {
     config.registerWidget({
       key: 'factory',
