@@ -2,10 +2,10 @@ import * as React from 'react';
 import { SizeWidget, defaultSizeActionsInfo } from './SizeWidget';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Form } from 'react-aria-components';
-import { Button } from '../Button/Button';
+import { Button } from '../Button/Button.quanta';
 
 const meta = {
-  title: 'Tailwind/SizeWidget',
+  title: 'Quanta/SizeWidget',
   component: SizeWidget,
   parameters: {
     layout: 'centered',

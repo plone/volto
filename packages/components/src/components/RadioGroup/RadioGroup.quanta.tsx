@@ -76,12 +76,12 @@ export function Radio(props: RadioProps) {
 
 const customRadioButton = tv({
   extend: focusRing,
-  base: 'text-quanta-iron flex h-10 w-10 cursor-pointer items-center justify-center rounded-md font-medium transition hover:shadow-sm focus:shadow-sm active:shadow-md',
+  base: 'text-quanta-iron flex h-10 w-10 cursor-pointer items-center justify-center rounded-md font-medium transition',
   variants: {
     isSelected: {
       false:
-        'bg-quanta-air hover:bg-quanta-snow active:bg-quanta-silver focus:bg-quanta-snow',
-      true: 'pressed:bg-quanta-cobalt bg-quanta-air hover:bg-quanta-snow active:bg-quanta-silver focus:bg-quanta-snow border border-gray-200 shadow-sm',
+        'bg-quanta-air hover:bg-quanta-sky active:bg-quanta-silver focus:bg-quanta-snow',
+      true: 'pressed:bg-quanta-sky bg-quanta-sky hover:bg-quanta-sky active:bg-quanta-sky focus:bg-quanta-sky',
     },
     isPressed: {
       true: 'pressed:bg-quanta-cobalt',

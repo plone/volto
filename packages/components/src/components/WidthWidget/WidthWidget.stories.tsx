@@ -2,11 +2,11 @@ import * as React from 'react';
 import { WidthWidget, defaultActionsInfo } from './WidthWidget';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Form } from 'react-aria-components';
-import { Button } from '../Button/Button';
+import { Button } from '../Button/Button.quanta';
 import { ImageIcon } from '../../components/icons/ImageIcon';
 
 const meta = {
-  title: 'Tailwind/WidthWidget',
+  title: 'Quanta/WidthWidget',
   component: WidthWidget,
   parameters: {
     layout: 'centered',
