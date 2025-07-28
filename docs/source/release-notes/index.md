@@ -17,6 +17,43 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.3 (2025-06-25)
+
+### Breaking
+
+- The default language and list of available languages are now loaded from the backend API.
+  The default language can no longer be set using the `SITE_DEFAULT_LANGUAGE` environment variable.
+  The `supportedLanguages` setting remains but is only used to limit which locales are included in the build.
+  @davisagli [#7125](https://github.com/plone/volto/issues/7125)
+- Renamed literal "Head title" to "Kicker" in Teaser block. @sneridagh [#7191](https://github.com/plone/volto/issues/7191)
+
+### Feature
+
+- Complete missing German translations. @ksuess [#6005](https://github.com/plone/volto/issues/6005)
+- Use translated schema title in Helmet for `Add` component page. @alexandreIFB [#7048](https://github.com/plone/volto/issues/7048)
+- Improved the component `ContentsDeleteModal` by displaying a detailed list of selected items with clickable links for better clarity and usability. @alexandreIFB [#7054](https://github.com/plone/volto/issues/7054)
+- Show link integrity breaches in contents delete modal. @ksuess [#7100](https://github.com/plone/volto/issues/7100)
+- Added the `.error` class to blocks with errors, highlighting them with a red border in edit mode. @alexandreIFB [#7138](https://github.com/plone/volto/issues/7138)
+- Synchronizes versions of Volto dependencies with other packages in the monorepo. @wesleybl [#7184](https://github.com/plone/volto/issues/7184)
+- In the contents view, add a pill to indicate working copies.
+  This only works with `plone.app.iterate` >= 6.2.0. @davisagli 
+
+### Bugfix
+
+- fix(fetchContent): correctly handle undefined blocksType in async fetchContent @nileshgulia1 [#7096](https://github.com/plone/volto/issues/7096)
+- Make sure the server-side rendered content is still shown if there is an error while hydrating a page that did not have a server-side error. @davisagli [#7132](https://github.com/plone/volto/issues/7132)
+- Added missing languages in `packages/volto/src/helpers/LanguageMap/LanguageMap.js`. @JeffersonBledsoe [#7146](https://github.com/plone/volto/issues/7146)
+- Add default if no filename is supplied in FileView @kittauri [#7174](https://github.com/plone/volto/issues/7174)
+
+### Internal
+
+- Remove trailing ` ` space character in a script in `package.json`. @silviubogan [#7166](https://github.com/plone/volto/issues/7166)
+
+### Documentation
+
+- Updated "Configuring a new block". @ksuess [#3272](https://github.com/plone/volto/issues/3272)
+- Create a custom widget @ksuess, @silviubogan [#7075](https://github.com/plone/volto/issues/7075)
+
 ## 19.0.0-alpha.2 (2025-05-20)
 
 ### Feature
