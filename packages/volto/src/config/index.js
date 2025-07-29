@@ -37,9 +37,7 @@ const apiPath =
 const getServerURL = (url) => {
   if (!url) return;
   const apiPathURL = parseUrl(url);
-  return `${apiPathURL.protocol}//${apiPathURL.hostname}${
-    apiPathURL.port ? `:${apiPathURL.port}` : ''
-  }`;
+  return `${apiPathURL.protocol}//${apiPathURL.hostname}`;
 };
 
 // Sensible defaults for publicURL
@@ -50,8 +48,8 @@ const getServerURL = (url) => {
 const publicURL =
   process.env.RAZZLE_PUBLIC_URL ||
   (__DEVELOPMENT__
-    ? `http://${host}:${port}`
-    : getServerURL(process.env.RAZZLE_API_PATH) || `http://${host}:${port}`);
+    ? `http://${host}`
+    : getServerURL(process.env.RAZZLE_API_PATH) || `http://${host}`);
 
 const serverConfig =
   typeof __SERVER__ !== 'undefined' && __SERVER__
