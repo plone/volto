@@ -1,8 +1,11 @@
-import type { SlotComponentProps } from '../SlotRenderer';
+import type { SlotComponentProps } from '../../SlotRenderer';
 import { Link } from '@plone/components';
-import LogoImage from './Logo.svg';
+import clsx from 'clsx';
 import config from '@plone/registry';
-import { messages } from './messages';
+import { messages } from '../messages';
+
+import styles from './Logo.module.css';
+import LogoImage from './Logo.svg';
 
 const Logo = (props: SlotComponentProps) => {
   const { content } = props;
@@ -19,7 +22,11 @@ const Logo = (props: SlotComponentProps) => {
     : LogoImage;
 
   return (
-    <Link href={navRootPath} aria-label={intl(messages.home)} className="logo">
+    <Link
+      href={navRootPath}
+      aria-label={intl(messages.home)}
+      className={clsx(styles.logo, 'logo')}
+    >
       <img src={logoUrl} alt={intl(messages.logoOf) + ' ' + siteTitle} />
     </Link>
   );

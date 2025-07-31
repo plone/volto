@@ -12,9 +12,6 @@ import {
   otherResources,
 } from './middleware.server';
 
-// eslint-disable-next-line import/no-unresolved
-import stylesheet from '../publicui.css?url';
-
 export const unstable_middleware = [
   installServerMiddleware,
   otherResources,
@@ -24,7 +21,7 @@ export const unstable_middleware = [
 export async function loader({ params, request }: Route.LoaderArgs) {
   const locale = await i18next.getLocale(request);
 
-  const expand = ['navroot', 'breadcrumbs', 'navigation'];
+  const expand = ['navroot', 'breadcrumbs', 'navigation', 'actions'];
 
   const cli = config
     .getUtility({
@@ -56,10 +53,6 @@ export const handle = {
   // or if you did not set one, set it to the i18next default namespace "translation"
   i18n: 'common',
 };
-
-export const links: Route.LinksFunction = () => [
-  { rel: 'stylesheet', href: stylesheet },
-];
 
 export function Layout({
   children,

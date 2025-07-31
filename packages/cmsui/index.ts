@@ -3,6 +3,8 @@ import installWidgets from './config/widgets';
 import installControlpanels from './config/controlpanels';
 
 export default function install(config: ConfigType) {
+  config.settings.cssLayers = [...(config.settings.cssLayers || []), 'cmsui'];
+
   installWidgets(config);
   installControlpanels(config);
 

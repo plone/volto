@@ -1,0 +1,225 @@
+@import '@plone/theming/styles/tailwind.css';
+
+@theme {
+  --accent-color: #3b5759;
+  --secondary-color: #afcac8;
+  --text-base: 1.15rem;
+  --default-font-family: 'Funnel', sans-serif;
+  --heading-font-family: 'Funnel Display', serif;
+  --header-background: linear-gradient(
+    -3deg,
+    var(--background, #fff) 0%,
+    color-mix(in oklab, var(--secondary-color) 1%, var(--background, #fff)) 20%,
+    color-mix(in oklab, var(--secondary-color) 3%, var(--background, #fff)) 35%,
+    color-mix(in oklab, var(--secondary-color) 10%, var(--background, #fff)) 50%,
+    color-mix(in oklab, var(--secondary-color) 30%, var(--background, #fff)) 65%,
+    color-mix(in oklab, var(--secondary-color) 65%, var(--background, #fff)) 80%,
+    color-mix(in oklab, var(--secondary-color) 90%, var(--background, #fff)) 92%,
+    var(--secondary-color) 100%
+  );
+  --footer-background: radial-gradient(
+    ellipse 100% 100% at 50% 100%,
+    var(--secondary-color) 0%,
+    var(--secondary-color) 20%,
+    color-mix(in oklab, var(--secondary-color) 85%, var(--background, #fff)) 30%,
+    color-mix(in oklab, var(--secondary-color) 65%, var(--background, #fff)) 40%,
+    color-mix(in oklab, var(--secondary-color) 45%, var(--background, #fff)) 50%,
+    color-mix(in oklab, var(--secondary-color) 30%, var(--background, #fff)) 60%,
+    color-mix(in oklab, var(--secondary-color) 18%, var(--background, #fff)) 70%,
+    color-mix(in oklab, var(--secondary-color) 10%, var(--background, #fff)) 80%,
+    color-mix(in oklab, var(--secondary-color) 4%, var(--background, #fff)) 90%,
+    var(--background, #fff) 100%
+  );
+}
+/* Typography */
+@font-face {
+  font-family: 'Funnel Display';
+  src: url('./fonts/FunnelDisplay[wght].woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'Funnel';
+  src: url('./fonts/FunnelSans[wght].woff2') format('woff2-variations');
+}
+
+@layer custom {
+  /* Layout */
+  .section,
+  .block {
+    & > [class*='-inner-container'] {
+      transition: padding 300ms ease-in-out;
+    }
+
+    &.layout {
+      @container (max-width: calc(1440px + 2rem)) {
+        & > [class*='-inner-container'] {
+          padding-inline: calc(var(--spacing) * 6) !important;
+        }
+      }
+    }
+
+    &.default {
+      @container (max-width: calc(940px + 2rem)) {
+        & > [class*='-inner-container'] {
+          padding-inline: calc(var(--spacing) * 6) !important;
+        }
+      }
+    }
+
+    &.narrow {
+      @container (max-width: calc(620px + 2rem)) {
+        & > [class*='-inner-container'] {
+          padding-inline: calc(var(--spacing) * 6) !important;
+        }
+      }
+    }
+  }
+
+  /* Blocks */
+  .content-area {
+    @apply text-base leading-6 font-thin;
+    .block {
+      /* Title block */
+      &.block-title {
+        .block-inner-container {
+          h1.documentFirstHeading {
+            @apply text-5xl font-normal relative pb-4 pt-6;
+
+            font-family: var(--heading-font-family);
+
+            &::after {
+              @apply absolute bottom-0 left-0 w-20 h-[4px];
+
+              background: linear-gradient(
+                to right,
+                var(--accent-color) 0%,
+                var(--accent-color) 50%,
+                transparent 100%
+              );
+              content: '';
+            }
+          }
+        }
+      }
+
+      h2 {
+        @apply text-3xl font-normal pb-4 pt-6;
+        font-family: var(--heading-font-family);
+      }
+      h3 {
+        @apply text-2xl font-normal py-4;
+        font-family: var(--heading-font-family);
+      }
+    }
+  }
+
+  /* Header */
+  #header {
+    @apply pb-18 pt-8;
+
+    background: var(--header-background, --background);
+    color: var(--header-foreground, --foreground);
+
+    &:has(.breadcrumbs) {
+      @apply pb-6;
+    }
+
+    /* Header sections */
+    .section-header {
+      /* Breadcrumbs section */
+      &.breadcrumbs {
+        .section-inner-container {
+          @apply pb-6;
+
+          box-shadow: 0 10px 24px -20px
+            color-mix(in oklab, var(--foreground) 30%, var(--background, #fff));
+
+          li:not(:last-child) {
+            &:after {
+              margin-left: 0.75em;
+              content: '⟩';
+              font-size: 0.75rem;
+            }
+          }
+          li {
+            @apply text-base leading-6;
+
+            .icon {
+              @apply self-center mr-1;
+            }
+
+            & > a {
+              &[data-hovered='true'],
+              &[data-focused='true'] {
+                color: var(--accent-color);
+              }
+            }
+          }
+        }
+      }
+      /* Logo, Main Navigation & Tools section */
+      &.header-logo-nav-tools-wrapper {
+        .section-inner-container {
+          @apply px-0 pb-14 pt-6;
+          grid-template-columns: auto 1fr auto;
+        }
+
+        /* Main Navigation */
+        .navigation {
+          @apply items-end justify-center self-end justify-self-center;
+
+          a.react-aria-Link {
+            @apply relative text-lg font-thin leading-6 pb-4 no-underline;
+
+            font-family: var(--heading-font-family);
+          }
+
+          a.react-aria-Link::after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(
+              to right,
+              var(--accent-color) 0%,
+              var(--accent-color) 50%,
+              transparent 100%
+            );
+            content: '';
+            transition: width 0.3s ease;
+          }
+
+          a.react-aria-Link[data-hovered='true']::after {
+            width: 100%;
+          }
+
+          a.react-aria-Link[data-focused='true']::after,
+          a.react-aria-Link[data-active='true']::after {
+            width: 100%;
+            transition: none;
+          }
+        }
+
+        /* Header tools */
+        .header-tools {
+          @apply self-baseline;
+          a.react-aria-Link {
+            @apply text-base leading-6;
+
+            &[data-hovered='true'],
+            &[data-focused='true'] {
+              color: var(--accent-color);
+            }
+          }
+        }
+      }
+    }
+  }
+  /* Footer */
+  #footer {
+    @apply py-12;
+
+    background: var(--footer-background, --background);
+    color: var(--footer-foreground, --foreground);
+  }
+}

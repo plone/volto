@@ -11,7 +11,7 @@ type ContainerProps<T extends React.ElementType> = {
   children: React.ReactNode;
   /** An element type to render as (string or function). */
   as?: T;
-  /** Additional classes. */
+  /** Additional CSS classes. */
   className?: string;
   /** Container width */
   width?: 'layout' | 'default' | 'narrow' | 'full';
