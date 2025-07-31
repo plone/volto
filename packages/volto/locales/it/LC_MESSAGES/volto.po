@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: \nPOT-Creation-Date: \nPO-Revision-Date: 2025-06-17 07:02+0000\nLast-Translator: Yuri <yuri.carrer@unipd.it>\nLanguage-Team: Italian <https://hosted.weblate.org/projects/plone/volto-18/it/>\nLanguage: it\nContent-Type: \nContent-Transfer-Encoding: \nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.12.1\n"
+msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: \nPOT-Creation-Date: \nPO-Revision-Date: 2025-08-01 11:01+0000\nLast-Translator: Yuri <yuri.carrer@unipd.it>\nLanguage-Team: Italian <https://hosted.weblate.org/projects/plone/volto-18/it/>\nLanguage: it\nContent-Type: \nContent-Transfer-Encoding: \nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.13-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -1524,7 +1524,7 @@ msgstr "File"
 #. Default: "File is not of the accepted type {accept}"
 #: components/manage/Widgets/FileWidget
 msgid "File is not of the accepted type {accept}"
-msgstr ""
+msgstr "Il file non è del tipo consentito {accept}"
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
@@ -2900,7 +2900,7 @@ msgstr "Form di iscrizione"
 #. Default: "Related Items"
 #: components/theme/RelatedItems/RelatedItems
 msgid "Related Items"
-msgstr ""
+msgstr "Elementi correlati"
 
 #. Default: "Relation"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -5113,7 +5113,7 @@ msgstr "Seleziona la vista"
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
-msgstr ""
+msgstr "dimensione"
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks
