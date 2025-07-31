@@ -1,5 +1,5 @@
 import { Button } from '@plone/components/quanta';
-import { Plug } from '../components/Pluggable';
+import { Plug } from '@plone/layout/components/Pluggable';
 import {
   useLoaderData,
   useNavigate,

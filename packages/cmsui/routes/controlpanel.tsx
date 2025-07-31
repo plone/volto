@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plug } from '../components/Pluggable';
+import { Plug } from '@plone/layout/components/Pluggable';
 import {
   redirect,
   useFetcher,
