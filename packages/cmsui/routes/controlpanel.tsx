@@ -1,5 +1,3 @@
-import React from 'react';
-import { Plug } from '@plone/layout/components/Pluggable';
 import {
   redirect,
   useFetcher,
@@ -9,25 +7,27 @@ import {
   type LoaderFunctionArgs,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { atom } from 'jotai';
+import type { DeepKeys } from '@tanstack/react-form';
 import type PloneClient from '@plone/client';
 import { requireAuthCookie } from '@plone/react-router';
-import type { DeepKeys } from '@tanstack/react-form';
-import Back from '@plone/components/icons/arrow-left.svg?react';
-import { useAppForm } from '../components/Form/Form';
+import { InitAtoms } from '@plone/helpers';
+import type {
+  Controlpanel,
+  ControlPanelFieldset,
+  ControlPanelSchema,
+} from '@plone/types';
+import { Plug } from '@plone/layout/components/Pluggable';
 import {
   Accordion,
   AccordionItem,
   AccordionPanel,
   AccordionItemTrigger,
   Button,
+  Container,
 } from '@plone/components/quanta';
-import { InitAtoms } from '@plone/helpers';
-import { atom } from 'jotai';
-import type {
-  Controlpanel,
-  ControlPanelFieldset,
-  ControlPanelSchema,
-} from '@plone/types';
+import { useAppForm } from '../components/Form/Form';
+import Back from '@plone/components/icons/arrow-left.svg?react';
 import Checkbox from '@plone/components/icons/checkbox.svg?react';
 import config from '@plone/registry';
 
@@ -117,54 +117,59 @@ export default function SingleControlPanel() {
           <Back />
         </Button>
       </Plug>
-      <h1 className="documentFirstHeading">
-        {controlpanel.title || 'a control panel'}
-      </h1>
-      <form>
-        {schema.fieldsets.map((fieldset: ControlPanelFieldset) => (
-          <Accordion defaultExpandedKeys={['default']} key={fieldset.id}>
-            <AccordionItem id={fieldset.id} key={fieldset.id}>
-              <AccordionItemTrigger>{fieldset.title}</AccordionItemTrigger>
-              <AccordionPanel>
-                {(fieldset.fields as DeepKeys<ControlPanelSchema>[]).map(
-                  (schemaField, index) => (
-                    <form.AppField
-                      name={schemaField}
-                      key={index}
-                      // eslint-disable-next-line react/no-children-prop
-                      children={(field) => (
-                        <field.Quanta
-                          {...schema.properties[schemaField]}
-                          className="mb-4"
-                          label={schema.properties[field.name].title}
-                          name={field.name}
-                          defaultValue={field.state.value}
-                          required={schema.required.indexOf(schemaField) !== -1}
-                          error={field.state.meta.errors}
-                          formAtom={formAtom}
-                        />
-                      )}
-                    />
-                  ),
-                )}
-              </AccordionPanel>
-            </AccordionItem>
-          </Accordion>
-        ))}
-        <Plug pluggable="toolbar-top" id="edit-save-button">
-          <Button
-            aria-label={t('cmsui.save')}
-            type="submit"
-            // Trigger the TS form submission
-            onPress={() => form.handleSubmit()}
-            variant="primary"
-            accent
-            size="L"
-          >
-            <Checkbox />
-          </Button>
-        </Plug>
-      </form>
+
+      <Container width="default" className="route-controlpanel">
+        <h1 className="documentFirstHeading">
+          {controlpanel.title || 'a control panel'}
+        </h1>
+        <form>
+          {schema.fieldsets.map((fieldset: ControlPanelFieldset) => (
+            <Accordion defaultExpandedKeys={['default']} key={fieldset.id}>
+              <AccordionItem id={fieldset.id} key={fieldset.id}>
+                <AccordionItemTrigger>{fieldset.title}</AccordionItemTrigger>
+                <AccordionPanel>
+                  {(fieldset.fields as DeepKeys<ControlPanelSchema>[]).map(
+                    (schemaField, index) => (
+                      <form.AppField
+                        name={schemaField}
+                        key={index}
+                        // eslint-disable-next-line react/no-children-prop
+                        children={(field) => (
+                          <field.Quanta
+                            {...schema.properties[schemaField]}
+                            className="mb-4"
+                            label={schema.properties[field.name].title}
+                            name={field.name}
+                            defaultValue={field.state.value}
+                            required={
+                              schema.required.indexOf(schemaField) !== -1
+                            }
+                            error={field.state.meta.errors}
+                            formAtom={formAtom}
+                          />
+                        )}
+                      />
+                    ),
+                  )}
+                </AccordionPanel>
+              </AccordionItem>
+            </Accordion>
+          ))}
+          <Plug pluggable="toolbar-top" id="edit-save-button">
+            <Button
+              aria-label={t('cmsui.save')}
+              type="submit"
+              // Trigger the TS form submission
+              onPress={() => form.handleSubmit()}
+              variant="primary"
+              accent
+              size="L"
+            >
+              <Checkbox />
+            </Button>
+          </Plug>
+        </form>
+      </Container>
     </InitAtoms>
   );
 }

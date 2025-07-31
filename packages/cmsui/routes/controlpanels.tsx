@@ -1,5 +1,3 @@
-import { Button } from '@plone/components/quanta';
-import { Plug } from '@plone/layout/components/Pluggable';
 import {
   useLoaderData,
   useNavigate,
@@ -8,9 +6,10 @@ import {
 import { useTranslation } from 'react-i18next';
 import type PloneClient from '@plone/client';
 import { requireAuthCookie } from '@plone/react-router';
+import { Button, Container } from '@plone/components/quanta';
+import { Plug } from '@plone/layout/components/Pluggable';
 import ControlPanelsList from '../components/ControlPanel/ControlPanelsList';
 import VersionOverview from '../components/VersionOverview/VersionOverview';
-import { flattenToAppURL } from '@plone/helpers';
 import Back from '@plone/components/icons/arrow-left.svg?react';
 import config from '@plone/registry';
 
@@ -42,9 +41,11 @@ export default function ControlPanels() {
           <Back />
         </Button>
       </Plug>
-      <h1 className="documentFirstHeading">{t('cmsui.controlpanel')}</h1>
-      <ControlPanelsList controlpanels={controlpanels ?? []} />
-      <VersionOverview {...systemInformation} />
+      <Container width="default" className="route-controlpanel">
+        <h1 className="documentFirstHeading">{t('cmsui.controlpanel')}</h1>
+        <ControlPanelsList controlpanels={controlpanels ?? []} />
+        <VersionOverview {...systemInformation} />
+      </Container>
     </>
   );
 }
