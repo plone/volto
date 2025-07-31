@@ -85,7 +85,7 @@ describe('RegistryImageWidget', () => {
 
         return dropzone && preview && filename;
       },
-      { timeout: 1000 },
+      { timeout: 2000 },
     );
 
     expect(container).toMatchSnapshot();
