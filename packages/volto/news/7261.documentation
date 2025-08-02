@@ -1,0 +1,1 @@
+Fix reference for the widget named `toggle_widget` for boolean fields in a schema. @ksuess
