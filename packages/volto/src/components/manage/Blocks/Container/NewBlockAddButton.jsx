@@ -49,6 +49,7 @@ const NewBlockAddButton = (props) => {
     <>
       <Ref innerRef={setReferenceElement}>
         <Button
+          type="button"
           basic
           icon
           onClick={() => setOpenMenu(true)}

@@ -14,18 +14,18 @@ This page lists resources for learning how to use and develop projects in and co
 
 ## Plone Trainings
 
-On the [Plone Training website](https://training.plone.org), you'll find Volto-dedicated training materials, plus other JavaScript-centered trainings.
+On {doc}`training:index`, you'll find Volto-dedicated training materials, plus other JavaScript-centered trainings.
 
--   [Mastering Plone 6 Development](https://training.plone.org/mastering-plone/)
+-   {doc}`training:mastering-plone/index`
     The comprehensive training on Plone 6 with best practice tips for developers and integrators.
--   [Customizing Volto Light Theme](https://training.plone.org/customizing-volto-light-theme/index.html)
--   [Volto Customization for JavaScript Beginners](https://training.plone.org/volto-customization/index.html)
--   [Volto Hands-On](https://training.plone.org/voltohandson/index.html)
--   [Volto Add-ons Development](https://training.plone.org/voltoaddons/index.html)
--   [Effective Volto](https://training.plone.org/effective-volto/index.html)
--   [Plone Deployment](https://training.plone.org/plone-deployment/index.html)
--   [Volto](https://2022.training.plone.org/volto/index.html) (archived)
--   [JavaScript For Plone Developers](https://2022.training.plone.org/javascript/index.html) (archived)
+-   {doc}`training:customizing-volto-light-theme/index`
+-   {doc}`training:volto-customization/index`
+-   {doc}`training:plone-deployment/index`
+-   {doc}`training-2024:voltohandson/index` (archived)
+-   {doc}`training-2024:voltoaddons/index` (archived)
+-   {doc}`training-2024:effective-volto/index` (archived)
+-   {doc}`training-2022:volto/index` (archived)
+-   {doc}`training-2022:javascript/index` (archived)
 
 
 ## How does it work under the hood

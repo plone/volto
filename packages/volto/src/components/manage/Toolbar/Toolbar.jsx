@@ -537,10 +537,9 @@ class Toolbar extends Component {
                         </Link>
                       )}
                     {this.props.content &&
-                      ((this.props.content.is_folderish &&
-                        this.props.types.length > 0) ||
-                        (config.settings.isMultilingual &&
-                          this.props.content['@components']?.translations)) && (
+                      this.props.content.is_folderish &&
+                      (this.props.types.length > 0 ||
+                        this.props.content['@components']?.translations) && (
                         <button
                           className="add"
                           aria-label={this.props.intl.formatMessage(

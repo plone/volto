@@ -40,6 +40,7 @@ const HtmlSlateWidget = (props) => {
     onChange,
     value,
     focus,
+    fieldSet,
     className,
     block,
     placeholder,
@@ -117,7 +118,7 @@ const HtmlSlateWidget = (props) => {
       <div
         className="slate_wysiwyg_box"
         role="textbox"
-        tabIndex="-1"
+        tabIndex={-1}
         style={{ boxSizing: 'initial' }}
         onClick={handleClick}
         onKeyDown={() => {}}
@@ -128,6 +129,7 @@ const HtmlSlateWidget = (props) => {
             id={id}
             name={id}
             value={valueFromHtml}
+            fieldSet={fieldSet}
             onChange={handleChange}
             block={block}
             selected={selected}

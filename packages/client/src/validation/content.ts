@@ -106,3 +106,10 @@ export const updateContentDataSchema = z.object({
   title: z.string().optional(),
   versioning_enabled: z.boolean().optional(),
 });
+
+export const copyMoveContentDataSchema = z.object({
+  path: z.string(),
+  data: z.object({
+    source: z.union([z.string(), z.array(z.string())]),
+  }),
+});

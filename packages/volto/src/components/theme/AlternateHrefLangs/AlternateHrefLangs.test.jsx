@@ -13,7 +13,6 @@ const mockStore = configureStore();
 describe('AlternateHrefLangs', () => {
   beforeEach(() => {});
   it('non multilingual site, renders nothing', () => {
-    config.settings.isMultilingual = false;
     const content = {
       '@id': '/',
       '@components': {},
@@ -35,17 +34,17 @@ describe('AlternateHrefLangs', () => {
     const helmetLinks = Helmet.peek().linkTags;
     expect(helmetLinks.length).toBe(0);
   });
+
   it('multilingual site, with some translations', () => {
-    config.settings.isMultilingual = true;
+    config.settings.publicURL = 'https://plone.org';
     config.settings.supportedLanguages = ['en', 'es', 'eu'];
 
     const content = {
+      '@id': 'http://localhost:8080/Plone/en',
+      language: { token: 'en', title: 'English' },
       '@components': {
         translations: {
-          items: [
-            { '@id': '/en', language: 'en' },
-            { '@id': '/es', language: 'es' },
-          ],
+          items: [{ '@id': 'http://localhost:8080/Plone/es', language: 'es' }],
         },
       },
     };
@@ -72,17 +71,18 @@ describe('AlternateHrefLangs', () => {
 
     expect(helmetLinks).toContainEqual({
       rel: 'alternate',
-      href: '/es',
+      href: 'https://plone.org/es',
       hrefLang: 'es',
     });
     expect(helmetLinks).toContainEqual({
       rel: 'alternate',
-      href: '/en',
+      href: 'https://plone.org/en',
       hrefLang: 'en',
     });
   });
+
   it('multilingual site, with all available translations', () => {
-    config.settings.isMultilingual = true;
+    config.settings.publicURL = 'https://plone.org';
     config.settings.supportedLanguages = ['en', 'es', 'eu'];
     const store = mockStore({
       intl: {
@@ -92,12 +92,13 @@ describe('AlternateHrefLangs', () => {
     });
 
     const content = {
+      '@id': 'http://localhost:8080/Plone/en',
+      language: { token: 'en', title: 'English' },
       '@components': {
         translations: {
           items: [
-            { '@id': '/en', language: 'en' },
-            { '@id': '/eu', language: 'eu' },
-            { '@id': '/es', language: 'es' },
+            { '@id': 'http://localhost:8080/Plone/eu', language: 'eu' },
+            { '@id': 'http://localhost:8080/Plone/es', language: 'es' },
           ],
         },
       },
@@ -118,17 +119,70 @@ describe('AlternateHrefLangs', () => {
 
     expect(helmetLinks).toContainEqual({
       rel: 'alternate',
-      href: '/eu',
+      href: 'https://plone.org/eu',
       hrefLang: 'eu',
     });
     expect(helmetLinks).toContainEqual({
       rel: 'alternate',
-      href: '/es',
+      href: 'https://plone.org/es',
       hrefLang: 'es',
     });
     expect(helmetLinks).toContainEqual({
       rel: 'alternate',
-      href: '/en',
+      href: 'https://plone.org/en',
+      hrefLang: 'en',
+    });
+  });
+
+  it('multilingual site, with all available translations - with server URL', () => {
+    config.settings.publicURL = 'https://plone.org';
+    config.settings.supportedLanguages = ['en', 'es', 'eu'];
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+
+    const content = {
+      '@id': 'http://localhost:8080/Plone/en',
+      language: { token: 'en', title: 'English' },
+      '@components': {
+        translations: {
+          items: [
+            { '@id': 'http://localhost:8080/Plone/eu', language: 'eu' },
+            { '@id': 'http://localhost:8080/Plone/es', language: 'es' },
+          ],
+        },
+      },
+    };
+
+    // We need to force the component rendering
+    // to fill the Helmet
+    renderer.create(
+      <Provider store={store}>
+        <AlternateHrefLangs content={content} />
+      </Provider>,
+    );
+
+    const helmetLinks = Helmet.peek().linkTags;
+
+    // We expect having 3 links
+    expect(helmetLinks.length).toBe(3);
+
+    expect(helmetLinks).toContainEqual({
+      rel: 'alternate',
+      href: 'https://plone.org/eu',
+      hrefLang: 'eu',
+    });
+    expect(helmetLinks).toContainEqual({
+      rel: 'alternate',
+      href: 'https://plone.org/es',
+      hrefLang: 'es',
+    });
+    expect(helmetLinks).toContainEqual({
+      rel: 'alternate',
+      href: 'https://plone.org/en',
       hrefLang: 'en',
     });
   });

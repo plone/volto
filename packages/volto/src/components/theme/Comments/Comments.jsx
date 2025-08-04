@@ -147,7 +147,7 @@ const Comments = (props) => {
   };
 
   const loadMoreComments = () => {
-    dispatch(listMoreComments(next));
+    dispatch(listMoreComments(flattenToAppURL(next)));
   };
 
   const onDelete = (value) => {

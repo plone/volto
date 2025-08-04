@@ -1,5 +1,4 @@
 import { getAliases, addAliases, removeAliases } from './aliases';
-
 import {
   GET_ALIASES,
   ADD_ALIASES,
@@ -18,6 +17,7 @@ describe('Aliases action', () => {
       );
     });
   });
+
   describe('addAliases', () => {
     it('should create an action to add aliases', () => {
       const url = '/news';

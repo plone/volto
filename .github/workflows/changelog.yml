@@ -36,8 +36,6 @@ jobs:
               - 'packages/types/**'
             providers:
               - 'packages/providers/**'
-            generator:
-              - 'packages/generator-volto/**'
             scripts:
               - 'packages/scripts/**'
             voltoSlate:
@@ -48,8 +46,6 @@ jobs:
               - 'packages/slots/**'
             theming:
               - 'packages/theming/**'
-            seven:
-              - 'packages/seven/**'
             wrongNews:
               - added|modified: 'news/**'
 
@@ -104,14 +100,6 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
-      - name: Generator changelog check
-        if: steps.filter.outputs.generator == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/generator-volto
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
       - name: scripts changelog check
         if: steps.filter.outputs.scripts == 'true'
         run: |
@@ -149,14 +137,6 @@ jobs:
         run: |
           git fetch --no-tags origin main
           towncrier check --compare-with origin/main --dir packages/theming
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: seven changelog check
-        if: steps.filter.outputs.seven == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/seven
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 

@@ -107,7 +107,11 @@ const BlocksForm = (props) => {
       onFocusNextBlock(block, node, isMultipleSelection);
       e.preventDefault();
     }
-    if (e.key === 'Enter' && !disableEnter) {
+
+    const blockConfig =
+      blocksConfig[properties[getBlocksFieldname(properties)][block]['@type']];
+
+    if (e.key === 'Enter' && !disableEnter && !blockConfig.disableEnter) {
       if (!disableAddBlockOnEnterKey) {
         onSelectBlock(onAddBlock(config.settings.defaultBlockType, index + 1));
       }
@@ -138,7 +142,7 @@ const BlocksForm = (props) => {
   };
 
   const onMutateBlock = (id, value) => {
-    const newFormData = mutateBlock(properties, id, value, {}, intl);
+    const newFormData = mutateBlock(properties, id, value, null, intl);
     onChangeFormData(newFormData);
   };
 
@@ -149,7 +153,7 @@ const BlocksForm = (props) => {
       value,
       current,
       config.experimental.addBlockButton.enabled ? 1 : 0,
-      {},
+      null,
       intl,
     );
 
@@ -168,7 +172,7 @@ const BlocksForm = (props) => {
 
   const onAddBlock = (type, index) => {
     if (editable) {
-      const [id, newFormData] = addBlock(properties, type, index, {}, intl);
+      const [id, newFormData] = addBlock(properties, type, index, null, intl);
       const blocksFieldname = getBlocksFieldname(newFormData);
       const blockData = newFormData[blocksFieldname][id];
       newFormData[blocksFieldname][id] = applyBlockDefaults({
@@ -355,6 +359,7 @@ const BlocksForm = (props) => {
                 editable,
                 showBlockChooser: selectedBlock === childId,
                 detached: isContainer,
+                isContainer,
                 // Properties to pass to the BlocksForm to match the View ones
                 content: properties,
                 history,

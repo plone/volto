@@ -128,6 +128,7 @@ const BlockChooser = ({
     return (
       <Button.Group key={block.id}>
         <Button
+          type="button"
           icon
           basic
           className={block.id}

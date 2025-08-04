@@ -1,37 +1,28 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { z } from 'zod';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
-const getRegistrySchema = z.object({
+const getRegistryRecordSchema = z.object({
   registryName: z.string(),
 });
 
-export type GetRegistryArgs = z.infer<typeof getRegistrySchema> & {
-  config: PloneClientConfig;
-};
+export type GetRegistryArgs = z.infer<typeof getRegistryRecordSchema>;
 
-export const getRegistry = async ({
-  registryName,
-  config,
-}: GetRegistryArgs): Promise<string> => {
-  const validatedArgs = getRegistrySchema.parse({
+export async function getRegistryRecord(
+  this: PloneClient,
+  { registryName }: GetRegistryArgs,
+): Promise<RequestResponse<string>> {
+  const validatedArgs = getRegistryRecordSchema.parse({
     registryName,
   });
 
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
 
   const registryPath = `/@registry/${validatedArgs.registryName}`;
 
   return apiRequest('get', registryPath, options);
-};
-
-export const getRegistryQuery = ({
-  registryName,
-  config,
-}: GetRegistryArgs) => ({
-  queryKey: [registryName, 'get', 'registry'],
-  queryFn: () => getRegistry({ registryName, config }),
-});
+}

@@ -1,23 +1,15 @@
-import { apiRequest, type ApiRequestParams } from '../../API';
-import type { PloneClientConfig } from '../../validation/config';
-import type { GetRegistriesResponse } from '@plone/types';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type { GetRegistryResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
-export type GetRegistriesArgs = {
-  config: PloneClientConfig;
-};
-
-export const getRegistries = async ({
-  config,
-}: GetRegistriesArgs): Promise<GetRegistriesResponse> => {
+export async function getRegistry(
+  this: PloneClient,
+): Promise<RequestResponse<GetRegistryResponse>> {
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
 
   return apiRequest('get', '/@registry', options);
-};
-
-export const getRegistriesQuery = ({ config }: GetRegistriesArgs) => ({
-  queryKey: ['get', 'registry'],
-  queryFn: () => getRegistries({ config }),
-});
+}

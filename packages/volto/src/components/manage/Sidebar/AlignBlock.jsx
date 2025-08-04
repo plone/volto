@@ -59,6 +59,7 @@ const AlignBlock = ({
       {actions.map((action) => (
         <Button.Group key={action}>
           <Button
+            type="button"
             icon
             basic
             aria-label={intl.formatMessage(messages[action])}

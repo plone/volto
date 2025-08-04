@@ -1,717 +1,459 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`UndoControlpanel renders undo controlpanel component 1`] = `
+exports[`UndoControlpanel > renders undo controlpanel component 1`] = `
 <div>
-  <div
-    class="ui container controlpanel-undo"
-    id="page-undo"
-  >
+  <div>
     <div
-      class="ui raised segments"
+      class="ui container controlpanel-undo"
+      id="page-undo"
     >
-      <div
-        class="ui segment primary"
-      >
-        Undo Controlpanel
-      </div>
-      <div
-        class="ui segment"
-      >
-        <div
-          data-schema="{
-  \\"fieldsets\\": [
-    {
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\",
-      \\"fields\\": [
-        \\"filterTypes\\"
-      ]
-    }
-  ],
-  \\"properties\\": {
-    \\"filterTypes\\": {
-      \\"title\\": \\"Filter transactions by\\",
-      \\"description\\": \\"Filter transactions by user, path or date\\",
-      \\"type\\": \\"string\\",
-      \\"choices\\": [
-        [
-          \\"user\\",
-          \\"Username\\"
-        ],
-        [
-          \\"path\\",
-          \\"Path\\"
-        ],
-        [
-          \\"date\\",
-          \\"Date\\"
-        ]
-      ]
-    },
-    \\"filterByUsername\\": {
-      \\"title\\": \\"Enter username\\",
-      \\"type\\": \\"string\\"
-    },
-    \\"filterByPath\\": {
-      \\"title\\": \\"Enter Path\\",
-      \\"type\\": \\"string\\"
-    },
-    \\"filterByDate\\": {
-      \\"title\\": \\"Enter date and time\\",
-      \\"description\\": \\"Will display transactions from start of selected day, until time selected\\",
-      \\"type\\": \\"date\\"
-    }
-  },
-  \\"required\\": []
-}"
-          id="Form"
-        />
-      </div>
       <div
         class="ui raised segments"
       >
         <div
           class="ui segment primary"
         >
-          Transactions
+          Undo Controlpanel
         </div>
-        <table
-          class="ui celled fixed selectable single line attached compact table"
+        <div
+          class="ui segment"
         >
-          <thead
-            class=""
+          <div
+            data-schema="{
+  "fieldsets": [
+    {
+      "id": "default",
+      "title": "Default",
+      "fields": [
+        "sortingTypes"
+      ]
+    }
+  ],
+  "properties": {
+    "sortingTypes": {
+      "title": "Sort by",
+      "description": "Sort transactions by User-Name, Path or Date",
+      "type": "string",
+      "choices": [
+        [
+          "User Name",
+          "User Name"
+        ],
+        [
+          "Path",
+          "Path"
+        ],
+        [
+          "Date",
+          "Date"
+        ]
+      ]
+    },
+    "sortByUsername": {
+      "title": "Enter Username",
+      "type": "string"
+    },
+    "sortByPath": {
+      "title": "Enter Path",
+      "type": "string"
+    },
+    "sortByDate": {
+      "title": "Enter Date and Time",
+      "type": "date"
+    }
+  },
+  "required": []
+}"
+            id="Form"
+          />
+        </div>
+        <div
+          class="ui raised segments"
+        >
+          <div
+            class="ui segment primary"
           >
-            <tr
+            Transactions
+          </div>
+          <table
+            class="ui celled fixed selectable single line attached compact table"
+          >
+            <thead
               class=""
             >
-              <th
-                class="center aligned one wide"
-                style="width: 40px;"
-              >
-                <div
-                  class="ui fitted checkbox"
-                >
-                  <input
-                    class="hidden"
-                    readonly=""
-                    tabindex="0"
-                    title="Select all"
-                    type="checkbox"
-                    value=""
-                  />
-                  <label />
-                </div>
-              </th>
-              <th
-                class="one wide"
-              >
-                OP
-              </th>
-              <th
-                class="seven wide"
-              >
-                What
-              </th>
-              <th
-                class="one wide"
-              >
-                Who
-              </th>
-              <th
-                class="two wide"
-              >
-                When
-              </th>
-              <th
-                class="one wide"
-              >
-                Note
-              </th>
-              <th
+              <tr
                 class=""
-              />
-            </tr>
-          </thead>
-          <tbody
-            class=""
-          >
-            <tr
-              class=""
-              id="QStrR0RRc0M5TjA9"
-            >
-              <td
-                class="center aligned one wide"
               >
-                <div
-                  class="ui fitted checkbox"
+                <th
+                  class="one wide"
                 >
-                  <input
-                    class="hidden"
-                    readonly=""
-                    tabindex="0"
-                    type="checkbox"
-                    value=""
-                  />
-                  <label />
-                </div>
-              </td>
-              <td
-                class="one wide"
-              />
-              <td
-                class="seven wide"
-                title="Added default view for root object"
-              >
-                <div>
-                  Added
-                </div>
-                <div
-                  style="font-style: italic; color: rgb(135, 143, 147);"
+                  #
+                </th>
+                <th
+                  class="three wide"
                 >
-                  default
-                </div>
-                <div
-                  style="font-style: italic; color: rgb(135, 143, 147);"
+                  What
+                </th>
+                <th
+                  class="three wide"
                 >
-                  view
-                </div>
-                <div
-                  style="font-style: italic; color: rgb(135, 143, 147);"
+                  Who
+                </th>
+                <th
+                  class="three wide"
                 >
-                  for
-                </div>
-                <div
-                  style="font-style: italic; color: rgb(135, 143, 147);"
+                  When
+                </th>
+                <th
+                  class="three wide"
                 >
-                  root
-                </div>
-                <div
-                  style="font-style: italic; color: rgb(135, 143, 147);"
-                >
-                  object
-                </div>
-              </td>
-              <td
-                class="one wide"
-                title="Zope"
-              >
-                Zope
-              </td>
-              <td
-                class="two wide"
-              >
-                <time
-                  datetime="2022-06-19T22:15:02"
-                  title="Sunday, June 19, 2022 at 10:15 PM"
-                >
-                  Jun 19, 2022, 10:15:02 PM
-                </time>
-              </td>
-              <td
-                class="one wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRcTVrbFU9"
-            >
-              <td
-                class="center aligned one wide"
-              >
-                <div
-                  class="ui fitted checkbox"
-                >
-                  <input
-                    class="hidden"
-                    readonly=""
-                    tabindex="0"
-                    type="checkbox"
-                    value=""
-                  />
-                  <label />
-                </div>
-              </td>
-              <td
-                class="one wide"
-              />
-              <td
-                class="seven wide"
-                title="Added virtual_hosting"
-              >
-                <div>
-                  Added
-                </div>
-                <div
-                  style="font-style: italic; color: rgb(135, 143, 147);"
-                >
-                  virtual_hosting
-                </div>
-              </td>
-              <td
-                class="one wide"
-                title="Zope"
-              >
-                Zope
-              </td>
-              <td
-                class="two wide"
-              >
-                <time
-                  datetime="2022-06-19T22:15:02"
-                  title="Sunday, June 19, 2022 at 10:15 PM"
-                >
-                  Jun 19, 2022, 10:15:02 PM
-                </time>
-              </td>
-              <td
-                class="one wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRcVh4cGs9"
-            >
-              <td
-                class="center aligned one wide"
-              >
-                <div
-                  class="ui fitted checkbox"
-                >
-                  <input
-                    class="hidden"
-                    readonly=""
-                    tabindex="0"
-                    type="checkbox"
-                    value=""
-                  />
-                  <label />
-                </div>
-              </td>
-              <td
-                class="one wide"
-              />
-              <td
-                class="seven wide"
-                title="Added site error_log at /error_log"
-              >
-                <div>
-                  Added
-                </div>
-                <div
-                  style="font-style: italic; color: rgb(135, 143, 147);"
-                >
-                  site
-                </div>
-                <div
-                  style="font-style: italic; color: rgb(135, 143, 147);"
-                >
-                  error_log
-                </div>
-                <div
-                  style="font-style: italic; color: rgb(135, 143, 147);"
-                >
-                  at
-                </div>
-                <div
-                  style="font-style: italic; color: rgb(135, 143, 147);"
-                >
-                  /error_log
-                </div>
-              </td>
-              <td
-                class="one wide"
-                title="Zope"
-              >
-                Zope
-              </td>
-              <td
-                class="two wide"
-              >
-                <time
-                  datetime="2022-06-19T22:15:02"
-                  title="Sunday, June 19, 2022 at 10:15 PM"
-                >
-                  Jun 19, 2022, 10:15:02 PM
-                </time>
-              </td>
-              <td
-                class="one wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRcDlFaUk9"
-            >
-              <td
-                class="center aligned one wide"
-              >
-                <div
-                  class="ui fitted checkbox"
-                >
-                  <input
-                    class="hidden"
-                    readonly=""
-                    tabindex="0"
-                    type="checkbox"
-                    value=""
-                  />
-                  <label />
-                </div>
-              </td>
-              <td
-                class="one wide"
-              />
-              <td
-                class="seven wide"
-                title="Added session_data_manager"
-              >
-                <div>
-                  Added
-                </div>
-                <div
-                  style="font-style: italic; color: rgb(135, 143, 147);"
-                >
-                  session_data_manager
-                </div>
-              </td>
-              <td
-                class="one wide"
-                title="Zope"
-              >
-                Zope
-              </td>
-              <td
-                class="two wide"
-              >
-                <time
-                  datetime="2022-06-19T22:15:02"
-                  title="Sunday, June 19, 2022 at 10:15 PM"
-                >
-                  Jun 19, 2022, 10:15:02 PM
-                </time>
-              </td>
-              <td
-                class="one wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRcFU2KzQ9"
-            >
-              <td
-                class="center aligned one wide"
-              >
-                <div
-                  class="ui fitted checkbox"
-                >
-                  <input
-                    class="hidden"
-                    readonly=""
-                    tabindex="0"
-                    type="checkbox"
-                    value=""
-                  />
-                  <label />
-                </div>
-              </td>
-              <td
-                class="one wide"
-              />
-              <td
-                class="seven wide"
-                title="Added browser_id_manager"
-              >
-                <div>
-                  Added
-                </div>
-                <div
-                  style="font-style: italic; color: rgb(135, 143, 147);"
-                >
-                  browser_id_manager
-                </div>
-              </td>
-              <td
-                class="one wide"
-                title="Zope"
-              >
-                Zope
-              </td>
-              <td
-                class="two wide"
-              >
-                <time
-                  datetime="2022-06-19T22:15:02"
-                  title="Sunday, June 19, 2022 at 10:15 PM"
-                >
-                  Jun 19, 2022, 10:15:02 PM
-                </time>
-              </td>
-              <td
-                class="one wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRbUkzKzQ9"
-            >
-              <td
-                class="center aligned one wide"
-              >
-                <div
-                  class="ui fitted checkbox"
-                >
-                  <input
-                    class="hidden"
-                    readonly=""
-                    tabindex="0"
-                    type="checkbox"
-                    value=""
-                  />
-                  <label />
-                </div>
-              </td>
-              <td
-                class="one wide"
-              />
-              <td
-                class="seven wide"
-                title="Created initial user"
-              >
-                <div>
-                  Created
-                </div>
-                <div
-                  style="font-style: italic; color: rgb(135, 143, 147);"
-                >
-                  initial
-                </div>
-                <div
-                  style="font-style: italic; color: rgb(135, 143, 147);"
-                >
-                  user
-                </div>
-              </td>
-              <td
-                class="one wide"
-                title="Zope"
-              >
-                Zope
-              </td>
-              <td
-                class="two wide"
-              >
-                <time
-                  datetime="2022-06-19T22:15:02"
-                  title="Sunday, June 19, 2022 at 10:15 PM"
-                >
-                  Jun 19, 2022, 10:15:02 PM
-                </time>
-              </td>
-              <td
-                class="one wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0RRbEVVa1E9"
-            >
-              <td
-                class="center aligned one wide"
-              >
-                <div
-                  class="ui fitted checkbox"
-                >
-                  <input
-                    class="hidden"
-                    readonly=""
-                    tabindex="0"
-                    type="checkbox"
-                    value=""
-                  />
-                  <label />
-                </div>
-              </td>
-              <td
-                class="one wide"
-              />
-              <td
-                class="seven wide"
-                title=""
-              >
-                <div />
-              </td>
-              <td
-                class="one wide"
-                title="Zope"
-              >
-                Zope
-              </td>
-              <td
-                class="two wide"
-              >
-                <time
-                  datetime="2022-06-19T22:15:02"
-                  title="Sunday, June 19, 2022 at 10:15 PM"
-                >
-                  Jun 19, 2022, 10:15:02 PM
-                </time>
-              </td>
-              <td
-                class="one wide"
-              />
-            </tr>
-            <tr
-              class=""
-              id="QStrR0ROWlo5YW89"
-            >
-              <td
-                class="center aligned one wide"
-              >
-                <div
-                  class="ui fitted checkbox"
-                >
-                  <input
-                    class="hidden"
-                    readonly=""
-                    tabindex="0"
-                    type="checkbox"
-                    value=""
-                  />
-                  <label />
-                </div>
-              </td>
-              <td
-                class="one wide"
-              />
-              <td
-                class="seven wide"
-                title="initial database creation"
-              >
-                <div>
-                  initial
-                </div>
-                <div
-                  style="font-style: italic; color: rgb(135, 143, 147);"
-                >
-                  database
-                </div>
-                <div
-                  style="font-style: italic; color: rgb(135, 143, 147);"
-                >
-                  creation
-                </div>
-              </td>
-              <td
-                class="one wide"
-                title="Zope"
-              >
-                Zope
-              </td>
-              <td
-                class="two wide"
-              >
-                <time
-                  datetime="2022-06-19T22:14:50"
-                  title="Sunday, June 19, 2022 at 10:14 PM"
-                >
-                  Jun 19, 2022, 10:14:50 PM
-                </time>
-              </td>
-              <td
-                class="one wide"
-              />
-            </tr>
-          </tbody>
-          <tfoot
-            class=""
-          >
-            <tr
+                  Note
+                </th>
+                <th
+                  class=""
+                />
+              </tr>
+            </thead>
+            <tbody
               class=""
             >
-              <th
-                class="center aligned"
-                colspan="6"
+              <tr
+                class=""
+                id="QStrR0RRc0M5TjA9"
               >
-                <div
-                  class="ui secondary attached menu"
+                <td
+                  class="one wide"
                 >
                   <div
-                    class="menu"
-                  />
-                  <div
-                    class="right menu"
+                    class="ui input transactions-checkboxes"
                   >
-                    <div
-                      class="item"
-                    >
-                      Show
-                      :
-                    </div>
+                    <input
+                      type="checkbox"
+                    />
+                  </div>
+                </td>
+                <td
+                  class="three wide"
+                  title="Added default view for root object"
+                >
+                  Added default view for root object
+                </td>
+                <td
+                  class="three wide"
+                >
+                  Zope
+                </td>
+                <td
+                  class="three wide"
+                >
+                  2022-06-19T22:15:02
+                </td>
+                <td
+                  class="three wide"
+                />
+              </tr>
+              <tr
+                class=""
+                id="QStrR0RRcTVrbFU9"
+              >
+                <td
+                  class="one wide"
+                >
+                  <div
+                    class="ui input transactions-checkboxes"
+                  >
+                    <input
+                      type="checkbox"
+                    />
+                  </div>
+                </td>
+                <td
+                  class="three wide"
+                  title="Added virtual_hosting"
+                >
+                  Added virtual_hosting
+                </td>
+                <td
+                  class="three wide"
+                >
+                  Zope
+                </td>
+                <td
+                  class="three wide"
+                >
+                  2022-06-19T22:15:02
+                </td>
+                <td
+                  class="three wide"
+                />
+              </tr>
+              <tr
+                class=""
+                id="QStrR0RRcVh4cGs9"
+              >
+                <td
+                  class="one wide"
+                >
+                  <div
+                    class="ui input transactions-checkboxes"
+                  >
+                    <input
+                      type="checkbox"
+                    />
+                  </div>
+                </td>
+                <td
+                  class="three wide"
+                  title="Added site error_log at /error_log"
+                >
+                  Added site error_log at /error_log
+                </td>
+                <td
+                  class="three wide"
+                >
+                  Zope
+                </td>
+                <td
+                  class="three wide"
+                >
+                  2022-06-19T22:15:02
+                </td>
+                <td
+                  class="three wide"
+                />
+              </tr>
+              <tr
+                class=""
+                id="QStrR0RRcDlFaUk9"
+              >
+                <td
+                  class="one wide"
+                >
+                  <div
+                    class="ui input transactions-checkboxes"
+                  >
+                    <input
+                      type="checkbox"
+                    />
+                  </div>
+                </td>
+                <td
+                  class="three wide"
+                  title="Added session_data_manager"
+                >
+                  Added session_data_manager
+                </td>
+                <td
+                  class="three wide"
+                >
+                  Zope
+                </td>
+                <td
+                  class="three wide"
+                >
+                  2022-06-19T22:15:02
+                </td>
+                <td
+                  class="three wide"
+                />
+              </tr>
+              <tr
+                class=""
+                id="QStrR0RRcFU2KzQ9"
+              >
+                <td
+                  class="one wide"
+                >
+                  <div
+                    class="ui input transactions-checkboxes"
+                  >
+                    <input
+                      type="checkbox"
+                    />
+                  </div>
+                </td>
+                <td
+                  class="three wide"
+                  title="Added browser_id_manager"
+                >
+                  Added browser_id_manager
+                </td>
+                <td
+                  class="three wide"
+                >
+                  Zope
+                </td>
+                <td
+                  class="three wide"
+                >
+                  2022-06-19T22:15:02
+                </td>
+                <td
+                  class="three wide"
+                />
+              </tr>
+              <tr
+                class=""
+                id="QStrR0RRbUkzKzQ9"
+              >
+                <td
+                  class="one wide"
+                >
+                  <div
+                    class="ui input transactions-checkboxes"
+                  >
+                    <input
+                      type="checkbox"
+                    />
+                  </div>
+                </td>
+                <td
+                  class="three wide"
+                  title="Created initial user"
+                >
+                  Created initial user
+                </td>
+                <td
+                  class="three wide"
+                >
+                  Zope
+                </td>
+                <td
+                  class="three wide"
+                >
+                  2022-06-19T22:15:02
+                </td>
+                <td
+                  class="three wide"
+                />
+              </tr>
+              <tr
+                class=""
+                id="QStrR0RRbEVVa1E9"
+              >
+                <td
+                  class="one wide"
+                >
+                  <div
+                    class="ui input transactions-checkboxes"
+                  >
+                    <input
+                      type="checkbox"
+                    />
+                  </div>
+                </td>
+                <td
+                  class="three wide"
+                  title=""
+                />
+                <td
+                  class="three wide"
+                >
+                  Zope
+                </td>
+                <td
+                  class="three wide"
+                >
+                  2022-06-19T22:15:02
+                </td>
+                <td
+                  class="three wide"
+                />
+              </tr>
+              <tr
+                class=""
+                id="QStrR0ROWlo5YW89"
+              >
+                <td
+                  class="one wide"
+                >
+                  <div
+                    class="ui input transactions-checkboxes"
+                  >
+                    <input
+                      type="checkbox"
+                    />
+                  </div>
+                </td>
+                <td
+                  class="three wide"
+                  title="initial database creation"
+                >
+                  initial database creation
+                </td>
+                <td
+                  class="three wide"
+                >
+                  Zope
+                </td>
+                <td
+                  class="three wide"
+                >
+                  2022-06-19T22:14:50
+                </td>
+                <td
+                  class="three wide"
+                />
+              </tr>
+            </tbody>
+            <tfoot
+              class=""
+            >
+              <tr
+                class=""
+              >
+                <th
+                  class="center aligned"
+                  colspan="6"
+                >
+                  <div
+                    class="ui pagination menu"
+                  >
                     <a
-                      class="active item"
-                      value="20"
+                      class="icon item"
+                      id="prev-button"
                     >
-                      20
+                      <div
+                        style="width: 36px;"
+                      />
                     </a>
                     <a
-                      class="item"
-                      value="50"
+                      class="icon item"
                     >
-                      50
+                      <svg
+                        class="icon circled"
+                        id="undo-button"
+                        style="height: 30px; width: auto; fill: currentColor;"
+                        viewBox="0 0 36 36"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <title>
+                          Undo
+                        </title>
+                        <path
+                          d="M19,9 L10.527,9 L13.719,5.695 L12.281,4.305 L6.781,10 L12.281,15.695 L13.719,14.305 L10.527,11 L19,11 C23.411,11 27,14.589 27,19 C27,23.411 23.411,27 19,27 L18,27 L18,29 L19,29 C24.514,29 29,24.514 29,19 C29,13.486 24.514,9 19,9"
+                          fill-rule="evenodd"
+                        />
+                      </svg>
                     </a>
                     <a
-                      class="item"
-                      value="100"
+                      class="icon item"
+                      id="next-button"
                     >
-                      100
-                    </a>
-                    <a
-                      class="item"
-                      value="200"
-                    >
-                      200
-                    </a>
-                    <a
-                      class="item"
-                      value="500"
-                    >
-                      500
+                      <div
+                        style="width: 36px;"
+                      />
                     </a>
                   </div>
-                </div>
-                <div
-                  class="ui pagination menu"
-                >
-                  <button
-                    class="disabled icon item"
-                    title="Undo"
-                  >
-                    <svg
-                      class="icon circled"
-                      id="undo-button"
-                      style="height: 30px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    >
-                      <title>
-                        Undo
-                      </title>
-                      undefined
-                    </svg>
-                  </button>
-                </div>
-              </th>
-            </tr>
-          </tfoot>
-        </table>
+                </th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div
-    id="toolbar"
-  >
     <div
-      id="Portal"
+      id="toolbar"
     />
   </div>
 </div>
