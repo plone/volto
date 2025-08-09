@@ -11,7 +11,7 @@ import remove from 'lodash/remove';
 import { Button, Table } from 'semantic-ui-react';
 import cx from 'classnames';
 import { defineMessages, injectIntl } from 'react-intl';
-
+import { Node } from 'slate';
 import Cell from './Cell';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
@@ -630,7 +630,9 @@ class Edit extends Component {
                     <Table.Cell
                       key={cell.key}
                       textAlign="left"
-                      verticalAlign="middle"
+                      verticalAlign={
+                        Node.string(cell.value[0]) ? 'middle' : 'top'
+                      }
                       className={
                         this.props.selected &&
                         this.state.selected &&
