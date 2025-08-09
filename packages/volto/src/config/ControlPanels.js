@@ -77,6 +77,7 @@ export const unwantedControlPanelsFields = {
     'exposeDCMetaTags',
     'enable_sitemap',
     'webstats_js',
+    'webstats_head_js',
   ],
   editing: ['available_editors', 'default_editor', 'ext_editor'],
   imaging: [
