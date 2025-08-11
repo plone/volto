@@ -422,6 +422,11 @@ msgstr "Eremu hau ezabatu egin nahi duzu?"
 msgid "Are you sure you want to delete this fieldset including all fields?"
 msgstr "Eremu-multzo hau eta bere eremu guztiak ezabatu nahi dituzu?"
 
+#. Default: "Are you sure you want to undo selected actions?"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Are you sure you want to undo selected actions?"
+msgstr ""
+
 #. Default: "Ascending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1350,10 +1355,20 @@ msgstr "Aktibatuta?"
 msgid "End Date"
 msgstr "Bukaera data"
 
+#. Default: "Will display transactions from start of selected day, until time selected"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter Date description filter"
+msgstr ""
+
 #. Default: "Enter URL or select an item"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
 msgstr "Sartu URL bat edo aukeratu elementu bat"
+
+#. Default: "Enter username"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter Username to filter"
+msgstr ""
 
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
@@ -1365,6 +1380,11 @@ msgstr "Idatzi erabiltzaile-izen bat bilaketa egiteko edo sakatu 'Ikusi guztiak'
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Idatzi eposta helbidea. Hau zure erabiltzaile-izena izango da. Zure pribatutasuna errespetatzen dugu eta ez dugu helbidea argitaratu edo inori emango."
 
+#. Default: "Enter date and time"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter date and time to filter"
+msgstr ""
+
 #. Default: "Enter full name, e.g. John Smith."
 #: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
@@ -1374,6 +1394,11 @@ msgstr "Idatzi izen osoa, adb. Jon Garmendia."
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter map Embed Code"
 msgstr "Sartu itsasteko kodea"
+
+#. Default: "Enter Path"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter path to filter"
+msgstr ""
 
 #. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
 #: components/manage/Controlpanels/Aliases
@@ -1599,10 +1624,25 @@ msgstr "Filtratu erregelak:"
 msgid "Filter by prefix"
 msgstr "Filtratu aurrizkiaren arabera"
 
+#. Default: "Filter transactions by"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filter transactions by"
+msgstr ""
+
+#. Default: "Filter transactions by user, path or date"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filter transactions by User, Path or Date"
+msgstr ""
+
 #. Default: "Filter users by groups"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter users by groups"
 msgstr "Filtratu erabiltzaileak taldearen arabera"
+
+#. Default: "Filtered"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filtered"
+msgstr ""
 
 #. Default: "Filter…"
 #: components/manage/Contents/Contents
@@ -2440,16 +2480,6 @@ msgstr "Ez"
 msgid "No Transactions Found"
 msgstr "Ez da transakziorik aurkitu"
 
-#. Default: "No transactions selected"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "No Transactions Selected"
-msgstr "Ez duzu transakziorik aukeratu"
-
-#. Default: "No transactions selected to do undo"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "No Transactions Selected To Do Undo"
-msgstr "Ez duzu desegiteko transakziorik aukeratu"
-
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
@@ -2753,6 +2783,11 @@ msgstr "Ziurtatu webgunearen segurtasun kopia bat egin duzula eguneraketa egin a
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr "Txertatu URL zuzen bat blokea ezabatu eta bideo bloke berri bat gehituz."
 
+#. Default: "Please enter any input to perform filter"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Please enter any input to perform filter"
+msgstr ""
+
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
@@ -3044,6 +3079,11 @@ msgstr "Ordezkatu fitxategia"
 msgid "Reply"
 msgstr "Erantzun"
 
+#. Default: "OP"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Request type"
+msgstr ""
+
 #. Default: "Required"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -3299,6 +3339,11 @@ msgstr "Aukeratu"
 msgid "Select a date to add to recurrence"
 msgstr "Aukeratu data eta gehitu errepikapenera"
 
+#. Default: "Select all"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Select all"
+msgstr ""
+
 #. Default: "Select columns to show"
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
@@ -3530,11 +3575,6 @@ msgstr ""
 msgid "Sorry, something went wrong with your request"
 msgstr "Barkatu, zerbait ez da ondo irten zure eskaeran"
 
-#. Default: "Sort by"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sort By"
-msgstr "Ordenatu"
-
 #. Default: "Sort by:"
 #: components/theme/Search/Search
 msgid "Sort By:"
@@ -3551,16 +3591,6 @@ msgstr "Ordenazioa"
 #: components/manage/Blocks/Search/schema
 msgid "Sort on options"
 msgstr "Ordenatu aukeren arabera"
-
-#. Default: "Sort transactions by User-Name, Path or Date"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sort transactions by User-Name, Path or Date"
-msgstr "Ordenatu transakzioak erabiltzaile-izen, bide edo dataren arabera"
-
-#. Default: "Sorted"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sorted"
-msgstr "Ordenatuta"
 
 #. Default: "Sorted on"
 #: components/manage/Blocks/Search/components/SortOn
@@ -4009,20 +4039,15 @@ msgstr "Datu-basean dagoen elementu kopurua"
 msgid "Transactions"
 msgstr "Transakzioak"
 
-#. Default: "#"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Checkbox"
-msgstr "Transakzioen aukeraketa-kutsa"
-
-#. Default: "Transactions have been sorted"
+#. Default: "Transactions have been filtered"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions Have Been Sorted"
-msgstr "Transakzioak ondo ordenatu dira"
+msgstr ""
 
-#. Default: "Transactions have been unsorted"
+#. Default: "Transactions have been unfiltered"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions Have Been Unsorted"
-msgstr "Transakzioen ordenazioa bertan behera utzi da"
+msgstr ""
 
 #. Default: "Translate to {lang}"
 #: components/manage/Add/Add
@@ -4120,6 +4145,11 @@ msgstr "Desegin"
 msgid "Undo Controlpanel"
 msgstr "Desegiteko kontrol panela"
 
+#. Default: "Unfiltered"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Unfiltered"
+msgstr ""
+
 #. Default: "Unfold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Unfold"
@@ -4151,11 +4181,6 @@ msgstr "Kendu itzulpenaren lotura hemendik"
 #: components/manage/Toolbar/Toolbar
 msgid "Unlock"
 msgstr "Desblokeatu"
-
-#. Default: "Unsorted"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Unsorted"
-msgstr "Ordenatu gabe"
 
 #. Default: "Update"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -4733,6 +4758,21 @@ msgstr ""
 msgid "fileTooLarge"
 msgstr ""
 
+#. Default: "Date"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by date"
+msgstr ""
+
+#. Default: "Path"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by path"
+msgstr ""
+
+#. Default: "Username"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by username"
+msgstr ""
+
 #. Default: "flush intIds and rebuild relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "flush intIds and rebuild relations"
@@ -5279,6 +5319,11 @@ msgstr "{id} elementu-mota"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} eskema"
+
+#. Default: "{n_transactions} transactions selected."
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "{n_transactions} transactions selected."
+msgstr ""
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions

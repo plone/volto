@@ -419,6 +419,11 @@ msgstr "Ben je zeker om dit veld te verwijderen?"
 msgid "Are you sure you want to delete this fieldset including all fields?"
 msgstr "Ben je zeker om deze veldenset te verwijderen inclusief alle velden?"
 
+#. Default: "Are you sure you want to undo selected actions?"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Are you sure you want to undo selected actions?"
+msgstr ""
+
 #. Default: "Ascending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1347,10 +1352,20 @@ msgstr "Geactiveerd?"
 msgid "End Date"
 msgstr "Einddatum"
 
+#. Default: "Will display transactions from start of selected day, until time selected"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter Date description filter"
+msgstr ""
+
 #. Default: "Enter URL or select an item"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
 msgstr "Vul de URL in of selecteer een item"
+
+#. Default: "Enter username"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter Username to filter"
+msgstr ""
 
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
@@ -1362,6 +1377,11 @@ msgstr "Vul hierboven een gebruikersnaam in om te zoeken of klik 'Toon alles'"
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Vul een e-mailadres in. Dit zal jouw inlognaam worden. Wij respecteren jouw privacy en zullen het niet delen met eender welke derde partij of het ergens blootstellen."
 
+#. Default: "Enter date and time"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter date and time to filter"
+msgstr ""
+
 #. Default: "Enter full name, e.g. John Smith."
 #: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
@@ -1371,6 +1391,11 @@ msgstr "Vul de volledige naam in, bijvoorbeeld Jan Smit."
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter map Embed Code"
 msgstr "Vul de insluitcode van de kaart in"
+
+#. Default: "Enter Path"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter path to filter"
+msgstr ""
 
 #. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
 #: components/manage/Controlpanels/Aliases
@@ -1596,10 +1621,25 @@ msgstr "Filter regels:"
 msgid "Filter by prefix"
 msgstr "Filter op pad"
 
+#. Default: "Filter transactions by"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filter transactions by"
+msgstr ""
+
+#. Default: "Filter transactions by user, path or date"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filter transactions by User, Path or Date"
+msgstr ""
+
 #. Default: "Filter users by groups"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter users by groups"
 msgstr "Filter gebruikers per groep"
+
+#. Default: "Filtered"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filtered"
+msgstr ""
 
 #. Default: "Filter…"
 #: components/manage/Contents/Contents
@@ -2437,16 +2477,6 @@ msgstr "Nee"
 msgid "No Transactions Found"
 msgstr "Geen transacties gevonden"
 
-#. Default: "No transactions selected"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "No Transactions Selected"
-msgstr "Geen transacties geselecteerd"
-
-#. Default: "No transactions selected to do undo"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "No Transactions Selected To Do Undo"
-msgstr "Geen transacties geselecteerd om ongedaan te maken"
-
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
@@ -2750,6 +2780,11 @@ msgstr "Zorg dat je een backup van de site hebt vooraleer de upgrade uit te voer
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr "Vul een geldige URL in door het blok te verwijderen en het toevoegen van een nieuw video blok."
 
+#. Default: "Please enter any input to perform filter"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Please enter any input to perform filter"
+msgstr ""
+
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
@@ -3041,6 +3076,11 @@ msgstr "Vervang bestaand bestand"
 msgid "Reply"
 msgstr "Antwoorden"
 
+#. Default: "OP"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Request type"
+msgstr ""
+
 #. Default: "Required"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -3296,6 +3336,11 @@ msgstr "Selecteer"
 msgid "Select a date to add to recurrence"
 msgstr "Selecteer een datum om een gebeurtenis toe te voegen"
 
+#. Default: "Select all"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Select all"
+msgstr ""
+
 #. Default: "Select columns to show"
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
@@ -3527,11 +3572,6 @@ msgstr "Bepaalde relaties zijn gebroken. Herstel ze aub."
 msgid "Sorry, something went wrong with your request"
 msgstr "Onze excuses, er ging iets fout bij jouw bevraging."
 
-#. Default: "Sort by"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sort By"
-msgstr "Sorteren per"
-
 #. Default: "Sort by:"
 #: components/theme/Search/Search
 msgid "Sort By:"
@@ -3548,16 +3588,6 @@ msgstr "Sorteren op"
 #: components/manage/Blocks/Search/schema
 msgid "Sort on options"
 msgstr "Sorteer opties"
-
-#. Default: "Sort transactions by User-Name, Path or Date"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sort transactions by User-Name, Path or Date"
-msgstr "Sorteer transacties op gebtruikersnaam, pad of datum"
-
-#. Default: "Sorted"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sorted"
-msgstr "Gesorteerd"
 
 #. Default: "Sorted on"
 #: components/manage/Blocks/Search/components/SortOn
@@ -4006,20 +4036,15 @@ msgstr "Totaal aantal objecten in de databank"
 msgid "Transactions"
 msgstr "Transacties"
 
-#. Default: "#"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Checkbox"
-msgstr "Transacties selectievakje"
-
-#. Default: "Transactions have been sorted"
+#. Default: "Transactions have been filtered"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions Have Been Sorted"
-msgstr "Transacties werden gesorteerd"
+msgstr ""
 
-#. Default: "Transactions have been unsorted"
+#. Default: "Transactions have been unfiltered"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions Have Been Unsorted"
-msgstr "Transacties werden niet gesorteerd"
+msgstr ""
 
 #. Default: "Translate to {lang}"
 #: components/manage/Add/Add
@@ -4117,6 +4142,11 @@ msgstr "Ongedaan maken"
 msgid "Undo Controlpanel"
 msgstr "Configuratiepaneel ongedaan maken"
 
+#. Default: "Unfiltered"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Unfiltered"
+msgstr ""
+
 #. Default: "Unfold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Unfold"
@@ -4148,11 +4178,6 @@ msgstr "Ontkoppel vertaling voor"
 #: components/manage/Toolbar/Toolbar
 msgid "Unlock"
 msgstr "Ontgrendelen"
-
-#. Default: "Unsorted"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Unsorted"
-msgstr "Niet gesorteerd"
 
 #. Default: "Update"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -4730,6 +4755,21 @@ msgstr "/voorbeeld"
 msgid "fileTooLarge"
 msgstr "Deze website accepteert geen bestanden groter dan {limit}"
 
+#. Default: "Date"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by date"
+msgstr ""
+
+#. Default: "Path"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by path"
+msgstr ""
+
+#. Default: "Username"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by username"
+msgstr ""
+
 #. Default: "flush intIds and rebuild relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "flush intIds and rebuild relations"
@@ -5276,6 +5316,11 @@ msgstr "{id} contenttype"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} schema"
+
+#. Default: "{n_transactions} transactions selected."
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "{n_transactions} transactions selected."
+msgstr ""
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions

@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { getParentUrl } from '@plone/volto/helpers/Url/Url';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { createPortal } from 'react-dom';
-import { Container, Button, Table } from 'semantic-ui-react';
+import { Container, Button, Table, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { deleteComment } from '@plone/volto/actions/comments/comments';
@@ -199,16 +199,14 @@ class ModerateComments extends Component {
           title={this.props.intl.formatMessage(messages.ModerateComments)}
         />
         <Container>
-          <article id="content">
-            <header>
-              <h1 className="documentFirstHeading">
-                <FormattedMessage
-                  id="Moderate comments"
-                  defaultMessage="Moderate comments"
-                />
-              </h1>
-            </header>
-            <section id="content-core">
+          <Segment.Group raised>
+            <Segment className="primary">
+              <FormattedMessage
+                id="Moderate comments"
+                defaultMessage="Moderate comments"
+              />
+            </Segment>
+            <Segment className="moderate-comments-content">
               <Table compact singleLine striped>
                 <Table.Header>
                   <Table.Row>
@@ -264,8 +262,8 @@ class ModerateComments extends Component {
                   ))}
                 </Table.Body>
               </Table>
-            </section>
-          </article>
+            </Segment>
+          </Segment.Group>
         </Container>
         {this.state.isClient &&
           createPortal(

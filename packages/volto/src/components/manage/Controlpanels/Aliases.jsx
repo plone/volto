@@ -513,7 +513,7 @@ const Aliases = (props) => {
               <Table celled compact>
                 <Table.Header>
                   <Table.Row>
-                    <Table.HeaderCell width="1">
+                    <Table.HeaderCell textAlign="center">
                       <FormattedMessage id="Select" defaultMessage="Select" />
                     </Table.HeaderCell>
                     <Table.HeaderCell width="10">
@@ -538,7 +538,7 @@ const Aliases = (props) => {
                   {aliases.items.length > 0 &&
                     aliases.items.map((alias, i) => (
                       <Table.Row key={i} verticalAlign="top">
-                        <Table.Cell>
+                        <Table.Cell textAlign="center">
                           <Checkbox
                             onChange={(e, { value }) => handleCheckAlias(value)}
                             checked={aliasesToRemove.includes(alias.path)}

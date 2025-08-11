@@ -415,6 +415,11 @@ msgstr "Sicuro di voler eliminare questo campo?"
 msgid "Are you sure you want to delete this fieldset including all fields?"
 msgstr "Sicuro di voler eliminare questo insieme di campi compresi tutti i campi contenuti?"
 
+#. Default: "Are you sure you want to undo selected actions?"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Are you sure you want to undo selected actions?"
+msgstr "Sei sicuro di volere eliminare le azioni selezionate?"
+
 #. Default: "Ascending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1343,10 +1348,20 @@ msgstr "Abilitato?"
 msgid "End Date"
 msgstr "Data di fine"
 
+#. Default: "Will display transactions from start of selected day, until time selected"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter Date description filter"
+msgstr "Verranno mostrate le transazioni dall'inizio del giorno selezionato, fino all'ora selezionata"
+
 #. Default: "Enter URL or select an item"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
 msgstr "Inserisci un URL o seleziona un elemento"
+
+#. Default: "Enter username"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter Username to filter"
+msgstr "Inserisci uno username"
 
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
@@ -1358,6 +1373,11 @@ msgstr "Inserisci uno username da ricercare, oppure clicca su 'Vedi tutto'"
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Inserisci un indirizzo e-mail. Esso sarà il tuo nome utente. Rispettiamo la tua privacy: non daremo l'indirizzo a terzi, né verrà esposto nel portale."
 
+#. Default: "Enter date and time"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter date and time to filter"
+msgstr ""
+
 #. Default: "Enter full name, e.g. John Smith."
 #: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
@@ -1367,6 +1387,11 @@ msgstr "Inserisci il tuo nome completo, ad esempio Mario Rossi."
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter map Embed Code"
 msgstr "Inserisci il codice di incorporamento della mappa"
+
+#. Default: "Enter Path"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Enter path to filter"
+msgstr "Inserisci un path da trovare"
 
 #. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
 #: components/manage/Controlpanels/Aliases
@@ -1592,10 +1617,25 @@ msgstr "Regole di filtro:"
 msgid "Filter by prefix"
 msgstr "Filtra per prefisso"
 
+#. Default: "Filter transactions by"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filter transactions by"
+msgstr "Filtra le transazioni per"
+
+#. Default: "Filter transactions by user, path or date"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filter transactions by User, Path or Date"
+msgstr "Filtra le transazioni per Utnete, Path o Data"
+
 #. Default: "Filter users by groups"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter users by groups"
 msgstr "Filtra gli utenti per gruppi"
+
+#. Default: "Filtered"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Filtered"
+msgstr "Filtrati"
 
 #. Default: "Filter…"
 #: components/manage/Contents/Contents
@@ -2433,16 +2473,6 @@ msgstr "No"
 msgid "No Transactions Found"
 msgstr "Nessuna transazione trovata"
 
-#. Default: "No transactions selected"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "No Transactions Selected"
-msgstr "Nessuna transazione selezionata"
-
-#. Default: "No transactions selected to do undo"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "No Transactions Selected To Do Undo"
-msgstr "Nessuna transazione da annullare selezionata"
-
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
@@ -2746,6 +2776,11 @@ msgstr "Assicurati di avere un backup del tuo sito prima di effettuare l'aggiorn
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr "Inserisci un URL valido eliminando il blocco e aggiungendo un nuovo blocco di tipo video."
 
+#. Default: "Please enter any input to perform filter"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Please enter any input to perform filter"
+msgstr "Inserire un valore nel campo per filtrare le transazioni"
+
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
@@ -3037,6 +3072,11 @@ msgstr "Sostituisci file esistente"
 msgid "Reply"
 msgstr "Rispondi"
 
+#. Default: "OP"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Request type"
+msgstr "OP"
+
 #. Default: "Required"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -3292,6 +3332,11 @@ msgstr "Seleziona"
 msgid "Select a date to add to recurrence"
 msgstr "Seleziona una data da aggiungere alla ricorrenza"
 
+#. Default: "Select all"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Select all"
+msgstr "Seleziona tutti"
+
 #. Default: "Select columns to show"
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
@@ -3523,11 +3568,6 @@ msgstr "Alcune relazioni sono corrotte."
 msgid "Sorry, something went wrong with your request"
 msgstr "Spiacente, qualcosa è andato storto"
 
-#. Default: "Sort by"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sort By"
-msgstr "Ordina per"
-
 #. Default: "Sort by:"
 #: components/theme/Search/Search
 msgid "Sort By:"
@@ -3544,16 +3584,6 @@ msgstr "Ordina per"
 #: components/manage/Blocks/Search/schema
 msgid "Sort on options"
 msgstr "Opzioni di ordinamento"
-
-#. Default: "Sort transactions by User-Name, Path or Date"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sort transactions by User-Name, Path or Date"
-msgstr "Ordina transazioni per Username, Percorso o Data"
-
-#. Default: "Sorted"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Sorted"
-msgstr "Ordinato"
 
 #. Default: "Sorted on"
 #: components/manage/Blocks/Search/components/SortOn
@@ -4002,20 +4032,15 @@ msgstr "Numero totale di oggetti nel database"
 msgid "Transactions"
 msgstr "Transazioni"
 
-#. Default: "#"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Transactions Checkbox"
-msgstr "Checkbox transazioni"
-
-#. Default: "Transactions have been sorted"
+#. Default: "Transactions have been filtered"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions Have Been Sorted"
-msgstr "L'ordinamento è stato applicato alle transazioni"
+msgstr "Le transazioni sono state filtrate"
 
-#. Default: "Transactions have been unsorted"
+#. Default: "Transactions have been unfiltered"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions Have Been Unsorted"
-msgstr "L'ordinamento è stato rimosso dalle transazioni"
+msgstr "Rimossi i filtri sulle transazioni"
 
 #. Default: "Translate to {lang}"
 #: components/manage/Add/Add
@@ -4113,6 +4138,11 @@ msgstr "Annulla"
 msgid "Undo Controlpanel"
 msgstr "Annulla controlpanel"
 
+#. Default: "Unfiltered"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Unfiltered"
+msgstr "Non filtrate"
+
 #. Default: "Unfold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Unfold"
@@ -4144,11 +4174,6 @@ msgstr "Scollega traduzione per"
 #: components/manage/Toolbar/Toolbar
 msgid "Unlock"
 msgstr "Sblocca"
-
-#. Default: "Unsorted"
-#: components/manage/Controlpanels/UndoControlpanel
-msgid "Unsorted"
-msgstr "Non ordinato"
 
 #. Default: "Update"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -4726,6 +4751,21 @@ msgstr ""
 msgid "fileTooLarge"
 msgstr "Questo sito non accetta file più grandi di {limit}"
 
+#. Default: "Date"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by date"
+msgstr ""
+
+#. Default: "Path"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by path"
+msgstr ""
+
+#. Default: "Username"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "filter by username"
+msgstr ""
+
 #. Default: "flush intIds and rebuild relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "flush intIds and rebuild relations"
@@ -5272,6 +5312,11 @@ msgstr "{id} Tipo di Contenuto"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} Schema"
+
+#. Default: "{n_transactions} transactions selected."
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "{n_transactions} transactions selected."
+msgstr "{n_transactions} transazioni selezionate."
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions
