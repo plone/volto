@@ -517,17 +517,17 @@ const blocksConfig = {
   },
 };
 
-// This is required in order to initialize the inner blocksConfig
-// for the grid block, since we need to modify how the inner teaser
-// block behave in it (= no schemaEnhancer fields for teasers inside a grid)
-// Afterwards, it can be further customized in add-ons using the same technique.
+// IMPORTANT: When adding custom blocks to the grid block in add-ons,
+// see the documentation for requirements at:
+// https://6.docs.plone.org/volto/blocks/core/grid.html#blocks-core-grid-add-custom
+
 blocksConfig.gridBlock.blocksConfig = cloneDeep(blocksConfig);
 blocksConfig.gridBlock.blocksConfig.teaser.schemaEnhancer =
   gridTeaserDisableStylingSchema;
 blocksConfig.gridBlock.blocksConfig.image.schemaEnhancer =
   gridImageDisableSizeAndPositionHandlersSchema;
 
-const requiredBlocks = [];
+const requiredBlocks = ['title'];
 
 const initialBlocks = {};
 const initialBlocksFocus = {}; //{Document:'title'}
