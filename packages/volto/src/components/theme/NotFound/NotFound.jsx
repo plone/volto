@@ -7,30 +7,33 @@ import {
   toBackendLang,
   withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { useDispatch, useSelector } from 'react-redux';
-import { getNavigation } from '@plone/volto/actions/navigation/navigation';
-import config from '@plone/volto/registry';
+import { getErrorContext } from '@plone/volto/actions/content/content';
 
 /**
  * Not found function.
  * @function NotFound
  * @returns {string} Markup of the not found page.
  */
-const NotFound = () => {
+const NotFound = (props) => {
+  const { error } = props;
   const dispatch = useDispatch();
   const lang = useSelector((state) => state.intl.locale);
   const isMultilingual = useSelector(
     (state) => state.site.data.features?.multilingual,
   );
 
+  // load content that does exist, to make sure we have everything needed to render the header and footer
+  const errorContext = error?.response?.body?.context;
+  const contextPath = errorContext
+    ? flattenToAppURL(errorContext)
+    : isMultilingual
+      ? `/${toBackendLang(lang)}`
+      : '/';
   useEffect(() => {
-    dispatch(
-      getNavigation(
-        isMultilingual ? `/${toBackendLang(lang)}` : '/',
-        config.settings.navDepth,
-      ),
-    );
-  }, [dispatch, lang, isMultilingual]);
+    dispatch(getErrorContext(contextPath));
+  }, [dispatch, contextPath]);
 
   return (
     <Container className="view-wrapper">
