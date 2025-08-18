@@ -1,4 +1,4 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AppExtras > can take string extra parameters to be used from the actual component 1`] = `
 [
@@ -88,3 +88,17 @@ exports[`AppExtras > renders other 2 app extras on exact path /blog 1`] = `
   </div>,
 ]
 `;
+
+exports[`AppExtras can take string extra parameters to be used from the actual component 1`] = `null`;
+
+exports[`AppExtras can take string path as match 1`] = `null`;
+
+exports[`AppExtras ignore property works 1`] = `null`;
+
+exports[`AppExtras ignore property works 2`] = `null`;
+
+exports[`AppExtras renders 2 app extras on specific path /blog/edit 1`] = `null`;
+
+exports[`AppExtras renders one app extras registered on empty string 1`] = `null`;
+
+exports[`AppExtras renders other 2 app extras on exact path /blog 1`] = `null`;

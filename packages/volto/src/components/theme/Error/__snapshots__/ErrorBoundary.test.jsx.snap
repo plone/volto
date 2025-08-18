@@ -1,6 +1,14 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Error boundary > renders an Error 1`] = `
+<pre
+  className="error"
+>
+  &lt;error: test&gt;
+</pre>
+`;
+
+exports[`Error boundary renders an Error 1`] = `
 <pre
   className="error"
 >

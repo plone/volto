@@ -1,3 +1,5 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContentsIndexHeader > renders a contents titles component 1`] = `null`;
+
+exports[`ContentsIndexHeader renders a contents titles component 1`] = `null`;

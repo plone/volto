@@ -1,3 +1,5 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HiddenWidget > renders an empty hidden view widget component 1`] = `null`;
+
+exports[`HiddenWidget renders an empty hidden view widget component 1`] = `null`;

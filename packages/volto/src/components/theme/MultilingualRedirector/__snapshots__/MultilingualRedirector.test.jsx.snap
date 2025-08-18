@@ -1,3 +1,5 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MultilingualRedirector > renders a MultilingualRedirector component 1`] = `null`;
+
+exports[`MultilingualRedirector renders a MultilingualRedirector component 1`] = `null`;
