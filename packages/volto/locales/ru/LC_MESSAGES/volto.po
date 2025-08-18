@@ -3850,9 +3850,9 @@ msgstr "Конфигурация сайта устарела и требует �
 msgid "The value does not match the pattern {pattern}"
 msgstr "Значение не соответствует шаблону {pattern}"
 
-#. Default: "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, then leave this field empty."
+#. Default: "The videos title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the Video is already sufficiently titled by a headline above, please leave this field empty."
 #: components/manage/Blocks/Video/schema
-msgid "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, then leave this field empty."
+msgid "The videos title is not displayed, but only used for accessibility reason to identify the video for screen reader users. If the Video is already sufficiently titled by a headline above, please leave this field empty."
 msgstr ""
 
 #. Default: "The working copy was discarded"

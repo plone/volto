@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
-import { VideoEmbed } from '@plone/volto/components/theme/VideoEmbed/VideoEmbed';
+import VideoEmbed from '@plone/volto/components/theme/VideoEmbed/VideoEmbed';
 
 //Extracting videoID, listID and thumbnailURL from the video URL
 const getVideoIDAndPlaceholder = (url) => {
@@ -78,7 +78,7 @@ const Body = ({ data, isEditMode }) => {
   const embedSettings = {
     placeholder: placeholder,
     defaultActive: false,
-    autoplay: false,
+    autoplay: data.autoplay || false,
     aspectRatio: '16:9',
     tabIndex: 0,
     onKeyPress: onKeyDown,

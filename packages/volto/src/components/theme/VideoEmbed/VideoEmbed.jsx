@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import cx from 'classnames';
 
 import PlayIcon from '@plone/volto/icons/play.svg';
@@ -28,6 +28,7 @@ const VideoEmbed = (props) => {
         `https://www.youtube.com/embed/${id}`,
         '?autohide=true',
         `&autoplay=${isActive || autoplay ? 1 : 0}`,
+        `&mute=${autoplay ? 1 : 0}`,
         `&color=${encodeURIComponent(color)}`,
         `&hq=${hd}`,
         '&jsapi=false',
@@ -41,6 +42,7 @@ const VideoEmbed = (props) => {
         `https://player.vimeo.com/video/${id}`,
         '?api=false',
         `&autoplay=${isActive || autoplay ? 1 : 0}`,
+        `&muted=${autoplay ? 1 : 0}`,
         `&byline=false`,
         `&color=${encodeURIComponent(color)}`,
         `&portrait=false`,
@@ -51,7 +53,7 @@ const VideoEmbed = (props) => {
 
   return (
     <div className={cx('ui embed video-embed', aspectRatio, className)}>
-      {isActive ? (
+      {isActive || autoplay ? (
         <iframe
           allowFullScreen={false}
           frameBorder="0"
@@ -65,7 +67,7 @@ const VideoEmbed = (props) => {
       ) : (
         <>
           {placeholder ? (
-            <img className="placeholder" src={placeholder} alt="" aria-hidden />
+            <img className="placeholder" src={placeholder} alt="" />
           ) : (
             <div className="fallback-placeholder"></div>
           )}
