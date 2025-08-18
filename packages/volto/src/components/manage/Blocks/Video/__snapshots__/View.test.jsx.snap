@@ -12,7 +12,6 @@ exports[`renders a view video component 1`] = `
     >
       <img
         alt=""
-        aria-hidden={true}
         className="placeholder"
         src="https://img.youtube.com/vi/KqjeO_ekW3g/sddefault.jpg"
       />
@@ -24,20 +23,20 @@ exports[`renders a view video component 1`] = `
         <svg
           className="icon"
           dangerouslySetInnerHTML={
-            Object {
-              "__html": undefined,
+            {
+              "__html": "<path fill-rule="evenodd" d="M11,10.71 L11,25.29 L23.96,18 L11,10.71 Z M9,28.71 L9,7.29 L28.04,18 L9,28.71 Z"/>",
             }
           }
           onClick={null}
           style={
-            Object {
+            {
               "fill": "white",
               "height": "100%",
               "width": "auto",
             }
           }
-          viewBox=""
-          xmlns=""
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
         />
       </button>
     </div>
@@ -57,7 +56,6 @@ exports[`renders a view video component with placeholder 1`] = `
     >
       <img
         alt=""
-        aria-hidden={true}
         className="placeholder"
         src="https://github.com/plone/volto/raw/main/logos/volto-colorful.png"
       />
@@ -69,20 +67,20 @@ exports[`renders a view video component with placeholder 1`] = `
         <svg
           className="icon"
           dangerouslySetInnerHTML={
-            Object {
-              "__html": undefined,
+            {
+              "__html": "<path fill-rule="evenodd" d="M11,10.71 L11,25.29 L23.96,18 L11,10.71 Z M9,28.71 L9,7.29 L28.04,18 L9,28.71 Z"/>",
             }
           }
           onClick={null}
           style={
-            Object {
+            {
               "fill": "white",
               "height": "100%",
               "width": "auto",
             }
           }
-          viewBox=""
-          xmlns=""
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
         />
       </button>
     </div>
