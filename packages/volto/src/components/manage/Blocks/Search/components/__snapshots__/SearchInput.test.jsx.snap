@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`SearchInput > renders a search input component 1`] = `
 <div
@@ -42,54 +42,6 @@ exports[`SearchInput > renders a search input component 1`] = `
         }
         viewBox="0 0 36 36"
         xmlns="http://www.w3.org/2000/svg"
-      />
-    </button>
-  </div>
-</div>
-`;
-
-exports[`SearchInput renders a search input component 1`] = `
-<div
-  className="search-input"
->
-  <div
-    className="ui fluid input"
-  >
-    <input
-      id="undefined-searchtext"
-      onChange={[Function]}
-      onKeyPress={[Function]}
-      placeholder="Search!!!"
-      type="text"
-      value="hello"
-    />
-  </div>
-  <div
-    className="search-input-actions"
-  >
-    <button
-      aria-label="Cancel search"
-      className="ui basic icon button search-input-clear-icon-button"
-      onClick={[Function]}
-      type="button"
-    >
-      <svg
-        className="icon"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": undefined,
-          }
-        }
-        onClick={null}
-        style={
-          Object {
-            "fill": "currentColor",
-            "height": "36px",
-            "width": "auto",
-          }
-        }
-        viewBox=""
-        xmlns=""
       />
     </button>
   </div>

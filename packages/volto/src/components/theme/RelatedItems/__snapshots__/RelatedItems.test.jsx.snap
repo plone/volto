@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Related Items > renders with related items 1`] = `
 <div
@@ -49,53 +49,3 @@ exports[`Related Items > renders with related items has null 1`] = `
 `;
 
 exports[`Related Items > renders without related items 1`] = `null`;
-
-exports[`Related Items renders with related items 1`] = `
-<div
-  className="ui container related-items"
->
-  <h2>
-    Related Items
-  </h2>
-  <ul>
-    <li>
-      <a
-        href="/test-1"
-        onClick={[Function]}
-      >
-        Title 1
-      </a>
-    </li>
-    <li>
-      <a
-        href="/test-2"
-        onClick={[Function]}
-      >
-        Title 2
-      </a>
-    </li>
-  </ul>
-</div>
-`;
-
-exports[`Related Items renders with related items has null 1`] = `
-<div
-  className="ui container related-items"
->
-  <h2>
-    Related Items
-  </h2>
-  <ul>
-    <li>
-      <a
-        href="/test-1"
-        onClick={[Function]}
-      >
-        Title 1
-      </a>
-    </li>
-  </ul>
-</div>
-`;
-
-exports[`Related Items renders without related items 1`] = `null`;

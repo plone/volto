@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`ContentsBreadcrumbs > renders a ContentsBreadcrumbs component 1`] = `
 <div
@@ -39,82 +39,6 @@ exports[`ContentsBreadcrumbs > renders a ContentsBreadcrumbs component 1`] = `
 `;
 
 exports[`ContentsBreadcrumbs > renders a breadcrumbs component containing items with nav_title 1`] = `
-<div
-  className="ui breadcrumb"
->
-  <a
-    className="section"
-    href="/contents"
-    onClick={[Function]}
-    title="Home"
-  >
-    Home
-  </a>
-  <div
-    className="divider"
-  >
-    /
-  </div>
-  <a
-    className="section"
-    href="/blog/contents"
-    onClick={[Function]}
-  >
-    Blog
-  </a>
-  <div
-    className="divider"
-  >
-    /
-  </div>
-  <div
-    className="active section"
-    onClick={[Function]}
-  >
-    First one
-  </div>
-</div>
-`;
-
-exports[`ContentsBreadcrumbs renders a ContentsBreadcrumbs component 1`] = `
-<div
-  className="ui breadcrumb"
->
-  <a
-    className="section"
-    href="/contents"
-    onClick={[Function]}
-    title="Home"
-  >
-    Home
-  </a>
-  <div
-    className="divider"
-  >
-    /
-  </div>
-  <a
-    className="section"
-    href="/blog/contents"
-    onClick={[Function]}
-  >
-    Blog
-  </a>
-  <div
-    className="divider"
-  >
-    /
-  </div>
-  <div
-    className="active section"
-    onClick={[Function]}
-  >
-    My first blog
-  </div>
-</div>
-`;
-
-exports[`ContentsBreadcrumbs renders a breadcrumbs component containing items with nav_title 1`] = `
 <div
   className="ui breadcrumb"
 >

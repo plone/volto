@@ -1,16 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Generic Error > renders a not found component 1`] = `
-<div
-  id="view"
->
-  <div
-    className="401"
-  />
-</div>
-`;
-
-exports[`Generic Error renders a not found component 1`] = `
 <div
   id="view"
 >
