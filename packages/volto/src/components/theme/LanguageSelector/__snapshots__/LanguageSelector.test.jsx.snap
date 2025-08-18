@@ -1,18 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LanguageSelector renders a language selector component 1`] = `
+exports[`LanguageSelector > renders a language selector component 1`] = `
 <div
   className="language-selector"
 >
-  <a
-    aria-label="Switch to deutsch"
-    className=""
-    href="/de"
-    onClick={[Function]}
-    title="Deutsch"
-  >
-    Deutsch
-  </a>
   <a
     aria-label="Switch to español"
     className=""

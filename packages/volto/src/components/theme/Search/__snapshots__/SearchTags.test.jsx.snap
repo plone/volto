@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SearchTags renders a search tags component 1`] = `
+exports[`SearchTags > renders a search tags component 1`] = `
 <div>
   <a
     className="ui label"

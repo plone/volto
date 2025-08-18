@@ -1,3 +1,20 @@
+/* TODO: When the Volto Team removes Jest configuration support from Volto core, update this file with the Vitest version of the mock.
+Then, in the tests, we need to replace:
+
+vi.mock('@plone/volto/components/manage/Form', async () => {
+  return await import(
+    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
+  );
+});
+
+
+with the following:
+
+vi.mock('@plone/volto/components/manage/Form');
+
+Finally, remove this comment.
+*/
+
 import type { JSONSchema } from '@plone/types';
 import type { Ref } from 'react';
 const { forwardRef } = jest.requireActual('react');

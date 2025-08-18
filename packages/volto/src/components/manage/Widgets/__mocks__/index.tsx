@@ -1,3 +1,19 @@
+/* TODO: When the Volto Team removes Jest configuration support from Volto core, update this file with the Vitest version of the mock.
+Then, in the tests, we need to replace:
+
+vi.mock('@plone/volto/components/manage/Widgets', async () => {
+  return await import(
+    '@plone/volto/components/manage/Widgets/__mocks__/index.vitest.tsx'
+  );
+});
+
+with the following:
+
+vi.mock('@plone/volto/components/manage/Widgets');
+
+Finally, remove this comment.
+*/
+
 export const AlignWidget = jest.fn(() => <div id="AlignWidget" />);
 export const ButtonsWidget = jest.fn(() => <div id="ButtonsWidget" />);
 export const ArrayWidget = jest.fn(() => <div id="ArrayWidget" />);

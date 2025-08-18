@@ -2,14 +2,18 @@ export declare const AlignWidget: import("@loadable/component").LoadableComponen
 export declare const ButtonsWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const ArrayWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const CheckboxWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
+export declare const CheckboxGroupWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const FileWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
+export declare const HiddenWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const IdWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const PasswordWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
 export declare const QueryWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const QuerySortOnWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const QuerystringWidget: import("@loadable/component").LoadableComponent<any>;
+export declare const RadioGroupWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const SchemaWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const SelectWidget: import("@loadable/component").LoadableClassComponent<any>;
+export declare const StaticTextWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const TextareaWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
 export declare const TextWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const TokenWidget: import("@loadable/component").LoadableClassComponent<any>;
@@ -115,5 +119,6 @@ export declare const SelectMetadataWidget: import("@loadable/component").Loadabl
 export declare const SelectAutoComplete: import("@loadable/component").LoadableClassComponent<any>;
 export declare const ColorPickerWidget: import("@loadable/component").LoadableComponent<import("@plone/volto/components/manage/Widgets/ColorPickerWidget").ColorPickerWidgetProps>;
 export declare const DatetimeWidget: import("@loadable/component").LoadableClassComponent<any>;
+export declare const TimeWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const RecurrenceWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const FormFieldWrapper: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
