@@ -45,6 +45,12 @@ type GetUtilityResult = {
 };
 
 export type ConfigType = InstanceType<typeof Config>;
+// This type is used to map widget keys to their definitions.
+type MappableWidgetKeys = {
+  [K in keyof WidgetsConfig]: WidgetsConfig[K] extends Record<string, any>
+    ? K
+    : never;
+}[keyof WidgetsConfig];
 
 class Config {
   public _data: ConfigData | Record<string, never>;
@@ -542,32 +548,41 @@ class Config {
    * @param options.definition - The actual widget configuration, which must match the expected structure of WidgetsConfig[K].
    *
    */
-  registerWidget<K extends keyof WidgetsConfig>(options: {
+  registerWidget<K extends MappableWidgetKeys>(options: {
     key: K;
-    definition: WidgetsConfig[K];
+    definition: WidgetsConfig[K] extends Record<string, any>
+      ? WidgetsConfig[K]
+      : never;
   }) {
+    // Aliasing helper types to make TS understand that, in this case, it'll recieve an object
+    // with keys that are valid for WidgetsConfig[K].
+    // Here we have access to generic K, so we can use it to narrow down the type.
+    type Definition = WidgetsConfig[K];
+    type DefinitionKey = keyof Definition;
+    const emptyDefinition: WidgetsConfig[K] = {} as Definition;
+
     const { key, definition } = options;
     const definitionIsObject = Object.keys(definition).length;
     if (!definitionIsObject) {
       this._data.widgets[key] = definition;
     } else {
-      Object.keys(definition).forEach((widgetKey) => {
+      const target = this._data.widgets[key] as Definition;
+      for (const widgetKey of Object.keys(definition) as DefinitionKey[]) {
+        // Now widgetKey is known by TS to be a valid key of definition, no casting needed.
         if (this._data.widgets[key] === undefined) {
-          this._data.widgets[key] = {} as WidgetsConfig[K];
+          this._data.widgets[key] = emptyDefinition;
         }
-        if ((this._data.widgets[key] as Record<string, any>)?.[widgetKey]) {
+        if (target?.[widgetKey]) {
           // If the widget already exists, we merge the definitions
-          (this._data.widgets[key] as Record<string, any>)[widgetKey] = {
-            ...(this._data.widgets[key] as Record<string, any>)[widgetKey],
-            ...(definition as Record<string, any>)[widgetKey],
+          this._data.widgets[key][widgetKey] = {
+            ...target[widgetKey],
+            ...definition[widgetKey],
           };
         } else {
           // Otherwise, we just set it
-          (this._data.widgets[key] as Record<string, any>)[widgetKey] = (
-            definition as Record<string, any>
-          )[widgetKey];
+          this._data.widgets[key][widgetKey] = definition[widgetKey];
         }
-      });
+      }
     }
   }
 
