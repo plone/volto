@@ -1,1 +1,1 @@
-Register widgets using `registerWidget`. @sneridagh
+Register widgets using `registerWidget`. @deodorhunter @sneridagh
