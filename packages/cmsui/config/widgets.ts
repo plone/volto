@@ -2,6 +2,7 @@ import type { ConfigType } from '@plone/registry';
 import { TextField } from '../components/TextField/TextField';
 import {
   AlignWidget,
+  Checkbox,
   DateTimePicker,
   SizeWidget,
   WidthWidget,
@@ -15,6 +16,7 @@ export default function install(config: ConfigType) {
     key: 'widget',
     definition: { datetime: DateTimePicker },
   });
+  config.registerWidget({ key: 'widget', definition: { boolean: Checkbox } });
   config.registerWidget({
     key: 'widget',
     definition: { align: AlignWidget },
@@ -27,15 +29,6 @@ export default function install(config: ConfigType) {
     key: 'widget',
     definition: { width: WidthWidget },
   });
-  console.log(config.widgets);
-  // config.widgets.widget = {
-  //   ...(config.widgets.widget ?? {}),
-  //   align: AlignWidget,
-  //   size: SizeWidget,
-  //   width: WidthWidget,
-  //   datetime: DateTimePicker,
-  //   date: DateField,
-  // };
 
   return config;
 }
