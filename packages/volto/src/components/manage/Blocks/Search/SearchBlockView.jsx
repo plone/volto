@@ -43,7 +43,7 @@ const blockPropsAreChanged = (prevProps, nextProps) => {
 };
 
 const applyDefaults = (data, root, block_query) => {
-  block_query = block_query || [];
+  block_query = block_query?.length ? block_query : [];
   const defaultQuery = [
     {
       i: 'path',
@@ -52,7 +52,8 @@ const applyDefaults = (data, root, block_query) => {
     },
   ];
 
-  const searchBySearchableText = data.query.filter(
+  const data_query = data?.query?.length ? data.query : [];
+  const searchBySearchableText = data_query.filter(
     (item) => item['i'] === 'SearchableText',
   ).length;
 
@@ -72,12 +73,12 @@ const applyDefaults = (data, root, block_query) => {
   // We fall back to the default query.
   let query = block_query;
   if (!query.length) {
-    query = data?.query?.length ? data.query : defaultQuery;
-  } else if (data?.query?.length) {
+    query = data_query.length ? data_query : defaultQuery;
+  } else if (data_query.length) {
     // We have both a base query and a filter.  Combine them.
     // Items in the filter win over items in the base query.
-    const filter_keys = data.query.map((obj) => obj.i);
-    query = data.query.slice();
+    const filter_keys = data_query.map((obj) => obj.i);
+    query = data_query.slice();
     for (const item of block_query) {
       if (!filter_keys.includes(item.i)) {
         query.push(item);
