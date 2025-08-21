@@ -42,8 +42,8 @@ const blockPropsAreChanged = (prevProps, nextProps) => {
   return isEqual(prev, next);
 };
 
-const applyDefaults = (data, root) => {
-  const defaultQuery = [
+const applyDefaults = (data, root, block_query) => {
+  const defaultQuery = block_query || [
     {
       i: 'path',
       o: 'plone.app.querystring.operation.string.absolutePath',
@@ -93,7 +93,7 @@ const SearchBlockView = (props) => {
   }, [dataListingBodyVariation, mode]);
 
   const root = useSelector((state) => state.breadcrumbs.root);
-  const listingBodyData = applyDefaults(searchData, root);
+  const listingBodyData = applyDefaults(searchData, root, data.query?.query);
 
   const { variations } = config.blocks.blocksConfig.listing;
   const listingBodyVariation = variations.find(({ id }) => id === selectedView);
