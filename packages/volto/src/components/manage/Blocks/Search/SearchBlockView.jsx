@@ -42,7 +42,8 @@ const blockPropsAreChanged = (prevProps, nextProps) => {
   return isEqual(prev, next);
 };
 
-const applyDefaults = (data, root) => {
+const applyDefaults = (data, root, block_query) => {
+  block_query = block_query?.length ? block_query : [];
   const defaultQuery = [
     {
       i: 'path',
@@ -51,7 +52,8 @@ const applyDefaults = (data, root) => {
     },
   ];
 
-  const searchBySearchableText = data.query.filter(
+  const data_query = data?.query?.length ? data.query : [];
+  const searchBySearchableText = data_query.filter(
     (item) => item['i'] === 'SearchableText',
   ).length;
 
@@ -66,11 +68,29 @@ const applyDefaults = (data, root) => {
       ? { sort_order: 'descending' }
       : {};
 
+  // We start with the base query from the block.
+  // We enhance it with the query from the facets (filters).
+  // We fall back to the default query.
+  let query = block_query;
+  if (!query.length) {
+    query = data_query.length ? data_query : defaultQuery;
+  } else if (data_query.length) {
+    // We have both a base query and a filter.  Combine them.
+    // Items in the filter win over items in the base query.
+    const filter_keys = data_query.map((obj) => obj.i);
+    query = data_query.slice();
+    for (const item of block_query) {
+      if (!filter_keys.includes(item.i)) {
+        query.push(item);
+      }
+    }
+  }
+
   return {
     ...data,
     ...sort_on,
     ...sort_order,
-    query: data?.query?.length ? data.query : defaultQuery,
+    query: query,
   };
 };
 
@@ -93,7 +113,7 @@ const SearchBlockView = (props) => {
   }, [dataListingBodyVariation, mode]);
 
   const root = useSelector((state) => state.breadcrumbs.root);
-  const listingBodyData = applyDefaults(searchData, root);
+  const listingBodyData = applyDefaults(searchData, root, data.query?.query);
 
   const { variations } = config.blocks.blocksConfig.listing;
   const listingBodyVariation = variations.find(({ id }) => id === selectedView);
