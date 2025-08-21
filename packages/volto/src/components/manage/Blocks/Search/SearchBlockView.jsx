@@ -43,7 +43,8 @@ const blockPropsAreChanged = (prevProps, nextProps) => {
 };
 
 const applyDefaults = (data, root, block_query) => {
-  const defaultQuery = block_query || [
+  block_query = block_query || [];
+  const defaultQuery = [
     {
       i: 'path',
       o: 'plone.app.querystring.operation.string.absolutePath',
@@ -66,11 +67,29 @@ const applyDefaults = (data, root, block_query) => {
       ? { sort_order: 'descending' }
       : {};
 
+  // We start with the base query from the block.
+  // We enhance it with the query from the facets (filters).
+  // We fall back to the default query.
+  let query = block_query;
+  if (!query.length) {
+    query = data?.query?.length ? data.query : defaultQuery;
+  } else if (data?.query?.length) {
+    // We have both a base query and a filter.  Combine them.
+    // Items in the filter win over items in the base query.
+    const filter_keys = data.query.map((obj) => obj.i);
+    query = data.query.slice();
+    for (const item of block_query) {
+      if (!filter_keys.includes(item.i)) {
+        query.push(item);
+      }
+    }
+  }
+
   return {
     ...data,
     ...sort_on,
     ...sort_order,
-    query: data?.query?.length ? data.query : defaultQuery,
+    query: query,
   };
 };
 
