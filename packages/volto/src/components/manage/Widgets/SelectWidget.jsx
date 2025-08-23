@@ -275,6 +275,7 @@ class SelectWidget extends Component {
           options={options}
           styles={customSelectStyles}
           theme={selectTheme}
+          maxMenuHeight="13em"
           components={{
             ...(options?.length > 25 && {
               MenuList,
