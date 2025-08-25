@@ -1,0 +1,1 @@
+Add support for single selection in SelectAutoComplete widget. @iFlameing
