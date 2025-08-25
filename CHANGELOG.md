@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 16.34.0 (2025-08-25)
+
+### Feature
+
+- Provide language alternate links @erral [#6615](https://github.com/plone/volto/issues/6615)
+
+### Bugfix
+
+- Fix corner case in devproxy when pathname is null. @sneridagh [#7276](https://github.com/plone/volto/issues/7276)
+
 ## 16.33.0 (2024-10-23)
 
 ### Feature
