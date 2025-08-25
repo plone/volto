@@ -1,0 +1,1 @@
+Fix corner case in devproxy when pathname is null. @sneridagh
