@@ -40,6 +40,7 @@ const HtmlSlateWidget = (props) => {
     onChange,
     value,
     focus,
+    fieldSet,
     className,
     block,
     placeholder,
@@ -128,6 +129,7 @@ const HtmlSlateWidget = (props) => {
             id={id}
             name={id}
             value={valueFromHtml}
+            fieldSet={fieldSet}
             onChange={handleChange}
             block={block}
             selected={selected}
