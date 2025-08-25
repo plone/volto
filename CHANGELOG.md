@@ -17,6 +17,13 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.22.1 (2025-08-25)
+
+### Bugfix
+
+- fix(fetchContent): correctly handle undefined blocksType in async fetchContent @nileshgulia1 [#7112](https://github.com/plone/volto/issues/7112)
+- Fix corner case in devproxy when pathname is null. @sneridagh [#7276](https://github.com/plone/volto/issues/7276)
+
 ## 17.22.0 (2025-05-20)
 
 ### Feature
