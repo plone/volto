@@ -17,6 +17,34 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.4 (2025-08-25)
+
+### Breaking
+
+- Enable the `showRelatedItems` by default. @davisagli [#6549](https://github.com/plone/volto/issues/6549)
+
+### Feature
+
+- Add support for single selection in SelectAutoComplete widget. @iFlameing [#7270](https://github.com/plone/volto/issues/7270)
+
+### Bugfix
+
+- Contents view: Label 'None' for deselecting needs to be different from 'None' of a not available value in the table. @ksuess [#7233](https://github.com/plone/volto/issues/7233)
+- Fixed corner case when coming from SSR in edit route, where the teasers where overwriten with bogus URLs after save if INTERNAL_API_PATH is set. @sneridagh [#7238](https://github.com/plone/volto/issues/7238)
+- UniversalLink: regression, pass on onClick to Link component. @fredvd [#7240](https://github.com/plone/volto/issues/7240)
+- Hide the `webstats_head_js` field in the site control panel form @erral [#7244](https://github.com/plone/volto/issues/7244)
+- Fix corner case in devproxy when pathname is null. @sneridagh [#7276](https://github.com/plone/volto/issues/7276)
+
+### Internal
+
+- Update eslint-config-prettier past malware versions to "^9.1.2". @kittauri [#7254](https://github.com/plone/volto/issues/7254)
+- Update @testing-library/react to 14.3.1. @wesleybl [#7260](https://github.com/plone/volto/issues/7260)
+- Test with Plone 6.1.2. @davisagli 
+
+### Documentation
+
+- Fix reference for the widget named `toggle_widget` for boolean fields in a schema. @ksuess [#7261](https://github.com/plone/volto/issues/7261)
+
 ## 19.0.0-alpha.3 (2025-06-25)
 
 ### Breaking
