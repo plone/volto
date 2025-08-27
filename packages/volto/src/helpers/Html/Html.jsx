@@ -11,6 +11,7 @@ import join from 'lodash/join';
 import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 import { runtimeConfig } from '@plone/volto/runtime_config';
 import config from '@plone/volto/registry';
+import { bulkFlattenToAppURL } from '../Url/bulkFlattenToAppURL';
 
 const CRITICAL_CSS_TEMPLATE = `function alter() {
   document.querySelectorAll("head link[rel='prefetch']").forEach(function(el) { el.rel = 'stylesheet'});
@@ -212,7 +213,14 @@ class Html extends Component {
           <script
             dangerouslySetInnerHTML={{
               __html: `window.__data=${serialize(
-                loadReducers(store.getState()),
+                loadReducers({
+                  ...store.getState(),
+                  // Flatten the content URLs in initial request in SSR
+                  // it normalizes the URLs in case the INTERNAL_API_PATH is set
+                  // and prevents unwanted leaks of INTERNAL_API_PATH in the client
+                  // (only in the first request)
+                  content: bulkFlattenToAppURL(store.getState().content),
+                }),
               )};`,
             }}
             charSet="UTF-8"

@@ -2570,8 +2570,12 @@ msgstr "Kein Workflow"
 
 #. Default: "None"
 #: components/manage/Contents/Contents
-#: components/manage/Contents/ContentsItem
 msgid "None"
+msgstr "Keine"
+
+#. Default: "None"
+#: components/manage/Contents/ContentsItem
+msgid "Not available"
 msgstr "Nicht vorhanden"
 
 #. Default: "Note"
