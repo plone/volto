@@ -862,7 +862,11 @@ describe('Listing Block Tests', () => {
 
     cy.get('#field-limit-3-querystring').click().clear().type('0');
     cy.get('#field-b_size-4-querystring').click().type('2');
-    cy.get('.ui.pagination.menu a[value="2"]').first().click();
+    cy.get('.ui.pagination.menu a[value="2"]')
+      .first()
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
 
     cy.get('.listing-item h3').first().contains('My Folder 3');
   });
@@ -920,8 +924,16 @@ describe('Listing Block Tests', () => {
 
     cy.get('.ui.pagination.menu a[value="1"][type="pageItem"]')
       .first()
-      .click({ force: true });
-    cy.get('.ui.pagination.menu a[value="2"]').first().click({ force: true });
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
+
+    cy.get('.ui.pagination.menu a[value="2"]')
+      .first()
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
+
     cy.wait(1000);
     cy.url().should('include', '?page=2');
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
@@ -1001,14 +1013,22 @@ describe('Listing Block Tests', () => {
 
     cy.get('#field-limit-3-querystring').click().clear().type('0');
     cy.get('#field-b_size-4-querystring').click().type('2');
-    cy.get('.ui.pagination.menu a[value="2"]').first().click();
+    cy.get('.ui.pagination.menu a[value="2"]')
+      .first()
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
 
     cy.get('.listing-item h3').first().contains('My Folder 3');
     cy.get('#toolbar-save').click();
     cy.wait('@save');
     cy.wait('@content');
     //test second pagination click
-    cy.get('.ui.pagination.menu a[value="2"]').first().click();
+    cy.get('.ui.pagination.menu a[value="2"]')
+      .first()
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
 
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
     //test f5
@@ -1080,7 +1100,9 @@ describe('Listing Block Tests', () => {
     cy.get('.ui.pagination.menu a[value="2"]')
       .first()
       .should('be.visible')
-      .click();
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
+
     //test f5
     cy.reload();
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
@@ -1090,7 +1112,9 @@ describe('Listing Block Tests', () => {
     cy.get('.ui.pagination.menu a[value="3"]')
       .first()
       .should('be.visible')
-      .click();
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
+
     //test f5
     cy.reload();
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
@@ -1105,11 +1129,13 @@ describe('Listing Block Tests', () => {
     cy.get('.ui.pagination.menu a[value="2"]')
       .first()
       .should('be.visible')
-      .click({ force: true });
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
     cy.get('.ui.pagination.menu a[value="3"]')
       .first()
       .should('be.visible')
-      .click({ force: true });
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
     cy.go(-1);
     cy.wait('@content');
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
