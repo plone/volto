@@ -1042,6 +1042,7 @@ describe('Listing Block Tests', () => {
     cy.intercept('PATCH', '/**/my-page').as('save');
     cy.intercept('GET', '/**/my-page').as('content');
     cy.intercept('GET', '/**/@types/Document').as('schema');
+    cy.intercept('POST', '**/my-page/@querystring-search').as('querySearch');
 
     cy.createContent({
       contentType: 'Document',
@@ -1126,11 +1127,20 @@ describe('Listing Block Tests', () => {
     cy.url().should('not.include', '=3');
 
     cy.navigate('/my-page');
+    cy.wait('@content');
+    cy.wait('@querySearch');
+    cy.wait('@querySearch');
+    cy.get('.ui.small.indeterminate.text.loader').should('not.exist');
+    cy.wait(500);
     cy.get('.ui.pagination.menu a[value="2"]')
       .first()
       .should('be.visible')
       .as('paginationItem');
     cy.get('@paginationItem').click();
+    cy.wait('@querySearch');
+    cy.wait('@querySearch');
+    cy.get('.ui.small.indeterminate.text.loader').should('not.exist');
+    cy.wait(500);
     cy.get('.ui.pagination.menu a[value="3"]')
       .first()
       .should('be.visible')
