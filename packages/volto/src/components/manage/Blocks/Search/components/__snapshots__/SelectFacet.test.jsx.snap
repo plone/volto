@@ -15,7 +15,7 @@ exports[`SelectFacet > renders a facet component with select dropdown 1`] = `
       class="react-select__control css-1i6qwov-control"
     >
       <div
-        class="react-select__value-container css-12ms9px-ValueContainer"
+        class="react-select__value-container css-jrhyj0"
       >
         <div
           class="react-select__placeholder css-1wa3eu0-placeholder"
@@ -23,7 +23,7 @@ exports[`SelectFacet > renders a facet component with select dropdown 1`] = `
           Test Facet
         </div>
         <div
-          class="css-b8ldur-Input"
+          class="css-1g6gooi"
         >
           <div
             class="react-select__input"
@@ -48,14 +48,14 @@ exports[`SelectFacet > renders a facet component with select dropdown 1`] = `
         </div>
       </div>
       <div
-        class="react-select__indicators css-1hb7zxy-IndicatorsContainer"
+        class="react-select__indicators css-1wy0on6"
       >
         <span
           class="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
         />
         <div
           aria-hidden="true"
-          class="react-select__indicator react-select__dropdown-indicator css-1ib5zur-DropdownIndicator"
+          class="react-select__indicator react-select__dropdown-indicator css-z7kouv"
         >
           <svg
             class="icon"
