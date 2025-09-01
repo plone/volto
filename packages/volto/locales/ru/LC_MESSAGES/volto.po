@@ -4726,6 +4726,11 @@ msgstr "Где"
 msgid "examplePath"
 msgstr ""
 
+#. Default: "External URLs are not allowed in this field."
+#: components/manage/Widgets/ImageWidget
+msgid "externalURLsNotAllowed"
+msgstr ""
+
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
@@ -4785,6 +4790,11 @@ msgstr "Предпросмотр изображения"
 #: helpers/MessageLabels/MessageLabels
 msgid "integer"
 msgstr "Введите целое число"
+
+#. Default: "No image was found in the internal path you provided."
+#: components/manage/Widgets/ImageWidget
+msgid "internalImageNotFoundErrorMessage"
+msgstr ""
 
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
