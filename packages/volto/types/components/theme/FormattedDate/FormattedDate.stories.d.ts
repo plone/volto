@@ -10,9 +10,9 @@ declare namespace _default {
     export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
     export namespace argTypes {
         namespace locale {
+            let options: string[];
             namespace control {
                 let type: string;
-                let options: string[];
             }
         }
     }

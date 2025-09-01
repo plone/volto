@@ -8,6 +8,23 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.4 (2025-08-25)
+
+### Internal
+
+- Update @testing-library/react to 14.3.1. @wesleybl [#7260](https://github.com/plone/volto/issues/7260)
+
+## 19.0.0-alpha.3 (2025-06-25)
+
+### Bugfix
+
+- Correct `README.md`. Set the correct value of the constant `TFOOT` to `tfoot`, instead of `tbody`. Serve `tabIndex` prop with a number instead of a string. @silviubogan [#7179](https://github.com/plone/volto/issues/7179)
+- This is a fix for "Cannot find a descendant at path [...]" error. In certain cases (e.g., after merging blocks via Backspace), 
+  editor.selection may temporarily point to a path that no longer exists. 
+  This causes Editor.nodes() to throw an exception. Wrapping it in try/catch prevents crashes and hides the inline toolbar gracefully. 
+  Reproducible scenario: text block with bullet list → new text block → write a word → go to first position of letters → Backspace → crash.
+  @tomschall [#7203](https://github.com/plone/volto/issues/7203)
+
 ## 19.0.0-alpha.2 (2025-05-20)
 
 ### Feature

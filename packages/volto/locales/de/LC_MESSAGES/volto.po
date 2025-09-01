@@ -388,7 +388,7 @@ msgstr "Alternativer URL Pfad → Zielpfad (Datum und Zeit der Erstellung, manue
 #. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
 msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
-msgstr ""
+msgstr "Jemand anders hat diesen Inhalt bearbeitet, und er wird gerade angezeigt. Möchten Sie ihn durch Ihre automatisch gespeicherten Inhalte ersetzen?"
 
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
@@ -444,7 +444,7 @@ msgstr "automatisch"
 #. Default: "Autosaved content found"
 #: helpers/Utils/withSaveAsDraft
 msgid "Autosaved content found"
-msgstr ""
+msgstr "Automatisch gespeicherte Inhalte gefunden"
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1094,10 +1094,10 @@ msgstr "Dieses Element löschen?"
 msgid "Deleted"
 msgstr "Gelöscht"
 
-#. Default: "Deleting this item breaks {brokenReferences} {variation}."
+#. Default: "Deleting this item will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Deleting this item breaks {brokenReferences} {variation}."
-msgstr "Das Löschen dieses Elements macht {brokenReferences} {variation} ungültig."
+msgid "Deleting this item will break {brokenReferences} {variation}."
+msgstr "Das Löschen dieses Elements wird {brokenReferences} {variation} brechen."
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
@@ -1183,7 +1183,7 @@ msgstr "Möchten Sie diesen Artikel wirklich löschen?"
 #. Default: "Do you want to restore your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
 msgid "Do you want to restore your autosaved content?"
-msgstr ""
+msgstr "Möchten Sie Ihre automatisch gespeicherten Inhalte wiederherstellen?"
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
@@ -2570,8 +2570,12 @@ msgstr "Kein Workflow"
 
 #. Default: "None"
 #: components/manage/Contents/Contents
-#: components/manage/Contents/ContentsItem
 msgid "None"
+msgstr "Keine"
+
+#. Default: "None"
+#: components/manage/Contents/ContentsItem
+msgid "Not available"
 msgstr "Nicht vorhanden"
 
 #. Default: "Note"
@@ -3504,15 +3508,15 @@ msgstr "Grösse: {size}"
 msgid "Small"
 msgstr "Klein"
 
-#. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+#. Default: "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-msgstr "Einige Elemente sind Ordner. Beim Löschen entfernen Sie auch {containedItemsToDelete} {variation} in den Ordnern."
+msgid "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
+msgstr "Einige Elemente werden von anderen Inhalten referenziert. Das Löschen dieser Elemente wird {brokenReferences} {variation} brechen."
 
-#. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+#. Default: "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-msgstr "Einige Elemente werden durch andere Inhalte referenziert. Das Löschen macht {brokenReferences} {variation} ungültig."
+msgid "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
+msgstr "Einige Elemente enthalten Unterelemente. Das Löschen dieser Elemente wird auch ihre {containedItemsToDelete} {variation} löschen."
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3896,7 +3900,7 @@ msgstr "Es sind Fehler aufgetreten."
 #. Default: "These items will have broken links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "These items will have broken links"
-msgstr "Folgende Verweise würden beim Löschen ungültig"
+msgstr "Die folgenden Verweise würden beim Löschen ungültig."
 
 #. Default: "Third"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -3918,10 +3922,10 @@ msgstr "Dies ist ein reservierter Name und kann nicht verwendet werden"
 msgid "This is a working copy of {title}"
 msgstr "Das ist eine Arbeitskopie von {title}"
 
-#. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+#. Default: "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-msgstr "Dieses Element ist auch ein Ordner. Beim Löschen entfernen Sie auch {containedItemsToDelete} {variation} im Ordner."
+msgid "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
+msgstr "Dieses Objekt enthält Unterobjekte. Das Löschen dieses Objekts wird auch seine {containedItemsToDelete} {variation} löschen."
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -4460,6 +4464,11 @@ msgstr "Statuswechsel wird geladen"
 msgid "Workflow updated."
 msgstr "Arbeitsablauf aktualisiert."
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "Arbeitskopie"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
@@ -4471,15 +4480,15 @@ msgstr "jährlich"
 msgid "Yes"
 msgstr "Ja"
 
+#. Default: "You are about to delete all items and all its subitems."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items and all its subitems."
+msgstr "Sie sind dabei, alle Objekte und alle ihre Unterobjekte zu löschen."
+
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
-msgstr ""
-
-#. Default: "You are about to delete all items in this folder."
-#: components/manage/Contents/ContentsDeleteModal
-msgid "You are about to delete all items in this folder."
-msgstr ""
+msgstr "Sie sind dabei alle Objekte in der aktuellen Paginierung dieses Ordners zu löschen."
 
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
@@ -4575,6 +4584,11 @@ msgstr "Geben Sie Ihr neues Passwort ein. Das Passwort muss aus mindestens 8 Zei
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "Geben Sie einen Nutzernamen ein, beispielsweise etwas wie "m.muster". Benutzen Sie keine Leer- oder Sonderzeichen. Bitte beachten Sie Groß- und Kleinschreibung und stellen Sie sicher, dass die Feststelltaste nicht aktiviert ist. Dieser Name wird zum Anmelden genutzt."
+
+#. Default: "and {count} more…"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "and {count} more…"
+msgstr "und {count} mehr"
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
