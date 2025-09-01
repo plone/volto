@@ -17,6 +17,7 @@ import { resetServerContext } from 'react-beautiful-dnd';
 import { CookiesProvider } from 'react-cookie';
 import cookiesMiddleware from 'universal-cookie-express';
 import debug from 'debug';
+import crypto from 'crypto';
 
 import routes from '@root/routes';
 import config from '@plone/volto/registry';
@@ -42,6 +43,7 @@ import configureStore from '@plone/volto/store';
 import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
 
 let locales = {};
+const externalCSP = process.env.CSP_HEADER || config.settings.serverConfig.csp;
 
 // Load locales listed in supportedLanguages setting
 if (config.settings) {
@@ -102,7 +104,27 @@ server.use(function (err, req, res, next) {
   }
 });
 
+function buildCSPHeader(opts, nonce) {
+  if (typeof opts === 'string') {
+    //CSP_HEADER
+    return opts.replaceAll('{nonce}', `'nonce-${nonce}'`);
+  }
+  return Object.keys(opts)
+    .sort()
+    .reduce((acc, key) => {
+      return [
+        ...acc,
+        `${key} ${opts[key].replaceAll('{nonce}', `'nonce-${nonce}'`)}`,
+      ];
+    }, [])
+    .join('; ');
+}
+
 function setupServer(req, res, next) {
+  if (externalCSP) {
+    const nonce = crypto.randomBytes(16).toString('base64');
+    res.locals.nonce = nonce;
+  }
   const api = new Api(req);
 
   const lang = toReactIntlLang(
@@ -175,7 +197,15 @@ function setupServer(req, res, next) {
 }
 
 server.get('/*', (req, res) => {
-  const { errorHandler } = res.locals;
+  const { errorHandler, nonce } = res.locals;
+  //  const existingCSP = res.getHeader('Content-Security-Policy'); what if we have existing header for eg : reverse proxy.
+  //  const cspToUse = existingCSP || externalCSP;
+  if (externalCSP) {
+    res.setHeader(
+      'Content-Security-Policy',
+      buildCSPHeader(externalCSP, nonce),
+    );
+  }
 
   const api = new Api(req);
 
@@ -286,6 +316,7 @@ server.get('/*', (req, res) => {
           `<!doctype html>
         ${renderToString(
           <Html
+            nonce={nonce}
             extractor={extractor}
             markup={markup}
             store={store}
