@@ -264,6 +264,10 @@ const messages = defineMessages({
     id: 'All',
     defaultMessage: 'All',
   },
+  numberOfResults: {
+    id: 'Number of results',
+    defaultMessage: 'Number of results',
+  },
 });
 
 /**
@@ -1218,8 +1222,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.upload}
                                 className="upload"
+                                aria-controls="contents-table-wrapper"
                                 aria-label={this.props.intl.formatMessage(
-                                  messages.upload,
+                                  messages.filter,
                                 )}
                               >
                                 <Icon
@@ -1551,7 +1556,20 @@ class Contents extends Component {
                           </Dropdown.Menu>
                         </Dropdown>
                       </Segment>
-                      <div className="contents-table-wrapper">
+                      <div
+                        id="contents-table-wrapper"
+                        className="contents-table-wrapper"
+                        role="region"
+                      >
+                        <span
+                          aria-live="polite"
+                          className="search-feedback"
+                          role="status"
+                        >
+                          {`${this.props.intl.formatMessage(
+                            messages.numberOfResults,
+                          )}: ${this.props.total || 0}`}
+                        </span>
                         <Table selectable compact singleLine attached>
                           <Table.Header>
                             <Table.Row>

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2025-07-03T07:31:14.810Z\n"
+"POT-Creation-Date: 2025-09-02T13:57:17.495Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -2573,6 +2573,11 @@ msgstr ""
 #. Default: "Number of active objects"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
+msgstr ""
+
+#. Default: "Number of results"
+#: components/manage/Contents/Contents
+msgid "Number of results"
 msgstr ""
 
 #. Default: "Object Size"

@@ -2579,6 +2579,11 @@ msgstr "Tingueu en compte que els rols establerts aquí s'apliquen directament a
 msgid "Number of active objects"
 msgstr "Nombre d'objectes actius"
 
+#. Default: "Number of results"
+#: components/manage/Contents/Contents
+msgid "Number of results"
+msgstr ""
+
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
 msgid "Object Size"

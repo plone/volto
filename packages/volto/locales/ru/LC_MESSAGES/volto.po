@@ -2578,6 +2578,11 @@ msgstr "Обратите внимание, что роли, установлен
 msgid "Number of active objects"
 msgstr "Количество активных объектов"
 
+#. Default: "Number of results"
+#: components/manage/Contents/Contents
+msgid "Number of results"
+msgstr ""
+
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
 msgid "Object Size"

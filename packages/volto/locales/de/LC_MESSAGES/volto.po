@@ -2579,6 +2579,11 @@ msgstr "Rollen gelten für diesen Nutzer. Das Zeichen {plone_svg} zeigt an dass 
 msgid "Number of active objects"
 msgstr "Anzahl aktive Objekte"
 
+#. Default: "Number of results"
+#: components/manage/Contents/Contents
+msgid "Number of results"
+msgstr "Anzahl der Ergebnisse"
+
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
 msgid "Object Size"

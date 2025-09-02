@@ -2578,6 +2578,11 @@ msgstr "Huomioi, että tässä määritellyt roolit kohdistuvat suoraan käyttä
 msgid "Number of active objects"
 msgstr "Aktiivisten kohteiden määrä"
 
+#. Default: "Number of results"
+#: components/manage/Contents/Contents
+msgid "Number of results"
+msgstr ""
+
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
 msgid "Object Size"

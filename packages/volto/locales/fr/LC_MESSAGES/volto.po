@@ -2580,6 +2580,11 @@ msgstr "Attention que les rôles sont appliqués directement aux utilisateurs. L
 msgid "Number of active objects"
 msgstr "Nombre d'objets actifs"
 
+#. Default: "Number of results"
+#: components/manage/Contents/Contents
+msgid "Number of results"
+msgstr ""
+
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
 msgid "Object Size"
