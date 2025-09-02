@@ -17,6 +17,23 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.25.0 (2025-09-01)
+
+### Feature
+
+- Make Jest maxWorkers configurable via MAX_WORKERS env var. @wesleybl [#7251](https://github.com/plone/volto/issues/7251)
+
+### Bugfix
+
+- Fix ImageWidget to support DX fields and Relation Choice images (preview_image_link). @sneridagh [#7099](https://github.com/plone/volto/issues/7099)
+
+### Internal
+
+- Update @testing-library/react to 14.3.1. @wesleybl [#7260](https://github.com/plone/volto/issues/7260)
+- Remove MEDICE website entry from `Volto in production`. @wesleybl [#7283](https://github.com/plone/volto/issues/7283)
+- Fix random error in Listing Block tests. @wesleybl [#7286](https://github.com/plone/volto/issues/7286)
+- Fixed a random failure in Cypress tests when using `getSlateEditorAndType` or `getSlateEditorSelectorAndType`. @wesleybl [#7290](https://github.com/plone/volto/issues/7290)
+
 ## 18.24.0 (2025-08-25)
 
 ### Feature

@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.5.1 (2025-09-01)
+
+### Internal
+
+- Update @testing-library/react to 14.3.1. @wesleybl [#7260](https://github.com/plone/volto/issues/7260)
+
 ## 18.5.0 (2025-06-12)
 
 ### Feature
