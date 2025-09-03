@@ -2573,11 +2573,6 @@ msgstr "Oharra: hemen adierazitako rolak erabiltzaileari aplikatzen zaizkio. {pl
 msgid "Number of active objects"
 msgstr "Aktibo dagoen objektu kopurua"
 
-#. Default: "Number of results"
-#: components/manage/Contents/Contents
-msgid "Number of results"
-msgstr ""
-
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
 msgid "Object Size"
@@ -4944,6 +4939,11 @@ msgstr "erreferentzia"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
 msgstr "honi egiten dio erreferentzia"
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
+msgstr ""
 
 #. Default: "results"
 #: components/theme/Search/Search

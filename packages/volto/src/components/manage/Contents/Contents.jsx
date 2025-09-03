@@ -264,9 +264,9 @@ const messages = defineMessages({
     id: 'All',
     defaultMessage: 'All',
   },
-  numberOfResults: {
-    id: 'Number of results',
-    defaultMessage: 'Number of results',
+  resultCount: {
+    id: 'resultCount',
+    defaultMessage: 'Result count',
   },
 });
 
@@ -1567,7 +1567,7 @@ class Contents extends Component {
                           role="status"
                         >
                           {`${this.props.intl.formatMessage(
-                            messages.numberOfResults,
+                            messages.resultsCount,
                           )}: ${this.props.total || 0}`}
                         </span>
                         <Table selectable compact singleLine attached>

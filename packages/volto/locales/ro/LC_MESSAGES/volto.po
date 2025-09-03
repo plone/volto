@@ -2579,11 +2579,6 @@ msgstr "Rețineți că rolurile setate aici se aplică direct unui utilizator. S
 msgid "Number of active objects"
 msgstr "Numărul de obiecte active"
 
-#. Default: "Number of results"
-#: components/manage/Contents/Contents
-msgid "Number of results"
-msgstr ""
-
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
 msgid "Object Size"
@@ -4949,6 +4944,11 @@ msgstr "referințe"
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
+msgstr ""
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
 msgstr ""
 
 #. Default: "results"

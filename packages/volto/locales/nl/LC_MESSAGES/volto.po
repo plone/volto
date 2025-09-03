@@ -2578,11 +2578,6 @@ msgstr "Merk op dat de hier ingestelde rollen ditrect toegepast worden op een ge
 msgid "Number of active objects"
 msgstr "Aantal actieve objecten"
 
-#. Default: "Number of results"
-#: components/manage/Contents/Contents
-msgid "Number of results"
-msgstr ""
-
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
 msgid "Object Size"
@@ -4949,6 +4944,11 @@ msgstr "referenties"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
 msgstr "verwijst naar"
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
+msgstr ""
 
 #. Default: "results"
 #: components/theme/Search/Search

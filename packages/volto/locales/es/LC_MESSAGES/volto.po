@@ -2580,11 +2580,6 @@ msgstr "Estos roles se aplican al usuario. El símbolo {plone_svg} indica que el
 msgid "Number of active objects"
 msgstr "Número de objetos activos"
 
-#. Default: "Number of results"
-#: components/manage/Contents/Contents
-msgid "Number of results"
-msgstr "Número de resultados"
-
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
 msgid "Object Size"
@@ -4951,6 +4946,11 @@ msgstr "referencias"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
 msgstr ""
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
+msgstr "Cantidad de resultados"
 
 #. Default: "results"
 #: components/theme/Search/Search

@@ -2579,11 +2579,6 @@ msgstr "Observe que as funções definidas aqui se aplicam diretamente a um usu�
 msgid "Number of active objects"
 msgstr "Número de objetos ativos"
 
-#. Default: "Number of results"
-#: components/manage/Contents/Contents
-msgid "Number of results"
-msgstr "Número de resultados"
-
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
 msgid "Object Size"
@@ -4950,6 +4945,11 @@ msgstr "referências"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
 msgstr "refere-se a"
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
+msgstr ""
 
 #. Default: "results"
 #: components/theme/Search/Search

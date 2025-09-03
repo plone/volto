@@ -2574,11 +2574,6 @@ msgstr "Tieni presente che i ruoli qui impostati si applicano direttamente a un 
 msgid "Number of active objects"
 msgstr "Numero degli oggetti attivi"
 
-#. Default: "Number of results"
-#: components/manage/Contents/Contents
-msgid "Number of results"
-msgstr "Numero di risultati"
-
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
 msgid "Object Size"
@@ -4945,6 +4940,11 @@ msgstr "riferimenti"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
 msgstr "fa riferimento a"
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
+msgstr "Totale risultati"
 
 #. Default: "results"
 #: components/theme/Search/Search

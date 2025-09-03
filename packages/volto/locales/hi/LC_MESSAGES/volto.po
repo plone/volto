@@ -2573,11 +2573,6 @@ msgstr "ध्यान दें कि यहां सेट किए गए
 msgid "Number of active objects"
 msgstr "सक्रिय ऑब्जेक्ट्स की संख्या"
 
-#. Default: "Number of results"
-#: components/manage/Contents/Contents
-msgid "Number of results"
-msgstr ""
-
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
 msgid "Object Size"
@@ -4943,6 +4938,11 @@ msgstr "संदर्भ"
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
+msgstr ""
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
 msgstr ""
 
 #. Default: "results"

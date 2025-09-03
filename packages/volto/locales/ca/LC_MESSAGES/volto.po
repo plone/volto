@@ -2579,11 +2579,6 @@ msgstr "Tingueu en compte que els rols establerts aquí s'apliquen directament a
 msgid "Number of active objects"
 msgstr "Nombre d'objectes actius"
 
-#. Default: "Number of results"
-#: components/manage/Contents/Contents
-msgid "Number of results"
-msgstr ""
-
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
 msgid "Object Size"
@@ -4950,6 +4945,11 @@ msgstr "referències"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
 msgstr "es refereix a"
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
+msgstr ""
 
 #. Default: "results"
 #: components/theme/Search/Search
