@@ -28,7 +28,7 @@ exports[`renders a youtube video body component 1`] = `
   >
     <i
       aria-hidden="true"
-      className="play icon"
+      className="video play icon"
       onClick={[Function]}
     />
     <img
@@ -51,7 +51,7 @@ exports[`renders a youtube video body component in edit mode 1`] = `
   >
     <i
       aria-hidden="true"
-      className="play icon"
+      className="video play icon"
       onClick={[Function]}
     />
     <img
