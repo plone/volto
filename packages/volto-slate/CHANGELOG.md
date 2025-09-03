@@ -8,6 +8,34 @@
 
 <!-- towncrier release notes start -->
 
+## 18.5.1 (2025-09-01)
+
+### Internal
+
+- Update @testing-library/react to 14.3.1. @wesleybl [#7260](https://github.com/plone/volto/issues/7260)
+
+## 18.5.0 (2025-06-12)
+
+### Feature
+
+- Translations from weblate @Ricky-Tigg @erral [#6910](https://github.com/plone/volto/issues/6910)
+
+### Bugfix
+
+- Correct `README.md`. Set the correct value of the constant `TFOOT` to `tfoot`, instead of `tbody`. Serve `tabIndex` prop with a number instead of a string. @silviubogan [#7179](https://github.com/plone/volto/issues/7179)
+
+## 18.4.0 (2025-05-20)
+
+### Feature
+
+- Improve accessibility for sortable table headers in table block. @kreafox [#7090](https://github.com/plone/volto/issues/7090)
+
+## 18.3.1 (2025-05-08)
+
+### Internal
+
+- Use `classnames` 2.5.1 @sneridagh [#6826](https://github.com/plone/volto/issues/6826)
+
 ## 18.3.0 (2025-04-12)
 
 ### Feature

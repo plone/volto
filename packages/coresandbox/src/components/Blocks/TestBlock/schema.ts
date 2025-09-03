@@ -49,6 +49,7 @@ const itemSchema: BlockConfigBase['blockSchema'] = ({ intl }) => {
           'title',
           'description',
           'preview_image',
+          'another_image',
           'extraDefault',
         ],
       },
@@ -78,6 +79,10 @@ const itemSchema: BlockConfigBase['blockSchema'] = ({ intl }) => {
         widget: 'object_browser',
         mode: 'image',
         allowExternals: true,
+      },
+      another_image: {
+        title: 'Another image',
+        widget: 'image',
       },
       extraDefault: {
         title: 'Extra',

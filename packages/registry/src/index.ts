@@ -442,6 +442,14 @@ class Config {
     const result = currentSlotComponents.slice();
     result.splice(position, 1);
     currentSlot.data[name] = result;
+
+    if (result.length === 0) {
+      // If no components left, remove the slot from the list
+      const index = currentSlot.slots.indexOf(name);
+      if (index > -1) {
+        currentSlot.slots.splice(index, 1);
+      }
+    }
   }
 
   registerUtility(options: {
@@ -486,7 +494,7 @@ class Config {
 
     const utilityName = `${depsString ? `|${depsString}` : ''}${name}`;
 
-    return this._data.utilities[type][utilityName] || {};
+    return this._data.utilities[type]?.[utilityName] || {};
   }
 
   getUtilities(options: {

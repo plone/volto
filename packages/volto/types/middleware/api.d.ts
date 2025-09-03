@@ -15,10 +15,7 @@
  */
 export function addExpandersToPath(path: string, type: any, isAnonymous: any): string;
 export default apiMiddlewareFactory;
-/**
- * Api middleware.
- * @function
- * @param {Object} api Api object.
- * @returns {Promise} Action promise.
- */
-declare function apiMiddlewareFactory(api: any): Promise<any>;
+declare function apiMiddlewareFactory(api: any): ({ dispatch, getState }: {
+    dispatch: any;
+    getState: any;
+}) => (next: any) => (action: any) => any;

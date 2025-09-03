@@ -17,6 +17,142 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.25.0 (2025-09-01)
+
+### Feature
+
+- Make Jest maxWorkers configurable via MAX_WORKERS env var. @wesleybl [#7251](https://github.com/plone/volto/issues/7251)
+
+### Bugfix
+
+- Fix ImageWidget to support DX fields and Relation Choice images (preview_image_link). @sneridagh [#7099](https://github.com/plone/volto/issues/7099)
+
+### Internal
+
+- Update @testing-library/react to 14.3.1. @wesleybl [#7260](https://github.com/plone/volto/issues/7260)
+- Remove MEDICE website entry from `Volto in production`. @wesleybl [#7283](https://github.com/plone/volto/issues/7283)
+- Fix random error in Listing Block tests. @wesleybl [#7286](https://github.com/plone/volto/issues/7286)
+- Fixed a random failure in Cypress tests when using `getSlateEditorAndType` or `getSlateEditorSelectorAndType`. @wesleybl [#7290](https://github.com/plone/volto/issues/7290)
+
+## 18.24.0 (2025-08-25)
+
+### Feature
+
+- Complete missing catalan translations @rboixaderg [#7209](https://github.com/plone/volto/issues/7209)
+- Add support for single selection in SelectAutoComplete widget. @iFlameing [#7270](https://github.com/plone/volto/issues/7270)
+
+### Bugfix
+
+- Contents view: Label 'None' for deselecting needs to be different from 'None' of a not available value in the table. @ksuess [#7233](https://github.com/plone/volto/issues/7233)
+- UniversalLink: regression, pass on onClick to Link component. @fredvd [#7240](https://github.com/plone/volto/issues/7240)
+- Hide the `webstats_head_js` field in the site control panel form @erral [#7244](https://github.com/plone/volto/issues/7244)
+- Fix corner case in devproxy when pathname is null. @sneridagh [#7276](https://github.com/plone/volto/issues/7276)
+
+### Internal
+
+- Update eslint-config-prettier past malware versions to "^9.1.2". @kittauri [#7254](https://github.com/plone/volto/issues/7254)
+- Test with Plone 6.1.2. @davisagli 
+
+## 18.23.0 (2025-06-12)
+
+### Feature
+
+- Use translated schema title in Helmet for `Add` component page. @alexandreIFB [#7048](https://github.com/plone/volto/issues/7048)
+- Improved the component `ContentsDeleteModal` by displaying a detailed list of selected items with clickable links for better clarity and usability. @alexandreIFB [#7054](https://github.com/plone/volto/issues/7054)
+- Translations from weblate @yurj, @ingovdb, @erral, @MrTango [#7135](https://github.com/plone/volto/issues/7135)
+- Added the `.error` class to blocks with errors, highlighting them with a red border in edit mode. @alexandreIFB [#7138](https://github.com/plone/volto/issues/7138)
+
+### Bugfix
+
+- fix(fetchContent): correctly handle undefined blocksType in async fetchContent @nileshgulia1 [#7114](https://github.com/plone/volto/issues/7114)
+- Make sure the server-side rendered content is still shown if there is an error while hydrating a page that did not have a server-side error. @davisagli [#7132](https://github.com/plone/volto/issues/7132)
+- Added missing languages in `packages/volto/src/helpers/LanguageMap/LanguageMap.js`. @JeffersonBledsoe [#7146](https://github.com/plone/volto/issues/7146)
+- Add default if no filename is supplied in FileView @kittauri [#7174](https://github.com/plone/volto/issues/7174)
+
+## 18.22.0 (2025-05-20)
+
+### Feature
+
+- Add `isClearable` prop to `SelectWidget`, allowing configuration of whether the select input can be cleared by the user. @alexandreIFB [#7083](https://github.com/plone/volto/issues/7083)
+
+### Bugfix
+
+- The title block should be focused all the subsequent times you edit a content. @ana-oprea [#6880](https://github.com/plone/volto/issues/6880)
+- Use table sorting icons from pastanaga `icons.woff` instead of assuming we have Font Awesome icons. @ichim-david [#7090](https://github.com/plone/volto/issues/7090)
+
+## 18.21.0 (2025-05-16)
+
+### Feature
+
+- The `Add` component can now optionally receive `initialFormData` from the `CreateTranslation` component. This makes it possible for a custom `CreateTranslation` implementation to fully control the initial translation. @Tishasoumya-02 [#7073](https://github.com/plone/volto/issues/7073)
+
+## 18.20.0 (2025-05-12)
+
+### Feature
+
+- Fix translations default of ContentsDeleteModal: 'linkintegrity: delete' -> 'delete' if no link to break. @ksuess [#6964](https://github.com/plone/volto/issues/6964)
+
+### Bugfix
+
+- Improve typings in ConditionalLink component, add TS tests to catch the bad typings. @sneridagh [#7057](https://github.com/plone/volto/issues/7057)
+
+## 18.19.0 (2025-05-08)
+
+### Feature
+
+- Refactor the UniversalLink component using typescript.
+  Use union types for deciding between href or item.
+  Modify tsconfig, include types located in `types` folder, otherwise d.ts files will noch be recognized in .tsx files, e.g. inside components. I need this for the `react-router-hash-link` package, that we use in the UniversalLink component. The specific file is `/types/react-router-hash-link.d.ts`.
+  Modify lint-staged.config.js to exclude d.ts files.
+  Use newest version of classnames (with types).
+  Create tests and negative tests for optimization with React.memo (add render counter for testing this behavior)
+
+  @tomschall [#6826](https://github.com/plone/volto/issues/6826)
+- `ConditionalLink` in TypeScript. @sneridagh [#6959](https://github.com/plone/volto/issues/6959)
+
+### Internal
+
+- Fixed types of #6826 in build:types. @sneridagh 
+
+## 18.18.0 (2025-05-08)
+
+### Feature
+
+- Enhance the `ImageInput` component to only accept image files. [@jnptk] [#6926](https://github.com/plone/volto/issues/6926)
+
+### Bugfix
+
+- Fixed stuck states in the Image Upload Widget by resetting uploading after failed size validation and dragging after image deletion or drag events, ensuring proper functionality and user feedback. [#7045](https://github.com/plone/volto/issues/7045)
+
+## 18.17.0 (2025-05-06)
+
+### Feature
+
+- Added `contained` class if `isContainer` prop is passed (from containers). @sneridagh [#7043](https://github.com/plone/volto/issues/7043)
+
+## 18.16.0 (2025-05-01)
+
+### Feature
+
+- Rename `vitest.config.ts` to `vitest.config.mjs` for allowing it to be loaded from add-ons. @sneridagh [#7035](https://github.com/plone/volto/issues/7035)
+
+### Bugfix
+
+- Added missing dependency for `sgvo`. Fixed `svgo` library loading in `./vite-plugins/svg.js`. @sneridagh [#7035](https://github.com/plone/volto/issues/7035)
+- Rename `./vite-plugins/svg.js` to proper extension `vite-plugins/svg.mjs`. @sneridagh [#7035](https://github.com/plone/volto/issues/7035)
+
+## 18.15.1 (2025-04-30)
+
+### Internal
+
+- Rereleasing due to a new patch release (`1.4.3`) in `@plone/types`. @sneridagh 
+
+## 18.15.0 (2025-04-30)
+
+### Feature
+
+- Move `MaybeWrap` to TypeScript. @sneridagh [#7029](https://github.com/plone/volto/issues/7029)
+
 ## 18.14.1 (2025-04-25)
 
 ### Bugfix

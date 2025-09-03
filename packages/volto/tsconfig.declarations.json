@@ -17,5 +17,15 @@
       "react-dom": ["./node_modules/@types/react-dom"]
     }
   },
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.tsx"]
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.tsx"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "coverage",
+    "dist",
+    "types",
+    "**/*.test.js",
+    "**/*.test.tsx",
+    "**/*.test.ts"
+  ]
 }

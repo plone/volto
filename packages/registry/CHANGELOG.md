@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 2.5.4 (2025-06-12)
+
+### Bugfix
+
+- `getUtility` returns an empty object if called with a utility type that has not been registered. @davisagli [#7108](https://github.com/plone/volto/issues/7108)
+
+## 2.5.3 (2025-04-30)
+
+### Bugfix
+
+- Remove the slot registration from the array if it is the last in `unRegisterSlotComponent`. @sneridagh [#7031](https://github.com/plone/volto/issues/7031)
+
 ## 2.5.2 (2025-04-25)
 
 ### Bugfix

@@ -894,6 +894,36 @@ describe('Slots registry', () => {
     ).toEqual('The colophon component');
     config.unRegisterSlotComponent('postFooter', 'Colophon', 0);
     expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(0);
+
+    expect(config.getSlotComponents('postFooter')).toEqual([]);
+  });
+
+  it('unRegisterSlotComponent - remove one registered slot, then re-register it', () => {
+    config.registerSlotComponent({
+      name: 'Colophon',
+      slot: 'postFooter',
+      component: 'The colophon component',
+    });
+
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(1);
+    expect(
+      config.getSlotComponent('postFooter', 'Colophon')[0].component,
+    ).toEqual('The colophon component');
+    config.unRegisterSlotComponent('postFooter', 'Colophon', 0);
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(0);
+
+    expect(config.getSlotComponents('postFooter')).toEqual([]);
+
+    config.registerSlotComponent({
+      name: 'Colophon',
+      slot: 'postFooter',
+      component: 'The colophon component',
+    });
+
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(1);
+    expect(
+      config.getSlotComponent('postFooter', 'Colophon')[0].component,
+    ).toEqual('The colophon component');
   });
 
   it('unRegisterSlotComponent - registers 2 + 2 slot components with predicates', () => {
@@ -979,7 +1009,16 @@ describe('Utilities registry', () => {
     ).toEqual('this is a simple validator utility');
   });
 
-  it('trying to get a non-existent utility returns undefined', () => {
+  it('trying to get an unregistered utility type returns undefined', () => {
+    expect(config.getUtility({ name: 'Something', type: 'schema' })).toEqual(
+      {},
+    );
+    expect(
+      config.getUtility({ name: 'Something', type: 'schema' }).method,
+    ).toEqual(undefined);
+  });
+
+  it('trying to get an undefined utility name returns undefined', () => {
     expect(config.getUtility({ name: undefined, type: 'schema' })).toEqual({});
     expect(
       config.getUtility({ name: undefined, type: 'schema' }).method,
@@ -1072,6 +1111,10 @@ describe('Utilities registry', () => {
 
   it('trying to use getUtilities with no type returns an empty array', () => {
     expect(config.getUtilities({ type: undefined }).length).toEqual(0);
+  });
+
+  it('trying to use getUtilities with an unregistered type returns an empty array', () => {
+    expect(config.getUtilities({ type: 'Something' }).length).toEqual(0);
   });
 
   it('getUtilities - registers two utilities with the same dependencies and different names', () => {

@@ -128,6 +128,8 @@ function sendOnSocket(request) {
  * @param {Object} api Api object.
  * @returns {Promise} Action promise.
  */
+let isHydrating = __CLIENT__ ? true : false;
+
 const apiMiddlewareFactory =
   (api) =>
   ({ dispatch, getState }) =>
@@ -135,14 +137,16 @@ const apiMiddlewareFactory =
   (action) => {
     const { settings } = config;
 
-    const token = getState().userSession.token;
-    let uploadedFiles = getState().content.uploadedFiles;
+    const state = getState();
+    const token = state.userSession.token;
+    let uploadedFiles = state.content.uploadedFiles;
     let isAnonymous = true;
     if (token) {
       const tokenExpiration = jwtDecode(token).exp;
       const currentTime = new Date().getTime() / 1000;
       isAnonymous = !token || currentTime > tokenExpiration;
     }
+    const hasExistingError = state.content.get?.error;
 
     if (typeof action === 'function') {
       return action(dispatch, getState);
@@ -223,6 +227,7 @@ const apiMiddlewareFactory =
           });
       actionPromise.then(
         (result) => {
+          isHydrating = false;
           if (uploadedFiles !== 0) {
             dispatch(updateUploadedFiles(0));
           }
@@ -298,6 +303,14 @@ const apiMiddlewareFactory =
           }
         },
         (error) => {
+          // Make sure an error during hydration
+          // (for example when serving an archived page)
+          // doesn't hide the SSR content.
+          if (isHydrating && !hasExistingError) {
+            isHydrating = false;
+            return;
+          }
+
           // Only SSR can set ECONNREFUSED
           if (error.code === 'ECONNREFUSED') {
             next({

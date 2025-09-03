@@ -8,6 +8,32 @@
 
 <!-- towncrier release notes start -->
 
+## 1.4.5 (2025-05-16)
+
+### Bugfix
+
+- Fix image scales typings.
+  Added `dataAdapter` key in `BlockConfigBase`.
+  `category` as optional in `BlockConfigBase`. @sneridagh [#7079](https://github.com/plone/volto/issues/7079)
+
+## 1.4.4 (2025-05-08)
+
+### Bugfix
+
+- Improve typings of brains and objectBrowser references. @sneridagh [#7047](https://github.com/plone/volto/issues/7047)
+
+## 1.4.3 (2025-04-30)
+
+### Bugfix
+
+- `blockModel` should be optional. @sneridagh [#7033](https://github.com/plone/volto/issues/7033)
+
+## 1.4.2 (2025-04-30)
+
+### Bugfix
+
+- Fixed `groupBlocksOrder` typing. @sneridagh [#7029](https://github.com/plone/volto/issues/7029)
+
 ## 1.4.1 (2025-04-25)
 
 ### Bugfix
