@@ -753,7 +753,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                   class="search-feedback"
                   role="status"
                 >
-                  Number of results: 1
+                  Result count: 1
                 </span>
                 <table
                   class="ui selectable single line attached compact table"

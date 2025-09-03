@@ -1567,7 +1567,7 @@ class Contents extends Component {
                           role="status"
                         >
                           {`${this.props.intl.formatMessage(
-                            messages.resultsCount,
+                            messages.resultCount,
                           )}: ${this.props.total || 0}`}
                         </span>
                         <Table selectable compact singleLine attached>
