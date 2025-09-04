@@ -241,6 +241,21 @@ const initialBlocks = {
 
   If the choice is limited to one item, then the setting hides itself from the `listing` block settings list.
 
+## Video block configuration
+
+### Peertube instances
+
+You can configure the video block to use other instances of peertube, by adding them to the `allowedPeertubeInstances` array in your project configuration object.
+
+By default
+```js
+const allowedPeertubeInstances = [
+  'freediverse.com', // About: https://freediverse.com/about/instance
+  'fair.tube', // About: https://fair.tube/about/instance
+  'tube.reseau-canope.fr', // About: https://tube.reseau-canope.fr/about/instance
+  'peertube.eus', // About: https://peertube.eus/about/instance
+];
+
 ## Search block configuration
 
 The search block provides several extensibility options.
