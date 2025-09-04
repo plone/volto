@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Plone\nPOT-Creation-Date: 2022-07-20T12:45:09.681Z\nPO-Revision-Date: 2025-09-05 06:01+0000\nLast-Translator: Kai Metsävainio <kai.metsavainio@overtornea.se>\nLanguage-Team: Swedish <https://hosted.weblate.org/projects/plone/volto-slate-18/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.13.1-rc\nLanguage-Code: en\nLanguage-Name: English\nPreferred-Encodings: utf-8\nDomain: volto\n"
+msgstr "Project-Id-Version: Plone\nPOT-Creation-Date: 2022-07-20T12:45:09.681Z\nPO-Revision-Date: 2025-09-05 06:01+0000\nLast-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\nLanguage-Team: Swedish <https://hosted.weblate.org/projects/plone/volto-slate-18/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.13.1-rc\nLanguage-Code: en\nLanguage-Name: English\nPreferred-Encodings: utf-8\nDomain: volto\n"
 
 # defaultMessage: Add link
 #: editor/plugins/Link/index
@@ -85,7 +85,7 @@ msgstr "Infoga kolumn före"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row after"
-msgstr ""
+msgstr "Infoga rad efter"
 
 # defaultMessage: Insert row before
 #: blocks/Table/TableBlockEdit
