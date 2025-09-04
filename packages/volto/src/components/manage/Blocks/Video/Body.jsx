@@ -16,7 +16,9 @@ const getVideoIDAndPlaceholder = (url) => {
   let videoUrl = null;
 
   if (url) {
-    if (url.match(/youtu.*?(list|live|\?v=|\.be\/|shorts)/)) {
+    if (
+      /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)(?:.*)$/i.test(url)
+    ) {
       hasMatch = true;
       videoSource = 'youtube';
       if (url.match('list')) {
