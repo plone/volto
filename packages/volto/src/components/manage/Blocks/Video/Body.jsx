@@ -110,10 +110,14 @@ const Body = ({ data, isEditMode }) => {
     Array.isArray(peertubeInstances) &&
     data.url.match(new RegExp(peertubeInstances.join('|'), 'gi'))
   ) {
-    const instance = data.url.match(/^(.*)\/w\/(.*)$/)[1];
-    const videoID = data.url.match(/^(.*)\/w\/(.*)$/)[2];
-    iframeSettings['src'] = `${instance}/videos/embed/${videoID}`;
-    iframeSettings['style'] = { aspectRatio: '16/9', width: '100%' };
+    const peertubeRegex = /^(https?:\/\/[^/]+)\/w\/([A-Za-z0-9_-]+)/i;
+    const match = data.url.match(peertubeRegex);
+    if (match) {
+      const instance = match[1];
+      const videoID = match[2];
+      iframeSettings['src'] = `${instance}/videos/embed/${videoID}`;
+      iframeSettings['style'] = { aspectRatio: '16/9', width: '100%' };
+    }
   }
   return (
     <>
