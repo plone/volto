@@ -42,8 +42,7 @@ const blockPropsAreChanged = (prevProps, nextProps) => {
   return isEqual(prev, next);
 };
 
-const applyDefaults = (data, root, block_query) => {
-  block_query = block_query?.length ? block_query : [];
+const applyDefaults = (data, root, blockQuery) => {
   const defaultQuery = [
     {
       i: 'path',
@@ -52,8 +51,8 @@ const applyDefaults = (data, root, block_query) => {
     },
   ];
 
-  const data_query = data?.query?.length ? data.query : [];
-  const searchBySearchableText = data_query.filter(
+  const dataQuery = data?.query?.length ? data.query : [];
+  const searchBySearchableText = dataQuery.filter(
     (item) => item['i'] === 'SearchableText',
   ).length;
 
@@ -71,26 +70,24 @@ const applyDefaults = (data, root, block_query) => {
   // We start with the base query from the block.
   // We enhance it with the query from the facets (filters).
   // We fall back to the default query.
-  let query = block_query;
+  let query = blockQuery?.length ? blockQuery : [];
   if (!query.length) {
-    query = data_query.length ? data_query : defaultQuery;
-  } else if (data_query.length) {
+    query = dataQuery.length ? dataQuery : defaultQuery;
+  } else if (dataQuery.length) {
     // We have both a base query and a filter.  Combine them.
     // Items in the filter win over items in the base query.
-    const filter_keys = data_query.map((obj) => obj.i);
-    query = data_query.slice();
-    for (const item of block_query) {
-      if (!filter_keys.includes(item.i)) {
-        query.push(item);
-      }
-    }
+    const filterKeys = new Set(dataQuery.map((obj) => obj.i));
+    query = [
+      ...dataQuery,
+      ...blockQuery.filter((item) => !filterKeys.has(item.i)),
+    ];
   }
 
   return {
     ...data,
     ...sort_on,
     ...sort_order,
-    query: query,
+    query,
   };
 };
 
