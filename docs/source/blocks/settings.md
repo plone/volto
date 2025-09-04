@@ -250,7 +250,6 @@ Although only Peertube is documented here, you can use this example for other vi
 
 You can configure the video block to use other instances of Peertube by adding them to the `allowedPeertubeInstances` array in your project configuration object, as shown in the following example.
 
-By default
 ```js
 const allowedPeertubeInstances = [
   'freediverse.com', // About: https://freediverse.com/about/instance
