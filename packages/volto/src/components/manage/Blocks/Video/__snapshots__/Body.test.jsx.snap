@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders a error message for invalid video URL in edit mode 1`] = `
 <div
@@ -33,7 +33,7 @@ exports[`renders a peertube video body component 1`] = `
   <iframe
     src="https://peertube.eus/videos/embed/qjubDnZ79UmmjhAUqvX2zu"
     style={
-      Object {
+      {
         "aspectRatio": "16/9",
         "width": "100%",
       }
