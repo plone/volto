@@ -243,6 +243,9 @@ const initialBlocks = {
 
 ## Video block configuration
 
+This section describes how to configure video blocks.
+Although only Peertube is documented here, you can use this example for other video providers.
+
 ### Peertube instances
 
 You can configure the video block to use other instances of peertube, by adding them to the `allowedPeertubeInstances` array in your project configuration object.
