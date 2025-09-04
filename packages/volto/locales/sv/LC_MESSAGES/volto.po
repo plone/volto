@@ -764,7 +764,7 @@ msgstr ""
 #. Default: "Contact form"
 #: components/theme/ContactForm/ContactForm
 msgid "Contact form"
-msgstr ""
+msgstr "Kontaktformulär"
 
 #. Default: "Contained items"
 #: components/manage/Blocks/Listing/Edit
@@ -779,7 +779,7 @@ msgstr ""
 #. Default: "Content"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Content"
-msgstr ""
+msgstr "Innehåll"
 
 #. Default: "Content Rule"
 #: components/manage/Controlpanels/Rules/Rules
@@ -795,7 +795,7 @@ msgstr ""
 #. Default: "Content rules for {title}"
 #: components/manage/Rules/Rules
 msgid "Content rules for {title}"
-msgstr ""
+msgstr "Innehållsregler för {title}"
 
 #. Default: "Content rules from parent folders"
 #: components/manage/Rules/Rules
@@ -805,70 +805,70 @@ msgstr ""
 #. Default: "Content that links to or references {title}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
-msgstr ""
+msgstr "Innehåll som länkar till eller referenser {titel}"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
-msgstr ""
+msgstr "Innehållstyp skapad"
 
 #. Default: "Content type deleted"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type deleted"
-msgstr ""
+msgstr "Innehållstyp raderad"
 
 #. Default: "Contents"
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
-msgstr ""
+msgstr "Innehåll"
 
 #. Default: "Controls"
 #: components/manage/Blocks/Search/schema
 msgid "Controls"
-msgstr ""
+msgstr "Kontroller"
 
 #. Default: "Copy"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Copy"
-msgstr ""
+msgstr "Kopiera"
 
 #. Default: "Copy blocks"
 #: helpers/MessageLabels/MessageLabels
 msgid "Copy blocks"
-msgstr ""
+msgstr "Kopiera block"
 
 #. Default: "Copyright"
 #: components/theme/Footer/Footer
 msgid "Copyright"
-msgstr ""
+msgstr "Upphovsrätt"
 
 #. Default: "Copyright statement or other rights information on this item."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
-msgstr ""
+msgstr "Upphovsrättsliga uttalanden eller annan information om denna artikel."
 
 #. Default: "Create or delete relations to target"
 #: helpers/MessageLabels/MessageLabels
 msgid "Create or delete relations to target"
-msgstr ""
+msgstr "Skapa eller ta bort relationer till mål"
 
 #. Default: "Create working copy"
 #: components/manage/Toolbar/More
 msgid "Create working copy"
-msgstr ""
+msgstr "Skapa arbetskopia"
 
 #. Default: "Created after"
 #: components/manage/Controlpanels/Aliases
 msgid "Created after"
-msgstr ""
+msgstr "Skapad efter"
 
 #. Default: "Created before"
 #: components/manage/Controlpanels/Aliases
 msgid "Created before"
-msgstr ""
+msgstr "Skapad innan"
 
 #. Default: "Created by {creator} on {date}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -883,65 +883,65 @@ msgstr ""
 #. Default: "Creator"
 #: components/manage/Contents/Contents
 msgid "Creator"
-msgstr ""
+msgstr "Skaparen"
 
 #. Default: "Creators"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
-msgstr ""
+msgstr "Skapare"
 
 #. Default: "Criteria"
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/QueryWidget
 msgid "Criteria"
-msgstr ""
+msgstr "Kriterier"
 
 #. Default: "Current active configuration"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Current active configuration"
-msgstr ""
+msgstr "Aktuell aktiv konfiguration"
 
 #. Default: "Current filters applied"
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Current filters applied"
-msgstr ""
+msgstr "Nuvarande filter som tillämpas"
 
 #. Default: "Current password"
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
-msgstr ""
+msgstr "Nuvarande lösenord"
 
 #. Default: "Customize teaser content"
 #: components/manage/Blocks/Teaser/schema
 msgid "Customize teaser content"
-msgstr ""
+msgstr "Anpassa teaser innehåll"
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
-msgstr ""
+msgstr "Skär"
 
 #. Default: "Cut blocks"
 #: helpers/MessageLabels/MessageLabels
 msgid "Cut blocks"
-msgstr ""
+msgstr "Skär block"
 
 #. Default: "Daily"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
-msgstr ""
+msgstr "Dagligen"
 
 #. Default: "Database"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Database"
-msgstr ""
+msgstr "Databas"
 
 #. Default: "Database Information"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Information"
-msgstr ""
+msgstr "Databasinformation"
 
 #. Default: "Database Location"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -951,24 +951,24 @@ msgstr ""
 #. Default: "Database Size"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Size"
-msgstr ""
+msgstr "Databasstorlek"
 
 #. Default: "Database main"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database main"
-msgstr ""
+msgstr "Databas huvud"
 
 #. Default: "Date"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #. Default: "Date (newest first)"
 #: components/theme/Search/Search
 msgid "Date (newest first)"
-msgstr ""
+msgstr "Datum (nyaste första)"
 
 #. Default: "Default"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -987,17 +987,17 @@ msgstr ""
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
 msgid "Default"
-msgstr ""
+msgstr "Standard"
 
 #. Default: "Default value"
 #: components/manage/Widgets/SchemaWidget
 msgid "Default value"
-msgstr ""
+msgstr "Standardvärde"
 
 #. Default: "Default view"
 #: config/Views
 msgid "Default view"
-msgstr ""
+msgstr "Standard view"
 
 #. Default: "Delete"
 #: components/manage/Contents/Contents
