@@ -1,20 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: Plone\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Automatically generated\n"
-"Language: sv\n"
-"Language-Team: none\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"MIME-Version: 1.0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
-"Preferred-Encodings: utf-8\n"
-"Domain: volto\n"
+msgstr "Project-Id-Version: Plone\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-03-24T14:38:32.534Z\nPO-Revision-Date: 2025-09-05 06:01+0000\nLast-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\nLanguage-Team: Swedish <https://hosted.weblate.org/projects/plone/volto-18/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.13.1-rc\nLanguage-Code: en\nLanguage-Name: English\nPreferred-Encodings: utf-8\nDomain: volto\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -59,7 +44,7 @@ msgstr ""
 #. Default: "Activate and deactivate add-ons in the lists below."
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Activate and deactivate"
-msgstr ""
+msgstr "Aktivera och avaktivera"
 
 #. Default: "Active"
 #: components/manage/Rules/Rules
@@ -95,72 +80,72 @@ msgstr ""
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
 msgid "Add Alternative URL"
-msgstr ""
+msgstr "Lägg till alternativ URL"
 
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
 msgid "Add Content"
-msgstr ""
+msgstr "Lägga till innehåll"
 
 #. Default: "Add Content Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Content Rule"
-msgstr ""
+msgstr "Lägg till innehållsregel"
 
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
-msgstr ""
+msgstr "Lägga till regel"
 
 #. Default: "Add Translation…"
 #: components/manage/Toolbar/Types
 msgid "Add Translation…"
-msgstr ""
+msgstr "Lägg till översättning.."
 
 #. Default: "Add User"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add User"
-msgstr ""
+msgstr "Lägg till användare"
 
 #. Default: "Add a description…"
 #: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
-msgstr ""
+msgstr "Lägg till en beskrivning.."
 
 #. Default: "Add a new alternative url"
 #: components/manage/Aliases/Aliases
 msgid "Add a new alternative url"
-msgstr ""
+msgstr "Lägg till ett nytt alternativ url"
 
 #. Default: "Action added"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Add action"
-msgstr ""
+msgstr "Lägg till åtgärder"
 
 #. Default: "Add block"
 #: components/manage/BlockChooser/BlockChooserButton
 msgid "Add block"
-msgstr ""
+msgstr "Lägg till block"
 
 #. Default: "Add block in position {index}"
 #: components/manage/Blocks/Container/NewBlockAddButton
 msgid "Add block in position {index}"
-msgstr ""
+msgstr "Lägg till block i position {index}"
 
 #. Default: "Add block…"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
-msgstr ""
+msgstr "Lägg till block.."
 
 #. Default: "Condition added"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Add condition"
-msgstr ""
+msgstr "Lägg till villkor"
 
 #. Default: "Add content rule"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Add content rule"
-msgstr ""
+msgstr "Lägg till innehållsregel"
 
 #. Default: "Add criteria"
 #: components/manage/Widgets/QueryWidget
@@ -170,17 +155,17 @@ msgstr ""
 #. Default: "Add date"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Add date"
-msgstr ""
+msgstr "Lägga till datum"
 
 #. Default: "Add element to container"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 msgid "Add element to container"
-msgstr ""
+msgstr "Lägg element till behållare"
 
 #. Default: "Add field"
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
-msgstr ""
+msgstr "Lägg till fält"
 
 #. Default: "Add fieldset"
 #: components/manage/Widgets/SchemaWidget
@@ -190,7 +175,7 @@ msgstr ""
 #. Default: "Add group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add group"
-msgstr ""
+msgstr "Lägg till grupp"
 
 #. Default: "Add new content type"
 #: components/manage/Controlpanels/ContentTypes
@@ -200,22 +185,22 @@ msgstr ""
 #. Default: "Add new group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add new group"
-msgstr ""
+msgstr "Lägg till ny grupp"
 
 #. Default: "Add new user"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add new user"
-msgstr ""
+msgstr "Lägg till ny användare"
 
 #. Default: "Add to Groups"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
-msgstr ""
+msgstr "Lägg till grupper"
 
 #. Default: "Add users to group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add users to group"
-msgstr ""
+msgstr "Lägg till användare i grupp"
 
 #. Default: "Add term"
 #: components/manage/Widgets/VocabularyTermsWidget
@@ -225,7 +210,7 @@ msgstr ""
 #. Default: "Add {type}"
 #: components/manage/Add/Add
 msgid "Add {type}"
-msgstr ""
+msgstr "Lägg till {typ}"
 
 #. Default: "Add-Ons"
 #: components/manage/Controlpanels/Controlpanels
@@ -250,7 +235,7 @@ msgstr ""
 #. Default: "Added"
 #: components/manage/Rules/Rules
 msgid "Added"
-msgstr ""
+msgstr "Tillagd"
 
 #. Default: "Additional date"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
@@ -2883,7 +2868,7 @@ msgstr ""
 #. Default: "Minimalistic table design"
 #: config/Blocks
 msgid "Reduce complexity"
-msgstr ""
+msgstr "Minska komplexiteten"
 
 #. Default: "Referencing this item as related item"
 #: components/manage/LinksToItem/LinksToItem
