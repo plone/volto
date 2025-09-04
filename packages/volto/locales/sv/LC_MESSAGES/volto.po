@@ -296,17 +296,17 @@ msgstr ""
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 msgid "Alias has been added"
-msgstr ""
+msgstr "Alias har lagts till"
 
 #. Default: "Aliases have been removed."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been removed."
-msgstr ""
+msgstr "Alias har tagits bort."
 
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been uploaded."
-msgstr ""
+msgstr "Alias har laddats upp."
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
@@ -325,17 +325,17 @@ msgstr ""
 #. Default: "All content"
 #: config/Views
 msgid "All content"
-msgstr ""
+msgstr "Allt innehåll"
 
 #. Default: "Existing alternative URLs for this site"
 #: components/manage/Controlpanels/Aliases
 msgid "All existing alternative urls for this site"
-msgstr ""
+msgstr "Alla befintliga alternativa url för denna webbplats"
 
 #. Default: "Alphabetically"
 #: components/theme/Search/Search
 msgid "Alphabetically"
-msgstr ""
+msgstr "Alfabetiskt"
 
 #. Default: "Alt text"
 #: components/manage/Blocks/Image/schema
@@ -388,23 +388,23 @@ msgstr ""
 #. Default: "Apply working copy"
 #: components/manage/Toolbar/More
 msgid "Apply working copy"
-msgstr ""
+msgstr "Applicera arbetskopia"
 
 #. Default: "Are you sure you want to delete this field?"
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
-msgstr ""
+msgstr "Är du säker på att du vill ta bort detta fält?"
 
 #. Default: "Are you sure you want to delete this fieldset including all fields?"
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this fieldset including all fields?"
-msgstr ""
+msgstr "Är du säker på att du vill ta bort detta fält inklusive alla fält?"
 
 #. Default: "Ascending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 msgid "Ascending"
-msgstr ""
+msgstr "Uppstigning"
 
 #. Default: "Assign the {role} role to {entry}"
 #: components/manage/Sharing/Sharing
@@ -419,17 +419,17 @@ msgstr ""
 #. Default: "Automatically"
 #: components/manage/Controlpanels/Aliases
 msgid "Automatically"
-msgstr ""
+msgstr "Automatiskt"
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
-msgstr ""
+msgstr "Finns tillgänglig"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
 msgid "Available content rules:"
-msgstr ""
+msgstr "Tillgängliga innehållsregler:"
 
 #. Default: "Back"
 #: components/manage/Aliases/Aliases
@@ -463,7 +463,7 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Back"
-msgstr ""
+msgstr "Tillbaka"
 
 #. Default: "Base"
 #: components/manage/Diff/Diff
@@ -498,18 +498,18 @@ msgstr ""
 #. Default: "Broken relations"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "Broken relations"
-msgstr ""
+msgstr "Brutna relationer"
 
 #. Default: "Browse"
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
-msgstr ""
+msgstr "Bläddra"
 
 #. Default: "Browse the site, drop an image, or use a URL"
 #: components/manage/Widgets/ImageWidget
 msgid "Browse the site, drop an image, or type a URL"
-msgstr ""
+msgstr "Bläddra på webbplatsen, släpp en bild eller skriv en URL"
 
 #. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
@@ -639,13 +639,13 @@ msgstr ""
 #. Default: "Choose Target"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Choose Target"
-msgstr ""
+msgstr "Välj mål"
 
 #. Default: "Choose a file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Choose a file"
-msgstr ""
+msgstr "Välj en fil"
 
 #. Default: "Clear"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
@@ -666,7 +666,7 @@ msgstr ""
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
-msgstr ""
+msgstr "Klicka för att ladda ner full storlek bild"
 
 #. Default: "Close"
 #: components/manage/Widgets/SelectWidget
