@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Plone\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-03-24T14:38:32.534Z\nPO-Revision-Date: 2025-09-05 06:01+0000\nLast-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\nLanguage-Team: Swedish <https://hosted.weblate.org/projects/plone/volto-18/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.13.1-rc\nLanguage-Code: en\nLanguage-Name: English\nPreferred-Encodings: utf-8\nDomain: volto\n"
+msgstr "Project-Id-Version: Plone\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-03-24T14:38:32.534Z\nPO-Revision-Date: 2025-09-05 06:02+0000\nLast-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\nLanguage-Team: Swedish <https://hosted.weblate.org/projects/plone/volto-18/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.13.1-rc\nLanguage-Code: en\nLanguage-Name: English\nPreferred-Encodings: utf-8\nDomain: volto\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -1459,17 +1459,17 @@ msgstr ""
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
-msgstr ""
+msgstr "Förfallodatum"
 
 #. Default: "Expiration date"
 #: components/manage/Contents/Contents
 msgid "Expiration date"
-msgstr ""
+msgstr "Förfallodatum"
 
 #. Default: "Expired"
 #: components/manage/Contents/ContentsItem
 msgid "Expired"
-msgstr ""
+msgstr "Förfallna"
 
 #. Default: "External URL"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1555,7 +1555,7 @@ msgstr ""
 #: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
-msgstr ""
+msgstr "Filter"
 
 #. Default: "Filter Rules:"
 #: components/manage/Controlpanels/Rules/Rules
@@ -1610,17 +1610,17 @@ msgstr ""
 #. Default: "Forbidden"
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
-msgstr ""
+msgstr "Förbjudet"
 
 #. Default: "Fourth"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Fourth"
-msgstr ""
+msgstr "Fjärde"
 
 #. Default: "From"
 #: components/theme/ContactForm/ContactForm
 msgid "From"
-msgstr ""
+msgstr "Från"
 
 #. Default: "Full"
 #: components/manage/Blocks/Maps/Edit
@@ -1632,7 +1632,7 @@ msgstr ""
 #. Default: "Full Name"
 #: components/theme/Register/Register
 msgid "Full Name"
-msgstr ""
+msgstr "Fullständigt namn"
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels
@@ -1642,7 +1642,7 @@ msgstr ""
 #. Default: "GNU GPL license"
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
-msgstr ""
+msgstr "GNU GPL licens"
 
 #. Default: "General"
 #: components/manage/Controlpanels/Controlpanels
