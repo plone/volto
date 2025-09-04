@@ -127,6 +127,50 @@ test('renders a youtube video body component', () => {
   expect(json).toMatchSnapshot();
 });
 
+test('renders a youtu.be video body component', () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+
+  const component = renderer.create(
+    <Provider store={store}>
+      <Body
+        data={{
+          '@type': 'video',
+          url: 'https://youtu.be/KwRSRRyuk-Q',
+        }}
+      />
+    </Provider>,
+  );
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
+});
+
+test('renders a youtube short video body component', () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+
+  const component = renderer.create(
+    <Provider store={store}>
+      <Body
+        data={{
+          '@type': 'video',
+          url: 'https://www.youtube.com/shorts/ayyZ_S30Lhc',
+        }}
+      />
+    </Provider>,
+  );
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
+});
+
 test('renders a peertube video body component', () => {
   const store = mockStore({
     intl: {
