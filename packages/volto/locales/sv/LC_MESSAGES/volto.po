@@ -1429,7 +1429,7 @@ msgstr ""
 #. Default: "Example"
 #: components/manage/Controlpanels/Aliases
 msgid "Example"
-msgstr ""
+msgstr "Exempel"
 
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1439,7 +1439,7 @@ msgstr ""
 #. Default: "Exclude this occurence"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Exclude this occurence"
-msgstr ""
+msgstr "Utesluta denna händelse"
 
 #. Default: "Excluded from navigation"
 #: components/manage/Contents/Contents
