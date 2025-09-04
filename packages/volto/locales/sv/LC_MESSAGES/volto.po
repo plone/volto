@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Plone\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-03-24T14:38:32.534Z\nPO-Revision-Date: 2025-09-05 06:02+0000\nLast-Translator: Kai Metsävainio <kai.metsavainio@overtornea.se>\nLanguage-Team: Swedish <https://hosted.weblate.org/projects/plone/volto-18/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.13.1-rc\nLanguage-Code: en\nLanguage-Name: English\nPreferred-Encodings: utf-8\nDomain: volto\n"
+msgstr "Project-Id-Version: Plone\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-03-24T14:38:32.534Z\nPO-Revision-Date: 2025-09-05 06:02+0000\nLast-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\nLanguage-Team: Swedish <https://hosted.weblate.org/projects/plone/volto-18/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.13.1-rc\nLanguage-Code: en\nLanguage-Name: English\nPreferred-Encodings: utf-8\nDomain: volto\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -1874,7 +1874,7 @@ msgstr "Infoga kolumn före"
 #. Default: "Insert row after"
 #: config/Blocks
 msgid "Insert row after"
-msgstr ""
+msgstr "Infoga rad efter"
 
 #. Default: "Insert row before"
 #: config/Blocks
@@ -1884,27 +1884,27 @@ msgstr "Infoga rad före"
 #. Default: "Inspect relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "Inspect relations"
-msgstr ""
+msgstr "Inspektera relationer"
 
 #. Default: "Install"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Install"
-msgstr ""
+msgstr "Installera"
 
 #. Default: "Installed"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed"
-msgstr ""
+msgstr "Installerad"
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed version"
-msgstr ""
+msgstr "Installerad version"
 
 #. Default: "Installing a third party add-on"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installing a third party add-on"
-msgstr ""
+msgstr "Installera ett tredjepartstillägg"
 
 #. Default: "days"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1914,7 +1914,7 @@ msgstr ""
 #. Default: "Month(s)"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Monthly"
-msgstr ""
+msgstr "Intervall månatlig"
 
 #. Default: "week(s)"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1924,7 +1924,7 @@ msgstr ""
 #. Default: "year(s)"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Yearly"
-msgstr ""
+msgstr "Intervall Årsvis"
 
 #. Default: "Invalid block - Will be removed on saving"
 #: components/manage/Blocks/Block/DefaultView
@@ -1935,7 +1935,7 @@ msgstr ""
 #. Default: "Invalid teaser source"
 #: components/manage/Blocks/Teaser/Data
 msgid "Invalid teaser source"
-msgstr ""
+msgstr "Ogiltig teaserkälla"
 
 #. Default: "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 #: helpers/MessageLabels/MessageLabels
