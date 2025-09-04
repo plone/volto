@@ -31,7 +31,7 @@ exports[`renders a peertube video body component 1`] = `
   className="video-inner"
 >
   <iframe
-    src="peertube.eus/videos/embed/qjubDnZ79UmmjhAUqvX2zu"
+    src="https://peertube.eus/videos/embed/qjubDnZ79UmmjhAUqvX2zu"
     style={
       Object {
         "aspectRatio": "16/9",
