@@ -248,7 +248,7 @@ Although only Peertube is documented here, you can use this example for other vi
 
 ### Peertube instances
 
-You can configure the video block to use other instances of peertube, by adding them to the `allowedPeertubeInstances` array in your project configuration object.
+You can configure the video block to use other instances of Peertube by adding them to the `allowedPeertubeInstances` array in your project configuration object, as shown in the following example.
 
 By default
 ```js
