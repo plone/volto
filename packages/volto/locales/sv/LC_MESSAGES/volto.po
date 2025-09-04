@@ -585,7 +585,7 @@ msgstr ""
 #. Default: "Change Password"
 #: components/manage/Preferences/ChangePassword
 msgid "Change Password"
-msgstr ""
+msgstr "Ändra lösenord"
 
 #. Default: "Change State"
 #: components/manage/Contents/ContentsWorkflowModal
@@ -754,12 +754,12 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Confirm password"
-msgstr ""
+msgstr "Bekräfta lösenord"
 
 #. Default: "Connection refused"
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "Connection refused"
-msgstr ""
+msgstr "Anslutning vägrade"
 
 #. Default: "Contact form"
 #: components/theme/ContactForm/ContactForm
@@ -1057,17 +1057,17 @@ msgstr ""
 #. Default: "Delete selected items?"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Delete selected items?"
-msgstr ""
+msgstr "Ta bort valda objekt?"
 
 #. Default: "Delete this item?"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Delete this item?"
-msgstr ""
+msgstr "Ta bort detta objekt?"
 
 #. Default: "Deleted"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Deleted"
-msgstr ""
+msgstr "Raderad"
 
 #. Default: "Deleting this item breaks {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
@@ -1174,7 +1174,7 @@ msgstr ""
 #. Default: "Download file"
 #: components/theme/View/FileView
 msgid "Download file"
-msgstr ""
+msgstr "Ladda ner fil"
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -1361,28 +1361,28 @@ msgstr ""
 #. Default: "Enter your current password."
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
-msgstr ""
+msgstr "Ange ditt nuvarande lösenord."
 
 #. Default: "Enter your email for verification."
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your email for verification."
-msgstr ""
+msgstr "Ange din e-post för verifiering."
 
 #. Default: "Enter your new password. Minimum 8 characters."
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your new password. Minimum 8 characters."
-msgstr ""
+msgstr "Ange ditt nya lösenord. Minst 8 tecken."
 
 #. Default: "Enter your username for verification."
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your username for verification."
-msgstr ""
+msgstr "Ange ditt användarnamn för verifiering."
 
 #. Default: "Entries"
 #: components/manage/Blocks/ToC/Schema
 msgid "Entries"
-msgstr ""
+msgstr "Inlägg"
 
 #. Default: "Error"
 #: components/manage/Add/Add
@@ -1399,7 +1399,7 @@ msgstr ""
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Error"
-msgstr ""
+msgstr "Fel"
 
 #. Default: "Event"
 #: components/manage/Controlpanels/Rules/Rules
@@ -1419,7 +1419,7 @@ msgstr ""
 #. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
 #: helpers/MessageLabels/MessageLabels
 msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
-msgstr ""
+msgstr "Event startdatum måste vara på eller innan {endDateValueOrEndFieldName}"
 
 #. Default: "Event view"
 #: config/Views
@@ -1474,7 +1474,7 @@ msgstr ""
 #. Default: "External URL"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
-msgstr ""
+msgstr "Extern URL"
 
 #. Default: "Facet"
 #: components/manage/Blocks/Search/schema
