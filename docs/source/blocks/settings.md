@@ -258,6 +258,7 @@ const allowedPeertubeInstances = [
   'tube.reseau-canope.fr', // About: https://tube.reseau-canope.fr/about/instance
   'peertube.eus', // About: https://peertube.eus/about/instance
 ];
+```
 
 ## Search block configuration
 
