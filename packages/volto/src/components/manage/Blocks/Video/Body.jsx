@@ -107,7 +107,7 @@ const Body = ({ data, isEditMode }) => {
 
   if (
     data.url &&
-    peertubeInstances instanceof Array &&
+    Array.isArray(peertubeInstances) &&
     data.url.match(new RegExp(peertubeInstances.join('|'), 'gi'))
   ) {
     const instance = data.url.match(/^(.*)\/w\/(.*)$/)[1];
