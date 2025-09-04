@@ -718,7 +718,7 @@ msgstr ""
 #. Default: "Compare"
 #: components/manage/Diff/Diff
 msgid "Compare"
-msgstr ""
+msgstr "Jämför"
 
 #. Default: "Condition changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -1652,12 +1652,12 @@ msgstr ""
 #. Default: "Global role"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
-msgstr ""
+msgstr "Global roll"
 
 #. Default: "Google Maps Embedded Block"
 #: components/manage/Blocks/Maps/Edit
 msgid "Google Maps Embedded Block"
-msgstr ""
+msgstr "Google Maps Inbäddat block"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
@@ -1672,30 +1672,30 @@ msgstr ""
 #. Default: "Group created"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group created"
-msgstr ""
+msgstr "Grupp skapad"
 
 #. Default: "Group deleted"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group deleted"
-msgstr ""
+msgstr "Gruppen raderad"
 
 #. Default: "Group roles updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group roles updated"
-msgstr ""
+msgstr "Grupproller uppdaterade"
 
 #. Default: "Groupname"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: helpers/MessageLabels/MessageLabels
 msgid "Groupname"
-msgstr ""
+msgstr "Gruppnamn"
 
 #. Default: "Groups"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: helpers/MessageLabels/MessageLabels
 msgid "Groups"
-msgstr ""
+msgstr "Grupper"
 
 #. Default: "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
@@ -1864,7 +1864,7 @@ msgstr ""
 #. Default: "Insert col after"
 #: config/Blocks
 msgid "Insert col after"
-msgstr ""
+msgstr "Infoga kol efter"
 
 #. Default: "Insert col before"
 #: config/Blocks
