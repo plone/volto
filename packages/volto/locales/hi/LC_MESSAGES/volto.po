@@ -4505,11 +4505,6 @@ msgstr "आपको साइट से लॉगआउट किया गय�
 msgid "You have not the required permission for this control panel."
 msgstr "आपके पास इस नियंत्रण पटल के लिए आवश्यक अनुमति नहीं है।"
 
-#. Default: "YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed"
-#: components/manage/Blocks/Video/Edit
-msgid "YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed"
-msgstr ""
-
 #. Default: "Your email is required for reset your password."
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
@@ -5257,6 +5252,11 @@ msgstr "{id} की कंटेंट प्रकार"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} स्कीमा"
+
+#. Default: "{sources} or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "{sources} or mp4 URL allowed"
+msgstr ""
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions

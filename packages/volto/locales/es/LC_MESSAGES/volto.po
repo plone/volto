@@ -4512,11 +4512,6 @@ msgstr "Ha sido salido del sitio."
 msgid "You have not the required permission for this control panel."
 msgstr "No tiene el permiso requerido para este panel de control."
 
-#. Default: "YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed"
-#: components/manage/Blocks/Video/Edit
-msgid "YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed"
-msgstr ""
-
 #. Default: "Your email is required for reset your password."
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
@@ -5264,6 +5259,11 @@ msgstr "{id} Tipo de Contenido"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} Esquema"
+
+#. Default: "{sources} or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "{sources} or mp4 URL allowed"
+msgstr ""
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions

@@ -24,9 +24,8 @@ const messages = defineMessages({
     defaultMessage: 'Type a Video (YouTube, Vimeo or mp4) URL',
   },
   allowedURLs: {
-    id: 'YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed',
-    defaultMessage:
-      'YouTube, Vimeo, Peertube ({instances}) instance or mp4 URL allowed',
+    id: '{sources} or mp4 URL allowed',
+    defaultMessage: '{sources} or mp4 URL allowed',
   },
 });
 
@@ -95,7 +94,10 @@ const Edit = (props) => {
             <img src={videoBlockSVG} alt="" />
             <p>
               {intl.formatMessage(messages.allowedURLs, {
-                instances: peertubeInstances.join(', '),
+                sources:
+                  peertubeInstances.length > 0
+                    ? `Youtube, Vimeo, Peertube (${peertubeInstances.join(', ')}) instance`
+                    : 'Youtube, Vimeo',
               })}
             </p>
             <div className="toolbar-inner">
