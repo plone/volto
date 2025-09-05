@@ -185,7 +185,6 @@ You should check the dependencies in their `package.json` for more details.
 - [Climate and energy in the EU](https://github.com/eea/climate-energy-frontend) - Volto project for [Climate and energy in the EU website](https://climate-energy.eea.europa.eu)
 - [volto-bise](https://github.com/eea/volto-bise) - A Volto project packaged as an addon. It provides Theming using a razzle.extend.js provided alias.
 - [design-volto-theme](https://github.com/RedTurtle/design-volto-theme) Volto theme for Italian Public Administration
-- [2021.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2021) - Volto project for [Plone Conference 2021 site](https://2021.ploneconf.org)
 - [2022.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2022) - Volto project for [Plone Conference 2022 site](https://2022.ploneconf.org)
 - [2023.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2023) - Volto project for [Plone Conference 2023 site](https://2023.ploneconf.org)
 - [plone.org.br](https://github.com/plonegovbr/plone.org.br) - Volto project for the [Brazilian Plone Community](https://plone.org.br)
