@@ -247,6 +247,8 @@ This section describes how to configure video blocks.
 
 ### Peertube instances
 
+[Peertube](https://joinpeertube.org/) is a free and open-source, decentralized, ActivityPub federated video platform.
+
 You can configure the video block to use other instances of Peertube by adding them to the `allowedPeertubeInstances` array in your project configuration object, as shown in the following example.
 
 ```js
