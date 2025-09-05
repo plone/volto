@@ -118,7 +118,7 @@ frontend-docker-start: ## Starts a Docker-based frontend for development
 
 .PHONY: acceptance-frontend-dev-start
 acceptance-frontend-dev-start: ## Start acceptance frontend in development mode
-	RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm start
+	RAZZLE_DEV_PROXY_API_PATH=http://127.0.0.1:55001/plone pnpm start
 
 ######### Core Acceptance tests
 

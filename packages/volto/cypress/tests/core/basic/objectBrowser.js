@@ -133,5 +133,8 @@ describe('Object Browser Tests', () => {
     cy.get('.field-wrapper-href .objectbrowser-field')
       .click()
       .type('./my-nested-page{enter}');
+    cy.get('#toolbar-save').click();
+    cy.wait('@content');
+    cy.contains('My Nested Page');
   });
 });
