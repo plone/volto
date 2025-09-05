@@ -351,12 +351,7 @@ const blocksConfig = {
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
-    allowedPeertubeInstances: [
-      'freediverse.com', // About: https://freediverse.com/about/instance
-      'fair.tube', // About: https://fair.tube/about/instance
-      'tube.reseau-canope.fr', // About: https://tube.reseau-canope.fr/about/instance
-      'peertube.eus', // About: https://peertube.eus/about/instance
-    ],
+    allowedPeertubeInstances: [],
   },
   toc: {
     id: 'toc',
