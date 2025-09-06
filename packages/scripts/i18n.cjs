@@ -6,7 +6,7 @@
  */
 
 const { find, keys, map, concat, reduce } = require('lodash');
-const glob = require('glob').sync;
+const glob = require('glob').globSync;
 const fs = require('fs');
 const Pofile = require('pofile');
 const babel = require('@babel/core');
@@ -62,7 +62,7 @@ function getMessages() {
             'build/messages/src/customizations/**',
             'build/messages/src/addons/**',
           ],
-        }),
+        }).sort((a, b) => a.localeCompare(b, 'en')),
         (filename) =>
           map(JSON.parse(fs.readFileSync(filename, 'utf8')), (message) => ({
             ...message,
