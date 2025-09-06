@@ -1,5 +1,6 @@
 import './storybook-base.css';
 import '../../theming/styles/tailwind.css';
+import '../src/styles/basic/main.css';
 
 export const parameters = {
   backgrounds: {
