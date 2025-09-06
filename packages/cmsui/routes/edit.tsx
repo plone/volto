@@ -137,7 +137,7 @@ export default function Edit() {
                   </AccordionItem>
                 </Accordion>
               ))}
-              <Plug pluggable="toolbar" id="edit-save-button">
+              <Plug pluggable="toolbar-top" id="edit-save-button">
                 <Button
                   aria-label={t('cmsui.save')}
                   type="submit"

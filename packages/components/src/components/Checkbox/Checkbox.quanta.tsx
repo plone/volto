@@ -53,7 +53,7 @@ const boxStyles = tv({
   variants: {
     isSelected: {
       false:
-        'group-pressed:[--color:theme(colors.gray.500)] dark:group-pressed:[--color:theme(colors.zinc.300)] border-[--color] bg-white [--color:theme(colors.gray.400)] dark:bg-zinc-900 dark:[--color:colors.zinc-400)]',
+        'group-pressed:[--color:theme(colors.gray.500)] dark:group-pressed:[--color:theme(colors.zinc.300)] dark:[--color:colors.zinc-400)] border-[--color] bg-white [--color:theme(colors.gray.400)] dark:bg-zinc-900',
       true: 'group-pressed:[--color:theme(colors.gray.800)] dark:group-pressed:[--color:theme(colors.slate.200)] border-[--color] bg-[--color] [--color:theme(colors.gray.700)] dark:[--color:theme(colors.slate.300)] forced-colors:![--color:Highlight]',
     },
     isInvalid: {
