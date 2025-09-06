@@ -569,8 +569,8 @@ importers:
   packages/components:
     dependencies:
       '@internationalized/date':
-        specifier: ^3.8.2
-        version: 3.8.2
+        specifier: ^3.9.0
+        version: 3.9.0
       '@react-aria/utils':
         specifier: ^3.29.0
         version: 3.29.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -2429,9 +2429,6 @@ packages:
     peerDependenciesMeta:
       '@types/node':
         optional: true
-
-  '@internationalized/date@3.8.2':
-    resolution: {integrity: sha512-/wENk7CbvLbkUvX1tu0mwq49CVkkWpkXubGel6birjRPyo6uQ4nQpnq5xZu823zRCwwn82zgHrvgF1vZyvmVgA==}
 
   '@internationalized/date@3.9.0':
     resolution: {integrity: sha512-yaN3brAnHRD+4KyyOsJyk49XUvj2wtbNACSqg0bz3u8t2VuzhC8Q5dfRnrSxjnnbDb+ienBnkn1TzQfE154vyg==}
@@ -12186,10 +12183,6 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.10.7
 
-  '@internationalized/date@3.8.2':
-    dependencies:
-      '@swc/helpers': 0.5.10
-
   '@internationalized/date@3.9.0':
     dependencies:
       '@swc/helpers': 0.5.10
@@ -13255,7 +13248,7 @@ snapshots:
 
   '@react-aria/i18n@3.12.9(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
-      '@internationalized/date': 3.8.2
+      '@internationalized/date': 3.9.0
       '@internationalized/message': 3.1.7
       '@internationalized/number': 3.6.2
       '@internationalized/string': 3.2.6
