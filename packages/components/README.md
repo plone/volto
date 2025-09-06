@@ -10,8 +10,9 @@ This package contains ReactJS components for using Plone as a headless CMS.
 The purpose of this package is to provide an agnostic set of baseline components to build sites upon.
 
 > [!WARNING]
-> This package moved his active development to the `seven` branch.
-> The stable version will be maintained here (3.x.x) series, and changes will be backported to 18.x.x if necessary.
+> Active development of this package is now on the `seven` branch.
+> Its stable version will be maintained here for its 3.x.x series.
+> Changes will be backported to 18.x.x if necessary.
 > See breaking changes in the upcoming alphas.
 
 ## Storybook / Demo
