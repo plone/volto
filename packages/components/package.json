@@ -141,7 +141,7 @@
     "release-it": "catalog:",
     "storybook": "^8.6.12",
     "tailwindcss-react-aria-components": "^2.0.0",
-    "tsup": "^8.3.5",
+    "tsup": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plugin-svgr": "^4.3.0",
