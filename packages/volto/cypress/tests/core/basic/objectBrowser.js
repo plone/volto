@@ -13,6 +13,18 @@ describe('Object Browser Tests', () => {
     });
     cy.createContent({
       contentType: 'Document',
+      contentId: 'my-nested-page',
+      contentTitle: 'My Nested Page',
+      path: '/my-page',
+    });
+    cy.createContent({
+      contentType: 'Image',
+      contentId: 'my-nested-image',
+      contentTitle: 'My Nested Image',
+      path: '/my-page',
+    });
+    cy.createContent({
+      contentType: 'Document',
       contentId: 'my-page-1',
       contentTitle: 'My Second Page',
     });
@@ -112,5 +124,17 @@ describe('Object Browser Tests', () => {
     cy.get('.block img')
       .should('have.attr', 'src')
       .and('contains', '/my-searchable-image/@@images/image');
+  });
+
+  it('As editor I can type a relative path of an existing document object', () => {
+    cy.getSlate().click();
+    cy.get('.ui.basic.icon.button.block-add-button').click();
+    cy.get('.ui.basic.icon.button.teaser').contains('Teaser').click();
+    cy.get('.field-wrapper-href .objectbrowser-field')
+      .click()
+      .type('./my-nested-page{enter}');
+    cy.get('#toolbar-save').click();
+    cy.wait('@content');
+    cy.contains('My Nested Page');
   });
 });
