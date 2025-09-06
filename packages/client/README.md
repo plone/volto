@@ -14,6 +14,10 @@ It has the potential to send requests to other APIs, when provided the custom qu
 
 These functions can be used in other use cases, including command line helpers, scripts, or programmatic tests.
 
+> [!WARNING]
+> This package moved his active development to the `seven` branch.
+> This package will continue indefinitely in alpha version and it will be maintained here (1.0.0-alpha.x) if any bug is needed to fix.
+> See breaking changes in the upcoming alphas.
 
 ## Installation
 
