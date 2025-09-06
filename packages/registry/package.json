@@ -111,7 +111,7 @@
     "@plone/types": "workspace:*",
     "@types/debug": "^4.1.12",
     "@types/glob": "^8.1.0",
-    "@types/node": "^20",
+    "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@types/tmp": "^0.2.6",
