@@ -70,7 +70,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/uuid": "^9.0.2",
-    "@vitejs/plugin-react": "^4.1.0",
+    "@vitejs/plugin-react": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "jsdom": "^21.1.1",
     "release-it": "17.1.1",
