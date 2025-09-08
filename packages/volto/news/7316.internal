@@ -1,0 +1,1 @@
+Change `RAZZLE_API_PATH` with `RAZZLE_DEV_PROXY_API_PATH` for all acceptance tests. @sneridagh

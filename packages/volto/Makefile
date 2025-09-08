@@ -174,11 +174,11 @@ deployment-ci-acceptance-test-run-all: ## With a single command, run the backend
 
 .PHONY: cookieplone-acceptance-frontend-prod-start
 cookieplone-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for cookieplone tests
-	(cd ../../volto-add-on && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
+	(cd ../../volto-add-on && RAZZLE_DEV_PROXY_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
 
 .PHONY: project-acceptance-frontend-prod-start
 project-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for project tests
-	(cd ../../my-volto-app && RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod)
+	(cd ../../my-volto-app && RAZZLE_DEV_PROXY_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod)
 
 ######### Core Sandbox Acceptance tests
 
@@ -188,11 +188,11 @@ coresandbox-acceptance-backend-start: ## Start backend acceptance server for cor
 
 .PHONY: coresandbox-acceptance-frontend-prod-start
 coresandbox-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for core sandbox tests
-	ADDONS=@plone/volto-coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+	ADDONS=@plone/volto-coresandbox RAZZLE_DEV_PROXY_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: coresandbox-acceptance-frontend-dev-start
 coresandbox-acceptance-frontend-dev-start: build-deps ## Start acceptance frontend in development mode for core sandbox tests
-	ADDONS=@plone/volto-coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm start
+	ADDONS=@plone/volto-coresandbox RAZZLE_DEV_PROXY_API_PATH=http://127.0.0.1:55001/plone pnpm start
 
 .PHONY: coresandbox-acceptance-test
 coresandbox-acceptance-test: ## Start Cypress in interactive mode for core sandbox tests
@@ -214,7 +214,7 @@ multilingual-acceptance-backend-start: ## Start backend acceptance server for mu
 
 .PHONY: multilingual-acceptance-frontend-prod-start
 multilingual-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for multilingual tests
-	ADDONS=@plone/volto-coresandbox:multilingualFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+	ADDONS=@plone/volto-coresandbox:multilingualFixture RAZZLE_DEV_PROXY_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: multilingual-acceptance-test
 multilingual-acceptance-test: ## Start Cypress in interactive mode for multilingual tests
@@ -258,7 +258,7 @@ working-copy-acceptance-backend-start: ## Start backend acceptance server for wo
 
 .PHONY: working-copy-acceptance-frontend-prod-start
 working-copy-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for working copy tests
-	RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+	RAZZLE_DEV_PROXY_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: working-copy-acceptance-test
 working-copy-acceptance-test: ## Start Cypress in interactive mode for working copy tests
