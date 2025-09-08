@@ -1,6 +1,7 @@
 .item-actions-popover {
   .popover-list-item {
     --link-color: var(--quanta-denim);
+
     &.view,
     &.move-to-bottom {
       border-bottom: 1px solid var(--quanta-smoke);

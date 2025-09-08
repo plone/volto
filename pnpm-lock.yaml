@@ -746,6 +746,9 @@ importers:
       '@plone/helpers':
         specifier: workspace:*
         version: link:../helpers
+      '@plone/layout':
+        specifier: workspace:*
+        version: link:../layout
       '@plone/react-router':
         specifier: workspace:*
         version: link:../react-router

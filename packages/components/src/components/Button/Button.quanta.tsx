@@ -19,12 +19,12 @@ const button = tv({
   variants: {
     variant: {
       neutral:
-        'pressed:bg-quanta-cobalt bg-quanta-air hover:bg-quanta-snow active:bg-quanta-silver focus:bg-quanta-snow text-quanta-iron has-[svg]:text-quanta-iron',
+        'pressed:bg-quanta-cobalt pressed:text-quanta-air bg-quanta-air hover:bg-quanta-snow active:bg-quanta-silver focus:bg-quanta-snow text-quanta-iron has-[svg]:text-quanta-iron',
       primary:
-        'pressed:bg-quanta-cobalt bg-quanta-air hover:bg-quanta-arctic hover:text-quanta-royal active:bg-quanta-sky active:text-quanta-royal focus:bg-quanta-artic focus:text-quanta-royal text-quanta-sapphire',
+        'pressed:bg-quanta-cobalt pressed:text-quanta-air bg-quanta-air hover:bg-quanta-arctic hover:text-quanta-royal active:bg-quanta-sky active:text-quanta-royal focus:bg-quanta-artic focus:text-quanta-royal text-quanta-sapphire',
       destructive:
         'pressed:bg-quanta-rose active:bg-quanta-flamingo bg-quanta-air hover:bg-quanta-ballet hover:text-quanta-wine active:text-quanta-wine focus:bg-quanta-ballet focus:text-quanta-wine text-quanta-candy',
-      icon: 'pressed:bg-quanta-cobalt pressed:[&_svg]:text-white bg-quanta-air hover:bg-quanta-snow active:bg-quanta-silver focus:bg-quanta-artic text-quanta-iron has-[svg]:text-quanta-iron flex items-center justify-center border-0 p-1',
+      icon: 'pressed:bg-quanta-cobalt pressed:text-quanta-air pressed:[&_svg]:text-white bg-quanta-air hover:bg-quanta-snow active:bg-quanta-silver focus:bg-quanta-artic text-quanta-iron has-[svg]:text-quanta-iron flex items-center justify-center border-0 p-1',
     },
     accent: {
       true: '',

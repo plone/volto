@@ -52,6 +52,7 @@
     "@plone/cmsui": "workspace:*",
     "@plone/components": "workspace:*",
     "@plone/helpers": "workspace:*",
+    "@plone/layout": "workspace:*",
     "@plone/react-router": "workspace:*",
     "@plone/registry": "workspace:*",
     "@react-types/shared": "^3.29.1",

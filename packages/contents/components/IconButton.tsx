@@ -13,7 +13,7 @@ const IconButton = forwardRef(function _IconButton(
       {...props}
       className={twMerge(
         clsx(
-          'pressed:border-transparent text-quanta-pigeon border-transparent p-0 disabled:border-transparent',
+          'pressed:border-transparent pressed[&_svg]:text-white text-quanta-pigeon border-transparent p-0 disabled:border-transparent',
           props.className,
         ),
       )}

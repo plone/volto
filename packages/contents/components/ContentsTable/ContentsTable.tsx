@@ -390,7 +390,7 @@ export function ContentsTable({
     >
       <article id="content" className="mx-auto px-4 py-2 lg:px-8">
         <Topbar>
-          <div className="title-block">
+          <div className="title-block flex-auto">
             <Breadcrumbs
               items={breadcrumbs}
               className="text-quanta-sapphire contents-breadcrumbs"
@@ -436,16 +436,17 @@ export function ContentsTable({
               <DialogTrigger>
                 <Button
                   variant="primary"
-                  className="bg-quanta-sapphire hover:bg-quanta-royal text-quanta-air hover:text-quanta-air active:text-quanta-air focus:text-quanta-air h-10 w-10 cursor-pointer rounded-full border-0 p-1.5 outline-offset-2"
+                  className="bg-quanta-sapphire hover:bg-quanta-royal text-quanta-air hover:text-quanta-air active:text-quanta-air focus:text-quanta-air cursor-pointer rounded-full border-0 p-1.5 outline-offset-2"
                 >
                   <AddIcon />
                 </Button>
                 <AddContentPopover
                   path={pathname}
+                  content={content}
                   addableTypes={addableTypes}
                 />
               </DialogTrigger>
-              <Tooltip placement="bottom">Add content</Tooltip>
+              <Tooltip placement="bottom">{t('contents.actions.add')}</Tooltip>
             </TooltipTrigger>
           </div>
         </Topbar>

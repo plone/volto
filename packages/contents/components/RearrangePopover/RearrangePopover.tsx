@@ -56,55 +56,63 @@ export function RearrangePopover({
   return (
     <Popover
       {...popoverProps}
-      className="react-aria-Popover rearrange-popover"
+      className="q react-aria-Popover rearrange-popover"
       dialogAriaLabelledby="rearrange-popover-label"
     >
-      <div className="popover-label" id="rearrange-popover-label">
-        {t('contents.rearrange.by')}
-      </div>
-      <Menu items={menuItems}>
-        {function renderSubmenu(item) {
-          if (item.children) {
-            return (
-              <SubmenuTrigger delay={100}>
-                <MenuItem
-                  key={item.id}
-                  textValue={item.name}
-                  className={({ isFocused, isOpen }) =>
-                    `react-aria-MenuItem rearrange-menu-item ${
-                      isFocused ? 'focused' : ''
-                    } ${isOpen ? 'open' : ''}`
-                  }
-                >
-                  {({ hasSubmenu }) => (
-                    <>
-                      {item.name}
-                      {hasSubmenu && <ChevronrightIcon size="xs" />}
-                    </>
-                  )}
-                </MenuItem>
-                <Popover
-                  dialogAriaLabel={t('contents.rearrange.pickOrder', {
-                    index: item.name,
-                  })}
-                  className="react-aria-Popover rearrange-popover"
-                >
-                  <Menu
-                    items={item.children}
-                    onAction={(id) => {
-                      sortItems(id.toString());
-                    }}
+      <fieldset>
+        <legend>{t('contents.rearrange.by')}</legend>
+
+        <Menu items={menuItems}>
+          {function renderSubmenu(item) {
+            if (item.children) {
+              return (
+                <SubmenuTrigger delay={100}>
+                  <MenuItem
+                    key={item.id}
+                    textValue={item.name}
+                    className={({ isFocused, isOpen }) =>
+                      `react-aria-MenuItem rearrange-menu-item ${
+                        isFocused ? 'focused' : ''
+                      } ${isOpen ? 'open' : ''}`
+                    }
                   >
-                    {(item) => renderSubmenu(item)}
-                  </Menu>
-                </Popover>
-              </SubmenuTrigger>
-            );
-          } else {
-            return <MenuItem key={item.id}>{item.name}</MenuItem>;
-          }
-        }}
-      </Menu>
+                    {({ hasSubmenu }) => (
+                      <>
+                        {item.name}
+                        {hasSubmenu && <ChevronrightIcon size="xs" />}
+                      </>
+                    )}
+                  </MenuItem>
+                  <Popover
+                    dialogAriaLabel={t('contents.rearrange.pickOrder', {
+                      index: item.name,
+                    })}
+                    className="q react-aria-Popover rearrange-popover"
+                  >
+                    <fieldset>
+                      <legend>
+                        {t('contents.rearrange.pickOrder', {
+                          index: item.name,
+                        })}
+                      </legend>
+                      <Menu
+                        items={item.children}
+                        onAction={(id) => {
+                          sortItems(id.toString());
+                        }}
+                      >
+                        {(item) => renderSubmenu(item)}
+                      </Menu>
+                    </fieldset>
+                  </Popover>
+                </SubmenuTrigger>
+              );
+            } else {
+              return <MenuItem key={item.id}>{item.name}</MenuItem>;
+            }
+          }}
+        </Menu>
+      </fieldset>
     </Popover>
   );
 }

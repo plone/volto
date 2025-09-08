@@ -1,6 +1,7 @@
 import React from 'react';
 import { Popover, Checkbox } from '@plone/components';
 import { useTranslation } from 'react-i18next';
+import PopoverListItem from '../PopoverListItem';
 
 interface Props {
   indexes: {
@@ -22,30 +23,31 @@ export const TableIndexesPopover = ({ indexes, onSelectIndex }: Props) => {
 
   return (
     <Popover
-      className="react-aria-Popover table-indexes-popover"
+      className="q react-aria-Popover table-indexes-popover"
       dialogAriaLabelledby="table-indexes-label"
     >
-      <div id="table-indexes-label" className="popover-label">
-        {t('contents.indexes.select_columns')}
-      </div>
-      <ul className="popover-list">
-        {indexes.order.map((index) => {
-          if (index === 'sortable_title') return null;
-          return (
-            <li key={index} className="popover-list-item">
-              <Checkbox
-                value={index}
-                isSelected={indexes.values[index].selected}
-                onChange={() => {
-                  onSelectIndex(index);
-                }}
-                label={t(indexes.values[index].label)}
-                slot={null}
-              />
-            </li>
-          );
-        })}
-      </ul>
+      <fieldset>
+        <legend>{t('contents.indexes.select_columns')}</legend>
+
+        <ul className="popover-list">
+          {indexes.order.map((index) => {
+            if (index === 'sortable_title') return null;
+            return (
+              <PopoverListItem key={index}>
+                <Checkbox
+                  value={index}
+                  isSelected={indexes.values[index].selected}
+                  onChange={() => {
+                    onSelectIndex(index);
+                  }}
+                  label={t(indexes.values[index].label)}
+                  slot={null}
+                />
+              </PopoverListItem>
+            );
+          })}
+        </ul>
+      </fieldset>
     </Popover>
   );
 };

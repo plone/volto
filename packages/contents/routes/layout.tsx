@@ -5,6 +5,7 @@ import {
   Scripts,
   ScrollRestoration,
   useNavigate,
+  useLoaderData,
   useRouteLoaderData,
   type LinksFunction,
   type MetaFunction,
@@ -12,9 +13,15 @@ import {
 import { useTranslation } from 'react-i18next';
 import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import { type RootLoader } from 'seven/app/root';
-import { PluggablesProvider } from '@plone/cmsui/components/Pluggable';
+import { PluggablesProvider } from '@plone/layout/components/Pluggable';
 import Toolbar from '@plone/cmsui/components/Toolbar/Toolbar';
+import config from '@plone/registry';
 // import TopNavBar from '@plone/cmsui/components/Layout/TopNavBar';
+
+// eslint-disable-next-line import/no-unresolved
+import stylesheet from 'seven/cmsui.css?url';
+import basicComponentsStylesheets from '@plone/components/dist/basic.css?url';
+import quantaComponentsStylesheet from '@plone/components/dist/quanta.css?url';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -32,6 +39,11 @@ export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
 };
 
 export const links: LinksFunction = () => [
+  // { rel: 'stylesheet', href: publicStylesheet },
+
+  { rel: 'stylesheet', href: basicComponentsStylesheets },
+  { rel: 'stylesheet', href: quantaComponentsStylesheet },
+  { rel: 'stylesheet', href: stylesheet },
   {
     rel: 'icon',
     href: '/favicon.ico',
@@ -55,7 +67,12 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export async function loader() {
+  return { cssLayers: config.settings.cssLayers };
+}
+
 export default function Index() {
+  const { cssLayers } = useLoaderData<typeof loader>();
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
   const navigate = useNavigate();
@@ -64,20 +81,24 @@ export default function Index() {
     return null;
   }
   const { content, locale } = rootData;
+  // console.log(i18n);
 
   return (
-    <html lang={content.language?.token || locale || 'en'} dir={i18n.dir()}>
+    <html lang={content.language?.token || locale || 'en'}>
+      {/* dir={i18n.dir()} */}
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="mobile-web-app-capable" content="yes" />
+        {/* We pre-define here the @layer before tailwind does, adding our own layers */}
+        <style>{`@layer ${cssLayers.join(', ')};`}</style>
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="cmsui">
         <PluggablesProvider>
           <RACRouterProvider navigate={navigate}>
-            <div className="grid transition-[grid-template-columns] duration-200 ease-linear grid-cols-[80px_1fr] min-h-[100dvh]">
+            <div className="grid grid-cols-[80px_1fr_0px] transition-[grid-template-columns] duration-200 ease-linear">
               <Toolbar />
               <main id="main">
                 {/* <TopNavBar /> */}
