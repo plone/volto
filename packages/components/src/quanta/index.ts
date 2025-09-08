@@ -7,6 +7,9 @@ export * from '../components/Container/Container.quanta';
 export * from '../components/Field/Field.quanta';
 export * from '../components/Link/Link.quanta';
 export * from '../components/TextField/TextField.quanta';
+export { SizeWidget } from '../components/SizeWidget/SizeWidget';
+export { AlignWidget } from '../components/AlignWidget/AlignWidget';
+export { WidthWidget } from '../components/WidthWidget/WidthWidget';
 
 export * from '../components/DateTimePicker/DateTimePicker.quanta';
 export * from '../components/DatePicker/DatePicker.quanta';

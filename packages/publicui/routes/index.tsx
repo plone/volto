@@ -7,14 +7,26 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
+  useMatches,
+  useLoaderData,
   useNavigate,
   useRouteLoaderData,
+  type UIMatch,
   type LinksFunction,
   type MetaFunction,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
+import SlotRenderer from '@plone/layout/SlotRenderer';
+import clsx from 'clsx';
+import config from '@plone/registry';
+
+import styles from '@plone/layout/components/App/App.module.css';
+
+// eslint-disable-next-line import/no-unresolved
+import stylesheet from 'seven/publicui.css?url';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -32,6 +44,7 @@ export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
 };
 
 export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: stylesheet },
   {
     rel: 'icon',
     href: '/favicon.ico',
@@ -55,10 +68,20 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export async function loader() {
+  return { cssLayers: config.settings.cssLayers };
+}
+
 export default function Index() {
+  const location = useLocation();
+  const { cssLayers } = useLoaderData<typeof loader>();
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
   const navigate = useNavigate();
+  const matches = useMatches() as UIMatch<unknown, { bodyClass: string }>[];
+  const routesBodyClasses = matches
+    .filter((match) => match.handle?.bodyClass)
+    .map((match) => match.handle?.bodyClass);
 
   if (!rootData) {
     return null;
@@ -71,14 +94,34 @@ export default function Index() {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="mobile-web-app-capable" content="yes" />
+        {/* We pre-define here the @layer before tailwind does, adding our own layers */}
+        <style>{`@layer ${cssLayers.join(', ')};`}</style>
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className={clsx(routesBodyClasses)}>
         <div role="navigation" aria-label="Toolbar" id="toolbar" />
         <div id="main">
           <RACRouterProvider navigate={navigate}>
-            <Outlet />
+            <div className={clsx(styles.app, 'app-slot')}>
+              <header id="header" className="header-slot">
+                <SlotRenderer
+                  name="header"
+                  content={content}
+                  location={location}
+                />
+              </header>
+              <div className="content-area">
+                <Outlet />
+              </div>
+              <footer id="footer">
+                <SlotRenderer
+                  name="footer"
+                  content={content}
+                  location={location}
+                />
+              </footer>
+            </div>
           </RACRouterProvider>
         </div>
         <div role="complementary" aria-label="Sidebar" id="sidebar" />

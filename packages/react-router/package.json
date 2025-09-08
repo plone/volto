@@ -67,12 +67,12 @@
     "@arethetypeswrong/cli": "^0.16.4",
     "@plone/types": "workspace:*",
     "@react-router/dev": "catalog:",
-    "@types/node": "22.10.7",
+    "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "release-it": "catalog:",
     "tsconfig": "workspace:*",
-    "tsup": "^8.3.5",
+    "tsup": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
   }

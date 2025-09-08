@@ -11,10 +11,18 @@ import {
   Text,
   type TextProps,
   composeRenderProps,
+  useRenderProps,
+  FieldErrorContext,
+  LabelContext,
+  Provider,
+  GroupContext,
+  TextContext,
 } from 'react-aria-components';
 import { twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
-import { composeTailwindRenderProps, focusRing } from '../utils';
+import { composeTailwindRenderProps, focusRing, useSlot } from '../utils';
+import { useField } from 'react-aria';
+import { filterDOMProps } from '@react-aria/utils';
 
 export function Label(props: LabelProps) {
   return (
@@ -96,3 +104,122 @@ export function Input(props: InputProps) {
     />
   );
 }
+
+type FieldWrapperProps = {
+  wrapped?: boolean;
+  children: React.ReactNode;
+  className?: string;
+  isRequired?: boolean;
+  label?: string;
+  description?: string;
+  errorMessage?: string;
+  placeholder?: string;
+  isFocused?: boolean;
+  isInvalid?: boolean;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+  slot?: string;
+} & React.HTMLAttributes<HTMLDivElement>;
+
+export const Field = React.forwardRef<HTMLDivElement, FieldWrapperProps>(
+  (props: FieldWrapperProps, ref) => {
+    // TODO: Determine if the use case of handling the case where both 'aria-label'
+    // and 'aria-labelledby' are provided, like the TextField component does.
+    // Probably not needed here, but worth considering for consistency.
+    const [labelRef] = useSlot(
+      !props['aria-label'] && !props['aria-labelledby'],
+    );
+
+    // TODO: FieldProps is not used in the current implementation, but it can be
+    // useful in the future to pass down additional props to the wrapped field.
+    const { labelProps, fieldProps, descriptionProps, errorMessageProps } =
+      useField({
+        ...props,
+        isInvalid: props.isInvalid || false,
+        errorMessage: props.errorMessage,
+      });
+
+    const renderProps = useRenderProps({
+      ...props,
+      values: {
+        isDisabled: props.isDisabled || false,
+        isInvalid: props.isInvalid || false,
+        isReadOnly: props.isReadOnly || false,
+        isRequired: props.isRequired || false,
+      },
+      defaultClassName: 'react-aria-Field',
+    });
+    const DOMProps = filterDOMProps(props);
+
+    return (
+      <div
+        {...DOMProps}
+        {...renderProps}
+        ref={ref}
+        slot={props.slot || undefined}
+        data-disabled={props.isDisabled || undefined}
+        data-invalid={props.isInvalid || undefined}
+        data-readonly={props.isReadOnly || undefined}
+        data-required={props.isRequired || undefined}
+      >
+        <Provider
+          values={[
+            [LabelContext, { ...labelProps, ref: labelRef }],
+            [
+              GroupContext,
+              {
+                role: 'presentation',
+                isInvalid: props.isInvalid || false,
+                isDisabled: props.isDisabled || false,
+              },
+            ],
+            [
+              TextContext,
+              {
+                slots: {
+                  description: descriptionProps,
+                  errorMessage: errorMessageProps,
+                },
+              },
+            ],
+            [
+              FieldErrorContext,
+              {
+                isInvalid: props.isInvalid || false,
+                validationErrors: props.errorMessage
+                  ? [props.errorMessage]
+                  : [],
+                // @ts-expect-error We won't use validationDetails in this context
+                validationDetails: null,
+              },
+            ],
+          ]}
+        >
+          {renderProps.children}
+        </Provider>
+      </div>
+    );
+  },
+);
+
+Field.displayName = 'Field';
+
+export const FieldWrapper = (props: FieldWrapperProps) => {
+  const { wrapped = true, children, label, description, errorMessage } = props;
+
+  return wrapped ? (
+    <Field
+      {...props}
+      className={twMerge(props.className, 'group flex flex-col gap-1')}
+    >
+      {label && <Label>{label}</Label>}
+      {children}
+      {description && <Description>{description}</Description>}
+      <FieldError>{errorMessage}</FieldError>
+    </Field>
+  ) : (
+    <>{children}</>
+  );
+};
