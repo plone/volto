@@ -1,23 +1,10 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: fr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
-"Preferred-Encodings: utf-8\n"
-"Domain: volto\n"
+msgstr "Project-Id-Version: Plone\nPOT-Creation-Date: 2022-07-20T12:45:09.681Z\nPO-Revision-Date: 2025-09-09 10:02+0000\nLast-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\nLanguage-Team: French <https://hosted.weblate.org/projects/plone/volto-slate-18/fr/>\nLanguage: fr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 5.14-dev\nLanguage-Code: en\nLanguage-Name: English\nPreferred-Encodings: utf-8\nDomain: volto\n"
 
 # defaultMessage: Add link
 #: editor/plugins/Link/index
 msgid "Add link"
-msgstr ""
+msgstr "Ajouter un lien"
 
 # defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
 #: widgets/HtmlSlateWidget
