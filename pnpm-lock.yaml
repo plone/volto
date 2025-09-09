@@ -277,6 +277,9 @@ importers:
       '@plone/components':
         specifier: workspace:*
         version: link:../components
+      '@plone/layout':
+        specifier: workspace:*
+        version: link:../layout
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
@@ -21760,7 +21763,7 @@ snapshots:
   terser@5.30.3:
     dependencies:
       '@jridgewell/source-map': 0.3.6
-      acorn: 8.14.0
+      acorn: 8.15.0
       commander: 2.20.3
       source-map-support: 0.5.21
     optional: true

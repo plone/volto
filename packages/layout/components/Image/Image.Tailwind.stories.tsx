@@ -3,7 +3,7 @@ import { Image } from './Image';
 import React from 'react';
 
 const meta: Meta = {
-  title: 'Tailwind/Image',
+  title: 'Tailwind/Layout/Image',
   component: Image,
   parameters: {
     layout: 'padded',
