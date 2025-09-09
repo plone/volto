@@ -1,8 +1,8 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Form } from 'react-aria-components';
-import { Button } from '@plone/components/tailwind';
-import { TextField } from '../TextField/TextField';
+import { Button } from '@plone/components/quanta';
+import { TextField } from './TextField';
 
 const meta = {
   component: TextField,
@@ -80,7 +80,7 @@ export const Example = (args: any) => <TextField {...args} />;
 export const Validation = (args: any) => (
   <Form className="flex flex-col items-start gap-2">
     <TextField {...args} />
-    <Button type="submit" variant="secondary">
+    <Button type="submit" variant="primary">
       Submit
     </Button>
   </Form>

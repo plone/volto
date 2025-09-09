@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config';
+import { coverageConfigDefaults, defineConfig } from 'vitest/config';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,6 +10,19 @@ export default defineConfig({
     // since parsing CSS is slow
     css: true,
     exclude: ['**/node_modules/**', '**/lib/**'],
-    passWithNoTests: true,
+    coverage: {
+      exclude: [
+        ...coverageConfigDefaults.exclude,
+        'packages/**',
+        'build/**',
+        '*.config.ts',
+        'registry.loader.js',
+        'app/entry.server.tsx',
+        'app/entry.client.tsx',
+        'app/i18next.server.ts',
+        'app/i18n.ts',
+        'app/routes.ts',
+      ],
+    },
   },
 });

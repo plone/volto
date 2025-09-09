@@ -3,8 +3,6 @@ import { GridList, GridListItem } from './GridList';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/GridList.css';
-
 const meta = {
   title: 'Basic/GridList',
   component: GridList,
@@ -27,7 +25,7 @@ export const Default: Story = {
     </GridList>
   ),
   args: {
-    onAction: null,
+    onAction: () => {},
     selectionMode: 'multiple',
   },
 };

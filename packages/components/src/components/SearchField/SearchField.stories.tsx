@@ -3,8 +3,6 @@ import { SearchField } from './SearchField';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/SearchField.css';
-
 const meta: Meta<typeof SearchField> = {
   title: 'Basic/Forms/SearchField',
   component: SearchField,
@@ -21,5 +19,6 @@ export const Default: Story = {
   render: (args: any) => <SearchField {...args} />,
   args: {
     label: 'Search',
+    placeholder: 'Type to search...',
   },
 };

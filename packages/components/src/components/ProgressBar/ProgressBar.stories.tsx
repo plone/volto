@@ -3,8 +3,6 @@ import { ProgressBar } from './ProgressBar';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/ProgressBar.css';
-
 const meta: Meta<typeof ProgressBar> = {
   title: 'Basic/Forms/ProgressBar',
   component: ProgressBar,

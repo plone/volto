@@ -3,8 +3,6 @@ import { Tag, TagGroup } from './TagGroup';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/TagGroup.css';
-
 const meta = {
   title: 'Basic/TagGroup',
   component: TagGroup,
@@ -24,6 +22,24 @@ export const Default: Story = {
       <Tag>Mint</Tag>
       <Tag>Strawberry</Tag>
       <Tag>Vanilla</Tag>
+    </TagGroup>
+  ),
+  args: {
+    label: 'Ice cream flavor',
+    selectionMode: 'single',
+  },
+};
+
+const items = [
+  { id: 'Chocolate', name: 'Chocolate' },
+  { id: 'Mint', name: 'Mint' },
+  { id: 'Strawberry', name: 'Strawberry' },
+  { id: 'Vanilla', name: 'Vanilla' },
+];
+export const ItemsAsList: Story = {
+  render: (args: any) => (
+    <TagGroup {...args} items={items}>
+      {(item: (typeof items)[number]) => <Tag key={item.id}>{item.name}</Tag>}
     </TagGroup>
   ),
   args: {

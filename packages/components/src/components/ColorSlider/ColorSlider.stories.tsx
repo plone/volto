@@ -3,8 +3,6 @@ import { ColorSlider } from './ColorSlider';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/ColorSlider.css';
-
 const meta = {
   title: 'Basic/Forms/ColorSlider',
   component: ColorSlider,
@@ -19,10 +17,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: (args: any) => <ColorSlider {...args} />,
-};
-
-Default.args = {
-  label: 'Red Opacity',
-  defaultValue: '#f00',
-  channel: 'alpha',
+  args: {
+    label: 'Red Opacity',
+    defaultValue: '#f00',
+    channel: 'alpha',
+  },
 };

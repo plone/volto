@@ -56,8 +56,10 @@
     "@plone/client": "workspace:*",
     "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
+    "lodash.sortby": "^4.7.0",
+    "clsx": "^2.1.1",
     "react-aria-components": "catalog:",
-    "tailwindcss": "catalog:"
+    "react-router": "catalog:"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
@@ -73,9 +75,10 @@
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "14.2.1",
     "@types/jest-axe": "^3.5.7",
-    "@types/node": "^20",
+    "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
     "eslint-plugin-storybook": "^0.11.2",
     "jest-axe": "^8.0.0",
     "release-it": "catalog:",
@@ -83,6 +86,7 @@
     "tsconfig": "workspace:*",
     "typescript": "catalog:",
     "vite": "catalog:",
+    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "catalog:",
     "vitest-axe": "^0.1.0"
   }

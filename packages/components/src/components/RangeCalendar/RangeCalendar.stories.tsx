@@ -3,8 +3,6 @@ import { RangeCalendar } from './RangeCalendar';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/RangeCalendar.css';
-
 const meta: Meta<typeof RangeCalendar> = {
   title: 'Basic/Forms/RangeCalendar',
   component: RangeCalendar,

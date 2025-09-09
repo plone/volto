@@ -1,3 +1,4 @@
+/* depends on:
 @import './Button.css';
 @import './ColorArea.css';
 @import './ColorSlider.css';
@@ -8,8 +9,7 @@
 @import './Dialog.css';
 @import './ListBox.css';
 @import './Select.css';
-@import './theme.css';
-
+*/
 @layer plone-components.base {
   .color-picker {
     display: flex;

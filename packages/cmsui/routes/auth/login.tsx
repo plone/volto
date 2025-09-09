@@ -1,13 +1,15 @@
 import {
-  data,
   Form,
   useActionData,
   redirect,
   type ActionFunctionArgs,
 } from 'react-router';
 
-import { redirectIfLoggedInLoader, setAuthOnResponse } from './auth';
-import { Button } from '@plone/components/tailwind';
+import {
+  redirectIfLoggedInLoader,
+  setAuthOnResponse,
+} from '@plone/react-router';
+import { Button } from '@plone/components/quanta';
 import { TextField } from '../../components/TextField/TextField';
 import ploneSvg from '../../static/plone-white.svg';
 import ArrowRightSVG from '@plone/components/icons/arrow-right.svg?react';
@@ -33,13 +35,9 @@ export async function action({ request }: ActionFunctionArgs) {
     })
     .method() as PloneClient;
 
-  try {
-    const { data } = await cli.login({ username, password });
-    const response = redirect('/');
-    return setAuthOnResponse(response, data.token);
-  } catch (error) {
-    return error;
-  }
+  const { data } = await cli.login({ username, password });
+  const response = redirect('/');
+  return await setAuthOnResponse(response, data.token);
 }
 
 export default function Login() {

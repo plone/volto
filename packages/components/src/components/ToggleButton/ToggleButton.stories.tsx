@@ -4,8 +4,6 @@ import { BoldIcon } from '../icons';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/ToggleButton.css';
-
 const meta = {
   title: 'Basic/ToggleButton',
   component: ToggleButton,
@@ -40,7 +38,7 @@ export const Disabled: Story = {
 export const Icon: Story = {
   render: (args: any) => (
     <ToggleButton {...args}>
-      <BoldIcon size="S" />
+      <BoldIcon size="sm" />
     </ToggleButton>
   ),
   args: {

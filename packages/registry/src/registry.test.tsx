@@ -2,6 +2,11 @@ import React from 'react';
 import config from './index';
 import { describe, expect, it, afterEach, beforeEach } from 'vitest';
 
+const MockDefaultWidget = () => <div data-testid="default-widget">Default</div>;
+const MockTextWidget = () => <input type="text" data-testid="text-widget" />;
+const MockChoiceWidget = () => <select data-testid="choice-widget" />;
+const MockVocabWidget = () => <div data-testid="vocab-widget">Vocab</div>;
+
 beforeEach(() => {
   config.set('components', {
     Toolbar: { component: 'this is the Toolbar component' },
@@ -10,6 +15,22 @@ beforeEach(() => {
   });
   config.set('slots', {});
   config.set('utilities', {});
+  config.set('widgets', {
+    default: MockDefaultWidget,
+    id: {
+      title: MockTextWidget,
+    },
+    widget: {
+      special: MockChoiceWidget,
+    },
+    vocabulary: {
+      my_vocab: MockVocabWidget,
+    },
+    factory: {},
+    type: {},
+    choices: MockChoiceWidget,
+    views: {},
+  });
 });
 
 describe('Component registry', () => {
@@ -1006,7 +1027,16 @@ describe('Utilities registry', () => {
     ).toEqual('this is a simple validator utility');
   });
 
-  it('trying to get a non-existent utility returns undefined', () => {
+  it('trying to get an unregistered utility type returns undefined', () => {
+    expect(config.getUtility({ name: 'Something', type: 'schema' })).toEqual(
+      {},
+    );
+    expect(
+      config.getUtility({ name: 'Something', type: 'schema' }).method,
+    ).toEqual(undefined);
+  });
+
+  it('trying to get an undefined utility name returns undefined', () => {
     expect(config.getUtility({ name: undefined, type: 'schema' })).toEqual({});
     expect(
       config.getUtility({ name: undefined, type: 'schema' }).method,
@@ -1099,6 +1129,10 @@ describe('Utilities registry', () => {
 
   it('trying to use getUtilities with no type returns an empty array', () => {
     expect(config.getUtilities({ type: undefined }).length).toEqual(0);
+  });
+
+  it('trying to use getUtilities with an unregistered type returns an empty array', () => {
+    expect(config.getUtilities({ type: 'Something' }).length).toEqual(0);
   });
 
   it('getUtilities - registers two utilities with the same dependencies and different names', () => {
@@ -1246,5 +1280,202 @@ describe('Routes registry', () => {
         file: 'logout.tsx',
       },
     ]);
+  });
+});
+describe('registerWidget', () => {
+  const DummyWidget = () => <div>Dummy Widget</div>;
+  const AnotherWidget = () => <div>Another Widget</div>;
+
+  beforeEach(() => {
+    config._data.widgets = {}; // reset registry for a clean test state
+  });
+
+  it('registers a default widget', () => {
+    config.registerWidget({
+      key: 'default',
+      definition: DummyWidget,
+    });
+
+    expect(config.widgets?.default).toBe(DummyWidget);
+  });
+
+  it('registers a widget in the "widget" group', () => {
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: DummyWidget,
+      },
+    });
+
+    expect(config.widgets?.widget?.special).toBe(DummyWidget);
+  });
+
+  it('registers a widget in the "factory" group', () => {
+    config.registerWidget({
+      key: 'factory',
+      definition: {
+        'my.custom.Factory': DummyWidget,
+      },
+    });
+
+    expect(config.widgets?.factory?.['my.custom.Factory']).toBe(DummyWidget);
+  });
+
+  it('overwrites existing widgets of the same key', () => {
+    config.registerWidget({
+      key: 'default',
+      definition: DummyWidget,
+    });
+
+    config.registerWidget({
+      key: 'default',
+      definition: AnotherWidget,
+    });
+
+    expect(config.widgets?.default).toBe(AnotherWidget);
+  });
+
+  it('preserves unrelated widget keys', () => {
+    config.registerWidget({
+      key: 'default',
+      definition: DummyWidget,
+    });
+
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: AnotherWidget,
+      },
+    });
+
+    expect(config.widgets?.default).toBe(DummyWidget);
+    expect(config.widgets?.widget?.special).toBe(AnotherWidget);
+  });
+});
+
+describe('Widgets registry: registerWidget', () => {
+  const DummyWidget = () => <div>Dummy Widget</div>;
+  const AnotherWidget = () => <div>Another Widget</div>;
+
+  beforeEach(() => {
+    config._data.widgets = {}; // reset registry for a clean test state
+  });
+
+  it('registers a default widget', () => {
+    config.registerWidget({
+      key: 'default',
+      definition: DummyWidget,
+    });
+
+    expect(config.widgets?.default).toBe(DummyWidget);
+  });
+
+  it('registers a widget in the "widget" group', () => {
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: DummyWidget,
+      },
+    });
+
+    expect(config.widgets?.widget?.special).toBe(DummyWidget);
+  });
+
+  it('registers two widgets in the "widget" group', () => {
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: DummyWidget,
+      },
+    });
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        another: DummyWidget,
+      },
+    });
+    expect(config.widgets?.widget?.special).toBe(DummyWidget);
+    expect(config.widgets?.widget?.another).toBe(DummyWidget);
+  });
+
+  it('registers several widgets in the "widget" group at once', () => {
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: DummyWidget,
+        another: DummyWidget,
+      },
+    });
+    expect(config.widgets?.widget?.special).toBe(DummyWidget);
+    expect(config.widgets?.widget?.another).toBe(DummyWidget);
+  });
+
+  it('registers a widget in the "factory" group', () => {
+    config.registerWidget({
+      key: 'factory',
+      definition: {
+        'my.custom.Factory': DummyWidget,
+      },
+    });
+
+    expect(config.widgets?.factory?.['my.custom.Factory']).toBe(DummyWidget);
+  });
+
+  it('overwrites existing widgets of the same key', () => {
+    config.registerWidget({
+      key: 'default',
+      definition: DummyWidget,
+    });
+
+    config.registerWidget({
+      key: 'default',
+      definition: AnotherWidget,
+    });
+
+    expect(config.widgets?.default).toBe(AnotherWidget);
+  });
+
+  it('preserves unrelated widget keys', () => {
+    config.registerWidget({
+      key: 'default',
+      definition: DummyWidget,
+    });
+
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: AnotherWidget,
+      },
+    });
+
+    expect(config.widgets?.default).toBe(DummyWidget);
+    expect(config.widgets?.widget?.special).toBe(AnotherWidget);
+  });
+});
+
+describe('Widgets registry: getWidget', () => {
+  it('gets widget by id', () => {
+    const Widget = config.getWidget('title');
+    expect(Widget).toBe(config.widgets.id.title);
+  });
+
+  it('gets widget by widget key', () => {
+    const Widget = config.getWidget('special');
+    expect(Widget).toBe(config.widgets.widget.special);
+  });
+
+  it('gets widget by vocabulary', () => {
+    const Widget = config.getWidget('my_vocab');
+    expect(Widget).toBe(config.widgets.vocabulary.my_vocab);
+  });
+
+  it('returns undefined if not found', () => {
+    const Widget = config.getWidget('nonexistent');
+    expect(Widget).toBeUndefined();
+  });
+
+  it('does NOT return widgets.default', () => {
+    const Widget = config.getWidget('default');
+    expect(Widget).not.toBe(config.widgets.default);
   });
 });
