@@ -442,7 +442,7 @@ export function ContentsTable({
                 </Button>
                 <AddContentPopover
                   path={pathname}
-                  content={content}
+                  contentTitle={content?.title ?? ''}
                   addableTypes={addableTypes}
                 />
               </DialogTrigger>

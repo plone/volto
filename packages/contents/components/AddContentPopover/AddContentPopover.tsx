@@ -11,10 +11,14 @@ interface Props {
     id: string;
     title: string;
   }[];
-  content: { title: string };
+  contentTitle: string;
 }
 
-export const AddContentPopover = ({ path, content, addableTypes }: Props) => {
+export const AddContentPopover = ({
+  path,
+  contentTitle,
+  addableTypes,
+}: Props) => {
   // const page = addableTypes.find((type) => type.id === 'Document');
   const { t } = useTranslation();
 
@@ -22,7 +26,7 @@ export const AddContentPopover = ({ path, content, addableTypes }: Props) => {
     <Popover className="q react-aria-Popover add-content-popover">
       <fieldset>
         <legend>
-          {t('contents.actions.add')} - {content.title}
+          {t('contents.actions.add')} - {contentTitle}
         </legend>
 
         <ul className="popover-list">
