@@ -3,7 +3,7 @@ import { Image } from './Image';
 import type { ImageProps } from './Image';
 
 const meta: Meta = {
-  title: 'Layout/Image',
+  title: 'Image',
   component: Image,
   parameters: {
     layout: 'centered',
