@@ -276,7 +276,7 @@ working-copy-ci-acceptance-test-run-all: ## With a single command, run the backe
 
 .PHONY: prefixed-acceptance-frontend-prod-start
 prefixed-acceptance-frontend-prod-start: build-deps ## Start the prefixed Core Acceptance Frontend Fixture
-	RAZZLE_PREFIX_PATH=/foo RAZZLE_API_PATH=http://localhost/foo pnpm build && pnpm start:prod
+	RAZZLE_PREFIX_PATH=/foo RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: prefixed-ci-acceptance-test-run-all
 prefixed-ci-acceptance-test-run-all: ## Runs prefixed Core Full Acceptance Testing in headless mode
