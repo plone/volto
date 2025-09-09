@@ -1,0 +1,1 @@
+Remove vitest dependencies from root to prevent confusion. @wesleybl

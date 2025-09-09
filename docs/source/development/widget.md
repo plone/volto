@@ -421,7 +421,7 @@ This widget named `toggle_widget` can now be used in a schema as follows.
       subscribe_to_newsletter: {
         title: 'Subscribe to newsletter',
         type: 'pipapo',
-        widget: toggle_widget,
+        widget: 'toggle_widget',
         default: false,
       },
     },

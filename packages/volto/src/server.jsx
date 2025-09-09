@@ -72,9 +72,12 @@ const server = express()
   })
   .use(cookiesMiddleware());
 
-if (process.env.RAZZLE_PREFIX_PATH) {
+// If Volto is being served under a prefix,
+// make sure the static files are available there too.
+// (The static middleware loads too early to access the config.)
+if (config.settings.prefixPath) {
   server.use(
-    process.env.RAZZLE_PREFIX_PATH,
+    config.settings.prefixPath,
     express.static(
       process.env.BUILD_DIR
         ? path.join(process.env.BUILD_DIR, 'public')
@@ -179,8 +182,10 @@ function setupServer(req, res, next) {
     res.locals.detectedHost = `${
       req.headers['x-forwarded-proto'] || req.protocol
     }://${req.headers.host}`;
-    config.settings.apiPath = res.locals.detectedHost;
-    config.settings.publicURL = res.locals.detectedHost;
+    config.settings.apiPath =
+      res.locals.detectedHost + config.settings.prefixPath;
+    config.settings.publicURL =
+      res.locals.detectedHost + config.settings.prefixPath;
   }
 
   res.locals = {
@@ -275,7 +280,7 @@ server.get('/*', (req, res) => {
               <StaticRouter
                 context={context}
                 location={req.url}
-                basename={process.env.RAZZLE_PREFIX_PATH}
+                basename={config.settings.prefixPath}
               >
                 <ReduxAsyncConnect routes={routes} helpers={api} />
               </StaticRouter>
@@ -313,8 +318,8 @@ server.get('/*', (req, res) => {
             markup={markup}
             store={store}
             criticalCss={readCriticalCss(req)}
-            apiPath={res.locals.detectedHost || config.settings.apiPath}
-            publicURL={res.locals.detectedHost || config.settings.publicURL}
+            apiPath={config.settings.apiPath}
+            publicURL={config.settings.publicURL}
           />,
         )}
       `,
@@ -357,6 +362,8 @@ export const defaultReadCriticalCss = () => {
 
 // Exposed for the console bootstrap info messages
 server.apiPath = config.settings.apiPath;
+server.internalApiPath = config.settings.internalApiPath;
+server.prefixPath = config.settings.prefixPath;
 server.devProxyToApiPath = config.settings.devProxyToApiPath;
 server.proxyRewriteTarget = config.settings.proxyRewriteTarget;
 server.publicURL = config.settings.publicURL;

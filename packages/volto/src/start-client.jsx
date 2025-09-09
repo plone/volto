@@ -18,16 +18,19 @@ import Api from '@plone/volto/helpers/Api/Api';
 import { persistAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
 import ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 
-export const history = createBrowserHistory({
-  basename: config.settings.prefixPath ? config.settings.prefixPath : '/',
-});
-
 function reactIntlErrorHandler(error) {
   debug('i18n')(error);
 }
 
 export default function client() {
   const api = new Api();
+
+  if (window.env.RAZZLE_PREFIX_PATH) {
+    config.settings.prefixPath = window.env.RAZZLE_PREFIX_PATH;
+  }
+  const history = createBrowserHistory({
+    basename: config.settings.prefixPath ? config.settings.prefixPath : '/',
+  });
 
   const store = configureStore(window.__data, history, api);
   persistAuthToken(store);

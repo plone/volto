@@ -30,10 +30,6 @@ import languages from '@plone/volto/constants/Languages.cjs';
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
 
-const apiPath =
-  process.env.RAZZLE_API_PATH ||
-  (__DEVELOPMENT__ ? `http://${host}:${port}` : '');
-
 const getServerURL = (url) => {
   if (!url) return;
   const apiPathURL = parseUrl(url);
@@ -46,12 +42,14 @@ const getServerURL = (url) => {
 // if RAZZLE_PUBLIC_URL is present, use it
 // if in DEV, use the host/port combination by default
 // if in PROD, assume it's RAZZLE_API_PATH server name (no /api or alikes) or fallback
-// to DEV settings if RAZZLE_API_PATH is not present
+// to DEV settings if RAZZLE_API_PATH is not present.
+// Finally, add the prefix path, if there is one.
 const publicURL =
-  process.env.RAZZLE_PUBLIC_URL ||
-  (__DEVELOPMENT__
-    ? `http://${host}:${port}`
-    : getServerURL(process.env.RAZZLE_API_PATH) || `http://${host}:${port}`);
+  (process.env.RAZZLE_PUBLIC_URL ||
+    (__DEVELOPMENT__
+      ? `http://${host}:${port}`
+      : getServerURL(process.env.RAZZLE_API_PATH) ||
+        `http://${host}:${port}`)) + (process.env.RAZZLE_PREFIX_PATH || '');
 
 const serverConfig =
   typeof __SERVER__ !== 'undefined' && __SERVER__
@@ -65,7 +63,10 @@ let config = {
     // The URL Volto is going to be served (see sensible defaults above)
     publicURL,
     okRoute: '/ok',
-    apiPath,
+    // Base URL for API requests from the browser.
+    // If not explicitly set, use the publicURL (seamless mode) --
+    // but in that case it will be updated in server.jsx for each request.
+    apiPath: process.env.RAZZLE_API_PATH || publicURL,
     apiExpanders: [
       // Added here for documentation purposes, added at the end because it
       // depends on a value of this object.
@@ -142,7 +143,7 @@ let config = {
     serverConfig,
     storeExtenders: [],
     showTags: true,
-    showRelatedItems: false,
+    showRelatedItems: true,
     controlpanels: [],
     controlPanelsIcons,
     filterControlPanels,
