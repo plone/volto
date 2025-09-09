@@ -614,7 +614,7 @@ jobs:
           working-directory: packages/volto
           browser: chrome
           spec: cypress/tests/core/content/**/*.js
-          #config: baseUrl=http://127.0.0.1:3000/foo
+          config: baseUrl=http://127.0.0.1:3000/foo
           start: |
             make ci-acceptance-backend-start
             make prefixed-acceptance-frontend-prod-start
