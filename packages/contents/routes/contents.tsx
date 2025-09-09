@@ -1,13 +1,16 @@
+import React, { useEffect } from 'react';
 import { type LoaderFunctionArgs, useRouteLoaderData } from 'react-router';
 import { requireAuthCookie } from '@plone/react-router';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
 import { flattenToAppURL } from '@plone/helpers';
+import { CloseIcon, HomeIcon } from '@plone/components/Icons';
 import { ContentsTable } from '../components/ContentsTable/ContentsTable';
 import Indexes, { defaultIndexes } from '../components/Indexes';
-import { ContentsProvider } from '../providers/contents';
+import { ContentsProvider, useContentsContext } from '../providers/contents';
 import DeleteModal from '../components/DeleteModal/DeleteModal';
 import ErrorToast from '../components/ErrorToast/ErrorToast';
+import { flushSync } from 'react-dom';
 
 import {
   Text,
@@ -23,7 +26,18 @@ import type { ToastContent as MyToastContent } from '../types';
 // This is needed because to prevent circular import loops
 export type ContentsLoaderType = typeof loader;
 // Create a global ToastQueue.
-export const queue = new ToastQueue<MyToastContent>();
+export const queue = new ToastQueue<MyToastContent>({
+  // Wrap state updates in a CSS view transition.
+  wrapUpdate(fn) {
+    if ('startViewTransition' in document) {
+      document.startViewTransition(() => {
+        flushSync(fn);
+      });
+    } else {
+      fn();
+    }
+  },
+});
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function loader({ params, request }: LoaderFunctionArgs) {
@@ -73,6 +87,18 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
   return { addableTypes, search, searchableText };
 }
 
+const ContentsWrapper: React.FC<React.PropsWithChildren<{}>> = ({
+  children,
+}) => (
+  <ContentsProvider
+    // toast={queue}
+    showToast={(queueElement: MyToastContent) => {
+      queue.add(queueElement, { timeout: 5000 });
+    }}
+  >
+    {children}
+  </ContentsProvider>
+);
 export default function Contents() {
   const rootData = useRouteLoaderData<RootLoader>('root');
 
@@ -106,7 +132,7 @@ export default function Contents() {
   };
 
   return (
-    <ContentsProvider toast={queue}>
+    <ContentsWrapper>
       <DeleteModal />
       <ContentsTable
         pathname={content['@id']}
@@ -127,23 +153,32 @@ export default function Contents() {
         // addableTypes={props.addableTypes}
       />
 
+      {/* TODO: creare un componente dedicato per gestire il toast ovunque.  */}
       <ToastRegion queue={queue}>
         {({ toast }) => (
           <Toast toast={toast}>
             <ToastContent>
-              <Text slot="title">{toast.content.title}</Text>
+              <Text slot="title">
+                {toast.content.icon ? (
+                  <span className="toast-icon">{toast.content.icon}</span>
+                ) : (
+                  <></>
+                )}
+                {toast.content.title}
+              </Text>
               <Text slot="description">{toast.content.description}</Text>
             </ToastContent>
-            <Button slot="close">x</Button>
+            <Button slot="close">
+              <CloseIcon />
+            </Button>
           </Toast>
         )}
       </ToastRegion>
-    </ContentsProvider>
+    </ContentsWrapper>
   );
 }
 
 //todo: fix handling errors with toast
-export function ErrorBoundary(queue) {
-  console.log('handle errors');
+export function ErrorBoundary() {
   return ErrorToast(queue);
 }

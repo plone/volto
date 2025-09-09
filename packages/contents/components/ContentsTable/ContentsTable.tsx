@@ -5,6 +5,7 @@ import {
   useDragAndDrop,
   DialogTrigger,
   MenuTrigger,
+  ProgressBar,
 } from 'react-aria-components';
 import {
   useFetcher,
@@ -26,6 +27,7 @@ import {
   CollectionIcon,
   MoreoptionsIcon,
   PasteIcon,
+  CopyIcon,
 } from '@plone/components/Icons';
 import { TextField } from '@plone/cmsui/components/TextField/TextField';
 import type { RootLoader } from 'seven/app/root';
@@ -110,7 +112,7 @@ export function ContentsTable({
   const isMobileScreenSize = useMediaQuery('(max-width: 992px)');
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { selected, setSelected, setShowDelete, setItemsToDelete } =
+  const { selected, setSelected, setShowDelete, setItemsToDelete, showToast } =
     useContentsContext();
   const fetcher = useFetcher();
   const { addableTypes, search, searchableText } =
@@ -175,6 +177,7 @@ export function ContentsTable({
         action: `/@@contents/@@order`,
       },
     );
+
     // TODO handle loading state, show something like a dimmer while operation is in progress
   };
 
@@ -213,7 +216,7 @@ export function ContentsTable({
     }
   }, []);
 
-  const setClipboard: typeof _setClipboard = (value) => {
+  const setClipboard: typeof _setClipboard = (value: any) => {
     _setClipboard(value);
     if (typeof window !== 'undefined') {
       try {
@@ -223,6 +226,36 @@ export function ContentsTable({
         console.error('Error saving clipboard to localStorage:', error);
         localStorage.removeItem(clipboardKey);
       }
+    }
+
+    // show toast
+    if (value.action) {
+      const l = value?.source?.length;
+      let _t = '';
+      switch (value.action) {
+        case 'copy':
+          _t = 'contents.actions.copied';
+          break;
+        case 'paste':
+          _t = 'contents.actions.pasted';
+          break;
+        case 'cutted':
+          _t = 'contents.actions.cutted';
+          break;
+        default:
+          _t = '';
+          break;
+      }
+      if (l > 1) {
+        _t = _t + '_multiple';
+      }
+
+      showToast({
+        title: t(_t, {
+          number: l,
+        }),
+        icon: <CopyIcon />,
+      });
     }
     // TODO when do we clean the clipboard?
   };
@@ -242,6 +275,7 @@ export function ContentsTable({
       source: path ? [path] : [...selected].map((i) => i['@id']),
       expiration: Date.now() + 24 * 60 * 60 * 1000, // 24 hours expiration
     });
+
     setSelected('none');
   };
 
@@ -253,6 +287,7 @@ export function ContentsTable({
       encType: 'application/json',
       action: `/@@contents/@@paste${pathname}`,
     });
+
     // TODO handle loading state, show something like a dimmer while operation is in progress
     // TODO when do we clean the clipboard?
   };
@@ -337,14 +372,10 @@ export function ContentsTable({
       })),
     onReorder(e) {
       if (e.keys.size !== 1) {
-        console.log('raise toast error');
-        // toast.error(
-        //   <Toast
-        //     error
-        //     title={t('contents.error')}
-        //     content={t('contents.rearrange.error')}
-        //   />,
-        // );
+        showToast({
+          title: t('contents.error'),
+          description: t('contents.rearrange.error'),
+        });
         return;
       }
       const target = [...e.keys][0];
@@ -430,6 +461,7 @@ export function ContentsTable({
               onChange={(v) => {
                 setSearchInput(v);
               }}
+              aria-label={t('contents.actions.filter')}
             />
 
             <TooltipTrigger>

@@ -19,13 +19,13 @@ type Item = ArrayElement<
 >;
 
 interface ContentsContext {
-  toast: ToastQueue<MyToastContent>;
   selected: Set<Item>;
   setSelected: (selected: SetSelectedType) => void;
   showDelete: boolean;
   setShowDelete: (s: boolean) => void;
   itemsToDelete: Set<Item>;
   setItemsToDelete: (s: Set<Item>) => void;
+  showToast: (c: MyToastContent) => void;
 }
 
 const ContentsContext = createContext<ContentsContext>({
@@ -35,13 +35,15 @@ const ContentsContext = createContext<ContentsContext>({
   setShowDelete: () => {},
   itemsToDelete: new Set(),
   setItemsToDelete: () => {},
-  toast: new ToastQueue(),
+  showToast: (t: MyToastContent) => {},
 });
 
-type ContentsProviderProps = PropsWithChildren<Pick<ContentsContext, 'toast'>>;
+type ContentsProviderProps = PropsWithChildren<
+  Pick<ContentsContext, 'showToast'>
+>;
 
 export function ContentsProvider(props: ContentsProviderProps) {
-  const { children, toast } = props;
+  const { children, showToast } = props;
 
   const { search } = useLoaderData<ContentsLoaderType>();
   const { items = [] } = search ?? {};
@@ -72,7 +74,7 @@ export function ContentsProvider(props: ContentsProviderProps) {
     setItemsToDelete,
     showDelete,
     setShowDelete,
-    toast,
+    showToast,
   };
 
   return (

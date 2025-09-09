@@ -27,13 +27,18 @@ export const TableIndexesPopover = ({ indexes, onSelectIndex }: Props) => {
       dialogAriaLabelledby="table-indexes-label"
     >
       <fieldset>
-        <legend>{t('contents.indexes.select_columns')}</legend>
+        <legend id="table-indexes-label">
+          {t('contents.indexes.select_columns')}
+        </legend>
 
         <ul className="popover-list">
           {indexes.order.map((index) => {
             if (index === 'sortable_title') return null;
             return (
-              <PopoverListItem key={index}>
+              <PopoverListItem
+                key={index}
+                ariaDescribedby="table-indexes-label"
+              >
                 <Checkbox
                   value={index}
                   isSelected={indexes.values[index].selected}

@@ -25,7 +25,7 @@ export const AddContentPopover = ({
   return (
     <Popover className="q react-aria-Popover add-content-popover">
       <fieldset>
-        <legend>
+        <legend id="add-content-popover-label">
           {t('contents.actions.add')} - {contentTitle}
         </legend>
 
@@ -38,6 +38,7 @@ export const AddContentPopover = ({
               <Link
                 href={`/@@add${path}?type=${encodeURIComponent(type.id)}`}
                 className="text-quanta-sapphire hover:text-quanta-royal flex items-center decoration-transparent"
+                aria-describedby="add-content-popover-label"
               >
                 {type.title}
                 <ChevronrightSVG className="ms-auto" />

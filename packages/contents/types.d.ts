@@ -7,4 +7,5 @@ export type Toast = {
 export interface ToastContent {
   title: string;
   description?: string;
+  icon?: ReactNode;
 }
