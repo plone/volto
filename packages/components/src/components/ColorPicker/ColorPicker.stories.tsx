@@ -3,8 +3,6 @@ import { ColorPicker } from './ColorPicker';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/ColorPicker.css';
-
 const meta = {
   title: 'Basic/Forms/ColorPicker',
   component: ColorPicker,

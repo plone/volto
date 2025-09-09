@@ -43,6 +43,28 @@
       "until_description": "on June 15th, 2050",
       "count_after": "After",
       "count_occurrences": "occurrence(s)"
+    },
+    "controlpanel": "Control Panel",
+    "panelgroups": {
+      "general": "General",
+      "content": "Content",
+      "security": "Security",
+      "users": "Users",
+      "site": "Site Setup",
+      "addons": "Add-ons",
+      "maintenance": "Maintenance"
+    },
+    "paneltitles": {
+      "addons": "Add-ons",
+      "database": "Database",
+      "contentRules": "Content Rules",
+      "undo": "Undo",
+      "urlmanagement": "URL Management",
+      "relations": "Relations",
+      "moderatecomments": "Moderate Comments",
+      "users": "Users",
+      "groupMembership": "Group Membership",
+      "groups": "Groups"
     }
   }
 }

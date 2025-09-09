@@ -2,7 +2,7 @@ import { expect, describe, it, vi, afterEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { createRoutesStub, unstable_RouterContextProvider } from 'react-router';
 import config from '@plone/registry';
-import { Layout, ErrorBoundary, loader, links } from './root';
+import { Layout, ErrorBoundary, loader } from './root';
 import { renderWithI18n } from '../tests/testHelpers';
 
 async function renderStub() {
@@ -32,14 +32,6 @@ async function renderStub() {
   await renderWithI18n(<Stub initialEntries={['/']} />);
 }
 
-describe('links', () => {
-  it('should return the stylesheet', () => {
-    const result = links();
-    // @ts-expect-error ts complains because rel can be undefined, we don't care here
-    expect(result.find((r) => r.rel === 'stylesheet')).toBeDefined();
-  });
-});
-
 describe('loader', () => {
   afterEach(() => {
     vi.restoreAllMocks();
@@ -66,7 +58,7 @@ describe('loader', () => {
 
     expect(getContentMock).toHaveBeenCalledWith({
       path: '/',
-      expand: ['navroot', 'breadcrumbs', 'navigation'],
+      expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
     });
     expect(data.locale).toBe('en');
   });
@@ -94,7 +86,7 @@ describe('loader', () => {
 
     expect(getContentMock).toHaveBeenCalledWith({
       path: '/test-content',
-      expand: ['navroot', 'breadcrumbs', 'navigation'],
+      expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
     });
     expect(data.locale).toBe('en');
   });

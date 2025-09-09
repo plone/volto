@@ -22,7 +22,8 @@ const HeaderTools = () => {
     },
   ];
   return (
-    <div className="flex gap-4">
+    // Inline styles since this is temporary during seven development
+    <div style={{ display: 'flex', gap: '16px' }}>
       {links.map((tool) => (
         <Link key={tool.id} href={tool.url}>
           <span>{tool.icon}</span>

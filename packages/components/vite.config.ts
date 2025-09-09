@@ -6,7 +6,4 @@ import { PloneSVGRVitePlugin } from './vite-plugin-svgr';
 
 export default defineConfig({
   plugins: [tsconfigPaths(), tailwindcss(), PloneSVGRVitePlugin(), react()],
-  css: {
-    transformer: 'lightningcss',
-  },
 });

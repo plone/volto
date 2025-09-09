@@ -3,9 +3,6 @@ import { QuantaSelect, SelectItem } from './Select';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../../styles/basic/Select.css';
-import '../../../styles/quanta/Select.css';
-
 export interface SelectItemObject {
   label: string;
   value: string;

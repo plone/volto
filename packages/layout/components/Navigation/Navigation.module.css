@@ -1,0 +1,24 @@
+@layer custom {
+  .navigation {
+    display: flex;
+    flex: 3.5 1 0;
+    align-self: center;
+    justify-content: center;
+
+    ul {
+      display: flex;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      li a {
+        padding: 1rem 0;
+        margin-left: 1rem;
+      }
+
+      li:first-child a {
+        margin-left: 0;
+      }
+    }
+  }
+}

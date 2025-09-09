@@ -1,8 +1,12 @@
 import type { ConfigType } from '@plone/registry';
 import installWidgets from './config/widgets';
+import installControlpanels from './config/controlpanels';
 
 export default function install(config: ConfigType) {
+  config.settings.cssLayers = [...(config.settings.cssLayers || []), 'cmsui'];
+
   installWidgets(config);
+  installControlpanels(config);
 
   config.registerRoute({
     type: 'layout',
@@ -59,6 +63,24 @@ export default function install(config: ConfigType) {
             type: 'route',
             path: '*',
             file: '@plone/cmsui/routes/edit.tsx',
+          },
+        ],
+      },
+      {
+        type: 'prefix',
+        path: 'controlpanel',
+        children: [
+          {
+            type: 'index',
+            file: '@plone/cmsui/routes/controlpanels.tsx',
+            options: {
+              id: 'index-controlpanel',
+            },
+          },
+          {
+            type: 'route',
+            path: ':id',
+            file: '@plone/cmsui/routes/controlpanel.tsx',
           },
         ],
       },
