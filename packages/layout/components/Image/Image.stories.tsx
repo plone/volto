@@ -2,11 +2,27 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Image } from './Image';
 import type { ImageProps } from './Image';
 
-const meta: Meta = {
+const meta: Meta<ImageProps> = {
   title: 'Image',
   component: Image,
   parameters: {
     layout: 'centered',
+    actions: {
+      argTypesRegex: '^on(Load|Error)$', // Only capture meaningful events for img elements
+    },
+    controls: {
+      include: [
+        'item',
+        'imageField',
+        'src',
+        'alt',
+        'loading',
+        'responsive',
+        'sizes',
+        'className',
+        'title',
+      ],
+    },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -47,6 +63,21 @@ type Story = StoryObj;
 
 // Basic image with src prop
 export const BasicImage: Story = {
+  parameters: {
+    controls: {
+      include: [
+        'item',
+        'imageField',
+        'src',
+        'alt',
+        'loading',
+        'responsive',
+        'sizes',
+        'className',
+        'title',
+      ],
+    },
+  },
   args: {
     src: 'https://picsum.photos/400/300',
     alt: 'A sample image',
@@ -56,6 +87,11 @@ export const BasicImage: Story = {
 
 // Lazy loaded image
 export const LazyImage: Story = {
+  parameters: {
+    controls: {
+      include: ['src', 'alt', 'loading'],
+    },
+  },
   args: {
     src: 'https://picsum.photos/600/400',
     alt: 'A lazy loaded image',
@@ -65,6 +101,11 @@ export const LazyImage: Story = {
 
 // Responsive image
 export const ResponsiveImage: Story = {
+  parameters: {
+    controls: {
+      include: ['src', 'alt', 'responsive', 'sizes'],
+    },
+  },
   args: {
     src: 'https://picsum.photos/800/600',
     alt: 'A responsive image',
@@ -81,7 +122,7 @@ const mockPloneItem = {
     image: [
       {
         // This is the primary "download" URL for the image, often a larger scale
-        download: 'https://picsum.photos/128/85', // Main image: 600x400 pixels
+        download: 'https://picsum.photos/600/400', // Main image: 600x400 pixels
         width: 600,
         height: 400,
         'content-type': 'image/jpeg',
@@ -110,21 +151,34 @@ const mockPloneItem = {
 };
 // Image with Plone item
 export const PloneImage: Story = {
-  args: {
-    item: mockPloneItem,
-    alt: 'Image from Plone content',
-  },
   parameters: {
+    controls: {
+      include: ['item', 'alt'],
+    },
     docs: {
       description: {
         story: 'Image component using a Plone content item with image scales.',
       },
     },
   },
+  args: {
+    item: mockPloneItem,
+    alt: 'Image from Plone content',
+  },
 };
 
 // Image with custom image field
 export const CustomImageField: Story = {
+  parameters: {
+    controls: {
+      include: ['item', 'imageField', 'alt'],
+    },
+    docs: {
+      description: {
+        story: 'Image component using a Plone content item with image scales.',
+      },
+    },
+  },
   args: {
     item: {
       '@id': 'https://picsum.photos',
@@ -133,7 +187,7 @@ export const CustomImageField: Story = {
         hero: [
           {
             // This is the primary "download" URL for the image, often a larger scale
-            download: 'https://picsum.photos/128/85', // Main image: 600x400 pixels
+            download: 'https://picsum.photos/600/400', // Main image: 600x400 pixels
             width: 600,
             height: 400,
             'content-type': 'image/jpeg',
@@ -163,17 +217,15 @@ export const CustomImageField: Story = {
     imageField: 'hero',
     alt: 'Image from Plone content',
   },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Image component using a Plone content item with image scales.',
-      },
-    },
-  },
 };
 
 // Image with image_scales (brain format)
 export const BrainImage: Story = {
+  parameters: {
+    controls: {
+      include: ['item', 'alt'],
+    },
+  },
   args: {
     item: {
       '@id': 'https://picsum.photos',
@@ -188,8 +240,8 @@ export const BrainImage: Story = {
             scales: {
               thumb: {
                 download: '300/200',
-                width: 128,
-                height: 85,
+                width: 300,
+                height: 200,
               },
             },
           },
@@ -202,6 +254,11 @@ export const BrainImage: Story = {
 
 // SVG image
 export const SvgImage: Story = {
+  parameters: {
+    controls: {
+      include: ['src', 'alt'],
+    },
+  },
   args: {
     alt: 'SVG icon',
     src: 'https://github.com/plone/volto/raw/main/logos/volto-colorful.svg',
@@ -210,7 +267,22 @@ export const SvgImage: Story = {
 
 // Image with fallback src
 export const ImageWithFallback: Story = {
+  parameters: {
+    controls: {
+      include: ['item', 'src', 'alt'],
+    },
+    docs: {
+      description: {
+        story: 'When item has no image, fallback to src prop.',
+      },
+    },
+  },
   args: {
+    item: {
+      '@id': 'https://example.com',
+      title: 'Item without image',
+      // No image_scales or image fields - should fallback to src
+    },
     src: 'https://picsum.photos/300/200',
     alt: 'Fallback image when item has no image',
   },
@@ -218,6 +290,11 @@ export const ImageWithFallback: Story = {
 
 // Image with custom styling
 export const StyledImage: Story = {
+  parameters: {
+    controls: {
+      include: ['src', 'alt', 'className', 'style'],
+    },
+  },
   args: {
     src: 'https://picsum.photos/500/300',
     alt: 'Styled image',
@@ -231,15 +308,18 @@ export const StyledImage: Story = {
 
 // No image (returns null)
 export const NoImage: Story = {
-  args: {
-    alt: 'This should not render',
-  },
   parameters: {
+    controls: {
+      include: ['alt'],
+    },
     docs: {
       description: {
         story:
           'When neither item nor src is provided, the component returns null.',
       },
     },
+  },
+  args: {
+    alt: 'This should not render',
   },
 };

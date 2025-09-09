@@ -66,37 +66,41 @@ export function Image(props: ImageProps) {
           (item as any)?.image_scales?.[imageFieldWithDefault]?.[0],
         );
 
-    if (!image) return null;
+    if (!image && !src) return null;
 
-    const isSvg = image['content-type'] === 'image/svg+xml';
-    // In case `base_path` is present (`preview_image_link`) use it as base path
-    const basePath = image.base_path || item['@id'];
+    if (!image && src) {
+      attrs.src = src;
+    } else if (image) {
+      const isSvg = image['content-type'] === 'image/svg+xml';
+      // In case `base_path` is present (`preview_image_link`) use it as base path
+      const basePath = image.base_path || item['@id'];
 
-    attrs.src = `${basePath}/${image.download}`;
-    attrs.width = image.width;
-    attrs.height = image.height;
+      attrs.src = `${basePath}/${image.download}`;
+      attrs.width = image.width;
+      attrs.height = image.height;
 
-    if (!isSvg && image.scales && Object.keys(image.scales).length > 0) {
-      const sortedScales = Object.values({
-        ...image.scales,
-        original: {
-          download: `${image.download}`,
-          width: image.width,
-          height: image.height,
-        },
-      }).sort((a, b) => {
-        const scaleA = a as ImageScale;
-        const scaleB = b as ImageScale;
-        if (scaleA.width > scaleB.width) return 1;
-        else if (scaleA.width < scaleB.width) return -1;
-        else return 0;
-      });
-      attrs.srcSet = sortedScales
-        .map(
-          (scale: unknown) =>
-            `${basePath}/${(scale as ImageScale).download} ${(scale as ImageScale).width}w`,
-        )
-        .join(', ');
+      if (!isSvg && image.scales && Object.keys(image.scales).length > 0) {
+        const sortedScales = Object.values({
+          ...image.scales,
+          original: {
+            download: `${image.download}`,
+            width: image.width,
+            height: image.height,
+          },
+        }).sort((a, b) => {
+          const scaleA = a as ImageScale;
+          const scaleB = b as ImageScale;
+          if (scaleA.width > scaleB.width) return 1;
+          else if (scaleA.width < scaleB.width) return -1;
+          else return 0;
+        });
+        attrs.srcSet = sortedScales
+          .map(
+            (scale: unknown) =>
+              `${basePath}/${(scale as ImageScale).download} ${(scale as ImageScale).width}w`,
+          )
+          .join(', ');
+      }
     }
   }
 
