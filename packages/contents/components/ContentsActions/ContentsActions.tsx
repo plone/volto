@@ -21,8 +21,8 @@ type Props = {
   workflow: () => Promise<void>;
   tags: () => Promise<void>;
   properties: () => Promise<void>;
-  cut: (value?: string) => void;
-  copy: (value?: string) => void;
+  cut: (item?: Brain) => void;
+  copy: (item?: Brain) => void;
   paste: () => Promise<void>;
   deleteItem: (item?: Brain | null | undefined) => void;
   canPaste: boolean;

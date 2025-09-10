@@ -28,6 +28,7 @@ import {
   MoreoptionsIcon,
   PasteIcon,
   CopyIcon,
+  CutIcon,
 } from '@plone/components/Icons';
 import { TextField } from '@plone/cmsui/components/TextField/TextField';
 import type { RootLoader } from 'seven/app/root';
@@ -44,6 +45,7 @@ import { useTranslation } from 'react-i18next';
 import { useContentsContext } from '../../providers/contents';
 import { clipboardKey } from '../../config/constants';
 import IconButton from '../IconButton';
+import { type ToastItem } from '@plone/layout/config/toast';
 
 import './ContentsTable.css';
 
@@ -73,8 +75,8 @@ interface ContentsTableProps {
   workflow: () => Promise<void>;
   tags: () => Promise<void>;
   properties: () => Promise<void>;
-  // cut: (value?: string) => Promise<void>;
-  // copy: (value?: string) => Promise<void>;
+  // cut: (item?: object) => Promise<void>;
+  // copy: (item?: object) => Promise<void>;
   // paste: () => Promise<void>;
   // orderItem: (id: string, delta: number) => Promise<void>;
   // moveToTop: (index: number) => Promise<void>;
@@ -184,12 +186,49 @@ export function ContentsTable({
   const moveToBottom = (item: Item) => orderItem(item.id, 'bottom');
   const moveToTop = (item: Item) => orderItem(item.id, 'top');
 
-  // TODO try making a custom hook for the clipboard
-  const [clipboard, _setClipboard] = useState<{
+  type ClipboardType = {
     action: 'cut' | 'copy' | null;
     source: string[];
     expiration: number;
-  }>({ action: null, source: [], expiration: 0 });
+    items: any[];
+  };
+
+  const showClipboardActionToast = (data: ClipboardType, toastConfig: any) => {
+    const l = data?.items?.length;
+    if (l > 0) {
+      if (l > 1) {
+        Object.keys(toastConfig).forEach(
+          (action) =>
+            (toastConfig[action].title =
+              `${toastConfig[action].title}_multiple`),
+        );
+      }
+
+      const title = l > 1 ? undefined : data.items[0].title;
+
+      const toastContent: ToastItem = data.action
+        ? toastConfig[data.action]
+        : null;
+
+      if (toastContent) {
+        showToast({
+          title: t(toastContent.title, {
+            number: l,
+            title,
+          }),
+          icon: toastContent.icon,
+        });
+      }
+    }
+  };
+
+  // TODO try making a custom hook for the clipboard
+  const [clipboard, _setClipboard] = useState<ClipboardType>({
+    action: null,
+    source: [],
+    expiration: 0,
+    items: [],
+  });
 
   useEffect(() => {
     try {
@@ -230,46 +269,41 @@ export function ContentsTable({
 
     // show toast
     if (value.action) {
-      const l = value?.source?.length;
-      let _t = '';
-      switch (value.action) {
-        case 'copy':
-          _t = 'contents.actions.copied';
-          break;
-        case 'cutted':
-          _t = 'contents.actions.cutted';
-          break;
-        default:
-          _t = '';
-          break;
-      }
-      if (l > 1) {
-        _t = _t + '_multiple';
-      }
-
-      showToast({
-        title: t(_t, {
-          number: l,
-        }),
-        icon: <CopyIcon />,
+      showClipboardActionToast(value, {
+        copy: {
+          title: 'contents.actions.copied',
+          icon: <CopyIcon />,
+        },
+        cut: {
+          title: 'contents.actions.cutted',
+          icon: <CutIcon />,
+        },
       });
     }
     // TODO when do we clean the clipboard?
   };
 
-  const cut = (path?: string) => {
+  const cut = (item?: Brain) => {
+    const items = item ? [item] : [...selected];
+    const paths = items.map((i) => i['@id']);
+
     setClipboard({
       action: 'cut',
-      source: path ? [path] : [...selected].map((i) => i['@id']),
+      source: paths,
+      items,
       expiration: Date.now() + 24 * 60 * 60 * 1000, // 24 hours expiration
     });
     setSelected('none');
   };
 
-  const copy = (path?: string) => {
+  const copy = (item?: Brain) => {
+    const items = item ? [item] : [...selected];
+    const paths = items.map((i) => i['@id']);
+
     setClipboard({
       action: 'copy',
-      source: path ? [path] : [...selected].map((i) => i['@id']),
+      source: paths,
+      items,
       expiration: Date.now() + 24 * 60 * 60 * 1000, // 24 hours expiration
     });
 
@@ -291,14 +325,21 @@ export function ContentsTable({
 
   // handle Toast success on paste, cut, delete
   useEffect(() => {
-    console.log(fetcher);
     if (fetcher.state === 'submitting' || fetcher.state == 'loading') {
       // TODO: show loader or progress bar
     } else if (fetcher.state == 'idle') {
-      console.log('fetcher.data', fetcher.data);
-      // if (fetcher.formAction.startsWith('@@contents/@@paste')) {
-      //   showToast({ icon: <PasteIcon />, title: t('contents.actions.pasted') });
-      // }
+      const data = fetcher.data;
+
+      showClipboardActionToast(data, {
+        copy: {
+          title: 'contents.actions.pasted',
+          icon: <PasteIcon />,
+        },
+        cut: {
+          title: 'contents.actions.pasted',
+          icon: <PasteIcon />,
+        },
+      });
     }
     // // La richiesta è terminata. Controlla se la action è stata eseguita.
     // if (fetcher.state === 'idle' && fetcher.submission) {
@@ -321,7 +362,9 @@ export function ContentsTable({
     //   //   // ...
     //   // }
     // }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetcher.state]);
+
   const columns = [
     {
       id: 'title',
@@ -379,8 +422,8 @@ export function ContentsTable({
             indexes={indexes}
             onMoveToBottom={() => moveToBottom(item)}
             onMoveToTop={() => moveToTop(item)}
-            onCut={() => cut(item['@id'])}
-            onCopy={() => copy(item['@id'])}
+            onCut={() => cut(item)}
+            onCopy={() => copy(item)}
             onDelete={async () => deleteItem(item)}
           />
         ),

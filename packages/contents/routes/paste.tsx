@@ -41,5 +41,5 @@ export async function action({ params, request }: ActionFunctionArgs) {
     //return redirect('/@@contents' + path + '?error=');
   }
 
-  return data(null, 204);
+  return data(payload, 200);
 }
