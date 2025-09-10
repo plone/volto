@@ -2890,7 +2890,7 @@ msgstr "संबंधित आइटम के रूप में इस आ
 msgid "Referencing this item with {relationship}"
 msgstr "{relationship} के साथ इस आइटम का संदर्भ"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr ""

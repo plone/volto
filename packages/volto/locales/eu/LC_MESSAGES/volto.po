@@ -2890,7 +2890,7 @@ msgstr "Elementu hau erlazionatutako elementu gisa erreferentziatu"
 msgid "Referencing this item with {relationship}"
 msgstr "Elementu hau {relationship} erabiliz erreferentziatu"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr "Freskatu jatorrizko edukia"
