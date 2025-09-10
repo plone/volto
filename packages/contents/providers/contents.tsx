@@ -7,10 +7,11 @@ import {
 } from 'react';
 import { useLoaderData } from 'react-router';
 import type { ContentsLoaderType } from '../routes/contents';
-import { UNSTABLE_ToastQueue as ToastQueue } from 'react-aria-components';
-import type { ToastContent as MyToastContent } from '../types';
+
 import type { Key } from '@react-types/shared';
 import type { ArrayElement } from '@plone/types';
+import config from '@plone/registry';
+import { type ToastItem } from '@plone/layout/config/toast';
 
 type SetSelectedType = 'all' | 'none' | Set<Key>;
 
@@ -25,7 +26,7 @@ interface ContentsContext {
   setShowDelete: (s: boolean) => void;
   itemsToDelete: Set<Item>;
   setItemsToDelete: (s: Set<Item>) => void;
-  showToast: (c: MyToastContent) => void;
+  showToast: (c: ToastItem) => void;
 }
 
 const ContentsContext = createContext<ContentsContext>({
@@ -35,15 +36,13 @@ const ContentsContext = createContext<ContentsContext>({
   setShowDelete: () => {},
   itemsToDelete: new Set(),
   setItemsToDelete: () => {},
-  showToast: (t: MyToastContent) => {},
+  showToast: (t: ToastItem) => {},
 });
 
-type ContentsProviderProps = PropsWithChildren<
-  Pick<ContentsContext, 'showToast'>
->;
+type ContentsProviderProps = PropsWithChildren;
 
 export function ContentsProvider(props: ContentsProviderProps) {
-  const { children, showToast } = props;
+  const { children } = props;
 
   const { search } = useLoaderData<ContentsLoaderType>();
   const { items = [] } = search ?? {};
@@ -67,6 +66,15 @@ export function ContentsProvider(props: ContentsProviderProps) {
   const [itemsToDelete, setItemsToDelete] = useState<Set<Item>>(new Set());
   const [showDelete, setShowDelete] = useState(false);
 
+  //show toast
+  const showToast = (queueElement: ToastItem) => {
+    config
+      .getUtility({
+        name: 'show',
+        type: 'toast',
+      })
+      .method(queueElement);
+  };
   const ctx = {
     selected,
     setSelected,

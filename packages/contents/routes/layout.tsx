@@ -22,6 +22,7 @@ import config from '@plone/registry';
 import stylesheet from 'seven/cmsui.css?url';
 import basicComponentsStylesheets from '@plone/components/dist/basic.css?url';
 import quantaComponentsStylesheet from '@plone/components/dist/quanta.css?url';
+import Toast from '@plone/layout/components/Toast/Toast';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -107,6 +108,9 @@ export default function Index() {
             </div>
           </RACRouterProvider>
         </PluggablesProvider>
+        <Toast
+          queue={config.getUtility({ name: 'queue', type: 'toast' }).method()}
+        />
         <ScrollRestoration />
         <Scripts />
       </body>
