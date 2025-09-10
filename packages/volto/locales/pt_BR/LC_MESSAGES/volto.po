@@ -2911,7 +2911,7 @@ msgstr "Referenciando este item como item relacionado"
 msgid "Referencing this item with {relationship}"
 msgstr "Referenciando este item via {relationship}"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr "Atualizar o conteúdo de origem"

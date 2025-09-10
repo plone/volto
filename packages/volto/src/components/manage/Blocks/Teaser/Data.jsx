@@ -21,7 +21,7 @@ const messages = defineMessages({
   },
   refreshTeaser: {
     id: 'Refresh source content',
-    defaultMessage: 'Refresh source content',
+    defaultMessage: 'Reset to target',
   },
   invalidTeaser: {
     id: 'Invalid teaser source',
