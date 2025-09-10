@@ -459,6 +459,9 @@ importers:
       react-router:
         specifier: 'catalog:'
         version: 7.7.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      rrule:
+        specifier: ^2.8.1
+        version: 2.8.1
       tailwind-merge:
         specifier: ^3.0.1
         version: 3.0.2
@@ -21153,6 +21156,10 @@ snapshots:
       '@rollup/rollup-win32-x64-msvc': 4.50.0
       fsevents: 2.3.3
 
+  rrule@2.8.1:
+    dependencies:
+      tslib: 2.6.2
+
   rrweb-cssom@0.6.0: {}
 
   run-applescript@7.0.0: {}
@@ -21763,7 +21770,7 @@ snapshots:
   terser@5.30.3:
     dependencies:
       '@jridgewell/source-map': 0.3.6
-      acorn: 8.14.0
+      acorn: 8.15.0
       commander: 2.20.3
       source-map-support: 0.5.21
     optional: true

@@ -1,4 +1,4 @@
-import { Button } from '@plone/components/tailwind';
+import { Button } from '@plone/components/quanta';
 import type { Updater } from '@tanstack/react-form';
 
 import {
@@ -19,10 +19,12 @@ import { useTranslation } from 'react-i18next';
 
 interface ByWeekdayOfTheMonthIndexProps {
   onChange: (updater: Updater<number>) => void;
+  defaultValue: keyof typeof ORDINAL_NUMBERS;
 }
 
 const ByWeekdayOfTheMonthIndex = ({
   onChange,
+  defaultValue,
 }: ByWeekdayOfTheMonthIndexProps) => {
   const { t } = useTranslation();
   return (
@@ -31,6 +33,7 @@ const ByWeekdayOfTheMonthIndex = ({
         const indexValue = Number(value);
         onChange(indexValue);
       }}
+      defaultSelectedKey={Number(defaultValue)}
     >
       <Button className={widgetTailwindClasses.selectButton}>
         <SelectValue className="text-[1rem]" />
@@ -43,7 +46,7 @@ const ByWeekdayOfTheMonthIndex = ({
           ).map((numb) => (
             <ListBoxItem
               key={numb}
-              id={numb}
+              id={Number(numb)}
               className={widgetTailwindClasses.listBoxItem}
             >
               {getLocalizedOrdinalNumber(ORDINAL_NUMBERS[numb], t)}

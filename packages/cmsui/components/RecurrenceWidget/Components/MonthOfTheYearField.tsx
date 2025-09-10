@@ -8,14 +8,18 @@ import {
 } from 'react-aria-components';
 import { useTranslation } from 'react-i18next';
 import { getLocalizedMonth, months, widgetTailwindClasses } from '../utils';
-import { Button } from '@plone/components/tailwind';
+import { Button } from '@plone/components/quanta';
 import ChevronDown from '@plone/components/icons/chevron-down.svg?react';
 
 interface MonthOfTheYearFieldProps {
   onChange: (updater: Updater<number>) => void;
+  defaultValue: number;
 }
 
-const MonthOfTheYearField = ({ onChange }: MonthOfTheYearFieldProps) => {
+const MonthOfTheYearField = ({
+  onChange,
+  defaultValue,
+}: MonthOfTheYearFieldProps) => {
   const { i18n } = useTranslation();
   const currentLocale = i18n.language;
   return (
@@ -23,9 +27,10 @@ const MonthOfTheYearField = ({ onChange }: MonthOfTheYearFieldProps) => {
       onSelectionChange={(value) =>
         value && typeof value === 'number' && onChange(value)
       }
+      defaultSelectedKey={defaultValue}
     >
       <Button className={widgetTailwindClasses.selectButton}>
-        <SelectValue className="text-[1rem]" />
+        <SelectValue className="text-[1rem]" defaultValue={1} />
         <ChevronDown />
       </Button>
       <Popover className={widgetTailwindClasses.selectPopover}>

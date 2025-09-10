@@ -1,4 +1,4 @@
-import { Button } from '@plone/components/tailwind';
+import { Button } from '@plone/components/quanta';
 import {
   ListBox,
   ListBoxItem,
@@ -13,9 +13,13 @@ import ChevronDown from '@plone/components/icons/chevron-down.svg?react';
 
 interface ByWeekdayOfTheMonth {
   onChange: (updater: Updater<number>) => void;
+  defaultValue: number;
 }
 
-const ByWeekdayOfTheMonth = ({ onChange }: ByWeekdayOfTheMonth) => {
+const ByWeekdayOfTheMonth = ({
+  onChange,
+  defaultValue,
+}: ByWeekdayOfTheMonth) => {
   const { i18n } = useTranslation();
   const currentLocale = i18n.language;
   return (
@@ -23,6 +27,7 @@ const ByWeekdayOfTheMonth = ({ onChange }: ByWeekdayOfTheMonth) => {
       onSelectionChange={(value) =>
         value && typeof value === 'number' && onChange(value)
       }
+      defaultSelectedKey={defaultValue}
     >
       <Button className={widgetTailwindClasses.selectButton}>
         <SelectValue className="text-[1rem]" />
@@ -33,7 +38,7 @@ const ByWeekdayOfTheMonth = ({ onChange }: ByWeekdayOfTheMonth) => {
           {(Object.keys(Days) as Array<keyof typeof Days>).map((d) => {
             return (
               <ListBoxItem
-                key={d}
+                key={Days[d].weekday}
                 id={Days[d].weekday}
                 className={widgetTailwindClasses.listBoxItem}
               >

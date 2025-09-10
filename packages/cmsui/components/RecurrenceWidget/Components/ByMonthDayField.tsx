@@ -1,14 +1,16 @@
-import { Input } from '@plone/components/tailwind';
-import type { Updater } from '@tanstack/react-form';
+import { Input } from '@plone/components/quanta';
+import { useField, type Updater } from '@tanstack/react-form';
 import { useTranslation } from 'react-i18next';
 import { FieldError } from '../../Field/Field';
 import { TextField } from '../../TextField/TextField';
+import { useFormContext } from '../../Form/Form';
 
 interface ByMonthDayFieldProps {
   onChange: (updater: Updater<number>) => void;
+  defaultValue: number;
 }
 
-const ByMonthDayField = ({ onChange }: ByMonthDayFieldProps) => {
+const ByMonthDayField = ({ onChange, defaultValue }: ByMonthDayFieldProps) => {
   const { t } = useTranslation();
   return (
     <div className="">
@@ -24,6 +26,8 @@ const ByMonthDayField = ({ onChange }: ByMonthDayFieldProps) => {
           validate={(value) =>
             Number(value) > 31 ? t('cmsui.recurrence.monthdayError') : null
           }
+          minValue={1}
+          defaultValue={defaultValue?.toString()}
         >
           <Input />
         </TextField>
