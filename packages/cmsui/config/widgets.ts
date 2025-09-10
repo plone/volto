@@ -8,9 +8,15 @@ import {
   WidthWidget,
 } from '@plone/components/quanta';
 import { DateField } from '@plone/components';
+import { RecurrenceWidget } from '../components/RecurrenceWidget/RecurrenceWidget';
 
 export default function install(config: ConfigType) {
   config.registerDefaultWidget(TextField);
+
+  config.registerWidget({
+    key: 'id',
+    definition: { recurrence: RecurrenceWidget },
+  });
   config.registerWidget({ key: 'widget', definition: { date: DateField } });
   config.registerWidget({
     key: 'widget',
