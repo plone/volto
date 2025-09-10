@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 
 import { useCommandActions } from '@udecode/cmdk';
@@ -157,6 +155,8 @@ export const SelectEditorInput = React.forwardRef<
   );
 });
 
+SelectEditorInput.displayName = 'SelectEditorInput';
+
 export function SelectEditorCombobox() {
   const editor = useEditorRef();
   const containerRef = useEditorContainerRef();
@@ -201,7 +201,9 @@ export function SelectEditorCombobox() {
                   <div className="flex items-center gap-1">
                     <PlusIcon className="text-foreground size-4" />
                     Create new label:
-                    <span className="text-gray-600">"{item.value}"</span>
+                    <span className="text-gray-600">
+                      &quot;{item.value}&quot;
+                    </span>
                   </div>
                 ) : (
                   item.value

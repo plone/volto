@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 
 import type { DialogProps } from '@radix-ui/react-dialog';
@@ -60,6 +58,7 @@ export function CommandDialog({ children, ...props }: DialogProps) {
 
 export const CommandInput = withRef<typeof CommandPrimitive.Input>(
   ({ className, ...props }, ref) => (
+    // eslint-disable-next-line react/no-unknown-property
     <div className="flex items-center border-b px-3" cmdk-input-wrapper="">
       <Search className="mr-2 size-4 shrink-0 opacity-50" />
       <CommandPrimitive.Input

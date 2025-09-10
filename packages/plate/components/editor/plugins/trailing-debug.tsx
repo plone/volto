@@ -1,6 +1,7 @@
-import { type OverrideEditor, PathApi, queryNode } from '@udecode/plate';
-
 import {
+  type OverrideEditor,
+  PathApi,
+  queryNode,
   type PluginConfig,
   type QueryNodeOptions,
   BaseParagraphPlugin,

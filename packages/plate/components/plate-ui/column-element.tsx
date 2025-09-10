@@ -110,6 +110,8 @@ const ColumnDragHandle = React.memo(() => {
   );
 });
 
+ColumnDragHandle.displayName = 'ColumnDragHandle';
+
 const DropLine = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -134,3 +136,5 @@ const DropLine = React.forwardRef<
     />
   );
 });
+
+DropLine.displayName = 'DropLine';

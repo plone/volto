@@ -17,6 +17,7 @@ export function MediaAudioElementStatic({
     <SlateElement className={cn(className, 'mb-1')} {...props}>
       <figure className="group relative cursor-default">
         <div className="h-16">
+          {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
           <audio className="size-full" src={url} controls />
         </div>
       </figure>

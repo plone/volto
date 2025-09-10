@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 import { useCallback, useState } from 'react';
 
@@ -50,6 +48,8 @@ export const DropdownMenuGroup = React.forwardRef<
   );
 });
 
+DropdownMenuGroup.displayName = 'DropdownMenuGroup';
+
 export const DropdownMenuPortal = DropdownMenuPrimitive.Portal;
 
 export const DropdownMenuSub = DropdownMenuPrimitive.Sub;
@@ -84,6 +84,8 @@ export const DropdownMenuRadioGroup = React.forwardRef<
     </>
   );
 });
+
+DropdownMenuRadioGroup.displayName = 'DropdownMenuRadioGroup';
 
 export const DropdownMenuSubTrigger = withRef<
   typeof DropdownMenuPrimitive.SubTrigger,

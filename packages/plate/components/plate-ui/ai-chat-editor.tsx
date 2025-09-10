@@ -107,3 +107,5 @@ export const AIChatEditor = memo(({ content }: { content: string }) => {
     <EditorStatic variant="aiChat" components={components} editor={aiEditor} />
   );
 });
+
+AIChatEditor.displayName = 'AIChatEditor';

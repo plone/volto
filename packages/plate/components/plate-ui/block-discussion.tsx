@@ -213,6 +213,7 @@ export const BlockDiscussion: RenderNodeWrapper<CommentsConfig> = (props) => {
     return;
   }
 
+  // eslint-disable-next-line react/display-name
   return (props) => (
     <BlockCommentsContent
       blockPath={blockPath}

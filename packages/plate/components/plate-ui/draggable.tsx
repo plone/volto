@@ -1,5 +1,4 @@
-'use client';
-
+/* eslint-disable react/display-name */
 import React, { useMemo } from 'react';
 
 import { cn, withRef } from '@udecode/cn';
@@ -238,6 +237,7 @@ const DragHandle = React.memo(() => {
 
 const DropLine = React.memo(
   React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+    // eslint-disable-next-line react/prop-types
     ({ className, ...props }, ref) => {
       const { dropLine } = useDropLine();
 

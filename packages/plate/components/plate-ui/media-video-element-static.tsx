@@ -29,6 +29,7 @@ export function MediaVideoElementStatic({
           className="group relative m-0 inline-block cursor-default"
           style={{ width }}
         >
+          {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
           <video
             className={cn('w-full max-w-full object-cover px-0', 'rounded-sm')}
             src={url}

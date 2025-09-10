@@ -1,5 +1,3 @@
-'use client';
-
 import React, {
   type HTMLAttributes,
   type ReactNode,
@@ -264,6 +262,7 @@ const InlineComboboxInput = forwardRef<
 InlineComboboxInput.displayName = 'InlineComboboxInput';
 
 const InlineComboboxContent: typeof ComboboxPopover = ({
+  // eslint-disable-next-line react/prop-types
   className,
   ...props
 }) => {

@@ -22,6 +22,7 @@ export const SuggestionBelowNodes: RenderNodeWrapper<SuggestionConfig> = ({
 
   if (!suggestionData?.isLineBreak) return;
 
+  // eslint-disable-next-line react/prop-types
   return function Component({ children }) {
     return (
       <React.Fragment>

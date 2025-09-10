@@ -81,6 +81,7 @@ const dropdownArrowVariants = cva(
 );
 
 const ToolbarButton = withTooltip(
+  // eslint-disable-next-line react/display-name
   React.forwardRef<
     React.ElementRef<typeof ToolbarToggleItem>,
     {
@@ -170,6 +171,7 @@ export const ToolbarSplitButton = React.forwardRef<
 });
 
 export const ToolbarSplitButtonPrimary = withTooltip(
+  // eslint-disable-next-line react/display-name
   React.forwardRef<
     React.ElementRef<typeof ToolbarToggleItem>,
     Omit<React.ComponentPropsWithoutRef<typeof ToolbarToggleItem>, 'value'>
@@ -200,6 +202,8 @@ export const ToolbarSplitButtonSecondary = React.forwardRef<
     VariantProps<typeof dropdownArrowVariants>
 >(({ className, size, variant, ...props }, ref) => {
   return (
+    // TODO: fix a11y
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/interactive-supports-focus
     <span
       ref={ref}
       className={cn(
@@ -219,7 +223,8 @@ export const ToolbarSplitButtonSecondary = React.forwardRef<
   );
 });
 
-ToolbarSplitButton.displayName = 'ToolbarButton';
+ToolbarSplitButtonSecondary.displayName = 'ToolbarSplitButtonSecondary';
+ToolbarSplitButton.displayName = 'ToolbarSplitButton';
 
 export const ToolbarToggleItem = withVariants(
   ToolbarPrimitive.ToggleItem,

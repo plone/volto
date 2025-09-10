@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 
 import { withRef } from '@udecode/cn';
@@ -19,6 +17,7 @@ export const ListIndentToolbarButton = withRef<
     <ToolbarButton
       ref={ref}
       onClick={() => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         reverse ? unindentListItems(editor) : indentListItems(editor);
       }}
       tooltip={reverse ? 'Outdent' : 'Indent'}

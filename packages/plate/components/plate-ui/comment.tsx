@@ -325,6 +325,7 @@ export function CommentMoreDropdown(props: CommentMoreDropdownProps) {
 
   const onDeleteComment = React.useCallback(() => {
     if (!comment.id)
+      // eslint-disable-next-line no-alert
       return alert('You are operating too quickly, please try again later.');
 
     // Find and update the discussion
@@ -358,6 +359,7 @@ export function CommentMoreDropdown(props: CommentMoreDropdownProps) {
     selectedEditCommentRef.current = true;
 
     if (!comment.id)
+      // eslint-disable-next-line no-alert
       return alert('You are operating too quickly, please try again later.');
 
     setEditingId(comment.id);
