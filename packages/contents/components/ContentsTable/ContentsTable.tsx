@@ -179,8 +179,6 @@ export function ContentsTable({
         action: `/@@contents/@@order`,
       },
     );
-
-    // TODO handle loading state, show something like a dimmer while operation is in progress
   };
 
   const moveToBottom = (item: Item) => orderItem(item.id, 'bottom');
@@ -318,18 +316,17 @@ export function ContentsTable({
       encType: 'application/json',
       action: `/@@contents/@@paste${pathname}`,
     });
-    // TODO: show toast
-    // TODO handle loading state, show something like a dimmer while operation is in progress
     // TODO when do we clean the clipboard?
   };
 
   // handle Toast success on paste, cut, delete
   useEffect(() => {
     if (fetcher.state === 'submitting' || fetcher.state == 'loading') {
-      // TODO: show loader or progress bar
+      // TODO: handle loading state, show something like a dimmer while operation is in progress
     } else if (fetcher.state == 'idle') {
       const data = fetcher.data;
 
+      // Show toast for copy+paste and cut+paste
       showClipboardActionToast(data, {
         copy: {
           title: 'contents.actions.pasted',
