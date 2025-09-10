@@ -1,6 +1,7 @@
 import React from 'react';
 import config from './index';
-import { describe, expect, it, afterEach, beforeEach } from 'vitest';
+import { describe, expect, it, afterEach, beforeEach, beforeAll } from 'vitest';
+import type { WidgetsConfig } from '@plone/types';
 
 const MockDefaultWidget = () => <div data-testid="default-widget">Default</div>;
 const MockTextWidget = () => <input type="text" data-testid="text-widget" />;
@@ -1282,21 +1283,26 @@ describe('Routes registry', () => {
     ]);
   });
 });
-describe('registerWidget', () => {
+describe('Widgets registry: registerWidget/registerDefaultWidget', () => {
   const DummyWidget = () => <div>Dummy Widget</div>;
+  DummyWidget.displayName = 'DummyWidget';
   const AnotherWidget = () => <div>Another Widget</div>;
+  AnotherWidget.displayName = 'AnotherWidget';
+  const ThirdWidget = () => <div>Third Widget</div>;
+  ThirdWidget.displayName = 'ThirdWidget';
 
   beforeEach(() => {
-    config._data.widgets = {}; // reset registry for a clean test state
+    config._data.widgets = {} as WidgetsConfig; // reset registry for a clean test state
   });
 
   it('registers a default widget', () => {
-    config.registerWidget({
-      key: 'default',
-      definition: DummyWidget,
-    });
-
-    expect(config.widgets?.default).toBe(DummyWidget);
+    config.registerDefaultWidget(AnotherWidget);
+    expect(config.widgets?.default.displayName).toBe('AnotherWidget');
+  });
+  it('errors when trying to register a default widget with the wrong API', () => {
+    expect(() => {
+      config.registerWidget({ key: 'default', definition: AnotherWidget });
+    }).toThrow('Use registerDefaultWidget to set the default widget');
   });
 
   it('registers a widget in the "widget" group', () => {
@@ -1307,80 +1313,8 @@ describe('registerWidget', () => {
       },
     });
 
-    expect(config.widgets?.widget?.special).toBe(DummyWidget);
+    expect(config.widgets?.widget?.special?.displayName).toBe('DummyWidget');
   });
-
-  it('registers a widget in the "factory" group', () => {
-    config.registerWidget({
-      key: 'factory',
-      definition: {
-        'my.custom.Factory': DummyWidget,
-      },
-    });
-
-    expect(config.widgets?.factory?.['my.custom.Factory']).toBe(DummyWidget);
-  });
-
-  it('overwrites existing widgets of the same key', () => {
-    config.registerWidget({
-      key: 'default',
-      definition: DummyWidget,
-    });
-
-    config.registerWidget({
-      key: 'default',
-      definition: AnotherWidget,
-    });
-
-    expect(config.widgets?.default).toBe(AnotherWidget);
-  });
-
-  it('preserves unrelated widget keys', () => {
-    config.registerWidget({
-      key: 'default',
-      definition: DummyWidget,
-    });
-
-    config.registerWidget({
-      key: 'widget',
-      definition: {
-        special: AnotherWidget,
-      },
-    });
-
-    expect(config.widgets?.default).toBe(DummyWidget);
-    expect(config.widgets?.widget?.special).toBe(AnotherWidget);
-  });
-});
-
-describe('Widgets registry: registerWidget', () => {
-  const DummyWidget = () => <div>Dummy Widget</div>;
-  const AnotherWidget = () => <div>Another Widget</div>;
-
-  beforeEach(() => {
-    config._data.widgets = {}; // reset registry for a clean test state
-  });
-
-  it('registers a default widget', () => {
-    config.registerWidget({
-      key: 'default',
-      definition: DummyWidget,
-    });
-
-    expect(config.widgets?.default).toBe(DummyWidget);
-  });
-
-  it('registers a widget in the "widget" group', () => {
-    config.registerWidget({
-      key: 'widget',
-      definition: {
-        special: DummyWidget,
-      },
-    });
-
-    expect(config.widgets?.widget?.special).toBe(DummyWidget);
-  });
-
   it('registers two widgets in the "widget" group', () => {
     config.registerWidget({
       key: 'widget',
@@ -1394,20 +1328,8 @@ describe('Widgets registry: registerWidget', () => {
         another: DummyWidget,
       },
     });
-    expect(config.widgets?.widget?.special).toBe(DummyWidget);
-    expect(config.widgets?.widget?.another).toBe(DummyWidget);
-  });
-
-  it('registers several widgets in the "widget" group at once', () => {
-    config.registerWidget({
-      key: 'widget',
-      definition: {
-        special: DummyWidget,
-        another: DummyWidget,
-      },
-    });
-    expect(config.widgets?.widget?.special).toBe(DummyWidget);
-    expect(config.widgets?.widget?.another).toBe(DummyWidget);
+    expect(config.widgets?.widget?.special?.displayName).toBe('DummyWidget');
+    expect(config.widgets?.widget?.another?.displayName).toBe('DummyWidget');
   });
 
   it('registers a widget in the "factory" group', () => {
@@ -1418,28 +1340,49 @@ describe('Widgets registry: registerWidget', () => {
       },
     });
 
-    expect(config.widgets?.factory?.['my.custom.Factory']).toBe(DummyWidget);
+    expect(config.widgets?.factory?.['my.custom.Factory']?.displayName).toBe(
+      'DummyWidget',
+    );
+  });
+  it('registers several widgets in the "widget" group at once', () => {
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: DummyWidget,
+        another: ThirdWidget,
+      },
+    });
+    expect(config.widgets?.widget?.special?.displayName).toBe('DummyWidget');
+    expect(config.widgets?.widget?.another?.displayName).toBe('ThirdWidget');
   });
 
+  it('overwrites existing default widget', () => {
+    // TODO: disallow overwriting default widget with non specific API
+    config.registerDefaultWidget(AnotherWidget);
+    expect(config.widgets?.default.displayName).toBe('AnotherWidget');
+
+    config.registerDefaultWidget(ThirdWidget);
+
+    expect(config.widgets?.default.displayName).toBe('ThirdWidget');
+  });
   it('overwrites existing widgets of the same key', () => {
+    // TODO: , disallow overwriting default widget with non specific API
     config.registerWidget({
-      key: 'default',
-      definition: DummyWidget,
+      key: 'widget',
+      definition: { size: AnotherWidget },
     });
+    expect(config.widgets?.widget.size?.displayName).toBe('AnotherWidget');
 
     config.registerWidget({
-      key: 'default',
-      definition: AnotherWidget,
+      key: 'widget',
+      definition: { size: ThirdWidget },
     });
 
-    expect(config.widgets?.default).toBe(AnotherWidget);
+    expect(config.widgets?.widget.size?.displayName).toBe('ThirdWidget');
   });
 
   it('preserves unrelated widget keys', () => {
-    config.registerWidget({
-      key: 'default',
-      definition: DummyWidget,
-    });
+    config.registerDefaultWidget(DummyWidget);
 
     config.registerWidget({
       key: 'widget',
@@ -1448,8 +1391,8 @@ describe('Widgets registry: registerWidget', () => {
       },
     });
 
-    expect(config.widgets?.default).toBe(DummyWidget);
-    expect(config.widgets?.widget?.special).toBe(AnotherWidget);
+    expect(config.widgets?.default.displayName).toBe('DummyWidget');
+    expect(config.widgets?.widget?.special?.displayName).toBe('AnotherWidget');
   });
 });
 

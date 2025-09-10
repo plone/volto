@@ -11,7 +11,7 @@ import { DateField } from '@plone/components';
 import { RecurrenceWidget } from '../components/RecurrenceWidget/RecurrenceWidget';
 
 export default function install(config: ConfigType) {
-  config.registerWidget({ key: 'default', definition: TextField });
+  config.registerDefaultWidget(TextField);
 
   config.registerWidget({
     key: 'id',
