@@ -635,7 +635,7 @@ msgstr "Änderungen gespeichert."
 #. Default: "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
 #: components/manage/Blocks/Teaser/schema
 msgid "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
-msgstr ""
+msgstr "Aktivieren Sie dieses Kontrollkästchen, um den Titel, die Beschreibung oder das Bild des Zielinhalts für diesen Teaser anzupassen. Lassen Sie es deaktiviert, um Aktualisierungen des Zielinhalts anzuzeigen, falls dieser später bearbeitet wird"
 
 #. Default: "Checkbox"
 #: components/manage/Widgets/SchemaWidget
@@ -930,7 +930,7 @@ msgstr "Aktuelles Passwort"
 #. Default: "Customize teaser content"
 #: components/manage/Blocks/Teaser/schema
 msgid "Customize teaser content"
-msgstr ""
+msgstr "Den Inhalt des Teasers anpassen"
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
