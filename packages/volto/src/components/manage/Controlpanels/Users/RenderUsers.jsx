@@ -3,7 +3,7 @@
  * @module components/manage/Controlpanels/Users/RenderUsers
  */
 import PropTypes from 'prop-types';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
@@ -24,7 +24,6 @@ import { toast } from 'react-toastify';
  */
 const RenderUsers = (props) => {
   const [user, setUser] = useState({});
-  const prevUpdateRequestRef = useRef();
 
   const intl = useIntl();
   const dispatch = useDispatch();
@@ -43,7 +42,31 @@ const RenderUsers = (props) => {
 
   // Use dispatch to call updateUser action
   const updateUserData = (userId, userData) => {
-    dispatch(updateUser(userId, userData));
+    dispatch(updateUser(userId, userData))
+      .then(() => {
+        // Handle success
+        setUser({});
+        if (listUsers) {
+          listUsers();
+        }
+        toast.success(
+          <Toast
+            success
+            title={intl.formatMessage(messages.success)}
+            content={intl.formatMessage(messages.updateUserSuccess)}
+          />,
+        );
+      })
+      .catch(() => {
+        // Handle error
+        toast.error(
+          <Toast
+            error
+            title={intl.formatMessage(messages.error)}
+            content={intl.formatMessage(messages.thereWereSomeErrors)}
+          />,
+        );
+      });
   };
 
   /**
@@ -54,33 +77,6 @@ const RenderUsers = (props) => {
     const [userId, role] = value.split('&role=');
     updateUserRole(userId, role);
   };
-
-  // Handle successful user update
-  useEffect(() => {
-    const prevUpdateRequest = prevUpdateRequestRef.current;
-
-    // Only execute if there was a transition from loading to loaded
-    if (
-      prevUpdateRequest?.loading &&
-      updateRequest?.loaded &&
-      user?.id === propsUser?.id
-    ) {
-      setUser({});
-      if (listUsers) {
-        listUsers();
-      }
-      toast.success(
-        <Toast
-          success
-          title={intl.formatMessage(messages.success)}
-          content={intl.formatMessage(messages.updateUserSuccess)}
-        />,
-      );
-    }
-
-    // Store current updateRequest for next comparison
-    prevUpdateRequestRef.current = updateRequest;
-  }, [updateRequest, user?.id, propsUser?.id, intl, listUsers]);
 
   const onEditUserSubmit = (data) => {
     // Do not handle groups and roles in this form
