@@ -167,9 +167,11 @@ const RenderUsers = (props) => {
 // PropTypes to the component
 RenderUsers.propTypes = {
   user: PropTypes.shape({
+    id: PropTypes.string,
     username: PropTypes.string,
     fullname: PropTypes.string,
     roles: PropTypes.arrayOf(PropTypes.string),
+    '@id': PropTypes.string,
   }).isRequired,
   roles: PropTypes.arrayOf(
     PropTypes.shape({
@@ -178,6 +180,13 @@ RenderUsers.propTypes = {
   ).isRequired,
   onDelete: PropTypes.func.isRequired,
   isUserManager: PropTypes.bool.isRequired,
+  listUsers: PropTypes.func,
+  updateUser: PropTypes.func.isRequired,
+  inheritedRole: PropTypes.arrayOf(PropTypes.string),
+  userschema: PropTypes.shape({
+    loaded: PropTypes.bool,
+    userschema: PropTypes.object,
+  }),
 };
 
 export default RenderUsers;
