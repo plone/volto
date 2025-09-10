@@ -222,7 +222,7 @@ describe('Add Content Tests', () => {
     // and the link should show up on the link view
     cy.contains('/link-target');
     // and the link redirects to the link target
-    cy.get('main a[href="/link-target"]').click();
+    cy.get(`main a[href="${Cypress.config().baseUrl}/link-target"]`).click();
     cy.url().should('eq', Cypress.config().baseUrl + '/link-target');
     cy.get('main').contains('Link Target');
   });
