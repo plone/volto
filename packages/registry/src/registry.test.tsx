@@ -17,7 +17,7 @@ beforeEach(() => {
   config.set('slots', {});
   config.set('utilities', {});
   config.set('widgets', {
-    default: { default: MockDefaultWidget },
+    default: MockDefaultWidget,
     id: {
       title: MockTextWidget,
     },
