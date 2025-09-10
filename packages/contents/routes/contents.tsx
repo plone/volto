@@ -25,6 +25,7 @@ import type { ToastContent as MyToastContent } from '../types';
 
 // This is needed because to prevent circular import loops
 export type ContentsLoaderType = typeof loader;
+
 // Create a global ToastQueue.
 export const queue = new ToastQueue<MyToastContent>({
   // Wrap state updates in a CSS view transition.

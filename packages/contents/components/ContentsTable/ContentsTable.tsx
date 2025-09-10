@@ -236,9 +236,6 @@ export function ContentsTable({
         case 'copy':
           _t = 'contents.actions.copied';
           break;
-        case 'paste':
-          _t = 'contents.actions.pasted';
-          break;
         case 'cutted':
           _t = 'contents.actions.cutted';
           break;
@@ -287,11 +284,44 @@ export function ContentsTable({
       encType: 'application/json',
       action: `/@@contents/@@paste${pathname}`,
     });
-
+    // TODO: show toast
     // TODO handle loading state, show something like a dimmer while operation is in progress
     // TODO when do we clean the clipboard?
   };
 
+  // handle Toast success on paste, cut, delete
+  useEffect(() => {
+    console.log(fetcher);
+    if (fetcher.state === 'submitting' || fetcher.state == 'loading') {
+      // TODO: show loader or progress bar
+    } else if (fetcher.state == 'idle') {
+      console.log('fetcher.data', fetcher.data);
+      // if (fetcher.formAction.startsWith('@@contents/@@paste')) {
+      //   showToast({ icon: <PasteIcon />, title: t('contents.actions.pasted') });
+      // }
+    }
+    // // La richiesta è terminata. Controlla se la action è stata eseguita.
+    // if (fetcher.state === 'idle' && fetcher.submission) {
+    //   // Ottieni l'azione della richiesta appena completata.
+    //   const actionPath = fetcher.submission.action;
+    //   // Se l'azione completata è quella di "paste"...
+    //   if (actionPath.startsWith('/@@contents/@@paste')) {
+    //     // ...allora gestisci il risultato specifico per il paste.
+    //     if (fetcher.data && fetcher.data.error) {
+    //       console.error("Errore durante l'incolla:", fetcher.data.error);
+    //       // Mostra un toast di errore
+    //     } else {
+    //       console.log('Incolla completato con successo!');
+    //       // Mostra un toast di successo
+    //     }
+    //   }
+    //   // Puoi aggiungere altri blocchi `if` per le altre azioni
+    //   // else if (actionPath.startsWith('/@@contents/@@delete')) {
+    //   //   // Gestisci il risultato dell'azione di eliminazione
+    //   //   // ...
+    //   // }
+    // }
+  }, [fetcher.state]);
   const columns = [
     {
       id: 'title',

@@ -11,17 +11,17 @@ export default function install(config: ConfigType) {
         path: '@@contents',
         children: [
           {
-            path: '@@delete',
+            path: '@@delete/*',
             type: 'route',
             file: '@plone/contents/routes/delete.tsx',
           },
           {
-            path: '@@order',
+            path: '@@order/*',
             type: 'route',
             file: '@plone/contents/routes/order.tsx',
           },
           {
-            path: '@@paste',
+            path: '@@paste/*',
             type: 'route',
             file: '@plone/contents/routes/paste.tsx',
           },
