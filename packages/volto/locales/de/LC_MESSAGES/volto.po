@@ -2634,7 +2634,7 @@ msgstr "Objekt-Browser öffnen"
 #. Default: "Order"
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
-msgstr "Reihung"
+msgstr "Reihenfolge"
 
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
