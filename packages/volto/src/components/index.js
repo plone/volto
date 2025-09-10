@@ -41,6 +41,7 @@ export { default as Image } from '@plone/volto/components/theme/Image/Image';
 export { default as ConditionalLink } from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
 export { default as UniversalLink } from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 export { default as LinkMore } from '@plone/volto/components/manage/LinkMore/LinkMore';
+export { default as VideoEmbed } from '@plone/volto/components/theme/VideoEmbed/VideoEmbed';
 
 // Lazy load them, since we want them and its deps to be in its own chunk
 export { default as ContactForm } from '@plone/volto/components/theme/ContactForm/ContactForm';
