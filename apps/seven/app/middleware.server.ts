@@ -20,6 +20,12 @@ export const otherResources: Route.unstable_MiddlewareFunction = async (
   next,
 ) => {
   const path = `/${params['*'] || ''}`;
+
+  // Ignore requests for some specific paths
+  if (/.well-known\/appspecific\/com.chrome.devtools.json/.test(path)) {
+    throw Response.json({});
+  }
+
   console.log(path);
 
   if (
