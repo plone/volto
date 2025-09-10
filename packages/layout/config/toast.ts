@@ -11,6 +11,7 @@ export type ToastItem = {
   title: string;
   description?: string;
   icon?: ReactNode;
+  className?: string;
 };
 
 // Create a global ToastQueue.
@@ -37,7 +38,7 @@ export default function install(config: ConfigType) {
     name: 'show',
     type: 'toast',
     method: (queueElement: ToastItem) => {
-      toastQueue.add(queueElement, { timeout: 5000 });
+      toastQueue.add(queueElement, { timeout: 25000 });
     },
   });
 }

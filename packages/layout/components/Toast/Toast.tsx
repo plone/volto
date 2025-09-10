@@ -22,7 +22,10 @@ const AppToast = (props: AppToastPropsType<React.ElementType>) => {
   return (
     <ToastRegion queue={queue}>
       {({ toast }) => (
-        <Toast toast={toast}>
+        <Toast
+          toast={toast}
+          className={['react-aria-Toast', toast.content.className].join(' ')}
+        >
           <ToastContent>
             <Text slot="title">
               {toast.content.icon ? (

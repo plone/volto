@@ -1,6 +1,7 @@
 .react-aria-ToastRegion {
   --toast-bg: #021322;
   --toast-fg: #fff;
+
   position: fixed;
 
   bottom: 8px;
@@ -21,6 +22,10 @@
 }
 
 .react-aria-Toast {
+  &.error {
+    --toast-bg: #6d030a;
+  }
+
   display: flex;
   align-items: center;
   padding: 0.8rem 1rem;
