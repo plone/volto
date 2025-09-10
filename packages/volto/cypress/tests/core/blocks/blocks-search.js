@@ -315,7 +315,7 @@ describe('Search Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-event',
+      `${prefixPath}/my-event`,
     );
     cy.get('.search-results-count-sort .search-details em').should(
       'contain',
@@ -408,7 +408,7 @@ describe('Search Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-event',
+      `${prefixPath}/my-event`,
     );
     cy.get('.search-results-count-sort .search-details em').should(
       'contain',
