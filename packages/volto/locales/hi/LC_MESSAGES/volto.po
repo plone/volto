@@ -2741,11 +2741,6 @@ msgstr "कृपया अपग्रेड के साथ जारी र�
 msgid "Please ensure you have a backup of your site before performing the upgrade."
 msgstr "कृपया अपग्रेड करने से पहले अपनी साइट का बैकअप होने की सुनिश्चित करें।"
 
-#. Default: "Please enter a valid URL by deleting the block and adding a new video block."
-#: components/manage/Blocks/Video/Body
-msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr "कृपया ब्लॉक को हटाकर एक वैध URL दर्ज करें और एक नया वीडियो ब्लॉक जोड़ें।"
-
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
@@ -5288,6 +5283,11 @@ msgstr "{id} की कंटेंट प्रकार"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} स्कीमा"
+
+#. Default: "{sources} or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "{sources} or mp4 URL allowed"
+msgstr ""
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions

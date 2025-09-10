@@ -2747,11 +2747,6 @@ msgstr "Continue com a atualização."
 msgid "Please ensure you have a backup of your site before performing the upgrade."
 msgstr "Certifique-se de ter um backup do seu site antes de executar a atualização."
 
-#. Default: "Please enter a valid URL by deleting the block and adding a new video block."
-#: components/manage/Blocks/Video/Body
-msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr "Digite uma URL válida excluindo o bloco e adicionando um novo bloco de vídeo."
-
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
@@ -5294,6 +5289,11 @@ msgstr "Tipo de conteúdo {id}"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "Esquema {id}"
+
+#. Default: "{sources} or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "{sources} or mp4 URL allowed"
+msgstr ""
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions
