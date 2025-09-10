@@ -2,6 +2,7 @@ import TitleBlockView from '../Title/View';
 import TextBlockView from '../Text/View';
 import ImageBlockView from '../Image';
 import TeaserBlockView from '../Teaser';
+import TextBlockEdit from '../Text/Edit';
 
 export * from './slate';
 
@@ -39,6 +40,7 @@ export const blocksConfig = {
     id: 'slate',
     title: 'Rich text',
     view: TextBlockView,
+    edit: TextBlockEdit,
     category: 'text',
   },
 

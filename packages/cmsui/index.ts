@@ -50,7 +50,7 @@ export default function install(config: ConfigType) {
       },
       {
         type: 'prefix',
-        path: 'edit',
+        path: '@@edit',
         children: [
           {
             type: 'index',
