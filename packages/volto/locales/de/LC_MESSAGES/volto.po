@@ -2910,10 +2910,10 @@ msgstr "Inhalte, die diesen Inhalt als verwandten Inhalt referenzieren"
 msgid "Referencing this item with {relationship}"
 msgstr "Inhalte, die diesen Inhalt mit {relationship} referenzieren"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
-msgstr "Mit Inhalten des Ziels aktualisieren"
+msgstr "Vom Ziel übernehmen"
 
 #. Default: "Register"
 #: components/theme/Anontools/Anontools

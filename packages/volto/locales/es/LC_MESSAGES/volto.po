@@ -2912,7 +2912,7 @@ msgstr "Hacer referencia a este elemento como elemento relacionado"
 msgid "Referencing this item with {relationship}"
 msgstr "Hacer referencia a este elemento con {relationship}"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr ""
