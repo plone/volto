@@ -1,4 +1,5 @@
 describe('Folder Contents Tests', () => {
+  const prefixPath = Cypress.env('prefixPath') || '';
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     // given a logged in editor
@@ -20,9 +21,8 @@ describe('Folder Contents Tests', () => {
     cy.get('button[id="toolbar-save"]').click();
     cy.visit('/controlpanel/dexterity-types');
 
-    cy.get('a[href="/controlpanel/dexterity-types/Document"]').should(
-      'have.text',
-      'Page1',
-    );
+    cy.get(
+      `a[href="${prefixPath}/controlpanel/dexterity-types/Document"]`,
+    ).should('have.text', 'Page1');
   });
 });
