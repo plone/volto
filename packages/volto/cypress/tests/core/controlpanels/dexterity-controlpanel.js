@@ -12,7 +12,9 @@ describe('Folder Contents Tests', () => {
   });
 
   it('Changing name of the Page content type', () => {
-    cy.get('a[href="/controlpanel/dexterity-types/Document"]').click();
+    cy.get(
+      `a[href="${prefixPath}/controlpanel/dexterity-types/Document"]`,
+    ).click();
     cy.get('input[id="field-title"]').clear().type('Page1{enter}');
     cy.get('textarea[id="field-description"]').type(
       'This is Page Content Type{enter}',

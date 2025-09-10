@@ -185,6 +185,7 @@ describe('Modal View for different content types', () => {
   });
 });
 describe('Test if different forms of Linking content appear in Delete Modal View', () => {
+  const prefixPath = Cypress.env('prefixPath') || '';
   beforeEach(() => {
     cy.autologin();
     cy.visit('/');
@@ -413,6 +414,7 @@ describe('Test if different forms of Linking content appear in Delete Modal View
   });
 });
 describe('Contents Delete Modal - selected items info and confirmation messages', () => {
+  const prefixPath = Cypress.env('prefixPath') || '';
   beforeEach(() => {
     cy.autologin();
     cy.visit('/');
