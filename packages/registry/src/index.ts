@@ -45,6 +45,12 @@ type GetUtilityResult = {
 };
 
 export type ConfigType = InstanceType<typeof Config>;
+// This type is used to map widget keys to their definitions.
+type MappableWidgetKeys = {
+  [K in keyof WidgetsConfig]: WidgetsConfig[K] extends Record<string, any>
+    ? K
+    : never;
+}[keyof WidgetsConfig];
 
 class Config {
   public _data: ConfigData | Record<string, never>;
@@ -500,7 +506,7 @@ class Config {
 
     const utilityName = `${depsString ? `|${depsString}` : ''}${name}`;
 
-    return this._data.utilities[type][utilityName] || {};
+    return this._data.utilities[type]?.[utilityName] || {};
   }
 
   getUtilities(options: {
@@ -532,6 +538,7 @@ class Config {
     route.push(options);
     this._data.routes = route;
   }
+
   /**
    * Registers a widget configuration into the registry.
    *
@@ -541,17 +548,51 @@ class Config {
    * @param options.definition - The actual widget configuration, which must match the expected structure of WidgetsConfig[K].
    *
    */
-  registerWidget<K extends keyof WidgetsConfig>(options: {
+  registerWidget<K extends MappableWidgetKeys>(options: {
     key: K;
-    definition: WidgetsConfig[K];
+    definition: WidgetsConfig[K] extends Record<string, any>
+      ? WidgetsConfig[K]
+      : never;
   }) {
+    // Aliasing helper types to make TS understand that, in this case, it'll recieve an object
+    // with keys that are valid for WidgetsConfig[K].
+    // Here we have access to generic K, so we can use it to narrow down the type.
+    type Definition = WidgetsConfig[K];
+    type DefinitionKey = keyof Definition;
+    const emptyDefinition: WidgetsConfig[K] = {} as Definition;
+    if (!options || !options.key || !options.definition) {
+      throw new Error('No widget definition provided');
+    }
     const { key, definition } = options;
-    const widgets = {
-      ...(this.widgets ?? {}),
-      [key]: definition,
-    };
-    this._data.widgets = widgets;
+
+    if (key === 'default') {
+      throw new Error('Use registerDefaultWidget to set the default widget');
+    }
+
+    const definitionIsObject = Object.keys(definition).length;
+    if (!definitionIsObject) {
+      this._data.widgets[key] = definition;
+    } else {
+      for (const widgetKey of Object.keys(definition) as DefinitionKey[]) {
+        // Now widgetKey is known by TS to be a valid key of definition, no casting needed.
+        if (this._data.widgets[key] === undefined)
+          this._data.widgets[key] = emptyDefinition;
+
+        // Otherwise, we just set it
+        this._data.widgets[key][widgetKey] = definition[widgetKey];
+      }
+    }
   }
+  /**
+   * Registers a widget configuration into the registry.
+   *
+   * @param component - The default widget component to register.
+   *
+   */
+  registerDefaultWidget(component: React.ComponentType<any>) {
+    this._data.widgets.default = component;
+  }
+
   /**
    * Gets a widget configuration from the registry.
    *

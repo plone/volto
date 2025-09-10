@@ -1,5 +1,5 @@
 import { useLocation, useRouteLoaderData } from 'react-router';
-import App from '@plone/layout/components/App';
+import SlotRenderer from '@plone/layout/SlotRenderer';
 import type { RootLoader } from 'seven/app/root';
 
 export default function Content() {
@@ -11,5 +11,5 @@ export default function Content() {
   }
   const { content } = contentData;
 
-  return <App content={content} location={location}></App>;
+  return <SlotRenderer name="main" content={content} location={location} />;
 }

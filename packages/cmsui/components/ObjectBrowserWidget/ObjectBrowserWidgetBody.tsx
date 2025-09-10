@@ -4,22 +4,38 @@ import {
   Button,
   GridList,
   GridListItem,
-} from '@plone/components/tailwind';
-import React, { useState } from 'react';
-import { isImageMode, type ObjectBrowserWidgetMode } from './utils';
+} from '@plone/components/quanta';
+import React, { useEffect, useState, useMemo } from 'react';
 import {
+  isImageMode,
+  isSelectable,
+  type ObjectBrowserWidgetMode,
+} from './utils';
+import {
+  ArrowleftIcon,
   ChevronrightIcon,
   ListIcon,
-} from '../../../components/src/components/icons';
-import type { Key, PressEvent } from 'react-aria-components';
+  SearchIcon,
+} from '@plone/components/Icons';
+import type {
+  GridListProps,
+  Key,
+  PressEvent,
+  Selection,
+} from 'react-aria-components';
+// import Image from '@plone/volto/components/theme/Image/Image';
 import type Field from '../Form/Field';
 import { useObjectBrowserNavigation } from './ObjectBrowserNavigationContext';
 import type { loader } from '../../routes/objectBrowserWidget';
 import type { Brain } from '@plone/types';
+import { flattenToAppURL } from '@plone/helpers';
+import { useTranslation } from 'react-i18next';
 
 export interface ObjectBrowserWidgetBodyProps
-  extends Pick<React.ComponentProps<typeof Breadcrumbs>, 'items'>,
-    Omit<React.ComponentProps<typeof Field>, 'label'> {
+  extends Omit<
+    React.ComponentProps<typeof Field>,
+    'label' | 'items' | 'onChange'
+  > {
   mode: ObjectBrowserWidgetMode;
   loading: boolean;
   items:
@@ -28,25 +44,29 @@ export interface ObjectBrowserWidgetBodyProps
   breadcrumbs:
     | Awaited<ReturnType<typeof loader>>['data']['breadcrumbs']['items']
     | undefined;
-  selectedItems: 'all' | Iterable<Key> | undefined;
+  selectedItems: GridListProps<object>['selectedKeys'];
+  handleSelectionChange: (keys: Selection) => void;
   selectionMode: React.ComponentProps<typeof GridList>['selectionMode'];
   selectionBehavior: React.ComponentProps<typeof GridList>['selectionBehavior'];
-  onChange: (value: any) => void;
+  searchMode: boolean;
 }
-
 export function ObjectBrowserWidgetBody({
   mode = 'image',
   items,
   breadcrumbs,
   loading,
   selectedItems = [],
-  onChange,
+  handleSelectionChange,
   selectionBehavior,
   selectionMode,
+  searchMode = false,
   ...rest
 }: ObjectBrowserWidgetBodyProps) {
   const [viewMode, setViewMode] = useState<boolean>(false);
-  const { navigateTo, goBack, canGoBack } = useObjectBrowserNavigation();
+  const { t } = useTranslation();
+  const { currentPath, navigateTo, goBack, canGoBack } =
+    useObjectBrowserNavigation();
+
   const handleAction = (item: Brain) => {
     if (isImageMode(mode)) {
       // TODO
@@ -57,28 +77,53 @@ export function ObjectBrowserWidgetBody({
   const handleBreadcrumbNavigation = (e: PressEvent) => {
     navigateTo(e.target.id, 'replace');
   };
+
+  const { widgetOptions } = rest;
+  console.log('widgetOptions', widgetOptions);
+  // Determine selection behavior based on maximumSelectionSize
+  const shouldUseReplaceBehavior = useMemo(() => {
+    const maxSize = widgetOptions?.pattern_options?.maximumSelectionSize;
+    return maxSize === 1;
+  }, [widgetOptions?.pattern_options?.maximumSelectionSize]);
+
+  const effectiveSelectionBehavior = shouldUseReplaceBehavior
+    ? 'replace'
+    : selectionBehavior;
   return (
-    <div className="items-between flex flex-col justify-center py-4">
+    <div className="flex h-full w-full flex-col pt-4 pb-8">
       <div className="flex items-center justify-between space-y-1">
-        <div className="flex items-center gap-2">
-          {/* TODO: check if we want this, all icons in this scope cause nasty layout shift */}
-          {/* {canGoBack && (
-            <Button variant="neutral" onPress={goBack} type="button">
-              <ArrowleftIcon />
-            </Button>
-          )} */}
-          <Breadcrumbs
-            root={'/'}
-            items={breadcrumbs ?? []}
-            includeRoot
-            homeIcon={null}
-          >
-            {(item) => (
-              <Breadcrumb id={item['@id']} onPress={handleBreadcrumbNavigation}>
-                {item.title}
-              </Breadcrumb>
-            )}
-          </Breadcrumbs>
+        <div className="flex items-center gap-3">
+          {!searchMode && (
+            <>
+              {/* TODO: check if we want this, all icons in this scope cause nasty layout shift */}
+              {canGoBack && (
+                <Button
+                  variant="neutral"
+                  onPress={goBack}
+                  type="button"
+                  aria-label={t('cmsui.objectbrowserwidget.goback')}
+                >
+                  <ArrowleftIcon />
+                </Button>
+              )}
+              <Breadcrumbs
+                root={{ '@id': '/', title: 'Home' }}
+                items={breadcrumbs ?? []}
+                // includeRoot
+                homeIcon={null}
+                className="flex-wrap"
+              >
+                {(item) => (
+                  <Breadcrumb
+                    id={item['@id']}
+                    onPress={handleBreadcrumbNavigation}
+                  >
+                    {item.title}
+                  </Breadcrumb>
+                )}
+              </Breadcrumbs>
+            </>
+          )}
         </div>
 
         <Button
@@ -86,53 +131,123 @@ export function ObjectBrowserWidgetBody({
           onPress={() => {
             setViewMode(!viewMode);
           }}
+          aria-label={t('cmsui.objectbrowserwidget.changeViewMode')}
         >
           <ListIcon />
         </Button>
       </div>
-      <GridList
-        aria-label="no"
-        selectionMode={selectionMode}
-        selectionBehavior={viewMode ? 'replace' : 'toggle'}
-        items={items ?? []}
-        layout={viewMode ? 'grid' : 'stack'}
-        className={
-          viewMode
-            ? 'group [data-layout="grid"] grid grid-cols-2 gap-4 p-4 [&_button]:hidden [&_div:has(img)]:flex-col [&>div]:h-[144px] [&>div]:w-[144px]'
-            : 'group [&>div]:border-b-quanta-silver [data-layout="stack"] flex flex-col divide-y divide-gray-200 rounded-none border-0 py-4 [&_img]:hidden [&>div]:h-12 [&>div]:rounded-none [&>div]:border-b-2 [&>div]:first:rounded-t-none [&>div]:last:rounded-b-none'
-        }
-        onSelectionChange={onChange}
-        selectedKeys={selectedItems}
-      >
-        {(item) => (
-          <GridListItem
-            id={item['@id']}
-            textValue={item.Title}
-            onAction={() => handleAction(item)}
-          >
-            <div
-              className="text-quanta-cobalt flex h-full w-full items-center justify-between rounded-none!"
-              data-element="content"
-            >
-              {item.image_field && item.image_scales && (
-                <img className="h-full w-full bg-gray-400" alt=""></img>
-              )}
-              {item.title}
-              {item.is_folderish && (
-                <Button
-                  variant="neutral"
-                  type="button"
-                  onPress={() => {
-                    navigateTo(item['@id']);
-                  }}
-                >
-                  <ChevronrightIcon />
-                </Button>
-              )}
+      <div aria-live="polite">
+        <GridList
+          aria-label={t('cmsui.objectbrowserwidget.currentItems')}
+          key={`${viewMode}-${currentPath}`} // Force re-render on viewMode or path change
+          selectionMode={selectionMode}
+          disabledBehavior="selection"
+          escapeKeyBehavior="none"
+          selectionBehavior={effectiveSelectionBehavior}
+          items={items ?? []}
+          layout={viewMode ? 'grid' : 'stack'}
+          className={
+            viewMode
+              ? 'group [&>div]:hover:bg-quanta-smoke/50 data-[layout="grid"] my-4 grid grid-cols-2 gap-4 overflow-y-scroll border-0 p-4 [&_label[slot="selection"]]:hidden [&>div]:rounded-lg [&>div]:p-4 [&>div]:transition-all [&>div]:duration-200'
+              : 'group [&>div]:border-b-quanta-silver data-[layout="stack"] my-4 flex flex-col divide-y divide-gray-200 rounded-none border-0 [&_img]:hidden [&>div]:h-12 [&>div]:rounded-none [&>div]:border-b-2 [&>div]:first:rounded-t-none [&>div]:last:rounded-b-none'
+          }
+          onSelectionChange={handleSelectionChange}
+          selectedKeys={selectedItems}
+          renderEmptyState={() => (
+            <div className="p-4 text-center italic">
+              {loading
+                ? t('cmsui.objectbrowserwidget.loading')
+                : t('cmsui.objectbrowserwidget.noResults')}
             </div>
-          </GridListItem>
-        )}
-      </GridList>
+          )}
+        >
+          {(item) => {
+            const disabled = !isSelectable(item, {
+              ...widgetOptions,
+              mode,
+              items: items || [],
+            });
+            return (
+              <GridListItem
+                id={item['@id']}
+                textValue={item.title}
+                aria-label={
+                  disabled
+                    ? t(
+                        'cmsui.objectbrowserwidget.itemNotSelectable',
+                        item.title,
+                      )
+                    : t('cmsui.objectbrowserwidget.item', item.title)
+                }
+                key={item['@id']}
+                data-selectable={!disabled}
+                isDisabled={disabled}
+                className={
+                  'group data-[selectable=false]:bg-quanta-silver data-[selectable=false]:text-iron data-[selectable=false]:cursor-not-allowed'
+                }
+              >
+                {viewMode ? (
+                  <div className="-mx-3 -my-2 flex h-full w-full flex-1 flex-col items-center gap-2">
+                    <div
+                      className={
+                        'bg-quanta-snow flex min-h-36 min-w-36 flex-col items-center justify-center rounded-md text-center'
+                      }
+                    >
+                      {item.image_field && item.image_scales ? (
+                        // TODO: use Image component
+                        <img
+                          className="h-full w-full object-contain"
+                          src={flattenToAppURL(
+                            `${item['@id']}/${item.image_scales.image[0].scales.preview?.download}`,
+                          )}
+                          alt={item.title || ''}
+                        />
+                      ) : (
+                        <div className="text-quanta-pigeon flex h-12 w-12 items-center justify-center rounded text-2xl">
+                          📄
+                        </div>
+                      )}
+                    </div>
+                    <span className="text-quanta-cobalt text-sm leading-tight font-medium">
+                      {item.title}
+                    </span>
+                  </div>
+                ) : (
+                  <div className="text-quanta-cobalt group-data-[selectable=false]:text-quanta-iron flex h-full w-full items-center justify-between rounded-none!">
+                    {item.image_field && item.image_scales && (
+                      // TODO: use Image component
+                      <img
+                        className="bg-snow h-full w-full"
+                        alt={item.title}
+                        src={flattenToAppURL(
+                          `${item['@id']}/${item.image_scales.image[0].scales.preview?.download}`,
+                        )}
+                      />
+                    )}
+                    {item.title}
+                    {item.is_folderish && (
+                      <Button
+                        variant="neutral"
+                        type="button"
+                        aria-label={t(
+                          'cmsui.objectbrowserwidget.itemNavigateTo',
+                          item.title,
+                        )}
+                        className={'rounded-none'}
+                        onPress={() => {
+                          navigateTo(item['@id']);
+                        }}
+                      >
+                        <ChevronrightIcon />
+                      </Button>
+                    )}
+                  </div>
+                )}
+              </GridListItem>
+            );
+          }}
+        </GridList>
+      </div>
     </div>
   );
 }

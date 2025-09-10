@@ -19,9 +19,9 @@
     "@eslint/js": "^9.20.0",
     "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
-    "eslint-import-resolver-typescript": "^3.8.3",
+    "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-cypress": "^4.1.0",
-    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "^7.37.4",
@@ -30,7 +30,7 @@
     "stylelint": "^16.14.1",
     "stylelint-config-idiomatic-order": "10.0.0",
     "stylelint-prettier": "5.0.3",
-    "typescript-eslint": "^8.24.1"
+    "typescript-eslint": "^8.41.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^8.6.12",

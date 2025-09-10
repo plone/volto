@@ -20,6 +20,7 @@ export async function loader({ params, request, context }: LoaderFunctionArgs) {
   const path = `/${params['*'] || ''}`;
 
   const query = Object.fromEntries(new URL(request.url).searchParams.entries());
+
   const pathQuery = {
     query: query['path.query'] || path,
     depth: Number(query['path.depth']) || undefined,
@@ -36,6 +37,16 @@ export async function loader({ params, request, context }: LoaderFunctionArgs) {
         : undefined,
     },
   });
+  // const items = response.items;
+  // const firstLevelIds = items
+  //   .filter((i) => i['@id'].split('/').length > 1)
+  //   .map((i) => i['@id']);
+
+  // const results = firstLevelIds.reduce((acc, curr) => {
+  //   const child = items.some((item) => item['@id'] === curr);
+
+  //   return [acc, ...;
+  // }, []);
   // Has to be used?
   // const strippedRequest = new Request(request.url.replace(/\?.*$/, ''), {
   //   headers: request.headers,

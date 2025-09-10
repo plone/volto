@@ -1,5 +1,5 @@
 export { BlockToolbar } from './components/BlockToolbar/BlockToolbar';
-export { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
+export { Breadcrumb, Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
 export { Button } from './components/Button/Button';
 export { Calendar } from './components/Calendar/Calendar';
 export { ColorArea } from './components/ColorArea/ColorArea';

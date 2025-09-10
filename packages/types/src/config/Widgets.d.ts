@@ -153,7 +153,7 @@ export type WidgetsConfigViewByType<
 }>;
 
 export interface WidgetsConfigViews<P = any> {
-  getWidget: React.ComponentType<P>;
+  // getWidget: React.ComponentType<P>;
   default: React.ComponentType<P>;
   id: WidgetsConfigViewById;
   widget: WidgetsConfigViewByWidget;

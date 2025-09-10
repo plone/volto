@@ -1,13 +1,34 @@
 import type { ConfigType } from '@plone/registry';
 import { TextField } from '../components/TextField/TextField';
-import { DateTimePicker } from '@plone/components/tailwind';
+import {
+  AlignWidget,
+  Checkbox,
+  DateTimePicker,
+  SizeWidget,
+  WidthWidget,
+} from '@plone/components/quanta';
 import { DateField } from '@plone/components';
 import { ObjectBrowserWidget } from '../components/ObjectBrowserWidget/ObjectBrowserWidget';
 
 export default function install(config: ConfigType) {
+  config.registerDefaultWidget(TextField);
+  config.registerWidget({ key: 'widget', definition: { date: DateField } });
   config.registerWidget({
-    key: 'default',
-    definition: TextField,
+    key: 'widget',
+    definition: { datetime: DateTimePicker },
+  });
+  config.registerWidget({ key: 'widget', definition: { boolean: Checkbox } });
+  config.registerWidget({
+    key: 'widget',
+    definition: { align: AlignWidget },
+  });
+  config.registerWidget({
+    key: 'widget',
+    definition: { size: SizeWidget },
+  });
+  config.registerWidget({
+    key: 'widget',
+    definition: { width: WidthWidget },
   });
   config.registerWidget({
     key: 'factory',
@@ -15,11 +36,6 @@ export default function install(config: ConfigType) {
       'Relation List': ObjectBrowserWidget,
     },
   });
-  config.widgets.widget = {
-    ...(config.widgets.widget ?? {}),
-    datetime: DateTimePicker,
-    date: DateField,
-  };
 
   return config;
 }

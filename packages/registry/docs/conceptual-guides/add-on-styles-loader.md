@@ -10,14 +10,23 @@ myst:
 # Add-ons styles loader
 
 Add-ons that are compatible with the `@plone/registry` may declare styles that should be loaded by the app.
-To do so, create a file {file}`styles/main.css` at the root of your project which serves as the entry point.
-This file is a `.css` file containing the styles that you want your app to load.
+Currently the loader loads styles for both the end user interface (public UI) part, which displays content to both authenticated and anonymous users, and the content management system user interface (CMS UI) part of the app.
+
+## Public UI Styles
+
+To load public UI styles, create a file {file}`styles/main.css` at the root of your add-on package to serve as the entry point.
+This file is a `.css` file containing the styles that you want your app to load for the public UI.
+
+## CMS UI Styles
+
+Similar to the public UI, you can create a file {file}`styles/cmsui.css` at the root of your add-on package to serve as the entry point for the CMS UI styles.
+This file is also a CSS file containing the styles that you want your app to load for the CMS UI.
 
 `@plone/registry` has a helper utility `createAddonsStyleLoader` which generates an add-ons loader file.
 That file contains the aggregated files from all the registered add-ons, keeping the order in which they were defined.
 
 This loader is also a `.css` file and is placed in the root of your application.
-By default, it's called {file}`addons.styles.css`.
+By default, it's called {file}`publicui.css` for the public UI and {file}`cmsui.css` for the CMS UI.
 
 ```{important}
 This file is generated and maintained by `@plone/registry`.
@@ -35,12 +44,12 @@ The `@plone/registry` Vite plugin generates this file, so the framework can load
   createAddonsStyleLoader(registry);
 ```
 
-This will create {file}`addons.styles.css` in the root of your app.
+This will create {file}`publicui.css` in the root of your app.
 Afterwards, configure your app to load the CSS according to the framework's convention, and in both a centralized and performant manner.
 
 ```css
 @import "tailwind";
-@import "./addons.styles.css"
+@import "./publicui.css"
 ```
 
 ```{note}

@@ -15,8 +15,6 @@ import { LinkIcon } from '../icons/LinkIcon';
 
 import type { Meta } from '@storybook/react';
 
-import '../../styles/basic/Toolbar.css';
-
 const meta: Meta<typeof Toolbar> = {
   title: 'Basic/Toolbar',
   component: Toolbar,

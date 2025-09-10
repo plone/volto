@@ -3,8 +3,6 @@ import { TextField } from './TextField';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basic/TextField.css';
-
 const meta: Meta<typeof TextField> = {
   title: 'Basic/Forms/TextField',
   component: TextField,
