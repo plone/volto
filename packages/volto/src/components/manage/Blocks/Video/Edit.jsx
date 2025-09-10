@@ -12,6 +12,7 @@ import aheadSVG from '@plone/volto/icons/ahead.svg';
 import videoBlockSVG from '@plone/volto/components/manage/Blocks/Video/block-video.svg';
 import Body from '@plone/volto/components/manage/Blocks/Video/Body';
 import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   VideoFormDescription: {
@@ -21,6 +22,10 @@ const messages = defineMessages({
   VideoBlockInputPlaceholder: {
     id: 'Type a Video (YouTube, Vimeo or mp4) URL',
     defaultMessage: 'Type a Video (YouTube, Vimeo or mp4) URL',
+  },
+  allowedURLs: {
+    id: '{sources} or mp4 URL allowed',
+    defaultMessage: '{sources} or mp4 URL allowed',
   },
 });
 
@@ -58,11 +63,15 @@ const Edit = (props) => {
     },
     [onSubmitUrl],
   );
-
+  const peertubeInstances =
+    config.blocks.blocksConfig.video.allowedPeertubeInstances;
   const placeholder = useMemo(
     () =>
       data.placeholder ||
-      intl.formatMessage(messages.VideoBlockInputPlaceholder),
+      intl.formatMessage(messages.VideoBlockInputPlaceholder, {
+        instances: peertubeInstances.join(', '),
+      }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [intl, data],
   );
 
@@ -83,6 +92,14 @@ const Edit = (props) => {
         <Message>
           <center>
             <img src={videoBlockSVG} alt="" />
+            <p>
+              {intl.formatMessage(messages.allowedURLs, {
+                sources:
+                  peertubeInstances.length > 0
+                    ? `Youtube, Vimeo, Peertube (${peertubeInstances.join(', ')}) instance`
+                    : 'Youtube, Vimeo',
+              })}
+            </p>
             <div className="toolbar-inner">
               <Input
                 onKeyDown={onKeyDownVariantMenuForm}
