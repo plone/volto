@@ -3,10 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { useDateFormatter } from 'react-aria';
 import { getContentIcon } from '@plone/helpers';
 import type { Brain } from '@plone/types';
-import { Link } from '@plone/components/quanta';
+import { Link, Button } from '@plone/components/quanta';
 import MoreOptionsSVG from '@plone/components/icons/more-options.svg?react';
 import { ItemActionsPopover } from '../ItemActionsPopover/ItemActionsPopover';
-import IconButton from '../IconButton';
 import ReviewState from '../ReviewState';
 
 interface Props {
@@ -74,14 +73,15 @@ export function ContentsCell({
   } else if (column === '_actions') {
     return (
       <>
-        <IconButton
+        <Button
+          variant="icon"
           className="item-actions-trigger"
           aria-label={t('contents.item.more_options')}
           onPress={() => setIsMoreOptionsOpen(true)}
           ref={triggerRef}
         >
           <MoreOptionsSVG />
-        </IconButton>
+        </Button>
         <ItemActionsPopover
           triggerRef={triggerRef}
           isOpen={isMoreOptionsOpen}

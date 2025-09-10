@@ -21,7 +21,7 @@ export async function action({ request }: ActionFunctionArgs) {
   try {
     //todo: handle errors
     await Promise.all(
-      payload.items.map(async (i: string) => {
+      payload.paths.map(async (i: string) => {
         await cli.deleteContent({ path: i });
       }),
     );
@@ -33,5 +33,5 @@ export async function action({ request }: ActionFunctionArgs) {
     //return redirect('/@@contents' + path + '?error=');
   }
 
-  return data(null, 204);
+  return data(payload, 200);
 }

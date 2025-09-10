@@ -27,8 +27,13 @@ export default function DeleteModal() {
   };
 
   const submitDelete = async () => {
+    const items: any[] = [...itemsToDelete];
     await fetcher.submit(
-      { items: [...itemsToDelete].map((i) => i['@id']) },
+      {
+        action: 'delete',
+        paths: [...itemsToDelete].map((i) => i['@id']),
+        items,
+      },
       {
         method: 'DELETE',
         encType: 'application/json',

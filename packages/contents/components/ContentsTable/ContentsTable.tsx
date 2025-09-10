@@ -29,6 +29,7 @@ import {
   PasteIcon,
   CopyIcon,
   CutIcon,
+  BinIcon,
 } from '@plone/components/Icons';
 import { TextField } from '@plone/cmsui/components/TextField/TextField';
 import type { RootLoader } from 'seven/app/root';
@@ -44,7 +45,7 @@ import type { ContentsLoaderType } from '../../routes/contents';
 import { useTranslation } from 'react-i18next';
 import { useContentsContext } from '../../providers/contents';
 import { clipboardKey } from '../../config/constants';
-import IconButton from '../IconButton';
+
 import { type ToastItem } from '@plone/layout/config/toast';
 
 import './ContentsTable.css';
@@ -319,11 +320,12 @@ export function ContentsTable({
     // TODO when do we clean the clipboard?
   };
 
-  // handle Toast success on paste, cut, delete
+  // handle fetcher state. Toast success on paste, delete
   useEffect(() => {
     if (fetcher.state === 'submitting' || fetcher.state == 'loading') {
       // TODO: handle loading state, show something like a dimmer while operation is in progress
     } else if (fetcher.state == 'idle') {
+      // La richiesta è terminata.
       const data = fetcher.data;
 
       // Show toast for copy+paste and cut+paste
@@ -336,29 +338,12 @@ export function ContentsTable({
           title: 'contents.actions.pasted',
           icon: <PasteIcon />,
         },
+        delete: {
+          title: 'contents.actions.deleted',
+          icon: <BinIcon />,
+        },
       });
     }
-    // // La richiesta è terminata. Controlla se la action è stata eseguita.
-    // if (fetcher.state === 'idle' && fetcher.submission) {
-    //   // Ottieni l'azione della richiesta appena completata.
-    //   const actionPath = fetcher.submission.action;
-    //   // Se l'azione completata è quella di "paste"...
-    //   if (actionPath.startsWith('/@@contents/@@paste')) {
-    //     // ...allora gestisci il risultato specifico per il paste.
-    //     if (fetcher.data && fetcher.data.error) {
-    //       console.error("Errore durante l'incolla:", fetcher.data.error);
-    //       // Mostra un toast di errore
-    //     } else {
-    //       console.log('Incolla completato con successo!');
-    //       // Mostra un toast di successo
-    //     }
-    //   }
-    //   // Puoi aggiungere altri blocchi `if` per le altre azioni
-    //   // else if (actionPath.startsWith('/@@contents/@@delete')) {
-    //   //   // Gestisci il risultato dell'azione di eliminazione
-    //   //   // ...
-    //   // }
-    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetcher.state]);
 
@@ -382,9 +367,9 @@ export function ContentsTable({
       name: !isMobileScreenSize ? (
         <DialogTrigger>
           <TooltipTrigger>
-            <IconButton className="actions-cell-header">
+            <Button variant="icon" className="actions-cell-header">
               <MoreoptionsIcon />
-            </IconButton>
+            </Button>
             <Tooltip placement="bottom">{t('Select columns to show')}</Tooltip>
           </TooltipTrigger>
           <TableIndexesPopover
@@ -571,9 +556,9 @@ export function ContentsTable({
               dragColumnHeader={
                 <MenuTrigger>
                   <TooltipTrigger>
-                    <IconButton className="drag-cell-header">
+                    <Button variant="icon" className="drag-cell-header">
                       <CollectionIcon />
-                    </IconButton>
+                    </Button>
                     <Tooltip
                       className="react-aria-Tooltip tooltip"
                       placement="bottom"
