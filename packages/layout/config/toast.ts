@@ -16,7 +16,7 @@ export type ToastItem = {
 export type ToastQueue = RACToastQueue<ToastItem>;
 
 // Create a global ToastQueue.
-export const toastQueue: ToastQueue = new RACToastQueue<ToastItem>({
+export const toastQueue = new RACToastQueue<ToastItem>({
   // Wrap state updates in a CSS view transition.
   wrapUpdate(fn) {
     if ('startViewTransition' in document) {
