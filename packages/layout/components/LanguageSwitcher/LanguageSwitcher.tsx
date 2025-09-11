@@ -1,23 +1,10 @@
-/**
- * Language selector component.
- * @module components/LanguageSelector/LanguageSelector
- */
-
-import React from 'react';
-import type { SlotComponentProps } from '../../SlotRenderer';
-import { Link } from '@plone/components';
 import clsx from 'clsx';
 import config from '@plone/registry';
-import { messages } from '../messages';
 import { langmap } from '@plone/helpers';
-//import { toReactIntlLang } from '@plone/volto/helpers/Utils/Utils';
+import { Link } from '@plone/components';
 
-// const messages = defineMessages({
-//   switchLanguageTo: {
-//     id: 'Switch to',
-//     defaultMessage: 'Switch to',
-//   },
-// });
+import { messages } from '../messages';
+import styles from './LanguageSwitcher.module.css';
 
 export const toReactIntlLang = (language: string): string => {
   if (language.includes('_') || language.includes('-')) {
@@ -26,11 +13,6 @@ export const toReactIntlLang = (language: string): string => {
   }
   return language;
 };
-
-interface TranslationItem {
-  language: string;
-  '@id': string;
-}
 
 interface ContentProps {
   '@components': {
@@ -41,35 +23,27 @@ interface ContentProps {
       'plone.available_languages'?: string[];
       'plone.default_language'?: string;
     };
-    translations?: {
-      items: TranslationItem[];
-    };
   };
 }
 
-interface LanguageSelectorProps {
+type LanguageSelectorProps = {
   content: ContentProps;
   onClickAction?: () => void;
-}
+};
 
-const LanguageSelector: React.FC<LanguageSelectorProps> = (props) => {
+const LanguageSelector = (props: LanguageSelectorProps) => {
   const intl: (id: string) => string = config.getUtility({
     name: 'translation',
     type: 'factory',
   }).method;
   const { content } = props;
   const site = content['@components'].site;
-  const isMultilingual = site?.features?.multilingual || true;
-  const availableLanguages = site?.['plone.available_languages'] || [
-    'en',
-    'fr-tg',
-    'la',
-    'hi',
-  ];
+  const isMultilingual = site?.features?.multilingual;
+  const availableLanguages = site?.['plone.available_languages'] || [];
   const currentLang = site?.['plone.default_language'] || 'en';
 
   return isMultilingual ? (
-    <div className="language-selector">
+    <div className={clsx(styles['language-selector'])}>
       {availableLanguages.map((lang) => {
         return (
           <Link
@@ -77,7 +51,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = (props) => {
               lang
             ]?.nativeName.toLowerCase()}`}
             className={clsx({
-              selected: toReactIntlLang(lang) === currentLang,
+              [styles.selected]: toReactIntlLang(lang) === currentLang,
             })}
             href={`/${lang}`}
             onClick={props.onClickAction}
