@@ -1,6 +1,5 @@
 'use client';
 
-// import emojiMartData from '@emoji-mart/data';
 import { CalloutPlugin } from '@udecode/plate-callout/react';
 import { CodeBlockPlugin } from '@udecode/plate-code-block/react';
 import { DocxPlugin } from '@udecode/plate-docx';
@@ -24,7 +23,6 @@ import { FloatingToolbarPlugin } from '@plone/plate/components/editor/plugins/fl
 // import { BlockDiscussion } from '@plone/plate/components/plate-ui/block-discussion';
 // import { SuggestionBelowNodes } from '@plone/plate/components/plate-ui/suggestion-line-break';
 
-// import { aiPlugins } from './ai-plugins';
 import { alignPlugin } from './align-plugin';
 import { autoformatPlugin } from './autoformat-plugin';
 import { basicNodesPlugins } from './basic-nodes-plugins';
@@ -102,7 +100,6 @@ export const editorPlugins = [
   cursorOverlayPlugin,
   // ...blockMenuPlugins,
   // ...dndPlugins,
-  // EmojiPlugin.configure({ options: { data: emojiMartData as any } }),
   exitBreakPlugin,
   resetBlockTypePlugin,
   ...deletePlugins,

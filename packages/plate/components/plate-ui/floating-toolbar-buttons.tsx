@@ -7,7 +7,6 @@ import {
   CodePlugin,
   ItalicPlugin,
   StrikethroughPlugin,
-  UnderlinePlugin,
 } from '@udecode/plate-basic-marks/react';
 import { useEditorReadOnly } from '@udecode/plate/react';
 import {
@@ -15,16 +14,11 @@ import {
   Code2Icon,
   ItalicIcon,
   StrikethroughIcon,
-  UnderlineIcon,
-  WandSparklesIcon,
 } from 'lucide-react';
 
-import { AIToolbarButton } from './ai-toolbar-button';
-import { CommentToolbarButton } from './comment-toolbar-button';
 import { LinkToolbarButton } from './link-toolbar-button';
 import { MarkToolbarButton } from './mark-toolbar-button';
 import { MoreDropdownMenu } from './more-dropdown-menu';
-import { SuggestionToolbarButton } from './suggestion-toolbar-button';
 import { ToolbarGroup } from './toolbar';
 import { TurnIntoDropdownMenu } from './turn-into-dropdown-menu';
 
@@ -35,13 +29,6 @@ export function FloatingToolbarButtons() {
     <>
       {!readOnly && (
         <>
-          {/* <ToolbarGroup>
-            <AIToolbarButton tooltip="AI commands">
-              <WandSparklesIcon />
-              Ask AI
-            </AIToolbarButton>
-          </ToolbarGroup> */}
-
           <ToolbarGroup>
             <MarkToolbarButton nodeType={BoldPlugin.key} tooltip="Bold (⌘+B)">
               <BoldIcon />
@@ -53,13 +40,6 @@ export function FloatingToolbarButtons() {
             >
               <ItalicIcon />
             </MarkToolbarButton>
-
-            {/* <MarkToolbarButton
-              nodeType={UnderlinePlugin.key}
-              tooltip="Underline (⌘+U)"
-            >
-              <UnderlineIcon />
-            </MarkToolbarButton> */}
 
             <MarkToolbarButton
               nodeType={StrikethroughPlugin.key}
@@ -79,12 +59,7 @@ export function FloatingToolbarButtons() {
         </>
       )}
 
-      <ToolbarGroup>
-        {/* <CommentToolbarButton />
-        <SuggestionToolbarButton /> */}
-
-        {!readOnly && <MoreDropdownMenu />}
-      </ToolbarGroup>
+      <ToolbarGroup>{!readOnly && <MoreDropdownMenu />}</ToolbarGroup>
     </>
   );
 }
