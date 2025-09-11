@@ -1,5 +1,15 @@
 msgid ""
-msgstr "Project-Id-Version: Plone\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2019-12-17T20:38:19.520Z\nPO-Revision-Date: 2025-08-13 17:02+0000\nLast-Translator: ssantos <ssantos@web.de>\nLanguage-Team: Portuguese <https://hosted.weblate.org/projects/plone/volto-18/pt/>\nLanguage: pt\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.13-dev\nDomain: volto\nLanguage-Code: pt\nLanguage-Name: Portuguese\nPreferred-Encodings: utf-8\n"
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit

@@ -1,5 +1,15 @@
 msgid ""
-msgstr "Project-Id-Version: Plone\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-03-24T14:38:32.534Z\nPO-Revision-Date: 2025-07-21 15:03+0000\nLast-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\nLanguage-Team: Tamil <https://hosted.weblate.org/projects/plone/volto-18/ta/>\nLanguage: ta\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.13-dev\nLanguage-Code: en\nLanguage-Name: English\nPreferred-Encodings: utf-8\nDomain: volto\n"
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -2581,7 +2591,7 @@ msgstr "சரி"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
-msgstr "7-பிட் பைட்டுகள் எழுத்துக்கள் மட்டுமே அனுமதிக்கப்படுகின்றன. பெரிய எழுத்துக்கள், சிறப்பு எழுத்துக்கள்: <,>, &, #, /,?, அல்லது முகவரி களில் சட்டவிரோதமானது. தொடங்க முடியாது: _, aq_, @@, ++. __ உடன் முடிவடைய முடியாது. இருக்க முடியாது: கோரிக்கை, பங்களிப்பாளர்கள்,., .., \"\". புதிய வரிகளைக் கொண்டிருக்க முடியாது."
+msgstr "7-பிட் பைட்டுகள் எழுத்துக்கள் மட்டுமே அனுமதிக்கப்படுகின்றன. பெரிய எழுத்துக்கள், சிறப்பு எழுத்துக்கள்: <,>, &, #, /,?, அல்லது முகவரி களில் சட்டவிரோதமானது. தொடங்க முடியாது: _, aq_, @@, ++. __ உடன் முடிவடைய முடியாது. இருக்க முடியாது: கோரிக்கை, பங்களிப்பாளர்கள்,., .., "". புதிய வரிகளைக் கொண்டிருக்க முடியாது."
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
