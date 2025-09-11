@@ -36,6 +36,18 @@ export default function install(config: ConfigType) {
       'Relation List': ObjectBrowserWidget,
     },
   });
+  config.registerWidget({
+    key: 'widget',
+    definition: {
+      object_browser: ObjectBrowserWidget,
+    },
+  });
+  config.registerWidget({
+    key: 'vocabulary',
+    definition: {
+      'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
+    },
+  });
 
   return config;
 }

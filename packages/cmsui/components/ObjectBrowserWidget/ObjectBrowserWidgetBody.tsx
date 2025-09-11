@@ -5,38 +5,30 @@ import {
   GridList,
   GridListItem,
 } from '@plone/components/quanta';
-import React, { useEffect, useState, useMemo } from 'react';
-import {
-  isImageMode,
-  isSelectable,
-  type ObjectBrowserWidgetMode,
-} from './utils';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
+import { isSelectable, type ObjectBrowserWidgetMode } from './utils';
 import {
   ArrowleftIcon,
   ChevronrightIcon,
   ListIcon,
-  SearchIcon,
 } from '@plone/components/Icons';
 import type {
   GridListProps,
-  Key,
   PressEvent,
   Selection,
 } from 'react-aria-components';
-// import Image from '@plone/volto/components/theme/Image/Image';
 import type Field from '../Form/Field';
 import { useObjectBrowserNavigation } from './ObjectBrowserNavigationContext';
 import type { loader } from '../../routes/objectBrowserWidget';
-import type { Brain } from '@plone/types';
 import { flattenToAppURL } from '@plone/helpers';
 import { useTranslation } from 'react-i18next';
+import type { Brain } from '@plone/types';
 
 export interface ObjectBrowserWidgetBodyProps
   extends Omit<
     React.ComponentProps<typeof Field>,
     'label' | 'items' | 'onChange'
   > {
-  mode: ObjectBrowserWidgetMode;
   loading: boolean;
   items:
     | Awaited<ReturnType<typeof loader>>['data']['results']['items']
@@ -46,20 +38,19 @@ export interface ObjectBrowserWidgetBodyProps
     | undefined;
   selectedItems: GridListProps<object>['selectedKeys'];
   handleSelectionChange: (keys: Selection) => void;
-  selectionMode: React.ComponentProps<typeof GridList>['selectionMode'];
-  selectionBehavior: React.ComponentProps<typeof GridList>['selectionBehavior'];
+  mode: ObjectBrowserWidgetMode;
   searchMode: boolean;
+  setSearchMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export function ObjectBrowserWidgetBody({
-  mode = 'image',
+  mode = 'multiple',
   items,
   breadcrumbs,
   loading,
   selectedItems = [],
   handleSelectionChange,
-  selectionBehavior,
-  selectionMode,
   searchMode = false,
+  setSearchMode,
   ...rest
 }: ObjectBrowserWidgetBodyProps) {
   const [viewMode, setViewMode] = useState<boolean>(false);
@@ -67,63 +58,63 @@ export function ObjectBrowserWidgetBody({
   const { currentPath, navigateTo, goBack, canGoBack } =
     useObjectBrowserNavigation();
 
-  const handleAction = (item: Brain) => {
-    if (isImageMode(mode)) {
-      // TODO
-      // eslint-disable-next-line no-console
-      console.log('Image mode');
-    }
-  };
   const handleBreadcrumbNavigation = (e: PressEvent) => {
     navigateTo(e.target.id, 'replace');
   };
 
+  const gridListRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (currentPath && !loading && items?.length && gridListRef.current) {
+      setTimeout(() => {
+        const gridList = gridListRef.current?.querySelector('[role="grid"]');
+        if (gridList instanceof HTMLElement) {
+          gridList.focus();
+        }
+      }, 100);
+    }
+  }, [currentPath, loading, items]);
+
+  const handleNavigation = (item: Brain) => {
+    navigateTo(item['@id']);
+    setSearchMode(false);
+  };
+
   const { widgetOptions } = rest;
   console.log('widgetOptions', widgetOptions);
-  // Determine selection behavior based on maximumSelectionSize
-  const shouldUseReplaceBehavior = useMemo(() => {
-    const maxSize = widgetOptions?.pattern_options?.maximumSelectionSize;
-    return maxSize === 1;
-  }, [widgetOptions?.pattern_options?.maximumSelectionSize]);
 
-  const effectiveSelectionBehavior = shouldUseReplaceBehavior
-    ? 'replace'
-    : selectionBehavior;
   return (
     <div className="flex h-full w-full flex-col pt-4 pb-8">
       <div className="flex items-center justify-between space-y-1">
-        <div className="flex items-center gap-3">
-          {!searchMode && (
-            <>
-              {/* TODO: check if we want this, all icons in this scope cause nasty layout shift */}
-              {canGoBack && (
-                <Button
-                  variant="neutral"
-                  onPress={goBack}
-                  type="button"
-                  aria-label={t('cmsui.objectbrowserwidget.goback')}
-                >
-                  <ArrowleftIcon />
-                </Button>
-              )}
-              <Breadcrumbs
-                root={{ '@id': '/', title: 'Home' }}
-                items={breadcrumbs ?? []}
-                // includeRoot
-                homeIcon={null}
-                className="flex-wrap"
+        <div className="flex items-center gap-3 text-sm">
+          <>
+            {/* TODO: check if we want this, all icons in this scope cause nasty layout shift */}
+            {canGoBack && (
+              <Button
+                variant="neutral"
+                onPress={goBack}
+                type="button"
+                aria-label={t('cmsui.objectbrowserwidget.goback')}
               >
-                {(item) => (
-                  <Breadcrumb
-                    id={item['@id']}
-                    onPress={handleBreadcrumbNavigation}
-                  >
-                    {item.title}
-                  </Breadcrumb>
-                )}
-              </Breadcrumbs>
-            </>
-          )}
+                <ArrowleftIcon size="sm" />
+              </Button>
+            )}
+            <Breadcrumbs
+              root={{ '@id': '/', title: 'Home' }}
+              items={breadcrumbs ?? []}
+              // includeRoot
+              homeIcon={null}
+              className="flex-wrap"
+            >
+              {(item) => (
+                <Breadcrumb
+                  id={item['@id']}
+                  onPress={handleBreadcrumbNavigation}
+                >
+                  {item.title}
+                </Breadcrumb>
+              )}
+            </Breadcrumbs>
+          </>
         </div>
 
         <Button
@@ -133,31 +124,40 @@ export function ObjectBrowserWidgetBody({
           }}
           aria-label={t('cmsui.objectbrowserwidget.changeViewMode')}
         >
-          <ListIcon />
+          <ListIcon size="sm" />
         </Button>
       </div>
-      <div aria-live="polite">
+      <div
+        aria-live="polite"
+        className="flex-1 overflow-y-scroll"
+        ref={gridListRef}
+        tabIndex={-1}
+      >
         <GridList
           aria-label={t('cmsui.objectbrowserwidget.currentItems')}
           key={`${viewMode}-${currentPath}`} // Force re-render on viewMode or path change
-          selectionMode={selectionMode}
+          selectionMode={'multiple'}
           disabledBehavior="selection"
           escapeKeyBehavior="none"
-          selectionBehavior={effectiveSelectionBehavior}
+          selectionBehavior={'toggle'}
           items={items ?? []}
           layout={viewMode ? 'grid' : 'stack'}
           className={
             viewMode
-              ? 'group [&>div]:hover:bg-quanta-smoke/50 data-[layout="grid"] my-4 grid grid-cols-2 gap-4 overflow-y-scroll border-0 p-4 [&_label[slot="selection"]]:hidden [&>div]:rounded-lg [&>div]:p-4 [&>div]:transition-all [&>div]:duration-200'
+              ? 'group [&>div]:hover:bg-quanta-smoke/50 data-[layout="grid"] my-4 grid grid-cols-2 gap-4 border-0 p-4 [&_label[slot="selection"]]:hidden [&>div]:rounded-lg [&>div]:p-4 [&>div]:transition-all [&>div]:duration-200'
               : 'group [&>div]:border-b-quanta-silver data-[layout="stack"] my-4 flex flex-col divide-y divide-gray-200 rounded-none border-0 [&_img]:hidden [&>div]:h-12 [&>div]:rounded-none [&>div]:border-b-2 [&>div]:first:rounded-t-none [&>div]:last:rounded-b-none'
           }
           onSelectionChange={handleSelectionChange}
           selectedKeys={selectedItems}
           renderEmptyState={() => (
             <div className="p-4 text-center italic">
-              {loading
-                ? t('cmsui.objectbrowserwidget.loading')
-                : t('cmsui.objectbrowserwidget.noResults')}
+              {loading ? (
+                t('cmsui.objectbrowserwidget.loading')
+              ) : !searchMode ? (
+                t('cmsui.objectbrowserwidget.noResults')
+              ) : (
+                <div>ICONA GROSSA</div>
+              )}
             </div>
           )}
         >
@@ -227,18 +227,16 @@ export function ObjectBrowserWidgetBody({
                     {item.title}
                     {item.is_folderish && (
                       <Button
-                        variant="neutral"
+                        variant="icon"
                         type="button"
                         aria-label={t(
                           'cmsui.objectbrowserwidget.itemNavigateTo',
                           item.title,
                         )}
-                        className={'rounded-none'}
-                        onPress={() => {
-                          navigateTo(item['@id']);
-                        }}
+                        className={'rounded-none border-none bg-transparent'}
+                        onPress={() => handleNavigation(item)}
                       >
-                        <ChevronrightIcon />
+                        <ChevronrightIcon size="sm" />
                       </Button>
                     )}
                   </div>

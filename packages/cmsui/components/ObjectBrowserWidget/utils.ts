@@ -1,10 +1,9 @@
-import { flattenToAppURL } from '@plone/helpers';
 import type { Brain, Content } from '@plone/types';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Fetcher } from 'react-router';
-import type { Selection, Key } from 'react-aria-components';
+import type { Selection } from 'react-aria-components';
 
-export type ObjectBrowserWidgetMode = 'multiple' | 'link' | 'image';
+export type ObjectBrowserWidgetMode = 'multiple' | 'single';
 export type PartialBrainWithRequired = Partial<Brain> & {
   '@id': string;
   '@type': string;
@@ -20,11 +19,8 @@ export type WidgetPatternOptions = {
   mode: ObjectBrowserWidgetMode;
 };
 
-function isLinkMode(obj: ObjectBrowserWidgetMode): obj is 'link' {
-  return obj === 'link';
-}
-function isImageMode(obj: ObjectBrowserWidgetMode): obj is 'image' {
-  return obj === 'image';
+function isSingleMode(obj: ObjectBrowserWidgetMode): obj is 'single' {
+  return obj === 'single';
 }
 function isMultipleMode(obj: ObjectBrowserWidgetMode): obj is 'multiple' {
   return obj === 'multiple';
@@ -32,21 +28,24 @@ function isMultipleMode(obj: ObjectBrowserWidgetMode): obj is 'multiple' {
 export function isAll(keys: unknown): keys is 'all' {
   return typeof keys === 'string' && keys === 'all';
 }
+const DEFAULT_DEPTH = 'path.depth=1';
+const DEFAULT_METADATA_FIELDS = 'metadata_fields:list=is_folderish';
 
+// Can be enhanched to support more query parameters if needed
+// Like a widget that sets selectable portal_types can add that filter to this query
 export function buildObjectBrowserUrl(
   currentPath?: string,
   searchText?: string,
+  widgetOptions?: WidgetPatternOptions,
 ): string | null {
-  const METADATA_FIELDS = '?path.depth=1&metadata_fields:list=is_folderish';
-
   if (!currentPath && !searchText) return null;
 
   if (searchText) {
     const searchParam = `&SearchableText=${encodeURIComponent(searchText)}`;
-    return `/@objectBrowserWidget${METADATA_FIELDS}${searchParam}`;
+    return `/@objectBrowserWidget?${DEFAULT_METADATA_FIELDS}${searchParam}`;
   }
 
-  return `/@objectBrowserWidget${currentPath}${METADATA_FIELDS}`;
+  return `/@objectBrowserWidget${currentPath}?${DEFAULT_DEPTH}&${DEFAULT_METADATA_FIELDS}`;
 }
 
 export function processSelection(keys: Selection, items: Brain[]): Brain[] {
@@ -61,9 +60,9 @@ export function processSelection(keys: Selection, items: Brain[]): Brain[] {
 }
 
 export function initializeSelectedKeys(
-  defaultValue?: string[] | 'all',
+  defaultValue?: Brain[],
 ): Set<{ id: string; title: string }> {
-  if (defaultValue && defaultValue !== 'all') {
+  if (defaultValue?.length) {
     return new Set(
       defaultValue.map((item: any) =>
         typeof item === 'string'
@@ -100,9 +99,6 @@ const isSelectable = (
     return true;
   }
   return true;
-  // return selectableTypes?.length > 0
-  //   ? selectableTypes.indexOf(item['@type']) >= 0
-  //   : true;
 };
 
 // Handle single vs multiple return values
@@ -115,23 +111,6 @@ function normalizeReturnValue(
     return items.length > 0 ? items[0] : null;
   }
   return items;
-}
-
-// Handle manual input for external links
-function handleManualLinkInput(value: string) {
-  // TODO:
-  // 1. Validate the string is a proper URL (regex or URL constructor)
-  // 2. Normalize the string (e.g. add protocol if missing)
-  // 3. Add as an item { id: url, title: url }
-  console.warn('handleManualLinkInput not implemented yet:', value);
-}
-
-// Normalize URLs coming from Plone
-function normalizePloneUrl(url: string) {
-  // TODO:
-  // - Strip protocol if required
-  // - Use flattenToAppURL if available
-  return url;
 }
 
 /**
@@ -171,10 +150,4 @@ function useAccumulatedItems<T extends Brain = Brain>(
   return items;
 }
 
-export {
-  isImageMode,
-  isMultipleMode,
-  isLinkMode,
-  isSelectable,
-  useAccumulatedItems,
-};
+export { isMultipleMode, isSingleMode, isSelectable, useAccumulatedItems };

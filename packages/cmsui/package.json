@@ -63,6 +63,7 @@
     "jotai": "^2.12.3",
     "jotai-optics": "^0.4.0",
     "optics-ts": "^2.4.1",
+    "react-aria": "catalog:",
     "react-aria-components": "catalog:",
     "react-i18next": "catalog:",
     "react-router": "catalog:",

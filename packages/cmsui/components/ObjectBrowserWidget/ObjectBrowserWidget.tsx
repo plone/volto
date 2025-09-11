@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   DialogTrigger,
+  GridList,
   Heading,
   type Key,
   type Selection,
@@ -13,7 +14,6 @@ import {
   type ObjectBrowserWidgetBodyProps,
 } from './ObjectBrowserWidgetBody';
 import {
-  isImageMode,
   useAccumulatedItems,
   isAll,
   buildObjectBrowserUrl,
@@ -39,11 +39,13 @@ import {
 import type { Brain } from '@plone/types';
 import { CloseIcon, SearchIcon } from '@plone/components/Icons';
 import { useDebounceValue } from 'usehooks-ts';
+import { useTranslation } from 'react-i18next';
+import config from '@plone/registry';
 
 export const obwAtom = atom(false);
 const widgetStyles = tv({
   extend: focusRing,
-  base: 'rounded-md',
+  base: 'flex items-center justify-between gap-2 rounded-md',
   variants: {
     isFocused: fieldBorderStyles.variants.isFocusWithin,
     isInvalid: fieldBorderStyles.variants.isInvalid,
@@ -54,9 +56,10 @@ const widgetStyles = tv({
 interface ObjectBrowserWidgetProps
   extends ObjectBrowserWidgetBodyProps,
     BaseFormFieldProps {
-  title: string;
-  defaultValue?: string[] | 'all';
+  defaultValue?: Brain[];
   onChange: (value: any) => void;
+  selectedAttrs?: Array<keyof Brain>;
+  title?: string;
 }
 // TODO: guarda selected_attrs dal teaser: sono configurabili e devi quantomeno passare il brain o la def dei selectedAttrs
 export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
@@ -66,10 +69,14 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
     errorMessage,
     description,
     defaultValue,
+    title,
     onChange,
+    selectedAttrs = ['@id', 'title', 'description', '@type', 'UID'],
     ...bodyProps
   } = props;
-  const { content } = useLoaderData<typeof editLoader>();
+  console.log('defval', defaultValue);
+  // console.log(config.routes);
+  // const { content } = useLoaderData<typeof editLoader>();
   const [open, setOpen] = useState(false);
   const [searchMode, setSearchMode] = useState(false);
   const fetcher = useFetcher<typeof loader>();
@@ -79,18 +86,24 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
   const [selectedKeys, setSelectedKeys] = useState<
     Set<{ id: string; title: string }>
   >(() => initializeSelectedKeys(defaultValue));
-  // TODO: WTF gives me mode?
-  const selectionBehavior = useMemo(
-    () => (isImageMode(mode) ? 'replace' : 'toggle'),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+
+  // TODO: needed? could also always be multiple. What are the real tangible usecases?
+  // I dont want to port modes as they are useless and confusing
+  // const selectionMode = isImageMode(mode) ? 'multiple' : 'single';
+  const filterBrainAttributes = useCallback(
+    (brains: Brain[]) => {
+      return brains.map(
+        (item) =>
+          Object.fromEntries(
+            selectedAttrs
+              .filter((attr) => attr in item)
+              .map((attr) => [attr, item[attr]]),
+          ) as Partial<Brain>,
+      );
+    },
+    [selectedAttrs],
   );
-  // TODO: WTF gives me mode?
-  const selectionMode = useMemo(
-    () => (isImageMode(mode) ? 'single' : 'multiple'),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
-  );
+
   const handleSelectionChange = (keys: Selection) => {
     const items = knownItems ?? [];
     const selected = processSelection(keys, items);
@@ -99,12 +112,7 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
       selected.map((item) => ({ id: item['@id'], title: item.title })),
     );
     setSelectedKeys(newSelectedKeys);
-    onChange(
-      Array.from(newSelectedKeys).map(({ id, title }) => ({
-        '@id': id,
-        title,
-      })),
-    );
+    onChange(filterBrainAttributes(selected));
   };
   const handleRemove = (keys: Set<Key>) => {
     const keysToRemove = new Set(keys);
@@ -112,12 +120,13 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
       (item) => !keysToRemove.has(item.id),
     );
     setSelectedKeys(new Set(newSelected));
-    onChange(
-      newSelected.map(({ id, title }) => ({
-        '@id': id,
-        title,
-      })),
-    );
+    // Get complete Brain objects instead of just id/title
+    const items = knownItems ?? [];
+    const selectedBrains = newSelected
+      .map(({ id }) => items.find((item) => item['@id'] === id))
+      .filter((item): item is Brain => item !== undefined);
+
+    onChange(filterBrainAttributes(selectedBrains));
   };
 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -125,8 +134,18 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
     setSearchableText(value);
   };
 
+  function reset() {
+    setSearchableText('');
+    fetcher.load('/reset-fetcher');
+  }
+
+  useEffect(() => {
+    reset();
+  }, [searchMode]);
+
   async function loadData(currentPath?: string, SearchableText?: string) {
     const url = buildObjectBrowserUrl(currentPath, SearchableText);
+    console.log('searching for', { currentPath, SearchableText, url });
     if (!url) return;
     await fetcher.load(url);
   }
@@ -138,26 +157,21 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
 
   const items = useMemo(
     () => fetcher?.data?.results?.items ?? [],
-    [fetcher.data],
+    [fetcher.data?.results],
   );
   const breadcrumbs = useMemo(
     () => fetcher?.data?.breadcrumbs?.items ?? [],
-    [fetcher.data],
+    [fetcher.data?.breadcrumbs],
   );
 
-  console.log('cacca', items);
-  // Flickering in search mode, how to address it? Wait for this to be released (fetcher resetting)?
-  // https://github.com/remix-run/react-router/pull/14206/files
-  // Resetting a fetcher seems to be a basic missing feature, this is a usecase
-  const loading =
-    fetcher.state === 'loading' || (fetcher.state === 'idle' && !fetcher.data);
+  const loading = fetcher.state === 'loading';
   return (
     <div>
       {label && <Label>{label}</Label>}
       <div className={widgetStyles()}>
         <TagGroup
           selectedKeys={Array.from(selectedKeys).map((item) => item.id)}
-          className="gap-4"
+          className="flex-row gap-4"
           items={Array.from(selectedKeys).map(({ id, title }) => ({
             id,
             title,
@@ -177,11 +191,16 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
         <DialogTrigger
           isOpen={open}
           onOpenChange={(isOpen) => {
-            navigateTo(content['@id']);
+            // navigateTo(content['@id']);
             setOpen(isOpen);
           }}
         >
-          <Button aria-label="Settings" size="L" type="button">
+          <Button
+            aria-label={t('cmsui.objectbrowserwidget.openDialog')}
+            size="L"
+            type="button"
+            variant="icon"
+          >
             <Icon size="sm">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -195,18 +214,17 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
           </Button>
           <Modal
             isDismissable
-            className="data-[entering]:animate-slide-in data-[exiting]:animate-slide-out border-quanta-azure bg-quanta-air fixed top-0 right-0 bottom-0 w-[400px] border-l p-8 text-black shadow-[rgba(0,0,0,0.1)_-8px_0px_20px] outline-none"
+            className="data-[entering]:animate-slide-in data-[exiting]:animate-slide-out border-quanta-azure bg-quanta-air fixed top-0 right-0 bottom-0 w-[360px] border-l px-6 py-8 text-black shadow-[rgba(0,0,0,0.1)_-8px_0px_20px] outline-none"
           >
-            <Dialog className="flex h-full flex-col overflow-hidden">
+            <Dialog className="flex h-full flex-col overflow-hidden p-1">
               {!searchMode ? (
                 <div className="flex items-center justify-between">
                   <Heading slot="title">
-                    {isImageMode(mode) ? 'Add image' : 'Choose target'}
+                    {title || t('cmsui.objectbrowserwidget.dialogTitle')}
                   </Heading>
                   <div className="flex items-center gap-0.5">
                     <Button
-                      variant="neutral"
-                      // eslint-disable-next-line no-console
+                      variant="icon"
                       onPress={() => setSearchMode(!searchMode)}
                       type="button"
                     >
@@ -215,9 +233,9 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
 
                     <Button
                       slot="close"
-                      variant="neutral"
+                      variant="icon"
                       type="button"
-                      aria-label={'Close dialog'}
+                      aria-label={t('cmsui.objectbrowserwidget.closeDialog')}
                       onPress={() => setOpen(false)}
                     >
                       <CloseIcon />
@@ -225,14 +243,19 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
                   </div>
                 </div>
               ) : (
-                <div>
-                  <Input onChange={handleSearchInputChange} />
+                <div className="flex items-center gap-2">
+                  <Input
+                    onChange={handleSearchInputChange}
+                    className={'border-quanta rounded-md'}
+                  />
                   <Button
                     slot="close"
-                    variant="neutral"
+                    variant="icon"
                     type="button"
-                    aria-label={'Close search'}
-                    onPress={() => setSearchMode(false)}
+                    aria-label={t('cmsui.objectbrowserwidget.closeSearch')}
+                    onPress={() => {
+                      setSearchMode(false);
+                    }}
                   >
                     <CloseIcon />
                   </Button>
@@ -249,9 +272,8 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
                     (item) => item.id,
                   )}
                   handleSelectionChange={handleSelectionChange}
-                  selectionBehavior={selectionBehavior}
-                  selectionMode={selectionMode}
                   searchMode={searchMode}
+                  setSearchMode={setSearchMode}
                 />
               </div>
             </Dialog>
