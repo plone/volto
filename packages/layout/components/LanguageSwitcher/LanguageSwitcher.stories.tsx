@@ -1,10 +1,10 @@
-import LanguageSelector from './LanguageSwitcher';
+import LanguageSwitcher from './LanguageSwitcher';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-  title: 'LanguageSelector',
-  component: LanguageSelector,
+  title: 'Language Switcher',
+  component: LanguageSwitcher,
   tags: ['autodocs'],
 } satisfies Meta;
 
@@ -12,7 +12,7 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: (args: any) => <LanguageSelector {...args} />,
+  render: (args: any) => <LanguageSwitcher {...args} />,
   args: {
     content: {
       '@components': {

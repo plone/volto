@@ -31,7 +31,7 @@ type LanguageSelectorProps = {
   onClickAction?: () => void;
 };
 
-const LanguageSelector = (props: LanguageSelectorProps) => {
+const LanguageSwitcher = (props: LanguageSelectorProps) => {
   const intl: (id: string) => string = config.getUtility({
     name: 'translation',
     type: 'factory',
@@ -43,7 +43,7 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
   const currentLang = site?.['plone.default_language'] || 'en';
 
   return isMultilingual ? (
-    <div className={clsx(styles['language-selector'])}>
+    <div className={clsx(styles['language-switcher'])}>
       {availableLanguages.map((lang) => {
         return (
           <Link
@@ -55,7 +55,7 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
             })}
             href={`/${lang}`}
             onClick={props.onClickAction}
-            key={`language-selector-${lang}`}
+            key={`language-switcher-${lang}`}
           >
             {langmap[lang]?.nativeName}
           </Link>
@@ -65,4 +65,4 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
   ) : null;
 };
 
-export default LanguageSelector;
+export default LanguageSwitcher;

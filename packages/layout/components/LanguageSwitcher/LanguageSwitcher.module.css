@@ -1,5 +1,5 @@
 @layer custom {
-  .language-selector {
+  .language-switcher {
     display: flex;
     margin-right: 20px;
 
