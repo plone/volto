@@ -30,12 +30,6 @@ const createConditionalSaveMiddleware = () => {
     
     return (next) => (action) => {
       const state = store.getState();
-
-      console.log('userSession:', state?.userSession);
-      console.log('token:', state?.userSession?.token || state?.users?.user?.token);
-      console.log('user id:', state?.users);
-
-      
       // Check if user is authenticated or in authentication process
       const isAuthenticated = !!(
         state?.userSession?.token || 
@@ -43,9 +37,6 @@ const createConditionalSaveMiddleware = () => {
         state?.users?.user?.id ||
         state?.userSession?.user?.id
       );
-
-      console.log('action type:', action.type);
-
       // Check if this is an authentication-related action
       const isAuthAction = action.type && (
         action.type.includes('LOGIN') ||
@@ -53,12 +44,10 @@ const createConditionalSaveMiddleware = () => {
         action.type.includes('OIDC') ||
         action.type.includes('SESSION')
       );
-      
       // Allow persistence if authenticated or during auth flow
       if (isAuthenticated || isAuthAction) {
         return wrappedSaveMiddleware(next)(action);
       }
-      
       // For anonymous users, skip the save middleware
       return next(action);
     };
