@@ -84,7 +84,7 @@ msgstr "Txertatu lerroa ondoren"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row before"
-msgstr "Txertatu lerroa ondoren"
+msgstr "Txertatu lerroa aurretik"
 
 #: blocks/Table/TableBlockEdit
 msgid "Left"

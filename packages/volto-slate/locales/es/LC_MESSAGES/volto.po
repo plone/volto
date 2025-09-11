@@ -34,7 +34,7 @@ msgstr ""
 # defaultMessage: An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.
 #: widgets/RichTextWidgetView
 msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
-msgstr ""
+msgstr "Se ha producido un error mientras se muestra el campo \"{name}\". Nos han notificado y lo estamos investigando. Si el problema persiste, póngase en contacto con el administrador del sitio."
 
 # defaultMessage: Bottom
 #: blocks/Table/TableBlockEdit
@@ -66,125 +66,125 @@ msgstr "Eliminar tabla"
 # defaultMessage: Divide each row into separate cells
 #: blocks/Table/TableBlockEdit
 msgid "Divide each row into separate cells"
-msgstr ""
+msgstr "Divide cada fila en celdas separadas"
 
 # defaultMessage: Edit element
 #: elementEditor/messages
 msgid "Edit element"
-msgstr ""
+msgstr "Editar elemento"
 
 # defaultMessage: Edit link
 #: editor/plugins/AdvancedLink/index
 #: editor/plugins/Link/index
 msgid "Edit link"
-msgstr ""
+msgstr "Editar enlace"
 
 # defaultMessage: Fixed width table cells
 #: blocks/Table/TableBlockEdit
 msgid "Fixed width table cells"
-msgstr ""
+msgstr "Celdas de tabla de ancho fijo"
 
 # defaultMessage: Hide headers
 #: blocks/Table/TableBlockEdit
 msgid "Hide headers"
-msgstr ""
+msgstr "Ocultar encabezados"
 
 # defaultMessage: Insert col after
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert col after"
-msgstr ""
+msgstr "Insertar columna después"
 
 # defaultMessage: Insert col before
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert col before"
-msgstr ""
+msgstr "Insertar columna antes"
 
 # defaultMessage: Insert row after
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row after"
-msgstr ""
+msgstr "Insertar fila después"
 
 # defaultMessage: Insert row before
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row before"
-msgstr ""
+msgstr "Insertar fila antes"
 
 # defaultMessage: Left
 #: blocks/Table/TableBlockEdit
 msgid "Left"
-msgstr ""
+msgstr "Izquierda"
 
 # defaultMessage: Make the table compact
 #: blocks/Table/TableBlockEdit
 msgid "Make the table compact"
-msgstr ""
+msgstr "Hacer la tabla compacta"
 
 # defaultMessage: Make the table sortable
 #: blocks/Table/TableBlockEdit
 msgid "Make the table sortable"
-msgstr ""
+msgstr "Hacer la tabla ordenable"
 
 # defaultMessage: Middle
 #: blocks/Table/TableBlockEdit
 msgid "Middle"
-msgstr ""
+msgstr "Centro"
 
 # defaultMessage: No matching blocks
 #: blocks/Text/SlashMenu
 msgid "No matching blocks"
-msgstr ""
+msgstr "No hay bloques"
 
 # defaultMessage: Reduce complexity
 #: blocks/Table/TableBlockEdit
 msgid "Reduce complexity"
-msgstr ""
+msgstr "Reducir complejidad"
 
 # defaultMessage: Remove element
 #: elementEditor/messages
 msgid "Remove element"
-msgstr ""
+msgstr "Eliminar elemento"
 
 # defaultMessage: Remove link
 #: editor/plugins/AdvancedLink/index
 msgid "Remove link"
-msgstr ""
+msgstr "Eliminar enlace"
 
 # defaultMessage: Right
 #: blocks/Table/TableBlockEdit
 msgid "Right"
-msgstr ""
+msgstr "Derecha"
 
 # defaultMessage: Stripe alternate rows with color
 #: blocks/Table/TableBlockEdit
 msgid "Stripe alternate rows with color"
-msgstr ""
+msgstr "Raya las filas alternas con color"
 
 # defaultMessage: Table
 #: blocks/Table/TableBlockEdit
 msgid "Table"
-msgstr ""
+msgstr "Tabla"
 
 # defaultMessage: Table color inverted
 #: blocks/Table/TableBlockEdit
 msgid "Table color inverted"
-msgstr ""
+msgstr "Color de tabla invertido"
 
 # defaultMessage: Top
 #: blocks/Table/TableBlockEdit
 msgid "Top"
-msgstr ""
+msgstr "Arriba"
 
 # defaultMessage: Type text…
 #: blocks/Text/DefaultTextBlockEditor
 #: blocks/Text/DetachedTextBlockEditor
 msgid "Type text…"
-msgstr ""
+msgstr "Escribir texto…"
 
 # defaultMessage: Visible only in view mode
 #: blocks/Table/TableBlockEdit
 msgid "Visible only in view mode"
-msgstr ""
+msgstr "Visible sólo en modo de vista"
