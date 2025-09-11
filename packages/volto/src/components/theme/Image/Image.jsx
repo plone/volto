@@ -25,7 +25,7 @@ export default function Image({
   ...imageProps
 }) {
   const baseSrc = useMemo(() => {
-    return src.split('?')[0];
+    return src ? src.split('?')[0] : null;
   }, [src]);
 
   const attrs = useMemo(() => {
