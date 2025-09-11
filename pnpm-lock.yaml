@@ -780,6 +780,9 @@ importers:
       '@plone/components':
         specifier: workspace:*
         version: link:../components
+      '@plone/helpers':
+        specifier: workspace:*
+        version: link:../helpers
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
