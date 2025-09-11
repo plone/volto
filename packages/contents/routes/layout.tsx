@@ -113,7 +113,7 @@ export default function Index() {
                 aria-label="back"
                 size="L"
                 onPress={() =>
-                  navigate(window.location.pathname.replace('@@contents/', ''))
+                  navigate(window.location.pathname.replace('/@@contents', '/'))
                 }
               >
                 <Back />
