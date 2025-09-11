@@ -1,4 +1,4 @@
-import langmap from './languageMap';
+import { langmap } from './languageMap';
 
 describe('Utils tests', () => {
   describe('langmap', () => {
