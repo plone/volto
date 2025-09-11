@@ -42,7 +42,10 @@
       "until": "On a set date",
       "until_description": "on June 15th, 2050",
       "count_after": "After",
-      "count_occurrences": "occurrence(s)"
+      "count_occurrences": "occurrence(s)",
+      "selected_dates": "Selected Dates",
+      "start_recurrence": "Start of recurrence",
+      "other_dates": "more dates"
     },
     "controlpanel": "Control Panel",
     "panelgroups": {

@@ -10,3 +10,5 @@ export const formAtom = atom<Content>({} as Content);
 export const blockAtomFamily = atomFamily((id: string) =>
   focusAtom(formAtom, (optic) => optic.prop('blocks').prop(id)),
 );
+
+export const recurrenceAtom = atom<string | null>(null);

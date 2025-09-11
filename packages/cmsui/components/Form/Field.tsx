@@ -12,7 +12,7 @@ import { useFieldContext } from './Form';
 import type { PrimitiveAtom } from 'jotai';
 import type { DeepKeys } from '@tanstack/react-form';
 
-type FieldProps = {
+export type FieldProps = {
   id?: keyof WidgetsConfigById;
   className?: string;
   label: string;

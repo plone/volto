@@ -1,89 +1,83 @@
-import {
-  DialogTrigger,
-  Group,
-  Heading,
-  ListBox,
-  ListBoxItem,
-  ModalOverlay,
-  Popover,
-  Select,
-  SelectValue,
-} from 'react-aria-components';
+import { DialogTrigger, Group } from 'react-aria-components';
 
-import { useMemo } from 'react';
 import { Label } from '../Field/Field';
-import { useAppForm } from '../Form/Form';
 import EditIcon from '@plone/components/icons/edit.svg?react';
+import DeleteIcon from '@plone/components/icons/bin.svg?react';
 
-import { useTranslation } from 'react-i18next';
-import { Modal, Dialog } from '@plone/components';
-import {
-  byMonthOptions,
-  byYearOptions,
-  Days,
-  getWeekday,
-  isFrequency,
-  MONDAYFRIDAY_DAYS,
-  months,
-  OPTIONS,
-  ORDINAL_NUMBERS,
-  recurrenceEndOptions,
-  WEEKLY_DAYS,
-  widgetTailwindClasses,
-  type Frequency,
-  type MonthlyOption,
-  type RecurrenceEndOption,
-  type YearlyOption,
-} from './utils';
-import { useForm, useStore } from '@tanstack/react-form';
-import IntervalField from './Components/IntervalField';
-import ByDayField from './Components/ByDayField';
-import ByMonthDayField from './Components/ByMonthDayField';
-import { Button, FieldGroup } from '@plone/components/quanta';
-import ByWeekdayOfTheMonth from './Components/ByWeekdayOfTheMonth';
-import ByWeekdayOfTheMonthIndex from './Components/ByWeekdayOfTheMonthIndex';
-import RadioOptionsField from './Components/RadioOptionsField';
-import MonthOfTheYearField from './Components/MonthOfTheYearField';
-import CountEndField from './Components/CountEndField';
-import UntilEndField from './Components/UntilEndField';
+import { Button } from '@plone/components/quanta';
 
-import {
-  RRuleSet,
-  rrulestr,
-  RRule,
-  type Options,
-  type WeekdayStr,
-} from 'rrule';
+import RecurrenceWidgetModal from './Components/RecurrenceWidgetModal';
+import { useEffect, useState } from 'react';
 import { useAtomValue } from 'jotai';
 import { formAtom } from '../../routes/atoms';
-import type { Brain, Content } from '@plone/types';
-import RecurrenceWidgetModal from './Components/RecurrenceWidgetModal';
+import type { FieldProps } from '../Form/Field';
+import { RRule, rrulestr } from 'rrule';
+import SelectedDates from './Components/SelectedDates';
 
-interface RecurrenceWidgetProps {
-  label?: string;
-}
+interface RecurrenceWidgetProps extends FieldProps {}
 
-const SubFieldWrapper = ({ children }: { children: React.ReactNode }) => {
+export function RecurrenceWidget({
+  label,
+  onChange,
+  ...props
+}: RecurrenceWidgetProps) {
+  const eventFormContext = useAtomValue(formAtom);
+  // @ts-ignore
+
+  // @ts-ignore
+  const recurrence = eventFormContext?.recurrence ?? null;
+
+  const rrule = recurrence ? rrulestr(recurrence) : null;
+  const rruleText = rrule && rrule.toText();
+  const rruleDates = rrule && rrule.all();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <div className="flex justify-end">
-      <div className="basis-4/5">{children}</div>
-    </div>
-  );
-};
-
-export function RecurrenceWidget({ label, ...props }: RecurrenceWidgetProps) {
-  return (
-    <Group className="group mb-4 flex flex-col gap-1">
+    <Group className="group mb-4 flex flex-col gap-1 hover:cursor-default">
       {label && <Label>{label}</Label>}
-      <DialogTrigger>
-        <Button className="h-9 w-9 hover:cursor-pointer">
-          <EditIcon
-            className="fill-quanta-cobalt color-quanta-cobalt"
-            style={{ fill: 'fill-quanta-cobalt' }}
+      <div className="flex">
+        <DialogTrigger isOpen={isModalOpen}>
+          <Button
+            className="pressed:bg-quanta-air pressed:outline-quanta-cobalt h-9 w-9 hover:cursor-pointer"
+            onClick={(e) => setIsModalOpen(true)}
+          >
+            <EditIcon
+              className="fill-quanta-cobalt color-quanta-cobalt"
+              style={{ fill: 'fill-quanta-cobalt' }}
+            />
+          </Button>
+          <RecurrenceWidgetModal
+            onSave={(rrule: string) => {
+              if (onChange) onChange(rrule);
+            }}
+            setIsModalOpen={setIsModalOpen}
+          />
+        </DialogTrigger>
+
+        <Button
+          className="h-9 w-9 hover:cursor-pointer"
+          onClick={(e) => {
+            if (onChange) onChange(null);
+          }}
+        >
+          <DeleteIcon
+            className="fill-quanta-candy color-quanta-candy"
+            style={{ fill: 'fill-quanta-candy' }}
           />
         </Button>
-        <RecurrenceWidgetModal />
-      </DialogTrigger>
+      </div>
+
+      {recurrence && (
+        <div className="mt-2">
+          <div className="bg-muted-foreground/10 text-muted-foreground p-2 font-semibold">
+            <div>{rruleText}</div>
+          </div>
+          <div className="mt-2">
+            {rruleDates && <SelectedDates rruleDates={rruleDates} />}
+          </div>
+        </div>
+      )}
     </Group>
   );
 }

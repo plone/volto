@@ -42,7 +42,10 @@
       "until": "In una data precisa",
       "until_description": "il 15 giugno 2050",
       "count_after": "Dopo",
-      "count_occurrences": "occorrenza/e"
+      "count_occurrences": "occorrenza/e",
+      "selected_dates": "Date selezionate",
+      "start_recurrence": "Inizio ricorrenza",
+      "other_dates": "altre date"
     },
     "controlpanel": "Control Panel"
   }
