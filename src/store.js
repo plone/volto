@@ -38,17 +38,12 @@ const createConditionalSaveMiddleware = () => {
         state?.userSession?.user?.id
       );
       // Check if this is an authentication-related action
-      const isAuthAction = action.type && (
-        action.type.includes('AUTHOMATIC_LOGIN_START') ||
-        action.type.includes('OIDC_LOGIN_START') ||
-        action.type.includes('LOGIN') ||
-        action.type.includes('LOGOUT_OIDC')
-      );
+      const isAuthAction = action.type && action.type.includes('LOGIN');
+
       // Allow persistence if authenticated or during auth flow
       if (isAuthenticated || isAuthAction) {
         return wrappedSaveMiddleware(next)(action);
       }
-
       // For anonymous users, skip the save middleware
       return next(action);
     };
