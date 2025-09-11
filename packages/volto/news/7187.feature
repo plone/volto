@@ -1,0 +1,1 @@
+Update translations for es, eu, it, nl, ta, pt, sv
