@@ -17,7 +17,9 @@ export async function action({ request }: ActionFunctionArgs) {
 
   const payload = await request.json();
   const errors = [];
+  const ok = [];
   let responses = [];
+
   try {
     //todo: handle errors
     responses = await Promise.allSettled(
@@ -32,8 +34,21 @@ export async function action({ request }: ActionFunctionArgs) {
     //ToDO: display error. Do redirect with querystring to display toast error.
     //return redirect('/@@contents' + path + '?error=');
   }
+  // responses è fatto così:
+  // [
+  //   { status: 'rejected', reason: { status: 404, data: [Object] } },
+  //   { status: 'fulfilled', value: undefined },
+  //   { status: 'fulfilled', value: undefined }
+  // ]
 
-  console.log('return delete');
+  responses.forEach((r, i) => {
+    if (r.status == 'fulfilled') {
+      ok.push(payload.items[i]);
+    } else {
+      errors.push({ ...payload.items[i], __error: r.reason });
+    }
+  });
+
   //handle responses and put error responses in payload, and return it
-  return data(payload, 200);
+  return data({ ok, errors }, 200);
 }

@@ -21,13 +21,13 @@ export async function action({ params, request }: ActionFunctionArgs) {
   const errors = [];
 
   try {
-    //todo: handle errors
     const options = {
       path,
       data: {
         source: payload.source,
       },
     };
+
     if (payload.action === 'copy') {
       await cli.copyContent(options);
     } else if (payload.action === 'cut') {
