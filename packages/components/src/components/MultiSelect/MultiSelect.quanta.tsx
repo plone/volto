@@ -124,7 +124,8 @@ export function MultiSelect({
         selectedKey: id,
       });
       onItemInserted?.(id);
-      onChange?.(selectedItems.items);
+      // Call onChange with the updated array
+      setTimeout(() => onChange?.(selectedItems.items), 0);
     }
 
     accessibleList.setFilterText('');

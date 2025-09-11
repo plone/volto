@@ -139,3 +139,52 @@ WithError.args = {
   errorMessage: 'Please select at least one fruit',
   label: 'Fruits with Error',
 };
+
+export const Controlled = (args: MultiSelectProps<Option>) => {
+  const selectedItems = useListData({
+    initialItems: [items[1]],
+  });
+
+  const handleChange = (newSelectedItems: Option[]) => {
+    // onChange este apelat cu starea actualizată
+    console.log('onChange called with:', newSelectedItems);
+  };
+
+  return (
+    <div className="w-full max-w-[400px] space-y-4">
+      <MultiSelect
+        {...args}
+        selectedItems={selectedItems}
+        onChange={handleChange}
+      />
+      <div className="text-sm">
+        <strong>Currently Selected:</strong>
+        <div className="mt-2 rounded border bg-gray-50 p-2">
+          {selectedItems.items.length === 0 ? (
+            <div className="text-gray-500">Nothing selected</div>
+          ) : (
+            <div>
+              {selectedItems.items.map((item) => (
+                <span
+                  key={item.id}
+                  className="mr-1 mb-1 inline-block rounded bg-blue-100 px-2 py-1 text-xs text-blue-800"
+                >
+                  {item.name}
+                </span>
+              ))}
+              <div className="mt-1 text-xs text-gray-600">
+                Total: {selectedItems.items.length} items
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+Controlled.args = {
+  ...Default.args,
+  label: 'Controlled Fruits',
+  description: 'This component demonstrates onChange callback',
+};
