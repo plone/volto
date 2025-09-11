@@ -3,6 +3,27 @@
     "edit": "Edit",
     "save": "Save",
     "controlpanel": "Control Panel",
+    "objectbrowserwidget": {
+      "openDialog": "Select content",
+      "dialogTitle": "Select Content",
+      "closeDialog": "Close selection",
+      "openSearch": "Search content",
+      "closeSearch": "Close search",
+      "searchPlaceholder": "Search content...",
+      "loading": "Loading...",
+      "noResults": "No content found",
+      "goback": "Go back",
+      "changeViewMode": "Switch to {{mode}} view",
+      "currentItems": "Current content items",
+      "home": "Home",
+      "item": "{{title}}{{#selected}} (selected){{/selected}}",
+      "itemNotSelectable": "{{title}} (not selectable)",
+      "itemNavigateTo": "Navigate to {{title}}",
+      "viewModes": {
+        "list": "list",
+        "grid": "grid"
+      }
+    },
     "panelgroups": {
       "general": "General",
       "content": "Content",

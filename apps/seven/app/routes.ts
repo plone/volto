@@ -9,7 +9,7 @@ applyAddonConfiguration(config);
 
 const routes: RouteConfig = [
   route('ok', 'okroute.tsx', { id: 'ok' }),
-  route('reset-fetcher', 'reset-fetcher.tsx', { id: 'ok' }),
+  route('reset-fetcher', 'reset-fetcher.tsx', { id: 'reset-fetcher' }),
   ...getAddonRoutesConfig(config.routes || [], addonsInfo),
 ];
 

@@ -1,6 +1,29 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import React from 'react';
 import { ObjectBrowserWidget } from './ObjectBrowserWidget';
+
+// Mock react-i18next
+vi.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string, params?: any) => {
+      const translations: Record<string, string> = {
+        'cmsui.objectbrowserwidget.openDialog': 'Select content',
+        'cmsui.objectbrowserwidget.dialogTitle': 'Select Content',
+        'cmsui.objectbrowserwidget.closeDialog': 'Close selection',
+        'cmsui.objectbrowserwidget.loading': 'Loading...',
+        'cmsui.objectbrowserwidget.noResults': 'No content found',
+      };
+      let result = translations[key] || key;
+      if (params && typeof params === 'object') {
+        Object.keys(params).forEach((param) => {
+          result = result.replace(`{{${param}}}`, params[param]);
+        });
+      }
+      return result;
+    },
+  }),
+}));
 
 // Mock react-router
 vi.mock('react-router', () => ({
@@ -25,6 +48,22 @@ vi.mock('jotai', () => ({
 // Mock usehooks-ts
 vi.mock('usehooks-ts', () => ({
   useDebounceValue: vi.fn(() => ['', vi.fn()]),
+}));
+
+// Mock ObjectBrowserNavigationContext
+vi.mock('./ObjectBrowserNavigationContext', () => ({
+  ObjectBrowserNavigationProvider: ({
+    children,
+  }: {
+    children: React.ReactNode;
+  }) => children,
+  useObjectBrowserNavigation: () => ({
+    currentPath: '/test-path',
+    navigateTo: vi.fn(),
+    goBack: vi.fn(),
+    canGoBack: false,
+    reset: vi.fn(),
+  }),
 }));
 
 describe('ObjectBrowserWidget Component Tests', () => {
@@ -76,13 +115,13 @@ describe('ObjectBrowserWidget Component Tests', () => {
     expect(screen.queryByRole('alert')).not.toBeInTheDocument();
   });
 
-  it('renders settings button', () => {
+  it('renders settings button with correct aria-label', () => {
     render(<ObjectBrowserWidget {...mockProps} />);
-    
+
     const button = screen.getByRole('button');
-    // Simply verify that the button exists and can be clicked
+    // Verify that the button exists and has the translated aria-label
     expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute('aria-label', 'Settings');
+    expect(button).toHaveAttribute('aria-label', 'Select content');
   });
 
   it('opens modal when button is clicked', () => {
@@ -213,7 +252,7 @@ describe('ObjectBrowserWidget Component Tests', () => {
     // Verify that tags are present
     const tags = screen.getAllByRole('gridcell');
     expect(tags.length).toBeGreaterThan(0);
-    
+
     // Try to find and click a remove button if present
     const removeButtons = screen.queryAllByRole('button');
     if (removeButtons.length > 1) {
@@ -239,11 +278,11 @@ describe('ObjectBrowserWidget Component Tests', () => {
     };
 
     render(<ObjectBrowserWidget {...propsWithDefault} />);
-    
+
     // Find and click the remove button to trigger onChange
     const removeButton = screen.getByRole('button', { name: 'Remove' });
     fireEvent.click(removeButton);
-    
+
     // The onChange should be called when tag is removed
     expect(mockOnChange).toHaveBeenCalled();
   });
@@ -299,16 +338,16 @@ describe('ObjectBrowserWidget Component Tests', () => {
     };
 
     render(<ObjectBrowserWidget {...propsWithOnChange} />);
-    
+
     // Component should render and the settings button should be available
     expect(
-      screen.getByRole('button', { name: 'Settings' }),
+      screen.getByRole('button', { name: 'Select content' }),
     ).toBeInTheDocument();
-    
+
     // Test user interaction by clicking remove button
     const removeButton = screen.getByRole('button', { name: 'Remove' });
     fireEvent.click(removeButton);
-    
+
     // The component calls onChange when user interacts (removes tag)
     expect(mockOnChange).toHaveBeenCalled();
   });
@@ -317,7 +356,7 @@ describe('ObjectBrowserWidget Component Tests', () => {
     const mockLoad = vi.fn();
     const reactRouter = await import('react-router');
     const mockUseFetcher = vi.mocked(reactRouter.useFetcher);
-    
+
     // Mock fetcher with load function
     mockUseFetcher.mockReturnValue({
       data: { results: { items: [] }, breadcrumbs: { items: [] } },
@@ -326,7 +365,7 @@ describe('ObjectBrowserWidget Component Tests', () => {
     } as any);
 
     render(<ObjectBrowserWidget {...mockProps} />);
-    
+
     // Wait for useEffect to run
     await waitFor(() => {
       expect(mockLoad).toHaveBeenCalled();

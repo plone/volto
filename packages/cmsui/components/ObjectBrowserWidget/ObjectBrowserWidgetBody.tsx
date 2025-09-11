@@ -6,58 +6,39 @@ import {
   GridListItem,
 } from '@plone/components/quanta';
 import React, { useEffect, useState, useMemo, useRef } from 'react';
-import { isSelectable, type ObjectBrowserWidgetMode } from './utils';
+import { isSelectable } from './utils';
 import {
   ArrowleftIcon,
   ChevronrightIcon,
   ListIcon,
 } from '@plone/components/Icons';
-import type {
-  GridListProps,
-  PressEvent,
-  Selection,
-} from 'react-aria-components';
-import type Field from '../Form/Field';
+import type { PressEvent } from 'react-aria-components';
 import { useObjectBrowserNavigation } from './ObjectBrowserNavigationContext';
-import type { loader } from '../../routes/objectBrowserWidget';
 import { flattenToAppURL } from '@plone/helpers';
 import { useTranslation } from 'react-i18next';
 import type { Brain } from '@plone/types';
+import { useObjectBrowserContext } from './ObjectBrowserContext';
 
-export interface ObjectBrowserWidgetBodyProps
-  extends Omit<
-    React.ComponentProps<typeof Field>,
-    'label' | 'items' | 'onChange'
-  > {
-  loading: boolean;
-  items:
-    | Awaited<ReturnType<typeof loader>>['data']['results']['items']
-    | undefined;
-  breadcrumbs:
-    | Awaited<ReturnType<typeof loader>>['data']['breadcrumbs']['items']
-    | undefined;
-  selectedItems: GridListProps<object>['selectedKeys'];
-  handleSelectionChange: (keys: Selection) => void;
-  mode: ObjectBrowserWidgetMode;
-  searchMode: boolean;
-  setSearchMode: React.Dispatch<React.SetStateAction<boolean>>;
-}
-export function ObjectBrowserWidgetBody({
-  mode = 'multiple',
-  items,
-  breadcrumbs,
-  loading,
-  selectedItems = [],
-  handleSelectionChange,
-  searchMode = false,
-  setSearchMode,
-  ...rest
-}: ObjectBrowserWidgetBodyProps) {
+export function ObjectBrowserWidgetBody() {
   const [viewMode, setViewMode] = useState<boolean>(false);
   const { t } = useTranslation();
   const { currentPath, navigateTo, goBack, canGoBack } =
     useObjectBrowserNavigation();
-
+  const {
+    open,
+    setOpen,
+    searchMode,
+    setSearchMode,
+    handleSearchInputChange,
+    title,
+    loading,
+    items,
+    breadcrumbs,
+    selectedItems,
+    handleSelectionChange,
+    mode,
+    ...rest
+  } = useObjectBrowserContext();
   const handleBreadcrumbNavigation = (e: PressEvent) => {
     navigateTo(e.target.id, 'replace');
   };
@@ -80,7 +61,6 @@ export function ObjectBrowserWidgetBody({
   };
 
   const { widgetOptions } = rest;
-  console.log('widgetOptions', widgetOptions);
 
   return (
     <div className="flex h-full w-full flex-col pt-4 pb-8">
@@ -99,7 +79,7 @@ export function ObjectBrowserWidgetBody({
               </Button>
             )}
             <Breadcrumbs
-              root={{ '@id': '/', title: 'Home' }}
+              root={{ '@id': '/', title: t('cmsui.objectbrowserwidget.home') }}
               items={breadcrumbs ?? []}
               // includeRoot
               homeIcon={null}
@@ -122,7 +102,11 @@ export function ObjectBrowserWidgetBody({
           onPress={() => {
             setViewMode(!viewMode);
           }}
-          aria-label={t('cmsui.objectbrowserwidget.changeViewMode')}
+          aria-label={t('cmsui.objectbrowserwidget.changeViewMode', {
+            mode: t(
+              `cmsui.objectbrowserwidget.viewModes.${viewMode ? 'list' : 'grid'}`,
+            ),
+          })}
         >
           <ListIcon size="sm" />
         </Button>
@@ -151,13 +135,9 @@ export function ObjectBrowserWidgetBody({
           selectedKeys={selectedItems}
           renderEmptyState={() => (
             <div className="p-4 text-center italic">
-              {loading ? (
-                t('cmsui.objectbrowserwidget.loading')
-              ) : !searchMode ? (
-                t('cmsui.objectbrowserwidget.noResults')
-              ) : (
-                <div>ICONA GROSSA</div>
-              )}
+              {loading
+                ? t('cmsui.objectbrowserwidget.loading')
+                : t('cmsui.objectbrowserwidget.noResults')}
             </div>
           )}
         >
@@ -167,17 +147,20 @@ export function ObjectBrowserWidgetBody({
               mode,
               items: items || [],
             });
+            const isSelected = selectedItems.includes(item['@id']);
             return (
               <GridListItem
                 id={item['@id']}
                 textValue={item.title}
                 aria-label={
                   disabled
-                    ? t(
-                        'cmsui.objectbrowserwidget.itemNotSelectable',
-                        item.title,
-                      )
-                    : t('cmsui.objectbrowserwidget.item', item.title)
+                    ? t('cmsui.objectbrowserwidget.itemNotSelectable', {
+                        title: item.title,
+                      })
+                    : t('cmsui.objectbrowserwidget.item', {
+                        title: item.title,
+                        selected: isSelected,
+                      })
                 }
                 key={item['@id']}
                 data-selectable={!disabled}

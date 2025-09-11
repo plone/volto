@@ -37,7 +37,7 @@ describe('ObjectBrowserWidget utils', () => {
     it('should build search URL when searchText provided', () => {
       const result = buildObjectBrowserUrl(undefined, 'test search');
       expect(result).toBe(
-        '/@objectBrowserWidget?path.depth=1&metadata_fields:list=is_folderish&SearchableText=test%20search',
+        '/@objectBrowserWidget?metadata_fields:list=is_folderish&SearchableText=test%20search',
       );
     });
 
@@ -51,14 +51,14 @@ describe('ObjectBrowserWidget utils', () => {
     it('should prioritize searchText over currentPath', () => {
       const result = buildObjectBrowserUrl('/path/to/content', 'search');
       expect(result).toBe(
-        '/@objectBrowserWidget?path.depth=1&metadata_fields:list=is_folderish&SearchableText=search',
+        '/@objectBrowserWidget?metadata_fields:list=is_folderish&SearchableText=search',
       );
     });
 
     it('should properly encode search text', () => {
       const result = buildObjectBrowserUrl(undefined, 'test & special chars');
       expect(result).toBe(
-        '/@objectBrowserWidget?path.depth=1&metadata_fields:list=is_folderish&SearchableText=test%20%26%20special%20chars',
+        '/@objectBrowserWidget?metadata_fields:list=is_folderish&SearchableText=test%20%26%20special%20chars',
       );
     });
   });

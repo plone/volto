@@ -60,18 +60,20 @@ export function processSelection(keys: Selection, items: Brain[]): Brain[] {
 }
 
 export function initializeSelectedKeys(
-  defaultValue?: Brain[],
+  defaultValue?: Brain[] | any,
 ): Set<{ id: string; title: string }> {
-  if (defaultValue?.length) {
-    return new Set(
-      defaultValue.map((item: any) =>
-        typeof item === 'string'
-          ? { id: item, title: '' }
-          : { id: item['@id'], title: item.title ?? '' },
-      ),
-    );
+  // Handle case where defaultValue is not an array (like 'all' or other invalid values)
+  if (!Array.isArray(defaultValue) || !defaultValue?.length) {
+    return new Set();
   }
-  return new Set();
+
+  return new Set(
+    defaultValue.map((item: any) =>
+      typeof item === 'string'
+        ? { id: item, title: '' }
+        : { id: item['@id'], title: item.title ?? '' },
+    ),
+  );
 }
 
 const isSelectable = (
