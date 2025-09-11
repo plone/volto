@@ -6,7 +6,7 @@ const HeaderTools = () => {
       id: '3',
       label: 'edit',
       icon: '🛠️',
-      url: '/edit',
+      url: '/@@edit',
     },
     {
       id: '1',

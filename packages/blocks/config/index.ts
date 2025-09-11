@@ -1,7 +1,9 @@
 import TitleBlockView from '../Title/View';
 import TextBlockView from '../Text/View';
+import TextBlockEdit from '../Text/Edit';
 import ImageBlockView from '../Image';
 import TeaserBlockView from '../Teaser';
+import type { ConfigType } from '@plone/registry';
 
 export * from './slate';
 
@@ -39,7 +41,25 @@ export const blocksConfig = {
     id: 'slate',
     title: 'Rich text',
     view: TextBlockView,
+    edit: TextBlockEdit,
     category: 'text',
+    blockSchema: {
+      title: 'Rich text settings',
+      fieldsets: [
+        {
+          id: 'default',
+          title: 'Default',
+          fields: ['placeholder'], // Example field, adjust as needed
+        },
+      ],
+      properties: {
+        placeholder: {
+          type: 'string',
+          title: 'Placeholder',
+        },
+      },
+      required: [],
+    },
   },
 
   image: {
@@ -55,4 +75,4 @@ export const blocksConfig = {
     view: TeaserBlockView,
     category: 'card',
   },
-};
+} satisfies ConfigType['blocks']['blocksConfig'];
