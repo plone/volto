@@ -10,7 +10,6 @@ import {
   TagGroup,
   TagList,
   Tag,
-  FieldError,
   type ValidationResult,
 } from 'react-aria-components';
 import { Description, Label } from '../Field/Field.quanta';
@@ -42,7 +41,6 @@ export interface MultiSelectProps<T extends object> {
   onItemInserted?: (key: Key) => void;
   onItemCleared?: (key: Key) => void;
   isDisabled?: boolean;
-  isReadOnly?: boolean;
   isRequired?: boolean;
   renderEmptyState?: (inputValue: string) => React.ReactNode;
 }
@@ -63,7 +61,6 @@ export function MultiSelect({
   selectedItems,
   creatable = true,
   isDisabled = false,
-  isReadOnly = false,
   isRequired = false,
   ...props
 }: MultiSelectProps<Option>) {
@@ -96,7 +93,7 @@ export function MultiSelect({
   const onRemove = useCallback(
     (keys: Set<Key>) => {
       const key = keys.values().next().value;
-      if (key && !isDisabled && !isReadOnly) {
+      if (key && !isDisabled) {
         selectedItems.remove(key);
         setFieldState({
           inputValue: '',
@@ -106,11 +103,11 @@ export function MultiSelect({
         onChange?.(selectedItems.items);
       }
     },
-    [selectedItems, onItemCleared, onChange, isDisabled, isReadOnly],
+    [selectedItems, onItemCleared, onChange, isDisabled],
   );
 
   const onSelectionChange = (id: Key | null) => {
-    if (!id || isDisabled || isReadOnly) {
+    if (!id || isDisabled) {
       return;
     }
 
@@ -158,7 +155,7 @@ export function MultiSelect({
   }, []);
 
   const onCreateTag = useCallback(() => {
-    if (isDisabled || isReadOnly) return;
+    if (isDisabled) return;
 
     const inputValue = fieldState.inputValue.trim();
     const id = inputValue.toLocaleLowerCase();
@@ -188,11 +185,10 @@ export function MultiSelect({
     setFieldState,
     onChange,
     isDisabled,
-    isReadOnly,
   ]);
 
   const popLast = useCallback(() => {
-    if (selectedItems.items.length === 0 || isDisabled || isReadOnly) {
+    if (selectedItems.items.length === 0 || isDisabled) {
       return;
     }
 
@@ -208,7 +204,7 @@ export function MultiSelect({
       inputValue: '',
       selectedKey: null,
     });
-  }, [selectedItems, onItemCleared, onChange, isDisabled, isReadOnly]);
+  }, [selectedItems, onItemCleared, onChange, isDisabled]);
 
   const onKeyDownCapture = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -232,7 +228,14 @@ export function MultiSelect({
     <div className={twMerge('w-full', className)}>
       {label && <Label>{label}</Label>}
       <div ref={triggerRef} className="relative">
-        <div className="relative flex min-h-10 w-full flex-wrap items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-1.5 shadow-sm focus-within:border-gray-500 focus-within:ring-2 focus-within:ring-gray-400">
+        <div
+          className={twMerge(
+            'relative flex min-h-10 w-full flex-wrap items-center gap-1 rounded-md border bg-white px-3 py-1.5 shadow-sm focus-within:ring-2',
+            errorMessage
+              ? 'border-red-500 focus-within:border-red-500 focus-within:ring-red-400'
+              : 'border-gray-300 focus-within:border-gray-500 focus-within:ring-gray-400',
+          )}
+        >
           <TagGroup
             id={tagGroupIdentifier}
             aria-label="Selected items"
@@ -274,7 +277,6 @@ export function MultiSelect({
             <Input
               placeholder={placeholder}
               disabled={isDisabled}
-              readOnly={isReadOnly}
               required={isRequired}
               onBlur={() => {
                 setFieldState({
@@ -352,7 +354,13 @@ export function MultiSelect({
         </div>
       </div>
       {description && <Description>{description}</Description>}
-      <FieldError>{errorMessage}</FieldError>
+      {errorMessage && (
+        <div className="mt-1 text-sm text-red-600">
+          {typeof errorMessage === 'function'
+            ? errorMessage({} as ValidationResult)
+            : errorMessage}
+        </div>
+      )}
     </div>
   );
 }

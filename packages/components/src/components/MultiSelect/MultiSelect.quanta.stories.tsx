@@ -63,6 +63,18 @@ export default {
       control: 'boolean',
       description: 'Whether the user can create new options not in the list.',
     },
+    isDisabled: {
+      control: 'boolean',
+      description: 'Whether the field is disabled.',
+    },
+    isRequired: {
+      control: 'boolean',
+      description: 'Whether the field is required.',
+    },
+    errorMessage: {
+      control: 'text',
+      description: 'Error message to display below the field.',
+    },
   },
 };
 
@@ -91,4 +103,39 @@ NonCreatable.args = {
   ...Default.args,
   creatable: false,
   label: 'Non-Creatable Fruits',
+};
+
+export const Disabled = Default.bind({});
+
+Disabled.args = {
+  ...Default.args,
+  isDisabled: true,
+  label: 'Disabled Fruits',
+};
+
+export const Required = Default.bind({});
+
+Required.args = {
+  ...Default.args,
+  isRequired: true,
+  label: 'Required Fruits',
+  description: 'This field is required',
+};
+
+export const WithError = (args: MultiSelectProps<Option>) => {
+  const selectedItems = useListData({
+    initialItems: [],
+  });
+
+  return (
+    <div className="w-full max-w-[400px]">
+      <MultiSelect {...args} selectedItems={selectedItems} />
+    </div>
+  );
+};
+
+WithError.args = {
+  ...Default.args,
+  errorMessage: 'Please select at least one fruit',
+  label: 'Fruits with Error',
 };
