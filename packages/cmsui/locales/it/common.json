@@ -23,6 +23,16 @@
         "list": "elenco",
         "grid": "griglia"
       }
+    },
+    "blocks-editor": {
+      "label": "Editor dei blocchi",
+      "block": "Blocco",
+      "back-to-block": "Torna al blocco",
+      "blocksTab": "Blocchi",
+      "contentTab": "Contenuto"
+    },
+    "sidebar": {
+      "label": "Barra laterale destra"
     }
   }
 }

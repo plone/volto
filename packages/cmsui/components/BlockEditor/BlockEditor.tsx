@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { atom, useAtom, useSetAtom, type PrimitiveAtom } from 'jotai';
+import { atom, useAtom, type PrimitiveAtom } from 'jotai';
+import { useTranslation } from 'react-i18next';
 import { useFieldFocusAtom } from '@plone/helpers';
 import EditBlockWrapper from './EditBlockWrapper';
 import type { Content } from '@plone/types';
@@ -11,6 +11,7 @@ type BlockEditorProps = {
 export const selectedBlockAtom = atom<string | null>(null);
 
 const BlockEditor = (props: BlockEditorProps) => {
+  const { t } = useTranslation();
   const blocksLayoutAtom = useFieldFocusAtom(props.formAtom, 'blocks_layout');
 
   // TODO: The inferred type for blocks and blocks_layout are not working
@@ -21,19 +22,39 @@ const BlockEditor = (props: BlockEditorProps) => {
     Content['blocks_layout'],
   ];
 
-  const onSelectBlock = useSetAtom(selectedBlockAtom);
-
-  useEffect(() => {
-    onSelectBlock(blocksLayout?.items?.[0] || null);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [selectedBlock, onSelectBlock] = useAtom(selectedBlockAtom);
 
   return (
-    <div>
-      {blocksLayout?.items?.map((blockId) => {
-        return <EditBlockWrapper key={blockId} block={blockId} />;
-      })}
-    </div>
+    <section
+      aria-label={t('cmsui.blocks-editor.label')}
+      onFocus={(e) => {
+        // if (!e.currentTarget.contains(e.relatedTarget)) {
+        //   e.stopPropagation();
+        //   e.preventDefault();
+        //   document.getElementById(`ebw-${selectedBlock}`)?.focus();
+        // }
+      }}
+    >
+      {blocksLayout.items.map((blockId, index) => (
+        <EditBlockWrapper
+          key={blockId}
+          block={blockId}
+          extraAriaDescription={`Item ${index + 1} of ${blocksLayout.items.length}.`}
+          onFocusNextBlock={() => {
+            const nextBlock = blocksLayout.items[index + 1];
+            if (nextBlock) {
+              onSelectBlock(nextBlock);
+            }
+          }}
+          onFocusPreviousBlock={() => {
+            const previousBlock = blocksLayout.items[index - 1];
+            if (previousBlock) {
+              onSelectBlock(previousBlock);
+            }
+          }}
+        />
+      ))}
+    </section>
   );
 };
 
