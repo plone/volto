@@ -20,20 +20,20 @@ import {
  * when the user is authenticated or during authentication flows
  */
 const createConditionalSaveMiddleware = () => {
-  const saveMiddleware = save({ 
-    states: config.settings.persistentReducers, 
-    debounce: 500 
+  const saveMiddleware = save({
+    states: config.settings.persistentReducers,
+    debounce: 500,
   });
-  
+
   return (store) => {
     const wrappedSaveMiddleware = saveMiddleware(store);
-    
+
     return (next) => (action) => {
       const state = store.getState();
       // Check if user is authenticated or in authentication process
       const isAuthenticated = !!(
-        state?.userSession?.token || 
-        state?.users?.user?.token || 
+        state?.userSession?.token ||
+        state?.users?.user?.token ||
         state?.users?.user?.id ||
         state?.userSession?.user?.id
       );
@@ -58,9 +58,7 @@ const configureStore = (initialState, history, apiHelper) => {
     thunk,
     ...(apiHelper ? [api(apiHelper)] : []),
     protectLoadEnd,
-    ...(__CLIENT__
-      ? [createConditionalSaveMiddleware()]
-      : []),
+    ...(__CLIENT__ ? [createConditionalSaveMiddleware()] : []),
   ];
   stack = config.settings.storeExtenders.reduce(
     (acc, extender) => extender(acc),
