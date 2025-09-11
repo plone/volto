@@ -1,25 +1,16 @@
 'use client';
 
 import { CalloutPlugin } from '@udecode/plate-callout/react';
-import { CodeBlockPlugin } from '@udecode/plate-code-block/react';
 import { DocxPlugin } from '@udecode/plate-docx';
-// import { EmojiPlugin } from '@udecode/plate-emoji/react';
-// import {
-//   FontBackgroundColorPlugin,
-//   FontColorPlugin,
-//   FontSizePlugin,
-// } from '@udecode/plate-font/react';
 import { HighlightPlugin } from '@udecode/plate-highlight/react';
 import { HorizontalRulePlugin } from '@udecode/plate-horizontal-rule/react';
-// import { JuicePlugin } from '@udecode/plate-juice';
 import { KbdPlugin } from '@udecode/plate-kbd/react';
 import { ColumnPlugin } from '@udecode/plate-layout/react';
 // import { SlashPlugin } from '@udecode/plate-slash-command/react';
 import { TogglePlugin } from '@udecode/plate-toggle/react';
 import { TrailingBlockPlugin } from '@udecode/plate-trailing-block';
-import { TrailingBlockPlugin as TrailingBlockP } from './trailing-debug';
-import { FixedToolbarPlugin } from '@plone/plate/components/editor/plugins/fixed-toolbar-plugin';
-import { FloatingToolbarPlugin } from '@plone/plate/components/editor/plugins/floating-toolbar-plugin';
+// import { FixedToolbarPlugin } from '@plone/plate/components/editor/plugins/fixed-toolbar-plugin';
+import { FloatingToolbarPlugin } from '../../editor/plugins/floating-toolbar-plugin';
 // import { BlockDiscussion } from '@plone/plate/components/plate-ui/block-discussion';
 // import { SuggestionBelowNodes } from '@plone/plate/components/plate-ui/suggestion-line-break';
 
@@ -58,9 +49,6 @@ export const viewPlugins = [
   ColumnPlugin,
 
   // Marks
-  // FontColorPlugin,
-  // FontBackgroundColorPlugin,
-  // FontSizePlugin,
   HighlightPlugin,
   KbdPlugin,
   skipMarkPlugin,
@@ -104,13 +92,11 @@ export const editorPlugins = [
   resetBlockTypePlugin,
   ...deletePlugins,
   softBreakPlugin,
-  TrailingBlockP,
   // TrailingBlockPlugin,
 
   // Deserialization
   DocxPlugin,
   markdownPlugin,
-  // JuicePlugin,
 
   // UI
   // FixedToolbarPlugin,
