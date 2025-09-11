@@ -18,4 +18,9 @@
       margin-inline-end: 1rem;
     }
   }
+
+  nav.pagination {
+    float: right;
+    margin-top: 2rem;
+  }
 }

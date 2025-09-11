@@ -14,7 +14,8 @@ import {
   useRouteLoaderData,
 } from 'react-router';
 import { useDebounceCallback, useMediaQuery } from 'usehooks-ts';
-import { Tooltip, Table } from '@plone/components';
+import { Tooltip, Table, Pagination } from '@plone/components';
+
 import {
   Button,
   Container,
@@ -327,6 +328,7 @@ export function ContentsTable({
     } else if (fetcher.state == 'idle') {
       // La richiesta è terminata.
       const data = fetcher.data;
+      console.log('idle', data);
 
       // Show toast for copy+paste and cut+paste
       showClipboardActionToast(data, {
@@ -468,6 +470,7 @@ export function ContentsTable({
     }
   }, [debouncedSearchableText, searchInput, searchableText]);
 
+  const [currentPage, setCurrentPage] = useState(0);
   return (
     <Container
       width="layout"
@@ -544,37 +547,50 @@ export function ContentsTable({
             </span>
           </VisuallyHidden>
           {rows?.length > 0 ? (
-            <Table
-              className="react-aria-Table hoverable"
-              aria-label={t('contents.results.contents_of', { title })}
-              columns={[...columns]}
-              rows={rows}
-              selectionMode={!isMobileScreenSize ? 'multiple' : undefined}
-              selectedKeys={[...selected].map((s) => s['@id'])}
-              onSelectionChange={setSelected}
-              dragAndDropHooks={dragAndDropHooks}
-              dragColumnHeader={
-                <MenuTrigger>
-                  <TooltipTrigger>
-                    <Button variant="icon" className="drag-cell-header">
-                      <CollectionIcon />
-                    </Button>
-                    <Tooltip
-                      className="react-aria-Tooltip tooltip"
-                      placement="bottom"
-                    >
-                      {t('contents.rearrange.by')}
-                    </Tooltip>
-                  </TooltipTrigger>
-                  <RearrangePopover
-                    indexes={indexes.values}
-                    sortItems={sortItems}
-                  />
-                </MenuTrigger>
-              }
-              // onRowSelection={onRowSelection}
-              // resizableColumns={true}
-            />
+            <>
+              <Table
+                className="react-aria-Table hoverable"
+                aria-label={t('contents.results.contents_of', { title })}
+                columns={[...columns]}
+                rows={rows}
+                selectionMode={!isMobileScreenSize ? 'multiple' : undefined}
+                selectedKeys={[...selected].map((s) => s['@id'])}
+                onSelectionChange={setSelected}
+                dragAndDropHooks={dragAndDropHooks}
+                dragColumnHeader={
+                  <MenuTrigger>
+                    <TooltipTrigger>
+                      <Button variant="icon" className="drag-cell-header">
+                        <CollectionIcon />
+                      </Button>
+                      <Tooltip
+                        className="react-aria-Tooltip tooltip"
+                        placement="bottom"
+                      >
+                        {t('contents.rearrange.by')}
+                      </Tooltip>
+                    </TooltipTrigger>
+                    <RearrangePopover
+                      indexes={indexes.values}
+                      sortItems={sortItems}
+                    />
+                  </MenuTrigger>
+                }
+                // onRowSelection={onRowSelection}
+                // resizableColumns={true}
+              />
+
+              <Pagination
+                totalPages={20}
+                currentPage={currentPage}
+                pageSize={10}
+                onPageChange={(page) => {
+                  setCurrentPage(page);
+                }}
+                pageSizes={[10, 20, 50]}
+                onChangePageSizes={() => {}}
+              />
+            </>
           ) : (
             <div className="empty-state">
               <div className="text-center text-xl">

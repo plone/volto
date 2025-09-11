@@ -17,10 +17,10 @@ export async function action({ request }: ActionFunctionArgs) {
 
   const payload = await request.json();
   const errors = [];
-
+  let responses = [];
   try {
     //todo: handle errors
-    await Promise.all(
+    responses = await Promise.allSettled(
       payload.paths.map(async (i: string) => {
         await cli.deleteContent({ path: i });
       }),
@@ -33,5 +33,7 @@ export async function action({ request }: ActionFunctionArgs) {
     //return redirect('/@@contents' + path + '?error=');
   }
 
+  console.log('return delete');
+  //handle responses and put error responses in payload, and return it
   return data(payload, 200);
 }
