@@ -1,4 +1,5 @@
 import TitleBlockView from '../Title/View';
+import TitleBlockEdit from '../Title/Edit';
 import TextBlockView from '../Text/View';
 import ImageBlockView from '../Image';
 import TeaserBlockView from '../Teaser';
@@ -11,6 +12,7 @@ export const blocksConfig = {
     id: 'title',
     title: 'Title',
     view: TitleBlockView,
+    edit: TitleBlockEdit,
     // Just for testing purposes, we must remove this
     // Uncomment and define blockSchema if needed
     // blockSchema: {

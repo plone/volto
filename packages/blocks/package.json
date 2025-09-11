@@ -54,6 +54,7 @@
     "clsx": "^2.1.1"
   },
   "devDependencies": {
+    "@plone/cmsui": "workspace:*",
     "@plone/registry": "workspace:*",
     "@plone/types": "workspace:*",
     "@testing-library/jest-dom": "6.4.2",
