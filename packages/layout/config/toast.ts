@@ -3,6 +3,7 @@ import { flushSync } from 'react-dom';
 
 import type { ConfigType } from '@plone/registry';
 import { UNSTABLE_ToastQueue as RACToastQueue } from 'react-aria-components';
+
 export type Toast = {
   error: (content: ReactNode | null) => string | number;
 };
@@ -13,6 +14,7 @@ export type ToastItem = {
   icon?: ReactNode;
   className?: string;
 };
+export type ToastQueue = RACToastQueue<ToastItem>;
 
 // Create a global ToastQueue.
 export const toastQueue = new RACToastQueue<ToastItem>({

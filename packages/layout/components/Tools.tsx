@@ -1,12 +1,26 @@
+import type { GetSlotArgs } from '@plone/types';
 import { Link } from 'react-aria-components';
 
-const HeaderTools = () => {
+type HeaderToolsProps = {
+  // content: GetSlotArgs['content'];
+  location: GetSlotArgs['location'];
+};
+
+const HeaderTools = (props: HeaderToolsProps) => {
+  const { location } = props;
+  const pathname = location.pathname.length > 1 ? location.pathname : '';
   const links = [
     {
       id: '3',
       label: 'edit',
       icon: '🛠️',
       url: '/edit',
+    },
+    {
+      id: '4',
+      label: 'contents',
+      icon: '📂',
+      url: '/@@contents' + pathname,
     },
     {
       id: '1',

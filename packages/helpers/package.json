@@ -61,6 +61,7 @@
     }
   },
   "dependencies": {
+    "@plone/registry": "workspace:*",
     "jotai": "^2.12.3"
   },
   "devDependencies": {

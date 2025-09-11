@@ -1,0 +1,36 @@
+.item-actions-popover {
+  .popover-list-item {
+    --link-color: var(--quanta-denim);
+
+    &.view,
+    &.move-to-bottom {
+      border-bottom: 1px solid var(--quanta-smoke);
+      margin-bottom: 0.5rem;
+    }
+
+    &.delete {
+      --link-color: var(--quanta-candy);
+      .icon {
+        color: var(--link-color);
+      }
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      color: var(--quanta-pigeon);
+      margin-inline-end: 1rem;
+    }
+
+    .react-aria-Link {
+      display: inline-flex;
+      align-items: center;
+      padding: 0;
+      border: 0;
+      background: 0 none;
+      font-size: 1rem;
+      text-align: left;
+      text-decoration: none;
+    }
+  }
+}
