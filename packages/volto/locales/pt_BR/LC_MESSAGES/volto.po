@@ -2363,7 +2363,7 @@ msgstr "Voltar"
 #. Default: "Navigate to this item"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Navigate to this item"
-msgstr ""
+msgstr "Acessar este item"
 
 #. Default: "Navigation"
 #: components/theme/Navigation/ContextNavigation
@@ -3255,7 +3255,7 @@ msgstr "Selecione um relacionamento"
 #. Default: "Select rule"
 #: components/manage/Rules/Rules
 msgid "Select rule"
-msgstr ""
+msgstr "Selecione a regra"
 
 #. Default: "Select the transition to be used for modifying the items state."
 #: components/manage/Contents/ContentsWorkflowModal
@@ -3830,7 +3830,7 @@ msgstr "Houve alguns erros."
 #. Default: "These items will have broken links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "These items will have broken links"
-msgstr ""
+msgstr "Esses itens conterão links inválidos"
 
 #. Default: "Third"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -4718,17 +4718,17 @@ msgstr "Imagem principal"
 #. Default: "Delete"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: Delete"
-msgstr ""
+msgstr "Deletar"
 
 #. Default: "Delete item and break links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: Delete item and break links"
-msgstr ""
+msgstr "Deletar item e desfazer links"
 
 #. Default: "Checking references..."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: loading references"
-msgstr ""
+msgstr "Checando referências..."
 
 #. Default: "Enter a URL to an image"
 #: components/manage/Widgets/ImageWidget
@@ -4867,7 +4867,7 @@ msgstr "referências"
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
-msgstr ""
+msgstr "refere-se a"
 
 #. Default: "results"
 #: components/theme/Search/Search
