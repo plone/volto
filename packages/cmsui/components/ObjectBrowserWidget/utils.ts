@@ -2,6 +2,7 @@ import type { Brain, Content } from '@plone/types';
 import { useEffect, useState } from 'react';
 import type { Fetcher } from 'react-router';
 import type { Selection } from 'react-aria-components';
+import type { UseTranslationResponse } from 'react-i18next';
 
 export type ObjectBrowserWidgetMode = 'multiple' | 'single';
 export type PartialBrainWithRequired = Partial<Brain> & {
@@ -152,4 +153,44 @@ function useAccumulatedItems<T extends Brain = Brain>(
   return items;
 }
 
-export { isMultipleMode, isSingleMode, isSelectable, useAccumulatedItems };
+const getItemLabel = (
+  t: UseTranslationResponse<'translation', undefined>['t'],
+  item: Brain,
+  isSelected: boolean,
+  disabled: boolean,
+) => {
+  const parts: string[] = [];
+
+  // Always include the title
+  parts.push(item.title);
+  if (disabled) {
+    parts.push(
+      t('cmsui.objectbrowserwidget.itemNotSelectable', { title: item.title }),
+    ); // e.g., "not selectable"
+  }
+  // Selection state
+  if (isSelected) {
+    parts.push(t('cmsui.objectbrowserwidget.selected')); // e.g., "selected"
+  }
+
+  // Folderish / navigable
+  if (item.is_folderish) {
+    parts.push(t('cmsui.objectbrowserwidget.canNavigate')); // e.g., "can be navigated into"
+  }
+
+  // Workflow state
+  if (item.review_state) {
+    parts.push(t(`cmsui.workflowStates.${item.review_state}`)); // e.g., "published"
+  }
+
+  // Join with commas or spaces
+  return parts.join(', ');
+};
+
+export {
+  isMultipleMode,
+  isSingleMode,
+  isSelectable,
+  useAccumulatedItems,
+  getItemLabel,
+};

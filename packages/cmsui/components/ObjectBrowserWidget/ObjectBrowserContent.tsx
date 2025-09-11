@@ -78,3 +78,5 @@ export const ObjectBrowserContent = ({
     </div>
   );
 };
+
+ObjectBrowserContent.displayName = 'ObjectBrowserContent';

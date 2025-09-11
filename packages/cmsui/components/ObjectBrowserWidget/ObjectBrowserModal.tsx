@@ -78,3 +78,5 @@ export const ObjectBrowserModal = () => {
     </Modal>
   );
 };
+
+ObjectBrowserModal.displayName = 'ObjectBrowserModal';

@@ -38,3 +38,4 @@ export const ObjectBrowserTrigger = ({ children }: PropsWithChildren) => {
     </DialogTrigger>
   );
 };
+ObjectBrowserTrigger.displayName = 'ObjectBrowserTrigger';

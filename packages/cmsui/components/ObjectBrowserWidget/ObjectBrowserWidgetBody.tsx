@@ -6,7 +6,7 @@ import {
   GridListItem,
 } from '@plone/components/quanta';
 import React, { useEffect, useState, useMemo, useRef } from 'react';
-import { isSelectable } from './utils';
+import { getItemLabel, isSelectable } from './utils';
 import {
   ArrowleftIcon,
   ChevronrightIcon,
@@ -47,11 +47,11 @@ export function ObjectBrowserWidgetBody() {
   useEffect(() => {
     if (currentPath && !loading && items?.length && gridListRef.current) {
       setTimeout(() => {
-        const gridList = gridListRef.current?.querySelector('[role="grid"]');
+        const gridList = gridListRef.current?.querySelector('[role="row"]');
         if (gridList instanceof HTMLElement) {
           gridList.focus();
         }
-      }, 100);
+      }, 400);
     }
   }, [currentPath, loading, items]);
 
@@ -78,6 +78,7 @@ export function ObjectBrowserWidgetBody() {
                 <ArrowleftIcon size="sm" />
               </Button>
             )}
+
             <Breadcrumbs
               root={{ '@id': '/', title: t('cmsui.objectbrowserwidget.home') }}
               items={breadcrumbs ?? []}
@@ -111,14 +112,20 @@ export function ObjectBrowserWidgetBody() {
           <ListIcon size="sm" />
         </Button>
       </div>
-      <div
-        aria-live="polite"
-        className="flex-1 overflow-y-scroll"
-        ref={gridListRef}
-        tabIndex={-1}
-      >
+
+      <div className="flex-1 overflow-y-scroll" ref={gridListRef} tabIndex={-1}>
         <GridList
-          aria-label={t('cmsui.objectbrowserwidget.currentItems')}
+          aria-label={`${t('cmsui.objectbrowserwidget.routeannouncer', {
+            route: [
+              { title: t('cmsui.objectbrowserwidget.home') },
+              ...breadcrumbs,
+            ]
+              .map((b) => b.title)
+              .join('/'),
+          })}
+              ${t('cmsui.objectbrowserwidget.searchResults', {
+                count: items?.length ?? 0,
+              })}`}
           key={`${viewMode}-${currentPath}`} // Force re-render on viewMode or path change
           selectionMode={'multiple'}
           disabledBehavior="selection"
@@ -133,13 +140,11 @@ export function ObjectBrowserWidgetBody() {
           }
           onSelectionChange={handleSelectionChange}
           selectedKeys={selectedItems}
-          renderEmptyState={() => (
-            <div className="p-4 text-center italic">
-              {loading
-                ? t('cmsui.objectbrowserwidget.loading')
-                : t('cmsui.objectbrowserwidget.noResults')}
-            </div>
-          )}
+          renderEmptyState={() =>
+            loading
+              ? t('cmsui.objectbrowserwidget.loading')
+              : t('cmsui.objectbrowserwidget.noResults')
+          }
         >
           {(item) => {
             const disabled = !isSelectable(item, {
@@ -151,17 +156,9 @@ export function ObjectBrowserWidgetBody() {
             return (
               <GridListItem
                 id={item['@id']}
-                textValue={item.title}
-                aria-label={
-                  disabled
-                    ? t('cmsui.objectbrowserwidget.itemNotSelectable', {
-                        title: item.title,
-                      })
-                    : t('cmsui.objectbrowserwidget.item', {
-                        title: item.title,
-                        selected: isSelected,
-                      })
-                }
+                textValue={getItemLabel(t, item, isSelected, disabled)}
+                // textValue={item.title}
+                aria-label={getItemLabel(t, item, isSelected, disabled)}
                 key={item['@id']}
                 data-selectable={!disabled}
                 isDisabled={disabled}
@@ -214,7 +211,7 @@ export function ObjectBrowserWidgetBody() {
                         type="button"
                         aria-label={t(
                           'cmsui.objectbrowserwidget.itemNavigateTo',
-                          item.title,
+                          { title: item.title },
                         )}
                         className={'rounded-none border-none bg-transparent'}
                         onPress={() => handleNavigation(item)}
@@ -232,3 +229,5 @@ export function ObjectBrowserWidgetBody() {
     </div>
   );
 }
+
+ObjectBrowserWidgetBody.displayName = 'ObjectBrowserWidgetBody';

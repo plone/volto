@@ -162,7 +162,7 @@ const useObjectBrowserInternal = (config: UseObjectBrowserConfig = {}) => {
   const loading = fetcher.state === 'loading';
   const selectedItems = Array.from(selectedKeys).map((item) => item.id);
   return {
-    // State dal widget originale
+    // State
     open,
     setOpen,
     searchMode,
@@ -178,7 +178,7 @@ const useObjectBrowserInternal = (config: UseObjectBrowserConfig = {}) => {
     fetcher,
     selectedItems,
 
-    // Actions dal widget originale
+    // Actions
     handleSelectionChange,
     handleRemove,
     handleSearchInputChange,
@@ -248,7 +248,4 @@ export const useObjectBrowserContext = (): UseObjectBrowserReturn => {
   return context;
 };
 
-// Hook standalone per uso senza context - deve essere wrappato in ObjectBrowserNavigationProvider
-export const useObjectBrowser = (config: UseObjectBrowserConfig = {}) => {
-  return useObjectBrowserInternal(config);
-};
+ObjectBrowserProvider.displayName = 'ObjectBrowserProvider';

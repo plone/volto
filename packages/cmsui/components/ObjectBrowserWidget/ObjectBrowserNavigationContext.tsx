@@ -96,3 +96,5 @@ export function useObjectBrowserNavigation() {
   }
   return context;
 }
+
+ObjectBrowserNavigationProvider.displayName = 'ObjectBrowserNavigationProvider';

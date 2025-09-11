@@ -13,6 +13,7 @@ import { ObjectBrowserProvider } from './ObjectBrowserContext';
 import { ObjectBrowserTags } from './ObjectBrowserTags';
 import { ObjectBrowserTrigger } from './ObjectBrowserTrigger';
 import { ObjectBrowserModal } from './ObjectBrowserModal';
+import { useFocusRing, useId } from 'react-aria';
 
 const widgetStyles = tv({
   extend: focusRing,
@@ -28,10 +29,22 @@ interface ObjectBrowserWidgetProps extends BaseFormFieldProps {}
 // TODO: guarda selected_attrs dal teaser: sono configurabili e devi quantomeno passare il brain o la def dei selectedAttrs
 export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
   const { label, description, errorMessage, ...rest } = props;
+  const { isFocusVisible, focusProps } = useFocusRing();
+  const id = useId();
   return (
     <div>
-      {label && <Label>{label}</Label>}
-      <div className={widgetStyles()}>
+      {label && <Label id={id}>{label}</Label>}
+      <div
+        {...focusProps}
+        aria-labelledby={id}
+        className={widgetStyles({
+          isFocusVisible,
+          isInvalid: !!props.errorMessage,
+        })}
+        role="group"
+        tabIndex={0}
+        // className="flex items-center justify-between gap-2"
+      >
         <ObjectBrowserTags />
         <ObjectBrowserTrigger>
           <ObjectBrowserModal />
@@ -52,3 +65,5 @@ export function ObjectBrowserWidget(props: ObjectBrowserWidgetProps) {
     </ObjectBrowserProvider>
   );
 }
+
+ObjectBrowserWidget.displayName = 'ObjectBrowserWidget';

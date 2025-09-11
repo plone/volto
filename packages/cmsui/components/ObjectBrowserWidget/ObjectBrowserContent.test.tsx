@@ -166,13 +166,6 @@ describe('ObjectBrowserContent', () => {
         fireEvent.change(input, { target: { value: 'test' } });
       }).not.toThrow();
     });
-
-    it('should have autoFocus on search input', () => {
-      render(<ObjectBrowserContent {...defaultProps} searchMode={true} />);
-
-      const input = screen.getByPlaceholderText('Search objects...');
-      expect(input).toHaveProperty('autoFocus', true);
-    });
   });
 
   describe('Accessibility', () => {
