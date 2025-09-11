@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import type { Content } from '@plone/types/src/content';
 import type { BlockEditProps } from '@plone/types/src/blocks';
-import { useFieldFocusedAtom } from '@plone/cmsui/helpers/atoms';
+import { useFieldFocusedAtom } from '@plone/helpers';
 import config from '@plone/registry';
 import { clsx } from 'clsx';
 

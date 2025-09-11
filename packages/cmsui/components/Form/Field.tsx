@@ -8,7 +8,7 @@ import type {
   WidgetsConfigByWidget,
   Content,
 } from '@plone/types';
-import { useFieldFocusedAtom } from '../../helpers/atoms';
+import { useFieldFocusedAtom } from '@plone/helpers';
 import { useFieldContext } from './Form';
 import { type PrimitiveAtom } from 'jotai';
 import { type DeepKeys } from '@tanstack/react-form';
