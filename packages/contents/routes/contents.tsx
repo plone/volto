@@ -19,7 +19,7 @@ export type ContentsLoaderType = typeof loader;
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function loader({ params, request }: LoaderFunctionArgs) {
   const token = await requireAuthCookie(request);
-
+  const b_size = 10;
   const cli = config
     .getUtility({
       name: 'ploneClient',
@@ -35,6 +35,9 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
     new URLSearchParams(new URL(request.url).search).get('SearchableText') ||
     '';
 
+  const page =
+    new URLSearchParams(new URL(request.url).search).get('page') || '';
+
   const searchQuery: Parameters<typeof cli.search>[0]['query'] = {
     path: {
       query: path,
@@ -44,10 +47,13 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
     sort_order: 'ascending',
     metadata_fields: '_all',
     show_inactive: true,
-    b_size: 10,
+    b_size,
   };
   if (searchableText.length > 0) {
     searchQuery.SearchableText = searchableText + '**';
+  }
+  if (page.length > 0) {
+    searchQuery.b_start = Number(page) * b_size;
   }
 
   const search = flattenToAppURL(
@@ -61,7 +67,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
   const types = await cli.getTypes();
   const addableTypes = types.data.filter((type) => type.addable);
 
-  return { addableTypes, search, searchableText };
+  return { addableTypes, search, searchableText, page, b_size };
 }
 
 export default function Contents() {

@@ -119,9 +119,10 @@ export function ContentsTable({
   const { selected, setSelected, setShowDelete, setItemsToDelete, showToast } =
     useContentsContext();
   const fetcher = useFetcher();
-  const { addableTypes, search, searchableText } =
+  const { addableTypes, search, searchableText, page, b_size } =
     useLoaderData<ContentsLoaderType>();
   const rootData = useRouteLoaderData<RootLoader>('root');
+  const [currentPage, setCurrentPage] = useState<number>(Number(page));
 
   const { content } = rootData ?? {};
   const { title = '' } = content ?? {};
@@ -186,6 +187,7 @@ export function ContentsTable({
   const moveToBottom = (item: Item) => orderItem(item.id, 'bottom');
   const moveToTop = (item: Item) => orderItem(item.id, 'top');
 
+  /********* CLIPBOARD ************* */
   type ClipboardType = {
     action: 'cut' | 'copy' | null;
     source: string[];
@@ -283,6 +285,7 @@ export function ContentsTable({
     // TODO when do we clean the clipboard?
   };
 
+  /********** ACTIONS ********* */
   const cut = (item?: Brain) => {
     const items = item ? [item] : [...selected];
     const paths = items.map((i) => i['@id']);
@@ -321,14 +324,13 @@ export function ContentsTable({
     // TODO when do we clean the clipboard?
   };
 
-  // handle fetcher state. Toast success on paste, delete
+  // handle actions response. Handle fetcher state. Toast success on paste, delete
   useEffect(() => {
     if (fetcher.state === 'submitting' || fetcher.state == 'loading') {
       // TODO: handle loading state, show something like a dimmer while operation is in progress
     } else if (fetcher.state == 'idle') {
       // La richiesta è terminata.
       const data = fetcher.data;
-      console.log('idle', data);
 
       // Show toast for copy+paste and cut+paste
       showClipboardActionToast(data, {
@@ -349,6 +351,7 @@ export function ContentsTable({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetcher.state]);
 
+  /******************* TABLE ITEMS ************** */
   const columns = [
     {
       id: 'title',
@@ -470,7 +473,22 @@ export function ContentsTable({
     }
   }, [debouncedSearchableText, searchInput, searchableText]);
 
-  const [currentPage, setCurrentPage] = useState(0);
+  //pagination change
+
+  const onPageChange = (page: number) => {
+    setCurrentPage(page);
+    setSelected('none');
+    const path = window.location.pathname;
+    const params = new URLSearchParams(window.location.search);
+    if (page > 0) {
+      params.set('page', page.toString());
+    } else {
+      params.delete('page');
+    }
+    const querystring = params.size > 0 ? '?' + params.toString() : '';
+    navigate(`${path}${querystring}`);
+  };
+
   return (
     <Container
       width="layout"
@@ -581,14 +599,9 @@ export function ContentsTable({
               />
 
               <Pagination
-                totalPages={20}
+                totalPages={Math.ceil(search.items_total / b_size)}
                 currentPage={currentPage}
-                pageSize={10}
-                onPageChange={(page) => {
-                  setCurrentPage(page);
-                }}
-                pageSizes={[10, 20, 50]}
-                onChangePageSizes={() => {}}
+                onPageChange={(page) => onPageChange(page)}
               />
             </>
           ) : (

@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { VisuallyHidden } from 'react-aria';
 import { ArrowleftIcon, ArrowrightIcon } from '../icons';
 import { Button } from '../Button/Button';
 
@@ -21,7 +22,7 @@ export type PaginationProps = {
 
 export const Pagination = ({
   totalPages,
-  currentPage,
+  currentPage = 0,
   onPageChange,
 
   ariaLabel = 'Pagination',
@@ -144,7 +145,7 @@ export const Pagination = ({
 
   //TODO: handle change pagesize
 
-  return (
+  return totalPages > 1 ? (
     <nav aria-label={ariaLabel} ref={ref} className="pagination">
       {pages.map((page, i) => {
         const buttonAttributes = {
@@ -153,27 +154,31 @@ export const Pagination = ({
             : undefined,
           isDisabled: page.disabled,
           'aria-label':
-            (page.ariaLabel ?? page.type === 'page')
-              ? `${pageLabel} ${page.text}`
-              : undefined,
+            page.ariaLabel ??
+            (page.type === 'page' ? `${pageLabel} ${page.text}` : undefined),
         };
 
         return (
           <ButtonComponent
             {...buttonAttributes}
-            key={i}
+            key={`${i}${page.value}`}
             onClick={
               page.value !== undefined
                 ? () => {
-                    onPageChange(page.value as number);
+                    onPageChange(page.value ?? 0);
                   }
                 : undefined
             }
           >
+            {page.type === 'prev-next' && (
+              <VisuallyHidden>{currentPage}</VisuallyHidden>
+            )}
             {page.icon ? page.icon : page.text}
           </ButtonComponent>
         );
       })}
     </nav>
+  ) : (
+    <></>
   );
 };

@@ -13,9 +13,11 @@ import {
 import { useTranslation } from 'react-i18next';
 import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import { type RootLoader } from 'seven/app/root';
-import { PluggablesProvider } from '@plone/layout/components/Pluggable';
+import { PluggablesProvider, Plug } from '@plone/layout/components/Pluggable';
 import Toolbar from '@plone/cmsui/components/Toolbar/Toolbar';
 import config from '@plone/registry';
+import { Button } from '@plone/components/quanta';
+import Back from '@plone/components/icons/arrow-left.svg?react';
 // import TopNavBar from '@plone/cmsui/components/Layout/TopNavBar';
 
 // eslint-disable-next-line import/no-unresolved
@@ -106,6 +108,17 @@ export default function Index() {
                 <Outlet />
               </main>
             </div>
+            <Plug pluggable="toolbar-top" id="button-back">
+              <Button
+                aria-label="back"
+                size="L"
+                onPress={() =>
+                  navigate(window.location.pathname.replace('@@contents/', ''))
+                }
+              >
+                <Back />
+              </Button>
+            </Plug>
           </RACRouterProvider>
         </PluggablesProvider>
         <Toast
