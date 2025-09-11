@@ -10,8 +10,6 @@ import {
   TagGroup,
   TagList,
   Tag,
-  FieldError,
-  type ValidationResult,
 } from 'react-aria-components';
 import { Description, Label } from '../Field/Field.quanta';
 import { useListData } from 'react-stately';
@@ -34,16 +32,9 @@ export interface MultiSelectProps<T extends object> {
   placeholder?: string;
   label?: string;
   description?: string;
-  errorMessage?: string | ((validation: ValidationResult) => string);
   creatable?: boolean;
-  onChange?: (selectedItems: Array<T>) => void;
-  onBlur?: () => void;
-  onFocus?: () => void;
   onItemInserted?: (key: Key) => void;
   onItemCleared?: (key: Key) => void;
-  isDisabled?: boolean;
-  isReadOnly?: boolean;
-  isRequired?: boolean;
   renderEmptyState?: (inputValue: string) => React.ReactNode;
 }
 
@@ -53,18 +44,11 @@ export function MultiSelect({
   items,
   className = '',
   description,
-  errorMessage,
-  onChange,
-  onBlur,
-  onFocus,
   onItemCleared,
   onItemInserted,
   renderEmptyState,
   selectedItems,
   creatable = true,
-  isDisabled = false,
-  isReadOnly = false,
-  isRequired = false,
   ...props
 }: MultiSelectProps<Option>) {
   const triggerRef = useRef<HTMLDivElement | null>(null);
@@ -96,21 +80,20 @@ export function MultiSelect({
   const onRemove = useCallback(
     (keys: Set<Key>) => {
       const key = keys.values().next().value;
-      if (key && !isDisabled && !isReadOnly) {
+      if (key) {
         selectedItems.remove(key);
         setFieldState({
           inputValue: '',
           selectedKey: null,
         });
         onItemCleared?.(key);
-        onChange?.(selectedItems.items);
       }
     },
-    [selectedItems, onItemCleared, onChange, isDisabled, isReadOnly],
+    [selectedItems, onItemCleared],
   );
 
   const onSelectionChange = (id: Key | null) => {
-    if (!id || isDisabled || isReadOnly) {
+    if (!id) {
       return;
     }
 
@@ -127,7 +110,6 @@ export function MultiSelect({
         selectedKey: id,
       });
       onItemInserted?.(id);
-      onChange?.(selectedItems.items);
     }
 
     accessibleList.setFilterText('');
@@ -158,8 +140,6 @@ export function MultiSelect({
   }, []);
 
   const onCreateTag = useCallback(() => {
-    if (isDisabled || isReadOnly) return;
-
     const inputValue = fieldState.inputValue.trim();
     const id = inputValue.toLocaleLowerCase();
 
@@ -179,20 +159,11 @@ export function MultiSelect({
 
       accessibleList.append(item);
       selectedItems.append(item);
-      onChange?.(selectedItems.items);
     }
-  }, [
-    fieldState.inputValue,
-    accessibleList,
-    selectedItems,
-    setFieldState,
-    onChange,
-    isDisabled,
-    isReadOnly,
-  ]);
+  }, [fieldState.inputValue, accessibleList, selectedItems, setFieldState]);
 
   const popLast = useCallback(() => {
-    if (selectedItems.items.length === 0 || isDisabled || isReadOnly) {
+    if (selectedItems.items.length === 0) {
       return;
     }
 
@@ -201,14 +172,13 @@ export function MultiSelect({
     if (endKey) {
       selectedItems.remove(endKey.id);
       onItemCleared?.(endKey.id);
-      onChange?.(selectedItems.items);
     }
 
     setFieldState({
       inputValue: '',
       selectedKey: null,
     });
-  }, [selectedItems, onItemCleared, onChange, isDisabled, isReadOnly]);
+  }, [selectedItems, onItemCleared]);
 
   const onKeyDownCapture = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -273,18 +243,13 @@ export function MultiSelect({
           >
             <Input
               placeholder={placeholder}
-              disabled={isDisabled}
-              readOnly={isReadOnly}
-              required={isRequired}
               onBlur={() => {
                 setFieldState({
                   inputValue: '',
                   selectedKey: null,
                 });
                 accessibleList.setFilterText('');
-                onBlur?.();
               }}
-              onFocus={onFocus}
               onKeyDownCapture={onKeyDownCapture}
               className="min-w-0 flex-1 bg-white px-2 py-1.5 text-sm text-gray-800 outline-0 disabled:text-gray-200"
             />
@@ -352,7 +317,6 @@ export function MultiSelect({
         </div>
       </div>
       {description && <Description>{description}</Description>}
-      <FieldError>{errorMessage}</FieldError>
     </div>
   );
 }
