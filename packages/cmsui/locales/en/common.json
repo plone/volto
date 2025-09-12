@@ -55,10 +55,11 @@
       "groupMembership": "Group Membership",
       "groups": "Groups"
     },
-    "blocks-editor": {
-      "label": "Blocks editor",
+    "blocksEditor": {
+      "explanation": "You are in the blocks editor. Browse the blocks normally, press Tab in a block to move to its configuration dialog.",
+      "extraAriaDescription": "Item {{ index }} of {{ length }}.",
       "block": "Block",
-      "back-to-block": "Back to block",
+      "backToBlock": "Back to block",
       "blocksTab": "Blocks",
       "contentTab": "Content"
     },

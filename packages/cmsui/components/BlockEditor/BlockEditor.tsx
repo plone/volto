@@ -1,4 +1,5 @@
 import { atom, useAtom, type PrimitiveAtom } from 'jotai';
+import { FocusScope, VisuallyHidden } from 'react-aria';
 import { useTranslation } from 'react-i18next';
 import { useFieldFocusAtom } from '@plone/helpers';
 import EditBlockWrapper from './EditBlockWrapper';
@@ -22,39 +23,22 @@ const BlockEditor = (props: BlockEditorProps) => {
     Content['blocks_layout'],
   ];
 
-  const [selectedBlock, onSelectBlock] = useAtom(selectedBlockAtom);
-
   return (
-    <section
-      aria-label={t('cmsui.blocks-editor.label')}
-      onFocus={(e) => {
-        // if (!e.currentTarget.contains(e.relatedTarget)) {
-        //   e.stopPropagation();
-        //   e.preventDefault();
-        //   document.getElementById(`ebw-${selectedBlock}`)?.focus();
-        // }
-      }}
-    >
-      {blocksLayout.items.map((blockId, index) => (
-        <EditBlockWrapper
-          key={blockId}
-          block={blockId}
-          extraAriaDescription={`Item ${index + 1} of ${blocksLayout.items.length}.`}
-          onFocusNextBlock={() => {
-            const nextBlock = blocksLayout.items[index + 1];
-            if (nextBlock) {
-              onSelectBlock(nextBlock);
-            }
-          }}
-          onFocusPreviousBlock={() => {
-            const previousBlock = blocksLayout.items[index - 1];
-            if (previousBlock) {
-              onSelectBlock(previousBlock);
-            }
-          }}
-        />
-      ))}
-    </section>
+    <div className="relative">
+      <VisuallyHidden>{t('cmsui.blocksEditor.explanation')}</VisuallyHidden>
+      <FocusScope>
+        {blocksLayout.items.map((blockId, index) => (
+          <EditBlockWrapper
+            key={blockId}
+            block={blockId}
+            extraAriaDescription={t('cmsui.blocksEditor.extraAriaDescription', {
+              index: index + 1,
+              length: blocksLayout.items.length,
+            })}
+          />
+        ))}
+      </FocusScope>
+    </div>
   );
 };
 

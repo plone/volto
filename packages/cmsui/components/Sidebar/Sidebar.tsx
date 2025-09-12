@@ -1,12 +1,8 @@
-import { Fragment, useRef, type ComponentPropsWithRef } from 'react';
-import { FocusScope } from 'react-aria';
+import { Fragment, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { atom, useAtom } from 'jotai';
 import { tv } from 'tailwind-variants';
-import { Button } from '@plone/components/quanta';
 import { Pluggable } from '@plone/layout/components/Pluggable';
-import { selectedBlockAtom } from '../../components/BlockEditor/BlockEditor';
-import BlockSettingsForm from '../../components/BlockEditor/BlockSettingsForm';
 
 export const sidebarAtom = atom(false);
 
@@ -20,16 +16,13 @@ const sidebar = tv({
   },
 });
 
-const Sidebar = ({ ref }: ComponentPropsWithRef<'div'>) => {
+const Sidebar = () => {
   const { t } = useTranslation();
   const [collapsed] = useAtom(sidebarAtom);
   const button = useRef<HTMLButtonElement>(null);
 
   return (
-    // TODO use <aside> instead?
-    <div
-      ref={ref}
-      role="complementary"
+    <aside
       aria-label={t('cmsui.sidebar.label')}
       id="sidebar"
       className={sidebar({ collapsed })}
@@ -45,25 +38,10 @@ const Sidebar = ({ ref }: ComponentPropsWithRef<'div'>) => {
       {!collapsed && (
         <Fragment>
           <button ref={button}>sidebar tabs will be here</button>
-          {/* <FocusScope contain={false} restoreFocus>
-            <BlockSettingsForm
-              schema={schema}
-              block={props.block}
-              // data={props.data}
-            />
-            <Button
-              onClick={() => {
-                // setFocusInSidebar(false);
-                blockRef.current?.focus();
-              }}
-            >
-              {t('cmsui.blocks-editor.back-to-block')}
-            </Button>
-          </FocusScope> */}
           <Pluggable name="sidebar" />
         </Fragment>
       )}
-    </div>
+    </aside>
   );
 };
 

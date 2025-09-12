@@ -108,12 +108,12 @@ export default function Edit() {
               tabs={[
                 {
                   id: 'blocks',
-                  title: t('cmsui.blocks-editor.blocksTab'),
+                  title: t('cmsui.blocksEditor.blocksTab'),
                   content: <BlockEditor formAtom={formAtom}></BlockEditor>,
                 },
                 {
                   id: 'content',
-                  title: t('cmsui.blocks-editor.contentTab'),
+                  title: t('cmsui.blocksEditor.contentTab'),
                   content: (
                     <div className="flex flex-col">
                       <form>
