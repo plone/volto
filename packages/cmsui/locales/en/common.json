@@ -3,6 +3,37 @@
     "edit": "Edit",
     "save": "Save",
     "controlpanel": "Control Panel",
+    "objectbrowserwidget": {
+      "openDialog": "Select content",
+      "dialogTitle": "Select Content",
+      "closeDialog": "Close selection",
+      "openSearch": "Search content",
+      "closeSearch": "Close search",
+      "searchPlaceholder": "Search content...",
+      "loading": "Loading...",
+      "routeannouncer": "Current path: {{route}}",
+      "noResults": "No content found",
+      "searchResults": "Search results: {{count}} items",
+      "searchResultsFor": "Search results for \"{{searchTerm}}\": {{count}} ",
+      "goback": "Go back",
+      "changeViewMode": "Switch to {{mode}} view",
+      "currentItems": "Current content items",
+      "home": "Home",
+      "item": "{{title}}",
+      "itemSelected": "selected",
+      "itemNotSelectable": "not selectable",
+      "itemNavigateTo": "Navigate to {{title}}",
+      "canNavigateTo": "Folderish content",
+      "workflowStates": {
+        "private": "Private",
+        "pending": "Pending",
+        "published": "Published"
+      },
+      "viewModes": {
+        "list": "list",
+        "grid": "grid"
+      }
+    },
     "panelgroups": {
       "general": "General",
       "content": "Content",

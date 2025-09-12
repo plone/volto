@@ -13,14 +13,18 @@ import { useFieldContext } from './Form';
 import { type PrimitiveAtom } from 'jotai';
 import { type DeepKeys } from '@tanstack/react-form';
 
-type FieldProps = {
+export interface FieldProps {
   id?: keyof WidgetsConfigById;
+  //
   className?: string;
+  //
   label: string;
   name: DeepKeys<Content>;
+  //
   defaultValue?: unknown;
   required?: boolean;
   error?: Array<undefined>;
+  //
   formAtom: PrimitiveAtom<Content>;
   widget?: keyof WidgetsConfigByWidget;
   vocabulary?: { '@id': keyof WidgetsConfigByVocabulary };
@@ -31,11 +35,13 @@ type FieldProps = {
     [key: string]: any;
   };
   factory?: keyof WidgetsConfigByFactory;
+  //
   onChange?: (value: any) => void;
+  //
   placeholder?: string;
   title?: string /* To remove? */;
   value: any;
-};
+}
 
 const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not rendered
 /**

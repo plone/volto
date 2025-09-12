@@ -4,7 +4,8 @@ import { flattenToAppURL } from '@plone/helpers';
 import { getAuthFromRequest } from '@plone/react-router';
 import config from '@plone/registry';
 
-export async function loader({ params, request }: LoaderFunctionArgs) {
+// NOTE: cannot import and reuse loaders, somewhere it tries to load js process which is undefined
+export async function loader({ params, request, context }: LoaderFunctionArgs) {
   const token = await getAuthFromRequest(request);
 
   const cli = config
@@ -17,7 +18,9 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
   cli.config.token = token;
 
   const path = `/${params['*'] || ''}`;
+
   const query = Object.fromEntries(new URL(request.url).searchParams.entries());
+
   const pathQuery = {
     query: query['path.query'] || path,
     depth: Number(query['path.depth']) || undefined,
@@ -34,8 +37,26 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
         : undefined,
     },
   });
+  // const items = response.items;
+  // const firstLevelIds = items
+  //   .filter((i) => i['@id'].split('/').length > 1)
+  //   .map((i) => i['@id']);
 
-  return data(flattenToAppURL(results), {
+  // const results = firstLevelIds.reduce((acc, curr) => {
+  //   const child = items.some((item) => item['@id'] === curr);
+
+  //   return [acc, ...;
+  // }, []);
+  // Has to be used?
+  // const strippedRequest = new Request(request.url.replace(/\?.*$/, ''), {
+  //   headers: request.headers,
+  // });
+  // Call the breadcrumbs endpoint
+  const { data: breadcrumbs } = await cli.getBreadcrumbs({
+    path,
+  });
+
+  return data(flattenToAppURL({ results, breadcrumbs }), {
     headers: {
       'Content-Type': 'application/json',
     },
