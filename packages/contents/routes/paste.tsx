@@ -2,7 +2,7 @@ import { data, type ActionFunctionArgs } from 'react-router';
 import { requireAuthCookie } from '@plone/react-router';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
-
+import { HandleCatchedError } from '../helpers/Errors';
 export async function action({ params, request }: ActionFunctionArgs) {
   const token = await requireAuthCookie(request);
 
@@ -19,6 +19,7 @@ export async function action({ params, request }: ActionFunctionArgs) {
 
   const payload = await request.json();
   const errors = [];
+  let response = null;
 
   try {
     const options = {
@@ -29,16 +30,12 @@ export async function action({ params, request }: ActionFunctionArgs) {
     };
 
     if (payload.action === 'copy') {
-      await cli.copyContent(options);
+      response = await cli.copyContent(options);
     } else if (payload.action === 'cut') {
-      await cli.moveContent(options);
+      response = await cli.moveContent(options);
     }
   } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error('Error', e);
-    // errors.push({ message: 'Error on delete' });
-    //ToDO: display error. Do redirect with querystring to display toast error.
-    //return redirect('/@@contents' + path + '?error=');
+    HandleCatchedError(e, 'Error on paste');
   }
 
   return data(payload, 200);

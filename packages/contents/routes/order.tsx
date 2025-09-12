@@ -2,6 +2,7 @@ import { data, type ActionFunctionArgs } from 'react-router';
 import { requireAuthCookie } from '@plone/react-router';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
+import { HandleCatchedError } from '../helpers/Errors';
 
 export async function action({ request }: ActionFunctionArgs) {
   const token = await requireAuthCookie(request);
@@ -19,7 +20,6 @@ export async function action({ request }: ActionFunctionArgs) {
   const errors = [];
 
   try {
-    //todo: handle errors
     await cli.updateContent({
       path: payload.path,
       data: {
@@ -31,11 +31,7 @@ export async function action({ request }: ActionFunctionArgs) {
       },
     });
   } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error('Error', e);
-    // errors.push({ message: 'Error on delete' });
-    //ToDO: display error. Do redirect with querystring to display toast error.
-    //return redirect('/@@contents' + path + '?error=');
+    HandleCatchedError(e, 'Error on order');
   }
 
   return data(null, 204);

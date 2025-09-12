@@ -18,9 +18,10 @@ export default function ErrorToast(queue: ToastQueue) {
 
   useEffect(() => {
     if (isRouteErrorResponse(error)) {
+      const e = { ...error, ...error.data };
       queue.add({
-        title: `Error: ${error.status}:`,
-        description: error.statusText,
+        title: `Error: ${e.status} - ${e.statusText}`,
+        description: e.message,
         className: 'error',
       });
     } else if (error instanceof Error) {

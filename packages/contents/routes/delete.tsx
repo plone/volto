@@ -2,6 +2,7 @@ import { data, type ActionFunctionArgs } from 'react-router';
 import { requireAuthCookie } from '@plone/react-router';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
+import { HandleCatchedError } from '../helpers/Errors';
 
 export async function action({ request }: ActionFunctionArgs) {
   const token = await requireAuthCookie(request);
@@ -16,9 +17,9 @@ export async function action({ request }: ActionFunctionArgs) {
   cli.config.token = token;
 
   const payload = await request.json();
-  const errors = [];
-  const ok = [];
-  let responses = [];
+  const errors: Array<Record<string, any>> = [];
+  const ok: Array<any> = [];
+  let responses: Array<any> = [];
 
   try {
     //todo: handle errors
@@ -28,18 +29,8 @@ export async function action({ request }: ActionFunctionArgs) {
       }),
     );
   } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error('Error', e);
-    // errors.push({ message: 'Error on delete' });
-    //ToDO: display error. Do redirect with querystring to display toast error.
-    //return redirect('/@@contents' + path + '?error=');
+    HandleCatchedError(e, 'Error on delete');
   }
-  // responses è fatto così:
-  // [
-  //   { status: 'rejected', reason: { status: 404, data: [Object] } },
-  //   { status: 'fulfilled', value: undefined },
-  //   { status: 'fulfilled', value: undefined }
-  // ]
 
   responses.forEach((r, i) => {
     if (r.status == 'fulfilled') {
