@@ -42,6 +42,8 @@ jobs:
               - 'packages/providers/**'
             publicui:
               - 'packages/publicui/**'
+            plate:
+              - 'packages/plate/**'
             reactrouter:
               - 'packages/react-router/**'
             scripts:
@@ -124,6 +126,14 @@ jobs:
         run: |
           git fetch --no-tags origin seven
           towncrier check --compare-with origin/seven --dir packages/publicui
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
+      - name: Plate changelog check
+        if: steps.filter.outputs.plate == 'true'
+        run: |
+          git fetch --no-tags origin seven
+          towncrier check --compare-with origin/seven --dir packages/plate
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
