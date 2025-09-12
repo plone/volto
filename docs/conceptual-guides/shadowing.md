@@ -18,12 +18,12 @@ Vite resolves the override at build time, replacing the original module with you
 To shadow a component, perform the following tasks.
 
 -   Locate the component you want to override or shadow.
--   Replicate the component's original folder structure inside a {file}`customizations` folder in your add-on.
+-   Replicate the component's original file structure inside a {file}`customizations` folder in your add-on.
 
 
-## Folders and files hierarchy structure for shadowing
+## File structure for shadowing
 
-To shadow components, you must follow a folders and files hierarchy structure pattern.
+To shadow components, you must follow a file structure pattern.
 
 Assume the component you want to shadow is located at `node_modules/@plone/layout/components/Logo/Logo.svg`.
 
