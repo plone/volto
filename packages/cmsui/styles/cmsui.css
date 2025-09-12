@@ -3,6 +3,8 @@
 
 @source '../node_modules/@plone/components/dist/quanta';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer cmsui {
   @import 'tailwindcss/theme.css';
   @import 'tailwindcss/preflight.css';
