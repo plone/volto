@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Select, type Option, type SelectProps } from './Select.quanta';
+import { SelectWidget, type Option, type SelectProps } from './Select.quanta';
 import { type Key } from 'react-aria-components';
 
 const fruits: Option[] = [
@@ -17,7 +17,7 @@ const fruits: Option[] = [
 
 export default {
   title: 'Quanta/Select',
-  component: Select,
+  component: SelectWidget,
   parameters: {
     layout: 'centered',
   },
@@ -57,8 +57,8 @@ export default {
 
 export const Default = (args: SelectProps<Option>) => {
   return (
-    <div className="w-full max-w-[300px]">
-      <Select {...args} />
+    <div className="w-full max-w-[600px]">
+      <SelectWidget {...args} />
     </div>
   );
 };
@@ -112,8 +112,12 @@ export const Controlled = (args: SelectProps<Option>) => {
   };
 
   return (
-    <div className="w-full max-w-[300px] space-y-4">
-      <Select {...args} selectedKey={selectedKey} onChange={handleChange} />
+    <div className="w-full max-w-[600px] space-y-4">
+      <SelectWidget
+        {...args}
+        selectedKey={selectedKey}
+        onChange={handleChange}
+      />
       <div className="text-sm">
         <strong>Currently Selected:</strong>
         <div className="mt-1 rounded border bg-gray-50 p-2">

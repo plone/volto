@@ -15,7 +15,6 @@ import {
   Button,
   Select as AriaSelect,
   SelectValue,
-  composeRenderProps,
   Popover,
   Dialog,
   ListBoxItem,
@@ -48,10 +47,7 @@ const SelectTrigger = ({
         className,
       )}
     >
-      <SelectValue
-        className="flex-1 truncate text-left data-[placeholder]:text-gray-500"
-        placeholder={placeholder}
-      />
+      <SelectValue className="flex-1 truncate text-left data-[placeholder]:text-gray-500" />
       <ChevrondownIcon className="h-4 w-4 shrink-0 text-gray-400 transition-transform duration-200 group-data-[state=open]:rotate-180" />
     </Button>
   );
@@ -68,18 +64,21 @@ const SelectList = <T extends Option>({
   items,
   className,
   placement = 'bottom',
+  onBlur,
+  onFocus,
   ...props
 }: SelectListProps<T>) => {
   return (
     <Popover
-      className="z-50 overflow-hidden rounded-md border border-gray-200 bg-white shadow-lg"
+      className="z-50 w-[var(--trigger-width)] overflow-hidden rounded-md border border-gray-200 bg-white shadow-lg"
       placement={placement}
     >
-      <Dialog role="dialog">
+      <Dialog role="dialog" className="w-[var(--trigger-width)] outline-none">
         <ListBox
-          className={twMerge('max-h-60 overflow-auto', className)}
+          className={twMerge('max-h-60 overflow-auto outline-none', className)}
           items={items}
-          {...props}
+          onBlur={onBlur}
+          onFocus={onFocus}
         >
           {(item) => (
             <ListBoxItem
@@ -114,12 +113,13 @@ export interface SelectProps<T extends Option>
   className?: string;
   listBoxClassName?: string;
   placement?: PopoverProps['placement'];
+  choices?: string[]; // alternative to items
   onChange?: (value: Key | null) => void;
   onBlur?: () => void;
   onFocus?: () => void;
 }
 
-export function Select<T extends Option>({
+function Select<T extends Option>({
   label,
   description,
   errorMessage,
@@ -135,7 +135,6 @@ export function Select<T extends Option>({
 }: SelectProps<T>) {
   return (
     <AriaSelect
-      {...props}
       onSelectionChange={onChange}
       className={twMerge('group flex w-full flex-col gap-1.5', className)}
     >
@@ -158,4 +157,25 @@ export function Select<T extends Option>({
       )}
     </AriaSelect>
   );
+}
+
+export function SelectWidget<T extends Option>({
+  choices,
+  items,
+  ...props
+}: SelectProps<T>) {
+  let selectItems = items;
+
+  // If choices are provided, map them to the items format.
+  if (choices && choices.length > 0) {
+    selectItems = choices.map(
+      (item) =>
+        ({
+          id: item,
+          name: item,
+        }) as T,
+    );
+  }
+
+  return <Select {...props} items={selectItems} />;
 }
