@@ -10,7 +10,7 @@ import {
 import { DateField } from '@plone/components';
 
 export default function install(config: ConfigType) {
-  config.registerWidget({ key: 'default', definition: TextField });
+  config.registerDefaultWidget(TextField);
   config.registerWidget({ key: 'widget', definition: { date: DateField } });
   config.registerWidget({
     key: 'widget',

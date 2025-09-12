@@ -560,30 +560,37 @@ class Config {
     type Definition = WidgetsConfig[K];
     type DefinitionKey = keyof Definition;
     const emptyDefinition: WidgetsConfig[K] = {} as Definition;
-
+    if (!options || !options.key || !options.definition) {
+      throw new Error('No widget definition provided');
+    }
     const { key, definition } = options;
+
+    if (key === 'default') {
+      throw new Error('Use registerDefaultWidget to set the default widget');
+    }
+
     const definitionIsObject = Object.keys(definition).length;
     if (!definitionIsObject) {
       this._data.widgets[key] = definition;
     } else {
-      const target = this._data.widgets[key] as Definition;
       for (const widgetKey of Object.keys(definition) as DefinitionKey[]) {
         // Now widgetKey is known by TS to be a valid key of definition, no casting needed.
-        if (this._data.widgets[key] === undefined) {
+        if (this._data.widgets[key] === undefined)
           this._data.widgets[key] = emptyDefinition;
-        }
-        if (target?.[widgetKey]) {
-          // If the widget already exists, we merge the definitions
-          this._data.widgets[key][widgetKey] = {
-            ...target[widgetKey],
-            ...definition[widgetKey],
-          };
-        } else {
-          // Otherwise, we just set it
-          this._data.widgets[key][widgetKey] = definition[widgetKey];
-        }
+
+        // Otherwise, we just set it
+        this._data.widgets[key][widgetKey] = definition[widgetKey];
       }
     }
+  }
+  /**
+   * Registers a default widget configuration into the registry.
+   *
+   * @param component - The default widget component to register.
+   *
+   */
+  registerDefaultWidget(component: React.ComponentType<any>) {
+    this._data.widgets.default = component;
   }
 
   /**
