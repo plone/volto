@@ -57,7 +57,7 @@ export default function install(config: ConfigType) {
       },
       {
         type: 'prefix',
-        path: 'controlpanels',
+        path: 'controlpanel',
         children: [
           {
             type: 'index',
