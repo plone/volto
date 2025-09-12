@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { type LoaderFunctionArgs, useRouteLoaderData } from 'react-router';
 import { requireAuthCookie } from '@plone/react-router';
 import config from '@plone/registry';
@@ -10,6 +10,8 @@ import Indexes, { defaultIndexes } from '../components/Indexes';
 import { ContentsProvider, useContentsContext } from '../providers/contents';
 import DeleteModal from '../components/DeleteModal/DeleteModal';
 import ErrorToast from '@plone/layout/components/Toast/ErrorToast';
+
+import type { TableIndexes } from '../types';
 
 import type { RootLoader } from 'seven/app/root';
 
@@ -70,8 +72,23 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
   return { addableTypes, search, searchableText, page, b_size };
 }
 
+const DEFAULT_TABLE_INDEXES: TableIndexes = {
+  order: Object.keys(Indexes),
+  values: Object.fromEntries(
+    Object.entries(Indexes).map(([key, value]) => [
+      key,
+      {
+        ...value,
+        selected: defaultIndexes.indexOf(key) !== -1,
+      },
+    ]),
+  ),
+  selectedCount: defaultIndexes.length + 1,
+};
+
 export default function Contents() {
   const rootData = useRouteLoaderData<RootLoader>('root');
+  const [indexes, setIndexes] = useState(DEFAULT_TABLE_INDEXES);
 
   if (!rootData) {
     return null;
@@ -85,21 +102,15 @@ export default function Contents() {
   const tags = () => {};
   const rename = () => {};
 
-  const onSelectIndex = () => {};
   const onSortItems = () => {};
 
-  const indexes = {
-    order: Object.keys(Indexes),
-    values: Object.fromEntries(
-      Object.entries(Indexes).map(([key, value]) => [
-        key,
-        {
-          ...value,
-          selected: defaultIndexes.indexOf(key) !== -1,
-        },
-      ]),
-    ),
-    selectedCount: defaultIndexes.length + 1,
+  //Indexes
+
+  const onSelectIndex = (index: string) => {
+    const new_indexes = { ...indexes };
+
+    new_indexes.values[index].selected = !new_indexes.values[index].selected;
+    setIndexes(new_indexes);
   };
 
   return (
@@ -111,9 +122,7 @@ export default function Contents() {
         objectActions={[]}
         // loading={loading}
         indexes={indexes}
-        onSelectIndex={(index) => {
-          onSelectIndex(undefined, { value: index });
-        }}
+        onSelectIndex={onSelectIndex}
         sortItems={(id) => onSortItems(undefined, { value: id })}
         upload={upload}
         rename={rename}

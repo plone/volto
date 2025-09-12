@@ -46,6 +46,7 @@ import type { ContentsLoaderType } from '../../routes/contents';
 import { useTranslation } from 'react-i18next';
 import { useContentsContext } from '../../providers/contents';
 import { clipboardKey } from '../../config/constants';
+import { type TableIndexes } from '../../types';
 
 import { type ToastItem } from '@plone/layout/config/toast';
 
@@ -58,18 +59,7 @@ interface ContentsTableProps {
   // loading: boolean;
   // canPaste: boolean;
   // items: Brain[];
-  indexes: {
-    order: (keyof Brain)[];
-    values: {
-      [index: string]: {
-        type: string;
-        label: string;
-        selected: boolean;
-        sort_on?: string;
-      };
-    };
-    selectedCount: number;
-  };
+  indexes: TableIndexes;
   onSelectIndex: (index: string) => void;
   sortItems: (index: string) => void;
   upload: () => Promise<void>;

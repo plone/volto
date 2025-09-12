@@ -2,19 +2,10 @@ import React from 'react';
 import { Popover, Checkbox } from '@plone/components';
 import { useTranslation } from 'react-i18next';
 import PopoverListItem from '../PopoverListItem';
+import type { TableIndexes } from '../../types';
 
 interface Props {
-  indexes: {
-    order: string[];
-    values: {
-      [index: string]: {
-        type: string;
-        label: string;
-        selected: boolean;
-        sort_on?: string;
-      };
-    };
-  };
+  indexes: TableIndexes;
   onSelectIndex: (index: string) => void;
 }
 
