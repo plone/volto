@@ -1,7 +1,6 @@
 import './storybook-base.css';
-import '../../theming/styles/main.css';
+import '../../theming/styles/theme.css';
 import '../styles/main.css';
-
 import config from '@plone/registry';
 import installSlots from '../index';
 import installBlocks from '@plone/blocks';

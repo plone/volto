@@ -584,7 +584,7 @@ class Config {
     }
   }
   /**
-   * Registers a widget configuration into the registry.
+   * Registers a default widget configuration into the registry.
    *
    * @param component - The default widget component to register.
    *

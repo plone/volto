@@ -27,6 +27,7 @@ const EditBlockWrapper = (props: EditBlockWrapperProps) => {
   const [blockData, setBlock] = useAtom(blockAtom);
 
   const type = blockData['@type'];
+  const EditComponent = config.blocks.blocksConfig?.[type]?.edit;
   const blocksconfig =
     config.blocks.blocksConfig?.[type]?.blocksConfig ||
     config.blocks.blocksConfig;
@@ -40,7 +41,16 @@ const EditBlockWrapper = (props: EditBlockWrapperProps) => {
     >
       {/* @ts-expect-error Volto's EditBlockWrapper passes RenderBlocksProps down. We need to revisit which props do we really need to pass down to the block Edit component */}
       <BlockWrapper data={blockData} blocksConfig={blocksconfig}>
-        {type}
+        {EditComponent ? (
+          // @ts-expect-error same as above, we need to use the proper Seven types once all is settled
+          <EditComponent
+            block={props.block}
+            data={blockData}
+            setBlock={setBlock}
+          />
+        ) : (
+          <>{type}</>
+        )}
       </BlockWrapper>
       {selected &&
         schema &&

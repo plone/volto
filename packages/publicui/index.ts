@@ -19,6 +19,11 @@ export default function install(config: ConfigType) {
       },
       {
         type: 'route',
+        path: 'search',
+        file: '@plone/publicui/routes/search.tsx',
+      },
+      {
+        type: 'route',
         path: '*',
         file: '@plone/publicui/routes/content.tsx',
         options: {

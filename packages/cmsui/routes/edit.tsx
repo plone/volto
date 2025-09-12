@@ -129,6 +129,7 @@ export default function Edit() {
                                 }
                                 error={field.state.meta.errors}
                                 formAtom={formAtom}
+                                value={field.state.value}
                               />
                             )}
                           />

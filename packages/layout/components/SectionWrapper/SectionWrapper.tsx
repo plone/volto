@@ -20,9 +20,7 @@ type SectionWrapperProps<T extends React.ElementType> = {
   style?: React.CSSProperties;
 } & React.ComponentPropsWithoutRef<React.ElementType extends T ? 'div' : T>;
 
-const SectionWrapper = <T extends React.ElementType = 'div'>(
-  props: SectionWrapperProps<T>,
-) => {
+const SectionWrapper = (props: SectionWrapperProps<T>) => {
   const {
     as: Component = 'div',
     children,

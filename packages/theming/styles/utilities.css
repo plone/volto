@@ -40,7 +40,7 @@
 
 @utility icon-* {
   width: calc(var(--quanta-icon-size) * --value(integer));
-  width: --value([ *]);
+  width: --value([*]);
   height: calc(var(--quanta-icon-size) * --value(integer));
-  height: --value([ *]);
+  height: --value([*]);
 }
