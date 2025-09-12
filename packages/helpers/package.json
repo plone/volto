@@ -61,16 +61,20 @@
     }
   },
   "dependencies": {
+    "@plone/react-router": "workspace:*",
     "jotai": "^2.12.3",
     "jotai-optics": "^0.4.0",
-    "optics-ts": "^2.4.1"
+    "optics-ts": "^2.4.1",
+    "react-router": "catalog:",
+    "validator": "^13.15.15"
   },
   "devDependencies": {
-    "@tanstack/react-form": "^1.3.3",
-    "@plone/types": "workspace:*",
     "@plone/registry": "workspace:*",
+    "@plone/types": "workspace:*",
+    "@tanstack/react-form": "^1.3.3",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "@types/validator": "^13.15.3",
     "release-it": "catalog:",
     "tsconfig": "workspace:*",
     "tsup": "catalog:",

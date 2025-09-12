@@ -741,6 +741,9 @@ importers:
 
   packages/helpers:
     dependencies:
+      '@plone/react-router':
+        specifier: workspace:*
+        version: link:../react-router
       jotai:
         specifier: ^2.12.5
         version: 2.14.0(@babel/core@7.28.4)(@babel/template@7.27.2)(@types/react@19.1.12)(react@19.1.1)
@@ -756,6 +759,12 @@ importers:
       react-dom:
         specifier: ^19.1.0
         version: 19.1.1(react@19.1.1)
+      react-router:
+        specifier: 'catalog:'
+        version: 7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      validator:
+        specifier: ^13.15.15
+        version: 13.15.15
     devDependencies:
       '@plone/registry':
         specifier: workspace:*
@@ -772,6 +781,9 @@ importers:
       '@types/react-dom':
         specifier: 'catalog:'
         version: 19.1.9(@types/react@19.1.12)
+      '@types/validator':
+        specifier: ^13.15.3
+        version: 13.15.3
       release-it:
         specifier: 'catalog:'
         version: 18.1.2(@types/node@22.18.1)(typescript@5.9.2)
@@ -796,6 +808,9 @@ importers:
       '@plone/components':
         specifier: workspace:*
         version: link:../components
+      '@plone/helpers':
+        specifier: workspace:*
+        version: link:../helpers
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
@@ -4630,6 +4645,9 @@ packages:
   '@types/uuid@9.0.8':
     resolution: {integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==}
 
+  '@types/validator@13.15.3':
+    resolution: {integrity: sha512-7bcUmDyS6PN3EuD9SlGGOxM77F8WLVsrwkxyWxKnxzmXoequ6c7741QBrANq6htVRGOITJ7z72mTP6Z4XyuG+Q==}
+
   '@types/yargs-parser@21.0.3':
     resolution: {integrity: sha512-I4q9QU9MQv4oEOz4tAHJtNz1cwuLxn2F3xcc2iV5WdqLPpUnj30aUuxt1mAxYTG+oe8CZMV/+6rU4S4gRDzqtQ==}
 
@@ -7890,7 +7908,6 @@ packages:
     resolution: {integrity: sha512-Quz3MvAwHxVYNXsOByL7xI5EB2WYOeFswqaHIA3qOK3isRWTxiplBEocmmru6XmxDB2L7jDNYtYA4FyimoAFEw==}
     engines: {node: '>=8.17.0'}
     hasBin: true
-    bundledDependencies: []
 
   jsonfile@4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
@@ -14794,6 +14811,8 @@ snapshots:
   '@types/unist@3.0.3': {}
 
   '@types/uuid@9.0.8': {}
+
+  '@types/validator@13.15.3': {}
 
   '@types/yargs-parser@21.0.3': {}
 
