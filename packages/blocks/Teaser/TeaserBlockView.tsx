@@ -1,6 +1,6 @@
 import type { BlockViewProps } from '@plone/types';
 import { Link } from '@plone/components';
-import { Image } from '@plone/layout';
+import Image from '@plone/layout/components/Image/Image';
 
 const TeaserBlockView = (props: BlockViewProps) => {
   const { data } = props;

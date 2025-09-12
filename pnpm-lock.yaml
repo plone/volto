@@ -177,7 +177,7 @@ importers:
         version: link:../../packages/types
       '@react-router/dev':
         specifier: 'catalog:'
-        version: 7.7.1(@react-router/serve@7.7.1(react-router@7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2))(@types/node@22.18.1)(babel-plugin-macros@3.1.0)(lightningcss@1.30.1)(react-router@7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2)(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))
+        version: 7.7.1(@react-router/serve@7.7.1(react-router@7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2))(@types/node@22.18.1)(babel-plugin-macros@3.1.0)(jiti@2.5.1)(lightningcss@1.30.1)(react-router@7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2)(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))(yaml@2.8.1)
       '@tailwindcss/vite':
         specifier: 'catalog:'
         version: 4.1.13(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))
@@ -201,7 +201,7 @@ importers:
         version: 19.1.9(@types/react@19.1.12)
       '@vitest/coverage-v8':
         specifier: 'catalog:'
-        version: 3.2.4(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1))
+        version: 3.2.4(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))
       babel-plugin-react-compiler:
         specifier: 19.1.0-rc.3
         version: 19.1.0-rc.3
@@ -222,7 +222,7 @@ importers:
         version: 5.1.4(typescript@5.9.2)(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))
       vitest:
         specifier: 'catalog:'
-        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1)
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)
 
   packages/agave:
     dependencies:
@@ -308,7 +308,7 @@ importers:
         version: link:../types
       '@testing-library/jest-dom':
         specifier: 6.4.2
-        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1))
+        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))
       '@testing-library/react':
         specifier: 14.2.1
         version: 14.2.1(@types/react@19.1.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -338,7 +338,7 @@ importers:
         version: 5.9.2
       vitest:
         specifier: 'catalog:'
-        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1)
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)
 
   packages/client:
     dependencies:
@@ -387,10 +387,10 @@ importers:
         version: 9.0.8
       '@vitejs/plugin-react':
         specifier: 'catalog:'
-        version: 5.0.2(vite@5.4.20(@types/node@22.18.1)(lightningcss@1.30.1))
+        version: 5.0.2(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
-        version: 3.2.4(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@21.1.2)(lightningcss@1.30.1))
+        version: 3.2.4(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@21.1.2)(lightningcss@1.30.1)(yaml@2.8.1))
       jsdom:
         specifier: ^21.1.1
         version: 21.1.2
@@ -407,14 +407,14 @@ importers:
         specifier: ^9.0.1
         version: 9.0.1
       vite:
-        specifier: ^5.4.15
-        version: 5.4.20(@types/node@22.18.1)(lightningcss@1.30.1)
+        specifier: 'catalog:'
+        version: 6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1)
       vite-plugin-dts:
         specifier: ^3.7.3
-        version: 3.9.1(@types/node@22.18.1)(rollup@4.50.1)(typescript@5.9.2)(vite@5.4.20(@types/node@22.18.1)(lightningcss@1.30.1))
+        version: 3.9.1(@types/node@22.18.1)(rollup@4.50.1)(typescript@5.9.2)(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))
       vitest:
         specifier: 'catalog:'
-        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@21.1.2)(lightningcss@1.30.1)
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@21.1.2)(lightningcss@1.30.1)(yaml@2.8.1)
       wait-on:
         specifier: ^7.2.0
         version: 7.2.0(debug@4.3.4)
@@ -520,7 +520,7 @@ importers:
         version: 10.0.3(cypress@14.5.4)
       '@testing-library/jest-dom':
         specifier: 6.4.2
-        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1))
+        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))
       '@testing-library/react':
         specifier: 14.2.1
         version: 14.2.1(@types/react@19.1.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -541,7 +541,7 @@ importers:
         version: 5.0.2(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
-        version: 3.2.4(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1))
+        version: 3.2.4(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))
       eslint-plugin-storybook:
         specifier: ^0.11.2
         version: 0.11.6(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2)
@@ -577,10 +577,10 @@ importers:
         version: 5.1.4(typescript@5.9.2)(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))
       vitest:
         specifier: 'catalog:'
-        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1)
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)
       vitest-axe:
         specifier: ^0.1.0
-        version: 0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1))
+        version: 0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))
 
   packages/components:
     dependencies:
@@ -671,7 +671,7 @@ importers:
         version: 4.1.13(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))
       '@testing-library/jest-dom':
         specifier: 6.4.2
-        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1))
+        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))
       '@testing-library/react':
         specifier: 14.2.1
         version: 14.2.1(@types/react@19.1.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -689,7 +689,7 @@ importers:
         version: 5.0.2(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
-        version: 3.2.4(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1))
+        version: 3.2.4(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))
       browserslist:
         specifier: ^4.23.0
         version: 4.25.4
@@ -737,10 +737,10 @@ importers:
         version: 5.1.4(typescript@5.9.2)(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))
       vitest:
         specifier: 'catalog:'
-        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1)
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)
       vitest-axe:
         specifier: ^0.1.0
-        version: 0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1))
+        version: 0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))
 
   packages/helpers:
     dependencies:
@@ -789,7 +789,7 @@ importers:
         version: 5.9.2
       vitest:
         specifier: 'catalog:'
-        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1)
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)
 
   packages/layout:
     dependencies:
@@ -856,7 +856,7 @@ importers:
         version: 4.1.13(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))
       '@testing-library/jest-dom':
         specifier: 6.4.2
-        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1))
+        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))
       '@testing-library/react':
         specifier: 14.2.1
         version: 14.2.1(@types/react@19.1.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -901,10 +901,10 @@ importers:
         version: 5.1.4(typescript@5.9.2)(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))
       vitest:
         specifier: 'catalog:'
-        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1)
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)
       vitest-axe:
         specifier: ^0.1.0
-        version: 0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1))
+        version: 0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))
 
   packages/plate:
     dependencies:
@@ -1178,7 +1178,7 @@ importers:
         version: 10.0.3(cypress@14.5.4)
       '@testing-library/jest-dom':
         specifier: 6.4.2
-        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@20.19.13)(jsdom@22.1.0)(lightningcss@1.30.1))
+        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@20.19.13)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))
       '@testing-library/react':
         specifier: 14.2.1
         version: 14.2.1(@types/react@19.1.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -1220,10 +1220,10 @@ importers:
         version: 6.3.6(@types/node@20.19.13)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1)
       vitest:
         specifier: 'catalog:'
-        version: 3.2.4(@types/debug@4.1.12)(@types/node@20.19.13)(jsdom@22.1.0)(lightningcss@1.30.1)
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@20.19.13)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)
       vitest-axe:
         specifier: ^0.1.0
-        version: 0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@20.19.13)(jsdom@22.1.0)(lightningcss@1.30.1))
+        version: 0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@20.19.13)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))
 
   packages/providers:
     dependencies:
@@ -1272,7 +1272,7 @@ importers:
         version: 5.9.2
       vitest:
         specifier: 'catalog:'
-        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1)
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)
 
   packages/publicui:
     dependencies:
@@ -1321,7 +1321,7 @@ importers:
         version: link:../types
       '@testing-library/jest-dom':
         specifier: 6.4.2
-        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1))
+        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))
       '@testing-library/react':
         specifier: 14.2.1
         version: 14.2.1(@types/react@19.1.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -1357,10 +1357,10 @@ importers:
         version: 6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1)
       vitest:
         specifier: 'catalog:'
-        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1)
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)
       vitest-axe:
         specifier: ^0.1.0
-        version: 0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1))
+        version: 0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))
 
   packages/react-router:
     dependencies:
@@ -1382,7 +1382,7 @@ importers:
         version: link:../types
       '@react-router/dev':
         specifier: 'catalog:'
-        version: 7.7.1(@react-router/serve@7.7.1(react-router@7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2))(@types/node@22.18.1)(babel-plugin-macros@3.1.0)(lightningcss@1.30.1)(react-router@7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2)(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))
+        version: 7.7.1(@react-router/serve@7.7.1(react-router@7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2))(@types/node@22.18.1)(babel-plugin-macros@3.1.0)(jiti@2.5.1)(lightningcss@1.30.1)(react-router@7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2)(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))(yaml@2.8.1)
       '@types/node':
         specifier: 'catalog:'
         version: 22.18.1
@@ -1406,7 +1406,7 @@ importers:
         version: 5.9.2
       vitest:
         specifier: 'catalog:'
-        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1)
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)
 
   packages/registry:
     dependencies:
@@ -1479,7 +1479,7 @@ importers:
         version: 6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1)
       vitest:
         specifier: 'catalog:'
-        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1)
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)
 
   packages/scripts:
     dependencies:
@@ -13732,7 +13732,7 @@ snapshots:
 
   '@react-dnd/shallowequal@4.0.2': {}
 
-  '@react-router/dev@7.7.1(@react-router/serve@7.7.1(react-router@7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2))(@types/node@22.18.1)(babel-plugin-macros@3.1.0)(lightningcss@1.30.1)(react-router@7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2)(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))':
+  '@react-router/dev@7.7.1(@react-router/serve@7.7.1(react-router@7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2))(@types/node@22.18.1)(babel-plugin-macros@3.1.0)(jiti@2.5.1)(lightningcss@1.30.1)(react-router@7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2)(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))(yaml@2.8.1)':
     dependencies:
       '@babel/core': 7.28.4
       '@babel/generator': 7.28.3
@@ -13762,7 +13762,7 @@ snapshots:
       tinyglobby: 0.2.15
       valibot: 0.41.0(typescript@5.9.2)
       vite: 6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1)
-      vite-node: 3.2.4(@types/node@22.18.1)(lightningcss@1.30.1)
+      vite-node: 3.2.4(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1)
     optionalDependencies:
       '@react-router/serve': 7.7.1(react-router@7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2)
       typescript: 5.9.2
@@ -13770,6 +13770,7 @@ snapshots:
       - '@types/node'
       - babel-plugin-macros
       - bluebird
+      - jiti
       - less
       - lightningcss
       - sass
@@ -13778,6 +13779,8 @@ snapshots:
       - sugarss
       - supports-color
       - terser
+      - tsx
+      - yaml
 
   '@react-router/express@7.7.1(express@4.21.2)(react-router@7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2)':
     dependencies:
@@ -14847,7 +14850,7 @@ snapshots:
       lodash: 4.17.21
       redent: 3.0.0
 
-  '@testing-library/jest-dom@6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@20.19.13)(jsdom@22.1.0)(lightningcss@1.30.1))':
+  '@testing-library/jest-dom@6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@20.19.13)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))':
     dependencies:
       '@adobe/css-tools': 4.4.4
       '@babel/runtime': 7.28.4
@@ -14859,9 +14862,9 @@ snapshots:
       redent: 3.0.0
     optionalDependencies:
       '@types/jest': 30.0.0
-      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@20.19.13)(jsdom@22.1.0)(lightningcss@1.30.1)
+      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@20.19.13)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)
 
-  '@testing-library/jest-dom@6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1))':
+  '@testing-library/jest-dom@6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))':
     dependencies:
       '@adobe/css-tools': 4.4.4
       '@babel/runtime': 7.28.4
@@ -14873,7 +14876,7 @@ snapshots:
       redent: 3.0.0
     optionalDependencies:
       '@types/jest': 30.0.0
-      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1)
+      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)
 
   '@testing-library/jest-dom@6.5.0':
     dependencies:
@@ -15736,18 +15739,6 @@ snapshots:
       effect: 3.10.3
       sqids: 0.3.0
 
-  '@vitejs/plugin-react@5.0.2(vite@5.4.20(@types/node@22.18.1)(lightningcss@1.30.1))':
-    dependencies:
-      '@babel/core': 7.28.4
-      '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.28.4)
-      '@babel/plugin-transform-react-jsx-source': 7.27.1(@babel/core@7.28.4)
-      '@rolldown/pluginutils': 1.0.0-beta.34
-      '@types/babel__core': 7.20.5
-      react-refresh: 0.17.0
-      vite: 5.4.20(@types/node@22.18.1)(lightningcss@1.30.1)
-    transitivePeerDependencies:
-      - supports-color
-
   '@vitejs/plugin-react@5.0.2(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1))':
     dependencies:
       '@babel/core': 7.28.4
@@ -15760,7 +15751,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitest/coverage-v8@3.2.4(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@21.1.2)(lightningcss@1.30.1))':
+  '@vitest/coverage-v8@3.2.4(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@21.1.2)(lightningcss@1.30.1)(yaml@2.8.1))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 1.0.2
@@ -15775,11 +15766,11 @@ snapshots:
       std-env: 3.9.0
       test-exclude: 7.0.1
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@21.1.2)(lightningcss@1.30.1)
+      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@21.1.2)(lightningcss@1.30.1)(yaml@2.8.1)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitest/coverage-v8@3.2.4(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1))':
+  '@vitest/coverage-v8@3.2.4(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 1.0.2
@@ -15794,7 +15785,7 @@ snapshots:
       std-env: 3.9.0
       test-exclude: 7.0.1
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1)
+      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -22265,15 +22256,16 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-node@3.2.4(@types/node@20.19.13)(lightningcss@1.30.1):
+  vite-node@3.2.4(@types/node@20.19.13)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1):
     dependencies:
       cac: 6.7.14
       debug: 4.4.1
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 5.4.20(@types/node@20.19.13)(lightningcss@1.30.1)
+      vite: 6.3.6(@types/node@20.19.13)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1)
     transitivePeerDependencies:
       - '@types/node'
+      - jiti
       - less
       - lightningcss
       - sass
@@ -22282,16 +22274,19 @@ snapshots:
       - sugarss
       - supports-color
       - terser
+      - tsx
+      - yaml
 
-  vite-node@3.2.4(@types/node@22.18.1)(lightningcss@1.30.1):
+  vite-node@3.2.4(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1):
     dependencies:
       cac: 6.7.14
       debug: 4.4.1
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 5.4.20(@types/node@22.18.1)(lightningcss@1.30.1)
+      vite: 6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1)
     transitivePeerDependencies:
       - '@types/node'
+      - jiti
       - less
       - lightningcss
       - sass
@@ -22300,13 +22295,15 @@ snapshots:
       - sugarss
       - supports-color
       - terser
+      - tsx
+      - yaml
 
   vite-plugin-babel@1.3.2(@babel/core@7.28.4)(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1)):
     dependencies:
       '@babel/core': 7.28.4
       vite: 6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1)
 
-  vite-plugin-dts@3.9.1(@types/node@22.18.1)(rollup@4.50.1)(typescript@5.9.2)(vite@5.4.20(@types/node@22.18.1)(lightningcss@1.30.1)):
+  vite-plugin-dts@3.9.1(@types/node@22.18.1)(rollup@4.50.1)(typescript@5.9.2)(vite@6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1)):
     dependencies:
       '@microsoft/api-extractor': 7.43.0(@types/node@22.18.1)
       '@rollup/pluginutils': 5.3.0(rollup@4.50.1)
@@ -22317,7 +22314,7 @@ snapshots:
       typescript: 5.9.2
       vue-tsc: 1.8.27(typescript@5.9.2)
     optionalDependencies:
-      vite: 5.4.20(@types/node@22.18.1)(lightningcss@1.30.1)
+      vite: 6.3.6(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1)
     transitivePeerDependencies:
       - '@types/node'
       - rollup
@@ -22395,7 +22392,7 @@ snapshots:
       lightningcss: 1.30.1
       yaml: 2.8.1
 
-  vitest-axe@0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@20.19.13)(jsdom@22.1.0)(lightningcss@1.30.1)):
+  vitest-axe@0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@20.19.13)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)):
     dependencies:
       aria-query: 5.3.2
       axe-core: 4.10.3
@@ -22403,9 +22400,9 @@ snapshots:
       dom-accessibility-api: 0.5.16
       lodash-es: 4.17.21
       redent: 3.0.0
-      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@20.19.13)(jsdom@22.1.0)(lightningcss@1.30.1)
+      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@20.19.13)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)
 
-  vitest-axe@0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1)):
+  vitest-axe@0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)):
     dependencies:
       aria-query: 5.3.2
       axe-core: 4.10.3
@@ -22413,9 +22410,9 @@ snapshots:
       dom-accessibility-api: 0.5.16
       lodash-es: 4.17.21
       redent: 3.0.0
-      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1)
+      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1)
 
-  vitest@3.2.4(@types/debug@4.1.12)(@types/node@20.19.13)(jsdom@22.1.0)(lightningcss@1.30.1):
+  vitest@3.2.4(@types/debug@4.1.12)(@types/node@20.19.13)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1):
     dependencies:
       '@types/chai': 5.2.2
       '@vitest/expect': 3.2.4
@@ -22438,13 +22435,14 @@ snapshots:
       tinypool: 1.1.1
       tinyrainbow: 2.0.0
       vite: 5.4.20(@types/node@20.19.13)(lightningcss@1.30.1)
-      vite-node: 3.2.4(@types/node@20.19.13)(lightningcss@1.30.1)
+      vite-node: 3.2.4(@types/node@20.19.13)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/debug': 4.1.12
       '@types/node': 20.19.13
       jsdom: 22.1.0
     transitivePeerDependencies:
+      - jiti
       - less
       - lightningcss
       - msw
@@ -22454,8 +22452,10 @@ snapshots:
       - sugarss
       - supports-color
       - terser
+      - tsx
+      - yaml
 
-  vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@21.1.2)(lightningcss@1.30.1):
+  vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@21.1.2)(lightningcss@1.30.1)(yaml@2.8.1):
     dependencies:
       '@types/chai': 5.2.2
       '@vitest/expect': 3.2.4
@@ -22478,13 +22478,14 @@ snapshots:
       tinypool: 1.1.1
       tinyrainbow: 2.0.0
       vite: 5.4.20(@types/node@22.18.1)(lightningcss@1.30.1)
-      vite-node: 3.2.4(@types/node@22.18.1)(lightningcss@1.30.1)
+      vite-node: 3.2.4(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/debug': 4.1.12
       '@types/node': 22.18.1
       jsdom: 21.1.2
     transitivePeerDependencies:
+      - jiti
       - less
       - lightningcss
       - msw
@@ -22494,8 +22495,10 @@ snapshots:
       - sugarss
       - supports-color
       - terser
+      - tsx
+      - yaml
 
-  vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jsdom@22.1.0)(lightningcss@1.30.1):
+  vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(yaml@2.8.1):
     dependencies:
       '@types/chai': 5.2.2
       '@vitest/expect': 3.2.4
@@ -22518,13 +22521,14 @@ snapshots:
       tinypool: 1.1.1
       tinyrainbow: 2.0.0
       vite: 5.4.20(@types/node@22.18.1)(lightningcss@1.30.1)
-      vite-node: 3.2.4(@types/node@22.18.1)(lightningcss@1.30.1)
+      vite-node: 3.2.4(@types/node@22.18.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/debug': 4.1.12
       '@types/node': 22.18.1
       jsdom: 22.1.0
     transitivePeerDependencies:
+      - jiti
       - less
       - lightningcss
       - msw
@@ -22534,6 +22538,8 @@ snapshots:
       - sugarss
       - supports-color
       - terser
+      - tsx
+      - yaml
 
   void-elements@3.1.0: {}
 
