@@ -16,6 +16,7 @@ import ArrowRightSVG from '@plone/components/icons/arrow-right.svg?react';
 
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
+import { UniversalLink } from '@plone/layout/components/UniversalLink/UniversalLink';
 
 export const loader = redirectIfLoggedInLoader;
 
@@ -44,7 +45,8 @@ export default function Login() {
   const actionResult = useActionData<typeof action>();
 
   return (
-    <div className="mx-4 flex h-screen flex-1 flex-col justify-center">
+    <div>
+      <UniversalLink href="#ancor">test</UniversalLink>
       <div className="flex flex-col items-center sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-quanta-sapphire flex h-32 w-32 flex-col items-center rounded-full p-8">
           <img src={ploneSvg} alt="" />
@@ -85,6 +87,12 @@ export default function Login() {
             >
               <ArrowRightSVG />
             </Button>
+            <h3
+              id="ancor"
+              style={{ paddingTop: '1000px', marginBottom: '1000px' }}
+            >
+              ancor
+            </h3>
           </Form>
         </div>
       </div>
