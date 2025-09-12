@@ -4,6 +4,7 @@
   "@types/node": "^22",
   "@types/react": "^19.1.0",
   "@types/react-dom": "^19.1.0",
+  "cypress": "14.5.4",
   "react-aria": "^3.43.1",
   "react-aria-components": "^1.12.1",
   "react-i18next": "^15.4.1",

@@ -53,7 +53,6 @@
   },
   "dependencies": {
     "@plone/blocks": "workspace:*",
-    "@plone/client": "workspace:*",
     "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
     "@plone/helpers": "workspace:*",

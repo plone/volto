@@ -24,7 +24,8 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./app/*"]
+      "~/*": ["./app/*"],
+      "@plone/plate/*": ["../../packages/plate/src/*"]
     },
     "noEmit": true,
     "rootDirs": [".", "./.react-router/types"],
