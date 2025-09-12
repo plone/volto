@@ -19,3 +19,4 @@ export * from '../components/RadioGroup/RadioGroup.quanta';
 export * from '../components/MultiSelect/MultiSelect.quanta';
 export * from '../components/Separator/Separator.quanta';
 export * from '../components/Tabs/Tabs.quanta';
+export { SelectWidget } from '../components/Select/Select.quanta';
