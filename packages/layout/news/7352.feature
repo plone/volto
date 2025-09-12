@@ -1,1 +1,1 @@
-seven language switcher @nileshgulia1
+Added language switcher in Seven. @nileshgulia1
