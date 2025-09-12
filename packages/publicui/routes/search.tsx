@@ -1,15 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import React, { useState } from 'react';
 import {
   data,
+  Form,
   useLoaderData,
   type LoaderFunctionArgs,
-  useNavigate,
 } from 'react-router';
 import type PloneClient from '@plone/client';
-// import Search from '@plone/layout/components/Search/Search';
-import type { NavigationResponse } from '@plone/types';
-import { flattenToAppURL } from '@plone/helpers';
 
 import config from '@plone/registry';
 import { Container, Input } from '@plone/components/quanta';
@@ -33,7 +29,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
   try {
     const results = await cli.search({
       query: {
-        SearchableText: query,
+        SearchableText: query ? `${query}*` : '',
         path: {
           query: path || '/',
         },
@@ -57,14 +53,7 @@ export const meta = () => {
 
 export default function SearchRoute() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const { search, params } = useLoaderData<typeof loader>();
-  const [inputValue, setInputValue] = useState('');
-
-  const doSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    navigate(`/search?SearchableText=${encodeURIComponent(inputValue)}`);
-  };
 
   return (
     <Container width="default" className="route-search">
@@ -73,17 +62,15 @@ export default function SearchRoute() {
           ? `${t('publicui.search.title')} "${params}"`
           : t('publicui.search.results')}
       </h1>
-      <form onSubmit={doSearch}>
+      <Form>
         <Input
           type="search"
           id="search"
-          name="search"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          name="SearchableText"
           placeholder={t('publicui.search.placeholder')}
         />
         {/* <Icon name={zoomSVG} size="18px" /> */}
-      </form>
+      </Form>
       {/*  */}
       {/* <Search items={sitemapnavigation.items} /> */}
       {search?.length > 0 ? (
