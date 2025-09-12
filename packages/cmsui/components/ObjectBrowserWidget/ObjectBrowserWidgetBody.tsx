@@ -34,6 +34,7 @@ export function ObjectBrowserWidgetBody() {
     selectedItems,
     handleSelectionChange,
     mode,
+    ariaControlsId,
     ...rest
   } = useObjectBrowserContext();
   const handleBreadcrumbNavigation = (e: PressEvent) => {
@@ -128,6 +129,7 @@ export function ObjectBrowserWidgetBody() {
         tabIndex={-1}
       >
         <GridList
+          id={ariaControlsId}
           aria-label={`${t('cmsui.objectbrowserwidget.routeannouncer', {
             route: [
               { title: t('cmsui.objectbrowserwidget.home') },

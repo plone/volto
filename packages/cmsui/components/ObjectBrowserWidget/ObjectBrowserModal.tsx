@@ -16,6 +16,7 @@ export const ObjectBrowserModal = () => {
     setSearchMode,
     setSearchableText,
     handleSearchInputChange,
+    ariaControlsId,
     title,
   } = useObjectBrowserContext();
   return (
@@ -60,6 +61,7 @@ export const ObjectBrowserModal = () => {
             <Input
               onChange={handleSearchInputChange}
               className={'border-quanta rounded-md'}
+              aria-controls={ariaControlsId}
               placeholder={t('cmsui.objectbrowserwidget.searchPlaceholder')}
             />
             <Button

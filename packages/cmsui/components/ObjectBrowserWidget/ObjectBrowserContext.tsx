@@ -8,6 +8,7 @@ import {
   useEffect,
   createContext,
   useContext,
+  useId,
 } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 import type { Selection, Key } from 'react-aria-components';
@@ -56,7 +57,7 @@ const useObjectBrowserInternal = (config: UseObjectBrowserConfig = {}) => {
     defaultValue = [],
     title,
   } = config;
-
+  const ariaControlsId = useId();
   const [open, setOpen] = useState(false);
   const [searchMode, setSearchMode] = useState(false);
   const fetcher = useFetcher<typeof loader>();
@@ -174,6 +175,7 @@ const useObjectBrowserInternal = (config: UseObjectBrowserConfig = {}) => {
     fetcher,
     selectedItems,
 
+    ariaControlsId,
     // Actions
     handleSelectionChange,
     handleRemove,
