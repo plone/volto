@@ -33,8 +33,13 @@ export async function loader({ params, request }: Route.LoaderArgs) {
   const path = `/${params['*'] || ''}`;
 
   try {
+    const [content, site] = await Promise.all([
+      cli.getContent({ path, expand }),
+      cli.getSite(),
+    ]);
     return {
-      content: flattenToAppURL((await cli.getContent({ path, expand })).data),
+      content: flattenToAppURL(content.data),
+      site: flattenToAppURL(site.data),
       locale,
     };
   } catch (error: any) {

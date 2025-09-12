@@ -4,6 +4,7 @@ import Header from '../components/Header/Header';
 import Main from '../components/Main';
 import Footer from '../components/Footer';
 import Logo from '../components/Logo/Logo';
+import LanguageSwitcher from '../components/LanguageSwitcher/LanguageSwitcher';
 import Navigation from '../components/Navigation/Navigation';
 import HeaderTools from '../components/Tools';
 import ContentArea from '../components/ContentArea';
@@ -41,6 +42,12 @@ export default function install(config: ConfigType) {
     name: 'Tools',
     slot: 'headertools',
     component: HeaderTools,
+  });
+
+  config.registerSlotComponent({
+    name: 'Language Switcher',
+    slot: 'language-switcher',
+    component: LanguageSwitcher,
   });
 
   // Breadcrumbs
