@@ -3,6 +3,21 @@ import { useEffect, useState } from 'react';
 import type { Fetcher } from 'react-router';
 import type { Selection } from 'react-aria-components';
 import type { UseTranslationResponse } from 'react-i18next';
+import {
+  PageIcon,
+  FolderIcon,
+  NewsIcon,
+  CalendarIcon,
+  ImageIcon,
+  AttachmentIcon,
+  LinkIcon,
+  VideoIcon,
+  CollectionIcon,
+} from '@plone/components/Icons';
+
+export interface ContentIconMap {
+  [key: string]: React.ComponentType<any>;
+}
 
 export type ObjectBrowserWidgetMode = 'multiple' | 'single';
 export type PartialBrainWithRequired = Partial<Brain> & {
@@ -26,7 +41,7 @@ function isSingleMode(obj: ObjectBrowserWidgetMode): obj is 'single' {
 function isMultipleMode(obj: ObjectBrowserWidgetMode): obj is 'multiple' {
   return obj === 'multiple';
 }
-export function isAll(keys: unknown): keys is 'all' {
+function isAll(keys: unknown): keys is 'all' {
   return typeof keys === 'string' && keys === 'all';
 }
 const DEFAULT_DEPTH = 'path.depth=1';
@@ -34,7 +49,7 @@ const DEFAULT_METADATA_FIELDS = 'metadata_fields:list=is_folderish';
 
 // Can be enhanched to support more query parameters if needed
 // Like a widget that sets selectable portal_types can add that filter to this query
-export function buildObjectBrowserUrl(
+function buildObjectBrowserUrl(
   currentPath?: string,
   searchText?: string,
   widgetOptions?: WidgetPatternOptions,
@@ -49,7 +64,7 @@ export function buildObjectBrowserUrl(
   return `/@objectBrowserWidget${currentPath}?${DEFAULT_DEPTH}&${DEFAULT_METADATA_FIELDS}`;
 }
 
-export function processSelection(keys: Selection, items: Brain[]): Brain[] {
+function processSelection(keys: Selection, items: Brain[]): Brain[] {
   if (isAll(keys)) {
     return items;
   } else if (Array.isArray(keys)) {
@@ -60,7 +75,7 @@ export function processSelection(keys: Selection, items: Brain[]): Brain[] {
   return [];
 }
 
-export function initializeSelectedKeys(
+function initializeSelectedKeys(
   defaultValue?: Brain[] | any,
 ): Set<{ id: string; title: string }> {
   // Handle case where defaultValue is not an array (like 'all' or other invalid values)
@@ -86,34 +101,64 @@ const isSelectable = (
     maximumSelectionSize: undefined,
     selectableTypes: [],
   };
-  if (selectableTypes && !selectableTypes?.includes(item['@type']))
+
+  // First check: item type must be selectable
+  if (
+    selectableTypes &&
+    selectableTypes.length > 0 &&
+    !selectableTypes.includes(item['@type'])
+  ) {
     return false;
-  else if (selectableTypes && selectableTypes?.includes(item['@type'])) {
-    if (
-      maximumSelectionSize &&
-      items &&
-      mode === 'multiple' &&
-      maximumSelectionSize <= items.length
-    )
-      // The item should actually be selectable, but only for removing it from already selected items list.
-      // handleClickOnItem will handle the deselection logic.
-      // The item is not selectable if we reached/exceeded maximumSelectionSize and is not already selected.
-      return items.some((i) => i['@id'] === item['@id']);
-    return true;
   }
+
+  // Second check: respect maximum selection limit
+  if (maximumSelectionSize && items && maximumSelectionSize <= items.length) {
+    // At limit: only already selected items are selectable (for deselection)
+    return items.some((i) => i['@id'] === item['@id']);
+  }
+
+  // All checks passed
   return true;
 };
 
-// Handle single vs multiple return values
-function normalizeReturnValue(
-  items: Array<{ id: string; title: string }>,
-  returnType: 'single' | 'multiple' = 'multiple',
-) {
-  if (returnType === 'single') {
-    // TODO: return only the first item (or null if empty)
-    return items.length > 0 ? items[0] : null;
+/**
+ * Default content type to icon mapping using Quanta icons
+ */
+const defaultContentIcons: ContentIconMap = {
+  Document: PageIcon,
+  Folder: FolderIcon,
+  'News Item': NewsIcon,
+  Event: CalendarIcon,
+  Image: ImageIcon,
+  File: AttachmentIcon,
+  Link: LinkIcon,
+  Video: VideoIcon,
+  Collection: CollectionIcon,
+};
+
+/**
+ * Get content icon component for a given content type
+ * @function getContentIcon
+ * @param {string} type Content type (e.g., 'Document', 'Folder', 'Image')
+ * @param {boolean} isFolderish Whether the content is folderish
+ * @param {ContentIconMap} customIcons Optional custom icon mapping to override defaults
+ * @returns {React.ComponentType} Icon component from Quanta design system
+ */
+function getContentIcon(
+  type: string,
+  isFolderish: boolean = false,
+  customIcons: ContentIconMap = {},
+): React.ComponentType<any> {
+  // Merge custom icons with defaults
+  const contentIcons = { ...defaultContentIcons, ...customIcons };
+
+  // Return specific icon for the content type if it exists
+  if (type in contentIcons) {
+    return contentIcons[type];
   }
-  return items;
+
+  // Fallback to folder or file icon based on folderish property
+  return isFolderish ? contentIcons.Folder : contentIcons.File;
 }
 
 /**
@@ -164,9 +209,7 @@ const getItemLabel = (
   // Always include the title
   parts.push(item.title);
   if (disabled) {
-    parts.push(
-      t('cmsui.objectbrowserwidget.itemNotSelectable', { title: item.title }),
-    ); // e.g., "not selectable"
+    parts.push(t('cmsui.objectbrowserwidget.itemNotSelectable')); // e.g., "not selectable"
   }
   // Selection state
   if (isSelected) {
@@ -175,12 +218,14 @@ const getItemLabel = (
 
   // Folderish / navigable
   if (item.is_folderish) {
-    parts.push(t('cmsui.objectbrowserwidget.canNavigate')); // e.g., "can be navigated into"
+    parts.push(t('cmsui.objectbrowserwidget.canNavigateTo')); // e.g., "can be navigated into"
   }
 
   // Workflow state
   if (item.review_state) {
-    parts.push(t(`cmsui.workflowStates.${item.review_state}`)); // e.g., "published"
+    parts.push(
+      t(`cmsui.objectbrowserwidget.workflowStates.${item.review_state}`),
+    ); // e.g., "published"
   }
 
   // Join with commas or spaces
@@ -188,9 +233,14 @@ const getItemLabel = (
 };
 
 export {
+  isAll,
   isMultipleMode,
   isSingleMode,
   isSelectable,
   useAccumulatedItems,
   getItemLabel,
+  buildObjectBrowserUrl,
+  processSelection,
+  initializeSelectedKeys,
+  getContentIcon,
 };

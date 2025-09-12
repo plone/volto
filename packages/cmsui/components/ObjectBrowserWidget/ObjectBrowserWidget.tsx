@@ -15,9 +15,10 @@ import { ObjectBrowserTrigger } from './ObjectBrowserTrigger';
 import { ObjectBrowserModal } from './ObjectBrowserModal';
 import { useFocusRing, useId } from 'react-aria';
 
+// TODO: better styling
 const widgetStyles = tv({
   extend: focusRing,
-  base: 'flex items-center justify-between gap-2 rounded-md',
+  base: 'mx-1 flex items-center justify-between gap-2 rounded-md',
   variants: {
     isFocused: fieldBorderStyles.variants.isFocusWithin,
     isInvalid: fieldBorderStyles.variants.isInvalid,
@@ -26,14 +27,22 @@ const widgetStyles = tv({
 });
 
 interface ObjectBrowserWidgetProps extends BaseFormFieldProps {}
-// TODO: guarda selected_attrs dal teaser: sono configurabili e devi quantomeno passare il brain o la def dei selectedAttrs
+// TODO: interaction with plate and blocks schema
 export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
   const { label, description, errorMessage, ...rest } = props;
   const { isFocusVisible, focusProps } = useFocusRing();
   const id = useId();
   return (
-    <div>
-      {label && <Label id={id}>{label}</Label>}
+    <div className="group mb-4 flex flex-col gap-1">
+      {label && (
+        <Label
+          id={id}
+          className="not-group-data-invalid:not-group-data-readonly:has-[+div:focus]:text-quanta-sapphire"
+        >
+          {label}
+        </Label>
+      )}
+      {/* // TODO: maybe find a better way to use focus and leverage group focus styles */}
       <div
         {...focusProps}
         aria-labelledby={id}
@@ -42,8 +51,6 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
           isInvalid: !!props.errorMessage,
         })}
         role="group"
-        tabIndex={0}
-        // className="flex items-center justify-between gap-2"
       >
         <ObjectBrowserTags />
         <ObjectBrowserTrigger>

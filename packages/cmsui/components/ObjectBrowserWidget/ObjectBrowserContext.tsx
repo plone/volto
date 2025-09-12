@@ -133,11 +133,6 @@ const useObjectBrowserInternal = (config: UseObjectBrowserConfig = {}) => {
     fetcher.load('/reset-fetcher');
   }
 
-  useEffect(() => {
-    reset();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchMode]);
-
   async function loadData(currentPath?: string, SearchableText?: string) {
     const url = buildObjectBrowserUrl(currentPath, SearchableText);
     if (!url) return;
@@ -145,18 +140,19 @@ const useObjectBrowserInternal = (config: UseObjectBrowserConfig = {}) => {
   }
 
   useEffect(() => {
-    loadData(currentPath, SearchableText);
+    if (searchMode && SearchableText.trim() === '') reset();
+    else loadData(currentPath, SearchableText);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPath, SearchableText]);
+  }, [currentPath, searchMode, SearchableText]);
 
   const items = useMemo(
     () => fetcher?.data?.results?.items ?? [],
-    [fetcher.data?.results],
+    [fetcher.data],
   );
 
   const breadcrumbs = useMemo(
     () => fetcher?.data?.breadcrumbs?.items ?? [],
-    [fetcher.data?.breadcrumbs],
+    [fetcher.data],
   );
 
   const loading = fetcher.state === 'loading';
@@ -199,7 +195,6 @@ export type UseObjectBrowserReturn = ReturnType<
 >;
 
 const ObjectBrowserContext = createContext<UseObjectBrowserReturn | null>(null);
-
 // Componente interno che usa l'hook dopo che il navigation context è disponibile
 function ObjectBrowserInternalProvider({
   children,
@@ -210,7 +205,7 @@ function ObjectBrowserInternalProvider({
 }) {
   const objectBrowser = useObjectBrowserInternal(config);
 
-  const contextValue = useMemo(() => ({ ...objectBrowser }), [objectBrowser]);
+  const contextValue = useMemo(() => objectBrowser, [objectBrowser]);
 
   return (
     <ObjectBrowserContext.Provider value={contextValue}>

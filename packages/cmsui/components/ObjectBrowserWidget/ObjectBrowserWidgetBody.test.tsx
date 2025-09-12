@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { ObjectBrowserWidgetBody } from './ObjectBrowserWidgetBody';
@@ -48,9 +47,13 @@ vi.mock('@plone/helpers', () => ({
 }));
 
 // Mock utils
-vi.mock('./utils', () => ({
-  isSelectable: vi.fn(() => true),
-}));
+vi.mock(import('./utils'), async (importOriginal) => {
+  const actual = await importOriginal();
+  return {
+    ...actual,
+    // your mocked methods
+  };
+});
 
 describe('ObjectBrowserWidgetBody', () => {
   const mockItem = {
@@ -140,7 +143,7 @@ describe('ObjectBrowserWidgetBody', () => {
       ];
       mockNavigationValue.currentPath = '/parent/child';
       render(<ObjectBrowserWidgetBody />);
-      
+
       // Click on Parent which should be clickable now
       fireEvent.click(screen.getByText('Parent'));
       expect(mockNavigationValue.navigateTo).toHaveBeenCalledWith(

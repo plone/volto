@@ -189,14 +189,17 @@ describe('ObjectBrowserModal', () => {
 
     it('should call setSearchMode when search button is clicked', () => {
       const setSearchMode = vi.fn();
+      const setSearchableText = vi.fn();
       renderWithContext({
         ...defaultContextValue,
         setSearchMode,
+        setSearchableText,
       });
 
       fireEvent.click(screen.getByLabelText('Open search'));
 
       expect(setSearchMode).toHaveBeenCalledWith(true);
+      expect(setSearchableText).toHaveBeenCalledWith('');
     });
 
     it('should call setOpen when close button is clicked', () => {
@@ -255,14 +258,17 @@ describe('ObjectBrowserModal', () => {
 
     it('should call setSearchMode(false) when close search button is clicked', () => {
       const setSearchMode = vi.fn();
+      const setSearchableText = vi.fn();
       renderWithContext({
         ...searchModeContext,
         setSearchMode,
+        setSearchableText,
       });
 
       fireEvent.click(screen.getByLabelText('Close search'));
 
       expect(setSearchMode).toHaveBeenCalledWith(false);
+      expect(setSearchableText).toHaveBeenCalledWith('');
     });
   });
 
@@ -304,7 +310,6 @@ describe('ObjectBrowserModal', () => {
 
       const closeSearchButton = screen.getByLabelText('Close search');
       expect(closeSearchButton).toHaveAttribute('data-variant', 'icon');
-      expect(closeSearchButton).toHaveAttribute('data-slot', 'close');
     });
   });
 

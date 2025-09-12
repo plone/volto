@@ -14,6 +14,7 @@ export const ObjectBrowserModal = () => {
     setOpen,
     searchMode,
     setSearchMode,
+    setSearchableText,
     handleSearchInputChange,
     title,
   } = useObjectBrowserContext();
@@ -27,13 +28,16 @@ export const ObjectBrowserModal = () => {
       <Dialog className="flex h-full flex-col overflow-hidden p-1">
         {!searchMode ? (
           <div className="flex items-center justify-between">
-            <Heading slot="title">
+            <Heading slot="title" className="!mb-0 !text-2xl">
               {title || t('cmsui.objectbrowserwidget.dialogTitle')}
             </Heading>
             <div className="flex items-center gap-0.5">
               <Button
                 variant="icon"
-                onPress={() => setSearchMode(!searchMode)}
+                onPress={() => {
+                  setSearchMode(true);
+                  setSearchableText('');
+                }}
                 type="button"
                 aria-label={t('cmsui.objectbrowserwidget.openSearch')}
               >
@@ -59,21 +63,19 @@ export const ObjectBrowserModal = () => {
               placeholder={t('cmsui.objectbrowserwidget.searchPlaceholder')}
             />
             <Button
-              slot="close"
               variant="icon"
               type="button"
               aria-label={t('cmsui.objectbrowserwidget.closeSearch')}
               onPress={() => {
                 setSearchMode(false);
+                setSearchableText('');
               }}
             >
               <CloseIcon />
             </Button>
           </div>
         )}
-        <div>
-          <ObjectBrowserWidgetBody />
-        </div>
+        <ObjectBrowserWidgetBody />
       </Dialog>
     </Modal>
   );

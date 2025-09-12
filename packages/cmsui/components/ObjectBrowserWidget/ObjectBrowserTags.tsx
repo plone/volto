@@ -7,26 +7,26 @@ type ObjectBrowserTagsProps = Omit<
   'children' | 'items'
 >;
 
+// TODO: handle empty state being focusable, somehow??
 export const ObjectBrowserTags = (props: ObjectBrowserTagsProps) => {
   const { selectedKeys, handleRemove } = useObjectBrowserContext();
 
   return (
     <TagGroup
       {...props}
-      selectedKeys={Array.from(selectedKeys).map((item) => item.id)}
-      className="flex w-full flex-row gap-4"
-      items={Array.from(selectedKeys).map(({ id, title }) => ({
-        id,
-        title,
-      }))}
+      selectedKeys={Array.from(selectedKeys).map((item) => item.id) ?? []}
+      className="flex w-full flex-row gap-0 py-2"
+      items={
+        Array.from(selectedKeys).map(({ id, title }) => ({
+          id,
+          title,
+        })) ?? []
+      }
       // @ts-ignore prop is present in react-aria but not in types somehow
       escapeKeyBehavior="none"
       onRemove={handleRemove}
-      tabIndex={selectedKeys.size ? 0 : -1}
       renderEmptyState={() => (
-        <span className="flex-1 text-gray-500" aria-disabled="true">
-          Type something…
-        </span>
+        <span className="flex-1 text-gray-500">Type something…</span>
       )}
     >
       {(item) => (

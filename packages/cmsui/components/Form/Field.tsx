@@ -185,7 +185,6 @@ const Field = (props: FieldProps) => {
       {...widgetProps}
       onChange={(value: any) => {
         globalFormSetter(value);
-        console.log(value, field);
         return field.handleChange(value);
       }}
     />
