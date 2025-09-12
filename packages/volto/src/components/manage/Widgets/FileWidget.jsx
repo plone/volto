@@ -97,7 +97,7 @@ const FileWidget = (props) => {
   }, [value]);
 
   const imgsrc = value?.download
-    ? `${flattenToAppURL(value?.download)}?id=${Date.now()}`
+    ? `${flattenToAppURL(value?.download)}`
     : null || value?.data
       ? `data:${value['content-type']};${value.encoding},${value.data}`
       : null;
