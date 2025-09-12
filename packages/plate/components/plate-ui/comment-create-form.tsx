@@ -24,17 +24,12 @@ import { Plate, useEditorRef, useStoreSelect } from '@udecode/plate/react';
 import { type CreatePlateEditorOptions, PlateLeaf } from '@udecode/plate/react';
 import { ArrowUpIcon } from 'lucide-react';
 
-import { useCreateEditor } from '@plone/plate/components/editor/use-create-editor';
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from '@plone/plate/components/plate-ui/avatar';
+import { useCreateEditor } from '../editor/use-create-editor';
+import { Avatar, AvatarFallback, AvatarImage } from '../plate-ui/avatar';
 
 import type { TDiscussion } from './block-discussion';
 import type { TComment } from './comment';
 
-import { AILeaf } from './ai-leaf';
 import {
   discussionStore,
   useFakeCurrentUserId,
