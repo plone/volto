@@ -1,0 +1,7 @@
+{
+  "layout": {
+    "languageSwitcher": {
+      "switchTo": "Passa a {{ lang }}"
+    }
+  }
+}

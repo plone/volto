@@ -54,11 +54,12 @@
   "dependencies": {
     "@plone/blocks": "workspace:*",
     "@plone/components": "workspace:*",
-    "@plone/registry": "workspace:*",
     "@plone/helpers": "workspace:*",
-    "lodash.sortby": "^4.7.0",
+    "@plone/registry": "workspace:*",
     "clsx": "^2.1.1",
+    "lodash.sortby": "^4.7.0",
     "react-aria-components": "catalog:",
+    "react-i18next": "catalog:",
     "react-router": "catalog:"
   },
   "devDependencies": {

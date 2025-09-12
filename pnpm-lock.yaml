@@ -817,6 +817,9 @@ importers:
       react-dom:
         specifier: ^19.1.0
         version: 19.1.1(react@19.1.1)
+      react-i18next:
+        specifier: 'catalog:'
+        version: 15.7.3(i18next@24.2.3(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)
       react-router:
         specifier: 'catalog:'
         version: 7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)

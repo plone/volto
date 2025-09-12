@@ -1,12 +1,13 @@
 import clsx from 'clsx';
-import config from '@plone/registry';
+import { useTranslation } from 'react-i18next';
 import { langmap } from '@plone/helpers';
 import { Link } from '@plone/components';
+import type { RootLoader } from 'seven/app/root';
 
-import { messages } from '../messages';
 import styles from './LanguageSwitcher.module.css';
+import { useRouteLoaderData } from 'react-router';
 
-export const toReactIntlLang = (language: string): string => {
+export const normalizeLang = (language: string): string => {
   if (language.includes('_') || language.includes('-')) {
     const [first, second] = language.split(/[-_]/);
     return `${first}-${second.toUpperCase()}`;
@@ -14,44 +15,32 @@ export const toReactIntlLang = (language: string): string => {
   return language;
 };
 
-interface ContentProps {
-  '@components': {
-    site: {
-      features?: {
-        multilingual?: boolean;
-      };
-      'plone.available_languages'?: string[];
-      'plone.default_language'?: string;
-    };
-  };
-}
-
 type LanguageSelectorProps = {
-  content: ContentProps;
   onClickAction?: () => void;
 };
 
 const LanguageSwitcher = (props: LanguageSelectorProps) => {
-  const intl: (id: string) => string = config.getUtility({
-    name: 'translation',
-    type: 'factory',
-  }).method;
-  const { content } = props;
-  const site = content['@components'].site;
-  const isMultilingual = site?.features?.multilingual;
-  const availableLanguages = site?.['plone.available_languages'] || [];
-  const currentLang = site?.['plone.default_language'] || 'en';
+  const { t } = useTranslation();
+  const rootData = useRouteLoaderData<RootLoader>('root');
+  if (!rootData) {
+    return null;
+  }
+
+  const { site } = rootData;
+  const isMultilingual = site.features?.multilingual;
+  const availableLanguages = site['plone.available_languages'] || [];
+  const currentLang = site['plone.default_language'] || 'en';
 
   return isMultilingual ? (
     <div className={clsx(styles['language-switcher'])}>
       {availableLanguages.map((lang) => {
         return (
           <Link
-            aria-label={`${intl(messages.switchTo)} ${langmap[
-              lang
-            ]?.nativeName.toLowerCase()}`}
+            aria-label={t('layout.languageSwitcher.switchTo', {
+              lang: langmap[lang]?.nativeName.toLowerCase(),
+            })}
             className={clsx({
-              [styles.selected]: toReactIntlLang(lang) === currentLang,
+              [styles.selected]: normalizeLang(lang) === currentLang,
             })}
             href={`/${lang}`}
             onClick={props.onClickAction}
