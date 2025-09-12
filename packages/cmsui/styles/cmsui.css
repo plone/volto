@@ -6,10 +6,7 @@
 @layer cmsui {
   @import 'tailwindcss/theme.css';
   @import 'tailwindcss/preflight.css';
-
-  .cmsui {
-    @import 'tailwindcss/utilities.css';
-  }
+  @import 'tailwindcss/utilities.css';
 
   :root {
     --background: hsl(0 0% 100%);

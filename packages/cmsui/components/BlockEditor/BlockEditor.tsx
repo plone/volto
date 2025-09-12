@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { atom, useAtom, useSetAtom, type PrimitiveAtom } from 'jotai';
-import { useFieldFocusAtom } from '../../helpers/atoms';
+import { useFieldFocusAtom } from '@plone/helpers';
 import EditBlockWrapper from './EditBlockWrapper';
 import type { Content } from '@plone/types';
 
@@ -11,7 +11,6 @@ type BlockEditorProps = {
 export const selectedBlockAtom = atom<string | null>(null);
 
 const BlockEditor = (props: BlockEditorProps) => {
-  // const blocksAtom = useFieldFocusAtom(props.formAtom, 'blocks');
   const blocksLayoutAtom = useFieldFocusAtom(props.formAtom, 'blocks_layout');
 
   // TODO: The inferred type for blocks and blocks_layout are not working
