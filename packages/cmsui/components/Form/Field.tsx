@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import config from '@plone/registry';
 import type {
   WidgetsConfigById,
@@ -7,10 +8,10 @@ import type {
   WidgetsConfigByWidget,
   Content,
 } from '@plone/types';
-import { useSetFieldFocusAtom } from '../../helpers/atoms';
+import { useFieldFocusedAtom } from '@plone/helpers';
 import { useFieldContext } from './Form';
-import type { PrimitiveAtom } from 'jotai';
-import type { DeepKeys } from '@tanstack/react-form';
+import { type PrimitiveAtom } from 'jotai';
+import { type DeepKeys } from '@tanstack/react-form';
 
 type FieldProps = {
   id?: keyof WidgetsConfigById;
@@ -33,6 +34,7 @@ type FieldProps = {
   onChange?: (value: any) => void;
   placeholder?: string;
   title?: string /* To remove? */;
+  value: any;
 };
 
 const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not rendered
@@ -169,17 +171,26 @@ const Field = (props: FieldProps) => {
   };
 
   const field = useFieldContext<string>();
+  const value = field.state.value;
 
-  const globalFormSetter = useSetFieldFocusAtom<Content>({
-    anAtom: props.formAtom,
-    field: props.name,
-  });
+  const [fieldValue, setField] = useFieldFocusedAtom<Content>(
+    props.formAtom,
+    props.name,
+  );
+
+  // atom -> form (programmatic update; runs TanStack Form’s flow)
+  useEffect(() => {
+    if (fieldValue !== value) {
+      // prefer handleChange to keep validators/touched consistent
+      field.handleChange(fieldValue as typeof value);
+    }
+  }, [fieldValue, value, field]);
 
   return props.mode !== MODE_HIDDEN ? (
     <Widget
       {...widgetProps}
       onChange={(value: any) => {
-        globalFormSetter(value);
+        setField(value);
         return field.handleChange(value);
       }}
     />
