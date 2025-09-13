@@ -2730,7 +2730,7 @@ msgstr "Pessoas responsáveis pela criação do conteúdo deste item. Por favor,
 #. Default: "Placeholder"
 #: components/manage/Widgets/SchemaWidget
 msgid "Placeholder"
-msgstr ""
+msgstr "Texto de exemplo"
 
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
@@ -2852,7 +2852,7 @@ msgstr "Consulta"
 #. Default: "Query Parameter Name"
 #: components/manage/Widgets/SchemaWidget
 msgid "Query Parameter Name"
-msgstr ""
+msgstr "Nome do parâmetro de busca"
 
 #. Default: "Re-enter the password. Make sure the passwords are identical."
 #: components/manage/Preferences/ChangePassword
@@ -3311,7 +3311,7 @@ msgstr "Selecione um relacionamento"
 #. Default: "Select rule"
 #: components/manage/Rules/Rules
 msgid "Select rule"
-msgstr ""
+msgstr "Selecione uma regra"
 
 #. Default: "Select the transition to be used for modifying the items state."
 #: components/manage/Contents/ContentsWorkflowModal
@@ -3788,7 +3788,7 @@ msgstr "A presença do botão desativa a busca ativa, a consulta é realizada ap
 #. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
 #: components/manage/Widgets/FileWidget
 msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
-msgstr ""
+msgstr "O arquivo que você enviou excedeu o tamanho máximo permitido de {size} bytes"
 
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
@@ -3808,7 +3808,7 @@ msgstr "O item não pôde ser excluído."
 #. Default: "The kicker is a line of text shown above the title."
 #: components/manage/Blocks/Teaser/schema
 msgid "The kicker is a line of text shown above the title."
-msgstr ""
+msgstr "Um breve texto (uma ou duas palavras) que precede o título principal."
 
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
@@ -3838,7 +3838,7 @@ msgstr "O processo de registro foi bem sucedido. Verifique sua caixa de entrada 
 #. Default: "The selected default language must be in the list of the field 'Available languages'"
 #: helpers/MessageLabels/MessageLabels
 msgid "The selected default language must be in the list of the field 'Available languages'"
-msgstr ""
+msgstr "O idioma padrão escolhido deve estar na lista do campo 'Idiomas disponíveis'"
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
@@ -4564,7 +4564,7 @@ msgstr "Seu nome de usuário é necessário para redefinir sua senha."
 #. Default: "File types allowed"
 #: components/manage/Widgets/SchemaWidget
 msgid "accept"
-msgstr ""
+msgstr "Tipos de arquivo permitidos"
 
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
@@ -4730,7 +4730,7 @@ msgstr "/exemplo"
 #. Default: "External URLs are not allowed in this field."
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
-msgstr ""
+msgstr "Endereços externos não são permitidos neste campo."
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
@@ -4775,7 +4775,7 @@ msgstr "Imagem"
 #. Default: "Please upload an image instead."
 #: components/manage/Widgets/ImageWidget
 msgid "imageUploadErrorMessage"
-msgstr ""
+msgstr "Por favor, envie uma imagem."
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
@@ -4795,7 +4795,7 @@ msgstr "Valor deve ser um número inteiro"
 #. Default: "No image was found in the internal path you provided."
 #: components/manage/Widgets/ImageWidget
 msgid "internalImageNotFoundErrorMessage"
-msgstr ""
+msgstr "Nenhuma imagem foi encontrada no caminho interno que você forneceu."
 
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
@@ -5159,7 +5159,7 @@ msgstr "Escolha a visão"
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
-msgstr ""
+msgstr "Tamanho máximo do arquivo em bytes"
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks
