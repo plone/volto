@@ -11,6 +11,7 @@ exports[`ImageWidget > renders an image view widget component 1`] = `
     data-content-type=""
     data-size={0}
     data-size-fmt="0B"
+    fetchpriority="auto"
     src="/foo-bar.png"
   />
 </span>
@@ -25,6 +26,7 @@ exports[`ImageWidget > renders an image view widget component with children 1`] 
     data-content-type=""
     data-size={0}
     data-size-fmt="0B"
+    fetchpriority="auto"
     src="/foo-bar.png"
   />
 </span>

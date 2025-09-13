@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import { Button, Grid, Message } from 'semantic-ui-react';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 const TemplateChooser = ({ templates, onSelectTemplate }) => {
   const intl = useIntl();
@@ -15,7 +16,7 @@ const TemplateChooser = ({ templates, onSelectTemplate }) => {
                 className="template-chooser-item"
                 onClick={() => onSelectTemplate(index)}
               >
-                <img src={template.image} alt="" />
+                <Image src={template.image} alt="" fetchpriority="auto" />
                 <div className="template-chooser-title">
                   {intl.formatMessage({
                     id: template.id,

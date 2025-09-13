@@ -121,6 +121,7 @@ const Edit = React.memo((props) => {
       ) : (
         <Message>
           <center>
+            {/* eslint-disable-next-line no-restricted-syntax */}
             <img src={mapsBlockSVG} alt="" />
             <div className="toolbar-inner">
               <Input

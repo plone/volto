@@ -82,6 +82,7 @@ const Edit = (props) => {
       ) : (
         <Message>
           <center>
+            {/* eslint-disable-next-line no-restricted-syntax */}
             <img src={videoBlockSVG} alt="" />
             <div className="toolbar-inner">
               <Input

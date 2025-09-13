@@ -7,6 +7,7 @@ import cx from 'classnames';
 import { FormattedMessage, useIntl, defineMessages } from 'react-intl';
 
 import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Image from '@plone/volto/components/theme/Image/Image';
 import { getUser } from '@plone/volto/actions/users/users';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 import { expandToBackendURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
@@ -96,9 +97,10 @@ const PersonalTools = (props) => {
       </header>
       <div className={cx('avatar', { default: !user.portrait })}>
         {user.portrait ? (
-          <img
+          <Image
             src={expandToBackendURL(user.portrait)}
             alt={intl.formatMessage(messages.userAvatar)}
+            fetchpriority="auto"
           />
         ) : (
           <Icon name={cameraSVG} size="96px" />

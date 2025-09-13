@@ -43,18 +43,20 @@ const Edit = (props) => {
       {!hasImage && (
         <Message>
           <center>
+            {/* eslint-disable-next-line no-restricted-syntax */}
             <img src={imageBlockSVG} alt="" />
             <div className="message-text">{placeholder}</div>
           </center>
         </Message>
       )}
       {hasImage && hasImageData && (
-        <img
+        <Image
           className={className}
           src={`data:${properties.image['content-type']};base64,${properties.image.data}`}
           width={properties.image.width}
           height={properties.image.height}
           alt={altText}
+          fetchpriority="auto"
           style={{
             aspectRatio: `${properties.image.width}/${properties.image.height}`,
           }}

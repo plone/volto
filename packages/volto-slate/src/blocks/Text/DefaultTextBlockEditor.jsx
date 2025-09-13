@@ -217,6 +217,7 @@ export const DefaultTextBlockEditor = (props) => {
                 ) : (
                   <Message>
                     <center>
+                      {/* eslint-disable-next-line no-restricted-syntax */}
                       <img src={imageBlockSVG} alt="" />
                     </center>
                   </Message>

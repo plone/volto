@@ -96,12 +96,13 @@ const LeadImageSidebar = ({
           <Segment className="sidebar-metadata-container" secondary>
             {properties.image.filename}
             {properties.image.data && (
-              <img
+              <Image
                 // TODO understand when this actually happens
                 src={`data:${properties.image['content-type']};base64,${properties.image.data}`}
                 width={properties.image.width}
                 height={properties.image.height}
                 alt={data.image_caption || properties.image_caption || ''}
+                fetchpriority="auto"
                 className="responsive"
                 style={{
                   aspectRatio: `${properties.image.width} / ${properties.image.height}`,
