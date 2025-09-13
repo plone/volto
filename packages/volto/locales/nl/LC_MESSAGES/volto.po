@@ -3,13 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2025-09-13 19:01+0000\n"
+"Last-Translator: Ingo Van den Broeck <in.vandenbroeck@vmm.be>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/plone/volto-18/nl/>\n"
+"Language: nl\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -4694,7 +4695,7 @@ msgstr "/voorbeeld"
 #. Default: "External URLs are not allowed in this field."
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
-msgstr ""
+msgstr "Externe URLs zijn niet toegestaan in dit veld."
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
@@ -4739,7 +4740,7 @@ msgstr "Afbeelding"
 #. Default: "Please upload an image instead."
 #: components/manage/Widgets/ImageWidget
 msgid "imageUploadErrorMessage"
-msgstr ""
+msgstr "Upload een afbeelding in plaats daarvan."
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
@@ -4759,7 +4760,7 @@ msgstr "Invoer moet een integer zijn"
 #. Default: "No image was found in the internal path you provided."
 #: components/manage/Widgets/ImageWidget
 msgid "internalImageNotFoundErrorMessage"
-msgstr ""
+msgstr "Er werd geen afbeelding gevonden in het opgegeven interne pad."
 
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
@@ -4794,12 +4795,12 @@ msgstr "Veld leidende afbeelding"
 #. Default: "Delete item and break links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: Delete item and break links"
-msgstr ""
+msgstr "Verwijder item en verbreek linken"
 
 #. Default: "Checking references..."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: loading references"
-msgstr ""
+msgstr "Controleer referenties..."
 
 #. Default: "Enter a URL to an image"
 #: components/manage/Widgets/ImageWidget
