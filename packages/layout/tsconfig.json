@@ -9,5 +9,11 @@
     "src/**/*.test.{js,jsx,ts,tsx}",
     "src/**/*.spec.{js,jsx,ts,tsx}",
     "src/**/*.stories.{js,jsx,ts,tsx}"
-  ]
+  ],
+  "compilerOptions": {
+    "types": ["vite/client"],
+    "paths": {
+      "seven/*": ["../../apps/seven/*"]
+    }
+  }
 }
