@@ -16,6 +16,7 @@ import { Label, Popup, Button } from 'semantic-ui-react';
 import {
   flattenToAppURL,
   isInternalURL,
+  getBaseUrl,
   normalizeUrl,
   removeProtocol,
 } from '@plone/volto/helpers/Url/Url';
@@ -231,7 +232,12 @@ export class ObjectBrowserWidgetComponent extends Component {
   };
 
   validateManualLink = (url) => {
-    if (this.props.allowExternals && !url.startsWith('/')) {
+    if (
+      this.props.allowExternals &&
+      // absolute and relative paths
+      !url.startsWith('/') &&
+      !url.startsWith('./')
+    ) {
       const error = urlValidator({
         value: url,
         formatMessage: this.props.intl.formatMessage,
@@ -243,8 +249,21 @@ export class ObjectBrowserWidgetComponent extends Component {
       }
       return !Boolean(error);
     } else {
+      // deal with the absolute and relative paths
+      this.setState({ errors: [] });
       return isInternalURL(url);
     }
+  };
+
+  convertRelativeToAbsolute = (url) => {
+    if (url.startsWith('./')) {
+      const basePath = getBaseUrl(this.props.location.pathname).replace(
+        /\/$/,
+        '',
+      );
+      return `${basePath}/${url.slice(2)}`;
+    }
+    return url;
   };
 
   onSubmitManualLink = () => {
@@ -256,7 +275,9 @@ export class ObjectBrowserWidgetComponent extends Component {
           .searchContent(
             '/',
             {
-              'path.query': flattenToAppURL(this.state.manualLinkInput),
+              'path.query': flattenToAppURL(
+                this.convertRelativeToAbsolute(this.state.manualLinkInput),
+              ),
               'path.depth': '0',
               sort_on: 'getObjPositionInParent',
               metadata_fields: '_all',
