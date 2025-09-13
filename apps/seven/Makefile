@@ -76,9 +76,6 @@ cypress-install: ## Install Cypress for acceptance tests
 ../../packages/client/dist: $(shell find ../../packages/client/src -type f)
 	(cd ../../ && pnpm build:client)
 
-../../packages/providers/dist: $(shell find ../../packages/providers/src -type f)
-	(cd ../../ && pnpm build:providers)
-
 ../../packages/helpers/dist: $(shell find ../../packages/helpers/src -type f)
 	(cd ../../ && pnpm build:helpers)
 
@@ -86,7 +83,7 @@ cypress-install: ## Install Cypress for acceptance tests
 	(cd ../../ && pnpm build:react-router)
 
 .PHONY: build-deps
-build-deps: ../../packages/registry/dist ../../packages/components/dist ../../packages/client/dist ../../packages/providers/dist ../../packages/react-router/dist ../../packages/helpers/dist ## Build dependencies
+build-deps: ../../packages/registry/dist ../../packages/components/dist ../../packages/client/dist ../../packages/react-router/dist ../../packages/helpers/dist ## Build dependencies
 
 ## Storybook
 
