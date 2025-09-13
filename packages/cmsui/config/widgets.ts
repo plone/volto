@@ -6,6 +6,7 @@ import {
   DateTimePicker,
   SizeWidget,
   WidthWidget,
+  SelectWidget,
 } from '@plone/components/quanta';
 import { DateField } from '@plone/components';
 
@@ -29,6 +30,12 @@ export default function install(config: ConfigType) {
     key: 'widget',
     definition: { width: WidthWidget },
   });
+
+  config.registerWidget({
+    key: 'factory',
+    definition: { Choice: SelectWidget },
+  });
+  //console.log(config.widgets);
 
   return config;
 }
