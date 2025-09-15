@@ -7,22 +7,19 @@ myst:
     "keywords": "Volto, Plone, frontend, React, customizing component"
 ---
 
-# Customizing Components
+# Customizing components
 
-You are able to customize the existing Volto components using a pattern called
-{term}`component shadowing` using the `customizations` folder.
+You can customize the existing Volto components using a pattern called {term}`component shadowing` using the {file}`customizations` folder.
 
 You can find further detailed information on how to shadow a component in {doc}`../conceptual-guides/shadowing`.
 
-## Change The Tags Component
+## Change the `Tags` component
 
-When overriding components, we follow the same approach. We will
-copy over the original component from the Volto source code, then amend the
-imports (if any are required) to match the current folder structure. Point Volto
-source code using `@plone/volto` module instead of relative paths and other
-amendments required.
+When overriding components, we follow the same approach.
+We will copy over the original component from the Volto source code, then amend the imports (if any are required) to match the current folder structure.
+Point Volto source code using the `@plone/volto` module without relative paths and other amendments.
 
-Locate the `Tags.jsx` file and override this file so that there is a label in front of the tags with: `Tags:`.
+Locate the {file}`Tags.jsx` file and override this file so that there is a label in front of the tags with `Tags:`.
 
 ```{code-block} jsx
 :emphasize-lines: 20
@@ -81,12 +78,11 @@ Tags.defaultProps = {
 export default Tags;
 ```
 
-The final path of the overridden component will be
-`customizations/components/theme/Tags/Tags.jsx`.
+The final path of the overridden component will be {file}`customizations/components/theme/Tags/Tags.jsx`.
 
 (advanced-customization-scenarios-label)=
 
 ## Advanced customization scenarios (`@root`)
 
-Addons can also customize modules from the Volto project (the root), by creating a `@root` folder in their customizations path.
-This is useful, for example, if you prefer a style where the Volto generated project scaffold is throw-away and you want to override some modules that are imported from the `@root` namespace, such as `src/theme.js` (which is imported as `@root/theme`).
+You can also make add-ons customize modules from the Volto project (the root) by creating a {file}`@root` folder in the customization path.
+This is useful, for example, if you prefer a style where the Volto generated project scaffold is a throw-away, and you want to override some modules that are imported from the `@root` namespace, such as {file}`src/theme.js`, which is imported as `@root/theme`.
