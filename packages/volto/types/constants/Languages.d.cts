@@ -9,6 +9,7 @@ export let hi: string;
 export let it: string;
 export let nl: string;
 export let ro: string;
+export let ru: string;
 export let ja: string;
 export let pt: string;
 export let pt_BR: string;

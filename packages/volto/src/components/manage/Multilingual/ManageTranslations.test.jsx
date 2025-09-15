@@ -8,11 +8,11 @@ import config from '@plone/volto/registry';
 import ManageTranslations from './ManageTranslations';
 
 beforeAll(() => {
-  config.settings.isMultilingual = true;
   config.settings.supportedLanguages = ['de', 'es'];
 });
-
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
 const mockStore = configureStore();
 
@@ -31,6 +31,11 @@ describe('ManageTranslations', () => {
           title: 'My page',
           '@id': 'http://localhost:8080/Plone/my-page',
           language: 'en',
+        },
+      },
+      site: {
+        data: {
+          'plone.available_languages': ['de', 'es'],
         },
       },
     });

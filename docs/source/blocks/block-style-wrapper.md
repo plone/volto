@@ -152,6 +152,20 @@ The resultant HTML would be the following:
 ```
 Then it's at your discretion how you define the CSS class names in your theme.
 
+## Error class for blocks
+
+When a user submits data in a form, and the block has a validation error (for example, via `blocksErrors`), then the block wrapper automatically receives the `error` class.
+This allows you to customize the appearance of blocks with errors via CSS, as in the following example.
+
+```css
+.block.error {
+  border: 1px solid red;
+  background: #fff0f0;
+}
+```
+
+The class is automatically added by the `Edit.jsx` component, and can be used in any theme or style customization to highlight blocks with errors.
+
 ## Customize the injected class names
 
 If you need other style of classnames generated, you can use the classname
@@ -344,3 +358,34 @@ Each block in the Block Engine has a main wrapper with an automatic class name `
 ```
 
 You can use it for further control over the positioning and layout of the block.
+
+## Style object builder enhancer
+
+The style wrapper has a helper method that generates a style object from the block data.
+This generated style object is available to inject into the style property.
+
+You can tap into this helper method by applying your own rules programmatically.
+Define a utility of the `type` `styleWrapperStyleObjectEnhancer` as follows.
+
+```ts
+  config.registerUtility({
+    name: 'blockThemesEnhancer',
+    type: 'styleWrapperStyleObjectEnhancer',
+    method: blockThemesEnhancer,
+  });
+```
+
+The registered method has the following signature.
+
+```ts
+type blockThemesEnhancerType = ({
+  data,
+  container,
+}: {
+  data: BlocksFormData;
+  container: BlocksFormData;
+}) => Record<`--${string}`, string>;
+```
+
+`data` is the current block, and `container` is its parent block, if the current block is in a block container.
+It returns a record of CSS properties.

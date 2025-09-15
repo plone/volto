@@ -10,6 +10,10 @@ const messages = defineMessages({
     id: 'Search',
     defaultMessage: 'Search',
   },
+  cancel_search: {
+    id: 'Cancel search',
+    defaultMessage: 'Cancel search',
+  },
 });
 
 const SearchInput = (props) => {
@@ -46,6 +50,7 @@ const SearchInput = (props) => {
       <div className="search-input-actions">
         {searchText && (
           <Button
+            type="button"
             basic
             icon
             className="search-input-clear-icon-button"
@@ -53,6 +58,7 @@ const SearchInput = (props) => {
               setSearchText('');
               removeSearchQuery();
             }}
+            aria-label={intl.formatMessage(messages.cancel_search)}
           >
             <Icon name={clearSVG} />
           </Button>
@@ -60,7 +66,12 @@ const SearchInput = (props) => {
         {isLive && (
           <>
             <div className="divider" />
-            <Button basic icon className="search-input-live-icon-button">
+            <Button
+              basic
+              icon
+              className="search-input-live-icon-button"
+              aria-label={`${intl.formatMessage(messages.search)} ${searchText}`}
+            >
               <Icon name={loupeSVG} />
             </Button>
           </>

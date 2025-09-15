@@ -38,6 +38,7 @@ const BlockChooserSearch = ({ onChange, searchValue }) => {
         />
         {searchValue && (
           <Button
+            type="button"
             className="clear-search-button"
             aria-label={intl.formatMessage(messages.clear)}
             onClick={() => {

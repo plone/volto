@@ -17,7 +17,5 @@ Even if you don't need the backend, you can create a Plone project, then use onl
 As a bonus, it will contain the means for deploying your project.
 
 ```{seealso}
-To create a full Plone project with both frontend and backend, see {doc}`plone:install/create-project` instead.
-
 To contribute to Volto, see {doc}`../contributing/developing-core`.
 ```

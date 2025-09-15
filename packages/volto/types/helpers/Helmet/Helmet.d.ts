@@ -132,7 +132,7 @@ declare const HelmetExport: {
     };
     peek: any;
     rewind: () => any;
-    canUseDOM: any;
+    set canUseDOM(canUseDOM: any);
     contextType?: React.Context<any> | undefined;
 };
 import React from 'react';

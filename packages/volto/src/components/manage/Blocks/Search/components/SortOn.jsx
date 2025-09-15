@@ -113,6 +113,7 @@ const SortOn = (props) => {
       {activeSortOn ? (
         <>
           <Button
+            type="button"
             icon
             basic
             compact
@@ -127,6 +128,7 @@ const SortOn = (props) => {
             <Icon name={downSVG} size="25px" />
           </Button>
           <Button
+            type="button"
             icon
             basic
             compact

@@ -34,7 +34,7 @@ const ObjectBrowserNav = ({
   const intl = useIntl();
   const isSelected = (item) => {
     let ret = false;
-    if (selected) {
+    if (selected && Array.isArray(selected)) {
       selected
         .filter((item) => item != null)
         .forEach((_item) => {
@@ -164,6 +164,7 @@ const ObjectBrowserNav = ({
                   >
                     <Button.Group>
                       <Button
+                        type="button"
                         basic
                         icon
                         aria-label={`${intl.formatMessage(messages.browse)} ${

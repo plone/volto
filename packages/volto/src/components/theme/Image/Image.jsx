@@ -27,10 +27,10 @@ export default function Image({
   // TypeScript hints for editor autocomplete :)
   /** @type {React.ImgHTMLAttributes<HTMLImageElement>} */
   const attrs = {};
+  attrs.className = cx(className, { responsive }) || undefined;
 
   if (!item && src) {
     attrs.src = src;
-    attrs.className = cx(className, { responsive });
   } else {
     const isFromRealObject = !item.image_scales;
     const imageFieldWithDefault = imageField || item.image_field || 'image';
@@ -51,7 +51,6 @@ export default function Image({
     attrs.src = `${flattenToAppURL(basePath)}/${image.download}`;
     attrs.width = image.width;
     attrs.height = image.height;
-    attrs.className = cx(className, { responsive });
 
     if (!isSvg && image.scales && Object.keys(image.scales).length > 0) {
       const sortedScales = Object.values({

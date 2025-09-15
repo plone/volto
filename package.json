@@ -18,12 +18,12 @@
     "start:project": "pnpm --filter plone run start",
     "lint": "make build-all-deps && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
     "lint:volto": "pnpm --filter @plone/volto run lint",
-    "test": "pnpm --filter @plone/volto run test",
+    "test": "pnpm --filter @plone/volto run vitest",
     "test:ci": "pnpm --filter @plone/volto run test:ci",
     "i18n": "pnpm --filter @plone/volto run i18n",
     "i18n:ci": "pnpm --filter @plone/volto i18n:ci",
     "prettier": "prettier --check '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
-    "prettier:fix": "prettier --write '{apps,packages}/**/*.{js,jsx,ts,tsx}' ",
+    "prettier:fix": "prettier --write '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
     "stylelint": "stylelint '{apps,packages}/**/*.{css,scss,less}'",
     "stylelint:fix": "stylelint '{apps,packages}/**/*.{css,scss,less}' --fix",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
@@ -39,8 +39,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "tsconfig": "workspace:*",
-    "typescript": "^5.7.3",
-    "vitest": "^2.1.3"
+    "typescript": "^5.7.3"
   },
   "packageManager": "pnpm@9.1.1",
   "pnpm": {

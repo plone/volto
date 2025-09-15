@@ -380,6 +380,11 @@ msgstr "वैकल्पिक URL पथ को स्लैश के सा
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "वैकल्पिक URL पथ → लक्ष्य URL पथ (निर्माण की तारीख और समय, मैन्युअल रूप से बनाया गया है/नहीं)"
 
+#. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+msgstr ""
+
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
@@ -429,6 +434,11 @@ msgstr "असाइनमेंट"
 #. Default: "Automatically"
 #: components/manage/Controlpanels/Aliases
 msgid "Automatically"
+msgstr ""
+
+#. Default: "Autosaved content found"
+#: helpers/Utils/withSaveAsDraft
+msgid "Autosaved content found"
 msgstr ""
 
 #. Default: "Available"
@@ -569,6 +579,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
 msgstr "रद्द करें"
+
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr "खोज रद्द करें"
 
 #. Default: "Cell"
 #: config/Blocks
@@ -994,6 +1009,11 @@ msgstr "तारीख (नवीनतम पहले)"
 msgid "Default"
 msgstr "डिफ़ॉल्ट"
 
+#. Default: "Default value"
+#: components/manage/Widgets/SchemaWidget
+msgid "Default value"
+msgstr ""
+
 #. Default: "Default view"
 #: config/Views
 msgid "Default view"
@@ -1001,6 +1021,7 @@ msgstr "डिफ़ॉल्ट दृश्य"
 
 #. Default: "Delete"
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/Groups/RenderGroups
@@ -1068,10 +1089,10 @@ msgstr "क्या आप इस आइटम को हटाना चाह
 msgid "Deleted"
 msgstr "हटा दिया गया"
 
-#. Default: "Deleting this item breaks {brokenReferences} {variation}."
+#. Default: "Deleting this item will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Deleting this item breaks {brokenReferences} {variation}."
-msgstr "इस आइटम को हटाने से {brokenReferences} {variation} टूट जाता है।"
+msgid "Deleting this item will break {brokenReferences} {variation}."
+msgstr ""
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
@@ -1154,6 +1175,11 @@ msgstr "क्या आप सच में उपयोगकर्ता {use
 msgid "Do you really want to delete this item?"
 msgstr "क्या आप वाकई इस आइटम को हटाना चाहते हैं?"
 
+#. Default: "Do you want to restore your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Do you want to restore your autosaved content?"
+msgstr ""
+
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
@@ -1169,6 +1195,11 @@ msgstr "दस्तावेज़ दृश्य"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
 msgstr "आयोजन डाउनलोड करें"
+
+#. Default: "Download file"
+#: components/theme/View/FileView
+msgid "Download file"
+msgstr ""
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -1387,6 +1418,7 @@ msgstr "एन्ट्रीज़"
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
+#: components/manage/Widgets/ImageWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -1514,6 +1546,11 @@ msgstr "क्षेत्र"
 msgid "File"
 msgstr "फ़ाइल"
 
+#. Default: "File is not of the accepted type {accept}"
+#: components/manage/Widgets/FileWidget
+msgid "File is not of the accepted type {accept}"
+msgstr ""
+
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
@@ -1533,6 +1570,11 @@ msgstr "फ़ाइल का नाम"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Files uploaded: {uploadedFiles}"
 msgstr ""फ़ाइलें अपलोड की गईं: {uploadedFiles}"
+
+#. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+#: components/manage/Widgets/SchemaWidget
+msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+msgstr ""
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
@@ -2523,8 +2565,12 @@ msgstr "कोई वर्कफ़्लो नहीं"
 
 #. Default: "None"
 #: components/manage/Contents/Contents
-#: components/manage/Contents/ContentsItem
 msgid "None"
+msgstr "कोई नहीं"
+
+#. Default: "None"
+#: components/manage/Contents/ContentsItem
+msgid "Not available"
 msgstr "कोई नहीं"
 
 #. Default: "Note"
@@ -2675,6 +2721,11 @@ msgstr "व्यक्तिगत उपकरण"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "इस आइटम की कंटेंट बनाने के लिए जिम्मेदार व्यक्तियों। कृपया प्रति पंक्ति एक उपयोगकर्ता नाम की सूची दर्ज करें। प्रमुख निर्मूल पहले आना चाहिए।"
 
+#. Default: "Placeholder"
+#: components/manage/Widgets/SchemaWidget
+msgid "Placeholder"
+msgstr ""
+
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
@@ -2792,6 +2843,11 @@ msgstr "प्रकाशन तिथि"
 msgid "Query"
 msgstr "पूछताछ"
 
+#. Default: "Query Parameter Name"
+#: components/manage/Widgets/SchemaWidget
+msgid "Query Parameter Name"
+msgstr ""
+
 #. Default: "Re-enter the password. Make sure the passwords are identical."
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -2849,7 +2905,7 @@ msgstr "संबंधित आइटम के रूप में इस आ
 msgid "Referencing this item with {relationship}"
 msgstr "{relationship} के साथ इस आइटम का संदर्भ"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr ""
@@ -3447,15 +3503,15 @@ msgstr "साइज: {size}"
 msgid "Small"
 msgstr "छोटा"
 
-#. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+#. Default: "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-msgstr "कुछ आइटम एक फ़ोल्डर भी हो सकते हैं। उन्हें हटा कर आप {containedItemsToDelete} {variation} फ़ोल्डर के अंदर में हटा देंगे।"
+msgid "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
+msgstr ""
 
-#. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+#. Default: "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-msgstr "कुछ आइटम अन्य सामग्रियों द्वारा संदर्भित होते हैं। उन्हें हटा कर आप {brokenReferences} {variation} टूट जाएगा।"
+msgid "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
+msgstr ""
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3723,6 +3779,11 @@ msgstr "आपकी वेबसाइट के बैकएंड सर्�
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr "बटन की उपस्थिति लाइव खोज को अक्षम करती है, प्रश्न ENTER दबाने पर जारी किया जाता है"
 
+#. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+#: components/manage/Widgets/FileWidget
+msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+msgstr ""
+
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
 msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
@@ -3737,6 +3798,11 @@ msgstr "निम्नलिखित सूची दिखाती है �
 #: components/manage/Contents/Contents
 msgid "The item could not be deleted."
 msgstr "आइटम को हटाया नहीं जा सका।"
+
+#. Default: "The kicker is a line of text shown above the title."
+#: components/manage/Blocks/Teaser/schema
+msgid "The kicker is a line of text shown above the title."
+msgstr ""
 
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
@@ -3762,6 +3828,11 @@ msgstr "प्रदान किया गया वैकल्पिक य�
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "रजिस्ट्रेशन प्रक्रिया सफल रही है। कृपया अपने ईमेल इनबॉक्स में अपने खाते को सक्रिय करने के लिए जानकारी के लिए जाँच करें।"
+
+#. Default: "The selected default language must be in the list of the field 'Available languages'"
+#: helpers/MessageLabels/MessageLabels
+msgid "The selected default language must be in the list of the field 'Available languages'"
+msgstr ""
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
@@ -3846,10 +3917,10 @@ msgstr "यह एक आरक्षित नाम है और इसका
 msgid "This is a working copy of {title}"
 msgstr "यह {title} की काम की प्रतिलिपि है"
 
-#. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+#. Default: "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-msgstr "यह आइटम एक फ़ोल्डर भी है। इसे हटाकर आप {containedItemsToDelete} {variation} फ़ोल्डर के अंदर हटा देंगे।"
+msgid "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
+msgstr ""
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -3873,6 +3944,7 @@ msgstr "यह नियम निम्नलिखित स्थानों
 
 #. Default: "Time"
 #: components/manage/Widgets/DatetimeWidget
+#: components/manage/Widgets/TimeWidget
 msgid "Time"
 msgstr "समय"
 
@@ -4387,6 +4459,11 @@ msgstr "वर्कफ़्लो स्थितियों को अपड
 msgid "Workflow updated."
 msgstr "वर्कफ़्लो अपडेट किया गया है।"
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "काम की प्रतिलिपि"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
@@ -4397,6 +4474,16 @@ msgstr "सालाना"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Yes"
 msgstr "हां"
+
+#. Default: "You are about to delete all items and all its subitems."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items and all its subitems."
+msgstr ""
+
+#. Default: "You are about to delete all items in the current pagination of this folder."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items in the current pagination of this folder."
+msgstr ""
 
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
@@ -4468,6 +4555,11 @@ msgstr "आपकी साइट अपडेट है।"
 msgid "Your usernaame is required for reset your password."
 msgstr "आपका उपयोगकर्ता नाम पासवर्ड रीसेट करने के लिए आवश्यक है।"
 
+#. Default: "File types allowed"
+#: components/manage/Widgets/SchemaWidget
+msgid "accept"
+msgstr ""
+
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -4487,6 +4579,11 @@ msgstr "अपना नया पासवर्ड दर्ज करें�
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "एक उपयोगकर्ता नाम दर्ज करें, सामान्यत: "jsmith" कुछ ऐसा। कोई रिक्त स्थान या विशेष वर्ण नहीं। उपयोगकर्ता नाम और पासवर्ड मामूली हैं, सुनिश्चित करें कि कैप्स लॉक कुंजी सक्षम नहीं है। यह लॉगिन के लिए उपयोग किया जाने वाला नाम है।"
+
+#. Default: "and {count} more…"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "and {count} more…"
+msgstr ""
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -4624,6 +4721,11 @@ msgstr "कहाँ"
 msgid "examplePath"
 msgstr ""
 
+#. Default: "External URLs are not allowed in this field."
+#: components/manage/Widgets/ImageWidget
+msgid "externalURLsNotAllowed"
+msgstr ""
+
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
@@ -4639,7 +4741,7 @@ msgstr "intIds और संबंध पुनः निर्माण कर�
 msgid "flushAndRebuildRelationsHints"
 msgstr "<ul><li>intIds पुनः उत्पन्न करें (संबंध निर्माण में संबंध के टोकन)</li><li>संबंध पुनः निर्माण करें</li></ul><p>विवरण के लिए लॉग की जाँच करें!</p><p><b>चेतावनी</b>: यदि आप ऐड-ऑन्स intIds पर आश्रित हैं, तो आपको उन्हें फ्लश नहीं करना चाहिए।</p>"
 
-#. Default: "Head title"
+#. Default: "Kicker"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
 msgstr "हेड शीर्षक"
@@ -4664,6 +4766,11 @@ msgstr "एचटीएमएल"
 msgid "image"
 msgstr "छवि"
 
+#. Default: "Please upload an image instead."
+#: components/manage/Widgets/ImageWidget
+msgid "imageUploadErrorMessage"
+msgstr ""
+
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "image_block_clear"
@@ -4678,6 +4785,11 @@ msgstr "छवि पूर्वावलोकन"
 #: helpers/MessageLabels/MessageLabels
 msgid "integer"
 msgstr "संख्या"
+
+#. Default: "No image was found in the internal path you provided."
+#: components/manage/Widgets/ImageWidget
+msgid "internalImageNotFoundErrorMessage"
+msgstr ""
 
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
@@ -4708,11 +4820,6 @@ msgstr "मेरा उपयोगकर्ता नाम है"
 #: config/Blocks
 msgid "leadimage"
 msgstr "प्रमुख छवि फ़ील्ड"
-
-#. Default: "Delete"
-#: components/manage/Contents/ContentsDeleteModal
-msgid "link-integrity: Delete"
-msgstr ""
 
 #. Default: "Delete item and break links"
 #: components/manage/Contents/ContentsDeleteModal
@@ -5042,6 +5149,11 @@ msgstr "चयन करें"
 #: components/manage/Blocks/Search/components/ViewSwitcher
 msgid "selectView"
 msgstr "दृश्य चुनें"
+
+#. Default: "Maximum size of the file in bytes"
+#: components/manage/Widgets/SchemaWidget
+msgid "size"
+msgstr ""
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks

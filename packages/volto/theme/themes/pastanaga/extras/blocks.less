@@ -56,6 +56,13 @@
   background-color: rgba(120, 192, 215, 0.375);
 }
 
+.block.selected.error::before,
+.block.selected.error:hover::before,
+.block.error:hover::before,
+.block.error::before {
+  border-color: #ff0000 !important;
+}
+
 #toolbar .toolbar-actions .blockCount {
   position: absolute;
   margin-top: 18px;
@@ -427,10 +434,18 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   top: 1em;
   right: 1em;
 
+  .sidebar-container & .ui.icon.button:hover {
+    background: transparent !important;
+  }
+
   .icon.circled {
     border: 1px solid #e4e8ec;
     background: #f3f5f7;
     box-shadow: inset 0 0 0 0.14285714rem transparent !important;
+
+    &:hover {
+      background-color: #e4e8ec;
+    }
   }
 }
 
@@ -981,6 +996,17 @@ div.image-upload-widget-image {
     color: #007eb1;
     text-decoration: underline;
   }
+}
+
+// In the sidebar, the height is forced on all .ui.input T_T
+.ui.form .ui.input.input-anchorlink-theme,
+.ui.form
+  .inline.field
+  .link-form-container
+  .wrapper
+  .ui.input.input-anchorlink-theme
+  input {
+  height: 34px;
 }
 
 .block.image.align.left,

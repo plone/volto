@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Component component :P Render a Component in the registry 1`] = `
+exports[`Component component :P > Render a Component in the registry 1`] = `
 <div>
   <div>
     this is the Toolbar component
@@ -8,7 +8,7 @@ exports[`Component component :P Render a Component in the registry 1`] = `
 </div>
 `;
 
-exports[`Component component :P Render a Component in the registry using dependencies array 1`] = `
+exports[`Component component :P > Render a Component in the registry using dependencies array 1`] = `
 <div>
   <div>
     this is the Teaser component
@@ -16,7 +16,7 @@ exports[`Component component :P Render a Component in the registry using depende
 </div>
 `;
 
-exports[`Component component :P Renders a Component in the registry - passes props correctly 1`] = `
+exports[`Component component :P > Renders a Component in the registry - passes props correctly 1`] = `
 <div>
   <div>
     this is the Toolbar component with a prop 
@@ -26,4 +26,4 @@ exports[`Component component :P Renders a Component in the registry - passes pro
 </div>
 `;
 
-exports[`Component component :P Renders a Fallback Component that does not exists in the registry 1`] = `<div />`;
+exports[`Component component :P > Renders a Fallback Component that does not exists in the registry 1`] = `<div />`;

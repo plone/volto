@@ -52,7 +52,6 @@ The bundle of these packages must work on both CommonJS and ECMAScript Module (E
 
 -   `@plone/providers`
 -   `@plone/helpers`
--   `@plone/react-router`
 
 
 ### Rules
@@ -67,8 +66,6 @@ This bundle must work on both CommonJS and ESM environments.
 -   `@plone/blocks`
 -   `@plone/slots`
 -   `@plone/theming`
--   `@plone/cmsui`
--   `@plone/contents`
 
 
 ### Rules
@@ -85,10 +82,9 @@ They must be loadable as any other add-on, and contain an add-on registry compat
 
 These are packages that are not bundled, and they are used in conjunction with Volto core or Volto projects.
 They contain utilities that are useful for the development of a Volto project.
-Some of them are released:
+One is released:
 
 - `@plone/scripts`
-- `@plone/generator-volto` (deprecated)
 
 Some of them are used by the build, and separated in packages for convenience.
 
