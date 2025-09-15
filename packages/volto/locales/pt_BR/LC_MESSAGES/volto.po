@@ -4976,6 +4976,11 @@ msgstr "referências"
 msgid "refers to"
 msgstr "refere-se a"
 
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
+msgstr "Total de resultados"
+
 #. Default: "results"
 #: components/theme/Search/Search
 msgid "results found"
