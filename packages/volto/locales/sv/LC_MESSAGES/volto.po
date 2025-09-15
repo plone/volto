@@ -1,50 +1,45 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Plone\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
+"POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: Automatically generated\n"
-"Language: sv\n"
-"Language-Team: none\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"MIME-Version: 1.0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
-"Preferred-Encodings: utf-8\n"
-"Domain: volto\n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
 msgid "<p>Add some HTML here</p>"
-msgstr ""
+msgstr "<p>Lägg till HTML här</p>"
 
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
 msgid "Account Registration Completed"
-msgstr ""
+msgstr "Kontoregistreringen slutförd"
 
 #. Default: "Account activation completed"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Account activation completed"
-msgstr ""
+msgstr "Kontoaktiveringen är slutförd"
 
 #. Default: "Action"
 #: components/manage/Controlpanels/ModerateComments
 msgid "Action"
-msgstr ""
+msgstr "Åtgärder"
 
 #. Default: "Action changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Action changed"
-msgstr ""
+msgstr "Åtgärd ändrad"
 
 #. Default: "Action:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Action: "
-msgstr ""
+msgstr "Åtgärder "
 
 #. Default: "Actions"
 #: components/manage/Actions/Actions
@@ -54,22 +49,22 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Controlpanels/Users/UsersControlpanel
 msgid "Actions"
-msgstr ""
+msgstr "Åtgärder"
 
 #. Default: "Activate and deactivate add-ons in the lists below."
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Activate and deactivate"
-msgstr ""
+msgstr "Aktivera och avaktivera"
 
 #. Default: "Active"
 #: components/manage/Rules/Rules
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #. Default: "Active content rules in this Page"
 #: components/manage/Rules/Rules
 msgid "Active content rules in this Page"
-msgstr ""
+msgstr "Regler för aktivt innehåll på den här sidan"
 
 #. Default: "Add"
 #: components/manage/Aliases/Aliases
@@ -80,217 +75,217 @@ msgstr ""
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
 msgid "Add"
-msgstr ""
+msgstr "Lägg till"
 
 #. Default: "Add"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Add (object list)"
-msgstr ""
+msgstr "Lägg till (objektlista)"
 
 #. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add Addons"
-msgstr ""
+msgstr "Lägg till tillägg"
 
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
 msgid "Add Alternative URL"
-msgstr ""
+msgstr "Lägg till alternativ URL"
 
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
 msgid "Add Content"
-msgstr ""
+msgstr "Lägga till innehåll"
 
 #. Default: "Add Content Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Content Rule"
-msgstr ""
+msgstr "Lägg till innehållsregel"
 
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
-msgstr ""
+msgstr "Lägga till regel"
 
 #. Default: "Add Translation…"
 #: components/manage/Toolbar/Types
 msgid "Add Translation…"
-msgstr ""
+msgstr "Lägg till översättning…"
 
 #. Default: "Add User"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add User"
-msgstr ""
+msgstr "Lägg till användare"
 
 #. Default: "Add a description…"
 #: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
-msgstr ""
+msgstr "Lägg till en beskrivning.."
 
 #. Default: "Add a new alternative url"
 #: components/manage/Aliases/Aliases
 msgid "Add a new alternative url"
-msgstr ""
+msgstr "Lägg till ett nytt alternativ url"
 
 #. Default: "Action added"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Add action"
-msgstr ""
+msgstr "Lägg till åtgärder"
 
 #. Default: "Add block"
 #: components/manage/BlockChooser/BlockChooserButton
 msgid "Add block"
-msgstr ""
+msgstr "Lägg till block"
 
 #. Default: "Add block in position {index}"
 #: components/manage/Blocks/Container/NewBlockAddButton
 msgid "Add block in position {index}"
-msgstr ""
+msgstr "Lägg till block i position {index}"
 
 #. Default: "Add block…"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
-msgstr ""
+msgstr "Lägg till block.."
 
 #. Default: "Condition added"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Add condition"
-msgstr ""
+msgstr "Lägg till villkor"
 
 #. Default: "Add content rule"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Add content rule"
-msgstr ""
+msgstr "Lägg till innehållsregel"
 
 #. Default: "Add criteria"
 #: components/manage/Widgets/QueryWidget
 msgid "Add criteria"
-msgstr ""
+msgstr "Lägg till kriterier"
 
 #. Default: "Add date"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Add date"
-msgstr ""
+msgstr "Lägga till datum"
 
 #. Default: "Add element to container"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 msgid "Add element to container"
-msgstr ""
+msgstr "Lägg element till behållare"
 
 #. Default: "Add field"
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
-msgstr ""
+msgstr "Lägg till fält"
 
 #. Default: "Add fieldset"
 #: components/manage/Widgets/SchemaWidget
 msgid "Add fieldset"
-msgstr ""
+msgstr "Lägg till fältgrupp"
 
 #. Default: "Add group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add group"
-msgstr ""
+msgstr "Lägg till grupp"
 
 #. Default: "Add new content type"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Add new content type"
-msgstr ""
+msgstr "Lägg till ny innehållstyp"
 
 #. Default: "Add new group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add new group"
-msgstr ""
+msgstr "Lägg till ny grupp"
 
 #. Default: "Add new user"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add new user"
-msgstr ""
+msgstr "Lägg till ny användare"
 
 #. Default: "Add to Groups"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
-msgstr ""
+msgstr "Lägg till grupper"
 
 #. Default: "Add users to group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add users to group"
-msgstr ""
+msgstr "Lägg till användare i grupp"
 
 #. Default: "Add term"
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Add vocabulary term"
-msgstr ""
+msgstr "Lägg till vokabulärterm"
 
 #. Default: "Add {type}"
 #: components/manage/Add/Add
 msgid "Add {type}"
-msgstr ""
+msgstr "Lägg till {typ}"
 
 #. Default: "Add-Ons"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Add-Ons"
-msgstr ""
+msgstr "Tillägg"
 
 #. Default: "Add-on Configuration"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Add-on Configuration"
-msgstr ""
+msgstr "Tilläggsinställningar"
 
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons"
-msgstr ""
+msgstr "Tillägg"
 
 #. Default: "Add-ons Settings"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons Settings"
-msgstr ""
+msgstr "Tillägg inställningar"
 
 #. Default: "Added"
 #: components/manage/Rules/Rules
 msgid "Added"
-msgstr ""
+msgstr "Tillagd"
 
 #. Default: "Additional date"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
-msgstr ""
+msgstr "Ytterligare datum"
 
 #. Default: "Addon could not be installed"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon could not be installed"
-msgstr ""
+msgstr "Tillägget kunde inte installeras"
 
 #. Default: "Addon could not be uninstalled"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon could not be uninstalled"
-msgstr ""
+msgstr "Tillägget kunde inte avinstalleras"
 
 #. Default: "Addon could not be upgraded"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon could not be upgraded"
-msgstr ""
+msgstr "Tillägg kunde inte uppgraderas"
 
 #. Default: "Addon installed succesfuly"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon installed succesfuly"
-msgstr ""
+msgstr "Tillägget installerades"
 
 #. Default: "Addon uninstalled succesfuly"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
-msgstr ""
+msgstr "Tillägget avinstallerades"
 
 #. Default: "Addon upgraded succesfuly"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
-msgstr ""
+msgstr "Tillägget uppgraderades"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
 msgid "Advanced facet?"
-msgstr ""
+msgstr "Avancerad facett?"
 
 #. Default: "Advanced facets are initially hidden and displayed on demand"
 #: components/manage/Blocks/Search/schema
@@ -311,17 +306,17 @@ msgstr ""
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 msgid "Alias has been added"
-msgstr ""
+msgstr "Alias har lagts till"
 
 #. Default: "Aliases have been removed."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been removed."
-msgstr ""
+msgstr "Alias har tagits bort."
 
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been uploaded."
-msgstr ""
+msgstr "Alias har laddats upp."
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
@@ -330,121 +325,121 @@ msgstr ""
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/Video/schema
 msgid "Alignment"
-msgstr ""
+msgstr "Justering"
 
 #. Default: "All"
 #: components/manage/Contents/Contents
 msgid "All"
-msgstr ""
+msgstr "Allt"
 
 #. Default: "All content"
 #: config/Views
 msgid "All content"
-msgstr ""
+msgstr "Allt innehåll"
 
 #. Default: "Existing alternative URLs for this site"
 #: components/manage/Controlpanels/Aliases
 msgid "All existing alternative urls for this site"
-msgstr ""
+msgstr "Alla befintliga alternativa url för denna webbplats"
 
 #. Default: "Alphabetically"
 #: components/theme/Search/Search
 msgid "Alphabetically"
-msgstr ""
+msgstr "Alfabetiskt"
 
 #. Default: "Alt text"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
 msgid "Alt text"
-msgstr ""
+msgstr "Alternativtext"
 
 #. Default: "Leave empty if the image is purely decorative."
 #: components/manage/Blocks/Image/schema
 msgid "Alt text hint"
-msgstr ""
+msgstr "Alt-text-tips"
 
 #. Default: "Describe the purpose of the image."
 #: components/manage/Blocks/Image/schema
 msgid "Alt text hint link text"
-msgstr ""
+msgstr "Alt-text-tips för länktext"
 
 #. Default: "Alternative URL path (Required)"
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path (Required)"
-msgstr ""
+msgstr "Alternativ URL-väg (Obligatorisk)"
 
 #. Default: "Alternative url path must start with a slash."
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path must start with a slash."
-msgstr ""
+msgstr "Alternativ URL-väg måste börja med ett snedstreck."
 
 #. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
-msgstr ""
+msgstr "Alternativ URL-väg → mål-URL-väg (skapelsedatum och tid, manuellt skapad ja/nej)"
 
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
-msgstr ""
+msgstr "Tillämpas på undermappar"
 
 #. Default: "Applies to subfolders?"
 #: components/manage/Rules/Rules
 msgid "Applies to subfolders?"
-msgstr ""
+msgstr "Gäller för undermappar?"
 
 #. Default: "Apply to subfolders"
 #: components/manage/Rules/Rules
 msgid "Apply to subfolders"
-msgstr ""
+msgstr "Tillämpa på undermappar"
 
 #. Default: "Apply working copy"
 #: components/manage/Toolbar/More
 msgid "Apply working copy"
-msgstr ""
+msgstr "Applicera arbetskopia"
 
 #. Default: "Are you sure you want to delete this field?"
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
-msgstr ""
+msgstr "Är du säker på att du vill ta bort detta fält?"
 
 #. Default: "Are you sure you want to delete this fieldset including all fields?"
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this fieldset including all fields?"
-msgstr ""
+msgstr "Är du säker på att du vill ta bort detta fält inklusive alla fält?"
 
 #. Default: "Ascending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 msgid "Ascending"
-msgstr ""
+msgstr "Uppstigning"
 
 #. Default: "Assign the {role} role to {entry}"
 #: components/manage/Sharing/Sharing
 msgid "Assign the {role} role to {entry}"
-msgstr ""
+msgstr "Tilldela rollen {role} till {entry}"
 
 #. Default: "Assignments"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Assignments"
-msgstr ""
+msgstr "Tilldelningar"
 
 #. Default: "Automatically"
 #: components/manage/Controlpanels/Aliases
 msgid "Automatically"
-msgstr ""
+msgstr "Automatiskt"
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
-msgstr ""
+msgstr "Finns tillgänglig"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
 msgid "Available content rules:"
-msgstr ""
+msgstr "Tillgängliga innehållsregler:"
 
 #. Default: "Back"
 #: components/manage/Aliases/Aliases
@@ -478,17 +473,17 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Back"
-msgstr ""
+msgstr "Tillbaka"
 
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"
-msgstr ""
+msgstr "Bas"
 
 #. Default: "Base search query"
 #: components/manage/Blocks/Search/schema
 msgid "Base search query"
-msgstr ""
+msgstr "Bas-sökfråga"
 
 #. Default: "Block"
 #: components/manage/Sidebar/Sidebar
@@ -498,33 +493,33 @@ msgstr ""
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
-msgstr ""
+msgstr "Båda"
 
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
-msgstr ""
+msgstr "Både e-postadress och lösenord är skiftlägeskänsliga, kontrollera att Caps Lock inte är aktiverat."
 
 #. Default: "Breadcrumbs"
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Breadcrumbs"
-msgstr ""
+msgstr "Brödsmulor"
 
 #. Default: "Broken relations"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "Broken relations"
-msgstr ""
+msgstr "Brutna relationer"
 
 #. Default: "Browse"
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
-msgstr ""
+msgstr "Bläddra"
 
 #. Default: "Browse the site, drop an image, or use a URL"
 #: components/manage/Widgets/ImageWidget
 msgid "Browse the site, drop an image, or type a URL"
-msgstr ""
+msgstr "Bläddra på webbplatsen, släpp en bild eller skriv en URL"
 
 #. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
@@ -534,22 +529,22 @@ msgstr ""
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr ""
+msgstr "Som standard är rättigheter ärvda från behållaren för det här objektet. Om du inaktiverar detta gäller endast de uttryckligen definierade delningsbehörigheterna. I översikten indikerar symbolen {inherited} ett ärvt värde. På samma sätt indikerar symbolen {global} en global roll, som hanteras av webbplatsadministratören."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
 msgid "CSVFile"
-msgstr ""
+msgstr "CSV-fil"
 
 #. Default: "Cache Name"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Cache Name"
-msgstr ""
+msgstr "Cache-namn"
 
 #. Default: "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
-msgstr ""
+msgstr "Kan inte redigera layout för innehållstypen <strong>{type}</strong> eftersom stöd för <strong>Volto Blocks</strong> inte är aktiverat"
 
 #. Default: "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -590,7 +585,7 @@ msgstr ""
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
 msgid "Center"
-msgstr ""
+msgstr "Centrera"
 
 #. Default: "Change Note"
 #: components/manage/History/History
@@ -600,7 +595,7 @@ msgstr ""
 #. Default: "Change Password"
 #: components/manage/Preferences/ChangePassword
 msgid "Change Password"
-msgstr ""
+msgstr "Ändra lösenord"
 
 #. Default: "Change State"
 #: components/manage/Contents/ContentsWorkflowModal
@@ -654,49 +649,49 @@ msgstr ""
 #. Default: "Choose Target"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Choose Target"
-msgstr ""
+msgstr "Välj mål"
 
 #. Default: "Choose a file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Choose a file"
-msgstr ""
+msgstr "Välj en fil"
 
 #. Default: "Clear"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
-msgstr ""
+msgstr "Rensa"
 
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Clear filters"
-msgstr ""
+msgstr "Rensa filter"
 
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
 msgid "Clear search"
-msgstr ""
+msgstr "Rensa sökning"
 
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
-msgstr ""
+msgstr "Klicka för att ladda ner bilden i full storlek"
 
 #. Default: "Close"
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
-msgstr ""
+msgstr "Stäng"
 
 #. Default: "Close menu"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
-msgstr ""
+msgstr "Stäng meny"
 
 #. Default: "Code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Code"
-msgstr ""
+msgstr "Kod"
 
 #. Default: "Collapse item"
 #: components/manage/Widgets/ObjectListWidget
@@ -733,7 +728,7 @@ msgstr ""
 #. Default: "Compare"
 #: components/manage/Diff/Diff
 msgid "Compare"
-msgstr ""
+msgstr "Jämför"
 
 #. Default: "Condition changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -769,17 +764,17 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Confirm password"
-msgstr ""
+msgstr "Bekräfta lösenord"
 
 #. Default: "Connection refused"
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "Connection refused"
-msgstr ""
+msgstr "Anslutning vägrade"
 
 #. Default: "Contact form"
 #: components/theme/ContactForm/ContactForm
 msgid "Contact form"
-msgstr ""
+msgstr "Kontaktformulär"
 
 #. Default: "Contained items"
 #: components/manage/Blocks/Listing/Edit
@@ -794,7 +789,7 @@ msgstr ""
 #. Default: "Content"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Content"
-msgstr ""
+msgstr "Innehåll"
 
 #. Default: "Content Rule"
 #: components/manage/Controlpanels/Rules/Rules
@@ -810,7 +805,7 @@ msgstr ""
 #. Default: "Content rules for {title}"
 #: components/manage/Rules/Rules
 msgid "Content rules for {title}"
-msgstr ""
+msgstr "Innehållsregler för {title}"
 
 #. Default: "Content rules from parent folders"
 #: components/manage/Rules/Rules
@@ -820,170 +815,170 @@ msgstr ""
 #. Default: "Content that links to or references {title}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
-msgstr ""
+msgstr "Innehåll som länkar till eller referenser {titel}"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
-msgstr ""
+msgstr "Innehållstyp skapad"
 
 #. Default: "Content type deleted"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type deleted"
-msgstr ""
+msgstr "Innehållstyp raderad"
 
 #. Default: "Contents"
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
-msgstr ""
+msgstr "Innehåll"
 
 #. Default: "Controls"
 #: components/manage/Blocks/Search/schema
 msgid "Controls"
-msgstr ""
+msgstr "Kontroller"
 
 #. Default: "Copy"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Copy"
-msgstr ""
+msgstr "Kopiera"
 
 #. Default: "Copy blocks"
 #: helpers/MessageLabels/MessageLabels
 msgid "Copy blocks"
-msgstr ""
+msgstr "Kopiera block"
 
 #. Default: "Copyright"
 #: components/theme/Footer/Footer
 msgid "Copyright"
-msgstr ""
+msgstr "Upphovsrätt"
 
 #. Default: "Copyright statement or other rights information on this item."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
-msgstr ""
+msgstr "Upphovsrättsliga uttalanden eller annan information om denna artikel."
 
 #. Default: "Create or delete relations to target"
 #: helpers/MessageLabels/MessageLabels
 msgid "Create or delete relations to target"
-msgstr ""
+msgstr "Skapa eller ta bort relationer till mål"
 
 #. Default: "Create working copy"
 #: components/manage/Toolbar/More
 msgid "Create working copy"
-msgstr ""
+msgstr "Skapa arbetskopia"
 
 #. Default: "Created after"
 #: components/manage/Controlpanels/Aliases
 msgid "Created after"
-msgstr ""
+msgstr "Skapad efter"
 
 #. Default: "Created before"
 #: components/manage/Controlpanels/Aliases
 msgid "Created before"
-msgstr ""
+msgstr "Skapad innan"
 
 #. Default: "Created by {creator} on {date}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "Created by {creator} on {date}"
-msgstr ""
+msgstr "Skapad av {creator} den {date}"
 
 #. Default: "Created on"
 #: components/manage/Contents/Contents
 msgid "Created on"
-msgstr ""
+msgstr "Skapad den"
 
 #. Default: "Creator"
 #: components/manage/Contents/Contents
 msgid "Creator"
-msgstr ""
+msgstr "Skaparen"
 
 #. Default: "Creators"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
-msgstr ""
+msgstr "Skapare"
 
 #. Default: "Criteria"
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/QueryWidget
 msgid "Criteria"
-msgstr ""
+msgstr "Kriterier"
 
 #. Default: "Current active configuration"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Current active configuration"
-msgstr ""
+msgstr "Aktuell aktiv konfiguration"
 
 #. Default: "Current filters applied"
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Current filters applied"
-msgstr ""
+msgstr "Nuvarande filter som tillämpas"
 
 #. Default: "Current password"
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
-msgstr ""
+msgstr "Nuvarande lösenord"
 
 #. Default: "Customize teaser content"
 #: components/manage/Blocks/Teaser/schema
 msgid "Customize teaser content"
-msgstr ""
+msgstr "Anpassa teaser innehåll"
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
-msgstr ""
+msgstr "Skär"
 
 #. Default: "Cut blocks"
 #: helpers/MessageLabels/MessageLabels
 msgid "Cut blocks"
-msgstr ""
+msgstr "Skär block"
 
 #. Default: "Daily"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
-msgstr ""
+msgstr "Dagligen"
 
 #. Default: "Database"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Database"
-msgstr ""
+msgstr "Databas"
 
 #. Default: "Database Information"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Information"
-msgstr ""
+msgstr "Databasinformation"
 
 #. Default: "Database Location"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Location"
-msgstr ""
+msgstr "Databasplats"
 
 #. Default: "Database Size"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Size"
-msgstr ""
+msgstr "Databasstorlek"
 
 #. Default: "Database main"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database main"
-msgstr ""
+msgstr "Databas huvud"
 
 #. Default: "Date"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #. Default: "Date (newest first)"
 #: components/theme/Search/Search
 msgid "Date (newest first)"
-msgstr ""
+msgstr "Datum (nyaste första)"
 
 #. Default: "Default"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1002,17 +997,17 @@ msgstr ""
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
 msgid "Default"
-msgstr ""
+msgstr "Standard"
 
 #. Default: "Default value"
 #: components/manage/Widgets/SchemaWidget
 msgid "Default value"
-msgstr ""
+msgstr "Standardvärde"
 
 #. Default: "Default view"
 #: config/Views
 msgid "Default view"
-msgstr ""
+msgstr "Standardvy"
 
 #. Default: "Delete"
 #: components/manage/Contents/Contents
@@ -1027,12 +1022,12 @@ msgstr ""
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
-msgstr ""
+msgstr "Ta bort"
 
 #. Default: "Delete Group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete Group"
-msgstr ""
+msgstr "Ta bort grupp"
 
 #. Default: "Delete Type"
 #: components/manage/Controlpanels/ContentTypes
@@ -1057,7 +1052,7 @@ msgstr ""
 #. Default: "Delete col"
 #: config/Blocks
 msgid "Delete col"
-msgstr ""
+msgstr "Ta bort kolumn"
 
 #. Default: "Condition deleted"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -1067,22 +1062,22 @@ msgstr ""
 #. Default: "Delete row"
 #: config/Blocks
 msgid "Delete row"
-msgstr ""
+msgstr "Ta bort rad"
 
 #. Default: "Delete selected items?"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Delete selected items?"
-msgstr ""
+msgstr "Ta bort valda objekt?"
 
 #. Default: "Delete this item?"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Delete this item?"
-msgstr ""
+msgstr "Ta bort detta objekt?"
 
 #. Default: "Deleted"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Deleted"
-msgstr ""
+msgstr "Raderad"
 
 #. Default: "Deleting this item breaks {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
@@ -1148,7 +1143,7 @@ msgstr ""
 #. Default: "Add border to inner columns"
 #: config/Blocks
 msgid "Divide each row into separate cells"
-msgstr ""
+msgstr "Dela varje rad i separata celler"
 
 #. Default: "Do you really want to delete the group {groupname}?"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
@@ -1184,12 +1179,12 @@ msgstr ""
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
-msgstr ""
+msgstr "Ladda ner evenemang"
 
 #. Default: "Download file"
 #: components/theme/View/FileView
 msgid "Download file"
-msgstr ""
+msgstr "Ladda ner fil"
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -1376,28 +1371,28 @@ msgstr ""
 #. Default: "Enter your current password."
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
-msgstr ""
+msgstr "Ange ditt nuvarande lösenord."
 
 #. Default: "Enter your email for verification."
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your email for verification."
-msgstr ""
+msgstr "Ange din e-post för verifiering."
 
 #. Default: "Enter your new password. Minimum 8 characters."
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your new password. Minimum 8 characters."
-msgstr ""
+msgstr "Ange ditt nya lösenord. Minst 8 tecken."
 
 #. Default: "Enter your username for verification."
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your username for verification."
-msgstr ""
+msgstr "Ange ditt användarnamn för verifiering."
 
 #. Default: "Entries"
 #: components/manage/Blocks/ToC/Schema
 msgid "Entries"
-msgstr ""
+msgstr "Inlägg"
 
 #. Default: "Error"
 #: components/manage/Add/Add
@@ -1414,52 +1409,52 @@ msgstr ""
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Error"
-msgstr ""
+msgstr "Fel"
 
 #. Default: "Event"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Event"
-msgstr ""
+msgstr "Evenemang"
 
 #. Default: "Event end date must be on or after {startDateValueOrStartFieldName}"
 #: helpers/MessageLabels/MessageLabels
 msgid "Event end date must be on or after {startDateValueOrStartFieldName}"
-msgstr ""
+msgstr "Evenemangs slutdatum måste vara på eller efter {startDateValueOrStartFieldName}"
 
 #. Default: "Event listing"
 #: config/Views
 msgid "Event listing"
-msgstr ""
+msgstr "Evenemangslista"
 
 #. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
 #: helpers/MessageLabels/MessageLabels
 msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
-msgstr ""
+msgstr "Evenemangs startdatum måste vara på eller innan {endDateValueOrEndFieldName}"
 
 #. Default: "Event view"
 #: config/Views
 msgid "Event view"
-msgstr ""
+msgstr "Emenemangvy"
 
 #. Default: "Example"
 #: components/manage/Controlpanels/Aliases
 msgid "Example"
-msgstr ""
+msgstr "Exempel"
 
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Exclude from navigation"
-msgstr ""
+msgstr "Uteslut från many"
 
 #. Default: "Exclude this occurence"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Exclude this occurence"
-msgstr ""
+msgstr "Uteslut denna förekomst"
 
 #. Default: "Excluded from navigation"
 #: components/manage/Contents/Contents
 msgid "Excluded from navigation"
-msgstr ""
+msgstr "Exkluderad från meny"
 
 #. Default: "Existing alternative urls for this item"
 #: components/manage/Aliases/Aliases
@@ -1469,27 +1464,27 @@ msgstr ""
 #. Default: "Expand sidebar"
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
-msgstr ""
+msgstr "Expandera sidopanel"
 
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
-msgstr ""
+msgstr "Förfallodatum"
 
 #. Default: "Expiration date"
 #: components/manage/Contents/Contents
 msgid "Expiration date"
-msgstr ""
+msgstr "Förfallodatum"
 
 #. Default: "Expired"
 #: components/manage/Contents/ContentsItem
 msgid "Expired"
-msgstr ""
+msgstr "Förfallna"
 
 #. Default: "External URL"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
-msgstr ""
+msgstr "Extern URL"
 
 #. Default: "Facet"
 #: components/manage/Blocks/Search/schema
@@ -1570,7 +1565,7 @@ msgstr ""
 #: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
-msgstr ""
+msgstr "Filter"
 
 #. Default: "Filter Rules:"
 #: components/manage/Controlpanels/Rules/Rules
@@ -1605,7 +1600,7 @@ msgstr ""
 #. Default: "Fixed width columns"
 #: config/Blocks
 msgid "Fixed width table cells"
-msgstr ""
+msgstr "Tabellceller med fast bredd"
 
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
@@ -1625,17 +1620,17 @@ msgstr ""
 #. Default: "Forbidden"
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
-msgstr ""
+msgstr "Förbjudet"
 
 #. Default: "Fourth"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Fourth"
-msgstr ""
+msgstr "Fjärde"
 
 #. Default: "From"
 #: components/theme/ContactForm/ContactForm
 msgid "From"
-msgstr ""
+msgstr "Från"
 
 #. Default: "Full"
 #: components/manage/Blocks/Maps/Edit
@@ -1647,7 +1642,7 @@ msgstr ""
 #. Default: "Full Name"
 #: components/theme/Register/Register
 msgid "Full Name"
-msgstr ""
+msgstr "Fullständigt namn"
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels
@@ -1657,7 +1652,7 @@ msgstr ""
 #. Default: "GNU GPL license"
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
-msgstr ""
+msgstr "GNU GPL-licens"
 
 #. Default: "General"
 #: components/manage/Controlpanels/Controlpanels
@@ -1667,50 +1662,50 @@ msgstr ""
 #. Default: "Global role"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
-msgstr ""
+msgstr "Global roll"
 
 #. Default: "Google Maps Embedded Block"
 #: components/manage/Blocks/Maps/Edit
 msgid "Google Maps Embedded Block"
-msgstr ""
+msgstr "Google Maps Inbäddat block"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
 msgid "Grid"
-msgstr ""
+msgstr "Rut"
 
 #. Default: "Group"
 #: components/manage/Sharing/Sharing
 msgid "Group"
-msgstr ""
+msgstr "Grupp"
 
 #. Default: "Group created"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group created"
-msgstr ""
+msgstr "Grupp skapad"
 
 #. Default: "Group deleted"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group deleted"
-msgstr ""
+msgstr "Gruppen raderad"
 
 #. Default: "Group roles updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group roles updated"
-msgstr ""
+msgstr "Grupproller uppdaterade"
 
 #. Default: "Groupname"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: helpers/MessageLabels/MessageLabels
 msgid "Groupname"
-msgstr ""
+msgstr "Gruppnamn"
 
 #. Default: "Groups"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: helpers/MessageLabels/MessageLabels
 msgid "Groups"
-msgstr ""
+msgstr "Grupper"
 
 #. Default: "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
@@ -1763,7 +1758,7 @@ msgstr ""
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 msgid "History"
-msgstr ""
+msgstr "Historia"
 
 #. Default: "#"
 #: components/manage/History/History
@@ -1879,47 +1874,47 @@ msgstr ""
 #. Default: "Insert col after"
 #: config/Blocks
 msgid "Insert col after"
-msgstr ""
+msgstr "Infoga kolumn efter"
 
 #. Default: "Insert col before"
 #: config/Blocks
 msgid "Insert col before"
-msgstr ""
+msgstr "Infoga kolumn före"
 
 #. Default: "Insert row after"
 #: config/Blocks
 msgid "Insert row after"
-msgstr ""
+msgstr "Infoga rad efter"
 
 #. Default: "Insert row before"
 #: config/Blocks
 msgid "Insert row before"
-msgstr ""
+msgstr "Infoga rad före"
 
 #. Default: "Inspect relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "Inspect relations"
-msgstr ""
+msgstr "Inspektera relationer"
 
 #. Default: "Install"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Install"
-msgstr ""
+msgstr "Installera"
 
 #. Default: "Installed"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed"
-msgstr ""
+msgstr "Installerad"
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed version"
-msgstr ""
+msgstr "Installerad version"
 
 #. Default: "Installing a third party add-on"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installing a third party add-on"
-msgstr ""
+msgstr "Installera ett tredjepartstillägg"
 
 #. Default: "days"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1929,7 +1924,7 @@ msgstr ""
 #. Default: "Month(s)"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Monthly"
-msgstr ""
+msgstr "Intervall månatlig"
 
 #. Default: "week(s)"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1939,7 +1934,7 @@ msgstr ""
 #. Default: "year(s)"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Yearly"
-msgstr ""
+msgstr "Intervall Årsvis"
 
 #. Default: "Invalid block - Will be removed on saving"
 #: components/manage/Blocks/Block/DefaultView
@@ -1950,7 +1945,7 @@ msgstr ""
 #. Default: "Invalid teaser source"
 #: components/manage/Blocks/Teaser/Data
 msgid "Invalid teaser source"
-msgstr ""
+msgstr "Ogiltig teaserkälla"
 
 #. Default: "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 #: helpers/MessageLabels/MessageLabels
@@ -2883,7 +2878,7 @@ msgstr ""
 #. Default: "Minimalistic table design"
 #: config/Blocks
 msgid "Reduce complexity"
-msgstr ""
+msgstr "Minska komplexiteten"
 
 #. Default: "Referencing this item as related item"
 #: components/manage/LinksToItem/LinksToItem
@@ -2895,7 +2890,7 @@ msgstr ""
 msgid "Referencing this item with {relationship}"
 msgstr ""
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr ""
@@ -3095,7 +3090,7 @@ msgstr ""
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
 msgid "Right"
-msgstr ""
+msgstr "Höger"
 
 #. Default: "Rights"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -3613,7 +3608,7 @@ msgstr ""
 #. Default: "Alternate row background color"
 #: config/Blocks
 msgid "Stripe alternate rows with color"
-msgstr ""
+msgstr "Färga varannan rad"
 
 #. Default: "Styling"
 #: helpers/Extensions/withBlockSchemaEnhancer
@@ -3675,7 +3670,7 @@ msgstr ""
 #. Default: "Table"
 #: config/Blocks
 msgid "Table"
-msgstr ""
+msgstr "Tabell"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/View

@@ -17,7 +17,7 @@ msgstr ""
 # defaultMessage: Add link
 #: editor/plugins/Link/index
 msgid "Add link"
-msgstr ""
+msgstr "Ajouter un lien"
 
 # defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
 #: widgets/HtmlSlateWidget

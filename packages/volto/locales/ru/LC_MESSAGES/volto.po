@@ -2895,7 +2895,7 @@ msgstr "Ссылка на этот элемент как на связанный
 msgid "Referencing this item with {relationship}"
 msgstr "Ссылка на этот элемент с {relationship}"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr "Обновить исходный контент"

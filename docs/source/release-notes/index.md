@@ -17,6 +17,28 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.26.0 (2025-09-12)
+
+### Feature
+
+- Update translations for es, eu, it, nl, ta, pt, sv [#7187](https://github.com/plone/volto/issues/7187)
+
+### Bugfix
+
+- Teaser block: Clarify "Refresh source content" button by changing the default text to "Reset to target". @davisagli [#7329](https://github.com/plone/volto/issues/7329)
+- Fix German translation of "Order" from "Reihung" to "Reihenfolge" @iRohitSingh [#7331](https://github.com/plone/volto/issues/7331)
+- Update German translations for teaser block. @Tishasoumya-02 [#7332](https://github.com/plone/volto/issues/7332)
+
+### Internal
+
+- Remove vitest dependencies from root to prevent confusion. @wesleybl [#7274](https://github.com/plone/volto/issues/7274)
+- Fix test storeProtectLoadUtils.test.js > storeProtectLoadUtils > loadProtector store > pass when not counting. @wesleybl [#7287](https://github.com/plone/volto/issues/7287)
+- Update package versions in pnpm-lock.yaml. @wesleybl [#7291](https://github.com/plone/volto/issues/7291)
+- Fix random failure in 'renders a file widget component with value' test of RegistryImageWidget. @wesleybl [#7292](https://github.com/plone/volto/issues/7292)
+- Fixes random error in Listing Block tests 2. @wesleybl [#7293](https://github.com/plone/volto/issues/7293)
+- Fixed random failure in Cypress 'Index Text Block' test. @wesleybl [#7304](https://github.com/plone/volto/issues/7304)
+- 2021.ploneconf.org is no longer a Volto site, but just a redirect to YouTube. Also reverts #6627 and replaces code examples with `2022.ploneconf.org`. Backport of #7314. @stevepiercy [#7315](https://github.com/plone/volto/issues/7315)
+
 ## 18.25.0 (2025-09-01)
 
 ### Feature

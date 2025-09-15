@@ -1,50 +1,45 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Plone\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
+"POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: Automatically generated\n"
-"Language: ta\n"
-"Language-Team: none\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"MIME-Version: 1.0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
-"Preferred-Encodings: utf-8\n"
-"Domain: volto\n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
 msgid "<p>Add some HTML here</p>"
-msgstr ""
+msgstr "<p> சில உஉகுமொ ஐ இங்கே சேர்க்கவும் </p>"
 
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
 msgid "Account Registration Completed"
-msgstr ""
+msgstr "கணக்கு பதிவு முடிந்தது"
 
 #. Default: "Account activation completed"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Account activation completed"
-msgstr ""
+msgstr "கணக்கு செயல்படுத்தல் முடிந்தது"
 
 #. Default: "Action"
 #: components/manage/Controlpanels/ModerateComments
 msgid "Action"
-msgstr ""
+msgstr "செயல்"
 
 #. Default: "Action changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Action changed"
-msgstr ""
+msgstr "நடவடிக்கை மாற்றப்பட்டது"
 
 #. Default: "Action:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Action: "
-msgstr ""
+msgstr "செயல்: "
 
 #. Default: "Actions"
 #: components/manage/Actions/Actions
@@ -54,22 +49,22 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Controlpanels/Users/UsersControlpanel
 msgid "Actions"
-msgstr ""
+msgstr "செயல்கள்"
 
 #. Default: "Activate and deactivate add-ons in the lists below."
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Activate and deactivate"
-msgstr ""
+msgstr "செயல்படுத்தவும் செயலிழக்கவும்"
 
 #. Default: "Active"
 #: components/manage/Rules/Rules
 msgid "Active"
-msgstr ""
+msgstr "செயலில்"
 
 #. Default: "Active content rules in this Page"
 #: components/manage/Rules/Rules
 msgid "Active content rules in this Page"
-msgstr ""
+msgstr "இந்த பக்கத்தில் செயலில் உள்ளடக்க விதிகள்"
 
 #. Default: "Add"
 #: components/manage/Aliases/Aliases
@@ -80,248 +75,248 @@ msgstr ""
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
 msgid "Add"
-msgstr ""
+msgstr "கூட்டு"
 
 #. Default: "Add"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Add (object list)"
-msgstr ""
+msgstr "சேர் (பொருள் பட்டியல்)"
 
 #. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add Addons"
-msgstr ""
+msgstr "துணை நிரல்கள்"
 
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
 msgid "Add Alternative URL"
-msgstr ""
+msgstr "மாற்று முகவரி ஐச் சேர்க்கவும்"
 
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
 msgid "Add Content"
-msgstr ""
+msgstr "உள்ளடக்கத்தைச் சேர்க்கவும்"
 
 #. Default: "Add Content Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Content Rule"
-msgstr ""
+msgstr "உள்ளடக்க விதியைச் சேர்க்கவும்"
 
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
-msgstr ""
+msgstr "விதியைச் சேர்க்கவும்"
 
 #. Default: "Add Translation…"
 #: components/manage/Toolbar/Types
 msgid "Add Translation…"
-msgstr ""
+msgstr "மொழிபெயர்ப்பைச் சேர்க்கவும்…"
 
 #. Default: "Add User"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add User"
-msgstr ""
+msgstr "பயனரைச் சேர்க்கவும்"
 
 #. Default: "Add a description…"
 #: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
-msgstr ""
+msgstr "ஒரு விளக்கத்தைச் சேர்க்கவும்…"
 
 #. Default: "Add a new alternative url"
 #: components/manage/Aliases/Aliases
 msgid "Add a new alternative url"
-msgstr ""
+msgstr "புதிய மாற்று முகவரி ஐச் சேர்க்கவும்"
 
 #. Default: "Action added"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Add action"
-msgstr ""
+msgstr "செயலைச் சேர்க்கவும்"
 
 #. Default: "Add block"
 #: components/manage/BlockChooser/BlockChooserButton
 msgid "Add block"
-msgstr ""
+msgstr "Adblock"
 
 #. Default: "Add block in position {index}"
 #: components/manage/Blocks/Container/NewBlockAddButton
 msgid "Add block in position {index}"
-msgstr ""
+msgstr "{index} என்ற நிலையில் தொகுதியைச் சேர்க்கவும்"
 
 #. Default: "Add block…"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
-msgstr ""
+msgstr "Adblock…"
 
 #. Default: "Condition added"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Add condition"
-msgstr ""
+msgstr "நிபந்தனை சேர்க்கவும்"
 
 #. Default: "Add content rule"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Add content rule"
-msgstr ""
+msgstr "உள்ளடக்க விதியைச் சேர்க்கவும்"
 
 #. Default: "Add criteria"
 #: components/manage/Widgets/QueryWidget
 msgid "Add criteria"
-msgstr ""
+msgstr "அளவுகோல்களைச் சேர்க்கவும்"
 
 #. Default: "Add date"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Add date"
-msgstr ""
+msgstr "தேதி சேர்க்கவும்"
 
 #. Default: "Add element to container"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 msgid "Add element to container"
-msgstr ""
+msgstr "கொள்கலனுக்கு உறுப்பு சேர்க்கவும்"
 
 #. Default: "Add field"
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
-msgstr ""
+msgstr "புலத்தைச் சேர்க்கவும்"
 
 #. Default: "Add fieldset"
 #: components/manage/Widgets/SchemaWidget
 msgid "Add fieldset"
-msgstr ""
+msgstr "புலம் சேர்க்கவும்"
 
 #. Default: "Add group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add group"
-msgstr ""
+msgstr "குழுவைச் சேர்க்கவும்"
 
 #. Default: "Add new content type"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Add new content type"
-msgstr ""
+msgstr "புதிய உள்ளடக்க வகையைச் சேர்க்கவும்"
 
 #. Default: "Add new group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add new group"
-msgstr ""
+msgstr "புதிய குழுவைச் சேர்க்கவும்"
 
 #. Default: "Add new user"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add new user"
-msgstr ""
+msgstr "புதிய பயனரைச் சேர்க்கவும்"
 
 #. Default: "Add to Groups"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
-msgstr ""
+msgstr "குழுக்களில் சேர்க்கவும்"
 
 #. Default: "Add users to group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add users to group"
-msgstr ""
+msgstr "குழுவில் பயனர்களைச் சேர்க்கவும்"
 
 #. Default: "Add term"
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Add vocabulary term"
-msgstr ""
+msgstr "சொல்லகராதி காலத்தைச் சேர்க்கவும்"
 
 #. Default: "Add {type}"
 #: components/manage/Add/Add
 msgid "Add {type}"
-msgstr ""
+msgstr "{type} சேர்க்கவும்"
 
 #. Default: "Add-Ons"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Add-Ons"
-msgstr ""
+msgstr "துணை நிரல்கள்"
 
 #. Default: "Add-on Configuration"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Add-on Configuration"
-msgstr ""
+msgstr "கூடுதல் உள்ளமைவு"
 
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons"
-msgstr ""
+msgstr "துணை நிரல்கள்"
 
 #. Default: "Add-ons Settings"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons Settings"
-msgstr ""
+msgstr "கூடுதல் அமைப்புகள்"
 
 #. Default: "Added"
 #: components/manage/Rules/Rules
 msgid "Added"
-msgstr ""
+msgstr "சேர்க்கப்பட்டது"
 
 #. Default: "Additional date"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
-msgstr ""
+msgstr "கூடுதல் தேதி"
 
 #. Default: "Addon could not be installed"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon could not be installed"
-msgstr ""
+msgstr "துணை நிரலை நிறுவ முடியவில்லை"
 
 #. Default: "Addon could not be uninstalled"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon could not be uninstalled"
-msgstr ""
+msgstr "துணை நிரலை நிறுவல் நீக்க முடியவில்லை"
 
 #. Default: "Addon could not be upgraded"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon could not be upgraded"
-msgstr ""
+msgstr "துணை நிரலை மேம்படுத்த முடியவில்லை"
 
 #. Default: "Addon installed succesfuly"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon installed succesfuly"
-msgstr ""
+msgstr "Addon வெற்றிகரமாக நிறுவப்பட்டது"
 
 #. Default: "Addon uninstalled succesfuly"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
-msgstr ""
+msgstr "Addon வெற்றிகரமாக நிறுவல் நீக்குகிறது"
 
 #. Default: "Addon upgraded succesfuly"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
-msgstr ""
+msgstr "Addon வெற்றிகரமாக மேம்படுத்தப்பட்டது"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
 msgid "Advanced facet?"
-msgstr ""
+msgstr "மேம்பட்ட அம்சம்?"
 
 #. Default: "Advanced facets are initially hidden and displayed on demand"
 #: components/manage/Blocks/Search/schema
 msgid "Advanced facets are initially hidden and displayed on demand"
-msgstr ""
+msgstr "மேம்பட்ட நற்பொருத்தங்கள் ஆரம்பத்தில் மறைக்கப்பட்டு தேவைக்கேற்ப காண்பிக்கப்படும்"
 
 #. Default: "Album view"
 #: config/Views
 msgid "Album view"
-msgstr ""
+msgstr "ஆல்பம் பார்வை"
 
 #. Default: "Alias"
 #: components/manage/Controlpanels/Aliases
 msgid "Alias"
-msgstr ""
+msgstr "மாற்றுப்பெயர்"
 
 #. Default: "Alias has been added"
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 msgid "Alias has been added"
-msgstr ""
+msgstr "மாற்றுப்பெயர் சேர்க்கப்பட்டுள்ளது"
 
 #. Default: "Aliases have been removed."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been removed."
-msgstr ""
+msgstr "மாற்றுப்பெயர்கள் அகற்றப்பட்டுள்ளன."
 
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been uploaded."
-msgstr ""
+msgstr "மாற்றுப்பெயர்கள் பதிவேற்றப்பட்டுள்ளன."
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
@@ -330,121 +325,121 @@ msgstr ""
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/Video/schema
 msgid "Alignment"
-msgstr ""
+msgstr "இருப்புவழி"
 
 #. Default: "All"
 #: components/manage/Contents/Contents
 msgid "All"
-msgstr ""
+msgstr "அனைத்தும்"
 
 #. Default: "All content"
 #: config/Views
 msgid "All content"
-msgstr ""
+msgstr "அனைத்து உள்ளடக்கம்"
 
 #. Default: "Existing alternative URLs for this site"
 #: components/manage/Controlpanels/Aliases
 msgid "All existing alternative urls for this site"
-msgstr ""
+msgstr "இந்த தளத்திற்கான அனைத்து மாற்று முகவரி களும்"
 
 #. Default: "Alphabetically"
 #: components/theme/Search/Search
 msgid "Alphabetically"
-msgstr ""
+msgstr "அகரவரிசை"
 
 #. Default: "Alt text"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
 msgid "Alt text"
-msgstr ""
+msgstr "மாற்று உரை"
 
 #. Default: "Leave empty if the image is purely decorative."
 #: components/manage/Blocks/Image/schema
 msgid "Alt text hint"
-msgstr ""
+msgstr "மாற்று உரை குறிப்பு"
 
 #. Default: "Describe the purpose of the image."
 #: components/manage/Blocks/Image/schema
 msgid "Alt text hint link text"
-msgstr ""
+msgstr "மாற்று உரை குறிப்பு இணைப்பு உரை"
 
 #. Default: "Alternative URL path (Required)"
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path (Required)"
-msgstr ""
+msgstr "மாற்று முகவரி பாதை (தேவை)"
 
 #. Default: "Alternative url path must start with a slash."
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path must start with a slash."
-msgstr ""
+msgstr "மாற்று முகவரி பாதை ஒரு குறைப்புடன் தொடங்க வேண்டும்."
 
 #. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
-msgstr ""
+msgstr "மாற்று முகவரி பாதை → இலக்கு முகவரி பாதை (படைப்பின் தேதி மற்றும் நேரம், கைமுறையாக ஆம்/இல்லை)"
 
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
-msgstr ""
+msgstr "துணை கோப்புறைகளுக்கு பயன்படுத்தப்படுகிறது"
 
 #. Default: "Applies to subfolders?"
 #: components/manage/Rules/Rules
 msgid "Applies to subfolders?"
-msgstr ""
+msgstr "துணை கோப்புறைகளுக்கு பொருந்துமா?"
 
 #. Default: "Apply to subfolders"
 #: components/manage/Rules/Rules
 msgid "Apply to subfolders"
-msgstr ""
+msgstr "துணை கோப்புறைகளுக்கு விண்ணப்பிக்கவும்"
 
 #. Default: "Apply working copy"
 #: components/manage/Toolbar/More
 msgid "Apply working copy"
-msgstr ""
+msgstr "வேலை நகலைப் பயன்படுத்துங்கள்"
 
 #. Default: "Are you sure you want to delete this field?"
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
-msgstr ""
+msgstr "இந்த புலத்தை நீக்க விரும்புகிறீர்களா?"
 
 #. Default: "Are you sure you want to delete this fieldset including all fields?"
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this fieldset including all fields?"
-msgstr ""
+msgstr "எல்லா புலங்களும் உட்பட இந்த ஃபீல்செட்டை நீக்க விரும்புகிறீர்களா?"
 
 #. Default: "Ascending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 msgid "Ascending"
-msgstr ""
+msgstr "ஏறுதல்"
 
 #. Default: "Assign the {role} role to {entry}"
 #: components/manage/Sharing/Sharing
 msgid "Assign the {role} role to {entry}"
-msgstr ""
+msgstr "{role} பாத்திரத்தை {நுழைவு க்கு க்கு ஒதுக்குங்கள்"
 
 #. Default: "Assignments"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Assignments"
-msgstr ""
+msgstr "பணிகள்"
 
 #. Default: "Automatically"
 #: components/manage/Controlpanels/Aliases
 msgid "Automatically"
-msgstr ""
+msgstr "தானாக"
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
-msgstr ""
+msgstr "கிடைக்கிறது"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
 msgid "Available content rules:"
-msgstr ""
+msgstr "கிடைக்கும் உள்ளடக்க விதிகள்:"
 
 #. Default: "Back"
 #: components/manage/Aliases/Aliases
@@ -478,83 +473,83 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Back"
-msgstr ""
+msgstr "பின்"
 
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"
-msgstr ""
+msgstr "காரம்"
 
 #. Default: "Base search query"
 #: components/manage/Blocks/Search/schema
 msgid "Base search query"
-msgstr ""
+msgstr "அடிப்படை தேடல் வினவல்"
 
 #. Default: "Block"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
-msgstr ""
+msgstr "தொகுதி"
 
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
-msgstr ""
+msgstr "இரண்டும்"
 
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
-msgstr ""
+msgstr "மின்னஞ்சல் முகவரி மற்றும் கடவுச்சொல் இரண்டும் வழக்கு உணர்திறன் கொண்டவை, தொப்பிகள் பூட்டு இயக்கப்படவில்லை என்பதை சரிபார்க்கவும்."
 
 #. Default: "Breadcrumbs"
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Breadcrumbs"
-msgstr ""
+msgstr "பிரட்தூள்களில் நனைக்கப்பட்டு"
 
 #. Default: "Broken relations"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "Broken relations"
-msgstr ""
+msgstr "உடைந்த உறவுகள்"
 
 #. Default: "Browse"
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
-msgstr ""
+msgstr "உலாவு"
 
 #. Default: "Browse the site, drop an image, or use a URL"
 #: components/manage/Widgets/ImageWidget
 msgid "Browse the site, drop an image, or type a URL"
-msgstr ""
+msgstr "தளத்தை உலாவுக, ஒரு படத்தை கைவிடவும் அல்லது முகவரி ஐ தட்டச்சு செய்யவும்"
 
 #. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
-msgstr ""
+msgstr "Bulluploadalturls"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr ""
+msgstr "இயல்பாக, இந்த உருப்படியின் கொள்கலனில் இருந்து அனுமதிகள் மரபுரிமையாக உள்ளன. இதை நீங்கள் முடக்கினால், வெளிப்படையாக வரையறுக்கப்பட்ட பகிர்வு அனுமதிகள் மட்டுமே செல்லுபடியாகும். கண்ணோட்டத்தில், {inherited} அடையாளம் ஒரு பரம்பரை மதிப்பைக் குறிக்கிறது. இதேபோல், {global} அடையாளம் உலகளாவிய பங்கைக் குறிக்கிறது, இது தள நிர்வாகியால் நிர்வகிக்கப்படுகிறது."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
 msgid "CSVFile"
-msgstr ""
+msgstr "Csvfile"
 
 #. Default: "Cache Name"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Cache Name"
-msgstr ""
+msgstr "கேச் பெயர்"
 
 #. Default: "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
-msgstr ""
+msgstr "<strong> {type} </strong> உள்ளடக்க வகைக்கான தளவமைப்பைத் திருத்த முடியாது, ஏனெனில் இது <strong> வோல்டோ பிளாக்ச் </strong> இயக்கப்பட்டது"
 
 #. Default: "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
-msgstr ""
+msgstr "<strong> {type} </strong> உள்ளடக்க வகைக்கு <strong> தடுப்பு நடத்தை </strong> இயக்கப்பட்டிருப்பது மற்றும் <strong> படிக்க மட்டும் </strong> க்கான தளவமைப்பைத் திருத்த முடியாது"
 
 #. Default: "Cancel"
 #: components/manage/Add/Add
@@ -573,55 +568,55 @@ msgstr ""
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
-msgstr ""
+msgstr "ரத்துசெய்"
 
 #. Default: "Cancel search"
 #: components/manage/Blocks/Search/components/SearchInput
 msgid "Cancel search"
-msgstr ""
+msgstr "தேடலை நீக்கறல்"
 
 #. Default: "Cell"
 #: config/Blocks
 msgid "Cell"
-msgstr ""
+msgstr "கலன்"
 
 #. Default: "Center"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
 msgid "Center"
-msgstr ""
+msgstr "நடுவண்"
 
 #. Default: "Change Note"
 #: components/manage/History/History
 msgid "Change Note"
-msgstr ""
+msgstr "குறிப்பை மாற்றவும்"
 
 #. Default: "Change Password"
 #: components/manage/Preferences/ChangePassword
 msgid "Change Password"
-msgstr ""
+msgstr "கடவுச்சொல்லை மாற்றவும்"
 
 #. Default: "Change State"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change State"
-msgstr ""
+msgstr "நிலை மாற்றவும்"
 
 #. Default: "Change workflow state recursively"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
-msgstr ""
+msgstr "பணிப்பாய்வு நிலையை மறுநிகழ்வு மாற்றவும்"
 
 #. Default: "Changes applied"
 #: components/manage/Toolbar/More
 msgid "Changes applied."
-msgstr ""
+msgstr "மாற்றங்கள் பயன்படுத்தப்பட்டன."
 
 #. Default: "Changes saved"
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
 msgid "Changes saved"
-msgstr ""
+msgstr "மாற்றங்கள் சேமிக்கப்பட்டன"
 
 #. Default: "Changes saved."
 #: components/manage/Controlpanels/ContentType
@@ -629,361 +624,361 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 msgid "Changes saved."
-msgstr ""
+msgstr "மாற்றங்கள் சேமிக்கப்பட்டன."
 
 #. Default: "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
 #: components/manage/Blocks/Teaser/schema
 msgid "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
-msgstr ""
+msgstr "இந்த டீசருக்கான இலக்கு உள்ளடக்க உருப்படியின் தலைப்பு, விளக்கம் அல்லது படத்தைத் தனிப்பயனாக்க இந்த பெட்டியை சரிபார்க்கவும். இலக்கு உள்ளடக்க உருப்படி பின்னர் திருத்தப்பட்டால் அதை புதுப்பிப்பதைக் காட்ட அதைத் தவிர்க்காமல் விடுங்கள்."
 
 #. Default: "Checkbox"
 #: components/manage/Widgets/SchemaWidget
 msgid "Checkbox"
-msgstr ""
+msgstr "தேர்வுப்பெட்டி"
 
 #. Default: "Choices"
 #: components/manage/Widgets/SelectWidget
 msgid "Choices"
-msgstr ""
+msgstr "தேர்வுகள்"
 
 #. Default: "Choose Image"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Choose Image"
-msgstr ""
+msgstr "படத்தைத் தேர்வுசெய்க"
 
 #. Default: "Choose Target"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Choose Target"
-msgstr ""
+msgstr "இலக்கைத் தேர்வுசெய்க"
 
 #. Default: "Choose a file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Choose a file"
-msgstr ""
+msgstr "ஒரு கோப்பைத் தேர்வுசெய்க"
 
 #. Default: "Clear"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
-msgstr ""
+msgstr "தெளிவான"
 
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Clear filters"
-msgstr ""
+msgstr "தெளிவான வடிப்பான்கள்"
 
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
 msgid "Clear search"
-msgstr ""
+msgstr "தேடலை அழி"
 
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
-msgstr ""
+msgstr "முழு அளவிலான படத்தைப் பதிவிறக்க சொடுக்கு செய்க"
 
 #. Default: "Close"
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
-msgstr ""
+msgstr "மூடு"
 
 #. Default: "Close menu"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
-msgstr ""
+msgstr "பட்டியல் மூடு"
 
 #. Default: "Code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Code"
-msgstr ""
+msgstr "குறியீடு"
 
 #. Default: "Collapse item"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Collapse item"
-msgstr ""
+msgstr "உருப்படி சரிவு"
 
 #. Default: "Collection"
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
-msgstr ""
+msgstr "சேகரிப்பு"
 
 #. Default: "Color"
 #: components/manage/Widgets/ColorPickerWidget
 msgid "Color"
-msgstr ""
+msgstr "நிறம்"
 
 #. Default: "Comment"
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 msgid "Comment"
-msgstr ""
+msgstr "கருத்து"
 
 #. Default: "Commenter"
 #: components/manage/Controlpanels/ModerateComments
 msgid "Commenter"
-msgstr ""
+msgstr "வர்ணனையாளர்"
 
 #. Default: "Comments"
 #: components/theme/Comments/Comments
 msgid "Comments"
-msgstr ""
+msgstr "கருத்துகள்"
 
 #. Default: "Compare"
 #: components/manage/Diff/Diff
 msgid "Compare"
-msgstr ""
+msgstr "ஒப்பிடுக"
 
 #. Default: "Condition changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Condition changed"
-msgstr ""
+msgstr "நிபந்தனை மாற்றப்பட்டது"
 
 #. Default: "Condition:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Condition: "
-msgstr ""
+msgstr "நிபந்தனை: "
 
 #. Default: "Configuration Versions"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Configuration Versions"
-msgstr ""
+msgstr "உள்ளமைவு பதிப்புகள்"
 
 #. Default: "Configure Content Rule"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Configure Content Rule"
-msgstr ""
+msgstr "உள்ளடக்க விதியை உள்ளமைக்கவும்"
 
 #. Default: "Configure Content Rule: {title}"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Configure Content Rule: {title}"
-msgstr ""
+msgstr "உள்ளடக்க விதியை உள்ளமைக்கவும்: {title}"
 
 #. Default: "Configure content rule"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Configure content rule"
-msgstr ""
+msgstr "உள்ளடக்க விதியை உள்ளமைக்கவும்"
 
 #. Default: "Confirm password"
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Confirm password"
-msgstr ""
+msgstr "கடவுச்சொல்லை உறுதிப்படுத்தவும்"
 
 #. Default: "Connection refused"
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "Connection refused"
-msgstr ""
+msgstr "இணைப்பு மறுத்துவிட்டது"
 
 #. Default: "Contact form"
 #: components/theme/ContactForm/ContactForm
 msgid "Contact form"
-msgstr ""
+msgstr "தொடர்பு படிவம்"
 
 #. Default: "Contained items"
 #: components/manage/Blocks/Listing/Edit
 msgid "Contained items"
-msgstr ""
+msgstr "உருப்படிகள் உள்ளன"
 
 #. Default: "Container settings"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 msgid "Container settings"
-msgstr ""
+msgstr "கொள்கலன் அமைப்புகள்"
 
 #. Default: "Content"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Content"
-msgstr ""
+msgstr "உள்ளடக்கம்"
 
 #. Default: "Content Rule"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Content Rule"
-msgstr ""
+msgstr "உள்ளடக்க விதி"
 
 #. Default: "Content Rules"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Content Rules"
-msgstr ""
+msgstr "உள்ளடக்க விதிகள்"
 
 #. Default: "Content rules for {title}"
 #: components/manage/Rules/Rules
 msgid "Content rules for {title}"
-msgstr ""
+msgstr "{தலைப்பு க்கு க்கான உள்ளடக்க விதிகள்"
 
 #. Default: "Content rules from parent folders"
 #: components/manage/Rules/Rules
 msgid "Content rules from parent folders"
-msgstr ""
+msgstr "பெற்றோர் கோப்புறைகளிலிருந்து உள்ளடக்க விதிகள்"
 
 #. Default: "Content that links to or references {title}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
-msgstr ""
+msgstr "இணைக்கும் அல்லது குறிப்பிடும் உள்ளடக்கம் {title}"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
-msgstr ""
+msgstr "உள்ளடக்க வகை உருவாக்கப்பட்டது"
 
 #. Default: "Content type deleted"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type deleted"
-msgstr ""
+msgstr "உள்ளடக்க வகை நீக்கப்பட்டது"
 
 #. Default: "Contents"
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
-msgstr ""
+msgstr "உள்ளடக்கங்கள்"
 
 #. Default: "Controls"
 #: components/manage/Blocks/Search/schema
 msgid "Controls"
-msgstr ""
+msgstr "கட்டுப்பாடுகள்"
 
 #. Default: "Copy"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Copy"
-msgstr ""
+msgstr "நகலெடு"
 
 #. Default: "Copy blocks"
 #: helpers/MessageLabels/MessageLabels
 msgid "Copy blocks"
-msgstr ""
+msgstr "தொகுதிகள் நகலெடுக்கவும்"
 
 #. Default: "Copyright"
 #: components/theme/Footer/Footer
 msgid "Copyright"
-msgstr ""
+msgstr "பதிப்புரிமை"
 
 #. Default: "Copyright statement or other rights information on this item."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
-msgstr ""
+msgstr "இந்த உருப்படி குறித்த பதிப்புரிமை அறிக்கை அல்லது பிற உரிமைகள் தகவல்கள்."
 
 #. Default: "Create or delete relations to target"
 #: helpers/MessageLabels/MessageLabels
 msgid "Create or delete relations to target"
-msgstr ""
+msgstr "இலக்குக்கு உறவுகளை உருவாக்கவும் அல்லது நீக்கவும்"
 
 #. Default: "Create working copy"
 #: components/manage/Toolbar/More
 msgid "Create working copy"
-msgstr ""
+msgstr "வேலை நகலை உருவாக்கவும்"
 
 #. Default: "Created after"
 #: components/manage/Controlpanels/Aliases
 msgid "Created after"
-msgstr ""
+msgstr "பின்னர் உருவாக்கப்பட்டது"
 
 #. Default: "Created before"
 #: components/manage/Controlpanels/Aliases
 msgid "Created before"
-msgstr ""
+msgstr "முன் உருவாக்கப்பட்டது"
 
 #. Default: "Created by {creator} on {date}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "Created by {creator} on {date}"
-msgstr ""
+msgstr "{creator} இல் {படைப்பாளரால் உருவாக்கப்பட்டது"
 
 #. Default: "Created on"
 #: components/manage/Contents/Contents
 msgid "Created on"
-msgstr ""
+msgstr "உருவாக்கப்பட்டது"
 
 #. Default: "Creator"
 #: components/manage/Contents/Contents
 msgid "Creator"
-msgstr ""
+msgstr "உருவாக்கியவர்"
 
 #. Default: "Creators"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
-msgstr ""
+msgstr "படைப்பாளிகள்"
 
 #. Default: "Criteria"
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/QueryWidget
 msgid "Criteria"
-msgstr ""
+msgstr "அளவுகோல்கள்"
 
 #. Default: "Current active configuration"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Current active configuration"
-msgstr ""
+msgstr "தற்போதைய செயலில் உள்ளமைவு"
 
 #. Default: "Current filters applied"
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Current filters applied"
-msgstr ""
+msgstr "தற்போதைய வடிப்பான்கள் பயன்படுத்தப்பட்டன"
 
 #. Default: "Current password"
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
-msgstr ""
+msgstr "தற்போதைய கடவுச்சொல்"
 
 #. Default: "Customize teaser content"
 #: components/manage/Blocks/Teaser/schema
 msgid "Customize teaser content"
-msgstr ""
+msgstr "டீசர் உள்ளடக்கத்தைத் தனிப்பயனாக்குங்கள்"
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
-msgstr ""
+msgstr "வெட்டு"
 
 #. Default: "Cut blocks"
 #: helpers/MessageLabels/MessageLabels
 msgid "Cut blocks"
-msgstr ""
+msgstr "தொகுதிகள் வெட்டு"
 
 #. Default: "Daily"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
-msgstr ""
+msgstr "நாள்தோறும்"
 
 #. Default: "Database"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Database"
-msgstr ""
+msgstr "தரவுத்தளம்"
 
 #. Default: "Database Information"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Information"
-msgstr ""
+msgstr "தரவுத்தள செய்தி"
 
 #. Default: "Database Location"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Location"
-msgstr ""
+msgstr "தரவுத்தள இடம்"
 
 #. Default: "Database Size"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Size"
-msgstr ""
+msgstr "தரவுத்தள அளவு"
 
 #. Default: "Database main"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database main"
-msgstr ""
+msgstr "தரவுத்தள முக்கிய"
 
 #. Default: "Date"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
 msgid "Date"
-msgstr ""
+msgstr "திகதி"
 
 #. Default: "Date (newest first)"
 #: components/theme/Search/Search
 msgid "Date (newest first)"
-msgstr ""
+msgstr "தேதி (புதிய முதல்)"
 
 #. Default: "Default"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1002,17 +997,17 @@ msgstr ""
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
 msgid "Default"
-msgstr ""
+msgstr "இயல்புநிலை"
 
 #. Default: "Default value"
 #: components/manage/Widgets/SchemaWidget
 msgid "Default value"
-msgstr ""
+msgstr "இயல்புநிலை மதிப்பு"
 
 #. Default: "Default view"
 #: config/Views
 msgid "Default view"
-msgstr ""
+msgstr "இயல்புநிலை பார்வை"
 
 #. Default: "Delete"
 #: components/manage/Contents/Contents
@@ -1027,78 +1022,78 @@ msgstr ""
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
-msgstr ""
+msgstr "நீக்கு"
 
 #. Default: "Delete Group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete Group"
-msgstr ""
+msgstr "குழுவை நீக்கு"
 
 #. Default: "Delete Type"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Delete Type"
-msgstr ""
+msgstr "வகையை நீக்கு"
 
 #. Default: "Delete User"
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete User"
-msgstr ""
+msgstr "பயனரை நீக்கு"
 
 #. Default: "Action deleted"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Delete action"
-msgstr ""
+msgstr "செயலை நீக்கு"
 
 #. Default: "Delete blocks"
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete blocks"
-msgstr ""
+msgstr "தொகுதிகளை நீக்கு"
 
 #. Default: "Delete col"
 #: config/Blocks
 msgid "Delete col"
-msgstr ""
+msgstr "நெடுவரிசையை நீக்கு"
 
 #. Default: "Condition deleted"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Delete condition"
-msgstr ""
+msgstr "நிலையை நீக்கு"
 
 #. Default: "Delete row"
 #: config/Blocks
 msgid "Delete row"
-msgstr ""
+msgstr "வரிசையை நீக்கு"
 
 #. Default: "Delete selected items?"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Delete selected items?"
-msgstr ""
+msgstr "தேர்ந்தெடுக்கப்பட்ட பொருட்களை நீக்கவா?"
 
 #. Default: "Delete this item?"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Delete this item?"
-msgstr ""
+msgstr "இந்த உருப்படியை நீக்கவா?"
 
 #. Default: "Deleted"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Deleted"
-msgstr ""
+msgstr "நீக்கப்பட்டது"
 
 #. Default: "Deleting this item breaks {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item breaks {brokenReferences} {variation}."
-msgstr ""
+msgstr "இந்த உருப்படியை நீக்குதல் {brokenReferences} {variation}."
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Depth"
-msgstr ""
+msgstr "ஆழம்"
 
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 msgid "Descending"
-msgstr ""
+msgstr "இறங்கு"
 
 #. Default: "Description"
 #: components/manage/Blocks/Teaser/schema
@@ -1108,126 +1103,126 @@ msgstr ""
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
-msgstr ""
+msgstr "விவரம்"
 
 #. Default: "Diff"
 #: components/manage/Diff/Diff
 msgid "Diff"
-msgstr ""
+msgstr "வேறுபாடு"
 
 #. Default: "Difference between revision {one} and {two} of {title}"
 #: components/manage/Diff/Diff
 msgid "Difference between revision {one} and {two} of {title}"
-msgstr ""
+msgstr "{one} இன் திருத்தத்திற்கு {two} மற்றும் {title} க்கு இடையிலான வேறுபாடு"
 
 #. Default: "Disable"
 #: components/manage/Rules/Rules
 msgid "Disable"
-msgstr ""
+msgstr "முடக்கு"
 
 #. Default: "Disable apply to subfolders"
 #: components/manage/Rules/Rules
 msgid "Disable apply to subfolders"
-msgstr ""
+msgstr "துணை கோப்புறைகளுக்கு விண்ணப்பிக்கவும்"
 
 #. Default: "Disabled"
 #: components/manage/Rules/Rules
 msgid "Disabled"
-msgstr ""
+msgstr "முடக்கப்பட்டது"
 
 #. Default: "Disabled apply to subfolders"
 #: components/manage/Rules/Rules
 msgid "Disabled apply to subfolders"
-msgstr ""
+msgstr "ஊனமுற்றோர் துணை கோப்புறைகளுக்கு பொருந்தும்"
 
 #. Default: "Distributed under the {license}."
 #: components/theme/Footer/Footer
 msgid "Distributed under the {license}."
-msgstr ""
+msgstr "{உரிமத்தின் கீழ் விநியோகிக்கப்பட்டது."
 
 #. Default: "Add border to inner columns"
 #: config/Blocks
 msgid "Divide each row into separate cells"
-msgstr ""
+msgstr "ஒவ்வொரு வரிசையையும் தனி கலங்களாக பிரிக்கவும்"
 
 #. Default: "Do you really want to delete the group {groupname}?"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 msgid "Do you really want to delete the group {groupname}?"
-msgstr ""
+msgstr "குழுவை {groupname} நீக்க விரும்புகிறீர்களா?"
 
 #. Default: "Do you really want to delete type {typename}?"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Do you really want to delete the type {typename}?"
-msgstr ""
+msgstr "{typename} என்ற வகையை நீக்க விரும்புகிறீர்களா?"
 
 #. Default: "Do you really want to delete the user {username}?"
 #: components/manage/Controlpanels/Users/UsersControlpanel
 msgid "Do you really want to delete the user {username}?"
-msgstr ""
+msgstr "பயனரை {username} நீக்க விரும்புகிறீர்களா?"
 
 #. Default: "Do you really want to delete this item?"
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
-msgstr ""
+msgstr "இந்த உருப்படியை நீக்க விரும்புகிறீர்களா?"
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
-msgstr ""
+msgstr "ஆவணம்"
 
 #. Default: "Document view"
 #: config/Views
 msgid "Document view"
-msgstr ""
+msgstr "ஆவணக் காட்சி"
 
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
-msgstr ""
+msgstr "நிகழ்வைப் பதிவிறக்கவும்"
 
 #. Default: "Download file"
 #: components/theme/View/FileView
 msgid "Download file"
-msgstr ""
+msgstr "கோப்பைப் பதிவிறக்கவும்"
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr ""
+msgstr "உங்கள் கணினியிலிருந்து கோப்புகளை இந்த பகுதியில் இழுத்து விடுங்கள் அல்லது “உலாவு” பொத்தானைக் சொடுக்கு செய்க."
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
-msgstr ""
+msgstr "இருக்கும் கோப்பை மாற்ற கோப்பை இங்கே விடுங்கள்"
 
 #. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
-msgstr ""
+msgstr "புதிய கோப்பைப் பதிவேற்ற இங்கே கோப்பை விடுங்கள்"
 
 #. Default: "Drop files here ..."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop files here ..."
-msgstr ""
+msgstr "கோப்புகளை இங்கே விடுங்கள் ..."
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
-msgstr ""
+msgstr "உலர் ரன் தேர்ந்தெடுக்கப்பட்டது, பரிவர்த்தனை கைவிடப்பட்டது."
 
 #. Default: "E-mail"
 #: components/theme/Register/Register
 msgid "E-mail"
-msgstr ""
+msgstr "மின்னஞ்சல்"
 
 #. Default: "E-mail addresses do not match."
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
-msgstr ""
+msgstr "மின்னஞ்சல் முகவரிகள் பொருந்தவில்லை."
 
 #. Default: "Edit"
 #: components/manage/Contents/ContentsItem
@@ -1240,164 +1235,164 @@ msgstr ""
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
-msgstr ""
+msgstr "தொகு"
 
 #. Default: "Edit Alternative URL"
 #: components/manage/Controlpanels/Aliases
 msgid "Edit Alternative URL"
-msgstr ""
+msgstr "மாற்று முகவரி ஐத் திருத்தவும்"
 
 #. Default: "Edit Rule"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Edit Rule"
-msgstr ""
+msgstr "விதியைத் திருத்து"
 
 #. Default: "Edit comment"
 #: components/theme/Comments/CommentEditModal
 msgid "Edit comment"
-msgstr ""
+msgstr "எப்படி திருத்து"
 
 #. Default: "Edit field"
 #: components/manage/Widgets/SchemaWidget
 msgid "Edit field"
-msgstr ""
+msgstr "புலம் திருத்து"
 
 #. Default: "Edit fieldset"
 #: components/manage/Widgets/SchemaWidget
 msgid "Edit fieldset"
-msgstr ""
+msgstr "ஃபீல்செட்டைத் திருத்து"
 
 #. Default: "Edit recurrence"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Edit recurrence"
-msgstr ""
+msgstr "மறுநிகழ்வு திருத்து"
 
 #. Default: "Edit values"
 #: components/manage/Form/InlineForm
 msgid "Edit values"
-msgstr ""
+msgstr "மதிப்புகளைத் திருத்தவும்"
 
 #. Default: "Edit {title}"
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
-msgstr ""
+msgstr "திருத்து {title}"
 
 #. Default: "Email"
 #: helpers/MessageLabels/MessageLabels
 msgid "Email"
-msgstr ""
+msgstr "மின்னஞ்சல்"
 
 #. Default: "Email sent"
 #: components/theme/ContactForm/ContactForm
 msgid "Email sent"
-msgstr ""
+msgstr "மின்னஞ்சல் அனுப்பப்பட்டது"
 
 #. Default: "Embed code error, please follow the instructions and try again."
 #: components/manage/Blocks/Maps/Edit
 msgid "Embed code error, please follow the instructions and try again."
-msgstr ""
+msgstr "குறியீடு பிழையை உட்பொதிக்கவும், தயவுசெய்து வழிமுறைகளைப் பின்பற்றி மீண்டும் முயற்சிக்கவும்."
 
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
-msgstr ""
+msgstr "வெற்று பொருள் பட்டியல்"
 
 #. Default: "Enable"
 #: components/manage/Rules/Rules
 msgid "Enable"
-msgstr ""
+msgstr "இயக்கு"
 
 #. Default: "Enable editable Blocks"
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
-msgstr ""
+msgstr "திருத்தக்கூடிய தொகுதிகளை இயக்கவும்"
 
 #. Default: "Enabled"
 #: components/manage/Rules/Rules
 msgid "Enabled"
-msgstr ""
+msgstr "இயக்கப்பட்டது"
 
 #. Default: "Enabled here?"
 #: components/manage/Rules/Rules
 msgid "Enabled here?"
-msgstr ""
+msgstr "இங்கே இயக்கப்பட்டதா?"
 
 #. Default: "Enabled?"
 #: components/manage/Rules/Rules
 msgid "Enabled?"
-msgstr ""
+msgstr "இயக்கப்பட்டதா?"
 
 #. Default: "End Date"
 #: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 msgid "End Date"
-msgstr ""
+msgstr "இறுதி தேதி"
 
 #. Default: "Enter URL or select an item"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
-msgstr ""
+msgstr "முகவரி ஐ உள்ளிடவும் அல்லது ஒரு உருப்படியைத் தேர்ந்தெடுக்கவும்"
 
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
-msgstr ""
+msgstr "தேட மேலே ஒரு பயனர்பெயரை உள்ளிடவும் அல்லது 'அனைத்தையும் காட்டு' என்பதைக் சொடுக்கு செய்க"
 
 #. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr ""
+msgstr "மின்னஞ்சல் முகவரியை உள்ளிடவும். இது உங்கள் உள்நுழைவு பெயராக இருக்கும். உங்கள் தனியுரிமையை நாங்கள் மதிக்கிறோம், முகவரியை எந்த மூன்றாம் தரப்பினருக்கும் கொடுக்க மாட்டோம் அல்லது அதை எங்கும் அம்பலப்படுத்த மாட்டோம்."
 
 #. Default: "Enter full name, e.g. John Smith."
 #: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
-msgstr ""
+msgstr "முழு பெயரை உள்ளிடவும், எ.கா. சான் ச்மித்."
 
 #. Default: "Enter map Embed Code"
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter map Embed Code"
-msgstr ""
+msgstr "வரைபட உட்பொதிக்கு குறியீட்டை உள்ளிடவும்"
 
 #. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
 #: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
-msgstr ""
+msgstr "இலக்கின் முழுமையான பாதையை உள்ளிடவும். இலக்கு இருக்க வேண்டும் அல்லது இலக்குக்கு ஏற்கனவே உள்ள மாற்று முகவரி பாதையாக இருக்க வேண்டும்."
 
 #. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
-msgstr ""
+msgstr "மாற்று முகவரி இருக்க வேண்டிய முழுமையான பாதையை உள்ளிடவும். பாதை '/' உடன் தொடங்க வேண்டும். 404 ஐக் காணாத பக்கத்தின் விளைவாக முகவரி கள் மட்டுமே வழிவகுக்கும் வழிவகுக்கும்."
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
-msgstr ""
+msgstr "மாற்று முகவரி இருக்க வேண்டிய முழுமையான பாதையை உள்ளிடவும். பாதை '/' உடன் தொடங்க வேண்டும். 404 ஐக் காணாத பக்கத்தின் விளைவாக முகவரி கள் மட்டுமே வழிவகுக்கும் வழிவகுக்கும்."
 
 #. Default: "Enter your current password."
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
-msgstr ""
+msgstr "உங்கள் தற்போதைய கடவுச்சொல்லை உள்ளிடவும்."
 
 #. Default: "Enter your email for verification."
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your email for verification."
-msgstr ""
+msgstr "சரிபார்ப்புக்கு உங்கள் மின்னஞ்சலை உள்ளிடவும்."
 
 #. Default: "Enter your new password. Minimum 8 characters."
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your new password. Minimum 8 characters."
-msgstr ""
+msgstr "உங்கள் புதிய கடவுச்சொல்லை உள்ளிடவும். குறைந்தபட்சம் 8 எழுத்துக்கள்."
 
 #. Default: "Enter your username for verification."
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your username for verification."
-msgstr ""
+msgstr "சரிபார்ப்புக்கு உங்கள் பயனர்பெயரை உள்ளிடவும்."
 
 #. Default: "Entries"
 #: components/manage/Blocks/ToC/Schema
 msgid "Entries"
-msgstr ""
+msgstr "உள்ளீடுகள்"
 
 #. Default: "Error"
 #: components/manage/Add/Add
@@ -1414,366 +1409,366 @@ msgstr ""
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Error"
-msgstr ""
+msgstr "பிழை"
 
 #. Default: "Event"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Event"
-msgstr ""
+msgstr "நிகழ்வு"
 
 #. Default: "Event end date must be on or after {startDateValueOrStartFieldName}"
 #: helpers/MessageLabels/MessageLabels
 msgid "Event end date must be on or after {startDateValueOrStartFieldName}"
-msgstr ""
+msgstr "நிகழ்வு இறுதி தேதி {startDateValueOrStartFieldName} இல் அல்லது அதற்குப் பிறகு இருக்க வேண்டும்"
 
 #. Default: "Event listing"
 #: config/Views
 msgid "Event listing"
-msgstr ""
+msgstr "நிகழ்வு பட்டியல்"
 
 #. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
 #: helpers/MessageLabels/MessageLabels
 msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
-msgstr ""
+msgstr "நிகழ்வு தொடக்க தேதி {endDateValueOrEndFieldName} இல் இருக்க வேண்டும் அல்லது அதற்கு முன் இருக்க வேண்டும்"
 
 #. Default: "Event view"
 #: config/Views
 msgid "Event view"
-msgstr ""
+msgstr "நிகழ்வு பார்வை"
 
 #. Default: "Example"
 #: components/manage/Controlpanels/Aliases
 msgid "Example"
-msgstr ""
+msgstr "எடுத்துக்காட்டு"
 
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Exclude from navigation"
-msgstr ""
+msgstr "வழிசெலுத்தலில் இருந்து விலக்கு"
 
 #. Default: "Exclude this occurence"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Exclude this occurence"
-msgstr ""
+msgstr "இந்த நிகழ்வை விலக்கு"
 
 #. Default: "Excluded from navigation"
 #: components/manage/Contents/Contents
 msgid "Excluded from navigation"
-msgstr ""
+msgstr "வழிசெலுத்தலில் இருந்து விலக்கப்பட்டுள்ளது"
 
 #. Default: "Existing alternative urls for this item"
 #: components/manage/Aliases/Aliases
 msgid "Existing alternative urls for this item"
-msgstr ""
+msgstr "இந்த உருப்படிக்கு தற்போதுள்ள மாற்று முகவரி கள்"
 
 #. Default: "Expand sidebar"
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
-msgstr ""
+msgstr "பக்கப்பட்டியை விரிவாக்குங்கள்"
 
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
-msgstr ""
+msgstr "காலாவதி தேதி"
 
 #. Default: "Expiration date"
 #: components/manage/Contents/Contents
 msgid "Expiration date"
-msgstr ""
+msgstr "காலாவதி தேதி"
 
 #. Default: "Expired"
 #: components/manage/Contents/ContentsItem
 msgid "Expired"
-msgstr ""
+msgstr "காலாவதியான"
 
 #. Default: "External URL"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
-msgstr ""
+msgstr "வெளிப்புற முகவரி"
 
 #. Default: "Facet"
 #: components/manage/Blocks/Search/schema
 msgid "Facet"
-msgstr ""
+msgstr "முகம்"
 
 #. Default: "Facet widget"
 #: components/manage/Blocks/Search/schema
 msgid "Facet widget"
-msgstr ""
+msgstr "முக விட்செட்"
 
 #. Default: "Facets"
 #: components/manage/Blocks/Search/schema
 msgid "Facets"
-msgstr ""
+msgstr "நற்பொருத்தங்கள்"
 
 #. Default: "Facets on left side"
 #: config/Blocks
 msgid "Facets on left side"
-msgstr ""
+msgstr "இடது பக்கத்தில் நற்பொருத்தங்கள்"
 
 #. Default: "Facets on right side"
 #: config/Blocks
 msgid "Facets on right side"
-msgstr ""
+msgstr "வலது பக்கத்தில் நற்பொருத்தங்கள்"
 
 #. Default: "Facets on top"
 #: config/Blocks
 msgid "Facets on top"
-msgstr ""
+msgstr "மேலே நற்பொருத்தங்கள்"
 
 #. Default: "Failed to undo transactions"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Failed To Undo Transactions"
-msgstr ""
+msgstr "பரிவர்த்தனைகளை செயல்தவிர்க்கத் தவறிவிட்டது"
 
 #. Default: "Field"
 #: components/manage/Blocks/Search/schema
 msgid "Field"
-msgstr ""
+msgstr "புலம்"
 
 #. Default: "File"
 #: components/manage/Toolbar/Toolbar
 msgid "File"
-msgstr ""
+msgstr "கோப்பு"
 
 #. Default: "File is not of the accepted type {accept}"
 #: components/manage/Widgets/FileWidget
 msgid "File is not of the accepted type {accept}"
-msgstr ""
+msgstr "கோப்பு ஏற்றுக்கொள்ளப்பட்ட வகைக்கு அல்ல {accept}"
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
-msgstr ""
+msgstr "கோப்பு அளவு"
 
 #. Default: "File view"
 #: config/Views
 msgid "File view"
-msgstr ""
+msgstr "கோப்பு பார்வை"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Filename"
-msgstr ""
+msgstr "கோப்புப்பெயர்"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Files uploaded: {uploadedFiles}"
-msgstr ""
+msgstr "கோப்புகள் பதிவேற்றப்பட்டன: {uploadedFiles}"
 
 #. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
 #: components/manage/Widgets/SchemaWidget
 msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
-msgstr ""
+msgstr "கொடுக்கப்பட்ட பெயருடன் முகவரி க்குள் வினவல் அளவுருவால் வழங்கப்பட்ட மதிப்புடன் படிவ புலத்தின் மதிப்பை நிரப்புகிறது."
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
-msgstr ""
+msgstr "வடிப்பி"
 
 #. Default: "Filter Rules:"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Filter Rules:"
-msgstr ""
+msgstr "வடிகட்டி விதிகள்:"
 
 #. Default: "Filter by path"
 #: components/manage/Controlpanels/Aliases
 msgid "Filter by prefix"
-msgstr ""
+msgstr "முன்னொட்டு மூலம் வடிகட்டவும்"
 
 #. Default: "Filter users by groups"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter users by groups"
-msgstr ""
+msgstr "குழுக்களால் பயனர்களை வடிகட்டவும்"
 
 #. Default: "Filter…"
 #: components/manage/Contents/Contents
 msgid "Filter…"
-msgstr ""
+msgstr "வடிகட்டி…"
 
 #. Default: "First"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "First"
-msgstr ""
+msgstr "முதல்"
 
 #. Default: "Fix relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "Fix relations"
-msgstr ""
+msgstr "உறவுகளை சரிசெய்யவும்"
 
 #. Default: "Fixed width columns"
 #: config/Blocks
 msgid "Fixed width table cells"
-msgstr ""
+msgstr "நிலையான அகல அட்டவணை செல்கள்"
 
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
-msgstr ""
+msgstr "மடிப்பு"
 
 #. Default: "Folder"
 #: components/manage/Contents/Contents
 msgid "Folder"
-msgstr ""
+msgstr "கோப்புறை"
 
 #. Default: "Folder listing"
 #: config/Views
 msgid "Folder listing"
-msgstr ""
+msgstr "கோப்புறை பட்டியல்"
 
 #. Default: "Forbidden"
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
-msgstr ""
+msgstr "தடைசெய்யப்பட்டுள்ளது"
 
 #. Default: "Fourth"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Fourth"
-msgstr ""
+msgstr "நான்காவது"
 
 #. Default: "From"
 #: components/theme/ContactForm/ContactForm
 msgid "From"
-msgstr ""
+msgstr "இருந்து"
 
 #. Default: "Full"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
 msgid "Full"
-msgstr ""
+msgstr "முழு"
 
 #. Default: "Full Name"
 #: components/theme/Register/Register
 msgid "Full Name"
-msgstr ""
+msgstr "முழு பெயர்"
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels
 msgid "Fullname"
-msgstr ""
+msgstr "முழு பெயர்"
 
 #. Default: "GNU GPL license"
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
-msgstr ""
+msgstr "குனு சிபிஎல் உரிமம்"
 
 #. Default: "General"
 #: components/manage/Controlpanels/Controlpanels
 msgid "General"
-msgstr ""
+msgstr "பொது"
 
 #. Default: "Global role"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
-msgstr ""
+msgstr "உலகளாவிய பங்கு"
 
 #. Default: "Google Maps Embedded Block"
 #: components/manage/Blocks/Maps/Edit
 msgid "Google Maps Embedded Block"
-msgstr ""
+msgstr "கூகிள் வரைபடங்கள் உட்பொதிக்கப்பட்ட தொகுதி"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
 msgid "Grid"
-msgstr ""
+msgstr "வலைவாய்"
 
 #. Default: "Group"
 #: components/manage/Sharing/Sharing
 msgid "Group"
-msgstr ""
+msgstr "குழு"
 
 #. Default: "Group created"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group created"
-msgstr ""
+msgstr "குழு உருவாக்கப்பட்டது"
 
 #. Default: "Group deleted"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group deleted"
-msgstr ""
+msgstr "குழு நீக்கப்பட்டது"
 
 #. Default: "Group roles updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group roles updated"
-msgstr ""
+msgstr "குழு பாத்திரங்கள் புதுப்பிக்கப்பட்டன"
 
 #. Default: "Groupname"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: helpers/MessageLabels/MessageLabels
 msgid "Groupname"
-msgstr ""
+msgstr "குழு பெயர்"
 
 #. Default: "Groups"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: helpers/MessageLabels/MessageLabels
 msgid "Groups"
-msgstr ""
+msgstr "குழுக்கள்"
 
 #. Default: "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 msgid "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
-msgstr ""
+msgstr "குழுக்கள் என்பது துறைகள் மற்றும் வணிக அலகுகள் போன்ற பயனர்களின் தர்க்கரீதியான சேகரிப்புகள். குழுக்கள் உலக அளவில் அனுமதிகளுடன் நேரடியாக தொடர்புடையவை அல்ல, நீங்கள் பொதுவாக அதற்கான பாத்திரங்களைப் பயன்படுத்துகிறீர்கள் - மேலும் சில குழுக்கள் ஒரு குறிப்பிட்ட பங்கைக் கொண்டிருக்கட்டும். {Plone_svg the அடையாளம் மற்றொரு குழுவில் உறுப்பினர்களிடமிருந்து பெறப்பட்ட ஒரு பங்கைக் குறிக்கிறது."
 
 #. Default: "Header cell"
 #: config/Blocks
 msgid "Header cell"
-msgstr ""
+msgstr "தலைப்பு செல்"
 
 #. Default: "Headline"
 #: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 msgid "Headline"
-msgstr ""
+msgstr "தலைப்பு"
 
 #. Default: "Headline level"
 #: components/manage/Blocks/Listing/schema
 msgid "Headline level"
-msgstr ""
+msgstr "தலைப்பு நிலை"
 
 #. Default: "Hidden facets will still filter the results if proper parameters are passed in URLs"
 #: components/manage/Blocks/Search/schema
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
-msgstr ""
+msgstr "சரியான அளவுருக்கள் முகவரி களில் அனுப்பப்பட்டால் மறைக்கப்பட்ட நற்பொருத்தங்கள் இன்னும் முடிவுகளை வடிகட்டும்"
 
 #. Default: "Hide Replies"
 #: components/theme/Comments/Comments
 msgid "Hide Replies"
-msgstr ""
+msgstr "பதில்களை மறைக்கவும்"
 
 #. Default: "Hide facet?"
 #: components/manage/Blocks/Search/schema
 msgid "Hide facet?"
-msgstr ""
+msgstr "முகத்தை மறைக்கவா?"
 
 #. Default: "Hide filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Hide filters"
-msgstr ""
+msgstr "வடிப்பான்களை மறைக்க"
 
 #. Default: "Hide title"
 #: components/manage/Blocks/ToC/Schema
 msgid "Hide title"
-msgstr ""
+msgstr "தலைப்பை மறைக்கவும்"
 
 #. Default: "History"
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 msgid "History"
-msgstr ""
+msgstr "வரலாறு"
 
 #. Default: "#"
 #: components/manage/History/History
 msgid "History Version Number"
-msgstr ""
+msgstr "வரலாற்று பதிப்பு எண்"
 
 #. Default: "History of {title}"
 #: components/manage/History/History
 msgid "History of {title}"
-msgstr ""
+msgstr "{title}"
 
 #. Default: "Home"
 #: components/manage/Contents/Contents
@@ -1783,75 +1778,75 @@ msgstr ""
 #: components/theme/Breadcrumbs/Breadcrumbs
 #: components/theme/Logo/Logo
 msgid "Home"
-msgstr ""
+msgstr "வீடு"
 
 #. Default: "ID"
 #: components/manage/Contents/Contents
 msgid "ID"
-msgstr ""
+msgstr "ஐடி"
 
 #. Default: "Icon View"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Icon View"
-msgstr ""
+msgstr "படவுரு பார்வை"
 
 #. Default: "If all of the following conditions are met:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "If all of the following conditions are met:"
-msgstr ""
+msgstr "பின்வரும் நிபந்தனைகள் அனைத்தும் நிறைவு செய்யப்பட்டால்:"
 
 #. Default: "If selected, this item will not appear in the navigation tree"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If selected, this item will not appear in the navigation tree"
-msgstr ""
+msgstr "தேர்ந்தெடுக்கப்பட்டால், இந்த உருப்படி வழிசெலுத்தல் மரத்தில் தோன்றாது"
 
 #. Default: "If this date is in the future, the content will not show up in listings and searches until this date."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If this date is in the future, the content will not show up in listings and searches until this date."
-msgstr ""
+msgstr "இந்த தேதி எதிர்காலத்தில் இருந்தால், உள்ளடக்கம் இந்த தேதி வரை பட்டியல்கள் மற்றும் தேடல்களில் காண்பிக்கப்படாது."
 
 #. Default: "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 msgid "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
-msgstr ""
+msgstr "இந்த பயனர் பொருளை கைவிட்டுவிட்டால், நீங்கள் பொருளைத் திறக்கலாம். நீங்கள் அதைத் திருத்த முடியும்."
 
 #. Default: "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
-msgstr ""
+msgstr "உங்களிடம் சரியான வலை முகவரி உள்ளது, ஆனால் பிழையை எதிர்கொள்கிறது என்பது உங்களுக்குத் தெரிந்தால், தயவுசெய்து {site_admin below ஐ தொடர்பு கொள்ளவும்."
 
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
-msgstr ""
+msgstr "படம்"
 
 #. Default: "Image gallery"
 #: config/Blocks
 msgid "Image gallery"
-msgstr ""
+msgstr "பட கேலரி"
 
 #. Default: "Image override"
 #: components/manage/Blocks/Teaser/schema
 msgid "Image override"
-msgstr ""
+msgstr "படம் மேலெழுதும்"
 
 #. Default: "Image size"
 #: components/manage/Blocks/Image/schema
 msgid "Image size"
-msgstr ""
+msgstr "பட அளவு"
 
 #. Default: "Image view"
 #: config/Views
 msgid "Image view"
-msgstr ""
+msgstr "படக் காட்சி"
 
 #. Default: "Include this occurrence"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Include this occurence"
-msgstr ""
+msgstr "இந்த நிகழ்வைச் சேர்க்கவும்"
 
 #. Default: "Info"
 #: components/manage/Controlpanels/ContentType
@@ -1859,644 +1854,644 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
-msgstr ""
+msgstr "தகவல்"
 
 #. Default: "You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left."
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 msgid "InfoUserGroupSettings"
-msgstr ""
+msgstr "இன்ஃப்யூசெர் குழுமங்கள்"
 
 #. Default: "Inherit permissions from higher levels"
 #: components/manage/Sharing/Sharing
 msgid "Inherit permissions from higher levels"
-msgstr ""
+msgstr "உயர் மட்டங்களிலிருந்து அனுமதிகளைப் பெறுதல்"
 
 #. Default: "Inherited value"
 #: components/manage/Sharing/Sharing
 msgid "Inherited value"
-msgstr ""
+msgstr "பரம்பரை மதிப்பு"
 
 #. Default: "Insert col after"
 #: config/Blocks
 msgid "Insert col after"
-msgstr ""
+msgstr "பிறகு நெடுவரிசையைச் செருகவும்"
 
 #. Default: "Insert col before"
 #: config/Blocks
 msgid "Insert col before"
-msgstr ""
+msgstr "முன் கோல் ஐ செருகவும்"
 
 #. Default: "Insert row after"
 #: config/Blocks
 msgid "Insert row after"
-msgstr ""
+msgstr "பிறகு வரிசையைச் செருகவும்"
 
 #. Default: "Insert row before"
 #: config/Blocks
 msgid "Insert row before"
-msgstr ""
+msgstr "முன் வரிசையைச் செருகவும்"
 
 #. Default: "Inspect relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "Inspect relations"
-msgstr ""
+msgstr "உறவுகளை ஆய்வு செய்யுங்கள்"
 
 #. Default: "Install"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Install"
-msgstr ""
+msgstr "நிறுவவும்"
 
 #. Default: "Installed"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed"
-msgstr ""
+msgstr "நிறுவப்பட்டது"
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed version"
-msgstr ""
+msgstr "நிறுவப்பட்ட பதிப்பு"
 
 #. Default: "Installing a third party add-on"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installing a third party add-on"
-msgstr ""
+msgstr "மூன்றாம் தரப்பு துணை நிரலை நிறுவுதல்"
 
 #. Default: "days"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Daily"
-msgstr ""
+msgstr "தினமும் இடைவெளி"
 
 #. Default: "Month(s)"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Monthly"
-msgstr ""
+msgstr "இடைவெளி மாதாந்திர"
 
 #. Default: "week(s)"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Weekly"
-msgstr ""
+msgstr "இடைவெளி வாராந்திர"
 
 #. Default: "year(s)"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Yearly"
-msgstr ""
+msgstr "ஆண்டுதோறும் இடைவெளி"
 
 #. Default: "Invalid block - Will be removed on saving"
 #: components/manage/Blocks/Block/DefaultView
 #: components/theme/View/RenderBlocks
 msgid "Invalid Block"
-msgstr ""
+msgstr "தவறான தொகுதி"
 
 #. Default: "Invalid teaser source"
 #: components/manage/Blocks/Teaser/Data
 msgid "Invalid teaser source"
-msgstr ""
+msgstr "தவறான டீசர் மூல"
 
 #. Default: "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 #: helpers/MessageLabels/MessageLabels
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
-msgstr ""
+msgstr "கடவுச்சொல் இரண்டையும் வரையறுக்கவும், கடவுச்சொல் மீட்டமைப்பு செய்தியை மின்னஞ்சல் மூலம் அனுப்பவும் கோர அனுமதிக்கப்படவில்லை. அவற்றில் ஒன்றைத் தேர்ந்தெடுக்க வேண்டும்."
 
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
-msgstr ""
+msgstr "உருப்படி தொகுதி அளவு"
 
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
 msgid "Item successfully moved."
-msgstr ""
+msgstr "உருப்படி வெற்றிகரமாக நகர்ந்தது."
 
 #. Default: "Item(s) copied."
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
-msgstr ""
+msgstr "உருப்படி (கள்) நகலெடுக்கப்பட்டது."
 
 #. Default: "Item(s) cut."
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
-msgstr ""
+msgstr "உருப்படி (கள்) வெட்டு."
 
 #. Default: "Item(s) has been updated."
 #: components/manage/Contents/Contents
 msgid "Item(s) has been updated."
-msgstr ""
+msgstr "உருப்படி (கள்) புதுப்பிக்கப்பட்டுள்ளது."
 
 #. Default: "Item(s) pasted."
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Item(s) pasted."
-msgstr ""
+msgstr "உருப்படி (கள்) ஒட்டப்பட்டது."
 
 #. Default: "Item(s) state has been updated."
 #: components/manage/Contents/Contents
 msgid "Item(s) state has been updated."
-msgstr ""
+msgstr "உருப்படி (கள்) நிலை புதுப்பிக்கப்பட்டுள்ளது."
 
 #. Default: "Items"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
-msgstr ""
+msgstr "உருப்படிகள்"
 
 #. Default: "Items must be unique."
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Items must be unique."
-msgstr ""
+msgstr "உருப்படிகள் தனித்துவமாக இருக்க வேண்டும்."
 
 #. Default: "Label"
 #: components/manage/Blocks/Search/schema
 msgid "Label"
-msgstr ""
+msgstr "சிட்டை"
 
 #. Default: "Language"
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
-msgstr ""
+msgstr "மொழி"
 
 #. Default: "Language independent field."
 #: components/manage/Widgets/FormFieldWrapper
 msgid "Language independent field."
-msgstr ""
+msgstr "மொழி சுயாதீன புலம்."
 
 #. Default: "This is a language independent field. Any value you enter here will overwrite the corresponding field of all members of the translation group when you save this form."
 #: components/manage/Widgets/FormFieldWrapper
 msgid "Language independent icon title"
-msgstr ""
+msgstr "மொழி சுயாதீன படவுரு தலைப்பு"
 
 #. Default: "Large"
 #: components/manage/Widgets/ImageSizeWidget
 msgid "Large"
-msgstr ""
+msgstr "பெரிய"
 
 #. Default: "Last"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Last"
-msgstr ""
+msgstr "கடைசி"
 
 #. Default: "Last comment date"
 #: components/manage/Contents/Contents
 msgid "Last comment date"
-msgstr ""
+msgstr "கடைசி கருத்து தேதி"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
-msgstr ""
+msgstr "கடைசியாக மாற்றப்பட்டது"
 
 #. Default: "Latest available configuration"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Latest available configuration"
-msgstr ""
+msgstr "அண்மைக் கால கிடைக்கக்கூடிய உள்ளமைவு"
 
 #. Default: "Latest version"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Latest version"
-msgstr ""
+msgstr "அண்மைக் கால பதிப்பு"
 
 #. Default: "Layout"
 #: components/manage/Controlpanels/ContentTypesActions
 msgid "Layout"
-msgstr ""
+msgstr "மனையமைவு"
 
 #. Default: "Lead Image"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
-msgstr ""
+msgstr "முன்னணி படம்"
 
 #. Default: "Left"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
 msgid "Left"
-msgstr ""
+msgstr "இடது"
 
 #. Default: "Less filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Less filters"
-msgstr ""
+msgstr "குறைவான வடிப்பான்கள்"
 
 #. Default: "Link"
 #: components/manage/Toolbar/Toolbar
 msgid "Link"
-msgstr ""
+msgstr "இணைப்பு"
 
 #. Default: "Anchor link copied to the clipboard"
 #: helpers/MessageLabels/MessageLabels
 msgid "Link copied to clipboard"
-msgstr ""
+msgstr "கிளிப்போர்டில் இணைப்பு நகலெடுக்கப்பட்டது"
 
 #. Default: "Link more"
 #: components/manage/Blocks/Listing/schema
 msgid "Link more"
-msgstr ""
+msgstr "மேலும் இணைக்கவும்"
 
 #. Default: "Link redirect view"
 #: config/Views
 msgid "Link redirect view"
-msgstr ""
+msgstr "இணைப்பு திருப்பி பார்வை"
 
 #. Default: "Link settings"
 #: components/manage/Blocks/Image/schema
 msgid "Link settings"
-msgstr ""
+msgstr "இணைப்பு அமைப்புகள்"
 
 #. Default: "Link Title"
 #: components/manage/Blocks/Listing/schema
 msgid "Link title"
-msgstr ""
+msgstr "இணைப்பு தலைப்பு"
 
 #. Default: "Link to"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
 msgid "Link to"
-msgstr ""
+msgstr "இணைப்பு"
 
 #. Default: "Link translation for"
 #: components/manage/Multilingual/ManageTranslations
 msgid "Link translation for"
-msgstr ""
+msgstr "இணைப்பு மொழிபெயர்ப்பு"
 
 #. Default: "Linking this item with hyperlink in text"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Linking this item with hyperlink in text"
-msgstr ""
+msgstr "இந்த உருப்படியை உரையில் ஐப்பர்லிங்குடன் இணைக்கிறது"
 
 #. Default: "Links and references"
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Toolbar/More
 msgid "Links and references"
-msgstr ""
+msgstr "இணைப்புகள் மற்றும் குறிப்புகள்"
 
 #. Default: "List View"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "List View"
-msgstr ""
+msgstr "பட்டியல் பார்வை"
 
 #. Default: "Listing"
 #: components/manage/Blocks/Listing/schema
 msgid "Listing"
-msgstr ""
+msgstr "பட்டியல்"
 
 #. Default: "Listing view"
 #: config/Views
 msgid "Listing view"
-msgstr ""
+msgstr "பட்டியல் பார்வை"
 
 #. Default: "Load more..."
 #: components/theme/Comments/Comments
 msgid "Load more"
-msgstr ""
+msgstr "மேலும் ஏற்றவும்"
 
 #. Default: "Loading."
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
 msgid "Loading"
-msgstr ""
+msgstr "ஏற்றுகிறது"
 
 #. Default: "Login"
 #: components/theme/Login/Login
 msgid "Log In"
-msgstr ""
+msgstr "புகுபதிகை"
 
 #. Default: "Log in"
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 msgid "Log in"
-msgstr ""
+msgstr "புகுபதிகை"
 
 #. Default: "Logged out"
 #: components/theme/Logout/Logout
 msgid "Logged out"
-msgstr ""
+msgstr "வெளியேறியது"
 
 #. Default: "Login"
 #: components/theme/Login/Login
 msgid "Login"
-msgstr ""
+msgstr "புகுபதிவு"
 
 #. Default: "Login Failed"
 #: components/theme/Login/Login
 msgid "Login Failed"
-msgstr ""
+msgstr "உள்நுழைவு தோல்வியடைந்தது"
 
 #. Default: "Login Name"
 #: components/theme/Login/Login
 msgid "Login Name"
-msgstr ""
+msgstr "உள்நுழைவு பெயர்"
 
 #. Default: "Logo of"
 #: components/theme/Logo/Logo
 msgid "Logo of"
-msgstr ""
+msgstr "லோகோ"
 
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools
 msgid "Logout"
-msgstr ""
+msgstr "வெளியேற்றம்"
 
 #. Default: "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
-msgstr ""
+msgstr "{creator} இல் {படைப்பாளரால் தயாரிக்கப்பட்டது. இது இனி வேலை செய்யும் நகல் அல்ல, ஆனால் முக்கிய உள்ளடக்கம்."
 
 #. Default: "Reduce cell padding"
 #: config/Blocks
 msgid "Make the table compact"
-msgstr ""
+msgstr "அட்டவணையை கச்சிதமாக்கவும்"
 
 #. Default: "Manage Translations"
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Toolbar/More
 msgid "Manage Translations"
-msgstr ""
+msgstr "மொழிபெயர்ப்புகளை நிர்வகிக்கவும்"
 
 #. Default: "Manage content…"
 #: components/manage/Toolbar/More
 msgid "Manage content…"
-msgstr ""
+msgstr "உள்ளடக்கத்தை நிர்வகிக்கவும்…"
 
 #. Default: "Manage translations for {title}"
 #: components/manage/Multilingual/ManageTranslations
 msgid "Manage translations for {title}"
-msgstr ""
+msgstr "{தலைப்பு க்கு க்கான மொழிபெயர்ப்புகளை நிர்வகிக்கவும்"
 
 #. Default: "Manual"
 #: components/manage/Controlpanels/Aliases
 msgid "Manual"
-msgstr ""
+msgstr "கையேடு"
 
 #. Default: "Manually"
 #: components/manage/Controlpanels/Aliases
 msgid "Manually"
-msgstr ""
+msgstr "கைமுறையாக"
 
 #. Default: "Manually or automatically added?"
 #: components/manage/Controlpanels/Aliases
 msgid "Manually or automatically added?"
-msgstr ""
+msgstr "கைமுறையாக அல்லது தானாக சேர்க்கப்பட்டதா?"
 
 #. Default: "Many relations found. Please search."
 #: helpers/MessageLabels/MessageLabels
 msgid "Many relations found. Please search."
-msgstr ""
+msgstr "பல உறவுகள் காணப்பட்டன. தயவுசெய்து தேடுங்கள்."
 
 #. Default: "Maps"
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
 msgid "Maps"
-msgstr ""
+msgstr "வரைபடங்கள்"
 
 #. Default: "Maps URL"
 #: components/manage/Blocks/Maps/schema
 msgid "Maps URL"
-msgstr ""
+msgstr "வரைபட முகவரி"
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum length is {len}."
-msgstr ""
+msgstr "அதிகபட்ச நீளம் {len}."
 
 #. Default: "Maximum value is {len}."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum value is {len}."
-msgstr ""
+msgstr "அதிகபட்ச மதிப்பு {len}."
 
 #. Default: "Medium"
 #: components/manage/Widgets/ImageSizeWidget
 msgid "Medium"
-msgstr ""
+msgstr "சராசரி"
 
 #. Default: "Membership updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
-msgstr ""
+msgstr "உறுப்பினர் புதுப்பிக்கப்பட்டது"
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
-msgstr ""
+msgstr "செய்தி"
 
 #. Default: "Minimum length is {len}."
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Minimum length is {len}."
-msgstr ""
+msgstr "குறைந்தபட்ச நீளம் {len}."
 
 #. Default: "Minimum value is {len}."
 #: helpers/MessageLabels/MessageLabels
 msgid "Minimum value is {len}."
-msgstr ""
+msgstr "குறைந்தபட்ச மதிப்பு {len}."
 
 #. Default: "Moderate Comments"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
-msgstr ""
+msgstr "மிதமான கருத்துகள்"
 
 #. Default: "Moderate comments"
 #: components/manage/Controlpanels/ModerateComments
 msgid "Moderate comments"
-msgstr ""
+msgstr "மிதமான கருத்துகள்"
 
 #. Default: "Monday and Friday"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monday and Friday"
-msgstr ""
+msgstr "திங்கள் மற்றும் வெள்ளி"
 
 #. Default: "Day"
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 msgid "Month day"
-msgstr ""
+msgstr "மாத நாள்"
 
 #. Default: "Monthly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monthly"
-msgstr ""
+msgstr "மாதாந்திர"
 
 #. Default: "More"
 #: components/manage/Toolbar/Toolbar
 msgid "More"
-msgstr ""
+msgstr "மேலும்"
 
 #. Default: "More filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "More filters"
-msgstr ""
+msgstr "மேலும் வடிப்பான்கள்"
 
 #. Default: "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
-msgstr ""
+msgstr "மேம்படுத்தல் நடைமுறையைப் பற்றிய கூடுதல் தகவல்களை மேம்படுத்தல் வழிகாட்டியில் plone.org இன் ஆவணங்கள் பிரிவில் காணலாம்."
 
 #. Default: "Mosaic layout"
 #: config/Views
 msgid "Mosaic layout"
-msgstr ""
+msgstr "மொசைக் தளவமைப்பு"
 
 #. Default: "Move down"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Move down"
-msgstr ""
+msgstr "கீழே செல்லுங்கள்"
 
 #. Default: "Move to bottom of folder"
 #: components/manage/Contents/ContentsItem
 msgid "Move to bottom of folder"
-msgstr ""
+msgstr "கோப்புறையின் அடிப்பகுதிக்கு நகர்த்தவும்"
 
 #. Default: "Move to top of folder"
 #: components/manage/Contents/ContentsItem
 msgid "Move to top of folder"
-msgstr ""
+msgstr "கோப்புறையின் மேலே செல்லுங்கள்"
 
 #. Default: "Move up"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Move up"
-msgstr ""
+msgstr "மேலே செல்லுங்கள்"
 
 #. Default: "Multiple choices?"
 #: components/manage/Blocks/Search/schema
 msgid "Multiple choices?"
-msgstr ""
+msgstr "பல தேர்வுகள்?"
 
 #. Default: "My email is"
 #: components/theme/PasswordReset/PasswordReset
 msgid "My email is"
-msgstr ""
+msgstr "எனது மின்னஞ்சல்"
 
 #. Default: "My user name is"
 #: components/theme/PasswordReset/PasswordReset
 msgid "My username is"
-msgstr ""
+msgstr "எனது பயனர்பெயர்"
 
 #. Default: "Name"
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
 msgid "Name"
-msgstr ""
+msgstr "பெயர்"
 
 #. Default: "Narrow"
 #: components/manage/Widgets/AlignWidget
 msgid "Narrow"
-msgstr ""
+msgstr "குறுகிய"
 
 #. Default: "Navigate back"
 #: error
 msgid "Navigate back"
-msgstr ""
+msgstr "மீண்டும் செல்லவும்"
 
 #. Default: "Navigate to this item"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Navigate to this item"
-msgstr ""
+msgstr "இந்த உருப்படிக்கு செல்லவும்"
 
 #. Default: "Navigation"
 #: components/theme/Navigation/ContextNavigation
 msgid "Navigation"
-msgstr ""
+msgstr "வானோடல்"
 
 #. Default: "New password"
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
-msgstr ""
+msgstr "புதிய கடவுச்சொல்"
 
 #. Default: "News Item"
 #: components/manage/Toolbar/Toolbar
 msgid "News Item"
-msgstr ""
+msgstr "செய்தி பொருள்"
 
 #. Default: "News item view"
 #: config/Views
 msgid "News item view"
-msgstr ""
+msgstr "செய்தி பொருள் பார்வை"
 
 #. Default: "No"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
 msgid "No"
-msgstr ""
+msgstr "இல்லை"
 
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
-msgstr ""
+msgstr "பரிவர்த்தனைகள் எதுவும் கிடைக்கவில்லை"
 
 #. Default: "No transactions selected"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Selected"
-msgstr ""
+msgstr "பரிவர்த்தனைகள் எதுவும் தேர்ந்தெடுக்கப்படவில்லை"
 
 #. Default: "No transactions selected to do undo"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Selected To Do Undo"
-msgstr ""
+msgstr "செயல்தவிர் செய்ய பரிவர்த்தனைகள் எதுவும் தேர்ந்தெடுக்கப்படவில்லை"
 
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
-msgstr ""
+msgstr "வீடியோ எதுவும் தேர்ந்தெடுக்கப்படவில்லை"
 
 #. Default: "No addons found"
 #: components/manage/Controlpanels/VersionOverview
 msgid "No addons found"
-msgstr ""
+msgstr "எந்த துணை நிரலும் கிடைக்கவில்லை"
 
 #. Default: "No broken relations found."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "No broken relations found."
-msgstr ""
+msgstr "உடைந்த உறவுகள் எதுவும் கிடைக்கவில்லை."
 
 #. Default: "There is no connection to the server, due to a timeout o no network connection."
 #: components/theme/RequestTimeout/RequestTimeout
 msgid "No connection to the server"
-msgstr ""
+msgstr "சேவையகத்துடன் எந்த தொடர்பும் இல்லை"
 
 #. Default: "No image selected"
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
-msgstr ""
+msgstr "எந்த படமும் தேர்ந்தெடுக்கப்படவில்லை"
 
 #. Default: "No image set in Lead Image content field"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in Lead Image content field"
-msgstr ""
+msgstr "முன்னணி பட உள்ளடக்க புலத்தில் எந்த படமும் அமைக்கப்படவில்லை"
 
 #. Default: "No image set in image content field"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in image content field"
-msgstr ""
+msgstr "பட உள்ளடக்க புலத்தில் எந்த படமும் அமைக்கப்படவில்லை"
 
 #. Default: "No images found."
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
-msgstr ""
+msgstr "படங்கள் எதுவும் கிடைக்கவில்லை."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
-msgstr ""
+msgstr "இந்த கொள்கலனில் எந்த உருப்படிகளும் காணப்படவில்லை."
 
 #. Default: "No items selected"
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "No items selected"
-msgstr ""
+msgstr "உருப்படிகள் எதுவும் தேர்ந்தெடுக்கப்படவில்லை"
 
 #. Default: "No links to this item found."
 #: components/manage/LinksToItem/LinksToItem
 msgid "No links to this item found."
-msgstr ""
+msgstr "இந்த உருப்படிக்கு இணைப்புகள் எதுவும் கிடைக்கவில்லை."
 
 #. Default: "No map selected"
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
-msgstr ""
+msgstr "எந்த வரைபடமும் தேர்ந்தெடுக்கப்படவில்லை"
 
 #. Default: "No occurences set"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "No occurences set"
-msgstr ""
+msgstr "நிகழ்வுகள் எதுவும் அமைக்கப்படவில்லை"
 
 #. Default: "No options"
 #: components/manage/Widgets/ArrayWidget
@@ -2504,41 +2499,41 @@ msgstr ""
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 msgid "No options"
-msgstr ""
+msgstr "விருப்பங்கள் இல்லை"
 
 #. Default: "No relation found"
 #: helpers/MessageLabels/MessageLabels
 msgid "No relation found"
-msgstr ""
+msgstr "எந்த உறவும் காணப்படவில்லை"
 
 #. Default: "No results found"
 #: components/manage/BlockChooser/BlockChooser
 #: components/theme/Search/Search
 msgid "No results found"
-msgstr ""
+msgstr "முடிவுகள் எதுவும் கிடைக்கவில்லை"
 
 #. Default: "No results found."
 #: components/manage/Blocks/Listing/DefaultNoResultsComponent
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
-msgstr ""
+msgstr "முடிவுகள் எதுவும் கிடைக்கவில்லை."
 
 #. Default: "No selection"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 msgid "No selection"
-msgstr ""
+msgstr "தேர்வு இல்லை"
 
 #. Default: "This addon does not provide an uninstall profile."
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "No uninstall profile"
-msgstr ""
+msgstr "நிறுவல் நீக்குதல் சுயவிவரம் இல்லை"
 
 #. Default: "No user found"
 #: helpers/MessageLabels/MessageLabels
 msgid "No user found"
-msgstr ""
+msgstr "பயனர் எதுவும் கிடைக்கவில்லை"
 
 #. Default: "No value"
 #: components/manage/Widgets/ArrayWidget
@@ -2546,593 +2541,593 @@ msgstr ""
 #: components/manage/Widgets/SelectUtils
 #: components/manage/Widgets/SelectWidget
 msgid "No value"
-msgstr ""
+msgstr "மதிப்பு இல்லை"
 
 #. Default: "No workflow"
 #: components/manage/Workflow/Workflow
 msgid "No workflow"
-msgstr ""
+msgstr "பணிப்பாய்வு இல்லை"
 
 #. Default: "None"
 #: components/manage/Contents/Contents
 msgid "None"
-msgstr ""
+msgstr "எதுவுமில்லை"
 
 #. Default: "None"
 #: components/manage/Contents/ContentsItem
 msgid "Not available"
-msgstr ""
+msgstr "கிடைக்கவில்லை"
 
 #. Default: "Note"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Note"
-msgstr ""
+msgstr "குறிப்பு"
 
 #. Default: "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
 #: components/manage/Controlpanels/Users/UsersControlpanel
 msgid "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
-msgstr ""
+msgstr "இங்கே அமைக்கப்பட்ட பாத்திரங்கள் ஒரு பயனருக்கு நேரடியாகப் பொருந்தும் என்பதை நினைவில் கொள்க. {Plone_svg the அடையாளம் ஒரு குழுவில் உறுப்பினரிடமிருந்து பெறப்பட்ட ஒரு பங்கைக் குறிக்கிறது."
 
 #. Default: "Number of active objects"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
-msgstr ""
+msgstr "செயலில் உள்ள பொருட்களின் எண்ணிக்கை"
 
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
 msgid "Object Size"
-msgstr ""
+msgstr "பொருள் அளவு"
 
 #. Default: "occurrence(s)"
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Occurences"
-msgstr ""
+msgstr "நிகழ்வுகள்"
 
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
-msgstr ""
+msgstr "சரி"
 
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
-msgstr ""
+msgstr "7-பிட் பைட்டுகள் எழுத்துக்கள் மட்டுமே அனுமதிக்கப்படுகின்றன. பெரிய எழுத்துக்கள், சிறப்பு எழுத்துக்கள்: <,>, &, #, /,?, அல்லது முகவரி களில் சட்டவிரோதமானது. தொடங்க முடியாது: _, aq_, @@, ++. __ உடன் முடிவடைய முடியாது. இருக்க முடியாது: கோரிக்கை, பங்களிப்பாளர்கள்,., .., "". புதிய வரிகளைக் கொண்டிருக்க முடியாது."
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Teaser/schema
 msgid "Open in a new tab"
-msgstr ""
+msgstr "புதிய தாவலில் திறக்கவும்"
 
 #. Default: "Open menu"
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
-msgstr ""
+msgstr "திறந்த பட்டியல்"
 
 #. Default: "Open object browser"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
-msgstr ""
+msgstr "திறந்த பொருள் உலாவி"
 
 #. Default: "Order"
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
-msgstr ""
+msgstr "ஒழுங்கு"
 
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
-msgstr ""
+msgstr "உத்தரவிடப்பட்டது"
 
 #. Default: "Origin"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
-msgstr ""
+msgstr "தோற்றம்"
 
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Overview of relations of all content items"
-msgstr ""
+msgstr "அனைத்து உள்ளடக்க உருப்படிகளின் உறவுகளின் கண்ணோட்டம்"
 
 #. Default: "Page"
 #: components/manage/Toolbar/Toolbar
 msgid "Page"
-msgstr ""
+msgstr "பக்கம்"
 
 #. Default: "Parent fieldset"
 #: components/manage/Widgets/SchemaWidget
 msgid "Parent fieldset"
-msgstr ""
+msgstr "பெற்றோர் புலம்"
 
 #. Default: "Password"
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Password"
-msgstr ""
+msgstr "கடவுச்சொல்"
 
 #. Default: "Password reset"
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Password reset"
-msgstr ""
+msgstr "கடவுச்சொல் மீட்டமைப்பு"
 
 #. Default: "Passwords do not match."
 #: components/theme/PasswordReset/PasswordReset
 msgid "Passwords do not match."
-msgstr ""
+msgstr "கடவுச்சொற்கள் பொருந்தவில்லை."
 
 #. Default: "Paste"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Paste"
-msgstr ""
+msgstr "ஒட்டு"
 
 #. Default: "Paste blocks"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
-msgstr ""
+msgstr "தொகுதிகள் ஒட்டவும்"
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Perform the following actions:"
-msgstr ""
+msgstr "பின்வரும் செயல்களைச் செய்யுங்கள்:"
 
 #. Default: "Permissions have been updated successfully"
 #: components/manage/Sharing/Sharing
 msgid "Permissions have been updated successfully"
-msgstr ""
+msgstr "அனுமதிகள் வெற்றிகரமாக புதுப்பிக்கப்பட்டுள்ளன"
 
 #. Default: "Permissions updated"
 #: components/manage/Sharing/Sharing
 msgid "Permissions updated"
-msgstr ""
+msgstr "அனுமதிகள் புதுப்பிக்கப்பட்டன"
 
 #. Default: "Personal Information"
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
-msgstr ""
+msgstr "தனிப்பட்ட செய்தி"
 
 #. Default: "Personal Preferences"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
-msgstr ""
+msgstr "தனிப்பட்ட விருப்பத்தேர்வுகள்"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
 #: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
-msgstr ""
+msgstr "தனிப்பட்ட கருவிகள்"
 
 #. Default: "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
-msgstr ""
+msgstr "இந்த உருப்படியின் உள்ளடக்கத்தை உருவாக்குவதற்கு பொறுப்பான நபர்கள். ஒரு வரிக்கு ஒன்று, பயனர் பெயர்களின் பட்டியலை உள்ளிடவும். முதன்மை படைப்பாளி முதலில் வர வேண்டும்."
 
 #. Default: "Placeholder"
 #: components/manage/Widgets/SchemaWidget
 msgid "Placeholder"
-msgstr ""
+msgstr "இடம் வைத்திருப்பவர்"
 
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
-msgstr ""
+msgstr "இந்த உறுப்புக்கான ஆதாரமாக ஏற்கனவே உள்ள உள்ளடக்கத்தைத் தேர்வுசெய்க"
 
 #. Default: "Please continue with the upgrade."
 #: components/manage/Controlpanels/Controlpanels
 msgid "Please continue with the upgrade."
-msgstr ""
+msgstr "மேம்படுத்தலுடன் தொடரவும்."
 
 #. Default: "Please ensure you have a backup of your site before performing the upgrade."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Please ensure you have a backup of your site before performing the upgrade."
-msgstr ""
+msgstr "மேம்படுத்தலைச் செய்வதற்கு முன்பு உங்கள் தளத்தின் காப்புப்பிரதி இருப்பதை உறுதிப்படுத்தவும்."
 
 #. Default: "Please enter a valid URL by deleting the block and adding a new video block."
 #: components/manage/Blocks/Video/Body
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr ""
+msgstr "தொகுதியை நீக்கி புதிய வீடியோ தொகுதியைச் சேர்ப்பதன் மூலம் செல்லுபடியாகும் முகவரி ஐ உள்ளிடவும்."
 
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
-msgstr ""
+msgstr "கூகிள் வரைபடத்தால் வழங்கப்பட்ட உட்பொதிப்பு குறியீட்டை உள்ளிடவும் -> பகிர்வு -> உட்பொதிக்கப்பட்ட வரைபடம். அதில் <iframe> குறியீடு இருக்க வேண்டும்."
 
 #. Default: "Please fill out the form below to set your password."
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
-msgstr ""
+msgstr "உங்கள் கடவுச்சொல்லை அமைக்க கீழே உள்ள படிவத்தை நிரப்பவும்."
 
 #. Default: "Please search for users or use the filters on the side."
 #: helpers/MessageLabels/MessageLabels
 msgid "Please search for users or use the filters on the side."
-msgstr ""
+msgstr "பயனர்களைத் தேடுங்கள் அல்லது பக்கத்திலுள்ள வடிப்பான்களைப் பயன்படுத்தவும்."
 
 #. Default: "Please upgrade to plone.restapi >= 8.24.0."
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 msgid "Please upgrade to plone.restapi >= 8.24.0."
-msgstr ""
+msgstr "தயவுசெய்து plone.restapi> = 8.24.0 க்கு மேம்படுத்தவும்."
 
 #. Default: "Please upgrade to plone.restapi >= 8.39.0."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "Please upgrade to plone.restapi >= 8.39.0."
-msgstr ""
+msgstr "தயவுசெய்து plone.restapi> = 8.39.0 க்கு மேம்படுத்தவும்."
 
 #. Default: "Plone Foundation"
 #: components/theme/Footer/Footer
 msgid "Plone Foundation"
-msgstr ""
+msgstr "ப்ளோன் அறக்கட்டளை"
 
 #. Default: "Plone{reg} Open Source CMS/WCM"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
-msgstr ""
+msgstr "ப்ளோன் {reg} திறந்த மூல CMS/WCM"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Position changed"
-msgstr ""
+msgstr "நிலை மாற்றப்பட்டது"
 
 #. Default: "Possible values (Enter allowed choices one per line)."
 #: components/manage/Widgets/SchemaWidget
 msgid "Possible values"
-msgstr ""
+msgstr "சாத்தியமான மதிப்புகள்"
 
 #. Default: "Powered by Plone & Python"
 #: components/theme/Footer/Footer
 msgid "Powered by Plone & Python"
-msgstr ""
+msgstr "ப்ளோன் & பைதான் மூலம் இயக்கப்படுகிறது"
 
 #. Default: "Preferences"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
-msgstr ""
+msgstr "விருப்பத்தேர்வுகள்"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
-msgstr ""
+msgstr "உங்கள் குறியீட்டை முன்னுரிமை செய்யுங்கள்"
 
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
-msgstr ""
+msgstr "முன்னோட்டம்"
 
 #. Default: "Preview Image URL"
 #: components/manage/Blocks/Video/schema
 msgid "Preview Image URL"
-msgstr ""
+msgstr "பட முகவரி ஐ முன்னோட்டமிடுங்கள்"
 
 #. Default: "Profile"
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
-msgstr ""
+msgstr "சுயவிவரம்"
 
 #. Default: "Properties"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Properties"
-msgstr ""
+msgstr "பண்புகள்"
 
 #. Default: "Publication date"
 #: components/manage/Contents/Contents
 msgid "Publication date"
-msgstr ""
+msgstr "வெளியீட்டு தேதி"
 
 #. Default: "Publishing Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Publishing Date"
-msgstr ""
+msgstr "வெளியீட்டு தேதி"
 
 #. Default: "Query"
 #: components/manage/Blocks/Listing/schema
 msgid "Query"
-msgstr ""
+msgstr "வினவல்"
 
 #. Default: "Query Parameter Name"
 #: components/manage/Widgets/SchemaWidget
 msgid "Query Parameter Name"
-msgstr ""
+msgstr "வினவல் அளவுரு பெயர்"
 
 #. Default: "Re-enter the password. Make sure the passwords are identical."
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Re-enter the password. Make sure the passwords are identical."
-msgstr ""
+msgstr "கடவுச்சொல்லை மீண்டும் உள்ளிடவும். கடவுச்சொற்கள் ஒரே மாதிரியாக இருப்பதை உறுதிசெய்க."
 
 #. Default: "Read More…"
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
 msgid "Read More…"
-msgstr ""
+msgstr "மேலும் வாசிக்க…"
 
 #. Default: "Read only for this type of relation."
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "Read only for this type of relation."
-msgstr ""
+msgstr "இந்த வகை உறவுக்கு மட்டுமே படியுங்கள்."
 
 #. Default: "Rearrange items by…"
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
-msgstr ""
+msgstr "பொருட்களை மறுசீரமைக்கவும்…"
 
 #. Default: "Ends"
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends"
-msgstr ""
+msgstr "மறுநிகழ்வு முடிவடைகிறது"
 
 #. Default: "after"
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends after"
-msgstr ""
+msgstr "மறுநிகழ்வு பின்னர் முடிகிறது"
 
 #. Default: "on"
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends on"
-msgstr ""
+msgstr "மறுநிகழ்வு முடிவடைகிறது"
 
 #. Default: "Redo"
 #: components/manage/Form/UndoToolbar
 msgid "Redo"
-msgstr ""
+msgstr "மீண்டும்செய்"
 
 #. Default: "Minimalistic table design"
 #: config/Blocks
 msgid "Reduce complexity"
-msgstr ""
+msgstr "சிக்கலைக் குறைக்கவும்"
 
 #. Default: "Referencing this item as related item"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item as related item"
-msgstr ""
+msgstr "இந்த உருப்படியை தொடர்புடைய உருப்படியாகக் குறிப்பிடுகிறது"
 
 #. Default: "Referencing this item with {relationship}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item with {relationship}"
-msgstr ""
+msgstr "இந்த உருப்படியை {உறவு with உடன் குறிப்பிடுவது"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
-msgstr ""
+msgstr "மூல உள்ளடக்கத்தை புதுப்பிக்கவும்"
 
 #. Default: "Register"
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
 msgid "Register"
-msgstr ""
+msgstr "பதிவு செய்யுங்கள்"
 
 #. Default: "Registration form"
 #: components/theme/Register/Register
 msgid "Registration form"
-msgstr ""
+msgstr "பதிவு படிவம்"
 
 #. Default: "Related Items"
 #: components/theme/RelatedItems/RelatedItems
 msgid "Related Items"
-msgstr ""
+msgstr "தொடர்புடைய உருப்படிகள்"
 
 #. Default: "Relation"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 #: helpers/MessageLabels/MessageLabels
 msgid "Relation name"
-msgstr ""
+msgstr "உறவு பெயர்"
 
 #. Default: "Relations"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Relations/Relations
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations"
-msgstr ""
+msgstr "உறவுகள்"
 
 #. Default: "Relations are editable with plone.api >= 2.0.3."
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "Relations are editable with plone.api >= 2.0.3."
-msgstr ""
+msgstr "உறவுகள் plone.api> = 2.0.3 உடன் திருத்தக்கூடியவை."
 
 #. Default: "Relations updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
-msgstr ""
+msgstr "உறவுகள் புதுப்பிக்கப்பட்டன"
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
 msgid "Relevance"
-msgstr ""
+msgstr "பொருத்தமானது"
 
 #. Default: "Remove"
 #: components/manage/Aliases/Aliases
 msgid "Remove"
-msgstr ""
+msgstr "அகற்று"
 
 #. Default: "Remove element {index}"
 #: components/manage/Blocks/Container/EditBlockWrapper
 msgid "Remove element {index}"
-msgstr ""
+msgstr "உறுப்பை அகற்று {index}"
 
 #. Default: "Remove item"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
-msgstr ""
+msgstr "உருப்படியை அகற்று"
 
 #. Default: "Remove"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
-msgstr ""
+msgstr "மீண்டும் வருவதை அகற்று"
 
 #. Default: "Remove selected"
 #: components/manage/Controlpanels/Aliases
 msgid "Remove selected"
-msgstr ""
+msgstr "தேர்ந்தெடுக்கப்பட்டதை அகற்று"
 
 #. Default: "Remove term"
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Remove term"
-msgstr ""
+msgstr "காலத்தை அகற்று"
 
 #. Default: "Remove users from group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Remove users from group"
-msgstr ""
+msgstr "குழுவிலிருந்து பயனர்களை அகற்று"
 
 #. Default: "Remove working copy"
 #: components/manage/Toolbar/More
 msgid "Remove working copy"
-msgstr ""
+msgstr "வேலை நகலை அகற்று"
 
 #. Default: "Rename"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
-msgstr ""
+msgstr "மறுபெயரிடுங்கள்"
 
 #. Default: "Renaming items..."
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename Items Loading Message"
-msgstr ""
+msgstr "பொருட்களை ஏற்றும் செய்தியை மறுபெயரிடுங்கள்"
 
 #. Default: "Rename items"
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
-msgstr ""
+msgstr "உருப்படிகளை மறுபெயரிடுங்கள்"
 
 #. Default: "Repeat"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat"
-msgstr ""
+msgstr "மீண்டும்"
 
 #. Default: "Repeat every"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat every"
-msgstr ""
+msgstr "ஒவ்வொன்றையும் மீண்டும் செய்யவும்"
 
 #. Default: "Repeat on"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat on"
-msgstr ""
+msgstr "மீண்டும் செய்யவும்"
 
 #. Default: "Replace existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Replace existing file"
-msgstr ""
+msgstr "இருக்கும் கோப்பை மாற்றவும்"
 
 #. Default: "Reply"
 #: components/theme/Comments/Comments
 msgid "Reply"
-msgstr ""
+msgstr "பதில்"
 
 #. Default: "Required"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 msgid "Required"
-msgstr ""
+msgstr "தேவை"
 
 #. Default: "Required input is missing."
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
-msgstr ""
+msgstr "தேவையான உள்ளீடு இல்லை."
 
 #. Default: "Reset element {index}"
 #: components/manage/Blocks/Container/EditBlockWrapper
 msgid "Reset element {index}"
-msgstr ""
+msgstr "உறுப்பு {index} மீட்டமை"
 
 #. Default: "Reset title"
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Reset term title"
-msgstr ""
+msgstr "கால தலைப்பை மீட்டமைக்கவும்"
 
 #. Default: "Reset the block"
 #: components/manage/Blocks/Teaser/Data
 msgid "Reset the block"
-msgstr ""
+msgstr "தொகுதியை மீட்டமைக்கவும்"
 
 #. Default: "Results limit"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
-msgstr ""
+msgstr "முடிவுகள் வரம்பு"
 
 #. Default: "Results preview"
 #: components/manage/Blocks/Listing/Edit
 msgid "Results preview"
-msgstr ""
+msgstr "முடிவுகள் முன்னோட்டம்"
 
 #. Default: "Results template"
 #: components/manage/Blocks/Search/SearchBlockEdit
 msgid "Results template"
-msgstr ""
+msgstr "முடிவுகள் வார்ப்புரு"
 
 #. Default: "Reversed order"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Reversed order"
-msgstr ""
+msgstr "தலைகீழ் ஒழுங்கு"
 
 #. Default: "Revert to this revision"
 #: components/manage/History/History
 msgid "Revert to this revision"
-msgstr ""
+msgstr "இந்த திருத்தத்திற்கு திரும்பவும்"
 
 #. Default: "Review state"
 #: components/manage/Contents/Contents
 #: components/manage/LinksToItem/LinksToItem
 msgid "Review state"
-msgstr ""
+msgstr "மறுஆய்வு நிலை"
 
 #. Default: "Richtext"
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
-msgstr ""
+msgstr "பாடல்"
 
 #. Default: "Right"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
 msgid "Right"
-msgstr ""
+msgstr "வலது"
 
 #. Default: "Rights"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Rights"
-msgstr ""
+msgstr "உரிமைகள்"
 
 #. Default: "Roles"
 #: helpers/MessageLabels/MessageLabels
 msgid "Roles"
-msgstr ""
+msgstr "பாத்திரங்கள்"
 
 #. Default: "Root"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsRootItem
 msgid "Root"
-msgstr ""
+msgstr "மூலம்"
 
 #. Default: "Rule added"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Rule added"
-msgstr ""
+msgstr "விதி சேர்க்கப்பட்டது"
 
 #. Default: "Rule enable changed"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Rule enable changed"
-msgstr ""
+msgstr "விதி மாற்றப்பட்டது"
 
 #. Default: "Rules"
 #: components/manage/Rules/Rules
 #: components/manage/Toolbar/More
 msgid "Rules"
-msgstr ""
+msgstr "விதிகள்"
 
 #. Default: "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
-msgstr ""
+msgstr "தூண்டுதல் நிகழ்வு நிகழும்போது விதிகள் செயல்படுத்தப்படுகின்றன. அனைத்து விதிகளின் நிபந்தனைகளும் நிறைவு செய்யப்பட்டால் மட்டுமே விதி நடவடிக்கைகள் செயல்படுத்தப்படும். கீழே உள்ள பொத்தான்களைப் பயன்படுத்தி புதிய செயல்களையும் நிபந்தனைகளையும் சேர்க்கலாம்."
 
 #. Default: "Save"
 #: components/manage/Add/Add
@@ -3147,32 +3142,32 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 #: helpers/MessageLabels/MessageLabels
 msgid "Save"
-msgstr ""
+msgstr "சேமி"
 
 #. Default: "Save"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Save recurrence"
-msgstr ""
+msgstr "மறுநிகழ்வு சேமிக்கவும்"
 
 #. Default: "Saved"
 #: helpers/MessageLabels/MessageLabels
 msgid "Saved"
-msgstr ""
+msgstr "சேமிக்கப்பட்டது"
 
 #. Default: "Scheduled"
 #: components/manage/Contents/ContentsItem
 msgid "Scheduled"
-msgstr ""
+msgstr "திட்டமிடப்பட்டுள்ளது"
 
 #. Default: "Schema"
 #: components/manage/Controlpanels/ContentTypesActions
 msgid "Schema"
-msgstr ""
+msgstr "திட்டம்"
 
 #. Default: "Schema updates"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "Schema updates"
-msgstr ""
+msgstr "ச்கீமா புதுப்பிப்புகள்"
 
 #. Default: "Search"
 #: components/manage/BlockChooser/BlockChooserSearch
@@ -3185,89 +3180,89 @@ msgstr ""
 #: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
-msgstr ""
+msgstr "தேடல்"
 
 #. Default: "Search SVG"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search SVG"
-msgstr ""
+msgstr "எச்.வி.சி."
 
 #. Default: "Search Site"
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
-msgstr ""
+msgstr "தேடல் தளம்"
 
 #. Default: "Search block"
 #: components/manage/Blocks/Search/schema
 msgid "Search block"
-msgstr ""
+msgstr "தேடல் தொகுதி"
 
 #. Default: "Search button label"
 #: components/manage/Blocks/Search/schema
 msgid "Search button label"
-msgstr ""
+msgstr "தேடல் பொத்தான் சிட்டை"
 
 #. Default: "Search content"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search content"
-msgstr ""
+msgstr "உள்ளடக்கத்தைத் தேடுங்கள்"
 
 #. Default: "Search for user or group"
 #: components/manage/Sharing/Sharing
 msgid "Search for user or group"
-msgstr ""
+msgstr "பயனர் அல்லது குழுவைத் தேடுங்கள்"
 
 #. Default: "Search group…"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search group…"
-msgstr ""
+msgstr "தேடல் குழு…"
 
 #. Default: "Search input label"
 #: components/manage/Blocks/Search/schema
 msgid "Search input label"
-msgstr ""
+msgstr "உள்ளீட்டு லேபிளைத் தேடுங்கள்"
 
 #. Default: "Search results"
 #: components/manage/Blocks/Search/components/SearchDetails
 #: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Search/Search
 msgid "Search results"
-msgstr ""
+msgstr "தேடல் முடிவுகள்"
 
 #. Default: "Search results for {term}"
 #: components/theme/Search/Search
 msgid "Search results for {term}"
-msgstr ""
+msgstr "{term} க்கான தேடல் முடிவுகள்"
 
 #. Default: "Search sources by title or path"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search sources by title or path"
-msgstr ""
+msgstr "தலைப்பு அல்லது பாதை மூலம் ஆதாரங்களைத் தேடுங்கள்"
 
 #. Default: "Search targets by title or path"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search targets by title or path"
-msgstr ""
+msgstr "தலைப்பு அல்லது பாதை மூலம் இலக்குகளைத் தேடுங்கள்"
 
 #. Default: "Search users…"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search users…"
-msgstr ""
+msgstr "பயனர்களைத் தேடுங்கள்…"
 
 #. Default: "Searched for: <em>{searchedtext}</em>."
 #: components/manage/Blocks/Search/components/SearchDetails
 msgid "Searched for: <em>{searchedtext}</em>."
-msgstr ""
+msgstr "தேடப்பட்டது: <me> {searchedtext} </em>."
 
 #. Default: "Second"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
-msgstr ""
+msgstr "இரண்டாவது"
 
 #. Default: "Section title"
 #: components/manage/Blocks/Search/schema
 msgid "Section title"
-msgstr ""
+msgstr "பிரிவு தலைப்பு"
 
 #. Default: "Select"
 #: components/manage/Controlpanels/Aliases
@@ -3275,57 +3270,57 @@ msgstr ""
 #: components/manage/Sidebar/ObjectBrowserNav
 #: helpers/MessageLabels/MessageLabels
 msgid "Select"
-msgstr ""
+msgstr "தேர்ந்தெடு"
 
 #. Default: "Select a date to add to recurrence"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
-msgstr ""
+msgstr "மீண்டும் வருவதற்கு ஒரு தேதியைத் தேர்ந்தெடுக்கவும்"
 
 #. Default: "Select columns to show"
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
-msgstr ""
+msgstr "காண்பிக்க நெடுவரிசைகளைத் தேர்ந்தெடுக்கவும்"
 
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
-msgstr ""
+msgstr "உறவைத் தேர்ந்தெடுக்கவும்"
 
 #. Default: "Select rule"
 #: components/manage/Rules/Rules
 msgid "Select rule"
-msgstr ""
+msgstr "விதியைத் தேர்ந்தெடுக்கவும்"
 
 #. Default: "Select the transition to be used for modifying the items state."
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
-msgstr ""
+msgstr "உருப்படிகளை மாற்றுவதற்கு பயன்படுத்த வேண்டிய மாற்றத்தைத் தேர்ந்தெடுக்கவும்."
 
 #. Default: "Selected"
 #: helpers/MessageLabels/MessageLabels
 msgid "Selected"
-msgstr ""
+msgstr "தேர்ந்தெடுக்கப்பட்டது"
 
 #. Default: "Selected dates"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Selected dates"
-msgstr ""
+msgstr "தேர்ந்தெடுக்கப்பட்ட தேதிகள்"
 
 #. Default: "Selected items"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
-msgstr ""
+msgstr "தேர்ந்தெடுக்கப்பட்ட உருப்படிகள்"
 
 #. Default: "of"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items - x of y"
-msgstr ""
+msgstr "தேர்ந்தெடுக்கப்பட்ட உருப்படிகள் - ஒய் இன் ஃச்"
 
 #. Default: "Selection"
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
-msgstr ""
+msgstr "தேர்வு"
 
 #. Default: "Select…"
 #: components/manage/Blocks/Search/widgets/SelectMetadataField
@@ -3335,300 +3330,300 @@ msgstr ""
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 msgid "Select…"
-msgstr ""
+msgstr "தேர்ந்தெடுக்கவும்…"
 
 #. Default: "Send"
 #: components/theme/ContactForm/ContactForm
 msgid "Send"
-msgstr ""
+msgstr "அனுப்பு"
 
 #. Default: "Send a confirmation mail with a link to set the password."
 #: helpers/MessageLabels/MessageLabels
 msgid "Send a confirmation mail with a link to set the password."
-msgstr ""
+msgstr "கடவுச்சொல்லை அமைக்க இணைப்புடன் உறுதிப்படுத்தல் அஞ்சலை அனுப்பவும்."
 
 #. Default: "Server Error"
 #: components/theme/Error/ServerError
 msgid "Server Error"
-msgstr ""
+msgstr "சேவையக பிழை"
 
 #. Default: "Set my password"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set my password"
-msgstr ""
+msgstr "எனது கடவுச்சொல்லை அமைக்கவும்"
 
 #. Default: "Set your password"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set your password"
-msgstr ""
+msgstr "உங்கள் கடவுச்சொல்லை அமைக்கவும்"
 
 #. Default: "Settings"
 #: components/manage/Sidebar/Sidebar
 msgid "Settings"
-msgstr ""
+msgstr "அமைப்புகள்"
 
 #. Default: "Sharing"
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
 msgid "Sharing"
-msgstr ""
+msgstr "பகிர்வு"
 
 #. Default: "Sharing for {title}"
 #: components/manage/Sharing/Sharing
 msgid "Sharing for {title}"
-msgstr ""
+msgstr "{title} க்கான பகிர்வு"
 
 #. Default: "Short Name"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 msgid "Short Name"
-msgstr ""
+msgstr "குறுகிய பெயர்"
 
 #. Default: "Short name"
 #: components/manage/Contents/ContentsRenameModal
 msgid "Short name"
-msgstr ""
+msgstr "குறுகிய பெயர்"
 
 #. Default: "Show"
 #: components/manage/Controlpanels/Aliases
 #: components/theme/Pagination/Pagination
 msgid "Show"
-msgstr ""
+msgstr "காட்டு"
 
 #. Default: "Show All"
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
-msgstr ""
+msgstr "அனைத்தையும் காட்டு"
 
 #. Default: "Show Replies"
 #: components/theme/Comments/Comments
 msgid "Show Replies"
-msgstr ""
+msgstr "பதில்களைக் காட்டு"
 
 #. Default: "Show filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Show filters"
-msgstr ""
+msgstr "வடிப்பான்களைக் காட்டு"
 
 #. Default: "Show groups of users below"
 #: helpers/MessageLabels/MessageLabels
 msgid "Show groups of users below"
-msgstr ""
+msgstr "பயனர்களின் குழுக்களை கீழே காட்டு"
 
 #. Default: "Show item"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Show item"
-msgstr ""
+msgstr "உருப்படியைக் காட்டு"
 
 #. Default: "Show potential sources. Not only objects that are source of some relation."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Show potential sources. Not only objects that are source of some relation."
-msgstr ""
+msgstr "சாத்தியமான ஆதாரங்களைக் காட்டு. சில உறவின் ஆதாரமாக இருக்கும் பொருள்கள் மட்டுமல்ல."
 
 #. Default: "Show potential targets. Not only objects that are target of some relation."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Show potential targets. Not only objects that are target of some relation."
-msgstr ""
+msgstr "சாத்தியமான இலக்குகளைக் காட்டு. சில உறவின் இலக்காக இருக்கும் பொருள்கள் மட்டுமல்ல."
 
 #. Default: "Show search button?"
 #: components/manage/Blocks/Search/schema
 msgid "Show search button?"
-msgstr ""
+msgstr "தேடல் பொத்தானைக் காட்டவா?"
 
 #. Default: "Show search input?"
 #: components/manage/Blocks/Search/schema
 msgid "Show search input?"
-msgstr ""
+msgstr "தேடல் உள்ளீட்டைக் காட்டவா?"
 
 #. Default: "Show sorting?"
 #: components/manage/Blocks/Search/schema
 msgid "Show sorting?"
-msgstr ""
+msgstr "வரிசையாக்கத்தைக் காட்டு?"
 
 #. Default: "Show total results"
 #: components/manage/Blocks/Search/schema
 msgid "Show total results"
-msgstr ""
+msgstr "மொத்த முடிவுகளைக் காட்டு"
 
 #. Default: "Shrink sidebar"
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
-msgstr ""
+msgstr "பக்கப்பட்டியை சுருக்கவும்"
 
 #. Default: "Shrink toolbar"
 #: components/manage/Toolbar/Toolbar
 msgid "Shrink toolbar"
-msgstr ""
+msgstr "கருவிப்பட்டியை சுருக்கவும்"
 
 #. Default: "Sign in to start session"
 #: components/theme/Login/Login
 msgid "Sign in to start session"
-msgstr ""
+msgstr "அமர்வைத் தொடங்க உள்நுழைக"
 
 #. Default: "Site Administration"
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "Site Administration"
-msgstr ""
+msgstr "தள நிர்வாகம்"
 
 #. Default: "Site Setup"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
-msgstr ""
+msgstr "தள அமைப்பு"
 
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
-msgstr ""
+msgstr "தள வரைபடம்"
 
 #. Default: "Size: {size}"
 #: components/theme/View/ImageView
 msgid "Size: {size}"
-msgstr ""
+msgstr "அளவு: {size}"
 
 #. Default: "Small"
 #: components/manage/Widgets/ImageSizeWidget
 msgid "Small"
-msgstr ""
+msgstr "சிறிய"
 
 #. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-msgstr ""
+msgstr "சில உருப்படிகளும் ஒரு கோப்புறை. அவற்றை நீக்குவதன் மூலம் நீங்கள் கோப்புறைகளுக்குள் {containedItemsToDelete} {variation} நீக்குவீர்கள்."
 
 #. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-msgstr ""
+msgstr "சில உருப்படிகள் பிற உள்ளடக்கங்களால் குறிப்பிடப்படுகின்றன. அவற்றை நீக்குவதன் மூலம் {brokenReferences} {variation} உடைக்கப்படும்."
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "Some relations are broken. Please fix."
-msgstr ""
+msgstr "சில உறவுகள் உடைந்துவிட்டன. தயவுசெய்து சரிசெய்யவும்."
 
 #. Default: "Sorry, something went wrong with your request"
 #: error
 msgid "Sorry, something went wrong with your request"
-msgstr ""
+msgstr "மன்னிக்கவும், உங்கள் கோரிக்கையில் ஏதோ தவறு ஏற்பட்டது"
 
 #. Default: "Sort by"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort By"
-msgstr ""
+msgstr "வரிசைப்படுத்தவும்"
 
 #. Default: "Sort by:"
 #: components/theme/Search/Search
 msgid "Sort By:"
-msgstr ""
+msgstr "வழங்கியவர்:"
 
 #. Default: "Sort on"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 msgid "Sort on"
-msgstr ""
+msgstr "வரிசைப்படுத்தவும்"
 
 #. Default: "Sort on options"
 #: components/manage/Blocks/Search/schema
 msgid "Sort on options"
-msgstr ""
+msgstr "விருப்பங்களை வரிசைப்படுத்துங்கள்"
 
 #. Default: "Sort transactions by User-Name, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort transactions by User-Name, Path or Date"
-msgstr ""
+msgstr "பயனர் பெயர், பாதை அல்லது தேதி மூலம் பரிவர்த்தனைகளை வரிசைப்படுத்தவும்"
 
 #. Default: "Sorted"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sorted"
-msgstr ""
+msgstr "வரிசைப்படுத்தப்பட்டது"
 
 #. Default: "Sorted on"
 #: components/manage/Blocks/Search/components/SortOn
 msgid "Sorted on"
-msgstr ""
+msgstr "வரிசைப்படுத்தப்பட்டது"
 
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Source"
-msgstr ""
+msgstr "மூலம்"
 
 #. Default: "Specify a youtube video or playlist url"
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
-msgstr ""
+msgstr "ஒரு YouTube வீடியோ அல்லது பிளேலிச்ட் முகவரி ஐக் குறிப்பிடவும்"
 
 #. Default: "Split"
 #: components/manage/Diff/Diff
 msgid "Split"
-msgstr ""
+msgstr "பிளவு"
 
 #. Default: "Start Date"
 #: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 msgid "Start Date"
-msgstr ""
+msgstr "தொடக்க தேதி"
 
 #. Default: "Start of the recurrence"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Start of the recurrence"
-msgstr ""
+msgstr "மீண்டும் நிகழும் தொடக்க"
 
 #. Default: "Start password reset"
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
-msgstr ""
+msgstr "கடவுச்சொல் மீட்டமைப்பைத் தொடங்கவும்"
 
 #. Default: "State"
 #: components/manage/Contents/Contents
 #: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 msgid "State"
-msgstr ""
+msgstr "மாநிலம்"
 
 #. Default: "Status"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Status"
-msgstr ""
+msgstr "நிலை"
 
 #. Default: "Sticky"
 #: components/manage/Blocks/ToC/Schema
 msgid "Sticky"
-msgstr ""
+msgstr "ஒட்டும்"
 
 #. Default: "Stop compare"
 #: components/manage/Multilingual/CompareLanguages
 msgid "Stop compare"
-msgstr ""
+msgstr "ஒப்பிடுவதை நிறுத்துங்கள்"
 
 #. Default: "String"
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
-msgstr ""
+msgstr "சரம்"
 
 #. Default: "Alternate row background color"
 #: config/Blocks
 msgid "Stripe alternate rows with color"
-msgstr ""
+msgstr "வண்ணத்துடன் மாற்று வரிசைகள்"
 
 #. Default: "Styling"
 #: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Styling"
-msgstr ""
+msgstr "ச்டைலிங்"
 
 #. Default: "Subject"
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
-msgstr ""
+msgstr "பொருள்"
 
 #. Default: "Submit"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Submit"
-msgstr ""
+msgstr "சமர்ப்பிக்கவும்"
 
 #. Default: "Success"
 #: components/manage/Actions/Actions
@@ -3650,90 +3645,90 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Success"
-msgstr ""
+msgstr "செய்"
 
 #. Default: "Successfully undone transactions"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Successfully Undone Transactions"
-msgstr ""
+msgstr "பரிவர்த்தனைகளை வெற்றிகரமாக செயல்தவிர்க்கவும்"
 
 #. Default: "Summary"
 #: config/Blocks
 msgid "Summary"
-msgstr ""
+msgstr "சுருக்கம்"
 
 #. Default: "Summary view"
 #: config/Views
 msgid "Summary view"
-msgstr ""
+msgstr "சுருக்கம் பார்வை"
 
 #. Default: "Switch to"
 #: components/theme/LanguageSelector/LanguageSelector
 msgid "Switch to"
-msgstr ""
+msgstr "மாறவும்"
 
 #. Default: "Table"
 #: config/Blocks
 msgid "Table"
-msgstr ""
+msgstr "அட்டவணை"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
-msgstr ""
+msgstr "உள்ளடக்க அட்டவணை"
 
 #. Default: "Tabular view"
 #: config/Views
 msgid "Tabular view"
-msgstr ""
+msgstr "அட்டவணை பார்வை"
 
 #. Default: "Tags"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags"
-msgstr ""
+msgstr "குறிச்சொற்கள்"
 
 #. Default: "Tags to add"
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags to add"
-msgstr ""
+msgstr "சேர்க்க குறிச்சொற்கள்"
 
 #. Default: "Tags to remove"
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags to remove"
-msgstr ""
+msgstr "அகற்ற குறிச்சொற்கள்"
 
 #. Default: "Target"
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Target"
-msgstr ""
+msgstr "இலக்கு"
 
 #. Default: "Target Path (Required)"
 #: components/manage/Controlpanels/Aliases
 msgid "Target Path (Required)"
-msgstr ""
+msgstr "இலக்கு பாதை (தேவை)"
 
 #. Default: "Target memory size per cache in bytes"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target memory size per cache in bytes"
-msgstr ""
+msgstr "பைட்டுகளில் ஒரு தற்காலிக சேமிப்பிற்கு நினைவக அளவு இலக்கு"
 
 #. Default: "Target number of objects in memory per cache"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target number of objects in memory per cache"
-msgstr ""
+msgstr "ஒரு தற்காலிக சேமிப்பிற்கு நினைவகத்தில் உள்ள பொருட்களின் இலக்கு எண்ணிக்கை"
 
 #. Default: "Teaser"
 #: components/manage/Blocks/Teaser/schema
 msgid "Teaser"
-msgstr ""
+msgstr "டீசர்"
 
 #. Default: "Text"
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
-msgstr ""
+msgstr "உரை"
 
 #. Default: "Thank you."
 #: components/theme/ConnectionRefused/ConnectionRefused
@@ -3742,196 +3737,196 @@ msgstr ""
 #: components/theme/RequestTimeout/RequestTimeout
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
-msgstr ""
+msgstr "நன்றி."
 
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 #: components/theme/RequestTimeout/RequestTimeout
 msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
-msgstr ""
+msgstr "சேவையக நேரம் முடிந்தது அல்லது உங்கள் சாதனத்தின் இணைப்பு சிக்கல் காரணமாக பின்தளத்தில் பதிலளிக்கவில்லை. உங்கள் இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்."
 
 #. Default: "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
-msgstr ""
+msgstr "பின்தளத்தில் பதிலளிக்கவில்லை, தயவுசெய்து நீங்கள் ப்ளோன் தொடங்கியிருக்கிறீர்களா என்று சரிபார்க்கவும், உங்கள் திட்டத்தின் உள்ளமைவு பொருள் அபிபாத் (அல்லது நீங்கள் உள் பதிலாள், devproxytoapipath ஐப் பயன்படுத்துகிறீர்களானால்) அல்லது razzle_api_pathotor இன் சூழல் மாறியை சரிபார்க்கவும்."
 
 #. Default: "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
 #: components/theme/CorsError/CorsError
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
-msgstr ""
+msgstr "பின்தளத்தில் பதிலளிக்கிறது, ஆனால் CORS தலைப்புகள் சரியாக உள்ளமைக்கப்படவில்லை மற்றும் பின்தளத்தில் வளங்களுக்கான அணுகலை உலாவி மறுத்துள்ளது."
 
 #. Default: "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 #: components/theme/CorsError/CorsError
 msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
-msgstr ""
+msgstr "உங்கள் வலைத்தளத்தின் பின்தளத்தில் சேவையகம் பதிலளிக்கவில்லை, சிரமத்திற்கு நாங்கள் மன்னிப்பு கோருகிறோம். பக்கத்தை மீண்டும் ஏற்ற முயற்சிக்கவும், மீண்டும் முயற்சிக்கவும். சிக்கல் தொடர்ந்தால் தள நிர்வாகிகளை தொடர்பு கொள்ளவும்."
 
 #. Default: "The button presence disables the live search, the query is issued when you press ENTER"
 #: components/manage/Blocks/Search/schema
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
-msgstr ""
+msgstr "பொத்தான் இருப்பு நேரடி தேடலை முடக்குகிறது, நீங்கள் Enter ஐ அழுத்தும்போது வினவல் வழங்கப்படுகிறது"
 
 #. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
 #: components/manage/Widgets/FileWidget
 msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
-msgstr ""
+msgstr "நீங்கள் பதிவேற்றிய கோப்பு {size} பைட்டுகளின் அதிகபட்ச அனுமதிக்கப்பட்ட அளவை மீறியது"
 
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
 msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
-msgstr ""
+msgstr "பின்வரும் உள்ளடக்க விதிகள் இந்த பக்கத்தில் செயலில் உள்ளன. புதிய விதிகளை உருவாக்க உள்ளடக்க விதிகள் கட்டுப்பாட்டு குழுவைப் பயன்படுத்தவும் அல்லது ஏற்கனவே உள்ளவற்றை நீக்க அல்லது மாற்றவும்."
 
 #. Default: "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
-msgstr ""
+msgstr "எந்த மேம்படுத்தல் படிகள் இயக்கப் போகின்றன என்பதை பின்வரும் பட்டியல் காட்டுகிறது. மேம்படுத்தல் சில நேரங்களில் ஒரு பட்டியல்/பாதுகாப்பு புதுப்பிப்பை செய்கிறது, இது பெரிய தளங்களில் நீண்ட நேரம் ஆகலாம். பொறுமையாக இருங்கள்."
 
 #. Default: "The item could not be deleted."
 #: components/manage/Contents/Contents
 msgid "The item could not be deleted."
-msgstr ""
+msgstr "உருப்படியை நீக்க முடியவில்லை."
 
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
 msgid "The link address is:"
-msgstr ""
+msgstr "இணைப்பு முகவரி:"
 
 #. Default: "The number of items must be greater than or equal to {minItems}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The number of items must be greater than or equal to {minItems}"
-msgstr ""
+msgstr "உருப்படிகளின் எண்ணிக்கை {minitems க்கு ஐ விட அதிகமாகவோ அல்லது சமமாகவோ இருக்க வேண்டும்"
 
 #. Default: "The number of items must be less than or equal to {maxItems}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The number of items must be less than or equal to {maxItems}"
-msgstr ""
+msgstr "பொருட்களின் எண்ணிக்கை {maxitems க்கு ஐ விட குறைவாகவோ அல்லது சமமாகவோ இருக்க வேண்டும்"
 
 #. Default: "The provided alternative url already exists!"
 #: components/manage/Aliases/Aliases
 msgid "The provided alternative url already exists!"
-msgstr ""
+msgstr "வழங்கப்பட்ட மாற்று முகவரி ஏற்கனவே உள்ளது!"
 
 #. Default: "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
-msgstr ""
+msgstr "பதிவு செயல்முறை வெற்றிகரமாக உள்ளது. உங்கள் கணக்கை எவ்வாறு செயல்படுத்துகிறது என்பது குறித்த தகவலுக்கு உங்கள் மின்னஞ்சல் இன்பாக்சைச் சரிபார்க்கவும்."
 
 #. Default: "The selected default language must be in the list of the field 'Available languages'"
 #: helpers/MessageLabels/MessageLabels
 msgid "The selected default language must be in the list of the field 'Available languages'"
-msgstr ""
+msgstr "தேர்ந்தெடுக்கப்பட்ட இயல்புநிலை மொழி 'கிடைக்கக்கூடிய மொழிகள்' புலத்தின் பட்டியலில் இருக்க வேண்டும்"
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The site configuration is outdated and needs to be upgraded."
-msgstr ""
+msgstr "தள உள்ளமைவு காலாவதியானது மற்றும் மேம்படுத்தப்பட வேண்டும்."
 
 #. Default: "The value does not match the pattern {pattern}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The value does not match the pattern {pattern}"
-msgstr ""
+msgstr "மதிப்பு {pattern} வடிவத்துடன் பொருந்தவில்லை"
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More
 msgid "The working copy was discarded"
-msgstr ""
+msgstr "வேலை நகல் நிராகரிக்கப்பட்டது"
 
 #. Default: "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
-msgstr ""
+msgstr "{plonecms} என்பது {copyright} 2000- {current_year} மற்றும் நண்பர்களால் {நடப்பு_இயர்."
 
 #. Default: "There are no groups with the searched criteria"
 #: helpers/MessageLabels/MessageLabels
 msgid "There are no groups with the searched criteria"
-msgstr ""
+msgstr "தேடப்பட்ட அளவுகோல்களைக் கொண்ட குழுக்கள் எதுவும் இல்லை"
 
 #. Default: "There are no users with the searched criteria"
 #: helpers/MessageLabels/MessageLabels
 msgid "There are no users with the searched criteria"
-msgstr ""
+msgstr "தேடப்பட்ட அளவுகோல்களைக் கொண்ட பயனர்கள் யாரும் இல்லை"
 
 #. Default: "There are some errors."
 #: components/manage/Add/Add
 #: components/manage/Edit/Edit
 msgid "There are some errors."
-msgstr ""
+msgstr "சில பிழைகள் உள்ளன."
 
 #. Default: "There is a configuration problem on the backend"
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
-msgstr ""
+msgstr "பின்தளத்தில் ஒரு உள்ளமைவு சிக்கல் உள்ளது"
 
 #. Default: "There was an error with the upgrade."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "There was an error with the upgrade."
-msgstr ""
+msgstr "மேம்படுத்தலில் பிழை ஏற்பட்டது."
 
 #. Default: "There were some errors"
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
-msgstr ""
+msgstr "சில பிழைகள் இருந்தன"
 
 #. Default: "There were some errors."
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "There were some errors."
-msgstr ""
+msgstr "சில பிழைகள் இருந்தன."
 
 #. Default: "These items will have broken links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "These items will have broken links"
-msgstr ""
+msgstr "இந்த உருப்படிகளில் உடைந்த இணைப்புகள் இருக்கும்"
 
 #. Default: "Third"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
-msgstr ""
+msgstr "மூன்றாவது"
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
-msgstr ""
+msgstr "இது {title} இல் தொடர்ந்து வேலை செய்யும் நகலைக் கொண்டுள்ளது"
 
 #. Default: "This is a reserved name and can't be used"
 #: components/manage/Widgets/IdWidget
 msgid "This is a reserved name and can't be used"
-msgstr ""
+msgstr "இது ஒதுக்கப்பட்ட பெயர் மற்றும் பயன்படுத்த முடியாது"
 
 #. Default: "This is a working copy of {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This is a working copy of {title}"
-msgstr ""
+msgstr "இது {தலைப்பு of இன் வேலை நகல்"
 
 #. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-msgstr ""
+msgstr "இந்த உருப்படியும் ஒரு கோப்புறை. அதை நீக்குவதன் மூலம் நீங்கள் கோப்புறையில் {containedItemsToDelete} {variation} நீக்குவீர்கள்."
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 msgid "This item was locked by {creator} on {date}"
-msgstr ""
+msgstr "இந்த உருப்படி {creator} இல் {படைப்பாளரால் பூட்டப்பட்டது"
 
 #. Default: "This name will be displayed in the URL."
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
-msgstr ""
+msgstr "இந்த பெயர் முகவரி இல் காண்பிக்கப்படும்."
 
 #. Default: "This page does not seem to exist…"
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
-msgstr ""
+msgstr "இந்த பக்கம் இருப்பதாகத் தெரியவில்லை…"
 
 #. Default: "This rule is assigned to the following locations:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "This rule is assigned to the following locations:"
-msgstr ""
+msgstr "இந்த விதி பின்வரும் இடங்களுக்கு ஒதுக்கப்பட்டுள்ளது:"
 
 #. Default: "Time"
 #: components/manage/Widgets/DatetimeWidget
 #: components/manage/Widgets/TimeWidget
 msgid "Time"
-msgstr ""
+msgstr "நேரம்"
 
 #. Default: "Title"
 #: components/manage/Blocks/Teaser/schema
@@ -3944,85 +3939,85 @@ msgstr ""
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Title"
-msgstr ""
+msgstr "தலைப்பு"
 
 #. Default: "Title field error. Value not provided or already existing."
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Title field error. Value not provided or already existing."
-msgstr ""
+msgstr "தலைப்பு புலம் பிழை. மதிப்பு வழங்கப்படவில்லை அல்லது ஏற்கனவே உள்ளது."
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total active and non-active objects"
-msgstr ""
+msgstr "மொத்த செயலில் மற்றும் செயலில் இல்லாத பொருள்கள்"
 
 #. Default: "Total comments"
 #: components/manage/Contents/Contents
 msgid "Total comments"
-msgstr ""
+msgstr "மொத்த கருத்துகள்"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Total files to upload: {totalFiles}"
-msgstr ""
+msgstr "பதிவேற்ற மொத்த கோப்புகள்: {totalFiles}"
 
 #. Default: "Total number of objects in each cache"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in each cache"
-msgstr ""
+msgstr "ஒவ்வொரு தற்காலிக சேமிப்பிலும் மொத்த பொருட்களின் எண்ணிக்கை"
 
 #. Default: "Total number of objects in memory from all caches"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in memory from all caches"
-msgstr ""
+msgstr "அனைத்து தற்காலிக சேமிப்புகளிலிருந்தும் நினைவகத்தில் மொத்த பொருட்களின் எண்ணிக்கை"
 
 #. Default: "Total number of objects in the database"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in the database"
-msgstr ""
+msgstr "தரவுத்தளத்தில் மொத்த பொருட்களின் எண்ணிக்கை"
 
 #. Default: "Transactions"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions"
-msgstr ""
+msgstr "பரிவர்த்தனைகள்"
 
 #. Default: "#"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions Checkbox"
-msgstr ""
+msgstr "பரிவர்த்தனை தேர்வுப்பெட்டி"
 
 #. Default: "Transactions have been sorted"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions Have Been Sorted"
-msgstr ""
+msgstr "பரிவர்த்தனைகள் வரிசைப்படுத்தப்பட்டுள்ளன"
 
 #. Default: "Transactions have been unsorted"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions Have Been Unsorted"
-msgstr ""
+msgstr "பரிவர்த்தனைகள் வரிசைப்படுத்தப்படவில்லை"
 
 #. Default: "Translate to {lang}"
 #: components/manage/Add/Add
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
-msgstr ""
+msgstr "{lang} க்கு மொழிபெயர்க்கவும்"
 
 #. Default: "Translation linked"
 #: components/manage/Multilingual/ManageTranslations
 msgid "Translation linked"
-msgstr ""
+msgstr "மொழிபெயர்ப்பு இணைக்கப்பட்டுள்ளது"
 
 #. Default: "Translation linking removed"
 #: components/manage/Multilingual/ManageTranslations
 msgid "Translation linking removed"
-msgstr ""
+msgstr "மொழிபெயர்ப்பு அகற்றப்பட்டது"
 
 #. Default: "Triggering event field error. Please select a value"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Triggering event field error. Please select a value"
-msgstr ""
+msgstr "நிகழ்வு புல பிழையைத் தூண்டும். மதிப்பைத் தேர்ந்தெடுக்கவும்"
 
 #. Default: "Type"
 #: components/manage/Controlpanels/ContentTypes
@@ -4030,32 +4025,32 @@ msgstr ""
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 msgid "Type"
-msgstr ""
+msgstr "வகை"
 
 #. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
 #: components/manage/Blocks/Video/Edit
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
-msgstr ""
+msgstr "வீடியோவை (YouTube, VIMEO அல்லது MP4) முகவரி என தட்டச்சு செய்க"
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete
 msgid "Type text..."
-msgstr ""
+msgstr "உரையைத் தட்டச்சு செய்க ..."
 
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
 msgid "Type the heading…"
-msgstr ""
+msgstr "தலையைத் தட்டச்சு செய்க…"
 
 #. Default: "Type the title…"
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
-msgstr ""
+msgstr "தலைப்பை தட்டச்சு செய்க…"
 
 #. Default: "UID"
 #: components/manage/Contents/Contents
 msgid "UID"
-msgstr ""
+msgstr "Uid"
 
 #. Default: "URL Management"
 #: components/manage/Aliases/Aliases
@@ -4063,638 +4058,638 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/More
 msgid "URL Management"
-msgstr ""
+msgstr "முகவரி மேலாண்மை"
 
 #. Default: "URL Management for {title}"
 #: components/manage/Aliases/Aliases
 msgid "URL Management for {title}"
-msgstr ""
+msgstr "{தலைப்பு க்கு க்கான முகவரி மேலாண்மை"
 
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
-msgstr ""
+msgstr "ஒதுக்கவும்"
 
 #. Default: "Unassigned"
 #: components/manage/Rules/Rules
 msgid "Unassigned"
-msgstr ""
+msgstr "ஒதுக்கப்படாதது"
 
 #. Default: "Unauthorized"
 #: components/manage/Toolbar/More
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
-msgstr ""
+msgstr "அங்கீகரிக்கப்படாதது"
 
 #. Default: "Undo"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Form/UndoToolbar
 msgid "Undo"
-msgstr ""
+msgstr "செயல்தவிர்"
 
 #. Default: "Undo Controlpanel"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Undo Controlpanel"
-msgstr ""
+msgstr "கட்டுப்பாட்டு பேனலை செயல்தவிர்க்கவும்"
 
 #. Default: "Unfold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Unfold"
-msgstr ""
+msgstr "அவிழ்த்து விடுங்கள்"
 
 #. Default: "Unified"
 #: components/manage/Diff/Diff
 msgid "Unified"
-msgstr ""
+msgstr "ஒன்றுபட்ட"
 
 #. Default: "Uninstall"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Uninstall"
-msgstr ""
+msgstr "நிறுவல் நீக்க"
 
 #. Default: "Unknown Block {block}"
 #: components/manage/Blocks/Block/DefaultView
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/RenderBlocks
 msgid "Unknown Block"
-msgstr ""
+msgstr "தெரியாத தொகுதி"
 
 #. Default: "Unlink translation for"
 #: components/manage/Multilingual/ManageTranslations
 msgid "Unlink translation for"
-msgstr ""
+msgstr "அதற்கான மொழிபெயர்ப்பை இணைக்கவும்"
 
 #. Default: "Unlock"
 #: components/manage/Toolbar/Toolbar
 msgid "Unlock"
-msgstr ""
+msgstr "திறக்க"
 
 #. Default: "Unsorted"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Unsorted"
-msgstr ""
+msgstr "வரிசைப்படுத்தப்படாதது"
 
 #. Default: "Update"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
-msgstr ""
+msgstr "புதுப்பிப்பு"
 
 #. Default: "Update User"
 #: helpers/MessageLabels/MessageLabels
 msgid "Update User"
-msgstr ""
+msgstr "பயனரை புதுப்பிக்கவும்"
 
 #. Default: "Update installed addons"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons"
-msgstr ""
+msgstr "நிறுவப்பட்ட துணை நிரல்களைப் புதுப்பிக்கவும்"
 
 #. Default: "Update installed addons:"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons:"
-msgstr ""
+msgstr "நிறுவப்பட்ட துணை நிரல்களைப் புதுப்பிக்கவும்:"
 
 #. Default: "Updates available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Updates available"
-msgstr ""
+msgstr "புதுப்பிப்புகள் கிடைக்கின்றன"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Upgrade"
-msgstr ""
+msgstr "மேம்படுத்தல்"
 
 #. Default: "Upgrade Plone Site"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Upgrade Plone Site"
-msgstr ""
+msgstr "ப்ளோன் தளத்தை மேம்படுத்தவும்"
 
 #. Default: "Upgrade Report"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Upgrade Report"
-msgstr ""
+msgstr "அறிக்கையை மேம்படுத்தவும்"
 
 #. Default: "Upgrade Steps"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Upgrade Steps"
-msgstr ""
+msgstr "படிகளை மேம்படுத்தவும்"
 
 #. Default: "Upload"
 #: components/manage/Contents/Contents
 msgid "Upload"
-msgstr ""
+msgstr "பதிவேற்றும்"
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
 msgid "Upload a lead image in the 'Lead Image' content field."
-msgstr ""
+msgstr "'முன்னணி படம்' உள்ளடக்க புலத்தில் ஒரு முன்னணி படத்தைப் பதிவேற்றவும்."
 
 #. Default: "Upload files"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
-msgstr ""
+msgstr "கோப்புகளைப் பதிவேற்றவும்"
 
 #. Default: "Uploading image"
 #: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
-msgstr ""
+msgstr "படத்தை பதிவேற்றுகிறது"
 
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Use the form below to define the new content rule"
-msgstr ""
+msgstr "புதிய உள்ளடக்க விதியை வரையறுக்க கீழே உள்ள படிவத்தைப் பயன்படுத்தவும்"
 
 #. Default: "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
-msgstr ""
+msgstr "உள்ளடக்க விதிகளை வரையறுக்க, மாற்ற அல்லது அகற்ற கீழே உள்ள படிவத்தைப் பயன்படுத்தவும். சில தூண்டுதல்கள் நடைபெறும் போது விதிகள் தானாகவே உள்ளடக்கத்தில் செயல்களைச் செய்யும். விதிகளை வரையறுத்த பிறகு, செயல்கள் பட்டியலில் 'விதிகள்' உருப்படியைப் பயன்படுத்தி அவற்றை ஒதுக்க ஒரு கோப்புறைக்குச் செல்ல விரும்பலாம்."
 
 #. Default: "Used for programmatic access to the fieldset."
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 msgid "Used for programmatic access to the fieldset."
-msgstr ""
+msgstr "ஃபீல்செட்டுக்கான நிரல் அணுகலுக்கு பயன்படுத்தப்படுகிறது."
 
 #. Default: "User"
 #: components/manage/Sharing/Sharing
 msgid "User"
-msgstr ""
+msgstr "பயனர்"
 
 #. Default: "User Group Membership"
 #: components/manage/Controlpanels/Controlpanels
 #: helpers/MessageLabels/MessageLabels
 msgid "User Group Membership"
-msgstr ""
+msgstr "பயனர் குழு உறுப்பினர்"
 
 #. Default: "User Group Settings"
 #: helpers/MessageLabels/MessageLabels
 msgid "User Group Settings"
-msgstr ""
+msgstr "பயனர் குழு அமைப்புகள்"
 
 #. Default: "User created"
 #: helpers/MessageLabels/MessageLabels
 msgid "User created"
-msgstr ""
+msgstr "பயனர் உருவாக்கப்பட்டது"
 
 #. Default: "User deleted"
 #: helpers/MessageLabels/MessageLabels
 msgid "User deleted"
-msgstr ""
+msgstr "பயனர் நீக்கப்பட்டார்"
 
 #. Default: "User name"
 #: components/manage/Controlpanels/Users/UsersControlpanel
 msgid "User name"
-msgstr ""
+msgstr "பயனர் பெயர்"
 
 #. Default: "User roles updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "User roles updated"
-msgstr ""
+msgstr "பயனர் பாத்திரங்கள் புதுப்பிக்கப்பட்டன"
 
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels
 msgid "User updated successfuly"
-msgstr ""
+msgstr "பயனர் வெற்றிகரமாக புதுப்பிக்கப்பட்டார்"
 
 #. Default: "Username"
 #: helpers/MessageLabels/MessageLabels
 msgid "Username"
-msgstr ""
+msgstr "பயனர்பெயர்"
 
 #. Default: "Users"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: helpers/MessageLabels/MessageLabels
 msgid "Users"
-msgstr ""
+msgstr "பயனர்கள்"
 
 #. Default: "Users and Groups"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Users and Groups"
-msgstr ""
+msgstr "பயனர்கள் மற்றும் குழுக்கள்"
 
 #. Default: "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
 #: components/manage/Aliases/Aliases
 msgid "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
-msgstr ""
+msgstr "இந்த படிவத்தைப் பயன்படுத்தி, ஒரு பொருளுக்கான மாற்று முகவரி களை நிர்வகிக்கலாம். இரண்டு வெவ்வேறு முகவரி களின் கீழ் ஒரு பொருளை கிடைக்கச் செய்வதற்கான எளிதான வழியாகும்."
 
 #. Default: "Variation"
 #: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
-msgstr ""
+msgstr "மாறுபாடு"
 
 #. Default: "Version Overview"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Version Overview"
-msgstr ""
+msgstr "பதிப்பு கண்ணோட்டம்"
 
 #. Default: "Video"
 #: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Video"
-msgstr ""
+msgstr "ஒளிதோற்றம்"
 
 #. Default: "Video URL"
 #: components/manage/Blocks/Video/schema
 msgid "Video URL"
-msgstr ""
+msgstr "வீடியோ முகவரி"
 
 #. Default: "View"
 #: components/manage/Contents/ContentsItem
 msgid "View"
-msgstr ""
+msgstr "பார்வை"
 
 #. Default: "View changes"
 #: components/manage/History/History
 msgid "View changes"
-msgstr ""
+msgstr "மாற்றங்களைக் காண்க"
 
 #. Default: "View links and references to this item"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "View links and references to this item"
-msgstr ""
+msgstr "இந்த உருப்படியின் இணைப்புகள் மற்றும் குறிப்புகளைக் காண்க"
 
 #. Default: "View this revision"
 #: components/manage/History/History
 msgid "View this revision"
-msgstr ""
+msgstr "இந்த திருத்தத்தைக் காண்க"
 
 #. Default: "View working copy"
 #: components/manage/Toolbar/More
 msgid "View working copy"
-msgstr ""
+msgstr "வேலை நகலைக் காண்க"
 
 #. Default: "View"
 #: components/manage/Display/Display
 msgid "Viewmode"
-msgstr ""
+msgstr "வியூமோட்"
 
 #. Default: "Vocabulary term"
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Vocabulary term"
-msgstr ""
+msgstr "சொல்லகராதி சொல்"
 
 #. Default: "Title"
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Vocabulary term title"
-msgstr ""
+msgstr "சொல்லகராதி கால தலைப்பு"
 
 #. Default: "Vocabulary terms"
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Vocabulary terms"
-msgstr ""
+msgstr "சொல்லகராதி விதிமுறைகள்"
 
 #. Default: "You are running in 'debug mode'. This mode is intended for sites that are under development. This allows many configuration changes to be immediately visible, but will make your site run more slowly. To turn off debug mode, stop the server, set 'debug-mode=off' in your buildout.cfg, re-run bin/buildout and then restart the server process."
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"
-msgstr ""
+msgstr "பிழைத்திருத்த முறை குறித்து முன்னறிவிப்பு"
 
 #. Default: "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
-msgstr ""
+msgstr "சிரமத்திற்கு நாங்கள் மன்னிப்பு கோருகிறோம், ஆனால் நீங்கள் அணுகும் தளத்தின் பின்தளத்தில் இப்போது கிடைக்கவில்லை. தயவுசெய்து, பின்னர் மீண்டும் முயற்சிக்கவும்."
 
 #. Default: "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
-msgstr ""
+msgstr "சிரமத்திற்கு நாங்கள் மன்னிப்பு கோருகிறோம், ஆனால் நீங்கள் அணுக முயற்சித்த பக்கம் இந்த முகவரியில் இல்லை. நீங்கள் தேடுவதைக் கண்டுபிடிக்க உதவ கீழே உள்ள இணைப்புகளைப் பயன்படுத்தலாம்."
 
 #. Default: "We apologize for the inconvenience, but there was an unexpected error on the server."
 #: components/theme/Error/ServerError
 msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
-msgstr ""
+msgstr "சிரமத்திற்கு நாங்கள் மன்னிப்பு கோருகிறோம், ஆனால் சேவையகத்தில் எதிர்பாராத பிழை இருந்தது."
 
 #. Default: "We apologize for the inconvenience, but you don't have permissions on this resource."
 #: components/theme/Forbidden/Forbidden
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
-msgstr ""
+msgstr "சிரமத்திற்கு நாங்கள் மன்னிப்பு கோருகிறோம், ஆனால் இந்த வளத்தில் உங்களுக்கு இசைவு இல்லை."
 
 #. Default: "The"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Weeek day of month"
-msgstr ""
+msgstr "மாதத்தின் வார நாள்"
 
 #. Default: "Weekday"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Weekday"
-msgstr ""
+msgstr "வார நாள்"
 
 #. Default: "Weekly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Weekly"
-msgstr ""
+msgstr "வாராந்திர"
 
 #. Default: "What"
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 msgid "What"
-msgstr ""
+msgstr "என்ன"
 
 #. Default: "When"
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 msgid "When"
-msgstr ""
+msgstr "எப்போது"
 
 #. Default: "When this date is reached, the content will nolonger be visible in listings and searches."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
-msgstr ""
+msgstr "இந்த தேதியை எட்டும்போது, பட்டியல் மற்றும் தேடல்களில் உள்ளடக்கம் இனி தெரியாது."
 
 #. Default: "Whether or not execution of further rules should stop after this rule is executed"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Whether or not execution of further rules should stop after this rule is executed"
-msgstr ""
+msgstr "இந்த விதி செயல்படுத்தப்பட்ட பின்னர் மேலும் விதிகளை நிறைவேற்றுவது நிறுத்தப்பட வேண்டுமா இல்லையா"
 
 #. Default: "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
-msgstr ""
+msgstr "இந்த விதியால் தொடங்கப்பட்ட செயல்களால் பிற விதிகள் தூண்டப்பட வேண்டுமா இல்லையா. இது எல்லையற்ற சுழல்களை உருவாக்காது என்று நீங்கள் உறுதியாக நம்பினால் மட்டுமே இதைச் செயல்படுத்தவும்"
 
 #. Default: "Whether or not the rule is currently enabled"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Whether or not the rule is currently enabled"
-msgstr ""
+msgstr "விதி தற்போது இயக்கப்பட்டதா இல்லையா"
 
 #. Default: "Who"
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 msgid "Who"
-msgstr ""
+msgstr "WHO"
 
 #. Default: "Wide"
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
 msgid "Wide"
-msgstr ""
+msgstr "அகலமான"
 
 #. Default: "Updating workflow states..."
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Workflow Change Loading Message"
-msgstr ""
+msgstr "பணிப்பாய்வு மாற்றம் ஏற்றுதல் செய்தி"
 
 #. Default: "Workflow updated."
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
-msgstr ""
+msgstr "பணிப்பாய்வு புதுப்பிக்கப்பட்டது."
 
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
-msgstr ""
+msgstr "ஆண்டு"
 
 #. Default: "Yes"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
 msgid "Yes"
-msgstr ""
+msgstr "ஆம்"
 
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
-msgstr ""
+msgstr "இந்த கோப்புறையின் தற்போதைய மோகத்தில் உள்ள அனைத்து பொருட்களையும் நீங்கள் நீக்க உள்ளீர்கள்."
 
 #. Default: "You are about to delete all items in this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in this folder."
-msgstr ""
+msgstr "இந்த கோப்புறையில் உள்ள அனைத்து பொருட்களையும் நீக்க உள்ளீர்கள்."
 
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
-msgstr ""
+msgstr "பாதுகாக்கப்பட்ட வளத்தை அணுக முயற்சிக்கிறீர்கள், முதலில் {login} முதலில்."
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
-msgstr ""
+msgstr "நீங்கள் காலாவதியான உலாவியைப் பயன்படுத்துகிறீர்கள்"
 
 #. Default: "You can add a comment by filling out the form below. Plain text formatting."
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
-msgstr ""
+msgstr "கீழே உள்ள படிவத்தை நிரப்புவதன் மூலம் நீங்கள் ஒரு கருத்தைச் சேர்க்கலாம். எளிய உரை வடிவமைப்பு."
 
 #. Default: "You can control who can view and edit your item using the list below."
 #: components/manage/Sharing/Sharing
 msgid "You can control who can view and edit your item using the list below."
-msgstr ""
+msgstr "கீழே உள்ள பட்டியலைப் பயன்படுத்தி உங்கள் உருப்படியைக் காணலாம் மற்றும் திருத்தலாம் என்பதை நீங்கள் கட்டுப்படுத்தலாம்."
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
-msgstr ""
+msgstr "கீழே உள்ள திருத்தங்களின் வித்தியாசத்தை நீங்கள் காணலாம்."
 
 #. Default: "You can view the history of your item below."
 #: components/manage/History/History
 msgid "You can view the history of your item below."
-msgstr ""
+msgstr "உங்கள் உருப்படியின் வரலாற்றை கீழே காணலாம்."
 
 #. Default: "You can't paste this content here"
 #: components/manage/Contents/Contents
 msgid "You can't paste this content here"
-msgstr ""
+msgstr "இந்த உள்ளடக்கத்தை இங்கே ஒட்ட முடியாது"
 
 #. Default: "You have been logged out from the site."
 #: components/theme/Logout/Logout
 msgid "You have been logged out from the site."
-msgstr ""
+msgstr "நீங்கள் தளத்திலிருந்து வெளியேறிவிட்டீர்கள்."
 
 #. Default: "You have not the required permission for this control panel."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "You have not the required permission for this control panel."
-msgstr ""
+msgstr "இந்த கட்டுப்பாட்டு குழுவுக்கு தேவையான இசைவு உங்களிடம் இல்லை."
 
 #. Default: "Your email is required for reset your password."
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
-msgstr ""
+msgstr "உங்கள் கடவுச்சொல்லை மீட்டமைக்க உங்கள் மின்னஞ்சல் தேவை."
 
 #. Default: "Your password has been set successfully. You may now {link} with your new password."
 #: components/theme/PasswordReset/PasswordReset
 msgid "Your password has been set successfully. You may now {link} with your new password."
-msgstr ""
+msgstr "உங்கள் கடவுச்சொல் வெற்றிகரமாக அமைக்கப்பட்டுள்ளது. உங்கள் புதிய கடவுச்சொல்லுடன் இப்போது {இணைக்கலாம்."
 
 #. Default: "Your preferred language"
 #: components/manage/Preferences/PersonalPreferences
 msgid "Your preferred language"
-msgstr ""
+msgstr "உங்கள் விருப்பமான மொழி"
 
 #. Default: "Your site is up to date."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Your site is up to date."
-msgstr ""
+msgstr "உங்கள் தளம் புதுப்பித்த நிலையில் உள்ளது."
 
 #. Default: "Your username is required for reset your password."
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your usernaame is required for reset your password."
-msgstr ""
+msgstr "உங்கள் கடவுச்சொல்லை மீட்டமைக்க உங்கள் பயனர்பெயர் தேவை."
 
 #. Default: "File types allowed"
 #: components/manage/Widgets/SchemaWidget
 msgid "accept"
-msgstr ""
+msgstr "ஏற்றுக்கொள்"
 
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
-msgstr ""
+msgstr "adduserformemailDescription"
 
 #. Default: "Enter full name, e.g. John Smith."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormFullnameDescription"
-msgstr ""
+msgstr "adduserformulflanamedescription"
 
 #. Default: "Enter your new password. Minimum 8 characters."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormPasswordDescription"
-msgstr ""
+msgstr "adduserformpassworddescription"
 
 #. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr ""
+msgstr "adduserformusernamedescription"
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
-msgstr ""
+msgstr "கிடைக்கும் காட்சிகள்"
 
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
-msgstr ""
+msgstr "பிளாக்ச்ஃபீல்ட்ச்ரார்டிடில்"
 
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
-msgstr ""
+msgstr "box_forgot_password_option"
 
 #. Default: "Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
 #: components/manage/Controlpanels/Aliases
 msgid "bulkUploadUrlsHelp"
-msgstr ""
+msgstr "bulluploadurlshelp"
 
 #. Default: "Checkbox"
 #: config/Blocks
 msgid "checkboxFacet"
-msgstr ""
+msgstr "செக்பாக்ச்ஃபேசெட்"
 
 #. Default: "column"
 #: components/manage/Blocks/Grid/templates
 msgid "column"
-msgstr ""
+msgstr "நெடுவரிசை"
 
 #. Default: "columns"
 #: components/manage/Blocks/Grid/templates
 msgid "columns"
-msgstr ""
+msgstr "நெடுவரிசைகள்"
 
 #. Default: "Common"
 #: config/Blocks
 msgid "common"
-msgstr ""
+msgstr "பொது"
 
 #. Default: "Compare to language"
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
-msgstr ""
+msgstr "ஒப்பிட்டு_டோ"
 
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "countBrokenRelations"
-msgstr ""
+msgstr "CountBrokenRelations"
 
 #. Default: "Date Range"
 #: config/Blocks
 msgid "daterangeFacet"
-msgstr ""
+msgstr "டேட்டாலங்கே முகம்"
 
 #. Default: "delete"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
-msgstr ""
+msgstr "நீக்கு"
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
-msgstr ""
+msgstr "dided_browser_notice_message"
 
 #. Default: "Description"
 #: config/Blocks
 msgid "description"
-msgstr ""
+msgstr "விவரம்"
 
 #. Default: "For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password."
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_lost_password"
-msgstr ""
+msgstr "விளக்கம்_LOST_PASSWORD"
 
 #. Default: "Your password reset request has been mailed. It should arrive in your mailbox shortly. When you receive the message, visit the address it contains to reset your password."
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_sent_password"
-msgstr ""
+msgstr "விளக்கம்_சென்ட்_பாச் வேர்ட்"
 
 #. Default: "Draft"
 #: components/manage/Contents/ContentsItem
 msgid "draft"
-msgstr ""
+msgstr "வரைவு"
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
 msgid "email"
-msgstr ""
+msgstr "மின்னஞ்சல்"
 
 #. Default: "All dates"
 #: components/theme/EventDetails/EventDetails
 msgid "event_alldates"
-msgstr ""
+msgstr "நிகழ்வு_அல்டேட்டுகள்"
 
 #. Default: "Attendees"
 #: components/theme/EventDetails/EventDetails
 msgid "event_attendees"
-msgstr ""
+msgstr "நிகழ்வு பங்கேற்பாளர்கள்"
 
 #. Default: "Contact Name"
 #: components/theme/EventDetails/EventDetails
 msgid "event_contactname"
-msgstr ""
+msgstr "Event_contactName"
 
 #. Default: "Contact Phone"
 #: components/theme/EventDetails/EventDetails
 msgid "event_contactphone"
-msgstr ""
+msgstr "Event_contactPhone"
 
 #. Default: "Website"
 #: components/theme/EventDetails/EventDetails
 msgid "event_website"
-msgstr ""
+msgstr "Event_website"
 
 #. Default: "What"
 #: components/theme/EventDetails/EventDetails
 msgid "event_what"
-msgstr ""
+msgstr "நிகழ்வு_ எது"
 
 #. Default: "When"
 #: components/theme/EventDetails/EventDetails
 msgid "event_when"
-msgstr ""
+msgstr "நிகழ்வு_ எப்போது"
 
 #. Default: "Where"
 #: components/theme/EventDetails/EventDetails
 msgid "event_where"
-msgstr ""
+msgstr "நிகழ்வு_ எங்கே"
 
 #. Default: "/example"
 #: components/manage/Controlpanels/Aliases
 msgid "examplePath"
-msgstr ""
+msgstr "எடுத்துக்காட்டு"
 
 #. Default: "External URLs are not allowed in this field."
 #: components/manage/Widgets/ImageWidget
@@ -4704,62 +4699,62 @@ msgstr ""
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
-msgstr ""
+msgstr "பைல்டூ"
 
 #. Default: "flush intIds and rebuild relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "flush intIds and rebuild relations"
-msgstr ""
+msgstr "இன்டிட்ச் மற்றும் உறவுகளை மீண்டும் கட்டியெழுப்பவும்"
 
 #. Default: "<ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>"
 #: helpers/MessageLabels/MessageLabels
 msgid "flushAndRebuildRelationsHints"
-msgstr ""
+msgstr "flushandrebuildrelationshints"
 
 #. Default: "Head title"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
-msgstr ""
+msgstr "head_title"
 
 #. Default: "Password reset confirmation sent"
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
-msgstr ""
+msgstr "heading_sent_password"
 
 #. Default: "Hero"
 #: config/Blocks
 msgid "hero"
-msgstr ""
+msgstr "ஈரோ"
 
 #. Default: "HTML"
 #: config/Blocks
 msgid "html"
-msgstr ""
+msgstr "உஉகுமொ"
 
 #. Default: "Image"
 #: config/Blocks
 msgid "image"
-msgstr ""
+msgstr "படம்"
 
 #. Default: "Please upload an image instead."
 #: components/manage/Widgets/ImageWidget
 msgid "imageUploadErrorMessage"
-msgstr ""
+msgstr "ImageUploadermage"
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "image_block_clear"
-msgstr ""
+msgstr "image_block_clear"
 
 #. Default: "Image preview"
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "image_block_preview"
-msgstr ""
+msgstr "image_block_preview"
 
 #. Default: "Input must be integer"
 #: helpers/MessageLabels/MessageLabels
 msgid "integer"
-msgstr ""
+msgstr "முழு எண்"
 
 #. Default: "No image was found in the internal path you provided."
 #: components/manage/Widgets/ImageWidget
@@ -4769,506 +4764,506 @@ msgstr ""
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
 msgid "intranet"
-msgstr ""
+msgstr "இன்ட்ராநெட்"
 
 #. Default: "item"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "item"
-msgstr ""
+msgstr "உருப்படி"
 
 #. Default: "items"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "items"
-msgstr ""
+msgstr "உருப்படிகள்"
 
 #. Default: "My email is"
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_is"
-msgstr ""
+msgstr "label_my_email_is"
 
 #. Default: "My user name is"
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_username_is"
-msgstr ""
+msgstr "label_my_username_is"
 
 #. Default: "Lead Image Field"
 #: config/Blocks
 msgid "leadimage"
-msgstr ""
+msgstr "லீட்இம்பேச்"
 
 #. Default: "Delete item and break links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: Delete item and break links"
-msgstr ""
+msgstr "இணைப்பு-ஒருமைப்பாடு: உருப்படியை நீக்கி இணைப்புகளை உடைக்கவும்"
 
 #. Default: "Checking references..."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: loading references"
-msgstr ""
+msgstr "இணைப்பு-ஒருங்கிணைப்பு: குறிப்புகளை ஏற்றுகிறது"
 
 #. Default: "Enter a URL to an image"
 #: components/manage/Widgets/ImageWidget
 msgid "linkAnImage"
-msgstr ""
+msgstr "இணைப்பு"
 
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
-msgstr ""
+msgstr "பட்டியல்"
 
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
 msgid "loading"
-msgstr ""
+msgstr "ஏற்றுகிறது"
 
 #. Default: "log in"
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
-msgstr ""
+msgstr "புகுபதிகை"
 
 #. Default: "Maps"
 #: config/Blocks
 msgid "maps"
-msgstr ""
+msgstr "வரைபடங்கள்"
 
 #. Default: "Maximum Length"
 #: components/manage/Widgets/SchemaWidget
 msgid "maxLength"
-msgstr ""
+msgstr "அதிகபட்சம்"
 
 #. Default: "End of the range (including the value itself)"
 #: components/manage/Widgets/SchemaWidget
 msgid "maximum"
-msgstr ""
+msgstr "பெருமம்"
 
 #. Default: "Media"
 #: config/Blocks
 msgid "media"
-msgstr ""
+msgstr "ஊடகம்"
 
 #. Default: "Minimum Length"
 #: components/manage/Widgets/SchemaWidget
 msgid "minLength"
-msgstr ""
+msgstr "மின்லண்ட்"
 
 #. Default: "Start of the range"
 #: components/manage/Widgets/SchemaWidget
 msgid "minimum"
-msgstr ""
+msgstr "சிறுமம்"
 
 #. Default: "Most used"
 #: config/Blocks
 msgid "mostUsed"
-msgstr ""
+msgstr "ஃபேசன்"
 
 #. Default: "Found {sources} sources and {targets} targets. Narrow down to {max}!"
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "narrowDownRelations"
-msgstr ""
+msgstr "குறுகிய குறைப்புக்கள்"
 
 #. Default: "No"
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 #: components/theme/Widgets/BooleanWidget
 msgid "no"
-msgstr ""
+msgstr "இல்லை"
 
 #. Default: "No workflow state"
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
-msgstr ""
+msgstr "பணிப்பாய்வு நிலை இல்லை"
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
-msgstr ""
+msgstr "எண்"
 
 #. Default: "of the month"
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
 msgid "of the month"
-msgstr ""
+msgstr "மாதத்தின்"
 
 #. Default: "or try a different page."
 #: error
 msgid "or try a different page."
-msgstr ""
+msgstr "அல்லது வேறு பக்கத்தை முயற்சிக்கவும்."
 
 #. Default: "others"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "others"
-msgstr ""
+msgstr "மற்றவர்கள்"
 
 #. Default: "Pending"
 #: components/manage/Contents/ContentsItem
 msgid "pending"
-msgstr ""
+msgstr "நிலுவையில் உள்ளது"
 
 #. Default: "Pick an existing image"
 #: components/manage/Widgets/ImageWidget
 msgid "pickAnImage"
-msgstr ""
+msgstr "பிகானிமேச்"
 
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
 msgid "private"
-msgstr ""
+msgstr "தனிப்பட்ட"
 
 #. Default: "Published"
 #: components/manage/Contents/ContentsItem
 msgid "published"
-msgstr ""
+msgstr "வெளியிடப்பட்டது"
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
-msgstr ""
+msgstr "querystring-widget-select"
 
 #. Default: "rebuild relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "rebuild relations"
-msgstr ""
+msgstr "உறவுகளை மீண்டும் உருவாக்கவும்"
 
 #. Default: "reference"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "reference"
-msgstr ""
+msgstr "குறிப்பு"
 
 #. Default: "references"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "references"
-msgstr ""
+msgstr "குறிப்புகள்"
 
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
-msgstr ""
+msgstr "குறிக்கிறது"
 
 #. Default: "results"
 #: components/theme/Search/Search
 msgid "results found"
-msgstr ""
+msgstr "முடிவுகள் காணப்பட்டன"
 
 #. Default: "return to the site root"
 #: error
 msgid "return to the site root"
-msgstr ""
+msgstr "தள மூலத்திற்குத் திரும்பு"
 
 #. Default: "and"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_and"
-msgstr ""
+msgstr "rrule_and"
 
 #. Default: "(~approximate)"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_approximate"
-msgstr ""
+msgstr "rrule_approximate"
 
 #. Default: "at"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_at"
-msgstr ""
+msgstr "rrule_at"
 
 #. Default: "[month] [day], [year]"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_dateFormat"
-msgstr ""
+msgstr "rrule_dateformat"
 
 #. Default: "day"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_day"
-msgstr ""
+msgstr "rrule_day"
 
 #. Default: "days"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_days"
-msgstr ""
+msgstr "rrule_days"
 
 #. Default: "every"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_every"
-msgstr ""
+msgstr "rrule_every"
 
 #. Default: "for"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_for"
-msgstr ""
+msgstr "rrule_for"
 
 #. Default: "hour"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_hour"
-msgstr ""
+msgstr "rrule_hour"
 
 #. Default: "hours"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_hours"
-msgstr ""
+msgstr "rrule_hours"
 
 #. Default: "in"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_in"
-msgstr ""
+msgstr "rrule_in"
 
 #. Default: "last"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_last"
-msgstr ""
+msgstr "rrule_last"
 
 #. Default: "minutes"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_minutes"
-msgstr ""
+msgstr "rrule_minutes"
 
 #. Default: "month"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_month"
-msgstr ""
+msgstr "rrule_month"
 
 #. Default: "months"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_months"
-msgstr ""
+msgstr "rrule_months"
 
 #. Default: "nd"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_nd"
-msgstr ""
+msgstr "rrule_nd"
 
 #. Default: "on"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_on"
-msgstr ""
+msgstr "rrule_on"
 
 #. Default: "on the"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_on the"
-msgstr ""
+msgstr "rrule_on the"
 
 #. Default: "or"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_or"
-msgstr ""
+msgstr "rrule_or"
 
 #. Default: "rd"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_rd"
-msgstr ""
+msgstr "rrule_rd"
 
 #. Default: "st"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_st"
-msgstr ""
+msgstr "rrule_st"
 
 #. Default: "th"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_th"
-msgstr ""
+msgstr "rrule_th"
 
 #. Default: "the"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_the"
-msgstr ""
+msgstr "rrule_the"
 
 #. Default: "time"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_time"
-msgstr ""
+msgstr "rrule_time"
 
 #. Default: "times"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_times"
-msgstr ""
+msgstr "rrule_times"
 
 #. Default: "until"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_until"
-msgstr ""
+msgstr "rrule_until"
 
 #. Default: "week"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_week"
-msgstr ""
+msgstr "rrule_week"
 
 #. Default: "weekday"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_weekday"
-msgstr ""
+msgstr "rrule_weekday"
 
 #. Default: "weekdays"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_weekdays"
-msgstr ""
+msgstr "rrule_weekdays"
 
 #. Default: "weeks"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_weeks"
-msgstr ""
+msgstr "rrule_weeks"
 
 #. Default: "year"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_year"
-msgstr ""
+msgstr "rrule_year"
 
 #. Default: "years"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
-msgstr ""
+msgstr "rrule_years"
 
 #. Default: "Select"
 #: config/Blocks
 msgid "selectFacet"
-msgstr ""
+msgstr "SelectFacet"
 
 #. Default: "Select view"
 #: components/manage/Blocks/Search/components/ViewSwitcher
 msgid "selectView"
-msgstr ""
+msgstr "SelectView"
 
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
-msgstr ""
+msgstr "அளவு"
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks
 msgid "skiplink-footer"
-msgstr ""
+msgstr "ச்க்லிங்க்-ஃபூட்டர்"
 
 #. Default: "Skip to main content"
 #: components/theme/SkipLinks/SkipLinks
 msgid "skiplink-main-content"
-msgstr ""
+msgstr "ச்க்லிங்க்-மெய்ன்-உள்ளடக்கம்"
 
 #. Default: "Skip to navigation"
 #: components/theme/SkipLinks/SkipLinks
 msgid "skiplink-navigation"
-msgstr ""
+msgstr "ச்க்லிங்க்-நவிசனை"
 
 #. Default: "sort"
 #: components/manage/Contents/Contents
 msgid "sort"
-msgstr ""
+msgstr "வரிசைப்படுத்து"
 
 #. Default: "sources path"
 #: helpers/MessageLabels/MessageLabels
 msgid "sources path"
-msgstr ""
+msgstr "ஆதார பாதை"
 
 #. Default: "Table"
 #: config/Blocks
 msgid "table"
-msgstr ""
+msgstr "அட்டவணை"
 
 #. Default: "target path"
 #: helpers/MessageLabels/MessageLabels
 msgid "target path"
-msgstr ""
+msgstr "இலக்கு பாதை"
 
 #. Default: "Text"
 #: config/Blocks
 msgid "text"
-msgstr ""
+msgstr "உரை"
 
 #. Default: "Title"
 #: config/Blocks
 msgid "title"
-msgstr ""
+msgstr "தலைப்பு"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 msgid "toc"
-msgstr ""
+msgstr "TOC"
 
 #. Default: "Toggle"
 #: config/Blocks
 msgid "toggleFacet"
-msgstr ""
+msgstr "TOGGLEFACET"
 
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "upgradeVersions"
-msgstr ""
+msgstr "மேம்படுத்தல்கள்"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget
 msgid "uploadAnImage"
-msgstr ""
+msgstr "ஏற்றுமதி"
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
 #: helpers/MessageLabels/MessageLabels
 msgid "url"
-msgstr ""
+msgstr "முகவரி"
 
 #. Default: "user avatar"
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
-msgstr ""
+msgstr "பயனர் அவதார்"
 
 #. Default: "Video"
 #: config/Blocks
 msgid "video"
-msgstr ""
+msgstr "ஒளிதோற்றம்"
 
 #. Default: "Views"
 #: components/manage/Blocks/Search/schema
 msgid "views"
-msgstr ""
+msgstr "காட்சிகள்"
 
 #. Default: "Visit external website"
 #: components/theme/EventDetails/EventDetails
 msgid "visit_external_website"
-msgstr ""
+msgstr "visit_external_website"
 
 #. Default: "You are not authorized to perform this operation."
 #: components/manage/Toolbar/More
 msgid "workingCopyErrorUnauthorized"
-msgstr ""
+msgstr "WorkingCopyErrororunauthorised"
 
 #. Default: "An error occurred while performing this operation."
 #: components/manage/Toolbar/More
 msgid "workingCopyGenericError"
-msgstr ""
+msgstr "WorkingCopyGenericerror"
 
 #. Default: "Yes"
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 #: components/theme/Widgets/BooleanWidget
 msgid "yes"
-msgstr ""
+msgstr "ஆம்"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
-msgstr ""
+msgstr "{எண்ணிக்கை, பன்மை, ஒன்று {பதிவேற்றம் {count} கோப்பு} பிற {பதிவேற்றம் {count} கோப்புகள்}}"
 
 #. Default: "{count} selected"
 #: components/manage/Contents/Contents
 msgid "{count} selected"
-msgstr ""
+msgstr "{count} தேர்ந்தெடுக்கப்பட்டது"
 
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
 msgid "{id} Content Type"
-msgstr ""
+msgstr "{id} உள்ளடக்க வகை"
 
 #. Default: "{id} Schema"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
-msgstr ""
+msgstr "{id} ச்கீமா"
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions
 msgid "{title} copied."
-msgstr ""
+msgstr "{title} நகலெடுக்கப்பட்டது."
 
 #. Default: "{title} cut."
 #: components/manage/Actions/Actions
 msgid "{title} cut."
-msgstr ""
+msgstr "{title} வெட்டு."
 
 #. Default: "{title} has been deleted."
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
-msgstr ""
+msgstr "{title} நீக்கப்பட்டது."

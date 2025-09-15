@@ -17,167 +17,167 @@ msgstr ""
 # defaultMessage: Add link
 #: editor/plugins/Link/index
 msgid "Add link"
-msgstr ""
+msgstr "இணைப்பைச் சேர்க்கவும்"
 
 # defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
 #: widgets/HtmlSlateWidget
 msgid "An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
-msgstr ""
+msgstr "\"{name}\" புலத்தைத் திருத்தும் போது பிழை ஏற்பட்டது. எங்களுக்கு அறிவிக்கப்பட்டுள்ளது, நாங்கள் அதைப் பார்க்கிறோம். உங்கள் வேலையைச் சேமித்து மீண்டும் முயற்சிக்கவும். சிக்கல் தொடர்ந்தால் தள நிர்வாகியை தொடர்பு கொள்ளவும்."
 
 # defaultMessage: An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.
 #: widgets/RichTextWidgetView
 msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
-msgstr ""
+msgstr "\"{name}\" புலத்தை வழங்குதல் செய்யும் போது பிழை ஏற்பட்டது. எங்களுக்கு அறிவிக்கப்பட்டுள்ளது, நாங்கள் அதைப் பார்க்கிறோம். சிக்கல் தொடர்ந்தால் தள நிர்வாகியை தொடர்பு கொள்ளவும்."
 
 # defaultMessage: Bottom
 #: blocks/Table/TableBlockEdit
 msgid "Bottom"
-msgstr ""
+msgstr "கீழே"
 
 # defaultMessage: Center
 #: blocks/Table/TableBlockEdit
 msgid "Center"
-msgstr ""
+msgstr "நடுவண்"
 
 # defaultMessage: Delete col
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Delete col"
-msgstr ""
+msgstr "நெடுவரிசையை நீக்கு"
 
 # defaultMessage: Delete row
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Delete row"
-msgstr ""
+msgstr "வரிசையை நீக்கு"
 
 # defaultMessage: Delete table
 #: editor/plugins/Table/index
 msgid "Delete table"
-msgstr ""
+msgstr "அட்டவணையை நீக்கு"
 
 # defaultMessage: Divide each row into separate cells
 #: blocks/Table/TableBlockEdit
 msgid "Divide each row into separate cells"
-msgstr ""
+msgstr "ஒவ்வொரு வரிசையையும் தனி கலங்களாக பிரிக்கவும்"
 
 # defaultMessage: Edit element
 #: elementEditor/messages
 msgid "Edit element"
-msgstr ""
+msgstr "உறுப்பு திருத்து"
 
 # defaultMessage: Edit link
 #: editor/plugins/AdvancedLink/index
 #: editor/plugins/Link/index
 msgid "Edit link"
-msgstr ""
+msgstr "இணைப்பைத் திருத்து"
 
 # defaultMessage: Fixed width table cells
 #: blocks/Table/TableBlockEdit
 msgid "Fixed width table cells"
-msgstr ""
+msgstr "நிலையான அகல அட்டவணை செல்கள்"
 
 # defaultMessage: Hide headers
 #: blocks/Table/TableBlockEdit
 msgid "Hide headers"
-msgstr ""
+msgstr "தலைப்புகளை மறைக்கவும்"
 
 # defaultMessage: Insert col after
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert col after"
-msgstr ""
+msgstr "பிறகு நெடுவரிசையைச் செருகவும்"
 
 # defaultMessage: Insert col before
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert col before"
-msgstr ""
+msgstr "முன் கோல் ஐ செருகவும்"
 
 # defaultMessage: Insert row after
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row after"
-msgstr ""
+msgstr "பிறகு வரிசையைச் செருகவும்"
 
 # defaultMessage: Insert row before
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row before"
-msgstr ""
+msgstr "முன் வரிசையைச் செருகவும்"
 
 # defaultMessage: Left
 #: blocks/Table/TableBlockEdit
 msgid "Left"
-msgstr ""
+msgstr "இடது"
 
 # defaultMessage: Make the table compact
 #: blocks/Table/TableBlockEdit
 msgid "Make the table compact"
-msgstr ""
+msgstr "அட்டவணையை கச்சிதமாக்கவும்"
 
 # defaultMessage: Make the table sortable
 #: blocks/Table/TableBlockEdit
 msgid "Make the table sortable"
-msgstr ""
+msgstr "அட்டவணையை வரிசைப்படுத்துங்கள்"
 
 # defaultMessage: Middle
 #: blocks/Table/TableBlockEdit
 msgid "Middle"
-msgstr ""
+msgstr "நடுத்தர"
 
 # defaultMessage: No matching blocks
 #: blocks/Text/SlashMenu
 msgid "No matching blocks"
-msgstr ""
+msgstr "பொருந்தக்கூடிய தொகுதிகள் இல்லை"
 
 # defaultMessage: Reduce complexity
 #: blocks/Table/TableBlockEdit
 msgid "Reduce complexity"
-msgstr ""
+msgstr "சிக்கலைக் குறைக்கவும்"
 
 # defaultMessage: Remove element
 #: elementEditor/messages
 msgid "Remove element"
-msgstr ""
+msgstr "உறுப்பை அகற்று"
 
 # defaultMessage: Remove link
 #: editor/plugins/AdvancedLink/index
 msgid "Remove link"
-msgstr ""
+msgstr "இணைப்பை அகற்று"
 
 # defaultMessage: Right
 #: blocks/Table/TableBlockEdit
 msgid "Right"
-msgstr ""
+msgstr "வலது"
 
 # defaultMessage: Stripe alternate rows with color
 #: blocks/Table/TableBlockEdit
 msgid "Stripe alternate rows with color"
-msgstr ""
+msgstr "வண்ணத்துடன் மாற்று வரிசைகள்"
 
 # defaultMessage: Table
 #: blocks/Table/TableBlockEdit
 msgid "Table"
-msgstr ""
+msgstr "அட்டவணை"
 
 # defaultMessage: Table color inverted
 #: blocks/Table/TableBlockEdit
 msgid "Table color inverted"
-msgstr ""
+msgstr "அட்டவணை நிறம் தலைகீழ்"
 
 # defaultMessage: Top
 #: blocks/Table/TableBlockEdit
 msgid "Top"
-msgstr ""
+msgstr "மேலே"
 
 # defaultMessage: Type text…
 #: blocks/Text/DefaultTextBlockEditor
 #: blocks/Text/DetachedTextBlockEditor
 msgid "Type text…"
-msgstr ""
+msgstr "உரையைத் தட்டச்சு செய்க…"
 
 # defaultMessage: Visible only in view mode
 #: blocks/Table/TableBlockEdit
 msgid "Visible only in view mode"
-msgstr ""
+msgstr "பார்வை பயன்முறையில் மட்டுமே தெரியும்"

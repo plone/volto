@@ -3,14 +3,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-04-01 03:47+0000\n"
-"Last-Translator: Yuri <yuri.carrer@unipd.it>\n"
-"Language: it\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/plone/volto-18/it/>\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11-dev\n"
+"Plural-Forms: \n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -1185,7 +1184,7 @@ msgstr "Scarica l'evento"
 #. Default: "Download file"
 #: components/theme/View/FileView
 msgid "Download file"
-msgstr ""
+msgstr "Scarica il file"
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -1535,7 +1534,7 @@ msgstr "File"
 #. Default: "File is not of the accepted type {accept}"
 #: components/manage/Widgets/FileWidget
 msgid "File is not of the accepted type {accept}"
-msgstr ""
+msgstr "Il file non è del tipo consentito {accept}"
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
@@ -1560,7 +1559,7 @@ msgstr "File caricati: {uploadedFiles}"
 #. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
 #: components/manage/Widgets/SchemaWidget
 msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
-msgstr ""
+msgstr "Compila il valore del campo del modulo con il valore fornito da un parametro di query all'interno dell'URL con il nome dato."
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
@@ -2710,7 +2709,7 @@ msgstr "Persone responsabili della creazione del contenuto di questo elemento. I
 #. Default: "Placeholder"
 #: components/manage/Widgets/SchemaWidget
 msgid "Placeholder"
-msgstr ""
+msgstr "Segnaposto"
 
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
@@ -2891,7 +2890,7 @@ msgstr "Elementi collegati a questo contenuto come contenuto correlato"
 msgid "Referencing this item with {relationship}"
 msgstr "Elementi collegati a questo contenuto in {relationship}"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr "Ricarica il sorgente del contenuto"
@@ -2911,7 +2910,7 @@ msgstr "Form di iscrizione"
 #. Default: "Related Items"
 #: components/theme/RelatedItems/RelatedItems
 msgid "Related Items"
-msgstr ""
+msgstr "Elementi correlati"
 
 #. Default: "Relation"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -3768,7 +3767,7 @@ msgstr "La presenza del bottone disabilita la ricerca al volo, la ricerca verrà
 #. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
 #: components/manage/Widgets/FileWidget
 msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
-msgstr ""
+msgstr "Il file caricato ha superato la dimensione massima consentita di {dimensione} byte"
 
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
@@ -3813,7 +3812,7 @@ msgstr "La registrazione è avvenuta correttamente. Per favore controlla la tua 
 #. Default: "The selected default language must be in the list of the field 'Available languages'"
 #: helpers/MessageLabels/MessageLabels
 msgid "The selected default language must be in the list of the field 'Available languages'"
-msgstr ""
+msgstr "La lingua predefinita selezionata deve essere nell'elenco del campo ' Lingue disponibili'"
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
@@ -4454,12 +4453,12 @@ msgstr "Sì"
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
-msgstr ""
+msgstr "Stai per eliminare tutti gli elementi nella paginazione corrente di questa cartella."
 
 #. Default: "You are about to delete all items in this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in this folder."
-msgstr ""
+msgstr "Stai per eliminare tutti gli elementi in questa cartella."
 
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
@@ -5124,7 +5123,7 @@ msgstr "Seleziona la vista"
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
-msgstr ""
+msgstr "dimensione"
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks
