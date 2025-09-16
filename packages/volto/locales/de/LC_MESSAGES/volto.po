@@ -2634,7 +2634,7 @@ msgstr "Objekt-Browser öffnen"
 #. Default: "Order"
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
-msgstr "Reihung"
+msgstr "Reihenfolge"
 
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
@@ -2910,10 +2910,10 @@ msgstr "Inhalte, die diesen Inhalt als verwandten Inhalt referenzieren"
 msgid "Referencing this item with {relationship}"
 msgstr "Inhalte, die diesen Inhalt mit {relationship} referenzieren"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
-msgstr "Mit Inhalten des Ziels aktualisieren"
+msgstr "Vom Ziel übernehmen"
 
 #. Default: "Register"
 #: components/theme/Anontools/Anontools
@@ -2930,7 +2930,7 @@ msgstr "Registrierungsformular"
 #. Default: "Related Items"
 #: components/theme/RelatedItems/RelatedItems
 msgid "Related Items"
-msgstr "Verwandte Elemente"
+msgstr "Ähnliche Inhalte"
 
 #. Default: "Relation"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -4726,6 +4726,11 @@ msgstr "Ort"
 msgid "examplePath"
 msgstr "/beispiel"
 
+#. Default: "External URLs are not allowed in this field."
+#: components/manage/Widgets/ImageWidget
+msgid "externalURLsNotAllowed"
+msgstr ""
+
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
@@ -4785,6 +4790,11 @@ msgstr "Bildvorschau"
 #: helpers/MessageLabels/MessageLabels
 msgid "integer"
 msgstr "Ganzzahl"
+
+#. Default: "No image was found in the internal path you provided."
+#: components/manage/Widgets/ImageWidget
+msgid "internalImageNotFoundErrorMessage"
+msgstr ""
 
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem

@@ -2905,7 +2905,7 @@ msgstr ""
 msgid "Referencing this item with {relationship}"
 msgstr ""
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr ""
@@ -4721,6 +4721,11 @@ msgstr ""
 msgid "examplePath"
 msgstr ""
 
+#. Default: "External URLs are not allowed in this field."
+#: components/manage/Widgets/ImageWidget
+msgid "externalURLsNotAllowed"
+msgstr ""
+
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
@@ -4779,6 +4784,11 @@ msgstr ""
 #. Default: "Input must be integer"
 #: helpers/MessageLabels/MessageLabels
 msgid "integer"
+msgstr ""
+
+#. Default: "No image was found in the internal path you provided."
+#: components/manage/Widgets/ImageWidget
+msgid "internalImageNotFoundErrorMessage"
 msgstr ""
 
 #. Default: "Intranet"

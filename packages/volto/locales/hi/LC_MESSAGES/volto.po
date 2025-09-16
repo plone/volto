@@ -2905,7 +2905,7 @@ msgstr "संबंधित आइटम के रूप में इस आ
 msgid "Referencing this item with {relationship}"
 msgstr "{relationship} के साथ इस आइटम का संदर्भ"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr ""
@@ -4721,6 +4721,11 @@ msgstr "कहाँ"
 msgid "examplePath"
 msgstr ""
 
+#. Default: "External URLs are not allowed in this field."
+#: components/manage/Widgets/ImageWidget
+msgid "externalURLsNotAllowed"
+msgstr ""
+
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
@@ -4780,6 +4785,11 @@ msgstr "छवि पूर्वावलोकन"
 #: helpers/MessageLabels/MessageLabels
 msgid "integer"
 msgstr "संख्या"
+
+#. Default: "No image was found in the internal path you provided."
+#: components/manage/Widgets/ImageWidget
+msgid "internalImageNotFoundErrorMessage"
+msgstr ""
 
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
