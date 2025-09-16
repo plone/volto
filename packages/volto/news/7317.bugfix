@@ -1,0 +1,1 @@
+Refactored the fix for #7238: corner case when coming from SSR in edit route, where the teasers where overwriten with bogus URLs after save if INTERNAL_API_PATH is set. @sneridagh
