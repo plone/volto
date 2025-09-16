@@ -105,7 +105,7 @@ To perform a release dry run, in other words, to preview a release without actua
 pnpm --filter <nameofthepackage> dry-release
 ```
 
-In case of releasing an alpha release, it can be cut using:
+To cut an alpha release, use the `release-alpha` command.
 
 ```shell
 pnpm --filter <nameofthepackage> release-alpha
