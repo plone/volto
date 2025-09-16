@@ -24,13 +24,13 @@ const BlockEditor = (props: BlockEditorProps) => {
   const onSelectBlock = useSetAtom(selectedBlockAtom);
 
   useEffect(() => {
-    onSelectBlock(blocksLayout.items?.[0] || null);
+    onSelectBlock(blocksLayout?.items?.[0] || null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div>
-      {blocksLayout.items.map((blockId) => {
+      {blocksLayout?.items?.map((blockId) => {
         return <EditBlockWrapper key={blockId} block={blockId} />;
       })}
     </div>
