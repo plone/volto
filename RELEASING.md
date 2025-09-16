@@ -56,6 +56,10 @@ pipx ensurepath
 
 ## Running the release process
 
+There are two phases to make a Volto release.
+First run `prereleaser`, then run release commands.
+
+
 ### `prereleaser` command
 
 This command checks which packages are pending to release so you have a guide on the pending packages release order.
