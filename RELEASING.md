@@ -72,10 +72,10 @@ This is recommended order to release pending packages:
 - `@plone/volto-slate`
 - `@plone/volto`
 
-When you run `pnpm prereleaser`, it will check for any pending releases:
-This is the output:
+When you run `pnpm prereleaser`, it will check for any pending releases.
+The following is sample output.
 
-```
+```console
 packages/slots/news/7260.internal
 packages/components/news/7260.internal
 packages/client/news/7321.internal
