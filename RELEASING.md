@@ -89,7 +89,9 @@ packages/blocks/news/7260.internal
 ]
 ```
 
-Given the output of the `prereleaser` command, you can proceed with the release process following the recommended order.
+Based on the output from the `prereleaser` command, review the list of packages pending release.
+Proceed to release each package in the recommended order, starting with the first package in the list and continuing sequentially.
+This ensures dependencies are handled correctly and the release process is smooth.
 
 ### Release commands
 
