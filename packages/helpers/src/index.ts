@@ -3,3 +3,4 @@ export { flattenToAppURL } from './flattenToAppURL';
 export * from './atoms';
 export * from './contents';
 export * from './flattenToAppURL';
+export * from './languageMap';

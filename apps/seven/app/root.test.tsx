@@ -12,7 +12,7 @@ async function renderStub() {
       Component: () => (
         <Layout
           params={{}}
-          loaderData={{ locale: 'en', content: {} as any }}
+          loaderData={{ locale: 'en', content: {} as any, site: {} as any }}
           matches={[{} as any]}
         >
           <p>Root Layout</p>
@@ -41,6 +41,7 @@ describe('loader', () => {
 
   it('should fetch the current content', async () => {
     const getContentMock = vi.fn().mockResolvedValue({ data: {} });
+    const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
     config.settings.apiPath = 'http://example.com';
     config.settings.defaultLanguage = 'en';
     config.settings.supportedLanguages = ['en'];
@@ -49,6 +50,7 @@ describe('loader', () => {
       type: 'client',
       method: () => ({
         getContent: getContentMock,
+        getSite: getSiteMock,
       }),
     });
     const request = new Request('http://example.com');
@@ -60,11 +62,13 @@ describe('loader', () => {
       path: '/',
       expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
     });
+    expect(getSiteMock).toHaveBeenCalled();
     expect(data.locale).toBe('en');
   });
 
   it("should fetch the current content when it's not the root", async () => {
     const getContentMock = vi.fn().mockResolvedValue({ data: {} });
+    const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
     config.settings.apiPath = 'http://example.com';
     config.settings.defaultLanguage = 'en';
     config.settings.supportedLanguages = ['en'];
@@ -73,6 +77,7 @@ describe('loader', () => {
       type: 'client',
       method: () => ({
         getContent: getContentMock,
+        getSite: getSiteMock,
       }),
     });
     const request = new Request('http://example.com/test-content');
@@ -88,11 +93,39 @@ describe('loader', () => {
       path: '/test-content',
       expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
     });
+    expect(getSiteMock).toHaveBeenCalled();
     expect(data.locale).toBe('en');
   });
 
   it('should throw when the current content is not loaded', async () => {
     const getContentMock = vi
+      .fn()
+      .mockRejectedValue({ data: undefined, status: 500 });
+    const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
+    config.settings.apiPath = 'http://example.com';
+    config.settings.defaultLanguage = 'en';
+    config.settings.supportedLanguages = ['en'];
+    config.registerUtility({
+      name: 'ploneClient',
+      type: 'client',
+      method: () => ({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+      }),
+    });
+    const request = new Request('http://example.com');
+    const context = new unstable_RouterContextProvider();
+
+    try {
+      await loader({ request, params: {}, context });
+    } catch (err: any) {
+      expect(err.init.status).toEqual(500);
+    }
+  });
+
+  it('should throw when the site is not loaded', async () => {
+    const getContentMock = vi.fn().mockResolvedValue({ data: {} });
+    const getSiteMock = vi
       .fn()
       .mockRejectedValue({ data: undefined, status: 500 });
     config.settings.apiPath = 'http://example.com';
@@ -103,6 +136,7 @@ describe('loader', () => {
       type: 'client',
       method: () => ({
         getContent: getContentMock,
+        getSite: getSiteMock,
       }),
     });
     const request = new Request('http://example.com');

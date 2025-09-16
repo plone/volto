@@ -25,7 +25,7 @@ const addonPackages = [
   'packages/layout',
   'packages/theming',
   'packages/publicui',
-  'packages/contents',
+  'packages/plate',
   // Add more packages as needed
 ];
 
@@ -66,7 +66,10 @@ export default tseslint.config(
         version: 'detect',
       },
       'import/resolver': {
-        typescript: true,
+        typescript: {
+          project: ['packages/*/tsconfig.json', 'apps/seven/tsconfig.json'],
+          alwaysTryTypes: true,
+        },
         node: true,
       },
     },

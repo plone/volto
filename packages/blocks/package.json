@@ -49,10 +49,13 @@
   },
   "dependencies": {
     "@plone/components": "workspace:*",
+    "@plone/layout": "workspace:*",
+    "@plone/plate": "workspace:*",
     "@plone/registry": "workspace:*",
     "clsx": "^2.1.1"
   },
   "devDependencies": {
+    "@plone/helpers": "workspace:*",
     "@plone/registry": "workspace:*",
     "@plone/types": "workspace:*",
     "@testing-library/jest-dom": "6.4.2",

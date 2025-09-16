@@ -3,8 +3,8 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "build:deps": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers --filter @plone/react-router build",
-    "build:all": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers --filter @plone/react-router build",
+    "build:deps": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/react-router build",
+    "build:all": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/react-router build",
     "build:registry": "pnpm --filter @plone/registry run build",
     "build:components": "pnpm --filter @plone/components run build",
     "build:client": "pnpm --filter @plone/client run build",
@@ -25,7 +25,7 @@
     "prettier:fix": "prettier --write '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
     "stylelint": "stylelint '{apps,packages}/**/*.{css,scss,less}'",
     "stylelint:fix": "stylelint '{apps,packages}/**/*.{css,scss,less}' --fix",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
     "lint-staged": "lint-staged",
     "lockhook": "node packages/scripts/lockhook.js",
     "prepare": "husky",
@@ -43,7 +43,8 @@
   "pnpm": {
     "overrides": {
       "react": "^19.1.0",
-      "react-dom": "^19.1.0"
+      "react-dom": "^19.1.0",
+      "jotai": "^2.12.5"
     },
     "onlyBuiltDependencies": [
       "@swc/core",

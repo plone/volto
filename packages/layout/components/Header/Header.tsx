@@ -30,6 +30,11 @@ const Header = (props: HeaderProps) => {
           content={content}
           location={location}
         />
+        <SlotRenderer
+          name="language-switcher"
+          content={content}
+          location={location}
+        />
       </div>
     </SectionWrapper>
   );
