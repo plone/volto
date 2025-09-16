@@ -165,8 +165,8 @@ packages/components/dist: $(shell find packages/components/src -type f)
 packages/client/dist: $(shell find packages/client/src -type f)
 	pnpm build:client
 
-packages/providers/dist: $(shell find packages/providers/src -type f)
-	pnpm build:providers
+# packages/providers/dist: $(shell find packages/providers/src -type f)
+# 	pnpm build:providers
 
 packages/helpers/dist: $(shell find packages/helpers/src -type f)
 	pnpm build:helpers
@@ -175,7 +175,7 @@ packages/react-router/dist: $(shell find packages/react-router/src -type f)
 	pnpm build:react-router
 
 .PHONY: build-deps
-build-deps: packages/registry/dist packages/components/dist packages/client/dist packages/providers/dist packages/react-router/dist packages/helpers/dist  ## Build dependencies
+build-deps: packages/registry/dist packages/components/dist packages/client/dist packages/react-router/dist packages/helpers/dist  ## Build dependencies
 
 ## Storybook
 
