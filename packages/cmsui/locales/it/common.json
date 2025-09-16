@@ -2,6 +2,27 @@
   "cmsui": {
     "edit": "Modifica",
     "save": "Salva",
-    "controlpanel": "Control Panel"
+    "controlpanel": "Control Panel",
+    "objectbrowserwidget": {
+      "openDialog": "Seleziona contenuti",
+      "dialogTitle": "Seleziona Contenuti",
+      "closeDialog": "Chiudi selezione",
+      "openSearch": "Cerca contenuti",
+      "closeSearch": "Chiudi ricerca",
+      "searchPlaceholder": "Cerca contenuti...",
+      "loading": "Caricamento...",
+      "noResults": "Nessun contenuto trovato",
+      "goback": "Torna indietro",
+      "changeViewMode": "Passa alla vista {{mode}}",
+      "currentItems": "Elementi correnti",
+      "home": "Home",
+      "item": "{{title}}{{#selected}} (selezionato){{/selected}}",
+      "itemNotSelectable": "{{title}} (non selezionabile)",
+      "itemNavigateTo": "Naviga verso {{title}}",
+      "viewModes": {
+        "list": "elenco",
+        "grid": "griglia"
+      }
+    }
   }
 }

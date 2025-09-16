@@ -63,12 +63,14 @@
     "jotai": "^2.12.3",
     "jotai-optics": "^0.4.0",
     "optics-ts": "^2.4.1",
+    "react-aria": "catalog:",
     "react-aria-components": "catalog:",
     "react-i18next": "catalog:",
     "react-router": "catalog:",
     "tailwind-merge": "^3.0.1",
     "tailwind-variants": "^1.0.0",
-    "tailwindcss": "catalog:"
+    "tailwindcss": "catalog:",
+    "usehooks-ts": "^3.1.1"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
