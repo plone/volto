@@ -3,7 +3,7 @@ import { Plug, Pluggable } from '@plone/layout/components/Pluggable';
 import Settings from '@plone/components/icons/settings.svg?react';
 import { sidebarAtom } from '../Sidebar/Sidebar';
 import { useSetAtom } from 'jotai';
-
+import './Toolbar.css';
 const Toolbar = () => {
   const setCollapsed = useSetAtom(sidebarAtom);
 

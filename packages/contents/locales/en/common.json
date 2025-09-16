@@ -1,0 +1,78 @@
+{
+  "contents": {
+    "loading": "Loading...",
+
+    "results": {
+      "number": "{{count}} items",
+      "contents_of": "Contents of {{title}}",
+      "no_results": "No items found"
+    },
+    "actions": {
+      "actions": "Actions",
+      "upload": "Upload",
+      "rename": "Rename",
+      "state": "Change state",
+      "tags": "Tags",
+      "properties": "Properties",
+      "cut": "Cut",
+      "cutted": "Content '{{title}}' successfully cutted",
+      "cutted_multiple": "{{number}} contents successfully cutted",
+      "copy": "Copy",
+      "copied": "Content '{{title}}' successfully copied",
+      "copied_multiple": "{{number}} contents successfully copied",
+      "paste": "Paste",
+      "pasted": "Content '{{title}}' successfully pasted",
+      "pasted_multiple": "{{number}} contents successfully pasted",
+      "delete": "Delete",
+      "deleted": "Content '{{title}}' successfully deleted",
+      "deleted_multiple": "{{number}} contents successfully deleted",
+      "filter": "Filter…",
+      "edit": "Edit",
+      "view": "View",
+      "add": "Add content",
+      "move_to_top_folder": "Move to top folder",
+      "move_to_bottom_folder": "Move to bottom folder"
+    },
+    "item": {
+      "expired": "Expired",
+      "scheduled": "Scheduled",
+      "more_options": "More options"
+    },
+    "indexes": {
+      "title": "Title",
+      "select_columns": "Select columns to show",
+      "boolean": {
+        "yes": "Yes",
+        "no": "No"
+      },
+      "review_state": {
+        "published": "Published",
+        "private": "Private",
+        "pending": "Pending",
+        "intranet": "Intranet",
+        "draft": "Draft",
+        "none": "None",
+        "no_workflow_state": "—"
+      },
+      "date": { "none": "" }
+    },
+    "error": "Error",
+    "unknown_error": "Unknown error",
+    "rearrange": {
+      "error": "Error reordering items",
+      "by": "Rearrange items by…",
+      "asc": "Ascending",
+      "desc": "Descending",
+      "pickOrder": "Pick order for {{index}}"
+    },
+    "modal": {
+      "close": "Close"
+    },
+    "modal_delete": {
+      "single": { "title": "Delete \"{{item}}\"?" },
+      "multi": { "title": "Delete {{n}} items?" },
+      "description": "This action cannot be undone.",
+      "confirm": "Delete"
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "name": "@plone/contents",
+  "description": "Plone core contents",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "url": "https://plone.org"
+    }
+  ],
+  "funding": "https://github.com/sponsors/plone",
+  "license": "MIT",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plone/volto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/volto/issues"
+  },
+  "homepage": "https://plone.org",
+  "keywords": [
+    "volto",
+    "plone",
+    "plone6",
+    "react",
+    "contents"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "check-ts": "tsc --project tsconfig.json",
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@plone/client": "workspace:*",
+    "@plone/cmsui": "workspace:*",
+    "@plone/components": "workspace:*",
+    "@plone/helpers": "workspace:*",
+    "@plone/layout": "workspace:*",
+    "@plone/react-router": "workspace:*",
+    "@plone/registry": "workspace:*",
+    "@react-types/shared": "^3.29.1",
+    "clsx": "^2.1.1",
+    "react-aria": "catalog:",
+    "react-aria-components": "catalog:",
+    "react-i18next": "catalog:",
+    "react-router": "catalog:",
+    "tailwind-merge": "^3.0.1",
+    "tailwind-variants": "^1.0.0",
+    "tailwindcss": "catalog:",
+    "tailwindcss-animate": "^1.0.7",
+    "usehooks-ts": "^3.1.0"
+  },
+  "devDependencies": {
+    "@plone/types": "workspace:*",
+    "@testing-library/jest-dom": "6.4.2",
+    "@types/jest-axe": "^3.5.7",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "jest-axe": "^8.0.0",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "release-it": "17.1.1",
+    "tsconfig": "workspace:*",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

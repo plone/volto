@@ -1,8 +1,12 @@
 @import './colors.css';
 @import './theme.css';
 
+/*Typography*/
+@import '../typography.css';
+
 /* Components */
-@import './TextField.css';
+@import './Popover.css';
 @import './Select.css';
 @import './Table.css';
-@import './Popover.css';
+@import './TextField.css';
+@import './Tooltip.css';

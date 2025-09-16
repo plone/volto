@@ -1,0 +1,26 @@
+.contents-table {
+  --plone-table-width: 100%;
+
+  .react-aria-Table {
+    .react-aria-Link {
+      font-size: var(--plone-table-row-font-size);
+    }
+  }
+
+  .title-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+
+    .icon {
+      flex-shrink: 0;
+      color: var(--quanta-pigeon);
+      margin-inline-end: 1rem;
+    }
+  }
+
+  nav.pagination {
+    float: right;
+    margin-top: 2rem;
+  }
+}

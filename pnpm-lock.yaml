@@ -114,6 +114,9 @@ importers:
       '@plone/components':
         specifier: workspace:*
         version: link:../../packages/components
+      '@plone/contents':
+        specifier: workspace:*
+        version: link:../../packages/contents
       '@plone/helpers':
         specifier: workspace:*
         version: link:../../packages/helpers
@@ -745,8 +748,108 @@ importers:
         specifier: ^0.1.0
         version: 0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(terser@5.30.3)(yaml@2.8.1))
 
+  packages/contents:
+    dependencies:
+      '@plone/client':
+        specifier: workspace:*
+        version: link:../client
+      '@plone/cmsui':
+        specifier: workspace:*
+        version: link:../cmsui
+      '@plone/components':
+        specifier: workspace:*
+        version: link:../components
+      '@plone/helpers':
+        specifier: workspace:*
+        version: link:../helpers
+      '@plone/layout':
+        specifier: workspace:*
+        version: link:../layout
+      '@plone/react-router':
+        specifier: workspace:*
+        version: link:../react-router
+      '@plone/registry':
+        specifier: workspace:*
+        version: link:../registry
+      '@react-types/shared':
+        specifier: ^3.29.1
+        version: 3.32.0(react@19.1.1)
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      react:
+        specifier: ^19.1.0
+        version: 19.1.1
+      react-aria:
+        specifier: 'catalog:'
+        version: 3.43.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      react-aria-components:
+        specifier: 'catalog:'
+        version: 1.12.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      react-dom:
+        specifier: ^19.1.0
+        version: 19.1.1(react@19.1.1)
+      react-i18next:
+        specifier: 'catalog:'
+        version: 15.7.3(i18next@24.2.3(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)
+      react-router:
+        specifier: 'catalog:'
+        version: 7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      tailwind-merge:
+        specifier: ^3.0.1
+        version: 3.3.1
+      tailwind-variants:
+        specifier: ^1.0.0
+        version: 1.0.0(tailwindcss@4.1.13)
+      tailwindcss:
+        specifier: 'catalog:'
+        version: 4.1.13
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@4.1.13)
+      usehooks-ts:
+        specifier: ^3.1.0
+        version: 3.1.1(react@19.1.1)
+    devDependencies:
+      '@plone/types':
+        specifier: workspace:*
+        version: link:../types
+      '@testing-library/jest-dom':
+        specifier: 6.4.2
+        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(terser@5.30.3)(yaml@2.8.1))
+      '@types/jest-axe':
+        specifier: ^3.5.7
+        version: 3.5.9
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.1.12
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.1.9(@types/react@19.1.12)
+      jest-axe:
+        specifier: ^8.0.0
+        version: 8.0.0
+      prettier-plugin-tailwindcss:
+        specifier: ^0.6.11
+        version: 0.6.14(prettier@3.6.2)
+      release-it:
+        specifier: 17.1.1
+        version: 17.1.1(typescript@5.9.2)
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.2
+      vitest:
+        specifier: 'catalog:'
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.1)(jiti@2.5.1)(jsdom@22.1.0)(lightningcss@1.30.1)(terser@5.30.3)(yaml@2.8.1)
+
   packages/helpers:
     dependencies:
+      '@plone/registry':
+        specifier: workspace:*
+        version: link:../registry
       jotai:
         specifier: ^2.12.5
         version: 2.14.0(@babel/core@7.28.4)(@babel/template@7.27.2)(@types/react@19.1.12)(react@19.1.1)
@@ -763,9 +866,6 @@ importers:
         specifier: ^19.1.0
         version: 19.1.1(react@19.1.1)
     devDependencies:
-      '@plone/registry':
-        specifier: workspace:*
-        version: link:../registry
       '@plone/types':
         specifier: workspace:*
         version: link:../types
@@ -18041,7 +18141,7 @@ snapshots:
     dependencies:
       '@ljharb/through': 2.3.14
       ansi-escapes: 4.3.2
-      chalk: 5.3.0
+      chalk: 5.6.2
       cli-cursor: 3.1.0
       cli-width: 4.1.0
       external-editor: 3.1.0
@@ -19724,7 +19824,7 @@ snapshots:
 
   ora@8.0.1:
     dependencies:
-      chalk: 5.3.0
+      chalk: 5.6.2
       cli-cursor: 4.0.0
       cli-spinners: 2.9.2
       is-interactive: 2.0.0
@@ -21779,7 +21879,7 @@ snapshots:
   update-notifier@7.0.0:
     dependencies:
       boxen: 7.1.1
-      chalk: 5.3.0
+      chalk: 5.6.2
       configstore: 6.0.0
       import-lazy: 4.0.0
       is-in-ci: 0.1.0
@@ -21787,7 +21887,7 @@ snapshots:
       is-npm: 6.1.0
       latest-version: 7.0.0
       pupa: 3.1.0
-      semver: 7.6.0
+      semver: 7.7.2
       semver-diff: 4.0.0
       xdg-basedir: 5.1.0
 

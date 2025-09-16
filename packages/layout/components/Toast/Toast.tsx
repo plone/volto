@@ -4,17 +4,16 @@ import {
   Button,
   UNSTABLE_Toast as Toast,
   UNSTABLE_ToastContent as ToastContent,
-  UNSTABLE_ToastQueue as ToastQueue,
   UNSTABLE_ToastRegion as ToastRegion,
 } from 'react-aria-components';
 import { CloseIcon } from '@plone/components/Icons';
-import { type ToastItem } from '../../config/toast';
+import { type ToastQueue } from '../../config/toast';
 /**
  * Props Types for the SectionWrapper component.
  * They are able to infer the props of the element type passed to the `as` prop.
  */
 type AppToastPropsType<T extends React.ElementType> = {
-  queue: ToastQueue<ToastItem>;
+  queue: ToastQueue;
 } & React.ComponentPropsWithoutRef<React.ElementType>;
 
 const AppToast = (props: AppToastPropsType<React.ElementType>) => {

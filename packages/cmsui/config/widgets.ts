@@ -11,7 +11,7 @@ import { DateField } from '@plone/components';
 import { ObjectBrowserWidget } from '../components/ObjectBrowserWidget/ObjectBrowserWidget';
 
 export default function install(config: ConfigType) {
-  config.registerDefaultWidget(TextField);
+  //config.registerDefaultWidget(TextField); //commented because broken
   config.registerWidget({ key: 'widget', definition: { date: DateField } });
   config.registerWidget({
     key: 'widget',

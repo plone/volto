@@ -21,6 +21,7 @@
     "@plone/client": "workspace:*",
     "@plone/cmsui": "workspace:*",
     "@plone/components": "workspace:*",
+    "@plone/contents": "workspace:*",
     "@plone/helpers": "workspace:*",
     "@plone/layout": "workspace:*",
     "@plone/plate": "workspace:*",
