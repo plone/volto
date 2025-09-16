@@ -99,7 +99,7 @@ These are the commands to make a package release:
 pnpm --filter <nameofthepackage> release
 ```
 
-A dry-release command for testing the output is also available:
+To perform a release dry run, in other words, to preview a release without actually making one, use the `dry-release` command.
 
 ```shell
 pnpm --filter <nameofthepackage> dry-release
