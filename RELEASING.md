@@ -56,20 +56,53 @@ pipx ensurepath
 
 ## Running the release process
 
-These are the commands to make a Volto release:
+### `prereleaser` command
+
+This command checks which packages are pending to release so you have a guide on the pending packages release order.
+This is recommended order to release pending packages:
+
+- `@plone/types`
+- `@plone/registry`
+- `@plone/components`
+- `@plone/volto-scripts`
+- `@plone/volto-slate`
+- `@plone/volto`
+
+When you run `pnpm prereleaser`, it will check for any pending releases:
+This is the output:
+
+```
+packages/slots/news/7260.internal
+packages/components/news/7260.internal
+packages/client/news/7321.internal
+packages/client/news/7260.internal
+packages/blocks/news/7260.internal
+[
+  'packages/volto',
+  'packages/volto-slate',
+  'packages/components',
+  'packages/client',
+]
+```
+
+Given the output of the `prereleaser` command, you can proceed with the release process following the recommended order.
+
+### Release commands
+
+These are the commands to make a package release:
 
 ```shell
-yarn release
+pnpm --filter <nameofthepackage> release
 ```
 
 A dry-release command for testing the output is also available:
 
 ```shell
-yarn dry-release
+pnpm --filter <nameofthepackage> dry-release
 ```
 
-An alpha release can be cut using:
+In case of releasing an alpha release, it can be cut using:
 
 ```shell
-yarn release-alpha
+pnpm --filter <nameofthepackage> release-alpha
 ```
