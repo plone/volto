@@ -95,7 +95,7 @@ This ensures dependencies are handled correctly and the release process is smoot
 
 ### Release commands
 
-These are the commands to make a package release:
+Use the `release` command to make a package release.
 
 ```shell
 pnpm --filter <nameofthepackage> release
