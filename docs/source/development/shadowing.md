@@ -54,7 +54,7 @@ Use absolute imports in your shadowed modules to avoid resolution issues.
 
 ### Customize add-ons components or modules
 
-Assume the component you want to shadow is located in Volto core at {file}`node_modules/@kitconcept/volto-light-theme/src/components/Header/Header.tsx`.
+Assume the component you want to shadow is located in an add-on at {file}`node_modules/@kitconcept/volto-light-theme/src/components/Header/Header.tsx`.
 
 To customize this add-on component, the first folder must be the full name of the add-on, {file}`@kitconcept/volto-light-theme`.
 The full filepath must include the namespace, if any, separated in folders.
@@ -100,7 +100,7 @@ Failure to adapt your shadowed code to the new version may break your applicatio
 
 ## Clarification: only registered add-ons can be shadowed
 
-Shadowing only works with *registered add-ons* that are explicitly declared as such in {file}`registry.config.ts`.
+Shadowing only works with *registered add-ons* (see {doc}`./add-ons/install-an-add-on`) that are explicitly declared as such in {file}`registry.config.ts`.
 If you attempt to shadow a module from a package that is not registered as an add-on, the override will *not be resolved*, and your changes will be silently ignored.
 Always ensure the package you want to shadow is installed and registered in your application configuration.
 

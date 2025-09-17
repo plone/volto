@@ -11,7 +11,7 @@ myst:
 
 You can customize the existing Volto components using a pattern called {term}`component shadowing` using the {file}`customizations` folder.
 
-You can find further detailed information on how to shadow a component in {doc}`../conceptual-guides/shadowing`.
+You can find further detailed information on how to shadow a component in {doc}`./shadowing`.
 
 ## Change the `Tags` component
 
