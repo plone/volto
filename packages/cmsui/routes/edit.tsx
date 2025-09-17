@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import {
+  data,
   redirect,
   useFetcher,
   useLoaderData,
@@ -11,7 +12,7 @@ import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 import { requireAuthCookie } from '@plone/react-router';
 import type { DeepKeys } from '@tanstack/react-form';
-import { InitAtoms } from '@plone/helpers';
+import { flattenToAppURL, InitAtoms } from '@plone/helpers';
 import type { Content } from '@plone/types';
 import { Plug } from '@plone/layout/components/Pluggable';
 import Checkbox from '@plone/components/icons/checkbox.svg?react';
@@ -47,7 +48,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
   const { data: content } = await cli.getContent({ path });
   const { data: schema } = await cli.getType({ contentType: content['@type'] });
 
-  return { content, schema };
+  return data(flattenToAppURL({ content, schema }));
 }
 
 export async function action({ params, request }: ActionFunctionArgs) {

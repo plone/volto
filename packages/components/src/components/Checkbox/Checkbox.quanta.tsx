@@ -41,8 +41,8 @@ const checkboxStyles = tv({
   base: 'group flex items-center gap-2 text-sm transition',
   variants: {
     isDisabled: {
-      false: 'text-gray-800 dark:text-zinc-200',
-      true: 'text-gray-300 dark:text-zinc-600 forced-colors:text-[GrayText]',
+      false: 'text-quanta-cobalt',
+      true: 'text-quanta-iron forced-colors:text-[GrayText]',
     },
   },
 });
@@ -53,20 +53,20 @@ const boxStyles = tv({
   variants: {
     isSelected: {
       false:
-        'group-pressed:[--color:theme(colors.gray.500)] dark:group-pressed:[--color:theme(colors.zinc.300)] dark:[--color:colors.zinc-400)] border-[--color] bg-white [--color:theme(colors.gray.400)] dark:bg-zinc-900',
-      true: 'group-pressed:[--color:theme(colors.gray.800)] dark:group-pressed:[--color:theme(colors.slate.200)] border-[--color] bg-[--color] [--color:theme(colors.gray.700)] dark:[--color:theme(colors.slate.300)] forced-colors:![--color:Highlight]',
+        'group-pressed:border-quanta-silver border-quanta-pigeon bg-quanta-snow',
+      true: 'group-pressed:border-quanta-sapphire border-quanta-sapphire bg-quanta-sapphire forced-colors:![--color:Highlight]',
     },
     isInvalid: {
-      true: 'group-pressed:[--color:theme(colors.red.800)] dark:group-pressed:[--color:theme(colors.red.700)] [--color:theme(colors.red.700)] dark:[--color:theme(colors.red.600)] forced-colors:![--color:Mark]',
+      true: 'group-pressed:border-quanta-ruby border-quanta-ruby forced-colors:![--color:Mark]',
     },
     isDisabled: {
-      true: '[--color:theme(colors.gray.200)] dark:[--color:theme(colors.zinc.700)] forced-colors:![--color:GrayText]',
+      true: 'border-quanta-silver bg-quanta-smoke forced-colors:![--color:GrayText]',
     },
   },
 });
 
 const iconStyles =
-  'w-4 h-4 group-disabled:text-gray-400 forced-colors:text-[HighlightText]';
+  'w-4 h-4 text-white group-disabled:text-quanta-iron forced-colors:text-[HighlightText]';
 
 export function Checkbox(props: CheckboxProps) {
   return (

@@ -8,6 +8,7 @@ import {
   WidthWidget,
 } from '@plone/components/quanta';
 import { DateField } from '@plone/components';
+import { ObjectBrowserWidget } from '../components/ObjectBrowserWidget/ObjectBrowserWidget';
 
 export default function install(config: ConfigType) {
   config.registerDefaultWidget(TextField);
@@ -28,6 +29,24 @@ export default function install(config: ConfigType) {
   config.registerWidget({
     key: 'widget',
     definition: { width: WidthWidget },
+  });
+  config.registerWidget({
+    key: 'factory',
+    definition: {
+      'Relation List': ObjectBrowserWidget,
+    },
+  });
+  config.registerWidget({
+    key: 'widget',
+    definition: {
+      object_browser: ObjectBrowserWidget,
+    },
+  });
+  config.registerWidget({
+    key: 'vocabulary',
+    definition: {
+      'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
+    },
   });
 
   return config;

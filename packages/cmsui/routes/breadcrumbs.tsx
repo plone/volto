@@ -17,25 +17,13 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
   cli.config.token = token;
 
   const path = `/${params['*'] || ''}`;
-  const query = Object.fromEntries(new URL(request.url).searchParams.entries());
-  const pathQuery = {
-    query: query['path.query'] || path,
-    depth: Number(query['path.depth']) || undefined,
-  };
 
-  delete query['path.depth'];
-  delete query['path.query'];
-  const { data: results } = await cli.search({
-    query: {
-      path: pathQuery,
-      ...query,
-      SearchableText: query.SearchableText
-        ? `${query.SearchableText}*`
-        : undefined,
-    },
+  // Call the breadcrumbs endpoint
+  const { data: breadcrumbs } = await cli.getBreadcrumbs({
+    path,
   });
 
-  return data(flattenToAppURL(results), {
+  return data(flattenToAppURL(breadcrumbs), {
     headers: {
       'Content-Type': 'application/json',
     },
