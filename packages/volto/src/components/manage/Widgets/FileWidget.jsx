@@ -15,7 +15,7 @@ import UniversalLink from '@plone/volto/components/manage/UniversalLink/Universa
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import Image from '@plone/volto/components/theme/Image/Image';
 import loadable from '@loadable/component';
-import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { flattenScales, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { defineMessages, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
@@ -90,17 +90,53 @@ const FileWidget = (props) => {
   const [fileType, setFileType] = React.useState(false);
   const intl = useIntl();
 
+  const attrs = React.useMemo(() => {
+    const data = {};
+    data.src = value?.download
+      ? `${flattenToAppURL(value?.download)}`
+      : null || value?.data
+        ? `data:${value['content-type']};${value.encoding},${value.data}`
+        : null;
+
+    const isDownload = !!value?.download;
+    const isSvg = value && value['content-type'] === 'image/svg+xml';
+
+    if (isDownload && !isSvg && value) {
+      const image = flattenScales(data.src, value);
+
+      if (
+        !isSvg &&
+        image &&
+        image.hasOwnProperty('scales') &&
+        Object.keys(image.scales).length > 0
+      ) {
+        const sortedScales = Object.values({
+          ...image.scales,
+          original: {
+            download: `${image.download}`,
+            width: image.width,
+            height: image.height,
+          },
+        }).sort((a, b) => {
+          if (a.width > b.width) return 1;
+          else if (a.width < b.width) return -1;
+          else return 0;
+        });
+
+        data.srcSet = sortedScales
+          .map((scale) => `${scale.download} ${scale.width}w`)
+          .join(', ');
+      }
+    }
+
+    return data;
+  }, [value]);
+
   React.useEffect(() => {
     if (value && imageMimetypes.includes(value['content-type'])) {
       setFileType(true);
     }
   }, [value]);
-
-  const imgsrc = value?.download
-    ? `${flattenToAppURL(value?.download)}`
-    : null || value?.data
-      ? `data:${value['content-type']};${value.encoding},${value.data}`
-      : null;
 
   /**
    * Drop handler
@@ -175,7 +211,7 @@ const FileWidget = (props) => {
               <Image
                 className="image-preview small ui image"
                 id={`field-${id}-image`}
-                src={imgsrc}
+                {...attrs}
               />
             ) : (
               <div className="dropzone-placeholder">
