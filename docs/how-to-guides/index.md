@@ -20,4 +20,5 @@ register-an-add-on
 access-registry
 register-and-retrieve-components
 register-and-retrieve-utilities
+register-slots
 ```
