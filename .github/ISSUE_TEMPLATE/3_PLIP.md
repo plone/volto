@@ -19,8 +19,6 @@ projects: 'plone/47'
 
 Read https://6.docs.plone.org/contributing/core/plips.html first!
 
-Set "03 type: feature: plip" as label.
-
 Mention the @plone/volto-team when the PLIP is information complete!
 
 -->
