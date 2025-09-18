@@ -16,7 +16,7 @@ const Avatar = ({ src, title, text, size, color, className }) => {
   return (
     <div className={className} title={title}>
       {src ? (
-        <Image src={src} alt={title} fetchpriority="auto" />
+        <Image src={src} alt={title} />
       ) : (
         <svg width={size} height={size}>
           <circle cx={radius} cy={radius} r={radius} fill={color} />

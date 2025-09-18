@@ -26,7 +26,6 @@ const ImageWidget = ({ value, className }) =>
             : flattenToAppURL(value.download || '')
         }
         alt={value.file_name || ''}
-        fetchpriority="auto"
         data-size={value.size || 0}
         data-size-fmt={niceBytes(value.size || 0)}
         data-content-type={value['content-type'] || ''}

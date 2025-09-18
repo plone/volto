@@ -299,7 +299,6 @@ const UnconnectedImageInput = (props) => {
               : imageValue
           }
           alt=""
-          fetchpriority="auto"
         />
       )}
     </div>

@@ -73,7 +73,6 @@ const ObjectBrowserNav = ({
                   <Image
                     src={`${item['@id']}/@@images/image/preview`}
                     alt={item.title}
-                    fetchpriority="auto"
                     style={{
                       width: 143,
                       height: 143,

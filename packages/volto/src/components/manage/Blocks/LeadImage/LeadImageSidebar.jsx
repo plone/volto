@@ -102,7 +102,6 @@ const LeadImageSidebar = ({
                 width={properties.image.width}
                 height={properties.image.height}
                 alt={data.image_caption || properties.image_caption || ''}
-                fetchpriority="auto"
                 className="responsive"
                 style={{
                   aspectRatio: `${properties.image.width} / ${properties.image.height}`,

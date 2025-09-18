@@ -100,7 +100,6 @@ const PersonalTools = (props) => {
           <Image
             src={expandToBackendURL(user.portrait)}
             alt={intl.formatMessage(messages.userAvatar)}
-            fetchpriority="auto"
           />
         ) : (
           <Icon name={cameraSVG} size="96px" />

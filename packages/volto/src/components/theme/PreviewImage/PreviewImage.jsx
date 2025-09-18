@@ -33,7 +33,6 @@ function PreviewImage({ item, alt, image_field, showDefault = true, ...rest }) {
           }).component || DefaultImageSVG
         }
         alt={alt}
-        fetchpriority="auto"
         {...rest}
         width="400"
         height="300"

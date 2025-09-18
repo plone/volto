@@ -56,7 +56,6 @@ const Edit = (props) => {
           width={properties.image.width}
           height={properties.image.height}
           alt={altText}
-          fetchpriority="auto"
           style={{
             aspectRatio: `${properties.image.width}/${properties.image.height}`,
           }}

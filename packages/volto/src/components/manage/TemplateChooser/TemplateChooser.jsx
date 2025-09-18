@@ -16,7 +16,7 @@ const TemplateChooser = ({ templates, onSelectTemplate }) => {
                 className="template-chooser-item"
                 onClick={() => onSelectTemplate(index)}
               >
-                <Image src={template.image} alt="" fetchpriority="auto" />
+                <Image src={template.image} alt="" />
                 <div className="template-chooser-title">
                   {intl.formatMessage({
                     id: template.id,

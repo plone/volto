@@ -20,7 +20,7 @@ exports[`renders a TemplateChooser component 1`] = `
         >
           <img
             alt=""
-            fetchpriority="auto"
+            fetchpriority="high"
             src="/src/components/manage/TemplateChooser/template.svg"
           />
           <div
