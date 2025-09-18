@@ -1,0 +1,1 @@
+Make sure `NotFound` view can still access contextual values from the closest context. @davisagli
