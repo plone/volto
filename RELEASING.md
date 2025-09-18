@@ -56,20 +56,59 @@ pipx ensurepath
 
 ## Running the release process
 
-These are the commands to make a Volto release:
+There are two phases to make a Volto release.
+First run `prereleaser`, then run release commands.
 
-```shell
-yarn release
+
+### `prereleaser` command
+
+This command checks which packages are pending to release so you have a guide on the pending packages release order.
+This is recommended order to release pending packages:
+
+- `@plone/types`
+- `@plone/registry`
+- `@plone/components`
+- `@plone/volto-scripts`
+- `@plone/volto-slate`
+- `@plone/volto`
+
+When you run `pnpm prereleaser`, it will check for any pending releases.
+The following is sample output.
+
+```console
+packages/slots/news/7260.internal
+packages/components/news/7260.internal
+packages/client/news/7321.internal
+packages/client/news/7260.internal
+packages/blocks/news/7260.internal
+[
+  'packages/volto',
+  'packages/volto-slate',
+  'packages/components',
+  'packages/client',
+]
 ```
 
-A dry-release command for testing the output is also available:
+Based on the output from the `prereleaser` command, review the list of packages pending release.
+Proceed to release each package in the recommended order, starting with the first package in the list and continuing sequentially.
+This ensures dependencies are handled correctly and the release process is smooth.
+
+### Release commands
+
+Use the `release` command to make a package release.
 
 ```shell
-yarn dry-release
+pnpm --filter <nameofthepackage> release
 ```
 
-An alpha release can be cut using:
+To perform a release dry run, in other words, to preview a release without actually making one, use the `dry-release` command.
 
 ```shell
-yarn release-alpha
+pnpm --filter <nameofthepackage> dry-release
+```
+
+To cut an alpha release, use the `release-alpha` command.
+
+```shell
+pnpm --filter <nameofthepackage> release-alpha
 ```
