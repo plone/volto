@@ -2896,7 +2896,7 @@ msgstr "Referenciant aquest element com a relacionat"
 msgid "Referencing this item with {relationship}"
 msgstr "Referenciant aquest element amb {relationship}"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr "Actualitza el contingut d'origen"

@@ -39,7 +39,7 @@ msgstr "Akzioa ondo aldatu da"
 #. Default: "Action:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Action: "
-msgstr "Akzioa:"
+msgstr "Akzioa: "
 
 #. Default: "Actions"
 #: components/manage/Actions/Actions
@@ -110,7 +110,7 @@ msgstr "Gehitu erregela"
 #. Default: "Add Translation…"
 #: components/manage/Toolbar/Types
 msgid "Add Translation…"
-msgstr "Gehitu itzulpena..."
+msgstr "Gehitu itzulpena…"
 
 #. Default: "Add User"
 #: helpers/MessageLabels/MessageLabels
@@ -120,7 +120,7 @@ msgstr "Gehitu erabiltzailea"
 #. Default: "Add a description…"
 #: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
-msgstr "Gehitu deskribapena..."
+msgstr "Gehitu deskribapena…"
 
 #. Default: "Add a new alternative url"
 #: components/manage/Aliases/Aliases
@@ -145,7 +145,7 @@ msgstr "Gehitu blokea {index} posizioan"
 #. Default: "Add block…"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
-msgstr "Gehitu blokea..."
+msgstr "Gehitu blokea…"
 
 #. Default: "Condition added"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -373,7 +373,7 @@ msgstr "Ordezko helbidearen bidea (derrigorrezkoa)"
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path must start with a slash."
-msgstr "Ordezko helbidearen bidea / karakterearekin hasi behar da"
+msgstr "Ordezko helbidearen bidea / karakterearekin hasi behar da."
 
 #. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
 #: components/manage/Controlpanels/Aliases
@@ -676,7 +676,7 @@ msgstr "Garbitu bilaketa"
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
-msgstr "Egin klik tamaina osoko irudia deskargatzeko..."
+msgstr "Egin klik tamaina osoko irudia deskargatzeko"
 
 #. Default: "Close"
 #: components/manage/Widgets/SelectWidget
@@ -738,7 +738,7 @@ msgstr "Baldintza ondo aldatu da"
 #. Default: "Condition:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Condition: "
-msgstr "Baldintza:"
+msgstr "Baldintza: "
 
 #. Default: "Configuration Versions"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -858,7 +858,7 @@ msgstr "Copyright"
 #. Default: "Copyright statement or other rights information on this item."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
-msgstr "Elementu honen Copyright adierazpena"
+msgstr "Elementu honen Copyright adierazpena."
 
 #. Default: "Create or delete relations to target"
 #: helpers/MessageLabels/MessageLabels
@@ -1184,7 +1184,7 @@ msgstr "Deskargatu hitzorduaren fitxategia"
 #. Default: "Download file"
 #: components/theme/View/FileView
 msgid "Download file"
-msgstr ""
+msgstr "Deskargatu fitxategia"
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -1222,7 +1222,7 @@ msgstr "Eposta"
 #. Default: "E-mail addresses do not match."
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
-msgstr "Eposta helbideak ez datoz bat"
+msgstr "Eposta helbideak ez datoz bat."
 
 #. Default: "Edit"
 #: components/manage/Contents/ContentsItem
@@ -1585,7 +1585,7 @@ msgstr "Filtratu erabiltzaileak taldearen arabera"
 #. Default: "Filter…"
 #: components/manage/Contents/Contents
 msgid "Filter…"
-msgstr "Filtratu..."
+msgstr "Filtratu…"
 
 #. Default: "First"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -1803,7 +1803,7 @@ msgstr "Aukeratuta badago, elementu hau ez da nabigazio zuhaitzean agertuko"
 #. Default: "If this date is in the future, the content will not show up in listings and searches until this date."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If this date is in the future, the content will not show up in listings and searches until this date."
-msgstr "Data hau etorkizunekoa bada, edukia ez da agertuko data hori iritsi arte"
+msgstr "Data hau etorkizunekoa bada, edukia ez da agertuko data hori iritsi arte."
 
 #. Default: "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -1884,12 +1884,12 @@ msgstr "Sartu zutabea aurretik"
 #. Default: "Insert row after"
 #: config/Blocks
 msgid "Insert row after"
-msgstr "Sartu errenkada ondoren"
+msgstr "Txertatu lerroa ondoren"
 
 #. Default: "Insert row before"
 #: config/Blocks
 msgid "Insert row before"
-msgstr "Sartu errendaka aurretik"
+msgstr "Txertatu lerroa aurretik"
 
 #. Default: "Inspect relations"
 #: helpers/MessageLabels/MessageLabels
@@ -2211,7 +2211,7 @@ msgstr "Kudeatu itzulpenak"
 #. Default: "Manage content…"
 #: components/manage/Toolbar/More
 msgid "Manage content…"
-msgstr "Edukia kudeatu..."
+msgstr "Edukia kudeatu…"
 
 #. Default: "Manage translations for {title}"
 #: components/manage/Multilingual/ManageTranslations
@@ -2471,7 +2471,7 @@ msgstr "Ez da irudirik aurkitu."
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
-msgstr "Karpeta honetan ez dago elementurik"
+msgstr "Karpeta honetan ez dago elementurik."
 
 #. Default: "No items selected"
 #: components/manage/Widgets/ObjectBrowserWidget
@@ -2510,7 +2510,7 @@ msgstr "Ez da erlazioa aurkitu"
 #: components/manage/BlockChooser/BlockChooser
 #: components/theme/Search/Search
 msgid "No results found"
-msgstr "Ez da emaitzarik aurkitu."
+msgstr "Ez da emaitzarik aurkitu"
 
 #. Default: "No results found."
 #: components/manage/Blocks/Listing/DefaultNoResultsComponent
@@ -2591,7 +2591,7 @@ msgstr "Ados"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
-msgstr ""
+msgstr "7 biteko byte karaktereak bakarrik onartzen dira. Ezin dira hizki larriak edo karaktere bereziak erabili: <, >, &, #, /, ?, edo URLtan onartzen ez direnak. Ezin da karaktere hauekin hasi: _, aq_, @@, ++. Ezin da __-rekin amaitu. Ezin da request, contributors, ., ... edo "" izan. Ezin ditu lerro berriak izan."
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2749,7 +2749,7 @@ msgstr "Bilatu erabiltzaileak aldameneko filtroak erabiliz."
 #. Default: "Please upgrade to plone.restapi >= 8.24.0."
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 msgid "Please upgrade to plone.restapi >= 8.24.0."
-msgstr "Eguneratu plone.restapi bertsioa 8.24.0 edo handiago batera"
+msgstr "Eguneratu plone.restapi bertsioa 8.24.0 edo handiago batera."
 
 #. Default: "Please upgrade to plone.restapi >= 8.39.0."
 #: components/manage/Controlpanels/Relations/Relations
@@ -2843,7 +2843,7 @@ msgstr "Idatzi pasahitza berriro eta ziurtatu idatzitako biak berdinak direla."
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
 msgid "Read More…"
-msgstr "Gehiago irakurri"
+msgstr "Gehiago irakurri…"
 
 #. Default: "Read only for this type of relation."
 #: components/manage/Controlpanels/Relations/RelationsListing
@@ -2853,7 +2853,7 @@ msgstr "Erlazio mota hau irakurtzeko-modukoa da bakarrik."
 #. Default: "Rearrange items by…"
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
-msgstr "Elementuak honen arabera berrantolatu..."
+msgstr "Elementuak honen arabera berrantolatu…"
 
 #. Default: "Ends"
 #: components/manage/Widgets/RecurrenceWidget/EndField
@@ -2890,7 +2890,7 @@ msgstr "Elementu hau erlazionatutako elementu gisa erreferentziatu"
 msgid "Referencing this item with {relationship}"
 msgstr "Elementu hau {relationship} erabiliz erreferentziatu"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr "Freskatu jatorrizko edukia"
@@ -3032,7 +3032,7 @@ msgstr "Beharrezkoa"
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
-msgstr "Beharrezko balioak falta dira"
+msgstr "Beharrezko balioak falta dira."
 
 #. Default: "Reset element {index}"
 #: components/manage/Blocks/Container/EditBlockWrapper
@@ -3215,7 +3215,7 @@ msgstr "Bilatu erabiltzailea edo taldea"
 #. Default: "Search group…"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search group…"
-msgstr "Bilatu taldea..."
+msgstr "Bilatu taldea…"
 
 #. Default: "Search input label"
 #: components/manage/Blocks/Search/schema
@@ -3247,7 +3247,7 @@ msgstr "Bilatu helburu elementuak izenburu edo pathez"
 #. Default: "Search users…"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search users…"
-msgstr "Bilatu erabiltzaileak..."
+msgstr "Bilatu erabiltzaileak…"
 
 #. Default: "Searched for: <em>{searchedtext}</em>."
 #: components/manage/Blocks/Search/components/SearchDetails
@@ -3330,7 +3330,7 @@ msgstr "Aukeraketa"
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 msgid "Select…"
-msgstr "Aukeratu..."
+msgstr "Aukeratu…"
 
 #. Default: "Send"
 #: components/theme/ContactForm/ContactForm
@@ -3713,7 +3713,7 @@ msgstr "Helburuaren bidea (derrigorrezkoa)"
 #. Default: "Target memory size per cache in bytes"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target memory size per cache in bytes"
-msgstr "Katxe bakoitzaren tamaina "
+msgstr "Katxe bakoitzaren tamaina bytetan"
 
 #. Default: "Target number of objects in memory per cache"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -3777,7 +3777,7 @@ msgstr "Orrialde honetan eduki erregela hauek daude aktibo. Erabili erregelen ko
 #. Default: "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
-msgstr "Zerrenda honek exekutatuko diren eguneraketa pausoak erakusten ditu. Eguneraketan, batzuetan, katalogoaren eguneraketa edo segurtasun eguneraketa bat gertatzen da, eta honek batzuetan denbora asko hartzen du. "
+msgstr "Zerrenda honek exekutatuko diren eguneraketa pausoak erakusten ditu. Eguneraketan, batzuetan, katalogoaren eguneraketa edo segurtasun eguneraketa bat gertatzen da, eta honek batzuetan denbora asko hartzen du."
 
 #. Default: "The item could not be deleted."
 #: components/manage/Contents/Contents
@@ -3870,7 +3870,7 @@ msgstr "Errorea gertatu da"
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "There were some errors."
-msgstr "Errorea gertatu da"
+msgstr "Errorea gertatu da."
 
 #. Default: "These items will have broken links"
 #: components/manage/Contents/ContentsDeleteModal
@@ -3910,12 +3910,12 @@ msgstr "Elementua {creator} erabiltzaileak blokeatu du {date}"
 #. Default: "This name will be displayed in the URL."
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
-msgstr "Izen hau URLan agertuko da"
+msgstr "Izen hau URLan agertuko da."
 
 #. Default: "This page does not seem to exist…"
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
-msgstr "Orrialde hau ez da existitzen..."
+msgstr "Orrialde hau ez da existitzen…"
 
 #. Default: "This rule is assigned to the following locations:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -3960,7 +3960,7 @@ msgstr "Erantzun kopurua"
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Total files to upload: {totalFiles}"
-msgstr "Igotzeko fitxategiak guztira: {totalFiles} "
+msgstr "Igotzeko fitxategiak guztira: {totalFiles}"
 
 #. Default: "Total number of objects in each cache"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -4040,12 +4040,12 @@ msgstr "Idatzi testua..."
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
 msgid "Type the heading…"
-msgstr "Idatzi izenburua..."
+msgstr "Idatzi goiburukoa…"
 
 #. Default: "Type the title…"
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
-msgstr "Idatzi izenburua..."
+msgstr "Idatzi izenburua…"
 
 #. Default: "UID"
 #: components/manage/Contents/Contents
@@ -4148,7 +4148,7 @@ msgstr "Eguneratu instalatutako gehigarriak"
 #. Default: "Update installed addons:"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons:"
-msgstr "Eguneratu instalatutako gehigarriak"
+msgstr "Eguneratu instalatutako gehigarriak:"
 
 #. Default: "Updates available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -4183,7 +4183,7 @@ msgstr "Kargatu"
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
 msgid "Upload a lead image in the 'Lead Image' content field."
-msgstr "Kargatu irudia"
+msgstr "Kargatu irudia."
 
 #. Default: "Upload files"
 #: components/manage/Contents/ContentsUploadModal
@@ -4210,7 +4210,7 @@ msgstr "Erabili formulario hau erregela berriak sortu, aldatu edo ezabatzeko. Er
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 msgid "Used for programmatic access to the fieldset."
-msgstr "Eremu-multzoa programaziotik atzitzeko izena"
+msgstr "Eremu-multzoa programaziotik atzitzeko izena."
 
 #. Default: "User"
 #: components/manage/Sharing/Sharing
@@ -4397,7 +4397,7 @@ msgstr "Noiz"
 #. Default: "When this date is reached, the content will nolonger be visible in listings and searches."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
-msgstr "Data hau iristean, elementua ez da erakutsiko bilaketa eta zerrendetan"
+msgstr "Data hau iristean, elementua ez da erakutsiko bilaketa eta zerrendetan."
 
 #. Default: "Whether or not execution of further rules should stop after this rule is executed"
 #: components/manage/Controlpanels/Rules/AddRule
@@ -4409,7 +4409,7 @@ msgstr "Erregela hau exekutatu ostean beste erregelarik exekutatuko den ala ez"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
-msgstr "Erregela honek eragindako akzioek erregela gehiago exekutatuaraziko dituzten ala ez. Aktibatu honek begizta infinituak sortuko ez dituela ziur bazaude."
+msgstr "Erregela honek eragindako akzioek erregela gehiago exekutatuaraziko dituzten ala ez. Aktibatu honek begizta infinituak sortuko ez dituela ziur bazaude"
 
 #. Default: "Whether or not the rule is currently enabled"
 #: components/manage/Controlpanels/Rules/AddRule
@@ -4437,7 +4437,7 @@ msgstr "Lan-fluxuaren egoera aldatzen..."
 #. Default: "Workflow updated."
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
-msgstr "Workflowa eguneratu egin da"
+msgstr "Workflowa eguneratu egin da."
 
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -4453,12 +4453,12 @@ msgstr "Bai"
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
-msgstr ""
+msgstr "Orrialde honetan agertzen diren elementu guztiak ezabatzera zoaz."
 
 #. Default: "You are about to delete all items in this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in this folder."
-msgstr ""
+msgstr "Karpeta honetako elementu guztiak ezabatzera zoaz."
 
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
@@ -4468,7 +4468,7 @@ msgstr "Babestutako orrialde batera sartu nahian zabiltza, {login} lehenengo."
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
-msgstr "Zure nabigatzailea zaharra da."
+msgstr "Zure nabigatzailea zaharra da"
 
 #. Default: "You can add a comment by filling out the form below. Plain text formatting."
 #: components/theme/Comments/Comments
@@ -4483,7 +4483,7 @@ msgstr "Zure elementua nork ikusi eta aldatu dezakeen kontrolatu dezakezu."
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
-msgstr "Bertsioen arteko aldeak ikusi ditzakezu"
+msgstr "Bertsioen arteko aldeak ikusi ditzakezu."
 
 #. Default: "You can view the history of your item below."
 #: components/manage/History/History
@@ -4498,7 +4498,7 @@ msgstr "Ezin duzu elementua hemen itsatsi"
 #. Default: "You have been logged out from the site."
 #: components/theme/Logout/Logout
 msgid "You have been logged out from the site."
-msgstr "Webgunetik irten egin zara"
+msgstr "Webgunetik irten egin zara."
 
 #. Default: "You have not the required permission for this control panel."
 #: components/manage/Controlpanels/Relations/Relations
@@ -4513,7 +4513,7 @@ msgstr "Eposta derrigorrezkoa da zure pasahitza berrezartzeko."
 #. Default: "Your password has been set successfully. You may now {link} with your new password."
 #: components/theme/PasswordReset/PasswordReset
 msgid "Your password has been set successfully. You may now {link} with your new password."
-msgstr "Zure pasahitza ondo berrezarri da. Orain zure pasahitz berriarekin {link}"
+msgstr "Zure pasahitza ondo berrezarri da. Orain zure pasahitz berriarekin {link} ."
 
 #. Default: "Your preferred language"
 #: components/manage/Preferences/PersonalPreferences
@@ -4779,7 +4779,7 @@ msgstr "elementu"
 #. Default: "My email is"
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_is"
-msgstr "Nire helbidea hauxe da: "
+msgstr "Nire helbidea hauxe da:"
 
 #. Default: "My user name is"
 #: components/theme/PasswordReset/RequestPasswordReset
