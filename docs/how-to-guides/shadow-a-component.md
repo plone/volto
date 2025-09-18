@@ -1,61 +1,56 @@
 ---
 myst:
   html_meta:
-    "description": "How to shadow a component or module in @plone/registry"
-    "property=og:description": "How to shadow a component or module in @plone/registry"
-    "property=og:title": "Shadow a component or module"
-    "keywords": "Seven, @plone/registry, registry, shadow, component"
+    "description": "How to shadow a component or module in Seven"
+    "property=og:description": "How to shadow a component or module in Seven"
+    "property=og:title": "Shadow a component or module in Seven"
+    "keywords": "Seven, shadow, override, component, frontend"
 ---
 
 # Shadow a component or module
 
-Component or module shadowing is a technique that allows you to define an alternative module for a specific module.
-You normally would want to override a module from another add-on.
-This add-on should not be transpiled.
+Component or module shadowing allows you to override a component from an existing package in a clean and structured way, without directly modifying third-party code.
+This technique is particularly useful for customizing the behavior or appearance of specific components in Seven or any add-ons.
 
-This technique relies on the `resolve.alias` feature of the bundlers, so the module is effectively being replaced by the alternative one supplied.
-You will need to modify some imports in the alternative module to comply with the new placement and convert relative imports to absolute ones.
+This mechanism is powered by Vite's [`resolve.alias`](https://vite.dev/config/shared-options#resolve-alias), which maps a module path to an alternative file or folder.
+Vite resolves the override at build time, replacing the original module with your custom implementation.
 
-To override the component, first, you should identify the component you want to shadow in the package.
-Then, replicate the same folder structure that the original component has in the source code and place it inside the `customizations` folder of your add-on.
+To shadow a component, perform the following tasks.
 
-Start by using the name of the package you want to shadow.
-If the package has a namespace, then use a folder to define it.
-
-To identify a component to shadow, you can use several approaches.
-The primary method uses [React Developer Tools](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi).
-You can inspect the app and find out the name of the component (the name
-of the tag), then search for it in the source code.
-Alternatively, you can browse the contents of the source package you want to shadow by searching for it inside {file}`node_modules` of your app folder.
+-   Locate the component you want to override or shadow.
+-   Replicate the component's original file structure inside a {file}`customizations` folder in your add-on.
 
 
-## Example: customize the `Logo` resource
+## File structure for shadowing
 
-To replace the `Logo` resource, your folder structure needs to match the folder structure of the package in the `customizations` folder.
-The `Logo` resource is located in the `@plone/layout` package in the {file}`components/Logo/Logo.svg` file.
-├── layout
+To shadow components, you must follow a file structure pattern.
 
-```text
-node_modules
-└── @plone
-    └── layout
-        └── components
-            └── Logo.svg
+Assume the component you want to shadow is located at `node_modules/@plone/layout/components/Logo/Logo.svg`.
+
+You'll need to replicate this structure under {file}`customizations` as shown.
+
 ```
-
-The structure inside your `customizations` of the component shadowing the original should be {file}`src/customizations/@plone/layout/components/Logo/Logo.svg`.
-
-```text
-src
-└── customizations
-    └── @plone
-        └── layout
-            └── components
+customizations/
+└── @plone/
+    └── layout/
+        └── components/
+            └── Logo/
                 └── Logo.svg
 ```
 
-```{warning}
-When upgrading add-ons in your project, it's important to review any shadowed components from the updated add-on.
-Changes in the add-on's public API could potentially break your application.
-Ensure that your shadowed components are updated to align with the new specifications of the original module.
+```{tip}
+Use absolute imports in your shadowed modules to avoid resolution issues.
 ```
+
+## Clarification: only registered add-ons can be shadowed
+
+Shadowing only works with **registered add-ons** that are explicitly declared as such in {file}`registry.config.ts`.
+If you attempt to shadow a module from a package that is not registered as an add-on, the override will **not be resolved**, and your changes will be silently ignored.
+Always ensure the package you want to shadow is installed and registered in your application configuration.
+
+## Summary
+
+-   Component shadowing is safe and modular when done properly.
+-   The key is to mirror the original file path in the {file}`customizations` folder.
+-   Only registered add-ons can be shadowed.
+-   Keep your shadowed components up to date with upstream changes.

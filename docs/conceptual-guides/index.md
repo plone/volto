@@ -19,6 +19,5 @@ add-on-loader
 add-on-styles-loader
 configuration-registry
 routing
-shadowing
 slots
 ```
