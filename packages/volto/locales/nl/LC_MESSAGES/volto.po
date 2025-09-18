@@ -4940,6 +4940,11 @@ msgstr "referenties"
 msgid "refers to"
 msgstr "verwijst naar"
 
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
+msgstr ""
+
 #. Default: "results"
 #: components/theme/Search/Search
 msgid "results found"
