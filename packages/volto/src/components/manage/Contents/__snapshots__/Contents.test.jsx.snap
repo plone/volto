@@ -45,7 +45,8 @@ exports[`Contents > renders a folder contents view component 1`] = `
                   class="menu top-menu-menu"
                 >
                   <button
-                    aria-label="Upload"
+                    aria-controls="contents-table-wrapper"
+                    aria-label="Filter…"
                     class="ui button icon item upload"
                   >
                     <svg
@@ -744,7 +745,16 @@ exports[`Contents > renders a folder contents view component 1`] = `
               </div>
               <div
                 class="contents-table-wrapper"
+                id="contents-table-wrapper"
+                role="region"
               >
+                <span
+                  aria-live="polite"
+                  class="search-feedback"
+                  role="status"
+                >
+                  Result count: 1
+                </span>
                 <table
                   class="ui selectable single line attached compact table"
                 >

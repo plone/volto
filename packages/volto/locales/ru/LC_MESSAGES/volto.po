@@ -4975,6 +4975,11 @@ msgstr "ссылки"
 msgid "refers to"
 msgstr "ссылается на"
 
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
+msgstr ""
+
 #. Default: "results"
 #: components/theme/Search/Search
 msgid "results found"
