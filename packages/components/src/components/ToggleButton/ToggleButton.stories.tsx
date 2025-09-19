@@ -2,7 +2,7 @@ import React from 'react';
 import { ToggleButton } from './ToggleButton';
 import { BoldIcon } from '../icons';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Basic/ToggleButton',

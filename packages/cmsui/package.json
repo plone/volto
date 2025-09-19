@@ -74,15 +74,8 @@
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
-    "@storybook/addon-essentials": "^8.6.12",
-    "@storybook/addon-interactions": "^8.6.12",
-    "@storybook/addon-links": "^8.6.12",
-    "@storybook/addon-mdx-gfm": "^8.6.12",
-    "@storybook/blocks": "^8.6.12",
-    "@storybook/manager-api": "^8.6.12",
-    "@storybook/react": "^8.6.12",
-    "@storybook/react-vite": "^8.6.12",
-    "@storybook/theming": "^8.6.12",
+    "@storybook/addon-links": "^9.1.7",
+    "@storybook/react-vite": "^9.1.7",
     "@tailwindcss/vite": "catalog:",
     "@testing-library/cypress": "^10.0.3",
     "@testing-library/jest-dom": "6.4.2",
@@ -93,11 +86,11 @@
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
     "@vitest/coverage-v8": "catalog:",
-    "eslint-plugin-storybook": "^0.11.2",
+    "eslint-plugin-storybook": "^9.1.7",
     "jest-axe": "^8.0.0",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "release-it": "catalog:",
-    "storybook": "^8.6.12",
+    "storybook": "^9.1.7",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-react-aria-components": "^2.0.0",
     "tsconfig": "workspace:*",
@@ -105,6 +98,7 @@
     "vite": "catalog:",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "catalog:",
-    "vitest-axe": "^0.1.0"
+    "vitest-axe": "^0.1.0",
+    "@storybook/addon-docs": "^9.1.7"
   }
 }

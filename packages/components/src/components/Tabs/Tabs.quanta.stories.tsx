@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Tabs } from './Tabs.quanta';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Quanta/Tabs',

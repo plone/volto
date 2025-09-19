@@ -1,6 +1,6 @@
 import Logo from './Logo';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Logo',

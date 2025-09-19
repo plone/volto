@@ -5,7 +5,7 @@ import {
   AccordionPanel,
   AccordionItemTrigger,
 } from './Accordion.quanta';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ChevronrightIcon } from '../../components/icons';
 
 const meta = {
