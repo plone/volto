@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import { DialogTrigger, Heading } from 'react-aria-components';
 import { Button } from '../Button/Button.quanta';
 import { Dialog } from '../Dialog/Dialog.quanta';

@@ -8,7 +8,7 @@ import {
   PageIcon,
 } from '../../components/icons';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Quanta/Breadcrumbs',
