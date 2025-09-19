@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { hasBlocksData } from '../helpers/blocks';
+import { hasBlocksData } from '@plone/blocks/helpers/blocks';
 import { DefaultBlockView } from './DefaultBlockView';
 import type { BlocksConfigData, Content } from '@plone/types';
 import BlockWrapper from './BlockWrapper';
