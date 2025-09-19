@@ -4,16 +4,18 @@ import config from '@plone/registry';
 import type { Route } from './+types/root';
 import installServer from './config.server';
 
-export const installServerMiddleware: Route.unstable_MiddlewareFunction =
-  async ({ request, context }, next) => {
-    installServer();
-    // const locale = await i18next.getLocale(request);
-    // context.setData({ locale });
+export const installServerMiddleware: Route.v8_MiddlewareFunction = async (
+  { request, context },
+  next,
+) => {
+  installServer();
+  // const locale = await i18next.getLocale(request);
+  // context.setData({ locale });
 
-    // This is needed in v7.4.0 even if it should not be mandatory
-    // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-    return await next();
-  };
+  // This is needed in v7.4.0 even if it should not be mandatory
+  // Relevant issue: https://github.com/remix-run/react-router/issues/13274
+  return await next();
+};
 
 export const otherResources: Route.unstable_MiddlewareFunction = async (
   { request, params, context },
