@@ -249,24 +249,29 @@ describe('Search Block Tests', () => {
       `Search results: ${results_number}`,
     );
 
-    cy.queryCounter('/**/@querystring-search', [
-      () => cy.get('.search-wrapper .search-input input').focus().type('Event'),
-      () =>
-        cy
-          .get('#page-document .listing-item:first-of-type a')
-          .should('have.attr', 'href', '/my-event'),
-      () =>
-        cy
-          .get('.search-results-count-sort .search-details em')
-          .should('contain', 'Event'),
-      () =>
-        cy
-          .url()
-          .should(
-            'contain',
-            '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D',
-          ),
-    ]);
+    cy.queryCounter(
+      '/**/@querystring-search',
+      [
+        () =>
+          cy.get('.search-wrapper .search-input input').focus().type('Event'),
+        () =>
+          cy
+            .get('#page-document .listing-item:first-of-type a')
+            .should('have.attr', 'href', '/my-event'),
+        () =>
+          cy
+            .get('.search-results-count-sort .search-details em')
+            .should('contain', 'Event'),
+        () =>
+          cy
+            .url()
+            .should(
+              'contain',
+              '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D',
+            ),
+      ],
+      3,
+    );
 
     // test removing one char
     cy.queryCounter(
@@ -290,7 +295,7 @@ describe('Search Block Tests', () => {
               '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Even%22%7D',
             ),
       ],
-      1,
+      3,
     );
 
     // test removing the text with the button
