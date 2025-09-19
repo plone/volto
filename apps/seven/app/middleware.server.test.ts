@@ -1,6 +1,6 @@
 import { expect, describe, it, vi, afterEach } from 'vitest';
 import config from '@plone/registry';
-import { unstable_RouterContextProvider } from 'react-router';
+import { RouterContextProvider } from 'react-router';
 import {
   getAPIResourceWithAuth,
   installServerMiddleware,
@@ -15,7 +15,7 @@ describe('middleware', () => {
   describe('installServerMiddleware', () => {
     it('installs the basic config correctly', async () => {
       const request = new Request('http://example.com');
-      const context = new unstable_RouterContextProvider();
+      const context = new RouterContextProvider();
       const nextMock = vi.fn();
 
       await installServerMiddleware({ request, params: {}, context }, nextMock);
@@ -44,7 +44,7 @@ describe('middleware', () => {
   describe('otherResources', () => {
     it('ignore regular internal content requests', async () => {
       const request = new Request('http://example.com');
-      const context = new unstable_RouterContextProvider();
+      const context = new RouterContextProvider();
       const params = { '*': '' };
       const nextMock = vi.fn();
 
@@ -57,7 +57,7 @@ describe('middleware', () => {
 
     it('blocks requests to special urls: css', async () => {
       const request = new Request('http://example.com');
-      const context = new unstable_RouterContextProvider();
+      const context = new RouterContextProvider();
       const params = { '*': 'style.css' };
       const nextMock = vi.fn();
 
@@ -74,7 +74,7 @@ describe('middleware', () => {
 
     it('blocks requests to special urls: css.map', async () => {
       const request = new Request('http://example.com');
-      const context = new unstable_RouterContextProvider();
+      const context = new RouterContextProvider();
       const params = { '*': 'style.css.map' };
       const nextMock = vi.fn();
 
@@ -91,7 +91,7 @@ describe('middleware', () => {
 
     // it('blocks requests to special urls: favicon.ico', async () => {
     //   const request = new Request('http://example.com');
-    //   const context = new unstable_RouterContextProvider();
+    //   const context = new RouterContextProvider();
     //   const params = { '*': 'favicon.ico' };
     //   const nextMock = vi.fn();
 
@@ -108,7 +108,7 @@ describe('middleware', () => {
 
     // it('blocks requests to special urls: full https links', async () => {
     //   const request = new Request('http://example.com');
-    //   const context = new unstable_RouterContextProvider();
+    //   const context = new RouterContextProvider();
     //   const params = { '*': 'https://another.site' };
     //   const nextMock = vi.fn();
 
@@ -125,7 +125,7 @@ describe('middleware', () => {
 
     it('blocks requests to special urls: expand', async () => {
       const request = new Request('http://example.com');
-      const context = new unstable_RouterContextProvider();
+      const context = new RouterContextProvider();
       const params = { '*': '?expand=breadcrumbs' };
       const nextMock = vi.fn();
 
@@ -142,7 +142,7 @@ describe('middleware', () => {
 
     it('blocks requests to special urls: assets', async () => {
       const request = new Request('http://example.com');
-      const context = new unstable_RouterContextProvider();
+      const context = new RouterContextProvider();
       const params = { '*': 'assets/image.png' };
       const nextMock = vi.fn();
 
@@ -161,7 +161,7 @@ describe('middleware', () => {
   describe('getAPIResourceWithAuth', () => {
     it('ignore regular internal content requests', async () => {
       const request = new Request('http://example.com');
-      const context = new unstable_RouterContextProvider();
+      const context = new RouterContextProvider();
       const params = { '*': '' };
       const nextMock = vi.fn();
 
@@ -174,7 +174,7 @@ describe('middleware', () => {
 
     it('intercepts requests to special urls: @@images', async () => {
       const request = new Request('http://example.com');
-      const context = new unstable_RouterContextProvider();
+      const context = new RouterContextProvider();
       const params = { '*': 'image.png/@@images/image' };
       const nextMock = vi.fn();
       const fetchMock = vi.fn().mockResolvedValue({
@@ -204,7 +204,7 @@ describe('middleware', () => {
 
     it('intercepts requests to special urls: @@download', async () => {
       const request = new Request('http://example.com');
-      const context = new unstable_RouterContextProvider();
+      const context = new RouterContextProvider();
       const params = { '*': 'file.txt/@@download/file' };
       const nextMock = vi.fn();
       const fetchMock = vi.fn().mockResolvedValue({
@@ -234,7 +234,7 @@ describe('middleware', () => {
 
     it('intercepts requests to special urls: @@site-logo', async () => {
       const request = new Request('http://example.com');
-      const context = new unstable_RouterContextProvider();
+      const context = new RouterContextProvider();
       const params = { '*': '@@site-logo/image' };
       const nextMock = vi.fn();
       const fetchMock = vi.fn().mockResolvedValue({
@@ -264,7 +264,7 @@ describe('middleware', () => {
 
     it('intercepts requests to special urls: @portrait', async () => {
       const request = new Request('http://example.com');
-      const context = new unstable_RouterContextProvider();
+      const context = new RouterContextProvider();
       const params = { '*': '@portrait/username' };
       const nextMock = vi.fn();
       const fetchMock = vi.fn().mockResolvedValue({

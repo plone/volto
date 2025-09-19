@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AlignWidget, defaultActionsInfo } from './AlignWidget';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '../Button/Button.quanta';
 import { AligncenterIcon } from '../../components/icons/AligncenterIcon';
 import { Form } from '../..';

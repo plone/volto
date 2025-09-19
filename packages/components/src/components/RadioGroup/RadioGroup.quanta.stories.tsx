@@ -1,7 +1,7 @@
 import React from 'react';
 import { RadioGroup, Radio } from './RadioGroup.quanta';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Quanta/RadioGroup',

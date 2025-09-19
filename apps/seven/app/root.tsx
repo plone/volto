@@ -12,7 +12,7 @@ import {
   otherResources,
 } from './middleware.server';
 
-export const unstable_middleware = [
+export const middleware = [
   installServerMiddleware,
   otherResources,
   getAPIResourceWithAuth,
