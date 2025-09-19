@@ -284,9 +284,6 @@ importers:
       '@plone/components':
         specifier: workspace:*
         version: link:../components
-      '@plone/layout':
-        specifier: workspace:*
-        version: link:../layout
       '@plone/plate':
         specifier: workspace:*
         version: link:../plate
