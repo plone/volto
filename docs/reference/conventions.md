@@ -9,71 +9,74 @@ myst:
 
 # Development conventions, rules and best practices
 
-This document describes the conventions, rules and best practices followed in the Plone 7 frontend codebase.
-In general, we will continue using the same models, artifacts and conventions as in Volto, unless there is a good reason to change them.
-For example, the blocks model structure won't change, as it is already well established and used in many projects.
-Another use case: in Volto we use controlled forms everywhere, and although React Router 7 introduced a new way to handle forms, we will stick to controlled forms for consistency.
-Same for our widgets, which will adhere to almost the same interface as in Volto, as controlled forms need controlled widgets.
-The configuration system will continue the same, based in `@plone/registry`, while we will continue improving it.
-We will stick to the mantra: "if it works, don't change it".
-This document contains the differences and additions to the Volto conventions.
+This document explains the conventions, rules, and best practices we follow in the Plone 7 frontend codebase.
+We generally stick to the same models, artifacts, and conventions as in Volto, unless there's a good reason to change.
+For example, the blocks model structure stays the same since it's well established and widely used.
+Another example: in Volto, we use controlled forms everywhere.
+Even though React Router 7 introduced a new way to handle forms, we stick to controlled forms for consistency.
+Our widgets also follow almost the same interface as in Volto because controlled forms need controlled widgets.
+The configuration system remains based on `@plone/registry`, and we keep improving it.
+We follow the mantra: "if it works, don't change it."
+This document highlights the differences and additions compared to Volto conventions.
 
 ## Storybook
 
-Storybook is a tool for developing UI components in isolation for React.
-It helps you to develop your component while mocking the different states of your components and interact with them in a sandbox environment.
-Seven follows a Storybook-first approach, meaning that all new components should be developed in Storybook first, before being integrated into the application.
-It mainly applies to components that are part of the design system (`@plone/components`), but can also be used for other structural components (`@plone/layout`).
+Storybook is a tool for building UI components in isolation with React.
+It helps you develop components by mocking their different states and interacting with them in a sandbox.
+Seven follows a Storybook-first approach, so new components should be developed in Storybook first before adding them to the app.
+This mainly applies to design system components (`@plone/components`), but you can also use it for other structural components (`@plone/layout`).
 
-See {doc}`/storybook` or Seven [Storybook](https://plone-storybook.readthedocs.io/).
+You can see the Storybook for this package at [Seven Storybook](https://plone-storybook.readthedocs.io/).
 
 ## Routes naming
 
-When defining routes in React Router, please follow these conventions:
+When defining routes in React Router, follow these rules:
 
-- Prepend routes with `@@` (e.g., `/@@edit`).
-- Use kebab-case for route names (e.g., `/@@user-profile`).
+- Start routes with `@@` (like `/@@edit`).
+- Use kebab-case for route names (like `/@@user-profile`).
 
 ## Add-on packages do not use a `src` folder
 
-In the past, Volto add-ons used to be normal packages with a `src` folder containing all the code.
-Since Volto add-ons were not meant to be compiled, the build resolution process had to adjust and be patched in order to make it work.
-In Seven, we decided to not use a `src` folder anymore, and all the code is directly in the root of the package.
-This allows the build process to work out of the box without any patching following the ecosystem conventions, otherwise we would have to patch the resolution process for every build or bundler tool used.
+In the past, Volto add-ons had a `src` folder with all the code.
+Since Volto add-ons weren't meant to be compiled, the build process had to be patched to make it work.
+In Seven, we decided to drop the `src` folder and put all code directly in the package root.
+This makes the build process work out of the box without any patching, following ecosystem conventions.
+Otherwise, we'd have to patch the resolution process for every build or bundler tool.
 
 ## `@plone/components` package
 
-This package will continue to be the design system of Plone 7, containing all the reusable UI components such as buttons, forms, modals, etc.
-When adding new components, please ensure they are generic and reusable across different parts of the application.
-The components should be well-documented and include Storybook stories to showcase their usage and different states.
+This package is the design system for Plone 7.
+It contains reusable UI components like buttons, forms, modals, and more.
+When adding new components, make sure they are generic and reusable across the app.
+Also, document them well and include Storybook stories to show how to use them and their different states.
 
-This package contains two sets of components:
-- Tailwind-based components, which can be used directly in the application and are styled using Tailwind CSS classes.
-- Headless components, which provide the functionality without any styling, allowing developers to style them as they see fit.
+There are two sets of components here:
+- Tailwind-based components, which you can use directly and are styled with Tailwind CSS classes.
+- Headless components, which provide functionality without styling, so you can style them however you want.
 
-It includes also a "baseline" CSS for the headless components in case that you want to start from a common ground.
-These styles are very basic ("vanilla") and can be easily overridden by your own styles.
-They can be used today in Volto projects as well, by installing the `@plone/components` package.
+We also include a basic "baseline" CSS for the headless components to give you a common starting point.
+These styles are very simple ("vanilla") and easy to override with your own styles.
+You can also use these in Volto projects by installing the `@plone/components` package.
 
-The Tailwind-based components are meant to be used in public themes based also on Tailwind CSS, such as the default Seven theme (`@plone/agave`).
-They are the ones used in the CMS UI interface as well, which is also based on Tailwind CSS.
+The Tailwind-based components are meant for public themes that also use Tailwind CSS, like the default Seven theme (`@plone/agave`).
+They're also used in the CMS UI, which is based on Tailwind CSS.
 
-The package has a Storybook setup published in [@plone/components Storybook](https://plone-components.readthedocs.io/).
+Check out the Storybook for this package at [@plone/components Storybook](https://plone-components.readthedocs.io/).
 
 ## `@plone/layout` package
 
-This package contains the structural components of the Plone 7 frontend, such as the `Header`, `Footer`, and `ContentArea`.
-These components are responsible for the overall layout and structure of the application.
-When adding new structural components, please ensure they are added as slots to allow for easy customization.
+This package holds the structural components of the Plone 7 frontend, like the `Header`, `Footer`, and `ContentArea`.
+These components handle the overall layout and structure of the app.
+When adding new structural components, add them as slots so they can be easily customized.
 
-The package has a Storybook setup published in [@plone/layout Storybook](https://plone-layout.readthedocs.io/).
+You can see the Storybook for this package at [@plone/layout Storybook](https://plone-layout.readthedocs.io/).
 
-This package has to support all kind of theming system, so please avoid using any CSS framework specific classes (e.g., Tailwind CSS, Bootstrap, etc.) in the components.
-Thus, all the components inside should be Tailwind-free.
+This package needs to support all kinds of theming systems, so avoid using CSS framework-specific classes (like Tailwind CSS or Bootstrap) in these components.
+That means all components here should be free of Tailwind or any other CSS framework.
 
 ## All structural components are slots
 
-Slots are a powerful feature in Plone 7 that allow you to define areas in your layout where components can be dynamically inserted.
-In Seven all structural components (e.g., `Header`, `Footer`, `Sidebar`) are slots.
-This way, you can easily customize the layout by adding or removing components from these slots without modifying the core layout code.
+Slots let you define areas in your layout where components can be dynamically added.
+In Seven, all structural components (like `Header`, `Footer`, `Sidebar`) are slots.
+This makes it easy to customize the layout by adding or removing components without changing the core layout code.
 Slots are defined in the `@plone/layout` package.
