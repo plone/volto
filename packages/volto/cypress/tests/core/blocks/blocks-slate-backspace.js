@@ -16,7 +16,7 @@ describe('Slate Backspace Behavior', () => {
     cy.wait('@schema');
   });
 
-  it('Backspace at start of second block deletes it without merging', () => {
+  it('Backspace at start of second block deletes it and merges content into first block', () => {
     cy.getSlateEditorAndType('First block text');
 
     cy.addNewBlock('slate');
@@ -27,6 +27,6 @@ describe('Slate Backspace Behavior', () => {
     cy.get('.content-area .slate-editor [contenteditable=true]')
       .should('have.length', 1)
       .should('contain', 'First block text')
-      .should('not.contain', 'Second block text');
+      .should('contain', 'Second block text');
   });
 });
