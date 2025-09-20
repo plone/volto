@@ -35,9 +35,6 @@ describe('middleware', () => {
           })
           .method().config.apiPath,
       ).toEqual('http://localhost:8080/Plone');
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).toHaveBeenCalled();
     });
   });
 
@@ -49,10 +46,6 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       await otherResources({ request, params, context }, nextMock);
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).toHaveBeenCalled();
     });
 
     it('blocks requests to special urls: css', async () => {
@@ -66,10 +59,6 @@ describe('middleware', () => {
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).not.toHaveBeenCalled();
     });
 
     it('blocks requests to special urls: css.map', async () => {
@@ -83,10 +72,6 @@ describe('middleware', () => {
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).not.toHaveBeenCalled();
     });
 
     // it('blocks requests to special urls: favicon.ico', async () => {
@@ -134,10 +119,6 @@ describe('middleware', () => {
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).not.toHaveBeenCalled();
     });
 
     it('blocks requests to special urls: assets', async () => {
@@ -151,10 +132,6 @@ describe('middleware', () => {
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).not.toHaveBeenCalled();
     });
   });
 
@@ -166,10 +143,6 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       await getAPIResourceWithAuth({ request, params, context }, nextMock);
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).toHaveBeenCalled();
     });
 
     it('intercepts requests to special urls: @@images', async () => {
@@ -196,10 +169,6 @@ describe('middleware', () => {
           }),
         );
       }
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).not.toHaveBeenCalled();
     });
 
     it('intercepts requests to special urls: @@download', async () => {
@@ -226,10 +195,6 @@ describe('middleware', () => {
           }),
         );
       }
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).not.toHaveBeenCalled();
     });
 
     it('intercepts requests to special urls: @@site-logo', async () => {
@@ -256,10 +221,6 @@ describe('middleware', () => {
           }),
         );
       }
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).not.toHaveBeenCalled();
     });
 
     it('intercepts requests to special urls: @portrait', async () => {
@@ -286,10 +247,6 @@ describe('middleware', () => {
           }),
         );
       }
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).not.toHaveBeenCalled();
     });
   });
 });

@@ -4,20 +4,16 @@ import config from '@plone/registry';
 import type { Route } from './+types/root';
 import installServer from './config.server';
 
-export const installServerMiddleware: Route.v8_MiddlewareFunction = async (
+export const installServerMiddleware: Route.MiddlewareFunction = async (
   { request, context },
   next,
 ) => {
   installServer();
   // const locale = await i18next.getLocale(request);
   // context.setData({ locale });
-
-  // This is needed in v7.4.0 even if it should not be mandatory
-  // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-  return await next();
 };
 
-export const otherResources: Route.unstable_MiddlewareFunction = async (
+export const otherResources: Route.MiddlewareFunction = async (
   { request, params, context },
   next,
 ) => {
@@ -41,13 +37,9 @@ export const otherResources: Route.unstable_MiddlewareFunction = async (
     console.log('matched path not fetched', path);
     throw data('Content Not Found', { status: 404 });
   }
-
-  // This is needed in v7.4.0 even if it should not be mandatory
-  // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-  return await next();
 };
 
-export const getAPIResourceWithAuth: Route.unstable_MiddlewareFunction = async (
+export const getAPIResourceWithAuth: Route.MiddlewareFunction = async (
   { request, params },
   next,
 ) => {
@@ -60,7 +52,7 @@ export const getAPIResourceWithAuth: Route.unstable_MiddlewareFunction = async (
     /\/@portrait\//.test(path)
   ) {
     const token = await getAuthFromRequest(request);
-    throw await fetch(`${config.settings.apiPath}${path}`, {
+    return await fetch(`${config.settings.apiPath}${path}`, {
       method: 'GET',
       headers: {
         ...request.headers,
@@ -68,8 +60,4 @@ export const getAPIResourceWithAuth: Route.unstable_MiddlewareFunction = async (
       },
     });
   }
-
-  // This is needed in v7.4.0 even if it should not be mandatory
-  // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-  return await next();
 };
