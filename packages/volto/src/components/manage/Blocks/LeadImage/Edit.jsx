@@ -43,8 +43,7 @@ const Edit = (props) => {
       {!hasImage && (
         <Message>
           <center>
-            {/* eslint-disable-next-line no-restricted-syntax */}
-            <img src={imageBlockSVG} alt="" />
+            <Image src={imageBlockSVG} alt="" />
             <div className="message-text">{placeholder}</div>
           </center>
         </Message>

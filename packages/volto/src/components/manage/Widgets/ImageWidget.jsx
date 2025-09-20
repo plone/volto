@@ -341,8 +341,7 @@ const UnconnectedImageInput = (props) => {
                   </Loader>
                 </Dimmer>
               )}
-              {/* eslint-disable-next-line no-restricted-syntax */}
-              <img src={imageBlockSVG} alt="" className="placeholder" />
+              <Image src={imageBlockSVG} alt="" className="placeholder" />
               <p>{description || intl.formatMessage(messages.addImage)}</p>
               <div className="toolbar-wrapper">
                 <div className="toolbar-inner" ref={linkEditor.anchorNode}>

@@ -33,8 +33,7 @@ const TeaserDefaultTemplate = (props) => {
         {!href && isEditMode && (
           <Message>
             <div className="teaser-item placeholder">
-              {/* eslint-disable-next-line no-restricted-syntax */}
-              <img src={imageBlockSVG} alt="" />
+              <Image src={imageBlockSVG} alt="" />
               <p>{intl.formatMessage(messages.PleaseChooseContent)}</p>
             </div>
           </Message>

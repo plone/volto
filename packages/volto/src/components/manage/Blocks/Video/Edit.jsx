@@ -12,6 +12,7 @@ import aheadSVG from '@plone/volto/icons/ahead.svg';
 import videoBlockSVG from '@plone/volto/components/manage/Blocks/Video/block-video.svg';
 import Body from '@plone/volto/components/manage/Blocks/Video/Body';
 import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 const messages = defineMessages({
   VideoFormDescription: {
@@ -82,8 +83,7 @@ const Edit = (props) => {
       ) : (
         <Message>
           <center>
-            {/* eslint-disable-next-line no-restricted-syntax */}
-            <img src={videoBlockSVG} alt="" />
+            <Image src={videoBlockSVG} alt="" />
             <div className="toolbar-inner">
               <Input
                 onKeyDown={onKeyDownVariantMenuForm}

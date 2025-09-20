@@ -41,7 +41,7 @@
       "error",
       {
         "selector": "JSXElement[openingElement.name.name='img']",
-        "message": "Use the Image component from '@plone/volto/components/theme/Image/Image' instead of <img> tag. For SVG placeholders, add an eslint-disable comment."
+        "message": "Use the Image component from '@plone/volto/components/theme/Image/Image' instead of <img> tag."
       }
     ]
   },
