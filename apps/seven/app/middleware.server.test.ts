@@ -16,9 +16,8 @@ describe('middleware', () => {
     it('installs the basic config correctly', async () => {
       const request = new Request('http://example.com');
       const context = new RouterContextProvider();
-      const nextMock = vi.fn();
 
-      await installServerMiddleware({ request, params: {}, context }, nextMock);
+      await installServerMiddleware({ request, params: {}, context });
 
       expect(config.settings).toStrictEqual(
         expect.objectContaining({
@@ -35,9 +34,6 @@ describe('middleware', () => {
           })
           .method().config.apiPath,
       ).toEqual('http://localhost:8080/Plone');
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).toHaveBeenCalled();
     });
   });
 
@@ -48,11 +44,7 @@ describe('middleware', () => {
       const params = { '*': '' };
       const nextMock = vi.fn();
 
-      await otherResources({ request, params, context }, nextMock);
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).toHaveBeenCalled();
+      await otherResources({ request, params, context });
     });
 
     it('blocks requests to special urls: css', async () => {
@@ -62,14 +54,10 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       try {
-        await otherResources({ request, params, context }, nextMock);
+        await otherResources({ request, params, context });
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).not.toHaveBeenCalled();
     });
 
     it('blocks requests to special urls: css.map', async () => {
@@ -79,14 +67,10 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       try {
-        await otherResources({ request, params, context }, nextMock);
+        await otherResources({ request, params, context });
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).not.toHaveBeenCalled();
     });
 
     // it('blocks requests to special urls: favicon.ico', async () => {
@@ -96,7 +80,7 @@ describe('middleware', () => {
     //   const nextMock = vi.fn();
 
     //   try {
-    //     await otherResources({ request, params, context }, nextMock);
+    //     await otherResources({ request, params, context });
     //   } catch (err: any) {
     //     expect(err.init.status).toEqual(404);
     //   }
@@ -113,7 +97,7 @@ describe('middleware', () => {
     //   const nextMock = vi.fn();
 
     //   try {
-    //     await otherResources({ request, params, context }, nextMock);
+    //     await otherResources({ request, params, context });
     //   } catch (err: any) {
     //     expect(err.init.status).toEqual(404);
     //   }
@@ -130,14 +114,10 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       try {
-        await otherResources({ request, params, context }, nextMock);
+        await otherResources({ request, params, context });
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).not.toHaveBeenCalled();
     });
 
     it('blocks requests to special urls: assets', async () => {
@@ -147,14 +127,10 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       try {
-        await otherResources({ request, params, context }, nextMock);
+        await otherResources({ request, params, context });
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).not.toHaveBeenCalled();
     });
   });
 
@@ -165,11 +141,7 @@ describe('middleware', () => {
       const params = { '*': '' };
       const nextMock = vi.fn();
 
-      await getAPIResourceWithAuth({ request, params, context }, nextMock);
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).toHaveBeenCalled();
+      await getAPIResourceWithAuth({ request, params, context });
     });
 
     it('intercepts requests to special urls: @@images', async () => {
@@ -184,7 +156,7 @@ describe('middleware', () => {
       global.fetch = fetchMock;
 
       try {
-        await getAPIResourceWithAuth({ request, params, context }, nextMock);
+        await getAPIResourceWithAuth({ request, params, context });
       } catch (err: any) {
         expect(fetchMock).toHaveBeenCalledWith(
           'http://localhost:8080/Plone/image.png/@@images/image',
@@ -196,10 +168,6 @@ describe('middleware', () => {
           }),
         );
       }
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).not.toHaveBeenCalled();
     });
 
     it('intercepts requests to special urls: @@download', async () => {
@@ -214,7 +182,7 @@ describe('middleware', () => {
       global.fetch = fetchMock;
 
       try {
-        await getAPIResourceWithAuth({ request, params, context }, nextMock);
+        await getAPIResourceWithAuth({ request, params, context });
       } catch (err: any) {
         expect(fetchMock).toHaveBeenCalledWith(
           'http://localhost:8080/Plone/file.txt/@@download/file',
@@ -226,10 +194,6 @@ describe('middleware', () => {
           }),
         );
       }
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).not.toHaveBeenCalled();
     });
 
     it('intercepts requests to special urls: @@site-logo', async () => {
@@ -244,7 +208,7 @@ describe('middleware', () => {
       global.fetch = fetchMock;
 
       try {
-        await getAPIResourceWithAuth({ request, params, context }, nextMock);
+        await getAPIResourceWithAuth({ request, params, context });
       } catch (err: any) {
         expect(fetchMock).toHaveBeenCalledWith(
           'http://localhost:8080/Plone/@@site-logo/image',
@@ -256,10 +220,6 @@ describe('middleware', () => {
           }),
         );
       }
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).not.toHaveBeenCalled();
     });
 
     it('intercepts requests to special urls: @portrait', async () => {
@@ -274,7 +234,7 @@ describe('middleware', () => {
       global.fetch = fetchMock;
 
       try {
-        await getAPIResourceWithAuth({ request, params, context }, nextMock);
+        await getAPIResourceWithAuth({ request, params, context });
       } catch (err: any) {
         expect(fetchMock).toHaveBeenCalledWith(
           'http://localhost:8080/Plone/@portrait/username',
@@ -286,10 +246,6 @@ describe('middleware', () => {
           }),
         );
       }
-
-      // This is needed in v7.4.0 even if it should not be mandatory
-      // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-      expect(nextMock).not.toHaveBeenCalled();
     });
   });
 });
