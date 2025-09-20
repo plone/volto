@@ -11,10 +11,6 @@ export const installServerMiddleware: Route.MiddlewareFunction = async (
   installServer();
   // const locale = await i18next.getLocale(request);
   // context.setData({ locale });
-
-  // This is needed in v7.4.0 even if it should not be mandatory
-  // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-  return await next();
 };
 
 export const otherResources: Route.MiddlewareFunction = async (
@@ -41,10 +37,6 @@ export const otherResources: Route.MiddlewareFunction = async (
     console.log('matched path not fetched', path);
     throw data('Content Not Found', { status: 404 });
   }
-
-  // This is needed in v7.4.0 even if it should not be mandatory
-  // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-  return await next();
 };
 
 export const getAPIResourceWithAuth: Route.MiddlewareFunction = async (
@@ -68,8 +60,4 @@ export const getAPIResourceWithAuth: Route.MiddlewareFunction = async (
       },
     });
   }
-
-  // This is needed in v7.4.0 even if it should not be mandatory
-  // Relevant issue: https://github.com/remix-run/react-router/issues/13274
-  return await next();
 };
