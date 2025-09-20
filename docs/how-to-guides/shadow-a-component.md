@@ -42,22 +42,6 @@ customizations/
 Use absolute imports in your shadowed modules to avoid resolution issues.
 ```
 
-## Identifying components to shadow
-
-To determine what and where to shadow:
-
--   Use the React Developer Tools add-on for either [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) or [Chrome](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) to inspect the live DOM tree and identify component names.
--   Search those component names in the corresponding source package inside {file}`node_modules/`.
--   Follow import paths and folder structures to map to the original file.
-
-## Caution when upgrading
-
-```{warning}
-If you update a dependency or add-on that contains shadowed components, always verify whether the shadowed component's structure, API, or dependencies have changed.
-
-Failure to adapt your shadowed code to the new version may break your application silently or cause unexpected behavior.
-```
-
 ## Clarification: only registered add-ons can be shadowed
 
 Shadowing only works with **registered add-ons** that are explicitly declared as such in {file}`registry.config.ts`.

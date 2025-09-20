@@ -14,7 +14,10 @@ This section of the documentation contains conceptual guides for various aspects
 ```{toctree}
 :maxdepth: 2
 
-add-ons
+add-on-registry
+add-on-loader
+add-on-styles-loader
+configuration-registry
 routing
-shadowing
+slots
 ```

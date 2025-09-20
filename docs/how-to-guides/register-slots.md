@@ -1,39 +1,15 @@
 ---
 myst:
   html_meta:
-    "description": "Slots are insertion points in the Volto rendering tree structure."
-    "property=og:description": "Slots are insertion points in the Volto rendering tree structure."
-    "property=og:title": "Slots"
-    "keywords": "Volto, Plone, frontend, React, configuration, slots, viewlets"
+    "description": "How to register slots using @plone/registry in Seven."
+    "property=og:description": "How to register slots using @plone/registry in Seven."
+    "property=og:title": "How to register Slots"
+    "keywords": "Seven, Plone, frontend, React, configuration, slots"
 ---
 
-# Slots
+# How to register Slots
 
-Slots provide a way for Volto add-ons to insert their own components at predefined locations in the rendered page.
-
-```{note}
-This concept is inspired by the Plone Classic UI {doc}`plone:classic-ui/viewlets`.
-```
-
-
-## Anatomy
-
-Slots have a name, and they contain a list of named slot components.
-
-Volto renders slots using the `SlotRenderer` component.
-You can add slot insertion points in your code, as shown in the following example.
-
-```ts
-<SlotRenderer name="aboveContent" content={content} />
-```
-
-Slot components are registered in the {ref}`configuration registry using a specific API for slots <configuration-registry-for-slot-components>`.
-
-The rendering of a slot component is controlled by the presence or absence of a list of conditions called {term}`predicates`.
-
-You can register multiple slot components with the same name under the same slot, as long as they have different predicates or components.
-
-To illustrate how slots are structured and work, let's register a slot component, where the component is `PageHeader`, and the predicate matches a route that begins with `/de/about`.
+Let's register a slot component, where the component is `PageHeader`, and the predicate matches a route that begins with `/de/about`.
 
 ```ts
 config.registerSlotComponent({

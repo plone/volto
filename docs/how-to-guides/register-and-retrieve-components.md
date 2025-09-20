@@ -4,7 +4,7 @@ myst:
     "description": "How to register, retrieve, adapt, and load components in @plone/registry"
     "property=og:description": "How to register, retrieve, adapt, and load components in @plone/registry"
     "property=og:title": "Register and retrieve components"
-    "keywords": "@plone/registry, registry, register, retrieve, components"
+    "keywords": "Seven, @plone/registry, registry, register, retrieve, components"
 ---
 
 # Register and retrieve components

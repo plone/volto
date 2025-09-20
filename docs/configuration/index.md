@@ -14,5 +14,4 @@ myst:
 
 component-registry
 expanders
-slots
 ```
