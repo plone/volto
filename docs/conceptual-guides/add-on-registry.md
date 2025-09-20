@@ -34,5 +34,5 @@ If needed, each add-on in the chain can override or extend the previous configur
 Thus, the order in which you register add-ons matters.
 
 Add-ons can define shadowed components.
-{doc}`./shadowing` is a technique for overriding modules of other packages at build time.
+{doc}`Shadowing <../how-to-guides/shadow-a-component>` is a technique for overriding modules of other packages at build time.
 This technique builds upon the `resolve.aliases` facilities of bundlers, so modules can be replaced when the app is being built.
