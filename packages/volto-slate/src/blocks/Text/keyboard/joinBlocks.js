@@ -57,44 +57,16 @@ export function joinWithPreviousBlock({ editor, event }, intl) {
   // If the Editor contains no characters TODO: clarify if this special case
   // really needs to be handled or not. In `joinWithNextBlock` it is not
   // handled.
-  const text = Editor.string(editor, []);
-  if (!text) {
-    const cursor = getBlockEndAsRange(otherBlock);
-    const newFormData = deleteBlock(properties, block, intl);
 
-    ReactDOM.unstable_batchedUpdates(() => {
-      saveSlateBlockSelection(otherBlockId, cursor);
-
-      onChangeField(blocksFieldname, newFormData[blocksFieldname]);
-      onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
-
-      onSelectBlock(otherBlockId);
-    });
-
-    return true;
-  }
-
-  // Else the editor contains characters, so we merge the current block's
-  // `editor` with the block before, `otherBlock`.
-  const cursor = mergeSlateWithBlockBackward(editor, otherBlock);
-
-  const combined = JSON.parse(JSON.stringify(editor.children));
-
-  // // TODO: don't remove undo history, etc Should probably save both undo
-  // // histories, so that the blocks are split, the undos can be restored??
-
-  // const cursor = getBlockEndAsRange(otherBlock);
-  const formData = changeBlock(properties, otherBlockId, {
-    '@type': 'slate', // TODO: use a constant specified in src/constants.js instead of 'slate'
-    value: combined,
-    plaintext: serializeNodesToText(combined || []),
-  });
-  const newFormData = deleteBlock(formData, block, intl);
+  const cursor = getBlockEndAsRange(otherBlock);
+  const newFormData = deleteBlock(properties, block, intl);
 
   ReactDOM.unstable_batchedUpdates(() => {
     saveSlateBlockSelection(otherBlockId, cursor);
+
     onChangeField(blocksFieldname, newFormData[blocksFieldname]);
     onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
+
     onSelectBlock(otherBlockId);
   });
 
