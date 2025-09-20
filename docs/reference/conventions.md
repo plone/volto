@@ -19,6 +19,8 @@ The configuration system remains based on `@plone/registry`, and we keep improvi
 We follow the mantra: "if it works, don't change it."
 This document highlights the differences and additions compared to Volto conventions.
 
+Separate builds for public and CMSUI
+
 ## Storybook
 
 Storybook is a tool for building UI components in isolation with React.
@@ -48,6 +50,10 @@ Otherwise, we'd have to patch the resolution process for every build or bundler 
 This package is the design system for Plone 7.
 It contains reusable UI components like buttons, forms, modals, and more.
 When adding new components, make sure they are generic and reusable across the app.
+This package should not contain any Plone-specific logic or data handling.
+The components here have to be "dumb" and receive plain props to render its output.
+For example, they will never have the logic for fetching data from Plone or handling authentication.
+This package is a first-level Plone modular architecture package, thus, it can't depend on any other Plone package except `@plone/types`.
 Also, document them well and include Storybook stories to show how to use them and their different states.
 
 There are two sets of components here:
@@ -65,6 +71,7 @@ Check out the Storybook for this package at [@plone/components Storybook](https:
 
 ## `@plone/layout` package
 
+This package is a Seven add-on and thus, a third-level Plone modular architecture package.
 This package holds the structural components of the Plone 7 frontend, like the `Header`, `Footer`, and `ContentArea`.
 These components handle the overall layout and structure of the app.
 When adding new structural components, add them as slots so they can be easily customized.
@@ -73,6 +80,10 @@ You can see the Storybook for this package at [@plone/layout Storybook](https://
 
 This package needs to support all kinds of theming systems, so avoid using CSS framework-specific classes (like Tailwind CSS or Bootstrap) in these components.
 That means all components here should be free of Tailwind or any other CSS framework.
+
+This package will hold components that are tied to Plone data models and specific concepts.
+For example, the `Image` component which is tightly coupled to the Plone image scales model used in Plone.
+The rule of thumb is: if a component has props that takes Plone-specific data (like the response of the catalog, or the image scales format), it belongs in this package.
 
 ## All structural components are slots
 
