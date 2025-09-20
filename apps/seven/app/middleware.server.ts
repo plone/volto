@@ -4,7 +4,7 @@ import config from '@plone/registry';
 import type { Route } from './+types/root';
 import installServer from './config.server';
 
-export const installServerMiddleware: Route.v8_MiddlewareFunction = async (
+export const installServerMiddleware: Route.MiddlewareFunction = async (
   { request, context },
   next,
 ) => {
@@ -17,7 +17,7 @@ export const installServerMiddleware: Route.v8_MiddlewareFunction = async (
   return await next();
 };
 
-export const otherResources: Route.unstable_MiddlewareFunction = async (
+export const otherResources: Route.MiddlewareFunction = async (
   { request, params, context },
   next,
 ) => {
@@ -47,7 +47,7 @@ export const otherResources: Route.unstable_MiddlewareFunction = async (
   return await next();
 };
 
-export const getAPIResourceWithAuth: Route.unstable_MiddlewareFunction = async (
+export const getAPIResourceWithAuth: Route.MiddlewareFunction = async (
   { request, params },
   next,
 ) => {
@@ -60,7 +60,7 @@ export const getAPIResourceWithAuth: Route.unstable_MiddlewareFunction = async (
     /\/@portrait\//.test(path)
   ) {
     const token = await getAuthFromRequest(request);
-    throw await fetch(`${config.settings.apiPath}${path}`, {
+    return await fetch(`${config.settings.apiPath}${path}`, {
       method: 'GET',
       headers: {
         ...request.headers,
