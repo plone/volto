@@ -117,7 +117,7 @@
     "@svgr/plugin-svgo": "^8.1.0",
     "@tailwindcss/vite": "catalog:",
     "@testing-library/jest-dom": "6.4.2",
-    "@testing-library/react": "14.2.1",
+    "@testing-library/react": "catalog:",
     "@types/jest-axe": "^3.5.7",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",

@@ -4,7 +4,7 @@ import { selectedBlockAtom } from './BlockEditor';
 import clsx from 'clsx';
 import { createPortal } from 'react-dom';
 import BlockSettingsForm from './BlockSettingsForm';
-import BlockWrapper from '@plone/blocks/RenderBlocks/BlockWrapper';
+import BlockWrapper from '@plone/layout/blocks/BlockWrapper';
 import { Plug, Pluggable } from '@plone/layout/components/Pluggable';
 import { blockAtomFamily } from '../../routes/atoms';
 import config from '@plone/registry';

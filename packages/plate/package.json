@@ -141,7 +141,7 @@
     "@plone/types": "workspace:*",
     "@testing-library/cypress": "^10.0.3",
     "@testing-library/jest-dom": "6.4.2",
-    "@testing-library/react": "14.2.1",
+    "@testing-library/react": "catalog:",
     "@types/jest-axe": "^3.5.7",
     "@types/node": "^20",
     "@types/react": "catalog:",
