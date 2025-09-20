@@ -16,8 +16,9 @@ describe('middleware', () => {
     it('installs the basic config correctly', async () => {
       const request = new Request('http://example.com');
       const context = new RouterContextProvider();
+      const nextMock = vi.fn();
 
-      await installServerMiddleware({ request, params: {}, context });
+      await installServerMiddleware({ request, params: {}, context }, nextMock);
 
       expect(config.settings).toStrictEqual(
         expect.objectContaining({
@@ -44,7 +45,7 @@ describe('middleware', () => {
       const params = { '*': '' };
       const nextMock = vi.fn();
 
-      await otherResources({ request, params, context });
+      await otherResources({ request, params, context }, nextMock);
     });
 
     it('blocks requests to special urls: css', async () => {
@@ -54,7 +55,7 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       try {
-        await otherResources({ request, params, context });
+        await otherResources({ request, params, context }, nextMock);
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
@@ -67,7 +68,7 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       try {
-        await otherResources({ request, params, context });
+        await otherResources({ request, params, context }, nextMock);
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
@@ -80,7 +81,7 @@ describe('middleware', () => {
     //   const nextMock = vi.fn();
 
     //   try {
-    //     await otherResources({ request, params, context });
+    //     await otherResources({ request, params, context }, nextMock);
     //   } catch (err: any) {
     //     expect(err.init.status).toEqual(404);
     //   }
@@ -97,7 +98,7 @@ describe('middleware', () => {
     //   const nextMock = vi.fn();
 
     //   try {
-    //     await otherResources({ request, params, context });
+    //     await otherResources({ request, params, context }, nextMock);
     //   } catch (err: any) {
     //     expect(err.init.status).toEqual(404);
     //   }
@@ -114,7 +115,7 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       try {
-        await otherResources({ request, params, context });
+        await otherResources({ request, params, context }, nextMock);
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
@@ -127,7 +128,7 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       try {
-        await otherResources({ request, params, context });
+        await otherResources({ request, params, context }, nextMock);
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
@@ -141,7 +142,7 @@ describe('middleware', () => {
       const params = { '*': '' };
       const nextMock = vi.fn();
 
-      await getAPIResourceWithAuth({ request, params, context });
+      await getAPIResourceWithAuth({ request, params, context }, nextMock);
     });
 
     it('intercepts requests to special urls: @@images', async () => {
@@ -156,7 +157,7 @@ describe('middleware', () => {
       global.fetch = fetchMock;
 
       try {
-        await getAPIResourceWithAuth({ request, params, context });
+        await getAPIResourceWithAuth({ request, params, context }, nextMock);
       } catch (err: any) {
         expect(fetchMock).toHaveBeenCalledWith(
           'http://localhost:8080/Plone/image.png/@@images/image',
@@ -182,7 +183,7 @@ describe('middleware', () => {
       global.fetch = fetchMock;
 
       try {
-        await getAPIResourceWithAuth({ request, params, context });
+        await getAPIResourceWithAuth({ request, params, context }, nextMock);
       } catch (err: any) {
         expect(fetchMock).toHaveBeenCalledWith(
           'http://localhost:8080/Plone/file.txt/@@download/file',
@@ -208,7 +209,7 @@ describe('middleware', () => {
       global.fetch = fetchMock;
 
       try {
-        await getAPIResourceWithAuth({ request, params, context });
+        await getAPIResourceWithAuth({ request, params, context }, nextMock);
       } catch (err: any) {
         expect(fetchMock).toHaveBeenCalledWith(
           'http://localhost:8080/Plone/@@site-logo/image',
@@ -234,7 +235,7 @@ describe('middleware', () => {
       global.fetch = fetchMock;
 
       try {
-        await getAPIResourceWithAuth({ request, params, context });
+        await getAPIResourceWithAuth({ request, params, context }, nextMock);
       } catch (err: any) {
         expect(fetchMock).toHaveBeenCalledWith(
           'http://localhost:8080/Plone/@portrait/username',
