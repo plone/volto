@@ -2909,7 +2909,7 @@ msgstr "Refereer naar dit item als gerelateerd item"
 msgid "Referencing this item with {relationship}"
 msgstr "Refereen naar dit item met {relationship}"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr "Broninhoud vernieuwen"

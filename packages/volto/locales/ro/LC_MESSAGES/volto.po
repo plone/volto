@@ -2911,7 +2911,7 @@ msgstr "Referința acestui element ca element asociat"
 msgid "Referencing this item with {relationship}"
 msgstr "Referința acestui element cu {relationship}"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr "Reîncarcă conținutul sursă"

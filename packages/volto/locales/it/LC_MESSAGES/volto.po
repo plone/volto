@@ -2905,7 +2905,7 @@ msgstr "Elementi collegati a questo contenuto come contenuto correlato"
 msgid "Referencing this item with {relationship}"
 msgstr "Elementi collegati a questo contenuto in {relationship}"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr "Ricarica il sorgente del contenuto"
