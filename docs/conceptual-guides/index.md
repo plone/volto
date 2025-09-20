@@ -14,6 +14,7 @@ This section of the documentation contains conceptual guides for various aspects
 ```{toctree}
 :maxdepth: 2
 
+modular-arch-packages
 add-ons
 routing
 shadowing
