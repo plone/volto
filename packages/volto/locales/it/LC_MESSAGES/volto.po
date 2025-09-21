@@ -2905,7 +2905,7 @@ msgstr "Elementi collegati a questo contenuto come contenuto correlato"
 msgid "Referencing this item with {relationship}"
 msgstr "Elementi collegati a questo contenuto in {relationship}"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr "Ricarica il sorgente del contenuto"
@@ -4969,6 +4969,11 @@ msgstr "riferimenti"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
 msgstr "fa riferimento a"
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
+msgstr "Totale risultati"
 
 #. Default: "results"
 #: components/theme/Search/Search
