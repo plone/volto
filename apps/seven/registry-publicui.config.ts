@@ -3,6 +3,7 @@ const addons = [
   '@plone/blocks',
   '@plone/layout',
   '@plone/publicui',
+  '@plone/agave',
 ];
 const theme = '';
 
