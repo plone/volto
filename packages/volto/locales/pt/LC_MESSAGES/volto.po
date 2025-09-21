@@ -4973,6 +4973,11 @@ msgstr ""
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
+msgstr "Total de resultados"
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
 msgstr ""
 
 #. Default: "results"
