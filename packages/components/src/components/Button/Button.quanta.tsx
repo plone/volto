@@ -4,87 +4,47 @@ import {
   Button as RACButton,
   type ButtonProps as RACButtonProps,
 } from 'react-aria-components';
-import { tv } from 'tailwind-variants';
-import { focusRing } from '../utils';
+import { button } from './Button.quanta.variants';
+import { link } from '../Link/Link.quanta.variants';
 
-export interface ButtonProps extends RACButtonProps {
-  variant?: 'neutral' | 'primary' | 'destructive' | 'icon';
-  size?: 'S' | 'L';
-  accent?: boolean;
-}
+type ButtonVariants = Parameters<typeof button>[0];
 
-const button = tv({
-  extend: focusRing,
-  base: 'cursor-default rounded-md px-3 py-1.5 text-center text-base font-medium transition hover:shadow-sm focus:shadow-sm active:shadow-md has-[svg]:rounded-full has-[svg]:p-1.5 has-[svg]:text-xs',
-  variants: {
-    variant: {
-      neutral:
-        'pressed:bg-quanta-cobalt bg-quanta-air hover:bg-quanta-snow active:bg-quanta-silver focus:bg-quanta-snow text-quanta-iron has-[svg]:text-quanta-iron',
-      primary:
-        'pressed:bg-quanta-cobalt bg-quanta-air hover:bg-quanta-arctic hover:text-quanta-royal active:bg-quanta-sky active:text-quanta-royal focus:bg-quanta-artic focus:text-quanta-royal text-quanta-sapphire',
-      destructive:
-        'pressed:bg-quanta-rose active:bg-quanta-flamingo bg-quanta-air hover:bg-quanta-ballet hover:text-quanta-wine active:text-quanta-wine focus:bg-quanta-ballet focus:text-quanta-wine text-quanta-candy',
-      icon: 'pressed:bg-quanta-cobalt pressed:[&_svg]:text-white bg-quanta-air hover:bg-quanta-snow active:bg-quanta-silver focus:bg-quanta-artic text-quanta-iron has-[svg]:text-quanta-iron flex items-center justify-center border-0 p-1',
-    },
-    accent: {
-      true: '',
-    },
-    size: {
-      S: 'text-xs has-[svg]:p-1.5 [&_svg]:size-5',
-      L: 'px-4.5 py-3 text-xl/6 has-[svg]:p-3 has-[svg]:text-xs',
-    },
-    isDisabled: {
-      true: 'bg-quanta-air hover:bg-quanta-air hover:text-quanta-silver has-[svg]:hover:text-quanta-silver text-quanta-smoke has-[svg]:text-quanta-smoke cursor-not-allowed',
-    },
-  },
-  compoundVariants: [
-    {
-      variant: 'neutral',
-      accent: true,
-      class:
-        'pressed:bg-quanta-smoke focus:bg-quanta-smoke bg-quanta-snow hover:bg-quanta-smoke active:bg-quanta-silver text-quanta-iron',
-    },
-    {
-      variant: 'primary',
-      accent: true,
-      class:
-        'text-quanta-air pressed:bg-quanta-cobalt bg-quanta-sapphire hover:bg-quanta-royal hover:text-quanta-air active:text-quanta-air focus:text-quanta-air active:bg-quanta-cobalt focus:bg-quanta-royal',
-    },
-    {
-      variant: 'icon',
-      accent: true,
-      class:
-        'pressed:bg-quanta-cobalt pressed:[&_svg]:text-white bg-quanta-air hover:bg-quanta-snow active:bg-quanta-silver focus:bg-quanta-artic text-quanta-iron has-[svg]:text-quanta-iron flex items-center justify-center border-0 p-1',
-    },
-    {
-      variant: 'destructive',
-      accent: true,
-      class:
-        'pressed:bg-quanta-rose active:bg-quanta-rose bg-quanta-candy hover:bg-quanta-wine focus:bg-quanta-wine text-quanta-air hover:text-quanta-air active:text-quanta-air focus:text-quanta-air',
-    },
-    {
-      isDisabled: true,
-      accent: true,
-      class: 'bg-quanta-snow hover:bg-quanta-smoke text-quanta-silver',
-    },
-  ],
-  defaultVariants: {
-    variant: 'neutral',
-  },
-});
+export type ButtonProps = RACButtonProps &
+  ButtonVariants & {
+    asLink?: never;
+  };
 
-export function Button(props: ButtonProps) {
+type LinkVariants = Parameters<typeof link>[0];
+
+type ButtonAsLinkProps = RACButtonProps &
+  LinkVariants & {
+    asLink: true;
+  };
+
+export function Button(props: ButtonProps | ButtonAsLinkProps) {
+  const { asLink, variant, ...buttonProps } = props;
+
   return (
     <RACButton
-      {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        button({
-          ...renderProps,
-          variant: props.variant,
-          size: props.size,
-          accent: props.accent,
-          className,
-        }),
+      {...buttonProps}
+      className={composeRenderProps(
+        props.className,
+        (className, renderProps) => {
+          if (asLink) {
+            return link({
+              ...renderProps,
+              className,
+              variant,
+            });
+          }
+          return button({
+            ...renderProps,
+            variant,
+            size: props.size,
+            accent: props.accent,
+            className,
+          });
+        },
       )}
     />
   );

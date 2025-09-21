@@ -2,7 +2,7 @@ import React from 'react';
 import { expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { Link } from './Link';
+import { Link } from './Link.quanta';
 
 expect.extend(toHaveNoViolations);
 
@@ -19,7 +19,7 @@ it('Link basic a11y test', async () => {
 
 it('Link asButton a11y test', async () => {
   const { container } = render(
-    <Link className="react-aria-Button" href="/">
+    <Link asButton variant="primary" accent href="/">
       The link as button
     </Link>,
   );

@@ -30,3 +30,14 @@ export const Secondary: Story = {
     target: '_blank',
   },
 };
+
+export const AsButton: Story = {
+  render: (args) => <Link {...args}>The missing link</Link>,
+  args: {
+    asButton: true,
+    variant: 'primary',
+    accent: true,
+    href: 'https://www.imdb.com/title/tt6348138/',
+    target: '_blank',
+  },
+};
