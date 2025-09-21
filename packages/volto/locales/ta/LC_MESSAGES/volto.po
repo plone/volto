@@ -4940,6 +4940,11 @@ msgstr "குறிப்புகள்"
 msgid "refers to"
 msgstr "குறிக்கிறது"
 
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
+msgstr ""
+
 #. Default: "results"
 #: components/theme/Search/Search
 msgid "results found"
