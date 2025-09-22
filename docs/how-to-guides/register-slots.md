@@ -10,7 +10,7 @@ myst:
 # Manage slot component registration
 
 This chapter describes how to manage slot component registration using `@plone/registry` in Seven.
-It includes how to register, get, reorder, and unregister slot components. 
+It includes how to register, get, reorder, and unregister slot components.
 
 
 ## Registration example
@@ -145,15 +145,6 @@ config.reorderSlotComponent({
 ```
 
 You can even delete the rendering of a registered slot component using the {ref}`slots-unregisterSlotComponent-label` API.
-
-
-## Default slots
-
-Volto comes with the following default slots.
-
--   `aboveContent`
--   `belowContent`
-
 
 (configuration-registry-for-slot-components)=
 
