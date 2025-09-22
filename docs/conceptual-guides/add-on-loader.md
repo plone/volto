@@ -13,13 +13,15 @@ Add-ons that are compatible with `@plone/registry` can load configuration into t
 `@plone/registry` reads the value of the `main` key entry point in the add-on {file}`package.json`, which specifies the source of the loader.
 This should be a JavaScript or TypeScript file, such as {file}`index.ts` or {file}`index.js`, placed somewhere in your add-on, conventionally at its root.
 
+The following code example when placed in {file}`package.json` demonstrates the foregoing concept.
+
 ```json
 {
   "main": "index.ts",
 }
 ```
 
-This file should contain a default export with a function with this signature:
+Next, the file {file}`index.ts` should contain a default export with a function with the following signature.
 
 ```ts
 import type { ConfigType } from '@plone/registry';
@@ -32,14 +34,14 @@ export default function loadConfig(config: ConfigType) {
 
 This loader is a JavaScript file and it is placed in the root of your application.
 By default, it's called {file}`registry.loader.js`.
+`@plone/registry` will create or overwrite {file}`registry.loader.js` in the root of your app whenever you run the bundler.
 
 ```{important}
-This file is generated and maintained by `@plone/registry`.
-You should neither modify it nor add your own styles in here.
+The file {file}`registry.loader.js` is generated and maintained by `@plone/registry`.
+Don't modify it or add your own styles in it.
 It will be overwritten in the next bundler run.
 ```
 
-This will create {file}`registry.loader.js` in the root of your app.
 
 ## Provide optional add-on configurations
 
