@@ -12,12 +12,12 @@ myst:
 Add-ons that are compatible with the `@plone/registry` may declare styles that should be loaded by the app.
 Currently the loader loads styles for both the end user interface (public UI) part, which displays content to both authenticated and anonymous users, and the content management system user interface (CMS UI) part of the app.
 
-## Public UI Styles
+## Public UI styles
 
 To load public UI styles, create a file {file}`styles/main.css` at the root of your add-on package to serve as the entry point.
 This file is a `.css` file containing the styles that you want your app to load for the public UI.
 
-## CMS UI Styles
+## CMS UI styles
 
 Similar to the public UI, you can create a file {file}`styles/cmsui.css` at the root of your add-on package to serve as the entry point for the CMS UI styles.
 This file is also a CSS file containing the styles that you want your app to load for the CMS UI.
