@@ -55,7 +55,7 @@ See also [Monorepo structure](https://6.docs.plone.org/volto/contributing/develo
 ## Storybook for the frontend's modular architecture
 
 The frontend's modular architecture in Plone is documented with Storybook.
-You can find it at https://plone-storybook.readthedocs.io/latest/.
+You can find it at https://plone-storybook.readthedocs.io/?path=/docs/introduction--docs.
 
 
 ## Create a Seven frontend-only project
