@@ -1,39 +1,23 @@
 ---
 myst:
   html_meta:
-    "description": "Slots are insertion points in the Volto rendering tree structure."
-    "property=og:description": "Slots are insertion points in the Volto rendering tree structure."
-    "property=og:title": "Slots"
-    "keywords": "Volto, Plone, frontend, React, configuration, slots, viewlets"
+    "description": "How to manage slots using @plone/registry in Seven."
+    "property=og:description": "How to manage slots using @plone/registry in Seven."
+    "property=og:title": "How to manage Slots"
+    "keywords": "Seven, Plone, frontend, React, manage, configuration, slots"
 ---
 
-# Slots
+# Manage slot component registration
 
-Slots provide a way for Volto add-ons to insert their own components at predefined locations in the rendered page.
-
-```{note}
-This concept is inspired by the Plone Classic UI {doc}`plone:classic-ui/viewlets`.
-```
+This chapter describes how to manage slot component registration using `@plone/registry` in Seven.
+It includes how to register, get, reorder, and unregister slot components.
 
 
-## Anatomy
+## Registration example
 
-Slots have a name, and they contain a list of named slot components.
+This section walks you through examples to illustrate how to manage slot components according to your expectations.
 
-Volto renders slots using the `SlotRenderer` component.
-You can add slot insertion points in your code, as shown in the following example.
-
-```ts
-<SlotRenderer name="aboveContent" content={content} />
-```
-
-Slot components are registered in the {ref}`configuration registry using a specific API for slots <configuration-registry-for-slot-components>`.
-
-The rendering of a slot component is controlled by the presence or absence of a list of conditions called {term}`predicates`.
-
-You can register multiple slot components with the same name under the same slot, as long as they have different predicates or components.
-
-To illustrate how slots are structured and work, let's register a slot component, where the component is `PageHeader`, and the predicate matches a route that begins with `/de/about`.
+Begin by registering a slot component, where the component is `PageHeader`, and the predicate matches a route that begins with `/de/about`.
 
 ```ts
 config.registerSlotComponent({
@@ -55,7 +39,7 @@ Slot (`name`=`aboveContent`)
     └── predicate of "only appear under `/de/about`"
 ```
 
-Next, let's register another slot component in the same slot, with the same name and component, but with a different predicate where the content type matches either `Document` or `News Item`.
+Next, register another slot component in the same slot, with the same name and component, but with a different predicate where the content type matches either `Document` or `News Item`.
 
 ```ts
 config.registerSlotComponent({
@@ -82,7 +66,7 @@ Slot (`name`=`aboveContent`)
     └── predicate of "only appear when the content type is either a Document or News Item"
 ```
 
-Finally, let's register another slot component in the same slot, with the same name, but with a different component and without a predicate.
+Finally, register another slot component in the same slot, with the same name, but with a different component and without a predicate.
 
 ```ts
 config.registerSlotComponent({
@@ -145,7 +129,7 @@ config.registerSlotComponent({
 });
 ```
 
-Thus the order of evaluation of the named slot components would be `header`, `subheader`.
+Thus, the evaluated order of the named slot components would be `header`, then `subheader`.
 As each group of slot components is evaluated, their predicates will determine what is rendered in their position.
 
 You can change the order of the named slot components for a different slot using the {ref}`slots-reorderSlotComponent-label` API.
@@ -161,15 +145,6 @@ config.reorderSlotComponent({
 ```
 
 You can even delete the rendering of a registered slot component using the {ref}`slots-unregisterSlotComponent-label` API.
-
-
-## Default slots
-
-Volto comes with the following default slots.
-
--   `aboveContent`
--   `belowContent`
-
 
 (configuration-registry-for-slot-components)=
 
@@ -206,7 +181,7 @@ A slot component must have the following parameters.
 :   The component that we want to render in the slot.
 
 `predicates`
-:   A list of functions that return a function with this signature.
+:   A list of functions that return a function with the following signature.
 
     ```ts
     export type SlotPredicate = (args: any) => boolean;
@@ -266,6 +241,7 @@ It supports the `Add` form and can detect which content type you add.
 You can create your own predicate helpers to determine whether your slot component should render.
 The `SlotRenderer` will pass down the current `content`, the `location` object, and the current `navRoot` object into your custom predicate helper.
 You can also tailor your own `SlotRenderer`s, or shadow the original `SlotRenderer`, to satisfy your requirements.
+
 ```{versionchanged} 18.0.0-alpha.33
 Now `config.getSlots` in the configuration registry takes the argument `location` instead of `pathname`.
 ```
@@ -277,7 +253,8 @@ Now `config.getSlots` in the configuration registry takes the argument `location
 `getSlot` returns the components to be rendered for the given named slot.
 You should use this method while building you own slot renderer or customizing the existing `SlotRenderer`.
 You can use the implementation of `SlotRenderer` as a template.
-This is the signature:
+
+The following is its signature.
 
 ```ts
 config.getSlot(name: string, args: GetSlotArgs): GetSlotReturn
@@ -302,11 +279,14 @@ It has the following parameters.
 
 `getSlotComponents` returns the list of named slot components registered in a given slot.
 This is useful to debug what is registered and in what order, informing you whether you need to change their order.
-This is the signature:
+
+The following is its signature.
 
 ```ts
 config.getSlotComponents(slot: string): string[]
 ```
+
+It has the following parameter.
 
 `slot`
 :   String.
@@ -319,11 +299,14 @@ config.getSlotComponents(slot: string): string[]
 ### `getSlotComponent`
 
 `getSlotComponent` returns the registered named component's data for the given slot component name.
-This is the signature:
+
+The following is its signature.
 
 ```ts
 config.getSlotComponent(slot: string, name: string): SlotComponent[]
 ```
+
+It has the following parameters.
 
 `slot`
 :   String.
@@ -347,7 +330,7 @@ Given a `slot` and the `name` of a slot component, you must either specify the d
 The available actions are `"after"`, `"before"`, `"first"`, and `"last"`.
 `"first"` and `"last"` do not accept a `target`.
 
-This is the signature:
+The following is its signature.
 
 ```ts
 config.reorderSlotComponent({ slot, name, position, action, target }: {
@@ -358,6 +341,8 @@ config.reorderSlotComponent({ slot, name, position, action, target }: {
   target?: string | undefined;
 }): void
 ```
+
+It has the following parameters.
 
 `slot`
 :   String.
@@ -397,11 +382,14 @@ config.reorderSlotComponent({ slot, name, position, action, target }: {
 ### `unregisterSlotComponent`
 
 `unregisterSlotComponent` removes a registration for a named slot component, given its registration position.
-This is the signature:
+
+The following is its signature.
 
 ```ts
 config.unRegisterSlotComponent(slot: string, name: string, position: number): void
 ```
+
+It has the following parameters.
 
 `slot`
 :   String.
