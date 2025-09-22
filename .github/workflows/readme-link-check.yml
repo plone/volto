@@ -20,8 +20,6 @@ jobs:
           --timeout 5
           --max-retries 2
           --exclude https://www.npmjs.com/
-          --exclude https://www.npmjs.com/search*
-          --exclude https://www.npmjs.com/package/@plone/*
           --exclude http://localhost:8080/Plone
           --exclude http://localhost:8080
           --exclude http://localhost:3000
