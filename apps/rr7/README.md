@@ -1,6 +1,6 @@
 # Plone on React Router 7
 
-This is a proof of concept of a [React Router](https://reactrouter.com/dev/docs) app, using the `@plone/*` libraries.
+This is a proof of concept of a [React Router](https://reactrouter.com/home) app, using the `@plone/*` libraries.
 This is intended to serve as both a playground for the development of both packages and as a demo of Plone using Remix.
 
 > [!WARNING]
