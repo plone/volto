@@ -1,6 +1,6 @@
 # Check links in all README.mds with Lychee
 # https://github.com/lycheeverse/lychee-action
-name: Check README.md links
+name: README.md link checker
 
 on:
   push:
