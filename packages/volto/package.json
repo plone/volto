@@ -40,7 +40,6 @@
     "start:coresandbox": "make build-deps && ADDONS=coresandbox razzle start",
     "build": "make build-deps && razzle build --noninteractive",
     "build:types": "tsc --project tsconfig.declarations.json",
-    "vitest": "vitest",
     "coverage": "vitest run --coverage",
     "test": "vitest",
     "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu vitest",
