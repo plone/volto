@@ -15,9 +15,9 @@ Slots provide a way for Seven add-ons to insert their own components at predefin
 This concept is inspired by the Plone Classic UI {doc}`plone:classic-ui/viewlets`.
 ```
 
-In Seven, all structural elements (Header, Content Area, Footer, etc) are slots.
-Also significant parts of the website (Logo, tools, sections, etc) are also slots.
-You can add, modify, reorder or remove any component assigned to a slot programmatically using the configuration registry API.
+In Seven, all structural elements—such as Header, Content Area, and Footer—are slots.
+Also, significant parts of the website—such as Logo, tools, and sections—are slots, too.
+You can add, modify, reorder, or remove any component assigned to a slot programmatically using the configuration registry API.
 
 ## Anatomy
 
