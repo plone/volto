@@ -92,9 +92,18 @@ The add-on packages are:
 
 ## Development utility packages
 
-These packages contain tools that help you develop and build Seven projects.
-They are not bundled and are mainly for use alongside Seven core or projects.
+These packages are used today for develop Seven core.
 
-Others are used by project tooling and are organized for convenience:
-- `tooling`
-- `tsconfig`
+### `@plone/tooling`
+
+It centralizes the configuration and dependencies for tooling around the Plone frontend modular architecture.
+
+It provides shared Storybook, Cypress, ESLint, and other configurations.
+
+They are used in Seven projects and add-ons as well, so they can share the same setup and tooling as Seven core.
+
+### `tsconfig`
+
+The `tsconfig` package provides a base TypeScript configuration for all Plone packages.
+It helps ensure consistency in TypeScript settings across the codebase.
+Nowadays it's used by all packages in the Seven monorepo, but it's not used in Seven projects or add-ons.
