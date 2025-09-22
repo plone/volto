@@ -4,7 +4,7 @@ myst:
     "description": "An explanation of the configuration registry in @plone/registry"
     "property=og:description": "An explanation of the configuration registry in @plone/registry"
     "property=og:title": "Configuration registry"
-    "keywords": "@plone/registry, registry, configuration"
+    "keywords": "Seven, @plone/registry, registry, configuration"
 ---
 
 # Configuration registry

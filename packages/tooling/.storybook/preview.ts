@@ -1,5 +1,5 @@
 import './storybook-base.css';
-import '../../theming/styles/main.css';
+import '../../theming/styles/theme.css';
 
 export const parameters = {
   backgrounds: {

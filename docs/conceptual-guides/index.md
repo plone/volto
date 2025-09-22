@@ -15,7 +15,10 @@ This section of the documentation contains conceptual guides for various aspects
 :maxdepth: 2
 
 modular-arch-packages
-add-ons
+add-on-registry
+add-on-loader
+add-on-styles-loader
+configuration-registry
 routing
-shadowing
+slots
 ```
