@@ -9,7 +9,7 @@ myst:
 
 # Add-ons configuration loader
 
-Add-ons that are compatible with `@plone/registry` can load configuration into the configuration registry.
+The add-ons configuration loader is a mechanism provided by `@plone/registry` to allow add-ons to customize or extend the default configuration of Seven.
 `@plone/registry` reads the value of the `main` key entry point in the add-on {file}`package.json`, which specifies the source of the loader.
 This should be a JavaScript or TypeScript file, such as {file}`index.ts` or {file}`index.js`, placed somewhere in your add-on, conventionally at its root.
 
