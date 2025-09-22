@@ -1,6 +1,6 @@
 import { expect, describe, it, vi, afterEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { createRoutesStub, unstable_RouterContextProvider } from 'react-router';
+import { createRoutesStub, RouterContextProvider } from 'react-router';
 import config from '@plone/registry';
 import { Layout, ErrorBoundary, loader } from './root';
 import { renderWithI18n } from '../tests/testHelpers';
@@ -54,7 +54,7 @@ describe('loader', () => {
       }),
     });
     const request = new Request('http://example.com');
-    const context = new unstable_RouterContextProvider();
+    const context = new RouterContextProvider();
 
     const data = await loader({ request, params: {}, context });
 
@@ -81,7 +81,7 @@ describe('loader', () => {
       }),
     });
     const request = new Request('http://example.com/test-content');
-    const context = new unstable_RouterContextProvider();
+    const context = new RouterContextProvider();
 
     const data = await loader({
       request,
@@ -114,7 +114,7 @@ describe('loader', () => {
       }),
     });
     const request = new Request('http://example.com');
-    const context = new unstable_RouterContextProvider();
+    const context = new RouterContextProvider();
 
     try {
       await loader({ request, params: {}, context });
@@ -140,7 +140,7 @@ describe('loader', () => {
       }),
     });
     const request = new Request('http://example.com');
-    const context = new unstable_RouterContextProvider();
+    const context = new RouterContextProvider();
 
     try {
       await loader({ request, params: {}, context });

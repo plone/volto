@@ -52,7 +52,6 @@
     }
   },
   "dependencies": {
-    "@plone/blocks": "workspace:*",
     "@plone/components": "workspace:*",
     "@plone/helpers": "workspace:*",
     "@plone/registry": "workspace:*",
@@ -64,32 +63,26 @@
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
-    "@storybook/addon-essentials": "^8.6.12",
-    "@storybook/addon-interactions": "^8.6.12",
-    "@storybook/addon-links": "^8.6.12",
-    "@storybook/addon-mdx-gfm": "^8.6.12",
-    "@storybook/blocks": "^8.6.12",
-    "@storybook/manager-api": "^8.6.12",
-    "@storybook/react": "^8.6.12",
-    "@storybook/react-vite": "^8.6.12",
-    "@storybook/theming": "^8.6.12",
+    "@storybook/addon-links": "^9.1.7",
+    "@storybook/react-vite": "^9.1.7",
     "@tailwindcss/vite": "catalog:",
     "@testing-library/jest-dom": "6.4.2",
-    "@testing-library/react": "14.2.1",
+    "@testing-library/react": "catalog:",
     "@types/jest-axe": "^3.5.7",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
-    "eslint-plugin-storybook": "^0.11.2",
+    "eslint-plugin-storybook": "^9.1.7",
     "jest-axe": "^8.0.0",
     "release-it": "catalog:",
-    "storybook": "^8.6.12",
+    "storybook": "^9.1.7",
     "tsconfig": "workspace:*",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "catalog:",
-    "vitest-axe": "^0.1.0"
+    "vitest-axe": "^0.1.0",
+    "@storybook/addon-docs": "^9.1.7"
   }
 }

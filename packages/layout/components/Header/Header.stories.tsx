@@ -1,6 +1,6 @@
 import Header from './Header';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Header',
@@ -45,6 +45,70 @@ export const Default: Story = {
         },
         site: {
           'plone.site_title': 'Plone site',
+        },
+      },
+    },
+  },
+  parameters: {
+    router: {
+      initialEntries: ['/'],
+      path: '/',
+      parentId: 'root',
+      parentLoaderData: {
+        site: {
+          features: { multilingual: false },
+        },
+      },
+    },
+  },
+};
+
+export const WithLanguageSwitcher: Story = {
+  render: (args: any) => <Header {...args} />,
+  args: {
+    content: {
+      '@id': 'http://localhost:3000/Plone',
+      title: 'Plone site',
+      description: 'Welcome to Plone',
+      items: [],
+      '@components': {
+        navigation: {
+          items: [
+            {
+              '@id': 'http://localhost:3000/Plone',
+              title: 'Home',
+            },
+            {
+              '@id': 'http://localhost:3000/Plone/news',
+              title: 'News',
+            },
+            {
+              '@id': 'http://localhost:3000/Plone/about',
+              title: 'About',
+            },
+          ],
+        },
+        navroot: {
+          navroot: {
+            '@id': 'http://localhost:3000/Plone',
+            title: 'Plone site',
+          },
+        },
+        site: {
+          'plone.site_title': 'Plone site',
+        },
+      },
+    },
+  },
+  parameters: {
+    router: {
+      initialEntries: ['/'],
+      path: '/',
+      parentId: 'root',
+      parentLoaderData: {
+        site: {
+          features: { multilingual: true },
+          'plone.available_languages': ['en', 'de', 'fr'],
         },
       },
     },
