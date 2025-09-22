@@ -17,6 +17,98 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.5 (2025-09-14)
+
+### Feature
+
+- Make Jest maxWorkers configurable via MAX_WORKERS env var. @wesleybl [#7251](https://github.com/plone/volto/issues/7251)
+
+### Bugfix
+
+- Fix ImageWidget to support DX fields and Relation Choice images (preview_image_link). @sneridagh [#7099](https://github.com/plone/volto/issues/7099)
+- Fix `InlineForm` to always pass the error prop as an array, preventing prop type errors in widgets that use `InlineForm`. @alexandreIFB [#7267](https://github.com/plone/volto/issues/7267)
+- Search block: fix 'Clear filters' overriding the base query. @mauritsvanrees [#7271](https://github.com/plone/volto/issues/7271)
+- Teaser block: Clarify "Refresh source content" button by changing the default text to "Reset to target". @davisagli [#7329](https://github.com/plone/volto/issues/7329)
+- Fix German translation of "Order" from "Reihung" to "Reihenfolge" @iRohitSingh [#7331](https://github.com/plone/volto/issues/7331)
+
+### Internal
+
+- Remove vitest dependencies from root to prevent confusion. @wesleybl [#7274](https://github.com/plone/volto/issues/7274)
+- Remove MEDICE website entry from `Volto in production`. @wesleybl [#7283](https://github.com/plone/volto/issues/7283)
+- Fix random error in Listing Block tests. @wesleybl [#7286](https://github.com/plone/volto/issues/7286)
+- Fix test storeProtectLoadUtils.test.js > storeProtectLoadUtils > loadProtector store > pass when not counting. @wesleybl [#7287](https://github.com/plone/volto/issues/7287)
+- Fixed a random failure in Cypress tests when using `getSlateEditorAndType` or `getSlateEditorSelectorAndType`. @wesleybl [#7290](https://github.com/plone/volto/issues/7290)
+- Update package versions in pnpm-lock.yaml. @wesleybl [#7291](https://github.com/plone/volto/issues/7291)
+- Fix random failure in 'renders a file widget component with value' test of RegistryImageWidget. @wesleybl [#7292](https://github.com/plone/volto/issues/7292)
+- Fixes random error in Listing Block tests 2. @wesleybl [#7293](https://github.com/plone/volto/issues/7293)
+- Fixed random failure in Cypress 'Index Text Block' test. @wesleybl [#7304](https://github.com/plone/volto/issues/7304)
+- 2021.ploneconf.org is no longer a Volto site, but just a redirect to YouTube. Also reverts #6627 and replaces code examples with `2022.ploneconf.org`. @stevepiercy [#7314](https://github.com/plone/volto/issues/7314)
+
+## 19.0.0-alpha.4 (2025-08-25)
+
+### Breaking
+
+- Enable the `showRelatedItems` by default. @davisagli [#6549](https://github.com/plone/volto/issues/6549)
+
+### Feature
+
+- Add support for single selection in SelectAutoComplete widget. @iFlameing [#7270](https://github.com/plone/volto/issues/7270)
+
+### Bugfix
+
+- Contents view: Label 'None' for deselecting needs to be different from 'None' of a not available value in the table. @ksuess [#7233](https://github.com/plone/volto/issues/7233)
+- Fixed corner case when coming from SSR in edit route, where the teasers where overwriten with bogus URLs after save if INTERNAL_API_PATH is set. @sneridagh [#7238](https://github.com/plone/volto/issues/7238)
+- UniversalLink: regression, pass on onClick to Link component. @fredvd [#7240](https://github.com/plone/volto/issues/7240)
+- Hide the `webstats_head_js` field in the site control panel form @erral [#7244](https://github.com/plone/volto/issues/7244)
+- Fix corner case in devproxy when pathname is null. @sneridagh [#7276](https://github.com/plone/volto/issues/7276)
+
+### Internal
+
+- Update eslint-config-prettier past malware versions to "^9.1.2". @kittauri [#7254](https://github.com/plone/volto/issues/7254)
+- Update @testing-library/react to 14.3.1. @wesleybl [#7260](https://github.com/plone/volto/issues/7260)
+- Test with Plone 6.1.2. @davisagli 
+
+### Documentation
+
+- Fix reference for the widget named `toggle_widget` for boolean fields in a schema. @ksuess [#7261](https://github.com/plone/volto/issues/7261)
+
+## 19.0.0-alpha.3 (2025-06-25)
+
+### Breaking
+
+- The default language and list of available languages are now loaded from the backend API.
+  The default language can no longer be set using the `SITE_DEFAULT_LANGUAGE` environment variable.
+  The `supportedLanguages` setting remains but is only used to limit which locales are included in the build.
+  @davisagli [#7125](https://github.com/plone/volto/issues/7125)
+- Renamed literal "Head title" to "Kicker" in Teaser block. @sneridagh [#7191](https://github.com/plone/volto/issues/7191)
+
+### Feature
+
+- Complete missing German translations. @ksuess [#6005](https://github.com/plone/volto/issues/6005)
+- Use translated schema title in Helmet for `Add` component page. @alexandreIFB [#7048](https://github.com/plone/volto/issues/7048)
+- Improved the component `ContentsDeleteModal` by displaying a detailed list of selected items with clickable links for better clarity and usability. @alexandreIFB [#7054](https://github.com/plone/volto/issues/7054)
+- Show link integrity breaches in contents delete modal. @ksuess [#7100](https://github.com/plone/volto/issues/7100)
+- Added the `.error` class to blocks with errors, highlighting them with a red border in edit mode. @alexandreIFB [#7138](https://github.com/plone/volto/issues/7138)
+- Synchronizes versions of Volto dependencies with other packages in the monorepo. @wesleybl [#7184](https://github.com/plone/volto/issues/7184)
+- In the contents view, add a pill to indicate working copies.
+  This only works with `plone.app.iterate` >= 6.2.0. @davisagli 
+
+### Bugfix
+
+- fix(fetchContent): correctly handle undefined blocksType in async fetchContent @nileshgulia1 [#7096](https://github.com/plone/volto/issues/7096)
+- Make sure the server-side rendered content is still shown if there is an error while hydrating a page that did not have a server-side error. @davisagli [#7132](https://github.com/plone/volto/issues/7132)
+- Added missing languages in `packages/volto/src/helpers/LanguageMap/LanguageMap.js`. @JeffersonBledsoe [#7146](https://github.com/plone/volto/issues/7146)
+- Add default if no filename is supplied in FileView @kittauri [#7174](https://github.com/plone/volto/issues/7174)
+
+### Internal
+
+- Remove trailing ` ` space character in a script in `package.json`. @silviubogan [#7166](https://github.com/plone/volto/issues/7166)
+
+### Documentation
+
+- Updated "Configuring a new block". @ksuess [#3272](https://github.com/plone/volto/issues/3272)
+- Create a custom widget @ksuess, @silviubogan [#7075](https://github.com/plone/volto/issues/7075)
+
 ## 19.0.0-alpha.2 (2025-05-20)
 
 ### Feature
