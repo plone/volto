@@ -27,6 +27,11 @@ Add-on packages (level 3)
 Development utility packages
 :   Tools to help with building and developing.
 
+Level 1 and 2 packages are published as traditional bundles that work in both CommonJS and ESM environments.
+They are meant to be consumed as libraries, so your app bundler can include them without any extra build step.
+The distinction between levels 1 and 2 preserves the dependency graph, keeping core packages independent from the rest.
+Level 3 packages ship as source code, which means they do not need to be transpiled before use.
+Level 1 and 2 packages must not depend on level 3 packages.
 
 ## `@plone/types`
 
@@ -38,7 +43,6 @@ This package contains `.d.ts` typing definitions, curated by hand.
 It doesn't need to be built or bundled.
 It's published as-is, so you can import the type info wherever you need it.
 
-
 ## Core packages (level 1)
 
 These are the essential building blocks of the frontend.
@@ -49,9 +53,9 @@ Core packages are published as traditional transpiled bundles.
 Their bundles work in both CommonJS and ECMAScript Module (ESM) environments.
 
 The core packages are:
-- `@plone/client`
-- `@plone/components`
-- `@plone/registry`
+- `@plone/client` - JS API client for Plone backend.
+- `@plone/components` - Unified React components for Plone.
+- `@plone/registry` - Configuration registry.
 
 
 ## Utilities packages (level 2)
@@ -61,9 +65,9 @@ They can depend on core packages and other utility packages.
 They are also published as traditional bundles that work in CommonJS and ESM environments.
 
 The utility packages are:
-- `@plone/providers`
-- `@plone/helpers`
-- `@plone/react-router`
+- `@plone/providers` - Data flow providers.
+- `@plone/helpers` - Utility functions and helpers.
+- `@plone/react-router` - React Router 7 integration.
 
 
 ## Add-on packages (level 3)
@@ -81,13 +85,13 @@ This setup allows bundlers and TypeScript to resolve them directly without extra
 They can be loaded like any other add-on and include an installable default export for configuration.
 
 The add-on packages are:
-- `@plone/blocks` - core blocks.
-- `@plone/layout` - structural page elements and layout helper components.
-- `@plone/theming` - base theming styles, baseline CSS and Tailwind
-- `@plone/publicui` - public-facing UI components.
+- `@plone/blocks` - Core blocks.
+- `@plone/layout` - Structural page elements and layout helper components.
+- `@plone/theming` - Base theming styles, baseline CSS and Tailwind.
+- `@plone/publicui` - Public-facing UI components.
 - `@plone/cmsui` - CMSUI components.
-- `@plone/plate` - rich text editor integration and plugins.
-- `@plone/contents` - browse and manage content.
+- `@plone/plate` - Rich text editor integration and plugins.
+- `@plone/contents` - Browse and manage content.
 
 ## Development utility packages
 
