@@ -1,25 +1,31 @@
 ---
 myst:
   html_meta:
-    "description": "Plone's frontend modular architecture packages."
-    "property=og:description": "Plone's frontend modular architecture packages."
+    "description": "Plone's frontend modular architecture packages"
+    "property=og:description": "Plone's frontend modular architecture packages"
     "property=og:title": "Plone's frontend modular architecture packages"
-    "keywords": "Plone, modular architecture, packages, frontend, user interface"
+    "keywords": "Plone, modular architecture, packages, frontend, user interface, conceptual guide"
 ---
 
 # Plone's frontend modular architecture packages
 
-This document gives you a quick overview of the Plone frontend’s modular architecture.
-It explains how the different packages are organized and what role they play in the system.
+This document explains how packages are organized, and what role they play in the system, within Plone's frontend modular architecture.
 
 These packages are expected to be used and become part of Plone 7.
 
-We group these packages into a few categories to make it easier to understand their purpose:
+These packages are grouped into a few categories to make it easier to understand their purpose.
 
-- **Core packages** — the foundation pieces everyone builds on.
-- **Utilities packages** — helpful tools and helpers used by add-on packages.
-- **Add-on packages** — feature packages that add UI elements and functionality.
-- **Development utility packages** — tools to help with building and developing.
+Core packages (level 1)
+:   The foundation pieces everyone builds on.
+
+Utilities packages (level 2)
+:   Helpful tools and helpers used by add-on packages.
+
+Add-on packages (level 3)
+:   Feature packages that add UI elements and functionality.
+
+Development utility packages
+:   Tools to help with building and developing.
 
 
 ## `@plone/types`
@@ -29,17 +35,17 @@ It contains TypeScript type definitions for Plone.
 It's considered a core package, and it's the only package that the other core packages can rely on as a `devDependency` in your project configuration.
 
 This package contains `.d.ts` typing definitions, curated by hand.
-It doesn’t need to be built or bundled.
-It’s published as-is so you can import the type info wherever you need it.
+It doesn't need to be built or bundled.
+It's published as-is, so you can import the type info wherever you need it.
 
 
 ## Core packages (level 1)
 
 These are the essential building blocks of the frontend.
 They provide the main features and APIs that other packages rely on.
-They don’t depend on any other `@plone/*` packages except `@plone/types`.
+They don't depend on any other `@plone/*` packages except `@plone/types`.
 
-Core packages are published as traditional bundles (transpiled).
+Core packages are published as traditional transpiled bundles.
 Their bundles work in both CommonJS and ECMAScript Module (ESM) environments.
 
 The core packages are:
@@ -64,11 +70,12 @@ The utility packages are:
 
 Add-ons add extra features or UI elements to your project.
 They can depend on any other package.
-Unlike core and utility packages, add-ons are distributed as source code, not bundled.
 
-This means they don’t need to be transpiled before use.
+Unlike core and utility packages, add-ons are distributed as source code, not bundled.
+This means they don't need to be transpiled before use.
+
 They provide a default configuration registry loader as their main export.
-Also, unlike Volto add-ons, their code is _not_ placed inside a `src` folder.
+Also, unlike Volto add-ons, their code is _not_ placed inside a {file}`src` folder.
 
 This setup allows bundlers and TypeScript to resolve them directly without extra steps.
 They can be loaded like any other add-on and include an installable default export for configuration.
