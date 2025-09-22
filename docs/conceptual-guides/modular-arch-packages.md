@@ -81,14 +81,13 @@ This setup allows bundlers and TypeScript to resolve them directly without extra
 They can be loaded like any other add-on and include an installable default export for configuration.
 
 The add-on packages are:
-- `@plone/blocks`
-- `@plone/layout`
-- `@plone/theming`
-- `@plone/publicui`
-- `@plone/cmsui`
-- `@plone/plate`
-- `@plone/contents`
-
+- `@plone/blocks` - core blocks.
+- `@plone/layout` - structural page elements and layout helper components.
+- `@plone/theming` - base theming styles, baseline CSS and Tailwind
+- `@plone/publicui` - public-facing UI components.
+- `@plone/cmsui` - CMSUI components.
+- `@plone/plate` - rich text editor integration and plugins.
+- `@plone/contents` - browse and manage content.
 
 ## Development utility packages
 
