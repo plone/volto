@@ -43,6 +43,12 @@ config.registerUtility({
 However, if you register two utilities under the same `name`, then the latter will override the former.
 Thus, you can override existing utilities in your add-ons.
 
+```{note}
+This is a feature.
+When starting your app, there is no warning emitted for overrides.
+It's assumed that you intend to use the override behavior.
+```
+
 ```js
 config.registerUtility({
   name: 'url',
