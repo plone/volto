@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-09-11 16:53+0000\n"
+"PO-Revision-Date: 2025-09-22 18:01+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/plone/volto-18/eu/>\n"
 "Language: eu\n"
@@ -1144,7 +1144,7 @@ msgstr "{license} lizentziapean banatuta."
 #. Default: "Add border to inner columns"
 #: config/Blocks
 msgid "Divide each row into separate cells"
-msgstr "Errenkada bakoitza zeldatan banatu"
+msgstr "Zatitu lerro bakoitza zeldatan"
 
 #. Default: "Do you really want to delete the group {groupname}?"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
@@ -4944,7 +4944,7 @@ msgstr "honi egiten dio erreferentzia"
 #. Default: "Result count"
 #: components/manage/Contents/Contents
 msgid "resultCount"
-msgstr ""
+msgstr "Emaitza kopurua"
 
 #. Default: "results"
 #: components/theme/Search/Search
