@@ -22,7 +22,12 @@ We follow the mantra, "If it works, don't change it."
 
 This document highlights the differences and additions compared to Volto conventions.
 
-Separate builds for public and CMSUI
+## Separate builds for public and CMSUI
+
+We are aiming for the possibility of having two separate builds: one for the public theme and another for the CMS UI.
+Thus, we need to ensure that the codebase can support this separation and have this in mind when developing new features.
+This will impose some constraints, such as avoiding the use of Tailwind CSS classes in structural components, since the public theme might not use Tailwind CSS.
+Also, the public UI cannot rely on any CMSUI-specific styles or components.
 
 ## Storybook
 
