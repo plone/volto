@@ -26,4 +26,3 @@ jobs:
           --exclude https://my-server-DNS-name.tld/api
           --exclude 2021.ploneconf.org
           '**/README.md'
-          'PACKAGES.md'
