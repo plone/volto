@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
+    "@storybook/addon-docs": "^9.1.7",
     "@storybook/addon-links": "^9.1.7",
     "@storybook/react-vite": "^9.1.7",
     "@types/react": "catalog:",
@@ -41,7 +42,6 @@
     "typescript-eslint": "^8.41.0",
     "vite": "catalog:",
     "vite-tsconfig-paths": "^5.1.4",
-    "wait-on": "^8.0.0",
-    "@storybook/addon-docs": "^9.1.7"
+    "wait-on": "^8.0.0"
   }
 }
