@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import { MessageSquareTextIcon } from 'lucide-react';
 import { useEditorRef } from 'platejs/react';
 

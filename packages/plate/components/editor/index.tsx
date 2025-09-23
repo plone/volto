@@ -1,4 +1,3 @@
-import React from 'react';
 import type { AnyPluginConfig, SlateEditor, TElement, Value } from 'platejs';
 import {
   Plate,

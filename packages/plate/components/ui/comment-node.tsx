@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import type { TCommentText } from 'platejs';
 import type { PlateLeafProps } from 'platejs/react';
 

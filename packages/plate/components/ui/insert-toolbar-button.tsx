@@ -3,7 +3,6 @@ import * as React from 'react';
 import type { DropdownMenuProps } from '@radix-ui/react-dropdown-menu';
 
 import {
-  CalendarIcon,
   ChevronRightIcon,
   Columns3Icon,
   FileCodeIcon,
@@ -19,7 +18,6 @@ import {
   PilcrowIcon,
   PlusIcon,
   QuoteIcon,
-  RadicalIcon,
   SquareIcon,
   TableIcon,
   TableOfContentsIcon,

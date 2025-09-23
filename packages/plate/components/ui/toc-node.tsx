@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import type { PlateElementProps } from 'platejs/react';
 
 import { useTocElement, useTocElementState } from '@platejs/toc/react';

@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import type { TInlineSuggestionData, TLinkElement } from 'platejs';
 import type { PlateElementProps } from 'platejs/react';
 

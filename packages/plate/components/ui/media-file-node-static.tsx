@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import type { SlateElementProps, TFileElement } from 'platejs';
 
 import { FileUp } from 'lucide-react';

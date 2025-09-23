@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import type { SlateEditor, SlateElementProps, TElement } from 'platejs';
 
 import { type Heading, BaseTocPlugin, isHeading } from '@platejs/toc';

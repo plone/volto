@@ -4,7 +4,6 @@ import type { PlateEditor, PlateElementProps } from 'platejs/react';
 
 import { AIChatPlugin } from '@platejs/ai/react';
 import {
-  CalendarIcon,
   ChevronRightIcon,
   Code2,
   Columns3Icon,
@@ -16,7 +15,6 @@ import {
   ListOrdered,
   PilcrowIcon,
   Quote,
-  RadicalIcon,
   SparklesIcon,
   Square,
   Table,

@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import type { SlateElementProps, TColumnElement } from 'platejs';
 
 import { SlateElement } from 'platejs';

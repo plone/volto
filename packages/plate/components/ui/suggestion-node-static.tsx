@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import type { SlateLeafProps, TSuggestionText } from 'platejs';
 
 import { BaseSuggestionPlugin } from '@platejs/suggestion';

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 
 import type { TMediaEmbedElement } from 'platejs';

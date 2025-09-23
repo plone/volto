@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import {
   BoldIcon,
   Code2Icon,

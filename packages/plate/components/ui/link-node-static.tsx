@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import type { SlateElementProps, TLinkElement } from 'platejs';
 
 import { getLinkAttributes } from '@platejs/link';
