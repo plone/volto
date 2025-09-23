@@ -1,17 +1,12 @@
 import type { ConfigType } from '@plone/registry';
-import { EditorKit } from '@plone/plate/components/editor/editor-kit';
-import { BaseEditorKit } from '@plone/plate/components/editor/editor-base-kit';
-import { LegacyLinkPlugin } from '@plone/plate/components/editor/plugins/legacy-link-plugin';
+import cloneDeep from 'lodash.cloneDeep';
 
 function install(config: ConfigType) {
-  config.settings.plate = {
-    editorConfig: {
-      plugins: [...LegacyLinkPlugin, ...EditorKit],
-    },
-    rendererConfig: {
-      plugins: [...LegacyLinkPlugin, ...BaseEditorKit],
-    },
-  };
+  // @plone/plate should be installed before @plone/blocks
+  // adding a guard anyways
+  if (!config.settings.plate) config.settings.plate = {};
+
+  config.settings.plate.block = cloneDeep(config.settings.plate.presets.block);
 
   return config;
 }

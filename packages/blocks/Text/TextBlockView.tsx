@@ -8,7 +8,7 @@ const TextBlockView = (props: BlockViewProps) => {
 
   return data?.value ? (
     <PlateRenderer
-      editorConfig={config.settings.plate.rendererConfig}
+      editorConfig={config.settings.plate.block.rendererConfig}
       value={data.value as Value}
     />
   ) : null;

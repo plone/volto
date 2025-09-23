@@ -7,7 +7,7 @@ const TextBlockEdit = (props: BlockEditProps) => {
 
   return (
     <PlateEditor
-      editorConfig={config.settings.plate.editorConfig}
+      editorConfig={config.settings.plate.block.editorConfig}
       value={data.value as Value}
       onChange={(options) => {
         setBlock({ ...data, value: options.value });
