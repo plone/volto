@@ -37,6 +37,7 @@ type PlateConfig = {
     plugins: any[];
     [key: string]: unknown;
   };
+  floatingToolbarButtons: React.ComponentType<any>;
 };
 
 interface PlateSettings {
