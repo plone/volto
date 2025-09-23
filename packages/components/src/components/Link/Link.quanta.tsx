@@ -4,35 +4,43 @@ import {
   type LinkProps as AriaLinkProps,
   composeRenderProps,
 } from 'react-aria-components';
-import { tv } from 'tailwind-variants';
-import { focusRing } from '../utils';
+import { button } from '../Button/Button.quanta.variants';
+import { link } from './Link.quanta.variants';
 
-interface LinkProps extends AriaLinkProps {
-  variant?: 'primary' | 'secondary';
-}
+type LinkVariants = Parameters<typeof link>[0];
 
-const styles = tv({
-  extend: focusRing,
-  base: 'rounded-xs underline transition disabled:cursor-default disabled:no-underline forced-colors:disabled:text-[GrayText]',
-  variants: {
-    variant: {
-      primary:
-        'text-quanta-sapphire decoration-quanta-sapphire/40 hover:decoration-quanta-royal hover:text-quanta-royal active:text-quanta-cobalt active:decoration-quanta-cobalt focus:decoration-quanta-royal focus:text-quanta-royal underline',
-      secondary:
-        'text-gray-700 underline decoration-gray-700/50 hover:decoration-gray-700',
-    },
-  },
-  defaultVariants: {
-    variant: 'primary',
-  },
-});
+type LinkProps = AriaLinkProps &
+  LinkVariants & {
+    asButton?: never;
+  };
 
-export function Link(props: LinkProps) {
+type ButtonVariants = Parameters<typeof button>[0];
+
+type LinkAsButtonProps = AriaLinkProps &
+  ButtonVariants & {
+    asButton: true;
+  };
+
+export function Link(props: LinkProps | LinkAsButtonProps) {
+  const { asButton, variant, ...linkProps } = props;
+
   return (
     <AriaLink
-      {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        styles({ ...renderProps, className, variant: props.variant }),
+      {...linkProps}
+      className={composeRenderProps(
+        props.className,
+        (className, renderProps) => {
+          if (asButton) {
+            return button({
+              ...renderProps,
+              className,
+              variant,
+              size: props.size,
+              accent: props.accent,
+            });
+          }
+          return link({ ...renderProps, className, variant });
+        },
       )}
     />
   );

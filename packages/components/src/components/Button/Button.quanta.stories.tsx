@@ -145,3 +145,19 @@ export const WithTWClassName: Story = {
     accent: true,
   },
 };
+
+export const AsLink: Story = {
+  args: {
+    asLink: true,
+    variant: 'primary',
+  },
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['primary', 'secondary'],
+    },
+    accent: {
+      table: { disable: true },
+    },
+  },
+};
