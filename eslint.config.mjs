@@ -8,6 +8,7 @@ import importPlugin from 'eslint-plugin-import';
 import prettierPlugin from 'eslint-plugin-prettier/recommended';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import unusedImports from 'eslint-plugin-unused-imports';
 
 const JS_GLOB = ['**/*.{ts,tsx,js,jsx}'];
 
@@ -43,6 +44,7 @@ export default tseslint.config(
     },
     plugins: {
       'react-hooks': reactHooksPlugin,
+      'unused-imports': unusedImports,
     },
     rules: {
       ...reactHooksPlugin.configs.recommended.rules,
@@ -57,6 +59,7 @@ export default tseslint.config(
       'no-alert': 'warn',
       'no-debugger': 'warn',
       'react/no-children-prop': 'off',
+      'unused-imports/no-unused-imports': 'error',
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'off',

@@ -4,7 +4,7 @@ import {
   setup,
   teardown,
 } from '../../utils/test';
-import { afterEach, beforeEach, describe, expect, test } from 'vitest';
+import { afterEach, beforeEach, describe, test } from 'vitest';
 import PloneClient from '../../client';
 
 const cli = PloneClient.initialize({

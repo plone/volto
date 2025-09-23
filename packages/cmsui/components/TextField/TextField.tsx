@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   TextField as AriaTextField,
   type TextFieldProps as AriaTextFieldProps,

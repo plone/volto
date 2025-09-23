@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ImgHTMLAttributes } from 'react';
 import clsx from 'clsx';
 import type { ImageScale, ContainedItem } from '@plone/types';
