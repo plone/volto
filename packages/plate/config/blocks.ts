@@ -1,6 +1,6 @@
 import type { ConfigType } from '@plone/registry';
-import { EditorKit } from '../components/editor/editor-kit';
-import { BaseEditorKit } from '../components/editor/editor-base-kit';
+import { BlockEditorKit } from '../components/editor/block-editor-kit';
+import { BlockBaseEditorKit } from '../components/editor/block-editor-base-kit';
 import { LegacyLinkPlugin } from '../components/editor/plugins/legacy-link-plugin';
 
 export default function install(config: ConfigType) {
@@ -8,10 +8,10 @@ export default function install(config: ConfigType) {
 
   config.settings.plate.presets.block = {
     editorConfig: {
-      plugins: [...LegacyLinkPlugin, ...EditorKit],
+      plugins: [...LegacyLinkPlugin, ...BlockEditorKit],
     },
     rendererConfig: {
-      plugins: [...LegacyLinkPlugin, ...BaseEditorKit],
+      plugins: [...LegacyLinkPlugin, ...BlockBaseEditorKit],
     },
   };
 
