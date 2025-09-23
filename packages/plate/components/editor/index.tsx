@@ -1,8 +1,19 @@
 import React from 'react';
-import type { AnyPluginConfig, TElement, Value } from 'platejs';
-import { Plate, usePlateEditor, type TPlateEditor } from 'platejs/react';
+import type { AnyPluginConfig, SlateEditor, TElement, Value } from 'platejs';
+import {
+  Plate,
+  usePlateEditor,
+  type TPlateEditor,
+  type PlateViewProps,
+} from 'platejs/react';
 
-import { Editor, EditorContainer } from '../ui/editor';
+import {
+  Editor,
+  EditorContainer,
+  EditorView,
+  editorVariants,
+} from '../ui/editor';
+import type { VariantProps } from 'class-variance-authority';
 
 export function PlateEditor(props: {
   editorConfig: Parameters<typeof usePlateEditor>[0];
@@ -12,7 +23,7 @@ export function PlateEditor(props: {
     value: TElement[];
   }) => void;
 }) {
-  const editor = usePlateEditor(props.editorConfig);
+  const editor = usePlateEditor({ ...props.editorConfig, value: props.value });
 
   return (
     <Plate
@@ -31,3 +42,23 @@ export function PlateEditor(props: {
 }
 
 export type { Value } from 'platejs';
+
+export function PlateRenderer(
+  props: Omit<
+    PlateViewProps &
+      VariantProps<typeof editorVariants> & {
+        editorConfig: Parameters<typeof usePlateEditor>[0];
+        value: Value;
+      },
+    'editor'
+  >,
+) {
+  const editor = usePlateEditor({
+    ...props.editorConfig,
+    value: props.value,
+  }) as SlateEditor; // EditorView likes it more
+
+  return <EditorView {...props} editor={editor} />;
+}
+
+PlateRenderer.displayName = 'PlateRenderer';

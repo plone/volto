@@ -1,22 +1,16 @@
 import type { BlockViewProps } from '@plone/types';
-import { renderSlate } from './slate';
+import { PlateRenderer, type Value } from '@plone/plate/components/editor';
+
 import config from '@plone/registry';
 
 const TextBlockView = (props: BlockViewProps) => {
-  const { id, data } = props;
-  const metadata = props.metadata || props.properties;
+  const { data } = props;
 
   return data?.value ? (
-    <>
-      {renderSlate(
-        id,
-        config.settings.slate.elements,
-        config.settings.slate.topLevelTargetElements,
-        data.value,
-        data?.override_toc,
-        metadata,
-      )}
-    </>
+    <PlateRenderer
+      editorConfig={config.settings.plate.rendererConfig}
+      value={data.value as Value}
+    />
   ) : null;
 };
 
