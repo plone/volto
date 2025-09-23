@@ -139,6 +139,7 @@ export const PlaceholderElement = withHOC(
     return (
       <PlateElement className="my-1" {...props}>
         {(!loading || !isImage) && (
+          // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
           <div
             className={cn(
               'bg-muted hover:bg-primary/10 flex cursor-pointer items-center rounded-sm p-3 pr-9 select-none',

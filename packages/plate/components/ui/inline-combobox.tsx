@@ -253,6 +253,7 @@ const InlineComboboxInput = React.forwardRef<
 InlineComboboxInput.displayName = 'InlineComboboxInput';
 
 const InlineComboboxContent: typeof ComboboxPopover = ({
+  // eslint-disable-next-line react/prop-types
   className,
   ...props
 }) => {

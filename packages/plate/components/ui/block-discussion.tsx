@@ -71,6 +71,7 @@ export const BlockDiscussion: RenderNodeWrapper<AnyPluginConfig> = (props) => {
     return;
   }
 
+  // eslint-disable-next-line react/display-name
   return (props) => (
     <BlockCommentContent
       blockPath={blockPath}

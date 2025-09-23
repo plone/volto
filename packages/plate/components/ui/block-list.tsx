@@ -34,6 +34,7 @@ const config: Record<
 export const BlockList: RenderNodeWrapper = (props) => {
   if (!props.element.listStyleType) return;
 
+  // eslint-disable-next-line react/display-name
   return (props) => <List {...props} />;
 };
 

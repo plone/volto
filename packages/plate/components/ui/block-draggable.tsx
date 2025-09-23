@@ -63,6 +63,7 @@ export const BlockDraggable: RenderNodeWrapper = (props) => {
 
   if (!enabled) return;
 
+  // eslint-disable-next-line react/display-name
   return (props) => <Draggable {...props} />;
 };
 
@@ -234,6 +235,7 @@ const DragHandle = React.memo(function DragHandle({
   return (
     <Tooltip>
       <TooltipTrigger asChild>
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/interactive-supports-focus */}
         <div
           className="flex size-full items-center justify-center"
           onClick={(e) => {

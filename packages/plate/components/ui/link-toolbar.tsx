@@ -195,6 +195,7 @@ function LinkOpenButton() {
         size: 'sm',
         variant: 'ghost',
       })}
+      // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
       onMouseOver={(e) => {
         e.stopPropagation();
       }}

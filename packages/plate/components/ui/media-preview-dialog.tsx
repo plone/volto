@@ -64,6 +64,7 @@ export function MediaPreviewDialog() {
               'mx-auto block max-h-[calc(100vh-4rem)] w-auto object-contain transition-transform',
             )}
           />
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
           <div
             className="absolute bottom-0 left-1/2 z-40 flex w-fit -translate-x-1/2 justify-center gap-4 p-2 text-center text-white"
             onClick={(e) => e.stopPropagation()}
