@@ -1,5 +1,3 @@
-'use client';
-
 import { LinkPlugin } from '@platejs/link/react';
 
 import { LinkElement } from '../../ui/link-node';

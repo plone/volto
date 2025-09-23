@@ -1,5 +1,3 @@
-'use client';
-
 import { withAIBatch } from '@platejs/ai';
 import {
   AIChatPlugin,

@@ -1,5 +1,3 @@
-'use client';
-
 import { LineHeightPlugin } from '@platejs/basic-styles/react';
 import { KEYS } from 'platejs';
 

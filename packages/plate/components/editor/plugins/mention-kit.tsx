@@ -1,5 +1,3 @@
-'use client';
-
 import { MentionInputPlugin, MentionPlugin } from '@platejs/mention/react';
 
 import { MentionElement, MentionInputElement } from '../../ui/mention-node';

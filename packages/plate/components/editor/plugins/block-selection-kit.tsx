@@ -1,5 +1,3 @@
-'use client';
-
 import { BlockSelectionPlugin } from '@platejs/selection/react';
 import { getPluginTypes, KEYS } from 'platejs';
 

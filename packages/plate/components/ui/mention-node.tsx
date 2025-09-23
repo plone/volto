@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 
 import type { TComboboxInputElement, TMentionElement } from 'platejs';

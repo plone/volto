@@ -1,5 +1,3 @@
-'use client';
-
 import type { TComment } from '../../ui/comment';
 
 import { createPlatePlugin } from 'platejs/react';

@@ -1,5 +1,3 @@
-'use client';
-
 import type { PlateEditor } from 'platejs/react';
 
 import { insertCallout } from '@platejs/callout';

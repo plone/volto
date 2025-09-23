@@ -1,5 +1,3 @@
-'use client';
-
 import { SlashInputPlugin, SlashPlugin } from '@platejs/slash-command/react';
 import { KEYS } from 'platejs';
 

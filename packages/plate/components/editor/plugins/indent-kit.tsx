@@ -1,5 +1,3 @@
-'use client';
-
 import { IndentPlugin } from '@platejs/indent/react';
 import { KEYS } from 'platejs';
 

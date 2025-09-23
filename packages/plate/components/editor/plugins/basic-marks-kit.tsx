@@ -1,5 +1,3 @@
-'use client';
-
 import {
   BoldPlugin,
   CodePlugin,

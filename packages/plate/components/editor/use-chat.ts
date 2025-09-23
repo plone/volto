@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 
 import { type UseChatHelpers, useChat as useBaseChat } from '@ai-sdk/react';

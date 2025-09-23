@@ -1,5 +1,3 @@
-'use client';
-
 import { TogglePlugin } from '@platejs/toggle/react';
 
 import { IndentKit } from './indent-kit';

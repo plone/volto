@@ -1,5 +1,3 @@
-'use client';
-
 import type { PlatePluginConfig } from 'platejs/react';
 
 import {

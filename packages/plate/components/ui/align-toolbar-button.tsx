@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 
 import type { Alignment } from '@platejs/basic-styles';

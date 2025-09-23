@@ -1,5 +1,3 @@
-'use client';
-
 import { ListPlugin } from '@platejs/list/react';
 import { KEYS } from 'platejs';
 
