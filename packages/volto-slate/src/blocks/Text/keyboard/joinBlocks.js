@@ -82,6 +82,7 @@ export function joinWithPreviousBlock({ editor, event }, intl) {
   const lastNode = prevValue[prevValue.length - 1];
   const firstNode = currentValue[0];
   let merged;
+  let cursor;
 
   if (lastNode && firstNode && lastNode.type === firstNode.type) {
     const mergedFirstNode = {
@@ -94,14 +95,24 @@ export function joinWithPreviousBlock({ editor, event }, intl) {
       mergedFirstNode,
       ...currentValue.slice(1),
     ];
+
+    cursor = {
+      anchor: {
+        path: [prevValue.length - 1, lastNode.children.length],
+        offset: 0,
+      },
+      focus: {
+        path: [prevValue.length - 1, lastNode.children.length],
+        offset: 0,
+      },
+    };
   } else {
     merged = [...prevValue, ...currentValue];
+    cursor = getBlockEndAsRange({
+      ...otherBlock,
+      value: merged,
+    });
   }
-
-  const cursor = getBlockEndAsRange({
-    ...otherBlock,
-    value: merged,
-  });
 
   // // TODO: don't remove undo history, etc Should probably save both undo
   // // histories, so that the blocks are split, the undos can be restored??
