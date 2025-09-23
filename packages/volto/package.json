@@ -394,7 +394,7 @@
     "wait-on": "6.0.0",
     "webpack": "5.90.1",
     "webpack-bundle-analyzer": "4.10.1",
-    "webpack-dev-server": "4.11.1",
+    "webpack-dev-server": "5.2.1",
     "webpack-node-externals": "3.0.0",
     "why": "0.6.2"
   },
