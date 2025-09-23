@@ -1,4 +1,5 @@
 import type { ConfigType } from '@plone/registry';
+import installPlate from './config/plate';
 import { slate } from './config/slate';
 import TitleBlockInfo from './Title';
 import TextBlockInfo from './Text';
@@ -6,6 +7,8 @@ import ImageBlockInfo from './Image';
 import TeaserBlockInfo from './Teaser';
 
 export default function install(config: ConfigType) {
+  installPlate(config);
+
   config.settings.slate = slate;
   // @ts-expect-error this is a quick hack for now
   // Initializing blocksConfig to empty.
