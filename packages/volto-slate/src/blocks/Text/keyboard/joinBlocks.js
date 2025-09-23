@@ -5,7 +5,6 @@ import { Editor } from 'slate';
 import {
   getPreviousVoltoBlock,
   getNextVoltoBlock,
-  mergeSlateWithBlockBackward,
   mergeSlateWithBlockForward,
 } from '@plone/volto-slate/utils/volto-blocks';
 import {
@@ -118,7 +117,6 @@ export function joinWithPreviousBlock({ editor, event }, intl) {
   // // histories, so that the blocks are split, the undos can be restored??
 
   // const cursor = getBlockEndAsRange(otherBlock);
-
 
   const formData = changeBlock(properties, otherBlockId, {
     '@type': 'slate', // TODO: use a constant specified in src/constants.js instead of 'slate'

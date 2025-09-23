@@ -29,4 +29,24 @@ describe('Slate Backspace Behavior', () => {
       .should('contain', 'First block text')
       .should('contain', 'Second block text');
   });
+
+  it('Enter after Backspace merge splits back into a new block', () => {
+    cy.getSlateEditorAndType('Hello');
+
+    cy.addNewBlock('slate');
+    cy.getSlateEditorAndType('World');
+
+    cy.getSlate().setCursorBefore('World').type('{backspace}');
+
+    cy.getSlate().type('{enter}');
+
+    cy.get('.content-area .slate-editor [contenteditable=true]')
+      .should('have.length', 2)
+      .eq(0)
+      .should('contain', 'Hello');
+
+    cy.get('.content-area .slate-editor [contenteditable=true]')
+      .eq(1)
+      .should('contain', 'World');
+  });
 });
