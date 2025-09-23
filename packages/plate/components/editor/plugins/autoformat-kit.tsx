@@ -229,7 +229,7 @@ export const AutoformatKit = [
             !editor.api.some({
               match: { type: editor.getType(KEYS.codeBlock) },
             }),
-        })
+        }),
       ),
     },
   }),

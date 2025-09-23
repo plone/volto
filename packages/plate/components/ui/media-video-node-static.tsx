@@ -10,7 +10,7 @@ import type {
 import { NodeApi, SlateElement } from 'platejs';
 
 export function VideoElementStatic(
-  props: SlateElementProps<TVideoElement & TCaptionElement & TResizableProps>
+  props: SlateElementProps<TVideoElement & TCaptionElement & TResizableProps>,
 ) {
   const { align = 'center', caption, url, width } = props.element;
 

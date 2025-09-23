@@ -1,10 +1,10 @@
-import { ElementApi, KEYS, createSlatePlugin } from "platejs";
-import type { Path, PlateEditor, Value } from "platejs";
+import { ElementApi, KEYS, createSlatePlugin } from 'platejs';
+import type { Path, PlateEditor, Value } from 'platejs';
 
 const migrateLegacyLink = (editor: PlateEditor, path: Path, node: any) => {
   const linkType = editor.getType(KEYS.link);
   const legacyUrl =
-    typeof node?.data?.url === "string" ? node.data.url : undefined;
+    typeof node?.data?.url === 'string' ? node.data.url : undefined;
   const legacyTarget = node?.data?.target ?? node?.target;
 
   editor.tf.setNodes(
@@ -13,11 +13,11 @@ const migrateLegacyLink = (editor: PlateEditor, path: Path, node: any) => {
       url: legacyUrl ?? node.url,
       ...(legacyTarget ? { target: legacyTarget } : {}),
     },
-    { at: path }
+    { at: path },
   );
 
   if (node?.data !== undefined) {
-    editor.tf.unsetNodes("data", { at: path });
+    editor.tf.unsetNodes('data', { at: path });
   }
 };
 
@@ -29,8 +29,8 @@ const migrateLegacyLinksInValue = (editor: PlateEditor, nodes: Value) => {
     }
 
     const legacyUrl =
-      typeof node?.data?.url === "string" ? node.data.url : undefined;
-    if (typeof legacyUrl === "string") {
+      typeof node?.data?.url === 'string' ? node.data.url : undefined;
+    if (typeof legacyUrl === 'string') {
       node.type = plateLinkType;
       node.url = legacyUrl;
       if (node?.data?.target) {
@@ -39,14 +39,14 @@ const migrateLegacyLinksInValue = (editor: PlateEditor, nodes: Value) => {
       delete node.data;
     } else if (
       node.type === plateLinkType &&
-      typeof node?.data?.url === "string"
+      typeof node?.data?.url === 'string'
     ) {
       node.url = node.data.url;
       if (node?.data?.target) {
         node.target = node.data.target;
       }
       delete node.data;
-    } else if (node.type === "link") {
+    } else if (node.type === 'link') {
       node.type = plateLinkType;
     }
 
@@ -64,11 +64,11 @@ const migrateLegacyLinksInValue = (editor: PlateEditor, nodes: Value) => {
  */
 export const LegacyLinkPlugin = [
   createSlatePlugin({
-    key: "legacyLinkNormalizer",
+    key: 'legacyLinkNormalizer',
     node: {
       isElement: true,
       isInline: true,
-      type: "link",
+      type: 'link',
     },
     normalizeInitialValue: ({ editor, value }) => {
       migrateLegacyLinksInValue(editor, value);
@@ -82,23 +82,23 @@ export const LegacyLinkPlugin = [
         if (ElementApi.isElement(node)) {
           const plateLinkType = editor.getType(KEYS.link);
           const isLegacyLink =
-            node.type === "link" &&
-            typeof (node as any)?.data?.url === "string";
+            node.type === 'link' &&
+            typeof (node as any)?.data?.url === 'string';
           const isPlateLinkWithLegacyData =
             node.type === plateLinkType &&
-            typeof (node as any)?.data?.url === "string";
+            typeof (node as any)?.data?.url === 'string';
 
           if (isLegacyLink || isPlateLinkWithLegacyData) {
             migrateLegacyLink(editor, path, node);
             return;
           }
 
-          if (node.type === "link" && !isLegacyLink) {
+          if (node.type === 'link' && !isLegacyLink) {
             editor.tf.setNodes(
               {
                 type: plateLinkType,
               },
-              { at: path }
+              { at: path },
             );
             return;
           }

@@ -37,5 +37,5 @@ export const AudioElement = withHOC(
         {props.children}
       </PlateElement>
     );
-  }
+  },
 );
