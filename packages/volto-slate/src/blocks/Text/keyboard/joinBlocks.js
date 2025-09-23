@@ -76,7 +76,28 @@ export function joinWithPreviousBlock({ editor, event }, intl) {
 
   // Else the editor contains characters, so we merge the current block's
   // `editor` with the block before, `otherBlock`.
-  const merged = [...otherBlock.value, ...editor.children];
+  const prevValue = [...otherBlock.value];
+  const currentValue = [...editor.children];
+
+  const lastNode = prevValue[prevValue.length - 1];
+  const firstNode = currentValue[0];
+  let merged;
+
+  if (lastNode && firstNode && lastNode.type === firstNode.type) {
+    const mergedFirstNode = {
+      ...lastNode,
+      children: [...lastNode.children, ...firstNode.children],
+    };
+
+    merged = [
+      ...prevValue.slice(0, -1),
+      mergedFirstNode,
+      ...currentValue.slice(1),
+    ];
+  } else {
+    merged = [...prevValue, ...currentValue];
+  }
+
   const cursor = getBlockEndAsRange({
     ...otherBlock,
     value: merged,
