@@ -1,5 +1,5 @@
 import type { ConfigType } from '@plone/registry';
-import cloneDeep from 'lodash.cloneDeep';
+import cloneDeep from 'lodash.clonedeep';
 
 function install(config: ConfigType) {
   // @plone/plate should be installed before @plone/blocks
