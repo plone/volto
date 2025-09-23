@@ -8,7 +8,6 @@ import importPlugin from 'eslint-plugin-import';
 import prettierPlugin from 'eslint-plugin-prettier/recommended';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
-import unusedImports from 'eslint-plugin-unused-imports';
 
 const JS_GLOB = ['**/*.{ts,tsx,js,jsx}'];
 
@@ -44,11 +43,15 @@ export default tseslint.config(
     },
     plugins: {
       'react-hooks': reactHooksPlugin,
-      'unused-imports': unusedImports,
     },
     rules: {
       ...reactHooksPlugin.configs.recommended.rules,
-      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          args: 'none',
+        },
+      ],
       '@typescript-eslint/no-empty-object-type': 'off',
       'jsx-a11y/no-autofocus': 'off',
       'react/jsx-key': [2, { checkFragmentShorthand: true }],
@@ -59,7 +62,6 @@ export default tseslint.config(
       'no-alert': 'warn',
       'no-debugger': 'warn',
       'react/no-children-prop': 'off',
-      'unused-imports/no-unused-imports': 'error',
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'off',
