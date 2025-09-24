@@ -105,6 +105,7 @@ export const UrlWidget = (props) => {
         {value?.length > 0 ? (
           <Button.Group>
             <Button
+              type="button"
               basic
               className="cancel"
               aria-label="clearUrlBrowser"
@@ -120,6 +121,7 @@ export const UrlWidget = (props) => {
         ) : (
           <Button.Group>
             <Button
+              type="button"
               basic
               icon
               aria-label="openUrlBrowser"
