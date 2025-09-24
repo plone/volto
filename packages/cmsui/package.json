@@ -42,8 +42,8 @@
     "build-storybook": "storybook build"
   },
   "peerDependencies": {
-    "react": "^18.2.0 || ^19.0.0",
-    "react-dom": "^18.2.0 || ^19.0.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "peerDependenciesMeta": {
     "react-dom": {
@@ -74,6 +74,7 @@
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
+    "@storybook/addon-docs": "^9.1.7",
     "@storybook/addon-links": "^9.1.7",
     "@storybook/react-vite": "^9.1.7",
     "@tailwindcss/vite": "catalog:",
@@ -98,7 +99,6 @@
     "vite": "catalog:",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "catalog:",
-    "vitest-axe": "^0.1.0",
-    "@storybook/addon-docs": "^9.1.7"
+    "vitest-axe": "^0.1.0"
   }
 }
