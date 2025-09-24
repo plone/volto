@@ -107,10 +107,18 @@ export function joinWithPreviousBlock({ editor, event }, intl) {
     };
   } else {
     merged = [...prevValue, ...currentValue];
-    cursor = getBlockEndAsRange({
-      ...otherBlock,
-      value: merged,
-    });
+    // Position cursor at the start of the merged content (where current block was inserted)
+    // The current block content starts at index prevValue.length in the merged array
+    cursor = {
+      anchor: {
+        path: [prevValue.length, 0],
+        offset: 0,
+      },
+      focus: {
+        path: [prevValue.length, 0],
+        offset: 0,
+      },
+    };
   }
 
   // // TODO: don't remove undo history, etc Should probably save both undo
