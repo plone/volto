@@ -29,7 +29,7 @@ Development utility packages
 
 Level 1 and 2 packages are published as traditional bundles that work in both CommonJS and ESM environments.
 They are meant to be consumed as libraries, so your app bundler can include them without any extra build step.
-The distinction between levels 1 and 2 preserves the dependency graph, keeping core packages independent from the rest.
+The distinction between levels 1 and 2 preserves the dependency graph, keeping core packages independent of the rest.
 Level 3 packages ship as source code, which means they do not need to be transpiled before use.
 Level 1 and 2 packages must not depend on level 3 packages.
 
@@ -95,11 +95,11 @@ The add-on packages are:
 
 ## Development utility packages
 
-These packages are used today for develop Seven core.
+These packages are used today to develop Seven core.
 
 ### `@plone/tooling`
 
-It centralizes the configuration and dependencies for tooling around the Plone frontend modular architecture.
+`@plone/tooling` centralizes the configuration and dependencies for tooling around the Plone frontend modular architecture.
 
 It provides shared Storybook, Cypress, ESLint, and other configurations.
 
@@ -109,4 +109,4 @@ They are used in Seven projects and add-ons as well, so they can share the same 
 
 The `tsconfig` package provides a base TypeScript configuration for all Plone packages.
 It helps ensure consistency in TypeScript settings across the codebase.
-Nowadays it's used by all packages in the Seven monorepo, but it's not used in Seven projects or add-ons.
+Nowadays, it's used by all packages in the Seven monorepo, but it's not used in Seven projects or add-ons.
