@@ -43,13 +43,13 @@ const Edit = (props) => {
       {!hasImage && (
         <Message>
           <center>
-            <img src={imageBlockSVG} alt="" />
+            <Image src={imageBlockSVG} alt="" />
             <div className="message-text">{placeholder}</div>
           </center>
         </Message>
       )}
       {hasImage && hasImageData && (
-        <img
+        <Image
           className={className}
           src={`data:${properties.image['content-type']};base64,${properties.image.data}`}
           width={properties.image.width}
