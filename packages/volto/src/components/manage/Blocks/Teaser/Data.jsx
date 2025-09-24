@@ -74,12 +74,14 @@ const TeaserData = (props) => {
       image_scales: {
         preview_image: [resp?.preview_image],
         image: [resp?.image],
-        preview_image_link: [
-          {
-            ...resp?.preview_image_link?.['image_scales']?.image?.[0],
-            base_path: resp?.preview_image_link?.['@id'],
-          },
-        ],
+        preview_image_link: resp?.preview_image_link
+          ? [
+              {
+                ...resp?.preview_image_link?.['image_scales']?.image?.[0],
+                base_path: resp?.preview_image_link?.['@id'],
+              },
+            ]
+          : [],
       },
       title: resp.title,
     };
