@@ -78,7 +78,7 @@ export const editorVariants = cva(
           'size-full px-16 pt-4 pb-72 text-base sm:px-[max(64px,calc(50%-350px))]',
         demo: 'size-full px-16 pt-4 pb-72 text-base sm:px-[max(64px,calc(50%-350px))]',
         fullWidth: 'size-full px-16 pt-4 pb-72 text-base sm:px-24',
-        none: '',
+        none: 'px-6',
         select: 'px-3 py-2 text-base data-readonly:w-fit',
       },
     },
