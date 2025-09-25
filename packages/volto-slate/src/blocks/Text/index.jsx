@@ -18,8 +18,8 @@ import {
   unwrapEmptyString,
   slashMenu,
   cancelEsc,
-  splitAtSeam,
 } from './keyboard';
+import { splitAtSeam } from './keyboard/splitAtSeam';
 import { withDeleteSelectionOnEnter } from '@plone/volto-slate/editor/extensions';
 import {
   breakList,

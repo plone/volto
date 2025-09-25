@@ -10,7 +10,6 @@ export * from './traverseBlocks';
 export * from './unwrapEmptyString';
 export * from './slashMenu';
 export * from './cancelEsc';
-export * from './splitAtSeam';
 
 /**
  * Takes all the handlers from `slate.textblockKeyboardHandlers` that are
