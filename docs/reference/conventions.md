@@ -22,12 +22,12 @@ We follow the mantra, "If it works, don't change it."
 
 This document highlights the differences and additions compared to Volto conventions.
 
-## Separate builds for public and CMSUI
+## Separate builds for Public UI and CMSUI
 
-We are aiming for the possibility of having two separate builds: one for the public theme and another for the CMS UI.
+We are aiming for the possibility of having two separate builds: one for the public theme called {term}`Public UI` and another for the {term}`CMSUI`.
 Thus, we need to ensure that the codebase can support this separation and have this in mind when developing new features.
 This will impose some constraints, such as avoiding the use of Tailwind CSS classes in structural components, since the public theme might not use Tailwind CSS.
-Also, the public UI cannot rely on any CMSUI-specific styles or components.
+Also, the Public UI cannot rely on any CMSUI-specific styles or components.
 
 ## Storybook
 
@@ -74,7 +74,7 @@ These styles are very simple ("vanilla") and easy to override with your own styl
 You can also use these in Volto projects by installing the `@plone/components` package.
 
 The Tailwind-based components are meant for public themes that also use Tailwind CSS, like the default Seven theme (`@plone/agave`).
-They're also used in the CMS UI, which is based on Tailwind CSS.
+They're also used in the CMSUI, which is based on Tailwind CSS.
 
 Check out the Storybook for this package at [@plone/components Storybook](https://plone-components.readthedocs.io/latest/?path=/docs/introduction--docs).
 
