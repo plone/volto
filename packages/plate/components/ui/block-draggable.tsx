@@ -343,7 +343,7 @@ const DropLine = React.memo(function DropLine({
       className={cn(
         'slate-dropLine',
         'absolute inset-x-0 h-0.5 opacity-100 transition-opacity',
-        'bg-quanta-sapphire',
+        'bg-brand/50',
         dropLine === 'top' && 'top-[-1px]',
         dropLine === 'bottom' && 'bottom-[-1px]',
         className,
