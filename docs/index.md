@@ -68,6 +68,7 @@ development/index
 configuration/index
 conceptual-guides/index
 how-to-guides/index
+reference/index
 reference/storybook
 upgrade-guide/index
 contributing/index

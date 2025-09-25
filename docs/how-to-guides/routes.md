@@ -202,7 +202,7 @@ The following diagram illustrates the file structure of the `@plone/cmsui` edit 
 
 In `@plone/cmsui/`, each of the files shown in the above diagram performs a specific function.
 
--   {file}`routes/layout.tsx` serves as a shared layout used as a base for CMS UI views.
+-   {file}`routes/layout.tsx` serves as a shared layout used as a base for CMSUI views.
 -   {file}`routes/edit.tsx` is the component used for `/edit` and all its subpaths.
 -   {file}`index.ts` is where the default configuration loader of the add-on calls `config.registerRoute()`.
 
