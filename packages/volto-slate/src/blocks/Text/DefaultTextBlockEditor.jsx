@@ -32,6 +32,7 @@ import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-ima
 import Image from '@plone/volto/components/theme/Image/Image';
 
 import './css/editor.css';
+import isHotkey from 'is-hotkey';
 
 // TODO: refactor dropzone to separate component wrapper
 
@@ -68,6 +69,7 @@ export const DefaultTextBlockEditor = (props) => {
     formDescription,
     navRoot,
     contentType,
+    content,
   } = props;
 
   const { slate } = config.settings;
@@ -198,6 +200,59 @@ export const DefaultTextBlockEditor = (props) => {
     }
   }, [onSelectBlock, selected, block]);
 
+  const handleKeyEdgeCases = React.useCallback(
+    (editor, event) => {
+      if (!content) {
+        return false;
+      }
+      const blocksLayout = content['blocks_layout'].items;
+      const blocks = content['blocks'];
+      // backspace key
+      if (
+        blocks[blocksLayout[index]]['@type'] !== 'slate' ||
+        !blocks[blocksLayout[index]].plaintext
+      ) {
+        return false;
+      }
+      const textLen = blocks[blocksLayout[index]].plaintext.length;
+      if (
+        isHotkey('backspace', event) &&
+        editor.selection.anchor.offset === 0 &&
+        textLen !== 0
+      ) {
+        return true;
+      }
+      // delete key
+      if (
+        index + 1 === blocksLayout.length ||
+        blocks[blocksLayout[index + 1]]['@type'] !== 'slate' ||
+        !blocks[blocksLayout[index + 1]].plaintext
+      ) {
+        return false;
+      }
+      const nextTextLen = blocks[blocksLayout[index + 1]].plaintext.length;
+      if (
+        isHotkey('delete', event) &&
+        editor.selection.anchor.offset === textLen &&
+        nextTextLen !== 0
+      ) {
+        return true;
+      }
+      return false;
+    },
+    [content, index],
+  );
+
+  const onKeyDown = React.useCallback(
+    ({ editor, event }) => {
+      if (handleKeyEdgeCases(editor, event)) {
+        return;
+      }
+      handleKey({ editor, event });
+    },
+    [handleKeyEdgeCases],
+  );
+
   return (
     <div className="text-slate-editor-inner" ref={ref}>
       <>
@@ -238,7 +293,7 @@ export const DefaultTextBlockEditor = (props) => {
                   debug={DEBUG}
                   onFocus={handleFocus}
                   onChange={(value, editor) => onEditorChange(value, editor)}
-                  onKeyDown={handleKey}
+                  onKeyDown={onKeyDown}
                   selected={selected}
                   placeholder={placeholder}
                   slateSettings={slateSettings}
