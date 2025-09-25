@@ -6,6 +6,7 @@ import {
   getPreviousVoltoBlock,
   getNextVoltoBlock,
   mergeSlateWithBlockForward,
+  mergeSlateWithBlockBackward,
 } from '@plone/volto-slate/utils/volto-blocks';
 import {
   isCursorAtBlockStart,
@@ -75,51 +76,10 @@ export function joinWithPreviousBlock({ editor, event }, intl) {
 
   // Else the editor contains characters, so we merge the current block's
   // `editor` with the block before, `otherBlock`.
-  const prevValue = [...otherBlock.value];
-  const currentValue = [...editor.children];
+  const cursor = mergeSlateWithBlockBackward(editor, otherBlock, event);
 
-  const lastNode = prevValue[prevValue.length - 1];
-  const firstNode = currentValue[0];
-  let merged;
-  let cursor;
-
-  if (lastNode && firstNode && lastNode.type === firstNode.type) {
-    const mergedFirstNode = {
-      ...lastNode,
-      children: [...lastNode.children, ...firstNode.children],
-    };
-
-    merged = [
-      ...prevValue.slice(0, -1),
-      mergedFirstNode,
-      ...currentValue.slice(1),
-    ];
-
-    cursor = {
-      anchor: {
-        path: [prevValue.length - 1, lastNode.children.length],
-        offset: 0,
-      },
-      focus: {
-        path: [prevValue.length - 1, lastNode.children.length],
-        offset: 0,
-      },
-    };
-  } else {
-    merged = [...prevValue, ...currentValue];
-    // Position cursor at the start of the merged content (where current block was inserted)
-    // The current block content starts at index prevValue.length in the merged array
-    cursor = {
-      anchor: {
-        path: [prevValue.length, 0],
-        offset: 0,
-      },
-      focus: {
-        path: [prevValue.length, 0],
-        offset: 0,
-      },
-    };
-  }
+  // Get the merged content from the editor
+  const merged = JSON.parse(JSON.stringify(editor.children));
 
   // // TODO: don't remove undo history, etc Should probably save both undo
   // // histories, so that the blocks are split, the undos can be restored??
