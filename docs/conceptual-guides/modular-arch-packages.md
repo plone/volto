@@ -110,10 +110,10 @@ The add-on packages are:
 :   Base theming styles, baseline CSS, and Tailwind.
 
 `@plone/publicui`
-:   Public-facing UI components.
+:   {term}`Public UI` components.
 
 `@plone/cmsui`
-:   CMSUI components.
+:   {term}`CMSUI` components.
 
 `@plone/plate`
 :   Rich text editor integration and plugins.

@@ -10,7 +10,7 @@ myst:
 # Add-ons styles loader
 
 Add-ons that are compatible with the `@plone/registry` may declare styles that should be loaded by the app.
-Currently the loader loads styles for both the end user interface (Public UI) part, which displays content to both authenticated and anonymous users, and the content management system user interface (CMSUI) part of the app.
+Currently the loader loads styles for both the end user interface ({term}`Public UI`) part, which displays content to both authenticated and anonymous users, and the content management system user interface ({term}`CMSUI`) part of the app.
 
 ## Public UI styles
 
