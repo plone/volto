@@ -53,12 +53,11 @@ See {ref}`upgrade-18-cookieplone-label` for details.
 Volto 19 no longer includes automated tests for compatibility with Plone 5.
 While it may still work with Plone 5 backends in some cases, we recommend upgrading to Plone 6 for full compatibility and support.
 
-
-### Image Component Migration Required
+### Image component migration required
 ```{versionchanged} Volto 19
 ```
 
-**Breaking Change**: Raw `<img>` tags are now restricted in favor of the centralized `Image` component.
+Raw `<img>` tags are now restricted in favor of the centralized `Image` component.
 
 #### What Changed
 
