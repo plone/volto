@@ -83,10 +83,11 @@ import Image from '@plone/volto/components/theme/Image/Image';
 <Image src={imageUrl} alt="Description" className="my-image" />
 ```
 
-#### ESLint Rule Details
+#### ESLint rule error message
 
-The new ESLint rule will show this error:
-```
+The new ESLint rule will show the following error message when you use the `<img>` code form.
+
+```console
 Use the Image component from '@plone/volto/components/theme/Image/Image' instead of <img> tag.
 ```
 
