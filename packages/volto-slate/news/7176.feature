@@ -1,1 +1,0 @@
-Update slate translations for es, eu, ta, sv, fr
