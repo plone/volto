@@ -17,6 +17,23 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.27.0 (2025-09-26)
+
+### Feature
+
+- Convert RenderUsers component from class to functional with hooks. @wesleybl [#7313](https://github.com/plone/volto/issues/7313)
+- Update Portuguese Brazilian translations @ericof [#7362](https://github.com/plone/volto/issues/7362)
+- Replace img tags with Image component. @wesleybl [#7363](https://github.com/plone/volto/issues/7363)
+
+### Bugfix
+
+- Search block: fix 'Clear filters' overriding the base query. @mauritsvanrees [#7271](https://github.com/plone/volto/issues/7271)
+- Ensure the Refresh Content button correctly loads the preview image when using preview_image_link for Teaser block. @iFlameing 
+
+### Internal
+
+- Replace README.md link checker of `awesome_bot` with Lychee. @stevepiercy [#7380](https://github.com/plone/volto/issues/7380)
+
 ## 18.26.0 (2025-09-12)
 
 ### Feature
