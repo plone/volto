@@ -54,6 +54,39 @@ Volto 19 no longer includes automated tests for compatibility with Plone 5.
 While it may still work with Plone 5 backends in some cases, we recommend upgrading to Plone 6 for full compatibility and support.
 
 
+### Image Component Migration Required
+```{versionchanged} Volto 19
+```
+
+**Breaking Change**: Raw `<img>` tags are now restricted in favor of the centralized `Image` component.
+
+#### What Changed
+
+- All `<img>` tags in Volto core have been replaced with the `Image` component from `@plone/volto/components/theme/Image/Image`
+- A new ESLint rule (`no-restricted-syntax`) now prevents the use of raw `<img>` tags
+- This change prepares the codebase for future image URL prefixing functionality
+
+#### Required Action for Add-ons
+
+**Replace all `<img>` tags with the `Image` component:**
+
+```jsx
+// ❌ Before (will now trigger ESLint error)
+<img src={imageUrl} alt="Description" className="my-image" />
+
+// ✅ After
+import Image from '@plone/volto/components/theme/Image/Image';
+
+<Image src={imageUrl} alt="Description" className="my-image" />
+```
+
+#### ESLint Rule Details
+
+The new ESLint rule will show this error:
+```
+Use the Image component from '@plone/volto/components/theme/Image/Image' instead of <img> tag.
+```
+
 ### Removed packages `@plone/generator-volto`, `@plone/volto-guillotina`, and `@plone/volto-testing`
 ```{versionremoved} Volto 19
 ```
