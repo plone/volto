@@ -3,13 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2025-09-23 17:01+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"Language-Team: Basque <https://hosted.weblate.org/projects/plone/volto-slate-18/eu/>\n"
+"Language: eu\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: editor/plugins/Link/index
 msgid "Add link"
@@ -47,7 +48,7 @@ msgstr "Ezabatu taula"
 
 #: blocks/Table/TableBlockEdit
 msgid "Divide each row into separate cells"
-msgstr "Banatu lerro bakoitza gelaxka desberdinetan"
+msgstr "Zatitu lerro bakoitza zeldatan"
 
 #: elementEditor/messages
 msgid "Edit element"
