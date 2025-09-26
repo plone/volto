@@ -59,11 +59,11 @@ While it may still work with Plone 5 backends in some cases, we recommend upgrad
 
 Raw `<img>` tags are now restricted in favor of the centralized `Image` component.
 
-#### What Changed
+#### What changed
 
-- All `<img>` tags in Volto core have been replaced with the `Image` component from `@plone/volto/components/theme/Image/Image`
-- A new ESLint rule (`no-restricted-syntax`) now prevents the use of raw `<img>` tags
-- This change prepares the codebase for future image URL prefixing functionality
+- All `<img>` tags in Volto core have been replaced with the `Image` component from `@plone/volto/components/theme/Image/Image`.
+- A new ESLint rule (`no-restricted-syntax`) now prevents the use of raw `<img>` tags.
+- This change prepares the code base for future image URL prefixing functionality.
 
 #### Required Action for Add-ons
 
