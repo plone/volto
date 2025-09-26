@@ -69,11 +69,15 @@ Raw `<img>` tags are now restricted in favor of the centralized `Image` componen
 
 Replace all `<img>` tags with the `Image` component, as shown in the following example.
 
-```jsx
-// ❌ Before (will now trigger ESLint error)
-<img src={imageUrl} alt="Description" className="my-image" />
+❌ Before. This code form will now trigger an ESLint error.
 
-// ✅ After
+```jsx
+<img src={imageUrl} alt="Description" className="my-image" />
+```
+
+✅ After
+
+```jsx
 import Image from '@plone/volto/components/theme/Image/Image';
 
 <Image src={imageUrl} alt="Description" className="my-image" />
