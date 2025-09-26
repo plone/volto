@@ -65,9 +65,9 @@ Raw `<img>` tags are now restricted in favor of the centralized `Image` componen
 - A new ESLint rule (`no-restricted-syntax`) now prevents the use of raw `<img>` tags.
 - This change prepares the code base for future image URL prefixing functionality.
 
-#### Required Action for Add-ons
+#### Required action for add-ons
 
-**Replace all `<img>` tags with the `Image` component:**
+Replace all `<img>` tags with the `Image` component, as shown in the following example.
 
 ```jsx
 // ❌ Before (will now trigger ESLint error)
