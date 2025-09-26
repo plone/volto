@@ -82,10 +82,8 @@ export function isCursorAtBlockStart(editor) {
 
   if (editor.selection && Range.isCollapsed(editor.selection)) {
     const { anchor } = editor.selection;
-    return anchor.offset > 0
-      ? false
-      : anchor.path.reduce((acc, x) => acc + x, 0) === 0;
-    // anchor.path.length === 2 &&
+    // Check if cursor is at offset 0 of any leaf node (not just the first one)
+    return anchor.offset === 0;
   }
   return false;
 }
