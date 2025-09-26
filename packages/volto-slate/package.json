@@ -17,6 +17,16 @@
   "publishConfig": {
     "access": "public"
   },
+  "scripts": {
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "dependencies": {
     "classnames": "2.5.1",
     "github-slugger": "1.4.0",
@@ -42,16 +52,6 @@
   "devDependencies": {
     "@testing-library/react": "14.3.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "release-it": "^17.0.0"
-  },
-  "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "scripts": {
-    "dry-release": "release-it --dry-run",
-    "release": "release-it",
-    "release-major-alpha": "release-it major --preRelease=alpha",
-    "release-alpha": "release-it --preRelease=alpha"
+    "release-it": "^19.0.5"
   }
 }
