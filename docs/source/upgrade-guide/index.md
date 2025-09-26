@@ -85,7 +85,7 @@ import Image from '@plone/volto/components/theme/Image/Image';
 
 #### ESLint rule error message
 
-The new ESLint rule will show the following error message when you use the `<img>` code form.
+The new ESLint rule will show the following error message when you use the `<img>` tag.
 
 ```console
 Use the Image component from '@plone/volto/components/theme/Image/Image' instead of <img> tag.
