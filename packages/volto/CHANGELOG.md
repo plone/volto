@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.27.1 (2025-09-26)
+
+### Bugfix
+
+- Revert #7389 ESlint rule definition. @sneridagh [#7401](https://github.com/plone/volto/issues/7401)
+
 ## 18.27.0 (2025-09-26)
 
 ### Feature
