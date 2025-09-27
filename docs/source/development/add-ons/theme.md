@@ -96,8 +96,9 @@ Contents of {file}`src/theme/extras/custom.less`:
 Create {file}`src/theme/theme.config` in the add-on that hosts the theme.
 Replace `<name_of_your_theme>` with the add-on package name.
 
-```{code} less
-:emphasize-lines: 74
+```{code-block} less
+:emphasize-lines: 75
+:caption: theme.config
 
 /*******************************
         Theme Selection
