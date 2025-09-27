@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronrightIcon, HomeIcon } from '../../components/icons';
+import { ChevronrightIcon } from '../../components/icons';
 import {
   Breadcrumbs as RACBreadcrumbs,
   Breadcrumb as RACBreadcrumb,

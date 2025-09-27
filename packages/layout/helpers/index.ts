@@ -1,6 +1,6 @@
 import { matchPath } from 'react-router';
 import type { Content } from '@plone/types';
-import type { Location, Path, PathPattern } from 'react-router';
+import type { Location, PathPattern } from 'react-router';
 
 export function RouteCondition(path: string | PathPattern) {
   return ({ location }: { location: Location }) =>

@@ -1,4 +1,3 @@
-import React from 'react';
 import SectionWrapper from './SectionWrapper';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';

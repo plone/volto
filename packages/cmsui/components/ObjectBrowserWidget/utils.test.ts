@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest';
 import type { Brain } from '@plone/types';
-import type { Selection } from 'react-aria-components';
 import {
   isAll,
   buildObjectBrowserUrl,
