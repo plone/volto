@@ -32,24 +32,24 @@ Alternatively, you can browse the contents of the source package you want to sha
 ## Example: customize the `Logo` resource
 
 To replace the `Logo` resource, your folder structure needs to match the folder structure of the package in the `customizations` folder.
-The `Logo` resource is located in the `@plone/slots` package in the {file}`components/Logo/Logo.svg` file.
-├── slots
+The `Logo` resource is located in the `@plone/layout` package in the {file}`components/Logo/Logo.svg` file.
+├── layout
 
 ```text
 node_modules
 └── @plone
-    └── slots
+    └── layout
         └── components
             └── Logo.svg
 ```
 
-The structure inside your `customizations` of the component shadowing the original should be {file}`src/customizations/@plone/slots/components/Logo/Logo.svg`.
+The structure inside your `customizations` of the component shadowing the original should be {file}`src/customizations/@plone/layout/components/Logo/Logo.svg`.
 
 ```text
 src
 └── customizations
     └── @plone
-        └── slots
+        └── layout
             └── components
                 └── Logo.svg
 ```
