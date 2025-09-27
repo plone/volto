@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { ColorField } from './ColorField';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/ColorField.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Widgets/ColorField',
+  title: 'Basic/Forms/ColorField',
   component: ColorField,
   parameters: {
     layout: 'centered',
