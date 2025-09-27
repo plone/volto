@@ -26,28 +26,16 @@ jobs:
           filters: |
             volto:
               - 'packages/volto/**'
-            client:
-              - 'packages/client/**'
             registry:
               - 'packages/registry/**'
-            components:
-              - 'packages/components/**'
             types:
               - 'packages/types/**'
-            providers:
-              - 'packages/providers/**'
             generator:
               - 'packages/generator-volto/**'
             scripts:
               - 'packages/scripts/**'
             voltoSlate:
               - 'packages/volto-slate/**'
-            blocks:
-              - 'packages/blocks/**'
-            slots:
-              - 'packages/slots/**'
-            theming:
-              - 'packages/theming/**'
             wrongNews:
               - added|modified: 'news/**'
 
@@ -62,14 +50,6 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
-      - name: Client changelog check
-        if: steps.filter.outputs.client == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/client
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
       - name: Registry changelog check
         if: steps.filter.outputs.registry == 'true'
         run: |
@@ -78,27 +58,11 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
-      - name: Components changelog check
-        if: steps.filter.outputs.components == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/components
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
       - name: Types changelog check
         if: steps.filter.outputs.types == 'true'
         run: |
           git fetch --no-tags origin main
           towncrier check --compare-with origin/main --dir packages/types
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: Providers changelog check
-        if: steps.filter.outputs.providers == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/providers
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
@@ -123,30 +87,6 @@ jobs:
         run: |
           git fetch --no-tags origin main
           towncrier check --compare-with origin/main --dir packages/volto-slate
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: Blocks changelog check
-        if: steps.filter.outputs.blocks == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/blocks
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: Slots changelog check
-        if: steps.filter.outputs.slots == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/slots
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: Theming changelog check
-        if: steps.filter.outputs.theming == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/theming
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
