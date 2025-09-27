@@ -31,6 +31,7 @@ theming-strategy
 ```{toctree}
 :maxdepth: 1
 
+../development/add-ons/theme
 custom-styling
 using-third-party-themes
 theming-a-base-theme

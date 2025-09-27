@@ -9,15 +9,22 @@ myst:
 
 # Create a Volto theme add-on
 
-You can create a Volto theme add-on, keeping it separate from your project files.
-By making your Volto theme add-on pluggable, you can deploy the same theme in different projects.
-You can even create themes that depend on conditions that you inject at build time.
+Volto supports two practical ways to theme a site:
+
+- Use your project’s default add-on as the theme (single add-on)
+- Create a separate, reusable theme add-on (multi-project reuse)
+
+Both approaches use the same mechanics under the hood. Pick the one that fits your needs, then follow the matching setup below.
 
 The file {file}`volto.config.js` provides the ability to programmatically declare add-ons and the active theme.
 See {ref}`volto-config-js` for more information.
 For convenience, it can also be set via a `THEME` environment variable.
 
-1.  In your {file}`volto.config.js` file at the root of your project, add a `theme` key with the value of your theme's name.
+## Select the active theme
+
+You can declare the active theme in one of three ways (first two are preferred):
+
+1) {file}`volto.config.js` at the project root
 
     ```js
     module.exports = {
@@ -26,118 +33,163 @@ For convenience, it can also be set via a `THEME` environment variable.
     };
     ```
 
-    Alternatively, you can add a `theme` key in your {file}`package.json` project.
-
-    ```json
-    "theme": "volto-my-theme"
-    ```
-
-    Or you can set the theme name through the `THEME` environment variable.
+2) Environment variable when starting Volto
 
     ```shell
     THEME='volto-my-theme' pnpm start
     ```
 
-2.  Create a directory {file}`src/theme` in your add-on.
-    Inside that directory, create a new file {file}`theme.config`, adding the following content, but replacing `<name_of_your_theme>` with your add-on name.
-    You can also copy the contents of Volto's core {file}`theme.config` file, copying it from {file}`core/packages/volto/theme/theme.config` to use as a starting point.
+The value you provide must be the package name of the add-on that contains the theme.
 
-    ```less
-    /*******************************
-            Theme Selection
-    *******************************/
+```{tip}
+If you are using your project’s default add-on as the theme, set `theme` to your default add-on’s package name.
+```
 
-    /* To override a theme for an individual element specify theme name below */
+## A) Use your default add-on as the theme
 
-    /* Global */
-    @site        : 'pastanaga';
-    @reset       : 'pastanaga';
+This approach is simplest for a single project: keep configuration, customizations, and theme together.
 
-    /* Elements */
-    @button      : 'pastanaga';
-    @container   : 'pastanaga';
-    @divider     : 'pastanaga';
-    @flag        : 'pastanaga';
-    @header      : 'pastanaga';
-    @icon        : 'pastanaga';
-    @image       : 'pastanaga';
-    @input       : 'pastanaga';
-    @label       : 'pastanaga';
-    @list        : 'pastanaga';
-    @loader      : 'pastanaga';
-    @placeholder : 'pastanaga';
-    @rail        : 'pastanaga';
-    @reveal      : 'pastanaga';
-    @segment     : 'pastanaga';
-    @step        : 'pastanaga';
+1) Ensure your default add-on is listed in `addons` (in {file}`volto.config.js` or {file}`package.json`).
 
-    /* Collections */
-    @breadcrumb  : 'pastanaga';
-    @form        : 'pastanaga';
-    @grid        : 'pastanaga';
-    @menu        : 'pastanaga';
-    @message     : 'pastanaga';
-    @table       : 'pastanaga';
+2) Set `theme` to your default add-on’s package name (see examples above).
 
-    /* Modules */
-    @accordion   : 'pastanaga';
-    @checkbox    : 'pastanaga';
-    @dimmer      : 'pastanaga';
-    @dropdown    : 'pastanaga';
-    @embed       : 'pastanaga';
-    @modal       : 'pastanaga';
-    @nag         : 'pastanaga';
-    @popup       : 'pastanaga';
-    @progress    : 'pastanaga';
-    @rating      : 'pastanaga';
-    @search      : 'pastanaga';
-    @shape       : 'pastanaga';
-    @sidebar     : 'pastanaga';
-    @sticky      : 'pastanaga';
-    @tab         : 'pastanaga';
-    @transition  : 'pastanaga';
+3) In your default add-on, create {file}`src/theme/theme.config` and set up the theme (example below). Place any overrides under {file}`src/theme`.
 
-    /* Views */
-    @ad          : 'pastanaga';
-    @card        : 'pastanaga';
-    @comment     : 'pastanaga';
-    @feed        : 'pastanaga';
-    @item        : 'pastanaga';
-    @statistic   : 'pastanaga';
+## B) Create a reusable theme add-on
 
-    /* Extras */
-    @main        : 'pastanaga';
-    @custom      : 'pastanaga';
+This approach is best when you want to reuse the same theme across multiple projects.
 
-    /*******************************
-                Folders
-    *******************************/
+1) Create a Volto add-on package to host your theme (for example, `volto-my-theme`).
 
-    /* Path to theme packages */
-    @themesFolder : '~volto-themes';
+2) In that add-on, create a directory {file}`src/theme` and a {file}`theme.config` file as shown below.
 
-    /* Path to site override folder */
-    @siteFolder  : "<name_of_your_theme>/theme";
+3) Declare the theme add-on in your project’s `addons` and set `theme` to the theme add-on’s package name.
 
-    /*******************************
-             Import Theme
-    *******************************/
+## Semantic UI entry point
 
-    @import (multiple) "~semantic-ui-less/theme.less";
-    @fontPath : "~volto-themes/@{theme}/assets/fonts";
+For both approaches, you should create the entry point files for your theme under {file}`src/theme`.
 
-    .loadAddonOverrides() {
-      @import (optional) "@{siteFolder}/@{addon}/@{addontype}s/@{addonelement}.overrides";
-    }
+```text
+src/
+└── theme/
+    └── extras/
+      └── custom.overrides
+      └── custom.less
+```
 
-    /* End Config */
-    ```
+Contents of {file}`src/theme/extras/custom.overrides`:
 
-3.  Declare the theme as an add-on by adding its name to the value for the `addons` key in either {file}`volto.config.js` or {file}`package.json` in your project.
+```less
+@import 'custom.less';
+/* No declarations beyond this point
+place all your CSS in `custom.less` */
+```
 
-4.  After starting Volto, the theme should be active.
-    Now you can add overrides to the default theme in {file}`src/theme`, the same as you would in a project.
+Contents of {file}`src/theme/extras/custom.less`:
 
+```less
+// Place your theme customizations CSS here
+```
+
+### Example `theme.config`
+
+Create {file}`src/theme/theme.config` in the add-on that hosts the theme.
+Replace `<name_of_your_theme>` with the add-on package name.
+
+```{code} less
+:emphasize-lines: 74
+
+/*******************************
+        Theme Selection
+*******************************/
+
+/* To override a theme for an individual element specify theme name below */
+
+/* Global */
+@site        : 'pastanaga';
+@reset       : 'pastanaga';
+
+/* Elements */
+@button      : 'pastanaga';
+@container   : 'pastanaga';
+@divider     : 'pastanaga';
+@flag        : 'pastanaga';
+@header      : 'pastanaga';
+@icon        : 'pastanaga';
+@image       : 'pastanaga';
+@input       : 'pastanaga';
+@label       : 'pastanaga';
+@list        : 'pastanaga';
+@loader      : 'pastanaga';
+@placeholder : 'pastanaga';
+@rail        : 'pastanaga';
+@reveal      : 'pastanaga';
+@segment     : 'pastanaga';
+@step        : 'pastanaga';
+
+/* Collections */
+@breadcrumb  : 'pastanaga';
+@form        : 'pastanaga';
+@grid        : 'pastanaga';
+@menu        : 'pastanaga';
+@message     : 'pastanaga';
+@table       : 'pastanaga';
+
+/* Modules */
+@accordion   : 'pastanaga';
+@checkbox    : 'pastanaga';
+@dimmer      : 'pastanaga';
+@dropdown    : 'pastanaga';
+@embed       : 'pastanaga';
+@modal       : 'pastanaga';
+@nag         : 'pastanaga';
+@popup       : 'pastanaga';
+@progress    : 'pastanaga';
+@rating      : 'pastanaga';
+@search      : 'pastanaga';
+@shape       : 'pastanaga';
+@sidebar     : 'pastanaga';
+@sticky      : 'pastanaga';
+@tab         : 'pastanaga';
+@transition  : 'pastanaga';
+
+/* Views */
+@ad          : 'pastanaga';
+@card        : 'pastanaga';
+@comment     : 'pastanaga';
+@feed        : 'pastanaga';
+@item        : 'pastanaga';
+@statistic   : 'pastanaga';
+
+/* Extras */
+@main        : 'pastanaga';
+@custom      : 'pastanaga';
+
+/*******************************
+            Folders
+*******************************/
+
+/* Path to theme packages */
+@themesFolder : '~volto-themes';
+
+/* Path to site override folder */
+@siteFolder  : "<name_of_your_theme>/theme";
+
+/*******************************
+          Import Theme
+*******************************/
+
+@import (multiple) "~semantic-ui-less/theme.less";
+@fontPath : "~volto-themes/@{theme}/assets/fonts";
+
+.loadAddonOverrides() {
+  @import (optional) "@{siteFolder}/@{addon}/@{addontype}s/@{addonelement}.overrides";
+}
+
+/* End Config */
+```
+
+After starting Volto, the theme should be active. Now you can add overrides to the default theme in {file}`src/theme` or directly your custom CSS in {file}`src/theme/extras/custom.less`.
 
 ## Using your own theming escape hatch
 
@@ -149,7 +201,7 @@ At the same time, you can either discard or complement the `extras` escape hatch
 Customizing the base theme is a special use case in Volto.
 The original file is in Volto at {file}`volto/src/theme.js`.
 This is the file to be customized.
-In the {file}`customizations` folder, override it as {file}`customizations/@root/theme.js`, using the `@root` alias to avoid writing the full path.
+In the {file}`customizations` folder, override it as {file}`customizations/volto/@root/theme.js`, using the `@root` alias to avoid writing the full path.
 Edit the imports in this file to align with the following code.
 
 ```js
@@ -157,9 +209,10 @@ import 'semantic-ui-less/semantic.less';
 import '@plone/volto/../theme/themes/pastanaga/extras/extras.less';
 
 // You can add more entry points for theming
-import '@kitconcept/volto-light-theme/theme/main.scss';
+// This example assumes you want to use SCSS as preprocessor
+// and your main.scss is in the `src/theme` folder
+import '../../theme/main.scss';
 ```
-
 
 You may want to do this to create a completely new theming experience adapted to your way of doing things that do not match the current Volto theming experience.
 For example, if you want to use another preprocessor in the theme, such as SCSS.
@@ -167,11 +220,16 @@ Or perhaps your client requires the base consist entirely of pre-made components
 See {ref}`volto-custom-theming-strategy` for an example of a custom theme escape hatch.
 
 While building your own escape hatch for theming, you can use the preprocessor of your choice, while maintaining the "base" Volto theme, but customizing it using the resultant CSS.
+If you prefer a CSS-variables-first approach for block styling, see the {ref}`block-style-wrapper-label` guide and use custom CSS properties to theme blocks consistently.
 
 You can see an example of such a theme in [Volto Light Theme](https://github.com/kitconcept/volto-light-theme).
 
+```{important}
+Volto relies on Semantic UI for styling the {term}`Public UI` core components and the {term}`CMSUI`.
+You can use your own theming escape hatch to customize the base theme, but you cannot completely discard Semantic UI.
+```
 
-## Modify a custom theme from another add-on
+## Advanced: Add support for your theme allow being extended by other add-ons
 
 Sometimes you have a custom theme that you want to reuse through all your projects, but with some differences, maintaining the base.
 Usually, the only option would be to use an add-on that adds more CSS to the base theme, using imports that will load after the theme.
@@ -247,5 +305,11 @@ Volto will also detect all the add-ons that have these entry point files, and im
 It will also automatically add an `addonsThemeCustomizationsMain` alias that you can reference from the theme as shown above.
 
 ```{note}
-It will only work in combination with the theme declaration in {file}`volto.config.js` or in {file}`package.json`.
+These SCSS-based extension entry points work only when a theme is declared (in {file}`volto.config.js` or {file}`package.json`).
 ```
+
+## Which approach should I choose?
+
+- Single project, fast iteration: use your default add-on as the theme.
+- Multiple projects, reuse required: create a separate theme add-on.
+- Prefer modern, cascade-friendly styling at block level: use CSS custom properties with the {ref}`block-style-wrapper-label`.
