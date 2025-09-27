@@ -74,10 +74,9 @@ export interface BlockConfigBase {
   /**
    * The group of the block
    */
-  blockSchema: (args: {
-    props: unknown;
-    intl: IntlShape;
-  }) => Record<string, unknown>;
+  blockSchema:
+    | JSONSchema
+    | ((args: { props: unknown; intl: IntlShape }) => JSONSchema);
   dataAdapter?: ({
     block,
     data,
@@ -209,7 +208,7 @@ export type JSONSchemaFieldsets = {
 export type JSONSchema = {
   title: string;
   fieldsets: JSONSchemaFieldsets[];
-  properties: object;
+  properties: Record<string, any>;
   required: string[];
 };
 
