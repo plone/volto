@@ -135,6 +135,7 @@ const BlockView = (props) => (
 
 You can inject nested variables.
 The wrapper prefixes nested keys with the parent key using `--parent--child` naming.
+This is useful for grouping related properties or if the thing that you are styling requires multiple properties.
 
 (inject-nested-custom-css-properties)=
 
@@ -298,11 +299,11 @@ This allows you to customize error appearance via CSS:
 }
 ```
 
-The class is added by the `Edit.jsx` component.
+The class is added automatically by the block engine.
 
 ## Align class injection
 
-While injecting style wrapper classes, the engine also injects `data.align` as a class for layout compatibility.
+While injecting style wrapper classes, the engine also injects `data.align` as a class for layout backwards compatibility.
 Each block editor wrapper has `block-editor-<block_id> <block_align>`, for example:
 
 ```html
@@ -315,7 +316,7 @@ Use this to help position blocks within legacy layouts if needed.
 
 ## Style object builder enhancer
 
-The style wrapper exposes a helper that can programmatically build a style object (inline variables) from block data.
+The style wrapper exposes a helper that can programmatically build or modify a style object (inline variables) from block data.
 Register a utility of type `styleWrapperStyleObjectEnhancer`:
 
 ```ts
