@@ -53,6 +53,43 @@ See {ref}`upgrade-18-cookieplone-label` for details.
 Volto 19 no longer includes automated tests for compatibility with Plone 5.
 While it may still work with Plone 5 backends in some cases, we recommend upgrading to Plone 6 for full compatibility and support.
 
+### Image component migration required
+```{versionchanged} Volto 19
+```
+
+Raw `<img>` tags are now restricted in favor of the centralized `Image` component.
+
+#### What changed
+
+- All `<img>` tags in Volto core have been replaced with the `Image` component from `@plone/volto/components/theme/Image/Image`.
+- A new ESLint rule (`no-restricted-syntax`) now prevents the use of raw `<img>` tags.
+- This change prepares the code base for future image URL prefixing functionality.
+
+#### Required action for add-ons
+
+Replace all `<img>` tags with the `Image` component, as shown in the following example.
+
+❌ Before. This code form will now trigger an ESLint error.
+
+```jsx
+<img src={imageUrl} alt="Description" className="my-image" />
+```
+
+✅ After
+
+```jsx
+import Image from '@plone/volto/components/theme/Image/Image';
+
+<Image src={imageUrl} alt="Description" className="my-image" />
+```
+
+#### ESLint rule error message
+
+The new ESLint rule will show the following error message when you use the `<img>` tag.
+
+```console
+Use the Image component from '@plone/volto/components/theme/Image/Image' instead of <img> tag.
+```
 
 ### Removed packages `@plone/generator-volto`, `@plone/volto-guillotina`, and `@plone/volto-testing`
 ```{versionremoved} Volto 19
