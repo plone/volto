@@ -8,6 +8,44 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0-alpha.0 (2025-05-24)
+
+### Breaking
+
+- Rationalize and improve @plone/components icons handling. @sneridagh [#6779](https://github.com/plone/volto/issues/6779)
+- Refactored and revamped `Icon` component. @sneridagh [#6946](https://github.com/plone/volto/issues/6946)
+
+### Feature
+
+- Add ArrayWidget with creatable support. @iFlameing [#6646](https://github.com/plone/volto/issues/6646)
+- Add own Vite SVGR plugin proxy. @sneridagh [#6779](https://github.com/plone/volto/issues/6779)
+- Added Tailwind components support. @sneridagh [#6795](https://github.com/plone/volto/issues/6795)
+- Added `Container` Tailwind-based component. @sneridagh [#6899](https://github.com/plone/volto/issues/6899)
+- 'Improved `Container` Tailwind component, added `width` variant. @sneridagh [#6927](https://github.com/plone/volto/issues/6927)
+- Tailwind `Button` component. @sneridagh [#6946](https://github.com/plone/volto/issues/6946)
+- Added Tailwind basic TextField component. @sneridagh [#6977](https://github.com/plone/volto/issues/6977)
+- Added `Accordion` Tailwind component. @sneridagh [#7003](https://github.com/plone/volto/issues/7003)
+- Improve `Button`, added missing variant and sizes. @sneridagh [#7003](https://github.com/plone/volto/issues/7003)
+- Tailwind Link and Breadcrumbs components. @sneridagh [#7042](https://github.com/plone/volto/issues/7042)
+
+### Bugfix
+
+- Tailwind Accordion component icon fix. @sneridagh [#7040](https://github.com/plone/volto/issues/7040)
+
+### Internal
+
+- Use ESlint 9, fix code. @sneridagh [#6775](https://github.com/plone/volto/issues/6775)
+- Update vitest packages to match the catalog. @sneridagh [#6777](https://github.com/plone/volto/issues/6777)
+- The main CSS for the Tailwind components now is located in the `@plone/theming` package (`../../theming/styles/main.css`) but it does not have a direct dependency on it. Just use it from the monorepo. @sneridagh [#6899](https://github.com/plone/volto/issues/6899)
+- Build the Tailwind components in `@plone/components/tailwind`. @sneridagh [#6899](https://github.com/plone/volto/issues/6899)
+- Update `vitest` version to catalog. @sneridagh [#6916](https://github.com/plone/volto/issues/6916)
+- Build Storybook in readthedocs.io @sneridagh [#6938](https://github.com/plone/volto/issues/6938)
+
+### Documentation
+
+- Added Storybook for `Container` Tailwind component. @sneridagh [#6928](https://github.com/plone/volto/issues/6928)
+- Improve Storybook documentation, reorganize components. @sneridagh [#6940](https://github.com/plone/volto/issues/6940)
+
 ## 3.0.2 (2025-02-08)
 
 ### Internal

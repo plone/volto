@@ -1,0 +1,1 @@
+Fixed `registerWidget` ssr error with dedicated APIs for default and generic Widgets. @deodorhunter

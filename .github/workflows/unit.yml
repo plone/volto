@@ -68,6 +68,9 @@ jobs:
 
       - run: pnpm i
 
+      - name: Build @plone/registry
+        run: pnpm --filter @plone/registry build
+
       - name: Run unit tests @plone/registry
         run: pnpm --filter @plone/registry test
 

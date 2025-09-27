@@ -1,0 +1,1 @@
+Add widget registration and getting widgets from config with new methods. @deodorhunter

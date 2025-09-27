@@ -8,6 +8,8 @@ export interface GetSiteResponse {
   'plone.portal_timezone': string;
   features: {
     [key: string]: unknown;
+    filter_aliases_by_date?: boolean;
+    multilingual?: boolean;
   };
   'plone.available_languages': {
     [key: string]: string;

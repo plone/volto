@@ -16,7 +16,7 @@ export interface Expanders {
   contextnavigation: ContextNavigationResponse;
   navigation: NavigationResponse;
   navroot: GetNavrootResponse;
-  site: GetSiteResponse;
+  site?: GetSiteResponse;
   types: GetTypesResponse;
   workflow: WorkflowResponse;
 }

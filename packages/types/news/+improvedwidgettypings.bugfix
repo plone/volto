@@ -1,0 +1,3 @@
+Improved widgets typings.
+Exported missing intl typings helpers.
+Added BlockSchemaProps typings. @sneridagh

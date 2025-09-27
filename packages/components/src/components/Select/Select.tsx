@@ -16,8 +16,8 @@ import {
   type ValidationResult,
 } from 'react-aria-components';
 
-import { ChevrondownIcon } from '../Icons/ChevrondownIcon';
-import { ChevronupIcon } from '../Icons/ChevronupIcon';
+import { ChevrondownIcon } from '../icons/ChevrondownIcon';
+import { ChevronupIcon } from '../icons/ChevronupIcon';
 
 export interface SelectProps<T extends object>
   extends Omit<RACSelectProps<T>, 'children'> {

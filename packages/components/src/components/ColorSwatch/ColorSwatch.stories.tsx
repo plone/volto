@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { ColorSwatch } from './ColorSwatch';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/ColorSwatch.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Widgets/ColorSwatch',
+  title: 'Basic/Forms/ColorSwatch',
   component: ColorSwatch,
   parameters: {
     layout: 'centered',

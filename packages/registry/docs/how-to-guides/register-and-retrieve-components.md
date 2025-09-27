@@ -98,10 +98,6 @@ In the next example, given a content type value coming from the `content` prop, 
 
 ## Lazy load components
 
-```{todo}
-Test it properly.
-```
-
 You can lazy load the component in the registry, too, if you need it.
 
 ```js

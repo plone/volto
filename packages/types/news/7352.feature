@@ -1,0 +1,1 @@
+Added language switcher in Seven. @nileshgulia1
