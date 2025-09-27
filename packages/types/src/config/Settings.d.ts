@@ -28,6 +28,23 @@ type styleClassNameExtendersType = ({
   classNames: string[];
 }) => string[];
 
+type PlateConfig = {
+  editorConfig: {
+    plugins: any[];
+    [key: string]: unknown;
+  };
+  rendererConfig: {
+    plugins: any[];
+    [key: string]: unknown;
+  };
+  floatingToolbarButtons?: React.ComponentType<any>;
+};
+
+interface PlateSettings {
+  presets: Record<string, PlateConfig>;
+  block: PlateConfig;
+}
+
 export interface SettingsConfig {
   [key: string]: unknown;
   host: string;
@@ -108,4 +125,5 @@ export interface SettingsConfig {
   };
   cssLayers: string[];
   hideBreadcrumbs: string[]; // Content types for which to hide breadcrumbs
+  plate: PlateSettings | Record<string, never>;
 }
