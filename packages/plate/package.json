@@ -39,7 +39,9 @@
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
-    "release-alpha": "release-it --preRelease=alpha"
+    "release-alpha": "release-it --preRelease=alpha",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "peerDependencies": {
     "react": "^18.2.0 || ^19.0.0",
@@ -130,21 +132,28 @@
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
+    "@storybook/addon-docs": "^9.1.7",
+    "@storybook/addon-links": "^9.1.7",
+    "@storybook/react-vite": "^9.1.7",
+    "@tailwindcss/vite": "catalog:",
     "@testing-library/cypress": "^10.0.3",
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "catalog:",
     "@types/jest-axe": "^3.5.7",
-    "@types/node": "^20",
+    "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
     "eslint-plugin-storybook": "^0.11.2",
     "jest-axe": "^8.0.0",
     "jotai-devtools": "^0.11.0",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "release-it": "catalog:",
+    "storybook": "^9.1.7",
     "tsconfig": "workspace:*",
     "typescript": "catalog:",
     "vite": "catalog:",
+    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "catalog:",
     "vitest-axe": "^0.1.0"
   }
