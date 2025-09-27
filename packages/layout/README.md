@@ -8,4 +8,4 @@ This package provides default structural slots for Plone 7 and the API-first sto
 > Breaking changes may occur without notice.
 >
 > It serves as a support for the demos in the `apps` folder.
-> Its actively developed version is located in the `seven` branch, and was renamed to `@plone/layout`.
+> Its actively developed version is located in the `seven` branch, and was renamed to `@plone/layout` in May 2025.

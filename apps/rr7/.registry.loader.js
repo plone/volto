@@ -4,7 +4,7 @@ Instead, change the "addons" setting in your package.json file.
 */
 
 import ploneblocks from '@plone/blocks';
-import ploneslots from '@plone/slots';
+import ploneslots from '@plone/layout';
 
 const addonsInfo = [
   {
@@ -20,7 +20,7 @@ const addonsInfo = [
     addons: [],
   },
   {
-    name: '@plone/slots',
+    name: '@plone/layout',
     version: '1.0.0',
     isPublishedPackage: true,
     isRegisteredAddon: true,

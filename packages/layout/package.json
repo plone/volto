@@ -1,5 +1,5 @@
 {
-  "name": "@plone/slots",
+  "name": "@plone/layout",
   "description": "Plone core slots like Header, Footer, etc",
   "maintainers": [
     {
