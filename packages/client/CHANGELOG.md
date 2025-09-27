@@ -10,8 +10,6 @@
 
 ## 2.0.0-alpha.0 (2025-05-24)
 
-## 1.0.0-alpha.24 (2025-05-24)
-
 ### Feature
 
 - Refactor plone client. @robgietema [#6889](https://github.com/plone/volto/pull/6889)
@@ -20,7 +18,7 @@
 
 - Fixed handling of errors that are not coming from the backend @pnicolli [#6901](https://github.com/plone/volto/pull/6901)
 - Fixed name of the getType parameter @pnicolli [#6906](https://github.com/plone/volto/pull/6906)
-- Fixed client test in `@types` endpoint. @sneridagh 
+- Fixed client test in `@types` endpoint. @sneridagh
 
 ### Internal
 
