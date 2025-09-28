@@ -1,8 +1,8 @@
 ---
 myst:
   html_meta:
-    "description": "Wraps edit and view components to apply schema-defined styles via generated class names and custom CSS properties (recommended)."
-    "property=og:description": "Wraps edit and view components to apply schema-defined styles via generated class names and custom CSS properties (recommended)."
+    "description": "The block style wrapper is part of a block anatomy. It allows you to inject styles from the block schema into the block wrapper in the form of class names."
+    "property=og:description": "The block style wrapper is part of a block anatomy. It allows you to inject styles from the block schema into the block wrapper in the form of class names."
     "property=og:title": "Blocks - Style Wrapper"
     "keywords": "Volto, Plone, frontend, React, Blocks, Edit, Style, Wrapper, components, CSS variables"
 ---
@@ -14,11 +14,11 @@ myst:
 ```{versionadded} 16.0.0
 ```
 
-The Style Wrapper is part of a block’s anatomy.
+The block style wrapper is part of a block’s anatomy.
 It wraps both the edit and view components, and applies styles declared in the block schema in two ways:
 
-- Custom CSS properties (recommended)
-- Generated class names
+- {ref}`block-style-wrapper-custom-css-properties-label`
+- {ref}`block-style-wrapper-generated-class-names-label`
 
 The wrapper is always present.
 Enable styling by adding a `styles` object field to your block schema.
@@ -33,7 +33,7 @@ Use generated class names for discrete, pre-defined variants.
 ## Quick start
 
 Add a `styles` object to your block schema.
-You can do it manually or via the `addStyling` helper.
+Instead of doing it manually every time, use the `addStyling` helper:
 
 ```js
 import { addStyling } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
@@ -73,6 +73,7 @@ Use `addStyling`, or add it manually as an `object` widget.
 Values defined in `styles` are injected by the wrapper in edit and view components.
 ```
 
+(block-style-wrapper-custom-css-properties-label)=
 ## Custom CSS properties (recommended)
 
 ```{versionadded} 17.8.0
@@ -158,7 +159,7 @@ schema.properties.styles.schema.properties['theme'] = {
 };
 ```
 
-It will generate values for the Style Wrapper to use:
+It will generate values for the block style wrapper to use:
 
 ```js
 {
@@ -233,6 +234,7 @@ This yields inline variables without the prefix:
 </div>
 ```
 
+(block-style-wrapper-generated-class-names-label)=
 ## Generated class names
 
 The wrapper can generate class names from the `styles` object.
