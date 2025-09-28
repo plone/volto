@@ -34,11 +34,10 @@ For convenience, it can also be set via a `THEME` environment variable.
 ### Use your project's default add-on as the theme
 
 This approach is simplest for a single project.
-It keeps configuration, customizations, and the theme together.
-
-1. Ensure your default add-on is listed in `addons` (in {file}`volto.config.js` or {file}`package.json`).
-1. Set `theme` to your default add-on’s package name (see examples above).
-1. In your default add-on, create {file}`src/theme/theme.config` and set up the theme (example below). Place any overrides under {file}`src/theme`.
+1.  Ensure your default add-on is listed in `addons`, either in {file}`volto.config.js` or {file}`package.json`.
+1.  Set `theme` to your default add-on's package name, as described in {ref}`select-the-active-theme-label`.
+1.  In your default add-on, create a file {file}`src/theme/theme.config`, and set up the theme, as shown in the example in {ref}`select-the-active-theme-label`.
+    Place any overrides under {file}`src/theme`.
 
 (create-a-reusable-theme-add-on-label)=
 ### Create a reusable theme add-on
