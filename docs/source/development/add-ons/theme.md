@@ -25,7 +25,7 @@ For convenience, it can also be set via a `THEME` environment variable.
 
 ## Select the active theme
 
-You can declare the active theme in one of three ways (first two are preferred):
+You can declare the active theme in two ways (first one is preferred):
 
 1.  In the file {file}`volto.config.js` at the project root.
 
