@@ -133,7 +133,7 @@ const BlockView = (props) => (
 [CSS custom properties basics](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties)
 ```
 
-## Nested custom CSS properties
+### Nested custom CSS properties
 
 You can inject nested variables.
 The wrapper prefixes nested keys with the parent key using `--parent--child` naming.
@@ -141,7 +141,7 @@ This is useful for grouping related properties, or if the thing that you're styl
 
 (inject-nested-custom-css-properties)=
 
-### Inject nested custom CSS properties
+#### Inject nested custom CSS properties
 
 Given this enhancer:
 
@@ -208,7 +208,7 @@ const colors: StyleDefinition[] = [
 ```
 ````
 
-### Avoid injecting nested prefixes
+#### Avoid injecting nested prefixes
 
 When you need exact variable names without a parent prefix, append the `:noprefix` suffix to the field name in your enhancer.
 
@@ -293,7 +293,7 @@ Generates: `primary inverted`.
 ## Error class for blocks
 
 When a user submits data and the block has a validation error (for example, via `blocksErrors`), the wrapper automatically adds the `error` class.
-This allows you to customize error appearance via CSS:
+This allows you to customize the appearance of errors via CSS:
 
 ```css
 .block.error {
