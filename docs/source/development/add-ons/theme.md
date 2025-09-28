@@ -11,10 +11,13 @@ myst:
 
 Volto supports two practical ways to theme a site:
 
-- Use your project’s default add-on as the theme (single add-on)
-- Create a separate, reusable theme add-on (multi-project reuse)
+-   Use your project's default add-on as the theme.
+    This option is practical when you want to have a single combined add-on for the exclusive use of your project and not reuse it for other projects.
+-   Create a separate, reusable theme add-on.
+    This option is practical when you want to reuse your theme add-on for multiple projects.
 
-Both approaches use the same mechanics under the hood. Pick the one that fits your needs, then follow the matching setup below.
+Both approaches use the same mechanics under the hood.
+Pick the one that fits your needs, then follow the matching setup below.
 
 The file {file}`volto.config.js` provides the ability to programmatically declare add-ons and the active theme.
 See {ref}`volto-config-js` for more information.
@@ -24,7 +27,7 @@ For convenience, it can also be set via a `THEME` environment variable.
 
 You can declare the active theme in one of three ways (first two are preferred):
 
-1) {file}`volto.config.js` at the project root
+1.  In the file {file}`volto.config.js` at the project root.
 
     ```js
     module.exports = {
@@ -33,7 +36,7 @@ You can declare the active theme in one of three ways (first two are preferred):
     };
     ```
 
-2) Environment variable when starting Volto
+2.  Use the `THEME` environment variable when starting Volto.
 
     ```shell
     THEME='volto-my-theme' pnpm start
