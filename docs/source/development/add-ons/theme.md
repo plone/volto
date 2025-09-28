@@ -31,9 +31,7 @@ This approach is simplest for a single project.
 It keeps configuration, customizations, and the theme together.
 
 1. Ensure your default add-on is listed in `addons` (in {file}`volto.config.js` or {file}`package.json`).
-
 1. Set `theme` to your default add-on’s package name (see examples above).
-
 1. In your default add-on, create {file}`src/theme/theme.config` and set up the theme (example below). Place any overrides under {file}`src/theme`.
 
 (create-a-reusable-theme-add-on-label)=
@@ -42,6 +40,7 @@ It keeps configuration, customizations, and the theme together.
 This approach is best when you want to reuse the same theme across multiple projects.
 
 1.  Create a Volto add-on package to host your theme, for example, `volto-my-theme`.
+1.  Ensure your theme add-on is listed in `addons` (in {file}`volto.config.js` or {file}`package.json`).
 1.  In that add-on, create a directory {file}`src/theme` and a {file}`theme.config` file as shown below.
 1.  Declare the theme add-on in your project's `addons`, and set `theme` to the theme add-on's package name.
 
