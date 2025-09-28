@@ -15,13 +15,14 @@ myst:
 ```
 
 The Style Wrapper is part of a block’s anatomy.
-It wraps both the edit and view components and applies styles declared in the block schema in two ways:
+It wraps both the edit and view components, and applies styles declared in the block schema in two ways:
 
 - Custom CSS properties (recommended)
 - Generated class names
 
-The wrapper is always present; enable styling by adding a `styles` object field to your block schema.
-The wrapper reads values from `styles` and injects them into edit and view.
+The wrapper is always present.
+Enable styling by adding a `styles` object field to your block schema.
+The wrapper reads values from the `styles` object and injects them into the edit and view components.
 
 ```{tip}
 Prefer custom CSS properties.
@@ -64,12 +65,12 @@ config.blocks.blocksConfig.listing.schemaEnhancer = composeSchema(
   config.blocks.blocksConfig.listing.schemaEnhancer,
   addStyling,
   addMyCustomColorStylingField,
-);
 ```
 
 ```{note}
-The `styles` field is not added automatically; use `addStyling` or add it manually as an `object` widget.
-Values defined in `styles` are injected by the wrapper in edit and view.
+The `styles` field is not added automatically.
+Use `addStyling`, or add it manually as an `object` widget.
+Values defined in `styles` are injected by the wrapper in edit and view components.
 ```
 
 ## Custom CSS properties (recommended)
@@ -114,10 +115,10 @@ Resulting markup (with default selected):
 <div class="block teaser" style="--image-aspect-ratio: 1">
   <img src="example.png" />
   ...
-  </div>
+</div>
 ```
 
-Using injected properties in a custom block view component:
+Use injected properties in a custom block view component:
 
 ```jsx
 const BlockView = (props) => (
@@ -135,7 +136,7 @@ const BlockView = (props) => (
 
 You can inject nested variables.
 The wrapper prefixes nested keys with the parent key using `--parent--child` naming.
-This is useful for grouping related properties or if the thing that you are styling requires multiple properties.
+This is useful for grouping related properties, or if the thing that you're styling requires multiple properties.
 
 (inject-nested-custom-css-properties)=
 
@@ -170,7 +171,7 @@ It will generate values for the Style Wrapper to use:
 }
 ```
 
-Resulting inline variables (note the `--theme--…` prefix):
+Resulting inline variables will have the injected `--theme--` prefix:
 
 ```html
 <div class="block teaser" style="--theme--background-color: #222; --theme--font-color: white">
@@ -179,7 +180,7 @@ Resulting inline variables (note the `--theme--…` prefix):
 ```
 
 ````{note}
-The `color_picker` widget given a list of `StyleDefinition` objects, it will save the selected color as a nested object of CSS custom properties.
+The `color_picker` widget, when given a list of `StyleDefinition` objects, will save the selected color as a nested object of CSS custom properties.
 This is a common pattern for theming controls.
 
 ```ts
@@ -237,6 +238,9 @@ This yields inline variables without the prefix:
 The wrapper can generate class names from the `styles` object.
 This is useful when mapping discrete, curated style tokens to theme classes.
 
+Class names are built by concatenating key–value pairs with `--` and prefixing with `has--`.
+One level of nesting is supported.
+
 Given:
 
 ```json
@@ -252,16 +256,13 @@ Given:
 }
 ```
 
-Class names are built by concatenating key–value pairs with `--` and prefixing with `has--`.
-One level of nesting is supported.
-
 Resulting classes:
 
 ```html
 <div class="has--backgroundColor--ee22ee has--myCustomStyleField--red has--myCustom2StyleField--color--black has--myCustom2StyleField--gradient--MyGradient">
 ```
 
-Forward the injected `className` to the root element in your view component:
+Pass the injected `className` to the root element in your view component:
 
 ```jsx
 const BlockView = (props) => (
@@ -327,7 +328,7 @@ config.registerUtility({
 });
 ```
 
-Signature:
+The registered utility has the following signature.
 
 ```ts
 type blockThemesEnhancerType = ({
@@ -339,14 +340,16 @@ type blockThemesEnhancerType = ({
 }) => Record<`--${string}`, string>;
 ```
 
-`data` is the current block, and `container` is its parent block when applicable.
-Return a record of CSS custom properties to inject.
+`data` is the current block, and `container` is its parent block, when applicable.
+The utility returns a record of CSS custom properties to inject.
 
 ## Best practices
 
-- Prefer custom CSS properties for most styling needs; they compose well and avoid class name bloat.
+- Prefer custom CSS properties for most styling needs.
+  They compose well and avoid class name bloat.
 - Reserve generated classes for semantic variants that map to predefined theme classes.
 - Keep `styles` values human-friendly in the UI, but map to robust tokens in CSS.
-- Avoid mixing both mechanisms for the same concern; pick variables or classes per concern.
-- Always forward `className` and/or `style` to your block’s root element in the view component.
+- Avoid mixing both mechanisms for the same concern.
+  Pick variables or classes per concern.
+- Always pass `className` or `style` to your block's root element in the view component.
 
