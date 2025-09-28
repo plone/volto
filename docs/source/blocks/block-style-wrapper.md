@@ -288,7 +288,11 @@ For example:
 }
 ```
 
-Generates: `primary inverted`.
+Generates:
+
+```css
+primary inverted
+```
 
 ## Error class for blocks
 
