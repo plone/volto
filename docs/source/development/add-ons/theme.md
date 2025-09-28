@@ -23,6 +23,26 @@ The file {file}`volto.config.js` provides the ability to programmatically declar
 See {ref}`volto-config-js` for more information.
 For convenience, it can also be set via a `THEME` environment variable.
 
+## Use your default add-on as the theme
+
+This approach is simplest for a single project: keep configuration, customizations, and theme together.
+
+1. Ensure your default add-on is listed in `addons` (in {file}`volto.config.js` or {file}`package.json`).
+
+1. Set `theme` to your default add-on’s package name (see examples above).
+
+1. In your default add-on, create {file}`src/theme/theme.config` and set up the theme (example below). Place any overrides under {file}`src/theme`.
+
+## or create a reusable theme add-on
+
+This approach is best when you want to reuse the same theme across multiple projects.
+
+1. Create a Volto add-on package to host your theme (for example, `volto-my-theme`).
+
+1. In that add-on, create a directory {file}`src/theme` and a {file}`theme.config` file as shown below.
+
+1. Declare the theme add-on in your project’s `addons` and set `theme` to the theme add-on’s package name.
+
 ## Select the active theme
 
 You can declare the active theme in two ways (first one is preferred):
@@ -47,26 +67,6 @@ The value you provide must be the package name of the add-on that contains the t
 ```{tip}
 If you are using your project’s default add-on as the theme, set `theme` to your default add-on’s package name.
 ```
-
-## A) Use your default add-on as the theme
-
-This approach is simplest for a single project: keep configuration, customizations, and theme together.
-
-1) Ensure your default add-on is listed in `addons` (in {file}`volto.config.js` or {file}`package.json`).
-
-2) Set `theme` to your default add-on’s package name (see examples above).
-
-3) In your default add-on, create {file}`src/theme/theme.config` and set up the theme (example below). Place any overrides under {file}`src/theme`.
-
-## B) Create a reusable theme add-on
-
-This approach is best when you want to reuse the same theme across multiple projects.
-
-1) Create a Volto add-on package to host your theme (for example, `volto-my-theme`).
-
-2) In that add-on, create a directory {file}`src/theme` and a {file}`theme.config` file as shown below.
-
-3) Declare the theme add-on in your project’s `addons` and set `theme` to the theme add-on’s package name.
 
 ## Semantic UI entry point
 
