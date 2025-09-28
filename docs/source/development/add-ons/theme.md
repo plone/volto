@@ -13,7 +13,7 @@ Volto supports two practical ways to theme a site:
 
 -   {ref}`use-your-projects-default-add-on-as-the-theme-label`.
     This option is practical when you want to have a single combined add-on for the exclusive use of your project and not reuse it for other projects.
--   Create a separate, reusable theme add-on.
+-   {ref}`create-a-reusable-theme-add-on-label`.
     This option is practical when you want to reuse your theme add-on for multiple projects.
 
 Both approaches use the same mechanics under the hood.
