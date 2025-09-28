@@ -9,7 +9,13 @@ myst:
 
 # Create a Volto theme add-on
 
-Volto supports two practical ways to theme a site:
+This chapter describes how to create a Volto theme add-on, helping you choose an appropriate method.
+It also covers tips and advanced topics for structuring your theme add-ons.
+
+
+## Choose an approach
+
+Volto supports two practical approaches to theme a site:
 
 -   {ref}`use-your-projects-default-add-on-as-the-theme-label`.
     This option is practical when you want to have a single combined add-on for the exclusive use of your project and not reuse it for other projects.
@@ -25,7 +31,7 @@ For convenience, it can also be set via a `THEME` environment variable.
 
 
 (use-your-projects-default-add-on-as-the-theme-label)=
-## Use your project's default add-on as the theme
+### Use your project's default add-on as the theme
 
 This approach is simplest for a single project.
 It keeps configuration, customizations, and the theme together.
@@ -35,7 +41,7 @@ It keeps configuration, customizations, and the theme together.
 1. In your default add-on, create {file}`src/theme/theme.config` and set up the theme (example below). Place any overrides under {file}`src/theme`.
 
 (create-a-reusable-theme-add-on-label)=
-## Create a reusable theme add-on
+### Create a reusable theme add-on
 
 This approach is best when you want to reuse the same theme across multiple projects.
 
