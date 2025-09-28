@@ -7,7 +7,7 @@ myst:
     "keywords": "Volto, Plone, frontend, React, Custom, Styling, Semantic UI, LESS, Pastanaga"
 ---
 
-# Semantic UI Custom Styling
+# Semantic UI custom styling
 
 ```{include} ../_inc/_semantic-ui-deprecation.md
 ```

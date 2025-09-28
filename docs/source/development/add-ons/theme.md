@@ -11,21 +11,24 @@ myst:
 
 Volto supports two practical ways to theme a site:
 
--   Use your project's default add-on as the theme.
+-   {ref}`use-your-projects-default-add-on-as-the-theme-label`.
     This option is practical when you want to have a single combined add-on for the exclusive use of your project and not reuse it for other projects.
 -   Create a separate, reusable theme add-on.
     This option is practical when you want to reuse your theme add-on for multiple projects.
 
 Both approaches use the same mechanics under the hood.
-Pick the one that fits your needs, then follow the matching setup below.
+Pick the option that better fits your needs, then follow its corresponding documentation below.
 
 The file {file}`volto.config.js` provides the ability to programmatically declare add-ons and the active theme.
 See {ref}`volto-config-js` for more information.
 For convenience, it can also be set via a `THEME` environment variable.
 
-## Use your default add-on as the theme
 
-This approach is simplest for a single project: keep configuration, customizations, and theme together.
+(use-your-projects-default-add-on-as-the-theme-label)=
+## Use your project's default add-on as the theme
+
+This approach is simplest for a single project.
+It keeps configuration, customizations, and the theme together.
 
 1. Ensure your default add-on is listed in `addons` (in {file}`volto.config.js` or {file}`package.json`).
 
@@ -33,19 +36,22 @@ This approach is simplest for a single project: keep configuration, customizatio
 
 1. In your default add-on, create {file}`src/theme/theme.config` and set up the theme (example below). Place any overrides under {file}`src/theme`.
 
-## or create a reusable theme add-on
+(create-a-reusable-theme-add-on-label)=
+## Create a reusable theme add-on
 
 This approach is best when you want to reuse the same theme across multiple projects.
 
-1. Create a Volto add-on package to host your theme (for example, `volto-my-theme`).
+1.  Create a Volto add-on package to host your theme, for example, `volto-my-theme`.
+1.  In that add-on, create a directory {file}`src/theme` and a {file}`theme.config` file as shown below.
+1.  Declare the theme add-on in your project's `addons`, and set `theme` to the theme add-on's package name.
 
-1. In that add-on, create a directory {file}`src/theme` and a {file}`theme.config` file as shown below.
-
-1. Declare the theme add-on in your project’s `addons` and set `theme` to the theme add-on’s package name.
-
+(select-the-active-theme-label)=
 ## Select the active theme
 
-You can declare the active theme in two ways (first one is preferred):
+For both of the foregoing methods to create a Volto theme add-on, you'll next need to declare the active theme.
+
+You can declare the active theme in either of the two following ways, the first of which is preferred.
+The value you provide for your theme must be the package name of the add-on that contains the theme.
 
 1.  In the file {file}`volto.config.js` at the project root.
 
@@ -62,15 +68,13 @@ You can declare the active theme in two ways (first one is preferred):
     THEME='volto-my-theme' pnpm start
     ```
 
-The value you provide must be the package name of the add-on that contains the theme.
-
 ```{tip}
-If you are using your project’s default add-on as the theme, set `theme` to your default add-on’s package name.
+If you use your project's default add-on as the theme, set `theme` to your default add-on's package name.
 ```
 
 ## Semantic UI entry point
 
-For both approaches, you should create the entry point files for your theme under {file}`src/theme`.
+Again, for both approaches, you should create the entry point files for your theme under {file}`src/theme`.
 
 ```text
 src/
@@ -193,7 +197,8 @@ Replace `<name_of_your_theme>` with the add-on package name.
 /* End Config */
 ```
 
-After starting Volto, the theme should be active. Now you can add overrides to the default theme in {file}`src/theme` or directly your custom CSS in {file}`src/theme/extras/custom.less`.
+After starting Volto, the theme should be active.
+Now you can add overrides to the default theme in {file}`src/theme` or directly with your custom CSS in {file}`src/theme/extras/custom.less`.
 
 ## Using your own theming escape hatch
 
@@ -224,7 +229,7 @@ Or perhaps your client requires the base consist entirely of pre-made components
 See {ref}`volto-custom-theming-strategy` for an example of a custom theme escape hatch.
 
 While building your own escape hatch for theming, you can use the preprocessor of your choice, while maintaining the "base" Volto theme, but customizing it using the resultant CSS.
-If you prefer a CSS-variables-first approach for block styling, see the {ref}`block-style-wrapper-label` guide and use custom CSS properties to theme blocks consistently.
+If you prefer a CSS variables-first approach for block styling, see the {ref}`block-style-wrapper-label` guide, and use custom CSS properties to theme blocks consistently.
 
 You can see an example of such a theme in [Volto Light Theme](https://github.com/kitconcept/volto-light-theme).
 
@@ -233,7 +238,7 @@ Volto relies on Semantic UI for styling the {term}`Public UI` core components an
 You can use your own theming escape hatch to customize the base theme, but you cannot completely discard Semantic UI.
 ```
 
-## Advanced: Add support for your theme allow being extended by other add-ons
+## Advanced: extend your theme in other add-ons
 
 Sometimes you have a custom theme that you want to reuse through all your projects, but with some differences, maintaining the base.
 Usually, the only option would be to use an add-on that adds more CSS to the base theme, using imports that will load after the theme.
@@ -309,7 +314,7 @@ Volto will also detect all the add-ons that have these entry point files, and im
 It will also automatically add an `addonsThemeCustomizationsMain` alias that you can reference from the theme as shown above.
 
 ```{note}
-These SCSS-based extension entry points work only when a theme is declared (in {file}`volto.config.js` or {file}`package.json`).
+These SCSS-based extension entry points work only when a theme is declared in either {file}`volto.config.js` or {file}`package.json`.
 ```
 
 ## Which approach should I choose?
