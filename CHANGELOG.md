@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 16.34.1 (2025-09-29)
+
+### Bugfix
+
+- Added guard in API REDUX middleware. @sneridagh [#7412](https://github.com/plone/volto/issues/7412)
+
 ## 16.34.0 (2025-08-25)
 
 ### Feature
