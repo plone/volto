@@ -1,1 +1,0 @@
-Fixed the load of the default layers ensuring they are on top, using a React 19 managed `<link>`. @sneridagh
