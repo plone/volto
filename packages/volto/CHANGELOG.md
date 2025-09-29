@@ -17,6 +17,14 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.27.2 (2025-09-29)
+
+### Bugfix
+
+- Update folder content search input to announce result count for screen readers on search or input change. @Wagner3UB [#7305](https://github.com/plone/volto/issues/7305)
+- Check if we are editing a content type before rendering the Content Type control panel form. @ericof [#7396](https://github.com/plone/volto/issues/7396)
+- Added guard in API REDUX middleware. @sneridagh [#7412](https://github.com/plone/volto/issues/7412)
+
 ## 18.27.1 (2025-09-26)
 
 ### Bugfix
