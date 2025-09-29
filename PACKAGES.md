@@ -52,7 +52,6 @@ The bundle of these packages must work on both CommonJS and ECMAScript Module (E
 
 -   `@plone/providers`
 -   `@plone/helpers`
--   `@plone/react-router`
 
 
 ### Rules
@@ -67,8 +66,6 @@ This bundle must work on both CommonJS and ESM environments.
 -   `@plone/blocks`
 -   `@plone/slots`
 -   `@plone/theming`
--   `@plone/cmsui`
--   `@plone/contents`
 
 
 ### Rules
