@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.1 (2025-09-29)
+
+### Internal
+
+- Moved auth helpers to the react-router package. @pnicolli [#7134](https://github.com/plone/volto/issues/7134)
+- Update to latest versions. @sneridagh [#7298](https://github.com/plone/volto/issues/7298)
+
 ## 2.0.0-alpha.0 (2025-05-24)
 
 ### Feature
