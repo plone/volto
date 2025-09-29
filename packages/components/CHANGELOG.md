@@ -7,6 +7,47 @@
 -->
 
 <!-- towncrier release notes start -->
+## 4.0.0-alpha.1 (2025-09-29)
+
+### Breaking
+
+- Rearrangement of the package structure. @sneridagh
+
+  BREAKING:
+  - Renaming imports path from `tailwind` to `quanta`.
+  - Rename all the Quanta components to have the `quanta` suffix. [#7185](https://github.com/plone/volto/issues/7185)
+- - Unify `Breadcrumbs` component implementations, while removing the custom `BreadcrumbsPrimitive` implementation since it's no longer needed. @sneridagh [#7196](https://github.com/plone/volto/issues/7196)
+
+### Feature
+
+- Add react-aria-components Tree component integration. @deodorhunter [#4352](https://github.com/plone/volto/issues/4352)
+- Added sitemap route. @ksuess [#6695](https://github.com/plone/volto/issues/6695)
+- Add react-aria-components Tabs component. @ionlizarazu [#7127](https://github.com/plone/volto/issues/7127)
+- Create DateTimePicker, DatePicker, TimeField and DateInput components. @rboixaderg [#7131](https://github.com/plone/volto/issues/7131)
+- Added react-aria-components RadioGroup and Radio component. @sabrina-bongiovanni [#7142](https://github.com/plone/volto/issues/7142)
+- Add react-aria-components Menu Popover and Dialog component. @ionlizarazu [#7144](https://github.com/plone/volto/issues/7144)
+- Added SizeWidget, AlignWidget, and WidthWidget to the components library. @rboixaderg [#7150](https://github.com/plone/volto/issues/7150)
+- Added quanta GridList and TagGroup, improved quanta styles. @deodorhunter [#7201](https://github.com/plone/volto/issues/7201)
+- `Field` and `FieldWrapper` component for widgets that have no field wrapper by default. @sneridagh [#7213](https://github.com/plone/volto/issues/7213)
+- Separated publicui and cmsui styles. @pnicolli [#7225](https://github.com/plone/volto/issues/7225)
+- Unify `Container` components props. Added `width` prop to basic component. @sneridagh
+  (Non-breaking change) [#7236](https://github.com/plone/volto/issues/7236)
+- Added Toast manager. @giuliaghisini [#7333](https://github.com/plone/volto/issues/7333)
+
+### Bugfix
+
+- Minor storybook and props fixes. @deodorhunter [#4352](https://github.com/plone/volto/issues/4352)
+- Fixed some prettier/lint issues. @sneridagh [#7346](https://github.com/plone/volto/issues/7346)
+
+### Internal
+
+- Rename `@plone/slots` to `@plone/layout`. @sneridagh [#7119](https://github.com/plone/volto/issues/7119)
+- Removed `lightningcss` from the Storybook build. @sneridagh [#7220](https://github.com/plone/volto/issues/7220)
+- Update to latest versions. @sneridagh [#7298](https://github.com/plone/volto/issues/7298)
+- Update RAC to latest.
+  Fix Storybook, added basic CSS. @sneridagh [#7320](https://github.com/plone/volto/issues/7320)
+- Upgrade to Storybook 9. @sneridagh [#7371](https://github.com/plone/volto/issues/7371)
+- Add `@testing-library/react` to the catalog. @sneridagh [#7372](https://github.com/plone/volto/issues/7372)
 
 ## 4.0.0-alpha.0 (2025-05-24)
 
@@ -89,7 +130,7 @@
 
 ### Internal
 
-- Improve packaging and bring back the export for `src` folder. @sneridagh 
+- Improve packaging and bring back the export for `src` folder. @sneridagh
 
 ## 2.1.0 (2024-11-05)
 
@@ -101,7 +142,7 @@
 
 ### Internal
 
-- Release 2.0.0 @sneridagh 
+- Release 2.0.0 @sneridagh
 
 ## 2.0.0-alpha.16 (2024-10-18)
 
