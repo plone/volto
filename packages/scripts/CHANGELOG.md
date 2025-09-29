@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.10.2 (2025-09-29)
+
+### Internal
+
+- Upgrade `glob` to a modern version. Adjust scripts. @sneridagh [#7321](https://github.com/plone/volto/issues/7321)
+
 ## 3.10.1 (2025-05-12)
 
 ### Bugfix
