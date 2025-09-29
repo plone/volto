@@ -225,7 +225,7 @@
     ]
   },
   "engines": {
-    "node": "^14 || ^16 || ^18"
+    "node": "^22"
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
