@@ -1,1 +1,0 @@
-Now add-ons need to replace `<img>` tags with the `Image` component. There is an ESLint rule to check this. @wesleybl
