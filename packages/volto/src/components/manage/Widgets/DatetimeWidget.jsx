@@ -27,6 +27,10 @@ const messages = defineMessages({
     id: 'Time',
     defaultMessage: 'Time',
   },
+  clearDateTime: {
+    id: 'Clear date/time',
+    defaultMessage: 'Clear date and time',
+  },
 });
 
 const PrevIcon = () => (
@@ -175,6 +179,7 @@ const DatetimeWidgetComponent = (props) => {
             navNext={<NextIcon />}
             id={`${id}-date`}
             placeholder={intl.formatMessage(messages.date)}
+            aria-label={intl.formatMessage(messages.date)}
           />
         </div>
         {!isDateOnly && (
@@ -196,6 +201,7 @@ const DatetimeWidgetComponent = (props) => {
                 .localeData(toBackendLang(lang))
                 .longDateFormat('LT')}
               placeholder={intl.formatMessage(messages.time)}
+              aria-label={intl.formatMessage(messages.time)}
               focusOnOpen
               placement="bottomRight"
             />
@@ -207,6 +213,7 @@ const DatetimeWidgetComponent = (props) => {
             disabled={isDisabled || !datetime}
             onClick={onResetDates}
             className="item ui noborder button"
+            aria-label={intl.formatMessage(messages.clearDateTime)}
           >
             <Icon name={clearSVG} size="24px" className="close" />
           </button>
