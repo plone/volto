@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.22.2 (2025-09-29)
+
+### Bugfix
+
+- Added guard in API REDUX middleware. @sneridagh [#7412](https://github.com/plone/volto/issues/7412)
+
 ## 17.22.1 (2025-08-25)
 
 ### Bugfix
