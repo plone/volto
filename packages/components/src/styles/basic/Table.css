@@ -1,10 +1,10 @@
+/* depends on:
 @import './Button.css';
 @import './ToggleButton.css';
 @import './Checkbox.css';
 @import './Popover.css';
 @import './Menu.css';
-@import './theme.css';
-
+*/
 @layer plone-components.base {
   :root {
     --plone-table-border: 0 none;

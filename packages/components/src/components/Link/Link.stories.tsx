@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from './Link';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta = {
-  title: 'Components/Link',
+  title: 'Basic/Link',
   component: Link,
   tags: ['autodocs'],
   decorators: [
