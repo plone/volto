@@ -1,1 +1,0 @@
-Added Toast manager. @giuliaghisini
