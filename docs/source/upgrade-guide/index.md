@@ -411,7 +411,7 @@ Finally, in your project's or add-on's {file}`package.json` file, update the `sc
 ```
 
 ```{seealso}
-[Migration guide from Storybook 6.x to 8.0](https://storybook.js.org/docs/migration-guide/from-older-version)
+[Migration guide from Storybook 6.x to 8.0](https://storybook.js.org/docs/8/migration-guide/from-older-version)
 ```
 
 If you haven't customized the configuration, the migration is straightforward.
