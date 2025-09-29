@@ -17,7 +17,7 @@ export function GridList<T extends object>({
 }
 
 export function GridListItem({ children, ...props }: GridListItemProps) {
-  let textValue = typeof children === 'string' ? children : undefined;
+  const textValue = typeof children === 'string' ? children : undefined;
   return (
     <RACGridListItem textValue={textValue} {...props}>
       {({ selectionMode, selectionBehavior, allowsDragging }) => (
