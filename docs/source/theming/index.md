@@ -31,12 +31,8 @@ theming-strategy
 ```{toctree}
 :maxdepth: 1
 
-../development/add-ons/theme
+create-theme-add-on
 custom-styling
 using-third-party-themes
 theming-a-base-theme
-```
-
-```{seealso}
-For how to create your theme as an add-on in Volto 18 and later, see {doc}`../development/add-ons/theme`.
 ```

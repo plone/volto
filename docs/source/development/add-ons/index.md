@@ -18,7 +18,7 @@ install-an-add-on-dev-17
 load-add-on-configuration
 create-an-add-on-18
 create-an-add-on-17
-theme
+theme-add-on
 test-add-ons-18
 test-add-ons-17
 extend-webpack-add-on
