@@ -463,6 +463,8 @@ msgstr "Règles de contenu disponibles :"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -506,6 +508,11 @@ msgstr "Requête de base de la recherche"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Bloc"
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr ""
 
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
@@ -876,6 +883,11 @@ msgstr "Droits d'auteur"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
 msgstr "Droits d'auteur ou autres informations sur les droits sur cet élément"
+
+#. Default: "Count"
+#: components/manage/Controlpanels/BlockType
+msgid "Count"
+msgstr ""
 
 #. Default: "Create or delete relations to target"
 #: helpers/MessageLabels/MessageLabels
@@ -3198,6 +3210,7 @@ msgstr "Mises à jour du schéma"
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
+#: components/manage/Controlpanels/BlockType
 #: components/manage/Sharing/Sharing
 #: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
@@ -3960,6 +3973,7 @@ msgstr "Temps"
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/BlockType
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -4597,6 +4611,16 @@ msgstr ""
 msgid "availableViews"
 msgstr "Vues disponibles"
 
+#. Default: "{title}"
+#: components/manage/Controlpanels/BlockType
+msgid "block-type"
+msgstr ""
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
+msgid "block-types"
+msgstr ""
+
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4910,6 +4934,11 @@ msgstr "Non"
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
 msgstr "Pas d'état de workflow"
+
+#. Default: "No items found for type: {type}."
+#: components/manage/Controlpanels/BlockType
+msgid "no-blocks-found"
+msgstr ""
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
