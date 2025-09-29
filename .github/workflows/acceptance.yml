@@ -473,7 +473,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18.x]
+        node-version: [16.x, 18.x]
     env:
       generator-directory: ./packages/generator-volto
       project-directory: ./my-volto-app
@@ -498,7 +498,7 @@ jobs:
         working-directory: ${{env.generator-directory}}
 
       # install Yeoman and the generator
-      - run: npm -g install yo
+      - run: npm -g install yo${{ matrix.node-version < '18' && '@^4' || '' }}
         working-directory: ${{env.generator-directory}}
       - run: npm -g install ./
         working-directory: ${{env.generator-directory}}
