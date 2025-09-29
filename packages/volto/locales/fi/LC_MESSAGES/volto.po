@@ -678,6 +678,11 @@ msgstr "Valitse tiedosto"
 msgid "Clear"
 msgstr "Tyhjennä"
 
+#. Default: "Clear date and time"
+#: components/manage/Widgets/DatetimeWidget
+msgid "Clear date/time"
+msgstr ""
+
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Clear filters"
