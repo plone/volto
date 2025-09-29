@@ -50,6 +50,8 @@ import {
   RelationsControlpanel,
   UndoControlpanel,
   UpgradeControlPanel,
+  BlockTypesControlpanel,
+  BlockTypeControlpanel,
 } from '@plone/volto/components/manage/Controlpanels';
 
 import App from '@plone/volto/components/theme/App/App';
@@ -229,6 +231,15 @@ export const defaultRoutes = [
   {
     path: '/controlpanel/relations',
     component: RelationsControlpanel,
+  },
+  {
+    path: '/controlpanel/blocktypes',
+    component: BlockTypesControlpanel,
+    exact: true,
+  },
+  {
+    path: '/controlpanel/blocktypes/:id',
+    component: BlockTypeControlpanel,
   },
   {
     path: '/controlpanel/:id',

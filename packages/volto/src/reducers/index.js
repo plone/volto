@@ -53,6 +53,7 @@ import upgrade from './upgrade/upgrade';
 import userschema from './userschema/userschema';
 import site from './site/site';
 import navroot from './navroot/navroot';
+import blocktypes from './blocktypes/blocktypes';
 
 /**
  * Root reducer.
@@ -111,6 +112,7 @@ const reducers = {
   userschema,
   site,
   navroot,
+  blocktypes,
 };
 
 export default reducers;
