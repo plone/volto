@@ -331,7 +331,7 @@ const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
               ...rest,
               error,
               statusCode: error.response,
-              message: error.response.body.message,
+              message: error.response?.body?.message,
               connectionRefused: false,
               type: SET_APIERROR,
             });
