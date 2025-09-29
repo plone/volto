@@ -8,6 +8,19 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.1 (2025-09-29)
+
+### Bugfix
+
+- Fix Zod schema for `update` endpoint. @sneridagh [#7118](https://github.com/plone/volto/pull/7118)
+- Fixed related items payload schema. @deodorhunter [#7201](https://github.com/plone/volto/pull/7201)
+- Fixed some lint/prettier issues. @sneridagh [#7346](https://github.com/plone/volto/pull/7346)
+
+### Internal
+
+- Add `@testing-library/react` to the catalog. @sneridagh [#7372](https://github.com/plone/volto/pull/7372)
+- Remove not needed `vite`. @sneridagh 
+
 ## 2.0.0-alpha.0 (2025-05-24)
 
 ### Feature
