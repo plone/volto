@@ -682,7 +682,7 @@ msgstr "Curațați"
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
-msgstr ""
+msgstr "șterge câmpurile de dată"
 
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList

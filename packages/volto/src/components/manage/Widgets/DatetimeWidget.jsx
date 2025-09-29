@@ -179,7 +179,6 @@ const DatetimeWidgetComponent = (props) => {
             navNext={<NextIcon />}
             id={`${id}-date`}
             placeholder={intl.formatMessage(messages.date)}
-            aria-label={intl.formatMessage(messages.date)}
           />
         </div>
         {!isDateOnly && (
@@ -201,7 +200,6 @@ const DatetimeWidgetComponent = (props) => {
                 .localeData(toBackendLang(lang))
                 .longDateFormat('LT')}
               placeholder={intl.formatMessage(messages.time)}
-              aria-label={intl.formatMessage(messages.time)}
               focusOnOpen
               placement="bottomRight"
             />
