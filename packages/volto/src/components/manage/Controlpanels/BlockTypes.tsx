@@ -7,7 +7,7 @@ import { createPortal } from 'react-dom';
 import { defineMessages, useIntl, FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { getBlockTypes } from '@plone/volto/actions/blocktypes/blocktypes';
+import { getBlockTypes } from '@plone/volto/actions/blockTypes/blockTypes';
 import { useDispatch, useSelector } from 'react-redux';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -44,10 +44,10 @@ const BlockTypesControlpanel = (props: RouteProps) => {
 
   const items = useSelector(
     (state: {
-      blocktypes: {
+      blockTypes: {
         items: { summary: Record<string, number> };
       };
-    }) => state.blocktypes.items.summary,
+    }) => state.blockTypes.items.summary,
   );
 
   return (

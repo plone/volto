@@ -44,7 +44,7 @@ export const controlPanelsIcons = {
   undo: undoControlPanelSVG,
   aliases: linkSVG,
   relations: relationsSVG,
-  blocktypes: contentListingSVG,
+  'block-types': contentListingSVG,
 };
 
 export const filterControlPanels = (controlpanels = []) => {

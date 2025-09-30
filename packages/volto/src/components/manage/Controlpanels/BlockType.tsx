@@ -1,4 +1,4 @@
-import { getBlockTypes } from '@plone/volto/actions/blocktypes/blocktypes';
+import { getBlockTypes } from '@plone/volto/actions/blockTypes/blockTypes';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { getParentUrl, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
@@ -48,12 +48,12 @@ const BlockTypeControlpanel = (props: RouteProps) => {
 
   const items = useSelector(
     (state: {
-      blocktypes: {
+      blockTypes: {
         items: {
           items: Array<{ '@id': string; title: string; count: number }>;
         };
       };
-    }) => state.blocktypes.items.items,
+    }) => state.blockTypes.items.items,
   );
 
   const onChangeSearch = (value: string) => {
@@ -63,7 +63,7 @@ const BlockTypeControlpanel = (props: RouteProps) => {
   const debouncedSearch = debounce(onChangeSearch, 600);
 
   return (
-    <div id="page-block" className="ui container controlpanel-block_type">
+    <div id="page-block_type" className="ui container controlpanel-block_type">
       <h2>
         <FormattedMessage
           id="block-type"

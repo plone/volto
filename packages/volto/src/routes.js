@@ -233,13 +233,12 @@ export const defaultRoutes = [
     component: RelationsControlpanel,
   },
   {
-    path: '/controlpanel/blocktypes',
-    component: BlockTypesControlpanel,
-    exact: true,
+    path: '/controlpanel/block-types/:id',
+    component: BlockTypeControlpanel,
   },
   {
-    path: '/controlpanel/blocktypes/:id',
-    component: BlockTypeControlpanel,
+    path: '/controlpanel/block-types',
+    component: BlockTypesControlpanel,
   },
   {
     path: '/controlpanel/:id',
