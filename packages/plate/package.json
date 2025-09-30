@@ -67,7 +67,7 @@
     "@platejs/code-block": "^49.0.0",
     "@platejs/combobox": "^49.0.0",
     "@platejs/comment": "^50.2.0",
-    "@platejs/dnd": "^49.2.22",
+    "@platejs/dnd": "^50.3.1",
     "@platejs/docx": "^49.0.0",
     "@platejs/emoji": "^49.0.0",
     "@platejs/floating": "^49.0.0",

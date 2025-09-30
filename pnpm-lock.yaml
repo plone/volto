@@ -912,8 +912,8 @@ importers:
         specifier: ^50.2.0
         version: 50.2.0(platejs@49.2.21(@babel/core@7.28.4)(@babel/template@7.27.2)(@types/react@19.1.12)(immer@10.1.3)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(scheduler@0.26.0)(use-sync-external-store@1.5.0(react@19.1.1)))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@platejs/dnd':
-        specifier: ^49.2.22
-        version: 49.2.22(platejs@49.2.21(@babel/core@7.28.4)(@babel/template@7.27.2)(@types/react@19.1.12)(immer@10.1.3)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(scheduler@0.26.0)(use-sync-external-store@1.5.0(react@19.1.1)))(react-dnd-html5-backend@16.0.1)(react-dnd@16.0.1(@types/node@22.18.1)(@types/react@19.1.12)(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: ^50.3.1
+        version: 50.3.1(platejs@49.2.21(@babel/core@7.28.4)(@babel/template@7.27.2)(@types/react@19.1.12)(immer@10.1.3)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(scheduler@0.26.0)(use-sync-external-store@1.5.0(react@19.1.1)))(react-dnd-html5-backend@16.0.1)(react-dnd@16.0.1(@types/node@22.18.1)(@types/react@19.1.12)(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@platejs/docx':
         specifier: ^49.0.0
         version: 49.0.0(platejs@49.2.21(@babel/core@7.28.4)(@babel/template@7.27.2)(@types/react@19.1.12)(immer@10.1.3)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(scheduler@0.26.0)(use-sync-external-store@1.5.0(react@19.1.1)))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -2735,8 +2735,8 @@ packages:
       react: ^19.1.0
       react-dom: ^19.1.0
 
-  '@platejs/dnd@49.2.22':
-    resolution: {integrity: sha512-t+nwzF6l1jQCusvfCHz82P/4R7UnrjeCMAnTfRmic1EBJviWIIc4kDiRL/oVtZICIskRKTONkxYQAM2kP6RlIA==}
+  '@platejs/dnd@50.3.1':
+    resolution: {integrity: sha512-a7J94IA22bhrazr1WIs6RrkVlTqEFX8vCc4kShsNgzlkbJ0SPWm/VqCK1Z+6O2YBqImggCy0jA7KAIiOrnCtEg==}
     peerDependencies:
       platejs: '>=49.2.21'
       react: ^19.1.0
@@ -11745,7 +11745,7 @@ snapshots:
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
 
-  '@platejs/dnd@49.2.22(platejs@49.2.21(@babel/core@7.28.4)(@babel/template@7.27.2)(@types/react@19.1.12)(immer@10.1.3)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(scheduler@0.26.0)(use-sync-external-store@1.5.0(react@19.1.1)))(react-dnd-html5-backend@16.0.1)(react-dnd@16.0.1(@types/node@22.18.1)(@types/react@19.1.12)(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@platejs/dnd@50.3.1(platejs@49.2.21(@babel/core@7.28.4)(@babel/template@7.27.2)(@types/react@19.1.12)(immer@10.1.3)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(scheduler@0.26.0)(use-sync-external-store@1.5.0(react@19.1.1)))(react-dnd-html5-backend@16.0.1)(react-dnd@16.0.1(@types/node@22.18.1)(@types/react@19.1.12)(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       lodash: 4.17.21
       platejs: 49.2.21(@babel/core@7.28.4)(@babel/template@7.27.2)(@types/react@19.1.12)(immer@10.1.3)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(scheduler@0.26.0)(use-sync-external-store@1.5.0(react@19.1.1))
