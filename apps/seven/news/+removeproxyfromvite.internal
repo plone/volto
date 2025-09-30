@@ -1,1 +1,0 @@
-Remove the proxy from Vite config, since we no longer use it. @sneridagh

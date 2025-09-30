@@ -1,1 +1,0 @@
-Add controlpanel overview and schema driven control panels. @ksuess

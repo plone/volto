@@ -1,32 +1,7 @@
-# `eslintconfig`
+# `@plone/tooling`
 
-Base configurations for projects.
-
-## Usage
-
-In `package.json`:
-
-```json
-  "devDependencies": {
-    "eslintconfig": "workspace:*",
-  }
-```
-
-```js
-{
-  "extends": "tsconfig/react-library.json",
-  "include": ["src", "src/**/*.js"],
-  "exclude": [
-    "node_modules",
-    "build",
-    "public",
-    "coverage",
-    "src/**/*.test.{js,jsx,ts,tsx}",
-    "src/**/*.spec.{js,jsx,ts,tsx}",
-    "src/**/*.stories.{js,jsx,ts,tsx}"
-  ]
-}
-```
+Base configurations for add-ons.
+Normally, this is not required, since add-ons already use the cookieplone approach, and they launch exactly the same configuration and tooling as Seven core.
 
 > [!WARNING]
 > This package or app is experimental.

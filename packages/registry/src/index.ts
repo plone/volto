@@ -14,11 +14,6 @@ import type {
   ViewsConfig,
   WidgetsConfig,
   ReactRouterRouteEntry,
-  WidgetsConfigByFactory,
-  WidgetsConfigById,
-  WidgetsConfigByType,
-  WidgetsConfigByVocabulary,
-  WidgetsConfigByWidget,
   WidgetKey,
 } from '@plone/types';
 
