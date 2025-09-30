@@ -28,7 +28,7 @@ type styleClassNameExtendersType = ({
   classNames: string[];
 }) => string[];
 
-type PlateConfig = {
+export type PlateConfig = {
   editorConfig: {
     plugins: any[];
     [key: string]: unknown;
@@ -41,7 +41,6 @@ type PlateConfig = {
 };
 
 interface PlateSettings {
-  presets: Record<string, PlateConfig>;
   block: PlateConfig;
 }
 

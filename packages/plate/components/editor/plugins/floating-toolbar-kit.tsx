@@ -11,7 +11,7 @@ export const FloatingToolbarKit = [
     render: {
       afterEditable: () => {
         const FloatingToolbarButtons =
-          config.settings.plate?.presets?.block.floatingToolbarButtons ||
+          config.settings.plate?.block?.floatingToolbarButtons ||
           DefaultFloatingToolbarButtons;
         return (
           <FloatingToolbar>
