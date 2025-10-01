@@ -52,7 +52,7 @@ exports[`Allow override of blocksConfig 1`] = `
                     </div>
                   </div>
                   <button
-                    aria-label="delete"
+                    aria-label="delete  block custom"
                     class="ui basic icon button delete-button"
                     type="button"
                   >
