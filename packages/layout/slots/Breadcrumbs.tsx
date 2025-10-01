@@ -1,10 +1,10 @@
-import type { SlotComponentProps } from '../SlotRenderer';
+import type { SlotComponentProps } from './SlotRenderer';
 import {
   Breadcrumbs as PCBreadcrumbs,
   Breadcrumb as PCBreadcrumb,
 } from '@plone/components';
 import { HomeIcon } from '@plone/components/Icons';
-import SectionWrapper from './SectionWrapper/SectionWrapper';
+import SectionWrapper from '../components/SectionWrapper/SectionWrapper';
 
 const Breadcrumbs = (props: SlotComponentProps) => {
   const { content } = props;

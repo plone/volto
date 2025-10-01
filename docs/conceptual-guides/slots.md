@@ -27,6 +27,8 @@ Seven renders slots using the `SlotRenderer` component.
 You can add additional slot insertion points in your code, as shown in the following example.
 
 ```ts
+import SlotRenderer from '@plone/layout/slots/SlotRenderer';
+//...
 <SlotRenderer name="aboveContent" content={content} />
 ```
 

@@ -19,7 +19,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
-import SlotRenderer from '@plone/layout/SlotRenderer';
+import SlotRenderer from '@plone/layout/slots/SlotRenderer';
 import clsx from 'clsx';
 import config from '@plone/registry';
 
