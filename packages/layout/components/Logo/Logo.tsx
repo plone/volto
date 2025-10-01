@@ -6,16 +6,20 @@ import { messages } from '../messages';
 
 import styles from './Logo.module.css';
 import LogoImage from './Logo.svg';
+import { useRouteLoaderData } from 'react-router';
+import type { RootLoader } from 'seven/app/root';
 
 const Logo = (props: SlotComponentProps) => {
   const { content } = props;
+  const rootData = useRouteLoaderData<RootLoader>('root');
+
   const intl: (id: string) => string = config.getUtility({
     name: 'translation',
     type: 'factory',
   }).method;
 
   const navRootPath = content['@components'].navroot?.navroot?.['@id'] || '/';
-  const site = content['@components'].site;
+  const site = rootData?.site;
   const siteTitle = site?.['plone.site_title'] || '';
   const logoUrl = site?.['plone.site_logo']
     ? site['plone.site_logo']
