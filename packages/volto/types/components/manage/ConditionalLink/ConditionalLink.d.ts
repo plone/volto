@@ -1,15 +1,11 @@
-export default ConditionalLink;
-declare function ConditionalLink({ condition, to, item, ...props }: {
-    [x: string]: any;
-    condition: any;
-    to: any;
-    item: any;
-}): import("react/jsx-runtime").JSX.Element;
-declare namespace ConditionalLink {
-    namespace propTypes {
-        let condition: any;
-        let to: any;
-        let item: any;
-        let children: any;
-    }
-}
+import React from 'react';
+import type { UniversalLinkProps } from '@plone/volto/components/manage/UniversalLink/UniversalLink';
+declare const _default: React.MemoExoticComponent<React.ForwardRefExoticComponent<{
+    condition?: boolean;
+    to?: string;
+    children: React.ReactNode;
+} & Omit<UniversalLinkProps, "href" | "item"> & {
+    href?: string;
+    item?: UniversalLinkProps["item"];
+} & React.RefAttributes<HTMLAnchorElement | HTMLDivElement>>>;
+export default _default;

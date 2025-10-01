@@ -1,5 +1,5 @@
-import { getQueryStringResults } from '@plone/volto/actions';
-import { resolveBlockExtensions } from '@plone/volto/helpers';
+import { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
+import { resolveBlockExtensions } from '@plone/volto/helpers/Extensions';
 import qs from 'query-string';
 import { slugify } from '@plone/volto/helpers/Utils/Utils';
 

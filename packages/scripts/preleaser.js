@@ -1,4 +1,4 @@
-import glob from 'glob';
+import { globSync as glob } from 'glob';
 import lodash from 'lodash';
 const { map } = lodash;
 
@@ -12,8 +12,8 @@ const { map } = lodash;
 function main() {
   const packagesToRelease = [];
   map(
-    glob.sync('**/news/*.*(breaking|feature|bugfix|documentation|internal)', {
-      ignore: ['**/node_modules/**'],
+    glob('**/news/*.*(breaking|feature|bugfix|documentation|internal)', {
+      ignore: ['**/node_modules/**', 'docs/**'],
     }),
     (filename) => {
       const packageDir = filename.split('/').splice(0, 2).join('/');

@@ -1,20 +1,41 @@
-import { Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Introduction" />
 
 
 # `@plone/components`
 
-This package contains ReactJS components for using Plone as a headless CMS.
+This package contains basic React components for Plone 7 and Plone's frontend modular architecture.
 
-The purpose of this package is to provide an agnostic set of baseline components to build Plone sites upon.
+The purpose of this package is to provide an agnostic set of baseline components upon which to build Plone sites.
+
+`@plone/components` is based on [React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html).
+Its documentation applies to all the components in this package.
+
+## Design decisions and assumptions
+
+This package provides a set of simple, ready to use components with the following features:
+
+- Agnostic (not tied to any known design system)
+- Composable (they are ready to be the building blocks of other complex components)
+- Theme-able (they can be themed, using both the provided basic theme as a baseline and custom CSS properties)
+- Data-driven-less (they are dumb, presentational components)
+- i18n-less (they do not provide i18n machinery or attached to any i18n framework or library)
+- Built on a renowned headless CMS components library: [React Aria Components (RAC)](https://react-spectrum.adobe.com/react-aria/components.html)
+
+Since we are using RAC as the base, the styling of these package components is done via the [RAC styling options](https://react-spectrum.adobe.com/react-aria/styling.html).
+See the `react-aria-components` section below for more information about RAC.
+This package provides a simple and basic set of CSS rules to build upon.
+Alternatively, you can bring your own styles, removing the basic styling or complementing it, and build on top of it.
+You can even use RAC to use other CSS utility libraries, like Tailwind CSS.
 
 ## Usage
 
-Using the package manager of your choice (npm, yarn, pnpm) install the package:
+You can use your choice of package manager (npm, yarn, or pnpm) to install the package in your app.
+If you add the components to a Volto add-on or workspace, use pnpm, as shown.
 
 ```shell
-yarn add @plone/components
+pnpm add @plone/components
 ```
 
 Whenever you want to use the components, all are exported as named exports:
@@ -35,13 +56,43 @@ export default MyComponent;
 
 ## Styling
 
-This package provide a basic set of CSS rules.
-You should add them to your project build to make the components properly styled.
+This package provides two types of components.
+A basic white-label set of components that can be used as a baseline.
+A set of components styled using the Quanta design system.
+The basic components are styled using pure CSS, while the Quanta components use [Tailwind](https://tailwindcss.com/).
 
-You can bring your own styles, but the CSS you provide should replace what the basic stylying does and style the bare components from scratch.
+## Quanta components
 
-You can use the CSS bundled for all components in a single file, or use the specific files for your components.
-They are distributed along with the components code in the `dist` folder of the library.
+[See this page](?path=/docs/quanta-introduction--docs) for more information about the Quanta components.
+
+## Basic components
+
+The `@plone/components` package provides a basic, styled set of white-label UI components.
+These components are designed to be flexible and unopinionated, allowing you to integrate them into a wide variety of projects.
+
+### Default Styling
+
+The components are styled using a lightweight CSS layer included with the package.
+To ensure proper rendering, you must include this CSS in your project build.
+
+You have two options for including styles:
+
+- **Full bundle**: A single CSS file containing styles for all components.
+- **Per-component files**: Individual CSS files distributed in the `src` folder with the name of each component.
+
+**Note:** Some components might rely on others. Make sure to include any necessary CSS files for this component (refer to the top of each file for details).
+
+### Custom Styling
+
+You are free to replace the default styling entirely.
+The components are designed with minimal assumptions and will render as bare HTML elements unless styled.
+
+If you choose to bring your own styles:
+
+- Your CSS should fully override the default styles.
+- You can build your design system from scratch using the bare components.
+
+This approach offers maximum flexibility, letting you decide whether to use the provided styles or apply your own.
 
 ```js
 import '@plone/components/dist/basic.css';
@@ -53,12 +104,27 @@ or selectively:
 import '@plone/components/src/styles/basic/TextField.css';
 ```
 
+## Theming
 
-## Quanta
+You can use the basic styles as a baseline while building the theme of your site.
+You can take advantage of them, as they are very thin and basic (almost vanilla CSS for the components).
+Using them as a baseline will allow you to quickly build your theme around them.
+`@plone/components` basic styles provide a simple, yet powerful, set of tokenized custom CSS properties that will help you customize your own styles on the top of the basic styling.
+You can override them in your classes while maintaining them for others.
 
-This package also features the Quanta components.
-The Quanta theme is an example of it.
-These components use the basic styling as a baseline, not only in styling, but also in the component side, reusing the CSS and custom CSS properties in it.
+### CSS layers
+
+This package uses CSS layers to style the components in a more flexible way.
+It uses the `plone-components` layer name to scope all the CSS declarations in the package.
+The basic styling uses the nested `plone-components.base` named layer.
+You can use the `plone-components` layer to override the basic styling, or use the `plone-components.base` layer to override the basic styling in a more specific way.
+
+### Quanta (pure CSS)
+
+This package also features the implementation of some Quanta components in pure CSS.
+These components use the basic styling as a baseline, extending them to achieve the Quanta look and feel.
+They also extend the basic React components in a composable way.
+The Quanta styling is scoped in the `plone-components.quanta` named layer.
 
 Quanta is built upon the basic styles in an additive way.
 The use of the Quanta CSS implies using it upon basic styling.

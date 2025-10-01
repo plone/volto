@@ -3,7 +3,10 @@
  * @module components/manage/Widgets/SelectWidget
  */
 
-import { map, filter, toPairs, groupBy } from 'lodash';
+import map from 'lodash/map';
+import filter from 'lodash/filter';
+import toPairs from 'lodash/toPairs';
+import groupBy from 'lodash/groupBy';
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';

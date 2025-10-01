@@ -8,6 +8,99 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.5 (2025-09-29)
+
+### Feature
+
+- Replace img tags with Image component. @wesleybl [#7363](https://github.com/plone/volto/issues/7363)
+
+## 19.0.0-alpha.4 (2025-08-25)
+
+### Internal
+
+- Update @testing-library/react to 14.3.1. @wesleybl [#7260](https://github.com/plone/volto/issues/7260)
+
+## 19.0.0-alpha.3 (2025-06-25)
+
+### Bugfix
+
+- Correct `README.md`. Set the correct value of the constant `TFOOT` to `tfoot`, instead of `tbody`. Serve `tabIndex` prop with a number instead of a string. @silviubogan [#7179](https://github.com/plone/volto/issues/7179)
+- This is a fix for "Cannot find a descendant at path [...]" error. In certain cases (e.g., after merging blocks via Backspace), 
+  editor.selection may temporarily point to a path that no longer exists. 
+  This causes Editor.nodes() to throw an exception. Wrapping it in try/catch prevents crashes and hides the inline toolbar gracefully. 
+  Reproducible scenario: text block with bullet list → new text block → write a word → go to first position of letters → Backspace → crash.
+  @tomschall [#7203](https://github.com/plone/volto/issues/7203)
+
+## 19.0.0-alpha.2 (2025-05-20)
+
+### Feature
+
+- Improve accessibility for sortable table headers in table block. @kreafox [#6358](https://github.com/plone/volto/issues/6358)
+
+## 19.0.0-alpha.1 (2025-05-16)
+
+### Internal
+
+- Use `classnames` 2.5.1 @sneridagh [#6826](https://github.com/plone/volto/issues/6826)
+
+## 19.0.0-alpha.0 (2025-04-12)
+
+### Bugfix
+
+- Call `initialValue` consistently by passing `null` instead of `{}` to `blocksConfig`. @Abhishek-17h [#6952](https://github.com/plone/volto/issues/6952)
+
+## 18.2.3 (2025-03-07)
+
+### Bugfix
+
+- To ensure accessibility, an `aria-labelledby` attribute was added to the editable part of the `Slate` component. @Wagner3UB [#6803](https://github.com/plone/volto/issues/6803)
+
+## 18.2.2 (2025-02-08)
+
+### Bugfix
+
+- In `RichTextWidget` and `HtmlSlateWidget`, fix breaking a list by typing Enter. @nileshgulia1 [#6570](https://github.com/plone/volto/issues/6570)
+
+### Internal
+
+- Remove hard dependencies on `react`, move to `peerDependencies` @sneridagh [#6728](https://github.com/plone/volto/issues/6728)
+
+## 18.2.1 (2025-01-31)
+
+### Bugfix
+
+- Pass `intl` object to `initialValue` function. @wesleybl [#6529](https://github.com/plone/volto/issues/6529)
+
+## 18.2.0 (2025-01-24)
+
+### Feature
+
+- Fixed keyboard shortcuts for typing headings using Markdown notation. @Shyam-Raghuwanshi [#6588](https://github.com/plone/volto/issues/6588)
+
+## 18.1.0 (2025-01-11)
+
+### Feature
+
+- Added Italian translations. @giuliaghisini [#6563](https://github.com/plone/volto/issues/6563)
+
+## 18.0.4 (2024-12-12)
+
+### Bugfix
+
+- Stylelint in less file. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+
+## 18.0.3 (2024-12-09)
+
+### Internal
+
+- Fix extension in files containing JSX. @sneridagh [#6520](https://github.com/plone/volto/issues/6520)
+
+## 18.0.2 (2024-12-08)
+
+### Internal
+
+- Removed all imports from barrel files for components, actions, helpers, hooks and lodash. @pnicolli [#6509](https://github.com/plone/volto/issues/6509)
+
 ## 18.0.1 (2024-11-11)
 
 ### Feature

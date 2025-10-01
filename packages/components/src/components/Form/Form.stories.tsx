@@ -8,12 +8,10 @@ import {
   TextField,
 } from 'react-aria-components';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/Form.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Forms/Form',
+  title: 'Basic/Forms/Form',
   component: Form,
   parameters: {
     layout: 'centered',

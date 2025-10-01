@@ -38,6 +38,7 @@ module.exports = {
         react: {
           version: 'detect',
         },
+        'import/core-modules': ['@plone/registry/addons-loader'],
         formComponents: ['Form'],
         linkComponents: [
           { name: 'Link', linkAttribute: 'to' },

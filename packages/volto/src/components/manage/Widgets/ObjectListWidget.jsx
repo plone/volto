@@ -1,9 +1,11 @@
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Accordion, Button, Segment } from 'semantic-ui-react';
-import { DragDropList, Icon } from '@plone/volto/components';
+import DragDropList from '@plone/volto/components/manage/DragDropList/DragDropList';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import { applySchemaDefaults, reorderArray } from '@plone/volto/helpers';
+import { applySchemaDefaults } from '@plone/volto/helpers/Blocks/Blocks';
+import { reorderArray } from '@plone/volto/helpers/Utils/Utils';
 import ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
@@ -12,6 +14,7 @@ import deleteSVG from '@plone/volto/icons/delete.svg';
 import addSVG from '@plone/volto/icons/add.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import { v4 as uuid } from 'uuid';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   labelRemoveItem: {
@@ -69,11 +72,20 @@ const ObjectListWidget = (props) => {
     block,
     fieldSet,
     id,
-    schema,
     value = [],
     onChange,
     schemaExtender,
+    schemaName,
   } = props;
+
+  // This allows to use a `schemaName` prop defined as source of the schema
+  // if not present, it will use the schema defined in the schema prop
+  const schema =
+    config.getUtility({
+      type: 'schema',
+      name: schemaName,
+    }).method || props.schema;
+
   const [localActiveObject, setLocalActiveObject] = React.useState(
     props.activeObject ?? value.length - 1,
   );

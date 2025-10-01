@@ -10,8 +10,13 @@ import querystring from 'querystring';
 import { parse as parseUrl } from 'url';
 
 const filter = function (pathname, req) {
-  // This is the proxy to the API in case the accept header is 'application/json'
-  return config.settings.devProxyToApiPath && pathname.startsWith('/++api++');
+  // Check if pathname is defined, there are some corner cases that pathname is null
+  if (pathname) {
+    // This is the proxy to the API in case the accept header is 'application/json'
+    return config.settings.devProxyToApiPath && pathname.startsWith('/++api++');
+  } else {
+    return false;
+  }
 };
 
 let _env = null;

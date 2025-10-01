@@ -13,15 +13,18 @@ import type {
   UtilitiesConfig,
   ViewsConfig,
   WidgetsConfig,
+  ReactRouterRouteEntry,
+  WidgetKey,
 } from '@plone/types';
 
 export type ConfigData = {
   settings: SettingsConfig | Record<string, never>;
   blocks: BlocksConfig | Record<string, never>;
   views: ViewsConfig | Record<string, never>;
-  widgets: WidgetsConfig | Record<string, never>;
+  widgets: WidgetsConfig;
   addonReducers?: AddonReducersConfig;
   addonRoutes?: AddonRoutesConfig;
+  routes?: Array<ReactRouterRouteEntry>;
   slots: SlotsConfig | Record<string, never>;
   components: ComponentsConfig | Record<string, never>;
   utilities: UtilitiesConfig | Record<string, never>;
@@ -37,6 +40,12 @@ type GetUtilityResult = {
 };
 
 export type ConfigType = InstanceType<typeof Config>;
+// This type is used to map widget keys to their definitions.
+type MappableWidgetKeys = {
+  [K in keyof WidgetsConfig]: WidgetsConfig[K] extends Record<string, any>
+    ? K
+    : never;
+}[keyof WidgetsConfig];
 
 class Config {
   public _data: ConfigData | Record<string, never>;
@@ -48,7 +57,7 @@ class Config {
         settings: {},
         blocks: {},
         views: {},
-        widgets: {},
+        widgets: {} as WidgetsConfig,
         slots: {},
         components: {},
         utilities: {},
@@ -124,6 +133,14 @@ class Config {
 
   set addonRoutes(addonRoutes) {
     this._data.addonRoutes = addonRoutes;
+  }
+
+  get routes() {
+    return this._data.routes;
+  }
+
+  set routes(routes) {
+    this._data.routes = routes;
   }
 
   get slots() {
@@ -270,17 +287,18 @@ class Config {
       throw new Error('No component provided');
     }
     if (!predicates) {
-      // Test if there's already one registered, we only support one
       const hasRegisteredNoPredicatesComponent = this._data.slots?.[
         slot
       ]?.data?.[name]?.find(({ predicates }) => !predicates);
+      // If we have one already registered with the same name, and the component
+      // is different, we override it.
+      // During HMR operations when replacing the slot component
+      // errored trying to register it again.
       if (
         hasRegisteredNoPredicatesComponent &&
         component !== hasRegisteredNoPredicatesComponent.component
       ) {
-        throw new Error(
-          `There is already registered a component ${name} for the slot ${slot}. You can only register one slot component with no predicates per slot.`,
-        );
+        hasRegisteredNoPredicatesComponent.component = component;
       }
     }
 
@@ -429,7 +447,16 @@ class Config {
       throw new Error(`No slot component ${name} in slot ${slot} found`);
     }
     const result = currentSlotComponents.slice();
-    currentSlot.data[name] = result.splice(position, 1);
+    result.splice(position, 1);
+    currentSlot.data[name] = result;
+
+    if (result.length === 0) {
+      // If no components left, remove the slot from the list
+      const index = currentSlot.slots.indexOf(name);
+      if (index > -1) {
+        currentSlot.slots.splice(index, 1);
+      }
+    }
   }
 
   registerUtility(options: {
@@ -462,8 +489,11 @@ class Config {
     name: string;
     type: string;
     dependencies?: Record<string, string>;
-  }): GetUtilityResult {
+  }): GetUtilityResult | Record<string, never> {
     const { name, type, dependencies = {} } = options;
+
+    if (!name || !type) return {};
+
     let depsString: string = '';
     depsString = Object.keys(dependencies)
       .map((key) => `${key}:${dependencies[key]}`)
@@ -471,14 +501,17 @@ class Config {
 
     const utilityName = `${depsString ? `|${depsString}` : ''}${name}`;
 
-    return this._data.utilities[type][utilityName] || {};
+    return this._data.utilities[type]?.[utilityName] || {};
   }
 
   getUtilities(options: {
     type: string;
     dependencies?: Record<string, string>;
-  }): Array<GetUtilityResult> {
+  }): Array<GetUtilityResult> | [] {
     const { type, dependencies = {} } = options;
+
+    if (!type) return [];
+
     let depsString: string = '';
     depsString = Object.keys(dependencies)
       .map((key) => `${key}:${dependencies[key]}`)
@@ -493,6 +526,84 @@ class Config {
     );
 
     return utilities;
+  }
+
+  registerRoute(options: ReactRouterRouteEntry) {
+    const route = this._data.routes || [];
+    route.push(options);
+    this._data.routes = route;
+  }
+
+  /**
+   * Registers a widget configuration into the registry.
+   *
+   * @template K - A key from the WidgetsConfig interface.
+   * @param options - An object containing the widget key and its corresponding implementation.
+   * @param options.key - The name of the widget configuration key (e.g., 'default', 'factory').
+   * @param options.definition - The actual widget configuration, which must match the expected structure of WidgetsConfig[K].
+   *
+   */
+  registerWidget<K extends MappableWidgetKeys>(options: {
+    key: K;
+    definition: WidgetsConfig[K] extends Record<string, any>
+      ? WidgetsConfig[K]
+      : never;
+  }) {
+    // Aliasing helper types to make TS understand that, in this case, it'll recieve an object
+    // with keys that are valid for WidgetsConfig[K].
+    // Here we have access to generic K, so we can use it to narrow down the type.
+    type Definition = WidgetsConfig[K];
+    type DefinitionKey = keyof Definition;
+    const emptyDefinition: WidgetsConfig[K] = {} as Definition;
+    if (!options || !options.key || !options.definition) {
+      throw new Error('No widget definition provided');
+    }
+    const { key, definition } = options;
+
+    if (key === 'default') {
+      throw new Error('Use registerDefaultWidget to set the default widget');
+    }
+
+    const definitionIsObject = Object.keys(definition).length;
+    if (!definitionIsObject) {
+      this._data.widgets[key] = definition;
+    } else {
+      for (const widgetKey of Object.keys(definition) as DefinitionKey[]) {
+        // Now widgetKey is known by TS to be a valid key of definition, no casting needed.
+        if (this._data.widgets[key] === undefined)
+          this._data.widgets[key] = emptyDefinition;
+
+        // Otherwise, we just set it
+        this._data.widgets[key][widgetKey] = definition[widgetKey];
+      }
+    }
+  }
+  /**
+   * Registers a default widget configuration into the registry.
+   *
+   * @param component - The default widget component to register.
+   *
+   */
+  registerDefaultWidget(component: React.ComponentType<any>) {
+    this._data.widgets.default = component;
+  }
+
+  /**
+   * Gets a widget configuration from the registry.
+   *
+   * @param key - A key from the WidgetsConfig interface.
+   */
+  getWidget(key: string): React.ComponentType<any> | undefined {
+    const widgets = this.widgets;
+
+    for (const category of Object.keys(widgets) as WidgetKey[]) {
+      const group = widgets[category];
+      if (typeof group === 'object' && key in group) {
+        return (group as Record<string, React.ComponentType<any>>)[key];
+      }
+    }
+
+    return undefined;
   }
 }
 

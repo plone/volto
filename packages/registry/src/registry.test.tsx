@@ -1,5 +1,11 @@
 import config from './index';
 import { describe, expect, it, afterEach, beforeEach } from 'vitest';
+import type { WidgetsConfig } from '@plone/types';
+
+const MockDefaultWidget = () => <div data-testid="default-widget">Default</div>;
+const MockTextWidget = () => <input type="text" data-testid="text-widget" />;
+const MockChoiceWidget = () => <select data-testid="choice-widget" />;
+const MockVocabWidget = () => <div data-testid="vocab-widget">Vocab</div>;
 
 beforeEach(() => {
   config.set('components', {
@@ -9,6 +15,22 @@ beforeEach(() => {
   });
   config.set('slots', {});
   config.set('utilities', {});
+  config.set('widgets', {
+    default: { default: MockDefaultWidget },
+    id: {
+      title: MockTextWidget,
+    },
+    widget: {
+      special: MockChoiceWidget,
+    },
+    vocabulary: {
+      my_vocab: MockVocabWidget,
+    },
+    factory: {},
+    type: {},
+    choices: MockChoiceWidget,
+    views: {},
+  });
 });
 
 describe('Component registry', () => {
@@ -139,6 +161,25 @@ describe('Slots registry', () => {
 
     expect(config.getSlot('toolbar', {})![0].component).toEqual(
       'this is a toolbar component with no predicate',
+    );
+  });
+
+  it('registers two slot component with no predicate and the same name, the latter wins', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with no predicate',
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component:
+        'this is a toolbar component with no predicate overriding the above one',
+    });
+
+    expect(config.getSlot('toolbar', {})![0].component).toEqual(
+      'this is a toolbar component with no predicate overriding the above one',
     );
   });
 
@@ -862,6 +903,51 @@ describe('Slots registry', () => {
     ]);
   });
 
+  it('unRegisterSlotComponent - remove one registered slot', () => {
+    config.registerSlotComponent({
+      name: 'Colophon',
+      slot: 'postFooter',
+      component: 'The colophon component',
+    });
+
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(1);
+    expect(
+      config.getSlotComponent('postFooter', 'Colophon')[0].component,
+    ).toEqual('The colophon component');
+    config.unRegisterSlotComponent('postFooter', 'Colophon', 0);
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(0);
+
+    expect(config.getSlotComponents('postFooter')).toEqual([]);
+  });
+
+  it('unRegisterSlotComponent - remove one registered slot, then re-register it', () => {
+    config.registerSlotComponent({
+      name: 'Colophon',
+      slot: 'postFooter',
+      component: 'The colophon component',
+    });
+
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(1);
+    expect(
+      config.getSlotComponent('postFooter', 'Colophon')[0].component,
+    ).toEqual('The colophon component');
+    config.unRegisterSlotComponent('postFooter', 'Colophon', 0);
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(0);
+
+    expect(config.getSlotComponents('postFooter')).toEqual([]);
+
+    config.registerSlotComponent({
+      name: 'Colophon',
+      slot: 'postFooter',
+      component: 'The colophon component',
+    });
+
+    expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(1);
+    expect(
+      config.getSlotComponent('postFooter', 'Colophon')[0].component,
+    ).toEqual('The colophon component');
+  });
+
   it('unRegisterSlotComponent - registers 2 + 2 slot components with predicates', () => {
     config.registerSlotComponent({
       slot: 'toolbar',
@@ -896,12 +982,18 @@ describe('Slots registry', () => {
         ContentTypeConditionTrue(['News Item']),
       ],
     });
+
     expect(config.getSlotComponent('toolbar', 'save').length).toEqual(2);
     expect(config.getSlotComponent('toolbar', 'save')[0].component).toEqual(
       'this is a toolbar save component with a true predicate',
     );
+
     config.unRegisterSlotComponent('toolbar', 'save', 1);
+
     expect(config.getSlotComponent('toolbar', 'save').length).toEqual(1);
+    expect(config.getSlotComponent('toolbar', 'save')[0].component).toEqual(
+      'this is a toolbar save component with a true predicate',
+    );
   });
 
   // The next one fixes the issue when HMR kicks in and tries to register the same component again
@@ -937,6 +1029,22 @@ describe('Utilities registry', () => {
     expect(
       config.getUtility({ name: 'url', type: 'validator' }).method(),
     ).toEqual('this is a simple validator utility');
+  });
+
+  it('trying to get an unregistered utility type returns undefined', () => {
+    expect(config.getUtility({ name: 'Something', type: 'schema' })).toEqual(
+      {},
+    );
+    expect(
+      config.getUtility({ name: 'Something', type: 'schema' }).method,
+    ).toEqual(undefined);
+  });
+
+  it('trying to get an undefined utility name returns undefined', () => {
+    expect(config.getUtility({ name: undefined, type: 'schema' })).toEqual({});
+    expect(
+      config.getUtility({ name: undefined, type: 'schema' }).method,
+    ).toEqual(undefined);
   });
 
   it('registers a utility with dependencies', () => {
@@ -1023,6 +1131,14 @@ describe('Utilities registry', () => {
     ).toEqual('this is a validator utility with dependencies for email');
   });
 
+  it('trying to use getUtilities with no type returns an empty array', () => {
+    expect(config.getUtilities({ type: undefined }).length).toEqual(0);
+  });
+
+  it('trying to use getUtilities with an unregistered type returns an empty array', () => {
+    expect(config.getUtilities({ type: 'Something' }).length).toEqual(0);
+  });
+
   it('getUtilities - registers two utilities with the same dependencies and different names', () => {
     config.registerUtility({
       name: 'minLength',
@@ -1071,5 +1187,241 @@ describe('Utilities registry', () => {
         type: 'validator',
       }),
     ).toEqual([]);
+  });
+});
+
+describe('Routes registry', () => {
+  afterEach(() => {
+    config.set('routes', []);
+  });
+
+  it('registers a simple route', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+      },
+    ]);
+  });
+
+  it('registers a simple route with options', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+      options: { id: 'login', caseSensitive: true },
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+        options: { id: 'login', caseSensitive: true },
+      },
+    ]);
+  });
+
+  it('registers a nested route', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+      children: [
+        {
+          type: 'route',
+          path: '/login/ok',
+          file: 'ok.tsx',
+        },
+      ],
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+        children: [
+          {
+            type: 'route',
+            path: '/login/ok',
+            file: 'ok.tsx',
+          },
+        ],
+      },
+    ]);
+  });
+
+  it('registers a couple of routes', () => {
+    config.registerRoute({
+      type: 'route',
+      path: '/login',
+      file: 'login.tsx',
+    });
+
+    config.registerRoute({
+      type: 'route',
+      path: '/logout',
+      file: 'logout.tsx',
+    });
+
+    expect(config.routes).toEqual([
+      {
+        type: 'route',
+        path: '/login',
+        file: 'login.tsx',
+      },
+      {
+        type: 'route',
+        path: '/logout',
+        file: 'logout.tsx',
+      },
+    ]);
+  });
+});
+describe('Widgets registry: registerWidget/registerDefaultWidget', () => {
+  const DummyWidget = () => <div>Dummy Widget</div>;
+  DummyWidget.displayName = 'DummyWidget';
+  const AnotherWidget = () => <div>Another Widget</div>;
+  AnotherWidget.displayName = 'AnotherWidget';
+  const ThirdWidget = () => <div>Third Widget</div>;
+  ThirdWidget.displayName = 'ThirdWidget';
+
+  beforeEach(() => {
+    config._data.widgets = {} as WidgetsConfig; // reset registry for a clean test state
+  });
+
+  it('registers a default widget', () => {
+    config.registerDefaultWidget(AnotherWidget);
+    expect(config.widgets?.default.displayName).toBe('AnotherWidget');
+  });
+  it('errors when trying to register a default widget with the wrong API', () => {
+    expect(() => {
+      config.registerWidget({ key: 'default', definition: AnotherWidget });
+    }).toThrow('Use registerDefaultWidget to set the default widget');
+  });
+
+  it('registers a widget in the "widget" group', () => {
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: DummyWidget,
+      },
+    });
+
+    expect(config.widgets?.widget?.special?.displayName).toBe('DummyWidget');
+  });
+  it('registers two widgets in the "widget" group', () => {
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: DummyWidget,
+      },
+    });
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        another: DummyWidget,
+      },
+    });
+    expect(config.widgets?.widget?.special?.displayName).toBe('DummyWidget');
+    expect(config.widgets?.widget?.another?.displayName).toBe('DummyWidget');
+  });
+
+  it('registers a widget in the "factory" group', () => {
+    config.registerWidget({
+      key: 'factory',
+      definition: {
+        'my.custom.Factory': DummyWidget,
+      },
+    });
+
+    expect(config.widgets?.factory?.['my.custom.Factory']?.displayName).toBe(
+      'DummyWidget',
+    );
+  });
+  it('registers several widgets in the "widget" group at once', () => {
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: DummyWidget,
+        another: ThirdWidget,
+      },
+    });
+    expect(config.widgets?.widget?.special?.displayName).toBe('DummyWidget');
+    expect(config.widgets?.widget?.another?.displayName).toBe('ThirdWidget');
+  });
+
+  it('overwrites existing default widget', () => {
+    // TODO: disallow overwriting default widget with non specific API
+    config.registerDefaultWidget(AnotherWidget);
+    expect(config.widgets?.default.displayName).toBe('AnotherWidget');
+
+    config.registerDefaultWidget(ThirdWidget);
+
+    expect(config.widgets?.default.displayName).toBe('ThirdWidget');
+  });
+  it('overwrites existing widgets of the same key', () => {
+    // TODO: , disallow overwriting default widget with non specific API
+    config.registerWidget({
+      key: 'widget',
+      definition: { size: AnotherWidget },
+    });
+    expect(config.widgets?.widget.size?.displayName).toBe('AnotherWidget');
+
+    config.registerWidget({
+      key: 'widget',
+      definition: { size: ThirdWidget },
+    });
+
+    expect(config.widgets?.widget.size?.displayName).toBe('ThirdWidget');
+  });
+
+  it('preserves unrelated widget keys', () => {
+    config.registerDefaultWidget(DummyWidget);
+
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: AnotherWidget,
+      },
+    });
+
+    expect(config.widgets?.default.displayName).toBe('DummyWidget');
+    expect(config.widgets?.widget?.special?.displayName).toBe('AnotherWidget');
+  });
+});
+
+describe('Widgets registry: getWidget', () => {
+  it('gets widget by id', () => {
+    const Widget = config.getWidget('title');
+    expect(Widget).toBe(config.widgets.id.title);
+  });
+
+  it('gets widget by widget key', () => {
+    const Widget = config.getWidget('special');
+    expect(Widget).toBe(config.widgets.widget.special);
+  });
+
+  it('gets widget by vocabulary', () => {
+    const Widget = config.getWidget('my_vocab');
+    expect(Widget).toBe(config.widgets.vocabulary.my_vocab);
+  });
+
+  it('returns undefined if not found', () => {
+    const Widget = config.getWidget('nonexistent');
+    expect(Widget).toBeUndefined();
+  });
+
+  it('does NOT return widgets.default', () => {
+    const Widget = config.getWidget('default');
+    expect(Widget).not.toBe(config.widgets.default);
   });
 });

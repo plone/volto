@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders a TemplateChooser component 1`] = `
 <div
@@ -16,10 +16,12 @@ exports[`renders a TemplateChooser component 1`] = `
         <button
           className="ui button template-chooser-item"
           onClick={[Function]}
+          type="button"
         >
           <img
             alt=""
-            src="template.svg"
+            fetchpriority="high"
+            src="/src/components/manage/TemplateChooser/template.svg"
           />
           <div
             className="template-chooser-title"

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Form renders a form component 1`] = `
+exports[`Form > renders a form component 1`] = `
 <div>
   <div
     class="ui form"
@@ -23,7 +23,7 @@ exports[`Form renders a form component 1`] = `
 </div>
 `;
 
-exports[`Form renders a form component with defaults in the schema - Checkboxes 1`] = `
+exports[`Form > renders a form component with defaults in the schema - Checkboxes 1`] = `
 <div>
   <div
     class="ui form"
@@ -58,7 +58,7 @@ exports[`Form renders a form component with defaults in the schema - Checkboxes 
 </div>
 `;
 
-exports[`Form renders a form component with defaults in the schema - Default text field 1`] = `
+exports[`Form > renders a form component with defaults in the schema - Default text field 1`] = `
 <div>
   <div
     class="ui form"
@@ -81,7 +81,7 @@ exports[`Form renders a form component with defaults in the schema - Default tex
 </div>
 `;
 
-exports[`Form renders a form component with defaults in the schema - Number field 1`] = `
+exports[`Form > renders a form component with defaults in the schema - Number field 1`] = `
 <div>
   <div
     class="ui form"

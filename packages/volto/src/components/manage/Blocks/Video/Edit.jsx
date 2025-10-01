@@ -4,12 +4,15 @@ import { defineMessages, useIntl } from 'react-intl';
 import { Button, Input, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 
-import { Icon, SidebarPortal, VideoSidebar } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+import VideoSidebar from '@plone/volto/components/manage/Blocks/Video/VideoSidebar';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import videoBlockSVG from '@plone/volto/components/manage/Blocks/Video/block-video.svg';
 import Body from '@plone/volto/components/manage/Blocks/Video/Body';
-import { withBlockExtensions } from '@plone/volto/helpers';
+import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 const messages = defineMessages({
   VideoFormDescription: {
@@ -80,7 +83,7 @@ const Edit = (props) => {
       ) : (
         <Message>
           <center>
-            <img src={videoBlockSVG} alt="" />
+            <Image src={videoBlockSVG} alt="" />
             <div className="toolbar-inner">
               <Input
                 onKeyDown={onKeyDownVariantMenuForm}
@@ -94,6 +97,7 @@ const Edit = (props) => {
               {url && (
                 <Button.Group>
                   <Button
+                    type="button"
                     basic
                     className="cancel"
                     onClick={(e) => {
@@ -107,6 +111,7 @@ const Edit = (props) => {
               )}
               <Button.Group>
                 <Button
+                  type="button"
                   basic
                   primary
                   onClick={(e) => {

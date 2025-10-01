@@ -177,7 +177,16 @@ contentMetadataTagsImageField
     The OpenGraph image that will represent this content item, will be used in the metadata HEAD tag as og:image for SEO purposes. Defaults to image. See the OpenGraph Protocol for more details.
 
 hasWorkingCopySupport
-    This setting will enable working copy support in your site. You need to install the `plone.app.iterate` add-on in your Plone site in order to make it working.
+    ```{versionremoved} Volto 18.8.0
+    This setting is unnecessary since Volto 18.8.0.
+    Working copy support is now based on whether the `plone.app.iterate` add-on is installed in the backend.
+    ```
+
+    For Plone sites using a Volto version prior to 18.8.0, this setting enables working copy support.
+
+    ```{seealso}
+    See {doc}`workingcopy` for configuration.
+    ```
 
 controlpanels
     Register a component as control panel.
@@ -347,9 +356,10 @@ apiExpanders
       },
     ],
     ```
-    The configuration accepts a list of matchers, with the ability to filter by the request path and action type for maximum flexibility.
-    It also accepts a `querystring` object that allows configuring the expanders via query string parameters, such as the navigation expander.
+    `config` accepts a list of matchers to filter by request path and action type for maximum flexibility.
+    It also accepts a `querystring` object that allows to configure the expanders via querystring parameters, for example, the navigation expander.
     The `querystring` object accepts a querystring object or a function that returns a querystring object.
+    The function receives the current `config` and the current evaluated `querystring` as parameters, so you can use it to pass dynamic values to the querystring.
 
     ```js
     export default function applyConfig (config) {
@@ -366,7 +376,7 @@ apiExpanders
           {
             match: '/de',
             GET_CONTENT: ['navigation'],
-            querystring: (config) => ({
+            querystring: (config, querystring) => ({
               'expand.navigation.depth': config.settings.navDepth,
             }),
           }
@@ -462,6 +472,56 @@ querystringSearchGet
     Please be aware that this could break some other functionality in your site, or some of your queries may break, when they contain more than 2000 characters.
     [See an explanation of character limits in URLs](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers/417184#417184).
     Please test this setting properly before enabling in a production site.
+
+cssLayers
+    To use CSS layers when styling Volto, you can define and apply them at the very top level of the page, where they appear in the `<head>` tag.
+    By using this configuration, you can pass the layer list definition as an array:
+
+    ```js
+    config.settings.cssLayers = ['reset', 'plone-components', 'layout', 'addons', 'theme'];
+    ```
+
+showRelatedItems
+    If `true`, the `RelatedItems` component will show items from the `relatedItems` field.
+    Default: `true`.
+
+    ```{versionadded} Volto 18.5.0
+    ```
+
+    ```{versionchanged} Volto 19
+    In Volto 19, the default was changed to `true`.
+    ```
+
+showTags
+    If true, the `Tags` component will show tags from the `subjects` field. Default: true.
+
+isMultilingual
+    If `true`, features for translating content to multiple languages are available.
+    Default: `false`.
+
+    ````{versionremoved} Volto 19
+    This setting was removed in Volto 19.
+    Instead, Volto checks whether the backend has multilingual features enabled.
+    
+    ```{seealso}
+    See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-label>`.
+    ```
+    ````
+
+defaultLanguage
+    Sets the default language of the site.
+
+    ````{versionremoved} Volto 19
+    This setting was removed in Volto 19.
+    Instead, the default language is loaded from the backend.
+
+    ```{seealso}
+    See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-label>`.
+    ```
+    ````
+
+supportedLanguages
+    A list of locales which are included in the bundled code.
 
 ```
 

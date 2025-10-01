@@ -9,16 +9,15 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
-import { setSidebarTab, setUIState } from '@plone/volto/actions';
+import { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
+import { setUIState } from '@plone/volto/actions/form/form';
 import config from '@plone/volto/registry';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-import { ViewDefaultBlock, EditDefaultBlock } from '@plone/volto/components';
-
-import {
-  SidebarPortal,
-  BlockSettingsSidebar,
-  BlockSettingsSchema,
-} from '@plone/volto/components';
+import ViewDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultView';
+import EditDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultEdit';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+import BlockSettingsSidebar from '@plone/volto/components/manage/Blocks/Block/Settings';
+import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -123,7 +122,7 @@ export class Edit extends Component {
    */
   render() {
     const { blocksConfig = config.blocks.blocksConfig } = this.props;
-    const { editable, type } = this.props;
+    const { editable, type, isContainer: parentIsContainer } = this.props;
 
     const disableNewBlocks = this.props.data?.disableNewBlocks;
 
@@ -188,6 +187,7 @@ export class Edit extends Component {
               selected: this.props.selected || this.props.multiSelected,
               multiSelected: this.props.multiSelected,
               hovered: this.props.hovered === this.props.id,
+              error: !!this.props.blocksErrors?.[this.props.id],
             })}
             style={{ outline: 'none' }}
             ref={this.blockNode}
@@ -199,6 +199,7 @@ export class Edit extends Component {
               {...this.props}
               blockNode={this.blockNode}
               data={this.props.data}
+              className={cx({ contained: parentIsContainer })}
             />
             {this.props.manage && (
               <SidebarPortal

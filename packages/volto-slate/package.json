@@ -1,6 +1,6 @@
 {
   "name": "@plone/volto-slate",
-  "version": "18.0.1",
+  "version": "19.0.0-alpha.5",
   "description": "Slate.js integration with Volto",
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
@@ -18,15 +18,13 @@
     "access": "public"
   },
   "dependencies": {
-    "classnames": "2.2.6",
+    "classnames": "2.5.1",
     "github-slugger": "1.4.0",
     "image-extensions": "1.1.0",
     "is-hotkey": "0.2.0",
     "is-url": "1.2.4",
     "jsdom": "^16.6.0",
     "lodash": "4.17.21",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
     "react-intersection-observer": "9.1.0",
     "react-intl": "3.12.1",
     "react-redux": "8.1.2",
@@ -42,9 +40,13 @@
     "weak-key": "^1.0.2"
   },
   "devDependencies": {
-    "@testing-library/react": "9.5.0",
+    "@testing-library/react": "14.3.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "release-it": "^17.0.0"
+    "release-it": "^19.0.5"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "scripts": {
     "dry-release": "release-it --dry-run",

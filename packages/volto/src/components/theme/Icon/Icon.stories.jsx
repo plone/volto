@@ -33,7 +33,7 @@ export default {
 // You can load icons from Volto using the `Icon` component:
 
 // ```jsx static
-// import { Icon } from '@plone/volto/components';
+// import Icon from '@plone/volto/components/theme/Icon/Icon';
 // import addIcon from '@plone/volto/icons/add.svg';
 
 // const IconTest = () => <Icon name={addIcon} size="18px" />;

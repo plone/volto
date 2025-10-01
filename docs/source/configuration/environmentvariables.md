@@ -184,6 +184,23 @@ You can also generate builds on your continuous integration, then deploy them an
     ```shell
     VOLTOCONFIG=../../volto.config.js pnpm start
     ```
+
+`SITE_DEFAULT_LANGUAGE`
+    ```{versionremoved} Volto 19
+    This environment variable was removed in Volto 19.
+    Instead, Volto uses the default language configured in the backend.
+    ```
+
+    ```{seealso}
+    See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-label>`.
+    ```    
+
+    This is a runtime environment variable that sets the `config.settings.defaultLanguage`, allowing you to specify the default language of a site.
+    It needs to match the default language that is configured in the backend's {guilabel}`Language` control panel in {guilabel}`Site Setup`.
+
+    ```shell
+    SITE_DEFAULT_LANGUAGE=ca pnpm start
+    ```
 ````
 
 

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { map } from 'lodash';
+import map from 'lodash/map';
 import { Menu, Dropdown } from 'semantic-ui-react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Slugger from 'github-slugger';
-import { normalizeString } from '@plone/volto/helpers';
+import { normalizeString } from '@plone/volto/helpers/Utils/Utils';
 
 const RenderMenuItems = ({ items }) => {
   return map(items, (item) => {

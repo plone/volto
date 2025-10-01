@@ -386,6 +386,11 @@ msgstr "Caminho da URL alternativa deve iniciar com uma barra."
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "Caminho da URL alternativa → caminho da URL de destino (data e hora da criação, criado manualmente sim/não)"
 
+#. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+msgstr "Outra pessoa editou este conteúdo e ele está sendo exibido atualmente. Você deseja substituir pelo seu conteúdo salvo automaticamente?"
+
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
@@ -436,6 +441,11 @@ msgstr "Atribuições"
 #: components/manage/Controlpanels/Aliases
 msgid "Automatically"
 msgstr "Automaticamente"
+
+#. Default: "Autosaved content found"
+#: helpers/Utils/withSaveAsDraft
+msgid "Autosaved content found"
+msgstr "Conteúdo salvo automaticamente encontrado"
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -559,6 +569,7 @@ msgstr "Não é possível editar layout para o tipo de conteúdo <strong>{type}<
 
 #. Default: "Cancel"
 #: components/manage/Add/Add
+#: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -574,6 +585,11 @@ msgstr "Não é possível editar layout para o tipo de conteúdo <strong>{type}<
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
 msgstr "Cancelar"
+
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr "Cancelar pesquisa"
 
 #. Default: "Cell"
 #: config/Blocks
@@ -999,6 +1015,11 @@ msgstr "Data (mais novo primeiro)"
 msgid "Default"
 msgstr "Padrão"
 
+#. Default: "Default value"
+#: components/manage/Widgets/SchemaWidget
+msgid "Default value"
+msgstr "Valor padrão"
+
 #. Default: "Default view"
 #: config/Views
 msgid "Default view"
@@ -1006,6 +1027,7 @@ msgstr "Visão padrão"
 
 #. Default: "Delete"
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/Groups/RenderGroups
@@ -1059,12 +1081,12 @@ msgid "Delete row"
 msgstr "Excluir linha"
 
 #. Default: "Delete selected items?"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Delete selected items?"
 msgstr "Excluir os itens selecionados?"
 
 #. Default: "Delete this item?"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Delete this item?"
 msgstr "Apagar este item?"
 
@@ -1073,10 +1095,10 @@ msgstr "Apagar este item?"
 msgid "Deleted"
 msgstr "Removida"
 
-#. Default: "Deleting this item breaks {brokenReferences} {variation}."
-#: components/manage/Contents/Contents
-msgid "Deleting this item breaks {brokenReferences} {variation}."
-msgstr "A exclusão desse item quebra {brokenReferences} {variation}."
+#. Default: "Deleting this item will break {brokenReferences} {variation}."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "Deleting this item will break {brokenReferences} {variation}."
+msgstr "Excluir este item irá quebrar {brokenReferences} {variation}."
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
@@ -1159,6 +1181,11 @@ msgstr "Você realmente quer excluir o usuário {username}?"
 msgid "Do you really want to delete this item?"
 msgstr "Você realmente quer excluir este item?"
 
+#. Default: "Do you want to restore your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Do you want to restore your autosaved content?"
+msgstr "Você deseja restaurar seu conteúdo salvo automaticamente?"
+
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
@@ -1174,6 +1201,11 @@ msgstr "Visão do Documento"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
 msgstr "Baixar evento"
+
+#. Default: "Download file"
+#: components/theme/View/FileView
+msgid "Download file"
+msgstr "Baixar arquivo"
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -1392,6 +1424,7 @@ msgstr "Entradas"
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
+#: components/manage/Widgets/ImageWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -1519,6 +1552,11 @@ msgstr "Campo"
 msgid "File"
 msgstr "Arquivo"
 
+#. Default: "File is not of the accepted type {accept}"
+#: components/manage/Widgets/FileWidget
+msgid "File is not of the accepted type {accept}"
+msgstr "O arquivo não é do tipo aceito {accept}"
+
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
@@ -1538,6 +1576,11 @@ msgstr "Nome do arquivo"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Arquivos carregados: {uploadedFiles}"
+
+#. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+#: components/manage/Widgets/SchemaWidget
+msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+msgstr "Preenche o valor do campo do formulário com o valor fornecido por um parâmetro de consulta na URL com o nome fornecido."
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
@@ -2359,6 +2402,11 @@ msgstr "Estreito"
 msgid "Navigate back"
 msgstr "Voltar"
 
+#. Default: "Navigate to this item"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "Navigate to this item"
+msgstr "Navegar para este item"
+
 #. Default: "Navigation"
 #: components/theme/Navigation/ContextNavigation
 msgid "Navigation"
@@ -2523,8 +2571,12 @@ msgstr "Sem workflow"
 
 #. Default: "None"
 #: components/manage/Contents/Contents
-#: components/manage/Contents/ContentsItem
 msgid "None"
+msgstr "Nenhum"
+
+#. Default: "None"
+#: components/manage/Contents/ContentsItem
+msgid "Not available"
 msgstr "Nenhum"
 
 #. Default: "Note"
@@ -2675,6 +2727,11 @@ msgstr "Ferramentas pessoais"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Pessoas responsáveis pela criação do conteúdo deste item. Por favor, insira uma lista de nomes de usuário, um por linha. O autor principal deve vir primeiro."
 
+#. Default: "Placeholder"
+#: components/manage/Widgets/SchemaWidget
+msgid "Placeholder"
+msgstr "Texto de exemplo"
+
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
@@ -2792,6 +2849,11 @@ msgstr "Data de publicação"
 msgid "Query"
 msgstr "Consulta"
 
+#. Default: "Query Parameter Name"
+#: components/manage/Widgets/SchemaWidget
+msgid "Query Parameter Name"
+msgstr "Nome do parâmetro de busca"
+
 #. Default: "Re-enter the password. Make sure the passwords are identical."
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -2849,7 +2911,7 @@ msgstr "Referenciando este item como item relacionado"
 msgid "Referencing this item with {relationship}"
 msgstr "Referenciando este item via {relationship}"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr "Atualizar o conteúdo de origem"
@@ -2865,6 +2927,11 @@ msgstr "Cadastro"
 #: components/theme/Register/Register
 msgid "Registration form"
 msgstr "Formulário de cadastro"
+
+#. Default: "Related Items"
+#: components/theme/RelatedItems/RelatedItems
+msgid "Related Items"
+msgstr "Itens relacionados"
 
 #. Default: "Relation"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -3241,6 +3308,11 @@ msgstr "Selecione colunas para mostrar"
 msgid "Select relation"
 msgstr "Selecione um relacionamento"
 
+#. Default: "Select rule"
+#: components/manage/Rules/Rules
+msgid "Select rule"
+msgstr "Selecione uma regra"
+
 #. Default: "Select the transition to be used for modifying the items state."
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
@@ -3437,15 +3509,15 @@ msgstr "Tamanho: {size}"
 msgid "Small"
 msgstr "Pequeno"
 
-#. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-#: components/manage/Contents/Contents
-msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-msgstr "Alguns itens também são uma pasta. Ao excluí-los, você excluirá {containedItemsToDelete} {variation} dentro destas pastas."
+#. Default: "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
+msgstr "Alguns itens são referenciados por outros conteúdos. Excluí-los irá quebrar {brokenReferences} {variation}."
 
-#. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-#: components/manage/Contents/Contents
-msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-msgstr "Alguns itens são referenciados por outros conteúdos. Ao excluí-los, {brokenReferences} {variation} podem ser quebrados."
+#. Default: "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
+msgstr "Alguns itens contêm subitens. Excluí-los também irá excluir seus {containedItemsToDelete} {variation} internos."
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3713,6 +3785,11 @@ msgstr "O servidor de backend do seu site não está respondendo, pedimos descul
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr "A presença do botão desativa a busca ativa, a consulta é realizada apenas quando você pressiona ENTER"
 
+#. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+#: components/manage/Widgets/FileWidget
+msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+msgstr "O arquivo que você enviou excedeu o tamanho máximo permitido de {size} bytes"
+
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
 msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
@@ -3727,6 +3804,11 @@ msgstr "A lista a seguir mostra quais etapas de atualização serão realizados.
 #: components/manage/Contents/Contents
 msgid "The item could not be deleted."
 msgstr "O item não pôde ser excluído."
+
+#. Default: "The kicker is a line of text shown above the title."
+#: components/manage/Blocks/Teaser/schema
+msgid "The kicker is a line of text shown above the title."
+msgstr "Um breve texto (uma ou duas palavras) que precede o título principal."
 
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
@@ -3752,6 +3834,11 @@ msgstr "A URL alternativa já existe!"
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "O processo de registro foi bem sucedido. Verifique sua caixa de entrada de e-mail para obter informações sobre como ativar sua conta."
+
+#. Default: "The selected default language must be in the list of the field 'Available languages'"
+#: helpers/MessageLabels/MessageLabels
+msgid "The selected default language must be in the list of the field 'Available languages'"
+msgstr "O idioma padrão escolhido deve estar na lista do campo 'Idiomas disponíveis'"
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
@@ -3811,6 +3898,11 @@ msgstr "Houve alguns erros"
 msgid "There were some errors."
 msgstr "Houve alguns erros."
 
+#. Default: "These items will have broken links"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "These items will have broken links"
+msgstr "Esses itens terão links quebrados"
+
 #. Default: "Third"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
@@ -3831,10 +3923,10 @@ msgstr "Este é um nome reservado e não pode ser usado"
 msgid "This is a working copy of {title}"
 msgstr "Esta é uma cópia de trabalho de {title}"
 
-#. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-#: components/manage/Contents/Contents
-msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-msgstr "Esse item também é uma pasta. Ao excluí-lo, você excluirá {containedItemsToDelete} {variation} dentro da pasta."
+#. Default: "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
+msgstr "Este item contém subitens. Excluí-lo também irá excluir seus {containedItemsToDelete} {variation} internos."
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -3858,6 +3950,7 @@ msgstr "Essa regra é atribuída aos seguintes locais:"
 
 #. Default: "Time"
 #: components/manage/Widgets/DatetimeWidget
+#: components/manage/Widgets/TimeWidget
 msgid "Time"
 msgstr "Hora"
 
@@ -4241,7 +4334,7 @@ msgid "View changes"
 msgstr "Ver mudanças"
 
 #. Default: "View links and references to this item"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "View links and references to this item"
 msgstr "Exibir links e referências a este item"
 
@@ -4372,6 +4465,11 @@ msgstr "Alterando os estados..."
 msgid "Workflow updated."
 msgstr "Workflow atualizado."
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "Cópia de trabalho"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
@@ -4382,6 +4480,16 @@ msgstr "Anualmente"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Yes"
 msgstr "Sim"
+
+#. Default: "You are about to delete all items and all its subitems."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items and all its subitems."
+msgstr "Você está prestes a excluir todos os itens e todos os seus subitens."
+
+#. Default: "You are about to delete all items in the current pagination of this folder."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items in the current pagination of this folder."
+msgstr "Você está prestes a excluir todos os itens na paginação atual desta pasta."
 
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
@@ -4453,6 +4561,11 @@ msgstr "Seu site está atualizado."
 msgid "Your usernaame is required for reset your password."
 msgstr "Seu nome de usuário é necessário para redefinir sua senha."
 
+#. Default: "File types allowed"
+#: components/manage/Widgets/SchemaWidget
+msgid "accept"
+msgstr "Tipos de arquivo permitidos"
+
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -4473,6 +4586,11 @@ msgstr "Informe a sua nova senha. Mínimo de 8 caracteres."
 msgid "addUserFormUsernameDescription"
 msgstr "Informe o nome do usuário que você deseja, geralmente algo como 'jsilva'. Não use espaços ou caracteres especiais. Nomes de usuários e senhas são sensíveis a letras maiúsculas e minúsculas, certifique-se que a tecla Caps Lock não esteja ativada. Esse é o nome que você usará para acessar."
 
+#. Default: "and {count} more…"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "and {count} more…"
+msgstr "e mais {count}…"
+
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
@@ -4481,7 +4599,7 @@ msgstr "Visões disponíveis"
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
-msgstr "Erro no campo de blocos {errorField}"
+msgstr "Erro no campo {errorField} do bloco."
 
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login
@@ -4609,6 +4727,11 @@ msgstr "Onde"
 msgid "examplePath"
 msgstr "/exemplo"
 
+#. Default: "External URLs are not allowed in this field."
+#: components/manage/Widgets/ImageWidget
+msgid "externalURLsNotAllowed"
+msgstr "Endereços externos não são permitidos neste campo."
+
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
@@ -4624,7 +4747,7 @@ msgstr "descarrega os intIds e recontrua os relacionamentos"
 msgid "flushAndRebuildRelationsHints"
 msgstr "<ul><li>Regerar os intIds (tokens das relações no catálogo de relações)</li><li>Reconstruir relações</li></ul><p>Verifique o log para detalhes!</p><p><b>Aviso</b>: Se você tem complementos que dependem de intIds, não deve excluí-los.</p>"
 
-#. Default: "Head title"
+#. Default: "Kicker"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
 msgstr "Título principal"
@@ -4649,6 +4772,11 @@ msgstr "HTML"
 msgid "image"
 msgstr "Imagem"
 
+#. Default: "Please upload an image instead."
+#: components/manage/Widgets/ImageWidget
+msgid "imageUploadErrorMessage"
+msgstr "Por favor, envie uma imagem."
+
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "image_block_clear"
@@ -4664,18 +4792,23 @@ msgstr "Pré-visualização da imagem"
 msgid "integer"
 msgstr "Valor deve ser um número inteiro"
 
+#. Default: "No image was found in the internal path you provided."
+#: components/manage/Widgets/ImageWidget
+msgid "internalImageNotFoundErrorMessage"
+msgstr "Nenhuma imagem foi encontrada no caminho interno que você forneceu."
+
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
 msgid "intranet"
 msgstr "Intranet"
 
 #. Default: "item"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "item"
 msgstr "Item"
 
 #. Default: "items"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "items"
 msgstr "Itens"
 
@@ -4693,6 +4826,16 @@ msgstr "Meu nome de usuário é "
 #: config/Blocks
 msgid "leadimage"
 msgstr "Imagem principal"
+
+#. Default: "Delete item and break links"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "link-integrity: Delete item and break links"
+msgstr "Excluir item e quebrar links"
+
+#. Default: "Checking references..."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "link-integrity: loading references"
+msgstr "Verificando referências..."
 
 #. Default: "Enter a URL to an image"
 #: components/manage/Widgets/ImageWidget
@@ -4819,14 +4962,24 @@ msgid "rebuild relations"
 msgstr "reconstruir relacionamentos"
 
 #. Default: "reference"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "reference"
 msgstr "referência"
 
 #. Default: "references"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "references"
 msgstr "referências"
+
+#. Default: "refers to"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "refers to"
+msgstr "refere-se a"
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
+msgstr "Total de resultados"
 
 #. Default: "results"
 #: components/theme/Search/Search
@@ -5007,6 +5160,11 @@ msgstr "Seleção"
 #: components/manage/Blocks/Search/components/ViewSwitcher
 msgid "selectView"
 msgstr "Escolha a visão"
+
+#. Default: "Maximum size of the file in bytes"
+#: components/manage/Widgets/SchemaWidget
+msgid "size"
+msgstr "Tamanho máximo do arquivo em bytes"
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks

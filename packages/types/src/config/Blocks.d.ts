@@ -1,12 +1,12 @@
 import type { Content } from '../content';
-import type { BlockViewProps, BlockEditProps } from '../blocks';
-import type { IntlShape } from 'react-intl';
+import type { BlockViewProps, BlockEditProps, BlocksFormData } from '../blocks';
+import type { IntlShape } from '../i18n';
 import { User } from '../services';
 import { StyleDefinition } from '../blocks';
 
 export interface BlocksConfig {
   blocksConfig: BlocksConfigData;
-  groupBlocksOrder: { id: string; title: string };
+  groupBlocksOrder: Array<{ id: string; title: string }>;
   requiredBlocks: string[];
   initialBlocks: Record<string, string[]> | Record<string, object[]>;
   initialBlocksFocus: Record<string, string>;
@@ -52,6 +52,14 @@ export interface BlockConfigBase {
    */
   group: string;
   /**
+   * The category of the block
+   */
+  category?: string;
+  /**
+   * The model of the block
+   */
+  blockModel?: number;
+  /**
    * The view mode component
    */
   view?: React.ComponentType<BlockViewProps>;
@@ -66,10 +74,22 @@ export interface BlockConfigBase {
   /**
    * The group of the block
    */
-  blockSchema: (args: {
-    props: unknown;
-    intl: IntlShape;
-  }) => Record<string, unknown>;
+  blockSchema:
+    | JSONSchema
+    | ((args: { props: unknown; intl: IntlShape }) => JSONSchema);
+  dataAdapter?: ({
+    block,
+    data,
+    id,
+    onChangeBlock,
+    value,
+  }: {
+    block: string;
+    data: BlocksFormData;
+    id: string;
+    onChangeBlock: (id: string, newData: any) => void;
+    value: any;
+  }) => void;
   /**
    * If the block is restricted, it won't show in the chooser.
    * The function signature is `({properties, block, navRoot, contentType})` where
@@ -188,7 +208,7 @@ export type JSONSchemaFieldsets = {
 export type JSONSchema = {
   title: string;
   fieldsets: JSONSchemaFieldsets[];
-  properties: object;
+  properties: Record<string, any>;
   required: string[];
 };
 

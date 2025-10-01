@@ -1,5 +1,7 @@
 import { Content } from '../content';
 import { BlocksFormData } from '../blocks/index';
+import { ConfigData } from '.';
+import { Controlpanel, ControlPanelSchema } from '..';
 
 type apiExpandersType =
   | { match: string; GET_CONTENT: string[] }
@@ -8,7 +10,10 @@ type apiExpandersType =
       GET_CONTENT: string[];
       querystring:
         | { [key: string]: string }
-        | (() => { [key: string]: string });
+        | ((
+            config,
+            querystring: { config: ConfigData; querystring: object },
+          ) => { [key: string]: string });
     };
 
 type styleClassNameExtendersType = ({
@@ -37,7 +42,7 @@ export interface SettingsConfig {
   websockets: string | false;
   legacyTraverse: string | false;
   cookieExpires: number;
-  nonContentRoutes: string[];
+  nonContentRoutes: Array<string | RegExp>;
   richtextEditorSettings: unknown;
   richtextViewSettings: unknown;
   imageObjects: string[];
@@ -48,9 +53,7 @@ export interface SettingsConfig {
   openExternalLinkInNewTab: boolean;
   notSupportedBrowsers: string[];
   defaultPageSize: number;
-  isMultilingual: boolean;
   supportedLanguages: string[]; // TODO: Improve list of possible values
-  defaultLanguage: string;
   navDepth: number;
   expressMiddleware: unknown;
   defaultBlockType: string; // TODO: Improve list of possible values
@@ -76,17 +79,17 @@ export interface SettingsConfig {
   serverConfig: unknown;
   storeExtenders: unknown[];
   showTags: boolean;
-  controlpanels: unknown[];
+  showRelatedItems: boolean;
+  controlpanels: Controlpanel[];
   controlPanelsIcons: Record<string, React.ComponentType>;
   filterControlPanels: unknown;
-  filterControlPanelsSchema: unknown;
+  filterControlPanelsSchema: (schema: Controlpanel) => ControlPanelSchema;
   externalRoutes: {
     match?: string | { path: string; exact: boolean; strict: boolean };
   }[];
 
   showSelfRegistration: boolean;
   contentMetadataTagsImageField: string;
-  hasWorkingCopySupport: boolean;
   maxUndoLevels: number;
   addonsInfo: unknown;
   workflowMapping: unknown;
@@ -101,4 +104,6 @@ export interface SettingsConfig {
     includeSiteTitle: boolean;
     titleAndSiteTitleSeparator: string;
   };
+  cssLayers: string[];
+  hideBreadcrumbs: string[]; // Content types for which to hide breadcrumbs
 }

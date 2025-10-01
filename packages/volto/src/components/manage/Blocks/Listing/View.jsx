@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { withBlockExtensions } from '@plone/volto/helpers';
+import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
 
-import { ListingBlockBody as ListingBody } from '@plone/volto/components';
+import { default as ListingBody } from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
 
 const View = (props) => {
   const { data, path, pathname, className, style } = props;

@@ -1,0 +1,335 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renders an object list widget component 1`] = `
+<DocumentFragment>
+  <div
+    class="objectlist-widget"
+  >
+    <div
+      class="inline required field help objectlist field-wrapper-my-widget"
+    >
+      <div
+        class="ui grid"
+      >
+        <div
+          class="stretched row"
+        >
+          <div
+            class="four wide column"
+          >
+            <div
+              class="wrapper"
+            >
+              <label
+                id="fieldset-my-field-set-field-label-my-widget"
+              >
+                My Widget
+              </label>
+            </div>
+          </div>
+          <div
+            class="eight wide column"
+          >
+            <div
+              class="toolbar"
+              style="z-index: 2;"
+            >
+              <button
+                aria-label="Edit"
+                class="item ui noborder button"
+              >
+                <i
+                  aria-hidden="true"
+                  class="blue write square large icon"
+                />
+              </button>
+              <button
+                aria-label="Delete"
+                class="item ui noborder button"
+              >
+                <i
+                  aria-hidden="true"
+                  class="red close large icon"
+                />
+              </button>
+            </div>
+            <div
+              class="add-item-button-wrapper"
+            >
+              <button
+                aria-label="Add Link"
+                class="ui compact icon button"
+              >
+                <svg
+                  class="icon"
+                  style="height: 18px; width: auto; fill: currentColor;"
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M31 17 19 17 19 5 17 5 17 17 5 17 5 19 17 19 17 31 19 31 19 19 31 19z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+                 Add Link
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="stretched row"
+        >
+          <div
+            class="stretched twelve wide column"
+          >
+            <p
+              class="help"
+            >
+              My description
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      aria-labelledby="fieldset-my-field-set-field-label-my-widget"
+      data-rbd-droppable-context-id="0"
+      data-rbd-droppable-id="id-0"
+      style="box-shadow: 0 1px 1px rgba(0,0,0,0.15), 0 10px 0 -5px #eee, 0 10px 1px -4px rgba(0,0,0,0.15); position: relative;"
+    >
+      <div
+        data-rbd-draggable-context-id="0"
+        data-rbd-draggable-id="a2653d85-602e-4ed1-8a18-a33bdc2f6e36"
+      >
+        <div
+          class="accordion ui fluid styled"
+        >
+          <div
+            aria-label="Show item #1"
+            class="title"
+          >
+            <button
+              aria-describedby="rbd-hidden-text-0-hidden-text-0"
+              class="drag handle"
+              data-rbd-drag-handle-context-id="0"
+              data-rbd-drag-handle-draggable-id="a2653d85-602e-4ed1-8a18-a33bdc2f6e36"
+              draggable="false"
+              role="button"
+              style="visibility: visible; display: inline-block;"
+              tabindex="0"
+            >
+              <svg
+                class="icon"
+                style="height: 18px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M13 16C11.897 16 11 16.897 11 18 11 19.103 11.897 20 13 20 14.103 20 15 19.103 15 18 15 16.897 14.103 16 13 16M13 22C10.794 22 9 20.206 9 18 9 15.794 10.794 14 13 14 15.206 14 17 15.794 17 18 17 20.206 15.206 22 13 22M23 16C21.897 16 21 16.897 21 18 21 19.103 21.897 20 23 20 24.103 20 25 19.103 25 18 25 16.897 24.103 16 23 16M23 22C20.794 22 19 20.206 19 18 19 15.794 20.794 14 23 14 25.206 14 27 15.794 27 18 27 20.206 25.206 22 23 22M13 26C11.897 26 11 26.897 11 28 11 29.103 11.897 30 13 30 14.103 30 15 29.103 15 28 15 26.897 14.103 26 13 26M13 32C10.794 32 9 30.206 9 28 9 25.794 10.794 24 13 24 15.206 24 17 25.794 17 28 17 30.206 15.206 32 13 32M23 26C21.897 26 21 26.897 21 28 21 29.103 21.897 30 23 30 24.103 30 25 29.103 25 28 25 26.897 24.103 26 23 26M23 32C20.794 32 19 30.206 19 28 19 25.794 20.794 24 23 24 25.206 24 27 25.794 27 28 27 30.206 25.206 32 23 32M13 6C11.897 6 11 6.897 11 8 11 9.103 11.897 10 13 10 14.103 10 15 9.103 15 8 15 6.897 14.103 6 13 6M13 12C10.794 12 9 10.206 9 8 9 5.794 10.794 4 13 4 15.206 4 17 5.794 17 8 17 10.206 15.206 12 13 12M23 6C21.897 6 21 6.897 21 8 21 9.103 21.897 10 23 10 24.103 10 25 9.103 25 8 25 6.897 24.103 6 23 6M23 12C20.794 12 19 10.206 19 8 19 5.794 20.794 4 23 4 25.206 4 27 5.794 27 8 27 10.206 25.206 12 23 12"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </button>
+            <div
+              class="accordion-title-wrapper"
+            >
+              Link #1
+            </div>
+            <div
+              class="accordion-tools"
+            >
+              <button
+                aria-label="Remove item #1"
+              >
+                <svg
+                  class="icon"
+                  style="height: 20px; width: auto; fill: #e40166;"
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g
+                    fill-rule="evenodd"
+                  >
+                    <path
+                      d="M27,30 C27,30.552 26.551,31 26,31 L12,31 C11.449,31 11,30.552 11,30 L11,9 L27,9 L27,30 Z M19,5 C20.103,5 21,5.897 21,7 L17,7 C17,5.897 17.897,5 19,5 L19,5 Z M31,7 L23,7 C23,4.794 21.206,3 19,3 C16.794,3 15,4.794 15,7 L7,7 L7,9 L9,9 L9,30 C9,31.654 10.346,33 12,33 L26,33 C27.654,33 29,31.654 29,30 L29,9 L31,9 L31,7 Z"
+                    />
+                    <path
+                      d="M15 28 17 28 17 12 15 12zM21 28 23 28 23 12 21 12z"
+                    />
+                  </g>
+                </svg>
+              </button>
+              <svg
+                class="icon"
+                style="height: 20px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="content"
+          >
+            <div
+              class="ui segment"
+            >
+              <div>
+                <div
+                  class="ui attached tabular menu"
+                >
+                  <a
+                    class="active item"
+                  >
+                    Internal
+                  </a>
+                  <a
+                    class="item"
+                  >
+                    External
+                  </a>
+                  <a
+                    class="item"
+                  >
+                    Email
+                  </a>
+                </div>
+                <div
+                  class="ui bottom attached segment active tab"
+                >
+                  <div
+                    class="Field"
+                    id="internal_link-0-my-widget-0"
+                  >
+                    Internal link
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        data-rbd-draggable-context-id="0"
+        data-rbd-draggable-id="a2653d85-602e-4ed1-8a18-a33bdc2f6e37"
+      >
+        <div
+          class="accordion ui fluid styled"
+        >
+          <div
+            aria-label="Collapse item #2"
+            class="active title"
+          >
+            <button
+              aria-describedby="rbd-hidden-text-0-hidden-text-0"
+              class="drag handle"
+              data-rbd-drag-handle-context-id="0"
+              data-rbd-drag-handle-draggable-id="a2653d85-602e-4ed1-8a18-a33bdc2f6e37"
+              draggable="false"
+              role="button"
+              style="visibility: visible; display: inline-block;"
+              tabindex="0"
+            >
+              <svg
+                class="icon"
+                style="height: 18px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M13 16C11.897 16 11 16.897 11 18 11 19.103 11.897 20 13 20 14.103 20 15 19.103 15 18 15 16.897 14.103 16 13 16M13 22C10.794 22 9 20.206 9 18 9 15.794 10.794 14 13 14 15.206 14 17 15.794 17 18 17 20.206 15.206 22 13 22M23 16C21.897 16 21 16.897 21 18 21 19.103 21.897 20 23 20 24.103 20 25 19.103 25 18 25 16.897 24.103 16 23 16M23 22C20.794 22 19 20.206 19 18 19 15.794 20.794 14 23 14 25.206 14 27 15.794 27 18 27 20.206 25.206 22 23 22M13 26C11.897 26 11 26.897 11 28 11 29.103 11.897 30 13 30 14.103 30 15 29.103 15 28 15 26.897 14.103 26 13 26M13 32C10.794 32 9 30.206 9 28 9 25.794 10.794 24 13 24 15.206 24 17 25.794 17 28 17 30.206 15.206 32 13 32M23 26C21.897 26 21 26.897 21 28 21 29.103 21.897 30 23 30 24.103 30 25 29.103 25 28 25 26.897 24.103 26 23 26M23 32C20.794 32 19 30.206 19 28 19 25.794 20.794 24 23 24 25.206 24 27 25.794 27 28 27 30.206 25.206 32 23 32M13 6C11.897 6 11 6.897 11 8 11 9.103 11.897 10 13 10 14.103 10 15 9.103 15 8 15 6.897 14.103 6 13 6M13 12C10.794 12 9 10.206 9 8 9 5.794 10.794 4 13 4 15.206 4 17 5.794 17 8 17 10.206 15.206 12 13 12M23 6C21.897 6 21 6.897 21 8 21 9.103 21.897 10 23 10 24.103 10 25 9.103 25 8 25 6.897 24.103 6 23 6M23 12C20.794 12 19 10.206 19 8 19 5.794 20.794 4 23 4 25.206 4 27 5.794 27 8 27 10.206 25.206 12 23 12"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </button>
+            <div
+              class="accordion-title-wrapper"
+            >
+              Link #2
+            </div>
+            <div
+              class="accordion-tools"
+            >
+              <button
+                aria-label="Remove item #2"
+              >
+                <svg
+                  class="icon"
+                  style="height: 20px; width: auto; fill: #e40166;"
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g
+                    fill-rule="evenodd"
+                  >
+                    <path
+                      d="M27,30 C27,30.552 26.551,31 26,31 L12,31 C11.449,31 11,30.552 11,30 L11,9 L27,9 L27,30 Z M19,5 C20.103,5 21,5.897 21,7 L17,7 C17,5.897 17.897,5 19,5 L19,5 Z M31,7 L23,7 C23,4.794 21.206,3 19,3 C16.794,3 15,4.794 15,7 L7,7 L7,9 L9,9 L9,30 C9,31.654 10.346,33 12,33 L26,33 C27.654,33 29,31.654 29,30 L29,9 L31,9 L31,7 Z"
+                    />
+                    <path
+                      d="M15 28 17 28 17 12 15 12zM21 28 23 28 23 12 21 12z"
+                    />
+                  </g>
+                </svg>
+              </button>
+              <svg
+                class="icon"
+                style="height: 20px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="content active"
+          >
+            <div
+              class="ui segment"
+            >
+              <div>
+                <div
+                  class="ui attached tabular menu"
+                >
+                  <a
+                    class="active item"
+                  >
+                    Internal
+                  </a>
+                  <a
+                    class="item"
+                  >
+                    External
+                  </a>
+                  <a
+                    class="item"
+                  >
+                    Email
+                  </a>
+                </div>
+                <div
+                  class="ui bottom attached segment active tab"
+                >
+                  <div
+                    class="Field"
+                    id="internal_link-0-my-widget-1"
+                  >
+                    Internal link
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

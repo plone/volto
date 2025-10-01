@@ -8,6 +8,110 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.5 (2025-09-29)
+
+### Feature
+
+- Improve the vite plugin by adding a relative to absolute path imports. @sneridagh [#7062](https://github.com/plone/volto/issues/7062)
+- Add widget registration and getting widgets from config with new methods. @deodorhunter [#7141](https://github.com/plone/volto/issues/7141)
+- Add-ons registry style loader support for `cmsui.css` stylesheet in add-ons. @sneridagh [#7221](https://github.com/plone/volto/issues/7221)
+- Backport Seven updates. @sneridagh [#7407](https://github.com/plone/volto/issues/7407)
+
+### Bugfix
+
+- Fixed widget registration tests. @deodorhunter [#7201](https://github.com/plone/volto/issues/7201)
+- Fixed `registerWidget`. @sneridagh [#7257](https://github.com/plone/volto/issues/7257)
+- Fixed `registerWidget` ssr error with dedicated APIs for default and generic Widgets. @deodorhunter [#7334](https://github.com/plone/volto/issues/7334)
+
+### Internal
+
+- Added a comment to `init-loader` bin script, it's only used on init unit tests. @sneridagh [#7060](https://github.com/plone/volto/issues/7060)
+- Rename `@plone/slots` to `@plone/layout`. @sneridagh [#7119](https://github.com/plone/volto/issues/7119)
+- Update to latest versions. @sneridagh [#7298](https://github.com/plone/volto/issues/7298)
+
+### Documentation
+
+- Updated docs based on feedback provided in #7221. @pnicolli @stevepiercy [#7226](https://github.com/plone/volto/issues/7226)
+- Fixed some pending TODO's and small code amendments. @sneridagh [#7360](https://github.com/plone/volto/issues/7360)
+- Use `Public UI` and `CMSUI` as official spellings. @stevepiercy [#7375](https://github.com/plone/volto/issues/7375)
+
+## 3.0.0-alpha.4 (2025-06-25)
+
+### Bugfix
+
+- `getUtility` returns an empty object if called with a utility type that has not been registered. @davisagli [#7108](https://github.com/plone/volto/issues/7108)
+
+## 3.0.0-alpha.3 (2025-05-13)
+
+### Bugfix
+
+- Return properly in `getUtility` and `getUtilities` in case `type` or `name` is not set. @sneridagh [#7007](https://github.com/plone/volto/issues/7007)
+- Fixed `unRegisterSlotComponent` method. @sneridagh [#7016](https://github.com/plone/volto/issues/7016)
+- Remove the slot registration from the array if it is the last in `unRegisterSlotComponent`. @sneridagh [#7031](https://github.com/plone/volto/issues/7031)
+
+## 3.0.0-alpha.2 (2025-04-12)
+
+### Feature
+
+- New binary `init-loaders` initializes the `@plone/registry` loaders via the command line.
+  This fixes the upgrade to 7.2.0 problem introduced in https://github.com/remix-run/react-router/issues/13078. @sneridagh [#6780](https://github.com/plone/volto/issues/6780)
+- Support for Tailwind add-ons detection in Vite plugin. @sneridagh [#6797](https://github.com/plone/volto/issues/6797)
+- Added i18n support for projects and add-ons (i18next) for Seven. @pnicolli [#6866](https://github.com/plone/volto/issues/6866)
+
+## 3.0.0-alpha.1 (2025-03-31)
+
+### Feature
+
+- Allow to override slots with no predicate with the same name. @sneridagh [#6887](https://github.com/plone/volto/issues/6887)
+
+## 3.0.0-alpha.0 (2025-03-27)
+
+### Breaking
+
+- Removed support for loading config from project. @sneridagh
+
+  Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html)
+  for more information. [#6842](https://github.com/plone/volto/issues/6842)
+
+### Internal
+
+- Fix typings for Vite Plugin. @sneridagh [#6733](https://github.com/plone/volto/issues/6733)
+
+## 2.4.1 (2025-02-08)
+
+### Internal
+
+- Update Vite version. @sneridagh [#6640](https://github.com/plone/volto/issues/6640)
+- Update internal `peerDependencies` to include React 19.
+  Update TS version. @sneridagh [#6641](https://github.com/plone/volto/issues/6641)
+- Remove `react` as a hard dependency, use `peerDependencies` instead.  @sneridagh [#6728](https://github.com/plone/volto/issues/6728)
+
+## 2.4.0 (2025-01-31)
+
+### Feature
+
+- Added add-ons styles loader. @sneridagh [#6630](https://github.com/plone/volto/issues/6630)
+
+## 2.3.0 (2025-01-24)
+
+### Feature
+
+- Added route registry. @sneridagh [#6600](https://github.com/plone/volto/issues/6600)
+
+### Documentation
+
+- Document the route API. @sneridagh [#6604](https://github.com/plone/volto/issues/6604)
+
+## 2.2.0 (2024-12-12)
+
+### Feature
+
+- Added an experimental Vite plugin for the registry. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+
+### Documentation
+
+- `html_use_opensearch` value must not have a trailing slash. Clean up comments. @stevepiercy [#6502](https://github.com/plone/volto/issues/6502)
+
 ## 2.1.2 (2024-11-05)
 
 ### Bugfix

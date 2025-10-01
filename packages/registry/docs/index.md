@@ -4,7 +4,7 @@ myst:
     "description": "@plone/registry provides support for building an add-on and configuration registry with infrastructure for JavaScript and TypeScript-based apps."
     "property=og:description": "@plone/registry provides support for building an add-on and configuration registry with infrastructure for JavaScript and TypeScript-based apps."
     "property=og:title": "@plone/registry"
-    "keywords": "@plone/registry, registry, add-on, configuration, component, utility, JavaScript, TypeScript, app"
+    "keywords": "@plone/registry, registry, add-on, configuration, component, routes, React Router, utility, JavaScript, TypeScript, app"
 ---
 
 # `@plone/registry`
@@ -29,6 +29,7 @@ how-to-guides/access-registry
 how-to-guides/register-and-retrieve-components
 how-to-guides/register-and-retrieve-utilities
 how-to-guides/shadow-a-component
+how-to-guides/register-routes
 ```
 
 
@@ -40,4 +41,6 @@ conceptual-guides/add-on-registry
 conceptual-guides/configuration-registry
 conceptual-guides/component-registry
 conceptual-guides/utility-registry
+conceptual-guides/add-on-loader
+conceptual-guides/add-on-styles-loader
 ```

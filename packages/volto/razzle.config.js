@@ -201,7 +201,7 @@ const defaultModify = ({
               `${registry.packages[addon].modulePath}/../.`,
             );
             if (fs.existsSync(path.join(p, 'public'))) {
-              if (!dev) {
+              if (!dev && fs.existsSync(paths.appBuildPublic)) {
                 mergeDirectories(path.join(p, 'public'), paths.appBuildPublic);
               }
               if (
@@ -413,15 +413,6 @@ const defaultModify = ({
           }),
         ]
       : [];
-
-  if (config.devServer) {
-    config.devServer.static.watch.ignored = /node_modules\/(?!@plone\/volto)/;
-    config.snapshot = {
-      managedPaths: [
-        /^(.+?[\\/]node_modules[\\/](?!(@plone[\\/]volto))(@.+?[\\/])?.+?)[\\/]/,
-      ],
-    };
-  }
 
   return config;
 };

@@ -7,10 +7,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import serialize from 'serialize-javascript';
-import { join } from 'lodash';
+import join from 'lodash/join';
 import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 import { runtimeConfig } from '@plone/volto/runtime_config';
 import config from '@plone/volto/registry';
+import { bulkFlattenToAppURL } from '../Url/bulkFlattenToAppURL';
 
 const CRITICAL_CSS_TEMPLATE = `function alter() {
   document.querySelectorAll("head link[rel='prefetch']").forEach(function(el) { el.rel = 'stylesheet'});
@@ -102,6 +103,12 @@ class Html extends Component {
           {head.meta.toComponent()}
           {head.link.toComponent()}
           {head.script.toComponent()}
+
+          {config.settings.cssLayers && (
+            // Load the CSS layers from config, if any
+            <style>{`@layer ${config.settings.cssLayers.join(', ')};`}</style>
+          )}
+
           {head.style.toComponent()}
 
           <script
@@ -183,7 +190,14 @@ class Html extends Component {
           <script
             dangerouslySetInnerHTML={{
               __html: `window.__data=${serialize(
-                loadReducers(store.getState()),
+                loadReducers({
+                  ...store.getState(),
+                  // Flatten the content URLs in initial request in SSR
+                  // it normalizes the URLs in case the INTERNAL_API_PATH is set
+                  // and prevents unwanted leaks of INTERNAL_API_PATH in the client
+                  // (only in the first request)
+                  content: bulkFlattenToAppURL(store.getState().content),
+                }),
               )};`,
             }}
             charSet="UTF-8"

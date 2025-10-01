@@ -16,7 +16,7 @@ import {
   LINK_INTEGRITY_CHECK,
   UPDATE_UPLOADED_FILES,
 } from '@plone/volto/constants/ActionTypes';
-import { nestContent } from '@plone/volto/helpers';
+import { nestContent } from '@plone/volto/helpers/Content/Content';
 import config from '@plone/volto/registry';
 
 /**
@@ -164,7 +164,6 @@ export function getContent(
           b_size: settings.defaultPageSize,
         }
       : {},
-    settings.isMultilingual ? { expand: 'translations' } : {},
   );
 
   let qs = Object.keys(query)

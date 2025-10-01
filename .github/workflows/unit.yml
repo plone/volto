@@ -25,7 +25,7 @@ jobs:
       - run: pnpm --filter @plone/volto i18n
 
       - name: Run unit tests Volto
-        run: pnpm --filter @plone/volto test
+        run: pnpm --filter @plone/volto vitest
 
       # Bundlewatch
       # - run: yarn build
@@ -51,7 +51,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Enable corepack
-        run: corepack enable
+        run: npm i -g corepack@latest && corepack enable
 
       - name: Get pnpm store directory
         shell: bash
@@ -67,6 +67,9 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - run: pnpm i
+
+      - name: Build @plone/registry
+        run: pnpm --filter @plone/registry build
 
       - name: Run unit tests @plone/registry
         run: pnpm --filter @plone/registry test
@@ -87,7 +90,7 @@ jobs:
           node-version: ${{ env.node-version }}
 
       - name: Enable corepack
-        run: corepack enable
+        run: npm i -g corepack@latest && corepack enable
 
       - name: Get pnpm store directory
         shell: bash
@@ -119,7 +122,7 @@ jobs:
           node-version: ${{ env.node-version }}
 
       - name: Enable corepack
-        run: corepack enable
+        run: npm i -g corepack@latest && corepack enable
 
       - name: Get pnpm store directory
         shell: bash
@@ -160,7 +163,7 @@ jobs:
           node-version: ${{ env.node-version }}
 
       - name: Enable corepack
-        run: corepack enable
+        run: npm i -g corepack@latest && corepack enable
 
       - name: Get pnpm store directory
         shell: bash

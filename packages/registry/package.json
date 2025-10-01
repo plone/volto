@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "2.1.2",
+  "version": "3.0.0-alpha.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
@@ -34,9 +34,13 @@
   "type": "module",
   "files": [
     "dist",
+    "bin",
     "README.md",
     "vite-plugin.*"
   ],
+  "bin": {
+    "init-loaders": "./bin/init-loaders.js"
+  },
   "main": "dist/index.js",
   "exports": {
     "./package.json": "./package.json",
@@ -52,8 +56,19 @@
       "import": "./dist/addon-registry/create-theme-loader.js",
       "default": "./dist/addon-registry/create-theme-loader.cjs"
     },
+    "./create-addons-styles-loader": {
+      "import": "./dist/addon-registry/create-addons-styles-loader.js",
+      "default": "./dist/addon-registry/create-addons-styles-loader.cjs"
+    },
+    "./create-addons-locales-loader": {
+      "import": "./dist/addon-registry/create-addons-locales-loader.js",
+      "default": "./dist/addon-registry/create-addons-locales-loader.cjs"
+    },
     "./vite-plugin": {
       "import": "./vite-plugin.js",
+      "types": "./vite-plugin.d.ts"
+    },
+    "./addons-loader": {
       "types": "./vite-plugin.d.ts"
     },
     ".": {
@@ -65,6 +80,7 @@
     "build": "tsup",
     "build:force": "rm -rf dist && tsup",
     "check:exports": "attw --pack .",
+    "check-ts": "tsc --project tsconfig.json",
     "test": "vitest",
     "test:debug": "vitest --inspect-brk --no-file-parallelism registry",
     "dry-release": "release-it --dry-run",
@@ -73,8 +89,8 @@
     "release-alpha": "release-it --preRelease=alpha"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "peerDependenciesMeta": {
     "react-dom": {
@@ -85,6 +101,7 @@
     "auto-config-loader": "^1.7.7",
     "crypto-random-string": "3.2.0",
     "debug": "4.3.2",
+    "deepmerge": "^4.3.1",
     "dependency-graph": "0.10.0",
     "glob": "^10.4.5",
     "tmp": "0.2.1"
@@ -98,13 +115,11 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/tmp": "^0.2.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "release-it": "16.2.1",
+    "release-it": "^19.0.5",
     "tsconfig": "workspace:*",
     "tsup": "^8.3.5",
-    "typescript": "^5.6.3",
-    "vite": "^5.4.8",
+    "typescript": "^5.7.3",
+    "vite": "^5.4.16",
     "vitest": "^2.1.3"
   }
 }

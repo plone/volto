@@ -3,14 +3,13 @@ import { useDispatch } from 'react-redux';
 import { defineMessages, useIntl } from 'react-intl';
 import { Button } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
-import { Icon, Toast } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
-import {
-  flattenToAppURL,
-  messages as defaultMessages,
-} from '@plone/volto/helpers';
-import { getContent } from '@plone/volto/actions';
-import { isEmpty } from 'lodash';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { messages as defaultMessages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import { getContent } from '@plone/volto/actions/content/content';
+import isEmpty from 'lodash/isEmpty';
 
 import reloadSVG from '@plone/volto/icons/reload.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
@@ -22,13 +21,23 @@ const messages = defineMessages({
   },
   refreshTeaser: {
     id: 'Refresh source content',
-    defaultMessage: 'Refresh source content',
+    defaultMessage: 'Reset to target',
   },
   invalidTeaser: {
     id: 'Invalid teaser source',
     defaultMessage: 'Invalid teaser source',
   },
 });
+
+function getImageField(resp) {
+  if (!resp) return null;
+
+  if (resp.preview_image_link) return 'preview_image_link';
+  if (resp.preview_image) return 'preview_image';
+  if (resp.image) return 'image';
+
+  return null;
+}
 
 const TeaserData = (props) => {
   const {
@@ -59,16 +68,20 @@ const TeaserData = (props) => {
       '@type': resp?.['@type'],
       Description: resp?.description,
       Title: resp.title,
-      hasPreviewImage: resp?.preview_image ? true : false,
+      hasPreviewImage: getImageField(resp) ? true : false,
       head_title: resp.head_title ?? null,
-      image_field: resp?.preview_image
-        ? 'preview_image'
-        : resp?.image
-          ? 'image'
-          : null,
+      image_field: getImageField(resp),
       image_scales: {
         preview_image: [resp?.preview_image],
         image: [resp?.image],
+        preview_image_link: resp?.preview_image_link
+          ? [
+              {
+                ...resp?.preview_image_link?.['image_scales']?.image?.[0],
+                base_path: resp?.preview_image_link?.['@id'],
+              },
+            ]
+          : [],
       },
       title: resp.title,
     };
@@ -118,6 +131,7 @@ const TeaserData = (props) => {
     <Button.Group>
       <Button
         aria-label={intl.formatMessage(messages.resetTeaser)}
+        type="button"
         basic
         disabled={isReseteable}
         onClick={() => reset()}
@@ -131,6 +145,7 @@ const TeaserData = (props) => {
     <Button.Group className="refresh teaser">
       <Button
         aria-label={intl.formatMessage(messages.refreshTeaser)}
+        type="button"
         basic
         onClick={() => refresh()}
         disabled={isEmpty(data.href)}

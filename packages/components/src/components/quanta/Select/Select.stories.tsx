@@ -1,10 +1,7 @@
 import React from 'react';
 import { QuantaSelect, SelectItem } from './Select';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../../styles/basic/Select.css';
-import '../../../styles/quanta/Select.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 export interface SelectItemObject {
   label: string;
@@ -12,7 +9,7 @@ export interface SelectItemObject {
 }
 
 const meta: Meta<typeof QuantaSelect> = {
-  title: 'Quanta/Select',
+  title: 'Basic/Quanta/Select',
   component: QuantaSelect,
   parameters: {
     layout: 'centered',

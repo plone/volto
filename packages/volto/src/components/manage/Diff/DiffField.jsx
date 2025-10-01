@@ -4,7 +4,8 @@
  */
 
 import React from 'react';
-import { join, map } from 'lodash';
+import join from 'lodash/join';
+import map from 'lodash/map';
 import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
 import ReactDOMServer from 'react-dom/server';
@@ -13,9 +14,9 @@ import { createBrowserHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
 import { useSelector } from 'react-redux';
 import config from '@plone/volto/registry';
-import { Api } from '@plone/volto/helpers';
+import Api from '@plone/volto/helpers/Api/Api';
 import configureStore from '@plone/volto/store';
-import { RenderBlocks } from '@plone/volto/components';
+import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 

@@ -15,6 +15,6 @@ export const querySchema = z
   })
   .and(z.record(z.any()));
 
-export const getSearchSchema = z.object({
+export const searchSchema = z.object({
   query: querySchema,
 });

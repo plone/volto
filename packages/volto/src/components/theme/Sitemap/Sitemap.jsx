@@ -2,14 +2,15 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { asyncConnect } from '@plone/volto/helpers';
+import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Container as SemanticContainer } from 'semantic-ui-react';
-import { Helmet, toBackendLang } from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 import { Link } from 'react-router-dom';
 import config from '@plone/volto/registry';
 
-import { getNavigation } from '@plone/volto/actions';
+import { getNavigation } from '@plone/volto/actions/navigation/navigation';
 
 const messages = defineMessages({
   Sitemap: {
@@ -35,14 +36,14 @@ function Sitemap(props) {
     location: { pathname },
     lang,
     getNavigation,
+    isMultilingual,
   } = props;
 
   useEffect(() => {
-    const { settings } = config;
-    const language = settings.isMultilingual ? `${toBackendLang(lang)}` : null;
+    const language = isMultilingual ? `${toBackendLang(lang)}` : null;
     const path = getSitemapPath(pathname, language);
     getNavigation(path, 4);
-  }, [pathname, lang, getNavigation]);
+  }, [pathname, lang, getNavigation, isMultilingual]);
 
   const renderItems = (items) => {
     return (
@@ -99,6 +100,7 @@ export default compose(
     (state) => ({
       items: state.navigation.items,
       lang: state.intl.locale,
+      isMultilingual: state.site.data.features?.multilingual,
     }),
     { getNavigation },
   ),
@@ -107,10 +109,10 @@ export default compose(
       key: 'navigation',
       promise: ({ location, store: { dispatch, getState } }) => {
         if (!__SERVER__) return;
-        const { settings } = config;
+        const state = getState();
         const path = getSitemapPath(
           location.pathname,
-          settings.isMultilingual
+          state.site.data.features?.multilingual
             ? toBackendLang(getState().intl.locale)
             : null,
         );

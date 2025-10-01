@@ -8,7 +8,7 @@ import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { parse as parseUrl } from 'url';
-import { keys } from 'lodash';
+import keys from 'lodash/keys';
 import locale from 'locale';
 import { detect } from 'detect-browser';
 import path from 'path';
@@ -21,16 +21,16 @@ import debug from 'debug';
 import routes from '@root/routes';
 import config from '@plone/volto/registry';
 
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import Html from '@plone/volto/helpers/Html/Html';
+import Api from '@plone/volto/helpers/Api/Api';
+import { persistAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
 import {
-  flattenToAppURL,
-  Html,
-  Api,
-  persistAuthToken,
   toBackendLang,
   toGettextLang,
   toReactIntlLang,
-} from '@plone/volto/helpers';
-import { changeLanguage } from '@plone/volto/actions';
+} from '@plone/volto/helpers/Utils/Utils';
+import { changeLanguage } from '@plone/volto/actions/language/language';
 
 import userSession from '@plone/volto/reducers/userSession/userSession';
 
@@ -43,6 +43,7 @@ import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
 
 let locales = {};
 
+// Load locales listed in supportedLanguages setting
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
     const langFileName = toGettextLang(lang);
@@ -107,7 +108,6 @@ function setupServer(req, res, next) {
   const lang = toReactIntlLang(
     new locale.Locales(
       req.universalCookies.get('I18N_LANGUAGE') ||
-        config.settings.defaultLanguage ||
         req.headers['accept-language'],
     )
       .best(supported)
@@ -184,7 +184,6 @@ server.get('/*', (req, res) => {
   const lang = toReactIntlLang(
     new locale.Locales(
       req.universalCookies.get('I18N_LANGUAGE') ||
-        config.settings.defaultLanguage ||
         req.headers['accept-language'],
     )
       .best(supported)
@@ -224,9 +223,10 @@ server.get('/*', (req, res) => {
 
   loadOnServer({ store, location, routes, api })
     .then(() => {
+      const state = store.getState();
       const initialLang =
         req.universalCookies.get('I18N_LANGUAGE') ||
-        config.settings.defaultLanguage ||
+        state.site.data['plone.default_language'] ||
         req.headers['accept-language'];
 
       // The content info is in the store at this point thanks to the asynconnect
@@ -236,10 +236,9 @@ server.get('/*', (req, res) => {
       // TODO: there is a bug here with content that, for any reason, doesn't
       // present the language token field, for some reason. In this case, we
       // should follow the cookie rather then switching the language
-      const contentLang = store.getState().content.get?.error
+      const contentLang = state.content.get?.error
         ? initialLang
-        : store.getState().content.data?.language?.token ||
-          config.settings.defaultLanguage;
+        : state.content.data?.language?.token || initialLang;
 
       if (toBackendLang(initialLang) !== contentLang && url !== '/') {
         const newLang = toReactIntlLang(

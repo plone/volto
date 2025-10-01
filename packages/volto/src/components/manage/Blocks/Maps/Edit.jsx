@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import { Button, Input, Message } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import cx from 'classnames';
-import { withBlockExtensions } from '@plone/volto/helpers';
+import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
 import { compose } from 'redux';
-import { Icon, SidebarPortal, MapsSidebar } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+import MapsSidebar from '@plone/volto/components/manage/Blocks/Maps/MapsSidebar';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import mapsBlockSVG from '@plone/volto/components/manage/Blocks/Maps/block-maps.svg';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 const messages = defineMessages({
   MapsBlockInputPlaceholder: {
@@ -119,7 +122,7 @@ const Edit = React.memo((props) => {
       ) : (
         <Message>
           <center>
-            <img src={mapsBlockSVG} alt="" />
+            <Image src={mapsBlockSVG} alt="" />
             <div className="toolbar-inner">
               <Input
                 onKeyDown={onKeyDownVariantMenuForm}
@@ -133,6 +136,7 @@ const Edit = React.memo((props) => {
               {url && (
                 <Button.Group>
                   <Button
+                    type="button"
                     basic
                     className="cancel"
                     onClick={(e) => {
@@ -146,6 +150,7 @@ const Edit = React.memo((props) => {
               )}
               <Button.Group>
                 <Button
+                  type="button"
                   basic
                   primary
                   onClick={(e) => {

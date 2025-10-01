@@ -20,24 +20,16 @@ jobs:
       - name: Install towncrier
         run: pip install towncrier
 
-      - uses: dorny/paths-filter@v2
+      - uses: dorny/paths-filter@v3
         id: filter
         with:
           filters: |
             volto:
               - 'packages/volto/**'
-            client:
-              - 'packages/client/**'
             registry:
               - 'packages/registry/**'
-            components:
-              - 'packages/components/**'
             types:
               - 'packages/types/**'
-            providers:
-              - 'packages/providers/**'
-            generator:
-              - 'packages/generator-volto/**'
             scripts:
               - 'packages/scripts/**'
             voltoSlate:
@@ -56,14 +48,6 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
-      - name: Client changelog check
-        if: steps.filter.outputs.client == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/client
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
       - name: Registry changelog check
         if: steps.filter.outputs.registry == 'true'
         run: |
@@ -72,35 +56,11 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
-      - name: Components changelog check
-        if: steps.filter.outputs.components == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/components
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
       - name: Types changelog check
         if: steps.filter.outputs.types == 'true'
         run: |
           git fetch --no-tags origin main
           towncrier check --compare-with origin/main --dir packages/types
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: Providers changelog check
-        if: steps.filter.outputs.providers == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/providers
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: Generator changelog check
-        if: steps.filter.outputs.generator == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/generator-volto
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
