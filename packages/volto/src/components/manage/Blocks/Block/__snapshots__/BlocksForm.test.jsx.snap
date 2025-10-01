@@ -21,6 +21,7 @@ exports[`Allow override of blocksConfig 1`] = `
                 style="position: relative;"
               >
                 <div
+                  aria-label="drag block custom"
                   class="drag handle wrapper"
                   style="visibility: visible; display: inline-block;"
                 >
