@@ -4593,7 +4593,7 @@ msgstr "Viste disponibili"
 #. Default: "block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "block"
-msgstr "blocco"
+msgstr "blocco {type}"
 
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels

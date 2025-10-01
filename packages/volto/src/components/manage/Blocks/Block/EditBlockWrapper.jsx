@@ -31,7 +31,7 @@ const messages = defineMessages({
   },
   block: {
     id: 'block',
-    defaultMessage: 'block',
+    defaultMessage: '{type} block',
   },
 });
 
@@ -108,11 +108,9 @@ const EditBlockWrapper = (props) => {
           {...draginfo.dragHandleProps}
           className="drag handle wrapper"
           aria-label={
-            intl.formatMessage(messages.drag) +
-            ' ' +
-            intl.formatMessage(messages.block) +
-            ' ' +
-            type
+            intl.formatMessage(messages.delete) +
+            '  ' +
+            intl.formatMessage(messages.block, { type })
           }
         >
           <Icon name={dragSVG} size="18px" />
@@ -129,9 +127,7 @@ const EditBlockWrapper = (props) => {
               aria-label={
                 intl.formatMessage(messages.delete) +
                 '  ' +
-                intl.formatMessage(messages.block) +
-                ' ' +
-                type
+                intl.formatMessage(messages.block, { type })
               }
             >
               <Icon name={trashSVG} size="18px" />
