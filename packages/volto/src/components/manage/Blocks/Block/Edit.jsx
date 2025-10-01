@@ -137,8 +137,6 @@ export class Edit extends Component {
     const blockHasOwnFocusManagement =
       blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
-    console.log(editable);
-
     return (
       <>
         {Block !== null ? (
