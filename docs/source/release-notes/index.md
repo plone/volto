@@ -17,6 +17,16 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.27.3 (2025-10-01)
+
+### Bugfix
+
+- Fix image rerender on page edit. @calinvladth [#7391](https://github.com/plone/volto/issues/7391)
+
+### Internal
+
+- Acceptance test for Teaser Block Refresh Source Content @Tishasoumya-02 
+
 ## 18.27.2 (2025-09-29)
 
 ### Bugfix
