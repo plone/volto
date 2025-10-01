@@ -29,7 +29,16 @@ export function Label(props: LabelProps) {
     <RACLabel
       {...props}
       className={twMerge(
-        'group-data-disabled:text-quanta-silver group-data-invalid:text-quanta-candy not-group-data-invalid:not-group-data-readonly:has-[+input:focus]:text-quanta-sapphire text-quanta-pigeon after:bg-quanta-candy w-fit cursor-default text-xs font-medium group-data-required:after:mx-1 group-data-required:after:inline-block group-data-required:after:h-2 group-data-required:after:w-2 group-data-required:after:rounded-4xl',
+        `
+          group-data-disabled:text-quanta-silver
+          text-quanta-pigeon w-fit cursor-default text-xs font-medium
+          group-data-invalid:text-quanta-candy
+          not-group-data-invalid:not-group-data-readonly:has-[+input:focus]:text-quanta-sapphire
+          after:bg-quanta-candy
+          group-data-required:after:mx-1 group-data-required:after:inline-block
+          group-data-required:after:h-2 group-data-required:after:w-2
+          group-data-required:after:rounded-4xl
+        `,
         props.className,
       )}
     />
@@ -42,7 +51,10 @@ export function Description(props: TextProps) {
       {...props}
       slot="description"
       className={twMerge(
-        'text-quanta-pigeon group-data-disabled:text-quanta-silver text-xs font-normal',
+        `
+          text-quanta-pigeon text-xs font-normal
+          group-data-disabled:text-quanta-silver
+        `,
         props.className,
       )}
     />
@@ -64,21 +76,40 @@ export function FieldError(props: FieldErrorProps) {
 export const fieldBorderStyles = tv({
   variants: {
     isFocusWithin: {
-      false: 'border-gray-300 forced-colors:border-[ButtonBorder]',
-      true: 'inset-ring-quanta-sapphire inset-ring-2 outline-2 group-data-readonly:inset-ring-0 forced-colors:border-[Highlight]',
+      false: `
+        border-gray-300
+        forced-colors:border-[ButtonBorder]
+      `,
+      true: `
+        inset-ring-quanta-sapphire inset-ring-2 outline-2
+        group-data-readonly:inset-ring-0
+        forced-colors:border-[Highlight]
+      `,
     },
     isInvalid: {
-      true: 'bg-quanta-ballet hover:bg-quanta-flamingo focus:inset-ring-quanta-candy outline-2 focus:inset-ring-2 forced-colors:border-[Mark]',
+      true: `
+        bg-quanta-ballet outline-2
+        hover:bg-quanta-flamingo
+        focus:inset-ring-quanta-candy focus:inset-ring-2
+        forced-colors:border-[Mark]
+      `,
     },
     isDisabled: {
-      true: 'bg-quanta-air hover:bg-quanta-air text-quanta-silver forced-colors:border-[GrayText]',
+      true: `
+        bg-quanta-air text-quanta-silver
+        hover:bg-quanta-air
+        forced-colors:border-[GrayText]
+      `,
     },
   },
 });
 
 export const fieldGroupStyles = tv({
   extend: focusRing,
-  base: 'group bg-quanta-air flex h-9 items-center overflow-hidden rounded-lg border-2 forced-colors:bg-[Field]',
+  base: `
+    group bg-quanta-air flex h-9 items-center overflow-hidden rounded-lg border-2
+    forced-colors:bg-[Field]
+  `,
   variants: fieldBorderStyles.variants,
 });
 
