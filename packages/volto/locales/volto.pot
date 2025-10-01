@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2025-10-01T10:42:01.158Z\n"
+"POT-Creation-Date: 2025-10-01T12:20:02.904Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -4592,7 +4592,7 @@ msgstr ""
 msgid "availableViews"
 msgstr ""
 
-#. Default: "block"
+#. Default: "{type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "block"
 msgstr ""

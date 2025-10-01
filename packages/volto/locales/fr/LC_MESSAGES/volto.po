@@ -4597,7 +4597,7 @@ msgstr ""
 msgid "availableViews"
 msgstr "Vues disponibles"
 
-#. Default: "block"
+#. Default: "{type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "block"
 msgstr ""

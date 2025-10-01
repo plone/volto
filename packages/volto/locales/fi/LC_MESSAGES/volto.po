@@ -4595,7 +4595,7 @@ msgstr ""
 msgid "availableViews"
 msgstr "Saatavilla olevat näkymät"
 
-#. Default: "block"
+#. Default: "{type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "block"
 msgstr ""
