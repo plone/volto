@@ -4595,6 +4595,11 @@ msgstr "und {count} mehr"
 msgid "availableViews"
 msgstr "Verfügbare Ansichten"
 
+#. Default: "block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "block"
+msgstr ""
+
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4675,6 +4680,11 @@ msgstr "Der Link, um das Passwort neu zu setzen, wurde Ihnen zugesendet. Die E-M
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "Entwurf"
+
+#. Default: "drag"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels

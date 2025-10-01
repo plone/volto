@@ -4596,6 +4596,11 @@ msgstr "e mais {count}…"
 msgid "availableViews"
 msgstr "Visões disponíveis"
 
+#. Default: "block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "block"
+msgstr ""
+
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4676,6 +4681,11 @@ msgstr "Sua solicitação de redefinição de senha foi enviada. Ela deve chegar
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "Rascunho"
+
+#. Default: "drag"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels

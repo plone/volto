@@ -4596,6 +4596,11 @@ msgstr ""
 msgid "availableViews"
 msgstr "Vizualizări disponibile"
 
+#. Default: "block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "block"
+msgstr ""
+
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4676,6 +4681,11 @@ msgstr "Parola este în curs de schimbare. Urmați instrucțiunile primite pe ad
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "proiect"
+
+#. Default: "drag"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels

@@ -4590,6 +4590,11 @@ msgstr ""
 msgid "availableViews"
 msgstr "उपलब्ध दृश्य"
 
+#. Default: "block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "block"
+msgstr ""
+
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4670,6 +4675,11 @@ msgstr "आपका पासवर्ड रीसेट अनुरोध �
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "ड्राफ़्ट"
+
+#. Default: "drag"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels

@@ -25,6 +25,14 @@ const messages = defineMessages({
     id: 'delete',
     defaultMessage: 'delete',
   },
+  drag: {
+    id: 'drag',
+    defaultMessage: 'drag',
+  },
+  block: {
+    id: 'block',
+    defaultMessage: 'block',
+  },
 });
 
 const EditBlockWrapper = (props) => {
@@ -99,6 +107,13 @@ const EditBlockWrapper = (props) => {
           }}
           {...draginfo.dragHandleProps}
           className="drag handle wrapper"
+          aria-label={
+            intl.formatMessage(messages.drag) +
+            ' ' +
+            intl.formatMessage(messages.block) +
+            ' ' +
+            type
+          }
         >
           <Icon name={dragSVG} size="18px" />
         </div>
@@ -111,7 +126,13 @@ const EditBlockWrapper = (props) => {
               basic
               onClick={() => onDeleteBlock(block, true)}
               className="delete-button"
-              aria-label={intl.formatMessage(messages.delete)}
+              aria-label={
+                intl.formatMessage(messages.delete) +
+                '  ' +
+                intl.formatMessage(messages.block) +
+                ' ' +
+                type
+              }
             >
               <Icon name={trashSVG} size="18px" />
             </Button>

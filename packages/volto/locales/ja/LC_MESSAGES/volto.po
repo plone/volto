@@ -4595,6 +4595,11 @@ msgstr ""
 msgid "availableViews"
 msgstr ""
 
+#. Default: "block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "block"
+msgstr ""
+
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4675,6 +4680,11 @@ msgstr "パスワード再設定のお願いをメール送信しました。ま
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "下書き(draft)"
+
+#. Default: "drag"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels

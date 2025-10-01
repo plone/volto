@@ -4596,6 +4596,11 @@ msgstr ""
 msgid "availableViews"
 msgstr ""
 
+#. Default: "block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "block"
+msgstr ""
+
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4676,6 +4681,11 @@ msgstr "您的密码重置请求邮件已发送。稍后它将到达您的邮箱
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "草案"
+
+#. Default: "drag"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels

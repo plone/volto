@@ -4597,6 +4597,11 @@ msgstr ""
 msgid "availableViews"
 msgstr "Bistak"
 
+#. Default: "block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "block"
+msgstr ""
+
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4677,6 +4682,11 @@ msgstr "Pasahitza berrezartzeko eskaera e-postaz bidali dizugu. Momentu batetik 
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "Zirriborroa"
+
+#. Default: "drag"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels

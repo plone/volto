@@ -4595,6 +4595,11 @@ msgstr ""
 msgid "availableViews"
 msgstr ""
 
+#. Default: "block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "block"
+msgstr ""
+
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4674,6 +4679,11 @@ msgstr "descrição_senha_enviada"
 #. Default: "Draft"
 #: components/manage/Contents/ContentsItem
 msgid "draft"
+msgstr ""
+
+#. Default: "drag"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag"
 msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"

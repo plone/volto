@@ -4594,6 +4594,11 @@ msgstr ""
 msgid "availableViews"
 msgstr "Beschikbare weergaven"
 
+#. Default: "block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "block"
+msgstr ""
+
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4674,6 +4679,11 @@ msgstr "Jouw aanvraag voor het opnieuw instellen van ouw wachtwoord is verzonden
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "voorlopige versie"
+
+#. Default: "drag"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels

@@ -4590,6 +4590,11 @@ msgstr ""
 msgid "availableViews"
 msgstr "Viste disponibili"
 
+#. Default: "block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "block"
+msgstr "blocco"
+
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4670,6 +4675,11 @@ msgstr "La istruzioni per reimpostare la tua password sono state inviate. Dovreb
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "Bozza"
+
+#. Default: "drag"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag"
+msgstr "trascina"
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
