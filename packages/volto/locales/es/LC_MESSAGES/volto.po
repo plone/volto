@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-09-11 16:52+0000\n"
+"PO-Revision-Date: 2025-10-01 19:01+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language: es\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\n"
@@ -525,7 +525,7 @@ msgstr "Navegue"
 #. Default: "Browse the site, drop an image, or use a URL"
 #: components/manage/Widgets/ImageWidget
 msgid "Browse the site, drop an image, or type a URL"
-msgstr "Navegue el contenido, arrastre un imagen o ingrese una dirección URL"
+msgstr "Navegue el contenido, arrastre una imagen o escriba una dirección URL"
 
 #. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
@@ -2222,7 +2222,7 @@ msgstr "Administrar traducciones"
 #. Default: "Manage content…"
 #: components/manage/Toolbar/More
 msgid "Manage content…"
-msgstr "Administrar contenido..."
+msgstr "Administrar contenido…"
 
 #. Default: "Manage translations for {title}"
 #: components/manage/Multilingual/ManageTranslations
@@ -2854,7 +2854,7 @@ msgstr "Introduzca de nuevo su contraseña. Debe asegurarse que las contraseñas
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
 msgid "Read More…"
-msgstr "Leer Más..."
+msgstr "Leer Más…"
 
 #. Default: "Read only for this type of relation."
 #: components/manage/Controlpanels/Relations/RelationsListing
@@ -2864,7 +2864,7 @@ msgstr "Solo lectura para este tipo de relación."
 #. Default: "Rearrange items by…"
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
-msgstr "Reordenar elementos por..."
+msgstr "Reordenar elementos por…"
 
 #. Default: "Ends"
 #: components/manage/Widgets/RecurrenceWidget/EndField
@@ -3226,7 +3226,7 @@ msgstr "Buscar por nombre de usuario o grupo"
 #. Default: "Search group…"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search group…"
-msgstr "Buscar grupo..."
+msgstr "Buscar grupo…"
 
 #. Default: "Search input label"
 #: components/manage/Blocks/Search/schema
@@ -3258,7 +3258,7 @@ msgstr "Buscar destinos por título o ruta"
 #. Default: "Search users…"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search users…"
-msgstr "Buscar usuarios..."
+msgstr "Buscar usuarios…"
 
 #. Default: "Searched for: <em>{searchedtext}</em>."
 #: components/manage/Blocks/Search/components/SearchDetails
@@ -3341,7 +3341,7 @@ msgstr "Selección"
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 msgid "Select…"
-msgstr "Seleccione..."
+msgstr "Seleccione…"
 
 #. Default: "Send"
 #: components/theme/ContactForm/ContactForm
@@ -3926,7 +3926,7 @@ msgstr "Este nombre se mostrará en la URL."
 #. Default: "This page does not seem to exist…"
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
-msgstr "Esta página no existe..."
+msgstr "Esta página no existe…"
 
 #. Default: "This rule is assigned to the following locations:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4051,12 +4051,12 @@ msgstr "Escribir texto..."
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
 msgid "Type the heading…"
-msgstr "Escriba el encabezado..."
+msgstr "Escriba el encabezado…"
 
 #. Default: "Type the title…"
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
-msgstr "Ingrese el título..."
+msgstr "Escriba el título…"
 
 #. Default: "UID"
 #: components/manage/Contents/Contents
@@ -4554,7 +4554,7 @@ msgstr "Introduzca su dirección de correo. Esto es necesario en caso de pérdid
 #. Default: "Enter full name, e.g. John Smith."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormFullnameDescription"
-msgstr "Introduzca su nombre completo, por ejemplo José Pérez."
+msgstr "Introduzca su nombre completo, por ejemplo, José Pérez."
 
 #. Default: "Enter your new password. Minimum 8 characters."
 #: helpers/MessageLabels/MessageLabels
