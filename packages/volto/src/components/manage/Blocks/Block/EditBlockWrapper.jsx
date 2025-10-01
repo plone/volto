@@ -108,7 +108,7 @@ const EditBlockWrapper = (props) => {
           {...draginfo.dragHandleProps}
           className="drag handle wrapper"
           aria-label={
-            intl.formatMessage(messages.delete) +
+            intl.formatMessage(messages.drag) +
             '  ' +
             intl.formatMessage(messages.block, { type })
           }
