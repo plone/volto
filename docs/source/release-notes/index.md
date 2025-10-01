@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.22.3 (2025-10-01)
+
+### Bugfix
+
+- Fix image rerender on page edit. @calinvladth [#7390](https://github.com/plone/volto/issues/7390)
+
 ## 17.22.2 (2025-09-29)
 
 ### Bugfix
