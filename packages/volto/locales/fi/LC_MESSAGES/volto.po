@@ -882,11 +882,6 @@ msgstr "Tekijänoikeudet"
 msgid "Copyright statement or other rights information on this item."
 msgstr "Tekijänoikeuslauseke tai muu sisällön tekijänoikeuksia kuvaava tieto."
 
-#. Default: "Count"
-#: components/manage/Controlpanels/BlockType
-msgid "Count"
-msgstr ""
-
 #. Default: "Create or delete relations to target"
 #: helpers/MessageLabels/MessageLabels
 msgid "Create or delete relations to target"
@@ -2615,6 +2610,12 @@ msgstr "Koko"
 msgid "Occurences"
 msgstr "Toistuminen"
 
+#. Default: "Occurrence"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrence"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -4059,6 +4060,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr "Käynnistä tapahtumakentän virhe. Valtse arvo"
 
 #. Default: "Type"
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget

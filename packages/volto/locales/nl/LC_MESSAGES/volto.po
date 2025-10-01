@@ -881,11 +881,6 @@ msgstr "Copyright"
 msgid "Copyright statement or other rights information on this item."
 msgstr "Auteursrechten of andere rechteninformatie van dit item."
 
-#. Default: "Count"
-#: components/manage/Controlpanels/BlockType
-msgid "Count"
-msgstr ""
-
 #. Default: "Create or delete relations to target"
 #: helpers/MessageLabels/MessageLabels
 msgid "Create or delete relations to target"
@@ -2614,6 +2609,12 @@ msgstr "Object grootte"
 msgid "Occurences"
 msgstr "Gebeurtenissen"
 
+#. Default: "Occurrence"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrence"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -4058,6 +4059,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr "Gebeurtenisveld geeft een fout. Selecteer een waarde"
 
 #. Default: "Type"
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget

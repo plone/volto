@@ -883,11 +883,6 @@ msgstr "Drepturi de autor"
 msgid "Copyright statement or other rights information on this item."
 msgstr "Declarație de copyright sau alte informații privind drepturile asupra acestui articol."
 
-#. Default: "Count"
-#: components/manage/Controlpanels/BlockType
-msgid "Count"
-msgstr ""
-
 #. Default: "Create or delete relations to target"
 #: helpers/MessageLabels/MessageLabels
 msgid "Create or delete relations to target"
@@ -2616,6 +2611,12 @@ msgstr "Dimensiunea obiectului"
 msgid "Occurences"
 msgstr "Apariții"
 
+#. Default: "Occurrence"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrence"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -4060,6 +4061,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr "Eroare la declanșarea câmpului evenimentului. Selectați o valoare"
 
 #. Default: "Type"
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget

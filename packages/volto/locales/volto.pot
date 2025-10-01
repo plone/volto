@@ -1,11 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-<<<<<<< Updated upstream
-"POT-Creation-Date: 2025-09-15T08:48:33.741Z\n"
-=======
-"POT-Creation-Date: 2025-09-29T11:32:42.326Z\n"
->>>>>>> Stashed changes
+"POT-Creation-Date: 2025-10-01T15:57:25.550Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -881,11 +877,6 @@ msgstr ""
 #. Default: "Copyright statement or other rights information on this item."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
-msgstr ""
-
-#. Default: "Count"
-#: components/manage/Controlpanels/BlockType
-msgid "Count"
 msgstr ""
 
 #. Default: "Create or delete relations to target"
@@ -2616,6 +2607,12 @@ msgstr ""
 msgid "Occurences"
 msgstr ""
 
+#. Default: "Occurrence"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrence"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -4060,6 +4057,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr ""
 
 #. Default: "Type"
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget

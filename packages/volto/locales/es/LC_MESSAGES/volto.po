@@ -884,11 +884,6 @@ msgstr "Copyright"
 msgid "Copyright statement or other rights information on this item."
 msgstr "Información del copyright o otros derechos en este elemento."
 
-#. Default: "Count"
-#: components/manage/Controlpanels/BlockType
-msgid "Count"
-msgstr ""
-
 #. Default: "Create or delete relations to target"
 #: helpers/MessageLabels/MessageLabels
 msgid "Create or delete relations to target"
@@ -2617,6 +2612,12 @@ msgstr "Tamaño del objeto"
 msgid "Occurences"
 msgstr "Apariciones"
 
+#. Default: "Occurrence"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrence"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -4061,6 +4062,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr "Error de campo de evento desencadenante. Por favor seleccione un valor"
 
 #. Default: "Type"
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
