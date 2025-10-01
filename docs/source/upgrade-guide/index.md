@@ -109,6 +109,17 @@ The `defaultLanguage` and `isMultilingual` settings have been removed.
 Instead, these values are fetched from the backend API.
 The `supportedLanguages` setting now only controls which locales are included in the build.
 
+### Related items are shown by default
+
+The default value of the `showRelatedItems` setting was changed to `true`,
+which means that a component showing related items will be shown below content.
+
+If you'd like to keep it disabled (perhaps because you already have a custom component that does the same thing), you can set it to `false` in your add-on configuration:
+
+```js
+config.settings.showRelatedItems = false;
+```
+
 
 ### Renamed literal "Head title" to "Kicker" in Teaser block
 ```{versionadded} Volto 19.0.0-alpha.3
