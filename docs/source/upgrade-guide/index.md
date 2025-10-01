@@ -117,6 +117,14 @@ The `supportedLanguages` setting now only controls which locales are included in
 The default (English) literal "Head title" in the `teaser` block has been renamed to "Kicker" for accuracy and clarity.
 The `head_title` property and the translation id (`head_title`) in the `teaser` block settings has been kept for backwards compatibility.
 
+### `@plone/components` and `@plone/client` were updated to the latest alphas developed for Seven
+```{versionadded} Volto 19.0.0-alpha.6
+```
+`@plone/components` and `@plone/client` are in active development for Seven and they have been updated to the latest alphas.
+You can still use them in Volto using the `workspace` protocol in your `package.json` file.
+However, check the breaking changes issued for these packages in the respective changelogs.
+It is recommended that you use the released versions of these packages instead of the workspace protocol, unless you need a specific feature or fix that is released yet.
+
 (upgrading-to-volto-18-x-x)=
 
 ## Upgrading to Volto 18.x.x
