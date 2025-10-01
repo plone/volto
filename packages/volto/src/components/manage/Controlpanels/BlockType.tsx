@@ -64,59 +64,57 @@ const BlockTypeControlpanel = (props: RouteProps) => {
 
   return (
     <div id="page-block_type" className="ui container controlpanel-block_type">
-      <h2>
+      <h1>
         <FormattedMessage
           id="block-type"
           defaultMessage="{title}"
           values={{ title: block.title }}
         />
-      </h2>
-      <form onSubmit={(e) => e.preventDefault()}>
+      </h1>
+      <form className="search" onSubmit={(e) => e.preventDefault()}>
         <input
           type="text"
-          placeholder="Search results..."
+          placeholder="Search"
           onChange={(e) => debouncedSearch(e.target.value)}
         />
-        <button type="button">
-          <Icon
-            name={searchSVG}
-            size="30px"
-            title={intl.formatMessage(messages.search)}
-          />
-        </button>
+        <Icon
+          name={searchSVG}
+          size="16px"
+          title={intl.formatMessage(messages.search)}
+        />
       </form>
-      <table>
-        <thead>
-          <tr>
-            <th>
-              <FormattedMessage id="Title" defaultMessage="Title" />
-            </th>
-            <th>
-              <FormattedMessage id="Count" defaultMessage="Count" />
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {items?.length > 0 ? (
-            items.map((item) => (
-              <tr key={item['@id']}>
-                <td>
+      {items?.length > 0 ? (
+        <table className="table">
+          <thead className="table-header">
+            <tr className="table-row">
+              <th className="table-heading">
+                <FormattedMessage id="Title" defaultMessage="Title" />
+              </th>
+              <th className="table-heading">
+                <FormattedMessage id="Occurrence" defaultMessage="Occurrence" />
+              </th>
+            </tr>
+          </thead>
+          <tbody className="table-body">
+            {items.map((item) => (
+              <tr key={item['@id']} className="table-row">
+                <td className="table-cell">
                   <a href={item['@id']}>
                     {flattenToAppURL(item['@id']) || 'Home'}
                   </a>
                 </td>
-                <td>{item.count}</td>
+                <td className="table-cell">{item.count}</td>
               </tr>
-            ))
-          ) : (
-            <FormattedMessage
-              id="no-blocks-found"
-              defaultMessage="No items found for type: {type}."
-              values={{ type: id }}
-            />
-          )}
-        </tbody>
-      </table>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <FormattedMessage
+          id="no-blocks-found"
+          defaultMessage="No items found for type: {type}."
+          values={{ type: id }}
+        />
+      )}
       {isClient &&
         createPortal(
           <Toolbar

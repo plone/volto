@@ -55,23 +55,29 @@ const BlockTypesControlpanel = (props: RouteProps) => {
       id="page-block_types"
       className="ui container controlpanel-block_types"
     >
-      <h2>
+      <h1>
         <FormattedMessage id="block-types" defaultMessage="Block Types" />
-      </h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Total</th>
+      </h1>
+      <table className="table">
+        <thead className="table-header">
+          <tr className="table-row">
+            <th className="table-heading">
+              <FormattedMessage id="Type" defaultMessage="Type" />
+            </th>
+            <th className="table-heading">
+              <FormattedMessage id="Occurrence" defaultMessage="Occurrence" />
+            </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="table-body">
           {blocks.map((block) => (
-            <tr key={block.id}>
-              <td>
-                <a href={`${pathname}/${block.id}`}>{block.title}</a>
+            <tr key={block.id} className="table-row">
+              <td className="table-cell">
+                <a href={`${pathname}/${block.id}`} className="table-link">
+                  {block.title}
+                </a>
               </td>
-              <td>{items?.[block.id] || 0}</td>
+              <td className="table-cell">{items?.[block.id] || 0}</td>
             </tr>
           ))}
         </tbody>
