@@ -1,1 +1,0 @@
-Moved public ui routes to a new add-on to allow for easier customization @pnicolli

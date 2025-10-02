@@ -8,6 +8,21 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.2 (2025-09-29)
+
+### Feature
+
+- Add controlpanel overview and schema driven control panels. @ksuess [#6657](https://github.com/plone/volto/issues/6657)
+- Added some typography. @ksuess @sneridagh [#7159](https://github.com/plone/volto/issues/7159)
+- Added basic CSS layer of `@plone/components` to the theming CSS. @sneridagh [#7220](https://github.com/plone/volto/issues/7220)
+- Separated publicui and cmsui styles. @pnicolli [#7225](https://github.com/plone/volto/issues/7225)
+- Move the `plone-components` layer one position up, to be after the `utilities` one. @sneridagh [#7236](https://github.com/plone/volto/issues/7236)
+- Moved CMSUI utilities out of the `.cmsui` namespace, at least for now. @sneridagh [#7346](https://github.com/plone/volto/issues/7346)
+
+### Internal
+
+- Adjust peer dependencies and engine. @sneridagh
+
 ## 1.0.0-alpha.1 (2025-05-24)
 
 ### Breaking

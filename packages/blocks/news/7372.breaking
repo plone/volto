@@ -1,3 +1,0 @@
-Remove circular dependency on layout<->blocks.
-Breaking: The `RenderBlocks` set of components are now under `@plone/layout/blocks`.
-Adjust the imports accordingly. @sneridagh

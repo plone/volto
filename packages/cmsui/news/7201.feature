@@ -1,1 +1,0 @@
-Added object browser widget. @deodorhunter
