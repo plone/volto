@@ -89,7 +89,6 @@
     "@vitest/coverage-v8": "catalog:",
     "eslint-plugin-storybook": "^9.1.7",
     "jest-axe": "^8.0.0",
-    "prettier-plugin-tailwindcss": "^0.6.11",
     "release-it": "catalog:",
     "storybook": "^9.1.7",
     "tailwindcss-animate": "^1.0.7",
