@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { getBlockTypes } from '@plone/volto/actions/blockTypes/blockTypes';
 import { useDispatch, useSelector } from 'react-redux';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import type { Location } from 'history';
@@ -28,6 +29,10 @@ type RouteProps = {
 const BlockTypesControlpanel = (props: RouteProps) => {
   const { location } = props;
   const intl = useIntl();
+  const token = useSelector((state) => state.userSession.token);
+  const controlpanels = useSelector(
+    (state) => state.controlpanels.controlpanels,
+  );
   const blocksConfig = config.blocks.blocksConfig;
   const dispatch = useDispatch();
   const pathname = location.pathname;
@@ -50,7 +55,7 @@ const BlockTypesControlpanel = (props: RouteProps) => {
     }) => state.blockTypes.items.summary,
   );
 
-  return (
+  return token && controlpanels?.length > 0 ? (
     <div
       id="page-block_types"
       className="ui container controlpanel-block_types"
@@ -101,6 +106,8 @@ const BlockTypesControlpanel = (props: RouteProps) => {
           document.getElementById('toolbar') as HTMLElement,
         )}
     </div>
+  ) : (
+    <Unauthorized pathname={pathname} staticContext={props.staticContext} />
   );
 };
 

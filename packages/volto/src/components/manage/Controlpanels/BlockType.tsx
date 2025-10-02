@@ -10,6 +10,7 @@ import { createPortal } from 'react-dom';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
@@ -36,6 +37,10 @@ const BlockTypeControlpanel = (props: RouteProps) => {
   const params = useParams<{ id: string }>();
   const id = params.id;
   const intl = useIntl();
+  const token = useSelector((state) => state.userSession.token);
+  const controlpanels = useSelector(
+    (state) => state.controlpanels.controlpanels,
+  );
   const isClient = useClient();
   const dispatch = useDispatch();
   const pathname = location.pathname;
@@ -62,7 +67,7 @@ const BlockTypeControlpanel = (props: RouteProps) => {
 
   const debouncedSearch = debounce(onChangeSearch, 600);
 
-  return (
+  return token && controlpanels?.length > 0 ? (
     <div id="page-block_type" className="ui container controlpanel-block_type">
       <h1>
         <FormattedMessage
@@ -134,6 +139,8 @@ const BlockTypeControlpanel = (props: RouteProps) => {
           document.getElementById('toolbar') as HTMLElement,
         )}
     </div>
+  ) : (
+    <Unauthorized pathname={pathname} staticContext={props.staticContext} />
   );
 };
 
