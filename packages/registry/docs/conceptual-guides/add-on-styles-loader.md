@@ -14,7 +14,7 @@ Currently, the loader loads styles for both the end user interface (Public UI) p
 
 ## Public UI Styles
 
-To load Public UI styles, create a file {file}`styles/main.css` at the root of your add-on package to serve as the entry point.
+To load Public UI styles, create a file {file}`styles/publicui.css` at the root of your add-on package to serve as the entry point.
 This file is a `.css` file containing the styles that you want your app to load for the Public UI.
 
 ## CMSUI Styles
