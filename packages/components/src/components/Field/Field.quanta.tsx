@@ -30,14 +30,14 @@ export function Label(props: LabelProps) {
       {...props}
       className={twMerge(
         `
+          w-fit cursor-default text-xs font-medium text-quanta-pigeon
           group-data-disabled:text-quanta-silver
-          text-quanta-pigeon w-fit cursor-default text-xs font-medium
           group-data-invalid:text-quanta-candy
-          not-group-data-invalid:not-group-data-readonly:has-[+input:focus]:text-quanta-sapphire
           after:bg-quanta-candy
           group-data-required:after:mx-1 group-data-required:after:inline-block
           group-data-required:after:h-2 group-data-required:after:w-2
           group-data-required:after:rounded-4xl
+          not-group-data-invalid:not-group-data-readonly:has-[+input:focus]:text-quanta-sapphire
         `,
         props.className,
       )}
@@ -52,7 +52,7 @@ export function Description(props: TextProps) {
       slot="description"
       className={twMerge(
         `
-          text-quanta-pigeon text-xs font-normal
+          text-xs font-normal text-quanta-pigeon
           group-data-disabled:text-quanta-silver
         `,
         props.className,
@@ -81,7 +81,7 @@ export const fieldBorderStyles = tv({
         forced-colors:border-[ButtonBorder]
       `,
       true: `
-        inset-ring-quanta-sapphire inset-ring-2 outline-2
+        inset-ring-2 inset-ring-quanta-sapphire outline-2
         group-data-readonly:inset-ring-0
         forced-colors:border-[Highlight]
       `,
@@ -90,7 +90,7 @@ export const fieldBorderStyles = tv({
       true: `
         bg-quanta-ballet outline-2
         hover:bg-quanta-flamingo
-        focus:inset-ring-quanta-candy focus:inset-ring-2
+        focus:inset-ring-2 focus:inset-ring-quanta-candy
         forced-colors:border-[Mark]
       `,
     },
@@ -107,7 +107,7 @@ export const fieldBorderStyles = tv({
 export const fieldGroupStyles = tv({
   extend: focusRing,
   base: `
-    group bg-quanta-air flex h-9 items-center overflow-hidden rounded-lg border-2
+    group flex h-9 items-center overflow-hidden rounded-lg border-2 bg-quanta-air
     forced-colors:bg-[Field]
   `,
   variants: fieldBorderStyles.variants,

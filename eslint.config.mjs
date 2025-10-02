@@ -1,6 +1,8 @@
 // @ts-check
 
 // import eslint from '@eslint/js';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 // eslint-disable-next-line import/no-unresolved
 import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
@@ -9,6 +11,12 @@ import prettierPlugin from 'eslint-plugin-prettier/recommended';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import betterTailwind from 'eslint-plugin-better-tailwindcss';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const tailwindEntryPoint = path.resolve(
+  __dirname,
+  'packages/theming/styles/tailwind.css',
+);
 
 const JS_GLOB = ['**/*.{ts,tsx,js,jsx}'];
 
@@ -142,8 +150,7 @@ export default tseslint.config(
     settings: {
       'better-tailwindcss': {
         // tailwindcss 4: the path to the entry file of the css based tailwind config (eg: `src/global.css`)
-        entryPoint: 'apps/seven/publicui.css',
-        // entryPoint: 'packages/theming/styles/tailwind.css',
+        entryPoint: tailwindEntryPoint,
       },
     },
   },
