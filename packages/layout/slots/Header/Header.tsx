@@ -1,6 +1,6 @@
 import type { GetSlotArgs } from '@plone/types';
-import SlotRenderer from '../../SlotRenderer';
-import SectionWrapper from '../SectionWrapper/SectionWrapper';
+import SlotRenderer from '../SlotRenderer';
+import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import clsx from 'clsx';
 
 import styles from './Header.module.css';

@@ -1,5 +1,5 @@
 import type { GetSlotArgs } from '@plone/types';
-import SlotRenderer from '../../SlotRenderer';
+import SlotRenderer from '../SlotRenderer';
 import clsx from 'clsx';
 
 import styles from './App.module.css';

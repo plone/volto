@@ -19,11 +19,11 @@ import {
 import { useTranslation } from 'react-i18next';
 import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
-import SlotRenderer from '@plone/layout/SlotRenderer';
+import SlotRenderer from '@plone/layout/slots/SlotRenderer';
 import clsx from 'clsx';
 import config from '@plone/registry';
 
-import styles from '@plone/layout/components/App/App.module.css';
+import styles from '@plone/layout/slots/App/App.module.css';
 
 // eslint-disable-next-line import/no-unresolved
 import stylesheet from 'seven/publicui.css?url';
