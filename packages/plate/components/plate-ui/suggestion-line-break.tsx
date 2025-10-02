@@ -54,7 +54,10 @@ function SuggestionLineBreak({
     <span
       ref={spanRef}
       className={cn(
-        'border-b-brand/[.24] bg-brand/[.08] text-brand/80 absolute border-b-2 text-justify no-underline transition-colors duration-200',
+        `
+          border-b-brand/[.24] bg-brand/[.08] text-brand/80 absolute border-b-2 text-justify
+          no-underline transition-colors duration-200
+        `,
         isInsert &&
           (isActive || isHover) &&
           'border-b-brand/[.60] bg-brand/[.13]',

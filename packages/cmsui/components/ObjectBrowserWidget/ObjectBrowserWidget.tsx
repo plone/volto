@@ -37,7 +37,9 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
       {label && (
         <Label
           id={id}
-          className="not-group-data-invalid:not-group-data-readonly:has-[+div:focus]:text-quanta-sapphire"
+          className={`
+            not-group-data-invalid:not-group-data-readonly:has-[+div:focus]:text-quanta-sapphire
+          `}
         >
           {label}
         </Label>

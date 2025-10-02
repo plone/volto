@@ -62,7 +62,7 @@ export const TableCellElement = withRef<
       as={isHeader ? 'th' : 'td'}
       className={cn(
         className,
-        'bg-background h-full overflow-visible border-none p-0',
+        'h-full overflow-visible border-none bg-background p-0',
         element.background ? 'bg-(--cellBackground)' : 'bg-background',
         isHeader && 'text-left *:m-0',
         'before:size-full',
@@ -118,7 +118,7 @@ export const TableCellElement = withRef<
 
               <div
                 className={cn(
-                  'bg-ring absolute top-0 z-30 hidden h-full w-1',
+                  'absolute top-0 z-30 hidden h-full w-1 bg-ring',
                   'right-[-1.5px]',
                   columnResizeVariants({ colIndex: colIndex as any }),
                 )}
@@ -126,9 +126,13 @@ export const TableCellElement = withRef<
               {colIndex === 0 && (
                 <div
                   className={cn(
-                    'bg-ring absolute top-0 z-30 h-full w-1',
+                    'absolute top-0 z-30 h-full w-1 bg-ring',
                     'left-[-1.5px]',
-                    'fade-in animate-in hidden group-has-[[data-resizer-left]:hover]/table:block group-has-[[data-resizer-left][data-resizing="true"]]/table:block',
+                    `
+                      hidden animate-in fade-in
+                      group-has-[[data-resizer-left]:hover]/table:block
+                      group-has-[[data-resizer-left][data-resizing="true"]]/table:block
+                    `,
                   )}
                 />
               )}
@@ -148,7 +152,7 @@ export const TableCellHeaderElement = withProps(TableCellElement, {
   isHeader: true,
 });
 
-const columnResizeVariants = cva('fade-in hidden animate-in', {
+const columnResizeVariants = cva('hidden animate-in fade-in', {
   variants: {
     colIndex: {
       0: 'group-has-[[data-col="0"]:hover]/table:block group-has-[[data-col="0"][data-resizing="true"]]/table:block',

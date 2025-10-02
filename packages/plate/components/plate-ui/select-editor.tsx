@@ -199,7 +199,7 @@ export function SelectEditorCombobox() {
               >
                 {item.isNew ? (
                   <div className="flex items-center gap-1">
-                    <PlusIcon className="text-foreground size-4" />
+                    <PlusIcon className="size-4 text-foreground" />
                     Create new label:
                     <span className="text-gray-600">
                       &quot;{item.value}&quot;

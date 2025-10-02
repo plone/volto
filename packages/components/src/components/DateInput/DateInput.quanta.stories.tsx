@@ -256,7 +256,10 @@ export const CustomStyling: Story = {
       <Label>Custom Styled Date Input</Label>
       <DateInput
         {...args}
-        className="rounded-lg border-2 border-purple-300 bg-purple-50 px-4 py-2 focus-within:border-purple-500"
+        className={`
+          rounded-lg border-2 border-purple-300 bg-purple-50 px-4 py-2
+          focus-within:border-purple-500
+        `}
       />
       <Description>Date input with custom styling</Description>
     </DateField>

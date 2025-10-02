@@ -17,7 +17,10 @@ export const MediaFileElementStatic = ({
   return (
     <SlateElement className={cn(className, 'my-px rounded-sm')} {...props}>
       <a
-        className="group hover:bg-muted relative m-0 flex cursor-pointer items-center rounded px-0.5 py-[3px]"
+        className={`
+          group relative m-0 flex cursor-pointer items-center rounded px-0.5 py-[3px]
+          hover:bg-muted
+        `}
         contentEditable={false}
         download={name}
         href={url}

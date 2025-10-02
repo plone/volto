@@ -55,7 +55,10 @@ export const ColumnElement = withHOC(
             className={cn(
               'absolute top-2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2',
               'pointer-events-auto flex items-center',
-              'opacity-0 transition-opacity group-hover/column:opacity-100',
+              `
+                opacity-0 transition-opacity
+                group-hover/column:opacity-100
+              `,
             )}
           >
             <ColumnDragHandle />
@@ -66,7 +69,11 @@ export const ColumnElement = withHOC(
           ref={useComposedRef(ref, previewRef)}
           className={cn(
             className,
-            'h-full px-2 pt-2 group-first/column:pl-0 group-last/column:pr-0',
+            `
+              h-full px-2 pt-2
+              group-first/column:pl-0
+              group-last/column:pr-0
+            `,
           )}
           {...props}
         >
@@ -94,7 +101,7 @@ const ColumnDragHandle = React.memo(() => {
         <TooltipTrigger asChild>
           <Button size="none" variant="ghost" className="h-5 px-1">
             <GripHorizontal
-              className="text-muted-foreground size-4"
+              className="size-4 text-muted-foreground"
               onClick={(event) => {
                 event.stopPropagation();
                 event.preventDefault();
