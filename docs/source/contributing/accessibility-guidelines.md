@@ -39,3 +39,7 @@ The reasoning is that the `<a></a>` HTML tag has specific behavior that screenre
 ## Make sure form elements have a label
 
 This is true for one-element forms as well, such as the "Search" form on the folder-contents component. Putting an icon on it does not convey any meaning to screenreader-users, you should clarify it with an aria-label.
+
+## Additional information for non-visual users
+
+Sometimes extra information needs to be provided to users who are not able to see the screen, The `.visually-hidden` class can be used to wrap elements which need to be exposed to assistive technologies such as screen readers without them being visible.
