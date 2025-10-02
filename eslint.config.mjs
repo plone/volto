@@ -13,10 +13,7 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import betterTailwind from 'eslint-plugin-better-tailwindcss';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const tailwindEntryPoint = path.resolve(
-  __dirname,
-  'packages/theming/styles/tailwind.css',
-);
+const tailwindEntryPoint = path.resolve(__dirname, 'apps/seven/publicui.css');
 
 const JS_GLOB = ['**/*.{ts,tsx,js,jsx}'];
 
@@ -146,11 +143,28 @@ export default tseslint.config(
       ],
       'better-tailwindcss/no-duplicate-classes': 'warn',
       'better-tailwindcss/no-unnecessary-whitespace': 'warn',
+      'better-tailwindcss/no-unregistered-classes': 0,
     },
     settings: {
       'better-tailwindcss': {
         // tailwindcss 4: the path to the entry file of the css based tailwind config (eg: `src/global.css`)
         entryPoint: tailwindEntryPoint,
+        callees: [
+          'cc',
+          'clb',
+          'clsx',
+          'cn',
+          'cnb',
+          'ctl',
+          'cva',
+          'cx',
+          'dcnb',
+          'objstr',
+          'tv',
+          'twJoin',
+          'twMerge',
+          'composeTailwindRenderProps',
+        ],
       },
     },
   },
