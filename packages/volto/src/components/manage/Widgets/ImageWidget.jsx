@@ -306,7 +306,7 @@ const UnconnectedImageInput = (props) => {
       {isRelationChoice ? (
         <Image item={value} width="fit-content" height="auto" loading="lazy" />
       ) : (
-        <img
+        <Image
           className={props.className}
           src={
             isInternalURL(imageValue)
@@ -356,7 +356,7 @@ const UnconnectedImageInput = (props) => {
                   </Loader>
                 </Dimmer>
               )}
-              <img src={imageBlockSVG} alt="" className="placeholder" />
+              <Image src={imageBlockSVG} alt="" className="placeholder" />
               <p>{description || intl.formatMessage(messages.addImage)}</p>
               <div className="toolbar-wrapper">
                 <div className="toolbar-inner" ref={linkEditor.anchorNode}>

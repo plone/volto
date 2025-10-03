@@ -17,6 +17,68 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.6 (2025-09-29)
+
+### Breaking
+
+- Now add-ons need to replace `<img>` tags with the `Image` component. There is an ESLint rule to check this. @wesleybl [#7402](https://github.com/plone/volto/issues/7402)
+- `@plone/components` and `@plone/client` has been updated with the latest alphas developed for Seven.
+  Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html) @sneridagh [#7407](https://github.com/plone/volto/issues/7407)
+
+### Feature
+
+- Convert RenderUsers component from class to functional with hooks. @wesleybl [#7313](https://github.com/plone/volto/issues/7313)
+- Update Portuguese Brazilian translations @ericof [#7362](https://github.com/plone/volto/issues/7362)
+- Replace img tags with Image component. @wesleybl [#7363](https://github.com/plone/volto/issues/7363)
+
+### Bugfix
+
+- Search block: fix 'Clear filters' overriding the base query. @mauritsvanrees [#7271](https://github.com/plone/volto/issues/7271)
+- Fixes image rerender on page edit from https://github.com/plone/volto/issues/6839 @calinvladth [#7347](https://github.com/plone/volto/issues/7347)
+- Update folder content search input to announce result count for screen readers on search or input change. @Wagner3UB [#7364](https://github.com/plone/volto/issues/7364)
+- Check if we are editing a content type before rendering the Content Type control panel form. @ericof [#7396](https://github.com/plone/volto/issues/7396)
+- Added guard in API REDUX middleware. @sneridagh [#7412](https://github.com/plone/volto/issues/7412)
+- Ensure the Refresh Content button correctly loads the preview image when using preview_image_link for Teaser block. @iFlameing 
+
+### Internal
+
+- Update `immer` to 10.1.3. @wesleybl [#7359](https://github.com/plone/volto/issues/7359)
+- Add `sphinx-reredirects` to docs `requirements-docs.txt` and to sync with `seven` to avoid missing requirement when building docs locally on both branches. @stevepiercy [#7376](https://github.com/plone/volto/issues/7376)
+- Replace `README.md` link checker of `awesome_bot` with Lychee. @stevepiercy [#7378](https://github.com/plone/volto/issues/7378)
+
+### Documentation
+
+- Improved component shadowing documentation. @sneridagh [#7357](https://github.com/plone/volto/issues/7357)
+- Enhance and complete the block style wrapper docs. @sneridagh [#7405](https://github.com/plone/volto/issues/7405)
+- Enhance theming documentation. @sneridagh [#7406](https://github.com/plone/volto/issues/7406)
+
+## 19.0.0-alpha.5 (2025-09-14)
+
+### Feature
+
+- Make Jest maxWorkers configurable via MAX_WORKERS env var. @wesleybl [#7251](https://github.com/plone/volto/issues/7251)
+
+### Bugfix
+
+- Fix ImageWidget to support DX fields and Relation Choice images (preview_image_link). @sneridagh [#7099](https://github.com/plone/volto/issues/7099)
+- Fix `InlineForm` to always pass the error prop as an array, preventing prop type errors in widgets that use `InlineForm`. @alexandreIFB [#7267](https://github.com/plone/volto/issues/7267)
+- Search block: fix 'Clear filters' overriding the base query. @mauritsvanrees [#7271](https://github.com/plone/volto/issues/7271)
+- Teaser block: Clarify "Refresh source content" button by changing the default text to "Reset to target". @davisagli [#7329](https://github.com/plone/volto/issues/7329)
+- Fix German translation of "Order" from "Reihung" to "Reihenfolge" @iRohitSingh [#7331](https://github.com/plone/volto/issues/7331)
+
+### Internal
+
+- Remove vitest dependencies from root to prevent confusion. @wesleybl [#7274](https://github.com/plone/volto/issues/7274)
+- Remove MEDICE website entry from `Volto in production`. @wesleybl [#7283](https://github.com/plone/volto/issues/7283)
+- Fix random error in Listing Block tests. @wesleybl [#7286](https://github.com/plone/volto/issues/7286)
+- Fix test storeProtectLoadUtils.test.js > storeProtectLoadUtils > loadProtector store > pass when not counting. @wesleybl [#7287](https://github.com/plone/volto/issues/7287)
+- Fixed a random failure in Cypress tests when using `getSlateEditorAndType` or `getSlateEditorSelectorAndType`. @wesleybl [#7290](https://github.com/plone/volto/issues/7290)
+- Update package versions in pnpm-lock.yaml. @wesleybl [#7291](https://github.com/plone/volto/issues/7291)
+- Fix random failure in 'renders a file widget component with value' test of RegistryImageWidget. @wesleybl [#7292](https://github.com/plone/volto/issues/7292)
+- Fixes random error in Listing Block tests 2. @wesleybl [#7293](https://github.com/plone/volto/issues/7293)
+- Fixed random failure in Cypress 'Index Text Block' test. @wesleybl [#7304](https://github.com/plone/volto/issues/7304)
+- 2021.ploneconf.org is no longer a Volto site, but just a redirect to YouTube. Also reverts #6627 and replaces code examples with `2022.ploneconf.org`. @stevepiercy [#7314](https://github.com/plone/volto/issues/7314)
+
 ## 19.0.0-alpha.4 (2025-08-25)
 
 ### Breaking

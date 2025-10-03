@@ -677,6 +677,11 @@ msgstr "Kies een bestand"
 msgid "Clear"
 msgstr "Leegmaken"
 
+#. Default: "Clear date and time"
+#: components/manage/Widgets/DatetimeWidget
+msgid "Clear date/time"
+msgstr ""
+
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Clear filters"
@@ -2909,7 +2914,7 @@ msgstr "Refereer naar dit item als gerelateerd item"
 msgid "Referencing this item with {relationship}"
 msgstr "Refereen naar dit item met {relationship}"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr "Broninhoud vernieuwen"
@@ -4972,6 +4977,11 @@ msgstr "referenties"
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
+msgstr ""
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
 msgstr ""
 
 #. Default: "results"
