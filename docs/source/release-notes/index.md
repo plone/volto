@@ -17,6 +17,47 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.27.3 (2025-10-01)
+
+### Bugfix
+
+- Fix image rerender on page edit. @calinvladth [#7391](https://github.com/plone/volto/issues/7391)
+
+### Internal
+
+- Acceptance test for Teaser Block Refresh Source Content @Tishasoumya-02 
+
+## 18.27.2 (2025-09-29)
+
+### Bugfix
+
+- Update folder content search input to announce result count for screen readers on search or input change. @Wagner3UB [#7305](https://github.com/plone/volto/issues/7305)
+- Check if we are editing a content type before rendering the Content Type control panel form. @ericof [#7396](https://github.com/plone/volto/issues/7396)
+- Added guard in API REDUX middleware. @sneridagh [#7412](https://github.com/plone/volto/issues/7412)
+
+## 18.27.1 (2025-09-26)
+
+### Bugfix
+
+- Revert #7389 ESlint rule definition. @sneridagh [#7401](https://github.com/plone/volto/issues/7401)
+
+## 18.27.0 (2025-09-26)
+
+### Feature
+
+- Convert RenderUsers component from class to functional with hooks. @wesleybl [#7313](https://github.com/plone/volto/issues/7313)
+- Update Portuguese Brazilian translations @ericof [#7362](https://github.com/plone/volto/issues/7362)
+- Replace img tags with Image component. @wesleybl [#7363](https://github.com/plone/volto/issues/7363)
+
+### Bugfix
+
+- Search block: fix 'Clear filters' overriding the base query. @mauritsvanrees [#7271](https://github.com/plone/volto/issues/7271)
+- Ensure the Refresh Content button correctly loads the preview image when using preview_image_link for Teaser block. @iFlameing 
+
+### Internal
+
+- Replace README.md link checker of `awesome_bot` with Lychee. @stevepiercy [#7380](https://github.com/plone/volto/issues/7380)
+
 ## 18.26.0 (2025-09-12)
 
 ### Feature
