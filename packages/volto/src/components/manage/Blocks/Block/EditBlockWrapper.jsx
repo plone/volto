@@ -21,17 +21,13 @@ import BlockChooserButton from '@plone/volto/components/manage/BlockChooser/Bloc
 import trashSVG from '@plone/volto/icons/delete.svg';
 
 const messages = defineMessages({
-  delete: {
-    id: 'delete',
-    defaultMessage: 'delete',
+  delete_block: {
+    id: 'delete_block',
+    defaultMessage: 'delete {type} block',
   },
-  drag: {
-    id: 'drag',
-    defaultMessage: 'drag',
-  },
-  block: {
-    id: 'block',
-    defaultMessage: '{type} block',
+  drag_block: {
+    id: 'drag_block',
+    defaultMessage: 'drag {type} block',
   },
 });
 
@@ -107,11 +103,7 @@ const EditBlockWrapper = (props) => {
           }}
           {...draginfo.dragHandleProps}
           className="drag handle wrapper"
-          aria-label={
-            intl.formatMessage(messages.drag) +
-            '  ' +
-            intl.formatMessage(messages.block, { type })
-          }
+          aria-label={intl.formatMessage(messages.drag_block, { type })}
         >
           <Icon name={dragSVG} size="18px" />
         </div>
@@ -124,11 +116,7 @@ const EditBlockWrapper = (props) => {
               basic
               onClick={() => onDeleteBlock(block, true)}
               className="delete-button"
-              aria-label={
-                intl.formatMessage(messages.delete) +
-                '  ' +
-                intl.formatMessage(messages.block, { type })
-              }
+              aria-label={intl.formatMessage(messages.delete_block, { type })}
             >
               <Icon name={trashSVG} size="18px" />
             </Button>

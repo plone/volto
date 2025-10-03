@@ -4596,11 +4596,6 @@ msgstr ""
 msgid "availableViews"
 msgstr ""
 
-#. Default: "{type} block"
-#: components/manage/Blocks/Block/EditBlockWrapper
-msgid "block"
-msgstr ""
-
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4652,10 +4647,10 @@ msgstr ""
 msgid "daterangeFacet"
 msgstr ""
 
-#. Default: "delete"
+#. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
-msgid "delete"
-msgstr "删除"
+msgid "delete_block"
+msgstr ""
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4682,9 +4677,9 @@ msgstr "您的密码重置请求邮件已发送。稍后它将到达您的邮箱
 msgid "draft"
 msgstr "草案"
 
-#. Default: "drag"
+#. Default: "drag {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
-msgid "drag"
+msgid "drag_block"
 msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"

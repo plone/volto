@@ -4590,11 +4590,6 @@ msgstr ""
 msgid "availableViews"
 msgstr ""
 
-#. Default: "{type} block"
-#: components/manage/Blocks/Block/EditBlockWrapper
-msgid "block"
-msgstr ""
-
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4646,9 +4641,9 @@ msgstr ""
 msgid "daterangeFacet"
 msgstr ""
 
-#. Default: "delete"
+#. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
-msgid "delete"
+msgid "delete_block"
 msgstr ""
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
@@ -4676,9 +4671,9 @@ msgstr ""
 msgid "draft"
 msgstr ""
 
-#. Default: "drag"
+#. Default: "drag {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
-msgid "drag"
+msgid "drag_block"
 msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"

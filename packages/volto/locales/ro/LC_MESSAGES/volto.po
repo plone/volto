@@ -4596,11 +4596,6 @@ msgstr ""
 msgid "availableViews"
 msgstr "Vizualizări disponibile"
 
-#. Default: "{type} block"
-#: components/manage/Blocks/Block/EditBlockWrapper
-msgid "block"
-msgstr ""
-
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4652,10 +4647,10 @@ msgstr "{countofrelation} relație defectă {countofrelation, plural, one {relat
 msgid "daterangeFacet"
 msgstr "Interval de date"
 
-#. Default: "delete"
+#. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
-msgid "delete"
-msgstr "Ștergeți"
+msgid "delete_block"
+msgstr ""
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4682,9 +4677,9 @@ msgstr "Parola este în curs de schimbare. Urmați instrucțiunile primite pe ad
 msgid "draft"
 msgstr "proiect"
 
-#. Default: "drag"
+#. Default: "drag {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
-msgid "drag"
+msgid "drag_block"
 msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"

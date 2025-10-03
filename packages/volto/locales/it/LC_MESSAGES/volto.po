@@ -4590,11 +4590,6 @@ msgstr ""
 msgid "availableViews"
 msgstr "Viste disponibili"
 
-#. Default: "{type} block"
-#: components/manage/Blocks/Block/EditBlockWrapper
-msgid "block"
-msgstr "blocco {type}"
-
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4646,10 +4641,10 @@ msgstr "{countofrelation} {countofrelation, plural, one {relazione rotta} other 
 msgid "daterangeFacet"
 msgstr "Intervallo date"
 
-#. Default: "delete"
+#. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
-msgid "delete"
-msgstr "Elimina"
+msgid "delete_block"
+msgstr "Elimina blocco {type}"
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4676,10 +4671,10 @@ msgstr "La istruzioni per reimpostare la tua password sono state inviate. Dovreb
 msgid "draft"
 msgstr "Bozza"
 
-#. Default: "drag"
+#. Default: "drag {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
-msgid "drag"
-msgstr "trascina"
+msgid "drag_block"
+msgstr "Trascina blocco {type}"
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
