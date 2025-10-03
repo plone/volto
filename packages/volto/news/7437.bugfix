@@ -1,0 +1,1 @@
+Adjust README logo paths in packages/volto after copying from top-level README to prevent CI link-check failures. @aryan7081

@@ -17,6 +17,22 @@ import { toPublicURL } from '@plone/volto/helpers/Url/Url';
 import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 import Image from '@plone/volto/components/theme/Image/Image';
 
+// Safe base64 decoder that works in both browser and Node test environments
+function decodeBase64(base64String) {
+  if (typeof atob === 'function') {
+    return atob(base64String);
+  }
+  try {
+    // Node.js fallback
+    if (typeof Buffer !== 'undefined') {
+      return Buffer.from(base64String, 'base64').toString('utf-8');
+    }
+  } catch (e) {
+    // ignore and fall through
+  }
+  return '';
+}
+
 const imageMimetypes = [
   'image/png',
   'image/jpeg',
@@ -81,7 +97,7 @@ const RegistryImageWidget = (props) => {
   const [previewSrc, setPreviewSrc] = useState(() => {
     const fileName = value?.split(';')[0];
     return fileName
-      ? `${toPublicURL('/')}@@site-logo/${atob(
+      ? `${toPublicURL('/')}@@site-logo/${decodeBase64(
           fileName.replace('filenameb64:', ''),
         )}`
       : '';
