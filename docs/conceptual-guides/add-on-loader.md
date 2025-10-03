@@ -47,6 +47,28 @@ Don't modify it or add your own styles in it.
 It will be overwritten in the next bundler run.
 ```
 
+## Server-side loader
+
+Add-ons can also provide a server-side configuration loader.
+To do so, create a file {file}`config/server.ts` at the root of your add-on package.
+This is useful when your add-on needs to load configuration that is only relevant on the server side, such as API endpoints or server-only features.
+This file should contain a default export with a function with the same signature as the client-side loader.
+Its functionality is the same as the client-side loader, but it only runs on the server side.
+
+```{note}
+The server-side configuration loader is optional.
+If your add-on does not need to load any server-side configuration, you can omit this file.
+```
+
+This loader is a JavaScript file and it is placed in the root of your application.
+By default, it's called {file}`registry.loader.server.js`.
+`@plone/registry` will create or overwrite {file}`registry.loader.server.js` in the root of your app whenever you run the bundler.
+
+```{important}
+The file {file}`registry.loader.server.js` is generated and maintained by `@plone/registry`.
+Don't modify it or add your own styles in it.
+It will be overwritten in the next bundler run.
+```
 
 ## Provide optional add-on configurations
 
