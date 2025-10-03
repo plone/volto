@@ -38,7 +38,7 @@ describe('PasswordUpdate', () => {
       new_password: 'changedpassword',
     };
 
-    const result = await cli.updatePassword({
+    await cli.updatePassword({
       userId: username,
       data: resetUserData,
     });

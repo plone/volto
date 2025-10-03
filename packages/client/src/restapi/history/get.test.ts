@@ -35,7 +35,7 @@ describe('Get History', () => {
     const path = '/blah';
 
     try {
-      const result = await cli.getHistory({ path });
+      await cli.getHistory({ path });
     } catch (err) {
       expect((err as RequestError).status).toBe(404);
     }

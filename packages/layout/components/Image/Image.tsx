@@ -44,7 +44,7 @@ export default function Image(props: ImageProps) {
     loading = 'eager',
     responsive = false,
     className,
-    sizes,
+    // sizes,
     ...imageProps
   } = props;
 

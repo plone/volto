@@ -1,5 +1,3 @@
-'use client';
-
 import type { UseEmojiPickerType } from '@udecode/plate-emoji/react';
 
 export type EmojiPickerPreviewProps = Pick<
