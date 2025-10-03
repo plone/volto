@@ -32,15 +32,23 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 
   const path = `/${params['*'] || ''}`;
 
+  const rootDataUtilities = config.getUtilities({
+    type: 'rootLoaderData',
+  });
+
   try {
-    const [content, site] = await Promise.all([
+    const [content, site, ...rest] = await Promise.all([
       cli.getContent({ path, expand }),
       cli.getSite(),
+      ...rootDataUtilities.map((utility) =>
+        utility.method()({ cli, request, path, params, locale }),
+      ),
     ]);
     return {
       content: flattenToAppURL(content.data),
       site: flattenToAppURL(site.data),
       locale,
+      ...rest,
     };
   } catch (error: any) {
     throw data('Content Not Found', {
