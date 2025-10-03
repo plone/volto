@@ -19,6 +19,8 @@ add-on-registry
 add-on-loader
 add-on-styles-loader
 configuration-registry
+add-on-driven-configuration
+cookieplone-frontend-addon
 routing
 slots
 ```
