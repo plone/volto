@@ -23,10 +23,13 @@ function decodeBase64(base64String) {
     return atob(base64String);
   }
   try {
-    // Node.js fallback
-    if (typeof Buffer !== 'undefined') {
-      return Buffer.from(base64String, 'base64').toString('utf-8');
-    }
+    // Node.js fallback using Buffer when available
+    const NodeBuffer =
+      (typeof global !== 'undefined' && global.Buffer) ||
+      (typeof window !== 'undefined' && window.Buffer);
+    return NodeBuffer
+      ? NodeBuffer.from(base64String, 'base64').toString('utf-8')
+      : '';
   } catch (e) {
     // ignore and fall through
   }
