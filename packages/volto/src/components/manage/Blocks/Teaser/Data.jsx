@@ -29,6 +29,16 @@ const messages = defineMessages({
   },
 });
 
+function getImageField(resp) {
+  if (!resp) return null;
+
+  if (resp.preview_image_link) return 'preview_image_link';
+  if (resp.preview_image) return 'preview_image';
+  if (resp.image) return 'image';
+
+  return null;
+}
+
 const TeaserData = (props) => {
   const {
     block,
@@ -58,16 +68,20 @@ const TeaserData = (props) => {
       '@type': resp?.['@type'],
       Description: resp?.description,
       Title: resp.title,
-      hasPreviewImage: resp?.preview_image ? true : false,
+      hasPreviewImage: getImageField(resp) ? true : false,
       head_title: resp.head_title ?? null,
-      image_field: resp?.preview_image
-        ? 'preview_image'
-        : resp?.image
-          ? 'image'
-          : null,
+      image_field: getImageField(resp),
       image_scales: {
         preview_image: [resp?.preview_image],
         image: [resp?.image],
+        preview_image_link: resp?.preview_image_link
+          ? [
+              {
+                ...resp?.preview_image_link?.['image_scales']?.image?.[0],
+                base_path: resp?.preview_image_link?.['@id'],
+              },
+            ]
+          : [],
       },
       title: resp.title,
     };

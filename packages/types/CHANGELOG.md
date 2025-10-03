@@ -8,6 +8,29 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.5 (2025-09-29)
+
+### Feature
+
+- Add controlpanel overview and schema driven control panels. @ksuess [#6657](https://github.com/plone/volto/issues/6657)
+- Added typings for `settings.hideBreadcrumbs`. @sneridagh [#7196](https://github.com/plone/volto/issues/7196)
+- Improve Block JSONSchema typings. @sneridagh [#7228](https://github.com/plone/volto/issues/7228)
+- Support typings for `@plone/plate`. @sneridagh [#7346](https://github.com/plone/volto/issues/7346)
+- Added language switcher in Seven. @nileshgulia1 [#7352](https://github.com/plone/volto/issues/7352)
+- Backport Seven updates. @sneridagh [#7407](https://github.com/plone/volto/issues/7407)
+
+### Bugfix
+
+- Fixed Widgets typings. @sneridagh [#6999](https://github.com/plone/volto/issues/6999)
+- Update widget config typings for better inference. @deodorhunter [#7141](https://github.com/plone/volto/issues/7141)
+- Improved widgets typings.
+  Exported missing intl typings helpers.
+  Added BlockSchemaProps typings. @sneridagh 
+
+### Internal
+
+- Update Widgets types. @deodorhunter [#7334](https://github.com/plone/volto/issues/7334)
+
 ## 2.0.0-alpha.4 (2025-06-25)
 
 ### Bugfix

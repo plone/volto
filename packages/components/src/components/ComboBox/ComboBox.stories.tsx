@@ -1,12 +1,10 @@
 import React from 'react';
 import { ComboBox, ComboBoxItem } from './ComboBox';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/ComboBox.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Widgets/ComboBox',
+  title: 'Basic/Forms/ComboBox',
   component: ComboBox,
   parameters: {
     layout: 'centered',
@@ -28,5 +26,6 @@ export const Default: Story = {
   ),
   args: {
     label: 'Ice cream flavor',
+    children: null,
   },
 };

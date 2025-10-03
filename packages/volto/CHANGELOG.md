@@ -17,6 +17,41 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.6 (2025-09-29)
+
+### Breaking
+
+- Now add-ons need to replace `<img>` tags with the `Image` component. There is an ESLint rule to check this. @wesleybl [#7402](https://github.com/plone/volto/issues/7402)
+- `@plone/components` and `@plone/client` has been updated with the latest alphas developed for Seven.
+  Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html) @sneridagh [#7407](https://github.com/plone/volto/issues/7407)
+
+### Feature
+
+- Convert RenderUsers component from class to functional with hooks. @wesleybl [#7313](https://github.com/plone/volto/issues/7313)
+- Update Portuguese Brazilian translations @ericof [#7362](https://github.com/plone/volto/issues/7362)
+- Replace img tags with Image component. @wesleybl [#7363](https://github.com/plone/volto/issues/7363)
+
+### Bugfix
+
+- Search block: fix 'Clear filters' overriding the base query. @mauritsvanrees [#7271](https://github.com/plone/volto/issues/7271)
+- Fixes image rerender on page edit from https://github.com/plone/volto/issues/6839 @calinvladth [#7347](https://github.com/plone/volto/issues/7347)
+- Update folder content search input to announce result count for screen readers on search or input change. @Wagner3UB [#7364](https://github.com/plone/volto/issues/7364)
+- Check if we are editing a content type before rendering the Content Type control panel form. @ericof [#7396](https://github.com/plone/volto/issues/7396)
+- Added guard in API REDUX middleware. @sneridagh [#7412](https://github.com/plone/volto/issues/7412)
+- Ensure the Refresh Content button correctly loads the preview image when using preview_image_link for Teaser block. @iFlameing 
+
+### Internal
+
+- Update `immer` to 10.1.3. @wesleybl [#7359](https://github.com/plone/volto/issues/7359)
+- Add `sphinx-reredirects` to docs `requirements-docs.txt` and to sync with `seven` to avoid missing requirement when building docs locally on both branches. @stevepiercy [#7376](https://github.com/plone/volto/issues/7376)
+- Replace `README.md` link checker of `awesome_bot` with Lychee. @stevepiercy [#7378](https://github.com/plone/volto/issues/7378)
+
+### Documentation
+
+- Improved component shadowing documentation. @sneridagh [#7357](https://github.com/plone/volto/issues/7357)
+- Enhance and complete the block style wrapper docs. @sneridagh [#7405](https://github.com/plone/volto/issues/7405)
+- Enhance theming documentation. @sneridagh [#7406](https://github.com/plone/volto/issues/7406)
+
 ## 19.0.0-alpha.5 (2025-09-14)
 
 ### Feature

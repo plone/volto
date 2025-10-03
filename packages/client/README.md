@@ -16,7 +16,8 @@ These functions can be used in other use cases, including command line helpers, 
 
 > [!WARNING]
 > Active development of this package is now on the `seven` branch.
-> This package will be maintained as an alpha version only (1.0.0-alpha.x) on this branch (currently `main`, then when a branch is cut for `19.x.x`) with bug fixes only.
+> Since this is a Plone modular architecture core package (level 1), and we are in alpha, changes will be ported to the `main` branch periodically.
+> Last sync was done on 2025-09-27 by @sneridagh.
 > See breaking changes in the upcoming alphas.
 
 ## Installation
