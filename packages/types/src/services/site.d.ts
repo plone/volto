@@ -11,7 +11,5 @@ export interface GetSiteResponse {
     filter_aliases_by_date?: boolean;
     multilingual?: boolean;
   };
-  'plone.available_languages': {
-    [key: string]: string;
-  };
+  'plone.available_languages': string[];
 }

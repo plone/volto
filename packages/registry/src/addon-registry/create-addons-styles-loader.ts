@@ -49,7 +49,7 @@ export function createAddonsStyleLoader(registry: AddonRegistry) {
 
   fs.writeFileSync(
     publicUIStyles,
-    buildLoaderCode(registry, 'styles/main.css'),
+    buildLoaderCode(registry, 'styles/publicui.css'),
   );
   fs.writeFileSync(cmsUIStyles, buildLoaderCode(registry, 'styles/cmsui.css'));
 }
