@@ -312,7 +312,7 @@ const apiMiddlewareFactory =
           }
 
           // Only SSR can set ECONNREFUSED
-          if (error.code === 'ECONNREFUSED') {
+          if (error?.code === 'ECONNREFUSED') {
             next({
               ...rest,
               error,
@@ -323,7 +323,7 @@ const apiMiddlewareFactory =
           }
 
           // Response error is marked crossDomain if CORS error happen
-          else if (error.crossDomain) {
+          else if (error?.crossDomain) {
             next({
               ...rest,
               error,
