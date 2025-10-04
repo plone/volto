@@ -12,20 +12,17 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks';
 const JS_GLOB = ['**/*.{ts,tsx,js,jsx}'];
 
 const generateFilesArray = (packages) => {
-  return packages.map((pkg) => `**/${pkg}/**/*.{tsx,jsx}`);
+  return packages.map((pkg) => `**/${pkg}/**/*.{js,ts,tsx,jsx}`);
 };
-// '**/packages/blocks/**/*.{ts,tsx}'
-const addonPackages = [
-  'apps/seven',
-  'apps/quanta',
-  'packages/blocks',
-  'packages/contents',
-  'packages/cmsui',
-  'packages/coresandbox',
-  'packages/layout',
-  'packages/theming',
-  'packages/publicui',
-  'packages/plate',
+
+const nonAddons = [
+  'packages/client',
+  'packages/components',
+  'packages/registry',
+  'packages/helpers',
+  'packages/react-router',
+  'packages/scripts',
+  'packages/tooling',
   // Add more packages as needed
 ];
 
@@ -91,13 +88,15 @@ export default tseslint.config(
     },
   },
   {
-    name: 'Addons - JSX Runtime plugin',
-    files: generateFilesArray(addonPackages),
+    name: 'JSX Runtime plugin',
+    files: JS_GLOB,
+    ignores: generateFilesArray(nonAddons),
     ...reactPlugin.configs.flat['jsx-runtime'],
   },
   {
     name: 'Addons - Rules',
-    files: generateFilesArray(addonPackages),
+    files: JS_GLOB,
+    ignores: generateFilesArray(nonAddons),
     rules: {
       'no-console': 'warn',
     },
@@ -121,6 +120,7 @@ export default tseslint.config(
       '**/.react-router/*',
       '**/+types/*',
       '**/registry.loader.js',
+      '**/registry.loader.server.js',
     ],
   },
 );
