@@ -54,7 +54,12 @@ export function ColumnFloatingToolbar({ children }: React.PropsWithChildren) {
         side="top"
         sideOffset={10}
       >
-        <div className="[&_svg]:text-muted-foreground box-content flex items-center [&_svg]:size-4">
+        <div
+          className={`
+            box-content flex items-center
+            [&_svg]:size-4 [&_svg]:text-muted-foreground
+          `}
+        >
           <Button
             size="icon"
             variant="ghost"

@@ -28,7 +28,13 @@ export function RadioGroup(props: RadioGroupProps) {
       )}
     >
       <Label>{props.label}</Label>
-      <div className="group-orientation-vertical:flex-col group-orientation-horizontal:gap-4 flex gap-2">
+      <div
+        className={`
+          flex gap-2
+          group-orientation-horizontal:gap-4
+          group-orientation-vertical:flex-col
+        `}
+      >
         {props.children}
       </div>
       {props.description && <Description>{props.description}</Description>}
@@ -61,7 +67,12 @@ export function Radio(props: RadioProps) {
       {...props}
       className={composeTailwindRenderProps(
         props.className,
-        'group flex items-center gap-2 text-sm text-gray-800 transition disabled:text-gray-300 dark:text-zinc-200 dark:disabled:text-zinc-600 forced-colors:disabled:text-[GrayText]',
+        `
+          group flex items-center gap-2 text-sm text-gray-800 transition
+          disabled:text-gray-300
+          dark:text-zinc-200 dark:disabled:text-zinc-600
+          forced-colors:disabled:text-[GrayText]
+        `,
       )}
     >
       {(renderProps) => (

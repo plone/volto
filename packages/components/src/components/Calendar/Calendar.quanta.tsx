@@ -73,7 +73,12 @@ export function CalendarHeader() {
           <ChevronleftIcon aria-hidden />
         )}
       </Button>
-      <Heading className="mx-2 flex-1 text-center text-xl font-semibold text-zinc-900 dark:text-zinc-200" />
+      <Heading
+        className={`
+          mx-2 flex-1 text-center text-xl font-semibold text-zinc-900
+          dark:text-zinc-200
+        `}
+      />
       <Button slot="next">
         {direction === 'rtl' ? (
           <ChevronleftIcon aria-hidden />

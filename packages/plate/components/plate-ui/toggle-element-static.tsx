@@ -12,7 +12,12 @@ export function ToggleElementStatic({
   return (
     <SlateElement className={cn(className, 'pl-6')} {...props}>
       <div
-        className="text-muted-foreground hover:bg-accent absolute top-0 -left-0.5 size-6 cursor-pointer items-center justify-center rounded-md p-px transition-colors select-none [&_svg]:size-4"
+        className={`
+          absolute top-0 -left-0.5 size-6 cursor-pointer items-center justify-center rounded-md p-px
+          text-muted-foreground transition-colors select-none
+          hover:bg-accent
+          [&_svg]:size-4
+        `}
         contentEditable={false}
       >
         <ChevronRight

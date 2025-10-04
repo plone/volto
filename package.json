@@ -17,7 +17,8 @@
     "build:cmsui": "pnpm --filter seven build:cmsui",
     "start:prod": "pnpm --filter seven start:prod",
     "start:cmsui": "pnpm --filter seven dev:cmsui",
-    "lint": "make build-deps && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
+    "lint": "make build-deps && pnpm --filter seven exec init-loaders && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "make build-deps && pnpm --filter seven exec init-loaders && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}' --fix",
     "test": "pnpm --filter seven run test",
     "test:all": "pnpm test:ci",
     "test:ci": "pnpm --filter @plone/* --filter \"!@plone/scripts\" --filter \"!@plone/theming\" run test --run",
@@ -36,6 +37,7 @@
     "concurrently": "^8.2.2",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
+    "tailwindcss": "catalog:",
     "tsconfig": "workspace:*",
     "typescript": "catalog:"
   },

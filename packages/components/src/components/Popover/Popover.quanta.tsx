@@ -50,7 +50,14 @@ export function Popover({
             width={12}
             height={12}
             viewBox="0 0 12 12"
-            className="group-placement-bottom:rotate-180 group-placement-left:-rotate-90 group-placement-right:rotate-90 block fill-white stroke-black/10 stroke-1 dark:fill-[#1f1f21] dark:stroke-zinc-600 forced-colors:fill-[Canvas] forced-colors:stroke-[ButtonBorder]"
+            className={`
+              block fill-white stroke-black/10 stroke-1
+              group-placement-left:-rotate-90
+              group-placement-right:rotate-90
+              group-placement-bottom:rotate-180
+              dark:fill-[#1f1f21] dark:stroke-zinc-600
+              forced-colors:fill-[Canvas] forced-colors:stroke-[ButtonBorder]
+            `}
           >
             <path d="M0 0 L6 6 L12 0" />
           </svg>

@@ -13,7 +13,7 @@ export const LinkElementStatic = ({
       as="a"
       className={cn(
         className,
-        'text-primary decoration-primary font-medium underline underline-offset-4',
+        'font-medium text-primary underline decoration-primary underline-offset-4',
       )}
       {...props}
     >

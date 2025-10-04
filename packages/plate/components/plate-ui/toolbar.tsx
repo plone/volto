@@ -28,7 +28,12 @@ export const ToolbarSeparator = withCn(
 
 const toolbarButtonVariants = cva(
   cn(
-    'inline-flex cursor-pointer items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap text-foreground transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg:not([data-icon])]:size-4',
+    `
+      inline-flex cursor-pointer items-center justify-center gap-2 rounded-md text-sm font-medium
+      whitespace-nowrap text-foreground transition-colors
+      disabled:pointer-events-none disabled:opacity-50
+      [&_svg:not([data-icon])]:size-4
+    `,
   ),
   {
     defaultVariants: {
@@ -53,7 +58,11 @@ const toolbarButtonVariants = cva(
 
 const dropdownArrowVariants = cva(
   cn(
-    'inline-flex items-center justify-center rounded-r-md text-sm font-medium text-foreground transition-colors disabled:pointer-events-none disabled:opacity-50',
+    `
+      inline-flex items-center justify-center rounded-r-md text-sm font-medium text-foreground
+      transition-colors
+      disabled:pointer-events-none disabled:opacity-50
+    `,
   ),
   {
     defaultVariants: {
@@ -119,7 +128,7 @@ const ToolbarButton = withTooltip(
                 </div>
                 <div>
                   <ChevronDown
-                    className="text-muted-foreground size-3.5"
+                    className="size-3.5 text-muted-foreground"
                     data-icon
                   />
                 </div>
@@ -158,7 +167,13 @@ export const ToolbarSplitButton = React.forwardRef<
   return (
     <ToolbarButton
       ref={ref}
-      className={cn('group flex gap-0 px-0 hover:bg-transparent', className)}
+      className={cn(
+        `
+          group flex gap-0 px-0
+          hover:bg-transparent
+        `,
+        className,
+      )}
       {...props}
     >
       {children}
@@ -214,7 +229,7 @@ export const ToolbarSplitButtonSecondary = React.forwardRef<
       role="button"
       {...props}
     >
-      <ChevronDown className="text-muted-foreground size-3.5" data-icon />
+      <ChevronDown className="size-3.5 text-muted-foreground" data-icon />
     </span>
   );
 });
@@ -234,13 +249,21 @@ export const ToolbarGroup = withRef<'div'>(({ children, className }, ref) => {
       ref={ref}
       className={cn(
         'group/toolbar-group',
-        'relative hidden has-[button]:flex',
+        `
+          relative hidden
+          has-[button]:flex
+        `,
         className,
       )}
     >
       <div className="flex items-center">{children}</div>
 
-      <div className="mx-1.5 py-0.5 group-last/toolbar-group:hidden!">
+      <div
+        className={`
+          mx-1.5 py-0.5
+          group-last/toolbar-group:hidden!
+        `}
+      >
         <Separator orientation="vertical" />
       </div>
     </div>
