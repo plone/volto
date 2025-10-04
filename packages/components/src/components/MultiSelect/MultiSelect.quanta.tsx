@@ -10,6 +10,7 @@ import {
   TagGroup,
   TagList,
   Tag,
+  type ValidationResult,
 } from 'react-aria-components';
 import { Description, Label } from '../Field/Field.quanta';
 import { useListData } from 'react-stately';
@@ -32,9 +33,15 @@ export interface MultiSelectProps<T extends object> {
   placeholder?: string;
   label?: string;
   description?: string;
+  errorMessage?: string | ((validation: ValidationResult) => string);
   creatable?: boolean;
+  onChange?: (selectedItems: Array<T>) => void;
+  onBlur?: () => void;
+  onFocus?: () => void;
   onItemInserted?: (key: Key) => void;
   onItemCleared?: (key: Key) => void;
+  isDisabled?: boolean;
+  isRequired?: boolean;
   renderEmptyState?: (inputValue: string) => React.ReactNode;
 }
 
@@ -44,11 +51,17 @@ export function MultiSelect({
   items,
   className = '',
   description,
+  errorMessage,
+  onChange,
+  onBlur,
+  onFocus,
   onItemCleared,
   onItemInserted,
   renderEmptyState,
   selectedItems,
   creatable = true,
+  isDisabled = false,
+  isRequired = false,
   ...props
 }: MultiSelectProps<Option>) {
   const triggerRef = useRef<HTMLDivElement | null>(null);
@@ -80,20 +93,21 @@ export function MultiSelect({
   const onRemove = useCallback(
     (keys: Set<Key>) => {
       const key = keys.values().next().value;
-      if (key) {
+      if (key && !isDisabled) {
         selectedItems.remove(key);
         setFieldState({
           inputValue: '',
           selectedKey: null,
         });
         onItemCleared?.(key);
+        onChange?.(selectedItems.items);
       }
     },
-    [selectedItems, onItemCleared],
+    [selectedItems, onItemCleared, onChange, isDisabled],
   );
 
   const onSelectionChange = (id: Key | null) => {
-    if (!id) {
+    if (!id || isDisabled) {
       return;
     }
 
@@ -110,6 +124,8 @@ export function MultiSelect({
         selectedKey: id,
       });
       onItemInserted?.(id);
+      // Call onChange with the updated array
+      setTimeout(() => onChange?.(selectedItems.items), 0);
     }
 
     accessibleList.setFilterText('');
@@ -140,6 +156,8 @@ export function MultiSelect({
   }, []);
 
   const onCreateTag = useCallback(() => {
+    if (isDisabled) return;
+
     const inputValue = fieldState.inputValue.trim();
     const id = inputValue.toLocaleLowerCase();
 
@@ -159,11 +177,19 @@ export function MultiSelect({
 
       accessibleList.append(item);
       selectedItems.append(item);
+      onChange?.(selectedItems.items);
     }
-  }, [fieldState.inputValue, accessibleList, selectedItems, setFieldState]);
+  }, [
+    fieldState.inputValue,
+    accessibleList,
+    selectedItems,
+    setFieldState,
+    onChange,
+    isDisabled,
+  ]);
 
   const popLast = useCallback(() => {
-    if (selectedItems.items.length === 0) {
+    if (selectedItems.items.length === 0 || isDisabled) {
       return;
     }
 
@@ -172,13 +198,14 @@ export function MultiSelect({
     if (endKey) {
       selectedItems.remove(endKey.id);
       onItemCleared?.(endKey.id);
+      onChange?.(selectedItems.items);
     }
 
     setFieldState({
       inputValue: '',
       selectedKey: null,
     });
-  }, [selectedItems, onItemCleared]);
+  }, [selectedItems, onItemCleared, onChange, isDisabled]);
 
   const onKeyDownCapture = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -202,7 +229,14 @@ export function MultiSelect({
     <div className={twMerge('w-full', className)}>
       {label && <Label>{label}</Label>}
       <div ref={triggerRef} className="relative">
-        <div className="relative flex min-h-10 w-full flex-wrap items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-1.5 shadow-sm focus-within:border-gray-500 focus-within:ring-2 focus-within:ring-gray-400">
+        <div
+          className={twMerge(
+            'relative flex min-h-10 w-full flex-wrap items-center gap-1 rounded-md border bg-white px-3 py-1.5 shadow-sm focus-within:ring-2',
+            errorMessage
+              ? 'border-red-500 focus-within:border-red-500 focus-within:ring-red-400'
+              : 'border-gray-300 focus-within:border-gray-500 focus-within:ring-gray-400',
+          )}
+        >
           <TagGroup
             id={tagGroupIdentifier}
             aria-label="Selected items"
@@ -243,13 +277,17 @@ export function MultiSelect({
           >
             <Input
               placeholder={placeholder}
+              disabled={isDisabled}
+              required={isRequired}
               onBlur={() => {
                 setFieldState({
                   inputValue: '',
                   selectedKey: null,
                 });
                 accessibleList.setFilterText('');
+                onBlur?.();
               }}
+              onFocus={onFocus}
               onKeyDownCapture={onKeyDownCapture}
               className="min-w-0 flex-1 bg-white px-2 py-1.5 text-sm text-gray-800 outline-0 disabled:text-gray-200"
             />
@@ -317,6 +355,13 @@ export function MultiSelect({
         </div>
       </div>
       {description && <Description>{description}</Description>}
+      {errorMessage && (
+        <div className="mt-1 text-sm text-red-600">
+          {typeof errorMessage === 'function'
+            ? errorMessage({} as ValidationResult)
+            : errorMessage}
+        </div>
+      )}
     </div>
   );
 }
