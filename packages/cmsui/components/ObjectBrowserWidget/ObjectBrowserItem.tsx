@@ -1,9 +1,8 @@
-import React from 'react';
-import { GridListItem, Button } from '@plone/components/quanta';
+import { Button } from '@plone/components/quanta';
 import { CheckboxIcon, ChevronrightIcon } from '@plone/components/Icons';
 import { flattenToAppURL } from '@plone/helpers';
 import { useTranslation } from 'react-i18next';
-import { getItemLabel, getContentIcon } from './utils';
+import { getContentIcon } from './utils';
 import type { Brain } from '@plone/types';
 import { tv } from 'tailwind-variants';
 

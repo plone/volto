@@ -27,7 +27,7 @@
 
 - Adapt import to the rearrangement of the @plone/components package structure. @sneridagh [#7185](https://github.com/plone/volto/pull/7185)
 - Update to latest versions. @sneridagh [#7298](https://github.com/plone/volto/pull/7298)
-- Adjust peer dependencies and engine. @sneridagh 
+- Adjust peer dependencies and engine. @sneridagh
 
 ## 1.0.0-alpha.4 (2025-05-24)
 

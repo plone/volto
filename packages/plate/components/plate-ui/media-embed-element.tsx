@@ -1,6 +1,3 @@
-'use client';
-
-import React from 'react';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 
 import { cn, withRef } from '@udecode/cn';
@@ -27,7 +24,6 @@ export const MediaEmbedElement = withHOC(
       isTweet,
       isVideo,
       isYoutube,
-      readOnly,
       selected,
     } = useMediaState({
       urlParsers: [parseTwitterUrl, parseVideoUrl],

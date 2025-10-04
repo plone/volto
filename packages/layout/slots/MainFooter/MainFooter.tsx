@@ -1,6 +1,6 @@
-import type { SlotComponentProps } from '../../SlotRenderer';
+import type { SlotComponentProps } from '../SlotRenderer';
 import { Link } from '@plone/components';
-import SectionWrapper from '../SectionWrapper/SectionWrapper';
+import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import clsx from 'clsx';
 
 import styles from './MainFooter.module.css';

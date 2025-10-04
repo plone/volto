@@ -30,7 +30,7 @@
 - Fix URL in README. @stevepiercy [#7360](https://github.com/plone/volto/issues/7360)
 - Upgrade to Storybook 9. @sneridagh [#7371](https://github.com/plone/volto/issues/7371)
 - Remove circular dependency on layout<->blocks. @sneridagh [#7372](https://github.com/plone/volto/issues/7372)
-- Adjust peer dependencies and engine. @sneridagh 
+- Adjust peer dependencies and engine. @sneridagh
 
 ## 1.0.0-alpha.2 (2025-05-24)
 

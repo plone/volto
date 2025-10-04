@@ -1,7 +1,3 @@
-'use client';
-
-import React from 'react';
-
 import type { TTableCellElement } from '@udecode/plate-table';
 
 import { cn, withProps, withRef } from '@udecode/cn';

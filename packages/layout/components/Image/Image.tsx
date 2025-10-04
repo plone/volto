@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ImgHTMLAttributes } from 'react';
 import clsx from 'clsx';
 import type { ImageScale, ContainedItem } from '@plone/types';
@@ -45,7 +44,7 @@ export default function Image(props: ImageProps) {
     loading = 'eager',
     responsive = false,
     className,
-    sizes,
+    // sizes,
     ...imageProps
   } = props;
 

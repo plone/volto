@@ -1,7 +1,4 @@
-'use client';
-
-import React from 'react';
-
+import * as React from 'react';
 import type { TMentionElement } from '@udecode/plate-mention';
 
 import { cn, withRef } from '@udecode/cn';

@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useState } from 'react';
 
 import type { Value } from '@udecode/plate';

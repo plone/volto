@@ -1,4 +1,4 @@
-import type { SlotComponentProps } from '../../SlotRenderer';
+import type { SlotComponentProps } from '../SlotRenderer';
 import { Link } from '@plone/components';
 import styles from './Navigation.module.css';
 import clsx from 'clsx';

@@ -1,15 +1,14 @@
 import type { ConfigType } from '@plone/registry';
-import App from '../components/App/App';
-import Header from '../components/Header/Header';
-import Main from '../components/Main';
-import Footer from '../components/Footer';
-import Logo from '../components/Logo/Logo';
-import LanguageSwitcher from '../components/LanguageSwitcher/LanguageSwitcher';
-import Navigation from '../components/Navigation/Navigation';
-import HeaderTools from '../components/Tools';
-import ContentArea from '../components/ContentArea';
-import MainFooter from '../components/MainFooter/MainFooter';
-import Breadcrumbs from '../components/Breadcrumbs';
+import Header from '../slots/Header/Header';
+import Main from '../slots/Main';
+import Footer from '../slots/Footer';
+import Logo from '../slots/Logo/Logo';
+import LanguageSwitcher from '../slots/LanguageSwitcher/LanguageSwitcher';
+import Navigation from '../slots/Navigation/Navigation';
+import HeaderTools from '../slots/Tools';
+import ContentArea from '../slots/ContentArea';
+import MainFooter from '../slots/MainFooter/MainFooter';
+import Breadcrumbs from '../slots/Breadcrumbs';
 import { NotContentTypeCondition } from '../helpers';
 
 export default function install(config: ConfigType) {

@@ -1,5 +1,3 @@
-'use client';
-
 import { type ReactNode, createContext, useContext, useState } from 'react';
 
 import { cn } from '@udecode/cn';

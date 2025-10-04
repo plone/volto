@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useEffect } from 'react';
 
 import type { WithRequiredKey } from '@udecode/plate';

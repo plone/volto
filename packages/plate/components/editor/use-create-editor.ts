@@ -17,7 +17,7 @@ import {
   CodeSyntaxPlugin,
 } from '@udecode/plate-code-block/react';
 // import { CommentsPlugin } from '@udecode/plate-comments/react';
-import { EmojiInputPlugin } from '@udecode/plate-emoji/react';
+// import { EmojiInputPlugin } from '@udecode/plate-emoji/react';
 // import { ExcalidrawPlugin } from '@udecode/plate-excalidraw/react';
 import { HEADING_KEYS } from '@udecode/plate-heading';
 import { TocPlugin } from '@udecode/plate-heading/react';
@@ -56,7 +56,7 @@ import {
 } from '@udecode/plate/react';
 
 import { editorPlugins } from '../editor/plugins/editor-plugins';
-import { FixedToolbarPlugin } from '../editor/plugins/fixed-toolbar-plugin';
+// import { FixedToolbarPlugin } from '../editor/plugins/fixed-toolbar-plugin';
 import { FloatingToolbarPlugin } from '../editor/plugins/floating-toolbar-plugin';
 // import { AILeaf } from '../plate-ui/ai-leaf';
 import { BlockquoteElement } from '../plate-ui/blockquote-element';
@@ -66,7 +66,7 @@ import { CodeLineElement } from '../plate-ui/code-line-element';
 import { CodeSyntaxLeaf } from '../plate-ui/code-syntax-leaf';
 import { ColumnElement } from '../plate-ui/column-element';
 import { ColumnGroupElement } from '../plate-ui/column-group-element';
-import { CommentLeaf } from '../plate-ui/comment-leaf';
+// import { CommentLeaf } from '../plate-ui/comment-leaf';
 // import { EmojiInputElement } from '../plate-ui/emoji-input-element';
 // import { ExcalidrawElement } from '../plate-ui/excalidraw-element';
 import { HeadingElement } from '../plate-ui/heading-element';

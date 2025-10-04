@@ -4,7 +4,6 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
   useRouteLoaderData,
   type LinksFunction,
   type MetaFunction,
@@ -70,7 +69,6 @@ export async function loader() {
 }
 
 export default function Index() {
-  const { cssLayers } = useLoaderData<typeof loader>();
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
   const [collapsed] = useAtom(sidebarAtom);

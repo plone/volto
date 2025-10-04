@@ -1,7 +1,3 @@
-'use client';
-
-import React from 'react';
-
 import type { TColumnElement } from '@udecode/plate-layout';
 
 import { cn, useComposedRef, withRef } from '@udecode/cn';

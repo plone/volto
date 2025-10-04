@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { PlateContentProps } from '@udecode/plate/react';
 import type { VariantProps } from 'class-variance-authority';
 
