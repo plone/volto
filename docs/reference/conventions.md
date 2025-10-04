@@ -45,6 +45,8 @@ When defining routes in React Router, follow these rules:
 - Start routes with `@@`, for example, `/@@edit`.
 - Use kebab-case for route names, for example, `/@@user-profile`.
 
+(add-on-packages-do-not-use-src-folder)=
+
 ## Add-on packages do not use a `src` folder
 
 In the past, Volto add-ons had a `src` folder with all the code.
