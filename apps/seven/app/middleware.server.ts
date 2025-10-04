@@ -24,7 +24,8 @@ export const otherResources: Route.MiddlewareFunction = async (
     throw Response.json({});
   }
 
-  console.log(path);
+  // eslint-disable-next-line no-console
+  // console.log(path);
 
   if (
     /^https?:\/\//.test(path) ||
