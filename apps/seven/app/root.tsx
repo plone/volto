@@ -41,14 +41,15 @@ export async function loader({ params, request }: Route.LoaderArgs) {
       cli.getContent({ path, expand }),
       cli.getSite(),
       ...rootDataUtilities.map((utility) =>
-        utility.method()({ cli, request, path, params, locale }),
+        utility.method({ cli, request, path, params, locale }),
       ),
     ]);
+
     return {
       content: flattenToAppURL(content.data),
       site: flattenToAppURL(site.data),
       locale,
-      ...rest,
+      ...rest.reduce((acc, item) => ({ ...acc, ...item }), {}),
     };
   } catch (error: any) {
     throw data('Content Not Found', {
