@@ -66,7 +66,7 @@ By default, it's called {file}`registry.loader.server.js`.
 
 ```{important}
 The file {file}`registry.loader.server.js` is generated and maintained by `@plone/registry`.
-Don't modify it or add your own styles in it.
+Don't modify it or add your own code in it.
 It will be overwritten in the next bundler run.
 ```
 
