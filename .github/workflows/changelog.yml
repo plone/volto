@@ -46,8 +46,6 @@ jobs:
               - 'packages/plate/**'
             reactrouter:
               - 'packages/react-router/**'
-            scripts:
-              - 'packages/scripts/**'
             blocks:
               - 'packages/blocks/**'
             layout:
@@ -142,14 +140,6 @@ jobs:
         run: |
           git fetch --no-tags origin seven
           towncrier check --compare-with origin/seven --dir packages/react-router
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: scripts changelog check
-        if: steps.filter.outputs.scripts == 'true'
-        run: |
-          git fetch --no-tags origin seven
-          towncrier check --compare-with origin/seven --dir packages/scripts
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 

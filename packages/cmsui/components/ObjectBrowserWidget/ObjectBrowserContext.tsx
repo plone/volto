@@ -1,6 +1,5 @@
 // Hook estratto dal codice originale di ObjectBrowserWidget.tsx
 import { useFetcher } from 'react-router';
-import { useAtomValue } from 'jotai';
 import {
   useCallback,
   useMemo,
@@ -18,7 +17,6 @@ import {
   processSelection,
   initializeSelectedKeys,
   type ObjectBrowserWidgetMode,
-  type WidgetPatternOptions,
   useAccumulatedItems,
 } from './utils';
 import type { loader } from '../../routes/objectBrowserWidget';

@@ -1,5 +1,3 @@
-'use client';
-
 import { useCallback, useState } from 'react';
 
 import { AIChatPlugin } from '@udecode/plate-ai/react';

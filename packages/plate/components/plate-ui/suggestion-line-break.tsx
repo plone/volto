@@ -1,4 +1,3 @@
-'use client';
 import React, { useRef } from 'react';
 
 import type { TSuggestionData } from '@udecode/plate-suggestion';

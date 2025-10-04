@@ -26,7 +26,7 @@ describe('Update Controlpanel', () => {
       ext_editor: true,
     };
 
-    const result = await cli.updateControlpanel({
+    await cli.updateControlpanel({
       path,
       data: updateControlpanelData,
     });
@@ -94,7 +94,7 @@ describe('Update Controlpanel', () => {
       stop: true,
     };
 
-    const result = await cli.updateControlpanel({
+    await cli.updateControlpanel({
       path: updateControlpanelPath,
       data: updateControlpanelData,
     });
