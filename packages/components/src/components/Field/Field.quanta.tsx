@@ -134,12 +134,11 @@ export const Field = React.forwardRef<HTMLDivElement, FieldWrapperProps>(
 
     // TODO: FieldProps is not used in the current implementation, but it can be
     // useful in the future to pass down additional props to the wrapped field.
-    const { labelProps, fieldProps, descriptionProps, errorMessageProps } =
-      useField({
-        ...props,
-        isInvalid: props.isInvalid || false,
-        errorMessage: props.errorMessage,
-      });
+    const { labelProps, descriptionProps, errorMessageProps } = useField({
+      ...props,
+      isInvalid: props.isInvalid || false,
+      errorMessage: props.errorMessage,
+    });
 
     const renderProps = useRenderProps({
       ...props,

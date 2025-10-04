@@ -1,5 +1,3 @@
-'use client';
-
 import type React from 'react';
 
 import type { TElement, TText } from '@udecode/plate';

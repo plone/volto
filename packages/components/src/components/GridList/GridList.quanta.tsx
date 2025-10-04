@@ -7,11 +7,10 @@ import {
   type GridListItemProps,
   type GridListProps,
 } from 'react-aria-components';
-import { tv, type ClassProp } from 'tailwind-variants';
+import { tv } from 'tailwind-variants';
 import { Checkbox } from '../Checkbox/Checkbox.quanta';
 import { composeTailwindRenderProps, focusRing } from '../utils';
-import { twMerge, type ClassNameValue } from 'tailwind-merge';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function GridList<T extends object>({
   children,

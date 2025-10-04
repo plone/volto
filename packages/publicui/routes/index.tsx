@@ -9,7 +9,6 @@ import {
   ScrollRestoration,
   useLocation,
   useMatches,
-  useLoaderData,
   useNavigate,
   useRouteLoaderData,
   type UIMatch,
@@ -74,7 +73,6 @@ export async function loader() {
 
 export default function Index() {
   const location = useLocation();
-  const { cssLayers } = useLoaderData<typeof loader>();
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
   const navigate = useNavigate();

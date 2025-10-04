@@ -1,7 +1,3 @@
-'use client';
-
-import React from 'react';
-
 import { cn, withRef } from '@udecode/cn';
 import { useDraggable } from '@udecode/plate-dnd';
 import { Image, ImagePlugin, useMediaState } from '@udecode/plate-media/react';

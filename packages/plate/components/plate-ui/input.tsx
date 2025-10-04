@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { withVariants } from '@udecode/cn';
 import { type VariantProps, cva } from 'class-variance-authority';
 

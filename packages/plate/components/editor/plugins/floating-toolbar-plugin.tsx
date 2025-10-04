@@ -1,5 +1,3 @@
-'use client';
-
 import { createPlatePlugin } from '@udecode/plate/react';
 
 import { FloatingToolbar } from '../../plate-ui/floating-toolbar';

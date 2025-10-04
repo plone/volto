@@ -43,7 +43,12 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooksPlugin.configs.recommended.rules,
-      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          args: 'none',
+        },
+      ],
       '@typescript-eslint/no-empty-object-type': 'off',
       'jsx-a11y/no-autofocus': 'off',
       'react/jsx-key': [2, { checkFragmentShorthand: true }],

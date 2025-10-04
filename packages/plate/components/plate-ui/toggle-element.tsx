@@ -1,5 +1,3 @@
-'use client';
-
 import { cn, withRef } from '@udecode/cn';
 import {
   useToggleButton,

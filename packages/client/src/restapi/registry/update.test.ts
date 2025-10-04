@@ -23,7 +23,7 @@ describe('Update Registry', () => {
       'plone.app.querystring.field.path.title': 'Value',
     };
 
-    const result = await cli.updateRegistry({
+    await cli.updateRegistry({
       data: updateRegistryData,
     });
 

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { cn } from '@udecode/cn';
 import { type SlateLeafProps, SlateLeaf } from '@udecode/plate';
 import {

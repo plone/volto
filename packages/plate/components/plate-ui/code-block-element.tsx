@@ -1,7 +1,3 @@
-'use client';
-
-import React from 'react';
-
 import { cn, withRef } from '@udecode/cn';
 import { NodeApi } from '@udecode/plate';
 import { formatCodeBlock, isLangSupported } from '@udecode/plate-code-block';

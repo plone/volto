@@ -29,6 +29,6 @@
 - Rename `@plone/slots` to `@plone/layout`. @sneridagh [#7119](https://github.com/plone/volto/issues/7119)
 - Update to latest versions. @sneridagh [#7298](https://github.com/plone/volto/issues/7298)
 - Add `@testing-library/react` to the catalog. @sneridagh [#7372](https://github.com/plone/volto/issues/7372)
-- Adjust peer dependencies and engine. @sneridagh 
+- Adjust peer dependencies and engine. @sneridagh
 
 ## 1.0.0 (unreleased)
