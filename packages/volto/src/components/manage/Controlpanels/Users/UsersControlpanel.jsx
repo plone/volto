@@ -34,10 +34,10 @@ import map from 'lodash/map';
 import pull from 'lodash/pull';
 import difference from 'lodash/difference';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { createPortal } from 'react-dom';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { bindActionCreators, compose } from 'redux';
 import {
@@ -53,151 +53,61 @@ import {
 } from 'semantic-ui-react';
 
 /**
- * UsersControlpanel class.
- * @class UsersControlpanel
- * @extends Component
+ * UsersControlpanel functional component.
+ * @function UsersControlpanel
  */
-class UsersControlpanel extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    listRoles: PropTypes.func.isRequired,
-    listUsers: PropTypes.func.isRequired,
-    updateUser: PropTypes.func,
-    listGroups: PropTypes.func.isRequired,
-    pathname: PropTypes.string.isRequired,
-    roles: PropTypes.arrayOf(
-      PropTypes.shape({
-        '@id': PropTypes.string,
-        '@type': PropTypes.string,
-        id: PropTypes.string,
-      }),
-    ).isRequired,
-    users: PropTypes.arrayOf(
-      PropTypes.shape({
-        username: PropTypes.string,
-        fullname: PropTypes.string,
-        roles: PropTypes.arrayOf(PropTypes.string),
-      }),
-    ).isRequired,
-    user: PropTypes.shape({
-      '@id': PropTypes.string,
-      id: PropTypes.string,
-      description: PropTypes.string,
-      email: PropTypes.string,
-      fullname: PropTypes.string,
-      groups: PropTypes.object,
-      location: PropTypes.string,
-      portrait: PropTypes.string,
-      home_page: PropTypes.string,
-      roles: PropTypes.arrayOf(PropTypes.string),
-      username: PropTypes.string,
-    }).isRequired,
-  };
+const UsersControlpanel = (props) => {
+  const [search, setSearch] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [showAddUser, setShowAddUser] = useState(false);
+  const [addUserError, setAddUserError] = useState('');
+  const [showDelete, setShowDelete] = useState(false);
+  const [userToDelete, setUserToDelete] = useState(undefined);
+  const [entries, setEntries] = useState([]);
+  const [isClient, setIsClient] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [pageSize] = useState(10);
+  // eslint-disable-next-line no-unused-vars
+  const [loginUsingEmail, setLoginUsingEmail] = useState(false); // Reserved for future use to disable username field when email login is enabled
+  const [error, setError] = useState(null);
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs Sharing
-   */
-  constructor(props) {
-    super(props);
-    this.onChangeSearch = this.onChangeSearch.bind(this);
-    this.onSearch = this.onSearch.bind(this);
-    this.delete = this.delete.bind(this);
+  const dispatch = useDispatch();
 
-    this.onDeleteOk = this.onDeleteOk.bind(this);
-    this.onDeleteCancel = this.onDeleteCancel.bind(this);
-    this.onAddUserSubmit = this.onAddUserSubmit.bind(this);
-    this.onAddUserError = this.onAddUserError.bind(this);
-    this.onAddUserSuccess = this.onAddUserSuccess.bind(this);
-    this.updateUserRole = this.updateUserRole.bind(this);
-    this.state = {
-      search: '',
-      isLoading: false,
-      showAddUser: false,
-      showAddUserErrorConfirm: false,
-      addUserError: '',
-      showDelete: false,
-      userToDelete: undefined,
-      entries: [],
-      isClient: false,
-      currentPage: 0,
-      pageSize: 10,
-      loginUsingEmail: false,
-    };
-  }
-
-  fetchData = async () => {
-    await this.props.getControlpanel('usergroup');
-    await this.props.listRoles();
-    if (!this.props.many_users) {
-      this.props.listGroups();
-      await this.props.listUsers();
-      this.setState({
-        entries: this.props.users,
-      });
+  const fetchData = useCallback(async () => {
+    await props.getControlpanel('usergroup');
+    await props.listRoles();
+    if (!props.many_users) {
+      props.listGroups();
+      await props.listUsers();
+      setEntries(props.users);
     }
-    await this.props.getUserSchema();
-    await this.props.getUser(this.props.userId);
-  };
-
-  // Because username field needs to be disabled if email login is enabled!
-  checkLoginUsingEmailStatus = async () => {
-    await this.props.getControlpanel('security');
-    this.setState({
-      loginUsingEmail: this.props.controlPanelData?.data.use_email_as_login,
-    });
-  };
+    await props.getUserSchema();
+    await props.getUser(props.userId);
+  }, [props]);
 
   /**
-   * Component did mount
-   * @method componentDidMount
+   * Check login using email status from security control panel
+   * @method checkLoginUsingEmailStatus
    * @returns {undefined}
    */
-  componentDidMount() {
-    this.setState({
-      isClient: true,
-    });
-    this.fetchData();
-    this.checkLoginUsingEmailStatus();
-  }
+  const checkLoginUsingEmailStatus = useCallback(async () => {
+    try {
+      await props.getControlpanel('security');
+      if (props.controlPanelData?.data?.use_email_as_login) {
+        setLoginUsingEmail(props.controlPanelData.data.use_email_as_login);
+      }
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('Error fetching security control panel', error);
+    }
+  }, [props]);
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (
-      (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
-      (this.props.createRequest.loading && nextProps.createRequest.loaded)
-    ) {
-      this.props.listUsers({
-        search: this.state.search,
-      });
-    }
-    if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
-      this.onDeleteUserSuccess();
-    }
-    if (this.props.createRequest.loading && nextProps.createRequest.loaded) {
-      this.onAddUserSuccess();
-    }
-    if (this.props.createRequest.loading && nextProps.createRequest.error) {
-      this.onAddUserError(nextProps.createRequest.error);
-    }
-    if (
-      this.props.loadRolesRequest.loading &&
-      nextProps.loadRolesRequest.error
-    ) {
-      this.setState({
-        error: nextProps.loadRolesRequest.error,
-      });
-    }
-  }
-
-  getUserFromProps(value) {
-    return find(this.props.users, ['@id', value]);
-  }
+  const getUserFromProps = useCallback(
+    (value) => {
+      return find(props.users, ['@id', value]);
+    },
+    [props.users],
+  );
 
   /**
    * Search handler
@@ -205,22 +115,25 @@ class UsersControlpanel extends Component {
    * @param {object} event Event object.
    * @returns {undefined}
    */
-  onSearch(event) {
-    event.preventDefault();
-    this.setState({ isLoading: true });
-    this.props
-      .listUsers({
-        search: this.state.search,
-      })
-      .then(() => {
-        this.setState({ isLoading: false });
-      })
-      .catch((error) => {
-        this.setState({ isLoading: false });
-        // eslint-disable-next-line no-console
-        console.error('Error searching users', error);
-      });
-  }
+  const onSearch = useCallback(
+    (event) => {
+      event.preventDefault();
+      setIsLoading(true);
+      props
+        .listUsers({
+          search: search,
+        })
+        .then(() => {
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          // eslint-disable-next-line no-console
+          console.error('Error searching users', error);
+        });
+    },
+    [props, search],
+  );
 
   /**
    * On change search handler
@@ -228,11 +141,9 @@ class UsersControlpanel extends Component {
    * @param {object} event Event object.
    * @returns {undefined}
    */
-  onChangeSearch(event) {
-    this.setState({
-      search: event.target.value,
-    });
-  }
+  const onChangeSearch = (event) => {
+    setSearch(event.target.value);
+  };
 
   /**
    * Delete a user
@@ -241,54 +152,80 @@ class UsersControlpanel extends Component {
    * @param {string} value username.
    * @returns {undefined}
    */
-  delete(event, { value }) {
-    if (value) {
-      this.setState({
-        showDelete: true,
-        userToDelete: this.getUserFromProps(value),
-      });
-    }
-  }
+  const deleteUser = useCallback(
+    (event, { value }) => {
+      if (value) {
+        setShowDelete(true);
+        setUserToDelete(getUserFromProps(value));
+      }
+    },
+    [getUserFromProps],
+  );
 
   /**
    * On delete ok
    * @method onDeleteOk
    * @returns {undefined}
    */
-  onDeleteOk() {
-    if (this.state.userToDelete) {
-      this.props.deleteUser(this.state.userToDelete.id);
+  const onDeleteOk = useCallback(() => {
+    if (userToDelete) {
+      const deleteUserAction = props.deleteUser(userToDelete.id);
+      if (deleteUserAction && typeof deleteUserAction.then === 'function') {
+        deleteUserAction
+          .then(() => {
+            // Handle success
+            setUserToDelete(undefined);
+            setShowDelete(false);
+
+            // Refresh users list
+            props.listUsers({ search: search });
+
+            // Show success message
+            toast.success(
+              <Toast
+                success
+                title={props.intl.formatMessage(messages.success)}
+                content={props.intl.formatMessage(messages.userDeleted)}
+              />,
+            );
+          })
+          .catch((error) => {
+            // Handle error
+            // eslint-disable-next-line no-console
+            console.error('Error deleting user', error);
+          });
+      }
     }
-  }
+  }, [userToDelete, props, search]);
 
   /**
    * On delete cancel
    * @method onDeleteCancel
    * @returns {undefined}
    */
-  onDeleteCancel() {
-    this.setState({
-      showDelete: false,
-      itemsToDelete: [],
-      userToDelete: undefined,
-    });
-  }
+  const onDeleteCancel = () => {
+    setShowDelete(false);
+    setUserToDelete(undefined);
+  };
 
   /**
    *@param {object} user
    *@returns {undefined}
    *@memberof UsersControlpanel
    */
-  addUserToGroup = (user) => {
-    const { groups, username } = user;
-    groups.forEach((group) => {
-      this.props.updateGroup(group, {
-        users: {
-          [username]: true,
-        },
+  const addUserToGroup = useCallback(
+    (user) => {
+      const { groups, username } = user;
+      groups.forEach((group) => {
+        props.updateGroup(group, {
+          users: {
+            [username]: true,
+          },
+        });
       });
-    });
-  };
+    },
+    [props],
+  );
 
   /**
    * Callback to be called by the ModalForm when the form is submitted.
@@ -297,119 +234,112 @@ class UsersControlpanel extends Component {
    * @param {func} callback to set new form data in the ModalForm
    * @returns {undefined}
    */
-  onAddUserSubmit(data, callback) {
-    const { groups, sendPasswordReset, password } = data;
-    if (
-      sendPasswordReset !== undefined &&
-      sendPasswordReset === true &&
-      password !== undefined
-    ) {
-      toast.error(
+  const onAddUserSubmit = useCallback(
+    (data, callback) => {
+      const { groups, sendPasswordReset, password } = data;
+      if (
+        sendPasswordReset !== undefined &&
+        sendPasswordReset === true &&
+        password !== undefined
+      ) {
+        toast.error(
+          <Toast
+            error
+            title={props.intl.formatMessage(messages.error)}
+            content={props.intl.formatMessage(
+              messages.addUserFormPasswordAndSendPasswordTogetherNotAllowed,
+            )}
+          />,
+        );
+      } else {
+        if (groups && groups.length > 0) addUserToGroup(data);
+
+        const createUserAction = createUser(data, sendPasswordReset);
+        dispatch(createUserAction)
+          .then(() => {
+            // Handle success
+            if (callback) {
+              callback({});
+            }
+            setShowAddUser(false);
+            setAddUserError(undefined);
+
+            // Refresh users list
+            props.listUsers({ search: search });
+
+            // Show success message
+            toast.success(
+              <Toast
+                success
+                title={props.intl.formatMessage(messages.success)}
+                content={props.intl.formatMessage(messages.userCreated)}
+              />,
+            );
+          })
+          .catch((error) => {
+            // Handle error
+            setAddUserError(
+              error.response?.body?.error?.message || 'Error creating user',
+            );
+          });
+      }
+    },
+    [props, addUserToGroup, dispatch, search],
+  );
+
+  /**
+   * Update user role
+   * @param {*} name
+   * @param {*} value
+   */
+  const updateUserRole = useCallback(
+    (name, value) => {
+      setEntries(
+        map(entries, (entry) => ({
+          ...entry,
+          roles:
+            entry.id === name && !entry.roles.includes(value)
+              ? [...entry.roles, value]
+              : entry.id !== name
+                ? entry.roles
+                : pull(entry.roles, value),
+        })),
+      );
+    },
+    [entries],
+  );
+
+  /**
+   * Update user role submit
+   * @param {*} event
+   */
+  const updateUserRoleSubmit = useCallback(
+    (e) => {
+      e.stopPropagation();
+
+      const roles = props.roles.map((item) => item.id);
+      entries.forEach((item) => {
+        const userData = { roles: {} };
+        const removedRoles = difference(roles, item.roles);
+
+        removedRoles.forEach((role) => {
+          userData.roles[role] = false;
+        });
+        item.roles.forEach((role) => {
+          userData.roles[role] = true;
+        });
+        props.updateUser(item.id, userData);
+      });
+      toast.success(
         <Toast
-          error
-          title={this.props.intl.formatMessage(messages.error)}
-          content={this.props.intl.formatMessage(
-            messages.addUserFormPasswordAndSendPasswordTogetherNotAllowed,
-          )}
+          success
+          title={props.intl.formatMessage(messages.success)}
+          content={props.intl.formatMessage(messages.updateRoles)}
         />,
       );
-    } else {
-      if (groups && groups.length > 0) this.addUserToGroup(data);
-      this.props.createUser(data, sendPasswordReset);
-      this.setState({
-        addUserSetFormDataCallback: callback,
-      });
-    }
-  }
-
-  /**
-   * Handle Success after createUser()
-   *
-   * @returns {undefined}
-   */
-  onAddUserSuccess() {
-    this.state.addUserSetFormDataCallback({});
-    this.setState({
-      showAddUser: false,
-      addUserError: undefined,
-      addUserSetFormDataCallback: undefined,
-    });
-    toast.success(
-      <Toast
-        success
-        title={this.props.intl.formatMessage(messages.success)}
-        content={this.props.intl.formatMessage(messages.userCreated)}
-      />,
-    );
-  }
-
-  /**
-   * Handle Success after deleteUser()
-   *
-   * @returns {undefined}
-   */
-  onDeleteUserSuccess() {
-    this.setState({
-      userToDelete: undefined,
-      showDelete: false,
-    });
-    toast.success(
-      <Toast
-        success
-        title={this.props.intl.formatMessage(messages.success)}
-        content={this.props.intl.formatMessage(messages.userDeleted)}
-      />,
-    );
-  }
-  /**
-   *
-   *
-   * @param {*} data
-   * @param {*} callback
-   * @memberof UsersControlpanel
-   */
-  updateUserRole(name, value) {
-    this.setState({
-      entries: map(this.state.entries, (entry) => ({
-        ...entry,
-        roles:
-          entry.id === name && !entry.roles.includes(value)
-            ? [...entry.roles, value]
-            : entry.id !== name
-              ? entry.roles
-              : pull(entry.roles, value),
-      })),
-    });
-  }
-  /**
-   *
-   * @param {*} event
-   * @memberof UsersControlpanel
-   */
-  updateUserRoleSubmit = (e) => {
-    e.stopPropagation();
-
-    const roles = this.props.roles.map((item) => item.id);
-    this.state.entries.forEach((item) => {
-      const userData = { roles: {} };
-      const removedRoles = difference(roles, item.roles);
-
-      removedRoles.forEach((role) => {
-        userData.roles[role] = false;
-      });
-      item.roles.forEach((role) => {
-        userData.roles[role] = true;
-      });
-      this.props.updateUser(item.id, userData);
-    });
-    toast.success(
-      <Toast
-        success
-        title={this.props.intl.formatMessage(messages.success)}
-        content={this.props.intl.formatMessage(messages.updateRoles)}
-      />,
-    );
-  };
+    },
+    [props, entries],
+  );
 
   /**
    * Handle Errors after createUser()
@@ -417,11 +347,9 @@ class UsersControlpanel extends Component {
    * @param {object} error object. Requires the property .message
    * @returns {undefined}
    */
-  onAddUserError(error) {
-    this.setState({
-      addUserError: error.response.body.error.message,
-    });
-  }
+  const onAddUserError = useCallback((error) => {
+    setAddUserError(error.response.body.error.message);
+  }, []);
 
   /**
    * On change page
@@ -430,321 +358,393 @@ class UsersControlpanel extends Component {
    * @param {string} value Page value.
    * @returns {undefined}
    */
-  onChangePage = (event, { value }) => {
-    this.setState({
-      currentPage: value,
-    });
+  const onChangePage = (event, { value }) => {
+    setCurrentPage(value);
   };
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.users !== prevProps.users) {
-      this.setState({
-        entries: this.props.users,
-      });
-    }
-  }
 
   /**
    * Filters the roles a user can assign when adding a user.
    * @method canAssignAdd
    * @returns {arry}
    */
-  canAssignAdd(isManager) {
-    if (isManager) return this.props.roles;
-    return this.props.user?.roles
-      ? this.props.roles.filter((role) =>
-          this.props.user.roles.includes(role.id),
-        )
-      : [];
+  const canAssignAdd = useCallback(
+    (isManager) => {
+      if (isManager) return props.roles;
+      return props.user?.roles
+        ? props.roles.filter((role) => props.user.roles.includes(role.id))
+        : [];
+    },
+    [props.roles, props.user],
+  );
+
+  useEffect(() => {
+    setIsClient(true);
+    fetchData();
+    checkLoginUsingEmailStatus();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    setEntries(props.users);
+  }, [props.users]);
+
+  useEffect(() => {
+    if (props.createRequest?.error && !props.createRequest?.loading) {
+      onAddUserError(props.createRequest.error);
+    }
+  }, [
+    props.createRequest?.error,
+    props.createRequest?.loading,
+    onAddUserError,
+  ]);
+
+  useEffect(() => {
+    if (props.loadRolesRequest?.error && !props.loadRolesRequest?.loading) {
+      setError(props.loadRolesRequest.error);
+    }
+  }, [props.loadRolesRequest?.error, props.loadRolesRequest?.loading]);
+
+  if (error) {
+    return <Error error={error} />;
   }
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    if (this.state.error) {
-      return <Error error={this.state.error} />;
-    }
-    /*let fullnameToDelete = this.state.userToDelete
-        ? this.state.userToDelete.fullname
-        : '';*/
-    let usernameToDelete = this.state.userToDelete
-      ? this.state.userToDelete.username
-      : '';
-    // Copy the userschema using JSON serialization/deserialization
-    // this is really ugly, but if we don't do this the original value
-    // of the userschema is changed and it is used like that through
-    // the lifecycle of the application
-    let adduserschema = {};
-    let isUserManager = false;
-    if (this.props?.userschema?.loaded) {
-      isUserManager = isManager(this.props.user);
-      adduserschema = JSON.parse(
-        JSON.stringify(this.props?.userschema?.userschema),
-      );
-      adduserschema.properties['username'] = {
-        title: this.props.intl.formatMessage(messages.addUserFormUsernameTitle),
-        type: 'string',
-        description: this.props.intl.formatMessage(
-          messages.addUserFormUsernameDescription,
-        ),
-      };
-      adduserschema.properties['password'] = {
-        title: this.props.intl.formatMessage(messages.addUserFormPasswordTitle),
-        type: 'password',
-        description: this.props.intl.formatMessage(
-          messages.addUserFormPasswordDescription,
-        ),
-        widget: 'password',
-      };
-      adduserschema.properties['sendPasswordReset'] = {
-        title: this.props.intl.formatMessage(
-          messages.addUserFormSendPasswordResetTitle,
-        ),
-        type: 'boolean',
-      };
-      adduserschema.properties['roles'] = {
-        title: this.props.intl.formatMessage(messages.addUserFormRolesTitle),
-        type: 'array',
-        choices: this.canAssignAdd(isUserManager).map((role) => [
-          role.id,
-          role.title,
-        ]),
-        noValueOption: false,
-      };
-      adduserschema.properties['groups'] = {
-        title: this.props.intl.formatMessage(messages.addUserGroupNameTitle),
-        type: 'array',
-        choices: this.props.groups
-          .filter((group) => canAssignGroup(isUserManager, group))
-          .map((group) => [group.id, group.id]),
-        noValueOption: false,
-      };
-      if (
-        adduserschema.fieldsets &&
-        adduserschema.fieldsets.length > 0 &&
-        !adduserschema.fieldsets[0]['fields'].includes('username')
-      ) {
-        adduserschema.fieldsets[0]['fields'] = adduserschema.fieldsets[0][
-          'fields'
-        ].concat([
+  const usernameToDelete = userToDelete ? userToDelete.username : '';
+
+  // Copy the userschema using JSON serialization/deserialization
+  // this is really ugly, but if we don't do this the original value
+  // of the userschema is changed and it is used like that through
+  // the lifecycle of the application
+  let adduserschema = {};
+  let isUserManager = false;
+  if (props?.userschema?.loaded) {
+    isUserManager = isManager(props.user);
+    adduserschema = JSON.parse(JSON.stringify(props?.userschema?.userschema));
+
+    // Add custom form fields to the schema
+    adduserschema.properties.username = {
+      title: props.intl.formatMessage(messages.addUserFormUsernameTitle),
+      type: 'string',
+      description: props.intl.formatMessage(
+        messages.addUserFormUsernameDescription,
+      ),
+    };
+
+    adduserschema.properties.password = {
+      title: props.intl.formatMessage(messages.addUserFormPasswordTitle),
+      type: 'password',
+      description: props.intl.formatMessage(
+        messages.addUserFormPasswordDescription,
+      ),
+      widget: 'password',
+    };
+
+    adduserschema.properties.sendPasswordReset = {
+      title: props.intl.formatMessage(
+        messages.addUserFormSendPasswordResetTitle,
+      ),
+      type: 'boolean',
+    };
+
+    adduserschema.properties.roles = {
+      title: props.intl.formatMessage(messages.addUserFormRolesTitle),
+      type: 'array',
+      choices: canAssignAdd(isUserManager).map((role) => [role.id, role.title]),
+      noValueOption: false,
+    };
+
+    adduserschema.properties.groups = {
+      title: props.intl.formatMessage(messages.addUserGroupNameTitle),
+      type: 'array',
+      choices: props.groups
+        .filter((group) => canAssignGroup(isUserManager, group))
+        .map((group) => [group.id, group.id]),
+      noValueOption: false,
+    };
+    // Add custom fields to the first fieldset if they don't already exist
+    if (
+      adduserschema.fieldsets &&
+      adduserschema.fieldsets.length > 0 &&
+      !adduserschema.fieldsets[0].fields.includes('username')
+    ) {
+      adduserschema.fieldsets[0].fields =
+        adduserschema.fieldsets[0].fields.concat([
           'username',
           'password',
           'sendPasswordReset',
           'roles',
           'groups',
         ]);
-      }
     }
+  }
 
-    return (
-      <Container className="users-control-panel">
-        <Helmet title={this.props.intl.formatMessage(messages.users)} />
-        <div className="container">
-          <Confirm
-            open={this.state.showDelete}
-            header={this.props.intl.formatMessage(
-              messages.deleteUserConfirmTitle,
-            )}
-            content={
-              <div className="content">
-                <Dimmer active={this.props?.deleteRequest?.loading}>
-                  <Loader>
-                    <FormattedMessage id="Loading" defaultMessage="Loading." />
-                  </Loader>
-                </Dimmer>
+  return (
+    <Container className="users-control-panel">
+      <Helmet title={props.intl.formatMessage(messages.users)} />
+      <div className="container">
+        <Confirm
+          open={showDelete}
+          header={props.intl.formatMessage(messages.deleteUserConfirmTitle)}
+          content={
+            <div className="content">
+              <Dimmer active={props?.deleteRequest?.loading}>
+                <Loader>
+                  <FormattedMessage id="Loading" defaultMessage="Loading." />
+                </Loader>
+              </Dimmer>
 
-                <ul className="content">
-                  <FormattedMessage
-                    id="Do you really want to delete the user {username}?"
-                    defaultMessage="Do you really want to delete the user {username}?"
-                    values={{
-                      username: <b>{usernameToDelete}</b>,
-                    }}
-                  />
-                </ul>
-              </div>
-            }
-            onCancel={this.onDeleteCancel}
-            onConfirm={this.onDeleteOk}
-            size={null}
-          />
-          {this.props?.userschema?.loaded && this.state.showAddUser ? (
-            <ModalForm
-              open={this.state.showAddUser}
-              className="modal"
-              onSubmit={this.onAddUserSubmit}
-              submitError={this.state.addUserError}
-              onCancel={() =>
-                this.setState({ showAddUser: false, addUserError: undefined })
-              }
-              title={this.props.intl.formatMessage(messages.addUserFormTitle)}
-              loading={this.props.createRequest.loading}
-              schema={adduserschema}
-            />
-          ) : null}
-        </div>
-        <Segment.Group raised>
-          <Segment className="primary">
-            <FormattedMessage id="Users" defaultMessage="Users" />
-          </Segment>
-          <Segment secondary>
-            <FormattedMessage
-              id="Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
-              defaultMessage="Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
-              values={{
-                plone_svg: (
-                  <Icon
-                    name={ploneSVG}
-                    size="20px"
-                    color="#007EB1"
-                    title={'plone-svg'}
-                  />
-                ),
-              }}
-            />
-          </Segment>
-          <Segment>
-            <Form onSubmit={this.onSearch}>
-              <Form.Field>
-                <Input
-                  name="SearchableText"
-                  action={{
-                    icon: 'search',
-                    loading: this.state.isLoading,
-                    disabled: this.state.isLoading,
+              <ul className="content">
+                <FormattedMessage
+                  id="Do you really want to delete the user {username}?"
+                  defaultMessage="Do you really want to delete the user {username}?"
+                  values={{
+                    username: <b>{usernameToDelete}</b>,
                   }}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.searchUsers,
-                  )}
-                  onChange={this.onChangeSearch}
-                  id="user-search-input"
                 />
-              </Form.Field>
-            </Form>
-          </Segment>
-          <Form>
-            {((this.props.many_users && this.state.entries.length > 0) ||
-              !this.props.many_users) && (
-              <Table padded striped attached unstackable>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>
-                      <FormattedMessage
-                        id="User name"
-                        defaultMessage="User name"
-                      />
-                    </Table.HeaderCell>
-                    {this.props.roles.map((role) => (
-                      <Table.HeaderCell key={role.id}>
-                        {role.title}
-                      </Table.HeaderCell>
-                    ))}
-                    <Table.HeaderCell>
-                      <FormattedMessage id="Actions" defaultMessage="Actions" />
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body data-user="users">
-                  {this.state.entries
-                    .slice(
-                      this.state.currentPage * 10,
-                      this.state.pageSize * (this.state.currentPage + 1),
-                    )
-                    .map((user) => (
-                      <RenderUsers
-                        key={user.id}
-                        onDelete={this.delete}
-                        roles={this.props.roles}
-                        user={user}
-                        updateUser={this.updateUserRole}
-                        inheritedRole={this.props.inheritedRole}
-                        userschema={this.props.userschema}
-                        listUsers={this.props.listUsers}
-                        isUserManager={isUserManager}
-                      />
-                    ))}
-                </Table.Body>
-              </Table>
-            )}
-            {this.state.entries.length === 0 && this.state.search && (
-              <Segment>
-                {this.props.intl.formatMessage(messages.userSearchNoResults)}
-              </Segment>
-            )}
-            <div className="contents-pagination">
-              <Pagination
-                current={this.state.currentPage}
-                total={Math.ceil(
-                  this.state.entries?.length / this.state.pageSize,
-                )}
-                onChangePage={this.onChangePage}
-              />
+              </ul>
             </div>
+          }
+          onCancel={onDeleteCancel}
+          onConfirm={onDeleteOk}
+          size={null}
+        />
+        {props?.userschema?.loaded && showAddUser ? (
+          <ModalForm
+            open={showAddUser}
+            className="modal"
+            onSubmit={onAddUserSubmit}
+            submitError={addUserError}
+            onCancel={() => {
+              setShowAddUser(false);
+              setAddUserError(undefined);
+            }}
+            title={props.intl.formatMessage(messages.addUserFormTitle)}
+            loading={props.createRequest?.loading}
+            schema={adduserschema}
+          />
+        ) : null}
+      </div>
+      <Segment.Group raised>
+        <Segment className="primary">
+          <FormattedMessage id="Users" defaultMessage="Users" />
+        </Segment>
+        <Segment secondary>
+          <FormattedMessage
+            id="Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
+            defaultMessage="Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
+            values={{
+              plone_svg: (
+                <Icon
+                  name={ploneSVG}
+                  size="20px"
+                  color="#007EB1"
+                  title={'plone-svg'}
+                />
+              ),
+            }}
+          />
+        </Segment>
+        <Segment>
+          <Form onSubmit={onSearch}>
+            <Form.Field>
+              <Input
+                name="SearchableText"
+                action={{
+                  icon: 'search',
+                  loading: isLoading,
+                  disabled: isLoading,
+                }}
+                placeholder={props.intl.formatMessage(messages.searchUsers)}
+                onChange={onChangeSearch}
+                id="user-search-input"
+              />
+            </Form.Field>
           </Form>
-        </Segment.Group>
-        {this.state.isClient &&
-          createPortal(
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <>
-                  <Button
-                    id="toolbar-save"
-                    className="save"
-                    aria-label={this.props.intl.formatMessage(messages.save)}
-                    onClick={this.updateUserRoleSubmit}
-                    loading={this.props.createRequest.loading}
-                  >
-                    <Icon
-                      name={saveSVG}
-                      className="circled"
-                      size="30px"
-                      title={this.props.intl.formatMessage(messages.save)}
+        </Segment>
+        <Form>
+          {((props.many_users && entries.length > 0) || !props.many_users) && (
+            <Table padded striped attached unstackable>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>
+                    <FormattedMessage
+                      id="User name"
+                      defaultMessage="User name"
                     />
-                  </Button>
-                  <Link to="/controlpanel" className="cancel">
-                    <Icon
-                      name={clearSVG}
-                      className="circled"
-                      aria-label={this.props.intl.formatMessage(
-                        messages.cancel,
-                      )}
-                      size="30px"
-                      title={this.props.intl.formatMessage(messages.cancel)}
+                  </Table.HeaderCell>
+                  {props.roles.map((role) => (
+                    <Table.HeaderCell key={role.id}>
+                      {role.title}
+                    </Table.HeaderCell>
+                  ))}
+                  <Table.HeaderCell>
+                    <FormattedMessage id="Actions" defaultMessage="Actions" />
+                  </Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body data-user="users">
+                {entries
+                  .slice(currentPage * 10, pageSize * (currentPage + 1))
+                  .map((user) => (
+                    <RenderUsers
+                      key={user.id}
+                      onDelete={deleteUser}
+                      roles={props.roles}
+                      user={user}
+                      updateUser={updateUserRole}
+                      inheritedRole={props.inheritedRole}
+                      userschema={props.userschema}
+                      listUsers={props.listUsers}
+                      isUserManager={isUserManager}
                     />
-                  </Link>
-                  <Button
-                    id="toolbar-add"
-                    aria-label={this.props.intl.formatMessage(
+                  ))}
+              </Table.Body>
+            </Table>
+          )}
+          {entries.length === 0 && search && (
+            <Segment>
+              {props.intl.formatMessage(messages.userSearchNoResults)}
+            </Segment>
+          )}
+          <div className="contents-pagination">
+            <Pagination
+              current={currentPage}
+              total={Math.ceil(entries?.length / pageSize)}
+              onChangePage={onChangePage}
+            />
+          </div>
+        </Form>
+      </Segment.Group>
+      {isClient &&
+        createPortal(
+          <Toolbar
+            pathname={props.pathname}
+            hideDefaultViewButtons
+            inner={
+              <>
+                <Button
+                  id="toolbar-save"
+                  className="save"
+                  aria-label={props.intl.formatMessage(messages.save)}
+                  onClick={updateUserRoleSubmit}
+                  loading={props.createRequest?.loading}
+                >
+                  <Icon
+                    name={saveSVG}
+                    className="circled"
+                    size="30px"
+                    title={props.intl.formatMessage(messages.save)}
+                  />
+                </Button>
+                <Link to="/controlpanel" className="cancel">
+                  <Icon
+                    name={clearSVG}
+                    className="circled"
+                    aria-label={props.intl.formatMessage(messages.cancel)}
+                    size="30px"
+                    title={props.intl.formatMessage(messages.cancel)}
+                  />
+                </Link>
+                <Button
+                  id="toolbar-add"
+                  aria-label={props.intl.formatMessage(
+                    messages.addUserButtonTitle,
+                  )}
+                  onClick={() => {
+                    setShowAddUser(true);
+                  }}
+                  loading={props.createRequest?.loading}
+                >
+                  <Icon
+                    name={addUserSvg}
+                    size="45px"
+                    color="#826A6A"
+                    title={props.intl.formatMessage(
                       messages.addUserButtonTitle,
                     )}
-                    onClick={() => {
-                      this.setState({ showAddUser: true });
-                    }}
-                    loading={this.props.createRequest.loading}
-                  >
-                    <Icon
-                      name={addUserSvg}
-                      size="45px"
-                      color="#826A6A"
-                      title={this.props.intl.formatMessage(
-                        messages.addUserButtonTitle,
-                      )}
-                    />
-                  </Button>
-                </>
-              }
-            />,
-            document.getElementById('toolbar'),
-          )}
-      </Container>
-    );
-  }
-}
+                  />
+                </Button>
+              </>
+            }
+          />,
+          document.getElementById('toolbar'),
+        )}
+    </Container>
+  );
+};
+
+UsersControlpanel.propTypes = {
+  listRoles: PropTypes.func.isRequired,
+  listUsers: PropTypes.func.isRequired,
+  listGroups: PropTypes.func.isRequired,
+  getControlpanel: PropTypes.func.isRequired,
+  deleteUser: PropTypes.func.isRequired,
+  createUser: PropTypes.func.isRequired,
+  updateUser: PropTypes.func.isRequired,
+  updateGroup: PropTypes.func.isRequired,
+  getUserSchema: PropTypes.func.isRequired,
+  getUser: PropTypes.func.isRequired,
+  pathname: PropTypes.string.isRequired,
+  userId: PropTypes.string.isRequired,
+  intl: PropTypes.object.isRequired,
+  roles: PropTypes.arrayOf(
+    PropTypes.shape({
+      '@id': PropTypes.string,
+      '@type': PropTypes.string,
+      id: PropTypes.string,
+      title: PropTypes.string,
+    }),
+  ).isRequired,
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      '@id': PropTypes.string,
+      id: PropTypes.string,
+      username: PropTypes.string,
+      fullname: PropTypes.string,
+      roles: PropTypes.arrayOf(PropTypes.string),
+    }),
+  ).isRequired,
+  groups: PropTypes.arrayOf(
+    PropTypes.shape({
+      '@id': PropTypes.string,
+      id: PropTypes.string,
+      title: PropTypes.string,
+    }),
+  ),
+  user: PropTypes.shape({
+    '@id': PropTypes.string,
+    id: PropTypes.string,
+    description: PropTypes.string,
+    email: PropTypes.string,
+    fullname: PropTypes.string,
+    groups: PropTypes.object,
+    location: PropTypes.string,
+    portrait: PropTypes.string,
+    home_page: PropTypes.string,
+    roles: PropTypes.arrayOf(PropTypes.string),
+    username: PropTypes.string,
+  }),
+  userschema: PropTypes.shape({
+    properties: PropTypes.object,
+    fieldsets: PropTypes.array,
+    loaded: PropTypes.bool,
+  }),
+  deleteRequest: PropTypes.shape({
+    loading: PropTypes.bool,
+    loaded: PropTypes.bool,
+    error: PropTypes.object,
+  }),
+  createRequest: PropTypes.shape({
+    loading: PropTypes.bool,
+    loaded: PropTypes.bool,
+    error: PropTypes.object,
+  }),
+  loadRolesRequest: PropTypes.shape({
+    loading: PropTypes.bool,
+    loaded: PropTypes.bool,
+    error: PropTypes.object,
+  }),
+  many_users: PropTypes.bool,
+  inheritedRole: PropTypes.arrayOf(PropTypes.string),
+};
 
 export default compose(
   injectIntl,
