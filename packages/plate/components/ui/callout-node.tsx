@@ -12,10 +12,12 @@ export function CalloutElement({
   className,
   ...props
 }: React.ComponentProps<typeof PlateElement>) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { emojiPickerState, isOpen, setIsOpen } = useEmojiDropdownMenuState({
     closeOnSelect: true,
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { emojiToolbarDropdownProps, props: calloutProps } =
     useCalloutEmojiPicker({
       isOpen,

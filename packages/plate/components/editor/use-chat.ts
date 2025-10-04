@@ -103,6 +103,7 @@ export const useChat = () => {
         const aiComment = data.data;
         const range = aiCommentToRange(editor, aiComment);
 
+        // eslint-disable-next-line no-console
         if (!range) return console.warn('No range found for AI comment');
 
         const discussions =
