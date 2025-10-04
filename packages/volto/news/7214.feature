@@ -1,0 +1,1 @@
+Show the "not found" screen when a visitor requests a non-existent control panel path. @shashank0470
