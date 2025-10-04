@@ -34,7 +34,7 @@ import map from 'lodash/map';
 import pull from 'lodash/pull';
 import difference from 'lodash/difference';
 import PropTypes from 'prop-types';
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { createPortal } from 'react-dom';
 import { connect, useDispatch } from 'react-redux';
@@ -57,6 +57,32 @@ import {
  * @function UsersControlpanel
  */
 const UsersControlpanel = (props) => {
+  const {
+    listRoles,
+    listUsers,
+    listGroups,
+    getControlpanel,
+    deleteUser: deleteUserAction,
+    updateUser,
+    updateGroup,
+    getUserSchema,
+    getUser,
+    intl,
+    roles,
+    users,
+    user,
+    userId,
+    groups,
+    pathname,
+    many_users,
+    deleteRequest,
+    createRequest,
+    loadRolesRequest,
+    inheritedRole,
+    userschema,
+    controlPanelData,
+  } = props;
+
   const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showAddUser, setShowAddUser] = useState(false);
@@ -74,16 +100,26 @@ const UsersControlpanel = (props) => {
   const dispatch = useDispatch();
 
   const fetchData = useCallback(async () => {
-    await props.getControlpanel('usergroup');
-    await props.listRoles();
-    if (!props.many_users) {
-      props.listGroups();
-      await props.listUsers();
-      setEntries(props.users);
+    await getControlpanel('usergroup');
+    await listRoles();
+    if (!many_users) {
+      listGroups();
+      await listUsers();
+      setEntries(users);
     }
-    await props.getUserSchema();
-    await props.getUser(props.userId);
-  }, [props]);
+    await getUserSchema();
+    await getUser(userId);
+  }, [
+    getControlpanel,
+    listRoles,
+    many_users,
+    listGroups,
+    listUsers,
+    users,
+    getUserSchema,
+    getUser,
+    userId,
+  ]);
 
   /**
    * Check login using email status from security control panel
@@ -92,21 +128,21 @@ const UsersControlpanel = (props) => {
    */
   const checkLoginUsingEmailStatus = useCallback(async () => {
     try {
-      await props.getControlpanel('security');
-      if (props.controlPanelData?.data?.use_email_as_login) {
-        setLoginUsingEmail(props.controlPanelData.data.use_email_as_login);
+      await getControlpanel('security');
+      if (controlPanelData?.data?.use_email_as_login) {
+        setLoginUsingEmail(controlPanelData.data.use_email_as_login);
       }
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('Error fetching security control panel', error);
     }
-  }, [props]);
+  }, [getControlpanel, controlPanelData]);
 
   const getUserFromProps = useCallback(
     (value) => {
-      return find(props.users, ['@id', value]);
+      return find(users, ['@id', value]);
     },
-    [props.users],
+    [users],
   );
 
   /**
@@ -119,10 +155,9 @@ const UsersControlpanel = (props) => {
     (event) => {
       event.preventDefault();
       setIsLoading(true);
-      props
-        .listUsers({
-          search: search,
-        })
+      listUsers({
+        search: search,
+      })
         .then(() => {
           setIsLoading(false);
         })
@@ -132,7 +167,7 @@ const UsersControlpanel = (props) => {
           console.error('Error searching users', error);
         });
     },
-    [props, search],
+    [listUsers, search],
   );
 
   /**
@@ -169,23 +204,23 @@ const UsersControlpanel = (props) => {
    */
   const onDeleteOk = useCallback(() => {
     if (userToDelete) {
-      const deleteUserAction = props.deleteUser(userToDelete.id);
-      if (deleteUserAction && typeof deleteUserAction.then === 'function') {
-        deleteUserAction
+      const deleteAction = deleteUserAction(userToDelete.id);
+      if (deleteAction && typeof deleteAction.then === 'function') {
+        deleteAction
           .then(() => {
             // Handle success
             setUserToDelete(undefined);
             setShowDelete(false);
 
             // Refresh users list
-            props.listUsers({ search: search });
+            listUsers({ search: search });
 
             // Show success message
             toast.success(
               <Toast
                 success
-                title={props.intl.formatMessage(messages.success)}
-                content={props.intl.formatMessage(messages.userDeleted)}
+                title={intl.formatMessage(messages.success)}
+                content={intl.formatMessage(messages.userDeleted)}
               />,
             );
           })
@@ -196,7 +231,7 @@ const UsersControlpanel = (props) => {
           });
       }
     }
-  }, [userToDelete, props, search]);
+  }, [userToDelete, deleteUserAction, listUsers, search, intl]);
 
   /**
    * On delete cancel
@@ -215,16 +250,16 @@ const UsersControlpanel = (props) => {
    */
   const addUserToGroup = useCallback(
     (user) => {
-      const { groups, username } = user;
-      groups.forEach((group) => {
-        props.updateGroup(group, {
+      const { groups: userGroups, username } = user;
+      userGroups.forEach((group) => {
+        updateGroup(group, {
           users: {
             [username]: true,
           },
         });
       });
     },
-    [props],
+    [updateGroup],
   );
 
   /**
@@ -236,7 +271,7 @@ const UsersControlpanel = (props) => {
    */
   const onAddUserSubmit = useCallback(
     (data, callback) => {
-      const { groups, sendPasswordReset, password } = data;
+      const { groups: userGroups, sendPasswordReset, password } = data;
       if (
         sendPasswordReset !== undefined &&
         sendPasswordReset === true &&
@@ -245,14 +280,14 @@ const UsersControlpanel = (props) => {
         toast.error(
           <Toast
             error
-            title={props.intl.formatMessage(messages.error)}
-            content={props.intl.formatMessage(
+            title={intl.formatMessage(messages.error)}
+            content={intl.formatMessage(
               messages.addUserFormPasswordAndSendPasswordTogetherNotAllowed,
             )}
           />,
         );
       } else {
-        if (groups && groups.length > 0) addUserToGroup(data);
+        if (userGroups && userGroups.length > 0) addUserToGroup(data);
 
         const createUserAction = createUser(data, sendPasswordReset);
         dispatch(createUserAction)
@@ -265,14 +300,14 @@ const UsersControlpanel = (props) => {
             setAddUserError(undefined);
 
             // Refresh users list
-            props.listUsers({ search: search });
+            listUsers({ search: search });
 
             // Show success message
             toast.success(
               <Toast
                 success
-                title={props.intl.formatMessage(messages.success)}
-                content={props.intl.formatMessage(messages.userCreated)}
+                title={intl.formatMessage(messages.success)}
+                content={intl.formatMessage(messages.userCreated)}
               />,
             );
           })
@@ -284,7 +319,7 @@ const UsersControlpanel = (props) => {
           });
       }
     },
-    [props, addUserToGroup, dispatch, search],
+    [intl, addUserToGroup, dispatch, search, listUsers],
   );
 
   /**
@@ -317,10 +352,10 @@ const UsersControlpanel = (props) => {
     (e) => {
       e.stopPropagation();
 
-      const roles = props.roles.map((item) => item.id);
+      const roleIds = roles.map((item) => item.id);
       entries.forEach((item) => {
         const userData = { roles: {} };
-        const removedRoles = difference(roles, item.roles);
+        const removedRoles = difference(roleIds, item.roles);
 
         removedRoles.forEach((role) => {
           userData.roles[role] = false;
@@ -328,17 +363,17 @@ const UsersControlpanel = (props) => {
         item.roles.forEach((role) => {
           userData.roles[role] = true;
         });
-        props.updateUser(item.id, userData);
+        updateUser(item.id, userData);
       });
       toast.success(
         <Toast
           success
-          title={props.intl.formatMessage(messages.success)}
-          content={props.intl.formatMessage(messages.updateRoles)}
+          title={intl.formatMessage(messages.success)}
+          content={intl.formatMessage(messages.updateRoles)}
         />,
       );
     },
-    [props, entries],
+    [roles, entries, updateUser, intl],
   );
 
   /**
@@ -369,12 +404,12 @@ const UsersControlpanel = (props) => {
    */
   const canAssignAdd = useCallback(
     (isManager) => {
-      if (isManager) return props.roles;
-      return props.user?.roles
-        ? props.roles.filter((role) => props.user.roles.includes(role.id))
+      if (isManager) return roles;
+      return user?.roles
+        ? roles.filter((role) => user.roles.includes(role.id))
         : [];
     },
-    [props.roles, props.user],
+    [roles, user],
   );
 
   useEffect(() => {
@@ -384,24 +419,20 @@ const UsersControlpanel = (props) => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    setEntries(props.users);
-  }, [props.users]);
+    setEntries(users);
+  }, [users]);
 
   useEffect(() => {
-    if (props.createRequest?.error && !props.createRequest?.loading) {
-      onAddUserError(props.createRequest.error);
+    if (createRequest?.error && !createRequest?.loading) {
+      onAddUserError(createRequest.error);
     }
-  }, [
-    props.createRequest?.error,
-    props.createRequest?.loading,
-    onAddUserError,
-  ]);
+  }, [createRequest?.error, createRequest?.loading, onAddUserError]);
 
   useEffect(() => {
-    if (props.loadRolesRequest?.error && !props.loadRolesRequest?.loading) {
-      setError(props.loadRolesRequest.error);
+    if (loadRolesRequest?.error && !loadRolesRequest?.loading) {
+      setError(loadRolesRequest.error);
     }
-  }, [props.loadRolesRequest?.error, props.loadRolesRequest?.loading]);
+  }, [loadRolesRequest?.error, loadRolesRequest?.loading]);
 
   if (error) {
     return <Error error={error} />;
@@ -415,46 +446,40 @@ const UsersControlpanel = (props) => {
   // the lifecycle of the application
   let adduserschema = {};
   let isUserManager = false;
-  if (props?.userschema?.loaded) {
-    isUserManager = isManager(props.user);
-    adduserschema = JSON.parse(JSON.stringify(props?.userschema?.userschema));
+  if (userschema?.loaded) {
+    isUserManager = isManager(user);
+    adduserschema = JSON.parse(JSON.stringify(userschema?.userschema));
 
     // Add custom form fields to the schema
     adduserschema.properties.username = {
-      title: props.intl.formatMessage(messages.addUserFormUsernameTitle),
+      title: intl.formatMessage(messages.addUserFormUsernameTitle),
       type: 'string',
-      description: props.intl.formatMessage(
-        messages.addUserFormUsernameDescription,
-      ),
+      description: intl.formatMessage(messages.addUserFormUsernameDescription),
     };
 
     adduserschema.properties.password = {
-      title: props.intl.formatMessage(messages.addUserFormPasswordTitle),
+      title: intl.formatMessage(messages.addUserFormPasswordTitle),
       type: 'password',
-      description: props.intl.formatMessage(
-        messages.addUserFormPasswordDescription,
-      ),
+      description: intl.formatMessage(messages.addUserFormPasswordDescription),
       widget: 'password',
     };
 
     adduserschema.properties.sendPasswordReset = {
-      title: props.intl.formatMessage(
-        messages.addUserFormSendPasswordResetTitle,
-      ),
+      title: intl.formatMessage(messages.addUserFormSendPasswordResetTitle),
       type: 'boolean',
     };
 
     adduserschema.properties.roles = {
-      title: props.intl.formatMessage(messages.addUserFormRolesTitle),
+      title: intl.formatMessage(messages.addUserFormRolesTitle),
       type: 'array',
       choices: canAssignAdd(isUserManager).map((role) => [role.id, role.title]),
       noValueOption: false,
     };
 
     adduserschema.properties.groups = {
-      title: props.intl.formatMessage(messages.addUserGroupNameTitle),
+      title: intl.formatMessage(messages.addUserGroupNameTitle),
       type: 'array',
-      choices: props.groups
+      choices: groups
         .filter((group) => canAssignGroup(isUserManager, group))
         .map((group) => [group.id, group.id]),
       noValueOption: false,
@@ -478,14 +503,14 @@ const UsersControlpanel = (props) => {
 
   return (
     <Container className="users-control-panel">
-      <Helmet title={props.intl.formatMessage(messages.users)} />
+      <Helmet title={intl.formatMessage(messages.users)} />
       <div className="container">
         <Confirm
           open={showDelete}
-          header={props.intl.formatMessage(messages.deleteUserConfirmTitle)}
+          header={intl.formatMessage(messages.deleteUserConfirmTitle)}
           content={
             <div className="content">
-              <Dimmer active={props?.deleteRequest?.loading}>
+              <Dimmer active={deleteRequest?.loading}>
                 <Loader>
                   <FormattedMessage id="Loading" defaultMessage="Loading." />
                 </Loader>
@@ -506,7 +531,7 @@ const UsersControlpanel = (props) => {
           onConfirm={onDeleteOk}
           size={null}
         />
-        {props?.userschema?.loaded && showAddUser ? (
+        {userschema?.loaded && showAddUser ? (
           <ModalForm
             open={showAddUser}
             className="modal"
@@ -516,8 +541,8 @@ const UsersControlpanel = (props) => {
               setShowAddUser(false);
               setAddUserError(undefined);
             }}
-            title={props.intl.formatMessage(messages.addUserFormTitle)}
-            loading={props.createRequest?.loading}
+            title={intl.formatMessage(messages.addUserFormTitle)}
+            loading={createRequest?.loading}
             schema={adduserschema}
           />
         ) : null}
@@ -552,7 +577,7 @@ const UsersControlpanel = (props) => {
                   loading: isLoading,
                   disabled: isLoading,
                 }}
-                placeholder={props.intl.formatMessage(messages.searchUsers)}
+                placeholder={intl.formatMessage(messages.searchUsers)}
                 onChange={onChangeSearch}
                 id="user-search-input"
               />
@@ -560,7 +585,7 @@ const UsersControlpanel = (props) => {
           </Form>
         </Segment>
         <Form>
-          {((props.many_users && entries.length > 0) || !props.many_users) && (
+          {((many_users && entries.length > 0) || !many_users) && (
             <Table padded striped attached unstackable>
               <Table.Header>
                 <Table.Row>
@@ -570,7 +595,7 @@ const UsersControlpanel = (props) => {
                       defaultMessage="User name"
                     />
                   </Table.HeaderCell>
-                  {props.roles.map((role) => (
+                  {roles.map((role) => (
                     <Table.HeaderCell key={role.id}>
                       {role.title}
                     </Table.HeaderCell>
@@ -583,16 +608,16 @@ const UsersControlpanel = (props) => {
               <Table.Body data-user="users">
                 {entries
                   .slice(currentPage * 10, pageSize * (currentPage + 1))
-                  .map((user) => (
+                  .map((userItem) => (
                     <RenderUsers
-                      key={user.id}
+                      key={userItem.id}
                       onDelete={deleteUser}
-                      roles={props.roles}
-                      user={user}
+                      roles={roles}
+                      user={userItem}
                       updateUser={updateUserRole}
-                      inheritedRole={props.inheritedRole}
-                      userschema={props.userschema}
-                      listUsers={props.listUsers}
+                      inheritedRole={inheritedRole}
+                      userschema={userschema}
+                      listUsers={listUsers}
                       isUserManager={isUserManager}
                     />
                   ))}
@@ -601,7 +626,7 @@ const UsersControlpanel = (props) => {
           )}
           {entries.length === 0 && search && (
             <Segment>
-              {props.intl.formatMessage(messages.userSearchNoResults)}
+              {intl.formatMessage(messages.userSearchNoResults)}
             </Segment>
           )}
           <div className="contents-pagination">
@@ -616,50 +641,46 @@ const UsersControlpanel = (props) => {
       {isClient &&
         createPortal(
           <Toolbar
-            pathname={props.pathname}
+            pathname={pathname}
             hideDefaultViewButtons
             inner={
               <>
                 <Button
                   id="toolbar-save"
                   className="save"
-                  aria-label={props.intl.formatMessage(messages.save)}
+                  aria-label={intl.formatMessage(messages.save)}
                   onClick={updateUserRoleSubmit}
-                  loading={props.createRequest?.loading}
+                  loading={createRequest?.loading}
                 >
                   <Icon
                     name={saveSVG}
                     className="circled"
                     size="30px"
-                    title={props.intl.formatMessage(messages.save)}
+                    title={intl.formatMessage(messages.save)}
                   />
                 </Button>
                 <Link to="/controlpanel" className="cancel">
                   <Icon
                     name={clearSVG}
                     className="circled"
-                    aria-label={props.intl.formatMessage(messages.cancel)}
+                    aria-label={intl.formatMessage(messages.cancel)}
                     size="30px"
-                    title={props.intl.formatMessage(messages.cancel)}
+                    title={intl.formatMessage(messages.cancel)}
                   />
                 </Link>
                 <Button
                   id="toolbar-add"
-                  aria-label={props.intl.formatMessage(
-                    messages.addUserButtonTitle,
-                  )}
+                  aria-label={intl.formatMessage(messages.addUserButtonTitle)}
                   onClick={() => {
                     setShowAddUser(true);
                   }}
-                  loading={props.createRequest?.loading}
+                  loading={createRequest?.loading}
                 >
                   <Icon
                     name={addUserSvg}
                     size="45px"
                     color="#826A6A"
-                    title={props.intl.formatMessage(
-                      messages.addUserButtonTitle,
-                    )}
+                    title={intl.formatMessage(messages.addUserButtonTitle)}
                   />
                 </Button>
               </>
