@@ -33,13 +33,13 @@ import find from 'lodash/find';
 import map from 'lodash/map';
 import pull from 'lodash/pull';
 import difference from 'lodash/difference';
-import PropTypes from 'prop-types';
+
 import { useState, useEffect, useCallback } from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { createPortal } from 'react-dom';
-import { connect, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { bindActionCreators, compose } from 'redux';
 import {
   Confirm,
   Container,
@@ -56,32 +56,69 @@ import {
  * UsersControlpanel functional component.
  * @function UsersControlpanel
  */
-const UsersControlpanel = (props) => {
-  const {
-    listRoles,
-    listUsers,
-    listGroups,
-    getControlpanel,
-    deleteUser: deleteUserAction,
-    updateUser,
-    updateGroup,
-    getUserSchema,
-    getUser,
-    intl,
-    roles,
-    users,
-    user,
-    userId,
-    groups,
-    pathname,
-    many_users,
-    deleteRequest,
-    createRequest,
-    loadRolesRequest,
-    inheritedRole,
-    userschema,
-    controlPanelData,
-  } = props;
+const UsersControlpanel = () => {
+  const intl = useIntl();
+  const dispatch = useDispatch();
+
+  // Redux state selectors
+  const roles = useSelector((state) => state.roles.roles);
+  const users = useSelector((state) => state.users.users);
+  const user = useSelector((state) => state.users.user);
+  const userId = useSelector((state) =>
+    state.userSession.token ? jwtDecode(state.userSession.token).sub : '',
+  );
+  const groups = useSelector((state) => state.groups.groups);
+  const many_users = useSelector(
+    (state) => state.controlpanels?.controlpanel?.data?.many_users,
+  );
+
+  const location = useLocation();
+  const pathname = location.pathname;
+  const deleteRequest = useSelector((state) => state.users.delete);
+  const createRequest = useSelector((state) => state.users.create);
+  const loadRolesRequest = useSelector((state) => state.roles);
+  const inheritedRole = useSelector(
+    (state) => state.authRole.authenticatedRole,
+  );
+  const userschema = useSelector((state) => state.userschema);
+  const controlPanelData = useSelector(
+    (state) => state.controlpanels?.controlpanel,
+  );
+
+  // Action creators
+  const listRolesAction = useCallback(() => dispatch(listRoles()), [dispatch]);
+  const listUsersAction = useCallback(
+    (params) => dispatch(listUsers(params)),
+    [dispatch],
+  );
+  const listGroupsAction = useCallback(
+    () => dispatch(listGroups()),
+    [dispatch],
+  );
+  const getControlpanelAction = useCallback(
+    (panel) => dispatch(getControlpanel(panel)),
+    [dispatch],
+  );
+  const deleteUserAction = useCallback(
+    (userId) => dispatch(deleteUser(userId)),
+    [dispatch],
+  );
+  const updateUserAction = useCallback(
+    (userId, data) => dispatch(updateUser(userId, data)),
+    [dispatch],
+  );
+  const updateGroupAction = useCallback(
+    (groupId, data) => dispatch(updateGroup(groupId, data)),
+    [dispatch],
+  );
+  const getUserSchemaAction = useCallback(
+    () => dispatch(getUserSchema()),
+    [dispatch],
+  );
+  const getUserAction = useCallback(
+    (userId) => dispatch(getUser(userId)),
+    [dispatch],
+  );
 
   const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -97,27 +134,25 @@ const UsersControlpanel = (props) => {
   const [loginUsingEmail, setLoginUsingEmail] = useState(false); // Reserved for future use to disable username field when email login is enabled
   const [error, setError] = useState(null);
 
-  const dispatch = useDispatch();
-
   const fetchData = useCallback(async () => {
-    await getControlpanel('usergroup');
-    await listRoles();
+    await getControlpanelAction('usergroup');
+    await listRolesAction();
     if (!many_users) {
-      listGroups();
-      await listUsers();
+      listGroupsAction();
+      await listUsersAction();
       setEntries(users);
     }
-    await getUserSchema();
-    await getUser(userId);
+    await getUserSchemaAction();
+    await getUserAction(userId);
   }, [
-    getControlpanel,
-    listRoles,
+    getControlpanelAction,
+    listRolesAction,
     many_users,
-    listGroups,
-    listUsers,
+    listGroupsAction,
+    listUsersAction,
     users,
-    getUserSchema,
-    getUser,
+    getUserSchemaAction,
+    getUserAction,
     userId,
   ]);
 
@@ -128,7 +163,7 @@ const UsersControlpanel = (props) => {
    */
   const checkLoginUsingEmailStatus = useCallback(async () => {
     try {
-      await getControlpanel('security');
+      await getControlpanelAction('security');
       if (controlPanelData?.data?.use_email_as_login) {
         setLoginUsingEmail(controlPanelData.data.use_email_as_login);
       }
@@ -136,7 +171,7 @@ const UsersControlpanel = (props) => {
       // eslint-disable-next-line no-console
       console.error('Error fetching security control panel', error);
     }
-  }, [getControlpanel, controlPanelData]);
+  }, [getControlpanelAction, controlPanelData]);
 
   const getUserFromProps = useCallback(
     (value) => {
@@ -155,7 +190,7 @@ const UsersControlpanel = (props) => {
     (event) => {
       event.preventDefault();
       setIsLoading(true);
-      listUsers({
+      listUsersAction({
         search: search,
       })
         .then(() => {
@@ -167,7 +202,7 @@ const UsersControlpanel = (props) => {
           console.error('Error searching users', error);
         });
     },
-    [listUsers, search],
+    [listUsersAction, search],
   );
 
   /**
@@ -181,14 +216,17 @@ const UsersControlpanel = (props) => {
   };
 
   /**
-   * Delete a user
-   * @method delete
+   * Handle delete user click
+   * @method handleDeleteUser
    * @param {object} event Event object.
    * @param {string} value username.
    * @returns {undefined}
    */
-  const deleteUser = useCallback(
-    (event, { value }) => {
+  const handleDeleteUser = useCallback(
+    (event, data) => {
+      // Handle both formats: direct value from event target or object with value
+      const value =
+        data?.value || event?.target?.value || event?.currentTarget?.value;
       if (value) {
         setShowDelete(true);
         setUserToDelete(getUserFromProps(value));
@@ -213,7 +251,7 @@ const UsersControlpanel = (props) => {
             setShowDelete(false);
 
             // Refresh users list
-            listUsers({ search: search });
+            listUsersAction({ search: search });
 
             // Show success message
             toast.success(
@@ -231,7 +269,7 @@ const UsersControlpanel = (props) => {
           });
       }
     }
-  }, [userToDelete, deleteUserAction, listUsers, search, intl]);
+  }, [userToDelete, deleteUserAction, listUsersAction, search, intl]);
 
   /**
    * On delete cancel
@@ -252,14 +290,14 @@ const UsersControlpanel = (props) => {
     (user) => {
       const { groups: userGroups, username } = user;
       userGroups.forEach((group) => {
-        updateGroup(group, {
+        updateGroupAction(group, {
           users: {
             [username]: true,
           },
         });
       });
     },
-    [updateGroup],
+    [updateGroupAction],
   );
 
   /**
@@ -300,7 +338,7 @@ const UsersControlpanel = (props) => {
             setAddUserError(undefined);
 
             // Refresh users list
-            listUsers({ search: search });
+            listUsersAction({ search: search });
 
             // Show success message
             toast.success(
@@ -319,7 +357,7 @@ const UsersControlpanel = (props) => {
           });
       }
     },
-    [intl, addUserToGroup, dispatch, search, listUsers],
+    [intl, addUserToGroup, dispatch, search, listUsersAction],
   );
 
   /**
@@ -363,7 +401,7 @@ const UsersControlpanel = (props) => {
         item.roles.forEach((role) => {
           userData.roles[role] = true;
         });
-        updateUser(item.id, userData);
+        updateUserAction(item.id, userData);
       });
       toast.success(
         <Toast
@@ -373,7 +411,7 @@ const UsersControlpanel = (props) => {
         />,
       );
     },
-    [roles, entries, updateUser, intl],
+    [roles, entries, updateUserAction, intl],
   );
 
   /**
@@ -611,13 +649,13 @@ const UsersControlpanel = (props) => {
                   .map((userItem) => (
                     <RenderUsers
                       key={userItem.id}
-                      onDelete={deleteUser}
+                      onDelete={handleDeleteUser}
                       roles={roles}
                       user={userItem}
                       updateUser={updateUserRole}
                       inheritedRole={inheritedRole}
                       userschema={userschema}
-                      listUsers={listUsers}
+                      listUsers={listUsersAction}
                       isUserManager={isUserManager}
                     />
                   ))}
@@ -692,118 +730,4 @@ const UsersControlpanel = (props) => {
   );
 };
 
-UsersControlpanel.propTypes = {
-  listRoles: PropTypes.func.isRequired,
-  listUsers: PropTypes.func.isRequired,
-  listGroups: PropTypes.func.isRequired,
-  getControlpanel: PropTypes.func.isRequired,
-  deleteUser: PropTypes.func.isRequired,
-  createUser: PropTypes.func.isRequired,
-  updateUser: PropTypes.func.isRequired,
-  updateGroup: PropTypes.func.isRequired,
-  getUserSchema: PropTypes.func.isRequired,
-  getUser: PropTypes.func.isRequired,
-  pathname: PropTypes.string.isRequired,
-  userId: PropTypes.string.isRequired,
-  intl: PropTypes.object.isRequired,
-  roles: PropTypes.arrayOf(
-    PropTypes.shape({
-      '@id': PropTypes.string,
-      '@type': PropTypes.string,
-      id: PropTypes.string,
-      title: PropTypes.string,
-    }),
-  ).isRequired,
-  users: PropTypes.arrayOf(
-    PropTypes.shape({
-      '@id': PropTypes.string,
-      id: PropTypes.string,
-      username: PropTypes.string,
-      fullname: PropTypes.string,
-      roles: PropTypes.arrayOf(PropTypes.string),
-    }),
-  ).isRequired,
-  groups: PropTypes.arrayOf(
-    PropTypes.shape({
-      '@id': PropTypes.string,
-      id: PropTypes.string,
-      title: PropTypes.string,
-    }),
-  ),
-  user: PropTypes.shape({
-    '@id': PropTypes.string,
-    id: PropTypes.string,
-    description: PropTypes.string,
-    email: PropTypes.string,
-    fullname: PropTypes.string,
-    groups: PropTypes.object,
-    location: PropTypes.string,
-    portrait: PropTypes.string,
-    home_page: PropTypes.string,
-    roles: PropTypes.arrayOf(PropTypes.string),
-    username: PropTypes.string,
-  }),
-  userschema: PropTypes.shape({
-    properties: PropTypes.object,
-    fieldsets: PropTypes.array,
-    loaded: PropTypes.bool,
-  }),
-  deleteRequest: PropTypes.shape({
-    loading: PropTypes.bool,
-    loaded: PropTypes.bool,
-    error: PropTypes.object,
-  }),
-  createRequest: PropTypes.shape({
-    loading: PropTypes.bool,
-    loaded: PropTypes.bool,
-    error: PropTypes.object,
-  }),
-  loadRolesRequest: PropTypes.shape({
-    loading: PropTypes.bool,
-    loaded: PropTypes.bool,
-    error: PropTypes.object,
-  }),
-  many_users: PropTypes.bool,
-  inheritedRole: PropTypes.arrayOf(PropTypes.string),
-};
-
-export default compose(
-  injectIntl,
-  connect(
-    (state, props) => ({
-      roles: state.roles.roles,
-      users: state.users.users,
-      user: state.users.user,
-      userId: state.userSession.token
-        ? jwtDecode(state.userSession.token).sub
-        : '',
-      groups: state.groups.groups,
-      many_users: state.controlpanels?.controlpanel?.data?.many_users,
-      many_groups: state.controlpanels?.controlpanel?.data?.many_groups,
-      description: state.description,
-      pathname: props.location.pathname,
-      deleteRequest: state.users.delete,
-      createRequest: state.users.create,
-      loadRolesRequest: state.roles,
-      inheritedRole: state.authRole.authenticatedRole,
-      userschema: state.userschema,
-      controlPanelData: state.controlpanels?.controlpanel,
-    }),
-    (dispatch) =>
-      bindActionCreators(
-        {
-          listRoles,
-          listUsers,
-          listGroups,
-          getControlpanel,
-          deleteUser,
-          createUser,
-          updateUser,
-          updateGroup,
-          getUserSchema,
-          getUser,
-        },
-        dispatch,
-      ),
-  ),
-)(UsersControlpanel);
+export default UsersControlpanel;
