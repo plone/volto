@@ -26,6 +26,7 @@ const nonAddons = [
   'packages/components',
   'packages/registry',
   'packages/helpers',
+  'packages/providers',
   'packages/react-router',
   'packages/scripts',
   'packages/tooling',
