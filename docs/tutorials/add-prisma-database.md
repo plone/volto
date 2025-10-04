@@ -136,7 +136,7 @@ pnpm --filter <addon-name> run prisma:db:push
 
 You should now see `packages/<addon-name>/prisma/dev.db` and the generated client files.
 
-## Create a `/@@likes` route to interact with the database
+## Create a `/@likes` route to interact with the database
 
 Create a new file named `api.likes.ts` in the `routes` folder of your add-on (`package/<addon-name>/routes/api.likes.ts`).
 It will read and increments the like counter.
@@ -148,7 +148,7 @@ import prisma from '../lib/prisma';
 
 type LikePayload = { count: number; pathname: string };
 
-// GET /@@likes/* → current count for the requested pathname
+// GET /@likes/* → current count for the requested pathname
 export async function loader({ params }: ActionFunctionArgs) {
   const pathname = params['*'] ? `/${params['*']}` : '/';
   const like = await prisma.urlLike.findUnique({ where: { pathname } });
@@ -162,7 +162,7 @@ export async function loader({ params }: ActionFunctionArgs) {
   });
 }
 
-// POST /@@likes/* → increment and return the updated record
+// POST /@likes/* → increment and return the updated record
 export async function action({ params }: ActionFunctionArgs) {
   const pathname = params['*'] ? `/${params['*']}` : '/';
   const updatedRecord = await prisma.urlLike.upsert({
@@ -187,7 +187,7 @@ import type { ConfigType } from '@plone/registry';
 export default function install(config: ConfigType) {
   config.registerRoute({
     type: 'route',
-    path: '@@likes/*',
+    path: '@likes/*',
     file: '<addon-name>/routes/api.likes.ts',
     options: {
       id: 'likes',
@@ -214,7 +214,7 @@ export default function install(config: ConfigType) {
 }
 ```
 
-Accessing the route with a GET request, eg. `/@@likes/some/url/path`, will return the number of likes for that current URL, while sending a POST request will increment the like count for that URL.
+Accessing the route with a GET request, eg. `/@likes/some/url/path`, will return the number of likes for that current URL, while sending a POST request will increment the like count for that URL.
 
 ## Create a likes slot
 
@@ -241,7 +241,7 @@ export default function LikeButton() {
     <div className="text-center mt-10">
       <fetcher.Form
         method="post"
-        action={`/@@likes${pathname}`}
+        action={`/@likes${pathname}`}
         className="inline"
       >
         <Button
@@ -262,7 +262,7 @@ export default function LikeButton() {
 
 ```
 
-This component uses the `useFetcher` hook from `react-router` to send a POST request to the `/@@likes/*` route when the button is clicked.
+This component uses the `useFetcher` hook from `react-router` to send a POST request to the `/@likes/*` route when the button is clicked.
 It also uses the `useRouteLoaderData` hook to get the current number of likes for the URL from the root loader data.
 
 Let's declare the slot in Seven, first, create a `slots.ts` file in the `config` folder of your add-on: `package/<addon-name>/config/slots.ts`:
