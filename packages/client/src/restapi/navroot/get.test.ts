@@ -1,5 +1,5 @@
 import ploneClient from '../../client';
-import { afterEach, beforeEach, describe, expect, test } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import type { RequestError } from '../types';
 
 const cli = ploneClient.initialize({

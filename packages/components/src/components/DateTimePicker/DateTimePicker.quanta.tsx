@@ -1,9 +1,8 @@
-import React, { useCallback, useState, useEffect, useRef } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { CalendarIcon } from '../../components/icons/CalendarIcon';
 import { CloseIcon } from '../../components/icons/CloseIcon';
 import {
   DatePicker as AriaDatePicker,
-  Group,
   type DatePickerProps as AriaDatePickerProps,
   type DateValue,
   type ValidationResult,

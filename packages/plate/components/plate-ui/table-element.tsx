@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useCallback, useState } from 'react';
 
 import type * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';

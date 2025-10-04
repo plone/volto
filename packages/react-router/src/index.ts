@@ -93,7 +93,7 @@ export async function getAuthFromRequest(
   let token;
   try {
     token = await cookie.parse(request.headers.get('Cookie'));
-  } catch (error) {
+  } catch {
     // asd
   }
   return token ?? undefined;

@@ -19,7 +19,7 @@
 ### Internal
 
 - Add `@testing-library/react` to the catalog. @sneridagh [#7372](https://github.com/plone/volto/pull/7372)
-- Remove not needed `vite`. @sneridagh 
+- Remove not needed `vite`. @sneridagh
 
 ## 2.0.0-alpha.0 (2025-05-24)
 

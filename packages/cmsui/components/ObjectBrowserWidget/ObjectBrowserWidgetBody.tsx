@@ -21,13 +21,13 @@ export function ObjectBrowserWidgetBody() {
   const { currentPath, navigateTo, goBack, canGoBack } =
     useObjectBrowserNavigation();
   const {
-    open,
-    setOpen,
+    // open,
+    // setOpen,
     searchMode,
     setSearchMode,
     SearchableText,
-    handleSearchInputChange,
-    title,
+    // handleSearchInputChange,
+    // title,
     loading,
     items,
     breadcrumbs,

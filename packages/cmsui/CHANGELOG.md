@@ -55,6 +55,6 @@
 - Adapt import to the rearrangement of the @plone/components package structure. @sneridagh [#7185](https://github.com/plone/volto/issues/7185)
 - Upgrade to Storybook 9. @sneridagh [#7371](https://github.com/plone/volto/issues/7371)
 - Remove circular dependency on layout<->blocks. @sneridagh [#7372](https://github.com/plone/volto/issues/7372)
-- Adjust peer dependencies and engine. @sneridagh 
+- Adjust peer dependencies and engine. @sneridagh
 
 ## 1.0.0 (unreleased)
