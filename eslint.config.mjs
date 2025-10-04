@@ -12,20 +12,17 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks';
 const JS_GLOB = ['**/*.{ts,tsx,js,jsx}'];
 
 const generateFilesArray = (packages) => {
-  return packages.map((pkg) => `**/${pkg}/**/*.{tsx,jsx}`);
+  return packages.map((pkg) => `**/${pkg}/**/*.{js,ts,tsx,jsx}`);
 };
-// '**/packages/blocks/**/*.{ts,tsx}'
-const addonPackages = [
-  'apps/seven',
-  'apps/quanta',
-  'packages/blocks',
-  'packages/contents',
-  'packages/cmsui',
-  'packages/coresandbox',
-  'packages/layout',
-  'packages/theming',
-  'packages/publicui',
-  'packages/plate',
+
+const nonAddons = [
+  'packages/client',
+  'packages/components',
+  'packages/registry',
+  'packages/helpers',
+  'packages/react-router',
+  'packages/scripts',
+  'packages/tooling',
   // Add more packages as needed
 ];
 
@@ -46,7 +43,12 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooksPlugin.configs.recommended.rules,
-      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          args: 'none',
+        },
+      ],
       '@typescript-eslint/no-empty-object-type': 'off',
       'jsx-a11y/no-autofocus': 'off',
       'react/jsx-key': [2, { checkFragmentShorthand: true }],
@@ -91,13 +93,15 @@ export default tseslint.config(
     },
   },
   {
-    name: 'Addons - JSX Runtime plugin',
-    files: generateFilesArray(addonPackages),
+    name: 'JSX Runtime plugin',
+    files: JS_GLOB,
+    ignores: generateFilesArray(nonAddons),
     ...reactPlugin.configs.flat['jsx-runtime'],
   },
   {
     name: 'Addons - Rules',
-    files: generateFilesArray(addonPackages),
+    files: JS_GLOB,
+    ignores: generateFilesArray(nonAddons),
     rules: {
       'no-console': 'warn',
     },
@@ -121,6 +125,7 @@ export default tseslint.config(
       '**/.react-router/*',
       '**/+types/*',
       '**/registry.loader.js',
+      '**/registry.loader.server.js',
     ],
   },
 );

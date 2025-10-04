@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronrightIcon, HomeIcon } from '../../components/icons';
+import { ChevronrightIcon } from '../../components/icons';
 import {
   Breadcrumbs as RACBreadcrumbs,
   Breadcrumb as RACBreadcrumb,
@@ -59,6 +59,7 @@ interface BreadcrumbsProps<T extends Breadcrumb = Breadcrumb>
 }
 
 export function Breadcrumbs<T extends Breadcrumb>(props: BreadcrumbsProps<T>) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { root, items, homeIcon } = props;
   let itemsWithRoot: typeof items;
   // if (root && items) {

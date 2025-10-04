@@ -48,14 +48,7 @@ export function axiosConfigAdapter(
   path: string,
   options: ApiRequestParams,
 ): AxiosRequestConfig {
-  const {
-    config,
-    params,
-    data,
-    type,
-    headers = {},
-    checkUrl = false,
-  }: ApiRequestParams = options;
+  const { config, params, data, headers = {} }: ApiRequestParams = options;
   const axiosConfig: AxiosRequestConfig = {
     method,
     url: getBackendURL(config.apiPath, config.apiSuffix, path),

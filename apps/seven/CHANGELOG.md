@@ -72,10 +72,10 @@
 - Use @plone/helpers. @giuliaghisini [#7133](https://github.com/plone/volto/issues/7133)
 - Update to latest versions. @sneridagh [#7298](https://github.com/plone/volto/issues/7298)
 - Added support for `@plone/plate` package. @sneridagh [#7346](https://github.com/plone/volto/issues/7346)
-- Adjust peer dependencies and engine. @sneridagh 
-- Remove providers from the package builds. @sneridagh 
-- Remove the proxy from Vite config, since we no longer use it. @sneridagh 
-- Update to RR7.9.1. Middleware is stable now. @sneridagh 
+- Adjust peer dependencies and engine. @sneridagh
+- Remove providers from the package builds. @sneridagh
+- Remove the proxy from Vite config, since we no longer use it. @sneridagh
+- Update to RR7.9.1. Middleware is stable now. @sneridagh
 
 ### Documentation
 
@@ -84,8 +84,8 @@
 - Updated docs based on feedback provided in #7221. @pnicolli @stevepiercy [#7226](https://github.com/plone/volto/issues/7226)
 - Copied and adapted some of the content from existing in `@plone/registry` docs that are fundamental for Seven. @sneridagh [#7360](https://github.com/plone/volto/issues/7360)
 - Add conventions and decisions made during this year's sprints. @sneridagh [#7375](https://github.com/plone/volto/issues/7375)
-- Added Shadowing documentation. @sneridagh 
-- Added documentation on how to create a route in Seven. @sneridagh 
-- Sync core development docs with main, amend `PACKAGES.md` to match Seven packages. @sneridagh 
+- Added Shadowing documentation. @sneridagh
+- Added documentation on how to create a route in Seven. @sneridagh
+- Sync core development docs with main, amend `PACKAGES.md` to match Seven packages. @sneridagh
 
 ## 1.0.0 (unreleased)

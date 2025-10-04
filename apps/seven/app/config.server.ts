@@ -25,7 +25,8 @@ export default function install() {
 
   applyAddonConfiguration(config);
 
-  console.log('API_PATH is:', config.settings.apiPath);
+  // eslint-disable-next-line no-console
+  // console.log('API_PATH is:', config.settings.apiPath);
 
   return config;
 }

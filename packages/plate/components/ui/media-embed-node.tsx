@@ -28,7 +28,6 @@ export const MediaEmbedElement = withHOC(
       isTweet = false,
       isVideo,
       isYoutube,
-      readOnly,
       selected,
     } = useMediaState({
       urlParsers: [parseTwitterUrl, parseVideoUrl],

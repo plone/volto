@@ -9,7 +9,6 @@ import {
   ScrollRestoration,
   useLocation,
   useMatches,
-  useLoaderData,
   useNavigate,
   useRouteLoaderData,
   type UIMatch,
@@ -19,11 +18,11 @@ import {
 import { useTranslation } from 'react-i18next';
 import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
-import SlotRenderer from '@plone/layout/SlotRenderer';
+import SlotRenderer from '@plone/layout/slots/SlotRenderer';
 import clsx from 'clsx';
 import config from '@plone/registry';
 
-import styles from '@plone/layout/components/App/App.module.css';
+import styles from '@plone/layout/slots/App/App.module.css';
 
 // eslint-disable-next-line import/no-unresolved
 import stylesheet from 'seven/publicui.css?url';
@@ -74,7 +73,6 @@ export async function loader() {
 
 export default function Index() {
   const location = useLocation();
-  const { cssLayers } = useLoaderData<typeof loader>();
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
   const navigate = useNavigate();

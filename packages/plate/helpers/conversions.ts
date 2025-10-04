@@ -16,6 +16,7 @@ export function blocksToPlate(content: Content) {
       const block = blocks[blockId];
 
       if (block['@type'] === 'slate') {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { '@type': blockType, value, plaintext, ...blockValue } = block;
         return {
           ...value[0],
@@ -55,6 +56,7 @@ export function plateToBlocks(plateData: Array<ExtendedSlateNode>) {
   plateData.forEach((node) => {
     const id = node.id || nanoid(10);
     if (node['@type']) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { id, type, children, ...nodeValue } = node;
       blocks[id] = {
         ...nodeValue,

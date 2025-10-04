@@ -12,6 +12,6 @@
 
 ### Internal
 
-- Adjust peer dependencies and engine. @sneridagh 
+- Adjust peer dependencies and engine. @sneridagh
 
 ## 1.0.0 (unreleased)
