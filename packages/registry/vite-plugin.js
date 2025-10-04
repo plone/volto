@@ -1,6 +1,7 @@
 import path from 'path';
 import { AddonRegistry } from '@plone/registry/addon-registry';
 import { createAddonsLoader } from '@plone/registry/create-addons-loader';
+import { createAddonsServerLoader } from '@plone/registry/create-addons-loader-server';
 import { createThemeAddonsLoader } from '@plone/registry/create-theme-loader';
 import { createAddonsStyleLoader } from '@plone/registry/create-addons-styles-loader';
 import { createAddonsLocalesLoader } from '@plone/registry/create-addons-locales-loader';
@@ -56,7 +57,10 @@ export const PloneRegistryVitePlugin = () => {
     registry.getAddons(),
     { tempInProject: true },
   );
-
+  createAddonsServerLoader(
+    registry.getAddonDependencies(),
+    registry.getAddons(),
+  );
   createAddonsStyleLoader(registry);
   createAddonsLocalesLoader(registry);
 

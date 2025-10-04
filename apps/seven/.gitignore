@@ -5,6 +5,7 @@ node_modules
 .env
 .react-router
 registry.loader.js
+registry.loader.server.js
 publicui.css
 cmsui.css
 /locales/
