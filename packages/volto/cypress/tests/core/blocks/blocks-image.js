@@ -93,16 +93,16 @@ describe('Blocks Tests', () => {
     cy.get('input[placeholder="Enter a URL to an image"]').type(
       '/my-page/my-image{enter}',
     );
-    cy.waitForResourceToLoad('my-page/my-image/@@images/image');
-    cy.get('#toolbar-save').click();
+    cy.get('.block img')
+      .should('have.attr', 'src')
+      .and('contains', '/my-page/my-image/@@images/image');
 
+    cy.get('#toolbar-save').click();
     cy.wait('@saveImage');
 
-    // then image src must be equal to image name
     cy.get('.block img')
       .should('have.attr', 'src')
       .and('contains', '/my-page/my-image/@@images/image-');
-
     cy.get('.block img')
       .should('be.visible')
       .and(($img) => {
