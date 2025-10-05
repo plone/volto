@@ -1,12 +1,10 @@
 import React from 'react';
 import { SearchField } from './SearchField';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/SearchField.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof SearchField> = {
-  title: 'Forms/SearchField',
+  title: 'Basic/Forms/SearchField',
   component: SearchField,
   parameters: {
     layout: 'centered',
@@ -21,5 +19,6 @@ export const Default: Story = {
   render: (args: any) => <SearchField {...args} />,
   args: {
     label: 'Search',
+    placeholder: 'Type to search...',
   },
 };

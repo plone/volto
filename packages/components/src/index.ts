@@ -1,5 +1,5 @@
 export { BlockToolbar } from './components/BlockToolbar/BlockToolbar';
-export { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
+export { Breadcrumb, Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
 export { Button } from './components/Button/Button';
 export { Calendar } from './components/Calendar/Calendar';
 export { ColorArea } from './components/ColorArea/ColorArea';
@@ -23,7 +23,6 @@ export { DisclosureGroup } from './components/DisclosureGroup/DisclosureGroup';
 export { Form } from './components/Form/Form';
 export { GridList, GridListItem } from './components/GridList/GridList';
 export { Icon } from './components/Icon/Icon';
-export * from './components/Icons';
 export { Link } from './components/Link/Link';
 export { ListBox, ListBoxItem } from './components/ListBox/ListBox';
 export { Menu, MenuItem } from './components/Menu/Menu';
@@ -56,3 +55,6 @@ export { Tooltip } from './components/Tooltip/Tooltip';
 export { QuantaTextField } from './components/quanta/TextField/TextField';
 export { QuantaTextAreaField } from './components/quanta/TextAreaField/TextAreaField';
 export { QuantaSelect } from './components/quanta/Select/Select';
+
+// types
+export type { IconProps } from './components/Icon/Icon';

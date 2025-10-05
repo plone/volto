@@ -680,6 +680,11 @@ msgstr "Seleccionar Archivo"
 msgid "Clear"
 msgstr "Limpiar"
 
+#. Default: "Clear date and time"
+#: components/manage/Widgets/DatetimeWidget
+msgid "Clear date/time"
+msgstr ""
+
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Clear filters"
@@ -2912,7 +2917,7 @@ msgstr "Hacer referencia a este elemento como elemento relacionado"
 msgid "Referencing this item with {relationship}"
 msgstr "Hacer referencia a este elemento con {relationship}"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr ""
@@ -4976,6 +4981,11 @@ msgstr "referencias"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
 msgstr ""
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
+msgstr "Cantidad de resultados"
 
 #. Default: "results"
 #: components/theme/Search/Search

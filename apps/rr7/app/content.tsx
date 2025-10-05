@@ -1,7 +1,7 @@
 import type { Route } from './+types/content';
 import { data, useLoaderData, useLocation } from 'react-router';
 import PloneClient from '@plone/client';
-import App from '@plone/slots/components/App';
+import App from '@plone/layout/components/App';
 import config from '@plone/registry';
 
 export const meta: Route.MetaFunction = ({ data }) => {

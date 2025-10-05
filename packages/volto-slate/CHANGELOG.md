@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.5 (2025-09-29)
+
+### Feature
+
+- Replace img tags with Image component. @wesleybl [#7363](https://github.com/plone/volto/issues/7363)
+
 ## 19.0.0-alpha.4 (2025-08-25)
 
 ### Internal

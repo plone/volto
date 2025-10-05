@@ -4,7 +4,7 @@ myst:
     "description": "The block style wrapper is part of a block anatomy. It allows you to inject styles from the block schema into the block wrapper in the form of class names."
     "property=og:description": "The block style wrapper is part of a block anatomy. It allows you to inject styles from the block schema into the block wrapper in the form of class names."
     "property=og:title": "Blocks - Style Wrapper"
-    "keywords": "Volto, Plone, frontend, React, Blocks, Edit, Style, Wrapper, components"
+    "keywords": "Volto, Plone, frontend, React, Blocks, Edit, Style, Wrapper, components, CSS variables"
 ---
 
 (block-style-wrapper-label)=
@@ -14,105 +14,236 @@ myst:
 ```{versionadded} 16.0.0
 ```
 
-The block style wrapper is part of a block anatomy.
-It allows you to inject styles from the block schema into the block wrapper in the form of class names.
-It wraps the block edit and the view components.
+The block style wrapper is part of a block’s anatomy.
+It wraps both the edit and view components, and applies styles declared in the block schema in two ways:
 
-It can be used by directly mapping unique values to CSS properties.
-For example, `background-color` could be mapped to a single color.
-Although that is a simple use case, the real intent of style wrappers is to allow the definition of complex CSS through a full set of styles mapped to a CSS class.
-For example, often applying a background color is not enough, and you need to also modify the font color to make it readable because of contrast issues.
-The style object field can be extended to hold any number of fields, depending on your needs.
-The resultant set of class names to be injected are built by concatenating the key-value pairs of the `styles` object field, separated by `--` and prefixing the result with the `has--` prefix.
-The class name generator algorithm supports up to one level of nested objects, constructing the concatenated CSS class from the nested structure as well.
-See below for an example.
+- {ref}`block-style-wrapper-custom-css-properties-label`
+- {ref}`block-style-wrapper-generated-class-names-label`
 
-## Enabling Style Wrapper in a block
+The wrapper is always present.
+Enable styling by adding a `styles` object field to your block schema.
+The wrapper reads values from the `styles` object and injects them into the edit and view components.
 
-The wrapper is always present in the rendering of both the view and edit components.
-Once you add the `styles` field in your block schema, the wrapper will inject the class names derived from it into both the view and the edit components.
-
-### Using `styles` field in your block
-
-The wrapper builds the class names to be injected by looking up a field called `styles` in your block schema.
-As a schema it has the following signature, and it's normally placed in a `Styling` fieldset:
-
-```js
-const EMPTY_STYLES_SCHEMA = {
-  fieldsets: [
-    {
-      id: 'default',
-      title: 'Default',
-      fields: [],
-    },
-  ],
-  properties: {},
-  required: [],
-};
-
-const stylingSchema = {
-  fieldsets: [{
-    id: 'styling',
-    title: intl.formatMessage(messages.styling),
-    fields: ['styles'],
-  }],
-
-  properties: {
-    styles: {
-      widget: 'object',
-      title: intl.formatMessage(messages.styling),
-      schema: EMPTY_STYLES_SCHEMA
-    }
-  }
-}
+```{tip}
+Prefer custom CSS properties.
+They are flexible, cascade-friendly, and pragmatic for theming and per-block overrides.
+Use generated class names for discrete, pre-defined variants.
 ```
 
-The `addStyling` schemaEnhancer adds the (empty) `styles` field inside the `Styling` fieldset for you, so when defining your block schema you can do:
+## Quick start
+
+Add a `styles` object to your block schema.
+Instead of doing it manually every time, use the `addStyling` helper:
 
 ```js
 import { addStyling } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
 
-export const TeaserSchema = ({ intl }) => {
-  const schema = {
-  // Here your block schema
-  };
+export const MyBlockSchema = ({ intl }) => {
+  const schema = { /* your block schema */ };
 
+  // Adds an empty `styles` object field under a "Styling" fieldset
   addStyling({ schema, intl });
 
-  // Here you add your custom styling properties to the `styles` object
+  // Add your styling controls
   schema.properties.styles.schema.properties.align = {
     widget: 'align',
-    title: intl.formatMessage(messages.align),
-    actions: ['left', 'right', 'center'],
+    title: 'Alignment',
+    actions: ['left', 'center', 'right'],
   };
-
-  // and finally add it to the default fieldset
   schema.properties.styles.schema.fieldsets[0].fields.push('align');
 
   return schema;
 };
 ```
 
-You can add a set of style fields defining your block styles—such as alignment, background color, and so on—in your block schema by adding them to the `styles` object field as shown above.
-
-In case you decide to create reusable sets of styling controls for your blocks, you can use the `composeSchema` helper to compose multiple schemaEnhancers:
+You can compose reusable styling controls using `composeSchema`:
 
 ```js
 import { composeSchema } from '@plone/volto/helpers';
 
-// ...
 config.blocks.blocksConfig.listing.schemaEnhancer = composeSchema(
   config.blocks.blocksConfig.listing.schemaEnhancer,
   addStyling,
   addMyCustomColorStylingField,
-)
 ```
 
-## The `styles` field
+```{note}
+The `styles` field is not added automatically.
+Use `addStyling`, or add it manually as an `object` widget.
+Values defined in `styles` are injected by the wrapper in edit and view components.
+```
 
-The `styles` field is mapped to an `objectWidget`.
-The following is an example of a possible set of styles.
-The style wrapper will read the styles and inject the resultant class names into the edit and view components as shown in the next sections.
+(block-style-wrapper-custom-css-properties-label)=
+## Custom CSS properties (recommended)
+
+```{versionadded} 17.8.0
+```
+
+Use CSS custom properties for flexible, themeable styling that benefits from the cascade.
+Define CSS to consume a variable with `var(--your-prop)` and add the corresponding property name as a key in the `styles` object.
+
+Example: control an image aspect ratio per block.
+
+```js
+// In the block schema enhancer
+schema.properties.styles.schema.fieldsets[0].fields = [
+  ...schema.properties.styles.schema.fieldsets[0].fields,
+  '--image-aspect-ratio',
+];
+
+schema.properties.styles.schema.properties['--image-aspect-ratio'] = {
+  widget: 'select',
+  title: 'Aspect Ratio',
+  choices: [
+    ['1', '1:1'],
+    ['16 / 9', '16/9'],
+  ],
+  default: '1',
+};
+```
+
+Theme CSS:
+
+```css
+.block.teaser img {
+  aspect-ratio: var(--image-aspect-ratio, 16 / 9);
+}
+```
+
+Resulting markup (with default selected):
+
+```html
+<div class="block teaser" style="--image-aspect-ratio: 1">
+  <img src="example.png" />
+  ...
+</div>
+```
+
+Use injected properties in a custom block view component:
+
+```jsx
+const BlockView = (props) => (
+  <div style={props.style}>
+    {/* Block's view component code */}
+  </div>
+);
+```
+
+```{seealso}
+[CSS custom properties basics](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties)
+```
+
+### Nested custom CSS properties
+
+You can inject nested variables.
+The wrapper prefixes nested keys with the parent key using `--parent--child` naming.
+This is useful for grouping related properties, or if the thing that you're styling requires multiple properties.
+
+(inject-nested-custom-css-properties)=
+
+#### Inject nested custom CSS properties
+
+Given this enhancer:
+
+```js
+schema.properties.styles.schema.fieldsets[0].fields = [
+  ...schema.properties.styles.schema.fieldsets[0].fields,
+  'theme',
+];
+
+schema.properties.styles.schema.properties['theme'] = {
+  widget: 'color_picker',
+  title: 'Theme',
+  colors,
+  default: defaultBGColor,
+};
+```
+
+It will generate values for the block style wrapper to use:
+
+```js
+{
+  "styles": {
+    "theme": {
+      "--background-color": "#222",
+      "--font-color": "white"
+    }
+  }
+}
+```
+
+Resulting inline variables will have the injected `--theme--` prefix:
+
+```html
+<div class="block teaser" style="--theme--background-color: #222; --theme--font-color: white">
+  ...
+</div>
+```
+
+````{note}
+The `color_picker` widget, when given a list of `StyleDefinition` objects, will save the selected color as a nested object of CSS custom properties.
+This is a common pattern for theming controls.
+
+```ts
+import { StyleDefinition } from '@plone/types';
+
+const colors: StyleDefinition[] = [
+  {
+    name: 'dark',
+    label: 'Dark',
+    style: {
+      '--background-color': '#222',
+      '--font-color': 'white',
+    },
+  },
+  {
+    name: 'light',
+    label: 'Light',
+    style: {
+      '--background-color': 'white',
+      '--font-color': '#222',
+    },
+  },
+];
+```
+````
+
+#### Avoid injecting nested prefixes
+
+When you need exact variable names without a parent prefix, append the `:noprefix` suffix to the field name in your enhancer.
+
+```js
+schema.properties.styles.schema.fieldsets[0].fields = [
+  ...schema.properties.styles.schema.fieldsets[0].fields,
+  'theme:noprefix',
+];
+
+schema.properties.styles.schema.properties['theme:noprefix'] = {
+  widget: 'color_picker',
+  title: 'Theme',
+  colors,
+  default: defaultBGColor,
+};
+```
+
+This yields inline variables without the prefix:
+
+```html
+<div class="block teaser" style="--background-color: #222; --font-color: white">
+  ...
+</div>
+```
+
+(block-style-wrapper-generated-class-names-label)=
+## Generated class names
+
+The wrapper can generate class names from the `styles` object.
+This is useful when mapping discrete, curated style tokens to theme classes.
+
+Class names are built by concatenating key–value pairs with `--` and prefixing with `has--`.
+One level of nesting is supported.
+
+Given:
 
 ```json
 {
@@ -127,35 +258,46 @@ The style wrapper will read the styles and inject the resultant class names into
 }
 ```
 
-## Using the injected class names in your block
-
-The resultant class names are injected as a `className` prop into the wrapped block.
-Thus you can use it in the root component of your block view component as follows:
-
-```jsx
-const BlockView = (props)=> (
-  <div className={props.className}>
-    // Block's view component code
-  </div>
-)
-```
-
-```{note}
-You need to manually add the above code in your view component block code in order to benefit from the class names injection.
-The styles in the block edit component are injected automatically into the blocks engine editor wrappers, so you don't have to take any action.
-```
-
-The resultant HTML would be the following:
+Resulting classes:
 
 ```html
-<div class="has--backgroundColor--ee22ee has--myCustomStyleField--red has--myCustom2StyleField--color--black has--myCustom2StyleField--color--MyGradient">
+<div class="has--backgroundColor--ee22ee has--myCustomStyleField--red has--myCustom2StyleField--color--black has--myCustom2StyleField--gradient--MyGradient">
 ```
-Then it's at your discretion how you define the CSS class names in your theme.
+
+Pass the injected `className` to the root element in your view component:
+
+```jsx
+const BlockView = (props) => (
+  <div className={props.className}>
+    {/* Block's view component code */}
+  </div>
+);
+```
+
+### Customize generated class names
+
+You can customize class generation with converters in `config.settings.styleClassNameConverters` by suffixing field names with the converter name.
+For example:
+
+```
+{
+  "styles": {
+    "theme:noprefix": "primary",
+    "inverted:bool": true
+  }
+}
+```
+
+Generates:
+
+```css
+primary inverted
+```
 
 ## Error class for blocks
 
-When a user submits data in a form, and the block has a validation error (for example, via `blocksErrors`), then the block wrapper automatically receives the `error` class.
-This allows you to customize the appearance of blocks with errors via CSS, as in the following example.
+When a user submits data and the block has a validation error (for example, via `blocksErrors`), the wrapper automatically adds the `error` class.
+This allows you to customize the appearance of errors via CSS:
 
 ```css
 .block.error {
@@ -164,192 +306,12 @@ This allows you to customize the appearance of blocks with errors via CSS, as in
 }
 ```
 
-The class is automatically added by the `Edit.jsx` component, and can be used in any theme or style customization to highlight blocks with errors.
-
-## Customize the injected class names
-
-If you need other style of classnames generated, you can use the classname
-converters defined in `config.settings.styleClassNameConverters`, by
-registering fieldnames suffixed with the converter name. For example, a style
-data like:
-
-```
-{
-  "styles": {
-    "theme:noprefix": "primary",
-    "inverted:bool": true,
-  }
-}
-```
-
-will generate classnames `primary inverted`
-
-## Inject custom CSS properties
-
-```{versionadded} 17.8.0
-```
-
-The style wrapper also allows to inject custom CSS properties.
-This is useful where the property that you want to inject is customizable per project.
-For example, imagine you have an existing global CSS custom property `--image-aspect-ratio` that you use for all images in all blocks.
-Then in your customized theme, you could set CSS attributes for this property, changing it in runtime.
-The key feature of custom CSS properties is that they can be applied also using the cascade.
-This means that they can be placed anywhere in either CSS definitions or HTML structure, and they will be applied only in the context where they are defined.
-
-As an example, first define the style of a teaser block image as follows.
-
-```css
-.block.teaser img {
-  aspect-ratio: var(--image-aspect-ratio, 16 / 9);
-}
-```
-
-Next, you can enhance a block's schema by injecting the custom CSS property as follows.
-
-```js
-  schema.properties.styles.schema.fieldsets[0].fields = [
-    ...schema.properties.styles.schema.fieldsets[0].fields,
-    '--image-aspect-ratio',
-  ];
-
-  // We use a select widget and set a default
-  schema.properties.styles.schema.properties['--image-aspect-ratio'] = {
-    widget: 'select',
-    title: 'Aspect Ratio',
-    choices: [
-      ['1', '1:1'],
-      ['16 / 9', '16/9'],
-    ],
-    default: '1',
-  };
-```
-
-Finally, assuming that you select the default value for the {guilabel}`Aspect Ratio` for the custom CSS property, then the markup of the block will contain the custom property as shown.
-
-```html
-<div class="block teaser" style="--image-aspect-ratio: 1">
-<img src="example.png">
-</div>
-```
-
-As you can see, the custom CSS declaration applies only in the `div` where you inject the property.
-
-```{seealso}
-[CSS custom properties basics](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties)
-```
-
-If you want to use it in your custom components, you need to apply it in the root of your block's view component as follows:
-
-```jsx
-const BlockView = (props)=> (
-  <div style={props.style}>
-    // Block's view component code
-  </div>
-)
-```
-
-```{note}
-You need to manually add the above code in your view component block code to benefit from the style injection.
-The styles in the block edit component are injected automatically into the blocks engine editor wrappers, so you don't have to take any action.
-```
-
-## Nested custom CSS properties
-
-This section describes how to work with nested custom CSS properties.
-You can inject custom CSS properties in a nested manner.
-You can also avoid some nesting, where useful.
-
-
-(inject-nested-custom-css-properties)=
-
-### Inject nested custom CSS properties
-
-Given this block enhancer:
-
-```js
-  schema.properties.styles.schema.fieldsets[0].fields = [
-    ...schema.properties.styles.schema.fieldsets[0].fields,
-    'theme',
-  ];
-
-  schema.properties.styles.schema.properties['theme'] = {
-    widget: 'color_picker',
-    title: 'Theme',
-    colors,
-    default: defaultBGColor,
-  };
-```
-
-It will generate these values for the `StyleWrapper` to use:
-
-```js
-{
-  "styles": {
-    "theme": {
-      "--background-color": "#222",
-      "--font-color": "white"
-    }
-  }
-}
-```
-
-The resultant injected custom CSS properties will be prefixed with two dashes plus the name of the key, `--theme` in this example.
-
-```html
-<div class="block teaser" style="--theme--background-color: #222, --theme--font-color: white">
- ...
-</div>
-```
-
-
-### Avoid injecting nested custom CSS properties
-
-Sometimes you might not want to build the custom CSS property name with a prefix in a nested structure, as described in {ref}`inject-nested-custom-css-properties`, because you want to use the exact names defined in your custom CSS properties.
-To avoid building a prefix, you can append the suffix `:noprefix` in your block enhancer.
-
-```js
-  schema.properties.styles.schema.fieldsets[0].fields = [
-    ...schema.properties.styles.schema.fieldsets[0].fields,
-    'theme:noprefix',
-  ];
-
-  schema.properties.styles.schema.properties['theme:noprefix'] = {
-    widget: 'color_picker',
-    title: "Theme",
-    colors,
-    default: defaultBGColor,
-  };
-```
-
-It will generate these values for the `StyleWrapper` to use:
-
-```js
-{
-  "styles": {
-    "theme:noprefix": {
-      "--background-color": "#222",
-      "--font-color": "white"
-    }
-  }
-}
-```
-
-This will yield the resultant markup without a prefix.
-
-```html
-<div class="block teaser" style="--background-color: #222, --font-color: white">
- ...
-</div>
-```
+The class is added automatically by the block engine.
 
 ## Align class injection
 
-There is an automatic class name injection happening at the same time the style wrapper class names injection.
-The `data.align` is also injected directly.
-This is in place to help properly position the block in the current layout and play well with legacy CSS and block layout.
-This might be replaced in the future by the style wrapper class names injection.
-
-Each block in the Block Engine has a main wrapper with an automatic class name `block-editor-<block_id> <block_align>`, as shown in the following example:
+While injecting style wrapper classes, the engine also injects `data.align` as a class for layout backwards compatibility.
+Each block editor wrapper has `block-editor-<block_id> <block_align>`, for example:
 
 ```html
 <div data-rbd-draggable-context-id="0" data-rbd-draggable-id="9949a5fa-5d57-4e0c-a150-71149a31096c" class="block-editor-listing center">
@@ -357,25 +319,22 @@ Each block in the Block Engine has a main wrapper with an automatic class name `
 </div>
 ```
 
-You can use it for further control over the positioning and layout of the block.
+Use this to help position blocks within legacy layouts if needed.
 
 ## Style object builder enhancer
 
-The style wrapper has a helper method that generates a style object from the block data.
-This generated style object is available to inject into the style property.
-
-You can tap into this helper method by applying your own rules programmatically.
-Define a utility of the `type` `styleWrapperStyleObjectEnhancer` as follows.
+The style wrapper exposes a helper that can programmatically build or modify a style object (inline variables) from block data.
+Register a utility of type `styleWrapperStyleObjectEnhancer`:
 
 ```ts
-  config.registerUtility({
-    name: 'blockThemesEnhancer',
-    type: 'styleWrapperStyleObjectEnhancer',
-    method: blockThemesEnhancer,
-  });
+config.registerUtility({
+  name: 'blockThemesEnhancer',
+  type: 'styleWrapperStyleObjectEnhancer',
+  method: blockThemesEnhancer,
+});
 ```
 
-The registered method has the following signature.
+The registered utility has the following signature.
 
 ```ts
 type blockThemesEnhancerType = ({
@@ -387,5 +346,16 @@ type blockThemesEnhancerType = ({
 }) => Record<`--${string}`, string>;
 ```
 
-`data` is the current block, and `container` is its parent block, if the current block is in a block container.
-It returns a record of CSS properties.
+`data` is the current block, and `container` is its parent block, when applicable.
+The utility returns a record of CSS custom properties to inject.
+
+## Best practices
+
+- Prefer custom CSS properties for most styling needs.
+  They compose well and avoid class name bloat.
+- Reserve generated classes for semantic variants that map to predefined theme classes.
+- Keep `styles` values human-friendly in the UI, but map to robust tokens in CSS.
+- Avoid mixing both mechanisms for the same concern.
+  Pick variables or classes per concern.
+- Always pass `className` or `style` to your block's root element in the view component.
+
