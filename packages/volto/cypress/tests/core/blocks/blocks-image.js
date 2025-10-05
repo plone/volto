@@ -93,6 +93,7 @@ describe('Blocks Tests', () => {
     cy.get('input[placeholder="Enter a URL to an image"]').type(
       '/my-page/my-image{enter}',
     );
+    cy.waitForResourceToLoad('my-page/my-image/@@images/image');
     cy.get('#toolbar-save').click();
 
     cy.wait('@saveImage');
