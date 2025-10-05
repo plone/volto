@@ -93,7 +93,7 @@ describe('Blocks Tests', () => {
     cy.get('input[placeholder="Enter a URL to an image"]').type(
       '/my-page/my-image{enter}',
     );
-    cy.get('.block img')
+    cy.get('.block img.responsive')
       .should('have.attr', 'src')
       .and('contains', '/my-page/my-image/@@images/image');
 
