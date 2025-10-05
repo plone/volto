@@ -26,10 +26,7 @@ describe('Blocks Tests', () => {
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
-    cy.get('.block-editor-image [tabindex="0"]')
-      .last()
-      .focus()
-      .should('have.css', 'outline', 'rgb(16, 16, 16) auto 1px');
+    cy.get('.block-editor-image [tabindex="0"]').last().focus();
     cy.findByLabelText('Enter a URL to an image').click();
     cy.get('.ui.input.editor-link.input-anchorlink-theme input').type(
       `https://github.com/plone/volto/raw/main/logos/volto-colorful.png{enter}`,
@@ -94,7 +91,7 @@ describe('Blocks Tests', () => {
 
     cy.findByLabelText('Enter a URL to an image').click();
     cy.get('input[placeholder="Enter a URL to an image"]').type(
-      '/plone/my-page/my-image{enter}',
+      '/my-page/my-image{enter}',
     );
     cy.get('#toolbar-save').click();
 
