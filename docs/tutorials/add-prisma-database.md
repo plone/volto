@@ -40,15 +40,18 @@ Run this command from the repo root to install Prisma and its client in your add
 pnpm --filter <add-on-name> add @prisma/client prisma @types/node
 ```
 
-```{warning}
+````{warning}
 pnpm requires that you approve the builds of this packages, by running `pnpm approve-builds` command.
 Follow the instructions in the terminal to approve the builds.
 
-```{image} ../_static/approve-builds.jpg
-:alt: pnpm approve-builds
-:width: 700px
-:align: center
+```shell
+❯ pnpm approve-builds
+? Choose which packages to build (Press <space> to select, <a> to toggle all, <i> to invert selection) …
+  ● @prisma/client
+  ● @prisma/engines
+❯ ● prisma
 ```
+````
 
 In your add-on's {file}`package/<add-on-name>/package.json`, add these convenience scripts to work with the Prisma client:
 
