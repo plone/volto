@@ -15,7 +15,7 @@ This guide will walk you through the steps to integrate Tailwind CSS into your a
 
 Install Tailwind CSS in your add-on by running the following command from the root of your project.
 ```shell
-pnpm --filter <addon-name> add tailwindcss
+pnpm --filter <add-on-name> add tailwindcss
 ```
 
 ## Create `styles/publicui.css` file
@@ -23,13 +23,13 @@ pnpm --filter <addon-name> add tailwindcss
 Create a {file}`styles` folder in your add-on's directory.
 
 ```shell
-mkdir packages/<addon-name>/styles
+mkdir packages/<add-on-name>/styles
 ```
 
 Then create a {file}`publicui.css` file inside the {file}`styles` folder.
 
 ```shell
-touch packages/<addon-name>/styles/publicui.css
+touch packages/<add-on-name>/styles/publicui.css
 ```
 
 ## Use Tailwind `className` in your React components
