@@ -144,11 +144,11 @@ pnpm --filter <add-on-name> run prisma:generate
 pnpm --filter <add-on-name> run prisma:db:push
 ```
 
-You should now see {file}`packages/<addon-name>/prisma/dev.db` and the generated client files.
+You should now see {file}`packages/<add-on-name>/prisma/dev.db` and the generated client files.
 
 ## Create a `/@likes` route to interact with the database
 
-Create a new file named {file}`api.likes.ts` in the {file}`routes` folder of your add-on ({file}`package/<addon-name>/routes/api.likes.ts`).
+Create a new file named {file}`api.likes.ts` in the {file}`routes` folder of your add-on ({file}`package/<add-on-name>/routes/api.likes.ts`).
 It will read and increment the like counter.
 
 ```{code-block} tsx
@@ -188,7 +188,7 @@ export async function action({ params }: ActionFunctionArgs) {
 ```
 
 Let's declare the route in Seven.
-First, create a {file}`config` folder in your add-on at {file}`package/<addon-name>/config`.
+First, create a {file}`config` folder in your add-on at {file}`package/<add-on-name>/config`.
 You'll store all your add-on configurations in this folder.
 
 Then, create a file in this folder {file}`package/<add-on-name>/config/routes.ts` with the following code.
@@ -280,7 +280,7 @@ This component uses the `useFetcher` hook from `react-router` to send a POST req
 It also uses the `useRouteLoaderData` hook to get the current number of likes for the URL from the root loader data.
 
 Next, declare the slot in Seven.
-First, create a {file}`slots.ts` file in the {file}`config` folder of your add-on at {file}`package/<addon-name>/config/slots.ts` with the following code:
+First, create a {file}`slots.ts` file in the {file}`config` folder of your add-on at {file}`package/<add-on-name>/config/slots.ts` with the following code:
 
 ```{code-block} ts
 :caption: packages/\<add-on-name>/config/slots.ts
@@ -320,7 +320,7 @@ export default function install(config: ConfigType) {
 Seven lets add-ons contribute data to the root loader through utilities.
 Create {file}`packages/<add-on-name>/config/server.ts` so every request exposes the current like counter to the client.
 Next, register a utility function of the type `rootLoaderData` that will be called in the root loader of Seven.
-Create a new file {file}`server.ts` in the {file}`config` folder of your add-on at {file}`package/<addon-name>/config/server.ts` with the following code.
+Create a new file {file}`server.ts` in the {file}`config` folder of your add-on at {file}`package/<add-on-name>/config/server.ts` with the following code.
 
 ```{code-block} ts
 :caption: packages/\<add-on-name>/config/server.ts
