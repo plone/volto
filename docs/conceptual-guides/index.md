@@ -20,7 +20,7 @@ add-on-loader
 add-on-styles-loader
 configuration-registry
 add-on-driven-configuration
-cookieplone-frontend-addon
+cookieplone-frontend-add-on
 routing
 slots
 ```
