@@ -32,16 +32,19 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 
   const path = `/${params['*'] || ''}`;
 
-  const rootDataUtilities = config.getUtilities({
+  const rootLoaderDataUtilities = config.getUtilities({
     type: 'rootLoaderData',
   });
 
   try {
-    const [content, site, ...rest] = await Promise.all([
+    const [content, site] = await Promise.all([
       cli.getContent({ path, expand }),
       cli.getSite(),
-      ...rootDataUtilities.map((utility) =>
-        utility.method({ cli, request, path, params, locale }),
+    ]);
+
+    const rootLoaderDataUtilitiesData = await Promise.all([
+      ...rootLoaderDataUtilities.map((utility) =>
+        utility.method({ cli, content, request, path, params, locale }),
       ),
     ]);
 
@@ -49,7 +52,9 @@ export async function loader({ params, request }: Route.LoaderArgs) {
       content: flattenToAppURL(content.data),
       site: flattenToAppURL(site.data),
       locale,
-      ...rest.reduce((acc, item) => ({ ...acc, ...item }), {}),
+      ...rootLoaderDataUtilitiesData
+        .filter((item) => item)
+        .reduce((acc, item) => ({ ...acc, ...item }), {}),
     };
   } catch (error: any) {
     throw data('Content Not Found', {
