@@ -20,7 +20,7 @@ You need a default add-on that provides the entry-point configuration for your a
 The {term}`cookieplone` generator includes this default add-on when you scaffold a project, whether you create a frontend-only add-on or a full-fledged Plone project including both backend and frontend.
 After scaffolding, the default add-on lives in {file}`packages/<add-on-name>` for a frontend add-on, or in {file}`frontend/packages/<add-on-name>` for a Plone project.
 
-See {doc}`cookieplone-frontend-addon` for more information about the anatomy of a frontend add-on.
+See {doc}`cookieplone-frontend-add-on` for more information about the anatomy of a frontend add-on.
 
 ## Adding more add-ons
 
