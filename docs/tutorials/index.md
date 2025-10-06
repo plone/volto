@@ -9,7 +9,7 @@ myst:
 
 # Tutorials
 
-This part of the documentation contains tutorials.
+This part of the documentation contains tutorials for developing with Seven.
 
 ```{toctree}
 :maxdepth: 2
