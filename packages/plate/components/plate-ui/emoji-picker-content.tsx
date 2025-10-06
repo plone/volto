@@ -33,7 +33,10 @@ const Button = memo(
   ({ emoji, index, onMouseOver, onSelect }: EmojiButtonProps) => {
     return (
       <button
-        className="group relative flex size-9 cursor-pointer items-center justify-center border-none bg-transparent text-2xl leading-none"
+        className={`
+          group relative flex size-9 cursor-pointer items-center justify-center border-none
+          bg-transparent text-2xl leading-none
+        `}
         onClick={() => onSelect(emoji)}
         onMouseEnter={() => onMouseOver(emoji)}
         onMouseLeave={() => onMouseOver()}
@@ -43,7 +46,10 @@ const Button = memo(
         type="button"
       >
         <div
-          className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100"
+          className={`
+            absolute inset-0 rounded-full opacity-0
+            group-hover:opacity-100
+          `}
           aria-hidden="true"
         />
         <span
@@ -116,7 +122,11 @@ export function EmojiPickerContent({
             style={{ width: getRowWidth }}
             data-id={categoryId}
           >
-            <div className="bg-popover/90 sticky -top-px z-1 p-1 py-2 text-sm font-semibold backdrop-blur-xs">
+            <div
+              className={`
+                sticky -top-px z-1 bg-popover/90 p-1 py-2 text-sm font-semibold backdrop-blur-xs
+              `}
+            >
               {i18n.categories[categoryId]}
             </div>
             <div
@@ -152,7 +162,12 @@ export function EmojiPickerContent({
   const SearchList = useCallback(() => {
     return (
       <div style={{ width: getRowWidth }} data-id="search">
-        <div className="bg-popover/90 text-card-foreground sticky -top-px z-1 p-1 py-2 text-sm font-semibold backdrop-blur-xs">
+        <div
+          className={`
+            sticky -top-px z-1 bg-popover/90 p-1 py-2 text-sm font-semibold text-card-foreground
+            backdrop-blur-xs
+          `}
+        >
           {i18n.searchResult}
         </div>
         <div className="relative flex flex-wrap">
@@ -184,8 +199,15 @@ export function EmojiPickerContent({
         'h-full min-h-[50%] overflow-x-hidden overflow-y-auto px-2',
         '[&::-webkit-scrollbar]:w-4',
         '[&::-webkit-scrollbar-button]:hidden [&::-webkit-scrollbar-button]:size-0',
-        '[&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:hover:bg-muted-foreground/25 [&::-webkit-scrollbar-thumb]:min-h-11 [&::-webkit-scrollbar-thumb]:rounded-full',
-        '[&::-webkit-scrollbar-thumb]:border-popover [&::-webkit-scrollbar-thumb]:border-4 [&::-webkit-scrollbar-thumb]:border-solid [&::-webkit-scrollbar-thumb]:bg-clip-padding',
+        `
+          [&::-webkit-scrollbar-thumb]:min-h-11 [&::-webkit-scrollbar-thumb]:rounded-full
+          [&::-webkit-scrollbar-thumb]:bg-muted
+          [&::-webkit-scrollbar-thumb]:hover:bg-muted-foreground/25
+        `,
+        `
+          [&::-webkit-scrollbar-thumb]:border-4 [&::-webkit-scrollbar-thumb]:border-solid
+          [&::-webkit-scrollbar-thumb]:border-popover [&::-webkit-scrollbar-thumb]:bg-clip-padding
+        `,
       )}
       data-id="scroll"
     >

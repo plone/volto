@@ -2,7 +2,14 @@ import { withVariants } from '@udecode/cn';
 import { type VariantProps, cva } from 'class-variance-authority';
 
 export const inputVariants = cva(
-  'flex w-full rounded-md bg-transparent text-base file:border-0 file:bg-background file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
+  `
+    flex w-full rounded-md bg-transparent text-base
+    file:border-0 file:bg-background file:text-sm file:font-medium file:text-foreground
+    placeholder:text-muted-foreground
+    focus-visible:outline-none
+    disabled:cursor-not-allowed disabled:opacity-50
+    md:text-sm
+  `,
   {
     defaultVariants: {
       h: 'md',
@@ -40,10 +47,22 @@ export function FloatingInput({
   return (
     <>
       <label
-        className="text-muted-foreground/70 group-focus-within:text-foreground has-[+input:not(:placeholder-shown)]:text-foreground absolute top-1/2 block -translate-y-1/2 cursor-text px-1 text-sm transition-all group-focus-within:pointer-events-none group-focus-within:top-0 group-focus-within:cursor-default group-focus-within:text-xs group-focus-within:font-medium has-[+input:not(:placeholder-shown)]:pointer-events-none has-[+input:not(:placeholder-shown)]:top-0 has-[+input:not(:placeholder-shown)]:cursor-default has-[+input:not(:placeholder-shown)]:text-xs has-[+input:not(:placeholder-shown)]:font-medium"
+        className={`
+          absolute top-1/2 block -translate-y-1/2 cursor-text px-1 text-sm text-muted-foreground/70
+          transition-all
+          group-focus-within:pointer-events-none group-focus-within:top-0
+          group-focus-within:cursor-default group-focus-within:text-xs
+          group-focus-within:font-medium group-focus-within:text-foreground
+          has-[+input:not(:placeholder-shown)]:pointer-events-none
+          has-[+input:not(:placeholder-shown)]:top-0
+          has-[+input:not(:placeholder-shown)]:cursor-default
+          has-[+input:not(:placeholder-shown)]:text-xs
+          has-[+input:not(:placeholder-shown)]:font-medium
+          has-[+input:not(:placeholder-shown)]:text-foreground
+        `}
         htmlFor={id}
       >
-        <span className="bg-background inline-flex px-2">{label}</span>
+        <span className="inline-flex bg-background px-2">{label}</span>
       </label>
       <Input id={id} className={className} placeholder="" {...props} />
     </>

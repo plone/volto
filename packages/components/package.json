@@ -129,7 +129,6 @@
     "jsdom": "^22.1.0",
     "lightningcss": "^1.29.0",
     "lightningcss-cli": "^1.29.1",
-    "prettier-plugin-tailwindcss": "^0.6.11",
     "release-it": "catalog:",
     "storybook": "^9.1.7",
     "tailwindcss-react-aria-components": "^2.0.0",
