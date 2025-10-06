@@ -10,6 +10,8 @@ myst:
 # Add Tailwind CSS to your add-on
 
 This guide will walk you through the steps to integrate Tailwind CSS into your add-on.
+It assumes you have already set up a basic add-on structure using the {term}`cookieplone` generator.
+Follow {doc}`../get-started/create-package` before you continue if still don't have an add-on scaffold.
 
 ## Install Tailwind CSS
 
@@ -32,9 +34,9 @@ Then create a {file}`publicui.css` file inside the {file}`styles` folder.
 touch packages/<add-on-name>/styles/publicui.css
 ```
 
-## Use Tailwind `className` in your React components
+## Use Tailwind utilities in your React components
 
-You can now use Tailwind CSS classes in your React components, as shown in the following example.
+You can now use Tailwind CSS class name utilities in your React components, as shown in the following example.
 
 ```tsx
 import React from 'react';
