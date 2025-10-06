@@ -17,7 +17,7 @@ jobs:
       with:
         fail: true
         args: >-
-          --timeout 5
+          --timeout 10
           --max-retries 2
           --exclude https://www.npmjs.com/
           --exclude http://localhost:8080
@@ -25,6 +25,5 @@ jobs:
           --exclude https://github.com/kitconcept/volto-blocks-grid.git
           --exclude https://my-server-DNS-name.tld/api
           --exclude 2021.ploneconf.org
-          --exclude https://www.lanku.eus/
           '**/README.md'
           'PACKAGES.md'
