@@ -21,4 +21,5 @@ register-and-retrieve-components
 register-and-retrieve-utilities
 register-slots
 shadow-a-component
+fetch-additional-data-root-loader
 ```
