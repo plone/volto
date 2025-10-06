@@ -7,12 +7,12 @@ myst:
     "keywords": "Seven, @plone/registry, registry, configuration, guide, root, data, fetching"
 ---
 
-# How to fetch additional data in the root loader
+# Fetch additional data in the root loader
 
 You can fetch additional data in the root loader by creating utility functions that will be called when fetching the root data.
 
 For example, you can create a utility function that fetches data from an external database and adds it to the root loader data.
-Since this kind of utility should only be run and included in the server bundle, register the utility in your add-on's `packages/<add-on-name>/config/server.ts` file.
+Since this kind of utility should only be run and included in the server bundle, register the utility in your add-on's {file}`packages/<add-on-name>/config/server.ts` file.
 
 Use the following code as an example:
 
