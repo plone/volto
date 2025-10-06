@@ -18,9 +18,15 @@ export const CodeBlockElement = withRef<typeof PlateElement>(
           className,
           'py-1',
           '**:[.hljs-comment,.hljs-code,.hljs-formula]:text-[#6a737d]',
-          '**:[.hljs-keyword,.hljs-doctag,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_]:text-[#d73a49]',
-          '**:[.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_]:text-[#6f42c1]',
-          '**:[.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable]:text-[#005cc5]',
+          `
+            **:[.hljs-keyword,.hljs-doctag,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_]:text-[#d73a49]
+          `,
+          `
+            **:[.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_]:text-[#6f42c1]
+          `,
+          `
+            **:[.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable]:text-[#005cc5]
+          `,
           '**:[.hljs-regexp,.hljs-string,.hljs-meta_.hljs-string]:text-[#032f62]',
           '**:[.hljs-built_in,.hljs-symbol]:text-[#e36209]',
           '**:[.hljs-name,.hljs-quote,.hljs-selector-tag,.hljs-selector-pseudo]:text-[#22863a]',
@@ -33,8 +39,14 @@ export const CodeBlockElement = withRef<typeof PlateElement>(
         )}
         {...props}
       >
-        <div className="bg-muted/50 relative rounded-md">
-          <pre className="overflow-x-auto p-8 pr-4 font-mono text-sm leading-[normal] [tab-size:2] print:break-inside-avoid">
+        <div className="relative rounded-md bg-muted/50">
+          <pre
+            className={`
+              overflow-x-auto p-8 pr-4 font-mono text-sm leading-[normal]
+              [tab-size:2]
+              print:break-inside-avoid
+            `}
+          >
             <code>{children}</code>
           </pre>
 
@@ -47,7 +59,7 @@ export const CodeBlockElement = withRef<typeof PlateElement>(
                 onClick={() => formatCodeBlock(editor, { element })}
                 title="Format code"
               >
-                <BracesIcon className="text-muted-foreground !size-3.5" />
+                <BracesIcon className="!size-3.5 text-muted-foreground" />
               </Button>
             )}
 
@@ -56,7 +68,7 @@ export const CodeBlockElement = withRef<typeof PlateElement>(
             <CopyButton
               size="icon"
               variant="ghost"
-              className="text-muted-foreground size-6 gap-1 text-xs"
+              className="size-6 gap-1 text-xs text-muted-foreground"
               value={() => NodeApi.string(element)}
             />
           </div>

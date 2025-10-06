@@ -18,7 +18,10 @@ const BlockWrapper = (props: BlockWrapperProps) => {
   return (
     <div
       className={cx(
-        `block block-${data['@type']}`,
+        `
+          block
+          block-${data['@type']}
+        `,
         { [`category-${category}`]: category },
         classNames,
       )}

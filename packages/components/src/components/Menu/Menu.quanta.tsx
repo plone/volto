@@ -37,7 +37,7 @@ export interface itemProps {
 }
 
 export const dropdownItemStyles = tv({
-  base: 'group cursor-default items-center gap-x-3 gap-y-0 rounded-lg py-1 pr-1 pl-3 outline outline-0 forced-color-adjust-none select-none',
+  base: 'group cursor-default items-center gap-x-3 gap-y-0 rounded-lg py-1 pr-1 pl-3 outline-0 forced-color-adjust-none select-none',
   variants: {
     isDisabled: {
       false: 'text-gray-900 dark:text-zinc-100',
@@ -168,7 +168,10 @@ export function Menu<T extends object>({
       <Popover placement={props.placement} className="min-w-[150px]">
         <RACMenu
           {...props}
-          className="max-h-[inherit] overflow-auto p-1 outline outline-0 [clip-path:inset(0_0_0_0_round_.75rem)]"
+          className={`
+            max-h-[inherit] overflow-auto p-1 outline-0
+            [clip-path:inset(0_0_0_0_round_.75rem)]
+          `}
         >
           {props?.menuItems?.map((item, key) => {
             return (
@@ -214,7 +217,10 @@ export function MenuSeparator(props: SeparatorProps) {
   return (
     <Separator
       {...props}
-      className="mx-3 my-1 border-b border-gray-300 dark:border-zinc-700"
+      className={`
+        mx-3 my-1 border-b border-gray-300
+        dark:border-zinc-700
+      `}
     />
   );
 }

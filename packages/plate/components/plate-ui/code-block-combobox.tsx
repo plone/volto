@@ -135,7 +135,7 @@ export function CodeBlockCombobox() {
         <Button
           size="xs"
           variant="ghost"
-          className="text-muted-foreground h-6 justify-between gap-1 px-2 text-xs select-none"
+          className="h-6 justify-between gap-1 px-2 text-xs text-muted-foreground select-none"
           aria-expanded={open}
           role="combobox"
         >

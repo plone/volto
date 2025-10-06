@@ -21,7 +21,12 @@ export const ObjectBrowserModal = () => {
   return (
     <Modal
       isDismissable
-      className="data-[entering]:animate-slide-in data-[exiting]:animate-slide-out border-quanta-azure bg-quanta-air fixed top-0 right-0 bottom-0 w-[360px] border-l px-6 py-8 text-black shadow-[rgba(0,0,0,0.1)_-8px_0px_20px] outline-none"
+      className={`
+        data-[entering]:animate-slide-in
+        data-[exiting]:animate-slide-out
+        fixed top-0 right-0 bottom-0 w-[360px] border-l border-quanta-azure bg-quanta-air px-6 py-8
+        text-black shadow-[rgba(0,0,0,0.1)_-8px_0px_20px] outline-none
+      `}
       isOpen={open}
       onOpenChange={(isOpen) => setOpen(isOpen)}
     >

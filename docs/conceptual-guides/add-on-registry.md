@@ -15,6 +15,7 @@ The add-on registry is a store where you can register a number of add-ons that y
 
 The add-on registry can be queried, so it can provide a list of add-ons installed in the registry and their properties.
 
+(what-is-an-addon)=
 
 ## What is an add-on?
 
