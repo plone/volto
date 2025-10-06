@@ -19,7 +19,8 @@
     "jsx": "react-jsx",
 
     "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "paths": {}
   },
   "include": ["src", "./setupTesting.ts"],
   "exclude": [

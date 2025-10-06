@@ -8,6 +8,42 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.1 (2025-09-29)
+
+### Bugfix
+
+- Fix Zod schema for `update` endpoint. @sneridagh [#7118](https://github.com/plone/volto/pull/7118)
+- Fixed related items payload schema. @deodorhunter [#7201](https://github.com/plone/volto/pull/7201)
+- Fixed some lint/prettier issues. @sneridagh [#7346](https://github.com/plone/volto/pull/7346)
+
+### Internal
+
+- Add `@testing-library/react` to the catalog. @sneridagh [#7372](https://github.com/plone/volto/pull/7372)
+- Remove not needed `vite`. @sneridagh 
+
+## 2.0.0-alpha.0 (2025-05-24)
+
+### Feature
+
+- Refactor plone client. @robgietema [#6889](https://github.com/plone/volto/pull/6889)
+
+### Bugfix
+
+- Fixed handling of errors that are not coming from the backend @pnicolli [#6901](https://github.com/plone/volto/pull/6901)
+- Fixed name of the getType parameter @pnicolli [#6906](https://github.com/plone/volto/pull/6906)
+- Fixed client test in `@types` endpoint. @sneridagh
+
+### Internal
+
+- Use ESlint 9, fix code. @sneridagh [#6775](https://github.com/plone/volto/pull/6775)
+- Update vitest packages to match the catalog. @sneridagh [#6777](https://github.com/plone/volto/pull/6777)
+- Update `vitest` version to catalog. @sneridagh [#6916](https://github.com/plone/volto/pull/6916)
+- Remove no longer required dependency on glob. @sneridagh [#6944](https://github.com/plone/volto/pull/6944)
+
+### Documentation
+
+- Clean up `README.md`. @stevepiercy [#6894](https://github.com/plone/volto/pull/6894)
+
 ## 1.0.0-alpha.23 (2025-02-08)
 
 ### Internal

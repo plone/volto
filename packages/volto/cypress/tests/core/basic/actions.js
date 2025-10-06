@@ -1,4 +1,5 @@
 describe('actions Tests', () => {
+  const prefixPath = Cypress.env('prefixPath') || '';
   beforeEach(() => {
     cy.autologin();
     cy.createContent({
@@ -20,7 +21,7 @@ describe('actions Tests', () => {
       cy.get('a[class="icon-align-name"]').should(
         'have.attr',
         'href',
-        '/copy_of_my-page-1/contents',
+        prefixPath + '/copy_of_my-page-1/contents',
       );
     });
   });
@@ -44,7 +45,7 @@ describe('actions Tests', () => {
       cy.get('a[class="icon-align-name"]').should(
         'have.attr',
         'href',
-        '/my-page-1/contents',
+        prefixPath + '/my-page-1/contents',
       );
     });
   });
@@ -62,7 +63,7 @@ describe('actions Tests', () => {
       cy.get('a[class="icon-align-name"]').should(
         'have.attr',
         'href',
-        '/my-page-rename/contents',
+        prefixPath + '/my-page-rename/contents',
       );
     });
   });

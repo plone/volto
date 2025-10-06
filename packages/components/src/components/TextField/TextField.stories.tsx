@@ -1,12 +1,10 @@
 import React from 'react';
 import { TextField } from './TextField';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/TextField.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof TextField> = {
-  title: 'Forms/TextField',
+  title: 'Basic/Forms/TextField',
   component: TextField,
   parameters: {
     layout: 'centered',

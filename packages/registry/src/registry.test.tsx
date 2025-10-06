@@ -1,5 +1,11 @@
 import config from './index';
 import { describe, expect, it, afterEach, beforeEach } from 'vitest';
+import type { WidgetsConfig } from '@plone/types';
+
+const MockDefaultWidget = () => <div data-testid="default-widget">Default</div>;
+const MockTextWidget = () => <input type="text" data-testid="text-widget" />;
+const MockChoiceWidget = () => <select data-testid="choice-widget" />;
+const MockVocabWidget = () => <div data-testid="vocab-widget">Vocab</div>;
 
 beforeEach(() => {
   config.set('components', {
@@ -9,6 +15,22 @@ beforeEach(() => {
   });
   config.set('slots', {});
   config.set('utilities', {});
+  config.set('widgets', {
+    default: { default: MockDefaultWidget },
+    id: {
+      title: MockTextWidget,
+    },
+    widget: {
+      special: MockChoiceWidget,
+    },
+    vocabulary: {
+      my_vocab: MockVocabWidget,
+    },
+    factory: {},
+    type: {},
+    choices: MockChoiceWidget,
+    views: {},
+  });
 });
 
 describe('Component registry', () => {
@@ -1262,5 +1284,144 @@ describe('Routes registry', () => {
         file: 'logout.tsx',
       },
     ]);
+  });
+});
+describe('Widgets registry: registerWidget/registerDefaultWidget', () => {
+  const DummyWidget = () => <div>Dummy Widget</div>;
+  DummyWidget.displayName = 'DummyWidget';
+  const AnotherWidget = () => <div>Another Widget</div>;
+  AnotherWidget.displayName = 'AnotherWidget';
+  const ThirdWidget = () => <div>Third Widget</div>;
+  ThirdWidget.displayName = 'ThirdWidget';
+
+  beforeEach(() => {
+    config._data.widgets = {} as WidgetsConfig; // reset registry for a clean test state
+  });
+
+  it('registers a default widget', () => {
+    config.registerDefaultWidget(AnotherWidget);
+    expect(config.widgets?.default.displayName).toBe('AnotherWidget');
+  });
+  it('errors when trying to register a default widget with the wrong API', () => {
+    expect(() => {
+      config.registerWidget({ key: 'default', definition: AnotherWidget });
+    }).toThrow('Use registerDefaultWidget to set the default widget');
+  });
+
+  it('registers a widget in the "widget" group', () => {
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: DummyWidget,
+      },
+    });
+
+    expect(config.widgets?.widget?.special?.displayName).toBe('DummyWidget');
+  });
+  it('registers two widgets in the "widget" group', () => {
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: DummyWidget,
+      },
+    });
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        another: DummyWidget,
+      },
+    });
+    expect(config.widgets?.widget?.special?.displayName).toBe('DummyWidget');
+    expect(config.widgets?.widget?.another?.displayName).toBe('DummyWidget');
+  });
+
+  it('registers a widget in the "factory" group', () => {
+    config.registerWidget({
+      key: 'factory',
+      definition: {
+        'my.custom.Factory': DummyWidget,
+      },
+    });
+
+    expect(config.widgets?.factory?.['my.custom.Factory']?.displayName).toBe(
+      'DummyWidget',
+    );
+  });
+  it('registers several widgets in the "widget" group at once', () => {
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: DummyWidget,
+        another: ThirdWidget,
+      },
+    });
+    expect(config.widgets?.widget?.special?.displayName).toBe('DummyWidget');
+    expect(config.widgets?.widget?.another?.displayName).toBe('ThirdWidget');
+  });
+
+  it('overwrites existing default widget', () => {
+    // TODO: disallow overwriting default widget with non specific API
+    config.registerDefaultWidget(AnotherWidget);
+    expect(config.widgets?.default.displayName).toBe('AnotherWidget');
+
+    config.registerDefaultWidget(ThirdWidget);
+
+    expect(config.widgets?.default.displayName).toBe('ThirdWidget');
+  });
+  it('overwrites existing widgets of the same key', () => {
+    // TODO: , disallow overwriting default widget with non specific API
+    config.registerWidget({
+      key: 'widget',
+      definition: { size: AnotherWidget },
+    });
+    expect(config.widgets?.widget.size?.displayName).toBe('AnotherWidget');
+
+    config.registerWidget({
+      key: 'widget',
+      definition: { size: ThirdWidget },
+    });
+
+    expect(config.widgets?.widget.size?.displayName).toBe('ThirdWidget');
+  });
+
+  it('preserves unrelated widget keys', () => {
+    config.registerDefaultWidget(DummyWidget);
+
+    config.registerWidget({
+      key: 'widget',
+      definition: {
+        special: AnotherWidget,
+      },
+    });
+
+    expect(config.widgets?.default.displayName).toBe('DummyWidget');
+    expect(config.widgets?.widget?.special?.displayName).toBe('AnotherWidget');
+  });
+});
+
+describe('Widgets registry: getWidget', () => {
+  it('gets widget by id', () => {
+    const Widget = config.getWidget('title');
+    expect(Widget).toBe(config.widgets.id.title);
+  });
+
+  it('gets widget by widget key', () => {
+    const Widget = config.getWidget('special');
+    expect(Widget).toBe(config.widgets.widget.special);
+  });
+
+  it('gets widget by vocabulary', () => {
+    const Widget = config.getWidget('my_vocab');
+    expect(Widget).toBe(config.widgets.vocabulary.my_vocab);
+  });
+
+  it('returns undefined if not found', () => {
+    const Widget = config.getWidget('nonexistent');
+    expect(Widget).toBeUndefined();
+  });
+
+  it('does NOT return widgets.default', () => {
+    const Widget = config.getWidget('default');
+    expect(Widget).not.toBe(config.widgets.default);
   });
 });

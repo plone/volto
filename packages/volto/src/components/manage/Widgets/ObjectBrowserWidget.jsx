@@ -399,6 +399,7 @@ export class ObjectBrowserWidgetComponent extends Component {
           {this.state.manualLinkInput && isEmpty(items) && (
             <Button.Group>
               <Button
+                type="button"
                 basic
                 className="cancel"
                 onClick={(e) => {
@@ -409,6 +410,7 @@ export class ObjectBrowserWidgetComponent extends Component {
                 <Icon name={clearSVG} size="18px" color="#e40166" />
               </Button>
               <Button
+                type="button"
                 basic
                 primary
                 disabled={!this.state.validURL}
@@ -423,6 +425,7 @@ export class ObjectBrowserWidgetComponent extends Component {
           )}
           {!this.state.manualLinkInput && (
             <Button
+              type="button"
               aria-label={this.props.intl.formatMessage(
                 messages.openObjectBrowser,
               )}
