@@ -58,7 +58,6 @@ In your add-on's {file}`package/<add-on-name>/package.json`, add these convenien
 ```{code-block} json
 :caption: packages/\<add-on-name>/package.json
 "scripts": {
-    // Other scripts...
     "prisma:generate": "prisma generate",
     "prisma:db:push": "prisma db push",
     "prisma:migrate": "prisma migrate dev",
@@ -264,7 +263,7 @@ export default function LikeButton() {
           type="submit"
           isDisabled={fetcher.state === 'submitting'}
         >
-          👍 Like ({likeCount})
+          &#x1F44D; Like ({likeCount})
         </Button>
       </fetcher.Form>
       {typeof fetcherCount === 'number' && (
