@@ -1,6 +1,11 @@
 import type { ImgHTMLAttributes } from 'react';
 import clsx from 'clsx';
-import type { ImageScale, ContainedItem } from '@plone/types';
+import type {
+  ImageScale,
+  ContainedItem,
+  Content,
+  RelatedItem,
+} from '@plone/types';
 
 function removeObjectIdFromURL(basePath: string, scale: string) {
   return scale.replace(`${basePath}/`, '');
@@ -26,7 +31,7 @@ export function flattenScales(path: string, image: any) {
 }
 
 export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
-  item?: ContainedItem;
+  item?: Content | ContainedItem | RelatedItem;
   imageField?: string;
   src?: string;
   alt: string;
@@ -56,7 +61,12 @@ export default function Image(props: ImageProps) {
     attrs.src = src;
   } else if (item) {
     const isFromRealObject = !('image_scales' in item);
-    const imageFieldWithDefault = imageField || item.image_field || 'image';
+    let imageFieldWithDefault = 'image';
+    if (imageField) {
+      imageFieldWithDefault = imageField;
+    } else if (!isFromRealObject && item.image_field) {
+      imageFieldWithDefault = item.image_field;
+    }
 
     const image = isFromRealObject
       ? flattenScales(item['@id'], (item as any)[imageFieldWithDefault])
