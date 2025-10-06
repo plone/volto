@@ -1,5 +1,4 @@
 import type { ConfigType } from '@plone/registry';
-import App from '../slots/App/App';
 import Header from '../slots/Header/Header';
 import Main from '../slots/Main';
 import Footer from '../slots/Footer';

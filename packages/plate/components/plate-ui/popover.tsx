@@ -1,7 +1,3 @@
-'use client';
-
-import * as React from 'react';
-
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { cn, withRef } from '@udecode/cn';
 import { type VariantProps, cva } from 'class-variance-authority';
@@ -13,7 +9,10 @@ export const PopoverTrigger = PopoverPrimitive.Trigger;
 export const PopoverAnchor = PopoverPrimitive.Anchor;
 
 export const popoverVariants = cva(
-  'z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-hidden print:hidden',
+  `
+    z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-hidden
+    print:hidden
+  `,
   {
     defaultVariants: {
       animate: true,

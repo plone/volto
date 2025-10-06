@@ -179,7 +179,11 @@ const Gutter = React.forwardRef<
       ref={ref}
       className={cn(
         'slate-gutterLeft',
-        'absolute -top-px z-50 flex h-full -translate-x-full cursor-text hover:opacity-100 sm:opacity-0',
+        `
+          absolute -top-px z-50 flex h-full -translate-x-full cursor-text
+          hover:opacity-100
+          sm:opacity-0
+        `,
         STRUCTURAL_TYPES.includes(element.type)
           ? 'group-hover/structural:opacity-100'
           : 'group-hover:opacity-100',

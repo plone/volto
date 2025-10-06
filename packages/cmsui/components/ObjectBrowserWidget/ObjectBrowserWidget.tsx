@@ -29,7 +29,7 @@ const widgetStyles = tv({
 interface ObjectBrowserWidgetProps extends BaseFormFieldProps {}
 // TODO: interaction with plate and blocks schema
 export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
-  const { label, description, errorMessage, ...rest } = props;
+  const { label, description, errorMessage } = props;
   const { isFocusVisible, focusProps } = useFocusRing();
   const id = useId();
   return (
@@ -37,7 +37,9 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
       {label && (
         <Label
           id={id}
-          className="not-group-data-invalid:not-group-data-readonly:has-[+div:focus]:text-quanta-sapphire"
+          className={`
+            not-group-data-invalid:not-group-data-readonly:has-[+div:focus]:text-quanta-sapphire
+          `}
         >
           {label}
         </Label>

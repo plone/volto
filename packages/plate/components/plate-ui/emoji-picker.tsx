@@ -1,7 +1,3 @@
-'use client';
-
-import React from 'react';
-
 import type { UseEmojiPickerType } from '@udecode/plate-emoji/react';
 
 import { cn } from '@udecode/cn';
@@ -35,7 +31,7 @@ export function EmojiPicker({
   return (
     <div
       className={cn(
-        'bg-popover text-popover-foreground flex flex-col rounded-xl',
+        'flex flex-col rounded-xl bg-popover text-popover-foreground',
         'h-[23rem] w-80 border shadow-md',
       )}
     >

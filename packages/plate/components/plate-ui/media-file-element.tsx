@@ -1,7 +1,3 @@
-'use client';
-
-import React from 'react';
-
 import { cn, withRef } from '@udecode/cn';
 import { useMediaState } from '@udecode/plate-media/react';
 import { ResizableProvider } from '@udecode/plate-resizable';
@@ -25,7 +21,10 @@ export const MediaFileElement = withHOC(
           {...props}
         >
           <a
-            className="group hover:bg-muted relative m-0 flex cursor-pointer items-center rounded px-0.5 py-[3px]"
+            className={`
+              group relative m-0 flex cursor-pointer items-center rounded px-0.5 py-[3px]
+              hover:bg-muted
+            `}
             contentEditable={false}
             download={name}
             href={unsafeUrl}

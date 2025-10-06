@@ -158,7 +158,7 @@ describe('middleware', () => {
 
       try {
         await getAPIResourceWithAuth({ request, params, context }, nextMock);
-      } catch (err: any) {
+      } catch {
         expect(fetchMock).toHaveBeenCalledWith(
           'http://localhost:8080/Plone/image.png/@@images/image',
           expect.objectContaining({
@@ -184,7 +184,7 @@ describe('middleware', () => {
 
       try {
         await getAPIResourceWithAuth({ request, params, context }, nextMock);
-      } catch (err: any) {
+      } catch {
         expect(fetchMock).toHaveBeenCalledWith(
           'http://localhost:8080/Plone/file.txt/@@download/file',
           expect.objectContaining({
@@ -210,7 +210,7 @@ describe('middleware', () => {
 
       try {
         await getAPIResourceWithAuth({ request, params, context }, nextMock);
-      } catch (err: any) {
+      } catch {
         expect(fetchMock).toHaveBeenCalledWith(
           'http://localhost:8080/Plone/@@site-logo/image',
           expect.objectContaining({
@@ -236,7 +236,7 @@ describe('middleware', () => {
 
       try {
         await getAPIResourceWithAuth({ request, params, context }, nextMock);
-      } catch (err: any) {
+      } catch {
         expect(fetchMock).toHaveBeenCalledWith(
           'http://localhost:8080/Plone/@portrait/username',
           expect.objectContaining({

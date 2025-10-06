@@ -1,5 +1,3 @@
-'use client';
-
 import { type ReactNode, createContext, useContext, useState } from 'react';
 
 import { cn } from '@udecode/cn';
@@ -134,10 +132,22 @@ export function SettingsDialog() {
     <div className="group relative">
       <div className="flex items-center justify-between">
         <label
-          className="text-muted-foreground/70 group-focus-within:text-foreground has-[+input:not(:placeholder-shown)]:text-foreground absolute top-1/2 block -translate-y-1/2 cursor-text px-1 text-sm transition-all group-focus-within:pointer-events-none group-focus-within:top-0 group-focus-within:cursor-default group-focus-within:text-xs group-focus-within:font-medium has-[+input:not(:placeholder-shown)]:pointer-events-none has-[+input:not(:placeholder-shown)]:top-0 has-[+input:not(:placeholder-shown)]:cursor-default has-[+input:not(:placeholder-shown)]:text-xs has-[+input:not(:placeholder-shown)]:font-medium"
+          className={`
+            absolute top-1/2 block -translate-y-1/2 cursor-text px-1 text-sm
+            text-muted-foreground/70 transition-all
+            group-focus-within:pointer-events-none group-focus-within:top-0
+            group-focus-within:cursor-default group-focus-within:text-xs
+            group-focus-within:font-medium group-focus-within:text-foreground
+            has-[+input:not(:placeholder-shown)]:pointer-events-none
+            has-[+input:not(:placeholder-shown)]:top-0
+            has-[+input:not(:placeholder-shown)]:cursor-default
+            has-[+input:not(:placeholder-shown)]:text-xs
+            has-[+input:not(:placeholder-shown)]:font-medium
+            has-[+input:not(:placeholder-shown)]:text-foreground
+          `}
           htmlFor={label}
         >
-          <span className="bg-background inline-flex px-2">{label}</span>
+          <span className="inline-flex bg-background px-2">{label}</span>
         </label>
         <Button
           asChild
@@ -199,8 +209,14 @@ export function SettingsDialog() {
           variant="default"
           className={cn(
             'group fixed right-4 bottom-4 z-50 size-10 overflow-hidden',
-            'rounded-full shadow-md hover:shadow-lg',
-            'transition-all duration-300 ease-in-out hover:w-[106px]',
+            `
+              rounded-full shadow-md
+              hover:shadow-lg
+            `,
+            `
+              transition-all duration-300 ease-in-out
+              hover:w-[106px]
+            `,
           )}
           data-block-hide
         >
@@ -230,8 +246,18 @@ export function SettingsDialog() {
           {/* AI Settings Group */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="size-8 rounded-full bg-purple-100 p-2 dark:bg-purple-900">
-                <Wand2Icon className="size-4 text-purple-600 dark:text-purple-400" />
+              <div
+                className={`
+                  size-8 rounded-full bg-purple-100 p-2
+                  dark:bg-purple-900
+                `}
+              >
+                <Wand2Icon
+                  className={`
+                    size-4 text-purple-600
+                    dark:text-purple-400
+                  `}
+                />
               </div>
               <h4 className="font-semibold">AI</h4>
             </div>
@@ -241,7 +267,11 @@ export function SettingsDialog() {
 
               <div className="group relative">
                 <label
-                  className="bg-background text-foreground absolute start-1 top-0 z-10 block -translate-y-1/2 px-2 text-xs font-medium group-has-disabled:opacity-50"
+                  className={`
+                    absolute start-1 top-0 z-10 block -translate-y-1/2 bg-background px-2 text-xs
+                    font-medium text-foreground
+                    group-has-disabled:opacity-50
+                  `}
                   htmlFor="select-model"
                 >
                   Model
@@ -313,7 +343,7 @@ export function SettingsDialog() {
           </Button>
         </form>
 
-        <p className="text-muted-foreground text-sm">
+        <p className="text-sm text-muted-foreground">
           Not stored anywhere. Used only for current session requests.
         </p>
       </DialogContent>

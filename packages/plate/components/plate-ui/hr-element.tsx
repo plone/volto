@@ -1,7 +1,3 @@
-'use client';
-
-import React from 'react';
-
 import { cn, withRef } from '@udecode/cn';
 import {
   PlateElement,
@@ -24,7 +20,7 @@ export const HrElement = withRef<typeof PlateElement>(
           <hr
             {...nodeProps}
             className={cn(
-              'bg-muted h-0.5 rounded-sm border-none bg-clip-content',
+              'h-0.5 rounded-sm border-none bg-muted bg-clip-content',
               selected && focused && 'ring-ring ring-2 ring-offset-2',
               !readOnly && 'cursor-pointer',
             )}

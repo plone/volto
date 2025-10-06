@@ -32,7 +32,7 @@ describe('Lock', () => {
 
     const locktoken = 'sample-token';
 
-    const result = await cli.updateLock({
+    await cli.updateLock({
       path: contentData.title,
       locktoken,
     });

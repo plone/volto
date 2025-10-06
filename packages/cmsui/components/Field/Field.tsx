@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   type FieldErrorProps,
   Group,
@@ -21,7 +20,16 @@ export function Label(props: LabelProps) {
     <RACLabel
       {...props}
       className={twMerge(
-        'group-data-disabled:text-quanta-silver group-data-invalid:text-quanta-candy not-group-data-invalid:not-group-data-readonly:has-[+input:focus]:text-quanta-sapphire text-quanta-pigeon after:bg-quanta-candy w-fit cursor-default text-xs font-medium group-data-required:after:mx-1 group-data-required:after:inline-block group-data-required:after:h-2 group-data-required:after:w-2 group-data-required:after:rounded-4xl',
+        `
+          w-fit cursor-default text-xs font-medium text-quanta-pigeon
+          group-data-disabled:text-quanta-silver
+          group-data-invalid:text-quanta-candy
+          after:bg-quanta-candy
+          group-data-required:after:mx-1 group-data-required:after:inline-block
+          group-data-required:after:h-2 group-data-required:after:w-2
+          group-data-required:after:rounded-4xl
+          not-group-data-invalid:not-group-data-readonly:has-[+input:focus]:text-quanta-sapphire
+        `,
         props.className,
       )}
     />
@@ -34,7 +42,10 @@ export function Description(props: TextProps) {
       {...props}
       slot="description"
       className={twMerge(
-        'text-quanta-pigeon group-data-disabled:text-quanta-silver text-xs font-normal',
+        `
+          text-xs font-normal text-quanta-pigeon
+          group-data-disabled:text-quanta-silver
+        `,
         props.className,
       )}
     />
@@ -47,7 +58,10 @@ export function FieldError(props: FieldErrorProps) {
       {...props}
       className={composeTailwindRenderProps(
         props.className,
-        'text-quanta-candy text-xs font-normal forced-colors:text-[Mark]',
+        `
+          text-xs font-normal text-quanta-candy
+          forced-colors:text-[Mark]
+        `,
       )}
     />
   );
@@ -91,7 +105,15 @@ export function Input(props: InputProps) {
       {...props}
       className={composeTailwindRenderProps(
         props.className,
-        'text-quanta-space bg-quanta-snow hover:bg-quanta-smoke disabled:text-quanta-silver read-only:hover:bg-quanta-air read-only:bg-quanta-air focus:bg-quanta-air active:bg-quanta-air min-w-0 flex-1 p-3 text-sm outline read-only:border-1 read-only:border-dashed disabled:cursor-not-allowed',
+        `
+          min-w-0 flex-1 bg-quanta-snow p-3 text-sm text-quanta-space outline
+          read-only:border-1 read-only:border-dashed read-only:bg-quanta-air
+          hover:bg-quanta-smoke
+          read-only:hover:bg-quanta-air
+          focus:bg-quanta-air
+          active:bg-quanta-air
+          disabled:cursor-not-allowed disabled:text-quanta-silver
+        `,
       )}
     />
   );

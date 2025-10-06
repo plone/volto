@@ -1,5 +1,5 @@
 // Componente Button estratto dal widget originale
-import React, { type PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 import { Icon } from '@plone/components';
 import { Button } from '@plone/components/quanta';
 import { useObjectBrowserContext } from './ObjectBrowserContext';

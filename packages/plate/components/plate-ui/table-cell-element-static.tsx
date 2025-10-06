@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { SlateElementProps } from '@udecode/plate';
 
 import { cn } from '@udecode/cn';
@@ -26,7 +24,7 @@ export function TableCellElementStatic({
       as={isHeader ? 'th' : 'td'}
       className={cn(
         className,
-        'bg-background h-full overflow-visible border-none p-0',
+        'h-full overflow-visible border-none bg-background p-0',
         element.background ? 'bg-(--cellBackground)' : 'bg-background',
         cn(
           isHeader && 'text-left font-normal *:m-0',

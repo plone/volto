@@ -1,9 +1,8 @@
-import React from 'react';
-import { GridListItem, Button } from '@plone/components/quanta';
+import { Button } from '@plone/components/quanta';
 import { CheckboxIcon, ChevronrightIcon } from '@plone/components/Icons';
 import { flattenToAppURL } from '@plone/helpers';
 import { useTranslation } from 'react-i18next';
-import { getItemLabel, getContentIcon } from './utils';
+import { getContentIcon } from './utils';
 import type { Brain } from '@plone/types';
 import { tv } from 'tailwind-variants';
 
@@ -60,10 +59,21 @@ export function ObjectBrowserItem({
   return viewMode ? (
     // Grid view - no workflow border, content icon
     <div className="relative flex w-36 flex-1 flex-col items-center gap-2 p-0">
-      <div className="group-selected:block text-quanta-sapphire absolute top-2 left-2 hidden rounded-full border border-solid border-white bg-white leading-0">
+      <div
+        className={`
+          absolute top-2 left-2 hidden rounded-full border border-solid border-white bg-white
+          leading-0 text-quanta-sapphire
+          group-selected:block
+        `}
+      >
         <CheckboxIcon className="h-6 w-6" />
       </div>
-      <div className="bg-quanta-snow flex min-h-36 min-w-36 flex-col items-center justify-center rounded-md text-center">
+      <div
+        className={`
+          flex min-h-36 min-w-36 flex-col items-center justify-center rounded-md bg-quanta-snow
+          text-center
+        `}
+      >
         {item.image_field && item.image_scales ? (
           <img
             className="h-full w-full rounded-md object-contain"
@@ -73,18 +83,23 @@ export function ObjectBrowserItem({
             alt={item.title || ''}
           />
         ) : (
-          <div className="text-quanta-pigeon flex h-16 w-16 items-center justify-center">
+          <div className="flex h-16 w-16 items-center justify-center text-quanta-pigeon">
             <ContentIcon size="xl" />
           </div>
         )}
       </div>
-      <span className="text-quanta-cobalt text-center text-sm leading-tight font-medium">
+      <span className="text-center text-sm leading-tight font-medium text-quanta-cobalt">
         {item.title}
       </span>
     </div>
   ) : (
     // List view - with workflow border color and icons
-    <div className="text-quanta-cobalt group-data-[selectable=false]:text-quanta-iron flex h-full w-full items-center">
+    <div
+      className={`
+        flex h-full w-full items-center text-quanta-cobalt
+        group-data-[selectable=false]:text-quanta-iron
+      `}
+    >
       <div className="flex min-w-0 flex-1 items-center gap-3">
         <ContentIcon size="sm" className="text-quanta-pigeon" />
         <span className="truncate font-medium">{item.title}</span>

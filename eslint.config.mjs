@@ -1,6 +1,8 @@
 // @ts-check
 
 // import eslint from '@eslint/js';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 // eslint-disable-next-line import/no-unresolved
 import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
@@ -8,6 +10,10 @@ import importPlugin from 'eslint-plugin-import';
 import prettierPlugin from 'eslint-plugin-prettier/recommended';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import betterTailwind from 'eslint-plugin-better-tailwindcss';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const tailwindEntryPoint = path.resolve(__dirname, 'apps/seven/publicui.css');
 
 const JS_GLOB = ['**/*.{ts,tsx,js,jsx}'];
 
@@ -20,6 +26,7 @@ const nonAddons = [
   'packages/components',
   'packages/registry',
   'packages/helpers',
+  'packages/providers',
   'packages/react-router',
   'packages/scripts',
   'packages/tooling',
@@ -43,7 +50,12 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooksPlugin.configs.recommended.rules,
-      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          args: 'none',
+        },
+      ],
       '@typescript-eslint/no-empty-object-type': 'off',
       'jsx-a11y/no-autofocus': 'off',
       'react/jsx-key': [2, { checkFragmentShorthand: true }],
@@ -99,6 +111,66 @@ export default tseslint.config(
     ignores: generateFilesArray(nonAddons),
     rules: {
       'no-console': 'warn',
+    },
+  },
+  {
+    name: 'Tailwind Readability',
+    files: ['**/*.{tsx,jsx}'],
+    languageOptions: {
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    plugins: {
+      'better-tailwindcss': betterTailwind,
+    },
+    rules: {
+      // enable all recommended rules to report a warning
+      ...betterTailwind.configs['recommended-warn'].rules,
+      // enable all recommended rules to report an error
+      ...betterTailwind.configs['recommended-error'].rules,
+      'better-tailwindcss/enforce-consistent-line-wrapping': [
+        'warn',
+        {
+          printWidth: 100,
+          classesPerLine: 0,
+          group: 'newLine',
+          preferSingleLine: false,
+        },
+      ],
+      'better-tailwindcss/enforce-consistent-class-order': [
+        'warn',
+        {
+          order: 'improved',
+        },
+      ],
+      'better-tailwindcss/no-duplicate-classes': 'warn',
+      'better-tailwindcss/no-unnecessary-whitespace': 'warn',
+      'better-tailwindcss/no-unregistered-classes': 0,
+    },
+    settings: {
+      'better-tailwindcss': {
+        // tailwindcss 4: the path to the entry file of the css based tailwind config (eg: `src/global.css`)
+        entryPoint: tailwindEntryPoint,
+        callees: [
+          'cc',
+          'clb',
+          'clsx',
+          'cn',
+          'cnb',
+          'ctl',
+          'cva',
+          'cx',
+          'dcnb',
+          'objstr',
+          'tv',
+          'twJoin',
+          'twMerge',
+          'composeTailwindRenderProps',
+        ],
+      },
     },
   },
   {
