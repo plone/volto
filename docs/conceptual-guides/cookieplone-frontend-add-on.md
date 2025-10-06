@@ -13,7 +13,7 @@ This chapter explains the anatomy of a frontend add-on in Seven that was created
 
 ## Root folder structure
 
-After you create a frontend add-on with the cookieplone generator as describd in {doc}`../get-started/create-package`, the code lives in the folder {file}`packages/<add-on-name>`.
+After you create a frontend add-on with the cookieplone generator as described in {doc}`../get-started/create-package`, the code lives in the folder {file}`packages/<add-on-name>`.
 
 The generated project contains the following files and folders:
 
@@ -83,7 +83,7 @@ The add-on folder {file}`packages/<add-on-name>` contains the folowing files and
 {file}`packages/<add-on-name>/package.json`
 :   This file contains the metadata for your add-on package.
     The most relevant keys are the following.
-    
+
     `name`
     : The name of your add-on package.
 
@@ -97,11 +97,11 @@ The add-on folder {file}`packages/<add-on-name>` contains the folowing files and
     `peerDependencies`
     :   The peer dependencies for your add-on package.
         By default, it includes a peer dependency on `@plone/registry`, which provides the add-on registry and loader.
-    
+
     `dependencies`
     :   The runtime dependencies for your add-on package.
         Add any additional dependencies your add-on needs here.
-    
+
     `devDependencies`
     :   The development dependencies for your add-on package.
         Add any development-only dependencies here.
