@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { cn, withRef } from '@udecode/cn';
 import { type TColumnElement, setColumns } from '@udecode/plate-layout';
 import { useDebouncePopoverOpen } from '@udecode/plate-layout/react';

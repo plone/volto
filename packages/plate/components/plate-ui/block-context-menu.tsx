@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { useCallback, useState } from 'react';
 
 import { AIChatPlugin } from '@udecode/plate-ai/react';
