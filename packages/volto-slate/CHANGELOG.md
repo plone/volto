@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.7.0 (2025-10-07)
+
+### Feature
+
+- Update translations: eu @erral [#7394](https://github.com/plone/volto/issues/7394)
+
 ## 18.6.0 (2025-09-26)
 
 ### Feature
