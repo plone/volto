@@ -17,6 +17,28 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.28.0 (2025-10-07)
+
+### Feature
+
+- Update translations: es, eu, nl, tr @erral @ingovdb @chihanandac [#7351](https://github.com/plone/volto/issues/7351)
+
+### Bugfix
+
+- Refactored the fix for #7238: corner case when coming from SSR in edit route, where the teasers where overwriten with bogus URLs after save if INTERNAL_API_PATH is set. @sneridagh [#7317](https://github.com/plone/volto/issues/7317)
+- The cancel/clear "X" button inside the DatetimeWidget now includes an accessible label when active. @Wagner3UB [#7414](https://github.com/plone/volto/issues/7414)
+- Add underline to formtabs items for proper link identification. @Wagner3UB [#7419](https://github.com/plone/volto/issues/7419)
+- Fix api middleware possible empty values error. @robgietema [#7433](https://github.com/plone/volto/issues/7433)
+
+### Internal
+
+- Skip link check for URL which blocks traffic from GitHub. @davisagli 
+- Use Plone 6.1.3. @sneridagh 
+
+### Documentation
+
+- Fix images path in Volto README. @wesleybl [#7437](https://github.com/plone/volto/issues/7437)
+
 ## 18.27.3 (2025-10-01)
 
 ### Bugfix
