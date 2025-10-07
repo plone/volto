@@ -8,5 +8,5 @@ registry.loader.js
 registry.loader.server.js
 publicui.css
 cmsui.css
-/locales/
 /packages/
+public/locales/
