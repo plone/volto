@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { cn } from '@udecode/cn';
 import { DndPlugin } from '@udecode/plate-dnd';
 import { useBlockSelected } from '@udecode/plate-selection/react';

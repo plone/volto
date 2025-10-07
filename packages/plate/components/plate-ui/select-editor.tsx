@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { useCommandActions } from '@udecode/cmdk';
 import { isHotkey } from '@udecode/plate';
 import { isEqualTags } from '@udecode/plate-tag';

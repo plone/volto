@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { cn } from '@udecode/cn';
 import { HEADING_KEYS } from '@udecode/plate-heading';
 import { ParagraphPlugin } from '@udecode/plate/react';
