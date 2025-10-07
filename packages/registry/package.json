@@ -119,6 +119,7 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@types/tmp": "^0.2.6",
+    "fs-extra": "^11.3.2",
     "release-it": "catalog:",
     "tsconfig": "workspace:*",
     "tsup": "catalog:",

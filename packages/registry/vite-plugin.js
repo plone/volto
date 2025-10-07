@@ -1,4 +1,5 @@
 import path from 'path';
+import fs from 'fs-extra';
 import { AddonRegistry } from '@plone/registry/addon-registry';
 import { createAddonsLoader } from '@plone/registry/create-addons-loader';
 import { createAddonsServerLoader } from '@plone/registry/create-addons-loader-server';
@@ -123,6 +124,19 @@ export const PloneRegistryVitePlugin = () => {
           ],
         },
       }),
+    },
+    {
+      enforce: 'post',
+      apply: 'build',
+      name: 'plone-i18n-copy-on-build',
+      buildEnd: () => {
+        // Copy locales to the build output
+        const origin = path.join(projectRootPath, 'locales');
+        const dest = path.join(projectRootPath, 'public', 'locales');
+        if (fs.existsSync(origin)) {
+          fs.copySync(origin, dest);
+        }
+      },
     },
   ];
 };
