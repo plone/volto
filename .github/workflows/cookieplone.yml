@@ -2,7 +2,7 @@ name: Cookieplone
 on: [push, pull_request]
 
 env:
-  python-version: "3.13"
+  python-version: '3.13'
   CYPRESS_RETRIES: 2
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
 
       - name: Generate Cookieplone-based frontend addon
         run: |
-          COOKIEPLONE_REPOSITORY_TAG=seventemplate uvx cookieplone seven_addon --no-input
+          uvx cookieplone seven_addon --no-input
 
       - name: Install generated package
         working-directory: seven-add-on
