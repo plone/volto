@@ -47,6 +47,7 @@ exports[`renders an url widget component 1`] = `
               <button
                 aria-label="openUrlBrowser"
                 class="ui basic icon button"
+                type="button"
               >
                 <svg
                   class="icon"
