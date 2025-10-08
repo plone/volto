@@ -36,7 +36,7 @@ const EditBlockWrapper = (props: EditBlockWrapperProps) => {
   return (
     <div
       role="presentation"
-      className={clsx('ebw', { 'outline-quanta-sapphire outline-2': selected })}
+      className={clsx('ebw', { 'outline-2 outline-quanta-sapphire': selected })}
       onClick={() => onSelectBlock(props.block)}
     >
       {/* @ts-expect-error Volto's EditBlockWrapper passes RenderBlocksProps down. We need to revisit which props do we really need to pass down to the block Edit component */}

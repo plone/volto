@@ -27,7 +27,7 @@ export const TagElement = withRef<typeof PlateElement>(
             border-transparent bg-secondary text-secondary-foreground
             hover:bg-secondary/60
           `,
-          selected && focused && 'ring-ring ring-2 ring-offset-0',
+          selected && focused && 'ring-2 ring-ring ring-offset-0',
           'flex items-center gap-1.5',
         )}
       >

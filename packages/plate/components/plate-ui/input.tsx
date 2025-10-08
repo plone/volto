@@ -23,9 +23,14 @@ export const inputVariants = cva(
         sm: 'h-[28px] px-1.5 py-1',
       },
       variant: {
-        default:
-          'border border-input ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-        ghost: 'border-none focus-visible:ring-transparent',
+        default: `
+          border border-input ring-offset-background
+          focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+        `,
+        ghost: `
+          border-none
+          focus-visible:ring-transparent
+        `,
       },
     },
   },

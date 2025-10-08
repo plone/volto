@@ -78,7 +78,7 @@ export const ColumnElement = withHOC(
           <div
             className={cn(
               'relative h-full border border-transparent p-1.5',
-              !readOnly && 'border-border rounded-lg border-dashed',
+              !readOnly && 'rounded-lg border-dashed border-border',
               isDragging && 'opacity-50',
             )}
           >
@@ -133,9 +133,15 @@ const DropLine = React.forwardRef<
         'slate-dropLine',
         'bg-brand/50 absolute',
         dropLine === 'left' &&
-          'inset-y-0 left-[-10.5px] w-1 group-first/column:-left-1',
+          `
+            inset-y-0 left-[-10.5px] w-1
+            group-first/column:-left-1
+          `,
         dropLine === 'right' &&
-          'inset-y-0 right-[-11px] w-1 group-last/column:-right-1',
+          `
+            inset-y-0 right-[-11px] w-1
+            group-last/column:-right-1
+          `,
         className,
       )}
     />

@@ -21,7 +21,7 @@ export const HrElement = withRef<typeof PlateElement>(
             {...nodeProps}
             className={cn(
               'h-0.5 rounded-sm border-none bg-muted bg-clip-content',
-              selected && focused && 'ring-ring ring-2 ring-offset-2',
+              selected && focused && 'ring-2 ring-ring ring-offset-2',
               !readOnly && 'cursor-pointer',
             )}
           />

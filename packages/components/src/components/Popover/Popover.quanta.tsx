@@ -15,13 +15,30 @@ export interface PopoverProps extends Omit<AriaPopoverProps, 'children'> {
 }
 
 const styles = tv({
-  base: 'rounded-xl border border-black/10 bg-white bg-clip-padding text-slate-700 shadow-2xl dark:border-white/[15%] dark:bg-zinc-900/70 dark:text-zinc-300 dark:backdrop-blur-2xl dark:backdrop-saturate-200 forced-colors:bg-[Canvas]',
+  base: `
+    rounded-xl border border-black/10 bg-white bg-clip-padding text-slate-700 shadow-2xl
+    dark:border-white/[15%] dark:bg-zinc-900/70 dark:text-zinc-300 dark:backdrop-blur-2xl
+    dark:backdrop-saturate-200
+    forced-colors:bg-[Canvas]
+  `,
   variants: {
     isEntering: {
-      true: 'animate-in fade-in placement-bottom:slide-in-from-top-1 placement-top:slide-in-from-bottom-1 placement-left:slide-in-from-right-1 placement-right:slide-in-from-left-1 duration-200 ease-out',
+      true: `
+        duration-200 ease-out animate-in fade-in
+        placement-left:slide-in-from-right-1
+        placement-right:slide-in-from-left-1
+        placement-top:slide-in-from-bottom-1
+        placement-bottom:slide-in-from-top-1
+      `,
     },
     isExiting: {
-      true: 'animate-out fade-out placement-bottom:slide-out-to-top-1 placement-top:slide-out-to-bottom-1 placement-left:slide-out-to-right-1 placement-right:slide-out-to-left-1 duration-150 ease-in',
+      true: `
+        duration-150 ease-in animate-out fade-out
+        placement-left:slide-out-to-right-1
+        placement-right:slide-out-to-left-1
+        placement-top:slide-out-to-bottom-1
+        placement-bottom:slide-out-to-top-1
+      `,
     },
   },
 });
