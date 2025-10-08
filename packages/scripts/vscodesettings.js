@@ -3,12 +3,20 @@ import fs from 'fs';
 import { parse, stringify } from 'comment-json';
 
 let vscodeSettingsJSON;
+let vscodeExtensionsJSON;
 if (fs.existsSync('.vscode')) {
   vscodeSettingsJSON = parse(fs.readFileSync('.vscode/settings.json', 'utf8'));
+  vscodeExtensionsJSON = parse(
+    fs.readFileSync('.vscode/extensions.json', 'utf8'),
+  );
 } else {
   fs.mkdirSync('.vscode');
   fs.writeFileSync('.vscode/settings.json', '{}');
   vscodeSettingsJSON = parse(fs.readFileSync('.vscode/settings.json', 'utf8'));
+  fs.writeFileSync('.vscode/extensions.json', '{}');
+  vscodeExtensionsJSON = parse(
+    fs.readFileSync('.vscode/extensions.json', 'utf8'),
+  );
 }
 
 if (!vscodeSettingsJSON['eslint.workingDirectories']) {
@@ -72,4 +80,26 @@ if (!vscodeSettingsJSON['[typescript][typescriptreact]']) {
 fs.writeFileSync(
   '.vscode/settings.json',
   `${stringify(vscodeSettingsJSON, null, 2)}`,
+);
+
+const extensions = [
+  'dbaeumer.vscode-eslint',
+  'esbenp.prettier-vscode',
+  'stylelint.vscode-stylelint',
+  'bradlc.vscode-tailwindcss',
+];
+
+if (!vscodeExtensionsJSON['recommendations']) {
+  vscodeExtensionsJSON['recommendations'] = extensions;
+} else {
+  extensions.forEach((extension) => {
+    if (!vscodeExtensionsJSON['recommendations'].includes(extension)) {
+      vscodeExtensionsJSON['recommendations'].push(extension);
+    }
+  });
+}
+
+fs.writeFileSync(
+  '.vscode/extensions.json',
+  `${stringify(vscodeExtensionsJSON, null, 2)}`,
 );
