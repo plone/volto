@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.28.1 (2025-10-08)
+
+### Bugfix
+
+- Reverts #7419. See #7419 for more information. @sneridagh [#7466](https://github.com/plone/volto/issues/7466)
+
 ## 18.28.0 (2025-10-07)
 
 ### Feature
