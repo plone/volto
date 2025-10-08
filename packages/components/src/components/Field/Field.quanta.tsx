@@ -84,8 +84,9 @@ export const fieldBorderStyles = tv({
         forced-colors:border-[ButtonBorder]
       `,
       true: `
-        inset-ring-2 inset-ring-quanta-sapphire outline-2
+        bg-quanta-air inset-ring-2 inset-ring-quanta-sapphire outline-2
         group-data-readonly:inset-ring-0
+        hover:bg-quanta-air
         forced-colors:border-[Highlight]
       `,
     },
@@ -110,7 +111,12 @@ export const fieldBorderStyles = tv({
 export const fieldGroupStyles = tv({
   extend: focusRing,
   base: `
-    group flex h-9 items-center overflow-hidden rounded-lg border-2 bg-quanta-air
+    group flex h-14 items-center overflow-hidden rounded-lg border-2 bg-quanta-snow
+    text-quanta-space
+    hover:bg-quanta-smoke
+    read-only:hover:bg-quanta-air
+    focus:bg-quanta-air
+    active:bg-quanta-air
     forced-colors:bg-[Field]
   `,
   variants: fieldBorderStyles.variants,
@@ -135,6 +141,9 @@ export function Input(props: InputProps) {
         props.className,
         `
           min-w-0 flex-1 bg-quanta-snow p-3 text-sm text-quanta-space outline
+          not-group-data-focus-within:outline-0
+          group-data-focus-within:outline-0
+          group-data-hovered:bg-quanta-smoke
           read-only:border-1 read-only:border-dashed read-only:bg-quanta-air
           hover:bg-quanta-smoke
           read-only:hover:bg-quanta-air

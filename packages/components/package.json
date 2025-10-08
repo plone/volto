@@ -96,12 +96,12 @@
     "not dead"
   ],
   "dependencies": {
-    "@react-aria/utils": "^3.29.0",
-    "@react-spectrum/utils": "^3.12.5",
+    "@react-aria/utils": "^3.31.0",
+    "@react-spectrum/utils": "^3.12.9",
     "clsx": "^2.1.1",
     "react-aria": "catalog:",
     "react-aria-components": "catalog:",
-    "react-stately": "^3.41.0",
+    "react-stately": "^3.42.0",
     "tailwind-merge": "^3.0.1",
     "tailwind-variants": "^1.0.0",
     "tailwindcss": "catalog:",
@@ -111,7 +111,8 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",
     "@plone/types": "workspace: *",
-    "@react-types/shared": "^3.29.0",
+    "@react-types/shared": "^3.32.1",
+    "@storybook/addon-docs": "^9.1.7",
     "@storybook/addon-links": "^9.1.7",
     "@storybook/react-vite": "^9.1.7",
     "@svgr/plugin-svgo": "^8.1.0",
@@ -138,8 +139,7 @@
     "vite-plugin-svgr": "^4.3.0",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "catalog:",
-    "vitest-axe": "^0.1.0",
-    "@storybook/addon-docs": "^9.1.7"
+    "vitest-axe": "^0.1.0"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
