@@ -4655,7 +4655,7 @@ msgstr "Interval de date"
 #. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete_block"
-msgstr ""
+msgstr "Ștergeți"
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
