@@ -4652,9 +4652,9 @@ msgstr ""
 msgid "daterangeFacet"
 msgstr ""
 
-#. Default: "delete"
+#. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
-msgid "delete"
+msgid "delete_block"
 msgstr "Suprimeix"
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
@@ -4681,6 +4681,11 @@ msgstr "La vostra sol·licitud de restabliment de la contrasenya s'ha enviat per
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "Esborrany"
+
+#. Default: "drag {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag_block"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
