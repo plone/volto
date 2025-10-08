@@ -50,6 +50,17 @@ if (!vscodeSettingsJSON['tailwindCSS.files.exclude']) {
   ];
 }
 
+if (!vscodeSettingsJSON['[typescript][typescriptreact]']) {
+  vscodeSettingsJSON['[typescript][typescriptreact]'] = {
+    'editor.formatOnSave': true,
+    'editor.tabSize': 2,
+    'editor.defaultFormatter': 'esbenp.prettier-vscode',
+    'editor.codeActionsOnSave': {
+      'source.fixAll.eslint': 'explicit',
+    },
+  };
+}
+
 // Taken from tailwind-variants but it's too greedy
 // We need a more specific one
 // if (!vscodeSettingsJSON['tailwindCSS.experimental.classRegex']) {
