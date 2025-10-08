@@ -106,7 +106,7 @@
     "tailwind-variants": "^1.0.0",
     "tailwindcss": "catalog:",
     "tailwindcss-animate": "^1.0.7",
-    "@internationalized/date": "^3.9.0"
+    "@internationalized/date": "^3.10.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",
