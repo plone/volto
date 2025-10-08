@@ -124,7 +124,14 @@ const FileWidget = (props) => {
     <FormFieldWrapper {...props}>
       <Dropzone onDrop={onDrop}>
         {({ getRootProps, getInputProps, isDragActive }) => (
-          <div className="file-widget-dropzone" {...getRootProps()}>
+          <div
+            id="drop-field"
+            className="file-widget-dropzone"
+            {...getRootProps({
+              'aria-labelledby': `fieldset-${props.fieldSet}-field-label-${id}`,
+              'aria-describedby': 'dropzone-description',
+            })}
+          >
             {isDragActive && <Dimmer active></Dimmer>}
             {fileType ? (
               <Image
@@ -135,19 +142,13 @@ const FileWidget = (props) => {
               />
             ) : (
               <div className="dropzone-placeholder">
-                {isDragActive ? (
-                  <p className="dropzone-text">
-                    {intl.formatMessage(messages.releaseDrag)}
-                  </p>
-                ) : value ? (
-                  <p className="dropzone-text">
-                    {intl.formatMessage(messages.editFile)}
-                  </p>
-                ) : (
-                  <p className="dropzone-text">
-                    {intl.formatMessage(messages.fileDrag)}
-                  </p>
-                )}
+                <p id="dropzone-description" className="dropzone-text">
+                  {isDragActive
+                    ? intl.formatMessage(messages.releaseDrag)
+                    : value
+                    ? intl.formatMessage(messages.editFile)
+                    : intl.formatMessage(messages.fileDrag)}
+                </p>
               </div>
             )}
 
