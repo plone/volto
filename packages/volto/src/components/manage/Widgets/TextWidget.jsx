@@ -64,7 +64,6 @@ export default TextWidget;
 TextWidget.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.string,
@@ -87,7 +86,6 @@ TextWidget.propTypes = {
 };
 
 TextWidget.defaultProps = {
-  description: null,
   required: false,
   error: [],
   value: null,
