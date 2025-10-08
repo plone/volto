@@ -52,12 +52,14 @@ export function PlateRenderer(
     'editor'
   >,
 ) {
+  const { editorConfig, ...rest } = props;
+
   const editor = usePlateEditor({
-    ...props.editorConfig,
+    ...editorConfig,
     value: props.value,
   }) as SlateEditor; // EditorView likes it more
 
-  return <EditorView {...props} editor={editor} />;
+  return <EditorView {...rest} editor={editor} />;
 }
 
 PlateRenderer.displayName = 'PlateRenderer';
