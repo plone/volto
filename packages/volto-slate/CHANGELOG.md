@@ -8,6 +8,19 @@
 
 <!-- towncrier release notes start -->
 
+## 18.7.0 (2025-10-07)
+
+### Feature
+
+- Update translations: eu @erral [#7394](https://github.com/plone/volto/issues/7394)
+
+## 18.6.0 (2025-09-26)
+
+### Feature
+
+- Update slate translations for es, eu, ta, sv, fr [#7176](https://github.com/plone/volto/issues/7176)
+- Replace img tags with Image component. @wesleybl [#7363](https://github.com/plone/volto/issues/7363)
+
 ## 18.5.1 (2025-09-01)
 
 ### Internal

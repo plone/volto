@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "18.25.0",
+  "version": "18.28.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -373,7 +373,7 @@
     "react-docgen-typescript-plugin": "^1.0.5",
     "react-error-overlay": "6.0.9",
     "react-is": "^18.2.0",
-    "release-it": "^17.1.1",
+    "release-it": "^19.0.5",
     "semver": "^7.5.4",
     "start-server-and-test": "1.14.0",
     "storybook": "^8.0.4",

@@ -35,6 +35,14 @@ if (process.env.VOLTOCONFIG) {
           "Importing directly from `lodash` is not allowed. Please use `import <helper> from 'lodash/<helper>'` instead.",
       },
     ],
+    'no-restricted-syntax': [
+      'warn',
+      {
+        selector: "JSXElement[openingElement.name.name='img']",
+        message:
+          "Use the Image component from '@plone/volto/components/theme/Image/Image' instead of <img> tag.",
+      },
+    ],
   };
 }
 

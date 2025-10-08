@@ -154,4 +154,33 @@ context('Blocks Acceptance Tests', () => {
       );
     cy.get('.block.teaser .content h2').contains('Blue Orchids');
   });
+
+  it('As editor I can refresh Teaser block source content', () => {
+    cy.navigate('/document/edit');
+    // WHEN I create a Teaser block and change the data of the referenced object
+    cy.get('.block .slate-editor [contenteditable=true]').click();
+    cy.get('.button .block-add-button').click({ force: true });
+    cy.get('.blocks-chooser .mostUsed .button.teaser')
+      .contains('Teaser')
+      .click({ force: true });
+    cy.get(
+      '.objectbrowser-field[aria-labelledby="fieldset-default-field-label-href"] button[aria-label="Open object browser"]',
+    ).click();
+    cy.get('[aria-label="Select Blue Orchids"]').dblclick();
+    cy.wait(500);
+    cy.get('input[name="field-overwrite"]').check({ force: true });
+    cy.get(
+      '.objectbrowser-field[aria-labelledby="fieldset-default-field-label-preview_image"]',
+    )
+      .click()
+      .type(
+        `https://github.com/plone/volto/raw/main/logos/volto-colorful.png{enter}`,
+      );
+    cy.get('.buttons.refresh.teaser').click();
+    cy.get('#toolbar-save').click();
+    cy.get('.image-wrapper > img')
+      .should('have.attr', 'src')
+      .and('include', '/preview-image/@@images/image-');
+    cy.get('.block.teaser .content h2').contains('Blue Orchids');
+  });
 });

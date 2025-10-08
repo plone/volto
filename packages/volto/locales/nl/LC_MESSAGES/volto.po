@@ -1,20 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PlonenPOT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-04-01 11:24+0000\n"
+"PO-Revision-Date: 2025-09-13 19:01+0000\n"
 "Last-Translator: Ingo Van den Broeck <in.vandenbroeck@vmm.be>\n"
 "Language: nl\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/plone/volto-18/nl/>\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"MIME-Version: 1.0\n"
-"X-Generator: Weblate 5.11-dev\n"
-"Language-Code: nl\n"
-"Language-Name: Nederlands\n"
-"Preferred-Encodings: utf-8\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -668,6 +664,11 @@ msgstr "Kies een bestand"
 msgid "Clear"
 msgstr "Leegmaken"
 
+#. Default: "Clear date and time"
+#: components/manage/Widgets/DatetimeWidget
+msgid "Clear date/time"
+msgstr ""
+
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Clear filters"
@@ -1189,7 +1190,7 @@ msgstr "Evenement downloaden"
 #. Default: "Download file"
 #: components/theme/View/FileView
 msgid "Download file"
-msgstr ""
+msgstr "Bestand downloaden"
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -2895,7 +2896,7 @@ msgstr "Refereer naar dit item als gerelateerd item"
 msgid "Referencing this item with {relationship}"
 msgstr "Refereen naar dit item met {relationship}"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr "Broninhoud vernieuwen"
@@ -4458,12 +4459,12 @@ msgstr "Ja"
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
-msgstr ""
+msgstr "Je gaat alle items verwijderen in de huidige paginatie van deze map."
 
 #. Default: "You are about to delete all items in this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in this folder."
-msgstr ""
+msgstr "Je gaat alle items in deze map verwijderen."
 
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
@@ -4699,7 +4700,7 @@ msgstr "/voorbeeld"
 #. Default: "External URLs are not allowed in this field."
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
-msgstr ""
+msgstr "Externe URLs zijn niet toegestaan in dit veld."
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
@@ -4744,7 +4745,7 @@ msgstr "Afbeelding"
 #. Default: "Please upload an image instead."
 #: components/manage/Widgets/ImageWidget
 msgid "imageUploadErrorMessage"
-msgstr ""
+msgstr "Upload een afbeelding in plaats daarvan."
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
@@ -4764,7 +4765,7 @@ msgstr "Invoer moet een integer zijn"
 #. Default: "No image was found in the internal path you provided."
 #: components/manage/Widgets/ImageWidget
 msgid "internalImageNotFoundErrorMessage"
-msgstr ""
+msgstr "Er werd geen afbeelding gevonden in het opgegeven interne pad."
 
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
@@ -4799,12 +4800,12 @@ msgstr "Veld leidende afbeelding"
 #. Default: "Delete item and break links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: Delete item and break links"
-msgstr ""
+msgstr "Verwijder item en verbreek linken"
 
 #. Default: "Checking references..."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: loading references"
-msgstr ""
+msgstr "Controleer referenties..."
 
 #. Default: "Enter a URL to an image"
 #: components/manage/Widgets/ImageWidget
@@ -4944,6 +4945,11 @@ msgstr "referenties"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
 msgstr "verwijst naar"
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
+msgstr ""
 
 #. Default: "results"
 #: components/theme/Search/Search
