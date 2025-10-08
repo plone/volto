@@ -293,7 +293,11 @@ const comboboxItemVariants = cva(
     variants: {
       interactive: {
         false: '',
-        true: 'cursor-pointer transition-colors hover:bg-accent hover:text-accent-foreground data-[active-item=true]:bg-accent data-[active-item=true]:text-accent-foreground',
+        true: `
+          cursor-pointer transition-colors
+          hover:bg-accent hover:text-accent-foreground
+          data-[active-item=true]:bg-accent data-[active-item=true]:text-accent-foreground
+        `,
       },
     },
   },

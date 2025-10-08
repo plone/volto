@@ -10,8 +10,15 @@ export const itemVariants = tv({
   base: 'group',
   variants: {
     viewMode: {
-      list: 'data-[selectable=false]:bg-quanta-silver data-[selectable=false]:text-iron border-l-4 data-[selectable=false]:cursor-not-allowed',
-      grid: 'pb-2 hover:cursor-pointer hover:bg-transparent',
+      list: `
+        data-[selectable=false]:text-iron data-[selectable=false]:cursor-not-allowed
+        data-[selectable=false]:bg-quanta-silver
+        border-l-4
+      `,
+      grid: `
+        pb-2
+        hover:cursor-pointer hover:bg-transparent
+      `,
     },
     workflow: {
       private: '',

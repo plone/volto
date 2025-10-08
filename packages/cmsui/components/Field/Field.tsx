@@ -70,21 +70,40 @@ export function FieldError(props: FieldErrorProps) {
 export const fieldBorderStyles = tv({
   variants: {
     isFocusWithin: {
-      false: 'border-gray-300 forced-colors:border-[ButtonBorder]',
-      true: 'inset-ring-quanta-sapphire inset-ring-2 outline-2 group-data-readonly:inset-ring-0 forced-colors:border-[Highlight]',
+      false: `
+        border-gray-300
+        forced-colors:border-[ButtonBorder]
+      `,
+      true: `
+        inset-ring-2 inset-ring-quanta-sapphire outline-2
+        group-data-readonly:inset-ring-0
+        forced-colors:border-[Highlight]
+      `,
     },
     isInvalid: {
-      true: 'bg-quanta-ballet hover:bg-quanta-flamingo focus:inset-ring-quanta-candy outline-2 focus:inset-ring-2 forced-colors:border-[Mark]',
+      true: `
+        bg-quanta-ballet outline-2
+        hover:bg-quanta-flamingo
+        focus:inset-ring-2 focus:inset-ring-quanta-candy
+        forced-colors:border-[Mark]
+      `,
     },
     isDisabled: {
-      true: 'bg-quanta-air hover:bg-quanta-air text-quanta-silver forced-colors:border-[GrayText]',
+      true: `
+        bg-quanta-air text-quanta-silver
+        hover:bg-quanta-air
+        forced-colors:border-[GrayText]
+      `,
     },
   },
 });
 
 export const fieldGroupStyles = tv({
   extend: focusRing,
-  base: 'group bg-quanta-air flex h-9 items-center overflow-hidden rounded-lg border-2 forced-colors:bg-[Field]',
+  base: `
+    group flex h-9 items-center overflow-hidden rounded-lg border-2 bg-quanta-air
+    forced-colors:bg-[Field]
+  `,
   variants: fieldBorderStyles.variants,
 });
 

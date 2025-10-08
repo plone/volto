@@ -48,7 +48,11 @@ export function ColorDropdownMenuItem({
           p-0 transition-all
           hover:scale-125
         `,
-        !isBrightColor && 'border-transparent text-white hover:text-white!',
+        !isBrightColor &&
+          `
+            border-transparent text-white
+            hover:text-white!
+          `,
         className,
       )}
       style={{ backgroundColor: value }}

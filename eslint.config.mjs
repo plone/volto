@@ -11,9 +11,11 @@ import prettierPlugin from 'eslint-plugin-prettier/recommended';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import betterTailwind from 'eslint-plugin-better-tailwindcss';
+import { getDefaultCallees } from 'eslint-plugin-better-tailwindcss/api/defaults';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const tailwindEntryPoint = path.resolve(__dirname, 'apps/seven/publicui.css');
+const tailwindCallees = [...getDefaultCallees(), 'composeTailwindRenderProps'];
 
 const JS_GLOB = ['**/*.{ts,tsx,js,jsx}'];
 
@@ -154,22 +156,7 @@ export default tseslint.config(
       'better-tailwindcss': {
         // tailwindcss 4: the path to the entry file of the css based tailwind config (eg: `src/global.css`)
         entryPoint: tailwindEntryPoint,
-        callees: [
-          'cc',
-          'clb',
-          'clsx',
-          'cn',
-          'cnb',
-          'ctl',
-          'cva',
-          'cx',
-          'dcnb',
-          'objstr',
-          'tv',
-          'twJoin',
-          'twMerge',
-          'composeTailwindRenderProps',
-        ],
+        callees: tailwindCallees,
       },
     },
   },

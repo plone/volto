@@ -22,7 +22,11 @@ const BlockWrapper = (props: BlockWrapperProps) => {
           block
           block-${data['@type']}
         `,
-        { [`category-${category}`]: category },
+        {
+          [`
+            category-${category}
+          `]: category,
+        },
         classNames,
       )}
       style={style}

@@ -48,10 +48,15 @@ const toolbarButtonVariants = cva(
         sm: 'h-7 px-2',
       },
       variant: {
-        default:
-          'bg-transparent hover:bg-muted hover:text-muted-foreground aria-checked:bg-accent aria-checked:text-accent-foreground',
-        outline:
-          'border border-input bg-transparent hover:bg-accent hover:text-accent-foreground',
+        default: `
+          bg-transparent
+          hover:bg-muted hover:text-muted-foreground
+          aria-checked:bg-accent aria-checked:text-accent-foreground
+        `,
+        outline: `
+          border border-input bg-transparent
+          hover:bg-accent hover:text-accent-foreground
+        `,
       },
     },
   },
@@ -77,10 +82,15 @@ const dropdownArrowVariants = cva(
         sm: 'h-7 w-4',
       },
       variant: {
-        default:
-          'bg-transparent hover:bg-muted hover:text-muted-foreground aria-checked:bg-accent aria-checked:text-accent-foreground',
-        outline:
-          'border border-l-0 border-input bg-transparent hover:bg-accent hover:text-accent-foreground',
+        default: `
+          bg-transparent
+          hover:bg-muted hover:text-muted-foreground
+          aria-checked:bg-accent aria-checked:text-accent-foreground
+        `,
+        outline: `
+          border border-l-0 border-input bg-transparent
+          hover:bg-accent hover:text-accent-foreground
+        `,
       },
     },
   },

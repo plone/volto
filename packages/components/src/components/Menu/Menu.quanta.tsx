@@ -37,14 +37,27 @@ export interface itemProps {
 }
 
 export const dropdownItemStyles = tv({
-  base: 'group cursor-default items-center gap-x-3 gap-y-0 rounded-lg py-1 pr-1 pl-3 outline-0 forced-color-adjust-none select-none',
+  base: `
+    group cursor-default items-center gap-x-3 gap-y-0 rounded-lg py-1 pr-1 pl-3 outline-0
+    forced-color-adjust-none select-none
+  `,
   variants: {
     isDisabled: {
-      false: 'text-gray-900 dark:text-zinc-100',
-      true: 'text-gray-300 dark:text-zinc-600 forced-colors:text-[GrayText]',
+      false: `
+        text-gray-900
+        dark:text-zinc-100
+      `,
+      true: `
+        text-gray-300
+        dark:text-zinc-600
+        forced-colors:text-[GrayText]
+      `,
     },
     isFocused: {
-      true: 'bg-blue-600 text-white forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]',
+      true: `
+        bg-blue-600 text-white
+        forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]
+      `,
     },
     selectionMode: {
       single: 'flex',
@@ -71,7 +84,10 @@ export const dropdownItemStyles = tv({
     {
       isFocused: false,
       isOpen: true,
-      className: 'bg-gray-100 dark:bg-zinc-700/60',
+      className: `
+        bg-gray-100
+        dark:bg-zinc-700/60
+      `,
     },
     {
       hasDescription: true,

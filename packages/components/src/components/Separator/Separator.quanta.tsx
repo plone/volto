@@ -6,7 +6,11 @@ import {
 import { tv } from 'tailwind-variants';
 
 const styles = tv({
-  base: 'bg-gray-300 dark:bg-zinc-600 forced-colors:bg-[ButtonBorder]',
+  base: `
+    bg-gray-300
+    dark:bg-zinc-600
+    forced-colors:bg-[ButtonBorder]
+  `,
   variants: {
     orientation: {
       horizontal: 'h-px w-full',

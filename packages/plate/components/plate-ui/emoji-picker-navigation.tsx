@@ -71,7 +71,7 @@ export function EmojiPickerNavigation({
                         hover:bg-muted hover:text-muted-foreground
                       `,
                       id === focusedCategory &&
-                        'bg-accent text-accent-foreground pointer-events-none fill-current',
+                        'pointer-events-none bg-accent fill-current text-accent-foreground',
                     )}
                     onClick={() => {
                       onClick(id);
