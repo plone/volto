@@ -4,16 +4,32 @@ import config from '@plone/registry';
 
 const ContentArea = (props: SlotComponentProps) => {
   const { content } = props;
+  const hasBlocksData = !!content.blocks && !!content.blocks_layout;
 
-  return (
-    <>
-      <RenderBlocks
-        content={content}
-        blocksConfig={config.blocks.blocksConfig}
-        pathname="/"
-      />
-    </>
-  );
+  if (
+    ['Document', 'Plone Site', 'LRF', 'News Item', 'Event'].includes(
+      content['@type'],
+    ) &&
+    hasBlocksData
+  ) {
+    return (
+      <>
+        <RenderBlocks
+          content={content}
+          blocksConfig={config.blocks.blocksConfig}
+          pathname="/"
+        />
+      </>
+    );
+  } else {
+    let View = config.views.defaultView;
+    if (content.layout && content.layout in config.views.layoutViews) {
+      View = config.views.layoutViews[content.layout];
+    } else if (content['@type'] in config.views.contentTypesViews) {
+      View = config.views.contentTypesViews[content['@type']];
+    }
+    return <View />;
+  }
 };
 
 export default ContentArea;
