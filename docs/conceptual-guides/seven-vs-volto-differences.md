@@ -35,6 +35,10 @@ Seven relies on React Router's built-in SSR pipeline, keeping server and client 
 The server sends ready-to-hydrate HTML, while framework loaders and actions own subsequent data access.
 Because this work happens on the server, the browser does not need to know where the backend lives.
 
+React Router 7 framework also have the concept of middlewares, which allow Seven to run code before or after every request.
+This is useful for tasks like authentication, logging, and error handling.
+Replaces Volto's custom Express server configuration and middleware stack.
+
 ## No backend API exposed
 
 Seven keeps the backend API hidden behind the application server.
