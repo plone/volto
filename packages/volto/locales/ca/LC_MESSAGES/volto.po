@@ -2599,9 +2599,9 @@ msgstr "esdeveniment(s)"
 msgid "Ok"
 msgstr "D'acord"
 
-#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
-msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Només es permeten caràcters de 7 bits. No pot contenir majúscules, caràcters especials: <, >, &, #, /, ?, o altres que són il·legals en URLs. No pot començar amb: _, aq_, @@, ++. No pot acabar amb __. No pot ser: request,contributors, ., .., "". No pot contenir salts de línia."
 
 #. Default: "Open in a new tab"
@@ -4561,7 +4561,7 @@ msgstr "Introdueix el nom complet, per exemple Joan Garcia."
 msgid "addUserFormPasswordDescription"
 msgstr "Introdueix la nova contrasenya. Mínim 8 caràcters."
 
-#. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
+#. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "Introdueix un nom d'usuari, normalment alguna cosa com 'jgarcia'. Sense espais ni caràcters especials. Els noms d'usuari i contrasenya són sensibles a majúscules i minúscules, assegura't que el bloqueig de majúscules no estigui activat. Aquest és el nom per iniciar sessió."

@@ -2593,9 +2593,9 @@ msgstr "நிகழ்வுகள்"
 msgid "Ok"
 msgstr "சரி"
 
-#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
-msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "7-பிட் பைட்டுகள் எழுத்துக்கள் மட்டுமே அனுமதிக்கப்படுகின்றன. பெரிய எழுத்துக்கள், சிறப்பு எழுத்துக்கள்: <,>, &, #, /,?, அல்லது முகவரி களில் சட்டவிரோதமானது. தொடங்க முடியாது: _, aq_, @@, ++. __ உடன் முடிவடைய முடியாது. இருக்க முடியாது: கோரிக்கை, பங்களிப்பாளர்கள்,., .., "". புதிய வரிகளைக் கொண்டிருக்க முடியாது."
 
 #. Default: "Open in a new tab"
@@ -4555,7 +4555,7 @@ msgstr "adduserformulflanamedescription"
 msgid "addUserFormPasswordDescription"
 msgstr "adduserformpassworddescription"
 
-#. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
+#. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "adduserformusernamedescription"
