@@ -1,6 +1,12 @@
 @layer custom {
   .logo {
+    max-width: 200px;
+    max-height: 80px;
     flex: 1 1 0;
     align-self: center;
+
+    img {
+      height: 100px;
+    }
   }
 }
