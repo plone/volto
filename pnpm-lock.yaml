@@ -1085,9 +1085,6 @@ importers:
       slate:
         specifier: 0.118.1
         version: 0.118.1
-      slate-dom:
-        specifier: 0.118.1
-        version: 0.118.1(slate@0.118.1)
       slate-hyperscript:
         specifier: 0.115.0
         version: 0.115.0(slate@0.118.1)

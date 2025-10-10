@@ -260,7 +260,6 @@
     "semantic-ui-react": "2.1.5",
     "serialize-javascript": "3.1.0",
     "slate": "0.118.1",
-    "slate-dom": "0.118.1",
     "slate-hyperscript": "0.115.0",
     "slate-react": "0.117.4",
     "superagent": "3.8.2",
