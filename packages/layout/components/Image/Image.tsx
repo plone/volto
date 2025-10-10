@@ -5,6 +5,7 @@ import type {
   ContainedItem,
   Content,
   RelatedItem,
+  Brain,
 } from '@plone/types';
 
 function removeObjectIdFromURL(basePath: string, scale: string) {
@@ -31,7 +32,7 @@ export function flattenScales(path: string, image: any) {
 }
 
 export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
-  item?: Content | ContainedItem | RelatedItem;
+  item?: Content | Brain | ContainedItem | RelatedItem;
   imageField?: string;
   src?: string;
   alt: string;
