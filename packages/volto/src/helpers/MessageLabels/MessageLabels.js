@@ -153,9 +153,9 @@ export const messages = defineMessages({
     defaultMessage: 'Groupname',
   },
   addGroupsFormGroupNameDescription: {
-    id: 'A unique identifier for the group. Can not be changed after creation. No spaces allowed.',
+    id: 'A unique identifier for the group. Cannot be changed after creation. No spaces allowed.',
     defaultMessage:
-      'A unique identifier for the group. Can not be changed after creation. No spaces allowed.',
+      'A unique identifier for the group. Cannot be changed after creation. No spaces allowed.',
   },
   addGroupsFormDescriptionTitle: {
     id: 'Description',
