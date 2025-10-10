@@ -17,6 +17,21 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.28.2 (2025-10-10)
+
+### Bugfix
+
+- Fixed corner case where RAZZLE_INTERNAL_API_PATH is set and id is still undefined on first SSR load. @sneridagh [#7478](https://github.com/plone/volto/issues/7478)
+- Escape double quotes in POT / PO files @erral 
+
+### Internal
+
+- Added Cypress test for backspace behavior in slate blocks. @aryan7081 [#7373](https://github.com/plone/volto/issues/7373)
+
+### Documentation
+
+- Fix images path in root README. @wesleybl [#7437](https://github.com/plone/volto/issues/7437)
+
 ## 18.28.1 (2025-10-08)
 
 ### Bugfix
