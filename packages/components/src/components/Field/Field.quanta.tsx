@@ -79,12 +79,9 @@ export function FieldError(props: FieldErrorProps) {
 export const fieldBorderStyles = tv({
   variants: {
     isFocusWithin: {
-      false: `
-        border-gray-300
-        forced-colors:border-[ButtonBorder]
-      `,
+      false: `forced-colors:border-[ButtonBorder]`,
       true: `
-        bg-quanta-air inset-ring-2 inset-ring-quanta-sapphire outline-2
+        bg-quanta-air inset-ring-quanta-sapphire outline-2
         group-data-readonly:inset-ring-0
         hover:bg-quanta-air
         forced-colors:border-[Highlight]
@@ -94,7 +91,7 @@ export const fieldBorderStyles = tv({
       true: `
         bg-quanta-ballet outline-2
         hover:bg-quanta-flamingo
-        focus:inset-ring-2 focus:inset-ring-quanta-candy
+        focus:inset-ring-quanta-candy
         forced-colors:border-[Mark]
       `,
     },
@@ -111,15 +108,30 @@ export const fieldBorderStyles = tv({
 export const fieldGroupStyles = tv({
   extend: focusRing,
   base: `
-    group flex h-14 items-center overflow-hidden rounded-lg border-2 bg-quanta-snow
-    text-quanta-space
+    group flex h-11 items-center overflow-hidden rounded-lg bg-quanta-snow text-quanta-space
     hover:bg-quanta-smoke
     read-only:hover:bg-quanta-air
     focus:bg-quanta-air
     active:bg-quanta-air
     forced-colors:bg-[Field]
   `,
-  variants: fieldBorderStyles.variants,
+  variants: {
+    ...fieldBorderStyles.variants,
+    isFocusWithin: {
+      ...fieldBorderStyles.variants.isFocusWithin,
+      true: twMerge(
+        fieldBorderStyles.variants.isFocusWithin.true,
+        `inset-ring-2`,
+      ),
+    },
+    isInvalid: {
+      ...fieldBorderStyles.variants.isInvalid,
+      true: twMerge(
+        fieldBorderStyles.variants.isInvalid.true,
+        `focus:inset-ring-2`,
+      ),
+    },
+  },
 });
 
 export function FieldGroup(props: GroupProps) {
@@ -133,6 +145,28 @@ export function FieldGroup(props: GroupProps) {
   );
 }
 
+export const inputStyles = tv({
+  extend: focusRing,
+  base: 'rounded-md p-3',
+  variants: {
+    isFocused: {
+      ...fieldBorderStyles.variants.isFocusWithin,
+      true: twMerge(
+        fieldBorderStyles.variants.isFocusWithin.true,
+        `inset-ring-2`,
+      ),
+    },
+    isInvalid: {
+      ...fieldBorderStyles.variants.isInvalid,
+      true: twMerge(
+        fieldBorderStyles.variants.isInvalid.true,
+        `focus:inset-ring-2`,
+      ),
+    },
+    isDisabled: fieldBorderStyles.variants.isDisabled,
+  },
+});
+
 export function Input(props: InputProps) {
   return (
     <RACInput
@@ -140,7 +174,7 @@ export function Input(props: InputProps) {
       className={composeTailwindRenderProps(
         props.className,
         `
-          min-w-0 flex-1 bg-quanta-snow p-3 text-sm text-quanta-space outline
+          min-w-0 flex-1 bg-quanta-snow px-2 py-1.5 text-sm text-quanta-space outline
           not-group-data-focus-within:outline-0
           group-data-focus-within:outline-0
           group-data-hovered:bg-quanta-smoke
