@@ -152,6 +152,11 @@ export const messages = defineMessages({
     id: 'Groupname',
     defaultMessage: 'Groupname',
   },
+  addGroupsFormGroupNameDescription: {
+    id: 'A unique identifier for the group. Can not be changed after creation. No spaces allowed.',
+    defaultMessage:
+      'A unique identifier for the group. Can not be changed after creation. No spaces allowed.',
+  },
   addGroupsFormDescriptionTitle: {
     id: 'Description',
     defaultMessage: 'Description',
