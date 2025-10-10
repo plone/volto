@@ -206,14 +206,14 @@ class SlateEditor extends Component {
 
     const schedule =
       typeof window !== 'undefined' && window.requestAnimationFrame
-        ? window.requestAnimationFrame.bind(window)
+        ? (fn) => window.requestAnimationFrame(fn)
         : (fn) => setTimeout(fn, 0);
 
     schedule(() => {
       if (this.isUnmounted) return;
       try {
         ReactEditor.focus(editor);
-      } catch (e) {
+      } catch {
         // ignore focus errors; selection might no longer be valid
       }
     });
