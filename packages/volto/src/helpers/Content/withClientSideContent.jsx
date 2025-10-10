@@ -24,7 +24,7 @@ export default function withClientSideContent(WrappedComponent) {
     const content = useSelector((state) => state.content);
     const id = content.data?.['@id'];
     useEffect(() => {
-      if (internalApiPath && id.startsWith(internalApiPath)) {
+      if (internalApiPath && id?.startsWith(internalApiPath)) {
         dispatch(getContent(id.substring(internalApiPath.length)));
       }
     }, [internalApiPath, dispatch, id]);
