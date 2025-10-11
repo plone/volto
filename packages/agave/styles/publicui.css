@@ -160,12 +160,12 @@
       &.header-logo-nav-tools-wrapper {
         .section-inner-container {
           @apply px-0 pb-14 pt-6;
-          grid-template-columns: auto 1fr auto;
         }
 
         /* Main Navigation */
         .navigation {
-          @apply items-end justify-center self-end justify-self-center;
+          /* TODO: Review if this needs to be overridden from the default in layout in @plone/layout */
+          /* @apply items-end justify-center self-end justify-self-center; */
 
           a.react-aria-Link {
             @apply relative text-lg font-thin leading-6 pb-4 no-underline;
