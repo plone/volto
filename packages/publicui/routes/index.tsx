@@ -97,7 +97,7 @@ export default function Index() {
       </head>
       <body className={clsx(routesBodyClasses)}>
         {/* We pre-define here the @layer before tailwind does, adding our own layers in a React 19 managed <link> tag */}
-        <link rel="stylesheet" href="layers.css" precedence="first" />
+        <link rel="stylesheet" href="/layers.css" precedence="first" />
         <div role="navigation" aria-label="Toolbar" id="toolbar" />
         <div id="main">
           <RACRouterProvider navigate={navigate}>
