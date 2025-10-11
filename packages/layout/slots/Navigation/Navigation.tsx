@@ -10,7 +10,7 @@ type NavItem = {
 
 const Navigation = (props: SlotComponentProps) => {
   const { content } = props;
-  const navItems = content['@components'].navigation?.items || [];
+  const navItems = content?.['@components']?.navigation?.items || [];
 
   return (
     <nav
