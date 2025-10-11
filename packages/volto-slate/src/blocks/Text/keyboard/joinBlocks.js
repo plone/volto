@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom';
 import cloneDeep from 'lodash/cloneDeep';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import { Editor } from 'slate';
@@ -62,14 +61,12 @@ export function joinWithPreviousBlock({ editor, event }, intl) {
     const cursor = getBlockEndAsRange(otherBlock);
     const newFormData = deleteBlock(properties, block, intl);
 
-    ReactDOM.unstable_batchedUpdates(() => {
-      saveSlateBlockSelection(otherBlockId, cursor);
+    saveSlateBlockSelection(otherBlockId, cursor);
 
-      onChangeField(blocksFieldname, newFormData[blocksFieldname]);
-      onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
+    onChangeField(blocksFieldname, newFormData[blocksFieldname]);
+    onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
 
-      onSelectBlock(otherBlockId);
-    });
+    onSelectBlock(otherBlockId);
 
     return true;
   }
@@ -92,12 +89,10 @@ export function joinWithPreviousBlock({ editor, event }, intl) {
     plaintext: serializeNodesToText(merged || []),
   });
   const newFormData = deleteBlock(formData, block, intl);
-  ReactDOM.unstable_batchedUpdates(() => {
-    saveSlateBlockSelection(otherBlockId, cursor);
-    onChangeField(blocksFieldname, newFormData[blocksFieldname]);
-    onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
-    onSelectBlock(otherBlockId);
-  });
+  saveSlateBlockSelection(otherBlockId, cursor);
+  onChangeField(blocksFieldname, newFormData[blocksFieldname]);
+  onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
+  onSelectBlock(otherBlockId);
 
   return true;
 }
@@ -124,37 +119,34 @@ export function joinWithNextBlock({ editor, event }, intl) {
   const [otherBlock = {}, otherBlockId] = getNextVoltoBlock(index, properties);
 
   // Don't join with required blocks
-  if (data?.required || otherBlock?.required || otherBlock['@type'] !== 'slate')
-    return;
+  if (data?.required || otherBlock?.required) return;
 
   event.stopPropagation();
   event.preventDefault();
 
-  mergeSlateWithBlockForward(editor, otherBlock);
-
-  // const cursor = JSON.parse(JSON.stringify(editor.selection));
-  const combined = JSON.parse(JSON.stringify(editor.children));
-
-  // TODO: don't remove undo history, etc Should probably save both undo
-  // histories, so that the blocks are split, the undos can be restored??
-
   const blocksFieldname = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
 
-  const formData = changeBlock(properties, otherBlockId, {
-    // TODO: use a constant specified in src/constants.js instead of 'slate'
+  // If next block is not a slate text block, do nothing
+  if (otherBlock['@type'] !== 'slate') {
+    return true;
+  }
+
+  // Merge next text block into current one and delete the next block
+  mergeSlateWithBlockForward(editor, otherBlock);
+
+  const combined = JSON.parse(JSON.stringify(editor.children));
+
+  const formData = changeBlock(properties, block, {
     '@type': 'slate',
     value: combined,
     plaintext: serializeNodesToText(combined || []),
   });
-  const newFormData = deleteBlock(formData, block, intl);
+  const newFormData = deleteBlock(formData, otherBlockId, intl);
 
-  ReactDOM.unstable_batchedUpdates(() => {
-    // saveSlateBlockSelection(otherBlockId, cursor);
-    onChangeField(blocksFieldname, newFormData[blocksFieldname]);
-    onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
-    onSelectBlock(otherBlockId);
-  });
+  onChangeField(blocksFieldname, newFormData[blocksFieldname]);
+  onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
+  onSelectBlock(block);
   return true;
 }
 

@@ -1,0 +1,1 @@
+Ensure Delete at end of a text block merges the next text block and removes it; if the next block is non-text (e.g., Description), delete it without merging. Adds Cypress coverage. @aryan7081
