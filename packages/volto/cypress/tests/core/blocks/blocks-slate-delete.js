@@ -43,7 +43,7 @@ describe('Slate Delete key behavior', () => {
       .and('contain', 'Second block text');
   });
 
-  it('Delete at end of A deletes next non-text block (Description)', () => {
+  it('Delete at end of A does nothing when next block is non-text (Description)', () => {
     cy.getSlate().click().typeWithDelay('Alpha text');
     cy.getSlate().should('contain', 'Alpha text');
 
@@ -61,17 +61,24 @@ describe('Slate Delete key behavior', () => {
 
     cy.get(
       '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
+    ).should('have.length', 1);
+    cy.get('.block-editor-description, .block.description').should('exist');
+
+    cy.get(
+      '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
     )
       .first()
       .type('{moveToEnd}{del}');
 
-    cy.get('.block-editor-description, .block.description', {
-      timeout: 8000,
-    }).should('not.exist');
     cy.get(
       '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
     )
       .first()
       .should('contain', 'Alpha text');
+    cy.get('.block-editor-description, .block.description').should('exist');
+    cy.get('.block.description [contenteditable="true"]').should(
+      'contain',
+      'Meta info',
+    );
   });
 });

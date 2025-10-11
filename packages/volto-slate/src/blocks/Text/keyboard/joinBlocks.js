@@ -127,12 +127,8 @@ export function joinWithNextBlock({ editor, event }, intl) {
   const blocksFieldname = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
 
-  // If next block is not a slate text block, delete it
+  // If next block is not a slate text block, do nothing
   if (otherBlock['@type'] !== 'slate') {
-    const newFormData = deleteBlock(properties, otherBlockId, intl);
-    onChangeField(blocksFieldname, newFormData[blocksFieldname]);
-    onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
-    onSelectBlock(block);
     return true;
   }
 
