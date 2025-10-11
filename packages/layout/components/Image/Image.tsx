@@ -7,6 +7,8 @@ import type {
   RelatedItem,
   Brain,
 } from '@plone/types';
+import type { RootLoader } from 'seven/app/root';
+import { useRouteLoaderData } from 'react-router';
 
 function removeObjectIdFromURL(basePath: string, scale: string) {
   return scale.replace(`${basePath}/`, '');
@@ -54,6 +56,9 @@ export default function Image(props: ImageProps) {
     ...imageProps
   } = props;
 
+  const siteData = useRouteLoaderData<RootLoader>('root')?.site;
+  const siteImageScales = siteData?.['plone.allowed_sizes'] || [];
+
   if (!item && !src) return null;
   const attrs: ImgHTMLAttributes<HTMLImageElement> = {};
   attrs.className = clsx(className, { responsive }) || undefined;
@@ -92,11 +97,16 @@ export default function Image(props: ImageProps) {
       if (!isSvg && image.scales && Object.keys(image.scales).length > 0) {
         const sortedScales = Object.values({
           ...image.scales,
-          original: {
-            download: `${image.download}`,
-            width: image.width,
-            height: image.height,
-          },
+          ...(Object.keys(siteImageScales).length >
+          Object.keys(image.scales).length
+            ? {
+                original: {
+                  download: `${image.download}`,
+                  width: image.width,
+                  height: image.height,
+                },
+              }
+            : {}),
         }).sort((a, b) => {
           const scaleA = a as ImageScale;
           const scaleB = b as ImageScale;
