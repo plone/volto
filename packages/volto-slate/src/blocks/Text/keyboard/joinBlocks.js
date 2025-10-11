@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom';
 import cloneDeep from 'lodash/cloneDeep';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import { Editor } from 'slate';
@@ -62,14 +61,12 @@ export function joinWithPreviousBlock({ editor, event }, intl) {
     const cursor = getBlockEndAsRange(otherBlock);
     const newFormData = deleteBlock(properties, block, intl);
 
-    ReactDOM.unstable_batchedUpdates(() => {
-      saveSlateBlockSelection(otherBlockId, cursor);
+    saveSlateBlockSelection(otherBlockId, cursor);
 
-      onChangeField(blocksFieldname, newFormData[blocksFieldname]);
-      onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
+    onChangeField(blocksFieldname, newFormData[blocksFieldname]);
+    onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
 
-      onSelectBlock(otherBlockId);
-    });
+    onSelectBlock(otherBlockId);
 
     return true;
   }
@@ -92,12 +89,10 @@ export function joinWithPreviousBlock({ editor, event }, intl) {
     plaintext: serializeNodesToText(merged || []),
   });
   const newFormData = deleteBlock(formData, block, intl);
-  ReactDOM.unstable_batchedUpdates(() => {
-    saveSlateBlockSelection(otherBlockId, cursor);
-    onChangeField(blocksFieldname, newFormData[blocksFieldname]);
-    onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
-    onSelectBlock(otherBlockId);
-  });
+  saveSlateBlockSelection(otherBlockId, cursor);
+  onChangeField(blocksFieldname, newFormData[blocksFieldname]);
+  onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
+  onSelectBlock(otherBlockId);
 
   return true;
 }
@@ -135,11 +130,9 @@ export function joinWithNextBlock({ editor, event }, intl) {
   // If next block is not a slate text block, delete it
   if (otherBlock['@type'] !== 'slate') {
     const newFormData = deleteBlock(properties, otherBlockId, intl);
-    ReactDOM.unstable_batchedUpdates(() => {
-      onChangeField(blocksFieldname, newFormData[blocksFieldname]);
-      onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
-      onSelectBlock(block);
-    });
+    onChangeField(blocksFieldname, newFormData[blocksFieldname]);
+    onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
+    onSelectBlock(block);
     return true;
   }
 
@@ -155,11 +148,9 @@ export function joinWithNextBlock({ editor, event }, intl) {
   });
   const newFormData = deleteBlock(formData, otherBlockId, intl);
 
-  ReactDOM.unstable_batchedUpdates(() => {
-    onChangeField(blocksFieldname, newFormData[blocksFieldname]);
-    onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
-    onSelectBlock(block);
-  });
+  onChangeField(blocksFieldname, newFormData[blocksFieldname]);
+  onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
+  onSelectBlock(block);
   return true;
 }
 
