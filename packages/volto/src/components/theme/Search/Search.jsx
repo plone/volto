@@ -112,6 +112,12 @@ class Search extends Component {
     const options = qs.parse(this.props.history.location.search);
     this.setState({ currentPage: 1 });
     options['use_site_search_settings'] = 1;
+
+    // Ensure default sort order for date fields
+    if (options.sort_on && !options.sort_order) {
+      options.sort_order = 'descending';
+    }
+
     this.props.searchContent('', {
       b_size: this.defaultPageSize,
       ...options,
@@ -137,7 +143,7 @@ class Search extends Component {
   onSortChange = (event, sort_order) => {
     let options = qs.parse(this.props.history.location.search);
     options.sort_on = event.target.name;
-    options.sort_order = sort_order || 'ascending';
+    options.sort_order = sort_order || 'descending';
     if (event.target.name === 'relevance') {
       delete options.sort_on;
       delete options.sort_order;
@@ -232,7 +238,7 @@ class Search extends Component {
                       </Button>
                       <Button
                         onClick={(event) => {
-                          this.onSortChange(event, 'reverse');
+                          this.onSortChange(event, 'descending');
                         }}
                         name="effective"
                         size="tiny"

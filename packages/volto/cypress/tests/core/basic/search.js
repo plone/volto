@@ -119,8 +119,8 @@ describe('Search', () => {
       Cypress.config().baseUrl + '/search?SearchableText=color',
     );
 
-    // then the first link must be Colorless
+    // then the first link must be Colorless (newest first)
     cy.get('button[name="effective"]').click();
-    cy.get('.summary.url:first').should('have.text', 'Color');
+    cy.get('.summary.url:first').should('have.text', 'Colorless');
   });
 });

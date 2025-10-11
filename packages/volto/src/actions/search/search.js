@@ -41,6 +41,11 @@ export function searchContent(url, options, subrequest = null) {
               // Adds the wildcard to the SearchableText param
               item[1] = `${item[1]}*`;
             }
+            // Convert sort_order to sort_reverse for Plone compatibility
+            if (item[0] === 'sort_order') {
+              item[0] = 'sort_reverse';
+              item[1] = item[1] === 'descending' ? '1' : '0';
+            }
             return join(item, '=');
           }),
           '&',

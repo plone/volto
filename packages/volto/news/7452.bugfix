@@ -1,0 +1,1 @@
+Fix search sort by date to use descending order (newest first) by default instead of ascending order. Convert sort_order parameter to sort_reverse for Plone REST API compatibility. @aryan7081
