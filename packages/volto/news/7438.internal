@@ -1,1 +1,0 @@
-Add Cypress coverage for Delete-key behavior in text blocks: merge next text block if it's also text; do nothing if next block is non-text (Description). @aryan7081

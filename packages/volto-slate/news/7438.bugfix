@@ -1,1 +1,0 @@
-Fix Delete key behavior at end of text blocks: merge next text block if it's also a text block; do nothing if next block is non-text. @aryan7081
