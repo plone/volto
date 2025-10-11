@@ -1,16 +1,16 @@
 import RenderBlocks from '../blocks/RenderBlocks';
 import type { SlotComponentProps } from './SlotRenderer';
+import { hasBlocksData } from '@plone/helpers';
 import config from '@plone/registry';
 
 const ContentArea = (props: SlotComponentProps) => {
   const { content } = props;
-  const hasBlocksData = !!content.blocks && !!content.blocks_layout;
 
   if (
     ['Document', 'Plone Site', 'LRF', 'News Item', 'Event'].includes(
       content['@type'],
     ) &&
-    hasBlocksData
+    hasBlocksData(content)
   ) {
     return (
       <>
