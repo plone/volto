@@ -40,7 +40,6 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   alt: string;
   loading?: 'eager' | 'lazy';
   responsive?: boolean;
-  sizes?: string;
 }
 
 export default function Image(props: ImageProps) {
@@ -52,7 +51,6 @@ export default function Image(props: ImageProps) {
     loading = 'eager',
     responsive = false,
     className,
-    // sizes,
     ...imageProps
   } = props;
 
