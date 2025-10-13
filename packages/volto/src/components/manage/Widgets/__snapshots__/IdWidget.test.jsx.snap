@@ -175,6 +175,7 @@ exports[`IdWidget > renders an id widget with an reserved name 1`] = `
           </div>
           <div
             class="ui red basic label form-error-label"
+            id="error-my-field-0"
           >
             This is a reserved name and can't be used
           </div>
@@ -225,6 +226,7 @@ exports[`IdWidget > renders an id widget with invalid characters 1`] = `
           </div>
           <div
             class="ui red basic label form-error-label"
+            id="error-my-field-0"
           >
             Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: &lt;, &gt;, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines.
           </div>

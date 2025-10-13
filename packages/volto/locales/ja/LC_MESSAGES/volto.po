@@ -3917,6 +3917,11 @@ msgstr ""
 msgid "Third"
 msgstr "第3"
 
+#. Default: "This field is required."
+#: components/manage/Widgets/RegistryImageWidget
+msgid "This field is required."
+msgstr ""
+
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
@@ -4988,6 +4993,11 @@ msgstr ""
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
+msgstr ""
+
+#. Default: "required field"
+#: components/manage/Widgets/FileWidget
+msgid "required field"
 msgstr ""
 
 #. Default: "Result count"

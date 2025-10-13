@@ -3912,6 +3912,11 @@ msgstr "Questi elementi avranno dei collegamenti rotti"
 msgid "Third"
 msgstr "Terzo"
 
+#. Default: "This field is required."
+#: components/manage/Widgets/RegistryImageWidget
+msgid "This field is required."
+msgstr ""
+
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
@@ -4984,6 +4989,11 @@ msgstr "riferimenti"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
 msgstr "fa riferimento a"
+
+#. Default: "required field"
+#: components/manage/Widgets/FileWidget
+msgid "required field"
+msgstr ""
 
 #. Default: "Result count"
 #: components/manage/Contents/Contents

@@ -109,11 +109,7 @@ class FormFieldWrapper extends Component {
     const wdg = (
       <>
         {Children.map(this.props.children, (child) => {
-          if (
-            isValidElement(child) &&
-            child.type?.name === 'Input' &&
-            required
-          ) {
+          if (isValidElement(child) && required) {
             const describedBy =
               error && error.length > 0
                 ? error.map((e, item) => `error-${id}-${item}`).join(' ')
