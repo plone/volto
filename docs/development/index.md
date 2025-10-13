@@ -9,7 +9,7 @@ myst:
 
 # Development
 
-This part of the documentation describes how to develop projects using Seven
+This part of the documentation describes how to develop projects using Seven.
 
 ```{toctree}
 :caption: Table of contents
