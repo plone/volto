@@ -114,13 +114,26 @@ class FormFieldWrapper extends Component {
             child.type?.name === 'Input' &&
             required
           ) {
-            return cloneElement(child, { 'aria-required': true });
+            const describedBy =
+              error && error.length > 0
+                ? error.map((e, item) => `error-${id}-${item}`).join(' ')
+                : undefined;
+            return cloneElement(child, {
+              'aria-required': true,
+              'aria-describedby': describedBy,
+            });
           }
           return child;
         })}
 
-        {map(error, (message) => (
-          <Label key={message} basic color="red" className="form-error-label">
+        {map(error, (message, item) => (
+          <Label
+            id={`error-${id}-${item}`}
+            key={message}
+            basic
+            color="red"
+            className="form-error-label"
+          >
             {message}
           </Label>
         ))}
