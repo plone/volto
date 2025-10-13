@@ -23,4 +23,5 @@ register-slots
 shadow-a-component
 fetch-additional-data-root-loader
 add-tailwind
+icons
 ```
