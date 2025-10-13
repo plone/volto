@@ -1,7 +1,7 @@
 # Volto - the default Plone 6 frontend
 
-<img align="right" width="300" alt="Volto logo png" src="./logos/VoltoLogoEra2.png#gh-light-mode-only" />
-<img align="right" width="300" alt="Volto logo png" src="./logos/VoltoLogoEra2-dark-mode.png#gh-dark-mode-only" />
+<img align="right" width="300" alt="Volto logo png" src="https://raw.githubusercontent.com/plone/volto/18.x.x/logos/VoltoLogoEra2.png#gh-light-mode-only" />
+<img align="right" width="300" alt="Volto logo png" src="https://raw.githubusercontent.com/plone/volto/18.x.x/logos/VoltoLogoEra2-dark-mode.png#gh-dark-mode-only" />
 
 [![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
 [![Unit Tests](https://github.com/plone/volto/actions/workflows/unit.yml/badge.svg)](https://github.com/plone/volto/actions/workflows/unit.yml)

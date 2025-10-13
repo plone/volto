@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 18.7.1 (2025-10-10)
+
+### Bugfix
+
+- Fix Backspace at start of a text block: merge current block into previous inline (no extra newline), delete the current block, and place the caret before the first character of the merged content. Also handle Enter immediately after such inline merge by splitting back into two blocks. @aryan7081 [#7373](https://github.com/plone/volto/issues/7373)
+
+## 18.7.0 (2025-10-07)
+
+### Feature
+
+- Update translations: eu @erral [#7394](https://github.com/plone/volto/issues/7394)
+
 ## 18.6.0 (2025-09-26)
 
 ### Feature
