@@ -1,4 +1,5 @@
 import cloneDeep from 'lodash/cloneDeep';
+import ReactDOM from 'react-dom';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import { Editor } from 'slate';
 import {
@@ -61,12 +62,12 @@ export function joinWithPreviousBlock({ editor, event }, intl) {
     const cursor = getBlockEndAsRange(otherBlock);
     const newFormData = deleteBlock(properties, block, intl);
 
-    saveSlateBlockSelection(otherBlockId, cursor);
-
-    onChangeField(blocksFieldname, newFormData[blocksFieldname]);
-    onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
-
-    onSelectBlock(otherBlockId);
+    ReactDOM.unstable_batchedUpdates(() => {
+      saveSlateBlockSelection(otherBlockId, cursor);
+      onChangeField(blocksFieldname, newFormData[blocksFieldname]);
+      onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
+      onSelectBlock(otherBlockId);
+    });
 
     return true;
   }
@@ -89,10 +90,12 @@ export function joinWithPreviousBlock({ editor, event }, intl) {
     plaintext: serializeNodesToText(merged || []),
   });
   const newFormData = deleteBlock(formData, block, intl);
-  saveSlateBlockSelection(otherBlockId, cursor);
-  onChangeField(blocksFieldname, newFormData[blocksFieldname]);
-  onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
-  onSelectBlock(otherBlockId);
+  ReactDOM.unstable_batchedUpdates(() => {
+    saveSlateBlockSelection(otherBlockId, cursor);
+    onChangeField(blocksFieldname, newFormData[blocksFieldname]);
+    onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
+    onSelectBlock(otherBlockId);
+  });
 
   return true;
 }
@@ -143,10 +146,11 @@ export function joinWithNextBlock({ editor, event }, intl) {
     plaintext: serializeNodesToText(combined || []),
   });
   const newFormData = deleteBlock(formData, otherBlockId, intl);
-
-  onChangeField(blocksFieldname, newFormData[blocksFieldname]);
-  onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
-  onSelectBlock(block);
+  ReactDOM.unstable_batchedUpdates(() => {
+    onChangeField(blocksFieldname, newFormData[blocksFieldname]);
+    onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
+    onSelectBlock(block);
+  });
   return true;
 }
 
