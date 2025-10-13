@@ -108,6 +108,7 @@ const Body = ({ data, isEditMode }) => {
   if (
     data.url &&
     Array.isArray(peertubeInstances) &&
+    peertubeInstances.length > 0 &&
     data.url.match(new RegExp(peertubeInstances.join('|'), 'gi'))
   ) {
     const peertubeRegex = /^(https?:\/\/[^/]+)\/w\/([A-Za-z0-9_-]+)/i;
