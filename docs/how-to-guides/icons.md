@@ -9,7 +9,10 @@ myst:
 
 # Icon system
 
-Seven ships an SVG-based icon pipeline so you can mix the Quanta design system icons with any custom SVGs you add to the project. This guide shows how to import icons, customise them, and decide when to use the pre-built React wrappers.
+This guide shows how to import icons, customize them, and decide when to use the pre-built React wrappers.
+
+Seven ships with an icon pipeline via `@plone/components`.
+This system is SVG-based, so you can mix its Quanta design system icons with any custom SVGs that you add to your project.
 
 ```{tip}
 Every icon you import is just a React component.
