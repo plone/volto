@@ -81,11 +81,18 @@ export default function devProxyMiddleware() {
     },
     pathRewrite: (path, req) => {
       const { apiPathURL, instancePath } = getEnv();
+      const vhSubpath = config.settings.prefixPath
+        ? config.settings.prefixPath
+            .split('/')
+            .filter(Boolean)
+            .map((part) => '/_vh_' + part)
+            .join('')
+        : '';
       const target =
         config.settings.proxyRewriteTarget ||
         `/VirtualHostBase/${apiPathURL.protocol.slice(0, -1)}/${
           apiPathURL.hostname
-        }:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot${config.settings.prefixPath ? '/_vh_' + config.settings.prefixPath.slice(1) : ''}`;
+        }:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot${vhSubpath}`;
 
       return `${target}${path.replace(`${config.settings.prefixPath}/++api++`, '')}`;
     },
