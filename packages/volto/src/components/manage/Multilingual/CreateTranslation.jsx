@@ -1,19 +1,22 @@
-import React from 'react';
-import { Redirect } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { getContent } from '@plone/volto/actions/content/content';
 import { changeLanguage } from '@plone/volto/actions/language/language';
 import { getTranslationLocator } from '@plone/volto/actions/translations/translations';
-import { getContent } from '@plone/volto/actions/content/content';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { toGettextLang } from '@plone/volto/helpers/Utils/Utils';
 import config from '@plone/volto/registry';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 const CreateTranslation = (props) => {
   const dispatch = useDispatch();
   const { language, translationOf } = props.location.state;
   const [translationLocation, setTranslationLocation] = React.useState(null);
-  const [translationObject, setTranslationObject] = React.useState(null);
+  // const [translationObject, setTranslationObject] = React.useState(null);
   const languageFrom = useSelector((state) => state.intl.locale);
+  const translationObject = useSelector(
+    (state) => state.content.subrequests['translationObject'],
+  );
 
   React.useEffect(() => {
     // Only on mount, we dispatch the locator query
@@ -22,11 +25,7 @@ const CreateTranslation = (props) => {
     });
 
     //and we load the translationObject
-    dispatch(getContent(translationOf, null, 'translationObject')).then(
-      (resp) => {
-        setTranslationObject(resp);
-      },
-    );
+    dispatch(getContent(translationOf, null, 'translationObject'));
 
     // On unmount we dispatch the language change
     return () => {
@@ -46,7 +45,8 @@ const CreateTranslation = (props) => {
 
   return (
     translationLocation &&
-    translationObject && (
+    !translationObject.loading &&
+    translationObject.data && (
       <Redirect
         to={{
           pathname: `${flattenToAppURL(translationLocation)}/add`,
@@ -54,7 +54,7 @@ const CreateTranslation = (props) => {
           state: {
             translationOf: props.location.state.translationOf,
             language: props.location.state.language,
-            translationObject: translationObject,
+            translationObject: translationObject.data,
             languageFrom,
           },
         }}
