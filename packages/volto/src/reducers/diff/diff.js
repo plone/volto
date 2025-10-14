@@ -33,6 +33,16 @@ export default function diff(state = initialState, action = {}) {
         loading: true,
       };
     case `${GET_DIFF}_SUCCESS`:
+      if (!Array.isArray(action.result)) {
+        return {
+          ...state,
+          error: null,
+          data: action.result,
+          loaded: true,
+          loading: false,
+        };
+      }
+
       let first_result = action.result[0];
       let second_result = action.result[1];
       if (first_result['@static_behaviors']) {
