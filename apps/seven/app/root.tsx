@@ -140,11 +140,11 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body>
-        <main className="p-4 pt-16 container mx-auto">
+        <main className="container mx-auto p-4 pt-16">
           <h1>{message}</h1>
           <p>{details}</p>
           {stack && (
-            <pre className="p-4 w-full overflow-x-auto">
+            <pre className="w-full overflow-x-auto p-4">
               <code>{stack}</code>
             </pre>
           )}
