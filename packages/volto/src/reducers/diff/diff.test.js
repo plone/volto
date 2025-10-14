@@ -24,20 +24,6 @@ describe('Diff reducer', () => {
     });
   });
 
-  it('should handle GET_DIFF_SUCCESS', () => {
-    expect(
-      diff(undefined, {
-        type: `${GET_DIFF}_SUCCESS`,
-        result: 'result',
-      }),
-    ).toEqual({
-      error: null,
-      data: 'result',
-      loaded: true,
-      loading: false,
-    });
-  });
-
   it('should handle GET_DIFF_SUCCESS with array result with static behaviors', () => {
     expect(
       diff(undefined, {

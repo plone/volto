@@ -55,16 +55,6 @@ export default function diff(state = initialState, action = {}) {
         loading: true,
       };
     case `${GET_DIFF}_SUCCESS`:
-      if (!Array.isArray(action.result)) {
-        return {
-          ...state,
-          error: null,
-          data: action.result,
-          loaded: true,
-          loading: false,
-        };
-      }
-
       const first_result = flattenStaticBehaviors(action.result[0]);
       const second_result = flattenStaticBehaviors(action.result[1]);
 
