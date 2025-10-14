@@ -2,15 +2,14 @@ import React from 'react';
 import {
   DateInput as AriaDateInput,
   type DateInputProps as AriaDateInputProps,
-  composeRenderProps,
   DateSegment,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
-import { fieldGroupStyles } from '../Field/Field.quanta';
+import { composeTailwindRenderProps } from '../utils';
 
 const segmentStyles = tv({
   base: `
-    inline rounded-xs p-0.5 text-gray-800 caret-transparent outline-0 forced-color-adjust-none
+    inline rounded-xs p-1 text-gray-800 caret-transparent outline-0 forced-color-adjust-none
     dark:text-zinc-200
     forced-colors:text-[ButtonText]
     type-literal:px-0
@@ -38,13 +37,14 @@ const segmentStyles = tv({
     },
   },
 });
-// Review styles
+
 export function DateInput(props: Omit<AriaDateInputProps, 'children'>) {
   return (
     <AriaDateInput
       {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        fieldGroupStyles({ ...renderProps, className }),
+      className={composeTailwindRenderProps(
+        props.className,
+        'ml-1 flex h-10 min-w-[150px] flex-1 items-center pl-2',
       )}
     >
       {(segment) => <DateSegment segment={segment} className={segmentStyles} />}
