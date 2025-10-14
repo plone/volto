@@ -3913,6 +3913,7 @@ msgid "Third"
 msgstr "Terzo"
 
 #. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "This field is required."
 msgstr ""
@@ -4989,11 +4990,6 @@ msgstr "riferimenti"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
 msgstr "fa riferimento a"
-
-#. Default: "required field"
-#: components/manage/Widgets/FileWidget
-msgid "required field"
-msgstr ""
 
 #. Default: "Result count"
 #: components/manage/Contents/Contents

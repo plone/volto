@@ -60,8 +60,8 @@ const messages = defineMessages({
     defaultMessage: 'File is not of the accepted type {accept}',
   },
   requiredField: {
-    id: 'required field',
-    defaultMessage: 'required field',
+    id: 'This field is required.',
+    defaultMessage: 'This field is required.',
   },
 });
 
