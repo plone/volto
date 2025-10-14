@@ -6,6 +6,7 @@ import type { Route } from './+types/root';
 import { flattenToAppURL } from '@plone/helpers';
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
+import type { Content } from '@plone/types';
 import {
   getAPIResourceWithAuth,
   installServerMiddleware,
@@ -34,7 +35,16 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 
   const rootLoaderDataUtilities = config.getUtilities({
     type: 'rootLoaderData',
-  });
+  }) as Array<{
+    method: (args: {
+      cli: PloneClient;
+      content: Content;
+      request: typeof request;
+      path: string;
+      params: typeof params;
+      locale: string;
+    }) => Promise<{ status: number; data: unknown }>;
+  }>;
 
   try {
     const [content, site] = await Promise.all([
@@ -44,7 +54,14 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 
     const rootLoaderDataUtilitiesData = await Promise.all([
       ...rootLoaderDataUtilities.map((utility) =>
-        utility.method({ cli, content, request, path, params, locale }),
+        utility.method({
+          cli,
+          content: content.data,
+          request,
+          path,
+          params,
+          locale,
+        }),
       ),
     ]);
 
