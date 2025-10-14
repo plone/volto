@@ -17,6 +17,28 @@ const initialState = {
 };
 
 /**
+ * Flattens static behaviors into the parent object with dot-notation keys.
+ * @function flattenStaticBehaviors
+ * @param {Object} result The result object containing static behaviors.
+ * @returns {Object} Result object with flattened static behaviors.
+ */
+function flattenStaticBehaviors(result) {
+  if (!result['@static_behaviors']) {
+    return result;
+  }
+
+  let flattened = result;
+  map(result['@static_behaviors'], (behavior) => {
+    flattened = {
+      ...omit(flattened, behavior),
+      ...mapKeys(flattened[behavior], (value, key) => `${behavior}.${key}`),
+    };
+  });
+
+  return flattened;
+}
+
+/**
  * Diff reducer.
  * @function diff
  * @param {Object} state Current state.
@@ -43,30 +65,9 @@ export default function diff(state = initialState, action = {}) {
         };
       }
 
-      let first_result = action.result[0];
-      let second_result = action.result[1];
-      if (first_result['@static_behaviors']) {
-        map(first_result['@static_behaviors'], (behavior) => {
-          first_result = {
-            ...omit(first_result, behavior),
-            ...mapKeys(
-              first_result[behavior],
-              (value, key) => `${behavior}.${key}`,
-            ),
-          };
-        });
-      }
-      if (second_result['@static_behaviors']) {
-        map(second_result['@static_behaviors'], (behavior) => {
-          second_result = {
-            ...omit(second_result, behavior),
-            ...mapKeys(
-              second_result[behavior],
-              (value, key) => `${behavior}.${key}`,
-            ),
-          };
-        });
-      }
+      const first_result = flattenStaticBehaviors(action.result[0]);
+      const second_result = flattenStaticBehaviors(action.result[1]);
+
       return {
         ...state,
         error: null,
