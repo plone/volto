@@ -8,6 +8,6 @@
     ```
 
     ```{warning}
-    In a WSL2 environment, do not use the `root` user.
+    In all environments, do not use the `root` user.
     Create a specific user, such as `plone`, and give this user the proper permissions.
     ```
