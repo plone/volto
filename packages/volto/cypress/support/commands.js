@@ -837,7 +837,7 @@ Cypress.Commands.add('getSlateEditorAndType', (type) => {
   cy.getSlate().type(type);
 
   if (shouldVerifyContent(type)) {
-    return cy.getSlate().should('contain', type, { timeout: 5000 });
+    return cy.getSlate().should('contain', type);
   }
 
   return cy.getSlate();
@@ -848,9 +848,7 @@ Cypress.Commands.add('getSlateEditorSelectorAndType', (selector, type) => {
   cy.getSlateSelector(selector).type(type);
 
   if (shouldVerifyContent(type)) {
-    return cy
-      .getSlateSelector(selector)
-      .should('contain', type, { timeout: 5000 });
+    return cy.getSlateSelector(selector).should('contain', type);
   }
 
   return cy.getSlateSelector(selector);
