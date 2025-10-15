@@ -17,7 +17,8 @@ export function TableHeader<T extends object>({
   children,
   dragColumnHeader,
 }: Props<T>) {
-  let { selectionBehavior, selectionMode, allowsDragging } = useTableOptions();
+  const { selectionBehavior, selectionMode, allowsDragging } =
+    useTableOptions();
 
   return (
     <RACTableHeader>

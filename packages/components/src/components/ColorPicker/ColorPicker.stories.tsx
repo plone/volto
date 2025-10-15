@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { ColorPicker } from './ColorPicker';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/ColorPicker.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Widgets/ColorPicker',
+  title: 'Basic/Forms/ColorPicker',
   component: ColorPicker,
   parameters: {
     layout: 'centered',
