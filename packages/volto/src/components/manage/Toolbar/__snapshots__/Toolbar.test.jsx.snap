@@ -182,10 +182,18 @@ exports[`Toolbar > renders the Toolbar component 1`] = `
       className="toolbar-handler"
     >
       <button
+        aria-expanded={true}
         aria-label="Shrink toolbar"
         className="toolbar-handler-button"
         onClick={[Function]}
-      />
+      >
+        <span
+          aria-live="assertive"
+          className="visually-hidden"
+        >
+          Shrink toolbar
+        </span>
+      </button>
     </div>
   </div>,
   <div
@@ -376,10 +384,18 @@ exports[`Toolbar > renders the Toolbar component with lock 1`] = `
       className="toolbar-handler"
     >
       <button
+        aria-expanded={true}
         aria-label="Shrink toolbar"
         className="toolbar-handler-button"
         onClick={[Function]}
-      />
+      >
+        <span
+          aria-live="assertive"
+          className="visually-hidden"
+        >
+          Shrink toolbar
+        </span>
+      </button>
     </div>
   </div>,
   <div
