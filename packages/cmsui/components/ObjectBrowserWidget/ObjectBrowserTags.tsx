@@ -1,3 +1,5 @@
+'use client';
+
 import { Tag, TagGroup } from '@plone/components/quanta';
 import { useObjectBrowserContext } from './ObjectBrowserContext';
 import type { AriaTagGroupProps } from 'react-aria';

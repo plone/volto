@@ -1,3 +1,5 @@
+'use client';
+
 import type { Brain, Content } from '@plone/types';
 import { useEffect, useState } from 'react';
 import type { Fetcher } from 'react-router';

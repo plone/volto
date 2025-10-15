@@ -1,3 +1,5 @@
+'use client';
+
 import type { BaseFormFieldProps } from '../TextField/TextField';
 import {
   Description,

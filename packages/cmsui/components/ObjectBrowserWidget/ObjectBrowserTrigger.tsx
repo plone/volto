@@ -1,4 +1,5 @@
-// Componente Button estratto dal widget originale
+'use client';
+
 import { type PropsWithChildren } from 'react';
 import { Icon } from '@plone/components';
 import { Button } from '@plone/components/quanta';

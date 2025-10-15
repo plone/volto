@@ -1,6 +1,7 @@
-import { reactRouter } from '@react-router/dev/vite';
+import { unstable_reactRouterRSC as reactRouterRSC } from '@react-router/dev/vite';
+import rsc from '@vitejs/plugin-rsc';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import { defineConfig, PluginOption } from 'vite';
+import { defineConfig } from 'vite';
 import { reactRouterDevTools } from 'react-router-devtools';
 import { PloneRegistryVitePlugin } from '@plone/registry/vite-plugin';
 import { PloneSVGRVitePlugin } from '@plone/components/vite-plugin-svgr';
@@ -13,7 +14,8 @@ export default defineConfig({
     PloneRegistryVitePlugin(),
     tailwindcss(),
     reactRouterDevTools(),
-    reactRouter(),
+    reactRouterRSC(),
+    rsc(),
     babel({
       filter: /app\/.*\.tsx?$/,
       babelConfig: {
