@@ -1500,7 +1500,7 @@ msgstr "Extinde bara laterală"
 #. Default: "Expand toolbar"
 #: components/manage/Toolbar/Toolbar
 msgid "Expand toolbar"
-msgstr ""
+msgstr "Extinde bara de instrumente"
 
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
