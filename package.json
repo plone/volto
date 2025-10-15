@@ -52,13 +52,16 @@
       "jest-resolve@26.6.2": "patches/jest-resolve@26.6.2.patch"
     },
     "ignoredBuiltDependencies": [
+      "@parcel/watcher",
       "@swc/core",
+      "@tailwindcss/oxide",
       "core-js",
       "core-js-pure",
       "cypress",
       "es5-ext",
       "esbuild",
       "full-icu",
+      "unrs-resolver",
       "why"
     ],
     "onlyBuiltDependencies": [
