@@ -833,7 +833,8 @@ function shouldVerifyContent(type) {
 }
 
 Cypress.Commands.add('getSlateEditorAndType', (type) => {
-  cy.getSlate().focus().click().type(type);
+  cy.getSlate().click().should('have.focus');
+  cy.getSlate().type(type);
 
   if (shouldVerifyContent(type)) {
     return cy.getSlate().should('contain', type, { timeout: 5000 });
@@ -843,7 +844,8 @@ Cypress.Commands.add('getSlateEditorAndType', (type) => {
 });
 
 Cypress.Commands.add('getSlateEditorSelectorAndType', (selector, type) => {
-  cy.getSlateSelector(selector).focus().click().type(type);
+  cy.getSlateSelector(selector).click().should('have.focus');
+  cy.getSlateSelector(selector).type(type);
 
   if (shouldVerifyContent(type)) {
     return cy
