@@ -1500,7 +1500,7 @@ msgstr "扩大侧边栏"
 #. Default: "Expand toolbar"
 #: components/manage/Toolbar/Toolbar
 msgid "Expand toolbar"
-msgstr ""
+msgstr "展开工具栏"
 
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal

@@ -1499,7 +1499,7 @@ msgstr "Развернуть боковую панель"
 #. Default: "Expand toolbar"
 #: components/manage/Toolbar/Toolbar
 msgid "Expand toolbar"
-msgstr ""
+msgstr "Развернуть панель инструментов"
 
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal

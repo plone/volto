@@ -1498,7 +1498,7 @@ msgstr "Zijbalk uitvouwen"
 #. Default: "Expand toolbar"
 #: components/manage/Toolbar/Toolbar
 msgid "Expand toolbar"
-msgstr ""
+msgstr "Werkbalk uitbreiden"
 
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal

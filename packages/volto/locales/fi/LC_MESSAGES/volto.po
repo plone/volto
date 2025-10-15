@@ -1499,7 +1499,7 @@ msgstr "Laajenna sivupalkki"
 #. Default: "Expand toolbar"
 #: components/manage/Toolbar/Toolbar
 msgid "Expand toolbar"
-msgstr ""
+msgstr "Laajenna työkalupalkkia"
 
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal

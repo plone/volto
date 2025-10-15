@@ -1499,7 +1499,7 @@ msgstr "サイドバーを開く"
 #. Default: "Expand toolbar"
 #: components/manage/Toolbar/Toolbar
 msgid "Expand toolbar"
-msgstr ""
+msgstr "ツールバーを展開"
 
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
