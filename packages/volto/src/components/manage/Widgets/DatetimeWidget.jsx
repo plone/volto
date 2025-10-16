@@ -156,9 +156,9 @@ const DatetimeWidgetComponent = (props) => {
   const isDateOnly = getDateOnly();
 
   useEffect(() => {
-    // try multiple selectors because react-dates may place the id on the input or on a wrapper
+    // Seletores para React Dates
     const selectors = [
-      `#${id}-date`, // input may have this id
+      `#${id}-date`,
       `#${id}-date .DateInput_input`,
       `#${id}-date input`,
       `#${id}`,
@@ -166,14 +166,14 @@ const DatetimeWidgetComponent = (props) => {
     ];
 
     let dateInput = null;
-    for (let s of selectors) {
-      const el = document.querySelector(s);
-      if (el && el.tagName === 'INPUT') {
-        dateInput = el;
+    for (let selector of selectors) {
+      const item = document.querySelector(selector);
+      if (item && item.tagName === 'INPUT') {
+        dateInput = item;
         break;
       }
-      if (el && el.querySelector) {
-        const inner = el.querySelector('input');
+      if (item && item.querySelector) {
+        const inner = item.querySelector('input');
         if (inner) {
           dateInput = inner;
           break;
@@ -188,14 +188,61 @@ const DatetimeWidgetComponent = (props) => {
   }, [props.required, id]);
 
   useEffect(() => {
-    if (isDateOnly) return;
-    const input = document.querySelector(`#${id}-time input`);
-    if (!input) return;
-    if (props.required) {
-      input.setAttribute('aria-required', 'true');
-    } else {
-      input.removeAttribute('aria-required');
+    // Selectors for the date field (react-dates)
+    const dateSelectors = [
+      `#${id}-date`,
+      `#${id}-date .DateInput_input`,
+      `#${id}-date input`,
+      `#${id}`,
+      `.DateInput_input#${id}`,
+    ];
+
+    // Selectors for the time field (rc-time-picker)
+    const timeSelectors = [
+      `#${id}-time input`,
+      `#${id}-time .rc-time-picker-input`,
+      `.rc-time-picker-input#${id}-time`,
+      `.time-input #${id}-time`,
+      `.time-input .rc-time-picker-input`,
+    ];
+
+    function findInput(selectors) {
+      for (let selector of selectors) {
+        const item = document.querySelector(selector);
+        if (item && item.tagName === 'INPUT') return item;
+        if (item && item.querySelector) {
+          const inner = item.querySelector('input');
+          if (inner) return inner;
+        }
+      }
+      return null;
     }
+
+    // Apply aria-required to the date input and, if required, also to the time input
+    function applyAria() {
+      const dateInput = findInput(dateSelectors);
+      if (!dateInput) return;
+
+      // Set or remove aria-required on the date input
+      if (props.required) dateInput.setAttribute('aria-required', 'true');
+      else dateInput.removeAttribute('aria-required');
+
+      // If the date field is required, make the time field required as well
+      if (props.required && !isDateOnly) {
+        const timeInput = findInput(timeSelectors);
+        if (timeInput) timeInput.setAttribute('aria-required', 'true');
+      }
+    }
+
+    // Apply immediately
+    applyAria();
+
+    // Observe DOM changes since rc-time-picker and react-dates can recreate inputs
+    const observer = new MutationObserver(() => applyAria());
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Cleanup on unmount
+    return () => observer.disconnect();
   }, [props.required, id, isDateOnly]);
 
   return (
