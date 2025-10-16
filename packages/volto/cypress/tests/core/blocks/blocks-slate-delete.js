@@ -16,8 +16,7 @@ describe('Slate Delete key behavior', () => {
   });
 
   it('Delete at end of A merges B text block into A and removes B', () => {
-    cy.getSlate().click().typeWithDelay('First block text');
-    cy.getSlate().should('contain', 'First block text');
+    cy.getSlateEditorAndType('First block text');
 
     cy.addNewBlock('slate');
     cy.getSlateEditorAndType('Second block text');
@@ -44,10 +43,11 @@ describe('Slate Delete key behavior', () => {
   });
 
   it('Delete at end of A does nothing when next block is non-text (Description)', () => {
-    cy.getSlate().click().typeWithDelay('Alpha text');
-    cy.getSlate().should('contain', 'Alpha text');
+    cy.getSlateEditorAndType('Alpha text');
 
-    cy.get('.content-area .slate-editor [contenteditable=true]').last().click();
+    cy.getSlateSelector(
+      '.content-area .slate-editor [contenteditable=true]',
+    ).click();
     cy.get('button.block-add-button').click();
     cy.get("[aria-label='Unfold Text blocks']").click();
     cy.get('button.ui.basic.icon.button.description').click();
@@ -55,9 +55,10 @@ describe('Slate Delete key behavior', () => {
     cy.get('.block-editor-description, .block.description', {
       timeout: 10000,
     }).should('exist');
-    cy.get('.block.description [contenteditable="true"]')
-      .click()
-      .type('Meta info');
+    cy.getSlateEditorSelectorAndType(
+      '.block.description [contenteditable="true"]',
+      'Meta info',
+    );
 
     cy.get(
       '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
