@@ -37,6 +37,13 @@
     "react-hooks/exhaustive-deps": "warn",
     "react/react-in-jsx-scope": "off",
     "jsx-a11y/label-has-associated-control": "off",
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "JSXElement[openingElement.name.name='img']",
+        "message": "Use the Image component from '@plone/volto/components/theme/Image/Image' instead of <img> tag."
+      }
+    ]
   },
   "settings": {
     "import/resolver": {
@@ -75,6 +82,19 @@
         "import/no-anonymous-default-export": "off",
       },
     },
+    {
+      "files": [
+        "**/Image/Image.jsx", 
+        "**/Image/Image.js",
+        "**/*.stories.js",
+        "**/*.stories.jsx", 
+        "**/*.test.js",
+        "**/*.test.jsx"
+      ],
+      "rules": {
+        "no-restricted-syntax": "off"
+      }
+    }
   ],
   "globals": {
     "root": true,

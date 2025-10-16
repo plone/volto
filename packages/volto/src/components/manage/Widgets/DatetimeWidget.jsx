@@ -27,6 +27,10 @@ const messages = defineMessages({
     id: 'Time',
     defaultMessage: 'Time',
   },
+  clearDateTime: {
+    id: 'Clear date/time',
+    defaultMessage: 'Clear date and time',
+  },
 });
 
 const PrevIcon = () => (
@@ -207,6 +211,7 @@ const DatetimeWidgetComponent = (props) => {
             disabled={isDisabled || !datetime}
             onClick={onResetDates}
             className="item ui noborder button"
+            aria-label={intl.formatMessage(messages.clearDateTime)}
           >
             <Icon name={clearSVG} size="24px" className="close" />
           </button>

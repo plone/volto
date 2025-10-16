@@ -99,6 +99,7 @@ Cypress.Commands.add(
     transition = '',
     bodyModifier = (body) => body,
     image = false,
+    preview_image_link = null,
   }) => {
     let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
@@ -127,6 +128,10 @@ Cypress.Commands.add(
         allow_discussion: allow_discussion,
       },
     };
+
+    if (preview_image_link) {
+      defaultParams.body.preview_image_link = preview_image_link;
+    }
 
     if (contentType === 'File') {
       const params = {
@@ -828,23 +833,25 @@ function shouldVerifyContent(type) {
 }
 
 Cypress.Commands.add('getSlateEditorAndType', (type) => {
-  const el = cy.getSlate().focus().click().type(type);
+  cy.getSlate().click().should('have.focus');
+  cy.getSlate().type(type);
 
   if (shouldVerifyContent(type)) {
-    return el.should('contain', type, { timeout: 5000 });
+    return cy.getSlate().should('contain', type);
   }
 
-  return el;
+  return cy.getSlate();
 });
 
 Cypress.Commands.add('getSlateEditorSelectorAndType', (selector, type) => {
-  const el = cy.getSlateSelector(selector).focus().click().type(type);
+  cy.getSlateSelector(selector).click().should('have.focus');
+  cy.getSlateSelector(selector).type(type);
 
   if (shouldVerifyContent(type)) {
-    return el.should('contain', type, { timeout: 5000 });
+    return cy.getSlateSelector(selector).should('contain', type);
   }
 
-  return el;
+  return cy.getSlateSelector(selector);
 });
 
 Cypress.Commands.add('setSlateCursor', (subject, query, endQuery) => {

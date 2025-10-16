@@ -1,12 +1,10 @@
 import React from 'react';
 import { DateField } from './DateField';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/DateField.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof DateField> = {
-  title: 'Widgets/DateField',
+  title: 'Basic/Forms/DateField',
   component: DateField,
   parameters: {
     layout: 'centered',

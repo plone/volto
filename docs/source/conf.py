@@ -87,6 +87,7 @@ linkcheck_ignore = [
     r"http://localhost",
     # Ignore pages that require authentication
     r"https://github.com/plone/volto/issues/new/choose",  # requires auth
+    r"https://www.npmjs.com",
     # Ignore github.com pages with anchors
     r"https://github.com/.*#.*",
     # Ignore other specific anchors

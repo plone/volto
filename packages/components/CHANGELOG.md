@@ -7,6 +7,85 @@
 -->
 
 <!-- towncrier release notes start -->
+## 4.0.0-alpha.1 (2025-09-29)
+
+### Breaking
+
+- Rearrangement of the package structure. @sneridagh
+
+  BREAKING:
+  - Renaming imports path from `tailwind` to `quanta`.
+  - Rename all the Quanta components to have the `quanta` suffix. [#7185](https://github.com/plone/volto/issues/7185)
+- - Unify `Breadcrumbs` component implementations, while removing the custom `BreadcrumbsPrimitive` implementation since it's no longer needed. @sneridagh [#7196](https://github.com/plone/volto/issues/7196)
+
+### Feature
+
+- Add react-aria-components Tree component integration. @deodorhunter [#4352](https://github.com/plone/volto/issues/4352)
+- Added sitemap route. @ksuess [#6695](https://github.com/plone/volto/issues/6695)
+- Add react-aria-components Tabs component. @ionlizarazu [#7127](https://github.com/plone/volto/issues/7127)
+- Create DateTimePicker, DatePicker, TimeField and DateInput components. @rboixaderg [#7131](https://github.com/plone/volto/issues/7131)
+- Added react-aria-components RadioGroup and Radio component. @sabrina-bongiovanni [#7142](https://github.com/plone/volto/issues/7142)
+- Add react-aria-components Menu Popover and Dialog component. @ionlizarazu [#7144](https://github.com/plone/volto/issues/7144)
+- Added SizeWidget, AlignWidget, and WidthWidget to the components library. @rboixaderg [#7150](https://github.com/plone/volto/issues/7150)
+- Added quanta GridList and TagGroup, improved quanta styles. @deodorhunter [#7201](https://github.com/plone/volto/issues/7201)
+- `Field` and `FieldWrapper` component for widgets that have no field wrapper by default. @sneridagh [#7213](https://github.com/plone/volto/issues/7213)
+- Separated publicui and cmsui styles. @pnicolli [#7225](https://github.com/plone/volto/issues/7225)
+- Unify `Container` components props. Added `width` prop to basic component. @sneridagh
+  (Non-breaking change) [#7236](https://github.com/plone/volto/issues/7236)
+- Added Toast manager. @giuliaghisini [#7333](https://github.com/plone/volto/issues/7333)
+
+### Bugfix
+
+- Minor storybook and props fixes. @deodorhunter [#4352](https://github.com/plone/volto/issues/4352)
+- Fixed some prettier/lint issues. @sneridagh [#7346](https://github.com/plone/volto/issues/7346)
+
+### Internal
+
+- Rename `@plone/slots` to `@plone/layout`. @sneridagh [#7119](https://github.com/plone/volto/issues/7119)
+- Removed `lightningcss` from the Storybook build. @sneridagh [#7220](https://github.com/plone/volto/issues/7220)
+- Update to latest versions. @sneridagh [#7298](https://github.com/plone/volto/issues/7298)
+- Update RAC to latest.
+  Fix Storybook, added basic CSS. @sneridagh [#7320](https://github.com/plone/volto/issues/7320)
+- Upgrade to Storybook 9. @sneridagh [#7371](https://github.com/plone/volto/issues/7371)
+- Add `@testing-library/react` to the catalog. @sneridagh [#7372](https://github.com/plone/volto/issues/7372)
+
+## 4.0.0-alpha.0 (2025-05-24)
+
+### Breaking
+
+- Rationalize and improve @plone/components icons handling. @sneridagh [#6779](https://github.com/plone/volto/issues/6779)
+- Refactored and revamped `Icon` component. @sneridagh [#6946](https://github.com/plone/volto/issues/6946)
+
+### Feature
+
+- Add ArrayWidget with creatable support. @iFlameing [#6646](https://github.com/plone/volto/issues/6646)
+- Add own Vite SVGR plugin proxy. @sneridagh [#6779](https://github.com/plone/volto/issues/6779)
+- Added Tailwind components support. @sneridagh [#6795](https://github.com/plone/volto/issues/6795)
+- Added `Container` Tailwind-based component. @sneridagh [#6899](https://github.com/plone/volto/issues/6899)
+- 'Improved `Container` Tailwind component, added `width` variant. @sneridagh [#6927](https://github.com/plone/volto/issues/6927)
+- Tailwind `Button` component. @sneridagh [#6946](https://github.com/plone/volto/issues/6946)
+- Added Tailwind basic TextField component. @sneridagh [#6977](https://github.com/plone/volto/issues/6977)
+- Added `Accordion` Tailwind component. @sneridagh [#7003](https://github.com/plone/volto/issues/7003)
+- Improve `Button`, added missing variant and sizes. @sneridagh [#7003](https://github.com/plone/volto/issues/7003)
+- Tailwind Link and Breadcrumbs components. @sneridagh [#7042](https://github.com/plone/volto/issues/7042)
+
+### Bugfix
+
+- Tailwind Accordion component icon fix. @sneridagh [#7040](https://github.com/plone/volto/issues/7040)
+
+### Internal
+
+- Use ESlint 9, fix code. @sneridagh [#6775](https://github.com/plone/volto/issues/6775)
+- Update vitest packages to match the catalog. @sneridagh [#6777](https://github.com/plone/volto/issues/6777)
+- The main CSS for the Tailwind components now is located in the `@plone/theming` package (`../../theming/styles/main.css`) but it does not have a direct dependency on it. Just use it from the monorepo. @sneridagh [#6899](https://github.com/plone/volto/issues/6899)
+- Build the Tailwind components in `@plone/components/tailwind`. @sneridagh [#6899](https://github.com/plone/volto/issues/6899)
+- Update `vitest` version to catalog. @sneridagh [#6916](https://github.com/plone/volto/issues/6916)
+- Build Storybook in readthedocs.io @sneridagh [#6938](https://github.com/plone/volto/issues/6938)
+
+### Documentation
+
+- Added Storybook for `Container` Tailwind component. @sneridagh [#6928](https://github.com/plone/volto/issues/6928)
+- Improve Storybook documentation, reorganize components. @sneridagh [#6940](https://github.com/plone/volto/issues/6940)
 
 ## 3.0.2 (2025-02-08)
 
@@ -51,7 +130,7 @@
 
 ### Internal
 
-- Improve packaging and bring back the export for `src` folder. @sneridagh 
+- Improve packaging and bring back the export for `src` folder. @sneridagh
 
 ## 2.1.0 (2024-11-05)
 
@@ -63,7 +142,7 @@
 
 ### Internal
 
-- Release 2.0.0 @sneridagh 
+- Release 2.0.0 @sneridagh
 
 ## 2.0.0-alpha.16 (2024-10-18)
 

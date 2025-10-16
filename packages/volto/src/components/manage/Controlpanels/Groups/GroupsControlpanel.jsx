@@ -494,8 +494,9 @@ class GroupsControlpanel extends Component {
                       messages.addGroupsFormGroupNameTitle,
                     ),
                     type: 'string',
-                    description:
-                      'A unique identifier for the group. Can not be changed after creation.',
+                    description: this.props.intl.formatMessage(
+                      messages.addGroupsFormGroupNameDescription,
+                    ),
                   },
                   email: {
                     title: this.props.intl.formatMessage(

@@ -41,7 +41,7 @@ export function TagGroup<T extends object>({
 }
 
 export function Tag({ children, ...props }: TagProps) {
-  let textValue = typeof children === 'string' ? children : undefined;
+  const textValue = typeof children === 'string' ? children : undefined;
   return (
     <RACTag textValue={textValue} {...props}>
       {({ allowsRemoving }) => (

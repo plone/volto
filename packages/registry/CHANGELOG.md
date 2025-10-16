@@ -8,6 +8,39 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.5 (2025-09-29)
+
+### Feature
+
+- Improve the vite plugin by adding a relative to absolute path imports. @sneridagh [#7062](https://github.com/plone/volto/issues/7062)
+- Add widget registration and getting widgets from config with new methods. @deodorhunter [#7141](https://github.com/plone/volto/issues/7141)
+- Add-ons registry style loader support for `cmsui.css` stylesheet in add-ons. @sneridagh [#7221](https://github.com/plone/volto/issues/7221)
+- Backport Seven updates. @sneridagh [#7407](https://github.com/plone/volto/issues/7407)
+
+### Bugfix
+
+- Fixed widget registration tests. @deodorhunter [#7201](https://github.com/plone/volto/issues/7201)
+- Fixed `registerWidget`. @sneridagh [#7257](https://github.com/plone/volto/issues/7257)
+- Fixed `registerWidget` ssr error with dedicated APIs for default and generic Widgets. @deodorhunter [#7334](https://github.com/plone/volto/issues/7334)
+
+### Internal
+
+- Added a comment to `init-loader` bin script, it's only used on init unit tests. @sneridagh [#7060](https://github.com/plone/volto/issues/7060)
+- Rename `@plone/slots` to `@plone/layout`. @sneridagh [#7119](https://github.com/plone/volto/issues/7119)
+- Update to latest versions. @sneridagh [#7298](https://github.com/plone/volto/issues/7298)
+
+### Documentation
+
+- Updated docs based on feedback provided in #7221. @pnicolli @stevepiercy [#7226](https://github.com/plone/volto/issues/7226)
+- Fixed some pending TODO's and small code amendments. @sneridagh [#7360](https://github.com/plone/volto/issues/7360)
+- Use `Public UI` and `CMSUI` as official spellings. @stevepiercy [#7375](https://github.com/plone/volto/issues/7375)
+
+## 3.0.0-alpha.4 (2025-06-25)
+
+### Bugfix
+
+- `getUtility` returns an empty object if called with a utility type that has not been registered. @davisagli [#7108](https://github.com/plone/volto/issues/7108)
+
 ## 3.0.0-alpha.3 (2025-05-13)
 
 ### Bugfix
