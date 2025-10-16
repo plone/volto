@@ -155,6 +155,49 @@ const DatetimeWidgetComponent = (props) => {
   const datetime = getInternalValue();
   const isDateOnly = getDateOnly();
 
+  useEffect(() => {
+    // try multiple selectors because react-dates may place the id on the input or on a wrapper
+    const selectors = [
+      `#${id}-date`, // input may have this id
+      `#${id}-date .DateInput_input`,
+      `#${id}-date input`,
+      `#${id}`,
+      `.DateInput_input#${id}`,
+    ];
+
+    let dateInput = null;
+    for (let s of selectors) {
+      const el = document.querySelector(s);
+      if (el && el.tagName === 'INPUT') {
+        dateInput = el;
+        break;
+      }
+      if (el && el.querySelector) {
+        const inner = el.querySelector('input');
+        if (inner) {
+          dateInput = inner;
+          break;
+        }
+      }
+    }
+
+    if (dateInput) {
+      if (props.required) dateInput.setAttribute('aria-required', 'true');
+      else dateInput.removeAttribute('aria-required');
+    }
+  }, [props.required, id]);
+
+  useEffect(() => {
+    if (isDateOnly) return;
+    const input = document.querySelector(`#${id}-time input`);
+    if (!input) return;
+    if (props.required) {
+      input.setAttribute('aria-required', 'true');
+    } else {
+      input.removeAttribute('aria-required');
+    }
+  }, [props.required, id, isDateOnly]);
+
   return (
     <FormFieldWrapper {...props}>
       <div className="date-time-widget-wrapper">
