@@ -1,15 +1,15 @@
 ---
 myst:
   html_meta:
-    "description": "Seven vs Volto: Key Differences"
-    "property=og:description": "Seven vs Volto: Key Differences"
-    "property=og:title": "Seven vs Volto: Key Differences"
+    "description": "Seven vs. Volto: key differences"
+    "property=og:description": "Seven vs. Volto: key differences"
+    "property=og:title": "Seven vs. Volto: key differences"
     "keywords": "Seven, Volto, differences, comparison"
 ---
 
-# Seven vs Volto: Key Differences
+# Seven vs Volto: key differences
 
-This guide highlights the main differences between Seven and Volto.
+This guide highlights the main conceptual and design differences between Seven and Volto.
 It helps Volto developers move to Seven by explaining the design decisions behind Seven and the alternative tooling it offers.
 
 ## No Redux
@@ -17,7 +17,7 @@ It helps Volto developers move to Seven by explaining the design decisions behin
 One of the most visible differences between Seven and Volto is that Seven ships without Redux.
 Volto relies on Redux to mediate almost every interaction with the backend; actions and reducers orchestrate data fetching and client state.
 Seven instead leans on React Router's framework loaders and actions to retrieve data and coordinate state.
-The result is a smaller surface area, fewer custom abstractions, and a codebase that is easier to trace because it stays within well-known React patterns.
+The result is a smaller surface area, fewer custom abstractions, and a code base that is easier to trace because it stays within well-known React patterns.
 
 When Seven needs shared state outside of loaders and actions, it turns to Jotai, a lightweight state management library for React.
 
@@ -35,9 +35,9 @@ Seven relies on React Router's built-in SSR pipeline, keeping server and client 
 The server sends ready-to-hydrate HTML, while framework loaders and actions own subsequent data access.
 Because this work happens on the server, the browser does not need to know where the backend lives.
 
-React Router 7 framework also have the concept of middlewares, which allow Seven to run code before or after every request.
+React Router 7 framework also has the concept of middlewares, which allow Seven to run code before or after every request.
 This is useful for tasks like authentication, logging, and error handling.
-Replaces Volto's custom Express server configuration and middleware stack.
+It replaces Volto's custom Express server configuration and middleware stack.
 
 ## No backend API exposed
 
@@ -49,7 +49,7 @@ Under the hood, Seven uses `@plone/client` to talk to Plone, providing a clean a
 ## TypeScript-first
 
 Seven is written in TypeScript from the start, ensuring type safety and a consistent developer experience.
-Types improve confidence during refactors, make contracts explicit, and encourage shared patterns across the codebase.
+Types improve confidence during refactors, make contracts explicit, and encourage shared patterns across the code base.
 Volto supports TypeScript, but much of its core remains JavaScript.
 
 ## Styling
