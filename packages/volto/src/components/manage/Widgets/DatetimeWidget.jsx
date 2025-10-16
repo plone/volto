@@ -156,38 +156,6 @@ const DatetimeWidgetComponent = (props) => {
   const isDateOnly = getDateOnly();
 
   useEffect(() => {
-    // Seletores para React Dates
-    const selectors = [
-      `#${id}-date`,
-      `#${id}-date .DateInput_input`,
-      `#${id}-date input`,
-      `#${id}`,
-      `.DateInput_input#${id}`,
-    ];
-
-    let dateInput = null;
-    for (let selector of selectors) {
-      const item = document.querySelector(selector);
-      if (item && item.tagName === 'INPUT') {
-        dateInput = item;
-        break;
-      }
-      if (item && item.querySelector) {
-        const inner = item.querySelector('input');
-        if (inner) {
-          dateInput = inner;
-          break;
-        }
-      }
-    }
-
-    if (dateInput) {
-      if (props.required) dateInput.setAttribute('aria-required', 'true');
-      else dateInput.removeAttribute('aria-required');
-    }
-  }, [props.required, id]);
-
-  useEffect(() => {
     // Selectors for the date field (react-dates)
     const dateSelectors = [
       `#${id}-date`,
