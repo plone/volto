@@ -54,6 +54,7 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "@vitejs/plugin-rsc": "0.5.0",
     "@vitest/coverage-v8": "catalog:",
     "babel-plugin-react-compiler": "19.1.0-rc.3",
     "react-router-devtools": "^1.1.6",

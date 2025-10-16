@@ -1,4 +1,5 @@
-// Hook estratto dal codice originale di ObjectBrowserWidget.tsx
+'use client';
+
 import { useFetcher } from 'react-router';
 import {
   useCallback,
