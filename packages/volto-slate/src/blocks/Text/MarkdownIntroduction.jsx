@@ -1,5 +1,6 @@
 import { Segment, List } from 'semantic-ui-react';
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 /**
  * A component to be shown in the sidebar as a introduction to the Markdown support in the Slate-based Text block. It renders a header and a list and has no state.
@@ -9,46 +10,93 @@ const MarkdownIntroduction = (props) => {
   return (
     <div>
       <header className="header">
-        <h2>Markdown shortcuts</h2>
+        <h2>
+          <FormattedMessage
+            id="Markdown shortcuts"
+            defaultMessage="Markdown shortcuts"
+          />
+        </h2>
       </header>
 
       <Segment secondary attached style={{ fontFamily: 'monospace' }}>
         <List>
           <List.Item key={1} style={{ fontSize: 'xx-large' }}>
-            ## Heading
+            <FormattedMessage id="## Heading" defaultMessage="## Heading" />
           </List.Item>
           <List.Item key={2} style={{ fontSize: 'x-large' }}>
-            ### Subheading
+            <FormattedMessage
+              id="### Subheading"
+              defaultMessage="### Subheading"
+            />
           </List.Item>
 
           <List.Item key={3} style={{ paddingTop: '1rem' }}>
-            * unordered list item
+            <FormattedMessage
+              id="* unordered list item"
+              defaultMessage="* unordered list item"
+            />
           </List.Item>
-          <List.Item key={4}>+ unordered list item</List.Item>
-          <List.Item key={5}>- unordered list item</List.Item>
+          <List.Item key={4}>
+            <FormattedMessage
+              id="+ unordered list item"
+              defaultMessage="+ unordered list item"
+            />
+          </List.Item>
+          <List.Item key={5}>
+            <FormattedMessage
+              id="- unordered list item"
+              defaultMessage="- unordered list item"
+            />
+          </List.Item>
 
           <List.Item key={6} style={{ paddingTop: '1rem' }}>
-            1. ordered list item
+            <FormattedMessage
+              id="1. ordered list item"
+              defaultMessage="1. ordered list item"
+            />
           </List.Item>
-          <List.Item key={7}>1) ordered list item</List.Item>
+          <List.Item key={7}>
+            <FormattedMessage
+              id="1) ordered list item"
+              defaultMessage="1) ordered list item"
+            />
+          </List.Item>
 
           <List.Item key={8} className="callout">
-            &gt; block quote
+            <FormattedMessage
+              id="&gt; block quote"
+              defaultMessage="&gt; block quote"
+            />
           </List.Item>
           <List.Item key={9} style={{ fontWeight: 'bold' }}>
-            **bold text**
+            <FormattedMessage
+              id="**bold text**"
+              defaultMessage="**bold text**"
+            />
           </List.Item>
           <List.Item key={10} style={{ fontWeight: 'bold' }}>
-            __bold text__
+            <FormattedMessage
+              id="__bold text__"
+              defaultMessage="__bold text__"
+            />
           </List.Item>
           <List.Item key={11} style={{ fontStyle: 'italic' }}>
-            *italic text*
+            <FormattedMessage
+              id="*italic text*"
+              defaultMessage="*italic text*"
+            />
           </List.Item>
           <List.Item key={12} style={{ fontStyle: 'italic' }}>
-            _italic text_
+            <FormattedMessage
+              id="_italic text_"
+              defaultMessage="_italic text_"
+            />
           </List.Item>
           <List.Item key={13} style={{ textDecoration: 'line-through' }}>
-            ~~strikethrough text~~
+            <FormattedMessage
+              id="~~strikethrough text~~"
+              defaultMessage="~~strikethrough text~~"
+            />
           </List.Item>
         </List>
       </Segment>
