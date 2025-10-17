@@ -1,6 +1,14 @@
 import React from 'react';
+import { defineMessages } from 'react-intl';
 import BlockButton from '@plone/volto-slate/editor/ui/BlockButton';
 import calloutSVG from '@plone/volto/icons/megaphone.svg';
+
+const messages = defineMessages({
+  callout: {
+    id: 'Callout',
+    defaultMessage: 'Callout',
+  },
+});
 
 // TODO: this needs to use constants for el type
 
@@ -21,7 +29,7 @@ export default function install(config) {
     <BlockButton
       format="callout"
       icon={calloutSVG}
-      title="Callout"
+      title={messages.callout}
       {...props}
     />
   );
