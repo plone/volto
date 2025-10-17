@@ -2,7 +2,12 @@
  * FormFieldWrapper component.
  * @module components/manage/Widgets/FormFieldWrapper
  */
-import React, { Component } from 'react';
+import React, {
+  Component,
+  Children,
+  isValidElement,
+  cloneElement,
+} from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Icon as IconOld, Label } from 'semantic-ui-react';
 import map from 'lodash/map';
@@ -103,7 +108,19 @@ class FormFieldWrapper extends Component {
 
     const wdg = (
       <>
-        {this.props.children}
+        {Children.map(this.props.children, (child) => {
+          if (
+            isValidElement(child) &&
+            required &&
+            child.type.name === 'Input'
+          ) {
+            return cloneElement(child, {
+              'aria-required': true,
+              'aria-invalid': error && error.length > 0,
+            });
+          }
+          return child;
+        })}
 
         {map(error, (message) => (
           <Label key={message} basic color="red" className="form-error-label">

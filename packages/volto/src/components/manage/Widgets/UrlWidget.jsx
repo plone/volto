@@ -40,11 +40,12 @@ export const UrlWidget = (props) => {
     maxLength,
     placeholder,
     isDisabled,
+    required,
   } = props;
   const inputId = `field-${id}`;
 
   const [value, setValue] = useState(flattenToAppURL(props.value));
-  const [isInvalid, setIsInvalid] = useState(false);
+  const [isInvalid, setIsInvalid] = useState(true);
   /**
    * Clear handler
    * @method clear
@@ -58,6 +59,7 @@ export const UrlWidget = (props) => {
 
   const onChangeValue = (_value) => {
     let newValue = _value;
+
     if (newValue?.length > 0) {
       if (isInvalid && URLUtils.isUrl(URLUtils.normalizeUrl(newValue))) {
         setIsInvalid(false);
@@ -72,13 +74,14 @@ export const UrlWidget = (props) => {
 
     newValue = isInternalURL(newValue) ? addAppURL(newValue) : newValue;
 
-    if (!isInternalURL(newValue) && newValue.length > 0) {
-      const checkedURL = URLUtils.checkAndNormalizeUrl(newValue);
-      newValue = checkedURL.url;
-      if (!checkedURL.isValid) {
-        setIsInvalid(true);
-      }
-    }
+    const isValidInternal = isInternalURL(newValue);
+    const isValidExternal =
+      !isInternalURL(newValue) &&
+      newValue.length > 0 &&
+      URLUtils.checkAndNormalizeUrl(newValue).isValid;
+
+    const invalid = !(isValidInternal || isValidExternal);
+    setIsInvalid(invalid);
 
     onChange(id, newValue === '' ? undefined : newValue);
   };
@@ -101,6 +104,9 @@ export const UrlWidget = (props) => {
           minLength={minLength || null}
           maxLength={maxLength || null}
           error={isInvalid}
+          required={required}
+          aria-required={required}
+          aria-invalid={isInvalid}
         />
         {value?.length > 0 ? (
           <Button.Group>
