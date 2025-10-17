@@ -60,6 +60,10 @@ start: ## Starts Volto, allowing reloading of the add-on during development
 build: ## Build a production bundle for distribution
 	$(MAKE) -C "./packages/volto/" build
 
+.PHONY: prod-start
+prod-start: build ## Starts Volto in production mode
+	pnpm start:prod
+
 .PHONY: test
 test: ## Run unit tests
 	$(MAKE) -C "./packages/volto/" test

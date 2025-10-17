@@ -49,7 +49,7 @@ start: ## Starts Volto, allowing reloading of the add-on during development
 
 .PHONY: build
 build: ## Build a production bundle for distribution
-	pnpm i && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build
+	pnpm i && pnpm build
 
 .PHONY: test
 test: ## Run unit tests
