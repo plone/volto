@@ -10,51 +10,9 @@ export function setupGuillotina() {
     url: api_url,
     headers,
     body: { '@type': 'Site', id: 'web', title: 'Guillotina Volto Site' },
-  }).then((response) => console.log('web container created'));
-
-  cy.request({
-    method: 'POST',
-    url: `${api_url}/web/@addons`,
-    headers,
-    body: { id: 'cms' },
-  }).then((response) => console.log('cms add-on installed'));
-
-  cy.request({
-    method: 'POST',
-    url: `${api_url}/web/@addons`,
-    headers,
-    body: { id: 'dbusers' },
-  }).then((response) => console.log('dbusers add-on installed'));
-
-  // Create manager group
-  cy.request({
-    method: 'POST',
-    url: `${api_url}/web/groups`,
-    headers,
-    body: {
-      id: 'managers',
-      '@type': 'Group',
-      user_roles: [
-        'guillotina.Manager',
-        'guillotina.ContainerAdmin',
-        'guillotina.Owner',
-      ],
-    },
-  }).then((response) => console.log('managers group created'));
-
-  // create admin user
-  cy.request({
-    method: 'POST',
-    url: `${api_url}/web/users`,
-    headers,
-    body: {
-      '@type': 'User',
-      username: 'admin',
-      email: 'foo@bar.com',
-      password: 'admin',
-      user_groups: ['managers'],
-    },
-  }).then((response) => console.log('default user created'));
+  }).then(() => {
+    // do nothing
+  });
 }
 
 export function tearDownGuillotina({ allowFail = false } = {}) {
@@ -69,5 +27,7 @@ export function tearDownGuillotina({ allowFail = false } = {}) {
     url: `${api_url}/web`,
     headers,
     ...(allowFail && { failOnStatusCode: false }),
-  }).then((response) => console.log('container deleted'));
+  }).then(() => {
+    // do nothing
+  });
 }
