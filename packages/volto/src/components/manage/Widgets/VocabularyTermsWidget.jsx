@@ -111,6 +111,18 @@ const messages = defineMessages({
     id: 'Vocabulary term',
     defaultMessage: 'Vocabulary term',
   },
+  translationTerm: {
+    id: 'Translation of term',
+    defaultMessage: 'Translation of term',
+  },
+  email: {
+    id: 'Email',
+    defaultMessage: 'Email',
+  },
+  token: {
+    id: 'Token',
+    defaultMessage: 'Token',
+  },
   addTerm: {
     id: 'Add vocabulary term',
     defaultMessage: 'Add term',
@@ -164,11 +176,11 @@ const VocabularyTermsWidget = (props) => {
   );
 
   const TermSchema = {
-    title: 'Translation of term',
+    title: intl.formatMessage(messages.translationTerm),
     fieldsets: [
       {
         id: 'default',
-        title: 'Email',
+        title: intl.formatMessage(messages.email),
         fields: supportedLanguages,
       },
     ],
@@ -265,7 +277,7 @@ const VocabularyTermsWidget = (props) => {
               }}
               value={child.titles}
               schema={TermSchema}
-              title="Translation of term"
+              title={intl.formatMessage(messages.translationTerm)}
             />,
             { editableToken, setEditableToken, ...termProps },
           );
@@ -328,8 +340,8 @@ const TermsWrapper = (props) => {
           {vterm.token === termProps.editableToken ? (
             <input
               id={`token-${vterm.token}`}
-              title="Token"
-              placeholder="token"
+              title={intl.formatMessage(messages.token)}
+              placeholder={intl.formatMessage(messages.token)}
               onBlur={onChangeTokenHandler}
             />
           ) : null}

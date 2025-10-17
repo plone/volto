@@ -3,6 +3,10 @@ import { useIntl, defineMessages } from 'react-intl';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 
 const messages = defineMessages({
+  skipLinks: {
+    id: 'skiplinks',
+    defaultMessage: 'Skip links',
+  },
   mainView: {
     id: 'skiplink-main-content',
     defaultMessage: 'Skip to main content',
@@ -24,7 +28,7 @@ const SkipLinks = () => {
     <div
       className="skiplinks-wrapper"
       role="complementary"
-      aria-label="Skiplinks"
+      aria-label={intl.formatMessage(messages.skipLinks)}
     >
       <a className="skiplink" href="#view">
         {intl.formatMessage(messages.mainView)}

@@ -58,9 +58,13 @@ export const messages = defineMessages({
     id: 'Cancel',
     defaultMessage: 'Cancel',
   },
-  error: {
-    id: 'Error',
-    defaultMessage: 'Error',
+  clearUrlBrowser: {
+    id: 'clearUrlBrowser',
+    defaultMessage: 'Clear URL Browser',
+  },
+  openUrlBrowser: {
+    id: 'openUrlBrowser',
+    defaultMessage: 'Open URL Browser',
   },
   thereWereSomeErrors: {
     id: 'There were some errors.',
@@ -180,6 +184,22 @@ export const messages = defineMessages({
   addUserFormRolesTitle: {
     id: 'Roles',
     defaultMessage: 'Roles',
+  },
+  login: {
+    id: 'login',
+    defaultMessage: 'login',
+  },
+  register: {
+    id: 'register',
+    defaultMessage: 'register',
+  },
+  toolbar: {
+    id: 'Toolbar',
+    defaultMessage: 'Toolbar',
+  },
+  sidebar: {
+    id: 'Sidebar',
+    defaultMessage: 'Sidebar',
   },
   addUserFormPasswordAndSendPasswordTogetherNotAllowed: {
     id: 'It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.',

@@ -58,6 +58,14 @@ const messages = defineMessages({
     id: 'Not available',
     defaultMessage: 'None',
   },
+  checked: {
+    id: 'Checked',
+    defaultMessage: 'Checked',
+  },
+  unchecked: {
+    id: 'Unchecked',
+    defaultMessage: 'Unchecked',
+  },
 });
 
 function getColor(string) {
@@ -124,7 +132,7 @@ export const ContentsItemComponent = ({
             <Button
               icon
               basic
-              aria-label="Unchecked"
+              aria-label={intl.formatMessage(messages.unchecked)}
               onClick={(e) => onClick(e, item['@id'])}
             >
               <Icon
@@ -138,7 +146,7 @@ export const ContentsItemComponent = ({
             <Button
               icon
               basic
-              aria-label="Checked"
+              aria-label={intl.formatMessage(messages.checked)}
               onClick={(e) => onClick(e, item['@id'])}
             >
               <Icon

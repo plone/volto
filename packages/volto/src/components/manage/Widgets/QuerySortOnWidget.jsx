@@ -23,6 +23,10 @@ const messages = defineMessages({
     id: 'No selection',
     defaultMessage: 'No selection',
   },
+  selectCriteria: {
+    id: 'Select criteria',
+    defaultMessage: 'Select criteria',
+  },
 });
 
 function QueryStringSortOrderWidget(props) {
@@ -44,7 +48,7 @@ function QueryStringSortOrderWidget(props) {
         name="select-listingblock-sort-on"
         className="react-select-container"
         classNamePrefix="react-select"
-        // placeholder="Select criteria"
+        // placeholder=intl.formatMessage(messages.selectCriteria)
         isDisabled={isDisabled}
         options={[
           {
