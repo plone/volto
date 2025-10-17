@@ -16,6 +16,11 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
 
+#. Default: "/example"
+#: components/manage/Aliases/Aliases
+msgid "/example"
+msgstr ""
+
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
 msgid "<p>Add some HTML here</p>"
@@ -655,6 +660,11 @@ msgstr "Установите этот флажок, чтобы переопре�
 #: components/manage/Widgets/SchemaWidget
 msgid "Checkbox"
 msgstr "Чекбокс"
+
+#. Default: "Checked"
+#: components/manage/Contents/ContentsItem
+msgid "Checked"
+msgstr ""
 
 #. Default: "Choices"
 #: components/manage/Widgets/SelectWidget
@@ -1308,6 +1318,7 @@ msgid "Edit {title}"
 msgstr "Редактировать {title}"
 
 #. Default: "Email"
+#: components/manage/Widgets/VocabularyTermsWidget
 #: helpers/MessageLabels/MessageLabels
 msgid "Email"
 msgstr "Электронная почта"
@@ -1437,7 +1448,6 @@ msgstr "Записи"
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
-#: helpers/MessageLabels/MessageLabels
 msgid "Error"
 msgstr "Ошибка"
 
@@ -1645,6 +1655,11 @@ msgstr "Папка"
 #. Default: "Folder listing"
 #: config/Views
 msgid "Folder listing"
+msgstr ""
+
+#. Default: "Footer"
+#: components/theme/Footer/Footer
+msgid "Footer"
 msgstr ""
 
 #. Default: "Forbidden"
@@ -2437,6 +2452,11 @@ msgstr "Новость"
 msgid "News item view"
 msgstr "Вид новости"
 
+#. Default: "Next"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Next"
+msgstr ""
+
 #. Default: "No"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
@@ -2623,6 +2643,11 @@ msgstr "ОК"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Разрешены только 7-битные символы (ASCII). Не может содержать заглавные буквы, специальные символы: <, >, &, #, /, ? или другие, которые недопустимы в URL. Не может начинаться с: _, aq_, @@, ++. Не может заканчиваться на __. Не может быть: request,contributors, ., .., "". Не может содержать новые строки."
 
+#. Default: "Open Fullscreen"
+#: components/manage/Blocks/Listing/ImageGallery
+msgid "Open Fullscreen"
+msgstr ""
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2741,6 +2766,11 @@ msgstr "Лица, ответственные за создание контен�
 msgid "Placeholder"
 msgstr ""
 
+#. Default: "Play or Pause Slideshow"
+#: components/manage/Blocks/Listing/ImageGallery
+msgid "Play or Pause Slideshow"
+msgstr ""
+
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
@@ -2820,6 +2850,11 @@ msgstr "Настройки"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
 msgstr "Отформатировать код"
+
+#. Default: "Prev"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Prev"
+msgstr ""
 
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
@@ -3307,10 +3342,25 @@ msgstr "Выбрать"
 msgid "Select a date to add to recurrence"
 msgstr "Выберите дату для добавления повторений"
 
+#. Default: "Select action"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Select action"
+msgstr ""
+
 #. Default: "Select columns to show"
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
 msgstr "Выберите столбцы для отображения"
+
+#. Default: "Select condition"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Select condition"
+msgstr ""
+
+#. Default: "Select criteria"
+#: components/manage/Widgets/QuerySortOnWidget
+msgid "Select criteria"
+msgstr ""
 
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
@@ -3485,10 +3535,20 @@ msgstr "Свернуть боковую панель"
 msgid "Shrink toolbar"
 msgstr "Свернуть панель инструментов"
 
+#. Default: "Sidebar"
+#: helpers/MessageLabels/MessageLabels
+msgid "Sidebar"
+msgstr ""
+
 #. Default: "Sign in to start session"
 #: components/theme/Login/Login
 msgid "Sign in to start session"
 msgstr "Войдите, чтобы начать сеанс"
+
+#. Default: "Site"
+#: components/theme/Navigation/Navigation
+msgid "Site"
+msgstr ""
 
 #. Default: "Site Administration"
 #: components/theme/NotFound/NotFound
@@ -3982,6 +4042,16 @@ msgstr "Заголовок"
 msgid "Title field error. Value not provided or already existing."
 msgstr "Ошибка в поле заголовка. Значение отсутствует или уже существует."
 
+#. Default: "Token"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Token"
+msgstr ""
+
+#. Default: "Toolbar"
+#: helpers/MessageLabels/MessageLabels
+msgid "Toolbar"
+msgstr ""
+
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total active and non-active objects"
@@ -4047,6 +4117,11 @@ msgstr "Перевод связан"
 #: components/manage/Multilingual/ManageTranslations
 msgid "Translation linking removed"
 msgstr "Связь с переводом удалена"
+
+#. Default: "Translation of term"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Translation of term"
+msgstr ""
 
 #. Default: "Triggering event field error. Please select a value"
 #: components/manage/Controlpanels/Rules/AddRule
@@ -4115,6 +4190,12 @@ msgstr "Не назначено"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
 msgstr "Неавторизованный доступ"
+
+#. Default: "Unchecked"
+#: components/manage/Contents/ContentsItem
+#: helpers/Utils/withSaveAsDraft
+msgid "Unchecked"
+msgstr ""
 
 #. Default: "Undo"
 #: components/manage/Controlpanels/Controlpanels
@@ -4626,6 +4707,11 @@ msgstr "Добавьте несколько альтернативных URL о�
 msgid "checkboxFacet"
 msgstr "Чекбокс"
 
+#. Default: "Clear URL Browser"
+#: helpers/MessageLabels/MessageLabels
+msgid "clearUrlBrowser"
+msgstr ""
+
 #. Default: "column"
 #: components/manage/Blocks/Grid/templates
 msgid "column"
@@ -4655,6 +4741,12 @@ msgstr "{countofrelation} нарушеной {countofrelation, plural, one {св
 #: config/Blocks
 msgid "daterangeFacet"
 msgstr "Диапазон дат"
+
+#. Default: "delete file"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "delete file"
+msgstr ""
 
 #. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
@@ -4872,6 +4964,11 @@ msgstr "Загрузка"
 msgid "log in"
 msgstr "войти"
 
+#. Default: "login"
+#: helpers/MessageLabels/MessageLabels
+msgid "login"
+msgstr ""
+
 #. Default: "Maps"
 #: config/Blocks
 msgid "maps"
@@ -4935,6 +5032,11 @@ msgstr "Введите число"
 msgid "of the month"
 msgstr "месяца"
 
+#. Default: "Open URL Browser"
+#: helpers/MessageLabels/MessageLabels
+msgid "openUrlBrowser"
+msgstr ""
+
 #. Default: "or try a different page."
 #: error
 msgid "or try a different page."
@@ -4989,6 +5091,11 @@ msgstr "ссылки"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
 msgstr "ссылается на"
+
+#. Default: "register"
+#: helpers/MessageLabels/MessageLabels
+msgid "register"
+msgstr ""
 
 #. Default: "Result count"
 #: components/manage/Contents/Contents
@@ -5194,6 +5301,11 @@ msgstr "Перейти к основному содержимому"
 #: components/theme/SkipLinks/SkipLinks
 msgid "skiplink-navigation"
 msgstr "Перейти к навигации"
+
+#. Default: "Skip links"
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplinks"
+msgstr ""
 
 #. Default: "sort"
 #: components/manage/Contents/Contents

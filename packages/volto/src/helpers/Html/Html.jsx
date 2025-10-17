@@ -10,6 +10,7 @@ import serialize from 'serialize-javascript';
 import join from 'lodash/join';
 import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 import { runtimeConfig } from '@plone/volto/runtime_config';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import config from '@plone/volto/registry';
 
 const CRITICAL_CSS_TEMPLATE = `function alter() {
@@ -79,6 +80,9 @@ class Html extends Component {
     store: PropTypes.shape({
       getState: PropTypes.func,
     }).isRequired,
+    intl: PropTypes.shape({
+      formatMessage: PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   /**
@@ -87,7 +91,7 @@ class Html extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { extractor, markup, store, criticalCss, apiPath, publicURL } =
+    const { extractor, markup, store, criticalCss, apiPath, publicURL, intl } =
       this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
@@ -183,9 +187,17 @@ class Html extends Component {
           ) : undefined}
         </head>
         <body className={bodyClass}>
-          <div role="navigation" aria-label="Toolbar" id="toolbar" />
+          <div
+            role="navigation"
+            aria-label={intl.formatMessage(messages.toolbar)}
+            id="toolbar"
+          />
           <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
-          <div role="complementary" aria-label="Sidebar" id="sidebar" />
+          <div
+            role="complementary"
+            aria-label={intl.formatMessage(messages.sidebar)}
+            id="sidebar"
+          />
           <script
             dangerouslySetInnerHTML={{
               __html: `window.__data=${serialize(
