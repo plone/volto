@@ -54,7 +54,6 @@ exports[`renders an object list widget component 1`] = `
               </button>
             </div>
             <div
-              aria-required="true"
               class="add-item-button-wrapper"
             >
               <button

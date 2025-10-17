@@ -32,9 +32,11 @@ exports[`renders an url widget component 1`] = `
             class="wrapper"
           >
             <div
-              class="ui input"
+              class="ui error input"
             >
               <input
+                aria-invalid="true"
+                aria-required="false"
                 id="field-test-url"
                 name="test-url"
                 type="url"
