@@ -53,6 +53,7 @@
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
-    "release-alpha": "release-it --preRelease=alpha"
+    "release-alpha": "release-it --preRelease=alpha",
+    "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon"
   }
 }

@@ -1,7 +1,52 @@
+import { defineMessages } from 'react-intl';
+
+const messages = defineMessages({
+  advancedSettings: {
+    id: 'Advanced settings',
+    defaultMessage: 'Advanced settings',
+  },
+  overrideTOCEntry: {
+    id: 'Override TOC entry',
+    defaultMessage: 'Override TOC entry',
+  },
+  tOCEntryLevel: {
+    id: 'TOC entry level',
+    defaultMessage: 'TOC entry level',
+  },
+  entryTextForTOC: {
+    id: 'Entry text for TOC',
+    defaultMessage: 'Entry text for TOC',
+  },
+  h1: {
+    id: 'h1',
+    defaultMessage: 'h1',
+  },
+  h2: {
+    id: 'h2',
+    defaultMessage: 'h2',
+  },
+  h3: {
+    id: 'h3',
+    defaultMessage: 'h3',
+  },
+  h4: {
+    id: 'h4',
+    defaultMessage: 'h4',
+  },
+  h5: {
+    id: 'h5',
+    defaultMessage: 'h5',
+  },
+  h6: {
+    id: 'h6',
+    defaultMessage: 'h6',
+  },
+});
+
 const TextBlockSchema = (data) => {
-  const { override_toc } = data;
+  const { intl, override_toc } = data;
   return {
-    title: 'Advanced settings',
+    title: intl.formatMessage(messages.advancedSettings),
     fieldsets: [
       {
         id: 'default',
@@ -14,22 +59,22 @@ const TextBlockSchema = (data) => {
     ],
     properties: {
       override_toc: {
-        title: 'Override TOC entry',
+        title: intl.formatMessage(messages.overrideTOCEntry),
         type: 'boolean',
       },
       level: {
-        title: 'TOC entry level',
+        title: intl.formatMessage(messages.tOCEntryLevel),
         choices: [
-          ['h1', 'h1'],
-          ['h2', 'h2'],
-          ['h3', 'h3'],
-          ['h4', 'h4'],
-          ['h5', 'h5'],
-          ['h6', 'h6'],
+          ['h1', intl.formatMessage(messages.h1)],
+          ['h2', intl.formatMessage(messages.h2)],
+          ['h3', intl.formatMessage(messages.h3)],
+          ['h4', intl.formatMessage(messages.h4)],
+          ['h5', intl.formatMessage(messages.h5)],
+          ['h6', intl.formatMessage(messages.h6)],
         ],
       },
       entry_text: {
-        title: 'Entry text for TOC',
+        title: intl.formatMessage(messages.entryTextForTOC),
       },
     },
     required: [],
