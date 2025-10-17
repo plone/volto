@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { useIntl } from 'react-intl';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import config from '@plone/volto/registry';
 import { useSelector, shallowEqual } from 'react-redux';
 
 const Anontools = () => {
   const token = useSelector((state) => state.userSession.token, shallowEqual);
   const content = useSelector((state) => state.content.data, shallowEqual);
+  const intl = useIntl();
 
   const { settings } = config;
   return (
@@ -16,7 +19,7 @@ const Anontools = () => {
       <Menu pointing secondary floated="right">
         <Menu.Item>
           <Link
-            aria-label="login"
+            aria-label={intl.formatMessage(messages.login)}
             to={`/login${
               content?.['@id']
                 ? `?return_url=${flattenToAppURL(content['@id'])}`
@@ -28,7 +31,10 @@ const Anontools = () => {
         </Menu.Item>
         {settings.showSelfRegistration && (
           <Menu.Item>
-            <Link aria-label="register" to="/register">
+            <Link
+              aria-label={intl.formatMessage(messages.register)}
+              to="/register"
+            >
               <FormattedMessage id="Register" defaultMessage="Register" />
             </Link>
           </Menu.Item>

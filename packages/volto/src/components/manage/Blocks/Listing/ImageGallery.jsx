@@ -6,6 +6,7 @@ import { Button } from 'semantic-ui-react';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import config from '@plone/volto/registry';
+import { defineMessages } from 'react-intl';
 
 import galleryLeftSVG from '@plone/volto/icons/left-key.svg';
 import galleryRightSVG from '@plone/volto/icons/right-key.svg';
@@ -13,6 +14,17 @@ import galleryPlaySVG from '@plone/volto/icons/play.svg';
 import galleryPauseSVG from '@plone/volto/icons/pause.svg';
 import galleryFullScreenSVG from '@plone/volto/icons/fullscreen.svg';
 import galleryBackDownSVG from '@plone/volto/icons/back-down.svg';
+
+const messages = defineMessages({
+  playOrPauseSlideshow: {
+    id: 'Play or Pause Slideshow',
+    defaultMessage: 'Play or Pause Slideshow',
+  },
+  openFullscreen: {
+    id: 'Open Fullscreen',
+    defaultMessage: 'Open Fullscreen',
+  },
+});
 
 const ImageGallery = loadable(() => import('react-image-gallery'));
 
@@ -41,12 +53,12 @@ const renderRightNav = (onClick, disabled) => {
   );
 };
 
-const renderPlayPauseButton = (onClick, isPlaying) => (
+const renderPlayPauseButton = (onClick, isPlaying, intl) => (
   <Button
     type="button"
     className="image-gallery-icon image-gallery-play-button basic primary"
     onClick={onClick}
-    aria-label="Play or Pause Slideshow"
+    aria-label={intl.formatMessage(messages.playOrPauseSlideshow)}
   >
     {isPlaying ? (
       <Icon name={galleryPauseSVG} size="48px" />
@@ -56,13 +68,13 @@ const renderPlayPauseButton = (onClick, isPlaying) => (
   </Button>
 );
 
-const renderFullscreenButton = (onClick, isFullscreen) => {
+const renderFullscreenButton = (onClick, isFullscreen, intl) => {
   return (
     <Button
       type="button"
       className="image-gallery-icon image-gallery-fullscreen-button primary basic"
       onClick={onClick}
-      aria-label="Open Fullscreen"
+      aria-label={intl.formatMessage(messages.openFullscreen)}
     >
       {isFullscreen ? (
         <Icon name={galleryBackDownSVG} size="48px" />

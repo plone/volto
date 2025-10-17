@@ -68,6 +68,9 @@ describe('Html', () => {
             navigation: { '@id': 'dummy-navigation' },
           }),
         }}
+        intl={{
+          formatMessage: (message) => message.defaultMessage || message.id,
+        }}
       />,
     );
     const json = component.toJSON();
@@ -99,6 +102,9 @@ describe('Html', () => {
           }),
         }}
         apiPath={'https://plone.org'}
+        intl={{
+          formatMessage: (message) => message.defaultMessage || message.id,
+        }}
       />,
     );
     const json = component.toJSON();
