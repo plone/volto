@@ -68,11 +68,14 @@ export const getBlocksTocEntries = (properties, tocData) => {
 };
 
 const ToCBlockView = (props: BlockViewProps) => {
-  const { data, variation } = props;
+  const { data, blocksConfig } = props;
 
   const title = data.title ? data.title : '';
   const metadata = props.metadata || props.properties;
   const blocksFieldName = getBlocksFieldName(metadata);
+  const variation = blocksConfig.toc.variations?.find(
+    (v) => v.id === data.variation,
+  );
   const Renderer = variation?.view;
 
   const levels = useMemo(
@@ -150,7 +153,7 @@ const ToCBlockView = (props: BlockViewProps) => {
     return entries;
   }, [data, levels, metadata, blocksFieldName]);
 
-  return (
+  return tocEntries.length > 0 ? (
     <nav
       aria-label={title && !data.hide_title ? title : ''}
       className={clsx('table-of-contents', variation?.id)}
@@ -161,7 +164,7 @@ const ToCBlockView = (props: BlockViewProps) => {
         <div>View extension not found</div>
       )}
     </nav>
-  );
+  ) : null;
 };
 
 export default ToCBlockView;

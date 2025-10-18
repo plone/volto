@@ -1,4 +1,5 @@
 import React from 'react';
+import ToCVariations from './variations';
 
 const ToCBlockInfo = {
   id: 'toc',
@@ -9,6 +10,7 @@ const ToCBlockInfo = {
   // edit: React.lazy(
   //   () => import(/* webpackChunkName: "plone-blocks" */ './ToCBlockEdit'),
   // ),
+  variations: ToCVariations,
   category: 'common',
 };
 
