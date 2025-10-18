@@ -91,7 +91,7 @@ describe('Blocks Tests', () => {
 
     cy.findByLabelText('Enter a URL to an image').click();
     cy.get('input[placeholder="Enter a URL to an image"]').type(
-      '/plone/my-page/my-image{enter}',
+      '/my-page/my-image{enter}',
     );
     cy.get('#toolbar-save').click();
 
