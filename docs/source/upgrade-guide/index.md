@@ -152,6 +152,13 @@ You can still use them in Volto using the `workspace` protocol in your `package.
 However, check the breaking changes issued for these packages in the respective changelogs.
 It is recommended that you use the released versions of these packages instead of the workspace protocol, unless you need a specific feature or fix that is released yet.
 
+### `pnpm` 10 no longer runs lifecycle scripts
+```{versionadded} Volto 19.0.0-alpha.7
+```
+Volto now uses pnpm 10.
+
+If you have packages that use lifecycle scripts (such as `preinstall` or `postinstall`) in `package.json`, you must configure `pnpm`'s [`onlyBuiltDependencies` setting](https://pnpm.io/settings#onlybuiltdependencies) to allow them.
+
 (upgrading-to-volto-18-x-x)=
 
 ## Upgrading to Volto 18.x.x
