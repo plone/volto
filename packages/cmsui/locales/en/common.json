@@ -55,5 +55,13 @@
       "groupMembership": "Group Membership",
       "groups": "Groups"
     }
+  },
+  "publicui": {
+    "contenttypes": {
+      "image": {
+        "size": "Size:",
+        "download": "Click to download full sized image"
+      }
+    }
   }
 }
