@@ -8,7 +8,6 @@
 [![Acceptance Tests](https://github.com/plone/volto/actions/workflows/acceptance.yml/badge.svg)](https://github.com/plone/volto/actions/workflows/acceptance.yml)
 [![Build Status Docs](https://github.com/plone/volto/actions/workflows/docs.yml/badge.svg)](https://github.com/plone/volto/actions)
 
-
 ## Introduction
 
 [Volto](https://github.com/plone/volto) is a ReactJS-based frontend for the [Plone](https://plone.org) Content Management System.
@@ -30,11 +29,9 @@ You can build your own or choose from the community released ones:
 - [Volto Add-ons in NPM](https://www.npmjs.com/search?q=keywords%3Avolto-addon%2Cvolto)
 - [Volto Awesome](https://github.com/collective/awesome-volto)
 
-
 ## Demo
 
 You can try a Volto online demo at [https://demo.plone.org/](https://demo.plone.org/).
-
 
 ## Monorepo structure
 
@@ -43,24 +40,22 @@ This means that several apps and libraries related to each other are stored in t
 They are managed together but released individually.
 This allows the code to be shared effectively, and unifies tracking of changes across all of the apps and libraries.
 
-| Package | Location |
-|---|---|
-| [`@plone/client`](https://www.npmjs.com/package/@plone/client) | [`packages/client`](https://github.com/plone/volto/tree/main/packages/client#readme) |
-| [`@plone/components`](https://www.npmjs.com/package/@plone/components) | [`packages/components`](https://github.com/plone/volto/tree/main/packages/components#readme) |
-| [`@plone/helpers`](https://www.npmjs.com/package/@plone/helpers) | [`packages/helpers`](https://github.com/plone/volto/tree/main/packages/helpers#readme) |
-| [`@plone/providers`](https://www.npmjs.com/package/@plone/providers) | [`packages/providers`](https://github.com/plone/volto/tree/main/packages/providers#readme) |
-| [`@plone/registry`](https://www.npmjs.com/package/@plone/registry) | [`packages/registry`](https://github.com/plone/volto/tree/main/packages/registry#readme) |
-| [`@plone/scripts`](https://www.npmjs.com/package/@plone/scripts) | [`packages/scripts`](https://github.com/plone/volto/tree/main/packages/scripts#readme) |
-| [`@plone/types`](https://www.npmjs.com/package/@plone/types) | [`packages/types`](https://github.com/plone/volto/tree/main/packages/types#readme) |
+| Package                                                                  | Location                                                                                       |
+| ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| [`@plone/client`](https://www.npmjs.com/package/@plone/client)           | [`packages/client`](https://github.com/plone/volto/tree/main/packages/client#readme)           |
+| [`@plone/components`](https://www.npmjs.com/package/@plone/components)   | [`packages/components`](https://github.com/plone/volto/tree/main/packages/components#readme)   |
+| [`@plone/helpers`](https://www.npmjs.com/package/@plone/helpers)         | [`packages/helpers`](https://github.com/plone/volto/tree/main/packages/helpers#readme)         |
+| [`@plone/providers`](https://www.npmjs.com/package/@plone/providers)     | [`packages/providers`](https://github.com/plone/volto/tree/main/packages/providers#readme)     |
+| [`@plone/registry`](https://www.npmjs.com/package/@plone/registry)       | [`packages/registry`](https://github.com/plone/volto/tree/main/packages/registry#readme)       |
+| [`@plone/scripts`](https://www.npmjs.com/package/@plone/scripts)         | [`packages/scripts`](https://github.com/plone/volto/tree/main/packages/scripts#readme)         |
+| [`@plone/types`](https://www.npmjs.com/package/@plone/types)             | [`packages/types`](https://github.com/plone/volto/tree/main/packages/types#readme)             |
 | [`@plone/volto-slate`](https://www.npmjs.com/package/@plone/volto-slate) | [`packages/volto-slate`](https://github.com/plone/volto/tree/main/packages/volto-slate#readme) |
 
 See also [Monorepo structure](https://6.docs.plone.org/volto/contributing/developing-core.html#monorepo-structure).
 
-
 ## Create a Volto project
 
 To start a new project using Volto, follow the [Plone installation documentation](https://6.docs.plone.org/install/create-project.html).
-
 
 ## Documentation
 
@@ -68,23 +63,19 @@ You can find the latest documentation at [https://6.docs.plone.org/](https://6.d
 
 For links to trainings and videos, see [Other learning resources](https://6.docs.plone.org/volto/tutorials/index.html).
 
-
 ## Supported Plone, Python, and Plone REST API versions
 
 See [Plone, Python, and Plone REST API compatibility](https://6.docs.plone.org/volto/contributing/version-policy.html#version-policy-plone-python-and-plone-rest-api-compatibility)
 
 See the [Plone Release Schedule](https://plone.org/download/release-schedule) for details of maintenance and support.
 
-
 ## Supported Node.js versions
 
 See [Node.js version policy](https://6.docs.plone.org/volto/contributing/version-policy.html#version-policy-plone-python-and-plone-rest-api-compatibility).
 
-
 ## Supported browsers
 
 See [Supported browsers](https://6.docs.plone.org/volto/contributing/version-policy.html#version-policy-supported-browsers).
-
 
 ## Contributing
 
@@ -95,20 +86,17 @@ For newcomers to Volto, Plone, or open source software, you must read and follow
 Since December 2023, this repository has a monorepo structure.
 Volto itself is treated as a library and you can find it in the `packages/volto` folder.
 
-
 ## Contributors
 
 <a href="https://github.com/plone/volto/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=plone/volto" />
 </a>
 
-
 ## License
 
 MIT License. Copyrights held by the [Plone Foundation](https://plone.org/foundation).
 
 See [LICENSE.md](LICENSE.md) for details.
-
 
 ## Volto in production
 
@@ -165,7 +153,6 @@ To ensure your website gets the greatest exposure, add it both to [Awesome Volto
 - [WISE-Freshwater](https://water.europa.eu/freshwater) (WISE-Freshwater, the Freshwater Information System for Europe. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2021)
 - [Zeelandia](https://www.zeelandia.de/) (Corporate website for one of the leading bakery ingredients manufacturers in Germany, developed by [kitconcept GmbH](https://kitconcept.com/en), 2019)
 
-
 ### Open-source websites built with Volto
 
 The following websites have been built with Volto.
@@ -175,7 +162,7 @@ You should check the dependencies in their `package.json` for more details.
 
 - [Forest Information System for Europe](https://github.com/eea/fise-frontend) - Volto project for [Forest Information System for Europe website](https://forest.eea.europa.eu)
 - [Freshwater Information System for Europe](https://github.com/eea/freshwater-frontend) - Volto project for [Freshwater Information System for Europe website](https://water.europa.eu/freshwater)
-- [European Industrial Emissions Portal](https://github.com/eea/industry-frontend ) - Volto project for [European Industrial Emissions Portal website](https://industry.eea.europa.eu)
+- [European Industrial Emissions Portal](https://github.com/eea/industry-frontend) - Volto project for [European Industrial Emissions Portal website](https://industry.eea.europa.eu)
 - [Biodiversity Information System for Europe](https://github.com/eea/bise-frontend) - Volto project for [Biodiversity Information System for Europe website](https://biodiversity.europa.eu)
 - [EEA Main Website frontend](https://github.com/eea/eea-website-frontend) - Plone 6 Volto frontend for [European Environment Agency](https://www.eea.europa.eu/en)
 - [volto-bise](https://github.com/eea/volto-bise) - A Volto project packaged as an addon. It provides Theming using a razzle.extend.js provided alias.

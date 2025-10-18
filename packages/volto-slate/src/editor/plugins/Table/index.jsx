@@ -46,6 +46,10 @@ const messages = defineMessages({
     id: 'Delete col',
     defaultMessage: 'Delete col',
   },
+  table: {
+    id: 'Table',
+    defaultMessage: 'Table',
+  },
 });
 
 const unhangRange = (editor, options = {}) => {
@@ -380,7 +384,9 @@ export default function install(config) {
 
 export const installTableButton = (config) => {
   const { slate } = config.settings;
-  slate.buttons.table = (props) => <TableButton {...props} title="Table" />;
+  slate.buttons.table = (props) => (
+    <TableButton {...props} title={messages.table} />
+  );
   slate.toolbarButtons = [...(slate.toolbarButtons || []), 'table'];
   slate.expandedToolbarButtons = [
     ...(slate.expandedToolbarButtons || []),

@@ -17,6 +17,11 @@ msgstr ""
 "Domain: volto\n"
 "X-Generator: Poedit 3.5\n"
 
+#. Default: "/example"
+#: components/manage/Aliases/Aliases
+msgid "/example"
+msgstr ""
+
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
 msgid "<p>Add some HTML here</p>"
@@ -656,6 +661,11 @@ msgstr "Marque essa caixa para personalizar o título, a descrição ou a imagem
 #: components/manage/Widgets/SchemaWidget
 msgid "Checkbox"
 msgstr "Caixa de verificação"
+
+#. Default: "Checked"
+#: components/manage/Contents/ContentsItem
+msgid "Checked"
+msgstr ""
 
 #. Default: "Choices"
 #: components/manage/Widgets/SelectWidget
@@ -1309,6 +1319,7 @@ msgid "Edit {title}"
 msgstr "Editar {title}"
 
 #. Default: "Email"
+#: components/manage/Widgets/VocabularyTermsWidget
 #: helpers/MessageLabels/MessageLabels
 msgid "Email"
 msgstr "E-mail"
@@ -1438,7 +1449,6 @@ msgstr "Entradas"
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
-#: helpers/MessageLabels/MessageLabels
 msgid "Error"
 msgstr "Erro"
 
@@ -1647,6 +1657,11 @@ msgstr "Pasta"
 #: config/Views
 msgid "Folder listing"
 msgstr "Listagem"
+
+#. Default: "Footer"
+#: components/theme/Footer/Footer
+msgid "Footer"
+msgstr ""
 
 #. Default: "Forbidden"
 #: components/theme/Forbidden/Forbidden
@@ -2438,6 +2453,11 @@ msgstr "Notícia"
 msgid "News item view"
 msgstr "Visão de Notícia"
 
+#. Default: "Next"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Next"
+msgstr ""
+
 #. Default: "No"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
@@ -2624,6 +2644,11 @@ msgstr "Ok"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Somente caracteres de bytes de 7 bits são permitidos. Não pode conter letras maiúsculas, caracteres especiais: <, >, &, #, /, ?, ou outros que são ilegais em URLs. Não pode começar com: , aq, @@, ++. Não pode terminar com __. Não pode ser: request, contributors, ., .., “”. Não pode conter quebras de linha."
 
+#. Default: "Open Fullscreen"
+#: components/manage/Blocks/Listing/ImageGallery
+msgid "Open Fullscreen"
+msgstr ""
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2742,6 +2767,11 @@ msgstr "Pessoas responsáveis pela criação do conteúdo deste item. Por favor,
 msgid "Placeholder"
 msgstr "Texto de exemplo"
 
+#. Default: "Play or Pause Slideshow"
+#: components/manage/Blocks/Listing/ImageGallery
+msgid "Play or Pause Slideshow"
+msgstr ""
+
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
@@ -2821,6 +2851,11 @@ msgstr "Preferências"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
 msgstr "Re-formatar seu código"
+
+#. Default: "Prev"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Prev"
+msgstr ""
 
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
@@ -3308,10 +3343,25 @@ msgstr "Selecionar"
 msgid "Select a date to add to recurrence"
 msgstr "Selecione uma data para adicionar à recorrência"
 
+#. Default: "Select action"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Select action"
+msgstr ""
+
 #. Default: "Select columns to show"
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
 msgstr "Selecione colunas para mostrar"
+
+#. Default: "Select condition"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Select condition"
+msgstr ""
+
+#. Default: "Select criteria"
+#: components/manage/Widgets/QuerySortOnWidget
+msgid "Select criteria"
+msgstr ""
 
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
@@ -3486,10 +3536,20 @@ msgstr "Recolher barra lateral"
 msgid "Shrink toolbar"
 msgstr "Recolher barra de ferramentas"
 
+#. Default: "Sidebar"
+#: helpers/MessageLabels/MessageLabels
+msgid "Sidebar"
+msgstr ""
+
 #. Default: "Sign in to start session"
 #: components/theme/Login/Login
 msgid "Sign in to start session"
 msgstr "Faça login para iniciar a sessão"
+
+#. Default: "Site"
+#: components/theme/Navigation/Navigation
+msgid "Site"
+msgstr ""
 
 #. Default: "Site Administration"
 #: components/theme/NotFound/NotFound
@@ -3983,6 +4043,16 @@ msgstr "Título"
 msgid "Title field error. Value not provided or already existing."
 msgstr "Erro de título. Valor não fornecido ou já existente."
 
+#. Default: "Token"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Token"
+msgstr ""
+
+#. Default: "Toolbar"
+#: helpers/MessageLabels/MessageLabels
+msgid "Toolbar"
+msgstr ""
+
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total active and non-active objects"
@@ -4048,6 +4118,11 @@ msgstr "Tradução vinculada"
 #: components/manage/Multilingual/ManageTranslations
 msgid "Translation linking removed"
 msgstr "Vínculo de tradução removido"
+
+#. Default: "Translation of term"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Translation of term"
+msgstr ""
 
 #. Default: "Triggering event field error. Please select a value"
 #: components/manage/Controlpanels/Rules/AddRule
@@ -4116,6 +4191,12 @@ msgstr "Não atribuído"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
 msgstr "Não autorizado"
+
+#. Default: "Unchecked"
+#: components/manage/Contents/ContentsItem
+#: helpers/Utils/withSaveAsDraft
+msgid "Unchecked"
+msgstr ""
 
 #. Default: "Undo"
 #: components/manage/Controlpanels/Controlpanels
@@ -4627,6 +4708,11 @@ msgstr "Adicione vários URLs alternativos de uma só vez fazendo upload de um a
 msgid "checkboxFacet"
 msgstr "Caixa de seleção"
 
+#. Default: "Clear URL Browser"
+#: helpers/MessageLabels/MessageLabels
+msgid "clearUrlBrowser"
+msgstr ""
+
 #. Default: "column"
 #: components/manage/Blocks/Grid/templates
 msgid "column"
@@ -4656,6 +4742,12 @@ msgstr "{countofrelation} quebra {countofrelation, plural, one {relation} outras
 #: config/Blocks
 msgid "daterangeFacet"
 msgstr "Intervalo de datas"
+
+#. Default: "delete file"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "delete file"
+msgstr ""
 
 #. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
@@ -4873,6 +4965,11 @@ msgstr "Carregando"
 msgid "log in"
 msgstr "acessar"
 
+#. Default: "login"
+#: helpers/MessageLabels/MessageLabels
+msgid "login"
+msgstr ""
+
 #. Default: "Maps"
 #: config/Blocks
 msgid "maps"
@@ -4936,6 +5033,11 @@ msgstr "O valor deve ser numérico"
 msgid "of the month"
 msgstr "do mês"
 
+#. Default: "Open URL Browser"
+#: helpers/MessageLabels/MessageLabels
+msgid "openUrlBrowser"
+msgstr ""
+
 #. Default: "or try a different page."
 #: error
 msgid "or try a different page."
@@ -4990,6 +5092,11 @@ msgstr "referências"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
 msgstr "refere-se a"
+
+#. Default: "register"
+#: helpers/MessageLabels/MessageLabels
+msgid "register"
+msgstr ""
 
 #. Default: "Result count"
 #: components/manage/Contents/Contents
@@ -5195,6 +5302,11 @@ msgstr "Ir para o conteúdo"
 #: components/theme/SkipLinks/SkipLinks
 msgid "skiplink-navigation"
 msgstr "Ir para a navegação"
+
+#. Default: "Skip links"
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplinks"
+msgstr ""
 
 #. Default: "sort"
 #: components/manage/Contents/Contents
