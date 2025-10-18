@@ -34,18 +34,19 @@ It is usually better and quicker to move your items into new locations and copy 
 
 (nodejs-20-removed-label)=
 
-### Node.js 20 is no longer supported
-```{versionremoved} Volto 19
+### Removed support of Node.js 20
+```{versionremoved} Volto 19.0.0-alpha.7
 ```
 
-Volto 19 removes official support and CI testing for Node.js 20. While the codebase may still work on Node.js 20 in some cases, it is no longer guaranteed or tested.
+Support and CI testing for Node.js 20 was removed in Volto 19.0.0-alpha.7.
+While the code base may still work on Node.js 20 in some cases, it is no longer guaranteed or tested.
 
-Recommended action for projects:
+You should take the following actions for your Volto 19 projects.
 
-- Upgrade your development and CI environments to a supported Node.js LTS version (for example, Node.js 22). 
-- Update any Docker images, build agents, and project documentation that reference Node.js 20.
+-   Upgrade your development and CI environments to a supported Node.js LTS version, such as Node.js 22.
+-   Update any Docker images, build agents, and project documentation that reference Node.js 20.
 
-If you cannot upgrade immediately, you may continue to run Volto 19 on Node.js 20 at your own risk, but be aware that issues specific to Node.js 20 will not be fixed in the Volto core CI or releases.
+If you can't upgrade immediately, you may continue to run Volto 19 on Node.js 20 at your own risk, but be aware that issues specific to Node.js 20 will not be fixed in the Volto core CI or releases.
 
 (19-removed-support-for-loading-configuration-from-project-label)=
 
