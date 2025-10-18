@@ -57,12 +57,14 @@
     "@plone/registry": "workspace:*",
     "clsx": "^2.1.1",
     "lodash.sortby": "^4.7.0",
+    "pretty-bytes": "^7.1.0",
     "react-aria-components": "catalog:",
     "react-i18next": "catalog:",
     "react-router": "catalog:"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
+    "@storybook/addon-docs": "^9.1.7",
     "@storybook/addon-links": "^9.1.7",
     "@storybook/react-vite": "^9.1.7",
     "@tailwindcss/vite": "catalog:",
@@ -82,7 +84,6 @@
     "vite": "catalog:",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "catalog:",
-    "vitest-axe": "^0.1.0",
-    "@storybook/addon-docs": "^9.1.7"
+    "vitest-axe": "^0.1.0"
   }
 }
