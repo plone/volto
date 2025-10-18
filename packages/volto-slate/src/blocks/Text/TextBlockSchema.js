@@ -54,6 +54,10 @@ const messages = defineMessages({
     id: 'Disable editing on this block',
     defaultMessage: 'Disable editing on this block',
   },
+  default: {
+    id: 'Default',
+    defaultMessage: 'Default',
+  },
 });
 
 const Schema = ({ intl }) => ({
@@ -61,7 +65,7 @@ const Schema = ({ intl }) => ({
   fieldsets: [
     {
       id: 'default',
-      title: 'Default',
+      title: intl.formatMessage(messages.default),
       fields: [
         'placeholder',
         'instructions',

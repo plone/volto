@@ -14,6 +14,7 @@ import galleryPlaySVG from '@plone/volto/icons/play.svg';
 import galleryPauseSVG from '@plone/volto/icons/pause.svg';
 import galleryFullScreenSVG from '@plone/volto/icons/fullscreen.svg';
 import galleryBackDownSVG from '@plone/volto/icons/back-down.svg';
+import { useIntl } from 'react-intl';
 
 const messages = defineMessages({
   playOrPauseSlideshow: {
@@ -53,20 +54,22 @@ const renderRightNav = (onClick, disabled) => {
   );
 };
 
-const renderPlayPauseButton = (onClick, isPlaying, intl) => (
-  <Button
-    type="button"
-    className="image-gallery-icon image-gallery-play-button basic primary"
-    onClick={onClick}
-    aria-label={intl.formatMessage(messages.playOrPauseSlideshow)}
-  >
-    {isPlaying ? (
-      <Icon name={galleryPauseSVG} size="48px" />
-    ) : (
-      <Icon name={galleryPlaySVG} size="48px" />
-    )}
-  </Button>
-);
+const renderPlayPauseButton = (onClick, isPlaying, intl) => {
+  return (
+    <Button
+      type="button"
+      className="image-gallery-icon image-gallery-play-button basic primary"
+      onClick={onClick}
+      aria-label={intl.formatMessage(messages.playOrPauseSlideshow)}
+    >
+      {isPlaying ? (
+        <Icon name={galleryPauseSVG} size="48px" />
+      ) : (
+        <Icon name={galleryPlaySVG} size="48px" />
+      )}
+    </Button>
+  );
+};
 
 const renderFullscreenButton = (onClick, isFullscreen, intl) => {
   return (
@@ -102,14 +105,20 @@ const ImageGalleryTemplate = ({ items }) => {
     };
   });
 
+  const intl = useIntl();
+
   return (
     renderItems.length > 0 && (
       <ImageGallery
         items={imagesInfo}
         renderLeftNav={renderLeftNav}
         renderRightNav={renderRightNav}
-        renderPlayPauseButton={renderPlayPauseButton}
-        renderFullscreenButton={renderFullscreenButton}
+        renderPlayPauseButton={(onClick, isPlaying) =>
+          renderPlayPauseButton(onClick, isPlaying, intl)
+        }
+        renderFullscreenButton={(onClick, isFullScreen) =>
+          renderFullscreenButton(onClick, isFullScreen, intl)
+        }
         lazyLoad={true}
       />
     )

@@ -26,6 +26,11 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>ここにHTMLを記述</p>"
 
+#. Default: "A short hint that describes the expected value within this block"
+#: components/manage/Blocks/Block/Schema
+msgid "A short hint that describes the expected value within this block"
+msgstr ""
+
 #. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
 #: helpers/MessageLabels/MessageLabels
 msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
@@ -1016,6 +1021,7 @@ msgid "Date (newest first)"
 msgstr "日付 (新しい順)"
 
 #. Default: "Default"
+#: components/manage/Blocks/Block/Schema
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
@@ -1140,6 +1146,11 @@ msgstr "降順"
 msgid "Description"
 msgstr "説明"
 
+#. Default: "Detailed expected value within this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Detailed expected value within this block"
+msgstr ""
+
 #. Default: "Diff"
 #: components/manage/Diff/Diff
 msgid "Diff"
@@ -1158,6 +1169,26 @@ msgstr ""
 #. Default: "Disable apply to subfolders"
 #: components/manage/Rules/Rules
 msgid "Disable apply to subfolders"
+msgstr ""
+
+#. Default: "Disable creation of new blocks after this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable creation of new blocks after this block"
+msgstr ""
+
+#. Default: "Disable drag & drop on this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable drag & drop on this block"
+msgstr ""
+
+#. Default: "Disable editing on this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable editing on this block"
+msgstr ""
+
+#. Default: "Disable new blocks"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable new blocks"
 msgstr ""
 
 #. Default: "Disabled"
@@ -1214,6 +1245,11 @@ msgstr "文書"
 #. Default: "Document view"
 #: config/Views
 msgid "Document view"
+msgstr ""
+
+#. Default: "Don't allow deletion of this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Don't allow deletion of this block"
 msgstr ""
 
 #. Default: "Download Event"
@@ -1448,6 +1484,7 @@ msgstr ""
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Error"
 msgstr "エラー"
 
@@ -1637,6 +1674,11 @@ msgstr "第1"
 msgid "Fix relations"
 msgstr ""
 
+#. Default: "Fixed position"
+#: components/manage/Blocks/Block/Schema
+msgid "Fixed position"
+msgstr ""
+
 #. Default: "Fixed width columns"
 #: config/Blocks
 msgid "Fixed width table cells"
@@ -1688,6 +1730,11 @@ msgstr "フルサイズ"
 #: components/theme/Register/Register
 msgid "Full Name"
 msgstr "氏名"
+
+#. Default: "Full screen sidenav"
+#: components/manage/Sidebar/Sidebar
+msgid "Full screen sidenav"
+msgstr ""
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels
@@ -1772,6 +1819,11 @@ msgstr ""
 #. Default: "Headline level"
 #: components/manage/Blocks/Listing/schema
 msgid "Headline level"
+msgstr ""
+
+#. Default: "Helper text"
+#: components/manage/Blocks/Block/Schema
+msgid "Helper text"
 msgstr ""
 
 #. Default: "Hidden facets will still filter the results if proper parameters are passed in URLs"
@@ -1959,6 +2011,11 @@ msgstr "インストール済バージョン"
 #. Default: "Installing a third party add-on"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installing a third party add-on"
+msgstr ""
+
+#. Default: "Instructions"
+#: components/manage/Blocks/Block/Schema
+msgid "Instructions"
 msgstr ""
 
 #. Default: "days"
@@ -2915,6 +2972,11 @@ msgstr "もっと読む"
 msgid "Read only for this type of relation."
 msgstr ""
 
+#. Default: "Read-only"
+#: components/manage/Blocks/Block/Schema
+msgid "Read-only"
+msgstr ""
+
 #. Default: "Rearrange items by…"
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
@@ -3088,6 +3150,7 @@ msgid "Reply"
 msgstr ""
 
 #. Default: "Required"
+#: components/manage/Blocks/Block/Schema
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 msgid "Required"
@@ -3819,6 +3882,11 @@ msgstr ""
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr "テキスト"
+
+#. Default: "Text block settings"
+#: components/manage/Blocks/Block/Schema
+msgid "Text block settings"
+msgstr ""
 
 #. Default: "Thank you."
 #: components/theme/ConnectionRefused/ConnectionRefused

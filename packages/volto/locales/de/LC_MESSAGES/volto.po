@@ -26,6 +26,11 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>HTML hier einfügen</p>"
 
+#. Default: "A short hint that describes the expected value within this block"
+#: components/manage/Blocks/Block/Schema
+msgid "A short hint that describes the expected value within this block"
+msgstr ""
+
 #. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
 #: helpers/MessageLabels/MessageLabels
 msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
@@ -1016,6 +1021,7 @@ msgid "Date (newest first)"
 msgstr "Datum (neustes zuerst)"
 
 #. Default: "Default"
+#: components/manage/Blocks/Block/Schema
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
@@ -1140,6 +1146,11 @@ msgstr "Absteigend"
 msgid "Description"
 msgstr "Beschreibung"
 
+#. Default: "Detailed expected value within this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Detailed expected value within this block"
+msgstr ""
+
 #. Default: "Diff"
 #: components/manage/Diff/Diff
 msgid "Diff"
@@ -1159,6 +1170,26 @@ msgstr "Deaktivieren"
 #: components/manage/Rules/Rules
 msgid "Disable apply to subfolders"
 msgstr "Anwendung auf Unterseiten deaktivieren"
+
+#. Default: "Disable creation of new blocks after this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable creation of new blocks after this block"
+msgstr ""
+
+#. Default: "Disable drag & drop on this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable drag & drop on this block"
+msgstr ""
+
+#. Default: "Disable editing on this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable editing on this block"
+msgstr ""
+
+#. Default: "Disable new blocks"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable new blocks"
+msgstr ""
 
 #. Default: "Disabled"
 #: components/manage/Rules/Rules
@@ -1215,6 +1246,11 @@ msgstr "Seite"
 #: config/Views
 msgid "Document view"
 msgstr "Seite"
+
+#. Default: "Don't allow deletion of this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Don't allow deletion of this block"
+msgstr ""
 
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
@@ -1448,6 +1484,7 @@ msgstr "Einträge"
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Error"
 msgstr "Fehler"
 
@@ -1637,6 +1674,11 @@ msgstr "Erster Tag des Monats"
 msgid "Fix relations"
 msgstr "Reparieren"
 
+#. Default: "Fixed position"
+#: components/manage/Blocks/Block/Schema
+msgid "Fixed position"
+msgstr ""
+
 #. Default: "Fixed width columns"
 #: config/Blocks
 msgid "Fixed width table cells"
@@ -1688,6 +1730,11 @@ msgstr "Volle Breite"
 #: components/theme/Register/Register
 msgid "Full Name"
 msgstr "Vor- und Nachname"
+
+#. Default: "Full screen sidenav"
+#: components/manage/Sidebar/Sidebar
+msgid "Full screen sidenav"
+msgstr ""
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels
@@ -1773,6 +1820,11 @@ msgstr "Überschrift"
 #: components/manage/Blocks/Listing/schema
 msgid "Headline level"
 msgstr "Überschrift"
+
+#. Default: "Helper text"
+#: components/manage/Blocks/Block/Schema
+msgid "Helper text"
+msgstr ""
 
 #. Default: "Hidden facets will still filter the results if proper parameters are passed in URLs"
 #: components/manage/Blocks/Search/schema
@@ -1960,6 +2012,11 @@ msgstr "Aktivierte Version"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installing a third party add-on"
 msgstr "Eine Erweiterung aktivieren"
+
+#. Default: "Instructions"
+#: components/manage/Blocks/Block/Schema
+msgid "Instructions"
+msgstr ""
 
 #. Default: "days"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -2915,6 +2972,11 @@ msgstr "Mehr…"
 msgid "Read only for this type of relation."
 msgstr "Relationen von diesem Typ sind nur im Kontext editierbar."
 
+#. Default: "Read-only"
+#: components/manage/Blocks/Block/Schema
+msgid "Read-only"
+msgstr ""
+
 #. Default: "Rearrange items by…"
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
@@ -3088,6 +3150,7 @@ msgid "Reply"
 msgstr "Antworten"
 
 #. Default: "Required"
+#: components/manage/Blocks/Block/Schema
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 msgid "Required"
@@ -3819,6 +3882,11 @@ msgstr "Teaser"
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr "Text"
+
+#. Default: "Text block settings"
+#: components/manage/Blocks/Block/Schema
+msgid "Text block settings"
+msgstr ""
 
 #. Default: "Thank you."
 #: components/theme/ConnectionRefused/ConnectionRefused

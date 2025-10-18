@@ -39,6 +39,10 @@ const messages = defineMessages({
     id: 'Order',
     defaultMessage: 'Order',
   },
+  fullScreenSidenav: {
+    id: 'Full screen sidenav',
+    defaultMessage: 'Full screen sidenav',
+  },
 });
 
 const Sidebar = (props) => {
@@ -130,7 +134,7 @@ const Sidebar = (props) => {
           type="button"
           className="full-size-sidenav-btn"
           onClick={onToggleFullSize}
-          aria-label="full-screen-sidenav"
+          aria-label={intl.formatMessage(messages.fullScreenSidenav)}
         >
           <Icon
             className="full-size-icon"
