@@ -56,9 +56,5 @@
       "lightningcss-cli",
       "unrs-resolver"
     ]
-  },
-  "dependencies": {
-    "layout": "^2.2.0",
-    "pretty-bytes": "^7.1.0"
   }
 }

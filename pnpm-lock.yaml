@@ -83,13 +83,6 @@ pnpmfileChecksum: sha256-YQGedB3IrCeBMAvU8RxeSwbc6jsJEM3HijPhsk8sdzw=
 importers:
 
   .:
-    dependencies:
-      layout:
-        specifier: ^2.2.0
-        version: 2.2.0
-      pretty-bytes:
-        specifier: ^7.1.0
-        version: 7.1.0
     devDependencies:
       concurrently:
         specifier: ^8.2.2
@@ -782,6 +775,9 @@ importers:
       lodash.sortby:
         specifier: ^4.7.0
         version: 4.7.0
+      pretty-bytes:
+        specifier: ^7.1.0
+        version: 7.1.0
       react:
         specifier: ^19.1.0
         version: 19.1.1
@@ -5231,9 +5227,6 @@ packages:
     resolution: {integrity: sha512-aVNobHnJqLiUelTaHat9DZ1qM2w0C0Eym4LPI/3JxOnSokGVdsl1T1kN7TFvsEAD8G47A6VKQ0TVHqbBnYMJlQ==}
     engines: {node: '>=12.0.0'}
 
-  bin-pack@1.0.2:
-    resolution: {integrity: sha512-aOk0SxEon5LF9cMxQFViSKb4qccG6rs7XKyMXIb1J8f8LA2acTIWnHdT0IOTe4gYBbqgjdbuTZ5f+UP+vlh4Mw==}
-
   bippy@0.3.27:
     resolution: {integrity: sha512-0k9M+yXcgUDpMgSl+7QjYRqUk8Ud4Z18uL7m34AKkkXy7Fi79Yl8q2pdyDGOyb0uhmRzHgJUOsAIYW1qvlnGaA==}
     peerDependencies:
@@ -7413,10 +7406,6 @@ packages:
   language-tags@1.0.9:
     resolution: {integrity: sha512-MbjN408fEndfiQXbFQ1vnd+1NoLDsnQW41410oQBXiyXDMYH5z505juWa4KUE1LqxRC7DgOgZDbKLxHIwm27hA==}
     engines: {node: '>=0.10'}
-
-  layout@2.2.0:
-    resolution: {integrity: sha512-+kdgg25XW11BA4cl9vF+SH01HaBipld2Nf/PlU2kSYncAbdUbDoahzrlh6yhR93N/wR2TGgcFoxebzR1LKmZUg==}
-    engines: {node: '>= 0.8.0'}
 
   lazy-ass@1.6.0:
     resolution: {integrity: sha512-cc8oEVoctTvsFZ/Oje/kGnHbpWHYBe8IAJe4C0QNc3t8uM/0Y8+erSz/7Y1ALuXTEZTMvxXwO6YbX1ey3ujiZw==}
@@ -14779,8 +14768,6 @@ snapshots:
     dependencies:
       open: 8.4.2
 
-  bin-pack@1.0.2: {}
-
   bippy@0.3.27(@types/react@19.1.12)(react@19.1.1):
     dependencies:
       '@types/react-reconciler': 0.28.9(@types/react@19.1.12)
@@ -17234,10 +17221,6 @@ snapshots:
   language-tags@1.0.9:
     dependencies:
       language-subtag-registry: 0.3.23
-
-  layout@2.2.0:
-    dependencies:
-      bin-pack: 1.0.2
 
   lazy-ass@1.6.0: {}
 
