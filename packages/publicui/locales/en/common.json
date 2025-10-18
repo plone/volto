@@ -6,6 +6,12 @@
       "results": "Search results",
       "placeholder": "Write here...",
       "noResults": "No results found"
+    },
+    "contenttypes": {
+      "image": {
+        "size": "Size:",
+        "download": "Click to download full sized image"
+      }
     }
   }
 }
