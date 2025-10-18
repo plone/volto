@@ -43,7 +43,7 @@ While the code base may still work on Node.js 20 in some cases, it is no longer 
 
 You should take the following actions for your Volto 19 projects.
 
--   Upgrade your development and CI environments to a supported Node.js LTS version, such as Node.js 22.
+-   Upgrade your development and CI environments to a supported Node.js LTS version, such as Node.js 22 or 24.
 -   Update any Docker images, build agents, and project documentation that reference Node.js 20.
 
 If you can't upgrade immediately, you may continue to run Volto 19 on Node.js 20 at your own risk, but be aware that issues specific to Node.js 20 will not be fixed in the Volto core CI or releases.
