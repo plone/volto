@@ -157,7 +157,7 @@ It is recommended that you use the released versions of these packages instead o
 ```
 Volto now uses pnpm 10.
 
-If you have packages that use lifecycle scripts (such as `preinstall` or `postinstall`) in `package.json`, you must configure `pnpm`'s [`onlyBuiltDependencies` setting](https://pnpm.io/settings#onlybuiltdependencies) to allow them.
+If you have packages that use lifecycle scripts (such as `preinstall` or `postinstall`) in {file}`package.json`, you must configure `pnpm`'s [`onlyBuiltDependencies` setting](https://pnpm.io/settings#onlybuiltdependencies) to allow them.
 
 (upgrading-to-volto-18-x-x)=
 
