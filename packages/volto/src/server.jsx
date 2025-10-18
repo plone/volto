@@ -40,6 +40,7 @@ import languages from '@plone/volto/constants/Languages.cjs';
 
 import configureStore from '@plone/volto/store';
 import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
+import { IntlProvider } from 'react-intl';
 
 let locales = {};
 
@@ -285,14 +286,19 @@ server.get('/*', (req, res) => {
         res.status(statusCode).send(
           `<!doctype html>
         ${renderToString(
-          <Html
-            extractor={extractor}
-            markup={markup}
-            store={store}
-            criticalCss={readCriticalCss(req)}
-            apiPath={res.locals.detectedHost || config.settings.apiPath}
-            publicURL={res.locals.detectedHost || config.settings.publicURL}
-          />,
+          <Provider store={store}>
+            <IntlProvider>
+              <Html
+                extractor={extractor}
+                markup={markup}
+                store={store}
+                criticalCss={readCriticalCss(req)}
+                apiPath={res.locals.detectedHost || config.settings.apiPath}
+                publicURL={res.locals.detectedHost || config.settings.publicURL}
+              />
+              ,
+            </IntlProvider>
+          </Provider>,
         )}
       `,
         );
