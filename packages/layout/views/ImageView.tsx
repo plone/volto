@@ -1,9 +1,9 @@
-import { Container } from '@plone/components';
-import { flattenToAppURL } from '@plone/helpers';
+import { Container, Link } from '@plone/components';
 import { useRouteLoaderData } from 'react-router';
 import type { RootLoader } from 'seven/app/root';
 import { useTranslation } from 'react-i18next';
 import prettybytes from 'pretty-bytes';
+import Image from '../components/Image/Image';
 
 export default function ImageView() {
   const { t } = useTranslation();
@@ -22,7 +22,7 @@ export default function ImageView() {
       {content.image?.download ? (
         <Link href={content.image.download}>
           <figure>
-            <img src={content.image.download} alt="" />
+            <Image src={content.image.download} alt="" />
             <figcaption>
               {t('layout.contenttypes.image.size')}
               {prettybytes(content.image.size)}
@@ -30,7 +30,7 @@ export default function ImageView() {
               {t('layout.contenttypes.image.download')}
             </figcaption>
           </figure>
-        </a>
+        </Link>
       ) : (
         <span>No image</span>
       )}
