@@ -15,6 +15,7 @@
     "build:react-router": "pnpm --filter @plone/react-router run build",
     "build": "pnpm --filter @plone/volto build",
     "start": "pnpm --filter @plone/volto start",
+    "start:prod": "pnpm --filter @plone/volto start:prod",
     "start:project": "pnpm --filter plone run start",
     "lint": "make build-all-deps && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
     "lint:volto": "pnpm --filter @plone/volto run lint",
