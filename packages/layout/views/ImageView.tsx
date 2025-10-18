@@ -20,7 +20,7 @@ export default function ImageView() {
       <h1 className="documentFirstHeading">{content.title}</h1>
       <p className="documentDescription">{content.description}</p>
       {content.image?.download ? (
-        <a href={flattenToAppURL(content.image.download)}>
+        <Link href={content.image.download}>
           <figure>
             <img src={content.image.download} alt="" />
             <figcaption>
