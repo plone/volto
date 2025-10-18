@@ -1,1 +1,0 @@
-Translation strings for the Image content type @ebrehault

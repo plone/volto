@@ -24,10 +24,10 @@ export default function ImageView() {
           <figure>
             <img src={content.image.download} alt="" />
             <figcaption>
-              {t('publicui.contenttypes.image.size')}
+              {t('layout.contenttypes.image.size')}
               {prettybytes(content.image.size)}
               &nbsp; &mdash; &nbsp;
-              {t('publicui.contenttypes.image.download')}
+              {t('layout.contenttypes.image.download')}
             </figcaption>
           </figure>
         </a>

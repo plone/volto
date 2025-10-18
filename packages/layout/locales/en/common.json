@@ -2,6 +2,12 @@
   "layout": {
     "languageSwitcher": {
       "switchTo": "Switch to {{ lang }}"
+    },
+    "contenttypes": {
+      "image": {
+        "size": "Size:",
+        "download": "Click to download full sized image"
+      }
     }
   }
 }
