@@ -2,6 +2,9 @@
   "layout": {
     "languageSwitcher": {
       "switchTo": "Switch to {{ lang }}"
+    },
+    "FileView": {
+      "download": "Download file"
     }
   }
 }
