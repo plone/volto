@@ -28,6 +28,11 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>HTMLa idatzi hemen</p>"
 
+#. Default: "A short hint that describes the expected value within this block"
+#: components/manage/Blocks/Block/Schema
+msgid "A short hint that describes the expected value within this block"
+msgstr ""
+
 #. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
 #: helpers/MessageLabels/MessageLabels
 msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
@@ -1018,6 +1023,7 @@ msgid "Date (newest first)"
 msgstr "Data (berriena lehenengo)"
 
 #. Default: "Default"
+#: components/manage/Blocks/Block/Schema
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
@@ -1142,6 +1148,11 @@ msgstr "Beheraka"
 msgid "Description"
 msgstr "Deskribapena"
 
+#. Default: "Detailed expected value within this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Detailed expected value within this block"
+msgstr ""
+
 #. Default: "Diff"
 #: components/manage/Diff/Diff
 msgid "Diff"
@@ -1161,6 +1172,26 @@ msgstr "Desaktibatu"
 #: components/manage/Rules/Rules
 msgid "Disable apply to subfolders"
 msgstr "Desaktibatu azpikarpetei aplikatzea"
+
+#. Default: "Disable creation of new blocks after this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable creation of new blocks after this block"
+msgstr ""
+
+#. Default: "Disable drag & drop on this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable drag & drop on this block"
+msgstr ""
+
+#. Default: "Disable editing on this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable editing on this block"
+msgstr ""
+
+#. Default: "Disable new blocks"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable new blocks"
+msgstr ""
 
 #. Default: "Disabled"
 #: components/manage/Rules/Rules
@@ -1217,6 +1248,11 @@ msgstr "Dokumentua"
 #: config/Views
 msgid "Document view"
 msgstr "Dokumentuaren bista"
+
+#. Default: "Don't allow deletion of this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Don't allow deletion of this block"
+msgstr ""
 
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
@@ -1450,6 +1486,7 @@ msgstr ""
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Error"
 msgstr "Erroea"
 
@@ -1639,6 +1676,11 @@ msgstr "Lehenengo"
 msgid "Fix relations"
 msgstr ""
 
+#. Default: "Fixed position"
+#: components/manage/Blocks/Block/Schema
+msgid "Fixed position"
+msgstr ""
+
 #. Default: "Fixed width columns"
 #: config/Blocks
 msgid "Fixed width table cells"
@@ -1690,6 +1732,11 @@ msgstr "Osoa"
 #: components/theme/Register/Register
 msgid "Full Name"
 msgstr "Izen-abizenak"
+
+#. Default: "Full screen sidenav"
+#: components/manage/Sidebar/Sidebar
+msgid "Full screen sidenav"
+msgstr ""
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels
@@ -1775,6 +1822,11 @@ msgstr "Goiburua"
 #: components/manage/Blocks/Listing/schema
 msgid "Headline level"
 msgstr "Goiburukoaren maila"
+
+#. Default: "Helper text"
+#: components/manage/Blocks/Block/Schema
+msgid "Helper text"
+msgstr ""
 
 #. Default: "Hidden facets will still filter the results if proper parameters are passed in URLs"
 #: components/manage/Blocks/Search/schema
@@ -1962,6 +2014,11 @@ msgstr "Instalatutako bertsioa"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installing a third party add-on"
 msgstr "Hirugarrenen produktu gehigarriak instalatu"
+
+#. Default: "Instructions"
+#: components/manage/Blocks/Block/Schema
+msgid "Instructions"
+msgstr ""
 
 #. Default: "days"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -2917,6 +2974,11 @@ msgstr "Gehiago irakurri"
 msgid "Read only for this type of relation."
 msgstr ""
 
+#. Default: "Read-only"
+#: components/manage/Blocks/Block/Schema
+msgid "Read-only"
+msgstr ""
+
 #. Default: "Rearrange items by…"
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
@@ -3090,6 +3152,7 @@ msgid "Reply"
 msgstr "Erantzun"
 
 #. Default: "Required"
+#: components/manage/Blocks/Block/Schema
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 msgid "Required"
@@ -3821,6 +3884,11 @@ msgstr ""
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr "Testua"
+
+#. Default: "Text block settings"
+#: components/manage/Blocks/Block/Schema
+msgid "Text block settings"
+msgstr ""
 
 #. Default: "Thank you."
 #: components/theme/ConnectionRefused/ConnectionRefused

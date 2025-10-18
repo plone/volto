@@ -1,4 +1,4 @@
-import { defineMessages } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 
 const messages = defineMessages({
   advancedSettings: {
@@ -44,7 +44,8 @@ const messages = defineMessages({
 });
 
 const TextBlockSchema = (data) => {
-  const { intl, override_toc } = data;
+  const { override_toc } = data;
+  const intl = useIntl();
   return {
     title: intl.formatMessage(messages.advancedSettings),
     fieldsets: [

@@ -94,6 +94,10 @@ const messages = defineMessages({
     id: 'Bulleted list',
     defaultMessage: 'Bulleted list',
   },
+  Subtitle: {
+    id: 'Subtitle',
+    defaultMessage: 'Subtitle',
+  },
 });
 
 // Registry of available buttons

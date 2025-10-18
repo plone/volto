@@ -68,9 +68,10 @@ const getFormId = (props, location) => {
  * @param {string} userMessage
  * @returns
  */
-const ConfirmAutoSave = ({ onUpdate, onClose, userMessage, intl }) => {
+const ConfirmAutoSave = ({ onUpdate, onClose, userMessage }) => {
   const handleClickOK = () => onUpdate();
   const handleClickCancel = () => onClose();
+  const intl = useIntl();
 
   return (
     <div className="toast-box-center">
