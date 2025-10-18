@@ -20,7 +20,7 @@ export default function ImageView() {
       <h1 className="documentFirstHeading">{content.title}</h1>
       <p className="documentDescription">{content.description}</p>
       {content.image?.download ? (
-        <Link href={content.image.download} target="_blank">
+        <Link href={content.image.download} download={content.image.filename}>
           <figure>
             <Image src={content.image.download} alt="" />
             <figcaption>
