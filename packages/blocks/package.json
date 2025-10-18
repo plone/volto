@@ -51,7 +51,8 @@
     "@plone/components": "workspace:*",
     "@plone/plate": "workspace:*",
     "@plone/registry": "workspace:*",
-    "clsx": "^2.1.1"
+    "clsx": "^2.1.1",
+    "github-slugger": "^2.0.0"
   },
   "devDependencies": {
     "@plone/helpers": "workspace:*",
