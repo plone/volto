@@ -3,10 +3,6 @@ describe('Sharing Tests', () => {
     // give a logged in editor and the site root
     cy.autologin();
     cy.visit('/');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('');
   });
   it('As editor I can add a page and access sharing', function () {

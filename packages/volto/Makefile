@@ -280,7 +280,7 @@ guillotina-acceptance-backend-start: ## Start backend acceptance server for Guil
 
 .PHONY: guillotina-acceptance-frontend-prod-start
 guillotina-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for Guillotina tests
-	ADDONS=volto-guillotina RAZZLE_API_PATH=http://127.0.0.1:8081/db/web RAZZLE_LEGACY_TRAVERSE=true pnpm build && pnpm start:prod
+	RAZZLE_API_PATH=http://127.0.0.1:8081/db/web RAZZLE_LEGACY_TRAVERSE=true pnpm build && pnpm start:prod
 
 .PHONY: guillotina-acceptance-test
 guillotina-acceptance-test: ## Start Cypress in interactive mode for Guillotina tests

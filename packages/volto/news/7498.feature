@@ -1,0 +1,1 @@
+Refactor CreateTranslation component to use Redux state for translationObject to be able to get the static_behaviors plain fields, used in guillotina, and enhanced diff reducer to process static behaviors in GET_DIFF_SUCCESS action @rboixaderg

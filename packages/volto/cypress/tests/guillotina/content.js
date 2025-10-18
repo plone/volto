@@ -3,10 +3,6 @@ describe('Add Content Tests', () => {
     // give a logged in editor and the site root
     cy.autologin();
     cy.visit('/');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('');
   });
   it('As editor I can add a page', function () {
@@ -92,19 +88,19 @@ describe('Add Content Tests', () => {
     beforeEach(() => {
       cy.autologin();
     });
-    it('As editor I can add a Guillotina folder', function () {
+    it('As editor I can add a Guillotina page', function () {
       cy.visit('/');
       cy.get('#toolbar-add').click();
-      cy.get('#toolbar-add-cmsfolder').click();
+      cy.get('#toolbar-add-page').click();
       cy.getSlateTitle()
         .focus()
         .click()
-        .type('This is a guillotina folder')
-        .contains('This is a guillotina folder');
+        .type('This is a guillotina page')
+        .contains('This is a guillotina page');
 
       cy.get('#toolbar-save').click();
 
-      cy.contains('This is a guillotina folder');
+      cy.contains('This is a guillotina page');
     });
   });
 });

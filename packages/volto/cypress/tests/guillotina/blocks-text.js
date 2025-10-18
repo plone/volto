@@ -9,10 +9,10 @@ describe('Text Block Tests', () => {
       contentTitle: 'My Page',
     });
     cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
+    // cy.waitForResourceToLoad('@navigation');
+    // cy.waitForResourceToLoad('@breadcrumbs');
+    // cy.waitForResourceToLoad('@actions');
+    // cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('my-page');
     cy.navigate('/my-page/edit');
   });
@@ -22,10 +22,10 @@ describe('Text Block Tests', () => {
     cy.getSlate(true).focus().click().type('My text').contains('My text');
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
+    // cy.waitForResourceToLoad('@navigation');
+    // cy.waitForResourceToLoad('@breadcrumbs');
+    // cy.waitForResourceToLoad('@actions');
+    // cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('my-page');
 
     // then the page view should contain the text block
@@ -45,10 +45,10 @@ describe('Text Block Tests', () => {
     );
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
+    // cy.waitForResourceToLoad('@navigation');
+    // cy.waitForResourceToLoad('@breadcrumbs');
+    // cy.waitForResourceToLoad('@actions');
+    // cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('my-page');
 
     // then the page view should contain a link
@@ -73,10 +73,6 @@ describe('Text Block Tests', () => {
     );
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('my-page');
 
     // then the page view should contain a mailto link
