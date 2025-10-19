@@ -4,7 +4,6 @@ import type { RootLoader } from 'seven/app/root';
 import { useTranslation } from 'react-i18next';
 import prettybytes from 'pretty-bytes';
 import Image from '../components/Image/Image';
-import type { ContainedItem } from '@plone/types';
 
 export default function ImageView() {
   const { t } = useTranslation();
@@ -15,17 +14,6 @@ export default function ImageView() {
   }
 
   const { content } = rootData;
-  const imageItem: ContainedItem | undefined = content.image?.download
-    ? {
-        ...content,
-        image_field: 'image',
-        image_scales: {
-          image: {
-            ...content.image,
-          },
-        },
-      }
-    : undefined;
 
   return (
     <Container width="default">
@@ -34,7 +22,7 @@ export default function ImageView() {
       {content.image?.download ? (
         <Link href={content.image.download} download={content.image.filename}>
           <figure>
-            <Image src={content.image.download} item={imageItem} alt="" />
+            <Image item={content} alt="" />
             <figcaption>
               {t('layout.contenttypes.image.size')}
               {prettybytes(content.image.size)}
