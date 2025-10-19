@@ -1,8 +1,7 @@
-import { flattenToAppURL } from '@plone/helpers';
 import { useRouteLoaderData } from 'react-router';
 import type { RootLoader } from 'seven/app/root';
 import { useTranslation } from 'react-i18next';
-import { Container } from '@plone/components';
+import { Container, Link } from '@plone/components';
 
 export default function FileView() {
   const rootData = useRouteLoaderData<RootLoader>('root');
@@ -21,11 +20,11 @@ export default function FileView() {
         <p className="documentDescription">{content.description}</p>
       )}
       {content.file?.download && (
-        <a href={flattenToAppURL(content.file.download)}>
+        <Link href={content.file.download} download={content.file.filename}>
           {content.file.filename
             ? content.file.filename
             : t('layout.FileView.download')}
-        </a>
+        </Link>
       )}
     </Container>
   );
