@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    'description': 'An explanation of the add-ons configuration loader in @plone/registry'
-    'property=og:description': 'An explanation of the add-ons configuration loader in @plone/registry'
-    'property=og:title': 'Add-ons configuration loader'
-    'keywords': '@plone/registry, registry, add-ons, loader'
+    "description": "An explanation of the add-ons configuration loader in @plone/registry"
+    "property=og:description": "An explanation of the add-ons configuration loader in @plone/registry"
+    "property=og:title": "Add-ons configuration loader"
+    "keywords": "@plone/registry, registry, add-ons, loader"
 ---
 
 # Add-ons configuration loader
