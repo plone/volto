@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import config from '@plone/registry';
 import type { BlocksFormData, BlockViewProps, Content } from '@plone/types';
 import { getBlocksFieldName } from '@plone/helpers';
+import './styles/ToC.css';
 
 export const getBlocksTocEntries = (
   properties: Content,
