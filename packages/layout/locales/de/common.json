@@ -1,0 +1,23 @@
+{
+  "layout": {
+    "languageSwitcher": {
+      "switchTo": "Zu {{ lang }} wechseln"
+    },
+    "views": {
+      "event": {
+        "what": "Was",
+        "when": "Wann",
+        "all-dates": "Alle Daten",
+        "where": "Wo",
+        "contact": {
+          "name": "Kontaktname",
+          "phone": "Kontakttelefon"
+        },
+        "attendees": "Teilnehmer",
+        "website": "Webseite",
+        "visit-website": "Webseite besuchen",
+        "download-event": "Event herunterladen"
+      }
+    }
+  }
+}
