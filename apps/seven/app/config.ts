@@ -3,7 +3,7 @@
  */
 import config from '@plone/registry';
 // eslint-disable-next-line import/no-unresolved
-import applyAddonConfiguration from '../registry.loader';
+import applyAddonConfiguration from '../.plone/registry.loader';
 
 export default function install() {
   config.settings.defaultLanguage = 'en';

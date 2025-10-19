@@ -1,3 +1,4 @@
+import fs from 'fs';
 import path from 'path';
 import { AddonRegistry } from '@plone/registry/addon-registry';
 import { createAddonsLoader } from '@plone/registry/create-addons-loader';
@@ -51,6 +52,11 @@ export function relativeToAbsoluteImportPlugin(options) {
 export const PloneRegistryVitePlugin = () => {
   const projectRootPath = path.resolve('.');
   const { registry, shadowAliases } = AddonRegistry.init(projectRootPath);
+
+  const ploneDir = path.join(process.cwd(), '.plone');
+  if (!fs.existsSync(ploneDir)) {
+    fs.mkdirSync(ploneDir, { recursive: true });
+  }
 
   const addonsLoaderPath = createAddonsLoader(
     registry.getAddonDependencies(),
