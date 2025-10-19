@@ -69,7 +69,7 @@ a Volto project.
 
 ## settings
 
-The `settings` object of the configruration registry is a big registry of miscellaneous settings.
+The `settings` object of the configuration registry is a big registry of miscellaneous settings.
 See {doc}`settings-reference` for details.
 
 ## widgets
