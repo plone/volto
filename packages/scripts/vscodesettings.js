@@ -39,7 +39,7 @@ if (!vscodeSettingsJSON['[markdown]']) {
 
 if (!vscodeSettingsJSON['tailwindCSS.experimental.configFile']) {
   vscodeSettingsJSON['tailwindCSS.experimental.configFile'] =
-    'apps/seven/publicui.css';
+    'apps/seven/.plone/publicui.css';
 }
 
 if (!vscodeSettingsJSON['tailwindCSS.classFunctions']) {

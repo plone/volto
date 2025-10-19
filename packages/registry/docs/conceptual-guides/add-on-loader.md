@@ -15,7 +15,7 @@ This should be a JavaScript or TypeScript file, such as {file}`index.ts` or {fil
 
 ```json
 {
-  "main": "index.ts",
+  "main": "index.ts"
 }
 ```
 
@@ -33,7 +33,7 @@ export default function loadConfig(config: ConfigType) {
 `@plone/registry` has a helper utility `createAddonsLoader` which generates the add-ons loader file.
 That file contains the code needed to load the add-ons configuration of all the registered add-ons, keeping the order in which they were defined.
 
-This loader is a JavaScript file and it is placed in the root of your application.
+This loader is a JavaScript file and it is placed in the {file}`.plone` directory in the root of your application.
 By default, it's called {file}`registry.loader.js`.
 
 ```{important}
@@ -46,25 +46,23 @@ The add-ons loader generator is meant to be run before bundling your app or by t
 The `@plone/registry` Vite plugin generates this file, so the framework can load it during app bootstrap time, as shown below.
 
 ```js
-  import { createAddonsLoader } from '@plone/registry/create-addons-loader';
+import { createAddonsLoader } from '@plone/registry/create-addons-loader';
 
-  const projectRootPath = path.resolve('.');
-  const { registry, shadowAliases } = AddonRegistry.init(projectRootPath);
+const projectRootPath = path.resolve('.');
+const { registry, shadowAliases } = AddonRegistry.init(projectRootPath);
 
-  createAddonsLoader(
-    registry.getAddonDependencies(),
-    registry.getAddons(),
-    { tempInProject: true },
-  );
+createAddonsLoader(registry.getAddonDependencies(), registry.getAddons(), {
+  tempInProject: true,
+});
 ```
 
-This will create {file}`registry.loader.js` in the root of your app.
+This will create {file}`registry.loader.js` in the {file}`.plone` directory in the root of your app.
 
 Afterwards, configure your app to load the code during the app bootstrap, as early as possible in both your client and server code, and as a module side-effect, as shown in the following example.
 
 ```js
 import config from '@plone/registry';
-import applyAddonConfiguration from './registry.loader';
+import applyAddonConfiguration from './.plone/registry.loader';
 
 applyAddonConfiguration(config);
 ```
@@ -101,7 +99,7 @@ If your add-on does not need to load any server-side configuration, you can omit
 `@plone/registry` has a helper utility `createAddonsServerLoader` which generates the add-ons loader file.
 That file contains the code needed to load the add-ons configuration of all the registered add-ons, keeping the order in which they were defined.
 
-This loader is a JavaScript file and it is placed in the root of your application.
+This loader is a JavaScript file and it is placed in the {file}`.plone` directory in the root of your application.
 By default, it's called {file}`registry.loader.server.js`.
 
 ```{important}
@@ -114,24 +112,21 @@ The add-ons loader generator is meant to be run before bundling your app or by t
 The `@plone/registry` Vite plugin generates this file, so the framework can load it during app bootstrap time, as shown below.
 
 ```js
-  import { createAddonsServerLoader } from '@plone/registry/create-addons-loader-server';
+import { createAddonsServerLoader } from '@plone/registry/create-addons-loader-server';
 
-  const projectRootPath = path.resolve('.');
-  const { registry, shadowAliases } = AddonRegistry.init(projectRootPath);
+const projectRootPath = path.resolve('.');
+const { registry, shadowAliases } = AddonRegistry.init(projectRootPath);
 
-  createAddonsServerLoader(
-    registry.getAddonDependencies(),
-    registry.getAddons(),
-  );
+createAddonsServerLoader(registry.getAddonDependencies(), registry.getAddons());
 ```
 
-This will create {file}`registry.loader.js` in the root of your app.
+This will create {file}`registry.loader.js` in the {file}`.plone` directory in the root of your app.
 
 Afterwards, configure your app to load the code during the app bootstrap, as early as possible in both your client and server code, and as a module side-effect, as shown in the following example.
 
 ```js
 import config from '@plone/registry';
-import applyServerAddonConfiguration from './registry.loader.server';
+import applyServerAddonConfiguration from './.plone/registry.loader.server';
 
 applyServerAddonConfiguration(config);
 ```

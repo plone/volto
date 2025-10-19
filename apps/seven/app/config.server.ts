@@ -4,9 +4,9 @@
 import config from '@plone/registry';
 import PloneClient from '@plone/client';
 // eslint-disable-next-line import/no-unresolved
-import applyAddonConfiguration from '../registry.loader';
+import applyAddonConfiguration from '../.plone/registry.loader';
 // eslint-disable-next-line import/no-unresolved
-import applyServerAddonConfiguration from '../registry.loader.server';
+import applyServerAddonConfiguration from '../.plone/registry.loader.server';
 
 export default function install() {
   config.settings.apiPath =
