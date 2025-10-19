@@ -8,6 +8,9 @@
         "size": "Size:",
         "download": "Click to download full sized image"
       }
+    },
+    "FileView": {
+      "download": "Download file"
     }
   }
 }
