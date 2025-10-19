@@ -1,10 +1,13 @@
 import { useMemo } from 'react';
 import clsx from 'clsx';
 import config from '@plone/registry';
-import type { BlockViewProps } from '@plone/types';
+import type { BlocksFormData, BlockViewProps, Content } from '@plone/types';
 import { getBlocksFieldName } from '@plone/helpers';
 
-export const getBlocksTocEntries = (properties, tocData) => {
+export const getBlocksTocEntries = (
+  properties: Content,
+  tocData: BlocksFormData,
+): ReturnedToCEntries => {
   const blocksFieldName = getBlocksFieldName(properties);
   const blocksLayoutFieldName = getBlocksFieldName(properties, 'blocks_layout');
 
@@ -41,17 +44,17 @@ export const getBlocksTocEntries = (properties, tocData) => {
     blocksFormEntries = [...blocksFormEntries, ...blockTocEntries];
 
     blockTocEntries.forEach((entry, index) => {
-      const i = `${id}-${index}`;
+      const tocEntryId = `${id}-${index}`;
       const level = entry[0];
       const title = entry[1];
       const items = [];
       if (!level || !levels.includes(level)) return;
-      tocEntriesLayout.push(i);
-      tocEntries[i] = {
+      tocEntriesLayout.push(tocEntryId);
+      tocEntries[tocEntryId] = {
         level,
         title: title || block.plaintext,
         items,
-        id: i,
+        id: tocEntryId,
       };
       if (level < rootLevel) {
         rootLevel = level;
@@ -70,10 +73,10 @@ export const getBlocksTocEntries = (properties, tocData) => {
 const ToCBlockView = (props: BlockViewProps) => {
   const { data, blocksConfig } = props;
 
-  const title = data.title ? data.title : '';
+  const title = data.title && !data.hide_title ? data.title : '';
   const metadata = props.metadata || props.properties;
   const blocksFieldName = getBlocksFieldName(metadata);
-  const variation = blocksConfig.toc.variations?.find(
+  const variation = (blocksConfig.toc.variations || []).find(
     (v) => v.id === data.variation,
   );
   const Renderer = variation?.view;
@@ -88,7 +91,7 @@ const ToCBlockView = (props: BlockViewProps) => {
 
   const tocEntries = useMemo(() => {
     const entries = [];
-    let prevEntry = {};
+    let prevEntry: Partial<ToCEntry> = {};
     const { rootLevel, tocEntries, tocEntriesLayout } = getBlocksTocEntries(
       metadata,
       data,
@@ -133,7 +136,7 @@ const ToCBlockView = (props: BlockViewProps) => {
       if (!prevEntry.id) return;
       if (entry.level > prevEntry.level) {
         entry.parentId = prevEntry.id;
-        prevEntry.items.push(entry);
+        (prevEntry.items || []).push(entry);
         prevEntry = entry;
       } else if (entry.level < prevEntry.level) {
         let parent = tocEntries[prevEntry.parentId];
@@ -155,7 +158,7 @@ const ToCBlockView = (props: BlockViewProps) => {
 
   return tocEntries.length > 0 ? (
     <nav
-      aria-label={title && !data.hide_title ? title : ''}
+      aria-label={title as string}
       className={clsx('table-of-contents', variation?.id)}
     >
       {Renderer ? (
@@ -166,5 +169,22 @@ const ToCBlockView = (props: BlockViewProps) => {
     </nav>
   ) : null;
 };
+
+export interface ToCEntry {
+  id: string;
+  level: number;
+  title: string;
+  items: ToCEntry[];
+  override_toc?: boolean;
+  plaintext?: string;
+  parentId?: string;
+}
+
+interface ReturnedToCEntries {
+  tocEntries: Record<string, ToCEntry>;
+  rootLevel: number;
+  blocksFormEntries: Array<[number, string]>;
+  tocEntriesLayout: string[];
+}
 
 export default ToCBlockView;

@@ -2,7 +2,8 @@ import { clsx } from 'clsx';
 import Slugger from 'github-slugger';
 import { Link } from '@plone/components';
 import { normalizeString } from '@plone/helpers';
-import { BlocksFormData } from '@plone/types';
+import type { BlocksFormData } from '@plone/types';
+import type { ToCEntry } from '../ToCBlockView';
 
 const slugger = new Slugger();
 
@@ -40,11 +41,6 @@ const RenderListItems = ({ items, data }) => {
   });
 };
 
-interface DefaultToCProps {
-  data: BlocksFormData;
-  tocEntries: any[];
-}
-
 const View = ({ data, tocEntries }: DefaultToCProps) => {
   const List = data.ordered ? 'ol' : 'ul';
 
@@ -62,5 +58,10 @@ const View = ({ data, tocEntries }: DefaultToCProps) => {
     </>
   );
 };
+
+interface DefaultToCProps {
+  data: BlocksFormData;
+  tocEntries: ToCEntry[];
+}
 
 export default View;
