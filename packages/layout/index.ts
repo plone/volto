@@ -3,6 +3,7 @@ import installSlots from './config/slots';
 import installSettings from './config/settings';
 import installToast from './config/toast';
 import DefaultView from './views/DefaultView';
+import FileView from './views/FileView';
 
 export default function install(config: ConfigType) {
   // Translation factory
@@ -13,7 +14,10 @@ export default function install(config: ConfigType) {
   });
 
   config.views.defaultView = DefaultView;
-  config.views.contentTypesViews = { ...config.views.contentTypesViews };
+  config.views.contentTypesViews = {
+    File: FileView,
+    ...config.views.contentTypesViews,
+  };
   config.views.layoutViews = { ...config.views.layoutViews };
 
   installSettings(config);
