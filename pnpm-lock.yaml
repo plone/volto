@@ -801,7 +801,7 @@ importers:
         version: 15.7.3(i18next@24.2.3(typescript@5.9.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.2)
       react-router:
         specifier: 'catalog:'
-        version: 7.12.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 7.9.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
     devDependencies:
       '@plone/types':
         specifier: workspace:*
@@ -10835,8 +10835,8 @@ snapshots:
 
   '@eslint/config-array@0.21.1':
     dependencies:
-      '@eslint/object-schema': 2.1.7
-      debug: 4.3.4
+      '@eslint/object-schema': 2.1.6
+      debug: 4.3.4(supports-color@8.1.1)
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
@@ -10857,7 +10857,7 @@ snapshots:
   '@eslint/eslintrc@3.3.1':
     dependencies:
       ajv: 6.12.6
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       espree: 10.4.0
       globals: 14.0.0
       ignore: 5.3.2
@@ -15840,7 +15840,7 @@ snapshots:
       ajv: 6.12.6
       chalk: 4.1.2
       cross-spawn: 7.0.6
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       escape-string-regexp: 4.0.0
       eslint-scope: 8.4.0
       eslint-visitor-keys: 4.2.1

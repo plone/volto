@@ -13,6 +13,22 @@
       "file": {
         "download": "Clicca per scaricare il file"
       }
+    },
+    "views": {
+      "event": {
+        "what": "What",
+        "when": "When",
+        "all-dates": "All dates",
+        "where": "Where",
+        "contact": {
+          "name": "Contact Name",
+          "phone": "Contact Phone"
+        },
+        "attendees": "Attendees",
+        "website": "Website",
+        "visit-website": "Visit website",
+        "download-event": "Download event"
+      }
     }
   }
 }
