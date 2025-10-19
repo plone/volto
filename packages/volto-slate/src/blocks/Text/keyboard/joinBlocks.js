@@ -132,7 +132,7 @@ export function joinWithNextBlock({ editor, event }, intl) {
 
   // If next block is not a slate text block, do nothing
   if (otherBlock['@type'] !== 'slate') {
-    return true;
+    return;
   }
 
   // Merge next text block into current one and delete the next block
