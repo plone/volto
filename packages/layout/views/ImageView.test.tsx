@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import ImageView from './ImageView';
-import { vi } from 'vitest';
+import { vi, expect, it } from 'vitest';
 
 expect.extend(toHaveNoViolations);
 
@@ -13,11 +13,15 @@ vi.mock('react-router', () => ({
   })),
   useRouteLoaderData: vi.fn(() => ({
     content: {
+      '@id': '/image.jpg',
       title: 'My image',
       description: 'That is a nice image.',
       image: {
-        download: 'http://somewhere/image.jpg',
+        download: '/image.jpg/@@images/image.jpg',
         size: 1200000,
+        width: 1920,
+        height: 1080,
+        scales: [],
       },
     },
   })),
@@ -31,7 +35,7 @@ it('ImageView basic test', async () => {
 
   expect(results).toHaveNoViolations();
   const link = screen.getByRole('link');
-  expect(link.getAttribute('href')).toBe('http://somewhere/image.jpg');
+  expect(link.getAttribute('href')).toBe('/image.jpg/@@images/image.jpg');
   const img = link.getElementsByTagName('img')[0];
-  expect(img.getAttribute('src')).toBe('http://somewhere/image.jpg');
+  expect(img.getAttribute('src')).toBe('/image.jpg/@@images/image.jpg');
 });

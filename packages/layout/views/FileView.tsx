@@ -14,7 +14,7 @@ export default function FileView() {
   const { content } = rootData;
 
   return (
-    <Container className="view-wrapper">
+    <Container width="default">
       <h1 className="documentFirstHeading">{content.title}</h1>
       {content.description && (
         <p className="documentDescription">{content.description}</p>
