@@ -459,6 +459,7 @@ class Toolbar extends Component {
             </div>
           </div>
           <div
+            id="toolbar"
             className={this.state.expanded ? 'toolbar expanded' : 'toolbar'}
             ref={this.toolbarRef}
           >
@@ -620,12 +621,13 @@ class Toolbar extends Component {
             </div>
             <div className="toolbar-handler">
               <button
-                aria-expanded={expanded}
                 className={cx('toolbar-handler-button', {
                   [this.props.content?.review_state]:
                     this.props.content?.review_state,
                 })}
                 onClick={this.handleShrink}
+                aria-expanded={expanded}
+                aria-controls="toolbar"
               >
                 <span aria-live="assertive" className="visually-hidden">
                   {expanded
