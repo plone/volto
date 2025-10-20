@@ -26,78 +26,84 @@ export default function EventDetails({ data }: EventDetailsProps) {
 
   return (
     <aside className="segment">
-      {content.subjects?.length > 0 && (
-        <>
-          <span className="subheader">{t('layout.views.event.what')}</span>
-          <ul>
-            {content.subjects.map((subject, index) => (
-              <li key={index}>{subject}</li>
-            ))}
-          </ul>
-        </>
-      )}
-      <span className="subheader">{t('layout.views.event.when')}</span>
-      <EventDate content={content} locale={locale} />
-      {content.recurrence && (
-        <>
-          <span className="subheader">{t('layout.views.event.all-dates')}</span>
-          <Recurrence
-            recurrence={content.recurrence}
-            start={content.start}
-            locale={locale}
-          />
-        </>
-      )}
-      {content.location && (
-        <>
-          <span className="subheader">{t('layout.views.event.where')}</span>
-          <p>{content.location}</p>
-        </>
-      )}
-      {content.contact_name && (
-        <>
-          <span className="subheader">
-            {t('layout.views.event.contact.name')}
-          </span>
-          {content.contact_email ? (
-            <Link href={`mailto:${content.contact_email}`}>
-              {content.contact_name}
-            </Link>
-          ) : (
-            <p>{content.contact_name}</p>
-          )}
-        </>
-      )}
-      {content.contact_phone && (
-        <>
-          <span className="subheader">
-            {t('layout.views.event.contact.phone')}
-          </span>
-          <p>{content.contact_phone}</p>
-        </>
-      )}
-      {content.attendees?.length > 0 && (
-        <>
-          <span className="subheader">{t('layout.views.event.attendees')}</span>
-          <ul>
-            {content.attendees.map((attendee, index) => (
-              <li key={index}>{attendee}</li>
-            ))}
-          </ul>
-        </>
-      )}
-      {content.event_url && (
-        <>
-          <span className="subheader">{t('layout.views.event.website')}</span>
-          <Link
-            href={content.event_url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t('layout.views.event.visit-website')}
-          </Link>
-        </>
-      )}
+      <dl>
+        {content.subjects?.length > 0 && (
+          <>
+            <dt>{t('layout.views.event.what')}</dt>
+            <dd>
+              <ul>
+                {content.subjects.map((subject, index) => (
+                  <li key={index}>{subject}</li>
+                ))}
+              </ul>
+            </dd>
+          </>
+        )}
+        <dt>{t('layout.views.event.when')}</dt>
+        <EventDate content={content} locale={locale} />
+        {content.recurrence && (
+          <>
+            <dt>{t('layout.views.event.all-dates')}</dt>
+            <Recurrence
+              recurrence={content.recurrence}
+              start={content.start}
+              locale={locale}
+            />
+          </>
+        )}
+        {content.location && (
+          <>
+            <dt>{t('layout.views.event.where')}</dt>
+            <dd>{content.location}</dd>
+          </>
+        )}
+        {content.contact_name && (
+          <>
+            <dt>{t('layout.views.event.contact.name')}</dt>
+            <dd>
+              {content.contact_email ? (
+                <Link href={`mailto:${content.contact_email}`}>
+                  {content.contact_name}
+                </Link>
+              ) : (
+                content.contact_name
+              )}
+            </dd>
+          </>
+        )}
+        {content.contact_phone && (
+          <>
+            <dt>{t('layout.views.event.contact.phone')}</dt>
+            <dd>{content.contact_phone}</dd>
+          </>
+        )}
+        {content.attendees?.length > 0 && (
+          <>
+            <dt>{t('layout.views.event.attendees')}</dt>
+            <dd>
+              <ul>
+                {content.attendees.map((attendee, index) => (
+                  <li key={index}>{attendee}</li>
+                ))}
+              </ul>
+            </dd>
+          </>
+        )}
+        {content.event_url && (
+          <>
+            <dt>{t('layout.views.event.website')}</dt>
+            <dd>
+              <Link
+                href={content.event_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t('layout.views.event.visit-website')}
+              </Link>
+            </dd>
+          </>
+        )}
+      </dl>
       <span className="download-event">
         <Icon size="xl">
           <svg
@@ -149,10 +155,12 @@ export const Recurrence = ({ recurrence, start, locale }: RecurrenceProps) => {
   const ruleItems = rule.all().map((date) => getDate(date, locale));
 
   return (
-    <ul>
-      {ruleItems.map((date, index) => (
-        <li key={index}>{date}</li>
-      ))}
-    </ul>
+    <dd>
+      <ul>
+        {ruleItems.map((date, index) => (
+          <li key={index}>{date}</li>
+        ))}
+      </ul>
+    </dd>
   );
 };

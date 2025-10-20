@@ -26,7 +26,7 @@ export default function EventDate({ locale, content }: EventDateProps) {
   const endTime = getDateTime(end, locale);
 
   return (
-    <p>
+    <dd>
       {isSameDay(start, end) ? (
         <>
           {startDate}{' '}
@@ -48,6 +48,6 @@ export default function EventDate({ locale, content }: EventDateProps) {
           {!open_end && ` to ${endDate} ${endTime}`}
         </>
       )}
-    </p>
+    </dd>
   );
 }
