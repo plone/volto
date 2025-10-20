@@ -6,6 +6,7 @@ import EventDetails from '../components/EventDetails/EventDetails';
 import config from '@plone/registry';
 import '../styles/views/event.css';
 import type { EventCT, RootData } from '@plone/types';
+import { Container } from '@plone/components';
 
 export default function EventView() {
   const rootData = useRouteLoaderData<RootLoader>('root') as RootData<EventCT>;
@@ -15,24 +16,34 @@ export default function EventView() {
   }
 
   const { content } = rootData;
+  const hasBlocks = hasBlocksData(content);
 
-  if (hasBlocksData(content)) {
-    return (
-      <div className="event-view">
-        <div className="desktop">
-          <div className="column">
+  return (
+    <Container width="default" className="event-view">
+      <div className="desktop">
+        <div className="column">
+          {hasBlocks ? (
             <RenderBlocks
               content={content}
               blocksConfig={config.blocks.blocksConfig}
               pathname="/"
             />
-          </div>
-          <div className="column">
-            <EventDetails data={rootData} />
-          </div>
+          ) : (
+            <>
+              <h1 className="documentFirstHeading">{content.title}</h1>
+              {content.description && (
+                <p className="documentDescription">{content.description}</p>
+              )}
+            </>
+          )}
         </div>
-        <div className="mobile">
-          <div className="column">
+        <div className="column">
+          <EventDetails data={rootData} />
+        </div>
+      </div>
+      <div className="mobile">
+        <div className="column">
+          {hasBlocks ? (
             <RenderBlocks
               content={{
                 ...content,
@@ -43,26 +54,34 @@ export default function EventView() {
               blocksConfig={config.blocks.blocksConfig}
               pathname="/"
             />
-          </div>
-          <div className="column">
-            <EventDetails data={rootData} />
-          </div>
-          <div className="column">
-            <RenderBlocks
-              content={{
-                ...content,
-                blocks_layout: {
-                  items: content.blocks_layout.items.slice(1),
-                },
-              }}
-              blocksConfig={config.blocks.blocksConfig}
-              pathname="/"
-            />
-          </div>
+          ) : (
+            <h1 className="documentFirstHeading">{content.title}</h1>
+          )}
         </div>
+        <div className="column">
+          <EventDetails data={rootData} />
+        </div>
+        {(hasBlocks || content.description) && (
+          <div className="column">
+            {hasBlocks ? (
+              <RenderBlocks
+                content={{
+                  ...content,
+                  blocks_layout: {
+                    items: content.blocks_layout.items.slice(1),
+                  },
+                }}
+                blocksConfig={config.blocks.blocksConfig}
+                pathname="/"
+              />
+            ) : (
+              content.description && (
+                <p className="documentDescription">{content.description}</p>
+              )
+            )}
+          </div>
+        )}
       </div>
-    );
-  }
-
-  return <h1>{content.title}</h1>;
+    </Container>
+  );
 }
