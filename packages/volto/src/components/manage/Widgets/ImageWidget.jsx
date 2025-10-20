@@ -204,7 +204,7 @@ const UnconnectedImageInput = (props) => {
 
   const validateManualLink = React.useCallback(
     (url) => {
-      if (!url.startsWith('/')) {
+      if (!url.startsWith('/') && !url.startsWith('./')) {
         const error = urlValidator({
           value: url,
           formatMessage: intl.formatMessage,
@@ -224,6 +224,14 @@ const UnconnectedImageInput = (props) => {
 
   const onSubmitURL = React.useCallback(
     (url) => {
+      const convertRelativeToAbsolute = (url) => {
+        if (url.startsWith('./')) {
+          const basePath = getBaseUrl(location.pathname).replace(/\/$/, '');
+          return `${basePath}/${url.slice(2)}`;
+        }
+        return url;
+      };
+
       if (validateManualLink(url)) {
         if (isInternalURL(url)) {
           // convert it into an internal on if possible
@@ -232,7 +240,7 @@ const UnconnectedImageInput = (props) => {
               '/',
               {
                 portal_type: config.settings.imageObjects,
-                'path.query': flattenToAppURL(url),
+                'path.query': flattenToAppURL(convertRelativeToAbsolute(url)),
                 'path.depth': '0',
                 sort_on: 'getObjPositionInParent',
                 metadata_fields: '_all',
@@ -276,7 +284,14 @@ const UnconnectedImageInput = (props) => {
         }
       }
     },
-    [validateManualLink, props, intl, isRelationChoice, onChange],
+    [
+      validateManualLink,
+      props,
+      intl,
+      isRelationChoice,
+      onChange,
+      location.pathname,
+    ],
   );
 
   return imageValue ? (
