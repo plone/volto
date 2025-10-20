@@ -1,0 +1,1 @@
+Add isInternalURL to helpers. @tedw87

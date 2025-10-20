@@ -3,6 +3,7 @@ import { slate } from './config/slate';
 import TitleBlockInfo from './Title';
 import TextBlockInfo from './Text';
 import ImageBlockInfo from './Image';
+import VideoBlockInfo from './Video';
 import TeaserBlockInfo from './Teaser';
 
 export default function install(config: ConfigType) {
@@ -16,6 +17,7 @@ export default function install(config: ConfigType) {
   config.blocks.blocksConfig.title = TitleBlockInfo;
   config.blocks.blocksConfig.slate = TextBlockInfo;
   config.blocks.blocksConfig.image = ImageBlockInfo;
+  config.blocks.blocksConfig.video = VideoBlockInfo;
   config.blocks.blocksConfig.teaser = TeaserBlockInfo;
 
   return config;
