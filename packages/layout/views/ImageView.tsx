@@ -24,7 +24,7 @@ export default function ImageView() {
           <figure>
             <Image item={content} alt="" />
             <figcaption>
-              {t('layout.contenttypes.image.size')}
+              {t('layout.contenttypes.common.size')}{' '}
               {prettybytes(content.image.size)}
               &nbsp; &mdash; &nbsp;
               {t('layout.contenttypes.image.download')}
