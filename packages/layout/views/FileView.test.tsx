@@ -18,6 +18,7 @@ vi.mock('react-router', () => ({
       file: {
         download: 'http://somewhere/file.pdf',
         filename: 'file.pdf',
+        size: 10000,
       },
     },
   })),
