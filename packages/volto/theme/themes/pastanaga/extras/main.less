@@ -443,6 +443,10 @@ fieldset.invisible {
   padding: 0;
   border: none;
   margin: 0;
+  // Reset visibility, this 'invisible' is not meant to hide the fieldset
+  // This prevents issues when used along other CSS framworks that might
+  // have this utility class defined (e.g. TailwindCSS)
+  visibility: initial;
 }
 
 .vertical-form {

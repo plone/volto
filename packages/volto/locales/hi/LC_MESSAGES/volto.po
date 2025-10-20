@@ -16,6 +16,11 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>यहां कुछ HTML जोड़ें</p>"
 
+#. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
+#: helpers/MessageLabels/MessageLabels
+msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
+msgstr ""
+
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
 msgid "Account Registration Completed"
@@ -679,6 +684,11 @@ msgstr "एक फ़ाइल चुनें"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "साफ़ करें"
+
+#. Default: "Clear date and time"
+#: components/manage/Widgets/DatetimeWidget
+msgid "Clear date/time"
+msgstr ""
 
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
@@ -2616,9 +2626,9 @@ msgstr ""
 msgid "Ok"
 msgstr "ठीक है"
 
-#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
-msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "केवल 7-बिट बाइट वाले वर्ण प्रयोग किए जा सकते हैं। अपरकेस अक्षर, विशेष वर्ण: <, >, &, #, /, ?, या अन्य जो यूआरएल में अवैध हैं, का प्रयोग नहीं किया जा सकता। नहीं शुरू हो सकता: _, aq_, @@, ++। __ के साथ समाप्त नहीं हो सकता। नहीं हो सकता: request,contributors, ., .., ""। नई पंक्तियों को नहीं शामिल किया जा सकता।"
 
 #. Default: "Open in a new tab"
@@ -4591,7 +4601,7 @@ msgstr "पूरा नाम दर्ज करें, जैसे John Smit
 msgid "addUserFormPasswordDescription"
 msgstr "अपना नया पासवर्ड दर्ज करें। न्यूनतम 8 अक्षर।"
 
-#. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
+#. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "एक उपयोगकर्ता नाम दर्ज करें, सामान्यत: "jsmith" कुछ ऐसा। कोई रिक्त स्थान या विशेष वर्ण नहीं। उपयोगकर्ता नाम और पासवर्ड मामूली हैं, सुनिश्चित करें कि कैप्स लॉक कुंजी सक्षम नहीं है। यह लॉगिन के लिए उपयोग किया जाने वाला नाम है।"
@@ -4667,9 +4677,9 @@ msgstr "{countofrelation} टूटी हुई {countofrelation, plural, one {
 msgid "daterangeFacet"
 msgstr "तिथि सीमा"
 
-#. Default: "delete"
+#. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
-msgid "delete"
+msgid "delete_block"
 msgstr "हटाएँ"
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
@@ -4696,6 +4706,11 @@ msgstr "आपका पासवर्ड रीसेट अनुरोध �
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "ड्राफ़्ट"
+
+#. Default: "drag {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag_block"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
