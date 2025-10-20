@@ -1,11 +1,7 @@
 .event-view {
-  max-width: var(--default-container-width);
-  margin-right: auto;
-  margin-left: auto;
-
   .desktop {
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 70% 30%;
     visibility: visible;
   }
 
