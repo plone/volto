@@ -4,13 +4,15 @@
       "switchTo": "Switch to {{ lang }}"
     },
     "contenttypes": {
+      "common": {
+        "size": "Size:"
+      },
       "image": {
-        "size": "Size:",
         "download": "Click to download full sized image"
+      },
+      "file": {
+        "download": "Download file"
       }
-    },
-    "FileView": {
-      "download": "Download file"
     }
   }
 }
