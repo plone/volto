@@ -1,0 +1,32 @@
+a {
+  color: #007eb1;
+}
+
+a:hover {
+  color: #006b96;
+}
+
+ol.ui.list,
+.ui.ordered.list,
+.ui.ordered.list .list,
+ol.ui.list ol {
+  margin-left: 1.25rem;
+  counter-reset: ordered;
+  list-style-type: decimal;
+}
+
+ul.ui.list,
+.ui.bulleted.list,
+.ui.bulleted.list .list,
+ul.ui.list ul {
+  list-style-type: disc;
+}
+
+ul.ui.list,
+.ui.bulleted.list,
+ol.ui.list,
+.ui.ordered.list,
+.ui.ordered.list .list,
+ol.ui.list ol {
+  margin-left: 1.25rem;
+}

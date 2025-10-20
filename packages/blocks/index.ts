@@ -4,6 +4,7 @@ import TitleBlockInfo from './Title';
 import TextBlockInfo from './Text';
 import ImageBlockInfo from './Image';
 import TeaserBlockInfo from './Teaser';
+import ToCBlockInfo from './ToC';
 
 export default function install(config: ConfigType) {
   config.settings.slate = slate;
@@ -17,6 +18,7 @@ export default function install(config: ConfigType) {
   config.blocks.blocksConfig.slate = TextBlockInfo;
   config.blocks.blocksConfig.image = ImageBlockInfo;
   config.blocks.blocksConfig.teaser = TeaserBlockInfo;
+  config.blocks.blocksConfig.toc = ToCBlockInfo;
 
   return config;
 }
