@@ -3,6 +3,17 @@
     "languageSwitcher": {
       "switchTo": "Zu {{ lang }} wechseln"
     },
+    "contenttypes": {
+      "common": {
+        "size": "Größe:"
+      },
+      "image": {
+        "download": "Klicke, um das Bild in voller Größe herunterzuladen"
+      },
+      "file": {
+        "download": "Datei herunterladen"
+      }
+    },
     "views": {
       "event": {
         "what": "Was",
