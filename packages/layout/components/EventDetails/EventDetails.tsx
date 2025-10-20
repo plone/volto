@@ -1,7 +1,8 @@
 import EventDate from '../EventDate/EventDate';
 import { flattenToAppURL } from '@plone/helpers';
 import { Link } from '@plone/components/quanta';
-import RRuleLib from 'rrule';
+import * as RRuleLib from 'rrule';
+import type * as RRuleTypes from 'rrule';
 import type { EventCT, RootData } from '@plone/types';
 import { getDate } from '../../helpers';
 import { Icon } from '@plone/components';
@@ -145,7 +146,8 @@ export default function EventDetails({ data }: EventDetailsProps) {
 }
 
 export const Recurrence = ({ recurrence, start, locale }: RecurrenceProps) => {
-  const { RRule, rrulestr } = RRuleLib;
+  const { RRule, rrulestr } = ((RRuleLib as any).default ||
+    RRuleLib) as typeof RRuleTypes;
 
   const newRecurrence = !recurrence.includes('DTSTART')
     ? RRule.optionsToString({ dtstart: new Date(start) }) + '\n' + recurrence
