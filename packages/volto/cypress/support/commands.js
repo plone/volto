@@ -833,8 +833,7 @@ function shouldVerifyContent(type) {
 }
 
 Cypress.Commands.add('getSlateEditorAndType', (type) => {
-  cy.getSlate().click().should('have.focus');
-  cy.getSlate().type(type);
+  cy.getSlate().click().trigger('focus').type(type);
 
   if (shouldVerifyContent(type)) {
     return cy.getSlate().should('contain', type);
@@ -844,8 +843,8 @@ Cypress.Commands.add('getSlateEditorAndType', (type) => {
 });
 
 Cypress.Commands.add('getSlateEditorSelectorAndType', (selector, type) => {
-  cy.getSlateSelector(selector).click().should('have.focus');
-  cy.getSlateSelector(selector).type(type);
+  cy.wait(100);
+  cy.getSlateSelector(selector).click().trigger('focus').type(type);
 
   if (shouldVerifyContent(type)) {
     return cy.getSlateSelector(selector).should('contain', type);

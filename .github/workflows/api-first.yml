@@ -2,7 +2,7 @@ name: API-first story Tests
 on: [push, pull_request]
 
 env:
-  node-version: 22.x
+  node-version: 24.x
 
 jobs:
   config:
