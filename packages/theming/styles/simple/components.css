@@ -1,0 +1,59 @@
+/* Copied from @plone/components/src/styles/basic/main.css */
+/* commented the ones already imported by @plone/layout */
+/* @import '@plone/components/src/styles/basic/theme.css'; */
+
+/* @import '@plone/components/src/styles/basic/icons.css'; */
+
+/* @import '@plone/components/src/styles/basic/Link.css'; */
+@import '@plone/components/src/styles/basic/Button.css';
+@import '@plone/components/src/styles/basic/ToggleButton.css';
+@import '@plone/components/src/styles/basic/Label.css';
+@import '@plone/components/src/styles/basic/Checkbox.css';
+
+@import '@plone/components/src/styles/basic/TextField.css';
+@import '@plone/components/src/styles/basic/Form.css';
+@import '@plone/components/src/styles/basic/CheckboxGroup.css';
+
+@import '@plone/components/src/styles/basic/ColorSlider.css';
+@import '@plone/components/src/styles/basic/ColorArea.css';
+@import '@plone/components/src/styles/basic/ColorField.css';
+@import '@plone/components/src/styles/basic/ColorSwatch.css';
+@import '@plone/components/src/styles/basic/ColorSwatchPicker.css';
+@import '@plone/components/src/styles/basic/Disclosure.css';
+@import '@plone/components/src/styles/basic/NumberField.css';
+@import '@plone/components/src/styles/basic/RadioGroup.css';
+@import '@plone/components/src/styles/basic/Switch.css';
+@import '@plone/components/src/styles/basic/Slider.css';
+@import '@plone/components/src/styles/basic/Calendar.css';
+@import '@plone/components/src/styles/basic/DateField.css';
+@import '@plone/components/src/styles/basic/RangeCalendar.css';
+@import '@plone/components/src/styles/basic/Meter.css';
+@import '@plone/components/src/styles/basic/ProgressBar.css';
+@import '@plone/components/src/styles/basic/SearchField.css';
+@import '@plone/components/src/styles/basic/TimeField.css';
+
+@import '@plone/components/src/styles/basic/ListBox.css';
+@import '@plone/components/src/styles/basic/GridList.css';
+
+@import '@plone/components/src/styles/basic/Modal.css';
+@import '@plone/components/src/styles/basic/Dialog.css';
+@import '@plone/components/src/styles/basic/Popover.css';
+@import '@plone/components/src/styles/basic/Tabs.css';
+@import '@plone/components/src/styles/basic/TagGroup.css';
+@import '@plone/components/src/styles/basic/Tooltip.css';
+
+@import '@plone/components/src/styles/basic/Menu.css';
+@import '@plone/components/src/styles/basic/Toolbar.css';
+@import '@plone/components/src/styles/basic/Table.css';
+@import '@plone/components/src/styles/basic/DatePicker.css';
+@import '@plone/components/src/styles/basic/DateRangePicker.css';
+@import '@plone/components/src/styles/basic/Select.css';
+@import '@plone/components/src/styles/basic/ComboBox.css';
+@import '@plone/components/src/styles/basic/ColorPicker.css';
+
+/* @import '@plone/components/src/styles/basic/Breadcrumbs.css'; */
+@import '@plone/components/src/styles/basic/BlockToolbar.css';
+@import '@plone/components/src/styles/basic/Tree.css';
+@import '@plone/components/src/styles/basic/Toast.css';
+
+/* @import '@plone/components/src/styles/basic/Container.css'; */

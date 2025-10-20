@@ -57,6 +57,7 @@
     "@plone/registry": "workspace:*",
     "clsx": "^2.1.1",
     "lodash.sortby": "^4.7.0",
+    "pretty-bytes": "^7.1.0",
     "react-aria-components": "catalog:",
     "react-i18next": "catalog:",
     "react-router": "catalog:",
