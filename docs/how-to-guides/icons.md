@@ -47,10 +47,10 @@ Please note the `?react` query parameter in the import statement, which tells Vi
 ```
 
 ````{tip}
-To fix the TypeScript error `Cannot find module './my-icon.svg?react' or its corresponding type declarations`, create a `types.d.ts` file in your add-on with the following content:
+To fix the TypeScript error `Cannot find module './my-icon.svg?react' or its corresponding type declarations`, create a {file}`types.d.ts` file in your add-on with the following content:
 
 ```{code-block} ts
-:caption: packages/\<add-on-name>/types.d.ts
+:caption: {file}`packages/<add-on-name>/types.d.ts`
 import '@plone/components/icons';
 ```
 ````
