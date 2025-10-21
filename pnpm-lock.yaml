@@ -1488,9 +1488,6 @@ importers:
       webpack-node-externals:
         specifier: 3.0.0
         version: 3.0.0
-      why:
-        specifier: 0.6.2
-        version: 0.6.2
 
   packages/volto-slate:
     dependencies:
@@ -14622,10 +14619,6 @@ packages:
   why-is-node-running@2.3.0:
     resolution: {integrity: sha512-hUrmaWBdVDcxvYqnyh09zunKzROWjbZTiNy8dBEjkS7ehEDQibXJ7XvlmtbwuTclUiIyN+CyXQD4Vmko8fNm8w==}
     engines: {node: '>=8'}
-    hasBin: true
-
-  why@0.6.2:
-    resolution: {integrity: sha512-7M43dnp3p+5HRMYS5ImUftNAQQSIZmwnAd8yyjEj3cpK+6nbBfikwTvxXRUFvydaPJmgu+EofRnJKNDMbIuzXg==}
     hasBin: true
 
   widest-line@4.0.1:
@@ -31820,8 +31813,6 @@ snapshots:
     dependencies:
       siginfo: 2.0.0
       stackback: 0.0.2
-
-  why@0.6.2: {}
 
   widest-line@4.0.1:
     dependencies:
