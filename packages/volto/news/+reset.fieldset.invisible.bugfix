@@ -1,1 +1,0 @@
-Reset fieldset.invisible class definition in order to prevent clashes with other CSS frameworks that might have `invisible` as utility. @sneridagh
