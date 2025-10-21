@@ -1,3 +1,5 @@
+'use client';
+
 import { Dialog, Heading } from 'react-aria-components';
 import { Modal } from '@plone/components';
 import { Button, Input } from '@plone/components/quanta';

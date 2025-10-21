@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect } from 'react';
 import { useRouteError, isRouteErrorResponse } from 'react-router';
 import { UNSTABLE_ToastQueue as ToastQueue } from 'react-aria-components';

@@ -1,3 +1,5 @@
+'use client';
+
 export * from './AppRouter';
 export * from './PloneClient';
 export * from './PloneProvider';

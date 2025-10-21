@@ -16,7 +16,7 @@ import {
   type MetaFunction,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { RouterProvider as RACRouterProvider } from 'react-aria-components';
+import { RouterProvider as RACRouterProvider } from '@plone/providers';
 import type { RootLoader } from 'seven/app/root';
 import SlotRenderer from '@plone/layout/slots/SlotRenderer';
 import clsx from 'clsx';
