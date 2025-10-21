@@ -41,17 +41,6 @@ export function searchContent(url, options, subrequest = null) {
               // Adds the wildcard to the SearchableText param
               item[1] = `${item[1]}*`;
             }
-            // Convert sort_order to sort_reverse for Plone compatibility
-            // Only convert for search page date fields, not folder contents date fields
-            if (item[0] === 'sort_order' && item[1] !== undefined) {
-              const sortOnField = options.sort_on;
-              const isSearchPageDateField = sortOnField === 'effective';
-
-              if (isSearchPageDateField) {
-                item[0] = 'sort_reverse';
-                item[1] = item[1] === 'descending' ? '1' : '0';
-              }
-            }
             return join(item, '=');
           }),
           '&',
