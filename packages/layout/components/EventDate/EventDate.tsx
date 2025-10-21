@@ -1,5 +1,6 @@
 import type { EventCT } from '@plone/types';
 import { getDate, isSameDay } from '../../helpers';
+import { useTranslation } from 'react-i18next';
 
 interface EventDateProps {
   content: EventCT;
@@ -16,6 +17,8 @@ const getDateTime = (date: string, locale: string): string => {
 };
 
 export default function EventDate({ locale, content }: EventDateProps) {
+  const { t } = useTranslation();
+
   if (!locale || !content) return;
 
   const { start, end, whole_day, open_end } = content;
@@ -29,24 +32,42 @@ export default function EventDate({ locale, content }: EventDateProps) {
     <dd>
       {isSameDay(start, end) ? (
         <>
-          {startDate}{' '}
-          {!whole_day && (
-            <>
-              from {startTime}
-              {!open_end && ` to ${endTime}`}
-            </>
-          )}
+          {whole_day
+            ? startDate
+            : open_end
+              ? t('layout.views.event.time.same_day_open_end', {
+                  date: startDate,
+                  fromTime: startTime,
+                })
+              : t('layout.views.event.time.same_day_range', {
+                  date: startDate,
+                  fromTime: startTime,
+                  toTime: endTime,
+                })}
         </>
       ) : whole_day ? (
-        <>
-          {startDate}
-          {!open_end && ` to ${endDate}`}
-        </>
+        open_end ? (
+          t('layout.views.event.time.multi_day_whole_day_open', {
+            fromDate: startDate,
+          })
+        ) : (
+          t('layout.views.event.time.multi_day_whole_day', {
+            fromDate: startDate,
+            toDate: endDate,
+          })
+        )
+      ) : open_end ? (
+        t('layout.views.event.time.multi_day_range_open', {
+          fromDate: startDate,
+          fromTime: startTime,
+        })
       ) : (
-        <>
-          {startDate} {startTime}
-          {!open_end && ` to ${endDate} ${endTime}`}
-        </>
+        t('layout.views.event.time.multi_day_range', {
+          fromDate: startDate,
+          fromTime: startTime,
+          toDate: endDate,
+          toTime: endTime,
+        })
       )}
     </dd>
   );
