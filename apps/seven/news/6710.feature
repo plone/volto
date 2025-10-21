@@ -1,0 +1,1 @@
+Added isAuthenticated boolean to root loader data @arybakov05

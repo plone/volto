@@ -5,6 +5,7 @@ import installToast from './config/toast';
 import DefaultView from './views/DefaultView';
 import FileView from './views/FileView';
 import ImageView from './views/ImageView';
+import LinkView from './views/LinkView';
 
 export default function install(config: ConfigType) {
   // Translation factory
@@ -18,6 +19,7 @@ export default function install(config: ConfigType) {
   config.views.contentTypesViews = {
     File: FileView,
     Image: ImageView,
+    Link: LinkView,
     ...config.views.contentTypesViews,
   };
   config.views.layoutViews = { ...config.views.layoutViews };
