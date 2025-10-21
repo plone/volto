@@ -1,8 +1,8 @@
-import { expect, describe, it, vi, afterEach } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { createRoutesStub, RouterContextProvider } from 'react-router';
 import config from '@plone/registry';
-import { Layout, ErrorBoundary, loader } from './root';
+import { ErrorBoundary, Layout, loader } from './root';
 import { renderWithI18n } from '../tests/testHelpers';
 
 async function renderStub() {
@@ -12,7 +12,12 @@ async function renderStub() {
       Component: () => (
         <Layout
           params={{}}
-          loaderData={{ locale: 'en', content: {} as any, site: {} as any, isAuthenticated: false }}
+          loaderData={{
+            locale: 'en',
+            content: {} as any,
+            site: {} as any,
+            isAuthenticated: false,
+          }}
           matches={[{} as any]}
         >
           <p>Root Layout</p>
