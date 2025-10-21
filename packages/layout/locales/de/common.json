@@ -1,17 +1,17 @@
 {
   "layout": {
     "languageSwitcher": {
-      "switchTo": "Switch to {{ lang }}"
+      "switchTo": "Zu {{ lang }} wechseln"
     },
     "contenttypes": {
       "common": {
-        "size": "Size:"
+        "size": "Größe:"
       },
       "image": {
-        "download": "Click to download full sized image"
+        "download": "Klicke, um das Bild in voller Größe herunterzuladen"
       },
       "file": {
-        "download": "Download file"
+        "download": "Datei herunterladen"
       }
     },
     "views": {
