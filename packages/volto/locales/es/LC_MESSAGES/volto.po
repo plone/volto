@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-10-08 08:02+0000\n"
+"PO-Revision-Date: 2025-10-21 10:02+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\n"
 "Language: es\n"
@@ -20,7 +20,7 @@ msgstr "<p>Añadir algo de HTML aquí</p>"
 #. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
 #: helpers/MessageLabels/MessageLabels
 msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
-msgstr ""
+msgstr "Un identificador único para el grupo. No se puede cambiar después de la creación. No se permiten espacios."
 
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
