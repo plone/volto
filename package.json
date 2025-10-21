@@ -53,7 +53,9 @@
     },
     "ignoredBuiltDependencies": [
       "@parcel/watcher",
-      "@swc/core",
+      "@swc/core"
+    ],
+    "onlyBuiltDependencies": [
       "@tailwindcss/oxide",
       "core-js",
       "core-js-pure",
@@ -61,11 +63,8 @@
       "es5-ext",
       "esbuild",
       "full-icu",
-      "unrs-resolver",
-      "why"
-    ],
-    "onlyBuiltDependencies": [
-      "lightningcss-cli"
+      "lightningcss-cli",
+      "unrs-resolver"
     ]
   }
 }
