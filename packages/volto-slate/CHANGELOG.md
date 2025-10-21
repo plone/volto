@@ -35,9 +35,9 @@
 ### Bugfix
 
 - Correct `README.md`. Set the correct value of the constant `TFOOT` to `tfoot`, instead of `tbody`. Serve `tabIndex` prop with a number instead of a string. @silviubogan [#7179](https://github.com/plone/volto/issues/7179)
-- This is a fix for "Cannot find a descendant at path [...]" error. In certain cases (e.g., after merging blocks via Backspace),
-  editor.selection may temporarily point to a path that no longer exists.
-  This causes Editor.nodes() to throw an exception. Wrapping it in try/catch prevents crashes and hides the inline toolbar gracefully.
+- This is a fix for "Cannot find a descendant at path [...]" error. In certain cases (e.g., after merging blocks via Backspace), 
+  editor.selection may temporarily point to a path that no longer exists. 
+  This causes Editor.nodes() to throw an exception. Wrapping it in try/catch prevents crashes and hides the inline toolbar gracefully. 
   Reproducible scenario: text block with bullet list → new text block → write a word → go to first position of letters → Backspace → crash.
   @tomschall [#7203](https://github.com/plone/volto/issues/7203)
 
@@ -121,7 +121,7 @@
 
 ### Internal
 
-- Release 18.0.0 final @sneridagh
+- Release 18.0.0 final @sneridagh 
 
 ## 18.0.0-alpha.20 (2024-10-30)
 
