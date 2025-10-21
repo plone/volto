@@ -1,1 +1,1 @@
-Serve API requests from prefixpath @davisagli
+Serve API requests from a subpath. @davisagli

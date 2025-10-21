@@ -414,7 +414,7 @@ const defaultModify = ({
         ]
       : [];
 
-  // If Volto is served under a prefix path,
+  // If Volto is served under a subpath,
   // we have to adjust where Webpack assets are served too.
   const prefixPath = process.env.RAZZLE_PREFIX_PATH || '';
   if (prefixPath) {

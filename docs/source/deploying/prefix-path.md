@@ -9,20 +9,20 @@ myst:
 
 # Serve Volto on a subpath
 
-Volto can be served on a subpath, e.g. `https://mysite.com/subpath`.
+A Volto site can be served on a subpath, for example, `https://mysite.com/subpath`.
 
 When this is enabled, both content and static assets are served on the subpath, which means a different website can be served at the root path.
 
-To use a subpath, run Volto with the `RAZZLE_PREFIX_PATH` environment variable set:
+To use a subpath, run Volto with the `RAZZLE_PREFIX_PATH` environment variable set to the subpath.
 
 ```shell
 RAZZLE_PREFIX_PATH=/subpath make start
 ```
 
-If you are building bundles to run in production mode, the environment variable must be set at both build and run time:
+If you build bundles to run in production mode, you must set the environment variable at both build and run times as shown.
 
 ```shell
 RAZZLE_PREFIX_PATH=/subpath make build && pnpm prod:start
 ```
 
-Now you can access http://localhost:3000/subpath in your browser.
+In the above example, you would access the site at `http://localhost:3000/subpath` in your browser.

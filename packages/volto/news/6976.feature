@@ -1,1 +1,1 @@
-Add cypress for prefix-path @wesleybl 
+Add Cypress for a subpath. @wesleybl
