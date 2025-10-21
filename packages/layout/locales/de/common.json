@@ -16,8 +16,8 @@
     },
     "views": {
       "link": {
-        "linkLabel": "The link address is:",
-        "externalLinkLabel": "The external link address is:"
+        "linkLabel": "Die Linkadresse lautet:",
+        "externalLinkLabel": "Die externe Linkadresse lautet:"
       }
     }
   }
