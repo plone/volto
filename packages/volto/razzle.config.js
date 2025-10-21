@@ -416,18 +416,18 @@ const defaultModify = ({
 
   // If Volto is served under a subpath,
   // we have to adjust where Webpack assets are served too.
-  const prefixPath = process.env.RAZZLE_PREFIX_PATH || '';
-  if (prefixPath) {
+  const subpathPrefix = process.env.RAZZLE_PREFIX_PATH || '';
+  if (subpathPrefix) {
     if (target === 'web' && dev) {
       if (config.devServer.devMiddleware) {
-        config.devServer.devMiddleware.publicPath = prefixPath;
+        config.devServer.devMiddleware.publicPath = subpathPrefix;
       } else {
-        config.devServer.publicPath += `${prefixPath.slice(1)}/`;
+        config.devServer.publicPath += `${subpathPrefix.slice(1)}/`;
       }
     }
     const publicPath = config.output.publicPath;
-    if (publicPath.indexOf(prefixPath) === -1) {
-      config.output.publicPath = `${publicPath}${prefixPath.slice(1)}/`;
+    if (publicPath.indexOf(subpathPrefix) === -1) {
+      config.output.publicPath = `${publicPath}${subpathPrefix.slice(1)}/`;
     }
   }
   return config;
