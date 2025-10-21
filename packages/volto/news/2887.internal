@@ -1,0 +1,3 @@
+Add Cypress test coverage for blocks layout synchronization fix.
+
+Tests verify that when content has empty blocks={} and blocks_layout={items:[]} (e.g., from migration), adding text properly synchronizes blocks_layout with the new block IDs, preventing view breakage.@aryan7081

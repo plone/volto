@@ -702,6 +702,18 @@ class Form extends Component {
     const fieldsModified = Object.keys(
       difference(formData, this.state.initialFormData),
     );
+
+    // Ensure blocks_layout is always included when blocks field is modified
+    const blocksFieldname = getBlocksFieldname(formData);
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+
+    if (
+      fieldsModified.includes(blocksFieldname) &&
+      !fieldsModified.includes(blocksLayoutFieldname)
+    ) {
+      fieldsModified.push(blocksLayoutFieldname);
+    }
+
     return {
       ...pickBy(formData, (value, key) => fieldsModified.includes(key)),
       ...(formData['@static_behaviors'] && {
