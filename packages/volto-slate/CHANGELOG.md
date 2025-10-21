@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.6 (2025-10-21)
+
+### Bugfix
+
+- Fix Backspace at start of a text block: merge current block into previous inline (no extra newline), delete the current block, and place the caret before the first character of the merged content. Also handle Enter immediately after such inline merge by splitting back into two blocks. @aryan7081 [#7373](https://github.com/plone/volto/issues/7373)
+
+### Internal
+
+- Update slate libraries. @sneridagh [#7477](https://github.com/plone/volto/issues/7477)
+
 ## 19.0.0-alpha.5 (2025-09-29)
 
 ### Feature
