@@ -142,9 +142,24 @@ class Search extends Component {
 
   onSortChange = (event, sort_order) => {
     let options = qs.parse(this.props.history.location.search);
-    options.sort_on = event.target.name;
-    options.sort_order = sort_order || 'descending';
-    if (event.target.name === 'relevance') {
+    const sortOn = event.currentTarget?.name || event.target?.name;
+
+    if (
+      sortOn === 'effective' &&
+      options.sort_on === 'effective' &&
+      (options.sort_order === 'descending' || options.sort_reverse === '1')
+    ) {
+      return;
+    }
+    options.sort_on = sortOn;
+
+    if (sortOn === 'effective') {
+      options.sort_order = 'descending';
+    } else {
+      options.sort_order = sort_order || 'descending';
+    }
+
+    if (sortOn === 'relevance') {
       delete options.sort_on;
       delete options.sort_order;
     }

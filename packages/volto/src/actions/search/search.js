@@ -42,9 +42,19 @@ export function searchContent(url, options, subrequest = null) {
               item[1] = `${item[1]}*`;
             }
             // Convert sort_order to sort_reverse for Plone compatibility
-            if (item[0] === 'sort_order') {
-              item[0] = 'sort_reverse';
-              item[1] = item[1] === 'descending' ? '1' : '0';
+            if (item[0] === 'sort_order' && item[1] !== undefined) {
+              const sortOnField = options.sort_on;
+              const isDateField =
+                sortOnField &&
+                (sortOnField.includes('Date') ||
+                  sortOnField.includes('created') ||
+                  sortOnField.includes('effective') ||
+                  sortOnField.includes('modified'));
+
+              if (isDateField) {
+                item[0] = 'sort_reverse';
+                item[1] = item[1] === 'descending' ? '1' : '0';
+              }
             }
             return join(item, '=');
           }),
