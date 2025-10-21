@@ -17,6 +17,44 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.7 (2025-10-21)
+
+### Breaking
+
+- Update pnpm to 10.18.3. @wesleybl [#7239](https://github.com/plone/volto/issues/7239)
+- Drop support of Node.js 20. @wesleybl [#7509](https://github.com/plone/volto/issues/7509)
+
+### Feature
+
+- Internationalizes help for the `Group Name` field. @wesleybl [#7481](https://github.com/plone/volto/issues/7481)
+- Add support to Node.js 24. @wesleybl [#7508](https://github.com/plone/volto/issues/7508)
+
+### Bugfix
+
+- Refactored the fix for #7238: corner case when coming from SSR in edit route, where the teasers where overwriten with bogus URLs after save if INTERNAL_API_PATH is set. @sneridagh [#7317](https://github.com/plone/volto/issues/7317)
+- The cancel/clear "X" button inside the DatetimeWidget now includes an accessible label when active. @Wagner3UB [#7414](https://github.com/plone/volto/issues/7414)
+- The delete and drag buttons for blocks in edit mode now have an accessible aria-label for screen readers. @sabrina-bongiovanni [#7424](https://github.com/plone/volto/issues/7424)
+- Fix api middleware possible empty values error. @robgietema [#7433](https://github.com/plone/volto/issues/7433)
+- Escape double quotes in POT / PO files @erral [#7476](https://github.com/plone/volto/issues/7476)
+- Fixed corner case where RAZZLE_INTERNAL_API_PATH is set and id is still undefined on first SSR load. @sneridagh [#7478](https://github.com/plone/volto/issues/7478)
+- Reset fieldset.invisible class definition in order to prevent clashes with other CSS frameworks that might have `invisible` as utility. @sneridagh 
+- Set type="button" for more widget buttons to prevent them from triggering when Enter is pressed elsewhere in the form. @davisagli 
+
+### Internal
+
+- Added Cypress test for backspace behavior in slate blocks. @aryan7081 [#7373](https://github.com/plone/volto/issues/7373)
+- Update slate libraries in volto package. @sneridagh [#7482](https://github.com/plone/volto/issues/7482)
+- Makes the Cypress commands `getSlateEditorAndType` and `getSlateEditorSelectorAndType` more robust. @wesleybl [#7503](https://github.com/plone/volto/issues/7503)
+- Enhance Cypress commands to trigger focus before typing in Slate editor. @wesleybl [#7506](https://github.com/plone/volto/issues/7506)
+- Fix error and rename test to "should save typed content in the Slate editor". @wesleybl [#7507](https://github.com/plone/volto/issues/7507)
+- Skip link check for URL which blocks traffic from GitHub. @davisagli 
+- Use Plone 6.1.3. @sneridagh 
+
+### Documentation
+
+- Add a note to the upgrade guide about related items being shown by default. @davisagli [#7430](https://github.com/plone/volto/issues/7430)
+- Fix images path in Volto README. @wesleybl [#7446](https://github.com/plone/volto/issues/7446)
+
 ## 19.0.0-alpha.6 (2025-09-29)
 
 ### Breaking
