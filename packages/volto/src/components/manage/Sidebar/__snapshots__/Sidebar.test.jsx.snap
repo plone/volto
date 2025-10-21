@@ -13,7 +13,7 @@ exports[`renders a sidebar component 1`] = `
       type="button"
     />
     <button
-      aria-label="full-screen-sidenav"
+      aria-label="Full screen sidenav"
       className="ui button full-size-sidenav-btn"
       onClick={[Function]}
       type="button"
