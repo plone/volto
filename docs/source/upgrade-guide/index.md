@@ -34,6 +34,16 @@ It is usually better and quicker to move your items into new locations and copy 
 
 (19-removed-support-for-loading-configuration-from-project-label)=
 
+### Breaking Changes — `.visually-hidden` utility class  
+PR: [Add visually-hidden class #6356](https://github.com/plone/volto/pull/6356)
+A new global CSS utility class called .visually-hidden has been introduced to Volto’s SCSS base.
+
+This class allows developers to visually hide elements while keeping them accessible to screen readers, improving accessibility for assistive technologies.
+
+Why this is breaking: If your project already defines a .visually-hidden class or uses similar accessibility helpers, the new global definition may override or conflict with existing custom styles.
+
+What to do: Check whether your project or custom theme defines a .visually-hidden class. If so, rename your custom implementation or override Volto’s default as needed. Review any components that depend on hidden accessibility elements to ensure visual and functional consistency.
+
 ### Removed support for loading configuration from project
 ```{versionremoved} Volto 19
 ```
