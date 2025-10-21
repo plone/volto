@@ -37,7 +37,7 @@
 - Update widget config typings for better inference. @deodorhunter [#7141](https://github.com/plone/volto/issues/7141)
 - Improved widgets typings.
   Exported missing intl typings helpers.
-  Added BlockSchemaProps typings. @sneridagh 
+  Added BlockSchemaProps typings. @sneridagh
 
 ### Internal
 
@@ -50,7 +50,7 @@
 - Removed the `isMultilingual` and `defaultLanguage` settings. @davisagli [#7125](https://github.com/plone/volto/issues/7125)
 - Improved widgets typings.
   Exported missing intl typings helpers.
-  Added BlockSchemaProps typings. @sneridagh 
+  Added BlockSchemaProps typings. @sneridagh
 
 ## 2.0.0-alpha.3 (2025-05-16)
 
