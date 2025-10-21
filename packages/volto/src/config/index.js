@@ -43,13 +43,13 @@ const getServerURL = (url) => {
 // if in DEV, use the host/port combination by default
 // if in PROD, assume it's RAZZLE_API_PATH server name (no /api or alikes) or fallback
 // to DEV settings if RAZZLE_API_PATH is not present.
-// Finally, add the prefix path, if there is one.
+// Finally, add the subpath, if there is one.
 const publicURL =
   (process.env.RAZZLE_PUBLIC_URL ||
     (__DEVELOPMENT__
       ? `http://${host}:${port}`
       : getServerURL(process.env.RAZZLE_API_PATH) ||
-        `http://${host}:${port}`)) + (process.env.RAZZLE_PREFIX_PATH || '');
+        `http://${host}:${port}`)) + (process.env.RAZZLE_SUBPATH_PREFIX || '');
 
 const serverConfig =
   typeof __SERVER__ !== 'undefined' && __SERVER__

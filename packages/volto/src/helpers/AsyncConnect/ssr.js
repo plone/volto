@@ -1,7 +1,7 @@
 import { matchRoutes } from 'react-router-config';
 import { mapSeries, isPromise } from './utils';
 import { endGlobalLoad } from '@plone/volto/actions/asyncConnect/asyncConnect';
-import { stripPrefixPath } from '@plone/volto/helpers/Url/Url';
+import { stripSubpathPrefix } from '@plone/volto/helpers/Url/Url';
 
 export function filterComponents(branch) {
   return branch.reduce((result, { route, match }) => {
@@ -20,7 +20,7 @@ export function loadAsyncConnect({
   ...rest
 }) {
   const layered = filterComponents(
-    matchRoutes(routes, stripPrefixPath(location.pathname)),
+    matchRoutes(routes, stripSubpathPrefix(location.pathname)),
   );
 
   if (layered.length === 0) {

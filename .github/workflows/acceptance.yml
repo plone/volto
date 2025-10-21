@@ -565,7 +565,7 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/basic/**/*.js
           config: baseUrl=http://localhost/foo
-          env: prefixPath=/foo
+          env: subpathPrefix=/foo
           start: |
             make ci-acceptance-backend-start
             make prefixed-acceptance-frontend-prod-start
@@ -616,7 +616,7 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/content/**/*.js
           config: baseUrl=http://localhost/foo
-          env: prefixPath=/foo
+          env: subpathPrefix=/foo
           start: |
             make ci-acceptance-backend-start
             make prefixed-acceptance-frontend-prod-start
@@ -667,7 +667,7 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/controlpanels/**/*.js
           config: baseUrl=http://localhost/foo
-          env: prefixPath=/foo
+          env: subpathPrefix=/foo
           start: |
             make ci-acceptance-backend-start
             make prefixed-acceptance-frontend-prod-start
@@ -718,7 +718,7 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/blocks/*.js
           config: baseUrl=http://localhost/foo
-          env: prefixPath=/foo
+          env: subpathPrefix=/foo
           start: |
             make ci-acceptance-backend-start
             make prefixed-acceptance-frontend-prod-start
@@ -769,7 +769,7 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/blocks/listing/*.js
           config: baseUrl=http://localhost/foo
-          env: prefixPath=/foo
+          env: subpathPrefix=/foo
           start: |
             make ci-acceptance-backend-start
             make prefixed-acceptance-frontend-prod-start
@@ -820,7 +820,7 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/volto-slate/**/*.js
           config: baseUrl=http://localhost/foo
-          env: prefixPath=/foo
+          env: subpathPrefix=/foo
           start: |
             make ci-acceptance-backend-start
             make prefixed-acceptance-frontend-prod-start
@@ -871,7 +871,7 @@ jobs:
           browser: chrome
           spec: cypress/tests/multilingual/**/*.js
           config: baseUrl=http://localhost/foo
-          env: prefixPath=/foo
+          env: subpathPrefix=/foo
           start: |
             make deployment-multilingual-acceptance-backend-start
             make prefixed-multilingual-acceptance-frontend-prod-start
@@ -922,7 +922,7 @@ jobs:
           browser: chrome
           spec: cypress/tests/workingCopy/**/*.js
           config: baseUrl=http://localhost/foo
-          env: prefixPath=/foo
+          env: subpathPrefix=/foo
           start: |
             make working-copy-acceptance-backend-start
             make prefixed-working-copy-acceptance-frontend-prod-start

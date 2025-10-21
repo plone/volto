@@ -1,5 +1,5 @@
 describe('Add Content Tests', () => {
-  const prefixPath = Cypress.env('prefixPath') || '';
+  const subpathPrefix = Cypress.env('subpathPrefix') || '';
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     // give a logged in editor and the site root
@@ -223,7 +223,7 @@ describe('Add Content Tests', () => {
     // and the link should show up on the link view
     cy.contains('/link-target');
     // and the link redirects to the link target
-    cy.get(`main a[href="${prefixPath}/link-target"]`).click();
+    cy.get(`main a[href="${subpathPrefix}/link-target"]`).click();
     cy.url().should('eq', Cypress.config().baseUrl + '/link-target');
     cy.get('main').contains('Link Target');
   });

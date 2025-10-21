@@ -276,7 +276,7 @@ working-copy-ci-acceptance-test-run-all: ## With a single command, run the backe
 
 .PHONY: prefixed-acceptance-frontend-prod-start
 prefixed-acceptance-frontend-prod-start: build-deps ## Start the prefixed Core Acceptance Frontend Fixture
-	RAZZLE_PREFIX_PATH=/foo RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+	RAZZLE_SUBPATH_PREFIX=/foo RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: prefixed-ci-acceptance-test-run-all
 prefixed-ci-acceptance-test-run-all: ## Runs prefixed Core Full Acceptance Testing in headless mode
@@ -284,11 +284,11 @@ prefixed-ci-acceptance-test-run-all: ## Runs prefixed Core Full Acceptance Testi
 
 .PHONY: prefixed-acceptance-test
 prefixed-acceptance-test: ## Start Prefixed Cypress Acceptance Tests
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost/foo' --env prefixPath="/foo"
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost/foo' --env subpathPrefix="/foo"
 
 .PHONY: prefixed-acceptance-frontend-dev-start
 prefixed-acceptance-frontend-dev-start: ## Start acceptance frontend in development mode
-	RAZZLE_PREFIX_PATH=/foo RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm start
+	RAZZLE_SUBPATH_PREFIX=/foo RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm start
 
 .PHONY: deployment-prefixed-acceptance-web-server-start
 deployment-prefixed-acceptance-web-server-start: ## Start the prefixed webserver
@@ -298,21 +298,21 @@ deployment-prefixed-acceptance-web-server-start: ## Start the prefixed webserver
 
 .PHONY: prefixed-multilingual-acceptance-frontend-prod-start
 prefixed-multilingual-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for prefixed multilingual tests
-	ADDONS=@plone/volto-coresandbox:multilingualFixture RAZZLE_PREFIX_PATH=/foo RAZZLE_INTERNAL_API_PATH=http://localhost/foo pnpm build && pnpm start:prod
+	ADDONS=@plone/volto-coresandbox:multilingualFixture RAZZLE_SUBPATH_PREFIX=/foo RAZZLE_INTERNAL_API_PATH=http://localhost/foo pnpm build && pnpm start:prod
 
 .PHONY: prefixed-multilingual-acceptance-test
 prefixed-multilingual-acceptance-test: ## Start Cypress in interactive mode for prefixed multilingual tests
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}' baseUrl='http://localhost/foo' --env prefixPath="/foo"
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}' baseUrl='http://localhost/foo' --env subpathPrefix="/foo"
 
 ######### Prefixed Working Copy Acceptance tests
 
 .PHONY: prefixed-working-copy-acceptance-frontend-prod-start
 prefixed-working-copy-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for prefixed working copy tests
-	RAZZLE_PREFIX_PATH=/foo RAZZLE_INTERNAL_API_PATH=http://localhost/foo pnpm build && pnpm start:prod
+	RAZZLE_SUBPATH_PREFIX=/foo RAZZLE_INTERNAL_API_PATH=http://localhost/foo pnpm build && pnpm start:prod
 
 .PHONY: prefixed-working-copy-acceptance-test
 prefixed-working-copy-acceptance-test: ## Start Cypress in interactive mode for prefixed working copy tests
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/workingCopy/**/*.{js,jsx,ts,tsx}' --config baseUrl='http://localhost/foo' --env prefixPath='/foo'
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/workingCopy/**/*.{js,jsx,ts,tsx}' --config baseUrl='http://localhost/foo' --env subpathPrefix='/foo'
 
 ######### Guillotina Acceptance tests
 

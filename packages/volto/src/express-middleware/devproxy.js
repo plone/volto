@@ -15,7 +15,7 @@ const filter = function (pathname, req) {
     // This is the proxy to the API in case the accept header is 'application/json'
     return (
       config.settings.devProxyToApiPath &&
-      pathname.startsWith(`${config.settings.prefixPath}/++api++`)
+      pathname.startsWith(`${config.settings.subpathPrefix}/++api++`)
     );
   } else {
     return false;
@@ -81,8 +81,8 @@ export default function devProxyMiddleware() {
     },
     pathRewrite: (path, req) => {
       const { apiPathURL, instancePath } = getEnv();
-      const vhSubpath = config.settings.prefixPath
-        ? config.settings.prefixPath
+      const vhSubpath = config.settings.subpathPrefix
+        ? config.settings.subpathPrefix
             .split('/')
             .filter(Boolean)
             .map((part) => '/_vh_' + part)
@@ -94,7 +94,7 @@ export default function devProxyMiddleware() {
           apiPathURL.hostname
         }:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot${vhSubpath}`;
 
-      return `${target}${path.replace(`${config.settings.prefixPath}/++api++`, '')}`;
+      return `${target}${path.replace(`${config.settings.subpathPrefix}/++api++`, '')}`;
     },
     changeOrigin: true,
     logLevel: process.env.DEBUG_HPM ? 'debug' : 'silent',
