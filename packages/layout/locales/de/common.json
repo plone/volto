@@ -18,6 +18,14 @@
       "event": {
         "what": "Was",
         "when": "Wann",
+        "time": {
+          "same_day_open_end": "{{date}} ab {{fromTime}}",
+          "same_day_range": "{{date}} von {{fromTime}} bis {{toTime}}",
+          "multi_day_whole_day_open": "{{fromDate}}",
+          "multi_day_whole_day": "{{fromDate}} bis {{toDate}}",
+          "multi_day_range_open": "{{fromDate}} {{fromTime}}",
+          "multi_day_range": "{{fromDate}} {{fromTime}} bis {{toDate}} {{toTime}}"
+        },
         "all-dates": "Alle Daten",
         "where": "Wo",
         "contact": {
