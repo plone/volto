@@ -13,6 +13,30 @@
       "file": {
         "download": "Download file"
       }
+    },
+    "views": {
+      "event": {
+        "what": "What",
+        "when": "When",
+        "time": {
+          "sameDayOpenEnd": "{{date}} from {{fromTime}}",
+          "sameDayRange": "{{date}} from {{fromTime}} to {{toTime}}",
+          "multiDayWholeDayOpen": "{{fromDate}}",
+          "multiDayWholeDay": "{{fromDate}} to {{toDate}}",
+          "multiDayRangeOpen": "{{fromDate}} {{fromTime}}",
+          "multiDayRange": "{{fromDate}} {{fromTime}} to {{toDate}} {{toTime}}"
+        },
+        "allDates": "All dates",
+        "where": "Where",
+        "contact": {
+          "name": "Contact Name",
+          "phone": "Contact Phone"
+        },
+        "attendees": "Attendees",
+        "website": "Website",
+        "visitWebsite": "Visit website",
+        "downloadEvent": "Download event"
+      }
     }
   }
 }
