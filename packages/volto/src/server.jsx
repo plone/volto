@@ -72,12 +72,12 @@ const server = express()
   })
   .use(cookiesMiddleware());
 
-// If Volto is being served under a prefix,
+// If Volto is being served under a subpath,
 // make sure the static files are available there too.
 // (The static middleware loads too early to access the config.)
-if (config.settings.prefixPath) {
+if (config.settings.subpathPrefix) {
   server.use(
-    config.settings.prefixPath,
+    config.settings.subpathPrefix,
     express.static(
       process.env.BUILD_DIR
         ? path.join(process.env.BUILD_DIR, 'public')
@@ -183,9 +183,9 @@ function setupServer(req, res, next) {
       req.headers['x-forwarded-proto'] || req.protocol
     }://${req.headers.host}`;
     config.settings.apiPath =
-      res.locals.detectedHost + config.settings.prefixPath;
+      res.locals.detectedHost + config.settings.subpathPrefix;
     config.settings.publicURL =
-      res.locals.detectedHost + config.settings.prefixPath;
+      res.locals.detectedHost + config.settings.subpathPrefix;
   }
 
   res.locals = {
@@ -280,7 +280,7 @@ server.get('/*', (req, res) => {
               <StaticRouter
                 context={context}
                 location={req.url}
-                basename={config.settings.prefixPath}
+                basename={config.settings.subpathPrefix}
               >
                 <ReduxAsyncConnect routes={routes} helpers={api} />
               </StaticRouter>
@@ -363,7 +363,7 @@ export const defaultReadCriticalCss = () => {
 // Exposed for the console bootstrap info messages
 server.apiPath = config.settings.apiPath;
 server.internalApiPath = config.settings.internalApiPath;
-server.prefixPath = config.settings.prefixPath;
+server.subpathPrefix = config.settings.subpathPrefix;
 server.devProxyToApiPath = config.settings.devProxyToApiPath;
 server.proxyRewriteTarget = config.settings.proxyRewriteTarget;
 server.publicURL = config.settings.publicURL;

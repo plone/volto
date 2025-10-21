@@ -19,8 +19,8 @@ import {
   normaliseMail,
   normalizeTelephone,
   flattenScales,
-  addPrefixPath,
-  stripPrefixPath,
+  addSubpathPrefix,
+  stripSubpathPrefix,
 } from './Url';
 
 beforeEach(() => {
@@ -536,62 +536,62 @@ describe('Url', () => {
     });
   });
 
-  describe('Prefix tests', () => {
+  describe('Subpath tests', () => {
     beforeEach(() => {
-      settings.prefixPath = '/site';
+      settings.subpathPrefix = '/site';
     });
-    describe('addPrefixPath', () => {
-      it('adds prefix path to internal URLs', () => {
-        expect(addPrefixPath('/some-page')).toBe('/site/some-page');
-        expect(addPrefixPath('/news/article')).toBe('/site/news/article');
+    describe('addSubpathPrefix', () => {
+      it('adds subpath prefix to internal URLs', () => {
+        expect(addSubpathPrefix('/some-page')).toBe('/site/some-page');
+        expect(addSubpathPrefix('/news/article')).toBe('/site/news/article');
       });
 
-      it('does not add prefix path to URLs that already have it', () => {
-        expect(addPrefixPath('/site/some-page')).toBe('/site/some-page');
+      it('does not add subpath prefix to URLs that already have it', () => {
+        expect(addSubpathPrefix('/site/some-page')).toBe('/site/some-page');
       });
 
-      it('does not add prefix path to external URLs', () => {
-        expect(addPrefixPath('https://example.com/page')).toBe(
+      it('does not add subpath prefix to external URLs', () => {
+        expect(addSubpathPrefix('https://example.com/page')).toBe(
           'https://example.com/page',
         );
       });
 
-      it('handles empty prefix path', () => {
-        settings.prefixPath = '';
-        expect(addPrefixPath('/some-page')).toBe('/some-page');
+      it('handles empty subpath prefix', () => {
+        settings.subpathPrefix = '';
+        expect(addSubpathPrefix('/some-page')).toBe('/some-page');
       });
 
-      it('handles undefined prefix path', () => {
-        settings.prefixPath = undefined;
-        expect(addPrefixPath('/some-page')).toBe('/some-page');
+      it('handles undefined subpath prefix', () => {
+        settings.subpathPrefix = undefined;
+        expect(addSubpathPrefix('/some-page')).toBe('/some-page');
       });
     });
 
-    describe('stripPrefixPath', () => {
+    describe('stripSubpathPrefix', () => {
       beforeEach(() => {
-        settings.prefixPath = '/site';
+        settings.subpathPrefix = '/site';
       });
-      it('removes prefix path from URLs that have it', () => {
-        expect(stripPrefixPath('/site/some-page')).toBe('/some-page');
-        expect(stripPrefixPath('/site/news/article')).toBe('/news/article');
+      it('removes subpath prefix from URLs that have it', () => {
+        expect(stripSubpathPrefix('/site/some-page')).toBe('/some-page');
+        expect(stripSubpathPrefix('/site/news/article')).toBe('/news/article');
       });
 
       it('leaves URLs unchanged if they do not have the prefix', () => {
-        expect(stripPrefixPath('/other/some-page')).toBe('/other/some-page');
+        expect(stripSubpathPrefix('/other/some-page')).toBe('/other/some-page');
       });
 
-      it('handles the case where URL is exactly the prefix path', () => {
-        expect(stripPrefixPath('/site')).toBe('');
+      it('handles the case where URL is exactly the subpath prefix', () => {
+        expect(stripSubpathPrefix('/site')).toBe('');
       });
 
-      it('handles empty prefix path', () => {
-        settings.prefixPath = '';
-        expect(stripPrefixPath('/some-page')).toBe('/some-page');
+      it('handles empty subpath prefix', () => {
+        settings.subpathPrefix = '';
+        expect(stripSubpathPrefix('/some-page')).toBe('/some-page');
       });
 
-      it('handles undefined prefix path', () => {
-        settings.prefixPath = undefined;
-        expect(stripPrefixPath('/some-page')).toBe('/some-page');
+      it('handles undefined subpath prefix', () => {
+        settings.subpathPrefix = undefined;
+        expect(stripSubpathPrefix('/some-page')).toBe('/some-page');
       });
     });
   });

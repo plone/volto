@@ -100,7 +100,7 @@ let config = {
     // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
     actions_raising_api_errors: ['GET_CONTENT', 'UPDATE_CONTENT'],
     internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
-    prefixPath: process.env.RAZZLE_PREFIX_PATH || '',
+    subpathPrefix: process.env.RAZZLE_SUBPATH_PREFIX || '',
     websockets: process.env.RAZZLE_WEBSOCKETS || false,
     // TODO: legacyTraverse to be removed when the use of the legacy traverse is deprecated.
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,

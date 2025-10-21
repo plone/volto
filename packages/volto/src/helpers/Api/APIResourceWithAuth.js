@@ -6,7 +6,7 @@
 import superagent from 'superagent';
 import config from '@plone/volto/registry';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
-import { stripPrefixPath } from '@plone/volto/helpers/Url/Url';
+import { stripSubpathPrefix } from '@plone/volto/helpers/Url/Url';
 
 /**
  * Get a resource image/file with authenticated (if token exist) API headers
@@ -28,8 +28,8 @@ export const getAPIResourceWithAuth = (req) =>
       apiPath = settings.apiPath;
     }
 
-    //strip prefix if any
-    const contentPath = stripPrefixPath(req.path);
+    //strip subpath if any
+    const contentPath = stripSubpathPrefix(req.path);
 
     const request = superagent
       .get(`${apiPath}${__DEVELOPMENT__ ? '' : apiSuffix}${contentPath}`)

@@ -9,7 +9,7 @@ import config from '@plone/volto/registry';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 import {
   stripQuerystring,
-  stripPrefixPath,
+  stripSubpathPrefix,
 } from '@plone/volto/helpers/Url/Url';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
@@ -33,7 +33,7 @@ export function formatUrl(path) {
     apiPath = settings.apiPath;
   }
 
-  const contentPath = stripPrefixPath(path[0] !== '/' ? `/${path}` : path);
+  const contentPath = stripSubpathPrefix(path[0] !== '/' ? `/${path}` : path);
   return `${apiPath}${apiSuffix}${contentPath}`;
 }
 

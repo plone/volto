@@ -3,7 +3,7 @@ import cx from 'classnames';
 import {
   flattenToAppURL,
   flattenScales,
-  addPrefixPath,
+  addSubpathPrefix,
 } from '@plone/volto/helpers/Url/Url';
 
 /**
@@ -34,7 +34,7 @@ export default function Image({
   attrs.className = cx(className, { responsive }) || undefined;
 
   if (!item && src) {
-    attrs.src = addPrefixPath(src);
+    attrs.src = addSubpathPrefix(src);
   } else {
     const isFromRealObject = !item.image_scales;
     const imageFieldWithDefault = imageField || item.image_field || 'image';
@@ -50,7 +50,7 @@ export default function Image({
 
     const isSvg = image['content-type'] === 'image/svg+xml';
     // In case `base_path` is present (`preview_image_link`) use it as base path
-    const basePath = addPrefixPath(
+    const basePath = addSubpathPrefix(
       flattenToAppURL(image.base_path || item['@id']),
     );
     attrs.src = `${basePath}/${image.download}`;

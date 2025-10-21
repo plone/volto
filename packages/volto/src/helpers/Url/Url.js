@@ -259,31 +259,31 @@ export function isUrl(url) {
 }
 
 /**
- * Add prefix path if set in settings
- * @method addPrefixPath
+ * Add subpath path if set in settings
+ * @method addSubpathPrefix
  * @param {string} src pathname
- * @returns {string} prefixed pathname
+ * @returns {string} prefixed subpath pathname
  */
-export function addPrefixPath(src) {
+export function addSubpathPrefix(src) {
   let url = src;
-  const { prefixPath } = config.settings;
-  if (isInternalURL(src) && prefixPath && !src.startsWith(prefixPath)) {
-    url = prefixPath + src; //add prefixPath to src if it's an internal url and not a static resource.
+  const { subpathPrefix } = config.settings;
+  if (isInternalURL(src) && subpathPrefix && !src.startsWith(subpathPrefix)) {
+    url = subpathPrefix + src; //add subpathPrefix to src if it's an internal url and not a static resource.
   }
   return url;
 }
 
 /**
- * strip prefix path particulary from api calls
- * @method stripPrefixPath
+ * strip subpath path particulary from api calls
+ * @method stripSubpathPrefix
  * @param {string} src pathname
  * @returns {string} pathname
  */
-export function stripPrefixPath(src) {
+export function stripSubpathPrefix(src) {
   let url = src;
-  const { prefixPath } = config.settings;
-  if (prefixPath && src.match(new RegExp(`^${prefixPath}(/|$)`))) {
-    url = src.slice(prefixPath.length);
+  const { subpathPrefix } = config.settings;
+  if (subpathPrefix && src.match(new RegExp(`^${subpathPrefix}(/|$)`))) {
+    url = src.slice(subpathPrefix.length);
   }
   return url;
 }

@@ -9,7 +9,7 @@ import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import serialize from 'serialize-javascript';
 import join from 'lodash/join';
 import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
-import { addPrefixPath } from '@plone/volto/helpers/Url/Url';
+import { addSubpathPrefix } from '@plone/volto/helpers/Url/Url';
 import { runtimeConfig } from '@plone/volto/runtime_config';
 import config from '@plone/volto/registry';
 
@@ -127,18 +127,22 @@ class Html extends Component {
             }}
           />
 
-          <link rel="icon" href={addPrefixPath('/favicon.ico')} sizes="any" />
           <link
             rel="icon"
-            href={addPrefixPath('/icon.svg')}
+            href={addSubpathPrefix('/favicon.ico')}
+            sizes="any"
+          />
+          <link
+            rel="icon"
+            href={addSubpathPrefix('/icon.svg')}
             type="image/svg+xml"
           />
           <link
             rel="apple-touch-icon"
             sizes="180x180"
-            href={addPrefixPath('/apple-touch-icon.png')}
+            href={addSubpathPrefix('/apple-touch-icon.png')}
           />
-          <link rel="manifest" href={addPrefixPath('/site.webmanifest')} />
+          <link rel="manifest" href={addSubpathPrefix('/site.webmanifest')} />
           <meta name="generator" content="Plone 6 - https://plone.org" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="mobile-web-app-capable" content="yes" />

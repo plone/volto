@@ -25,11 +25,13 @@ function reactIntlErrorHandler(error) {
 export default function client() {
   const api = new Api();
 
-  if (window.env.RAZZLE_PREFIX_PATH) {
-    config.settings.prefixPath = window.env.RAZZLE_PREFIX_PATH;
+  if (window.env.RAZZLE_SUBPATH_PREFIX) {
+    config.settings.subpathPrefix = window.env.RAZZLE_SUBPATH_PREFIX;
   }
   const history = createBrowserHistory({
-    basename: config.settings.prefixPath ? config.settings.prefixPath : '/',
+    basename: config.settings.subpathPrefix
+      ? config.settings.subpathPrefix
+      : '/',
   });
 
   const store = configureStore(window.__data, history, api);
