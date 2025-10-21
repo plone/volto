@@ -19,7 +19,7 @@ const getDateTime = (date: string, locale: string): string => {
 export default function EventDate({ locale, content }: EventDateProps) {
   const { t } = useTranslation();
 
-  if (!locale || !content) return;
+  if (!locale || !content) return null;
 
   const { start, end, whole_day, open_end } = content;
 
@@ -35,11 +35,11 @@ export default function EventDate({ locale, content }: EventDateProps) {
           {whole_day
             ? startDate
             : open_end
-              ? t('layout.views.event.time.same_day_open_end', {
+              ? t('layout.views.event.time.sameDayOpenEnd', {
                   date: startDate,
                   fromTime: startTime,
                 })
-              : t('layout.views.event.time.same_day_range', {
+              : t('layout.views.event.time.sameDayRange', {
                   date: startDate,
                   fromTime: startTime,
                   toTime: endTime,
@@ -47,22 +47,22 @@ export default function EventDate({ locale, content }: EventDateProps) {
         </>
       ) : whole_day ? (
         open_end ? (
-          t('layout.views.event.time.multi_day_whole_day_open', {
+          t('layout.views.event.time.multiDayWholeDayOpen', {
             fromDate: startDate,
           })
         ) : (
-          t('layout.views.event.time.multi_day_whole_day', {
+          t('layout.views.event.time.multiDayWholeDay', {
             fromDate: startDate,
             toDate: endDate,
           })
         )
       ) : open_end ? (
-        t('layout.views.event.time.multi_day_range_open', {
+        t('layout.views.event.time.multiDayRangeOpen', {
           fromDate: startDate,
           fromTime: startTime,
         })
       ) : (
-        t('layout.views.event.time.multi_day_range', {
+        t('layout.views.event.time.multiDayRange', {
           fromDate: startDate,
           fromTime: startTime,
           toDate: endDate,

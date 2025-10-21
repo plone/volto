@@ -17,25 +17,25 @@
     "views": {
       "event": {
         "what": "Was",
-        "when": "Wann",
+        "when": "Datum",
         "time": {
-          "same_day_open_end": "{{date}} ab {{fromTime}}",
-          "same_day_range": "{{date}} von {{fromTime}} bis {{toTime}}",
-          "multi_day_whole_day_open": "{{fromDate}}",
-          "multi_day_whole_day": "{{fromDate}} bis {{toDate}}",
-          "multi_day_range_open": "{{fromDate}} {{fromTime}}",
-          "multi_day_range": "{{fromDate}} {{fromTime}} bis {{toDate}} {{toTime}}"
+          "sameDayOpenEnd": "{{date}} ab {{fromTime}}",
+          "sameDayRange": "{{date}} von {{fromTime}} bis {{toTime}}",
+          "multiDayWholeDayOpen": "{{fromDate}}",
+          "multiDayWholeDay": "{{fromDate}} bis {{toDate}}",
+          "multiDayRangeOpen": "{{fromDate}} {{fromTime}}",
+          "multiDayRange": "{{fromDate}} {{fromTime}} bis {{toDate}} {{toTime}}"
         },
-        "all-dates": "Alle Daten",
-        "where": "Wo",
+        "allDates": "Alle Termine",
+        "where": "Ort",
         "contact": {
           "name": "Kontaktname",
           "phone": "Kontakttelefon"
         },
         "attendees": "Teilnehmer",
         "website": "Webseite",
-        "visit-website": "Webseite besuchen",
-        "download-event": "Event herunterladen"
+        "visitWebsite": "Webseite besuchen",
+        "downloadEvent": "Event herunterladen"
       }
     }
   }

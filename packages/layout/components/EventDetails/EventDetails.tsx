@@ -44,7 +44,7 @@ export default function EventDetails({ data }: EventDetailsProps) {
         <EventDate content={content} locale={locale} />
         {content.recurrence && (
           <>
-            <dt>{t('layout.views.event.all-dates')}</dt>
+            <dt>{t('layout.views.event.allDates')}</dt>
             <Recurrence
               recurrence={content.recurrence}
               start={content.start}
@@ -99,7 +99,7 @@ export default function EventDetails({ data }: EventDetailsProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t('layout.views.event.visit-website')}
+                {t('layout.views.event.visitWebsite')}
               </Link>
             </dd>
           </>
@@ -138,7 +138,7 @@ export default function EventDetails({ data }: EventDetailsProps) {
           target="_blank"
           rel="noreferrer"
         >
-          {t('layout.views.event.download-event')}
+          {t('layout.views.event.downloadEvent')}
         </Link>
       </span>
     </aside>

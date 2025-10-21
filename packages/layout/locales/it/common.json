@@ -19,14 +19,14 @@
         "what": "What",
         "when": "When",
         "time": {
-          "same_day_open_end": "{{date}} from {{fromTime}}",
-          "same_day_range": "{{date}} from {{fromTime}} to {{toTime}}",
-          "multi_day_whole_day_open": "{{fromDate}}",
-          "multi_day_whole_day": "{{fromDate}} to {{toDate}}",
-          "multi_day_range_open": "{{fromDate}} {{fromTime}}",
-          "multi_day_range": "{{fromDate}} {{fromTime}} to {{toDate}} {{toTime}}"
+          "sameDayOpenEnd": "{{date}} from {{fromTime}}",
+          "sameDayRange": "{{date}} from {{fromTime}} to {{toTime}}",
+          "multiDayWholeDayOpen": "{{fromDate}}",
+          "multiDayWholeDay": "{{fromDate}} to {{toDate}}",
+          "multiDayRangeOpen": "{{fromDate}} {{fromTime}}",
+          "multiDayRange": "{{fromDate}} {{fromTime}} to {{toDate}} {{toTime}}"
         },
-        "all-dates": "All dates",
+        "allDates": "All dates",
         "where": "Where",
         "contact": {
           "name": "Contact Name",
@@ -34,8 +34,8 @@
         },
         "attendees": "Attendees",
         "website": "Website",
-        "visit-website": "Visit website",
-        "download-event": "Download event"
+        "visitWebsite": "Visit website",
+        "downloadEvent": "Download event"
       }
     }
   }
