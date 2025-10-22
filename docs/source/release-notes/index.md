@@ -17,6 +17,14 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.8 (2025-10-22)
+
+### Internal
+
+- Modernize and update `tsconfig.json` settings for core. @sneridagh [#7531.1](https://github.com/plone/volto/issues/7531.1)
+- Refactor `LanguageSelector` into TypeScript. @sneridagh [#7531.2](https://github.com/plone/volto/issues/7531.2)
+- Re-enable scripts pnpm build. Remove why. @sneridagh [#7532](https://github.com/plone/volto/issues/7532)
+
 ## 19.0.0-alpha.7 (2025-10-21)
 
 ### Breaking
