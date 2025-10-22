@@ -25,6 +25,19 @@ import Icon from '@plone/volto/components/theme/Icon/Icon';
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
 
+/**
+ * Convert sort_order to sort_reverse for Plone compatibility (search page only)
+ * @param {Object} options Search options
+ * @returns {Object} Converted options
+ */
+const convertSortOptions = (options) => {
+  if (options.sort_order && options.sort_on === 'effective') {
+    options.sort_reverse = options.sort_order === 'descending' ? '1' : '0';
+    delete options.sort_order;
+  }
+  return options;
+};
+
 const messages = defineMessages({
   Search: {
     id: 'Search',
@@ -112,6 +125,15 @@ class Search extends Component {
     const options = qs.parse(this.props.history.location.search);
     this.setState({ currentPage: 1 });
     options['use_site_search_settings'] = 1;
+
+    // Ensure default sort order for date fields
+    if (options.sort_on && !options.sort_order) {
+      options.sort_order = 'descending';
+    }
+
+    // Convert sort options for Plone compatibility
+    convertSortOptions(options);
+
     this.props.searchContent('', {
       b_size: this.defaultPageSize,
       ...options,
@@ -122,6 +144,9 @@ class Search extends Component {
     window.scrollTo(0, 0);
     let options = qs.parse(this.props.history.location.search);
     options['use_site_search_settings'] = 1;
+
+    // Convert sort options for Plone compatibility
+    convertSortOptions(options);
 
     this.setState({ currentPage: activePage }, () => {
       this.props.searchContent('', {
@@ -136,9 +161,24 @@ class Search extends Component {
 
   onSortChange = (event, sort_order) => {
     let options = qs.parse(this.props.history.location.search);
-    options.sort_on = event.target.name;
-    options.sort_order = sort_order || 'ascending';
-    if (event.target.name === 'relevance') {
+    const sortOn = event.currentTarget?.name || event.target?.name;
+
+    if (
+      sortOn === 'effective' &&
+      options.sort_on === 'effective' &&
+      (options.sort_order === 'descending' || options.sort_reverse === '1')
+    ) {
+      return;
+    }
+    options.sort_on = sortOn;
+
+    if (sortOn === 'effective') {
+      options.sort_order = 'descending';
+    } else {
+      options.sort_order = sort_order || 'descending';
+    }
+
+    if (sortOn === 'relevance') {
       delete options.sort_on;
       delete options.sort_order;
     }
@@ -232,7 +272,7 @@ class Search extends Component {
                       </Button>
                       <Button
                         onClick={(event) => {
-                          this.onSortChange(event, 'reverse');
+                          this.onSortChange(event, 'descending');
                         }}
                         name="effective"
                         size="tiny"
@@ -358,13 +398,15 @@ export default compose(
   asyncConnect([
     {
       key: 'search',
-      promise: ({ location, store: { dispatch } }) =>
-        dispatch(
-          searchContent('', {
-            ...qs.parse(location.search),
-            use_site_search_settings: 1,
-          }),
-        ),
+      promise: ({ location, store: { dispatch } }) => {
+        const options = qs.parse(location.search);
+        options.use_site_search_settings = 1;
+
+        // Convert sort options for Plone compatibility
+        convertSortOptions(options);
+
+        return dispatch(searchContent('', options));
+      },
     },
   ]),
 )(Search);

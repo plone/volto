@@ -1,6 +1,7 @@
 describe('Search', () => {
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', `/**/@search*`).as('search');
     cy.autologin();
     cy.visit('/');
     cy.wait('@content');
@@ -114,13 +115,15 @@ describe('Search', () => {
 
     // then we are searching for SearchableText=color and sorting it with effective date
     cy.visit('/search?SearchableText=color');
+    cy.wait('@search'); // Wait for initial search
     cy.url().should(
       'eq',
       Cypress.config().baseUrl + '/search?SearchableText=color',
     );
 
-    // then the first link must be Colorless
+    // then the first link must be Colorless (newest first)
     cy.get('button[name="effective"]').click();
-    cy.get('.summary.url:first').should('have.text', 'Color');
+    cy.wait('@search'); // Wait for search to complete
+    cy.get('.summary.url:first').should('have.text', 'Colorless');
   });
 });
