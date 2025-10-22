@@ -20,6 +20,7 @@ import debug from 'debug';
 
 import routes from '@plone/volto/routes';
 import config from '@plone/volto/registry';
+import okMiddleware from '@plone/volto/express-middleware/ok';
 
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import Html from '@plone/volto/helpers/Html/Html';
@@ -93,8 +94,9 @@ const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
 
 server.all('*', setupServer);
 if (middleware.length) {
-  server.use('/', middleware);
+  server.use(config.settings.subpathPrefix || '/', middleware);
 }
+server.use('/', okMiddleware());
 
 server.use(function (err, req, res, next) {
   if (err) {
