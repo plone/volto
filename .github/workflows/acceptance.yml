@@ -534,7 +534,7 @@ jobs:
           name: cypress-videos
           path: packages/volto/cypress/videos
 
-  prefix-core:
+  subpath-core:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Basic Prefixed Site
@@ -576,16 +576,16 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-screenshots-prefix-core
+          name: cypress-screenshots-subpath-core
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-videos-prefix-core
+          name: cypress-videos-subpath-core
           path: packages/volto/cypress/videos
 
-  prefix-corecontent:
+  subpath-corecontent:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Content Prefixed Site
@@ -627,16 +627,16 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-screenshots-prefix-corecontent
+          name: cypress-screenshots-subpath-corecontent
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-videos-prefix-corecontent
+          name: cypress-videos-subpath-corecontent
           path: packages/volto/cypress/videos
 
-  prefix-corecontrolpanels:
+  subpath-corecontrolpanels:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Control Panels Prefixed Site
@@ -678,16 +678,16 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-screenshots-prefix-corecontrolpanels
+          name: cypress-screenshots-subpath-corecontrolpanels
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-videos-prefix-corecontrolpanels
+          name: cypress-videos-subpath-corecontrolpanels
           path: packages/volto/cypress/videos
 
-  prefix-coreblocks:
+  subpath-coreblocks:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Blocks Prefixed Site
@@ -729,16 +729,16 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-screenshots-prefix-coreblocks
+          name: cypress-screenshots-subpath-coreblocks
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-videos-prefix-coreblocks
+          name: cypress-videos-subpath-coreblocks
           path: packages/volto/cypress/videos
 
-  prefix-coreblockslisting:
+  subpath-coreblockslisting:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Blocks - Listing Prefixed Site
@@ -780,16 +780,16 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-screenshots-prefix-coreblockslisting
+          name: cypress-screenshots-subpath-coreblockslisting
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-videos-prefix-coreblockslisting
+          name: cypress-videos-subpath-coreblockslisting
           path: packages/volto/cypress/videos
 
-  prefix-corevoltoslate:
+  subpath-corevoltoslate:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Volto Slate Prefixed Site
@@ -831,16 +831,16 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-screenshots-prefix-corevoltoslate
+          name: cypress-screenshots-subpath-corevoltoslate
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-videos-prefix-corevoltoslate
+          name: cypress-videos-subpath-corevoltoslate
           path: packages/volto/cypress/videos
 
-  prefix-multilingual:
+  subpath-multilingual:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Multilingual Prefixed Site
     runs-on: ubuntu-latest
@@ -882,16 +882,16 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-screenshots-prefix-multilingual
+          name: cypress-screenshots-subpath-multilingual
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-videos-prefix-multilingual
+          name: cypress-videos-subpath-multilingual
           path: packages/volto/cypress/videos
 
-  prefix-workingcopy:
+  subpath-workingcopy:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Working Copy Prefixed Site
     runs-on: ubuntu-latest
@@ -933,11 +933,11 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-screenshots-prefix-workingcopy
+          name: cypress-screenshots-subpath-workingcopy
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-videos-prefix-workingcopy
+          name: cypress-videos-subpath-workingcopy
           path: packages/volto/cypress/videos
