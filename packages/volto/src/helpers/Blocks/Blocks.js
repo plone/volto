@@ -368,6 +368,58 @@ export function insertBlock(
 }
 
 /**
+ * Ensure blocks_layout is synchronized with blocks
+ * @function ensureBlocksLayoutSync
+ * @param {Object} formData Form data
+ * @return {Object} New form data with synchronized blocks_layout
+ */
+export function ensureBlocksLayoutSync(formData) {
+  const blocksFieldname = getBlocksFieldname(formData);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+
+  if (!formData[blocksFieldname] || !formData[blocksLayoutFieldname]) {
+    return formData;
+  }
+
+  const blocks = formData[blocksFieldname];
+  const currentLayout = formData[blocksLayoutFieldname];
+  const blockIds = Object.keys(blocks).filter((id) => blocks[id] !== null);
+
+  // If blocks_layout is empty but blocks has content, sync it
+  if (currentLayout.items.length === 0 && blockIds.length > 0) {
+    return {
+      ...formData,
+      [blocksLayoutFieldname]: {
+        items: blockIds,
+      },
+    };
+  }
+
+  // If blocks_layout has items that don't exist in blocks, remove them
+  const validItems = currentLayout.items.filter(
+    (id) => blocks[id] !== null && blocks[id] !== undefined,
+  );
+
+  // If blocks has new items not in layout, add them
+  const newItems = blockIds.filter((id) => !currentLayout.items.includes(id));
+  const allItems = [...validItems, ...newItems];
+
+  if (
+    allItems.length !== currentLayout.items.length ||
+    !allItems.every((id, index) => currentLayout.items[index] === id)
+  ) {
+    return {
+      ...formData,
+      [blocksLayoutFieldname]: {
+        items: allItems,
+      },
+    };
+  }
+
+  return formData;
+}
+
+/**
  * Change block
  * @function changeBlock
  * @param {Object} formData Form data
@@ -377,13 +429,16 @@ export function insertBlock(
  */
 export function changeBlock(formData, id, value) {
   const blocksFieldname = getBlocksFieldname(formData);
-  return {
+  const newFormData = {
     ...formData,
     [blocksFieldname]: {
       ...formData[blocksFieldname],
       [id]: value || null,
     },
   };
+
+  // Ensure blocks_layout is synchronized with blocks
+  return ensureBlocksLayoutSync(newFormData);
 }
 
 /**
