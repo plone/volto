@@ -537,7 +537,7 @@ jobs:
   subpath-core:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
-    name: Core Basic Prefixed Site
+    name: Core Basic Subpath Site
     timeout-minutes: 45
     strategy:
       fail-fast: false
@@ -568,8 +568,8 @@ jobs:
           env: subpathPrefix=/foo
           start: |
             make ci-acceptance-backend-start
-            make prefixed-acceptance-frontend-prod-start
-            make deployment-prefixed-acceptance-web-server-start
+            make subpath-acceptance-frontend-prod-start
+            make deployment-subpath-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://localhost/foo'
 
       # Upload Cypress screenshots
@@ -588,7 +588,7 @@ jobs:
   subpath-corecontent:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
-    name: Core Content Prefixed Site
+    name: Core Content Subpath Site
     timeout-minutes: 45
     strategy:
       fail-fast: false
@@ -619,8 +619,8 @@ jobs:
           env: subpathPrefix=/foo
           start: |
             make ci-acceptance-backend-start
-            make prefixed-acceptance-frontend-prod-start
-            make deployment-prefixed-acceptance-web-server-start
+            make subpath-acceptance-frontend-prod-start
+            make deployment-subpath-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://localhost/foo'
 
       # Upload Cypress screenshots
@@ -639,7 +639,7 @@ jobs:
   subpath-corecontrolpanels:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
-    name: Core Control Panels Prefixed Site
+    name: Core Control Panels Subpath Site
     timeout-minutes: 45
     strategy:
       fail-fast: false
@@ -670,8 +670,8 @@ jobs:
           env: subpathPrefix=/foo
           start: |
             make ci-acceptance-backend-start
-            make prefixed-acceptance-frontend-prod-start
-            make deployment-prefixed-acceptance-web-server-start
+            make subpath-acceptance-frontend-prod-start
+            make deployment-subpath-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://localhost/foo'
 
       # Upload Cypress screenshots
@@ -690,7 +690,7 @@ jobs:
   subpath-coreblocks:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
-    name: Core Blocks Prefixed Site
+    name: Core Blocks Subpath Site
     timeout-minutes: 35
     strategy:
       fail-fast: false
@@ -721,8 +721,8 @@ jobs:
           env: subpathPrefix=/foo
           start: |
             make ci-acceptance-backend-start
-            make prefixed-acceptance-frontend-prod-start
-            make deployment-prefixed-acceptance-web-server-start
+            make subpath-acceptance-frontend-prod-start
+            make deployment-subpath-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://localhost/foo'
 
       # Upload Cypress screenshots
@@ -741,7 +741,7 @@ jobs:
   subpath-coreblockslisting:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
-    name: Core Blocks - Listing Prefixed Site
+    name: Core Blocks - Listing Subpath Site
     timeout-minutes: 35
     strategy:
       fail-fast: false
@@ -772,8 +772,8 @@ jobs:
           env: subpathPrefix=/foo
           start: |
             make ci-acceptance-backend-start
-            make prefixed-acceptance-frontend-prod-start
-            make deployment-prefixed-acceptance-web-server-start
+            make subpath-acceptance-frontend-prod-start
+            make deployment-subpath-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://localhost/foo'
 
       # Upload Cypress screenshots
@@ -792,7 +792,7 @@ jobs:
   subpath-corevoltoslate:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
-    name: Core Volto Slate Prefixed Site
+    name: Core Volto Slate Subpath Site
     timeout-minutes: 45
     strategy:
       fail-fast: false
@@ -823,8 +823,8 @@ jobs:
           env: subpathPrefix=/foo
           start: |
             make ci-acceptance-backend-start
-            make prefixed-acceptance-frontend-prod-start
-            make deployment-prefixed-acceptance-web-server-start
+            make subpath-acceptance-frontend-prod-start
+            make deployment-subpath-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://localhost/foo'
 
       # Upload Cypress screenshots
@@ -842,7 +842,7 @@ jobs:
 
   subpath-multilingual:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    name: Multilingual Prefixed Site
+    name: Multilingual Subpath Site
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
@@ -874,8 +874,8 @@ jobs:
           env: subpathPrefix=/foo
           start: |
             make deployment-multilingual-acceptance-backend-start
-            make prefixed-multilingual-acceptance-frontend-prod-start
-            make deployment-prefixed-acceptance-web-server-start
+            make subpath-multilingual-acceptance-frontend-prod-start
+            make deployment-subpath-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://localhost/foo'
 
       # Upload Cypress screenshots
@@ -893,7 +893,7 @@ jobs:
 
   subpath-workingcopy:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    name: Working Copy Prefixed Site
+    name: Working Copy Subpath Site
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
@@ -925,8 +925,8 @@ jobs:
           env: subpathPrefix=/foo
           start: |
             make working-copy-acceptance-backend-start
-            make prefixed-working-copy-acceptance-frontend-prod-start
-            make deployment-prefixed-acceptance-web-server-start
+            make subpath-working-copy-acceptance-frontend-prod-start
+            make deployment-subpath-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://localhost/foo'
 
       # Upload Cypress screenshots
