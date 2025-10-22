@@ -10,9 +10,11 @@ myst:
 # Serve Volto on a subpath
 
 A Volto site can be served on a subpath, for example, `https://mysite.com/subpath`.
+This is useful when you want to leave the root path available for another website that's not the same version or theme of the Volto site served on the subpath.
+By using a subpath for your Volto site, you could serve another CMS, a Plone Classic UI site, or even a static site from the root of the hostname.
+Routing is typically handled upstream of Volto in a router server, such as Traefik.
 
-When this is enabled, both content and static assets are served on the subpath, which means a different website can be served at the root path.
-
+When this is enabled, both content and static assets are served on the subpath.
 To use a subpath, run Volto with the `RAZZLE_SUBPATH_PREFIX` environment variable set to the subpath.
 
 ```shell
