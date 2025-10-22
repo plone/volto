@@ -193,7 +193,7 @@ export function addAppURL(url) {
  */
 export function expandToBackendURL(path) {
   const { settings } = config;
-  const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+  const apiSuffix = settings.legacyTraverse ? '' : '/++api++';
   let adjustedPath;
   if (path.startsWith('http://') || path.startsWith('https://')) {
     // flattenToAppURL first if we get a full URL
@@ -210,7 +210,7 @@ export function expandToBackendURL(path) {
     apiPath = settings.apiPath;
   }
 
-  return `${apiPath}${APISUFIX}${adjustedPath}`;
+  return `${apiPath}${apiSuffix}${adjustedPath}`;
 }
 
 /**
@@ -256,6 +256,36 @@ export function isInternalURL(url) {
  */
 export function isUrl(url) {
   return urlRegex().test(url);
+}
+
+/**
+ * Add subpath path if set in settings
+ * @method addSubpathPrefix
+ * @param {string} src pathname
+ * @returns {string} prefixed subpath pathname
+ */
+export function addSubpathPrefix(src) {
+  let url = src;
+  const { subpathPrefix } = config.settings;
+  if (isInternalURL(src) && subpathPrefix && !src.startsWith(subpathPrefix)) {
+    url = subpathPrefix + src; //add subpathPrefix to src if it's an internal url and not a static resource.
+  }
+  return url;
+}
+
+/**
+ * strip subpath path particulary from api calls
+ * @method stripSubpathPrefix
+ * @param {string} src pathname
+ * @returns {string} pathname
+ */
+export function stripSubpathPrefix(src) {
+  let url = src;
+  const { subpathPrefix } = config.settings;
+  if (subpathPrefix && src.match(new RegExp(`^${subpathPrefix}(/|$)`))) {
+    url = src.slice(subpathPrefix.length);
+  }
+  return url;
 }
 
 /**
