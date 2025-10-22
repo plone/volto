@@ -1,1 +1,0 @@
-Serve API requests from a subpath. @davisagli
