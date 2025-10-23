@@ -7,7 +7,7 @@ function setupEnvironment(paths) {
   const NODE_ENV = process.env.NODE_ENV;
   if (!NODE_ENV) {
     throw new Error(
-      'The NODE_ENV environment variable is required but was not specified.'
+      'The NODE_ENV environment variable is required but was not specified.',
     );
   }
 
@@ -23,12 +23,12 @@ function setupEnvironment(paths) {
   // that have already been set. Variable expansion is supported in .env files.
   // https://github.com/motdotla/dotenv
   // https://github.com/motdotla/dotenv-expand
-  dotenvFiles.forEach(dotenvFile => {
+  dotenvFiles.forEach((dotenvFile) => {
     if (fs.existsSync(dotenvFile)) {
       require('dotenv-expand')(
         require('dotenv').config({
           path: dotenvFile,
-        })
+        }),
       );
     }
   });
@@ -39,7 +39,7 @@ const RAZZLE = /^RAZZLE_/i;
 
 function getClientEnvironment(target, is_dev, options, paths) {
   const raw = Object.keys(process.env)
-    .filter(key => RAZZLE.test(key))
+    .filter((key) => RAZZLE.test(key))
     .reduce(
       (env, key) => {
         env[key] = process.env[key];
@@ -70,8 +70,10 @@ function getClientEnvironment(target, is_dev, options, paths) {
         // which is why it's disabled by default.
         // It is defined here so it is available in the webpackHotDevClient.
         FAST_REFRESH: options.shouldUseReactRefresh,
-        WEBPACK_VERSION: options.webpackObject.version ? parseInt(options.webpackObject.version[0]) : 3
-      }
+        WEBPACK_VERSION: options.webpackObject.version
+          ? parseInt(options.webpackObject.version[0])
+          : 3,
+      },
     );
   // Stringify all values so we can feed into Webpack DefinePlugin
   const stringified = Object.keys(raw).reduce((env, key) => {

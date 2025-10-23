@@ -32,8 +32,8 @@ function getAdditionalModulePaths(options = {}, paths) {
   throw new Error(
     logger.error(
       "Your project's `baseUrl` can only be set to `src` or `node_modules`." +
-        ' Razzle does not support other values at this time.'
-    )
+        ' Razzle does not support other values at this time.',
+    ),
   );
 }
 
@@ -50,12 +50,12 @@ function getAdditionalAliases(options = {}, paths) {
 
   const baseUrlResolved = path.resolve(paths.appPath, baseUrl);
 
-  Object.keys(options.paths || {}).forEach(item => {
+  Object.keys(options.paths || {}).forEach((item) => {
     const name = item.replace(/\/\*$/, '');
     // webpack5 allows arrays here, fix later
     const value = path.resolve(
       baseUrlResolved,
-      options.paths[item][0].replace(/\/\*$/, '')
+      options.paths[item][0].replace(/\/\*$/, ''),
     );
     aliases[name] = value;
   });
@@ -74,7 +74,7 @@ function getModules(paths) {
 
   if (hasTsConfig && hasJsConfig) {
     throw new Error(
-      'You have both a tsconfig.json and a jsconfig.json. If you are using TypeScript please remove your jsconfig.json file.'
+      'You have both a tsconfig.json and a jsconfig.json. If you are using TypeScript please remove your jsconfig.json file.',
     );
   }
 
@@ -84,9 +84,11 @@ function getModules(paths) {
   // TypeScript project and set up the config
   // based on tsconfig.json
   if (hasTsConfig) {
-    const ts = require(resolve.sync('typescript', {
-      basedir: paths.appNodeModules,
-    }));
+    const ts = require(
+      resolve.sync('typescript', {
+        basedir: paths.appNodeModules,
+      }),
+    );
     config = ts.readConfigFile(paths.appTsConfig, ts.sys.readFile).config;
     // Otherwise we'll check if there is jsconfig.json
     // for non TS projects.

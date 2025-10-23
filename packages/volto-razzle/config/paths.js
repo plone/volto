@@ -8,8 +8,10 @@ const logger = require('razzle-dev-utils/logger');
 
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebookincubator/create-react-app/issues/637
-const appDirectory = fs.realpathSync(path.join(process.cwd(), process.env.RAZZLE_APP_PATH || ''));
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+const appDirectory = fs.realpathSync(
+  path.join(process.cwd(), process.env.RAZZLE_APP_PATH || ''),
+);
+const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 
 const envPublicUrl = process.env.PUBLIC_URL;
 
@@ -24,14 +26,14 @@ function ensureSlash(path, needsSlash) {
   }
 }
 
-const getPublicUrl = appPackageJson => {
+const getPublicUrl = (appPackageJson) => {
   if (envPublicUrl) {
     return envPublicUrl;
   }
-  
+
   if (fs.existsSync(appPackageJson)) {
     try {
-      const packageJson = require(appPackageJson)
+      const packageJson = require(appPackageJson);
       return packageJson.homepage;
     } catch (e) {
       clearConsole();
@@ -50,7 +52,8 @@ function getServedPath(appPackageJson) {
   return ensureSlash(servedUrl, true);
 }
 
-const resolveOwn = relativePath => path.resolve(__dirname, '..', relativePath);
+const resolveOwn = (relativePath) =>
+  path.resolve(__dirname, '..', relativePath);
 
 // We support resolving modules according to `NODE_PATH`.
 // This lets you use absolute paths in imports inside large monorepos:
@@ -63,8 +66,8 @@ const resolveOwn = relativePath => path.resolve(__dirname, '..', relativePath);
 // We also resolve them to make sure all tools using them work consistently.
 const nodePaths = (process.env.NODE_PATH || '')
   .split(path.delimiter)
-  .filter(folder => folder && !path.isAbsolute(folder))
-  .map(folder => path.resolve(appDirectory, folder))
+  .filter((folder) => folder && !path.isAbsolute(folder))
+  .map((folder) => path.resolve(appDirectory, folder))
   .join(path.delimiter);
 
 module.exports = {

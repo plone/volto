@@ -12,13 +12,13 @@ const join = path.join;
 const cacheKey = 'babel-cache-' + 'm' + '-';
 const razzleBabelPreset = require('babel-preset-razzle');
 
-const getModernOptions = function(babelOptions) {
+const getModernOptions = function (babelOptions) {
   babelOptions = babelOptions || {};
   const presetEnvOptions = Object.assign({}, babelOptions['preset-env']);
   const transformRuntimeOptions = Object.assign(
     {},
     babelOptions['transform-runtime'],
-    { regenerator: false }
+    { regenerator: false },
   );
 
   presetEnvOptions.targets = {
@@ -36,29 +36,29 @@ const getModernOptions = function(babelOptions) {
   });
 };
 
-const razzleBabelPresetModern = function(presetOptions) {
-  return function(context) {
+const razzleBabelPresetModern = function (presetOptions) {
+  return function (context) {
     return razzleBabelPreset(context, getModernOptions(presetOptions));
   };
 };
 
-module.exports = babelLoader.custom(function(babel) {
+module.exports = babelLoader.custom(function (babel) {
   const presetItem = babel.createConfigItem(razzleBabelPreset, {
     type: 'preset',
   });
   const applyCommonJs = babel.createConfigItem(
     require('babel-preset-razzle/babel-plugins/commonjs'),
-    { type: 'plugin' }
+    { type: 'plugin' },
   );
   const commonJsItem = babel.createConfigItem(
     require('@babel/plugin-transform-modules-commonjs'),
-    { type: 'plugin' }
+    { type: 'plugin' },
   );
 
   const configs = new Set();
 
   return {
-    customOptions: function(opts) {
+    customOptions: function (opts) {
       const custom = {
         verbose: opts.verbose,
         isServer: opts.isServer,
@@ -86,13 +86,13 @@ module.exports = babelLoader.custom(function(babel) {
                     filename,
                     cwd: opts.cwd,
                     sourceFileName: filename,
-                  }).options
+                  }).options,
                 ),
             }
           : {
               cacheDirectory: false,
             },
-        opts
+        opts,
       );
 
       delete loader.verbose;
@@ -105,7 +105,7 @@ module.exports = babelLoader.custom(function(babel) {
       delete loader.shouldUseReactRefresh;
       return { loader, custom };
     },
-    config: function(cfg, cfgOpts) {
+    config: function (cfg, cfgOpts) {
       const source = cfgOpts.source;
       const customOptions = cfgOpts.customOptions;
       const verbose = customOptions.verbose;
@@ -121,14 +121,22 @@ module.exports = babelLoader.custom(function(babel) {
       if (cfg.hasFilesystemConfig()) {
         for (const file of [cfg.babelrc, cfg.config]) {
           // We only log for first compilation otherwise there will be double output
-          if (file && verbose && !configs.has(`${file}.${isServer ? 'node' : 'web'}`)) {
+          if (
+            file &&
+            verbose &&
+            !configs.has(`${file}.${isServer ? 'node' : 'web'}`)
+          ) {
             configs.add(`${file}.${isServer ? 'node' : 'web'}`);
-            console.info(`Using external babel configuration from ${file} for "${isServer ? 'node' : 'web'}" build`);
+            console.info(
+              `Using external babel configuration from ${file} for "${isServer ? 'node' : 'web'}" build`,
+            );
           }
         }
       } else {
         // Add our default preset if the no "babelrc" found.
-        presetOptions.presets = (presetOptions.presets || []).concat([presetItem]);
+        presetOptions.presets = (presetOptions.presets || []).concat([
+          presetItem,
+        ]);
       }
 
       presetOptions.caller.isServer = isServer;
@@ -139,7 +147,7 @@ module.exports = babelLoader.custom(function(babel) {
       Object.defineProperty(presetOptions.caller, 'onWarning', {
         enumerable: false,
         writable: false,
-        value: (presetOptions.caller.onWarning = function(reason) {
+        value: (presetOptions.caller.onWarning = function (reason) {
           if (!(reason instanceof Error)) {
             reason = new Error(reason);
           }
@@ -152,7 +160,7 @@ module.exports = babelLoader.custom(function(babel) {
       if (shouldUseReactRefresh) {
         const reactRefreshPlugin = babel.createConfigItem(
           [require('react-refresh/babel'), { skipEnvCheck: true }],
-          { type: 'plugin' }
+          { type: 'plugin' },
         );
         presetOptions.plugins.unshift(reactRefreshPlugin);
         if (!isServer) {
@@ -161,7 +169,7 @@ module.exports = babelLoader.custom(function(babel) {
               require('babel-preset-razzle/babel-plugins/no-anonymous-default-export'),
               {},
             ],
-            { type: 'plugin' }
+            { type: 'plugin' },
           );
           presetOptions.plugins.unshift(noAnonymousDefaultExportPlugin);
         }
@@ -169,21 +177,23 @@ module.exports = babelLoader.custom(function(babel) {
 
       if (isModern) {
         const razzlePreset = presetOptions.presets.find(
-          preset => preset && preset.value === razzleBabelPreset
+          (preset) => preset && preset.value === razzleBabelPreset,
         ) || { options: {} };
 
         const additionalPresets = presetOptions.presets.filter(
-          preset => preset !== razzlePreset
+          (preset) => preset !== razzlePreset,
         );
 
         const presetItemModern = babel.createConfigItem(
           razzleBabelPresetModern(razzlePreset.options),
           {
             type: 'preset',
-          }
+          },
         );
 
-        presetOptions.presets = (additionalPresets || []).concat([presetItemModern]);
+        presetOptions.presets = (additionalPresets || []).concat([
+          presetItemModern,
+        ]);
       }
 
       // If the file has `module.exports` we have to transpile commonjs because Babel adds `import` statements
