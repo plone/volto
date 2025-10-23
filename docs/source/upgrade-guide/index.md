@@ -55,7 +55,7 @@ If you can't upgrade immediately, you may continue to run Volto 19 on Node.js 20
 ```{versionadded} Volto 19.0.0-alpha.8
 ```
 
-A new global CSS utility class called `visually-hidden` has been introduced to Volto's SCSS base.
+A new global CSS utility class called `visually-hidden` [`@packages/components/src/styles/basic/utility.css`] has been introduced to Volto's SCSS base.
 
 This class allows developers to visually hide elements while keeping them accessible to screen readers, improving accessibility for assistive technologies.
 
