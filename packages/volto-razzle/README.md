@@ -1,7 +1,6 @@
 ![repo-banner](https://user-images.githubusercontent.com/4060187/28923990-050a32d4-782e-11e7-9da7-574ce5a8b455.png)
 
-[![npm version](https://badge.fury.io/js/razzle.svg)](https://badge.fury.io/js/razzle) [![npm](https://img.shields.io/npm/dm/razzle)](https://www.npmjs.com/package/razzle) ![Node CI](https://github.com/jaredpalmer/razzle/workflows/Node%20CI/badge.svg) [![Known Vulnerabilities](https://snyk.io/test/github/jaredpalmer/razzle/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jaredpalmer/razzle?targetFile=package.json) ![Razzle-status](https://david-dm.org/jaredpalmer/razzle.svg?path=packages/razzle) [![license](https://badgen.now.sh/badge/license/MIT)](./LICENSE) [![Discord](https://img.shields.io/discord/769256827007139912?label=%F0%9F%92%AC%20%20join%20us%20on%20discord&style=plastic)](https://discord.com/invite/RevdZTYMzr)
-
+[![npm version](https://badge.fury.io/js/%40volto%2Frazzle.svg)](https://badge.fury.io/js/%40volto%2Frazzle) [![npm](https://img.shields.io/npm/dm/@volto/razzle)](https://www.npmjs.com/package/@volto/razzle) [![Known Vulnerabilities](https://snyk.io/test/github/plone/volto/badge.svg?targetFile=packages/volto-razzle/package.json)](https://snyk.io/test/github/plone/volto?targetFile=packages/volto-razzle/package.json)
 Universal JavaScript applications are tough to setup. Either you buy into a framework like Next.js or Nuxt, fork a boilerplate, or set things up yourself. Aiming to fill this void, Razzle is a tool that abstracts all the complex configuration needed for building SPA's and SSR applications into a single dependency--giving you the awesome developer experience of [create-react-app](https://github.com/facebookincubator/create-react-app), but then leaving the rest of your app's architectural decisions about frameworks, routing, and data fetching up to you. With this approach, Razzle not only works with React, but also Preact, Vue, Svelte, and Angular, and most importantly......whatever comes next.
 
 ## Getting Started
@@ -20,11 +19,11 @@ Visit <a aria-label="razzle docs" href="https://razzlejs.org/">https://razzlejs.
 
 ## Getting help
 
-If you get stuck, check out Razzle's [GitHub Discussions](https://github.com/jaredpalmer/razzle/discussions). In addition, #razzle-afterjs on the [Formium Community Discord Server](https://discord.gg/pJSg287) is a great way to get help quickly too.
+If you get stuck, check out Razzle's [GitHub Discussions](https://github.com/plone/volto/discussions).
 
 ## Contributing
 
-Please see our [CONTRIBUTING.md](/.github/CONTRIBUTING.md).
+Please see our [CONTRIBUTING.md](../../CONTRIBUTING.md).
 
 ## Inspiration
 
@@ -54,13 +53,13 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
   - **Contributions:** question, code, ideas, plugin, review
 - **Dan Abramov** - [@gaearon](http://twitter.com/dan_abramov)
   - **Contributions:** code, ideas
-- **Eric Clemmons** - [@ericclemmons](http://ericclemmons.github.com/)
+- **Eric Clemmons**
   - **Contributions:** code, ideas
 - **Zino Hofmann** - [@HofmannZ](https://www.linkedin.com/in/zinohofmann/)
   - **Contributions:** example
 - **Lucas Terra** - [@lucasterra](https://www.linkedin.com/in/lucasterra7/)
   - **Contributions:** code, example, plugin
-- **Ray Andrew** - [@rayandrews](https://www.linkedin.com/in/ray-andrew/)
+- **Ray Andrew**
   - **Contributions:** code, example, plugin
 - **Heithem Moumni** - [@heithemmoumni](https://www.linkedin.com/in/heithemmoumni/)
   - **Contributions:** code, example, plugin
