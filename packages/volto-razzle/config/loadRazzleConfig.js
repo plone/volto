@@ -8,13 +8,13 @@ const defaultRazzleOptions = require('./defaultOptions');
 const setupEnvironment = require('./env').setupEnvironment;
 const loadPlugins = require('./loadPlugins');
 
-const getModuleFormat = packageJson => {
+const getModuleFormat = (packageJson) => {
   // See https://nodejs.org/api/packages.html#type for more info on "type"
-  return packageJson.type || "commonjs";
+  return packageJson.type || 'commonjs';
 };
 
 module.exports = (webpackObject, razzleConfig, packageJsonIn) => {
-  return new Promise(async resolve => {
+  return new Promise(async (resolve) => {
     let razzle = razzleConfig || {};
     let packageJson = packageJsonIn || {};
     let paths = Object.assign({}, defaultPaths);
@@ -34,8 +34,7 @@ module.exports = (webpackObject, razzleConfig, packageJsonIn) => {
       try {
         if (getModuleFormat(packageJson) === 'module') {
           razzle = await import(paths.appRazzleConfig);
-        }
-        else {
+        } else {
           razzle = require(paths.appRazzleConfig);
         }
       } catch (e) {

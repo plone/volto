@@ -28,13 +28,14 @@ function loadPlugin(plugin, paths) {
     return [plugin.object, plugin.options];
   }
 
-  const isScopedPlugin = plugin.name.startsWith('@') && plugin.name.includes('/');
+  const isScopedPlugin =
+    plugin.name.startsWith('@') && plugin.name.includes('/');
   let scope;
   let scopedPluginName;
   if (isScopedPlugin) {
-    const pluginNameParts = plugin.name.split("/");
+    const pluginNameParts = plugin.name.split('/');
     scope = pluginNameParts[0];
-    scopedPluginName = pluginNameParts[1]
+    scopedPluginName = pluginNameParts[1];
   }
 
   const completePluginNames = [
@@ -49,23 +50,25 @@ function loadPlugin(plugin, paths) {
   for (const completePluginName of completePluginNames) {
     try {
       razzlePlugin = require(completePluginName);
-    // eslint-disable-next-line no-empty
+      // eslint-disable-next-line no-empty
     } catch (error) {}
-    
+
     if (razzlePlugin) {
       break;
     }
   }
   if (!razzlePlugin) {
     const last = completePluginNames.pop();
-    throw new Error(`Unable to find '${completePluginNames.join("', '")}' or ${last}'`);
+    throw new Error(
+      `Unable to find '${completePluginNames.join("', '")}' or ${last}'`,
+    );
   }
 
   return [razzlePlugin, plugin.options];
 }
 
 function loadPlugins(plugins, paths) {
-  return plugins.map(function(plugin) {
+  return plugins.map(function (plugin) {
     return loadPlugin(plugin, paths);
   });
 }

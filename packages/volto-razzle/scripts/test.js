@@ -30,7 +30,7 @@ if (
   if (!argv.includes('--no-watch')) {
     argv.push('--watch');
   } else {
-    argv=argv.filter(x=>x!=='--no-watch')
+    argv = argv.filter((x) => x !== '--no-watch');
   }
 }
 
@@ -46,7 +46,7 @@ const logger = require('razzle-dev-utils/logger');
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will
 // terminate the Node.js process with a non-zero exit code.
-process.on('unhandledRejection', err => {
+process.on('unhandledRejection', (err) => {
   clearConsole();
   logger.error('Unexpected error', err);
   process.exit(1);
@@ -58,17 +58,17 @@ loadRazzleConfig(webpack, defaultPaths).then(
       '--config',
       JSON.stringify(
         await createJestConfig(
-          relativePath => path.resolve(__dirname, '..', relativePath),
+          (relativePath) => path.resolve(__dirname, '..', relativePath),
           path.resolve(paths.appSrc, '..'),
           razzle,
           razzleOptions,
           webpackObject,
           plugins,
-          paths
-        )
-      )
+          paths,
+        ),
+      ),
     );
 
     jest.run(argv);
-  }
+  },
 );

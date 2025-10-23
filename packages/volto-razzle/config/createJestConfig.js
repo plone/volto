@@ -23,17 +23,16 @@ module.exports = (
   razzleOptions,
   webpackObject,
   plugins,
-  paths
+  paths,
 ) => {
-  return new Promise(async resolveConfig => {
+  return new Promise(async (resolveConfig) => {
     // Use this instead of `paths.testsSetup` to avoid putting
     // an absolute filename into configuration after ejecting.
     const setupTestsFile = getSetupTestsFilePath(paths);
 
     // TODO: I don't know if it's safe or not to just use / as path separator
     // in Jest configs. We need help from somebody with Windows to determine this.
-    let config =
-    {
+    let config = {
       collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts'],
       testMatch: [
         '<rootDir>/src/**/*(*.)@(spec|test).(ts|js)?(x)',
@@ -44,11 +43,11 @@ module.exports = (
       testURL: 'http://localhost',
       transform: {
         '^.+\\.(js|jsx|mjs|cjs|ts|tsx)$': resolve(
-          'config/jest/babelTransform.js'
+          'config/jest/babelTransform.js',
         ),
         '^.+\\.css$': resolve('config/jest/cssTransform.js'),
         '^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)': resolve(
-          'config/jest/fileTransform.js'
+          'config/jest/fileTransform.js',
         ),
       },
       transformIgnorePatterns: [
@@ -60,8 +59,8 @@ module.exports = (
         '^react-native$': 'react-native-web',
       },
       moduleFileExtensions: ['js', 'jsx', 'json', 'ts', 'tsx'],
-      setupFilesAfterEnv: setupTestsFile ? [setupTestsFile] : []
-    }
+      setupFilesAfterEnv: setupTestsFile ? [setupTestsFile] : [],
+    };
 
     if (rootDir) {
       config.rootDir = rootDir;
@@ -99,10 +98,10 @@ module.exports = (
       'transformIgnorePatterns',
       'reporters',
       'watchPlugins',
-      'setupFilesAfterEnv'
+      'setupFilesAfterEnv',
     ];
     if (overrides) {
-      supportedKeys.forEach(key => {
+      supportedKeys.forEach((key) => {
         if (overrides.hasOwnProperty(key)) {
           config[key] = overrides[key];
           delete overrides[key];

@@ -14,5 +14,5 @@ module.exports = {
   mediaPrefix: 'static/media',
   staticCssInDev: false,
   emitOnErrors: false,
-  disableWebpackbar: false
+  disableWebpackbar: false,
 };

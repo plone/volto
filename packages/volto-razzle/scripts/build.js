@@ -10,7 +10,9 @@ const nodeEnv = cliArgs['node-env'] || 'production';
 const mode = cliArgs['watch'] ? 'watch' : 'run';
 
 // Do this as the first thing so that any code reading it knows the right env.
-process.env.NODE_ENV = /production|staging|development$/.test(nodeEnv) ? nodeEnv : 'production';
+process.env.NODE_ENV = /production|staging|development$/.test(nodeEnv)
+  ? nodeEnv
+  : 'production';
 
 const webpack = require('webpack');
 const fs = require('fs-extra');
@@ -31,7 +33,7 @@ const printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild;
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will
 // terminate the Node.js process with a non-zero exit code.
-process.on('unhandledRejection', err => {
+process.on('unhandledRejection', (err) => {
   clearConsole();
   logger.error('Unexpected error', err);
   process.exit(1);
@@ -43,22 +45,30 @@ loadRazzleConfig(webpack).then(
     if (!verbose) {
       process.removeAllListeners('warning');
     }
-    if (!process.env.CI && process.env.NODE_ENV === "production" && (process.env.RAZZLE_NONINTERACTIVE !== "true" && !cliArgs['noninteractive'])) {
-      await inquirer.prompt([
-        {
-          type: 'confirm',
-          name: 'run',
-          message: 'This runs the production build, are you sure you want to run it?\nAdd --noninteractive to remove this prompt.',
-        }
-      ]).then((answers) => {
-        if (answers.run === false) {
-          process.exit(1);
-        }
-      });
+    if (
+      !process.env.CI &&
+      process.env.NODE_ENV === 'production' &&
+      process.env.RAZZLE_NONINTERACTIVE !== 'true' &&
+      !cliArgs['noninteractive']
+    ) {
+      await inquirer
+        .prompt([
+          {
+            type: 'confirm',
+            name: 'run',
+            message:
+              'This runs the production build, are you sure you want to run it?\nAdd --noninteractive to remove this prompt.',
+          },
+        ])
+        .then((answers) => {
+          if (answers.run === false) {
+            process.exit(1);
+          }
+        });
     }
 
     const clientOnly = /spa|single\-page\-application/.test(
-      razzleOptions.buildType
+      razzleOptions.buildType,
     );
     const serverOnly = /serveronly|server\-only/.test(razzleOptions.buildType);
 
@@ -70,23 +80,23 @@ loadRazzleConfig(webpack).then(
     const clientBuildProceedFrom = 'default';
     const serverBuildProceedFrom = 'default';
 
-    const runBuildPromisesInSeries = ps =>
+    const runBuildPromisesInSeries = (ps) =>
       ps.reduce(
         (p, next) =>
           p.then(next).catch((buildName, target) => {
             process.exit(1);
           }),
-        Promise.resolve()
+        Promise.resolve(),
       );
 
     if (!serverOnly) {
       const clientResults = await runBuildPromisesInSeries(
         clientBuilds
           .slice(clientBuilds.indexOf(clientBuildProceedFrom))
-          .map(buildName => {
+          .map((buildName) => {
             return () => {
               return new Promise((resolveBuild, rejectBuild) => {
-                const build = async previousFileSizes => {
+                const build = async (previousFileSizes) => {
                   return new Promise(async (resolve, reject) => {
                     // Create our production webpack configurations and pass in razzle options.
                     const clientConfig = await createConfig(
@@ -97,51 +107,55 @@ loadRazzleConfig(webpack).then(
                       clientOnly,
                       paths,
                       plugins,
-                      razzleOptions
+                      razzleOptions,
                     );
 
                     console.log(`Compiling client ${buildName} build...\n`);
                     // First compile the client. We need it to properly output assets.json (asset
                     // manifest) and chunks.json (chunk manifest) files with the correct hashes on file names BEFORE we can start
                     // the server compiler.
-                    compile(clientConfig, (err, clientStats) => {
-                      if (err) {
-                        return reject(err);
-                      }
-                      const clientMessages = clientStats.toJson({}, true);
-                      if (clientMessages.errors.length) {
-                        return reject(clientMessages.errors);
-                      }
-                      if (
-                        !process.env.WARNINGS_ERRORS_DISABLE &&
-                        process.env.CI &&
-                        (typeof process.env.CI !== 'string' ||
-                          process.env.CI.toLowerCase() !== 'false') &&
-                        clientMessages.warnings.length
-                      ) {
-                        console.log(
-                          chalk.yellow(
-                            '\nTreating warnings as errors because process.env.CI = true.\n' +
-                            'Most CI servers set it automatically.\n'
-                          )
-                        );
-                        return reject(clientMessages.warnings);
-                      }
+                    compile(
+                      clientConfig,
+                      (err, clientStats) => {
+                        if (err) {
+                          return reject(err);
+                        }
+                        const clientMessages = clientStats.toJson({}, true);
+                        if (clientMessages.errors.length) {
+                          return reject(clientMessages.errors);
+                        }
+                        if (
+                          !process.env.WARNINGS_ERRORS_DISABLE &&
+                          process.env.CI &&
+                          (typeof process.env.CI !== 'string' ||
+                            process.env.CI.toLowerCase() !== 'false') &&
+                          clientMessages.warnings.length
+                        ) {
+                          console.log(
+                            chalk.yellow(
+                              '\nTreating warnings as errors because process.env.CI = true.\n' +
+                                'Most CI servers set it automatically.\n',
+                            ),
+                          );
+                          return reject(clientMessages.warnings);
+                        }
 
-                      return resolve({
-                        stats: clientStats,
-                        previousFileSizes,
-                        warnings: clientMessages.warnings,
-                      });
-                    }, (err) => {
-                      return reject(err);
-                    });
+                        return resolve({
+                          stats: clientStats,
+                          previousFileSizes,
+                          warnings: clientMessages.warnings,
+                        });
+                      },
+                      (err) => {
+                        return reject(err);
+                      },
+                    );
                   });
                 };
                 // First, read the current file sizes in build directory.
                 // This lets us display how much they changed later.
                 measureFileSizesBeforeBuild(paths.appBuildPublic)
-                  .then(async previousFileSizes => {
+                  .then(async (previousFileSizes) => {
                     // Remove all content but keep the directory so that
                     // if you're in it, you don't end up in Trash
                     fs.emptyDirSync(paths.appBuild);
@@ -155,46 +169,46 @@ loadRazzleConfig(webpack).then(
                         printWarnings(
                           `Client ${buildName} build compiled with warnings\n`,
                           warnings,
-                          verbose
+                          verbose,
                         );
                         console.log(
                           '\nSearch for the ' +
-                          chalk.underline(chalk.yellow('keywords')) +
-                          ' to learn more about each warning.'
+                            chalk.underline(chalk.yellow('keywords')) +
+                            ' to learn more about each warning.',
                         );
                         console.log(
                           'To ignore, add ' +
-                          chalk.cyan('// eslint-disable-next-line') +
-                          ' to the line before.\n'
+                            chalk.cyan('// eslint-disable-next-line') +
+                            ' to the line before.\n',
                         );
                       } else {
                         console.log(
                           chalk.green(
-                            `Compiled client ${buildName} build successfully.\n`
-                          )
+                            `Compiled client ${buildName} build successfully.\n`,
+                          ),
                         );
                       }
                       console.log('File sizes after gzip:\n');
                       printFileSizesAfterBuild(
                         stats,
                         previousFileSizes,
-                        paths.appBuild
+                        paths.appBuild,
                       );
                       console.log();
                       resolveBuild();
                     },
-                    err => {
+                    (err) => {
                       printErrors(
                         `Failed to compile client ${buildName} build.`,
                         Array.isArray(err) ? err : [err],
-                        verbose
+                        verbose,
                       );
                       rejectBuild(buildName, 'web');
-                    }
+                    },
                   );
               });
             };
-          })
+          }),
       );
     }
 
@@ -202,7 +216,7 @@ loadRazzleConfig(webpack).then(
       const serverResults = await runBuildPromisesInSeries(
         serverBuilds
           .slice(serverBuilds.indexOf(serverBuildProceedFrom))
-          .map(buildName => {
+          .map((buildName) => {
             return () => {
               return new Promise((resolveBuild, rejectBuild) => {
                 const build = async () => {
@@ -216,42 +230,46 @@ loadRazzleConfig(webpack).then(
                       serverOnly,
                       paths,
                       plugins,
-                      razzleOptions
+                      razzleOptions,
                     );
 
                     console.log(`Compiling server ${buildName} build...\n`);
 
-                    compile(serverConfig, (err, serverStats) => {
-                      if (err) {
-                        return reject(err);
-                      }
-                      const serverMessages = serverStats.toJson({}, true);
-                      if (serverMessages.errors.length) {
-                        return reject(serverMessages.errors);
-                      }
-                      if (
-                        !process.env.WARNINGS_ERRORS_DISABLE &&
-                        process.env.CI &&
-                        (typeof process.env.CI !== 'string' ||
-                          process.env.CI.toLowerCase() !== 'false') &&
-                        serverMessages.warnings.length
-                      ) {
-                        console.log(
-                          chalk.yellow(
-                            '\nTreating warnings as errors because process.env.CI = true.\n' +
-                            'Most CI servers set it automatically.\n'
-                          )
-                        );
-                        return reject(serverMessages.warnings);
-                      }
+                    compile(
+                      serverConfig,
+                      (err, serverStats) => {
+                        if (err) {
+                          return reject(err);
+                        }
+                        const serverMessages = serverStats.toJson({}, true);
+                        if (serverMessages.errors.length) {
+                          return reject(serverMessages.errors);
+                        }
+                        if (
+                          !process.env.WARNINGS_ERRORS_DISABLE &&
+                          process.env.CI &&
+                          (typeof process.env.CI !== 'string' ||
+                            process.env.CI.toLowerCase() !== 'false') &&
+                          serverMessages.warnings.length
+                        ) {
+                          console.log(
+                            chalk.yellow(
+                              '\nTreating warnings as errors because process.env.CI = true.\n' +
+                                'Most CI servers set it automatically.\n',
+                            ),
+                          );
+                          return reject(serverMessages.warnings);
+                        }
 
-                      return resolve({
-                        stats: serverStats,
-                        warnings: serverMessages.warnings,
-                      });
-                    }, (err) => {
-                      return reject(err);
-                    });
+                        return resolve({
+                          stats: serverStats,
+                          warnings: serverMessages.warnings,
+                        });
+                      },
+                      (err) => {
+                        return reject(err);
+                      },
+                    );
                   });
                 };
 
@@ -261,39 +279,39 @@ loadRazzleConfig(webpack).then(
                       printWarnings(
                         `Server ${buildName} build compiled with warnings\n`,
                         warnings,
-                        verbose
+                        verbose,
                       );
                       console.log(
                         '\nSearch for the ' +
-                        chalk.underline(chalk.yellow('keywords')) +
-                        ' to learn more about each warning.'
+                          chalk.underline(chalk.yellow('keywords')) +
+                          ' to learn more about each warning.',
                       );
                       console.log(
                         'To ignore, add ' +
-                        chalk.cyan('// eslint-disable-next-line') +
-                        ' to the line before.\n'
+                          chalk.cyan('// eslint-disable-next-line') +
+                          ' to the line before.\n',
                       );
                     } else {
                       console.log(
                         chalk.green(
-                          `Compiled server ${buildName} build successfully.\n`
-                        )
+                          `Compiled server ${buildName} build successfully.\n`,
+                        ),
                       );
                     }
                     resolveBuild();
                   },
-                  err => {
+                  (err) => {
                     printErrors(
                       `Failed to compile server ${buildName} build.`,
                       Array.isArray(err) ? err : [err],
-                      verbose
+                      verbose,
                     );
                     rejectBuild(buildName, 'node');
-                  }
+                  },
                 );
               });
             };
-          })
+          }),
       );
     }
     // Wrap webpackcompile in a try catch.
@@ -309,5 +327,5 @@ loadRazzleConfig(webpack).then(
         cb(err, stats);
       });
     }
-  }
+  },
 );

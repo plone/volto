@@ -33,7 +33,7 @@ process.once('SIGINT', () => {
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will
 // terminate the Node.js process with a non-zero exit code.
-process.on('unhandledRejection', err => {
+process.on('unhandledRejection', (err) => {
   clearConsole();
   logger.error('Unexpected error', err);
   process.exit(1);
@@ -58,10 +58,10 @@ function main() {
             process.removeAllListeners('warning');
           }
           const clientOnly = /spa|single-page-application/.test(
-            razzleOptions.buildType
+            razzleOptions.buildType,
           );
           const serverOnly = /serveronly|server-only/.test(
-            razzleOptions.buildType
+            razzleOptions.buildType,
           );
 
           process.env.BUILD_TYPE = razzleOptions.buildType;
@@ -84,7 +84,7 @@ function main() {
                 clientOnly,
                 paths,
                 plugins,
-                razzleOptions
+                razzleOptions,
               );
               if (clientOnly) {
                 // Check for public/index.html file
@@ -111,7 +111,7 @@ function main() {
                 clientOnly,
                 paths,
                 plugins,
-                razzleOptions
+                razzleOptions,
               );
               serverCompiler = compile(serverConfig, verbose);
             }
@@ -146,7 +146,7 @@ function main() {
                       stats: 'none',
                     },
                     /* eslint-disable no-unused-vars */
-                    stats => {}
+                    (stats) => {},
                   );
                 }
 
@@ -164,7 +164,7 @@ function main() {
                   stats: 'none',
                 },
                 /* eslint-disable no-unused-vars */
-                stats => {}
+                (stats) => {},
               );
             }
 
@@ -191,7 +191,7 @@ function main() {
               }
             }
 
-            ['SIGINT', 'SIGTERM'].forEach(sig => {
+            ['SIGINT', 'SIGTERM'].forEach((sig) => {
               process.on(sig, () => {
                 if (clientDevServer) {
                   if (devServerMajorVersion > 3) {
@@ -209,7 +209,7 @@ function main() {
 
             resolve();
           });
-        }
+        },
       )
       .catch(console.error);
   });

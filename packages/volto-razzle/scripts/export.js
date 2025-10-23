@@ -21,7 +21,7 @@ const getFileNamesAsStat = FileSizeReporter.getFileNamesAsStat;
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will
 // terminate the Node.js process with a non-zero exit code.
-process.on('unhandledRejection', err => {
+process.on('unhandledRejection', (err) => {
   clearConsole();
   logger.error('Unexpected error', err);
   process.exit(1);
@@ -35,7 +35,7 @@ loadRazzleConfig(webpack).then(
     // First, read the current file sizes in build directory.
     // This lets us display how much they changed later.
     measureFileSizesBeforeBuild(paths.appBuildPublic)
-      .then(previousFileSizes => {
+      .then((previousFileSizes) => {
         if (!fs.existsSync(paths.appBuildStaticExport)) {
           console.log(chalk.red('Failed to export static.\n'));
           console.log(
@@ -44,7 +44,7 @@ loadRazzleConfig(webpack).then(
               ' found in ' +
               path.dirname(paths.appBuildStaticExport) +
               ', run build before export.\n' +
-              '\n'
+              '\n',
           );
           process.exit(1);
         }
@@ -58,11 +58,11 @@ loadRazzleConfig(webpack).then(
           printFileSizesAfterBuild(stats, previousFileSizes, paths.appBuild);
           console.log();
         },
-        err => {
+        (err) => {
           console.log(chalk.red('Failed to export static.\n'));
           console.log((err.message || err) + '\n');
           process.exit(1);
-        }
+        },
       );
 
     async function static_export(previousFileSizes) {
@@ -76,7 +76,7 @@ loadRazzleConfig(webpack).then(
             ' found in ' +
             path.dirname(paths.appBuildStaticExport) +
             '.\n' +
-            '\n'
+            '\n',
         );
         process.exit(1);
       }
@@ -97,7 +97,7 @@ loadRazzleConfig(webpack).then(
               ' export found in ' +
               paths.appBuildStaticExport +
               '.\n' +
-              '\n'
+              '\n',
         );
         process.exit(1);
       }
@@ -110,7 +110,7 @@ loadRazzleConfig(webpack).then(
               ' export found in ' +
               paths.appBuildStaticExport +
               '.\n' +
-              '\n'
+              '\n',
         );
         process.exit(1);
       }
@@ -120,11 +120,12 @@ loadRazzleConfig(webpack).then(
           ? await imported_routes()
           : imported_routes;
 
-      const insertScript = `\$1<script src="${process.env.PUBLIC_PATH ||
-        '/'}static_routes.js" defer crossorigin></script>`;
+      const insertScript = `\$1<script src="${
+        process.env.PUBLIC_PATH || '/'
+      }static_routes.js" defer crossorigin></script>`;
       const insertScriptRe = /(<body.*?>)/ims;
 
-      const render_static_export = async pathname => {
+      const render_static_export = async (pathname) => {
         let htmlFile, hasData;
         const json = ({ html, data, error = null }) => {
           if (error) console.error(error);
@@ -137,7 +138,7 @@ loadRazzleConfig(webpack).then(
             htmlFile,
             !options.scriptInline
               ? html.replace(insertScriptRe, insertScript)
-              : html
+              : html,
           );
           hasData = !!data;
           if (hasData) {
@@ -155,36 +156,37 @@ loadRazzleConfig(webpack).then(
       const rendersInfo = await asyncPool(
         Math.min(options.parallel || 5, routes.length),
         routes,
-        render_static_export
+        render_static_export,
       );
 
       const exportDataRoutes = rendersInfo
-        .filter(info => info.hasData)
-        .map(info => info.pathname);
+        .filter((info) => info.hasData)
+        .map((info) => info.pathname);
 
       const insertScriptCode =
         `window.${options.windowRoutesVariable || 'RAZZLE_STATIC_ROUTES'}` +
         ` =  ${JSON.stringify(
-          routes.map(route => route.replace(/^\/|\/$/g, ''))
+          routes.map((route) => route.replace(/^\/|\/$/g, '')),
         )};\n` +
-        `window.${options.windowRoutesDataVariable ||
-          'RAZZLE_STATIC_DATA_ROUTES'}` +
+        `window.${
+          options.windowRoutesDataVariable || 'RAZZLE_STATIC_DATA_ROUTES'
+        }` +
         ` =  ${JSON.stringify(
-          exportDataRoutes.map(route => route.replace(/^\/|\/$/g, ''))
+          exportDataRoutes.map((route) => route.replace(/^\/|\/$/g, '')),
         )};\n`;
 
       if (!options.scriptInline) {
         await fs.writeFile(paths.appBuildStaticExportRoutes, insertScriptCode);
       } else {
         const insertScriptInline = `\$1<script>${insertScriptCode}</script>`;
-        const updateFile = htmlFile => {
-          fs.pathExists(htmlFile).then(exists => {
+        const updateFile = (htmlFile) => {
+          fs.pathExists(htmlFile).then((exists) => {
             if (exists) {
-              fs.readFile(htmlFile).then(content => {
+              fs.readFile(htmlFile).then((content) => {
                 const contentString = content.toString();
                 const updated = contentString.replace(
                   insertScriptRe,
-                  insertScriptInline
+                  insertScriptInline,
                 );
                 return fs.writeFile(htmlFile, updated);
               });
@@ -192,17 +194,17 @@ loadRazzleConfig(webpack).then(
           });
         };
 
-        const exportHtmlFiles = rendersInfo.map(info => info.htmlFile);
+        const exportHtmlFiles = rendersInfo.map((info) => info.htmlFile);
 
         await asyncPool(
           Math.min(options.parallel || 5, exportHtmlFiles.length),
           exportHtmlFiles,
-          updateFile
+          updateFile,
         );
       }
 
       const stats = await getFileNamesAsStat(paths.appBuildPublic);
       return { stats, previousFileSizes };
     }
-  }
+  },
 );

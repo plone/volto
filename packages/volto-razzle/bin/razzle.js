@@ -15,7 +15,7 @@ prog
   .option(
     '-t, --type',
     'Change the application build type. Must be either `iso` or `spa`.',
-    'iso'
+    'iso',
   )
   .action(() => {
     runCommand('build', [], argv);
@@ -27,7 +27,7 @@ prog
   .option(
     '-t, --type',
     'Change the application build type. Must be either `iso` or `spa`.',
-    'iso'
+    'iso',
   )
   .action(() => {
     runCommand('start', [], argv);
@@ -44,27 +44,33 @@ prog
   .command('test')
   .describe('Runs the test watcher in an interactive mode.')
   .action(() => {
-    runCommand('test', argv.filter(x=>x.includes('--inspect')), argv.filter(x=>!x.includes('--inspect')));
+    runCommand(
+      'test',
+      argv.filter((x) => x.includes('--inspect')),
+      argv.filter((x) => !x.includes('--inspect')),
+    );
   });
 
 function runCommand(script, node_args, script_args) {
   const result = spawn.sync(
     'node',
-    node_args.concat([require.resolve('../scripts/' + script)]).concat(script_args),
-    { stdio: 'inherit' }
+    node_args
+      .concat([require.resolve('../scripts/' + script)])
+      .concat(script_args),
+    { stdio: 'inherit' },
   );
   if (result.signal) {
     if (result.signal === 'SIGKILL') {
       console.log(
         'The build failed because the process exited too early. ' +
           'This probably means the system ran out of memory or someone called ' +
-          '`kill -9` on the process.'
+          '`kill -9` on the process.',
       );
     } else if (result.signal === 'SIGTERM') {
       console.log(
         'The build failed because the process exited too early. ' +
           'Someone might have called `kill` or `killall`, or the system could ' +
-          'be shutting down.'
+          'be shutting down.',
       );
     }
     process.exit(1);
