@@ -49,6 +49,7 @@
     "razzle-start-server-webpack-plugin": "4.2.18",
     "react-dev-utils": "^11.0.4",
     "react-refresh": "^0.9.0",
+    "release-it": "^19.0.4",
     "resolve": "^1.17.0",
     "sade": "^1.4.2",
     "source-map-support": "^0.5.16",
@@ -79,5 +80,11 @@
     "ssr",
     "universal",
     "webpack"
-  ]
+  ],
+  "scripts": {
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
+  }
 }
