@@ -1,6 +1,7 @@
 ![repo-banner](https://user-images.githubusercontent.com/4060187/28923990-050a32d4-782e-11e7-9da7-574ce5a8b455.png)
 
 [![npm version](https://img.shields.io/npm/v/@volto/razzle.svg)](https://www.npmjs.com/package/@volto/razzle) [![npm](https://img.shields.io/npm/dm/@volto/razzle)](https://www.npmjs.com/package/@volto/razzle)
+
 Universal JavaScript applications are tough to setup. Either you buy into a framework like Next.js or Nuxt, fork a boilerplate, or set things up yourself. Aiming to fill this void, Razzle is a tool that abstracts all the complex configuration needed for building SPA's and SSR applications into a single dependency--giving you the awesome developer experience of [create-react-app](https://github.com/facebookincubator/create-react-app), but then leaving the rest of your app's architectural decisions about frameworks, routing, and data fetching up to you. With this approach, Razzle not only works with React, but also Preact, Vue, Svelte, and Angular, and most importantly......whatever comes next.
 
 ## Getting Started
