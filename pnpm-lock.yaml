@@ -1593,6 +1593,9 @@ importers:
       react-refresh:
         specifier: 0.14.0
         version: 0.14.0
+      release-it:
+        specifier: ^19.0.4
+        version: 19.0.5(@types/node@22.18.0)(magicast@0.3.5)
       resolve:
         specifier: ^1.17.0
         version: 1.22.10
