@@ -15,6 +15,7 @@
     "build:react-router": "pnpm --filter @plone/react-router run build",
     "build": "pnpm --filter @plone/volto build",
     "start": "pnpm --filter @plone/volto start",
+    "start:prod": "pnpm --filter @plone/volto start:prod",
     "start:project": "pnpm --filter plone run start",
     "lint": "make build-all-deps && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
     "lint:volto": "pnpm --filter @plone/volto run lint",
@@ -41,7 +42,7 @@
     "tsconfig": "workspace:*",
     "typescript": "^5.7.3"
   },
-  "packageManager": "pnpm@9.1.1",
+  "packageManager": "pnpm@10.18.3",
   "pnpm": {
     "overrides": {
       "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
@@ -50,6 +51,21 @@
     },
     "patchedDependencies": {
       "jest-resolve@26.6.2": "patches/jest-resolve@26.6.2.patch"
-    }
+    },
+    "ignoredBuiltDependencies": [
+      "@parcel/watcher",
+      "@swc/core"
+    ],
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "core-js",
+      "core-js-pure",
+      "cypress",
+      "es5-ext",
+      "esbuild",
+      "full-icu",
+      "lightningcss-cli",
+      "unrs-resolver"
+    ]
   }
 }

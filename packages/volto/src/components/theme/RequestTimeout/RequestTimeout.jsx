@@ -29,7 +29,7 @@ const RequestTimeout = () => (
         <h1 style={{ textAlign: 'center', lineHeight: '40px' }}>
           <FormattedMessage
             id="No connection to the server"
-            defaultMessage="There is no connection to the server, due to a timeout o no network connection."
+            defaultMessage="There is no connection to the server, due to a timeout or no network connection."
           />
           <br />
           <a href={config.settings.apiPath}>{config.settings.apiPath}</a>

@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.7 (2025-10-22)
+
+### Feature
+
+- Complete expanders typings, include `translations`. @sneridagh [#7531](https://github.com/plone/volto/issues/7531)
+
+## 2.0.0-alpha.6 (2025-10-21)
+
+### Bugfix
+
+- Fix plone.available_languages typing. @sneridagh [#7429](https://github.com/plone/volto/issues/7429)
+
 ## 2.0.0-alpha.5 (2025-09-29)
 
 ### Feature

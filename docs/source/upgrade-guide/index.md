@@ -32,6 +32,22 @@ It is usually better and quicker to move your items into new locations and copy 
 
 ## Upgrading to Volto 19.x.x
 
+(nodejs-20-removed-label)=
+
+### Removed support of Node.js 20
+```{versionremoved} Volto 19.0.0-alpha.7
+```
+
+Support and CI testing for Node.js 20 was removed in Volto 19.0.0-alpha.7.
+While the code base may still work on Node.js 20 in some cases, it is no longer guaranteed or tested.
+
+You should take the following actions for your Volto 19 projects.
+
+-   Upgrade your development and CI environments to a supported Node.js LTS version, such as Node.js 22 or 24.
+-   Update any Docker images, build agents, and project documentation that reference Node.js 20.
+
+If you can't upgrade immediately, you may continue to run Volto 19 on Node.js 20 at your own risk, but be aware that issues specific to Node.js 20 will not be fixed in the Volto core CI or releases.
+
 (19-removed-support-for-loading-configuration-from-project-label)=
 
 ### New utility class `visually-hidden`
@@ -152,6 +168,13 @@ The `head_title` property and the translation id (`head_title`) in the `teaser` 
 You can still use them in Volto using the `workspace` protocol in your `package.json` file.
 However, check the breaking changes issued for these packages in the respective changelogs.
 It is recommended that you use the released versions of these packages instead of the workspace protocol, unless you need a specific feature or fix that is released yet.
+
+### `pnpm` 10 no longer runs lifecycle scripts
+```{versionadded} Volto 19.0.0-alpha.7
+```
+Volto now uses pnpm 10.
+
+If you have packages that use lifecycle scripts (such as `preinstall` or `postinstall`) in {file}`package.json`, you must configure `pnpm`'s [`onlyBuiltDependencies` setting](https://pnpm.io/settings#onlybuiltdependencies) to allow them.
 
 (upgrading-to-volto-18-x-x)=
 
