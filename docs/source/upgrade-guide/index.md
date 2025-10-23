@@ -985,7 +985,7 @@ or use Webpack plugins, you might need to make adjustments.
 
 Razzle has been upgraded to version `4.2.18`.
 It is recommended that you update your project's dependency on Razzle to this version in order to avoid duplication.
-s
+
 ### Upgraded linters, ESlint, Prettier and Stylelint
 
 The main linters have been upgraded.
