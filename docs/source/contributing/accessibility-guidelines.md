@@ -42,4 +42,5 @@ This is true for one-element forms as well, such as the "Search" form on the fol
 
 ## Additional information for non-visual users
 
-Sometimes extra information needs to be provided to users who are not able to see the screen, The `.visually-hidden` class can be used to wrap elements which need to be exposed to assistive technologies such as screen readers without them being visible.
+Sometimes extra information needs to be provided to users who are not able to see the screen.
+The `.visually-hidden` class can be used to wrap elements which need to be exposed to assistive technologies, such as screen readers, without them being visible.
