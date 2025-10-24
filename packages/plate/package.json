@@ -33,6 +33,7 @@
   "type": "module",
   "main": "index.ts",
   "scripts": {
+    "generate:styles": "pnpm dlx @tailwindcss/cli -i ./input.css -o ./output.css",
     "test": "vitest",
     "test:debug": "vitest --inspect-brk --watch",
     "check-ts": "tsc --project tsconfig.json",
