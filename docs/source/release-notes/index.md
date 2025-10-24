@@ -98,7 +98,7 @@ myst:
 - Update folder content search input to announce result count for screen readers on search or input change. @Wagner3UB [#7364](https://github.com/plone/volto/issues/7364)
 - Check if we are editing a content type before rendering the Content Type control panel form. @ericof [#7396](https://github.com/plone/volto/issues/7396)
 - Added guard in API REDUX middleware. @sneridagh [#7412](https://github.com/plone/volto/issues/7412)
-- Ensure the Refresh Content button correctly loads the preview image when using preview_image_link for Teaser block. @iFlameing
+- Ensure the Refresh Content button correctly loads the preview image when using preview_image_link for Teaser block. @iFlameing 
 
 ### Internal
 
