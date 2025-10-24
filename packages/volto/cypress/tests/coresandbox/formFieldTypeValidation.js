@@ -84,7 +84,7 @@ context('Test Field Type in form ', () => {
     it('Test RichText Field Type', function () {
       cy.get('.slate_wysiwyg_box').type('Plone{selectall}');
       cy.get('a[title="Bold"]').click();
-      cy.get('a[title="Italic"]').click();
+      cy.get('a[title="Italic"]').click({force:true});
       cy.get('.slate_wysiwyg_box').click();
     });
     it('Missing required field error', function () {
