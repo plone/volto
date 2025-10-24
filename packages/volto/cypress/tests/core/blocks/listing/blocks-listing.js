@@ -1127,7 +1127,7 @@ describe('Listing Block Tests', () => {
     cy.url().should('not.include', '=2');
     cy.url().should('not.include', '=3');
 
-    cy.navigate('/my-page');
+    cy.visit('/my-page');
     cy.wait('@content');
     cy.wait('@querySearch');
     cy.wait('@querySearch');
@@ -1152,6 +1152,7 @@ describe('Listing Block Tests', () => {
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
     cy.url().should('not.include', '=3');
     cy.go(-1);
+    cy.wait(300); // I couldn't make it work without wait
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 2' });
     cy.url().should('not.include', '=2');
     cy.url().should('not.include', '=3');
