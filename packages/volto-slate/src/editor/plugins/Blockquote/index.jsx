@@ -5,8 +5,8 @@ import quoteIcon from '@plone/volto/icons/quote.svg';
 
 const messages = defineMessages({
   blockquote: {
-    id: 'Blockquote',
-    defaultMessage: 'Blockquote',
+    id: 'Block quote',
+    defaultMessage: 'Block quote',
   },
 });
 

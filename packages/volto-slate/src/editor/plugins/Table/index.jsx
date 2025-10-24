@@ -35,16 +35,16 @@ const messages = defineMessages({
     defaultMessage: 'Delete row',
   },
   insertColBefore: {
-    id: 'Insert col before',
-    defaultMessage: 'Insert col before',
+    id: 'Insert column before',
+    defaultMessage: 'Insert column before',
   },
   insertColAfter: {
-    id: 'Insert col after',
-    defaultMessage: 'Insert col after',
+    id: 'Insert column after',
+    defaultMessage: 'Insert column after',
   },
   deleteCol: {
-    id: 'Delete col',
-    defaultMessage: 'Delete col',
+    id: 'Delete column',
+    defaultMessage: 'Delete column',
   },
   table: {
     id: 'Table',

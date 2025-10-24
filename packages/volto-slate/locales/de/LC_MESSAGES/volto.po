@@ -21,44 +21,44 @@ msgstr ""
 msgid "### Subheading"
 msgstr ""
 
-#. Default: "* unordered list item"
+#. Default: "* Unordered list item"
 #: blocks/Text/MarkdownIntroduction
-msgid "* unordered list item"
+msgid "* Unordered list item"
 msgstr ""
 
-#. Default: "**bold text**"
+#. Default: "**Bold text**"
 #: blocks/Text/MarkdownIntroduction
-msgid "**bold text**"
+msgid "**Bold text**"
 msgstr ""
 
-#. Default: "*italic text*"
+#. Default: "*Italic text*"
 #: blocks/Text/MarkdownIntroduction
-msgid "*italic text*"
+msgid "*Italic text*"
 msgstr ""
 
-#. Default: "+ unordered list item"
+#. Default: "+ Unordered list item"
 #: blocks/Text/MarkdownIntroduction
-msgid "+ unordered list item"
+msgid "+ Unordered list item"
 msgstr ""
 
-#. Default: "- unordered list item"
+#. Default: "- Unordered list item"
 #: blocks/Text/MarkdownIntroduction
-msgid "- unordered list item"
+msgid "- Unordered list item"
 msgstr ""
 
-#. Default: "1) ordered list item"
+#. Default: "1) Ordered list item"
 #: blocks/Text/MarkdownIntroduction
-msgid "1) ordered list item"
+msgid "1) Ordered list item"
 msgstr ""
 
-#. Default: "1. ordered list item"
+#. Default: "1. Ordered list item"
 #: blocks/Text/MarkdownIntroduction
-msgid "1. ordered list item"
+msgid "1. Ordered list item"
 msgstr ""
 
-#. Default: "> block quote"
+#. Default: "> Block quote"
 #: blocks/Text/MarkdownIntroduction
-msgid "> block quote"
+msgid "> Block quote"
 msgstr ""
 
 #. Default: "A short hint that describes the expected value within this block"
@@ -71,9 +71,9 @@ msgstr ""
 msgid "Add link"
 msgstr "Link hinzufügen"
 
-#. Default: "Additional Styles"
+#. Default: "Additional styles"
 #: editor/plugins/StyleMenu/StyleMenu
-msgid "Additional Styles"
+msgid "Additional styles"
 msgstr ""
 
 #. Default: "Advanced settings"
@@ -91,9 +91,9 @@ msgstr ""
 msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
 msgstr ""
 
-#. Default: "Blockquote"
+#. Default: "Block quote"
 #: editor/plugins/Blockquote/index
-msgid "Blockquote"
+msgid "Block quote"
 msgstr ""
 
 #. Default: "Bold"
@@ -136,11 +136,11 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#. Default: "Delete col"
+#. Default: "Delete column"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
-msgid "Delete col"
-msgstr "Spalte löschen"
+msgid "Delete column"
+msgstr ""
 
 #. Default: "Delete row"
 #: blocks/Table/TableBlockEdit
@@ -163,9 +163,14 @@ msgstr ""
 msgid "Disable creation of new blocks after this block"
 msgstr ""
 
-#. Default: "Disable drag & drop on this block"
+#. Default: "Disable deletion of this block"
 #: blocks/Text/TextBlockSchema
-msgid "Disable drag & drop on this block"
+msgid "Disable deletion of this block"
+msgstr ""
+
+#. Default: "Disable drag and drop on this block"
+#: blocks/Text/TextBlockSchema
+msgid "Disable drag and drop on this block"
 msgstr ""
 
 #. Default: "Disable editing on this block"
@@ -182,11 +187,6 @@ msgstr ""
 #: blocks/Table/schema
 msgid "Divide each row into separate cells"
 msgstr "Jede Zeile in einzelne Zellen teilen"
-
-#. Default: "Don't allow deletion of this block"
-#: blocks/Text/TextBlockSchema
-msgid "Don't allow deletion of this block"
-msgstr ""
 
 #. Default: "Edit element"
 #: elementEditor/messages
@@ -249,6 +249,36 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr "Zellen mit fester Breite"
 
+#. Default: "H1"
+#: blocks/Text/schema
+msgid "H1"
+msgstr ""
+
+#. Default: "H2"
+#: blocks/Text/schema
+msgid "H2"
+msgstr ""
+
+#. Default: "H3"
+#: blocks/Text/schema
+msgid "H3"
+msgstr ""
+
+#. Default: "H4"
+#: blocks/Text/schema
+msgid "H4"
+msgstr ""
+
+#. Default: "H5"
+#: blocks/Text/schema
+msgid "H5"
+msgstr ""
+
+#. Default: "H6"
+#: blocks/Text/schema
+msgid "H6"
+msgstr ""
+
 #. Default: "Heading 4"
 #: editor/config
 msgid "Heading 4"
@@ -264,22 +294,22 @@ msgstr ""
 msgid "Hide headers"
 msgstr ""
 
-#. Default: "Inline Style"
+#. Default: "Inline style"
 #: editor/plugins/StyleMenu/StyleMenu
-msgid "Inline Style"
+msgid "Inline style"
 msgstr ""
 
-#. Default: "Insert col after"
+#. Default: "Insert column after"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
-msgid "Insert col after"
-msgstr "Spalte dahinter einfügen"
+msgid "Insert column after"
+msgstr ""
 
-#. Default: "Insert col before"
+#. Default: "Insert column before"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
-msgid "Insert col before"
-msgstr "Spalte davor einfügen"
+msgid "Insert column before"
+msgstr ""
 
 #. Default: "Insert link"
 #: editor/plugins/AdvancedLink/schema
@@ -323,9 +353,9 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
-#. Default: "Less..."
+#. Default: "Less"
 #: editor/ui/SlateToolbar
-msgid "Less..."
+msgid "Less"
 msgstr ""
 
 #. Default: "Link"
@@ -333,9 +363,9 @@ msgstr ""
 msgid "Link"
 msgstr ""
 
-#. Default: "Link Title"
+#. Default: "Link title"
 #: editor/plugins/AdvancedLink/schema
-msgid "Link Title"
+msgid "Link title"
 msgstr ""
 
 #. Default: "Make the table compact"
@@ -358,9 +388,9 @@ msgstr ""
 msgid "Middle"
 msgstr ""
 
-#. Default: "More..."
+#. Default: "More"
 #: editor/ui/SlateToolbar
-msgid "More..."
+msgid "More"
 msgstr ""
 
 #. Default: "No matching blocks"
@@ -373,9 +403,9 @@ msgstr ""
 msgid "Numbered list"
 msgstr ""
 
-#. Default: "On Windows, the MOD key is Ctrl, on Mac OS X it's Cmd."
+#. Default: "On Windows, the MOD key is CTRL, on macOS X it's CMD."
 #: blocks/Text/ShortcutListing
-msgid "On Windows, the MOD key is Ctrl, on Mac OS X it's Cmd."
+msgid "On Windows, the MOD key is CTRL, on macOS X it's CMD."
 msgstr ""
 
 #. Default: "Open in new window"
@@ -383,14 +413,14 @@ msgstr ""
 msgid "Open in new window"
 msgstr ""
 
-#. Default: "Open in parent window / frame"
+#. Default: "Open in parent window or frame"
 #: editor/plugins/AdvancedLink/schema
-msgid "Open in parent window / frame"
+msgid "Open in parent window or frame"
 msgstr ""
 
-#. Default: "Open in this window / frame"
+#. Default: "Open in this window or frame"
 #: editor/plugins/AdvancedLink/schema
-msgid "Open in this window / frame"
+msgid "Open in this window or frame"
 msgstr ""
 
 #. Default: "Open in top frame (replaces all frames)"
@@ -408,14 +438,14 @@ msgstr ""
 msgid "Override TOC entry"
 msgstr ""
 
-#. Default: "Paragraph Style"
+#. Default: "Paragraph style"
 #: editor/plugins/StyleMenu/StyleMenu
-msgid "Paragraph Style"
+msgid "Paragraph style"
 msgstr ""
 
-#. Default: "Read-only"
+#. Default: "Read only"
 #: blocks/Text/TextBlockSchema
-msgid "Read-only"
+msgid "Read only"
 msgstr ""
 
 #. Default: "Reduce complexity"
@@ -539,47 +569,17 @@ msgstr ""
 msgid "Visible only in view mode"
 msgstr ""
 
-#. Default: "__bold text__"
+#. Default: "_Italic text_"
 #: blocks/Text/MarkdownIntroduction
-msgid "__bold text__"
+msgid "_Italic text_"
 msgstr ""
 
-#. Default: "_italic text_"
+#. Default: "__Bold text__"
 #: blocks/Text/MarkdownIntroduction
-msgid "_italic text_"
+msgid "__Bold text__"
 msgstr ""
 
-#. Default: "h1"
-#: blocks/Text/schema
-msgid "h1"
-msgstr ""
-
-#. Default: "h2"
-#: blocks/Text/schema
-msgid "h2"
-msgstr ""
-
-#. Default: "h3"
-#: blocks/Text/schema
-msgid "h3"
-msgstr ""
-
-#. Default: "h4"
-#: blocks/Text/schema
-msgid "h4"
-msgstr ""
-
-#. Default: "h5"
-#: blocks/Text/schema
-msgid "h5"
-msgstr ""
-
-#. Default: "h6"
-#: blocks/Text/schema
-msgid "h6"
-msgstr ""
-
-#. Default: "~~strikethrough text~~"
+#. Default: "~~Strikethrough text~~"
 #: blocks/Text/MarkdownIntroduction
-msgid "~~strikethrough text~~"
+msgid "~~Strikethrough text~~"
 msgstr ""

@@ -52,16 +52,16 @@ const messages = defineMessages({
     defaultMessage: 'Target',
   },
   targetSelf: {
-    id: 'Open in this window / frame',
-    defaultMessage: 'Open in this window / frame',
+    id: 'Open in this window or frame',
+    defaultMessage: 'Open in this window or frame',
   },
   targetBlank: {
     id: 'Open in new window',
     defaultMessage: 'Open in new window',
   },
   targetParent: {
-    id: 'Open in parent window / frame',
-    defaultMessage: 'Open in parent window / frame',
+    id: 'Open in parent window or frame',
+    defaultMessage: 'Open in parent window or frame',
   },
   targetTop: {
     id: 'Open in top frame (replaces all frames)',
@@ -72,8 +72,8 @@ const messages = defineMessages({
     defaultMessage: 'Insert link',
   },
   linkTitle: {
-    id: 'Link Title',
-    defaultMessage: 'Link Title',
+    id: 'Link title',
+    defaultMessage: 'Link title',
   },
   link: {
     id: 'Link',

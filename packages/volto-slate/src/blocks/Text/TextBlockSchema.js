@@ -27,16 +27,16 @@ const messages = defineMessages({
     defaultMessage: 'Required',
   },
   descriptionRequired: {
-    id: "Don't allow deletion of this block",
-    defaultMessage: "Don't allow deletion of this block",
+    id: 'Disable deletion of this block',
+    defaultMessage: 'Disable deletion of this block',
   },
   fixedPosition: {
     id: 'Fixed position',
     defaultMessage: 'Fixed position',
   },
   descriptionFixedPosition: {
-    id: 'Disable drag & drop on this block',
-    defaultMessage: 'Disable drag & drop on this block',
+    id: 'Disable drag and drop on this block',
+    defaultMessage: 'Disable drag and drop on this block',
   },
   disableNewBlocks: {
     id: 'Disable new blocks',
@@ -47,8 +47,8 @@ const messages = defineMessages({
     defaultMessage: 'Disable creation of new blocks after this block',
   },
   readOnly: {
-    id: 'Read-only',
-    defaultMessage: 'Read-only',
+    id: 'Read only',
+    defaultMessage: 'Read only',
   },
   descriptionReadOnly: {
     id: 'Disable editing on this block',

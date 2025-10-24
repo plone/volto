@@ -20,12 +20,12 @@ import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   More: {
-    id: 'More...',
-    defaultMessage: 'More...',
+    id: 'More',
+    defaultMessage: 'More',
   },
   Less: {
-    id: 'Less...',
-    defaultMessage: 'Less...',
+    id: 'Less',
+    defaultMessage: 'Less',
   },
 });
 

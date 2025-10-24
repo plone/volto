@@ -18,28 +18,28 @@ const messages = defineMessages({
     defaultMessage: 'Entry text for TOC',
   },
   h1: {
-    id: 'h1',
-    defaultMessage: 'h1',
+    id: 'H1',
+    defaultMessage: 'H1',
   },
   h2: {
-    id: 'h2',
-    defaultMessage: 'h2',
+    id: 'H2',
+    defaultMessage: 'H2',
   },
   h3: {
-    id: 'h3',
-    defaultMessage: 'h3',
+    id: 'H3',
+    defaultMessage: 'H3',
   },
   h4: {
-    id: 'h4',
-    defaultMessage: 'h4',
+    id: 'H4',
+    defaultMessage: 'H4',
   },
   h5: {
-    id: 'h5',
-    defaultMessage: 'h5',
+    id: 'H5',
+    defaultMessage: 'H5',
   },
   h6: {
-    id: 'h6',
-    defaultMessage: 'h6',
+    id: 'H6',
+    defaultMessage: 'H6',
   },
 });
 

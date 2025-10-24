@@ -32,70 +32,70 @@ const MarkdownIntroduction = (props) => {
 
           <List.Item key={3} style={{ paddingTop: '1rem' }}>
             <FormattedMessage
-              id="* unordered list item"
-              defaultMessage="* unordered list item"
+              id="* Unordered list item"
+              defaultMessage="* Unordered list item"
             />
           </List.Item>
           <List.Item key={4}>
             <FormattedMessage
-              id="+ unordered list item"
-              defaultMessage="+ unordered list item"
+              id="+ Unordered list item"
+              defaultMessage="+ Unordered list item"
             />
           </List.Item>
           <List.Item key={5}>
             <FormattedMessage
-              id="- unordered list item"
-              defaultMessage="- unordered list item"
+              id="- Unordered list item"
+              defaultMessage="- Unordered list item"
             />
           </List.Item>
 
           <List.Item key={6} style={{ paddingTop: '1rem' }}>
             <FormattedMessage
-              id="1. ordered list item"
-              defaultMessage="1. ordered list item"
+              id="1. Ordered list item"
+              defaultMessage="1. Ordered list item"
             />
           </List.Item>
           <List.Item key={7}>
             <FormattedMessage
-              id="1) ordered list item"
-              defaultMessage="1) ordered list item"
+              id="1) Ordered list item"
+              defaultMessage="1) Ordered list item"
             />
           </List.Item>
 
           <List.Item key={8} className="callout">
             <FormattedMessage
-              id="&gt; block quote"
-              defaultMessage="&gt; block quote"
+              id="&gt; Block quote"
+              defaultMessage="&gt; Block quote"
             />
           </List.Item>
           <List.Item key={9} style={{ fontWeight: 'bold' }}>
             <FormattedMessage
-              id="**bold text**"
-              defaultMessage="**bold text**"
+              id="**Bold text**"
+              defaultMessage="**Bold text**"
             />
           </List.Item>
           <List.Item key={10} style={{ fontWeight: 'bold' }}>
             <FormattedMessage
-              id="__bold text__"
-              defaultMessage="__bold text__"
+              id="__Bold text__"
+              defaultMessage="__Bold text__"
             />
           </List.Item>
           <List.Item key={11} style={{ fontStyle: 'italic' }}>
             <FormattedMessage
-              id="*italic text*"
-              defaultMessage="*italic text*"
+              id="*Italic text*"
+              defaultMessage="*Italic text*"
             />
           </List.Item>
           <List.Item key={12} style={{ fontStyle: 'italic' }}>
             <FormattedMessage
-              id="_italic text_"
-              defaultMessage="_italic text_"
+              id="_Italic text_"
+              defaultMessage="_Italic text_"
             />
           </List.Item>
           <List.Item key={13} style={{ textDecoration: 'line-through' }}>
             <FormattedMessage
-              id="~~strikethrough text~~"
-              defaultMessage="~~strikethrough text~~"
+              id="~~Strikethrough text~~"
+              defaultMessage="~~Strikethrough text~~"
             />
           </List.Item>
         </List>
