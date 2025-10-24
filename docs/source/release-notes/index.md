@@ -23,13 +23,13 @@ myst:
 
 - Add Cypress for a subpath. @wesleybl [#6976](https://github.com/plone/volto/issues/6976)
 - Serve API requests from a subpath. @davisagli [#7326](https://github.com/plone/volto/issues/7326)
-- Add option to serve a Volto site on a subpath using the `RAZZLE_SUBPATH_PREFIX` environment variable. @nileshgulia1, @wesleybl, @davisagli
+- Add option to serve a Volto site on a subpath using the `RAZZLE_SUBPATH_PREFIX` environment variable. @nileshgulia1, @wesleybl, @davisagli 
 
 ### Internal
 
 - Expires the cache if the root `package.json` is changed. @wesleybl [#7536](https://github.com/plone/volto/issues/7536)
-- Move to `dependencies` some bad categorized dependencies in `devDependencies`. @sneridagh
-- Run Cookieplone acceptance test with Node 24. @davisagli
+- Move to `dependencies` some bad categorized dependencies in `devDependencies`. @sneridagh 
+- Run Cookieplone acceptance test with Node 24. @davisagli 
 
 ## 19.0.0-alpha.8 (2025-10-22)
 
@@ -59,8 +59,8 @@ myst:
 - Fix api middleware possible empty values error. @robgietema [#7433](https://github.com/plone/volto/issues/7433)
 - Escape double quotes in POT / PO files @erral [#7476](https://github.com/plone/volto/issues/7476)
 - Fixed corner case where RAZZLE_INTERNAL_API_PATH is set and id is still undefined on first SSR load. @sneridagh [#7478](https://github.com/plone/volto/issues/7478)
-- Reset fieldset.invisible class definition in order to prevent clashes with other CSS frameworks that might have `invisible` as utility. @sneridagh
-- Set type="button" for more widget buttons to prevent them from triggering when Enter is pressed elsewhere in the form. @davisagli
+- Reset fieldset.invisible class definition in order to prevent clashes with other CSS frameworks that might have `invisible` as utility. @sneridagh 
+- Set type="button" for more widget buttons to prevent them from triggering when Enter is pressed elsewhere in the form. @davisagli 
 
 ### Internal
 
@@ -69,8 +69,8 @@ myst:
 - Makes the Cypress commands `getSlateEditorAndType` and `getSlateEditorSelectorAndType` more robust. @wesleybl [#7503](https://github.com/plone/volto/issues/7503)
 - Enhance Cypress commands to trigger focus before typing in Slate editor. @wesleybl [#7506](https://github.com/plone/volto/issues/7506)
 - Fix error and rename test to "should save typed content in the Slate editor". @wesleybl [#7507](https://github.com/plone/volto/issues/7507)
-- Skip link check for URL which blocks traffic from GitHub. @davisagli
-- Use Plone 6.1.3. @sneridagh
+- Skip link check for URL which blocks traffic from GitHub. @davisagli 
+- Use Plone 6.1.3. @sneridagh 
 
 ### Documentation
 
@@ -161,7 +161,7 @@ myst:
 
 - Update eslint-config-prettier past malware versions to "^9.1.2". @kittauri [#7254](https://github.com/plone/volto/issues/7254)
 - Update @testing-library/react to 14.3.1. @wesleybl [#7260](https://github.com/plone/volto/issues/7260)
-- Test with Plone 6.1.2. @davisagli
+- Test with Plone 6.1.2. @davisagli 
 
 ### Documentation
 
@@ -186,7 +186,7 @@ myst:
 - Added the `.error` class to blocks with errors, highlighting them with a red border in edit mode. @alexandreIFB [#7138](https://github.com/plone/volto/issues/7138)
 - Synchronizes versions of Volto dependencies with other packages in the monorepo. @wesleybl [#7184](https://github.com/plone/volto/issues/7184)
 - In the contents view, add a pill to indicate working copies.
-  This only works with `plone.app.iterate` >= 6.2.0. @davisagli
+  This only works with `plone.app.iterate` >= 6.2.0. @davisagli 
 
 ### Bugfix
 
@@ -253,7 +253,7 @@ myst:
 
 ### Internal
 
-- Fixed types of #6826 in build:types. @sneridagh
+- Fixed types of #6826 in build:types. @sneridagh 
 
 ### Documentation
 
