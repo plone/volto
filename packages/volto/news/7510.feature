@@ -1,1 +1,1 @@
-Added more improvements about i18n support to the `volto` package. @macagua
+Added missing translations, improving i18n support for the `volto` package. @macagua
