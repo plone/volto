@@ -1,4 +1,5 @@
 import React from 'react';
+import { defineMessages } from 'react-intl';
 import config from '@plone/volto/registry';
 
 import boldIcon from '@plone/volto/icons/bold.svg';
@@ -44,11 +45,66 @@ import {
 } from './deserialize';
 import { renderLinkElement } from './render';
 
+const messages = defineMessages({
+  Bold: {
+    id: 'Bold',
+    defaultMessage: 'Bold',
+  },
+  Italic: {
+    id: 'Italic',
+    defaultMessage: 'Italic',
+  },
+  Underline: {
+    id: 'Underline',
+    defaultMessage: 'Underline',
+  },
+  Strikethrough: {
+    id: 'Strikethrough',
+    defaultMessage: 'Strikethrough',
+  },
+  Subscript: {
+    id: 'Subscript',
+    defaultMessage: 'Subscript',
+  },
+  Superscript: {
+    id: 'Superscript',
+    defaultMessage: 'Superscript',
+  },
+  Code: {
+    id: 'Code',
+    defaultMessage: 'Code',
+  },
+  Title: {
+    id: 'Title',
+    defaultMessage: 'Title',
+  },
+  Heading4: {
+    id: 'Heading 4',
+    defaultMessage: 'Heading 4',
+  },
+  ClearFormatting: {
+    id: 'Clear formatting',
+    defaultMessage: 'Clear formatting',
+  },
+  NumberedList: {
+    id: 'Numbered list',
+    defaultMessage: 'Numbered list',
+  },
+  BulletedList: {
+    id: 'Bulleted list',
+    defaultMessage: 'Bulleted list',
+  },
+  Subtitle: {
+    id: 'Subtitle',
+    defaultMessage: 'Subtitle',
+  },
+});
+
 // Registry of available buttons
 export const buttons = {
   bold: (props) => (
     <MarkElementButton
-      title="Bold"
+      title={messages.Bold}
       format="strong"
       icon={boldIcon}
       {...props}
@@ -56,7 +112,7 @@ export const buttons = {
   ),
   italic: (props) => (
     <MarkElementButton
-      title="Italic"
+      title={messages.Italic}
       format="em"
       icon={italicIcon}
       {...props}
@@ -64,7 +120,7 @@ export const buttons = {
   ),
   underline: (props) => (
     <MarkElementButton
-      title="Underline"
+      title={messages.Underline}
       format="u"
       icon={underlineIcon}
       {...props}
@@ -72,7 +128,7 @@ export const buttons = {
   ),
   strikethrough: (props) => (
     <MarkElementButton
-      title="Strikethrough"
+      title={messages.Strikethrough}
       format="del"
       icon={strikethroughIcon}
       {...props}
@@ -80,7 +136,7 @@ export const buttons = {
   ),
   sub: (props) => (
     <MarkElementButton
-      title="Subscript"
+      title={messages.Subscript}
       format="sub"
       icon={subindexIcon}
       {...props}
@@ -88,18 +144,23 @@ export const buttons = {
   ),
   sup: (props) => (
     <MarkElementButton
-      title="Superscript"
+      title={messages.Superscript}
       format="sup"
       icon={superindexIcon}
       {...props}
     />
   ),
   code: (props) => (
-    <MarkElementButton title="Code" format="code" icon={codeIcon} {...props} />
+    <MarkElementButton
+      title={messages.Code}
+      format="code"
+      icon={codeIcon}
+      {...props}
+    />
   ),
   'heading-two': (props) => (
     <BlockButton
-      title="Title"
+      title={messages.Title}
       format="h2"
       allowedChildren={config.settings.slate.allowedHeadlineElements}
       icon={headingIcon}
@@ -108,7 +169,7 @@ export const buttons = {
   ),
   'heading-three': (props) => (
     <BlockButton
-      title="Subtitle"
+      title={messages.Subtitle}
       format="h3"
       allowedChildren={config.settings.slate.allowedHeadlineElements}
       icon={subheadingIcon}
@@ -117,7 +178,7 @@ export const buttons = {
   ),
   'heading-four': (props) => (
     <BlockButton
-      title="Heading 4"
+      title={messages.Heading4}
       allowedChildren={config.settings.slate.allowedHeadlineElements}
       format="h4"
       icon={subTextIcon}
@@ -125,18 +186,25 @@ export const buttons = {
     />
   ),
   clearformatting: (props) => (
-    <ClearFormattingButton title="Clear formatting" icon={formatClearIcon} />
+    <ClearFormattingButton
+      title={messages.ClearFormatting}
+      icon={formatClearIcon}
+    />
   ),
   'numbered-list': (props) => (
     <BlockButton
-      title="Numbered list"
+      title={messages.NumberedList}
       format="ol"
       icon={listNumberedIcon}
       {...props}
     />
   ),
   'bulleted-list': (props) => (
-    <BlockButton title="Bulleted list" format="ul" icon={listBulletIcon} />
+    <BlockButton
+      title={messages.BulletedList}
+      format="ul"
+      icon={listBulletIcon}
+    />
   ),
   separator: (props) => <Separator />,
   expando: (props) => <Expando />,

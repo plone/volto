@@ -1,6 +1,14 @@
 import React from 'react';
+import { defineMessages } from 'react-intl';
 import BlockButton from '@plone/volto-slate/editor/ui/BlockButton';
 import quoteIcon from '@plone/volto/icons/quote.svg';
+
+const messages = defineMessages({
+  blockquote: {
+    id: 'Block quote',
+    defaultMessage: 'Block quote',
+  },
+});
 
 // TODO: this needs to use constants for el type
 
@@ -17,7 +25,7 @@ export default function install(config) {
     <BlockButton
       format="blockquote"
       icon={quoteIcon}
-      title="Blockquote"
+      title={messages.blockquote}
       {...props}
     />
   );

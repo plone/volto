@@ -133,7 +133,13 @@ export class Edit extends Component {
     ) {
       Block = blocksConfig?.[type]?.['view'] || ViewDefaultBlock;
     }
-    const schema = blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
+    const blockSchema = blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
+
+    const schema =
+      typeof blockSchema === 'function'
+        ? blockSchema({ ...this.props })
+        : blockSchema;
+
     const blockHasOwnFocusManagement =
       blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
