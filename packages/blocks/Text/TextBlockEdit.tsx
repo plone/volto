@@ -1,13 +1,13 @@
 import type { BlockEditProps } from '@plone/types';
 import { PlateEditor, type Value } from '@plone/plate/components/editor';
-import config from '@plone/registry';
+import plateBlockConfig from '@plone/plate/config/presets/block';
 
 const TextBlockEdit = (props: BlockEditProps) => {
   const { data, setBlock } = props;
 
   return (
     <PlateEditor
-      editorConfig={config.settings.plate.block.editorConfig}
+      editorConfig={plateBlockConfig.editorConfig}
       value={data.value as Value}
       onChange={(options) => {
         setBlock({ ...data, value: options.value });

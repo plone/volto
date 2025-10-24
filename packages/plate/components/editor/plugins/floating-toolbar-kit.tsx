@@ -2,8 +2,7 @@ import { createPlatePlugin } from 'platejs/react';
 
 import { FloatingToolbar } from '../../ui/floating-toolbar';
 import { FloatingToolbarButtons as DefaultFloatingToolbarButtons } from '../../ui/floating-toolbar-buttons';
-
-import config from '@plone/registry';
+import plateBlockConfig from '../../../config/presets/block';
 
 export const FloatingToolbarKit = [
   createPlatePlugin({
@@ -11,7 +10,7 @@ export const FloatingToolbarKit = [
     render: {
       afterEditable: () => {
         const FloatingToolbarButtons =
-          config.settings.plate?.block?.floatingToolbarButtons ||
+          plateBlockConfig.floatingToolbarButtons ||
           DefaultFloatingToolbarButtons;
         return (
           <FloatingToolbar>

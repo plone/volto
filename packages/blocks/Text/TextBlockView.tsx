@@ -1,14 +1,13 @@
 import type { BlockViewProps } from '@plone/types';
 import { PlateRenderer, type Value } from '@plone/plate/components/editor';
-
-import config from '@plone/registry';
+import plateBlockConfig from '@plone/plate/config/presets/block';
 
 const TextBlockView = (props: BlockViewProps) => {
   const { data } = props;
 
   return data?.value ? (
     <PlateRenderer
-      editorConfig={config.settings.plate.block.rendererConfig}
+      editorConfig={plateBlockConfig.rendererConfig}
       value={data.value as Value}
     />
   ) : null;

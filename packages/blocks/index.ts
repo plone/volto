@@ -1,5 +1,4 @@
 import type { ConfigType } from '@plone/registry';
-import installPlate from './config/plate';
 
 import TitleBlockInfo from './Title';
 import TextBlockInfo from './Text';
@@ -7,8 +6,6 @@ import ImageBlockInfo from './Image';
 import TeaserBlockInfo from './Teaser';
 
 export default function install(config: ConfigType) {
-  installPlate(config);
-
   // @ts-expect-error this is a quick hack for now
   // Initializing blocksConfig to empty.
   // We of course are assuming that this package will be installed before any
