@@ -699,6 +699,11 @@ msgstr "Escolha um arquivo"
 msgid "Clear"
 msgstr "Limpar"
 
+#. Default: "Clear URL browser"
+#: helpers/MessageLabels/MessageLabels
+msgid "Clear URL browser"
+msgstr ""
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -1101,6 +1106,12 @@ msgstr "Excluir coluna"
 msgid "Delete condition"
 msgstr "Remover condição"
 
+#. Default: "Delete file"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Delete file"
+msgstr ""
+
 #. Default: "Delete row"
 #: config/Blocks
 msgid "Delete row"
@@ -1177,9 +1188,14 @@ msgstr "Desabilitar a aplicação a subpastas"
 msgid "Disable creation of new blocks after this block"
 msgstr ""
 
-#. Default: "Disable drag & drop on this block"
+#. Default: "Disable deletion of this block"
 #: components/manage/Blocks/Block/Schema
-msgid "Disable drag & drop on this block"
+msgid "Disable deletion of this block"
+msgstr ""
+
+#. Default: "Disable drag and drop on this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable drag and drop on this block"
 msgstr ""
 
 #. Default: "Disable editing on this block"
@@ -1247,11 +1263,6 @@ msgstr "Documento"
 #: config/Views
 msgid "Document view"
 msgstr "Visão do Documento"
-
-#. Default: "Don't allow deletion of this block"
-#: components/manage/Blocks/Block/Schema
-msgid "Don't allow deletion of this block"
-msgstr ""
 
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
@@ -2272,6 +2283,7 @@ msgstr "Desconectado"
 
 #. Default: "Login"
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Login"
 msgstr "Entrar"
 
@@ -2701,9 +2713,14 @@ msgstr "Ok"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Somente caracteres de bytes de 7 bits são permitidos. Não pode conter letras maiúsculas, caracteres especiais: <, >, &, #, /, ?, ou outros que são ilegais em URLs. Não pode começar com: , aq, @@, ++. Não pode terminar com __. Não pode ser: request, contributors, ., .., “”. Não pode conter quebras de linha."
 
-#. Default: "Open Fullscreen"
+#. Default: "Open URL browser"
+#: helpers/MessageLabels/MessageLabels
+msgid "Open URL browser"
+msgstr ""
+
+#. Default: "Open full screen"
 #: components/manage/Blocks/Listing/ImageGallery
-msgid "Open Fullscreen"
+msgid "Open full screen"
 msgstr ""
 
 #. Default: "Open in a new tab"
@@ -2824,9 +2841,9 @@ msgstr "Pessoas responsáveis pela criação do conteúdo deste item. Por favor,
 msgid "Placeholder"
 msgstr "Texto de exemplo"
 
-#. Default: "Play or Pause Slideshow"
+#. Default: "Play or pause slideshow"
 #: components/manage/Blocks/Listing/ImageGallery
-msgid "Play or Pause Slideshow"
+msgid "Play or pause slideshow"
 msgstr ""
 
 #. Default: "Please choose an existing content as source for this element"
@@ -2968,15 +2985,15 @@ msgstr "Reinsira a senha. Certifique-se de que as senhas são idênticas."
 msgid "Read More…"
 msgstr "Leia Mais…"
 
+#. Default: "Read only"
+#: components/manage/Blocks/Block/Schema
+msgid "Read only"
+msgstr ""
+
 #. Default: "Read only for this type of relation."
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "Read only for this type of relation."
 msgstr "Apenas leitura para este tipo de relacionamento."
-
-#. Default: "Read-only"
-#: components/manage/Blocks/Block/Schema
-msgid "Read-only"
-msgstr ""
 
 #. Default: "Rearrange items by…"
 #: components/manage/Contents/Contents
@@ -3027,6 +3044,7 @@ msgstr "Atualizar o conteúdo de origem"
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
+#: helpers/MessageLabels/MessageLabels
 msgid "Register"
 msgstr "Cadastro"
 
@@ -4776,11 +4794,6 @@ msgstr "Adicione vários URLs alternativos de uma só vez fazendo upload de um a
 msgid "checkboxFacet"
 msgstr "Caixa de seleção"
 
-#. Default: "Clear URL Browser"
-#: helpers/MessageLabels/MessageLabels
-msgid "clearUrlBrowser"
-msgstr ""
-
 #. Default: "column"
 #: components/manage/Blocks/Grid/templates
 msgid "column"
@@ -4810,12 +4823,6 @@ msgstr "{countofrelation} quebra {countofrelation, plural, one {relation} outras
 #: config/Blocks
 msgid "daterangeFacet"
 msgstr "Intervalo de datas"
-
-#. Default: "delete file"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "delete file"
-msgstr ""
 
 #. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
@@ -5033,11 +5040,6 @@ msgstr "Carregando"
 msgid "log in"
 msgstr "acessar"
 
-#. Default: "login"
-#: helpers/MessageLabels/MessageLabels
-msgid "login"
-msgstr ""
-
 #. Default: "Maps"
 #: config/Blocks
 msgid "maps"
@@ -5101,11 +5103,6 @@ msgstr "O valor deve ser numérico"
 msgid "of the month"
 msgstr "do mês"
 
-#. Default: "Open URL Browser"
-#: helpers/MessageLabels/MessageLabels
-msgid "openUrlBrowser"
-msgstr ""
-
 #. Default: "or try a different page."
 #: error
 msgid "or try a different page."
@@ -5160,11 +5157,6 @@ msgstr "referências"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
 msgstr "refere-se a"
-
-#. Default: "register"
-#: helpers/MessageLabels/MessageLabels
-msgid "register"
-msgstr ""
 
 #. Default: "Result count"
 #: components/manage/Contents/Contents

@@ -699,6 +699,11 @@ msgstr "Alegeți un fișier"
 msgid "Clear"
 msgstr "Curațați"
 
+#. Default: "Clear URL browser"
+#: helpers/MessageLabels/MessageLabels
+msgid "Clear URL browser"
+msgstr ""
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -1101,6 +1106,12 @@ msgstr "Șterge coloană"
 msgid "Delete condition"
 msgstr "Ștergeți condiția"
 
+#. Default: "Delete file"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Delete file"
+msgstr ""
+
 #. Default: "Delete row"
 #: config/Blocks
 msgid "Delete row"
@@ -1177,9 +1188,14 @@ msgstr "Dezactivați aplicarea la subdirectoare"
 msgid "Disable creation of new blocks after this block"
 msgstr ""
 
-#. Default: "Disable drag & drop on this block"
+#. Default: "Disable deletion of this block"
 #: components/manage/Blocks/Block/Schema
-msgid "Disable drag & drop on this block"
+msgid "Disable deletion of this block"
+msgstr ""
+
+#. Default: "Disable drag and drop on this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable drag and drop on this block"
 msgstr ""
 
 #. Default: "Disable editing on this block"
@@ -1247,11 +1263,6 @@ msgstr "Document"
 #: config/Views
 msgid "Document view"
 msgstr "Vizualizare document"
-
-#. Default: "Don't allow deletion of this block"
-#: components/manage/Blocks/Block/Schema
-msgid "Don't allow deletion of this block"
-msgstr ""
 
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
@@ -2272,6 +2283,7 @@ msgstr "Deconectat"
 
 #. Default: "Login"
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Login"
 msgstr "Autentificare"
 
@@ -2701,9 +2713,14 @@ msgstr "Ok"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Doar caractere de 7 biți sunt permise. Nu poate conține caractere majuscule, caractere speciale: <, >, &, #, /, ?, sau alte caractere care sunt interzise în URL-uri. Nu poate începe cu: _, aq_, @@, ++. Nu poate să se termine cu __. Nu poate fi: request, contributors, ., .., "". Nu poate conține linii noi."
 
-#. Default: "Open Fullscreen"
+#. Default: "Open URL browser"
+#: helpers/MessageLabels/MessageLabels
+msgid "Open URL browser"
+msgstr ""
+
+#. Default: "Open full screen"
 #: components/manage/Blocks/Listing/ImageGallery
-msgid "Open Fullscreen"
+msgid "Open full screen"
 msgstr ""
 
 #. Default: "Open in a new tab"
@@ -2824,9 +2841,9 @@ msgstr "Persoane responsabile de crearea conținutului acestui articol. Vă rug�
 msgid "Placeholder"
 msgstr ""
 
-#. Default: "Play or Pause Slideshow"
+#. Default: "Play or pause slideshow"
 #: components/manage/Blocks/Listing/ImageGallery
-msgid "Play or Pause Slideshow"
+msgid "Play or pause slideshow"
 msgstr ""
 
 #. Default: "Please choose an existing content as source for this element"
@@ -2968,15 +2985,15 @@ msgstr "Reintroduceți parola. Asigurați-vă că parolele sunt identice."
 msgid "Read More…"
 msgstr "Citește mai mult …"
 
+#. Default: "Read only"
+#: components/manage/Blocks/Block/Schema
+msgid "Read only"
+msgstr ""
+
 #. Default: "Read only for this type of relation."
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "Read only for this type of relation."
 msgstr "Doar citire pentru acest tip de relație."
-
-#. Default: "Read-only"
-#: components/manage/Blocks/Block/Schema
-msgid "Read-only"
-msgstr ""
 
 #. Default: "Rearrange items by…"
 #: components/manage/Contents/Contents
@@ -3027,6 +3044,7 @@ msgstr "Reîncarcă conținutul sursă"
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
+#: helpers/MessageLabels/MessageLabels
 msgid "Register"
 msgstr "Înregistrare"
 
@@ -4776,11 +4794,6 @@ msgstr "Adăugați mai multe URL-uri alternative în același timp prin încărc
 msgid "checkboxFacet"
 msgstr "Casetă de selectare"
 
-#. Default: "Clear URL Browser"
-#: helpers/MessageLabels/MessageLabels
-msgid "clearUrlBrowser"
-msgstr ""
-
 #. Default: "column"
 #: components/manage/Blocks/Grid/templates
 msgid "column"
@@ -4810,12 +4823,6 @@ msgstr "{countofrelation} relație defectă {countofrelation, plural, one {relat
 #: config/Blocks
 msgid "daterangeFacet"
 msgstr "Interval de date"
-
-#. Default: "delete file"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "delete file"
-msgstr ""
 
 #. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
@@ -5033,11 +5040,6 @@ msgstr "încărcare"
 msgid "log in"
 msgstr "autentificați-vă"
 
-#. Default: "login"
-#: helpers/MessageLabels/MessageLabels
-msgid "login"
-msgstr ""
-
 #. Default: "Maps"
 #: config/Blocks
 msgid "maps"
@@ -5101,11 +5103,6 @@ msgstr "număr"
 msgid "of the month"
 msgstr "al lunii"
 
-#. Default: "Open URL Browser"
-#: helpers/MessageLabels/MessageLabels
-msgid "openUrlBrowser"
-msgstr ""
-
 #. Default: "or try a different page."
 #: error
 msgid "or try a different page."
@@ -5159,11 +5156,6 @@ msgstr "referințe"
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
-msgstr ""
-
-#. Default: "register"
-#: helpers/MessageLabels/MessageLabels
-msgid "register"
 msgstr ""
 
 #. Default: "Result count"

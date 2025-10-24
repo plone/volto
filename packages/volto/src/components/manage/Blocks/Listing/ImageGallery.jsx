@@ -20,12 +20,12 @@ import { useIntl } from 'react-intl';
 
 const messages = defineMessages({
   playOrPauseSlideshow: {
-    id: 'Play or Pause Slideshow',
-    defaultMessage: 'Play or Pause Slideshow',
+    id: 'Play or pause slideshow',
+    defaultMessage: 'Play or pause slideshow',
   },
   openFullscreen: {
-    id: 'Open Fullscreen',
-    defaultMessage: 'Open Fullscreen',
+    id: 'Open full screen',
+    defaultMessage: 'Open full screen',
   },
 });
 

@@ -63,12 +63,12 @@ export const messages = defineMessages({
     defaultMessage: 'Cancel',
   },
   clearUrlBrowser: {
-    id: 'clearUrlBrowser',
-    defaultMessage: 'Clear URL Browser',
+    id: 'Clear URL browser',
+    defaultMessage: 'Clear URL browser',
   },
   openUrlBrowser: {
-    id: 'openUrlBrowser',
-    defaultMessage: 'Open URL Browser',
+    id: 'Open URL browser',
+    defaultMessage: 'Open URL browser',
   },
   thereWereSomeErrors: {
     id: 'There were some errors.',
@@ -190,12 +190,12 @@ export const messages = defineMessages({
     defaultMessage: 'Roles',
   },
   login: {
-    id: 'login',
-    defaultMessage: 'login',
+    id: 'Login',
+    defaultMessage: 'Login',
   },
   register: {
-    id: 'register',
-    defaultMessage: 'register',
+    id: 'Register',
+    defaultMessage: 'Register',
   },
   toolbar: {
     id: 'Toolbar',

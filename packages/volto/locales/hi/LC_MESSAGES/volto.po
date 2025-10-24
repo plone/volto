@@ -693,6 +693,11 @@ msgstr "एक फ़ाइल चुनें"
 msgid "Clear"
 msgstr "साफ़ करें"
 
+#. Default: "Clear URL browser"
+#: helpers/MessageLabels/MessageLabels
+msgid "Clear URL browser"
+msgstr ""
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -1095,6 +1100,12 @@ msgstr "कॉलमम हटाएँ"
 msgid "Delete condition"
 msgstr "शर्त हटाई गई"
 
+#. Default: "Delete file"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Delete file"
+msgstr ""
+
 #. Default: "Delete row"
 #: config/Blocks
 msgid "Delete row"
@@ -1171,9 +1182,14 @@ msgstr "उपफोल्डर्स पर लागू करने को �
 msgid "Disable creation of new blocks after this block"
 msgstr ""
 
-#. Default: "Disable drag & drop on this block"
+#. Default: "Disable deletion of this block"
 #: components/manage/Blocks/Block/Schema
-msgid "Disable drag & drop on this block"
+msgid "Disable deletion of this block"
+msgstr ""
+
+#. Default: "Disable drag and drop on this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable drag and drop on this block"
 msgstr ""
 
 #. Default: "Disable editing on this block"
@@ -1241,11 +1257,6 @@ msgstr "दस्तावेज़"
 #: config/Views
 msgid "Document view"
 msgstr "दस्तावेज़ दृश्य"
-
-#. Default: "Don't allow deletion of this block"
-#: components/manage/Blocks/Block/Schema
-msgid "Don't allow deletion of this block"
-msgstr ""
 
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
@@ -2266,6 +2277,7 @@ msgstr "लॉग आउट"
 
 #. Default: "Login"
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Login"
 msgstr "लॉग इन"
 
@@ -2695,9 +2707,14 @@ msgstr "ठीक है"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "केवल 7-बिट बाइट वाले वर्ण प्रयोग किए जा सकते हैं। अपरकेस अक्षर, विशेष वर्ण: <, >, &, #, /, ?, या अन्य जो यूआरएल में अवैध हैं, का प्रयोग नहीं किया जा सकता। नहीं शुरू हो सकता: _, aq_, @@, ++। __ के साथ समाप्त नहीं हो सकता। नहीं हो सकता: request,contributors, ., .., ""। नई पंक्तियों को नहीं शामिल किया जा सकता।"
 
-#. Default: "Open Fullscreen"
+#. Default: "Open URL browser"
+#: helpers/MessageLabels/MessageLabels
+msgid "Open URL browser"
+msgstr ""
+
+#. Default: "Open full screen"
 #: components/manage/Blocks/Listing/ImageGallery
-msgid "Open Fullscreen"
+msgid "Open full screen"
 msgstr ""
 
 #. Default: "Open in a new tab"
@@ -2818,9 +2835,9 @@ msgstr "इस आइटम की कंटेंट बनाने के ल
 msgid "Placeholder"
 msgstr ""
 
-#. Default: "Play or Pause Slideshow"
+#. Default: "Play or pause slideshow"
 #: components/manage/Blocks/Listing/ImageGallery
-msgid "Play or Pause Slideshow"
+msgid "Play or pause slideshow"
 msgstr ""
 
 #. Default: "Please choose an existing content as source for this element"
@@ -2962,15 +2979,15 @@ msgstr "पासवर्ड फिर से दर्ज करें। प�
 msgid "Read More…"
 msgstr "अधिक पढ़ें…"
 
+#. Default: "Read only"
+#: components/manage/Blocks/Block/Schema
+msgid "Read only"
+msgstr ""
+
 #. Default: "Read only for this type of relation."
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "Read only for this type of relation."
 msgstr "केवल इस प्रकार के संबंध के लिए सिर्फ पढ़ने के लिए।"
-
-#. Default: "Read-only"
-#: components/manage/Blocks/Block/Schema
-msgid "Read-only"
-msgstr ""
 
 #. Default: "Rearrange items by…"
 #: components/manage/Contents/Contents
@@ -3021,6 +3038,7 @@ msgstr ""
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
+#: helpers/MessageLabels/MessageLabels
 msgid "Register"
 msgstr "रजिस्टर करें"
 
@@ -4770,11 +4788,6 @@ msgstr ""
 msgid "checkboxFacet"
 msgstr "चेकबॉक्स"
 
-#. Default: "Clear URL Browser"
-#: helpers/MessageLabels/MessageLabels
-msgid "clearUrlBrowser"
-msgstr ""
-
 #. Default: "column"
 #: components/manage/Blocks/Grid/templates
 msgid "column"
@@ -4804,12 +4817,6 @@ msgstr "{countofrelation} टूटी हुई {countofrelation, plural, one {
 #: config/Blocks
 msgid "daterangeFacet"
 msgstr "तिथि सीमा"
-
-#. Default: "delete file"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "delete file"
-msgstr ""
 
 #. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
@@ -5027,11 +5034,6 @@ msgstr "लोड हो रहा है"
 msgid "log in"
 msgstr "लॉग इन"
 
-#. Default: "login"
-#: helpers/MessageLabels/MessageLabels
-msgid "login"
-msgstr ""
-
 #. Default: "Maps"
 #: config/Blocks
 msgid "maps"
@@ -5095,11 +5097,6 @@ msgstr "इनपुट संख्या होनी चाहिए"
 msgid "of the month"
 msgstr "माह का"
 
-#. Default: "Open URL Browser"
-#: helpers/MessageLabels/MessageLabels
-msgid "openUrlBrowser"
-msgstr ""
-
 #. Default: "or try a different page."
 #: error
 msgid "or try a different page."
@@ -5153,11 +5150,6 @@ msgstr "संदर्भ"
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
-msgstr ""
-
-#. Default: "register"
-#: helpers/MessageLabels/MessageLabels
-msgid "register"
 msgstr ""
 
 #. Default: "Result count"

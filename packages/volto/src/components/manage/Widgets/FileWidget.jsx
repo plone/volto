@@ -39,8 +39,8 @@ const messages = defineMessages({
     defaultMessage: 'Drop file here to replace the existing file',
   },
   deleteFile: {
-    id: 'delete file',
-    defaultMessage: 'delete file',
+    id: 'Delete file',
+    defaultMessage: 'Delete file',
   },
   fileDrag: {
     id: 'Drop file here to upload a new file',
