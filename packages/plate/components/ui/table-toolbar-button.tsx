@@ -56,7 +56,12 @@ export function TableToolbarButton(props: DropdownMenuProps) {
       >
         <DropdownMenuGroup>
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger className="gap-2 data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+            <DropdownMenuSubTrigger
+              className={`
+                gap-2
+                data-[disabled]:pointer-events-none data-[disabled]:opacity-50
+              `}
+            >
               <Grid3x3Icon className="size-4" />
               <span>Table</span>
             </DropdownMenuSubTrigger>
@@ -67,7 +72,10 @@ export function TableToolbarButton(props: DropdownMenuProps) {
 
           <DropdownMenuSub>
             <DropdownMenuSubTrigger
-              className="gap-2 data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+              className={`
+                gap-2
+                data-[disabled]:pointer-events-none data-[disabled]:opacity-50
+              `}
               disabled={!tableSelected}
             >
               <div className="size-4" />
@@ -101,7 +109,10 @@ export function TableToolbarButton(props: DropdownMenuProps) {
 
           <DropdownMenuSub>
             <DropdownMenuSubTrigger
-              className="gap-2 data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+              className={`
+                gap-2
+                data-[disabled]:pointer-events-none data-[disabled]:opacity-50
+              `}
               disabled={!tableSelected}
             >
               <div className="size-4" />
@@ -146,7 +157,10 @@ export function TableToolbarButton(props: DropdownMenuProps) {
 
           <DropdownMenuSub>
             <DropdownMenuSubTrigger
-              className="gap-2 data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+              className={`
+                gap-2
+                data-[disabled]:pointer-events-none data-[disabled]:opacity-50
+              `}
               disabled={!tableSelected}
             >
               <div className="size-4" />
@@ -246,7 +260,7 @@ function TablePicker() {
               <div
                 key={`(${rowIndex},${columIndex})`}
                 className={cn(
-                  'bg-secondary col-span-1 size-3 border border-solid',
+                  'col-span-1 size-3 border border-solid bg-secondary',
                   !!value && 'border-current',
                 )}
                 onMouseMove={() => {

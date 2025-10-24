@@ -11,7 +11,7 @@ export function CalloutElementStatic({
 }: SlateElementProps) {
   return (
     <SlateElement
-      className={cn('bg-muted my-1 flex rounded-sm p-4 pl-3', className)}
+      className={cn('my-1 flex rounded-sm bg-muted p-4 pl-3', className)}
       style={{
         backgroundColor: props.element.backgroundColor as any,
       }}

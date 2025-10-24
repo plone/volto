@@ -201,7 +201,11 @@ function Gutter({
       {...props}
       className={cn(
         'slate-gutterLeft',
-        'absolute top-0 z-50 flex h-full -translate-x-full cursor-text hover:opacity-100 sm:opacity-0',
+        `
+          absolute top-0 z-50 flex h-full -translate-x-full cursor-text
+          hover:opacity-100
+          sm:opacity-0
+        `,
         getPluginByType(editor, element.type)?.node.isContainer
           ? 'group-hover/container:opacity-100'
           : 'group-hover:opacity-100',

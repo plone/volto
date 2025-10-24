@@ -2,6 +2,17 @@
   "layout": {
     "languageSwitcher": {
       "switchTo": "Passa a {{ lang }}"
+    },
+    "contenttypes": {
+      "common": {
+        "size": "Dimensione:"
+      },
+      "image": {
+        "download": "Clicca per scaricare l'immagine a grandezza intera"
+      },
+      "file": {
+        "download": "Clicca per scaricare il file"
+      }
     }
   }
 }

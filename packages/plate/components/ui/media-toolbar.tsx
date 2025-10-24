@@ -27,7 +27,12 @@ import { Separator } from './separator';
 import { CaptionButton } from './caption';
 
 const inputVariants = cva(
-  'flex h-[28px] w-full rounded-md border-none bg-transparent px-1.5 py-1 text-base placeholder:text-muted-foreground focus-visible:ring-transparent focus-visible:outline-none md:text-sm',
+  `
+    flex h-[28px] w-full rounded-md border-none bg-transparent px-1.5 py-1 text-base
+    placeholder:text-muted-foreground
+    focus-visible:ring-transparent focus-visible:outline-none
+    md:text-sm
+  `,
 );
 
 export function MediaToolbar({
@@ -75,7 +80,7 @@ export function MediaToolbar({
         {isEditing ? (
           <div className="flex w-[330px] flex-col">
             <div className="flex items-center">
-              <div className="text-muted-foreground flex items-center pr-1 pl-2">
+              <div className="flex items-center pr-1 pl-2 text-muted-foreground">
                 <Link className="size-4" />
               </div>
 

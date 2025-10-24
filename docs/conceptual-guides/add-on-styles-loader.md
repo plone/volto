@@ -25,7 +25,7 @@ This file is also a CSS file containing the styles that you want your app to loa
 `@plone/registry` has a helper utility `createAddonsStyleLoader` which generates an add-ons loader file.
 That file contains the aggregated files from all the registered add-ons, keeping the order in which they were defined.
 
-This loader is also a `.css` file and is placed in the root of your application.
+This loader is also a `.css` file and is placed in the {file}`.plone` directory in the root of your application.
 By default, it's called {file}`publicui.css` for the Public UI and {file}`cmsui.css` for the CMSUI.
 
 ```{important}

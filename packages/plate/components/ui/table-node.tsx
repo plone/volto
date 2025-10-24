@@ -116,7 +116,11 @@ export const TableElement = withHOC(
         {...props}
         className={cn(
           'overflow-x-auto py-5',
-          hasControls && '-ml-2 *:data-[slot=block-selection]:left-2',
+          hasControls &&
+            `
+              -ml-2
+              *:data-[slot=block-selection]:left-2
+            `,
         )}
         style={{ paddingLeft: marginLeft }}
       >
@@ -175,7 +179,11 @@ function TableFloatingToolbar({
         {...props}
       >
         <Toolbar
-          className="scrollbar-hide bg-popover flex w-auto max-w-[80vw] flex-row overflow-x-auto rounded-md border p-1 shadow-md print:hidden"
+          className={`
+            scrollbar-hide flex w-auto max-w-[80vw] flex-row overflow-x-auto rounded-md border
+            bg-popover p-1 shadow-md
+            print:hidden
+          `}
           contentEditable={false}
         >
           <ToolbarGroup>
@@ -481,9 +489,19 @@ function RowDragHandle({ dragRef }: { dragRef: React.Ref<any> }) {
       ref={dragRef}
       variant="outline"
       className={cn(
-        'absolute top-1/2 left-0 z-51 h-6 w-4 -translate-y-1/2 p-0 focus-visible:ring-0 focus-visible:ring-offset-0',
-        'cursor-grab active:cursor-grabbing',
-        'opacity-0 transition-opacity duration-100 group-hover/row:opacity-100 group-has-data-[resizing="true"]/row:opacity-0',
+        `
+          absolute top-1/2 left-0 z-51 h-6 w-4 -translate-y-1/2 p-0
+          focus-visible:ring-0 focus-visible:ring-offset-0
+        `,
+        `
+          cursor-grab
+          active:cursor-grabbing
+        `,
+        `
+          opacity-0 transition-opacity duration-100
+          group-hover/row:opacity-100
+          group-has-data-[resizing="true"]/row:opacity-0
+        `,
       )}
       onClick={() => {
         editor.tf.select(element);
@@ -502,7 +520,7 @@ function RowDropLine() {
   return (
     <div
       className={cn(
-        'bg-brand/50 absolute inset-x-0 left-2 z-50 h-0.5',
+        'absolute inset-x-0 left-2 z-50 h-0.5 bg-brand/50',
         dropLine === 'top' ? '-top-px' : '-bottom-px',
       )}
     />
@@ -547,16 +565,20 @@ export function TableCellElement({
       {...props}
       as={isHeader ? 'th' : 'td'}
       className={cn(
-        'bg-background h-full overflow-visible border-none p-0',
+        'h-full overflow-visible border-none bg-background p-0',
         element.background ? 'bg-(--cellBackground)' : 'bg-background',
-        isHeader && 'text-left *:m-0',
+        isHeader &&
+          `
+            text-left
+            *:m-0
+          `,
         'before:size-full',
-        selected && 'before:bg-brand/5 before:z-10',
+        selected && 'before:z-10 before:bg-brand/5',
         "before:absolute before:box-border before:content-[''] before:select-none",
-        borders.bottom?.size && `before:border-b-border before:border-b`,
-        borders.right?.size && `before:border-r-border before:border-r`,
-        borders.left?.size && `before:border-l-border before:border-l`,
-        borders.top?.size && `before:border-t-border before:border-t`,
+        borders.bottom?.size && `before:border-b before:border-b-border`,
+        borders.right?.size && `before:border-r before:border-r-border`,
+        borders.left?.size && `before:border-l before:border-l-border`,
+        borders.top?.size && `before:border-t before:border-t-border`,
       )}
       style={
         {
@@ -602,7 +624,7 @@ export function TableCellElement({
 
               <div
                 className={cn(
-                  'bg-ring absolute top-0 z-30 hidden h-full w-1',
+                  'absolute top-0 z-30 hidden h-full w-1 bg-ring',
                   'right-[-1.5px]',
                   columnResizeVariants({ colIndex: colIndex as any }),
                 )}
@@ -610,9 +632,13 @@ export function TableCellElement({
               {colIndex === 0 && (
                 <div
                   className={cn(
-                    'bg-ring absolute top-0 z-30 h-full w-1',
+                    'absolute top-0 z-30 h-full w-1 bg-ring',
                     'left-[-1.5px]',
-                    'animate-in fade-in hidden group-has-[[data-resizer-left]:hover]/table:block group-has-[[data-resizer-left][data-resizing="true"]]/table:block',
+                    `
+                      hidden animate-in fade-in
+                      group-has-[[data-resizer-left]:hover]/table:block
+                      group-has-[[data-resizer-left][data-resizing="true"]]/table:block
+                    `,
                   )}
                 />
               )}
@@ -637,17 +663,50 @@ export function TableCellHeaderElement(
 const columnResizeVariants = cva('hidden animate-in fade-in', {
   variants: {
     colIndex: {
-      0: 'group-has-[[data-col="0"]:hover]/table:block group-has-[[data-col="0"][data-resizing="true"]]/table:block',
-      1: 'group-has-[[data-col="1"]:hover]/table:block group-has-[[data-col="1"][data-resizing="true"]]/table:block',
-      2: 'group-has-[[data-col="2"]:hover]/table:block group-has-[[data-col="2"][data-resizing="true"]]/table:block',
-      3: 'group-has-[[data-col="3"]:hover]/table:block group-has-[[data-col="3"][data-resizing="true"]]/table:block',
-      4: 'group-has-[[data-col="4"]:hover]/table:block group-has-[[data-col="4"][data-resizing="true"]]/table:block',
-      5: 'group-has-[[data-col="5"]:hover]/table:block group-has-[[data-col="5"][data-resizing="true"]]/table:block',
-      6: 'group-has-[[data-col="6"]:hover]/table:block group-has-[[data-col="6"][data-resizing="true"]]/table:block',
-      7: 'group-has-[[data-col="7"]:hover]/table:block group-has-[[data-col="7"][data-resizing="true"]]/table:block',
-      8: 'group-has-[[data-col="8"]:hover]/table:block group-has-[[data-col="8"][data-resizing="true"]]/table:block',
-      9: 'group-has-[[data-col="9"]:hover]/table:block group-has-[[data-col="9"][data-resizing="true"]]/table:block',
-      10: 'group-has-[[data-col="10"]:hover]/table:block group-has-[[data-col="10"][data-resizing="true"]]/table:block',
+      0: `
+        group-has-[[data-col="0"]:hover]/table:block
+        group-has-[[data-col="0"][data-resizing="true"]]/table:block
+      `,
+      1: `
+        group-has-[[data-col="1"]:hover]/table:block
+        group-has-[[data-col="1"][data-resizing="true"]]/table:block
+      `,
+      2: `
+        group-has-[[data-col="2"]:hover]/table:block
+        group-has-[[data-col="2"][data-resizing="true"]]/table:block
+      `,
+      3: `
+        group-has-[[data-col="3"]:hover]/table:block
+        group-has-[[data-col="3"][data-resizing="true"]]/table:block
+      `,
+      4: `
+        group-has-[[data-col="4"]:hover]/table:block
+        group-has-[[data-col="4"][data-resizing="true"]]/table:block
+      `,
+      5: `
+        group-has-[[data-col="5"]:hover]/table:block
+        group-has-[[data-col="5"][data-resizing="true"]]/table:block
+      `,
+      6: `
+        group-has-[[data-col="6"]:hover]/table:block
+        group-has-[[data-col="6"][data-resizing="true"]]/table:block
+      `,
+      7: `
+        group-has-[[data-col="7"]:hover]/table:block
+        group-has-[[data-col="7"][data-resizing="true"]]/table:block
+      `,
+      8: `
+        group-has-[[data-col="8"]:hover]/table:block
+        group-has-[[data-col="8"][data-resizing="true"]]/table:block
+      `,
+      9: `
+        group-has-[[data-col="9"]:hover]/table:block
+        group-has-[[data-col="9"][data-resizing="true"]]/table:block
+      `,
+      10: `
+        group-has-[[data-col="10"]:hover]/table:block
+        group-has-[[data-col="10"][data-resizing="true"]]/table:block
+      `,
     },
   },
 });

@@ -1,6 +1,6 @@
 @import './simple/reset.css';
 @import './simple/base.css';
-@import '@plone/components/src/styles/basic/main.css';
+@import './simple/components.css';
 
 :root {
   --background: hsl(0 0% 100%);

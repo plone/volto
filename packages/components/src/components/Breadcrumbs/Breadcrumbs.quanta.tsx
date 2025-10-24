@@ -29,7 +29,10 @@ export function Breadcrumb(
       {...props}
       className={composeTailwindRenderProps(
         props.className,
-        'flex items-center gap-1 [&_a>svg]:mx-1 [&_a>svg]:inline [&_a>svg]:align-text-top',
+        `
+          flex items-center gap-1
+          [&_a>svg]:mx-1 [&_a>svg]:inline [&_a>svg]:align-text-top
+        `,
       )}
     >
       {({ isCurrent }) => (

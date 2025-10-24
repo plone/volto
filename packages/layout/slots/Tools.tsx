@@ -24,8 +24,8 @@ const HeaderTools = () => {
       url: '/logout',
     },
   ];
-  return (
-    // Inline styles since this is temporary during seven development
+  // Inline styles since this is temporary during seven development
+  return import.meta.env.DEV ? (
     <div style={{ display: 'flex', gap: '16px' }}>
       {links.map((tool) => (
         <Link key={tool.id} href={tool.url}>
@@ -34,7 +34,7 @@ const HeaderTools = () => {
         </Link>
       ))}
     </div>
-  );
+  ) : null;
 };
 
 export default HeaderTools;

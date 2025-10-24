@@ -140,15 +140,23 @@ export const PlaceholderElement = withHOC(
           // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
           <div
             className={cn(
-              'bg-muted hover:bg-primary/10 flex cursor-pointer items-center rounded-sm p-3 pr-9 select-none',
+              `
+                flex cursor-pointer items-center rounded-sm bg-muted p-3 pr-9 select-none
+                hover:bg-primary/10
+              `,
             )}
             onClick={() => !loading && openFilePicker()}
             contentEditable={false}
           >
-            <div className="text-muted-foreground/80 relative mr-3 flex [&_svg]:size-6">
+            <div
+              className={`
+                relative mr-3 flex text-muted-foreground/80
+                [&_svg]:size-6
+              `}
+            >
               {currentContent.icon}
             </div>
-            <div className="text-muted-foreground text-sm whitespace-nowrap">
+            <div className="text-sm whitespace-nowrap text-muted-foreground">
               <div>
                 {loading ? uploadingFile?.name : currentContent.content}
               </div>
@@ -158,7 +166,7 @@ export const PlaceholderElement = withHOC(
                   <div>{formatBytes(uploadingFile?.size ?? 0)}</div>
                   <div>–</div>
                   <div className="flex items-center">
-                    <Loader2Icon className="text-muted-foreground mr-1 size-3.5 animate-spin" />
+                    <Loader2Icon className="mr-1 size-3.5 animate-spin text-muted-foreground" />
                     {progress ?? 0}%
                   </div>
                 </div>
@@ -216,8 +224,13 @@ export function ImageProgress({
         src={objectUrl}
       />
       {progress < 100 && (
-        <div className="absolute right-1 bottom-1 flex items-center space-x-2 rounded-full bg-black/50 px-1 py-0.5">
-          <Loader2Icon className="text-muted-foreground size-3.5 animate-spin" />
+        <div
+          className={`
+            absolute right-1 bottom-1 flex items-center space-x-2 rounded-full bg-black/50 px-1
+            py-0.5
+          `}
+        >
+          <Loader2Icon className="size-3.5 animate-spin text-muted-foreground" />
           <span className="text-xs font-medium text-white">
             {Math.round(progress)}%
           </span>

@@ -21,14 +21,14 @@ const PlateStory = (props: React.ComponentProps<typeof PlateEditor>) => {
   // console.log(value);
   return (
     <div className="grid grid-cols-2 gap-4">
-      <div className="border-quanta-azure w-[600px] rounded-2xl border p-4">
+      <div className="w-[600px] rounded-2xl border border-quanta-azure p-4">
         <PlateEditor
           {...props}
           value={value}
           onChange={(options) => setValue(options.value)}
         />
       </div>
-      <div className="border-quanta-azure w-[600px] rounded-2xl border p-4">
+      <div className="w-[600px] rounded-2xl border border-quanta-azure p-4">
         <PlateRenderer
           value={(value as Value) || (props.value as Value)}
           editorConfig={config.settings.plate.presets.block.rendererConfig}
@@ -44,14 +44,14 @@ const MultiPlateStory = (props: React.ComponentProps<typeof PlateEditor>) => {
   // console.log(value);
   return (
     <div className="grid grid-cols-2 gap-4">
-      <div className="border-quanta-azure w-[600px] rounded-2xl border p-4">
+      <div className="w-[600px] rounded-2xl border border-quanta-azure p-4">
         <PlateEditor
           {...props}
           value={value}
           onChange={(options) => setValue(options.value)}
         />
       </div>
-      <div className="border-quanta-azure w-[600px] rounded-2xl border p-4">
+      <div className="w-[600px] rounded-2xl border border-quanta-azure p-4">
         <PlateEditor
           {...props}
           value={value}

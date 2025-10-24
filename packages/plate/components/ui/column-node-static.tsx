@@ -8,7 +8,11 @@ export function ColumnElementStatic(props: SlateElementProps<TColumnElement>) {
   return (
     <div className="group/column relative" style={{ width: width ?? '100%' }}>
       <SlateElement
-        className="h-full px-2 pt-2 group-first/column:pl-0 group-last/column:pr-0"
+        className={`
+          h-full px-2 pt-2
+          group-first/column:pl-0
+          group-last/column:pr-0
+        `}
         {...props}
       >
         <div className="relative h-full border border-transparent p-1.5">

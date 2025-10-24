@@ -34,7 +34,9 @@ export function MoreToolbarButton(props: DropdownMenuProps) {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
-        className="ignore-click-outside/toolbar flex max-h-[500px] min-w-[180px] flex-col overflow-y-auto"
+        className={`
+          ignore-click-outside/toolbar flex max-h-[500px] min-w-[180px] flex-col overflow-y-auto
+        `}
         align="start"
       >
         <DropdownMenuGroup>

@@ -51,7 +51,14 @@ export function ModeToolbarButton(props: DropdownMenuProps) {
       <DropdownMenuTrigger asChild>
         <ToolbarButton pressed={open} tooltip="Editing mode" isDropdown>
           {item[value].icon}
-          <span className="hidden lg:inline">{item[value].label}</span>
+          <span
+            className={`
+              hidden
+              lg:inline
+            `}
+          >
+            {item[value].label}
+          </span>
         </ToolbarButton>
       </DropdownMenuTrigger>
 
@@ -83,7 +90,10 @@ export function ModeToolbarButton(props: DropdownMenuProps) {
           }}
         >
           <DropdownMenuRadioItem
-            className="*:[svg]:text-muted-foreground pl-2 *:first:[span]:hidden"
+            className={`
+              pl-2
+              *:first:[span]:hidden *:[svg]:text-muted-foreground
+            `}
             value="editing"
           >
             <Indicator />
@@ -92,7 +102,10 @@ export function ModeToolbarButton(props: DropdownMenuProps) {
           </DropdownMenuRadioItem>
 
           <DropdownMenuRadioItem
-            className="*:[svg]:text-muted-foreground pl-2 *:first:[span]:hidden"
+            className={`
+              pl-2
+              *:first:[span]:hidden *:[svg]:text-muted-foreground
+            `}
             value="viewing"
           >
             <Indicator />
@@ -101,7 +114,10 @@ export function ModeToolbarButton(props: DropdownMenuProps) {
           </DropdownMenuRadioItem>
 
           <DropdownMenuRadioItem
-            className="*:[svg]:text-muted-foreground pl-2 *:first:[span]:hidden"
+            className={`
+              pl-2
+              *:first:[span]:hidden *:[svg]:text-muted-foreground
+            `}
             value="suggestion"
           >
             <Indicator />

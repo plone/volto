@@ -4,8 +4,6 @@ node_modules
 /build
 .env
 .react-router
-registry.loader.js
-publicui.css
-cmsui.css
-/locales/
+.plone
 /packages/
+public/locales/

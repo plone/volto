@@ -1,6 +1,14 @@
 import type { ImgHTMLAttributes } from 'react';
 import clsx from 'clsx';
-import type { ImageScale, ContainedItem } from '@plone/types';
+import type {
+  ImageScale,
+  ContainedItem,
+  Content,
+  RelatedItem,
+  Brain,
+} from '@plone/types';
+import type { RootLoader } from 'seven/app/root';
+import { useRouteLoaderData } from 'react-router';
 
 function removeObjectIdFromURL(basePath: string, scale: string) {
   return scale.replace(`${basePath}/`, '');
@@ -26,13 +34,12 @@ export function flattenScales(path: string, image: any) {
 }
 
 export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
-  item?: ContainedItem;
+  item?: Content | Brain | ContainedItem | RelatedItem;
   imageField?: string;
   src?: string;
   alt: string;
   loading?: 'eager' | 'lazy';
   responsive?: boolean;
-  sizes?: string;
 }
 
 export default function Image(props: ImageProps) {
@@ -44,9 +51,11 @@ export default function Image(props: ImageProps) {
     loading = 'eager',
     responsive = false,
     className,
-    // sizes,
     ...imageProps
   } = props;
+
+  const siteData = useRouteLoaderData<RootLoader>('root')?.site;
+  const siteImageScales = siteData?.['plone.allowed_sizes'] || [];
 
   if (!item && !src) return null;
   const attrs: ImgHTMLAttributes<HTMLImageElement> = {};
@@ -56,7 +65,12 @@ export default function Image(props: ImageProps) {
     attrs.src = src;
   } else if (item) {
     const isFromRealObject = !('image_scales' in item);
-    const imageFieldWithDefault = imageField || item.image_field || 'image';
+    let imageFieldWithDefault = 'image';
+    if (imageField) {
+      imageFieldWithDefault = imageField;
+    } else if (!isFromRealObject && item.image_field) {
+      imageFieldWithDefault = item.image_field;
+    }
 
     const image = isFromRealObject
       ? flattenScales(item['@id'], (item as any)[imageFieldWithDefault])
@@ -81,11 +95,16 @@ export default function Image(props: ImageProps) {
       if (!isSvg && image.scales && Object.keys(image.scales).length > 0) {
         const sortedScales = Object.values({
           ...image.scales,
-          original: {
-            download: `${image.download}`,
-            width: image.width,
-            height: image.height,
-          },
+          ...(Object.keys(siteImageScales).length >
+          Object.keys(image.scales).length
+            ? {
+                original: {
+                  download: `${image.download}`,
+                  width: image.width,
+                  height: image.height,
+                },
+              }
+            : {}),
         }).sort((a, b) => {
           const scaleA = a as ImageScale;
           const scaleB = b as ImageScale;

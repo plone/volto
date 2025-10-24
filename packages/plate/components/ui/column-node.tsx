@@ -64,7 +64,10 @@ export const ColumnElement = withHOC(
             className={cn(
               'absolute top-2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2',
               'pointer-events-auto flex items-center',
-              'opacity-0 transition-opacity group-hover/column:opacity-100',
+              `
+                opacity-0 transition-opacity
+                group-hover/column:opacity-100
+              `,
             )}
           >
             <ColumnDragHandle />
@@ -74,12 +77,16 @@ export const ColumnElement = withHOC(
         <PlateElement
           {...props}
           ref={useComposedRef(props.ref, previewRef)}
-          className="h-full px-2 pt-2 group-first/column:pl-0 group-last/column:pr-0"
+          className={`
+            h-full px-2 pt-2
+            group-first/column:pl-0
+            group-last/column:pr-0
+          `}
         >
           <div
             className={cn(
               'relative h-full border border-transparent p-1.5',
-              !readOnly && 'border-border rounded-lg border-dashed',
+              !readOnly && 'rounded-lg border-dashed border-border',
               isDragging && 'opacity-50',
             )}
           >
@@ -124,11 +131,17 @@ function DropLine() {
     <div
       className={cn(
         'slate-dropLine',
-        'bg-brand/50 absolute',
+        'absolute bg-brand/50',
         dropLine === 'left' &&
-          'inset-y-0 left-[-10.5px] w-1 group-first/column:-left-1',
+          `
+            inset-y-0 left-[-10.5px] w-1
+            group-first/column:-left-1
+          `,
         dropLine === 'right' &&
-          'inset-y-0 right-[-11px] w-1 group-last/column:-right-1',
+          `
+            inset-y-0 right-[-11px] w-1
+            group-last/column:-right-1
+          `,
       )}
     />
   );

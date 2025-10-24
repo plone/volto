@@ -10,7 +10,7 @@ export function HrElementStatic(props: SlateElementProps) {
       <div className="cursor-text py-6" contentEditable={false}>
         <hr
           className={cn(
-            'bg-muted h-0.5 rounded-sm border-none bg-clip-content',
+            'h-0.5 rounded-sm border-none bg-muted bg-clip-content',
           )}
         />
       </div>

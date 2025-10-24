@@ -32,7 +32,11 @@ const SectionWrapper = (props: SectionWrapperProps<T>) => {
   } = props;
   const sectionClasses = cx(
     'section',
-    { [`section-${section}`]: section },
+    {
+      [`
+        section-${section}
+      `]: section,
+    },
     width,
     className,
   );
